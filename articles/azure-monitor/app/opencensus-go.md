@@ -9,12 +9,12 @@ ms.date: 09/15/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 935119f2efe40ee22d2d11005fa79b12c712b7c2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104577"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694129"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>Zbierać ślady rozproszonego z rzeczywistym użyciem (wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ Usługa Application Insights teraz obsługuje rozproszone śledzenie aplikacji w
 
 - Konieczna jest subskrypcja platformy Azure.
 - Należy zainstalować go, w tym artykule używa wersji 1.11 [Go pobrać](https://golang.org/dl/).
-- Postępuj zgodnie z instrukcjami, aby zainstalować [lokalnej usługi przesyłania dalej, co usługa Windows](./opencensus-local-forwarder.md#windows-service).
+- Postępuj zgodnie z instrukcjami, aby zainstalować [lokalnej usługi przesyłania dalej, co usługa Windows](./opencensus-local-forwarder.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -57,7 +57,7 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
 
    ![Zrzut ekranu przedstawiający klucz Instrumentacji](./media/opencensus-Go/0003-instrumentation-key.png)
 
-2. Edytuj swoje `LocalForwarder.config` pliku i Dodaj klucz instrumentacji. Jeśli postąpiono zgodnie z instrukcjami w [wstępny](./opencensus-local-forwarder.md#windows-service) plik znajduje się w `C:\LF-WindowsServiceHost`
+2. Edytuj swoje `LocalForwarder.config` pliku i Dodaj klucz instrumentacji. Jeśli postąpiono zgodnie z instrukcjami w [wstępny](./opencensus-local-forwarder.md) plik znajduje się w `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -186,7 +186,7 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
 
 3. Gdy zostanie uruchomiona prosta aplikacja Przejdź przejdź do `http://localhost:50030`. Każdym odświeżeniu przeglądarki wygeneruje tekst "hello world" wraz z odpowiedniego zakresu danych, które są pobierane przez lokalne usługi przesyłania dalej.
 
-4. Aby potwierdzić, że **lokalnej usługi przesyłania dalej** jest pobrania Sprawdź ślady `LocalForwarder.config` pliku. Jeśli wykonano kroki opisane w [wstępnie wymaganego składnika](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service), będą znajdować się w `C:\LF-WindowsServiceHost`.
+4. Aby potwierdzić, że **lokalnej usługi przesyłania dalej** jest pobrania Sprawdź ślady `LocalForwarder.config` pliku. Jeśli wykonano kroki opisane w [wstępnie wymaganego składnika](https://docs.microsoft.com/azure/application-insights/local-forwarder), będą znajdować się w `C:\LF-WindowsServiceHost`.
 
     Na ilustracji poniżej w pliku dziennika możesz zobaczyć, że przed uruchomieniem drugi skrypt, w którym dodaliśmy eksporter `OpenCensus input BatchesReceived` : 0. Gdy Rozpoczęliśmy uruchamianie ze zaktualizowanego skryptu `BatchesReceived` zwiększona równy wartości, które możemy wprowadzić:
     

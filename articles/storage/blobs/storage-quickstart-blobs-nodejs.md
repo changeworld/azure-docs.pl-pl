@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 4400bdf9a88c492a08c7eeafb074af89dee8abb1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 6af1a7c1cf140ba8ff4710c0cc90559e3df55135
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661772"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734168"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu zestawu SDK środowiska Node.js w wersji 2
 
@@ -108,7 +108,7 @@ W poniższej implementacji każda funkcja *blobService* jest opakowana w obiekt 
 
 ### <a name="list-containers"></a>Wyświetlanie listy kontenerów
 
-Funkcja *listContainers* wywołuje element [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listcontainerssegmented), który zwraca kolekcje kontenerów w grupach.
+Funkcja *listContainers* wywołuje element [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest), który zwraca kolekcje kontenerów w grupach.
 
 ```javascript
 const listContainers = async () => {
@@ -150,7 +150,7 @@ Użycie funkcji **createContainerIfNotExists** pozwala aplikacji wielokrotnie ur
 
 ### <a name="upload-text"></a>Przekazywanie tekstu
 
-Funkcja *uploadString* wywołuje element [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) w celu zapisania (lub nadpisania) dowolnego ciągu w kontenerze obiektów blob.
+Funkcja *uploadString* wywołuje element [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) w celu zapisania (lub nadpisania) dowolnego ciągu w kontenerze obiektów blob.
 
 ```javascript
 const uploadString = async (containerName, blobName, text) => {
@@ -184,7 +184,7 @@ const uploadLocalFile = async (containerName, filePath) => {
     });
 };
 ```
-Inne metody przekazywania zawartości do obiektów blob obejmują użycie [tekstu](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext-string--string--string---buffer--errororresult-blobresult--) i [strumieni](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Aby sprawdzić, czy plik został przekazany do magazynu obiektów blob, można użyć [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) w celu wyświetlenia danych na koncie.
+Inne metody przekazywania zawartości do obiektów blob obejmują użycie [tekstu](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest-string--string--string---buffer--errororresult-blobresult--) i [strumieni](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Aby sprawdzić, czy plik został przekazany do magazynu obiektów blob, można użyć [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) w celu wyświetlenia danych na koncie.
 
 ### <a name="list-the-blobs"></a>Wyświetlanie listy obiektów blob
 
@@ -208,7 +208,7 @@ Metoda *listBlobsSegmented* zwraca metadane obiektu blob jako tablicę wystąpie
 
 ### <a name="download-a-blob"></a>Pobieranie obiektu blob
 
-Za pomocą funkcji [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtotext) funkcja *downloadBlob* pobiera zawartość obiektu blob do danej ścieżki bezwzględnej do pliku.
+Za pomocą funkcji [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) funkcja *downloadBlob* pobiera zawartość obiektu blob do danej ścieżki bezwzględnej do pliku.
 
 ```javascript
 const downloadBlob = async (containerName, blobName) => {
@@ -224,7 +224,7 @@ const downloadBlob = async (containerName, blobName) => {
     });
 };
 ```
-Przedstawiona w tym miejscu implementacja zmienia źródło i zwraca zawartość obiektu blob jako ciąg. Możesz również pobrać obiekt blob jako [strumień](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtostream), a także bezpośrednio do [pliku lokalnego](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest).
+Przedstawiona w tym miejscu implementacja zmienia źródło i zwraca zawartość obiektu blob jako ciąg. Możesz również pobrać obiekt blob jako [strumień](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest), a także bezpośrednio do [pliku lokalnego](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest).
 
 ### <a name="delete-a-blob"></a>Usuwanie obiektu blob
 

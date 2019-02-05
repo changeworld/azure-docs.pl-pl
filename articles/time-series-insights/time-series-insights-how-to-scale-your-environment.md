@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.custom: seodec18
-ms.openlocfilehash: ee695798dc8a2a19d5cd3d94cbf43e0b58065f84
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: f6c2c8c49f34c707c7b0fb4d525337fbfa169a3e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556683"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692429"
 ---
 # <a name="how-to-scale-your-time-series-insights-environment"></a>Jak skalować środowiska usługi Time Series Insights
 
@@ -47,9 +47,9 @@ Możliwości jest skalowane liniowo, więc S1 SKU usługi o pojemności 2 obsłu
 ## <a name="change-the-capacity-of-your-environment"></a>Zmienianie pojemności środowiska
 1. W witrynie Azure portal zlokalizuj i wybierz środowisko usługi Time Series Insights. 
 
-2. Wybierz z menu w danym środowisku Insighs serii czasu **Konfiguruj**.
+2. Wybierz z menu dla danego środowiska usługi Time Series Insights **Konfiguruj**.
 
-   ![Configure.PNG](media/scale-your-environment/configure.png)
+   ![configure.png](media/scale-your-environment/configure.png)
 
 3. Dostosuj **pojemności** suwak, aby wybrać pojemność, który spełnia wymagania ceny transferu danych przychodzących i pojemność magazynu. Zwróć uwagę **szybkość transferu danych przychodzących**, **pojemność magazynu**, i **szacowany koszt** aktualizacji dynamicznej, aby pokazać wpływ zmiany. 
 

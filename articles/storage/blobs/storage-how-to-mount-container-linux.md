@@ -5,19 +5,19 @@ services: storage
 author: seguler
 ms.service: storage
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 2/1/2019
 ms.author: seguler
-ms.openlocfilehash: 2374875512bba55409ef43906acb20238c77158f
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 1e26eb213ad2613877c46758299c2e962894d358
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268465"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698009"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Jak zainstalować magazyn obiektów Blob jako systemu plików przy użyciu blobfuse
 
 ## <a name="overview"></a>Przegląd
-[Blobfuse](https://github.com/Azure/azure-storage-fuse) jest sterownik systemu plików wirtualnych usługi Azure Blob storage. Blobfuse umożliwia dostęp do istniejących danych blokowych obiektów blob na koncie magazynu za pomocą systemu plików w systemie Linux. Usługa Azure Blob storage to usługa magazynu obiektów i nie ma hierarchicznej przestrzeni nazw. Blobfuse zapewnia tej przestrzeni nazw przy użyciu schematu katalogu wirtualnego do przodu ukośnik "/" jako ogranicznik.  
+[Blobfuse](https://github.com/Azure/azure-storage-fuse) jest sterownikiem wirtualnego systemu plików usługi Azure Blob Storage. Blobfuse umożliwia dostęp do istniejących danych blokowych obiektów blob na koncie magazynu za pomocą systemu plików w systemie Linux. Usługa Azure Blob storage to usługa magazynu obiektów i nie ma hierarchicznej przestrzeni nazw. Blobfuse zapewnia tej przestrzeni nazw przy użyciu schematu katalogu wirtualnego do przodu ukośnik "/" jako ogranicznik.  
 
 Ten przewodnik przedstawia sposób użycia blobfuse i zainstaluj kontenera magazynu obiektów Blob dla systemów Linux i dostęp do danych. Aby dowiedzieć się więcej na temat blobfuse, przeczytaj szczegółowe informacje w [repozytorium blobfuse](https://github.com/Azure/azure-storage-fuse).
 
@@ -100,7 +100,7 @@ containerName mycontainer
 
 Po utworzeniu tego pliku upewnij się ograniczyć dostęp, dlatego żaden inny użytkownik może go odczytać.
 ```bash
-chmod 700 fuse_connection.cfg
+chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]

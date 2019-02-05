@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 139f6283c2b59aee53afa3f0dd52e06e2b0eff4c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912037"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695223"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
 
@@ -34,7 +34,7 @@ Filtry są reguły po stronie serwera, które umożliwiają klientom wykonywać 
 - Dostarczaj tylko określonej wersji i/lub ścieżek określonego języka, które są obsługiwane przez urządzenia, które służy do odtwarzania zawartości ("odwzorowanie filtering"). 
 - Dostosuj prezentacji okna (DVR) w celu zapewnienia ograniczona długość okna funkcji DVR w odtwarzaczu ("Dostosowywanie prezentacji okno").
 
-W tym temacie opisano [pojęcia](#concepts) i [pokazuje filtrów definicje](#definitions). Następnie zwraca szczegółowe informacje o [typowych scenariuszy](#common-scenarios). Na końcu tego artykułu możesz znaleźć linki, które pokazują, jak programowo utworzyć filtry.  
+W tym temacie opisano [pojęcia](#concepts) i [pokazuje filtrów definicje](#definitions). Udostępnia szczegółowe informacje o typowych scenariuszach. Na końcu tego artykułu możesz znaleźć linki, które pokazują, jak programowo utworzyć filtry.  
 
 ## <a name="concepts"></a>Pojęcia
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
-ms.openlocfilehash: 3ad9308f3bc714ee2877627da8fdb328459b9fe4
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49351953"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732332"
 ---
 # <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>Włącz listę usługi AppSource i Portal Marketplace przy użyciu usługi Azure Active Directory
 
@@ -59,7 +59,7 @@ Aby uzyskać więcej informacji na temat wymagań technicznych SaaS, zobacz [apl
 
 Ustawienia automatycznego odbiorcy mogą zwiększyć prawdopodobieństwo konwersji. Gdy klient wybiera Twojej listy wersji próbnej i jest przekierowywany do środowiska próbnego, możesz skonfigurować klienta bezpośrednio, bez konieczności dodatkowe kroki logowania.
 
-Podczas uwierzytelniania usługi Azure AD wysyła token do aplikacji lub oferty. Informacje o użytkowniku, dostarczone przez token umożliwia tworzenie konta użytkownika w aplikacji lub oferty. Aby dowiedzieć się więcej, zobacz [przykładowy tokenów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims#sample-tokens).
+Podczas uwierzytelniania usługi Azure AD wysyła token do aplikacji lub oferty. Informacje o użytkowniku, dostarczone przez token umożliwia tworzenie konta użytkownika w aplikacji lub oferty. Aby dowiedzieć się więcej, zobacz [przykładowy tokenów](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 Kiedy używać usługi Azure AD w celu umożliwienia uwierzytelniania jednym kliknięciem w swojej aplikacji lub listę wersji próbnej, możesz:
 

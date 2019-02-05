@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: bwren
-ms.openlocfilehash: 492e7cf466dd8019efe8617b67e9fa6b14f5b3c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8457334e00f7c8dfbaee75a12d6bb71b760e60d9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661667"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697004"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -385,7 +385,7 @@ Jeśli instalację agenta zależności zakończyła się pomyślnie, ale nie wid
 **Windows**: Wyszukaj usługę o nazwie "Agent Dependency firmy Microsoft."<br>
 **Linux**: Zwróć uwagę na uruchomionego procesu "microsoft--agenta zależności."
 
-* Czy na [bezpłatnej warstwy Operations Management Suite/Log Analytics cenowej](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers)? Bezpłatny plan zezwala na maksymalnie pięciu unikatowych serwerów mapy usługi. Kolejne serwery będą serwerami nie będą widoczne mapy usługi, nawet wtedy, gdy wcześniejsze pięciu już nie wysyłają dane.
+* Czy na [bezpłatnej warstwy Operations Management Suite/Log Analytics cenowej](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions)? Bezpłatny plan zezwala na maksymalnie pięciu unikatowych serwerów mapy usługi. Kolejne serwery będą serwerami nie będą widoczne mapy usługi, nawet wtedy, gdy wcześniejsze pięciu już nie wysyłają dane.
 
 * To Twoje wysyłania dziennika serwera i danych o wydajności do usługi Log Analytics? Przejdź do wyszukiwania w dziennikach i uruchom następujące zapytanie dla danego komputera: 
 

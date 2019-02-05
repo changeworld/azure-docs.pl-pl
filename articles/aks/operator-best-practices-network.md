@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 0ad6ab27a51cf082be71262b887a459f6c7cc906
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 15b389e2158cb3a2070cc09b20f79f4274fde5d9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101976"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699129"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -21,44 +21,44 @@ Podczas tworzenia i zarządzania klastrami w usłudze Azure Kubernetes Service (
 Najlepsze rozwiązania dotyczące tej koncentruje się na łączności sieciowej i zabezpieczeń dla operatorów klastra. W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
-> * Porównanie trybów podstawowe i zaawansowane sieci w usłudze AKS
+> * Porównaj wtyczki kubenet i wtyczki Azure CNI tryby sieci w usłudze AKS
 > * Planowanie wymaganych adresów IP i łączność
 > * Dystrybuowanie ruchu przy użyciu usługi równoważenia obciążenia, kontrolery transferu danych przychodzących lub zapory aplikacji sieci web (WAF)
 > * Bezpieczne łączenie z węzłami klastra
 
 ## <a name="choose-the-appropriate-network-model"></a>Wybierz model odpowiedniej sieci
 
-**Najważniejsze wskazówki** — w przypadku integracji z istniejącymi sieciami wirtualnymi i sieciami lokalnymi, użyj zaawansowanym sieci w usłudze AKS. Ten model sieci pozwala również mocniej, zasobów i formanty w środowisku przedsiębiorstwa.
+**Najważniejsze wskazówki** — w przypadku integracji z istniejącymi sieciami wirtualnymi i sieciami lokalnymi, użyj wtyczki Azure CNI sieci w usłudze AKS. Ten model sieci pozwala również mocniej, zasobów i formanty w środowisku przedsiębiorstwa.
 
 Sieci wirtualne zapewniają podstawowej łączności dla węzłów AKS i klientom dostęp do aplikacji. Istnieją dwa różne sposoby wdrażania klastrów usługi AKS w sieciach wirtualnych:
 
-* **Podstawowe operacje sieciowe** — platforma Azure zarządza zasobami sieci wirtualnej w klastrze jest wdrażana i używa [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes.
-* **Zaawansowany siecią** — wdraża do istniejącej sieci wirtualnej i używa [wtyczki Azure Container Networking interfejsu (CNI)] [ cni-networking] wtyczka platformy Kubernetes. Zasobników otrzymują poszczególnych adresów IP, która może kierować do innych usług sieciowych lub zasobów lokalnych.
+* **Sieć z wtyczki Kubenet** — platforma Azure zarządza zasobami sieci wirtualnej w klastrze jest wdrażana i używa [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes.
+* **Sieć Azure CNI** — wdraża do istniejącej sieci wirtualnej i używa [wtyczki Azure Container Networking interfejsu (CNI)] [ cni-networking] wtyczka platformy Kubernetes. Zasobników otrzymują poszczególnych adresów IP, która może kierować do innych usług sieciowych lub zasobów lokalnych.
 
 Container Networking interfejsu (CNI) jest protokołem neutralne, który pozwala wysyłać żądania do dostawcy sieci kontener środowiska uruchomieniowego. Wtyczki Azure CNI przypisywania adresów IP do zasobników i węzłów oraz udostępnia adres IP funkcji zarządzania (adresami IP IPAM) nawiązaniu połączenia z istniejącymi sieciami wirtualnymi platformy Azure. Każdy węzeł i zasobnika zasób otrzymuje adres IP w sieci wirtualnej platformy Azure, a nie dodatkowe routing jest potrzebne do komunikowania się z innych zasobów lub usług.
 
 ![Diagram przedstawiający dwa węzły o mostki łączenia każdego do pojedynczej sieci wirtualnej platformy Azure](media/operator-best-practices-network/advanced-networking-diagram.png)
 
-W przypadku większości wdrożeń produkcyjnych należy użyć zaawansowane funkcje sieciowe. Ten model sieci umożliwia rozdzielenie kontroli i zarządzania zasobami. Z punktu widzenia zabezpieczeń często mają różne zespoły, zarządzanie i zabezpieczanie tych zasobów. Zaawansowane sieci pozwala połączyć do istniejących zasobów platformy Azure, zasobów lokalnych lub innych usług, bezpośrednio za pomocą adresów IP przypisanych do każdego zasobników.
+W przypadku większości wdrożeń produkcyjnych należy użyć wtyczki Azure CNI sieci. Ten model sieci umożliwia rozdzielenie kontroli i zarządzania zasobami. Z punktu widzenia zabezpieczeń często mają różne zespoły, zarządzanie i zabezpieczanie tych zasobów. Wtyczki Azure CNI sieci pozwala połączyć do istniejących zasobów platformy Azure, zasobów lokalnych lub innych usług, bezpośrednio za pomocą adresów IP przypisanych do każdego zasobników.
 
-Użycie zaawansowane funkcje sieciowe, zasób sieci wirtualnej jest w oddzielnej grupie zasobów w klastrze AKS. Można delegować uprawnienia dla jednostki usługi AKS dostępu i zarządzanie tymi zasobami. Jednostki usługi używany przez klaster AKS musi mieć co najmniej [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor) uprawnień w podsieci w ramach sieci wirtualnej. Jeśli chcesz zdefiniować [roli niestandardowej](../role-based-access-control/custom-roles.md) zamiast wbudowana rola Współautor sieci, wymagane są następujące uprawnienia:
+Gdy używasz wtyczki Azure CNI sieć, zasób sieci wirtualnej jest w oddzielnej grupie zasobów do klastra usługi AKS. Można delegować uprawnienia dla jednostki usługi AKS dostępu i zarządzanie tymi zasobami. Jednostki usługi używany przez klaster AKS musi mieć co najmniej [Współautor sieci](../role-based-access-control/built-in-roles.md#network-contributor) uprawnień w podsieci w ramach sieci wirtualnej. Jeśli chcesz zdefiniować [roli niestandardowej](../role-based-access-control/custom-roles.md) zamiast wbudowana rola Współautor sieci, wymagane są następujące uprawnienia:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
 Aby uzyskać więcej informacji na temat delegowania nazwy głównej usługi AKS, zobacz [delegować dostęp do innych zasobów platformy Azure][sp-delegation].
 
-Podobnie jak każdy węzeł i zasobnika otrzymują adres IP, należy zaplanować się zakresów adresów w podsieci usługi AKS. Podsieć musi być wystarczająco duży, aby przydzielać adresy IP dla każdego węzła, zasobników i zasobów sieciowych, które można wdrożyć. Każdy klaster AKS muszą być umieszczone w jej własnej podsieci. Aby umożliwić łączność z lokalnym lub w sieciach równorzędnych na platformie Azure, nie używaj zakresów adresów IP, które pokrywają się z istniejącymi zasobami sieciowymi. Istnieją domyślne limity liczby zasobników, które każdy węzeł jest uruchamiany z sieci podstawowe i zaawansowane. Do obsługi skalowania w górę zdarzeń lub Uaktualnianie klastra, należy również dodatkowe adresy IP do użycia w przypisanej podsieci.
+Podobnie jak każdy węzeł i zasobnika otrzymują adres IP, należy zaplanować się zakresów adresów w podsieci usługi AKS. Podsieć musi być wystarczająco duży, aby przydzielać adresy IP dla każdego węzła, zasobników i zasobów sieciowych, które można wdrożyć. Każdy klaster AKS muszą być umieszczone w jej własnej podsieci. Aby umożliwić łączność z lokalnym lub w sieciach równorzędnych na platformie Azure, nie używaj zakresów adresów IP, które pokrywają się z istniejącymi zasobami sieciowymi. Istnieją domyślne limity liczby zasobników, z których każdy węzeł działa zarówno z wtyczki kubenet i wtyczki Azure CNI sieci. Do obsługi skalowania w górę zdarzeń lub Uaktualnianie klastra, należy również dodatkowe adresy IP do użycia w przypisanej podsieci.
 
-Do obliczania adresu IP wymagane, zobacz [skonfiguruj zaawansowane sieci w usłudze AKS][advanced-networking].
+Do obliczania adresu IP wymagane, zobacz [wtyczki Azure CNI konfigurowania sieci w usłudze AKS][advanced-networking].
 
-### <a name="basic-networking-with-kubenet"></a>Sieć podstawowa z wtyczki Kubenet
+### <a name="kubenet-networking"></a>Wtyczki Kubenet sieci
 
-Mimo że podstawowe operacje sieciowe nie wymagają skonfigurowania sieci wirtualnych, przed wdrożeniem klastra, są wady:
+Mimo że wtyczki kubenet nie wymagają skonfigurowania sieci wirtualnych, przed wdrożeniem klastra, są wady:
 
-* Węzły i zasobników są umieszczane w różnych podsieciach IP. Przekazywanie zdefiniowaną przez użytkownika routingu (UDR) i adres IP jest używany do kierowania ruchem między zasobników i węzłów. Dodatkowe routingu zmniejsza wydajność sieci.
-* Połączenia z istniejącej sieci lokalnej lub komunikację równorzędną z innymi sieciami wirtualnymi platformy Azure jest złożony.
+* Węzły i zasobników są umieszczane w różnych podsieciach IP. Przekazywanie zdefiniowaną przez użytkownika routingu (UDR) i adres IP jest używany do kierowania ruchem między zasobników i węzłów. Dodatkowe routingu może zmniejszyć wydajność sieci.
+* Połączenia z istniejącej sieci lokalnej lub komunikację równorzędną z innymi sieciami wirtualnymi platformy Azure może być skomplikowane.
 
-Sieć podstawowa jest odpowiednia w przypadku małych obciążeń deweloperskich lub testowania, ponieważ nie trzeba utworzyć sieci wirtualnej i podsieci oddzielnie z klastra usługi AKS. Proste witryn sieci Web za pomocą o niewielkim ruchu, lub do przenoszenia obciążeń do kontenerów, również mogą korzystać z prostoty klastra AKS wdrożona za pomocą podstawowych sieci. W przypadku większości wdrożeń produkcyjnych planowanie i skorzystać z zaawansowanych sieci.
+Wtyczki Kubenet jest odpowiedni dla małych obciążeń deweloperskich lub testowania, ponieważ nie trzeba utworzyć sieci wirtualnej i podsieci oddzielnie z klastra usługi AKS. Proste witryn sieci Web za pomocą o niewielkim ruchu, lub do przenoszenia obciążeń do kontenerów, również mogą korzystać z prostoty klastra AKS wdrożone z wtyczki kubenet w sieci. W przypadku większości wdrożeń produkcyjnych należy planowanie i używania wtyczki Azure CNI sieci. Możesz również [skonfigurować własnych zakresów adresów IP i sieci wirtualnych przy użyciu wtyczki kubenet][aks-configure-kubenet-networking].
 
 ## <a name="distribute-ingress-traffic"></a>Dystrybuuj ruch przychodzący
 
@@ -99,7 +99,7 @@ spec:
          servicePort: 80
 ```
 
-Kontroler danych przychodzących jest demona, który działa w węźle usługi AKS i oczekuje na przychodzące żądania. Następnie dystrybucji ruchu na podstawie reguł zdefiniowanych w zasobie danych przychodzących. Najbardziej typowe kontrolera danych przychodzących jest oparty na [Serwer Nginx]. AKS nie ogranicza możliwości do określonego kontrolera, aby można było używać innych kontrolerów takich jak [rozkład][contour], [HAProxy][haproxy], lub [ Traefik][traefik].
+Kontroler danych przychodzących jest demona, który działa w węźle usługi AKS i oczekuje na przychodzące żądania. Następnie dystrybucji ruchu na podstawie reguł zdefiniowanych w zasobie danych przychodzących. Najbardziej typowe kontrolera danych przychodzących jest oparty na [NGINX]. AKS nie ogranicza możliwości do określonego kontrolera, aby można było używać innych kontrolerów takich jak [rozkład][contour], [HAProxy][haproxy], lub [ Traefik][traefik].
 
 Istnieje wiele scenariuszy dla danych przychodzących, w tym następujące przewodniki z instrukcjami:
 
@@ -138,7 +138,7 @@ Ten artykuł koncentruje się na łączności sieciowej i zabezpieczeń. Aby uzy
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
-[Serwer Nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
+[nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
 [haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik
@@ -155,4 +155,5 @@ Ten artykuł koncentruje się na łączności sieciowej i zabezpieczeń. Aby uzy
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
-[advanced-networking]: configure-advanced-networking.md
+[advanced-networking]: configure-azure-cni.md
+[aks-configure-kubenet-networking]: configure-kubenet.md

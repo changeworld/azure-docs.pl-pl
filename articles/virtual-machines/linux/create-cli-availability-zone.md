@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 8be3156aaeb9651b97999b7b06fec8034e902c36
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ee714cd87676c519c1bbfca2c08b62287299114e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663897"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700625"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Utwórz maszynę wirtualną systemu Linux w strefie dostępności przy użyciu wiersza polecenia platformy Azure
 
@@ -29,13 +29,13 @@ Tym artykule omówiono tworzenie maszyny Wirtualnej z systemem Linux w strefie d
 
 Aby użyć strefy dostępność, utwórz maszynę wirtualną w [obsługiwanym regionie platformy Azure](../../availability-zones/az-overview.md#regions-that-support-availability-zones).
 
-Upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogowano się przy użyciu konta platformy Azure [az login](/cli/azure/reference-index#az_login).
+Upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogowano się przy użyciu konta platformy Azure [az login](/cli/azure/reference-index).
 
 
 ## <a name="check-vm-sku-availability"></a>Sprawdzanie dostępności jednostki SKU maszyny wirtualnej
 Dostępność rozmiarów maszyn wirtualnych lub jednostek SKU może różnić się w zależności od regionu i strefy. Aby uzyskać pomoc w planowaniu użycia stref dostępności, możesz wyświetlić listę dostępnych jednostek SKU maszyn wirtualnych według regionu i strefy świadczenia usługi Azure. Ta możliwość gwarantuje wybranie odpowiedniego rozmiaru maszyny wirtualnej oraz uzyskanie żądanej odporności w różnych strefach. Aby uzyskać więcej informacji o różnych typach i rozmiarach maszyn wirtualnych, zobacz [Omówienie rozmiarów maszyn wirtualnych](sizes.md).
 
-Możesz wyświetlić dostępne jednostki SKU maszyny Wirtualnej za pomocą [az vm list-skus](/cli/azure/vm#az_vm_list_skus) polecenia. Następujący przykład zawiera listę dostępnych jednostek SKU maszyn wirtualnych w regionie *eastus2*:
+Możesz wyświetlić dostępne jednostki SKU maszyny Wirtualnej za pomocą [az vm list-skus](/cli/azure/vm) polecenia. Następujący przykład zawiera listę dostępnych jednostek SKU maszyn wirtualnych w regionie *eastus2*:
 
 ```azurecli
 az vm list-skus --location eastus2 --output table
@@ -74,7 +74,7 @@ Grupa zasobów jest określana, podczas tworzenia lub modyfikowania maszyn wirtu
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). 
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). 
 
 Podczas tworzenia maszyny wirtualnej masz dostęp do kilku opcji, takich jak obraz systemu operacyjnego, ustalanie rozmiaru dysku i poświadczenia administracyjne. W tym przykładzie tworzona jest maszyna wirtualna o nazwie *myVM* z systemem Ubuntu Server. Maszyna wirtualna jest utworzona w strefie dostępności *1*. Domyślnie maszyny Wirtualnej jest tworzony w *standardowa_ds1_v2* rozmiar.
 
@@ -102,7 +102,7 @@ Tworzenie maszyny wirtualnej może potrwać kilka minut. Po utworzeniu maszyny w
 
 Po wdrożeniu maszyny Wirtualnej w strefie dostępności dysku zarządzanego dla maszyny Wirtualnej jest tworzony w tej samej strefie dostępności. Domyślnie publiczny adres IP jest tworzona w tej strefie. Poniższy przykład pobiera informacje o tych zasobów.
 
-Aby sprawdzić, czy dysku zarządzanego maszyny Wirtualnej jest w strefie dostępności, użyj [az vm show](/cli/azure/vm#az_vm_show) polecenie, aby zwrócić identyfikator dysku. W tym przykładzie identyfikator dysku jest przechowywany w zmiennej używanej w późniejszym kroku. 
+Aby sprawdzić, czy dysku zarządzanego maszyny Wirtualnej jest w strefie dostępności, użyj [az vm show](/cli/azure/vm) polecenie, aby zwrócić identyfikator dysku. W tym przykładzie identyfikator dysku jest przechowywany w zmiennej używanej w późniejszym kroku. 
 
 ```azurecli-interactive
 osdiskname=$(az vm show -g myResourceGroupVM -n myVM --query "storageProfile.osDisk.name" -o tsv)
@@ -149,7 +149,7 @@ Dane wyjściowe pokazują, że dysk zarządzany znajduje się w tej samej strefi
 }
 ```
 
-Użyj [az vm-— adresy ip](/cli/azure/vm#az_vm_list_ip_addresses) polecenie, aby zwrócić nazwę zasobu publicznego adresu IP w *myVM*. W tym przykładzie nazwa jest przechowywana w zmiennej używanej w późniejszym kroku.
+Użyj [az vm-— adresy ip](/cli/azure/vm) polecenie, aby zwrócić nazwę zasobu publicznego adresu IP w *myVM*. W tym przykładzie nazwa jest przechowywana w zmiennej używanej w późniejszym kroku.
 
 ```azurecli
 ipaddressname=$(az vm list-ip-addresses -g myResourceGroupVM -n myVM --query "[].virtualMachine.network.publicIpAddresses[].name" -o tsv)

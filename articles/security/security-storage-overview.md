@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8330b63f218108930c5eb66eaa6c8ff6dca67316
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973132"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694272"
 ---
 # <a name="azure-storage-security-overview"></a>Omówienie zabezpieczeń usługi Azure Storage
 
@@ -47,7 +47,7 @@ Więcej informacji:
 
 ## <a name="delegated-access-to-storage-objects"></a>Delegowanego dostępu do obiektów magazynu
 
-Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu. Sygnatura dostępu Współdzielonego oznacza, że możliwe jest przyznanie klientowi ograniczonych uprawnień do obiektów na koncie magazynu określonym przedziale czasu i z określonym zestawem uprawnień. Te ograniczone uprawnienia można przyznać bez konieczności udostępniania kluczy dostępu do Twojego konta. 
+Sygnatury dostępu współdzielonego zapewnia delegowany dostęp do zasobów na koncie magazynu. Sygnatura dostępu Współdzielonego oznacza, że możliwe jest przyznanie klientowi ograniczonych uprawnień do obiektów na koncie magazynu określonym przedziale czasu i z określonym zestawem uprawnień. Te ograniczone uprawnienia można przyznać bez konieczności udostępniania kluczy dostępu do Twojego konta.
 
 Sygnatura dostępu Współdzielonego to identyfikator URI, który obejmuje jego parametry zapytań, wszystkie informacje niezbędne do uwierzytelnionego dostępu do zasobu magazynu. Aby uzyskać dostęp do zasobów magazynu przy użyciu sygnatury dostępu Współdzielonego, klient musi tylko zapewniają sygnatury dostępu Współdzielonego do odpowiedniego konstruktora lub metody.
 
@@ -73,7 +73,7 @@ Dowiedz się więcej o funkcji Szyfrowanie po stronie klienta:
 
 W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) stanowi krok obowiązkowy kierunku niezależność danych ochrony prywatności, zgodności i danych. Trzy funkcje platformy Azure zapewniają szyfrowanie danych magazynowanych:
 
-* [Szyfrowanie usługi Storage](../storage/common/storage-security-guide.md#encryption-at-rest) pozwala na żądanie, czy usługi storage automatyczne szyfrowanie danych podczas zapisywania jej do usługi Azure Storage.
+* [Szyfrowanie usługi Storage](../storage/common/storage-security-guide.md#encryption-at-rest) jest zawsze włączona i automatycznie szyfruje dane usługi magazynu, podczas zapisywania jej do usługi Azure Storage.
 * [Szyfrowanie po stronie klienta](../storage/common/storage-security-guide.md#client-side-encryption) udostępnia również funkcję szyfrowanie danych magazynowanych.
 * [Usługa Azure Disk Encryption](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) umożliwia szyfrowanie dysków systemu operacyjnego i dysków z danymi używanymi w maszynie wirtualnej IaaS.
 
@@ -108,15 +108,15 @@ Usługi Data Box Edge i Data Box Gateway to produkty transferu danych online, kt
 
 Więcej informacji:
 
-* [Urządzenie Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
-* [Krawędź pola danych na platformie Azure](../databox-online/data-box-edge-overview.md)
-* [Usługa Azure Data Box bramy](..//databox-online/data-box-gateway-overview.md)
+* [Azure Data Box](https://azure.microsoft.com/services/storage/databox/)
+* [Azure Data Box Edge](../databox-online/data-box-edge-overview.md)
+* [Azure Data Box Gateway](..//databox-online/data-box-gateway-overview.md)
 
 ## <a name="advanced-threat-protection"></a>Zaawansowana ochrona przed zagrożeniami
 
-Usługa Azure Storage udostępnia zaawansowaną ochronę przed zagrożeniami dodatkową warstwę analizy zabezpieczeń, który wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać swoje konto magazynu. Advanced Threat Protection monitoruje dzienników diagnostycznych usługi Azure Storage dla podejrzanych odczytu, zapisu lub usuwania żądań do usługi Blob storage. 
+Usługa Azure Storage udostępnia zaawansowaną ochronę przed zagrożeniami dodatkową warstwę analizy zabezpieczeń, który wykrywa nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystać swoje konto magazynu. Advanced Threat Protection monitoruje dzienników diagnostycznych usługi Azure Storage dla podejrzanych odczytu, zapisu lub usuwania żądań do usługi Blob storage.
 
-Zaawansowana ochrona przed zagrożeniami alerty mogą być wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/). Usługa Azure Security Center zapewnia szczegółowe informacje na temat wszelkich podejrzanych działań wykryte i zaleca działania mające na celu badanie i korygowanie potencjalnych zagrożeń. 
+Zaawansowana ochrona przed zagrożeniami alerty mogą być wyświetlane z [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/). Usługa Azure Security Center zapewnia szczegółowe informacje na temat wszelkich podejrzanych działań wykryte i zaleca działania mające na celu badanie i korygowanie potencjalnych zagrożeń.
 
 Więcej informacji:
 

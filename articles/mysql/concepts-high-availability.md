@@ -5,13 +5,13 @@ author: jasonwhowell
 ms.author: jasonh
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 70577f32debc526aaccbd79b62dd35e82119e3f9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/01/2019
+ms.openlocfilehash: 3f541357d3d45ada694a821b3a3b1474185b6b00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548396"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691358"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-mysql"></a>Pojęcia wysokiej dostępności w usłudze Azure Database for MySQL
 Usługa Azure Database for MySQL oferuje gwarantowaną wysoką dostępność. Finansowo umowy dotyczącej poziomu usług (SLA) wynosi 99,99% po ogólnym udostępnieniu. Nie ma praktycznie nie aplikacji, czas przestoju podczas korzystania z tej usługi.
@@ -32,5 +32,5 @@ Podobnie jak w modelu wysokiej dostępności usługi Azure Database for MySQL je
 Podczas operacji skalowania odbywa się przerwę połączenia bazy danych. Aplikacje klienckie są odłączone, a następnie otwórz niezatwierdzone transakcje są anulowane. Gdy aplikacja kliencka ponawia próbę połączenia lub tworzy nowe połączenie, bramy kieruje połączenia z wystąpieniem o nowym rozmiarze. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for MySQL — omówienie](overview.md)
-- Aby uzyskać omówienie logikę ponawiania próby, zobacz [obsługi błędów przejściowych łączności dla usługi Azure Database for MySQL](concepts-connectivity.md)
+- Dowiedz się więcej o [obsługi błędów przejściowych łączności](concepts-connectivity.md)
+- Dowiedz się, jak [replikowania danych za pomocą odczytu replik](howto-read-replicas-portal.md)

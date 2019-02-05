@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: 5c0fbf396faa0e07ecca4ae16c775a39404c6fc9
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 1bada751ffac45b36faad6e978567233901adc7d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49376520"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700319"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Limity przydziału i ograniczenia dotyczące usługi Azure Media Services v3
 
@@ -33,14 +33,14 @@ W tym artykule opisano przydziały i ograniczenia dotyczące usługi Azure Media
 | Liczba zadań na konto usługi Media Services | 500 000 <sup>(2)</sup> (stałe)|
 | Lista przekształceń|Stronicowanie odpowiedzi z 1000 przekształceń na stronę|
 | Wyświetlanie listy zadań|Stronicowanie odpowiedzi 500 zadań na stronie|
-| LiveEvents na konto usługi Media Services |5|
+| Wydarzenia na żywo na konto usługi Media Services |5|
 | Konta usługi Media Services w ramach jednej subskrypcji | 25 (stały) |
-| LiveOutputs w stanie działania na element LiveEvent |3|
+| Dane wyjściowe na żywo w stanie działania na element LiveEvent |3|
 | Konta magazynu | 100<sup>(4)</sup> (stałe) |
 | Punkty końcowe przesyłania strumieniowego w stanie działania na konto usługi Media Services|2|
-| StreamingPolicies | 100 <sup>(3)</sup> |
+| Zasady przesyłania strumieniowego | 100 <sup>(3)</sup> |
 | Przekształcenia na konto usługi Media Services | 100 (stałe)|
-| Unikatowe StreamingLocators skojarzone z elementem zawartości w tym samym czasie | 100<sup>(5)</sup> (stałe) |
+| Unikatowe Lokalizatory przesyłania strumieniowego, w tym samym czasie skojarzony z elementem zawartości | 100<sup>(5)</sup> (stałe) |
 
 <sup>1</sup> maksymalny rozmiar obsługiwany dla pojedynczego obiektu blob jest obecnie maksymalnie 5 TB w usłudze Azure Blob Storage. Jednak dodatkowe limity mają zastosowanie w usłudze Azure Media Services, oparte na rozmiary maszyn wirtualnych, które są używane przez usługę. Jeśli plik źródłowy jest większy niż 260 GB, zadanie prawdopodobnie zakończy się niepowodzeniem. Jeśli zawartość 4K, który jest większy niż limit 260 GB, skontaktuj się z nami pod adresem amshelp@microsoft.com dla potencjalne środki zaradcze w celu obsługi danego scenariusza.
 
@@ -48,11 +48,11 @@ W tym artykule opisano przydziały i ograniczenia dotyczące usługi Azure Media
 
 Wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni zostaną automatycznie usunięte, nawet jeśli łączna liczba rekordów jest poniżej maksymalny limit przydziału. 
 
-<sup>3</sup> podczas korzystania z niestandardowej [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi multimediów i ponownie używać ich na potrzeby usługi StreamingLocators za każdym razem szyfrowania tych samych opcji i protokołów są wymagane. Nie należy tworzyć nowego elementu StreamingPolicy dla każdego obiektu StreamingLocator.
+<sup>3</sup> podczas korzystania z niestandardowej [przesyłania strumieniowego zasad](https://docs.microsoft.com/rest/api/media/streamingpolicies), należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi multimediów i ponownie używać ich na potrzeby usługi StreamingLocators za każdym razem szyfrowania tych samych opcji i protokołów są wymagane. Należy nie można utworzeniem nowej zasady przesyłania strumieniowego dla każdego lokalizatora przesyłania strumieniowego.
 
 <sup>4</sup> konta magazynu muszą pochodzić z tej samej subskrypcji platformy Azure.
 
-<sup>5</sup> StreamingLocators nie są przeznaczone do zarządzania kontroli dostępu poszczególnych użytkowników. Aby nadać różne uprawnienia poszczególnym użytkownikom, użyj rozwiązań do zarządzania prawami cyfrowymi (DRM, Digital Rights Management).
+<sup>5</sup> Lokalizatory przesyłania strumieniowego nie są przeznaczone do zarządzania kontroli dostępu dla użytkownika. Aby nadać różne uprawnienia poszczególnym użytkownikom, użyj rozwiązań do zarządzania prawami cyfrowymi (DRM, Digital Rights Management).
 
 ## <a name="support-ticket"></a>Bilet pomocy technicznej
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992128"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693993"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>O technologiach sieciowych w replikacji Azure – Azure
 
@@ -99,7 +99,8 @@ Zakresy adresów IP odzyskiwania lokacji są następujące:
    Korea Południowa | 52.231.298.185 | 52.231.200.144
    Francja Środkowa | 52.143.138.106 | 52.143.136.55
    Francja Południowa | 52.136.139.227 |52.136.136.62
-
+   Australia centralnej| 20.36.34.70 | 20.36.46.142
+   Australia Środkowa 2| 20.36.69.62 | 20.36.74.130
 
 ## <a name="example-nsg-configuration"></a>Przykładowa konfiguracja sieciowa grupa zabezpieczeń
 
@@ -147,7 +148,7 @@ Punkt końcowy usługi sieci w sieci wirtualnej można utworzyć w "Magazyn", ab
 
 - Wybierz sieci wirtualnej platformy Azure i kliknij pozycję "Punkty końcowe usługi"
 
-    ![punkt końcowy magazynu](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
+    ![storage-endpoint](./media/azure-to-azure-about-networking/storage-service-endpoint.png)
 
 - Kliknij pozycję "Dodaj" i "Dodaj punkty końcowe usługi" zostanie otwarta karta
 - Wybierz pozycję "Microsoft.Storage", w obszarze "Usługa" i wymagane podsieci w ramach pola "Podsieci", a następnie kliknij przycisk "Dodaj"

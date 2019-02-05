@@ -12,23 +12,23 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 02/01/2019
 ms.author: magattus
-ms.openlocfilehash: 9f68d08ae1deac5b03d8fd7e6596bb4c98813ac2
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2f9bb6eee35a303697179ff02ed18203cd1652f6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054378"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692600"
 ---
-# <a name="azure-cdn-pop-locations-by-region"></a>Lokalizacje POP sieci CDN Azure według regionów
+# <a name="azure-cdn-coverage-by-metro"></a>Usługa Azure CDN pokrycia, Metro 
 > [!div class="op_single_selector"]
 > * [Lokalizacje POP według regionu](cdn-pop-locations.md)
 > * [Lokalizacje POP według skrótu](cdn-pop-abbreviations.md)
 > 
 
 
-Ten artykuł zawiera listę bieżących lokalizacji (POP) typu "punktu obecność", posortowane według regionów, produktów Azure Content Delivery Network (CDN).
+W tym artykule wymieniono bieżącego Metro zawierający lokalizacji (POP) typu "punktu obecność", posortowane według regionów, produktów Azure Content Delivery Network (CDN). Każdy Metro może zawierać więcej niż jeden punkt POP. Na przykład Azure CDN from Microsoft ma 129 punktów POP w naszej 61 Metro. 
 
 > [!IMPORTANT]
 > Lokalizacje POP Miasto **Azure CDN from Akamai** nie są ujawniane indywidualnie.  
@@ -38,13 +38,13 @@ Ten artykuł zawiera listę bieżących lokalizacji (POP) typu "punktu obecnoś�
 
 | Region | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
-| Ameryka Północna | Toronto, Kanada<br />Querétaro, Mexico<br />Juan sieci SAN, Portoryko<br />Ashburn, oceny luk w zabezpieczeniach, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, ko, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, urząd certyfikacji, USA<br />Warszawa, Floryda, USA<br />Warszawa, Polska, USA<br />Phoenix, AZ, USA<br />Quincy, WA, USA<br />San Antonio, TX, USA<br />Santa Clara, Kalifornia, USA<br />Seattle, WA, USA | Mexico City, Mexico<br />Puebla, Mexico<br />Querétaro, Mexico<br />Atlanta, ogólnie, Stany Zjednoczone<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, ko, USA<br />Los Angeles, urząd certyfikacji, USA<br />Warszawa, Floryda, USA<br />Warszawa, Polska, USA<br />Philadelphia, PA, USA<br />San Jose, Kalifornia, USA<br />Seattle, WA, USA<br />Waszyngton, kontroler domeny, USA | Kanada<br />Meksyk<br />Stany Zjednoczone |
-| Ameryka Południowa | Campinas, Brazylia<br />Rio de Janeiro, Brazil<br />Santiago, Chile | Buenos Aires, Argentyna<br />Rio de Janeiro, Brazil<br />São Paulo, Brazil<br />Valparaíso, Chile<br />Barranquilla, Colombia<br />Medellin, Kolumbia<br />Rights reserved<br />Lima, Peru | Brazylia<br />Peru |
-| Europa | Wiedeń, Austria<br />Bruksela, Belgia<br />Praga, Czechy<br />Kopenhaga, Dania<br /> Helsinki, Finlandia<br />Marsylii, Francja<br />Paryż, Francja<br />Frankfurt, Niemcy<br />Ateny, Grecja<br />Budapeszt, Węgry<br />Dublin, Irlandia<br />Mediolan, Włochy<br />Amsterdam, Holandia<br />Warszawa, Polska<br />Barcelona, Hiszpania<br />Madryt, Hiszpania<br />Sztokholm, Szwecja<br />Zurych, Szwajcaria<br />Durham w Wielkiej Brytanii<br />London, UK<br />Manchester, Wielka Brytania | Wiedeń, Austria<br />Kopenhaga, Dania<br />Helsinki, Finlandia<br />Marsylii, Francja<br />Paryż, Francja<br />Frankfurt, Niemcy<br />Mediolan, Włochy<br />Ryga, Łotwa<br />Amsterdam, Holandia<br />Warszawa, Polska<br />Madryt, Hiszpania<br />Sztokholm, Szwecja<br />London, UK | Austria<br />Dania<br />Francja<br />Niemcy<br />Irlandia<br />Włochy<br />Holandia<br />Polska<br />Hiszpania<br />Szwecja<br />Szwajcaria<br />Wielka Brytania |
-| Afryka | Kapsztad, Republika Południowej Afryki<br />Johannesburg, Republika Południowej Afryki | Johannesburg, Republika Południowej Afryki | |
-| Bliski Wschód | | Maskat, Oman<br />Fujirah, Zjednoczone Emiraty Arabskie | Katar |
-| Indie | Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie | Bangalur, Indie<br />Chennai (Madras), Indie<br />Delhi, Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie<br /> | Indie |
-| Azja | SRA Hongkong<br />Osaka, Japonia<br />Tokio, Japonia<br />Kuala Lumpur, Malezja<br />Manila, Filipiny<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Tajpej, Tajwan<br />Bangkok, Tajlandia | SRA Hongkong<br />Batam, Indonesia<br />Jakarta, Indonesia<br />Osaka, Japonia<br />Tokio, Japonia<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Kaohsiung, Tajwan | SRA Hongkong<br />Indonezja<br />Japonia<br />Malezja<br />Filipiny<br />Singapur<br />Tajwan<br />Tajlandia<br />Wietnam |
+| Ameryka Północna | Toronto, Kanada<br />Querétaro, Mexico<br />San Juan, Puerto Rico<br />Ashburn, oceny luk w zabezpieczeniach, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, ko, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, urząd certyfikacji, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Phoenix, AZ, USA<br />Quincy, WA, USA<br />San Antonio, TX, USA<br />Santa Clara, Kalifornia, USA<br />Seattle, WA, USA | Guadalajara, Meksyk<br />Mexico City, Mexico<br />Puebla, Mexico<br />Querétaro, Mexico<br />Atlanta, ogólnie, Stany Zjednoczone<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, ko, USA<br />Los Angeles, urząd certyfikacji, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Waszyngton, kontroler domeny, USA | Kanada<br />Meksyk<br />Stany Zjednoczone |
+| Ameryka Południowa | Campinas, Brazylia<br />Rio de Janeiro, Brazil<br />Santiago, Chile | Buenos Aires, Argentyna<br />Rio de Janeiro, Brazil<br />São Paulo, Brazil<br />Valparaíso, Chile<br />Barranquilla, Colombia<br />Medellin, Kolumbia<br />Rights reserved<br />Lima, Peru | Argentyna<br />Brazylia<br />Chile<br />Brytyjska<br />Ekwador<br />Peru<br />Urugwaj |
+| Europa | Wiedeń, Austria<br />Bruksela, Belgia<br />Praga, Czechy<br />Kopenhaga, Dania<br /> Helsinki, Finlandia<br />Marsylii, Francja<br />Paryż, Francja<br />Frankfurt, Niemcy<br />Ateny, Grecja<br />Budapeszt, Węgry<br />Dublin, Irlandia<br />Mediolan, Włochy<br />Amsterdam, Holandia<br />Warszawa, Polska<br />Barcelona, Hiszpania<br />Madryt, Hiszpania<br />Sztokholm, Szwecja<br />Zurych, Szwajcaria<br />Durham, UK<br />London, UK<br />Manchester, Wielka Brytania | Wiedeń, Austria<br />Kopenhaga, Dania<br />Helsinki, Finlandia<br />Marsylii, Francja<br />Paryż, Francja<br />Frankfurt, Niemcy<br />Mediolan, Włochy<br />Ryga, Łotwa<br />Amsterdam, Holandia<br />Warszawa, Polska<br />Madryt, Hiszpania<br />Sztokholm, Szwecja<br />London, UK | Austria<br />Bułgaria<br />Dania<br />Finlandia<br />Francja<br />Niemcy<br />Grecja<br />Irlandia<br />Włochy<br />Holandia<br />Polska<br />Rosja<br />Hiszpania<br />Szwecja<br />Szwajcaria<br />Wielka Brytania |
+| Afryka | Kapsztad, Republika Południowej Afryki<br />Johannesburg, Republika Południowej Afryki | Johannesburg, Republika Południowej Afryki | Republika Południowej Afryki |
+| Bliski Wschód | | Maskat, Oman<br />Fujirah, Zjednoczone Emiraty Arabskie | Katar<br />Zjednoczone Emiraty Arabskie |
+| Indie | Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie | Bangalur, Indie<br />Chennai (Madras), Indie<br />Mumbaj (Bombaj), Indie<br />Nowe Delhi, Indie<br /> | Indie |
+| Azja | SRA Hongkong<br />Osaka, Japonia<br />Tokio, Japonia<br />Kuala Lumpur, Malaysia<br />Manila, Filipiny<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Tajpej, Tajwan<br />Bangkok, Tajlandia | SRA Hongkong<br />Batam, Indonesia<br />Jakarta, Indonesia<br />Osaka, Japonia<br />Tokio, Japonia<br />Singapur<br />Pusan, Korea Południowa<br />Seul, Korea Południowa<br />Kaohsiung, Tajwan | SRA Hongkong<br />Indonezja<br />Izrael<br />Japonia<br />SRA Makau<br />Malezja<br />Filipiny<br />Singapur<br />Korea Południowa<br />Tajwan<br />Tajlandia<br />Turcja<br />Wietnam |
 | Australia i Nowa Zelandia | Melbourne, Australia<br />Sydney, Australia<br />Auckland, Nowej Zelandii | Melbourne, Australia<br />Sydney, Australia<br />Auckland, Nowej Zelandii | Australia<br />Nowa Zelandia |
 
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 050308e1c8de160f1671ded991e550087299ae2f
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: 212506667a56befb4e3926dec7a9e3eb9772ebed
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285787"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736080"
 ---
 # <a name="ultra-ssd-preview-managed-disks-for-azure-virtual-machine-workloads"></a>Największa SSD (wersja zapoznawcza) dysków Managed Disks dla obciążeń maszyn wirtualnych platformy Azure
 
@@ -21,11 +21,11 @@ SSD Ultra platformy Azure (wersja zapoznawcza) zapewnia wysoką przepływność,
 
 ## <a name="ultra-ssd-features"></a>Funkcje Ultra SSD
 
-**Usługa Managed Disks**: Ultra dyski SSD są dostępne tylko jako dyski Managed Disks. Nie można wdrożyć Ultra dyski SSD jako dysków niezarządzanych i stronicowych obiektów Blob. Podczas tworzenia dysku zarządzanego, należy określić, jednostki sku dysku, wpisz jako UltraSSD_LRS i rozmiaru dysku, operacje We/Wy, i użytą przepływność i Azure tworzy i zarządza dysku.  
+**Usługa Managed Disks**: Największa dyski SSD są dostępne tylko jako dyski Managed Disks. Nie można wdrożyć Ultra dyski SSD jako dysków niezarządzanych i stronicowych obiektów Blob. Podczas tworzenia dysku zarządzanego, należy określić, jednostki sku dysku, wpisz jako UltraSSD_LRS i rozmiaru dysku, operacje We/Wy, i użytą przepływność i Azure tworzy i zarządza dysku.  
 
-**Maszyny wirtualne**: Ultra dyski SSD są zaprojektowane do pracy z wszystkie jednostki SKU maszyny wirtualnej platformy Azure w warstwie Premium SSD włączone; ponieważ jest on aktualnie w wersji zapoznawczej, maszyny wirtualne mają rozmiar jako v3 ES/DS.
+**Maszyny wirtualne**: Ultra dyski SSD są przeznaczone do pracy za pomocą wszystkich Premium SSD włączone jednostek SKU maszyn wirtualnych platformy Azure. ponieważ jest on aktualnie w wersji zapoznawczej, maszyny wirtualne mają rozmiar jako v3 ES/DS.
 
-**Dynamiczna konfiguracja wydajność**: Ultra SSD pozwalają dynamicznie zmieniać wydajności (operacje We/Wy i przepływność) dysku oraz potrzeby związane z obciążeniem bez konieczności ponownego uruchamiania maszyn wirtualnych.
+**Konfiguracja dynamicznej wydajności**: Dyski SSD Ultra umożliwiają dynamicznie zmieniać wydajności (operacje We/Wy i przepływność) dysku oraz potrzeby związane z obciążeniem bez konieczności ponownego uruchamiania maszyn wirtualnych.
 
 ## <a name="scalability-and-performance-targets"></a>Cele dotyczące skalowalności i wydajności
 
@@ -33,9 +33,9 @@ Podczas aprowizowania Ultra dyski SSD, masz możliwość niezależnie skonfiguro
 
 Niektóre kluczowe funkcje Ultra dyski SSD są:
 
-- Pojemność dysku: Ultra SSD oferuje szeroką gamę różnych dysków o rozmiarach z 4 GiB maksymalnie 64 TiB.
-- : Operacje We/Wy Ultra SSD pamięć dyskowa limity operacji We/Wy 300 operacji We/Wy/GiB, maksymalnie 160 KB operacje We/Wy na dysk. Uzyskanie operacje We/Wy, które należy aprowizować, upewnij się, że wybrany dysk operacje We/Wy mniejsza niż na SEKUNDĘ maszyny Wirtualnej. Minimalna operacje We/Wy dysku jest 100 operacji We/Wy.
-- Przepływność dysków: Przy użyciu najwyższej dysków SSD, przepływność pojedynczego dysku wynoszący 256 KiB/s dla każdego aprowizowane operacje We/Wy, maksymalnie 2000 MB/s na dysk (gdzie MB/s = 10 ^ 6 bajtów na sekundę). Przepływność dysku minimalną jest 1 MiB.
+- Pojemność dysku: Największa SSD oferuje szeroką gamę różnych dysków o rozmiarach od 4 GiB maksymalnie 64 TiB.
+- Disk IOPS: Największa SSD obsługuje operacje We/Wy limitów 300 operacji We/Wy/GiB, maksymalnie 160 KB operacje We/Wy na dysk. Uzyskanie operacje We/Wy, które należy aprowizować, upewnij się, że wybrany dysk operacje We/Wy mniejsza niż na SEKUNDĘ maszyny Wirtualnej. Minimalna operacje We/Wy dysku jest 100 operacji We/Wy.
+- Przepływność dysku: Przy użyciu najwyższej dysków SSD, przepływność pojedynczego dysku wynoszący 256 KiB/s dla każdego aprowizowane operacje We/Wy, maksymalnie 2000 MB/s na dysk (gdzie MB/s = 10 ^ 6 bajtów na sekundę). Przepływność dysku minimalną jest 1 MiB.
 
 W poniższej tabeli podsumowano różne konfiguracje obsługiwane dla różnych rozmiarów dysków:  
 
@@ -46,12 +46,12 @@ W poniższej tabeli podsumowano różne konfiguracje obsługiwane dla różnych 
 |4     |1,200         |300         |
 |8     |2,400         |600         |
 |16     |4,800         |1,200         |
-|32     |9600         |2,000         |
-|64     |19 200         |2,000         |
-|128     |szybkości 38 400         |2,000         |
-|256     |76,800         |2,000         |
-|512     |80,000         |2,000         |
-|1024 – 65 536 (rozmiary, w tym zakresie, zwiększając w przyrostach co 1 TiB)     |160,000         |2,000         |
+|32     |9,600         |2000         |
+|64     |19,200         |2000         |
+|128     |38,400         |2000         |
+|256     |76,800         |2000         |
+|512     |80,000         |2000         |
+|1024 – 65 536 (rozmiary, w tym zakresie, zwiększając w przyrostach co 1 TiB)     |160,000         |2000         |
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 
@@ -64,7 +64,7 @@ Korzystając z najwyższej dysków SSD, zostaną zastosowane następujące zagad
 
 ### <a name="managed-disk-size"></a>Rozmiar dysku zarządzanego
 
-Opłaty za dyski zarządzane są naliczane na maszyny Wirtualne o rozmiarach choosed podczas provisionning nowej maszyny Wirtualnej platformy Azure. Platforma Azure mapuje aprowizowany rozmiar (zaokrąglony w górę) na najbliższy oferowany rozmiar dysku. Aby uzyskać szczegóły dotyczące rozmiarów dysków oferowane zobacz tabelę w powyższej sekcji cele skalowalności i wydajności. Każdy dysk mapowania rozmiar dysku obsługiwane i będą naliczane odpowiednio w systemie godzinowym. Na przykład jeśli zainicjowano obsługę administracyjną 200 GiB Ultra dysk SSD, a następnie usunięte 20 godzin, będzie zmapowana do 256 GiB ofertę rozmiar dysku i opłata jest naliczana dla 256 GiB przez 20 godzin. Ta karta została oparta na zużycie godzin obliczeniowych niezależnie od ilości danych, w rzeczywistości zapisane na dysku.
+Dyski zarządzane są naliczane na temat rozmiarów maszyn wirtualnych, które można wybrać podczas aprowizowania nowych maszyn wirtualnych platformy Azure. Platforma Azure mapuje aprowizowany rozmiar (zaokrąglony w górę) na najbliższy oferowany rozmiar dysku. Aby uzyskać szczegóły dotyczące rozmiarów dysków oferowane zobacz tabelę w powyższej sekcji cele skalowalności i wydajności. Każdy dysk mapowania rozmiar dysku obsługiwane i będą naliczane odpowiednio w systemie godzinowym. Na przykład jeśli zainicjowano obsługę administracyjną 200 GiB Ultra dysk SSD, a następnie usunięte 20 godzin, będzie zmapowana do 256 GiB ofertę rozmiar dysku i opłata jest naliczana dla 256 GiB przez 20 godzin. Ta karta została oparta na zużycie godzin obliczeniowych niezależnie od ilości danych, w rzeczywistości zapisane na dysku.
 
 ### <a name="managed-disk-provisioned-iops"></a>Dysk zarządzany Aprowizowane operacje We/Wy
 
@@ -74,7 +74,7 @@ Operacje We/Wy są: liczba żądań, które wysyła aplikacji do dysków na seku
 
 Przepływność jest ilość danych, które aplikacja wysyła do dysków w określonym przedziale czasu, mierzony w bajtach na sekundę. Jeśli aplikacja działa dużych operacji wejścia/wyjścia, wymaga wysokiej przepływności.  
 
-Istnieje relacja między przepływność i operacje We/Wy, jak pokazano na następującą formułę: operacje We/Wy x rozmiar operacji We/Wy = przepływności
+Brak relacji między przepływność i operacje We/Wy, jak pokazano na następującą formułę:  Operacje We/Wy x rozmiar operacji We/Wy = przepływności
 
 W związku z tym jest ważne jest określenie optymalnej wartości przepustowości i operacji We/Wy, wymagane przez aplikację. Przy próbie optymalizacji, jeden, druga pobiera dotyczy także. Firma Microsoft zaleca, począwszy od przepływności odpowiadający 16 rozmiar KiB operacji We/Wy i dopasowywanie, jeśli potrzebny jest więcej przepływności.
 

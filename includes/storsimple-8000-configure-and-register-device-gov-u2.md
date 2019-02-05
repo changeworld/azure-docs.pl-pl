@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: c54431009105c1d213e6cefeba06c39c781e2c1a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 0e6d2ab5d3c9701a1fa589fd3a42d4491419b66f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50166086"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736076"
 ---
 <!--author=SharS last changed: 06/22/2016-->
 
@@ -63,7 +63,7 @@ ms.locfileid: "50166086"
 11. Ze względów bezpieczeństwa hasło administratora urządzenia wygasa po pierwszej sesji i należy je teraz zmienić. Po wyświetleniu monitu podaj hasło administratora urządzenia. Prawidłowe hasło administratora urządzenia musi zawierać od 8 do 15 znaków. Hasło musi zawierać trzy z wymienionych elementów: małe litery, wielkie litery, cyfry i znaki specjalne.
     
     <br/>![Rejestrowanie urządzenia StorSimple 5](./media/storsimple-configure-and-register-device-gov-u2/HCS_RegisterYourDevice5_gov-include.png)
-12. W ostatnim kroku Kreatora instalacji wykonywana jest rejestracja urządzenia w usłudze Menedżer urządzeń StorSimple. W tym celu należy klucz rejestracji usługi uzyskany w [krok 2: uzyskanie klucza rejestracji usługi](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#step-2-get-the-service-registration-key). Po podaniu klucza rejestracji konieczne może być zaczekanie 2-3 minut, zanim urządzenie zostanie zarejestrowane.
+12. W ostatnim kroku Kreatora instalacji wykonywana jest rejestracja urządzenia w usłudze Menedżer urządzeń StorSimple. W tym celu należy klucz rejestracji usługi uzyskany w [krok 2: Pobierz klucz rejestracji usługi](../articles/storsimple/storsimple-8000-deployment-walkthrough-gov-u2.md#step-2-get-the-service-registration-key). Po podaniu klucza rejestracji konieczne może być zaczekanie 2-3 minut, zanim urządzenie zostanie zarejestrowane.
     
     > [!NOTE]
     > Możesz nacisnąć klawisze Ctrl + C i zakończyć działanie Kreatora instalacji w dowolnym momencie. Jeżeli wprowadzono wszystkie ustawienia sieciowe (adres IP dla protokołu Data 0, maskę podsieci i bramę), wpisy zostaną zachowane.
@@ -81,7 +81,7 @@ ms.locfileid: "50166086"
 15. Wróć do portalu Azure dla instytucji rządowych i wykonaj następujące czynności:
     
     1. Przejdź do usługi Menedżer urządzeń StorSimple.
-    2. Kliknij pozycję **Urządzenia**. Z listy urządzeń należy zidentyfikować urządzenia, czy ddeploying. Sprawdź, czy urządzenie pomyślnie nawiązało z usługą, sprawdzając jego stan. Urządzenie powinno mieć stan **Online**.
+    2. Kliknij pozycję **Urządzenia**. Z listy urządzeń należy zidentyfikować urządzenia, na której przeprowadzasz wdrożenie. Sprawdź, czy urządzenie pomyślnie nawiązało z usługą, sprawdzając jego stan. Urządzenie powinno mieć stan **Online**.
             
         Jeśli urządzenie ma stan **Offline**, zaczekaj kilka minut, aż urządzenie przejdzie do trybu online.
        

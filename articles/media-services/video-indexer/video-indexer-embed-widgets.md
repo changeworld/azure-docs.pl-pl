@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: juliako
-ms.openlocfilehash: d5ec82decbb441c27fd0c5e8f1132caa126edbc1
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 04acbb36b34a5e1eb0a0ead28cc7a1d40a50851c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807749"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697639"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>Osadzanie widżetów indeksatora wideo w aplikacjach
 
@@ -23,7 +23,7 @@ W tym artykule wyjaśniono, jak osadzać widżety usługi Video Indexer w aplika
 > [!NOTE]
 > Począwszy od 1 lutego 2018 r., wersja 1 **Cognitive Insights** widżet staną się przestarzałe. Domyślnie wersja adres URL osadzania `version=2`.
 
-Począwszy od wersji 2, podstawowy adres URL elementu widget zawiera accout regionu. Na przykład generuje konto w regionie zachodnie stany USA: `https://wus2.videoindexer.ai/embed/insights/...`.
+Począwszy od wersji 2, podstawowy adres URL elementu widget zawiera region konta. Na przykład generuje konto w regionie zachodnie stany USA: `https://wus2.videoindexer.ai/embed/insights/...`.
 
 ## <a name="widget-types"></a>Typy widżetów
 

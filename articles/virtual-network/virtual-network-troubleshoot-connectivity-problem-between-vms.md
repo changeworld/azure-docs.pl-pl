@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 7574ac1a5937fbe963ef764d42f04d00f6c02d69
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: fc3d6ab1d7fdf05963d9ecd350deccd940a95b87
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241773"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732519"
 ---
 # <a name="troubleshooting-connectivity-problems-between-azure-vms"></a>Rozwiązywanie problemów z łącznością między maszynami wirtualnymi platformy Azure
 
@@ -65,7 +65,7 @@ Aby uzyskać więcej informacji, zobacz [interfejsów sieciowych, aby dodać lub
 - [Ponowne wdrażanie maszyny Wirtualnej Windows](../virtual-machines/windows/redeploy-to-new-node.md)
 - [Ponowne wdrażanie maszyny Wirtualnej systemu Linux](../virtual-machines/linux/redeploy-to-new-node.md)
 
-### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Krok 2: Sprawdzenie, czy ruch sieciowy jest blokowany przez sieciową grupę zabezpieczeń lub Routing zdefiniowany przez użytkownika
+### <a name="step-2-check-whether-network-traffic-is-blocked-by-nsg-or-udr"></a>Krok 2: Sprawdź, czy ruch sieciowy jest blokowany przez sieciową grupę zabezpieczeń lub Routing zdefiniowany przez użytkownika
 
 Użyj [Weryfikacja przepływu dla adresu IP sieci obserwatora](../network-watcher/network-watcher-ip-flow-verify-overview.md) i [rejestrowanie przepływu sieciowych grup zabezpieczeń](../network-watcher/network-watcher-nsg-flow-logging-overview.md) do określenia, czy istnieje grupa zabezpieczeń sieci (NSG) lub zdefiniowane przez użytkownika trasy Nauczone uniemożliwiać przepływu ruchu.
 
@@ -89,13 +89,13 @@ Można użyć jednej z następujących metod, aby sprawdzić, czy maszyna wirtua
 
 - Uruchom **telnet** polecenia na maszynie wirtualnej, aby przetestować port. Jeśli test zakończy się niepowodzeniem, aplikacja lub usługa nie skonfigurowano do nasłuchiwania na tym porcie.
 
-### <a name="step-5-check-whether-the-problem-is-caused-by-snat"></a>Krok 5: Sprawdź, czy problem jest spowodowany SNAT
+### <a name="step-5-check-whether-the-problem-is-caused-by-snat"></a>Krok 5. Sprawdź, czy problem jest spowodowany SNAT
 
 W niektórych scenariuszach maszyny Wirtualnej jest umieszczany za rozwiązanie do równoważenia obciążenia, które ma zależność od zasobów spoza platformy Azure. W tych scenariuszach występują sporadyczne problemy z połączeniem, problem może być spowodowane [wyczerpanie portów SNAT](../load-balancer/load-balancer-outbound-connections.md). Aby rozwiązać ten problem, Utwórz adres VIP (lub ILPIP model klasyczny) dla każdej maszyny Wirtualnej, który jest modułem równoważenia obciążenia i zabezpieczanie przy użyciu sieciowej grupy zabezpieczeń lub listy ACL. 
 
 ### <a name="step-6-check-whether-traffic-is-blocked-by-acls-for-the-classic-vm"></a>Krok 6: Sprawdź, czy ruch jest blokowany przez listy ACL dla klasycznej maszyny Wirtualnej
 
-Listy kontroli dostępu (ACL) zapewnia możliwość selektywnego akceptowanie lub odrzucanie ruchu dla punktu końcowego maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [listy ACL punktu końcowego zarządzania](../virtual-machines/windows/classic/setup-endpoints.md#manage-the-acl-on-an-endpoint).
+Listy kontroli dostępu (ACL) zapewnia możliwość selektywnego akceptowanie lub odrzucanie ruchu dla punktu końcowego maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [listy ACL punktu końcowego zarządzania](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint).
 
 ### <a name="step-7-check-whether-the-endpoint-is-created-for-the-classic-vm"></a>Krok 7: Sprawdź, czy punkt końcowy jest tworzony dla klasycznej maszyny Wirtualnej
 
@@ -105,7 +105,7 @@ Wszystkie maszyny wirtualne, które tworzysz na platformie Azure przy użyciu kl
 
 Jeśli nie możesz połączyć do udziału sieciowego maszyny Wirtualnej, może być przyczyną problemu niedostępne karty sieciowe w maszynie Wirtualnej. Aby usunąć niedostępne karty sieciowe, zobacz [sposób usuwania niedostępne karty sieciowe](../virtual-machines/troubleshooting/reset-network-interface.md#delete-the-unavailable-nics)
 
-### <a name="step-9-check-inter-vnet-connectivity"></a>Krok 9: Wyboru między sieciami wirtualnymi łączności
+### <a name="step-9-check-inter-vnet-connectivity"></a>Krok 9: Sprawdź łączność między sieciami wirtualnymi
 
 Użyj [Weryfikacja przepływu dla adresu IP sieci obserwatora](../network-watcher/network-watcher-ip-flow-verify-overview.md) i [rejestrowanie przepływu sieciowych grup zabezpieczeń](../network-watcher/network-watcher-nsg-flow-logging-overview.md) do określenia, czy istnieje sieciowa grupa zabezpieczeń lub Routing zdefiniowany przez użytkownika, uniemożliwiać przepływu ruchu. Można również sprawdzić konfigurację między sieciami wirtualnymi [tutaj](https://support.microsoft.com/en-us/help/4032151/configuring-and-validating-vnet-or-vpn-connections).
 

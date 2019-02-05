@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 776771c6d10bc184e1a1a077e2dbfed70a3e0358
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4d9a6b8bf2b6a9a50ee315d5150c15a18f37462d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974713"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696061"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Izolacja w chmurze publicznej platformy Azure
 ##  <a name="introduction"></a>Wprowadzenie
@@ -344,7 +344,7 @@ Wdrożenie usługi Azure ma wiele warstw izolacji sieci. Na poniższym diagramie
 
 **Izolacja ruchu:** A [sieci wirtualnej](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) jest granicę izolacji ruchu na platformie Azure. Maszyn wirtualnych (VM) w jednej sieci wirtualnej nie może komunikować się bezpośrednio do maszyn wirtualnych w innej sieci wirtualnej, nawet jeśli obie sieci wirtualne są tworzone przez tego samego klienta. Izolacja jest krytyczne właściwości, które gwarantuje, że maszyny wirtualne klientów i komunikacja pozostanie w prywatnej sieci wirtualnej.
 
-[Podsieci](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#subnets) zapewnia dodatkową warstwę izolacji dzięki w sieci wirtualnej na podstawie zakresu adresów IP. Adresy IP w sieci wirtualnej, sieć wirtualną można podzielić na wiele podsieci w celu uporządkowania i zapewnienia bezpieczeństwa. Maszyny wirtualne i wystąpienia ról PaaS wdrożone w podsieciach (tych samych lub różnych) w ramach sieci wirtualnej mogą komunikować się ze sobą bez dodatkowego konfigurowania. Można również skonfigurować [sieciowej grupy zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview#network-security-groups-nsg) do blokują lub zezwalają na ruch sieciowy do wystąpień maszyn wirtualnych, na podstawie reguł skonfigurowanych w listy kontroli dostępu (ACL) sieciowej grupy zabezpieczeń. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci.
+[Podsieci](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) zapewnia dodatkową warstwę izolacji dzięki w sieci wirtualnej na podstawie zakresu adresów IP. Adresy IP w sieci wirtualnej, sieć wirtualną można podzielić na wiele podsieci w celu uporządkowania i zapewnienia bezpieczeństwa. Maszyny wirtualne i wystąpienia ról PaaS wdrożone w podsieciach (tych samych lub różnych) w ramach sieci wirtualnej mogą komunikować się ze sobą bez dodatkowego konfigurowania. Można również skonfigurować [sieciowej grupy zabezpieczeń (NSG)](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) do blokują lub zezwalają na ruch sieciowy do wystąpień maszyn wirtualnych, na podstawie reguł skonfigurowanych w listy kontroli dostępu (ACL) sieciowej grupy zabezpieczeń. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci.
 
 ## <a name="next-steps"></a>Następne kroki
 

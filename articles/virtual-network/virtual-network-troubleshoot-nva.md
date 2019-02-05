@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2018
 ms.author: genli
-ms.openlocfilehash: 13cec39278577a818ef43f1215fd2e6653f15ed2
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 0d5b345936f6c931f4210e6dc50f94544a52f571
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678444"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700574"
 ---
 #  <a name="network-virtual-appliance-issues-in-azure"></a>Problemy z urządzenia wirtualnego sieci na platformie Azure
 
@@ -40,7 +40,7 @@ Pomoc techniczna dla urządzeń WUS innych firm i ich integracji z platformą Az
 - Tras zdefiniowanych przez użytkownika w podsieci sieci wirtualnej, które kierować ruch z urządzenia WUS
 - Routing tabel i reguły urządzenia WUS (na przykład z NIC1 do NIC2)
 - Śledzenie na kartach interfejsu sieciowego urządzenia WUS, aby sprawdzić, odbierania i wysyłania ruchu sieciowego
-- Podczas korzystania z wersji Standard i publicznego adresu IP musi być sieciowa grupa zabezpieczeń utworzona i jawne reguły zezwalające na ruch jest kierowany do urządzenia NVA.
+- Podczas korzystania z wersji Standard i publicznych adresów IP musi być sieciowa grupa zabezpieczeń utworzona i jawne reguły zezwalające na ruch jest kierowany do urządzenia NVA.
 
 ## <a name="basic-troubleshooting-steps"></a>Podstawowe kroki rozwiązywania problemów
 
@@ -78,7 +78,7 @@ Korzystanie z programu PowerShell
           EnableIPForwarding   : True
           NetworkSecurityGroup : null
 
-**Sprawdź dla sieciowej grupy zabezpieczeń, korzystając z IP Pubilc w warstwie standardowa jednostka SKU** podczas korzystania z wersji Standard i publiczny adres IP musi być sieciowa grupa zabezpieczeń utworzona i jawne reguły zezwalające na ruch do urządzenia WUS.
+**Sprawdź dla sieciowej grupy zabezpieczeń, gdy przy użyciu standardowego publicznego adresu IP jednostki SKU** podczas korzystania z wersji Standard i publicznych adresów IP musi być sieciowa grupa zabezpieczeń utworzona i jawne reguły, aby zezwolić na ruch do urządzenia WUS.
 
 **Sprawdź, czy można kierować ruch do urządzenia NVA**
 

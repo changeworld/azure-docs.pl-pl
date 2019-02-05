@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 554d837d9fa70c2af581f9b582001c7f32d442e7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232346"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734559"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>Network Performance Monitor rozwiązania — często zadawane pytania
 
@@ -134,7 +134,7 @@ NPM można monitorować łączność między sieciami w dowolnej części świat
 NPM można monitorować łączność z usługami w dowolnej części świata, z obszaru roboczego, który znajduje się w jednym z [obsługiwane regiony](../../azure-monitor/insights/network-performance-monitor.md#supported-regions)
 
 ### <a name="which-regions-are-supported-for-npms-expressroute-monitor"></a>Które regiony są obsługiwane w przypadku rozwiązania NPM Monitor usługi ExpressRoute?
-NPM można monitorować obwodów usługi ExpressRoute znajduje się w dowolnym regionie systemu Azure. Aby dołączyć do usługi NPM, będzie wymagać obszaru roboczego usługi Log Analytics, który musi być hostowany w jednym z [obsługiwane regiony](/azure/expressroute/how-to-npm#regions)
+NPM można monitorować obwodów usługi ExpressRoute znajduje się w dowolnym regionie systemu Azure. Aby dołączyć do usługi NPM, będzie wymagać obszaru roboczego usługi Log Analytics, który musi być hostowany w jednym z [obsługiwane regiony](/azure/expressroute/how-to-npm)
 
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 

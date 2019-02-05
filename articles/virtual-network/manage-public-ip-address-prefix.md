@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 4207698c57b907cf60fd860bc409c8f8d5a4c565
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f4da0f992914037f5c95050324af5762e90a2ca4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015291"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696834"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Tworzenie, zmienianie i usuwanie publicznej prefiksu adresu IP
 
@@ -60,13 +60,13 @@ Prefiksy publicznych adresów IP mają opłaty. Aby uzyskać więcej informacji,
 |Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Utwórz prefiks public-ip sieci az](/cli/azure/network/public-ip/prefix#az-network-public-ip-prefix-create)|
-|PowerShell|[Nowe AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
+|PowerShell|[New-AzureRmPublicIpPrefix](/powershell/module/azurerm.network/new-azurermpublicipprefix)|
 
 ## <a name="create-a-static-public-ip-address-from-a-prefix"></a>Tworzenie statycznego publicznego adresu IP na podstawie prefiksu
 Po utworzeniu prefiks, musisz utworzyć statyczne adresy IP z prefiksu. Aby to zrobić, wykonaj poniższe kroki.
 
 1. W polu zawierającym tekst *Wyszukaj zasoby* w górnej części witryny Azure portal, wpisz polecenie *publiczny adres ip prefiksu adresu*. Gdy **prefiksy adresów publiczny adres IP** są wyświetlane w wynikach wyszukiwania, wybierz ją.
-2. Wybierz prefx, aby utworzyć publiczne adresy IP z.
+2. Wybierz prefiks, aby utworzyć publiczne adresy IP z.
 3. Gdy się pojawi się w wynikach wyszukiwania, zaznacz go i kliknij pozycję **+ Dodaj adres IP** w sekcji Przegląd. W przypadku, gdy nie jest widoczna, upewnij się, że używasz prawo łącze w wersji zapoznawczej: https://aka.ms/publicipprefixportal
 4. Wprowadź lub wybierz wartości dla następujących ustawień w obszarze **tworzenie publicznego adresu IP**. Ponieważ prefiks jest dla standardowej jednostki SKU, protokołów IPv4 i statyczne, wystarczy podać następujące informacje:
 

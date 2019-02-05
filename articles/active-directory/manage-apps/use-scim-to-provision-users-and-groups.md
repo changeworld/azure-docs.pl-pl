@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 140391b02dab8ce6b47d5350d6d40a9673b29e11
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161770"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732587"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -120,7 +120,7 @@ Aby ułatwić ten proces, [przykłady kodu](https://github.com/Azure/AzureAD-BYO
 ### <a name="getting-started"></a>Wprowadzenie
 Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który może akceptować żądania alokacji z usługi Azure AD jest, aby skompilować i wdrożyć przykładowy kod, który wyprowadza aprowizowanych użytkowników do pliku wartości rozdzielanych przecinkami (CSV).
 
-**Aby utworzyć punkt końcowy Standard SCIM próbki:**
+#### <a name="to-create-a-sample-scim-endpoint"></a>Aby utworzyć punkt końcowy Standard SCIM próbki
 
 1. Pobierz pakiet przykładowy kod w [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)
 2. Rozpakuj pakiet i umieść go na komputerze Windows w lokalizacji takiej jak C:\AzureAD-BYOA-Provisioning-Samples\.
@@ -142,7 +142,7 @@ Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który mo
 8. W Windows w obszarze **Windows Ustawienia > sieci & ustawień internetowych**, wybierz opcję **zapory Windows > Ustawienia zaawansowane**i Utwórz **reguły ruchu przychodzącego** , Umożliwia dostęp ruchu przychodzącego do portu 9000.
 9. Jeśli komputer Windows jest za routerem, router musi być skonfigurowany do wykonywania tłumaczeń dostępu do sieci między jego port 9000, który jest uwidaczniany w Internecie i port 9000 na komputerze Windows. Ta konfiguracja jest wymagana dla usługi Azure AD mieć możliwość dostępu do tego punktu końcowego w chmurze.
 
-**Aby zarejestrować punkt końcowy Standard SCIM przykładowych w usłudze Azure AD:**
+#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>Aby zarejestrować punkt końcowy Standard SCIM przykładowych w usłudze Azure AD
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com). 
 2. Przejdź do **usługi Azure Active Directory > aplikacje dla przedsiębiorstw**i wybierz **nowej aplikacji > wszystkie > Aplikacja spoza galerii**.

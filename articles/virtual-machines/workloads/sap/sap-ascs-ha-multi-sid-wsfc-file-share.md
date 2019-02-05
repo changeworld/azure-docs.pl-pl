@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e21357eeb795a26874cddb90b4d3a6303b83ac0
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 4d7caec3fc1b8bf74098a7b0a211ec2ada8280a3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189637"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732910"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -199,7 +199,7 @@ ms.locfileid: "43189637"
 > ![Windows][Logo_Windows] Windows
 >
 
-We wrześniu 2016 roku firma Microsoft opublikowała program funkcji, w której wiele wirtualnych adresów IP można zarządzać za pomocą [Azure wewnętrznego modułu równoważenia obciążenia][load-balancer-multivip-overview]. Ta funkcja już istnieje w module równoważenia obciążenia zewnętrznych platformy Azure.
+Wiele wirtualnych adresów IP można zarządzać za pomocą [Azure wewnętrznego modułu równoważenia obciążenia][load-balancer-multivip-overview]. 
 
 W przypadku wdrożenia SAP można użyć wewnętrznego modułu równoważenia obciążenia, aby utworzyć konfigurację klastrowania Windows dla wystąpień usług SAP Central Services (ASCS/SCS).
 
@@ -213,8 +213,10 @@ Ten artykuł koncentruje się na jak przenieść z jednej instalacji ASCS/SCS ko
 >
 >Maksymalna liczba wystąpień SAP ASCS/SCS w jednym klastrze usługi WSFC jest równy maksymalna liczba prywatnych adresów IP frontonu, dla każdej platformy Azure wewnętrznego modułu równoważenia obciążenia.
 >
+> Konfiguracja wprowadzona w niniejszej dokumentacji nie jest jeszcze obsługiwane do użytku z [strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview)
+> 
 
-Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatny adres IP frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: usługi Azure Resource Manager][networking-limits-azure-resource-manager].
+Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatny adres IP frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager]. Ponadto należy wziąć pod uwagę przy użyciu [standardowa obciążenia równoważenia jednostki SKU usługi Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) zamiast podstawowej jednostki SKU modułu równoważenia obciążenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -222,7 +224,7 @@ Został już skonfigurowany klaster usługi WSFC do użycia przy użyciu jednego
 
 ![Rysunek 1: Wystąpienia SAP ASCS/SCS i wdrożona w dwóch klastrach SOFS][sap-ha-guide-figure-8007]
 
-_**Rysunek 1:** wystąpienia SAP ASCS/SCS i wdrożona w dwóch klastrach SOFS_
+_**Rysunek 1:** Wystąpienia SAP ASCS/SCS i wdrożona w dwóch klastrach SOFS_
 
 > [!IMPORTANT]
 > Instalator musi spełniać następujące warunki:
@@ -235,7 +237,7 @@ _**Rysunek 1:** wystąpienia SAP ASCS/SCS i wdrożona w dwóch klastrach SOFS_
 
 Celem jest zapewnienie instalowania wielu SAP Advanced Business Application programowania (ASCS) lub Java SAP (SCS) klastrowanych wystąpień w tym samym klastrze usługi WSFC, jak pokazano poniżej: 
 
-![Rysunek 2: Oprogramowanie SAP — wiele identyfikatorów SID konfiguracji w dwóch klastrach][sap-ha-guide-figure-8008]
+![Rysunek 2: SAP — wiele identyfikatorów SID konfiguracji w dwóch klastrach][sap-ha-guide-figure-8008]
 
 _**Rysunek 2:** SAP — wiele identyfikatorów SID konfiguracji w dwóch klastrach_
 
@@ -347,7 +349,7 @@ New-Volume -StoragePoolFriendlyName S2D* -FriendlyName SAPPR2 -FileSystem CSVFS_
 
 ![Rysunek 5: SOFS — wiele identyfikatorów SID jest taka sama jak SAP globalne nazwy hosta 2][sap-ha-guide-figure-8016]
 
-_**Rysunek 5:** drugie wolumin2 w Menedżerze klastra trybu Failover_
+_**Rysunek 5:** Drugi wolumin2 w Menedżerze klastra trybu Failover_
 
 Utwórz folder SAP globalnego dla drugiego \<SID2 > oraz ustawić zabezpieczeń pliku.
 
@@ -398,27 +400,27 @@ Kliknij prawym przyciskiem myszy **saoglobal2** SOFS klastra grupy, a następnie
 
 ![Rysunek 6: Uruchom Kreator "Dodaj udział plików"][sap-ha-guide-figure-8017]
 
-_**Rysunek 6:** Kreator "Dodaj udział plików" Start_
+_**Rysunek 6:** Uruchom Kreator "Dodaj udział plików"_
 
 <br>
 ![Rysunek 7: "Wybierz udział SMB — szybkie"][sap-ha-guide-figure-8018]
 
-_**Rysunek 7:** wybierz pozycję "Udział SMB — szybkie"_
+_**Rysunek 7:** Wybierz pozycję "Udział SMB — szybkie"_
 
 <br>
 ![Rysunek 8: Wybierz pozycję "sapglobalhost2" i określ ścieżkę na wolumin2][sap-ha-guide-figure-8019]
 
-_**Rysunek 8:** wybierz "sapglobalhost2" i określ ścieżkę na wolumin2_
+_**Rysunek 8:** Wybierz pozycję "sapglobalhost2" i określ ścieżkę na wolumin2_
 
 <br>
-![Rysunek 9: Ustaw nazwy udziału plików "sapmnt"][sap-ha-guide-figure-8020]
+![Rysunek 9: Nazwa udziału plików zestawu do "sapmnt"][sap-ha-guide-figure-8020]
 
-_**Rysunek 9:** nazwa udziału plików zestawu do "sapmnt"_
+_**Rysunek 9:** Nazwa udziału plików zestawu do "sapmnt"_
 
 <br>
-![Na rysunku nr 10: Wyłącz wszystkie ustawienia][sap-ha-guide-figure-8021]
+![Rysunek 10. Wyłącz wszystkie ustawienia][sap-ha-guide-figure-8021]
 
-_**Na rysunku nr 10:** wyłącza wszystkie ustawienia_
+_**Rysunek 10.** Wyłącz wszystkie ustawienia_
 
 <br>
 Przypisz *Pełna kontrola* udostępnić uprawnienia do plików i sapmnt:
@@ -427,17 +429,17 @@ Przypisz *Pełna kontrola* udostępnić uprawnienia do plików i sapmnt:
 
 ![Rysunek 11: Przypisz uprawnienia pełnej kontroli kontom komputerów i grup użytkowników][sap-ha-guide-figure-8022]
 
-_**Rysunek 11:** przypisać "Pełna kontrola" kontom komputerów i grup użytkowników_
+_**Rysunek 11:** Przypisz "Pełna kontrola" do konta komputerów i grup użytkowników_
 
 <br>
-![Rysunek 12: Wybierz pozycję "Utwórz"][sap-ha-guide-figure-8023]
+![Ilustracja 12 Wybierz pozycję "Utwórz"][sap-ha-guide-figure-8023]
 
-_**Rysunek 12:** wybierz pozycję "Utwórz"_
+_**Ilustracja 12** Wybierz pozycję "Utwórz"_
 
 <br>
-![Rysunek 13: Drugi sapmnt powiązane z hostem sapglobal2 i utworzeniu wolumin2][sap-ha-guide-figure-8024]
+![Ilustracja 13 Drugi sapmnt powiązane z hostem sapglobal2 i utworzeniu wolumin2][sap-ha-guide-figure-8024]
 
-_**Rysunek 13:** drugi sapmnt powiązane z hostem sapglobal2 i utworzeniu wolumin2_
+_**Ilustracja 13** Drugi sapmnt powiązane z hostem sapglobal2 i utworzeniu wolumin2_
 
 <br>
 ## <a name="install-sap-netweaver-multi-sid"></a>Zainstaluj oprogramowanie SAP NetWeaver — wiele identyfikatorów SID
@@ -451,7 +453,7 @@ Zainstaluj system DBMS i serwery aplikacji SAP, zgodnie z wcześniejszym opisem.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover bez udostępnionych dysków][sap-official-ha-file-share-document]: wytyczne oficjalne SAP dla udziału plików o wysokiej dostępności
+* [Instalowanie wystąpienia ASCS/SCS w klastrze trybu failover bez udostępnionych dysków][sap-official-ha-file-share-document]: Udostępnianie oficjalnych wytycznych SAP dla plików o wysokiej dostępności
 
 * [Bezpośrednie miejsca do funkcji miejsca do magazynowania w systemie Windows Server 2016][s2d-in-win-2016]
 

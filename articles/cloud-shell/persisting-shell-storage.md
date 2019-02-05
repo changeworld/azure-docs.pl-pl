@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 606b36be4a2bbeff8dd226f41341d60e23f0d988
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4671287d78dafce9b662a167ba99a680d2fa70d2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44163281"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734079"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -105,5 +105,5 @@ Można odinstalować udziału plików platformy Azure, który jest zainstalowany
 ## <a name="next-steps"></a>Kolejne kroki
 [Powłoka bash w przewodniku Szybki Start Cloud Shell](quickstart.md) <br>
 [Program PowerShell w przewodniku Szybki Start Cloud Shell](quickstart-powershell.md) <br>
-[Informacje na temat magazynowania plików pakietu Microsoft Azure](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[Informacje na temat magazynowania plików pakietu Microsoft Azure](https://docs.microsoft.com/azure/storage/storage-introduction) <br>
 [Dowiedz się więcej na temat tagów magazynu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

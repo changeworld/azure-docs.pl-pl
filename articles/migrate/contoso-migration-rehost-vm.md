@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 36a84618a998dd2e06f5563fb8706a1dc8400e59
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823355"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694503"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Migracja Contoso: ponowne hostowanie aplikacji lokalnej na maszynach wirtualnych platformy Azure
 
@@ -460,7 +460,7 @@ Zespół ds. zabezpieczeń Contoso przegląda maszyn wirtualnych platformy Azure
 - Aby kontrolować dostęp, zespół przegląda sieciowych grup zabezpieczeń (NSG) dla maszyn wirtualnych. Sieciowe grupy zabezpieczeń są używane do zapewnienia, że tylko ruch do aplikacji można uzyskiwać dostęp go niego.
 - Zespół należy również rozważyć zabezpieczenia danych na dysku za pomocą usługi Azure Disk Encryption i magazynu kluczy.
 
-[Dowiedz się więcej](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control) o rozwiązania w zakresie zabezpieczeń dla maszyn wirtualnych.
+[Dowiedz się więcej](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms) o rozwiązania w zakresie zabezpieczeń dla maszyn wirtualnych.
 
 ## <a name="bcdr"></a>BCDR
 

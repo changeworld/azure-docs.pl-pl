@@ -8,19 +8,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7fdd32f9263b4d1694a0516a98b681ba8744ab6b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: ebe362b89eb6ffcde006ff824fbee40b1a9175d3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394582"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733403"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Pozyskiwanie danych przykładowych do Eksploratora danych usługi Azure
 
 W tym artykule pokazano, jak pozyskiwania (załaduj) przykładowe dane w bazie danych programu Eksploratora danych usługi Azure. Istnieją [pozyskiwania danych na kilka sposobów](ingest-data-overview.md); ten artykuł koncentruje się na podejściu podstawowego, który jest odpowiedni do celów testowych.
 
 > [!NOTE]
-> Masz już dane Jeśli ukończono [Szybki Start: pozyskiwanie danych przy użyciu biblioteki języka Python w Eksploratorze danych Azure](python-ingest-data.md).
+> Masz już dane Jeśli ukończono [Szybki Start: Pozyskiwanie danych przy użyciu biblioteki języka Python w Eksploratorze danych Azure](python-ingest-data.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -57,6 +57,11 @@ Przykładowy zestaw danych **StormEvents** zawiera dane dotyczące pogody pochod
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Pisanie zapytań](write-queries.md)
+> [!div class="nextstepaction"]
+> [Szybki start: wykonywanie zapytań o dane w usłudze Azure Data Explorer](web-query-data.md)
 
-[Pozyskiwanie danych w usłudze Azure Eksplorator danych](ingest-data-overview.md)
+> [!div class="nextstepaction"]
+> [Pisanie zapytań](write-queries.md)
+
+> [!div class="nextstepaction"]
+> [Pozyskiwanie danych w usłudze Azure Eksplorator danych](ingest-data-overview.md)

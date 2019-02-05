@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 48dfa3180f040af3e8298d418cf71c537477ba5a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3a868eb98121ff2e2a30657e301afba7b8618361
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956958"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728482"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Monitorowanie za pomocą usługi Azure API Management, Event Hubs i Runscope interfejsów API
 [Usługi API Management](api-management-key-concepts.md) udostępnia wiele możliwości przetwarzania żądania HTTP wysyłane do interfejsu API protokołu HTTP. Jednak istnienie żądań i odpowiedzi jest przejściowy. Żądanie jest wysyłane i ich przepływu za pomocą usługi API Management do interfejsu API zaplecza. Interfejs API przetwarza żądania i odpowiedzi są przekazywane za pośrednictwem do konsumenta interfejsu API. Usługa API Management zachowuje niektórych ważnych statystyk dotyczących interfejsów API w celu wyświetlenia w nawigacyjnym witryny Azure portal, w ale nie tylko, że szczegóły znikną.
 
-Za pomocą zasad dziennika do Centrum zdarzeń w usłudze API Management, można wysyłać żadnych szczegółów z żądania i odpowiedzi na [usługi Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Istnieje wiele powodów dlaczego warto generowanie zdarzeń na podstawie wiadomości HTTP są wysyłane do interfejsów API. Przykłady: dziennik inspekcji aktualizacji, analizy użycia, wyjątek alertów i integracje innych firm.   
+Za pomocą zasad dziennika do Centrum zdarzeń w usłudze API Management, można wysyłać żadnych szczegółów z żądania i odpowiedzi na [usługi Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Istnieje wiele powodów dlaczego warto generowanie zdarzeń na podstawie wiadomości HTTP są wysyłane do interfejsów API. Przykłady: dziennik inspekcji aktualizacji, analizy użycia, wyjątek alertów i integracje innych firm.
 
 W tym artykule pokazano, jak przechwytywać cały komunikat żądania i odpowiedzi HTTP i następnie przekazać ten komunikat do usługi innej firmy, która dostarcza HTTP, rejestrowanie i monitorowanie usług i wyślij ją do Centrum zdarzeń.
 
@@ -36,14 +36,14 @@ Integracja z infrastruktury rejestrowania przy użyciu usługi Azure API Managem
 ## <a name="why-send-to-an-azure-event-hub"></a>Dlaczego warto wysłać do usługi Azure Event Hub?
 Jest to uzasadnione zadać, dlaczego Tworzenie zasad, które są specyficzne dla usługi Azure Event Hubs? Istnieje wiele różnych miejsc, w których może być Moje żądania logowania. Dlaczego nie po prostu wysłać żądania bezpośrednio do ostatecznego miejsca docelowego?  To opcja. Podczas wprowadzania żądań rejestrowania z usługi API management, należy wziąć pod uwagę, jak rejestrowanie komunikatów ma wpływ na wydajność interfejsu API. Stopniowy wzrost obciążenia mogą być obsługiwane przez odpowiednie zwiększenie dostępne wystąpienia składników systemu lub wykorzystując replikacji geograficznej. Krótkie skoków ruchu może jednak spowodować żądań opóźnienie, jeśli żądania do rejestrowania infrastruktury zaczynają wolne pod obciążeniem.
 
-Azure Event Hubs służy do transferu danych przychodzących olbrzymie ilości danych, o pojemności dla zajmujących się znacznie większej liczby zdarzeń niż liczba żądań HTTP większość procesów interfejsów API. Centrum zdarzeń pełni rolę bufora zaawansowanych między usługi API management i infrastrukturą, która przechowuje i przetwarza komunikaty. Daje to gwarancję, że wydajność interfejsu API nie będzie ponieść z powodu infrastruktury rejestrowania.  
+Azure Event Hubs służy do transferu danych przychodzących olbrzymie ilości danych, o pojemności dla zajmujących się znacznie większej liczby zdarzeń niż liczba żądań HTTP większość procesów interfejsów API. Centrum zdarzeń pełni rolę bufora zaawansowanych między usługi API management i infrastrukturą, która przechowuje i przetwarza komunikaty. Daje to gwarancję, że wydajność interfejsu API nie będzie ponieść z powodu infrastruktury rejestrowania.
 
-Po upływie dane do Centrum zdarzeń jest trwały i będzie czekać konsumentów Centrum zdarzeń do ich przetworzenia. Centrum zdarzeń obchodzi, jak przebiega przetwarzanie, ją po prostu tematyczne upewnienie się, że zostanie pomyślnie dostarczyć wiadomości.     
+Po upływie dane do Centrum zdarzeń jest trwały i będzie czekać konsumentów Centrum zdarzeń do ich przetworzenia. Centrum zdarzeń obchodzi, jak przebiega przetwarzanie, ją po prostu tematyczne upewnienie się, że zostanie pomyślnie dostarczyć wiadomości.
 
 Usługa Event Hubs ma możliwość Przesyłaj strumieniowo wydarzenia na wiele grup odbiorców. Dzięki temu zdarzeń do przetworzenia przez różne systemy. Dzięki temu, obsługa wielu scenariuszy integracji bez konieczności umieszczania Dodawanie opóźnienia na przetwarzanie żądań do interfejsu API w usłudze API Management, jak tylko jedno zdarzenie musi być wygenerowana.
 
 ## <a name="a-policy-to-send-applicationhttp-messages"></a>Zasady w celu wysyłania komunikatów protokół http i aplikacji
-Centrum zdarzeń akceptuje dane zdarzenia prosty ciąg znaków. Zawartość tego ciągu, zależą od Ciebie. Aby można było spakować żądania HTTP do wysłania go do usługi Event Hubs, należy sformatować ciąg z informacjami o żądania lub odpowiedzi. W sytuacjach, podobny do powyższego Jeśli istniejący format można ponownie użyć, a następnie napisać własną podczas analizowania kodu może być niedostępna. Początkowo I uznane za pomocą [HAR](http://www.softwareishard.com/blog/har-12-spec/) do wysyłania żądań i odpowiedzi HTTP. Jednak ten format jest zoptymalizowany do przechowywania sekwencji żądań HTTP w formacie opartych na formacie JSON. Zawiera szereg wymagane elementy, które cechują się niepotrzebne większą złożonością scenariusza przekazywania komunikatu HTTP przez sieć.  
+Centrum zdarzeń akceptuje dane zdarzenia prosty ciąg znaków. Zawartość tego ciągu, zależą od Ciebie. Aby można było spakować żądania HTTP do wysłania go do usługi Event Hubs, należy sformatować ciąg z informacjami o żądania lub odpowiedzi. W sytuacjach, podobny do powyższego Jeśli istniejący format można ponownie użyć, a następnie napisać własną podczas analizowania kodu może być niedostępna. Początkowo I uznane za pomocą [HAR](http://www.softwareishard.com/blog/har-12-spec/) do wysyłania żądań i odpowiedzi HTTP. Jednak ten format jest zoptymalizowany do przechowywania sekwencji żądań HTTP w formacie opartych na formacie JSON. Zawiera szereg wymagane elementy, które cechują się niepotrzebne większą złożonością scenariusza przekazywania komunikatu HTTP przez sieć.
 
 Dostępna Alternatywna opcja było jednoczesne używanie `application/http` typu nośnika, jak opisano w specyfikacji protokołu HTTP [RFC 7230](https://tools.ietf.org/html/rfc7230). Ten typ nośnika używa dokładnie tego samego formatu używanego w celu rzeczywistego wysłania wiadomości HTTP przez sieć, ale cały komunikat można umieścić w treści kolejne żądanie HTTP. W naszym przypadku są po prostu użyjemy treść jako naszej wiadomości do wysłania do usługi Event Hubs. Wygodne jest analizatora składni, która znajduje się w [Microsoft ASP.NET Web API 2.2 Client](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/) bibliotek, które można przeanalizować tego formatu i przekonwertować go na natywnym `HttpRequestMessage` i `HttpResponseMessage` obiektów.
 
@@ -76,16 +76,16 @@ Aby można było utworzyć ten komunikat, należy korzystać z zalet języka C# 
 ```
 
 ### <a name="policy-declaration"></a>Deklaracja zasad
-Istnieje kilka kwestii określonego warte wymienienie o to wyrażenie zasad. Zasada dziennika do Centrum zdarzeń ma atrybutu o nazwie rejestratora id, który odnosi się do nazwy rejestratora, który został utworzony w usłudze API Management. Szczegółowe informacje o sposobie ustawiania rejestratora Centrum zdarzeń w usłudze API Management można znaleźć w dokumencie [jak rejestrowanie zdarzeń w usłudze Azure Event Hubs w usłudze Azure API Management](api-management-howto-log-event-hubs.md). Drugi atrybut jest opcjonalnym parametrem, który powoduje, że usługa Event Hubs, która partycji do przechowywania wiadomości w. Usługa Event Hubs używa partycji, aby włączyć skalowalność i wymagają co najmniej dwa. Uporządkowany dostarczania wiadomości tylko jest gwarantowane, w ramach partycji. Jeśli można wydać Centrum zdarzeń, w której partycji można umieścić komunikatu, używa algorytmu okrężnym do dystrybucji obciążenia. Jednakże mogą powodować niektóre z naszych komunikatów poza kolejnością przetwarzania.  
+Istnieje kilka kwestii określonego warte wymienienie o to wyrażenie zasad. Zasada dziennika do Centrum zdarzeń ma atrybutu o nazwie rejestratora id, który odnosi się do nazwy rejestratora, który został utworzony w usłudze API Management. Szczegółowe informacje o sposobie ustawiania rejestratora Centrum zdarzeń w usłudze API Management można znaleźć w dokumencie [jak rejestrowanie zdarzeń w usłudze Azure Event Hubs w usłudze Azure API Management](api-management-howto-log-event-hubs.md). Drugi atrybut jest opcjonalnym parametrem, który powoduje, że usługa Event Hubs, która partycji do przechowywania wiadomości w. Usługa Event Hubs używa partycji, aby włączyć skalowalność i wymagają co najmniej dwa. Uporządkowany dostarczania wiadomości tylko jest gwarantowane, w ramach partycji. Jeśli można wydać Centrum zdarzeń, w której partycji można umieścić komunikatu, używa algorytmu okrężnym do dystrybucji obciążenia. Jednakże mogą powodować niektóre z naszych komunikatów poza kolejnością przetwarzania.
 
 ### <a name="partitions"></a>Partycje
 Aby zapewnić nasze komunikaty są dostarczane do odbiorców w kolejności i skorzystać z możliwości rozkładu obciążenia partycji, wybieram wysyłać komunikaty żądania HTTP do jednej partycji i komunikatów odpowiedzi HTTP do drugiej partycji. Dzięki temu dystrybucji równomiernie obciążone, a firma Microsoft gwarantuje, że wszystkie żądania, które będą używane w kolejności, a wszystkie odpowiedzi są używane w kolejności. Istnieje możliwość, że odpowiedź zużywanego przed odpowiedniego żądania, ale nie jest problemem, ponieważ mamy innego mechanizmu do korelacji żądania do odpowiedzi i wiemy, że żądania pochodzą zawsze przed odpowiedzi.
 
 ### <a name="http-payloads"></a>Ładunków HTTP
-Po kompilacji `requestLine`, możemy sprawdzić, aby wyświetlić treść żądania powinna zostać obcięty. Treść żądania jest obcinana do tylko 1024. To może zostać zwiększona, jednak pojedynczych komunikatów do Centrum zdarzeń jest ograniczona do 256 KB, więc istnieje prawdopodobieństwo, że niektóre komunikaty HTTP ustanawiają będzie mieści się w pojedynczym komunikacie. W trakcie rejestrowania i analizy znacznej ilości informacji mogą pochodzić z po prostu wiersz żądania HTTP i nagłówków. Również zwrócić tylko mały ciała żądania wiele interfejsów API i więc utraty wartości informacji tworzy dużych treści jest dość minimalny, porównaniu zmniejszenie transferu, przetwarzania i koszty magazynowania, aby zachować całą zawartość treści. Końcowe pamiętać o przetwarzania treści jest potrzebujemy przekazać `true` do As<string>— metoda (), ponieważ firma Microsoft odczytujesz zawartość treści, jednak podano również potrzebowała zaplecza interfejsu API, aby można było odczytać treści. Przekazując wartość true, ta metoda, możemy spowodować, że treść w celu buforowane, tak aby mogły zostać odczytane po raz drugi. Jest to ważne, aby wiedzieć, w przypadku interfejsu API, który przekazywanie dużych plików, lub korzysta z długiego sondowania. W takich przypadkach byłoby unikanie podczas odczytywania treści w ogóle.   
+Po kompilacji `requestLine`, możemy sprawdzić, aby wyświetlić treść żądania powinna zostać obcięty. Treść żądania jest obcinana do tylko 1024. To może zostać zwiększona, jednak pojedynczych komunikatów do Centrum zdarzeń jest ograniczona do 256 KB, więc istnieje prawdopodobieństwo, że niektóre komunikaty HTTP ustanawiają będzie mieści się w pojedynczym komunikacie. W trakcie rejestrowania i analizy znacznej ilości informacji mogą pochodzić z po prostu wiersz żądania HTTP i nagłówków. Również zwrócić tylko mały ciała żądania wiele interfejsów API i więc utraty wartości informacji tworzy dużych treści jest dość minimalny, porównaniu zmniejszenie transferu, przetwarzania i koszty magazynowania, aby zachować całą zawartość treści. Końcowe pamiętać o przetwarzania treści jest potrzebujemy przekazać `true` do `As<string>()` metody ponieważ możemy odczytujesz zawartość treści, jednak podano również potrzebowała zaplecza interfejsu API, aby można było odczytać treści. Przekazując wartość true, ta metoda, możemy spowodować, że treść w celu buforowane, tak aby mogły zostać odczytane po raz drugi. Jest to ważne, aby wiedzieć, w przypadku interfejsu API, który przekazywanie dużych plików, lub korzysta z długiego sondowania. W takich przypadkach byłoby unikanie podczas odczytywania treści w ogóle.
 
 ### <a name="http-headers"></a>Nagłówki HTTP
-Nagłówki HTTP może być przenoszony przez na format wiadomości w formacie proste klucz/wartość pary. Wybraliśmy odłączenia niektóre zabezpieczenia poufnych pola wyciekiem niepotrzebnie informacji o poświadczeniach. Jest mało prawdopodobne, że klucze interfejsu API i innych poświadczeń będzie służyć do celów analizy. Jeśli firma chce wykonywać analizę na użytkownika i określonego produktu, które używają, a następnie firma Microsoft można uzyskać z `context` obiektu i dodać je do wiadomości.     
+Nagłówki HTTP może być przenoszony przez na format wiadomości w formacie proste klucz/wartość pary. Wybraliśmy odłączenia niektóre zabezpieczenia poufnych pola wyciekiem niepotrzebnie informacji o poświadczeniach. Jest mało prawdopodobne, że klucze interfejsu API i innych poświadczeń będzie służyć do celów analizy. Jeśli firma chce wykonywać analizę na użytkownika i określonego produktu, które używają, a następnie firma Microsoft można uzyskać z `context` obiektu i dodać je do wiadomości.
 
 ### <a name="message-metadata"></a>Metadane wiadomości
 Podczas kompilowania pełny komunikat do wysłania do Centrum zdarzeń, pierwszy wiersz nie jest faktycznie wchodzi w skład `application/http` wiadomości. Pierwszy wiersz jest dodatkowe metadane składający się z tego, czy komunikat jest żądania lub odpowiedzi komunikat i identyfikator, który służy do skorelowania żądań do odpowiedzi. Identyfikator wiadomości jest tworzona przy użyciu innego zasad, które wyglądają następująco:
@@ -156,13 +156,13 @@ Zasady Aby wysłać komunikat odpowiedzi HTTP będzie zbliżony do żądania i d
 </policies>
 ```
 
-`set-variable` Zasad tworzy wartość, który jest dostępny dla obu `log-to-eventhub` zasady `<inbound>` sekcji i `<outbound>` sekcji.  
+`set-variable` Zasad tworzy wartość, który jest dostępny dla obu `log-to-eventhub` zasady `<inbound>` sekcji i `<outbound>` sekcji.
 
 ## <a name="receiving-events-from-event-hubs"></a>Odbieranie zdarzeń z usługi Event Hubs
-Zdarzenia z usługi Azure Event Hub są odbierane za pomocą [protokołu AMQP](https://www.amqp.org/). Zespół Microsoft Service Bus wprowadzono klienta biblioteki można ułatwić odbierająca komunikaty zdarzeń. Istnieją dwa różne podejścia obsługiwane, są jedną *klientów bezpośrednich* i innych za pomocą `EventProcessorHost` klasy. Przykłady te dwa rozwiązania można znaleźć w [Event Hubs Programming Guide](../event-hubs/event-hubs-programming-guide.md). Jest krótka wersja różnic, `Direct Consumer` daje pełną kontrolę i `EventProcessorHost` nie część obciążenia pracą nadmiar, na można ale sprawia, że niektóre założenia dotyczące sposobu przetwarzania tych zdarzeń.  
+Zdarzenia z usługi Azure Event Hub są odbierane za pomocą [protokołu AMQP](https://www.amqp.org/). Zespół Microsoft Service Bus wprowadzono klienta biblioteki można ułatwić odbierająca komunikaty zdarzeń. Istnieją dwa różne podejścia obsługiwane, są jedną *klientów bezpośrednich* i innych za pomocą `EventProcessorHost` klasy. Przykłady te dwa rozwiązania można znaleźć w [Event Hubs Programming Guide](../event-hubs/event-hubs-programming-guide.md). Jest krótka wersja różnic, `Direct Consumer` daje pełną kontrolę i `EventProcessorHost` nie część obciążenia pracą nadmiar, na można ale sprawia, że niektóre założenia dotyczące sposobu przetwarzania tych zdarzeń.
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
-W tym przykładzie używamy `EventProcessorHost` dla uproszczenia, jednak może ona nie jest najlepszym wyborem dla tego scenariusza. `EventProcessorHost` wykonuje trudną pracę z upewnienie się, że nie masz już martwić się o problemy w klasie procesora konkretne zdarzenie wielowątkowości. Jednak w naszym scenariuszu jesteśmy po prostu konwertowanie wiadomość na inny format i przekazanie jej wzdłuż do innej usługi, za pomocą metody asynchronicznej. Nie ma potrzeby aktualizowania udostępnionego stanu i dlatego nie ma ryzyka problemy wielowątkowości. W przypadku większości scenariuszy `EventProcessorHost` najlepszym rozwiązaniem jest prawdopodobnie i pewnością jest opcja łatwiejsza.     
+W tym przykładzie używamy `EventProcessorHost` dla uproszczenia, jednak może ona nie jest najlepszym wyborem dla tego scenariusza. `EventProcessorHost` wykonuje trudną pracę z upewnienie się, że nie masz już martwić się o problemy w klasie procesora konkretne zdarzenie wielowątkowości. Jednak w naszym scenariuszu jesteśmy po prostu konwertowanie wiadomość na inny format i przekazanie jej wzdłuż do innej usługi, za pomocą metody asynchronicznej. Nie ma potrzeby aktualizowania udostępnionego stanu i dlatego nie ma ryzyka problemy wielowątkowości. W przypadku większości scenariuszy `EventProcessorHost` najlepszym rozwiązaniem jest prawdopodobnie i pewnością jest opcja łatwiejsza.
 
 ### <a name="ieventprocessor"></a>IEventProcessor
 Centralnej pojęcia, korzystając z `EventProcessorHost` polega na utworzeniu implementację `IEventProcessor` interfejs, który zawiera metodę `ProcessEventAsync`. Kluczową cechą tej metody jest następujący:
@@ -171,20 +171,20 @@ Centralnej pojęcia, korzystając z `EventProcessorHost` polega na utworzeniu im
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
 {
 
-   foreach (EventData eventData in messages)
-   {
-       _Logger.LogInfo(string.Format("Event received from partition: {0} - {1}", context.Lease.PartitionId,eventData.PartitionKey));
+    foreach (EventData eventData in messages)
+    {
+        _Logger.LogInfo(string.Format("Event received from partition: {0} - {1}", context.Lease.PartitionId,eventData.PartitionKey));
 
-       try
-       {
-           var httpMessage = HttpMessage.Parse(eventData.GetBodyStream());
-           await _MessageContentProcessor.ProcessHttpMessage(httpMessage);
-       }
-       catch (Exception ex)
-       {
-           _Logger.LogError(ex.Message);
-       }
-   }
+        try
+        {
+            var httpMessage = HttpMessage.Parse(eventData.GetBodyStream());
+            await _MessageContentProcessor.ProcessHttpMessage(httpMessage);
+        }
+        catch (Exception ex)
+        {
+            _Logger.LogError(ex.Message);
+        }
+    }
     ... checkpointing code snipped ...
 }
 ```
@@ -197,10 +197,10 @@ Lista obiektów EventData są przekazywane do metody i możemy przejść przez t
 ```csharp
 public class HttpMessage
 {
-   public Guid MessageId { get; set; }
-   public bool IsRequest { get; set; }
-   public HttpRequestMessage HttpRequestMessage { get; set; }
-   public HttpResponseMessage HttpResponseMessage { get; set; }
+    public Guid MessageId { get; set; }
+    public bool IsRequest { get; set; }
+    public HttpRequestMessage HttpRequestMessage { get; set; }
+    public HttpResponseMessage HttpResponseMessage { get; set; }
 
 ... parsing code snipped ...
 
@@ -220,43 +220,43 @@ W tym przykładzie I uzgodnionych, byłoby interesujące wypychania żądania HT
 ```csharp
 public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 {
-   private HttpClient _HttpClient;
-   private ILogger _Logger;
-   private string _BucketKey;
-   public RunscopeHttpMessageProcessor(HttpClient httpClient, ILogger logger)
-   {
-       _HttpClient = httpClient;
-       var key = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-KEY", EnvironmentVariableTarget.User);
-       _HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", key);
-       _HttpClient.BaseAddress = new Uri("https://api.runscope.com");
-       _BucketKey = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-BUCKET", EnvironmentVariableTarget.User);
-       _Logger = logger;
-   }
+    private HttpClient _HttpClient;
+    private ILogger _Logger;
+    private string _BucketKey;
+    public RunscopeHttpMessageProcessor(HttpClient httpClient, ILogger logger)
+    {
+        _HttpClient = httpClient;
+        var key = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-KEY", EnvironmentVariableTarget.User);
+        _HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", key);
+        _HttpClient.BaseAddress = new Uri("https://api.runscope.com");
+        _BucketKey = Environment.GetEnvironmentVariable("APIMEVENTS-RUNSCOPE-BUCKET", EnvironmentVariableTarget.User);
+        _Logger = logger;
+    }
 
-   public async Task ProcessHttpMessage(HttpMessage message)
-   {
-       var runscopeMessage = new RunscopeMessage()
-       {
-           UniqueIdentifier = message.MessageId
-       };
+    public async Task ProcessHttpMessage(HttpMessage message)
+    {
+        var runscopeMessage = new RunscopeMessage()
+        {
+            UniqueIdentifier = message.MessageId
+        };
 
-       if (message.IsRequest)
-       {
-           _Logger.LogInfo("Sending HTTP request " + message.MessageId.ToString());
-           runscopeMessage.Request = await RunscopeRequest.CreateFromAsync(message.HttpRequestMessage);
-       }
-       else
-       {
-           _Logger.LogInfo("Sending HTTP response " + message.MessageId.ToString());
-           runscopeMessage.Response = await RunscopeResponse.CreateFromAsync(message.HttpResponseMessage);
-       }
+        if (message.IsRequest)
+        {
+            _Logger.LogInfo("Sending HTTP request " + message.MessageId.ToString());
+            runscopeMessage.Request = await RunscopeRequest.CreateFromAsync(message.HttpRequestMessage);
+        }
+        else
+        {
+            _Logger.LogInfo("Sending HTTP response " + message.MessageId.ToString());
+            runscopeMessage.Response = await RunscopeResponse.CreateFromAsync(message.HttpResponseMessage);
+        }
 
-       var messagesLink = new MessagesLink() { Method = HttpMethod.Post };
-       messagesLink.BucketKey = _BucketKey;
-       messagesLink.RunscopeMessage = runscopeMessage;
-       var runscopeResponse = await _HttpClient.SendAsync(messagesLink.CreateRequest());
-       _Logger.LogDebug("Request sent to Runscope");
-   }
+        var messagesLink = new MessagesLink() { Method = HttpMethod.Post };
+        messagesLink.BucketKey = _BucketKey;
+        messagesLink.RunscopeMessage = runscopeMessage;
+        var runscopeResponse = await _HttpClient.SendAsync(messagesLink.CreateRequest());
+        _Logger.LogDebug("Request sent to Runscope");
+    }
 }
 ```
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: af605f4ad7c4167936a07f2ae8ffd3d2850cda75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 643ef7f9960b2a91c88b4e13fe318748d175e036
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185221"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692739"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Dostęp zdalny do aplikacji lokalnych za pośrednictwem serwera Proxy aplikacji usługi Azure Active Directory 
 
@@ -28,7 +28,7 @@ Serwer Proxy aplikacji usługi Azure AD jest:
 
 - **Zabezpieczanie**. Aplikacje lokalne, można użyć kontrolek autoryzacji i analizy zabezpieczeń platformy Azure. Na przykład aplikacje lokalne, można użyć dostępu warunkowego i weryfikacji dwuetapowej. Serwer Proxy aplikacji nie wymaga otwarcia połączeń przychodzących przez zaporę.
  
-- **Ekonomiczne**. Rozwiązania lokalne zwykle wymagają skonfigurowania i obsługi stref zdemilitaryzowaną (DMV), serwerów brzegowych lub innych złożonych infrastruktur. Uruchamia serwer Proxy aplikacji w chmurze, co pozwala na łatwe w użyciu. Aby użyć serwera Proxy aplikacji, nie trzeba zmienić infrastruktury sieciowej, lub zainstaluj dodatkowe urządzenia w środowisku w środowisku lokalnym.
+- **Ekonomiczne**. Rozwiązania lokalne zwykle wymagają skonfigurowania i obsługi stref zdemilitaryzowaną (stref DMZ), serwerów brzegowych lub innych złożonych infrastruktur. Uruchamia serwer Proxy aplikacji w chmurze, co pozwala na łatwe w użyciu. Aby użyć serwera Proxy aplikacji, nie trzeba zmienić infrastruktury sieciowej, lub zainstaluj dodatkowe urządzenia w środowisku w środowisku lokalnym.
 
 ## <a name="what-is-application-proxy"></a>Co to jest serwer Proxy aplikacji?
 Serwer Proxy aplikacji jest funkcją usługi Azure AD, która umożliwia użytkownikom dostęp do lokalnych aplikacji sieci web ze zdalnego komputera klienckiego. Serwer Proxy aplikacji obejmuje zarówno usługi Serwer Proxy aplikacji, która jest uruchamiana w chmurze, jak i łącznika serwera Proxy aplikacji, która jest uruchamiana na serwerze w środowisku lokalnym. Usługa Azure AD, usługa serwera Proxy aplikacji i działają łącznika serwera Proxy aplikacji razem w celu bezpiecznego przekazania tokenu logowania użytkownika z usługi Azure AD do aplikacji sieci web.

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/04/2016
 ms.author: jeconnoc
-ms.openlocfilehash: e7cf7518a20f1901e3347350f090c9a8588a7a7c
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: c41057203da949e371f62332e938feb92e84534f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422919"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699690"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Jak nawiązać połączenie telefoniczne w roli sieci web na platformie Azure za pomocą usługi Twilio
 Ten przewodnik pokazuje, jak wykonać wywołanie ze strony sieci web hostowanych na platformie Azure za pomocą usługi Twilio. Wynikowa aplikacja monituje o nawiązać połączenie za pomocą podanej liczbie i wiadomość, jak pokazano na poniższym zrzucie ekranu.
@@ -34,7 +34,7 @@ Należy wykonać następujące czynności, aby użyć kodu, w tym temacie:
 
 Należy zapoznać się z tworzeniem prostej [roli sieci Web na platformie Azure][azure_webroles_get_started].
 
-## <a name="howtocreateform"></a>Porady: Tworzenie formularza sieci web nawiązywania połączenia
+## <a name="howtocreateform"></a>Jak: Tworzenie formularza sieci web nawiązywania połączenia
 <a id="use_nuget"></a>Aby dodać biblioteki usługi Twilio, do projektu roli sieci web:
 
 1. Otwórz swoje rozwiązanie w programie Visual Studio.
@@ -70,7 +70,7 @@ Poniższy kod przedstawia sposób tworzenia formularza sieci web do pobierania d
 </asp:Content>
 ```
 
-## <a id="howtocreatecode"></a>Porady: tworzenie kodu do wykonania wywołania
+## <a id="howtocreatecode"></a>Jak: Tworzenie kodu do wykonania wywołania
 Następujący kod, który jest wywoływana, gdy użytkownik kończy formularz, tworzy komunikat wywołania i generuje wywołanie. W tym przykładzie kodu jest uruchamiane w program obsługi zdarzeń przycisku w formularzu. (Użyj swojego konta usługi Twilio i uwierzytelniania tokenu zamiast wartości symboli zastępczych, przypisany do `accountSID` i `authToken` w poniższym kodzie.)
 
 ```csharp
@@ -96,7 +96,7 @@ namespace WebRole1
 
         protected void callpage_Click(object sender, EventArgs e)
         {
-            // Call porcessing happens here.
+            // Call processing happens here.
 
             // Use your account SID and authentication token instead of
             // the placeholders shown here.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 46fc0202fe8e04cd7caefeeca948ebef251822fc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8a78abd7f3eea1493ef3f6e8cf3053720ba47478
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562287"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695444"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor  
 
@@ -61,21 +61,17 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
 1.  *Alerty dzienników*: Po wybraniu zapytania dotyczące alertów może być wyrażona w **zapytania wyszukiwania** pola; Jeśli składnia zapytania jest nieprawidłowa, pola są wyświetlane w kolorze CZERWONYM błędu. Jeśli składnia zapytania jest poprawna, — do użytku w danych historycznych w określonej kwerendy jest wyświetlany jako wykres z opcją, aby dostosować okno czasowe z ostatnich sześciu godzin do ostatniego tygodnia.
 
- ![Konfigurowanie reguły alertu](media/alerts-log/AlertsPreviewAlertLog.png)
+    ![Konfigurowanie reguły alertu](media/alerts-log/AlertsPreviewAlertLog.png)
 
- > [!NOTE]
-
+    > [!NOTE]
+    
     > Wizualizacja danych historycznych mogą być wyświetlane tylko jeśli wyniki zapytania mają szczegóły godziny. Jeśli zapytanie powoduje podsumowane dane lub wartości określonej kolumny — sama jest wyświetlany jako pojedynczej powierzchni.
-
-    >  Dla typu pomiar metryki alertów dzienników za pomocą usługi Application insights, można określić, które określonej zmiennej, aby pogrupować dane przy użyciu **agregowane na** opcji; co przedstawiono poniżej:
-
+    >  Pomiar metryki typu alertów dzienników za pomocą usługi Application Insights lub [przełączona do nowego interfejsu API](alerts-log-api-switch.md), można określić, które określonej zmiennej, aby pogrupować dane przy użyciu **agregowane na** opcji; zgodnie z opisami w poniżej:    
     ![Agreguj według opcji](media/alerts-log/aggregate-on.png)
 
-1.  *Alerty dzienników*: Za pomocą wizualizacji w miejscu **Alert Logic** można wybrać opcje pokazano warunku, agregacji i na koniec próg. Wskaż w logice, czas oceny pod kątem określonego warunku, przy użyciu **okres** opcji. Wraz z częstotliwość uruchamiania alertu, wybierając **częstotliwość**.
-
-Aby uzyskać **alertów dzienników** alerty mogą być oparte na:
-   - *Liczba rekordów*: Alert jest tworzony, jeśli liczba rekordów zwróconych przez zapytanie jest większa lub mniejsza niż podana wartość.
-   - *Pomiar metryki*: Alert jest tworzony, jeśli każdy *agregować wartości* w wynikach przekracza wartość progową, pod warunkiem, i jest *pogrupowane według* wybrana wartość. Liczba naruszeń alertu jest liczba przypadków, gdy próg został przekroczony w wybranym okresie. Łączna liczba naruszeń w jakiejkolwiek kombinacji naruszeń można określić przez zestaw wyników lub kolejne naruszenia, aby wymagać, że naruszeń musi wystąpić w kolejnych próbek. Dowiedz się więcej o [alertów dzienników i ich typy](../../azure-monitor/platform/alerts-unified-log.md).
+1.  *Alerty dzienników*: Za pomocą wizualizacji w miejscu **Alert Logic** można wybrać opcje pokazano warunku, agregacji i na koniec próg. Wskaż w logice, czas oceny pod kątem określonego warunku, przy użyciu **okres** opcji. Wraz z częstotliwość uruchamiania alertu, wybierając **częstotliwość**. **Alerty dzienników** może opierać się na:
+    - [Liczba rekordów](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): Alert jest tworzony, jeśli liczba rekordów zwróconych przez zapytanie jest większa lub mniejsza niż podana wartość.
+    - [Pomiar metryki](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): Alert jest tworzony, jeśli każdy *agregować wartości* w wynikach przekracza wartość progową, pod warunkiem, i jest *pogrupowane według* wybrana wartość. Liczba naruszeń alertu jest liczba przypadków, gdy próg został przekroczony w wybranym okresie. Łączna liczba naruszeń w jakiejkolwiek kombinacji naruszeń można określić przez zestaw wyników lub kolejne naruszenia, aby wymagać, że naruszeń musi wystąpić w kolejnych próbek.
 
 
 1. W drugim kroku należy zdefiniować nazwę alertu w **Nazwa reguły alertu** pola wraz z **opis** szczegółowych informacji na temat specyfiki alertu i **ważność** z wartości Opcje przekazane. Te informacje są używane ponownie w wiadomości e-mail alertów, powiadomień lub wypychania wykonywane przez usługi Azure Monitor. Ponadto użytkownik może wybrać od razu aktywować regułę alertu przy tworzeniu odpowiednio przełączając **Włącz regułę po utworzeniu** opcji.
@@ -132,9 +128,95 @@ Alerty dzienników w usłudze Azure Monitor są skojarzone z typem zasobu `Micro
 > [!NOTE]
 > Alerty dzienników usługi Log Analytics mogą być także zarządzane przy użyciu starszej wersji [interfejsu API Log Analytics alertu](../../azure-monitor/platform/api-alerts.md) i starszej wersji szablony z [usługi Log Analytics zapisane wyszukiwania i alerty](../../azure-monitor/insights/solutions-resources-searches-alerts.md) także. Aby uzyskać więcej informacji na temat korzystania z nowego interfejsu API ScheduledQueryRules przedstawione w tym miejscu domyślnie, zobacz [przełączyć się do nowego interfejsu API dla alertów usługi Log Analytics](alerts-log-api-switch.md).
 
-Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów z zestawem danych przykładowych jako zmienne.
+
+### <a name="sample-log-alert-creation-using-azure-resource-template"></a>Przykładowy dziennik tworzenia alertu za pomocą szablonu usługi Azure Resource
+
+Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów przy użyciu zapytania wyszukiwania standardowym dzienniku [liczba alertu dziennika typu wyników](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules), przy użyciu Przykładowy zestaw danych jako zmienne.
 
 ```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0", 
+    "parameters": {      
+    },   
+    "variables": {
+    "alertLocation": "southcentralus",
+    "alertName": "samplelogalert",
+    "alertTag": "hidden-link:/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+    "alertDescription": "Sample log search alert",
+    "alertStatus": "true",
+    "alertSource":{
+        "Query":"requests",
+        "SourceId": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/components/sampleAIapplication",
+        "Type":"ResultCount"
+         },
+     "alertSchedule":{
+         "Frequency": 15,
+         "Time": 60
+         },
+     "alertActions":{
+         "SeverityLevel": "4"
+         },
+      "alertTrigger":{
+        "Operator":"GreaterThan",
+        "Threshold":"1"
+         },
+       "actionGrp":{
+        "ActionGroup": "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/myRG/providers/microsoft.insights/actiongroups/sampleAG",
+        "Subject": "Customized Email Header",
+        "Webhook": "{ \"alertname\":\"#alertrulename\", \"IncludeSearchResults\":true }"           
+         }
+  },
+  "resources":[ {
+    "name":"[variables('alertName')]",
+    "type":"Microsoft.Insights/scheduledQueryRules",
+    "apiVersion": "2018-04-16",
+    "location": "[variables('alertLocation')]",
+    "tags":{"[variables('alertTag')]": "Resource"},
+    "properties":{
+       "description": "[variables('alertDescription')]",
+       "enabled": "[variables('alertStatus')]",
+       "source": {
+           "query": "[variables('alertSource').Query]",
+           "dataSourceId": "[variables('alertSource').SourceId]",
+           "queryType":"[variables('alertSource').Type]"
+       },
+      "schedule":{
+           "frequencyInMinutes": "[variables('alertSchedule').Frequency]",
+           "timeWindowInMinutes": "[variables('alertSchedule').Time]"    
+       },
+      "action":{
+           "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction",
+           "severity":"[variables('alertActions').SeverityLevel]",
+           "aznsAction":{
+               "actionGroup":"[array(variables('actionGrp').ActionGroup)]",
+               "emailSubject":"[variables('actionGrp').Subject]",
+               "customWebhookPayload":"[variables('actionGrp').Webhook]"
+           },
+       "trigger":{
+               "thresholdOperator":"[variables('alertTrigger').Operator]",
+               "threshold":"[variables('alertTrigger').Threshold]"
+           }
+       }
+     }
+   }
+ ]
+}
+
+```
+
+> [!IMPORTANT]
+> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. 
+
+Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryRule.json na potrzeby ten przewodnik i można wdrożyć przy użyciu [usługi Azure Resource Manager w witrynie Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+
+
+### <a name="log-alert-with-cross-resource-query-using-azure-resource-template"></a>Alert dziennika przy użyciu zapytania obejmujące wiele zasobów przy użyciu szablonu usługi Azure Resource
+
+Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie przy użyciu szablonu zasobów [zapytanie wyszukiwania w dzienniku obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) z [alertu dziennika typu pomiaru metryki](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules), przy użyciu Przykładowy zestaw danych jako zmienne.
+
+```json
+
 {
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0", 
@@ -220,9 +302,11 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
    }
  ]
 }
+
 ```
+
 > [!IMPORTANT]
-> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. 
+> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. Podczas korzystania z zapytania obejmujące wiele zasobów w dzienniku alertów, użycie [authorizedResources](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate#source) jest obowiązkowy i użytkownik musi mieć dostęp do listy zasobów, o których wspomniano
 
 Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryRule.json na potrzeby ten przewodnik i można wdrożyć przy użyciu [usługi Azure Resource Manager w witrynie Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

@@ -10,18 +10,21 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
 ms.date: 04/19/2017
-ms.openlocfilehash: 923ce9b5840ec8d99234b9a3b869005ff59848e3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 55961895dde7cb2770f2180911a78f1e31c741e3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494622"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697504"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Usługa Azure Batch dla zadań usługi Azure Machine Learning Studio
 
 Machine Learning Batch Pool przetwarzania zapewnia skalowanie zarządzanych przez klienta usługa wykonywania wsadowego usługi Azure Machine Learning. Przetwarzanie wsadowe klasycznego uczenia maszynowego odbywa się w środowisku z wieloma dzierżawami, która ogranicza liczbę równoczesnych zadań możesz przesłać, a zadania są umieszczane w kolejce na podstawie pierwszego wejściu — pierwszy na wyjściu. Niepewności oznacza, że nie można dokładnie przewidzieć, kiedy zadanie zostanie wykonane.
 
 Przetwarzanie puli usługi Batch pozwala na tworzenie pul, na których można przesłać zadania usługi batch. Możesz kontrolować rozmiar puli i do której puli przesyłania zadania. Uruchamia zadanie usługi BES w własną przestrzeń przetwarzanie, przetwarzanie przewidywalną wydajność i zdolność do tworzenia pul zasobów, odpowiadające obciążenie przetwarzania, która zostanie przesłana.
+
+> [!NOTE]
+> Konieczne jest posiadanie nowego Menedżera zasobów na podstawie usługę internetową Machine Learning, aby utworzyć pulę. Po utworzeniu możesz uruchomić wszystkie usługi BES usługi sieci web, zależności i klasyczne, zarówno nowego Menedżera zasobów w puli.
 
 ## <a name="how-to-use-batch-pool-processing"></a>Jak używać przetwarzania puli usługi Batch
 
@@ -36,7 +39,7 @@ Po utworzeniu konta adresu URL usługi puli i autoryzacji klucz został użyty d
 
 ![Architektura usługi puli usługi Batch.](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-Można utworzyć pule przez wywołanie operacji Utwórz pulę na adres URL usługi puli, otrzymany od CSS. Podczas tworzenia puli Określ liczbę maszyn wirtualnych i adres URL swagger.json nowego Menedżera zasobów na podstawie usługi sieci web Machine Learning. Ta usługa sieci web znajduje się związek rozliczeń. Usługa Batch Pool używa swagger.json można skojarzyć z planem rozliczeniowym. Wszystkie usługi BES można uruchomić usługi sieci web, zarówno nowego Menedżera zasobów, na podstawie i klasyczne, wybierz w puli.
+Można utworzyć pule przez wywołanie operacji Utwórz pulę na adres URL usługi puli, otrzymany od CSS. Podczas tworzenia puli Określ liczbę maszyn wirtualnych i adres URL swagger.json nowego Menedżera zasobów na podstawie usługi sieci web Machine Learning. Ta usługa sieci web znajduje się związek rozliczeń. Usługa Batch Pool używa swagger.json można skojarzyć z planem rozliczeniowym. Możesz uruchomić wszystkie usługi BES usługi sieci web, zależności i klasyczne, zarówno nowego Menedżera zasobów w puli.
 
 Może korzystać dowolna usługa sieci web opartych na nowe Resource Manager, ale należy pamiętać, czy naliczania opłat za zadania są naliczane względem planu rozliczeniowego skojarzone z tą usługą. Można tworzyć usługi sieci web i nowy plan rozliczeniowy specjalnie do uruchamiania zadań puli usługi Batch.
 

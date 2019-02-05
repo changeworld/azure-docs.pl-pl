@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: 47c7a20776d37f88d66c7d6bf8411e8e4d97873b
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 389578cb45977890645020fe7fcd6c69c08c41f5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412925"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694255"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Sugerowane przez społeczność firm VPN ustawienia lub urządzenia zapory dla bramy sieci VPN platformy Azure
 
@@ -33,13 +33,13 @@ Ten artykuł zawiera kilka sugerowane rozwiązania dla sieci VPN innych firm lub
 
 W poniższej tabeli wymieniono kilka wspólnych urządzeń i powiązana Pomoc:
 
-|Produkt    |Informacje ogólne                                                |
+|Product (Produkt)    |Informacje ogólne                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[Sugerowane przez społeczność rozwiązań Cisco asa na sieci VPN platformy Azure](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[Rozwiązania sugerowane przez społeczność dla ISR Cisco w sieci VPN platformy Azure](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |
 |Cisco ASR  |[Sugerowane przez społeczność rozwiązania firmy Cisco automatycznego odzyskiwania systemu w sieci VPN platformy Azure](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASR&locale=enUS&tab=Cisco)   |
 |Sonicwall |Wyszukaj **sieci VPN platformy Azure** na [witryny Sonicwall](https://www.sonicwall.com/en-us/support) |
-| Punkt kontrolny    |Wyszukaj **sieci VPN platformy Azure** na [punktu kontrolnego lokacji](https://supportcenter.checkpoint.com/supportcenter/portal) |
+| Checkpoint    |Wyszukaj **sieci VPN platformy Azure** na [punktu kontrolnego lokacji](https://supportcenter.checkpoint.com/supportcenter/portal) |
 |Juniper |Wyszukaj **sieci VPN platformy Azure** na [Juniper lokacji]( http://www.juniper.net/search/public/)|
 |Barracuda  |[Rozwiązania sugerowane przez społeczność dla Barracuda w sieci VPN platformy Azure](https://campus.barracuda.com/search/?q=%22Azure+VPN%22&x=0&y=0)   |
 |F5         |[Rozwiązania sugerowane przez społeczność dla F5 w sieci VPN platformy Azure](https://support.f5.com/csp/#/federated-search?q=%22Azure%20VPN%22&source=support)          |
@@ -48,7 +48,7 @@ W poniższej tabeli wymieniono kilka wspólnych urządzeń i powiązana Pomoc:
 
 ## <a name="next-step"></a>Następny krok
 
-[Ustawienia bramy usługi Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices#a-nameipsecaipsecike-parameters)
+[Ustawienia bramy usługi Azure](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 
 [Znanych zgodnych urządzeń](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpn-devices)
 

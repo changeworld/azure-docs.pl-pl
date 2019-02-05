@@ -79,7 +79,7 @@ items:
   - name: Limity kontroli dostępu opartej na rolach
     href: ../azure-subscription-service-limits.md#role-based-access-control-limits
   - name: Azure PowerShell
-    href: /powershell/module/azurerm.resources
+    href: /powershell/module/az.resources
   - name: Interfejs wiersza polecenia platformy Azure
     href: /cli/azure/role?view=azure-cli-latest
   - name: Interfejs API REST
@@ -94,9 +94,9 @@ items:
   items:
   - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: fb2b7baea56a3dfc1b4fbc07c72262e09326c07a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 893c3f7ad2d86688a1a697fa00f06b0b3f4e09cc
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422018"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700557"

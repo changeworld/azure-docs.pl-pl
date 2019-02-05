@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2019
 ms.author: ryanwi
-ms.openlocfilehash: 55564de4a3c5ff2d3ba3ddc5e68fa3d1b2d51e71
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: d4760995d6bcc75bcfb974e4be6d202581828a7e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296396"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694121"
 ---
 # <a name="connect-to-a-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
 
@@ -174,7 +174,7 @@ FabricClient fabricClient = new FabricClient();
 
 ### <a name="connect-to-a-secure-cluster-using-a-client-certificate"></a>Nawiązać połączenie z zabezpieczonym klastrem przy użyciu certyfikatu klienta
 
-Węzły w klastrze musi mieć prawidłowe certyfikaty, których nazwa pospolita lub nazwę DNS w sieci SAN, zostanie wyświetlony w [właściwość RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials#System_Fabric_X509Credentials_RemoteCommonNames) nastavit [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Następujący proces umożliwia uwierzytelnianie wzajemne między klientem i węzłów klastra.
+Węzły w klastrze musi mieć prawidłowe certyfikaty, których nazwa pospolita lub nazwę DNS w sieci SAN, zostanie wyświetlony w [właściwość RemoteCommonNames](https://docs.microsoft.com/dotnet/api/system.fabric.x509credentials) nastavit [FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient). Następujący proces umożliwia uwierzytelnianie wzajemne między klientem i węzłów klastra.
 
 ```csharp
 using System.Fabric;

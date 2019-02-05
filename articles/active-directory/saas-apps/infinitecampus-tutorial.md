@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 303d794e558a5e85b4dd2bca3d9bbb4c2a1ff5dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 694999048d2f1df92e6b8631953f124c4009d46c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151808"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733964"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Samouczek: Integracja usługi Azure Active Directory z Kampusu nieskończona
 
@@ -111,7 +111,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Konfigurowanie logowania jednokrotnego](common/editconfigure.png)
 
-5. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy** (Przejdź do kroku **11.c**), wykonaj następujące czynności:
+4. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy**pełne kroki 4.a za pośrednictwem 4.d, a następnie przejdź do kroku 11.c. Jeśli nie masz pliku metadanych dostawcy usługi, przejdź do kroku 5.
 
     a. Kliknij przycisk **przekazywania pliku metadanych**.
 
@@ -127,10 +127,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     d. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca (przy użyciu modelu hostingu mogą się różnić domeny): `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    > [!NOTE]
-    > Możesz uzyskać **plik metadanych usługodawcy** na stronie Konfiguracja dostawcy usługi logowania jednokrotnego nieskończonej Campus, które zostało wyjaśnione w dalszej części tego samouczka. Jeśli zaczynasz przy użyciu nowej konfiguracji SAML dostawcy usług w nieskończonej Campus, przejdź do **kroku 11** aby zakończyć eksportowanie pliku metadanych dostawcy usług.
-
-6. Jeśli nie masz **plik metadanych usługodawcy**, wykonaj następujące czynności (należy pamiętać, że domena zależy od modelu hostingu):
+5. Jeśli nie masz **plik metadanych usługodawcy**, wykonaj następujące czynności (należy pamiętać, że domena zależy od modelu hostingu):
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 

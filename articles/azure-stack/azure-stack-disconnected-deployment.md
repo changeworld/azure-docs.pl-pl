@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 5447bcb0dc37cb3c923c4e6bbff4d69d987b6df6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244372"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691171"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Wdrożenie usługi Azure odłączonego planowanie decyzji dla usługi Azure Stack zintegrowane systemy
 Po podjęciu [zostanie sposób Zintegruj usługę Azure Stack w środowisku chmury hybrydowej](azure-stack-connection-models.md), następnie można zakończyć swoje decyzje dotyczące wdrożenia usługi Azure Stack.
@@ -47,7 +47,7 @@ Usługa Azure Stack został zaprojektowany w celu działają najlepiej, jeśli p
 |Wdrażanie maszyny Wirtualnej za pomocą rozszerzenia platformy Docker, aby uruchamiać polecenia Docker|Naruszone — Docker sprawdzi Internetu dla najnowszej wersji i ten test zakończy się niepowodzeniem.|
 |Linki do dokumentacji w portalu usługi Azure Stack|Niedostępna — łącza, takie jak uzyskać pomoc, Prześlij opinię Przewodnik Szybki Start, itp. używające internetowego adresu URL nie będzie działać.|
 |Alert korygowania/ograniczenia, który odwołuje się przewodnik online korygowania|Niedostępne — wszystkie zaradcze alertu łącza używające internetowego adresu URL nie będzie działać.|
-|Portal Marketplace — możliwości, aby wybrać i dodać pakiety galerii bezpośrednio w witrynie Azure Marketplace|Naruszone — podczas wdrażania usługi Azure Stack w trybie rozłączonym (bez żadnych łączności z Internetem), nie można pobrać elementów portalu marketplace, korzystając z portalu usługi Azure Stack. Można jednak użyć [narzędzie syndykacji marketplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item#download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity) pobieranie elementów portalu marketplace na komputerze, który ma łączność z Internetem i przenieść je do środowiska usługi Azure Stack.|
+|Portal Marketplace — możliwości, aby wybrać i dodać pakiety galerii bezpośrednio w witrynie Azure Marketplace|Naruszone — podczas wdrażania usługi Azure Stack w trybie rozłączonym (bez żadnych łączności z Internetem), nie można pobrać elementów portalu marketplace, korzystając z portalu usługi Azure Stack. Można jednak użyć [narzędzie syndykacji marketplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item) pobieranie elementów portalu marketplace na komputerze, który ma łączność z Internetem i przenieść je do środowiska usługi Azure Stack.|
 |Korzystanie z kont federacyjnych usługi Azure Active Directory do zarządzania do wdrożenia usługi Azure Stack|Niedostępne — ta funkcja wymaga łączności na platformie Azure. Zamiast tego należy użyć usług AD FS z lokalnym wystąpieniem usługi Active Directory.|
 |App Services|Naruszone — aplikacji internetowych, mogą wymagać dostępu do Internetu na zaktualizowanej zawartości.|
 |Interfejs wiersza polecenia (CLI)|Naruszone — interfejs wiersza polecenia obniżyła funkcji pod kątem uwierzytelniania i inicjowania obsługi administracyjnej jednostki usługi.|

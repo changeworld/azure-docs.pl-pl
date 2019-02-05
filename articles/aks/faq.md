@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: 55f32c403da179a0b7babc2172a80c2168cfab17
-ms.sourcegitcommit: 542964c196a08b83dd18efe2e0cbfb21a34558aa
+ms.openlocfilehash: a7a7c8a6f16183d677aeb09ca62ac601cbd01289
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51636921"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694044"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -97,7 +97,7 @@ Umowa dotycząca poziomu usług (SLA) dostawca zgadza się, zwrócić klienta ko
 [aks-upgrade]: ./upgrade-cluster.md
 [aks-cluster-autoscale]: ./autoscaler.md
 [virtual-kubelet]: virtual-kubelet.md
-[aks-advanced-networking]: ./configure-advanced-networking.md
+[aks-advanced-networking]: ./configure-azure-cni.md
 [aks-rbac-aad]: ./aad-integration.md
 [node-updates-kured]: node-updates-kured.md
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 682288338d66f1006e9f1d7f3d6d30f822626425
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 713068b940532331ee4a6c5f5a92816d328e41ec
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226912"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736035"
 ---
 Aby móc używać interfejsu wiersza polecenia platformy Azure oraz szablonów i poleceń usługi Resource Manager w celu wdrażania obciążeń i zasobów platformy Azure przy użyciu grup zasobów, potrzebne jest konto platformy Azure. Jeśli nie posiadasz konta, możesz skorzystać z [bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
@@ -44,7 +44,7 @@ W tym artykule omówiono podstawowe polecenia, które mają za pomocą klasyczne
 | Usuwanie maszyny wirtualnej |`azure vm delete [options] <resource_group> <name>` |
 | Przechwytywanie maszyny wirtualnej |`azure vm capture [options] <resource_group> <name>` |
 | Tworzenie maszyny wirtualnej na podstawie obrazu użytkownika |`azure  vm create [options] –q <image-name> <resource-group> <name> <location> <os-type>` |
-| Tworzenie maszyny wirtualnej na podstawie wyspecjalizowanego dysku |`azue  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
+| Tworzenie maszyny wirtualnej na podstawie wyspecjalizowanego dysku |`azure  vm create [options] –d <os-disk-vhd> <resource-group> <name> <location> <os-type>` |
 | Dodawanie dysku danych do maszyny wirtualnej |`azure  vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]` |
 | Usuwanie dysku danych z maszyny wirtualnej |`azure  vm disk detach [options] <resource-group> <vm-name> <lun>` |
 | Dodawanie rozszerzenia ogólnego do maszyny wirtualnej |`azure  vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>` |

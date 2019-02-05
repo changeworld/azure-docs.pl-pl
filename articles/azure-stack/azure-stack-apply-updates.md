@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: wfayed
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: ff70b1f8eda7bd48f0fba25aa66db42c15acab54
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252136"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729952"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Stosowanie aktualizacji w usłudze Azure Stack
 
@@ -37,6 +37,9 @@ Gdy dostępny jest pakiet aktualizacji firmy Microsoft lub producentem OEM dla u
 - Odpowiadające `<PackageName>.bin` plików. Pliki te zapewniają kompresja ładunek, który jest skojarzony z *Nazwa_pakietu*pliku .exe.
 
 - A `Metadata.xml` pliku. Ten plik zawiera podstawowe informacje dotyczące aktualizacji, na przykład wydawcy, nazwa, wstępnie wymaganego składnika, rozmiar i adres URL pomocy technicznej ścieżki.
+
+> [!IMPORTANT]  
+> Po zastosowaniu pakietu aktualizacji usługi Azure Stack 1901 format pakowania pacakges aktualizacji usługi Azure Stack zostaną przeniesione z .exe, .bin(s) i format XML .zip(s) i format XML. Operatorzy usługi Azure Stack, które połączyły sygnatury nie będą mieć wpływ. Operatorzy usługi Azure Stack, które zostały odłączone po prostu zostaną zaimportowane pliki XML i zip przy użyciu tego samego procesu opisanego poniżej.
 
 ## <a name="import-and-install-updates"></a>Importowanie i zainstaluj aktualizacje
 

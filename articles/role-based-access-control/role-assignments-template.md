@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5e080614d4f0001a0bf1b44dd402f37db2463e03
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206116"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696901"
 ---
 # <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>Zarządzanie dostępem przy użyciu szablonów RBAC i usługi Azure Resource Manager
 
@@ -92,16 +92,18 @@ Poniżej przedstawiono przykład czytnik przypisania roli do użytkownika po wdr
 
 ## <a name="deploy-template-using-azure-powershell"></a>Wdrażanie szablonu przy użyciu programu Azure PowerShell
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 Aby wdrożyć poprzedni szablon przy użyciu programu Azure PowerShell, wykonaj następujące kroki.
 
 1. Utwórz nowy plik o nazwie rbac rg.json i skopiuj poprzedni szablon.
 
 1. Zaloguj się do programu [Azure PowerShell](/powershell/azure/authenticate-azureps).
 
-1. Uzyskaj Unikatowy identyfikator użytkownika, grupy lub aplikacji. Na przykład, można użyć [Get AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) polecenie, aby wyświetlić listę użytkowników usługi Azure AD.
+1. Uzyskaj Unikatowy identyfikator użytkownika, grupy lub aplikacji. Na przykład, można użyć [Get AzADUser](/powershell/module/az.resources/get-azaduser) polecenie, aby wyświetlić listę użytkowników usługi Azure AD.
 
     ```azurepowershell
-    Get-AzureRmADUser
+    Get-AzADUser
     ```
 
 1. Narzędzie identyfikator GUID można wygenerować unikatowy identyfikator, który będzie używany do przypisania roli. Identyfikator ma następujący format: `11111111-1111-1111-1111-111111111111`
@@ -109,21 +111,21 @@ Aby wdrożyć poprzedni szablon przy użyciu programu Azure PowerShell, wykonaj 
 1. Utwórz grupę zasobów w przykładzie.
 
     ```azurepowershell
-    New-AzureRmResourceGroup -Name ExampleGroup -Location "Central US"
+    New-AzResourceGroup -Name ExampleGroup -Location "Central US"
     ```
 
-1. Użyj [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) polecenie, aby rozpocząć wdrażanie.
+1. Użyj [New AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) polecenie, aby rozpocząć wdrażanie.
 
     ```azurepowershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     ```
 
     Prośba do określania wymaganych parametrów. Poniżej przedstawiono przykładowe dane wyjściowe.
 
     ```Output
-    PS /home/user> New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     
-    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
+    cmdlet New-AzResourceGroupDeployment at command pipeline position 1
     Supply values for the following parameters:
     (Type !? for Help.)
     principalId: 22222222-2222-2222-2222-222222222222
@@ -251,4 +253,4 @@ Aby wdrożyć poprzedni szablon przy użyciu wiersza polecenia platformy Azure, 
 
 - [Tworzenie i wdrażanie pierwszego szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-manager-create-first-template.md)
 - [Omówienie struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
-- [Szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=rbac)
+- [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=rbac)

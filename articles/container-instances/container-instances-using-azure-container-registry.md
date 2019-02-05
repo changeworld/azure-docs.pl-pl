@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 33cf6650de757f538dcefc858c94fa71b434ec80
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f577a7dd9f517be6ab7b632a82227e4807862ba5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064648"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727912"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Wdrażanie usługi Azure Container instances z usługi Azure Container Registry
 
@@ -23,13 +23,13 @@ ms.locfileid: "54064648"
 
 **Usługa Azure container registry**: Potrzebna usługa Azure container registry — i co najmniej jeden kontener obrazów w rejestrze — wykonanie czynności opisanych w tym artykule. Jeśli konieczne jest zarejestrowanie, zobacz [Tworzenie rejestru kontenerów przy użyciu wiersza polecenia platformy Azure](../container-registry/container-registry-get-started-azure-cli.md).
 
-**Interfejs wiersza polecenia Azure**: Przykłady wiersza polecenia w tym artykule korzystają [wiersza polecenia platformy Azure](/cli/azure/) i formatowania do powłoki Bash. Możesz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lokalnie, lub użyj [usługi Azure Cloud Shell][cloud-shell-bash].
+**Interfejs wiersza polecenia platformy Azure**: Przykłady wiersza polecenia w tym artykule korzystają [wiersza polecenia platformy Azure](/cli/azure/) i formatowania do powłoki Bash. Możesz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lokalnie, lub użyj [usługi Azure Cloud Shell][cloud-shell-bash].
 
 ## <a name="configure-registry-authentication"></a>Konfigurowanie uwierzytelniania rejestru
 
 W żadnym scenariuszu produkcyjnym, należy podać dostępu do usługi Azure container registry przy użyciu [jednostki usług](../container-registry/container-registry-auth-service-principal.md). Nazwy główne usług umożliwiają dostarczenie [kontroli dostępu opartej na rolach](../container-registry/container-registry-roles.md) obrazów kontenera. Na przykład można skonfigurować jednostkę usługi z dostępem tylko do ściągania do rejestru.
 
-W tej sekcji Tworzenie usługi Azure key vault i nazwy głównej usługi i przechowywać poświadczenia nazwy głównej usługi w magazynie.
+W poniższej sekcji Tworzenie usługi Azure key vault i nazwy głównej usługi i przechowywać poświadczenia nazwy głównej usługi w magazynie. 
 
 ### <a name="create-key-vault"></a>Tworzenie magazynu kluczy
 
@@ -64,7 +64,7 @@ az keyvault secret set \
                 --output tsv)
 ```
 
-`--role` Argument w poprzednim poleceniu konfiguruje nazwę główną usługi za pomocą *acrpull* roli, co spowoduje przyznanie tylko ściąganych dostępu do rejestru. Aby udzielić zarówno wypychanie i ściąganie dostępu, należy zmienić `--role` argument *acrpush*.
+Argument `--role` w poprzednim poleceniu konfiguruje jednostkę usługi z rolą *acrpull*, co spowoduje przyznanie dostępu tylko do ściągania do rejestru. Aby przyznać prawa dostępu do wypychania i ściągania, należy zmienić argument `--role` na wartość *acrpush*.
 
 Następnie przechowywać nazwy głównej usługi *appId* w magazynie, który jest **username** są przekazywane do usługi Azure Container Registry do uwierzytelniania.
 
@@ -134,9 +134,11 @@ Aby uzyskać szczegółowe informacje dotyczące odwoływania się do hasła us�
 
 ## <a name="deploy-with-azure-portal"></a>Wdrażanie przy użyciu witryny Azure portal
 
-Jeśli zachowasz obrazów kontenerów w usłudze Azure Container Registry, można łatwo utworzyć kontener w usłudze Azure Container Instances za pomocą witryny Azure portal.
+Jeśli zachowasz obrazów kontenerów w usłudze Azure container registry, można łatwo utworzyć kontener w usłudze Azure Container Instances za pomocą witryny Azure portal. Wdróż wystąpienie kontenera z rejestru kontenerów za pomocą portalu, należy włączyć w rejestrze [konta administratora](../container-registry/container-registry-authentication.md#admin-account). Konto administratora jest przeznaczony dla jednego użytkownika, dostęp do rejestru, głównie do celów testowych. 
 
 1. W witrynie Azure portal przejdź do rejestru kontenerów.
+
+1. Aby upewnić się, że konto administratora jest włączone, wybierz pozycję **klucze dostępu**, a następnie w obszarze **administrator** wybierz **Włącz**.
 
 1. Wybierz **repozytoriów**, a następnie wybierz repozytorium, które chcesz wdrożyć, kliknij prawym przyciskiem myszy tag obrazu kontenera, które chcesz wdrożyć, a następnie wybierz pozycję **uruchomienia wystąpienia**.
 

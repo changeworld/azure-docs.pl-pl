@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 6e15d4376fae576f615cac7c094f53dfcc22618e
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826619"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694486"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Migracja Contoso: Ponowne hostowanie aplikacji w środowisku lokalnym na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database
 
@@ -173,7 +173,7 @@ Aby skonfigurować bazę danych wystąpienia zarządzanego Azure SQL, firma Cont
 - Podsieć musi mieć zdefiniowany przez użytkownika (UDR) trasy tabelę routingu. Powinny być tylko trasy przypisane Internetu dla następnego przeskoku 0.0.0.0/0. 
 - Opcjonalne niestandardowe DNS: Jeśli niestandardowe DNS jest określony w sieci wirtualnej platformy Azure, adres IP platformy Azure rekursywnego rozpoznawania nazw (na przykład 168.63.129.16) należy dodać do listy. Dowiedz się, jak [Konfigurowanie niestandardowych pozycji DNS dla wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 - Podsieci nie może być punkt końcowy usługi (magazyn lub SQL) skojarzonych z nim. Punkty końcowe usługi powinny być wyłączone w sieci wirtualnej.
-- Podsieć musi mieć co najmniej 16 adresów IP. Dowiedz się, jak [rozmiar podsieci wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#determine-the-size-of-subnet-for-managed-instances).
+- Podsieć musi mieć co najmniej 16 adresów IP. Dowiedz się, jak [rozmiar podsieci wystąpienia zarządzanego](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration).
 - W środowisku hybrydowym firmy Contoso niestandardowych ustawień DNS są wymagane. Contoso konfiguruje ustawienia DNS, użyj jednego lub kilku serwerów usługi Azure DNS firmy. Dowiedz się więcej o [dostosowywania DNS](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-custom-dns).
 
 ### <a name="set-up-a-virtual-network-for-the-managed-instance"></a>Konfigurowanie sieci wirtualnej dla wystąpienia zarządzanego
@@ -207,7 +207,7 @@ Administratorzy firmy Contoso Skonfiguruj sieć wirtualną w następujący spos�
 *Potrzebujesz dodatkowej pomocy?*
 
 - Zapoznaj się z omówieniem programu [wystąpienie zarządzane usługi SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance).
-- Dowiedz się, jak [tworzenie sieci wirtualnej dla wystąpienia zarządzanego SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration#create-a-new-virtual-network-for-managed-instances).
+- Dowiedz się, jak [tworzenie sieci wirtualnej dla wystąpienia zarządzanego SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-vnet-configuration).
 - Dowiedz się, jak [skonfigurować komunikację równorzędną](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering).
 - Dowiedz się, jak [aktualizowanie ustawień DNS usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started-dns).
 
@@ -609,7 +609,7 @@ Zespół ds. zabezpieczeń Contoso przeglądy maszyn wirtualnych platformy Azure
 
      ![Zarządzane zabezpieczenia wystąpienia — wykrywanie zagrożeń](./media/contoso-migration-rehost-vm-sql-managed-instance/mi-security.png)  
 
-Aby dowiedzieć się więcej na temat praktyk w zakresie zabezpieczeń dla maszyn wirtualnych, zobacz [najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms#vm-authentication-and-access-control).
+Aby dowiedzieć się więcej na temat praktyk w zakresie zabezpieczeń dla maszyn wirtualnych, zobacz [najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure](https://docs.microsoft.com/azure/security/azure-security-best-practices-vms).
 
 ### <a name="bcdr"></a>BCDR
 

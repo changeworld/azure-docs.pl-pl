@@ -10,19 +10,19 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 51d76e16e93ccffc1a069e64808563d62f428dbf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9d8ae3a95262b1554e7e97fac8375a44743bf4df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476353"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731465"
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>Wykonania zadań dotyczących nauki o danych: eksploracji, modelowania i wdrożenia
 
 Typowe zadania wydobywania danych obejmują eksplorację danych, modelowania i wdrożenia. W tym artykule pokazano, jak **interakcyjna Eksploracja danych, analizy i raportowania (IDEAR)** i **zautomatyzowane modelowania i raportowania (AMAR)** narzędzia, aby wykonać kilka typowych zadań do nauki o danych Interakcyjna Eksploracja danych, analizy danych, raportowania i tworzenia modelu. Przedstawia opcje wdrażania modelu w środowisku produkcyjnym przy użyciu wielu różnych platformach danych i zestaw narzędzi, takie jak następujące:
 
 - [Azure Machine Learning](../service/index.yml)
-- [Programu SQL Server z usługami uczenia Maszynowego](https://docs.microsoft.com/sql/advanced-analytics/r/r-services#in-database-analytics-with-sql-server)
+- [Programu SQL Server z usługami uczenia Maszynowego](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/what-is-machine-learning-server)
 
 

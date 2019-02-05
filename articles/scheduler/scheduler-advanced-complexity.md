@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: be3f8ddaf9788eb9023ffc2caf2e0d6aeb49bdba
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712062"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701016"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Tworzenie zaawansowanych harmonogramów i cykli dla zadań w usłudze Azure Scheduler
 
@@ -28,9 +28,9 @@ W ramach [usługi Azure Scheduler](../scheduler/scheduler-intro.md) zadania, har
 
 * **Archiwizowanie danych**: Tworzenie przypadku zadania comiesięcznego czy wypchnięć faktury historii usługi kopii zapasowej.
 
-* **Żądanie danych zewnętrznych**: Utwórz zadanie, które jest uruchamiane co 15 minut, a następnie ściąga nowy raport pogodowe z agencji NOAA.
+* **Żądanie danych zewnętrznych**: Utwórz zadanie jest uruchamiane co 15 minut, która ściąga nowy raport pogodowe z agencji NOAA.
 
-* **Przetwarzanie obrazów**: Utwórz zadanie dzień tygodnia, które poza godzinami pracy, korzysta z chmury obliczeniowej kompresowania obrazów przekazanych w ciągu dnia.
+* **Przetwarzanie obrazów**: Utwórz zadanie dzień tygodnia, w które poza godzinami pracy, korzysta z chmury obliczeniowej kompresowania obrazów przekazanych w ciągu dnia.
 
 W tym artykule opisano przykład zadań, można utworzyć za pomocą harmonogramu i [interfejsu API REST usługi Azure Scheduler](/rest/api/scheduler)i zawiera definicję JavaScript Object Notation (JSON) dla każdego harmonogramu. 
 
@@ -53,9 +53,9 @@ W tym artykule opisano później tych scenariuszy, które bardziej szczegółowo
 
 Aby utworzyć harmonogram podstawowe z [interfejsu API REST usługi Azure Scheduler](/rest/api/scheduler), wykonaj następujące kroki:
 
-1. Zarejestruj swoją subskrypcję platformy Azure za pomocą dostawcy zasobów za pomocą [rejestrowanie operacji — interfejs REST API usługi Resource Manager](https://docs.microsoft.com/rest/api/resources/providers#Providers_Register). Nazwa dostawcy usługi Azure Scheduler jest **Microsoft.Scheduler**. 
+1. Zarejestruj swoją subskrypcję platformy Azure za pomocą dostawcy zasobów za pomocą [rejestrowanie operacji — interfejs REST API usługi Resource Manager](https://docs.microsoft.com/rest/api/resources/providers). Nazwa dostawcy usługi Azure Scheduler jest **Microsoft.Scheduler**. 
 
-1. Tworzenie kolekcji zadań przy użyciu [operacji tworzenia lub aktualizacji dla kolekcji zadań](https://docs.microsoft.com/rest/api/scheduler/jobcollections#JobCollections_CreateOrUpdate) w interfejsie API REST usługi Scheduler. 
+1. Tworzenie kolekcji zadań przy użyciu [operacji tworzenia lub aktualizacji dla kolekcji zadań](https://docs.microsoft.com/rest/api/scheduler/jobcollections) w interfejsie API REST usługi Scheduler. 
 
 1. Tworzenie zadania przy użyciu [operacji tworzenia lub aktualizacji dla zadań](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
 
@@ -63,7 +63,7 @@ Aby utworzyć harmonogram podstawowe z [interfejsu API REST usługi Azure Schedu
 
 Ta tabela zawiera ogólne omówienie głównych elementów JSON używanych podczas konfigurowania cykli i harmonogramy zadań. 
 
-| Element | Wymagane | Opis | 
+| Element | Wymagany | Opis | 
 |---------|----------|-------------|
 | **startTime** | Nie | Wartość ciągu daty/godziny w [formatu ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) , który określa po pierwszym uruchomieniu zadania w harmonogramie podstawowe. <p>W przypadku harmonogramów złożonych zadania nie jest uruchamiany wcześniej niż **startTime**. | 
 | **recurrence** | Nie | Zasady ponownego uruchamiania zadania. **Cyklu** obiektu obsługuje następujące elementy: **częstotliwość**, **interwał**, **harmonogram**, **liczba**, i **endTime**. <p>Jeśli używasz **cyklu** elementu, musisz również użyć **częstotliwość** elementu, podczas gdy inne **cyklu** elementy są opcjonalne. |

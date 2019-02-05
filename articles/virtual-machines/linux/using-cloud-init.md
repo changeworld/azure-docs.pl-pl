@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 0f7660e8534a74eabe32611c4c01ae5587af7cee
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: c0a5e8695b712ca95952ea839fa829dab2c48824
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43188877"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700098"
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Pakiet cloud-init obsługę maszyn wirtualnych na platformie Azure
 W tym artykule opisano obsługę, która istnieje dla [pakietu cloud-init](https://cloudinit.readthedocs.io) Aby skonfigurować maszynę wirtualną (VM) lub maszyn wirtualnych zestawów skalowania (zestawu skalowania maszyn wirtualnych) na inicjowanie obsługi administracyjnej czas na platformie Azure. Skrypty te pakietu cloud-init są uruchamiane podczas pierwszego rozruchu po zasoby zostały udostępnione przez platformę Azure.  
@@ -54,7 +54,7 @@ Konfiguracje WALA maszyn wirtualnych są ograniczone na czas pracy w maksymalny 
 ## <a name="deploying-a-cloud-init-enabled-virtual-machine"></a>Wdrażanie pakietu cloud-init włączone maszyny wirtualnej
 Wdrażanie maszyny wirtualnej pakietu cloud-init, włączone jest proste i polega odwołujące się do dystrybucji pakietu cloud-init, włączone podczas wdrażania.  Maintainers dystrybucji systemu Linux, musisz wybrać opcję Włącz i integrowanie pakietu cloud-init na ich podstawowej platformy Azure opublikowanych obrazów. Po sprawdzeniu, czy obraz, który chcesz wdrożyć jest pakietu cloud-init, włączone, można użyć wiersza polecenia platformy Azure do wdrożenia obrazu. 
 
-Pierwszym krokiem we wdrażaniu tego obrazu jest utworzenie grupy zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create) polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+Pierwszym krokiem we wdrażaniu tego obrazu jest utworzenie grupy zasobów za pomocą [Tworzenie grupy az](/cli/azure/group) polecenia. Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
@@ -71,7 +71,7 @@ packages:
 ```
 Naciśnij klawisz `ctrl-X` aby wyjść z pliku, wpisz `y` można zapisać pliku i naciśnij klawisz `enter` aby potwierdzić nazwę pliku na wyjściu.
 
-Ostatnim krokiem jest utworzenie maszyny Wirtualnej z [tworzenie az vm](/cli/azure/vm#az_vm_create) polecenia. 
+Ostatnim krokiem jest utworzenie maszyny Wirtualnej z [tworzenie az vm](/cli/azure/vm) polecenia. 
 
 Poniższy przykład tworzy Maszynę wirtualną o nazwie *centos74* i tworzy klucze SSH, jeśli ich jeszcze nie istnieją w domyślnej lokalizacji kluczy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.  Użyj parametru `--custom-data` do przekazania w pliku konfiguracji cloud-init. Podaj pełną ścieżkę do pliku konfiguracji *cloud-init.txt*, jeśli plik został zapisany poza aktualnym katalogiem roboczym. Poniższy przykład tworzy Maszynę wirtualną o nazwie *centos74*:
 

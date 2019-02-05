@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: ae29451e3f7ec263f296e69656a5c66045334687
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227318"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735767"
 ---
 1. Zaloguj się do subskrypcji platformy Azure, wykonując kroki opisane w [Połącz z platformą Azure z platformy Azure klasyczny interfejs wiersza polecenia](/cli/azure/authenticate-azure-cli).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Tworzenie bramy sieci VPN platformy Azure opartej na trasach: interfejs wiersza polecenia | Dokumentacja firmy Microsoft'
+title: 'Tworzenie bramy sieci VPN platformy Azure opartej na trasach: INTERFEJS WIERSZA POLECENIA | Dokumentacja firmy Microsoft'
 description: Szybko Dowiedz się, jak utworzyć bramę sieci VPN przy użyciu interfejsu wiersza polecenia
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: cherylmc
-ms.openlocfilehash: b8ca2d74012418dbd8ca9e878f133a250ebb5991
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: f5f62a6bfa1baa205e0496dd901f1f1eef660079
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49465104"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698194"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-cli"></a>Tworzenie bramy sieci VPN opartej na trasach przy użyciu interfejsu wiersza polecenia
 
@@ -26,7 +26,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create) polecenia. Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group) polecenia. Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
 
 ```azurecli-interactive 
@@ -35,7 +35,7 @@ az group create --name TestRG1 --location eastus
 
 ## <a name="vnet"></a>Tworzenie sieci wirtualnej
 
-Tworzenie sieci wirtualnej przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create) polecenia. Poniższy przykład tworzy sieć wirtualną o nazwie **VNet1** w **EastUS** lokalizacji:
+Tworzenie sieci wirtualnej przy użyciu [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet) polecenia. Poniższy przykład tworzy sieć wirtualną o nazwie **VNet1** w **EastUS** lokalizacji:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -56,7 +56,7 @@ az network vnet subnet create \
   --vnet-name VNet1 \
   -n GatewaySubnet \
   -g TestRG1 \
-  --address-prefix 10.1.255.0/27 
+  --address-prefix 10.1.255.0/27 
 ```
 
 ## <a name="PublicIP"></a>Żądanie publicznego adresu IP
@@ -67,12 +67,12 @@ Brama sieci VPN musi mieć dynamicznie przydzielanego publicznego adresu IP. Pub
 az network public-ip create \
   -n VNet1GWIP \
   -g TestRG1 \
-  --allocation-method Dynamic 
+  --allocation-method Dynamic 
 ```
 
 ## <a name="CreateGateway"></a>Tworzenie bramy sieci VPN
 
-Utwórz bramę sieci VPN za pomocą polecenia [az network vnet-gateway create](/cli/azure/group#az_network_vnet_gateway_create).
+Utwórz bramę sieci VPN za pomocą polecenia [az network vnet-gateway create](/cli/azure/group).
 
 Po uruchomieniu tego polecenia przy użyciu `--no-wait` parametru nie widać żadnych informacji zwrotnych ani danych wyjściowych. `--no-wait` Parametr umożliwia bramy do utworzenia w tle. Nie oznacza to, że Brama VPN jest utworzona natychmiast.
 
@@ -172,7 +172,7 @@ Przykładowa odpowiedź:
 ```
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie potrzebujesz już zasobów utworzonych, użyj [usunięcie grupy az](/cli/azure/group#az_group_delete) Aby usunąć grupę zasobów. Spowoduje to usunięcie grupy zasobów i wszystkich znajdujących się w niej zasobów.
+Jeśli nie potrzebujesz już zasobów utworzonych, użyj [usunięcie grupy az](/cli/azure/group) Aby usunąć grupę zasobów. Spowoduje to usunięcie grupy zasobów i wszystkich znajdujących się w niej zasobów.
 
 ```azurecli-interactive 
 az group delete --name TestRG1 --yes

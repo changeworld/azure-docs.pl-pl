@@ -14,25 +14,25 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: dd254f0640e17bdc055171dde69b04103f389354
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a12952c73863d10c4fffd013ab594a83ab1b6433
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659834"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729465"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otwórz porty i punkty końcowe do maszyny Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure
 
 Otwieranie portu lub utworzenie punktu końcowego, na maszynę wirtualną (VM) na platformie Azure przez utworzenie filtru sieciowego w podsieci lub interfejsu sieciowego maszyny Wirtualnej. Te filtry, które kontroli ruchu przychodzącego i wychodzącego, możesz umieścić na sieciowej grupy zabezpieczeń, który jest dołączony do zasobu, który odbiera ruch. Użyjmy typowym przykładem ruchu w sieci web na porcie 80. W tym artykule pokazano, jak otworzyć port do maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure. 
 
 
-Aby utworzyć sieciową grupę zabezpieczeń i reguł, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Aby utworzyć sieciową grupę zabezpieczeń i reguł, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myNetworkSecurityGroup*, i *myVnet*.
 
 
 ## <a name="quickly-open-a-port-for-a-vm"></a>Szybko otwarcie portu dla maszyny Wirtualnej
-Jeśli potrzebujesz szybkiego otwierania portu dla maszyny Wirtualnej w przypadku tworzenia i testowania, możesz użyć [az vm open-port](/cli/azure/vm#az_vm_open_port) polecenia. To polecenie tworzy sieciową grupę zabezpieczeń, dodaje regułę i stosuje je do maszyny Wirtualnej lub podsieci. W poniższym przykładzie otwierany portu *80* na maszynie Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*.
+Jeśli potrzebujesz szybkiego otwierania portu dla maszyny Wirtualnej w przypadku tworzenia i testowania, możesz użyć [az vm open-port](/cli/azure/vm) polecenia. To polecenie tworzy sieciową grupę zabezpieczeń, dodaje regułę i stosuje je do maszyny Wirtualnej lub podsieci. W poniższym przykładzie otwierany portu *80* na maszynie Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*.
 
 ```azure-cli
 az vm open-port --resource-group myResourceGroup --name myVM --port 80
@@ -51,7 +51,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Dodaj regułę o [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) zezwalają na ruch HTTP, aby na serwerze sieci Web (lub dostosować do własnego scenariusza, takiego jak łącznością SSH dostępu lub bazy danych). Poniższy przykład tworzy regułę o nazwie *myNetworkSecurityGroupRule* zezwalająca na ruch TCP na porcie 80:
+Dodaj regułę o [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule) zezwalają na ruch HTTP, aby na serwerze sieci Web (lub dostosować do własnego scenariusza, takiego jak łącznością SSH dostępu lub bazy danych). Poniższy przykład tworzy regułę o nazwie *myNetworkSecurityGroupRule* zezwalająca na ruch TCP na porcie 80:
 
 ```azurecli
 az network nsg rule create \
@@ -65,7 +65,7 @@ az network nsg rule create \
 
 
 ## <a name="apply-network-security-group-to-vm"></a>Zastosować sieciową grupę zabezpieczeń z maszyną Wirtualną
-Kojarzenie sieciowej grupy zabezpieczeń z interfejsem sieciowym maszyny Wirtualnej (NIC) przy użyciu [aktualizacji karty sieciowej sieci az](/cli/azure/network/nic#az_network_nic_update). Poniższy przykład kojarzy istniejącej karty NIC o nazwie *myNic* z sieciową grupą zabezpieczeń o nazwie *myNetworkSecurityGroup*:
+Kojarzenie sieciowej grupy zabezpieczeń z interfejsem sieciowym maszyny Wirtualnej (NIC) przy użyciu [aktualizacji karty sieciowej sieci az](/cli/azure/network/nic). Poniższy przykład kojarzy istniejącej karty NIC o nazwie *myNic* z sieciową grupą zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nic update \

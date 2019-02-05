@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: efe7b6722a9cfa24ea86130a13a0599115e89821
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 15ec4f006147cdffb46598d22a937aec429fd8ac
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451669"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729408"
 ---
 # <a name="creating-an-import-job-for-the-azure-importexport-service"></a>Tworzenie zadania importu dla usługi Azure Import/Export
 
@@ -61,14 +61,14 @@ Przed utworzeniem zadania importu, należy uzyskać nazwę lokalizacji wysyłki 
 
  Wykonaj poniższe kroki, aby uzyskać lokalizacji wysyłki:
 
--   Określ nazwę lokalizacji konta magazynu. Tę wartość można znaleźć w obszarze **lokalizacji** pola na koncie magazynu **pulpit nawigacyjny** w witrynie Azure portal lub kwerendy dla za pomocą operacji interfejsu API zarządzania usługi [pobrać konta magazynu Właściwości](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Określ nazwę lokalizacji konta magazynu. Tę wartość można znaleźć w obszarze **lokalizacji** pola na koncie magazynu **pulpit nawigacyjny** w witrynie Azure portal lub kwerendy dla za pomocą operacji interfejsu API zarządzania usługi [pobrać konta magazynu Właściwości](/rest/api/storagerp/storageaccounts).
 
 -   Pobieranie lokalizacji, która jest dostępny do przetworzenia tego konta magazynu przez wywołanie metody `Get Location` operacji.
 
 -   Jeśli `AlternateLocations` właściwość lokalizacji zawiera sama lokalizacja, a następnie można użyć tej lokalizacji. W przeciwnym razie wywołanie `Get Location` ponownie operację, używając jednej z lokalizacji alternatywnej. Oryginalnej lokalizacji może być tymczasowo zamknięte w celu przeprowadzenia konserwacji.
 
 ## <a name="creating-the-import-job"></a>Tworzenie zadania importu
-Aby utworzyć zadanie importu, wywołaj [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji. Należy podać następujące informacje:
+Aby utworzyć zadanie importu, wywołaj [umieścić zadania](/rest/api/storageimportexport/jobs) operacji. Należy podać następujące informacje:
 
 -   Nazwa zadania.
 

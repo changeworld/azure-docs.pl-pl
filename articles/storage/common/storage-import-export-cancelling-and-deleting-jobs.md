@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 0aa1a84da874e0b0f3ed8b865eab0490f1498c1e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6eb56413319208feef1b4ab51296fe12a1e0bcf2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451227"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700132"
 ---
 # <a name="canceling-and-deleting-azure-importexport-jobs"></a>Anulowanie i usuwanie zadań usługi Azure Import/Export
 
- Na żądanie, czy można anulować zadania, zanim zostanie w `Packaging` stanu, wywołaj [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs#Jobs_Update) operacji i ustaw `CancelRequested` elementu `true`. Zadanie zostało anulowane na zasadzie największej staranności. Jeśli dyski znajdują się w trakcie przesyłania danych, dane mogą być nadal przesyłane, mimo że zażądano anulowania.
+ Na żądanie, czy można anulować zadania, zanim zostanie w `Packaging` stanu, wywołaj [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs) operacji i ustaw `CancelRequested` elementu `true`. Zadanie zostało anulowane na zasadzie największej staranności. Jeśli dyski znajdują się w trakcie przesyłania danych, dane mogą być nadal przesyłane, mimo że zażądano anulowania.
 
  Anulowano zadanie zostanie przeniesiona do `Completed` stanu i są przechowywane przez 90 dni, w tym momencie zostanie usunięty.
 
- Aby usunąć zadanie, należy wywołać [Usuń zadanie](/rest/api/storageimportexport/jobs#Jobs_Delete) operacji przed zadanie zostało wysłane (oznacza to, że podczas wykonywania zadania w `Creating` stanu). Można również usunąć zadanie, gdy jest on w `Completed` stanu. Po usunięciu zadania jego informacje i jego stan nie są już dostępne za pośrednictwem interfejsu API REST lub witryny Azure portal.
+ Aby usunąć zadanie, należy wywołać [Usuń zadanie](/rest/api/storageimportexport/jobs) operacji przed zadanie zostało wysłane (oznacza to, że podczas wykonywania zadania w `Creating` stanu). Można również usunąć zadanie, gdy jest on w `Completed` stanu. Po usunięciu zadania jego informacje i jego stan nie są już dostępne za pośrednictwem interfejsu API REST lub witryny Azure portal.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

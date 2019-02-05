@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: snehaa
-ms.openlocfilehash: 619369972991bab0b23e7e9ae4e0a146f875e59a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2c89780722e1f3038f99ab0a4c85cd2d2ecbe624
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079260"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699489"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -108,7 +108,7 @@ Opcja odnajdywania opartego na agentach uzupełnia odnajdywanie oparte na urząd
 
 ### <a name="would-there-be-any-performance-impact-on-the-analyzed-esxi-host-environment"></a>Będzie mieć żadnego wpływu wydajności na przeanalizowany środowisko hosta ESXi?
 
-W przypadku właściwości [jednej metody odnajdywania czasu](https://docs.microsoft.com/azure/migrate/concepts-collector#discovery-methods), aby zbierać dane dotyczące wydajności, poziomu statystyk na serwerze vCenter, musi być równa 3. Ustawienie tego poziomu będzie zbierać dużej ilości danych, które powinny być przechowywane w bazie danych serwera vCenter na rozwiązywanie problemów. Ten sposób może powodować pewne problemy z wydajnością na serwerze vCenter. Może być niewielki wpływ na hoście ESXi.
+W przypadku właściwości [jednej metody odnajdywania czasu](https://docs.microsoft.com/azure/migrate/concepts-collector), aby zbierać dane dotyczące wydajności, poziomu statystyk na serwerze vCenter, musi być równa 3. Ustawienie tego poziomu będzie zbierać dużej ilości danych, które powinny być przechowywane w bazie danych serwera vCenter na rozwiązywanie problemów. Ten sposób może powodować pewne problemy z wydajnością na serwerze vCenter. Może być niewielki wpływ na hoście ESXi.
 
 Firma Microsoft wprowadza ciągłe profilowania danych dotyczących wydajności (czyli w wersji zapoznawczej). Za pomocą ciągłego profilowania nie ma już potrzeby zmieniania poziomu statystyk serwera, aby uzyskać ocenę na podstawie wydajności programu vCenter. Urządzenie modułu zbierającego będzie teraz profilować maszyn lokalnych do mierzenia dane dotyczące wydajności maszyn wirtualnych. Będzie to miało bliski zeru negatywny wpływ na wydajność, na hostach ESXi, a także w programie vcenter Server.
 

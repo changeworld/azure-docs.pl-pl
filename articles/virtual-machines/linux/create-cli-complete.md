@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: 75853d0fa35d1cb5fe593ad92a88d054d2ed77f6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7090f9da1ec1bd1453b6f0ddb327abe2f1374844
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662299"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697076"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Utwórz pełną maszyny wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure
 Aby szybko utworzyć maszynę wirtualną (VM) na platformie Azure, można użyć jednego polecenia wiersza polecenia platformy Azure, która używa domyślnych wartości, aby utworzyć wszystkie wymagane zasoby pomocnicze. Zasoby, takie jak sieć wirtualną, publiczny adres IP i reguły sieciowej grupy zabezpieczeń są tworzone automatycznie. Aby uzyskać większą kontrolę środowiska w środowisku produkcyjnym należy użyć, możesz utworzyć te zasoby, które wcześniej i następnie dodać maszyny wirtualne do nich. Ten artykuł przeprowadzi Cię przez tworzenie maszyny Wirtualnej, a każdy z pomocnicze zasoby pojedynczo.
 
-Upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myVnet*, i *myVM*.
 
@@ -103,7 +103,7 @@ Dane wyjściowe pokazują, że podsieć logicznie jest tworzony w sieci wirtualn
 
 
 ## <a name="create-a-public-ip-address"></a>Tworzenie publicznego adresu IP
-Teraz Utwórzmy publiczny adres IP z [tworzenie sieci az public-ip](/cli/azure/network/public-ip#az_network_public_ip_create). Ten publiczny adres IP umożliwia łączenie maszyn wirtualnych z Internetu. Ponieważ adresem domyślnym jest dynamiczny, utworzyć wpis DNS o nazwie z `--domain-name-label` parametru. Poniższy przykład tworzy publiczny adres IP o nazwie *myPublicIP* nazwą DNS *mypublicdns*. Ponieważ nazwa DNS musi być unikatowa, należy podać swoją własną unikatową nazwę DNS:
+Teraz Utwórzmy publiczny adres IP z [tworzenie sieci az public-ip](/cli/azure/network/public-ip). Ten publiczny adres IP umożliwia łączenie maszyn wirtualnych z Internetu. Ponieważ adresem domyślnym jest dynamiczny, utworzyć wpis DNS o nazwie z `--domain-name-label` parametru. Poniższy przykład tworzy publiczny adres IP o nazwie *myPublicIP* nazwą DNS *mypublicdns*. Ponieważ nazwa DNS musi być unikatowa, należy podać swoją własną unikatową nazwę DNS:
 
 ```azurecli
 az network public-ip create \
@@ -142,7 +142,7 @@ Dane wyjściowe:
 
 
 ## <a name="create-a-network-security-group"></a>Tworzenie sieciowej grupy zabezpieczeń
-Aby sterować przepływem ruchu sieciowego do i z maszyn wirtualnych, należy zastosować sieciową grupę zabezpieczeń do wirtualnych kart Sieciowych lub podsieci. W poniższym przykładzie użyto [tworzenie az sieciowej](/cli/azure/network/nsg#az_network_nsg_create) utworzyć sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
+Aby sterować przepływem ruchu sieciowego do i z maszyn wirtualnych, należy zastosować sieciową grupę zabezpieczeń do wirtualnych kart Sieciowych lub podsieci. W poniższym przykładzie użyto [tworzenie az sieciowej](/cli/azure/network/nsg) utworzyć sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```azurecli
 az network nsg create \
@@ -150,7 +150,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Należy zdefiniować regułę, które blokują lub zezwalają określonego ruchu. Aby zezwolić na połączenia przychodzące na porcie 22 (Aby włączyć dostęp protokołu SSH), należy utworzyć regułę ruchu przychodzącego z [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Poniższy przykład tworzy regułę o nazwie *myNetworkSecurityGroupRuleSSH*:
+Należy zdefiniować regułę, które blokują lub zezwalają określonego ruchu. Aby zezwolić na połączenia przychodzące na porcie 22 (Aby włączyć dostęp protokołu SSH), należy utworzyć regułę ruchu przychodzącego z [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule). Poniższy przykład tworzy regułę o nazwie *myNetworkSecurityGroupRuleSSH*:
 
 ```azurecli
 az network nsg rule create \
@@ -176,7 +176,7 @@ az network nsg rule create \
     --access allow
 ```
 
-Sprawdź sieciowej grupy zabezpieczeń i reguły z [Pokaż sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg#az_network_nsg_show):
+Sprawdź sieciowej grupy zabezpieczeń i reguły z [Pokaż sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg):
 
 ```azurecli
 az network nsg show --resource-group myResourceGroup --name myNetworkSecurityGroup
@@ -445,7 +445,7 @@ Domeny aktualizacji wskazanie grup maszyn wirtualnych i odpowiedniego sprzętu f
 
 Podczas umieszczania ich w zestawie dostępności platformy Azure automatycznie rozdziela maszyny wirtualne w domenach błędów i aktualizacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie dostępnością maszyn wirtualnych](manage-availability.md).
 
-Utwórz zestaw dostępności dla maszyny Wirtualnej za pomocą [az vm w zestawie dostępności Utwórz](/cli/azure/vm/availability-set#az_vm_availability_set_create). W poniższym przykładzie zostanie utworzony zestaw dostępności o nazwie *myAvailabilitySet*:
+Utwórz zestaw dostępności dla maszyny Wirtualnej za pomocą [az vm w zestawie dostępności Utwórz](/cli/azure/vm/availability-set). W poniższym przykładzie zostanie utworzony zestaw dostępności o nazwie *myAvailabilitySet*:
 
 ```azurecli
 az vm availability-set create \
@@ -478,11 +478,11 @@ Informacje o danych wyjściowych domeny błędów i domenach aktualizacji:
 
 
 ## <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
-Utworzono zasobów sieciowych do obsługi maszyn wirtualnych dostępne za pośrednictwem Internetu. Teraz Utwórz Maszynę wirtualną i zabezpiecz ją przy użyciu klucza SSH. W tym przykładzie utworzymy maszynę Wirtualną opartą na najnowszych LTS Ubuntu. Możesz znaleźć dodatkowe obrazy z [listy obrazów maszyn wirtualnych az](/cli/azure/vm/image#az_vm_image_list), zgodnie z opisem w [znajdowanie obrazów maszyn wirtualnych Azure](cli-ps-findimage.md).
+Utworzono zasobów sieciowych do obsługi maszyn wirtualnych dostępne za pośrednictwem Internetu. Teraz Utwórz Maszynę wirtualną i zabezpiecz ją przy użyciu klucza SSH. W tym przykładzie utworzymy maszynę Wirtualną opartą na najnowszych LTS Ubuntu. Możesz znaleźć dodatkowe obrazy z [listy obrazów maszyn wirtualnych az](/cli/azure/vm/image), zgodnie z opisem w [znajdowanie obrazów maszyn wirtualnych Azure](cli-ps-findimage.md).
 
 Określ klucz SSH do uwierzytelniania. Jeśli nie masz pary kluczy publicznych SSH, możesz to zrobić [je utworzyć](mac-create-ssh-keys.md) lub użyj `--generate-ssh-keys` parametru, aby je utworzyć za Ciebie. Jeśli masz już parę kluczy, ten parametr używa istniejących kluczy w `~/.ssh`.
 
-Tworzenie maszyny Wirtualnej, przenosząc wszystkie zasoby i informacje wraz z [tworzenie az vm](/cli/azure/vm#az_vm_create) polecenia. W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*:
+Tworzenie maszyny Wirtualnej, przenosząc wszystkie zasoby i informacje wraz z [tworzenie az vm](/cli/azure/vm) polecenia. W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVM*:
 
 ```azurecli
 az vm create \
@@ -567,7 +567,7 @@ az group export --name myResourceGroup > myResourceGroup.json
 
 To polecenie umożliwia utworzenie `myResourceGroup.json` plik w bieżącym katalogu roboczym. Po utworzeniu środowiska za pomocą tego szablonu, zostanie wyświetlony monit o wszystkich nazw zasobów. Możesz wypełnić te nazwy w pliku szablonu, dodając `--include-parameter-default-value` parametr `az group export` polecenia. Edytuj szablon JSON do określenia nazwy zasobu lub [Tworzenie pliku parameters.json](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) określający nazw zasobów.
 
-Aby utworzyć środowisko z szablonu, należy użyć [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create) w następujący sposób:
+Aby utworzyć środowisko z szablonu, należy użyć [Utwórz wdrożenie grupy az](/cli/azure/group/deployment) w następujący sposób:
 
 ```azurecli
 az group deployment create \

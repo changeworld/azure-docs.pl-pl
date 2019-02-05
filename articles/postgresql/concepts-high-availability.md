@@ -5,19 +5,19 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 4b58a95ed149886cb987d316b7738c4a2d778864
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 02/01/2019
+ms.openlocfilehash: d43647b57469efa4581dc1c74a842a51e9d54ad7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540684"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699821"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql"></a>Pojęcia wysokiej dostępności w usłudze Azure Database for PostgreSQL
 Usługa Azure Database for PostgreSQL oferuje gwarantowaną wysoką dostępność. Finansowo umowy dotyczącej poziomu usług (SLA) wynosi 99,99% po ogólnym udostępnieniu. Nie ma praktycznie nie aplikacji, czas przestoju podczas korzystania z tej usługi.
 
 ## <a name="high-availability"></a>Wysoka dostępność
-Model o wysokiej dostępności (HA) opiera się na wbudowane mechanizmy trybu failover, po wystąpieniu przerwania poziomu węzła. Przerwanie poziomu węzła może wystąpić z powodu awarii sprzętu lub w odpowiedzi na wdrożenie usługi.
+Model o wysokiej dostępności (HA) opiera się na mechanizmów wbudowany tryb failover, po wystąpieniu przerwania poziomu węzła. Przerwanie poziomu węzła może wystąpić z powodu awarii sprzętu lub w odpowiedzi na wdrożenie usługi.
 
 Przez cały czas zmiany wprowadzone do usługi Azure Database for postgresql w warstwie serwera bazy danych występują w kontekście transakcji. Zmiany są rejestrowane w synchronicznie w usłudze Azure storage, gdy transakcja została zatwierdzona. W przypadku przerwania poziomu węzła serwera bazy danych powoduje utworzenie nowego węzła i automatycznie dołącza magazynu danych do nowego węzła. Wszystkie aktywne połączenia są odrzucane i wszystkich transakcji porządkowych nie są zatwierdzone.
 
@@ -32,5 +32,5 @@ Podobnie jak w modelu wysokiej dostępności usługi Azure Database for PostgreS
 Podczas operacji skalowania odbywa się przerwę połączenia bazy danych. Aplikacje klienckie są odłączone, a następnie otwórz niezatwierdzone transakcje są anulowane. Gdy aplikacja kliencka ponawia próbę połączenia lub tworzy nowe połączenie, bramy kieruje połączenia z wystąpieniem o nowym rozmiarze. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for postgresql — omówienie](overview.md)
-- Aby uzyskać omówienie logikę ponawiania próby, zobacz [obsługi błędów przejściowych łączności dla usługi Azure Database for PostgreSQL](concepts-connectivity.md)
+- Dowiedz się więcej o [obsługi błędów przejściowych łączności](concepts-connectivity.md)
+- Dowiedz się, jak [replikowania danych za pomocą odczytu replik](howto-read-replicas-portal.md)

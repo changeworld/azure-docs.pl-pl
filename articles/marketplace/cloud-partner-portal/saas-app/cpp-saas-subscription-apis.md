@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a778723093b226ee0e681c2a95ce4db597a310e5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55199158"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695376"
 ---
 # <a name="saas-sell-through-azure---apis"></a>Sprzedaż SaaS za pośrednictwem platformy Azure — interfejsy API
 
@@ -176,21 +176,21 @@ Akcja POST na rozpoznać punktu końcowego umożliwia użytkownikom można rozpo
 
 *Treść odpowiedzi*
 
- ``` json       
-    { 
-        “id”: “”, 
-        “subscriptionName”: “”,
-        “offerId”:””, 
-         “planId”:””
-    }     
+``` json
+{
+    "id": "",
+    "subscriptionName": "",
+    "offerId": "",
+    "planId": "",
+}
 ```
 
 | **Nazwa parametru** | **Typ danych** | **Opis**                       |
 |--------------------|---------------|---------------------------------------|
-| id                 | Ciąg        | Identyfikator subskrypcji SaaS.          |
-| subscriptionName| Ciąg| Nazwa subskrypcji SaaS ustawione przez użytkownika w systemie Azure podczas subskrybowania usługi SaaS.|
-| OfferId            | Ciąg        | Identyfikator oferty, które subskrybuje użytkownik. |
-| planId             | Ciąg        | Identyfikator planu, który użytkownik.  |
+| id                 | String        | Identyfikator subskrypcji SaaS.          |
+| subscriptionName| String| Nazwa subskrypcji SaaS ustawione przez użytkownika w systemie Azure podczas subskrybowania usługi SaaS.|
+| OfferId            | String        | Identyfikator oferty, które subskrybuje użytkownik. |
+| planId             | String        | Identyfikator planu, który użytkownik.  |
 |  |  |  |
 
 
@@ -246,9 +246,9 @@ Subskrybuj punktu końcowego umożliwia użytkownikom Rozpocznij subskrypcję do
 *Treść*
 
 ``` json
-  { 
-      “planId”:””
-   }      
+{
+    "lanId": "",
+}
 ```
 
 | **Nazwa elementu** | **Typ danych** | **Opis**                      |
@@ -307,15 +307,13 @@ Zmiana punktu końcowego umożliwia użytkownikowi konwertowanie ich aktualnie s
 | Autoryzacja           | Yes          | JSON web token (JWT) token elementu nośnego.                    |
 |  |  |  |
 
-
 *Treść*
 
-``` json
-                { 
-                    “planId”:””
-                } 
+```json
+{
+    "planId": ""
+}
 ```
-
 
 |  **Nazwa elementu** |  **Typ danych**  | **Opis**                              |
 |  ---------------- | -------------   | --------------------------------------       |
@@ -370,7 +368,6 @@ Akcja usuwania w punkcie końcowym Subskrybuj umożliwia użytkownikowi usuwanie
 | x-ms-correlationid | Nie           | Unikatowy ciąg wartości dla operacji na komputerze klienckim. Ta wartość jest do korelacji wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi. |
 | Autoryzacja      | Yes          | JSON web token (JWT) token elementu nośnego.                    |
 |  |  |  |
- 
 
 *Kody odpowiedzi*
 
@@ -413,7 +410,6 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 | wersja interfejsu API         | Wersja operacji przy użyciu dla tego żądania. |
 |  |  |
 
-
 *Nagłówki*
 
 | **Klucz nagłówka**     | **Wymagane** | **Opis**                                                                                                                                                                                                                  |
@@ -422,25 +418,24 @@ Ten punkt końcowy umożliwia użytkownikowi śledzenie stanu operacji asynchron
 | x-ms-correlationid | Nie           | Unikatowy ciąg wartości dla operacji na komputerze klienckim. Ta wartość jest do korelacji wszystkich zdarzeń z operacji klienta ze zdarzeniami po stronie serwera. Jeśli ta wartość nie zostanie podany, jeden zostanie wygenerowany i podana w nagłówki odpowiedzi.  |
 | Autoryzacja      | Yes          | JSON web token (JWT) token elementu nośnego.                    |
 |  |  |  | 
-  
 
 *Treść odpowiedzi*
 
-``` json
-  { 
-      “id”: “”, 
-      “status”:””, 
-       “resourceLocation”:””, 
-      “created”:””, 
-      “lastModified”:”” 
-  } 
+```json
+{
+    "id": "",
+    "status": "",
+    "resourceLocation": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **Nazwa parametru** | **Typ danych** | **Opis**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
-| id                 | Ciąg        | Identyfikator operacji.                                                                      |
+| id                 | String        | Identyfikator operacji.                                                                      |
 | status             | Wyliczenia          | Stan operacji, jedną z następujących: `In Progress`, `Succeeded`, lub `Failed`.          |
-| resourceLocation   | Ciąg        | Link do subskrypcji, który został utworzony lub zmodyfikowany. Dzięki temu klient, aby uzyskać zaktualizowany stan operacji post. Ta wartość nie jest ustawiony dla `Unsubscribe` operacji. |
+| resourceLocation   | String        | Link do subskrypcji, który został utworzony lub zmodyfikowany. Dzięki temu klient, aby uzyskać zaktualizowany stan operacji post. Ta wartość nie jest ustawiony dla `Unsubscribe` operacji. |
 | utworzone            | DateTime      | Czas utworzenia operacji w formacie UTC.                                                           |
 | lastModified       | DateTime      | Ostatnia aktualizacja o nieudanej operacji w formacie UTC.                                                      |
 |  |  |  |
@@ -494,23 +489,23 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 
 *Treść odpowiedzi*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “” 
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 | **Nazwa parametru**     | **Typ danych** | **Opis**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Ciąg        | Zasób subskrypcji identyfikator SaaS na platformie Azure.    |
-| offerId                | Ciąg        | Identyfikator oferty, które subskrybuje użytkownik.         |
-| planId                 | Ciąg        | Identyfikator planu, który użytkownik.          |
-| saasSubscriptionName   | Ciąg        | Nazwa subskrypcji SaaS.                |
+| id                     | String        | Zasób subskrypcji identyfikator SaaS na platformie Azure.    |
+| offerId                | String        | Identyfikator oferty, które subskrybuje użytkownik.         |
+| planId                 | String        | Identyfikator planu, który użytkownik.          |
+| saasSubscriptionName   | String        | Nazwa subskrypcji SaaS.                |
 | saasSubscriptionStatus | Wyliczenia          | Stan operacji.  Jeden z następujących czynności:  <br/> - `Subscribed`: Subskrypcja jest aktywna.  <br/> - `Pending`: Użytkownik utworzenia zasobu, ale nie zostanie aktywowany przez niezależnych dostawców oprogramowania.   <br/> - `Unsubscribed`: Anulowano subskrypcję użytkownika.   <br/> - `Suspended`: Użytkownik został zawieszony subskrypcji.   <br/> - `Deactivated`:  Subskrypcja platformy Azure została zawieszona.  |
 | utworzone                | DateTime      | Wartość sygnatury czasowej tworzenia subskrypcji w formacie UTC. |
 | lastModified           | DateTime      | Subskrypcja zmodyfikowana wartość znacznika czasu w formacie UTC. |
@@ -539,7 +534,6 @@ Subskrybowanie akcję Get na punkt końcowy pozwala na użytkownika, aby pobrać
 | eTag               | Yes          | Link do zasobu, można uzyskać stanu operacji.                                                        |
 |  |  |  |
 
-
 ### <a name="get-subscriptions"></a>Pobiera subskrypcje
 
 Akcja Get w punkcie końcowym subskrypcje umożliwia użytkownika, aby pobrać wszystkie subskrypcje dla wszystkich ofert z niezależnym dostawcą oprogramowania.
@@ -564,27 +558,26 @@ Akcja Get w punkcie końcowym subskrypcje umożliwia użytkownika, aby pobrać w
 | Autoryzacja      | Yes          | JSON web token (JWT) token elementu nośnego.                    |
 |  |  |  |
 
-
 *Treść odpowiedzi*
 
-``` json
-  { 
-      “id”: “”, 
-      “saasSubscriptionName”:””, 
-      “offerId”:””, 
-       “planId”:””, 
-      “saasSubscriptionStatus”:””, 
-      “created”:””, 
-      “lastModified”: “”
-  }
+```json
+{
+    "id": "",
+    "saasSubscriptionName": "",
+    "offerId": "",
+    "planId": "",
+    "saasSubscriptionStatus": "",
+    "created": "",
+    "lastModified": ""
+}
 ```
 
 | **Nazwa parametru**     | **Typ danych** | **Opis**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id                     | Ciąg        | Zasób subskrypcji identyfikator SaaS na platformie Azure.    |
-| offerId                | Ciąg        | Identyfikator oferty, które subskrybuje użytkownik.         |
-| planId                 | Ciąg        | Identyfikator planu, który użytkownik.          |
-| saasSubscriptionName   | Ciąg        | Nazwa subskrypcji SaaS.                |
+| id                     | String        | Zasób subskrypcji identyfikator SaaS na platformie Azure.    |
+| offerId                | String        | Identyfikator oferty, które subskrybuje użytkownik.         |
+| planId                 | String        | Identyfikator planu, który użytkownik.          |
+| saasSubscriptionName   | String        | Nazwa subskrypcji SaaS.                |
 | saasSubscriptionStatus | Wyliczenia          | Stan operacji.  Jeden z następujących czynności:  <br/> - `Subscribed`: Subskrypcja jest aktywna.  <br/> - `Pending`: Użytkownik utworzenia zasobu, ale nie zostanie aktywowany przez niezależnych dostawców oprogramowania.   <br/> - `Unsubscribed`: Anulowano subskrypcję użytkownika.   <br/> - `Suspended`: Użytkownik został zawieszony subskrypcji.   <br/> - `Deactivated`:  Subskrypcja platformy Azure została zawieszona.  |
 | utworzone                | DateTime      | Wartość sygnatury czasowej tworzenia subskrypcji w formacie UTC. |
 | lastModified           | DateTime      | Subskrypcja zmodyfikowana wartość znacznika czasu w formacie UTC. |
@@ -616,7 +609,6 @@ Akcja Get w punkcie końcowym subskrypcje umożliwia użytkownika, aby pobrać w
 
 Element webhook SaaS jest używana do powiadamiania aktywnie zmiany w usłudze SaaS. Ten interfejs API POST powinien być nieuwierzytelnione i zostanie wywołana przez usługę Microsoft. Oczekiwano usługi SaaS do wywoływania operacji interfejsu API, aby zweryfikować i autoryzować przed podjęciem działania na powiadomień elementu webhook. 
 
-
 *Treść*
 
 ``` json
@@ -634,12 +626,12 @@ Element webhook SaaS jest używana do powiadamiania aktywnie zmiany w usłudze S
 
 | **Nazwa parametru**     | **Typ danych** | **Opis**                               |
 |------------------------|---------------|-----------------------------------------------|
-| id  | Ciąg       | Unikatowy identyfikator dla tej operacji wyzwolone.                |
-| activityId   | Ciąg        | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania.               |
-| subscriptionId                     | Ciąg        | Zasób subskrypcji identyfikator SaaS na platformie Azure.    |
-| offerId                | Ciąg        | Identyfikator oferty, które subskrybuje użytkownik. Podany tylko w przypadku akcji "Aktualizuj".        |
-| publisherId                | Ciąg        | Identyfikator wydawcy, oferty SaaS         |
-| planId                 | Ciąg        | Identyfikator planu, który użytkownik. Podany tylko w przypadku akcji "Aktualizuj".          |
-| action                 | Ciąg        | Akcja, która jest przyczyną tego powiadomienia. Możliwe wartości - aktywowania, Usuń, Wstrzymaj, przywrócenie, aktualizację          |
-| timeStamp                 | Ciąg        | Wartość znacznika czasu w formacie UTC to powiadomienie zostało wyzwolone.          |
+| id  | String       | Unikatowy identyfikator dla tej operacji wyzwolone.                |
+| activityId   | String        | Unikatowy ciąg wartości dla śledzenia żądania z usługi. Służy to do dowolnego uzgadniania.               |
+| subscriptionId                     | String        | Zasób subskrypcji identyfikator SaaS na platformie Azure.    |
+| offerId                | String        | Identyfikator oferty, które subskrybuje użytkownik. Podany tylko w przypadku akcji "Aktualizuj".        |
+| publisherId                | String        | Identyfikator wydawcy, oferty SaaS         |
+| planId                 | String        | Identyfikator planu, który użytkownik. Podany tylko w przypadku akcji "Aktualizuj".          |
+| action                 | String        | Akcja, która jest przyczyną tego powiadomienia. Możliwe wartości - aktywowania, Usuń, Wstrzymaj, przywrócenie, aktualizację          |
+| timeStamp                 | String        | Wartość znacznika czasu w formacie UTC to powiadomienie zostało wyzwolone.          |
 |  |  |  |

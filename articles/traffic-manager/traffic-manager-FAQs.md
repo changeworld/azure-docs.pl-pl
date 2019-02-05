@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: a6a8fee942edf4cec98a6d2f46eb2f63b7595c09
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 309c69862d475a0ef76ab0a24ed804b363ba33c0
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200051"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696808"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
 
@@ -285,7 +285,7 @@ Tak. "Staging" miejsca usługi w chmurze można skonfigurować w usłudze Traffi
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Usługa Traffic Manager obsługuje punktów końcowych protokołu IPv6?
 
-Usługa Traffic Manager nie zapewnia obecnie IPv6 addressible serwerów nazw. Jednak usługa Traffic Manager można jej użyć protokołu IPv6 klientom nawiązywanie połączenia z punktów końcowych protokołu IPv6. Klient nie powoduje żądania DNS bezpośrednio do usługi Traffic Manager. Zamiast tego klient korzysta z rekursywnych usług DNS. Tylko protokół IPv6 klienta wysyła żądania do rekursywnych usług DNS za pomocą protokołu IPv6. Następnie usługa cykliczne, powinno być możliwe do kontaktowania się z serwerami nazw usługi Traffic Manager przy użyciu protokołu IPv4.
+Usługa Traffic Manager nie zapewnia obecnie adresy IPv6 serwerów nazw. Jednak usługa Traffic Manager można jej użyć protokołu IPv6 klientom nawiązywanie połączenia z punktów końcowych protokołu IPv6. Klient nie powoduje żądania DNS bezpośrednio do usługi Traffic Manager. Zamiast tego klient korzysta z rekursywnych usług DNS. Tylko protokół IPv6 klienta wysyła żądania do rekursywnych usług DNS za pomocą protokołu IPv6. Następnie usługa cykliczne, powinno być możliwe do kontaktowania się z serwerami nazw usługi Traffic Manager przy użyciu protokołu IPv4.
 
 Usługa Traffic Manager odpowiada za pomocą nazwy DNS lub adres IP punktu końcowego. Aby zapewnić obsługę punktu końcowego protokołu IPv6, dostępne są dwie opcje. Możesz dodać punkt końcowy jako nazwy DNS, który ma skojarzony rekord AAAA i Traffic Manager będzie sprawdzenie kondycji, ten punkt końcowy i zwracany typ go jako rekord CNAME w odpowiedzi na zapytanie. Można również dodać punkt końcowy bezpośrednio przy użyciu adresu IPv6 i usługi Traffic Manager zwróci rekord AAAA typu w odpowiedzi na zapytanie. 
 
@@ -349,7 +349,7 @@ Po odebraniu zapytania względem profilu usługi Traffic Manager umożliwia znal
 Dla profilów przy użyciu dowolnej metody routingu w innych niż atrybut wielowartościowy elementu:
 |Przychodzące żądania zapytania|    Typ punktu końcowego|  Podany odpowiedź|
 |--|--|--|
-|WSZYSTKIE |  A / AAAA / CNAME |  Docelowy punkt końcowy| 
+|ANY |  A / AAAA / CNAME |  Docelowy punkt końcowy| 
 |A |    A / CNAME | Docelowy punkt końcowy|
 |A |    AAAA |  NODATA |
 |AAAA | AAAA / CNAME |  Docelowy punkt końcowy|
@@ -361,7 +361,7 @@ Dla profilów za pomocą metody routingu opartego na ustawić atrybut wielowarto
 
 |Przychodzące żądania zapytania|    Typ punktu końcowego | Podany odpowiedź|
 |--|--|--|
-|WSZYSTKIE |  Kombinacja A i AAAA | Miejsce docelowe punktów końcowych|
+|ANY |  Kombinacja A i AAAA | Miejsce docelowe punktów końcowych|
 |A |    Kombinacja A i AAAA | Tylko docelowych punktów końcowych, wpisz|
 |AAAA   |Kombinacja A i AAAA|     Tylko docelowych punktów końcowych typu AAAA|
 |CNAME |    Kombinacja A i AAAA | NODATA |

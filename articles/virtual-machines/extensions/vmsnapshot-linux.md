@@ -10,12 +10,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: 1bcf326bde3ac5c97734393ee162b1f98d1553ce
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: aa1ef28817a2fb6ec75d3f131bac053e707c21ff
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634205"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697208"
 ---
 # <a name="vm-snapshot-linux-extension-for-azure-backup"></a>Rozszerzenie migawki maszyny Wirtualnej w systemie Linux dla usługi Azure Backup
 
@@ -54,7 +54,7 @@ Następujący kod JSON zawiera schemat rozszerzenie migawki maszyny Wirtualnej. 
       "vmType": "microsoft.compute/virtualmachines"
     },
     "protectedSettings": {
-      "objectStr": "<blob SAS uri represenattion of VM sent by Azure Backup service to extension>",
+      "objectStr": "<blob SAS uri representation of VM sent by Azure Backup service to extension>",
       "logsBlobUri": "<blob uri where logs of command execution by extension are written to>",
       "statusBlobUri": "<blob uri where status of the command executed by extension is written>"
     }
@@ -67,9 +67,9 @@ Następujący kod JSON zawiera schemat rozszerzenie migawki maszyny Wirtualnej. 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| Identyfikator zadania: | e07354cf-041e-4370-929f-25a319ce8933_1 | ciąg |
+| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | ciąg |
 | commandStartTimeUTCTicks | 6.36458E + 17 | ciąg |
-| ustawienia regionalne | En-us | ciąg |
+| ustawienia regionalne | en-us | ciąg |
 | objectStr | Kodowanie tablicy identyfikatora uri sygnatury dostępu współdzielonego — "blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/wirtualne dyski twarde\/vmubuntu1404ltsc201652903941.vhd? sv = 2014-02-14 & sr = b & sig = TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA % 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/\/sopattna8461.blob.core.windows.net\/wirtualne dyski twarde\/vmubuntu1404ltsc-20160629-122418.vhd? sv = 2014-02-14 & sr = b & sig = 2BS % 2FqMwzFMbamT5upwx05v8Q 5S0A6YDWvVwqPAkzWXVy % 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/ \/ sopattna8461.blob.Core.Windows.NET\/bootdiagnostics-vmubuntu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541.vhd? sv = 2014-02-14 & sr = b & sig = X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4% 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/\/sopattna5365.blob.core.windows.net\/wirtualne dyski twarde\/vmubuntu1404ltsc-20160701-163922.vhd? sv = 2014-02-14 & sr = b & sig = 2BC % 2BNIAork oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r % 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "," https:\/ \/ sopattna5365.blob.Core.Windows.NET\/wirtualne dyski twarde\/vmubuntu1404ltsc-20170705-124311.vhd? sv = 2014-02-14 & sr = b & sig = 2FfrhJ71TFZh0Ni90m38bBs3zMl % 2FQ9rs0 ZUM9d28Mvvm % 3D & st = 2017-11-09T14% 3A23% 3A28Z & se = 2017-11-09T17% 3A38% 3A28Z & sp = rw "] | ciąg |
 | logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | ciąg |
 | statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | ciąg |

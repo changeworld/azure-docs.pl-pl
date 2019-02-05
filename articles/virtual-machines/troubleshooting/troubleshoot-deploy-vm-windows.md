@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 6362b243bff91233c3cd08f26904866dd7be9ebd
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9610256ac68b6c1be12ca22220e317752c068b85
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248881"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730837"
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Rozwiązywanie wdrażanie Windows maszyny wirtualnej na platformie Azure
 
@@ -87,7 +87,7 @@ Aby aktywować swoje miesięczne środki, zobacz ten [artykułu](https://azure.m
 
 ## <a name="how-to-add-enterprise-devtest-to-my-enterprise-agreement-ea-to-get-access-to-window-client-images"></a>Jak dodać do mojego Enterprise Agreement (EA) Aby uzyskać dostęp do okna obrazów klientów przedsiębiorstwa i testowania?
 
-Możliwość tworzenia subskrypcji w ramach oferty Enterprise, tworzenie i testowanie jest zarezerwowana dla właścicieli kont z odpowiednimi mieć uprawnieniami udzielonymi przez administratora przedsiębiorstwa. Właściciel konta tworzy subskrypcje za pośrednictwem portalu konta platformy Azure i czym powinien dodać aktywnych subskrybentów programu Visual Studio jako współadministratorów. Tak, aby umożliwić im zarządzanie oraz korzystać z zasobów potrzebnych do tworzenia i testowania aplikacji. Aby uzyskać więcej informacji, zobacz [przedsiębiorstwa i testowania](https://azure.microsoft.com/offers/ms-azr-0148p/).
+Możliwość tworzenia subskrypcji w ramach oferty „Enterprise — tworzenie i testowanie” jest zarezerwowana dla właścicieli kont z odpowiednimi uprawnieniami udzielonymi przez administratora przedsiębiorstwa. Właściciel konta tworzy subskrypcje za pośrednictwem portalu konta platformy Azure i czym powinien dodać aktywnych subskrybentów programu Visual Studio jako współadministratorów. Tak, aby umożliwić im zarządzanie oraz korzystać z zasobów potrzebnych do tworzenia i testowania aplikacji. Aby uzyskać więcej informacji, zobacz [przedsiębiorstwa i testowania](https://azure.microsoft.com/offers/ms-azr-0148p/).
 
 ## <a name="my-drivers-are-missing-for-my-windows-n-series-vm"></a>Moje sterowniki są spełnione dla maszyną Wirtualną serii N z systemem Windows
 
@@ -124,7 +124,7 @@ Wybierz rozmiar, który jest obsługiwany na zestaw dostępności klastra. Zalec
 
 ## <a name="can-i-add-an-existing-classic-vm-to-an-availability-set"></a>Do zestawu dostępności można dodać istniejącej klasycznej maszyny Wirtualnej?
 
-Tak. Możesz dodać istniejące klasycznej maszyny Wirtualnej do nowego lub istniejącego zestawu dostępności. Aby uzyskać więcej informacji, zobacz [Dodaj istniejącą maszynę wirtualną do zestawu dostępności](../windows/classic/configure-availability-classic.md#addmachine).
+Tak. Możesz dodać istniejące klasycznej maszyny Wirtualnej do nowego lub istniejącego zestawu dostępności. Aby uzyskać więcej informacji, zobacz [Dodaj istniejącą maszynę wirtualną do zestawu dostępności](/previous-versions/azure/virtual-machines/windows/classic/configure-availability-classic#addmachine).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

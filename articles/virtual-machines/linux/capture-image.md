@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32cd3b9eb60a6d12c71be047740fa96ffdd56310
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: 5022d765b5dfa4f1f973b7fb4370d5314bb887b8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094160"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731941"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego
 
@@ -43,7 +43,7 @@ Przed utworzeniem obrazu będą potrzebne następujące elementy:
 Uproszczoną wersję tego artykułu, a w przypadku testowania oceny lub informacje o maszynach wirtualnych na platformie Azure, zobacz [Tworzenie niestandardowego obrazu maszyny wirtualnej portalu Azure przy użyciu interfejsu wiersza polecenia](tutorial-custom-images.md).
 
 
-## <a name="step-1-deprovision-the-vm"></a>Krok 1: Anulowanie aprowizacji maszyny Wirtualnej
+## <a name="step-1-deprovision-the-vm"></a>Krok 1: Anulowanie aprowizacji maszyny wirtualnej
 Najpierw będzie anulowanie aprowizacji maszyny Wirtualnej przy użyciu agenta maszyny Wirtualnej platformy Azure, aby usunąć pliki specyficzny dla komputera i danych. Użyj `waagent` polecenia `-deprovision+user` parametr źródłowa maszyna wirtualna systemu Linux. Aby uzyskać więcej informacji, zobacz [Przewodnik użytkownika Agenta platformy Azure dla systemu Linux](../extensions/agent-linux.md).
 
 1. Połącz z maszyną wirtualną systemu Linux, przy użyciu klienta SSH.
@@ -61,7 +61,7 @@ Najpierw będzie anulowanie aprowizacji maszyny Wirtualnej przy użyciu agenta m
 ## <a name="step-2-create-vm-image"></a>Krok 2: Tworzenie obrazu maszyny Wirtualnej
 Oznaczanie maszyny Wirtualnej jako uogólnionej i przechwycić obraz, należy użyć wiersza polecenia platformy Azure. W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myVnet*, i *myVM*.
 
-1. Cofnij Przydział maszyny Wirtualnej, która zostanie anulowanie aprowizacji przy użyciu [az vm deallocate](/cli/azure/vm#deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*.
+1. Cofnij Przydział maszyny Wirtualnej, która zostanie anulowanie aprowizacji przy użyciu [az vm deallocate](/cli/azure/vm). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*.
    
     ```azurecli
     az vm deallocate \
@@ -69,7 +69,7 @@ Oznaczanie maszyny Wirtualnej jako uogólnionej i przechwycić obraz, należy u�
       --name myVM
     ```
 
-2. Oznaczanie maszyny Wirtualnej uogólniony za pomocą [az vm generalize](/cli/azure/vm#generalize). Poniższy przykład oznacza maszynę Wirtualną o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup* jako uogólniona.
+2. Oznaczanie maszyny Wirtualnej uogólniony za pomocą [az vm generalize](/cli/azure/vm). Poniższy przykład oznacza maszynę Wirtualną o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup* jako uogólniona.
    
     ```azurecli
     az vm generalize \
@@ -91,7 +91,7 @@ Oznaczanie maszyny Wirtualnej jako uogólnionej i przechwycić obraz, należy u�
    > Jeśli chcesz przechowywać obraz w strefie utworzenia niezawodnego magazynu, należy je utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i obejmują `--zone-resilient true` parametru.
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>Krok 3: Utwórz Maszynę wirtualną z przechwyconego obrazu
-Tworzenie maszyny Wirtualnej przy użyciu obrazu, który został utworzony z [tworzenie az vm](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMDeployed* za pomocą obrazu o nazwie *myImage*.
+Tworzenie maszyny Wirtualnej przy użyciu obrazu, który został utworzony z [tworzenie az vm](/cli/azure/vm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVMDeployed* za pomocą obrazu o nazwie *myImage*.
 
 ```azurecli
 az vm create \
@@ -124,7 +124,7 @@ az vm create \
 ```
 
 
-## <a name="step-4-verify-the-deployment"></a>Krok 4: Sprawdzenie wdrożenia
+## <a name="step-4-verify-the-deployment"></a>Krok 4: Weryfikowanie wdrożenia
 
 Protokół SSH z maszyną wirtualną, utworzonego do weryfikacji wdrożenia i Rozpocznij korzystanie z nowej maszyny Wirtualnej. Aby połączyć się za pośrednictwem protokołu SSH, znaleźć adres IP lub nazwa FQDN maszyny wirtualnej za pomocą [az vm show](/cli/azure/vm#az-vm-show).
 

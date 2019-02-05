@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 887134f7d790e5ed7e878a94caa9ef2fb9356ae3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 28d1387e5c1efd85ab0b944f7cffc4fe215eb73f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102159"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734491"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 1.0
 
@@ -36,7 +36,7 @@ Usługa Azure Active Directory (Azure AD) szeroko wykorzystuje użycie uprawnie�
 
 W usłudze Azure AD zdefiniowano dwa rodzaje uprawnień:
 
-* **Uprawnienia delegowane** — są używane przez aplikacje, w których użytkownik jest obecnie zalogowany. W przypadku takich aplikacji zgodę na uprawnienia żądane przez aplikację może wyrazić użytkownik lub administrator. Podczas wywołań interfejsu API do aplikacji są delegowane uprawnienia do działania w roli zalogowanego użytkownika. W zależności od interfejsu API, użytkownik może okazać się niemożliwe do wyrażenia zgody na interfejsie API bezpośrednio i zamiast tego będzie [wymagają administrator, aby zapewnić "zgoda administratora"](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
+* **Uprawnienia delegowane** — są używane przez aplikacje, w których użytkownik jest obecnie zalogowany. W przypadku takich aplikacji zgodę na uprawnienia żądane przez aplikację może wyrazić użytkownik lub administrator. Podczas wywołań interfejsu API do aplikacji są delegowane uprawnienia do działania w roli zalogowanego użytkownika. W zależności od interfejsu API, użytkownik może okazać się niemożliwe do wyrażenia zgody na interfejsie API bezpośrednio i zamiast tego będzie [wymagają administrator, aby zapewnić "zgoda administratora"](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 * **Uprawnienia aplikacji** — są używane przez aplikacje i nie wymagają zalogowanego użytkownika. Są to np. aplikacje działające jako usługi w tle lub demony. Uprawnienia aplikacji mogą być [nadane wyłącznie przez administratora](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), ponieważ stanowią potężne narzędzia i umożliwiają dostęp do danych przekraczający granice użytkownika lub dotyczą danych, dostęp do których byłby w przeciwnym razie ograniczony do administratorów.
 
 Czynne uprawnienia to uprawnienia, które aplikacja będzie posiadać podczas wysyłania żądań do interfejsu API. 

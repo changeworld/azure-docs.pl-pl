@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 935af10c2ebcdc5273671ed058fdf72099059da3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475623"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731398"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Tworzenie zadania eksportu dla usługi Azure Import/Export
 Tworzenie zadania eksportu dla usługi Microsoft Azure Import/Export, za pomocą interfejsu API REST obejmuje następujące czynności:
@@ -45,21 +45,21 @@ Tworzenie zadania eksportu dla usługi Microsoft Azure Import/Export, za pomocą
 
 -   Możesz wyeksportować wszystkie obiekty BLOB i migawki na koncie magazynu.
 
- Aby uzyskać więcej informacji na temat określania obiekty BLOB do wyeksportowania, zobacz [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji.
+ Aby uzyskać więcej informacji na temat określania obiekty BLOB do wyeksportowania, zobacz [umieścić zadania](/rest/api/storageimportexport/jobs) operacji.
 
 ## <a name="obtaining-your-shipping-location"></a>Uzyskiwanie lokalizacji wysyłki
 Przed utworzeniem przez zadanie eksportu, należy uzyskać nazwę lokalizacji wysyłki i adres, wywołując [Pobieranie lokalizacji](https://portal.azure.com) lub [listy lokalizacji](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) operacji. `List Locations` Spowoduje to zwrócenie listy lokalizacje i swoje adresy pocztowe. Można wybrać lokalizację z listy zwracane i wysłania dysków twardych do tego adresu. Można również użyć `Get Location` operacji bezpośrednio uzyskać adres wysyłkowy dla określonej lokalizacji.
 
 Wykonaj poniższe kroki, aby uzyskać lokalizacji wysyłki:
 
--   Określ nazwę lokalizacji konta magazynu. Tę wartość można znaleźć w obszarze **lokalizacji** pola na koncie magazynu **pulpit nawigacyjny** w witrynie Azure portal lub kwerendy dla za pomocą operacji interfejsu API zarządzania usługi [pobrać konta magazynu Właściwości](/rest/api/storagerp/storageaccounts#StorageAccounts_GetProperties).
+-   Określ nazwę lokalizacji konta magazynu. Tę wartość można znaleźć w obszarze **lokalizacji** pola na koncie magazynu **pulpit nawigacyjny** w witrynie Azure portal lub kwerendy dla za pomocą operacji interfejsu API zarządzania usługi [pobrać konta magazynu Właściwości](/rest/api/storagerp/storageaccounts).
 
 -   Pobieranie lokalizacji, które są dostępne do przetworzenia tego konta magazynu przez wywołanie metody `Get Location` operacji.
 
 -   Jeśli `AlternateLocations` właściwość lokalizacji zawiera sama lokalizacja, a następnie można użyć tej lokalizacji. W przeciwnym razie wywołanie `Get Location` ponownie operację, używając jednej z lokalizacji alternatywnej. Oryginalnej lokalizacji może być tymczasowo zamknięte w celu przeprowadzenia konserwacji.
 
 ## <a name="creating-the-export-job"></a>Tworzenie zadania eksportu
- Aby utworzyć zadanie eksportu, wywołaj [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji. Należy podać następujące informacje:
+ Aby utworzyć zadanie eksportu, wywołaj [umieścić zadania](/rest/api/storageimportexport/jobs) operacji. Należy podać następujące informacje:
 
 -   Nazwa zadania.
 
@@ -82,10 +82,10 @@ Wykonaj poniższe kroki, aby uzyskać lokalizacji wysyłki:
 >  Należy dostarczyć dysków za pośrednictwem usługi obsługiwane operatora, który dostarczy numer śledzenia dla pakietu.
 
 ## <a name="updating-the-export-job-with-your-package-information"></a>Trwa aktualizowanie zadania eksportu z informacjami o pakietu
- Po umieszczeniu numeru śledzenia wywołań [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs#Jobs_Update) operację, aby zaktualizować Nazwa operatora i śledzenie liczby dla zadania. Opcjonalnie możesz określić liczbę dysków, adres zwrotny, a także data wysyłki.
+ Po umieszczeniu numeru śledzenia wywołań [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs) operację, aby zaktualizować Nazwa operatora i śledzenie liczby dla zadania. Opcjonalnie możesz określić liczbę dysków, adres zwrotny, a także data wysyłki.
 
 ## <a name="receiving-the-package"></a>Odbieranie pakietu
- Po przetworzeniu zadania eksportu dysków zostaną zwrócone do użytkownika za pomocą zaszyfrowanych danych. Możesz pobrać klucza funkcji BitLocker dla wszystkich dysków przez wywołanie metody [pobrania zadania](/rest/api/storageimportexport/jobs#Jobs_Get) operacji. Następnie można odblokować dysku przy użyciu klucza. Plik manifestu dysku na każdym dysku, zawiera listę plików na dysku, a także oryginalnego adresu obiektu blob dla każdego pliku.
+ Po przetworzeniu zadania eksportu dysków zostaną zwrócone do użytkownika za pomocą zaszyfrowanych danych. Możesz pobrać klucza funkcji BitLocker dla wszystkich dysków przez wywołanie metody [pobrania zadania](/rest/api/storageimportexport/jobs) operacji. Następnie można odblokować dysku przy użyciu klucza. Plik manifestu dysku na każdym dysku, zawiera listę plików na dysku, a także oryginalnego adresu obiektu blob dla każdego pliku.
 
 [!INCLUDE [storage-import-export-delete-personal-info.md](../../../includes/storage-import-export-delete-personal-info.md)]
 

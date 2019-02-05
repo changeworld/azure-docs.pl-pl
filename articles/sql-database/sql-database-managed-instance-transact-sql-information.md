@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure SQL Database Managed różnice języka T-SQL w wystąpieniu | Dokumentacja firmy Microsoft
-description: W tym artykule omówiono różnice języka T-SQL wystąpienia zarządzanego Azure SQL Database i programu SQL Server
+title: Usługa Azure SQL Database managed różnice języka T-SQL w wystąpieniu | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono różnice języka T-SQL wystąpienia zarządzanego usługi Azure SQL Database i programu SQL Server
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,17 +11,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 01/31/2019
-ms.openlocfilehash: 3fa0977a8239a3d0db1aea99d39a2079945b724a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/04/2019
+ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567727"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734610"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
+# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Usługa Azure SQL Database managed różnice wystąpienia języka T-SQL z programu SQL Server
 
-Wystąpienie usługi Azure SQL Database Managed zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcji aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym.
+Opcji wdrożenia wystąpienia zarządzanego zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcje aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym.
 
 ![Migracja](./media/sql-database-managed-instance/migration.png)
 
@@ -30,14 +30,14 @@ Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artyku
 - [Zabezpieczenia](#security) włącznie z różnicami w [inspekcji](#auditing), [certyfikaty](#certificates), [poświadczenia](#credentials), [dostawcy usług kryptograficznych](#cryptographic-providers), [Logowania / użytkownicy](#logins--users), [klucza oraz klucza głównego usługi](#service-key-and-service-master-key),
 - [Konfiguracja](#configuration) włącznie z różnicami w [buforu rozszerzenia puli](#buffer-pool-extension), [sortowania](#collation), [poziomy zgodności](#compatibility-levels),[bazy danych dublowanie](#database-mirroring), [opcje bazy danych](#database-options), [programu SQL Server Agent](#sql-server-agent), [Opcje tabeli](#tables),
 - [Funkcje](#functionalities) tym [ZBIORCZEGO WSTAWIANIA/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcje rozproszone](#distributed-transactions), [ Rozszerzone zdarzenia](#extended-events), [zewnętrznych bibliotekach](#external-libraries), [Filestream i Filetable](#filestream-and-filetable), [pełnotekstowe wyszukiwanie semantyczne](#full-text-semantic-search), [połączonej serwery](#linked-servers), [Polybase](#polybase), [replikacji](#replication), [PRZYWRÓCIĆ](#restore-statement), [programu Service Broker](#service-broker), [ Procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-triggers),
-- [Funkcje, które mają różne zachowanie w wystąpieniu zarządzanym](#Changes)
+- [Funkcje, które mają różne zachowanie w wystąpieniach zarządzanych](#Changes)
 - [Tymczasowe ograniczenia i znane problemy](#Issues)
 
 ## <a name="availability"></a>Dostępność
 
 ### <a name="always-on-availability"></a>Zawsze włączone
 
-[Wysoka dostępność](sql-database-high-availability.md) jest wbudowana w wystąpieniu zarządzanym i nie mogą być kontrolowane przez użytkowników. Poniższe instrukcje nie są obsługiwane:
+[Wysoka dostępność](sql-database-high-availability.md) jest wbudowana w wystąpienia zarządzanego i nie mogą być kontrolowane przez użytkowników. Poniższe instrukcje nie są obsługiwane:
 
 - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
 - [UTWÓRZ GRUPĘ DOSTĘPNOŚCI](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
@@ -47,9 +47,9 @@ Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artyku
 
 ### <a name="backup"></a>Backup
 
-Wystąpienie zarządzane jest automatyczne tworzenie kopii zapasowych i pozwala użytkownikom na tworzenie pełnej bazy danych `COPY_ONLY` kopii zapasowych. Różnicowe kopie zapasowe, log oraz kopii zapasowych migawki pliku nie są obsługiwane.
+Wystąpienia zarządzane mają automatyczne kopie zapasowe i umożliwia użytkownikom tworzenie pełnej bazy danych `COPY_ONLY` kopii zapasowych. Różnicowe kopie zapasowe, log oraz kopii zapasowych migawki pliku nie są obsługiwane.
 
-- Wystąpienie zarządzane kopi zapasowej bazy danych tylko do konta usługi Azure Blob Storage:
+- Za pomocą wystąpienia zarządzanego kopii zapasowych wystąpienia bazy danych tylko do konta usługi Azure Blob Storage:
   - Tylko `BACKUP TO URL` jest obsługiwana
   - `FILE`, `TAPE`, a urządzenia kopii zapasowej nie są obsługiwane.  
 - Większość ogólnych `WITH` opcje są obsługiwane
@@ -60,7 +60,7 @@ Wystąpienie zarządzane jest automatyczne tworzenie kopii zapasowych i pozwala 
 
 Ograniczenia:  
 
-- Wystąpienie zarządzane można utworzyć kopię zapasową bazy danych w kopii zapasowej z maksymalnie 32 rozkłada, który jest wystarczająca dla baz danych do 4 TB, jeśli kompresja kopii zapasowej jest używany.
+- Za pomocą wystąpienia zarządzanego, kopii zapasowych wystąpienia bazy danych w kopii zapasowej z maksymalnie 32 rozkłada, który jest wystarczająca dla baz danych do 4 TB, jeśli kompresja kopii zapasowej jest używany.
 - Maksymalny rozmiar kopii zapasowej usługi stripe to 195 GB (rozmiar maksymalny obiektów blob). Zwiększ liczbę paski w kopii zapasowej polecenie, aby zmniejszyć rozmiar woluminu rozłożonego indywidualnych i w ramach tego limitu.
 
 > [!TIP]
@@ -72,13 +72,13 @@ Aby uzyskać informacji na temat kopii zapasowych przy użyciu języka T-SQL, zo
 
 ### <a name="auditing"></a>Inspekcja
 
-Podstawowe różnice między inspekcji SQL w wystąpieniu zarządzanym, Azure SQL Database i SQL Server w środowisku lokalnym są:
+Podstawowe różnice między inspekcji w bazach danych Azure SQL Database i baz danych programu SQL Server są:
 
-- W wystąpieniu zarządzanym inspekcji SQL działa na poziomie serwera i magazyny `.xel` konta magazynu obiektów blob plików na platformie Azure.  
-- W usłudze Azure SQL Database inspekcji SQL, działa na poziomie bazy danych.
-- W programie SQL Server w środowisku lokalnym / maszyny wirtualnej, inspekcji SQL, który działa na poziomie serwera, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.  
+- Za pomocą opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database, inspekcja działa na poziomie serwera i magazyny `.xel` dzienniki na koncie magazynu obiektów blob platformy Azure.
+- Korzystając z pojedynczą bazę danych i pul elastycznych opcji wdrażania w usłudze Azure SQL Database inspekcja działa na poziomie bazy danych.
+- W programie SQL Server w środowisku lokalnym / wirtualnej maszyny, inspekcji działa na serwerze poziomu, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.
   
-Inspekcji systemu XEvent, w wystąpieniu zarządzanym obsługuje obiekty docelowe magazynu obiektów blob platformy Azure. Dzienniki plików i systemu windows nie są obsługiwane.
+Przeprowadzanie inspekcji w zarządzanym wystąpieniu systemu XEvent obsługuje obiekty docelowe magazynu obiektów blob platformy Azure. Dzienniki plików i systemu windows nie są obsługiwane.
 
 Klucz różnice w `CREATE AUDIT` składnia dla inspekcji w usłudze Azure blob storage są:
 
@@ -93,7 +93,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 ### <a name="certificates"></a>Certyfikaty
 
-Wystąpienie zarządzane nie może uzyskiwać dostępu do udziałów plików i folderów systemu Windows, dlatego obowiązują następujące ograniczenia:
+Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc obowiązują następujące ograniczenia:
 
 - `CREATE FROM`/`BACKUP TO` plik nie jest obsługiwany w przypadku certyfikatów
 - `CREATE`/`BACKUP` certyfikat od `FILE` / `ASSEMBLY` nie jest obsługiwane. Nie można użyć plików kluczy prywatnych.  
@@ -191,7 +191,7 @@ Aby uzyskać więcej informacji, zobacz [CREATE DATABASE](https://docs.microsoft
 
 Niektóre właściwości pliku nie można ustawić lub zmienić:
 
-- Nie można określić ścieżkę pliku w `ALTER DATABASE ADD FILE (FILENAME='path')` instrukcję języka T-SQL. Usuń `FILENAME` ze skryptu, ponieważ zarządzane wystąpienie automatycznie umieszcza pliki.  
+- Nie można określić ścieżkę pliku w `ALTER DATABASE ADD FILE (FILENAME='path')` instrukcję języka T-SQL. Usuń `FILENAME` ze skryptu, ponieważ wystąpienie zarządzane automatycznie umieszcza pliki.  
 - Nie można zmienić nazwy pliku, przy użyciu `ALTER DATABASE` instrukcji.
 
 Poniższe opcje są domyślnie i nie można zmienić:
@@ -228,7 +228,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.
 
 ### <a name="sql-server-agent"></a>Program SQL Server Agent
 
-- Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym.  
+- Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwany w wystąpieniach zarządzanych.  
 - Stanowiska
   - Kroki w zadaniu języka T-SQL są obsługiwane.
   - Obsługiwane są następujące zadania replikacji:
@@ -282,7 +282,7 @@ Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i fol
 
 ### <a name="clr"></a>CLR
 
-Wystąpienie zarządzane nie może uzyskiwać dostępu do udziałów plików i folderów systemu Windows, dlatego obowiązują następujące ograniczenia:
+Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc obowiązują następujące ograniczenia:
 
 - Tylko `CREATE ASSEMBLY FROM BINARY` jest obsługiwana. Zobacz [tworzenia zestawu z danych](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
 - `CREATE ASSEMBLY FROM FILE` nie jest obsługiwane. Zobacz [tworzenie zestawów z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
@@ -291,7 +291,7 @@ Wystąpienie zarządzane nie może uzyskiwać dostępu do udziałów plików i f
 
 ### <a name="dbcc"></a>DBCC
 
-Nieudokumentowany instrukcji DBCC, które są włączone w programie SQL Server nie są obsługiwane w wystąpieniu zarządzanym.
+Nieudokumentowany instrukcji DBCC, które są włączone w programie SQL Server nie są obsługiwane w wystąpieniach zarządzanych.
 
 - `Trace Flags` nie są obsługiwane. Zobacz [flagi śledzenia](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - `DBCC TRACEOFF` nie jest obsługiwane. Zobacz [polecenia DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql).
@@ -299,7 +299,7 @@ Nieudokumentowany instrukcji DBCC, które są włączone w programie SQL Server 
 
 ### <a name="distributed-transactions"></a>Transakcje rozproszone
 
-Żadna usługa MSDTC ani [transakcje elastyczne](sql-database-elastic-transactions-overview.md) są obecnie obsługiwane w wystąpieniu zarządzanym.
+Żadna usługa MSDTC ani [transakcje elastyczne](sql-database-elastic-transactions-overview.md) są obecnie obsługiwane w wystąpieniach zarządzanych.
 
 ### <a name="extended-events"></a>Rozszerzone zdarzenia
 
@@ -333,7 +333,7 @@ Aby uzyskać więcej informacji, zobacz [FILESTREAM](https://docs.microsoft.com/
 
 ### <a name="linked-servers"></a>Serwery połączone
 
-Połączone serwery w wystąpieniu zarządzanym obsługują ograniczoną liczbę elementów docelowych:
+Połączone serwery w wystąpieniach zarządzanych obsługują ograniczoną liczbę elementów docelowych:
 
 - Obsługiwane obiekty docelowe: SQL Server i bazy danych SQL
 - Nieobsługiwane elementy docelowe: pliki, usługi Analysis Services i inne RDBMS.
@@ -351,7 +351,7 @@ Tabele zewnętrzne odwołujące się do plików w systemie plików HDFS lub Azur
 
 ### <a name="replication"></a>Replikacja
 
-Replikacja jest dostępna w publicznej wersji zapoznawczej na wystąpieniu zarządzanym. Aby uzyskać informacji o replikacji, zobacz [replikacji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+Replikacja jest dostępna w publicznej wersji zapoznawczej dla wystąpienia zarządzanego. Aby uzyskać informacji o replikacji, zobacz [replikacji programu SQL Server](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
 
 ### <a name="restore-statement"></a>Przywracanie — instrukcja
 
@@ -421,7 +421,7 @@ Broker usług dla wielu wystąpień nie jest obsługiwana:
 Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 - `SERVERPROPERTY('EngineEdition')` Zwraca wartość 8. Ta właściwość jest jednoznacznie identyfikuje wystąpienie zarządzane. Zobacz [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` Zwraca wartość NULL, ponieważ koncepcji wystąpienia, ponieważ nie istnieje dla programu SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` Zwraca wartość NULL, ponieważ nie istnieje pojęcie wystąpienia, ponieważ dla programu SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME` Zwraca pełną "składnika" nazwą DNS, na przykład Moje instance.wcus17662feb9ce98.database.windows.net zarządzane. Zobacz [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
 - `SYS.SERVERS` -Zwraca pełną "składnika" nazwy DNS, takich jak `myinstance.domain.database.windows.net` dla właściwości "name" i "data_source". Zobacz [SYS. SERWERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
 - `@@SERVICENAME` Zwraca wartość NULL, ponieważ koncepcję usług, ponieważ nie istnieje dla programu SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
@@ -439,12 +439,12 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 Każde wystąpienie zarządzane musi 35 TB pamięci masowej zarezerwowane dla miejsca na dysku Premium platformy Azure, a każdego pliku bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest rozliczany, ale suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekraczać 35 TB. W niektórych przypadkach wystąpienia zarządzanego, które nie wymagają 8 TB w sumie może przekraczać 35 TB Azure limit rozmiaru magazynu, z powodu wewnętrznego fragmentacji.
 
-Na przykład wystąpienie zarządzane mogą mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 (każdego 1 GB w rozmiarze), które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
+Na przykład, wystąpienia zarządzanego może mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 (każdego 1 GB w rozmiarze), które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
 
 - Rozmiar magazynu całkowitego miejsca na dysku przydzielonego to 1-4 TB + 248 × 128 GB = 35 TB.
 - łączne miejsce zarezerwowane dla baz danych w wystąpieniu jest 1 x 1,2 TB + 248 x 1 GB = 1,4 TB pojemności.
 
-To pokazuje, że w pewnych okolicznościach, ze względu na dystrybucji określonych plików, wystąpienie zarządzane mogą docierać do większej 35 TB zarezerwowane dla dołączonego dysku w warstwie Premium usługi Azure, gdy być może nie oczekujesz.
+To pokazuje, że w pewnych okolicznościach, ze względu na dystrybucji określonych plików, docierać do 35 TB zarezerwowane dla dołączonego dysku w warstwie Premium platformy Azure, gdy może nie oczekujesz go do wystąpienia zarządzanego.
 
 W tym przykładzie istniejących baz danych będą nadal działać i można rozwijać bez żadnych przeszkód, tak długo, jak nowe pliki nie zostaną dodane. Jednak nowe bazy danych może nie można utworzyć ani przywrócić, ponieważ nie ma wystarczającej ilości miejsca dla nowych dysków twardych, nawet wtedy, gdy łączny rozmiar wszystkich baz danych nie osiąga limit rozmiaru wystąpienia. Błąd, który jest zwracany nie jest w takim przypadku usuń zaznaczenie.
 
@@ -476,7 +476,7 @@ Dzienniki błędów, które są dostępne w przypadku wystąpienia zarządzanego
 
 Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów i wiele z nich nie są istotne. W przyszłości będzie można zmniejszyć ilość informacji w dziennikach błędów.
 
-**Obejście**: Do odczytywania dzienników błędów, które filtru w poziomie niektóre wpisy nie są istotne, należy użyć niestandardowej procedury. Aby uzyskać więcej informacji, zobacz [DB wystąpienia zarządzanego Azure SQL — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+**Obejście**: Do odczytywania dzienników błędów, które filtru w poziomie niektóre wpisy nie są istotne, należy użyć niestandardowej procedury. Aby uzyskać więcej informacji, zobacz [wystąpienia zarządzanego — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Zakres transakcji na dwie bazy danych w ramach tego samego wystąpienia nie jest obsługiwana.
 
@@ -511,7 +511,7 @@ Mimo że ten kod działa z danymi w ramach tego samego wystąpienia wymagane us�
 
 ### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>Moduły środowiska CLR i połączone serwery jakiś czas nie mogą odwoływać się lokalny adres IP
 
-Moduły środowiska CLR, znajduje się w wystąpieniu zarządzanym i połączonych serwerów/rozproszonych zapytań, które odwołują się do pewnego czasu bieżącego wystąpienia nie można rozpoznać adresu IP lokalnego wystąpienia. Ten błąd jest przejściowy problem.
+Moduły środowiska CLR, znajduje się w wystąpienia zarządzanego i połączonych serwerów/rozproszonych zapytań, które odwołują się do bieżącego wystąpienia jakiś czas, nie można rozpoznać adresu IP lokalnego wystąpienia. Ten błąd jest przejściowy problem.
 
 **Obejście**: Jeśli to możliwe używać kontekstu połączeń w module środowiska CLR.
 
@@ -523,6 +523,6 @@ Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać szczegółowe informacje o wystąpieniu zarządzanym, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
+- Aby uzyskać szczegółowe informacje o wystąpieniach zarządzanych, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
 - Dla funkcji i listy porównanie, zobacz [typowe funkcje SQL](sql-database-features.md).
-- Aby uzyskać szybki start omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
+- Aby uzyskać szybki start omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [tworzenia zarządzanego wystąpienia](sql-database-managed-instance-get-started.md).

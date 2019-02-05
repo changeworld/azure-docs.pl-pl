@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 52c7734c2af80d29433c20191d8b5b7c0ee0fe48
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0d915592053c256d3640d0f0de7bb94bf109f2c8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510157"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700166"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN, uwierzytelnianie usługi RADIUS P2S
 
@@ -98,10 +98,10 @@ Wykonaj następujące kroki, aby skonfigurować natywnego klienta sieci VPN Wind
 
 2. Znajdź **mobileconfig** pliku na komputerze Mac.
 
-   ![Lokalizacja pliku mobilconfig](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
+   ![Lokalizacja pliku mobileconfig](./media/point-to-site-vpn-client-configuration-radius/admobileconfigfile.png)
 
 3. Krok opcjonalny — Jeśli chcesz określić niestandardowe DNS, Dodaj następujące wiersze do **mobileconfig** pliku:
-```
+```xml
     <key>DNS</key>
     <dict>
       <key>ServerAddresses</key>
@@ -262,15 +262,15 @@ Aby użyć innego typu uwierzytelniania (na przykład OTP) lub użyć innego pro
 
 1. Użyj `Get-AzureRmVpnClientConfiguration` polecenia cmdlet w celu wygenerowania konfiguracji klienta sieci VPN dla EAP Mschapv2. Aby uzyskać instrukcje, zobacz [w tej sekcji](#ccradius) tego artykułu.
 
-2. Rozpakuj plik VpnClientConfiguration.zip i poszukaj **GenenericDevice** folderu. Ignoruj foldery zawierające pliki instalacyjne dla architektury 64-bitowe i 32-bitowe programów Windows.
+2. Rozpakuj plik VpnClientConfiguration.zip i poszukaj **GenericDevice** folderu. Ignoruj foldery zawierające pliki instalacyjne dla architektury 64-bitowe i 32-bitowe programów Windows.
  
-3. **GenenericDevice** folder zawiera plik XML o nazwie **VpnSettings**. Ten plik zawiera wszystkie wymagane informacje:
+3. **GenericDevice** folder zawiera plik XML o nazwie **VpnSettings**. Ten plik zawiera wszystkie wymagane informacje:
 
    * **VpnServer**: Nazwa FQDN bramy sieci VPN platformy Azure. Jest to adres, który łączy się z klienta.
    * **VpnType**: Typ tunelu, który umożliwia łączenie.
    * **Trasy**: Trasy, które należy skonfigurować w profilu, tak aby tylko ruch, który jest powiązany dla sieci wirtualnej platformy Azure są wysyłane za pośrednictwem tunelu P2S.
    
-   **GenenericDevice** folder zawiera także plik cer o nazwie **VpnServerRoot**. Ten plik zawiera certyfikat główny, który jest wymagany do sprawdzania poprawności bramy sieci VPN platformy Azure podczas konfigurowania połączenia P2S. Zainstaluj certyfikat na wszystkich urządzeniach, które będą łączyć z siecią wirtualną platformy Azure.
+   **GenericDevice** folder zawiera także plik cer o nazwie **VpnServerRoot**. Ten plik zawiera certyfikat główny, który jest wymagany do sprawdzania poprawności bramy sieci VPN platformy Azure podczas konfigurowania połączenia P2S. Zainstaluj certyfikat na wszystkich urządzeniach, które będą łączyć z siecią wirtualną platformy Azure.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

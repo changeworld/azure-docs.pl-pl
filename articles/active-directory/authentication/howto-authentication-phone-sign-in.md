@@ -1,21 +1,22 @@
 ---
-title: Logowanie w usłudze Azure AD bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
+title: Logowanie w usłudze Azure AD bez hasła przy użyciu aplikacji Microsoft Authenticator (wersja zapoznawcza)
 description: Zaloguj się do usługi Azure AD przy użyciu aplikacji Microsoft Authenticator, bez użycia hasła (publiczna wersja zapoznawcza)
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
-ms.openlocfilehash: e237d736a939c3136faa4f6df74ed4e9db9665d3
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.custom: seo-update-azuread-jan
+ms.openlocfilehash: b0527d839ac5b80adbceef7682da9fb3ddd2fc2b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077628"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694154"
 ---
 # <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie telefonem bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 

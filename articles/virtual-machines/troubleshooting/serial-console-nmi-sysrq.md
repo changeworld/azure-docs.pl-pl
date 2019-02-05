@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 9dcec525adf7676b23c6dec14dff07c6d419c085
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: 3a9d3364f9e55611c94797b71b058128ce7c6696
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48884646"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697938"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Użyj konsoli szeregowej wywołań SysRq i NMI
 
@@ -63,7 +63,7 @@ W powyższym podręczniku administratora SysRq:
 |``h``  |   Zostanie wyświetlona Pomoc (dowolny klawisz, niż te wymienione w tym miejscu będą również wyświetlane, aby uzyskać pomoc, ale ``h`` jest łatwa do zapamiętania :-)
 |``i``  |    Wyślij SIGKILL do wszystkich procesów, z wyjątkiem init.
 |``j``  |    Wymuś "Po prostu odblokuj go" - zamrożony przez FIFREEZE ioctl systemy plików.
-|``k``  |    Bezpieczny dostęp do klucza SAK kasuje wszystkich programów znajdujących się w bieżącej konsoli wirtualnego. Uwaga: Można znaleźć ważne uwagi poniżej w sekcji SAK.
+|``k``  |    Bezpieczny dostęp do klucza SAK kasuje wszystkich programów znajdujących się w bieżącej konsoli wirtualnego. UWAGA: Zobacz ważne uwagi poniżej w sekcji SAK.
 |``l``  |    Przedstawia backtrace stosu dla wszystkich aktywnych procesorów CPU.
 |``m``  |    Będzie zrzutu bieżące informacje o pamięci do konsoli.
 |``n``  |    Używane do tworzenia zadań RT nieuprzywilejowany stanie
@@ -76,7 +76,7 @@ W powyższym podręczniku administratora SysRq:
 |``u``  |    Podejmie próbę ponownego instalowania wszystkich zainstalowanych systemów plików tylko do odczytu.
 |``v``  |    Wymuszone przywraca konsoli bufor ramki
 |``v``  |    Powoduje, że zrzutu buforu ETM ARM na specyficznych.
-|``w``  |    Zrzuca zadania, które są w stanie (zablokowane) awaryjny.
+|``w``  |    Zrzuca zadania, które są w stanie (zablokowane) urządzenia UPS.
 |``x``  |    Używana przez interfejs xmon na platformach do ppc/powerpc. Pokaż rejestruje PMU globalnej, wybierz sparc64. Zrzuć wszystkie wpisy TLB na MIPS.
 |``y``  |    Pokaż globalnego rejestry Procesora [64 procesorami SPARC określonych]
 |``z``  |    Bufor ftrace zrzutu
@@ -112,7 +112,7 @@ W systemach Linux, które obsługują sysctl konfigurowania jądra parametry mo�
 1. Ponowne uruchamianie lub aktualizowanie sysctl, uruchamiając <br>
     `sysctl -p`
 
-Aby uzyskać więcej informacji na temat konfiguracje jądra systemu Linux, w tym `unknown_nmi_panic`, `panic_on_io_nmi`, i `panic_on_unrecovered_nmi`, zobacz: [dokumentacji/proc/sys/jądra / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Dokumentację specyficzne dla dystrybucji na NMI i kroki, aby skonfigurować Linux do utworzenia zrzutu awaryjnego, gdy odbierze NMI na ten temat można znaleźć w poniższych linków:
+Aby uzyskać więcej informacji na temat konfiguracje jądra systemu Linux, w tym `unknown_nmi_panic`, `panic_on_io_nmi`, i `panic_on_unrecovered_nmi`, zobacz: [Dokumentacja/proc/sys/jądra / *](https://www.kernel.org/doc/Documentation/sysctl/kernel.txt). Dokumentację specyficzne dla dystrybucji na NMI i kroki, aby skonfigurować Linux do utworzenia zrzutu awaryjnego, gdy odbierze NMI na ten temat można znaleźć w poniższych linków:
  
 ### <a name="ubuntu"></a>Ubuntu 
  - [Zrzut awaryjny jądra](https://help.ubuntu.com/lts/serverguide/kernel-crash-dump.html)

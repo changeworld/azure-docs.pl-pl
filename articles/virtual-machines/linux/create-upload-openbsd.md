@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: b31425849eacc0b1f88e8dbd623804cefff9112f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 332382282c2b55b52bb23f278a25868c09360619
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662759"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729357"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Tworzenie i przekazywanie obrazu dysku OpenBSD na platformie Azure
 Ten artykuł pokazuje, jak tworzenie i przekazywanie wirtualnego dysku twardego (VHD) z systemem operacyjnym OpenBSD. Po przekazaniu go można użyć go jako swój własny obraz, aby utworzyć maszynę wirtualną (VM) na platformie Azure przy użyciu wiersza polecenia platformy Azure.
@@ -30,7 +30,7 @@ Ten artykuł pokazuje, jak tworzenie i przekazywanie wirtualnego dysku twardego 
 W tym artykule założono, że masz następujące elementy:
 
 * **Subskrypcja platformy Azure** — Jeśli nie masz konta, możesz utworzyć w zaledwie kilka minut. Jeśli masz subskrypcję MSDN, zobacz [Azure miesięczne środki dla subskrybentów programu Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/). W przeciwnym razie Dowiedz się, jak [Utwórz bezpłatne konto próbne](https://azure.microsoft.com/pricing/free-trial/).  
-* **Interfejs wiersza polecenia Azure** — upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) zainstalowane i zalogować się do konta platformy Azure za pomocą [az login](/cli/azure/reference-index#az_login).
+* **Interfejs wiersza polecenia Azure** — upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) zainstalowane i zalogować się do konta platformy Azure za pomocą [az login](/cli/azure/reference-index).
 * **OpenBSD zainstalowanego systemu operacyjnego w pliku VHD** — OpenBSD obsługiwany system operacyjny ([wersji 6.1 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.1/amd64/)) musi być zainstalowany na wirtualnym dysku twardym. Istnieje wiele narzędzi do tworzenia plików VHD. Na przykład można użyć rozwiązania wirtualizacji, takie jak funkcji Hyper-V do tworzenia plików VHD i zainstalować system operacyjny. Aby uzyskać instrukcje dotyczące sposobu instalowania i korzystania z funkcji Hyper-V, zobacz [instalacji funkcji Hyper-V i utworzenie maszyny wirtualnej](https://technet.microsoft.com/library/hh846766.aspx).
 
 
@@ -103,13 +103,13 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>Tworzenie zasobów magazynu i przekaż
-Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Aby przekazać wirtualnego dysku twardego, należy utworzyć konto magazynu przy użyciu [Tworzenie konta magazynu az](/cli/azure/storage/account#az_storage_account_create). Nazwy kont magazynu muszą być unikatowe, dlatego podaj własną nazwę. Poniższy przykład tworzy konto magazynu o nazwie *mystorageaccount*:
+Aby przekazać wirtualnego dysku twardego, należy utworzyć konto magazynu przy użyciu [Tworzenie konta magazynu az](/cli/azure/storage/account). Nazwy kont magazynu muszą być unikatowe, dlatego podaj własną nazwę. Poniższy przykład tworzy konto magazynu o nazwie *mystorageaccount*:
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -118,7 +118,7 @@ az storage account create --resource-group myResourceGroup \
     --sku Premium_LRS
 ```
 
-Aby kontrolować dostęp do konta magazynu, uzyskanie klucza magazynu przy użyciu [listy kluczy kont magazynu az](/cli/azure/storage/account/keys#az_storage_account_keys_list) w następujący sposób:
+Aby kontrolować dostęp do konta magazynu, uzyskanie klucza magazynu przy użyciu [listy kluczy kont magazynu az](/cli/azure/storage/account/keys) w następujący sposób:
 
 ```azurecli
 STORAGE_KEY=$(az storage account keys list \
@@ -136,7 +136,7 @@ az storage container create \
     --account-key ${STORAGE_KEY}
 ```
 
-Na koniec Przekaż wirtualnego dysku twardego z [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) w następujący sposób:
+Na koniec Przekaż wirtualnego dysku twardego z [az storage blob upload](/cli/azure/storage/blob) w następujący sposób:
 
 ```azurecli
 az storage blob upload \
@@ -149,7 +149,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>Tworzenie maszyny Wirtualnej na podstawie wirtualnego dysku twardego
-Można utworzyć maszynę Wirtualną z [przykładowy skrypt](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) lub bezpośrednio z [tworzenie az vm](/cli/azure/vm#az_vm_create). Aby określić OpenBSD wirtualnego dysku twardego, został przekazany, użyj `--image` parametru w następujący sposób:
+Można utworzyć maszynę Wirtualną z [przykładowy skrypt](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md) lub bezpośrednio z [tworzenie az vm](/cli/azure/vm). Aby określić OpenBSD wirtualnego dysku twardego, został przekazany, użyj `--image` parametru w następujący sposób:
 
 ```azurecli
 az vm create \
@@ -161,7 +161,7 @@ az vm create \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-Uzyskaj adres IP dla maszyny Wirtualnej za pomocą OpenBSD [az vm-— adresy ip](/cli/azure/vm#list-ip-addresses) w następujący sposób:
+Uzyskaj adres IP dla maszyny Wirtualnej za pomocą OpenBSD [az vm-— adresy ip](/cli/azure/vm) w następujący sposób:
 
 ```azurecli
 az vm list-ip-addresses --resource-group myResourceGroup --name myOpenBSD61

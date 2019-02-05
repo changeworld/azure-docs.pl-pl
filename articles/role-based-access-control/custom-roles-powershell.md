@@ -11,33 +11,35 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6020aa0a770075526d8d07c94b847b5933a26c2a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 26e5b33504ff543e8442108e4368ce3b04f25df4
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428124"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696765"
 ---
 # <a name="create-custom-roles-using-azure-powershell"></a>Tworzenie ról niestandardowych przy użyciu programu Azure PowerShell
 
 Jeśli [role wbudowane](built-in-roles.md) nie spełniają specyficznych potrzeb Twojej organizacji, możesz utworzyć własne role niestandardowe. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu programu Azure PowerShell ról niestandardowych.
+
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby utworzyć niestandardowe role, potrzebne są:
 
 - Uprawnienia do tworzenia ról niestandardowych, takie jak [Właściciel](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator)
-- Program [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) zainstalowany lokalnie
+- Program [Azure PowerShell](/powershell/azure/install-az-ps) zainstalowany lokalnie
 
 ## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
-Aby wyświetlić listę ról, które są dostępne do przypisania w zakresie, należy użyć [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) polecenia. Poniższy przykład wyświetla listę wszystkich ról, które są dostępne do przypisania w wybranej subskrypcji.
+Aby wyświetlić listę ról, które są dostępne do przypisania w zakresie, należy użyć [Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) polecenia. Poniższy przykład wyświetla listę wszystkich ról, które są dostępne do przypisania w wybranej subskrypcji.
 
 ```azurepowershell
-Get-AzureRmRoleDefinition | FT Name, IsCustom
+Get-AzRoleDefinition | FT Name, IsCustom
 ```
 
 ```Example
@@ -54,7 +56,7 @@ API Management Service Contributor                   False
 Poniższy przykład wyświetla listę tylko role niestandardowe, które są dostępne do przypisania w wybranej subskrypcji.
 
 ```azurepowershell
-Get-AzureRmRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
+Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
 ```
 
 ```Example
@@ -67,20 +69,20 @@ Jeśli wybrana subskrypcja nie znajduje się w `AssignableScopes` roli, nie będ
 
 ## <a name="create-a-custom-role"></a>Tworzenie roli niestandardowej
 
-Aby utworzyć rolę niestandardową, należy użyć [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) polecenia. Istnieją dwie metody tworzenia struktury tej roli, przy użyciu `PSRoleDefinition` obiektu lub szablon JSON. 
+Aby utworzyć rolę niestandardową, należy użyć [New AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) polecenia. Istnieją dwie metody tworzenia struktury tej roli, przy użyciu `PSRoleDefinition` obiektu lub szablon JSON. 
 
 ### <a name="get-operations-for-a-resource-provider"></a>Pobierz operacje dla dostawcy zasobów
 
 Podczas tworzenia ról niestandardowych należy znać wszystkich możliwych operacji od dostawcy zasobów.
-Można wyświetlić listę [operacji dostawcy zasobów](resource-provider-operations.md) lub użyć [polecenia Get](/powershell/module/azurerm.resources/get-azurermprovideroperation) polecenie, aby uzyskać te informacje.
+Można wyświetlić listę [operacji dostawcy zasobów](resource-provider-operations.md) lub użyć [Get AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) polecenie, aby uzyskać te informacje.
 Na przykład jeśli chcesz sprawdzić wszystkich dostępnych operacji dla maszyn wirtualnych, należy użyć tego polecenia:
 
 ```azurepowershell
-Get-AzureRMProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
+Get-AzProviderOperation <operation> | FT OperationName, Operation, Description -AutoSize
 ```
 
 ```Example
-PS C:\> Get-AzureRMProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation, Description -AutoSize
+PS C:\> Get-AzProviderOperation "Microsoft.Compute/virtualMachines/*" | FT OperationName, Operation, Description -AutoSize
 
 OperationName                                  Operation                                                      Description
 -------------                                  ---------                                                      -----------
@@ -98,7 +100,7 @@ Gdy używasz programu PowerShell można utworzyć rolę niestandardową, można 
 Poniższy przykład rozpoczyna się od [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) rolę wbudowaną, aby utworzyć rolę niestandardową o nazwie *Operator maszyny wirtualnej*. Nowa rola przyznaje dostęp do wszystkich operacji odczytu z *Microsoft.Compute*, *Microsoft.Storage*, i *Microsoft.Network* dostawców i przyznaje dostęp do zasobów można uruchomić , ponownie uruchomić i monitorować maszyny wirtualne. Rola niestandardowa może służyć do dwóch subskrypcji.
 
 ```azurepowershell
-$role = Get-AzureRmRoleDefinition "Virtual Machine Contributor"
+$role = Get-AzRoleDefinition "Virtual Machine Contributor"
 $role.Id = $null
 $role.Name = "Virtual Machine Operator"
 $role.Description = "Can monitor and restart virtual machines."
@@ -115,7 +117,7 @@ $role.Actions.Add("Microsoft.Support/*")
 $role.AssignableScopes.Clear()
 $role.AssignableScopes.Add("/subscriptions/00000000-0000-0000-0000-000000000000")
 $role.AssignableScopes.Add("/subscriptions/11111111-1111-1111-1111-111111111111")
-New-AzureRmRoleDefinition -Role $role
+New-AzRoleDefinition -Role $role
 ```
 
 W poniższym przykładzie pokazano innym sposobem na utworzenie *Operator maszyny wirtualnej* roli niestandardowej. Uruchamia przez utworzenie nowego `PSRoleDefinition` obiektu. Operacje akcji są określone w `perms` zmiennej i ustawienie `Actions` właściwości. `NotActions` Właściwość jest ustawiona, czytając `NotActions` z [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) wbudowana rola. Ponieważ [Współautor maszyny wirtualnej](built-in-roles.md#virtual-machine-contributor) nie ma żadnych `NotActions`, ten wiersz nie jest wymagana, ale pokazuje, jak można pobrać informacji z inną rolą.
@@ -130,10 +132,10 @@ $perms += 'Microsoft.Compute/virtualMachines/start/action','Microsoft.Compute/vi
 $perms += 'Microsoft.Authorization/*/read','Microsoft.Resources/subscriptions/resourceGroups/read'
 $perms += 'Microsoft.Insights/alertRules/*','Microsoft.Support/*'
 $role.Actions = $perms
-$role.NotActions = (Get-AzureRmRoleDefinition -Name 'Virtual Machine Contributor').NotActions
+$role.NotActions = (Get-AzRoleDefinition -Name 'Virtual Machine Contributor').NotActions
 $subs = '/subscriptions/00000000-0000-0000-0000-000000000000','/subscriptions/11111111-1111-1111-1111-111111111111'
 $role.AssignableScopes = $subs
-New-AzureRmRoleDefinition -Role $role
+New-AzRoleDefinition -Role $role
 ```
 
 ### <a name="create-a-custom-role-with-json-template"></a>Tworzenie roli niestandardowej za pomocą szablonu JSON
@@ -151,8 +153,7 @@ Szablon JSON może służyć jako definicję źródła dla roli niestandardowej.
     "Microsoft.Storage/*/read",
     "Microsoft.Support/*"
   ],
-  "NotActions": [
-  ],
+  "NotActions": [],
   "AssignableScopes": [
     "/subscriptions/00000000-0000-0000-0000-000000000000",
     "/subscriptions/11111111-1111-1111-1111-111111111111"
@@ -163,7 +164,7 @@ Szablon JSON może służyć jako definicję źródła dla roli niestandardowej.
 Aby dodać rolę do subskrypcji, uruchom następujące polecenie programu PowerShell:
 
 ```azurepowershell
-New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
+New-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
 ## <a name="update-a-custom-role"></a>Aktualizacja roli niestandardowej
@@ -172,20 +173,20 @@ Podobnie jak tworzenie roli niestandardowej, możesz zmodyfikować przy użyciu 
 
 ### <a name="update-a-custom-role-with-the-psroledefinition-object"></a>Aktualizacja roli niestandardowej za pomocą obiektu PSRoleDefinition
 
-Aby zmodyfikować rolę niestandardową, najpierw użyj [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) polecenie, aby pobrać definicji roli. Po drugie wprowadź żądane zmiany do definicji roli. Na koniec użyj [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition) polecenie, aby zapisać definicji roli zmodyfikowane.
+Aby zmodyfikować rolę niestandardową, najpierw użyj [Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) polecenie, aby pobrać definicji roli. Po drugie wprowadź żądane zmiany do definicji roli. Na koniec użyj [AzRoleDefinition zestaw](/powershell/module/az.resources/set-azroledefinition) polecenie, aby zapisać definicji roli zmodyfikowane.
 
 W poniższym przykładzie dodano `Microsoft.Insights/diagnosticSettings/*` operacji *Operator maszyny wirtualnej* roli niestandardowej.
 
 ```azurepowershell
-$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
 $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
-Set-AzureRmRoleDefinition -Role $role
+Set-AzRoleDefinition -Role $role
 ```
 
 ```Example
-PS C:\> $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
 PS C:\> $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*")
-PS C:\> Set-AzureRmRoleDefinition -Role $role
+PS C:\> Set-AzRoleDefinition -Role $role
 
 Name             : Virtual Machine Operator
 Id               : 88888888-8888-8888-8888-888888888888
@@ -201,24 +202,24 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
 Poniższy przykład dodaje subskrypcji platformy Azure na zakresy można przypisać *Operator maszyny wirtualnej* roli niestandardowej.
 
 ```azurepowershell
-Get-AzureRmSubscription -SubscriptionName Production3
+Get-AzSubscription -SubscriptionName Production3
 
-$role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+$role = Get-AzRoleDefinition "Virtual Machine Operator"
 $role.AssignableScopes.Add("/subscriptions/22222222-2222-2222-2222-222222222222")
-Set-AzureRmRoleDefinition -Role $role
+Set-AzRoleDefinition -Role $role
 ```
 
 ```Example
-PS C:\> Get-AzureRmSubscription -SubscriptionName Production3
+PS C:\> Get-AzSubscription -SubscriptionName Production3
 
 Name     : Production3
 Id       : 22222222-2222-2222-2222-222222222222
 TenantId : 99999999-9999-9999-9999-999999999999
 State    : Enabled
 
-PS C:\> $role = Get-AzureRmRoleDefinition "Virtual Machine Operator"
+PS C:\> $role = Get-AzRoleDefinition "Virtual Machine Operator"
 PS C:\> $role.AssignableScopes.Add("/subscriptions/22222222-2222-2222-2222-222222222222")
-PS C:\> Set-AzureRmRoleDefinition -Role $role
+PS C:\> Set-AzRoleDefinition -Role $role
 
 Name             : Virtual Machine Operator
 Id               : 88888888-8888-8888-8888-888888888888
@@ -234,7 +235,7 @@ AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
 
 ### <a name="update-a-custom-role-with-a-json-template"></a>Aktualizacja roli niestandardowej przy użyciu szablonu JSON
 
-Przy użyciu poprzednich szablonu JSON, można łatwo modyfikować istniejące rolę niestandardową, aby dodawać lub usuwać akcje. Aktualizowanie szablonu JSON, a następnie dodaj akcję odczytu dla sieci, jak pokazano w poniższym przykładzie. Łącznie z definicjami wymienionymi w szablonie nie są stosowane do istniejącej definicji, co oznacza, że rola jest wyświetlana dokładnie tak, jak określić w szablonie. Należy również zaktualizować pole identyfikatora z Identyfikatorem roli. Jeśli nie masz pewności, ta wartość jest, możesz użyć [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) polecenia cmdlet, aby uzyskać te informacje.
+Przy użyciu poprzednich szablonu JSON, można łatwo modyfikować istniejące rolę niestandardową, aby dodawać lub usuwać akcje. Aktualizowanie szablonu JSON, a następnie dodaj akcję odczytu dla sieci, jak pokazano w poniższym przykładzie. Łącznie z definicjami wymienionymi w szablonie nie są stosowane do istniejącej definicji, co oznacza, że rola jest wyświetlana dokładnie tak, jak określić w szablonie. Należy również zaktualizować pole identyfikatora z Identyfikatorem roli. Jeśli nie masz pewności, ta wartość jest, możesz użyć [Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) polecenia cmdlet, aby uzyskać te informacje.
 
 ```json
 {
@@ -248,8 +249,7 @@ Przy użyciu poprzednich szablonu JSON, można łatwo modyfikować istniejące r
     "Microsoft.Network/*/read",
     "Microsoft.Support/*"
   ],
-  "NotActions": [
-  ],
+  "NotActions": [],
   "AssignableScopes": [
     "/subscriptions/00000000-0000-0000-0000-000000000000",
     "/subscriptions/11111111-1111-1111-1111-111111111111"
@@ -260,22 +260,22 @@ Przy użyciu poprzednich szablonu JSON, można łatwo modyfikować istniejące r
 Aby zaktualizować istniejącą rolę, uruchom następujące polecenie programu PowerShell:
 
 ```azurepowershell
-Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
+Set-AzRoleDefinition -InputFile "C:\CustomRoles\customrole1.json"
 ```
 
 ## <a name="delete-a-custom-role"></a>Usuwanie roli niestandardowej
 
-Aby usunąć niestandardową rolę, użyj [Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition) polecenia.
+Aby usunąć niestandardową rolę, użyj [AzRoleDefinition Usuń](/powershell/module/az.resources/remove-azroledefinition) polecenia.
 
 Poniższy przykład usuwa *Operator maszyny wirtualnej* roli niestandardowej.
 
 ```azurepowershell
-Get-AzureRmRoleDefinition "Virtual Machine Operator"
-Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
+Get-AzRoleDefinition "Virtual Machine Operator"
+Get-AzRoleDefinition "Virtual Machine Operator" | Remove-AzRoleDefinition
 ```
 
 ```Example
-PS C:\> Get-AzureRmRoleDefinition "Virtual Machine Operator"
+PS C:\> Get-AzRoleDefinition "Virtual Machine Operator"
 
 Name             : Virtual Machine Operator
 Id               : 88888888-8888-8888-8888-888888888888
@@ -287,7 +287,7 @@ NotActions       : {}
 AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000,
                    /subscriptions/11111111-1111-1111-1111-111111111111}
 
-PS C:\> Get-AzureRmRoleDefinition "Virtual Machine Operator" | Remove-AzureRmRoleDefinition
+PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | Remove-AzRoleDefinition
 
 Confirm
 Are you sure you want to remove role definition with name 'Virtual Machine Operator'.

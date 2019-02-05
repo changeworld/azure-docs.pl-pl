@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 8400fa12e8776834f71740f809df18753291601f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 8cfa1696a18925e9e9e8b96299f1255875e85aa8
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992313"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727267"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Jak utworzyć zaporę na bezpiecznej platformie Azure za pomocą filtru pakietów systemu FreeBSD
 W tym artykule przedstawiono sposób wdrażania zapory NAT za pomocą filtru usługi Packer FreeBSD przy użyciu szablonu usługi Azure Resource Manager dla typowego scenariusza serwera sieci web.
@@ -35,13 +35,13 @@ Szablon usługi Azure Resource Manager, skonfiguruj FreeBSD maszyny wirtualnej, 
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
-Potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login). Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Poniższy przykład tworzy nazwę grupy zasobów `myResourceGroup` w `West US` lokalizacji.
+Potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index). Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Poniższy przykład tworzy nazwę grupy zasobów `myResourceGroup` w `West US` lokalizacji.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Następnie Wdróż szablon [pf freebsd skonfigurowania](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) z [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create). Pobierz [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) w tej samej ścieżce i zdefiniować własne wartości zasobów, takich jak `adminPassword`, `networkPrefix`, i `domainNamePrefix`. 
+Następnie Wdróż szablon [pf freebsd skonfigurowania](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) z [Utwórz wdrożenie grupy az](/cli/azure/group/deployment). Pobierz [azuredeploy.parameters.json](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) w tej samej ścieżce i zdefiniować własne wartości zasobów, takich jak `adminPassword`, `networkPrefix`, i `domainNamePrefix`. 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \

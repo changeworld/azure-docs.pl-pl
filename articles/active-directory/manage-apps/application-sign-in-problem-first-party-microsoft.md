@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 6cd926536242563d3114a30adce1568a1f7424e0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4d75ab2328cbc18142742c3111ef1f5e7d8eb8f2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171800"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731482"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy z logowaniem do aplikacji firmy Microsoft
 
@@ -180,7 +180,7 @@ Aby włączyć samoobsługowe Resetowanie hasła, wykonaj poniższe kroki wdroż
 
 -   [Umożliwianie użytkownikom resetowania swoich haseł w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
--   [Umożliwianie użytkownikom Resetowanie lub zmienianie swoich haseł lokalnych w Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
+-   [Umożliwianie użytkownikom Resetowanie lub zmienianie swoich haseł lokalnych w Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>Sprawdź stan uwierzytelniania wieloskładnikowego dla użytkownika
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: cd3ae85e88151e234d42a29ad871a18c7829b05c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454848"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697836"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Format pliku dziennika usługi Azure Import/Export
 Gdy usługa Microsoft Azure Import/Export wykonuje akcję na dysku jako część zadania importu lub eksportu, dzienniki są zapisywane w blokowe obiekty BLOB na koncie magazynu skojarzonego z tym zadaniem.  
@@ -22,7 +22,7 @@ Istnieją dwa dzienniki, które mogą być zapisywane przez usługę Import/Expo
   
 -   Dziennik błędów programu był zawsze generowany w przypadku wystąpienia błędu.  
   
--   Pełny dziennik nie jest domyślnie włączona, ale może być włączona `EnableVerboseLog` właściwość [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) lub [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs#Jobs_Update) operacji.  
+-   Pełny dziennik nie jest domyślnie włączona, ale może być włączona `EnableVerboseLog` właściwość [umieścić zadania](/rest/api/storageimportexport/jobs) lub [właściwości zadania aktualizacji](/rest/api/storageimportexport/jobs) operacji.  
   
 ## <a name="log-file-location"></a>Lokalizacja pliku dziennika  
 Dzienniki są zapisywane w blokowe obiekty BLOB w kontenerze lub określony przez katalog wirtualny `ImportExportStatesPath` ustawienie, które można ustawić na `Put Job` operacji. Lokalizacja, w dziennikach zależy od tego, jak uwierzytelniania jest określony dla zadania, wraz z wartość określona dla `ImportExportStatesPath`. Uwierzytelnianie dla zadania może być określona za pomocą klucza konta magazynu lub kontenera sygnatury dostępu Współdzielonego (sygnatura dostępu współdzielonego).  
@@ -38,7 +38,7 @@ W poniższej tabeli przedstawiono możliwe opcje:
 |Sygnatury dostępu Współdzielonego kontenera|Wartość domyślna|Katalog wirtualny nosi nazwę `waimportexport`, która jest nazwą domyślną poniżej określonego w sygnatury dostępu Współdzielonego kontenera.<br /><br /> Na przykład, jeśli sygnatury dostępu Współdzielonego określony dla zadania jest `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, wyniósłby lokalizacja dziennika `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport`|  
 |Sygnatury dostępu Współdzielonego kontenera|Wartość określona przez użytkownika|Katalog wirtualny o nazwie określonej przez użytkownika, poniżej określonego w sygnatury dostępu Współdzielonego kontenera.<br /><br /> Na przykład, jeśli sygnatury dostępu Współdzielonego określony dla zadania jest `https://myaccount.blob.core.windows.net/mylogcontainer?sv=2012-02-12&se=2015-05-22T06%3A54%3A55Z&sr=c&sp=wl&sig=sigvalue`, i określony katalog wirtualny nosi nazwę `mylogblobs`, wyniósłby lokalizacja dziennika `https://myaccount.blob.core.windows.net/mylogcontainer/waimportexport/mylogblobs`.|  
   
-Adres URL dla błędów i pełne dzienniki można pobrać przez wywołanie metody [pobrania zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji. Dzienniki są dostępne po zakończeniu przetwarzania dysku.  
+Adres URL dla błędów i pełne dzienniki można pobrać przez wywołanie metody [pobrania zadania](/rest/api/storageimportexport/jobs) operacji. Dzienniki są dostępne po zakończeniu przetwarzania dysku.  
   
 ## <a name="log-file-format"></a>Format pliku dziennika  
 Format dla obu dzienników jest taki sam: obiektów blob zawierający XML opisy zdarzeń, które wystąpiły podczas kopiowania obiektów blob między dysk twardy i konta klienta.  

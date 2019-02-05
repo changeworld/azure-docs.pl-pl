@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 891ab7ce0218e3532b8e503bc9b06da04a13d2c4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d3d88c29025c1a7a40a6248d3be841a33d1b6761
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074551"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694367"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Opcje raportowania w zarządzaniu hasłami w usłudze Azure AD
 
@@ -85,7 +85,7 @@ Następujące typy działań są wyświetlane w **samoobsługowego zarządzania 
 * [Resetuj hasło (przez administratora)](#activity-type-reset-password-by-admin): Wskazuje, że administrator wykonywane resetowania w imieniu użytkownika z witryny Azure portal hasła.
 * [Resetuj hasło (samoobsługa)](#activity-type-reset-password-self-service): Wskazuje, że użytkownik pomyślnie Resetowanie własnego hasła [portal resetowania haseł usługi Azure AD](https://passwordreset.microsoftonline.com).
 * [Samoobsługowe resetowanie haseł postęp działania przepływu](#activity-type-self-serve-password-reset-flow-activity-progress): Wskazuje określony krok, z którego użytkownik przechodzi przez, takie jak przekazywanie konkretnego hasła resetowania bramy uwierzytelniania, proces resetowania części hasła.
-* [Odblokuj konto użytkownika (samoobsługa)](#activity-type-unlock-user-account-self-service): Wskazuje, że użytkownik pomyślnie odblokowane swojego konta usługi Active Directory bez resetowania hasła z [portal resetowania haseł usługi Azure AD](https://passwordreset.microsoftonline.com) przy użyciu funkcji usługi Active Directory konta odblokowywanie bez resetowania.
+* [Odblokuj konto użytkownika (samoobsługa)](#activity-type-unlock-a-user-account-self-service)): Wskazuje, że użytkownik pomyślnie odblokowane swojego konta usługi Active Directory bez resetowania hasła z [portal resetowania haseł usługi Azure AD](https://passwordreset.microsoftonline.com) przy użyciu funkcji usługi Active Directory konta odblokowywanie bez resetowania.
 * [Użytkownik zarejestrowany do samoobsługowego resetowania haseł](#activity-type-user-registered-for-self-service-password-reset): Wskazuje, że użytkownik ma wszystkie wymagane informacje, aby można było do zresetowania swojego hasła, zgodnie z aktualnie określonego dzierżawcę zasady resetowania hasła.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Typ działania: Zablokowano dostęp do samoobsługowego resetowania haseł
@@ -109,7 +109,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Stany działania**:
   * _Powodzenie_: Wskazuje, że użytkownik pomyślnie zmieniono hasło.
   * _Błąd_: Wskazuje, że użytkownik nie można zmienić swoje hasło. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
-* **Przyczyny niepowodzenia stanu działania**: 
+* **Przyczyny niepowodzenia stanu działania**:
   * _FuzzyPolicyViolationInvalidPassword_: Użytkownik wybrał hasła, które zostało automatycznie zablokowane, ponieważ możliwości wykrywania hasło zakazane Microsoft uznała, że zbyt popularne lub szczególnie słabe.
 
 ### <a name="activity-type-reset-password-by-admin"></a>Typ działania: Resetowanie hasła (przez administratora)
@@ -133,7 +133,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Stany działania**:
   * _Powodzenie_: Wskazuje, że użytkownik pomyślnie resetowania ich własnych haseł.
   * _Błąd_: Wskazuje, że użytkownik nie można zresetować swoje hasła. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
-* **Przyczyny niepowodzenia stanu działania**: 
+* **Przyczyny niepowodzenia stanu działania**:
   * _FuzzyPolicyViolationInvalidPassword_: Administrator wybrane hasło, które zostało automatycznie zablokowane, ponieważ możliwości wykrywania hasło zakazane Microsoft uznała, że zbyt popularne lub szczególnie słabe.
 
 ### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Typ działania: Resetowanie hasła samodzielnie Udostępnij postęp działania przepływu
@@ -146,7 +146,7 @@ Poniżej opisano to działanie szczegółowo:
 * **Stany działania**:
   * _Powodzenie_: Wskazuje, że użytkownik pomyślnie określonego kroku przepływu resetowania hasła.
   * _Błąd_: Wskazuje, że określony krok hasła resetowania przepływ zakończył się niepowodzeniem. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
-* **Przyczyny stanu działania**:   Zobacz w poniższej tabeli [wszystkich resetowania dopuszczalne działania stanu powodów](#allowed-values-for-details-column).
+* **Przyczyny stanu działania**:   Zobacz w poniższej tabeli [wszystkich resetowania dopuszczalne działania stanu powodów](#description-of-the-report-columns-in-the-azure-portal).
 
 ### <a name="activity-type-unlock-a-user-account-self-service"></a>Typ działania: Odblokuj konto użytkownika (samoobsługa)
 
@@ -168,10 +168,10 @@ Poniżej opisano to działanie szczegółowo:
 * **Działania docelowego**: Użytkownik zarejestrowany do resetowania haseł. Użytkownik może być użytkownik końcowy lub administrator.
 * **Dozwolone Stany działania**:
   * _Powodzenie_: Wskazuje, że użytkownik pomyślnie zarejestrowano na potrzeby resetowania zgodnie z obecnych zasad haseł. 
-  * _Błąd_: Wskazuje, że użytkownik nie może zarejestrować do resetowania hasła. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu. 
+  * _Błąd_: Wskazuje, że użytkownik nie może zarejestrować do resetowania hasła. Można wybrać wiersz, aby wyświetlić **przyczyny stanu działania** kategorię, aby dowiedzieć się więcej na temat przyczyny błędu.
 
      >[!NOTE]
-     >Błąd nie oznacza, że użytkownik nie może zresetować własne hasło. Oznacza to, że nie kończą proces rejestracji. W przypadku niezweryfikowanych danych na ich konta, które jest poprawna, takie jak numer telefonu nie zostanie zweryfikowana, nawet jeśli ich nie została zweryfikowana ten numer telefonu, mogą nadal używać go do zresetowania swojego hasła. Aby uzyskać więcej informacji, zobacz [co się stanie po użytkownik rejestruje?](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers).
+     >Błąd nie oznacza, że użytkownik nie może zresetować własne hasło. Oznacza to, że nie kończą proces rejestracji. W przypadku niezweryfikowanych danych na ich konta, które jest poprawna, takie jak numer telefonu nie zostanie zweryfikowana, nawet jeśli ich nie została zweryfikowana ten numer telefonu, mogą nadal używać go do zresetowania swojego hasła.
      >
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 5bbe0709f89ca198b0571526291f700c99e9e59f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 95fb889da564d6e40e25dfb9ee64a8665a954652
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966830"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700744"
 ---
 # <a name="public-ip-address-prefix"></a>Publiczny prefiks adresu IP
 
@@ -31,7 +31,7 @@ Publiczne adresy IP są przypisywane z puli adresów w każdym regionie platform
 Utwórz publiczny prefiks adresu IP w regionie platformy Azure i subskrypcję, określając nazwę, a ile adresów mają prefiks do uwzględnienia. Na przykład, jeśli utworzysz publiczny prefiks adresu IP/28, platforma Azure przydziela 16 adresów z jednego z jego zakresów dla Ciebie. Nie wiesz, którym z zakresu platformy Azure zostanie przypisana do czasu utworzenia zakresu, ale adresy są ciągłe. Prefiksy publicznych adresów IP mają opłaty. Aby uzyskać więcej informacji, zobacz [cennik publicznych adresów IP](https://azure.microsoft.com/pricing/details/ip-addresses).
 
 > [!IMPORTANT]
-> Prefiks publicznego adresu IP jest w publicznej wersji zapoznawczej w niektórych regionach. Możesz [Dowiedz się, co oznacza w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Publiczny prefiks adresu IP jest obecnie dostępna w: zachodnio-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia i Azja południowo-wschodnia. Aby uzyskać zaktualizowaną listę regionów, odwiedź [aktualizacje platformy Azure](https://azure.microsoft.com/updates/?product=virtual-network).
+> Prefiks publicznego adresu IP jest w publicznej wersji zapoznawczej w niektórych regionach. Możesz [Dowiedz się, co oznacza w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Publiczny prefiks adresu IP jest obecnie dostępna w: Zachód środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia i Azja południowo-wschodnia. Aby uzyskać zaktualizowaną listę regionów, odwiedź [aktualizacje platformy Azure](https://azure.microsoft.com/updates/?product=virtual-network).
 
 ## <a name="why-create-a-public-ip-address-prefix"></a>Dlaczego warto utworzyć publiczny prefiks adresu IP?
 
@@ -53,7 +53,7 @@ Następujące zasoby do statyczny publiczny adres IP można skojarzyć z prefiks
 |---|---|---|
 |Maszyny wirtualne| Kojarzenie publiczne adresy IP z prefiksem z maszynami wirtualnymi na platformie Azure zmniejsza nakład, jeśli chodzi o dodanie do listy dozwolonych adresów IP w zaporze. Możesz po prostu dozwolonych całego prefiks z pojedynczą regułę zapory. Podczas skalowania maszyn wirtualnych na platformie Azure, adresy IP można skojarzyć z tym samym prefiksem, oszczędność kosztów i czasu oraz narzutu związanego z zarządzaniem.| Aby skojarzyć adresy IP z prefiksem do maszyny wirtualnej: 1. [Utwórz prefiksu.](manage-public-ip-address-prefix.md) 2. [Utwórz adres IP z prefiksu.](manage-public-ip-address-prefix.md) 3. [Skojarzenie adresu IP do interfejsu sieciowego maszyny wirtualnej.](virtual-network-network-interface-addresses.md#add-ip-addresses)
 | Moduły równoważenia obciążenia | Kojarzenie publiczne adresy IP z prefiksem na adres IP frontonu konfiguracji lub wychodzącą regułą równoważenia obciążenia zapewnia uproszczenia usługi platformy Azure przestrzeń publicznych adresów IP. Pielęgnacja połączenia wychodzące do być pochodzenia zakres sąsiadujących adresów IP określone przez publiczny prefiks IP można uprościć danego scenariusza. | Aby skojarzyć adresy IP z prefiksem do modułu równoważenia obciążenia: 1. [Utwórz prefiksu.](manage-public-ip-address-prefix.md) 2. [Utwórz adres IP z prefiksu.](manage-public-ip-address-prefix.md) 3. Podczas tworzenia modułu równoważenia obciążenia, wybierz lub zaktualizować adres IP utworzony w kroku 2 powyżej jako adresu IP frontonu modułu równoważenia obciążenia. |
-| Azure Firewall | Za pomocą publicznego adresu IP z prefiksem dla SNAT wychodzących. Oznacza to, że cały wychodzący ruch sieciowy wirtualnego jest tłumaczona na [zapory usługi Azure](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) publicznego adresu IP. Ponieważ ten adres IP pochodzą ze wstępnie zdefiniowanych prefiksu, jest bardzo proste wiedzieć wcześniejsze, jak będzie wyglądać Twojej publicznych obecności adresów IP na platformie Azure. | 1. [Utwórz prefiksu.](manage-public-ip-address-prefix.md) 2. [Utwórz adres IP z prefiksu.](manage-public-ip-address-prefix.md) 3. Po użytkownik [wdrażania zapory platformy Azure](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), pamiętaj o wybraniu previosuly zostanie przydzielony adres IP z prefiksu.|
+| Azure Firewall | Za pomocą publicznego adresu IP z prefiksem dla SNAT wychodzących. Oznacza to, że cały wychodzący ruch sieciowy wirtualnego jest tłumaczona na [zapory usługi Azure](../firewall/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) publicznego adresu IP. Ponieważ ten adres IP pochodzą ze wstępnie zdefiniowanych prefiksu, jest bardzo proste wiedzieć wcześniejsze, jak będzie wyglądać Twojej publicznych obecności adresów IP na platformie Azure. | 1. [Utwórz prefiksu.](manage-public-ip-address-prefix.md) 2. [Utwórz adres IP z prefiksu.](manage-public-ip-address-prefix.md) 3. Gdy użytkownik [wdrażania zapory platformy Azure](../firewall/tutorial-firewall-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-the-firewall), pamiętaj wybrać poprzednio przydzielony adres IP z prefiksem.|
 
 ## <a name="constraints"></a>Ograniczenia
 

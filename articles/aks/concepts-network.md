@@ -1,18 +1,18 @@
 ---
 title: Pojęcia — sieć w usługach Azure Kubernetes (AKS)
-description: Informacje dotyczące sieci w usłudze Azure Kubernetes Service (AKS), m.in. podstawowe i zaawansowane sieci kontrolery transferu danych przychodzących, moduły równoważenia obciążenia i statycznych adresów IP.
+description: Informacje dotyczące sieci w usłudze Azure Kubernetes Service (AKS), m.in. wtyczki kubenet i wtyczki Azure CNI sieci kontrolery transferu danych przychodzących, moduły równoważenia obciążenia i statycznych adresów IP.
 services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 62ba98f221041d5bbf9bb095a02d052218eb0fd0
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: d71360d830ab7b90a8d91e6d17c7a3698d8fca5c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381164"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692583"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -61,37 +61,32 @@ Zarówno *wewnętrzny* i *zewnętrznych* modułów równoważenia obciążenia m
 
 W usłudze AKS można wdrożyć klaster, który korzysta z jednego z następujących modeli dwóch sieci:
 
-- *Podstawowe* sieci - sieci zasoby są tworzone i konfigurowane jako klaster AKS jest wdrażany.
-- *Zaawansowane* sieci — klaster AKS jest podłączony do istniejących zasobów sieci wirtualnej i konfiguracji.
+- *Wtyczki Kubenet* sieci - sieci zasobów są zazwyczaj tworzone i konfigurowane jako klaster AKS jest wdrażany.
+- *Wtyczki Azure Container Networking interfejsu (CNI)* sieci — klaster AKS jest podłączony do istniejących zasobów sieci wirtualnej i konfiguracji.
 
-### <a name="basic-networking"></a>Podstawowe operacje sieciowe
+### <a name="kubenet-basic-networking"></a>Sieć z wtyczki Kubenet (basic)
 
-*Podstawowe* sieci — opcja jest domyślnie skonfigurowany do tworzenia klastra AKS. Platforma Azure zarządza konfiguracją sieci klastra i zasobników. Sieć podstawowa jest odpowiednia w przypadku wdrożeń, które nie wymagają konfiguracji niestandardowa sieć wirtualna. Za pomocą sieci podstawowych, nie można zdefiniować konfigurację sieci, takich jak nazwy podsieci lub zakres adresów IP, które są przypisane do klastra usługi AKS.
+*Wtyczki kubenet* sieci — opcja jest domyślnie skonfigurowany do tworzenia klastra AKS. Za pomocą *wtyczki kubenet*, węzły Uzyskaj adres IP z podsieci sieci wirtualnej platformy Azure. Zasobników otrzymują adres IP z logicznie różnymi przestrzeniami adresowymi w podsieci sieci wirtualnej platformy Azure z węzłów. Translator adresów sieciowych (NAT) jest następnie konfigurowana, tak aby zasobników może dotrzeć do zasobów w sieci wirtualnej platformy Azure. Źródłowy adres IP ruchu jest translatora adresów Sieciowych do podstawowego adresu IP węzła zajmie się.
 
-Węzły w klastrze AKS skonfigurowany dla podstawowych sieci [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes.
+Węzły używają [wtyczki kubenet] [ kubenet] wtyczka platformy Kubernetes. Można pozwolić, aby utworzyć i konfigurowanie sieci wirtualnych dla Ciebie lub wybrać wdrożenie klastra usługi AKS na istniejącą podsieć sieci wirtualnej platformy Azure. Ponownie tylko węzły odbierać routingowi adresu IP i zasobników umożliwia komunikację z innymi zasobami poza klastrem AKS translatora adresów Sieciowych. To podejście znacznie zmniejsza liczbę adresów IP, które należy zarezerwować w przestrzeń sieci dla zasobników do użycia.
 
-Sieć podstawowa zawiera następujące funkcje:
+Aby uzyskać więcej informacji, zobacz [Konfigurowanie sieci dla klastra usługi AKS wtyczki kubenet][aks-configure-kubenet-networking].
 
-- Udostępnianie zewnętrznie lub wewnętrznie usługa Kubernetes za pomocą usługi Azure Load Balancer.
-- Zasobników dostęp do zasobów w publicznym Internecie.
+### <a name="azure-cni-advanced-networking"></a>Sieć Azure CNI (zaawansowane)
 
-### <a name="advanced-networking"></a>Zaawansowane funkcje sieciowe
+Za pomocą wtyczki Azure CNI pod każdym pobiera adres IP z podsieci i są dostępne bezpośrednio. Te adresy IP musi być unikatowa w przestrzeń sieci i muszą być planowane z góry. Każdy węzeł ma parametr konfiguracji maksymalna liczba zasobników, które obsługuje. Równoważną liczbę adresów IP w każdym węźle następnie są zarezerwowane na początku dla tego węzła. Takie podejście wymaga więcej planowania i często prowadzi do wyczerpania adresu IP lub jest potrzebna ponowna kompilacja klastrów w większej podsieci, w miarę wzrostu wymagań aplikacji.
 
-*Zaawansowane* sieci umieszcza zasobników w sieci wirtualnej platformy Azure, które konfigurujesz. Ta sieć wirtualna zapewnia automatyczne łączność z innymi zasobami platformy Azure i integracja z usługą bogaty zestaw funkcji. Zaawansowane funkcje sieciowe jest odpowiednia w przypadku wdrożeń, które wymagają zastosowania takiej konfiguracji określonej sieci wirtualnej, takie jak używać istniejącej podsieci i łączności. Za pomocą zaawansowanych sieci, można zdefiniować te nazwy podsieci i zakresy adresów IP.
-
-Węzły w klastrze AKS skonfigurowane dla zaawansowanych sieci [wtyczki Azure Container Networking interfejsu (CNI)] [ cni-networking] wtyczka platformy Kubernetes.
+Węzły używają [wtyczki Azure Container Networking interfejsu (CNI)] [ cni-networking] wtyczka platformy Kubernetes.
 
 ![Diagram przedstawiający dwa węzły o mostki łączenia każdego do pojedynczej sieci wirtualnej platformy Azure][advanced-networking-diagram]
 
-Zaawansowane funkcje sieciowe oferuje następujące funkcje za pośrednictwem sieci podstawowe:
+Wtyczki Azure CNI udostępnia następujące funkcje w porównaniu z wtyczki kubenet sieci:
 
-- Wdrażanie klastra usługi AKS w istniejącej sieci wirtualnej platformy Azure lub Utwórz nową sieć wirtualną i podsieć dla klastra.
 - Każdy zasobnik w klastrze jest przypisany adres IP w sieci wirtualnej. Zasobników mogą bezpośrednio komunikować się z innymi zasobników w klastrze i innych węzłów w sieci wirtualnej.
-- Zasobnik można połączyć z innymi usługami w równorzędnej sieci wirtualnej, w tym do sieci lokalnej za pośrednictwem usługi ExpressRoute i lokacja lokacja (S2S) połączenia sieci VPN. Zasobniki są również dostępne ze środowiska lokalnego.
 - Zasobników w podsieci, które mają włączone punkty końcowe usługi można bezpiecznie łączyć się z usługami platformy Azure, takich jak Azure Storage i bazą danych SQL.
 - Można utworzyć trasy zdefiniowane przez użytkownika (UDR) do kierowania ruchu z zasobników do wirtualnego urządzenia sieciowego.
 
-Aby uzyskać więcej informacji, zobacz [skonfiguruj zaawansowane sieci dla klastra usługi AKS][aks-configure-advanced-networking].
+Aby uzyskać więcej informacji, zobacz [wtyczki Azure CNI skonfigurować dla klastra usługi AKS][aks-configure-advanced-networking].
 
 ## <a name="ingress-controllers"></a>Ruch przychodzący kontrolerów
 
@@ -113,7 +108,7 @@ Domyślną sieciową grupę zabezpieczeń, które istnieją reguły dla ruchu, t
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Rozpoczynanie pracy z usługą AKS sieci, zobacz [tworzenie i konfigurowanie zaawansowanych sieci dla klastra usługi AKS][aks-configure-advanced-networking].
+Rozpoczynanie pracy z usługą AKS, sieć, tworzenie i konfigurowanie klastra usługi AKS przy użyciu własnych zakresów adresów IP przy użyciu [wtyczki kubenet] [ aks-configure-kubenet-networking] lub [wtyczki Azure CNI] [ aks-configure-advanced-networking].
 
 Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zostały przedstawione z usługi AKS zobacz następujące artykuły:
 
@@ -137,7 +132,8 @@ Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zos
 <!-- LINKS - Internal -->
 [aks-http-routing]: http-application-routing.md
 [aks-ingress-tls]: ingress.md
-[aks-configure-advanced-networking]: configure-advanced-networking.md
+[aks-configure-kubenet-networking]: configure-kubenet.md
+[aks-configure-advanced-networking]: configure-azure-cni.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md
 [aks-concepts-security]: concepts-security.md
 [aks-concepts-scale]: concepts-scale.md

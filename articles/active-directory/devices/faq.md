@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: cc0521f1f27ddfc1fc44b9f24212393d11177d70
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c923023cec03e36b1795619bc9da09aee8def629
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660973"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700395"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -221,6 +221,12 @@ Dołączenie do hybrydowej usługi Azure AD mają pierwszeństwo przed stan usł
 **Pyt.: Dlaczego Moi użytkownicy mają problemy z urządzeniach z systemem Windows 10 hybrydowego przyłączony Azure AD po zmianie ich nazwy UPN?**
 
 **ODP.:** Zmiany nazwy UPN nie są obecnie w pełni obsługiwane z urządzeniami dołączonymi do usługi Azure AD hybrydowych. Gdy użytkownicy mogą zalogować się do urządzenia i uzyskiwać dostęp do swoich aplikacji w środowisku lokalnym, uwierzytelniania za pomocą usługi Azure AD nie powiedzie się po zmianie nazwy UPN. W rezultacie użytkownicy mają logowania jednokrotnego i dostępu warunkowego problemy na swoich urządzeniach. W tej chwili należy odłączyć urządzenie z usługi Azure AD (Uruchom "dsregcmd /leave" z podniesionymi uprawnieniami) i ponownie Dołącz (wykonywane automatycznie) Aby rozwiązać ten problem. Obecnie pracujemy nad tego problemu. Jednak użytkownikom logowanie się przy użyciu Windows Hello dla firm nie stoją w obliczu ten problem. 
+
+---
+
+**Pyt.: Czy urządzeń przyłączonych do usługi Azure AD hybrydowego systemu Windows 10 będą wymagały linii wzroku do kontrolera domeny, aby uzyskać dostęp do zasobów w chmurze?**
+
+**ODP.:** Nie. Plik systemu Windows 10 hybrydowych usługi Azure AD join jest zakończone, a użytkownik zalogował się w co najmniej raz, urządzenia nie wymaga linii wzroku do kontrolera domeny do dostępu do zasobów w chmurze. Systemu Windows 10 można nawiązać połączenia z logowania jednokrotnego aplikacji usługi Azure AD z dowolnego miejsca przy użyciu połączenia internetowego, z wyjątkiem sytuacji, gdy zostanie zmienione hasło. Jeśli hasło zostało zmienione poza siecią firmową (na przykład przy użyciu usługi Azure AD SSPR), użytkownik musi mieć bezpośredni kontakt z kontrolerem domeny, zanim staną się mogli logować się do urządzenia przy użyciu nowego hasła. W przeciwnym razie można tylko logowania się przy użyciu starego hasła, zostaje unieważniony przez usługę Azure AD, która uniemożliwia logowanie na. Jednak ten problem nie występuje, gdy używasz Windows Hello dla firm. Użytkownicy, którzy logują się przy użyciu Windows Hello dla firm w dalszym ciągu uzyskać pojedynczego logowania do aplikacji usługi Azure AD po zmianie hasła, nawet jeśli nie mają linii wzroku do ich kontrolera domeny. 
 
 ---
 

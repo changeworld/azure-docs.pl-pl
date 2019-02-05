@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
 keywords: ''
-ms.openlocfilehash: f05d27effecee6a18a1395520b29d8cf1db1eaaa
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 15beebb3ef6fda098c3f540f945fc3d6b836e517
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246251"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697982"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -306,7 +306,7 @@ Istnieje wiele scenariuszy, które korzystają z główną nazwę usługi (SPN) 
 > [!Important]  
 > Usługi AD FS obsługuje tylko logowanie interakcyjne sesje. Jeśli potrzebujesz nieinterakcyjne logowanie automatyczne scenariusz, należy użyć nazwy SPN.
 
-Aby uzyskać więcej informacji na temat tworzenia nazwy głównej usługi, zobacz [Tworzenie jednostki usługi dla usług AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#create-service-principal-for-ad-fs).
+Aby uzyskać więcej informacji na temat tworzenia nazwy głównej usługi, zobacz [Tworzenie jednostki usługi dla usług AD FS](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów

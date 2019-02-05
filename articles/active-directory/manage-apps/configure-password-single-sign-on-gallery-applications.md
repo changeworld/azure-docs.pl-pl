@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: dac7e458339e24e0bb6663f4ff0d5e98bc814aad
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 02c25490ba19521715b48dc7ec92861078332a48
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658644"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731788"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak skonfigurować hasło logowania jednokrotnego dla aplikacji galerii usługi Azure AD
 
 Po dodaniu aplikacji za pomocą [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis), masz do wyboru, w jaki sposób należy użytkownikom logować się do tej aplikacji. Ten wybór można skonfigurować w dowolnym momencie, wybierając **logowania jednokrotnego** element nawigacji w aplikacji dla przedsiębiorstw w [witryny Azure portal](https://portal.azure.com/).
 
-Jednym z pojedynczego logowania jednokrotnego metody dostępne dla użytkownika jest [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) opcji. Jest doskonałym sposobem na rozpoczęcie pracy, szybkie Integrowanie aplikacji w usłudze Azure AD i pozwala na:
+Jednym z pojedynczego logowania jednokrotnego metody dostępne dla użytkownika jest [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) opcji. Jest doskonałym sposobem na rozpoczęcie pracy, szybkie Integrowanie aplikacji w usłudze Azure AD i pozwala na:
 
 -   Włącz **logowania jednokrotnego dla użytkowników** przez bezpieczne przechowywanie i odtwarzanie nazwy użytkowników i hasła dla aplikacji zostały zintegrowane z usługą Azure AD
 
@@ -41,7 +41,7 @@ Jednym z pojedynczego logowania jednokrotnego metody dostępne dla użytkownika 
 
 -   Zezwalaj na **administratora** do określenia udostępnionego nazwy użytkownika i hasło używane przez grupę osób przy użyciu poświadczeń aktualizacji funkcji podczas [przypisanie grupy do aplikacji](#assign-an-application-to-a-group-directly)
 
-W poniższej sekcji opisano, jak umożliwić [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) do aplikacji, która znajduje się już w [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+W poniższej sekcji opisano, jak umożliwić [opartego na hasłach logowania jednokrotnego](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) do aplikacji, która znajduje się już w [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 ## <a name="overview-of-steps-required"></a>Omówienie kroków wymaganych
 Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:

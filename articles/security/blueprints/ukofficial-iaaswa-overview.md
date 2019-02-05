@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: ceba377f72ced7d39f0a7e9b18e4fd563dbb39f1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a7461f6160c4c848106b16b1a9eaacb96ddf7499
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239924"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699146"
 ---
 # <a name="azure-security-and-compliance-blueprint---three-tier-iaas-web-application-for-uk-official"></a>Zabezpieczenia platformy Azure i zgodności planu — IaaS trójwarstwowa aplikacja sieci Web dla UK-OFFICIAL
 
@@ -186,7 +186,7 @@ Te sieci wirtualne są nadal zarządzane jako oddzielne zasoby, ale są traktowa
 
 [Wytyczne dotyczące wdrażania Active Directory systemu Windows Server na maszynach wirtualnych Azure](https://msdn.microsoft.com/library/azure/jj156090.aspx).
 
-**Integracja usługi Active Directory**: Jako alternatywę do dedykowanych architektury usług AD DS, klienci mogą chcieć skorzystać [usługi Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) integracji lub [usługi Active Directory na platformie Azure przyłączone do lasu lokalnego](https://docs.microsoft.com/azure/guidance/guidance-ra-identity#using-active-directory-in-azure-joined-to-an-on-premises-forest).
+**Integracja usługi Active Directory**: Jako alternatywę do dedykowanych architektury usług AD DS, klienci mogą chcieć skorzystać [usługi Azure Active Directory](https://docs.microsoft.com/azure/guidance/guidance-ra-identity) integracji lub [usługi Active Directory na platformie Azure przyłączone do lasu lokalnego](https://docs.microsoft.com/azure/guidance/guidance-ra-identity).
 
 ### <a name="security"></a>Bezpieczeństwo
 

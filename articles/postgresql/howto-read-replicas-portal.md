@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: bf6e9947c21e5b07b2adc99de585c77444447c04
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/01/2019
+ms.openlocfilehash: 37150f67e29dae0357c978cfaea9abeebeef428c
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902665"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691409"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Jak utworzyć i zarządzać nimi odczytu replik w witrynie Azure portal
 
@@ -141,7 +141,7 @@ Alternatywnie można go usunąć z okna replikacji.
 
 ## <a name="monitor-a-replica"></a>Monitor repliki
 ### <a name="max-lag-across-replicas"></a>Maksymalna liczba opóźnienie między replikami
-**Maksymalna zwłoka między replikami** Metryka przedstawia czas opóźnienia między główną i najbardziej opóźnione repliką. 
+**Maksymalna zwłoka między replikami** Metryka przedstawia opóźnienie w bajtach między główną i najbardziej opóźnione repliką. 
 
 1.  W witrynie Azure portal wybierz **wzorca** — Azure Database for postgresql w warstwie serwera.
 

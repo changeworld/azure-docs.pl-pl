@@ -5,19 +5,19 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 2df08968ad66bd330611b975c045c9e9c9b240aa
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226759"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735557"
 ---
 W zależności od środowiska i opcje skryptu można utworzyć cała infrastruktura klastra, w tym sieci wirtualnej platformy Azure, konta magazynu, usługi w chmurze, kontroler domeny, lokalnej lub zdalnej bazy danych SQL, węzeł główny i dodatkowe węzły klastra. Alternatywnie skryptu można już istniejącą infrastrukturę platformy Azure i tworzyć węzły klastra HPC.
 
 Aby uzyskać ogólne informacje o planowaniu klastra pakietu HPC Pack, zobacz [wersja ewaluacyjna produktu i planowanie](https://technet.microsoft.com/library/jj899596.aspx) i [wprowadzenie](https://technet.microsoft.com/library/jj899590.aspx) zawartości w bibliotece TechNet systemu HPC Pack 2012 R2.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* **Subskrypcja platformy Azure**: subskrypcji można użyć w usłudze Azure Global lub chińska wersja platformy Azure. Limitów subskrypcji wpływa na liczbę i rodzaj węzłów klastra, które można wdrożyć. Aby uzyskać informacje, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../articles/azure-subscription-service-limits.md).
-* **Komputer kliencki Windows przy użyciu programu Azure PowerShell 0.8.10 lub nowszej zainstalowany i skonfigurowany**: zobacz [Rozpoczynanie pracy z programem Azure PowerShell](/powershell/azureps-cmdlets-docs) Aby uzyskać instrukcje dotyczące instalacji i kroki nawiązać połączenie z subskrypcją platformy Azure.
+* **Subskrypcja platformy Azure**: W usłudze Azure Global lub chińska wersja platformy Azure, można skorzystać z subskrypcji. Limitów subskrypcji wpływa na liczbę i rodzaj węzłów klastra, które można wdrożyć. Aby uzyskać informacje, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../articles/azure-subscription-service-limits.md).
+* **Komputer kliencki Windows przy użyciu programu Azure PowerShell 0.8.10 lub nowszej zainstalowany i skonfigurowany**: Zobacz [Rozpoczynanie pracy z programem Azure PowerShell](/powershell/azureps-cmdlets-docs) Aby uzyskać instrukcje dotyczące instalacji i kroki nawiązać połączenie z subskrypcją platformy Azure.
 * **Skryptem wdrażania IaaS pakietu HPC Pack**: Pobierz i Rozpakuj najnowszej wersji skryptu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=44949). Sprawdź wersję skryptu, uruchamiając `New-HPCIaaSCluster.ps1 –Version`. Ten artykuł jest oparty na wersji 4.5.2 skryptu.
 * **Plik konfiguracji skryptu**: Utwórz plik XML, używany przez skrypt do konfigurowania klastra HPC. Aby uzyskać informacje i przykłady zobacz sekcje w dalszej części tego artykułu i plik Manual.rtf, który towarzyszy skrypt wdrożenia.
 
@@ -31,19 +31,19 @@ New-HPCIaaSCluster.ps1 [-ConfigFile] <String> [-AdminUserName]<String> [[-AdminP
 > 
 
 ### <a name="parameters"></a>Parametry
-* **ConfigFile**: Określa ścieżkę pliku konfiguracji do opisania klastra HPC. Zobacz więcej informacji na temat pliku konfiguracji, w tym temacie lub w pliku Manual.rtf z folderu zawierającego skrypt.
+* **ConfigFile**: Określa ścieżkę pliku pliku konfiguracji do opisania klastra HPC. Zobacz więcej informacji na temat pliku konfiguracji, w tym temacie lub w pliku Manual.rtf z folderu zawierającego skrypt.
 * **AdminUserName**: Określa nazwę użytkownika. Jeśli lasu domen jest tworzona przy użyciu skryptu, staje się on nazwą użytkownika administratora lokalnego dla wszystkich maszyn wirtualnych i nazwę administratora domeny. Jeśli lasu domeny już istnieje, to określa użytkownika domeny jako nazwa użytkownika administratora lokalnego, aby zainstalować pakiet HPC Pack.
 * **AdminPassword**: Określa hasło administratora. Jeśli nie zostanie określony w wierszu polecenia, skrypt monituje o wprowadź hasło.
-* **HPCImageName** (opcjonalnie): Określa nazwę obrazu maszyny Wirtualnej pakietu HPC Pack umożliwia wdrażanie klastra HPC. Musi być obrazem firmy Microsoft HPC Pack z witryny Azure Marketplace. Jeśli nie zostanie określony (zazwyczaj zalecane), skrypt wybiera najnowszej opublikowanej [obraz pakietu HPC Pack 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/). Najnowszego obrazu jest oparty na systemie Windows Server 2012 R2 Datacenter z HPC Pack 2012 R2 Update 3.
+* **HPCImageName** (opcjonalnie): Określa nazwę obrazu maszyny Wirtualnej pakietu HPC Pack, które są używane do wdrażania klastra HPC. Musi być obrazem firmy Microsoft HPC Pack z witryny Azure Marketplace. Jeśli nie zostanie określony (zazwyczaj zalecane), skrypt wybiera najnowszej opublikowanej [obraz pakietu HPC Pack 2012 R2](https://azure.microsoft.com/marketplace/partners/microsoft/hpcpack2012r2onwindowsserver2012r2/). Najnowszego obrazu jest oparty na systemie Windows Server 2012 R2 Datacenter z HPC Pack 2012 R2 Update 3.
   
   > [!NOTE]
   > Wdrożenie zakończy się niepowodzeniem, jeśli nie określisz prawidłowego obrazu pakietu HPC Pack.
   > 
   > 
 * **Plik dziennika** (opcjonalnie): Określa ścieżkę pliku dziennika wdrażania. Jeśli nie zostanie określony, skrypt tworzy plik dziennika w katalogu tymczasowym komputera, uruchamiając skrypt.
-* **Wymuś** (opcjonalnie): pomija wszystkie monity o potwierdzenie.
+* **Wymuś** (opcjonalnie): Pomija wszystkie monity o potwierdzenie.
 * **NoCleanOnFailure** (opcjonalnie): Określa, czy nie są usuwane maszyny wirtualne platformy Azure, które nie zostały pomyślnie wdrożone. Ręcznie usunąć te maszyny wirtualne przed ponowne uruchomienie skryptu, aby kontynuować wdrażanie lub wdrożenie może zakończyć się niepowodzeniem.
-* **PSSessionSkipCACheck** (opcjonalnie): dla każdej usługi w chmurze przy użyciu maszyn wirtualnych wdrożonych przy użyciu tego skryptu, certyfikat z podpisem własnym jest generowany automatycznie przez platformę Azure, a wszystkie maszyny wirtualne w usłudze w chmurze, użycie tego certyfikatu jako domyślnego elementu zdalnego Windows Certyfikat zarządzania (WinRM). Aby wdrożyć funkcje HPC na tych maszynach wirtualnych platformy Azure, skrypt domyślnie po tymczasowo zainstaluje te certyfikaty na komputerze lokalnym\\magazynu Zaufane główne urzędy certyfikacji na komputerze klienckim, aby pominąć "zaufany urząd certyfikacji" Błąd zabezpieczeń Podczas wykonywania skryptu. Certyfikaty są usuwane po zakończeniu działania skryptu. Jeśli ten parametr jest określony, certyfikaty nie są zainstalowane na komputerze klienckim i pominąć to ostrzeżenie o zabezpieczeniach.
+* **PSSessionSkipCACheck** (opcjonalnie): Dla każdej usługi w chmurze przy użyciu maszyn wirtualnych wdrożonych przy użyciu tego skryptu certyfikat z podpisem własnym jest generowany automatycznie przez platformę Azure, a wszystkie maszyny wirtualne w usłudze w chmurze, użycie tego certyfikatu jako domyślnego certyfikatu Windows Remote Management (WinRM). Aby wdrożyć funkcje HPC na tych maszynach wirtualnych platformy Azure, skrypt domyślnie po tymczasowo zainstaluje te certyfikaty na komputerze lokalnym\\magazynu Zaufane główne urzędy certyfikacji na komputerze klienckim, aby pominąć "zaufany urząd certyfikacji" Błąd zabezpieczeń Podczas wykonywania skryptu. Certyfikaty są usuwane po zakończeniu działania skryptu. Jeśli ten parametr jest określony, certyfikaty nie są zainstalowane na komputerze klienckim i pominąć to ostrzeżenie o zabezpieczeniach.
   
   > [!IMPORTANT]
   > Ten parametr nie jest zalecane w przypadku wdrożeń produkcyjnych.

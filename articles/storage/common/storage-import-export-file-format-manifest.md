@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 831286f1c98a2fc3d26277f4006283c3de64f900
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee53cc3a639a79e1b29ac6cd537bfb04e05b1bca
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463246"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692480"
 ---
 # <a name="azure-importexport-service-manifest-file-format"></a>Format pliku manifestu usługi w usłudze Azure Import/Export
 Plik manifestu dysku opisuje mapowanie między obiektów blob w usłudze Azure Blob storage i plików na dysku wchodzących w skład zadania importu lub eksportu. Dla operacji importowania pliku manifestu jest tworzony jako część procesu przygotowywania dysku i są przechowywane na dysku przed wysłaniem dysk do centrum danych platformy Azure. Podczas operacji eksportowania manifest jest tworzone i przechowywane na dysku przez usługę Azure Import/Export.  
@@ -97,7 +97,7 @@ W poniższej tabeli podano elementów danych i atrybuty format XML manifestu dys
 |`Drive`|Zagnieżdżone — element XML|Zawiera manifest dla każdego dysku.|  
 |`DriveId`|String|Identyfikator unikatowy dysku dla dysku. Identyfikator dysku zostanie znaleziony, badając dysku jego numeru seryjnego. Numer seryjny dysku jest zazwyczaj wydrukowany na zewnątrz dysku, jak również. `DriveID` Elementów musi występować przed każdą `BlobList` elementu w pliku manifestu.|  
 |`StorageAccountKey`|String|Wymagane dla zadania importu, jeśli i tylko wtedy, gdy `ContainerSas` nie zostanie określony. Klucz konta dla konta magazynu platformy Azure skojarzone z zadaniem.<br /><br /> Ten element jest pomijany z manifestu dla operacji eksportu.|  
-|`ContainerSas`|String|Wymagane dla zadania importu, jeśli i tylko wtedy, gdy `StorageAccountKey` nie zostanie określony. Sygnatury dostępu Współdzielonego kontenera do uzyskiwania dostępu do obiektów blob, skojarzone z zadaniem. Zobacz [umieścić zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) dla jego format. Ten element jest pomijany z manifestu dla operacji eksportu.|  
+|`ContainerSas`|String|Wymagane dla zadania importu, jeśli i tylko wtedy, gdy `StorageAccountKey` nie zostanie określony. Sygnatury dostępu Współdzielonego kontenera do uzyskiwania dostępu do obiektów blob, skojarzone z zadaniem. Zobacz [umieścić zadania](/rest/api/storageimportexport/jobs) dla jego format. Ten element jest pomijany z manifestu dla operacji eksportu.|  
 |`ClientCreator`|String|Określa klienta, która utworzyła plik XML. Ta wartość nie jest interpretowany przez usługę Import/Export.|  
 |`BlobList`|Zagnieżdżone — element XML|Zawiera listę obiektów blob, które są dostępne w ramach importowania lub eksportowania zadania. Każdy obiekt blob z listy obiektów blob udostępnia te same właściwości i metadanych.|  
 |`BlobList/MetadataPath`|String|Opcjonalny. Określa ścieżkę względną w pliku na dysku, który zawiera metadane domyślne, które zostaną ustawione dla obiektów blob do listy obiektów blob dla operacji importowania. Te metadane można opcjonalnie zastąpić na podstawie obiektu blob przez obiekt blob.<br /><br /> Ten element jest pomijany z manifestu dla operacji eksportu.|  

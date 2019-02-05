@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 32f533d06b7db0284459951e65f9c04fe0bb0285
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226400"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55735844"
 ---
 Zestaw dostępności, pomaga zachować maszynach wirtualnych, które jest dostępne podczas przestojów, takich jak podczas konserwacji. Wprowadzenie do co najmniej dwie podobnie skonfigurowane maszyny wirtualne w zestawie dostępności tworzy nadmiarowość niezbędne do zapewnienia dostępności aplikacji lub usług, których maszyna wirtualna działa. Aby uzyskać szczegółowe informacje o tym, jak to działa, zobacz [Zarządzanie dostępnością maszyn wirtualnych][Manage the availability of virtual machines].
 

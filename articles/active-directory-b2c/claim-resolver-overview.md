@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 99498646a65865add35ec4a86cb7a25b42dd5523
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 44ac4a5fd14d262fdbd1f6fcd36bb2351d08f754
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162195"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692446"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Temat rozwiązujący oświadczenia w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -136,7 +136,7 @@ Używanie elementów rozpoznawania oświadczenia, można wypełnić wstępnie na
 
 ### <a name="dynamic-ui-customization"></a>Dynamiczne Dostosowywanie interfejsu użytkownika
 
-Usługi Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML, dzięki czemu mogą powodować dynamiczne renderowanie zawartości strony. Na przykład możesz zmienić obraz tła na stronie tworzenia konta lub logowania usługi Azure AD B2C na podstawie parametru niestandardowego, które przechodzą z sieci web lub aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz [dynamicznego konfigurowania interfejsu użytkownika za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Możesz również dostosować stronę HTML, na podstawie parametru języka lub zmienić zawartość, w oparciu o identyfikator klienta.
+Usługa Azure AD B2C umożliwia przekazywanie parametrów ciągu zapytania do punktów końcowych definicji zawartości HTML, dzięki czemu mogą powodować dynamiczne renderowanie zawartości strony. Na przykład możesz zmienić obraz tła na stronie tworzenia konta lub logowania usługi Azure AD B2C na podstawie parametru niestandardowego, które przechodzą z sieci web lub aplikacji mobilnej. Aby uzyskać więcej informacji, zobacz [dynamicznego konfigurowania interfejsu użytkownika za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C](active-directory-b2c-ui-customization-custom-dynamic.md). Możesz również dostosować stronę HTML, na podstawie parametru języka lub zmienić zawartość, w oparciu o identyfikator klienta.
 
 Poniższy przykład przekazuje w ciągu zapytania parametr o nazwie **campaignId** o wartości `hawaii`, **języka** kod `en-US`, i **aplikacji** reprezentuje identyfikator klienta:
 

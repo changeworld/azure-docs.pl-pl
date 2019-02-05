@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 93370b927f825752b8ce2b5e9d4ca94b3a4e0536
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 574c295c3b44d0c6146c852777f2bef3ad13ecdd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664186"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697930"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -196,7 +196,7 @@ Sieci, rejestrowanie i monitorowanie na platformie Azure to kompleksowe i obejmu
 
 * [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Monitorowanie sieci opartych na scenariuszach jest dostarczana z funkcji usługi Network Watcher. Ta usługa obejmuje przechwytywanie pakietów, następny przeskok, przepływu dla adresu IP Sprawdź widok grup zabezpieczeń, dzienników przepływu sieciowych grup zabezpieczeń. Scenariusz poziomu monitorowania udostępnia widok typu end to end zasobów sieciowych, w przeciwieństwie do monitorowania zasobów poszczególnych sieci.
 
-* [Monitorowanie zasobów](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-resource-level-monitoring): Monitorowanie na poziomie zasobów składa się z czterech funkcji, dzienniki diagnostyczne, metryki, rozwiązywanie problemów i kondycji zasobów. Wszystkie te funkcje są tworzone na poziomie zasobów sieciowych.
+* [Monitorowanie zasobów](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Monitorowanie na poziomie zasobów składa się z czterech funkcji, dzienniki diagnostyczne, metryki, rozwiązywanie problemów i kondycji zasobów. Wszystkie te funkcje są tworzone na poziomie zasobów sieciowych.
 
 ![Dzienników sieci platformy Azure](./media/azure-log-audit/azure-log-audit-fig4.png)
 
@@ -238,7 +238,7 @@ Oprócz możliwości rejestrowania wymienionych wcześniej usługi Network Watch
 
 * [Brama sieci wirtualnej i rozwiązywanie problemów z połączeniem](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Ułatwia rozwiązywanie problemów z bramy sieci wirtualnej i połączenia.
 
-* [Limity subskrypcji sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview#network-subscription-limits): Umożliwia wyświetlenie użycia zasobów sieciowych limitów.
+* [Limity subskrypcji sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Umożliwia wyświetlenie użycia zasobów sieciowych limitów.
 
 ### <a name="application-insights"></a>Application Insights
 

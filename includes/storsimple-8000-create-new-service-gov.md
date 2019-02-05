@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 956a374a66c765168f0c872999611318e1b7bdac
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: cbccab219e7b610c9ff51013a2d79764c2243e26
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165235"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55736001"
 ---
 <!--author=SharS last changed: 9/17/15-->
 
@@ -22,7 +22,7 @@ ms.locfileid: "50165235"
    1. Podaj **unikatową nazwę zasobu** dla swojej usługi. Jest to przyjazna nazwa, która może służyć do identyfikowania usługi. Nazwa może zawierać od 2 do 50 znaków, które mogą być literami, cyframi i łącznikami. Nazwa musi zaczynać i kończyć się literą lub cyfrą.
    2. Wybierz opcję **Subskrypcja** z listy rozwijanej. Subskrypcja jest połączona z kontem rozliczeniowym. To pole nie jest widoczne, jeśli istnieje tylko jedna subskrypcja.
    3. W obszarze **Grupa zasobów** wybierz opcję **użycia istniejącej** grupy lub **utworzenia nowej**. Aby uzyskać więcej informacji, zobacz [Grupy zasobów na platformie Azure](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
-   4. Wypełnij pole **Lokalizacja** dla usługi. Lokalizacja odnosi się do regionu geograficznego, w której chcesz wdrożyć urządzenie. Wybierz **USGov Iowa** lub **USGov Virgina**.
+   4. Wypełnij pole **Lokalizacja** dla usługi. Lokalizacja odnosi się do regionu geograficznego, w której chcesz wdrożyć urządzenie. Wybierz **USGov Iowa** lub **USGov Wirginia**.
    5. Wybierz opcję **Utwórz nowe konto magazynu**, aby automatycznie utworzyć konto magazynu w usłudze. Podaj nazwę tego konta magazynu. Jeśli potrzebujesz danych w innej lokalizacji, usuń zaznaczenie tego pola.
    6. Zaznacz pole **Przypnij do pulpitu nawigacyjnego**, jeśli chcesz szybko łączyć się z tą usługą na pulpicie nawigacyjnym.
    7. Kliknij pozycję **Utwórz**, aby utworzyć usługę Menedżer urządzeń StorSimple. Tworzenie usługi potrwa kilka minut. Po pomyślnym utworzeniu usługi zostanie wyświetlone powiadomienie i zostanie otwarty blok nowej usługi.

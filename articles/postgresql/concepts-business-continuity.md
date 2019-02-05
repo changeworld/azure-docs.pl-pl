@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: c8c62f6a80cf06e3444c4c3efd9979e723dcf488
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: b1d566ac571ddd2b2be3aff160f669e277887209
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559046"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698254"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-postgresql"></a>Omówienie ciągłości biznesowej z usługą Azure Database for PostgreSQL
 
@@ -49,6 +49,6 @@ Inną opcją jest do użycia usługi Azure Database dla PostgreSQL funkcji przyw
 > Funkcja przywracania geograficznego jest możliwe tylko wtedy, jeśli zainicjowano obsługę administracyjną serwera z magazynu geograficznie nadmiarowego magazynu kopii zapasowych. Jeśli chcesz przełączyć się z lokalnie nadmiarowy geograficznie nadmiarowych kopii zapasowych dla istniejącego serwera, należy wykonać zrzut przy użyciu pg_dump istniejącego serwera i go przywrócić do nowo utworzonego skonfigurowane za pomocą geograficznie nadmiarowych kopii zapasowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby dowiedzieć się więcej o automatycznych kopiach zapasowych, zobacz [kopii zapasowych w usłudze Azure Database for PostgreSQL](concepts-backup.md). 
-- Aby przywrócić do punktu w czasie za pomocą witryny Azure portal, zobacz [przywrócić bazę danych do punktu w czasie za pomocą witryny Azure portal](howto-restore-server-portal.md).
-- Aby przywrócić do punktu w czasie za pomocą wiersza polecenia platformy Azure, zobacz [przywrócić bazę danych do punktu w czasie za pomocą interfejsu wiersza polecenia](howto-restore-server-cli.md).
+- Dowiedz się więcej o [automatyczne kopie zapasowe w usłudze Azure Database for PostgreSQL](concepts-backup.md). 
+- Dowiedz się, jak przywrócić dane przy użyciu [witryny Azure portal](howto-restore-server-portal.md) lub [wiersza polecenia platformy Azure](howto-restore-server-cli.md).
+- Dowiedz się więcej o [odczytu replik w usłudze Azure Database for PostgreSQL](concepts-read-replicas.md).

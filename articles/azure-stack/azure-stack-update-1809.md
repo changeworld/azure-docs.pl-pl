@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: c4dcf34ff113c4f1a6d7dcacbe598c453dbd63c3
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a9cf502f169f4a9c4650545b1b37e11cc16a0a95
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658236"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694384"
 ---
 # <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
 
@@ -135,7 +135,7 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Zainstaluj najnowsze poprawki stosu platformy Azure dla 1808 przed zastosowaniem 1809. Aby uzyskać więcej informacji, zobacz [4481066 KB — Azure Stack poprawkę Azure stosu poprawkę 1.1808.9.117](https://support.microsoft.com/help/4481066/). Firma Microsoft zaleca najnowsze dostępne poprawki, wersja minimalne wymagane do zainstalowania 1809 jest 1.1808.5.110.
+- Zainstaluj najnowsze poprawki stosu platformy Azure dla 1808 przed zastosowaniem 1809. Aby uzyskać więcej informacji, zobacz [4481066 KB — Azure Stack poprawkę Azure stosu poprawkę 1.1808.9.117](https://support.microsoft.com/help/4481066/). Firma Microsoft zaleca najnowszych poprawek, dostępnych, minimalna wersja wymagana do zainstalowania 1809 jest 1.1808.5.110.
 
   > [!TIP]  
   > Subskrybowania następujących *RRS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:

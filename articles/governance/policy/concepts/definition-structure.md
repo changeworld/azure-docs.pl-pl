@@ -4,17 +4,17 @@ description: W tym artykule opisano, jak zasobu definicji zasad jest używany pr
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/29/2019
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d54fd12125902aa5019643df24d78ae81f7fc31f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296668"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698296"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -46,7 +46,8 @@ Na przykład następujący kod JSON przedstawiono zasady, które ogranicza, gdzi
                     "description": "The list of locations that can be specified when deploying resources",
                     "strongType": "location",
                     "displayName": "Allowed locations"
-                }
+                },
+                "defaultValue": "westus2"
             }
         },
         "displayName": "Allowed locations",
@@ -87,8 +88,7 @@ Parametry ułatwiają zarządzanie zasadami dzięki zmniejszeniu liczby definicj
 Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz parametrów w definicji zasad, można ponownie użyć tej zasady dla różnych scenariuszy przy użyciu innej wartości.
 
 > [!NOTE]
-> Definicji parametrów zasad lub definicji inicjatywy można skonfigurować tylko podczas początkowego tworzenia zasad lub inicjatywy. Nie można później zmienić definicji parametrów.
-> Zapobiega to pośrednio odbywa się nieprawidłowe istniejące przypisania zasad lub inicjatywy.
+> Parametry mogą być dodawane do definicji interfejsu istniejące i przypisane. Nowy parametr musi zawierać **defaultValue** właściwości. Zapobiega to pośrednio odbywa się nieprawidłowe istniejące przypisania zasad lub inicjatywy.
 
 Na przykład można zdefiniować zasadę, aby ograniczyć lokalizacje, w której można wdrożyć zasoby.
 Podczas tworzenia zasad, może zadeklarować następujące parametry:
@@ -101,7 +101,8 @@ Podczas tworzenia zasad, może zadeklarować następujące parametry:
             "description": "The list of allowed locations for resources.",
             "displayName": "Allowed locations",
             "strongType": "location"
-        }
+        },
+        "defaultValue": "westus2"
     }
 }
 ```

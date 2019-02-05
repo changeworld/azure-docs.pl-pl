@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: aad5b2d2e451f33a3f4f365fa0702eef5d698e4e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729167"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730173"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrację danych z serii StorSimple 5000 – 7000 do usługi Azure File Sync
 
@@ -56,8 +56,8 @@ W tym miejscu znajdziesz wymagań wstępnych migracji dla starszego urządzenia 
 - Woluminy StorSimple są zainstalowane na hoście, a także zawierać udziały plików.
 - Host ma wystarczającej ilości miejsca lokalnego do przechowywania lokalnie buforowanych danych.
 - Poziom dostępu właściciela do subskrypcji platformy Azure, który będzie używany do wdrażania usługi Azure File Sync. Mogą wystąpić problemy podczas tworzenia punktu końcowego w chmurze grupy synchronizacji, jeśli nie masz właściciela lub uprawnienia na poziomie administratora.
-- Dostęp do [konta magazynu ogólnego przeznaczenia v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) z udziału plików platformy Azure, który chcesz zsynchronizować z. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
- - Jak [utworzyć udział plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share#create-file-share-through-the-azure-portal).
+- Dostęp do [konta magazynu ogólnego przeznaczenia v2](https://docs.microsoft.com/azure/storage/common/storage-account-overview) z udziału plików platformy Azure, który chcesz zsynchronizować z. Aby uzyskać więcej informacji, zobacz temat [Tworzenie konta](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
+ - Jak [utworzyć udział plików platformy Azure](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Proces migracji
 
@@ -87,7 +87,7 @@ Wykonaj poniższe kroki, aby migrować udziału plików Windows, które są skon
     Pomiń ten krok i przejdź do następnego kroku, jeśli używasz innego hosta Windows Server. Jeśli używasz tego samego serwera plików Windows dla AFS, teraz doświadczy za kilka minut przestoju. 
     - **Przestój rozpocznie się** -Usuń punkt końcowy serwera, który został utworzony w *krok 1F*. 
     - Utwórz nowy punkt końcowy serwera przy użyciu ścieżki, gdzie mają dane znajdują się przerywaj do przodu.
-    - Gdy punkt końcowy serwera znajduje się w dobrej kondycji (może to potrwać kilka minut), zobaczysz dane w tej nowej lokalizacji. Teraz można skonfigurować hosta Windows Server do obsługi plików z tej nowej lokalizacji.\ -  **Kończy się przestojów**.
+    - Gdy punkt końcowy serwera znajduje się w dobrej kondycji (może to potrwać kilka minut), zobaczysz dane w tej nowej lokalizacji. Teraz można skonfigurować hosta Windows Server do obsługi plików z tej nowej lokalizacji. -  **Kończy się przestojów**.
 5.  Jeśli korzystania z innego serwera plików Windows dla usługi Azure File Sync mogą nie mieć żadnych przestojów. 
     - Dodaj inny punkt końcowy serwera o ścieżce lokalnej pamięci masowej, które są przygotowywane do użycia jako pamięci podręcznej audytów urządzenia StorSimple. 
     - Można wyświetlić pliki w nowym serwerze w ciągu kilku minut. Mogą na zamianę z urządzenia StorSimple do nowej lokalizacji na hoście w dowolnym momencie.

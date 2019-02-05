@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: dc87079083b8f07ad18f5f871bff64de8d492ebd
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 414bb0183e68cb46e52c379ea3f7aceda5d4170e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39285650"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701186"
 ---
 ## <a name="the-parts-of-the-device-model-schema"></a>Części schematu modelu urządzenia
 
@@ -105,7 +105,7 @@ Uruchamia usługę symulacji **Chłodnica-01-state.js** pliku co pięć sekund, 
 }
 ```
 
-Po uruchomieniu rozwiązania, wysyła zapytanie symulowanych urządzeń w celu utworzenia listy `Type` wartości mają być używane w interfejsie użytkownika. Rozwiązanie używa `Latitiude` i `Longitude` właściwości, aby dodać lokalizację urządzenia do mapy na pulpicie nawigacyjnym.
+Po uruchomieniu rozwiązania, wysyła zapytanie symulowanych urządzeń w celu utworzenia listy `Type` wartości mają być używane w interfejsie użytkownika. Rozwiązanie używa `Latitude` i `Longitude` właściwości, aby dodać lokalizację urządzenia do mapy na pulpicie nawigacyjnym.
 
 ## <a name="telemetry"></a>Telemetria
 
@@ -144,7 +144,7 @@ Obecnie można używać tylko schematów komunikatów JSON. Pola wymienione w sc
 * Tekst
 * Wartość logiczna
 * Liczba całkowita
-* Podwójne
+* Double
 * DateTime
 
 Aby wysyłać komunikaty telemetryczne w różnych interwałach, należy dodać wiele typów danych telemetrycznych do `Telemetry` tablicy. Poniższy przykład wysyła dane temperatury i wilgotności co 10 sekund, a stan światło na minutę:

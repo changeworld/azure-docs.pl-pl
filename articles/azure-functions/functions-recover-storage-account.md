@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: alkarche
-ms.openlocfilehash: 1902091978233ecaf80f04e3a08c70c20aee42c9
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 861a4d4d64f970a13aba68f831d2148f8a354ef4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54000023"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732162"
 ---
 # <a name="how-to-troubleshoot-functions-runtime-is-unreachable"></a>Jak rozwiązywać problemy z "środowisko uruchomieniowe usługi functions jest nieosiągalny"
 
@@ -71,7 +71,7 @@ W poprzednim kroku Jeśli nie masz parametry połączenia konta magazynu były p
 
 ## <a name="storage-account-credentials-invalid"></a>Nieprawidłowe poświadczenia konta magazynu
 
-Musi zostać zaktualizowany powyżej parametry połączenia konta magazynu, jeśli zostaną ponownie wygenerowane klucze magazynu. [Więcej informacji na temat magazynu w tym miejscu zarządzania kluczami](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#manage-your-storage-account)
+Musi zostać zaktualizowany powyżej parametry połączenia konta magazynu, jeśli zostaną ponownie wygenerowane klucze magazynu. [Więcej informacji na temat magazynu w tym miejscu zarządzania kluczami](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)
 
 ## <a name="storage-account-inaccessible"></a>Konto magazynu jest niedostępne
 

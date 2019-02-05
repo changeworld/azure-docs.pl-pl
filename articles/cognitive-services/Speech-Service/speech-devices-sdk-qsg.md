@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85e250f3dee3dbfc9e09524d5f3977a143ee8bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5bd631bf31ba4e6a840c3e4e818062d322da0158
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213263"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727930"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
@@ -47,7 +47,7 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
 
 ## <a name="set-up-the-development-kit"></a>Skonfiguruj zestaw development kit
 
-1. Zestaw development kit nawiązać połączenie z komputerem PC lub zasilania karty przy użyciu kabla USB mini. Jeśli zestaw jest połączony, wskaźnik zielono świeci się w górnym tablicy.
+1. Zestaw development kit nawiązać połączenie z komputerem PC lub dostarczenia danych karty przy użyciu kabla USB wczesnych wysokiej jakości. Wskaźnik zielony zasilania, zostaną wyświetlone w górnym tablicy.
 
 1. Zestaw development kit połączyć się z komputerem za pomocą drugiego mini kabla USB.
 

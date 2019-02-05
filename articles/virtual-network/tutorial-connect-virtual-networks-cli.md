@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 5fc5829744d3740f3484303ae009145106264fec
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: e690ae8cd8f6b2ae52c0c8a9dae12c51f8921531
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470719"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694571"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych przy użyciu wiersza polecenia platformy Azure
 
@@ -41,7 +41,7 @@ Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza poleceni
 
 ## <a name="create-virtual-networks"></a>Tworzenie sieci wirtualnych
 
-Przed utworzeniem sieci wirtualnej, należy utworzyć grupę zasobów dla sieci wirtualnej i wszystkie zasoby utworzone w tym artykule. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+Przed utworzeniem sieci wirtualnej, należy utworzyć grupę zasobów dla sieci wirtualnej i wszystkie zasoby utworzone w tym artykule. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
@@ -71,7 +71,7 @@ az network vnet create \
 
 ## <a name="peer-virtual-networks"></a>Tworzenia komunikacji równorzędnej sieci wirtualnych
 
-Komunikacje równorzędne są ustanawiane między identyfikatory sieci wirtualnej, więc musi najpierw uzyskać identyfikator każdej sieci wirtualnej za pomocą [az sieci vnet show](/cli/azure/network/vnet#az_network_vnet_show) i Zapisz identyfikator w zmiennej.
+Komunikacje równorzędne są ustanawiane między identyfikatory sieci wirtualnej, więc musi najpierw uzyskać identyfikator każdej sieci wirtualnej za pomocą [az sieci vnet show](/cli/azure/network/vnet) i Zapisz identyfikator w zmiennej.
 
 ```azurecli-interactive
 # Get the id for myVirtualNetwork1.
@@ -110,7 +110,7 @@ az network vnet peering create \
   --allow-vnet-access
 ```
 
-W danych wyjściowych zwracane po wykonaniu poprzedniego polecenia, zobaczysz, że **peeringState** jest *połączono*. Platforma Azure również zmieniła stan komunikacji równorzędnej z *myVirtualNetwork1 myVirtualNetwork2* komunikacji równorzędnej do *połączono*. Upewnij się, że stan komunikacji równorzędnej dla *myVirtualNetwork1 myVirtualNetwork2* komunikacji równorzędnej zmieniony na *połączono* z [az network show komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering#az_network_vnet_peering_show).
+W danych wyjściowych zwracane po wykonaniu poprzedniego polecenia, zobaczysz, że **peeringState** jest *połączono*. Platforma Azure również zmieniła stan komunikacji równorzędnej z *myVirtualNetwork1 myVirtualNetwork2* komunikacji równorzędnej do *połączono*. Upewnij się, że stan komunikacji równorzędnej dla *myVirtualNetwork1 myVirtualNetwork2* komunikacji równorzędnej zmieniony na *połączono* z [az network show komunikacji równorzędnej sieci wirtualnej](/cli/azure/network/vnet/peering).
 
 ```azurecli-interactive
 az network vnet peering show \
@@ -128,7 +128,7 @@ Utwórz maszynę wirtualną w każdej sieci wirtualnej, dzięki czemu będzie mo
 
 ### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny wirtualnej
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVm1* w *myVirtualNetwork1* sieci wirtualnej. Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`. `--no-wait` Opcja tworzy maszynę Wirtualną w tle, dzięki czemu można kontynuować do następnego kroku.
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVm1* w *myVirtualNetwork1* sieci wirtualnej. Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`. `--no-wait` Opcja tworzy maszynę Wirtualną w tle, dzięki czemu można kontynuować do następnego kroku.
 
 ```azurecli-interactive
 az vm create \
@@ -192,7 +192,7 @@ Zamknij sesję SSH *myVm2* maszyny Wirtualnej.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure/group#az_group_delete) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
+Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure/group) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

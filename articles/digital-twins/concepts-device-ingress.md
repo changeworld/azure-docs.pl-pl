@@ -8,18 +8,18 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: e6d95d44dbfe2d66189be5103552d841ccbdf690
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 35d12d0114f9677905c85a9df94ecd074e5f8f75
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117422"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729527"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Ruch przychodzący danych telemetrycznych i łączność urządzeń
 
 Dane telemetryczne wysyłane przez urządzenia i czujniki formularza sieci szkieletowej każde rozwiązanie IoT. Jak reprezentują tych różnych zasobów i zarządzania nimi w ramach lokalizacji są głównymi problemy podczas tworzenia aplikacji IoT. Azure cyfrowego bliźniaczych reprezentacji upraszcza tworzenie rozwiązań IoT przez łączenie urządzeń i czujników z wykresem analizy przestrzennej.
 
-Aby rozpocząć pracę, należy utworzyć zasób usługi Azure IoT Hub w katalogu głównym przestrzenne programu graph. Zasób usługi IoT Hub umożliwia urządzeniom poniżej obszaru głównego do wysyłania wiadomości. Po utworzeniu Centrum IoT Hub rejestrować urządzenia z czujników w ramach wystąpienia Twins cyfrowych. Urządzenia mogą wysyłać dane do usługi cyfrowego Twins, za pomocą [zestaw SDK urządzeń Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks).
+Aby rozpocząć pracę, należy utworzyć zasób usługi Azure IoT Hub w katalogu głównym przestrzenne programu graph. Zasób usługi IoT Hub umożliwia urządzeniom poniżej obszaru głównego do wysyłania wiadomości. Po utworzeniu Centrum IoT Hub rejestrować urządzenia z czujników w ramach wystąpienia Twins cyfrowych. Urządzenia mogą wysyłać dane do usługi cyfrowego Twins, za pomocą [zestaw SDK urządzeń Azure IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks).
 
 Przewodnik krok po kroku dotyczące sposobu przynoszą Dołączanie urządzenia w temacie [samouczka, aby wdrożyć i skonfigurować cyfrowego Twins](tutorial-facilities-setup.md). Na pierwszy rzut oka dostępne są następujące czynności:
 
@@ -69,10 +69,10 @@ Można dostosować format wiadomości na urządzeniu oraz ładunek do potrzeb sw
 
 | Nazwa właściwości | Wartość | Wymagane | Opis |
 |---|---|---|---|
-| **Dane telemetryczne DigitalTwins** | 1.0 | Yes | Stała wartość, która identyfikuje wiadomość do systemu. |
-| **DigitalTwins SensorHardwareId** | `string(72)` | Yes | Unikatowy identyfikator czujnik, który wysyła **komunikat**. Ta wartość musi odpowiadać obiektu **HardwareId** właściwości systemu do ich przetworzenia. Na przykład `00FF0643BE88-CO2`. |
+| **DigitalTwins-Telemetry** | 1.0 | Yes | Stała wartość, która identyfikuje wiadomość do systemu. |
+| **DigitalTwins-SensorHardwareId** | `string(72)` | Yes | Unikatowy identyfikator czujnik, który wysyła **komunikat**. Ta wartość musi odpowiadać obiektu **HardwareId** właściwości systemu do ich przetworzenia. Na przykład `00FF0643BE88-CO2`. |
 | **CreationTimeUtc** | `string` | Nie | [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) sformatowany ciąg daty, który identyfikuje podczas próbkowania w ładunku. Na przykład `2018-09-20T07:35:00.8587882-07:00`. |
-| **Identyfikator korelacji** | `string` | Nie | Identyfikator UUID, który został użyty do śledzenia zdarzeń w systemie. Na przykład `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
+| **CorrelationId** | `string` | Nie | Identyfikator UUID, który został użyty do śledzenia zdarzeń w systemie. Na przykład `cec16751-ab27-405d-8fe6-c68e1412ce1f`.
 
 ### <a name="send-your-message-to-digital-twins"></a>Wysłać wiadomość do cyfrowego bliźniaczych reprezentacji
 

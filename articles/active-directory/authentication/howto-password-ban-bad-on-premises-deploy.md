@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: 105ed999fc7122fb1c99e2c380b26a8c4d8d9f62
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 824bedf782d6d227f2fa3adcf52492bb5a3eb478
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659528"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696867"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrony haseł usługi Azure AD
 
@@ -40,7 +40,7 @@ Gdy ta funkcja działa w trybie inspekcji rozsądnym czasie, konfigurację wymus
 
 ## <a name="deployment-requirements"></a>Wymagania dotyczące wdrażania
 
-* Wszystkie kontrolery domeny z zainstalowaną usługę agenta ochrony kontrolera domeny haseł usługi Azure AD musi działać system Windows Server 2012 lub nowszy.
+* Wszystkie kontrolery domeny, w którym zostanie zainstalowana usługa hasło ochrony kontrolera domeny agenta programu Azure AD musi działać system Windows Server 2012 lub nowszy.
 * Wszystkie komputery z zainstalowaną usługę serwera Proxy ochrony haseł usługi Azure AD musi działać system Windows Server 2012 R2 lub nowszym.
 * Wszystkie maszyny, których ochrony haseł usługi Azure AD składniki są zainstalowane w tym kontrolery domeny muszą mieć zainstalowanego środowiska uruchomieniowego języka Universal C.
 Najlepiej jest to realizowane poprzez wdrażanie poprawek w pełni maszyny za pośrednictwem usługi Windows Update. W przeciwnym razie odpowiedni pakiet aktualizacji specyficznych dla systemu operacyjnego może być zainstalowana — zobacz [aktualizacji dla uniwersalnego środowiska uruchomieniowego c. w Windows](https://support.microsoft.com/help/2999226/update-for-universal-c-runtime-in-windows)
@@ -168,17 +168,17 @@ Istnieją dwa wymagane pliki instalacyjne dla ochrony haseł usługi Azure AD, k
 
       Powyższe przykłady powiedzie się tylko, jeśli aktualnie zalogowanego użytkownika jest również administratorem domeny usługi Active Directory dla domeny głównej. Jeśli nie jest to możliwe, może podać poświadczenia alternatywne domeny za pomocą parametru - ForestCredential.
 
-      > [!NOTE]
-      > Jeśli wielu serwerów proxy są zainstalowane w danym środowisku, nie ma znaczenia, który serwer proxy jest używane do rejestrowania w lesie.
+   > [!NOTE]
+   > Jeśli wielu serwerów proxy są zainstalowane w danym środowisku, nie ma znaczenia, który serwer proxy jest używane do rejestrowania w lesie.
 
-      > [!TIP]
-      > Może istnieć znaczne opóźnienie (w sekundach wielu) przy pierwszym uruchomieniu tego polecenia cmdlet jest uruchamiane dla danej dzierżawy usługi Azure, przed polecenie cmdlet kończy wykonywanie. Chyba że błąd jest zgłaszany to opóźnienie nie powinny być uznawane za monitów.
+   > [!TIP]
+   > Może istnieć znaczne opóźnienie (w sekundach wielu) przy pierwszym uruchomieniu tego polecenia cmdlet jest uruchamiane dla danej dzierżawy usługi Azure, przed polecenie cmdlet kończy wykonywanie. Chyba że błąd jest zgłaszany to opóźnienie nie powinny być uznawane za monitów.
 
-      > [!NOTE]
-      > Rejestracja lasu usługi Active Directory oczekuje jednorazowy krok w okresie istnienia w lesie. Agentów kontrolera domeny w lesie automatycznie będzie wykonywać wszystkie niezbędne maintainenance od tej pory i nowszych wersjach. Gdy powiodła się dla podanego lasu, dodatkowe wywołań `Register-AzureADPasswordProtectionForest` nadal pomyślnie tworzone, ale nie są konieczne.
+   > [!NOTE]
+   > Rejestracja lasu usługi Active Directory oczekuje jednorazowy krok w okresie istnienia w lesie. Agentów kontrolera domeny w lesie automatycznie będzie wykonywać wszystkie niezbędne maintainenance od tej pory i nowszych wersjach. Gdy powiodła się dla podanego lasu, dodatkowe wywołań `Register-AzureADPasswordProtectionForest` nadal pomyślnie tworzone, ale nie są konieczne.
 
-      > [!NOTE]
-      > Aby `Register-AzureADPasswordProtectionForest` została wykonana pomyślnie co najmniej jeden system Windows Server 2012 lub nowszym domeny musi być dostępny kontroler domeny serwera proxy. Jednak nie jest wymagane zainstalowanie oprogramowania agenta kontrolera domeny kontrolerów domeny przed ten krok.
+   > [!NOTE]
+   > Aby `Register-AzureADPasswordProtectionForest` została wykonana pomyślnie co najmniej jeden system Windows Server 2012 lub nowszym domeny musi być dostępny kontroler domeny serwera proxy. Jednak nie jest wymagane zainstalowanie oprogramowania agenta kontrolera domeny kontrolerów domeny przed ten krok.
 
 6. Konfigurowanie usługi Serwer Proxy ochrony haseł usługi Azure AD do komunikowania się za pośrednictwem serwera proxy HTTP
 

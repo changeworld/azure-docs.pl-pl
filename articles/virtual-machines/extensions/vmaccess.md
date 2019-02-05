@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: roiyz
-ms.openlocfilehash: 20d806540b0aa814c88ef4ff69834283ba4a7722
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 71aecc1748e70e2119b1f54c21a0f705afc5d5d0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413842"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731312"
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli"></a>Zarządzanie użytkowników administracyjnych, SSH i sprawdzanie lub napraw dyski maszyn wirtualnych systemu Linux przy użyciu rozszerzenia VMAccess przy użyciu wiersza polecenia platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -110,7 +110,7 @@ az vm user delete \
 ```
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>Pliki w formacie JSON i rozszerzenie VMAccess
-W poniższych przykładach używane nieprzetworzone pliki w formacie JSON. Użyj [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension#az_vm_extension_set) następnie wywołać pliki w formacie JSON. Te pliki JSON mogą być również wywoływane z szablonów platformy Azure. 
+W poniższych przykładach używane nieprzetworzone pliki w formacie JSON. Użyj [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension) następnie wywołać pliki w formacie JSON. Te pliki JSON mogą być również wywoływane z szablonów platformy Azure. 
 
 ### <a name="reset-user-access"></a>Resetowanie dostępu użytkownika
 W przypadku utraty dostępu do katalogu głównego na maszynie Wirtualnej systemu Linux, możesz uruchomić skrypt VMAccess do zaktualizowania użytkownika hasła lub klucza SSH.

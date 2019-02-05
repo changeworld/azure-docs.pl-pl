@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 771aba1d18dc0cf691c338e06278a356caebda96
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b80ee059459d4c1f4d90d14ee62dcead57596571
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886241"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697153"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyn wirtualnych, który używa strefy dostępności
 
@@ -81,7 +81,7 @@ Zestaw skalowania i obsługi zasobów, takich jak usługa Azure load balancer i 
 
 Proces, aby utworzyć zestaw skalowania, który używa strefy dostępności jest taki sam, zgodnie z opisem w [wprowadzenie artykułu](quick-create-cli.md). Aby korzystać ze stref dostępności, musisz utworzyć skalowania jest ustawiana w obsługiwanym regionie platformy Azure.
 
-Dodaj `--zones` parametr [tworzenie az vmss](/cli/azure/vmss#az_vmss_create) polecenia i określić które strefę do użycia (takie jak strefy *1*, *2*, lub *3*). Poniższy przykład tworzy jednostrefowego zestawu skalowania o nazwie *myScaleSet* w strefie *1*:
+Dodaj `--zones` parametr [tworzenie az vmss](/cli/azure/vmss) polecenia i określić które strefę do użycia (takie jak strefy *1*, *2*, lub *3*). Poniższy przykład tworzy jednostrefowego zestawu skalowania o nazwie *myScaleSet* w strefie *1*:
 
 ```azurecli
 az vmss create \

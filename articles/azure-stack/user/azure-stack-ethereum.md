@@ -5,19 +5,19 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/02/2018
+ms.date: 02/04/2019
 ms.topic: tutorial
 ms.service: azure-stack
 ms.reviewer: seyadava
 ms.custom: mvc
 manager: femila
-ms.lastreviewed: 11/02/2018
-ms.openlocfilehash: 844c81d71734ab17c93f60cb802686c209e04014
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/04/2019
+ms.openlocfilehash: 6c9893aac349b05580f49a445bd088ed5c76044b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239234"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697482"
 ---
 # <a name="deploy-an-ethereum-blockchain-network-on-azure-stack"></a>Wdrażanie sieci łańcucha bloków Ethereum w usłudze Azure Stack
 
@@ -25,7 +25,7 @@ Szablon rozwiązania Ethereum jest przeznaczona do umożliwiają łatwiejsze i s
 
 Za pomocą kliku dane wejściowe użytkownika i jednym kliknięciem za pośrednictwem portalu dzierżawcy usługi Azure Stack każdy element członkowski można udostępnić swoje sieciowych zużycia. Każdy element członkowski sieciowych zużycia składa się z zestawu węzłów ze zrównoważonym obciążeniem transakcji za pomocą której aplikacji lub użytkownika mogą wchodzić w interakcje przesłać transakcje, zestaw węzłów wyszukiwania rekordu transakcji i wirtualnego urządzenia sieciowego (WUS). Krok kolejne połączenie nawiązuje połączenie z urządzenia WUS, aby utworzyć sieć pełni skonfigurowanej zawierającym wiele elementów członkowskich łańcucha bloków.
 
-Aby to skonfigurować, należy:
+Aby skonfigurować:
 
 - Wybierz architekturę wdrożenia
 - Wdrażanie autonomicznego, lider konsorcjum lub konsorcjum członek sieci
@@ -157,7 +157,7 @@ Aby zweryfikować wdrożenie elementu członkowskiego, przeglądania witryny adm
 
 ![Podsumowanie wdrożenia elementu członkowskiego](./media/azure-stack-ethereum/ethereum-node-status-2.png)
 
-Jak pokazano na ilustracji, jest w stanie węzłów członka **nieuruchomiona**. Jest to spowodowane połączenie między elementu członkowskiego i lider nie zostanie nawiązane. Połączenie między elementu członkowskiego i lider jest dwukierunkowe połączenie. Podczas wdrażania elementu członkowskiego szablonu automatycznie tworzy połączenia od elementu członkowskiego do lidera. Aby utworzyć połączenie z liderem do elementu członkowskiego, przejdź do następnego kroku.
+Jak pokazano na ilustracji, jest w stanie węzłów członka **nieuruchomiona**. Ten stan jest, ponieważ połączenie między elementu członkowskiego i lider nie zostanie nawiązane. Połączenie między elementu członkowskiego i lider jest dwukierunkowe połączenie. Podczas wdrażania elementu członkowskiego szablonu automatycznie tworzy połączenia od elementu członkowskiego do lidera. Aby utworzyć połączenie z liderem do elementu członkowskiego, przejdź do następnego kroku.
 
 ### <a name="connect-member-and-leader"></a>Łączenie elementu członkowskiego i lidera
 

@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: d9800ff3fc82636c5cae12167738667ec84326ee
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: ec7b71c7da19ecefc14696c029e63a074b498ec8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52856620"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696755"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan-preview"></a>Tworzenie aplikacji funkcji w systemie Linux w ramach planu usługi Azure App Service (wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 Do obsługi wykonywania funkcji w systemie Linux potrzebna jest aplikacja funkcji. Aplikacja funkcji zapewnia środowisko do wykonywania kodu funkcji. Umożliwia ona grupowanie funkcji w ramach jednostki logicznej, co ułatwia wdrażanie i udostępnianie zasobów oraz zarządzanie nimi. Utwórz aplikację funkcji przy użyciu polecenia [az functionapp create](/cli/azure/functionapp#az-functionapp-create) w ramach planu usługi App Service dla systemu Linux.
 
-W poniższym poleceniu w miejsce symbolu zastępczego `<app_name>` wstaw unikatową nazwę aplikacji funkcji, a w miejsce symbolu zastępczego `<storage_name>` wstaw nazwę konta magazynu. Nazwa `<app_name>` jest używana jako domyślna domena DNS aplikacji funkcji, więc nazwa ta musi być unikatowa wśród wszystkich aplikacji na platformie Azure. Należy również ustawić `<language>` środowisko uruchomieniowe dla aplikacji funkcji z `dotnet` (C#), `node` (JavaScript) lub `python`.
+W poniższym poleceniu w miejsce symbolu zastępczego `<app_name>` wstaw unikatową nazwę aplikacji funkcji, a w miejsce symbolu zastępczego `<storage_name>` wstaw nazwę konta magazynu. Nazwa `<app_name>` jest używana jako domyślna domena DNS aplikacji funkcji, więc nazwa ta musi być unikatowa wśród wszystkich aplikacji na platformie Azure. Należy również ustawić środowisko uruchomieniowe `<language>` dla aplikacji funkcji za pomocą pozycji `dotnet` (C#), `node` (JavaScript) lub `python`.
 
 ```azurecli-interactive
 az functionapp create --resource-group myResourceGroup --plan myAppServicePlan \
@@ -84,7 +84,7 @@ Ponieważ `myAppServicePlan` jest planem systemu Linux, wbudowany obraz platform
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule pokazano, jak utworzyć aplikację funkcji systemu Linux hostowanych na platformie Azure. Możesz teraz [wdrażanie projektu funkcji](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest) do tej aplikacji funkcji. Możesz użyć narzędzia Core usługi Azure Functions do [Tworzenie projektu funkcji](functions-run-local.md#create-a-local-functions-project) na komputerze lokalnym i wdrożyć ją na nową aplikację funkcji systemu Linux.  
+W tym artykule pokazano, jak utworzyć aplikację funkcji systemu Linux hostowanych na platformie Azure. Możesz teraz [wdrażanie projektu funkcji](https://docs.microsoft.com/cli/azure/functionapp/deployment/source?view=azure-cli-latest) do tej aplikacji funkcji. Możesz użyć narzędzia Core usługi Azure Functions do [Tworzenie projektu funkcji](functions-run-local.md) na komputerze lokalnym i wdrożyć ją na nową aplikację funkcji systemu Linux.  
 
 > [!div class="nextstepaction"] 
 > [Kodowanie i testowanie usługi Azure Functions lokalnie](functions-run-local.md)

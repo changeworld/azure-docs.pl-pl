@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: tomfitz
-ms.openlocfilehash: d7f84e188324bcdb9fb1a26d701805978f1fd625
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: ad8a01ecccd7af15686c449b17cd5f014450b015
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489397"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734440"
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>Organizowanie zasobów platformy Azure przy użyciu tagów
 
@@ -29,11 +29,15 @@ Aby zastosować znaczniki do zasobów, użytkownik musi mieć dostęp do zapisu 
 
 [!INCLUDE [Handle personal data](../../includes/gdpr-intro-sentence.md)]
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+## <a name="policies"></a>Zasady
+
+Możesz użyć [usługi Azure Policy](../governance/policy/overview.md) do wymuszania znakowania reguł i Konwencji. Tworząc zasady, należy unikać scenariusza zasoby wdrażane na Twojej subskrypcji, które nie są zgodne z oczekiwanych tagów w Twojej organizacji. Zamiast ręcznego zastosowania tagów lub wyszukiwanie zasobów, które nie są zgodne można utworzyć zasadę, która automatycznie stosuje znaczniki wymagane podczas wdrażania. W poniższej sekcji pokazano przykładowe zasady dla tagów.
+
+[!INCLUDE [Tag policies](../../includes/azure-policy-samples-general-tags.md)]
 
 ## <a name="powershell"></a>PowerShell
 
-Przykłady w tym artykule wymagają programu Azure PowerShell w wersji 6.0 lub nowszej. Jeśli nie masz wersji 6.0 lub nowszej, [zaktualizuj swoją wersję](/powershell/azure/install-az-ps).
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Aby wyświetlić istniejące tagi dla *grupy zasobów*, użyj:
 
@@ -275,5 +279,4 @@ Dla operacji interfejsu API REST, zobacz [dokumentacja interfejsu API REST rozli
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Nie wszystkie typy zasobów obsługują tagów. Aby określić, jeśli tag można zastosować do typu zasobu, zobacz [obsługę dla zasobów platformy Azure tagów](tag-support.md).
-* Za pomocą zasad niestandardowych, można zastosować ograniczenia i konwencje w ramach subskrypcji. Zasady, które należy zdefiniować może wymagać, że wszystkie zasoby mają wartości dla określonego tagu. Aby uzyskać więcej informacji, zobacz [co to jest usługa Azure Policy?](../azure-policy/azure-policy-introduction.md)
 * Wprowadzenie do korzystania z portalu, zobacz [przy użyciu witryny Azure portal do zarządzania zasobami platformy Azure](resource-group-portal.md).  

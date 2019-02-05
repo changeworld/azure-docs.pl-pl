@@ -5,13 +5,13 @@ author: jan-eng
 ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/15/2019
-ms.openlocfilehash: 49c9d908970425165fcdd76171c20ab65454f42a
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.date: 02/01/2019
+ms.openlocfilehash: 8cc7d7d93f483289ab7faa3f5a7193fc218b57bc
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318582"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695031"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Usługa Azure Database for postgresql w warstwie warstw cenowych
 
@@ -129,5 +129,5 @@ Aby uzyskać najbardziej aktualne informacje o cenach, zobacz usługę [stronę 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się, jak [utworzysz serwer PostgreSQL w witrynie portal](tutorial-design-database-using-azure-portal.md).
-- Dowiedz się, jak [monitorowania i skalowania usługi Azure Database for postgresql w warstwie serwera za pomocą wiersza polecenia platformy Azure](scripts/sample-scale-server-up-or-down.md).
-- Dowiedz się więcej o [usługi ograniczenia](concepts-limits.md). 
+- Dowiedz się więcej o [limitów usług](concepts-limits.md). 
+- Dowiedz się, jak [skalowanie w poziomie za pomocą odczytu replik](howto-read-replicas-portal.md).

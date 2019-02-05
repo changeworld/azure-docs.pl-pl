@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: spelluru
-ms.openlocfilehash: 6c8498a43b127fecc02473177ac955ae51a647d6
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: ee78227f645cbeded7a5c689750db835faf1055f
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48854120"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728316"
 ---
 # <a name="how-to-use-azure-relay-wcf-relays-with-net"></a>Jak używać usługi Azure Relay WCF przekaźników przy użyciu platformy .NET
 W tym artykule opisano sposób użycia usługi Azure Relay. Przykłady zostały napisane w języku C# i używają interfejsu API Windows Communication Foundation (WCF) z rozszerzeniami zawartymi w zestawie usługi Service Bus. Aby uzyskać więcej informacji na temat usługi Azure relay, zobacz [Omówienie usługi Azure Relay](relay-what-is-it.md).
@@ -116,7 +116,7 @@ Console.ReadLine();
 sh.Close();
 ```
 
-W tym przykładzie utworzysz dwa punkty końcowe należące do tej samej implementacji kontraktu. Jeden jest lokalny, a drugi jest rzutowany za pośrednictwem usługi Azure Relay. Podstawowe różnice między nimi stanowią powiązania — [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) dla lokalnego i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding#microsoft_servicebus_nettcprelaybinding) dla punktu końcowego usługi relay i adresy. Lokalny punkt końcowy ma adres sieci lokalnej z unikatowym portem. Punkt końcowy usługi relay ma adres złożony z ciągu `sb`, nazwa przestrzeni nazw i ścieżki "solver". Skutkuje to identyfikator URI `sb://[serviceNamespace].servicebus.windows.net/solver`, identyfikuje punkt końcowy usługi jako punktu końcowego TCP usługi Service Bus (przekaźnik) przy użyciu w pełni kwalifikowaną nazwą DNS. Jeśli umieścisz kod, zastępując symbole zastępcze w funkcji `Main` aplikacji **Service**, uzyskasz usługę funkcjonalną. Jeśli chcesz, aby usługa nasłuchiwała wyłącznie usługi relay, Usuń deklarację punktu końcowego.
+W tym przykładzie utworzysz dwa punkty końcowe należące do tej samej implementacji kontraktu. Jeden jest lokalny, a drugi jest rzutowany za pośrednictwem usługi Azure Relay. Podstawowe różnice między nimi stanowią powiązania — [NetTcpBinding](https://msdn.microsoft.com/library/system.servicemodel.nettcpbinding.aspx) dla lokalnego i [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) dla punktu końcowego usługi relay i adresy. Lokalny punkt końcowy ma adres sieci lokalnej z unikatowym portem. Punkt końcowy usługi relay ma adres złożony z ciągu `sb`, nazwa przestrzeni nazw i ścieżki "solver". Skutkuje to identyfikator URI `sb://[serviceNamespace].servicebus.windows.net/solver`, identyfikuje punkt końcowy usługi jako punktu końcowego TCP usługi Service Bus (przekaźnik) przy użyciu w pełni kwalifikowaną nazwą DNS. Jeśli umieścisz kod, zastępując symbole zastępcze w funkcji `Main` aplikacji **Service**, uzyskasz usługę funkcjonalną. Jeśli chcesz, aby usługa nasłuchiwała wyłącznie usługi relay, Usuń deklarację punktu końcowego.
 
 ### <a name="configure-a-service-host-in-the-appconfig-file"></a>Konfigurowanie hosta usługi w pliku App.config
 Hosta można również skonfigurować przy użyciu pliku App.config. Kod hostowania usługi pojawia się w następnym przykładzie.
@@ -161,7 +161,7 @@ Po wprowadzeniu tych zmian usługa będzie uruchamiana tak jak poprzednio, ale z
 
 ### <a name="create-the-client"></a>Tworzenie klienta
 #### <a name="configure-a-client-programmatically"></a>Programowe konfigurowanie klienta
-W celu korzystania z usługi możesz utworzyć klienta WCF, używając obiektu [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx). Usługa Service Bus używa opartego na tokenie modelu zabezpieczeń, który jest implementowany z użyciem sygnatury dostępu współdzielonego. Klasa [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) reprezentuje dostawcę tokenu zabezpieczającego z wbudowanymi metodami Factory, które zwracają dobrze znanych dostawców tokenu. W następującym przykładzie użyto metody [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider#Microsoft_ServiceBus_TokenProvider_CreateSharedAccessSignatureTokenProvider_System_String_) w celu obsłużenia uzyskiwania odpowiedniego tokenu sygnatury dostępu współdzielonego. Nazwa i klucz są uzyskiwane z portalu zgodnie z opisem w poprzedniej sekcji.
+W celu korzystania z usługi możesz utworzyć klienta WCF, używając obiektu [ChannelFactory](https://msdn.microsoft.com/library/system.servicemodel.channelfactory.aspx). Usługa Service Bus używa opartego na tokenie modelu zabezpieczeń, który jest implementowany z użyciem sygnatury dostępu współdzielonego. Klasa [TokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) reprezentuje dostawcę tokenu zabezpieczającego z wbudowanymi metodami Factory, które zwracają dobrze znanych dostawców tokenu. W następującym przykładzie użyto metody [CreateSharedAccessSignatureTokenProvider](/dotnet/api/microsoft.servicebus.tokenprovider) w celu obsłużenia uzyskiwania odpowiedniego tokenu sygnatury dostępu współdzielonego. Nazwa i klucz są uzyskiwane z portalu zgodnie z opisem w poprzedniej sekcji.
 
 Najpierw należy utworzyć odwołanie do kodu kontraktu `IProblemSolver` albo skopiować ten kod z usługi do projektu Client.
 

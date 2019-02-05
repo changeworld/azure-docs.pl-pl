@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 41e422d0808cafb45b182c5f0a6bb7176a35516f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 345a7994f5a117b7aff320edf7b7c79d9b30a2f9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35758624"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695257"
 ---
 # <a name="internet-of-things-security-overview"></a>Omówienie zabezpieczeń Internet of Things
 Internetu rzeczy (IoT), usług platformy Azure oferują szeroką gamę możliwości. Są to usługi klasy korporacyjnej, które pozwalają wykonywać następujące operacje:
@@ -45,7 +45,7 @@ W tym artykule omówiono następujące tematy:
 
 * [Rozpoczyna się Model zagrożeń bezpieczeństwa](/azure/iot-fundamentals/iot-security-architecture#security-starts-with-a-threat-model)
 * [Zabezpieczenia w IoT](/azure/iot-fundamentals/iot-security-architecture#security-in-iot)
-* [Architektura referencyjna IoT platformy Azure do modelowania zagrożeń](/azure/iot-fundamentals/iot-security-architecture#threat-modeling-the-azure-iot-reference-architecture)
+* [Architektura referencyjna IoT platformy Azure do modelowania zagrożeń](/azure/iot-fundamentals/iot-security-architecture)
 
 ## <a name="security-from-the-ground-up"></a>Zabezpieczenia od podstaw
 IoT stwarza wyzwania zabezpieczeń, ochrony prywatności i zgodności dla firm na całym świecie. W przeciwieństwie do tradycyjnych cybernetycznymi technologii gdzie tych problemów koncentrują się wokół oprogramowania oraz sposób implementacji IoT dotyczy, co się stanie po zbiegają się tym i cech fizycznych. Ochrona rozwiązań IoT wymaga zapewnienia bezpieczne Inicjowanie obsługi urządzeń, bezpieczną łączność między tymi urządzeniami i chmurą i ochronę danych w chmurze podczas przetwarzania i przechowywania. Działa z takich funkcji, są jednak ograniczonych zasobach urządzeń, rozkład geograficzny wdrożeń i wiele urządzeń w ramach rozwiązania.

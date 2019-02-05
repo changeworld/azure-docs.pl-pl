@@ -1,6 +1,6 @@
 ---
-title: Usługi Azure SQL Database Data odnajdywanie i klasyfikacja | Dokumentacja firmy Microsoft
-description: Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
+title: Usługa Azure SQL Database odnajdywanie i klasyfikacja danych | Dokumentacja firmy Microsoft
+description: Usługa Azure SQL Database odnajdywanie i klasyfikacja danych
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: b85afeb18fdd93afdedbee00df995ba52a66cd5e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466596"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731856"
 ---
-# <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
+# <a name="azure-sql-database-data-discovery--classification"></a>Usługa Azure SQL Database odnajdywanie i klasyfikacja danych
 
 Odnajdywanie i klasyfikacja (obecnie w wersji zapoznawczej) danych zapewnia zaawansowane możliwości wbudowane w usłudze Azure SQL Database dla **odnajdywania**, **klasyfikowania**, **etykietowania**  &  **ochrony** poufnych danych w bazach danych.
 Odnajdowanie i klasyfikowanie najbardziej poufnych danych (biznesowe, finansowych, ochrony zdrowia, dane osobowe (PII) i itp.), można odtwarzać zasadniczą rolę w stature ochrony Twojej organizacji. Może służyć jako infrastruktury:
@@ -28,14 +28,14 @@ Odnajdowanie i klasyfikowanie najbardziej poufnych danych (biznesowe, finansowyc
 - Różne scenariusze zabezpieczeń, takich jak monitorowanie (inspekcji) i alarmując nietypowego dostępu do poufnych danych.
 - Kontrolowanie dostępu do i wzmacniania ochrony bezpieczeństwa baz danych zawierających poufne dane.
 
-Odnajdywanie i klasyfikacja danych jest częścią [zaawansowane zabezpieczenia danych SQL](sql-advanced-threat-protection.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Odnajdywanie i klasyfikacja danych można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
+Odnajdywanie i klasyfikacja danych jest częścią [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md) (ADS) oferty, która to ujednolicone pakiet dla zaawansowane funkcje zabezpieczeń programu SQL. Odnajdywanie i klasyfikacja danych można uzyskać dostęp i zarządzane za pośrednictwem portalu centralnej REKLAM SQL.
 
 > [!NOTE]
 > Ten dokument dotyczy tylko usługi Azure SQL Database. Dla programu SQL Server (lokalnie), zobacz [odnajdywanie danych SQL i klasyfikacji](https://go.microsoft.com/fwlink/?linkid=866999).
 
-## <a id="subheading-1"></a>Co to jest danych, odnajdowanie i klasyfikację
+## <a id="subheading-1"></a>Co to jest odnajdywanie i klasyfikacja danych
 
-Odnajdywanie i klasyfikacja danych wprowadza zestaw zaawansowanych usług i nowe funkcje programu SQL, tworzących paradygmatu SQL Information Protection mających na celu ochronę danych, a nie tylko bazy danych:
+Wprowadza zestaw zaawansowanych usług i nowe funkcje programu SQL, tworzących paradygmatu SQL Information Protection mających na celu ochronę danych, a nie tylko bazy danych, odnajdowanie i klasyfikacja danych:
 
 - **Odnajdywanie i zalecenia dotyczące**
 
@@ -77,7 +77,7 @@ Po zdefiniowaniu zasad obowiązujących w całej dzierżawy możesz kontynuować
 
 1. Przejdź do witryny [Azure Portal](https://portal.azure.com).
 
-2. Przejdź do **zaawansowanych danych** w pozycji zabezpieczeń, w okienku usługi Azure SQL Database. Kliknij, aby włączyć zaawansowane zabezpieczenia danych, a następnie kliknij polecenie **danych, odnajdowanie i klasyfikacja (wersja zapoznawcza)** karty.
+2. Przejdź do **zaawansowanych danych** w pozycji zabezpieczeń, w okienku usługi Azure SQL Database. Kliknij, aby włączyć zabezpieczeń zaawansowanych danych, a następnie kliknij polecenie **danych, odnajdowanie i klasyfikacja (wersja zapoznawcza)** karty.
 
    ![Skanuj bazę danych](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -147,11 +147,11 @@ Interfejsów API REST można również użyć do programowego zarządzania klasy
 
 ## <a id="subheading-5"></a>Następne kroki
 
-- Dowiedz się więcej o [danych zaawansowanych SQL](sql-advanced-threat-protection.md).
+- Dowiedz się więcej o [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md).
 - Należy rozważyć skonfigurowanie [Azure SQL Database Auditing](sql-database-auditing.md) monitorowania i inspekcji dostępu do danych poufnych niejawnych.
 
 <!--Anchors-->
-[SQL Data Discovery & Classification overview]: #subheading-1
+[SQL data discovery & classification overview]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
 [Automated/Programmatic classification]: #subheading-4

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: a1d06919ae0a76647fafeb9c8499476e533bfebf
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 7474027368949d5ad2202881ac68096fac2b8bd2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656400"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693908"
 ---
 # <a name="preview-azure-ad-password-protection-troubleshooting"></a>Wersja zapoznawcza: Rozwiązywanie problemów z usługi Azure AD ochrony hasłem
 
@@ -26,8 +26,6 @@ ms.locfileid: "55656400"
 
 Po wdrożeniu ochrony haseł usługi Azure AD rozwiązywania problemów może być wymagane. W tym artykule przechodzi do szczegółów, aby lepiej zrozumieć niektóre typowe kroki rozwiązywania problemów.
 
-## 
-
 ## <a name="weak-passwords-are-not-getting-rejected-as-expected"></a>Słabe hasła nie są wprowadzenie odrzucane, zgodnie z oczekiwaniami
 
 Może to mieć kilka możliwych przyczyn:
@@ -35,12 +33,16 @@ Może to mieć kilka możliwych przyczyn:
 1. Twoje agentach DC nie zostały jeszcze pobrane zasady. Objawem tego jest 30001 zdarzenia w dzienniku zdarzeń administratora agenta kontrolera domeny.
 
     Możliwe przyczyny tego problemu to:
+
     1. Las nie został jeszcze zarejestrowany.
     2. Serwer proxy nie jest jeszcze zarejestrowana.
     3. Problemy z łącznością sieciową uniemożliwiają usługę serwera Proxy podczas komunikowania się z platformą Azure (wymagania dotyczące serwera Proxy HTTP wyboru)
 
-2. Tryb wymuszania zasad haseł jest nadal równa inspekcji. Jeśli jest to możliwe, po prostu ją ponownie skonfigurować, aby wymusić przy użyciu portalu ochrony haseł usługi Azure AD.
-3. Algorytm sprawdzania poprawności hasła może działać zgodnie z oczekiwaniami.  Zobacz [jak są hasła obliczane](concept-password-ban-bad.md#how-are-passwords-evaluated).
+2. Tryb wymuszania zasad haseł jest nadal równa inspekcji. Jeśli jest to możliwe, ją ponownie skonfigurować, aby wymusić przy użyciu portalu ochrony haseł usługi Azure AD. Zobacz [ochrony hasłem Włącz](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+3. Zasady haseł zostało wyłączone. Jeśli jest to możliwe, należy ponownie skonfigurować ją włączyć za pomocą portalu ochrony haseł usługi Azure AD. Zobacz [ochrony hasłem Włącz](howto-password-ban-bad-on-premises-operations.md#enable-password-protection).
+
+4. Algorytm sprawdzania poprawności hasła może działać zgodnie z oczekiwaniami. Zobacz [jak są hasła obliczane](concept-password-ban-bad.md#how-are-passwords-evaluated).
 
 ## <a name="directory-services-repair-mode"></a>Trybie naprawy usług katalogowych
 
@@ -50,7 +52,7 @@ Jeśli kontroler domeny jest uruchomiony w trybie naprawy usług katalogowych, U
 
 Jeśli sytuacja występuje, gdy usługa agenta kontrolera domeny powoduje problemy, Usługa agenta kontrolera domeny może być natychmiast zamknięty. Dll filtru haseł agenta kontrolera domeny nadal próbuje wywołać bez działającej usługi i będzie rejestrować zdarzenia ostrzeżeń (10012, 10013), ale wszystkie przychodzące hasła są akceptowane w tym samym czasie. Usługa agenta kontrolera domeny może także można skonfigurować za pomocą Windows Menedżer sterowania usługami za pomocą typu uruchamiania "Disabled" zgodnie z potrzebami.
 
-Kolejną miarę korygowania jest ustawienie Włącz tryb na nie w portalu ochrony haseł usługi Azure AD. Po pobraniu zaktualizowane zasady każda usługa agentów DC przejdzie w tryb spoczynku, gdzie wszystkie hasła będzie akceptowane jako-to. Aby uzyskać więcej informacji, zobacz [trybie wymuszania](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
+Kolejną miarę korygowania jest ustawienie Włącz tryb na nie w portalu ochrony haseł usługi Azure AD. Po pobraniu zaktualizowane zasady każda usługa agenta DC przejdzie w tryb spoczynku, gdzie wszystkie hasła będzie akceptowane jako-to. Aby uzyskać więcej informacji, zobacz [trybie wymuszania](howto-password-ban-bad-on-premises-operations.md#enforce-mode).
 
 ## <a name="domain-controller-demotion"></a>Obniżenia poziomu kontrolera domeny
 

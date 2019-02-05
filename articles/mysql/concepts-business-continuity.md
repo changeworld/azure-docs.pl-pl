@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 02/28/2018
-ms.openlocfilehash: 9b9e2362553eb93cbb111b70cf29a1cc1524e77e
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.date: 02/01/2019
+ms.openlocfilehash: a09c1934ecb34518b191a8e730a72efecc85aa2f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554541"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692932"
 ---
 # <a name="overview-of-business-continuity-with-azure-database-for-mysql"></a>Omówienie ciągłości biznesowej z usługą Azure Database for MySQL
 
@@ -50,6 +50,6 @@ Inną opcją jest korzystanie z bazy danych Azure MySQL funkcji przywracania geo
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej o automatycznych kopiach zapasowych, zobacz [kopii zapasowych w usłudze Azure Database for MySQL](concepts-backup.md).
-- Aby przywrócić do punktu w czasie za pomocą witryny Azure portal, zobacz [przywrócić bazę danych do punktu w czasie za pomocą witryny Azure portal](howto-restore-server-portal.md).
-- Aby przywrócić do punktu w czasie za pomocą wiersza polecenia platformy Azure, zobacz [przywrócić bazę danych do punktu w czasie za pomocą interfejsu wiersza polecenia](howto-restore-server-cli.md).
+- Dowiedz się więcej o [automatyczne kopie zapasowe w usłudze Azure Database for MySQL](concepts-backup.md).
+- Dowiedz się, jak przywrócić dane przy użyciu [witryny Azure portal](howto-restore-server-portal.md) lub [wiersza polecenia platformy Azure](howto-restore-server-cli.md).
+- Dowiedz się więcej o [odczytu replik w usłudze Azure Database for MySQL](concepts-read-replicas.md).

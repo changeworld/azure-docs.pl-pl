@@ -7,12 +7,12 @@ author: ash2017
 ms.topic: conceptual
 ms.date: 07/06/2018
 ms.author: asrastog
-ms.openlocfilehash: daf4a6142c0e30fa7b8534e5598cec39c69079c0
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 06b917c956507de3eb3b1536356285d7a954fb8b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53184053"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730080"
 ---
 # <a name="order-device-connection-events-from-azure-iot-hub-using-azure-cosmos-db"></a>Zamówienie urządzenia zdarzenia połączeń z usługi Azure IoT Hub przy użyciu usługi Azure Cosmos DB
 
@@ -250,7 +250,7 @@ W tej sekcji skonfigurujesz usługę IoT Hub pod kątem publikowania zdarzeń na
 
    * **Typ zdarzenia**: Usuń zaznaczenie pola wyboru subskrypcji do wszystkich typów zdarzeń, a następnie wybierz pozycję **urządzenie połączone** i **Urządzenie odłączone** z menu.
 
-   * **Szczegóły punktu końcowego**: Wybierz typ punktu końcowego jako **Webhook** kliknij pozycję Wybierz punkt końcowy i wklej adres URL, który został skopiowany z aplikacją logiki i Potwierdź wybór.
+   * **Szczegóły punktu końcowego**: Wybierz typ punktu końcowego **Web hook**, a następnie kliknij wybrany punkt końcowy, wklej adres URL skopiowany z aplikacji logiki i potwierdź wybór.
 
        ![wybieranie adresu url punktu końcowego](./media/iot-hub-how-to-order-connection-state-events/endpoint-url.png)
 
@@ -341,7 +341,7 @@ Być może zdecydujesz się zachować centrum IoT Hub, ale usunąć utworzoną s
 
 3. Wybierz pozycję **Usuń**. 
 
-Aby usunąć konto usługi Azure Cosmos DB w witrynie Azure portal, kliknij prawym przyciskiem myszy nazwę konta, a następnie kliknij przycisk **Usuń konto**. Zobacz szczegółowe instrukcje dotyczące [usuwanie konta usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/manage-account#delete).
+Aby usunąć konto usługi Azure Cosmos DB w witrynie Azure portal, kliknij prawym przyciskiem myszy nazwę konta, a następnie kliknij przycisk **Usuń konto**. Zobacz szczegółowe instrukcje dotyczące [usuwanie konta usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

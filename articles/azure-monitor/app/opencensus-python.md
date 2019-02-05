@@ -9,12 +9,12 @@ ms.date: 09/18/2018
 ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 885f4da5ec9b360605a3e46ee8be8d338a638ede
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102673"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696187"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>Zbierać ślady rozproszonych za pomocą języka Python (wersja zapoznawcza)
 
@@ -24,7 +24,7 @@ Usługa Application Insights teraz obsługuje rozproszone śledzenie aplikacji P
 
 - Konieczna jest subskrypcja platformy Azure.
 - Python powinien być zainstalowany, w tym artykule wykorzystano [Python numer 3.7.0](https://www.python.org/downloads/), ale za pomocą drobnych korekt prawdopodobnie działać w starszych wersjach.
-- Postępuj zgodnie z instrukcjami, aby zainstalować [lokalnej usługi przesyłania dalej, co usługa Windows](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service)
+- Postępuj zgodnie z instrukcjami, aby zainstalować [lokalnej usługi przesyłania dalej, co usługa Windows](./../../azure-monitor/app/opencensus-local-forwarder.md)
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne](https://azure.microsoft.com/free/) konto.
 
@@ -57,7 +57,7 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
 
    ![Zrzut ekranu przedstawiający klucz Instrumentacji](./media/opencensus-python/0003-instrumentation-key.png)
 
-2. Edytuj swoje `LocalForwarder.config` pliku i Dodaj klucz instrumentacji. Jeśli postąpiono zgodnie z instrukcjami w [wstępny](./../../azure-monitor/app/opencensus-local-forwarder.md#windows-service) plik znajduje się w `C:\LF-WindowsServiceHost`
+2. Edytuj swoje `LocalForwarder.config` pliku i Dodaj klucz instrumentacji. Jeśli postąpiono zgodnie z instrukcjami w [wstępny](./../../azure-monitor/app/opencensus-local-forwarder.md) plik znajduje się w `C:\LF-WindowsServiceHost`
 
     ```xml
       <OpenCensusToApplicationInsights>
@@ -158,7 +158,7 @@ Najpierw należy utworzyć zasób usługi Application Insights, który generuje 
 
 6. Teraz po uruchomieniu skryptu języka Python z powyższych powinien nadal pojawić się monit o podanie wartości, ale teraz w powłoce drukowania jest tylko wartość.
 
-7. Aby potwierdzić, że **lokalnej usługi przesyłania dalej** jest pobrania Sprawdź ślady `LocalForwarder.config` pliku. Jeśli wykonano kroki opisane w [wstępnie wymaganego składnika](https://docs.microsoft.com/azure/application-insights/local-forwarder#windows-service), będą znajdować się w `C:\LF-WindowsServiceHost`.
+7. Aby potwierdzić, że **lokalnej usługi przesyłania dalej** jest pobrania Sprawdź ślady `LocalForwarder.config` pliku. Jeśli wykonano kroki opisane w [wstępnie wymaganego składnika](https://docs.microsoft.com/azure/application-insights/local-forwarder), będą znajdować się w `C:\LF-WindowsServiceHost`.
 
     Na ilustracji poniżej w pliku dziennika możesz zobaczyć, że przed uruchomieniem drugi skrypt, w którym dodaliśmy eksporter `OpenCensus input BatchesReceived` : 0. Gdy Rozpoczęliśmy uruchamianie ze zaktualizowanego skryptu `BatchesReceived` zwiększona równy wartości, które możemy wprowadzić:
     

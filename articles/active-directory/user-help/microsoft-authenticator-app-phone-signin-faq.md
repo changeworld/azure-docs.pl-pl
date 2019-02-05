@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 201487c9052ce8df9734e7e11e604cbae9102aab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d0da7e19934123534bf063deecb5bff584dbc317
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155837"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699285"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do konta przy użyciu aplikacji Microsoft Authenticator
 Aplikacja Microsoft Authenticator pomaga logowania do kont użycie weryfikacji two-Factor Authentication. Weryfikacja Two-Factor Authentication ułatwia dostęp do Twoich kont bezpieczniejsze, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione, lub ze złamanymi zabezpieczeniami, two-Factor Authentication Weryfikacja jest kroku dodatkowe zabezpieczenia, która pomaga chronić Twoje konto, co utrudnia innym osobom włamanie się.
@@ -28,7 +28,7 @@ Za pomocą aplikacji Microsoft Authenticator na wiele sposobów, w tym:
 - Zapewnianie logowania bez Wymaganie hasła, przy użyciu nazwy użytkownika i urządzenia przenośnego z odciskiem palca, powierzchni lub numeru PIN.
 
  >[!Important]
- >Metoda logowania telefon działa tylko z osobistych kont Microsoft. Ani konto służbowe służbowych i kont innych niż Microsoft wymagają użycia procesu standardowa weryfikacji two-Factor Authentication.
+ >Metoda logowania telefon działa tylko z ani służbowych i osobistych kont Microsoft. Twoje konta firmy Microsoft wymagają użycia procesu standardowa weryfikacji two-Factor Authentication.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Zanim użyjesz aplikacji Microsoft Authenticator, musisz mieć:

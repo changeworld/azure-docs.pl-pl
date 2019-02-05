@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: a53e37cf2ac99dcd755f71e9a2a236f27832fbd7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3458bdc0f010cab622a5ddbb87cb8e1077c404a5
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54079208"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693888"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
@@ -105,7 +105,7 @@ Przejdź do witryny Microsoft Download Center i [pobrania zestawu narzędzi rozw
 - - -
 **Stany Zjednoczone:**
 
-KeyVault-BYOK-Tools Zjednoczone States.zip
+KeyVault-BYOK-Tools-UnitedStates.zip
 
 2E8C00320400430106366A4E8C67B79015524E4EC24A2D3A6DC513CA1823B0D4
 
@@ -261,6 +261,9 @@ Uruchom wiersz polecenia, a następnie uruchom program nowym świecie firmy Thal
 
 Ten program tworzy **środowiska zabezpieczeń Security World** plik w lokalizacji % NFAST_KMDATA%\local\world, co odnosi się do folderu C:\ProgramData\nCipher\Key Management Data\local. Można użyć różnych wartości dla kworum, ale w tym przykładzie zostanie wyświetlony monit wpisz trzech pustych kart oraz kodów PIN dla każdego z nich. Następnie dowolne dwie spośród kart nadania praw pełnego dostępu do środowiska zabezpieczeń security world. Te karty stają się **zestaw kart administratora** dla nowego środowiska zabezpieczeń security world.
 
+> [!NOTE]
+> Jeśli modułu HSM obsługuje nowszych DLf3072s256mRijndael pakietu szyfrowania, możesz zastąpić — mechanizmów szyfrowania = DLf1024s160mRijndael with--mechanizmów szyfrowania = DLf3072s256mRijndael
+
 Następnie wykonaj poniższe czynności:
 
 * Utwórz kopię zapasową pliku środowiska zabezpieczeń. Zabezpieczanie ochrony pliku środowiska zabezpieczeń, karty administratora oraz ich kody PIN i upewnij się, że nikt nie ma dostępu do więcej niż jedną kartę.
@@ -331,7 +334,7 @@ Aby zweryfikować pobrany pakiet:
      > Oprogramowanie firmy Thales obejmuje języka python w %NFAST_HOME%\python\bin
      >
      >
-2. Upewnij się, że zobaczysz następujący widok, co oznacza pomyślnej weryfikacji: **Wynik: POWODZENIE**
+2. Upewnij się, że zobaczysz następujący widok, co oznacza pomyślnej weryfikacji: **Wynik: SUCCESS**
 
 Ten skrypt sprawdza łańcuch osoby podpisującej aż klucza głównego firmy Thales. Skrót klucza głównego jest osadzony w skrypcie i jej wartość powinna być **59178a47 de508c3f 291277ee 184f46c4 f1d9c639**. Można również potwierdzić tę wartość osobno, odwiedzając [witryny sieci Web firmy Thales](http://www.thalesesec.com/).
 
@@ -482,7 +485,7 @@ Po uruchomieniu tego polecenia, użyj tych instrukcji:
 * Zastąp *SubscriptionID* z Identyfikatorem subskrypcji platformy Azure, która zawiera Twój magazyn kluczy. Możesz pobrać tę wartość poprzedniej wersji programu **opisem kroku 1.2: Pobierz swój identyfikator subskrypcji platformy Azure** z [Przygotowanie stacji roboczej podłączonej do Internetu](#step-1-prepare-your-internet-connected-workstation) kroku.
 * Zastąp *ContosoFirstHSMKey* etykietą, która jest używana do nazwy pliku wyjściowego.
 
-Po zakończeniu tego procesu pomyślnie, wyświetla **wynik: Powodzenie** i nowy plik w bieżącym folderze, który ma następującą nazwę: KeyTransferPackage -*ContosoFirstHSMkey*.byok
+Po zakończeniu tego procesu pomyślnie, wyświetla **wynik: Powodzenie** i nowy plik w bieżącym folderze, który ma następującą nazwę: KeyTransferPackage-*ContosoFirstHSMkey*.byok
 
 ### <a name="step-43-copy-your-key-transfer-package-to-the-internet-connected-workstation"></a>Krok 4.3: Kopiowanie pakietu przekazywania klucza do stacji roboczej podłączonej do Internetu
 

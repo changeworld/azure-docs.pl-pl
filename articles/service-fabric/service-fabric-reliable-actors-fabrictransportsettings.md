@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: 8309abac2c56e911c471f0d4be92fa5d5b77817e
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: d2f45b6f0db15773615710a4345e85ab09f7d559
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201095"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700438"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurowanie ustawień FabricTransport struktury Reliable actors
 
@@ -32,7 +32,7 @@ Domyślna konfiguracja FabricTransport można zmodyfikować w następujący spos
 
 ## <a name="assembly-attribute"></a>Atrybutu zestawu
 
-[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN#microsoft_servicefabric_actors_remoting_fabrictransport_fabrictransportactorremotingproviderattribute) atrybutu musi zostać zastosowana na urządzeniu klienckim aktora i zestawy usługi aktora.
+[FabricTransportActorRemotingProvider](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.remoting.fabrictransport.fabrictransportactorremotingproviderattribute?redirectedfrom=MSDN) atrybutu musi zostać zastosowana na urządzeniu klienckim aktora i zestawy usługi aktora.
 
 Poniższy przykład pokazuje, jak zmienić domyślną wartość FabricTransport OperationTimeout ustawienia:
 

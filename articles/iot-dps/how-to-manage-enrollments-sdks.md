@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie za pomocą zestawów SDK programu Azure urządzenia inicjowania obsługi usługi rejestracji urządzeń | Dokumentacja firmy Microsoft
-description: Jak zarządzać rejestracji urządzenia IoT Hub urządzenia inicjowania obsługi usługi przy użyciu zestawów SDK usługi
+title: Zarządzanie rejestracjami urządzeń przy użyciu SDK usługi aprowizacji urządzeń platformy Azure | Dokumentacja firmy Microsoft
+description: Jak zarządzanie rejestracjami urządzeń w IoT Hub Device Provisioning Service przy użyciu zestawów SDK usługi
 author: yzhong94
 ms.author: yizhon
 ms.date: 04/04/18
@@ -8,83 +8,83 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: 9a68d928c70e1e233f6de7df13441a1f688f456a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1c7fa798c2e767aa6a21b3c56da6f69b4d3a1406
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629851"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732359"
 ---
-# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Sposób rejestracji urządzeń z zestawów SDK programu Azure urządzenia inicjowania obsługi usługi zarządzania
-A *rejestracji urządzeń* tworzy rekord jednego urządzenia lub grupy urządzeń, które mogą w pewnym momencie zarejestrować w usłudze udostępniania urządzeń. Rekord rejestracji zawiera początkowej żądanej konfiguracji dla urządzeń w ramach rejestracji, łącznie z żądaną Centrum IoT. W tym artykule przedstawiono sposób zarządzania rejestracji urządzeń dla inicjowania obsługi usługi programowo przy użyciu usługi Azure IoT inicjowania obsługi usługi SDK.  Zestawy SDK są dostępne w witrynie GitHub, w tym samym repozytorium jako zestawy SDK IoT Azure.
+# <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Jak zarządzać rejestracjami urządzeń przy użyciu SDK usługi aprowizacji urządzeń platformy Azure
+A *rejestracji urządzeń* tworzy rekord pojedynczego urządzenia lub grupy urządzeń, które mogą w pewnym momencie zarejestrować w usłudze Device Provisioning Service. Rekord rejestracji zawiera odpowiednią konfigurację wstępną dla urządzeń w ramach rejestracji, w tym wymagane Centrum IoT hub. Ten artykuł pokazuje, jak zarządzanie rejestracjami urządzeń w Twojej usługi aprowizacji, programowo przy użyciu inicjowania obsługi administracyjnej z zestawami SDK Azure IoT.  Zestawy SDK są dostępne w serwisie GitHub, w tym samym repozytorium, co zestawami SDK Azure IoT.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Uzyskaj parametry połączenia z wystąpieniem usługi inicjowania obsługi urządzeń.
-* Uzyskaj urządzenie artefaktów zabezpieczeń dla [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) używany:
+* Uzyskaj parametry połączenia z wystąpienia usługi Device Provisioning.
+* Uzyskiwanie urządzenia artefaktów zabezpieczeń na potrzeby [mechanizmu zaświadczania](concepts-security.md#attestation-mechanism) używane:
     * [**Trusted Platform Module (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
-        * Poszczególne rejestracji: identyfikator rejestracji i klucza poręczenia modułu TPM z fizyczne urządzenie lub symulator modułu TPM.
-        * Grupa rejestracji nie ma zastosowania do zaświadczenia modułu TPM.
+        * Rejestracja indywidualna: Identyfikator rejestracji i kluczem poręczenia modułu TPM z urządzenia fizycznego lub symulatora modułu TPM.
+        * Grupy rejestracji nie ma zastosowania do zaświadczenia modułu TPM.
     * [**X.509**](/azure/iot-dps/concepts-security):
-        * Poszczególne rejestracji: [certyfikatu liścia](/azure/iot-dps/concepts-security#leaf-certificate) z urządzenia fizycznego lub z zestawu SDK [selekcji](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) emulatora.
-        * Grupa rejestracji: [/główny certyfikat urzędu certyfikacji](/azure/iot-dps/concepts-security#root-certificate) lub [certyfikatu pośredniego](/azure/iot-dps/concepts-security#intermediate-certificate), użytego do utworzenia certyfikatu urządzenia na urządzeniu fizycznym.  Może być również generowany z emulatora selekcji zestawu SDK.
-* Dokładne wywołań interfejsu API może się różnić z powodu różnic języka. Przejrzyj przykłady podane w witrynie GitHub, aby uzyskać szczegółowe informacje:
-   * [Przykłady Java inicjowania obsługi administracyjnej klienta usługi](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
-   * [Przykłady obsługi klienta usługi node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
-   * [Przykłady .NET inicjowania obsługi administracyjnej klienta usługi](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
+        * Rejestracja indywidualna: [Certyfikatu liścia](/azure/iot-dps/concepts-security) z urządzenia fizycznego lub zestawu SDK [DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) emulatora.
+        * Grupy rejestracji: [/Główny certyfikat urzędu certyfikacji](/azure/iot-dps/concepts-security#root-certificate) lub [pośredniego certyfikatu](/azure/iot-dps/concepts-security#intermediate-certificate), który jest używany w celu wygenerowania certyfikatu urządzenia na urządzeniu fizycznym.  Mogą być też generowane z emulatorem DICE zestawu SDK.
+* Dokładne wywołań interfejsu API może się różnić z powodu różnic w języku. Przejrzyj przykłady podane w serwisie GitHub, aby uzyskać szczegółowe informacje:
+   * [Przykłady klienta usługi aprowizacji języka Java](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
+   * [Przykłady dla platformy node.js inicjowania obsługi administracyjnej klienta usługi](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
+   * [Przykłady klienta usługi aprowizacji platformy .NET](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/provisioning/service/samples)
 
 ## <a name="create-a-device-enrollment"></a>Tworzenie rejestracji urządzeń
-Istnieją dwa sposoby mogą rejestrować urządzenia w usłudze inicjowania obsługi administracyjnej:
+Istnieją dwa sposoby, które mogą rejestrować urządzenia z usługą aprowizacji:
 
-* **Grupy rejestracji** wpis dla grupy urządzeń, które współużytkują wspólnego mechanizmu zaświadczania certyfikatów X.509, podpisane przez [certyfikat główny](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) lub [certyfikatu pośredniego ](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate). Firma Microsoft zaleca używanie grupy rejestracji dużej liczby urządzeń mających żądanej konfiguracji początkowej lub urządzeń wszystkich przejść do tej samej dzierżawy. Należy pamiętać, że tylko mogą rejestrować urządzenia, które korzystają z mechanizmu zaświadczania X.509 jako *grup rejestracji*. 
+* **Grupy rejestracji** wpis dla grupy urządzeń, które współużytkują wspólne mechanizm zaświadczania certyfikatów X.509, podpisane przez [certyfikat główny](https://docs.microsoft.com/azure/iot-dps/concepts-security#root-certificate) lub [pośredniego certyfikatu ](https://docs.microsoft.com/azure/iot-dps/concepts-security#intermediate-certificate). Zalecamy używanie grupę rejestracji dla dużej liczby urządzeń, które współużytkują wybranej konfiguracji początkowej lub urządzeń wszystkich przejść do tej samej dzierżawy. Należy pamiętać, że możesz tylko rejestrować urządzenia, które korzystają z mechanizmu zaświadczania X.509 jako *grup rejestracji*. 
 
-    Można utworzyć grupę rejestracji z zestawów SDK, po tego przepływu pracy:
+    Można utworzyć grupę rejestracji przy użyciu zestawów SDK następującego przepływu pracy:
 
-    1. Dla grupy rejestracji mechanizm zaświadczania używa certyfikatu głównego X.509.  Wywołanie interfejsu API zestawu SDK usługi ```X509Attestation.createFromRootCertificate``` certyfikat główny, aby utworzyć zaświadczanie o rejestracji.  Certyfikat X.509 znajduje się w pliku PEM lub jako ciąg.
-    1. Utwórz nową ```EnrollmentGroup``` przy użyciu zmiennej ```attestation``` utworzony i unikatowe ```enrollmentGroupId```.  Opcjonalnie można ustawić parametry, takie jak ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
-    2. Wywołanie interfejsu API zestawu SDK usługi ```createOrUpdateEnrollmentGroup``` do aplikacji zaplecza z ```EnrollmentGroup``` do utworzenia grupy rejestracji.
+    1. Grupy rejestracji mechanizm zaświadczania używa X.509 certyfikatu głównego.  Wywoływanie interfejsu API zestawu SDK usługi ```X509Attestation.createFromRootCertificate``` przy użyciu certyfikatu głównego, aby utworzyć zaświadczania dla rejestracji.  Certyfikat główny X.509 znajduje się w pliku PEM lub jako ciąg.
+    1. Utwórz nową ```EnrollmentGroup``` przy użyciu zmiennej ```attestation``` utworzony i unikatowy ```enrollmentGroupId```.  Opcjonalnie można ustawić parametrów, takich jak ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
+    2. Wywoływanie interfejsu API zestawu SDK usługi ```createOrUpdateEnrollmentGroup``` w aplikacji zaplecza za pomocą ```EnrollmentGroup``` można utworzyć grupę rejestracji.
 
-* **Poszczególnych rejestracji** wpis dla pojedynczego urządzenia, które mogą zarejestrować. Poszczególne rejestracji może używać certyfikatów X.509 lub tokeny sygnatury dostępu Współdzielonego (z modułem TPM fizycznych lub wirtualnych) jako mechanizmy zaświadczania. Zalecamy używanie poszczególnych rejestracji dla urządzeń, które wymagają szczególnej konfiguracji początkowej lub dla urządzeń, których można używać tylko tokeny sygnatury dostępu Współdzielonego, za pomocą modułu TPM lub wirtualne modułu TPM jako mechanizm zaświadczania. W przypadku rejestracji indywidualnych można określić identyfikatory urządzeń wymaganego centrum IoT.
+* **Rejestracji indywidualnej** wpis dla pojedynczego urządzenia, które może zarejestrować. Rejestracje indywidualne mogą używać certyfikatów X.509 lub tokenów SAS (z fizycznym lub wirtualnym module TPM) jako mechanizmów zaświadczania. Firma Microsoft zaleca używanie rejestracji indywidualnych w przypadku urządzeń, które wymagają unikatowej konfiguracji początkowej lub w przypadku urządzeń, których można używać tylko tokenów SAS za pośrednictwem modułu TPM lub wirtualnego modułu TPM jako mechanizmu zaświadczania. W przypadku rejestracji indywidualnych można określić identyfikatory urządzeń wymaganego centrum IoT.
 
-    Można utworzyć indywidualne rejestracji z zestawów SDK, ten przepływ pracy po:
+    Możesz utworzyć rejestrację indywidualną z zestawami SDK następującego przepływu pracy:
     
-    1. Wybierz użytkownika ```attestation``` mechanizm, który może być moduł TPM lub X.509.
-        1. **Moduł TPM**: przy użyciu klucza poręczenia z fizyczne urządzenie lub symulator modułu TPM jako dane wejściowe, można wywołać interfejsu API zestawu SDK usługi ```TpmAttestation``` utworzyć zaświadczanie o rejestracji. 
-        2. **X.509**: za pomocą certyfikatu klienta jako dane wejściowe, można wywołać interfejsu API zestawu SDK usługi ```X509Attestation.createFromClientCertificate``` utworzyć zaświadczanie o rejestracji.
-    2. Utwórz nową ```IndividualEnrollment``` zmiennej przy użyciu ```attestation``` utworzony i unikatowe ```registrationId``` jako danych wejściowych, na urządzeniu lub generowana z symulatora modułu TPM.  Opcjonalnie można ustawić parametry, takie jak ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
-    3. Wywołanie interfejsu API zestawu SDK usługi ```createOrUpdateIndividualEnrollment``` do aplikacji zaplecza z ```IndividualEnrollment``` do tworzenia indywidualnych rejestracji.
+    1. Wybierz swoje ```attestation``` mechanizm, który może być modułu TPM lub X.509.
+        1. **MODUŁ TPM**: Przy użyciu klucza poręczenia, z urządzenia fizycznego lub symulatora modułu TPM jako dane wejściowe, wywołując interfejs API zestawu SDK usługi ```TpmAttestation``` utworzyć zaświadczania dla rejestracji. 
+        2. **X.509**: Za pomocą certyfikatu klienta jako dane wejściowe, wywołując interfejs API zestawu SDK usługi ```X509Attestation.createFromClientCertificate``` utworzyć zaświadczania dla rejestracji.
+    2. Utwórz nową ```IndividualEnrollment``` zmiennej przy użyciu ```attestation``` utworzony i unikatowy ```registrationId``` jako dane wejściowe, który znajduje się na urządzeniu lub wygenerowane z symulatora modułu TPM.  Opcjonalnie można ustawić parametrów, takich jak ```Device ID```, ```IoTHubHostName```, ```ProvisioningStatus```.
+    3. Wywoływanie interfejsu API zestawu SDK usługi ```createOrUpdateIndividualEnrollment``` w aplikacji zaplecza za pomocą ```IndividualEnrollment``` do tworzenia rejestracji indywidualnej.
 
-Po pomyślnym utworzeniu rejestracji urządzeń usługi udostępniania zwraca wynik w rejestracji. Ten przepływ pracy przedstawiono w przykładach [wspomniano](#prerequisites).
+Po pomyślnym utworzeniu rejestracji usługi Device Provisioning Service zwraca wynik rejestracji. Ten przepływ pracy jest przedstawiona w przykładach [wspomniano](#prerequisites).
 
-## <a name="update-an-enrollment-entry"></a>Aktualizacja wpisu rejestracji
+## <a name="update-an-enrollment-entry"></a>Zaktualizuj wpis rejestracji
 
-Po utworzeniu wpisu rejestracji, możesz zaktualizować rejestrację.  Potencjalne scenariusze obejmują aktualizowanie żądanej właściwości, aktualizowania metody zaświadczania lub odwoływanie dostępu do urządzenia.  Istnieją różne interfejsów API dla poszczególnych rejestracji i rejestracji grupy, ale ma różnicy mechanizmu zaświadczania.
+Po utworzeniu wpisu rejestracji można zaktualizować rejestrację.  Potencjalne scenariusze obejmują aktualizowanie żądaną właściwość, aktualizowanie metoda zaświadczania lub odbieranie prawa dostępu do urządzenia.  Istnieją różne interfejsy API dla indywidualnej rejestracji i rejestracji grupowej, ale ma rozróżnienia dla mechanizmu zaświadczania.
 
-Można zaktualizować wpisu rejestracji po tego przepływu pracy:
+Możesz zaktualizować wpis rejestracji następującego przepływu pracy:
 * **Rejestracja indywidualna**:
-    1. Pobrać najnowsze rejestracji z usługi inicjowania obsługi administracyjnej pierwszego z interfejsu API zestawu SDK usługi ```getIndividualEnrollment```.
-    2. Zmodyfikuj parametr najnowsze rejestracji w razie potrzeby. 
-    3. Przy użyciu najnowszych rejestracji, wywołania interfejsu API zestawu SDK usługi ```createOrUpdateIndividualEnrollment``` można zaktualizować wpisu rejestracji.
-* **Rejestracja grupy**:
-    1. Pobrać najnowsze rejestracji z usługi inicjowania obsługi administracyjnej pierwszego z interfejsu API zestawu SDK usługi ```getEnrollmentGroup```.
-    2. Zmodyfikuj parametr najnowsze rejestracji w razie potrzeby.
-    3. Przy użyciu najnowszych rejestracji, wywołania interfejsu API zestawu SDK usługi ```createOrUpdateEnrollmentGroup``` można zaktualizować wpisu rejestracji.
+    1. Uzyskiwanie najnowszych rejestracji usługa aprowizacji pierwszy przy użyciu interfejsu API zestawu SDK usługi ```getIndividualEnrollment```.
+    2. Zmodyfikuj parametr najnowsze rejestracji zgodnie z potrzebami. 
+    3. Przy użyciu najnowszych rejestracji, Wywołaj interfejs API zestawu SDK usługi ```createOrUpdateIndividualEnrollment``` można zaktualizować swój wpis rejestracji.
+* **Rejestrację grupową**:
+    1. Uzyskiwanie najnowszych rejestracji usługa aprowizacji pierwszy przy użyciu interfejsu API zestawu SDK usługi ```getEnrollmentGroup```.
+    2. Zmodyfikuj parametr najnowsze rejestracji zgodnie z potrzebami.
+    3. Przy użyciu najnowszych rejestracji, Wywołaj interfejs API zestawu SDK usługi ```createOrUpdateEnrollmentGroup``` można zaktualizować swój wpis rejestracji.
 
-Ten przepływ pracy przedstawiono w przykładach [wspomniano](#prerequisites).
+Ten przepływ pracy jest przedstawiona w przykładach [wspomniano](#prerequisites).
 
 ## <a name="remove-an-enrollment-entry"></a>Usuń wpis rejestracji
 
-* **Poszczególne rejestracji** może zostać usunięta przez wywoływanie interfejsu API zestawu SDK usługi ```deleteIndividualEnrollment``` przy użyciu ```registrationId```.
-* **Grupa rejestracji** może zostać usunięta przez wywoływanie interfejsu API zestawu SDK usługi ```deleteEnrollmentGroup``` przy użyciu ```enrollmentGroupId```.
+* **Rejestracja indywidualna** można usunąć, wywołując interfejs API zestawu SDK usługi ```deleteIndividualEnrollment``` przy użyciu ```registrationId```.
+* **Rejestrację grupową** można usunąć, wywołując interfejs API zestawu SDK usługi ```deleteEnrollmentGroup``` przy użyciu ```enrollmentGroupId```.
 
-Ten przepływ pracy przedstawiono w przykładach [wspomniano](#prerequisites).
+Ten przepływ pracy jest przedstawiona w przykładach [wspomniano](#prerequisites).
 
-## <a name="bulk-operation-on-individual-enrollments"></a>Operacja zbiorcza na poszczególnych rejestracji
+## <a name="bulk-operation-on-individual-enrollments"></a>Operacja zbiorcza rejestracje indywidualne
 
-Można wykonać operacji zbiorczej do tworzenia, aktualizacji lub usuwania wiele poszczególnych rejestracji po tego przepływu pracy:
+Można wykonać operacji zbiorczej do tworzenia, aktualizacji lub usuwania wielu rejestracje indywidualne następującego przepływu pracy:
 
-1. Tworzenie zmiennej, która zawiera wiele ```IndividualEnrollment```.  Implementacja tej zmiennej jest różne dla każdego języka.  Przejrzyj próbki operacji zbiorczej w serwisie GitHub szczegółowe informacje.
-2. Wywołanie interfejsu API zestawu SDK usługi ```runBulkOperation``` z ```BulkOperationMode``` dla żądanej operacji i zmiennej użytkownika dla poszczególnych rejestracji. Cztery tryby są obsługiwane: tworzenie, aktualizowanie, updateIfMatchEtag i usunąć.
+1. Tworzenie zmiennej, która zawiera wiele ```IndividualEnrollment```.  Implementacja ta zmienna różni się dla każdego języka.  Przejrzyj przykład operacji zbiorczej w witrynie GitHub, aby uzyskać szczegółowe informacje.
+2. Wywoływanie interfejsu API zestawu SDK usługi ```runBulkOperation``` z ```BulkOperationMode``` dla żądanej operacji i zmiennej dla rejestracji indywidualnych. Cztery tryby są obsługiwane: tworzenie, aktualizowanie, updateIfMatchEtag i usuwanie.
 
-Po pomyślnym wykonaniu operacji, usługa inicjowania obsługi urządzeń zwróci wynik operacji zbiorczej.
+Po pomyślnym wykonaniu operacji, usługi Device Provisioning zwróci wynik operacji zbiorczej.
 
-Ten przepływ pracy przedstawiono w przykładach [wspomniano](#prerequisites).
+Ten przepływ pracy jest przedstawiona w przykładach [wspomniano](#prerequisites).

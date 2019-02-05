@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 9890f68ff61d822f505c4403eb2f1f61e396fd01
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7a17bed165a5a8ff15a122a1376d1a3a5e17d45f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488717"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700931"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -103,8 +103,6 @@ Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby za
     7. Sprawdź, czy certyfikat został zaimportowany, zgodnie z oczekiwaniami, a następnie sprawdź, czy działa sprawdzania wymagań wstępnych połączenia internetowego jako oczekiwana.
 
 
-
-
 ### <a name="urls-for-connectivity"></a>Adresy URL dla połączenia
 
 Sprawdzenie łączności jest weryfikowana przez nawiązanie połączenia listę adresów URL.
@@ -150,6 +148,79 @@ Moduł zbierający komunikuje się zgodnie z opisem w następujących tabeli i d
 Usługa Azure Migrate | TCP 443 | Moduł zbierający komunikuje się z usługą Azure Migrate za pośrednictwem protokołu SSL 443.
 Program vCenter Server | TCP 443 | Moduł zbierający musi mieć możliwość komunikacji z serwerem vCenter.<br/><br/> Domyślnie łączy się vCenter na porcie 443.<br/><br/> Jeśli na oprogramowania vCenter Server nasłuchuje na innym porcie, ten port powinny być dostępne jako port wychodzący na modułu zbierającego.
 RDP | TCP 3389 |
+
+## <a name="collected-metadata"></a>Zebrano metadane
+
+Urządzenie modułu zbierającego umożliwia odnalezienie następujących metadanych konfiguracji dla każdej maszyny Wirtualnej. Dane konfiguracji dla maszyn wirtualnych są dostępne godziny po uruchomieniu odnajdywania.
+
+- Nazwa wyświetlana maszyny Wirtualnej (w programie vCenter Server)
+- Ścieżka magazynu maszyny Wirtualnej (host/folderu w programie vCenter Server)
+- Adres IP
+- Adres MAC
+- System operacyjny
+- Liczba rdzeni, dysków, kart sieciowych
+- Rozmiar pamięci, rozmiary dysków
+- Liczniki wydajności maszyn wirtualnych, dysku i sieci.
+
+### <a name="performance-counters"></a>Liczniki wydajności
+
+ Urządzenie modułu zbierającego zbiera następujące liczniki wydajności dla każdej maszyny Wirtualnej z hosta ESXi w interwału wynoszącego 20 sekund. Te liczniki są liczniki vCenter i chociaż terminologii mówi średnia próbek 20-sekundowe liczników w czasie rzeczywistym. Dane wydajności dla maszyn wirtualnych zostanie uruchomiony, stają się dostępne w portalu po dwóch godzinach od zostały rozpoczęte odnajdywania. Zdecydowanie zaleca się poczekać co najmniej dzień przed utworzeniem oceny na podstawie wydajności, aby uzyskać dokładne zalecenia dotyczące doboru wielkości. Jeśli szukasz natychmiastowej gratyfikacji, możesz utworzyć oceny przy użyciu kryterium ustalania rozmiaru jako *jako lokalne* zostaną nie będą dane dotyczące wydajności w przypadku ustalania rozmiaru po prawej stronie.
+
+**Counter** |  **Wpływ na ocenę**
+--- | ---
+cpu.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
+mem.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
+virtualDisk.read.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.write.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.numberReadAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+virtualDisk.numberWriteAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
+net.received.average | Oblicza rozmiar maszyny Wirtualnej                          
+net.transmitted.average | Oblicza rozmiar maszyny Wirtualnej     
+
+Pełną listę liczników VMware zebrane przez usługę Azure Migrate jest dostępna poniżej:
+
+**Kategoria** |  **Metadata** | **punkt danych vCenter**
+--- | --- | ---
+Szczegóły maszyny | Identyfikator maszyny wirtualnej | vm.Config.InstanceUuid
+Szczegóły maszyny | Nazwa maszyny wirtualnej | Maszyna wirtualna. Config.Name
+Szczegóły maszyny | Identyfikator serwera vCenter | VMwareClient.InstanceUuid
+Szczegóły maszyny |  Opis maszyn wirtualnych |  Maszyna wirtualna. Summary.Config.Annotation
+Szczegóły maszyny | Nazwa produktu licencji | vm.Client.ServiceContent.About.LicenseProductName
+Szczegóły maszyny | Typ systemu operacyjnego | vm.Summary.Config.GuestFullName
+Szczegóły maszyny | Wersja systemu operacyjnego | vm.Summary.Config.GuestFullName
+Szczegóły maszyny | Typ rozruchu | vm.Config.Firmware
+Szczegóły maszyny | Liczba rdzeni | Maszyna wirtualna. Config.Hardware.NumCPU
+Szczegóły maszyny | Pamięć w megabajtach | Maszyna wirtualna. Config.Hardware.MemoryMB
+Szczegóły maszyny | Liczba dysków | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualDisk).count
+Szczegóły maszyny | Lista rozmiar dysku | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualDisk)
+Szczegóły maszyny | Lista kart sieciowych | vm.Config.Hardware.Device.ToList().FindAll(x => x is VirtualEthernetCard)
+Szczegóły maszyny | Użycie procesora CPU | cpu.usage.average
+Szczegóły maszyny | Użycie pamięci | mem.usage.average
+Szczegóły dysku (na dysku) | Wartość klucza na dysku | disk.Key
+Szczegóły dysku (na dysku) | Liczba jednostek dysku | disk.UnitNumber
+Szczegóły dysku (na dysku) | Wartość klucza kontrolera dysku | dysk. ControllerKey.Value
+Szczegóły dysku (na dysku) | Gigabajty zainicjowano obsługę administracyjną | virtualDisk.DeviceInfo.Summary
+Szczegóły dysku (na dysku) | Nazwa dysku | Ta wartość jest generowana z użyciem dysku. UnitNumber, dysku. Klucz i dysku. ControllerKey.Value
+Szczegóły dysku (na dysku) | Liczba operacji odczytu na sekundę | virtualDisk.numberReadAveraged.average
+Szczegóły dysku (na dysku) | Liczba operacji zapisu na sekundę | virtualDisk.numberWriteAveraged.average
+Szczegóły dysku (na dysku) | MB na sekundę, przepływności odczytu | virtualDisk.read.average
+Szczegóły dysku (na dysku) | MB na sekundę przepływności zapisu | virtualDisk.write.average
+Szczegóły karty sieciowej (dla poszczególnych kart Sieciowych) | Nazwa karty sieciowej | karty sieciowej. Klucz
+Szczegóły karty sieciowej (dla poszczególnych kart Sieciowych) | Adres MAC | ((VirtualEthernetCard)nic).MacAddress
+Szczegóły karty sieciowej (dla poszczególnych kart Sieciowych) | Adresy IPv4 | vm.Guest.Net
+Szczegóły karty sieciowej (dla poszczególnych kart Sieciowych) | Adresy IPv6 | vm.Guest.Net
+Szczegóły karty sieciowej (dla poszczególnych kart Sieciowych) | MB na sekundę, przepływności odczytu | net.received.average
+Szczegóły karty sieciowej (dla poszczególnych kart Sieciowych) | MB na sekundę przepływności zapisu | net.transmitted.average
+Szczegóły ścieżki magazynu | Name (Nazwa) | container.GetType().Name
+Szczegóły ścieżki magazynu | Typ obiektu podrzędnego | container.ChildType
+Szczegóły ścieżki magazynu | Szczegóły odwołania | kontener. MoRef
+Szczegóły ścieżki magazynu | Ścieżka pełny spis | kontener. Nazwa z pełną ścieżkę
+Szczegóły ścieżki magazynu | Szczegóły nadrzędnego | Container.Parent
+Szczegóły ścieżki magazynu | Szczegóły folderu dla każdej maszyny Wirtualnej | ((Folder)container).ChildEntity.Type
+Szczegóły ścieżki magazynu | Szczegóły centrum danych dla każdego folderu maszyny Wirtualnej | ((Datacenter)container).VmFolder
+Szczegóły ścieżki magazynu | Szczegóły centrum danych dla każdego folderu hosta | ((Datacenter)container).HostFolder
+Szczegóły ścieżki magazynu | Szczegóły klastra dla każdego hosta | ((ClusterComputeResource)container).Host)
+Szczegóły ścieżki magazynu | Szczegóły hosta dla każdej maszyny Wirtualnej | ((HostSystem) kontenera). Maszyna wirtualna
 
 
 ## <a name="securing-the-collector-appliance"></a>Zabezpieczanie urządzenia modułu zbierającego
@@ -200,34 +271,6 @@ Po skonfigurowaniu urządzenia można uruchomić odnajdywanie. Poniżej przedsta
 - Maszyny wirtualne są wykrywane, a ich metadanych i wydajności dane są wysyłane do platformy Azure. Te akcje są częścią zadania odzyskiwania.
     - Określony identyfikator modułu zbierającego, który jest trwały dla danej maszyny na potrzeby odnajdowania znajduje się urządzenie modułu zbierającego.
     - Uruchomione zadanie odzyskiwania jest podany identyfikator określonej sesji. Identyfikator zmiany dla każdego zadania odzyskiwania i może służyć do rozwiązywania problemów.
-
-### <a name="collected-metadata"></a>Zebrano metadane
-
-Urządzenie modułu zbierającego umożliwia odnalezienie następujących metadanych konfiguracji dla każdej maszyny Wirtualnej. Dane konfiguracji dla maszyn wirtualnych są dostępne godziny po uruchomieniu odnajdywania.
-
-- Nazwa wyświetlana maszyny Wirtualnej (w programie vCenter Server)
-- Ścieżka magazynu maszyny Wirtualnej (host/folderu w programie vCenter Server)
-- Adres IP
-- Adres MAC
-- System operacyjny
-- Liczba rdzeni, dysków, kart sieciowych
-- Rozmiar pamięci, rozmiary dysków
-- Liczniki wydajności maszyn wirtualnych, dysku i sieci.
-
-#### <a name="performance-counters"></a>Liczniki wydajności
-
- Urządzenie modułu zbierającego zbiera następujące liczniki wydajności dla każdej maszyny Wirtualnej z hosta ESXi w interwału wynoszącego 20 sekund. Te liczniki są liczniki vCenter i chociaż terminologii mówi średnia próbek 20-sekundowe liczników w czasie rzeczywistym. Dane wydajności dla maszyn wirtualnych zostanie uruchomiony, stają się dostępne w portalu po dwóch godzinach od zostały rozpoczęte odnajdywania. Zdecydowanie zaleca się poczekać co najmniej dzień przed utworzeniem oceny na podstawie wydajności, aby uzyskać dokładne zalecenia dotyczące doboru wielkości. Jeśli szukasz natychmiastowej gratyfikacji, możesz utworzyć oceny przy użyciu kryterium ustalania rozmiaru jako *jako lokalne* zostaną nie będą dane dotyczące wydajności w przypadku ustalania rozmiaru po prawej stronie.
-
-**Counter** |  **Wpływ na ocenę**
---- | ---
-cpu.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
-mem.usage.average | Zalecany rozmiar maszyny Wirtualnej i kosztów  
-virtualDisk.read.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-virtualDisk.write.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-virtualDisk.numberReadAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-virtualDisk.numberWriteAveraged.average | Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
-net.received.average | Oblicza rozmiar maszyny Wirtualnej                          
-net.transmitted.average | Oblicza rozmiar maszyny Wirtualnej     
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: a7b091fa02c7ab6eb56826ebc7487d7ca0691610
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/04/2019
+ms.openlocfilehash: 79a7aad8cd747c3fdadcd0f7eec12d861f31fcc0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510887"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730513"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -134,7 +134,7 @@ W usłudze SQL Database można włączać inspekcji śledzić zdarzenia bazy dan
 
 #### <a name="threat-detection"></a>Wykrywanie zagrożeń
 
-Za pomocą [wykrywanie zagrożeń](sql-database-threat-detection.md), otrzymasz możliwość działania na naruszenia zabezpieczeń lub zasad odnalezione przez bardzo łatwo inspekcji. Nie musisz być ekspertem w celu rozwiązania potencjalnych zagrożeń i naruszeń w systemie zabezpieczeń. Wykrywanie zagrożeń ma również niektóre wbudowane funkcje, takie jak wykrywanie wstrzyknięcie kodu SQL. Iniekcja SQL to próba zmiany lub naruszyć bezpieczeństwo danych i dość często sposób ogólnie rzecz biorąc atakiem aplikacji bazy danych. Wykrywanie zagrożeń SQL Database działa wiele zestawów algorytmów potrafiących Wykrywanie potencjalnych luk w zabezpieczeniach oraz atakami polegającymi na iniekcji SQL, a także wzorce dostępu i nietypowych bazy danych (takich jak dostęp z nietypowej lokalizacji lub nieznanego podmiotu zabezpieczeń). Specjaliści ds. bezpieczeństwa lub innymi wyznaczeni administratorzy będą otrzymywać powiadomienia e-mail w przypadku wykrycia zagrożeń w bazie danych. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zalecenia dotyczące dalszego zbadania i wyeliminowania zagrożenia. Aby dowiedzieć się, jak włączyć funkcję wykrywania zagrożeń, zobacz: [Włącz wykrywanie zagrożeń bazy danych SQL](sql-database-security-tutorial.md#enable-security-features).
+Za pomocą [wykrywanie zagrożeń](sql-database-threat-detection.md), otrzymasz możliwość działania na naruszenia zabezpieczeń lub zasad odnalezione przez bardzo łatwo inspekcji. Nie musisz być ekspertem w celu rozwiązania potencjalnych zagrożeń i naruszeń w systemie zabezpieczeń. Wykrywanie zagrożeń ma również niektóre wbudowane funkcje, takie jak wykrywanie wstrzyknięcie kodu SQL. Iniekcja SQL to próba zmiany lub naruszyć bezpieczeństwo danych i dość często sposób ogólnie rzecz biorąc atakiem aplikacji bazy danych. Wykrywanie zagrożeń działa wiele zestawów algorytmów potrafiących Wykrywanie potencjalnych luk w zabezpieczeniach oraz atakami polegającymi na iniekcji SQL, a także wzorce dostępu i nietypowych bazy danych (takich jak dostęp z nietypowej lokalizacji lub nieznanego podmiotu zabezpieczeń). Specjaliści ds. bezpieczeństwa lub innymi wyznaczeni administratorzy będą otrzymywać powiadomienia e-mail w przypadku wykrycia zagrożeń w bazie danych. Każde powiadomienie zawiera szczegółowe informacje o podejrzanych działaniach i zalecenia dotyczące dalszego zbadania i wyeliminowania zagrożenia. Aby dowiedzieć się, jak włączyć funkcję wykrywania zagrożeń, zobacz: [Włącz wykrywanie zagrożeń](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Jak chronić dane na ogół w bazie danych SQL
 
@@ -220,7 +220,7 @@ Za pomocą szczegółowe informacje o wydajności zapytań można uzyskać zalec
 
 ### <a name="security-optimization"></a>Optymalizacja zabezpieczeń
 
-SQL Database udostępnia zalecenia dotyczące zabezpieczeń informacje z możliwością działania, aby pomóc w ochronie danych i wykrywania zagrożeń dla identyfikacji i badania podejrzanych działaniach bazy danych, które mogą stanowić potencjalne wątku do bazy danych. [Ocena luk w zabezpieczeniach SQL](sql-vulnerability-assessment.md) jest bazą danych skanowania i raportowania usługi, która umożliwia monitorowanie stanu zabezpieczeń wszystkich baz danych na dużą skalę i Identyfikuj zagrożenia bezpieczeństwa oraz odstają od linii bazowej zabezpieczeń zdefiniowane przez użytkownika. Po każdym skanowaniu niestandardowej listy kroki z możliwością działania i skrypty korygujące zostanie podany, a także raport z oceny, który może służyć w celu spełnienia wymagań dotyczących zgodności.
+SQL Database udostępnia zalecenia dotyczące zabezpieczeń informacje z możliwością działania, aby zabezpieczyć swoje dane i wykrywanie zagrożeń dla identyfikacji i badania podejrzanych działaniach bazy danych, które mogą stanowić potencjalne wątku do bazy danych. [Ocena luk w zabezpieczeniach](sql-vulnerability-assessment.md) jest bazą danych skanowania i raportowania usługi, która umożliwia monitorowanie stanu zabezpieczeń wszystkich baz danych na dużą skalę i Identyfikuj zagrożenia bezpieczeństwa oraz odstają od linii bazowej zabezpieczeń zdefiniowane przez użytkownika. Po każdym skanowaniu niestandardowej listy kroki z możliwością działania i skrypty korygujące zostanie podany, a także raport z oceny, który może służyć w celu spełnienia wymagań dotyczących zgodności.
 
 Usługa Azure Security Center Identyfikuj zalecenia dotyczące zabezpieczeń na tablicy i zastosowanie ich przy użyciu jednego kliknięcia.
 

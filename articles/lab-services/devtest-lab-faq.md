@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: b5ad6321a41c84928cbc6f8c51c4f5fe3567410f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 23066339ffcb0b8b3c7885ad24c6c3d136629ab2
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262033"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700056"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
@@ -58,14 +58,14 @@ DevTest Labs to bezpłatna usługa. Tworzenie laboratoriów i konfigurowanie zas
 ## <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Co to są poziomy zabezpieczeń w usłudze DevTest Labs?
 Dostęp zabezpieczeń jest określany przez [kontroli dostępu opartej na rolach (RBAC)](../role-based-access-control/built-in-roles.md). Aby dowiedzieć się, jak działa dostęp, ułatwia naukę różnice między uprawnienia, roli i zakresu, zgodnie z definicją RBAC.
 
-* **Uprawnienie**: uprawnienie jest zdefiniowany dostępu do określonej akcji. Uprawnienia można na przykład dostęp do odczytu do wszystkich maszyn wirtualnych.
+* **Uprawnienie**: Uprawnienie jest zdefiniowany dostępu do określonej akcji. Uprawnienia można na przykład dostęp do odczytu do wszystkich maszyn wirtualnych.
 * **Rola**: Rola to zestaw uprawnień, które mogą być grupowane i przypisane do użytkownika. Na przykład użytkownik mający rolę właściciela subskrypcji ma dostęp do wszystkich zasobów w ramach subskrypcji.
-* **Zakres**: zakres jest poziom w hierarchii zasobu platformy Azure. Na przykład zakres może być grupę zasobów, jednym laboratorium lub całej subskrypcji.
+* **Zakres**: Zakres jest poziom w hierarchii zasobu platformy Azure. Na przykład zakres może być grupę zasobów, jednym laboratorium lub całej subskrypcji.
 
 W zakresie usługi DevTest Labs istnieją dwa typy ról, które definiują uprawnienia użytkownika:
 
-* **Właściciel laboratorium**: właściciel laboratorium ma dostęp do wszystkich zasobów w środowisku laboratoryjnym. Właściciel laboratorium można modyfikować zasady, odczytu i zapisu do maszyn wirtualnych, zmień sieć wirtualną i tak dalej.
-* **Użytkownik laboratorium**: użytkownik laboratorium można wyświetlić wszystkie zasoby laboratorium, takie jak maszyny wirtualne, zasad i sieciami wirtualnymi. Jednak użytkownik laboratorium nie można zmodyfikować zasady lub maszyn wirtualnych, które zostały utworzone przez innych użytkowników. 
+* **Właściciel laboratorium**: Właściciel laboratorium ma dostęp do wszystkich zasobów w środowisku laboratoryjnym. Właściciel laboratorium można modyfikować zasady, odczytu i zapisu do maszyn wirtualnych, zmień sieć wirtualną i tak dalej.
+* **Użytkownik laboratorium**: Użytkownik laboratorium można wyświetlić wszystkie zasoby laboratorium, takie jak maszyny wirtualne, zasad i sieciami wirtualnymi. Jednak użytkownik laboratorium nie można zmodyfikować zasady lub maszyn wirtualnych, które zostały utworzone przez innych użytkowników. 
 
 Możesz również utworzyć niestandardowe role w usłudze DevTest Labs. Aby dowiedzieć się, jak utworzyć niestandardowe role w usłudze DevTest Labs, zobacz [udzielić użytkownikowi uprawnień do zasad określonych laboratorium](devtest-lab-grant-user-permissions-to-specific-lab-policies.md).
 
@@ -227,7 +227,7 @@ Jedną z możliwości jest, że Twoja nazwa sieci wirtualnej zawiera kropek. Je�
 ## <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Dlaczego otrzymuję błąd "Nie znaleziono zasobu nadrzędnego" podczas aprowizowania maszyny Wirtualnej za pomocą programu PowerShell?
 Jeśli jeden zasób jest nadrzędny do innego zasobu, zasób nadrzędny musi istnieć przed przystąpieniem do tworzenia zasobów podrzędnych. Jeśli zasób nadrzędny nie istnieje, zostanie wyświetlony **ParentResourceNotFound** wiadomości. Jeśli nie określisz zależność od zasobu nadrzędnego, przed nadrzędnego może wdrożyć zasobów podrzędnych.
 
-Maszyny wirtualne są zasobami podrzędnymi w ramach laboratorium w grupie zasobów. Korzystając z szablonów usługi Resource Manager do wdrażania maszyn wirtualnych przy użyciu programu PowerShell, nazwa grupy zasobów, które są udostępniane w skrypcie programu PowerShell powinna być nazwa grupy zasobów w środowisku laboratoryjnym. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie typowych problemów z wdrożeniem platformy](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors#parentresourcenotfound).
+Maszyny wirtualne są zasobami podrzędnymi w ramach laboratorium w grupie zasobów. Korzystając z szablonów usługi Resource Manager do wdrażania maszyn wirtualnych przy użyciu programu PowerShell, nazwa grupy zasobów, które są udostępniane w skrypcie programu PowerShell powinna być nazwa grupy zasobów w środowisku laboratoryjnym. Aby uzyskać więcej informacji, zobacz [Rozwiązywanie typowych problemów z wdrożeniem platformy](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-common-deployment-errors).
 
 ## <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Gdzie można znaleźć więcej informacji o błędzie w przypadku niepowodzenia wdrożenia maszyny Wirtualnej?
 Błędy wdrożenia maszyny Wirtualnej są przechwytywane w dziennikach aktywności. Laboratorium można znaleźć w dziennikach aktywności maszyn wirtualnych w ramach **dzienniki inspekcji** lub **diagnostyki maszyny wirtualnej** w menu zasobów w bloku maszyny Wirtualnej w laboratorium (bloku pojawia się po wybraniu maszyny Wirtualnej z **Moje wirtualny maszyny** listy).

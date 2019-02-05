@@ -8,16 +8,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: glenga
-ms.openlocfilehash: a0f66f5a1ba64c955fe0669d3ed215ee7c2895c0
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
+ms.openlocfilehash: 6e8142e391dd02e78be42e1f16ae2626b74c41c3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52498396"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734474"
 ---
 # <a name="how-to-target-azure-functions-runtime-versions"></a>Jak odwoływać się wersje środowiska uruchomieniowego usługi Azure Functions
 
-Aplikacja funkcji jest uruchamiana od określonej wersji środowiska uruchomieniowego usługi Azure Functions. Istnieją dwie wersje główne: [wersji 1.x i 2.x](functions-versions.md). Domyślnie funkcja aplikacji, które zostały utworzone w wersji 2.x środowiska uruchomieniowego. W tym artykule opisano sposób konfigurowania aplikacji funkcji na platformie Azure do uruchamiania na wybranej wersji. Aby uzyskać informacje o sposobie konfigurowania lokalnego środowiska deweloperskiego dla określonej wersji, zobacz [kodu i testowanie usługi Azure Functions lokalnie](functions-run-local.md).
+Aplikacja funkcji jest uruchamiana od określonej wersji środowiska uruchomieniowego usługi Azure Functions. Istnieją dwie wersje główne: [w wersji 1.x i 2.x](functions-versions.md). Domyślnie funkcja aplikacji, które zostały utworzone w wersji 2.x środowiska uruchomieniowego. W tym artykule opisano sposób konfigurowania aplikacji funkcji na platformie Azure do uruchamiania na wybranej wersji. Aby uzyskać informacje o sposobie konfigurowania lokalnego środowiska deweloperskiego dla określonej wersji, zobacz [kodu i testowanie usługi Azure Functions lokalnie](functions-run-local.md).
 
 > [!NOTE]
 > Nie można zmienić wersji środowiska uruchomieniowego dla aplikacji funkcji, która ma jedną lub więcej funkcji. Należy użyć witryny Azure portal, aby zmienić wersję środowiska uruchomieniowego.
@@ -49,7 +49,7 @@ Możesz również wyświetlić i ustawić `FUNCTIONS_EXTENSION_VERSION` z wiersz
 >[!NOTE]
 >Ponieważ pozostałe ustawienia mogą mieć wpływ na wersji środowiska uruchomieniowego, należy zmienić wersję w portalu. Portal automatycznie sprawia, że innych wymaganych aktualizacji, takich jak stos wersji i środowisko uruchomieniowe Node.js, gdy zmienią się wersje środowiska uruchomieniowego.  
 
-Przy użyciu wiersza polecenia platformy Azure, Wyświetl bieżącą wersję środowiska uruchomieniowego za pomocą [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) polecenia.
+Przy użyciu wiersza polecenia platformy Azure, Wyświetl bieżącą wersję środowiska uruchomieniowego za pomocą [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) polecenia.
 
 ```azurecli-interactive
 az functionapp config appsettings list --name <function_app> \
@@ -83,7 +83,7 @@ Zostanie wyświetlony `FUNCTIONS_EXTENSION_VERSION` następujące dane wyjściow
 ]
 ```
 
-Możesz zaktualizować `FUNCTIONS_EXTENSION_VERSION` ustawienie w aplikacji funkcji przy użyciu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings#set) polecenia.
+Możesz zaktualizować `FUNCTIONS_EXTENSION_VERSION` ustawienie w aplikacji funkcji przy użyciu [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) polecenia.
 
 ```azurecli-interactive
 az functionapp config appsettings set --name <function_app> \
