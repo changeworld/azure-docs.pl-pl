@@ -1,36 +1,28 @@
----
-ms.openlocfilehash: 55adc512447160b409af0002a72ec2473409d796
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54489244"
----
-# <a name="contributing-to-microsoft-azure-documentation"></a>Współtworzenie dokumentacji platformy Microsoft Azure
+# Contributing to Microsoft Azure Documentation
 
-Dziękujemy za poświęcenie czasu na potrzeby współtworzenia dokumentacji firmy Microsoft Azure.
+Thank you for taking the time to contribute to the Microsoft Azure documentation.
 
-W tym przewodniku opisano niektóre ogólne tematy dotyczące udziału oraz odwołuje się do naszych [przewodnikiem współautora](https://docs.microsoft.com/contribute) bardziej szczegółowe wyjaśnienia, odpowiednio.
+This guide covers some general topics around contribution and refers out to our [contributors guide](https://docs.microsoft.com/contribute) for more detailed explanations where relevant.
 
-## <a name="code-of-conduct"></a>Kodeks postępowania
+## Code of Conduct
 
-W tym projekcie przyjęto [Kodeks postępowania oprogramowania Open Source firmy Microsoft](https://opensource.microsoft.com/codeofconduct/).
-Aby uzyskać więcej informacji, zobacz [kodu postępowania FAQ](https://opensource.microsoft.com/codeofconduct/faq/), lub skontaktuj się z [ opencode@microsoft.com ](mailto:opencode@microsoft.com) z jakichkolwiek dodatkowych pytań lub komentarzy.
+This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
+For more information, see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/), or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
 
-## <a name="how-can-i-contribute"></a>Jak może współtworzyć?
+## How can I contribute?
 
-Istnieją różne sposoby współtworzenia dokumentacji, przejrzyj poniższe sekcje, aby dowiedzieć się, który z nich jest odpowiedni dla Ciebie.
+There are a variety of ways to contribute to the documentation, review the sections below to find out which one is right for you.
 
-### <a name="reporting-bugs-and-suggesting-enhancements"></a>Raportowania błędów i sugerowanie ulepszeń
+### Reporting Bugs and Suggesting Enhancements
 
-Użyj narzędzia do udzielania opinii w dolnej części artykułu, aby przesłać usterki i sugestie.
+Please use the Feedback tool at the bottom of any article to submit bugs and suggestions.
 
-![Narzędzia do udzielania opinii](media/feedback-tool.png)
+![Feedback Tool](media/feedback-tool.png)
 
-### <a name="editing-in-github"></a>Edytowanie w usłudze GitHub
+### Editing in GitHub
 
-Postępuj zgodnie z wytycznymi dla [szybkie edycje istniejących dokumentów](https://docs.microsoft.com/contribute/#quick-edits-to-existing-documents) w naszym przewodnikiem współautora.
+Follow the guidance for [Quick edits to existing documents](https://docs.microsoft.com/contribute/#quick-edits-to-existing-documents) in our contributors guide.
 
-### <a name="pull-request"></a>Żądanie ściągnięcia
+### Pull Request
 
-Przejrzyj wskazówki dotyczące [żądania ściągnięcia](https://docs.microsoft.com/contribute/how-to-write-workflows-major#pull-request-processing) w naszym przewodnikiem współautora.
+Review the guidance for [Pull Requests](https://docs.microsoft.com/contribute/how-to-write-workflows-major#pull-request-processing) in our contributors guide.
