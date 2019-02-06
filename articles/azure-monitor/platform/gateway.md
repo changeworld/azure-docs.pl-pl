@@ -11,16 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e4ea964600c03ce3f3b5b276ed02d12f573814bf
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353043"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756499"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics
+
+>[!NOTE]
+>W ramach ciągłego przejście z programu Microsoft Operations Management Suite (OMS) do usługi Azure Monitor bramy pakietu OMS zostaną określone jako brama usługi Log Analytics. 
+>
+
 W tym dokumencie opisano sposób konfigurowania komunikacji z usługą Azure Automation i Log Analytics przy użyciu bramy usługi Log Analytics, w przypadku bezpośredniego połączenia lub programu Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Bramy usługi Log Analytics, która jest przekierowania serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP, można zbierać dane i wysyłać je do usługi Azure Automation i Log Analytics w ich imieniu.  
 
 Brama usługi Log Analytics obsługuje:
@@ -146,7 +151,7 @@ Aby poznać wymagania i procedury dotyczące sposobu instalowania agenta usługi
 
 Po zainstalowaniu agenta na serwerze bramy, należy skonfigurować go do raportu do obszaru roboczego lub agentów obszarów roboczych, rozmawiając z bramą. Jeśli nie zainstalowano agenta programu Windows Analytics dziennika w ramach bramy, są zapisywane zdarzenie 300 **dziennik bramy pakietu OMS** dziennika zdarzeń, wskazujący agent musi być zainstalowany. Jeśli agent jest zainstalowany, ale nie jest skonfigurowany do raportowania do tego samego obszaru roboczego wraz z agentami podczas komunikowania się przy jego użyciu, zdarzenie 105 są zapisywane do tego samego dziennika zdarzeń, informujący, że agent w bramie musi zostać skonfigurowany do raportowania do tego samego obszaru roboczego wraz z agentami, rozmawiając z t Brama on.
 
-Po zakończeniu konfiguracji, należy ponownie uruchomić **bramy pakietu OMS** usługi, aby zmiany zaczęły obowiązywać. W przeciwnym razie bramy spowoduje odrzucenie agentów próby komunikacji z usługi Log Analytics i raport identyfikatora zdarzenia 105 w **dziennik bramy pakietu OMS** dziennika zdarzeń. Dotyczy to również podczas dodawania lub usuwanie obszaru roboczego z konfiguracji agenta na serwerze bramy.   
+Po zakończeniu konfiguracji, należy ponownie uruchomić **bramy pakietu OMS** usługi, aby zmiany zaczęły obowiązywać. W przeciwnym razie bramy spowoduje odrzucenie agentów próby komunikacji przy użyciu usługi Log Analytics i raport zdarzenia 105 identyfikator w **dziennik bramy pakietu OMS** dziennika zdarzeń. Dotyczy to również podczas dodawania lub usuwanie obszaru roboczego z konfiguracji agenta na serwerze bramy.   
 
 Aby uzyskać informacje dotyczące automatyzacji hybrydowego procesu roboczego Runbook, zobacz [wdrażanie hybrydowego procesu roboczego Runbook](../../automation/automation-hybrid-runbook-worker.md).
 

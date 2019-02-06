@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: 6b2302e69c9412170b55df4bfd8c1df5a9f75ef3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55479292"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754649"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatycznie Skaluj klaster w celu spełnienia wymagań aplikacji na platformie Azure Kubernetes Service (AKS)
 
@@ -63,6 +63,9 @@ Dwa autoscalers mogą współpracować ze sobą, i są często wdrożone w klast
 ## <a name="create-an-aks-cluster-and-enable-the-cluster-autoscaler"></a>Tworzenie klastra AKS i włączyć skalowanie klastra
 
 Jeśli musisz utworzyć klaster usługi AKS, użyj [tworzenie az aks] [ az-aks-create] polecenia. Określ *wersji rozwiązania kubernetes —* , spełnia lub przekracza minimalny numer wersji wymagane zgodnie z opisem w poprzednim [przed rozpoczęciem](#before-you-begin) sekcji. Aby włączyć i skonfigurować klaster skalowania automatycznego, należy użyć *--enable klastra — skalowanie* parametru i określ węzeł *— minimalna liczba* i *— maksymalna liczba*.
+
+> [!IMPORTANT]
+> Skalowanie klastra jest składnikiem usługi Kubernetes. Mimo że klaster AKS używa skalowania maszyn wirtualnych dla węzłów, nie ręcznie włączyć lub zmienić ustawienia w witrynie Azure portal lub przy użyciu wiersza polecenia platformy Azure, automatyczne skalowanie zestawu skalowania. Umożliwiają skalowanie klastra Kubernetes Zarządzanie ustawieniami wymagane skali. Aby uzyskać więcej informacji, zobacz [można zmodyfikować zasoby usługi AKS w grupie zasobów MC_?](faq.md#can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group)
 
 Poniższy przykład tworzy klaster usługi AKS z zestawu skalowania maszyn wirtualnych i włączone skalowanie klastra i korzysta z co najmniej *1* i maksymalna liczba *3* węzłów:
 

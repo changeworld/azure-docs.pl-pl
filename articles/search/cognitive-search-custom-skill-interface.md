@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: fe575a79fe2f47729e7c7fe039989b2c08af1282
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: e4fe511228f6e80a17af8325ee74ae0927a760bd
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657828"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754731"
 ---
 # <a name="how-to-add-a-custom-skill-to-a-cognitive-search-pipeline"></a>Jak dodać umiejętności niestandardowe do potoku wyszukiwania kognitywnego
 
-A [potokiem indeksowania wyszukiwania kognitywnego](cognitive-search-concept-intro.md) w usłudze Azure Search może odbywać się z [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) oraz umiejętności niestandardowe, umożliwiających tworzenie i dodawane do potoku. Ten artykuł zawiera informacje dotyczące tworzenia niestandardowych umiejętności, która udostępnia interfejs, co pozwala na uwzględnienie w potoku usłudze wyszukiwania poznawczego. 
+A [potokiem indeksowania wyszukiwania kognitywnego](cognitive-search-concept-intro.md) w usłudze Azure Search może odbywać się z [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) także [umiejętności niestandardowe](cognitive-search-custom-skill-web-api.md) , umożliwiających tworzenie i dodawanie do potok. Ten artykuł zawiera informacje dotyczące tworzenia niestandardowych umiejętności, która udostępnia interfejs, co pozwala na uwzględnienie w potoku usłudze wyszukiwania poznawczego. 
 
 Budowanie umiejętności niestandardowe daje możliwość wstawiania przekształcenia unikatowe dla zawartości. Umiejętności niestandardowe wykonuje niezależnie, niezależnie od kroku wzbogacania potrzebujesz. Na przykład można zdefiniować jednostki niestandardowe specyficzne dla pola, tworzyć modele klasyfikacji niestandardowej do odróżnienia biznesowych i kontrakty finansowe i dokumenty lub Dodaj umiejętności rozpoznawania mowy, osiągnąć bardziej do plików audio, dla odpowiedniej zawartości. Aby uzyskać przykład krok po kroku, zobacz [przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md).
 

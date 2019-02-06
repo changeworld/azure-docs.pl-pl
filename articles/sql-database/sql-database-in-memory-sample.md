@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 9a394c0dff74ec5f926356a3d700c5bbba4c0e4f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b36db929d1ed6487f0da72bea5415d6ca4223b92
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478291"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756050"
 ---
 # <a name="in-memory-sample"></a>Przykładowe w pamięci
 
@@ -46,7 +46,7 @@ Aby uzyskać bardziej uproszczony, ale bardziej atrakcyjne wizualnie demonstracj
 
 #### <a name="installation-steps"></a>Kroki instalacji
 
-1. W [witryny Azure portal](https://portal.azure.com/), tworzenie bazy danych Premium lub krytyczne dla działania firmy na serwerze. Ustaw **źródła** do przykładowej bazy danych AdventureWorksLT. Aby uzyskać szczegółowe instrukcje, zobacz [tworzenie pierwszej bazy danych Azure SQL](sql-database-get-started-portal.md).
+1. W [witryny Azure portal](https://portal.azure.com/), tworzenie bazy danych Premium lub krytyczne dla działania firmy na serwerze. Ustaw **źródła** do przykładowej bazy danych AdventureWorksLT. Aby uzyskać szczegółowe instrukcje, zobacz [tworzenie pierwszej bazy danych Azure SQL](sql-database-single-database-get-started.md).
 
 2. Połączenia z bazą danych przy użyciu programu SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 

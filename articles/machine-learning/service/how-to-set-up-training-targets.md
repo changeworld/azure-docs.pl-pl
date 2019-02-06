@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 75caad2c183ba2d3c5442a3620705c6af8070755
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659596"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756533"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -38,18 +38,14 @@ W tym artykule dowiesz się, jak używać różnych celów obliczeń do trenowan
 Usługa Azure Machine Learning obsługuje różne w różnych obliczeniowych elementów docelowych. Cykl projektowania modelu Typowa rozpoczyna się od dev/eksperymentów na niewielkiej ilości danych. Na tym etapie firma Microsoft zaleca używanie środowiska lokalnego. Na przykład komputera lokalnego lub maszyny Wirtualnej opartej na chmurze. Skalowanie w górę szkolenia na większych zestawów danych lub czy rozproszonego szkolenia, firma Microsoft zaleca obliczeniowego usługi Azure Machine Learning Tworzenie klastra przy użyciu jednego lub wielu node tego skalowania każdej próbie przesłania przebiegu. Można również dołączyć własnych zasobów obliczeniowych, mimo że obsługi różnych scenariuszy mogą się różnić zależnie z poniższym opisem:
 
 
-|Obliczeniowego elementu docelowego na potrzeby szkolenia| Przyspieszanie procesora GPU | Automatyczne<br/> do strojenia hiperparametrycznego | Automatyczne</br> Uczenie maszynowe | Przyjazne potoku|
+|Obliczeniowego elementu docelowego na potrzeby szkolenia| Przyspieszanie procesora GPU | Automatyczne<br/> do strojenia hiperparametrycznego | Automatyczne</br> Uczenie maszynowe | Potoków uczenia maszynowego Azure |
 |----|:----:|:----:|:----:|:----:|
 |[Komputer lokalny](#local)| Być może | &nbsp; | ✓ | &nbsp; |
 |[Usługi Azure Machine Learning obliczeń](#amlcompute)| ✓ | ✓ | ✓ | ✓ |
 |[Zdalnego maszyny Wirtualnej](#vm) | ✓ | ✓ | ✓ | ✓ |
-|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓[*](#pipeline-only) |
-|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓[*](#pipeline-only) |
+|[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
+|[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Usługa Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-
-<a id="pipeline-only"></a>__*__ Usługa Azure Databricks i Azure Data Lake Analytics może __tylko__ można używać w potoku. 
-
->Utwórz obliczeniowych elementów docelowych dla potoków uczenia maszynowego, jak pokazano w tym artykule, ale użyj te usługi obliczeniowe w etapach potoku zamiast metody wymienione w tym miejscu.  Ponadto niektóre kroki potoku użyć konfiguracji uruchamiania, opisane w tym artykule.  Aby uzyskać więcej informacji o używaniu obliczeniowych elementów docelowych w potoku zobacz [Utwórz i uruchom potoku uczenia maszynowego](how-to-create-your-first-pipeline.md).
 
 ## <a name="whats-a-run-configuration"></a>Co to jest konfiguracji uruchamiania?
 

@@ -12,18 +12,18 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 318dce78059a169ede2f19f6aadaab9d61e07086
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 552293b402c697073587e887522d2daa3e33cdb6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474959"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754586"
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Łączenie programu Excel z bazą danych Azure SQL database i utworzenie raportu
 
 Łączenie programu Excel do usługi SQL database w chmurze i importowanie danych i tworzenie tabel i wykresów na podstawie wartości w bazie danych. W tym samouczku skonfigurujesz połączenie między programem Excel i tabelą bazy danych, zapiszesz plik przechowujący dane oraz informacje o połączeniu dla programu Excel, a następnie utworzysz wykres przestawny z wartościami bazy danych.
 
-Przed rozpoczęciem pracy będziesz potrzebować bazy danych SQL na platformie Azure. Jeśli jej nie masz, zobacz artykuł [Create your first SQL database](sql-database-get-started-portal.md) (Tworzenie pierwszej bazy danych SQL), aby w ciągu kilku minut uzyskać gotową do pracy bazę danych z przykładowymi danymi. W tym artykule szybko importować przykładowe dane do programu Excel z tego artykułu, ale można wykonać podobne kroki z użyciem własnych danych.
+Przed rozpoczęciem pracy będziesz potrzebować bazy danych SQL na platformie Azure. Jeśli jej nie masz, zobacz artykuł [Create your first SQL database](sql-database-single-database-get-started.md) (Tworzenie pierwszej bazy danych SQL), aby w ciągu kilku minut uzyskać gotową do pracy bazę danych z przykładowymi danymi. W tym artykule szybko importować przykładowe dane do programu Excel z tego artykułu, ale można wykonać podobne kroki z użyciem własnych danych.
 
 Potrzebna będzie również kopia programu Excel. W tym artykule wykorzystano program [Microsoft Excel 2016](https://products.office.com/).
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 2c1b46f1c1726a473fe15e490f3000f3c5235a77
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5995c896f02720d82862895795e1e8d43f6bb226
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477509"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756471"
 ---
 # <a name="use-the-portal-to-attach-a-data-disk-to-a-linux-vm"></a>Dołączanie dysku danych do maszyny Wirtualnej z systemem Linux za pomocą portalu 
 W tym artykule pokazano, jak dołączyć istniejących i nowych dysków do maszyny wirtualnej z systemem Linux w witrynie Azure portal. Możesz również [dołączanie dysku danych do maszyny Wirtualnej z systemem Windows w witrynie Azure portal](../windows/attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). 
@@ -102,10 +102,10 @@ W tym miejscu *sdc* to dysk, który chcemy.
 ### <a name="partition-a-new-disk"></a>Nowy dysk
 Jeśli używasz istniejącego dysku, który zawiera dane, przejdź do instalowania na dysku. Dołączając nowy dysk, musisz partycji na dysku.
 
-Użyj `fdisk` partycji dysku, stał się podstawowym dysku na partycji 1 i zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `fdisk` proces */dev/sdc*:
+Określ partycję dysku za pomocą `parted`, jeśli rozmiar dysku wynosi 2 tebibajtów (TiB) lub większą, należy użyć partycji GPT, jeśli jest w obszarze 2TiB, wówczas można użyć partycji MBR lub GPT. Stał się podstawowym dysku na partycji 1, a następnie zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `parted` proces */dev/sdc*:
 
 ```bash
-sudo fdisk /dev/sdc
+sudo parted /dev/sdc
 ```
 
 Użyj `n` polecenie, aby dodać nową partycję. W tym przykładzie mamy też `p` dla podstawowego Podziel na partycje i zaakceptuj pozostałe wartości domyślne. Dane wyjściowe będą podobne do poniższego przykładu:

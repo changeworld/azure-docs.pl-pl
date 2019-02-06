@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 04c89742ac09d1581b978e3612539acb7eab2195
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea7f32a08a6a183bac21436e7d58afe10c4d7b20
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511058"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756652"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Serwery usługi Azure SQL Database i zarządzanie nimi
 
@@ -78,7 +78,7 @@ Aby zarządzać istniejącej bazy danych, przejdź do **baz danych SQL** strony,
 > [!IMPORTANT]
 > Aby skonfigurować właściwości wydajności bazy danych, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 > [!TIP]
-> Dla portalu szybkiego startu platformy Azure, zobacz [utworzyć bazę danych Azure SQL database w witrynie Azure portal](sql-database-get-started-portal.md).
+> Dla portalu szybkiego startu platformy Azure, zobacz [utworzyć bazę danych Azure SQL database w witrynie Azure portal](sql-database-single-database-get-started.md).
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>Zarządzanie serwerami Azure SQL, bazy danych i zapory przy użyciu programu PowerShell
 
@@ -102,7 +102,7 @@ Aby utworzyć i zarządzać nimi, Azure SQL server, baz danych i zapory za pomoc
 | New-AzureRmSqlServerVirtualNetworkRule | Tworzy [ *reguły sieci wirtualnej*](sql-database-vnet-service-endpoint-rule-overview.md)zgodnie z podsieci, która jest punkt końcowy usługi sieci wirtualnej. |
 
 > [!TIP]
-> Dla programu PowerShell przewodnika Szybki Start zobacz [Utwórz bazę pojedynczego Azure SQL przy użyciu programu PowerShell](sql-database-get-started-portal.md). W przypadku skryptów przykład programu PowerShell, zobacz [Użyj programu PowerShell do tworzenia pojedynczej bazy danych Azure SQL i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-powershell.md) i [Monitor i skala usługi Azure SQL pojedyncze bazy danych przy użyciu programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+> Dla programu PowerShell przewodnika Szybki Start zobacz [Utwórz bazę pojedynczego Azure SQL przy użyciu programu PowerShell](sql-database-single-database-get-started.md). W przypadku skryptów przykład programu PowerShell, zobacz [Użyj programu PowerShell do tworzenia pojedynczej bazy danych Azure SQL i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-powershell.md) i [Monitor i skala usługi Azure SQL pojedyncze bazy danych przy użyciu programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
 >
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Zarządzanie serwerami usługi Azure SQL, bazy danych i zapory, korzystając z wiersza polecenia platformy Azure

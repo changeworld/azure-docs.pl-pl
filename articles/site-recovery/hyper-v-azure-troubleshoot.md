@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 94b2ab0263ccb7b6835a7bbe76ed8776aadb1a65
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e79ffba90f0812d79bcb7ab808e2b6ba80e1c61b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228206"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756669"
 ---
 # <a name="troubleshoot-hyper-v-to-azure-replication-and-failover"></a>Rozwiązywanie problemów z funkcją Hyper-V do platformy Azure replikacji i trybu failover
 
@@ -115,7 +115,7 @@ Migawka spójności aplikacji jest w momencie migawkę danych aplikacji wewnątr
         - Licznik: "Zapisane bajty / s"</br>
         - Współczynnik zmian danych w tym danych zwiększa lub pozostać na wysokim poziomie, w zależności od ich obciążenia maszyny Wirtualnej lub jej aplikacji.
         - Średni źródłowy współczynnik zmian danych dysku to 2 MB/s dla magazynu w warstwie standardowa dla usługi Site Recovery. [Dowiedz się więcej](hyper-v-deployment-planner-analyze-report.md#azure-site-recovery-limits)
-    - Ponadto możesz [Sprawdź cele usługi storage dotyczące skalowalności](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#scalability-targets-for-a-storage-account).
+    - Ponadto możesz [Sprawdź cele usługi storage dotyczące skalowalności](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets).
 8. Uruchom [planista wdrażania](hyper-v-deployment-planner-run.md).
 9. Przejrzyj zalecenia dotyczące [sieci](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input) i [magazynu](hyper-v-deployment-planner-analyze-report.md#recommendations-with-available-bandwidth-as-input).
 

@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 2b60d4aed1b16db433439e69f9d6813f36f2faac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 4fc30deb68039130850f87cb70dbb606be463600
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732553"
+ms.locfileid: "55747394"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołania do typów wyzwalaczy i akcji dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -147,7 +147,7 @@ Sprawdza, czy ten wyzwalacz lub *sond* punktu końcowego przy użyciu [zarządza
 | <*query-parameters*> | Obiekt JSON | Wywołaj żadnych parametrów zapytania do uwzględnienia przy użyciu interfejsu API. Na przykład `"queries": { "api-version": "2018-01-01" }` dodaje obiekt `?api-version=2018-01-01` wywołania. |
 | <*max-runs*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy aplikacji logiki uruchamiane w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). |
 | <*max-runs-queue*> | Liczba całkowita | Gdy Twoja aplikacja logiki jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). |
-| <*splitOn-expression*> | String | Wyzwalacze, które zwracają tablice to wyrażenie odwołuje się do tablicy, dzięki czemu można utworzyć i uruchomić wystąpienia przepływu pracy dla każdego elementu tablicy, zamiast pętli "for each". <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracanej w zawartości treści wyzwalacza: `@triggerbody()?['value']` |
+| <*splitOn-expression*> | String | Wyzwalacze, które zwracają tablice to wyrażenie odwołuje się do tablicy, dzięki czemu można utworzyć i uruchomić wystąpienia przepływu pracy dla każdego elementu tablicy, zamiast pętli "Foreach". Kiedy używasz `SplitOn` właściwości, otrzymasz współbieżnych wystąpień z maksymalnie limit, wyzwalacz i usługi mogą zwracać. <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracanej w zawartości treści wyzwalacza: `@triggerbody()?['value']` |
 | <*Opcja operacji*> | String | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). |
 ||||
 
@@ -237,7 +237,7 @@ Ten wyzwalacz wysyła żądanie subskrypcji do punktu końcowego usługi za pomo
 | <*query-parameters*> | Obiekt JSON | Wszelkie parametry zapytania do uwzględnienia przy użyciu wywołania interfejsu API <p>Na przykład `"queries": { "api-version": "2018-01-01" }` dodaje obiekt `?api-version=2018-01-01` wywołania. |
 | <*max-runs*> | Liczba całkowita | Domyślnie wystąpienia przepływu pracy aplikacji logiki uruchamiane w tym samym czasie lub w sposób równoległy do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić ten limit, ustawiając nową <*liczba*> wartość, zobacz [współbieżności wyzwalacza zmiany](#change-trigger-concurrency). |
 | <*max-runs-queue*> | Liczba całkowita | Gdy Twoja aplikacja logiki jest już uruchomiona maksymalna liczba wystąpień, które można zmienić na podstawie `runtimeConfiguration.concurrency.runs` właściwości wszelkie nowe przebiegi są umieszczane w tej kolejce [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](#change-waiting-runs). |
-| <*splitOn-expression*> | String | Wyzwalacze, które zwracają tablice to wyrażenie odwołuje się do tablicy, dzięki czemu można utworzyć i uruchomić wystąpienia przepływu pracy dla każdego elementu tablicy, zamiast pętli "for each". <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracanej w zawartości treści wyzwalacza: `@triggerbody()?['value']` |
+| <*splitOn-expression*> | String | Wyzwalacze, które zwracają tablice to wyrażenie odwołuje się do tablicy, dzięki czemu można utworzyć i uruchomić wystąpienia przepływu pracy dla każdego elementu tablicy, zamiast pętli "Foreach". Kiedy używasz `SplitOn` właściwości, otrzymasz współbieżnych wystąpień z maksymalnie limit, wyzwalacz i usługi mogą zwracać. <p>Na przykład to wyrażenie reprezentuje element w tablicy zwracanej w zawartości treści wyzwalacza: `@triggerbody()?['value']` |
 | <*Opcja operacji*> | String | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). |
 ||||
 
@@ -682,8 +682,9 @@ Domyślnie wyzwalacza wyłącznie po "200 OK" odpowiedzi. Gdy wyrażenie odwołu
 
 ## <a name="trigger-multiple-runs"></a>Wielu uruchomień wyzwalacza
 
-Jeśli wyzwalacz zwraca tablicę dla twojej aplikacji logiki do przetwarzania, czasami pętlę "for each" może trwać zbyt długo do przetworzenia każdego elementu tablicy. Zamiast tego można użyć **SplitOn** właściwości wyzwalacza do *debatch* tablicy. Usuwanie partii są rozróżniane elementów tablicy, a następnie uruchamia nowe wystąpienie aplikacji logiki, która jest uruchamiana dla każdego elementu tablicy. To podejście jest przydatne, na przykład, gdy w celu odpytania punktu końcowego, który może zwrócić wiele nowych elementów między interwałami sondowania.
-Na maksymalną liczbę tablicy elementów, które **SplitOn** można przetwarzać w przebiegu aplikacji logiki pojedynczego, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits).
+Jeśli wyzwalacz zwraca tablicę dla twojej aplikacji logiki do przetwarzania, czasami pętlę "for each" może trwać zbyt długo do przetworzenia każdego elementu tablicy. Zamiast tego można użyć **SplitOn** właściwości wyzwalacza do *debatch* tablicy. Usuwanie partii są rozróżniane elementów tablicy, a następnie uruchamia nowe wystąpienie aplikacji logiki, która jest uruchamiana dla każdego elementu tablicy. To podejście jest przydatne, na przykład, gdy w celu odpytania punktu końcowego, który może zwrócić wiele nowych elementów między interwałami sondowania. 
+
+Kiedy używasz `SplitOn` właściwości, otrzymasz współbieżnych wystąpień z maksymalnie limit, wyzwalacz i usługi mogą zwracać. Na maksymalną liczbę tablicy elementów, które **SplitOn** można przetwarzać w przebiegu aplikacji logiki pojedynczego, zobacz [limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). 
 
 > [!NOTE]
 > Nie można użyć **SplitOn** za pomocą wzorca synchronicznej odpowiedzi. Każdy przepływ pracy, który używa **SplitOn** i odpowiedzi zawiera działanie jest uruchamiane asynchronicznie i natychmiast wysyła `202 ACCEPTED` odpowiedzi.
@@ -1425,9 +1426,9 @@ W przeciwieństwie do innych działań **odpowiedzi** akcja ma specjalne ogranic
 
   Jednak jeśli przepływ pracy wymaga innego zagnieżdżonego przepływu pracy aplikacji logiki, nadrzędny przepływ pracy czeka, aż zakończy zagnieżdżonego przepływu pracy, niezależnie od tego, ile czasu upływa zanim zakończy się zagnieżdżony przepływ pracy.
 
-* Jeśli przepływ pracy używa **odpowiedzi** akcji i wzorzec synchronicznej odpowiedzi, przepływ pracy nie można również użyć **splitOn** polecenia w definicji wyzwalacza, ponieważ to polecenie powoduje utworzenie wielu uruchomień. Sprawdź dla tego przypadku stosowania metody PUT, a jeśli ma wartość true, zwraca odpowiedź "złe żądanie".
+* Jeśli przepływ pracy używa **odpowiedzi** akcji i wzorzec synchronicznej odpowiedzi, przepływ pracy nie można również użyć **SplitOn** właściwości w definicji wyzwalacza ponieważ to polecenie powoduje utworzenie wielu uruchomień. Sprawdź dla tego przypadku stosowania metody PUT, a jeśli ma wartość true, zwraca odpowiedź "złe żądanie".
 
-  W przeciwnym razie, jeśli przepływ pracy używa **splitOn** polecenia i **odpowiedzi** akcji przepływu pracy jest uruchamiane asynchronicznie i natychmiast powraca odpowiedzi "202 ZAAKCEPTOWANO".
+  W przeciwnym razie, jeśli przepływ pracy używa **SplitOn** właściwości i **odpowiedzi** akcji przepływu pracy jest uruchamiane asynchronicznie i natychmiast powraca odpowiedzi "202 ZAAKCEPTOWANO".
 
 * Kiedy Twój przepływ pracy wykonywanie osiągnie **odpowiedzi** akcji, ale przychodzące żądanie już otrzymało odpowiedzi **odpowiedzi** akcji jest oznaczony jako "Niepowodzenie" z powodu konfliktu. I w wyniku uruchomienia aplikacji logiki również jest oznaczona stanem "Niepowodzenie".
 

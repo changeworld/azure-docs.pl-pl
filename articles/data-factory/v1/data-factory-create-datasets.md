@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25e47ecc9d9915ab618bc45f2e95f12bae68c7f0
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 690c2769e129d5661e7d66cb3f9f968643c0dbdb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332612"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747013"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +40,7 @@ Działanie może zająć zero lub więcej danych wejściowych **zestawów danych
 
 Przed utworzeniem zestawu danych, Utwórz **połączoną usługę** połączyć usługi magazynu danych w usłudze data factory. Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Zestawy danych identyfikują dane w połączonych magazynach danych, takich jak SQL tabel, plików, folderów i dokumentów. Na przykład Azure Storage połączona usługa łączy konto usługi storage z fabryką danych. Zestaw danych obiektów Blob platformy Azure reprezentuje kontener obiektów blob oraz folder, który zawiera wejściowe obiekty BLOB mają być przetwarzane.
 
-Poniżej przedstawiono przykładowy scenariusz. Aby skopiować dane z magazynu obiektów Blob do usługi SQL database, utworzysz dwie połączone usługi: Usługa Azure Storage i Azure SQL Database. Następnie należy utworzyć dwa zestawy danych: Azure zestaw danych obiektów Blob (która odwołuje się do połączonej usługi Azure Storage) i zestaw danych tabeli SQL Azure, (która odwołuje się do usługi Azure SQL Database, połączone). Usługi Azure Storage i Azure SQL Database, połączone usługi zawiera parametry połączenia, które usługi Data Factory używa w środowisku uruchomieniowym połączyć się z usługi Azure Storage i Azure SQL Database, odpowiednio. Zestaw danych obiektów Blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty BLOB w usłudze Blob storage. Zestaw danych tabeli SQL Azure Określa tabelę SQL w usłudze SQL database, do której ma zostać skopiowane dane.
+Poniżej przedstawiono przykładowy scenariusz. Aby skopiować dane z magazynu obiektów Blob do usługi SQL database, utworzysz dwie połączone usługi: Azure Storage i Azure SQL Database. Następnie należy utworzyć dwa zestawy danych: Azure zestaw danych obiektów Blob (która odwołuje się do połączonej usługi Azure Storage) i zestaw danych tabeli SQL Azure, (która odwołuje się do usługi Azure SQL Database, połączone). Usługi Azure Storage i Azure SQL Database, połączone usługi zawiera parametry połączenia, które usługi Data Factory używa w środowisku uruchomieniowym połączyć się z usługi Azure Storage i Azure SQL Database, odpowiednio. Zestaw danych obiektów Blob platformy Azure Określa kontener obiektów blob i folder obiektów blob, który zawiera wejściowe obiekty BLOB w usłudze Blob storage. Zestaw danych tabeli SQL Azure Określa tabelę SQL w usłudze SQL database, do której ma zostać skopiowane dane.
 
 Na poniższym diagramie przedstawiono relacje między potoku, działania, zestaw danych i połączonej usługi w usłudze Data Factory:
 
@@ -54,7 +54,7 @@ Zestaw danych w usłudze Data Factory jest zdefiniowany w formacie JSON:
     "name": "<name of dataset>",
     "properties": {
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
-        "external": <boolean flag to indicate external data. only for input datasets>,
+        "external": "<boolean flag to indicate external data. only for input datasets>",
         "linkedServiceName": "<Name of the linked service that refers to a data store.>",
         "structure": [
             {

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 5bd631bf31ba4e6a840c3e4e818062d322da0158
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a9a1446db66e528cfac98222d4bd258efc660c84
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727930"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750379"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
@@ -46,12 +46,14 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
     Możesz [Tworzenie prostego modelu usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/luis/) lub użyj przykładu model usługi LUIS, example.json usługi LUIS. Przykładowy model usługi LUIS jest dostępny z [witryny pobierania zestawu Speech Devices SDK](https://shares.datatransfer.microsoft.com/). Można przekazać swój model pliku JSON do [portal usługi LUIS](https://www.luis.ai/home), wybierz opcję **importowania Nowa aplikacja**, a następnie wybierz plik JSON.
 
 ## <a name="set-up-the-development-kit"></a>Skonfiguruj zestaw development kit
-
-1. Zestaw development kit nawiązać połączenie z komputerem PC lub dostarczenia danych karty przy użyciu kabla USB wczesnych wysokiej jakości. Wskaźnik zielony zasilania, zostaną wyświetlone w górnym tablicy.
-
-1. Zestaw development kit połączyć się z komputerem za pomocą drugiego mini kabla USB.
+    
+1. Zestaw development kit ma dwa wczesnych łączniki USB. Łącznik po lewej stronie zasilania deweloperski i jest wyróżniony jako zasilania na poniższej ilustracji. Po prawej stronie jeden ma nad nim kontroli i jest oznaczony jako debugowania na obrazie.
 
     ![Łączenie zestawu dla deweloperów](media/speech-devices-sdk/qsg-1.png)
+       
+1. Zasilacz deweloperski za pomocą kabla USB wczesnych połącz port zasilania do komputera lub dostarczenia adaptera. Wskaźnik zielony zasilania, zostaną wyświetlone w górnym tablicy.
+
+1. Do kontrolowania rozwoju kit połącz port debugowania na komputerze przy użyciu drugiej micro kabla USB. Istotne jest zapewnienie niezawodną komunikację przy użyciu kabla wysokiej jakości.
 
 1. Orientacja Twojego zestawu SDK dla dowolnego cykliczne lub liniowy konfiguracji.
 
@@ -75,6 +77,8 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
 
     > [!NOTE]
     > Te polecenia korzystają z mostka debugowania systemu Android, `adb.exe`, który jest częścią instalacji programu Android Studio. To narzędzie znajduje się w C:\Users\[nazwa_użytkownika] \AppData\Local\Android\Sdk\platform narzędzia. Ten katalog można dodać do swojej ścieżki, aby był bardziej wygodne do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji adb.exe w każdego polecenia, który wywołuje `adb`.
+    >
+    > Jeśli zostanie wyświetlony błąd `no devices/emulators found` Sprawdź kabel USB został podłączony i jest kabla wysokiej jakości. Możesz użyć `adb devices` do sprawdzenia, czy komputer może komunikować się z deweloperski go spowoduje zwrócenie listy urządzeń.
 
     > [!TIP]
     > Wyciszenia mikrofonu i głośników, należy upewnić się, że pracujesz z mikrofon zestaw development kit Twojego komputera. W ten sposób przypadkowo nie spowoduje wyzwolenia z urządzenia z dźwięku z komputera.

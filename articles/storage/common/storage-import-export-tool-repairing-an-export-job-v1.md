@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 395ff654bcacf1a4f70a9032492deb2a9d5202f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454763"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756754"
 ---
 # <a name="repairing-an-export-job"></a>Naprawianie zadania eksportu
 Po zakończeniu zadania eksportu można uruchomić narzędzie importu/eksportu platformy Microsoft Azure w środowisku lokalnym do:  
@@ -81,7 +81,7 @@ Kopiuj plik dziennika wskazuje wystąpił błąd podczas usługi Windows Azure I
 ## <a name="using-repairexport-to-validate-drive-contents"></a>Aby sprawdzić zawartość dysku przy użyciu RepairExport  
 Można również użyć usługi Azure Import/Export, za pomocą **RepairExport** opcję, aby sprawdzić zawartość na dysku są poprawne. Plik manifestu na każdym dysku eksportu zawiera MD5s zawartość dysku.  
   
-Usługa Azure Import/Export można także zapisać pliki manifestu do konta magazynu, podczas procesu eksportowania. Lokalizacja plików manifestu jest dostępna za pośrednictwem [pobrania zadania](/rest/api/storageimportexport/jobs#Jobs_CreateOrUpdate) operacji po ukończeniu zadania. Zobacz [usługi Import/Export Format pliku manifestu](storage-import-export-file-format-metadata-and-properties.md) Aby uzyskać więcej informacji o formacie pliku manifestu dysku.  
+Usługa Azure Import/Export można także zapisać pliki manifestu do konta magazynu, podczas procesu eksportowania. Lokalizacja plików manifestu jest dostępna za pośrednictwem [pobrania zadania](/rest/api/storageimportexport/jobs) operacji po ukończeniu zadania. Zobacz [usługi Import/Export Format pliku manifestu](storage-import-export-file-format-metadata-and-properties.md) Aby uzyskać więcej informacji o formacie pliku manifestu dysku.  
   
 Poniższy przykład pokazuje, jak uruchomić narzędzie importu/eksportu platformy Azure za pomocą **/ManifestFile** i **/CopyLogFile** parametry:  
   

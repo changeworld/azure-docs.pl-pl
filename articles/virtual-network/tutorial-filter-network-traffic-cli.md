@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 6a79c75f96c351a470a7ab4f788f79b0e1b6a8a6
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 630eddc8494b32d93035913bcb2b55f00153b1be
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656296"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755513"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-the-azure-cli"></a>Filtrowanie ruchu sieciowego z sieciową grupą zabezpieczeń przy użyciu wiersza polecenia platformy Azure
 
@@ -46,7 +46,7 @@ Sieciowa grupa zabezpieczeń zawiera reguły zabezpieczeń. Reguły zabezpiecze�
 
 ### <a name="create-application-security-groups"></a>Tworzenie grup zabezpieczeń aplikacji
 
-Najpierw utwórz grupę zasobów dla wszystkich zasobów utworzonych w tym artykule [Tworzenie grupy az](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów w lokalizacji *eastus*: 
+Najpierw utwórz grupę zasobów dla wszystkich zasobów utworzonych w tym artykule [Tworzenie grupy az](/cli/azure/group). Poniższy przykład obejmuje tworzenie grupy zasobów w lokalizacji *eastus*: 
 
 ```azurecli-interactive
 az group create \
@@ -54,7 +54,7 @@ az group create \
   --location eastus
 ```
 
-Tworzenie grupy zabezpieczeń aplikacji przy użyciu [tworzenie az sieci w grupie asg](/cli/azure/network/asg#az_network_asg_create). Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych wymaganiach w zakresie filtrowania portów. Poniższy przykład tworzy dwie grupy zabezpieczeń aplikacji.
+Tworzenie grupy zabezpieczeń aplikacji przy użyciu [tworzenie az sieci w grupie asg](/cli/azure/network/asg). Grupa zabezpieczeń aplikacji umożliwia grupowanie serwerów o podobnych wymaganiach w zakresie filtrowania portów. Poniższy przykład tworzy dwie grupy zabezpieczeń aplikacji.
 
 ```azurecli-interactive
 az network asg create \
@@ -81,7 +81,7 @@ az network nsg create \
 
 ### <a name="create-security-rules"></a>Tworzenie reguł zabezpieczeń
 
-Utwórz regułę zabezpieczeń przy użyciu [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Poniższy przykład tworzy regułę, która zezwala na ruch przychodzący z Internetu do grupy zabezpieczeń aplikacji *myWebServers* przez porty 80 i 443:
+Utwórz regułę zabezpieczeń przy użyciu [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule). Poniższy przykład tworzy regułę, która zezwala na ruch przychodzący z Internetu do grupy zabezpieczeń aplikacji *myWebServers* przez porty 80 i 443:
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -119,7 +119,7 @@ W tym artykule SSH (port 22) jest uwidaczniany w Internecie *myAsgMgmtServers* m
 
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład tworzy sieć wirtualną o nazwie *myVirtualNetwork*:
+Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet). Poniższy przykład tworzy sieć wirtualną o nazwie *myVirtualNetwork*:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -143,7 +143,7 @@ az network vnet subnet create \
 
 Utwórz dwie maszyny wirtualne w sieci wirtualnej, aby umożliwić weryfikację filtrowania ruchu w kolejnym kroku. 
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create). Poniższy przykład tworzy maszynę wirtualną, która będzie służyć jako serwer internetowy. `--asgs myAsgWebServers` Opcja powoduje, że Azure, aby interfejs sieciowy, tworzy dla maszyny Wirtualnej jest członkiem *myAsgWebServers* grupy zabezpieczeń aplikacji.
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](/cli/azure/vm). Poniższy przykład tworzy maszynę wirtualną, która będzie służyć jako serwer internetowy. `--asgs myAsgWebServers` Opcja powoduje, że Azure, aby interfejs sieciowy, tworzy dla maszyny Wirtualnej jest członkiem *myAsgWebServers* grupy zabezpieczeń aplikacji.
 
 `--nsg ""` Określono opcję, aby uniemożliwić tworzenie domyślną sieciową grupę zabezpieczeń dla interfejsu sieciowego, platforma Azure utworzy podczas tworzenia maszyny Wirtualnej platformy Azure. Aby uprościć ten artykuł, używane jest hasło. Klucze są zazwyczaj używane we wdrożeniach produkcyjnych. Jeśli używasz kluczy, należy również skonfigurować agenta przekazywania SSH dla pozostałych kroków. Aby uzyskać więcej informacji zobacz dokumentację używanego klienta SSH. Zastąp `<replace-with-your-password>` w następującym poleceniu za pomocą wybrane hasło.
 
@@ -234,7 +234,7 @@ Wyloguj się z *myVmMgmt* maszyny Wirtualnej. Aby upewnić się, że masz dostę
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure/group#az_group_delete) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
+Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure/group) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

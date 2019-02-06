@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: cynthn
-ms.openlocfilehash: aa573b17e8b590f416c4857186cb8989decc4aff
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 257083e1ae0c3c1cb3c5421882ffd0e06e2d1f5c
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888638"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752147"
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Wprowadzenie do platformy Docker i Compose, aby zdefiniować i uruchomić aplikację obsługującą wiele kontenerów na platformie Azure
 Za pomocą [Compose](http://github.com/docker/compose), użyj prostego pliku tekstowego do definiowania aplikacja składająca się z wielu kontenerów platformy Docker. Następnie uruchom aplikację w pojedynczym poleceniu, tak, wszystko, co do wdrożenia środowiska zdefiniowane. Na przykład w tym artykule pokazano, jak szybko skonfigurować bloga WordPress z zapleczem bazy danych MariaDB SQL na maszynie Wirtualnej systemu Ubuntu. Redaguj umożliwia również konfigurowanie bardziej złożonych aplikacji.
@@ -35,13 +35,13 @@ Korzystając z rozszerzenia maszyny Wirtualnej Docker, maszyna wirtualna jest au
 ### <a name="create-docker-host-with-azure-cli"></a>Tworzenie hosta platformy Docker przy użyciu wiersza polecenia platformy Azure
 Zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index).
 
-Najpierw utwórz grupę zasobów w środowisku platformy Docker przy użyciu [Tworzenie grupy az](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Najpierw utwórz grupę zasobów w środowisku platformy Docker przy użyciu [Tworzenie grupy az](/cli/azure/group). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-Następnie należy wdrożyć Maszynę wirtualną za pomocą [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create) zawierającej rozszerzenie maszyny Wirtualnej Azure Docker z [tego szablonu usługi Azure Resource Manager w witrynie GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Po wyświetleniu monitu podaj własne unikatowe wartości *newStorageAccountName*, *adminUsername*, *adminPassword*, i *dnsNameForPublicIP*:
+Następnie należy wdrożyć Maszynę wirtualną za pomocą [Utwórz wdrożenie grupy az](/cli/azure/group/deployment) zawierającej rozszerzenie maszyny Wirtualnej Azure Docker z [tego szablonu usługi Azure Resource Manager w witrynie GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Po wyświetleniu monitu podaj własne unikatowe wartości *newStorageAccountName*, *adminUsername*, *adminPassword*, i *dnsNameForPublicIP*:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -52,7 +52,7 @@ Trwa kilka minut na zakończenie wdrożenia.
 
 
 ## <a name="verify-that-compose-is-installed"></a>Sprawdź, czy jest zainstalowany Compose
-Aby wyświetlić szczegóły maszyny wirtualnej, łącznie z nazwą DNS, należy użyć [az vm show](/cli/azure/vm#az_vm_show):
+Aby wyświetlić szczegóły maszyny wirtualnej, łącznie z nazwą DNS, należy użyć [az vm show](/cli/azure/vm):
 
 ```azurecli
 az vm show \

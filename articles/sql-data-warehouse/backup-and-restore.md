@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ce5c79d3565a0b9396b15f54d9ab854e8b8d0d8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9435ba10d69130a634e56992179f11399604fae
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462345"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747496"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
 Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj danych magazynu migawek do odzyskiwania lub skopiuj magazynu danych do poprzedniego punktu przywracania w regionie podstawowym. Użyj danych, Magazyn geograficznie nadmiarowych kopii zapasowych do przywrócenia w innym regionie geograficznym. 
@@ -62,7 +62,7 @@ Gdy upuścisz suszarkę hurtowni danych, usługa SQL Data Warehouse tworzy migaw
 > Jeśli usuniesz logiczne wystąpienie programu SQL server, wszystkie bazy danych, które należą do wystąpienia również zostaną usunięte i nie można odzyskać. Nie można przywrócić usuniętego serwera.
 >
 
-## <a name="geo-backups"></a>Kopie zapasowe geograficznie
+## <a name="geo-backups-and-disaster-recovery"></a>Po awarii i geograficznej kopie zapasowe odzyskiwania
 Usługa SQL Data Warehouse wykonuje geograficznej kopii zapasowej raz dziennie w celu [sparowanym centrum danych](../best-practices-availability-paired-regions.md). Cel punktu odzyskiwania dla przywracania geograficznego wynosi 24 godziny. Geograficznej kopii zapasowej można przywrócić serwer w każdym innym regionie, w których usługa SQL Data Warehouse jest obsługiwane. Geograficznej kopii zapasowej gwarantuje, że można przywrócić magazyn danych, w przypadku, gdy nie masz dostępu do punktów przywracania w regionie podstawowym.
 
 Kopie zapasowe geograficznej są domyślnie włączone. Jeśli magazyn danych jest Gen1, możesz to zrobić [zrezygnować](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy) w razie potrzeby. Nie możesz zrezygnować z kopii zapasowych geograficznej dla Gen2 ochrony danych jest wbudowaną gwarantowane.

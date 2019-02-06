@@ -1,6 +1,6 @@
 ---
-title: Dodawanie osobistych kont innych niż Microsoft do aplikacji Microsoft Authenticator — usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak dodać osobistych kont innych niż Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication.
+title: Dodawanie kont innych niż Microsoft do aplikacji Microsoft Authenticator — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Jak dodawać konta firmy Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: db59d3d2795b8cfa3fc7682f4486d968f39ab6ab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0103aa7fb9142f38e0f34cd70fbdb198137bc2a0
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459149"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753830"
 ---
-# <a name="add-your-personal-non-microsoft-accounts"></a>Dodawanie osobistych kont innych niż Microsoft
-Dodawanie osobistych kont innych niż Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication.
+# <a name="add-your-non-microsoft-accounts"></a>Dodawanie kont innych niż Microsoft
+Dodaj konta firmy Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication. Aplikacja Microsoft Authenticator współpracuje z dowolnej aplikacji, która używa weryfikacji two-Factor Authentication i konto, które obsługuje standardy oparte na czasie hasła jednorazowego (TOTP).
 
 >[!Important]
 >Przed dodaniem konta należy pobrać i zainstalować aplikację Microsoft Authenticator. Jeśli użytkownik jeszcze nie, wykonaj kroki opisane w [pobrać i zainstalować aplikację](microsoft-authenticator-app-how-to.md) artykułu.
@@ -29,7 +29,7 @@ Ogólnie rzecz biorąc dla wszystkich kont osobistych, musisz mieć:
 
 1. Zaloguj się do swojego konta, a następnie włączyć weryfikację two-Factor Authentication przy użyciu komputera lub urządzenia.
 
-2. Dodaj konto do aplikacji Microsoft Authenticator.
+2. Dodaj konto do aplikacji Microsoft Authenticator. Użytkownik, może zostać poproszona o zeskanować kod QR w ramach tego procesu.
 
 Udostępniamy poniżej proces dla kont usługi Facebook, Google, GitHub i Amazon, ale ten proces jest taki sam dla żadnych innych aplikacji, takich jak usługi Instagram, Netflix lub Adobe.
 

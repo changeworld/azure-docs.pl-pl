@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.openlocfilehash: 4bee57abe6de8e80ddf6f788fb17bb8b7d82849d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 357b22e4d4a6bf42ba165e49fc3cc01762268297
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913108"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756516"
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-cli"></a>Jak wykonać kopię zapasową i przywrócić serwer w usłudze Azure Database for PostgreSQL przy użyciu wiersza polecenia platformy Azure
 
@@ -57,7 +57,7 @@ Okres przechowywania kopii zapasowej decyduje jak daleko w czasie, które mogą 
 ## <a name="server-point-in-time-restore"></a>Serwer w momencie przywracania
 Możesz przywrócić serwer do wcześniejszego punktu w czasie. Przywróconych danych jest kopiowany do nowego serwera, a istniejący serwer pozostanie niezmieniona. Na przykład jeśli tabela jest przypadkowo w południe już dziś, można przywrócić do czasu, po prostu przed południem. Następnie możesz pobrać brakujące tabeli i danych z przywróconej kopii serwera. 
 
-Aby przywrócić serwer, należy użyć wiersza polecenia platformy Azure [az postgres server restore](/cli/azure/postgres/server#az_postgres_server_restore) polecenia.
+Aby przywrócić serwer, należy użyć wiersza polecenia platformy Azure [az postgres server restore](/cli/azure/postgres/server) polecenia.
 
 ### <a name="run-the-restore-command"></a>Uruchom polecenie restore
 

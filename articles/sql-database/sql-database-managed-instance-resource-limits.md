@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 228de2b7c47115373b26dcaa24b44e90baf76143
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 02/05/2019
+ms.openlocfilehash: be6e2cbea7dd23cbe6932f0110ac1c8b630a17c2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662606"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753201"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -50,17 +50,19 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 | **Funkcja** | **Ogólnego przeznaczenia** | **Krytyczne dla działania** |
 | --- | --- | --- |
 | Liczba rdzeni wirtualnych\* | Gen4: 8, 16, 24<br/>5. generacji: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> 5. generacji: 8, 16, 24, 32, 40, 64, 80 |
-| Memory (Pamięć) | Gen4: 56GB – 156GB<br/>5. generacji: 44GB-440GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych | Gen4: 56GB – 156GB <br/> 5. generacji: 41GB-408GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych |
+| Memory (Pamięć) | Gen4: 56 GB - 168 GB<br/>5. generacji: 40.8 GB – 408 GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych | Gen4: 56 GB - 168 GB <br/> 5. generacji: 40.8 GB – 408 GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu | 8 TB | 4. generacji: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
 | Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |
-| Danych/dziennika operacji We/Wy (w przybliżeniu) | 500-7500 na plik<br/>\*[Zależy od rozmiaru plików] (https://docs.microsoft.com/azure/virtual-machines ce przepływności dziennika | 22MB/s na wystąpienie | 3MB/s na rdzeniach wirtualnych<br/>Maksymalna liczba 48MB/s |
-| Przepływność danych (w przybliżeniu) | 100-250 MB/s na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24-48MB/s na rdzeniach wirtualnych |
+| Danych/dziennika operacji We/Wy (w przybliżeniu) | 500 — 7500 operacji na pliku<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines)| 11-110 tys. obr (1,375 na rdzeń wirtualny) |
+|Przepływność dziennika | 22 MB/s na wystąpienie | 3 MB/s na rdzeniach wirtualnych<br/>Maksymalnie 48 MB/s |
+| Przepływność danych (w przybliżeniu) | 100 - 250 MB/s na plik<br/>\*[Zależy od rozmiaru pliku](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s na rdzeniach wirtualnych |
 | We/Wy, czas oczekiwania (w przybliżeniu) | 5 – 10 ms | 1 – 2 ms |
-| Maksymalny rozmiar bazy danych tempDB | 192 1920 GB (24 GB na rdzeń wirtualny) | Bez ograniczeń — ograniczone przez maksymalny rozmiar wystąpienia: magazynu |
+| Maksymalny rozmiar bazy danych tempDB | 192 - 1,920 GB (24 GB na rdzeń wirtualny) | Bez ograniczeń — ograniczone przez maksymalny rozmiar wystąpienia: magazynu |
 
 **Informacje o**:
+
 - Zarówno danych i dziennika rozmiar pliku w użytkownika i systemowe bazy danych znajdują się w rozmiarze wystąpienia magazynu, która jest porównywana z maksymalny limit rozmiaru magazynu. Użyj <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> widok systemowy ustalenie Suma używane miejsce w bazach danych. Dzienniki błędów są nie jest trwały i nie są uwzględnione w rozmiarze. Kopie zapasowe nie są uwzględnione w rozmiaru magazynu.
 - Przepływność i operacje We/Wy także zależeć od rozmiaru strony, który nie jest jawnie ograniczone wystąpienia zarządzanego.
 

@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 6ebef74cee6f919fe6b8cf666db06e0ab22cec73
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 5a6f8328f6809a20b821f5b72106fa48fabf0e91
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566928"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755156"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Nawiązać połączenie z bazą danych SQL przy użyciu języka C i C++
 
@@ -40,7 +40,7 @@ Platforma Azure ma obecnie dwie opcje do obsługi obciążeń programu SQL serve
 Łączenie z usługą Azure SQL DB nie różni się i aktualnie nie istnieją dwa sposoby nawiązywania połączenia z bazami danych: ODBC (Open Database connectivity) i OLE DB (łączenie i osadzanie obiektów bazy danych). W ostatnich latach Microsoft została powiązana z [ODBC uzyskać dostęp do natywnych danych relacyjnych](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/). ODBC jest stosunkowo proste, a także znacznie szybsze niż OLE DB. W tym miejscu tylko ostrzeżenie jest ODBC starego interfejsu API w stylu języka C.
 
 ## <a id="Create"></a>Krok 1.  Tworzenie usługi Azure SQL Database
-Zobacz [stronę wprowadzenia](sql-database-get-started-portal.md) informacje na temat Tworzenie przykładowej bazy danych.  Alternatywnie, możesz skorzystać z tego [krótki film dwie minuty](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) do utworzenia usługi Azure SQL database przy użyciu witryny Azure portal.
+Zobacz [stronę wprowadzenia](sql-database-single-database-get-started.md) informacje na temat Tworzenie przykładowej bazy danych.  Alternatywnie, możesz skorzystać z tego [krótki film dwie minuty](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) do utworzenia usługi Azure SQL database przy użyciu witryny Azure portal.
 
 ## <a id="ConnectionString"></a>Krok 2.  Pobieranie parametrów połączenia
 Po zainicjowaniu obsługi usługi Azure SQL database należy wykonać następujące kroki, aby określić informacje o połączeniu i Dodaj adres IP klienta, aby uzyskać dostęp przez zaporę.

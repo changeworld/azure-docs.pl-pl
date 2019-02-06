@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: routlaw
-ms.openlocfilehash: bbbaa4c44a7c0d6da189f0c49d73adfa6142cdee
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 6e4bd5977eb1761a065d5583675e6fd405b4610a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47095795"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750362"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Pobierz kondycję zasobów przy użyciu interfejsu API REST 
 
@@ -23,7 +23,7 @@ W tym artykule przykład pokazuje, jak pobrać listę zdarzenia dotyczące kondy
 
 Pełna dokumentacja i więcej przykładów dla interfejsu API REST są dostępne w [dokumentacja usługi Azure Monitor REST](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Żądanie kompilacji
+## <a name="build-the-request"></a>Tworzenie żądania
 
 Należy użyć następującego `GET` żądania HTTP, aby wyświetlić listę zdarzenia kondycji dla Twojej subskrypcji dla zakresu czasu między `2018-05-16` i `2018-06-20`.
 
@@ -44,7 +44,7 @@ Wymagane są następujące nagłówki:
 
 | Name (Nazwa) | Opis |
 | :--- | :---------- |
-| subscriptionId | Identyfikator subskrypcji, która identyfikuje subskrypcji platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). |
+| subscriptionId | Identyfikator subskrypcji, która identyfikuje subskrypcji platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | wersja interfejsu API | Wersja interfejsu API do użycia dla żądania.<br /><br /> W tym dokumencie opisano parametru api-version `2015-04-01`zawarte w powyższym adresie URL.  |
 | $filter | Opcję filtrowania, aby zmniejszyć zestaw wyników zwrócony. Dostępne są dozwolone wzorce dla tego parametru [w odwołaniu dla operacji dzienników aktywności](/rest/api/monitor/activitylogs/list#uri-parameters). Przykład pokazany rejestruje wszystkie zdarzenia w zakresie czasu między 2018-05-16 i 2018-06-20 |
 | &nbsp; | &nbsp; |

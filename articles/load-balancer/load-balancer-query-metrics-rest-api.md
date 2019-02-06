@@ -11,12 +11,12 @@ ms.custom: REST, seodec18
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
-ms.openlocfilehash: 43de0de6fb81d50459ba5b027a8ae1718a89c9a3
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5f92ae386730032e7da278b9dd2b0effef313741
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183866"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752062"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Pobierz metryki użycia modułu równoważenia obciążenia przy użyciu interfejsu API REST
 
@@ -24,7 +24,7 @@ Niniejszy instruktaż pokazuje, jak zbierać liczbę bajtów przetworzonych prze
 
 Dokumentacja pełną dokumentację i więcej przykładów dla interfejsu API REST są dostępne w [dokumentacja usługi Azure Monitor REST](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Żądanie kompilacji
+## <a name="build-the-request"></a>Tworzenie żądania
 
 Użyj następującego żądania GET do zbierania [metryki ByteCount](/azure/load-balancer/load-balancer-standard-diagnostics#a-name--multidimensionalmetricsamulti-dimensional-metrics) z standardowego modułu równoważenia obciążenia. 
 
@@ -45,7 +45,7 @@ Wymagane są następujące nagłówki:
 
 | Name (Nazwa) | Opis |
 | :--- | :---------- |
-| subscriptionId | Identyfikator subskrypcji, która identyfikuje subskrypcji platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). |
+| subscriptionId | Identyfikator subskrypcji, która identyfikuje subskrypcji platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Nazwa grupy zasobów, która zawiera zasób. Tę wartość można uzyskać z interfejsu API usługi Azure Resource Manager, interfejsu wiersza polecenia lub portalu. |
 | loadBalancerName | Nazwa usługi Azure Load Balancer. |
 | metricnames | Rozdzielana przecinkami lista prawidłowe [metryk modułu równoważenia obciążenia](/azure/load-balancer/load-balancer-standard-diagnostics). |

@@ -1,23 +1,26 @@
 ---
-title: Jak utworzyć obiekt blob w usłudze Azure Storage przy użyciu zestawu SDK środowiska Node.js w wersji 2
+title: Jak utworzyć obiekt blob w usłudze Azure Storage przy użyciu biblioteki klienta Node.js w wersji 2
 description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Następnie użyj biblioteki klienta usługi Azure Storage dla środowiska Node.js w wersji 2 do przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: tamram
-ms.openlocfilehash: 6af1a7c1cf140ba8ff4710c0cc90559e3df55135
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734168"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750078"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu zestawu SDK środowiska Node.js w wersji 2
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu biblioteki klienta Node.js w wersji 2
 
-W tym przewodniku dowiesz się, jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą środowiska Node.js kontenerów i zarządzanie nimi za pomocą usługi Azure Blob storage.
+W tym przewodniku dowiesz się, jak używać biblioteki klienta Node.js w wersji 2 na przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą usługi Azure Blob storage.
+
+> [!TIP]
+> Najnowszą wersję biblioteki klienta usługi Azure Storage dla języka Node.js jest v10. Firma Microsoft zaleca się, że używasz najnowszej wersji biblioteki klienta, gdy jest to możliwe. Aby rozpocząć pracę, przy użyciu v10, zobacz [Szybki Start: Przekazywanie, pobieranie, listy i usuwanie obiektów blob za pomocą biblioteki klienta usługi Azure Storage dla języka JavaScript v10 (wersja zapoznawcza)](storage-quickstart-blobs-nodejs-v10.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -96,7 +99,7 @@ Poniżej przedstawiono funkcje tych modułów:
 
 plik o nazwie *env* do bieżącego kontekstu wykonywania
 - *path* — jest wymagany do określenia ścieżki bezwzględnej do pliku przekazywanego do magazynu obiektów blob
-- *azure-storage* jest modułem [zestawu SDK usługi Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage) dla środowiska Node.js
+- *usługi Azure storage* jest [biblioteki klienta usługi Azure Storage](https://docs.microsoft.com/javascript/api/azure-storage) modułu dla środowiska Node.js
 
 Następnie zmienna **blobService** jest inicjowana jako nowe wystąpienie usługi Azure Blob Service.
 
@@ -358,4 +361,4 @@ Zobacz dodatkowe zasoby używane podczas tworzenia aplikacji Node.js z magazynem
 W tym artykule przedstawiono sposób przekazywania plików między dyskiem lokalnym i usługą Azure Blob storage przy użyciu środowiska Node.js. Aby dowiedzieć się więcej na temat pracy z usługą Blob Storage, przejdź do repozytorium GitHub.
 
 > [!div class="nextstepaction"]
-> [Zestaw SDK usługi Azure Storage dla repozytorium języka JavaScript](https://github.com/Azure/azure-storage-node)
+> [Magazyn Microsoft Azure SDK dla środowiska Node.js i JavaScript dla przeglądarek](https://github.com/Azure/azure-storage-node)

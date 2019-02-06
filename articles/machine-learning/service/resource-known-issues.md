@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 706d8986eb25d2d67e3099ae5b0bfc6e55f94ad3
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b10e434aece0ac214a0fd397ea94cbeccca4e44a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507372"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746494"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
 
@@ -42,7 +42,7 @@ Obraz tworzenia niepowodzenia podczas wdrażania usługi sieci web. Obejście po
 
 ## <a name="deployment-failure"></a>Wdrożenie zakończyło się niepowodzeniem
 
-Jeśli zauważysz `'DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, zmiana jednostki SKU dla maszyn wirtualnych używanych we wdrożeniu na taki, który ma więcej pamięci.
+Jeśli zauważysz `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>`, zmiana jednostki SKU dla maszyn wirtualnych używanych we wdrożeniu na taki, który ma więcej pamięci.
 
 ## <a name="fpgas"></a>Układy FPGA
 Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają wymagane i zostało zatwierdzone dla limitu przydziału FPGA. Aby zażądać dostępu, wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai

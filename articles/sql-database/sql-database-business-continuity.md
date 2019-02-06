@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: b3b48c923b10fc201c5ac06b2dd805ee8638a18c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473429"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755173"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -107,7 +107,7 @@ Omówienie kroków, aby odzyskać za pomocą kopii zapasowych bazy danych lub ak
 
 Niezależnie od używanej funkcji zapewniania ciągłości działalności biznesowej należy:
 
-- Zidentyfikować i przygotować serwer docelowy, w tym reguły zapory na poziomie serwera, dane logowania i uprawnienia na poziomie głównej bazy danych.
+- Zidentyfikować i przygotować serwer docelowy, w tym reguły zapory IP poziom serwera, logowania i uprawnienia na poziomie bazy danych master.
 - Określić sposób przekierowania klientów i aplikacji klienckich na nowy serwer.
 - Udokumentować inne zależności, takie jak ustawienia inspekcji i alerty
 
@@ -132,7 +132,7 @@ Korzystając z automatycznych kopii zapasowych z magazynu geograficznie nadmiaro
 Po odzyskaniu za pomocą dowolnego mechanizmu odzyskiwania należy wykonać następujące zadania dodatkowe, zanim będzie możliwe ponowne rozpoczęcie pracy przez użytkowników i aplikacje:
 
 - Przekieruj klientów i aplikacje klienckie na nowy serwer i przywróconą bazę danych
-- Zapewnij użycie odpowiednich reguł zapory na poziomie serwera na potrzeby nawiązywania połączenia przez użytkowników (lub użyj [zapór na poziomie bazy danych](sql-database-firewall-configure.md#creating-and-managing-firewall-rules))
+- Upewnij się, odpowiednie reguły zapory IP w poziomie serwera są stosowane dla użytkowników połączyć lub użyj [zapór na poziomie bazy danych](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal) włączyć odpowiednie zasady.
 - Zapewnij użycie odpowiednich danych logowania i uprawnień na poziomie głównej bazy danych (lub użyj [użytkowników, którzy się w niej znajdują](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - W razie potrzeby skonfiguruj inspekcję
 - W razie potrzeby skonfiguruj alerty

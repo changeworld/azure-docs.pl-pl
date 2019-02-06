@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: fabb44f9369dd7b7050ae353ab94263f140aae48
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
+ms.openlocfilehash: f2636720f6f1faeffb9a63052efdf009668d806f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51346409"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752079"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu plików platformy Azure dla usługi sieci szkieletowej (wersja zapoznawcza)
 Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker jest spakowany jako aplikacji usługi Service Fabric, który może być wdrożony w klastrach usługi Service Fabric. Jego celem jest zapewnienie usługi Azure Files na podstawie woluminów dla innych aplikacji kontenera usługi Service Fabric, które zostały wdrożone w klastrze.
@@ -185,7 +185,7 @@ Jak pokazano na **DriverOption** elementy we fragmencie kodu powyżej, wtyczka w
     ```
 
 ## <a name="using-your-own-volume-or-logging-driver"></a>Korzystając z własnych woluminu lub rejestrowanie sterownika
-Usługa Service Fabric umożliwia także użycie własnego niestandardowego [woluminu](https://docs.docker.com/engine/extend/plugins_volume/) lub [rejestrowania](https://docs.docker.com/engine/admin/logging/overview/) sterowników. Jeśli nie zainstalowano sterownika wolumin/rejestrowania platformy Docker w klastrze, można zainstalować go ręcznie przy użyciu protokołów RDP/SSH. Można przeprowadzić instalację za pomocą tych protokołów za pośrednictwem [skrypt uruchamiania zestawu skalowania maszyn wirtualnych](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) lub [skryptu SetupEntryPoint](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model#describe-a-service).
+Usługa Service Fabric umożliwia także użycie własnego niestandardowego [woluminu](https://docs.docker.com/engine/extend/plugins_volume/) lub [rejestrowania](https://docs.docker.com/engine/admin/logging/overview/) sterowników. Jeśli nie zainstalowano sterownika wolumin/rejestrowania platformy Docker w klastrze, można zainstalować go ręcznie przy użyciu protokołów RDP/SSH. Można przeprowadzić instalację za pomocą tych protokołów za pośrednictwem [skrypt uruchamiania zestawu skalowania maszyn wirtualnych](https://azure.microsoft.com/resources/templates/201-vmss-custom-script-windows/) lub [skryptu SetupEntryPoint](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-model).
 
 Przykładowy skrypt w celu zainstalowania [sterownik woluminu platformy Docker na platformie Azure](https://docs.docker.com/docker-for-azure/persistent-data-volumes/) jest następująca:
 

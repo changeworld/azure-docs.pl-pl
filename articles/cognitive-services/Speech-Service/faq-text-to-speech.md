@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 2252dc9d1cb4a8b5666e3f8078528206ac0fddf7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9b8340221c61bedbe010b9ef280ada62cfee7a21
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228257"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754878"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Zamiana tekstu na mowę — często zadawane pytania
 
@@ -29,7 +29,7 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYT
 
 **Pyt.: Gdzie rozpocząć, jeśli chcę korzystać z modelu standardowego głosu?**
 
-**A**: Za pomocą żądań HTTP, dostępnych jest więcej niż 80 modeli standardowego głosu w ponad 45 językach. Najpierw pobierz [klucz subskrypcji](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Aby wprowadzić wywołania REST do modeli głosowych predeployed, zobacz [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+**A**: Za pomocą żądań HTTP, dostępnych jest więcej niż 80 modeli standardowego głosu w ponad 45 językach. Najpierw pobierz [klucz subskrypcji](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Aby wprowadzić wywołania REST do modeli głosowych predeployed, zobacz [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 **Pyt.: Aby użyć dostosowany model głosowy, jest interfejs API taka sama jak ta, która jest używana do standardowego głosów?**
 

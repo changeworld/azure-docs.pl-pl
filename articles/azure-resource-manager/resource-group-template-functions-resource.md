@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5b4eaa6080f3ff238ffeb26e442c5d694c38c0c1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 61225a63b1f26012325ea97ac9f812e06a0dbc33
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496333"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756686"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Funkcje zasobów dla szablonów usługi Azure Resource Manager
 
@@ -140,7 +140,7 @@ Możliwości wykorzystania listy * są wyświetlane w poniższej tabeli.
 
 Aby ustalić, typów zasobów, które mają operacja listy, dostępne są następujące opcje:
 
-* Widok [operacji interfejsu API REST](/rest/api/) dla dostawcy zasobów i wygląd na potrzeby operacji listy. Na przykład konta magazynu mają [operacji listKeys](/rest/api/storagerp/storageaccounts#StorageAccounts_ListKeys).
+* Widok [operacji interfejsu API REST](/rest/api/) dla dostawcy zasobów i wygląd na potrzeby operacji listy. Na przykład konta magazynu mają [operacji listKeys](/rest/api/storagerp/storageaccounts).
 * Użyj [Get AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) polecenia cmdlet programu PowerShell. Poniższy przykład pobiera wszystkie operacje dotyczące list dla kont magazynu:
 
   ```powershell

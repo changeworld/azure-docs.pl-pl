@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 87fcfd98065bcf1f0fea3a06029853f69d67842d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663812"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751501"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi sieci wirtualnej przy użyciu wiersza polecenia platformy Azure
 
@@ -51,7 +51,7 @@ az group create \
   --location eastus
 ```
 
-Utwórz sieć wirtualną z jedną podsiecią z [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create).
+Utwórz sieć wirtualną z jedną podsiecią z [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet).
 
 ```azurecli-interactive
 az network vnet create \
@@ -64,7 +64,7 @@ az network vnet create \
 
 ## <a name="enable-a-service-endpoint"></a>Włączanie punktu końcowego usługi 
 
-Można włączyć punkty końcowe usługi tylko w przypadku usług, które obsługują punkty końcowe usługi. Wyświetlanie usług korzystających z punktu końcowego usługi dostępne w lokalizacji platformy Azure za pomocą [az sieci vnet w listy usług punktu końcowego](/cli/azure/network/vnet#az_network_vnet_list_endpoint_services). Poniższy przykład zwraca listę usług włączony punkt końcowy usługi dostępne w *eastus* regionu. Na liście usług, zwracana będzie rosnąć wraz z upływem czasu, zgodnie z innymi usługami platformy Azure stają się włączonego punktu końcowego usługi.
+Można włączyć punkty końcowe usługi tylko w przypadku usług, które obsługują punkty końcowe usługi. Wyświetlanie usług korzystających z punktu końcowego usługi dostępne w lokalizacji platformy Azure za pomocą [az sieci vnet w listy usług punktu końcowego](/cli/azure/network/vnet). Poniższy przykład zwraca listę usług włączony punkt końcowy usługi dostępne w *eastus* regionu. Na liście usług, zwracana będzie rosnąć wraz z upływem czasu, zgodnie z innymi usługami platformy Azure stają się włączonego punktu końcowego usługi.
 
 ```azurecli-interactive
 az network vnet list-endpoint-services \
@@ -103,7 +103,7 @@ az network vnet subnet update \
   --network-security-group myNsgPrivate
 ```
 
-Tworzenie reguły zabezpieczeń o [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Reguła, która następuje po umożliwia dostęp ruchu wychodzącego do publicznych adresów IP przypisanych do usługi Azure Storage: 
+Tworzenie reguły zabezpieczeń o [Tworzenie reguły sieciowej grupy zabezpieczeń sieci az](/cli/azure/network/nsg/rule). Reguła, która następuje po umożliwia dostęp ruchu wychodzącego do publicznych adresów IP przypisanych do usługi Azure Storage: 
 
 ```azurecli-interactive
 az network nsg rule create \
@@ -168,7 +168,7 @@ az storage account create \
   --kind StorageV2
 ```
 
-Po utworzeniu konta magazynu, należy pobrać parametry połączenia dla konta magazynu w zmiennej o [az storage account show-connection-string](/cli/azure/storage/account#az_storage_account_show_connection_string). Ciąg połączenia jest używany do utworzenia udziału plików w późniejszym kroku.
+Po utworzeniu konta magazynu, należy pobrać parametry połączenia dla konta magazynu w zmiennej o [az storage account show-connection-string](/cli/azure/storage/account). Ciąg połączenia jest używany do utworzenia udziału plików w późniejszym kroku.
 
 ```azurecli-interactive
 saConnectionString=$(az storage account show-connection-string \
@@ -223,7 +223,7 @@ Aby przetestować dostęp sieciowy do konta magazynu, należy wdrożyć maszynę
 
 ### <a name="create-the-first-virtual-machine"></a>Tworzenie pierwszej maszyny wirtualnej
 
-Utwórz Maszynę wirtualną w *publicznych* podsieć o [tworzenie az vm](/cli/azure/vm#az_vm_create). Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.
+Utwórz Maszynę wirtualną w *publicznych* podsieć o [tworzenie az vm](/cli/azure/vm). Jeśli klucze SSH nie istnieją jeszcze w domyślnej lokalizacji kluczy, to polecenie je utworzy. Aby użyć określonego zestawu kluczy, użyj opcji `--ssh-key-value`.
 
 ```azurecli-interactive
 az vm create \

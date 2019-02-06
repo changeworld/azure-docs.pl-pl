@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/04/2019
-ms.openlocfilehash: 3f0d0b5be2f0c8fc64e02165ff3e2ecacb7e0c04
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 54890aef8dabfa019a5181c155b6668b1c07cf2c
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566981"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755938"
 ---
 # <a name="elastic-database-client-library-with-entity-framework"></a>Biblioteka kliencka elastic Database przy użyciu platformy Entity Framework
 
@@ -87,36 +87,38 @@ Aby zintegrować **DbContexts** zależne od danych routingu dla skalowalnego w p
 
 Poniższy przykład kodu ilustruje takie podejście. (Ten kod jest również w towarzyszącej projektu programu Visual Studio)
 
-    public class ElasticScaleContext<T> : DbContext
+```csharp
+public class ElasticScaleContext<T> : DbContext
+{
+public DbSet<Blog> Blogs { get; set; }
+...
+
+    // C'tor for data-dependent routing. This call opens a validated connection 
+    // routed to the proper shard by the shard map manager. 
+    // Note that the base class c'tor call fails for an open connection
+    // if migrations need to be done and SQL credentials are used. This is the reason for the 
+    // separation of c'tors into the data-dependent routing case (this c'tor) and the internal c'tor for new shards.
+    public ElasticScaleContext(ShardMap shardMap, T shardingKey, string connectionStr)
+        : base(CreateDDRConnection(shardMap, shardingKey, connectionStr), 
+        true /* contextOwnsConnection */)
     {
-    public DbSet<Blog> Blogs { get; set; }
-    …
+    }
 
-        // C'tor for data-dependent routing. This call opens a validated connection 
-        // routed to the proper shard by the shard map manager. 
-        // Note that the base class c'tor call fails for an open connection
-        // if migrations need to be done and SQL credentials are used. This is the reason for the 
-        // separation of c'tors into the data-dependent routing case (this c'tor) and the internal c'tor for new shards.
-        public ElasticScaleContext(ShardMap shardMap, T shardingKey, string connectionStr)
-            : base(CreateDDRConnection(shardMap, shardingKey, connectionStr), 
-            true /* contextOwnsConnection */)
-        {
-        }
+    // Only static methods are allowed in calls into base class c'tors.
+    private static DbConnection CreateDDRConnection(
+    ShardMap shardMap, 
+    T shardingKey, 
+    string connectionStr)
+    {
+        // No initialization
+        Database.SetInitializer<ElasticScaleContext<T>>(null);
 
-        // Only static methods are allowed in calls into base class c'tors.
-        private static DbConnection CreateDDRConnection(
-        ShardMap shardMap, 
-        T shardingKey, 
-        string connectionStr)
-        {
-            // No initialization
-            Database.SetInitializer<ElasticScaleContext<T>>(null);
-
-            // Ask shard map to broker a validated connection for the given key
-            SqlConnection conn = shardMap.OpenConnectionForKey<T>
-                                (shardingKey, connectionStr, ConnectionOptions.Validate);
-            return conn;
-        }    
+        // Ask shard map to broker a validated connection for the given key
+        SqlConnection conn = shardMap.OpenConnectionForKey<T>
+                            (shardingKey, connectionStr, ConnectionOptions.Validate);
+        return conn;
+    }
+```
 
 ## <a name="main-points"></a>Główne punkty
 
@@ -134,26 +136,28 @@ Poniższy przykład kodu ilustruje takie podejście. (Ten kod jest również w t
 
 Użyj nowego konstruktora dla Twojego podklasą typu DbContext zamiast domyślnego konstruktora w kodzie. Oto przykład: 
 
-    // Create and save a new blog.
+```csharp
+// Create and save a new blog.
 
-    Console.Write("Enter a name for a new blog: "); 
-    var name = Console.ReadLine(); 
+Console.Write("Enter a name for a new blog: "); 
+var name = Console.ReadLine(); 
 
-    using (var db = new ElasticScaleContext<int>( 
-                            sharding.ShardMap,  
-                            tenantId1,  
-                            connStrBldr.ConnectionString)) 
-    { 
-        var blog = new Blog { Name = name }; 
-        db.Blogs.Add(blog); 
-        db.SaveChanges(); 
+using (var db = new ElasticScaleContext<int>( 
+                        sharding.ShardMap,  
+                        tenantId1,  
+                        connStrBldr.ConnectionString)) 
+{ 
+    var blog = new Blog { Name = name }; 
+    db.Blogs.Add(blog); 
+    db.SaveChanges(); 
 
-        // Display all Blogs for tenant 1 
-        var query = from b in db.Blogs 
-                    orderby b.Name 
-                    select b; 
-     … 
-    }
+    // Display all Blogs for tenant 1 
+    var query = from b in db.Blogs 
+                orderby b.Name 
+                select b; 
+    … 
+}
+```
 
 Nowy Konstruktor otwiera połączenie fragmentów, która przechowuje dane dla podfragmentu identyfikowane przez wartość **tenantid1**. Kod w **przy użyciu** bloku pozostaje bez zmian, aby uzyskać dostęp do **DbSet** dla blogów przy użyciu programu EF na fragmentu dla **tenantid1**. Spowoduje to zmianę semantyki dla kodu za pomocą zablokować takie, że wszystkie operacje bazy danych teraz są ograniczone do jednego fragmentu gdzie **tenantid1** są przechowywane. Na przykład zapytanie LINQ na blogach **DbSet** zwróci tylko blogi przechowywanych w bieżącym fragmencie, ale nie te, przechowywane w innych fragmentach.  
 
@@ -163,19 +167,21 @@ Opublikowane przez zespół Microsoft Patterns i praktyki [przejściowych błęd
 
 Poniższy przykład kodu ilustruje, jak można używać dla zasad ponawiania SQL wokół nowy **DbContext** konstruktory podklasy: 
 
-    SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
-    { 
-        using (var db = new ElasticScaleContext<int>( 
-                                sharding.ShardMap,  
-                                tenantId1,  
-                                connStrBldr.ConnectionString)) 
-            { 
-                    var blog = new Blog { Name = name }; 
-                    db.Blogs.Add(blog); 
-                    db.SaveChanges(); 
-            … 
-            } 
-        }); 
+```csharp
+SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
+{ 
+    using (var db = new ElasticScaleContext<int>( 
+                            sharding.ShardMap,  
+                            tenantId1,  
+                            connStrBldr.ConnectionString)) 
+        { 
+                var blog = new Blog { Name = name }; 
+                db.Blogs.Add(blog); 
+                db.SaveChanges(); 
+        … 
+        } 
+    }); 
+```
 
 **SqlDatabaseUtils.SqlRetryPolicy** w powyższym kodzie jest zdefiniowany jako **SqlDatabaseTransientErrorDetectionStrategy** z liczbą ponowień równą 10 i 5 sekund czas między ponownymi próbami oczekiwania. Ta metoda jest podobna do wskazówek dotyczących EF i transakcje zainicjowanego przez użytkownika (zobacz [ograniczenia dotyczące ponawiania strategii wykonywania (od wersji EF6)](https://msdn.microsoft.com/data/dn307226). Zarówno sytuacje wymagają, że program aplikacji określa zakres, do którego funkcja zwraca wyjątek przejściowy: Aby ponownie otworzyć transakcji albo (jak pokazano) ponownie utwórz kontekst od prawidłowego konstruktora, który używa Biblioteka kliencka elastic database.
 
@@ -209,51 +215,54 @@ Prowadzi to do podejście gdzie wdrażania schematu za pomocą migracji EF jest 
 
 Te warunki wstępne są spełnione, można utworzyć wyrażenie otwartych niezaznaczone **SqlConnection** Konferencję migracji EF dla wdrażania schematu. To podejście pokazano w następującym przykładzie kodu. 
 
-        // Enter a new shard - i.e. an empty database - to the shard map, allocate a first tenant to it  
-        // and kick off EF intialization of the database to deploy schema 
+```csharp
+// Enter a new shard - i.e. an empty database - to the shard map, allocate a first tenant to it  
+// and kick off EF initialization of the database to deploy schema 
 
-        public void RegisterNewShard(string server, string database, string connStr, int key) 
-        { 
+public void RegisterNewShard(string server, string database, string connStr, int key) 
+{ 
 
-            Shard shard = this.ShardMap.CreateShard(new ShardLocation(server, database)); 
+    Shard shard = this.ShardMap.CreateShard(new ShardLocation(server, database)); 
 
-            SqlConnectionStringBuilder connStrBldr = new SqlConnectionStringBuilder(connStr); 
-            connStrBldr.DataSource = server; 
-            connStrBldr.InitialCatalog = database; 
+    SqlConnectionStringBuilder connStrBldr = new SqlConnectionStringBuilder(connStr); 
+    connStrBldr.DataSource = server; 
+    connStrBldr.InitialCatalog = database; 
 
-            // Go into a DbContext to trigger migrations and schema deployment for the new shard. 
-            // This requires an un-opened connection. 
-            using (var db = new ElasticScaleContext<int>(connStrBldr.ConnectionString)) 
-            { 
-                // Run a query to engage EF migrations 
-                (from b in db.Blogs 
-                    select b).Count(); 
-            } 
+    // Go into a DbContext to trigger migrations and schema deployment for the new shard. 
+    // This requires an un-opened connection. 
+    using (var db = new ElasticScaleContext<int>(connStrBldr.ConnectionString)) 
+    { 
+        // Run a query to engage EF migrations 
+        (from b in db.Blogs 
+            select b).Count(); 
+    } 
 
-            // Register the mapping of the tenant to the shard in the shard map. 
-            // After this step, data-dependent routing on the shard map can be used 
+    // Register the mapping of the tenant to the shard in the shard map. 
+    // After this step, data-dependent routing on the shard map can be used 
 
-            this.ShardMap.CreatePointMapping(key, shard); 
-        } 
-
+    this.ShardMap.CreatePointMapping(key, shard); 
+} 
+```
 
 W tym przykładzie pokazano metodę **RegisterNewShard** , rejestruje fragmentu w ramach mapowania fragmentów, wdraża schematu za pomocą migracje EF i przechowuje mapowanie klucz fragmentowania tak do fragmentu. Opiera się na Konstruktor obiektu **DbContext** podklasy (**ElasticScaleContext** w przykładzie), pobiera parametry połączenia SQL jako dane wejściowe. Kod ten konstruktor jest proste, jak w poniższym przykładzie pokazano: 
 
-        // C'tor to deploy schema and migrations to a new shard 
-        protected internal ElasticScaleContext(string connectionString) 
-            : base(SetInitializerForConnection(connectionString)) 
-        { 
-        } 
+```csharp
+// C'tor to deploy schema and migrations to a new shard 
+protected internal ElasticScaleContext(string connectionString) 
+    : base(SetInitializerForConnection(connectionString)) 
+{ 
+} 
 
-        // Only static methods are allowed in calls into base class c'tors 
-        private static string SetInitializerForConnection(string connectionString) 
-        { 
-            // You want existence checks so that the schema can get deployed 
-            Database.SetInitializer<ElasticScaleContext<T>>( 
-        new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
+// Only static methods are allowed in calls into base class c'tors 
+private static string SetInitializerForConnection(string connectionString) 
+{ 
+    // You want existence checks so that the schema can get deployed 
+    Database.SetInitializer<ElasticScaleContext<T>>( 
+new CreateDatabaseIfNotExists<ElasticScaleContext<T>>()); 
 
-            return connectionString; 
-        } 
+    return connectionString; 
+} 
+```
 
 Jedna może być używana wersja konstruktora dziedziczone z klasy podstawowej. Jednak kod wymaga upewnić się, że domyślny inicjator dla platformy EF jest używany podczas nawiązywania połączenia. Dlatego krótkim przekierować do metody statycznej przed wywołaniem do konstruktora klasy bazowej, przy użyciu parametrów połączenia. Należy pamiętać, że rejestracja fragmentów powinny być uruchamiane w domenie innej aplikacji lub proces, aby upewnić się, że ustawienia inicjatora EF nie wchodzą w konflikt. 
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/12/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 34a695daa077e882e911d3fb59f8a30e39c3a9d2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432969"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756635"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Przekazuj strumienie zadania i stan zadania z usługi Automation do usługi Log Analytics
 
@@ -64,11 +64,12 @@ Jeśli chcesz znaleźć *nazwa* konta usługi Automation w witrynie Azure portal
    Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
    ```
 
-Po uruchomieniu tego skryptu, zostanie wyświetlony rekordów w usłudze Log Analytics w ciągu 10 minut nowe JobLogs lub JobStreams zapisywana.
+Po uruchomieniu tego skryptu, może potrwać godzinę rozpoczęcia rekordy usługi Log Analytics w nowy JobLogs lub JobStreams zapisywana.
 
 Aby wyświetlić dzienniki, uruchom następujące zapytanie w przeszukiwania dzienników usługi Log Analytics: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Zweryfikuj konfigurację
+
 Aby upewnić się, że konto usługi Automation wysyła dzienniki do obszaru roboczego usługi Log Analytics, sprawdź, czy diagnostyki są poprawnie skonfigurowane na koncie usługi Automation przy użyciu następujące polecenie programu PowerShell:
 
 ```powershell-interactive
@@ -76,14 +77,16 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 W danych wyjściowych upewnij się, że:
-+ W obszarze *dzienniki*, wartość *włączone* jest *True*.
-+ Wartość *WorkspaceId* jest ustawiona na identyfikator zasobu obszaru roboczego usługi Log Analytics.
+
+* W obszarze *dzienniki*, wartość *włączone* jest *True*.
+* Wartość *WorkspaceId* jest ustawiona na identyfikator zasobu obszaru roboczego usługi Log Analytics.
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
 
 Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w usłudze Log Analytics i są oznaczone jako **AzureDiagnostics**. Następujące zapytania używać języka kwerend uaktualnione do usługi Log Analytics. Informacji na temat typowych zapytań między starsze zapytanie języka i nowego języka zapytań usługi Azure Log Analytics [starszych do nowego języka zapytań usługi Azure Log Analytics — ściągawka](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language)
 
 ### <a name="job-logs"></a>Dzienniki zadań
+
 | Właściwość | Opis |
 | --- | --- |
 | TimeGenerated |Data i godzina dla wykonania zadania elementu Runbook. |
@@ -128,6 +131,7 @@ Diagnostyka usługi Azure Automation tworzy dwa typy rekordów w usłudze Log An
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>Wyświetlanie automatyzacji dzienników w usłudze Log Analytics
+
 Teraz, gdy rozpoczęto wysyłanie dzienników zadań usługi Automation do usługi Log Analytics, zobaczmy, co można zrobić za pomocą tych dzienników w usłudze Log Analytics.
 
 Aby wyświetlić dzienniki, uruchom następujące zapytanie: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
@@ -141,7 +145,7 @@ Aby utworzyć regułę alertu, należy rozpocząć od tworzenia przeszukiwania d
 2. Utwórz zapytanie wyszukiwania w dzienniku alertu, wpisując następujące wyszukiwanie w polu zapytania: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`  Można także grupować według RunbookName przy użyciu: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Jeśli skonfigurowano dzienników z więcej niż jednego konta usługi Automation lub subskrypcji do swojego obszaru roboczego, można grupować alerty według subskrypcji i konto usługi Automation. Nazwa konta usługi Automation można znaleźć w polu zasobu w wyszukiwaniu JobLogs.
-1. Aby otworzyć **Utwórz regułę** ekranu, kliknij przycisk **+ Nowa reguła alertu** w górnej części strony. Aby uzyskać więcej informacji na temat opcji, aby skonfigurować alert, zobacz [alerty dzienników w usłudze Azure](../azure-monitor/platform/alerts-unified-log.md).
+3. Aby otworzyć **Utwórz regułę** ekranu, kliknij przycisk **+ Nowa reguła alertu** w górnej części strony. Aby uzyskać więcej informacji na temat opcji, aby skonfigurować alert, zobacz [alerty dzienników w usłudze Azure](../azure-monitor/platform/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Znajdź wszystkie zadania, które zostały wykonane z błędami
 Oprócz alertów na błędy, można znaleźć, gdy zadanie elementu runbook ma błąd niepowodujący. W takich przypadkach programu PowerShell tworzy strumień błędów, ale błędy niepowodujące nie powodują zadania wstrzymać lub zakończyć się niepowodzeniem.    

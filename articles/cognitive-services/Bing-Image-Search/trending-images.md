@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 7d79e81f8670492d025727ed76d7d529dbd4719d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 177a9cbf9235bb3d2deb0d5f8e4e31a0e1472b48
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188324"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756482"
 ---
 # <a name="get-trending-images-from-the-web"></a>Pobierz popularnych obrazów z sieci web
 
@@ -90,7 +90,7 @@ Odpowiedź zawiera [TrendingImages](https://docs.microsoft.com/rest/api/cognitiv
 
 Każdy Kafelek zawiera obraz i opcje uzyskania powiązane obrazów. Aby uzyskać powiązane obrazów, można użyć zapytania `text` do wywołania [interfejsu API wyszukiwania obrazów](./search-the-web.md) i obrazy będą wyświetlane powiązane samodzielnie. Alternatywnie można użyć adresu URL w `webSearchUrl` do wykonania użytkownika do strony wyników wyszukiwania obrazów Bing, który zawiera powiązane obrazów.
 
-Ustaw wywołanie interfejsu API wyszukiwania obrazów, aby uzyskać powiązane obrazy [identyfikator](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) parametr do Identyfikatora w zapytania `id` pola. Określając identyfikator zapewnia, że odpowiedź zawiera obraz (jest to pierwszy obraz w odpowiedzi) i jego obrazy powiązane. Ponadto należy ustawić [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#q) parametr w tekście zapytania `query` obiektu `text` pola.
+Ustaw wywołanie interfejsu API wyszukiwania obrazów, aby uzyskać powiązane obrazy [identyfikator](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#id) parametr do Identyfikatora w zapytania `id` pola. Określając identyfikator zapewnia, że odpowiedź zawiera obraz (jest to pierwszy obraz w odpowiedzi) i jego obrazy powiązane. Ponadto należy ustawić [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) parametr w tekście zapytania `query` obiektu `text` pola.
 
 Poniższy przykład pokazuje, jak korzystać identyfikator obrazu odwzorowań Pan Kowalski w poprzedniej odpowiedzi na popularności API obrazów.
 

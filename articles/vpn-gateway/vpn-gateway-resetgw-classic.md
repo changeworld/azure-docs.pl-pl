@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: cherylmc
-ms.openlocfilehash: 72e990516ce6ae3276c6db6f12d1a5dda4d0386f
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 8db17b92208bd956bd5f9b855249f03ecd5e2c59
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509443"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756703"
 ---
 # <a name="reset-a-vpn-gateway"></a>Resetowanie bramy VPN Gateway
 
@@ -94,7 +94,7 @@ StatusCode     : OK
 
 ## <a name="cli"></a>Interfejs wiersza polecenia platformy Azure
 
-Aby zresetować bramę, użyj [resetowania bramy sieci wirtualnej az sieci](https://docs.microsoft.com/cli/azure/network/vnet-gateway#az_network_vnet_gateway_reset) polecenia. Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet5GW w grupie zasobów TestRG5:
+Aby zresetować bramę, użyj [resetowania bramy sieci wirtualnej az sieci](https://docs.microsoft.com/cli/azure/network/vnet-gateway) polecenia. Poniższy przykład powoduje zresetowanie bramy sieci wirtualnej o nazwie VNet5GW w grupie zasobów TestRG5:
 
 ```azurecli
 az network vnet-gateway reset -n VNet5GW -g TestRG5

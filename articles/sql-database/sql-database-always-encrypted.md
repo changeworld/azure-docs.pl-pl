@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviwer: ''
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: de8bb0adf45a7cdaf9cc0d9a451af203e01e87da
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a54fa92e248cb75be315327f7389e62904c7c777
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564882"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754879"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-the-windows-certificate-store"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w magazynie certyfikatów Windows
 
@@ -47,7 +47,7 @@ W tym samouczku będą potrzebne:
 ## <a name="create-a-blank-sql-database"></a>Tworzenie pustej bazy danych SQL
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Kliknij przycisk **Utwórz zasób** > **dane + magazyn** > **bazy danych SQL**.
-3. Tworzenie **puste** bazy danych o nazwie **kliniki** na nowy lub istniejący serwer. Aby uzyskać szczegółowe instrukcje dotyczące tworzenia bazy danych w witrynie Azure portal, zobacz [pierwszej bazy danych Azure SQL](sql-database-get-started-portal.md).
+3. Tworzenie **puste** bazy danych o nazwie **kliniki** na nowy lub istniejący serwer. Aby uzyskać szczegółowe instrukcje dotyczące tworzenia bazy danych w witrynie Azure portal, zobacz [pierwszej bazy danych Azure SQL](sql-database-single-database-get-started.md).
    
     ![Tworzenie pustej bazy danych](./media/sql-database-always-encrypted/create-database.png)
 

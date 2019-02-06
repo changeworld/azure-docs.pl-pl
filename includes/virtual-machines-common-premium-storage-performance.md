@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: b98261601f352668fa3cc8d18dc3b1d0d7fe2654
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53553445"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55757537"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -85,7 +85,7 @@ Następnie zmierz wymagania maksymalną wydajność aplikacji w taki sposób, w 
 
 ### <a name="application-performance-requirements-checklist"></a>Lista kontrolna wymagania dotyczące wydajności aplikacji
 
-| **Wymagania dotyczące wydajności** | **50. percentyl** | **90. percentyl** | **99. percentylu** |
+| **Wymagania dotyczące wydajności** | **50. percentyl** | **90 Percentile** | **99  Percentile** |
 | --- | --- | --- | --- |
 | Maksymalnie z Transakcje na sekundę | | | |
 | Operacje odczytu w % | | | |
@@ -122,8 +122,8 @@ Liczniki Monitora wydajności są dostępne dla procesora, pamięci, a każdy dy
 | **Dysk odczyty i zapisy** |% operacji odczytu i zapisu operacji wykonywanych na dysku. |Czas odczytu dysku % <br> Czas zapisu na dysku % |r/s <br> w/s |
 | **Przepływność** |Ilość danych odczytu lub zapisu na dysku na sekundę. |Bajty odczytu z dysku/s <br> Bajty zapisu na dysku/s |kB_read/s <br> kB_wrtn/s |
 | **Opóźnienie** |Łączny czas wymagany do wykonania żądania We/Wy dysku. |Średnia dysku w s/Odczyt <br> Średnia dysku w s/Zapis |Operator await <br> svctm |
-| **Rozmiar we/wy** |Rozmiar operacji We/Wy żądań problemy, aby dyski magazynu. |Bajty odczytu dysku <br> Bajty zapisu dysku |avgrq sz |
-| **Głębokość kolejki** |Liczba oczekujących operacji We/Wy żądań oczekiwania, które można odczytać lub zapisywane na dysku magazynu. |Bieżąca długość kolejki dysku |avgqu sz |
+| **Rozmiar we/wy** |Rozmiar operacji We/Wy żądań problemy, aby dyski magazynu. |Bajty odczytu dysku <br> Bajty zapisu dysku |avgrq-sz |
+| **Queue Depth** |Liczba oczekujących operacji We/Wy żądań oczekiwania, które można odczytać lub zapisywane na dysku magazynu. |Bieżąca długość kolejki dysku |avgqu sz |
 | **Maksymalna liczba. Pamięć** |Ilość pamięci wymaganej do uruchomienia aplikacji sprawnie |% Przydzielonych bajtów w użyciu |Użyj vmstat |
 | **Maksymalna liczba. PROCESOR CPU** |Kwota wymagana do uruchamiania aplikacji sprawnie procesora CPU |Czas procesora (%) |% util |
 
@@ -141,7 +141,7 @@ W poniższej tabeli podsumowano czynnikami wydajnościowymi i kroki niezbędne d
 
 Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych i operacje We/Wy, przepływności i opóźnień dostępne dla każdego typu maszyny Wirtualnej, zobacz [rozmiarów maszyn wirtualnych systemu Linux](../articles/virtual-machines/linux/sizes.md) lub [rozmiarów maszyn wirtualnych Windows](../articles/virtual-machines/windows/sizes.md).
 
-| &nbsp; | **OPERACJE WE/WY** | **Przepływność** | **Opóźnienie** |
+| &nbsp; | **IOPS** | **Przepływność** | **Opóźnienie** |
 | --- | --- | --- | --- |
 | **Przykładowy scenariusz** |Aplikacja przedsiębiorstwa OLTP wymagające bardzo duże transakcje stawki za drugim. |Dane organizacji, magazynowanie aplikacji przetwarzania dużych ilości danych. |Niemal w czasie rzeczywistym aplikacje wymagające natychmiastowej odpowiedzi żądań użytkownika, takie jak gier online. |
 | Czynnikami wydajnościowymi | &nbsp; | &nbsp; | &nbsp; |
@@ -153,7 +153,7 @@ Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych i operacj
 | **Rozkładanie** |Używać wielu dysków i stripe je ze sobą, aby uzyskać połączone wyższy limit operacji We/Wy i przepływność. Należy pamiętać, że łączny limit dla maszyny Wirtualnej powinien być większy niż połączonej limitów dysków w warstwie premium dołączonych. | &nbsp; | &nbsp; |
 | **Rozmiar woluminu rozłożonego** |Mniejszy rozmiar woluminu rozłożonego dla losowych małych wzorzec operacji We/Wy w aplikacji OLTP. Np. na użytek rozmiar woluminu rozłożonego 64 KB aplikacji OLTP programu SQL Server. |Większy rozmiar woluminu rozłożonego dla sekwencyjne dużych wzorzec operacji We/Wy w aplikacji w magazynie danych. Np. użyć 256KB, rozmiar woluminu rozłożonego dla aplikacji do magazynu danych programu SQL Server. | &nbsp; |
 | **Wielowątkowość** |Użycie wielowątkowość do większej liczby żądań do usługi Premium Storage będzie prowadzić do wyższej operacje We/Wy i przepływność. Na przykład w programie SQL Server należy ustawić o wysokiej wartości MAXDOP do przydzielenia większej liczby procesorów CPU do programu SQL Server. | &nbsp; | &nbsp; |
-| **Głębokość kolejki** |Głębokość kolejki większej daje wyższe operacje We/Wy. |Głębokość kolejki większej daje większą przepływność. |Głębokość kolejki mniejszych daje mniejsze opóźnienia. |
+| **Queue Depth** |Głębokość kolejki większej daje wyższe operacje We/Wy. |Głębokość kolejki większej daje większą przepływność. |Głębokość kolejki mniejszych daje mniejsze opóźnienia. |
 
 ## <a name="nature-of-io-requests"></a>Rodzaj żądań We/Wy
 
@@ -181,7 +181,7 @@ Poniżej przedstawiono przykład obliczenie operacje We/Wy i przepływność/prz
 | Maks. IOPS |8 KB |5000 |40 MB na sekundę |
 | Maksymalna przepływność |1024 KB |200 |200 MB na sekundę |
 | Maksymalna przepływność + wysokiej operacje We/Wy |64 KB |3,200 |200 MB na sekundę |
-| Maksymalna liczba operacji We/Wy i Wysoka przepływność |32 KB. |5000 |160 MB na sekundę |
+| Maksymalna liczba operacji We/Wy i Wysoka przepływność |32 KB |5000 |160 MB na sekundę |
 
 Aby uzyskać operacje We/Wy i przepustowości jest większa niż maksymalna wartość dysku magazynu premium w jednym, należy użyć wielu dysków w warstwie premium rozłożony jednocześnie. Na przykład stripe dwa dyski P30 Pobierz połączone operacje We/Wy z 10 000 operacji We/Wy lub łączna przepływność 400 MB na sekundę. Jak wyjaśniono w następnej sekcji, należy użyć rozmiaru maszyny Wirtualnej, który obsługuje połączonych operacji We/Wy i przepływność dysku.
 
@@ -235,7 +235,7 @@ Usługa Azure Premium Storage oferuje osiem rozmiary dysków GA i trzech rozmiar
 
 | Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
 |---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16 384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
+| Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 GiB (1 TiB)    | 2048 GiB (2 TiB)    | 4095 GiB (4 TiB)    | 8192 GiB (8 TiB)    | 16,384 GiB (16 TiB)    | 32 767 giB (32 GiB)    |
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
 | Przepływność na dysk | 25 MiB na sekundę  | 50 MiB na sekundę  | MiB 100 na sekundę |125 MiB na sekundę | 150 MiB na sekundę | 200 MiB na sekundę | 250 MiB na sekundę | 250 MiB na sekundę | 480 MiB na sekundę | 750 MiB na sekundę | 750 MiB na sekundę |
 
@@ -281,7 +281,7 @@ Poniżej przedstawiono ustawienia pamięci podręcznej dysków zalecany w przypa
 | Tylko do odczytu |Konfigurowanie pamięci podręcznej hosta jako tylko do odczytu dla dysków tylko do odczytu i odczytu i zapisu. |
 | Odczyt/zapis |Konfigurowanie pamięci podręcznej hosta jako odczytu i zapisu, tylko wtedy, gdy aplikacja poprawnie obsługuje zapisywania danych w pamięci podręcznej dysków trwałych, w razie potrzeby. |
 
-*Tylko do odczytu*  
+*ReadOnly*  
 Konfigurując tylko do odczytu pamięci podręcznej danych usługi Premium Storage dysków, można osiągnąć małe opóźnienia odczytu i uzyskać bardzo duże operacje odczytu We/Wy i przepływność aplikacji. Jest to ze względu na dwóch przyczyn
 
 1. Odczyty wykonywane z pamięci podręcznej, który znajduje się w pamięci maszyny Wirtualnej i lokalny dysk SSD, jest znacznie szybsze niż operacje odczytu z dysku danych, który znajduje się w usłudze Azure blob storage.  
@@ -349,7 +349,7 @@ Zazwyczaj aplikacja może osiągnąć maksymalną przepływność z 8-16 oczekuj
 
 Na przykład w programie SQL Server, ustawienie wartości MAXDOP dla zapytania "4" informuje programu SQL Server, można użyć maksymalnie cztery rdzenie do wykonania zapytania. Program SQL Server określi, co to jest najlepszą wartością głębokość kolejki i liczby rdzeni w celu wykonywania zapytań.
 
-*Optymalnej głębokości kolejki*  
+*Optimal Queue Depth*  
 Głębokość kolejki bardzo duże również ma swoje wady. Głębokość kolejki jest zbyt wysoka, podejmie próbę dysków bardzo duże operacje We/Wy aplikacji. Jeśli aplikacja nie ma dysków trwałych, za pomocą wystarczające aprowizowane operacje We/Wy, to negatywnie wpłynąć na opóźnień działania aplikacji. Następujące formuły przedstawiono relację między operacje We/Wy, opóźnienia i głębokość kolejki.  
     ![](media/premium-storage-performance/image6.png)
 
@@ -395,7 +395,7 @@ Aby zademonstrować maksymalna liczba IOPs, należy użyć mniejszego rozmiaru �
 
 | Specyfikacja dostępu | Rozmiar żądania | % Losowe | % Odczytu |
 | --- | --- | --- | --- |
-| RandomWrites\_8 kilobajtów |8K |100 |0 |
+| RandomWrites\_8K |8K |100 |0 |
 | RandomReads\_8 kilobajtów |8K |100 |100 |
 
 *Maksymalna przepływność testu specyfikacji*  
@@ -403,7 +403,7 @@ Aby zademonstrować maksymalną przepływność, należy użyć większy rozmiar
 
 | Specyfikacja dostępu | Rozmiar żądania | % Losowe | % Odczytu |
 | --- | --- | --- | --- |
-| RandomWrites\_64 K |64K |100 |0 |
+| RandomWrites\_64K |64K |100 |0 |
 | RandomReads\_64 K |64K |100 |100 |
 
 *Uruchamianie testu Iometer*  
@@ -430,13 +430,13 @@ Po dysk pamięci podręcznej jest przygotowaniu, Kontynuuj przy użyciu scenariu
 
 | Scenariusz testów | Wolumin docelowy | Name (Nazwa) | Wynik |
 | --- | --- | --- | --- |
-| Maksymalnie z Operacje odczytu We/Wy |CacheReads |RandomWrites\_8 kilobajtów |50 000 OPERACJI WE/WY |
+| Maksymalnie z Operacje odczytu We/Wy |CacheReads |RandomWrites\_8K |50 000 OPERACJI WE/WY |
 | Maksymalnie z Operacje We/Wy zapisu |NoCacheWrites |RandomReads\_8 kilobajtów |64 000 OPERACJI WE/WY |
-| Maksymalnie z Łączna liczba IOPS |CacheReads |RandomWrites\_8 kilobajtów |100 000 OPERACJI WE/WY |
+| Maksymalnie z Łączna liczba IOPS |CacheReads |RandomWrites\_8K |100 000 OPERACJI WE/WY |
 | NoCacheWrites |RandomReads\_8 kilobajtów | &nbsp; | &nbsp; |
-| Maksymalnie z Odczyt MB/s |CacheReads |RandomWrites\_64 K |524 MB/s |
+| Maksymalnie z Odczyt MB/s |CacheReads |RandomWrites\_64K |524 MB/s |
 | Maksymalnie z Zapis MB/s |NoCacheWrites |RandomReads\_64 K |524 MB/s |
-| Połączone MB/s |CacheReads |RandomWrites\_64 K |1000 MB/s |
+| Połączone MB/s |CacheReads |RandomWrites\_64K |1000 MB/s |
 | NoCacheWrites |RandomReads\_64 K | &nbsp; | &nbsp; |
 
 Poniżej przedstawiono zrzuty ekranu przedstawiające Iometer wyniki testu dla połączonych scenariuszach operacje We/Wy i przepływność.
@@ -464,7 +464,7 @@ Będziemy używać cztery wątki robocze do obsługi operacji zapisu i cztery w�
 *Maksymalna liczba zapisu na sekundę*  
 Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną zapisu operacji We/Wy. Nadaj mu nazwę "fiowrite.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -504,7 +504,7 @@ Podczas wykonywania testu, będzie można zobaczyć liczbę zapisu na SEKUNDĘ m
 *Maksymalny odczyt operacji We/Wy*  
 Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną operacje odczytu We/Wy. Nadaj mu nazwę "fioread.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -544,7 +544,7 @@ Podczas wykonywania testu, będzie można zobaczyć liczba odczytanych na SEKUND
 *Maksymalny Odczyt i zapis operacji We/Wy*  
 Utwórz plik zadania z następujących specyfikacji, aby uzyskać maksymalną połączone odczytu i zapisu na SEKUNDĘ. Nadaj mu nazwę "fioreadwrite.ini".
 
-```
+```ini
 [global]
 size=30g
 direct=1
@@ -605,7 +605,7 @@ Aby uzyskać maksymalną połączone odczytu i zapisu przepływności, większy 
 
 Dowiedz się więcej na temat usługi Azure Premium Storage:
 
-* [Usługa Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md)  
+* [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads (Usługa Storage w wersji Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure)](../articles/virtual-machines/windows/premium-storage.md)  
 
 Dla użytkowników programu SQL Server zapoznaj się z artykułami na najlepsze rozwiązania w zakresie wydajności dla programu SQL Server:
 

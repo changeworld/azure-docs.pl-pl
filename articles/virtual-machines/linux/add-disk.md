@@ -16,16 +16,15 @@ ms.date: 06/13/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: fcd8f4f8408c7c51265802fde057146e6cdbb090
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 8457df9ba809e183122fd53de75a40108e4a4ed1
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657624"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754306"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Dodawanie dysku do maszyny wirtualnej z systemem Linux
-W tym artykule pokazano, jak dołączyć dysk trwały z maszyną wirtualną tak, aby zachować swoje dane — nawet wtedy, gdy maszyna wirtualna jest aprowizowany ponownie z powodu konserwacji lub zmienianie jej rozmiaru. 
-
+W tym artykule pokazano, jak dołączyć dysk trwały z maszyną wirtualną tak, aby zachować swoje dane — nawet wtedy, gdy maszyna wirtualna jest aprowizowany ponownie z powodu konserwacji lub zmienianie jej rozmiaru.
 
 ## <a name="attach-a-new-disk-to-a-vm"></a>Dołączyć nowy dysk do maszyny Wirtualnej
 
@@ -40,7 +39,7 @@ az vm disk attach \
    --size-gb 50
 ```
 
-## <a name="attach-an-existing-disk"></a>Dołączanie istniejącego dysku 
+## <a name="attach-an-existing-disk"></a>Dołączanie istniejącego dysku
 
 Można dołączyć istniejącego dysku, należy znaleźć identyfikator dysku i przekaż identyfikator, który ma [dołączanie dysku maszyny wirtualnej az](/cli/azure/vm/disk?view=azure-cli-latest) polecenia. Następujące przykładowe zapytania dla dysku o nazwie *myDataDisk* w *myResourceGroup*, dołącza go do maszyny Wirtualnej o nazwie *myVM*:
 
@@ -50,9 +49,9 @@ diskId=$(az disk show -g myResourceGroup -n myDataDisk --query 'id' -o tsv)
 az vm disk attach -g myResourceGroup --vm-name myVM --disk $diskId
 ```
 
-
 ## <a name="connect-to-the-linux-vm-to-mount-the-new-disk"></a>Łączenie z maszyną Wirtualną systemu Linux zainstaluj nowy dysk
-Partycjonowanie, formatowania i instalacji nowego dysku, dzięki czemu maszyny Wirtualnej systemu Linux można korzystać protokołu SSH z maszyną wirtualną. Aby uzyskać więcej informacji, zobacz temat dotyczący [korzystania z protokołu SSH systemu Linux na platformie Azure](mac-create-ssh-keys.md). Poniższy przykład nawiązuje połączenie z maszyną wirtualną za pomocą publicznego wpis DNS *mypublicdns.westus.cloudapp.azure.com* nazwy użytkownika *azureuser*: 
+
+Partycjonowanie, formatowania i instalacji nowego dysku, dzięki czemu maszyny Wirtualnej systemu Linux można korzystać protokołu SSH z maszyną wirtualną. Aby uzyskać więcej informacji, zobacz temat dotyczący [korzystania z protokołu SSH systemu Linux na platformie Azure](mac-create-ssh-keys.md). Poniższy przykład nawiązuje połączenie z maszyną wirtualną za pomocą publicznego wpis DNS *mypublicdns.westus.cloudapp.azure.com* nazwy użytkownika *azureuser*:
 
 ```bash
 ssh azureuser@mypublicdns.westus.cloudapp.azure.com
@@ -74,10 +73,10 @@ Dane wyjściowe są podobne do poniższego przykładu:
 [ 1828.162306] sd 5:0:0:0: [sdc] Attached SCSI disk
 ```
 
-W tym miejscu *sdc* to dysk, który chcemy. Określ partycję dysku za pomocą `fdisk`stał się podstawowym dysku na partycji 1 i zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `fdisk` proces */dev/sdc*:
+W tym miejscu *sdc* to dysk, który chcemy. Określ partycję dysku za pomocą `parted`, jeśli rozmiar dysku wynosi 2 tebibajtów (TiB) lub większą, należy użyć partycji GPT, jeśli jest w obszarze 2TiB, wówczas można użyć partycji MBR lub GPT. Stał się podstawowym dysku na partycji 1, a następnie zaakceptuj ustawienia domyślne. Poniższy przykład rozpoczyna się `parted` proces */dev/sdc*:
 
 ```bash
-sudo fdisk /dev/sdc
+sudo parted /dev/sdc
 ```
 
 Użyj `n` polecenie, aby dodać nową partycję. W tym przykładzie mamy też `p` dla podstawowego Podziel na partycje i zaakceptuj pozostałe wartości domyślne. Dane wyjściowe będą podobne do poniższego przykładu:
@@ -228,9 +227,10 @@ Istnieją dwa sposoby, aby umożliwić PRZYCINANIE obsługi w maszynie Wirtualne
     ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
 [!INCLUDE [virtual-machines-linux-lunzero](../../../includes/virtual-machines-linux-lunzero.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Aby upewnić się, maszyny Wirtualnej systemu Linux jest prawidłowo skonfigurowany, zapoznaj się z [zoptymalizowania wydajności systemu Linux maszyny](optimization.md) zalecenia.
 * Zwiększyć pojemność przechowywania przez dodanie dodatkowych dysków i [konfigurowanie macierzy RAID](configure-raid.md) uzyskać wyższą wydajność.
-
