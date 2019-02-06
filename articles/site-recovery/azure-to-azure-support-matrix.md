@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 3b41f975b484083dab79f16984e84018b2e830a1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 752be8270f3eb0bcc018cfcb7f87f30f5afbc60a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497302"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753099"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -58,9 +58,9 @@ Chiny | Chiny wschodnie, Chiny Północne, Chiny North2, 2 (Chiny)
 >[!NOTE]
 >
 > - Aby uzyskać **Brazylia Południowa** regionu, możesz zreplikować i trybie Failover do jednej z następujących czynności: Południowo-środkowe stany USA, zachodnio-środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2 i regionów północno-środkowe stany USA. Należy zauważyć, Usługa Site Recovery włączył tylko regionu Brazylia Południowa, ma być używany jako region źródła, z których mogą być chronione maszyny wirtualne. Jego **nie może pełnić roli regionie docelowym odzyskiwania po awarii** dla każdej z regionów platformy Azure, takich jak południowo-środkowe stany USA. Przyczyną tego jest opóźnienie obserwuje z powodu położenia geograficznego, zalecana jest wybierz region żadnych innych Ameryka niż Brazylia Południowa.
-> 
+>
 > - Jeśli jesteś **nie mogli zobaczyć region** miejscu **utworzyć magazyn** następnie upewnij się, że Twoja subskrypcja ma dostęp do tworzenia zasobów w danym regionie. Na przykład: Jeśli nie można utworzyć magazyn w Francja Południowa Twoja subskrypcja nie ma dostępu do regionu południowo-(Francja). Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "subskrypcji listy dozwolonych adresów dla XXX region platformy Azure"
-> 
+>
 > - Jeśli jesteś **nie mogli zobaczyć region** w ramach klastra geograficzne **podczas włączania replikacji** następnie upewnij się, że Twoja subskrypcja ma dostęp do utworzenia maszyny wirtualnej w danym regionie. Na przykład: Jeśli próbujesz chronić maszyny wirtualne z Francja środkowa do Francja Południowa, a nie widzisz Francja Południowa w regionie listy rozwijanej, a następnie Twoja subskrypcja nie ma dostępu, aby wdrożyć maszynę Wirtualną, w tym regionie. Wprowadź temat "inne pytania ogólne" pliku biletu pomocy technicznej w ramach typu "Zarządzanie subskrypcjami" problem i problem "subskrypcji listy dozwolonych adresów dla XXX region platformy Azure"
 > - Nie można wybrać regionów, w klastrach geograficzne wymienionych powyżej.
 
@@ -123,7 +123,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
-Debian 7 | 9.18,9.19,9.20,9.21 | 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.19,9.20,9.21,9.22 | 3.2.0-4-AMD64 do 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
 Debian 8 | 9.20, 9.21 | 3.16.0-4-AMD64 do 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.8-amd64 |
 Debian 8 | 9.19 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0-0.bpo.7-amd64 |
@@ -133,10 +133,10 @@ Debian 8 | 9.18 | 3.16.0-4-AMD64 do 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 do 4.9.0
 
 **Wydania** | **Wersja usługi mobilności** | **Wersja jądra** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.22 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.21 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.20 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.107-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.98-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.162-94.69-default |
 SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.19 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12 (SP1,SP2,SP3) | 9.18 | Z dodatkiem SP1 3.12.49-11-default do 3.12.74-60.64.40-default</br></br> 3.12.74-60.64.45-default SP1(LTSS) do 3.12.74-60.64.93-default</br></br> Z dodatkiem SP2 4.4.21-69-default do 4.4.120-92.70-default</br></br>4.4.121-92.73-default SP2(LTSS) do 4.4.121-92.80-default</br></br>Z dodatkiem SP3 4.4.73-5-default do 4.4.138-94.39-default |
 
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replikowane maszyny - magazyn systemu/gościa pliku systemu Linux

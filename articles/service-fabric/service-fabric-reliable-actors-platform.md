@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: bd3a77e1486d4af61539e55f67811221dd971b37
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 82818df267fc08bf200178fda2c8d621bdd832ca
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582347"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753167"
 ---
 # <a name="how-reliable-actors-use-the-service-fabric-platform"></a>Jak elementy Reliable Actors korzystają z platformy usługi Service Fabric
 W tym artykule wyjaśniono, jak elementy Reliable Actors działają na platformie Azure Service Fabric. Elementy Reliable Actors, uruchom w strukturę, która jest hostowana w implementacji stanowej usługi reliable service o nazwie *usługa aktora*. Usługa aktora zawiera wszystkie składniki niezbędne do zarządzania cyklem życia i wiadomości, wysyła do usługi aktorów:
@@ -99,7 +99,7 @@ Gdy używasz GUID/UUID i ciągi, wartości są przekazywane do Int64. Jednak gdy
 ## <a name="next-steps"></a>Kolejne kroki
 * [Zarządzanie stanem aktora](service-fabric-reliable-actors-state-management.md)
 * [Kolekcja aktora cykl życia i odzyskiwanie](service-fabric-reliable-actors-lifecycle.md)
-* [Dokumentacja referencyjna interfejsu API aktorów](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet#microsoft_servicefabric_actors)
+* [Dokumentacja referencyjna interfejsu API aktorów](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors?redirectedfrom=MSDN&view=azure-dotnet)
 * [Przykładowy kod .NET](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Przykładowego kodu Java](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 

@@ -10,12 +10,12 @@ ms.author: shwinne
 author: swinner95
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 409d1bb30dc956bb19e9a37212d93990d1401e7b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6d190e4c5d283b9f803cf7287445d7591b5465db
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240118"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753116"
 ---
 # <a name="use-visual-studio-code-to-train-and-deploy-machine-learning-models"></a>Użyj programu Visual Studio Code, aby uczyć i wdrażać modele uczenia maszynowego
 
@@ -108,9 +108,9 @@ Aby używać zdalnego obliczeniowego elementu docelowego podczas szkolenia, musi
 
 #### <a name="the-conda-dependencies-file"></a>Pliku zależności conda
 
-Domyślnie zostanie utworzony nowy środowiska conda i zależności instalacji są zarządzane. Jednakże, należy określić zależności w `aml_config/conda_dependencies.yml` pliku.
+Domyślnie zostanie utworzony nowy środowiska conda i zależności instalacji są zarządzane. Jednakże, należy określić zależności i ich wersji w `aml_config/conda_dependencies.yml` pliku. 
 
-Jest to fragment z domyślną aml_config/conda_dependencies.yml.
+Jest to fragment z domyślną aml_config/conda_dependencies.yml. Na przykład można określić "tensorflow = 1.12.0' jak pokazano poniżej. Jeśli nie określisz wersji zależności, najnowsza wersja będzie używany.  
 Możesz dodać dodatkowe zależności w pliku konfiguracji.
 
 ```yaml
@@ -123,7 +123,7 @@ dependencies:
   # Currently Azure Machine Learning service only supports 3.5.2 and later.
 
 - python=3.6.2
-- tensorflow
+- tensorflow=1.12.0
 
 - pip:
     # Required packages for Azure Machine Learning service execution, history, and data preparation.

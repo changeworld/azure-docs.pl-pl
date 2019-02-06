@@ -9,19 +9,19 @@ ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 2efc0b76c8556894119ed3f6dd216234414cf313
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 90e5a133bac519cbc5ab2d7b112d51a019e8f698
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732366"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751382"
 ---
 # <a name="configure-a-connection-from-an-azure-search-indexer-to-sql-server-on-an-azure-vm"></a>Konfigurowanie połączenia z indeksator usługi Azure Search do programu SQL Server na Maszynie wirtualnej platformy Azure
 Jak wspomniano w [łączenie usługi Azure SQL Database do usługi Azure Search przy użyciu indeksatorów](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md#faq), tworzenia indeksatorów względem **programu SQL Server na maszynach wirtualnych Azure** (lub **maszyn wirtualnych platformy Azure SQL** w skrócie) jest obsługiwana przez usługę Azure Search ale istnieje kilka powiązanych z zabezpieczeniami wymagania wstępne dotyczące zajmie się w pierwszej kolejności. 
 
 Połączenia z usługi Azure Search do programu SQL Server na maszynie Wirtualnej jest publicznego połączenia internetowego. Wszystkie środki ochrony, które zwykle należy wykonać w przypadku tych połączeń zgłosić się tutaj również:
 
-+ Uzyskiwanie certyfikatu z [dostawcy urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority#Providers) dla w pełni kwalifikowana nazwa domeny maszyny wirtualnej platformy Azure.
++ Uzyskiwanie certyfikatu z [dostawcy urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority#Providers) dla w pełni kwalifikowana nazwa domeny wystąpienia programu SQL Server na maszynie Wirtualnej platformy Azure.
 + Zainstaluj certyfikat na maszynie Wirtualnej, a następnie, Włącz i skonfiguruj połączeń szyfrowanych na maszynie Wirtualnej, korzystając z instrukcji w tym artykule.
 
 ## <a name="enable-encrypted-connections"></a>Włączanie połączeń szyfrowanych
@@ -29,8 +29,9 @@ Usługa Azure Search wymaga szyfrowanego kanału dla wszystkich żądań indeksa
 
 1. Sprawdź właściwości certyfikatu, aby sprawdzić, czy nazwa podmiotu jest w pełni kwalifikowana nazwa domeny (FQDN) dla maszyny Wirtualnej platformy Azure. Aby wyświetlić właściwości, można użyć narzędzia, takiego jak CertUtils lub przystawki Certyfikaty. Nazwa FQDN z sekcji podstawowe elementy bloku usługi maszyny Wirtualnej, można uzyskać w **publiczny adres IP adres/etykieta nazwy DNS** polu [witryny Azure portal](https://portal.azure.com/).
    
-   * W przypadku maszyn wirtualnych utworzonych przy użyciu nowszego **usługi Resource Manager** szablonu, nazwy FQDN jest w formacie `<your-VM-name>.<region>.cloudapp.azure.com`. 
-   * Dla starsze maszyny wirtualne utworzone jako **klasycznego** maszyny Wirtualnej, nazwy FQDN jest w formacie `<your-cloud-service-name.cloudapp.net>`. 
+   * W przypadku maszyn wirtualnych utworzonych przy użyciu nowszego **usługi Resource Manager** szablonu, nazwy FQDN jest w formacie `<your-VM-name>.<region>.cloudapp.azure.com`
+   * Dla starsze maszyny wirtualne utworzone jako **klasycznego** maszyny Wirtualnej, nazwy FQDN jest w formacie `<your-cloud-service-name.cloudapp.net>`.
+
 2. Konfigurowanie programu SQL Server do używania certyfikatu za pomocą Edytora rejestru (regedit). 
    
     Mimo że Menedżera konfiguracji SQL Server jest często używana dla tego zadania, nie można użyć go w tym scenariuszu. Go nie odnajdzie zaimportowany certyfikat, ponieważ nazwa FQDN maszyny Wirtualnej na platformie Azure nie pasuje do nazwy FQDN, zgodnie z ustaleniami maszyny Wirtualnej (identyfikuje domeny komputera lokalnego lub domeny sieciowej, do której jest dołączony). Gdy nazwy nie są zgodne, aby określić certyfikat należy użyć programu regedit.
@@ -41,9 +42,11 @@ Usługa Azure Search wymaga szyfrowanego kanału dla wszystkich żądań indeksa
    * Ustaw wartość **certyfikatu** klucza **odcisk palca** certyfikatu SSL, które zostały zaimportowane do maszyny Wirtualnej.
      
      Istnieje kilka sposobów, aby uzyskać odcisk palca, niektóre lepiej niż inne. W przypadku kopiowania z **certyfikaty** przystawkę programu MMC, należy prawdopodobnie przejmą wiodący znak niewidoczne [zgodnie z opisem w tym artykule pomocy technicznej](https://support.microsoft.com/kb/2023869/), które powoduje błąd przy próbie połączenia . Istnieje kilka obejścia dla rozwiązania tego problemu. Najprostsza jest backspace ciągu, a następnie ponownie wpisz pierwszy znak odcisku palca, aby usunąć wiodący znak w polu wartość klucza w programie regedit. Alternatywnie można użyć innego narzędzia do skopiuj odcisk palca.
+
 3. Udziel uprawnień do konta usługi. 
    
     Upewnij się, że konto usługi programu SQL Server jest uprawnienie odpowiedniego klucza prywatnego certyfikatu SSL. Jeśli ten krok jest pomijane, programu SQL Server nie zostanie uruchomiona. Możesz użyć **certyfikaty** przystawki lub **CertUtils** dla tego zadania.
+    
 4. Uruchom ponownie usługę SQL Server.
 
 ## <a name="configure-sql-server-connectivity-in-the-vm"></a>Konfigurowanie połączeń programu SQL Server na maszynie wirtualnej

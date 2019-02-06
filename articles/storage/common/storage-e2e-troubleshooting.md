@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 73073d5240f29906ade5f9b92cf81fec2f99a3d4
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661976"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746316"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Rozwiązywanie problemów z end-to-end, przy użyciu metryk usługi Azure Storage i rejestrowania, narzędzia AzCopy i analizatora komunikatów
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -98,7 +98,7 @@ Aby skonfigurować rejestrowanie i metryki do obsługi magazynu konta przy użyc
 
 Aby rozpocząć pracę przy użyciu programu PowerShell dla platformy Azure, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
-1. Użyj [AzAccount Dodaj](/powershell/module/az.account/add-azaccount) polecenia cmdlet, aby dodać konto użytkownika usługi Azure do okna programu PowerShell:
+1. Użyj [AzAccount Dodaj](/powershell/module/servicemanagement/azure/add-azureaccount) polecenia cmdlet, aby dodać konto użytkownika usługi Azure do okna programu PowerShell:
    
     ```powershell
     Add-AzAccount

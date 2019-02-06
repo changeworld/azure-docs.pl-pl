@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 091a165dacbf0e98532f343745e56c4acf765b84
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 9369e076517e295a7d17011e024353614ec8ad46
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53320799"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751977"
 ---
 # <a name="how-to-create-a-skillset-in-an-enrichment-pipeline"></a>Tworzenie zestawu umiejętności w wzbogacony potok
 
@@ -40,7 +40,7 @@ Załóżmy, że jesteś zainteresowany przetwarzanie komentarze analityków fina
 
 | Rekord tekstu | Firmy | wskaźniki nastrojów klientów | opisy firmy |
 |--------|-----|-----|-----|
-|Przykładowy rekord| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation jest firma American międzynarodowej technologii...", "LinkedIn jest i zatrudnienia biznesowego społecznościowych, sieci..."]
+|sample-record| ["Microsoft", "LinkedIn"] | 0,99. | ["Microsoft Corporation jest firma American międzynarodowej technologii...", "LinkedIn jest i zatrudnienia biznesowego społecznościowych, sieci..."]
 
 Na poniższym diagramie przedstawiono hipotetyczny wzbogacony potok:
 
@@ -142,11 +142,11 @@ Następny fragment w zestawu umiejętności jest tablicą umiejętności. Każde
 
 ## <a name="add-predefined-skills"></a>Dodaj wstępnie zdefiniowane umiejętności
 
-Przyjrzyjmy się pierwszy umiejętności, który jest wstępnie zdefiniowane [o nazwie umiejętności rozpoznawania jednostek](cognitive-search-skill-named-entity-recognition.md):
+Przyjrzyjmy się pierwszy umiejętności, który jest wstępnie zdefiniowane [umiejętności rozpoznawania jednostek](cognitive-search-skill-entity-recognition.md):
 
 ```json
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "context": "/document",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
@@ -155,7 +155,8 @@ Przyjrzyjmy się pierwszy umiejętności, który jest wstępnie zdefiniowane [o 
           "name": "text",
           "source": "/document/content"
         }
-      ],      "outputs": [
+      ],
+      "outputs": [
         {
           "name": "organizations",
           "targetName": "organizations"
@@ -228,7 +229,7 @@ Odwołaj strukturze niestandardowych enricher wyszukiwania jednostek Bing:
     }
 ```
 
-Ta definicja jest umiejętności niestandardowe, która wywołuje interfejs API sieci web jako część procesu wzbogacania. Dla każdej organizacji identyfikowane przez rozpoznawanie jednostek znaku to umiejętności wywołuje internetowy interfejs API można znaleźć opis tej organizacji. Organizowanie podczas wywołania interfejsu API sieci web i jak przepływ informacji otrzymanych odbywa się wewnętrznie przez aparat wzbogacania. Jednak inicjowania, które są niezbędne do wywoływania niestandardowego interfejsu API musi być podana w formacie JSON (np. Identyfikator uri, elementów httpHeaders i danych wejściowych, oczekiwano). Aby uzyskać wskazówki dotyczące tworzenia niestandardowego internetowego interfejsu API wzbogacony potok, zobacz [jak zdefiniować niestandardowy interfejs](cognitive-search-custom-skill-interface.md).
+Ta definicja jest [umiejętności niestandardowe](cognitive-search-custom-skill-web-api.md) wywołująca internetowy interfejs API w ramach procesu wzbogacania. Dla każdej organizacji identyfikowane przez rozpoznawanie jednostek znaku to umiejętności wywołuje internetowy interfejs API można znaleźć opis tej organizacji. Organizowanie podczas wywołania interfejsu API sieci web i jak przepływ informacji otrzymanych odbywa się wewnętrznie przez aparat wzbogacania. Jednak inicjowania, które są niezbędne do wywoływania niestandardowego interfejsu API musi być podana w formacie JSON (np. Identyfikator uri, elementów httpHeaders i danych wejściowych, oczekiwano). Aby uzyskać wskazówki dotyczące tworzenia niestandardowego internetowego interfejsu API wzbogacony potok, zobacz [jak zdefiniować niestandardowy interfejs](cognitive-search-custom-skill-interface.md).
 
 Należy zauważyć, że pole "kontekst" jest ustawione na ```"/document/organizations/*"``` z gwiazdką, co oznacza kroku wzbogacania jest wywoływana *dla każdego* organizacji w obszarze ```"/document/organizations"```. 
 

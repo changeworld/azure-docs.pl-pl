@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300188"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745558"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Zarządzanie klastrem Avere vFXT
 
@@ -202,7 +202,7 @@ Oprócz usuwania węzłów klastra, rozważ usunięcie tych składników:
 
 ### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Usuń grupę zasobów klastra w witrynie Azure portal
 
-Jeśli utworzono grupę zasobów, w szczególności dla klastra, może zniszczyć wszystkie powiązane zasoby dla klastra, poprzez zniszczenie grupy zasobów. 
+Jeśli utworzono grupę zasobów, specjalnie w celu przechowywania klastra może zniszczyć wszystkie powiązane zasoby dla klastra, poprzez zniszczenie grupy zasobów. 
 
 > [!Caution] 
 > Grupa zasobów należy zniszczyć tylko, jeśli masz pewność, nothing wartość znajduje się w grupie. Na przykład upewnij się, że wszelkie potrzebne dane zostały przeniesione z wszystkie kontenery magazynu w grupie zasobów.  

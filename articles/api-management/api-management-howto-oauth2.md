@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
-ms.openlocfilehash: 87e5b6098ff9ee74ef8a4314362c30c436d5ad20
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967933"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746731"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Jak autoryzowanie kont deweloperów w usłudze Azure API Management przy użyciu protokołu OAuth 2.0
 
@@ -51,9 +51,9 @@ Ten przewodnik pokazuje, jak skonfigurować wystąpienia usługi API Management 
 
     ![Nowy serwer OAuth 2.0](./media/api-management-howto-oauth2/oauth-02.png)
 
-4. Następna sekcja formularza zawiera **typy przydziałów autoryzacji kodu**, **adresu URL punktu końcowego autoryzacji**, i **metoda żądania autoryzacji** ustawienia.
+4. Następna sekcja formularza zawiera **typy przydziałów autoryzacji**, **adresu URL punktu końcowego autoryzacji**, i **metoda żądania autoryzacji** ustawienia.
 
-    Określ **typy przydziałów autoryzacji kodu** , sprawdzając żądanego typu. **Kod autoryzacji** jest określony, domyślnie.
+    Określ **typy przydziałów autoryzacji** , sprawdzając żądanego typu. **Kod autoryzacji** jest określony, domyślnie.
 
     Wprowadź **adresu URL punktu końcowego autoryzacji**. Usługi Azure Active Directory, ten adres URL będzie podobny do następującego adresu URL, gdzie `<client_id>` jest zastępowana identyfikatorem klienta, który identyfikuje aplikację, aby serwer OAuth 2.0.
 
@@ -75,7 +75,7 @@ Ten przewodnik pokazuje, jak skonfigurować wystąpienia usługi API Management 
 
     ![Nowy serwer OAuth 2.0](./media/api-management-howto-oauth2/oauth-04.png)
 
-    Jeśli **typy przydziałów autoryzacji kodu** jest ustawiona na **hasło właściciela zasobu**, **poświadczenia hasła właściciela zasobu** sekcji służy do określania tych poświadczeń; w przeciwnym razie można pozostawić je puste.
+    Jeśli **typy przydziałów autoryzacji** ustawiono **hasło właściciela zasobu**, **poświadczenia hasła właściciela zasobu** sekcja jest używana do określenia tych poświadczeń, a w przeciwnym może pozostać puste.
 
     Po zakończeniu formularza kliknij **Utwórz** Aby zapisać konfigurację serwera autoryzacji interfejsu API zarządzania protokołu OAuth 2.0. Po zapisaniu konfiguracji serwera można skonfigurować interfejsów API, aby użyć tej konfiguracji, jak pokazano w następnej sekcji.
 

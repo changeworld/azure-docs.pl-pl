@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2019
+ms.date: 02/05/2019
 ms.author: tomfitz
-ms.openlocfilehash: 77dda85c920fda90b8379445a79569413b2dd463
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691509"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745593"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 
@@ -318,22 +318,30 @@ Podczas wdrażania szablonu za pośrednictwem portalu, tekst, który należy pod
 
 ![Pokaż podpowiedź do parametru](./media/resource-group-authoring-templates/show-parameter-tip.png)
 
-Aby uzyskać **zasobów**, Dodaj `comments` elementu.
+Aby uzyskać **zasobów**, Dodaj `comments` elementu lub obiektu metadanych. Poniższy przykład pokazuje element komentarze i obiektu metadanych.
 
 ```json
 "resources": [
-    {
-      "comments": "Storage account used to store VM disks",
-      "type": "Microsoft.Storage/storageAccounts",
-      "name": "[variables('storageAccountName')]",
-      "apiVersion": "2018-07-01",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[variables('storageAccountType')]"
-      },
-      "kind": "Storage",
-      "properties": {}
+  {
+    "comments": "Storage account used to store VM disks",
+    "apiVersion": "2018-07-01",
+    "type": "Microsoft.Storage/storageAccounts",
+    "name": "[concat('storage', uniqueString(resourceGroup().id))]",
+    "location": "[parameters('location')]",
+    "metadata": {
+      "comments": "These tags are needed for policy compliance."
     },
+    "tags": {
+      "Dept": "[parameters('deptName')]",
+      "Environment": "[parameters('environment')]"
+    },
+    "sku": {
+      "name": "Standard_LRS"
+    },
+    "kind": "Storage",
+    "properties": {}
+  }
+]
 ```
 
 Możesz dodać `metadata` obiektu praktycznie dowolnym miejscu w szablonie. Menedżer zasobów ignoruje obiektu, ale edytora JSON może ostrzega użytkownika, że właściwość jest nieprawidłowa. W obiekcie Zdefiniuj właściwości, których potrzebujesz.
@@ -363,14 +371,27 @@ Aby uzyskać **generuje**, dodanie obiektu metadanych do wartości danych wyjśc
 
 Nie można dodać obiektu metadanych funkcje zdefiniowane przez użytkownika.
 
-Ogólne komentarze można użyć `//` , ale ta składnia powoduje błąd, podczas wdrażania szablonu przy użyciu wiersza polecenia platformy Azure.
+Komentarze w tekście, można użyć `//` , ale ta składnia nie działa w przypadku wszystkich narzędzi. Nie można użyć wiersza polecenia platformy Azure, aby wdrożyć szablon przy użyciu komentarze w tekście. Ponadto edytor szablonów portalu nie można użyć do pracy nad szablonów za pomocą komentarze w tekście. Jeśli dodasz ten styl komentarza, upewnij się, narzędzia, których używasz komentarze JSON w tekście pomocy technicznej.
 
 ```json
-"variables": {
-    // Create unique name for the storage account
-    "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-},
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "name": "[variables('vmName')]", // to customize name, change it in variables
+  "location": "[parameters('location')]", //defaults to resource group location
+  "apiVersion": "2018-10-01",
+  "dependsOn": [ // storage account and network interface must be deployed first
+      "[resourceId('Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]",
+      "[resourceId('Microsoft.Network/networkInterfaces/', variables('nicName'))]"
+  ],
 ```
+
+W programie VS Code można ustawić tryb języka na format JSON za pomocą komentarzy. Komentarze w tekście są już oznaczone jako nieprawidłowe. Aby zmienić tryb:
+
+1. Otwórz zaznaczenie tryb języka (Ctrl + K M)
+
+1. Wybierz **JSON z komentarzami**.
+
+   ![Wybierz tryb języka](./media/resource-group-authoring-templates/select-json-comments.png)
 
 ## <a name="template-limits"></a>Limity szablonu
 
@@ -393,4 +414,4 @@ Pewne ograniczenia szablonu może przekroczyć przy użyciu zagnieżdżonych sza
 * Aby uzyskać szczegółowe informacje na temat funkcji, możesz użyć w szablonie, zobacz [funkcje szablonu usługi Azure Resource Manager](resource-group-template-functions.md).
 * Aby połączyć kilka szablonów, podczas wdrażania, zobacz [przy użyciu szablonów połączonych z usługą Azure Resource Manager](resource-group-linked-templates.md).
 * Aby uzyskać zalecenia dotyczące tworzenia szablonów, zobacz [najlepszych rozwiązań dla szablonu usługi Azure Resource Manager](template-best-practices.md).
-* Aby uzyskać zalecenia dotyczące tworzenia szablonów usługi Resource Manager do użycia globalnie na platformie Azure, w chmurach suwerennych platformy Azure i w usłudze Azure Stack, zobacz [Develop Azure Resource Manager templates for cloud consistency (Tworzenie szablonów usługi Azure Resource Manager w celu zachowania spójności w chmurze)](templates-cloud-consistency.md).
+* Aby uzyskać zalecenia dotyczące tworzenia szablonów usługi Resource Manager, korzystające ze wszystkimi środowiskami platformy Azure i usługi Azure Stack, zobacz [szablony Tworzenie usługi Azure Resource Manager w celu zachowania spójności chmury](templates-cloud-consistency.md).

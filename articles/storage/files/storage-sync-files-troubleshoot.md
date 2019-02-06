@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: c1ac1a0fccc2ac9a428a04a1b15030c489968a3f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563698"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752096"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -538,7 +538,7 @@ Ten błąd występuje, ponieważ nie wprowadzono zmian w udziale plików platfor
 | **Ciąg błędu** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Wymagana korekta** | Yes |
 
-W przypadku których istnieje wiele na błędy synchronizacji plików, sesje synchronizacji może zacząć się nie powieść. Aby rozwiązać ten stan, zobacz [rozwiązywania problemów na błędy synchronizacji pliku lub katalogu](#troubleshooting-per-file-directory-sync-errors).
+W przypadku których istnieje wiele na błędy synchronizacji plików, sesje synchronizacji może zacząć się nie powieść. Aby rozwiązać ten stan, zobacz [rozwiązywania problemów na błędy synchronizacji pliku lub katalogu]().
 
 > [!NOTE]
 > Usługa Azure File Sync tworzy migawkę usługi VSS tymczasowe raz dziennie na serwerze, aby synchronizować pliki, które mają otwarte dojścia.

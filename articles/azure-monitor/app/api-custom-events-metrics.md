@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: bbe29f112d752be432c0f922b1cd07b8afe2d45e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d0e549f0da5eb30dd11992518789d76c0892bca3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232485"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747479"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -49,7 +49,7 @@ Jeśli nie masz jeszcze odwołanie na zestaw SDK usługi Application Insights:
 
 * Dodaj zestaw Application Insights SDK do projektu:
 
-  * [Projekt platformy ASP.NET](../../azure-monitor/app/asp-net.md)
+  * [ASP.NET project](../../azure-monitor/app/asp-net.md)
   * [Projektu w języku Java](../../azure-monitor/app/java-get-started.md)
   * [Projekt node.js](../../azure-monitor/app/nodejs.md)
   * [Język JavaScript na każdej stronie sieci Web](../../azure-monitor/app/javascript.md) 
@@ -447,7 +447,7 @@ requests
 | summarize count = sum(itemCount), avgduration = avg(duration) by name
 ```
 
-## <a name="trackexception"></a>Metoda TrackException
+## <a name="trackexception"></a>TrackException
 
 Wyślij wyjątków do usługi Application Insights:
 
@@ -1002,7 +1002,7 @@ Można napisać kod, aby przetwarzać dane telemetryczne, przed ich wysłaniem z
 
 [Dodaj właściwości](../../azure-monitor/app/api-filtering-sampling.md#add-properties) do telemetrii, implementując `ITelemetryInitializer`. Na przykład można dodać numery wersji lub wartości, które są obliczane przy użyciu innych właściwości.
 
-[Filtrowanie](../../azure-monitor/app/api-filtering-sampling.md#filtering) można zmodyfikować lub odrzucić telemetrii przed wysłaniem go z zestawu SDK poprzez implementację `ITelemetryProcesor`. Możesz kontrolować, co jest wysyłane lub odrzucone, ale trzeba uwzględnić wpływ na metryk. W zależności od tego, jak zostaną odrzucone elementy możesz utracić możliwość nawigować między powiązanymi elementami.
+[Filtrowanie](../../azure-monitor/app/api-filtering-sampling.md#filtering) można zmodyfikować lub odrzucić telemetrii przed wysłaniem go z zestawu SDK poprzez implementację `ITelemetryProcessor`. Możesz kontrolować, co jest wysyłane lub odrzucone, ale trzeba uwzględnić wpływ na metryk. W zależności od tego, jak zostaną odrzucone elementy możesz utracić możliwość nawigować między powiązanymi elementami.
 
 [Próbkowanie](../../azure-monitor/app/api-filtering-sampling.md) jest spakowane rozwiązanie, aby ograniczyć ilość danych wysyłanych z aplikacji do portalu. Robi to bez wywierania wpływu na wyświetlanych metryk. I robi to bez wpływu na możliwość diagnozowania problemów, przechodząc między elementy pokrewne, takie jak wyjątki, żądania i wyświetleń stron.
 

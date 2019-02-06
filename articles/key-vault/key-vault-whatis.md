@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: f8826f0c0cb63068313a570b050531511126dbc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: db2e2e80ecc98eba0f1bba18abad8b561b16036c
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422927"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745864"
 ---
 # <a name="what-is-azure-key-vault"></a>Co to jest usługa Azure Key Vault?
 
@@ -76,11 +76,14 @@ Każdy posiadacz subskrypcji Azure może tworzyć magazyny kluczy i z nich korzy
 
 Administrator może następnie dostarczyć deweloperom identyfikatory URI w celu wywoływania z aplikacji oraz dostarczyć administratorom zabezpieczeń informacje o rejestrowaniu użycia klucza. 
 
-! [Omówienie sposobu działania usługi Azure Key Vault] [1]
+![Omówienie sposobu działania usługi Azure Key Vault][1]
 
 Deweloperzy mogą również zarządzać kluczami bezpośrednio za pomocą interfejsów API. Aby uzyskać więcej informacji, zobacz artykuł [Przewodnik dewelopera usługi Key Vault](key-vault-developers-guide.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak [zabezpieczanie własnego magazynu](key-vault-secure-your-key-vault.md) 
- <!--Image references--> [1]:./media/key-vault-whatis/AzureKeyVault_overview.png usługi Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).
+Dowiedz się, jak [zabezpieczanie własnego magazynu](key-vault-secure-your-key-vault.md)
+
+<!--Image references-->
+[1]: ./media/key-vault-whatis/AzureKeyVault_overview.png
+Usługa Azure Key Vault jest dostępna w większości regionów. Aby uzyskać więcej informacji, zobacz stronę [Cennik usługi Key Vault](https://azure.microsoft.com/pricing/details/key-vault/).

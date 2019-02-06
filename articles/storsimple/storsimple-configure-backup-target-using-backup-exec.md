@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 0f9f300f589a4818afb0c0de5ede94e5c4fab15e
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8cde3402ef52747e61333c56903309259e07599a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248732"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747598"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą Backup Exec
 
@@ -79,7 +79,7 @@ Magazyn StorSimple oferuje następujące korzyści:
 
 Chociaż StorSimple przedstawia dwa scenariusze wdrażania głównego (podstawowy cel kopii zapasowej i dodatkowej docelowa kopia zapasowa), zasadniczo jest zwykły, urządzeniem magazynu blokowego. Usługa StorSimple jest podczas kompresji i deduplikacji. Bezproblemowo wysyła i pobiera dane między chmury oraz aplikacji i systemu plików.
 
-Aby uzyskać więcej informacji na temat rozwiązania StorSimple, zobacz [serii StorSimple 8000: hybrydowe rozwiązanie magazynu w chmurze](storsimple-overview.md). Ponadto możesz przejrzeć [techniczne serii StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
+Aby uzyskać więcej informacji na temat rozwiązania StorSimple, zobacz [serii StorSimple 8000: Rozwiązanie magazynu w chmurze hybrydowej](storsimple-overview.md). Ponadto możesz przejrzeć [techniczne serii StorSimple 8000](storsimple-technical-specifications-and-compliance.md).
 
 > [!IMPORTANT]
 > Przy użyciu usługi StorSimple urządzenia jako miejsce docelowe kopii zapasowej jest obsługiwana tylko w przypadku StorSimple 8000 Update 3 i nowszych wersjach.
@@ -167,7 +167,7 @@ Rozwiązanie do optymalnego wykonywania firma Microsoft zaleca, postępuj zgodni
 -   Link, który nawiązuje połączenie usługi StorSimple obsługi warstw na platformie Azure muszą spełniać wymagań dotyczących przepustowości. Aby to osiągnąć, należy zastosować wymaganego poziomu jakości usług (QoS) w infrastrukturze przełączników, aby spełnić cel punktu odzyskiwania i odzyskiwania czasu cel umowy SLA.
 -   Maksymalna opóźnienia dostępu do magazynu obiektów Blob platformy Azure powinna być około 80 ms.
 
-### <a name="deploy-storsimple"></a>Wdrażanie usługi StorSimple
+### <a name="deploy-storsimple"></a>Deploy StorSimple
 
 Aby uzyskać instrukcje krok po kroku dotyczące wdrażania usługi StorSimple, zobacz [wdrażanie urządzenia StorSimple w środowisku lokalnym](storsimple-deployment-walkthrough-u2.md).
 
@@ -183,7 +183,7 @@ W tej sekcji pokażemy niektóre przykłady konfiguracji. Poniższe przykłady i
 
 | Zadania związane z wdrażaniem usługi StorSimple  | Dodatkowe komentarze |
 |---|---|
-| Wdrażanie urządzenia StorSimple w środowisku lokalnym. | Obsługiwane wersje: Aktualizacja 3 i nowszych wersjach. |
+| Wdrażanie urządzenia StorSimple w środowisku lokalnym. | Obsługiwane wersje: Update 3 i nowszych wersjach. |
 | Włącz docelowy kopii zapasowej. | Aby włączyć lub wyłączyć tryb docelowy kopii zapasowej i można uzyskać stanu, należy użyć tych poleceń. Aby uzyskać więcej informacji, zobacz [nawiązywanie połączenia zdalnego na urządzeniu StorSimple](storsimple-remote-connect.md).</br> Aby włączyć tryb tworzenia kopii zapasowych: `Set-HCSBackupApplianceMode -enable`. </br> Aby wyłączyć tryb tworzenia kopii zapasowych: `Set-HCSBackupApplianceMode -disable`. </br> Aby uzyskać bieżący stan ustawienia trybu tworzenia kopii zapasowych: `Get-HCSBackupApplianceMode`. |
 | Utwórz kontener woluminów typowe dla woluminu, który przechowuje dane kopii zapasowej. Wszystkie dane w kontenerze wolumin jest deduplikowany. | Kontenery woluminów StorSimple Definiowanie domen deduplikacji.  |
 | Tworzenie woluminów StorSimple. | Utwórz woluminy o rozmiarze jak blisko oczekiwanego użycia jak to możliwe, ponieważ rozmiar woluminu wpływa na czas trwania migawki w chmurze. Aby uzyskać informacje o tym, jak rozmiar woluminu, przeczytaj temat [zasady przechowywania](#retention-policies).</br> </br> Użyj StorSimple woluminy warstwowe, a następnie wybierz **Użyj tego woluminu dla rzadziej używanych danych archiwalnych** pole wyboru. </br> Używanie tylko lokalnie przypięte woluminy nie jest obsługiwane. |
@@ -376,7 +376,7 @@ W poniższej tabeli przedstawiono sposób konfigurowania kopii zapasowych do uru
 \* Całkowita pojemność obejmuje 17 dysków TiB StorSimple i 1 TiB lokalnego woluminu RAID.
 
 
-### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Harmonogram przykład GFS: obracanie GFS tygodniowe, miesięczne i roczne harmonogramu
+### <a name="gfs-example-schedule-gfs-rotation-weekly-monthly-and-yearly-schedule"></a>Harmonogram przykład GFS: Obrót GFS tygodniowe, miesięczne i roczne harmonogramu
 
 | Tydzień | Pełne | Przyrostowe dzień 1 | Przyrostowe dnia 2 | Przyrostowe dzień 3 | Dzień przyrostowe 4 | Dzień przyrostowe 5 |
 |---|---|---|---|---|---|---|
@@ -430,7 +430,7 @@ W poniższej sekcji opisano sposób tworzenia krótkiej skryptu do uruchamiania 
 ### <a name="start-and-delete-cloud-snapshots-by-using-a-script"></a>Uruchom i Usuń migawki w chmurze za pomocą skryptu
 
 > [!NOTE]
-> Dokładnie oceń zgodności i następstwa przechowywania danych przed usunięciem migawek StorSimple. Aby uzyskać więcej informacji o sposobie uruchamiania skryptu po utworzeniu kopii zapasowej, zobacz [dokumentacja usługi Backup Exec](https://www.veritas.com/support/en_US/15047.html).
+> Dokładnie oceń zgodności i następstwa przechowywania danych przed usunięciem migawek StorSimple. Aby uzyskać więcej informacji o sposobie uruchamiania skryptu po utworzeniu kopii zapasowej, zobacz [dokumentacja usługi Backup Exec](https://www.veritas.com/support/en_US/article.100032497.html).
 
 ### <a name="backup-lifecycle"></a>Cykl życia tworzenia kopii zapasowej
 
@@ -480,7 +480,7 @@ Awarii może być spowodowany różnych czynników. W poniższej tabeli wymienio
 W tym artykule przywoływane następujące dokumenty:
 
 - [StorSimple Wielościeżkowe We/Wy Instalatora](storsimple-configure-mpio-windows-server.md)
-- [Scenariusze usługi Storage: alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
+- [Scenariusze usługi Storage: Alokowanie elastyczne](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Za pomocą GPT dysków](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [Konfigurowanie kopii w tle dla folderów udostępnionych](https://technet.microsoft.com/library/cc771893.aspx)
 

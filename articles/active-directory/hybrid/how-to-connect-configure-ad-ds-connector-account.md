@@ -10,19 +10,19 @@ ms.topic: conceptual
 ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 9d58751bc9379d6d9a5a492bee35e349c36087c7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5ad77b0c88c71860db939feecac5a1aecfc4ca40
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497897"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756289"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Program Azure AD Connect: Skonfiguruj uprawnienia dla konta usługi AD DS łącznika 
 
 Moduł programu PowerShell o nazwie [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) wprowadzono w systemie kompilacji 1.1.880.0 (wydanej w sierpniu 2018 r.), który zawiera zbiór poleceń cmdlet ułatwiają konfigurowanie odpowiednich uprawnień usługi Active Directory dla usługi Azure AD Połącz z wdrożenia. 
 
 ## <a name="overview"></a>Przegląd 
-Następujące polecenia cmdlet programu PowerShell może służyć do ustawienia uprawnień usługi Active Directory, konta usługi AD DS łącznika dla każdej funkcji, możesz poudawać, aby włączyć w programie Azure AD Connect. Aby uniknąć problemów, przygotuj uprawnień usługi Active Directory z wyprzedzeniem zawsze wtedy, gdy chcesz zainstalować program Azure AD Connect przy użyciu konta domeny niestandardowej, aby nawiązać połączenie z lasem usługi. Ten moduł ADSyncConfig można również skonfigurować uprawnienia, po wdrożeniu usługi Azure AD Connect.
+Następujące polecenia cmdlet programu PowerShell może służyć do ustawienia uprawnień usługi Active Directory, konta usługi AD DS łącznika dla każdej funkcji, którą wybrano do włączenia w programie Azure AD Connect. Aby uniknąć problemów, przygotuj uprawnień usługi Active Directory z wyprzedzeniem zawsze wtedy, gdy chcesz zainstalować program Azure AD Connect przy użyciu konta domeny niestandardowej, aby nawiązać połączenie z lasem usługi. Ten moduł ADSyncConfig można również skonfigurować uprawnienia, po wdrożeniu usługi Azure AD Connect.
 
 ![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 

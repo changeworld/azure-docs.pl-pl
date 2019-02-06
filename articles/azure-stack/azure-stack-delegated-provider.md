@@ -15,12 +15,12 @@ ms.date: 01/09/2019
 ms.author: sethm
 ms.reviewer: alfredop
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 1b22d465df12d313e05d3fd93437b461ef939ee7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b7a12494585cedd8f75fd9061f8eb29a0b5dc319
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242488"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747428"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegowanie ofert w usłudze Azure Stack
 
@@ -76,6 +76,9 @@ Aby użyć tego przewodnika, potrzebujesz dwóch kont usługi Azure AD oprócz k
 | --- | --- |
 | Delegowani dostawcy |Użytkownik |
 | Użytkownik |Użytkownik |
+
+ > [!NOTE]
+   > W przypadku odsprzedawcy CSP do utworzenia tego delegowani dostawcy wymaga tych użytkowników w katalogu dzierżawy (użytkownika usługi AAD). Operator usługi Azure Stack będą musieli [pierwszy dołączyć](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-enable-multitenancy) , dzierżawy usługi AAD, a następnie skonfigurować użycie i rozliczenia, postępując zgodnie z [te kroki](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-csp-howto-register-tenants).
 
 ### <a name="identify-the-delegated-provider"></a>Identyfikowanie delegowani dostawcy
 

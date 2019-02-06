@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: raynew
-ms.openlocfilehash: 12c71086509b0c7017b8326c46ed4a31270ef261
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: bb9d22b45011f5156a63444ec8e1651f148993b6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657386"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751909"
 ---
 # <a name="troubleshoot-azure-migrate"></a>Rozwiązywanie problemów z usługą Azure Migrate
 
@@ -172,7 +172,7 @@ Ten problem może wystąpić z powodu problemu z instalacją programu VMware Pow
 
 Nie można nawiązać połączenia z programem vCenter Server "Servername.com:9443" z powodu błędu: Brak punktów końcowych nasłuchujących w https://Servername.com:9443/sdk który mógłby odebrać komunikat.
 
-Sprawdź, jeśli możesz korzystają z najnowszej wersji urządzenia modułu zbierającego, jeśli nie, uaktualnić urządzenie [najnowszej wersji](https://docs.microsoft.com/azure/migrate/concepts-collector#how-to-upgrade-collector).
+Sprawdź, jeśli możesz korzystają z najnowszej wersji urządzenia modułu zbierającego, jeśli nie, uaktualnić urządzenie [najnowszej wersji](https://docs.microsoft.com/azure/migrate/concepts-collector).
 
 Jeśli problem nadal występuje w najnowszej wersji, może to być, ponieważ maszyny modułu zbierającego nie może rozpoznać nazwy programu vCenter Server zostało określone lub określony port jest nieprawidłowy. Domyślnie jeśli nie określono portu, moduł zbierający spróbuje nawiązać połączenie z portem o numerze 443.
 

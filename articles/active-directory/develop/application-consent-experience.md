@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: celested
 ms.reviewer: zawad
-ms.openlocfilehash: f5ec31cf0f88b9bfdff2e4fa877d56a2689054ae
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 233b77de4a034b5e87aeea2152a3fb6a71aeb8e6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097949"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755390"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Opis usługi Azure AD aplikacji zgody środowisk
 
@@ -83,5 +83,5 @@ Poniżej przedstawiono procesy zgody, które użytkownik może zostać wyświetl
     1. Użytkownicy inni niż administratorzy zobaczą tym samym ekranie jako ii 2. przedstawionych powyżej.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Szczegółowe omówienie [jak platformy wyrażania zgody w usłudze Azure AD implementuje zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications#overview-of-the-consent-framework).
+- Szczegółowe omówienie [jak platformy wyrażania zgody w usłudze Azure AD implementuje zgody](https://docs.microsoft.com/azure/active-directory/develop/active-directory-integrating-applications).
 - Aby uzyskać bardziej szczegółowe informacje, Dowiedz się, [użycia platformy wyrażania zgody aplikacji z wieloma dzierżawami](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) do zaimplementowania "user" i "admin" zgody, obsługa więcej zaawansowanych wzorce aplikacji wielowarstwowych.

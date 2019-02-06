@@ -1,6 +1,6 @@
 ---
-title: Omówienie jednostek w usłudze Azure Media Services — Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie jednostek usługi Azure Media Services.
+title: Filtrowanie, porządkowanie, stronicowanie jednostek usługi Azure Media Services — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule omówiono, filtrowanie, porządkowanie, stronicowanie jednostek usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -12,27 +12,301 @@ ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3f3322245983508e374d081e5d7905f67344ad7a
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 4c6e3281bd2b37b60c8d165c6c3152e970a5ce32
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912650"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745100"
 ---
-# <a name="azure-media-services-entities-overview"></a>Omówienie jednostek w usłudze Azure Media Services
+# <a name="filtering-ordering-paging-of-media-services-entities"></a>Stronicowanie filtrowania, sortowania, jednostek usługi Media Services
 
-Ten artykuł zawiera krótkie omówienie punktów i jednostki usługi Azure Media Services do artykułów, aby uzyskać więcej informacji o sposobie korzystania z każdej jednostki w przepływach pracy usługi Media Services. 
+## <a name="overview"></a>Przegląd
 
-| Temat | Opis |
-|---|---|
-| [Filtry kont i zasobów filtrów](filters-dynamic-manifest-overview.md)|Podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) klienta może wymagać większej elastyczności niż opisane w pliku manifestu zasobu domyślnego. Usługa Azure Media Services umożliwia definiowanie [filtrów kont](https://docs.microsoft.com/rest/api/media/accountfilters) i [filtry zasobów](https://docs.microsoft.com/rest/api/media/assetfilters). Następnie należy użyć **manifestów dynamicznych** oparte na wstępnie zdefiniowanych filtrów. |
-| [Zasoby](assets-concept.md)|[Zasobów](https://docs.microsoft.com/rest/api/media/assets) w jednostce (w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów) pliki cyfrowe oraz metadane dotyczące tych plików. Przekazane pliki cyfrowe do elementu zawartości używać w usłudze Media Services, kodowanie, przesyłanie strumieniowe, analizowanie zawartości przepływów pracy.|
-| [Zasady kluczy zawartości](content-key-policy-concept.md)|Usługa Media Services umożliwia zabezpieczenie multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services można dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128), lub z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów.|
-| [Wydarzenia na żywo i na żywo dane wyjściowe](live-events-outputs-concept.md)|Usługa Media Services umożliwia dostarczanie wydarzeń na żywo dla klientów w chmurze Azure. Aby skonfigurować usługi przesyłania strumieniowego wydarzeń na żywo usługi Media Services v3, musisz Dowiedz się więcej o [zdarzenia na żywo](https://docs.microsoft.com/rest/api/media/liveevents) i [na żywo dane wyjściowe](https://docs.microsoft.com/rest/api/media/liveoutputs).|
-| [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md)|A [punkty końcowe przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streamingendpoints) jednostki reprezentuje usługę przesyłania strumieniowego, która umożliwia dostarczanie zawartości bezpośrednio do aplikacji odtwarzacza klienta lub aby Content Delivery Network (CDN) w celu dalszego rozpowszechniania. Wychodzące strumienia usługi punktu końcowego przesyłania strumieniowego może być strumień na żywo lub element zawartości wideo na żądanie w ramach konta usługi Media Services. Po utworzeniu konta usługi Media Services, **domyślne** punkt końcowy przesyłania strumieniowego zostanie utworzony w stanie zatrzymania. Nie można usunąć **domyślne** punkt końcowy przesyłania strumieniowego. Dodatkowe punkty końcowe przesyłania strumieniowego mogą być tworzone w ramach konta. Aby rozpocząć przesyłanie strumieniowe filmów wideo, należy uruchomić punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać wideo. |
-| [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md)|Konieczne jest zapewnienie klientom za pomocą adresu URL, który może służyć do odtwarzania zakodowane pliki audio lub wideo, musisz utworzyć [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) i tworzyć adresy URL przesyłania strumieniowego.|
-| [Zasady przesyłania strumieniowego](streaming-policy-concept.md)| [Przesyłanie strumieniowe zasady](https://docs.microsoft.com/rest/api/media/streamingpolicies) umożliwiają definiowanie protokołów przesyłania strumieniowego i opcje szyfrowania dla Twojego StreamingLocators. Można określić nazwę zasad niestandardowych przesyłania strumieniowego i został utworzony lub użyj jednej z wstępnie zdefiniowane zasady przesyłania strumieniowego, oferowane przez usługę Media Services. <br/><br/>Za pomocą niestandardowych zasad usługi przesyłania strumieniowego, należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi Media i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje szyfrowania i protokołów. Należy nie można utworzeniem nowej zasady przesyłania strumieniowego dla każdego lokalizatora przesyłania strumieniowego.|
-| [Transformacje i zadania](transforms-jobs-concept.md)|Użyj [przekształca](https://docs.microsoft.com/rest/api/media/transforms) skonfigurować typowych zadań związanych z kodowaniem lub analizowanie filmów wideo. Każdy **Przekształcanie** opisuje młyna lub przepływu pracy zadań przetwarzania plików wideo lub audio.<br/><br/>A [zadania](https://docs.microsoft.com/rest/api/media/jobs) jest rzeczywistego żądania do usługi Azure Media Services, aby zastosować **Przekształcanie** do danego wejściowego zawartości wideo lub audio. **Zadania** określa informacje, takie jak lokalizacja wejściowych plików wideo i lokalizację danych wyjściowych. Można określić lokalizację je wideo przy użyciu: Adresy URL HTTPS, adresów URL sygnatury dostępu Współdzielonego lub zasobu.|
+Usługa Media Services obsługuje następujące opcje zapytania OData dla usługi Media Services v3 jednostek: 
+
+* $filter 
+* $orderby 
+* $top 
+* $skiptoken 
+
+Opis operatora:
+
+* EQ = równa
+* Ne = nie jest równa
+* GE = większa niż lub równe
+* Le = mniejsze niż lub równe
+* Gt = większa niż
+* Lt = mniej niż
+
+Właściwości jednostki, które są typu Data/godzina są zawsze w formacie UTC.
+
+## <a name="page-results"></a>Wyniki strony
+
+Jeśli odpowiedzi na zapytanie zawiera wiele elementów, usługa zwraca "\@odata.nextLink" właściwości do pobrania następnej strony wyników. Może to służyć do strony za pomocą cały zestaw wyników. Nie można skonfigurować rozmiaru strony. Rozmiar strony jest zależna od typu jednostki, przeczytaj poszczególne sekcje, które należy wykonać, aby uzyskać szczegółowe informacje.
+
+Jeśli jednostki są tworzone lub usuwane podczas stronicować kolekcji, zmiany są odzwierciedlane w zwróconych wyników (Jeśli te zmiany w części w kolekcji, która nie została pobrana). 
+
+> [!TIP]
+> Łącze do następnej zawsze należy używać wyliczania kolekcji i nie są zależne od wielkości określonej strony.
+
+## <a name="assets"></a>Elementy zawartości
+
+### <a name="filteringordering"></a>Filtrowanie porządkowanie
+
+W poniższej tabeli przedstawiono, jak filtrowanie i kolejność opcje można stosować do [zasobów](https://docs.microsoft.com/rest/api/media/assets) właściwości: 
+
+|Name (Nazwa)|Filtr|Zamówienie|
+|---|---|---|
+|id|||
+|name|eq, gt, lt| Rosnącej na malejącą lub odwrotnie|
+|properties.alternateId |eq||
+|properties.assetId |eq||
+|Properties.container |||
+|Properties.created| eq, gt, lt| Rosnącej na malejącą lub odwrotnie|
+|Properties.Description |||
+|properties.lastModified |||
+|properties.storageAccountName |||
+|properties.storageEncryptionFormat | ||
+|type|||
+
+W poniższym przykładzie C# filtr Data utworzenia:
+
+```csharp
+var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
+var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName, odataQuery);
+```
+
+### <a name="pagination"></a>Paginacja 
+
+Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. Obecnie rozmiar strony wynosi 1000.
+
+#### <a name="c-example"></a>Przykład w języku C#
+
+W poniższym przykładzie C# przedstawiono sposób wyliczyć wszystkie zasoby w ramach konta.
+
+```csharp
+var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.Assets.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+#### <a name="rest-example"></a>Przykład REST
+
+Rozważmy następujący przykład, dla których jest używana funkcja $skiptoken. Upewnij się, Zastąp *amstestaccount* nazwą swojego konta i zestaw *parametru api-version* wartość do najnowszej wersji.
+
+Jeśli żądanie Lista zasobów w następujący sposób:
+
+```
+GET  https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01 HTTP/1.1
+x-ms-client-request-id: dd57fe5d-f3be-4724-8553-4ceb1dbe5aab
+Content-Type: application/json; charset=utf-8
+```
+
+Możesz zwróci odpowiedź podobny do następującego:
+
+```
+HTTP/1.1 200 OK
+ 
+{
+"value":[
+{
+"name":"Asset 0","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 0","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-5a4f-470a-9d81-6037d7c23eff","created":"2018-12-11T22:12:44.98Z","lastModified":"2018-12-11T22:15:48.003Z","container":"asset-98d07299-5a4f-470a-9d81-6037d7c23eff","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+}
+},
+// lots more assets
+{
+"name":"Asset 517","id":"/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaservices/amstestaccount/assets/Asset 517","type":"Microsoft.Media/mediaservices/assets","properties":{
+"assetId":"00000000-912e-447b-a1ed-0f723913b20d","created":"2018-12-11T22:14:08.473Z","lastModified":"2018-12-11T22:19:29.657Z","container":"asset-fd05a503-912e-447b-a1ed-0f723913b20d","storageAccountName":"amsdevc1stoaccount11","storageEncryptionFormat":"None"
+}
+}
+],"@odata.nextLink":"https:// management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517"
+}
+```
+
+Następnej strony będzie następnie zażądać, wysyłając żądanie get:
+
+```
+https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01&$skiptoken=Asset+517
+```
+
+Aby uzyskać więcej przykładów REST, zobacz [zasobów — lista](https://docs.microsoft.com/rest/api/media/assets/list)
+
+## <a name="content-key-policies"></a>Zasady kluczy zawartości
+
+### <a name="filteringordering"></a>Filtrowanie porządkowanie
+
+W poniższej tabeli przedstawiono, jak te opcje można stosować do [zasad dotyczących zawartości klucza](https://docs.microsoft.com/rest/api/media/contentkeypolicies) właściwości: 
+
+|Name (Nazwa)|Filtr|Zamówienie|
+|---|---|---|
+|id|||
+|name|Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|Properties.created |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|Properties.Description |Eq, ne, ge, le, gt, lt||
+|properties.lastModified|Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|Properties.Options |||
+|properties.policyId|Eq, ne||
+|type|||
+
+### <a name="pagination"></a>Paginacja
+
+Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. Obecnie rozmiar strony jest 10.
+
+Następujące C# przykład pokazuje, jak wyliczyć przez wszystkie **zasad dotyczących zawartości klucza** w ramach konta.
+
+```csharp
+var firstPage = await MediaServicesArmClient.ContentKeyPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.ContentKeyPolicies.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+POZOSTAŁE przykłady można znaleźć [zasady kluczy zawartości — lista](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
+
+## <a name="jobs"></a>Stanowiska
+
+### <a name="filteringordering"></a>Filtrowanie porządkowanie
+
+W poniższej tabeli przedstawiono, jak te opcje można stosować do [zadań](https://docs.microsoft.com/rest/api/media/jobs) właściwości: 
+
+| Name (Nazwa)    | Filtr                        | Zamówienie |
+|---------|-------------------------------|-------|
+| name                    | eq            | Rosnącej na malejącą lub odwrotnie|
+| Properties.state        | Eq, ne        |                         |
+| Properties.created      | gt, ge, lt, le| Rosnącej na malejącą lub odwrotnie|
+| properties.lastModified | gt, ge, lt, le | Rosnącej na malejącą lub odwrotnie| 
+
+
+### <a name="pagination"></a>Paginacja
+
+Podział na strony zadania jest obsługiwane w Media Services v3.
+
+Następujące C# przykład pokazuje, jak wyliczyć za pośrednictwem zadań w ramach konta.
+
+```csharp            
+List<string> jobsToDelete = new List<string>();
+var pageOfJobs = client.Jobs.List(config.ResourceGroup, config.AccountName, "Encode");
+
+bool exit;
+do
+{
+    foreach (Job j in pageOfJobs)
+    {
+        jobsToDelete.Add(j.Name);
+    }
+
+    if (pageOfJobs.NextPageLink != null)
+    {
+        pageOfJobs = client.Jobs.ListNext(pageOfJobs.NextPageLink);
+        exit = false;
+    }
+    else
+    {
+        exit = true;
+    }
+}
+while (!exit);
+
+```
+
+POZOSTAŁE przykłady można znaleźć [zadania — lista](https://docs.microsoft.com/rest/api/media/jobs/list)
+
+## <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
+
+### <a name="filteringordering"></a>Filtrowanie porządkowanie
+
+W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwości StreamingLocator: 
+
+|Name (Nazwa)|Filtr|Zamówienie|
+|---|---|---|
+|id |||
+|name|Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|properties.alternativeMediaId  |||
+|properties.assetName   |||
+|properties.contentKeys |||
+|Properties.created |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|properties.defaultContentKeyPolicyName |||
+|properties.endTime |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|properties.startTime   |||
+|properties.streamingLocatorId  |||
+|properties.streamingPolicyName |||
+|type   |||
+
+### <a name="pagination"></a>Paginacja
+
+Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. Obecnie rozmiar strony jest 10.
+
+W poniższym przykładzie C# pokazano, jak wyliczyć za pośrednictwem wszystkich StreamingLocators w ramach konta.
+
+```csharp
+var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.StreamingLocators.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+POZOSTAŁE przykłady można znaleźć [Lokalizatory przesyłania strumieniowego — lista](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+
+## <a name="streaming-policies"></a>Zasady przesyłania strumieniowego
+
+### <a name="filteringordering"></a>Filtrowanie porządkowanie
+
+W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwości StreamingPolicy: 
+
+|Name (Nazwa)|Filtr|Zamówienie|
+|---|---|---|
+|id|||
+|name|Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|properties.commonEncryptionCbcs|||
+|properties.commonEncryptionCenc|||
+|Properties.created |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
+|properties.defaultContentKeyPolicyName |||
+|properties.envelopeEncryption|||
+|properties.noEncryption|||
+|type|||
+
+### <a name="pagination"></a>Paginacja
+
+Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. Obecnie rozmiar strony jest 10.
+
+W poniższym przykładzie C# pokazano, jak wyliczyć za pośrednictwem wszystkich StreamingPolicies w ramach konta.
+
+```csharp
+var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
+
+var currentPage = firstPage;
+while (currentPage.NextPageLink != null)
+{
+    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
+}
+```
+
+POZOSTAŁE przykłady można znaleźć [przesyłania strumieniowego zasad — Lista](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+
+
+## <a name="transform"></a>Przekształcanie
+
+### <a name="filteringordering"></a>Filtrowanie porządkowanie
+
+W poniższej tabeli przedstawiono, jak te opcje można stosować do [przekształca](https://docs.microsoft.com/rest/api/media/transforms) właściwości: 
+
+| Name (Nazwa)    | Filtr                        | Zamówienie |
+|---------|-------------------------------|-------|
+| name                    | eq            | Rosnącej na malejącą lub odwrotnie|
+| Properties.created      | gt, ge, lt, le| Rosnącej na malejącą lub odwrotnie|
+| properties.lastModified | gt, ge, lt, le | Rosnącej na malejącą lub odwrotnie|
 
 ## <a name="next-steps"></a>Kolejne kroki
 

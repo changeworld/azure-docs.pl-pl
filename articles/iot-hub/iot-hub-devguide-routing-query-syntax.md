@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: da95bd3832ee647c371c7beabb55b974dcb97740
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496571"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744847"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Kierowanie Składnia kwerendy komunikatów usługi IoT Hub
 
@@ -55,7 +55,7 @@ Właściwości systemu pomagać w identyfikacji zawartości i źródła wiadomo�
 | -------- | ---- | ----------- |
 | contentType | ciąg | Użytkownik określa typ zawartości komunikatu. Aby zezwolić na zapytania w treści wiadomości, ta wartość musi być ustawiona application/JSON. |
 | contentEncoding | ciąg | Użytkownik określa typ kodowania komunikatu. Dozwolone wartości to UTF-8, UTF-16 i UTF-32, jeśli ustawiono typ zawartości application/JSON. |
-| connectionDeviceId | ciąg | Ta wartość jest ustawiana przez usługę IoT Hub i identyfikuje źródło wiadomości. Może to być komunikaty telemetryczne z urządzeń, powiadomienia o zmianie bliźniaczej reprezentacji urządzenia lub zdarzenia cyklu życia urządzenia. Nie można zbadać. |
+| iothub-connection-device-id | ciąg | Ta wartość jest ustawiana przez usługę IoT Hub i identyfikuje identyfikator urządzenia. Aby wysłać zapytanie, użyj `$connectionDeviceId`. |
 | iothub enqueuedtime | ciąg | Ta wartość jest ustawiana przez usługę IoT Hub i reprezentuje rzeczywisty czas enqueuing komunikat w formacie UTC. Aby wysłać zapytanie, użyj `enqueuedTime`. |
 
 Zgodnie z opisem w [IoT Hub komunikatów](iot-hub-devguide-messages-construct.md), istnieją dodatkowe systemu właściwości w komunikacie. Oprócz **contentType**, **contentEncoding**, i **enqueuedTime**, **connectionDeviceId** i  **connectionModuleId** również mogą być przeszukiwane.

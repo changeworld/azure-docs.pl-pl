@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/17/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 238b75681ec525187ea27f60ac8b21b05b13954d
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f2bd1d863a7900b50712eb23c1088c6b271befa3
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063118"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755900"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Mapa aplikacji: Klasyfikacja aplikacji rozproszonych
 
@@ -191,7 +191,7 @@ Aby uzyskać więcej informacji o tym, jak zastąpić właściwości cloud_RoleN
 
 Jeśli występują problemy z mapy aplikacji, aby działać zgodnie z oczekiwaniami, wykonaj poniższe kroki:
 
-1. Upewnij się, że używasz oficjalnie obsługiwanym zestawem SDK. Zestawy SDK nieobsługiwany społeczności mogą nie obsługiwać korelacji.
+1. Upewnij się, że używasz oficjalnie obsługiwanego zestawu SDK. Nieobsługiwane zestawy SDK/zestawy SDK społeczności mogą nie obsługiwać korelacji.
 
     Zapoznaj się z tym [artykułu](https://docs.microsoft.com/azure/application-insights/app-insights-platforms) Aby uzyskać listę obsługiwanych zestawów SDK.
 
@@ -199,9 +199,9 @@ Jeśli występują problemy z mapy aplikacji, aby działać zgodnie z oczekiwani
 
 3. Jeśli używasz usługi Azure Functions przy użyciu C#Przeprowadź uaktualnienie do [funkcje w wersji 2](https://docs.microsoft.com/azure/azure-functions/functions-versions).
 
-4. Upewnij się, [cloud_RoleName](app-map.md#Set-cloud-RoleName) jest poprawnie skonfigurowana.
+4. Upewnij się, [cloud_RoleName](app-map.md#set-cloudrolename) jest poprawnie skonfigurowana.
 
-5. Jeśli masz brakująca zależność, upewnij się, jest na liście [automatycznie zebranych zależności](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). Jeśli nie, można nadal śledzić je ręcznie przy użyciu [śledzić wywołanie zależności](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
+5. Jeśli brakuje zależności, upewnij się, że znajduje się ona na liście [automatycznie zebranych zależności](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies). W przeciwnym razie możesz w dalszym ciągu śledzić ją ręcznie przy użyciu [wywołania zależności śledzenia](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency).
 
 ## <a name="portal-feedback"></a>Opinie w portalu
 Aby przekazać opinię, użyj opcji opinii.

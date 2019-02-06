@@ -10,12 +10,12 @@ ms.custom: REST
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: routlaw
-ms.openlocfilehash: 2b888d1ac9b5ebffc95d35ecda4ab8d9d260fa6d
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 924154a64673b4ff646f3b6ece373b278ee37181
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669857"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754850"
 ---
 # <a name="get-virtual-machine-usage-metrics-using-the-rest-api"></a>Pobierz metryki użycia maszyny wirtualnej przy użyciu interfejsu API REST
 
@@ -23,7 +23,7 @@ W tym przykładzie pokazano, jak pobrać wykorzystaniu Procesora dotyczące [mas
 
 Pełna dokumentacja i więcej przykładów dla interfejsu API REST są dostępne w [dokumentacja usługi Azure Monitor REST](/rest/api/monitor). 
 
-## <a name="build-the-request"></a>Żądanie kompilacji
+## <a name="build-the-request"></a>Tworzenie żądania
 
 Użyj następującego żądania GET do zbierania [metryki procentowe użycie procesora CPU](/azure/monitoring-and-diagnostics/monitoring-supported-metrics#microsoftcomputevirtualmachines) z maszyny wirtualnej
 
@@ -44,7 +44,7 @@ Wymagane są następujące nagłówki:
 
 | Name (Nazwa) | Opis |
 | :--- | :---------- |
-| subscriptionId | Identyfikator subskrypcji, która identyfikuje subskrypcji platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#working-with-multiple-subscriptions). |
+| subscriptionId | Identyfikator subskrypcji, która identyfikuje subskrypcji platformy Azure. Jeśli masz wiele subskrypcji, zobacz [Praca z wieloma subskrypcjami](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest). |
 | resourceGroupName | Nazwa grupy zasobów platformy Azure skojarzone z zasobem. Tę wartość można uzyskać z interfejsu API usługi Azure Resource Manager, interfejsu wiersza polecenia lub portalu. |
 | vmname | Nazwa maszyny wirtualnej platformy Azure. |
 | metricnames | Rozdzielana przecinkami lista prawidłowe [metryk modułu równoważenia obciążenia](/azure/load-balancer/load-balancer-standard-diagnostics). |
@@ -56,7 +56,7 @@ Wymagane są następujące nagłówki:
 
 Nie treści żądania jest wymagana dla tej operacji.
 
-## <a name="handle-the-response"></a>Dojście do odpowiedzi
+## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
 Pomyślnie zwrócona lista wartości metryk zwracany jest kod stanu 200. Pełną listę kodów błędów jest dostępna w [dokumentację referencyjną](/rest/api/monitor/metrics/list#errorresponse).
 

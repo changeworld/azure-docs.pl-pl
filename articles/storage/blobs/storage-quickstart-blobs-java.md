@@ -1,23 +1,26 @@
 ---
-title: Jak utworzyć obiekt blob w usłudze Azure Storage przy użyciu zestawu SDK Java usługi Storage w wersji 7 | Dokumentacja firmy Microsoft
+title: Jak utworzyć obiekt blob w usłudze Azure Storage przy użyciu biblioteki klienta dla języka Java w wersji 7 | Dokumentacja firmy Microsoft
 description: Utwórz konto magazynu i kontener w magazynie obiektów (blob). Biblioteka klienta usługi Azure Storage dla języka Java w wersji 7 można następnie użyć do przekażesz obiekt blob do usługi Azure Storage, pobierzesz obiekt blob i wyświetlisz listę obiektów blob w kontenerze.
 services: storage
 author: roygara
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: rogarana
-ms.openlocfilehash: 18ba3d70951cd59f59b566c8bfff2403a32e4874
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 3bf82f37752009a488512d720093bc9c595dff8e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730463"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753218"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-java-sdk-v7"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu zestawu SDK języka Java w wersji 7
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-java-v7"></a>Jak przekazywanie, pobieranie i wyświetlanie listy obiektów blob przy użyciu biblioteki klienta dla języka Java w wersji 7
 
-W tym przewodniku dowiesz się, jak przekazywanie, pobieranie i listę blokowych obiektów blob w kontenerze usługi Azure Blob storage za pomocą języka Java.
+W tym przewodniku dowiesz się, jak używać biblioteki klienta dla języka Java w wersji 7 można przekazywać, pobierać i listę blokowych obiektów blob w kontenerze usługi Azure Blob storage.
+
+> [!TIP]
+> Najnowszą wersję biblioteki klienta usługi Azure Storage dla języka Java jest v10. Firma Microsoft zaleca się, że używasz najnowszej wersji biblioteki klienta, gdy jest to możliwe. Aby rozpocząć pracę, przy użyciu v10, zobacz [Szybki Start: Przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą V10 SDK magazynu Java](storage-quickstart-blobs-java-v10.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -206,8 +209,6 @@ sourceFile.deleteOnExit();
 W tym artykule przedstawiono metodę transferowania plików między dyskiem lokalnym i usługą Azure Blob storage przy użyciu języka Java. Aby dowiedzieć się więcej na temat pracy z językiem Java, przejdź do repozytorium kodu źródłowego w witrynie GitHub.
 
 > [!div class="nextstepaction"]
-> [Azure Storage SDK for Java (Zestaw SDK usługi Azure Storage dla języka Java)](https://github.com/azure/azure-storage-java) 
-> [API Reference (Dokumentacja interfejsu API)](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-> [Code Samples for Java (Przykłady kodu języka Java)](../common/storage-samples-java.md)
-
-* Aby uzyskać więcej informacji na temat Eksploratora usługi Storage i obiektów blob, zapoznaj się artykułem [Manage Azure Blob storage resources with Storage Explorer](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) (Zarządzanie zasobami usługi Azure Blob Storage za pomocą Eksploratora usługi Storage).
+> [Zestaw SDK usługi Microsoft Azure Storage v10 dla języka Java](https://github.com/azure/azure-storage-java) 
+> [dokumentacja interfejsu API języka Java](https://docs.microsoft.com/java/azure/)
+> [Code Samples dla języka Java](../common/storage-samples-java.md)

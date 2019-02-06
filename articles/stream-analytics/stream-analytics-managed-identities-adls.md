@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 87c605feeab742ae589cf8d5d9a98c8e53ccf662
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 194f43a0005f17a22b3a60d6decd049444e56c20
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410459"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745780"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 przy użyciu tożsamości zarządzanej (wersja zapoznawcza)
 
@@ -21,7 +21,7 @@ Usługa Azure Stream Analytics obsługuje uwierzytelnianie tożsamości zarządz
 
 Odwiedź stronę [osiem nowych funkcji w usłudze Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) wpis w blogu, zarejestruj się w tej wersji zapoznawczej i Dowiedz się więcej o nowych funkcjach.
 
-W tym artykule przedstawiono dwa sposoby, aby włączyć tożsamość zarządzaną przez zadanie usługi Azure Stream Analytics, która danych wyjściowych do usługi Azure Data Lake magazynu Gen1 za pośrednictwem witryny Azure portal, wdrażanie szablonu usługi Azure Resource Manager i Azure Stream Analytics tools for Visual Studio.
+W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządzaną przez zadanie usługi Azure Stream Analytics, która danych wyjściowych do usługi Azure Data Lake magazynu Gen1 za pośrednictwem witryny Azure portal, wdrażanie szablonu usługi Azure Resource Manager i Azure Stream Analytics tools for Visual Studio.
 
 ## <a name="azure-portal"></a>Azure Portal
 

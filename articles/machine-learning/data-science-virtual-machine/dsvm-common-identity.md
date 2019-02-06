@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 2c981d33c8108386e0287d4c2a800f065c9dc431
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0146ee6ee37c2eb9e98d831b54df2218d7de5b62
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452859"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754604"
 ---
 # <a name="set-up-a-common-identity-on-the-data-science-virtual-machine"></a>Skonfiguruj wspólną tożsamość na maszynie wirtualnej do nauki o danych
 
@@ -31,7 +31,7 @@ Usługi Active Directory jest to dostawca tożsamości popularnych i jest obsłu
 
 Jeśli masz już usługi Active Directory do zarządzania tożsamościami, można użyć go jako wspólnej dostawcy tożsamości. Jeśli nie masz usługi Active Directory, możesz uruchomić zarządzanego wystąpienia usługi Active Directory na platformie Azure za pośrednictwem usługi o nazwie [usługi Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/) (Azure AD DS). 
 
-W dokumentacji dotyczącej [usługi Azure AD](https://docs.microsoft.com/azure/active-directory/) zapewnia szczegółowe [instrukcje zarządzania](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution#synchronized-identity), łącznie z usługi Azure AD do katalogu lokalnego, jeśli nie masz. 
+W dokumentacji dotyczącej [usługi Azure AD](https://docs.microsoft.com/azure/active-directory/) zapewnia szczegółowe [instrukcje zarządzania](https://docs.microsoft.com/azure/active-directory/choose-hybrid-identity-solution), łącznie z usługi Azure AD do katalogu lokalnego, jeśli nie masz. 
 
 W tym artykule opisano kroki, aby skonfigurować w pełni zarządzana usługa domeny usługi Active Directory na platformie Azure przy użyciu usługi Azure AD DS. Następnie możesz dołączyć swoje maszyny do domeny zarządzanej usługi Active Directory, aby umożliwić użytkownikom dostęp do puli maszyny (i innych zasobów platformy Azure), za pomocą wspólnego konta użytkowników i poświadczeń. 
 

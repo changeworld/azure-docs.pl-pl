@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: bf73c3226af5b2480d52d5010058f24d912bdab5
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 0e324ae82a0223cf48f00b186f46e26840d4d655
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355663"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747530"
 ---
 # <a name="your-marketplace-benefits"></a>Korzyści wynikające z witryny Marketplace
 
@@ -61,7 +61,7 @@ Dział pomocy technicznej Twojej GTM zawiera szablony, zawartości sieci web, sz
 Aby uzyskać dostęp do tych korzyści, musisz:
 
 1. Publikowanie oferty w portalu Azure Marketplace lub w usłudze AppSource.
-2. Upewnij się, wprowadzono marketingu kontakt w **informacje kontaktowe** część oferty. Powinna to być dedykowanym zasobem marketingu, w przeciwieństwie do aliasu wychwytywania. (tj, należy unikać "obsługuje @", "info @", "marketing @" itp.)
+2. Upewnij się, wprowadzono marketingu kontakt w **informacje kontaktowe** część oferty. Powinna to być dedykowanym zasobem marketingu, w przeciwieństwie do aliasu wychwytywania. (tj, należy unikać "obsługuje\@", "info\@", "marketing\@" itp.)
 
 Na podstawie Twojego rozwiązania stanu, otrzymasz wiadomość e-mail przy użyciu zasobów samodzielnej pomocy lub zaproszenia do wywołania konsultacji za pomocą dedykowanego Menedżera zaangażowania. Nie trzeba nic robić, aby zainicjować połączenie — Marketplace zespół organizujący dołączanie skontaktuje się z Tobą użytkownikowi na podstawie informacji podanych w [portalu Cloud Partner](https://cloudpartner.azure.com/).
 

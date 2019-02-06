@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: abshamsft
-ms.openlocfilehash: 50819e1378187dda126f25298d8a2ac0a1b815c5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 2dcbe170a69c0c285cb6425427f94b5efced8712
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53188779"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747462"
 ---
 # <a name="expressroute-monitor"></a>Monitor usługi ExpressRoute
 
@@ -118,23 +118,12 @@ Można wyświetlić kody powiadomień oraz ustawianie alertów dotyczących je p
 
 | Kod powiadomienia (Dzienniki) | Opis |
 | --- | --- |
-| 5101 | Duże opóźnienie przedstawia interfejsy podrzędne Microsoft Edge |
-| 5102 | Odrzuca pakiet interfejsy podrzędne Microsoft Edge | 
-| 5103 | Brama usługi ExpressRoute jest w złej kondycji | 
-| 5201 | Połączenie z dostawcą usług wykazuje duże opóźnienie |
-| 5202 | Pakiety nie przepływają z zakładanego obwodu usługi ExpressRoute |
-| 5301 | Router graniczny klienta wykazuje duże opóźnienie | 
-| 5302 | Opóźnienie jest powodowane urządzenie/połączenie w środowisku klienta. Problem prawdopodobnie nie był obwód usługi ExpressRoute | 
 | 5501 | Nie można przejść wzdłuż połączenia pomocniczego obwodu usługi ExpressRoute |
 | 5502 | Nie można przejść wzdłuż połączenia podstawowego obwodu usługi ExpressRoute |
 | 5503 | Nie znaleziono żadnego obwodu dla subskrypcji połączonej z obszarem roboczym | 
-| 5506 | Użycie jest przepełniony | 
-| 5507 | Wykorzystanie jest niskie |
 | 5508 | Nie można określić, czy ruch przechodzi przez żadne obwody dla ścieżki |
 | 5510 | Ruch nie przechodzi przez zamierzony obwód | 
 | 5511 | Ruch nie przechodzi przez zamierzoną sieć wirtualną | 
-| 5512 | Nie można określić, czy ruch przechodzi przez zamierzony obwód |
-
 
 **Obwód nie działa.** Rozwiązanie Network Performance Monitor powiadamia użytkownika, jak łączność między zasobami lokalnymi i sieciami wirtualnymi platformy Azure zostaną utracone. To powiadomienie ułatwia podjęcie działań aktywnego przed otrzymujesz za użytkownika i ograniczyć przestoje.
 

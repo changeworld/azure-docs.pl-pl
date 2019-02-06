@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2b7a90f948f0176285f1e56bc3c84a2cda2f2577
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023531"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746340"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Przenoszenie danych z programu Teradata przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-onprem-teradata-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-teradata.md)
 
@@ -30,7 +30,7 @@ ms.locfileid: "54023531"
 
 W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory, aby przenieść dane z lokalnej bazy danych programu Teradata. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
 
-Możesz skopiować dane z magazynu danych programu Teradata w środowisku lokalnym, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Data factory obsługuje obecnie tylko przenosi dane z magazynu danych programu Teradata do innych magazynów danych, ale nie przenosi dane z innych magazynów danych do magazynu danych programu Teradata. 
+Możesz skopiować dane z magazynu danych programu Teradata w środowisku lokalnym, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Data factory obsługuje obecnie tylko przenosi dane z magazynu danych programu Teradata do innych magazynów danych, ale nie przenosi dane z innych magazynów danych do magazynu danych programu Teradata.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Usługa Data factory obsługuje łączenie z lokalnymi źródłami Teradata za pośrednictwem bramy zarządzania danymi. Zobacz [przenoszenia danych między lokalizacjami lokalnymi i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, aby dowiedzieć się więcej na temat bramy zarządzania danymi i instrukcje krok po kroku dotyczące konfigurowania bramy.
@@ -44,18 +44,18 @@ Brama jest wymagana, nawet wtedy, gdy Teradata znajduje się w maszynie Wirtualn
 Bramy zarządzania danymi do łączenia z bazą danych programu Teradata, musisz zainstalować [.NET Data Provider for Teradata](https://go.microsoft.com/fwlink/?LinkId=278886) wersji 14 lub nowszej na tym samym systemie co brama zarządzania danymi. Teradata wersja 12 i nowszej jest obsługiwana.
 
 ## <a name="getting-started"></a>Wprowadzenie
-Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API. 
+Utworzysz potok z działaniem kopiowania, które przenosi dane z lokalnego magazynu danych Cassandra przy użyciu różnych narzędzi/interfejsów API.
 
-- Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych. 
-- Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+- Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
+- Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
 Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
 1. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych.
-2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. 
-3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
+2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania.
+3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe.
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z lokalnego magazynu danych programu Teradata, możesz znaleźć [przykład kodu JSON: Kopiowanie danych z programu Teradata do usługi Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) dalszej części tego artykułu. 
+Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykładowe definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z lokalnego magazynu danych programu Teradata, możesz znaleźć [przykład kodu JSON: Kopiowanie danych z programu Teradata do usługi Azure Blob](#json-example-copy-data-from-teradata-to-azure-blob) dalszej części tego artykułu.
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonego w magazynie danych programu Teradata:
 
@@ -88,7 +88,7 @@ Jeśli źródło jest typu **RelationalSource** (w tym Teradata), następujące 
 | query |Użyj zapytania niestandardowe można odczytać danych. |Ciąg zapytania SQL. Na przykład: Wybierz * z MyTable. |Yes |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>Przykład kodu JSON: Kopiowanie danych z programu Teradata do obiektów Blob platformy Azure
-W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak skopiować dane z programu Teradata w usłudze Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.   
+W poniższym przykładzie przedstawiono przykładowe definicji JSON, które umożliwiają tworzenie potoku za pomocą [witryny Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) lub [programu Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) lub [programu Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). Pokazują, jak skopiować dane z programu Teradata w usłudze Azure Blob Storage. Jednakże, można skopiować danych do dowolnego ujścia, o których wspomniano [tutaj](data-factory-data-movement-activities.md#supported-data-stores-and-formats) za pomocą działania kopiowania w usłudze Azure Data Factory.
 
 Przykład obejmuje następujących jednostek fabryki danych:
 
@@ -257,7 +257,7 @@ Potoku zawierającego działanie kopiowania jest skonfigurowany do korzystania z
                     {
                         "name": "AzureBlobTeradataDataSet"
                     }
-                ],                    
+                ],
                 "policy": {
                     "timeout": "01:00:00",
                     "concurrency": 1
@@ -285,45 +285,45 @@ Podczas przenoszenia danych Teradata, następujące mapowania są używane z Ter
 
 | Typ bazy danych programu Teradata | Typ .NET framework |
 | --- | --- |
-| Char |Ciąg |
-| CLOB |Ciąg |
-| Grafika |Ciąg |
-| VarChar |Ciąg |
-| VarGraphic |Ciąg |
+| Char |String |
+| CLOB |String |
+| Grafika |String |
+| VarChar |String |
+| VarGraphic |String |
 | Obiekt blob |Byte[] |
-| Bajtów |Byte[] |
+| Byte |Byte[] |
 | VarByte |Byte[] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Dziesiętny |Dziesiętny |
-| Podwójne |Podwójne |
+| Decimal |Decimal |
+| Double |Double |
 | Liczba całkowita |Int32 |
-| Liczba |Podwójne |
+| Liczba |Double |
 | SmallInt |Int16 |
 | Date |DateTime |
-| Time |Przedział czasu |
-| Godzina ze strefą czasową |Ciąg |
+| Time |TimeSpan |
+| Godzina ze strefą czasową |String |
 | Znacznik czasu |DateTime |
 | Sygnatura czasowa ze strefą czasową |DateTimeOffset |
-| Interwał dnia |Przedział czasu |
-| Interwału dnia do godziny |Przedział czasu |
-| Interwału dnia do minuty |Przedział czasu |
-| Interwału dnia do sekundy |Przedział czasu |
-| Interwał, godzinę |Przedział czasu |
-| Godzina przedział na minutę |Przedział czasu |
-| Godzina przedział na sekundę |Przedział czasu |
-| Interwał minutę |Przedział czasu |
-| Interwału minuty do sekundy |Przedział czasu |
-| Interwał drugiego |Przedział czasu |
-| Interwał roku |Ciąg |
-| Interwału roku do miesiąca |Ciąg |
-| Interwał miesiąca |Ciąg |
-| Period(Date) |Ciąg |
-| Period(Time) |Ciąg |
-| Okres (godzina ze strefą czasową) |Ciąg |
-| Period(TimeStamp) |Ciąg |
-| Okres (sygnatura czasowa ze strefą czasową) |Ciąg |
-| Xml |Ciąg |
+| Interwał dnia |TimeSpan |
+| Interwału dnia do godziny |TimeSpan |
+| Interwału dnia do minuty |TimeSpan |
+| Interwału dnia do sekundy |TimeSpan |
+| Interwał, godzinę |TimeSpan |
+| Godzina przedział na minutę |TimeSpan |
+| Godzina przedział na sekundę |TimeSpan |
+| Interwał minutę |TimeSpan |
+| Interwału minuty do sekundy |TimeSpan |
+| Interwał drugiego |TimeSpan |
+| Interwał roku |String |
+| Interwału roku do miesiąca |String |
+| Interwał miesiąca |String |
+| Period(Date) |String |
+| Period(Time) |String |
+| Okres (godzina ze strefą czasową) |String |
+| Period(TimeStamp) |String |
+| Okres (sygnatura czasowa ze strefą czasową) |String |
+| Xml |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
 Aby uzyskać informacje dotyczące mapowania kolumn w zestaw danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

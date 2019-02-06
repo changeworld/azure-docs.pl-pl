@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 9cd4845bcf107941f969255eb223567d4341ea41
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1b27bbaa3d8e570c8431708934edee564e994487
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508508"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745660"
 ---
 # <a name="storage-analytics"></a>Analityka magazynu
 
@@ -43,7 +43,7 @@ Rejestrowane są następujące typy żądań uwierzytelnionych:
 * Żądania przy użyciu sygnatury dostępu współdzielonego (SAS), w tym żądania nie powiodło się, jak i pomyślnie.
 * Żądania do analizy danych.
 
-Żądania wysyłane przez analityka magazynu, takie jak tworzenie dziennika lub usuwanie, nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) i [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format.md) tematów.
+Żądania wysyłane przez analityka magazynu, takie jak tworzenie dziennika lub usuwanie, nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) i [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format) tematów.
 
 ### <a name="logging-anonymous-requests"></a>Rejestrowanie żądań anonimowych
 Rejestrowane są następujące typy anonimowe żądania:
@@ -53,7 +53,7 @@ Rejestrowane są następujące typy anonimowe żądania:
 * Błędy przekroczenia limitu czasu dla klienta i serwera.
 * Zakończone niepowodzeniem żądania GET z kodem błędu 304 (nie zmodyfikowano).
 
-Inne zakończone niepowodzeniem żądania anonimowe nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) i [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format.md) tematów.
+Inne zakończone niepowodzeniem żądania anonimowe nie są rejestrowane. Pełną listę zarejestrowanych danych jest udokumentowany w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) i [Format dziennika analizy magazynu](/rest/api/storageservices/storage-analytics-log-format) tematów.
 
 ### <a name="how-logs-are-stored"></a>Jak są przechowywane dzienniki
 Wszystkie dzienniki są przechowywane w blokowych obiektów blob w kontenerze o nazwie $logs, który jest tworzony automatycznie podczas analityka magazynu jest włączona dla konta magazynu. Kontener $logs znajduje się w przestrzeni nazw obiektów blob konta magazynu, na przykład: `http://<accountname>.blob.core.windows.net/$logs`. Ten kontener nie można usunąć po włączeniu usługa Storage Analytics, jednak można je usunąć jego zawartość.
@@ -139,7 +139,7 @@ Dane dotyczące pojemności są rejestrowane codziennie dla konta magazynu usłu
 * **ContainerCount**: Liczba kontenerów obiektów blob w usłudze obiektów Blob konta magazynu.
 * **ObjectCount**: Liczba zatwierdzone i niezatwierdzone blokowy lub stronicowy obiekty BLOB w usłudze obiektów Blob konta magazynu.
 
-Aby uzyskać więcej informacji na temat metryki pojemności, zobacz [schemat tabeli metryk usługi Analytics magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema.md).
+Aby uzyskać więcej informacji na temat metryki pojemności, zobacz [schemat tabeli metryk usługi Analytics magazynu](/rest/api/storageservices/storage-analytics-metrics-table-schema).
 
 ### <a name="how-metrics-are-stored"></a>Jak są przechowywane metryki
 Wszystkie dane metryk dla wszystkich usług magazynu są przechowywane w trzech tabelach zarezerwowane dla usługi: jednej tabeli, aby uzyskać informacje o transakcji, jednej tabeli, aby uzyskać informacje o transakcji na minutę i informacje o pojemności z innej tabeli. Informacje o transakcji transakcji i minutowe składa się z danych żądań i odpowiedzi, i informacje o pojemności składa się z magazynu danych użycia. Metryki godzin, metryki minut i pojemności dla usługi obiektów Blob na koncie magazynu są dostępne w tabelach, które są nazwane zgodnie z opisem w poniższej tabeli.
@@ -171,7 +171,7 @@ Jeśli skonfigurowano zasady przechowywania danych nie są naliczane za transakc
 ### <a name="understanding-billable-requests"></a>Opis płatnych żądań
 Wszystkie żądania skierowane do kont usługi storage jest rozliczana lub niepodlegających rozliczaniu. Usługa Storage Analytics rejestruje każdego pojedynczego żądania do usługi, w tym komunikat o stanie, który wskazuje obsługi żądania. Podobnie usługa Storage Analytics przechowuje metryki dla usługi i operacje interfejsu API tej usługi, w tym wartości procentowych i liczbę niektórych komunikatów o stanie. Razem te funkcje mogą pomóc analizować płatnych żądań, ulepszenia w swojej aplikacji i diagnozowanie problemów z żądania do usługi. Aby uzyskać więcej informacji na temat rozliczeń, zobacz [opis rozliczeń platformy Azure Storage — przepustowość, transakcje i pojemność](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx).
 
-Podczas przeglądania danych analizy magazynu, można użyć w tabelach w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages.md) tematu, aby ustalić, jakie żądania są płatne. Następnie możesz porównać swoje dzienniki i dane metryk do komunikatów o stanie, aby zobaczyć, jeśli naliczono dla określonego żądania. Umożliwia także tabele w poprzednim temacie, aby zbadać dostępność usługi magazynu lub indywidualnych operacji interfejsu API.
+Podczas przeglądania danych analizy magazynu, można użyć w tabelach w [operacji rejestrowane analizy magazynu i komunikaty o stanie](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) tematu, aby ustalić, jakie żądania są płatne. Następnie możesz porównać swoje dzienniki i dane metryk do komunikatów o stanie, aby zobaczyć, jeśli naliczono dla określonego żądania. Umożliwia także tabele w poprzednim temacie, aby zbadać dostępność usługi magazynu lub indywidualnych operacji interfejsu API.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Monitorowanie konta magazynu w witrynie Azure Portal](storage-monitor-storage-account.md)

@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 79a7aad8cd747c3fdadcd0f7eec12d861f31fcc0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730513"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751943"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -108,7 +108,7 @@ Istnieje kilka technik do dyspozycji, którego można użyć do osiągnięcia or
 
 Zapora uniemożliwia dostęp do serwera z zewnętrznej jednostki, zezwalając tylko określonych jednostek dostęp do serwera usługi SQL Database. Domyślnie wszystkie połączenia i bazami danych serwera SQL Database są niedozwolone, z wyjątkiem połączeń z innymi usługami platformy Azure. Za pomocą reguły zapory można otworzyć dostępu do serwera tylko dla jednostek (na przykład maszyny dewelopera), które należy zatwierdzić, zezwalając na adres IP tego komputera przez zaporę. W tym obszarze pozwala także określić zakres adresów IP, który chcesz zezwolić na dostęp do serwera bazy danych SQL. Na przykład adresy IP maszyn dla deweloperów w Twojej organizacji można dodać tylko raz, określając zakres na stronie ustawień zapory.
 
-Można utworzyć reguły zapory na poziomie serwera lub na poziomie bazy danych. Albo można utworzyć reguły zapory na poziomie serwera przy użyciu usługi Azure portal lub za pomocą programu SSMS. Aby uzyskać więcej informacji na temat sposobu konfigurowania serwera oraz reguły zapory na poziomie bazy danych, zobacz: [Tworzenie reguł zapory w bazie danych SQL](sql-database-security-tutorial.md#create-firewall-rules).
+Można utworzyć reguły zapory na poziomie serwera lub na poziomie bazy danych. Reguły zapory IP poziomu serwera albo mogą być tworzone przy użyciu usługi Azure portal lub za pomocą programu SSMS. Aby uzyskać więcej informacji na temat sposobu ustawiania reguły zapory poziomu serwera i na poziomie bazy danych, zobacz: [Tworzenie reguły zapory IP w usłudze SQL Database](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Punkty końcowe usługi
 

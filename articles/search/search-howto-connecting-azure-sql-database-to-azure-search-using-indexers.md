@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: 66712b97807135b1e9e8321e441ac21368f86fc5
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 7df785d1493ad2df698ff197d72824ceb15d39ad
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633031"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752896"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-azure-search-indexers"></a>Nawiązywanie połączenia i indeksu usługi Azure SQL Database zawartości przy użyciu indeksatorów usługi Azure Search
 
@@ -210,6 +210,9 @@ Aby użyć tych zasad, należy utworzyć lub zaktualizować źródła danych w n
 
 Gdy za pomocą zasad, śledzenia zmian programu SQL, zintegrowane nie określaj zasady wykrywania usuwania osobne dane — tej zasady ma wbudowaną obsługę identyfikowanie usunięte wiersze. Jednak dla usunięć być wykryte "automagically", klucz dokumentu w indeksie wyszukiwania musi być taka sama jak klucz podstawowy w tabeli SQL. 
 
+> [!NOTE]  
+> Korzystając z [TRUNCATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/truncate-table-transact-sql) Aby usunąć dużą liczbę wierszy z tabeli SQL, indeksator musi być [resetowania](https://docs.microsoft.com/rest/api/searchservice/reset-indexer) zresetować stanu, aby wczytać usunięcia wiersza śledzenia zmian.
+
 <a name="HighWaterMarkPolicy"></a>
 
 ### <a name="high-water-mark-change-detection-policy"></a>Zasady wykrywania zmian znacznik limitu górnego
@@ -315,27 +318,27 @@ Te ustawienia są używane w `parameters.configuration` obiektu w definicja inde
 
 ## <a name="faq"></a>Często zadawane pytania
 
-**PYT.: Czy można używać indeksator usługi Azure SQL z bazy danych SQL, uruchomione na maszynach wirtualnych IaaS na platformie Azure?**
+**Pyt.: Czy można używać indeksator usługi Azure SQL z bazy danych SQL, uruchomione na maszynach wirtualnych IaaS na platformie Azure?**
 
 Tak. Jednakże należy zezwolić na usługi wyszukiwania w celu połączenia z bazą danych. Aby uzyskać więcej informacji, zobacz [skonfigurować połączenie z indeksator usługi Azure Search do programu SQL Server na Maszynie wirtualnej platformy Azure](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md).
 
-**PYT.: Czy można używać indeksator usługi Azure SQL, z bazami danych SQL, uruchamiane lokalnie?**
+**Pyt.: Czy można używać indeksator usługi Azure SQL, z bazami danych SQL, uruchamiane lokalnie?**
 
 Nie bezpośrednio. Firma Microsoft nie zaleca się i nie obsługuje bezpośredniego połączenia, ponieważ spowoduje to więc wymagałoby otwarcie bazy danych w celu ruch internetowy. Klientów zakończyły się powodzeniem, w tym scenariuszu przy użyciu technologii most, takich jak usługi Azure Data Factory. Aby uzyskać więcej informacji, zobacz [wypychanie danych do indeksu usługi Azure Search przy użyciu usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-azure-search-connector).
 
-**PYT.: Czy można używać indeksator usługi Azure SQL z bazy danych innych niż SQL Server działających w modelu IaaS na platformie Azure?**
+**Pyt.: Czy można używać indeksator usługi Azure SQL z bazy danych innych niż SQL Server działających w modelu IaaS na platformie Azure?**
 
 Nie. Nie obsługujemy tego scenariusza, ponieważ nigdy nie próbowaliśmy indeksator o żadnych baz danych innych niż SQL Server.  
 
-**PYT.: Można tworzyć wiele indeksatorów uruchomione zgodnie z harmonogramem?**
+**Pyt.: Można tworzyć wiele indeksatorów uruchomione zgodnie z harmonogramem?**
 
 Tak. Jednak tylko jeden indeksator może działać na jednym węźle w tym samym czasie. Wiele indeksatorów uruchomionych jednocześnie, należy rozważyć skalowanie w górę usługi wyszukiwania do więcej niż jednej jednostki wyszukiwania.
 
-**PYT.: Uruchamianie indeksatora wpływa na obciążenia zapytania?**
+**Pyt.: Uruchamianie indeksatora wpływa na obciążenia zapytania?**
 
 Tak. Indeksator jest uruchamiane na jednym z węzłów w usłudze wyszukiwania, a ten węzeł zasoby są współdzielone między indeksowania i obsługująca ruch zapytania i inne żądania interfejsu API. Jeśli uruchamianie obciążeń z intensywnym wykorzystaniem indeksowania i zapytania i wystąpi wysoki stopień 503 błędy lub rosnącej czasy odpowiedzi, należy wziąć pod uwagę [skalowanie w górę usługi wyszukiwania](search-capacity-planning.md).
 
-**PYT.: Czy mogę używać repliki pomocniczej w [klastra trybu failover](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako źródło danych?**
+**Pyt.: Czy mogę używać repliki pomocniczej w [klastra trybu failover](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) jako źródło danych?**
 
 To zależy. Pełne indeksowaniu tabelę lub widok, można użyć jako repliki pomocniczej. 
 
@@ -349,7 +352,7 @@ Jeśli spróbujesz użyć rowversion repliki tylko do odczytu, zostanie wyświet
 
     "Using a rowversion column for change tracking is not supported on secondary (read-only) availability replicas. Please update the datasource and specify a connection to the primary availability replica.Current database 'Updateability' property is 'READ_ONLY'".
 
-**PYT.: Śledzenie zmian znacznik limitu górnego można używać alternatywnego, kolumny bez rowversion?**
+**Pyt.: Śledzenie zmian znacznik limitu górnego można używać alternatywnego, kolumny bez rowversion?**
 
 Nie jest zalecane. Tylko **rowversion** umożliwia synchronizację danych niezawodne. Jednak w zależności od logika aplikacji może być bezpieczne jeśli:
 

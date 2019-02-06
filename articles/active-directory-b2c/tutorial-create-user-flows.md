@@ -1,5 +1,5 @@
 ---
-title: Samouczek — tworzenie przepływów użytkownika w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Samouczek — tworzenie przepływów użytkownika — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak tworzyć przepływy użytkownika dla aplikacji w usłudze Azure Active Directory B2C w witrynie Azure portal.
 services: active-directory-b2c
 author: davidmu1
@@ -7,14 +7,14 @@ manager: daveba
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 6e651d23e3b5cced78088d59979507eb09723165
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7f017583a6eeb61b11df86a908d573dba9bd5929
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845605"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750294"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Samouczek: Tworzenie przepływów użytkownika w usłudze Azure Active Directory B2C
 
@@ -39,29 +39,30 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Przepływ rejestracji i logowania użytkownika obsługuje środowiska rejestracji i logowania za pomocą jednej konfiguracji. Użytkownicy twojej aplikacji są prowadzone w dół prawidłową ścieżkę, w zależności od kontekstu.
 
-1. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
 
     ![Przejdź do katalogu subskrypcji](./media/tutorial-create-user-flows/switch-directories.png)
 
-2. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
-3. W menu po lewej stronie wybierz **przepływy użytkownika**, a następnie wybierz pozycję **nowy przepływ użytkownika**.
+3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+4. W menu po lewej stronie wybierz **przepływy użytkownika**, a następnie wybierz pozycję **nowy przepływ użytkownika**.
 
     ![Wybierz nowy przepływ użytkownika](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-4. Wybierz **rejestracji i logowania** przepływ użytkownika na karcie zalecane.
+5. Wybierz **rejestracji i logowania** przepływ użytkownika na karcie zalecane.
 
     ![Wybierz przepływ, rejestracji i logowania użytkowników](./media/tutorial-create-user-flows/signup-signin-type.png)
 
-5. Wprowadź **nazwę** przepływu użytkownika. Na przykład *signupsignin1*.
-6. Aby uzyskać **dostawców tożsamości**, wybierz opcję **rejestracja E-mail**.
+6. Wprowadź **nazwę** przepływu użytkownika. Na przykład *signupsignin1*.
+7. Aby uzyskać **dostawców tożsamości**, wybierz opcję **rejestracja E-mail**.
 
     ![Ustaw właściwości przepływu](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-7. Aby uzyskać **atrybutach i oświadczeniach użytkowników**, wybierz oświadczenia i atrybuty, które chcesz zbierać i wysyłać od użytkownika podczas rejestracji. Na przykład wybierz **Pokaż więcej**, a następnie wybierz **Kraj/Region**, **nazwę wyświetlaną**, i **kod pocztowy**. Kliknij przycisk **OK**.
+8. Aby uzyskać **atrybutach i oświadczeniach użytkowników**, wybierz oświadczenia i atrybuty, które chcesz zbierać i wysyłać od użytkownika podczas rejestracji. Na przykład wybierz **Pokaż więcej**, a następnie wybierz **Kraj/Region**, **nazwę wyświetlaną**, i **kod pocztowy**. Kliknij przycisk **OK**.
 
     ![Wybierz atrybuty i oświadczenia](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-8. Kliknij przycisk **Utwórz** dodać przepływ użytkownika. Prefiks *B2C_1* jest automatycznie dołączany do nazwy.
+9. Kliknij przycisk **Utwórz** dodać przepływ użytkownika. Prefiks *B2C_1* jest automatycznie dołączany do nazwy.
 
 ### <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
@@ -123,4 +124,4 @@ W tym artykule przedstawiono sposób:
 > * Tworzenie przepływu użytkownika dotyczącego resetowania haseł
 
 > [!div class="nextstepaction"]
-> [Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C](tutorial-customize-ui.md)
+> [Dodawanie dostawcy tożsamości do aplikacji w usłudze Azure Active Directory B2C](tutorial-add-identity-providers.md)

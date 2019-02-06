@@ -9,99 +9,66 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: d74ce913a2189dd1062b30f9def919cbbabe7b64
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742528"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746748"
 ---
 # <a name="streaming-policies"></a>Zasady przesyłania strumieniowego
 
-W usłudze Azure Media Services v3 przesyłanie strumieniowe zasady umożliwiają zdefiniowanie protokołów przesyłania strumieniowego i opcje szyfrowania dla Twojego StreamingLocators. Możesz określić nazwę zasady przesyłania strumieniowego, utworzone lub użyj jednego z wstępnie zdefiniowane zasady przesyłania strumieniowego. Wstępnie zdefiniowane zasady przesyłania strumieniowego obecnie dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_MultiDrmStreaming".
+W usłudze Azure Media Services v3 [przesyłania strumieniowego zasady](https://docs.microsoft.com/rest/api/media/streamingpolicies) umożliwiają definiowanie protokołów przesyłania strumieniowego i opcje szyfrowania dla Twojego [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md). Można użyć jednej z wstępnie zdefiniowane zasady przesyłania strumieniowego lub utworzenia niestandardowych zasad. Wstępnie zdefiniowane zasady przesyłania strumieniowego obecnie dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_MultiDrmStreaming".
 
 > [!IMPORTANT]
-> Korzystając z niestandardowego [StreamingPolicy](https://docs.microsoft.com/rest/api/media/streamingpolicies), należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi multimediów i ponownie używać ich na potrzeby Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje szyfrowania i protokołów. Konto usługi multimediów ma limit przydziału dla liczby wpisów zasad przesyłania strumieniowego. Należy nie można utworzeniem nowej zasady przesyłania strumieniowego dla każdego lokalizatora przesyłania strumieniowego.
+> * Właściwości **przesyłania strumieniowego zasady** będące daty/godziny są zawsze w formacie UTC.
+> * Należy zaprojektować ograniczony zestaw zasad dla swojego konta usługi multimediów i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje. 
 
-## <a name="streamingpolicy-definition"></a>Definicja StreamingPolicy
+## <a name="examples"></a>Przykłady
 
-W poniższej tabeli przedstawiono właściwości StreamingPolicy oraz zapewnia ich definicje.
+### <a name="not-encrypted"></a>Niezaszyfrowane
 
-|Name (Nazwa)|Opis|
-|---|---|
-|id|W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
-|name|Nazwa zasobu.|
-|properties.commonEncryptionCbcs|Konfiguracja CommonEncryptionCbcs|
-|properties.commonEncryptionCenc|Konfiguracja CommonEncryptionCenc|
-|Properties.created |Godzina utworzenia zasad przesyłania strumieniowego|
-|properties.defaultContentKeyPolicyName |ContentKey domyślne używane przez bieżące zasady przesyłania strumieniowego|
-|properties.envelopeEncryption  |Konfiguracja EnvelopeEncryption|
-|properties.noEncryption|Konfiguracje bez szyfrowania|
-|type|Typ zasobu.|
+Jeśli chcesz przesyłać strumieniowo Twojego pliku w Wyczyść (niezaszyfrowane), zestawu wstępnie zdefiniowanych zasad przesyłania strumieniowego wyczyść: do "Predefined_ClearStreamingOnly" (na platformie .NET, możesz użyć PredefinedStreamingPolicy.ClearStreamingOnly).
 
-Pełna definicja można zobaczyć [przesyłania strumieniowego zasady](https://docs.microsoft.com/rest/api/media/streamingpolicies).
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
+    });
+```
+
+### <a name="encrypted"></a>Zaszyfrowane 
+
+Jeśli zachodzi potrzeba szyfrowanie zawartości przy użyciu szyfrowania koperty i cenc, ustawić zasady "Predefined_MultiDrmCencStreaming". Te zasady wskazują, że chcesz wygenerować dwa klucze zawartości (koperta i CENC) i ustawić je w lokalizatorze. Dlatego stosowane są szyfrowania typu koperta, PlayReady i Widevine (klucz jest dostarczany do klienta odtwarzania w oparciu o skonfigurowane licencje DRM).
+
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
+        DefaultContentKeyPolicyName = contentPolicyName
+    });
+```
+
+Jeśli chcesz również zaszyfrować strumienia z CBCS (FairPlay), należy użyć "Predefined_MultiDrmStreaming".
 
 ## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
 
-Usługa Media Services obsługuje następujące opcje zapytania OData dla przesyłania strumieniowego zasad: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Opis operatora:
-
-* EQ = równa
-* Ne = nie jest równa
-* GE = większa niż lub równe
-* Le = mniejsze niż lub równe
-* Gt = większa niż
-* Lt = mniej niż
-
-### <a name="filteringordering"></a>Filtrowanie porządkowanie
-
-W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwości StreamingPolicy: 
-
-|Name (Nazwa)|Filtr|Zamówienie|
-|---|---|---|
-|id|||
-|name|Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
-|properties.commonEncryptionCbcs|||
-|properties.commonEncryptionCenc|||
-|Properties.created |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
-|properties.defaultContentKeyPolicyName |||
-|properties.envelopeEncryption|||
-|properties.noEncryption|||
-|type|||
-
-### <a name="pagination"></a>Paginacja
-
-Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. Obecnie rozmiar strony jest 10.
-
-> [!TIP]
-> Łącze do następnej zawsze należy używać wyliczania kolekcji i nie są zależne od wielkości określonej strony.
-
-Jeśli odpowiedzi na zapytanie zawiera wiele elementów, usługa zwraca "\@odata.nextLink" właściwości do pobrania następnej strony wyników. Może to służyć do strony za pomocą cały zestaw wyników. Nie można skonfigurować rozmiaru strony. 
-
-Jeśli StreamingPolicy są tworzone lub usuwane podczas stronicować kolekcji, zmiany zostaną odzwierciedlone w zwróconych wyników, (Jeśli te zmiany w części w kolekcji, która nie została pobrana.) 
-
-W poniższym przykładzie C# pokazano, jak wyliczyć za pośrednictwem wszystkich StreamingPolicies w ramach konta.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-POZOSTAŁE przykłady można znaleźć [przesyłania strumieniowego zasad — Lista](https://docs.microsoft.com/rest/api/media/streamingpolicies/list)
+Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
+* [Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
+* [Dynamiczne szyfrowanie AES-128 i usługę dostarczania kluczy](protect-with-aes128.md)
+* [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania](protect-with-drm.md)

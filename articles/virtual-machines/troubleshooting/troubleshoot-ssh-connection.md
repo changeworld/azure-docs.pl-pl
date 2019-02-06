@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 05/30/2017
 ms.author: genli
-ms.openlocfilehash: 1454eb5dbf8c80dcf7024c150dbff6a2082dbd02
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d84881d4c86fd91fce430956705791097e200937
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100278"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753422"
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Rozwiązywanie problemów z połączeniami SSH na maszynie Wirtualnej systemu Linux platformy Azure, który zakończy się niepowodzeniem, błędy, lub w przypadku odmowy
 Ten artykuł pomoże Ci znaleźć i rozwiązać problemy, które występują z powodu błędów protokołu Secure Shell (SSH), błędy połączenia SSH, lub odmówiono SSH, podczas próby nawiązania połączenia z maszyną wirtualną systemu Linux (VM). Można użyć witryny Azure portal, interfejsu wiersza polecenia platformy Azure lub rozszerzenie dostępu do maszyny Wirtualnej dla systemu Linux, aby rozwiązać problemy z połączeniem.
@@ -78,20 +78,20 @@ Użyj [weryfikowanie przepływu protokołu IP](../../network-watcher/network-wat
 Usługa Network Watcher [następnego przeskoku](../../network-watcher/network-watcher-check-next-hop-portal.md) możliwości, aby upewnić się, trasa nie jest zapobieganie ruch jest kierowany do lub z maszyny wirtualnej. Możesz również sprawdzić skuteczne trasy, aby wyświetlić wszystkie obowiązujące trasy dla interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [przepływu ruchu Using obowiązujących tras, rozwiązywać problemy z maszyny Wirtualnej](../../virtual-network/diagnose-network-routing-problem.md).
 
 ## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
-Jeśli jeszcze nie, zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Jeśli jeszcze nie, zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure przy użyciu [az login](/cli/azure/reference-index).
 
 Jeśli utworzono i przekazano niestandardowy obraz dysku systemu Linux, upewnij się, [agenta usług Microsoft Azure Linux](../extensions/agent-windows.md) wersji 2.0.5 lub nowszy jest zainstalowany. W przypadku maszyn wirtualnych utworzonych za pomocą galerii obrazów to rozszerzenie dostępu jest już zainstalowane i skonfigurowane dla Ciebie.
 
 ### <a name="reset-ssh-configuration"></a>Resetowanie konfiguracji SSH
 Początkowo można spróbować Resetowanie konfiguracji SSH do wartości domyślnych i ponownego uruchomienia serwera SSH na maszynie Wirtualnej. Nie ma to wpływu na nazwę konta użytkownika, hasła lub kluczy SSH.
-W poniższym przykładzie użyto [Resetowanie użytkownika maszyny wirtualnej az-ssh](/cli/azure/vm/user#az_vm_user_reset_ssh) można zresetować konfiguracji SSH na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+W poniższym przykładzie użyto [Resetowanie użytkownika maszyny wirtualnej az-ssh](/cli/azure/vm/user) można zresetować konfiguracji SSH na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>Resetowanie poświadczeń SSH dla użytkownika
-W poniższym przykładzie użyto [az vm użytkownik aktualizację](/cli/azure/vm/user#az_vm_user_update) zresetować poświadczenia dla `myUsername` wartość określoną w `myPassword`, na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+W poniższym przykładzie użyto [az vm użytkownik aktualizację](/cli/azure/vm/user) zresetować poświadczenia dla `myUsername` wartość określoną w `myPassword`, na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -117,7 +117,7 @@ Utwórz plik o nazwie `settings.json` o następującej zawartości:
 }
 ```
 
-Przy użyciu wiersza polecenia platformy Azure, możesz następnie wywołać `VMAccessForLinux` rozszerzenie Zresetuj połączenie SSHD przez określenie pliku json. W poniższym przykładzie użyto [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension#az_vm_extension_set) zresetować SSHD na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+Przy użyciu wiersza polecenia platformy Azure, możesz następnie wywołać `VMAccessForLinux` rozszerzenie Zresetuj połączenie SSHD przez określenie pliku json. W poniższym przykładzie użyto [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension) zresetować SSHD na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -191,7 +191,7 @@ Aby ponownie uruchomić Maszynę wirtualną przy użyciu witryny Azure portal, w
 ![Uruchom ponownie Maszynę wirtualną w witrynie Azure portal](./media/troubleshoot-ssh-connection/restart-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-W poniższym przykładzie użyto [ponownego uruchamiania maszyny wirtualnej az](/cli/azure/vm#az_vm_restart) ponownego uruchomienia maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+W poniższym przykładzie użyto [ponownego uruchamiania maszyny wirtualnej az](/cli/azure/vm) ponownego uruchomienia maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -218,7 +218,7 @@ Aby przeprowadzić ponowne wdrożenie maszyny Wirtualnej przy użyciu witryny Az
 ![Ponowne wdrażanie maszyny Wirtualnej w witrynie Azure portal](./media/troubleshoot-ssh-connection/redeploy-vm-using-portal.png)
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-Następujące przykładowe zastosowanie [ponowne wdrażanie maszyny wirtualnej az](/cli/azure/vm#az_vm_redeploy) Aby przeprowadzić ponowne wdrożenie maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
+Następujące przykładowe zastosowanie [ponowne wdrażanie maszyny wirtualnej az](/cli/azure/vm) Aby przeprowadzić ponowne wdrożenie maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`. Użyj własnych wartości w następujący sposób:
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM

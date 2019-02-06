@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2aa272c126e06b758dc3903a8ec71b7043491057
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f57175598d3d63afcc7fd050fe5aaedd62e778fe
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017654"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746408"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Przenoszenie danych z serwera SFTP przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-sftp-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-sftp.md)
 
@@ -32,7 +32,7 @@ W tym artykule opisano sposób używania działania kopiowania w usłudze Azure 
 Data factory obsługuje obecnie tylko przenosi dane z serwera SFTP do innych magazynów danych, ale nie do przenoszenia danych z innych magazynów danych do serwera SFTP. Obsługuje ona zarówno lokalnie i w chmurze serwerów SFTP.
 
 > [!NOTE]
-> Działanie kopiowania nie powoduje usunięcia pliku źródłowego, po pomyślnym są kopiowane do lokalizacji docelowej. Jeśli zachodzi potrzeba usunięcia pliku źródłowego po kopiowania zakończonego powodzeniem, należy utworzyć niestandardowe działanie, aby usunąć plik i użyć działania w potoku. 
+> Działanie kopiowania nie powoduje usunięcia pliku źródłowego, po pomyślnym są kopiowane do lokalizacji docelowej. Jeśli zachodzi potrzeba usunięcia pliku źródłowego po kopiowania zakończonego powodzeniem, należy utworzyć niestandardowe działanie, aby usunąć plik i użyć działania w potoku.
 
 ## <a name="supported-scenarios-and-authentication-types"></a>Obsługiwane scenariusze i typy uwierzytelniania
 Można użyć tego łącznika SFTP do skopiowania danych z **zarówno w chmurze serwery SFTP i SFTP w środowisku lokalnym**. **Podstawowe** i **SshPublicKey** typy uwierzytelniania są obsługiwane w przypadku łączenia się z serwerem SFTP.
@@ -119,7 +119,7 @@ Aby użyć uwierzytelniania klucza publicznego SSH, ustaw `authenticationType` j
 | nazwa użytkownika |Użytkownik, który ma dostęp do serwera SFTP |Yes |
 | privateKeyPath | Określ ścieżkę bezwzględną do pliku klucza prywatnego może dostęp do tej bramy. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. <br><br> Mają zastosowanie tylko wtedy, gdy kopiowanie danych z lokalnego serwera SFTP. |
 | privateKeyContent | Ciąg serializacji treści klucza prywatnego. Kreator kopiowania można odczytać pliku klucza prywatnego i automatycznie wyodrębnić zawartość klucza prywatnego. Jeśli używane są wszystkie inne narzędzia/zestawu SDK, należy użyć właściwości privateKeyPath. | Wybierz opcję `privateKeyPath` lub `privateKeyContent`. |
-| Hasło | Określ — dostęp próbny frazy/hasło do odszyfrowania klucza prywatnego, jeśli plik klucza, który jest chroniony przez frazę. | Tak, czy plik klucza prywatnego jest chroniony przez frazę. |
+| passPhrase | Określ — dostęp próbny frazy/hasło do odszyfrowania klucza prywatnego, jeśli plik klucza, który jest chroniony przez frazę. | Tak, czy plik klucza prywatnego jest chroniony przez frazę. |
 
 > [!NOTE]
 > Łącznik SFTP obsługuje klucz RSA/DSA OpenSSH. Upewnij się, że zawartość pliku klucza, który rozpoczyna się od "---BEGIN [RSA/DSA] PRIVATE KEY---". Jeśli plik klucza prywatnego jest plikiem ppk format, użyj narzędzia Putty konwersji ppk formacie OpenSSH.
@@ -174,11 +174,11 @@ Aby uzyskać pełną listę sekcje & właściwości dostępne Definiowanie zesta
 | --- | --- | --- |
 | folderPath |Ścieżka podrzędna w folderze. Użyj znaku ucieczki "\" dla znaków specjalnych w ciągu. Zobacz [przykładowe połączone definicje usługi i zestaw danych](#sample-linked-service-and-dataset-definitions) przykłady.<br/><br/>Można połączyć tę właściwość z **partitionBy** mieć folderu ścieżki, w oparciu o wycinek rozpoczęcia/zakończenia daty i godziny. |Yes |
 | fileName |Określ nazwę pliku w **folderPath** chcącym tabeli do odwoływania się do określonego pliku w folderze. Jeśli nie określisz żadnej wartości dla tej właściwości, tabela wskazuje wszystkie pliki w folderze.<br/><br/>Jeśli nie określono nazwy pliku dla wyjściowego zestawu danych, nazwę wygenerowanego pliku byłoby w następującym tego formatu: <br/><br/>Dane. <Guid>.txt (przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |Nie |
-| obiektu fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
+| fileFilter |Określ filtr służący do wybierają podzbiór plików w ścieżce folderu, a nie wszystkich plików.<br/><br/>Dozwolone wartości to: `*` (wielu znaków) i `?` (pojedynczy znak).<br/><br/>Przykłady 1: `"fileFilter": "*.log"`<br/>Przykład 2: `"fileFilter": 2014-1-?.txt"`<br/><br/> obiektu fileFilter jest odpowiednie dla wejściowego zestawu danych w udziale plików. Ta właściwość nie jest obsługiwana przy użyciu systemu plików HDFS. |Nie |
 | partitionedBy |partitionedBy może służyć do określenia dynamiczne folderPath, nazwa_pliku danych szeregów czasowych. Na przykład folderPath sparametryzowane za każdą godzinę danych. |Nie |
 | format | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. Ustaw **typu** właściwości w obszarze format ma jedną z następujących wartości. Aby uzyskać więcej informacji, zobacz [Format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu Json](data-factory-supported-file-and-compression-formats.md#json-format), [Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format), [Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje. <br><br> Jeśli chcesz **skopiuj pliki — jest** między opartych na plikach magazynów (kopia binarna), Pomiń sekcji format w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Obsługiwane typy to: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy: **Optymalne** i **najszybszy**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji w usłudze Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
-| useBinaryTransfer |Określ czy używać trybu binarnego transferu. Wartość true na false kodów ASCII i binarny trybu. Wartość domyślna: True. Ta właściwość jest używana tylko w przypadku, gdy skojarzonej połączonej usługi, typ jest typem: SerwerFTP. |Nie |
+| useBinaryTransfer |Określ czy używać trybu binarnego transferu. Wartość true na false kodów ASCII i binarny trybu. Wartość domyślna: True. Ta właściwość jest używana tylko w przypadku, gdy skojarzonej połączonej usługi, typ jest typem: FtpServer. |Nie |
 
 > [!NOTE]
 > Nie można jednocześnie używać nazwy pliku i obiektu fileFilter.
@@ -205,7 +205,7 @@ W tym przykładzie {wycinek} jest zastępowana wartością zmiennej systemowej S
 "folderPath": "wikidatagateway/wikisampledataout/{Year}/{Month}/{Day}",
 "fileName": "{Hour}.csv",
 "partitionedBy":
- [
+[
     { "name": "Year", "value": { "type": "DateTime", "date": "SliceStart", "format": "yyyy" } },
     { "name": "Month", "value": { "type": "DateTime", "date": "SliceStart", "format": "MM" } },
     { "name": "Day", "value": { "type": "DateTime", "date": "SliceStart", "format": "dd" } },

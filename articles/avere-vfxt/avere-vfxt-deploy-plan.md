@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: c0304e290d18e6569e3fcc2efbab8af15727b80c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508165"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744660"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planowanie systemu Avere vFXT
 
@@ -37,6 +37,9 @@ Podczas planowania systemu vFXT Avere infrastruktury sieci, należy przestrzega�
 * Znajdź systemami obliczeń klienta blisko vFXT klastra. Magazyn zaplecza może być bardziej zdalnego.  
 
 * Dla uproszczenia klastra vFXT i lokalizacji maszyny Wirtualnej kontrolera klastra w tej samej sieci wirtualnej (vnet) i w tej samej grupie zasobów. Ponadto powinny używać tego samego konta magazynu. (Kontroler klastra tworzy klaster i może również służyć do zarządzania klastrem wiersza polecenia).  
+
+  > [!NOTE] 
+  > Szablon tworzenia klastra, można utworzyć nową grupę zasobów i nowe konto magazynu dla klastra. Można określić istniejącą grupę zasobów, ale może być pusta.
 
 * Klaster musi znajdować się we własnej podsieci, aby uniknąć konfliktów adresów IP z klientami lub zasoby obliczeniowe. 
 

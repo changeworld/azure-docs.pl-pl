@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 61957b89bd5ec9a42d6fd03c7009187d71e448f4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5fcd7f05aeb294441b16bab0aeb18ef5d0bf5c28
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474789"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749039"
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Przywracanie bazy danych SQL Azure lub trybu failover do dodatkowej
 
@@ -38,7 +38,7 @@ Aby dowiedzieć się więcej na temat ciągłość działania — scenariusze i 
 Do poprawnego działania odzyskiwania do innego regionu danych przy użyciu grupy trybu failover lub geograficznie nadmiarowych kopii zapasowych, należy przygotować serwer w innym centrum danych awarię w stanie się nowym serwerem podstawowym należy wystąpić również mają dobrze zdefiniowane czynności opisanych i należy przetestować, aby zapewnić sprawne odzyskiwanie. Te kroki przygotowania obejmują:
 
 - Określ serwer bazy danych SQL w innym regionie, aby stać się nowym serwerem podstawowym. Dla przywracania geograficznego, zwykle jest to serwer w [sparowanym regionie](../best-practices-availability-paired-regions.md) dla regionu, w którym znajdują się bazy danych. Pozwala to wyeliminować koszty dodatkowy ruch podczas operacji przywracania geograficznego.
-- Identyfikowanie i opcjonalnie zdefiniowanie, reguły zapory na poziomie serwera, potrzebne na użytkownikom dostęp do nowej podstawowej bazy danych.
+- Identyfikowanie i opcjonalnie zdefiniowanie, reguły zapory poziomu serwera IP potrzebne na użytkownikom dostęp do nowej podstawowej bazy danych.
 - Określ, jak chcesz przekierować użytkowników do nowym serwerem podstawowym, takie jak, zmieniając parametry połączenia lub zmieniając wpisy DNS.
 - Identyfikowanie i opcjonalnie utworzyć, dane logowania, które muszą znajdować się w bazie danych master w nowym serwerem podstawowym i upewnij się, że te logowania do odpowiednich uprawnień w bazie danych master, jeśli istnieje. Aby uzyskać więcej informacji, zobacz [zabezpieczeń bazy danych SQL Database po awarii](sql-database-geo-replication-security-config.md)
 - Określ reguły alertów, które muszą zostać zaktualizowane, aby mapować do nowej podstawowej bazy danych.

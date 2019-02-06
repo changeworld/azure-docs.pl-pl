@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 4c5742f8133b5915b7c838888f9887482ac5627e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: be66f24ec6532b93c4554568b0a58d467a09c600
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695359"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746425"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -111,7 +111,7 @@ Jeśli organizacja wymaga dostępu do Internetu za pośrednictwem uwierzytelnion
 
 Dołączenie do hybrydowej usługi Azure AD jest proces automatycznego rejestrowania urządzeń przyłączonych do domeny lokalnej za pomocą usługi Azure AD. Istnieją przypadki, w których nie chcesz wszystkich urządzeń do automatycznej rejestracji. Jeśli to PRAWDA dla Ciebie, zobacz [sposób kontrolowania dołączenie do hybrydowej usługi Azure AD urządzeń](hybrid-azuread-join-control.md).
 
-Przyłączone do domeny systemu Windows 10 urządzenia są już [usługi Azure AD zarejestrowany](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) do swojej dzierżawy, należy rozważyć usunięcie tego stanu przed włączeniem dołączenie do hybrydowej usługi Azure AD. Podwójna stanu do obu, dołączenie do hybrydowej usługi Azure AD i Azure AD, zarejestrowane urządzenia nie jest obsługiwane. Z wersji systemu Windows 10 1809 wprowadzono następujące zmiany w celu uniknięcia tego podwójną stanu: 
+Przyłączone do domeny systemu Windows 10 urządzenia są już [usługi Azure AD zarejestrowany](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) do swojej dzierżawy, zdecydowanie zalecamy usunięcie tego stanu przed włączeniem dołączenie do hybrydowej usługi Azure AD. Z wersji systemu Windows 10 1809 wprowadzono następujące zmiany w celu uniknięcia tego podwójną stanu: 
  - Wszelkie istniejący stan usługi Azure AD zarejestrowany będą automatycznie usuwane, gdy urządzenie jest przyłączone do usługi Azure AD hybrydowej. 
  - Użytkownik może uniemożliwić urządzenia przyłączone do domeny usługi Azure AD zarejestrowany przez dodanie tego klucza rejestru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001
 
@@ -148,17 +148,17 @@ Począwszy od wersji 1.1.819.0, program Azure AD Connect zapewnia kreator umożl
  Jeśli zainstalowanie wymaganej wersji programu Azure AD Connect nie jest dostępną opcją w, zobacz [jak ręcznie skonfigurować rejestrację urządzeń](https://docs.microsoft.com/en-us/azure/active-directory/devices/hybrid-azuread-join-manual). 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Obsługa Identyfikatora alternatywnej nazwy logowania w dołączenie do hybrydowej usługi Azure AD
+## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>Obsługa UPN usługi AD w środowisku lokalnym w dołączenie do hybrydowej usługi Azure AD
 
-Windows 10 hybrydowych w usłudze Azure AD join udostępnia ograniczoną obsługę [alternatywnych identyfikatorów logowania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) na podstawie typu Identyfikatora logowania alternatywnej [metodę uwierzytelniania](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typ domeny i wersji systemu Windows 10. Istnieją dwa rodzaje alternatywne identyfikatory, które może znajdować się w danym środowisku:
+Czasami lokalnej usługi AD UPN mogą się różnić od usługi platformy Azure UPN usługi AD. W takich przypadkach systemu Windows 10 hybrydowej usługi Azure AD join udostępnia ograniczoną obsługę lokalnej nazwy UPN AD na podstawie [metodę uwierzytelniania](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), typ domeny i wersji systemu Windows 10. Istnieją dwa typy w środowisku lokalnym UPN AD, które może znajdować się w danym środowisku:
 
- - Routing alternatywnego Identyfikatora logowania: Routing alternatywny identyfikator logowania ma prawidłową domenę zweryfikowaną, która jest zarejestrowana za pomocą rejestratora domen. Na przykład, jeśli contoso.com jest domena podstawowa, contoso.org i contoso.co.uk są prawidłowe domen, które są własnością firmy Contoso i [zweryfikowane w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
+ - Routable UPN: Routing UPN ma prawidłową domenę zweryfikowaną, która jest zarejestrowana za pomocą rejestratora domen. Na przykład, jeśli contoso.com jest domena podstawowa w usłudze Azure AD, contoso.org jest domena podstawowa w lokalnym programie AD należące do firmy Contoso i [zweryfikowane w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain)
  
- - Bez obsługi routingu alternatywnego Identyfikatora logowania: Nierutowalny alternatywnego Identyfikatora logowania nie ma zweryfikowanej domeny. Dotyczy tylko w ramach prywatnej sieci organizacji. Na przykład jeśli podstawowy domena jest domeną contoso.com, contoso.local nie jest możliwe do zweryfikowania domeny w Internecie, ale jest używany w ramach sieci firmy Contoso.
+ - Nierutowalny nazwa UPN: Nierutowalny nazwy UPN nie ma zweryfikowanej domeny. Dotyczy tylko w ramach prywatnej sieci organizacji. Na przykład, jeśli contoso.com jest domena podstawowa w usłudze Azure AD, contoso.local jest domena podstawowa w lokalnej usługi AD, ale nie jest możliwe do zweryfikowania domeny w Internecie i używane w katalogu firmy Contoso tylko w sieci.
  
-Poniższa tabela zawiera szczegółowe informacje na temat obsługi jednego z tych alternatywnych identyfikatorów logowania w dołączenie do hybrydowej usługi Azure AD w systemie Windows 10
+Poniższa tabela zawiera szczegółowe informacje dotyczące pomocy technicznej dla tych lokalnego UPN usługi AD systemu Windows 10 hybrydowej usługi Azure AD sprzężenia
 
-|Typ Identyfikatora logowania alternatywnej|Typ domeny|Wersja systemu Windows 10|Opis|
+|Typ w środowisku lokalnym UPN usługi AD|Typ domeny|Wersja systemu Windows 10|Opis|
 |-----|-----|-----|-----|
 |Routing|Federacyjne |W wersji 1703|Ogólnie dostępna|
 |Routing|Zarządzane|W wersji 1709|Obecnie dostępna w prywatnej wersji zapoznawczej. Samoobsługowe Resetowanie HASEŁ usługi Azure AD nie jest obsługiwane. |

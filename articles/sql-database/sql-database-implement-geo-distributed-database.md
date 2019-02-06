@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/10/2019
-ms.openlocfilehash: 086e1957c68c5864997c9df9213a0c82cbf4c852
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 11c1f34176e7852806464781e80d6dc0fd5345a4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560757"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750345"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database"></a>Samouczek: Implementowanie rozproszonej geograficznie bazy danych
 
@@ -36,7 +36,7 @@ Do ukończenia tego samouczka, upewnij się, że zainstalowano następujące ele
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Baza danych Azure SQL. Aby utworzyć jedno użycie
-  - [Portal](sql-database-get-started-portal.md)
+  - [Portal](sql-database-single-database-get-started.md)
   - [Interfejs wiersza polecenia](sql-database-cli-samples.md)
   - [Program PowerShell](sql-database-powershell-samples.md)
 
@@ -48,7 +48,7 @@ Do ukończenia tego samouczka, upewnij się, że zainstalowano następujące ele
 > [!IMPORTANT]
 > Pamiętaj skonfigurować reguły zapory do Użyj publicznego adresu IP komputera, na którym wykonujesz kroki opisane w tym samouczku. Bazy danych na poziomie zapory, które zasady są automatycznie replikowane do serwera pomocniczego.
 >
-> Aby uzyskać informacje, zobacz [Tworzenie reguły zapory na poziomie bazy danych](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) lub, aby określić adres IP używany dla reguły zapory na poziomie serwera dla komputera adresem [utworzyć zaporę na poziomie serwera](sql-database-get-started-portal-firewall.md).  
+> Aby uzyskać informacje, zobacz [Tworzenie reguły zapory na poziomie bazy danych](/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) lub, aby określić adres IP używany dla reguły zapory na poziomie serwera dla komputera adresem [utworzyć zaporę na poziomie serwera](sql-database-server-level-firewall-rule.md).  
 
 ## <a name="create-a-failover-group"></a>Utwórz grupę trybu failover
 

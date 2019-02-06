@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65c685936fabab65698a077f22c2dfde17469055
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3cb868da60d56728e5d0c450ab362d6f381b90ea
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436420"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756567"
 ---
-# <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Oracle wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
+# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -309,22 +309,23 @@ ms.locfileid: "54436420"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Następujące ogólne obsługi konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle obsługiwane jest również. Szczegółowe informacje są nazywane w tym dokumencie. W tym dokumencie opisano kilka różnych obszarów, aby wziąć pod uwagę podczas wdrażania bazy danych Oracle w przypadku obciążeń SAP w modelu IaaS platformy Azure. Jako warunek wstępny do tego dokumentu, powinien mieć odczytu dokumentu [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) oraz inne przewodniki w [obciążeń SAP nawdokumentacjiplatformyAzure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
+W tym dokumencie opisano kilka różnych obszarów, aby wziąć pod uwagę podczas wdrażania bazy danych Oracle w przypadku obciążeń SAP w modelu IaaS platformy Azure. Przed przeczytaniem tego dokumentu, zalecamy przeczytanie [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md). Zaleca się również przeczytanie inne przewodniki w [obciążeń SAP w dokumentacji platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started). 
 
-Wersje bazy danych Oracle i odpowiednie wersje systemu operacyjnego, które są obsługiwane dla uruchamianie oprogramowania SAP w bazie danych Oracle na maszynach wirtualnych platformy Azure można znaleźć w uwadze SAP [2039619].
+Można znaleźć informacje o wersji programu Oracle i odpowiednie wersje systemów operacyjnych, które są obsługiwane przez uruchamianie oprogramowania SAP w bazie danych Oracle na platformie Azure w Uwaga SAP [2039619].
 
-Ogólne informacje o systemie SAP Business Suite Oracle znajdują się w <https://www.sap.com/community/topic/oracle.html> oprogramowania Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchamiać w systemie Microsoft Azure. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
+Ogólne informacje o systemie SAP Business Suite Oracle znajduje się w temacie [SAP w bazie danych Oracle](https://www.sap.com/community/topic/oracle.html).
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchamiać w systemie Microsoft Azure. Aby uzyskać więcej informacji na temat ogólną pomoc techniczną dla funkcji Windows Hyper-V i platformą Azure, sprawdź [Oracle i często zadawane pytania dotyczące programu Microsoft Azure](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
-SAP Notes istotne dla listy Oracle, SAP i platformy Azure, takich jak:
+## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>SAP Notes istotne dla Oracle, SAP i platformy Azure 
 
-Poniższe uwagi SAP odnoszą się do SAP na platformie Azure dotyczące obszaru omówione w tym dokumencie:
+Poniższe uwagi SAP są związane z SAP na platformie Azure.
 
-| Numer | Stanowisko |
+| Numer | Tytuł |
 | --- | --- |
 | [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
 | [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
-| [1999351] |Rozwiązywanie problemów z rozszerzonego monitorowania platformy Azure dla rozwiązania SAP |
-| [2178632] |Klucz metryki monitorowania dla rozwiązania SAP na platformie Microsoft Azure |
+| [1999351] |Rozwiązywanie problemów z rozszerzonego monitorowania dla rozwiązania SAP platformy Azure |
+| [2178632] |Klucz metryki monitorowania dla rozwiązania SAP w systemie Microsoft Azure |
 | [2191498] |SAP w systemie Linux przy użyciu platformy Azure: Rozszerzone monitorowanie |
 | [2039619] |Aplikacje środowiska SAP na Microsoft Azure przy użyciu bazy danych programu Oracle: Obsługiwane produkty i wersje |
 | [2243692] |Systemu Linux na platformie Microsoft Azure (IaaS) maszyny Wirtualnej: Problemy dotyczące licencji SAP |
@@ -333,34 +334,46 @@ Poniższe uwagi SAP odnoszą się do SAP na platformie Azure dotyczące obszaru 
 | [2171857] |Oracle Database 12c - Obsługa systemu plików w systemie Linux |
 | [1114181] |Bazą danych Oracle 11g - Obsługa systemu plików w systemie Linux |
 
-Dokładne konfiguracje i funkcje obsługiwane przez bazy danych Oracle i SAP na platformie Azure są udokumentowane w artykule Uwaga SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619)
+Dokładne konfiguracje i funkcje, które są obsługiwane przez bazy danych Oracle i SAP na platformie Azure są udokumentowane w artykule Uwaga SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619).
 
-Windows i Oracle Linux są tylko systemy operacyjne obsługiwane przez bazy danych Oracle i SAP na platformie Azure. Powszechnie używanych dystrybucji systemu SLES i RHEL Linux nie są obsługiwane do wdrożenia składników bazy danych Oracle na platformie Azure. Składniki Oracle obejmują klienta bazy danych Oracle, który jest używany przez aplikacje SAP nawiązywania połączenia z bazami danych Oracle. Wyjątki, zgodnie z Uwaga SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619) są składniki SAP, które nie korzystają z klienta bazy danych Oracle. Takie składniki SAP są SAP umieścić autonomicznej, serwer komunikatów, umieścić w kolejce replikacji usługi, WebDispatcher i bramy SAP.  Pomimo uruchomiona z bazami danych Oracle i wystąpieniom aplikacji SAP w systemie Oracle Linux, możesz uruchomić usługi centralne SAP na systemu SLES lub RHEL i chronić go za pomocą klastra na podstawie program Pacemaker. Program pacemaker jako platforma o wysokiej dostępności nie jest obsługiwana w systemie Oracle Linux.
+Windows i Oracle Linux są tylko systemy operacyjne, które są obsługiwane przez bazy danych Oracle i SAP na platformie Azure. Powszechnie używanych dystrybucji systemu SLES i RHEL Linux nie są obsługiwane dla wdrażania składników oprogramowania Oracle na platformie Azure. Składniki Oracle obejmują klienta Oracle Database, która jest używana przez aplikacje SAP nawiązywania połączenia z bazami danych Oracle. 
 
-## <a name="specifics-to-oracle-database-on-windows"></a>Charakterystyka do bazy danych Oracle na Windows
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Wskazówki dotyczące konfigurowania oprogramowania Oracle w przypadku instalacji SAP na maszynach wirtualnych platformy Azure na Windows
+Wyjątki, zgodnie z Uwaga SAP [#2039619](https://launchpad.support.sap.com/#/notes/2039619), są składnikami SAP, które nie używają klienta Oracle Database. Takie składniki SAP są SAP umieścić autonomicznej, serwer komunikatów, umieścić w kolejce replikacji usługi, WebDispatcher i bramy SAP.  
 
-Zgodnie z Podręcznika instalacji SAP wszystkie pliki związane z bazy danych Oracle nie należy się do sterownika systemu dla dysku systemu operacyjnego maszyny Wirtualnej (dysk c:) lub zainstalowane. Różne rozmiary maszyn wirtualnych obsługują różne liczby dysków do dołączenia. Mniejsze typy maszyn wirtualnych umożliwiają mniejszej liczby dysków do dołączenia. W przypadku takich mniejszych maszyn wirtualnych firma Microsoft zaleca instalowanie/lokalizowanie głównej, Oracle, etap "saptrace", "saparch", "sapbackup", "sapcheck", "sapreorg" do dysku systemu operacyjnego. Te elementy składniki bazami danych Oracle nie są intensywne operacje We/Wy i operacje We/Wy przepływności. W związku z tym dyskiem systemu operacyjnego może obsługiwać wymagania dotyczące operacji We/Wy. Domyślny rozmiar dysku systemu operacyjnego jest 127GB. Jeśli dostępne wolne miejsce nie jest wystarczająco dużo, może być dysk [ze zmienionym rozmiarem](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) do 2048 GB. Oracle database i wykonaj ponownie zaloguj się potrzebę pliki mają być przechowywane na dyskach osobne dane. Występuje wyjątek z obszaru tymczasowego Oracle tabel. Tempfiles mogą być tworzone na D: / (inne niż persistend dysku). Nietrwałe dysku D:\ oferuje również lepszą opóźnienia operacji We/Wy i przepływność (z wyjątkiem maszyny wirtualne z serii A). W celu określenia ilości miejsca, tempfiles właściwe, możesz sprawdzić rozmiary tempfiles na istniejących systemów.
+Nawet wtedy, gdy korzystasz z bazami danych Oracle i wystąpieniom aplikacji SAP w systemie Oracle Linux, można uruchomić usługi centralne SAP w systemie SLES lub RHEL i chronić go za pomocą klastra na podstawie program Pacemaker. Program pacemaker jako platforma o wysokiej dostępności nie jest obsługiwana w systemie Oracle Linux.
+
+## <a name="specifics-for-oracle-database-on-windows"></a>Szczegółowe informacje o bazy danych Oracle na Windows
+
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Wskazówki dotyczące konfigurowania oprogramowania Oracle w przypadku instalacji SAP na maszynach wirtualnych Azure na Windows
+
+Zgodnie z Podręcznika instalacji SAP pliki związane z bazy danych Oracle nie zainstalowane lub znajduje się w sterowniku system dla dysku systemu operacyjnego maszyny Wirtualnej (dysk c:). Maszyny wirtualne o różnych rozmiarach, może obsługiwać różne liczby dołączonych dysków. Mniejszych typów maszyn wirtualnych może obsługiwać mniejszej liczby dołączonych dysków. 
+
+W przypadku mniejszych maszyn wirtualnych zaleca się instalowanie/lokalizowanie głównej bazy danych Oracle, etap, "saptrace", "saparch", "sapbackup", "sapcheck" lub "sapreorg" do dysku systemu operacyjnego. Te elementy składniki bazami danych Oracle nie są intensywne operacje We/Wy i operacje We/Wy przepływności. Oznacza to, że dysk systemu operacyjnego może obsłużyć wymagania dotyczące operacji We/Wy. Domyślny rozmiar dysku systemu operacyjnego jest 127 GB. 
+
+Jeśli go nie ma wystarczającej ilości wolnego miejsca dostępna, może być dysk [ze zmienionym rozmiarem](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) do 2048 GB. Oracle Database i wykonaj ponownie zaloguj się potrzebę pliki mają być przechowywane na dyskach osobne dane. Występuje wyjątek, aby uzyskać tymczasowy obszar tabel Oracle. Tempfiles mogą być tworzone na D: / (dysk-trwałe). Nietrwałe dysku D:\ oferuje również lepszą opóźnienia operacji We/Wy i przepływność (z wyjątkiem maszyny wirtualne z serii A). 
+
+Aby określić odpowiednią ilość miejsca na tempfiles, możesz sprawdzić rozmiary tempfiles na istniejących systemów.
 
 ### <a name="storage-configuration"></a>Konfiguracja usługi Storage
-Tylko pojedyncze wystąpienie bazy danych Oracle przy użyciu dysków sformatowanym w systemie NTFS jest obsługiwana. Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS na dyski Managed Disks (zalecane) lub wirtualnych dysków twardych. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na usłudze Azure Storage BLOB strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub [usługi Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Tylko jednego wystąpienia bazy danych Oracle przy użyciu systemu plików NTFS sformatowane dysków jest obsługiwana. Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS na dyskach zarządzanych (zalecane) lub na wirtualnych dyskach twardych. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na [magazynu obiektów blob platformy Azure strony](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) lub [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
 
-Zaleca się używać [usługi Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Ponadto zdecydowanie zaleca się przy użyciu [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) wdrożeń bazy danych Oracle
+Zdecydowanie zalecamy używanie [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Ponadto zdecydowanie zalecamy używanie [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) wdrożeń bazy danych Oracle.
 
-Każdy rodzaj dyski sieciowe lub udziałach zdalnych, takich jak usługi plików platformy Azure:
+Dyski sieciowe lub udziałach zdalnych, takich jak usługi plików platformy Azure nie są obsługiwane dla plików bazy danych Oracle. Aby uzyskać więcej informacji, zobacz:
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+- [Introducing Microsoft Azure File Service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx) (Wprowadzenie do usługi plików platformy Microsoft Azure)
 
-czy **nie** obsługiwane dla plików bazy danych Oracle!
+- [Persisting connections to Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx) (Utrwalanie połączeń z plikami platformy Microsoft Azure)
 
-Przy użyciu dysków oparte na platformie Azure Page BLOB Storage lub usługi managed Disks, instrukcje wprowadzone w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) dotyczą wdrożeń z bazy danych programu Oracle także.
 
-Zgodnie z objaśnieniem [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md), istnieją limity przydziału przepustowość operacji We/Wy na dyskach platformy Azure. Dokładny w zależności od typu maszyny Wirtualnej służą przydziały. Lista typów maszyn wirtualnych z ich limitami przydziału można znaleźć [tutaj (Windows)][virtual-machines-sizes-windows].
+Jeśli używasz dysków, które są oparte na magazynie obiektów blob platformy Azure strony lub Managed Disks instrukcji w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) dotyczy także wdrożeń z bazą danych Oracle.
 
-Aby zidentyfikować obsługiwane typy maszyn wirtualnych platformy Azure, zapoznaj się uwagę [1928533].
+Istnieją limity przydziału przepustowość operacji We/Wy na dyskach platformy Azure. To pojęcie to wyjaśnione w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md). Dokładne przydziały są zależne od typu maszyny Wirtualnej, którego używasz. Lista typów maszyn wirtualnych z ich przydziały znajduje się w temacie [rozmiary dla Windows maszyn wirtualnych na platformie Azure][virtual-machines-sizes-windows].
 
-Minimalna konfiguracja:
+Aby określić obsługiwane typy maszyn wirtualnych platformy Azure, zobacz uwagę [1928533].
+
+Minimalna konfiguracja jest następująca: 
+
 | Składnik | Dysk | Buforowanie | Pula magazynów |
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA & mirrlogB | Premium | Brak | Nie jest wymagany |
@@ -372,7 +385,8 @@ Minimalna konfiguracja:
 
 Wybór dysków do obsługi dzienników online Powtórz powinien opierać się przez wymagania dotyczące operacji We/Wy. Istnieje możliwość przechowywania wszystkich sapdata1... n (obszary tabel) na jednym jednego zainstalowanego dysku tak długo, jak rozmiar, operacje We/Wy i przepływność spełniają wymagania. 
 
-Konfiguracja wydajności:
+Konfiguracja wydajności jest następująca:
+
 | Składnik | Dysk | Buforowanie | Pula magazynów |
 | --- | ---| --- | --- |
 | \oracle\<SID > \origlogaA | Premium | Brak | Mogą być używane.  |
@@ -384,68 +398,69 @@ Konfiguracja wydajności:
 | \oracle\<SID > \oraarch* | Premium | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | Nie jest wymagany |
 
-*(n+1) - hostingu obszary tabel systemu, TEMP i cofania. Wzorzec operacji We/Wy systemu i cofania obszary tabel różnią się od innych obszary tabel hostowania danych aplikacji. Brak buforowania jest najlepszym rozwiązaniem dla wydajności systemu i cofania obszary tabel.
-* oraarch - puli magazynów nie jest potrzebna w widoku wydajności. Może służyć do uzyskiwanie dodatkowego miejsca
+* (n + 1): hosting systemu, TEMP i cofania obszary tabel. Wzorzec operacji We/Wy systemu i cofania obszary tabel różnią się od innych obszary tabel hostowania danych aplikacji. Brak buforowania jest najlepszym rozwiązaniem dla wydajności systemu i cofania obszary tabel.
 
-Jeśli więcej operacji We/Wy są wymagane, zaleca się utworzyć jedno urządzenie logiczne dużych przez wiele dysków zainstalowanych za pomocą okna pul magazynów (tylko dostępne w systemie Windows Server 2012 lub nowszy). Takie podejście ułatwia zmniejszenie administracyjnych kosztów ogólnych zarządzać miejscem na dysku i pozwala uniknąć nakład pracy, aby ręcznie przekazywać pliki na wielu dyskach zainstalowanego.
+* oraarch: Pula magazynów nie jest konieczne z punktu widzenia wydajności. Może służyć do uzyskiwanie dodatkowego miejsca.
+
+Więcej operacji We/Wy są wymagane, zaleca się tworzenie jednego urządzenia logicznego dużych przez wiele dysków zainstalowanych przy użyciu pul magazynu systemu Windows (tylko dostępne w systemie Windows Server 2012 lub nowszy). To podejście upraszcza administrowanie w czasie Zarządzanie miejscem na dysku i pomaga uniknąć nakład pracy ręcznie dystrybucji plików na wielu dyskach zainstalowanego.
 
 
 #### <a name="write-accelerator"></a>Akcelerator zapisu
-Dla maszyn wirtualnych serii M platformy Azure można zmniejszyć opóźnienie zapisu w dziennikach Powtórz online przez czynników, w porównaniu do wydajności usługi Azure Premium Storage, korzystając z akceleratorem zapisu platformy Azure. Włączyć akcelerator zapisu platformy Azure dla dysków (VHD) na podstawie usługi Azure Premium Storage, które są używane dla plików dziennika ponownego wykonywania w trybie online. Szczegółowe informacje mogą być odczytywane w dokumencie [akceleratorem zapisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+Dla maszyn wirtualnych serii M platformy Azure można zmniejszyć opóźnienie zapisu w dziennikach Powtórz online od czynników, w porównaniu do usługi Azure Premium Storage. Włączyć akcelerator zapisu platformy Azure dla dysków (VHD) na podstawie usługi Azure Premium Storage, które są używane dla plików dziennika ponownego wykonywania w trybie online. Aby uzyskać więcej informacji, zobacz [akceleratorem zapisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 
-### <a name="backup--restore"></a>Wykonywanie kopii zapasowych i ich przywracanie
-Dla funkcji backup/restore, SAP BR * narzędzia dla oprogramowania Oracle są obsługiwane w taki sam sposób jak w standardowych systemów operacyjnych Windows Server. Menedżer odzyskiwania bazy danych Oracle (RMAN) jest również obsługiwana dla kopii zapasowych na dysku i przywrócenie z dysku.
+### <a name="backuprestore"></a>/ Przywracania kopii zapasowej
+Dla funkcji backup/restore, SAP BR * narzędzia na oprogramowanie Oracle, są obsługiwane w taki sam sposób, ponieważ znajdują się na standardowych systemy operacyjne Windows Server. Menedżer odzyskiwania bazy danych Oracle (RMAN) jest również obsługiwana dla kopii zapasowych na dysku i przywrócenie z dysku.
 
-Usługa Kopia zapasowa Azure umożliwia również wykonywanie aplikacji spójnej kopii zapasowych maszyn wirtualnych. Artykuł [Planowanie infrastruktury kopii zapasowej maszyny Wirtualnej na platformie Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction), wyjaśnia, usługi Kopia zapasowa Azure korzysta z funkcji usługi VSS Windows do wykonywania kopii zapasowych spójne aplikacji. Wersje bazami danych Oracle, które są obsługiwane na platformie Azure przez firmę SAP będą mogli korzystać z funkcji usługi VSS dla kopii zapasowych. Szczegółowe informacje mogą być odczytywane w dokumentacji programu Oracle [podstawowe pojęcia dotyczące bazy danych kopii zapasowej i odzyskiwania z usługami VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
+Umożliwia także usługi Azure Backup do uruchomienia spójnych z aplikacją kopii zapasowych maszyn wirtualnych. Artykuł [Planowanie infrastruktury kopii zapasowej maszyny Wirtualnej na platformie Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) wyjaśnia, jak usługa Azure Backup używa funkcji Windows VSS do wykonywania kopii zapasowych spójnych z aplikacją. Wersje bazami danych Oracle, które są obsługiwane na platformie Azure przez firmę SAP mogą korzystać z funkcji usługi VSS dla kopii zapasowych. Aby uzyskać więcej informacji, zobacz dokumentację programu Oracle [podstawowe pojęcia związane z kopii zapasowej bazy danych i odzyskiwania z usługami VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
 
 
 ### <a name="high-availability"></a>Wysoka dostępność
-Środowiska Oracle Data Guard jest obsługiwana dla wysokiej dostępności i celów odzyskiwania po awarii. Aby osiągnąć automatycznej pracy awaryjnej w Data Guard, można użyć szybkiego rozpoczęcia pracy awaryjnej (FSFA). Obserwator (FSFA) jest wyzwoleniem trybu failover. Bez korzystania z FSFA tylko konfiguracja ręczna praca awaryjna jest możliwe.
+Środowiska Oracle Data Guard jest obsługiwana dla wysokiej dostępności i celów odzyskiwania po awarii. Aby osiągnąć automatycznej pracy awaryjnej w Data Guard, trzeba użyć szybkiego rozpoczęcia pracy awaryjnej (FSFA). Obserwator (FSFA) wyzwala przełączenie w tryb failover. Jeśli nie używasz FSFA, można używać tylko konfiguracji ręcznej pracy awaryjnej.
 
-Aspekty odzyskiwania po awarii dla baz danych Oracle na platformie Azure są przedstawione w artykule [odzyskiwanie po awarii dla bazy danych Oracle database 12c w środowisku platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
+Aby uzyskać więcej informacji na temat odzyskiwania po awarii dla baz danych Oracle na platformie Azure, zobacz [odzyskiwanie po awarii dla bazy danych Oracle database 12c w środowisku platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Accelerated Networking
-W przypadku wdrożeń oprogramowania Oracle na Windows zalecane jest zgodnie z opisem w dokumencie przy użyciu funkcji platformy Azure z przyspieszonej sieci [usługę Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Należy również rozważyć zaleceń w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md). 
-
+### <a name="accelerated-networking"></a>Wydajniejsze sieci
+W przypadku wdrożeń oprogramowania Oracle na Windows zalecamy przyspieszonej łączności sieciowej zgodnie z opisem w [Azure accelerated networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/). Należy również rozważyć zaleceń, które zostały wprowadzone w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md). 
 ### <a name="other"></a>Inne
-Zastosuj wszystkie inne ogólnych zagadnień, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie, zgodnie z opisem w dokumencie [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) wdrożeń maszyn wirtualnych przy użyciu bazy danych programu Oracle jako dobrze.
+[Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) opisano inne ważne pojęcia związane z wdrożeniami maszyn wirtualnych przy użyciu bazy danych Oracle, łącznie z zestawami dostępności platformy Azure i monitorowanie SAP.
 
-## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Charakterystyka do bazy danych Oracle w systemie Oracle Linux
-Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchomić na Microsoft Azure z systemem Oracle Linux jako system operacyjny gościa. Aby uzyskać więcej informacji na temat ogólnych obsługi funkcji Windows Hyper-V i platformy Azure Sprawdź: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
+## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Szczegółowe informacje o bazy danych Oracle w systemie Oracle Linux
+Oprogramowanie Oracle jest obsługiwana przez oprogramowanie Oracle, aby uruchomić na Microsoft Azure z systemem Oracle Linux jako system operacyjny gościa. Aby uzyskać więcej informacji na temat ogólną pomoc techniczną dla funkcji Windows Hyper-V i platformą Azure, zobacz [platformy Azure i Oracle — często zadawane pytania](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
-Następujące ogólne obsługi konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle obsługiwane jest również. Szczegóły zostały omówione w tej części dokumentu.
+Obsługiwane jest również konkretnego scenariusza aplikacji SAP z wykorzystaniem baz danych Oracle. Szczegóły zostały omówione w następnej części tego dokumentu.
 
 ### <a name="oracle-version-support"></a>Obsługa wersji programu Oracle
-Wersje bazy danych Oracle i odpowiednie wersje systemu operacyjnego, które są obsługiwane dla uruchamianie oprogramowania SAP w bazie danych Oracle na maszynach wirtualnych platformy Azure można znaleźć w uwadze SAP [2039619].
+Aby uzyskać informacje o Oracle, które wersje i odpowiednie wersje systemu operacyjnego jest obsługiwane uruchamianie oprogramowania SAP w bazie danych Oracle na maszynach wirtualnych platformy Azure, patrz Uwaga SAP [2039619].
 
-Ogólne informacje o systemie SAP Business Suite Oracle można znaleźć w <https://www.sap.com/community/topic/oracle.html>
+Ogólne informacje o systemie SAP Business Suite Oracle znajdują się w [SAP na stronę społeczności programu Oracle](https://www.sap.com/community/topic/oracle.html).
 
-### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Wskazówki dotyczące konfigurowania oprogramowania Oracle w przypadku instalacji SAP na maszynach wirtualnych platformy Azure w systemie Linux
+### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Wskazówki dotyczące konfigurowania oprogramowania Oracle w przypadku instalacji SAP na maszynach wirtualnych Azure w systemie Linux
 
-Zgodnie z instrukcje instalacji SAP pliki związane z bazy danych Oracle nie należy się do sterownika systemu dla dysku rozruchowego maszyny Wirtualnej lub zainstalowane. Różne rozmiary maszyn wirtualnych obsługują różne liczby dysków do dołączenia. Mniejsze typy maszyn wirtualnych umożliwiają mniejszej liczby dysków do dołączenia. W takim przypadku firma Microsoft zaleca instalowanie zlokalizować głównej bazy danych Oracle, etap, saptrace, saparch, sapbackup, sapcheck, sapreorg do dysku rozruchowego. Te elementy składniki bazami danych Oracle nie są intensywne operacje We/Wy i operacje We/Wy przepływności. W związku z tym dyskiem systemu operacyjnego może obsługiwać wymagania dotyczące operacji We/Wy. Domyślny rozmiar dysku systemu operacyjnego jest 30GB. Dysk rozruchowy można rozwinąć przy użyciu usługi Azure Portal/programu PowerShell/interfejsu wiersza polecenia. Po rozwinięciu dysku rozruchowego można dodać dodatkowe partycji dla danych binarnych Oracle.
+Zgodnie z instrukcje instalacji SAP pliki związane z bazy danych Oracle nie zainstalowane lub znajduje się w sterowniki dla dysku rozruchowego maszyny Wirtualnej systemu. Zróżnicowanie rozmiarów maszyn wirtualnych obsługują różne liczby dołączonych dysków. Mniejszych typów maszyn wirtualnych może obsługiwać mniejszej liczby dołączonych dysków. 
+
+W takim przypadku firma Microsoft zaleca instalowanie/lokalizowanie głównej bazy danych Oracle, etap, saptrace, saparch, sapbackup, sapcheck lub sapreorg do dysku rozruchowego. Te elementy składniki bazami danych Oracle nie są intensywne operacje We/Wy i operacje We/Wy przepływności. Oznacza to, że dysk systemu operacyjnego może obsłużyć wymagania dotyczące operacji We/Wy. Domyślny rozmiar dysku systemu operacyjnego jest 30 GB. Dysk rozruchowy można rozwinąć przy użyciu witryny Azure portal, programu PowerShell lub interfejsu wiersza polecenia. Po rozwinięciu dysku rozruchowego możesz dodać dodatkowe partycji dla danych binarnych Oracle.
 
 
 ### <a name="storage-configuration"></a>Konfiguracja usługi Storage
 
-Systemy plików ext4, lub xfs lub Oracle ASM są obsługiwane dla plików bazy danych Oracle na platformie Azure. Wszystkie pliki bazy danych muszą być przechowywane na tych systemów plików, na podstawie wirtualnych dysków twardych lub dysków Managed Disks. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na usłudze Azure Storage BLOB strony (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub [usługi Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Systemy plików ext4, xfs lub Oracle ASM są obsługiwane dla plików bazy danych Oracle na platformie Azure. Wszystkie pliki bazy danych muszą być przechowywane na tych systemów plików, na podstawie wirtualnych dysków twardych lub dysków Managed Disks. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na [magazynu obiektów blob platformy Azure strony](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
 
 Dla bazy danych Oracle Linux UEK jądra, co najmniej UEK w wersji 4 jest wymagany do obsługi [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms).
 
-Zaleca się używać [usługi Azure managed disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Ponadto zdecydowanie zaleca się przy użyciu [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) wdrożeń bazy danych Oracle.
+Zdecydowanie zalecamy używanie [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Ponadto zdecydowanie zalecamy używanie [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) wdrożeń bazy danych Oracle.
 
-Każdy rodzaj dyski sieciowe lub udziałach zdalnych, takich jak usługi plików platformy Azure:
+Dyski sieciowe lub udziałach zdalnych, takich jak usługi plików platformy Azure nie są obsługiwane dla plików bazy danych Oracle. Aby uzyskać więcej informacji zobacz następujące tematy: 
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+- [Introducing Microsoft Azure File Service](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx) (Wprowadzenie do usługi plików platformy Microsoft Azure)
 
-czy **nie** obsługiwane dla plików bazy danych Oracle!
+- [Persisting connections to Microsoft Azure Files](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx) (Utrwalanie połączeń z plikami platformy Microsoft Azure)
 
-Przy użyciu dysków, w oparciu o usługi Azure Page BLOB Storage lub dyski Managed Disks, instrukcje wprowadzone w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) dotyczą wdrożeń z bazy danych programu Oracle także.
+Jeśli używasz dysków strona usługi Azure blob storage lub dyski Managed Disks — na podstawie oświadczeń wprowadzone w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) dotyczy także wdrożeń z bazą danych Oracle.
 
-Zgodnie z opisem w dokumencie [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md), istnieją limity przydziału przepustowość operacji We/Wy na dyskach platformy Azure. Dokładny w zależności od typu maszyny Wirtualnej służą przydziały. Lista typów maszyn wirtualnych z ich limitami przydziału można znaleźć [(Linux) w tym miejscu][virtual-machines-sizes-linux].
+ Istnieją limity przydziału przepustowość operacji We/Wy na dyskach platformy Azure. To pojęcie to wyjaśnione w [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md). Dokładne przydziały zależą od typu maszyny Wirtualnej, który jest używany. Aby uzyskać listę typów maszyn wirtualnych z ich przydziały zobacz [rozmiary maszyn wirtualnych systemu Linux na platformie Azure][virtual-machines-sizes-linux].
 
-Aby zidentyfikować obsługiwane typy maszyn wirtualnych platformy Azure, zapoznaj się uwagę [1928533]
+Aby określić obsługiwane typy maszyn wirtualnych platformy Azure, zobacz uwagę [1928533].
 
 Minimalna konfiguracja:
 | Składnik | Dysk | Buforowanie | Obcięcie * |
@@ -458,7 +473,7 @@ Minimalna konfiguracja:
 
 * Obcięcie: LVM stripe lub MDADM przy użyciu RAID0
 
-Wybranego dysku do obsługi dzienników Powtórz online firmy Oracle powinien opierać się przez wymagania dotyczące operacji We/Wy. Istnieje możliwość przechowywania wszystkich sapdata1... n (obszary tabel) na jednym jednego zainstalowanego dysku tak długo, jak liczby, operacje We/Wy i przepływność spełniają wymagania. 
+Wybranego dysku do obsługi dzienników Powtórz online firmy Oracle powinien opierać się przez wymagania dotyczące operacji We/Wy. Istnieje możliwość przechowywania wszystkich sapdata1... n (obszary tabel) na jednym dysku zainstalowanego tak długo, jak wolumin, operacje We/Wy i przepływność spełniają wymagania. 
 
 Konfiguracja wydajności:
 | Składnik | Dysk | Buforowanie | Obcięcie * |
@@ -472,36 +487,41 @@ Konfiguracja wydajności:
 | /Oracle/<SID>/oraarch* | Premium | Brak | Nie jest wymagany |
 | Strona główna programu Oracle saptrace... | Dysk systemu operacyjnego | Nie jest wymagany |
 
-* Obcięcie: LVM stripe lub MDADM przy użyciu RAID0 *(n+1) — hostingu obszary tabel systemu, TEMP i cofania. wzorzec HE operacji We/Wy systemu i cofania obszary tabel różnią się od innych obszary tabel hostowania danych aplikacji. Brak buforowania jest najlepszym rozwiązaniem dla wydajności systemu i cofania obszary tabel.
-* oraarch - puli magazynów nie jest potrzebna w widoku wydajności. Może służyć do uzyskiwanie dodatkowego miejsca.
+* Obcięcie: LVM stripe lub MDADM przy użyciu RAID0
+
+* (n + 1): hosting systemu, TEMP i cofania obszary tabel: Wzorzec operacji We/Wy systemu i cofania obszary tabel różnią się od innych obszary tabel hostowania danych aplikacji. Brak buforowania jest najlepszym rozwiązaniem dla wydajności systemu i cofania obszary tabel.
+
+* oraarch: Pula magazynów nie jest konieczne z punktu widzenia wydajności.
 
 
-Więcej operacji We/Wy są wymagane, zalecane jest używanie LVM (Menedżer woluminów logicznych) lub MDADM do tworzenia logicznej jedną dużą przez wiele dysków zainstalowanych. Zobacz też dokumentu [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) dotyczące wskazówki i wskaźników o tym, jak korzystać z LVM lub MDADM. Takie podejście ułatwia zmniejszenie administracyjnych kosztów ogólnych zarządzać miejscem na dysku i pozwala uniknąć nakład pracy, aby ręcznie przekazywać pliki na wielu dyskach zainstalowanego.
+Jeśli więcej operacji We/Wy są wymagane, zaleca się przy użyciu LVM (Menedżer woluminów logicznych) lub MDADM, aby utworzyć jedną dużą logiczne przez wiele dysków zainstalowanych. Aby uzyskać więcej informacji, zobacz [zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) dotyczące wskazówki i wskaźników o tym, jak korzystać z LVM lub MDADM. To podejście ułatwia zmniejszenie administracyjnych kosztów ogólnych zarządzania miejsca na dysku i pomaga uniknąć nakład pracy ręcznie dystrybucji plików na wielu dyskach zainstalowanego.
 
 
-#### <a name="write-accelerator"></a>Akcelerator zapisu:
-Dla maszyn wirtualnych serii M platformy Azure można zmniejszyć opóźnienie zapisu w dziennikach Powtórz online przez czynników, w porównaniu do wydajności usługi Azure Premium Storage, korzystając z akceleratorem zapisu platformy Azure. Włączyć akcelerator zapisu platformy Azure dla dysków (VHD) na podstawie usługi Azure Premium Storage, które są używane dla plików dziennika ponownego wykonywania w trybie online. Szczegółowe informacje mogą być odczytywane w dokumencie [akceleratorem zapisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+#### <a name="write-accelerator"></a>Akcelerator zapisu
+Maszyn wirtualnych serii M platformy Azure korzystając z akceleratorem zapisu platformy Azure, opóźnienie zapisu w dziennikach Powtórz online można zmniejszyć czynników, w porównaniu do usługi Azure Premium Storage o wydajności. Włączyć akcelerator zapisu platformy Azure dla dysków (VHD) na podstawie usługi Azure Premium Storage, które są używane dla plików dziennika ponownego wykonywania w trybie online. Aby uzyskać więcej informacji, zobacz [akceleratorem zapisu](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 
-### <a name="backup--restore"></a>Wykonywanie kopii zapasowych i ich przywracanie
+### <a name="backuprestore"></a>/ Przywracania kopii zapasowej
 Dla funkcji backup/restore, SAP BR * narzędzia dla oprogramowania Oracle są obsługiwane w taki sam sposób, jak na komputerach bez systemu operacyjnego i funkcji Hyper-V. Menedżer odzyskiwania bazy danych Oracle (RMAN) jest również obsługiwana dla kopii zapasowych na dysku i przywrócenie z dysku.
 
-Szczegółowe informacje na temat korzystania z usługi Azure Backup i Recovery tworzenia kopii zapasowych i odzyskiwania baz danych Oracle można znaleźć w artykule [tworzenie kopii zapasowych i odzyskiwanie bazy danych Oracle database 12 c na maszynie wirtualnej z systemem Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery)
+Aby uzyskać więcej informacji na temat sposobu korzystania z usług Azure Backup i Recovery wykonywania kopii zapasowych i odzyskiwania baz danych Oracle, zobacz [tworzenie kopii zapasowych i odzyskiwanie bazy danych Oracle database 12c na maszynie wirtualnej z systemem Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery).
 
 ### <a name="high-availability"></a>Wysoka dostępność
-Środowiska Oracle Data Guard jest obsługiwana dla wysokiej dostępności i celów odzyskiwania po awarii. Aby osiągnąć automatycznej pracy awaryjnej w Data Guard, można użyć szybkiego rozpoczęcia pracy awaryjnej (FSFA). Funkcje obserwatora (FSFA) jest wyzwoleniem trybu failover. Bez korzystania z FSFA tylko konfiguracja ręczna praca awaryjna jest możliwe.  Szczegóły można znaleźć w artykule [implementacji środowiska Oracle Data Guard na maszynie wirtualnej z systemem Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
+Środowiska Oracle Data Guard jest obsługiwana dla wysokiej dostępności i celów odzyskiwania po awarii. Aby osiągnąć automatycznej pracy awaryjnej w Data Guard, należy użyć szybkiego rozpoczęcia pracy awaryjnej (FSFA). Funkcje obserwatora (FSFA) wyzwala przełączenie w tryb failover. Jeśli nie używasz FSFA, można używać tylko konfiguracji ręcznej pracy awaryjnej. Aby uzyskać więcej informacji, zobacz [implementacji środowiska Oracle Data Guard na maszynie wirtualnej z systemem Linux platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
 
 
 Aspekty odzyskiwania po awarii dla baz danych Oracle na platformie Azure są przedstawione w artykule [odzyskiwanie po awarii dla bazy danych Oracle database 12c w środowisku platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Accelerated Networking
-Obsługa usługę Azure Accelerated Networking w systemie Oracle Linux jest dostarczany z systemów Oracle Linux 7 Update 5 (Oracle Linux 7.5). Jeśli nie można uaktualnić do najnowszej wersji programu Oracle Linux w wersji 7.5, przy użyciu firmę Red Hat zgodne jądra (RHCK) zamiast jądra Oracle UEK może istnieć obejście tego problemu. Jądro systemu RHEL w systemie Oracle Linux jest obsługiwana według Uwaga SAP [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Na usługę Azure Accelerated Networking RHCKL minimalnej wersji jądra musi być 3.10.0-862.13.1.el7. Dla jądro UEK w systemie Oracle Linux w połączeniu z [usługę Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), należy użyć programu Oracle UEK jądra w wersji 5.
+### <a name="accelerated-networking"></a>Wydajniejsze sieci
+Obsługa usługę Azure Accelerated Networking w systemie Oracle Linux jest dostarczany z systemów Oracle Linux 7 Update 5 (Oracle Linux 7.5). Jeśli nie można uaktualnić do najnowszej wersji programu Oracle Linux w wersji 7.5, przy użyciu firmę Red Hat zgodne jądra (RHCK) zamiast jądra Oracle UEK może istnieć obejście tego problemu. 
 
-Jeśli obraz nie jest oparta na portalu Azure Marketplace nie wymaga wdrażania maszyn wirtualnych, należy dodatkowe pliki konfiguracyjne do skopiowania do maszyny Wirtualnej, wykonując: 
-<pre><code># Copy settings from github to correct place in VM
+Jądro systemu RHEL w systemie Oracle Linux jest obsługiwana według Uwaga SAP [#1565179](https://launchpad.support.sap.com/#/notes/1565179). Na usługę Azure Accelerated Networking minimalna wersja jądra RHCKL musi być 3.10.0-862.13.1.el7. W przypadku korzystania w systemie Oracle Linux jądra UEK, w połączeniu z [usługę Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/), należy użyć programu Oracle UEK jądra w wersji 5.
+
+Jeśli wdrażasz maszyn wirtualnych z obrazu, który nie jest oparta na portalu Azure Marketplace, należy skopiować pliki dodatkowej konfiguracji do maszyny Wirtualnej, uruchamiając następujący kod: 
+<pre><code># Copy settings from GitHub to the correct place in the VM
 sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.githubusercontent.com/LIS/lis-next/master/hv-rhel7.x/hv/tools/68-azure-sriov-nm-unmanaged.rules 
 </code></pre>
 
 
 ### <a name="other"></a>Inne
-Wszystkie inne ogólnych zagadnień, takich jak zestawy dostępności platformy Azure lub SAP monitorowanie stosowane zgodnie z opisem w pierwszych trzech rozdziały ten dokument w celu wdrożenia maszyn wirtualnych przy użyciu bazy danych programu Oracle także.
+[Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP](dbms_guide_general.md) opisano inne ważne pojęcia związane z wdrożeniami maszyn wirtualnych przy użyciu bazy danych Oracle, łącznie z zestawami dostępności platformy Azure i monitorowanie SAP.

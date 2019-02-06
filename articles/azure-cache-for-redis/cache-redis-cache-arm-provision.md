@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: c8aadcf7b37e28035e936a9f722ee832127e928d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 8e0b0572f0d728474c17b41a0f92948451f4ef3f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038589"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746952"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Tworzenie pamięci podręcznej Azure dla pamięci podręcznej Redis przy użyciu szablonu
 W tym temacie dowiesz się, jak utworzyć szablon usługi Azure Resource Manager, która wdraża pamięć podręczna systemu Azure dla usługi Redis. Pamięć podręczna może służyć za pomocą istniejącego konta magazynu do przechowywania danych diagnostycznych. Dowiesz się również, jak zdefiniować zasoby, które są wdrażane i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
@@ -33,7 +33,7 @@ Aby uzyskać kompletny szablon, zobacz [pamięci podręcznej Azure Redis szablon
 > [!NOTE]
 > Szablony usługi Resource Manager dla nowego [w warstwie Premium](cache-premium-tier-intro.md) są dostępne. 
 > 
-> * [Tworzenie pamięci podręcznej Azure — wersja Premium dla usługi Redis z klastrowaniem](https://azure.microsoft.com/documentation/templates/201-redis-premium-cluster-diagnostics/)
+> * [Tworzenie pamięci podręcznej Azure — wersja Premium dla usługi Redis z klastrowaniem](https://azure.microsoft.com/resources/templates/201-redis-premium-cluster-diagnostics/)
 > * [Tworzenie usługi Azure Cache w warstwie Premium dla usługi Redis dzięki funkcji trwałości danych](https://azure.microsoft.com/documentation/templates/201-redis-premium-persistence/)
 > * [Utwórz pamięć podręczna systemu Azure w wersji Premium dla pamięci podręcznej Redis przy użyciu sieci wirtualnej i opcjonalnie klastrowania](https://azure.microsoft.com/documentation/templates/201-redis-premium-vnet-cluster-diagnostics/)
 > 

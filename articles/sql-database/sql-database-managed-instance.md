@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: c070858354bb8bf5628a17e24e6830f133414d32
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2e2bf4f0f7ba4546c2f8609ee3ec7efc072024ae
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734406"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751552"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -47,7 +47,7 @@ Zarządzane wystąpienia łączy najlepsze funkcje, które są dostępne zarówn
 | --- | --- |
 |Zakupu sprzętu i zarządzania <br>Brak zarządzania w czasie zarządzania podstawową infrastrukturą <br>Szybka aprowizacja i skalowanie usług <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |dostępność przez 99,99% umowę SLA  <br>Wbudowane [wysokiej dostępności](sql-database-high-availability.md) <br>Dane są chronione za pomocą [automatyczne kopie zapasowe](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych można skonfigurować klienta <br>Użytkownik zainicjował [kopii zapasowych](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Punkt w czasie przywracania bazy danych](sql-database-recovery-using-backups.md#point-in-time-restore) możliwości |
 |**Zabezpieczenia i zgodność** | **Zarządzanie**|
-|Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Usługa Azure AD logowania</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
+|Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Usługa Azure AD logowania</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
 
 Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższej tabeli:
 
@@ -74,8 +74,8 @@ Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższe
 
 Model rdzenia wirtualnego można wybrać generacji sprzętu.
 
-- **Generacja 4** procesorów logicznych są oparte na Intel E5-2673 v3 (Haswell) 2,4 GHz, procesory, dołączonych dysków SSD, fizyczne rdzenie, 7 GB pamięci RAM na rdzeń i rozmiarów wystąpień obliczeniowych od 8 do 24 rdzenie wirtualne.
-- **Velikost haldy 5** procesorów logicznych są oparte na Intel E5-2673 v4 (broadwell z zegarem) 2.3 — GHz, szybkie dyski SSD NVMe, funkcji hyper Threading rdzeń logiczny, a obliczenia rozmiarów, od 8 do 80 rdzeni.
+- **4. generacji** procesorów logicznych są oparte na Intel E5-2673 v3 (Haswell) 2,4 GHz, procesory, dołączonych dysków SSD, fizyczne rdzenie, 7 GB pamięci RAM na rdzeń i rozmiarów wystąpień obliczeniowych od 8 do 24 rdzenie wirtualne.
+- **5. generacji** procesorów logicznych są oparte na Intel E5-2673 v4 (broadwell z zegarem) 2.3 — GHz, szybkie dyski SSD NVMe, funkcji hyper Threading rdzeń logiczny, a obliczenia rozmiarów, od 8 do 80 rdzeni.
 
 Znajdź więcej informacji na temat różnic między generacji sprzętu w [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 

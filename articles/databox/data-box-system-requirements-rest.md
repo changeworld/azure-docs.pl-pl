@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e7c2cc0c0ffaae11bd7bf5113c942cdb98397201
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53551427"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752776"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Wymagania dotyczące magazynu Azure Blob pole danych
 
@@ -30,7 +30,7 @@ Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed łąc
 |    Szyfrowanie usługi dla danych magazynowanych                  |    256-bitowego szyfrowania AES                             |    256-bitowego szyfrowania AES |
 |    Typ konta magazynu                                 |    Konta magazynu ogólnego przeznaczenia i platforma Azure obiektów blob    |    Ogólnego przeznaczenia w wersji 1 tylko|
 |    Nazwa obiektu blob                                            |    1024 znaków (2048 bajtów)                     |    880 znaków (1,760 w bajtach)|
-|    Maksymalny rozmiar obiektu blob bloku                              |    4.75 TB (100 MB X 50 000 bloków)                   |    4.75 TB (100 MB x 50 000 bloków) dla usługi Azure Data Box wersja 1.7 i nowszych wersjach.|
+|    Maksymalny rozmiar obiektu blob bloku                              |    4.75 TB (100 MB X 50 000 bloków)                   |    4.75 TB (100 MB x 50 000 bloków) dla usługi Azure Data Box wersja 1.8 i nowszych wersjach.|
 |    Rozmiar maksymalny stronicowego obiektu blob                               |    8 TB                                               |    1 TB                   |
 |    Rozmiar strony stronicowego obiektu blob                                  |    512 bajtów                                          |    4 KB                   |
 
@@ -38,8 +38,10 @@ Firma Microsoft zaleca, aby zapoznać się z informacjami dokładnie przed łąc
 
 Następujące wersje interfejsów API usług Azure Storage są obsługiwane za pomocą magazynu obiektów Blob pole danych:
 
-Publiczna wersja zapoznawcza (usługa Azure Data Box 1.7 lub nowszy)
+Publiczna wersja zapoznawcza (usługa Azure Data Box 1.8 lub nowszy)
 
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
@@ -60,11 +62,9 @@ Publiczna wersja zapoznawcza (usługa Azure Data Box 1.7 lub nowszy)
 
 ## <a name="supported-azure-client-libraries"></a>Obsługiwane biblioteki klienckie systemu Azure
 
-Dla pola danych w usłudze Blob storage istnieje biblioteki określonego klienta i wymagania sufiks określonego punktu końcowego.
+Dla pola danych w usłudze Blob storage istnieje biblioteki określonego klienta i wymagania sufiks określonego punktu końcowego. Punktów końcowych magazynu obiektów Blob pole danych, nie masz pełnej zgodności z najnowszą wersję interfejsu API REST usługi Azure Blob Storage, zobacz [obsługiwane wersje dla usługi Azure Data Box 1.8 i nowszych wersjach](#supported-api-versions). Biblioteki klienta magazynu należy wiedzieć o wersji, która jest zgodna z interfejsu API REST.
 
-Obsługiwane wersje interfejsu API REST dla magazynu obiektów Blob pola danych to 2017-04-17 2016-05-31, 2015-12-11 2015-07-08 i 2015-04-05 dla usługi Azure Data Box w wersji 1.7 i nowszych wersjach. Punkty końcowe magazynu obiektów Blob pole danych nie ma pełnej zgodności z najnowszą wersję interfejsu API REST usługi Azure Blob Storage. Biblioteki klienta magazynu należy wiedzieć o wersji, która jest zgodna z interfejsu API REST.
-
-### <a name="azure-data-box-17-onwards"></a>Usługa Azure Data Box 1.7 lub nowszy
+### <a name="azure-data-box-18-onwards"></a>Usługa Azure Data Box 1.8 lub nowszy
 
 | Biblioteka kliencka     |Magazyn obiektów Blob pole danych jest obsługiwana wersja     | Link   |     Specyfikacja punktu końcowego      |
 |--------------------|--------------------------------------------|--------|---------------------------------|

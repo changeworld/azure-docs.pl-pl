@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 52a93fdd3105b091f688c297fe1e78e55ce0c96e
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1a5479cb54e15c0e740d800c8ee248a67e5ec5fc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730309"
+ms.locfileid: "55746765"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-cli"></a>Tworzenie bramy aplikacji za pośrednictwem protokołu HTTP do przekierowania protokołu HTTPS przy użyciu wiersza polecenia platformy Azure
 
@@ -86,7 +86,7 @@ az network public-ip create \
 
 ## <a name="create-the-application-gateway"></a>Tworzenie bramy aplikacji
 
-Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gatewaywork_application_gateway_create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. 
+Można użyć polecenia [az network application-gateway create](/cli/azure/network/application-gateway#az-network-application-gateway-create) w celu utworzenia bramy aplikacji o nazwie *myAppGateway*. Podczas tworzenia bramy aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure należy podać informacje o konfiguracji, takie jak pojemność, jednostka SKU i ustawienia protokołu HTTP. 
 
 Brama aplikacji jest przypisywana do wcześniej utworzonej podsieci *myAGSubnet* i adresu *myAGPublicIPAddress*. W tym przykładzie podczas tworzenia bramy aplikacji należy skojarzyć utworzony certyfikat i jego hasło. 
 
@@ -121,7 +121,7 @@ az network application-gateway create \
 
 ### <a name="add-the-http-port"></a>Dodaj HTTP port
 
-Możesz użyć [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway/frontend-portwork_application_gateway_frontend_port_create) Aby dodać HTTP port do usługi application gateway.
+Możesz użyć [tworzenie az sieci application-gateway frontend-port](/cli/azure/network/application-gateway/frontend-port#az-network-application-gateway-frontend-port-create) Aby dodać HTTP port do usługi application gateway.
 
 ```azurecli-interactive
 az network application-gateway frontend-port create \
@@ -133,7 +133,7 @@ az network application-gateway frontend-port create \
 
 ### <a name="add-the-http-listener"></a>Dodawanie odbiornika HTTP
 
-Możesz użyć [tworzenie az sieci application-gateway http-listener](/cli/azure/network/application-gateway/http-listenerwork_application_gateway_http_listener_create) do dodania odbiornika o nazwie *myListener* do usługi application gateway.
+Możesz użyć [tworzenie az sieci application-gateway http-listener](/cli/azure/network/application-gateway/http-listener#az-network-application-gateway-http-listener-create) do dodania odbiornika o nazwie *myListener* do usługi application gateway.
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -146,7 +146,7 @@ az network application-gateway http-listener create \
 
 ### <a name="add-the-redirection-configuration"></a>Dodaj konfigurację przekierowania
 
-Dodaj HTTP do HTTPS konfiguracji przekierowania do bramy aplikacji przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-configwork_application_gateway_redirect_config_create).
+Dodaj HTTP do HTTPS konfiguracji przekierowania do bramy aplikacji przy użyciu [tworzenie az sieci bramy application gateway redirect-config](/cli/azure/network/application-gateway/redirect-config#az-network-application-gateway-redirect-config-create).
 
 ```azurecli-interactive
 az network application-gateway redirect-config create \
@@ -161,7 +161,7 @@ az network application-gateway redirect-config create \
 
 ### <a name="add-the-routing-rule"></a>Dodaj regułę routingu
 
-Dodaj regułę routingu o nazwie *reguły rule2* z konfiguracją przekierowania do bramy aplikacji przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway/rulework_application_gateway_rule_create).
+Dodaj regułę routingu o nazwie *reguły rule2* z konfiguracją przekierowania do bramy aplikacji przy użyciu [Tworzenie reguły bramy aplikacji sieciowej az](/cli/azure/network/application-gateway/rule#az-network-application-gateway-rule-create).
 
 ```azurecli-interactive
 az network application-gateway rule create \

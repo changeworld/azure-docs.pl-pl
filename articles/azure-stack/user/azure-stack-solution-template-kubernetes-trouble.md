@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 41383a31955b8f9507ec681650cf73df23b2a895
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 551958317249cbfa25e3af9922f9ded6850c2521
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663418"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752300"
 ---
 # <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>Rozwiązywanie problemów z wdrożenia rozwiązania Kubernetes do usługi Azure Stack
 
@@ -53,7 +53,7 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
 
 2. Tworzenie wdrożenia maszyny Wirtualnej i rozszerzenia niestandardowego skryptu.
     -  Tworzenie wdrożenia maszyny Wirtualnej systemu Linux przy użyciu obrazu systemu Linux w witrynie marketplace **Ubuntu Server 16.04-LTS**.
-    -  Pobierz i uruchom rozszerzenia skryptów klienta z witryny marketplace. Skrypt jest **niestandardowego skryptu dla systemu Linux w wersji 2.0**.
+    -  Pobierz i Uruchom rozszerzenie niestandardowego skryptu z witryny marketplace. Skrypt jest **niestandardowego skryptu dla systemu Linux w wersji 2.0**.
     -  Uruchamia skrypt niestandardowy Menedżer DVM. Ten skrypt wykonuje następujące zadania:
         1. Punkt końcowy galerii są pobierane z punktu końcowego metadanych usługi Azure Resource Manager.
         2. Pobiera identyfikator zasobu usługi active directory z punktu końcowego metadanych usługi Azure Resource Manager.
@@ -61,7 +61,7 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
         4. Wdraża aparatu usługi ACS w klastrze usługi Kubernetes i zapisuje profil chmury Azure Stack, aby `/etc/kubernetes/azurestackcloud.json`.
 3. Utwórz głównych maszyn wirtualnych.
 
-4. Pobierz i uruchom rozszerzenia skryptów klienta.
+4. Pobierz i uruchom rozszerzenia skryptu niestandardowego.
 
 5. Uruchom skrypt głównej.
 
@@ -75,7 +75,7 @@ Na poniższym diagramie przedstawiono ogólny proces wdrażania klastra.
         3. Uruchamia usługę scheduler.
 6. Tworzenie agentów maszyn wirtualnych.
 
-7. Pobierz i Uruchom rozszerzenie skryptu klienta.
+7. Pobierz i Uruchom rozszerzenie skryptu niestandardowego.
 
 7. Uruchom skrypt agenta. Skrypt niestandardowy agenta wykonuje następujące zadania:
     - Instaluje etcd

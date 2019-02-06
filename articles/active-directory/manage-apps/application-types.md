@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 441821ae422fb4cbddbca5b4c30d68484ce6bc1f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 55632acf516198b5ad0b6430480836dcc62fd5a5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186981"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755389"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nieoczekiwaną aplikację na liście aplikacji
 
@@ -63,15 +63,15 @@ Gdy filtrowana w celu **wszystkie aplikacje**, **wszystkie aplikacje** **listy**
 
 4.  Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [rejest aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-app-registration)
 
-5.  Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [portalu rejestracji aplikacji w wersji 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration#visit-the-microsoft-app-registration-portal)
+5.  Po dodaniu nowej rejestracji aplikacji, tworząc niestandardowej aplikacji przy użyciu [portalu rejestracji aplikacji w wersji 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-app-registration)
 
 6.  Po dodaniu aplikacji opracowujesz przy użyciu programu Visual Studio [metod uwierzytelniania ASP.net](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) lub [podłączone usługi](https://blogs.msdn.com/b/visualstudio/archive/2014/11/19/connecting-to-cloud-services.aspx)
 
 7.  Podczas tworzenia obiektu jednostki usługi przy użyciu [modułu Azure AD PowerShell](/powershell/azure/install-adv2?view=azureadps-2.0)
 
-8.  Gdy użytkownik [zgoda na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) jako administrator na korzystanie z danych w Twojej dzierżawie
+8.  Gdy użytkownik [zgoda na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) jako administrator na korzystanie z danych w Twojej dzierżawie
 
-9.  Gdy [użytkownik wyraża zgodę na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent) na korzystanie z danych w Twojej dzierżawie
+9.  Gdy [użytkownik wyraża zgodę na aplikację](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview) na korzystanie z danych w Twojej dzierżawie
 
 10. Po włączeniu pewnych usług, które przechowują dane w dzierżawie. Przykładem jest resetowania hasła, który jest modelowane zgodnie z jednostki usługi do przechowywania hasła zasad resetowania bezpieczne.
 
@@ -107,7 +107,7 @@ Aby **usunąć aplikację**, wykonaj następujące kroki:
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Chcę wyłączyć wszystkie operacje zgody użytkownika przyszłych do dowolnej aplikacji
 
-Wyłączanie zgody użytkownika dla całego katalogu uniemożliwić użytkownikom wyrażanie zgody na dowolnej aplikacji. Administratorzy nadal mogą wyrazić zgodę na behalves użytkownika. Dowiedz się więcej na temat zgody aplikacji i dlatego może być lub może nie chcieć zgodę, przeczytaj [opis użytkowników i zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
+Wyłączanie zgody użytkownika dla całego katalogu uniemożliwić użytkownikom wyrażanie zgody na dowolnej aplikacji. Administratorzy nadal mogą wyrazić zgodę na behalves użytkownika. Dowiedz się więcej na temat zgody aplikacji i dlatego może być lub może nie chcieć zgodę, przeczytaj [opis użytkowników i zgody administratora](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview).
 
 Aby **Wyłącz wszystkie operacje zgody użytkownika przyszłych całego katalogu**, wykonaj następujące kroki:
 

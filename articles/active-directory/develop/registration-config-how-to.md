@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: fb5449ec33467a78de0eef7a345b687901063fe1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 85f119b2a0aaa49fa02ad579a89ce2a0b6e72007
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102298"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756291"
 ---
 # <a name="how-to-configure-endpoints"></a>Jak skonfigurować punkty końcowe
 
@@ -36,4 +36,4 @@ Punkty końcowe uwierzytelniania można znaleźć aplikacji na platformie [witry
 -   Użyj punktu końcowego, które są specyficzne dla protokołu uwierzytelniania, którego używasz, w połączeniu z Identyfikatorem aplikacji w celu uwierzytelniania jednostki żądania dotyczące danej aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#authentication-and-authorization-protocols)
+[Przewodnik dewelopera usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

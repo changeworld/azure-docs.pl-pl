@@ -1,5 +1,5 @@
 ---
-title: Samouczek — Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Samouczek — Dostosowywanie interfejsu użytkownika środowiska — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak dostosować interfejs użytkownika aplikacji w usłudze Azure Active Directory B2C w witrynie Azure portal.
 services: B2C
 author: davidmu1
@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1c95772eeb6057b4ff7b12a79897fda73e1e017c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f3bc1789d0b521b0d91ca42ebe472fed0225d87b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156663"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752385"
 ---
-# <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu użytkownika aplikacji w usłudze Azure Active Directory B2C
+# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Samouczek: Dostosowywanie interfejsu użytkownika środowiska w usłudze Azure Active Directory B2C
 
 Dla bardziej powszechne doświadczeń użytkowników takie jak rejestracji, logowania i edytowania profilu, możesz użyć [przepływy użytkownika](active-directory-b2c-reference-policies.md) w usłudze Azure Active Directory (Azure AD) B2C. Informacje zawarte w tym samouczku ułatwiają Dowiedz się, jak [Dostosowywanie interfejsu użytkownika (UI)](customize-ui-overview.md) tych środowisk przy użyciu własnych plików HTML i CSS.
 
@@ -25,14 +25,14 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 > [!div class="checklist"]
 > * Utwórz pliki dostosowania interfejsu użytkownika
-> * Tworzenie przepływu rejestracji i logowania użytkownika, który używa plików
+> * Aktualizacja przepływu użytkownika do użycia plików
 > * Testowanie dostosowanego interfejsu użytkownika
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli nie zostało jeszcze utworzone własne [dzierżawy usługi Azure AD B2C](tutorial-create-tenant.md), utwórz ją teraz. Jeśli został on utworzony w poprzednim samouczku, można użyć istniejącej dzierżawy.
+[Utwórz przepływ użytkownika](tutorial-create-user-flows.md) aby użytkownicy mogli zarejestrować się i zaloguj się do aplikacji.
 
 ## <a name="create-customization-files"></a>Utwórz pliki dostosowania
 
@@ -42,17 +42,15 @@ Tworzenie konta magazynu platformy Azure i kontenerów, a następnie umieść po
 
 Mimo że można przechowywać pliki na wiele sposobów, w ramach tego samouczka, możesz przechowywać je w [usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md).
 
-1. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure. Wybierz **filtr katalogów i subskrypcji** w górnym menu i wybierz katalog, który zawiera Twoją subskrypcję. Ten katalog jest inny niż ten, który zawiera dzierżawy usługi Azure B2C.
-
-    ![Przejdź do katalogu subskrypcji](./media/tutorial-customize-ui/switch-directories.png)
-
-2. Wybierz wszystkie usługi, w lewym górnym rogu witryny Azure portal, wyszukiwanie i wybieranie **kont magazynu**. 
-3. Wybierz pozycję **Dodaj**.
-4. W obszarze **grupy zasobów**, wybierz opcję **Utwórz nową**, wprowadź nazwę dla nowej grupy zasobów, a następnie kliknij przycisk **OK**.
-5. Wprowadź nazwę konta magazynu. Wybrana nazwa musi być unikatowa w obrębie platformy Azure, musi mieć długość od 3 do 24 znaków oraz może zawierać tylko cyfry i małe litery.
-6. Wybierz lokalizację konta magazynu, lub zaakceptuj lokalizację domyślną. 
-7. Zaakceptuj pozostałe wartości domyślne, wybierz **przeglądu + Utwórz**, a następnie kliknij przycisk **Utwórz**.
-8. Po utworzeniu konta magazynu, wybierz **przejdź do zasobu**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Upewnij się, że używasz katalogu, który zawiera subskrypcję platformy Azure. Wybierz **filtr katalogów i subskrypcji** w górnym menu i wybierz katalog, który zawiera Twoją subskrypcję. Ten katalog jest inny niż ten, który zawiera dzierżawy usługi Azure B2C.
+3. Wybierz wszystkie usługi, w lewym górnym rogu witryny Azure portal, wyszukiwanie i wybieranie **kont magazynu**. 
+4. Wybierz pozycję **Dodaj**.
+5. W obszarze **grupy zasobów**, wybierz opcję **Utwórz nową**, wprowadź nazwę dla nowej grupy zasobów, a następnie kliknij przycisk **OK**.
+6. Wprowadź nazwę konta magazynu. Wybrana nazwa musi być unikatowa w obrębie platformy Azure, musi mieć długość od 3 do 24 znaków oraz może zawierać tylko cyfry i małe litery.
+7. Wybierz lokalizację konta magazynu, lub zaakceptuj lokalizację domyślną. 
+8. Zaakceptuj pozostałe wartości domyślne, wybierz **przeglądu + Utwórz**, a następnie kliknij przycisk **Utwórz**.
+9. Po utworzeniu konta magazynu, wybierz **przejdź do zasobu**.
 
 ### <a name="create-a-container"></a>Tworzenie kontenera
 
@@ -137,42 +135,17 @@ W tym samouczku przechowujesz pliki, które utworzono w ramach konta magazynu, a
 4. Skopiuj adres URL dla pliku, który został przekazany do użycia w dalszej części tego samouczka.
 5. Powtórz kroki 3 i 4 dla *style.css* pliku.
 
-## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Tworzenie przepływu rejestracji i logowania użytkowników
+## <a name="update-the-user-flow"></a>Aktualizacja przepływu użytkownika
 
-Wykonanie czynności opisanych w tym samouczku, musisz utworzyć test przepływu aplikacji i tworzenia konta lub logowania użytkownika w usłudze Azure AD B2C. Można zastosować z zasadami opisanymi w tym samouczku, aby inne środowiska użytkownika, takie jak edytowanie profilu.
-
-### <a name="create-an-azure-ad-b2c-application"></a>Tworzenie aplikacji usługi Azure AD B2C
-
-Za pomocą usługi Azure AD B2C odbywa się przy użyciu aplikacji utworzonej w dzierżawie. Poniższe kroki umożliwiają utworzenie aplikacji, która przekierowuje token autoryzacji, które są zwracane do [ https://jwt.ms ](https://jwt.ms).
-
-1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
-4. Wybierz **aplikacje**, a następnie wybierz pozycję **Dodaj**.
-5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
-6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
-7. Kliknij pozycję **Utwórz**.
-
-### <a name="create-the-user-flow"></a>Utwórz przepływ użytkownika
-
-Aby przetestować swoje pliki dostosowania, należy utworzyć przepływ wbudowanych rejestracji lub logowania użytkownika, który korzysta z aplikacji, która została wcześniej utworzona.
-
-1. W ramach dzierżawy usługi Azure AD B2C wybierz **przepływy użytkownika**, a następnie kliknij przycisk **nowy przepływ użytkownika**.
-2. Na karcie **Zalecane** kliknij pozycję **Tworzenie konta i logowanie**.
-3. Wprowadź nazwę przepływu użytkownika. Na przykład *signup_signin*. Prefiks *B2C_1* jest automatycznie dodawany do nazwy po utworzeniu przepływu użytkownika.
-4. W obszarze **dostawców tożsamości**, wybierz opcję **E-mail rejestracji**.
-5. W obszarze **atrybutach i oświadczeniach użytkowników**, kliknij przycisk **Pokaż więcej**.
-6. W **zbieranie atrybut** kolumnę, wybierz atrybuty, które mają być zbierane od klienta podczas rejestracji. Na przykład ustawić **Kraj/Region**, **nazwę wyświetlaną**, i **kod pocztowy**.
-7. W **zwracany oświadczenia** kolumnę, wybierz oświadczenia, które mają być zwracane w tokenach autoryzacji wysyłanych z powrotem do aplikacji po pomyślnej rejestracji lub logowania. Na przykład wybierz pozycje **Nazwa wyświetlana**, **Dostawca tożsamości**, **Kod pocztowy**, **Użytkownik jest nowy** i **Identyfikator obiektu użytkownika**.
-8. Kliknij przycisk **OK**.
-9. Kliknij pozycję **Utwórz**.
-10. W obszarze **Dostosuj**, wybierz opcję **strony układów**. Wybierz **ujednolicona strona rejestracji lub logowania**, a następnie kliknij **tak** dla **niestandardową zawartość strony**.
-11. W **identyfikator URI strony niestandardowe**, wprowadź adres URL *ui.html niestandardowe* pliku, który zapisaną wcześniej.
-12. W górnej części strony kliknij **Zapisz**.
+1. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+2. Wybierz **przepływy użytkownika (zasady)**, a następnie wybierz pozycję *B2C_1_signupsignin1* przepływu użytkownika.
+3. Wybierz **strony układów**, a następnie w obszarze **ujednolicona strona rejestracji lub logowania**, kliknij przycisk **tak** dla **niestandardową zawartość strony**.
+4. W **identyfikator URI strony niestandardowe**, wprowadź identyfikator URI *ui.html niestandardowe* pliku, który zapisaną wcześniej.
+5. W górnej części strony wybierz **Zapisz**.
 
 ## <a name="test-the-user-flow"></a>Testowanie przepływu użytkownika
 
-1. W ramach dzierżawy usługi Azure AD B2C wybierz **przepływy użytkownika** i wybierz pozycję przepływ użytkownika, który został utworzony. Na przykład *B2C_1_signup_signin*.
+1. W ramach dzierżawy usługi Azure AD B2C wybierz **przepływy użytkownika** i wybierz *B2C_1_signupsignin1* przepływu użytkownika.
 2. W górnej części strony kliknij **uruchomić przepływ użytkownika**.
 3. Kliknij przycisk **uruchomić przepływ użytkownika** przycisku.
 
@@ -188,7 +161,7 @@ W tym artykule przedstawiono sposób:
 
 > [!div class="checklist"]
 > * Utwórz pliki dostosowania interfejsu użytkownika
-> * Tworzenie przepływu rejestracji i logowania użytkownika, który używa plików
+> * Aktualizacja przepływu użytkownika do użycia plików
 > * Testowanie dostosowanego interfejsu użytkownika
 
 > [!div class="nextstepaction"]

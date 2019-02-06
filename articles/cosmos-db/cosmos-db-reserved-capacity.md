@@ -4,15 +4,15 @@ description: Dowiedz się, jak kupić pojemność zarezerwowane usługi Azure Co
 author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/24/2018
+ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: b37aa2eb24fe79d322839b4fb5c3c3a8b1296033
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb2d57d3e119fd83d1a984fc31f29a5d93e957d1
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454102"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745949"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optymalizowanie kosztów rezerwowanie pojemności w usłudze Azure Cosmos DB
 
@@ -25,7 +25,7 @@ Pojemność na platformie Azure Cosmos DB zarezerwowane obejmuje przepływności
 Możesz kupić pojemność usługi Azure Cosmos DB, zarezerwowane z [witryny Azure portal](https://portal.azure.com). Aby kupić rezerwowanie pojemności:
 
 * Musisz być w roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.  
-* W przypadku subskrypcji Enterprise, zakup rezerwacji platformy Azure musi być włączona w [portalu EA portal](https://ea.azure.com/).  
+* W przypadku subskrypcji Enterprise **Dodawanie wystąpień zarezerwowanych** musi być włączona w [portalu EA portal](https://ea.azure.com). Lub, jeśli to ustawienie jest wyłączone, musi być administratorem subskrypcji umowy EA.
 * Dla programu Cloud Solution Provider (CSP) jedynie agenci administratora lub agentom sprzedaży kupić pojemność usługi Azure Cosmos DB, zastrzeżone.
 
 ## <a name="determine-the-required-throughput-before-purchase"></a>Określenia wymaganych informacji o przepływności przed dokonaniem zakupu
@@ -53,8 +53,8 @@ Rozmiar rezerwacji powinna być oparta na łączną przepływność, która będ
    |Pole  |Opis  |
    |---------|---------|
    |Name (Nazwa)   |    Nazwa rezerwacji. To pole jest wypełniane automatycznie przy użyciu `CosmosDB_Reservation_<timeStamp>`. Podczas tworzenia rezerwacji, możesz podać inną nazwę. Lub można ją zmienić po utworzeniu rezerwacji.      |
-   |Subskrypcja  |   Subskrypcja, która jest używane do płacenia za usługi Azure Cosmos DB wydajności rezerwowej. Sposób zapłaty w wybranej subskrypcji jest używany podczas ładowania ponoszonych z góry kosztów. Typ subskrypcji musi być jedną z następujących czynności: <br/><br/>  [Umowy Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (numer oferty: MS-AZR-0017P): Dla subskrypcji Enterprise opłaty są odejmowane od salda zobowiązania pieniężnego rejestracji lub rozliczane jako nadwyżkowe użycie. <br/><br/> [Płatność za rzeczywiste użycie](https://azure.microsoft.com/offers/ms-azr-0003p/) (numer oferty: MS-AZR-0003P): W przypadku subskrypcji płatności opłaty są naliczane do metody płatności karty kredytowej lub faktury w ramach subskrypcji.    |
-   |Zakres   |   Opcja, która określa, jak wiele subskrypcji, można użyć korzyściami dotyczącymi rozliczeń skojarzone z rezerwacji. To ustawienie steruje również jak Rezerwacja ma zostać zastosowana do określonej subskrypcji.   <br/><br/>  Jeśli wybierzesz **subskrypcja pojedyncza**, rabat związany z rezerwacją jest stosowany do wystąpienia usługi Azure Cosmos DB w wybranej subskrypcji. <br/><br/>  Jeśli wybierzesz **Shared**, rabat związany z rezerwacją jest stosowany do wystąpienia usługi Azure Cosmos DB, które działają w dowolnej subskrypcji w ramach kontekstu rozliczeń. Kontekstu rozliczeń zależy od sposobu zalogowania na platformie Azure. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje (z wyjątkiem tworzenia i testowania subskrypcje) w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.  <br/><br/> Po zakupie rezerwowanie pojemności, można zmienić zakres rezerwacji.  |
+   |Subskrypcja  |   Subskrypcja, która jest używane do płacenia za usługi Azure Cosmos DB wydajności rezerwowej. Sposób zapłaty w wybranej subskrypcji jest używany podczas ładowania ponoszonych z góry kosztów. Typ subskrypcji musi być jedną z następujących czynności: <br/><br/>  Umowy Enterprise Agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P): Dla subskrypcji Enterprise opłaty są odejmowane od salda zobowiązania pieniężnego rejestracji lub rozliczane jako nadwyżkowe użycie. <br/><br/> Płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR - 0023 P): W przypadku subskrypcji płatności opłaty są naliczane do metody płatności karty kredytowej lub faktury w ramach subskrypcji.    |
+   |Zakres   |   Opcja, która określa, jak wiele subskrypcji, można użyć korzyściami dotyczącymi rozliczeń skojarzone z rezerwacji. To ustawienie steruje również jak Rezerwacja ma zostać zastosowana do określonej subskrypcji.   <br/><br/>  Jeśli wybierzesz **subskrypcja pojedyncza**, rabat związany z rezerwacją jest stosowany do wystąpienia usługi Azure Cosmos DB w wybranej subskrypcji. <br/><br/>  Jeśli wybierzesz **Shared**, rabat związany z rezerwacją jest stosowany do wystąpienia usługi Azure Cosmos DB, które działają w dowolnej subskrypcji w ramach kontekstu rozliczeń. Kontekstu rozliczeń zależy od sposobu zalogowania na platformie Azure. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.  <br/><br/> Po zakupie rezerwowanie pojemności, można zmienić zakres rezerwacji.  |
    |Typ pojemności zarezerwowanej   |  Przepływność aprowizowana jako jednostki żądania.|
    |Jednostka pojemności zarezerwowanej  |      Ilość przepustowości, które mają zostać zarezerwowane. Tę wartość można obliczyć, ustalając przepływności wymagane dla wszystkich zasobów usługi Cosmos DB (na przykład bazy danych lub kontenery), na region. Możesz następnie należy go pomnożyć przez liczbę regionów, które zostanie skojarzony z bazą danych Cosmos DB.  <br/><br/> Na przykład: Jeśli masz pięć regionach o 1 mln jednostek RU na sekundę w każdym regionie świadczenia wybierz 5 mln jednostek RU na sekundę dla zakupu rezerwacji wydajności.    |
    |Termin  |   Jeden rok lub trzy lata.   |

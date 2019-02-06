@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d7caec3fc1b8bf74098a7b0a211ec2ada8280a3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732910"
+ms.locfileid: "55745022"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -216,7 +216,7 @@ Ten artykuł koncentruje się na jak przenieść z jednej instalacji ASCS/SCS ko
 > Konfiguracja wprowadzona w niniejszej dokumentacji nie jest jeszcze obsługiwane do użytku z [strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview)
 > 
 
-Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatny adres IP frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager]. Ponadto należy wziąć pod uwagę przy użyciu [standardowa obciążenia równoważenia jednostki SKU usługi Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) zamiast podstawowej jednostki SKU modułu równoważenia obciążenia platformy Azure.
+Aby uzyskać więcej informacji na temat limitów modułu równoważenia obciążenia, zobacz sekcję "Prywatny adres IP frontonu na moduł równoważenia obciążenia" w [limity dotyczące sieci: Azure Resource Manager][networking-limits-azure-resource-manager]. Również należy rozważyć użycie [standardowa obciążenia równoważenia jednostki SKU usługi Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) zamiast podstawowej jednostki SKU Azure równoważenia obciążenia.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

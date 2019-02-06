@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2018
 ms.author: manayar
-ms.openlocfilehash: 5d92aa78b132b661af3cdc53b47c0340a0758dd8
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8f85ded20470ecc5a7868c094e88a149c88b7f39
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54855316"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749571"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Świadomość, że maszyn wirtualnych w zestawie identyfikatorów wystąpień dla skalowania maszyn wirtualnych platformy Azure
 W tym artykule opisano identyfikatory wystąpień zestawów skalowania i różne sposoby ich powierzchni.
@@ -33,7 +33,7 @@ Interfejs API REST: `POST https://management.azure.com/subscriptions/{subscripti
 
 Program PowerShell: `Set-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Aby uzyskać więcej informacji, zobacz [dokumentacji programu Powershell](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm))
 
-Interfejs wiersza polecenia: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_reimage)).
+Interfejs wiersza polecenia: `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` (Aby uzyskać więcej informacji, zobacz [dokumentacji interfejsu wiersza polecenia](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest)).
 
 Lista identyfikatorów wystąpień można uzyskać, wyświetlając listę wszystkich wystąpień w zestawie skalowania:
 

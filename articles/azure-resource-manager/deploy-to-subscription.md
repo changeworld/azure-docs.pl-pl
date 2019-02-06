@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: 064cef04ac609b0e6db5f55d9973e3974af8e0cc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: ce95406cbcb6d9514159d84d653a9ff361713aec
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494888"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744402"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Tworzenie grupy zasobów i zasoby na poziomie subskrypcji
 
 Zazwyczaj wdrażania zasobów platformy Azure do grupy zasobów w subskrypcji platformy Azure. Jednakże można także tworzyć grupy zasobów platformy Azure i tworzenie zasobów platformy Azure na poziomie subskrypcji. Aby wdrożyć szablony na poziomie subskrypcji, należy użyć wiersza polecenia platformy Azure i programu Azure PowerShell. Witryna Azure portal nie obsługuje wdrażania na poziomie subskrypcji.
 
-Aby utworzyć grupę zasobów w szablonie usługi Azure Resource Manager, należy zdefiniować [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions.md) zasób mający nazwę i lokalizację grupy zasobów. Można utworzyć grupę zasobów i wdrażania zasobów w tej grupie zasobów, w tym samym szablonie. Zasoby, które można wdrożyć na poziomie subskrypcji obejmują: [Zasady](../azure-policy/azure-policy-introduction.md), i [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
+Aby utworzyć grupę zasobów w szablonie usługi Azure Resource Manager, należy zdefiniować [ **Microsoft.Resources/resourceGroups** ](/azure/templates/microsoft.resources/allversions) zasób mający nazwę i lokalizację grupy zasobów. Można utworzyć grupę zasobów i wdrażania zasobów w tej grupie zasobów, w tym samym szablonie. Zasoby, które można wdrożyć na poziomie subskrypcji obejmują: [Zasady](../azure-policy/azure-policy-introduction.md), i [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -101,7 +101,7 @@ Następujący szablon tworzy pustą grupę zasobów.
 }
 ```
 
-Schemat szablonu, można znaleźć w folderze [tutaj](/azure/templates/microsoft.resources/allversions.md). Podobne szablony, można znaleźć w folderze [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
+Schemat szablonu, można znaleźć w folderze [tutaj](/azure/templates/microsoft.resources/allversions). Podobne szablony, można znaleźć w folderze [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments).
 
 ## <a name="create-multiple-resource-groups"></a>Utwórz wiele grup zasobów
 

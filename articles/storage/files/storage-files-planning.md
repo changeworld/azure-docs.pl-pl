@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: a9c37258d7c9631c6e5fe13007b78c4205a1c249
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 69ca9474c613752b98efa6bb236919508a2fe430
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473888"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753694"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planowanie wdrażania usługi Pliki Azure
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem standardowego protokołu SMB. Ponieważ usługi Azure Files jest w pełni zarządzana, wdrażania jej w scenariuszach produkcyjnych jest znacznie prostsze niż we wdrażaniu oraz zarządzaniu nim serwera plików lub urządzeń NAS. W tym artykule opisano tematów, aby wziąć pod uwagę podczas wdrażania udziału plików platformy Azure do użytku produkcyjnego w organizacji.
@@ -34,7 +34,7 @@ ms.locfileid: "55473888"
 * **Format adresu URL**: Dla żądań kierowanych do udziału plików platformy Azure wykonywanych przy użyciu protokołu REST plików pliki są adresy, przy użyciu następującego formatu adresu URL:
 
     ```
-    https://<storage account>.file.core.windows.net/<share>/<directory>/directories>/<file>
+    https://<storage account>.file.core.windows.net/<share>/<directory>/<file>
     ```
 
 ## <a name="data-access-method"></a>Metoda dostępu do danych
@@ -95,6 +95,9 @@ Usługa Azure Files obsługuje trzy opcje nadmiarowości danych: Magazyn lokalni
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="geo-redundant-storage"></a>Magazyn geograficznie nadmiarowy
+> [!Warning]  
+> Korzystając z udziału plików platformy Azure jako punktu końcowego w chmurze w ramach konta magazynu GRS, nie należy zainicjować trybu failover z konta magazynu. Ten sposób synchronizacji Przyczyna zatrzymania pracy i może również spowoduje nieoczekiwanej utraty danych w przypadku plików nowo warstwowych. W przypadku utraty region platformy Azure Microsoft spowodują uruchomienie trybu failover konta magazynu w sposób, który jest zgodny z usługi Azure File Sync.
+
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
 
 ## <a name="data-growth-pattern"></a>Wzorzec wzrostu ilości danych

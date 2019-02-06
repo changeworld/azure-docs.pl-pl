@@ -7,13 +7,13 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 70cc6210a0c047867980de67ac24701df29ce8bf
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/05/2019
+ms.openlocfilehash: 29997b2ff7d3834a91389790256cd0d075ce1ece
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485181"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744912"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -23,13 +23,21 @@ Ten artykuł zawiera podsumowanie wszystkich funkcji, obecnie w wersji zapoznawc
 
 Następujące funkcje są w publicznej wersji zapoznawczej. Można korzystać z tych funkcji już dziś, ale nie są używane w środowisku produkcyjnym.
 
+### <a name="sql-database-reference-data"></a>Dane referencyjne bazy danych SQL
+
+Usługa Azure Stream Analytics obsługuje usługi Azure SQL Database jako źródło danych wejściowych danych referencyjnych. Bazy danych SQL można użyć jako danych referencyjnych dla zadania usługi Stream Analytics w witrynie Azure portal i w programie Visual Studio za pomocą narzędzi usługi Stream Analytics. Aby uzyskać więcej informacji odwiedź stronę, [Użyj odwołanie do danych z bazy danych SQL dla zadania usługi Azure Stream Analytics](sql-reference-data.md).
+
 ### <a name="integration-with-azure-machine-learning"></a>Integracja z usługą Azure Machine Learning
 
 Możesz skalować zadania usługi Stream Analytics, za pomocą usługi Machine Learning () ml. Aby dowiedzieć się więcej na temat wykorzystania funkcji uczenia Maszynowego w ramach zadania usługi Stream Analytics, odwiedź stronę [skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Zapoznaj się z rzeczywistych scenariuszy za pomocą [przeprowadzania analizy tonacji za pomocą usługi Azure Stream Analytics i Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
 
 ### <a name="blob-output-partitioning-by-custom-time"></a>Dane wyjściowe obiektu blob partycjonowanie przez niestandardowy czas
 
-Usługa Azure Stream Analytics mogą przesyłać dane wyjściowe do magazynu obiektów Blob, w oparciu o atrybuty niestandardowe czasu. Aby uzyskać więcej informacji, odwiedź stronę [wzorców ścieżki daty/godziny niestandardowego usługi Azure Stream Analytics obiektu blob magazynu danych wyjściowych](stream-analytics-custom-path-patterns-blob-storage-output.md).
+Usługa Azure Stream Analytics mogą przesyłać dane wyjściowe do magazynu obiektów blob, w oparciu o atrybuty niestandardowe czasu. Aby uzyskać więcej informacji, odwiedź stronę [blob niestandardowych usługi Azure Stream Analytics, partycjonowanie danych wyjściowych](stream-analytics-custom-path-patterns-blob-storage-output.md).
+
+### <a name="blob-output-partitioning-by-field-or-attribute"></a>Dane wyjściowe obiektu blob partycjonowanie według pola lub atrybutu
+
+Usługa Azure Stream Analytics mogą przesyłać dane wyjściowe do magazynu obiektów blob na podstawie pól niestandardowych lub atrybutów. Aby uzyskać więcej informacji, odwiedź stronę [blob niestandardowych usługi Azure Stream Analytics, partycjonowanie danych wyjściowych](stream-analytics-custom-path-patterns-blob-storage-output.md).
 
 ### <a name="javascript-user-defined-aggregate"></a>Agregacja zdefiniowana przez użytkownika języka JavaScript
 
@@ -55,13 +63,13 @@ Usługa Azure Stream Analytics wprowadzono nowe modele uczenia maszynowego dzię
 
 Deweloperzy teraz wdrożyć deserializers niestandardowych w języku C# do deserializacji zdarzeń otrzymanych przez usługę Azure Stream Analytics. Przykłady formatów, które może być zdeserializowany Parquet, Protobuf, XML lub w dowolnym formacie binarnym.
 
-### <a name="blob-output-partitioning-by-custom-attribute"></a>Dane wyjściowe obiektu blob partycjonowanie przez atrybut niestandardowy
-
-Teraz jest możliwa do partycjonowania danych wyjściowych usługi Azure Stream Analytics do magazynu obiektów Blob opartego na dowolną kolumnę w zapytaniu.
-
 ### <a name="managed-identities-for-azure-resource-authentication-to-azure-data-lake-storage"></a>Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure do usługi Azure Data Lake Storage
 
 Teraz możesz operacjonalizować potoków w czasie rzeczywistym przy użyciu zarządzanych tożsamości do uwierzytelniania na podstawie zasobów platformy Azure podczas zapisywania do usługi Azure Data Lake Storage Gen1 umożliwia programowe tworzenie zadań. Aby uzyskać więcej informacji, odwiedź stronę [używaj zarządzanych tożsamości dla zasobów platformy Azure do uwierzytelniania usługi Azure Stream Analytics zadania, aby dane wyjściowe usługi Azure Data Lake Storage Gen1](stream-analytics-managed-identities-adls.md).
+
+### <a name="visual-studio-code-for-azure-stream-analytics"></a>Program Visual Studio Code dla usługi Azure Stream Analytics
+
+Zadania usługi Azure Stream Analytics mogą być tworzone w programie Visual Studio Code.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

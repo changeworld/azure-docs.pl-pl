@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: wesmc
-ms.openlocfilehash: f9a963ec81b78cfcc6ded7d8f35f4066f931e53e
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fd69c3182f026996618fea5e26466e8434ea36f6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847320"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754459"
 ---
 # <a name="get-the-hostname-ports-and-keys-for-azure-cache-for-redis"></a>Pobierz nazwę hosta, portów i kluczy dla usługi Azure Cache dla usługi Redis
 
@@ -40,7 +40,7 @@ Ten skrypt używa poniższych poleceń, można pobrać nazwy hosta, klucze i por
 | Polecenie | Uwagi |
 |---|---|
 | [AZ redis show](https://docs.microsoft.com/cli/azure/redis) | Pobierz szczegóły usługi Azure Cache dla wystąpienia usługi Redis. |
-| [AZ redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys) | Pobierz klucze dostępu dla usługi Azure Cache dla wystąpienia usługi Redis. |
+| [AZ redis list-keys](https://docs.microsoft.com/cli/azure/redis) | Pobierz klucze dostępu dla usługi Azure Cache dla wystąpienia usługi Redis. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

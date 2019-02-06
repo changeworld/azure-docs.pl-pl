@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: b2f8a299dfc52bcc1f2eaa17e658b841d27bf62c
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0effc6af1ddc3273f0c6e2bf9cbfd0f2ecadf0a2
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54154933"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747326"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Wymagania systemowe w usłudze Azure dysku Data Box
 
@@ -28,9 +28,9 @@ Poniżej przedstawiono listę obsługiwanych systemów operacyjnych, aby odbloko
 
 | **System operacyjny** | **Przetestowane wersje** |
 | --- | --- |
-| Windows Server |2008 R2 Z DODATKIEM SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
+| Windows Server |2008 R2 SP1 <br> 2012 <br> 2012 R2 <br> 2016 |
 | Windows |7, 8, 10 |
-|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6,9, 7.0, 7.5 |  
+|Linux <br> <li> Ubuntu </li><li> Debian </li><li> Red Hat Enterprise Linux (RHEL) </li><li> CentOS| <br>14.04 16.04, 18.04 <br> 8.11, 9 <br> 7.0 <br> 6.5, 6.9, 7.0, 7.5 |  
 
 ## <a name="other-required-software-for-windows-clients"></a>Inne wymagane oprogramowanie dla klientów Windows
 
@@ -48,7 +48,11 @@ Klienta Windows również należy zainstalować następujące czynności.
 Klient systemu Linux narzędzi dysku Data Box instaluje również następujące oprogramowanie wymagane:
 
 - dislocker
-- Biblioteki OpenSSL
+- OpenSSL
+
+## <a name="supported-connection"></a>Połączenia obsługiwane
+
+Komputer kliencki, zawierający dane musi mieć USB 3.0 lub nowszej portu. Dyski nawiązać tego klienta przy użyciu dostarczonego kabla. 
 
 ## <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
 

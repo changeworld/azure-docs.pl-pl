@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 6fd614a632945dbcc89c530df54b8416809029d1
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9cf64f98e0a06fc063340f39326fdc1c12645db8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194032"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756448"
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Rozwiązanie do monitorowania kontenerów w usłudze Log Analytics
 
@@ -105,8 +105,8 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
   - Do aranżacji wielu hostów platformy Docker:
     - Jeśli masz środowisko Red Hat OpenShift, zapoznaj się z [konfigurowania agenta usługi Log Analytics dla Red Hat OpenShift](#configure-an-oms-agent-for-red-hat-openshift).
     - Jeśli masz klaster usługi Kubernetes przy użyciu usługi Azure Container Service:
-       - Przegląd [konfigurowania agenta Log Analytics w systemie Linux dla platformy Kubernetes](#configure-an-oms-linux-agent-for-kubernetes).
-       - Przegląd [Konfigurowanie agenta Log Analytics Windows dla rozwiązania Kubernetes](#configure-an-oms-windows-agent-for-kubernetes).
+       - Przegląd [konfigurowania agenta Log Analytics w systemie Linux dla platformy Kubernetes](#configure-a-log-analytics-linux-agent-for-kubernetes).
+       - Przegląd [Konfigurowanie agenta Log Analytics Windows dla rozwiązania Kubernetes](#configure-a-log-analytics-windows-agent-for-kubernetes).
        - Przegląd [Użyj narzędzia Helm, aby wdrożyć agenta Log Analytics na platformie Kubernetes z systemem Linux](#use-helm-to-deploy-oms-agent-on-linux-kubernetes).
     - Jeśli istnieje klastra usługi Azure Container Service DC/OS, dowiedzieć się więcej o [monitorowanie klastra usługi Azure Container Service DC/OS z usługą Log Analytics](../../container-service/dcos-swarm/container-service-monitoring-oms.md).
     - Jeśli masz środowisku trybu Docker Swarm, dowiedzieć się więcej o [Konfigurowanie agenta usługi Log Analytics dla rozwiązania Docker Swarm](#configure-an-oms-agent-for-docker-swarm).

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/31/2019
+ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: d680634231b90e5d1cc036f43b96e05d66899e34
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487051"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743654"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Skalowanie automatyczne i brama aplikacji strefowo nadmiarowy (publiczna wersja zapoznawcza)
 
@@ -34,7 +34,7 @@ Usługa Application Gateway i zapory aplikacji sieci Web (WAF) są teraz dostęp
 
 ## <a name="supported-regions"></a>Obsługiwane regiony
 
-Automatyczne skalowanie jednostek SKU jest dostępna w następujących regionach: eastus2, westus2, westeurope, southeastasia, centralus, francecentral, eastus, japaneast, northeurope, southcentralus, ukwest, northcentralus, westus, eastus, centralus, japanwest.
+Automatyczne skalowanie jednostek SKU jest dostępna w następujących regionach: Północna środkowe stany USA, południowo-środkowe stany USA, zachodnie stany USA, zachodnie stany USA 2, wschodnie stany USA, wschodnie stany USA 2, środkowe stany USA, Europa Północna, Europa Zachodnia, Azja południowo-wschodnia, Francja środkowa, zachodnie Zjednoczone Królestwo, Japonia Wschodnia, Japonia, część zachodnia.
 
 ## <a name="pricing"></a>Cennik
 

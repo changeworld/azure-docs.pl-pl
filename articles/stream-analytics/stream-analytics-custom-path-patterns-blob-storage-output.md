@@ -1,28 +1,76 @@
 ---
-title: Wzorców ścieżki daty/godziny usługi Azure Stream Analytics obiektu blob danych wyjściowych (wersja zapoznawcza)
-description: W tym artykule opisano niestandardowych funkcji wzorców ścieżki daty/godziny dla danych wyjściowych z magazynu obiektów blob z zadań usługi Azure Stream Analytics.
+title: Stream Analytics niestandardowych obiektów blob platformy Azure, danych wyjściowych partycjonowania (wersja zapoznawcza)
+description: W tym artykule opisano niestandardowe wzorców ścieżki daty/godziny i funkcje pola lub atrybuty niestandardowe dla danych wyjściowych z magazynu obiektów blob z zadań usługi Azure Stream Analytics.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba386539c3f3c6740b843575bbccd4b028b8a5a7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 23f632ea2ca66f973192fdc01cd84c4d0be3a668
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090793"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746527"
 ---
-# <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Niestandardowe wzorców ścieżki daty/godziny usługi Azure Stream Analytics obiektu blob magazynu danych wyjściowych (wersja zapoznawcza)
+# <a name="azure-stream-analytics-custom-blob-output-partitioning-preview"></a>Stream Analytics niestandardowych obiektów blob platformy Azure, danych wyjściowych partycjonowania (wersja zapoznawcza)
 
-Usługa Azure Stream Analytics obsługuje niestandardowych daty i godziny specyfikatory formatu w ścieżce pliku do magazynu obiektów blob w danych wyjściowych. Zezwalaj na niestandardowe wzorców ścieżki daty/godziny, można określić format danych wyjściowych, była zgodna z konwencjami Hive przesyłania strumieniowego, co daje możliwość wysyłania danych do usługi Azure HDInsight i Azure Databricks dla podrzędnych przetwarzania usługi Azure Stream Analytics. Niestandardowe wzorców ścieżki daty/godziny są łatwo zaimplementować przy użyciu `datetime` — słowo kluczowe w polu Prefiks ścieżki obiektu blob danych wyjściowych, wraz ze specyfikatora formatu. Na przykład `{datetime:yyyy}`.
+Usługa Azure Stream Analytics obsługuje danych wyjściowych obiektu blob niestandardowych partycjonowania z polami niestandardowymi lub atrybutów i niestandardowe daty/godziny wzorców ścieżki. 
+
+## <a name="custom-field-or-attributes"></a>Pole niestandardowe lub atrybutów
+
+Pole niestandardowe lub atrybutów wejściowych poprawić podrzędnych przetwarzania danych i raportowanie przepływów pracy, umożliwiając większą kontrolę nad dane wyjściowe.
+
+### <a name="partition-key-options"></a>Opcje klucza partycji
+
+Klucz partycji lub nazwa kolumny, użyty do partycjonowania danych wejściowych może zawierać znaki alfanumeryczne, łączniki, podkreślenia i spacji. Nie jest możliwe użycie zagnieżdżonych pól jako klucza partycji, chyba że używana w połączeniu z użyciem aliasów.
+
+### <a name="example"></a>Przykład
+
+Załóżmy, że wykonanie zadania trwa danych wejściowych z sesji użytkownika na żywo, połączenie z usługą zewnętrznych gry wideo, w którym pozyskiwanych danych zawiera kolumnę **client_id** do identyfikowania sesji. W celu podzielenia danych przez **client_id**, ustawić pole wzorzec ścieżki obiektu Blob, aby zawierać token partycji **{client_id}** we właściwościach danych wyjściowych obiektu blob podczas tworzenia zadania. Jak w przypadku danych z różnymi **client_id** wartości przepływać przez zadanie usługi Stream Analytics, dane wyjściowe są zapisywane w oddzielnych folderach oparta na pojedynczym **client_id** wartość na folder.
+
+![Wzorzec ścieżki z identyfikatorem klienta](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
+
+Podobnie gdy zadanie wejściowe został danych z czujników z milionów urządzeń, czujników, gdzie czujnik każdego miał **sensor_id**, byłoby wzorzec ścieżki **{sensor_id}** do partycjonowania poszczególnych danych czujnika do różnych folderów.  
+
+
+Za pomocą interfejsu API REST części danych wyjściowych JSON plik używany dla tego żądania może wyglądać następująco:  
+
+![Dane wyjściowe z interfejsu API REST](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
+
+Gdy zadanie zacznie działać, *klientów* kontener może wyglądać podobnie do następującego:  
+
+![Kontener klientów](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
+
+Każdy folder może zawierać wiele obiektów blob, w których każdy obiekt blob zawiera jeden lub więcej rekordów. W powyższym przykładzie istnieje pojedynczy obiekt blob w folderze oznaczone jako "06000000" z następującą zawartością:
+
+![Zawartość obiektu blob](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
+
+Należy zauważyć, że każdy rekord w obiekcie blob ma **client_id** kolumny dopasowania folder nazw, ponieważ został kolumn użyty do partycjonowania danych wyjściowych w ścieżce wyjściowej **client_id**.
+
+### <a name="limitations"></a>Ograniczenia
+
+1. Tylko jeden niestandardowego klucza partycji jest dozwolone w właściwości danych wyjściowych obiektu blob wzorzec ścieżki. Wszystkie z następujących wzorców ścieżki są prawidłowe:
+
+   * Klaster1 / {date} / {aFieldInMyData}  
+   * Klaster1 / {time} / {aFieldInMyData}  
+   * Klaster1 / {aFieldInMyData}  
+   * Klaster1 / {date} / {time} / {aFieldInMyData}  
+
+2. Klucze partycji są bez uwzględniania wielkości liter, dlatego klucze partycji, takich jak "John" i "john" są równoważne. Ponadto wyrażenia nie może służyć jako klucze partycji. Na przykład **{columnA + columnB}** nie działa.  
+
+3. Gdy strumień wejściowy składa się z rekordów z kardynalnością klucza partycji w obszarze 8000, rekordy zostaną dołączone do istniejących obiektów blob i tylko tworzyć nowe obiekty BLOB, gdy jest to konieczne. Jeśli kardynalność jest za pośrednictwem 8000 ma żadnej gwarancji, istniejące obiekty BLOB zostaną zapisane i nowe obiekty BLOB nie będzie można utworzyć dowolną liczbę rekordów z tym samym kluczem partycji.  
+
+## <a name="custom-datetime-path-patterns"></a>Niestandardowe wzorców ścieżki daty/godziny
+
+Zezwalaj na niestandardowe wzorców ścieżki daty/godziny, można określić format danych wyjściowych, była zgodna z konwencjami Hive przesyłania strumieniowego, co daje możliwość wysyłania danych do usługi Azure HDInsight i Azure Databricks dla podrzędnych przetwarzania usługi Azure Stream Analytics. Niestandardowe wzorców ścieżki daty/godziny są łatwo zaimplementować przy użyciu `datetime` — słowo kluczowe w polu Prefiks ścieżki obiektu blob danych wyjściowych, wraz ze specyfikatora formatu. Na przykład `{datetime:yyyy}`.
 
 Użyj tego linku, aby [witryny Azure Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) Aby przełączać flagę funkcji, umożliwiająca niestandardowe wzorców ścieżki daty/godziny dla obiektu blob magazynu danych wyjściowych w wersji zapoznawczej. Ta funkcja zostanie wkrótce włączona w głównej portalu.
 
-## <a name="supported-tokens"></a>Obsługiwane tokeny
+### <a name="supported-tokens"></a>Obsługiwane tokeny
 
 Następujące generatory kodów specyfikatora formatu można osobno lub razem do osiągnięcia niestandardowych formatów daty/godziny:
 
@@ -42,7 +90,7 @@ Jeśli nie chcesz użyć niestandardowego wzorców daty/godziny, można dodać {
 
 ![Stream Analytics stare formatów daty/godziny](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-old-date-time-formats.png)
 
-## <a name="extensibility-and-restrictions"></a>Ograniczenia i rozszerzalność
+### <a name="extensibility-and-restrictions"></a>Ograniczenia i rozszerzalność
 
 Można użyć tylu tokenów `{datetime:<specifier>}`, tak jak pokazano w wzorzec ścieżki, aż osiągniesz limit znaków prefiksu ścieżki. Specyfikatory formatu nie można łączyć w ramach jednego tokenu poza kombinacje już według daty i godziny list rozwijanych. 
 
@@ -54,7 +102,7 @@ Dla partycji ścieżki `logs/MM/dd`:
 
 Możesz użyć tego samego specyfikatora formatu wielokrotnie w prefiks ścieżki. Token powtarza się za każdym razem.
 
-## <a name="hive-streaming-conventions"></a>Konwencje przesyłania strumieniowego programu hive
+### <a name="hive-streaming-conventions"></a>Konwencje przesyłania strumieniowego programu hive
 
 Wzorce niestandardową ścieżkę do magazynu obiektów blob może być używany z Konwencji Hive przesyłania strumieniowego, który oczekuje, że foldery do być oznakowane `column=` w nazwie folderu.
 

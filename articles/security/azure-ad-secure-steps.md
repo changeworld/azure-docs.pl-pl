@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 8ce75efae2d735c5653f9dae72c670b0714351ac
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f0b76e54da60396e01b5893b143bcee9048e2184
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51567954"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750328"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Pięć kroków do zabezpieczania infrastruktury tożsamości
 
@@ -38,7 +38,7 @@ Zalecenia przedstawione w tym dokumencie są wyrównane z [wynik zabezpieczyć t
 
 ![Wynik bezpiecznego tożsamości](media/azure-ad/azure-ad-sec-steps0.png)
 
-## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Przed przystąpieniem do wykonywania: ochronę uprzywilejowanych kont za pomocą usługi MFA
+## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Przed rozpoczęciem: Ochronę uprzywilejowanych kont za pomocą usługi MFA
 
 Przed przystąpieniem do wykonywania tej listy kontrolnej, upewnij się, że nie możesz uzyskać złamane, natomiast czytasz tej listy kontrolnej. Najpierw musisz chronić uprzywilejowanych kontach.
 
@@ -78,6 +78,9 @@ Jeśli Twoja organizacja używa rozwiązania tożsamości hybrydowej przy użyci
 
 Dowiedz się więcej o tym, jak [synchronizacji skrótów haseł](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-implement-password-hash-synchronization) działa.
 
+> [!NOTE]
+> Włączanie synchronizacji skrótów haseł, korzystają z usług domenowych Azure AD skrótów protokołu Kerberos (AES 256) i opcjonalnie skrótów NTLM (RC4, nie ziarna) zostanie również zaszyfrowana i synchronizowane z usługą Azure AD. 
+
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>Implementowanie inteligentnej blokady ekstranetu usług AD FS
 
 Organizacje, które skonfigurowanie aplikacji bezpośrednie uwierzytelnianie usługi Azure AD, korzystać z [usługi Azure AD inteligentnej blokady](https://docs.microsoft.com/azure/active-directory/active-directory-secure-passwords). Jeśli używasz usług AD FS w systemie Windows Server 2012 R2, należy zaimplementować usługi AD FS [ochrony blokady ekstranetu](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-soft-lockout-protection). Jeśli używasz usług AD FS w systemie Windows Server 2016, należy zaimplementować [blokada ekstranetu — inteligentne](https://support.microsoft.com/help/4096478/extranet-smart-lockout-feature-in-windows-server-2016). Usługi AD FS inteligentne ekstranetu który blokady chroni przed atakami ataki, która docelowa usług AD FS podczas uniemożliwiając użytkownikom zablokowania w usłudze Active Directory.
@@ -90,13 +93,13 @@ Za pomocą [Windows Hello](https://docs.microsoft.com/windows/security/identity-
 
 Biorąc pod uwagę wszechobecność złamania hasła, minimalizując obszar narażony na ataki w Twojej organizacji ma krytyczne znaczenie. Wyeliminowanie protokołów starsze, mniej bezpieczna opcja, ograniczanie dostępu do zapisu wskazuje i wykonywania bardziej znaczące kontrolę nad dostęp administracyjny do zasobów może zmniejszyć obszar powierzchni ataku.
 
-### <a name="block-legacy-authentication"></a>Blokuj starsze uwierzytelnianie
+### <a name="block-legacy-authentication"></a>Blokowanie starszego uwierzytelniania
 
 Aplikacje przy użyciu starszej wersji metody uwierzytelniania w usłudze Azure AD i dostęp do danych firmowych stanowić innego ryzyka dla organizacji. Przykłady aplikacji przy użyciu starszej wersji uwierzytelniania są klientami POP3, IMAP4 lub SMTP. Uwierzytelnianie starszych aplikacji uwierzytelnianie w imieniu użytkownika i uniemożliwić to zaawansowane oceny zabezpieczeń usługi Azure AD. Alternatywne, nowoczesnego uwierzytelniania, zmniejsza zagrożenie bezpieczeństwa, ponieważ obsługuje ona uwierzytelnianie wieloskładnikowe i dostępu warunkowego. Zalecamy następujące trzy czynności:
 
 1. Blok [starszych uwierzytelniania, jeśli używasz usług AD FS](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Instalator [usługi SharePoint Online i Exchange Online, aby korzystała z nowoczesnego uwierzytelniania](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication).
-3. Użyj [zasady dostępu warunkowego, aby zablokować starsze uwierzytelnianie](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication).
+3. Użyj [zasady dostępu warunkowego, aby zablokować starsze uwierzytelnianie](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Punkty wejścia nieprawidłowe uwierzytelnienie bloku
 

@@ -16,12 +16,12 @@ ms.date: 01/30/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 444c67e942fad732c959f834e2c50f0b2a35562c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c398e615e943caad40040ff1b87713304fd9f015
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246538"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746714"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -153,6 +153,9 @@ Ta aktualizacja obejmuje następujące nowe funkcje i ulepszenia dla usługi Azu
 
 <!-- 3190553 - IS ASDK -->
 - Rozwiązano problem, który wygenerował alerty generujące dużo alertów, wskazującą, czy wystąpienie roli infrastruktury był niedostępny lub węzła jednostki skali była w trybie offline.
+
+<!-- 2724961 - IS ASDK -->
+- Fiexed wiadomość problem, w którym na stronie Przegląd maszyny Wirtualnej nie można poprawnie wyświetlić wykres metryk maszyny Wirtualnej. 
 
 ## <a name="changes"></a>Zmiany
 
@@ -297,11 +300,6 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 <!-- 1662991 IS ASDK --> 
 - Diagnostyka maszyn wirtualnych systemu Linux nie jest obsługiwana w usłudze Azure Stack. Podczas wdrażania maszyny Wirtualnej z systemem Linux przy użyciu włączenia diagnostyki maszyn wirtualnych, wdrożenie zakończy się niepowodzeniem. Wdrażanie nie powiedzie, jeśli włączysz podstawowe metryki maszyny Wirtualnej systemu Linux, za pomocą ustawień diagnostycznych.  
-
-<!-- 2724961- IS ASDK --> 
-- Po dokonaniu rejestracji **Microsoft.Insight** dostawcy zasobów w ustawieniach subskrypcji i tworzenie maszyny Wirtualnej z systemem Windows z włączoną gościa systemu operacyjnego diagnostyczne, wykres procent użycia procesora CPU na stronie Omówienie maszyny Wirtualnej jest Pokaż dane metryk.
-
-   Aby znaleźć danych metryk, takich jak wykres procent użycia procesora CPU dla maszyny Wirtualnej, przejdź do **metryki** okna i Pokaż wszystkie obsługiwane Windows maszyny Wirtualnej gościa metryki.
 
 <!-- 3507629 - IS, ASDK --> 
 - Dyski zarządzane tworzy dwa nowe [typy limitów przydziału obliczeniowych](azure-stack-quota-types.md#compute-quota-types) ograniczenie maksymalnej pojemności dysków zarządzanych, które mogą być udostępniane. Domyślnie 2048 GiB jest przydzielany dla każdego typu przydziału dysków zarządzanych. Jednakże można napotkać następujące problemy:

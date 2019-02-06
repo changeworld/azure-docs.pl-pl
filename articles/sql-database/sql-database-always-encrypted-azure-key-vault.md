@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: e988a3c86302b875f8393264279e4a65c45ba1eb
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: fa37a83799ec50c7a8a87a0ac8a3232035a49234
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041241"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755666"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
 
@@ -81,7 +81,7 @@ Można szybko utworzyć magazyn kluczy, uruchamiając następujący skrypt. Aby 
 ## <a name="create-a-blank-sql-database"></a>Tworzenie pustej bazy danych SQL
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 2. Przejdź do **Utwórz zasób** > **baz danych** > **bazy danych SQL**.
-3. Tworzenie **puste** bazy danych o nazwie **kliniki** na nowy lub istniejący serwer. Aby uzyskać szczegółowe informacje o tym, jak utworzyć bazę danych w witrynie Azure portal, zobacz [pierwszej bazy danych Azure SQL](sql-database-get-started-portal.md).
+3. Tworzenie **puste** bazy danych o nazwie **kliniki** na nowy lub istniejący serwer. Aby uzyskać szczegółowe informacje o tym, jak utworzyć bazę danych w witrynie Azure portal, zobacz [pierwszej bazy danych Azure SQL](sql-database-single-database-get-started.md).
    
     ![Tworzenie pustej bazy danych](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)
 

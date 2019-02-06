@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 257e9f72f21d523dfa2390814b786d1963dd671c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904008"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743637"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
@@ -36,11 +36,11 @@ Aby zaktualizować zakresu rezerwacji:
 2. Wybierz **wszystkich usług** > **rezerwacje**.
 3. Wybierz rezerwacji.
 4. Wybierz pozycję **Ustawienia** > **Konfiguracja**.
-5. Zmień zakres. 
+5. Zmień zakres.
 
 W przypadku zmiany z udostępnionego przez pojedynczy zakres, można wybrać tylko te subskrypcje, których jesteś właścicielem. Można wybrać tylko subskrypcje w ramach tego samego kontekstu rozliczeń, co Rezerwacja.
 
-Zakres ma zastosowanie tylko do oferty płatności MS-AZR - 0003P, MS-AZR - 0017P oferty dla przedsiębiorstw lub typów subskrypcji dostawcy CSP. Dla umów enterprise Agreement subskrypcji i testowania nie kwalifikują się uzyskać rabat związany z rezerwacją.
+Zakres ma zastosowanie tylko do oferty płatności, oferowanych MS-AZR - 0003 P lub MS-AZR - 0023 P, Enterprise MS-AZR - 0017 P lub MS-AZR - 0148 P lub typów subskrypcji dostawcy CSP.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Dodawanie lub modyfikowanie użytkowników, którzy mogą zarządzać rezerwacji
 

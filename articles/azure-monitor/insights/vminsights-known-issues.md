@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: 038c6afe94ccfea707eea3b4032a2e45f69e5102
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54187078"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745677"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>Znane problemy z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 
@@ -27,6 +27,7 @@ W tym artykule opisano znane problemy z usługą Azure Monitor dla maszyn wirtua
 ## <a name="health"></a>Health 
 Następujące znane problemy związane z bieżącej wersji funkcji kondycji:
 
+- Panel właściwości maszyny Wirtualnej Wyświetla systemu operacyjnego Windows Server 2019 jako Windows Server 2016. Ten problem zostanie rozwiązany w kolejnej wersji.
 - Jeśli Maszynę wirtualną platformy Azure zostało usunięte lub usunięte, jest on wyświetlany w widoku listy maszyn wirtualnych za jakiś czas. Ponadto kliknięcie stan usunięto ani nie usunięto maszyny Wirtualnej spowoduje otwarcie **Diagnostyka kondycji** wyświetlić, a następnie inicjuje pętli ładowania. Wybierając nazwę usuniętej maszyny Wirtualnej powoduje otwarcie okienka z komunikat informujący, że maszyna wirtualna została usunięta.
 - Nawet wtedy, gdy portal lub interfejsu API Monitor obciążenie może je wykonać natychmiastową aktualizację, zmiany konfiguracji, takie jak aktualizowanie wartości progowej, potrwać do 30 minut. 
 - Diagnostyka kondycji środowiska aktualizacje szybciej niż inne widoki. Informacje mogą zostać opóźnione, podczas przełączania między nimi. 

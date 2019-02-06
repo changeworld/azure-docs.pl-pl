@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 0392d84efa3a82a6323d6d09db792df7d6c42256
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b6dc0a63340fee03b34f4c5b6eca8ff011d6b178
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210679"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744182"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
@@ -52,8 +52,9 @@ W poniższych instrukcji, przypisujemy usługi Key Vault, jako usługa musi mie�
 1. Po utworzeniu konta magazynu, uruchom następujące polecenie, aby uzyskać identyfikator zasobu konta magazynu, którymi chcesz zarządzać
 
     ```
-    az storage account show -n storageaccountname (Copy ID field out of the result of this command)
+    az storage account show -n storageaccountname 
     ```
+    Skopiuj identyfikator pola z wynikiem powyższego polecenia
     
 2. Uzyskiwanie usługi aplikacji identyfikator z usługi Azure Key Vault dla podmiotu zabezpieczeń 
 
@@ -74,13 +75,16 @@ W poniższych instrukcji, przypisujemy usługi Key Vault, jako usługa musi mie�
     az keyvault storage add --vault-name <YourVaultName> -n <StorageAccountName> --active-key-name key2 --auto-regenerate-key --regeneration-period P90D --resource-id <Resource-id-of-storage-account>
     ```
     W przypadku, gdy użytkownik nie utworzono konta magazynu i nie ma uprawnień do konta magazynu, poniższe kroki, ustaw uprawnienia dla konta upewnić się, że wszystkie uprawnienia magazynu Key Vault można zarządzać.
+    
  > [!NOTE] 
-    W przypadku, że użytkownik nie ma uprawnień do konta magazynu możemy najpierw uzyskać identyfikator obiektu użytkownika
+ > W przypadku, że użytkownik nie ma uprawnień do konta magazynu możemy najpierw uzyskać identyfikator obiektu użytkownika
+
 
     ```
     az ad user show --upn-or-object-id "developer@contoso.com"
 
     az keyvault set-policy --name <YourVaultName> --object-id <ObjectId> --storage-permissions backup delete list regeneratekey recover     purge restore set setsas update
+    
     ```
     
 ## <a name="how-to-access-your-storage-account-with-sas-tokens"></a>Jak uzyskać dostęp do konta magazynu przy użyciu tokenów sygnatur dostępu Współdzielonego
@@ -91,9 +95,9 @@ W poniżej sekcji pokażemy, jak można pobrać klucz konta magazynu, która jes
 
 > [!NOTE] 
   Istnieją 3 sposoby uwierzytelnienia do usługi Key Vault, ponieważ możesz przeczytać w [podstawowe pojęcia](key-vault-whatis.md#basic-concepts)
-- Przy użyciu tożsamości usługi zarządzanej (zdecydowanie zalecane)
-- Za pomocą jednostki usługi i certyfikatu 
-- Przy użyciu nazwy głównej usługi i hasła (niezalecane)
+> - Przy użyciu tożsamości usługi zarządzanej (zdecydowanie zalecane)
+> - Za pomocą jednostki usługi i certyfikatu 
+> - Przy użyciu nazwy głównej usługi i hasła (niezalecane)
 
 ```cs
 // Once you have a security token from one of the above methods, then create KeyVaultClient with vault credentials

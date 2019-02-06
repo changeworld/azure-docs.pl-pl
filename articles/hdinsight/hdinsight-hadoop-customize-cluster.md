@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ad59decab7233c74e13468b0cf0b11fdb5485d07
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722363"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746796"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Dostosowywanie klastrów HDInsight z systemem Windows za pomocą akcji skryptu
 **Akcja skryptu** może służyć do wywołania [niestandardowe skrypty](hdinsight-hadoop-script-actions.md) podczas procesu tworzenia klastra w przypadku instalowania dodatkowego oprogramowania w klastrze.
@@ -80,8 +80,9 @@ HDInsight udostępnia szereg skryptów do zainstalowania następujących składn
 ## <a name="call-scripts-using-azure-powershell"></a>Wywoływanie skryptów przy użyciu programu Azure PowerShell
 Ten poniższy skrypt programu PowerShell pokazuje, jak zainstalować program w Windows oparte na klastrze HDInsight Spark.  
 
+    ```powershell
     # Provide values for these variables
-    $subscriptionID = "<Azure Suscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
+    $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
     $nameToken = "<Enter A Name Token>"  # The token is use to create Azure service names.
     $namePrefix = $nameToken.ToLower() + (Get-Date -Format "MMdd")
@@ -158,7 +159,7 @@ Ten poniższy skrypt programu PowerShell pokazuje, jak zainstalować program w W
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-
+    ```
 
 Aby zainstalować inne oprogramowanie, należy zastąpić plik skryptu w skrypcie:
 
@@ -171,12 +172,14 @@ Poniższy przykład pokazuje, jak zainstalować platformę Apache Spark w klastr
 
 1. Tworzenie aplikacji konsolowej C# w programie Visual Studio.
 2. Z poziomu konsoli Menedżera pakietów Nuget uruchom następujące polecenie.
-
+    ```powershell
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
+    ```
 3. Należy użyć następującego przy użyciu instrukcji w pliku Program.cs:
 
+    ```csharp
         using System;
         using System.Security;
         using Microsoft.Azure;
@@ -186,8 +189,10 @@ Poniższy przykład pokazuje, jak zainstalować platformę Apache Spark w klastr
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
         using Microsoft.Rest;
         using Microsoft.Rest.Azure.Authentication;
+    ```
 4. Umieść kod w klasie następującym kodem:
 
+    ```csharp
         private static HDInsightManagementClient _hdiManagementClient;
 
         // Replace with your AAD tenant ID if necessary
@@ -276,6 +281,8 @@ Poniższy przykład pokazuje, jak zainstalować platformę Apache Spark w klastr
             // Register the HDInsight provider
             var rpResult = resourceManagementClient.Providers.Register("Microsoft.HDInsight");
         }
+    ```
+
 5. Naciśnij klawisz **F5**, aby uruchomić aplikację.
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>Pomoc techniczna dotycząca oprogramowania typu open-source używane w klastrach HDInsight

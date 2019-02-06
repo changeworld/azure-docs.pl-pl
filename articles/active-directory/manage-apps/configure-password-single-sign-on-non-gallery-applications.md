@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: f0f4d160b9e9d5e556813115aa39c60ea8f4edb2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f549c748c87405b47868c75cc01af81efd202af2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733335"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755360"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować hasło logowania jednokrotnego dla aplikacji spoza galerii
 
-Oprócz opcji można znaleźć w galerii aplikacji usługi Azure AD, masz także możliwość dodania **aplikacji spoza galerii** gdy aplikacja ma nie ma na liście istnieje. Używanie tej funkcji można dodać żadnych aplikacji, która już istnieje w Twojej organizacji lub dowolnej aplikacji innych firm, z którego można korzystać z dostawcy, który nie jest już częścią [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery).
+Oprócz opcji można znaleźć w galerii aplikacji usługi Azure AD, masz także możliwość dodania **aplikacji spoza galerii** gdy aplikacja ma nie ma na liście istnieje. Używanie tej funkcji można dodać żadnych aplikacji, która już istnieje w Twojej organizacji lub dowolnej aplikacji innych firm, z którego można korzystać z dostawcy, który nie jest już częścią [galerii aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
 
 Po dodaniu aplikacji spoza galerii, można skonfigurować pojedynczej metody logowania jednokrotnego ta aplikacja używa, wybierając **logowania jednokrotnego** element nawigacji w aplikacji dla przedsiębiorstw w [witrynyAzureportal](https://portal.azure.com/).
 

@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 10/04/2018
 ms.author: lahugh
-ms.openlocfilehash: b296dce0a83971626c8e66ddc314c4d1e07d8602
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52840371"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752130"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>Używanie niestandardowego obrazu, aby utworzyć pulę maszyn wirtualnych 
 
@@ -69,7 +69,7 @@ Migawka jest pełna, tylko do odczytu kopię dysku VHD. Aby utworzyć migawkę m
 
 ### <a name="create-an-image-from-one-or-more-snapshots"></a>Tworzenie obrazu na podstawie co najmniej jednej migawki
 
-Aby utworzyć obrazu zarządzanego z migawki, użyj narzędzia wiersza polecenia platformy Azure takie jak [utworzyć obraz az](/cli/azure/image#az_image_create) polecenia. Aby utworzyć obraz, określając migawki dysku systemu operacyjnego i opcjonalnie co najmniej jeden migawki dysków danych.
+Aby utworzyć obrazu zarządzanego z migawki, użyj narzędzia wiersza polecenia platformy Azure takie jak [utworzyć obraz az](/cli/azure/image) polecenia. Aby utworzyć obraz, określając migawki dysku systemu operacyjnego i opcjonalnie co najmniej jeden migawki dysków danych.
 
 ## <a name="create-a-pool-from-a-custom-image-in-the-portal"></a>Tworzenie puli za pomocą niestandardowego obrazu w portalu
 

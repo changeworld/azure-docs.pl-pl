@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2018
+ms.date: 01/18/2019
 ms.author: yashar
-ms.openlocfilehash: 44d23cf38eb1dca9ade94c5a8fd0ae495300be44
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: 4f70a34febcf0b39d051053a6ddd9abe5c9a6726
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582195"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745983"
 ---
 # <a name="prepay-for-suse-software-plans-from-azure-reservations"></a>Zapłać z góry za plany oprogramowania SUSE z listy zastrzeżeń platformy Azure
 
@@ -27,7 +27,7 @@ Zapłać z góry za użycie SUSE i zaoszczędzić pieniądze w porównaniu z teg
 Możesz kupić plany oprogramowania SUSE w witrynie Azure portal. Aby kupić plan:
 
 - Musisz być w roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.
-- W przypadku subskrypcji Enterprise, musi być włączony zakupu rezerwacji [portalu EA portal](https://ea.azure.com).
+- W przypadku subskrypcji Enterprise **Dodawanie wystąpień zarezerwowanych** musi być włączona w [portalu EA portal](https://ea.azure.com). Lub, jeśli to ustawienie jest wyłączone, musi być administratorem subskrypcji umowy EA.
 - W przypadku programu Cloud Solution Provider (CSP) agentów administratora lub agentom sprzedaży można kupić plany SUSE.
 
 ## <a name="buy-a-suse-software-plan"></a>Kup plan oprogramowania SUSE
@@ -39,8 +39,8 @@ Możesz kupić plany oprogramowania SUSE w witrynie Azure portal. Aby kupić pla
     | Pole      | Opis|
     |:------------|:--------------|
     |Name (Nazwa)        |Nazwa tego zakupu.|
-    |Subskrypcja|Subskrypcja użytej do zapłacenia dla tego planu. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Wymagany typ subskrypcji to Enterprise Agreement (numer oferty MS-AZR-0017P) lub Płatność zgodnie z rzeczywistym użyciem (numer oferty MS-AZR-0003P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.|
-    |Zakres       |Zakres może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>Pojedynczej subskrypcji — rabat w wysokości plan jest stosowany do użycia SUSE Linux w ramach tej subskrypcji. </li><li>W warstwie współdzielona — zastosowania rabatu plan do użycia w systemie SUSE Linux w dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje (z wyjątkiem tworzenia i testowania subskrypcje) w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.</li></ul>|
+    |Subskrypcja|Subskrypcja użytej do zapłacenia dla tego planu. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji. Typ subskrypcji musi być umowy enterprise agreement (oferują liczb: MS-AZR-0017P lub MS-AZR - 0148 P) lub płatność za rzeczywiste użycie (oferują liczb: MS-AZR-0003P lub MS-AZR - 0023 P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.|
+    |Zakres       |Zakres może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>Pojedynczej subskrypcji — rabat w wysokości plan jest stosowany do użycia SUSE Linux w ramach tej subskrypcji. </li><li>W warstwie współdzielona — zastosowania rabatu plan do użycia w systemie SUSE Linux w dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.</li></ul>|
     |Plan oprogramowania     |Wybierz plan, SUSE Linux. Aby uzyskać pomoc w identyfikacji rozwiązania do zakupienia, zobacz [Understand how the SUSE Linux Enterprise software reservation discount is applied (Sposób stosowania rabatu dotyczącego rezerwacji oprogramowania SUSE Linux Enterprise)](../../billing/billing-understand-suse-reservation-charges.md).|
     |Rozmiar maszyny wirtualnej     |Cennik SUSE Linux, zależy od liczby procesorów wirtualnych na maszynie Wirtualnej. Wybierz opcję, która reprezentuje liczbę procesorów wirtualnych na maszynach wirtualnych systemu Linux SUSE.|
     |Termin        |Jeden rok lub trzy lata.|

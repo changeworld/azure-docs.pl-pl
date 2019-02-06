@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: d59bc20ea745412f8f2549e0359483d1dd3e608d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 494665e530104cd4711e8112f3a999e68c3485b8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912786"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746391"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -85,13 +85,13 @@ Poniżej przedstawiono limity dotyczące przebiegu aplikacji logiki pojedynczego
 
 | Name (Nazwa) | Limit | Uwagi | 
 | ---- | ----- | ----- | 
-| Współbieżności wyzwalacza | 50 ograniczenie współbieżności | Po włączeniu kontroli współbieżności dla wyzwalacza domyślny limit wynosi 25. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które można uruchomić w tym samym czasie lub w sposób równoległy. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [limit współbieżności wyzwalacza zmiany](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
-| Maksymalna przebiegów oczekiwania | 100 ograniczenie współbieżności | Po włączeniu kontroli współbieżności dla wyzwalacza domyślny limit wynosi 10. Limit ten opisuje maksymalną liczbę wystąpień aplikacji logiki, które mogą poczekać do uruchamiania, gdy aplikacja logiki jest już uruchomiona maksymalna liczba współbieżnych wystąpień. <p><p>Aby zmienić domyślny limit wartość z zakresu od 0 do 100 włącznie, zobacz [ograniczać przebiegi oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
-| Elementy tablicy foreach | 100 000 | Limit ten opisuje maksymalną liczbę elementów tablicy, które mogą przetwarzać pętlę "for each". <p><p>Do filtrowania większych tablic, można użyć [Akcja zapytania](../connectors/connectors-native-query.md). | 
-| Współbieżność foreach | 50 ograniczenie współbieżności | Po włączeniu kontroli współbieżności dla tej pętli domyślny limit wynosi 20. Ten limit w tym artykule opisano "for each" Maksymalna liczba iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [zmienić współbieżności "for each" limit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
-| Elementy SplitOn | 100 000 | | 
-| Iteracje UNTIL | 5000 | | 
-|||| 
+| Współbieżności wyzwalacza | * Nieograniczone po wyłączeniu kontrola współbieżności <p><p>* 25 jest domyślny limit, gdy kontrola współbieżności jest włączona, którego nie można cofnąć po włączeniu formantu. Domyślne można zmienić na wartość z zakresu od 1 do 50 włącznie. | Limit ten opisuje największa liczba wystąpień aplikacji logiki, które można uruchomić w tym samym czasie lub w sposób równoległy. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [limit współbieżności wyzwalacza zmiany](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) lub [sekwencyjnie wyzwolić wystąpień](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maksymalna przebiegów oczekiwania | Po włączeniu kontroli współbieżności minimalna liczba oczekujących przebiegów jest 10, a także liczbę równoczesnych uruchomień (współbieżności wyzwalacza). Możesz zmienić maksymalną liczbę maksymalnie 100 (włącznie). | Limit ten opisuje największa liczba wystąpień aplikacji logiki, które mogą poczekać do uruchamiania, gdy aplikacja logiki jest już uruchomiona maksymalna liczba współbieżnych wystąpień. <p><p>Aby zmienić domyślny limit, zobacz [ograniczać przebiegi oczekujących zmian](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Elementy tablicy foreach | 100 000 | Limit ten opisuje największa liczba elementów tablicy, które mogą przetwarzać pętlę "for each". <p><p>Do filtrowania większych tablic, można użyć [Akcja zapytania](../connectors/connectors-native-query.md). | 
+| Współbieżność foreach | 20 jest domyślny limit, gdy kontrola współbieżności jest wyłączona. Domyślne można zmienić na wartość z zakresu od 1 do 50 włącznie. | To ograniczenie jest największa liczba "for each" iteracji, które można uruchomić w tym samym czasie lub równolegle w pętli. <p><p>Aby zmienić domyślny limit wartość z zakresu od 1 do 50 włącznie, zobacz [zmienić współbieżności "for each" limit](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) lub [Uruchom "for each" w pętli sekwencyjnie](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| Elementy SplitOn | 100 000 | W przypadku wyzwalaczy, które zwracają tablicę, można określić wyrażenie, które korzysta z właściwością "SplitOn" który [dzieli lub debatches elementów tablicy do wielu wystąpień przepływu pracy](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) przetwarzania zamiast użycia dla pętli "Foreach". To wyrażenie odwołuje się do tablicy, na potrzeby tworzenia i uruchamiania wystąpienia przepływu pracy dla każdego elementu tablicy. |
+| Iteracje UNTIL | 5000 | |
+||||
 
 <a name="throughput-limits"></a>
 

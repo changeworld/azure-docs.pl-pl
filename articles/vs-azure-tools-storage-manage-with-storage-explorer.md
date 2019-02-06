@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: cdfb1e11a2eb468e390546d69617ff4cadd17a7e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658880"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756822"
 ---
 # <a name="get-started-with-storage-explorer"></a>Wprowadzenie do Eksploratora usługi Storage
 
@@ -87,8 +87,8 @@ Ponadto można pracować z kontami magazynu na globalnej i krajowej platformie A
 * [Łączenie się z subskrypcją platformy Azure](#connect-to-an-azure-subscription): Zarządzanie zasobami magazynu należącymi do subskrypcji platformy Azure.
 * [Praca z lokalnym magazynem projektowym](#work-with-local-development-storage): Zarządzanie magazynem lokalnym przy użyciu emulatora usługi Azure Storage.
 * [Dołączanie do magazynu zewnętrznego](#attach-or-detach-an-external-storage-account): Zarządzanie zasobami magazynu, które należą do innej subskrypcji platformy Azure lub które są w innych chmurach krajowej platformy Azure przy użyciu nazwy, klucza i punktów końcowych konta magazynu.
-* [Dołączanie konta magazynu przy użyciu sygnatury dostępu Współdzielonego](): Zarządzanie zasobami magazynu należącymi do innej subskrypcji platformy Azure przy użyciu sygnatury dostępu współdzielonego (SAS).
-* [Dołączanie usługi przy użyciu sygnatury dostępu Współdzielonego](#attach-service-using-sas): Zarządzanie określoną usługą storage (kontener obiektów blob, kolejką lub tabelą) należącą do innej subskrypcji platformy Azure przy użyciu sygnatury dostępu Współdzielonego.
+* [Dołączanie konta magazynu przy użyciu sygnatury dostępu Współdzielonego](#attach-a-storage-account-by-using-a-shared-access-signature-sas): Zarządzanie zasobami magazynu należącymi do innej subskrypcji platformy Azure przy użyciu sygnatury dostępu współdzielonego (SAS).
+* [Dołączanie usługi przy użyciu sygnatury dostępu Współdzielonego](#attach-a-service-by-using-a-shared-access-signature-sas): Zarządzanie określoną usługą storage (kontener obiektów blob, kolejką lub tabelą) należącą do innej subskrypcji platformy Azure przy użyciu sygnatury dostępu Współdzielonego.
 * [Łączenie z kontem usługi Azure Cosmos DB za pomocą parametrów połączenia](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Zarządzanie kontem usługi Cosmos DB przy użyciu parametrów połączenia.
 
 ## <a name="connect-to-an-azure-subscription"></a>Łączenie się z subskrypcją platformy Azure
@@ -295,7 +295,7 @@ Oprócz zarządzania kontami usługi Azure Cosmos DB przy użyciu subskrypcji pl
 
     ![połączyć z usługą Azure Cosmos DB przy użyciu parametrów połączenia][21]
 
-2. Wybierz interfejs API usługi Azure Cosmos DB, Wklej swoje **parametry połączenia**, a następnie kliknij przycisk **OK** połączyć konto usługi Azure Cosmos DB. Aby uzyskać informacje dotyczące pobierania parametrów połączenia, zobacz [Get the connection string (Pobieranie parametrów połączenia)](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
+2. Wybierz interfejs API usługi Azure Cosmos DB, Wklej swoje **parametry połączenia**, a następnie kliknij przycisk **OK** połączyć konto usługi Azure Cosmos DB. Aby uzyskać informacje dotyczące pobierania parametrów połączenia, zobacz [Get the connection string (Pobieranie parametrów połączenia)](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
     ![connection-string][22]
 

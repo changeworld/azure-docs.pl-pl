@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 5eb8f291b0f27518203c45e8c30c3994780e30ef
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1fadf186176c8bc82aaefe9a908f25f9c8a7e35a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487136"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755472"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego: Szybki start
 
@@ -164,14 +164,6 @@ Istnieją dwa sposoby, aby zmodyfikować ustawienia strefy Intranet użytkownik�
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso16.png)
  
     ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso17.png)
-
-6. Przejdź do **Konfiguracja użytkownika** > **Szablony administracyjne** > **składników Windows**  >   **Program Internet Explorer** > **internetowy Panel sterowania** > **strony zabezpieczeń** > **strefy intranetowej**. Następnie wybierz pozycję **zezwala na aktualizacje na pasku stanu za pomocą skryptu**.
-
-    ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso11.png)
-
-7. Włącz ustawienie zasad, a następnie wybierz **OK**.
-
-    ![Logowanie jednokrotne](./media/how-to-connect-sso-quick-start/sso12.png)
 
 ### <a name="browser-considerations"></a>Zagadnienia dotyczące przeglądarki
 

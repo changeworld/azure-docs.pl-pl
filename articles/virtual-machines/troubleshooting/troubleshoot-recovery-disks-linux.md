@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: genli
-ms.openlocfilehash: 9e3177b9df41a1612435dddadafd5c7e291e0e35
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 76a29ce05aab39d9460dcf068ec8a7f60d1e8fac
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663591"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753286"
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli"></a>Rozwiązywanie problemów z maszyny Wirtualnej z systemem Linux przez dołączenie dysku systemu operacyjnego do odzyskiwania maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure
 Linux maszyny wirtualnej (VM) napotkał błąd podczas rozruchu lub dysk, może być konieczne wykonanie kroków rozwiązywania problemów na samym wirtualnym dysku twardym. Typowym przykładem może być nieprawidłowy wpis w `/etc/fstab` że zapobiega maszyny Wirtualnej możliwość wykonania rozruchu pomyślnie. Ten artykuł szczegółowo opisuje jak połączyć wirtualny dysk twardy do innej maszyny Wirtualnej systemu Linux, aby naprawić wszystkie błędy, a następnie ponownie utworzyć oryginalną maszynę Wirtualną za pomocą wiersza polecenia platformy Azure. 
@@ -55,7 +55,7 @@ Przejrzyj serial dane wyjściowe, aby ustalić, dlaczego maszyny Wirtualnej nie 
 ## <a name="view-existing-virtual-hard-disk-details"></a>Szczegółowe informacje są istniejącego wirtualnego dysku twardego
 Zanim będzie możliwe dołączenie wirtualnego dysku twardego (VHD) do innej maszyny Wirtualnej, należy zidentyfikować identyfikator URI dysku systemu operacyjnego. 
 
-Wyświetlanie informacji o maszynie Wirtualnej za pomocą [az vm show](/cli/azure/vm#az_vm_show). Użyj `--query` flagę, aby wyodrębnić identyfikator URI do dysku systemu operacyjnego. Poniższy przykład pobiera informacje o dysku dla maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
+Wyświetlanie informacji o maszynie Wirtualnej za pomocą [az vm show](/cli/azure/vm). Użyj `--query` flagę, aby wyodrębnić identyfikator URI do dysku systemu operacyjnego. Poniższy przykład pobiera informacje o dysku dla maszyny Wirtualnej o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM \
@@ -81,7 +81,7 @@ Poczekaj, aż maszyny Wirtualnej zostało zakończone, usuwanie, przed dołącze
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>Dołącz istniejący wirtualny dysk twardy do innej maszyny Wirtualnej
 W następnych kilku krokach należy użyć innej maszyny Wirtualnej na potrzeby rozwiązywania problemów. Możesz dołączyć istniejący wirtualny dysk twardy do tej maszyny Wirtualnej rozwiązywania problemów do przeglądania i edytowania zawartości na dysku. Ten proces umożliwia Popraw wszelkie błędy konfiguracji lub przejrzyj dodatkową aplikację i plikach dziennika systemowego, na przykład. Wybierz lub Utwórz inną maszynę Wirtualną do użycia na potrzeby rozwiązywania problemów.
 
-Dołącz istniejący wirtualny dysk twardy z [dołączyć az vm unmanaged dysku](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_attach). Po dołączeniu istniejącego wirtualnego dysku twardego Określ identyfikator URI dysku uzyskanego w poprzednim `az vm show` polecenia. Poniższy przykład dołącza istniejącego wirtualnego dysku twardego do maszyny Wirtualnej rozwiązywania problemów, o nazwie `myVMRecovery` w grupie zasobów o nazwie `myResourceGroup`:
+Dołącz istniejący wirtualny dysk twardy z [dołączyć az vm unmanaged dysku](/cli/azure/vm/unmanaged-disk). Po dołączeniu istniejącego wirtualnego dysku twardego Określ identyfikator URI dysku uzyskanego w poprzednim `az vm show` polecenia. Poniższy przykład dołącza istniejącego wirtualnego dysku twardego do maszyny Wirtualnej rozwiązywania problemów, o nazwie `myVMRecovery` w grupie zasobów o nazwie `myResourceGroup`:
 
 ```azurecli
 az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -147,7 +147,7 @@ Gdy błędy są rozwiązywane, odinstaluj i Odłącz istniejący wirtualny dysk 
     sudo umount /dev/sdc1
     ```
 
-2. Teraz Odłącz wirtualny dysk twardy z maszyny Wirtualnej. Zamknij sesję SSH dla maszyny Wirtualnej rozwiązywania problemów. Listy dołączonych dysków danych do maszyny Wirtualnej rozwiązywania problemów z [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_list). Poniższy przykład wyświetla listę dysków danych dołączonych do maszyny Wirtualnej o nazwie `myVMRecovery` w grupie zasobów o nazwie `myResourceGroup`:
+2. Teraz Odłącz wirtualny dysk twardy z maszyny Wirtualnej. Zamknij sesję SSH dla maszyny Wirtualnej rozwiązywania problemów. Listy dołączonych dysków danych do maszyny Wirtualnej rozwiązywania problemów z [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk). Poniższy przykład wyświetla listę dysków danych dołączonych do maszyny Wirtualnej o nazwie `myVMRecovery` w grupie zasobów o nazwie `myResourceGroup`:
 
     ```azurecli
     azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -156,7 +156,7 @@ Gdy błędy są rozwiązywane, odinstaluj i Odłącz istniejący wirtualny dysk 
 
     Zanotuj nazwę dla istniejącego wirtualnego dysku twardego. Na przykład nazwa dysku z identyfikatora URI **https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** jest **myVHD**. 
 
-    Dołączanie dysku danych z maszyny Wirtualnej [maszyny wirtualnej az unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_detach). Poniższy przykład powoduje odłączenie dysku o nazwie `myVHD` z maszyny Wirtualnej o nazwie `myVMRecovery` w `myResourceGroup` grupy zasobów:
+    Dołączanie dysku danych z maszyny Wirtualnej [maszyny wirtualnej az unmanaged-disk detach](/cli/azure/vm/unmanaged-disk). Poniższy przykład powoduje odłączenie dysku o nazwie `myVHD` z maszyny Wirtualnej o nazwie `myVMRecovery` w `myResourceGroup` grupy zasobów:
 
     ```azurecli
     az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -169,7 +169,7 @@ Aby utworzyć Maszynę wirtualną z oryginalnego wirtualnego dysku twardego, uż
 
 - https://github.com/Azure/azure-quickstart-templates/blob/master/201-vm-specialized-vhd-new-or-existing-vnet/azuredeploy.json
 
-Szablon umożliwia wdrożenie maszyny Wirtualnej przy użyciu identyfikatora URI wirtualnego dysku twardego z wcześniej polecenia. Wdrażanie szablonu przy użyciu [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create). Podaj identyfikator URI do oryginalnego wirtualnego dysku twardego, a następnie określ typ systemu operacyjnego, rozmiaru maszyny Wirtualnej i nazwę maszyny Wirtualnej w następujący sposób:
+Szablon umożliwia wdrożenie maszyny Wirtualnej przy użyciu identyfikatora URI wirtualnego dysku twardego z wcześniej polecenia. Wdrażanie szablonu przy użyciu [Utwórz wdrożenie grupy az](/cli/azure/group/deployment). Podaj identyfikator URI do oryginalnego wirtualnego dysku twardego, a następnie określ typ systemu operacyjnego, rozmiaru maszyny Wirtualnej i nazwę maszyny Wirtualnej w następujący sposób:
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \
@@ -181,7 +181,7 @@ az group deployment create --resource-group myResourceGroup --name myDeployment 
 ```
 
 ## <a name="re-enable-boot-diagnostics"></a>Włączyć ponownie diagnostykę rozruchu
-Po utworzeniu maszyny Wirtualnej z istniejącego wirtualnego dysku twardego Diagnostyka rozruchu może nie być włączane automatycznie. Włącz diagnostykę rozruchu przy użyciu [Włącz diagnostykę rozruchu az vm](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable). Poniższy przykład umożliwia rozszerzenie diagnostyki na maszynie Wirtualnej o nazwie `myDeployedVM` w grupie zasobów o nazwie `myResourceGroup`:
+Po utworzeniu maszyny Wirtualnej z istniejącego wirtualnego dysku twardego Diagnostyka rozruchu może nie być włączane automatycznie. Włącz diagnostykę rozruchu przy użyciu [Włącz diagnostykę rozruchu az vm](/cli/azure/vm/boot-diagnostics). Poniższy przykład umożliwia rozszerzenie diagnostyki na maszynie Wirtualnej o nazwie `myDeployedVM` w grupie zasobów o nazwie `myResourceGroup`:
 
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM

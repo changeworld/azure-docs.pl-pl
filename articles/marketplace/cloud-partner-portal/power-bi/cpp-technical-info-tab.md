@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 71f226d2ba471a2ccbba3123015697da43d2cf80
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d96ef2fd318d6164e1b7dfc5c4b72d6957af0f3e
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55667066"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744438"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Karta informacje techniczne aplikacji Power BI zasilania
 
@@ -36,7 +36,7 @@ W **informacje techniczne** kartę, należy podać następujące pola.  Dołącz
 |    ---------------    |  ----------------------------------------------------------------------------|
 | **Adres URL Instalatora**     | Adres generowane przez usługę Power BI podczas publikowania aplikacji i przenieś go do produkcji.  Aby uzyskać więcej informacji na temat sposobu generowania adresu URL, zobacz [publikowanie aplikacji usługi w usłudze Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
 |  **Instrukcje weryfikacji**  |  Opcjonalny tekst instrukcji (max 3000 znaków) zespół weryfikacyjny Microsoft do pomocy w konfigurowaniu, łączenie i testowania aplikacji, w tym: typową konfigurację ustawień, testowe konta lub parametry, które mogą służyć do testowania opcji "Połącz dane" itp. Te informacje tylko będą widoczne dla zespołu sprawdzania poprawności i służy tylko do celów sprawdzania poprawności.  |
-| **Czy ta aplikacja zostanie utworzona jako pakiet zawartości Power BI?** | Obecnie to pole jest używane wewnętrznie. Pozostaw wartość ustawiona na wartość domyślną `No`; w przeciwnym razie zmiany w tym polu, aby `No` może utrudniać publikowania.  |  
+| **Czy ta aplikacja zostanie utworzona jako pakiet zawartości Power BI?** | Obecnie to pole jest używane wewnętrznie. Pozostaw wartość ustawiona na wartość domyślną `No`; w przeciwnym razie zmiany w tym polu, aby `Yes` może utrudniać publikowania.  |  
 |  |  |
 
 

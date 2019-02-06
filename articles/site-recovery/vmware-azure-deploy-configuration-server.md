@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ramamill
-ms.openlocfilehash: 0ab2105e00836d3f844f58ce41487a50d1bf9348
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 1d5c2dccabbc2acdddec6176d9b52681d4a18e68
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664016"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744096"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -122,7 +122,7 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 
-Aby uaktualnić serwer konfiguracji do najnowszej wersji, postępuj zgodnie z tymi [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Aby uzyskać szczegółowe instrukcje na temat uaktualniania wszystkie składniki usługi Site Recovery, kliknij przycisk [tutaj](https://docs.microsoft.com/azure/site-recovery/service%20updates-how-to).
+Aby uaktualnić serwer konfiguracji do najnowszej wersji, postępuj zgodnie z tymi [kroki](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Aby uzyskać szczegółowe instrukcje na temat uaktualniania wszystkie składniki usługi Site Recovery, kliknij przycisk [tutaj](service-updates-how-to.md).
 
 ## <a name="manage-the-configuration-server"></a>Zarządzanie serwerem konfiguracji
 

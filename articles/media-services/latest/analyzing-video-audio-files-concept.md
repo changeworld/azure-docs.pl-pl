@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 11/17/2018
 ms.author: juliako
-ms.openlocfilehash: 20aef7f971b4c4bf8dcff98c633aa0b0aa69811a
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 9a96edbc70eeda8acee792a71d84b4a2c6c4fef8
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828183"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745388"
 ---
 # <a name="analyzing-video-and-audio-files"></a>Analizowanie plików audio i wideo
 
@@ -33,7 +33,7 @@ Usługa Media Services obsługuje obecnie następujące ustawienia analizatora w
 
 |**Nazwa ustawienia wstępnego**|**Scenariusz**|**Szczegóły**|
 |---|---|---|
-|**AudioAnalyzerPreset**|Analiza audio|Ustawienie wstępne stosuje zestaw wstępnie zdefiniowanych operacji analizy oparte na sztucznej Inteligencji, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio. Możesz określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka". Obsługiwane języki są angielski ("en US" i "en-GB"), hiszpański ("es-ES" i "es-MX"), włoski ("it-IT"), niemiecki ("de-DE"), japoński ("ja-JP"), chiński ("zh-CN"), francuski ("fr-FR"), portugalski ("pt-BR"), arabski ("ar — na przykład"), rosyjski ("ru-RU"), Hindi ("cześć IN" ) i koreańskiego ("ko-KR").<br/><br/> Jeśli język nie jest określony lub ustawiony na język o wartości null, automatyczne wykrywanie będą stosowane. Funkcja wykrywania automatycznego języka obsługuje obecnie angielski, chiński, francuski, niemiecki, włoski, japoński, hiszpański, rosyjski i portugalski. Funkcja wykrywania automatycznego działa najlepiej z nagrania audio, za pomocą wyraźnie przyspieszenie mowy. W przypadku niepowodzenia automatycznego wykrywania języka można znaleźć języka transkrypcji powróci do języka angielskiego.|
+|**AudioAnalyzerPreset**|Analiza audio|Ustawienie ma zastosowanie wstępnie zdefiniowanego zestawu analiz oparte na sztucznej Inteligencji operacje, w tym transkrypcja mowy. Obecnie usługa ustawienia wstępnego obsługuje przetwarzania zawartości za pomocą pojedynczej ścieżki audio, który zawiera mowy w jednym języku. Możesz określić język dla ładunku audio w danych wejściowych w formacie BCP 47 "region tagu języka". Obsługiwane języki są angielski ("en US" i "en-GB"), hiszpański ("es-ES" i "es-MX"), włoski ("it-IT"), niemiecki ("de-DE"), japoński ("ja-JP"), chiński ("zh-CN"), francuski ("fr-FR"), portugalski ("pt-BR"), arabski ("ar — na przykład"), rosyjski ("ru-RU"), Hindi ("cześć IN" ) i koreańskiego ("ko-KR").<br/><br/> Jeśli język nie jest określony lub ustawiony na język o wartości null, automatyczne wykrywanie będzie wybierz pierwszy język wykryte i przetwarzania w czasie trwania pliku przy użyciu wybranego języka. Funkcja wykrywania automatycznego języka obsługuje obecnie angielski, chiński, francuski, niemiecki, włoski, japoński, hiszpański, rosyjski i portugalski. Go nie obsługuje obecnie dynamicznie przełączania się między językami po wykryciu pierwszy język. Funkcja wykrywania automatycznego działa najlepiej z nagrania audio, za pomocą wyraźnie zauważalny mowy. W przypadku niepowodzenia automatycznego wykrywania języka można znaleźć języka transkrypcji powróci do języka angielskiego.|
 |**VideoAnalyzerPreset**|Analiza audio i wideo|Wyodrębnia informacje (obszerne metadane) z audio i wideo, a następnie generuje plik formatu JSON. Można określić, czy mają zostać wyodrębnione audio insights podczas przetwarzania pliku wideo. Aby uzyskać więcej informacji, zobacz [analiza wideo](analyze-videos-tutorial-with-api.md).|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
@@ -152,7 +152,7 @@ Przykład:
 |knownPersonId|Jeśli jest znane osoby wewnętrzny identyfikator.|
 |referenceId|Jeśli jest Bing rozpoznawanie osobistości, jego identyfikator Bing.|
 |Element referenceType|Obecnie tylko Bing.|
-|tytuł|Jeśli jest rozpoznawanie osobistości, jego tytuł (na przykład "Prezes firmy Microsoft").|
+|title|Jeśli jest rozpoznawanie osobistości, jego tytuł (na przykład "Prezes firmy Microsoft").|
 |imageUrl|Jeśli jest rozpoznawanie osobistości, jej adres url obrazu.|
 |wystąpienia|Są to wystąpienia elementu gdzie twarz znajdowały się w danym okresie. Każde wystąpienie ma również thumbnailsId. |
 

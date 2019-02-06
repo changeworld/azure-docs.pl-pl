@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8850ef68c665efcf9e66315af20b7d1e8492fc5f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 109bd1c987c86721c6064fc0294913c85fa3a901
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493766"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745575"
 ---
 # <a name="logical-functions-for-azure-resource-manager-templates"></a>Funkcje logiczne dla szablonów usługi Azure Resource Manager
 
@@ -34,9 +34,9 @@ Resource Manager udostępnia kilka funkcji składania porównania w szablonach.
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="and"></a>i
-`and(arg1, arg2)`
+`and(arg1, arg2, ...)`
 
-Sprawdza, czy obie wartości parametrów są spełnione.
+Sprawdza, czy wszystkie wartości parametrów są spełnione.
 
 ### <a name="parameters"></a>Parametry
 
@@ -44,10 +44,11 @@ Sprawdza, czy obie wartości parametrów są spełnione.
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy ma wartość true. |
 | argument2 |Yes |wartość logiczna |Druga wartość, aby sprawdzić, czy ma wartość true. |
+| dodatkowe argumenty |Nie |wartość logiczna |Dodatkowe argumenty, aby sprawdzić, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Zwraca **True** Jeśli obie wartości mają wartość true, a w przeciwnym razie **False**.
+Zwraca **True** Jeśli wszystkie wartości są true; w przeciwnym razie **False**.
 
 ### <a name="examples"></a>Przykłady
 
@@ -366,9 +367,9 @@ New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateU
 ```
 
 ## <a name="or"></a>lub
-`or(arg1, arg2)`
+`or(arg1, arg2, ...)`
 
-Sprawdza, czy każda wartość parametru jest spełniony.
+Sprawdza, czy wszystkie wartości parametru to true.
 
 ### <a name="parameters"></a>Parametry
 
@@ -376,10 +377,11 @@ Sprawdza, czy każda wartość parametru jest spełniony.
 |:--- |:--- |:--- |:--- |
 | arg1 |Yes |wartość logiczna |Pierwsza wartość, aby sprawdzić, czy ma wartość true. |
 | argument2 |Yes |wartość logiczna |Druga wartość, aby sprawdzić, czy ma wartość true. |
+| dodatkowe argumenty |Nie |wartość logiczna |Dodatkowe argumenty, aby sprawdzić, czy są spełnione. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Zwraca **True** przypadku albo wartość PRAWDA; w przeciwnym razie **False**.
+Zwraca **True** Jeśli dowolna wartość PRAWDA; w przeciwnym razie **False**.
 
 ### <a name="examples"></a>Przykłady
 

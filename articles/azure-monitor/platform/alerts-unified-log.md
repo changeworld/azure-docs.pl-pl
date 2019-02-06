@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e568f2adb3ff9310ed92ed19c9543f249cca7658
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 18c05f2a9dd9f7e4a6d5ec62806870311c5eb130
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098701"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745721"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
 Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
@@ -74,8 +74,10 @@ Alert będzie uruchomi zapytanie co 5 minut, 30 minut danych — do wyszukiwania
 
 ### <a name="metric-measurement-alert-rules"></a>Reguły alertu pomiaru metryki
 
-- **Pomiar metryki** reguł alertów Utwórz alert dla każdego obiektu w zapytaniu o wartości, który przekroczy określony próg.  Mają one różne następujące różnice względem **liczba wyników** reguły alertów.
+**Pomiar metryki** reguł alertów Utwórz alert dla każdego obiektu w zapytaniu o wartości, który przekroczy określony próg.  Mają one różne następujące różnice względem **liczba wyników** reguły alertów.
+
 - **Funkcję agregacji**: Określa, obliczenia, które jest wykonywane i potencjalnie liczbową pola do zagregowania.  Na przykład **count()** zwraca liczbę rekordów w zapytaniu **avg(CounterValue)** zwraca średnią pola CounterValue dla interwału. Funkcja agregująca w zapytaniu muszą być o nazwie wywoływana: Elementy AggregatedValue i podaj wartość liczbową. 
+
 - **Grupy pól**: Rekord z wartością zagregowaną jest tworzony dla każdego wystąpienia to pole, a alert jest generowany dla każdego.  Na przykład, jeśli chcesz generować alert dla każdego komputera, można użyć **przez komputer**. W przypadku, gdy istnieje wiele pola grupy określonych w kwerendzie alertu, użytkownik może określić pole, które ma być używany, aby posortować wyniki za pomocą **agregacji na** parametru (metricColumn)
 
     > [!NOTE]

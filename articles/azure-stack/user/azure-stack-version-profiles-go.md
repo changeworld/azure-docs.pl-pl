@@ -14,12 +14,12 @@ ms.date: 01/19/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9b66a7a176862fce687b7cc0b1ff3c14bda118d7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fbca9eb3703777c0d20998e65bf446b5951c5091
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243893"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745405"
 ---
 # <a name="use-api-version-profiles-with-go-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Go w usłudze Azure Stack
 
@@ -68,7 +68,7 @@ Aby uruchomić próbkę kodu języka Go w usłudze Azure Stack, wykonaj następu
 
    > [!NOTE]  
    > **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): `https://management.local.azurestack.external/`  
-   > **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`  
+   > **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<region>.<fqdn>/`  
    > Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
   
    Przykładowy plik JSON:

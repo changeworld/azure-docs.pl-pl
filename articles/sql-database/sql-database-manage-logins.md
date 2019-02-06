@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 7cb2e4214e868bdf9f585d6b0f4468a6c8375191
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 81ec99c5de94736d68392cc7cf0bc3e305e0ce7d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459244"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754020"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych SQL Database i SQL Data Warehouse
 
@@ -49,13 +49,13 @@ Konta **Administrator serwera** i **Administrator usługi Azure AD** mają nast�
 - Te konta korzystają z baz danych użytkowników jako użytkownik `dbo` i mają wszystkie uprawnienia w bazach danych użytkowników. (Właściciel bazy danych użytkownika również korzysta z bazy danych jako użytkownik `dbo`). 
 - Nie należy wprowadzać `master` bazy danych jako `dbo` użytkownika i mają ograniczone uprawnienia w części głównej. 
 - Czy **nie** członkowie standard programu SQL Server `sysadmin` stałej roli serwera, który nie jest dostępny w usłudze SQL database.  
-- Można tworzyć, alter i drop baz danych, identyfikatory logowania, użytkownicy w regułach zapory na bazie master oraz poziomu serwera.
+- Można tworzyć, alter i drop baz danych, identyfikatory logowania i użytkowników w bazie master oraz poziom serwera reguły zapory IP.
 - Można dodawać i usuwać elementy członkowskie do `dbmanager` i `loginmanager` ról.
 - Można wyświetlić `sys.sql_logins` tabeli systemowej.
 
 ### <a name="configuring-the-firewall"></a>Konfigurowanie zapory
 
-W przypadku skonfigurowania zapory na poziomie serwera za pomocą pojedynczego adresu IP lub zakresu adresów konta **Administrator serwera SQL** i **Administrator usługi Azure Active Directory** mogą łączyć się z bazą danych master i wszystkimi bazami danych użytkowników. Początkowo zaporę na poziomie serwera można skonfigurować za pomocą [witryny Azure Portal](sql-database-get-started-portal.md), programu [PowerShell](sql-database-powershell-samples.md) lub [interfejsu API REST](https://msdn.microsoft.com/library/azure/dn505712.aspx). Po nawiązaniu połączenia można również skonfigurować dodatkowe reguły zapory na poziomie serwera za pomocą [języka Transact-SQL](sql-database-configure-firewall-settings.md).
+W przypadku skonfigurowania zapory na poziomie serwera za pomocą pojedynczego adresu IP lub zakresu adresów konta **Administrator serwera SQL** i **Administrator usługi Azure Active Directory** mogą łączyć się z bazą danych master i wszystkimi bazami danych użytkowników. Początkowo zaporę na poziomie serwera można skonfigurować za pomocą [witryny Azure Portal](sql-database-single-database-get-started.md), programu [PowerShell](sql-database-powershell-samples.md) lub [interfejsu API REST](https://msdn.microsoft.com/library/azure/dn505712.aspx). Po nawiązaniu połączenia, dodatkowe reguły zapory IP w poziomie serwera można również skonfigurować za pomocą [języka Transact-SQL](sql-database-configure-firewall-settings.md).
 
 ### <a name="administrator-access-path"></a>Ścieżka dostępu administratora
 
@@ -67,7 +67,7 @@ Używając otwartego portu w zaporze na poziomie serwera, administratorzy mogą 
 
 ### <a name="connecting-to-a-database-by-using-sql-server-management-studio"></a>Łączenie się z bazą danych przy użyciu programu SQL Server Management Studio
 
-Aby zapoznać się z omówieniem tworzenia serwera, bazy danych i reguł zapory na poziomie serwera oraz używania programu SQL Server Management Studio do odpytywania bazy danych, zobacz [Wprowadzenie do serwerów, baz danych i reguł zapory usługi Azure SQL Database przy użyciu witryny Azure Portal i programu SQL Server Management Studio](sql-database-get-started-portal.md).
+Aby uzyskać szczegółowe omówienie tworzenia serwera, bazy danych i reguły zapory IP poziomu serwera i zapytanie dotyczące bazy danych przy użyciu programu SQL Server Management Studio, zobacz [wprowadzenie do serwerów, baz danych i reguł zapory usługi Azure SQL Database przy użyciu witryny Azure portal i SQL Server Management Studio](sql-database-single-database-get-started.md).
 
 > [!IMPORTANT]
 > Zalecane jest używanie najnowszej wersji programu Management Studio, aby zachować synchronizację z aktualizacjami platformy Microsoft Azure i usługi SQL Database. [Zaktualizuj program SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).

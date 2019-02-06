@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7f519729f3ad94324b847ca6b15b254ea7c6abbb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 639b665926f54387dfdc6e837c15c8d6d28df925
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463739"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755768"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Ulepszanie bazy wiedzy za pomocą uczenia aktywnego
 
@@ -58,7 +58,7 @@ Algorytm ustalania odległości między elementami nie jest proste obliczenia. Z
 
 Aktywna nauka jest domyślnie wyłączona. Włączyłem to wyświetlić sugerowane pytania. 
 
-1. Aby włączyć aktywne uczenie się na, przejdź do swojej **ustawienia usługi** w prawym górnym rogu portalu narzędzia QnA Maker.  
+1. Aby włączyć aktywne uczenie się na, kliknij pozycję Twoje **nazwa**, przejdź do [ **ustawienia usługi** ](https://www.qnamaker.ai/UserSettings) w prawym górnym rogu portalu narzędzia QnA Maker.  
 
     ![Na stronie Ustawienia usługi Włącz opcję Aktywne uczenie](../media/improve-knowledge-base/Endpoint-Keys.png)
 

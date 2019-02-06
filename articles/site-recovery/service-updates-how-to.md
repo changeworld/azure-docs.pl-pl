@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/8/2019
+ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3e5f84a6f05e451b1eafa98c373f9d838421016e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a497784a665c62d23a017b71acf709120e34c369
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229329"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746969"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Aktualizacje usługi w usłudze Azure Site Recovery
 Jako organizacja niezbędne jest ustalenie, jak zamierzasz zapewnić bezpieczeństwo danych i aplikacji/obciążeń podczas planowanych i nieplanowanych przestojów. Usługa Azure Site Recovery wspiera strategię BCDR przez zapewnienie niezawodnego działania aplikacji uruchomionych na maszynach wirtualnych i serwerów fizycznych, które są dostępne w przypadku wyłączenia witryny. Usługa Site Recovery replikuje obciążenia uruchomione na maszynach wirtualnych i serwerach fizycznych, dzięki czemu są one nadal dostępne w lokalizacji dodatkowej, jeśli lokacja główna jest niedostępna. Gdy lokacja główna zostanie ponowne uruchomiona, obciążenia zostaną odzyskane w tej lokacji.
@@ -97,10 +97,13 @@ W przypadku, gdy wybrano ręczne zarządzanie aktualizacjami, wykonaj następuj�
 
 ## <a name="between-an-on-premises-vmware-or-physical-site-to-azure"></a>Między lokalnych zasobów programu VMware lub fizyczne witryny na platformie Azure
 
-1. Najpierw zainstaluj aktualizację na serwerze zarządzania w środowisku lokalnym. Jest to serwer, z serwera konfiguracji i role serwera przetwarzania. 
-2. W przypadku serwerów przetwarzania skalowalnego w poziomie, zaktualizuj je dalej.
-3. Przejdź do witryny Azure portal, a następnie przejdź do **chronione elementy** > **zreplikowane elementy** strony.
-Wybierz maszynę Wirtualną na tej stronie. Wybierz **usługi Windows Update Agent** znajdujący się w dolnej części strony dla każdej maszyny Wirtualnej. Spowoduje to zaktualizowanie agenta usługi mobilności na wszystkich chronionych maszyn wirtualnych.
+Przed kontynuowaniem aktualizacji, zapoznaj się [instrukcji obsługi Site Recovery](#support-statement-for-azure-site-recovery) zrozumienie ścieżki uaktualnienia.
+
+1. Oparte na swoim wyciągu bieżącej wersji i pomoc techniczna podanej powyżej, zainstalować aktualizacji na serwerze zarządzania w środowisku lokalnym postępując zgodnie z wytycznymi podanymi [tutaj](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). Jest to serwer z serwerem konfiguracji i role serwera przetwarzania.
+2. W przypadku skalowania w poziomie serwerów przetwarzania, zaktualizować je dalej, zgodnie z wytycznymi podanymi [tutaj](vmware-azure-manage-process-server.md#upgrade-a-process-server).
+3. Następnie, aby zaktualizować agenta mobilności na poszczególnych chronionych elementów, przejdź do witryny Azure portal, a następnie przejdź do **chronione elementy** > **zreplikowane elementy** strony. Wybierz maszynę Wirtualną na tej stronie. Wybierz **usługi Windows Update Agent** znajdujący się w dolnej części strony dla każdej maszyny Wirtualnej. Spowoduje to zaktualizowanie agenta usługi mobilności na wszystkich chronionych maszyn wirtualnych.
+
+### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>Ponowne uruchomienie maszyny źródłowej, po uaktualnieniu agenta mobilności
 
 Ponowne uruchomienie jest zalecane po każdym uaktualnieniu agenta mobilności upewnij się, że wszystkie najnowsze zmiany są ładowane na maszynie źródłowej. Jest jednak **nie jest to konieczne**. Jeśli różnica między wersją agenta podczas ostatniego ponownego uruchomienia komputera i bieżącej wersji jest większa niż 4, ponowne uruchomienie jest obowiązkowy. Można znaleźć w poniższej tabeli przedstawiono szczegółowy opis.
 
@@ -111,14 +114,12 @@ Ponowne uruchomienie jest zalecane po każdym uaktualnieniu agenta mobilności u
 | 9.16 | 9.20 | Nie jest to konieczne
  | 9.16 | 9.21 | Tak, najpierw przeprowadzić uaktualnienie do 9,20, a następnie wykonaj ponowny rozruch przed uaktualnieniem do 9.21 jako różnica między wersjami (9.16, w którym wykonano ostatniego ponownego uruchomienia i wersji docelowej 9.21) jest > 4
 
-
-
 ## <a name="links-to-currently-supported-update-rollups"></a>Linki do pakietów zbiorczych aktualizacji obecnie obsługiwane
-
 
 |Pakiet zbiorczy aktualizacji  |Dostawca  |Ujednoliconej konfiguracji| OVF  |MARS|
 |---------|---------|---------|---------|--------|
-|[Pakiet zbiorczy aktualizacji 32](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
+|[Pakiet zbiorczy aktualizacji 33](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
+|[Pakiet zbiorczy aktualizacji 32](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
 |[Pakiet zbiorczy aktualizacji 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 |[Pakiet zbiorczy aktualizacji 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)     |    5.1.3650.0   |   9.19.5007.1    |     5.1.3650.0    |2.0.9139.0
 |[Pakiet zbiorczy aktualizacji 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)     |   5.1.3650.0      |   9.19.4973.1     |     5.1.3700.0    |2.0.9131.0

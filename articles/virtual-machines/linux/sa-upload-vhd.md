@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: a04c4d41d9682389347009446c590fc4e27400b1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 01d3a20022972b0e18de02bd2730ca31e57cd77a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659545"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755038"
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Przekazywanie i tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure
 
@@ -31,11 +31,11 @@ Ten temat używa konta magazynu dla końcowego wirtualnych dysków twardych, ale
 ## <a name="quick-commands"></a>Szybkie polecenia
 Jeśli chcesz szybko wykonać zadania w poniższej sekcji opisano szczegółowo base polecenia do przekazania dysku VHD na platformie Azure. Więcej szczegółowych informacji i kontekst dla każdego kroku można znaleźć pozostałej części dokumentu, [uruchamianie tutaj](#requirements).
 
-Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione `myResourceGroup`, `mystorageaccount`, i `mydisks`.
 
-Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `WestUs`:
+Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `WestUs`:
 
 ```azurecli
 az group create --name myResourceGroup --location westus
@@ -48,7 +48,7 @@ az storage account create --resource-group myResourceGroup --location westus \
   --name mystorageaccount --kind Storage --sku Standard_LRS
 ```
 
-Utwórz listę kluczy dostępu do konta magazynu przy użyciu [listy kluczy kont magazynu az](/cli/azure/storage/account/keys#az_storage_account_keys_list). Zwróć uwagę na `key1`:
+Utwórz listę kluczy dostępu do konta magazynu przy użyciu [listy kluczy kont magazynu az](/cli/azure/storage/account/keys). Zwróć uwagę na `key1`:
 
 ```azurecli
 az storage account keys list --resource-group myResourceGroup --account-name mystorageaccount
@@ -61,7 +61,7 @@ az storage container create --account-name mystorageaccount \
     --account-key key1 --name mydisks
 ```
 
-Na koniec Przekaż wirtualnego dysku twardego do kontenera, który został utworzony z [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload). Określ ścieżkę lokalną do wirtualnego dysku twardego w ramach `/path/to/disk/mydisk.vhd`:
+Na koniec Przekaż wirtualnego dysku twardego do kontenera, który został utworzony z [az storage blob upload](/cli/azure/storage/blob). Określ ścieżkę lokalną do wirtualnego dysku twardego w ramach `/path/to/disk/mydisk.vhd`:
 
 ```azurecli
 az storage blob upload --account-name mystorageaccount \
@@ -97,7 +97,7 @@ Aby wykonać następujące kroki, potrzebne są:
   * Tworzenie konta magazynu i kontener do przechowywania zarówno niestandardowego dysku, jak i utworzonych maszyn wirtualnych
   * Po utworzeniu wszystkich maszyn wirtualnych, można bezpiecznie usunąć dysku
 
-Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione `myResourceGroup`, `mystorageaccount`, i `mydisks`.
 
@@ -122,7 +122,7 @@ Zobacz też **[uwagi dotyczące instalacji systemu Linux](create-upload-generic.
 > 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-Grupy zasobów łączą ze sobą logicznie wszystkich zasobów platformy Azure do obsługi maszyn wirtualnych, takie jak sieci wirtualne i magazyn. Aby uzyskać więcej informacji o grupach zasobów, zobacz [grupy zasobów — omówienie](../../azure-resource-manager/resource-group-overview.md). Przed przekazaniem niestandardowego dysku i Tworzenie maszyn wirtualnych, należy najpierw utworzyć grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create).
+Grupy zasobów łączą ze sobą logicznie wszystkich zasobów platformy Azure do obsługi maszyn wirtualnych, takie jak sieci wirtualne i magazyn. Aby uzyskać więcej informacji o grupach zasobów, zobacz [grupy zasobów — omówienie](../../azure-resource-manager/resource-group-overview.md). Przed przekazaniem niestandardowego dysku i Tworzenie maszyn wirtualnych, należy najpierw utworzyć grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group).
 
 Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie `myResourceGroup` w lokalizacji `westus`:
 
@@ -142,7 +142,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>Wyświetl klucze konta magazynu
-Azure generuje dwa klucze dostępu 512-bitowe dla każdego konta magazynu. Klawisze dostępu są używane podczas uwierzytelniania konta magazynu, takich jak przeprowadzanie operacji zapisu. Przeczytaj więcej na temat [zarządzanie dostępem do magazynu w tym miejscu](../../storage/common/storage-account-manage.md#access-keys). Wyświetl klucze dostępu za pomocą [listy kluczy kont magazynu az](/cli/azure/storage/account/keys#az_storage_account_keys_list).
+Azure generuje dwa klucze dostępu 512-bitowe dla każdego konta magazynu. Klawisze dostępu są używane podczas uwierzytelniania konta magazynu, takich jak przeprowadzanie operacji zapisu. Przeczytaj więcej na temat [zarządzanie dostępem do magazynu w tym miejscu](../../storage/common/storage-account-manage.md#access-keys). Wyświetl klucze dostępu za pomocą [listy kluczy kont magazynu az](/cli/azure/storage/account/keys).
 
 Wyświetl klucze dostępu dla konta magazynu, który został utworzony:
 
@@ -175,7 +175,7 @@ az storage container create \
 ```
 
 ## <a name="upload-vhd"></a>Przekazywanie wirtualnego dysku twardego
-Teraz Przekaż Twojego niestandardowego dysku przy użyciu [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload). Przekazywanie i przechowywanie niestandardowego dysku jako stronicowy obiekt blob.
+Teraz Przekaż Twojego niestandardowego dysku przy użyciu [az storage blob upload](/cli/azure/storage/blob). Przekazywanie i przechowywanie niestandardowego dysku jako stronicowy obiekt blob.
 
 Określ klucz dostępu do kontenera utworzonego w poprzednim kroku, a następnie ścieżkę do niestandardowego dysku na komputerze lokalnym:
 
@@ -226,7 +226,7 @@ W ramach `Microsoft.Compute/virtualMachines` dostawcy szablonu, masz `storagePro
 
 Możesz użyć [tego istniejącego szablonu, aby utworzyć Maszynę wirtualną na podstawie niestandardowego obrazu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image) ani czytać [tworzenia szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md). 
 
-Po utworzeniu szablonu, który został skonfigurowany, użyj [Utwórz wdrożenie grupy az](/cli/azure/group/deployment#az_group_deployment_create) do tworzenia maszyn wirtualnych. Określ identyfikator URI szablonu JSON za pomocą `--template-uri` parametru:
+Po utworzeniu szablonu, który został skonfigurowany, użyj [Utwórz wdrożenie grupy az](/cli/azure/group/deployment) do tworzenia maszyn wirtualnych. Określ identyfikator URI szablonu JSON za pomocą `--template-uri` parametru:
 
 ```azurecli
 az group deployment create --resource-group myNewResourceGroup \

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: a42f5f441dd63f8d6a7f5bd1cfdf0452d025816e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: b0cb72b8a9c1710b2b22d987c2818a490a2ea553
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017688"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753363"
 ---
 # <a name="azure-data-factory-service-identity"></a>Tożsamości usługi w usłudze Azure Data Factory
 
@@ -76,7 +76,7 @@ Wywołanie poniżej interfejsu API z sekcją "tożsamość" w treści żądania:
 PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resourceGroupName>/providers/Microsoft.DataFactory/factories/<data factory name>?api-version=2017-09-01-preview
 ```
 
-**Treść żądania**: Dodaj "tożsamość": {"type": Wartość "SystemAssigned"}.
+**Treść żądania**: Dodaj "tożsamość": {"type": "SystemAssigned" }.
 
 ```json
 {
@@ -114,7 +114,7 @@ PATCH https://management.azure.com/subscriptions/<subsID>/resourceGroups/<resour
 
 ### <a name="generate-service-identity-using-an-azure-resource-manager-template"></a>Generowanie tożsamości usługi za pomocą szablonu usługi Azure Resource Manager
 
-**Szablon**: Dodaj "tożsamość": {"type": Wartość "SystemAssigned"}.
+**Szablon**: Dodaj "tożsamość": {"type": "SystemAssigned" }.
 
 ```json
 {
@@ -192,4 +192,4 @@ Zobacz następujące tematy, które wprowadzają, kiedy i jak używać tożsamo�
 - [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md)
 - [Kopiowanie danych z i do usługi Azure Data Lake Store, przy użyciu zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](connector-azure-data-lake-store.md)
 
-Zobacz [tożsamości zarządzanych, aby uzyskać przegląd zasobów platformy Azure](~/articles/active-directory/msi-overview.md) Aby uzyskać więcej ogólnych informacji o zarządzanych tożsamości dla zasobów platformy Azure, których tożsamość usługi fabryki danych opiera się na. 
+Zobacz [tożsamości zarządzanych, aby uzyskać przegląd zasobów platformy Azure](/azure/active-directory/managed-identities-azure-resources/overview) Aby uzyskać więcej ogólnych informacji o zarządzanych tożsamości dla zasobów platformy Azure, których tożsamość usługi fabryki danych opiera się na. 

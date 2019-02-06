@@ -15,12 +15,12 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a1ca5125162460b95c0ffcadb1551173d06b5838
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1117ffa94a30a55b7b2a7477bf2770d21dcb5441
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163589"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746510"
 ---
 # <a name="azure-active-directory-risk-events"></a>Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory
 
@@ -164,7 +164,7 @@ To zdarzenie o podwyższonym ryzyku identyfikuje adresów IP, nie urządzeń uż
 
 Firma Microsoft zaleca się z nim, a skanowanie wszystkich urządzeń użytkownika. Jest również możliwe, że jest zainfekowany urządzenia osobiste użytkownika, lub czy ktoś inny używał zainfekowanego urządzenia z tego samego adresu IP jako użytkownik. Zainfekowanych urządzeń są często zainfekowanych przez złośliwe oprogramowanie, które nie zostały zidentyfikowane przez oprogramowanie antywirusowe, a także oznaczać wszelkie płynność nawyków, które mogą być przyczyną urządzenia infekują.
 
-Aby uzyskać więcej informacji na temat adresów przed infekcjami złośliwym oprogramowaniem, zobacz [Malware Protection Center](https://go.microsoft.com/fwlink/?linkid=335773&clcid=0x409).
+Aby uzyskać więcej informacji na temat adresów przed infekcjami złośliwym oprogramowaniem, zobacz [Malware Protection Center](https://www.microsoft.com/en-us/security/portal/definitions/adl.aspx/).
 
 ### <a name="sign-ins-from-ip-addresses-with-suspicious-activity"></a>Logowania z adresów IP związanych z podejrzanymi działaniami
 

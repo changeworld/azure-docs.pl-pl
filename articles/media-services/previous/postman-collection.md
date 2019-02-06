@@ -1,6 +1,6 @@
 ---
-title: Importu kolekcji Postman z operacjami przesyłania strumieniowego na żądanie Azure
-description: Ten artykuł zawiera definicję kolekcji Postman dla wywołania usługi Azure Media Services REST.
+title: Importowanie kolekcji Postman przy użyciu operacji przesyłania strumieniowego na żądanie platformy Azure
+description: Ten artykuł zawiera definicję kolekcji Postman na potrzeby połączeń usługi Azure Media Services REST.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: 311bc6a67e2b63f6f514da5abacb00e5c3cb434f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 34eb7c48c8ebc36f9172f97dda845542b3840a19
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790692"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747683"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Importuj z przesyłania strumieniowego na żądanie operacji kolekcji Postman
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Importuj kolekcję Postman z operacjami On-Demand Streaming
 
-Ten artykuł zawiera definicję **Postman** kolekcji zawierającej pogrupowane żądania HTTP, które wywołują interfejsów API usługi Azure Media Services REST. Aby uzyskać informacje o sposobie konfigurowania **Postman** dzięki mogą być używane do wywoływania interfejsów API REST usługi nośnika, zobacz [wymaga skonfigurowania Postman interfejsu API REST usługi Media](media-rest-apis-with-postman.md) samouczka.
+Ten artykuł zawiera definicję **Postman** kolekcję zawierającą pogrupowane żądań HTTP, które wywołują interfejsów API REST usługi Azure Media. Aby uzyskać informacje o sposobie konfigurowania **Postman** , dzięki czemu może służyć do wywołania interfejsów API REST usługi Media Services, zobacz [wywołuje Konfigurowanie narzędzia Postman dla interfejsu API REST usługi Media Services](media-rest-apis-with-postman.md) samouczek.
 
-```
+```json
 {
     "info": {
         "name": "Azure Media Services Operations",
@@ -4264,7 +4264,7 @@ Ten artykuł zawiera definicję **Postman** kolekcji zawierającej pogrupowane �
                                 "MediaProcessors"
                             ]
                         },
-                        "description": "List MediaProcesors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
+                        "description": "List MediaProcessors\n\nFull REST API documentation\nhttps://msdn.microsoft.com/library/azure/hh973617.aspx"
                     },
                     "response": []
                 }

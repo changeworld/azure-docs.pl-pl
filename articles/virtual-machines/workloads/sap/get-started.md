@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/03/2019
+ms.date: 02/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1afdb5773ff4d7ec6b6b492971fb396641c087a
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 0b7515a5c22b98fb14499e07057ff52311fc6e67
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732706"
+ms.locfileid: "55744828"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariusze obciążeń SAP
 
@@ -35,6 +35,8 @@ Unikatowość platformy Azure dla oprogramowania SAP HANA to oferta, która usta
 Wymagania dotyczące integracji tożsamości i logowanie jednokrotne przy użyciu usługi Azure Active Directory do różnych składników SAP i SAP SaaS również hostingu scenariusze obciążeń SAP na platformie Azure można utworzyć lub PaaS oferuje. Listę takich integracji i scenariusze logowanie jednokrotne z jednostkami usługi Azure Active Directory (AAD) i SAP jest opisane i opisano w sekcji "Integracja tożsamości usługi AAD SAP oraz logowanie jednokrotne."
 
 ## <a name="latest-changes"></a>Najnowsze zmiany
+
+Wersja [konfiguracji obciążenia SAP za pomocą strefy dostępności platformy Azure](sap-ha-availability-zones.md)
 
 Wersja [kontrolną planowania i wdrażania obciążeń SAP](sap-deployment-checklist.md)
 

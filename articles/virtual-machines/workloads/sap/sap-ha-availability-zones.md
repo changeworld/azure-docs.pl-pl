@@ -3,7 +3,7 @@ title: Konfiguracje obciążeń SAP o strefy dostępności platformy Azure | Dok
 description: Architektura wysokiej dostępności i scenariusze SAP NetWeaver przy użyciu stref dostępności platformy Azure
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
-author: juergent
+author: msjuergent
 manager: patfilot
 editor: ''
 tags: azure-resource-manager
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/03/2019
-ms.author: msjuergent
+ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 56c1ffd314a9a8e9440832b9fd92a51cdaf9f228
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 409a304296d3fdff897a203177e2c150162755c6
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735655"
+ms.locfileid: "55746221"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfiguracje obciążeń SAP o strefy dostępności platformy Azure
 
@@ -74,7 +74,7 @@ Aby zdecydować, w jaki sposób można wykorzystać strefy dostępności, musisz
 ### <a name="network-latency-between-zones-and-within-zone"></a>Opóźnienie sieci między strefami, jak i w obrębie strefy
 Aby dowiedzieć się, jakie jest opóźnienie między różnymi strefami, należy:
 
-- Wdrażanie jednostki SKU maszyny Wirtualnej, którego chcesz użyć wystąpienia systemu DBMS w wszystkie trzy strefy. Upewnij się, że że [usługę Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jest włączona, podczas wykonywania tego pomiaru
+- Wdrażanie jednostki SKU maszyny Wirtualnej, którego chcesz użyć wystąpienia systemu DBMS w wszystkie trzy strefy. Upewnij się, że [usługę Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) jest włączona, podczas wykonywania tego pomiaru
 - Jak możesz znaleźć dwie strefy z najniższych opóźnieniem sieci, należy wdrożyć kolejnych trzech maszyn wirtualnych ma być używany jako warstwa aplikacji maszyn wirtualnych w trzech strefach dostępności jednostki SKU maszyny Wirtualnej. Pomiar opóźnienia sieci względem dwóch "systemu DBMS na maszynach wirtualnych' w dwóch różnych stref"DBMS"ulubionego. 
 - Jako narzędzie do mierzenia użycia **niping**. Narzędzia programu SAP, który działa zgodnie z opisem w sekcji SAP notes pomocy technicznej [#500235](https://launchpad.support.sap.com/#/notes/500235) i [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E). Skup się na polecenia SAP udokumentowane do pomiarów opóźnienia. Za pomocą **ping** nie jest zalecane narzędzie od **ping** nie działa za pośrednictwem platformy Azure przyspieszonej sieci ścieżek kodu.
 

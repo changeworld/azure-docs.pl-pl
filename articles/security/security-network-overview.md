@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: a5943c1d2e6b04564e1de732b8f3924a67393753
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 66243574a259f15f58f3b215e716d24dc6fa6e6d
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065685"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746697"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
@@ -35,7 +35,7 @@ W tym artykule omówiono niektóre z opcji oferowanych przez platformę Azure w 
 * Rozpoznawanie nazw
 * Architektura sieci (DMZ) obwodowej
 * Azure DDoS Protection
-* Drzwi wejściowe platformy Azure
+* Azure Front Door
 * Usługa Traffic Manager
 * Monitorowanie i wykrywanie zagrożeń
 
@@ -84,7 +84,7 @@ Więcej informacji:
 
 Więcej informacji:
 
-* [Usługa Azure Security Center po prostu w T](../security-center/security-center-just-in-time.md)
+* [Usługa Azure Security Center dostęp dokładnie na czas](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Punkty końcowe usługi
 
@@ -333,7 +333,7 @@ Więcej informacji:
 
 * [Omówienie ochrony przed atakami DDOS](../virtual-network/ddos-protection-overview.md)
 
-## <a name="azure-front-door"></a>Drzwi wejściowe platformy Azure
+## <a name="azure-front-door"></a>Azure Front Door
 
 Usługa drzwiami frontowymi umożliwia definiowanie, zarządzanie i monitorowanie globalnego routingu ruchu w sieci web. Optymalizuje Twój ruch routingu dla uzyskania najlepszej wydajności i wysokiej dostępności. Usługa Azure Front Door umożliwia tworzenie reguł zapory aplikacji internetowej w celu kontrolowania dostępu, aby chronić obciążenia protokołów HTTP/HTTPS przed wykorzystywaniem w oparciu o adresy IP, kod kraju i parametry protokołu HTTP klientów. Ponadto drzwiami frontowymi umożliwia również tworzenie reguł gruntownie złośliwym ruchem botów ograniczania szybkości, zawiera on odciążanie protokołu SSL i żądania dla protokołu HTTP/HTTPS przetwarzania w warstwie aplikacji.
 

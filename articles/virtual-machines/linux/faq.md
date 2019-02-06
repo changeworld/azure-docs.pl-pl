@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ffc724c52fdab01bfbf2846ff06a35f38a57c8eb
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 8d421adfae335a976485ed463a69484a74be5b44
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42056672"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753933"
 ---
 # <a name="frequently-asked-question-about-linux-virtual-machines"></a>Często zadawane pytania dotyczące maszyn wirtualnych systemu Linux
 W tym artykule opisano często zadawane pytania dotyczące maszyn wirtualnych systemu Linux utworzone na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager. Wersja Windows części tego tematu – zobacz [— często zadawane pytania dotyczące maszyn wirtualnych Windows](../windows/faq.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -31,7 +31,7 @@ Wszyscy subskrybenci mogą uruchomić oprogramowanie serwerowe na maszynie wirtu
 ## <a name="how-much-storage-can-i-use-with-a-virtual-machine"></a>Ile pamięci masowej mogę użyć w maszynie wirtualnej?
 Każdy dysk danych może być do 4 TB (4095 GB). Liczba dysków danych, których możesz użyć, zależy od rozmiaru maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [Sizes for virtual machines](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Rozmiary maszyn wirtualnych).
 
-Usługa Azure Managed Disks są zalecane oferta magazynu na dysku do użycia z usługą Azure Virtual Machines do trwałego magazynowania danych. W każdej maszynie wirtualnej możesz używać wielu dysków Managed Disks. Usługa Managed Disks oferuje dwa typy opcji magazynu trwałego: dyski Managed Disks w warstwie Premium i Standardowa. Aby uzyskać informacje o cenach, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
+Usługa Azure Managed Disks są zalecane oferta magazynu na dysku do użycia z usługą Azure Virtual Machines do trwałego magazynowania danych. W każdej maszynie wirtualnej możesz używać wielu dysków Managed Disks. Zarządzane dyski oferty dwa typy opcji magazynu trwałego: Dyski zarządzane — wersja Premium i standardowa. Aby uzyskać informacje o cenach, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
 
 Konta usługi Azure storage oferuje również magazynu dla dysku systemu operacyjnego i dysków z danymi. Każdy dysk jest plikiem VHD przechowywanym jako stronicowy obiekt blob. Aby uzyskać szczegółowe informacje o cenach, zobacz [Szczegóły cennika magazynu](https://azure.microsoft.com/pricing/details/storage/).
 
@@ -53,10 +53,10 @@ Dwa nowe regiony, Kanada Środkowa i Kanada Wschodnia, nie są automatycznie zar
 Tak, teraz jest to możliwe. Maszyna wirtualna najpierw musi zostać zatrzymane przydział zostanie cofnięty. Następnie można dodać lub usunąć karty Sieciowej (chyba że jest to ostatnia karty Sieciowej na maszynie Wirtualnej). 
 
 ## <a name="are-there-any-computer-name-requirements"></a>Czy istnieją jakiekolwiek wymagania nazwa komputera?
-Tak. Nazwa komputera może zawierać maksymalnie 64 znaków. Zobacz [ograniczenia i reguły konwencji nazewnictwa](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Aby uzyskać więcej informacji dotyczących nazewnictwa zasobów.
+Tak. Nazwa komputera może zawierać maksymalnie 64 znaków. Zobacz [ograniczenia i reguły konwencji nazewnictwa](/azure/architecture/best-practices/naming-conventions) Aby uzyskać więcej informacji dotyczących nazewnictwa zasobów.
 
 ## <a name="are-there-any-resource-group-name-requirements"></a>Czy istnieją dowolnego zasobu wymagania dotyczące nazw grupy?
-Tak. Nazwa grupy zasobów może zawierać maksymalnie 90 znaków długości. Zobacz [ograniczenia i reguły konwencji nazewnictwa](/azure/architecture/best-practices/naming-conventions#naming-rules-and-restrictions?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Aby uzyskać więcej informacji na temat grup zasobów.
+Tak. Nazwa grupy zasobów może zawierać maksymalnie 90 znaków długości. Zobacz [ograniczenia i reguły konwencji nazewnictwa](/azure/architecture/best-practices/naming-conventions) Aby uzyskać więcej informacji na temat grup zasobów.
 
 ## <a name="what-are-the-username-requirements-when-creating-a-vm"></a>Jakie są wymagania dotyczące nazwy użytkownika podczas tworzenia maszyny Wirtualnej?
 
@@ -66,28 +66,28 @@ Następujące nazwy użytkowników nie są dozwolone:
 
 <table>
     <tr>
-        <td style="text-align:center">administrator </td><td style="text-align:center"> Administrator </td><td style="text-align:center"> Użytkownik </td><td style="text-align:center"> Użytkownik1</td>
+        <td style="text-align:center">administrator </td><td style="text-align:center"> admin </td><td style="text-align:center"> Użytkownik </td><td style="text-align:center"> user1</td>
     </tr>
     <tr>
-        <td style="text-align:center">test </td><td style="text-align:center"> UŻYTKOWNIK2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> UŻYTKOWNIK3</td>
+        <td style="text-align:center">test </td><td style="text-align:center"> user2 </td><td style="text-align:center"> test1 </td><td style="text-align:center"> UŻYTKOWNIK3</td>
     </tr>
     <tr>
         <td style="text-align:center">admin1 </td><td style="text-align:center"> 1 </td><td style="text-align:center"> 123 </td><td style="text-align:center"> a</td>
     </tr>
     <tr>
-        <td style="text-align:center">actuser  </td><td style="text-align:center"> Menedżer adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
+        <td style="text-align:center">actuser  </td><td style="text-align:center"> adm </td><td style="text-align:center"> admin2 </td><td style="text-align:center"> aspnet</td>
     </tr>
     <tr>
         <td style="text-align:center">kopia zapasowa </td><td style="text-align:center"> console </td><td style="text-align:center"> David </td><td style="text-align:center"> Gość</td>
     </tr>
     <tr>
-        <td style="text-align:center">Jan </td><td style="text-align:center"> właściciel </td><td style="text-align:center"> Główny </td><td style="text-align:center"> serwer</td>
+        <td style="text-align:center">Jan </td><td style="text-align:center"> właściciel </td><td style="text-align:center"> root </td><td style="text-align:center"> serwer</td>
     </tr>
     <tr>
         <td style="text-align:center">sql </td><td style="text-align:center"> pomoc techniczna </td><td style="text-align:center"> support_388945a0 </td><td style="text-align:center"> sys</td>
     </tr>
     <tr>
-        <td style="text-align:center">Test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
+        <td style="text-align:center">test2 </td><td style="text-align:center"> test3 </td><td style="text-align:center"> user4 </td><td style="text-align:center"> user5</td>
     </tr>
 </table>
 

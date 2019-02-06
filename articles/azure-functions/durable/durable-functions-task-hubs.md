@@ -10,18 +10,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 4e48956e42942761abec0143ba2849601dbb1cf4
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 596eedab39ff926fcdc880c82c49ac464b7ff23b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336904"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753474"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Koncentratory zadań w funkcje trwałe (usługi Azure Functions)
 
 A *Centrum zadań* w [funkcje trwałe](durable-functions-overview.md) to kontener logiczny dla zasobów usługi Azure Storage, które są używane do aranżacji. Funkcje programu orchestrator i działanie tylko można ze sobą współdziałać, jeśli należą do tego samego Centrum zadania.
 
-Każda aplikacja funkcji ma Centrum osobne zadanie. Jeśli wiele aplikacji funkcyjnych udostępniać konta magazynu, konto magazynu zawiera wiele centrów zadania. Na poniższym diagramie przedstawiono koncentratorze zadania na aplikację funkcji w ramach kont magazynu udostępnione i dedykowane.
+Jeśli wiele aplikacji funkcyjnych udostępniać konta magazynu, każda aplikacja funkcji *musi* można skonfigurować przy użyciu nazwy Centrum osobne zadanie. Konto magazynu może zawierać wiele centrów zadania. Na poniższym diagramie przedstawiono koncentratorze zadania na aplikację funkcji w ramach kont magazynu udostępnione i dedykowane.
 
 ![Diagram przedstawiający udostępnione i dedykowane konta magazynu.](./media/durable-functions-task-hubs/task-hubs-storage.png)
 
@@ -46,19 +46,19 @@ Koncentratory zadań są identyfikowane przez nazwę, która jest zadeklarowana 
 ```json
 {
   "durableTask": {
-    "HubName": "MyTaskHub"
+    "hubName": "MyTaskHub"
   }
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>Host.JSON (funkcje 2.x)
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
 
 ```json
 {
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "MyTaskHub"
+      "hubName": "MyTaskHub"
     }
   }
 }
@@ -71,19 +71,19 @@ Koncentratory zadań można również skonfigurować przy użyciu ustawień apli
 ```json
 {
   "durableTask": {
-    "HubName": "%MyTaskHub%"
+    "hubName": "%MyTaskHub%"
   }
 }
 ```
 
-### <a name="hostjson-functions-2x"></a>Host.JSON (funkcje 2.x)
+### <a name="hostjson-functions-2x"></a>host.json (Functions 2.x)
 
 ```json
 {
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "%MyTaskHub%"
+      "hubName": "%MyTaskHub%"
     }
   }
 }
@@ -134,7 +134,7 @@ I poniżej wymaganej konfiguracji dla języka JavaScript. Właściwość Centrum
 Nazwy Centrum zadań musi rozpoczynać się literą i składać się wyłącznie z liter i cyfr. Jeśli nie zostanie określony, domyślną nazwą jest **DurableFunctionsHub**.
 
 > [!NOTE]
-> Nazwa to, co odróżnia koncentratorze zadania z innego gdy wiele centrów zadań znajduje się na koncie magazynu udostępnionego. Jeśli masz wiele aplikacji funkcji udostępniania na koncie magazynu udostępnionego, należy skonfigurować różne nazwy dla każdego zadania Centrum *host.json* plików.
+> Nazwa to, co odróżnia koncentratorze zadania z innego gdy wiele centrów zadań znajduje się na koncie magazynu udostępnionego. Jeśli masz wiele aplikacji funkcji udostępniania na koncie magazynu udostępnionego, muszą jawnie skonfigurować różne nazwy dla każdego zadania Centrum *host.json* plików. W przeciwnym razie wielu aplikacji funkcji będą ze sobą konkurować o komunikaty, co może spowodować niezdefiniowane zachowanie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

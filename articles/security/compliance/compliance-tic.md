@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: b1a406c15377cb6931f92594f5ce1526a2f2ab99
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53017103"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751926"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Zaufany wskazówki połączeń internetowych
 
@@ -40,16 +40,16 @@ Inicjatywy zawiera również zasady zabezpieczeń, wskazówek i struktur, które
 
 Istnieją trzy główne opcje, aby połączyć się z usługami platformy Azure:
 
-- Bezpośrednie połączenie z Internetem: łączenie się z usługami platformy Azure bezpośrednio za pomocą otwartego połączenia internetowego. Nośnik i połączenia są publiczne. Aplikacji i szyfrowanie na poziomie transportu są stosowane w celu zapewnienia zachowania poufności. Przepustowość jest ograniczona przez witrynę łączności z Internetem. Użyj więcej niż jednego dostawcę active w celu zapewnienia odporności.
-- Wirtualnej sieci prywatnej (VPN): nawiązać połączenie z siecią wirtualną platformy Azure prywatnie przy użyciu bramy sieci VPN.
+- Bezpośrednie połączenie z Internetem: Łączenie z usługami platformy Azure bezpośrednio za pomocą otwartego połączenia internetowego. Nośnik i połączenia są publiczne. Aplikacji i szyfrowanie na poziomie transportu są stosowane w celu zapewnienia zachowania poufności. Przepustowość jest ograniczona przez witrynę łączności z Internetem. Użyj więcej niż jednego dostawcę active w celu zapewnienia odporności.
+- Wirtualnej sieci prywatnej (VPN): Połączyć się z siecią wirtualną platformy Azure prywatnie przy użyciu bramy sieci VPN.
 Nośnik jest publiczny, ponieważ go przechodzi przez witrynę standardowego połączenia internetowego, ale połączenie jest szyfrowane w tunelu, aby zapewnić prywatność. Przepustowość jest ograniczona w zależności od urządzenia sieci VPN i konfiguracji wybrany. Połączenia z usługą Azure point-to-site są zazwyczaj ograniczone do 100 MB/s i połączenia lokacja lokacja są ograniczone do 1,25 GB/s.
-- Usługa ExpressRoute systemu Azure: ExpressRoute to bezpośrednie połączenie z usługami firmy Microsoft. Ponieważ łączność za pośrednictwem kanału fiber izolowane, połączenie może być publicznym lub prywatnym w zależności od konfiguracji, który jest używany. Przepustowość jest zazwyczaj ograniczone do maksymalnie 10 GB/s.
+- Azure ExpressRoute: ExpressRoute to bezpośrednie połączenie z usługami firmy Microsoft. Ponieważ łączność za pośrednictwem kanału fiber izolowane, połączenie może być publicznym lub prywatnym w zależności od konfiguracji, który jest używany. Przepustowość jest zazwyczaj ograniczone do maksymalnie 10 GB/s.
 
 Istnieje kilka sposobów do spełnienia wymagań dotyczących tablica załącznik H (zagadnienia dotyczące chmury), jak określono w dziale zwycięstwa zabezpieczeń firmy, "Zaufanych Internet połączenia (tablica) odwołanie do architektury dokumentu, w wersji 2.0." Ten artykuł zawiera wskazówki dotyczące tablica DHS nazywa się **2.0 tablica**.
 
 Aby włączyć połączenie z **dział (D/A) / Agencja kierująca** na platformie Azure lub usługi Office 365 bez konieczności routingu ruchu za pośrednictwem tablica D/A, D/A należy użyć szyfrowany tunel lub dedykowanego połączenia do dostawcy usług w chmurze (CSP). Z usług dostawcy usług Kryptograficznych upewnij się, że łączność z zasobami w chmurze D/nie jest oferowana do publicznej sieci internet, uzyskać dostęp do personelu bezpośrednie Agencji.
 
-Usługi Office 365 jest zgodne z tablica 2.0 załącznik H przy użyciu jednej usługi ExpressRoute za pomocą [Peering firmy Microsoft](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings#expressroute-routing-domains) włączone lub połączenia internetowego, który szyfruje cały ruch przy użyciu protokołu TLS 1.2. Użytkownicy końcowi D/A w sieci D/A można nawiązywać za pośrednictwem ich agencji sieci i infrastruktury tablica za pośrednictwem Internetu. Powoduje to zablokowanie wszystkich zdalnego dostępu do Internetu dla usługi Office 365 i kieruje za pośrednictwem agencji. D/A można też nawiązać połączenie usługi Office 365 za pośrednictwem połączenia usługi ExpressRoute za pomocą Peering firmy Microsoft (typ publicznej komunikacji równorzędnej) włączone.  
+Usługi Office 365 jest zgodne z tablica 2.0 załącznik H przy użyciu jednej usługi ExpressRoute za pomocą [Peering firmy Microsoft](https://docs.microsoft.com/azure/expressroute/expressroute-circuit-peerings) włączone lub połączenia internetowego, który szyfruje cały ruch przy użyciu protokołu TLS 1.2. Użytkownicy końcowi D/A w sieci D/A można nawiązywać za pośrednictwem ich agencji sieci i infrastruktury tablica za pośrednictwem Internetu. Powoduje to zablokowanie wszystkich zdalnego dostępu do Internetu dla usługi Office 365 i kieruje za pośrednictwem agencji. D/A można też nawiązać połączenie usługi Office 365 za pośrednictwem połączenia usługi ExpressRoute za pomocą Peering firmy Microsoft (typ publicznej komunikacji równorzędnej) włączone.  
 
 Platformy Azure tylko pierwszej opcji (VPN) i trzecią opcję (ExpressRoute) spełnić te wymagania, jeśli są używane w połączeniu z usługami, które ograniczają dostęp do Internetu.
 
@@ -64,9 +64,9 @@ Główne wymagania do zapewnienia zgodności z architektury referencyjnej tablic
 Zgodności tablica IaaS platformy Azure jest podzielony na dwie główne kroki:
 
 - Krok 1: Konfiguracja.
-- Krok 2: inspekcji.
+- Krok 2: Inspekcja.
 
-### <a name="azure-iaas-tic-compliance-configuration"></a>Zgodności tablica IaaS platformy Azure: konfiguracji
+### <a name="azure-iaas-tic-compliance-configuration"></a>Zgodności tablica IaaS platformy Azure: Konfigurowanie
 
 Aby skonfigurować zgodne tablica architektury za pomocą platformy Azure, należy najpierw uniemożliwić bezpośredni dostęp do Internetu do sieci wirtualnej i następnie wymuszają ruch internetowy za pośrednictwem sieci lokalnej.
 
@@ -85,7 +85,7 @@ Platforma Azure automatycznie tworzy trasy systemowe i przypisuje trasy do każd
 
 ![Tablica wymuszanie tunelowania](media/tic-diagram-c.png)
 
-Cały ruch, które powodują, że sieć wirtualna musi kierowany przez połączenie lokalne, aby upewnić się, że cały ruch przechodzi przez tablica D/A. Tworzenie niestandardowych tras przez tworzenie tras zdefiniowanych przez użytkownika lub przez wymianę tras protokołu BGP (Border Gateway) między swojej bramy sieci lokalnej i bramą Azure VPN gateway. Aby uzyskać więcej informacji o trasach definiowanych przez użytkownika, zobacz [routing ruchu w sieci wirtualnej: trasy zdefiniowane przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). Aby uzyskać więcej informacji na temat protokołu BGP, zobacz [routing ruchu w sieci wirtualnej: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
+Cały ruch, które powodują, że sieć wirtualna musi kierowany przez połączenie lokalne, aby upewnić się, że cały ruch przechodzi przez tablica D/A. Tworzenie niestandardowych tras przez tworzenie tras zdefiniowanych przez użytkownika lub przez wymianę tras protokołu BGP (Border Gateway) między swojej bramy sieci lokalnej i bramą Azure VPN gateway. Aby uzyskać więcej informacji o trasach definiowanych przez użytkownika, zobacz [routing ruchu w sieci wirtualnej: Trasy zdefiniowane przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined). Aby uzyskać więcej informacji na temat protokołu BGP, zobacz [routing ruchu w sieci wirtualnej: Border Gateway Protocol](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#border-gateway-protocol).
 
 #### <a name="add-user-defined-routes"></a>Dodawanie trasy zdefiniowane przez użytkownika
 
@@ -97,7 +97,7 @@ Jeśli używasz bramy sieci wirtualnej opartej na trasach, możesz wymusić tune
 
 Jeśli używasz usługi ExpressRoute lub bram sieci wirtualnej z włączonym protokołem BGP, Protokół BGP jest to preferowany anonsowanie tras. Dla protokołu BGP trasy anonsowane 0.0.0.0/0 usługi ExpressRoute i obsługujących protokół BGP bramy sieci wirtualnej upewnij się, że domyślna trasa ma zastosowanie do wszystkich podsieci w sieci wirtualnej.
 
-### <a name="azure-iaas-tic-compliance-auditing"></a>Zgodności tablica IaaS platformy Azure: inspekcja
+### <a name="azure-iaas-tic-compliance-auditing"></a>Zgodności tablica IaaS platformy Azure: Inspekcja
 
 Platforma Azure oferuje kilka sposobów na inspekcję zgodności tablica.
 
@@ -124,8 +124,8 @@ Usług PaaS platformy Azure, takich jak Azure Storage są dostępne za pośredni
 
 W przypadku usług PaaS platformy Azure są zintegrowane z siecią wirtualną, usługa jest prywatnie dostępne w tej sieci wirtualnej. Można zastosować, routing niestandardowe 0.0.0.0/0 za pomocą trasy zdefiniowane przez użytkownika lub protokołu BGP. Niestandardowy routing gwarantuje, że cały ruch z Internetu kieruje lokalnym w celu przechodzenia tablica. Integracja usług platformy Azure w sieciach wirtualnych, korzystając z następujących wzorców:
 
-- **Wdrażanie dedykowane wystąpienie usługi**: coraz więcej usług PaaS są możliwe do wdrożenia jako dedykowane wystąpienia za pomocą punktów końcowych dołączone do sieci wirtualnej. Środowisko usługi App Service w usłudze PowerApps można wdrożyć w trybie "Izolowany", aby zezwolić na punkt końcowy sieci będą ograniczane do sieci wirtualnej. Usługa App Service Environment następnie może obsługiwać wiele usług Azure PaaS, takich jak Azure Web Apps usługi Azure API Management i Azure Functions.
-- **Korzystanie z punktów końcowych usługi sieci wirtualnej**: coraz więcej usług PaaS, Zezwalaj na możliwość skorzystania z ich punktu końcowego do sieci wirtualnej prywatny adres IP zamiast adresów publicznych.
+- **Wdrażanie dedykowane wystąpienie usługi**: Coraz więcej usług PaaS są możliwe do wdrożenia jako dedykowane wystąpienia za pomocą punktów końcowych dołączone do sieci wirtualnej. Środowisko usługi App Service w usłudze PowerApps można wdrożyć w trybie "Izolowany", aby zezwolić na punkt końcowy sieci będą ograniczane do sieci wirtualnej. Usługa App Service Environment następnie może obsługiwać wiele usług Azure PaaS, takich jak Azure Web Apps usługi Azure API Management i Azure Functions.
+- **Korzystanie z punktów końcowych usługi sieci wirtualnej**: Coraz więcej usług PaaS umożliwiają możliwość skorzystania z ich punktu końcowego do sieci wirtualnej prywatny adres IP zamiast adresów publicznych.
 
 Usług, które obsługują wdrażanie wystąpień dedykowanych w sieci wirtualnej lub użycie punktów końcowych usługi, od maja 2018 r. są wymienione w poniższych tabelach.
 
@@ -165,7 +165,7 @@ Usług, które obsługują wdrażanie wystąpień dedykowanych w sieci wirtualne
 
 ### <a name="virtual-network-integration-details"></a>Szczegóły integracji sieci wirtualnej
 
-Na poniższym diagramie przedstawiono przepływ ogólny sieci do uzyskiwania dostępu do usługi PaaS. Dostęp jest wyświetlany z iniekcji sieci wirtualnej i tunelowanie usługi sieci wirtualnej. Aby uzyskać więcej informacji dotyczących bramy usługi w sieci, sieci wirtualnych i tagi usługi, zobacz [sieciowych i grup zabezpieczeń aplikacji: tagów usług](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+Na poniższym diagramie przedstawiono przepływ ogólny sieci do uzyskiwania dostępu do usługi PaaS. Dostęp jest wyświetlany z iniekcji sieci wirtualnej i tunelowanie usługi sieci wirtualnej. Aby uzyskać więcej informacji dotyczących bramy usługi w sieci, sieci wirtualnych i tagi usługi, zobacz [sieciowych i grup zabezpieczeń aplikacji: Tagów usług](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ![Opcje łączności PaaS tablica](media/tic-diagram-e.png)
 
@@ -178,13 +178,13 @@ Na poniższym diagramie przedstawiono przepływ ogólny sieci do uzyskiwania dos
    - Wdrażać bezpośrednio w sieci wirtualnej.
    - Selektywnie dozwolone, oparte na wskazówkach z odpowiednich usług platformy Azure.
 
-#### <a name="option-a-deploy-a-dedicated-instance-of-a-service-virtual-network-injection"></a>Opcja A: Wdróż dedykowane wystąpienie usługi (iniekcji sieci wirtualnej)
+#### <a name="option-a-deploy-a-dedicated-instance-of-a-service-virtual-network-injection"></a>Option A: Wdrażanie dedykowane wystąpienie usługi (iniekcji sieci wirtualnej)
 
 Iniekcja sieci wirtualnej umożliwia klientom selektywne wdrażanie dedykowanych wystąpień usługi danej platformy Azure, takich jak HDInsight, w ich własnych sieci wirtualnej. Wystąpienia usługi są wdrażane w dedykowanej podsieci w sieci wirtualnej klienta. Iniekcja sieci wirtualnej umożliwia dostęp do zasobów usługi przy użyciu adresów Routing-internet. Wystąpienia lokalne umożliwia ExpressRoute lub sieci VPN lokacja lokacja uzyskiwania bezpośredniego dostępu do wystąpień usługi za pośrednictwem przestrzeni adresowej sieci wirtualnej, zamiast otwierać zapory w celu przestrzeń publicznych adresów internetowych. Gdy dedykowanego wystąpienia jest dołączony do punktu końcowego, możesz użyć tej samej strategii, jak w przypadku zgodności tablica IaaS. Domyślny routing gwarantuje, że ruchu skierowanego do Internetu jest przekierowywane do bramy sieci wirtualnej, który jest powiązany dla lokalnego. Dodatkowo można kontrolować wychodzący i przychodzący dostęp za pomocą sieciowych grup zabezpieczeń dla danej podsieci.
 
 ![Omówienie usługi Virtual network iniekcji](media/tic-diagram-f.png)
 
-#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>Punkty końcowe usługi sieci wirtualnej B: użycie opcji (tunel usługi)
+#### <a name="option-b-use-virtual-network-service-endpoints-service-tunnel"></a>Opcja B: Użyj punkty końcowe usługi sieci wirtualnej (tunel usługi)
 
 Coraz więcej usług wielodostępnych systemu Azure oferują "punkty końcowe usługi." Punkty końcowe usługi są alternatywną metodę integracji z sieciami wirtualnymi platformy Azure. Punkty końcowe usługi sieci wirtualnej rozszerzają możliwości przestrzenią adresów IP sieci wirtualnej i tożsamość sieci wirtualnej do usługi za pośrednictwem bezpośredniego połączenia. Ruch z sieci wirtualnej do usługi platformy Azure zawsze pozostaje w sieci szkieletowej platformy Azure. 
 
@@ -245,7 +245,7 @@ Sieci w regionach, które są monitorowane przy użyciu usługi Network Watcher 
 
 Można łatwo skonfigurować dostęp dla Microsoft Azure, Office 365 i Dynamics 365, aby zapewnić zgodność ze wskazówkami Tablica 2.0 załącznik H, jako napisane i zdefiniowane maja 2018 r. Firma Microsoft uznaje, że wskazówki tablica ulec zmianie. Microsoft usiłują pomóc klientom w wydaniu nowych wytycznych spełniają ze wskazówkami zawartymi w sposób terminowy.
 
-## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>Dodatek: Wzorców zaufanych połączeń internetowych dla typowych obciążeń
+## <a name="appendix-trusted-internet-connections-patterns-for-common-workloads"></a>Dodatek: Zaufany wzorce połączeń internetowych dla typowych obciążeń
 
 | Kategoria | Obciążenie | IaaS | PaaS w wersji dedykowanej / iniekcji sieciami wirtualnymi  | Punkty końcowe usługi  |
 |---------|---------|---------|---------|--------|

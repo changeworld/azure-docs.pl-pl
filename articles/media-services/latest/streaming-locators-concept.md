@@ -9,102 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: be66dcf8115258b6f593ec913e75785a3f8dbe1f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742749"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743484"
 ---
 # <a name="streaming-locators"></a>Lokalizatory przesyłania strumieniowego
 
-Konieczne jest zapewnienie klientom za pomocą adresu URL, który może służyć do odtwarzania zakodowane pliki audio lub wideo, musisz utworzyć [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) i tworzyć adresy URL przesyłania strumieniowego. Aby uzyskać więcej informacji, zobacz [Stream pliku](stream-files-dotnet-quickstart.md).
+Aby wprowadzić filmów wideo w danych wyjściowych dostępne dla klientów do odtwarzania elementu zawartości, należy utworzyć [lokalizatora przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators) i późniejszego kompilowania adresów URL przesyłania strumieniowego. Aby uzyskać przykład .NET, zobacz [uzyskać Lokalizator przesyłania strumieniowego](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
-## <a name="streaminglocator-definition"></a>Definicja StreamingLocator
+Proces tworzenia **lokalizatora przesyłania strumieniowego** jest nazywany publikowaniem. Domyślnie **lokalizator przesyłania strumieniowego** jest ważny natychmiast po wykonaniu wywołań interfejsu API i aż do jego usunięcia, chyba że skonfigurujesz opcjonalne czasy rozpoczęcia i zakończenia. 
 
-W poniższej tabeli przedstawiono właściwości StreamingLocator oraz zapewnia ich definicje.
+Podczas tworzenia **lokalizatora przesyłania strumieniowego**, należy określić [zasobów](https://docs.microsoft.com/rest/api/media/assets) nazwy i [przesyłania strumieniowego zasad](https://docs.microsoft.com/rest/api/media/streamingpolicies) nazwy. Można użyć jednej z wstępnie zdefiniowane zasady przesyłania strumieniowego lub utworzenia niestandardowych zasad. Wstępnie zdefiniowane zasady obecnie dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_MultiDrmStreaming". Korzystając z niestandardowego przesyłania strumieniowego zasady, należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi Media i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje i protokołów. 
 
-|Name (Nazwa)|Opis|
-|---|---|
-|id |W pełni kwalifikowanego Identyfikatora zasobu dla zasobu.|
-|name|Nazwa zasobu.|
-|properties.alternativeMediaId|Identyfikator innych formatów ten Lokalizator przesyłania strumieniowego.|
-|properties.assetName|Nazwa elementu zawartości|
-|properties.contentKeys|Kluczy zawartości używana przez ten Lokalizator przesyłania strumieniowego.|
-|Properties.created|Czas utworzenia lokalizatora przesyłania strumieniowego.|
-|properties.defaultContentKeyPolicyName|Nazwa domyślna ContentKeyPolicy używane przez ten Lokalizator przesyłania strumieniowego.|
-|properties.endTime|Godzina zakończenia lokalizatora przesyłania strumieniowego.|
-|properties.startTime|Godzina rozpoczęcia lokalizatora przesyłania strumieniowego.|
-|properties.streamingLocatorId|StreamingLocatorId lokalizatora przesyłania strumieniowego.|
-|properties.streamingPolicyName |Nazwa zasady przesyłania strumieniowego, używany przez ten Lokalizator przesyłania strumieniowego. Podaj nazwę zasad przesyłania strumieniowego, został utworzony lub użyj jednego z wstępnie zdefiniowane zasady przesyłania strumieniowego. Wstępnie zdefiniowane zasady przesyłania strumieniowego dostępne są: "Predefined_DownloadOnly", "Predefined_ClearStreamingOnly", "Predefined_DownloadAndClearStreaming", "Predefined_ClearKey", "Predefined_MultiDrmCencStreaming" i "Predefined_MultiDrmStreaming"|
-|type|Typ zasobu.|
+Jeśli chcesz określić opcje szyfrowania na strumień, należy utworzyć [zasad klucza zawartości](https://docs.microsoft.com/rest/api/media/contentkeypolicies) , konfiguruje sposób dostarczania klucza zawartości dla klientów za pośrednictwem składnika dostarczania klucza usługi Media Services końcowych. Skojarzenia usługi lokalizatora przesyłania strumieniowego za pomocą **zasad klucza zawartości** i klucza zawartości. Usługi Media Services można pozostawić opcję automatycznego generowania klucza. W poniższym przykładzie .NET zawiera instrukcje dotyczące konfigurowania szyfrowania AES z tokenu ograniczeń w wersji 3 usługa Media Services: [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted). **Zasady kluczy zawartości** są aktualizowalne, możesz chcieć zaktualizować zasady, jeśli musisz przeprowadzić rotację kluczy. Może upłynąć do 15 minut w przypadku pamięci podręcznych dostarczania klucza do aktualizacji i wybierze zaktualizowane zasady. Zalecane jest, aby nie tworzyć nowe zasady klucz zawartości dla każdego lokalizatora przesyłania strumieniowego. Należy spróbować ponownie użyć istniejących zasad, zawsze wtedy, gdy potrzebne są te same opcje.
 
-Pełna definicja można zobaczyć [Lokalizatory przesyłania strumieniowego](https://docs.microsoft.com/rest/api/media/streaminglocators).
+> [!IMPORTANT]
+> * Właściwości **Lokalizatory przesyłania strumieniowego** będące daty/godziny są zawsze w formacie UTC.
+> * Należy zaprojektować ograniczony zestaw zasad dla swojego konta usługi multimediów i ponownie ich użyć dla Twojego Lokalizatory przesyłania strumieniowego w każdym przypadku, gdy potrzebne są te same opcje. 
 
 ## <a name="filtering-ordering-paging"></a>Filtrowania, sortowania, stronicowania
 
-Usługa Media Services obsługuje następujące opcje zapytania OData dla lokalizatorów przesyłania strumieniowego: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Opis operatora:
-
-* EQ = równa
-* Ne = nie jest równa
-* GE = większa niż lub równe
-* Le = mniejsze niż lub równe
-* Gt = większa niż
-* Lt = mniej niż
-
-### <a name="filteringordering"></a>Filtrowanie porządkowanie
-
-W poniższej tabeli przedstawiono, jak te opcje można stosować do właściwości StreamingLocator: 
-
-|Name (Nazwa)|Filtr|Zamówienie|
-|---|---|---|
-|id |||
-|name|Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|Properties.created |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |Eq, ne, ge, le, gt, lt|Rosnącej na malejącą lub odwrotnie|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>Paginacja
-
-Podział na strony jest obsługiwana dla każdego z czterech włączone sortowania. Obecnie rozmiar strony jest 10.
-
-> [!TIP]
-> Łącze do następnej zawsze należy używać wyliczania kolekcji i nie są zależne od wielkości określonej strony.
-
-Jeśli odpowiedzi na zapytanie zawiera wiele elementów, usługa zwraca "\@odata.nextLink" właściwości do pobrania następnej strony wyników. Może to służyć do strony za pomocą cały zestaw wyników. Nie można skonfigurować rozmiaru strony. 
-
-Jeśli StreamingLocators są tworzone lub usuwane podczas stronicować kolekcji, zmiany zostaną odzwierciedlone w zwróconych wyników, (Jeśli te zmiany w części w kolekcji, która nie została pobrana.) 
-
-W poniższym przykładzie C# pokazano, jak wyliczyć za pośrednictwem wszystkich StreamingLocators w ramach konta.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingLocators.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-POZOSTAŁE przykłady można znaleźć [Lokalizatory przesyłania strumieniowego — lista](https://docs.microsoft.com/rest/api/media/streaminglocators/list)
+Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Strumieniowe przesyłanie pliku](stream-files-dotnet-quickstart.md)
+* [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo przy użyciu platformy .NET](stream-files-tutorial-with-api.md)
+* [Użyj DRM dynamiczne szyfrowanie i licencji usługi dostarczania](protect-with-drm.md)

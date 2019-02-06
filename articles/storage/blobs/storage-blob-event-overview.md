@@ -8,12 +8,12 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.subservice: blobs
-ms.openlocfilehash: 6c2a642c30be79c907286e4ffac6bcea40d86fcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247752"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751399"
 ---
 # <a name="reacting-to-blob-storage-events"></a>Reagowanie na zdarzenia usługi Blob storage
 
@@ -38,7 +38,7 @@ Korzysta z usługi Event grid [subskrypcji zdarzeń](../../event-grid/concepts.m
 > |`Microsoft.Storage.BlobCreated`|Wywoływane, gdy obiekt blob zostanie utworzony lub zastąpiony przez `PutBlob`, `PutBlockList`, lub `CopyBlob` operacji|
 > |`Microsoft.Storage.BlobDeleted`|Wywoływane, gdy obiekt blob jest usuwane przez `DeleteBlob` operacji|
 
-## <a name="event-schema"></a>Schemat zdarzenia
+## <a name="event-schema"></a>Schemat zdarzeń
 Zdarzenia usługi blob storage zawiera wszystkie informacje potrzebne do reagowania na zmiany w danych.  Można zidentyfikować zdarzenia magazynu obiektów Blob, ponieważ właściwość Typ zdarzenia, który rozpoczyna się od "Microsoft.Storage". Dodatkowe informacje na temat użycia właściwości zdarzeń usługi Event Grid jest udokumentowany w [schematu zdarzeń usługi Event Grid](../../event-grid/event-schema.md).  
 
 > |Właściwość|Typ|Opis|
@@ -90,7 +90,7 @@ Oto przykład zdarzenia BlobCreated:
 Aby uzyskać więcej informacji, zobacz [schemat zdarzenia magazynu obiektów Blob](../../event-grid/event-schema-blob-storage.md).
 
 ## <a name="filtering-events"></a>Filtrowanie zdarzeń
-Subskrypcje zdarzeń obiektów blob można filtrować na podstawie typ zdarzenia i według nazwy kontenera i nazwa obiektu blob obiektu, który został utworzony lub usunąć.  Filtry można zastosować do subskrypcji zdarzeń albo podczas [tworzenia](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_create) subskrypcji zdarzeń lub [w późniejszym czasie](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_update). Filtry tematu usługi Event Grid pracę, sądząc po "rozpoczyna się od" a "kończy się na" dopasowania, tak aby zdarzeń za pomocą dopasowywania podmiotu są dostarczane do subskrybenta. 
+Subskrypcje zdarzeń obiektów blob można filtrować na podstawie typ zdarzenia i według nazwy kontenera i nazwa obiektu blob obiektu, który został utworzony lub usunąć.  Filtry można zastosować do subskrypcji zdarzeń albo podczas [tworzenia](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest) subskrypcji zdarzeń lub [w późniejszym czasie](/cli/azure/eventgrid/event-subscription?view=azure-cli-latest). Filtry tematu usługi Event Grid pracę, sądząc po "rozpoczyna się od" a "kończy się na" dopasowania, tak aby zdarzeń za pomocą dopasowywania podmiotu są dostarczane do subskrybenta. 
 
 Temat zdarzenia usługi Blob storage używany format:
 

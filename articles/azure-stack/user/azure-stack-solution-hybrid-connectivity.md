@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 84e952514b88620af565cf7e9775c055476fb530
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2530f6f59ef458d5a7c2de5850d8fab322798ba3
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247565"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752666"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Samouczek: Konfigurowanie łączności chmury hybrydowej dzięki platformie Azure i usługi Azure Stack
 
@@ -61,7 +61,7 @@ W tym samouczku założono, że niektóre podstawową wiedzę na temat platformy
 ### <a name="azure"></a>Azure
 
  - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz  [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
- - Tworzenie [aplikacja sieci Web](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts#create-an-azure-web-app-using-the-portal) na platformie Azure. Zanotuj adres URL aplikacji sieci Web, ponieważ będzie on potrzebny w tym samouczku.
+ - Tworzenie [aplikacja sieci Web](https://docs.microsoft.com/vsts/build-release/apps/cd/azure/aspnet-core-to-azure-webapp?view=vsts&tabs=vsts) na platformie Azure. Zanotuj adres URL aplikacji sieci Web, ponieważ będzie on potrzebny w tym samouczku.
 
 ### <a name="azure-stack"></a>Azure Stack
 
@@ -97,7 +97,7 @@ Specyfikacje połączenia:
 
 Sieci i podsieci adresów IP:
 
-| Połączenie usługi platformy Azure/Azure Stack | Name | Podsieć | Adres IP |
+| Połączenie usługi platformy Azure/Azure Stack | Name (Nazwa) | Podsieć | Adres IP |
 |-------------------------------------|---------------------------------------------|---------------------------------------|-----------------------------|
 | Sieci wirtualnej platformy Azure | ApplicationvNet<br>10.100.102.9/23 | ApplicationSubnet<br>10.100.102.0/24 |  |
 |  |  | GatewaySubnet<br>10.100.103.0/24 |  |

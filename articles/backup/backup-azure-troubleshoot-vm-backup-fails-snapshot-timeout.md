@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: e96c637e3c01ccfc27afa967d830c7d0254d11e7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0869786b2aa6c604ee59deb0f5a5fbc27b9ce3bf
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104239"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751569"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -64,7 +64,7 @@ Aby rozwiązać ten problem, Usuń blokadę grupę zasobów maszyny wirtualnej, 
 **Kod błędu:**: UserErrorKeyvaultPermissionsNotConfigured <br>
 **Komunikat o błędzie**: Kopia zapasowa nie ma wystarczających uprawnień do usługi key vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych. <br>
 
-Dla operacji tworzenia kopii zapasowej zakończyło się sukcesem w zaszyfrowanych maszyn wirtualnych musi mieć uprawnienia do dostępu do magazynu kluczy. Można to zrobić za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption#provide-permissions-to-backup) lub za pomocą [programu PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
+Dla operacji tworzenia kopii zapasowej zakończyło się sukcesem w zaszyfrowanych maszyn wirtualnych musi mieć uprawnienia do dostępu do magazynu kluczy. Można to zrobić za pomocą [witryny Azure portal](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption) lub za pomocą [programu PowerShell](https://docs.microsoft.com/azure/backup/backup-azure-vms-automation#enable-protection)
 
 ## <a name="ExtensionSnapshotFailedNoNetwork-snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine"></a>ExtensionSnapshotFailedNoNetwork — operacja migawki nie powiodło się z powodu braku łączności z siecią na maszynie wirtualnej
 
@@ -121,7 +121,7 @@ Obecnie usługa Azure Backup obsługuje dyski SSD w warstwie standardowa tylko w
 
 Ostatnie zadanie tworzenia kopii zapasowej nie powiodło się, ponieważ ma istniejące zadanie tworzenia kopii zapasowej w toku. Nie można uruchomić nowe zadanie tworzenia kopii zapasowej, aż do zakończenia bieżącego zadania. Upewnij się, że przed wyzwoleniem lub planowania innej operacji tworzenia kopii zapasowej zostanie przeprowadzona operacji tworzenia kopii zapasowej w toku. Aby sprawdzić stan zadania tworzenia kopii zapasowych, wykonaj następujące czynności:
 
-1. Zaloguj się do witryny Azure portal, kliknij przycisk **wszystkich usług**. Typ usługi Recovery Services, a następnie kliknij przycisk **Magazyny usługi Recovery Services**. Zostanie wyświetlona lista magazynów usługi Recovery Services.
+1. Zaloguj się do witryny Azure Portal, kliknij pozycję **Wszystkie usługi**. Wpisz ciąg Recovery Services i kliknij pozycję **Magazyny usługi Recovery Services**. Zostanie wyświetlona lista magazynów usługi Recovery Services.
 2. Z listy magazynów usługi recovery services wybierz magazyn, w którym skonfigurowano kopii zapasowej.
 3. W menu pulpitu nawigacyjnego magazynu kliknij **zadania tworzenia kopii zapasowej** Wyświetla wszystkie zadania tworzenia kopii zapasowej.
 

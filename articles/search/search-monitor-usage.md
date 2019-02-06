@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ed084520e092802ffa2a42e8a0c664ec09c4cbb7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e76c8ae671333bcbf50995c4bd9345f8434fbea2
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093244"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745966"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>Monitoruj aktywność zużycia i kwerendy zasobów w usłudze Azure Search
 
@@ -65,7 +65,7 @@ W poniższej tabeli porównano opcje przechowywania dzienników oraz dodanie, sz
 | [Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview) | Zarejestrowane zdarzenia i metryki kwerendy na podstawie jednej schematów poniżej. Zdarzenia są rejestrowane na kontener obiektów Blob i przechowywane w plikach w formacie JSON. Użyj edytora JSON, aby wyświetlić zawartość pliku.|
 | [Centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/) | Zarejestrowane zdarzenia i metryki zapytania, w oparciu o schematy opisany w tym artykule. Wybierz tę opcję jako usługa zbierania danych alternatywnych dla bardzo dużych dzienników. |
 
-Zarówno usługi Log Analytics i usługi Blob storage są dostępne jako bezpłatna usługa udostępniona, dzięki czemu możesz wypróbować ją bezpłatnie przez okres istnienia subskrypcji platformy Azure. Application Insights jest bezpłatna zarejestrować i używać tak długo, jak rozmiar danych aplikacji podlega pewnym ograniczeniom (zobacz [stronę z cennikiem](https://azure.microsoft.com/ricing/details/monitor/) Aby uzyskać szczegółowe informacje).
+Zarówno usługi Log Analytics i usługi Blob storage są dostępne jako bezpłatna usługa udostępniona, dzięki czemu możesz wypróbować ją bezpłatnie przez okres istnienia subskrypcji platformy Azure. Application Insights jest bezpłatna zarejestrować i używać tak długo, jak rozmiar danych aplikacji podlega pewnym ograniczeniom (zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/monitor/) Aby uzyskać szczegółowe informacje).
 
 Następna sekcja przeprowadzi Cię przez kroki włączania i używania usługi Azure Blob storage do zbierania i uzyskać dostęp do danych dziennika utworzone przez operacje usługi Azure Search.
 
@@ -109,7 +109,7 @@ resourceId=/subscriptions/<subscriptionID>/resourcegroups/<resourceGroupName>/pr
 ## <a name="log-schema"></a>Schemat dziennika
 Obiekty BLOB, zawierające dzienniki ruchu usługi wyszukiwania są skonstruowane zgodnie z opisem w tej sekcji. Każdy obiekt blob ma jeden główny obiekt o nazwie **rekordów** zawierający tablicę obiektów dziennika. Każdy obiekt blob zawiera rekordy dla wszystkich operacji, które miały miejsce w ciągu jednej godziny.
 
-| Name | Typ | Przykład | Uwagi |
+| Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
 | time |datetime |"2018-12-07T00:00:43.6872559Z" |Sygnatura czasowa operacji |
 | resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/> FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twoje ResourceId |
@@ -134,7 +134,7 @@ Obiekty BLOB, zawierające dzienniki ruchu usługi wyszukiwania są skonstruowan
 
 Metryk jest przechwytywana dla żądań zapytań.
 
-| Name | Typ | Przykład | Uwagi |
+| Name (Nazwa) | Typ | Przykład | Uwagi |
 | --- | --- | --- | --- |
 | resourceId |ciąg |"/ SUBSCRIPTIONS/11111111-1111-1111-1111-111111111111 /<br/>DOSTAWCÓW/DOMYŚLNIE/RESOURCEGROUPS /<br/>FIRMY MICROSOFT. WYSZUKIWANIE/SEARCHSERVICES/SEARCHSERVICE" |Twój identyfikator zasobu |
 | MetricName |ciąg |"Opóźnienie" |Nazwa metryki |

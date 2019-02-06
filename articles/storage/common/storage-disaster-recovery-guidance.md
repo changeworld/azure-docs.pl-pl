@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/01/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: bc79379d1b893beffc085e79b7643fcb6e1dc26f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657318"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753592"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Awaryjnego odzyskiwania i przechowywania konta pracy awaryjnej (wersja zapoznawcza) w usłudze Azure Storage
 
@@ -158,15 +158,11 @@ Niezarządzane dyski są przechowywane jako stronicowe obiekty BLOB w usłudze A
 
 Należy pamiętać, że wszystkie dane przechowywane w dysku tymczasowym zostaną utracone, gdy maszyna wirtualna zostanie zamknięta.
 
-#### <a name="azure-file-sync"></a>Azure File Sync
-
-Usługa Azure File Sync obsługuje konta w tryb failover. Jednakże należy ponownie skonfigurować wszystkie ustawienia usługi Azure File Sync, po zakończeniu pracy w trybie failover.
-
 ### <a name="unsupported-features-or-services"></a>Nieobsługiwane funkcje lub usługi
-
 Następujące funkcje lub usługi nie są obsługiwane dla konta trybu failover, w wersji zapoznawczej:
 
-- Udziały plików hierarchiczne Gen2 magazynu usługi Azure Data Lake nie przełączone w tryb failover.
+- Usługa Azure File Sync nie obsługuje trybu failover z konta magazynu. Konta magazynu, zawierające udziałów plików platformy Azure jako punkty końcowe w chmurze w usłudze Azure File Sync nie powinny być przełączone w tryb failover. Ten sposób synchronizacji Przyczyna zatrzymania pracy i może również spowoduje nieoczekiwanej utraty danych w przypadku plików nowo warstwowych.  
+- Kontami magazynu przy użyciu usługi Azure Data Lake Storage Gen2 hierarchicznej przestrzeni nazw nie może być przełączone w tryb failover.
 - Konto magazynu zawierające obiekty BLOB zarchiwizowane nie przełączenie do trybu failover. Obsługa zarchiwizowane obiektów blob w oddzielne konto magazynu, którego nie chcesz w trybie Failover.
 - Konto magazynu zawierające obiekty BLOB typu block w warstwie premium nie przełączenie do trybu failover. Kont magazynu, które obsługują obiekty BLOB typu block w warstwie premium nie obsługują obecnie nadmiarowości geograficznej.
 

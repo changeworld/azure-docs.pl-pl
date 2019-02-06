@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: dacc2ca995bebd0ae65d9c8221fc1954687949ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 66daa71ffbe97e9f5374eedd7f51e5afe02f0b94
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179841"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755530"
 ---
 # <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -78,7 +78,7 @@ Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglą
     | Model rozliczania | Kolejne kroki |  
     |:--- |:--- |  
     | Bezpłatna | Przejdź do portalu Cloud Partner.<ul> <li>Aby opublikować w portalu Azure Marketplace, odwiedź strony znajdujący się w portalu Cloud Partner [cloudpartner.azure.com](https://cloudpartner.azure.com).</li> </ul> |  
-    | Komercyjne (transact) | Zaktualizuj informacje o Twoim koncie.<ul> <li>Aby uzyskać więcej informacji na temat dodawania informacji o koncie, odwiedź stronę [jak bank Dodaj i informacje podatkowe](#how-to-add-bank-and-tax-information) sekcji.</li> </ul> |  
+    | Komercyjne (transact) | Zaktualizuj informacje o Twoim koncie.<ul> <li>Aby uzyskać więcej informacji na temat dodawania informacji o koncie, odwiedź stronę [jak bank Dodaj i informacje podatkowe](#add-bank-information) sekcji.</li> </ul> |  
 
     *   Przykładem oferty komercyjnej to oferta maszyn wirtualnych przy użyciu modelu rozliczeń co godzinę.  
 
@@ -146,7 +146,7 @@ Bank i informacje podatkowe jest wymagana dla wszystkich ofert komercyjnych przy
 > Wydawca, którzy publikują w Transact typ oferty: Maszyna wirtualna, aplikacje platformy Azure: szablony rozwiązań i aplikacje zarządzane.  
 
 *   **Dlaczego jest wymagane konto Centrum deweloperów?**
-> Konto Centrum deweloperów jest wymagane, aby umożliwić firmie Microsoft rozliczenia z klientami w imieniu wydawcy, aby uzyskać listę typów języka Transact. Konto Centrum deweloperów rejestracji umożliwia firmie Microsoft sprawdzić poprawność prawne, podatku i informacji bankowych dla Twojej firmy. Aby dowiedzieć się więcej, kliknij [tutaj.](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)
+> Konto Centrum deweloperów jest wymagane, aby umożliwić firmie Microsoft rozliczenia z klientami w imieniu wydawcy, aby uzyskać listę typów języka Transact. Konto Centrum deweloperów rejestracji umożliwia firmie Microsoft sprawdzić poprawność prawne, podatku i informacji bankowych dla Twojej firmy. Aby dowiedzieć się więcej, kliknij [tutaj.](https://docs.microsoft.com/azure/marketplace/become-publisher)
 
 *   **Jak zacząć korzystać z rejestracji w Centrum deweloperów?**
 > Aby uniknąć duplikowania, sprawdź, czy Twoja firma nie ma jeszcze konta Centrum deweloperów, zarejestrowany. Użytkownik musi być podpisany za pomocą konta Microsoft, które chcesz skojarzyć z kontem dewelopera. Jeśli nie masz jeszcze konta Microsoft, możesz utworzyć nowe konto [tutaj.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (przykład: contoso_marketplace@live.com) mogą się zalogować, a następnie zarejestrować, przejdź do https://dev.windows.com/en-us/registration?accountProgram=Azure
@@ -184,7 +184,7 @@ Bank i informacje podatkowe jest wymagana dla wszystkich ofert komercyjnych przy
 > Przypisywanie nazwy tymczasowej firmy, skontaktuj się z działem pomocy technicznej związanej z [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) i zapewnić im firmowe dokumenty rejestracji.
 
 *   **Jak dodać Moje informacje podatkowe i informacje dotyczące wypłat?**
-> Nie można opublikować transact oferty nie kończą działania informacje podatkowe i bankowe w danych konta Centrum deweloperów.  Aby uzyskać więcej informacji na temat dodawania informacji o koncie, odwiedź stronę [jak bank Dodaj i informacje podatkowe.](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)
+> Nie można opublikować transact oferty nie kończą działania informacje podatkowe i bankowe w danych konta Centrum deweloperów.  Aby uzyskać więcej informacji na temat dodawania informacji o koncie, odwiedź stronę [jak bank Dodaj i informacje podatkowe.](https://docs.microsoft.com/azure/marketplace/register-dev-center)
 
 *   **Czy można zmienić konto logowania Dev Center Microsoft?**
 > Nie. Po utworzeniu Centrum deweloperów nie można zmienić właściciela konta. Trzeba zacząć od nowa z zupełnie nowym konta Centrum deweloperów przy użyciu odpowiednie konto Microsoft.

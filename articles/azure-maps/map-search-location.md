@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 031085b3048d0ffc92dd5a35b4054903088b4858
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: c68b4bdffde5f987fe07d50d76fa83e7bdfa5235
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51824340"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755059"
 ---
 # <a name="show-search-results-on-the-map"></a>Pokaż wyniki wyszukiwania na mapie
 
@@ -29,7 +29,7 @@ Istnieją dwa sposoby, aby wyszukać lokalizację zainteresowania. Jednym ze spo
 
 W powyższym kodzie pierwszy blok kodu tworzy obiekt mapy i usługa klienta jest inicjowana. Możesz zobaczyć [Utwórz mapę](./map-create.md) instrukcje.
 
-Drugi blok kodu używa [getSearchFuzzy](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchfuzzy-string--searchgetsearchfuzzyoptionalparams-) method in Class metoda [moduł usługi](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1). Umożliwia wykonywanie dowolnej postaci wyszukiwanie na podstawie tekstu przy użyciu [interfejsu API rest Wyszukiwanie rozmyte](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Wyszukiwanie rozmyte interfejsu API może obsługiwać dowolną kombinację rozmyte danych wejściowych. Odpowiedź z usługi wyszukiwania rozmytego, następnie jest analizowany w formacie GeoJSON, używając [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest#geojsonsearchresponse) metody. 
+Drugi blok kodu używa [getSearchFuzzy](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.search?view=azure-iot-typescript-latest#getsearchfuzzy-string--searchgetsearchfuzzyoptionalparams-) method in Class metoda [moduł usługi](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=1). Umożliwia wykonywanie dowolnej postaci wyszukiwanie na podstawie tekstu przy użyciu [interfejsu API rest Wyszukiwanie rozmyte](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) wyszukiwanie punktu orientacyjnego. Wyszukiwanie rozmyte interfejsu API może obsługiwać dowolną kombinację rozmyte danych wejściowych. Odpowiedź z usługi wyszukiwania rozmytego, następnie jest analizowany w formacie GeoJSON, używając [getGeoJsonSearchResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonsearchresponse?view=azure-iot-typescript-latest) metody. 
 
 Trzeci bloku kodu tworzy źródła danych obiektu przy użyciu [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) klasy i dodać wyniki wyszukiwania do niego. A [warstwy symbol](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest) używa tekstu lub ikony do renderowania oparta na punkcie danych, w [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) jako symbole na mapie.  Warstwa symbol zostanie utworzony i źródło danych jest dodawane do warstwy "symbol", która następnie zostanie dodany do mapy.
 
