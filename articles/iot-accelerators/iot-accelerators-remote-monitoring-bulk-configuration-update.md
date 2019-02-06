@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie urządzeniami podłączonymi do rozwiązania do zdalnego monitorowania w trybie zbiorczym — Azure | Microsoft Docs
-description: W tym samouczku dowiesz się, jak zarządzać urządzeniami połączonymi do rozwiązania do zdalnego monitorowania w trybie zbiorczym.
+description: W tym samouczku dowiesz się, jak zarządzać urządzeniami podłączonymi do rozwiązania do zdalnego monitorowania w trybie zbiorczym.
 author: aditidugar
 manager: philmea
 ms.service: iot-accelerators
@@ -17,9 +17,9 @@ ms.locfileid: "52683432"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>Samouczek: zarządzanie połączonymi urządzeniami w trybie zbiorczym
 
-W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania, aby zarządzać konfiguracją połączonych urządzeń w trybie zbiorczym.
+W tym samouczku użyjesz akceleratora rozwiązań do zdalnego monitorowania, aby zarządzać konfiguracją podłączonych urządzeń w trybie zbiorczym.
 
-Jako operator w firmie Contoso musisz skonfigurować grupę urządzeń przy użyciu nowej wersji oprogramowania układowego. Wolisz uniknąć konieczności aktualizowania oprogramowania układowego na każdym urządzeniu osobno. W celu zaktualizowania oprogramowania układowego w grupie urządzeń możesz użyć grup urządzeń i funkcji automatycznego zarządzania urządzeniami w akceleratorze rozwiązań do zdalnego monitorowania. Każde urządzenia dodawane do grupy urządzeń otrzymuje najnowsze oprogramowanie układowe, kiedy tylko przejdzie w tryb online.
+Jako operator w firmie Contoso musisz skonfigurować grupę urządzeń przy użyciu nowej wersji oprogramowania układowego. Wolisz uniknąć konieczności aktualizowania oprogramowania układowego na każdym urządzeniu osobno. Aby zaktualizować oprogramowanie układowe w grupie urządzeń, możesz skorzystać z grup urządzeń i funkcji automatycznego zarządzania urządzeniami w akceleratorze rozwiązań do zdalnego monitorowania. Każde urządzenia dodawane do grupy urządzeń otrzyma najnowsze oprogramowanie układowe, gdy tylko będzie online.
 
 W tym samouczku zostaną wykonane następujące czynności:
 
@@ -45,7 +45,7 @@ Aby wykonać kroki tego samouczka, należy wdrożyć wystąpienie akceleratora r
 
 Jeśli jeszcze nie wdrożono akceleratora rozwiązań do zdalnego monitorowania, należy ukończyć przewodnik Szybki start [Deploy a cloud-based remote monitoring solution (Wdrażanie rozwiązania do zdalnego monitorowania opartego na chmurze)](quickstart-remote-monitoring-deploy.md).
 
-Potrzebujesz konta magazynu usługi Azure Storage do hostowania plików oprogramowania układowego. Możesz użyć istniejącego konta magazynu lub [utworzyć nowe konto magazynu](../storage/common/storage-quickstart-create-account.md) w ramach subskrypcji.
+Potrzebujesz konta usługi Azure Storage do hostowania plików oprogramowania układowego. Możesz użyć istniejącego konta magazynu lub [utworzyć nowe konto magazynu](../storage/common/storage-quickstart-create-account.md) w ramach subskrypcji.
 
 W tym samouczku jako urządzenia przykładowego użyto urządzenia [IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/).
 
@@ -121,7 +121,7 @@ Początkową wersją oprogramowania układowego urządzenia jest wersja 1.0.0. N
 
 ### <a name="upload-the-firmware-to-the-cloud"></a>Przekazywanie oprogramowania układowego do chmury
 
-Użyj swojego konta magazynu platformy Azure do hostowania nowego pliku oprogramowania układowego w chmurze.
+Użyj swojego konta usługi Azure Storage do hostowania nowego pliku oprogramowania układowego w chmurze.
 
 1. W witrynie Azure Portal przejdź do swojego konta magazynu. W sekcji Usługi wybierz pozycję **Obiekty blob**. Utwórz publiczny kontener o nazwie **firmware** do przechowywania plików oprogramowania układowego:
 
