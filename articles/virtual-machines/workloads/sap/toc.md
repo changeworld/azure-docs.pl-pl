@@ -74,6 +74,7 @@
 ### Architektura wysokiej dostępności
 #### [Architektura i scenariusze wysokiej dostępności](sap-high-availability-architecture-scenarios.md)
 #### [Architektura i scenariusze wyższej dostępności](sap-higher-availability-architecture-scenarios.md)
+#### [Konfiguracje obciążenia SAP ze strefami dostępności platformy Azure](sap-ha-availability-zones.md)
 #### [Wysoka dostępność w systemie Windows z udostępnionym dyskiem na potrzeby wystąpienia (A)SCS](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [Wysoka dostępność w systemie Windows z udziałem plików SOFS na potrzeby wystąpienia (A)SCS](sap-high-availability-guide-wsfc-file-share.md)
 #### [Wysoka dostępność w systemie SUSE Linux na potrzeby wystąpienia (A)SCS](high-availability-guide-suse.md)

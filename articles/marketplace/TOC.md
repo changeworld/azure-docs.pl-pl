@@ -1,7 +1,7 @@
 # [Dokumentacja witryny Azure Marketplace i usługi AppSource](index.md)
+## [Harmonogram działania dla usług Azure Marketplace i AppSource](./marketplace-roadmap.md)
 
 ## [Przegląd witryny Azure Marketplace i usługi AppSource oraz ich zalety](./marketplace-publishers-guide.md)  
-
 ### [Jak zostać wydawcą w witrynie Marketplace](./become-publisher.md)  
 #### [Tworzenie konta Microsoft](./guidelines.md)
 #### [Rejestracja w Centrum deweloperów](./register-dev-center.md) 

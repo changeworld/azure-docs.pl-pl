@@ -13,12 +13,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: d53221a8bed6995231385cae21a8994fce132a30
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6a5a2fee11d785c7513b6c1d1e66bd8b80d80292
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175914"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749716"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej
 Weryfikacja dwuetapowa była kroku dodatkowe zabezpieczenia, która pomaga chronić Twoje konto, co utrudnia innym osobom włamanie się. Jeśli czytasz ten artykuł, prawdopodobnie masz wiadomość e-mail od firmowego lub szkolnego administratora o usłudze uwierzytelnianie wieloskładnikowe. Lub może być zalogowania się i stało się komunikat z prośbą do skonfigurowania dodatkowej weryfikacji zabezpieczeń. Jeśli tak jest rzeczywiście, **nie możesz zalogować przed ukończeniem procesu automatycznej rejestracji**.
@@ -41,12 +41,12 @@ Pierwsze pytanie w procesie rejestracji jest o tym, jak chcesz się z Tobą skon
 
 | Metoda kontaktu | Opis |
 | --- | --- |
-| [Aplikacja mobilna](#use-a-mobile-app-as-the-contact-method) |- **Odbieraj powiadomienia dotyczące weryfikacji.** Ta opcja wypycha powiadomienie do aplikacji authenticator na smartfonie lub tablecie. Wyświetlić powiadomienie i, jeśli jest to uzasadnione, wybierz **Uwierzytelnij** w aplikacji. Pracy lub nauki może wymagać wprowadzania numeru PIN przed uwierzytelniania.<br>- **Użyj kodu weryfikacyjnego.** W tym trybie aplikacja uwierzytelniania generuje kod weryfikacyjny, który jest aktualizowany co 30 sekund. Wprowadź kod weryfikacyjny najbardziej aktualne w interfejsie logowania.<br>Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) i [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071). |
+| [Aplikacja mobilna](#use-a-mobile-app-as-the-contact-method) |- **Odbieraj powiadomienia dotyczące weryfikacji.** Ta opcja wypycha powiadomienie do aplikacji authenticator na smartfonie lub tablecie. Wyświetlić powiadomienie i, jeśli jest to uzasadnione, wybierz **Uwierzytelnij** w aplikacji. Pracy lub nauki może wymagać wprowadzania numeru PIN przed uwierzytelniania.<br>- **Użyj kodu weryfikacyjnego.** W tym trybie aplikacja uwierzytelniania generuje kod weryfikacyjny, który jest aktualizowany co 30 sekund. Wprowadź kod weryfikacyjny najbardziej aktualne w interfejsie logowania.<br>Aplikacja Microsoft Authenticator jest dostępna dla [Android](https://go.microsoft.com/fwlink/?linkid=866594) i [iOS](https://go.microsoft.com/fwlink/?linkid=866594).|
 | [Połączenie z telefonem komórkowym lub tekst](#use-your-mobile-phone-as-the-contact-method) |- **Połączenie telefoniczne** powoduje automatyczne połączenie głosowe na numer telefonu, należy podać. Odebranie połączenia i naciśnięcie przycisku # na klawiaturze telefonu w celu uwierzytelnienia.<br>- **Wiadomość SMS** kończy wiadomość SMS z kodem weryfikacyjnym. Następujący wiersz w tekście Odpowiedz na wiadomość SMS lub wprowadź kod weryfikacyjny udostępniane w interfejsie logowania. |
 | [Z telefonem biurowym](#use-your-office-phone-as-the-contact-method) |Przełącza automatyczne połączenie głosowe na numer telefonu, których udzielasz. Odebrać połączenie i naciska klawisz # na klawiaturze telefonu w celu uwierzytelnienia. |
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>Korzystanie z aplikacji mobilnej jako metody kontaktu
-Za pomocą tej metody wymaga, zainstaluj aplikację authenticator na telefonie lub tablecie. Kroki opisane w tym artykule opierają się na aplikację Microsoft Authenticator, która jest dostępna dla [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072), i [iOS](https://go.microsoft.com/fwlink/?Linkid=825073).
+Za pomocą tej metody wymaga, zainstaluj aplikację authenticator na telefonie lub tablecie. Kroki opisane w tym artykule opierają się na aplikację Microsoft Authenticator, która jest dostępna dla [Android](https://go.microsoft.com/fwlink/?Linkid=825072) i [iOS](https://go.microsoft.com/fwlink/?Linkid=825073).
 
 >[!NOTE]
 >Nie trzeba korzystać z aplikacji Microsoft Authenticator. Jeśli już używasz innej aplikacji wystawcy uwierzytelnienia, można nadal z niego korzystać.

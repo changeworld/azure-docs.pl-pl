@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 64c4b82208b2f8a20f7fd00fb574d5e017030e81
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 8cc253f751b209332ee890c0ebc9b6846d4feab5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53094155"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749852"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu wiersza polecenia platformy Azure
 
@@ -138,14 +138,14 @@ Moduły jest wdrożyć na urządzeniach docelowych, tworząc wdrożenia, który 
 Aby utworzyć wdrożenie, użyj następującego polecenia:
 
    ```cli
-   az iot edge deployment create --deployment-id [deployment id] --labels [labels] --content [file path] --hub-name [hub name] --target-condition [target query] --priority [int]
+   az iot edge deployment create --deployment-id [deployment id] --hub-name [hub name] --content [file path] --labels "[labels]" --target-condition "[target query]" --priority [int]
    ```
 
 * **— Identyfikator wdrożenia** — Nazwa wdrożenia, który zostanie utworzony w usłudze IoT hub. Nadaj wdrożenia unikatową nazwę, która jest maksymalnie 128 małe litery. Należy unikać miejsca do magazynowania i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`.
-* **--etykiety** — Dodaj etykiety służące do śledzenia wdrożenia. Etykiety są nazwę i pary wartości, które opisują wdrożenia. Na przykład `HostPlatform, Linux` lub `Version, 3.0.1`
+* **— Nazwa centrum** — nazwy Centrum IoT, w której zostanie utworzone wdrożenie. Centrum musi znajdować się w bieżącej subskrypcji. Przełącz się do odpowiedniej subskrypcji przy użyciu polecenia `az account set -s [subscription name]`.
 * **--zawartości** -Filepath do wdrożenia manifestu JSON. 
-* **— Nazwa centrum** — nazwy Centrum IoT, w której zostanie utworzone wdrożenie. Centrum musi znajdować się w bieżącej subskrypcji. Przełącz się do odpowiedniej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
-* **--warunek docelowy** -Podaj warunek docelowy, aby ustalić, urządzeń, które zostaną objęte tego wdrożenia. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.devicemodel='4000x'`. 
+* **--etykiety** — Dodaj etykiety służące do śledzenia wdrożenia. Etykiety są nazwę i pary wartości, które opisują wdrożenia. Etykiety potrwać, formatowanie nazwy i wartości JSON. Na przykład: `{"HostPlatform":"Linux", "Version:"3.0.1"}`
+* **--warunek docelowy** -Podaj warunek docelowy, aby ustalić, urządzeń, które zostaną objęte tego wdrożenia. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test' and properties.reported.devicemodel='4000x'`. 
 * **--priorytet** -dodatnią liczbą całkowitą. W przypadku, gdy co najmniej dwa wdrożenia są przeznaczone dla tego samego urządzenia, będą stosowane wdrożenie o najwyższej wartości liczbowe dla priorytetu.
 
 ## <a name="monitor-a-deployment"></a>Monitorowanie wdrożenia
