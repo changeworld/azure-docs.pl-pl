@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: fdc1cb7c4b95a72aa55ccce57b2fa331f7c9615d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4064816ae932a0f26fd3478420c69f3e8fba8732
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170712"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751280"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: Automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -107,7 +107,7 @@ az monitor autoscale rule create \
 
 Przetestowanie reguł skalowania automatycznego wymaga wygenerowania obciążenia procesora CPU na wystąpieniach maszyn wirtualnych w zestawie skalowania. Symulowane obciążenie procesora CPU powoduje uruchomienie skalowania w poziomie przez reguły skalowania automatycznego, a w efekcie zwiększenie liczby wystąpień maszyn wirtualnych. Gdy symulowane obciążenie procesora CPU zmniejszy się, nastąpi automatyczne skalowanie w pionie i ograniczenie liczby wystąpień maszyn wirtualnych.
 
-Najpierw za pomocą polecenia [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) podaj listę adresów i portów służących do nawiązania połączenia z wystąpieniami maszyn wirtualnych w zestawie skalowania:
+Najpierw za pomocą polecenia [az vmss list-instance-connection-info](/cli/azure/vmss) podaj listę adresów i portów służących do nawiązania połączenia z wystąpieniami maszyn wirtualnych w zestawie skalowania:
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -141,7 +141,7 @@ Kiedy narzędzie **stress** pokazuje dane wyjściowe podobne do następujących:
 
 Aby potwierdzić obecność wygenerowanego obciążenia procesora CPU przez narzędzie **stress**, sprawdź aktywne obciążenie systemu za pomocą narzędzia **top**:
 
-```azuecli-interactive
+```azurecli-interactive
 top
 ```
 
@@ -152,7 +152,7 @@ Ctrl-c
 exit
 ```
 
-Połącz się z drugim wystąpieniem maszyny wirtualnej przy użyciu numeru portu z poprzedniego polecenia [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info):
+Połącz się z drugim wystąpieniem maszyny wirtualnej przy użyciu numeru portu z poprzedniego polecenia [az vmss list-instance-connection-info](/cli/azure/vmss):
 
 ```azurecli-interactive
 ssh azureuser@13.92.224.66 -p 50003
@@ -208,7 +208,7 @@ Zakończ działanie narzędzia *watch* za pomocą klawiszy `Ctrl-c`. Co pięć m
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Aby pozbyć się zestawu skalowania i dodatkowych zasobów, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete). Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
+Aby pozbyć się zestawu skalowania i dodatkowych zasobów, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group). Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

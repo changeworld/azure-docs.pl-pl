@@ -8,32 +8,32 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 09/11/2018
-ms.openlocfilehash: 4f3712a45fdb2474eedeb8d4eac034060723010d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 540634d68f28aadeed308bc6cc84f459b79385e2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156548"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729291"
 ---
 # <a name="deploy-applications-to-virtual-machine-scale-sets-in-azure-using-ansible"></a>Wdrażanie aplikacji w zestawach skalowania maszyn wirtualnych na platformie Azure przy użyciu rozwiązania Ansible
-Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Możesz go użyć do wdrażania aplikacji na platformie Azure. W tym artykule przedstawiono sposób wdrażania aplikacji Java w zestawie skalowania maszyn wirtualnych platformy Azure (VMSS).  
+Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Możesz go użyć do wdrażania aplikacji na platformie Azure. W tym artykule przedstawiono sposób wdrażania aplikacji Java w zestawie skalowania maszyn wirtualnych platformy Azure (VMSS).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 - **Subskrypcja Azure** — jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
-- **Zestaw skalowania maszyn wirtualnych** — jeśli nie masz jeszcze zestawu skalowania maszyn wirtualnych, możesz [utworzyć zestaw skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](ansible-create-configure-vmss.md). 
+- **Zestaw skalowania maszyn wirtualnych** — jeśli nie masz jeszcze zestawu skalowania maszyn wirtualnych, możesz [utworzyć zestaw skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](ansible-create-configure-vmss.md).
 - **Usługa git** - [git](https://git-scm.com) jest używana do pobrania przykładu w języku Java używanego w tym samouczku.
 - **Java SE Development Kit (JDK)** — zestaw [JDK](https://aka.ms/azure-jdks) służy do utworzenia przykładowego projektu w języku Java.
 - **Narzędzia kompilacji Apache Maven** — [narzędzia kompilacji Apache Maven](https://maven.apache.org/download.cgi) służą do utworzenia przykładowego projektu w języku Java.
 
 > [!Note]
-> Rozwiązanie Ansible 2.6 jest wymagane do uruchamiania następujących przykładowych podręczników w ramach tego samouczka. 
+> Rozwiązanie Ansible 2.6 jest wymagane do uruchamiania następujących przykładowych podręczników w ramach tego samouczka.
 
 ## <a name="get-host-information"></a>Pobieranie informacji o hoście
 
-W tej sekcji pokazano, jak za pomocą rozwiązania Ansible można pobrać informacje o hoście dla grupy maszyn wirtualnych platformy Azure. Poniżej znajduje się przykładowy podręcznik rozwiązania Ansible. Ten kod pobiera publiczne adresy IP i moduł równoważenia obciążenia w ramach określonej grupy zasobów i tworzy grupę hostów o nazwie **scalesethosts** w spisie. 
+W tej sekcji pokazano, jak za pomocą rozwiązania Ansible można pobrać informacje o hoście dla grupy maszyn wirtualnych platformy Azure. Poniżej znajduje się przykładowy podręcznik rozwiązania Ansible. Ten kod pobiera publiczne adresy IP i moduł równoważenia obciążenia w ramach określonej grupy zasobów i tworzy grupę hostów o nazwie **scalesethosts** w spisie.
 
-Zapisz następujący przykładowy podręcznik jako `get-hosts-tasks.yml`: 
+Zapisz następujący przykładowy podręcznik jako `get-hosts-tasks.yml`:
 
   ```yml
   - name: Get facts for all Public IPs within a resource groups
@@ -59,7 +59,7 @@ Zapisz następujący przykładowy podręcznik jako `get-hosts-tasks.yml`:
       - "{{ output.ansible_facts.azure_loadbalancers[0].properties.inboundNatRules }}"
   ```
 
-## <a name="prepare-an-application-for-deployment"></a>Przygotowywanie aplikacji do wdrożenia  
+## <a name="prepare-an-application-for-deployment"></a>Przygotowywanie aplikacji do wdrożenia
 
 W tej sekcji usługa Git umożliwia sklonowanie przykładowego projektu w języku Java z witryny GitHub i utworzenie projektu. Zapisz następujący podręcznik jako `app.yml`:
 
@@ -69,7 +69,7 @@ W tej sekcji usługa Git umożliwia sklonowanie przykładowego projektu w język
       repo_url: https://github.com/spring-guides/gs-spring-boot.git
       workspace: ~/src/helloworld
 
-    tasks: 
+    tasks:
     - name: Git Clone sample app
       git:
         repo: "{{ repo_url }}"
@@ -106,7 +106,7 @@ Dane wyjściowe z polecenia podręcznika rozwiązania Ansible przypominają te p
 
 ## <a name="deploy-the-application-to-vmss"></a>Wdrażanie aplikacji w zestawie skalowania maszyn wirtualnych
 
-Następująca sekcja w podręczniku rozwiązania Ansible instaluje środowisko JRE (Java Runtime Environment) w grupie hostów o nazwie **saclesethosts** i wdraża aplikację języka Java w grupie hostów o nazwie **saclesethosts**: 
+Następująca sekcja w podręczniku rozwiązania Ansible instaluje środowisko JRE (Java Runtime Environment) w grupie hostów o nazwie **saclesethosts** i wdraża aplikację języka Java w grupie hostów o nazwie **saclesethosts**:
 
 (Zmień wartość `admin_password` na własne hasło).
 
@@ -118,7 +118,7 @@ Następująca sekcja w podręczniku rozwiązania Ansible instaluje środowisko J
       loadbalancer_name: myVMSSlb
       admin_username: azureuser
       admin_password: "your_password"
-    tasks:   
+    tasks:
     - include: get-hosts-tasks.yml
 
   - name: Install JRE on VMSS
@@ -147,9 +147,9 @@ Następująca sekcja w podręczniku rozwiązania Ansible instaluje środowisko J
       poll: 0
   ```
 
-Poprzedni przykładowy podręcznik rozwiązania Ansible możesz zapisać jako `vmss-setup-deploy.yml` lub [pobrać cały przykładowy podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss). 
+Poprzedni przykładowy podręcznik rozwiązania Ansible możesz zapisać jako `vmss-setup-deploy.yml` lub [pobrać cały przykładowy podręcznik](https://github.com/Azure-Samples/ansible-playbooks/blob/master/vmss).
 
-Aby można było używać typu połączenia ssh z hasłami, należy zainstalować program SSHPass. 
+Aby można było używać typu połączenia ssh z hasłami, należy zainstalować program SSHPass.
   - Dla systemu Ubuntu 16.04 uruchom polecenie `apt-get install sshpass`.
   - Dla systemu CentOS 7.4 uruchom polecenie `yum install sshpass`.
 
@@ -207,5 +207,5 @@ Gratulacje! Twoja aplikacja działa teraz na platformie Azure. Możesz teraz prz
 ![Aplikacja języka Java uruchomiona w zestawie skalowania maszyn wirtualnych na platformie Azure.](media/ansible-deploy-app-vmss/ansible-deploy-app-vmss.png)
 
 ## <a name="next-steps"></a>Następne kroki
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Automatyczne skalowanie zestawu skalowania maszyn wirtualnych przy użyciu rozwiązania Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

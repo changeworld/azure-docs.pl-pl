@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: c4f78d8bb43b26814dc3a4b94109dfd8719cb48f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: df1efc1506fbbe51ba5afb03f147c51a57d9bbdb
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54258836"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727062"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Tworzenie i konfigurowanie klastrów usługi Azure Kubernetes Service na platformie Azure za pomocą rozwiązania Ansible
 Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zasobów w Twoim środowisku. Rozwiązanie Ansible służy do zarządzania usługą Azure Kubernetes Service (AKS). W tym artykule pokazano, jak za pomocą rozwiązania Ansible tworzyć i konfigurować klastry usługi Azure Kubernetes Service.
@@ -25,13 +25,13 @@ Rozwiązanie Ansible umożliwia zautomatyzowanie wdrażania i konfigurowania zas
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)] [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 
 > [!Note]
-> Rozwiązanie Ansible 2.6 jest wymagane do uruchamiania następujących przykładowych podręczników w ramach tego samouczka. 
+> Rozwiązanie Ansible 2.6 jest wymagane do uruchamiania następujących przykładowych podręczników w ramach tego samouczka.
 
 ## <a name="create-a-managed-aks-cluster"></a>Tworzenie zarządzanego klastra usługi AKS
 Kod w tej sekcji przedstawia przykładowy podręcznik rozwiązania Ansible, który tworzy grupę zasobów i znajdujący się w niej klaster usługi AKS.
 
 > [!Tip]
-> Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu). 
+> Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu).
 
   ```yaml
   - name: Create Azure Kubernetes Service
@@ -71,8 +71,8 @@ Kod w tej sekcji przedstawia przykładowy podręcznik rozwiązania Ansible, któ
   ```
 
 Następujące punkty wyjaśniają przedstawiony powyżej kod podręcznika rozwiązania Ansible:
-- Pierwsza sekcja w obszarze **tasks** definiuje grupę zasobów o nazwie **myResourceGroup**, której lokalizacją jest **eastus**. 
-- Druga sekcja w obszarze **tasks** definiuje klaster usługi AKS o nazwie **myAKSCluster** w ramach grupy zasobów **myResourceGroup**. 
+- Pierwsza sekcja w obszarze **tasks** definiuje grupę zasobów o nazwie **myResourceGroup**, której lokalizacją jest **eastus**.
+- Druga sekcja w obszarze **tasks** definiuje klaster usługi AKS o nazwie **myAKSCluster** w ramach grupy zasobów **myResourceGroup**.
 
 Aby utworzyć klaster usługi AKS za pomocą rozwiązania Ansible, zapisz poprzedni przykładowy podręcznik jako `azure_create_aks.yml` i uruchom go za pomocą następującego polecenia:
 
@@ -100,10 +100,10 @@ Dane wyjściowe z polecenia **ansible-playbook* przypominają poniższe dane wsk
 
 ## <a name="scale-aks-nodes"></a>Skalowanie węzłów usługi AKS
 
-Przykładowy podręcznik w poprzedniej sekcji definiuje dwa węzły. Jeśli chcesz zmniejszyć lub zwiększyć liczbę obciążeń kontenerów w klastrze, możesz łatwo dostosować liczbę węzłów. Przykładowy podręcznik w tej sekcji zwiększa liczbę węzłów z dwóch do trzech. Modyfikowanie liczby węzłów odbywa się przez zmianę wartości **count** w bloku **agent_pool_profiles**. 
+Przykładowy podręcznik w poprzedniej sekcji definiuje dwa węzły. Jeśli chcesz zmniejszyć lub zwiększyć liczbę obciążeń kontenerów w klastrze, możesz łatwo dostosować liczbę węzłów. Przykładowy podręcznik w tej sekcji zwiększa liczbę węzłów z dwóch do trzech. Modyfikowanie liczby węzłów odbywa się przez zmianę wartości **count** w bloku **agent_pool_profiles**.
 
 > [!Tip]
-> Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu). 
+> Dla symbolu zastępczego `your_ssh_key` wprowadź swój klucz publiczny RSA w formacie jednowierszowym — rozpoczynając od „ssh-rsa” (bez cudzysłowu).
 
 ```yaml
 - name: Scale AKS cluster
@@ -120,10 +120,10 @@ Przykładowy podręcznik w poprzedniej sekcji definiuje dwa węzły. Jeśli chce
   tasks:
   - name: Scaling an existed AKS cluster
     azure_rm_aks:
-        name: "{{ aks_name }}"    
+        name: "{{ aks_name }}"
         location: "{{ location }}"
-        resource_group: "{{ resource_group }}" 
-        dns_prefix: "{{ aks_name }}" 
+        resource_group: "{{ resource_group }}"
+        dns_prefix: "{{ aks_name }}"
         linux_profile:
           admin_username: "{{ username }}"
           ssh_key: "{{ ssh_key }}"
@@ -168,7 +168,7 @@ W poniższej sekcji przykładowego podręcznika rozwiązania Ansible pokazano, j
       resource_group: myResourceGroup
       aks_name: myAKSCluster
     tasks:
-    - name: 
+    - name:
       azure_rm_aks:
         name: "{{ aks_name }}"
         resource_group: "{{ resource_group }}"
@@ -193,7 +193,7 @@ TASK [azure_rm_aks] ************************************************************
 PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0
   ```
-  
+
 ## <a name="next-steps"></a>Następne kroki
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [Samouczek: Skalowanie aplikacji w usłudze Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-scale)

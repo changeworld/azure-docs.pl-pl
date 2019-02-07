@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 261af3524b36d3742c68ef147bfa648bfe95034c
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 5e02c88d894c01752965af77861d3e11e1bb101d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54887772"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749197"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Samouczek: skalowanie automatyczne zestawu skalowania maszyn wirtualnych przy użyciu szablonu platformy Azure
 Podczas tworzenia zestawu skalowania musisz zdefiniować liczbę wystąpień maszyn wirtualnych, które chcesz uruchamiać. W odpowiedzi na zmieniające się zapotrzebowanie aplikacji możesz automatycznie zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych. Skalowanie automatyczne pozwala spełniać potrzeby klientów lub reagować na zmiany wydajności aplikacji w całym cyklu jej życia. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -144,13 +144,13 @@ W poniższym przykładzie zdefiniowano regułę umożliwiającą skalowanie w pi
 ## <a name="create-an-autoscaling-scale-set"></a>Tworzenie automatycznego zestawu skalowania
 Za pomocą przykładowego szablonu utworzymy zestaw skalowania i zastosujemy reguły automatycznego skalowania. Możesz [przejrzeć cały szablon](https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/scale_sets/autoscale.json) lub [wyświetlić jego sekcję dostawcy zasobów *Microsoft.insights/autoscalesettings*](https://github.com/Azure-Samples/compute-automation-configurations/blob/master/scale_sets/autoscale.json#L220).
 
-Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz utwórz zestaw skalowania maszyn wirtualnych za pomocą polecenia [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create). Po wyświetleniu monitu podaj poświadczenia dla poszczególnych wystąpień maszyn wirtualnych: swoją nazwę użytkownika, taką jak *azureuser*, i hasło:
+Teraz utwórz zestaw skalowania maszyn wirtualnych za pomocą polecenia [az group deployment create](/cli/azure/group/deployment). Po wyświetleniu monitu podaj poświadczenia dla poszczególnych wystąpień maszyn wirtualnych: swoją nazwę użytkownika, taką jak *azureuser*, i hasło:
 
 ```azurecli-interactive
 az group deployment create \
@@ -198,7 +198,7 @@ Kiedy narzędzie **stress** pokazuje dane wyjściowe podobne do następujących:
 
 Aby potwierdzić obecność wygenerowanego obciążenia procesora CPU przez narzędzie **stress**, sprawdź aktywne obciążenie systemu za pomocą narzędzia **top**:
 
-```azuecli-interactive
+```azurecli-interactive
 top
 ```
 
@@ -264,7 +264,7 @@ Zakończ działanie narzędzia *watch* za pomocą klawiszy `Ctrl-c`. Co pięć m
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Aby pozbyć się zestawu skalowania i dodatkowych zasobów, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete):
+Aby pozbyć się zestawu skalowania i dodatkowych zasobów, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group):
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

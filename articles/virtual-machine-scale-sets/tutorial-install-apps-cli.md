@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9f979922b2abd2ce1a707a8b91656bbe64119938
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38dec49083e84d105f4eed9cbc149bbc025c5e40
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157265"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755717"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-the-azure-cli"></a>Samouczek: Instalowanie aplikacji w zestawach skalowania maszyn wirtualnych za pomocą interfejsu wiersza polecenia platformy Azure
 Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W poprzednim samouczku omówiono tworzenie niestandardowego obrazu maszyny wirtualnej i wdrażanie własnych wystąpień maszyn wirtualnych. Niestandardowy obraz zawierał ręczne instalacje i konfiguracje aplikacji. Można również zautomatyzować instalację aplikacji w zestawie skalowania po wdrożeniu poszczególnych wystąpień maszyn wirtualnych lub zaktualizować już uruchomioną aplikację. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -82,7 +82,7 @@ Utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania i maszyn wir
 
 
 ## <a name="apply-the-custom-script-extension"></a>Stosowanie rozszerzenia niestandardowego skryptu
-Za pomocą polecenia [az vmss extension set](/cli/azure/vmss/extension#set) zastosuj konfigurację rozszerzenia niestandardowego skryptu do wystąpień maszyn wirtualnych w zestawie skalowania. W następującym przykładzie konfiguracja *customConfig.json* jest stosowana do wystąpień maszyn wirtualnych zestawu *myScaleSet* w grupie zasobów *myResourceGroup*:
+Za pomocą polecenia [az vmss extension set](/cli/azure/vmss/extension) zastosuj konfigurację rozszerzenia niestandardowego skryptu do wystąpień maszyn wirtualnych w zestawie skalowania. W następującym przykładzie konfiguracja *customConfig.json* jest stosowana do wystąpień maszyn wirtualnych zestawu *myScaleSet* w grupie zasobów *myResourceGroup*:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -112,7 +112,7 @@ az network lb rule create \
   --protocol tcp
 ```
 
-Aby zobaczyć, jak działa serwer internetowy, uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [az network public-ip show](/cli/azure/network/public-ip#show). W poniższym przykładzie pokazano uzyskiwanie adresu IP dla modułu *myScaleSetLBPublicIP* utworzonego w ramach zestawu skalowania:
+Aby zobaczyć, jak działa serwer internetowy, uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [az network public-ip show](/cli/azure/network/public-ip). W poniższym przykładzie pokazano uzyskiwanie adresu IP dla modułu *myScaleSetLBPublicIP* utworzonego w ramach zestawu skalowania:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -141,7 +141,7 @@ W bieżącej powłoce utwórz plik o nazwie *customConfigv2.json* i wklej poniż
 }
 ```
 
-Za pomocą polecenia [az vmss extension set](/cli/azure/vmss/extension#set) ponownie zastosuj konfigurację rozszerzenia niestandardowego skryptu do wystąpień maszyn wirtualnych w zestawie skalowania. Plik *customConfigv2.json* umożliwia zastosowanie zaktualizowanej wersji aplikacji:
+Za pomocą polecenia [az vmss extension set](/cli/azure/vmss/extension) ponownie zastosuj konfigurację rozszerzenia niestandardowego skryptu do wystąpień maszyn wirtualnych w zestawie skalowania. Plik *customConfigv2.json* umożliwia zastosowanie zaktualizowanej wersji aplikacji:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -159,7 +159,7 @@ Wszystkie wystąpienia maszyn wirtualnych w zestawie skalowania są automatyczni
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Aby pozbyć się zestawu skalowania i dodatkowych zasobów, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete). Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
+Aby pozbyć się zestawu skalowania i dodatkowych zasobów, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group). Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

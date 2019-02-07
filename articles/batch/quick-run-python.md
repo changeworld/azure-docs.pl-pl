@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 11/27/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 3a2e48697efbe0f4969a8fae20c050a38645ed6f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9ede1b48d1b69c738e335676f10233af72e8564e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54462083"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754425"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Szybki start: uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu API języka Python
 
@@ -153,7 +153,7 @@ Aby utworzyć pulę usługi Batch, aplikacja ustawia liczbę węzłów, rozmiar 
 
 Liczba węzłów (`_POOL_NODE_COUNT`) i rozmiar maszyny wirtualnej (`_POOL_VM_SIZE`) to zdefiniowane stałe. Domyślnie przykładowa aplikacja tworzy pulę składającą się z 2 węzłów o rozmiarze *Standard_A1_v2*. Sugerowany rozmiar oferuje dobry kompromis między wydajnością a kosztem na potrzeby tego krótkiego przykładu.
 
-Metoda [pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) przesyła pulę do usługi Batch.
+Metoda [pool.add](/python/api/azure.batch.operations.pooloperations) przesyła pulę do usługi Batch.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -187,7 +187,7 @@ batch_service_client.job.add(job)
 
 Aplikacja tworzy listę obiektów zadań podrzędnych przy użyciu klasy [TaskAddParameter](/python/api/azure.batch.models.taskaddparameter). Każde zadanie podrzędne przetwarza wejściowy obiekt `resource_files` przy użyciu parametru `command_line`. W tym przykładzie wiersz polecenia uruchamia polecenie `cat` powłoki Bash, aby wyświetlić plik tekstowy. To polecenie to prosty przykład dla celów demonstracyjnych. Podczas korzystania z usługi Batch aplikację lub skrypt określa się w wierszu polecenia. Usługa Batch udostępnia kilka sposobów wdrażania aplikacji i skryptów w węzłach obliczeniowych.
 
-Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
+Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [task.add_collection](/python/api/azure.batch.operations.taskoperations), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
 
 ```python
 tasks = list()

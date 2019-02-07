@@ -10,20 +10,20 @@ ms.subservice: answer-search
 ms.topic: quickstart
 ms.date: 04/16/2018
 ms.author: rosh
-ms.openlocfilehash: b8358890658a38133452ba2092ac9b8b78114ff7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8402d0228e062aed60adee1c4622ade31771584d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210951"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700285"
 ---
 # <a name="quickstart-query-for-facts"></a>Szybki start: Wykonywanie zapytań dotyczących faktów
 
 Jeśli zapytanie dotyczy powszechnie znanego faktu, np. daty lub możliwej do zidentyfikowania informacji, zwracanym typem odpowiedzi może być `facts`. Odpowiedzi dotyczące faktów zawierają odpowiednie wyniki wyodrębnione z akapitów w dokumentach internetowych.  Te zapytania zawsze zwracają strony internetowe, [fakty](fact-queries.md) i/lub [jednostki](entity-queries.md). Jest to zależne od zapytania.
 
-Zapytania, takie jak valentines+2016 (walentynki+2016) i when+is+ramadan (kiedy+jest+ramadan), są traktowane jako zapytania związane z datą. Jeśli usługa Bing ustali, że zapytanie jest związane z datą, zwracanym typem odpowiedzi jest `facts`. 
+Zapytania, takie jak valentines+2016 (walentynki+2016) i when+is+ramadan (kiedy+jest+ramadan), są traktowane jako zapytania związane z datą. Jeśli usługa Bing ustali, że zapytanie jest związane z datą, zwracanym typem odpowiedzi jest `facts`.
 
-Poniższy przykład dotyczy odpowiedzi typu `facts` związanej z datą. 
+Poniższy przykład dotyczy odpowiedzi typu `facts` związanej z datą.
 
 **Zapytanie:**
 ```
@@ -34,28 +34,29 @@ https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=valentines+2016
 **Odpowiedź:** Pole `subjectName` zawiera wyświetlaną wersję zapytania użytkownika, które może posłużyć jako etykieta podczas wyświetlania faktu. Jeśli ciąg zapytania to valentines+2016 (walentynki+2016), usługa Bing może zmienić jego brzmienie na Valentine's Day 2016 (Walentynki 2016). Pole opisu zawiera stwierdzenie faktu.
 
 ```
-{   
-    "_type" : "SearchResponse",   
-    "queryContext" : {   
-        "originalQuery" : "valentines 2016" 
-    },   
-    "facts" : {   
-        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",   
-        "value" : [{   
-            "description" : "Valentine's Day was on Sunday, February 14, 2016.",   
-            "subjectName" : "Valentine's Day 2016"   
-        }]   
-    },   
-    "rankingResponse" : {   
-        "mainline" : {   
-            "items" : [{   
-                "answerType" : "Facts",   
-                "value" : {   
-                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"                   }   
-            }]   
-        }   
-    }   
-}   
+{
+    "_type" : "SearchResponse",
+    "queryContext" : {
+        "originalQuery" : "valentines 2016"
+    },
+    "facts" : {
+        "id" : "https:\/\/www.bingapis.com\/api\/v7\/#Facts",
+        "value" : [{
+            "description" : "Valentine's Day was on Sunday, February 14, 2016.",
+            "subjectName" : "Valentine's Day 2016"
+        }]
+    },
+    "rankingResponse" : {
+        "mainline" : {
+            "items" : [{
+                "answerType" : "Facts",
+                "value" : {
+                    "id" : "https:\/\/www.bingapis.com\/api\/v7\/knowledge\/#Facts"
+                }
+            }]
+        }
+    }
+}
 
 ```
 
@@ -118,7 +119,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=why+is+the+s
 W niektórych przypadkach fakty mogą być zwracane w postaci `_type: StructuredValue/TabularData`. Następujące zapytanie pobiera dane tabelaryczne z kontrastującymi ze sobą informacjami na temat kawy i herbaty.
 
 ```
-https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us 
+https://labsportalppe.azure-api.net/answerSearch/v7.0/search?q=coffee+vs+tea&mkt=en-us
 
 ```
 Wyniki dla odpowiedzi typu `facts` obejmują następujące wiersze i komórki:

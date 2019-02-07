@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: eab5545b4d2b911051d9803560d5efd1a09dafb0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 70eb7ef93d4802f30bb1343c442c414cda48464b
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158166"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732791"
 ---
 # <a name="monitor-a-vm-with-azure-monitoring"></a>Monitorowanie maszyny wirtualnej przy użyciu funkcji monitorowania platformy Azure
 
@@ -49,10 +49,10 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 
 | Polecenie | Uwagi |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm) | Tworzy maszynę wirtualną i łączy ją z kartą sieciową, siecią wirtualną, podsiecią i sieciową grupą zabezpieczeń. To polecenie określa również obraz maszyny wirtualnej do użycia oraz poświadczenia administracyjne.  |
-| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Uruchamia rozszerzenie maszyny wirtualnej względem maszyny wirtualnej. W takim przypadku rozszerzenie agenta usługi Log Analytics jest używane do instalowania agenta usługi Log Analytics i rejestrowania maszyny wirtualnej w obszarze roboczym usługi Log Analytics. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
+| [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension) | Uruchamia rozszerzenie maszyny wirtualnej względem maszyny wirtualnej. W takim przypadku rozszerzenie agenta usługi Log Analytics jest używane do instalowania agenta usługi Log Analytics i rejestrowania maszyny wirtualnej w obszarze roboczym usługi Log Analytics. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki
 
