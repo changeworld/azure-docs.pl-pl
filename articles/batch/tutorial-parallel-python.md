@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: b5b6f1a1cbd4c06106b7817f9fc28d8d4a9cfc06
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: f537ccfd18685cd5aa8ee06910fc80ac3d2056c9
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306339"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750413"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Samouczek: uruchamianie równoległego obciążenia w usłudze Azure Batch przy użyciu interfejsu API Python
 
@@ -170,7 +170,7 @@ Liczba węzłów i rozmiar maszyny wirtualnej są ustawiane przy użyciu zdefini
 
 Oprócz fizycznych właściwości węzłów konfiguracja puli zawiera również obiekt [StartTask](/python/api/azure.batch.models.starttask). Funkcja StartTask jest wykonywana w każdym węźle, gdy tylko ten węzeł zostanie dołączony do puli, oraz za każdym razem, gdy węzeł będzie uruchamiany ponownie. W tym przykładzie obiekt StartTask uruchamia polecenia powłoki Bash w celu zainstalowania pakietu ffmpeg i jego zależności w węzłach.
 
-Metoda [pool.add](/python/api/azure.batch.operations.pooloperations#azure_batch_operations_PoolOperations_add) przesyła pulę do usługi Batch.
+Metoda [pool.add](/python/api/azure.batch.operations.pooloperations) przesyła pulę do usługi Batch.
 
 ```python
 new_pool = batch.models.PoolAddParameter(
@@ -200,7 +200,7 @@ batch_service_client.pool.add(new_pool)
 
 ### <a name="create-a-job"></a>Tworzenie zadania
 
-Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `create_job`. Ta zdefiniowana funkcja tworzy zadanie w puli za pomocą klasy [JobAddParameter](/python/api/azure.batch.models.jobaddparameter). Metoda [job.add](/python/api/azure.batch.operations.joboperations#azure_batch_operations_JobOperations_add) przesyła pulę do usługi Batch. Początkowo zadanie nie zawiera zadań podrzędnych.
+Zadanie usługi Batch określa pulę, w której będą uruchamiane zadania podrzędne, wraz z ustawieniami opcjonalnymi, takimi jak priorytet i harmonogram pracy. Przykładowa aplikacja tworzy zadanie z wywołaniem `create_job`. Ta zdefiniowana funkcja tworzy zadanie w puli za pomocą klasy [JobAddParameter](/python/api/azure.batch.models.jobaddparameter). Metoda [job.add](/python/api/azure.batch.operations.joboperations) przesyła pulę do usługi Batch. Początkowo zadanie nie zawiera zadań podrzędnych.
 
 ```python
 job = batch.models.JobAddParameter(
@@ -216,7 +216,7 @@ Aplikacja tworzy zadania podrzędne w ramach zadania przy użyciu wywołania fun
 
 Przykładowa aplikacja tworzy obiekt [OutputFile](/python/api/azure.batch.models.outputfile) dla pliku MP3 po uruchomieniu wiersza polecenia. Pliki wyjściowe z każdego zadania podrzędnego (w tym przypadku jeden plik) są przekazywane do kontenera na połączonym koncie magazynu przy użyciu właściwości `output_files` w tym zadaniu podrzędnym.
 
-Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [task.add_collection](/python/api/azure.batch.operations.taskoperations#azure_batch_operations_TaskOperations_add_collection), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
+Następnie aplikacja dodaje zadania podrzędne do zadania za pomocą metody [task.add_collection](/python/api/azure.batch.operations.taskoperations), która tworzy kolejkę zadań podrzędnych do uruchomienia w węzłach obliczeniowych. 
 
 ```python
 tasks = list()

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 666e2e63b4e61f5a44fdff9175ff696e72d86138
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856538"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662061"
 ---
 # <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(PRZESTARZAŁE) Wdrażanie klastra Kubernetes w usłudze Azure Container Service
 
@@ -54,7 +54,7 @@ Po kilku minutach wdrażanie zostanie zakończone i zwróci informacje o wdroże
 
 Aby nawiązać połączenie z klastrem Kubernetes z komputera klienckiego, należy użyć narzędzia [kubectl](https://kubernetes.io/docs/user-guide/kubectl/), czyli klienta wiersza polecenia usługi Kubernetes. 
 
-Jeśli korzystasz z usługi Azure CloudShell, narzędzie kubectl jest już zainstalowane. Jeśli chcesz zainstalować je lokalnie, użyj polecenia [az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli).
+Jeśli korzystasz z usługi Azure CloudShell, narzędzie kubectl jest już zainstalowane. Jeśli chcesz zainstalować je lokalnie, użyj polecenia [az acs kubernetes install-cli](/cli/azure/acs/kubernetes).
 
 W przypadku systemu Linux lub macOS konieczne może być uruchomienie narzędzia przy użyciu programu sudo. W systemie Windows upewnij się, że powłoka została uruchomiona przy użyciu uprawnień administratora.
 

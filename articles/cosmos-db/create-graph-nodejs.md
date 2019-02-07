@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 11eec492501f7ead639aa928fe0ddaafb2f1d1bc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 400784fbc34a877b91ad0bdc2203b1992a537555
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033676"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509970"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Usługa Azure Cosmos DB tworzenie aplikacji Node.js za pomocą interfejsu API języka Gremlin
 
@@ -78,7 +78,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
 * Tworzenie klienta języka Gremlin.
 
-    ```nodejs
+    ```javascript
     const client = Gremlin.createClient(
         443, 
         config.endpoint, 
@@ -94,7 +94,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
 * W celu wykonywania różnych operacji języka Gremlin zdefiniowano serie funkcji. To jest jedna z nich:
 
-    ```nodejs
+    ```javascript
     function addVertex1(callback)
     {
         console.log('Running Add Vertex1'); 
@@ -108,7 +108,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
 * Każda funkcja wykonuje metodę `client.execute` z parametrem ciągu zapytania języka Gremlin. Oto przykład wykonywania metody `g.V().count()`:
 
-    ```nodejs
+    ```javascript
     console.log('Running Count'); 
     client.execute("g.V().count()", { }, (err, results) => {
         if (err) return console.error(err);
@@ -119,7 +119,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
 * Na końcu pliku wszystkie metody są wywoływane przy użyciu metody `async.waterfall()`. Powoduje wykonywanie ich jedna po drugiej:
 
-    ```nodejs
+    ```javascript
     try{
         async.waterfall([
             dropGraph,
@@ -158,7 +158,7 @@ Wszystkie poniższe fragmenty kodu pochodzą z pliku app.js.
 
 Oto przykład wypełnionego pliku config.js:
 
-```nodejs
+```javascript
 var config = {}
 
 // Note that this must not have HTTPS or the port number

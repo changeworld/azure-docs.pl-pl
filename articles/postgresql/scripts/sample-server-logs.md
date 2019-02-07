@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: eb6f1624a3fefbad829600d2280d4eaeedd188bc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 107c844051ab396fe467a1a629883746b2903125
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179978"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731822"
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Włączanie i pobieranie dzienników wolnych zapytań serwera usługi Azure Database for PostgreSQL przy użyciu interfejsu wiersza polecenia platformy Azure
 Ten przykładowy skrypt interfejsu wiersza polecenia włącza i pobiera dzienniki wolnych zapytań jednego serwera usługi Azure Database for PostgreSQL.
@@ -35,13 +35,13 @@ Ten skrypt używa poleceń opisanych w poniższej tabeli:
 
 | **Polecenie** | **Uwagi** |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az postgres server create](/cli/azure/postgres/server#az_msql_server_create) | Tworzy serwer PostgreSQL hostujący bazy danych. |
+| [az group create](/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az postgres server create](/cli/azure/postgres/server) | Tworzy serwer PostgreSQL hostujący bazy danych. |
 | [az postgres server configuration list](/cli/azure/postgres/server/configuration) | Zwraca listę wartości konfiguracji dla serwera. |
-| [az postgres server configuration set](/cli/azure/postgres/server/configuration#az_postgres_server_configuration_set) | Aktualizuje konfigurację serwera. |
-| [az postgres server-logs list](/cli/azure/postgres/server-logs#az_postgres_server_logs_list) | Zwraca listę plików dziennika dla serwera. |
-| [az postgres server-logs download](/cli/azure/postgres/server-logs#az_postgres_server_logs_download) | Pobiera pliki dziennika. |
-| [az group delete](/cli/azure/group#az_group_delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
+| [az postgres server configuration set](/cli/azure/postgres/server/configuration) | Aktualizuje konfigurację serwera. |
+| [az postgres server-logs list](/cli/azure/postgres/server-logs) | Zwraca listę plików dziennika dla serwera. |
+| [az postgres server-logs download](/cli/azure/postgres/server-logs) | Pobiera pliki dziennika. |
+| [az group delete](/cli/azure/group) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki
 - Dowiedz się więcej na temat interfejsu wiersza polecenia platformy Azure: [Dokumentacja interfejsu wiersza polecenia platformy Azure](/cli/azure).

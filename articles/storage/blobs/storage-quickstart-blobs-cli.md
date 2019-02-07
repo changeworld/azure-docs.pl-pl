@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: rogarana
-ms.openlocfilehash: b2d3d5bb0081c51d3f89bc4cb8d2c0f23d40f4a7
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1819d1dba777d97590c0b02a89cde3b46af78fff
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474001"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749239"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-the-azure-cli"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie listy obiektów blob za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -46,7 +46,7 @@ Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob
 Najpierw utwórz plik do przekazania do obiektu blob.
 Jeśli używasz usługi Azure Cloud Shell, utwórz plik za pomocą następującego polecenia: `vi helloworld` po otwarciu pliku, naciśnij klawisz **Insert**, wpisz „Hello wrold”, a następnie naciśnij klawisz **Esc**, wpisz `:x` i naciśnij klawisz **Enter**.
 
-W tym przykładzie do kontenera utworzonego w ostatnim kroku zostanie przekazany obiekt blob za pomocą polecenia [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload).
+W tym przykładzie do kontenera utworzonego w ostatnim kroku zostanie przekazany obiekt blob za pomocą polecenia [az storage blob upload](/cli/azure/storage/blob).
 
 ```azurecli-interactive
 az storage blob upload \
@@ -66,11 +66,11 @@ az storage blob upload \
 
 Jeśli obiekt blob nie istnieje, zostanie utworzony. W przeciwnym razie zostanie zastąpiony. Przed kontynuowaniem można przesłać dowolną liczbę plików.
 
-Aby przekazać jednocześnie wiele plików, możesz użyć polecenia [az storage blob upload-batch](/cli/azure/storage/blob#az_storage_blob_upload_batch).
+Aby przekazać jednocześnie wiele plików, możesz użyć polecenia [az storage blob upload-batch](/cli/azure/storage/blob).
 
 ## <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Do wyświetlania listy obiektów blob w kontenerze służy polecenie [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list).
+Do wyświetlania listy obiektów blob w kontenerze służy polecenie [az storage blob list](/cli/azure/storage/blob).
 
 ```azurecli-interactive
 az storage blob list \
@@ -80,7 +80,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>Pobieranie obiektu blob
 
-Użyj polecenia [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download), aby pobrać przesłany wcześniej obiekt blob.
+Użyj polecenia [az storage blob download](/cli/azure/storage/blob), aby pobrać przesłany wcześniej obiekt blob.
 
 ```azurecli-interactive
 az storage blob download \
@@ -105,7 +105,7 @@ azcopy \
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli nie są już potrzebne żadne zasoby z grupy zasobów, w tym konto magazynu utworzone w ramach tego przewodnika Szybki start, usuń grupę zasobów za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete).
+Jeśli nie są już potrzebne żadne zasoby z grupy zasobów, w tym konto magazynu utworzone w ramach tego przewodnika Szybki start, usuń grupę zasobów za pomocą polecenia [az group delete](/cli/azure/group).
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

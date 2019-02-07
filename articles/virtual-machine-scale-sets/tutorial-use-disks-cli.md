@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: da7848fe561d061470e8921f1f76ac30bed4c809
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163062"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751161"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: Tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem interfejsu wiersza polecenia platformy Azure
 Zestawy skalowania maszyn wirtualnych przechowują aplikacje, dane oraz systemy operacyjne wystąpień maszyn wirtualnych na dyskach. Ważne jest, aby podczas tworzenia zestawu skalowania i zarządzania nim wybrać taki rozmiar dysku i konfigurację, które odpowiadają oczekiwanemu obciążeniu. W tym samouczku omówiono tworzenie dysków maszyn wirtualnych i zarządzanie nimi. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -95,13 +95,13 @@ W powyższej tabeli podano maksymalną liczbę operacji wejścia/wyjścia na sek
 Dyski można tworzyć i dołączać podczas tworzenia zestawu skalowania lub w ramach modyfikacji istniejącego zestawu skalowania.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Dołączanie dysków podczas tworzenia zestawu skalowania
-Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W tym przykładzie grupa zasobów o nazwie *myResourceGroup* zostanie utworzona w regionie *eastus*.
+Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). W tym przykładzie grupa zasobów o nazwie *myResourceGroup* zostanie utworzona w regionie *eastus*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss#az_vmss_create). W poniższym przykładzie pokazano tworzenie zestawu skalowania o nazwie *myScaleSet* i generowanie kluczy SSH, jeśli nie istnieją. Dwa dyski są tworzone za pomocą parametru `--data-disk-sizes-gb`. Pierwszy dysk ma rozmiar *64* GB, a drugi — *128* GB:
+Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss). W poniższym przykładzie pokazano tworzenie zestawu skalowania o nazwie *myScaleSet* i generowanie kluczy SSH, jeśli nie istnieją. Dwa dyski są tworzone za pomocą parametru `--data-disk-sizes-gb`. Pierwszy dysk ma rozmiar *64* GB, a drugi — *128* GB:
 
 ```azurecli-interactive
 az vmss create \
@@ -117,7 +117,7 @@ az vmss create \
 Utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania oraz wystąpień maszyn wirtualnych trwa kilka minut.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Dołączanie dysku do istniejącego zestawu skalowania
-Dyski można także dołączać do istniejącego zestawu skalowania. Za pomocą polecenia [az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) dodaj kolejny dysk do zestawu skalowania utworzonego w poprzednim kroku. W poniższym przykładzie jest dołączany dodatkowy dysk o rozmiarze *128* GB:
+Dyski można także dołączać do istniejącego zestawu skalowania. Za pomocą polecenia [az vmss disk attach](/cli/azure/vmss/disk) dodaj kolejny dysk do zestawu skalowania utworzonego w poprzednim kroku. W poniższym przykładzie jest dołączany dodatkowy dysk o rozmiarze *128* GB:
 
 ```azurecli-interactive
 az vmss disk attach \
@@ -144,7 +144,7 @@ az vmss extension set \
   --settings '{"fileUris":["https://raw.githubusercontent.com/Azure-Samples/compute-automation-configurations/master/prepare_vm_disks.sh"],"commandToExecute":"./prepare_vm_disks.sh"}'
 ```
 
-Aby upewnić się, że dyski zostały przygotowane poprawnie, połącz się przez protokół SSH z jednym wystąpieniem maszyny wirtualnej. Wyświetl listę informacji o połączeniu dla zestawu skalowania za pomocą polecenia [az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info):
+Aby upewnić się, że dyski zostały przygotowane poprawnie, połącz się przez protokół SSH z jednym wystąpieniem maszyny wirtualnej. Wyświetl listę informacji o połączeniu dla zestawu skalowania za pomocą polecenia [az vmss list-instance-connection-info](/cli/azure/vmss):
 
 ```azurecli-interactive
 az vmss list-instance-connection-info \
@@ -225,7 +225,7 @@ exit
 
 
 ## <a name="list-attached-disks"></a>Wyświetlanie listy dołączonych dysków
-Aby wyświetlić informacje dotyczące dysków dołączonych do zestawu skalowania, użyj polecenia [az vmss show](/cli/azure/vmss#az_vmss_show) i wykonaj zapytanie na obiekcie *virtualMachineProfile.storageProfile.dataDisks*:
+Aby wyświetlić informacje dotyczące dysków dołączonych do zestawu skalowania, użyj polecenia [az vmss show](/cli/azure/vmss) i wykonaj zapytanie na obiekcie *virtualMachineProfile.storageProfile.dataDisks*:
 
 ```azurecli-interactive
 az vmss show \
@@ -279,7 +279,7 @@ Wyświetlane informacje obejmują rozmiar dysku, warstwę magazynowania i numer 
 
 
 ## <a name="detach-a-disk"></a>Odłączanie dysku
-Jeśli dany dysk nie jest już potrzebny, można go odłączyć od zestawu skalowania. Dysk jest usuwany ze wszystkich wystąpień maszyn wirtualnych w zestawie skalowania. Aby odłączyć dysk od zestawu skalowania, użyj polecenia [az vmss disk detach](/cli/azure/vmss/disk) i podaj numer LUN dysku. Numery LUN są widoczne w danych wyjściowych polecenia [az vmss show](/cli/azure/vmss#az_vmss_show) w poprzedniej sekcji. W poniższym przykładzie przedstawiono odłączanie dysku o numerze LUN *2* od zestawu skalowania:
+Jeśli dany dysk nie jest już potrzebny, można go odłączyć od zestawu skalowania. Dysk jest usuwany ze wszystkich wystąpień maszyn wirtualnych w zestawie skalowania. Aby odłączyć dysk od zestawu skalowania, użyj polecenia [az vmss disk detach](/cli/azure/vmss/disk) i podaj numer LUN dysku. Numery LUN są widoczne w danych wyjściowych polecenia [az vmss show](/cli/azure/vmss) w poprzedniej sekcji. W poniższym przykładzie przedstawiono odłączanie dysku o numerze LUN *2* od zestawu skalowania:
 
 ```azurecli-interactive
 az vmss disk detach \
@@ -290,7 +290,7 @@ az vmss disk detach \
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Aby pozbyć się zestawu skalowania i dysków, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete). Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
+Aby pozbyć się zestawu skalowania i dysków, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group). Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

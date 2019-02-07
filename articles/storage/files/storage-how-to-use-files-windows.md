@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 06/07/2018
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: e3b0773da49499e2eaa8c9b9f59ced4ed26276ba
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4361ec72f5f9cff924900ddd712aa1aa029c5ef4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465167"
+ms.locfileid: "55509024"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Korzystanie z udziału plików platformy Azure w systemie Windows
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziałów plików platformy Azure można bezproblemowo używać w systemach Windows i Windows Server. W tym artykule omówiono zagadnienia dotyczące korzystania z udziału plików platformy Azure w systemach Windows i Windows Server.
@@ -45,7 +45,7 @@ Z udziałów plików platformy Azure można korzystać w instalacji systemu Wind
 
 * **Klucz konta magazynu**: aby zainstalować udział plików platformy Azure, konieczne będzie posiadanie podstawowego (lub dodatkowego) klucza magazynu. Klucze sygnatur dostępu współdzielonego nie są aktualnie obsługiwane na potrzeby instalowania.
 
-* **Otwarty port 445**: protokół SMB wymaga otwartego portu TCP 445; połączenia zakończą się niepowodzeniem, jeśli port 445 będzie zablokowany. Aby sprawdzić, czy zapora blokuje port 445, można użyć polecenia cmdlet `Test-NetConnection`. W następującym kodzie programu PowerShell przyjęto założenie, że jest zainstalowany moduł AzureRM PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resoure-group-name>` nazwami odpowiednimi dla konta magazynu.
+* **Otwarty port 445**: protokół SMB wymaga otwartego portu TCP 445; połączenia zakończą się niepowodzeniem, jeśli port 445 będzie zablokowany. Aby sprawdzić, czy zapora blokuje port 445, można użyć polecenia cmdlet `Test-NetConnection`. W następującym kodzie programu PowerShell przyjęto założenie, że jest zainstalowany moduł AzureRM PowerShell. Aby uzyskać więcej informacji, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps). Pamiętaj, aby zastąpić wyrażenia `<your-storage-account-name>` i `<your-resource-group-name>` nazwami odpowiednimi dla konta magazynu.
 
     ```PowerShell
     $resourceGroupName = "<your-resource-group-name>"
@@ -83,7 +83,7 @@ W przeciwieństwie do innych udziałów SMB, z którymi możesz wchodzić w inte
 Typowym sposobem na przeniesienie na platformę Azure aplikacji biznesowych (LOB), które oczekują obsługi udziału plików SMB, jest użycie udziału plików platformy Azure jako alternatywy do uruchamiania dedykowanego serwera plików Windows na maszynie wirtualnej platformy Azure. Ważnym zagadnieniem warunkującym pomyślną migrację aplikacji biznesowej do korzystania z udziału plików platformy Azure jest to, że wiele aplikacji biznesowych działa w kontekście dedykowanego konta usługi z ograniczonymi uprawnieniami systemowymi, a nie w kontekście konta administracyjnego maszyny wirtualnej. W związku z tym należy się upewnić, że poświadczenia dla udziału plików platformy Azure zostały zainstalowane/zapisane w kontekście konta usługi, a nie konta administracyjnego.
 
 ### <a name="persisting-azure-file-share-credentials-in-windows"></a>Utrwalanie poświadczeń udziału plików platformy Azure w systemie Windows  
-Narzędzie [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) umożliwia przechowywanie poświadczeń konta magazynu w systemie Windows. Oznacza to, że podczas próby dostępu do udziału plików platformy Azure za pośrednictwem ścieżki UNC lub próby zainstalowania udziału plików platformy Azure nie będzie konieczne podawanie poświadczeń. Aby zapisać poświadczenia konta magazynu, uruchom następujące polecenia programu PowerShell, zastępując elementy `<your-storage-account-name>` i `<your-resoure-group-name>` zgodnie z wymaganiami.
+Narzędzie [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) umożliwia przechowywanie poświadczeń konta magazynu w systemie Windows. Oznacza to, że podczas próby dostępu do udziału plików platformy Azure za pośrednictwem ścieżki UNC lub próby zainstalowania udziału plików platformy Azure nie będzie konieczne podawanie poświadczeń. Aby zapisać poświadczenia konta magazynu, uruchom następujące polecenia programu PowerShell, zastępując elementy `<your-storage-account-name>` i `<your-resource-group-name>` zgodnie z wymaganiami.
 
 ```PowerShell
 $resourceGroupName = "<your-resource-group-name>"

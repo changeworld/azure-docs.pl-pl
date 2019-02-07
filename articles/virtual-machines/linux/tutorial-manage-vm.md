@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/23/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc548ea23249f89fadcec481cc97b6ca3ed2b909
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 270479061ad40fdda9db06571ad4ef24b00d6c4d
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54466860"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749146"
 ---
 # <a name="tutorial-create-and-manage-linux-vms-with-the-azure-cli"></a>Samouczek: Tworzenie maszyn wirtualnych z systemem Linux i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -40,7 +40,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create). 
+Utwórz grupę zasobów za pomocą polecenia [az group create](https://docs.microsoft.com/cli/azure/group). 
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed maszyną wirtualną. W tym przykładzie grupa zasobów o nazwie *myResourceGroupVM* zostanie utworzona w regionie *eastus*. 
 
@@ -52,7 +52,7 @@ Grupa zasobów jest określana podczas tworzenia lub modyfikowania maszyn wirtua
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-Utwórz maszynę wirtualną za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create). 
+Utwórz maszynę wirtualną za pomocą polecenia [az vm create](https://docs.microsoft.com/cli/azure/vm). 
 
 Podczas tworzenia maszyny wirtualnej masz dostęp do kilku opcji, takich jak obraz systemu operacyjnego, ustalanie rozmiaru dysku i poświadczenia administracyjne. W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM*, na której działa system Ubuntu Server. Na maszynie wirtualnej zostanie utworzone konto użytkownika o nazwie *azureuser* i zostaną wygenerowane klucze SSH, jeśli nie istnieją w domyślnej lokalizacji kluczy (*~/.ssh*):
 
@@ -98,7 +98,7 @@ exit
 
 Witryna Azure Marketplace zawiera wiele obrazów, za pomocą których można tworzyć maszyny wirtualne. W poprzednich krokach utworzono maszynę wirtualną przy użyciu obrazu systemu Ubuntu. W tym kroku interfejs wiersza polecenia platformy Azure jest używany do wyszukania w portalu Marketplace obrazu systemu CentOS, za pomocą którego zostanie wdrożona druga maszyna wirtualna. 
 
-Aby wyświetlić listę najczęściej używanych obrazów, użyj polecenia [az vm image list](/cli/azure/vm/image#az_vm_image_list).
+Aby wyświetlić listę najczęściej używanych obrazów, użyj polecenia [az vm image list](/cli/azure/vm/image).
 
 ```azurecli-interactive 
 az vm image list --output table
@@ -167,7 +167,7 @@ W poniższej tabeli przedstawiono kategorie rozmiarów podzielone według przypa
 
 ### <a name="find-available-vm-sizes"></a>Wyszukiwanie dostępnych rozmiarów maszyn wirtualnych
 
-Aby wyświetlić listę dostępnych rozmiarów maszyn wirtualnych w danym regionie, użyj polecenia [az vm list-sizes](/cli/azure/vm#az_vm_list_sizes). 
+Aby wyświetlić listę dostępnych rozmiarów maszyn wirtualnych w danym regionie, użyj polecenia [az vm list-sizes](/cli/azure/vm). 
 
 ```azurecli-interactive 
 az vm list-sizes --location eastus --output table
@@ -198,7 +198,7 @@ Częściowe dane wyjściowe:
 
 ### <a name="create-vm-with-specific-size"></a>Tworzenie maszyny wirtualnej o określonym rozmiarze
 
-W poprzednim przykładzie tworzenia maszyny wirtualnej nie podano rozmiaru, co spowodowało użycie rozmiaru domyślnego. Rozmiar maszyny wirtualnej można wybrać podczas jej tworzenia, używając polecenia [az vm create](/cli/azure/vm#az_vm_create) i argumentu `--size`. 
+W poprzednim przykładzie tworzenia maszyny wirtualnej nie podano rozmiaru, co spowodowało użycie rozmiaru domyślnego. Rozmiar maszyny wirtualnej można wybrać podczas jej tworzenia, używając polecenia [az vm create](/cli/azure/vm) i argumentu `--size`. 
 
 ```azurecli-interactive 
 az vm create \
@@ -217,12 +217,12 @@ Po wdrożeniu maszyny wirtualnej można zmienić jej rozmiar w celu zwiększenia
 az vm show --resource-group myResourceGroupVM --name myVM --query hardwareProfile.vmSize
 ```
 
-Przed zmianą rozmiaru maszyny wirtualnej sprawdź, czy żądany rozmiar jest dostępny w bieżącym klastrze platformy Azure. Polecenie [az vm list-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options) wyświetla listę rozmiarów. 
+Przed zmianą rozmiaru maszyny wirtualnej sprawdź, czy żądany rozmiar jest dostępny w bieżącym klastrze platformy Azure. Polecenie [az vm list-vm-resize-options](/cli/azure/vm) wyświetla listę rozmiarów. 
 
 ```azurecli-interactive 
 az vm list-vm-resize-options --resource-group myResourceGroupVM --name myVM --query [].name
 ```
-Jeśli żądany rozmiar maszyny wirtualnej jest dostępny, można go zmienić dla włączonej maszyny, ale zostanie ona ponownie uruchomiona w trakcie tej operacji. Wykonaj zmianę rozmiaru za pomocą polecenia [az vm resize]( /cli/azure/vm#az_vm_resize).
+Jeśli żądany rozmiar maszyny wirtualnej jest dostępny, można go zmienić dla włączonej maszyny, ale zostanie ona ponownie uruchomiona w trakcie tej operacji. Wykonaj zmianę rozmiaru za pomocą polecenia [az vm resize]( /cli/azure/vm).
 
 ```azurecli-interactive 
 az vm resize --resource-group myResourceGroupVM --name myVM --size Standard_DS4_v2
@@ -264,7 +264,7 @@ Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów
 
 ### <a name="find-the-power-state"></a>Znajdowanie stanu zasilania
 
-Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów. 
+Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [az vm get-instance-view](/cli/azure/vm). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów. 
 
 ```azurecli-interactive 
 az vm get-instance-view \

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.openlocfilehash: a5837a922f14a779260ad6719b01a9c882eb5768
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 94845573461d99fda9318f303d822abb6ca3f257
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622945"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751144"
 ---
 # <a name="restart-vms"></a>Ponowne uruchamianie maszyn wirtualnych
 
@@ -87,12 +87,12 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 
 | Polecenie | Uwagi |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | Tworzy maszyny wirtualne.  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Używane z opcją `--query` w celu upewnienia się, że maszyny wirtualne zostaną aprowizowane przed ponownym uruchomieniem, i pobrania identyfikatorów maszyn wirtualnych na potrzeby ich ponownego uruchomiania. |
-| [az resource list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Używane z opcją `--query` w celu pobrania identyfikatorów maszyn wirtualnych za pomocą tagu. |
-| [az vm restart](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | Ponownie uruchamia maszyny wirtualne. |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set) | Tworzy maszyny wirtualne.  |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm) | Używane z opcją `--query` w celu upewnienia się, że maszyny wirtualne zostaną aprowizowane przed ponownym uruchomieniem, i pobrania identyfikatorów maszyn wirtualnych na potrzeby ich ponownego uruchomiania. |
+| [az resource list](https://docs.microsoft.com/cli/azure/vm) | Używane z opcją `--query` w celu pobrania identyfikatorów maszyn wirtualnych za pomocą tagu. |
+| [az vm restart](https://docs.microsoft.com/cli/azure/vm) | Ponownie uruchamia maszyny wirtualne. |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki
 

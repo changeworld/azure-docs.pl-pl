@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: db0aa1781c3e35b68a59082cf7a1760f7e9a34b4
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 33f21786b1af4d169d184487a030b7e4ea321327
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239574"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694537"
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>Tworzenie maszyny wirtualnej na podstawie migawki za pomocą interfejsu wiersza polecenia
 
@@ -49,9 +49,9 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia dysku zarząd
 
 | Polecenie | Uwagi |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | Pobiera migawkę przy użyciu nazwy migawki i nazwy grupy zasobów. Właściwość Id zwróconego obiektu jest używana do utworzenia dysku zarządzanego.  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | Tworzy dyski zarządzane na podstawie migawki przy użyciu identyfikatora migawki, nazwy dysku, typ magazynu i rozmiaru.  |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Tworzy maszynę wirtualną przy użyciu zarządzanego dysku systemu operacyjnego. |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot) | Pobiera migawkę przy użyciu nazwy migawki i nazwy grupy zasobów. Właściwość Id zwróconego obiektu jest używana do utworzenia dysku zarządzanego.  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk) | Tworzy dyski zarządzane na podstawie migawki przy użyciu identyfikatora migawki, nazwy dysku, typ magazynu i rozmiaru.  |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Tworzy maszynę wirtualną przy użyciu zarządzanego dysku systemu operacyjnego. |
 
 ## <a name="next-steps"></a>Następne kroki
 

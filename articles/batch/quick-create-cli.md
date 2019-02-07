@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 10f84a758bdb2e01793aee06cba59a29b5639775
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: df56fd00d5a5ff2f9e9000b39939d0f33b3737d5
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470964"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752351"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-azure-cli"></a>Szybki start: Uruchamianie pierwszego zadania usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -139,7 +139,7 @@ Dane wyjściowe polecenia zawierają wiele informacji, ale zwróć uwagę na kod
 
 ## <a name="view-task-output"></a>Wyświetlanie danych wyjściowych zadania podrzędnego
 
-Aby wyświetlić listę plików utworzonych przez zadanie podrzędne w węźle obliczeniowym, użyj polecenia [az batch task file list](/cli/azure/batch/task#az-batch-task-file-list). Następujące polecenie wyświetla listę plików utworzonych przez zadanie podrzędne *mytask1*: 
+Aby wyświetlić listę plików utworzonych przez zadanie podrzędne w węźle obliczeniowym, użyj polecenia [az batch task file list](/cli/azure/batch/task). Następujące polecenie wyświetla listę plików utworzonych przez zadanie podrzędne *mytask1*: 
 
 ```azurecli-interactive 
 az batch task file list \
@@ -160,7 +160,7 @@ stderr.txt  https://mybatchaccount.eastus2.batch.azure.com/jobs/myjob/tasks/myta
 
 ```
 
-Aby pobrać jeden z plików wyjściowych do katalogu lokalnego, użyj polecenia [az batch task file download](/cli/azure/batch/task#az-batch-task-file-download). W tym przykładzie dane wyjściowe zadania podrzędnego znajdują się w pliku `stdout.txt`. 
+Aby pobrać jeden z plików wyjściowych do katalogu lokalnego, użyj polecenia [az batch task file download](/cli/azure/batch/task). W tym przykładzie dane wyjściowe zadania podrzędnego znajdują się w pliku `stdout.txt`. 
 
 ```azurecli-interactive
 az batch task file download \

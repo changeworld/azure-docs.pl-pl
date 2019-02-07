@@ -15,12 +15,12 @@ ms.workload: na
 ms.date: 07/26/2018
 ms.author: danlep
 ROBOTS: NOINDEX
-ms.openlocfilehash: 643d2a5a600d018912f09d01f2e018100767f147
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 8ca2def6aa6ab463e5b2be0203791da671a41745
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53410129"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697813"
 ---
 # <a name="cli-example-create-and-manage-a-batch-ai-cluster-of-dedicated-nodes"></a>Przykład użycia interfejsu wiersza polecenia: tworzenie klastra usługi Batch AI składającego się z dedykowanych węzłów i zarządzanie nim
 
@@ -57,8 +57,8 @@ W tym skrypcie użyto następujących poleceń. Każde polecenie w tabeli stanow
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az batchai workspace create](/cli/azure/batchai/workspace#az-batchai-workspace-create) | Tworzy obszar roboczy usługi Batch AI. |
 | [az batchai cluster create](/cli/azure/batchai/cluster#az-batchai-cluster-create) | Tworzy klaster usługi Batch AI. |
-| [az batchai cluster show](/cli/azure/batchai/cluster#az-batchai-cluster-show) | Wyświetla informacje o klastrze usługi Batch AI. |
-| [az batchai cluster node list](/cli/azure/batchai/cluster/node#az-batchai-cluster-show) | Wyświetla listę węzłów w klastrze usługi Batch AI. |
+| [az batchai cluster show](/cli/azure/batchai/cluster) | Wyświetla informacje o klastrze usługi Batch AI. |
+| [az batchai cluster node list](/cli/azure/batchai/cluster/node) | Wyświetla listę węzłów w klastrze usługi Batch AI. |
 | [az batchai cluster resize](/cli/azure/batchai/cluster#az-batchai-cluster-resize) | Zmienia rozmiar klastra usługi Batch AI.  |
 | [az group delete](/cli/azure/group#az-group-delete) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 

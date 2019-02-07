@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 66c6a565fff81e1c0e39075502a6a7d3d8ffa7a6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1fce6292ffd7307ff0a294c6fa25412962acd1cc
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162297"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752844"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Samouczek: równoważenie obciążenia maszyn wirtualnych z systemem Linux na platformie Azure w celu utworzenia aplikacji o wysokiej dostępności za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -60,7 +60,7 @@ az group create --name myResourceGroupLoadBalancer --location eastus
 ```
 
 ### <a name="create-a-public-ip-address"></a>Tworzenie publicznego adresu IP
-Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Utwórz publiczny adres IP za pomocą polecenia [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create). W poniższym przykładzie zostanie utworzony publiczny adres IP o nazwie *myPublicIP* w grupie zasobów *myResourceGroupLoadBalancer*:
+Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. Utwórz publiczny adres IP za pomocą polecenia [az network public-ip create](/cli/azure/network/public-ip). W poniższym przykładzie zostanie utworzony publiczny adres IP o nazwie *myPublicIP* w grupie zasobów *myResourceGroupLoadBalancer*:
 
 ```azurecli-interactive 
 az network public-ip create \
@@ -69,7 +69,7 @@ az network public-ip create \
 ```
 
 ### <a name="create-a-load-balancer"></a>Tworzenie modułu równoważenia obciążenia
-Utwórz moduł równoważenia obciążenia za pomocą polecenia [az network lb create](/cli/azure/network/lb#az_network_lb_create). Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie *myLoadBalancer* i przypisuje adres *myPublicIP* do konfiguracji protokołu IP frontonu:
+Utwórz moduł równoważenia obciążenia za pomocą polecenia [az network lb create](/cli/azure/network/lb). Poniższy przykład tworzy moduł równoważenia obciążenia o nazwie *myLoadBalancer* i przypisuje adres *myPublicIP* do konfiguracji protokołu IP frontonu:
 
 ```azurecli-interactive 
 az network lb create \
@@ -85,7 +85,7 @@ Sonda kondycji umożliwia modułowi równoważenia obciążenia monitorowanie st
 
 W poniższym przykładzie zostanie utworzona sonda TCP. Możesz także tworzyć niestandardowe sondy HTTP na potrzeby bardziej szczegółowych kontroli kondycji. W przypadku użycia niestandardowej sondy HTTP należy utworzyć stronę kontroli kondycji, na przykład *healthcheck.js*. Aby dany host pozostał w rotacji, sonda musi zwrócić do modułu równoważenia obciążenia kod odpowiedzi **HTTP 200 OK**.
 
-Aby utworzyć sondę kondycji TCP, należy użyć polecenia [az network lb probe create](/cli/azure/network/lb/probe#az_network_lb_probe_create). W poniższym przykładzie zostanie utworzona sonda kondycji o nazwie *myHealthProbe*:
+Aby utworzyć sondę kondycji TCP, należy użyć polecenia [az network lb probe create](/cli/azure/network/lb/probe). W poniższym przykładzie zostanie utworzona sonda kondycji o nazwie *myHealthProbe*:
 
 ```azurecli-interactive 
 az network lb probe create \
@@ -99,7 +99,7 @@ az network lb probe create \
 ### <a name="create-a-load-balancer-rule"></a>Tworzenie reguły modułu równoważenia obciążenia
 Reguła modułu równoważenia obciążenia służy do definiowania sposobu dystrybucji ruchu do maszyn wirtualnych. Zdefiniuj konfigurację adresu IP frontonu na potrzeby ruchu przychodzącego oraz pulę adresów IP zaplecza do odbierania ruchu, wraz z wymaganym portem źródłowym i docelowym. Aby mieć pewność, że ruch będzie kierowany tylko do maszyn wirtualnych w dobrej kondycji, zdefiniuj również sondę kondycji do użycia.
 
-Utwórz regułę modułu równoważenia obciążenia za pomocą polecenia [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create). W poniższym przykładzie zostanie utworzona reguła o nazwie *myLoadBalancerRule*, która używa sondy kondycji o nazwie *myHealthProbe* i równoważy ruch na porcie *80*:
+Utwórz regułę modułu równoważenia obciążenia za pomocą polecenia [az network lb rule create](/cli/azure/network/lb/rule). W poniższym przykładzie zostanie utworzona reguła o nazwie *myLoadBalancerRule*, która używa sondy kondycji o nazwie *myHealthProbe* i równoważy ruch na porcie *80*:
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -119,7 +119,7 @@ az network lb rule create \
 Zanim będzie możliwe wdrożenie maszyn wirtualnych i przetestowanie modułu równoważenia obciążenia, należy utworzyć pomocnicze zasoby sieci wirtualnej. Więcej informacji na temat sieci wirtualnych zawiera samouczek [Manage Azure Virtual Networks (Zarządzanie sieciami wirtualnymi platformy Azure)](tutorial-virtual-network.md).
 
 ### <a name="create-network-resources"></a>Tworzenie zasobów sieciowych
-Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create). Poniższy przykład obejmuje tworzenie sieci wirtualnej o nazwie *myVnet* z podsiecią o nazwie *mySubnet*:
+Utwórz sieć wirtualną za pomocą polecenia [az network vnet create](/cli/azure/network/vnet). Poniższy przykład obejmuje tworzenie sieci wirtualnej o nazwie *myVnet* z podsiecią o nazwie *mySubnet*:
 
 ```azurecli-interactive 
 az network vnet create \
@@ -128,7 +128,7 @@ az network vnet create \
     --subnet-name mySubnet
 ```
 
-Aby dodać sieciową grupę zabezpieczeń, użyj polecenia [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
+Aby dodać sieciową grupę zabezpieczeń, użyj polecenia [az network nsg create](/cli/azure/network/nsg). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNetworkSecurityGroup*:
 
 ```azurecli-interactive 
 az network nsg create \
@@ -136,7 +136,7 @@ az network nsg create \
     --name myNetworkSecurityGroup
 ```
 
-Utwórz regułę sieciowej grupy zabezpieczeń za pomocą polecenia [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create). Poniższy przykład tworzy regułę sieciowej grupy zabezpieczeń o nazwie *myNetworkSecurityGroupRule*:
+Utwórz regułę sieciowej grupy zabezpieczeń za pomocą polecenia [az network nsg rule create](/cli/azure/network/nsg/rule). Poniższy przykład tworzy regułę sieciowej grupy zabezpieczeń o nazwie *myNetworkSecurityGroupRule*:
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -218,7 +218,7 @@ runcmd:
 ### <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 Aby poprawić wysoką dostępność aplikacji, umieść maszyny wirtualne w zestawie dostępności. Aby uzyskać więcej informacji na temat zestawów dostępności, zobacz poprzedni samouczek [How to create highly available virtual machines (Tworzenie maszyn wirtualnych o wysokiej dostępności)](tutorial-availability-sets.md).
 
-Aby utworzyć zestaw dostępności, użyj polecenia [az vm availability-set create](/cli/azure/vm/availability-set#az_vm_availability_set_create). W poniższym przykładzie zostanie utworzony zestaw dostępności o nazwie *myAvailabilitySet*:
+Aby utworzyć zestaw dostępności, użyj polecenia [az vm availability-set create](/cli/azure/vm/availability-set). W poniższym przykładzie zostanie utworzony zestaw dostępności o nazwie *myAvailabilitySet*:
 
 ```azurecli-interactive 
 az vm availability-set create \
@@ -247,7 +247,7 @@ Pewne zadania w tle działają nadal po powrocie do wiersza polecenia w interfej
 
 
 ## <a name="test-load-balancer"></a>Testowanie modułu równoważenia obciążenia
-Uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show). W poniższym przykładzie uzyskano utworzony wcześniej adres IP *myPublicIP*:
+Uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [az network public-ip show](/cli/azure/network/public-ip). W poniższym przykładzie uzyskano utworzony wcześniej adres IP *myPublicIP*:
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -268,7 +268,7 @@ Aby zobaczyć, jak moduł równoważenia obciążenia rozdziela ruch między trz
 Maszyny wirtualne, na których działa aplikacja, mogą wymagać przeprowadzenia konserwacji, na przykład zainstalowania aktualizacji systemu operacyjnego. Zwiększony ruch do Twojej aplikacji może wiązać się z koniecznością dodania większej liczby maszyn wirtualnych. W tej sekcji pokazano, jak usunąć lub dodać maszyny wirtualne w module równoważenia obciążenia.
 
 ### <a name="remove-a-vm-from-the-load-balancer"></a>Usuwanie maszyny wirtualnej z modułu równoważenia obciążenia
-Maszynę wirtualną możesz usunąć z puli adresów zaplecza za pomocą polecenia [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_remove). Poniższy przykład usuwa wirtualną kartę sieciową dla maszyny **myVM2** z modułu *myLoadBalancer*:
+Maszynę wirtualną możesz usunąć z puli adresów zaplecza za pomocą polecenia [az network nic ip-config address-pool remove](/cli/azure/network/nic/ip-config/address-pool). Poniższy przykład usuwa wirtualną kartę sieciową dla maszyny **myVM2** z modułu *myLoadBalancer*:
 
 ```azurecli-interactive 
 az network nic ip-config address-pool remove \
@@ -281,7 +281,7 @@ az network nic ip-config address-pool remove \
 
 Aby zobaczyć, jak moduł równoważenia obciążenia rozdziela ruch między pozostałe dwie maszyny wirtualne używane przez aplikację, możesz wymusić odświeżenie w przeglądarce internetowej. Możesz teraz wykonać czynności konserwacyjne na maszynie wirtualnej, na przykład zainstalować aktualizacje systemu operacyjnego lub ponownie uruchomić maszynę wirtualną.
 
-Aby wyświetlić listę maszyn wirtualnych z wirtualnymi kartami sieciowymi podłączonymi do modułu równoważenia obciążenia, użyj polecenia [az network lb address-pool show](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_show). Zapytania i filtrowanie według identyfikatora wirtualnej karty sieciowej należy wykonać w następujący sposób:
+Aby wyświetlić listę maszyn wirtualnych z wirtualnymi kartami sieciowymi podłączonymi do modułu równoważenia obciążenia, użyj polecenia [az network lb address-pool show](/cli/azure/network/lb/address-pool). Zapytania i filtrowanie według identyfikatora wirtualnej karty sieciowej należy wykonać w następujący sposób:
 
 ```azurecli-interactive
 az network lb address-pool show \
@@ -300,7 +300,7 @@ Dane wyjściowe są podobne do poniższego przykładu, który pokazuje, że wirt
 ```
 
 ### <a name="add-a-vm-to-the-load-balancer"></a>Dodawanie maszyny wirtualnej do modułu równoważenia obciążenia
-Po przeprowadzeniu konserwacji maszyny wirtualnej lub jeśli trzeba zwiększyć pojemność, możesz dodać maszynę wirtualną do puli adresów zaplecza za pomocą polecenia [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool#az_network_nic_ip_config_address_pool_add). Poniższy przykład dodaje wirtualną kartę sieciową dla maszyny **myVM2** do modułu *myLoadBalancer*:
+Po przeprowadzeniu konserwacji maszyny wirtualnej lub jeśli trzeba zwiększyć pojemność, możesz dodać maszynę wirtualną do puli adresów zaplecza za pomocą polecenia [az network nic ip-config address-pool add](/cli/azure/network/nic/ip-config/address-pool). Poniższy przykład dodaje wirtualną kartę sieciową dla maszyny **myVM2** do modułu *myLoadBalancer*:
 
 ```azurecli-interactive 
 az network nic ip-config address-pool add \
@@ -311,7 +311,7 @@ az network nic ip-config address-pool add \
     --address-pool myBackEndPool
 ```
 
-Aby sprawdzić, czy wirtualna karta sieciowa jest włączona do puli adresów zaplecza, ponownie użyj polecenia [az network lb address-pool show](/cli/azure/network/lb/address-pool#az_network_lb_address_pool_show) z poprzedniego kroku.
+Aby sprawdzić, czy wirtualna karta sieciowa jest włączona do puli adresów zaplecza, ponownie użyj polecenia [az network lb address-pool show](/cli/azure/network/lb/address-pool) z poprzedniego kroku.
 
 
 ## <a name="next-steps"></a>Następne kroki

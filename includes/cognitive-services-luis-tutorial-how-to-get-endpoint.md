@@ -6,16 +6,16 @@ author: diberry
 manager: cgronlun
 ms.custom: include file
 ms.service: cognitive-services
-ms.component: luis
+ms.subservice: luis
 ms.topic: include
 ms.date: 10/08/2018
 ms.author: diberry
-ms.openlocfilehash: 11d0461e8d7c2711445856ecd255619a92dd6cb5
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1e4571080a126a771b644f19fc298d26c10a436f
+ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53107279"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55480378"
 ---
 W sekcji **Manage** (Zarządzanie) — menu w prawym górnym rogu — na stronie **Keys and endpoints** (Klucze i punkty końcowe) — menu po lewej stronie — wybierz adres URL **punktu końcowego** znajdujący się w dolnej części strony. Ta czynność spowoduje otwarcie nowej karty przeglądarki z adresem URL punktu końcowego na pasku adresu. 
 

@@ -16,12 +16,12 @@ ms.topic: get-started-article
 ms.date: 10/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: bc9907930283e07ef8df826d2e7653b96f116518
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: f08ef19e6829fc1563eced54ade1e4f59c0c33be
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852052"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728575"
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Omówienie maszyn wirtualnych z systemem Windows na platformie Azure
 
@@ -62,7 +62,7 @@ W poniższej tabeli przedstawiono wybrane metody uzyskania dostępu do listy dos
 | --- | --- |
 | Azure Portal |Wybór lokalizacji z listy podczas tworzenia maszyny wirtualnej. |
 | Azure PowerShell |Użycie polecenia [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation). |
-| Interfejs API REST |Użycie operacji [wyświetlania listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations). |
+| Interfejs API REST |Użycie operacji [wyświetlania listy lokalizacji](https://docs.microsoft.com/rest/api/resources/subscriptions). |
 | Interfejs wiersza polecenia platformy Azure |Użyj operacji [az account list-locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest). |
 
 ### <a name="vm-size"></a>Rozmiar maszyny wirtualnej
@@ -85,7 +85,7 @@ W poniższej tabeli pokazano, jak można znaleźć informacje o obrazie.
 | Azure Portal |Wartości są podawane automatycznie po wybraniu obrazu, który ma zostać użyty. |
 | Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimagepublisher) -Location *lokalizacja*<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmimageoffer) -Location *lokalizacja* -Publisher *nazwa_wydawcy*<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location *lokalizacja* -Publisher *nazwa_wydawcy* -Offer *nazwa_oferty* |
 | Interfejsy API REST |[Wyświetl listę wydawców obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[Wyświetl listę ofert obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[Wyświetl listę jednostek SKU obrazów](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
-| Interfejs wiersza polecenia platformy Azure |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location *lokalizacja*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location *lokalizacja* --publisher *nazwa_wydawcy*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location *lokalizacja* --publisher *nazwa_wydawcy* --offer *nazwa_oferty*|
+| Interfejs wiersza polecenia platformy Azure |[az vm image list-publishers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *lokalizacja*<BR>[az vm image list-offers](https://docs.microsoft.com/cli/azure/vm/image?view=azure-cli-latest) --location *lokalizacja* --publisher *nazwa_wydawcy*<BR>[az vm image list-skus](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest) --location *lokalizacja* --publisher *nazwa_wydawcy* --offer *nazwa_oferty*|
 
 Istnieje możliwość [przesłania i użycia własnego obrazu](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account) — nazwa wydawcy, oferta i jednostka SKU nie są wtedy używane.
 

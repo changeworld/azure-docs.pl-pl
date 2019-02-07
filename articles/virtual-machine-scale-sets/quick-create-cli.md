@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/27/18
 ms.author: cynthn
-ms.openlocfilehash: 04c59cac8cd55acad0504337c57767c938835021
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: b42c32936d6973468ace58572ee61eaad66053c2
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884898"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733182"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-with-the-azure-cli"></a>Szybki start: Tworzenie zestawu skalowania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia platformy Azure
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. Maszyny wirtualne w zestawie skalowania możesz skalować ręcznie lub możesz zdefiniować reguły skalowania automatycznego na podstawie użycia takich zasobów jak procesor CPU, zapotrzebowanie na pamięć lub ruch sieciowy. Moduł równoważenia obciążenia platformy Azure następnie dystrybuuje ruch do wystąpień maszyn wirtualnych w zestawie skalowania. W tym przewodniku Szybki start utworzysz zestaw skalowania maszyn wirtualnych i wdrożysz przykładową aplikację przy użyciu interfejsu wiersza polecenia platformy Azure.
@@ -40,7 +40,7 @@ Zanim będzie można utworzyć zestaw skalowania, utwórz grupę zasobów za pom
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss#az_vmss_create). Poniższy przykład tworzy zestaw skalowania o nazwie *myScaleSet*, który jest skonfigurowany do automatycznej aktualizacji w miarę stosowania zmian, a następnie generuje klucze SSH, jeśli nie istnieją, w lokalizacji *~/.ssh/id_rsa*. Te klucze SSH są używane, jeśli musisz zalogować się do wystąpień maszyn wirtualnych. Aby użyć istniejącego zestawu kluczy SSH, zamiast tego użyj parametru `--ssh-key-value` i określ lokalizację swoich kluczy.
+Teraz utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [az vmss create](/cli/azure/vmss). Poniższy przykład tworzy zestaw skalowania o nazwie *myScaleSet*, który jest skonfigurowany do automatycznej aktualizacji w miarę stosowania zmian, a następnie generuje klucze SSH, jeśli nie istnieją, w lokalizacji *~/.ssh/id_rsa*. Te klucze SSH są używane, jeśli musisz zalogować się do wystąpień maszyn wirtualnych. Aby użyć istniejącego zestawu kluczy SSH, zamiast tego użyj parametru `--ssh-key-value` i określ lokalizację swoich kluczy.
 
 ```azurecli-interactive
 az vmss create \
@@ -58,7 +58,7 @@ Utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania i maszyn wir
 ## <a name="deploy-sample-application"></a>Wdrażanie przykładowej aplikacji
 Aby przetestować zestaw skalowania, należy zainstalować podstawową aplikację internetową. Niestandardowe rozszerzenie skryptu platformy Azure służy do pobierania i uruchamiania skryptu, który instaluje aplikację na wystąpieniach maszyn wirtualnych. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalowania oprogramowania lub każdego innego zadania związanego z konfiguracją lub zarządzaniem. Aby uzyskać więcej informacji, zobacz [Omówienie niestandardowego rozszerzenia skryptu](../virtual-machines/linux/extensions-customscript.md).
 
-Użyj niestandardowego rozszerzenia skryptu, aby zainstalować podstawowy serwer internetowy NGINX. Zastosuj niestandardowe rozszerzenie skryptu, który instaluje NGINX, używając polecenia [az vmss extension set](/cli/azure/vmss/extension#az_vmss_extension_set) w następujący sposób:
+Użyj niestandardowego rozszerzenia skryptu, aby zainstalować podstawowy serwer internetowy NGINX. Zastosuj niestandardowe rozszerzenie skryptu, który instaluje NGINX, używając polecenia [az vmss extension set](/cli/azure/vmss/extension) w następujący sposób:
 
 ```azurecli-interactive
 az vmss extension set \
@@ -72,7 +72,7 @@ az vmss extension set \
 
 
 ## <a name="allow-traffic-to-application"></a>Zezwalanie na ruch do aplikacji
-Podczas tworzenia zestawu skalowania zostanie automatycznie wdrożony moduł równoważenia obciążenia platformy Azure. Moduł równoważenia obciążenia dystrybuuje ruch do wystąpień maszyn wirtualnych w zestawie skalowania. Aby umożliwić dotarcie ruchu do przykładowej aplikacji internetowej, utwórz regułę modułu równoważenia obciążenia za pomocą polecenia [az network lb rule create](/cli/azure/network/lb/rule#az_network_lb_rule_create). W poniższym przykładzie pokazano tworzenie reguły o nazwie *myLoadBalancerRuleWeb*:
+Podczas tworzenia zestawu skalowania zostanie automatycznie wdrożony moduł równoważenia obciążenia platformy Azure. Moduł równoważenia obciążenia dystrybuuje ruch do wystąpień maszyn wirtualnych w zestawie skalowania. Aby umożliwić dotarcie ruchu do przykładowej aplikacji internetowej, utwórz regułę modułu równoważenia obciążenia za pomocą polecenia [az network lb rule create](/cli/azure/network/lb/rule). W poniższym przykładzie pokazano tworzenie reguły o nazwie *myLoadBalancerRuleWeb*:
 
 ```azurecli-interactive
 az network lb rule create \
@@ -104,7 +104,7 @@ Wprowadź publiczny adres IP modułu równoważenia obciążenia w przeglądarce
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy grupa zasobów, zestaw skalowania i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete) w następujący sposób. Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
+Gdy grupa zasobów, zestaw skalowania i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [az group delete](/cli/azure/group) w następujący sposób. Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait

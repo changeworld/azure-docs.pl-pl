@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 81ab41518fea81b577738d30970d83f6d6d6f2bc
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 262d7a6a4399a72e762c4ad3c87a878c54e22af4
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883997"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750396"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-an-azure-template"></a>Samouczek: instalowanie aplikacji w zestawach skalowania maszyn wirtualnych za pomocą szablonu platformy Azure
 Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W poprzednim samouczku omówiono tworzenie niestandardowego obrazu maszyny wirtualnej i wdrażanie własnych wystąpień maszyn wirtualnych. Niestandardowy obraz zawierał ręczne instalacje i konfiguracje aplikacji. Można również zautomatyzować instalację aplikacji w zestawie skalowania po wdrożeniu poszczególnych wystąpień maszyn wirtualnych lub zaktualizować już uruchomioną aplikację. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -77,13 +77,13 @@ Aby uzyskać kompletny przykładowy szablon platformy Azure, który umożliwia w
 
 
 ## <a name="create-a-scale-set"></a>Tworzenie zestawu skalowania
-Użyjemy przykładowego szablonu, który umożliwia utworzenie zestawu skalowania i zastosowanie rozszerzenia niestandardowego skryptu. Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Użyjemy przykładowego szablonu, który umożliwia utworzenie zestawu skalowania i zastosowanie rozszerzenia niestandardowego skryptu. Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
-Teraz utwórz zestaw skalowania maszyn wirtualnych za pomocą polecenia [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create). Po wyświetleniu monitu podaj poświadczenia (swoją nazwę użytkownika i hasło) dla poszczególnych wystąpień maszyn wirtualnych:
+Teraz utwórz zestaw skalowania maszyn wirtualnych za pomocą polecenia [az group deployment create](/cli/azure/group/deployment). Po wyświetleniu monitu podaj poświadczenia (swoją nazwę użytkownika i hasło) dla poszczególnych wystąpień maszyn wirtualnych:
 
 ```azurecli-interactive
 az group deployment create \
@@ -97,7 +97,7 @@ Każde wystąpienie maszyny wirtualnej w zestawie skalowania pobiera i uruchamia
 
 
 ## <a name="test-your-scale-set"></a>Testowanie zestawu skalowania
-Aby zobaczyć, jak działa serwer internetowy, uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [az network public-ip show](/cli/azure/network/public-ip#show). W poniższym przykładzie pokazano uzyskiwanie adresu IP dla modułu *myScaleSetPublicIP* utworzonego w ramach zestawu skalowania:
+Aby zobaczyć, jak działa serwer internetowy, uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [az network public-ip show](/cli/azure/network/public-ip). W poniższym przykładzie pokazano uzyskiwanie adresu IP dla modułu *myScaleSetPublicIP* utworzonego w ramach zestawu skalowania:
 
 ```azurecli-interactive
 az network public-ip show \
@@ -141,7 +141,7 @@ Aby zaktualizować definicję rozszerzenia niestandardowego skryptu, zmodyfikuj 
 }
 ```
 
-Za pomocą polecenia [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) ponownie zastosuj konfigurację rozszerzenia niestandardowego skryptu do wystąpień maszyn wirtualnych w zestawie skalowania. Plik *azuredeployv2.json* umożliwia zastosowanie zaktualizowanej wersji aplikacji. W praktyce należy zmodyfikować istniejący szablon *azuredeploy.json*, podając odwołanie do zaktualizowanego skryptu instalacji, jak pokazano w poprzedniej sekcji. Po wyświetleniu monitu wprowadź nazwę użytkownika i hasło użyte podczas tworzenia zestawu skalowania:
+Za pomocą polecenia [az group deployment create](/cli/azure/group/deployment) ponownie zastosuj konfigurację rozszerzenia niestandardowego skryptu do wystąpień maszyn wirtualnych w zestawie skalowania. Plik *azuredeployv2.json* umożliwia zastosowanie zaktualizowanej wersji aplikacji. W praktyce należy zmodyfikować istniejący szablon *azuredeploy.json*, podając odwołanie do zaktualizowanego skryptu instalacji, jak pokazano w poprzedniej sekcji. Po wyświetleniu monitu wprowadź nazwę użytkownika i hasło użyte podczas tworzenia zestawu skalowania:
 
 ```azurecli-interactive
 az group deployment create \
@@ -155,7 +155,7 @@ Wszystkie wystąpienia maszyn wirtualnych w zestawie skalowania są automatyczni
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Aby pozbyć się zestawu skalowania i dodatkowych zasobów, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group#az_group_delete). Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
+Aby pozbyć się zestawu skalowania i dodatkowych zasobów, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [az group delete](/cli/azure/group). Parametr `--no-wait` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji. Parametr `--yes` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --no-wait --yes

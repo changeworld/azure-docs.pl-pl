@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2af1ad35ee5f7548352180026f1d613d27b6af46
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0e73c0f94e0aa240349aec45b4a146ba5eb37dab
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103523"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700778"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure w regionie pomocniczym platformy Azure
 
@@ -170,7 +170,7 @@ Usługa Site Recovery tworzy ustawienia domyślne i zasady replikacji w regionie
     - **Częstotliwość wykonywania migawek na poziomie aplikacji**: Domyślnie usługa Site Recovery wykonuje migawki na poziomie aplikacji co 4 godziny. Można skonfigurować wartość z zakresu od 1 do 12 godzin. Migawka spójności aplikacji jest tworzona w określonym momencie i obejmuje dane aplikacji zawarte na maszynie wirtualnej. Usługa kopiowania woluminów w tle (VSS) zapewnia stan spójności aplikacji podczas wykonywania migawki.
     - **Grupa replikacji**: Jeśli aplikacja wymaga spójności obejmującej wiele maszyn wirtualnych, można utworzyć grupę replikacji dla tych maszyn wirtualnych. Domyślnie wybrane maszyny wirtualne nie są częścią żadnej grupy replikacji.
 
-5. W obszarze **Dostosowywanie** wybierz opcję **Tak**, aby zachować spójność wielu maszyn wirtualnych, jeśli chcesz dodać maszyny wirtualne do nowej lub istniejącej grupy replikacji. Aby dodać maszyny wirtualne do grupy replikacji. Następnie kliknij przycisk **OK**.
+5. W obszarze **Dostosowywanie** wybierz opcję **Tak**, aby zachować spójność wielu maszyn wirtualnych, jeśli chcesz dodać maszyny wirtualne do nowej lub istniejącej grupy replikacji. Następnie kliknij przycisk **OK**.
 
     - W przypadku przejścia w tryb failover wszystkie maszyny w grupie replikacji będą korzystać ze współdzielonych punktów odzyskiwania, spójnych na poziomie awarii i aplikacji. Spójność obejmująca wiele maszyn wirtualnych może wpłynąć na wydajność obciążeń (ze względu na intensywne wykorzystanie procesora CPU). Należy ją włączać tylko wtedy, gdy na maszynach jest uruchomione to samo obciążenie i jest wymagana spójność między wieloma maszynami.
     - W grupie replikacji może istnieć maksymalnie 16 maszyn wirtualnych.

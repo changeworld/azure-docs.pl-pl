@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 5015bd59a417481303c6ef2156feec9092a95a5b
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 59ec8d4f93b18469818c9ead2e965679e41360ae
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54464599"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694656"
 ---
 # <a name="azure-cli-script-example-create-a-dns-zone-and-record"></a>Przykład skryptu interfejsu wiersza polecenia platformy Azure: Tworzenie rekordu i strefy DNS
 
@@ -76,7 +76,7 @@ Ten skrypt zawiera następujące polecenia służące do tworzenia grupy zasobó
 | [az group create](/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az network dns zone create](/cli/azure/network/dns/zone#az-network-dns-zone-create) | Tworzy strefę DNS na platformie Azure. |
 | [az network dns record-set a add-record](/cli/azure/network/dns/record-set) | Dodaje rekord *A* do strefy DNS. |
-| [az network dns record-set list](/cli/azure/network/dns/record-set#az-network-dns-record-set-a-list) | Zwraca listę wszystkich zestawów rekordów *A* w strefie DNS. |
+| [az network dns record-set list](/cli/azure/network/dns/record-set) | Zwraca listę wszystkich zestawów rekordów *A* w strefie DNS. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Usuwa grupę zasobów wraz ze wszystkimi zagnieżdżonymi zasobami. |
 
 ## <a name="next-steps"></a>Następne kroki
