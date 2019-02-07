@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 91e6c2d400fa7add33a6c8e8856a3b9f8cfef4a3
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912837"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819165"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Zapisu Apache Hadoop HDFS z systemu Storm Apache na HDInsight
 
@@ -45,7 +45,7 @@ Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji robocz
 ## <a name="how-to-use-the-hdfsbolt-with-hdinsight"></a>Jak używać HdfsBolt z HDInsight
 
 > [!IMPORTANT]  
-> Przed użyciem HdfsBolt z systemu Storm w HDInsight, należy najpierw użyć akcji skryptu można skopiować pliki jar wymagane do `extpath` dla usługi Storm. Aby uzyskać więcej informacji, zobacz [skonfigurować klaster](#configure) sekcji.
+> Przed użyciem HdfsBolt z systemu Storm w HDInsight, należy najpierw użyć akcji skryptu można skopiować pliki jar wymagane do `extpath` dla usługi Storm. Aby uzyskać więcej informacji zobacz Konfigurowanie sekcji klastra.
 
 HdfsBolt wykorzystuje schemat pliku, zapewniające zrozumienie, jak można zapisać do systemu plików HDFS. Za pomocą HDInsight wykonaj jedną z następujących systemów:
 
@@ -222,4 +222,4 @@ STORM topologie działają aż do zatrzymania lub klaster jest usuwany. Aby zatr
 Teraz, gdy wiesz jak używać platformy Apache Storm można zapisać do usługi Azure Storage i Azure Data Lake Storage odnajdywania innych [przykłady Apache Storm HDInsight](apache-storm-example-topology.md).
 
 ## <a name="see-also"></a>Zobacz także
-* [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

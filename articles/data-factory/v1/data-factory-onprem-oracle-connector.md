@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332646"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822259"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopiowanie danych do i z oprogramowania Oracle w środowisku lokalnym za pomocą usługi Azure Data Factory
 
@@ -92,7 +92,7 @@ Czy używasz narzędzi lub interfejsów API, wykonaj następujące kroki, aby ut
 3. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. W przykładzie w poprzednim kroku utworzysz zestaw danych, aby określić tabelę w bazie danych programu Oracle, która zawiera dane wejściowe. Możesz utworzyć inny zestaw danych, aby określić kontener obiektów blob oraz folder, który przechowuje dane skopiowane z bazy danych Oracle. Dla właściwości zestawu danych, które są specyficzne dla oprogramowania Oracle, zobacz [właściwości zestawu danych](#dataset-properties).
 4. Tworzenie **potoku** zawierającego działanie kopiowania, które przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. W powyższym przykładzie użyjesz **OracleSource** jako źródło i **BlobSink** jako obiekt sink dla działania kopiowania. Podobnie, jeśli są kopiowane z usługi Azure Blob storage do bazy danych Oracle, możesz użyć **BlobSource** i **elementu OracleSink** w działaniu kopiowania. Dla właściwości działania kopiowania, które są specyficzne dla bazy danych Oracle, zobacz [właściwości działania kopiowania](#copy-activity-properties). Aby uzyskać szczegółowe informacje o sposobie używania magazynu danych jako źródła lub ujścia wybierz link dla magazynu danych w poprzedniej sekcji.
 
-Korzystając z kreatora, definicje JSON dotyczące jednostek usługi Data Factory, te są tworzone automatycznie dla Ciebie: połączone usługi, zestawy danych i potoku. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON. Aby uzyskać przykłady, które mają definicje JSON dotyczące jednostek usługi Data Factory, które służy do kopiowania danych do lub z bazą danych Oracle w środowisku lokalnym, zobacz [JSON przykłady](#json-examples-for-copying-data-to-and-from-oracle-database).
+Korzystając z kreatora, definicje JSON dotyczące jednostek usługi Data Factory, te są tworzone automatycznie dla Ciebie: połączone usługi, zestawy danych i potoku. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON. Aby uzyskać przykłady, które mają definicje JSON dotyczące jednostek usługi Data Factory, które służy do kopiowania danych do lub z bazą danych Oracle w środowisku lokalnym, zobacz przykłady JSON.
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które służą do definiowania jednostek usługi Data Factory.
 
@@ -599,27 +599,27 @@ Podczas przenoszenia danych z bazy danych Oracle, następujące mapowania są u�
 | --- | --- |
 | BPLIK |Byte[] |
 | BLOB |Byte[]<br/>(obsługiwane wyłącznie w Oracle 10g i nowszych wersjach po użyciu sterownika Microsoft) |
-| CHAR |Ciąg |
-| CLOB |Ciąg |
+| CHAR |String |
+| CLOB |String |
 | DATE |DateTime |
 | FLOAT |Decimal, ciąg (jeśli dokładności > 28) |
 | INTEGER |Decimal, ciąg (jeśli dokładności > 28) |
 | INTERWAŁU ROKU DO MIESIĄCA |Int32 |
-| INTERWAŁU DNIA DO SEKUNDY |Przedział czasu |
-| DŁUGI |Ciąg |
+| INTERWAŁU DNIA DO SEKUNDY |TimeSpan |
+| DŁUGI |String |
 | DŁUGI NIEPRZETWORZONE |Byte[] |
-| NCHAR |Ciąg |
-| NCLOB |Ciąg |
+| NCHAR |String |
+| NCLOB |String |
 | NUMER |Decimal, ciąg (jeśli dokładności > 28) |
-| NVARCHAR2 |Ciąg |
-| NIEPRZETWORZONE |Byte[] |
-| ROWID |Ciąg |
+| NVARCHAR2 |String |
+| RAW |Byte[] |
+| ROWID |String |
 | ZNACZNIK CZASU: |DateTime |
 | SYGNATURA CZASOWA PRZY UŻYCIU LOKALNEJ STREFY CZASOWEJ |DateTime |
 | SYGNATURA CZASOWA ZE STREFĄ CZASOWĄ |DateTime |
 | LICZBA CAŁKOWITA BEZ ZNAKU |Liczba |
-| VARCHAR2 |Ciąg |
-| XML |Ciąg |
+| VARCHAR2 |String |
+| XML |String |
 
 > [!NOTE]
 > Typy danych **INTERWAŁU roku do miesiąca** i **INTERWAŁU dnia do sekundy** nie są obsługiwane w przypadku używania sterownik firmy Microsoft.

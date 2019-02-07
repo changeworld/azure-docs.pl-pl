@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 2/6/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: 43cceeb9b65bcee97855f96c781c5d157b32346a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 001eb1946ff0fdc073baaa6da76f4bfa63fc3652
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080927"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810631"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Dodają użytkowników we współpracy B2B usługi Azure Active Directory w witrynie Azure portal
 
@@ -45,7 +45,7 @@ Aby dodać użytkowników we współpracy B2B do katalogu, wykonaj następujące
    ![Pokazuje, gdzie jest nowy użytkownik-Gość w interfejsie użytkownika](./media/add-users-administrator/InviteGuest.png) 
 
     > [!NOTE]
-    > Niektórzy dostawcy poczty e-mail umożliwiają użytkownikom dodawanie plus symbol (+), jak i dodatkowy tekst na ich adresy e-mail, ułatwiające wykonywanie elementów, takich jak filtrowanie skrzynki odbiorczej. Jednak usługa Azure AD nie obsługuje obecnie oraz symbole w adresy e-mail. Aby uniknąć problemów dostarczania, Pomiń symbol znaku plus i znaków do następnego znaku @.
+    > Adres e-mail grupy nie są obsługiwane; Wprowadź adres e-mail osoby. Ponadto niektórzy dostawcy poczty e-mail użytkownicy mogą dodawać plus symbol (+), jak i dodatkowy tekst na ich adresy e-mail, ułatwiające wykonywanie elementów, takich jak filtrowanie skrzynki odbiorczej. Jednak usługa Azure AD nie obsługuje obecnie oraz symbole w adresy e-mail. Aby uniknąć problemów dostarczania, Pomiń symbol znaku plus i znaków do następnego znaku @.
 
 6. Wybierz pozycję **Zaproś**, aby automatycznie wysłać zaproszenie do użytkownika-gościa. 
  
@@ -82,7 +82,7 @@ Aby dodać użytkowników we współpracy B2B do aplikacji jako administrator us
 
     ![Łączna liczba użytkowników przycisk, aby dodać, otwórz przystawkę Użytkownicy i grupy](./media/add-users-administrator/AppUsersAndGroups.png)
 
-6. Wybierz **Dodaj użytkownika**.
+6. Wybierz przycisk **Dodaj użytkownika**.
 7. W obszarze **Dodaj przydziału**, wybierz opcję **użytkowników i grup**.
 8. Wykonaj jedną z następujących czynności:
    - Jeśli użytkownik-Gość już istnieje w katalogu, należy wyszukać użytkownika B2B. Wybierz użytkownika, kliknij przycisk **wybierz**, a następnie kliknij przycisk **przypisać** dodać użytkownika do aplikacji.

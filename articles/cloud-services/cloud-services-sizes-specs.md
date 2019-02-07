@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 78a073ec7ee8432ba7804daef150afcbbca23ef6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a2af7ffde336016ae89a1ab03d753ed11b901e05
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095573"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818706"
 ---
 # <a name="sizes-for-cloud-services"></a>Rozmiary usług Cloud Services
 W tym temacie opisano dostępne rozmiary i opcje dla wystąpień ról usługi w chmurze (role sieć web i ról procesów roboczych). Zapewnia również zagadnienia dotyczące wdrażania pod uwagę podczas planowania użycia tych zasobów. Rozmiar każdego ma identyfikator, który można umieścić w swojej [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Ceny dla każdego rozmiaru są dostępne na [cennik usług Cloud Services](https://azure.microsoft.com/pricing/details/cloud-services/) strony.
@@ -195,7 +195,7 @@ Seria H oferuje, obok znacznej mocy procesora CPU, różnorodne opcje dla sieci 
 ## <a name="configure-sizes-for-cloud-services"></a>Skonfigurować rozmiary usług Cloud Services
 Można określić rozmiar maszyny wirtualnej wystąpienia roli w ramach modelu usług opisanych przez [pliku definicji usługi](cloud-services-model-and-package.md#csdef). Rozmiar roli określa liczbę rdzeni procesora CPU, pojemność pamięci i rozmiar lokalnego systemu plików przydzielony do uruchomionego wystąpienia. Wybierz rozmiar roli, w oparciu o zapotrzebowanie na zasoby aplikacji.
 
-Oto przykład ustawienie rozmiaru roli to [maszyna wirtualna Standard_D2](#general-purpose-d) dla wystąpienia roli sieci Web:
+Oto przykład ustawienie rozmiaru roli to maszyna wirtualna Standard_D2 dla wystąpienia roli sieci Web:
 
 ```xml
 <WorkerRole name="Worker1" vmsize="Standard_D2">

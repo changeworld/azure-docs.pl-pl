@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022542"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813844"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Rozwiązywanie problemów z używaniem bramy zarządzania danymi
 Ten artykuł zawiera informacje na temat rozwiązywania problemów z używaniem bramy zarządzania danymi.
@@ -138,7 +138,7 @@ Być może zobaczysz następujący komunikat o błędzie.
 Ten błąd występuje, gdy brama znajduje się w środowisku, które wymaga dostępu do zasobów w Internecie lub hasło uwierzytelniania na serwerze proxy serwera proxy HTTP jest zmieniany, ale nie jest odpowiednio aktualizowana w bramie.
 
 #### <a name="resolution"></a>Rozwiązanie
-Postępuj zgodnie z instrukcjami w [zagadnienia dotyczące serwera Proxy](#proxy-server-considerations) sekcji tego artykułu, a następnie skonfiguruj ustawienia serwera proxy przy użyciu danych Menedżera konfiguracji bramy zarządzania.
+Postępuj zgodnie z instrukcjami w sekcji zagadnienia dotyczące serwera Proxy w tym artykule, a następnie skonfiguruj ustawienia serwera proxy przy użyciu danych Menedżera konfiguracji bramy zarządzania.
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>Brama jest w trybie online, z ograniczoną funkcjonalnością
 ### <a name="1-problem"></a>1. Problem
@@ -169,8 +169,8 @@ Bramy nie można połączyć z usługą w chmurze za pośrednictwem usługi Serv
 Wykonaj następujące kroki, aby pobrać bramę przywrócić do trybu online:
 
 1. Zezwalaj na adres IP reguły ruchu wychodzącego na maszynie bramy i zapory w firmie. Adresy IP można znaleźć w dzienniku zdarzeń Windows (identyfikator == 401): Próbowano uzyskać dostęp do gniazda w sposób zabroniony przez jego uprawnienia dostępu XX. XX. XX. XX:9350.
-* Skonfiguruj ustawienia serwera proxy w bramie. Zobacz [zagadnienia dotyczące serwera Proxy](#proxy-server-considerations) sekcji, aby uzyskać szczegółowe informacje.
-* Włącz porty wychodzące 5671 i 9350-9354 zaporę Windows na maszynie bramy i zapory w firmie. Zobacz [portów i zapory](#ports-and-firewall) sekcji, aby uzyskać szczegółowe informacje. Ten krok jest opcjonalny, ale firma Microsoft zaleca wziąć pod uwagę wydajności.
+* Skonfiguruj ustawienia serwera proxy w bramie. Zobacz szczegółowe informacje w sekcji zagadnienia dotyczące serwera Proxy.
+* Włącz porty wychodzące 5671 i 9350-9354 zaporę Windows na maszynie bramy i zapory w firmie. Zobacz, portów i sekcji zapory, aby uzyskać szczegółowe informacje. Ten krok jest opcjonalny, ale firma Microsoft zaleca wziąć pod uwagę wydajności.
 
 ### <a name="3-problem"></a>3. Problem
 Zostanie wyświetlony następujący błąd.

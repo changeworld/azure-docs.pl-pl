@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: yushwang
-ms.openlocfilehash: f51a97e1493803998cfbdd81523e4e479b50346d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e575fac61a1c5d9351391d39d200b87e34ff26cd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697110"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817244"
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>Przykładowa konfiguracja: urządzenie ASA Cisco (IKEv2/bez protokołu BGP)
 Ten artykuł zawiera przykładowe konfiguracje urządzeń łączących Cisco adaptacyjne zabezpieczeń urządzenia (ASA) do bram sieci VPN platformy Azure. Przykład dotyczy urządzenia Cisco ASA, które działają IKEv2 bez protokołu BGP (Border Gateway). 
@@ -44,7 +44,7 @@ Bramy sieci VPN platformy Azure Użyj standardowych mechanizmów protokołu IPse
 > Opcjonalnie można określić dokładne kombinacji algorytmy kryptograficzne i siły klucza dla określonego połączenia, zgodnie z opisem w [informacje o wymaganiach kryptograficznych](vpn-gateway-about-compliance-crypto.md). Jeśli określisz dokładnie kombinacji algorytmów i sił klucza, należy użyć odpowiedniej specyfikacje na urządzeniach sieci VPN.
 
 ## <a name="single-vpn-tunnel"></a>Jednego tunelu sieci VPN
-Ta konfiguracja składa się z jednego tunelu sieci VPN S2S między bramą sieci VPN platformy Azure i lokalnym urządzeniem sieci VPN. Opcjonalnie można skonfigurować [protokołu BGP przez tunel VPN](#bgp).
+Ta konfiguracja składa się z jednego tunelu sieci VPN S2S między bramą sieci VPN platformy Azure i lokalnym urządzeniem sieci VPN. Opcjonalnie można skonfigurować protokołu BGP przez tunel sieci VPN.
 
 ![Jednego tunelu sieci VPN S2S](./media/vpn-gateway-3rdparty-device-config-cisco-asa/singletunnel.png)
 

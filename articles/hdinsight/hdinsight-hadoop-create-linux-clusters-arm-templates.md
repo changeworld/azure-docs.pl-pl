@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1b145b1162dcba5653c962f0af1969c1aa017f57
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054643"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819811"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów usługi Apache Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -38,11 +38,12 @@ W szablonie należy zdefiniować zasoby, które są wymagane przez aplikację. N
 
 Można znaleźć przykłady szablonów HDInsight w [szablony szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=hdinsight). Użyj dla wielu platform [programu Visual Studio Code](https://code.visualstudio.com/#alt-downloads) z [rozszerzenia usługi Resource Manager](https://marketplace.visualstudio.com/items?itemName=msazurermtools.azurerm-vscode-tools) lub edytorze tekstów, aby zapisać szablon do pliku na stację roboczą. 
 
-Aby uzyskać więcej informacji na temat szablonów usługi Resource Manager zobacz następujące artykuły:
+Aby uzyskać więcej informacji na temat szablonów usługi Resource Manager zobacz następujące artykuły i przykłady:
 
 * [Tworzenie szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 * [Wdrażanie aplikacji przy użyciu szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-template-deploy.md)
-* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/clusters) odwołanie do szablonu
+* [Microsoft.HDInsight/clusters](/azure/templates/microsoft.hdinsight/allversions) odwołanie do szablonu
+* [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Hdinsight&pageNumber=1&sort=Popular)
 
 ## <a name="generate-templates"></a>Generowanie szablonów
 
@@ -51,7 +52,6 @@ Usługi Resource Manager umożliwia wyeksportowanie szablonu usługi Resource Ma
 - Azure Portal: Zobacz [Eksportowanie szablonu usługi Azure Resource Manager z istniejących zasobów](../azure-resource-manager/resource-manager-export-template.md).
 - Azure PowerShell: Zobacz [szablony eksportu usługi Azure Resource Manager przy użyciu programu PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md).
 - Klasyczny interfejs wiersza polecenia Azure: Zobacz [szablonów eksportu usługi Azure Resource Manager za pomocą klasycznego wiersza polecenia platformy Azure](../azure-resource-manager/resource-manager-export-template-cli.md).
-
 
 ## <a name="deploy-using-the-portal"></a>Wdrażanie przy użyciu portalu
 

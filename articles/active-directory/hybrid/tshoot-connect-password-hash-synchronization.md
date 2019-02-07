@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c87b6791ea2d90ed302d796f17727a0338104beb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5339b0c77a69a915e58118888f8b82d095a43e38
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174997"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817792"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Rozwiązywanie problemów z synchronizacją skrótów haseł z usługą Azure AD Connect sync
 Ten temat zawiera procedurę rozwiązywania problemów z synchronizacją skrótów haseł. Nie można zsynchronizować hasła, zgodnie z oczekiwaniami, może być dla podzbioru użytkowników lub dla wszystkich użytkowników.
@@ -237,7 +237,7 @@ Wykonaj następujące kroki, aby ustalić, dlaczego Brak synchronizowanych hase�
 
 5. Jeśli widzisz Brak pulsu lub nic pracy, uruchom [wyzwolić pełną synchronizację haseł wszystkich](#trigger-a-full-sync-of-all-passwords). Uruchom skrypt tylko raz.
 
-6. Zobacz [Rozwiązywanie problemów z jednego obiektu, który nie jest synchronizowany haseł](#one-object-is-not-synchronizing-passwords) sekcji.
+6. Zobacz Rozwiązywanie problemów z jednego obiektu, który nie jest synchronizowany z sekcji hasła.
 
 ### <a name="connectivity-problems"></a>Problemy z łącznością
 
@@ -303,7 +303,7 @@ Umożliwia łatwe rozwiązywanie problemów z synchronizacją skrótów haseł, 
 
     ![Szczegóły dziennika obiektu](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Jeśli w dzienniku obiektu jest puste, program Azure AD Connect została nie można odczytać skrótów haseł z usługi Active Directory. Kontynuuj rozwiązywanie problemów z [błędy związane z łącznością](#connectivity-errors). Jeśli jakakolwiek inna wartość niż **Powodzenie**, zapoznaj się z tabelą w [Dziennik synchronizacji haseł](#password-sync-log).
+    Jeśli w dzienniku obiektu jest puste, program Azure AD Connect została nie można odczytać skrótów haseł z usługi Active Directory. Kontynuuj rozwiązywanie problemów z błędami łączności. Jeśli jakakolwiek inna wartość niż **Powodzenie**, zapoznaj się z tabelą w [Dziennik synchronizacji haseł](#password-sync-log).
 
     h. Wybierz **pochodzenie** kartę i upewnić się, że tej reguły synchronizacji co najmniej jeden w **PasswordSync** kolumna jest **True**. W konfiguracji domyślnej, nazwa reguły synchronizacji to **w z usługi AD - AccountEnabled użytkownika**.  
 
@@ -335,7 +335,7 @@ W kolumnie Stan może mieć następujące wartości:
 | TargetNotExportedToDirectory |Obiekt w obszarze łącznika usługi Azure AD nie została wyeksportowana. |
 | MigratedCheckDetailsForMoreInfo |Wpis dziennika został utworzony przed kompilacją 1.0.9125.0 i jest wyświetlany w stanie starszej wersji. |
 | Błąd |Usługa zwróciła nieznany błąd. |
-| Nieznane |Wystąpił błąd podczas próby przetworzenia partii skrótów haseł.  |
+| Nieznana |Wystąpił błąd podczas próby przetworzenia partii skrótów haseł.  |
 | MissingAttribute |Określone atrybuty (na przykład protokołu Kerberos skrót) wymagane przez usługi domenowe Azure AD nie są dostępne. |
 | RetryRequestedByTarget |Określone atrybuty (na przykład protokołu Kerberos skrót) wymagane przez usługi domenowe Azure AD nie były wcześniej dostępne. Zostanie podjęta próba ponowną synchronizację skrótów haseł przez użytkownika. |
 

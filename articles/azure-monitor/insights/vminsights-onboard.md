@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: be068904d7aa935d722c59b08c36a1cf4904e933
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 37e2da00ecbecdddcc8757e64c57b03774092e14
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664137"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814993"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Wdrażanie usługi Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych. Monitoruje kondycję systemu operacyjnego usługi Azure virtual machines (VMs) i zestawy skalowania maszyn wirtualnych i maszyn wirtualnych w danym środowisku. Monitorowanie obejmuje odnajdywania oraz mapowania zależności aplikacji, które mogą być hostowane na nich. 
@@ -62,7 +62,7 @@ Aby włączyć rozwiązanie dla scenariusza na dużą skalę, należy najpierw s
 * Zainstaluj ServiceMap i InfrastructureInsights rozwiązań. Tylko przy użyciu szablonu usługi Azure Resource Manager, który znajduje się w tym artykule można wykonać tej instalacji.
 * Konfiguruj obszar roboczy usługi Log Analytics, można zebrać liczników wydajności.
 
-Aby skonfigurować obszar roboczy dla scenariusza na dużą skalę, zobacz [techniczną skonfigurował obszar roboczy usługi Log Analytics, do wdrożenia na dużą skalę](#setup-log-analytics-workspace).
+Aby skonfigurować obszar roboczy dla scenariusza na dużą skalę, zobacz zestaw się obszaru roboczego analizy dzienników dla wdrożenia usługi na dużą skalę.
 
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 

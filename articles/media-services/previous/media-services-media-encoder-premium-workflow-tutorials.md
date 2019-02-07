@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 15393f8e10fcda99820d0279d46edf88c7781ff8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f0290a5f04a396c1d66e2dd1873eb313dcb3f66d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811975"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818400"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Samouczki zaawansowane Media Encoder Premium Workflow
 ## <a name="overview"></a>Przegląd
@@ -44,12 +44,12 @@ Omówiono następujące tematy:
   * [Dodawanie oddzielne ścieżkę Audio](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_audio_tracks)
   * [Dodawanie pliku SMIL "ISM"](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to_MP4_with_dyn_packaging_ism_file)
 * [Kodowanie pliku MXF na metodę MP4 — rozszerzone planu](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4)
-  * [Omówienie przepływu pracy w celu zwiększenia](#workflow-overview-to-enhance)
+  * Omówienie przepływu pracy w celu zwiększenia
   * [Konwencje nazewnictwa plików](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_file_naming)
   * [Właściwości publikowania składników na głównego przepływu pracy](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_publishing)
   * [Został wygenerowany plik wyjściowy, nazwy polegać na wartości właściwości opublikowane](media-services-media-encoder-premium-workflow-tutorials.md#MXF_to__multibitrate_MP4_output_files)
 * [Dodawanie miniatur do pliku wyjściowego MP4 metodę](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)
-  * [Omówienie przepływu pracy, aby dodać miniatur do](#workflow-overview-to-add-thumbnails-to)
+  * Omówienie przepływu pracy, aby dodać miniatur do
   * [Dodawanie kodowania JPG](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4__with_jpg)
   * [Obsługa konwersji przestrzeń kolorów](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_color_space)
   * [Pisanie, miniatury](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4_writing_thumbnails)

@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
-ms.openlocfilehash: b86a9a0cff397148b0632b3108f58a1977b518e9
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.lastreviewed: 10/15/2018
+ms.openlocfilehash: 69a0bde58a365ff124bc41b6039c606cb38f71fe
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332510"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768549"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Usługa Azure Stack VM update i zarządzanie
 Następujące funkcje rozwiązania usługi Azure Automation służy do zarządzania Windows i maszyn wirtualnych systemu Linux, które są wdrażane przy użyciu usługi Azure Stack:

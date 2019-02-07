@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: d5ff6b05df74cd73fb374bbd7cf27b8fc7d69493
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: ef752d2f9d57ee8674d91fd14b56b804ccf50d22
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697989"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814205"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Wybieranie typu aplikacji, podczas dodawania aplikacji w usłudze Azure Active Directory
 Zapoznaj się z czterech typów aplikacji, które można dodać do usługi Azure Active Directory (Azure AD). Podczas dodawania aplikacji w usłudze Azure Active Directory, zostanie wyświetlony monit wybrać jeden typ cztery aplikacji. 
@@ -95,7 +95,7 @@ Obsługiwane są następujące **logowanie jednokrotne** tryby aplikacji usługi
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Tryby pojedynczego logowania jednokrotnego dla aplikacji niestandardowej
 
-Aplikacje mają niestandardowe opracowanych przez [aplikacji niestandardowej](#_Custom-Developed_Applications) środowisko obsługują także dodatkowe pojedynczego logowania jednokrotnego tryby nie wymienionych powyżej, obejmujące:
+Aplikacji niestandardowych opracowanych za pomocą aplikacji niestandardowej również środowisko pomocy technicznej dodatkowe pojedynczego logowania jednokrotnego tryby nie wymienionych powyżej, obejmujące:
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) logowania opartego na
 

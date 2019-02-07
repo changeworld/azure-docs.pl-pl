@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
-ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: eebc19f5bd14e835b8174695b2d0d87fe8ddc4bc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166581"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822055"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Jak używać zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure w celu pobrania tokenu dostępu 
 
@@ -55,7 +55,7 @@ Aplikacja kliencka może żądać zarządzanych tożsamości dla zasobów platfo
 | [Uzyskaj token za pomocą języka Go](#get-a-token-using-go) | Przykład użycia zarządzanych tożsamości dla punktu końcowego REST zasobów platformy Azure z klienta z rzeczywistym użyciem |
 | [Uzyskaj token za pomocą programu Azure PowerShell](#get-a-token-using-azure-powershell) | Przykład użycia zarządzanych tożsamości dla punktu końcowego REST zasobów platformy Azure w kliencie programu PowerShell |
 | [Pobierz token, używając programu CURL](#get-a-token-using-curl) | Przykład użycia zarządzanych tożsamości dla punktu końcowego REST zasobów platformy Azure w kliencie programu Bash/CURL |
-| [Obsługa buforowania tokenu](#handling-token-caching) | Wskazówki dotyczące obsługi tokenów dostępu wygasły |
+| Obsługa buforowania tokenu | Wskazówki dotyczące obsługi tokenów dostępu wygasły |
 | [Obsługa błędów](#error-handling) | Wskazówki dotyczące obsługi błędów HTTP zwrócony z zarządzanych tożsamości dla punktu końcowego tokenu zasobów platformy Azure |
 | [Identyfikatory zasobów dla usług platformy Azure](#resource-ids-for-azure-services) | Skąd uzyskać identyfikatory zasobów dla obsługiwanych usług platformy Azure |
 
@@ -373,14 +373,14 @@ W tej sekcji omówiono możliwy błąd odpowiedzi. Element "200 OK" stan to pomy
 | Kod stanu | Błąd | Opis błędu | Rozwiązanie |
 | ----------- | ----- | ----------------- | -------- |
 | 400 Niewłaściwe żądanie | invalid_resource | AADSTS50001: Aplikacja o nazwie *\<URI\>* nie został znaleziony w dzierżawie o nazwie  *\<TENANT-ID\>*. Może to nastąpić, jeśli nie została zainstalowana przez administratora dzierżawy lub wyraża zgodę na żaden użytkownik w dzierżawie usługi aplikacji. Żądanie uwierzytelniania mogło zostać wysłane do nieprawidłowej dzierżawy. \ | (Tylko system Linux) |
-| 400 Niewłaściwe żądanie | bad_request_102 | Nie jest określony nagłówek wymagane metadane | Albo `Metadata` pola nagłówka żądania brakuje żądania lub jest niepoprawnie sformatowana. Wartość musi być określona jako `true`, małymi literami. Zobacz sekcję "przykładowe żądanie" w [poprzedniej sekcji REST](#rest) przykład.|
-| 401 Brak autoryzacji | unknown_source | Nieznane źródło  *\<identyfikatora URI\>* | Sprawdź, żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany. `scheme:host/resource-path` Część musi być określona jako `http://localhost:50342/oauth2/token`. Zobacz sekcję "przykładowe żądanie" w [poprzedniej sekcji REST](#rest) przykład.|
+| 400 Niewłaściwe żądanie | bad_request_102 | Nie jest określony nagłówek wymagane metadane | Albo `Metadata` pola nagłówka żądania brakuje żądania lub jest niepoprawnie sformatowana. Wartość musi być określona jako `true`, małymi literami. Zobacz "przykładowe żądanie" w poprzedniej sekcji REST, na przykład.|
+| 401 Brak autoryzacji | unknown_source | Nieznane źródło  *\<identyfikatora URI\>* | Sprawdź, żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany. `scheme:host/resource-path` Część musi być określona jako `http://localhost:50342/oauth2/token`. Zobacz "przykładowe żądanie" w poprzedniej sekcji REST, na przykład.|
 |           | invalid_request | Żądania brakuje wymaganego parametru, obejmuje Nieprawidłowa wartość parametru, zawiera więcej niż jeden raz parametr lub w przeciwnym razie jest nieprawidłowo sformułowany. |  |
 |           | unauthorized_client | Klient nie ma uprawnień do żądania tokenu dostępu przy użyciu tej metody. | Przyczyną żądania, który został użyty przez Ciebie lokalnego sprzężenie zwrotne do wywoływania rozszerzenia, lub na maszynie Wirtualnej, która nie ma zarządzanych tożsamości dla zasobów platformy Azure są poprawnie skonfigurowane. Zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy przy użyciu konfiguracji maszyny Wirtualnej. |
 |           | access_denied | Właściciel zasobu lub autoryzacji serwer odrzucił żądanie. |  |
 |           | unsupported_response_type | Serwer autoryzacji nie obsługuje uzyskiwania tokenu dostępu przy użyciu tej metody. |  |
 |           | invalid_scope | Żądany zakres jest nieprawidłowy, nieznany lub źle skonstruowany. |  |
-| 500 Wewnętrzny błąd serwera | nieznana | Nie można pobrać token z usługi Active directory. Szczegółowe informacje można znaleźć w dziennikach w  *\<ścieżki pliku\>* | Sprawdź, czy zarządzanych tożsamości dla zasobów platformy Azure został włączony na maszynie Wirtualnej. Zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy przy użyciu konfiguracji maszyny Wirtualnej.<br><br>Sprawdź także, że Twoje żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany, szczególnie zasób, do którego identyfikatora URI określonego w ciągu zapytania. Zobacz sekcję "przykładowe żądanie" w [poprzedniej sekcji REST](#rest) przykład lub [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](services-support-msi.md) listę usług i ich odpowiednich identyfikatorów zasobów.
+| 500 Wewnętrzny błąd serwera | nieznane | Nie można pobrać token z usługi Active directory. Szczegółowe informacje można znaleźć w dziennikach w  *\<ścieżki pliku\>* | Sprawdź, czy zarządzanych tożsamości dla zasobów platformy Azure został włączony na maszynie Wirtualnej. Zobacz [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal](qs-configure-portal-windows-vm.md) Jeśli potrzebujesz pomocy przy użyciu konfiguracji maszyny Wirtualnej.<br><br>Sprawdź także, że Twoje żądanie HTTP GET identyfikatora URI jest prawidłowo sformatowany, szczególnie zasób, do którego identyfikatora URI określonego w ciągu zapytania. Zobacz "przykładowe żądanie" w poprzedniej sekcji REST, na przykład lub [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](services-support-msi.md) listę usług i ich odpowiednich identyfikatorów zasobów.
 
 ## <a name="retry-guidance"></a>Wskazówki dotyczące ponawiania prób 
 

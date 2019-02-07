@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c9e3a26f1ca8a577b883baacaf672cf73c8c5656
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6198d16b25330fb02cf5642addba0093ec437cab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488683"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811498"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Synchronizacja programu Azure AD Connect: Konfigurowanie filtrowania
 Za pomocą filtrowania, możesz kontrolować obiekty, które są wyświetlane w usłudze Azure Active Directory (Azure AD) z katalogu lokalnego. Domyślna konfiguracja pobiera wszystkie obiekty we wszystkich domenach w lesie skonfigurowanym. Ogólnie rzecz biorąc jest to zalecana konfiguracja. Użytkowników przy użyciu obciążeń usługi Office 365, takich jak Exchange Online i Skype dla firm, korzystają z pełną globalnej listy adresowej, dzięki czemu mogą wysyłać wiadomości e-mail i wywołać wszystkich użytkowników. W przypadku domyślnej konfiguracji zostałyby taki sam sposób, że współpracujemy z implementacją lokalnego programu Exchange lub Lync.
@@ -93,8 +93,8 @@ Tylko powinni wykonać następujące czynności, jeśli nie można uruchomić Kr
 
 Konfiguracja filtrowania opartego na domenie składa się z następujących czynności:
 
-1. [Wybierz domeny](#select-domains-to-be-synchronized) przewidzianą do uwzględnienia w synchronizacji.
-2. Dla każdego dodawane i usuwane domeny dostosować [profile uruchamiania](#update-run-profiles).
+1. Wybierz domeny, które mają zostać uwzględnione w synchronizacji.
+2. Dla każdej domeny dodanych i usuniętych dopasować profile uruchamiania.
 3. [Zastosuj i Zweryfikuj zmiany](#apply-and-verify-changes).
 
 ### <a name="select-the-domains-to-be-synchronized"></a>Wybierz domeny, które mają być synchronizowane
@@ -110,7 +110,7 @@ Aby ustawić filtr domeny, wykonaj następujące czynności:
    Jeśli została zmieniona z infrastruktury lokalnej usługi Active Directory i dodane lub usunięte domen z lasu, kliknij przycisk **Odśwież** przycisk, aby uzyskać zaktualizowaną listę. Podczas odświeżania, pojawi się prośba o poświadczenia. Podaj wszystkie poświadczenia z dostępem do odczytu do usługi Active Directory systemu Windows Server. Nie musi być użytkownikiem, które są wstępnie wypełnione w oknie dialogowym.  
    ![Wymagane odświeżenie](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Gdy skończysz, Zamknij **właściwości** okno dialogowe, klikając **OK**. Usunięcie domen z lasu wyskakującego komunikat informuje, że usunięto domenę i konfiguracji zostaną wyczyszczone.
-7. Kontynuuj dopasować [profile uruchamiania](#update-run-profiles).
+7. W dalszym ciągu dopasować profile uruchamiania.
 
 ### <a name="update-the-run-profiles"></a>Aktualizowanie profilów przebiegu
 Jeśli zaktualizowano filtr domeny, należy zaktualizować profile uruchamiania.

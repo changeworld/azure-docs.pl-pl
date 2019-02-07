@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: 28b73a70ef9ffd4e73117d599448434823747eca
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 21a3efb67f837a05f3c070d0805aa033f86efbd5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567404"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822446"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci
 
@@ -92,7 +92,7 @@ Aby skojarzyć sieciową grupę zabezpieczeń do lub usuwanie skojarzenia siecio
 
 ### <a name="delete-a-network-security-group"></a>Usuń sieciową grupę zabezpieczeń
 
-Jeśli sieciowa grupa zabezpieczeń jest skojarzona podsieci lub interfejsy sieciowe, nie można usunąć. [Usuń skojarzenie](#associate-or-dissociate-a-network-security-group-to-or-from-a-resource) sieciową grupę zabezpieczeń z wszystkie podsieci i interfejsów sieciowych przed próbą usunięcia go.
+Jeśli sieciowa grupa zabezpieczeń jest skojarzona podsieci lub interfejsy sieciowe, nie można usunąć. Skojarzenie sieciowej grupy zabezpieczeń ze wszystkich podsieci i interfejsów sieciowych, przed próbą usunięcia go.
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieciowe grupy zabezpieczeń* w polu wyszukiwania. Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz sieciową grupę zabezpieczeń, które chcesz usunąć z listy.

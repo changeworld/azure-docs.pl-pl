@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 034c82c2f52f0a4dbc19b49308d1ba4308716d45
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5b01b55c8b2367861459069cc255840e883b9fc5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186807"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817398"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Podręcznik informacyjny projektanta widoku kafelków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych w obszarze roboczym usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla kafelków, które są dostępne w widoki niestandardowe.
@@ -36,7 +36,7 @@ W poniższej tabeli opisano dostępnych kafelków Projektant widoków:
 | [Liczba](#number-tile) |Liczba rekordów w wyniku zapytania. |
 | [Dwóch liczb](#two-numbers-tile) |Liczba rekordów z dwóch różnych zapytań. |
 | [Wykres pierścieniowy](#donut-tile) | Wykres, który jest oparty na zapytaniu, z wartością podsumowania w Centrum. |
-| [Wykres liniowy i objaśnienie](#line-chart-amp-callout-tile) | Wykres liniowy, który jest oparty na zapytania i objaśnienie z wartością podsumowania. |
+| Wykres liniowy i objaśnienie | Wykres liniowy, który jest oparty na zapytania i objaśnienie z wartością podsumowania. |
 | [Wykres liniowy](#line-chart-tile) |Wykres liniowy, który jest oparty na zapytaniu. |
 | [Dwie osie czasu](#two-timelines-tile) | Wykres kolumnowy z dwóch serii każdy na podstawie osobne zapytania. |
 

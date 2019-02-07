@@ -13,12 +13,12 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 9c7560dc6c3c5237a056a9468d3ab4f440e8e6dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bc726f63ea5c8473601623024e18c1402cbebb51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190789"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820321"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Znajdowanie raportów aktywności w witrynie Azure portal
 
@@ -49,8 +49,6 @@ Raport dotyczący dzienników inspekcji konsoliduje następujące raporty:
 
 Umożliwia filtrowanie Zaawansowane w raporcie inspekcji dostępu do określonej kategorii danych inspekcji, określając ją w **kategorii działań** filtru. Na przykład, aby wyświetlić wszystkie działania związane z samoobsługowego resetowania hasła, wybierz **Samoobsługowe zarządzanie hasłami** kategorii. 
 
-    ![Category options on the Filter Audit Logs page](./media/howto-find-activity-reports/06.png "Category options on the Filter Audit Logs page")
-
 Kategorie działań:
 
 - Katalog podstawowy
@@ -62,8 +60,6 @@ Kategorie działań:
 ## <a name="sign-ins-report"></a>Raport dotyczący logowań 
 
 **Logowania** widok zawiera wszystkie logowania użytkownika, jak również **użycia aplikacji** raportu. Również wyświetlane informacje o użyciu aplikacji w **Zarządzaj** części **aplikacje dla przedsiębiorstw** Przegląd.
-
-    ![Enterprise applications](./media/howto-find-activity-reports/484.png "Enterprise applications")
 
 Dostęp do raportów logowania:
 

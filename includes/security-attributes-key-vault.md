@@ -4,12 +4,12 @@ ms.service: key-vault
 ms.topic: include
 ms.date: 01/31/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ac0072b10489deb1b18ea737301ab698dce9f89
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: aba09012bf2e9d2741f598280add8b599a6f6d1a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513505"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55807196"
 ---
 ## <a name="preventative"></a>Zapobiegawczych
 
@@ -48,7 +48,7 @@ ms.locfileid: "55513505"
 
 | Atrybut zabezpieczeń | Tak/Nie | Uwagi|
 |---|---|--|
-| Zarządzania kontrolą/Plan rejestrowania i inspekcji| Yes | Za pomocą usługi Log Analytics. |
+| Rejestrowanie i inspekcja na płaszczyźnie kontroli i zarządzania nimi.| Yes | Za pomocą usługi Log Analytics. |
 | Rejestrowanie i inspekcja na płaszczyźnie danych| Yes | Za pomocą usługi Log Analytics. |
 
 ## <a name="access-controls"></a>Kontrole dostępu

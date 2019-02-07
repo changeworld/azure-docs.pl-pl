@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: 1ce937f5c9a378494e66867b6f919ee10eef2bf8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 652591fc4539e6f19c0606c1502609a823327f2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259482"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811022"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Adnotacje na wykresy metryk w usłudze Application Insights
 
-Adnotacje na [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) wykresy pokazują, w której została wdrożona nowa kompilacja lub innych istotnego zdarzenia. Ułatwiają one można łatwo sprawdzić, czy zmiany miały wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [usługom DevOps platformy Azure, system kompilacji](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Można również utworzyć adnotacje do dowolnego zdarzenia, które chcesz przez [ich tworzenia za pomocą programu PowerShell](#create-annotations-from-powershell).
+Adnotacje na [Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) wykresy pokazują, w której została wdrożona nowa kompilacja lub innych istotnego zdarzenia. Ułatwiają one można łatwo sprawdzić, czy zmiany miały wpływu na wydajność aplikacji. Mogą być automatycznie tworzone przez [usługom DevOps platformy Azure, system kompilacji](https://docs.microsoft.com/azure/devops/pipelines/tasks/). Można również utworzyć adnotacje mógł oflagować dowolne zdarzenie, które, tworząc je za pomocą programu PowerShell.
 
 > [!NOTE]
 > W tym artykule odzwierciedla przestarzałego **metryki klasycznego środowiska**. Adnotacje tylko są obecnie dostępne w środowisku klasycznym i  **[skoroszyty](../../azure-monitor/app/usage-workbooks.md)**. Aby dowiedzieć się więcej na temat bieżącego środowiska metryk, należy skontaktować się [w tym artykule](../../azure-monitor/platform/metrics-charts.md).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 8a54ab9e45838a81a2ea4e2e425114e19a65ba76
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f640ea2e8af8c8ae2bc8a6a1224adca17e897b81
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563851"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811328"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -171,7 +171,7 @@ Niektóre typowe błędy przy próbie SSH przy użyciu poświadczeń usługi Azu
 
 ### <a name="access-denied-rbac-role-not-assigned"></a>Odmowa dostępu: Nie jest przypisana rola RBAC
 
-Jeśli zobaczysz następujący błąd w wierszu polecenia usługi SSH, sprawdź, czy masz [skonfigurowane zasady RBAC](#configure-rbac-policy-for-the-virtual-machine) dla maszyny Wirtualnej, która udziela użytkownikowi albo *Logowanie administratora maszyny wirtualnej* lub *wirtualnych Logowanie użytkownika maszyny* roli:
+Jeśli zobaczysz następujący błąd w wierszu polecenia usługi SSH, sprawdź, czy skonfigurowano zasady RBAC dla maszyny Wirtualnej, która udziela użytkownikowi albo *Logowanie administratora maszyny wirtualnej* lub *logowanie użytkownika maszyny wirtualnej*roli:
 
 ```bash
 login as: azureuser@contoso.onmicrosoft.com

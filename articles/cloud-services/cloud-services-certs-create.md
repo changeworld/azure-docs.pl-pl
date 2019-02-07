@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 9cf37e611dce5705a4c866f25afa59e5c1602ec4
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
+ms.openlocfilehash: b2e87b2855ac1d76fe2ad544c17c33bfa14f635a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51282207"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812382"
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Omówienie certyfikatów usług Azure Cloud Services
-Certyfikaty są używane na platformie Azure dla usług w chmurze ([usługi certyfikatów](#what-are-service-certificates)) i uwierzytelniania za pomocą interfejsu API zarządzania ([certyfikaty zarządzania](#what-are-management-certificates)). Ten temat zawiera ogólne omówienie oba typy certyfikatów, jak do [tworzenie](#create) i [wdrażanie](#deploy) je na platformie Azure.
+Certyfikaty są używane na platformie Azure dla usług w chmurze ([usługi certyfikatów](#what-are-service-certificates)) i uwierzytelniania za pomocą interfejsu API zarządzania ([certyfikaty zarządzania](#what-are-management-certificates)). Ten temat zawiera ogólne omówienie oba typy certyfikatów, jak do [tworzenie](#create) i wdrażać je na platformie Azure.
 
 Certyfikaty używane na platformie Azure są x.509 v3 certyfikaty i może być podpisany przez inny zaufanego certyfikatu, lub może być podpisem. Certyfikat z podpisem własnym jest podpisany przez własny twórcy, w związku z tym nie jest zaufany przez domyślny. W większości przeglądarek, można zignorować ten problem. Należy używać tylko certyfikatów z podpisem własnym podczas tworzenia i testowania usługi w chmurze. 
 
@@ -64,7 +64,7 @@ Można użyć dowolnego narzędzia, które są dostępne utworzyć certyfikat z 
     > Nie można uzyskać certyfikatu SSL dla cloudapp.net (ani dotyczących platformy Azure) domeny. Nazwa podmiotu certyfikatu musi odpowiadać niestandardowej nazwy domeny umożliwia dostęp do Twoich aplikacji. Na przykład **"contoso.NET"**, a nie **contoso.cloudapp.net**.
 
 * Co najmniej szyfrowanie 2048-bitowe.
-* **Usługi certyfikatów tylko**: po stronie klienta, certyfikat musi znajdować się w *osobistych* magazynu certyfikatów.
+* **Usługi certyfikatów tylko**: Po stronie klienta, certyfikat musi znajdować się w *osobistych* magazynu certyfikatów.
 
 Istnieją dwa sposoby łatwo można utworzyć certyfikatu na Windows, za pomocą `makecert.exe` narzędzia lub usługi IIS.
 
@@ -88,7 +88,7 @@ Jeśli chcesz użyć tej funkcji [certyfikatu za pomocą portalu zarządzania](.
 Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ```
 
-### <a name="internet-information-services-iis"></a>Internetowe usługi informacyjne (IIS)
+### <a name="internet-information-services-iis"></a>Internet Information Services (IIS)
 Istnieje wiele stron w Internecie, które opisano, jak to zrobić za pomocą programu IIS. [W tym miejscu](https://www.sslshopper.com/article-how-to-create-a-self-signed-certificate-in-iis-7.html) to fantastyczne uczucie udało mi się znaleźć traktować wyjaśnia on również. 
 
 ### <a name="linux"></a>Linux

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: d05adabc9bbabdb9f6d1af9831dbb33afe63cf87
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 8b494e3f289d7b3a850a77f7f388cee542c088ed
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54424646"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821868"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnozowanie problemu z filtrowaniem ruchu maszyny wirtualnej sieci
 
@@ -181,7 +181,7 @@ Po utworzeniu reguły, port 80 jest dozwolony dla ruchu przychodzącego z Intern
 
 Gdy ruch przychodzący przetwarzanych przez platformę Azure, są przetwarzane reguły w sieciowej grupie zabezpieczeń skojarzoną z podsiecią (jeśli istnieje skojarzonej sieciowej grupy zabezpieczeń), a następnie są przetwarzane reguły w sieciowej grupie zabezpieczeń skojarzonych z interfejsem sieciowym. W przypadku sieciowa grupa zabezpieczeń skojarzona interfejsie sieciowym i podsiecią, numer portu musi być otwarty w obu grupach zabezpieczeń sieci dla ruchu sieciowego do maszyny Wirtualnej. Działają nawet pod dużym problemów administracji i komunikacji, firma Microsoft zaleca, aby skojarzyć sieciową grupę zabezpieczeń do podsieci, a nie pojedynczymi interfejsami sieciowymi. Maszyny wirtualne w podsieci muszą reguł zabezpieczeń, można spowodować, że sieć interfejsów członkami grupy zabezpieczeń aplikacji (ASG) i określić ASG jako źródło i miejsce docelowe regułę zabezpieczeń. Dowiedz się więcej o [grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups).
 
-Jeśli nadal występują problemy z komunikacją, zobacz [zagadnienia](#considerations) i [dodatkowe diagnostyki](#additional-dignosis).
+Jeśli nadal występują problemy z komunikacją, zobacz [zagadnienia](#considerations) i dodatkowe diagnostyki.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 

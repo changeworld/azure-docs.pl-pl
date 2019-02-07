@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: a548f11b1f423fb738108d9314f2fc887ef02c52
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 66953eaa4c42b419a5146ccc396fddda15a31c35
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176849"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811363"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą LearnUpon
 
@@ -208,7 +208,7 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w LearnUpon. LearnUpon obsługę just-in-time, który jest domyślnie włączona.
 
-W tej sekcji nie musisz niczego robić. Nowy użytkownik zostanie utworzony podczas próby dostępu LearnUpon, jeśli go jeszcze nie istnieje. [Konfigurowanie usługi Azure AD jednokrotnej](#configuring-azure-ad-single-single-sign-on).
+W tej sekcji nie musisz niczego robić. Nowy użytkownik zostanie utworzony podczas próby dostępu LearnUpon, jeśli go jeszcze nie istnieje. Konfigurowanie usługi Azure AD logowania jednokrotnego.
 
 >[!NOTE]
 >Jeśli musisz utworzyć ręcznie przez użytkownika, musisz skontaktować się z [zespołem pomocy technicznej LearnUpon](https://www.learnupon.com/features/support/). 

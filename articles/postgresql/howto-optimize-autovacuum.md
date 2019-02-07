@@ -1,92 +1,95 @@
 ---
-title: Optymalizowanie autovacuum w usłudze Azure Database dla serwera PostgreSQL
-description: W tym artykule opisano, jak można optymalizować autovacuum w usłudze Azure Database for postgresql w warstwie serwera.
+title: Optymalizowanie autovacuum na usługi Azure Database for postgresql w warstwie serwera
+description: W tym artykule opisano, jak można optymalizować autovacuum na usługi Azure Database for postgresql w warstwie serwera.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 21ac48ff473dcf494f96f87210bdfe09e4d82646
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: e8e9991f20481deee85a6d582582335eb98e3c24
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103398"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815221"
 ---
-# <a name="optimizing-autovacuum-on-azure-database-for-postgresql-server"></a>Optymalizacja autovacuum w usłudze Azure Database dla serwera PostgreSQL 
-W tym artykule opisano, jak skutecznie zoptymalizować autovacuum w usłudze Azure Database for PostgreSQL.
+# <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Optymalizowanie autovacuum na usługi Azure Database for postgresql w warstwie serwera 
+W tym artykule opisano, jak skutecznie zoptymalizować autovacuum na usługi Azure Database for postgresql w warstwie serwera.
 
 ## <a name="overview-of-autovacuum"></a>Omówienie autovacuum
-PostgreSQL używa MVCC, aby umożliwić większej współbieżności bazy danych. Każda aktualizacja powoduje insert i delete i delete, co skutkuje wiersze są elastyczne oznaczone do usunięcia. Oznaczanie nietrwałego powoduje identyfikacji martwy krotek, który ma zostać przeczyszczony później. PostgreSQL osiąga to wszystko, uruchamiając zadanie próżniowej.
+PostgreSQL używa mechanizmu kontroli współbieżności rozpoznającego wiele wersji (MVCC), aby umożliwić większej współbieżności bazy danych. Każda aktualizacja powoduje insert i delete i delete, co skutkuje wiersze są elastyczne oznaczone do usunięcia. Oznaczanie nietrwałego identyfikuje martwy krotek, który ma zostać przeczyszczony później. Aby wykonać te zadania, postgresql w warstwie uruchamia zadanie próżniowej.
 
-Próżniowej zadania mogą być wyzwalane ręcznie lub automatycznie. Więcej martwych krotek będzie istnieć, gdy baza danych występuje duże aktualizacji lub usuń operacje i mniej podczas bezczynności.  Konieczność uruchamiania częściej odkurzający jest większy, gdy baza danych znajduje się pod dużym obciążeniem; co uruchomionych zadań próżniowej **ręcznie** nie można użyć.
+Próżniowej zadania mogą być wyzwalane ręcznie lub automatycznie. Więcej martwych krotek istnieć, gdy baza danych napotyka dużych aktualizacji lub usuń operacje. Mniej krotek martwy istnieć, gdy baza danych jest w stanie bezczynności. Musisz próżniowe częściej, obciążenie bazy danych po bardzo duże, co sprawia, że uruchomione zadania próżniowej *ręcznie* nie można użyć.
 
-Można skonfigurować Autovacuum i korzyści z dostrajania. Wartości domyślne, które PostgreSQL jest dostarczany z należy starać się produkt działa na wszelkiego rodzaju urządzeniami, takimi jak Raspberry instrukcje przetwarzania i optymalną konfigurację wartości są zależne od szeregu czynników:
-- Łączna liczba zasobów dostępnych - jednostki SKU i rozmiaru magazynu.
+Można skonfigurować Autovacuum i korzyści z dostrajania. Wartości domyślne, które PostgreSQL jest dostarczany z spróbuj upewnij się, że produkt działa we wszystkich rodzajach urządzeń. Do tych urządzeń należą urządzenia Raspberry instrukcje przetwarzania. Wartości optymalną konfigurację zależą od:
+- Łączna liczba dostępnych zasobów, takich jak rozmiar jednostki SKU i magazynu.
 - Użycie zasobów.
 - Właściwości pojedynczego obiektu.
 
 ## <a name="autovacuum-benefits"></a>Autovacuum korzyści
-Jeśli nie zostanie uruchomione odkurzający od czasu do czasu, może spowodować martwy krotek, które są gromadzone:
-- Dane wybrzuszanie - większych baz danych i tabel.
+Jeśli nie próżniowe od czasu do czasu, może spowodować martwy krotek, które są gromadzone:
+- Wybrzuszanie danych, takich jak większych baz danych i tabel.
 - Większe nieoptymalne indeksów.
 - Zwiększona we/wy.
 
-## <a name="monitoring-bloat-with-autovacuum-queries"></a>Przeładowanie monitorowania za pomocą zapytań autovacuum
-Następujące przykładowe zapytanie ma na celu określenie liczby martwe i aktywne krotek w tabeli o nazwie "XYZ": "Wybierz relname, n_dead_tup, n_live_tup, (n_dead_tup / n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables relname gdzie ="XYZ"order przez n_dead_tup DESC;"
+## <a name="monitor-bloat-with-autovacuum-queries"></a>Monitor rozrostu autovacuum zapytań
+Następujące przykładowe zapytanie ma na celu określenie liczby martwe i aktywne krotek w tabeli o nazwie XYZ:
+ 
+    'SELECT relname, n_dead_tup, n_live_tup, (n_dead_tup/ n_live_tup) AS DeadTuplesRatio, last_vacuum, last_autovacuum FROM pg_catalog.pg_stat_all_tables WHERE relname = 'XYZ' order by n_dead_tup DESC;'
 
 ## <a name="autovacuum-configurations"></a>Konfiguracje Autovacuum
-Parametry konfiguracji, które kontrolują autovacuum koncentrują się na dwa ważne pytania:
+Parametry konfiguracji, które kontrolują autovacuum są oparte na odpowiedzi na dwa ważne pytania:
 - Kiedy powinno zostać uruchomione?
 - Ile należy go wyczyścić po uruchomieniu?
 
-Poniżej niektóre autovacuum parametry konfiguracji, które mogą aktualizować opierają się na te pytania, wraz z wskazówek:
+Poniżej przedstawiono niektóre autovacuum konfiguracji, parametry, które mogą aktualizować zależnie od odpowiedzi na powyższe pytania, wraz z wskazówki.
 Parametr|Opis|Wartość domyślna
 ---|---|---
-autovacuum_vacuum_threshold|Określa minimalną liczbę zaktualizowanych lub usuniętych krotek, wymagane do wyzwalania ODKURZAJĄCY w jednej tabeli. Wartość domyślna to 50 krotek. Ten parametr można ustawić tylko w pliku postgresql.conf lub w wierszu polecenia serwera. To ustawienie można przesłonić dla poszczególnych tabel, zmieniając parametry magazynu tabel.|50
-autovacuum_vacuum_scale_factor|Określa część rozmiar tabeli, można dodać do autovacuum_vacuum_threshold przy podejmowaniu decyzji w celu wyzwolenia ODKURZAJĄCY. Wartość domyślna to 0.2 (20 procent rozmiaru tabeli). Ten parametr można ustawić tylko w pliku postgresql.conf lub w wierszu polecenia serwera. To ustawienie można przesłonić dla poszczególnych tabel, zmieniając parametry magazynu tabel.|5 procent
-autovacuum_vacuum_cost_limit|Określa wartość limitu koszt, który będzie używany podczas automatycznej operacji ODKURZAJĄCY. Jeśli określono wartość -1, (jest to ustawienie domyślne), zostanie użyta wartość vacuum_cost_limit regularne. Wartość jest rozłożona proporcjonalnie uruchomionych procesów roboczych autovacuum, jeśli istnieje więcej niż jednego procesu roboczego. Suma granic dla każdego procesu roboczego nie może przekraczać wartość tej zmiennej. Ten parametr można ustawić tylko w pliku postgresql.conf lub w wierszu polecenia serwera. To ustawienie można przesłonić dla poszczególnych tabel, zmieniając parametry magazynu tabel.|-1
-autovacuum_vacuum_cost_delay|Określa wartość opóźnienia kosztów, który będzie używany podczas automatycznej operacji ODKURZAJĄCY. Jeśli określono wartość -1, zostanie użyta wartość vacuum_cost_delay regularne. Wartość domyślna to 20 MS. Ten parametr można ustawić tylko w pliku postgresql.conf lub w wierszu polecenia serwera. To ustawienie można przesłonić dla poszczególnych tabel, zmieniając parametry magazynu tabel.|20 ms
-autovacuum_nap_time|Określa, że minimalne opóźnienie między autovacuum działa na dowolnej określonej bazy danych. W każdej Rundy demona sprawdza, czy baza danych i wydaje polecenia ODKURZAJĄCY i ANALIZOWANIE, zgodnie z potrzebami dla tabel w tej bazie danych. Opóźnienie jest mierzony w sekundach, a wartość domyślna to jedna minuta (1 min). Ten parametr można ustawić tylko w pliku postgresql.conf lub w wierszu polecenia serwera.|15 s
-autovacuum_max_workers|Określa maksymalną liczbę procesów autovacuum (inne niż uruchamiania autovacuum), które mogą być uruchomione jednocześnie. Wartość domyślna to trzy. Ten parametr można ustawić tylko podczas uruchamiania serwera.|3
-Powyższe ustawienia można zastąpić dla poszczególnych tabel, zmieniając parametry magazynu tabel.  
+autovacuum_vacuum_threshold|Określa minimalną liczbę zaktualizowanych lub usuniętych krotek, wymagane do wyzwalania próżniowej operacji w jednej tabeli. Wartość domyślna to 50 krotek. Ustaw ten parametr, tylko w pliku postgresql.conf lub w wierszu polecenia serwera. Aby zastąpić to ustawienie dla poszczególnych tabel, Zmień parametry magazynu tabel.|50
+autovacuum_vacuum_scale_factor|Określa część rozmiar tabeli, można dodać do autovacuum_vacuum_threshold, podejmując decyzję o wyzwolić próżniowej operacji. Wartość domyślna to 0,2, czyli 20 procent rozmiaru tabeli. Ustaw ten parametr, tylko w pliku postgresql.conf lub w wierszu polecenia serwera. Aby zastąpić to ustawienie dla poszczególnych tabel, Zmień parametry magazynu tabel.|5 procent
+autovacuum_vacuum_cost_limit|Określa wartość limitu kosztów, które są używane podczas automatycznej operacji próżniowej. Jeśli wartość -1 jest określony, co jest ustawieniem domyślnym, wartość vacuum_cost_limit regularne jest używana. Jeśli istnieje więcej niż jednego procesu roboczego, wartość jest rozłożona proporcjonalnie uruchomionych procesów roboczych autovacuum. Suma granic dla każdego procesu roboczego nie może przekraczać wartość tej zmiennej. Ustaw ten parametr, tylko w pliku postgresql.conf lub w wierszu polecenia serwera. Aby zastąpić to ustawienie dla poszczególnych tabel, Zmień parametry magazynu tabel.|-1
+autovacuum_vacuum_cost_delay|Określa wartość opóźnienia kosztów w operacjach próżniowej automatyczne. Jeśli określono wartość -1, wartość vacuum_cost_delay regularne jest używana. Wartość domyślna to 20 MS. Ustaw ten parametr, tylko w pliku postgresql.conf lub w wierszu polecenia serwera. Aby zastąpić to ustawienie dla poszczególnych tabel, Zmień parametry magazynu tabel.|20 ms
+autovacuum_nap_time|Określa, że minimalne opóźnienie między autovacuum działa na dowolnej określonej bazy danych. W każdej Rundy demona sprawdza, czy baza danych i wydaje polecenia ODKURZAJĄCY i ANALIZOWANIE, zgodnie z potrzebami dla tabel w tej bazie danych. Opóźnienie jest mierzony w sekundach, a wartość domyślna to jedna minuta (1 min). Ustaw ten parametr, tylko w pliku postgresql.conf lub w wierszu polecenia serwera.|15 s
+autovacuum_max_workers|Określa maksymalną liczbę procesów autovacuum, innym niż uruchamiania autovacuum, która może działać w dowolnym momencie. Wartość domyślna to trzy. Ustaw ten parametr, tylko podczas uruchamiania serwera.|3
+Aby zastąpić ustawienia dla poszczególnych tabel, Zmień parametry magazynu tabel. 
 
 ## <a name="autovacuum-cost"></a>Koszt Autovacuum
 Poniżej przedstawiono "koszty" próżniowej operacji:
-- Blokady jest umieszczany na danych, których działa odkurzający stron.
-- Zasobów obliczeniowych i pamięci są używane, gdy odkurzający jest uruchomiony.
 
-Oznacza to, że odkurzający nie należy uruchomić albo zbyt często lub zbyt rzadko, musi on być adaptacyjne obciążenia. Zalecamy przeprowadzenie testowania wszystkie zmiany parametru autovacuum z powodu wady każdej z nich.
+- Strony danych, których działa odkurzający są zablokowane.
+- Zasobów obliczeniowych i pamięci są używane, gdy próżniowej zadanie jest uruchomione.
+
+Co w efekcie nie uruchamiaj zadania próżniowej albo zbyt często lub zbyt rzadko. Próżniowej zadania musi dostosowanie się do obciążenia. Przetestuj wszystkie zmiany parametru autovacuum z powodu wady każdej z nich.
 
 ## <a name="autovacuum-start-trigger"></a>Autovacuum start wyzwalacza
-Autovacuum jest wyzwalany, gdy liczba krotek martwy przekracza autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples, w tym miejscu reltuples jest stałą.
+Autovacuum jest wyzwalany, gdy liczba krotek martwy przekracza autovacuum_vacuum_threshold + autovacuum_vacuum_scale_factor * reltuples. W tym miejscu reltuples jest stałą.
 
-Oczyszczenie z autovacuum należy na bieżąco z obciążeniem bazy danych, w przeciwnym razie może zabraknąć magazynu i środowisko ogólne spowolnienie w zapytaniach. Amortyzowanego wraz z upływem czasu, szybkość, z których odkurzający czyści dead krotek powinna być równa szybkość jaką są tworzone martwy krotek.
+Oczyszczenie z autovacuum musi przechowywać z obciążeniem bazy danych. W przeciwnym razie może zabraknąć magazynu i środowisko ogólne spowolnienie w zapytaniach. Amortyzowanego wraz z upływem czasu, szybkość jaką próżniowej operacji czyści martwy krotek powinna być równa szybkość jaką są tworzone martwy krotek.
 
-Bazy danych z wielu aktualizowania/usuwania mają więcej martwych krotek i potrzeba więcej miejsca. Ogólnie rzecz biorąc baz danych z wieloma aktualizowania/usuwania korzyści z niskich wartości autovacuum_vacuum_scale_factor i niskie wartości autovacuum_vacuum_threshold, aby zapobiec długotrwały gromadzeniu martwy krotek. Można użyć wyższe wartości obu parametrów za pomocą mniejszych baz danych, ponieważ potrzeby odkurzający są mniej pilne. Przypomnienie, że częste vacuuming pochodzi kosztem zasobów obliczeniowych i pamięci.
+Bazy danych z wielu aktualizacji i usunięć mają więcej martwych krotek i potrzeba więcej miejsca. Ogólnie rzecz biorąc baz danych z wieloma aktualizuje i usuwa korzyści z niskich wartości autovacuum_vacuum_scale_factor i autovacuum_vacuum_threshold. Niskich wartości uniemożliwiają długotrwały akumulacja martwy krotek. Wyższe wartości można użyć dla obu parametrów z mniejszych baz danych, ponieważ potrzeby vacuuming są mniej pilne. Częste vacuuming pochodzi kosztem zasobów obliczeniowych i pamięci.
 
-Domyślny współczynnik skali równy 20% działa dobrze w tabelach mających niskiej wartości martwy krotek, ale nie w tabelach mających wysoki procent martwy krotek. Na przykład w tabeli 20 GB, który przekłada się to 4 GB pamięci krotek martwe i w tabeli 1 TB jest 200 GB martwy krotek.
+Domyślny współczynnik skali równy 20% działa dobrze w tabelach z niską wartość procentową martwy krotek. Nie działa dobrze w tabelach mających wysoki odsetek martwy krotek. Na przykład w tabeli 20 GB, a ten współczynnik skali przekłada się na 4 GB pamięci martwy krotek. W tabeli 1 TB to 200 GB martwy krotek.
 
-Z bazą danych PostgreSQL możesz ustawić te parametry na poziomie tabeli lub wystąpienia. Obecnie te parametry można ustawić na poziomie tabeli tylko w usłudze Azure Database for PostgreSQL.
+Z bazą danych PostgreSQL możesz ustawić te parametry na poziomie tabeli lub wystąpienia. Obecnie można ustawić te parametry na poziomie tabeli tylko w usłudze Azure Database for PostgreSQL.
 
-## <a name="estimating-the-cost-of-autovacuum"></a>Szacowanie kosztów montażu autovacuum
-Uruchomione autovacuum jest "kosztownych" andS istnieją parametry sterujące środowiska uruchomieniowego próżniowej operacji. Następujące parametry pomocy, Oszacuj koszt uruchamiania odkurzający:
+## <a name="estimate-the-cost-of-autovacuum"></a>Oszacuj koszt autovacuum
+Autovacuum uruchomione jest "kosztowne" i parametry sterujące środowiska uruchomieniowego próżniowej operacji. Następujące parametry pomocy, Oszacuj koszt uruchamiania odkurzający:
 - vacuum_cost_page_hit = 1
 - vacuum_cost_page_miss = 10
 - vacuum_cost_page_dirty = 20
 
-Proces próżniowej odczytuje strony fizyczne i sprawdza, czy martwy krotek. Shared_buffers każdej strony została uznana za koszt 1 (vacuum_cost_page_hit), wszystkie strony są uznawane za żadnych opłat 20 (vacuum_cost_page_dirty), jeśli istnieje krotek nieużywany lub 10 (vacuum_cost_page_miss), jeśli istnieje nie martwy krotek. Próżniowej operacji zatrzymuje, gdy proces przekracza autovacuum_vacuum_cost_limit.  
+Proces próżniowej odczytuje strony fizyczne i sprawdza, czy martwy krotek. Shared_buffers każdej strony została uznana za koszt 1 (vacuum_cost_page_hit). Wszystkie strony, są traktowane jako kosztują 20 (vacuum_cost_page_dirty), jeśli istnieje krotek nieużywany lub 10 (vacuum_cost_page_miss), jeśli istnieje nie martwy krotek. Próżniowej operacji zatrzymuje, gdy proces przekracza autovacuum_vacuum_cost_limit. 
 
-Po osiągnięciu limitu proces przejścia w tryb uśpienia przez czas określony przez parametr autovacuum_vacuum_cost_delay przed ponownego uruchomienia. Jeśli nie zostanie osiągnięty limit, autovacuum rozpoczyna się po wartość określoną przez parametr autovacuum_nap_time.
+Po osiągnięciu limitu proces przejścia w tryb uśpienia przez czas określony przez parametr autovacuum_vacuum_cost_delay, zanim zostanie uruchomiony ponownie. Jeśli nie zostanie osiągnięty limit, autovacuum rozpoczyna się po wartość określoną przez parametr autovacuum_nap_time.
 
-Podsumowanie parametrów autovacuum_vacuum_cost_delay i autovacuum_vacuum_cost_limit kontrolować, ile oczyszczania jest dozwolony na jednostkę czasu. Należy pamiętać, że wartości domyślne są zbyt mała dla większości warstw cenowych. Optymalne wartości tych parametrów są ceny zależne od warstwy i powinien być odpowiednio skonfigurowany.
+Podsumowanie parametrów autovacuum_vacuum_cost_delay i autovacuum_vacuum_cost_limit kontrolować, ile oczyszczania jest dopuszczalne na jednostkę czasu. Należy pamiętać, że wartości domyślne są zbyt mała dla większości warstw cenowych. Optymalne wartości tych parametrów są ceny zależne od warstwy i powinien być odpowiednio skonfigurowany.
 
-Parametr autovacuum_max_workers określa maksymalną liczbę procesów autovacuum, które mogą działać jednocześnie.
+Parametr autovacuum_max_workers określa maksymalną liczbę procesów autovacuum, które mogą być uruchomione jednocześnie.
 
-Z bazą danych PostgreSQL możesz ustawić te parametry na poziomie tabeli lub wystąpienia. Obecnie te parametry można ustawić na poziomie tabeli tylko w usłudze Azure Database for PostgreSQL.
+Z bazą danych PostgreSQL możesz ustawić te parametry na poziomie tabeli lub wystąpienia. Obecnie można ustawić te parametry na poziomie tabeli tylko w usłudze Azure Database for PostgreSQL.
 
-## <a name="optimizing-autovacuum-per-table"></a>Optymalizacja autovacuum na tabelę
-Powyższych parametrów konfiguracji może być skonfigurowany na tabelę, na przykład:
+## <a name="optimize-autovacuum-per-table"></a>Optymalizowanie autovacuum na tabelę
+Można skonfigurować wszystkie poprzednie parametry konfiguracji na tabelę. Oto przykład:
 ```sql
 ALTER TABLE t SET (autovacuum_vacuum_threshold = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_scale_factor = 0.1);
@@ -94,9 +97,10 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_limit = 1000);
 ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 ```
 
-Jest Autovacuum na procesie synchronicznym tabeli. Większy procent martwy krotek tabeli ma większą "koszt" autovacuum.  Dzielenie tabel, które mają wysoki wskaźnik aktualizowania/usuwania na wiele tabel pomoże zrównoleglić autovacuum i zmniejszyć "koszt" Aby ukończyć autovacuum w odniesieniu do jednej tabeli. Można również zwiększyć liczbę równoległych autovacuum procesy robocze, aby upewnić się, że pracownicy liberally są zaplanowane.
+Autovacuum to proces synchroniczne na tabelę. Większy odsetek martwy krotek tabela ma większą "koszt" autovacuum. Możesz podzielić tabele, które mają wysoki wskaźnik aktualizacji i usunięć do wielu tabel. Dzielenie tabel pomaga zrównoleglić autovacuum i zmniejszyć "koszt" Aby ukończyć autovacuum w odniesieniu do jednej tabeli. Możesz także zwiększyć liczbę procesów roboczych autovacuum równolegle, aby upewnić się, że liberally zaplanowano pracowników.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Przejrzyj poniższą dokumentację PostgreSQL, Dowiedz się więcej o używaniu i dostrajanie autovacuum:
- - Dokumentacja programu PostgreSQL — [rozdział 18, konfiguracja serwera](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
- - Dokumentacja usługi PostgreSQL — [rozdziału 24, rutynowe zadania konserwacji bazy danych](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)
+Aby dowiedzieć się więcej na temat sposobu użycia i dostrajanie autovacuum, zobacz dokumentację PostgreSQL następujące:
+
+ - [Rozdział 18, konfiguracja serwera](https://www.postgresql.org/docs/9.5/static/runtime-config-autovacuum.html)
+ - [Rozdziału 24 zadania konserwacji bazy danych procedury](https://www.postgresql.org/docs/9.6/static/routine-vacuuming.html)

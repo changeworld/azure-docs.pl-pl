@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9002ab7396cd9beda767b4a9f81d9983ec74923d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e2aa52e8ad19274d45f648978e7b2f021139fe4a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163419"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812309"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włączanie opcji nie wylogowuj mnie (KMSI) w usłudze Azure Active Directory B2C
 
@@ -150,7 +150,7 @@ Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która ini
 2. Otwórz nowy plik i zaktualizuj **PolicyId** atrybutu dla **elementu TrustFrameworkPolicy** przy użyciu unikatowej wartości. Jest to nazwa zasad. Na przykład `SignUpOrSignInWithKmsi`.
 3. Zmiana **ReferenceId** atrybutu dla **DefaultUserJourney** element, aby dopasować identyfikator nowego podróży użytkownika, który został utworzony. Na przykład `SignUpOrSignInWithKmsi`.
 
-    KMSI jest konfigurowana przy użyciu **UserJourneyBehaviors** elementu. **KeepAliveInDays** atrybut kontroluje, jak długo użytkownik pozostaje zalogowany. W poniższym przykładzie, sesja KMSI automatycznie wygasa po upływie `7` dni, niezależnie od tego, jak często użytkownik wykonuje dyskretne uwierzytelnianie. Ustawienie **KeepAliveInDays** wartość `0` powoduje wyłączenie funkcji KMSI. Domyślnie ta wartość jest `0`. Jeśli wartość **wartość SessionExpiryType** jest `Rolling`, rozszerzoną sesji KMSI `7` dni za każdym razem, gdy użytkownik wykona dyskretne uwierzytelnianie.  Jeśli `Rolling` jest zaznaczone, należy zachować liczba dni do minimum. 
+    KMSI jest konfigurowana przy użyciu **UserJourneyBehaviors** element z **SingleSignOn**, **wartość SessionExpiryType**, i **SessionExpiryInSeconds** jako jego pierwszym elementy podrzędne. **KeepAliveInDays** atrybut kontroluje, jak długo użytkownik pozostaje zalogowany. W poniższym przykładzie, sesja KMSI automatycznie wygasa po upływie `7` dni, niezależnie od tego, jak często użytkownik wykonuje dyskretne uwierzytelnianie. Ustawienie **KeepAliveInDays** wartość `0` powoduje wyłączenie funkcji KMSI. Domyślnie ta wartość jest `0`. Jeśli wartość **wartość SessionExpiryType** jest `Rolling`, rozszerzoną sesji KMSI `7` dni za każdym razem, gdy użytkownik wykona dyskretne uwierzytelnianie.  Jeśli `Rolling` jest zaznaczone, należy zachować liczba dni do minimum. 
 
     Wartość **SessionExpiryInSeconds** reprezentuje czas wygaśnięcia sesji logowania jednokrotnego. Jest to używane wewnętrznie przez usługę Azure AD B2C do sprawdzenia, czy sesja dla KMSI wygasł lub nie. Wartość **KeepAliveInDays** określa wartość Expires/Max-Age plik cookie logowania jednokrotnego w przeglądarce sieci web. W odróżnieniu od **SessionExpiryInSeconds**, **KeepAliveInDays** służy do przeglądarki uniemożliwiają wyczyszczenie plików cookie, jest ono zamknięte. Użytkownik może dyskretnie zalogować się tylko wtedy, gdy istnieje plik cookie sesji logowania jednokrotnego, które są kontrolowane przez **KeepAliveInDays**i nie jest uznawane za wygasłe, którymi steruje **SessionExpiryInSeconds**. 
     

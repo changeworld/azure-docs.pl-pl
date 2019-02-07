@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: f0f3396852720bbbb31e46f7a9913d9d1bdc4a6c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8798ecd15c673c26c5b1be0920887ff493cc6a85
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157248"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818689"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Uzyskaj szczegółowe informacje o obrazach za pomocą interfejsu API wyszukiwania obrazów Bing
 
@@ -221,7 +221,7 @@ Wartości prostokąta są względne wobec szerokość i wysokość oryginalnego 
 -   Po prawej stronie: 290 / 300 = 0.9667...  
 -   Dół: 150 / 200 = 0.75  
 
-Możesz użyć regionie, w którym Wyszukiwarka Bing zwróci w szczegółowych informacji w kolejnych wywołaniach. Na przykład, aby pobrać podobnych obrazach rozpoznawanym jednostki. Aby uzyskać więcej informacji, zobacz [przycinanie obrazów za pomocą modułów rozpoznawania jednostek i podobnych](#croppingimages). Poniżej przedstawiono mapowanie między polami region i parametry zapytania zostanie wykorzystany do kadrować obrazy.  
+Możesz użyć regionie, w którym Wyszukiwarka Bing zwróci w szczegółowych informacji w kolejnych wywołaniach. Na przykład, aby pobrać podobnych obrazach rozpoznawanym jednostki. Aby uzyskać więcej informacji zobacz przycinanie obrazów do użycia przy użyciu podobnych wizualnie i jednostki rozpoznawania modułów. Poniżej przedstawiono mapowanie między polami region i parametry zapytania zostanie wykorzystany do kadrować obrazy.  
 
 -   Po lewej stronie mapuje [cal](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cal)  
 -   Najważniejsze mapuje do [cat](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#cat)  

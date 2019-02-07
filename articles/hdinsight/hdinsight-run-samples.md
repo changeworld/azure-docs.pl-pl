@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0a174c3de33b01f936eec599c1de68e2cebbf9c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745061"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820423"
 ---
 # <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>Uruchamianie przykładów technologii MapReduce w HDInsight z systemem Windows
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -54,7 +54,7 @@ Dzisiaj wiele osób wybiera Apache Hive i Apache Pig za pośrednictwem MapReduce
 ## <a name="hdinsight-sample-wordcount"></a>Word licznik — Java
 Aby przesłać projektu MapReduce, należy najpierw utworzyć definicję zadania MapReduce. W definicji zadania należy określić plik jar programu MapReduce i lokalizację pliku jar, który jest **wasb:///example/jars/hadoop-mapreduce-examples.jar**, nazwa klasy i argumentów.  Uruchamianie programu MapReduce wordcount przyjmuje dwa argumenty: plik źródłowy, który służy do zliczania wyrazów i lokalizację danych wyjściowych.
 
-Kod źródłowy znajduje się w [dodatek a](#apendix-a---the-word-count-MapReduce-program-in-java).
+Kod źródłowy znajduje się w dodatku A.
 
 Procedura tworzenia MapReduce w języku Java programowania, zobacz - [programów MapReduce Programowanie w języku Java dla usługi Apache Hadoop w HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
@@ -135,7 +135,7 @@ W międzyczasie reduktor umożliwia zbieranie informacji o wierszu danych wyjśc
 
 **Aby przesłać języku C# słowa liczba zadanie przesyłania strumieniowego**
 
-* Postępuj zgodnie z procedurą w [liczby — Java słów](#word-count-java)i Zastąp definicję zadania o następujący wiersz:
+* Postępuj zgodnie z procedurą w wyrazów — Java i Zastąp definicję zadania o następujący wiersz:
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -157,7 +157,7 @@ Skryptu podane w tym przykładzie przesyła plik jar zadania usługi Hadoop i je
 
 **Aby przesłać zadanie szacowania pi**
 
-* Postępuj zgodnie z procedurą w [liczby — Java słów](#word-count-java)i Zastąp definicję zadania o następujący wiersz:
+* Postępuj zgodnie z procedurą w wyrazów — Java i Zastąp definicję zadania o następujący wiersz:
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -185,7 +185,7 @@ Trzy zadania są wymagane przez przykładowy każdej odpowiadającej jednego z p
 
 **Aby przesłać zadania**
 
-* Postępuj zgodnie z procedurą w [liczby — Java słów](#word-count-java)i użyj następujących definicji zadania:
+* Postępuj zgodnie z procedurą w wyrazów — Java i użyj następujących definicji zadania:
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `

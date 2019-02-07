@@ -15,16 +15,16 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: 32be473ab93231805cdae097e3e984a2e74da973
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 8c12190e3c34c3294d2735fdd228aafbf6073f12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233086"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820117"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>Korzystanie z programu PowerShell do tworzenia maszyny wirtualnej platformy Azure z serwerem raportów pracującym w trybie macierzystym
 > [!IMPORTANT] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Usługi Resource Manager i Model Klasyczny](../../../azure-resource-manager/resource-manager-deployment-model.md). Ten artykuł dotyczy klasycznego modelu wdrażania. Firma Microsoft zaleca, aby w przypadku większości nowych wdrożeń korzystać z modelu opartego na programie Resource Manager.
 
 W tym temacie opisano i przedstawiono wdrażanie i konfigurowanie serwera raportów SQL Server Reporting Services w trybie macierzystym w maszynie wirtualnej platformy Azure. Kroki opisane w tym dokumencie użyć kombinacji wymagane ręczne wykonanie czynności, aby utworzyć maszynę wirtualną i skrypt programu Windows PowerShell, aby skonfigurować usługi Reporting Services na maszynie Wirtualnej. Skrypt konfiguracji zawiera otwierania portu zapory dla protokołu HTTP lub HTTPs.
 
@@ -38,16 +38,16 @@ W tym temacie opisano i przedstawiono wdrażanie i konfigurowanie serwera raport
   
   * Aby sprawdzić limit liczby rdzeni subskrypcji w witrynie Azure portal w menu u góry kliknij przycisk Ustawienia w okienku po lewej stronie, a następnie kliknij opcję użycia.
   * Aby zwiększyć limit przydziału rdzeni, skontaktuj się z pomocą [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options/). Aby uzyskać informacje o rozmiarze maszyny Wirtualnej, zobacz [rozmiarów maszyn wirtualnych na platformie Azure](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* **Windows PowerShell do obsługi skryptów**: tematu założono, że masz podstawową wiedzę na temat pracy programu Windows PowerShell. Aby uzyskać więcej informacji o używaniu programu Windows PowerShell zobacz następujące tematy:
+* **Windows PowerShell do obsługi skryptów**: Temat zakłada, że masz podstawową wiedzę na temat pracy programu Windows PowerShell. Aby uzyskać więcej informacji o używaniu programu Windows PowerShell zobacz następujące tematy:
   
   * [Uruchamianie programu Windows PowerShell w systemie Windows Server](https://docs.microsoft.com/powershell/scripting/setup/starting-windows-powershell)
   * [Wprowadzenie do programu Windows PowerShell](https://technet.microsoft.com/library/hh857337.aspx)
 
-## <a name="step-1-provision-an-azure-virtual-machine"></a>Krok 1: Aprowizować maszynę wirtualną platformy Azure
+## <a name="step-1-provision-an-azure-virtual-machine"></a>Krok 1: Aprowizuj maszynę wirtualną platformy Azure
 1. Przejdź do witryny Azure portal.
 2. Kliknij przycisk **maszyn wirtualnych** w okienku po lewej stronie.
    
-    ![Usługa Microsoft azure virtual machines](./media/virtual-machines-windows-classic-ps-sql-report/IC660124.gif)
+    ![microsoft azure virtual machines](./media/virtual-machines-windows-classic-ps-sql-report/IC660124.gif)
 3. Kliknij przycisk **Nowy**.
    
     ![przycisk Nowy](./media/virtual-machines-windows-classic-ps-sql-report/IC692019.gif)
@@ -63,7 +63,7 @@ W tym temacie opisano i przedstawiono wdrażanie i konfigurowanie serwera raport
    
    * Jeśli istnieje więcej niż jedna **daty wydania wersji**, wybierz najnowszą wersję.
    * **Nazwa maszyny wirtualnej**: Nazwa maszyny jest także używana na następnej stronie konfiguracji jako domyślną nazwę DNS usługi w chmurze. Nazwa DNS musi być unikatowa w ramach usługi Azure. Zaleca się skonfigurowanie maszyny Wirtualnej przy użyciu nazwy komputera, która opisuje przeznaczenie maszyny Wirtualnej. Na przykład ssrsnativecloud.
-   * **Warstwa**: standardowa
+   * **Warstwa**: Standardowa (Standard)
    * **Rozmiar: A3** jest zalecany rozmiar maszyny Wirtualnej dla obciążeń programu SQL Server. Jeśli maszyna wirtualna jest używana tylko jako serwer raportów, rozmiar maszyny Wirtualnej A2 jest wystarczająca, chyba że serwer raportów napotka dużych obciążeń. Aby uzyskać informacje o cenach maszyn wirtualnych, zobacz [cennik usługi Virtual Machines](https://azure.microsoft.com/pricing/details/virtual-machines/).
    * **Nową nazwę użytkownika**: podawanej nazwy jest tworzony z uprawnieniami administratora na maszynie Wirtualnej.
    * **Nowe hasło** i **potwierdzić**. To hasło jest używane dla nowego konta administratora i zalecane jest, że używasz silne hasło.
@@ -71,14 +71,14 @@ W tym temacie opisano i przedstawiono wdrażanie i konfigurowanie serwera raport
 7. Na następnej stronie można edytować następujących pól:
    
    * **Usługa w chmurze**: Wybierz **Utwórz nową usługę w chmurze**.
-   * **Nazwa DNS usługi w chmurze**: jest to publiczna nazwa DNS usługi w chmurze, który jest skojarzony z maszyną Wirtualną. Domyślną nazwą jest nazwa wpisana dla nazwy maszyny Wirtualnej. Jeśli w kolejnych krokach tego tematu, Utwórz zaufany certyfikat SSL, a następnie nazwa DNS jest używana dla wartości "**wystawiony dla**" certyfikatu.
-   * **Region/koligacji grupy/wirtualnej sieci**: Wybierz region najbliżej Twoich użytkowników końcowych.
+   * **Nazwa DNS usługi w chmurze**: Jest to publiczna nazwa DNS usługi w chmurze, który jest skojarzony z maszyną Wirtualną. Domyślną nazwą jest nazwa wpisana dla nazwy maszyny Wirtualnej. Jeśli w kolejnych krokach tego tematu, Utwórz zaufany certyfikat SSL, a następnie nazwa DNS jest używana dla wartości "**wystawiony dla**" certyfikatu.
+   * **Region/grupa koligacji/sieci wirtualnej**: Wybierz region najbliżej Twoich użytkowników końcowych.
    * **Konto magazynu**: Użyj konta usługi storage automatycznie wygenerowany.
    * **Zestaw dostępności**: Brak.
    * **Punkty końcowe** zachować **pulpitu zdalnego** i **PowerShell** punktów końcowych, a następnie dodaj HTTP lub HTTPS punktu końcowego, w zależności od środowiska.
      
-     * **HTTP**: domyślne porty publiczne i prywatne są **80**. Należy zauważyć, że jeśli korzystasz z prywatnej portu innego niż 80, zmodyfikuj **$HTTPport = 80** w skrypcie http.
-     * **Protokół HTTPS**: domyślne porty publiczne i prywatne są **443**. Ze względów bezpieczeństwa jest zmiana portu prywatnego i skonfigurować zapory i serwera raportów, aby używał portu prywatnego. Aby uzyskać więcej informacji na temat punktów końcowych, zobacz [jak się komunikacja między z maszyną wirtualną](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Należy zauważyć, że w przypadku użycia portu innego niż 443, Zmień parametr **$HTTPsport = 443** w skrypcie protokołu HTTPS.
+     * **HTTP**: Domyślne porty publiczne i prywatne są **80**. Należy zauważyć, że jeśli korzystasz z prywatnej portu innego niż 80, zmodyfikuj **$HTTPport = 80** w skrypcie http.
+     * **HTTPS**: Domyślne porty publiczne i prywatne są **443**. Ze względów bezpieczeństwa jest zmiana portu prywatnego i skonfigurować zapory i serwera raportów, aby używał portu prywatnego. Aby uzyskać więcej informacji na temat punktów końcowych, zobacz [jak się komunikacja między z maszyną wirtualną](../classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json). Należy zauważyć, że w przypadku użycia portu innego niż 443, Zmień parametr **$HTTPsport = 443** w skrypcie protokołu HTTPS.
    * Kliknij przycisk Dalej. ![Dalej](./media/virtual-machines-windows-classic-ps-sql-report/IC692021.gif)
 8. Na ostatniej stronie kreatora, zachowaj ustawienie domyślne **Zainstaluj agenta maszyny Wirtualnej** wybrane. Kroki opisane w tym temacie nie korzystanie z agenta maszyny Wirtualnej, ale jeśli planowane jest zapewnienie tej maszyny Wirtualnej, agent maszyny Wirtualnej i rozszerzenia pozwala zwiększyć on zarządzania certyfikatami w usłudze.  Aby uzyskać więcej informacji na temat agenta maszyny Wirtualnej, zobacz [agenta maszyny Wirtualnej i rozszerzenia — część 1](https://azure.microsoft.com/blog/2014/04/11/vm-agent-and-extensions-part-1/). Jednym z ad zainstalowanych rozszerzeń domyślne działającą jest rozszerzenie "BGINFO", która wyświetla na pulpicie maszyny Wirtualnej, informacje o systemie, takie jak wewnętrzny adres IP i wolnego miejsca na dysku.
 9. Kliknij ukończone. ![ok](./media/virtual-machines-windows-classic-ps-sql-report/IC660122.gif)
@@ -125,7 +125,7 @@ Certyfikat z podpisem własnym został utworzony na maszynie Wirtualnej, gdy mas
        Na przykład na poniższej ilustracji Nazwa maszyny Wirtualnej jest **ssrsnativecloud** i nazwa użytkownika jest **testuser**.
       
        ![Nazwa maszyny wirtualnej zawiera logowania](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
-   2. Uruchom mmc.exe. Aby uzyskać więcej informacji, zobacz [porady: wyświetlanie certyfikatów za pomocą przystawki programu MMC](https://msdn.microsoft.com/library/ms788967.aspx).
+   2. Uruchom mmc.exe. Aby uzyskać więcej informacji, zobacz [Instrukcje: Wyświetlanie certyfikatów za pomocą przystawki programu MMC](https://msdn.microsoft.com/library/ms788967.aspx).
    3. W aplikacji konsolowej **pliku** menu Dodaj **certyfikaty** przystawki, wybierz opcję **konto komputera** po wyświetleniu monitu, a następnie kliknij przycisk **dalej**.
    4. Wybierz **komputera lokalnego** zarządzać, a następnie kliknij przycisk **Zakończ**.
    5. Kliknij przycisk **Ok** a następnie rozwiń węzeł **certyfikaty - osobistych** węzłów, a następnie kliknij przycisk **certyfikaty**. Certyfikat jest nazwana na nazwę DNS maszyny Wirtualnej i kończy się **cloudapp.net**. Kliknij prawym przyciskiem myszy nazwę certyfikatu, a następnie kliknij przycisk **kopiowania**.
@@ -133,7 +133,7 @@ Certyfikat z podpisem własnym został utworzony na maszynie Wirtualnej, gdy mas
    7. Aby sprawdzić, kliknij dwukrotnie nazwę certyfikatu w obszarze **zaufane główne urzędy certyfikacji** i sprawdź, czy nie ma żadnych błędów i zobacz swój certyfikat. Jeśli chcesz użyć skryptu HTTPS dołączone do tego tematu, aby skonfigurować serwer raportów, a wartość certyfikaty **odcisk palca** są wymagane jako parametru skryptu. **Aby uzyskać wartość odcisku palca**, wykonaj następujące czynności. Istnieje również przykład programu PowerShell można pobrać odcisku palca w sekcji [użyć skryptu, aby skonfigurować serwer raportów i HTTPS](#use-script-to-configure-the-report-server-and-HTTPS).
       
       1. Kliknij dwukrotnie nazwę certyfikatu, na przykład ssrsnativecloud.cloudapp.net.
-      2. Kliknij przycisk **szczegóły** kartę.
+      2. Kliknij kartę **Szczegóły** .
       3. Kliknij przycisk **odcisk palca**. Wartość odcisku palca jest wyświetlana w polu szczegółowe informacje, na przykład w ramach wystąpienia a6 08 3c df f9 0b f7 e3 7c 25 ed a4 ed 7e ac 91 9c 2c platformy fb 2f.
       4. Skopiuj odcisk palca i Zapisz wartości do późniejszego lub przeprowadź edycję skryptu teraz.
       5. (*) Przed uruchomieniem skryptu Usuń spacje między par wartości. Na przykład odcisk palca zauważyć przed będzie teraz a6083cdff90bf7e37c25eda4ed7eac919c2cfb2f.
@@ -149,7 +149,7 @@ Ta sekcja przeprowadzi Cię przez skonfigurowanie maszyny Wirtualnej jako serwer
 
 Aby uzyskać szczegółowe kroki, zobacz sekcję [łączenie z maszyną wirtualną i uruchomić Menedżera konfiguracji usług Reporting Services](virtual-machines-windows-classic-ps-sql-bi.md#connect-to-the-virtual-machine-and-start-the-reporting-services-configuration-manager).
 
-**Uwaga uwierzytelniania:** uwierzytelniania Windows jest zalecaną metodą uwierzytelniania i jest domyślne uwierzytelnianie usług Reporting Services. Tylko użytkownicy, którzy są skonfigurowane na maszynie Wirtualnej można uzyskać dostęp do usług raportowania i przypisane do ról w usługach Reporting Services.
+**Uwaga uwierzytelniania:** Zalecaną metodą uwierzytelniania jest uwierzytelnianie Windows i jest domyślne uwierzytelnianie usług Reporting Services. Tylko użytkownicy, którzy są skonfigurowane na maszynie Wirtualnej można uzyskać dostęp do usług raportowania i przypisane do ról w usługach Reporting Services.
 
 ### <a name="use-script-to-configure-the-report-server-and-http"></a>Użyj skryptu, aby skonfigurować serwer raportów i HTTP
 Aby użyć skryptu programu Windows PowerShell do konfigurowania serwera raportów, wykonaj następujące czynności. Ta konfiguracja obejmuje protokołu HTTP, a nie HTTPS:
@@ -469,7 +469,7 @@ Aby skonfigurować serwer raportów przy użyciu programu Windows PowerShell, wy
      LUB
    * Na maszynie Wirtualnej Uruchom mmc.exe, a następnie dodaj **certyfikaty** przystawki.
    * W obszarze **zaufane główne urzędy certyfikacji** węzła, kliknij dwukrotnie nazwę certyfikatu. Jeśli używasz certyfikatu z podpisem własnym maszyny wirtualnej certyfikat jest nazwana na nazwę DNS maszyny Wirtualnej i kończy się **cloudapp.net**.
-   * Kliknij przycisk **szczegóły** kartę.
+   * Kliknij kartę **Szczegóły** .
    * Kliknij przycisk **odcisk palca**. Wartość odcisku palca jest wyświetlana w polu szczegółowe informacje, na przykład af 11 60 b6 4b 28 8 d 89 0a 82 12 ff 6b a9 c3 66 4f 31 90 48
    * **Przed uruchomieniem skryptu**, Usuń spacje między par wartości. Na przykład af1160b64b288d890a8212ff6ba9c3664f319048
 7. Modyfikowanie **$httpsport** parametru: 
@@ -483,7 +483,7 @@ Aby skonfigurować serwer raportów przy użyciu programu Windows PowerShell, wy
 9. Skrypt jest obecnie skonfigurowana dla usług Reporting Services. Jeśli chcesz uruchomić skrypt dla usług Reporting Services, należy zmodyfikować wersji część ścieżki do przestrzeni nazw do "v11" w instrukcji Get-WmiObject.
 10. Uruchom skrypt.
 
-**Sprawdzanie poprawności**: Aby zweryfikować funkcjonalność serwera podstawowego raportu, zobacz [Sprawdź konfigurację](#verify-the-connection) w dalszej części tego tematu. Aby zweryfikować certyfikat powiązania, otwórz wiersz polecenia z uprawnieniami administracyjnymi, a następnie uruchom następujące polecenie:
+**Sprawdzanie poprawności**: Aby zweryfikować funkcjonalność serwera podstawowego raportu, zobacz Sprawdź sekcji konfiguracji w dalszej części tego tematu. Aby zweryfikować certyfikat powiązania, otwórz wiersz polecenia z uprawnieniami administracyjnymi, a następnie uruchom następujące polecenie:
 
     netsh http show sslcert
 
@@ -520,7 +520,7 @@ Jeśli nie chcesz uruchomić skrypt programu PowerShell, aby skonfigurować serw
 8. W okienku po lewej stronie kliknij **adres URL Menedżera raportów**. Pozostaw wartość domyślną **katalog wirtualny** jako **raporty** i kliknij przycisk **Zastosuj**.
 9. Kliknij przycisk **zakończenia** zamknąć Menedżera konfiguracji usług Reporting Services.
 
-## <a name="step-4-open-windows-firewall-port"></a>Krok 4: Port zapory Windows otwórz
+## <a name="step-4-open-windows-firewall-port"></a>Krok 4: Otwórz Port zapory Windows
 > [!NOTE]
 > Jeśli używasz skrypty do konfigurowania serwera raportów można pominąć tę sekcję. Skrypt uwzględnione krok, aby otworzyć port zapory. Wartość domyślna jest port 80 dla protokołu HTTP i portu 443 dla protokołu HTTPS.
 > 
@@ -573,21 +573,21 @@ Po konfigurowania i sprawdzania poprawności na serwerze raportów, typowych zad
 ## <a name="to-create-and-publish-reports-to-the-azure-virtual-machine"></a>Można tworzyć i publikować raporty do maszyny wirtualnej platformy Azure
 Poniższa tabela zawiera podsumowanie opcji, aby opublikować istniejące raporty z komputera lokalnego na serwerze raportów hostowany na maszynie wirtualnej platformy Microsoft:
 
-* **Skrypt RS.exe**: Użyj RS.exe skrypt, aby skopiować elementy raportu z i istniejącego serwera raportów do maszyny wirtualnej usługi Microsoft Azure. Aby uzyskać więcej informacji, zobacz sekcję "Tryb macierzysty na Tryb natywny — Microsoft Azure, maszyny wirtualnej" w [rs.exe usług Reporting Services przykładowy skrypt w celu migracji zawartości między serwerami raportów w usłudze](https://msdn.microsoft.com/library/dn531017.aspx).
-* **Report Builder**: maszyna wirtualna zawiera kliknięcie — raz wersji programu Microsoft SQL Server Report Builder. Uruchomienie raportu konstruktora pierwszej maszynie wirtualnej:
+* **Skrypt RS.exe**: Użyj skryptu RS.exe, aby skopiować elementy raportu z i istniejącego serwera raportów do maszyny wirtualnej usługi Microsoft Azure. Aby uzyskać więcej informacji, zobacz sekcję "Tryb macierzysty na Tryb natywny — Microsoft Azure, maszyny wirtualnej" w [rs.exe usług Reporting Services przykładowy skrypt w celu migracji zawartości między serwerami raportów w usłudze](https://msdn.microsoft.com/library/dn531017.aspx).
+* **Report Builder**: Maszyna wirtualna zawiera kliknięcie — raz wersji programu Microsoft SQL Server Report Builder. Uruchomienie raportu konstruktora pierwszej maszynie wirtualnej:
   
   1. Uruchom przeglądarkę z uprawnieniami administracyjnymi.
   2. Przejdź do Menedżera raportów na maszynie wirtualnej, a następnie kliknij przycisk **programu Report Builder** na Wstążce.
      
      Aby uzyskać więcej informacji, zobacz [instalowanie, odinstalowywanie i obsługa programu Report Builder](https://technet.microsoft.com/library/dd207038.aspx).
-* **Programu SQL Server Data Tools: Maszyna wirtualna**: Jeśli maszyna wirtualna została utworzona przy użyciu programu SQL Server 2012, a następnie SQL Server Data Tools jest zainstalowany na maszynie wirtualnej i może służyć do tworzenia **projekty z serwera raportów** i raporty na maszynie wirtualnej. SQL Server Data Tools mogą publikować raporty serwera raportów na maszynie wirtualnej.
+* **SQL Server Data Tools: VM**:  Jeśli maszyna wirtualna została utworzona przy użyciu programu SQL Server 2012, a następnie SQL Server Data Tools jest zainstalowany na maszynie wirtualnej i może służyć do tworzenia **projekty z serwera raportów** i raporty na maszynie wirtualnej. SQL Server Data Tools mogą publikować raporty serwera raportów na maszynie wirtualnej.
   
     Jeśli utworzono maszynę Wirtualną z programem SQL server 2014, można zainstalować danych narzędzia - Biznesowej programu SQL Server dla programu visual Studio. Aby uzyskać więcej informacji zobacz następujące tematy:
   
   * [Microsoft SQL Server Data Tools — Business Intelligence programu Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools — Business Intelligence programu Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)
   * [SQL Server Data Tools i SQL Server Business Intelligence (SSDT BI)](https://docs.microsoft.com/sql/ssdt/previous-releases-of-sql-server-data-tools-ssdt-and-ssdt-bi)
-* **Program SQL Server Data Tools: Zdalny**: na komputerze lokalnym Utwórz projekt usług Reporting Services w programie SQL Server Data Tools, która zawiera raporty usług Reporting Services. Skonfiguruj projekt, aby nawiązać połączenie z adresu URL usługi internetowej.
+* **SQL Server Data Tools: Zdalne**:  Na komputerze lokalnym Utwórz projekt usług Reporting Services w programie SQL Server Data Tools, która zawiera raporty usług Reporting Services. Skonfiguruj projekt, aby nawiązać połączenie z adresu URL usługi internetowej.
   
     ![Program SSDT właściwości projektu dla projektu usług SSRS](./media/virtual-machines-windows-classic-ps-sql-report/IC650114.gif)
 * **Użyj skryptu**: Użyj skryptu do kopiowania zawartości serwera raportów. Aby uzyskać więcej informacji, zobacz [rs.exe usług Reporting Services przykładowy skrypt w celu migracji zawartości między serwerami raportów w usłudze](https://msdn.microsoft.com/library/dn531017.aspx).

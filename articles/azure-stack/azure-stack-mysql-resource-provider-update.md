@@ -15,12 +15,12 @@ ms.date: 01/11/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: f3129c27d123aa448f8293f7e1827dc3ebc5c82e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f38d27c6f82533265705ff5483bfe835c81c9ce6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239081"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817295"
 ---
 # <a name="update-the-mysql-resource-provider"></a>Aktualizowanie dostawcy zasobów bazy danych MySQL 
 
@@ -30,7 +30,7 @@ Nowe MySQL, które karty dostawcy zasobów może być zwolnione, podczas tworzen
 
 Począwszy od wydania wersji 1.1.33.0 dostawcy zasobów MySQL, są aktualizacjami zbiorczymi i nie muszą być zainstalowane w kolejności, w której zostały wydane; tak długo, jak wszystko, poczynając od wersji 1.1.24.0 lub nowszej. Na przykład jeśli używasz wersji 1.1.24.0 dostawcy zasobów bazy danych MySQL, następnie przeprowadzić uaktualnienie do wersji 1.1.33.0 lub później, bez konieczności najpierw zainstaluj wersję 1.1.30.0. Aby zapoznać się z wersji dostawcy dostępnych zasobów i wersję usługi Azure Stack, są one obsługiwane w, można znaleźć na liście wersji w [wdrażanie wstępnie wymaganych składników dla dostawcy zasobów](./azure-stack-mysql-resource-provider-deploy.md#prerequisites).
 
-Aby zaktualizować dostawcy zasobów, możesz użyć **UpdateMySQLProvider.ps1** skryptu. Proces jest podobny do procesu, który został użyty do zainstalowania dostawcy zasobów, zgodnie z opisem w [wdrażanie dostawcy zasobów](#deploy-the-resource-provider) dalszej części tego artykułu. Skrypt jest dostarczonego z pobranymi dostawcy zasobów. 
+Aby zaktualizować dostawcy zasobów, możesz użyć **UpdateMySQLProvider.ps1** skryptu. Proces jest podobny do procesu, który został użyty do zainstalowania dostawcy zasobów, zgodnie z opisem w wdrażanie dostawcy zasobów części tego artykułu. Skrypt jest dostarczonego z pobranymi dostawcy zasobów. 
 
  > [!IMPORTANT]
  > Przed uaktualnieniem dostawcy zasobów, przejrzyj informacje o wersji, aby dowiedzieć się więcej o nowych funkcjach, poprawek i znanych problemach, które mogą wpłynąć na wdrożenie.

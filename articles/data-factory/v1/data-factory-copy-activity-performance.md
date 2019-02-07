@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331649"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812093"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Skopiuj wydajności i działania przewodnika dostrajania
 
@@ -176,7 +176,7 @@ Informacje, które należy zwrócić uwagę:
 >
 >
 
-Lepiej korzystać z tych dwóch właściwości i zwiększyć przepływność przenoszenia danych, zobacz [przykładowe przypadki użycia](#case-study-use-parallel-copy). Nie trzeba konfigurować **parallelCopies** z zalet domyślnego zachowania. Jeśli skonfigurujesz i **parallelCopies** jest zbyt mały, wiele chmur DMUs może nie w pełni wykorzystywane.
+Lepiej korzystać z tych dwóch właściwości i zwiększyć przepływność przenoszenia danych, zobacz przykładowe przypadki użycia. Nie trzeba konfigurować **parallelCopies** z zalet domyślnego zachowania. Jeśli skonfigurujesz i **parallelCopies** jest zbyt mały, wiele chmur DMUs może nie w pełni wykorzystywane.
 
 ### <a name="billing-impact"></a>Opłaty wpływ
 Ma ona **ważne** należy pamiętać, że opłaty są naliczane na podstawie czasu łączna liczba operacji kopiowania. Jeśli zadanie kopiowania używany do podejmowania jedną godzinę z jednostką jedna chmura, a obecnie zajmuje 15 minut za cztery jednostki chmury, ogólną kwotę rachunku pozostanie prawie takie same. Na przykład możesz użyć cztery jednostki chmury. Pierwszy jednostki chmury — 10 minut, druga, 10 minut, trzecie 5 minut i czwarta, co 5 minut, uruchom wszystko w jednym działaniem kopiowania. Opłata jest naliczana raz całkowita kopiowania (przenoszenia danych), czyli 10 + 10 + 5 + 5 = 30 minut. Za pomocą **parallelCopies** nie ma wpływu na rozliczenia.
@@ -297,7 +297,7 @@ Jeśli kopiowanie danych z magazynu obiektów Blob w usłudze SQL Data Warehouse
 
 * **Wzorzec danych**: Schemat tabeli ma wpływ na przepływność kopiowania. Rozmiar wiersza dużych zapewnia lepszą wydajność niż rozmiar wiersza mały, aby skopiować podobną ilość danych. Przyczyną jest to, że baza danych wydajniej można pobrać mniejszej liczby partii danych, które zawierają mniej wierszy.
 * **Zapytanie lub procedura składowana**: Optymalizuj logiki kwerendy lub procedury składowanej, określonego w źródle działania kopiowania można pobrać danych bardziej efektywnie.
-* Dla **lokalnych relacyjnych baz danych**, takich jak SQL Server i Oracle, które korzystają z **bramy zarządzania danymi**, zobacz [zagadnienia dotyczące bramy zarządzania danymi](#considerations-on-data-management-gateway) sekcji.
+* Dla **lokalnych relacyjnych baz danych**, takich jak SQL Server i Oracle, które korzystają z **bramy zarządzania danymi**, zobacz sekcję Uwagi w sekcji bramy zarządzania danymi.
 
 ## <a name="considerations-for-the-sink"></a>Zagadnienia dotyczące ujścia
 ### <a name="general"></a>Ogólne
@@ -418,7 +418,7 @@ W tym przypadku bzip2 kompresji danych może być spowalniania cały potok. Prze
 Poniżej przedstawiono monitorowanie wydajności i dostosowywania odwołania dla niektórych obsługiwanych magazynów danych:
 
 * Usługa Azure Storage (w tym magazyn obiektów Blob i Table storage): [Cele skalowalności usługi Azure Storage](../../storage/common/storage-scalability-targets.md) i [Lista kontrolna wydajności i skalowalności usługi Azure Storage](../../storage/common/storage-performance-checklist.md)
-* Usługa Azure SQL Database: Możesz [monitorować wydajność](../../sql-database/sql-database-single-database-monitor.md) i sprawdź wartość procentowa jednostki (DTU) dla transakcji bazy danych
+* Azure SQL Database: Możesz [monitorować wydajność](../../sql-database/sql-database-single-database-monitor.md) i sprawdź wartość procentowa jednostki (DTU) dla transakcji bazy danych
 * Azure SQL Data Warehouse: Jej możliwości jest mierzony w liczbę jednostek magazynu danych (dwu); zobacz [Zarządzaj obliczeniowa w usłudze Azure SQL Data Warehouse (omówienie)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Usługa Azure Cosmos DB [Poziomy wydajności w usłudze Azure Cosmos DB](../../cosmos-db/performance-levels.md)
 * Na lokalnym serwerze SQL Server: [Monitorowanie i dostrajanie wydajności](https://msdn.microsoft.com/library/ms189081.aspx)

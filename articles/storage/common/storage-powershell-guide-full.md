@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/16/2018
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 7fbbcefde583d7e464633d9011e591b4c9bf6f65
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2787353230408d6374db36eb5621f98285245364
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460322"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766525"
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Używanie programu Azure PowerShell z usługą Azure Storage
 
@@ -201,7 +201,7 @@ Możesz skonfigurować monitorowanie za pomocą [witryny Azure portal](https://p
 
 * Aby dowiedzieć się, jak włączanie i wyświetlanie danych metryk usługi Storage przy użyciu programu PowerShell, zobacz [włączania usługi Azure Storage metryki i wyświetlanie danych metryk](storage-enable-and-view-metrics.md#how-to-enable-metrics-using-powershell).
 
-* Aby dowiedzieć się, jak włączyć i pobrać rejestrowania magazynu danych przy użyciu programu PowerShell, zobacz [jak włączyć rejestrowanie magazynu, przy użyciu programu PowerShell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#how-to-enable-storage-logging-using-powershell) i [znajdowanie rejestrowania magazynu danych dziennika](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data#finding-your-storage-logging-log-data).
+* Aby dowiedzieć się, jak włączyć i pobrać rejestrowania magazynu danych przy użyciu programu PowerShell, zobacz [jak włączyć rejestrowanie magazynu, przy użyciu programu PowerShell](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data) i [znajdowanie rejestrowania magazynu danych dziennika](/rest/api/storageservices/Enabling-Storage-Logging-and-Accessing-Log-Data).
 
 * Aby uzyskać szczegółowe informacje na temat używania metryki magazynu i rejestrowania magazynu rozwiązywać problemy związane z magazynowaniem, zobacz [monitorowanie, diagnozowanie i rozwiązywanie problemów z usługi Microsoft Azure Storage](storage-monitoring-diagnosing-troubleshooting.md).
 

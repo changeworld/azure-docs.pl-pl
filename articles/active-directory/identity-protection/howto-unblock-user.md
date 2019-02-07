@@ -8,7 +8,7 @@ author: MarkusVi
 manager: daveba
 ms.assetid: a953d425-a3ef-41f8-a55d-0202c3f250a7
 ms.service: active-directory
-ms.subservice: conditional-access
+ms.subservice: identity-protection
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 9feb54c239800346426d7196a1c303ed5930de16
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f430fe0b0e6a3a9786d094cfb15a577a21bf2799
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192455"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770775"
 ---
-# <a name="how-to-unblock-users"></a>Jak: Odblokowywanie użytkowników
+# <a name="how-to-unblock-users"></a>Instrukcje: Odblokowywanie użytkowników
 
 Za pomocą usługi Azure Active Directory Identity Protection można skonfigurować zasady, aby zablokować użytkowników, jeśli skonfigurowane warunki są spełnione. Zazwyczaj zablokowany użytkownik kontaktów pomocy technicznej w celu zostają odblokowane. W tym artykule opisano kroki należy wykonać, aby odblokować zablokowany użytkownik.
 

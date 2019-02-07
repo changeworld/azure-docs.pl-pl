@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/06/2017
-ms.openlocfilehash: d56c44e299125b6b7d8aff429aa6352b8e653a16
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508661"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822378"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning Studio
 
@@ -745,7 +745,7 @@ Aby przeprowadzić analizę korelacji musimy cofnąć trendów i standaryzacji z
 
 Występuje dość występuje bit w `ts.detrend()` funkcji. Większość tego kodu jest sprawdzanie potencjalne problemy z argumentami lub obsłudze wyjątków, które nadal mogą wystąpić podczas obliczeń. Tylko kilka wierszy kodu w rzeczywistości korzystają obliczeń.
 
-Omówiliśmy już przykładem obrony programowania w [wartość przekształcenia](#valuetransformations). Bloki zarówno obliczeń są opakowane w `tryCatch()`. Niektóre błędy dobrym pomysłem będzie zwracać oryginalnego wektora danych wejściowych, a w innych przypadkach wrócić wektor zer.  
+Omówiliśmy już przykładem obrony programowania w przekształceniach wartość. Bloki zarówno obliczeń są opakowane w `tryCatch()`. Niektóre błędy dobrym pomysłem będzie zwracać oryginalnego wektora danych wejściowych, a w innych przypadkach wrócić wektor zer.  
 
 Należy pamiętać, że regresji liniowej używane cofnąć umożliwia analizę trendów regresji serii czasu. Zmienna predykcyjne jest obiekt serii czasu.  
 

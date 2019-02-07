@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: ef70b9e58a669695f3bdec7ad8ea4bab93e7e4b9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 084784af256fdf31cf1661109c0535cb91ef1db5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082048"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817422"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Użytkowników B2B przydział w usłudze Azure AD dostęp do aplikacji w środowisku lokalnym
 
@@ -43,7 +43,7 @@ Aby zapewnić użytkownikom B2B dostępu do aplikacji lokalnych, które są zabe
 
    Scenariusz użytkownika B2B są dostępne, że można użyć do tworzenia obiektów użytkownika gościa, które są wymagane do autoryzacji w katalogu lokalnym dwóch metod:
 
-   - Microsoft Identity Manager (MIM) i [agenta zarządzania programu MIM dla programu Microsoft Graph](#create-b2b-guest-user-objects-through-mim-preview). 
+   - Microsoft Identity Manager (MIM) i agenta zarządzania programu MIM dla programu Microsoft Graph. 
    - [Skrypt programu PowerShell](#create-b2b-guest-user-objects-through-a-script-preview). Za pomocą skryptu jest uproszczone rozwiązanie, które nie wymaga programu MIM. 
 
 Na poniższym diagramie przedstawiono ogólne omówienie serwera Proxy aplikacji jak usługa Azure AD oraz jego generacji B2B obiektu użytkownika w lokalnym katalogu roboczego ze sobą, aby udzielić użytkownikom B2B dostępu do lokalnych aplikacji IWA i ograniczonego delegowania protokołu Kerberos. Kroki wymienione zostały szczegółowo opisane w poniższym diagramie.

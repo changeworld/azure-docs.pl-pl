@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: de31ab4e617b872239c1b83324e5b8d52b0b4094
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/06/2019
+ms.openlocfilehash: 5ce8464de552fb228b961af199e4b03e645478a2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469121"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809984"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Architektura łączności usługi Azure SQL
 
@@ -25,8 +25,7 @@ W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architekt
 
 > [!IMPORTANT]
 > **[Nadchodzącą zmianą] Dla połączeń punkt końcowy usługi z serwerami usługi Azure SQL `Default` zachowanie łączności zmienia `Redirect`.**
->
-> Zmiana obowiązuje we wszystkich regionach w lub przed 2 stycznia 2019 r.
+> Aby utworzyć nowe serwery i ustaw istniejącymi klientami przy użyciu typu połączenia jawnie ustawione przekierowania (preferowany) lub serwera Proxy w zależności od ich architektura łączności doradza się klientów.
 >
 > Aby uniemożliwić łączność za pośrednictwem punktu końcowego usługi podziału w istniejących środowiskach, w wyniku tej zmiany, używamy telemetrii wykonaj następujące czynności:
 > - W przypadku serwerów, które zostanie wykryte, które były dostępne za pośrednictwem punktów końcowych usługi przed zmianą, firma Microsoft przełącznika typ połączenia na `Proxy`.
@@ -38,7 +37,7 @@ W tym artykule opisano usługi Azure SQL Database i SQL Data Warehouse architekt
 >
 > Jeśli nie można ustanowić połączenia punktu końcowego usługi serwera Azure SQL i są podejrzeń, że dotyczy ta zmiana, sprawdź, czy typ połączenia jawnie ustawiono `Redirect`. Jeśli jest to możliwe, należy otworzyć reguły zapory na maszynie Wirtualnej i sieciowych grup zabezpieczeń (NSG) dla wszystkich adresów IP platformy Azure w regionie, które należą do bazy danych Sql [tag usługi](../virtual-network/security-overview.md#service-tags) dla portów 11000 12000. Jeśli nie jest dostępną opcją w, przełączyć serwer jawnie na `Proxy`.
 > [!NOTE]
-> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+> W tym temacie mają zastosowanie do serwerów usługi Azure SQL Database hostingu pojedynczych baz danych i elastycznych pul i baz danych SQL Data Warehouse. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
 
 ## <a name="connectivity-architecture"></a>Architektura łączności
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620527"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820678"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Zdalna komunikacja usług w języku C# przy użyciu usług Reliable Services
 
@@ -239,7 +239,7 @@ Ten krok pozwala się upewnić, że usługa nasłuchuje tylko odbiornika V2.
 
 ## <a name="use-the-remoting-v2-interface-compatible-stack"></a>Korzystanie z komunikacji zdalnej V2 stosu (zgodny z interfejsu)
 
- Komunikacja zdalna V2 (interfejs zgodne, znane jako V2_1) stos zawiera wszystkie funkcje w wersji 2 stosu komunikacji zdalnej. Stos interfejsu jest zgodna z komunikacji zdalnej stack w wersji 1, ale nie jest zgodne z poprzednimi wersjami z wersji 2 i w wersji 1. Aby uaktualnić V1 do V2_1 bez wywierania wpływu na dostępność usługi, postępuj zgodnie z instrukcjami w artykule [uaktualnienie z V1 na V2 (interfejs niezgodny)](#upgrade-from-remoting-v1-to-remoting-v2interfacecompatible).
+ Komunikacja zdalna V2 (interfejs zgodne, znane jako V2_1) stos zawiera wszystkie funkcje w wersji 2 stosu komunikacji zdalnej. Stos interfejsu jest zgodna z komunikacji zdalnej stack w wersji 1, ale nie jest zgodne z poprzednimi wersjami z wersji 2 i w wersji 1. Aby uaktualnić V1 do V2_1 bez wywierania wpływu na dostępność usługi, postępuj zgodnie z instrukcjami w artykule uaktualnienia z wersji 1 do wersji 2 (interfejs zgodne).
 
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>Użyj atrybutu zestawu do korzystania ze stosu (zgodny z interfejsem) remoting V2

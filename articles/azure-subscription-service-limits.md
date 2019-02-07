@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: byvinyal
-ms.openlocfilehash: eb93dfae91ee84400c32af7b662c69aefda979d2
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 00930fd99fd4c0078623aa11f3e2cd5b1c549034
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409177"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812671"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -54,7 +54,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Azure Maps](#azure-maps-limits)
 * [Azure Monitor](#monitor-limits)
 * [Azure Policy](#azure-policy-limits)
-* [Azure Cache for Redis](#azure-redis-cache-limits)
+* Azure Cache for Redis
 * [Tworzenie kopii zapasowych](#backup-limits)
 * [Batch](#batch-limits)
 * [BizTalk Services](#biztalk-services-limits)
@@ -62,7 +62,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Cloud Services](#cloud-services-limits)
 * [Container Instances](#container-instances-limits)
 * [Container Registry](#container-registry-limits)
-* [Usługa Kubernetes](#kubernetes-service-limits)
+* [Kubernetes Service](#kubernetes-service-limits)
 * [Fabryka danych](#data-factory-limits)
 * [Data Lake Analytics](#data-lake-analytics-limits)
 * [Data Lake Store](#data-lake-store-limits)
@@ -77,10 +77,10 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Log Analytics](#log-analytics-limits)
 * [Tożsamość zarządzana](#managed-identity-limits)
 * [Media Services](#media-services-limits)
-* [Usługi Mobile Services](#mobile-services-limits)
+* [Mobile Services](#mobile-services-limits)
 * [Multi-Factor Authentication](#multi-factor-authentication)
 * [Sieć](#networking-limits)
-* [Usługa Network Watcher](#network-watcher-limits)
+* [Network Watcher](#network-watcher-limits)
 * [Usługa Centrum powiadomień](#notification-hub-service-limits)
 * [Grupa zasobów](#resource-group-limits)
 * [Kontrola dostępu oparta na rolach](#role-based-access-control-limits)
@@ -92,7 +92,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
 * [Storage](#storage-limits)
-* [Usługa StorSimple systemu](#storsimple-system-limits)
+* [StorSimple System](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Subskrypcja](#subscription-limits)
 * [Traffic Manager](#traffic-manager-limits)

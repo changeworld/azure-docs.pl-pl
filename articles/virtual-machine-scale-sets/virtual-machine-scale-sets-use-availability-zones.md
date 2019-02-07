@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: b80ee059459d4c1f4d90d14ee62dcead57596571
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697153"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816241"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyn wirtualnych, który używa strefy dostępności
 
@@ -65,7 +65,7 @@ Podczas tworzenia zestawu skalowania w jednej strefie, Ty określasz, która str
 Do korzystania ze stref dostępności, należy utworzyć zestaw skalowania w [obsługiwanym regionie platformy Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones). Można utworzyć zestaw skalowania, który używa strefach dostępności przy użyciu jednego z następujących metod:
 
 - [Azure Portal](#use-the-azure-portal)
-- [Interfejs wiersza polecenia platformy Azure](#use-the-azure-cli-20)
+- Interfejs wiersza polecenia platformy Azure
 - [Azure PowerShell](#use-azure-powershell)
 - [Szablony usługi Azure Resource Manager](#use-azure-resource-manager-templates)
 

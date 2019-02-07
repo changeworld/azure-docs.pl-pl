@@ -14,18 +14,18 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: b89b7885989a5e93d3d292e5cdcff733fed657af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c60dded96df091b1a715fb7b972e9d7a23608d44
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990182"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818825"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów w usłudze Azure DNS przy użyciu programu Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Klasyczny interfejs wiersza polecenia Azure](dns-operations-recordsets-cli-nodejs.md)
+> * [Klasyczny interfejs wiersza polecenia platformy Azure](dns-operations-recordsets-cli-nodejs.md)
 > * [Interfejs wiersza polecenia platformy Azure](dns-operations-recordsets-cli.md)
 > * [Program PowerShell](dns-operations-recordsets.md)
 
@@ -50,7 +50,7 @@ Jeśli nowy rekord ma taką samą nazwę i typ co istniejący rekord, musisz [do
 
 Zestawy rekordów są tworzone za pomocą polecenia cmdlet `New-AzureRmDnsRecordSet`. Podczas tworzenia zestawu rekordów, należy określić zestawu rekordów nazwy, strefa, czas wygaśnięcia (TTL), typ rekordu i rekordy, które ma zostać utworzony.
 
-Parametry używane do dodawania rekordów do zestawu rekordów różnią się w zależności od typu zestawu rekordów. Na przykład, korzystając z zestawu rekordów typu "A", należy określić adres IP za pomocą parametru `-IPv4Address`. Inne parametry są używane dla innych typów rekordów. Zobacz [przykłady dodatkowych typów rekordów](#additional-record-type-examples) Aby uzyskać szczegółowe informacje.
+Parametry używane do dodawania rekordów do zestawu rekordów różnią się w zależności od typu zestawu rekordów. Na przykład, korzystając z zestawu rekordów typu "A", należy określić adres IP za pomocą parametru `-IPv4Address`. Inne parametry są używane dla innych typów rekordów. Zobacz przykłady dodatkowy typ rekordu, aby uzyskać szczegółowe informacje.
 
 Poniższy przykład tworzy zestaw rekordów o nazwie względnej "www" w strefie DNS "contoso.com". W pełni kwalifikowaną nazwą zestawu rekordów jest "www.contoso.com". Typ rekordu to "A", a czas wygaśnięcia wynosi 3600 sekund. Zestaw rekordów zawiera jeden rekord z adresem IP "1.2.3.4".
 
@@ -236,7 +236,7 @@ Ta sekwencja operacji może być również *potokiem*, co oznacza, przekazać ob
 Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Powyższe przykłady pokazują, jak dodać rekord "" do istniejącego zestawu rekordów typu "A". Podobne sekwencja operacji jest używana do dodawania rekordów do zestawów rekordów innych typów, zastępując `-Ipv4Address` parametru `Add-AzureRmDnsRecordConfig` z innymi parametrami, które są specyficzne dla każdego typu rekordu. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzureRmDnsRecordConfig` polecenia cmdlet, jak pokazano w [przykłady dodatkowych typów rekordów](#additional-record-type-examples) powyżej.
+Powyższe przykłady pokazują, jak dodać rekord "" do istniejącego zestawu rekordów typu "A". Podobne sekwencja operacji jest używana do dodawania rekordów do zestawów rekordów innych typów, zastępując `-Ipv4Address` parametru `Add-AzureRmDnsRecordConfig` z innymi parametrami, które są specyficzne dla każdego typu rekordu. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzureRmDnsRecordConfig` polecenia cmdlet, jak pokazano w przykładach dodatkowy typ rekordu.
 
 Zestawy rekordów typu "CNAME" lub "SOA" nie może zawierać więcej niż jeden rekord. To ograniczenie wynika z standardy systemu DNS. Nie jest to ograniczenie usługi Azure DNS.
 
@@ -270,7 +270,7 @@ Podobnie do dodawania rekordów do zestawu rekordów, kolejność operacji możn
 Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Różne typy rekordów są obsługiwane, przekazując odpowiednie parametry specyficzne dla typu, aby `Remove-AzureRmDnsRecordSet`. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzureRmDnsRecordConfig` polecenia cmdlet, jak pokazano w [przykłady dodatkowych typów rekordów](#additional-record-type-examples) powyżej.
+Różne typy rekordów są obsługiwane, przekazując odpowiednie parametry specyficzne dla typu, aby `Remove-AzureRmDnsRecordSet`. Parametry dla każdego typu rekordu są takie same jak w przypadku `New-AzureRmDnsRecordConfig` polecenia cmdlet, jak pokazano w przykładach dodatkowy typ rekordu.
 
 
 ## <a name="modify-an-existing-record-set"></a>Modyfikowanie istniejącego zestawu rekordów

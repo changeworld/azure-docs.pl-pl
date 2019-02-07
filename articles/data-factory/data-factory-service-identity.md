@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: jingwang
-ms.openlocfilehash: b0cb72b8a9c1710b2b22d987c2818a490a2ea553
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 068929bbde8e4c1411004b45fc77f0188de43ff8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753363"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814218"
 ---
 # <a name="azure-data-factory-service-identity"></a>Tożsamości usługi w usłudze Azure Data Factory
 
@@ -44,7 +44,7 @@ Możesz odnaleźć fabryki danych nie ma usługi tożsamość skojarzoną nastę
 
 - [Generowanie tożsamości usługi za pomocą programu PowerShell](#generate-service-identity-using-powershell)
 - [Generowanie tożsamości usługi za pomocą interfejsu API REST](#generate-service-identity-using-rest-api)
-- [Generowanie tożsamości usługi za pomocą szablonu usługi Azure Resource Manager](#generate-service-identity-using-azure-resource-manager-template)
+- Generowanie tożsamości usługi za pomocą szablonu usługi Azure Resource Manager
 - [Generowanie tożsamości usługi za pomocą zestawu SDK](#generate-service-identity-using-sdk)
 
 >[!NOTE]

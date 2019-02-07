@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 9c03e0ced565daef01304e288b71c46aa0035384
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fcd1d8c4dd1f9684db85514a80fea7022f52b0fa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730097"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817091"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Tworzenie, zmienianie lub usuwanie komunikacji równorzędnej sieci wirtualnej
 
@@ -39,7 +39,7 @@ Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być
 
 ## <a name="create-a-peering"></a>Utworzyć połączenie równorzędne
 
-Zanim utworzysz komunikację równorzędną, zapoznaj się z [wymagania i ograniczenia](#requirements-and-contstraints) i [niezbędne uprawnienia](#permissions).
+Zanim utworzysz komunikację równorzędną, zapoznaj się z wymagań i ograniczeń i [niezbędne uprawnienia](#permissions).
 
 1. W polu wyszukiwania w górnej części witryny Azure portal wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją. Nie należy wybierać **sieci wirtualne (klasyczne)** Jeśli pojawia się na liście, ponieważ nie można utworzyć komunikację równorzędną z sieci wirtualnej, która jest wdrażana za pośrednictwem klasycznego modelu wdrażania.
 2. Wybierz sieć wirtualną na liście, który chcesz utworzyć komunikację równorzędną.
@@ -75,7 +75,7 @@ Instrukcje krok po kroku dotyczące implementowania komunikację równorzędną 
 
 ## <a name="view-or-change-peering-settings"></a>Wyświetl lub zmień ustawienia komunikacji równorzędnej
 
-Przed zmianą, komunikację równorzędną, zapoznaj się z [wymagania i ograniczenia](#requirements-and-contstraints) i [niezbędne uprawnienia](#permissions).
+Przed zmianą, komunikację równorzędną, zapoznaj się z wymagań i ograniczeń i [niezbędne uprawnienia](#permissions).
 
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieci wirtualnych* w polu wyszukiwania. Gdy **sieci wirtualne** są wyświetlane w wynikach wyszukiwania, wybierz ją. Nie należy wybierać **sieci wirtualne (klasyczne)** Jeśli pojawia się na liście, ponieważ nie można utworzyć komunikację równorzędną z sieci wirtualnej, która jest wdrażana za pośrednictwem klasycznego modelu wdrażania.
 2. Wybierz sieć wirtualną na liście, który chcesz zmienić ustawienia komunikacji równorzędnej.

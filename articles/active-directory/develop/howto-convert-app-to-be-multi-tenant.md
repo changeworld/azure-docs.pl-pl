@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
-ms.openlocfilehash: ae9412ed7c02d88e7d0c35c6ea0f95da755b84d4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f9a1b303fb66e71ffb1834c5b5fb4796867a0944
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097048"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819420"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
 
@@ -38,7 +38,7 @@ Istnieją cztery proste kroki, aby przekonwertować aplikacji w aplikacji wielod
 1. [Aktualizuj rejestrację aplikacji w taki sposób, aby się z wieloma dzierżawcami](#update-registration-to-be-multi-tenant)
 2. [Zaktualizuj kod w celu wysyłania żądań do / Common punktu końcowego](#update-your-code-to-send-requests-to-common)
 3. [Zaktualizuj swój kod obsługi wielu wartości wystawcy](#update-your-code-to-handle-multiple-issuer-values)
-4. [Zrozumienie zgody użytkownika i administratora i wprowadź zmiany odpowiedni kod](#understanding-user-and-admin-consent)
+4. Zrozumienie zgody użytkownika i administratora i wprowadź zmiany odpowiedni kod
 
 Spójrzmy na poszczególnych kroków w artykule. Możesz też przejść bezpośrednio do [tej listy przykłady wielodostępnych][AAD-Samples-MT].
 

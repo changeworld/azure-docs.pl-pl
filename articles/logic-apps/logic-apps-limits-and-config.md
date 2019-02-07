@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: 494665e530104cd4711e8112f3a999e68c3485b8
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d77cdd7781f3a371d6089573a16ba642fb1c774c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746391"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769872"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -195,53 +195,58 @@ Korzystać z bezpłatnej warstwy tylko na potrzeby scenariuszy eksploracyjnego, 
 
 | Artefakt | Limit | Uwagi | 
 |----------|-------|-------| 
-| Partnerzy handlowi EDI | 25 | | 
-| Handlowym umów integracji EDI | 10 | | 
-| Maps | 25 | | 
-| Schematy | 25 | 
 | Zestawy | 10 | | 
 | Konfiguracje partii | 5 | 
 | Certyfikaty | 25 | | 
+| Handlowym umów integracji EDI | 10 | | 
+| Partnerzy handlowi EDI | 25 | | 
+| Maps | 25 | | 
+| Schematy | 25 | 
 |||| 
 
 *Warstwa podstawowa*
 
 | Artefakt | Limit | Uwagi | 
 |----------|-------|-------| 
-| Partnerzy handlowi EDI | 2 | | 
-| Handlowym umów integracji EDI | 1 | | 
-| Maps | 500 | | 
-| Schematy | 500 | 
 | Zestawy | 25 | | 
 | Konfiguracje partii | 1 | | 
 | Certyfikaty | 2 | | 
+| Handlowym umów integracji EDI | 1 | | 
+| Partnerzy handlowi EDI | 2 | | 
+| Maps | 500 | | 
+| Schematy | 500 | 
 |||| 
 
 *Warstwa standardowa*
 
 | Artefakt | Limit | Uwagi | 
 |----------|-------|-------| 
-| Partnerzy handlowi EDI | 500 | | 
-| Handlowym umów integracji EDI | 500 | | 
-| Maps | 500 | | 
-| Schematy | 500 | 
 | Zestawy | 50 | | 
 | Konfiguracje partii | 5 |  
 | Certyfikaty | 50 | | 
+| Handlowym umów integracji EDI | 500 | | 
+| Partnerzy handlowi EDI | 500 | | 
+| Maps | 500 | | 
+| Schematy | 500 | 
 |||| 
 
 <a name="artifact-capacity-limits"></a>
 
 ### <a name="artifact-capacity-limits"></a>Limity pojemności artefaktu
 
-| Name (Nazwa) | Limit | Uwagi | 
-| ---- | ----- | ----- | 
-| Schemat | 8 MB | Aby przekazać pliki, które są większe niż 2 MB, należy użyć [identyfikator URI obiektu blob](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
-| Mapy (plik XSLT) | 2 MB | | 
-| Punkt końcowy środowiska uruchomieniowego: Odczyt wywołań na 5 minut | 60,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
-| Punkt końcowy środowiska uruchomieniowego: Wywołania na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
-| Punkt końcowy środowiska uruchomieniowego: Wywołania śledzenia na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
-| Punkt końcowy środowiska uruchomieniowego: Zablokowanie współbieżnych wywołań | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
+| Artefakt | Limit | Uwagi | 
+| -------- | ----- | ----- | 
+| Zestaw | 8 MB | Aby przekazać pliki, które są większe niż 2 MB, należy użyć [kontener konta i obiektów blob usługi Azure storage](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+| Mapy (plik XSLT) | 8 MB | Aby przekazać pliki, które są większe niż 2 MB, należy użyć [mapuje API REST usługi Azure Logic Apps —](https://docs.microsoft.com/rest/api/logic/maps/createorupdate). | 
+| Schemat | 8 MB | Aby przekazać pliki, które są większe niż 2 MB, należy użyć [kontener konta i obiektów blob usługi Azure storage](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+||||
+
+| Punkt końcowy środowiska uruchomieniowego | Limit | Uwagi |
+|------------------|-------|-------|
+| Odczyt wywołań na 5 minut | 60,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
+| Wywołania na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
+| Wywołania śledzenia na 5 minut | 45,000 | Za rozkłada obciążenie na więcej niż jedno konto zgodnie z potrzebami. | 
+| Zablokowanie współbieżnych wywołań | ~1,000 | Można zmniejszyć liczbę jednoczesnych żądań lub Skróć czas trwania zgodnie z potrzebami. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>

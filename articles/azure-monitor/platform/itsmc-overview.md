@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: v-jysur
-ms.openlocfilehash: cd27a4d43333674ec1928fbd873e873afe84d26d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f0d3641800d8ec2f9fd403b006e81af04444c143
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262884"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813130"
 ---
 # <a name="connect-azure-to-itsm-tools-using-it-service-management-connector"></a>Azure nawiązać połączenie narzędzia ITSM za pomocą łącznika zarządzania usługami IT
 
@@ -44,7 +44,7 @@ Za pomocą ITSMC możesz
 Aby zacząć korzystać łącznik ITSM, wykonując następujące czynności:
 
 1.  [Dodaj rozwiązanie łącznik ITSM](#adding-the-it-service-management-connector-solution)
-2.  [Utwórz połączenie narzędzia ITSM](#creating-an-itsm-connection)
+2.  Utwórz połączenie narzędzia ITSM
 3.  [Użyj połączenia](#using-the-solution)
 
 
@@ -193,7 +193,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Element źródłowy
 - Przypisano do
 - Kategoria
-- Stanowisko
+- Tytuł
 - Opis
 - Data utworzenia
 - Data zamknięcia
@@ -213,8 +213,8 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Zamknięte przez
 - Element źródłowy
 - Przypisano do
-- Stanowisko
-- Typ
+- Tytuł
+- Type
 - Kategoria
 - Stan
 - Eskalacja
@@ -266,7 +266,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 | ClosedBy_s | Zamknięte przez |
 | AssignedTo_s | Przypisane do  |
 | Title_s|  Krótki opis |
-| Type_s|  Typ |
+| Type_s|  Type |
 | Category_s|  Kategoria |
 | CRState_s|  Stan|
 | Urgency_s|  Pilność |

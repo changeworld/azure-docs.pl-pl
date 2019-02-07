@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 426c8995e5c3d98e42d0ad334b8ae52171556dce
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884966"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770792"
 ---
 # <a name="iot-hub-device-streams-preview"></a>Strumienie urządzenia Centrum IoT (wersja zapoznawcza)
 
@@ -82,8 +82,22 @@ Urządzenia i stronach usługi stream urządzenie musi być nawiązywanie połą
 Alternatywnie informacji punkty końcowe użycia można pobrać przy użyciu wiersza polecenia platformy Azure w Centrum w sekcji właściwości, w szczególności `property.hostname` i `property.deviceStreams` kluczy.
 
 ```azurecli-interactive
-az iot hub show --name <YourIoTHubName>
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+Wynikiem jest obiekt JSON, wszystkich punktów końcowych wymagających Twojego Centrum usług i urządzeń mogą się połączyć, aby ustanowić strumień urządzeń.
+
+```json
+{
+  "streamingEndpoints": [
+    "https://<YourIoTHubName>.<region-stamp>.streams.azure-devices.net"
+  ]
+}
+```
+
+> [!NOTE]
+> Upewnij się, zainstalowano wiersza polecenia platformy Azure w wersji 2.0.57 lub nowszej. Najnowszą wersję możesz pobrać [tutaj](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> 
 
 ## <a name="whitelist-device-streaming-endpoints"></a>Punkty końcowe przesyłania strumieniowego do listy dozwolonych urządzeń
 
@@ -92,9 +106,14 @@ Jak wspomniano wcześniej [wcześniej](#Overview), urządzenie tworzy połączen
 Nazwa hosta punktu końcowego przesyłania strumieniowego urządzeń można znaleźć w portalu usługi Azure IoT Hub na karcie Przegląd. ![Tekst alternatywny](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "punktów końcowych usługi stream urządzenia")
 
 Alternatywnie można znaleźć te informacje przy użyciu wiersza polecenia platformy Azure:
-```cmd/sh
-az iot hub show --name <YourIoTHubName>
+
+```azurecli-interactive
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+> [!NOTE]
+> Upewnij się, zainstalowano wiersza polecenia platformy Azure w wersji 2.0.57 lub nowszej. Najnowszą wersję możesz pobrać [tutaj](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> 
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Rozwiązywanie problemów za pomocą urządzenia strumienie dzienników aktywności
 
@@ -184,7 +203,7 @@ Użyj poniższych linków, aby uzyskać instrukcje na temat sposobu uruchamiania
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat urządzeń, strumieni, należy użyć poniższych linków:
+Aby dowiedzieć się więcej na temat strumieni urządzeń, użyj poniższych linków:
 
 > [!div class="nextstepaction"]
 > [Strumienie urządzenia na IoT Pokaż (Channel 9)](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fchannel9.msdn.com%2FShows%2FInternet-of-Things-Show%2FAzure-IoT-Hub-Device-Streams&data=02%7C01%7Crezas%40microsoft.com%7Cc3486254a89a43edea7c08d67a88bcea%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636831125031268909&sdata=S6u9qiehBN4tmgII637uJeVubUll0IZ4p2ddtG5pDBc%3D&reserved=0)

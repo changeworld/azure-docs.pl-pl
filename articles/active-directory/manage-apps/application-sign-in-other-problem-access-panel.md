@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: japere
-ms.openlocfilehash: 529191cf867b6003b0c2eab5ed919087277c7095
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6dfc0f80285dfd7da6e78d7cbf9c993fed388a2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178039"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813538"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Problemy z logowaniem do aplikacji przy użyciu panelu dostępu
 
@@ -104,7 +104,7 @@ Wszystkie aplikacji w galerii usługi Azure AD, włączone za pomocą funkcji lo
 
 Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:
 
--   [Dodawanie aplikacji z galerii usługi Azure AD](#add-an-application)
+-   Dodawanie aplikacji z galerii usługi Azure AD
 
 -   [Skonfiguruj wartości metadanych aplikacji w usłudze Azure AD (adres URL odpowiedzi adresu URL, identyfikator logowania)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
@@ -114,7 +114,7 @@ Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:
 
 -   [Skonfiguruj wartości metadanych usługi Azure AD w aplikacji (logowanie jednokrotne adresu URL, wystawcy, adres URL wylogowania i certyfikat)](#configure-single-sign-on-for-an-application-from-the-azure-ad-gallery)
 
--   [Przypisywanie użytkowników do aplikacji](#assign-users-to-the-application)
+-   Przypisywanie użytkowników do aplikacji
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Dodawanie aplikacji z galerii usługi Azure AD
 
@@ -362,9 +362,9 @@ Aby pobrać metadanych aplikacji lub certyfikatu z usługi Azure AD, wykonaj nas
 
 Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:
 
--   [Dodawanie aplikacji z galerii usługi Azure AD](#add-an-application)
+-   Dodawanie aplikacji z galerii usługi Azure AD
 
--   [Konfigurowanie aplikacji dla hasła logowania jednokrotnego](#configure-the-application)
+-   Konfigurowanie aplikacji dla hasła logowania jednokrotnego
 
 ### <a name="add-an-application-from-the-azure-ad-gallery"></a>Dodawanie aplikacji z galerii usługi Azure AD
 

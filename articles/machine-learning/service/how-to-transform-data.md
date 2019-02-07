@@ -12,12 +12,12 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: f02d511c5afa6d515f29b9fc557be3b49223c501
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4291f6083cfe07d689ef9377df57c3e9a41772fc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243287"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812212"
 ---
 # <a name="transform-data-with-the-azure-machine-learning-data-prep-sdk"></a>Przekształcanie danych za pomocą usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
@@ -25,7 +25,7 @@ W tym artykule dowiesz się, trwa ładowanie danych przy użyciu różnych metod
 
 Obecnie dostępne są funkcje w celu uwzględnienia poniższych zadań:
 
-- [Dodawanie kolumny za pomocą wyrażenia](#column)
+- Dodawanie kolumny za pomocą wyrażenia
 - [Naliczenie brakujące wartości](#impute-missing-values)
 - [Utwórz kolumnę pochodną według przykładu](#derive-column-by-example)
 - [Filtrowanie](#filtering)

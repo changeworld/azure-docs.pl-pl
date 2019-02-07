@@ -15,19 +15,19 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: be72c7fa81bffdcd8864a501264dd36fa697d18e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: fb451ab3a28ecca42fc05edad14cd513c4fe1f68
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55489091"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820491"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Niestandardowa instalacja programu Azure AD Connect
 Opcja **Ustawienia niestandardowe** programu Azure AD Connect umożliwia skorzystanie z większej liczby opcji instalacji. Jest używana w przypadku występowania wielu lasów lub w celu skonfigurowania funkcji opcjonalnych, których nie obejmuje instalacja ekspresowa. Jest przydatna w każdej sytuacji, gdy opcja [**instalacji ekspresowej**](how-to-connect-install-express.md) nie zaspokaja potrzeb związanych z wdrożeniem lub topologią.
 
 Przed rozpoczęciem instalacji należy [pobrać program Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771) i wykonać czynności związane z wymaganiami wstępnymi opisane w temacie [Azure AD Connect: sprzęt i wymagania wstępne](how-to-connect-install-prerequisites.md). Sprawdź także, czy dostępne są wymagane konta, zgodnie z opisem w temacie [Konta i uprawnienia w programie Azure AD Connect](reference-connect-accounts-permissions.md).
 
-Jeśli ustawienia niestandardowe nie odpowiadają wymaganiom topologii, np. w przypadku uaktualniania narzędzia DirSync, możesz znaleźć inne scenariusze w [powiązanej dokumentacji](#related-documentation).
+Jeśli dostosowane ustawienia nie odpowiada wymaganiom topologii, na przykład do uaktualnienia narzędzia DirSync, zobacz powiązanej dokumentacji dla innych scenariuszy.
 
 ## <a name="custom-settings-installation-of-azure-ad-connect"></a>Instalacja programu Azure AD Connect z ustawieniami niestandardowymi
 ### <a name="express-settings"></a>Ustawienia ekspresowe

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/11/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9cb41bfde38d9b47f5db994c0ca39c64b453ef1d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 548c05963b0b99ba3434d600b19f80cef6a09d6a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171460"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813351"
 ---
 # <a name="reliable-services-application-and-service-manifest-examples"></a>Przykłady manifestu aplikacji i usługi Reliable Services
 Poniżej przedstawiono przykłady manifestów aplikacji i usługi dla aplikacji usługi Service Fabric za pomocą frontonu sieci web platformy ASP.NET Core i stanowej back-end. Te przykłady ma na celu Pokaż jakie ustawienia są dostępne i jak z nich korzystać. Te manifesty aplikacji i usługi są oparte na [usługi Service Fabric platformy .NET Przewodnik Szybki Start](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/) manifestów.
@@ -28,8 +28,8 @@ Wyświetlane są następujące funkcje:
 |Manifest|Funkcje|
 |---|---|
 |[Manifest aplikacji](#application-manifest)| [nadzór nad zasobami](service-fabric-resource-governance.md), [uruchamianie usługi jako konto administratora lokalnego](service-fabric-application-runas-security.md), [dotyczą zasady domyślne wszystkie pakiety kodu usługi](service-fabric-application-runas-security.md#apply-a-default-policy-to-all-service-code-packages), [tworzenie użytkowników i grup jednostek](service-fabric-application-runas-security.md), Udostępnij pakiet danych między wystąpieniami usług [zastąpienia punkty końcowe usługi](service-fabric-service-manifest-resources.md#overriding-endpoints-in-servicemanifestxml)| 
-|[FrontEndService manifestu usługi](#frontendservice-service-manifest)| [Za pomocą skryptu podczas uruchamiania usługi](service-fabric-run-script-at-service-startup.md), [Definiowanie punktu końcowego HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
-|[BackEndService manifestu usługi](#backendservice-service-manifest)| [Deklaracja pakietu konfiguracji](service-fabric-application-and-service-manifests.md), [zadeklarować pakiet danych](service-fabric-application-and-service-manifests.md), [konfigurowania punktu końcowego](service-fabric-service-manifest-resources.md)| 
+|FrontEndService manifestu usługi| [Za pomocą skryptu podczas uruchamiania usługi](service-fabric-run-script-at-service-startup.md), [Definiowanie punktu końcowego HTTPS](service-fabric-tutorial-dotnet-app-enable-https-endpoint.md#define-an-https-endpoint-in-the-service-manifest) | 
+|BackEndService manifestu usługi| [Deklaracja pakietu konfiguracji](service-fabric-application-and-service-manifests.md), [zadeklarować pakiet danych](service-fabric-application-and-service-manifests.md), [konfigurowania punktu końcowego](service-fabric-service-manifest-resources.md)| 
 
 Zobacz [elementy manifestu aplikacji](#application-manifest-elements), [elementy manifestu usługi VotingWeb](#votingweb-service-manifest-elements), i [elementy manifestu usługi VotingData](#votingdata-service-manifest-elements) więcej informacji na temat określonych XML elementy.
 

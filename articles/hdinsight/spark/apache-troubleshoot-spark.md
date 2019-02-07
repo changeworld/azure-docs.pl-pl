@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2108de8988e973644e0622a4b76a04408949298e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f6e9641d106c40c061752b57744eda09aac157a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635157"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821970"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>Rozwiązywanie problemów z platformy Apache Spark przy użyciu usługi Azure HDInsight
 
@@ -23,7 +23,7 @@ Dowiedz się więcej o najważniejszych problemach i ich rozwiązania, pracując
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-Wartości konfiguracji do wykonania tej procedury zostały wcześniej ustawione w HDInsight. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception). 
+Wartości konfiguracji do wykonania tej procedury zostały wcześniej ustawione w HDInsight. Aby określić, które Spark konfiguracji należy ustawić i jakie wartości, zobacz, co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark. 
 
 1. Wybierz listy klastrów, **Spark2**.
 
@@ -92,7 +92,7 @@ Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadani
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Aby określić, które Spark konfiguracji należy ustawić i jakie wartości, zobacz, co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark.
 
 2. W pierwszej komórki notesu programu Jupyter po **%% skonfigurować** dyrektywy, określanie konfiguracji platformy Spark w prawidłowym formacie JSON. Ustaw rzeczywistymi wartościami:
 
@@ -107,7 +107,7 @@ Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadani
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception). 
+1. Aby określić, które Spark konfiguracji należy ustawić i jakie wartości, zobacz, co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark. 
 
 2. Przesyłanie aplikacji Spark usługi Livy za pomocą klienta REST, takich jak narzędzie cURL. Użyj polecenia podobnego do następującego. Ustaw rzeczywistymi wartościami:
 
@@ -124,7 +124,7 @@ Te zmiany są całego klastra, ale mogą być zastąpione, gdy prześlesz zadani
 
 ### <a name="resolution-steps"></a>Kroki rozwiązywania problemów
 
-1. Aby określić, które Spark konfiguracji należy ustawić i zobacz, jakie wartości [co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark](#what-causes-a-spark-application-outofmemoryerror-exception).
+1. Aby określić, które Spark konfiguracji należy ustawić i jakie wartości, zobacz, co powoduje, że wyjątek OutofMemoryError aplikacji platformy Apache Spark.
 
 2. Uruchamianie powłoki spark przy użyciu polecenia podobnego do następującego. Zmień rzeczywistej wartości konfiguracji zgodnie z potrzebami: 
 

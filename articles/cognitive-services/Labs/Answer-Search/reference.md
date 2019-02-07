@@ -10,12 +10,12 @@ ms.subservice: answer-search
 ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
-ms.openlocfilehash: 6ec09627fb80925fef72c491936a1dd83106874b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5e9ae8fcd756619c83ebde12df9f8405f1a39bf6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211699"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812586"
 ---
 # <a name="project-answer-search-v7-reference"></a>Odwołanie do projektu odpowiedzi wyszukiwania w wersji 7
 
@@ -65,7 +65,7 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 |Nagłówek|Opis|  
 |------------|-----------------|  
 |Zaakceptuj|Opcjonalny nagłówek żądania.<br /><br /> Domyślny typ nośnika jest application/json. Aby określić, czy odpowiedź korzystać [JSON-LD](http://json-ld.org/), ustaw nagłówek Accept application/ld + json.|  
-|<a name="acceptlanguage" />Accept-Language|Opcjonalny nagłówek żądania.<br /><br /> Rozdzielana przecinkami lista języków dla ciągów interfejsu użytkownika. Lista jest zorganizowana w malejącym porządku preferencji. Aby uzyskać więcej informacji, łącznie z oczekiwanym formatem, zobacz [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ten nagłówek i parametr zapytania [setLang](#setlang) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Jeśli ustawisz ten nagłówek, musisz także określić parametr zapytania [cc](#cc). Aby ustalić rynek, dla którego mają zostać zwrócone wyniki, usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście i łączy go z wartością parametru `cc`. Jeśli lista nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie, lub używa rynku zagregowanego bądź domyślnego. Aby sprawdzić, jakiego rynku użyła usługa Bing, zobacz nagłówek BingAPIs-Market.<br /><br /> Używaj tego nagłówka i parametru zapytania `cc` tylko wtedy, gdy określasz wiele języków. W przeciwnym razie użyj parametrów zapytania [mkt](#mkt) i [setLang](#setlang).<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|  
+|<a name="acceptlanguage" />Accept-Language|Opcjonalny nagłówek żądania.<br /><br /> Rozdzielana przecinkami lista języków dla ciągów interfejsu użytkownika. Lista jest zorganizowana w malejącym porządku preferencji. Aby uzyskać więcej informacji, łącznie z oczekiwanym formatem, zobacz [RFC2616](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).<br /><br /> Ten nagłówek i parametr zapytania [setLang](#setlang) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Jeśli ustawisz ten nagłówek, należy także określić parametr zapytania DW. Aby ustalić rynek, dla którego mają zostać zwrócone wyniki, usługa Bing używa pierwszego obsługiwanego języka znalezionego na liście i łączy go z wartością parametru `cc`. Jeśli lista nie zawiera obsługiwanego języka, usługa Bing znajduje najbliższy język i rynek, które obsługują żądanie, lub używa rynku zagregowanego bądź domyślnego. Aby sprawdzić, jakiego rynku użyła usługa Bing, zobacz nagłówek BingAPIs-Market.<br /><br /> Używaj tego nagłówka i parametru zapytania `cc` tylko wtedy, gdy określasz wiele języków. W przeciwnym razie użyj parametrów zapytania [mkt](#mkt) i [setLang](#setlang).<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|  
 |<a name="market" />BingAPIs-Market|Nagłówek odpowiedzi.<br /><br /> Rynek używany przez żądanie. Format jest następujący \<kod_języka\>-\<kod_kraju\>. Na przykład en-US.|  
 |<a name="traceid" />BingAPIs-TraceId|Nagłówek odpowiedzi.<br /><br /> Identyfikator wpisu dziennika, który zawiera szczegółowe informacje o żądaniu. Gdy wystąpi błąd, przechwyć ten identyfikator. Jeśli nie możesz określić i rozwiązać problemu, dołącz ten identyfikator wraz z innymi informacjami, które podasz zespołowi pomocy technicznej.|  
 |<a name="subscriptionkey" />Ocp-Apim-Subscription-Key|Wymagany nagłówek żądania.<br /><br /> Klucz subskrypcji otrzymany podczas tworzenia konta dla tej usługi w usługach [Cognitive Services](https://www.microsoft.com/cognitive-services/).|  
@@ -83,13 +83,13 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 Żądanie może obejmować następujące parametry zapytania. Zobacz wymaganej kolumny dla wymaganych parametrów. Należy najpierw, adres URL zakodować parametry zapytania.  
   
   
-|Name|Value|Type|Wymagany|  
+|Name (Nazwa)|Wartość|Type|Wymagane|  
 |----------|-----------|----------|--------------|  
-|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku, zobacz [kody rynku](#market-codes).<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko en-us rynku i język.<br /><br />|Ciąg|Yes|  
-|<a name="query" />q|Adres URL, aby wyświetlić podgląd|Ciąg|Yes|  
-|<a name="responseformat" />responseFormat|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />  Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](http://json-ld.org/).|Ciąg|Nie|  
-|<a name="safesearch" />safeSearch|Filtr używany do odfiltrowania zawartości dla dorosłych. Poniżej przedstawiono możliwe wartości filtru bez uwzględniania wielkości liter.<br /><ul><li>Wyłącz&mdash;zwracają stron internetowych z treści dla dorosłych tekst, obrazy lub filmy wideo.<br /><br/></li><li>Umiarkowany&mdash;zwracają stron internetowych z treści dla dorosłych tekstu, ale niepełnoletni obrazy lub filmy wideo.<br /><br/></li><li>Ścisłe&mdash;nie zwracają stron internetowych z treści dla dorosłych tekst, obrazy lub filmy wideo.</li></ul><br /> Wartość domyślna to Moderate.<br /><br /> **UWAGA:** Jeśli żądanie pochodzi z rynku zasad treści dla dorosłych tego Bing wymaga `safeSearch` jest ustawiony na Strict, ignoruje Bing `safeSearch` wartość i używa Strict.<br/><br/>**UWAGA:** Jeśli używasz `site:` — operator zapytań, istnieje prawdopodobieństwo, że odpowiedź może zawierać treści dla dorosłych niezależnie od tego, co `safeSearch` ustawiono parametr zapytania. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych. |Ciąg|Nie|  
-|<a name="setlang" />setLang|Język ciągów interfejsu użytkownika. Określ język przy użyciu 2-literowego kodu języka w standardzie ISO 639-1. Na przykład kod języka dla języka angielskiego to EN. Wartość domyślna to EN (język angielski).<br /><br /> Mimo, że jest to opcjonalne, należy zawsze określić język. Na ogół dla parametru `setLang` ustawia się język określony przez parametr `mkt`, chyba że użytkownik chce, aby ciągi interfejsu użytkownika były wyświetlane w innym języku.<br /><br /> Ten parametr i nagłówek [Accept-Language](#acceptlanguage) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Ponadto wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|Ciąg|Nie| 
+|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko en-us rynku i język.<br /><br />|String|Yes|  
+|<a name="query" />q|Adres URL, aby wyświetlić podgląd|String|Yes|  
+|<a name="responseformat" />responseFormat|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />  Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](http://json-ld.org/).|String|Nie|  
+|<a name="safesearch" />safeSearch|Filtr używany do odfiltrowania zawartości dla dorosłych. Poniżej przedstawiono możliwe wartości filtru bez uwzględniania wielkości liter.<br /><ul><li>Wyłącz&mdash;zwracają stron internetowych z treści dla dorosłych tekst, obrazy lub filmy wideo.<br /><br/></li><li>Umiarkowany&mdash;zwracają stron internetowych z treści dla dorosłych tekstu, ale niepełnoletni obrazy lub filmy wideo.<br /><br/></li><li>Ścisłe&mdash;nie zwracają stron internetowych z treści dla dorosłych tekst, obrazy lub filmy wideo.</li></ul><br /> Wartość domyślna to Moderate.<br /><br /> **UWAGA:** Jeśli żądanie pochodzi z rynku zasad treści dla dorosłych tego Bing wymaga `safeSearch` jest ustawiony na Strict, ignoruje Bing `safeSearch` wartość i używa Strict.<br/><br/>**UWAGA:** Jeśli używasz `site:` — operator zapytań, istnieje prawdopodobieństwo, że odpowiedź może zawierać treści dla dorosłych niezależnie od tego, co `safeSearch` ustawiono parametr zapytania. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych. |String|Nie|  
+|<a name="setlang" />setLang|Język ciągów interfejsu użytkownika. Określ język przy użyciu 2-literowego kodu języka w standardzie ISO 639-1. Na przykład kod języka dla języka angielskiego to EN. Wartość domyślna to EN (język angielski).<br /><br /> Mimo, że jest to opcjonalne, należy zawsze określić język. Na ogół dla parametru `setLang` ustawia się język określony przez parametr `mkt`, chyba że użytkownik chce, aby ciągi interfejsu użytkownika były wyświetlane w innym języku.<br /><br /> Ten parametr i nagłówek [Accept-Language](#acceptlanguage) wykluczają się wzajemnie&mdash;nie określaj ich jednocześnie.<br /><br /> Ciąg interfejsu użytkownika to ciąg, który jest używany jako etykieta w interfejsie użytkownika. W obiektach odpowiedzi JSON istnieje kilka ciągów interfejsu użytkownika. Ponadto wszelkie linki do właściwości witryny Bing.com w obiektach odpowiedzi także stosują określony język.|String|Nie| 
 
 
 ## <a name="response-objects"></a>Obiekty odpowiedzi  
@@ -108,20 +108,20 @@ Definiuje błąd, który wystąpił.
   
 |Element|Opis|Type|  
 |-------------|-----------------|----------|  
-|<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|Ciąg|  
-|<a name="error-message" />Komunikat|Opis błędu.|Ciąg|  
-|<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o tym błędzie.|Ciąg|  
-|<a name="error-parameter" />Parametr|Parametr zapytania w żądaniu, które spowodowały błąd.|Ciąg|  
-|<a name="error-subcode" />subCode|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |Ciąg|  
-|<a name="error-value" />Wartość|Wartość parametru zapytania, która nie jest prawidłowa.|Ciąg|  
+|<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|String|  
+|<a name="error-message" />Komunikat|Opis błędu.|String|  
+|<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o tym błędzie.|String|  
+|<a name="error-parameter" />Parametr|Parametr zapytania w żądaniu, które spowodowały błąd.|String|  
+|<a name="error-subcode" />subCode|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |String|  
+|<a name="error-value" />Wartość|Wartość parametru zapytania, która nie jest prawidłowa.|String|  
   
 
 ### <a name="errorresponse"></a>ErrorResponse  
 Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy się niepowodzeniem.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|_type|Wskazówka typu.|Ciąg|  
+|_type|Wskazówka typu.|String|  
 |<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Error](#error)|  
 
   
@@ -129,55 +129,55 @@ Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy 
 ### <a name="license"></a>Licencja  
 Definiuje licencji w ramach której można użyć typu text lub zdjęć.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|name|Nazwa licencji.|Ciąg|  
-|url|Adres URL witryny sieci Web, gdzie użytkownik może uzyskać więcej informacji o licencji.<br /><br /> Użyj nazwy i adresu URL, aby utworzyć hiperłącze.|Ciąg|  
+|name|Nazwa licencji.|String|  
+|url|Adres URL witryny sieci Web, gdzie użytkownik może uzyskać więcej informacji o licencji.<br /><br /> Użyj nazwy i adresu URL, aby utworzyć hiperłącze.|String|  
   
 
 ### <a name="licenseattribution"></a>LicenseAttribution  
 Definiuje umownych regułę autorstwa licencji.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|_type|Wskazówka typu, która jest równa LicenseAttribution.|Ciąg|  
+|_type|Wskazówka typu, która jest równa LicenseAttribution.|String|  
 |licencja|Licencja, pod którym zawartość może być używany.|[Licencja](#license)|  
-|licenseNotice|Licencja do wyświetlenia obok pola docelowego. Na przykład "tekst w ramach licencji DW przez administratora systemu".<br /><br /> Użyj nazwy i adresu URL w licencji `license` pola, aby utworzyć hiperłącze do witryny sieci Web, która opisuje szczegółowe informacje o licencji. Następnie zastąp nazwę licencji w `licenseNotice` ciąg (na przykład, CC-przez-SA), z hiperłącza właśnie utworzony.|Ciąg|  
+|licenseNotice|Licencja do wyświetlenia obok pola docelowego. Na przykład "tekst w ramach licencji DW przez administratora systemu".<br /><br /> Użyj nazwy i adresu URL w licencji `license` pola, aby utworzyć hiperłącze do witryny sieci Web, która opisuje szczegółowe informacje o licencji. Następnie zastąp nazwę licencji w `licenseNotice` ciąg (na przykład, CC-przez-SA), z hiperłącza właśnie utworzony.|String|  
 |mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Wartość logiczna|  
-|targetPropertyName|Nazwa pola, które dotyczy reguła.|Ciąg|  
+|targetPropertyName|Nazwa pola, które dotyczy reguła.|String|  
   
 
 ### <a name="link"></a>Link  
 Określa składniki hiperłącza.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|_type|Wskazówka typu.|Ciąg|  
-|tekst|Tekst wyświetlany.|Ciąg|  
-|url|ADRES URL. Użyj adresu URL i wyświetlania tekstu, aby utworzyć hiperłącze.|Ciąg|  
+|_type|Wskazówka typu.|String|  
+|tekst|Tekst wyświetlany.|String|  
+|url|ADRES URL. Użyj adresu URL i wyświetlania tekstu, aby utworzyć hiperłącze.|String|  
   
 
 ### <a name="linkattribution"></a>LinkAttribution  
 Definiuje umownych regułę autorstwa łącza.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|_type|Wskazówka typu, która jest równa LinkAttribution.|Ciąg|  
+|_type|Wskazówka typu, która jest równa LinkAttribution.|String|  
 |mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Wartość logiczna|  
-|targetPropertyName|Nazwa pola, które dotyczy reguła.<br /><br /> Jeśli element docelowy nie zostanie określony, uznanie autorstwa stosuje do jednostki jako całość i powinien być wyświetlany natychmiast po przedstawieniu jednostki. Jeśli istnieje wiele tekst i link reguł autorstwa, których nie określono elementu docelowego, połącz je i wyświetlaj je za pomocą "dane:" etykiety. Na przykład "dane z < Nazwa1 dostawcy\> &#124; < name2 dostawcy\>".|Ciąg|  
-|tekst|Tekst: uznanie autorstwa.|Ciąg|  
-|url|Adres URL witryny sieci Web dostawcy. Użyj `text` i adres URL, aby utworzyć hiperłącza.|Ciąg|  
+|targetPropertyName|Nazwa pola, które dotyczy reguła.<br /><br /> Jeśli element docelowy nie zostanie określony, uznanie autorstwa stosuje do jednostki jako całość i powinien być wyświetlany natychmiast po przedstawieniu jednostki. Jeśli istnieje wiele tekst i link reguł autorstwa, których nie określono elementu docelowego, połącz je i wyświetlaj je za pomocą "dane:" etykiety. Na przykład "dane z < Nazwa1 dostawcy\> &#124; < name2 dostawcy\>".|String|  
+|tekst|Tekst: uznanie autorstwa.|String|  
+|url|Adres URL witryny sieci Web dostawcy. Użyj `text` i adres URL, aby utworzyć hiperłącza.|String|  
   
   
 ### <a name="mediaattribution"></a>MediaAttribution  
 Definiuje umownych regułę autorstwa nośnika.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|_type|Wskazówka typu, która jest równa MediaAttribution.|Ciąg|  
+|_type|Wskazówka typu, która jest równa MediaAttribution.|String|  
 |mustBeCloseToContent|Wartość logiczna określająca, czy zawartość reguły muszą być umieszczone w bliskim sąsiedztwie do pola, które dotyczy reguła. Jeśli **true**, zawartość musi być umieszczony w pobliżu. Jeśli **false**, lub nie istnieje w tym polu, zawartość można umieścić uznania obiektu wywołującego.|Wartość logiczna|  
-|targetPropertyName|Nazwa pola, które dotyczy reguła.|Ciąg|  
-|url|Adres URL, który umożliwia tworzenie hiperłącza zawartości multimedialnej. Na przykład jeśli element docelowy jest obrazem, można użyć adresu URL Aby utworzyć obraz możesz klikać.|Ciąg|  
+|targetPropertyName|Nazwa pola, które dotyczy reguła.|String|  
+|url|Adres URL, który umożliwia tworzenie hiperłącza zawartości multimedialnej. Na przykład jeśli element docelowy jest obrazem, można użyć adresu URL Aby utworzyć obraz możesz klikać.|String|  
   
   
   
@@ -186,23 +186,23 @@ Określa wydawcę.
   
 Należy pamiętać, że wydawca może zapewnić ich nazwy, ich witryny sieci Web lub obu tych.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|name|Nazwa wydawcy.|Ciąg|  
-|url|Adres URL witryny sieci Web wydawcy.<br /><br /> Należy pamiętać, wydawca nie mogą zawierać witryny sieci Web.|Ciąg|  
+|name|Nazwa wydawcy.|String|  
+|url|Adres URL witryny sieci Web wydawcy.<br /><br /> Należy pamiętać, wydawca nie mogą zawierać witryny sieci Web.|String|  
   
   
 
 ### <a name="webpage"></a>Strony sieci Web  
 Określa informacje o stronie sieci Web w wersji zapoznawczej.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|
-|name|Tytuł strony, niekoniecznie tytuł HTML|Ciąg|
-|url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|Ciąg|  
-|description|Krótki opis strony i zawartości|Ciąg|  
+|name|Tytuł strony, niekoniecznie tytuł HTML|String|
+|url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|String|  
+|description|Krótki opis strony i zawartości|String|  
 |isFamilyFriendly|Najdokładniejszych dla elementów w indeksie sieci web; Odczyty w czasie rzeczywistym, czy to wykrywanie wyłącznie na podstawie adresu URL i nie zawartości strony|wartość logiczna|
-|primaryImageOfPage/contentUrl|Adres URL, który jest reprezentatywny obraz do uwzględnienia w wersji zapoznawczej|Ciąg| 
+|primaryImageOfPage/contentUrl|Adres URL, który jest reprezentatywny obraz do uwzględnienia w wersji zapoznawczej|String| 
   
   
 ### <a name="querycontext"></a>QueryContext  
@@ -211,35 +211,35 @@ Definiuje kontekst zapytania, które Bing użyta dla żądania.
 |Element|Opis|Type|  
 |-------------|-----------------|----------|  
 |adultIntent|Wartość logiczna wskazująca, czy określona kwerenda ma dorosłych. Wartość jest **true** Jeśli kwerenda ma dorosłych; w przeciwnym razie **false**.|Wartość logiczna|  
-|alterationOverrideQuery|Ciąg zapytania do użycia, aby wymusić Bing w celu użycia oryginalny ciąg. Na przykład, jeśli ciąg zapytania jest *saling downwind*, zastąpienie ciągu zapytania będą *+ saling downwind*. Pamiętaj, aby zakodować ciąg zapytania, co skutkuje *% 2Bsaling + downwind*.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|Ciąg|  
-|alteredQuery|Ciąg zapytania używane przez usługę Bing do wykonania zapytania. Usługa Bing używa ciągu zapytania zmieniony, jeśli oryginalny ciąg zapytania zawiera błędy pisowni. Na przykład, jeśli ciąg zapytania jest `saling downwind`, ciąg zapytania zmienionego będzie `sailing downwind`.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|Ciąg|  
+|alterationOverrideQuery|Ciąg zapytania do użycia, aby wymusić Bing w celu użycia oryginalny ciąg. Na przykład, jeśli ciąg zapytania jest *saling downwind*, zastąpienie ciągu zapytania będą *+ saling downwind*. Pamiętaj, aby zakodować ciąg zapytania, co skutkuje *% 2Bsaling + downwind*.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|String|  
+|alteredQuery|Ciąg zapytania używane przez usługę Bing do wykonania zapytania. Usługa Bing używa ciągu zapytania zmieniony, jeśli oryginalny ciąg zapytania zawiera błędy pisowni. Na przykład, jeśli ciąg zapytania jest `saling downwind`, ciąg zapytania zmienionego będzie `sailing downwind`.<br /><br /> To pole jest uwzględniane tylko wtedy, gdy oryginalny ciąg zapytania zawiera błąd pisowni.|String|  
 |askUserForLocation|Wartość logiczna wskazująca, czy Bing wymaga lokalizacji użytkownika, aby zapewnić dokładne wyniki. Jeśli w określonej lokalizacji użytkownika przy użyciu [ClientIP-X-MSEdge](#clientip) i [X wyszukiwania lokalizacji](#location) nagłówków, możesz zignorować to pole.<br /><br /> Dla zapytań pamiętać lokalizacji, takich jak "Bieżąca pogoda" lub "restauracje w pobliżu" wymagających lokalizacji użytkownika, aby zapewnić dokładne wyniki, to pole jest ustawione **true**.<br /><br /> Dla lokalizacji pamiętać zapytań, które obejmują lokalizację (na przykład "Seattle o pogodzie"), to pole jest ustawione **false**. To pole jest również ustawiona na **false** dla zapytań, które nie są lokalizacji, takich jak "najlepiej sprzedających".|Wartość logiczna|  
-|originalQuery|Ciąg zapytania określony w żądaniu.|Ciąg|  
+|originalQuery|Ciąg zapytania określony w żądaniu.|String|  
 
 ### <a name="identifiable"></a>Do zidentyfikowania
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
-|id|Identyfikator zasobu|Ciąg|
+|id|Identyfikator zasobu|String|
  
 ### <a name="rankinggroup"></a>RankingGroup
 Definiuje grupy w wynikach wyszukiwania, takie jak mainline.
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
 |pozycje|Lista wyników wyszukiwania do wyświetlenia w grupie.|RankingItem|
 
 ### <a name="rankingitem"></a>RankingItem
 Definiuje element wyników wyszukiwania, aby wyświetlić.
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |-------------|-----------------|----------|
 |resultIndex|Liczony od zera indeks elementu w odpowiedzi na pytanie do wyświetlenia. Jeśli element nie zawiera tego pola, można wyświetlić wszystkie elementy w odpowiedzi na pytanie. Na przykład wyświetlić wszystkie artykuły w odpowiedzi na wiadomości.|Liczba całkowita|
-|answerType|Odpowiedź, który zawiera element, aby wyświetlić. Na przykład wiadomości.<br /><br />Aby znaleźć odpowiedzi w obiekcie SearchResponse, należy użyć typu. Typ jest nazwa pola SearchResponse.<br /><br /> Jednak używać typu odpowiedzi, tylko wtedy, gdy ten obiekt zawiera pola wartości; w przeciwnym razie go zignorować.|Ciąg|
+|answerType|Odpowiedź, który zawiera element, aby wyświetlić. Na przykład wiadomości.<br /><br />Aby znaleźć odpowiedzi w obiekcie SearchResponse, należy użyć typu. Typ jest nazwa pola SearchResponse.<br /><br /> Jednak używać typu odpowiedzi, tylko wtedy, gdy ten obiekt zawiera pola wartości; w przeciwnym razie go zignorować.|String|
 |textualIndex|Indeks odpowiedzi w textualAnswers do wyświetlenia.| Liczba całkowita bez znaku|
 |wartość|Identyfikatora, który identyfikuje odpowiedzi, aby wyświetlić lub element odpowiedź do wyświetlenia. Jeśli identyfikator identyfikuje odpowiedzi, wyświetlanie wszystkich elementów w odpowiedzi.|Do zidentyfikowania|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 Określa, gdzie na wyszukiwanie zawartości strony wyników powinny zostać umieszczone i w jakiej kolejności.  
   
-|Name|Value|  
+|Name (Nazwa)|Wartość|  
 |----------|-----------|  
 |<a name="ranking-mainline" />mainline|Wyniki wyszukiwania w celu wyświetlenia w ramach linii głównej.|  
 |<a name="ranking-pole" />pole|Wyniki wyszukiwania, które powinny otrzymać najbardziej widoczne traktowania (na przykład wyświetlane powyżej linii głównej i paska bocznego).|  
@@ -251,19 +251,19 @@ Definiuje obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie 
   
 Należy pamiętać, że jeśli usługa podejrzewa "odmowa usługi", żądanie zakończy się pomyślnie (kod stanu HTTP jest 200 OK); jednak treści odpowiedzi jest pusta.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|_type|Wskazówka typu jest ustawiona na SearchResponse.|Ciąg|  
+|_type|Wskazówka typu jest ustawiona na SearchResponse.|String|  
 |Strony sieci Web|Obiekt JSON, który definiuje korzystania z wersji zapoznawczej|ciąg|  
   
   
 ### <a name="textattribution"></a>TextAttribution  
 Definiuje umownych regułę autorstwa zwykły tekst.  
   
-|Name|Value|Type|  
+|Name (Nazwa)|Wartość|Type|  
 |----------|-----------|----------|  
-|_type|Wskazówka typu, która jest równa TextAttribution.|Ciąg|  
-|tekst|Tekst: uznanie autorstwa.<br /><br /> Tekst: uznanie autorstwa dotyczy jednostki jako całość i powinien zostać wyświetlony od razu po przedstawieniu jednostki. Jeśli istnieje wiele tekstu lub linków reguł autorstwa, których nie określono elementu docelowego, połącz je i wyświetlaj je za pomocą "dane:" etykiety.|Ciąg| 
+|_type|Wskazówka typu, która jest równa TextAttribution.|String|  
+|tekst|Tekst: uznanie autorstwa.<br /><br /> Tekst: uznanie autorstwa dotyczy jednostki jako całość i powinien zostać wyświetlony od razu po przedstawieniu jednostki. Jeśli istnieje wiele tekstu lub linków reguł autorstwa, których nie określono elementu docelowego, połącz je i wyświetlaj je za pomocą "dane:" etykiety.|String| 
 
 
 ## <a name="error-codes"></a>Kody błędów

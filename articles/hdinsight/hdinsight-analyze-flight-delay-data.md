@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632895"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817669"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Hive w HDInsight
 [Apache Hive](https://hive.apache.org/) umożliwia uruchamianie [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) zadania za pomocą języka skryptów przypominającego SQL o nazwie *[HiveQL] [ hadoop-hiveql]*, które mogą być stosowane do podsumowania, odpytywania i analizowania dużych ilości danych.
@@ -232,7 +232,7 @@ Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight i u
     ```
 3. Połączenia z bazą danych SQL i zobacz powodujących opóźnienia lotów średni według miast w tabelę AvgDelays:
 
-    ![USŁUGI HDI. FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
+    ![HDI.FlightDelays.AvgDelays.Dataset][image-hdi-flightdelays-avgdelays-dataset]
 
 - - -
 
@@ -240,7 +240,7 @@ Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight i u
 Przekazywanie plików danych i [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual) pliki skryptów (zobacz [dodatek B](#appendix-b)) wymaga pewnych planowania. Chodzi o to, aby zapisywać pliki danych i plik HiveQL, przed rozpoczęciem tworzenia klastra usługi HDInsight i uruchamianie zadania Hive. Dostępne są dwie opcje:
 
 * **Użyj tego samego konta usługi Azure Storage, który będzie używany przez klaster usługi HDInsight jako domyślny system plików.** Ponieważ klaster HDInsight będzie miał klucz dostępu konta magazynu, nie trzeba wprowadzać żadnych dodatkowych zmian.
-* **Użyj innego konta usługi Azure Storage z domyślnego systemu plików klastra HDInsight.** Jeśli jest to możliwe, należy zmodyfikować tworzenia część programu Windows PowerShell, skrypt znalezione w [klastra HDInsight do tworzenia i uruchamiania zadania Apache Hive/Sqoop](#runjob) do połączenia konta magazynu jako dodatkowe konto magazynu. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Apache Hadoop w HDInsight][hdinsight-provision]. Klaster HDInsight wie, następnie klucz dostępu dla konta magazynu.
+* **Użyj innego konta usługi Azure Storage z domyślnego systemu plików klastra HDInsight.** Jeśli jest to możliwe, należy zmodyfikować tworzenia część programu Windows PowerShell, skrypt znalezione w klastrze HDInsight tworzyć i uruchamiać zadania Apache Hive/Sqoop w celu połączenia konta magazynu jako dodatkowe konto magazynu. Aby uzyskać instrukcje, zobacz [klastrów utworzyć Apache Hadoop w HDInsight][hdinsight-provision]. Klaster HDInsight wie, następnie klucz dostępu dla konta magazynu.
 
 > [!NOTE]  
 > Ścieżka magazynu obiektów Blob dla pliku danych jest trudne, kodowane w pliku skryptu HiveQL. Należy zaktualizować go odpowiednio.
@@ -556,7 +556,7 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Ap
 
    * **$hqlLocalFileName** — skrypt zapisuje plik skryptu HiveQL lokalnie przed przekazaniem go do magazynu obiektów Blob. Jest to nazwa pliku. Wartość domyślna to <u>C:\tutorials\flightdelay\flightdelays.hql</u>.
    * **$hqlBlobName** — jest to nazwa obiektu blob pliku skryptu HiveQL używane w usłudze Azure Blob storage. Wartość domyślna to tutorials/flightdelay/flightdelays.hql. Ponieważ plik zostanie zapisany bezpośrednio do usługi Azure Blob storage, nie istnieje "/" na początku nazwy obiektu blob. Jeśli chcesz uzyskać dostęp do pliku z magazynu obiektów Blob, należy dodać "/" na początku nazwy pliku.
-   * **$srcDataFolder** i **$dstDataFolder** -= "data samouczki/flightdelay" = "samouczki/flightdelay/output"
+   * **$srcDataFolder** and **$dstDataFolder** - = "tutorials/flightdelay/data" = "tutorials/flightdelay/output"
 
 - - -
 ## <a id="appendix-c"></a>Dodatek C — przygotowywanie usługi Azure SQL database dla danych wyjściowych zadania narzędzia Sqoop

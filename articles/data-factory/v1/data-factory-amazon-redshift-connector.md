@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eafc5dbd89d5727fac0040816785dbfcdf123b62
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: b7a785cc506f12360edc14555b7241a557dc400c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563623"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817346"
 ---
 # <a name="move-data-from-amazon-redshift-using-azure-data-factory"></a>Przenoszenie danych z usługi Amazon Redshift przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -52,7 +52,7 @@ Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, a
 2. Utwórz zestawy danych reprezentujące dane wejściowe i wyjściowe operacji kopiowania.
 3. Tworzenie potoku za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe.
 
-Korzystając z Kreatora kopiowania, definicje JSON dotyczące jednostek usługi Data Factory, te są tworzone automatycznie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), zdefiniujesz jednostki usługi Data Factory przy użyciu formatu JSON. [Przykład kodu JSON: Kopiowanie danych z usługi Amazon Redshift do usługi Azure Blob storage](#json-example-copy-data-from-amazon-redshift-to-azure-blob) pokazuje definicji JSON dla jednostek fabryki danych, które są używane do kopiowania danych z magazynu danych usługi Amazon Redshift.
+Korzystając z Kreatora kopiowania, definicje JSON dotyczące jednostek usługi Data Factory, te są tworzone automatycznie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), zdefiniujesz jednostki usługi Data Factory przy użyciu formatu JSON. Przykład kodu JSON: Kopiuj dane z usługi Amazon Redshift do usługi Azure Blob storage zawiera definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych z magazynu danych usługi Amazon Redshift.
 
 W poniższych sekcjach opisano właściwości kodu JSON, które są używane do definiowania jednostek usługi Data Factory dla usługi Amazon Redshift.
 

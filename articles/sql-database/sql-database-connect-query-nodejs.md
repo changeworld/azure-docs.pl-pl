@@ -11,12 +11,12 @@ ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
 ms.date: 11/26/2018
-ms.openlocfilehash: c6e518f644e8fc43db58ef481312f44b2071a0dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 250f03809a182e541fb58f73469f46d2b281b69f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194308"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756054"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Szybki start: Korzystanie z narzędzia Node.js do wykonywania zapytań w bazie danych Azure SQL
 
@@ -41,7 +41,7 @@ Aby ukończyć ten przykład, upewnij się, że dysponujesz następującymi elem
 [!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
 
 > [!IMPORTANT]
-> W przypadku publicznego adresu IP komputera, na którym jest wykonywany ten samouczek, niezbędne jest posiadanie reguły zapory. Jeśli pracujesz na innym komputerze lub masz inny publiczny adres IP, utwórz [regułę zapory poziomu serwera przy użyciu witryny Azure Portal](sql-database-get-started-portal-firewall.md).
+> W przypadku publicznego adresu IP komputera, na którym jest wykonywany ten samouczek, niezbędne jest posiadanie reguły zapory. Jeśli pracujesz na innym komputerze lub masz inny publiczny adres IP, utwórz [regułę zapory poziomu serwera przy użyciu witryny Azure Portal](sql-database-server-level-firewall-rule.md).
 
 ## <a name="create-the-project"></a>Tworzenie projektu
 

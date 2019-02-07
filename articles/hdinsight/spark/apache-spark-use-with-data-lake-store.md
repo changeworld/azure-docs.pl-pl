@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 29fef9177e40bd89dd0f179b028d2f044af8addb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e33ec52a2546100a043a78f66c2232c3c1ad264e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913098"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821370"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>Analizowanie danych w usługi Data Lake Storage przy użyciu klastra platformy HDInsight Spark
 
@@ -30,7 +30,7 @@ W tym samouczku użyjesz [notesu programu Jupyter](https://jupyter.org/) dostęp
 ## <a name="prepare-the-data"></a>Przygotowywanie danych
 
 > [!NOTE]  
-> Nie trzeba wykonać ten krok, jeśli utworzono klaster HDInsight przy użyciu usługi Data Lake Storage jako magazynu domyślnego. Proces tworzenia klastra dodaje przykładowe dane na koncie usługi Data Lake Storage, które należy określić podczas tworzenia klastra. Przejdź do sekcji [klastra korzystanie z platformy HDInsight Spark przy użyciu usługi Data Lake Storage](#use-an-hdinsight-spark-cluster-with-data-lake-store).
+> Nie trzeba wykonać ten krok, jeśli utworzono klaster HDInsight przy użyciu usługi Data Lake Storage jako magazynu domyślnego. Proces tworzenia klastra dodaje przykładowe dane na koncie usługi Data Lake Storage, które należy określić podczas tworzenia klastra. Przejdź do sekcji klastra korzystanie z platformy HDInsight Spark przy użyciu usługi Data Lake Storage.
 
 Jeśli utworzono klaster usługi HDInsight przy użyciu usługi Data Lake Storage jako dodatkowego miejsca do magazynowania i Azure Storage Blob jako magazynem domyślnym, należy najpierw skopiować na przykładowych danych do konta usługi Data Lake Storage. Można użyć przykładowych danych z usługi Azure Blob Storage skojarzonego z klastrem HDInsight. Możesz użyć [narzędzia ADLCopy](https://aka.ms/downloadadlcopy) Aby to zrobić. Pobierz i zainstaluj narzędzie przy użyciu linku.
 
@@ -131,4 +131,4 @@ Jeśli utworzono klaster usługi HDInsight przy użyciu usługi Data Lake Storag
 * [Tworzenie autonomicznego Scala aplikacji do uruchamiania w klastrze Apache Spark](apache-spark-create-standalone-application.md)
 * [Narzędzia HDInsight w usłudze Azure Toolkit for IntelliJ do tworzenia aplikacji platformy Apache Spark dla klastra HDInsight Spark systemu Linux](apache-spark-intellij-tool-plugin.md)
 * [Korzystaj z narzędzi HDInsight w zestaw narzędzi platformy Azure dla środowiska Eclipse do tworzenia aplikacji platformy Apache Spark dla klastra HDInsight Spark systemu Linux](apache-spark-eclipse-tool-plugin.md)
-* [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

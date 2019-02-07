@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ba8db3ebe2caf4c37d147f744326b6e631cb556
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 81b7bf7c230c66087bf286ebd9369d992e93be90
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022057"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814354"
 ---
 # <a name="move-data-from-a-web-table-source-using-azure-data-factory"></a>Przenoszenie danych ze źródła tabeli w sieci Web przy użyciu usługi Azure Data Factory
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-web-table-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-web-table.md)
 
@@ -236,7 +236,7 @@ Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, int
 
 Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **WebSource** i **ujścia** ustawiono typ **BlobSink**.
 
-Zobacz [właściwości typu WebSource](#copy-activity-type-properties) listy właściwości obsługiwanych przez WebSource.
+Zobacz właściwości typu WebSource, aby uzyskać listę właściwości obsługiwanych przez WebSource.
 
 ```json
 {  

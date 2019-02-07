@@ -11,16 +11,16 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: a32cb694a18f8fff937f647804659efb71be415e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745728"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766626"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
-Usługa Azure Machine Learning zapewnia kilka metod, które można wdrożyć uczonego modelu przy użyciu zestawu SDK. W tym dokumencie informacje o sposobie wdrażania swojego modelu jako usługi sieci web w chmurze platformy Azure lub na urządzeniach brzegowych IoT.
+Usługa Azure Machine Learning zapewnia kilka metod, które można wdrożyć uczonego modelu przy użyciu zestawu SDK. W tym dokumencie informacje o sposobie wdrażania swojego modelu jako usługi sieci web w chmurze platformy Azure lub na urządzeniach usługi IoT Edge.
 
 > [!IMPORTANT]
 > Współużytkowanie zasobów między źródłami (cors) nie jest obecnie obsługiwane w przypadku wdrażania modelu w postaci usługi sieci web.
@@ -119,7 +119,7 @@ Wykonanie skryptu odbiera dane przesłane do wdrożonego obrazu i przekazuje je 
 
 #### <a name="working-with-json-data"></a>Praca z danymi w formacie JSON
 
-Poniżej przedstawiono przykładowy skrypt, który akceptuje i zwraca dane JSON. `run` Funkcja przekształca dane z formatu JSON do formatu oczekuje modelu, a następnie przekształca odpowiedź JSON przed zwróceniem:
+Poniższy przykładowy skrypt akceptuje i zwraca dane JSON. `run` Funkcja przekształca dane z formatu JSON do formatu oczekuje modelu, a następnie przekształca odpowiedź JSON przed zwróceniem:
 
 ```python
 # import things required by this script
@@ -149,7 +149,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>Praca z danymi binarnymi
 
-Jeśli model akceptuje __dane binarne__, użyj `AMLRequest`, `AMLResponse`, i `rawhttp`. Oto przykładowy skrypt, który akceptuje dane binarne i zwraca odwróconej bajtów dla żądania POST. Dla żądań GET wysyłanych zwraca pełny adres URL w treści odpowiedzi:
+Jeśli model akceptuje __dane binarne__, użyj `AMLRequest`, `AMLResponse`, i `rawhttp`. Poniższy przykładowy skrypt akceptuje dane binarne i zwraca odwróconej bajtów dla żądania POST. Dla żądań GET wysyłanych zwraca pełny adres URL w treści odpowiedzi:
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -244,9 +244,6 @@ Do wdrożenia usługi Azure Container Instances, wykonaj następujące kroki:
 
     **Szacowany czas**: Około 3 minuty.
 
-    > [!TIP]
-    > Jeśli występują błędy podczas wdrażania, użyj `service.get_logs()` Aby wyświetlić dzienniki usługi. Zarejestrowane informacje może wskazywać przyczynę błędu.
-
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) i [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) klasy.
 
 ### <a id="aks"></a> Wdrażanie w usłudze Azure Kubernetes Service
@@ -334,9 +331,6 @@ print(service.state)
 
 **Szacowany czas**: Około 3 minuty.
 
-> [!TIP]
-> Jeśli występują błędy podczas wdrażania, użyj `service.get_logs()` Aby wyświetlić dzienniki usługi. Zarejestrowane informacje może wskazywać przyczynę błędu.
-
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) i [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) klasy.
 
 ### <a id="fpga"></a> Wdrażanie bramy programowalny tablic (FPGA)
@@ -371,7 +365,7 @@ sudo ./createNregister <The Azure subscriptionID you want to use> <Resourcegroup
 
 Zapisz wynikowy ciąg połączenia po "cs": "{skopiować te parametry}".
 
-Inicjowanie urządzenia, pobierając [ten skrypt](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/installIoTEdge) do węzła krawędzi UbuntuX64 IoT lub maszyny wirtualnej DSVM do uruchamiania następujących poleceń:
+Inicjowanie urządzenia, pobierając [ten skrypt](https://raw.githubusercontent.com/Azure/ai-toolkit-iot-edge/master/amliotedge/installIoTEdge) do usługi IoT Edge UbuntuX64 węzła lub maszyny wirtualnej DSVM do uruchamiania następujących poleceń:
 
 ```bash
 ssh <yourusername>@<yourdeviceip>
@@ -382,7 +376,7 @@ sudo ./installIoTEdge
 
 Węzeł usługi IoT Edge jest gotowa do odbierania parametry połączenia Centrum IoT. Wyszukaj wiersz ```device_connection_string:``` i Wklej parametry połączenia z powyższych Between cudzysłowów.
 
-Można także dowiesz się, jak zarejestrować urządzenie i zainstaluj środowisko uruchomieniowe IoT krok po kroku, wykonując [Szybki Start: Wdrożenia pierwszego modułu usługi IoT Edge na urządzeniu Linux x64](../../iot-edge/quickstart-linux.md) dokumentu.
+Można także dowiesz się, jak zarejestrować urządzenie i zainstaluj środowisko uruchomieniowe IoT, wykonując [Szybki Start: Wdrożenia pierwszego modułu usługi IoT Edge na urządzeniu Linux x64](../../iot-edge/quickstart-linux.md) dokumentu.
 
 
 #### <a name="get-the-container-registry-credentials"></a>Pobieranie poświadczeń rejestru kontenera
@@ -390,7 +384,7 @@ Aby wdrożyć moduł usługi IoT Edge na urządzeniu, usługi Azure IoT potrzebu
 
 Można łatwo pobrać poświadczeń rejestru na potrzeby kontenerów na dwa sposoby:
 
-+ **W witrynie Azure Portal**:
++ **W witrynie Azure portal**:
 
   1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/signin/index).
 
@@ -469,7 +463,7 @@ Usługi sieci Web jest interfejs API REST, aby można było utworzyć aplikacje 
 
 ## <a id="update"></a> Aktualizacja usługi sieci web
 
-Aby zaktualizować usługę sieci web, użyj `update` metody. Poniższy kod ilustruje sposób aktualizacji usługi sieci web w celu użycia nowego obrazu:
+Podczas tworzenia nowego obrazu musi należy ręcznie zaktualizować wszystkich usług, które chcesz użyć nowego obrazu. Aby zaktualizować usługę sieci web, użyj `update` metody. Poniższy kod ilustruje sposób aktualizacji usługi sieci web w celu użycia nowego obrazu:
 
 ```python
 from azureml.core.webservice import Webservice
@@ -487,9 +481,6 @@ service.update(image = new_image)
 print(service.state)
 ```
 
-> [!NOTE]
-> Po zaktualizowaniu obrazu usługi sieci web nie jest automatycznie aktualizowany. Należy ręcznie zaktualizować wszystkich usług, które chcesz użyć nowego obrazu.
-
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py) klasy.
 
 ## <a name="clean-up"></a>Czyszczenie
@@ -501,6 +492,19 @@ Aby usunąć obrazu, użyj `image.delete()`.
 Aby usunąć zarejestrowanego modelu, użyj `model.delete()`.
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--), i [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+* __Jeśli występują błędy podczas wdrażania__, użyj `service.get_logs()` Aby wyświetlić dzienniki usługi. Zarejestrowane informacje może wskazywać przyczynę błędu.
+
+* Dzienniki mogą zawierać błąd z monitem o __poziom rejestrowania debugowania__. Aby ustawić poziom rejestrowania, Dodaj następujące wiersze do skryptu oceniania, utworzyć obraz, a następnie utworzyć usługę korzystając z obrazu:
+
+    ```python
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    ```
+
+    Ta zmiana umożliwia dodatkowe rejestrowanie i może zwrócić więcej informacji na Dlaczego występuje błąd.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

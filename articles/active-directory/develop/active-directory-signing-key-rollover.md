@@ -16,12 +16,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6174dd210cf85bfa6a3daf38965d1da65801321c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d137f2217575bfddec5a2bc2ead4e210b8cf1865
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076336"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815342"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Przerzucanie klucza w usłudze Azure Active Directory podpisywania
 W tym artykule opisano, co musisz wiedzieć o publiczne klucze, które są używane w usłudze Azure Active Directory (Azure AD) do podpisywania tokenów zabezpieczających. Należy zauważyć, że te przerzucania kluczy w regularnych odstępach czasu, a w nagłych wypadkach można od razu przenoszone. Wszystkie aplikacje, które używają usługi Azure AD powinien móc programowo obsługuje procesu przerzucania klucza lub ustanowienia okresowe ręczne Przerzucanie procesu. Kontynuuj czytanie, aby zrozumieć, jak działają klawisze jak ocenić wpływ przerzucania do aplikacji i jak zaktualizować aplikację lub ustanowienia procesu okresowe ręczne Przerzucanie do obsługi Przerzucanie klucza, jeśli to konieczne.
@@ -44,7 +44,7 @@ Jak aplikacja obsługuje przerzucania klucza jest zależna od zmiennych, takich 
 * [Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu modułu passport-azure-ad środowiska Node.js](#passport)
 * [Aplikacje sieci Web / API ochrona zasobów i utworzony za pomocą programu Visual Studio 2015 lub Visual Studio 2017](#vs2015)
 * [Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013](#vs2013)
-* [Interfejsy API sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013](#vs2013_webapi)
+* Interfejsy API sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2013
 * [Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2012](#vs2012)
 * [Aplikacje sieci Web chroni zasoby oraz utworzone przy użyciu programu Visual Studio 2010, o 2008 za pomocą programu Windows Identity Foundation](#vs2010)
 * [Aplikacje sieci Web / interfejsów API, ochrona zasobów przy użyciu innych bibliotek lub ręcznego wdrażania każdego z obsługiwanych protokołów](#other)

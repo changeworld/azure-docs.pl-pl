@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie woluminami StorSimple (aktualizacja Update 3) | Dokumentacja firmy Microsoft
-description: Wyjaśniono, jak dodawać, modyfikować, monitorowania i Usuń woluminy StorSimple i sposób wykonania ich w trybie offline, jeśli to konieczne.
+title: Zarządzanie woluminami StorSimple (aktualizace 3) | Dokumentacja firmy Microsoft
+description: Wyjaśnia, jak dodawanie, modyfikowanie, monitorować i usuwanie woluminów StorSimple oraz sposób wykonania je w trybie offline, jeśli to konieczne.
 services: storsimple
 documentationcenter: NA
 author: alkohli
@@ -14,85 +14,85 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c9c575f42e6c8730b9404c62fb60e710d9d3bc80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26578877"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822310"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Zarządzanie woluminami (Update 3 lub nowszej) przy użyciu usługi Menedżer StorSimple urządzenia
+# <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Usługa Menedżer urządzeń StorSimple umożliwia zarządzanie woluminami (Update 3 lub nowszy)
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 
-W tym samouczku opisano sposób korzystania z usługi Menedżer StorSimple urządzenia do tworzenia i zarządzania woluminach urządzeń z serii StorSimple 8000 z aktualizacji, 3 lub nowszym.
+W tym samouczku wyjaśniono, jak używać usługi Menedżer urządzeń StorSimple do tworzenia i zarządzania nimi woluminów na urządzeniach serii StorSimple 8000 z aktualizacją Update 3 i nowszych.
 
-Usługę Menedżer StorSimple urządzenia jest rozszerzeniem w portalu Azure, która umożliwia zarządzanie rozwiązania StorSimple z interfejsem sieci web jednej. Użyj portalu Azure do zarządzania woluminami na wszystkich urządzeniach. Można również utworzyć i zarządzać usługami StorSimple, zarządzania urządzeniami, zasady tworzenia kopii zapasowej i kopii zapasowej wykazu i wyświetlać alerty.
+Usługa Menedżer urządzeń StorSimple jest rozszerzeniem w witrynie Azure portal, która umożliwia zarządzanie rozwiązania StorSimple z jednej sieci web interfejsu. Witryna Azure portal umożliwia zarządzanie woluminami na wszystkich urządzeniach. Można również utworzyć i zarządzać usługi StorSimple, zarządzania urządzeniami, zasadami tworzenia kopii zapasowych i wykazem kopii zapasowych i wyświetlać alerty.
 
-## <a name="volume-types"></a>Typy woluminu
+## <a name="volume-types"></a>Typy woluminów
 
-Woluminy StorSimple można:
+Woluminy StorSimple może być:
 
-* **Przypięty lokalnie woluminach**: dane w tych woluminów pozostanie na lokalnym urządzeniu StorSimple przez cały czas.
-* **Woluminami warstwowymi**: dane w tych woluminów mogą zostaną przeniesione do chmury.
+* **Lokalnie przypięte woluminy**: Dane w tych woluminach pozostanie na lokalnym urządzeniu StorSimple przez cały czas.
+* **Woluminy warstwowe**: Dane w tych woluminach można zostaną przeniesione do chmury.
 
-Archiwizacja wolumin jest typem woluminu warstwowego. Większy rozmiar fragmentu deduplikacji używana w przypadku woluminów archiwizacji umożliwia urządzeniu transfer większej segmentów danych do chmury.
+Archiwizacja wolumin jest typ woluminu warstwowego. Większy rozmiar fragmentu deduplikacji, używany do archiwizacji woluminy umożliwia urządzeniu przesyłanie większych segmentów danych do chmury.
 
-Jeśli to konieczne, można zmienić woluminu typu z lokalnym warstwowej lub z warstwy do lokalnego. Aby uzyskać więcej informacji, przejdź do [zmienić typ woluminu](#change-the-volume-type).
+Jeśli to konieczne, możesz zmienić woluminu z lokalnego na warstwowy lub z warstwowego na komputer lokalny. Aby uzyskać więcej informacji, przejdź do [zmienić typ woluminu](#change-the-volume-type).
 
-### <a name="locally-pinned-volumes"></a>Woluminów przypiętych lokalnie
+### <a name="locally-pinned-volumes"></a>Woluminy przypięte lokalnie
 
-Woluminów przypiętych lokalnie to pełni woluminy, które wykonują nie warstwy danych w chmurze, zapewniając lokalnego gwarantuje dla danych podstawowych, niezależnie od łączności chmury. Dane dotyczące woluminów przypiętych lokalnie nie jest deduplikowany i skompresowane; jednak migawek woluminów przypiętych lokalnie są deduplikowane. 
+Woluminy przypięte lokalnie są inicjowane w pełni woluminów, które wykonują nie warstwy danych w chmurze, zapewniając lokalnego gwarancje dotyczące danych głównych, niezależnie od łączność z chmurą. Dane na woluminy przypięte lokalnie nie jest deduplikowany i skompresowane; jednak są deduplikowane, migawki woluminów przypiętych lokalnie. 
 
-Woluminów przypiętych lokalnie są w pełni zaaprowizowanym; w związku z tym musi mieć wystarczającą ilość miejsca na urządzeniu, podczas ich tworzenia. Można alokować woluminy przypięte lokalnie do 8 TB na urządzeniu StorSimple 8100 i 20 TB na urządzeniu 8600 maksymalnego rozmiaru. StorSimple rezerwuje pozostałe lokalne miejsce na urządzeniu do migawki, metadane i przetwarzania danych. Można zwiększyć rozmiar woluminu przypiętego lokalnie do maksymalne dostępne miejsce, ale nie można zmniejszyć rozmiar woluminu raz utworzony.
+Lokalnie przypięte woluminy są w pełni zaaprowizowanym; w związku z tym musi mieć wystarczającą ilość miejsca na urządzeniu, podczas ich tworzenia. Można alokować woluminy przypięte lokalnie o rozmiarze do 8 TB na urządzeniu StorSimple 8100 i 20 TB na urządzeniu 8600. Usługa StorSimple rezerwuje pozostałe lokalne miejsce na urządzeniu do migawki, metadane i przetwarzania danych. Można zwiększyć rozmiar woluminu przypiętego lokalnie na maksymalną ilość miejsca dostępna, ale nie można zmniejszyć rozmiaru woluminu, po utworzeniu.
 
-Podczas tworzenia woluminu przypiętego lokalnie, miejsce dostępne na potrzeby tworzenia woluminów warstwowych zostanie zmniejszona. To również sytuacja odwrotna: Jeśli masz istniejące woluminy warstwowe do tworzenia lokalnie przypięty woluminy miejsca będzie niższa niż maksymalnych podanych powyżej. Aby uzyskać więcej informacji na woluminach lokalnych, zapoznaj się [— często zadawane pytania na woluminów przypiętych lokalnie](storsimple-8000-local-volume-faq.md).
+Podczas tworzenia woluminu przypiętego lokalnie, miejsce dostępne na potrzeby tworzenia woluminów warstwowych zostanie zmniejszona. Wartość true, występuje również sytuacja odwrotna: Jeśli masz istniejące woluminy warstwowe, miejsce dostępne dla tworzenia lokalnie przypięte woluminy będzie mniejszy niż maksymalny limit podanej powyżej. Aby uzyskać więcej informacji na woluminach lokalnych, zobacz [często zadawane pytania dotyczące woluminów przypiętych lokalnie](storsimple-8000-local-volume-faq.md).
 
 ### <a name="tiered-volumes"></a>Woluminy warstwowe
 
-Woluminy warstwowe są alokowane elastycznie woluminów, w których często używanych danych pozostaje na urządzeniu lokalnym, a rzadziej używanych danych jest automatycznie warstwy do chmury. Alokowanie elastyczne jest technologii wirtualizacji, dostępny magazyn prawdopodobnie przekracza zasobów fizycznych. Zamiast z wyprzedzeniem rezerwowania wystarczającej ilości miejsca, StorSimple używa alokowania elastycznego można przydzielić tylko za mało miejsca, aby spełniały bieżące wymagania. Elastyczne rodzaj magazynu w chmurze ułatwia takie podejście, ponieważ StorSimple można zwiększyć lub zmniejszyć do zmieniających się wymagań dotyczących magazynu w chmurze.
+Woluminy warstwowe są woluminy alokowane elastycznie, w których często używanych danych pozostaje lokalne na urządzeniu, a rzadziej używanych danych jest automatycznie warstwowe w chmurze. Alokowanie elastyczne jest technologia wirtualizacji, dostępny magazyn prawdopodobnie przekroczyć zasobów fizycznych. Zamiast rezerwacji z wyprzedzeniem wystarczającej ilości miejsca, usługa StorSimple używa alokowania elastycznego można przydzielić tylko za mało miejsca, aby spełniały bieżące wymagania. Elastyczny charakter magazynu w chmurze ułatwia to podejście, ponieważ StorSimple można zwiększyć lub zmniejszyć magazyn w chmurze, aby spełnić potrzeby zgłaszanych.
 
-Jeśli używasz woluminu warstwowego na potrzeby danych archiwalnych, wybierz **Użyj tego woluminu w przypadku rzadziej używanych danych archiwalnych** pole wyboru, aby zmienić rozmiar fragmentu deduplikacji dla woluminu na 512 KB. Jeśli nie zaznaczysz tej opcji, odpowiedni wolumin warstwowy użyje rozmiaru fragmentu wynoszącego 64 KB. Większy rozmiar fragmentu deduplikacji umożliwia urządzeniu usprawnienie transferu dużej ilości danych archiwalnych w chmurze.
+Jeśli używasz woluminu warstwowego potrzeby danych archiwalnych, zaznacz **Użyj tego woluminu dla rzadziej używanych danych archiwalnych** pole wyboru, aby zmienić rozmiaru fragmentu deduplikacji dla woluminu na 512 KB. Jeśli ta opcja nie jest zaznaczone, odpowiedni wolumin warstwowy użyje rozmiaru fragmentu wynoszącego 64 KB. Większy rozmiar fragmentu deduplikacji umożliwia urządzeniu usprawnienie transferu dużej ilości danych archiwalnych w chmurze.
 
 
-### <a name="provisioned-capacity"></a>Udostępnione pojemności
+### <a name="provisioned-capacity"></a>Zaprowizowaną pojemnością
 
-Zapoznaj się z poniższej tabeli maksymalną pojemność udostępnione dla każdego typu urządzenia i woluminu. (Należy pamiętać, że woluminy przypięte lokalnie nie są dostępne na urządzeniu wirtualnym).
+Można znaleźć w poniższej tabeli, aby uzyskać maksymalną pojemność aprowizowaną dla każdego typu urządzenia i woluminu. (Zwróć uwagę, że woluminy przypięte lokalnie nie są dostępne na urządzeniu wirtualnym).
 
-|  | Rozmiar maksymalny wolumin warstwowy | Rozmiar woluminu przypiętego lokalnie maksymalna |
+|  | Rozmiar maksymalny woluminu warstwowego | Maksymalna lokalnie przypięte rozmiar woluminu |
 | --- | --- | --- |
-| **Fizyczne urządzenia** | | |
+| **Urządzenia fizyczne** | | |
 | 8100 |64 TB |8 TB |
 | 8600 |64 TB |20 TB |
 | **Urządzenia wirtualne** | | |
-| 8010 |30 TB |Nie dotyczy |
-| 8020 |64 TB |Nie dotyczy |
+| 8010 |30 TB |ND |
+| 8020 |64 TB |ND |
 
-## <a name="the-volumes-blade"></a>Blok woluminów
+## <a name="the-volumes-blade"></a>W bloku woluminów
 
-**Woluminów** bloku umożliwia zarządzanie woluminami magazynu, które są udostępniane na urządzeniu Microsoft Azure StorSimple na potrzeby Twojego inicjatorów (serwerów). Wyświetli listę woluminów na urządzenia StorSimple połączona z usługą.
+**Woluminów** bloku pozwala na zarządzanie woluminami magazynu, które są udostępniane na urządzeniu Microsoft Azure StorSimple na potrzeby Twojego inicjatorów (serwerów). Wyświetla listę woluminów na urządzeniach StorSimple połączoną z usługą.
 
  ![Strony woluminów](./media/storsimple-8000-manage-volumes-u2/volumeslist.png)
 
 Wolumin składa się z szeregu atrybuty:
 
-* **Nazwa woluminu** — opisową nazwę, która musi być unikatowa i pomaga w identyfikacji woluminu. Ta nazwa jest również używana do monitorowania raportów podczas filtrowania w określonym woluminie. Po utworzeniu woluminu, nie można zmienić nazwy.
-* **Stan** — może być w trybie online lub offline. Jeśli wolumin jest w trybie offline, nie jest widoczny dla inicjatorów (serwerów), które mają dostęp do korzystać z woluminu.
-* **Pojemność** — określa łączną ilość danych, które mogą być przechowywane przez inicjatora (serwer). Przypięty lokalnie woluminy są w pełni zaaprowizowanym i znajdują się na urządzeniu StorSimple. Woluminy warstwowe są alokowane elastycznie i jest deduplikowany danych. Z woluminy alokowane elastycznie urządzenia nie wstępnie przydzielić pojemności magazynu fizycznego wewnętrznych lub w chmurze zgodnie ze skonfigurowanym pojemność. Pojemność woluminu jest przydzielone i używane na żądanie.
-* **Typ** — wskazuje, czy wolumin jest **warstwowego** (ustawienie domyślne) lub **przypięty lokalnie**.
+* **Nazwa woluminu** — nazwę opisową, muszą być unikatowe, która ułatwia zidentyfikowanie woluminu. Ta nazwa jest również używana do monitorowania raportów podczas filtrowania na określonym woluminie. Po jego utworzeniu, nie można zmienić nazwy.
+* **Stan** — może być w trybie online lub offline. Jeśli wolumin jest w trybie offline, nie jest widoczny dla inicjatorów (serwerów), które mogą uzyskiwać dostęp do korzystać z woluminu.
+* **Pojemność** — określa całkowitą ilość danych, które mogą być przechowywane przez inicjatora (serwer). Lokalnie przypięte woluminy są w pełni zaaprowizowanym i znajdują się na urządzeniu StorSimple. Woluminy warstwowe są alokowany elastycznie i dane są deduplikowane. Za pomocą woluminy alokowane elastycznie urządzenia nie wstępnie Przydziel pojemność magazynu fizycznego wewnętrznie lub w chmurze zgodnie ze skonfigurowanym pojemność. Pojemność woluminu jest przydzielone i używane na żądanie.
+* **Typ** — wskazuje, czy wolumin jest **warstwowy** (ustawienie domyślne) lub **przypięty lokalnie**.
 
-Wykonaj instrukcje w tym samouczku, aby wykonywać następujące zadania:
+Skorzystaj z instrukcji w tym samouczku, aby wykonać następujące zadania:
 
 * Dodawanie woluminu 
 * Modyfikowanie woluminu 
 * Zmień typ woluminu
 * Usuwanie woluminu 
-* Przełącz do trybu offline woluminu 
+* Przełącz wolumin w tryb offline 
 * Monitor woluminu 
 
 ## <a name="add-a-volume"></a>Dodawanie woluminu
 
-Możesz [utworzony wolumin](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) podczas wdrażania urządzenia StorSimple 8000 serii. Dodawanie woluminu jest podobnej procedury.
+Możesz [utworzony wolumin](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume) podczas wdrażania urządzenia StorSimple 8000 series. Dodawanie woluminu jest podobnej procedury.
 
 #### <a name="to-add-a-volume"></a>Aby dodać wolumin
 
@@ -106,7 +106,7 @@ Możesz [utworzony wolumin](storsimple-8000-deployment-walkthrough-u2.md#step-6-
 
     2. Z listy rozwijanej wybierz kontener woluminów, do którego chcesz dodać wolumin.
 
-    3.  Wpisz wartość pola **Nazwa** dla woluminu. Po utworzeniu woluminu, nie można zmienić nazwy woluminu.
+    3.  Wpisz wartość pola **Nazwa** dla woluminu. Po jego utworzeniu, nie można zmienić nazwy woluminu.
 
     4. Z listy rozwijanej wybierz wartość **Typ** dla woluminu. W przypadku obciążeń, które wymagają lokalnych gwarancji, małych opóźnień i większej wydajności, wybierz wolumin typu **Przypięty lokalnie**. W przypadku wszystkich innych danych wybierz wolumin typu **Warstwowy**. Jeśli używasz tego woluminu na potrzeby danych archiwalnych, wybierz opcję **Użyj tego woluminu w przypadku rzadziej używanych danych archiwalnych**.
       
@@ -120,159 +120,159 @@ Możesz [utworzony wolumin](storsimple-8000-deployment-walkthrough-u2.md#step-6-
       
        W przypadku alokowania woluminu przypiętego lokalnie o rozmiarze 8,5 TB (maksymalny dozwolony rozmiar) na urządzeniu 8100 całe lokalne miejsce dostępne na urządzeniu zostanie wyczerpane. Od tego momentu nie można tworzyć woluminów warstwowych, ponieważ w urządzeniu nie ma już miejsca lokalnego do hostowania roboczego zestawu woluminu warstwowego. Istniejące woluminy warstwowe również wpływają na dostępne miejsce. Jeśli na przykład masz urządzenie 8100 z woluminami warstwowymi o wielkości około 106 TB, tylko 4 TB są dostępne dla woluminów przypiętych lokalnie.
 
-    6. W polu **Połączone hosty** kliknij strzałkę. W **połączone hosty** bloku, wybierz istniejący ACR lub Dodaj nowe ACR. Jeśli nowy ACR, następnie podaj **nazwa** dla rekordu ACR, podaj **iSCSI Qualified Name** (IQN) hosta z systemem Windows. Jeśli nie masz nazwy IQN, przejdź do tematu [Pobieranie nazwy IQN hosta z systemem Windows Server](#get-the-iqn-of-a-windows-server-host). Kliknij przycisk **Utwórz**. Wolumin zostanie utworzony przy użyciu wybranych ustawień.
+    6. W polu **Połączone hosty** kliknij strzałkę. W **połączone hosty** bloku wybierz istniejący rekord ACR lub Dodaj nowy rekord ACR. Jeśli wybierzesz nowy rekord ACR, następnie podaj **nazwa** dla rekordu ACR, podaj **iSCSI Qualified nazwę** (IQN) hosta usługi Windows. Jeśli nie masz nazwy IQN, przejdź do pobieranie nazwy IQN hosta z systemem Windows Server. Kliknij pozycję **Utwórz**. Wolumin zostanie utworzony przy użyciu wybranych ustawień.
 
         ![Kliknięcie pozycji Utwórz](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
 Nowy wolumin jest teraz gotowa do użycia.
 
 > [!NOTE]
-> Jeśli tworzenia woluminu przypiętego lokalnie, a następnie utworzyć inny wolumin przypięty lokalnie natychmiast po tworzenia woluminu, które zadania są wykonywane sekwencyjnie. Pierwszy zadanie tworzenia woluminu musi zakończyć się przed rozpoczęciem następnego zadania tworzenia woluminu.
+> Jeśli Utwórz wolumin przypięty lokalnie, a następnie utwórz inny wolumin przypięty lokalnie natychmiast później, tworzenie woluminów, które zadania są uruchamiane sekwencyjnie. Pierwsze zadanie tworzenia woluminu musi zakończyć się przed rozpoczęciem następnego zadania tworzenia woluminu.
 
 ## <a name="modify-a-volume"></a>Modyfikowanie woluminu
 
-Zmodyfikuj woluminu, gdy trzeba go rozwinąć lub zmienić hosty, które uzyskują dostęp do woluminu.
+Zmodyfikuj woluminu, gdy trzeba je rozwinąć lub zmienić hostów, które dostęp do woluminu.
 
 > [!IMPORTANT]
-> * Jeśli zmodyfikujesz rozmiar woluminu na urządzeniu, rozmiar woluminu musi zostać zmienione na hoście, a także.
-> * Są opisane tutaj kroki po stronie hosta dla systemu Windows Server 2012 (2012 R2). Procedury dla systemu Linux lub z innymi systemami operacyjnymi hosta może się różnić. Zapoznaj się z instrukcjami podanymi przez system operacyjny hosta, modyfikując na woluminie z innym systemem operacyjnym hosta.
+> * W przypadku zmodyfikowania rozmiaru woluminu na urządzeniu rozmiar woluminu musi zostać zmieniony na hoście, jak również.
+> * Czynności po stronie hosta, opisane w tym miejscu dotyczą systemu Windows Server 2012 (2012 R2). Procedury dotyczące systemu Linux lub inne systemy operacyjne hosta może się różnić. Zapoznaj się z instrukcjami podanymi przez system operacyjny hosta w przypadku modyfikowania woluminu na hoście z systemem innym systemie operacyjnym.
 
 #### <a name="to-modify-a-volume"></a>Aby zmodyfikować woluminu
 
-1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z Tabelaryczny spis urządzeń wybierz urządzenia, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
+1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z tabelarycznej listy urządzeń wybierz urządzenie, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
 
     ![Przejdź do bloku woluminów](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-2. Wybierz wolumin z tabelarycznej listę woluminów, a kliknij prawym przyciskiem myszy, aby wywołać z menu kontekstowego. Wybierz **przełączyć do trybu offline** woluminu, należy zmodyfikować przełączenia do trybu offline.
+2. Z tabelarycznej liście woluminów Wybierz wolumin, a następnie kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe. Wybierz **przełączyć do trybu offline** do woluminu, należy zmodyfikować przełączenia w tryb offline.
 
-    ![Wybierz, a następnie przełącz wolumin do trybu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+    ![Wybierz, a następnie przełącz wolumin w tryb offline](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. W **przełączyć do trybu offline** bloku, przejrzyj wpływ przełączania w tryb offline wolumin i zaznacz odpowiednie pole wyboru. Upewnij się, że odpowiedni wolumin na hoście jest najpierw w trybie offline. Informacje dotyczące sposobu podjęcia woluminu w trybie offline na serwerze hosta połączony StorSimple zapoznaj się z instrukcjami określonego systemu operacyjnego. Kliknij przycisk **przełączyć do trybu offline**.
+3. W **przełączyć do trybu offline** bloku, przejrzyj konsekwencje przełączenia woluminu w tryb offline, a następnie wybierz odpowiednie pole wyboru. Upewnij się, że odpowiedni wolumin na hoście jest najpierw w trybie offline. Aby uzyskać informacje na temat sposobu przełączyć wolumin w tryb offline na serwerze hosta podłączony do magazynu StorSimple zapoznaj się z instrukcjami określonego systemu operacyjnego. Kliknij przycisk **przełączyć do trybu offline**.
 
-    ![Przejrzyj wpływ przełączania w tryb offline woluminu](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Przejrzyj konsekwencje przełączenia woluminu w tryb offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-4. Gdy wolumin jest w trybie offline (jak to przedstawiono stan woluminu), wybierz wolumin, a następnie kliknij prawym przyciskiem myszy, aby wywołać z menu kontekstowego. Wybierz **zmodyfikować woluminu**.
+4. Gdy wolumin jest w trybie offline (jak to przedstawiono w stan woluminu), wybierz wolumin, a następnie kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe. Wybierz **modyfikowania woluminu**.
 
-    ![Wybierz Modyfikuj woluminu](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
+    ![Wybierz pozycję Modyfikuj wolumin](./media/storsimple-8000-manage-volumes-u2/modifyvol9.png)
 
 
-5. W **zmodyfikować woluminu** bloku, należy wprowadzić następujące zmiany:
+5. W **modyfikowania woluminu** bloku można wprowadzić następujące zmiany:
    
    1. Wolumin **nazwa** nie może być edytowany.
-   2. Konwertuj **typu** z przypięte lokalnie do warstwy lub z warstwy do przypięty lokalnie (zobacz [zmienić typ woluminu](#change-the-volume-type) Aby uzyskać więcej informacji).
-   3. Zwiększ **elastycznie pojemności**. **Alokowana pojemność** zwiększyć. Nie można zmniejszyć wolumin, po jego utworzeniu.
-   4. W obszarze **połączone hosty**, można zmodyfikować ACR. Aby zmodyfikować ACR, wolumin musi być w trybie offline.
+   2. Konwertuj **typu** z lokalnie przypięte do warstwy lub z warstwowego na lokalnie przypięty (zobacz [zmienić typ woluminu](#change-the-volume-type) Aby uzyskać więcej informacji).
+   3. Zwiększ **Aprowizowana pojemność**. **Alokowaną pojemność** tylko można zwiększyć. Nie można zmniejszyć wolumin, po jego utworzeniu.
+   4. W obszarze **połączone hosty**, można zmodyfikować usługi ACR. Aby zmodyfikować rekord ACR, wolumin musi być w trybie offline.
 
-       ![Przejrzyj wpływ przełączania w tryb offline woluminu](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+       ![Przejrzyj konsekwencje przełączenia woluminu w tryb offline](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-5. Kliknij przycisk **zapisać** Aby zapisać zmiany. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. Azure portal wyświetli komunikat aktualizowania woluminu. Wyświetli komunikat informujący gdy wolumin został pomyślnie zaktualizowany.
+5. Kliknij przycisk **Zapisz** Aby zapisać zmiany. Po wyświetleniu monitu o potwierdzenie kliknij przycisk **Tak**. Witryna Azure portal wyświetli komunikat aktualizowanie woluminu. Wyświetli komunikat o powodzeniu po wolumin został pomyślnie zaktualizowany.
 
-    ![Przejrzyj wpływ przełączania w tryb offline woluminu](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Przejrzyj konsekwencje przełączenia woluminu w tryb offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
 
-7. Jeśli rozszerzasz woluminu, należy wykonać następujące czynności na komputerze hosta z systemem Windows:
+7. Jeśli rozszerzasz woluminu, wykonaj następujące czynności na komputerze hosta Windows:
    
-   1. Przejdź do **Zarządzanie komputerem** ->**dysku zarządzania**.
-   2. Kliknij prawym przyciskiem myszy **Zarządzanie dyskami** i wybierz **Skanuj dyski**.
-   3. Na liście dysków, wybierz wolumin, który zostanie zaktualizowany, kliknij prawym przyciskiem myszy, a następnie wybierz **Rozszerz wolumin**. Zostanie uruchomiony Kreator rozszerzania woluminów. Kliknij przycisk **Dalej**.
-   4. Ukończ pracę kreatora, akceptując wartości domyślne. Po zakończeniu pracy Kreatora woluminu powinien być wyświetlony zwiększenie wielkości.
+   1. Przejdź do **Zarządzanie komputerem** ->**Zarządzanie dyskami**.
+   2. Kliknij prawym przyciskiem myszy **przystawki Zarządzanie dyskami** i wybierz **Skanuj dyski**.
+   3. Na liście dysków, wybierz wolumin, który należy zaktualizować, kliknij prawym przyciskiem myszy, a następnie wybierz **Rozszerz wolumin**. Zostanie uruchomiony Kreator Rozszerz wolumin. Kliknij przycisk **Dalej**.
+   4. Ukończ pracę kreatora, akceptując wartości domyślne. Po zakończeniu pracy Kreatora woluminu powinien być wyświetlony zwiększony rozmiar.
       
       > [!NOTE]
-      > Jeśli Rozszerz wolumin przypięty lokalnie, a następnie rozwiń węzeł przypięty lokalnie inny wolumin natychmiast po woluminu rozszerzenia zadania są wykonywane sekwencyjnie. Pierwszy zadania rozszerzenia woluminu musi zakończyć się przed rozpoczęciem następnego zadania rozszerzania woluminów.
+      > Jeśli rozwiń woluminu przypiętego lokalnie, a następnie rozwiń innego lokalnie przypięte woluminu, natychmiast po tym dniu zadania rozszerzania woluminów uruchamiają się po kolei. Pierwsze zadanie rozszerzenia woluminu musi zakończyć się przed rozpoczęciem następnego zadania rozszerzenia woluminu.
       
 
 ## <a name="change-the-volume-type"></a>Zmień typ woluminu
 
-Można zmienić typ woluminu z warstwy do przypięty lokalnie lub z przypięty lokalnie do warstwowego. Jednak ta konwersja nie powinien być częste wystąpienie.
+Można zmienić typu woluminu z warstwowego na lokalnie przypięty, lub z lokalnie przypięte do warstwowego. Jednak ta konwersja nie powinien być często wystąpienia.
 
-### <a name="tiered-to-local-volume-conversion-considerations"></a>Aby zagadnienia dotyczące konwersji woluminu lokalnego do warstwy
+### <a name="tiered-to-local-volume-conversion-considerations"></a>Warstwowe zagadnienia dotyczące konwersji wolumin lokalny
 
-Niektóre przyczyny Konwertowanie woluminu z warstwy do przypięty lokalnie są:
+Niektóre przyczyny konwersji woluminu z warstwowego na lokalnie przypięty są następujące:
 
-* Lokalnych gwarancji dotyczących wydajności i dostępności danych
+* Lokalne gwarancje dotyczące dostępności i danych wydajności
 * Eliminacja chmury opóźnienia i problemy z łącznością chmury.
 
-Zazwyczaj są to mały istniejące woluminy, które mają być często uzyskuje dostęp do. Wolumin przypięty lokalnie jest w pełni zaaprowizowanym podczas jego tworzenia. 
+Zazwyczaj są to małe woluminy, które chcesz uzyskać dostęp do często. Wolumin przypięty lokalnie to w pełni zaaprowizowanym podczas jego tworzenia. 
 
-Jeśli wolumin warstwowy są konwertowane na wolumin przypięty lokalnie, StorSimple sprawdza, czy masz wystarczającą ilość miejsca na urządzeniu przed rozpoczęciem konwersji. Jeśli masz za mało miejsca, zostanie wyświetlony błąd, a operacja zostanie anulowana. 
+Jeśli wolumin warstwowy jest konwertowane na wolumin przypięty lokalnie, StorSimple sprawdza, czy mają wystarczającą ilość miejsca na urządzeniu z systemem, przed rozpoczęciem konwersji. Jeśli masz za mało miejsca, otrzymasz komunikat o błędzie, a operacja zostanie anulowana. 
 
 > [!NOTE]
-> Przed rozpoczęciem konwersji do warstwy do przypięty lokalnie, upewnij się, należy rozważyć wymagania dotyczące miejsca na innych obciążeń. 
+> Przed przystąpieniem do wykonywania konwersji z warstwowego na lokalnie przypięty, upewnij się, należy rozważyć wymagania dotyczące miejsca na innych obciążeń. 
 
-Konwersja z warstwowych do woluminu przypiętego lokalnie może niekorzystnie wpłynąć na wydajność urządzenia. Ponadto następujące czynniki może wydłużyć czas wymagany do ukończenia konwersji:
+Konwersja z warstwowego woluminu przypiętego lokalnie może niekorzystnie wpłynąć na wydajność urządzenia. Ponadto następujące czynniki wydłużyć czas wymagany do wykonania konwersji:
 
 * Jest za mała przepustowość.
-* Nie istnieje żadne obecnie wykonać kopii zapasowej.
+* Nie ma żadnej bieżącej kopii zapasowej.
 
-Aby zminimalizować wpływ, które mogą być następujące czynniki:
+Aby zminimalizować wpływ, które mogą mieć tych czynników:
 
-* Zapoznaj się z przepustowości zasad i upewnij się, że dedykowany 40 MB/s przepustowości jest dostępny.
-* Planowanie konwersji poza godzinami szczytu.
-* Przed rozpoczęciem konwersji, należy utworzyć migawkę chmury.
+* Przejrzyj zasady ograniczania przepustowości i upewnij się, że dedykowanych 40 MB/s przepustowości jest dostępny.
+* Zaplanuj konwersji poza godzinami pracy.
+* Wykonaj migawkę w chmurze, przed rozpoczęciem konwersji.
 
-Są konwersji wielu woluminów (obsługi różnych obciążeń), następnie należy powinien priorytet konwersji woluminu, aby wyższy priorytet woluminy są konwertowane najpierw. Na przykład należy przekonwertować woluminy, które obsługi maszyn wirtualnych (VM) lub z obciążeniami SQL przed dokonaniem konwersji woluminy z obciążeniami udziału plików.
+Jeśli konwertujesz wiele woluminów (obsługi różnych obciążeń), następnie należy nadać priorytet konwersji woluminu, aby wyższy priorytet woluminy są konwertowane najpierw. Na przykład należy przekonwertować woluminy, które hostują maszyny wirtualne (VM) lub z obciążeniami SQL przed dokonaniem konwersji woluminów z obciążeniami udziału plików.
 
-### <a name="local-to-tiered-volume-conversion-considerations"></a>Zagadnienia dotyczące konwersji woluminu warstwowego lokalne
+### <a name="local-to-tiered-volume-conversion-considerations"></a>Wersja lokalna z zagadnienia dotyczące konwersji woluminu warstwowego
 
-Możesz zmienić woluminu przypiętego lokalnie na wolumin warstwowy, jeśli potrzebujesz dodatkowego miejsca do obsługi administracyjnej inne woluminy. Podczas konwertowania woluminu przypiętego lokalnie do warstwy dostępnej pojemności na zwiększa urządzenia według rozmiaru wydanych pojemności. Jeśli problemy z łącznością zapobiec konwersji woluminu z lokalnego typu do typu warstwowych, lokalnym woluminie będzie mieć właściwości wolumin warstwowy, aż do ukończenia konwersji. Jest to spowodowane część danych może mieć rozrzucone do chmury. Te dane rozlanej w dalszym ciągu zajmują lokalne miejsce na urządzeniu, który nie jest możliwe, dopóki operacja jest uruchomiona ponownie oraz zostać zakończona.
+Można zmienić woluminu przypiętego lokalnie na wolumin warstwowy, jeśli potrzebujesz więcej miejsca na aprowizowanie inne woluminy. Podczas konwersji woluminu przypiętego lokalnie do warstwy dostępnej pojemności na wzrost urządzenia według rozmiaru pojemności wydana. Jeśli problemy z łącznością zapobiec konwersji woluminu z lokalnego typu do typu warstwowego, do czasu ukończenia konwersji wolumin lokalny pokaże właściwości woluminu warstwowego. Jest to spowodowane może mieć rozlane dane do chmury. Te dane rozlanej w dalszym ciągu zajmować lokalne miejsce na urządzeniu, które nie jest możliwe, dopóki operacja jest uruchomiona ponownie oraz zostać zakończona.
 
 > [!NOTE]
-> Konwertowanie woluminu może zająć trochę czasu i nie można anulować konwersji po jego uruchomieniu. Gdy wolumin pozostaje w trybie online podczas konwersji i korzystać z kopii zapasowych, ale nie można rozwinąć lub przywracania woluminu, podczas konwersji.
+> Konwertowanie woluminu może zająć trochę czasu i nie można anulować konwersji po jego uruchomieniu. Podczas konwersji wolumin pozostaje w trybie online i korzystać z kopii zapasowych, ale nie można rozwinąć ani przywrócić woluminu, podczas gdy Konwersja odbywa się.
 
 
 #### <a name="to-change-the-volume-type"></a>Aby zmienić typ woluminu
 
-1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z Tabelaryczny spis urządzeń wybierz urządzenia, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
+1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z tabelarycznej listy urządzeń wybierz urządzenie, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
 
     ![Przejdź do bloku woluminów](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Wybierz wolumin z tabelarycznej listę woluminów, a kliknij prawym przyciskiem myszy, aby wywołać z menu kontekstowego. Wybierz **zmodyfikować**.
+3. Z tabelarycznej liście woluminów Wybierz wolumin, a następnie kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe. Wybierz **zmodyfikować**.
 
-    ![Modyfikowanie wybierz z menu kontekstowego](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
+    ![Wybierz pozycję Modyfikuj z menu kontekstowego](./media/storsimple-8000-manage-volumes-u2/changevoltype2.png)
 
-4. Na **zmodyfikować woluminu** bloku, zmienić typ woluminu, wybierając nowy typ z **typu** listy rozwijanej.
+4. Na **modyfikowania woluminu** bloku, Zmień typ woluminu, wybierając nowy typ z **typu** listy rozwijanej.
    
-   * W przypadku zmiany typu **przypięty lokalnie**, StorSimple będzie sprawdzać, czy ma wystarczającej wydajności.
-   * W przypadku zmiany typu **warstwowego** i ten wolumin, które będą używane na potrzeby danych archiwalnych, wybierz opcję **Użyj tego woluminu w przypadku rzadziej używanych danych archiwalnych** pole wyboru.
-   * Jeśli konfigurujesz woluminu przypiętego lokalnie, jak warstwowej lub _odwrotnie_, zostanie wyświetlony następujący komunikat.
+   * W przypadku zmiany typu, który ma **przypięty lokalnie**, StorSimple będzie sprawdzać, czy istnieje wystarczająca pojemność.
+   * W przypadku zmiany typu, który ma **warstwowy** i ten wolumin będą używane na potrzeby danych archiwalnych, wybierz opcję **Użyj tego woluminu dla rzadziej używanych danych archiwalnych** pole wyboru.
+   * Jeśli konfigurujesz woluminu przypiętego lokalnie, zgodnie z zasadami warstwowej lub _odwrotnie_, zostanie wyświetlony następujący komunikat.
    
     ![Komunikat typu woluminu zmiany](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
-7. Kliknij przycisk **Zapisz**, aby zapisać zmiany. Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak** aby rozpocząć proces konwersji. 
+7. Kliknij przycisk **Zapisz**, aby zapisać zmiany. Po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak** można uruchomić procesu konwersji. 
 
-    ![Zapisz i Potwierdź](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
+    ![Zapisz i upewnij się](./media/storsimple-8000-manage-volumes-u2/modifyvol11.png)
 
-8. Azure portal wyświetli powiadomienie w celu utworzenia zadania, który zaktualizuje woluminu. Kliknij powiadomienie, aby monitorować stan zadania woluminu w konwersji.
+8. Witryna Azure portal wyświetli powiadomienie dla tworzenia zadania, aktualizujących woluminu. Kliknij powiadomienie, aby monitorować stan zadanie konwersji woluminu.
 
-    ![Zadania dla konwersji woluminu](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
+    ![Zadanie konwersji woluminu](./media/storsimple-8000-manage-volumes-u2/changevoltype5.png)
 
-## <a name="take-a-volume-offline"></a>Przełącz do trybu offline woluminu
+## <a name="take-a-volume-offline"></a>Przełącz wolumin w tryb offline
 
-Konieczne może być Przełącz wolumin do trybu offline podczas planowania do modyfikacji lub usunięcia woluminu. Gdy wolumin jest w trybie offline, nie jest dostępny do odczytu i zapisu. Należy wykonać woluminu w trybie offline na hoście i urządzenia.
+Może być konieczne przełączyć wolumin w tryb offline podczas planowania można zmodyfikować lub usunąć wolumin. Gdy wolumin jest w trybie offline, nie jest dostępny do odczytu i zapisu. Należy przełączyć wolumin w tryb offline na hoście i na urządzeniu.
 
-#### <a name="to-take-a-volume-offline"></a>Wolumin przełączenia do trybu offline
+#### <a name="to-take-a-volume-offline"></a>Aby przełączyć wolumin w trybie offline
 
-1. Upewnij się, że w danym woluminie nie jest używany przed przełączeniem do trybu offline.
-2. Zająć pierwszy woluminu w trybie offline na hoście. Eliminuje to potencjalne ryzyko uszkodzeniem danych na woluminie. Aby poznać konkretne kroki zapoznaj się z instrukcjami dla systemu operacyjnego hosta.
-3. Gdy host jest w trybie offline, należy wykonać woluminu na urządzeniu w trybie offline, wykonując następujące czynności:
+1. Upewnij się, że w danym woluminie nie jest używany przed przełączeniem jej w tryb offline.
+2. Wykonaj pierwszy wolumin w tryb offline na hoście. Pozwala to wyeliminować wszelkie potencjalne ryzyko uszkodzenia danych na woluminie. Aby poznać konkretne kroki zapoznaj się z instrukcjami w systemie operacyjnym hosta.
+3. Gdy host jest w trybie offline, przełącz go w urządzeniu w trybie offline, wykonując następujące czynności:
    
-    1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z Tabelaryczny spis urządzeń wybierz urządzenia, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
+    1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z tabelarycznej listy urządzeń wybierz urządzenie, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
 
         ![Przejdź do bloku woluminów](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-    2. Wybierz wolumin z tabelarycznej listę woluminów, a kliknij prawym przyciskiem myszy, aby wywołać z menu kontekstowego. Wybierz **przełączyć do trybu offline** woluminu, należy zmodyfikować przełączenia do trybu offline.
+    2. Z tabelarycznej liście woluminów Wybierz wolumin, a następnie kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe. Wybierz **przełączyć do trybu offline** do woluminu, należy zmodyfikować przełączenia w tryb offline.
 
-        ![Wybierz, a następnie przełącz wolumin do trybu offline](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
+        ![Wybierz, a następnie przełącz wolumin w tryb offline](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. W **przełączyć do trybu offline** bloku, przejrzyj wpływ przełączania w tryb offline wolumin i zaznacz odpowiednie pole wyboru. Kliknij przycisk **przełączyć do trybu offline**. 
+3. W **przełączyć do trybu offline** bloku, przejrzyj konsekwencje przełączenia woluminu w tryb offline, a następnie wybierz odpowiednie pole wyboru. Kliknij przycisk **przełączyć do trybu offline**. 
 
-    ![Przejrzyj wpływ przełączania w tryb offline woluminu](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
+    ![Przejrzyj konsekwencje przełączenia woluminu w tryb offline](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
-      Użytkownik jest powiadamiany, gdy wolumin jest w trybie offline. Stan woluminu aktualizuje również do trybu Offline.
+      Otrzymasz powiadomienie, gdy wolumin jest w trybie offline. Stan woluminu także aktualizuje do Offline.
       
-4. Gdy wolumin jest w trybie offline, w przypadku wybrania wolumin i kliknij prawym przyciskiem myszy, **przejdź do trybu Online** opcja staje się dostępna w menu kontekstowym.
+4. Gdy wolumin jest w trybie offline należy wybrać wolumin i kliknij prawym przyciskiem myszy, **przejdź do trybu Online** opcja staje się dostępna w menu kontekstowym.
 
 > [!NOTE]
-> **Przełącz do trybu Offline** polecenie wysyła żądanie do urządzenia woluminu przełączenia do trybu offline. Jeśli hosty w dalszym ciągu używają woluminu, powoduje to zerwane połączenia, ale przełączania w tryb offline wolumin nie powiedzie się.
+> **Przełącz do trybu Offline** polecenie wysyła żądanie do urządzenia Przełącz wolumin w tryb offline. Jeśli hosty nadal używają woluminu, powoduje to przerwane połączenia, ale przełączania w tryb offline wolumin nie zakończy się niepowodzeniem.
 
 ## <a name="delete-a-volume"></a>Usuwanie woluminu
 
@@ -283,50 +283,50 @@ Wykonaj poniższe kroki, aby usunąć wolumin.
 
 #### <a name="to-delete-a-volume"></a>Aby usunąć wolumin
 
-1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z Tabelaryczny spis urządzeń wybierz urządzenia, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
+1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z tabelarycznej listy urządzeń wybierz urządzenie, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
 
     ![Przejdź do bloku woluminów](./media/storsimple-8000-manage-volumes-u2/modifyvol2.png)
 
-3. Sprawdź stan woluminu, który chcesz usunąć. Jeśli wolumin, który chcesz usunąć, nie jest w trybie offline, przejść do trybu offline najpierw. Postępuj zgodnie z instrukcjami [Przełącz do trybu offline wolumin](#take-a-volume-offline).
-4. Gdy wolumin jest w trybie offline, wybierz wolumin, kliknij prawym przyciskiem myszy, aby wywołać z menu kontekstowego, a następnie wybierz **usunąć**.
+3. Sprawdź stan woluminów, które chcesz usunąć. Jeśli wolumin, który chcesz usunąć, nie jest w trybie offline, zrób to w trybie offline najpierw. Postępuj zgodnie z instrukcjami w [przełączyć wolumin w tryb offline](#take-a-volume-offline).
+4. Gdy wolumin jest w trybie offline, wybierz wolumin, kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe, a następnie wybierz **Usuń**.
 
-    ![Wybierz opcję usunięcia z menu kontekstowego](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
+    ![Wybierz opcję Usuń z menu kontekstowego](./media/storsimple-8000-manage-volumes-u2/deletevol1.png)
 
-5. W **usunąć** bloku, przejrzyj i zaznacz pole wyboru przed jego wpływ na usunięcie woluminu. Po usunięciu woluminu wszystkie dane, które znajduje się na woluminie zostaną utracone. 
+5. W **Usuń** bloku, przejrzyj i zaznacz pole wyboru przeciwko wpływ Usunięcie woluminu. Jeśli usuniesz wolumin, wszystkie dane, które znajdują się na woluminie zostaną utracone. 
 
-    ![Zapisz i potwierdzenie zmian](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
+    ![Zapisz i Potwierdź zmiany](./media/storsimple-8000-manage-volumes-u2/deletevol2.png)
 
-6. Po usunięciu woluminu tabelarycznej listę woluminów aktualizuje wskazująca usunięcia.
+6. Po usunięciu woluminu Tabelaryczną listę woluminów aktualizacji do wskazania usuwania.
 
     ![Lista zaktualizowanych woluminów](./media/storsimple-8000-manage-volumes-u2/deletevol3.png)
    
    > [!NOTE]
-   > Jeśli usuniesz woluminu przypiętego lokalnie, miejsce dostępne dla nowych woluminów mogły nie zostać zaktualizowane od razu. Usługę Menedżer StorSimple urządzenia okresowo aktualizuje lokalne miejsce dostępne. Sugerujemy, zaczekaj kilka minut, zanim zostanie podjęta próba utworzenia nowego woluminu.
+   > Jeśli usuniesz wolumin przypięty lokalnie, miejsce dostępne do nowych woluminów nie może natychmiast zaktualizować. Usługa Menedżer urządzeń StorSimple, które okresowo aktualizuje lokalne miejsce dostępne. Sugerujemy, poczekaj kilka minut, zanim zostanie podjęta próba utworzenia nowego woluminu.
    >
-   > Ponadto jeśli Usuń wolumin przypięty lokalnie, a następnie usuń innego lokalnie przypięty woluminu natychmiast po usuwanie woluminów, które zadania są wykonywane sekwencyjnie. Pierwszy zadania usuwania woluminu musi zakończyć się przed rozpoczęciem następnego zadania usuwania woluminu.
+   > Ponadto jeśli Usuń wolumin przypięty lokalnie, a następnie usuń innego lokalnie przypięte woluminu natychmiast później, usunięcie woluminu, które zadania są uruchamiane sekwencyjnie. Pierwsze zadanie usuwania woluminu musi zakończyć się przed rozpoczęciem następnej zadania usuwania woluminu.
 
 ## <a name="monitor-a-volume"></a>Monitor woluminu
 
-Monitorowanie woluminów umożliwia zbieranie I/E-statystyki związane z woluminu. Monitorowanie jest domyślnie włączona dla pierwszych 32 woluminów utworzonych przez Ciebie. Monitorowanie z dodatkowych woluminów jest domyślnie wyłączone. 
+Woluminu monitorowanie umożliwia zbieranie I dotyczących wejścia/wyjścia statystyki dla woluminu. Monitorowanie jest domyślnie włączone dla pierwszych 32 woluminów, które tworzysz. Monitorowanie z dodatkowych woluminów jest domyślnie wyłączone. 
 
 > [!NOTE]
-> Monitorowanie woluminów sklonowany jest domyślnie wyłączone.
+> Monitorowanie woluminów sklonowanym jest domyślnie wyłączone.
 
 
-Wykonaj poniższe kroki, aby włączyć lub wyłączyć monitorowanie w woluminie.
+Wykonaj poniższe kroki, aby włączyć lub wyłączyć monitorowania dla woluminu.
 
-#### <a name="to-enable-or-disable-volume-monitoring"></a>Aby włączyć lub wyłączyć monitorowanie woluminu
+#### <a name="to-enable-or-disable-volume-monitoring"></a>Aby włączyć lub wyłączyć monitorowania woluminu
 
-1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z Tabelaryczny spis urządzeń wybierz urządzenia, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
-2. Wybierz wolumin z tabelarycznej listę woluminów, a kliknij prawym przyciskiem myszy, aby wywołać z menu kontekstowego. Wybierz **zmodyfikować**.
-3. W **zmodyfikować woluminu** bloku dla **monitorowanie** wybierz **włączyć** lub **wyłączyć** Aby włączyć lub wyłączyć monitorowanie.
+1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Z tabelarycznej listy urządzeń wybierz urządzenie, które ma wolumin, który chcesz zmodyfikować. Kliknij przycisk **Ustawienia > woluminów**.
+2. Z tabelarycznej liście woluminów Wybierz wolumin, a następnie kliknij prawym przyciskiem myszy, aby wywołać menu kontekstowe. Wybierz **zmodyfikować**.
+3. W **modyfikowania woluminu** bloku dla **monitorowanie** wybierz **Włącz** lub **wyłączyć** do włączania lub wyłączania monitorowania.
 
-    ![Wyłącz monitorowanie](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
+    ![Wyłączanie monitorowania](./media/storsimple-8000-manage-volumes-u2/monitorvol1.png) 
 
-4. Kliknij przycisk **zapisać** i po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak**. Azure portal wyświetla powiadomienie o aktualizacji woluminu, a następnie komunikat z potwierdzeniem po wolumin został pomyślnie zaktualizowany.
+4. Kliknij przycisk **Zapisz** i po wyświetleniu monitu o potwierdzenie, kliknij przycisk **tak**. Witryna Azure portal wyświetla powiadomienie o aktualizacji woluminu, a następnie komunikat o powodzeniu po pomyślnym zaktualizowaniu woluminu.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się, jak [sklonować woluminu StorSimple](storsimple-8000-clone-volume-u2.md).
-* Dowiedz się, jak [zarządzać urządzenia StorSimple przy użyciu usługi Menedżer StorSimple urządzenia](storsimple-8000-manager-service-administration.md).
+* Dowiedz się, jak [klonowania woluminu StorSimple](storsimple-8000-clone-volume-u2.md).
+* Dowiedz się, jak [korzystać z usługi Menedżer urządzeń StorSimple do administrowania urządzeniem StorSimple](storsimple-8000-manager-service-administration.md).
 

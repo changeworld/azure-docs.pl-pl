@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: howto
 ms.date: 1/31/2019
-ms.openlocfilehash: 8c035524adebcb131872c700280201aaac07c52b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a4c9156ef80f05e247b1cfef0acd56b601a2db65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747955"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812688"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-a-database-using-cli"></a>Tworzenia klastra usługi Azure Eksploratora danych i bazę danych przy użyciu interfejsu wiersza polecenia
 
@@ -48,12 +48,11 @@ az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
 
 Podaj następujące wartości
 
-    **Ustawienie** | **Sugerowana wartość** | **Opis pola**
-    |---|---|---|
-    | name | *azureclitest* | Odpowiednią nazwę klastra.|
-    | jednostka SKU | *D13_v2* | Jednostka SKU, która będzie używana dla klastra. |
-    | resource-group | *testrg* | Nazwa grupy zasobów, której będzie można utworzyć klastra. |
-    | | |
+   |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
+   |---|---|---|
+   | name | *azureclitest* | Odpowiednią nazwę klastra.|
+   | jednostka SKU | *D13_v2* | Jednostka SKU, która będzie używana dla klastra. |
+   | resource-group | *testrg* | Nazwa grupy zasobów, której będzie można utworzyć klastra. |
 
 Jeśli chcesz, istnieją więcej opcjonalnych parametrów, których można użyć, takie jak pojemność klastra itp.
 
@@ -75,14 +74,13 @@ az kusto database create --cluster-name azureclitest --name clidatabase --resour
 
 Podaj następujące wartości
 
-    **Ustawienie** | **Sugerowana wartość** | **Opis pola**
-    |---|---|---|
-    | Nazwa klastra | *azureclitest* | Nazwa klastra gdzie powinna zostać utworzona.|
-    | name | *clidatabase* | Żądaną nazwę bazy danych.|
-    | resource-group | *testrg* | Nazwa grupy zasobów, której będzie można utworzyć klastra. |
-    | soft-delete-period | *3650:00:00:00* | Ilość czasu, który dane powinny być przechowywane, dzięki czemu są one dostępne dla zapytania. |
-    | gorąco pamięci podręcznej — okresu | *3650:00:00:00* | Ilość czasu, który dane powinny być przechowywane w pamięci podręcznej. |
-    | | |
+   |**Ustawienie** | **Sugerowana wartość** | **Opis pola**|
+   |---|---|---|
+   | Nazwa klastra | *azureclitest* | Nazwa klastra gdzie powinna zostać utworzona.|
+   | name | *clidatabase* | Żądaną nazwę bazy danych.|
+   | resource-group | *testrg* | Nazwa grupy zasobów, której będzie można utworzyć klastra. |
+   | soft-delete-period | *3650:00:00:00* | Ilość czasu, który dane powinny być przechowywane, dzięki czemu są one dostępne dla zapytania. |
+   | gorąco pamięci podręcznej — okresu | *3650:00:00:00* | Ilość czasu, który dane powinny być przechowywane w pamięci podręcznej. |
 
 Widać, bazy danych, która jest tworzona po uruchomieniu
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 86dbb6137964c00f6b98365e4891538751f17922
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0ba3c7321b0771c839289abb7891cd8e6b280afe
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438816"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822684"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>Analizowanie dzienników usługi Apache Hadoop
 
@@ -99,7 +99,7 @@ Można teraz używać programu Excel do filtrowania i sortowania, zgodnie z potr
     Aby uzyskać więcej informacji na temat tworzenia filtrów, zobacz [konstruowania parametry filtru dla projektanta tabel](../../vs-azure-tools-table-designer-construct-filter-strings.md).
 
 ## <a name="logs-written-to-azure-blob-storage"></a>Dzienniki zapisywane w magazynie obiektów Blob platformy Azure
-[Dzienniki zapisane tabele platformy Azure](#log-written-to-azure-tables) zapewniają wgląd w tym, co dzieje się z klastrem usługi HDInsight o jeden poziom. Jednak te tabele są oferowane dzienniki poziom zadania, które mogą być pomocne w przechodzenia do szczegółów do problemów w momencie ich wystąpienia. Aby zapewnić tym następny poziom szczegółów, klastry HDInsight są skonfigurowane na zapisywanie dzienników zadań do swojego konta magazynu obiektów Blob w ramach zadania, który jest przesyłany za pośrednictwem Templeton. W praktyce oznacza to, zadania przesłane za pomocą poleceń cmdlet programu PowerShell Azure firmy Microsoft lub zadanie przesyłania interfejsów API platformy .NET, bez zadań przesyłać za pośrednictwem protokołu RDP/wiersza polecenia dostępu do klastra. 
+Dzienniki zapisane tabele platformy Azure zapewniają wgląd w tym, co dzieje się z klastrem usługi HDInsight o jeden poziom. Jednak te tabele są oferowane dzienniki poziom zadania, które mogą być pomocne w przechodzenia do szczegółów do problemów w momencie ich wystąpienia. Aby zapewnić tym następny poziom szczegółów, klastry HDInsight są skonfigurowane na zapisywanie dzienników zadań do swojego konta magazynu obiektów Blob w ramach zadania, który jest przesyłany za pośrednictwem Templeton. W praktyce oznacza to, zadania przesłane za pomocą poleceń cmdlet programu PowerShell Azure firmy Microsoft lub zadanie przesyłania interfejsów API platformy .NET, bez zadań przesyłać za pośrednictwem protokołu RDP/wiersza polecenia dostępu do klastra. 
 
 Aby wyświetlić dzienniki, zobacz [dostępu Apache Hadoop YARN application loguje HDInsight opartych na systemie Linux](../hdinsight-hadoop-access-yarn-app-logs-linux.md).
 
@@ -143,7 +143,7 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 ### <a id="ClusterContainerRecordNotFound"></a>ClusterContainerRecordNotFound
 * **Opis**: Serwer nie można odnaleźć rekordu żądany klaster.  
-* **Środki zaradcze**: Spróbuj ponownie wykonać operację.
+* **Środki zaradcze**: Ponów operację.
 
 ### <a id="ClusterDnsNameInvalidReservedWord"></a>ClusterDnsNameInvalidReservedWord
 * **Opis**: Nazwy DNS klastra *yourDnsName* jest nieprawidłowy. Sprawdź, czy nazwa rozpoczyna się i kończy się ciągiem alfanumerycznym i może zawierać tylko "-" znaków specjalnych  
@@ -171,7 +171,7 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 ### <a id="DataNodeDefinitionNotFound"></a>DataNodeDefinitionNotFound
 * **Opis**: Konfiguracja klastra nieprawidłowy. Nie można odnaleźć żadnych definicji węzła danych w rozmiar węzła.  
-* **Środki zaradcze**: Spróbuj ponownie wykonać operację.
+* **Środki zaradcze**: Ponów operację.
 
 ### <a id="DeploymentDeletionFailure"></a>DeploymentDeletionFailure
 * **Opis**: Usunięcie wdrożenia nie powiodło się dla klastra  
@@ -191,7 +191,7 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 ### <a id="FailureToUpdateDeploymentStatus"></a>FailureToUpdateDeploymentStatus
 * **Opis**: Serwer nie może zaktualizować stan wdrożenia klastra.  
-* **Środki zaradcze**: Spróbuj ponownie wykonać operację. Jeśli występuje on wiele razy, skontaktuj się z działem CSS.
+* **Środki zaradcze**: Ponów operację. Jeśli występuje on wiele razy, skontaktuj się z działem CSS.
 
 ### <a id="HdiRestoreClusterAltered"></a>HdiRestoreClusterAltered
 * **Opis**: Klaster *yourClusterName* została usunięta w ramach konserwacji. Utwórz ponownie klaster.
@@ -199,7 +199,7 @@ Niektóre z tych komunikatów o błędach można także znaleźć w witrynie Azu
 
 ### <a id="HeadNodeConfigNotFound"></a>HeadNodeConfigNotFound
 * **Opis**: Konfiguracja klastra nieprawidłowy. Nie można odnaleźć w rozmiary węzłów Konfiguracja wymagana węzła głównego.
-* **Środki zaradcze**: Spróbuj ponownie wykonać operację.
+* **Środki zaradcze**: Ponów operację.
 
 ### <a id="HostedServiceCreationFailure"></a>HostedServiceCreationFailure
 * **Opis**: Nie można utworzyć usługi hostowanej *nameOfYourHostedService*. Ponów próbę żądania.  

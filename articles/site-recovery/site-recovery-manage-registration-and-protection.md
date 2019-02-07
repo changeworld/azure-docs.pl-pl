@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 7a9c0ec081b676631f950270f9234284a102d7fa
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9aaa5dd2c636f9b5d92e949e1af71eda809cdac7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212192"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810324"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Usuwanie serwerów i wyłączanie ochrony
 
@@ -154,7 +154,7 @@ Hosty funkcji Hyper-V, które nie są zarządzane przez program VMM są zbierane
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Wyłącz ochronę dla maszyny wirtualnej funkcji Hyper-V (funkcji Hyper-V do platformy Azure)
 
 > [!NOTE]
-> Użyj tej procedury, Jeśli replikujesz maszyny wirtualne funkcji Hyper-V na platformę Azure bez serwera programu VMM. Jeśli replikujesz maszyny wirtualne przy użyciu **programu System Center VMM do platformy Azure** scenariusza, następnie postępuj zgodnie z instrukcjami [wyłączyć ochronę maszyny wirtualnej funkcji Hyper-V replikacja za pomocą programu System Center VMM do Platformę Azure](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)
+> Użyj tej procedury, Jeśli replikujesz maszyny wirtualne funkcji Hyper-V na platformę Azure bez serwera programu VMM. Jeśli replikujesz maszyny wirtualne przy użyciu **programu System Center VMM do platformy Azure** scenariusza, a następnie postępuj zgodnie z instrukcjami wyłączenia ochrony dla funkcji Hyper-V wirtualnych maszyny replikowania, za pomocą programu System Center VMM na platformę Azure
 
 1. W **chronione elementy** > **zreplikowane elementy**, kliknij prawym przyciskiem myszy maszyny > **Wyłącz replikację**.
 2. W **Wyłącz replikację**, można wybrać następujące opcje:

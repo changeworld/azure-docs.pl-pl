@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 8a78823a208a5310e62714de7b1a3cd2e35eaa8f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 67cc7d0dc162f2b36e38f1068f46079f46120f1c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104679"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819845"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano konfiguracje dla pamięci podręcznej Azure dla wystąpienia usługi Redis. W tym temacie omówiono również domyślne Redis konfiguracji serwera dla usługi Azure Cache do wystąpienia usługi Redis.
@@ -57,7 +57,7 @@ Można wyświetlić i skonfigurować następujące ustawienia przy użyciu **Men
     * [Właściwości](#properties)
     * [Blokady](#locks)
     * [Skrypt automatyzacji](#automation-script)
-* [Administracja](#administration)
+* Administracja
     * [Importowanie danych](#importexport)
     * [Eksportowanie danych](#importexport)
     * [Ponowne uruchamianie](#reboot)
@@ -65,7 +65,7 @@ Można wyświetlić i skonfigurować następujące ustawienia przy użyciu **Men
     * [Metryki pamięci podręcznej redis](#redis-metrics)
     * [Reguły alertów](#alert-rules)
     * [Diagnostyka](#diagnostics)
-* [Pomoc techniczna i rozwiązywanie problemów z ustawieniami](#support-amp-troubleshooting-settings)
+* Pomoc techniczna i rozwiązywanie problemów z ustawieniami
     * [Usługa Resource health](#resource-health)
     * [Nowe żądanie obsługi](#new-support-request)
 

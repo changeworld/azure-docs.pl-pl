@@ -13,15 +13,15 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0e190faca778f4a65a3bd4a29d05c01a89ee7e11
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015138"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816734"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Przenoszenie danych z bazy danych DB2 za pomocą działania kopiowania w fabryce danych Azure
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](data-factory-onprem-db2-connector.md)
 > * [Wersja 2 (bieżąca wersja)](../connector-db2.md)
 
@@ -72,7 +72,7 @@ Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, a
 2. Utwórz zestawy danych reprezentujące dane wejściowe i wyjściowe operacji kopiowania. 
 3. Tworzenie potoku za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
 
-Korzystając z Kreatora kopiowania, definicji JSON usługi fabryka danych, połączonej usługi, zestawy danych i potoku jednostki są tworzone automatycznie dla Ciebie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), zdefiniujesz jednostki usługi Data Factory przy użyciu formatu JSON. [Przykład kodu JSON: Kopiowanie danych z bazy danych DB2 w usłudze Azure Blob storage](#json-example-copy-data-from-db2-to-azure-blob) pokazuje definicji JSON dla jednostek fabryki danych, które są używane w celu skopiowania danych z lokalnego magazynu danych programu DB2.
+Korzystając z Kreatora kopiowania, definicji JSON usługi fabryka danych, połączonej usługi, zestawy danych i potoku jednostki są tworzone automatycznie dla Ciebie. Korzystając z narzędzi lub interfejsów API (z wyjątkiem interfejsu API platformy .NET), zdefiniujesz jednostki usługi Data Factory przy użyciu formatu JSON. Przykład kodu JSON: Kopiuj dane z bazy danych DB2 do usługi Azure Blob storage zawiera definicji JSON dla jednostek fabryki danych, które są używane w celu skopiowania danych z lokalnego magazynu danych programu DB2.
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi Data Factory, które są specyficzne dla magazynu danych programu DB2.
 
@@ -83,7 +83,7 @@ W poniższej tabeli wymieniono właściwości kodu JSON, które są specyficzne 
 | --- | --- | --- |
 | **type** |Ta właściwość musi być równa **OnPremisesDb2**. |Yes |
 | **server** |Nazwa serwera bazy danych DB2. |Yes |
-| **Bazy danych** |Nazwa bazy danych DB2. |Yes |
+| **database** |Nazwa bazy danych DB2. |Yes |
 | **schema** |Nazwa schematu w bazie danych DB2. Ta właściwość jest rozróżniana wielkość liter. |Nie |
 | **authenticationType** |Typ uwierzytelniania, który służy do łączenia z bazą danych DB2. Możliwe wartości to: Anonimowe, podstawowe i Windows. |Yes |
 | **Nazwa użytkownika** |Nazwa konta użytkownika, jeśli używasz uwierzytelniania podstawowe lub Windows. |Nie |
@@ -97,7 +97,7 @@ Aby uzyskać listę sekcje i właściwości, które są dostępne do definiowani
 
 | Właściwość | Opis | Wymagane |
 | --- | --- | --- |
-| **Właściwość TableName** |Nazwa tabeli w wystąpieniu bazy danych DB2, które połączona usługa przywołuje. Ta właściwość jest rozróżniana wielkość liter. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** zostanie określona) |
+| **tableName** |Nazwa tabeli w wystąpieniu bazy danych DB2, które połączona usługa przywołuje. Ta właściwość jest rozróżniana wielkość liter. |Nie (Jeśli **zapytania** właściwości działania kopiowania typu **RelationalSource** zostanie określona) |
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 Aby uzyskać listę sekcje i właściwości, które są dostępne do definiowania działania kopiowania, zobacz [tworzenie potoków](data-factory-create-pipelines.md) artykułu. Skopiuj właściwości działań, takich jak **nazwa**, **opis**, **dane wejściowe** tabeli, **generuje** tabeli i **zasad**, są dostępne dla wszystkich typów działań. Właściwości, które są dostępne w **typeProperties** różnią się w sekcji działania dla każdego typu działania. Właściwości różnią się w zależności od typów danych źródła i ujścia dla działania kopiowania.
@@ -311,43 +311,43 @@ Następujące mapowania są używane podczas działania kopiowania konwertuje da
 | SmallInt |Int16 |
 | Liczba całkowita |Int32 |
 | BigInt |Int64 |
-| Real |Pojedyncze |
-| Podwójne |Podwójne |
-| Liczba zmiennoprzecinkowa |Podwójne |
-| Dziesiętna |Dziesiętny |
-| DecimalFloat |Dziesiętny |
-| Liczbowy |Dziesiętny |
+| Real |Single |
+| Double |Double |
+| Liczba zmiennoprzecinkowa |Double |
+| Dziesiętna |Decimal |
+| DecimalFloat |Decimal |
+| Liczbowy |Decimal |
 | Date |DateTime |
-| Time |Przedział czasu |
+| Time |TimeSpan |
 | Znacznik czasu |DateTime |
 | Xml |Byte[] |
-| Char |Ciąg |
-| VarChar |Ciąg |
-| LongVarChar |Ciąg |
-| DB2DynArray |Ciąg |
+| Char |String |
+| VarChar |String |
+| LongVarChar |String |
+| DB2DynArray |String |
 | Binarny |Byte[] |
 | VarBinary |Byte[] |
 | LongVarBinary |Byte[] |
-| Grafika |Ciąg |
-| VarGraphic |Ciąg |
-| LongVarGraphic |Ciąg |
-| CLOB |Ciąg |
+| Grafika |String |
+| VarGraphic |String |
+| LongVarGraphic |String |
+| CLOB |String |
 | Obiekt blob |Byte[] |
-| DbClob |Ciąg |
+| DbClob |String |
 | SmallInt |Int16 |
 | Liczba całkowita |Int32 |
 | BigInt |Int64 |
-| Real |Pojedyncze |
-| Podwójne |Podwójne |
-| Liczba zmiennoprzecinkowa |Podwójne |
-| Dziesiętna |Dziesiętny |
-| DecimalFloat |Dziesiętny |
-| Liczbowy |Dziesiętny |
+| Real |Single |
+| Double |Double |
+| Liczba zmiennoprzecinkowa |Double |
+| Dziesiętna |Decimal |
+| DecimalFloat |Decimal |
+| Liczbowy |Decimal |
 | Date |DateTime |
-| Time |Przedział czasu |
+| Time |TimeSpan |
 | Znacznik czasu |DateTime |
 | Xml |Byte[] |
-| Char |Ciąg |
+| Char |String |
 
 ## <a name="map-source-to-sink-columns"></a>Mapy źródła do ujścia kolumn
 Aby dowiedzieć się, jak mapowania kolumn w zestawie danych źródłowych do kolumn w zestawie danych ujścia, zobacz [mapowanie kolumny zestawu danych w usłudze Azure Data Factory](data-factory-map-columns.md).

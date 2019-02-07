@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d0a3014fa224d6b5c85142e492afb0679f9f0b1
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: c188c23f87715b6ba5b90f6015b59f2a347ec0cf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014685"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821324"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Przenoszenie danych za pomocą działania kopiowania
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -209,7 +209,7 @@ Różnych magazynach danych ma inny typ natywny systemów. Działanie kopiowania
 1. Przekonwertować na typ architektury .NET typy natywne źródła.
 2. Przekonwertowanie z .NET do typu macierzystego ujścia.
 
-Mapowanie z typu macierzystego systemu z typem platformy .NET dla magazynu danych jest w artykule magazynu odpowiednich danych. (Kliknij łącze w [obsługiwane magazyny danych](#supported-data-stores) tabeli). Te mapowania można użyć, aby określić odpowiednie typy podczas tworzenia tabel, tak aby działanie kopiowania wykonuje operację odpowiednie konwersje.
+Mapowanie z typu macierzystego systemu z typem platformy .NET dla magazynu danych jest w artykule magazynu odpowiednich danych. (Kliknij link określonych w tabeli obsługiwane magazyny danych). Te mapowania można użyć, aby określić odpowiednie typy podczas tworzenia tabel, tak aby działanie kopiowania wykonuje operację odpowiednie konwersje.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej o działaniu kopiowania więcej, zobacz [kopiowanie danych z usługi Azure Blob storage do usługi Azure SQL Database](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md).

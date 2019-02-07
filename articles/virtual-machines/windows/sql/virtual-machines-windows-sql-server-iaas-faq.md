@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 837c9d2b4b7dc0ce2c5ee3b25106eb5fea4ed7ea
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358987"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767343"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -86,7 +86,7 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Czy mogę zmienić Maszynę wirtualną do używania licencję programu SQL Server, jeśli został utworzony z jednego z obrazów w galerii zgodnie z rzeczywistym użyciem**
 
-   Tak. Można łatwo przenosić przechodzenie między dwa modele licencjonowania, niezależnie od tego obrazu, który pierwotnie został wdrożony. Aby uzyskać więcej informacji, zobacz [Jak zmienić model licencjonowania dla maszyny wirtualnej SQL](virtual-machines-windows-sql-ahb.md).
+   Tak. Można łatwo przenosić przenoszenia między dwoma modelami licencji, jeśli pierwotnie uruchomiona z obrazem galerii zgodnie z rzeczywistym użyciem. Jednak nie można przełączyć licencji zgodnie z rzeczywistym użyciem, jeśli początkowo wprowadzenie obrazów BYOL. Aby uzyskać więcej informacji, zobacz [jak zmienić modelu licencjonowania dla maszyny Wirtualnej programu SQL Server](virtual-machines-windows-sql-ahb.md).
 
 1. **Do utworzenia nowej maszyny Wirtualnej SQL należy używać obrazów BYOL lub punktu odzyskiwania maszyny Wirtualnej SQL?**
 
@@ -94,11 +94,11 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Przełączanie Modele licencjonowania wymaga żadnych przestojów dla programu SQL Server?**
 
-   Nie. [Zmiana modelu licencjonowania](virtual-machines-windows-sql-ahb.md) nie wymaga żadnych przestojów dla programu SQL Server, ponieważ zmiana zacznie obowiązywać natychmiast i nie wymaga ponownego uruchomienia maszyny wirtualnej. 
+   Nie. [Zmiana modelu licencjonowania](virtual-machines-windows-sql-ahb.md) nie wymaga żadnych przestojów dla programu SQL Server, ponieważ zmiana zacznie obowiązywać natychmiast i nie wymaga ponownego uruchomienia maszyny wirtualnej. Jednak, aby zarejestrować maszyny Wirtualnej programu SQL Server za pomocą dostawcy zasobów maszyny Wirtualnej SQL [rozszerzenie SQL IaaS](virtual-machines-windows-sql-server-agent-extension.md) jest wymaganiem wstępnym i instalowanie rozszerzenie SQL IaaS powoduje ponowne uruchomienie usługi programu SQL Server. Jako takie Jeśli rozszerzenie SQL IaaS musi być zainstalowany, następnie należy to zrobić podczas okna obsługi. 
 
 1. **Subskrypcji CSP aktywować korzyść użycia hybrydowego platformy Azure?**
 
-   Tak. [Zmiana modelu licencjonowania](virtual-machines-windows-sql-ahb.md) jest niedostępny dla subskrypcji programu CSP. 
+   Tak, korzyść użycia hybrydowego platformy Azure jest dostępna dla subskrypcji programu CSP. Dostawcy usług Kryptograficznych powinni najpierw wdrożyć obraz zgodnie z rzeczywistym użyciem, a następnie [zmienić modelu licencjonowania](virtual-machines-windows-sql-ahb.md) do bring-your-own-license.  
 
 1. **Rejestrowanie moją maszynę Wirtualną przy użyciu nowego dostawcę zasobów maszyny Wirtualnej SQL trwają dodatkowe koszty?**
 

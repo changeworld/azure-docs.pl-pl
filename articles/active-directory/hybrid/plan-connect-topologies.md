@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 15ecd594dea9251b64cdfcba3bf620bc101504ec
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 988e72a20fdd80e41ce8fc1ef568d90d4283a848
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486099"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813504"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologie obsługiwane w programie Azure AD Connect
 W tym artykule opisano różne lokalne i topologii usługi Azure Active Directory (Azure AD), korzystających z synchronizacji programu Azure AD Connect jako rozwiązania do integracji kluczy. Ten artykuł zawiera zarówno obsługiwanych i nieobsługiwanych konfiguracji.
@@ -63,7 +63,7 @@ Jeśli masz wiele lasów, wszystkie lasy musi być osiągalna przez jeden serwer
 
 Kreatora instalacji usługi Azure AD Connect oferuje kilka opcji w celu skonsolidowania użytkowników, którzy są reprezentowane w wielu lasach. Celem jest, że użytkownik jest tylko jeden raz reprezentowana w usłudze Azure AD. Istnieją pewne typowe topologie, które można skonfigurować w ścieżce instalacji niestandardowej w Kreatorze instalacji. Na **unikatowa identyfikacja użytkowników** wybierz odpowiednią opcję, która reprezentuje topologii. Konsolidacja jest skonfigurowany tylko dla użytkowników. Zduplikowane grupy nie są skonsolidowane w konfiguracji domyślnej.
 
-Popularne topologie zostały omówione w sekcjach dotyczących [oddzielne topologie](#multiple-forests-separate-topologies), [pełnej siatki](#multiple-forests-full-mesh-with-optional-galsync), i [topologii zasób konta](#multiple-forests-account-resource-forest).
+Popularne topologie zostały omówione w sekcjach dotyczących oddzielne topologie [pełnej siatki](#multiple-forests-full-mesh-with-optional-galsync), i [topologii zasób konta](#multiple-forests-account-resource-forest).
 
 Przyjęto założenie, domyślna konfiguracja przedstawiona w usłudze Azure AD Connect sync:
 

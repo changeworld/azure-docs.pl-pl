@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/22/2017
 ms.author: tamram
-ms.openlocfilehash: 160509a5a82b71b281d57d97e103bb4190605b7c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ac58886225221677aa003833167ff58cd578255d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847815"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693925"
 ---
 # <a name="create-a-storage-account-and-rotate-its-account-access-keys"></a>Tworzenie konta magazynu i rotowanie kluczy dostępu do konta
 
@@ -48,10 +48,10 @@ Ten skrypt zawiera następujące polecenia, służące do utworzenia konta magaz
 
 | Polecenie | Uwagi |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | Tworzy konto usługi Azure Storage we wskazanej grupie zasobów. |
-| [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) | Wyświetla klucze dostępu do podanego konta magazynu. |
-| [az storage account keys renew](/cli/azure/storage/account/keys#az_storage_account_keys_renew) | Ponownie generuje podstawowy lub pomocniczy klucz dostępu do konta. |
+| [az group create](/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az storage account create](/cli/azure/storage/account) | Tworzy konto usługi Azure Storage we wskazanej grupie zasobów. |
+| [az storage account keys list](/cli/azure/storage/account/keys) | Wyświetla klucze dostępu do podanego konta magazynu. |
+| [az storage account keys renew](/cli/azure/storage/account/keys) | Ponownie generuje podstawowy lub pomocniczy klucz dostępu do konta. |
 
 ## <a name="next-steps"></a>Następne kroki
 

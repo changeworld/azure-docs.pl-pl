@@ -13,12 +13,12 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 5ff2ee3ed271d8c32e2d41f40a56f71aa4c6c67c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245273"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809252"
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Zapewnianie aplikacjom dostępu do usługi Azure Stack
 
@@ -38,10 +38,10 @@ Nazwy główne usług są preferowane w porównaniu do uruchamiania aplikacji z 
 
 W zależności od tego, jak zostały wdrożone usługi Azure Stack należy rozpocząć od tworzenia jednostki usługi. W tym dokumencie opisano tworzenie usługi podmiotu zabezpieczeń dla:
 
-- [Azure Active Directory (Azure AD)](#create-service-principal-for-azure-ad). Usługa Azure AD to wielodostępna, oparta na chmurze katalogu, a usługa zarządzania tożsamościami. Za pomocą usługi Azure AD połączonej usługi Azure Stack.
-- [Active Directory Federation Services (AD FS)](#create-service-principal-for-ad-fs). Usługi AD FS zapewniają uproszczoną, zabezpieczoną Federację tożsamości i możliwości logowania jednokrotnego (SSO) dla sieci Web. Za pomocą usług AD FS zarówno połączonych i niepołączonych wystąpień usługi Azure Stack.
+- Azure Active Directory (Azure AD). Usługa Azure AD to wielodostępna, oparta na chmurze katalogu, a usługa zarządzania tożsamościami. Za pomocą usługi Azure AD połączonej usługi Azure Stack.
+- Active Directory Federation Services (AD FS). Usługi AD FS zapewniają uproszczoną, zabezpieczoną Federację tożsamości i możliwości logowania jednokrotnego (SSO) dla sieci Web. Za pomocą usług AD FS zarówno połączonych i niepołączonych wystąpień usługi Azure Stack.
 
-Po utworzeniu nazwy głównej usługi zestaw typowych kroków do usług AD FS i Azure Active Directory są używane do [delegować uprawnienia](#assign-role-to-service-principal) do roli.
+Po utworzeniu nazwy głównej usługi zestaw typowych kroków do usług AD FS i Azure Active Directory umożliwiają delegować uprawnienia do roli.
 
 ## <a name="manage-service-principal-for-azure-ad"></a>Zarządzanie nazwy głównej usługi dla usługi Azure AD
 
@@ -63,7 +63,7 @@ Programowe zalogować, użyj Identyfikatora aplikacji i aplikacji sieci Web / in
 
 1. Z **rejestracje aplikacji** w usłudze Active Directory, wybierz swoją aplikację.
 
-2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Aplikacje w [przykładowe aplikacje](#sample-applications) sekcji odnoszą się do tej wartości jako identyfikatora klienta.
+2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Aplikacje w sekcji aplikacje przykładowe odwoływać się do tej wartości jako identyfikatora klienta.
 
      ![Identyfikator klienta](./media/azure-stack-create-service-principal/image12.png)
 3. Aby wygenerować klucz uwierzytelniania dla aplikacji sieci Web / interfejs API, wybierz **ustawienia** > **klucze**. 
@@ -74,7 +74,7 @@ Po zapisaniu klucza zostanie wyświetlona jego wartość. Skopiuj tę wartość 
 
 ![zapisany klucz](./media/azure-stack-create-service-principal/image15.png)
 
-Po wykonaniu tych czynności, możesz [przypisania roli aplikacji](#assign-role-to-service-principal).
+Po wykonaniu tych czynności, możesz przypisać aplikację rolę.
 
 ## <a name="manage-service-principal-for-ad-fs"></a>Zarządzanie nazwy głównej usługi dla usług AD FS
 
@@ -116,7 +116,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
-|Name|Nazwę SPN konta|MyAPP|
+|Name (Nazwa)|Nazwę SPN konta|MyAPP|
 |ClientCertificates|Tablica obiektów certyfikatu|X509 certyfikatu|
 |ClientRedirectUris<br>(Opcjonalnie)|Identyfikator URI przekierowania aplikacji|-|
 
@@ -203,7 +203,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 |Parametr|Opis|Przykład|
 |---------|---------|---------|
-|Name|Nazwę SPN konta|MyAPP|
+|Name (Nazwa)|Nazwę SPN konta|MyAPP|
 |ApplicationIdentifier|Unikatowy identyfikator|S-1-5-21-1634563105-1224503876-2692824315-2119|
 |ClientCertificate|Tablica obiektów certyfikatu|X509 certyfikatu|
 
@@ -247,7 +247,7 @@ Wymagane są następujące informacje jako dane wejściowe dla parametrów usłu
 
 | Parametr | Opis | Przykład |
 |----------------------|--------------------------|---------|
-| Name | Nazwę SPN konta | MyAPP |
+| Name (Nazwa) | Nazwę SPN konta | MyAPP |
 | GenerateClientSecret | Tworzenie wpisu tajnego |  |
 
 #### <a name="use-the-ercs-privilegedendpoint-to-create-the-service-principal"></a>Użyj ERCS PrivilegedEndpoint, aby utworzyć nazwę główną usługi

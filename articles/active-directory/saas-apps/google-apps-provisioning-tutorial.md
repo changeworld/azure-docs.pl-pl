@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 515b21c6854620a6bd1af53af8b1778d70613622
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1dd1cf143d66fec2ab8c12ee28a61bb3b8a83ade
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203950"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821834"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi G Suite dla automatycznej aprowizacji użytkowników
 
@@ -127,7 +127,7 @@ Ta sekcja przeprowadzi Cię przez proces nawiązywania połączenia z usługi Az
     e. Powtórz poprzednie kroki dla dodatkowych domenach, które mają zostać dodane do usługi Google Apps.
      
      > [!WARNING]
-     > Jeśli zmienisz domenę podstawową dla dzierżawy usługi G Suite, a jeśli masz już skonfigurowane logowanie jednokrotne z usługą Azure AD, a następnie należy powtórzyć krok #3 w sekcji [krok 2: Włącz logowanie jednokrotne](#step-two-enable-single-sign-on).
+     > Jeśli zmienisz domenę podstawową dla dzierżawy usługi G Suite i skonfigurowano już logowanie jednokrotne z usługą Azure AD, musisz powtórzyć krok #3 w sekcji Krok 2: Włącz logowanie jednokrotne.
        
 1. W [konsoli administracyjnej aplikacje Google](https://admin.google.com/), wybierz opcję **ról administratora**.
    

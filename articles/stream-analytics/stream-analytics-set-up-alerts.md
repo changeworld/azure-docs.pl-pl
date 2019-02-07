@@ -7,14 +7,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412395"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769500"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Konfigurowanie alertów dotyczących zadań usługi Azure Stream Analytics
 
@@ -46,17 +46,17 @@ Poniższy przykład pokazuje, jak skonfigurować alerty, gdy zadanie przechodzi 
 
    ![Konfigurowanie alertu dla zadania usługi Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. **Zasobów**, **WARUNEK**, i **grup akcji** ma wpis.
+7. **Zasobów**, **WARUNEK**, i **grup akcji** ma wpis. Należy pamiętać, że aby wyzwalać alerty, zdefiniowanych warunków muszą zostać spełnione. Można na przykład pomiar metryki średnia wartość, w ciągu ostatnich 15 minut, co 5 minut.
 
    ![Utwórz regułę alertu usługi Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
    Dodaj **Nazwa reguły alertu**, **opis**i **grupy zasobów** do **szczegóły ALERTU** i kliknij przycisk **Utwórz alert Reguła** do utworzenia reguły dla zadania usługi Stream Analytics.
 
    ![Utwórz regułę alertu usługi Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
-
+   
 ## <a name="scenarios-to-monitor"></a>Scenariusze monitorowania
 
-Następujące alerty są zalecane do monitorowania wydajności zadania usługi Stream Analytics. Te metryki powinna być oceniana na minutę w ostatnim okresie 5 minut. Jeśli zadanie odczuwa problemy z wydajnością, można użyć przetwarzania równoległego zapytań, aby stał się bardziej odpowiednim i spróbuj zwiększyć liczbę jednostek przesyłania strumieniowego.
+Następujące alerty są zalecane do monitorowania wydajności zadania usługi Stream Analytics. Te metryki powinna być oceniana na minutę w ostatnim okresie 5 minut.
 
 |Metryka|Warunek|Agregacja czasu|Próg|Akcje naprawcze|
 |-|-|-|-|-|

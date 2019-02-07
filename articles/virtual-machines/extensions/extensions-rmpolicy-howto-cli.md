@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 5054fdc08c7a0a1b3833ed95784f6018ac5c697e
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659256"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770588"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Ograniczanie instalacji rozszerzeń na maszynach wirtualnych z systemem Linux za pomocą usługi Azure Policy
 
@@ -98,7 +98,7 @@ Gdy wszystko będzie gotowe, trafienia **Esc** klucza, a następnie wpisz **: wq
 
 ## <a name="create-the-policy"></a>Tworzenie zasad
 
-Definicja zasad jest obiekt służący do przechowywania konfiguracji, który chcesz użyć. Definicja zasad używa plików zasady i parametry do zdefiniowania zasad. Utwórz definicję zasad za pomocą [utworzenia definicji zasad az](/cli/azure/role/assignment?view=azure-cli-latest#az_role_assignment_create).
+Definicja zasad jest obiekt służący do przechowywania konfiguracji, który chcesz użyć. Definicja zasad używa plików zasady i parametry do zdefiniowania zasad. Utwórz definicję zasad za pomocą [utworzenia definicji zasad az](/cli/azure/role/assignment?view=azure-cli-latest).
 
 W tym przykładzie zasady i parametry są pliki tworzone i przechowywane jako pliki JSON w usługi cloud shell.
 
@@ -117,7 +117,7 @@ az policy definition create \
 
 W tym przykładzie przypisuje grupę zasobów za pomocą zasad [utworzenia przypisania zasad az](/cli/azure/policy/assignment). Wszystkie maszyny Wirtualnej utworzonej w **myResourceGroup** grupy zasobów nie będzie można zainstalować dostęp do maszyny Wirtualnej systemu Linux lub rozszerzenia niestandardowego skryptu dla systemu Linux. Grupa zasobów musi istnieć przed przypisaniem zasad.
 
-Użyj [listy kont az](/cli/azure/account?view=azure-cli-latest#az_account_list) można pobrać Identyfikatora subskrypcji należy użyć zamiast co w przykładzie.
+Użyj [listy kont az](/cli/azure/account?view=azure-cli-latest) można pobrać Identyfikatora subskrypcji należy użyć zamiast co w przykładzie.
 
 
 ```azurecli-interactive

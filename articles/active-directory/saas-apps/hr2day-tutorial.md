@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: bb03506bac22c8c82e856f403710a4908af6f9de
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7d77d72264580e4cde83f6cbb9f83bf7030d941e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149259"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820049"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą HR2day przez Merces
 
@@ -88,11 +88,11 @@ HR2day przez Merces, przypisywanie **nazwa_użytkownika** w usłudze Azure AD **
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą HR2day przez Merces, należy wykonać poniższe bloki konstrukcyjne:
 
-1. [Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on): Umożliwianie użytkownikom korzystać z tej funkcji.
-1. [Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user): Testowanie usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. [Utwórz HR2day przez użytkownika testowego Merces](#creating-an-hr2day-by-merces-test-user): Utwórz odpowiednikiem Britta Simon w HR2day przez Merces połączonego z usługi Azure AD reprezentacja użytkownika.
-1. [Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user): Włącz Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. [Testowanie logowania jednokrotnego](#testing-single-sign-on): Sprawdź, czy konfiguracja działa.
+1. Konfigurowanie usługi Azure AD logowania jednokrotnego: Umożliwianie użytkownikom korzystać z tej funkcji.
+1. Utwórz użytkownika testowego usługi Azure AD: Testowanie usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. Utwórz HR2day przez użytkownika testowego Merces: Utwórz odpowiednikiem Britta Simon w HR2day przez Merces połączonego z usługi Azure AD reprezentacja użytkownika.
+1. Przypisz użytkownika testowego usługi Azure AD: Włącz Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. Testowanie logowania jednokrotnego: Sprawdź, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 

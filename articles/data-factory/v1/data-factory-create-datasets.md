@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 690c2769e129d5661e7d66cb3f9f968643c0dbdb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747013"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811090"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Zestawy danych w usłudze Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -86,7 +86,7 @@ W poniższej tabeli opisano właściwości w powyższy kod JSON:
 | Struktura |Schemat zestawu danych.<br/><br/>Aby uzyskać więcej informacji, zobacz [struktury zestawu danych](#Structure). |Nie |Nie dotyczy |
 | typeProperties | Właściwości typu są różne dla każdego typu (na przykład: Usługa Azure Blob, tabela Azure SQL). Szczegółowe informacje na temat obsługiwanych typów i ich właściwości, [typ zestawu danych](#Type). |Yes |Nie dotyczy |
 | external | Flagę logiczną, aby określić, czy zestaw danych jest jawnie generowany przez potok usługi data factory, czy nie. Jeśli wejściowy zestaw danych działania nie jest generowany przez bieżącego potoku, należy ustawić tę flagę na wartość true. Tej flagi należy ustawić na wartość true dla wejściowego zestawu danych pierwszego działania w potoku.  |Nie |false |
-| availability | Definiuje okno przetwarzania (na przykład co godzinę lub codziennie) lub model tworzenia wycinków w środowisku produkcyjnym zestaw danych. Każda jednostka danych używane i generowane przez uruchomienia działania jest nazywany wycinka danych. Jeśli dostępnością wyjściowego zestawu danych jest ustawiony na codziennie (częstotliwość — dzień, interval — 1), wycinek jest generowany codziennie. <br/><br/>Aby uzyskać więcej informacji, zobacz [dostępności zestawu danych](#Availability). <br/><br/>Szczegółowe informacje na temat zestawu danych model tworzenia wycinków, [planowanie i wykonywanie](data-factory-scheduling-and-execution.md) artykułu. |Yes |Nie dotyczy |
+| availability | Definiuje okno przetwarzania (na przykład co godzinę lub codziennie) lub model tworzenia wycinków w środowisku produkcyjnym zestaw danych. Każda jednostka danych używane i generowane przez uruchomienia działania jest nazywany wycinka danych. Jeśli dostępnością wyjściowego zestawu danych jest ustawiony na codziennie (częstotliwość — dzień, interval — 1), wycinek jest generowany codziennie. <br/><br/>Aby uzyskać szczegółowe informacje Zobacz sekcję dotyczącą dostępności zestawu danych. <br/><br/>Szczegółowe informacje na temat zestawu danych model tworzenia wycinków, [planowanie i wykonywanie](data-factory-scheduling-and-execution.md) artykułu. |Yes |Nie dotyczy |
 | policy |Definiuje kryteria lub warunek, który należy spełnić wycinków zestawu danych. <br/><br/>Aby uzyskać więcej informacji, zobacz [zestawie danych zasad](#Policy) sekcji. |Nie |Nie dotyczy |
 
 ## <a name="dataset-example"></a>Przykładowy zestaw danych

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: 56dd13f5c2c0db4af65d8bc5d4ee5c072a161964
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ee807387b5fc7c8a9d42564cdb6cee7d59db2508
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429638"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819794"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnozowanie problemu z routingiem maszyny wirtualnej
 
@@ -116,7 +116,7 @@ Rozwiązywanie problemów z routingiem zwykle składa się z:
 - Zapewnienie, że tabelę tras, która zawiera wszystkie trasy niestandardowe zdefiniowany przez użytkownika jest skojarzona z podsiecią, w której znajduje się interfejs sieciowy. Dowiedz się, jak [kojarzenie tabeli tras do podsieci](manage-route-table.md#associate-a-route-table-to-a-subnet).
 - Zapewnienie, że urządzeń, takich jak sieci VPN platformy Azure bramy lub sieci wirtualnych urządzeń, w których wdrożono są obsługiwane. Użyj [diagnostyki sieci VPN](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) możliwości usługi Network Watcher ustalenie problemów z bramą Azure VPN gateway.
 
-Jeśli nadal występują problemy z komunikacją, zobacz [zagadnienia](#considerations) i [dodatkowe diagnostyki](#additional-dignosis).
+Jeśli nadal występują problemy z komunikacją, zobacz [zagadnienia](#considerations) i dodatkowe diagnostyki.
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 

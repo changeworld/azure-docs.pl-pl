@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: aa4a4ef1c1ee7281a737db7c7f91e4f330c52246
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: d6ce615e23ce71f22eff3c2c70b387267792fef9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749631"
+ms.locfileid: "55768439"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Badanie zasobów platformy Azure przy użyciu usługi Resources Graph
 
@@ -40,11 +40,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json -Depth 100
 ```
 
 > [!NOTE]
-> Azure PowerShell `Search-AzGraph` polecenie cmdlet zwraca **PSCustomObject** domyślnie. Aby dane wyjściowe wyglądają tak samo jak dane zwracane przez interfejs wiersza polecenia platformy Azure, `ConvertTo-Json` służy polecenie cmdlet.
+> Azure PowerShell `Search-AzGraph` polecenie cmdlet zwraca **PSCustomObject** domyślnie. Aby dane wyjściowe wyglądają tak samo jak dane zwracane przez interfejs wiersza polecenia platformy Azure, `ConvertTo-Json` służy polecenie cmdlet. Wartością domyślną dla **głębokość** jest _2_. Ustawienie _100_ należy przekonwertować wszystkie zwrócone poziomów.
 
 Wyniki JSON są strukturę podobną do poniższego przykładu:
 

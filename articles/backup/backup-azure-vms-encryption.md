@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: geetha
-ms.openlocfilehash: a5b0e6d700ce64a25c20b23738508d2796fc6caa
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 676c6a45f4a3930d350bbcbdcbb1a0fb47880407
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487561"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810001"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup
 Ten artykuł zawiera informacje o kroki tworzenia kopii zapasowej i przywracanie maszyn wirtualnych (VM) przy użyciu usługi Azure Backup. Zapewnia także szczegółowe informacje o obsługiwanych scenariuszach, wymagania wstępne i kroki rozwiązywania problemów w przypadku wystąpienia błędów.
@@ -36,7 +36,7 @@ Ten artykuł zawiera informacje o kroki tworzenia kopii zapasowej i przywracanie
 
 * Magazyn usługi Recovery Services został utworzony, a replikacja magazynu została ustawiona, wykonując kroki opisane w [przygotowania środowiska do tworzenia kopii zapasowych](backup-azure-arm-vms-prepare.md).
 
-* Kopia zapasowa została podana [uprawnienia do dostępu do magazynu kluczy](#provide-permissions-to-backup) zawierający kluczy i wpisów tajnych dla zaszyfrowanych maszyn wirtualnych.
+* Kopia zapasowa podano uprawnień dostępu magazynu kluczy zawierającego kluczy i wpisów tajnych dla szyfrowanych maszyn wirtualnych.
 
 ## <a name="backup-encrypted-vm"></a>Zaszyfrowana kopia zapasowa maszyny Wirtualnej
 Ustawienie cel kopii zapasowej, definiowanie zasad, skonfigurować elementy i wyzwalanie tworzenia kopii zapasowej, wykonaj następujące kroki.
@@ -76,7 +76,7 @@ Jeśli jesteś **użytkownika elementu członkowskiego**, Włącz kopię zapasow
 
    ![Zaszyfrowanego komunikatu maszyn wirtualnych](./media/backup-azure-vms-encryption/member-user-encrypted-vm-warning-message.png)
 
-   Aby uzyskać **użytkownik-Gość**, musisz podać uprawnienia dostępu magazynu kluczy dla kopii zapasowych do pracy z usługą kopii zapasowej. Możesz podać te uprawnienia, wykonując [kroki opisane w poniższej sekcji](#provide-permissions-to-backup)
+   Aby uzyskać **użytkownik-Gość**, musisz podać uprawnienia dostępu magazynu kluczy dla kopii zapasowych do pracy z usługą kopii zapasowej. Możesz podać te uprawnienia, wykonując kroki opisane w poniższej sekcji
 
    ![Zaszyfrowanego komunikatu maszyn wirtualnych](./media/backup-azure-vms-encryption/guest-user-encrypted-vm-warning-message.png)
 

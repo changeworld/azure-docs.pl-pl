@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 66daa71ffbe97e9f5374eedd7f51e5afe02f0b94
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 479278400aa056a7cebcefaa2eedee3d98bc9a15
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755530"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815248"
 ---
 # <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -98,7 +98,7 @@ Jeśli masz problemy z rejestracją Centrum deweloperów, należy wykonać nast�
     
     Kliknij przycisk Start w wiadomości e-mail.  
 1.  Na stronie logowania Zaloguj się przy użyciu dowolnej ID. firmy Microsoft Jeśli nie masz Identyfikatora firmy Microsoft, utwórz ją.  
-    *   Aby uzyskać więcej informacji na temat tworzenia Identyfikatora firmy Microsoft, odwiedź stronę [wytyczne dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania kontem w portalu Azure Marketplace](#guidelines-for-creating-a-microsoft-id-to-manage-an-azure-marketplace-account) sekcji.  
+    *   Aby uzyskać więcej informacji na temat tworzenia Identyfikatora firmy Microsoft można znaleźć wskazówki dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania sekcji konto w portalu Azure Marketplace.  
 2.  Wypełnij szczegóły problemu.  
 3.  Aby przesłać bilet, kliknij przycisk Prześlij. 
 

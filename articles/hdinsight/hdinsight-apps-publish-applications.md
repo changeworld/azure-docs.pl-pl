@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653921"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814207"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Publikowanie aplikacji HDInsight w witrynie Azure Marketplace
 Aplikacja usługi Azure HDInsight można zainstalować w klastrze HDInsight opartych na systemie Linux. Ten artykuł zawiera informacje o sposobie publikowania aplikacji HDInsight w portalu Azure Marketplace. Aby uzyskać ogólne informacje o funkcji publikowania w witrynie Azure Marketplace, zobacz [publikowanie oferty w portalu Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -75,9 +75,9 @@ Skrypt instalacji musi mieć następujące właściwości:
 * Jeśli skrypt zostanie uruchomiony usług w węzłach, usługi są monitorowane i skonfigurowane do automatycznego uruchamiania, jeśli występuje Akcja ponownego uruchomienia węzła.
 
 ## <a name="package-the-application"></a>Pakiet aplikacji
-Utwórz plik zip, który zawiera wszystkie pliki, które są wymagane do zainstalowania aplikacji HDInsight. Użyj pliku .zip do [opublikować aplikację](#publish-application). Plik zip zawiera następujące pliki:
+Utwórz plik zip, który zawiera wszystkie pliki, które są wymagane do zainstalowania aplikacji HDInsight. Plik zip umożliwia publikowanie aplikacji. Plik zip zawiera następujące pliki:
 
-* [createUiDefinition.json](#define-application)
+* createUiDefinition.json
 * mainTemplate.json (przykład można wyświetlić [instalowanie niestandardowych aplikacji HDInsight](hdinsight-apps-install-custom-applications.md).)
 * Wszystkie wymagane skrypty
 
@@ -94,7 +94,7 @@ Publikowanie aplikacji HDInsight:
 5. Wybierz **zdefiniować niektórych topologii, aby rozpocząć**. Szablon rozwiązania jest "nadrzędny" do wszystkich jego topologii. Można zdefiniować wiele topologii w jednym szablonie oferty lub rozwiązania. Wypchnięcie oferty do wdrażania przejściowego wypchnięciach przy użyciu jego topologii. 
 6. Wprowadź nazwę topologii, a następnie wybierz **+**.
 7. Wprowadź nową wersję, a następnie wybierz **+**.
-8. Przekaż plik zip został utworzony, kiedy użytkownik [Spakowana aplikacja](#package-application).  
+8. Przekaż plik zip, który został utworzony podczas Spakowana aplikacja.  
 9. Wybierz **żądanie certyfikacji**. Zespół certyfikacji Microsoft przeglądów pliki i certyfikuje topologii.
 
 ## <a name="next-steps"></a>Kolejne kroki

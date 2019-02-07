@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/25/2018
+ms.date: 01/31/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 704f854d7be9930923cb6e1955c3670f296035ed
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 950692a92152ac302ec573522fc5327f3acb91a2
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299830"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512316"
 ---
 # <a name="what-is-device-management-in-azure-active-directory"></a>Co to jest zarządzanie urządzeniami w usłudze Azure Active Directory?
 
@@ -35,6 +35,11 @@ Za pomocą urządzeń użytkownicy uzyskują dostęp do zasobów firmowych. Aby 
 Zarządzanie urządzeniami stanowi również podstawę w przypadku [dostępu warunkowego opartego na urządzeniach](../conditional-access/require-managed-devices.md). Korzystając z dostępu warunkowego opartego na urządzeniach, można zagwarantować, że dostęp do zasobów w środowisku jest możliwy tylko przy użyciu urządzeń zarządzanych.   
 
 W tym artykule wyjaśniono, jak działa zarządzanie urządzeniami w usłudze Azure Active Directory.
+
+
+
+> [!VIDEO https://www.youtube.com/embed/NeezfKhomQU]
+
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>Rozpoczynanie kontrolowania urządzeń w usłudze Azure AD
 

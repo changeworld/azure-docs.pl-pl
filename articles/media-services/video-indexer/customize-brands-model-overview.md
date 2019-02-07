@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: anzaman
-ms.openlocfilehash: 7df709adbd8e45712c112b52fc76920f8b67fe91
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 59a865cf6e822ecd1918d0c04b98f0edc0355223
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53284829"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815476"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Dostosowywanie modelu marek w indeksatora wideo
 
@@ -30,7 +30,7 @@ W [Microsoft Build 2017 dnia 2](https://www.videoindexer.ai/media/ed6ede78ad/) p
 
 Mówić o korzystaniu z okien w kontekście budowy nie wykrywa słowo "Windows" jako marki i te same pola, firmy Apple, Fox, itp., oparte na zaawansowanych algorytmów uczenia maszynowego, które odróżnić od kontekstu. Wykrywanie na marki działa w przypadku naszej obsługiwanych języków. Kliknij tutaj, aby [pełna Microsoft Build 2017 dnia 2 prezentacja wideo i indeks](http://www.videoindexer.ai/media/ed6ede78ad/).
 
-Aby wyświetlić własne marki, zapoznaj się z [następne kroki](#next-stpes).
+Aby wyświetlić własne marki, zapoznaj się z następnych kroków.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

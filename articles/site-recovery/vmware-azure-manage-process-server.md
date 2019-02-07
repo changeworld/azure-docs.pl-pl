@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: 05e77821ffe913a8c6669d58a3145635d230ff2b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: fd434ed8d5b625a1a0ed1ff195da0f864a4024b0
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847001"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769447"
 ---
 # <a name="manage-process-servers"></a>Zarządzanie serwerami przetwarzania
 
@@ -125,5 +125,5 @@ Jeśli oprogramowanie antywirusowe jest aktywna na autonomicznym serwerze przetw
 - C:\ProgramData\ASRSetupLogs
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
-- Katalog instalacji serwera przetwarzania, przykład: C:\Program Files (x86) \Microsoft Azure Site Recovery
+- Katalog instalacyjny serwera przetwarzania, przykład: C:\Program Files (x86) \Microsoft Azure Site Recovery
 

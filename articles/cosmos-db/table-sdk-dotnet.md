@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 08/17/2018
-ms.openlocfilehash: 469faeee4706c33b09f89bfbed1bb229a6aea20e
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fee5a025b97343936a002156e4cb895c91e04405
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848380"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821341"
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB tabel interfejsu API platformy .NET: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -81,7 +81,7 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 | [1.1.1](#1.1.1) |26 marca 2018 r.|--- |
 | [1.1.0](#1.1.0) |21 lutego 2018 r.|--- |
 | [1.0.0](#1.0.0) |15 listopada 2017 r.|--- |
-| [0.9.0-Preview](#0.9.0-preview) |11 listopada 2017 r. |--- |
+| 0.9.0-Preview |11 listopada 2017 r. |--- |
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 574a9ae1e283a3918e316d2daa84df727d729471
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5f6e0d2dece791ac4ece73acdf2e15e3c9be412f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477605"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812853"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Uwierzytelnianie rozwiązań usługi Batch za pomocą usługi Active Directory
 
@@ -91,7 +91,7 @@ Identyfikator dzierżawy określa dzierżawy usługi Azure AD, które świadczy 
 
 Aby uwierzytelniać się przy użyciu uwierzytelniania zintegrowanego, musisz udzielić uprawnień aplikacji do łączenie z interfejsem API usługi Batch. Ten krok powoduje włączenie aplikacji do uwierzytelniania wywołań interfejsu API usługi Batch za pomocą usługi Azure AD.
 
-Po [rejestracji aplikacji](#register-your-application-with-an-azure-ad-tenant), wykonaj następujące kroki w witrynie Azure portal, aby przyznać jej dostęp do usługi Batch:
+Po zarejestrowaniu aplikacji, wykonaj następujące kroki w witrynie Azure portal, aby przyznać jej dostęp do usługi Batch:
 
 1. W okienku nawigacji po lewej stronie w witrynie Azure portal wybierz **wszystkich usług**. Kliknij przycisk **rejestracje aplikacji**.
 2. Wyszukaj nazwę aplikacji na liście rejestracji aplikacji:

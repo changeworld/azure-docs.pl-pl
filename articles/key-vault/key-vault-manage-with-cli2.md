@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 9ebfb01071257c8879531c1879b6f8b3ba4493ef
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 11ace1b5cce742579256d08ecfe9d9a7412d3d7c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198902"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822497"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Zarządzanie Key Vault przy użyciu wiersza polecenia platformy Azure 
 
@@ -247,7 +247,7 @@ Włącz usługi Key Vault dla wdrożenia szablonu: Pozwala pobrać Wpisy tajne z
 
 ## <a name="working-with-hardware-security-modules-hsms"></a>Praca z sprzętowych modułów zabezpieczeń (HSM)
 
-Dodano bezpieczeństwa można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają modułu HSM. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Jeżeli te wymagania nie odnoszą się do Ciebie, pomiń tę sekcję i przejdź do sekcji [Usuwanie magazynu kluczy oraz skojarzonych kluczy i kluczy tajnych](#delete-the-key-vault-and-associated-keys-and-secrets).
+Dodano bezpieczeństwa można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają modułu HSM. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Jeśli te wymagania nie odnoszą się do Ciebie, Pomiń tę sekcję i przejdź do usuwania magazynu kluczy oraz skojarzonych kluczy i wpisów tajnych.
 
 Aby utworzyć te klucze chronione modułem HSM, musi mieć subskrypcję magazynu obsługującą klucze chronione przez moduł HSM.
 

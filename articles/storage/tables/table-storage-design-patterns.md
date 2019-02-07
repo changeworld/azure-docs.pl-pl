@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 40062cfb2e646fd6befef1e746f9493f3e4b20f9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469196"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821369"
 ---
 # <a name="table-design-patterns"></a>Wzorce projektowe tabel
 W tym artykule opisano niektóre wzorce, które są przeznaczone do użycia z rozwiązaniami usługi tabeli. Ponadto zobaczysz, jak praktycznie rozwiązać niektóre problemy i charakterystyczne kompromisowe omówione w innych artykułach projektowania magazynu tabeli. Poniższy diagram przedstawia relacje między różnych wzorców:  
@@ -73,7 +73,7 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 
 * [Komunikacja między partycji wzorzec indeks pomocniczy](#inter-partition-secondary-index-pattern)
 * [Wzorzec klucza złożona (c)](#compound-key-pattern)
-* [Transakcje grupy jednostek](#entity-group-transactions)
+* Transakcje grupy jednostek
 * [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)
 
 ## <a name="inter-partition-secondary-index-pattern"></a>Komunikacja między partycji wzorzec indeks pomocniczy
@@ -128,7 +128,7 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 * [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
 * [Wzorzec indeks pomocniczy wewnątrz partycji](#intra-partition-secondary-index-pattern)  
 * [Wzorzec klucza złożona (c)](#compound-key-pattern)  
-* [Transakcje grupy jednostek](#entity-group-transactions)  
+* Transakcje grupy jednostek  
 * [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>Wzorzec transakcji ostatecznie spójną
@@ -172,7 +172,7 @@ Użyj tego wzorca, gdy użytkownik chce zagwarantować spójność między jedno
 ### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Transakcje grupy jednostek](#entity-group-transactions)  
+* Transakcje grupy jednostek  
 * [Scalanie lub zastępowanie](#merge-or-replace)  
 
 > [!NOTE]
@@ -212,7 +212,7 @@ Druga opcja można użyć jednostki indeksu, zawierające następujące dane:
 Następujące kroki przedstawiają procesu, które należy wykonać podczas korzystania z drugą opcję dodawania nowego pracownika. W tym przykładzie dodamy pracownika z identyfikatorem 000152 i nazwisko Jones działu sprzedaży:  
 
 1. Pobrać jednostki indeksu z **PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "Kowalski". Zapisz element ETag to jednostki do użycia w kroku 2.  
-2. Tworzenie jednostki transakcji grupy (czyli operacji zbiorczej), która wstawia nową jednostkę pracowników (**PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "000152") i aktualizuje jednostki indeksu (**PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "Kowalski") przez dodanie nowego Identyfikatora pracowników do listy w polu EmployeeIDs. Aby uzyskać więcej informacji na temat transakcji grup jednostek, zobacz [transakcji grup jednostek](#entity-group-transactions).  
+2. Tworzenie jednostki transakcji grupy (czyli operacji zbiorczej), która wstawia nową jednostkę pracowników (**PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "000152") i aktualizuje jednostki indeksu (**PartitionKey** wartość "Sprzedaż" i **RowKey** wartość "Kowalski") przez dodanie nowego Identyfikatora pracowników do listy w polu EmployeeIDs. Aby uzyskać więcej informacji na temat transakcji grup jednostek Zobacz transakcji grup jednostek.  
 3. Jeśli transakcji grup jednostek zakończy się niepowodzeniem z powodu błędu optymistycznej współbieżności (kogoś innego po prostu zmodyfikował jednostki indeksu), należy zacząć od początku w kroku 1 ponownie.  
 
 Można użyć podejście podobne do usuwania pracownika, korzystając z pierwszej opcji. Zmiana nazwisko pracownika jest nieco bardziej skomplikowane, ponieważ będą potrzebne do wykonania transakcji grupy jednostki, która aktualizuje trzech jednostek: jednostki pracowników, jednostki indeksu dla starego nazwisko i jednostki indeksu dla nowe nazwisko. Każda jednostka musi pobrać przed wprowadzeniem jakichkolwiek zmian w celu pobrania wartości element ETag, które następnie służy do przeprowadzania aktualizacji za pomocą optymistycznej współbieżności.  
@@ -251,7 +251,7 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 
 * [Wzorzec klucza złożona (c)](#compound-key-pattern)  
 * [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
-* [Transakcje grupy jednostek](#entity-group-transactions)  
+* Transakcje grupy jednostek  
 * [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)  
 
 ## <a name="denormalization-pattern"></a>Wzorzec denormalizacja
@@ -282,7 +282,7 @@ Użyj tego wzorca, gdy potrzebujesz często do wyszukania powiązanych informacj
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
 * [Wzorzec klucza złożona (c)](#compound-key-pattern)  
-* [Transakcje grupy jednostek](#entity-group-transactions)  
+* Transakcje grupy jednostek  
 * [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>Wzorzec klucza złożona (c)
@@ -325,7 +325,7 @@ Użyj tego wzorca, gdy chcesz przechować jeden lub więcej powiązanych jednost
 ### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Transakcje grupy jednostek](#entity-group-transactions)  
+* Transakcje grupy jednostek  
 * [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types)  
 * [Wzorzec transakcji ostatecznie spójną](#eventually-consistent-transactions-pattern)  
 
@@ -394,7 +394,7 @@ Użyj tego wzorca, jeśli masz dużą liczbę jednostek, które należy usunąć
 ### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Transakcje grupy jednostek](#entity-group-transactions)
+* Transakcje grupy jednostek
 * [Modyfikowanie jednostek](#modifying-entities)  
 
 ## <a name="data-series-pattern"></a>Wzorzec serii danych
@@ -454,7 +454,7 @@ Użyj tego wzorca, gdy konieczne przechowywanie podmioty, których rozmiar lub l
 ### <a name="related-patterns-and-guidance"></a>Powiązane wzorce i wskazówki
 Podczas implementowania tego wzorca mogą być istotne następujące wzorce i wskazówki:  
 
-* [Transakcje grupy jednostek](#entity-group-transactions)
+* Transakcje grupy jednostek
 * [Scalanie lub zastępowanie](#merge-or-replace)
 
 ## <a name="large-entities-pattern"></a>Wzorzec dużych jednostek
@@ -556,7 +556,7 @@ Podczas podejmowania decyzji o sposobie przechowywania danych dziennika, należy
 W tej sekcji omówiono niektóre zagadnienia, mieć na uwadze podczas implementowania wzorców opisanych w poprzednich sekcjach. Większość w tej sekcji używa przykłady napisane w języku C#, korzystających z biblioteki klienta usługi Storage (wersja 4.3.0 w czasie pisania).  
 
 ## <a name="retrieving-entities"></a>Pobieranie jednostki
-Zgodnie z opisem w sekcji [projektowanie pod kątem zapytań](#design-for-querying), najbardziej wydajny zapytanie jest zapytaniem punktu. Jednak w niektórych scenariuszach może być konieczne pobieranie wielu jednostek. W tej sekcji opisano niektóre typowe sposoby pobierania jednostki przy użyciu biblioteki klienta usługi Storage.  
+Zgodnie z opisem w sekcji Projekt do wykonywania zapytań, najbardziej wydajne zapytania jest kwerendy punktu. Jednak w niektórych scenariuszach może być konieczne pobieranie wielu jednostek. W tej sekcji opisano niektóre typowe sposoby pobierania jednostki przy użyciu biblioteki klienta usługi Storage.  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>Wykonywanie kwerendy punktu, przy użyciu biblioteki klienta magazynu
 Najprostszym sposobem wykonania kwerendy punktu jest użycie **pobrać** tabelę operacji, jak pokazano w poniższym C# fragmentu kodu, które pobiera jednostki z **PartitionKey** wartości "Sprzedaż" i  **RowKey** wartości "212":  

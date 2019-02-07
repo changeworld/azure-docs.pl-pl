@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: f68e2d9c303b6df0d4a2a355dd9d41ac1616be9f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5af403b2d75a552719088daa17259f0771b77a94
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185974"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765686"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Zbieranie danych dziennika przy użyciu agenta usługi Azure Log Analytics
 
-Agenta usługi Azure Log Analytics (OMS), wcześniej nazywana zgodnie z Microsoft Monitoring Agent (MMA) lub usługi OMS Linux agent został opracowany do kompleksowego zarządzania na maszynach lokalnych komputerów monitorowanych przez [programu System Center Operations Menedżer](https://docs.microsoft.com/system-center/scom/)i maszyn wirtualnych w chmurze. Agentów systemów Windows i Linux, Dołącz do obszaru roboczego usługi Log Analytics do zbierania danych z różnych źródeł, jak również wszelkie unikatowe dzienniki lub metryki jako zdefiniowane w rozwiązaniu do monitorowania. 
+Agenta usługi Azure Log Analytics, wcześniej nazywana zgodnie z Microsoft Monitoring Agent (MMA) lub usługi OMS Linux agent został opracowany do kompleksowego zarządzania na maszynach lokalnych komputerów monitorowanych przez [System Center Operations Manager ](https://docs.microsoft.com/system-center/scom/)i maszyn wirtualnych w chmurze. Agentów systemów Windows i Linux, Dołącz do obszaru roboczego usługi Log Analytics do zbierania danych z różnych źródeł, jak również wszelkie unikatowe dzienniki lub metryki jako zdefiniowane w rozwiązaniu do monitorowania. 
 
 Ten artykuł zawiera szczegółowe omówienie agenta systemu i wymagania dotyczące sieci i różne metody wdrażania.   
 
@@ -41,7 +41,7 @@ Agent dla systemu Linux i Windows, który nie jest tylko w przypadku nawiązywan
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Windows:
 
-* Windows Server 2008 Service Pack 1 (SP1) lub nowszy
+* Windows Server 2008 R2 lub nowszy
 * Windows 7 z dodatkiem SP1 lub nowszy.
 
 ## <a name="supported-linux-operating-systems"></a>Obsługiwane systemy operacyjne Linux

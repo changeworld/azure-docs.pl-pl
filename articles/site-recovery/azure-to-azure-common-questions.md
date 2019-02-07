@@ -7,19 +7,30 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449558"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770490"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Często zadawane pytania: Replikacji Azure – Azure
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące wdrażania odzyskiwania po awarii (DR) maszyn wirtualnych platformy Azure do innego regionu platformy Azure przy użyciu usługi Azure Site Recovery. Jeśli masz pytania dotyczące po przeczytaniu tego artykułu, opublikuj je na [forum usług Azure Recovery Services](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
+## <a name="in-this-article"></a>W tym artykule 
+1.  **[Pytania ogólne na platformie Azure na platformie Azure](#general)** 
+1.  **[Replikacji](#replication)** 
+1.  **[Zasady replikacji](#replication-policy)** 
+1.  **[Spójność wielu maszyn wirtualnych](#multi-vm-consistency)** 
+1.  **[Plan odzyskiwania](#recovery-plan)** 
+1.  **[Ponownego włączania ochrony i powrotu po awarii](#reprotection-and-failback)** 
+1.  **[Zabezpieczenia](#security)** 
+
+
 ## <a name="general"></a>Ogólne
+
 ### <a name="how-is-site-recovery-priced"></a>Jak jest rozliczana Usługa Site Recovery?
 Przegląd [cennika usługi Azure Site Recovery](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) szczegółowe informacje.
 
@@ -30,7 +41,7 @@ Przegląd [cennika usługi Azure Site Recovery](https://azure.microsoft.com/blog
 4. [Wykonywanie testu przejścia w tryb failover](azure-to-azure-tutorial-dr-drill.md)
 5. [Tryb failover i powrót po awarii do regionu podstawowego](azure-to-azure-tutorial-failover-failback.md)
 
-## <a name="replication"></a>Replikacja
+## <a name="replication"></a>Replikacji
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Czy można replikować maszyny wirtualne, włączana za pomocą szyfrowania dysków Azure?
 Tak, można replikować je. Zapoznaj się z artykułem [maszyny wirtualne w innym regionie platformy Azure obsługujące replikacja usługi Azure disk encryption](azure-to-azure-how-to-enable-replication-ade-vms.md). Obecnie usługi Azure Site Recovery obsługuje tylko maszyny wirtualne platformy Azure są z systemem operacyjnym Windows i włączonego szyfrowania za pomocą aplikacji usługi Azure Active Directory (Azure AD).
@@ -198,7 +209,7 @@ To zależy od sytuacji. Na przykład: Jeśli region źródłowej maszyny Wirtual
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Ile czasu zajmuje take do powrotu po awarii?
 Po ponownego włączania ochrony ilość czasu na potrzeby powrotu po awarii jest zwykle podobne do czasu dla trybu failover z regionu podstawowego do regionu pomocniczego. 
 
-## <a name="security"></a>Bezpieczeństwo
+## <a name="a-namesecuritysecurity"></a><a name="security">Zabezpieczenia
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Czy dane replikacji są wysyłane do usługi Site Recovery?
 Nie, Usługa Site Recovery nie przechwytuje replikowanych danych, nie ma żadnych informacji na temat co działa na maszynach wirtualnych. Do usługi Site Recovery są wysyłane jedynie metadane wymagane do organizowania replikacji i trybu failover.  
 Usługa Site Recovery jest ISO 27001: 2013, 27018, HIPAA, DPA certyfikowane i jest w trakcie SOC2 i FedRAMP JAB.

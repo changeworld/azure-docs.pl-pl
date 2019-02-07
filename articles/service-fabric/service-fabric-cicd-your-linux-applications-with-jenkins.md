@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/31/2018
 ms.author: saysa
-ms.openlocfilehash: f381285d29d70d6f5da6a6cd319c682cd0c6a235
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 7abc15264a44c969f57071e84ffcedca30d326fb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444542"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766320"
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-applications"></a>Tworzenie i wdrażanie aplikacji systemu Linux przy użyciu narzędzia Jenkins
 Jenkins to popularne narzędzie służące do przeprowadzania ciągłej integracji i ciągłego wdrażania aplikacji. Poniżej przedstawiono sposób kompilowania i wdrażania aplikacji usługi Azure Service Fabric przy użyciu narzędzia Jenkins.
@@ -229,11 +229,11 @@ Kroki opisane w tej sekcji opisano skonfigurować zadania narzędzia Jenkins, od
 1. Na **kompilowanie wyzwalaczy** w usłudze Jenkins, a następnie wybierz odpowiednią opcję, która kompilacji. Na przykład chcesz wyzwolić kompilację, zawsze wtedy, gdy się stanie, wypychania do repozytorium, więc wybierz **wyzwalacz punktu zaczepienia GitHub na potrzeby sondowania GITScm**. Wcześniej ta opcja miała nazwę **Build when a change is pushed to GitHub** (Kompiluj po wypchnięciu zmiany do usługi GitHub).
 1. Na **kompilacji** karcie, wykonaj jedną z następujących czynności, w zależności od tego, czy tworzysz aplikację Java lub .NET Core:
 
-   * **W przypadku aplikacji Java:** z **Dodaj krok kompilacji** listę rozwijaną, wybierz opcję **wywołaj skrypt Gradle**. Kliknij przycisk **zaawansowane**. W menu Zaawansowane, określ ścieżkę do **głównego kompilacji skryptu** dla aplikacji. Spowoduje to wybranie elementu build.gradle z określonej ścieżki i wykonanie odpowiedniego działania. Aby uzyskać [aplikacji ActorCounter](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), to: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
+   * **W przypadku aplikacji Java:** Z **Dodaj krok kompilacji** listę rozwijaną, wybierz opcję **wywołaj skrypt Gradle**. Kliknij pozycję **Advanced** (Zaawansowane). W menu Zaawansowane, określ ścieżkę do **głównego kompilacji skryptu** dla aplikacji. Spowoduje to wybranie elementu build.gradle z określonej ścieżki i wykonanie odpowiedniego działania. Aby uzyskać [aplikacji ActorCounter](https://github.com/Azure-Samples/service-fabric-java-getting-started/tree/master/reliable-services-actor-sample/Actors/ActorCounter), to: `${WORKSPACE}/reliable-services-actor-sample/Actors/ActorCounter`.
 
      ![Akcja kompilacji narzędzia Jenkins w usłudze Service Fabric][build-step]
 
-   * **Dla aplikacji .NET Core:** z **Dodaj krok kompilacji** listę rozwijaną, wybierz opcję **wykonaj powłokę**. W wyświetlonym oknie polecenia katalogu najpierw musi zostać zmieniony na ścieżkę, w którym znajduje się plik build.sh. Po zmianie katalogu skrypcie build.sh może zostać uruchomiona i będzie skompilować aplikację.
+   * **Dla aplikacji .NET Core:** Z **Dodaj krok kompilacji** listę rozwijaną, wybierz opcję **wykonaj powłokę**. W wyświetlonym oknie polecenia katalogu najpierw musi zostać zmieniony na ścieżkę, w którym znajduje się plik build.sh. Po zmianie katalogu skrypcie build.sh może zostać uruchomiona i będzie skompilować aplikację.
 
       ```sh
       cd /var/jenkins_home/workspace/[Job Name]/[Path to build.sh]  # change directory to location of build.sh file
@@ -246,13 +246,13 @@ Kroki opisane w tej sekcji opisano skonfigurować zadania narzędzia Jenkins, od
 
 1. Aby skonfigurować usługi Jenkins, aby wdrożyć aplikację w klastrze usługi Service Fabric w akcjach wykonywanych po kompilacji, należy lokalizację certyfikatu tego klastra w kontenerze usługi Jenkins. Wybierz jedną z następujących czynności, w zależności od tego, czy kontenera narzędzia Jenkins działa wewnątrz lub poza klastrem, a następnie zanotuj lokalizację certyfikatu klastra:
 
-   * **Dla serwera Jenkins, działających w klastrze:** ścieżkę do certyfikatu można znaleźć, wyświetlania wartości *Certificates_JenkinsOnSF_Code_MyCert_PEM* zmienną środowiskową z w ramach kontenera.
+   * **Dla serwera Jenkins, działających w klastrze:** Ścieżkę do certyfikatu można znaleźć, wyświetlania wartości *Certificates_JenkinsOnSF_Code_MyCert_PEM* zmienną środowiskową z w ramach kontenera.
 
       ```sh
       echo $Certificates_JenkinsOnSF_Code_MyCert_PEM
       ```
    
-   * **Dla serwera Jenkins, działającego poza klastrem:** wykonaj następujące kroki, aby skopiować certyfikat klastra do kontenera:
+   * **Dla serwera Jenkins, działającego poza klastrem:** Wykonaj następujące kroki, aby skopiować certyfikat klastra do kontenera:
       1. Twój certyfikat musi być w formacie PEM. Jeśli nie masz pliku PEM, można utworzyć jeden z pliku PFX certyfikatu. Jeśli Twojego pliku PFX nie jest chroniony hasłem, uruchom następujące polecenie z poziomu hosta:
 
          ```sh
@@ -298,10 +298,10 @@ Dla środowisk deweloperskich i testowych można skonfigurować poświadczeń pl
 
 1. Aby utworzyć jednostkę usługi Azure Active Directory i przypisz mu uprawnienia w ramach subskrypcji platformy Azure, wykonaj kroki opisane w [korzystanie z portalu do tworzenia aplikacji i usługi nazwy głównej usługi Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal). Należy zwrócić uwagę na następujące kwestie:
 
-   * Podczas czynności opisane w temacie, upewnij się, skopiuj i Zapisz następujące wartości: *identyfikator aplikacji*, *klucz aplikacji*, *identyfikator katalogu (identyfikator dzierżawy)* i *Identyfikator subskrypcji*. Będą one potrzebne do konfigurowania poświadczeń platformy Azure w usłudze Jenkins.
+   * Podczas czynności opisane w temacie, upewnij się, skopiuj i Zapisz następujące wartości: *Identyfikator aplikacji*, *klucz aplikacji*, *identyfikator katalogu (identyfikator dzierżawy)*, i *identyfikator subskrypcji*. Będą one potrzebne do konfigurowania poświadczeń platformy Azure w usłudze Jenkins.
    * Jeśli nie masz [wymagane uprawnienia](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) w Twoim katalogu, musisz poprosić administratora o udzielenie uprawnień albo utworzyć jednostkę usługi lub musisz skonfigurować punkt końcowy zarządzania usługi klaster w **akcjach wykonywanych po kompilacji** dla zadania w usłudze Jenkins.
    * W [utworzyć aplikację usługi Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#create-an-azure-active-directory-application) sekcji, możesz wprowadzić dowolny sformułowany adres URL dla **adres URL logowania**.
-   * W [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#assign-application-to-role) sekcji można przypisać aplikacji *czytnika* roli w grupie zasobów klastra.
+   * W [przypisywanie aplikacji do roli](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal) sekcji można przypisać aplikacji *czytnika* roli w grupie zasobów klastra.
 
 1. Zadania narzędzia Jenkins w kliknij **akcjach wykonywanych po kompilacji** kartę.
 1. Z listy rozwijanej **Post-Build Actions** (Akcje po kompilacji) wybierz pozycję **Deploy Service Fabric Project** (Wdróż projekt usługi Service Fabric). 
@@ -309,10 +309,10 @@ Dla środowisk deweloperskich i testowych można skonfigurować poświadczeń pl
 1. W polu Dostawca poświadczeń usługi Jenkins wybierz **Microsoft Azure Service Principal** z **rodzaj** listy rozwijanej.
 1. Użyj wartości zapisane przez ustawienie zapasowej jednostki usługi w kroku 1, aby ustawić następujące pola:
 
-   * **Identyfikator klienta**: *Identyfikatora aplikacji*
-   * **Klucz tajny klienta**: *klucz aplikacji*
-   * **Identyfikator dzierżawy**: *identyfikator katalogu*
-   * **Identyfikator subskrypcji**: *identyfikator subskrypcji*
+   * **Identyfikator klienta**: *Identyfikator aplikacji*
+   * **Klucz tajny klienta**: *Klucz aplikacji*
+   * **Identyfikator dzierżawy**: *Identyfikator katalogu*
+   * **Identyfikator subskrypcji**: *Subscription ID (Identyfikator subskrypcji)*
 1. Wpisz opisową nazwę **identyfikator** umożliwia Wybierz poświadczenie, Jenkins i zwięzłe **opis**. Następnie kliknij przycisk **Sprawdź nazwy głównej usługi**. Jeśli weryfikacja zakończy się pomyślnie, kliknij przycisk **Dodaj**.
 
    ![Jenkins usługi Service Fabric, wprowadź poświadczenia platformy Azure](./media/service-fabric-cicd-your-linux-application-with-jenkins/enter-azure-credentials.png)
@@ -324,9 +324,9 @@ Dla środowisk deweloperskich i testowych można skonfigurować poświadczeń pl
     ![Akcji wykonywanych po kompilacji usługi Jenkins sieci szkieletowej usług skonfigurować poświadczenia platformy Azure](./media/service-fabric-cicd-your-linux-application-with-jenkins/post-build-credentials.png)
 1. Kliknij przycisk **Zweryfikuj konfigurację**. W pomyślnym zakończeniu weryfikacji kliknij **Zapisz**. Potok zadania serwera Jenkins jest teraz w pełni skonfigurowane. Przejdź do [następne kroki](#next-steps) do przetestowania wdrożenia.
 
-## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczki narzędzia Jenkins
+## <a name="troubleshooting-the-jenkins-plugin"></a>Rozwiązywanie problemów z wtyczką narzędzia Jenkins
 
-Jeśli występują jakiekolwiek z wtyczek Jenkins, Prześlij zgłoszenie do [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
+Jeśli napotkasz jakiekolwiek usterki we wtyczkach narzędzia Jenkins, prześlij zgłoszenie za pomocą narzędzia [Jenkins JIRA](https://issues.jenkins-ci.org/) dla określonego składnika.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Usługa GitHub i narzędzie Jenkins są teraz skonfigurowane. Rozważ dokonanie jakiejś przykładowej zmiany w `reliable-services-actor-sample/Actors/ActorCounter` projektu w Twoim rozwidleniu repozytorium, https://github.com/Azure-Samples/service-fabric-java-getting-started. Wypchnij zmiany do zdalnego `master` gałęzi (lub dowolnej innej gałęzi, który został skonfigurowany do pracy z). Spowoduje to wyzwolenie skonfigurowanego zadania narzędzia Jenkins `MyJob`. Jej pobiera zmiany z repozytorium GitHub, skompiluje je i wdrażania aplikacji do klastra, który określiłeś w akcjach wykonywanych po kompilacji.  

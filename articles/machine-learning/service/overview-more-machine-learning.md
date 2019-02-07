@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 author: garyericson
 ms.author: garye
 ms.date: 1/30/2019
-ms.openlocfilehash: 4d4d7c587dcc34b12ed757b7da54f5ad0b04e8cc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cd156a10faf396778b76687b3666887a6a60876c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451873"
+ms.locfileid: "55505703"
 ---
 # <a name="what-are-the-machine-learning-products-at-microsoft"></a>Jakie produkty z zakresu uczenia maszynowego oferuje firma Microsoft?
 
@@ -27,7 +27,7 @@ Następujące opcje są dostępne dla uczenia maszynowego w chmurze platformy Az
 
 | Opcje&nbsp;w chmurze | Co to jest | Co można zrobić za jego pomocą |
 |-|-|-|
-| [Usługa Azure Machine Learning](#azure-machine-learning-services) | Zarządzana usługa uczenia maszynowego w chmurze  | Szkolenie i wdrażanie modeli na platformie Azure przy użyciu języka Python oraz interfejsu wiersza polecenia i zarządzanie nimi |
+| [Usługa Azure Machine Learning](#azure-machine-learning-service) | Zarządzana usługa uczenia maszynowego w chmurze  | Szkolenie i wdrażanie modeli na platformie Azure przy użyciu języka Python oraz interfejsu wiersza polecenia i zarządzanie nimi |
 | [Azure Machine Learning Studio](#azure-machine-learning-studio) | Interfejs wizualny uczenia maszynowego z funkcją „przeciągnij i upuść” | Tworzenie i wdrażanie modeli przy użyciu wstępnie skonfigurowanych algorytmów oraz eksperymentowanie z nimi (języki Python i R)|
 | [Azure Databricks](#azure-databricks) | Platforma analityczna oparta na projekcie Spark | Tworzenie i wdrażanie modeli i przepływów pracy danych |
 | [Azure Cognitive Services](#azure-cognitive-services) | Usługi platformy Azure wykorzystujące gotowe modele sztucznej inteligencji i uczenia maszynowego | Łatwe dodawanie do aplikacji funkcji inteligentnych |

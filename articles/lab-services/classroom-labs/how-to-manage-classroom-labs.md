@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: spelluru
-ms.openlocfilehash: 9576854fbad88724f3d229d239b9d3e263fb7492
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 7d311a3fa1b00a6324c9bb81a14c1a575319472f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912405"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819998"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Zarządzanie laboratoriami na potrzeby zajęć w usłudze Azure Lab Services 
 W tym artykule opisano sposób tworzenia i usuwania laboratorium na potrzeby zajęć. On również dowiesz się, jak wyświetlić wszystkie laboratorium na potrzeby zajęć na koncie laboratorium. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium, musisz być członkiem roli **Twórca laboratorium** na koncie laboratorium. Konto, którego użyto do utworzenia konta laboratorium, jest automatycznie dodawane do tej roli. Właściciel laboratorium można dodać do roli Twórca laboratorium innym użytkownikom za pomocą procedury w następującym artykule: [Dodawanie użytkownika do roli Twórca laboratorium](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
+Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium, musisz być członkiem roli **Twórca laboratorium** na koncie laboratorium. Konto, którego użyto do utworzenia konta laboratorium, jest automatycznie dodawane do tej roli. Właściciel laboratorium może dodać innych użytkowników do roli Twórca laboratorium, wykonując kroki opisane w następującym artykule: [Dodawanie użytkownika do roli twórcy laboratorium](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role).
 
 ## <a name="create-a-classroom-lab"></a>Tworzenie laboratorium na potrzeby zajęć
 
@@ -72,7 +72,7 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 
         > [!WARNING]
         > Nie można cofnąć publikowania szablonu. 
-    2. Aby opublikować później, wybierz pozycję **Zachowaj na później**. Maszynę wirtualną szablonu można opublikować po zakończeniu działania kreatora. Aby uzyskać więcej informacji na temat sposobu konfigurowania i publikowania, gdy kreator zakończy pracę, zobacz szczegółowe informacje na temat konfigurowania i publikowania, gdy kreator zakończy pracę, zobacz [opublikować szablon](#publish-the-template) sekcji [sposób zarządzania laboratorium na potrzeby zajęć ](how-to-manage-classroom-labs.md) artykułu.
+    2. Aby opublikować później, wybierz pozycję **Zachowaj na później**. Maszynę wirtualną szablonu można opublikować po zakończeniu działania kreatora. Szczegółowe informacje na temat konfigurowania i publikowania, gdy kreator zakończy pracę, można znaleźć szczegółowe informacje na temat konfigurowania i publikowania, gdy kreator zakończy pracę, zobacz publikowania w temacie szablon [sposób zarządzania laboratorium na potrzeby zajęć](how-to-manage-classroom-labs.md) artykułu.
 
         ![Publikowanie szablonu](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Zostanie wyświetlony **postęp publikowania** szablonu. Ten proces może potrwać do godziny. 

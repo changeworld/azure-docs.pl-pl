@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.openlocfilehash: b41f01254e081b6ac3a9b8265bd459cf00af1838
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: edc3bedaa005bb52ddbf46d9f70ddc16bf8790e2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197997"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815079"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>Samouczek: Integracja usługi Azure Active Directory z LMS stanowisko Learning
 
@@ -89,7 +89,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomoc�
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
 1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego LMS stanowisko Learning](#creating-a-learnconnect-test-user)**  — aby odpowiednikiem Britta Simon w stanowisko edukacją LMS, Learning połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **Tworzenie użytkownika testowego LMS stanowisko Learning** — aby odpowiednikiem Britta Simon w stanowisko edukacją LMS, Learning połączonego z usługi Azure AD reprezentacja użytkownika.
 1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
 1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 

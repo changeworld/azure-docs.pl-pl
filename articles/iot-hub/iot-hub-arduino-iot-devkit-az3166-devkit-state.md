@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 6bc1255c5bbb9cf74c97b88600f34e7fcd90ae4f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343156"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811056"
 ---
-# <a name="mxchip-iot-devkit"></a>Zestawu deweloperskiego IoT Mxchip
+# <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
 W tym przykładzie służy do monitorowania stanów informacji i czujnik zestawu deweloperskiego IoT Mxchip sieci Wi-Fi i kontrolować kolor LED użytkownika przy użyciu usługi Azure IoT Hub bliźniaczych reprezentacji urządzeń.
 
@@ -55,13 +55,13 @@ W tym przykładzie służy do monitorowania stanów informacji i czujnik zestawu
 
 6. Podobnie jak *aplikacji funkcji: Nazwa aplikacji funkcji: xxx*, jest wyświetlany. Zanotuj nazwę aplikacji funkcji; będzie używany w kolejnym kroku.
 
-7. Poczekaj, aż usługi Azure Resource Manager szablon Zakończenie wdrożenia, który jest wskazane, gdy komunikat *wdrożenia szablonu usługi Resource Manager: gotowe* jest wyświetlana.
+7. Poczekaj, aż usługi Azure Resource Manager szablon Zakończenie wdrożenia, który jest wskazane, gdy komunikat *wdrożenia szablonu usługi Resource Manager: Gotowe* jest wyświetlana.
 
 ## <a name="deploy-function-app"></a>Wdrażanie aplikacji — funkcja
 
 1. Kliknij przycisk **zadania** menu rozwijane w programie Visual Studio Code i wybierz pozycję **Uruchom zadanie...**   -  **— wdrażanie w chmurze**.
 
-2. Poczekaj, aż proces, aby zakończyć; przekazywania kodu aplikacji — funkcja komunikat *wdraża aplikację funkcji: gotowe* jest wyświetlana.
+2. Poczekaj, aż proces, aby zakończyć; przekazywania kodu aplikacji — funkcja komunikat *wdraża aplikację funkcji: Gotowe* jest wyświetlana.
 
 ## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Konfigurowanie parametrów połączenia urządzenia usługi IoT Hub w Mxchip
 
@@ -83,7 +83,7 @@ Za pomocą Twojego zestawu deweloperskiego IoT Mxchip podłączone do komputera:
 
 ## <a name="monitor-devkit-state-in-browser"></a>Monitor stanu Mxchip w przeglądarce
 
-1. Otwórz w przeglądarce sieci Web `DevKitState\web\index.html` pliku--, który został utworzony podczas [potrzebnych](#whatyouneed) kroku.
+1. Otwórz w przeglądarce sieci Web `DevKitState\web\index.html` pliku--, który został utworzony podczas co należy kroku.
 
 2. Zostanie wyświetlona następująca strona sieci Web:![Określ nazwę aplikacji funkcji.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
@@ -106,7 +106,7 @@ Za pomocą Twojego zestawu deweloperskiego IoT Mxchip podłączone do komputera:
 ![Przykład testu procedury](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Widać danych pierwotnych bliźniaczej reprezentacji urządzenia w witrynie Azure portal: Usługa IoT Hub —\> urządzenia IoT —\> *\<urządzenia\>*  - \> bliźniaczej reprezentacji urządzenia.
+> Możesz wyświetlić nieprzetworzone dane bliźniaczej reprezentacji urządzenia w witrynie Azure portal: Usługa IoT Hub —\> urządzenia IoT —\> *\<urządzenia\>*  - \> bliźniaczej reprezentacji urządzenia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

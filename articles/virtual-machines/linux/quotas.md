@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 3e9a9e3f902439f0fc3f1fa4aa758d4fcd55f5bd
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b7ec3a6919a27633fc36ba7fb1551ead10e06ffe
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048948"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769469"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Limity przydziału procesorów wirtualnych maszyny wirtualnej
 
@@ -29,7 +29,7 @@ Limity przydziału procesorów wirtualnych dla maszyn wirtualnych i zestawów sk
 
 ## <a name="check-usage"></a>Sprawdzanie użycia
 
-Możesz sprawdzić, używając limit przydziału użycia [użycie listy az vm](/cli/azure/vm#az_vm_list_usage).
+Możesz sprawdzić, używając limit przydziału użycia [użycie listy az vm](/cli/azure/vm).
 
 ```azurecli-interactive
 az vm list-usage --location "East US" -o table

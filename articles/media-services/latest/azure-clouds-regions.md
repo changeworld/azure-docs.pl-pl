@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: juliako
-ms.openlocfilehash: 8eb49010d89c3039f46e5c84cd305b7d0b5ca025
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: d176152429ecac1ed4e570533f1bc0426cc7655f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54307005"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767456"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Chmury i regionów, w których usługa Azure Media Services v3 istnieje
 
@@ -33,9 +33,16 @@ Azure Media Services v3 jest dostępny za pośrednictwem usługi Azure Resource 
 | [LiveEvents](live-streaming-overview.md) | Dostępne | Dostępne | Dostępne | Dostępne |
 | [Punkty](streaming-endpoint-concept.md) | Dostępne | Dostępne | Dostępne | Dostępne |
 
-## <a name="regions"></a>Regiony 
+## <a name="regionsgeographieslocations"></a>Regiony/lokalizacje geograficzne/lokalizacji
 
-Kiedy należy podać **lokalizacji** parametru, musisz podać nazwę kod regionu jako **lokalizacji** wartość. Aby uzyskać nazwę kod regionu Twoje konto jest w i wywołania powinny być kierowane do, można uruchomić następujący wiersz w [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+* [Regiony platformy Azure](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/)
+* [Lokalizacje geograficzne platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Lokalizacje platformy Azure](https://azure.microsoft.com/global-infrastructure/locations/)
+
+## <a name="region-code-name"></a>Nazwa kodu regionu 
+
+Kiedy należy podać **lokalizacji** parametru, musisz podać nazwę kod regionu jako **lokalizacji** wartość. Aby uzyskać nazwę kod regionu Twoje konto jest w i wywołania powinny być kierowane do, można uruchomić następujący wiersz w [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
 ```bash
 az account list-locations

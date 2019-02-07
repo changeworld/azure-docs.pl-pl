@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Data Lake Storage Gen2 w wersji zapoznawczej wprowadzenie
-description: Zawiera omówienie usługi Azure Data Lake Gen2 — wersja zapoznawcza
+title: Usługa Azure Data Lake Storage Gen2 — wprowadzenie
+description: Zawiera omówienie usługi Azure Data Lake Storage Gen2
 services: storage
 author: jamesbak
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 17b6d0ecf56ec07d3a46949b6ae3b63a6c4b94d7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 018171d4b2253c2cf7942f9f10424a9c695438b9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250116"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809440"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2
 
-Usługa Azure Data Lake Gen2 — wersja zapoznawcza to zbiór funkcji przeznaczonych do analizy danych big data, w oparciu o [usługi Azure Blob storage](storage-blobs-introduction.md). Data Lake Storage Gen2 jest wynikiem zbieżności możliwości naszych dwa istniejące usługi storage, Azure Blob storage i Azure Data Lake Storage Gen1. Funkcje z [usługi Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), takie jak semantyki systemu plików, katalogu i zabezpieczenia na poziomie pliku i skalowania, które są połączone z niskie koszty i warstwowego magazynu, wysokiej dostępności/zastosowanie funkcji z [Usługi azure Blob storage](storage-blobs-introduction.md).
+Usługi Azure Data Lake magazynu Gen2 to zbiór funkcji przeznaczonych do analizy danych big data, w oparciu o [usługi Azure Blob storage](storage-blobs-introduction.md). Data Lake Storage Gen2 jest wynikiem zbieżności możliwości naszych dwa istniejące usługi storage, Azure Blob storage i Azure Data Lake Storage Gen1. Funkcje z [usługi Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), takie jak semantyki systemu plików, katalogu i zabezpieczenia na poziomie pliku i skalowania, które są połączone z niskie koszty i warstwowego magazynu, wysokiej dostępności/zastosowanie funkcji z [Usługi azure Blob storage](storage-blobs-introduction.md).
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Przeznaczona dla przedsiębiorstw analizy danych big data
 

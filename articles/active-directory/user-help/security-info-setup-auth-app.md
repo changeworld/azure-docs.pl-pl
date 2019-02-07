@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/30/2018
 ms.author: lizross
-ms.openlocfilehash: 191afec8733258519370d11942c0f6d18da6b603
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6ee75b0ee465e330d78b166b0da12232b7915ae7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180402"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766065"
 ---
 # <a name="set-up-security-info-to-use-an-authenticator-app-preview"></a>Ustawić informacje zabezpieczające, aby użyć aplikacji authenticator (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Definiowanie swoich informacji zabezpieczających wymaga Zaloguj się do swojego
 
 W zależności od ustawień organizacji może monit do skonfigurowania aplikacji Microsoft Authenticator, po zalogowaniu. W przeciwnym razie, aby rozpocząć konfigurowanie aplikacji Microsoft Authenticator zabezpieczających, postępuj zgodnie z instrukcjami w [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).
 
-Aby pobrać i Dowiedz się więcej na temat aplikacji Microsoft Authenticator, zobacz [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](microsoft-authenticator-app-how-to.md).
+Aby pobrać i Dowiedz się więcej na temat aplikacji Microsoft Authenticator, zobacz [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](user-help-auth-app-download-install.md).
 
 >[!Note]
 >Jeśli nie chcesz korzystać z aplikacji Microsoft Authenticator, można wybrać inną aplikację podczas konfigurowania. W tym artykule używa aplikacji Microsoft Authenticator. Jeśli nie widzisz opcji aplikacji wystawcy uwierzytelnienia jest możliwe, że Twoja organizacja nie zezwala na korzystanie z aplikacji uwierzytelniania do weryfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: e63db9dd5dcd48e19c75608c39c4c0b62db24527
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 89984335d40d7f58d39e77736c06a9ff137d7a51
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221202"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811261"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -40,7 +40,7 @@ Rodzaj rozpoznawania nazw, których używasz, zależy od tego, jak zasoby muszą
 | Rozpoznawanie nazw między maszynami wirtualnymi w różnych sieciach wirtualnych lub wystąpień roli w różnych usługach w chmurze. |[Usługa Azure DNS Private Zones](../dns/private-dns-overview.md) lub serwerów DNS zarządzanych przez klienta przesyłania zapytań między sieciami wirtualnymi rozpoznawania przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Nazwa rozwiązania usługi Azure App Service (Web App, funkcji lub Bot) przy użyciu integracji sieci wirtualnej do maszyn wirtualnych lub wystąpień roli w tej samej sieci wirtualnej. |Zarządzane przez klienta z serwerów DNS przesyłania zapytań między sieciami wirtualnymi rozpoznawania przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Nazwa rozwiązania z aplikacji sieci Web usługi App Service do maszyn wirtualnych w tej samej sieci wirtualnej. |Zarządzane przez klienta z serwerów DNS przesyłania zapytań między sieciami wirtualnymi rozpoznawania przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
-| Nazwa rozwiązania z usługi App Service Web Apps w jednej sieci wirtualnej do maszyn wirtualnych w innej sieci wirtualnej. |Zarządzane przez klienta z serwerów DNS przesyłania zapytań między sieciami wirtualnymi rozpoznawania przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server-for-web-apps). |Tylko nazwa FQDN |
+| Nazwa rozwiązania z usługi App Service Web Apps w jednej sieci wirtualnej do maszyn wirtualnych w innej sieci wirtualnej. |Zarządzane przez klienta z serwerów DNS przesyłania zapytań między sieciami wirtualnymi rozpoznawania przez platformę Azure (serwer proxy DNS). Zobacz rozpoznawanie nazw przy użyciu własnego serwera DNS. |Tylko nazwa FQDN |
 | Rozpoznawanie nazw komputerów i usług lokalnych z maszyn wirtualnych lub wystąpień roli w systemie Azure. |Zarządzane przez klienta z serwerów DNS (lokalnego kontrolera domeny, kontrolera domeny tylko do odczytu lokalnej lub zsynchronizowane, na przykład przy użyciu transferu strefy DNS dodatkowej). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie nazw Azure hostów z komputerów w środowisku lokalnym. |Do przodu zapytań do serwera proxy DNS zarządzanych przez klienta w odpowiedniej sieci wirtualnej, serwer proxy przekazuje zapytania na platformie Azure dla rozwiązania. Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Tylko nazwa FQDN |
 | Odwrotne DNS dla wewnętrznych adresów IP. |[Rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server). |Nie dotyczy |

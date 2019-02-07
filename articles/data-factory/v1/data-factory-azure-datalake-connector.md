@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3b5425bd9f86bce289cc1f60c088febfd8f05ee3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 8731857d133e60cad4ecdca21874916949e05ff3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332629"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813521"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>Kopiowanie danych do i z Data Lake Storage Gen1 przy użyciu usługi fabryka danych
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -240,8 +240,8 @@ Aby określić zestaw danych reprezentujący dane wejściowe w Data Lake Store, 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | **folderPath** |Ścieżka do kontenera i folderu w Data Lake Store. |Yes |
-| **fileName** |Nazwa pliku w usłudze Azure Data Lake Store. **FileName** właściwość jest opcjonalna i wielkość liter. <br/><br/>Jeśli określisz **fileName**, aktywności (w tym kopiowania) działa na określonego pliku.<br/><br/>Gdy **fileName** nie zostanie określony, kopia uwzględnia wszystkie pliki w **folderPath** w zestawie danych wejściowych.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku ma format danych. _Identyfikator GUID_.txt ". Na przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. |Nie |
-| **partitionedBy** |**PartitionedBy** właściwość jest opcjonalna. Służy do określania dynamiczne ścieżkę i nazwę pliku dla danych szeregów czasowych. Na przykład **folderPath** mogą być parametryzowane za każdą godzinę danych. Aby uzyskać szczegółowe informacje i przykłady, zobacz [właściwość partitionedBy](#using-partitionedby-property). |Nie |
+| **fileName** |Nazwa pliku w usłudze Azure Data Lake Store. **FileName** właściwość jest opcjonalna i wielkość liter. <br/><br/>Jeśli określisz **fileName**, aktywności (w tym kopiowania) działa na określonego pliku.<br/><br/>Gdy **fileName** nie zostanie określony, kopia uwzględnia wszystkie pliki w **folderPath** w zestawie danych wejściowych.<br/><br/>Gdy **fileName** nie jest określona dla wyjściowego zestawu danych i **preserveHierarchy** nie została określona w ujścia działania nazwę wygenerowanego pliku ma format danych. _Identyfikator GUID_.txt ". Na przykład: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt. | Brak |
+| **partitionedBy** |**PartitionedBy** właściwość jest opcjonalna. Służy do określania dynamiczne ścieżkę i nazwę pliku dla danych szeregów czasowych. Na przykład **folderPath** mogą być parametryzowane za każdą godzinę danych. Aby uzyskać szczegółowe informacje i przykłady Zobacz właściwość partitionedBy. |Nie |
 | **Format** | Obsługiwane są następujące typy formatów: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. Ustaw **typu** właściwości **format** do jednej z tych wartości. Aby uzyskać więcej informacji, zobacz [format tekstu](data-factory-supported-file-and-compression-formats.md#text-format), [formatu JSON](data-factory-supported-file-and-compression-formats.md#json-format), [Avro format](data-factory-supported-file-and-compression-formats.md#avro-format), [ORC format](data-factory-supported-file-and-compression-formats.md#orc-format), i [formatu Parquet ](data-factory-supported-file-and-compression-formats.md#parquet-format) sekcje w [formaty plików i kompresji, które są obsługiwane przez usługę Azure Data Factory](data-factory-supported-file-and-compression-formats.md) artykułu. <br><br> Jeśli chcesz skopiować pliki "jako — jest" między opartych na plikach magazynów (kopia binarna), Pomiń `format` sekcji w obu definicji zestawu danych wejściowych i wyjściowych. |Nie |
 | **compression** | Określ typ i poziom kompresji danych. Obsługiwane typy to **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**. Są obsługiwane poziomy **optymalna** i **najszybciej**. Aby uzyskać więcej informacji, zobacz [formaty plików i kompresji, które są obsługiwane przez usługę Azure Data Factory](data-factory-supported-file-and-compression-formats.md#compression-support). |Nie |
 

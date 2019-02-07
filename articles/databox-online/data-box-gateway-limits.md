@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: acf455bff739666712917008dc8090c6a95c6dc4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388421"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815656"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Limity bramy pola danych platformy Azure (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Te limity wziąć pod uwagę wdrażania i obsługi rozwiązania Microsoft Azure 
 
 ## <a name="data-box-gateway-service-limits"></a>Limity usługi bramy pola danych
 
-- W tej wersji usługa jest dostępna tylko w określonych regionach w USA, Europa oraz Azja i Pacyfik. Aby uzyskać więcej informacji, przejdź do sekcji [Dostępność regionalna](#data-box-gateway-overview#region-availability). Konta magazynu powinna być fizycznie najbliższe region wdrożonym urządzenia (może się różnić z obszaru geograficznego usługi).
+- W tej wersji usługa jest dostępna tylko w określonych regionach w USA, Europa oraz Azja i Pacyfik. Aby uzyskać więcej informacji przejdź do dostępność w poszczególnych regionach. Konta magazynu powinna być fizycznie najbliższe region wdrożonym urządzenia (może się różnić z obszaru geograficznego usługi).
 - Przenoszenie zasobu bramy pola danych do innej subskrypcji lub grupy zasobów nie jest obsługiwana. Aby uzyskać więcej informacji, przejdź do [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="data-box-gateway-device-limits"></a>Limity urządzeń bramy pola danych

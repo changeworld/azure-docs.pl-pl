@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/8/2018
 ms.author: kasinh
-ms.openlocfilehash: b75c9093a983ba3e4ac4050379efbb091b363ff7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7669d713f9a96ef893f7ec2ac895c28f654385c8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491970"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810971"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Tworzenie kopii zapasowych farmy programu SharePoint na platformie Azure
 Wykonywania kopii zapasowych farmy programu SharePoint w systemie Microsoft Azure za pomocą Microsoft Azure Backup Server (MABS) w podobny sposób, należy utworzyć kopię zapasową innych źródeł danych. Usługa Azure Backup zapewnia elastyczność harmonogram tworzenia kopii zapasowych, aby utworzyć codziennie, co tydzień, miesięczny lub roczny kopii zapasowej wskazuje i udostępnia opcje zasad przechowywania dla różnych punktów kopii zapasowej. Umożliwia także przechowywać kopie dysk lokalny dla szybkiego cele czasu odzyskiwania (RTO), a następnie do przechowywania kopii na platformie Azure, ekonomiczne, długoterminowego przechowywania.
@@ -222,7 +222,7 @@ W poniższym przykładzie *element odzyskiwanie programu SharePoint* został prz
 4. Kliknij obiekt SharePoint objętego serwera usługi Mab **odzyskiwania** kartę, aby pobrać struktury bazy danych zawartości. Kliknij prawym przyciskiem myszy element, a następnie kliknij przycisk **odzyskać**.
 
     ![MABS SharePoint Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
-5. W tym momencie należy wykonać [opisane we wcześniejszej części tego artykułu](#restore-a-sharepoint-item-from-disk-using-dpm) odzyskać bazę danych zawartości programu SharePoint z dysku.
+5. W tym momencie wykonać kroki odzyskiwania, w tym artykule, aby odzyskać bazę danych zawartości programu SharePoint z dysku.
 
 ## <a name="faqs"></a>Często zadawane pytania
 PYT.: Czy można odzyskać element programu SharePoint do oryginalnej lokalizacji, jeśli program SharePoint jest skonfigurowany przy użyciu funkcji SQL AlwaysOn (Ochrona na dysku)?<br>

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: e91b4e881c0f39304e3042d556f111db2089f7de
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c9b4a27ff1b5467eb752e8cfc09f697ca1a966ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334486"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820389"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Odwołanie do zadania usługi ACR: YAML
 
@@ -83,10 +83,10 @@ az configure --defaults acr=myregistry
 
 Właściwości zadania zazwyczaj znajdują się w górnej części `acr-task.yaml` pliku i są globalne właściwości, które dotyczą całej pełnego wykonania zadania. Niektóre z tych właściwości globalne można przesłonić, w ramach pojedynczego kroku.
 
-| Właściwość | Typ | Optional (Opcjonalność) | Opis | Zastąpienie obsługiwane | Wartość domyślna |
+| Właściwość | Type | Optional (Opcjonalność) | Opis | Zastąpienie obsługiwane | Wartość domyślna |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | ciąg | Nie | Wersja `acr-task.yaml` plików analizowane przez usługę zadań usługi ACR. Gdy zadania ACR dokłada wszelkich starań zachować zgodność z poprzednimi wersjami, ta wartość umożliwia zadania ACR utrzymać zgodność, w ramach określonych wersji. | Nie | Brak |
-| `stepTimeout` | int (w sekundach) | Yes | Maksymalna liczba sekund, przez krok można uruchomić. Ta właściwość może zostać przesłonięta w kroku przez ustawienie w kroku [limitu czasu](#timeout) właściwości. | Yes | 600 (10 minut) |
+| `stepTimeout` | int (w sekundach) | Yes | Maksymalna liczba sekund, przez krok można uruchomić. Ta właściwość może być zastąpiona w kroku przez ustawienie właściwości timeout ten krok. | Yes | 600 (10 minut) |
 | `totalTimeout` | int (w sekundach) | Yes | Maksymalna liczba sekund, które może uruchomić zadania. "Uruchom" obejmuje wykonanie i zakończeniu wszystkich kroków w zadaniu, czy powodzeniem lub niepowodzeniem. Dołączone do zadania drukowania generowane takich jak obraz wykryte zależności i stan wykonania zadania. | Nie | 3600 (1 godzina) |
 
 ## <a name="task-step-types"></a>Typy kroku zadań
@@ -315,7 +315,7 @@ Przy użyciu standardu `docker run` obrazu Konwencji odwołania, `cmd` uruchamia
 
 Każdy typ kroku obsługuje kilka właściwości odpowiednie dla jego typu. W poniższej tabeli opisano wszystkie właściwości dostępne kroku. Nie wszystkie typy kroku obsługuje wszystkie właściwości. Aby zobaczyć, które z tych właściwości są dostępne dla każdego typu kroku, zobacz [cmd](#cmd), [kompilacji](#build), i [wypychania](#push) krok sekcje odwołanie do typu.
 
-| Właściwość | Typ | Optional (Opcjonalność) | Opis |
+| Właściwość | Type | Optional (Opcjonalność) | Opis |
 | -------- | ---- | -------- | ----------- |
 | `detach` | wartość logiczna | Yes | Czy kontenera należy odłączyć podczas uruchamiania. |
 | `entryPoint` | ciąg | Yes | Zastępuje `[ENTRYPOINT]` kontenera dla kroku. |

@@ -9,13 +9,13 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.date: 01/08/2019
-ms.openlocfilehash: a7d34b76eb6184e546c8217aa6b3723819be70be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 02/05/2019
+ms.openlocfilehash: c3057934d960efd0a846ef31c5fac5abd63a21f6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189534"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768478"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Bezpieczny dostęp w usłudze Azure Logic Apps
 
@@ -57,7 +57,7 @@ Poniżej przedstawiono więcej informacji na temat zabezpieczania dostępu za po
 
 <a name="access-keys"></a>
 
-#### <a name="regenerate-access-keys"></a>Wygeneruj ponownie klucze dostępu
+#### <a name="regenerate-access-keys"></a>Generowanie ponowne kluczy dostępu
 
 Aby ponownie wygenerować klucza bezpiecznego dostępu w dowolnym momencie, należy użyć interfejsu API REST platformy Azure lub w witrynie Azure portal. Wszystkie wcześniej wygenerowany adresów URL, które są unieważniane stary klucz, a nie są już autoryzacji do wyzwalacza aplikacji logiki. Adresy URL, który można pobrać po ponownego wygenerowania są podpisane za pomocą nowego klucza dostępu.
 
@@ -120,7 +120,7 @@ Jeśli chcesz, aby aplikacja logiki ogień tylko jako zagnieżdżoną aplikację
 
 #### <a name="set-ip-ranges---logic-app-deployment-template"></a>Ustawianie zakresów adresów IP — Szablon wdrożenia aplikacji logiki
 
-Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożenia usługi Azure Resource Manager](logic-apps-create-deploy-template.md), można ustawić zakresy adresów IP w tym szablonie, na przykład:
+Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożenia usługi Azure Resource Manager](../logic-apps/logic-apps-create-deploy-template.md), można ustawić zakresy adresów IP w tym szablonie, na przykład:
 
 ``` json
 {
@@ -131,7 +131,7 @@ Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożen
          "triggers": {
             "allowedCallerIpAddresses": [
                {
-               "addressRange": "192.168.12.0/23"
+                  "addressRange": "192.168.12.0/23"
                },
                {
                   "addressRange": "2001:0db8::/64"
@@ -176,13 +176,14 @@ Aby skonfigurować to ograniczenie w witrynie Azure portal, przejdź do ustawie�
 1. W menu aplikacji logiki w ramach **ustawienia**, wybierz opcję **ustawienia przepływu pracy**.
 
 1. W obszarze **konfiguracji kontroli dostępu** > 
-**dozwolone przychodzące adresy IP**, wybierz opcję **konkretnych zakresów adresów IP**.
+    **dozwolone przychodzące adresy IP**, wybierz opcję **konkretnych zakresów adresów IP**.
 
-1. W obszarze **zakresy adresów IP dla zawartości**, określ zakresy adresów IP, które mogą uzyskać dostęp do zawartości w danych wejściowych i wyjściowych. Prawidłowy zakres adresów IP korzysta z tych formatów: *x.x.x.x/x* lub *x.x.x.x-x.x.x.x* 
+1. W obszarze **zakresy adresów IP dla zawartości**, określ zakresy adresów IP, które mogą uzyskać dostęp do zawartości w danych wejściowych i wyjściowych. 
+   Prawidłowy zakres adresów IP korzysta z tych formatów: *x.x.x.x/x* lub *x.x.x.x-x.x.x.x* 
 
 ### <a name="set-ip-ranges---logic-app-deployment-template"></a>Ustawianie zakresów adresów IP — Szablon wdrożenia aplikacji logiki
 
-Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożenia usługi Azure Resource Manager](logic-apps-create-deploy-template.md), można ustawić zakresy adresów IP w tym szablonie, na przykład:
+Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożenia usługi Azure Resource Manager](../logic-apps/logic-apps-create-deploy-template.md), można ustawić zakresy adresów IP w tym szablonie, na przykład:
 
 ``` json
 {
@@ -193,7 +194,7 @@ Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożen
          "contents": {
             "allowedCallerIpAddresses": [
                {
-               "addressRange": "192.168.12.0/23"
+                  "addressRange": "192.168.12.0/23"
                },
                {
                   "addressRange": "2001:0db8::/64"
@@ -210,44 +211,99 @@ Jeśli automatyzujesz wdrożenia aplikacji logiki przy użyciu [Szablon wdrożen
 
 ## <a name="secure-action-parameters-and-inputs"></a>Zabezpieczanie parametry akcji i dane wejściowe
 
-W przypadku wdrażania w różnych środowiskach, można zdefiniować parametry konkretnych aspektów w definicji przepływu pracy aplikacji logiki. Na przykład można określić parametrów w [Szablon wdrożenia usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters). Aby uzyskać dostęp do wartości parametru zasobów, podczas wykonywania, można użyć `@parameters('parameterName')` wyrażenie, które są dostarczane przez [język definicji przepływów pracy](https://aka.ms/logicappsdocs). 
+W przypadku wdrażania w różnych środowiskach, można zdefiniować parametry określone elementy w definicji przepływu pracy aplikacji logiki. W ten sposób możesz podać dane wejściowe, oparte na środowiska używasz i chronić poufne informacje. Na przykład, jeśli w przypadku uwierzytelniania HTTP akcji przy użyciu [usługi Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication), zdefiniuj i zabezpieczanie parametry, które akceptuje identyfikator klienta i klucz tajny klienta używany do uwierzytelniania. Dla tych parametrów definicji aplikacji logiki ma swój własny `parameters` sekcji.
+Aby uzyskać dostęp do wartości parametrów w czasie wykonywania, można użyć `@parameters('parameterName')` wyrażenie, które są dostarczane przez [język definicji przepływów pracy](https://aka.ms/logicappsdocs). 
 
-Ponadto można zabezpieczyć określone parametry, które nie mają wyświetlone podczas edytowania przepływu pracy aplikacji logiki, gdy używasz `securestring` typ parametru. Na przykład, można zabezpieczyć parametry, takie jak identyfikator klienta i klucz tajny klienta używany do uwierzytelniania za pomocą akcji HTTP [usługi Azure Active Directory](../connectors/connectors-native-http.md#authentication).
-Po określeniu typu parametru jako `securestring`, parametr nie jest zwracany za pomocą definicji zasobu i nie będzie dostępny, wyświetlając zasobu po wdrożeniu. 
+Aby chronić parametry i wartości, które nie mają być pokazywane podczas edytowania aplikacji logiki lub uruchom wyświetlanie historii, można zdefiniować parametry, z `securestring` wpisz i użyj kodowania zgodnie z potrzebami. Parametry, które mają tego typu nie są zwracane z definicji zasobu i nie są dostępne podczas wyświetlania zasobu po wdrożeniu.
 
 > [!NOTE]
-> Podczas korzystania z parametru w nagłówkach żądania lub treść tego parametru może być widoczna podczas uzyskiwania dostępu do aplikacji logiki, historii uruchamiania i wychodzące żądania HTTP. Upewnij się, odpowiednio ustawić zasady dostępu do zawartości.
-> Nagłówki autoryzacji nie są widoczne za pośrednictwem danych wejściowych lub wyjściowych. Dlatego jeśli klucz tajny jest używany istnieje, wpis tajny nie jest możliwe do pobierania.
+> Jeśli parametr w nagłówkach żądania lub treść tego parametru może być widoczna podczas uzyskiwania dostępu do aplikacji logiki, historii uruchamiania i wychodzące żądania HTTP. Upewnij się, że można również ustawić zasady dostępu do zawartości w związku z tym.
+> Nagłówki autoryzacji nie są widoczne za pośrednictwem danych wejściowych lub wyjściowych. Dlatego jeśli klucz tajny jest używany istnieje, ten wpis tajny nie jest możliwe do pobierania.
 
-W tym przykładzie przedstawiono Szablon wdrożenia usługi Azure Resource Manager, która używa więcej niż jeden parametr środowiska uruchomieniowego za pomocą `securestring` typu: 
+Aby uzyskać więcej informacji na temat zabezpieczania parametrów w logice definicji aplikacji, zobacz [Secure parametrów w logice definicji aplikacji](#secure-parameters-workflow) dalej na tej stronie.
+
+Jeśli automatyzujesz wdrożenia za pomocą [szablony wdrażania usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md#parameters), umożliwia również zabezpieczonej parametrów w tych szablonów. Na przykład parametry służy do pobierania wpisów tajnych usługi KeyVault, podczas tworzenia aplikacji logiki. Twoja definicja szablonu wdrożenia ma swój własny `parameters` sekcji, niezależnie od aplikacji logiki `parameters` sekcji. Aby uzyskać więcej informacji na temat zabezpieczania parametrów w szablonach wdrażania, zobacz [Secure parametrów w szablonach wdrożenia](#secure-parameters-deployment-template) dalej na tej stronie.
+
+<a name="secure-parameters-workflow"></a>
+
+### <a name="secure-parameters-in-logic-app-definitions"></a>Zabezpieczanie parametrów w logice definicji aplikacji
+
+Do ochrony informacji poufnych w definicji przepływu pracy aplikacji logiki, należy użyć parametrów zabezpieczonej, więc te informacje nie są widoczne po zapisaniu aplikacji logiki. Załóżmy, że używasz `Basic` uwierzytelniania w definicji działania protokołu HTTP. Ten przykład obejmuje `parameters` sekcja, która definiuje parametry dla definicji akcji oraz `authentication` sekcji, która akceptuje `username` i `password` wartości parametrów. Podanie wartości tych parametrów, można użyć pliku oddzielne parametry, na przykład:
+
+```json
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+         "type": "Http",
+         "inputs": {
+            "method": "GET",
+            "uri": "http://www.microsoft.com",
+            "authentication": {
+               "type": "Basic",
+               "username": "@parameters('usernameParam')",
+               "password": "@parameters('passwordParam')"
+            }
+         },
+         "runAfter": {}
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "manual": {
+         "type": "Request",
+         "kind": "Http",
+         "inputs": {
+            "schema": {}
+         }
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+}
+```
+
+Korzystasz z wpisy tajne, można uzyskać tych kluczy tajnych w czasie wdrażania, za pomocą [usługi Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+
+<a name="secure-parameters-deployment-template"></a>
+
+### <a name="secure-parameters-in-azure-resource-manager-deployment-templates"></a>Zabezpieczanie parametrów w szablonach wdrożenia usługi Azure Resource Manager
+
+Ten przykład przedstawia szablon wdrożenia usługi Resource Manager, który korzysta z więcej niż jeden parametr środowiska uruchomieniowego za pomocą `securestring` typu:
 
 * `armTemplatePasswordParam`, które to dane wejściowe na potrzeby definicji aplikacji logiki `logicAppWfParam` parametru
 
 * `logicAppWfParam`, które to dane wejściowe dla akcji HTTP przy użyciu uwierzytelniania podstawowego
 
-W pliku oddzielne parametry można określić wartość środowiska `armTemplatePasswordParam` parametr lub możesz pobrać wpisów tajnych w czasie wdrażania przy użyciu [usługi Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
-Wewnętrzny `parameters` sekcji należy do definicji przepływu pracy aplikacji logiki, podczas zewnętrzny `parameters` sekcji należy do wdrożenia szablonu.
+Ten przykład obejmuje wewnętrznego `parameters` sekcji, która należy do definicji przepływu pracy aplikacji logiki i zewnętrznym `parameters` sekcji, która należy do wdrożenia szablonu. Aby określić wartości parametrów środowiska, można użyć pliku oddzielne parametry. 
 
 ```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "logicAppName": {       
+      "logicAppName": {
          "type": "string",
          "minLength": 1,
          "maxLength": 80,
-         "metadata": {         
-            "description": "Name of the Logic App."       
-         }     
+         "metadata": {
+            "description": "Name of the Logic App."
+         }
       },
       "armTemplatePasswordParam": {
-         "type": "securestring"     
-      },     
-      "logicAppLocation": {       
+         "type": "securestring"
+      },
+      "logicAppLocation": {
          "type": "string",
          "defaultValue": "[resourceGroup().location]",
-         "allowedValues": [         
+         "allowedValues": [
             "[resourceGroup().location]",
             "eastasia",
             "southeastasia",
@@ -281,7 +337,7 @@ Wewnętrzny `parameters` sekcji należy do definicji przepływu pracy aplikacji 
    },
    "variables": {},
    "resources": [
-      {       
+      {
          "name": "[parameters('logicAppName')]",
          "type": "Microsoft.Logic/workflows",
          "location": "[parameters('logicAppLocation')]",
@@ -300,15 +356,18 @@ Wewnętrzny `parameters` sekcji należy do definicji przepływu pracy aplikacji 
                         "uri": "http://www.microsoft.com",
                         "authentication": {
                            "type": "Basic",
-                           "username": "username",
-                              "password": "@parameters('logicAppWfParam')"
+                           "username": "@parameters('usernameParam')",
+                           "password": "@parameters('logicAppWfParam')"
                         }
                      },
                   "runAfter": {}
                   }
                },
-               "parameters": { 
+               "parameters": {
                   "logicAppWfParam": {
+                     "type": "securestring"
+                  },
+                  "userNameParam": {
                      "type": "securestring"
                   }
                },
@@ -332,9 +391,11 @@ Wewnętrzny `parameters` sekcji należy do definicji przepływu pracy aplikacji 
          }
       }
    ],
-   "outputs": {} 
-}   
+   "outputs": {}
+}
 ```
+
+Korzystasz z wpisy tajne, można uzyskać tych kluczy tajnych w czasie wdrażania, za pomocą [usługi Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md).
 
 <a name="secure-requests"></a>
 
@@ -344,7 +405,7 @@ Oto kilka sposobów, można zabezpieczyć dowolnego punktu końcowego, gdy aplik
 
 ### <a name="add-authentication-on-outbound-requests"></a>Dodawanie uwierzytelniania dla wychodzących żądań
 
-Podczas pracy z protokołu HTTP, HTTP + Swagger (interfejsu Open API) lub Akcja elementu Webhook, możesz dodać do żądania wysłanego przez aplikację logiki uwierzytelniania. Na przykład można użyć uwierzytelniania podstawowego, uwierzytelnianie certyfikatu lub uwierzytelniania usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [uwierzytelniania wyzwalacze i akcje](logic-apps-workflow-actions-triggers.md#connector-authentication) i [uwierzytelniania dla akcji HTTP](../connectors/connectors-native-http.md#authentication).
+Podczas pracy z protokołu HTTP, HTTP + Swagger (interfejsu Open API) lub Akcja elementu Webhook, możesz dodać do żądania wysłanego przez aplikację logiki uwierzytelniania. Na przykład można użyć uwierzytelniania podstawowego, uwierzytelnianie certyfikatu lub uwierzytelniania usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [uwierzytelniania wyzwalacze i akcje](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
 ### <a name="restrict-access-to-logic-app-ip-addresses"></a>Ograniczanie dostępu do adresów IP aplikacji logiki
 

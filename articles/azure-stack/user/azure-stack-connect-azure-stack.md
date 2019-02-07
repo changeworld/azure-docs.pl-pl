@@ -15,19 +15,19 @@ ms.topic: get-started-article
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: b7f9bda37d63956ea672528c28b81eaaac9891a6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4bc4387dd56de96edd17fcd8e5672cfda96cf67b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243770"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816411"
 ---
 # <a name="connect-to-azure-stack"></a>Nawiązywanie połączenia z usługą Azure Stack
 
 Aby zarządzać zasobami, możesz nawiązać Azure Stack Development Kit. Ten artykuł zawiera kroki wymagane do połączenia z deweloperski. Można użyć jednej z następujących opcji połączenia:
 
-* [Pulpit zdalny](#connect-with-remote-desktop): umożliwia pojedynczego użytkownika współbieżnych szybko Nawiąż kontakt z zestawu SDK.
-* [Wirtualnej sieci prywatnej (VPN)](#connect-with-vpn): umożliwia jednoczesną pracę wielu użytkowników połączenia od klientów poza infrastruktury Azure Stack (wymaga konfiguracji).
+* Pulpit zdalny: umożliwia pojedynczego użytkownika współbieżnych szybko Nawiąż kontakt z zestawu SDK.
+* Wirtualna sieć prywatna (VPN): umożliwia jednoczesną pracę wielu użytkowników połączenia od klientów poza infrastruktury Azure Stack (wymaga konfiguracji).
 
 ## <a name="connect-to-azure-stack-with-remote-desktop"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu pulpitu zdalnego
 Za pomocą połączenia pulpitu zdalnego pojedynczy równoczesny użytkownik może współpracować z portalu do zarządzania zasobami.

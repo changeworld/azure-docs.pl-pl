@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/05/2019
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: e4ea964600c03ce3f3b5b276ed02d12f573814bf
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e1c225eb77a76015520690916db0399487ffe9e7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756499"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822616"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy usługi Log Analytics
 
@@ -34,7 +34,7 @@ Brama usługi Log Analytics obsługuje:
 * Usługa Azure Automation hybrydowych procesów roboczych Runbook  
 * Komputery Windows za pomocą programu Microsoft Monitoring Agent bezpośrednio połączone z obszarem roboczym usługi Log Analytics
 * Komputery z systemem Linux przy użyciu agenta usługi Log Analytics dla systemu Linux bezpośrednio połączone z obszarem roboczym usługi Log Analytics  
-* System Center Operations Manager 2012 z dodatkiem SP1 z pakietem zbiorczym aktualizacji 7, Operations Manager 2012 R2 UR3, Operations Manager 2016 i grupy zarządzania programu Operations Manager w wersji 1801 zintegrowane z usługą Log Analytics.  
+* System Center Operations Manager 2012 z dodatkiem SP1 z pakietem zbiorczym aktualizacji 7, Operations Manager 2012 R2 UR3, programu Operations Manager 2016 lub nowszym grupy zarządzania są zintegrowane z usługą Log Analytics.  
 
 Jeśli Twoje informatyczne zasady zabezpieczeń nie pozwalają komputerom w sieci, aby nawiązać połączenie z Internetem, takie jak punkt urządzeń sprzedaży (POS) lub serwerami obsługującymi funkcję usług informatycznych, ale należy podłączyć je do usługi Azure Automation lub usługi Log Analytics, zarządzanie i monitorowanie ich , można je skonfigurować do bezpośredniego komunikowania się z bramy usługi Log Analytics do odbierania, konfiguracji i przekazują dane w ich imieniu.  Te komputery są skonfigurowane przy użyciu agenta usługi Log Analytics można łączyć się bezpośrednio do obszaru roboczego usługi Log Analytics, wszystkie komputery będą zamian komunikować się z bramą usługi Log Analytics.  Bramy przesyła dane z agentów do usługi bezpośrednio, nie zostaną przeanalizowane dane podczas przesyłania.
 

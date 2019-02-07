@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: f549c748c87405b47868c75cc01af81efd202af2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 934996f1573520a6fba92ce09f8a14fc4795de6c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755360"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812486"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Jak skonfigurować hasło logowania jednokrotnego dla aplikacji spoza galerii
 
@@ -43,7 +43,7 @@ Jest doskonałym sposobem na rozpoczęcie pracy, szybkie integrowanie każdego r
 
 -   Zezwalaj na **grupy biznesowej** do określenia nazwy użytkowników i haseł przypisane do użytkownika za pomocą [samoobsługowego dostępu do aplikacji](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) funkcji
 
--   Zezwalaj na **administratora** do określenia nazwy użytkowników i haseł przypisane do użytkownika za pomocą poświadczeń aktualizacji funkcji podczas [przypisanie użytkownika do aplikacji](#_How_to_configure_1)
+-   Zezwalaj na **administratora** do określenia nazwy użytkowników i hasła, przypisanej do użytkownika za pomocą funkcji Aktualizacja poświadczeń, gdy przypisanie użytkownika do aplikacji
 
 -   Zezwalaj na **administratora** do określenia udostępnionego nazwy użytkownika i hasło używane przez grupę osób przy użyciu poświadczeń aktualizacji funkcji podczas [przypisanie grupy do aplikacji](#assign-an-application-to-a-group-directly)
 
@@ -57,7 +57,7 @@ Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:
 
 -   [Konfigurowanie aplikacji dla hasła logowania jednokrotnego](#configure-the-application-for-password-single-sign-on)
 
--   [Przypisz aplikację do użytkownika lub grupy](#assign-the-application-to-a-user-or-a-group)
+-   Przypisz aplikację do użytkownika lub grupy
 
     -   [Bezpośrednio przypisać użytkownika do aplikacji](#assign-a-user-to-an-application-directly)
 

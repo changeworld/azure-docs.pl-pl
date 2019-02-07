@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 728adae62677eb2edb1e203df9b0d9f11f6acecf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 101385b23d8ea683dc5762d491e6a4bef91bbed4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022312"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813773"
 ---
 # <a name="data-management-gateway"></a>Brama zarządzania danymi
 > [!NOTE]
@@ -246,7 +246,7 @@ Jeśli używasz zapory innych firm, możesz ręcznie Otwórz port 8050. Jeśli n
 
     msiexec /q /i DataManagementGateway.msi NOFIREWALL=1
 
-Jeśli wybierzesz nie otworzyć port 8050 na maszynie bramy, użyj mechanizmów, innych niż z użyciem **Ustawianie poświadczeń** aplikację, aby skonfigurować poświadczenia magazynu danych. Na przykład można użyć [New AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) polecenia cmdlet programu PowerShell. Zobacz [Ustawianie poświadczeń i zabezpieczenia](#set-credentials-and-securityy) sekcję dotyczącą sposobu przechowywania poświadczeń w danych można ustawić.
+Jeśli wybierzesz nie otworzyć port 8050 na maszynie bramy, użyj mechanizmów, innych niż z użyciem **Ustawianie poświadczeń** aplikację, aby skonfigurować poświadczenia magazynu danych. Na przykład można użyć [New AzureRmDataFactoryEncryptValue](https://docs.microsoft.com/powershell/module/azurerm.datafactories/new-azurermdatafactoryencryptvalue) polecenia cmdlet programu PowerShell. Zobacz sekcję Ustawianie poświadczeń i zabezpieczeń na sposób przechowywania poświadczeń w danych można ustawić.
 
 ## <a name="update"></a>Aktualizacja
 Domyślnie brama zarządzania danymi jest automatycznie aktualizowany, gdy dostępna jest nowsza wersja bramy. Brama nie jest aktualizowana, aż wszystkie zaplanowane zadania są wykonywane. Kolejne zadania nie są przetwarzane przez bramę, aż do zakończenia operacji aktualizacji. W przypadku niepowodzenia aktualizacji bramy zostanie wycofana do starej wersji.
@@ -407,7 +407,7 @@ Ta sekcja zawiera kroki klienta ruchomej bramy z jednego komputera na inny kompu
 
 1. W portalu, przejdź do **strona główna fabryki danych**i kliknij przycisk **połączonych usług** kafelka.
 
-    ![Łącze bramy danych](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
+    ![Data Gateways Link](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
 2. Wybierz bramę **bram DATA GATEWAYS** części **połączonych usług** strony.
 
     ![Połączonej strony usług przy użyciu wybranej bramy](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)

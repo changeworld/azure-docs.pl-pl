@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 3e460df8c4841a23c76ef8d7b254938ce46a2b45
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: f464b6411e1375fa005980454a9b61d2d6c05b0b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381071"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819114"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje skalowania aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ W tym artykule przedstawiono podstawowe pojęcia, które ułatwiają skalowanie 
 - [Ręczne skalowanie](#manually-scale-pods-or-nodes)
 - [Skalowanie zasobników w poziomie (HPA)](#horizontal-pod-autoscaler)
 - [Skalowanie klastra](#cluster-autoscaler)
-- [Integracja usługi Azure Container wystąpienia (ACI) za pomocą usługi AKS](#burst-to-azure-container-instance)
+- Integracja usługi Azure Container wystąpienia (ACI) za pomocą usługi AKS
 
 ## <a name="manually-scale-pods-or-nodes"></a>Ręczne skalowanie zasobników albo przez węzły
 
@@ -65,7 +65,7 @@ Jeśli węzeł nie ma wystarczające zasoby obliczeniowe, aby uruchomić zasobni
 
 Podczas skalowania automatycznego klastra powiadomienia zasobników, które nie może zostać zaplanowane z powodu ograniczeń zasobów puli węzeł liczbę węzłów w ramach puli węzłów zwiększa się do zapewnienia dodatkowych zasobów obliczeniowych. W przypadku pomyślnie wdrożone i dostępne do użycia w puli węzłów te dodatkowe węzły zasobników są planowane do uruchomienia na nich.
 
-Jeśli aplikacja wymaga błyskawicznie, niektóre zasobniki może pozostają w stanie oczekujących na zaplanowanie pozostałe węzły, które są wdrażane przez skalowanie klastra mogą akceptować zaplanowane zasobników. W przypadku aplikacji, które mają wysoką odporność wymagań, możesz [skalowanie przy użyciu wirtualnych węzłów i usługi Azure Container Instances](#burst-to-azure-container-instance).
+Jeśli aplikacja wymaga błyskawicznie, niektóre zasobniki może pozostają w stanie oczekujących na zaplanowanie pozostałe węzły, które są wdrażane przez skalowanie klastra mogą akceptować zaplanowane zasobników. W przypadku aplikacji, które mają wysoką odporność zapotrzebowania można skalować węzły wirtualne i usługi Azure Container Instances.
 
 ### <a name="scale-down-events"></a>Skaluj w dół do zdarzenia
 

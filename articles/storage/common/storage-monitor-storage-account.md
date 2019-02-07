@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d437c6e2327fc9771f9567a37bfbf8ad82713b2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452647"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817279"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Monitorowanie konta magazynu w witrynie Azure portal
 
@@ -46,7 +46,7 @@ ms.locfileid: "55452647"
 
 1. Po zakończeniu konfiguracji monitorowania, wybierz **Zapisz**.
 
-Domyślny zestaw metryk jest wyświetlany na wykresach w bloku konto magazynu, a także bloków poszczególnych usług (obiektu blob, kolejki, tabela i plik). Po włączeniu metryki dla usługi może potrwać do godziny dane zostaną wyświetlone w jego przypadku wykresów. Możesz wybrać **Edytuj** na dowolnym wykresie metryk, aby [skonfiguruj, jaką metrykę](#how-to-customize-metrics-charts) są wyświetlane na wykresie.
+Domyślny zestaw metryk jest wyświetlany na wykresach w bloku konto magazynu, a także bloków poszczególnych usług (obiektu blob, kolejki, tabela i plik). Po włączeniu metryki dla usługi może potrwać do godziny dane zostaną wyświetlone w jego przypadku wykresów. Możesz wybrać **Edytuj** na wykresów metryki, aby skonfigurować metryk, które są wyświetlane na wykresie.
 
 Można wyłączyć zbieranie metryk i rejestrowania, ustawiając **stan** do **poza**.
 
@@ -116,7 +116,7 @@ Możesz dodać wykresy metryk usługi Azure Storage dla każdego konta magazynu 
    ![Galeria kafelków w witrynie Azure portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
 1. Wybierz **Zakończono dostosowywanie** w górnej części pulpitu nawigacyjnego, po zakończeniu dodawania wykresów.
 
-Po dodaniu wykresy do pulpitu nawigacyjnego, można dostosować je zgodnie z opisem w [Dostosowywanie wykresów metryk](#how-to-customize-metrics-charts).
+Po dodaniu wykresy do pulpitu nawigacyjnego, można dostosować je zgodnie z opisem w Dostosowywanie wykresów metryk.
 
 ## <a name="configure-logging"></a>Konfigurowanie rejestrowania
 

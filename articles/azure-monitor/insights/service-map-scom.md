@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: 19e842fc3674536972327c3bc6d31641560e38db
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 73e27044fc8cc79b2c95471e30bca558bd14d473
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659188"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818757"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Mapa usługi integracji programu System Center Operations Manager
 
@@ -51,7 +51,7 @@ Aby skonfigurować integrację rozwiązania Service Map, wykonaj następujące c
 
     ![Okienko omówienia mapy usługi](media/service-map-scom/scom-configuration.png)
 
-2. W **Konfiguracja połączenia** okna, wprowadź nazwę dzierżawy lub identyfikator, identyfikator aplikacji (znany także jako nazwa użytkownika lub identyfikatora klienta) i hasło jednostki usługi, a następnie kliknij przycisk **dalej**. Aby uzyskać więcej informacji, przejdź do [utworzyć nazwę główną usługi](#creating-a-service-principal).
+2. W **Konfiguracja połączenia** okna, wprowadź nazwę dzierżawy lub identyfikator, identyfikator aplikacji (znany także jako nazwa użytkownika lub identyfikatora klienta) i hasło jednostki usługi, a następnie kliknij przycisk **dalej**. Aby uzyskać więcej informacji przejdź do utworzenia jednostki usługi.
 
     ![W oknie Konfiguracja połączenia](media/service-map-scom/scom-config-spn.png)
 

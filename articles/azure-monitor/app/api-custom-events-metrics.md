@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: d0e549f0da5eb30dd11992518789d76c0892bca3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d67085d2e90e318a8f134103f0798554b8967d6d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747479"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814422"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -774,7 +774,7 @@ Można dołączyć właściwości i miary do zdarzenia (i również metryki, str
 
 *Właściwości* są wartości ciągu, których można użyć do filtrowania danych telemetrycznych w raportach użycia. Na przykład jeśli aplikacja udostępnia kilka gier, można dołączyć nazwa gry do każdego zdarzenia, dzięki czemu można zobaczyć, które gry są bardziej popularne.
 
-Ma limitu 8192 długości ciągu. (Jeśli chcesz wysłać duże zestawy danych, należy użyć parametru komunikat [TrackTrace](#track-trace).)
+Ma limitu 8192 długości ciągu. (Jeśli chcesz wysłać duże zestawy danych, użyj parametru komunikat TrackTrace.)
 
 *Metryki* wartości numeryczne, które mogą być prezentowane w postaci graficznej. Na przykład możesz chcieć sprawdzić, czy jest stopniowy wzrost wyniki, pozwalających na osiągnięcie do graczy. Wykresy można posegmentować za pomocą właściwości, które są wysyłane ze zdarzeniem, dzięki czemu można uzyskać osobne lub skumulowane wykresy dla różnych gier.
 
@@ -992,7 +992,7 @@ gameTelemetry.TrackEvent({name: "WinGame"});
 
 Wywołania telemetrii można zastąpić wartości domyślne w słownikach ich właściwości.
 
-*Dla języka JavaScript sieci web klientów*, [Użyj JavaScript telemetrii inicjatory](#js-initializer).
+*Dla języka JavaScript sieci web klientów*, użyj inicjatorów telemetrii języka JavaScript.
 
 *Aby dodać właściwości do wszystkie dane telemetryczne*, włącznie z danymi z modułów kolekcji standardowych [zaimplementować `ITelemetryInitializer` ](../../azure-monitor/app/api-filtering-sampling.md#add-properties).
 

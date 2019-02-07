@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: aafc960c0c26a94a8be672d0d72a46dfcb559013
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 13b82aa4f256bf0ec2d0805e85241d72e115d737
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157010"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810205"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Środowisko logowania za pomocą usługi Azure Multi-Factor Authentication
 > [!NOTE]
@@ -31,8 +31,8 @@ ms.locfileid: "55157010"
 | --- |
 | [Za pomocą rozmowy telefonicznej, aby Mój telefon komórkowy lub pakietu office](#signing-in-with-a-phone-call) |
 | [Tekst na Mój telefon komórkowy](#signing-in-with-a-text-message)
-| [Powiadomienia z aplikacji Microsoft Authenticator](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
-| [Przy użyciu kodów weryfikacyjnych z aplikacji Microsoft Authenticator](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
+| Powiadomienia z aplikacji Microsoft Authenticator |
+| Przy użyciu kodów weryfikacyjnych z aplikacji Microsoft Authenticator |
 | [Za pomocą alternatywnej metody ponieważ nie mogę używać mojej preferowaną metodą teraz](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Logowanie się przy użyciu połączenia telefonicznego
@@ -87,4 +87,4 @@ Jeśli masz problemy z zarejestrowaniem się przy użyciu weryfikacji dwuetapowe
 
 Dowiedz się, jak [Zarządzanie ustawieniami weryfikacji dwuetapowej](multi-factor-authentication-end-user-manage-settings.md).
 
-Dowiedz się, jak [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](microsoft-authenticator-app-how-to.md) tak, aby powiadomienia można użyć do logowania, zamiast tekstów i połączeń telefonicznych.
+Dowiedz się, jak [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](user-help-auth-app-download-install.md) tak, aby powiadomienia można użyć do logowania, zamiast tekstów i połączeń telefonicznych.

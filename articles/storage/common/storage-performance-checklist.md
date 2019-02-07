@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 49e9a057e52d46fd18e13c43d0f6024201499685
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 010a9f4e5be34986c1098f403e4df0ccf569838c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493392"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821681"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Lista kontrolna dotycząca wydajności i skalowalności usługi Microsoft Azure Storage
 ## <a name="overview"></a>Przegląd
@@ -92,7 +92,7 @@ Każda z usług Azure Storage ma wartości docelowe skalowalności pojemność (
 * [Wiadomości w kolejce na sekundę](#subheading39)  
 
 #### <a name="sub1bandwidth"></a>Cel skalowalności przepustowości dla wszystkich usług
-W czasie pisania cele przepustowości w Stanach Zjednoczonych konto magazyn geograficznie nadmiarowy (GRS) są 10 gigabity na sekundę (GB/s) dla ruchu przychodzącego (dane wysyłane do konta magazynu) i 20 GB/s dla danych wychodzących (dane wysyłane z konta magazynu). Konto magazynu lokalnie nadmiarowego (LRS), limity są wyższe — 20 GB/s dla ruchu przychodzącego i 30 GB/s dla ruchu wychodzącego.  Limity przepustowości międzynarodowych może być niższa i można znaleźć na naszej [strony cele skalowalności](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Aby uzyskać więcej informacji na temat opcji nadmiarowości magazynu, zobacz linki na [przydatne zasoby](#sub1useful) poniżej.  
+W czasie pisania cele przepustowości w Stanach Zjednoczonych konto magazyn geograficznie nadmiarowy (GRS) są 10 gigabity na sekundę (GB/s) dla ruchu przychodzącego (dane wysyłane do konta magazynu) i 20 GB/s dla danych wychodzących (dane wysyłane z konta magazynu). Konto magazynu lokalnie nadmiarowego (LRS), limity są wyższe — 20 GB/s dla ruchu przychodzącego i 30 GB/s dla ruchu wychodzącego.  Limity przepustowości międzynarodowych może być niższa i można znaleźć na naszej [strony cele skalowalności](https://msdn.microsoft.com/library/azure/dn249410.aspx).  Aby uzyskać więcej informacji na temat opcji nadmiarowości magazynu Zobacz linki poniżej przydatne zasoby.  
 
 #### <a name="what-to-do-when-approaching-a-scalability-target"></a>Co należy zrobić podczas kontaktowania się z docelową skalowalność
 Jeśli zbliża się limit kont magazynu, posiadane w połączeniu określonej subskrypcji/regionu, należy ocenić aplikacji i użycia kont magazynu i określić, jeśli którykolwiek z tych warunków zastosować.

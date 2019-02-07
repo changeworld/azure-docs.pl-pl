@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021581"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822752"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Przetwarzania dużych ilości danych przy użyciu usługi Data Factory i Batch
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "54021581"
 
 W tym artykule opisano architekturę przykładowe rozwiązanie, która przenosi i przetwarza dużych ilości danych w sposób automatycznego i zaplanowane. Zawiera także wskazówki end-to-end, aby zaimplementować to rozwiązanie przy użyciu usługi Data Factory i Azure Batch.
 
-W tym artykule jest dłuższa niż typowy artykułu, ponieważ zawiera ona wskazówki dotyczące całej przykładowe rozwiązanie. Jeśli jesteś nowym użytkownikiem usługi Batch i Data Factory, informacje na temat tych usług i w jaki sposób działają razem. Jeśli znasz coś o usługach i są projektowanie/Projektowanie rozwiązania, można skupić się na [sekcji architektury](#architecture-of-sample-solution) tego artykułu. Jeżeli projektujesz prototyp lub rozwiązania, warto wypróbować z instrukcjami krok po kroku [wskazówki](#implementation-of-sample-solution). Zapraszamy komentarze dotyczące tej zawartości i sposobu ich używania.
+W tym artykule jest dłuższa niż typowy artykułu, ponieważ zawiera ona wskazówki dotyczące całej przykładowe rozwiązanie. Jeśli jesteś nowym użytkownikiem usługi Batch i Data Factory, informacje na temat tych usług i w jaki sposób działają razem. Jeśli znasz coś o usługach i są projektowanie/Projektowanie rozwiązania, możesz skoncentrować się na architekturze części tego artykułu. Jeżeli projektujesz prototyp lub rozwiązania, można wypróbować instrukcjami krok po kroku w instruktażu. Zapraszamy komentarze dotyczące tej zawartości i sposobu ich używania.
 
 Najpierw Przyjrzyjmy się jak usługi Data Factory i Batch mogą pomóc Ci przetwarzania dużych zestawów danych w chmurze.     
 
@@ -177,7 +177,7 @@ Metoda ma kilka kluczowych składników, które należy zrozumieć:
 #### <a name="procedure-create-the-custom-activity"></a>Procedura: Tworzenie niestandardowego działania
 1. Utwórz projekt biblioteki klas .NET w programie Visual Studio.
 
-   a. Uruchom program Visual Studio 2012/2013/2015.
+   a. Start Visual Studio 2012/2013/2015.
 
    b. Wybierz kolejno pozycje **Plik** > **Nowy** > **Projekt**.
 
@@ -664,7 +664,7 @@ W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wy
 
     Czas rozpoczęcia dla każdego wycinka jest reprezentowany przez **SliceStart** zmiennej systemowej w poprzednim fragmencie kodu JSON. Poniżej przedstawiono godziny rozpoczęcia dla każdego wycinka.
 
-    | **wycinek** | **Godzina rozpoczęcia**          |
+    | **Slice** | **Godzina rozpoczęcia**          |
     |-----------|-------------------------|
     | 1         | 2015-11-16T**00**:00:00 |
     | 2         | 2015-11-16T**01**:00:00 |
@@ -674,7 +674,7 @@ W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wy
 
     **FolderPath** jest obliczana przy użyciu rok, miesiąc, dzień i godzinę część czas rozpoczęcia wycinka (**SliceStart**). Oto, jak folderu danych wejściowych jest mapowany na wycinka.
 
-    | **wycinek** | **Godzina rozpoczęcia**          | **Folderu danych wejściowych**  |
+    | **Slice** | **Godzina rozpoczęcia**          | **Folderu danych wejściowych**  |
     |-----------|-------------------------|-------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01** |
@@ -721,7 +721,7 @@ W tym kroku utworzysz inny zestaw danych typu obiektu blob platformy Azure do re
 
     Obiekt blob/plik wyjściowy jest generowany dla każdego wycinek danych wejściowych. Oto, jak plik wyjściowy nosi nazwę każdego wycinka. Wszystkie pliki wyjściowe są generowane w jednym folderze danych wyjściowych, `mycontainer\\outputfolder`.
 
-    | **wycinek** | **Godzina rozpoczęcia**          | **Plik wyjściowy**       |
+    | **Slice** | **Godzina rozpoczęcia**          | **Plik wyjściowy**       |
     |-----------|-------------------------|-----------------------|
     | 1         | 2015-11-16T**00**:00:00 | 2015-11-16-**00.txt** |
     | 2         | 2015-11-16T**01**:00:00 | 2015-11-16-**01.txt** |

@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ede0b7cbeee9227a7023e5c0550a951897cc43e4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472987"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821188"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Utrwalanie danych i zadań do usługi Azure Storage za pomocą biblioteki Konwencji plików usługi Batch dla platformy .NET
 
@@ -112,7 +112,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 
 `kind` Parametru [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx) metoda kategoryzuje utrwalonych plików. Istnieją cztery wstępnie zdefiniowane [TaskOutputKind] [ net_taskoutputkind] typów: `TaskOutput`, `TaskPreview`, `TaskLog`, i `TaskIntermediate.` można również definiować niestandardowe kategorie danych wyjściowych.
 
-Te typy danych wyjściowych umożliwiają określenie typu danych wyjściowych, aby wyświetlić listę później zapytania usługi Batch dla utrwalonych danych wyjściowych dla danego zadania. Innymi słowy po wyświetleniu listy danych wyjściowych dla zadania, będzie można filtrować listę na jednym z typów danych wyjściowych. Na przykład "Proszę *Podgląd* danych wyjściowych dla zadania *109*." Więcej informacji o ofercie i pobieranie danych wyjściowych zostanie wyświetlony w [pobrać dane wyjściowe](#retrieve-output) w dalszej części artykułu.
+Te typy danych wyjściowych umożliwiają określenie typu danych wyjściowych, aby wyświetlić listę później zapytania usługi Batch dla utrwalonych danych wyjściowych dla danego zadania. Innymi słowy po wyświetleniu listy danych wyjściowych dla zadania, będzie można filtrować listę na jednym z typów danych wyjściowych. Na przykład "Proszę *Podgląd* danych wyjściowych dla zadania *109*." Więcej informacji o ofercie i pobieranie danych wyjściowych jest wyświetlany w pobieranie danych wyjściowych, w dalszej części tego artykułu.
 
 > [!TIP]
 > Rodzaj wyjścia określa również, gdzie w witrynie Azure portal danego pliku pojawia się: *TaskOutput*-skategoryzowane plików są wyświetlane w obszarze **plików wyjściowych zadania**, i *TaskLog* plików są wyświetlane w obszarze **zadań dzienniki**.
@@ -197,7 +197,7 @@ Witryny Azure portal Wyświetla pliki danych wyjściowych zadań i dzienników, 
 
 Aby włączyć wyświetlanie plików danych wyjściowych w portalu, muszą spełniać następujące wymagania:
 
-1. [Łączenie konta usługi Azure Storage](#requirement-linked-storage-account) z kontem usługi Batch.
+1. Połączyć konto usługi Azure Storage ze swoim kontem usługi Batch.
 1. Gdy utrwalanie danych wyjściowych, należy stosować się do wstępnie zdefiniowanych konwencje nazewnictwa dla magazynu, kontenerów i plików. Biblioteki Konwencji plików można znaleźć definicji tych konwencji [README][github_file_conventions_readme]. Jeśli używasz [Konwencji plików usługi Batch Azure] [ nuget_package] biblioteki, aby zachować dane wyjściowe, pliki są zachowywane zgodnie ze standardem Konwencji plików.
 
 Aby wyświetlić pliki wyjściowe zadania i dzienniki w witrynie Azure portal, przejdź do zadania, którego dane wyjściowe, które Cię interesują, następnie kliknij przycisk **zapisane pliki wyjściowe** lub **zapisane dzienniki**. Ta ilustracja przedstawia **zapisane pliki wyjściowe** dla zadania o identyfikatorze "007":

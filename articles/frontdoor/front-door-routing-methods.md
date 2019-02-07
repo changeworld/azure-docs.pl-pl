@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 26b4e2b1bf2dc9e59bc41e1d9f0628a1f476d402
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd1278db43ba31ed78f13a826a330e16c3bc8d57
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031488"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820848"
 ---
 # <a name="front-door-routing-methods"></a>Metody routingu drzwi
 
@@ -24,12 +24,12 @@ Usługa Azure drzwiami frontowymi obsługuje różne metody routingu ruchu, aby 
 
 Dostępne są cztery główne pojęcia do kierowania ruchu w drzwi wejściowe:
 
-* **[Opóźnienie](#latency):** routingu opartego na opóźnienie gwarantuje, że żądania są wysyłane do najniższego zaplecza opóźnienie dopuszczalne w zakresie poufności. Po prostu żądań użytkownika są wysyłane do zestawu "najbliższy" zapleczy w odniesieniu do opóźnienia sieci.
-* **[Priorytet](#priority):** priorytetów można przypisać do różnych zaplecza, gdy chcesz użyć podstawowa usługa zaplecza dla całego ruchu, a wykonywanie kopii zapasowych w przypadku podstawowej lub kopii zapasowej zaplecza są niedostępne.
-* **[Ważona średnia](#weighted):** można przypisać wagi do różnych zaplecza, jeśli chcesz dystrybuować ruch w zestawie zaplecza, równomiernie lub według wagi współczynniki.
-* **[Koligacja sesji](#sessionaffinity):** można skonfigurować koligację sesji dla hostów serwera sieci Web lub domen, jeśli chcesz, że kolejne żądania od użytkownika, są wysyłane do tego samego zaplecza, tak długo, jak sesja użytkownika jest nadal aktywne i wystąpienia wewnętrznej bazy danych nadal raporty zdrowe oparte na sond kondycji. 
+* **[Opóźnienie](#latency):** Routing oparty na opóźnienie gwarantuje, że żądania są wysyłane do najniższego zaplecza opóźnienie dopuszczalne w zakresie poufności. Po prostu żądań użytkownika są wysyłane do zestawu "najbliższy" zapleczy w odniesieniu do opóźnienia sieci.
+* **[Priorytet](#priority):** Jeśli chcesz użyć podstawowa usługa zaplecza dla całego ruchu, a wykonywanie kopii zapasowych w przypadku, gdy główna osoba kontaktowa lub kopii zapasowej zaplecza są niedostępne, można przypisać priorytety do różnych zaplecza.
+* **[Ważona średnia](#weighted):** Jeśli chcesz dystrybuować ruch w zestawie zaplecza, równomiernie lub według wagi współczynniki można przypisać wagi do różnych zaplecza.
+* **Koligacja sesji:** Możesz skonfigurować sesję, którą koligacji dla hostów serwera sieci Web lub domen, jeśli chcesz, że kolejne żądania od użytkownika, są wysyłane do tego samego zaplecza, tak długo, jak sesja użytkownika jest nadal aktywne i wystąpienia wewnętrznej bazy danych nadal zgłasza dobrej kondycji oparte na sond kondycji. 
 
-Wszystkie konfiguracje drzwiami frontowymi obejmują monitorowanie kondycji wewnętrznej bazy danych i automatyczne błyskawicznej globalnej pracy awaryjnej. Aby uzyskać więcej informacji, zobacz [drzwiami frontowymi wewnętrznej bazy danych monitorowania](front-door-health-probes.md). Twoje drzwiami frontowymi można skonfigurować do pracy, albo na podstawie jednej metody routingu i w zależności od aplikacji wymaga służy wielu lub wszystkich tych metod routingu w połączeniu Tworzenie optymalnych topologię routingu.
+Wszystkie konfiguracje usługi Front Door obejmują monitorowanie kondycji zaplecza i zautomatyzowane, natychmiastowe przechodzenie do trybu failover w skali globalnej. Aby uzyskać więcej informacji, zobacz [drzwiami frontowymi wewnętrznej bazy danych monitorowania](front-door-health-probes.md). Twoje drzwiami frontowymi można skonfigurować do pracy, albo na podstawie jednej metody routingu i w zależności od aplikacji wymaga służy wielu lub wszystkich tych metod routingu w połączeniu Tworzenie optymalnych topologię routingu.
 
 ## <a name = "latency"></a>Najniższe opóźnienia na podstawie routing ruchu
 
@@ -66,16 +66,16 @@ Wśród listę dostępnych zaplecza w obrębie czułości akceptowane opóźnien
 
 Metoda ważona zapewnia pewne przydatne w scenariuszach:
 
-* **Uaktualnienie stopniowe aplikacji**: przydzielić procent ruchu sieciowego, aby kierować do nowego zaplecza, a następnie stopniowo zwiększać ruchu, wraz z upływem czasu, co par innych zapleczy przełoży się.
-* **Migracja aplikacji na platformie Azure**: tworzenie puli wewnętrznej bazy danych przy użyciu zaplecza aplikacji zarówno dla platformy Azure, jak i zewnętrznych. Dostosuj wagę zaplecza preferowanie nowego zaplecza. Stopniowo skonfigurowaniem to począwszy od konieczności nowych zapleczy, które są wyłączone, następnie przypisując im wag najniższy powoli zwiększenie poziomów, w którym przyjmują większość ruchu. Następnie na końcu wyłączenie mniej preferowanych zaplecza i usunięcie ich z puli.  
-* **Rozszerzanie możliwości chmury za dodatkową pojemność**: szybko rozbudować wdrożenia lokalnego do chmury, ustawiając dla niego za wejściu. Jeśli potrzebujesz dodatkowej pojemności w chmurze, należy dodać lub włączyć więcej zaplecza i określić, jaka część ruchu jest przesyłany do poszczególnych pól zaplecza.
+* **Uaktualnienie stopniowe aplikacji**: Przydzielanie procent ruchu sieciowego, aby kierować do nowego zaplecza i stopniowo zwiększać ruchu, wraz z upływem czasu, co par innych zapleczy przełoży się.
+* **Migracja aplikacji na platformie Azure**: Utwórz pulę zaplecza przy użyciu zaplecza aplikacji zarówno dla platformy Azure, jak i zewnętrznych. Dostosuj wagę zaplecza preferowanie nowego zaplecza. Stopniowo skonfigurowaniem to począwszy od konieczności nowych zapleczy, które są wyłączone, następnie przypisując im wag najniższy powoli zwiększenie poziomów, w którym przyjmują większość ruchu. Następnie na końcu wyłączenie mniej preferowanych zaplecza i usunięcie ich z puli.  
+* **Rozszerzanie możliwości chmury za dodatkową pojemność**: Szybko rozbudować wdrożenia lokalnego do chmury, ustawiając dla niego za wejściu. Jeśli potrzebujesz dodatkowej pojemności w chmurze, należy dodać lub włączyć więcej zaplecza i określić, jaka część ruchu jest przesyłany do poszczególnych pól zaplecza.
 
 ## <a name = "affinity"></a>Koligacja sesji
-Domyślnie bez koligacji sesji drzwiami frontowymi przekazuje żądania pochodzące z tego samego klienta do różnych zaplecza na podstawie obciążenia równoważenia szczególnie, jak zmienić opóźnienia do różnych zaplecza, lub jeśli różne żądania z tego samego użytkownika gruntów w innym środowisku wejściu. Jednak niektóre aplikacje stanowe lub w niektórych scenariuszach woli się, że kolejne żądania z tego samego użytkownika powiązana z tego samego zaplecza, który przetwarzał żądania wstępnego. Funkcja koligacji sesji na podstawie pliku cookie jest przydatne, gdy chcesz zachować sesję użytkownika na tej samej wewnętrznej bazy danych. Za pomocą plików cookie drzwiami frontowymi zarządzane, Azure drzwiami frontowymi Service można kierować dalszy ruch z sesji użytkownika do tej samej wewnętrznej bazy danych do przetwarzania, tak długo, jak wewnętrznej bazy danych jest w dobrej kondycji i sesji użytkownika nie wygasło. 
+Domyślnie bez koligacji sesji drzwiami frontowymi przekazuje żądania pochodzące z tego samego klienta do różnych zaplecza na podstawie obciążenia równoważenia szczególnie, jak zmienić opóźnienia do różnych zaplecza, lub jeśli różne żądania z tego samego użytkownika gruntów w innym środowisku wejściu. Jednak w przypadku niektórych aplikacji stanowych lub pewnych innych scenariuszy preferowane jest kierowanie kolejnych żądań pochodzących od danego użytkownika do tego samego zaplecza, które przetworzyło początkowe żądanie. Funkcja koligacji sesji na podstawie plików cookie jest przydatna, gdy chcesz utrzymać sesję użytkownika w ramach jednego zaplecza. Za pomocą plików cookie drzwiami frontowymi zarządzane, Azure drzwiami frontowymi Service można kierować dalszy ruch z sesji użytkownika do tej samej wewnętrznej bazy danych do przetwarzania, tak długo, jak wewnętrznej bazy danych jest w dobrej kondycji i sesji użytkownika nie wygasło. 
 
-Koligacja sesji można włączyć na poziomie hosta serwera sieci Web, przeznaczony dla wszystkich skonfigurowanych domen (lub poddomeny). Po włączeniu drzwiami frontowymi dodaje plik cookie sesji użytkownika. Koligacja sesji na podstawie pliku cookie umożliwia wejściu do identyfikowania różnych użytkowników, nawet jeśli poza tym samym adresem IP adresu, który w Włącz umożliwia bardziej równomiernego rozłożenia ruchu między różnych zaplecza.
+Koligację sesji można włączyć na poziomie hosta frontonu dla każdej skonfigurowanej domeny (lub poddomeny). Po jej włączeniu usługa Front Door dodaje plik cookie do sesji użytkownika. Funkcja koligacji sesji na podstawie plików cookie umożliwia usłudze Front Door identyfikowanie różnych użytkowników, nawet korzystających z tego samego adresu IP, co z kolei umożliwia bardziej równomierne rozłożenia ruchu na różne zaplecza.
 
-Okres istnienia pliku cookie jest taka sama jak sesji użytkownika, ponieważ drzwiami frontowymi aktualnie obsługuje tylko plik cookie sesji. 
+Czas życia pliku cookie jest taki sam jak sesji użytkownika, ponieważ usługa Front Door aktualnie obsługuje tylko pliki cookie sesji. 
 
 > [!NOTE]
 > Publiczne serwery proxy może kolidować z koligacją sesji. Jest to spowodowane ustanowienia sesji wymaga drzwiami frontowymi dodać plik cookie koligacji sesji na potrzeby odpowiedzi, której nie można przeprowadzić, jeśli odpowiedź jest podlega buforowaniu, ponieważ mogłoby zakłócać, pliki cookie innych klientów żądających tego samego zasobu. Aby zabezpieczyć się przed tym, koligacja sesji będzie **nie** ustanawiane, jeśli wewnętrznej bazy danych to jest podejmowana próba, wysyła odpowiedź podlega buforowaniu. Jeśli sesja została ustanowiona, nie ma znaczenia, jeśli odpowiedź z wewnętrznej bazy danych jest podlega buforowaniu, na.
@@ -86,5 +86,5 @@ Okres istnienia pliku cookie jest taka sama jak sesji użytkownika, ponieważ dr
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [tworzenie drzwiami frontowymi](quickstart-create-front-door.md).
-- Dowiedz się, [działania drzwiami frontowymi](front-door-routing-architecture.md).
+- Dowiedz się, jak [utworzyć usługę Front Door](quickstart-create-front-door.md).
+- Dowiedz się, [jak działa usługa Front Door](front-door-routing-architecture.md).

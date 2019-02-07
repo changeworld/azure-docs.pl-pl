@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: b13e92369168a43f529ed0b83c10bc65893da83d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 79539e05e1623b153a8fad817918cfb56a521db1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193318"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814167"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Łączenie programu Configuration Manager do usługi Log Analytics
 Można połączyć środowiska programu System Center Configuration Manager z usługą Azure Log Analytics, synchronizować dane kolekcji urządzeń i odwołują się do tych kolekcji w usłudze Log Analytics i Azure Automation.  
@@ -32,8 +32,8 @@ Poniższe instrukcje stanowią podsumowanie czynności, aby skonfigurować integ
 
 1. W witrynie Azure portal Zarejestruj programu Configuration Manager jako aplikację sieci Web, aplikacji i/lub interfejs API sieci Web i upewnij się, że identyfikator klienta i klucz tajny klienta z rejestracji z usługi Azure Active Directory. Zobacz [w obsłudze portalu do tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Active Directory](../../active-directory/develop/howto-create-service-principal-portal.md) Aby uzyskać szczegółowe informacje na temat wykonywania tego kroku.
 2. W witrynie Azure portal [udzielić programu Configuration Manager (rejestrowanej aplikacji internetowej) z uprawnieniami do usługi Log Analytics](#grant-configuration-manager-with-permissions-to-log-analytics).
-3. W programie Configuration Manager [Dodaj połączenie za pomocą Kreatora dodawania połączenia pakietu OMS](#add-an-oms-connection-to-configuration-manager).
-4. W programie Configuration Manager [zaktualizować właściwości połączenia](#update-oms-connection-properties) Jeśli klucz tajny klienta lub hasło nigdy nie wygaśnie lub zostanie utracony.
+3. W programie Configuration Manager Dodaj połączenie za pomocą Kreatora dodawania połączenia pakietu OMS.
+4. W programie Configuration Manager zaktualizować właściwości połączenia, jeśli klucz tajny klienta lub hasło nigdy nie wygaśnie lub zostanie utracony.
 5. [Pobierz i zainstaluj program Microsoft Monitoring Agent](#download-and-install-the-agent) na komputerze z systemem rolę systemu lokacji punktu połączenia programu Configuration Manager service. Agent wysyła dane programu Configuration Manager do obszaru roboczego usługi Log Analytics.
 6. W usłudze Log Analytics [Importuj kolekcje z programu Configuration Manager](#import-collections) jako grup komputerów.
 7. W usłudze Log Analytics przeglądać dane z programu Configuration Manager jako [grup komputerów](../../azure-monitor/platform/computer-groups.md).

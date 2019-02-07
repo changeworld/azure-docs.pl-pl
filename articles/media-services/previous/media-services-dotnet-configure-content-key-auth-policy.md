@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 0c16369cca4fae89733ad281aa3332c393be2aff
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4fdfbb17670cd30438a8906a6b00bb4db354aedb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828421"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820267"
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>Szyfrowanie dynamiczne: Konfigurowanie zasad autoryzacji klucza zawartości
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -279,7 +279,7 @@ Poniższy przykład tworzy zasady autoryzacji otwarte i dodaje ją do klucza zaw
 ```
 
 ### <a name="token-restriction"></a>Ograniczenia tokenu
-Aby skonfigurować opcję ograniczenia tokenu, należy użyć pliku XML do opisu wymagań autoryzacji tokenu. Konfiguracji ograniczenia tokenu wybrane XML musi być zgodny ze schematem XML pokazano w "[schematu ograniczenia tokenu](#token-restriction-schema)" sekcji.
+Aby skonfigurować opcję ograniczenia tokenu, należy użyć pliku XML do opisu wymagań autoryzacji tokenu. Plik XML do konfiguracji ograniczenia tokenu musi być zgodna z schemat XML w sekcji "Schema ograniczenia tokenu".
 
 ```csharp
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)

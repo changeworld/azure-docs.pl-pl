@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 331a71d4f807e1e596a91c1463064e3f6dcbd1e1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7d719ee6bdb8ce1f4131b474fe7602b492e69cd3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247038"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810681"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Wdrażanie usług Azure Cognitive Services do usługi Azure Stack
 
@@ -144,7 +144,7 @@ Szczegółowe informacje na temat pól klucza:
 | ImageLocation | Wskazuje lokalizację obrazu kontenera określonej usługi cognitive Services w rejestru Azure container Registry. Na przykład usługa rozpoznawania twarzy: `aicpppe.azurecr.io/microsoft/cognitive-services-face` |
 | BillingURL |Adres URL punktu końcowego zanotowanym w kroku [tworzenie zasobów platformy Azure](#create-azure-resources) |
 | ApiKey | Klucz subskrypcji zanotowanym w kroku [tworzenie zasobów platformy Azure](#create-azure-resources) |
-| SecretName | Nazwa wpisu tajnego, po prostu zanotowaną w kroku [Utwórz secrete do dostępu do prywatnego rejestru kontenerów](#create-secrete-to-access-the-private-container-registry) |
+| SecretName | Nazwa wpisu tajnego, po prostu zanotowaną w kroku utwórz secrete do dostępu do prywatnego rejestru kontenerów |
 
 ## <a name="deploy-the-cognitive-service"></a>Wdrażanie usługi cognitive
 

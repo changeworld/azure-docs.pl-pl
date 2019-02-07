@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: fe647f96d8b992d8d5c1682d588bbdbba0ddf43b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 921788d1cd3ff24140bdff0c9b6a181e4ab7f0a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055136"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816224"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Zarządzanie usługą Traffic Manager przy użyciu programu PowerShell
 
@@ -61,12 +61,12 @@ W poniższej tabeli opisano parametry:
 | ResourceGroupName |Nazwa grupy zasobów zawierającej zasób profilu. |
 | TrafficRoutingMethod |Określa metodę routingu ruchu, używany do określenia, który punkt końcowy jest zwracany w odpowiedzi na kwerendę DNS. Możliwe wartości to "Wydajność", "Ważona" lub "Priority". |
 | RelativeDnsName |Określa nazwę hosta część nazwy DNS podane przez ten profil usługi Traffic Manager. Ta wartość jest połączone z nazwą domeny DNS, które są używane przez usługę Azure Traffic Manager w celu utworzenia w pełni kwalifikowana nazwa domeny (FQDN) profilu. Na przykład ustawienie wartości "contoso" staje się "contoso.trafficmanager.net." |
-| CZAS WYGAŚNIĘCIA |Określa DNS Time-to-Live (TTL) w ciągu kilku sekund. Ten czas wygaśnięcia informuje rozpoznawania nazw DNS lokalnym i klientów DNS, jak długo buforowanie odpowiedzi DNS dla tego profilu usługi Traffic Manager. |
+| TTL |Określa DNS Time-to-Live (TTL) w ciągu kilku sekund. Ten czas wygaśnięcia informuje rozpoznawania nazw DNS lokalnym i klientów DNS, jak długo buforowanie odpowiedzi DNS dla tego profilu usługi Traffic Manager. |
 | MonitorProtocol |Określa protokół używany do monitorowania kondycji punktu końcowego. Możliwe wartości to "HTTP" i "HTTPS". |
 | MonitorPort |Określa port TCP używany do monitorowania kondycji punktu końcowego. |
 | MonitorPath |Określa ścieżkę względną nazwa domeny punktu końcowego, które są używane do sondowania dla punktu końcowego kondycji. |
 
-Polecenie cmdlet tworzy profil usługi Traffic Manager na platformie Azure i zwraca odpowiedni obiekt profilu do programu PowerShell. W tym momencie profil, który nie zawiera żadnych punktów końcowych. Aby uzyskać więcej informacji na temat dodawania punktów końcowych do profilu usługi Traffic Manager, zobacz [Dodawanie punktów końcowych usługi Traffic Manager](#adding-traffic-manager-endpoints).
+Polecenie cmdlet tworzy profil usługi Traffic Manager na platformie Azure i zwraca odpowiedni obiekt profilu do programu PowerShell. W tym momencie profil, który nie zawiera żadnych punktów końcowych. Aby uzyskać więcej informacji na temat dodawania punktów końcowych do profilu usługi Traffic Manager Zobacz Dodawanie punktów końcowych usługi Traffic Manager.
 
 ## <a name="get-a-traffic-manager-profile"></a>Pobierz profil usługi Traffic Manager
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e53b50df88c592386d3f2fb140373a0c5aaab13
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228291"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821953"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrowanie usługi Azure ExpressRoute za pomocą odzyskiwania po awarii dla maszyn wirtualnych platformy Azure
 
@@ -190,7 +190,7 @@ Dla prostą topologię, która używa jednego obwodu usługi ExpressRoute za pom
 ### <a name="example-steps"></a>Przykład kroki
 Aby zautomatyzować odzyskiwanie, w tym przykładzie tutaj firmy co należy zrobić:
 
-1. Postępuj zgodnie z instrukcjami, aby [skonfigurowania replikacji](#azure-vm-replication-steps).
+1. Wykonaj kroki, aby skonfigurować replikację.
 2. [Maszyny wirtualne platformy Azure w tryb failover](azure-to-azure-tutorial-failover-failback.md), za pomocą następujące dodatkowe czynności w trakcie lub po zakończeniu pracy w trybie failover.
 
     a. Utwórz bramę usługi ExpressRoute platformy Azure w sieci wirtualnej serwera centralnego regionu docelowego. To jest konieczne jest połączenie sieci wirtualnej koncentratora docelowy z obwodem usługi ExpressRoute.

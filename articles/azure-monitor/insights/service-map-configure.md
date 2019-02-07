@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2019
 ms.author: bwren
-ms.openlocfilehash: 8457334e00f7c8dfbaee75a12d6bb71b760e60d9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 60c43475fc044b0847e5d9bd495c0d53b562114e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697004"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822712"
 ---
 # <a name="configure-service-map-in-azure"></a>Konfigurowanie rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Służy on do wyświetlenia serwerów, prawdopodobnie z nich--wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami i portami w dowolnej architekturze połączenia TCP bez konieczności konfiguracji, innej niż Instalacja agenta.
@@ -134,8 +134,8 @@ Usługa Service Map, dane są pobierane z Microsoft Dependency agent. Agent zale
 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
-| Agenci dla systemu Windows | Yes | Usługa Service Map, analizuje i zbiera dane z komputerów Windows. <br><br>Oprócz [agenta usługi Log Analytics dla Windows](../../azure-monitor/platform/log-analytics-agent.md), agenci Windows wymagają Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
-| Agenci dla systemu Linux | Yes | Usługa Service Map, analizuje i zbiera dane z komputerów z systemem Linux. <br><br>Oprócz [agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md), agenci dla systemu Linux wymaga program Microsoft Dependency agent. Zobacz [obsługiwane systemy operacyjne](#supported-operating-systems), gdzie znajdziesz pełną listę wersji systemu operacyjnego. |
+| Agenci dla systemu Windows | Yes | Usługa Service Map, analizuje i zbiera dane z komputerów Windows. <br><br>Oprócz [agenta usługi Log Analytics dla Windows](../../azure-monitor/platform/log-analytics-agent.md), agenci Windows wymagają Microsoft Dependency agent. Zobacz obsługiwane systemy operacyjne, aby uzyskać pełną listę wersji systemów operacyjnych. |
+| Agenci dla systemu Linux | Yes | Usługa Service Map, analizuje i zbiera dane z komputerów z systemem Linux. <br><br>Oprócz [agenta usługi Log Analytics dla systemu Linux](../../azure-monitor/platform/log-analytics-agent.md), agenci dla systemu Linux wymaga program Microsoft Dependency agent. Zobacz obsługiwane systemy operacyjne, aby uzyskać pełną listę wersji systemów operacyjnych. |
 | Grupa zarządzania programu System Center Operations Manager | Yes | Usługa Service Map, analizuje i zbiera dane z agentów systemu Windows i Linux w połączonej [grupy zarządzania programu System Center Operations Manager](../../azure-monitor/platform/om-agents.md). <br><br>Wymagane jest bezpośrednie połączenie z komputera agenta programu System Center Operations Manager do usługi Log Analytics. |
 | Konto magazynu Azure | Nie | Mapa usługi zbiera dane z komputerów agentów, dzięki czemu nie ma żadnych danych od niego mają być zbierane z usługi Azure Storage. |
 

@@ -10,12 +10,12 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219774"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816217"
 ---
 # <a name="basic-concepts"></a>Podstawowe pojęcia
 
@@ -92,7 +92,7 @@ Usługa rozpoznawania mowy Microsoft udostępnia dwa sposoby deweloperzy mogą d
 Istnieją trzy tryby rozpoznawania: `interactive`, `conversation`, i `dictation`. Tryb rozpoznawania dostosowuje rozpoznawania mowy, w oparciu o jak użytkownicy będą mówić. Wybierz tryb rozpoznawania odpowiednie dla twojej aplikacji.
 
 > [!NOTE]
-> Tryby rozpoznawania może mieć różne zachowania w [protokołu REST](#rest-speech-recognition-api) niż w [protokołu WebSocket](#webSocket-speech-recognition-api). Na przykład interfejsu API REST nie obsługuje ciągłego rozpoznawanie, nawet w trybie konwersacji lub dyktowanie.
+> Tryby rozpoznawania może mieć różne zachowania za pomocą protokołu REST, niż na ich za pomocą protokołu WebSocket. Na przykład interfejsu API REST nie obsługuje ciągłego rozpoznawanie, nawet w trybie konwersacji lub dyktowanie.
 > [!NOTE]
 > Te tryby są stosowane, gdy bezpośrednio korzystać z protokołu REST lub protokołu WebSocket. [Biblioteki klienckie](GetStarted/GetStartedClientLibraries.md) użyć innych parametrów, aby określić tryb rozpoznawania. Aby uzyskać więcej informacji zobacz Biblioteka klienta wybranych przez użytkownika.
 
@@ -183,7 +183,7 @@ Zwraca odpowiedź transkrypcji `NoMatch` w `RecognitionStatus` podczas rozpoznaw
 
 Inny *NoMatch* stan występuje, gdy Algorytm rozpoznawania nie będzie mógł znalezione dokładne dopasowanie dźwięków zawarte w strumienia audio. Gdy ten stan występuje, może generować mowy usługi Microsoft *speech.hypothesis* komunikaty zawierające *średnich hipotetycznych. tekst* , ale będzie *speech.phrase*wiadomości, w którym *RecognitionStatus* jest *NoMatch*. Ten warunek występuje, normal; nie należy czynić żadnych założeń o dokładności lub wierności tekstu w *speech.hypothesis* wiadomości. Ponadto, użytkownik musi nie przyjęto założenie, że ponieważ Microsoft Speech Service daje *speech.hypothesis* wiadomości, które usługa jest możliwość generowania *speech.phrase* komunikatu o  *RecognitionStatus* *Powodzenie*.
 
-## <a name="output-format"></a>Format danych wyjściowych
+## <a name="output-format"></a>Format wyjściowy
 
 Usługa Microsoft Speech Service może zwracać różne formaty ładunków w odpowiedziach transkrypcji. Wszystkich ładunków są strukturami JSON.
 

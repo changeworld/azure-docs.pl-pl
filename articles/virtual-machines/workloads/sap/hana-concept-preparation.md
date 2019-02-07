@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff214460d919eff5c3c1a2e608958673867ddc55
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392263"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822548"
 ---
 # <a name="disaster-recovery-principles"></a>Zasady odzyskiwania po awarii
 
@@ -31,7 +31,7 @@ W scenariuszach wdrożone do tej pory klientów jednostka jest używana w region
 
 Jak pokazano na poniższej ilustracji — omówienie, należy następnie kolejność drugi zestaw woluminów dysku. Woluminy dysku docelowego są dostępne w taki sam rozmiar jak wielkości produkcji dla wystąpienia produkcyjnego w jednostkach odzyskiwania po awarii. Te woluminy dysku są skojarzone z jednostki serwera duże wystąpienie oprogramowania HANA w lokacji odzyskiwania po awarii. Następujące woluminy są replikowane z regionu produkcji do lokacji odzyskiwania po awarii:
 
-- / hana/danych
+- /hana/data
 - / hana/logbackups 
 - /Hana/Shared (obejmuje/usr/sap)
 
@@ -48,7 +48,7 @@ W przypadku których pełnić funkcji wysokiej dostępności replikacji systemu 
 
 
 >[!NOTE]
->Funkcje replikacji magazynu dużych wystąpień HANA jest dublowania i replikacji migawek magazynu. Jeśli nie wykonasz migawek magazynu, w systemie [kopii zapasowej i przywracania](#backup-and-restore) sekcji tego artykułu nie może być dowolnym replikacji do lokacji odzyskiwania po awarii. Wykonanie migawki magazynu to warunek wstępny do magazynu replikacji do lokacji odzyskiwania po awarii.
+>Funkcje replikacji magazynu dużych wystąpień HANA jest dublowania i replikacji migawek magazynu. Jeśli nie wykonasz migawek magazynu wprowadzonego w kopii zapasowej i przywracania sekcji tego artykułu, nie może być dowolnym replikacji do lokacji odzyskiwania po awarii. Wykonanie migawki magazynu to warunek wstępny do magazynu replikacji do lokacji odzyskiwania po awarii.
 
 
 
@@ -81,7 +81,7 @@ Następnie należy skonfigurować lub dostosować harmonogram tworzenia kopii za
 - Na woluminie kopii zapasowej dziennika transakcji (typ migawki **dzienniki**), zestawu do replikowania co 3 minuty do celów woluminu magazynu równoważne w lokacji odzyskiwania po awarii.
 
 Aby zminimalizować cel punktu odzyskiwania, wprowadź następujące ustawienia:
-- Wykonaj **hana** typu magazynu migawek (zobacz "krok 7: Wykonaj migawki") co 30 minut do 1 godziny.
+- Wykonaj **hana** typu magazynu migawek (zobacz "krok 7: Wykonywanie migawek") co 30 minut do 1 godziny.
 - Wykonaj kopie zapasowe dziennika transakcji platformy SAP HANA co 5 minut.
 - Wykonaj **dzienniki** typu magazynu migawek co 5 – 15 minut. Za pomocą tego okresu interwał osiągasz RPO około 15 25 minut.
 

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: danlep
-ms.openlocfilehash: e22acc6e698d9b14a55145d8f23f5f773e6c39fd
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 2cf64c7c4f99a57c4a4a6cf03e68e8af803ceca9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857707"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810766"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Najlepsze rozwiązania dla usługi Azure Container Registry
 
@@ -46,7 +46,7 @@ contoso.azurecr.io/marketing/2017-fall/concertpromotions/campaign:218.42
 
 ## <a name="dedicated-resource-group"></a>Dedykowana grupa zasobów
 
-Ponieważ rejestry kontenerów to zasoby, które są używane na wielu hostach kontenerów, rejestr powinien znajdować się we własnej grupie zasobów.
+Ponieważ rejestry kontenerów to zasoby, które są używane na wielu hostach kontenerów, Rejestr powinien znajdować się w jego własnej grupie zasobów.
 
 Choć możesz eksperymentować z określonym typem hosta, na przykład z usługą Azure Container Instances, prawdopodobnie zechcesz usunąć wystąpienie kontenera po zakończeniu pracy z nim. Można jednak również zachować kolekcję obrazów, które zostały wypchnięte do usługi Azure Container Registry. Dzięki umieszczeniu rejestru w jego własnej grupie zasobów można zminimalizować ryzyko przypadkowego usunięcia kolekcji obrazów w rejestrze podczas usuwania grupy zasobów wystąpienia kontenera.
 
@@ -54,7 +54,7 @@ Choć możesz eksperymentować z określonym typem hosta, na przykład z usług�
 
 Istnieją dwa podstawowe scenariusze uwierzytelniania w usłudze Azure Container Registry: uwierzytelnianie indywidualne i uwierzytelnianie usługi („bezobsługowe”). Poniższa tabela zawiera krótkie omówienie tych scenariuszy i wskazuje zalecaną metodę uwierzytelniania w przypadku każdego z nich.
 
-| Typ | Przykładowy scenariusz | Zalecana metoda |
+| Type | Przykładowy scenariusz | Zalecana metoda |
 |---|---|---|
 | Indywidualne tożsamości | Deweloper ściągający obrazy na swoją maszynę deweloperską lub wypychający z niej obrazy. | Polecenie [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
 | Bezobsługowe/tożsamość usługi | Potoki kompilacji i wdrażania, w których użytkownik nie bierze bezpośrednio udziału. | [Jednostka usługi](container-registry-authentication.md#service-principal) |
@@ -63,7 +63,7 @@ Aby uzyskać szczegółowe informacje o uwierzytelnianiu w usłudze Azure Contai
 
 ## <a name="manage-registry-size"></a>Zarządzanie rozmiarem rejestru
 
-Ograniczenia magazynu każdej [jednostki SKU rejestru kontenerów][container-registry-skus] służą zachowaniu zgodności z typowym scenariuszem: **Podstawowa** służąca do rozpoczynania pracy, **Standardowa** przeznaczona do większości aplikacji produkcyjnych oraz **Premium** zapewniająca wydajność w hiperskali i [replikację geograficzną][container-registry-geo-replication]. W ciągu cyklu życia rejestru należy zarządzać jego rozmiarem, okresowo usuwając nieużywaną zawartość.
+Ograniczenia magazynu każdej [jednostki SKU rejestru kontenerów] [ container-registry-skus] są przeznaczone do zapewnienia zgodności z typowym scenariuszem: **Podstawowe** dla klientów zaczynających pracę **standardowa** dla większości aplikacji produkcyjnych i **Premium** ogromnej skali, wydajności i [geografickou replikaci][container-registry-geo-replication]. W ciągu cyklu życia rejestru należy zarządzać jego rozmiarem, okresowo usuwając nieużywaną zawartość.
 
 Użyj polecenia interfejsu wiersza polecenia Azure [az acr show użycia] [ az-acr-show-usage] do wyświetlenia bieżącej rozmiarem rejestru:
 

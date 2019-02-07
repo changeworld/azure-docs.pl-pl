@@ -15,12 +15,12 @@ ms.date: 12/21/2018
 ms.author: sethm
 ms.reviewer: misainat
 ms.lastreviewed: 12/21/2018
-ms.openlocfilehash: d3d776def9e031ca2bcc76d1b60a19f67a74b35a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c60ba4f4106ddd0c3fc643288894fb55d3d27f8c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240348"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816462"
 ---
 # <a name="asdk-release-notes"></a>Informacje o wersji ASDK 
  
@@ -60,7 +60,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 - Rozwiązano problem, który uniemożliwia stosowanie zasad RBAC do grupy użytkowników, korzystając z usług AD FS.
 
 <!--3463840 - IS, ASDK --> 
-- Rozwiązano problem z kopiami zapasowymi infrastruktury kończy się niepowodzeniem ze względu na serwer plików niedostępny od sieci publicznych adresów VIP. Ta poprawka jest przenoszony infrastruktury usługi kopii zapasowej do sieci publicznych infrastruktury. Jeśli zastosowano najnowsze [poprawka usługi Azure Stack dla 1809](#azure-stack-hotfixes) , rozwiązuje ten problem, aktualizacja 1811 nie dokona żadnych dalszych modyfikacji. 
+- Rozwiązano problem z kopiami zapasowymi infrastruktury kończy się niepowodzeniem ze względu na serwer plików niedostępny od sieci publicznych adresów VIP. Ta poprawka jest przenoszony infrastruktury usługi kopii zapasowej do sieci publicznych infrastruktury. Jeśli zastosowano najnowsze poprawki usługi Azure Stack dla 1809, która rozwiązuje ten problem, aktualizacja 1811 nie zapewni żadnych dalszych modyfikacji. 
 
 <!-- 2967387 – IS, ASDK --> 
 - Rozwiązano problem, w którym konto używane do logowania do portalu administratora lub użytkownika usługi Azure Stack jest wyświetlany jako **Niezidentyfikowany użytkownik**. Ten komunikat został wyświetlony, gdy konta nie miał albo *pierwszy* lub *ostatniego* nazwy.   

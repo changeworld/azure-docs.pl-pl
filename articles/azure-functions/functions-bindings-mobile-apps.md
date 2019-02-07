@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: f61a00e3ea243dfdf777af88b5f211580f35d8a0
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5fd220f15f363c1987f1576009519e4b2feae6b9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001669"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814864"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Powiązania funkcji Mobile Apps dla usługi Azure Functions 
 
@@ -44,7 +44,7 @@ Powiązania danych wejściowych funkcji Mobile Apps ładuje rekord z punktu koń
 Zobacz przykład specyficzny dla języka:
 
 * [Skryptu C# (csx)](#input---c-script-example)
-* [JavaScript](#input---javascript-example)
+* JavaScript
 
 ### <a name="input---c-script-example"></a>Dane wejściowe — przykładowy skrypt w języku C#
 
@@ -145,9 +145,9 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 | **type**|| Musi być równa "mobileTable"|
 | **direction**||Musi być równa "in"|
 | **Nazwa**|| Nazwa parametru wejściowego w sygnaturze funkcji.|
-|**Właściwość TableName** |**Właściwość TableName**|Nazwa tabeli danych z aplikacji mobilnej|
+|**tableName** |**TableName**|Nazwa tabeli danych z aplikacji mobilnej|
 | **id**| **Identyfikator** | Identyfikator rekordu do pobrania. Może być statyczne lub w oparciu o wyzwalacz, który wywołuje funkcję. Na przykład, jeśli używasz wyzwalacza kolejki funkcji, następnie `"id": "{queueTrigger}"` używa wartość ciągu komunikatu w kolejce jako identyfikator rekordu do pobrania.|
-|**połączenia**|**połączenia**|Nazwa ustawienia aplikacji, która ma adres URL aplikacji mobilnej. Funkcja używa tego adresu URL do konstruowania wymagane operacje REST względem Twojej aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera adres URL aplikacji mobilnej, a następnie podaj nazwę ustawienia aplikacji w `connection` właściwości w swojej powiązania danych wejściowych. Adres URL wygląda `http://<appname>.azurewebsites.net`.
+|**połączenia**|**Połączenie**|Nazwa ustawienia aplikacji, która ma adres URL aplikacji mobilnej. Funkcja używa tego adresu URL do konstruowania wymagane operacje REST względem Twojej aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera adres URL aplikacji mobilnej, a następnie podaj nazwę ustawienia aplikacji w `connection` właściwości w swojej powiązania danych wejściowych. Adres URL wygląda `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKey**|Nazwa ustawienia aplikacji, który ma klucz interfejsu API aplikacji mobilnej. Podaj if klucza interfejsu API możesz [zaimplementować klucza interfejsu API w aplikacji mobilnej Node.js](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), lub [zaimplementować klucza interfejsu API w aplikacji mobilnej platformy .NET](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Aby podać klucz, utworzyć ustawienie aplikacji w swojej aplikacji funkcji, który zawiera klucz interfejsu API, a następnie dodaj `apiKey` właściwości w swojej powiązania danych wejściowych o nazwie ustawienia aplikacji. |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
@@ -303,7 +303,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 | **type**|| Musi być równa "mobileTable"|
 | **direction**||Musi być równa "out"|
 | **Nazwa**|| Nazwa parametru wyjściowego w sygnaturze funkcji.|
-|**Właściwość TableName** |**Właściwość TableName**|Nazwa tabeli danych z aplikacji mobilnej|
+|**tableName** |**TableName**|Nazwa tabeli danych z aplikacji mobilnej|
 |**połączenia**|**MobileAppUriSetting**|Nazwa ustawienia aplikacji, która ma adres URL aplikacji mobilnej. Funkcja używa tego adresu URL do konstruowania wymagane operacje REST względem Twojej aplikacji mobilnej. Utwórz ustawienie aplikacji w aplikacji funkcji, która zawiera adres URL aplikacji mobilnej, a następnie podaj nazwę ustawienia aplikacji w `connection` właściwości w swojej powiązania danych wejściowych. Adres URL wygląda `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|Nazwa ustawienia aplikacji, który ma klucz interfejsu API aplikacji mobilnej. Podaj if klucza interfejsu API możesz [zaimplementować klucza interfejsu API na platformie Node.js zaplecza aplikacji mobilnej](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key), lub [zaimplementować klucza interfejsu API na platformie .NET zaplecza aplikacji mobilnej](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). Aby podać klucz, utworzyć ustawienie aplikacji w swojej aplikacji funkcji, który zawiera klucz interfejsu API, a następnie dodaj `apiKey` właściwości w swojej powiązania danych wejściowych o nazwie ustawienia aplikacji. |
 

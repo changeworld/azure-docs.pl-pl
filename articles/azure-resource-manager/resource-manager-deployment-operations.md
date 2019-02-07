@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6801ed86f15820473e6aaa694b0fea091586a222
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 37f6ad26fd0ad4a1ac6c3fd6c6707b5b9aaef331
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486779"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770218"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Wyświetlanie operacji wdrażania przy użyciu usługi Azure Resource Manager
 
@@ -160,7 +160,7 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
 
 ## <a name="rest"></a>REST
 
-1. Uzyskaj informacje o wdrażaniu przy użyciu [uzyskać informacje na temat wdrożenia szablonu](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_Get) operacji.
+1. Uzyskaj informacje o wdrażaniu przy użyciu [uzyskać informacje na temat wdrożenia szablonu](https://docs.microsoft.com/rest/api/resources/deployments) operacji.
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}?api-version={api-version}
@@ -183,7 +183,7 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
   }
   ```
 
-2. Uzyskać informacje na temat wdrożenia z [listy wszystkich operacji wdrożenia szablonu](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List). 
+2. Uzyskać informacje na temat wdrożenia z [listy wszystkich operacji wdrożenia szablonu](https://docs.microsoft.com/rest/api/resources/deployments). 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}

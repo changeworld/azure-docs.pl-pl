@@ -13,25 +13,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: d8140966f3ba8674938a4e21b0990371390d3516
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: 8a711596140340b5e6e69d04959abfef36332869
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071226"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813795"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>Windows zawiera "Krytyczne usługi nie powiodło się" błękitny ekran podczas uruchamiania na Maszynie wirtualnej platformy Azure
 W tym artykule opisano błąd "Krytyczne usługi nie powiodło się", które mogą wystąpić podczas rozruchu Windows maszyn wirtualnych (VM) w systemie Microsoft Azure. Zawiera on kroki rozwiązywania problemów, aby ułatwić rozwiązywanie problemów. 
 
 > [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptom"></a>Objaw 
 
 Nie zaczyna się maszyny Wirtualnej z systemem Windows. Podczas ewidencjonowania zrzuty ekranu rozruchu [diagnostykę rozruchu](./boot-diagnostics.md), zobacz jeden z następujących komunikatów o błędach na niebieskim ekranie:
 
-- "Komputer PC wystąpił problem i musi ponownie uruchomić. Można uruchomić ponownie. Aby uzyskać więcej informacji na temat tego problemu i poprawek można znaleźć http://windows.com/stopcode. Jeśli wywołasz działu pomocy technicznej, nadaj im te informacje: kod zatrzymania: krytyczne niepowodzenie usługi " 
-- "Komputer PC wystąpił problem i musi ponownie uruchomić. Trwa zbieranie danych tylko niektóre informacje o błędzie, a następnie będzie możemy ponowne uruchomienie dla Ciebie. Jeśli chcesz dowiedzieć się więcej, możesz wyszukać w trybie online później ten błąd: CRITICAL_SERVICE_FAILED "
+- "Komputer PC wystąpił problem i musi ponownie uruchomić. Można uruchomić ponownie. Aby uzyskać więcej informacji na temat tego problemu i poprawek można znaleźć http://windows.com/stopcode. Jeśli chcesz wywołać działu pomocy technicznej, nadaj im te informacje: Zatrzymaj wykonywanie kodu: BŁĄD KRYTYCZNY USŁUGI" 
+- "Komputer PC wystąpił problem i musi ponownie uruchomić. Trwa zbieranie danych tylko niektóre informacje o błędzie, a następnie będzie możemy ponowne uruchomienie dla Ciebie. Jeśli chcesz dowiedzieć się więcej, możesz wyszukać w trybie online później ten błąd: CRITICAL_SERVICE_FAILED"
 
 ## <a name="cause"></a>Przyczyna
 
@@ -93,7 +93,7 @@ Aby włączyć dzienniki zrzutu i konsoli szeregowej, uruchom następujący skry
 
         bcdedit /store F: boot\bcd /set {default} safeboot minimal
 
-2. [Odłącz dysk systemu operacyjnego, a następnie ponownie Dołącz dysk systemu operacyjnego, do których to dotyczy maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md). Maszyna wirtualna zostanie uruchomiony w trybie awaryjnym. Jeśli nadal występuje ten błąd, przejdź do strony [opcjonalny krok](#optional-analysis-the-dump-logs-in-boot-debug-mode).
+2. [Odłącz dysk systemu operacyjnego, a następnie ponownie Dołącz dysk systemu operacyjnego, do których to dotyczy maszyny Wirtualnej](troubleshoot-recovery-disks-portal-windows.md). Maszyna wirtualna zostanie uruchomiony w trybie awaryjnym. Jeśli nadal występuje ten błąd, przejdź do kroku opcjonalne.
 3. Otwórz **Uruchom** pole, a następnie uruchom **weryfikatora** , aby uruchomić narzędzie Menedżer weryfikatora sterowników.
 4. Wybierz **automatycznie wybiera niepodpisanych sterowników**, a następnie kliknij przycisk **dalej**.
 5. Uzyskasz listę pliki sterownika, które są bez znaku. Należy pamiętać nazw plików.
@@ -104,7 +104,7 @@ Aby włączyć dzienniki zrzutu i konsoli szeregowej, uruchom następujący skry
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  Uruchom ponownie maszynę wirtualną. 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Opcjonalnie: Analizowanie dzienników zrzutu, w trybie zrzutu awarii
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Opcjonalnie: Analizowanie dzienników zrzutu w trybie zrzutu awarii
 
 Analizowanie dzienników zrzutu samodzielnie, wykonaj następujące kroki:
 

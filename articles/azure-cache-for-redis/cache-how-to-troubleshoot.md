@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: wesmc
-ms.openlocfilehash: 58c1af860c5ccc87f4396c698b432f47f0ea7c65
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d513825cad397763792fdc9ffb833ba54e957e7d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096963"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822667"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Jak rozwiązywać problemy z pamięć podręczna systemu Azure dla usługi Redis
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z następujących kategorii pamięć podręczna systemu Azure w przypadku problemów z pamięci podręcznej Redis.
@@ -131,7 +131,7 @@ Zobacz [co się stało z moimi danymi w usłudze Redis?](https://gist.github.com
 W tej sekcji omówiono rozwiązywanie problemów, które występują ze względu na stan na serwerze pamięci podręcznej.
 
 * [Wykorzystanie pamięci na serwerze](#memory-pressure-on-the-server)
-* [Wysokie użycie procesora CPU / obciążenie serwera](#high-cpu-usage-server-load)
+* Wysokie użycie procesora CPU / obciążenie serwera
 * [Przekroczona przepustowość po stronie serwera](#server-side-bandwidth-exceeded)
 
 ### <a name="memory-pressure-on-the-server"></a>Wykorzystanie pamięci na serwerze
@@ -230,7 +230,7 @@ Ten komunikat o błędzie zawiera metryki, które mogą ułatwić wskaż przyczy
 5. Czy istnieją polecenia dłużej przetwarzania na serwerze? Długie wykonywanie poleceń, które mają długi czas przetwarzania na serwerze usługi redis może spowodować przekroczeń limitu czasu. Oto kilka przykładów poleceń długotrwałe `mget` z dużą liczbą kluczy `keys *` lub źle napisane skryptów lua. Możesz nawiązać połączenie z pamięci podręcznej dla wystąpienia pamięci podręcznej Redis przy użyciu klienta pamięci podręcznej redis — interfejs wiersza polecenia platformy Azure lub użyć [konsolę pamięci podręcznej Redis](cache-configure.md#redis-console) i uruchom [dziennik wolno wykonywanych zapytań](https://redis.io/commands/slowlog) polecenie, aby sprawdzić, czy żądania trwa dłużej niż oczekiwano. Serwer redis i StackExchange.Redis są zoptymalizowane pod kątem wielu małych żądań, a nie mniej dużych żądań. Podział danych na mniejsze części może poprawić rzeczy w tym miejscu. 
    
     Aby uzyskać informacji na temat nawiązywania połączenia z pamięci podręcznej Azure redis Cache punktu końcowego protokołu SSL przy użyciu usługi redis — interfejs wiersza polecenia i programu stunnel, zobacz [ogłoszenie dostawca stanu sesji ASP.NET dla wersji zapoznawczej Redis](https://blogs.msdn.com/b/webdev/archive/2014/05/12/announcing-asp-net-session-state-provider-for-redis-preview-release.aspx) wpis w blogu. Aby uzyskać więcej informacji, zobacz [dziennik wolno wykonywanych zapytań](https://redis.io/commands/slowlog).
-6. Wysokie obciążenie serwera Redis może spowodować przekroczeń limitu czasu. Można monitorować, obciążenie serwera jest monitorowanie `Redis Server Load` [Metryka wydajności w pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Obciążenie serwera, 100 (wartość maksymalna) oznacza, że serwer redis był zajęty, bez czasu bezczynności, przetwarzanie żądań. Aby zobaczyć, jeśli niektórych żądań zajmują wszystkich funkcji serwera, uruchom polecenie Dziennik wolno wykonywanych zapytań, zgodnie z opisem w poprzednim akapicie. Aby uzyskać więcej informacji, zobacz [wysokie użycie procesora CPU / obciążenie serwera](#high-cpu-usage-server-load).
+6. Wysokie obciążenie serwera Redis może spowodować przekroczeń limitu czasu. Można monitorować, obciążenie serwera jest monitorowanie `Redis Server Load` [Metryka wydajności w pamięci podręcznej](cache-how-to-monitor.md#available-metrics-and-reporting-intervals). Obciążenie serwera, 100 (wartość maksymalna) oznacza, że serwer redis był zajęty, bez czasu bezczynności, przetwarzanie żądań. Aby zobaczyć, jeśli niektórych żądań zajmują wszystkich funkcji serwera, uruchom polecenie Dziennik wolno wykonywanych zapytań, zgodnie z opisem w poprzednim akapicie. Aby uzyskać więcej informacji, zobacz wysokie użycie procesora CPU / obciążenie serwera.
 7. Po stronie klienta, który może to być spowodowane blip sieci była dowolne inne zdarzenie? Sprawdź na kliencie (web, rola procesu roboczego lub Maszynie wirtualnej IaaS), jeśli wystąpiło zdarzenie, takie jak skalowanie liczby wystąpień klienta w górę lub w dół lub wdrażania nowej wersji klienta lub automatyczne skalowanie jest włączone? W naszych testach, znaleźliśmy tego skalowania automatycznego lub skalowania w górę/dół można przyczyny połączenia sieciowego ruchu wychodzącego mogą zostać utracone przez kilka sekund. Kod StackExchange.Redis jest odporna na takie zdarzenia i ponownie nawiąże połączenie. W tym czasie ponowne łączenie wszystkich żądań w kolejce można limit czasu.
 8. Czy były poprzedzających kilka małych żądań do usługi Azure Cache dla pamięci podręcznej Redis, który upłynął limit czasu żądania big? Parametr `qs` w błędzie komunikat informujący o tym ile żądań wysłanych z klienta do serwera, ale nie zostały jeszcze przetworzone odpowiedzi. Tę wartość można zachować rośnie, ponieważ StackExchange.Redis korzysta z jednego połączenia TCP i jedną odpowiedź mogą być odczytane tylko w danym momencie. Mimo że upłynął limit czasu operacji pierwsze, nie zatrzymuje danych wysyłanych z serwera, a inne żądania są blokowane, aż do ukończenia żądania dużych przyczyną przekroczenia limitów czasu. Jednym rozwiązaniem jest zminimalizować prawdopodobieństwo przekroczenia limitu czasu, zapewnia, że pamięć podręczna jest wystarczająco duży dla obciążenia i dzielenia dużych wartości na mniejsze części. Inne rozwiązanie możliwe jest użycie puli `ConnectionMultiplexer` obiektów w swoim kliencie, a następnie wybierz co najmniej załadować `ConnectionMultiplexer` wysyłając żądanie nowego. Powinno to zapobiec pojedynczego limitu czasu powoduje innych żądaniach również limit czasu.
 9. Jeśli używasz `RedisSessionStateProvider`, upewnij się, limit czasu ponawiania zostały ustawione prawidłowo. `retryTimeoutInMilliseconds` powinien być większy niż `operationTimeoutInMilliseconds`, w przeciwnym razie wystąpić brak ponownych prób. W poniższym przykładzie `retryTimeoutInMilliseconds` jest równa 3000. Aby uzyskać więcej informacji, zobacz [dostawca stanu sesji ASP.NET dla usługi Azure Cache dla usługi Redis](cache-aspnet-session-state-provider.md) i [sposobu korzystania z parametrów konfiguracji dostawcy stanu sesji i dostawca wyjściowej pamięci podręcznej](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration).

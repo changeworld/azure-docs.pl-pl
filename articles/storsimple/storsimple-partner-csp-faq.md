@@ -14,14 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 76b89c15a12810f98e6324ca93cf581f9b852c88
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f2c726fd4159bcb47088e814fd60e054e50a1315
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259942"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814286"
 ---
-# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>Usługa StorSimple dla programu dostawca rozwiązań chmury: często zadawane pytania
+# <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>Usługa StorSimple dla programu dostawca rozwiązań chmury: Często zadawane pytania
 
 
 ## <a name="overview"></a>Przegląd
@@ -31,7 +31,7 @@ Pytania i odpowiedzi są zestawiane w następujące kategorie:
 
  - [Model zainteresowanie rozwiązaniem StorSimple i Program dostawcy rozwiązań chmurze (CSP)](#storsimple-and-csp-model)
  - [Wdrażanie i zarządzanie macierzy wirtualnej jako partnera](#deploy-and-manage-storsimple-as-a-partner)
- - [Pomoc techniczna dla partnerów usługi StorSimple dla dostawców CSP](#support-for-storsimple-partners)
+ - Pomoc techniczna dla partnerów usługi StorSimple dla dostawców CSP
 
 ## <a name="storsimple-and-csp-model"></a>Model zainteresowanie rozwiązaniem StorSimple i dostawcy usług Kryptograficznych
 
@@ -94,7 +94,7 @@ Model pomocy technicznej dla usługi StorSimple w programie CSP jest taka sama, 
 Aby uzyskać więcej informacji na temat rozwiązania StorSimple dla dostawców CSP przejdź do:
 
 - [Program Microsoft Cloud Solution Provider](https://partner.microsoft.com/Membership)
-- [Centrum partnerskie](https://partnercenter.microsoft.com/) 
+- [Partner Center](https://partnercenter.microsoft.com/) 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

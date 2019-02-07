@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 7a17bed165a5a8ff15a122a1376d1a3a5e17d45f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700931"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813334"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -65,7 +65,7 @@ Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby za
 - **Sprawdź połączenie internetowe**: Moduł zbierający można połączyć się z Internetem bezpośrednio lub za pośrednictwem serwera proxy.
     - Sprawdzanie wymagań wstępnych sprawdza łączność z [adresów URL wymaganych i opcjonalnych](#urls-for-connectivity).
     - Jeśli masz bezpośrednie połączenie z Internetem, brak określonej czynności jest wymagany, innym niż upewniając się, że moduł zbierający może osiągnąć wymaganych adresów URL.
-    - Jeśli łączysz się za pośrednictwem serwera proxy, weź pod uwagę [poniższe wymagania](#connect-via-a-proxy).
+    - Jeśli łączysz się za pośrednictwem serwera proxy, należy zwrócić uwagę na poniższe wymagania.
 - **Sprawdź synchronizację czasu**: Moduł zbierający powinien być zsynchronizowany z internetowym serwerem czasu w celu zapewnienia, że żądania do usługi są uwierzytelniane.
     - Portal.azure.com adres url powinien być dostępny z modułem zbierającym, dzięki czemu można zweryfikować czasu.
     - Jeśli komputer nie jest zsynchronizowany, musisz zmienić czas zegara na maszynie Wirtualnej modułu zbierającego, aby dopasować bieżący czas. Aby zrobić to otwórz wiersz administratora na maszynie Wirtualnej Uruchom **w32tm /tz** do sprawdzenia strefy czasowej. Uruchom **w32tm/resync** do synchronizacji czasu.
@@ -75,7 +75,7 @@ Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby za
     - Usługa modułu zbierającego nawiązanie połączenia z serwerem vCenter, służy do zbierania danych wydajności i metadanych maszyny Wirtualnej i wysyła je do usługi Azure Migrate.
 - **Sprawdź VMware PowerCLI 6.5 został zainstalowany**: Moduł PowerShell programu VMware PowerCLI 6.5 musi być zainstalowany na maszynie Wirtualnej modułu zbierającego, tak aby może komunikować się z serwerem vCenter.
     - Jeśli moduł zbierający dostęp do adresów URL, wymagane do zainstalowania modułu, jest on zainstalowany automatycznie podczas wdrażania modułu zbierającego.
-    - Jeśli moduł zbierający nie może zainstalować moduł podczas wdrażania, musisz najpierw [ręcznie zainstalować](#install-vwware-powercli-module-manually).
+    - Jeśli moduł zbierający nie może zainstalować moduł podczas wdrażania, możesz zainstalować go ręcznie.
 - **Sprawdź połączenie z programem vCenter Server**: Moduł zbierający musi mieć możliwość programu vCenter Server i zapytanie o maszyny wirtualne, metadane i liczników wydajności. [Sprawdź wymagania wstępne dotyczące](#connect-to-vcenter-server) łączenia.
 
 

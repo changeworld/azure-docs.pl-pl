@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: c38a49e82a71a23fdf621f5ac350c4242ffc2f8f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3cb1e35617a58fcde7968ab45d437d865c91f983
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/09/2018
-ms.locfileid: "29847111"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696942"
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Obliczanie rozmiaru kontenera w usłudze Blob Storage
 
@@ -51,9 +51,9 @@ Ten skrypt zawiera następujące polecenia, służące do obliczenia rozmiaru ko
 
 | Polecenie | Uwagi |
 |---|---|
-| [az group create](/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az storage blob upload](/cli/azure/storage/account#az_storage_account_create) | Przekazuje pliki lokalne do kontenera w usłudze Azure Blob Storage. |
-| [az storage blob list](/cli/azure/storage/account/keys#az_storage_account_keys_list) | Zwraca listę obiektów blob w kontenerze usługi Azure Blob Storage. |
+| [az group create](/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az storage blob upload](/cli/azure/storage/account) | Przekazuje pliki lokalne do kontenera w usłudze Azure Blob Storage. |
+| [az storage blob list](/cli/azure/storage/account/keys) | Zwraca listę obiektów blob w kontenerze usługi Azure Blob Storage. |
 
 ## <a name="next-steps"></a>Następne kroki
 

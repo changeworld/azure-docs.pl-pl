@@ -12,16 +12,16 @@ ms.author: MirekS
 ms.reviewer: GeneMi
 ms.date: 01/25/2019
 manager: craigg
-ms.openlocfilehash: def50aecbcf9186af9d0b9c781c3141ad2dcee59
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a7f2dbdb089df8035d18db25b3968d63a3c97c0f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753677"
+ms.locfileid: "55767503"
 ---
 # <a name="connect-to-azure-sql-database-with-active-directory-mfa"></a>Nawiązać połączenie z usługi Azure SQL Database z usługą Active Directory, uwierzytelnianie wieloskładnikowe
 
-Ten artykuł zawiera C# program, który nawiązuje połączenie z usługi Microsoft Azure SQL Database. Program używa uwierzytelniania tryb interakcyjny, który obsługuje [usługi Azure Active Directory (AD) uwierzytelnianie wieloskładnikowe (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
+Ten artykuł zawiera C# program, który nawiązuje połączenie z usługi Microsoft Azure SQL Database. Program używa uwierzytelniania tryb interakcyjny, który obsługuje [usługi Azure Active Directory (Azure AD) usługi Multi-Factor authentication (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks).
 
 Aby uzyskać więcej informacji na temat MFA obsługę narzędzia SQL zobacz [pomocy technicznej usługi Azure Active Directory w SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/azure-active-directory).
 
@@ -29,15 +29,15 @@ Aby uzyskać więcej informacji na temat MFA obsługę narzędzia SQL zobacz [po
 
 Począwszy od .NET Framework w wersji 4.7.2, wyliczenia [ `SqlAuthenticationMethod` ](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlauthenticationmethod) ma nową wartość - `ActiveDirectoryInteractive`. W kliencie C# program, wartość wyliczenia instruuje system, aby użyć trybu interakcyjnego usługi Azure AD, Obsługa uwierzytelniania Wieloskładnikowego nawiązać połączenia z bazą danych Azure SQL Database. Użytkownik, który uruchamia program zobaczy następujących oknach dialogowych:
 
-1. Okno dialogowe wyświetla nazwę użytkownika usługi Azure AD, która poprosi o podanie hasła użytkownika.
+* Okno dialogowe wyświetla nazwę użytkownika usługi Azure AD, która poprosi o podanie hasła użytkownika.
 
    Jeśli domena użytkownika jest Sfederowane z usługą Azure AD, następnie to okno dialogowe nie pojawia się jako hasło nie jest wymagana.
 
    Jeśli zasady usługi Azure AD nakłada usługi MFA na użytkownika, okna dialogowe w dwóch następnych są wyświetlane.
 
-2. Gdy użytkownik przechodzi przez usługę MFA, po raz pierwszy system wyświetla okno dialogowe z pytaniem, czy numer telefonu komórkowego do wysyłania wiadomości SMS do. Każdy komunikat zawiera *kod weryfikacyjny* , użytkownik musi wprowadzić w następnym oknie dialogowym.
+* Gdy użytkownik przechodzi przez usługę MFA, po raz pierwszy system wyświetla okno dialogowe z pytaniem, czy numer telefonu komórkowego do wysyłania wiadomości SMS do. Każdy komunikat zawiera *kod weryfikacyjny* , użytkownik musi wprowadzić w następnym oknie dialogowym.
 
-3. Okno dialogowe z pytaniem o kod weryfikacyjny uwierzytelnianie wieloskładnikowe, które system zostało wysłane na telefon komórkowy.
+* Okno dialogowe z pytaniem o kod weryfikacyjny uwierzytelnianie wieloskładnikowe, które system zostało wysłane na telefon komórkowy.
 
 Aby uzyskać informacje o sposobie konfigurowania usługi Azure AD, aby wymagać uwierzytelniania Wieloskładnikowego, zobacz [wprowadzenie do usługi Azure Multi-Factor Authentication w chmurze](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-get-started-cloud).
 
@@ -59,7 +59,7 @@ Przed rozpoczęciem należy [serwera Azure SQL Database](sql-database-get-starte
 ### <a name="register-your-app-and-set-permissions"></a>Zarejestruj swoją aplikację i ustawianie uprawnień
 
 
-Aby użyć uwierzytelniania usługi Azure AD Twojej C# program musi zarejestrować się jako aplikację usługi AD. Aby zarejestrować aplikację, musisz być administratorem usługi AD lub AD przypisać użytkownika *Deweloper aplikacji* roli. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [przypisywanie ról administratora i użytkowników niebędących administratorami do użytkowników z usługą Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
+Aby użyć uwierzytelniania usługi Azure AD Twojej C# program musi zarejestrować się jako aplikację usługi Azure AD. Aby zarejestrować aplikację, musisz być administratorem usługi Azure AD lub usługi Azure AD przypisać użytkownika *Deweloper aplikacji* roli. Aby uzyskać więcej informacji na temat przypisywania ról, zobacz [przypisywanie ról administratora i użytkowników niebędących administratorami do użytkowników z usługą Azure Active Directory.](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal)
 
  Kończenie rejestracji aplikacji zostanie utworzona i wyświetlona **identyfikator aplikacji**. Program musi zawierać ten identyfikator, aby połączyć.
 
@@ -147,7 +147,7 @@ Ponownie uruchom program SSMS, tym razem z **uwierzytelniania** równa **usługi
 Aby uzyskać więcej informacji, zobacz [Konfiguruj uwierzytelnianie wieloskładnikowe dla SSMS i Azure AD](sql-database-ssms-mfa-authentication-configure.md).
 
 > [!NOTE]
-> Jeśli jesteś użytkownikiem-gościem w bazie danych, należy również podać nazwę domeny usługi AD dla bazy danych — **opcje** > **Identyfikatora nazwy lub dzierżawy domeny AD**. Aby znaleźć nazwę domeny w witrynie Azure portal, wybierz **usługi Azure Active Directory** > **niestandardowe nazwy domen**. W C# program przykładowy, podając nazwę domeny nie jest konieczne.
+> Jeśli jesteś użytkownikiem-gościem w bazie danych, należy również podać nazwę domeny usługi Azure AD dla bazy danych — **opcje** > **Identyfikatora nazwy lub dzierżawy domeny AD**. Aby znaleźć nazwę domeny w witrynie Azure portal, wybierz **usługi Azure Active Directory** > **niestandardowe nazwy domen**. W C# program przykładowy, podając nazwę domeny nie jest konieczne.
 
 ## <a name="c-code-example"></a>Przykładowy kod w języku C#
 
@@ -161,7 +161,7 @@ Aby zainstalować ten pakiet w programie Visual Studio, wybierz opcję **projekt
 
 using System;
 
-// Reference to AD authentication assembly
+// Reference to Azure AD authentication assembly
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
 using DA = System.Data;

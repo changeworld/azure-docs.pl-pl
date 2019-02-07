@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 96145906d40e465d2427a8100b3ad9333eec3f29
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249099"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819522"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Zarządzanie pojemnością magazynu dla usługi Azure Stack 
 
@@ -51,7 +51,7 @@ Ponieważ udziały usługi storage do wyłącznego użytku usług magazynu, moż
 
 Udziały w woluminach przechowywania danych dzierżawy. Danych dzierżawy obejmuje stronicowe obiekty BLOB, blokowe obiekty BLOB, uzupełnialnych obiektów blob, tabel, kolejek, baz danych i powiązane magazynów metadanych. Ponieważ obiektów magazynu (obiekty BLOB itp.) są indywidualnie zawarte w obrębie jednego udziału, maksymalny rozmiar każdego obiektu nie może przekraczać wielkości udziału. Maksymalny rozmiar nowych obiektów zależy od pojemności, który pozostaje w udziale jako nieużywane miejsce, gdy zostanie utworzony nowy obiekt.
 
-Gdy udział kończy się wolne miejsce i akcje [odzyskać](#reclaim-capacity) miejsca nie są pomyślnie lub będą dostępne, operator chmury Azure Stack można [migracji](#migrate-a-container-between) kontenery obiektów blob z jednego udziału na inny.
+Gdy udział kończy się wolne miejsce i akcje [odzyskać](#reclaim-capacity) miejsca nie są pomyślnie lub będą dostępne, operator chmury Azure Stack można migrować kontenery obiektów blob z jednego udziału na inny.
 
 - Aby uzyskać więcej informacji na temat kontenerów i obiektów blob, zobacz [magazynu obiektów Blob](azure-stack-key-features.md#blob-storage) klucza funkcje i pojęcia w usłudze Azure Stack.
 - Aby uzyskać informacje o współdziałaniu użytkownikom dzierżawy z magazynu obiektów blob w usłudze Azure Stack, zobacz [usług Azure Storage stosu](/azure/azure-stack/user/azure-stack-storage-overview#azure-stack-storage-services).

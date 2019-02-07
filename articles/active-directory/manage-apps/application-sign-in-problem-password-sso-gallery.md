@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 5ae7643123552eaa17d51e6cd1ed9c0293292ed0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 734169a0bce546ee2492d100b2abcb2ba8b6ffc9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184975"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822531"
 ---
 # <a name="problems-signing-in-to-an-azure-ad-gallery-application-configured-for-password-single-sign-on"></a>Problemy z logowaniem do aplikacji galerii usługi Azure AD, skonfigurowanej do obsługi hasło logowania jednokrotnego
 
@@ -88,7 +88,7 @@ Postępuj zgodnie z [Rozwiązywanie problemów z rozszerzenia Panelu dostępu do
 
 Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:
 
--   [Dodawanie aplikacji z galerii usługi Azure AD](#_Add_an_application)
+-   Dodawanie aplikacji z galerii usługi Azure AD
 
 -   [Konfigurowanie aplikacji dla hasła logowania jednokrotnego](#configure-the-application-for-password-single-sign-on)
 
@@ -140,7 +140,7 @@ Aby skonfigurować logowanie jednokrotne dla aplikacji, wykonaj następujące kr
 
 8.  Wybierz tryb **opartego na hasłach logowania jednokrotnego.**
 
-9.  [Przypisywanie użytkowników do aplikacji](#_How_to_assign).
+9.  Przypisywanie użytkowników do aplikacji.
 
 10. Ponadto, możesz także podać poświadczenia w imieniu użytkownika, wybierając wiersze użytkowników i klikając **poświadczenia aktualizacji** i wprowadzić nazwę użytkownika i hasło w imieniu użytkowników. W przeciwnym razie użytkownicy monit o podanie poświadczeń, się po uruchomieniu.
 

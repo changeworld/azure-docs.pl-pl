@@ -8,18 +8,18 @@ ms.devlang: json
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.custom: mvc
-ms.openlocfilehash: 3c89c5cc0b299852f85836dd416b5bb270757719
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fa8091011575822907915b67cf48bffaf5e7e728
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54061044"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657080"
 ---
 # <a name="tutorial-provision-an-azure-database-for-mysql-server-using-azure-resource-manager-template"></a>Samouczek: Aprowizowanie serwera usługi Azure Database for MySQL za pomocą szablonu usługi Azure Resource Manager
 
-[Interfejs API REST usługi Azure Database for MySQL](https://docs.microsoft.com/en-us/rest/api/mysql/) umożliwia inżynierom DevOps automatyzowanie i integrowanie aprowizacji, konfiguracji i operacji zarządzanych serwerów i baz danych MySQL na platformie Azure.  Interfejs API umożliwia tworzenie, wyliczanie i usuwanie serwerów i baz danych MySQL oraz zarządzanie nimi w usłudze Azure Database for MySQL.
+[Interfejs API REST usługi Azure Database for MySQL](https://docs.microsoft.com/rest/api/mysql/) umożliwia inżynierom DevOps automatyzowanie i integrowanie aprowizacji, konfiguracji i operacji zarządzanych serwerów i baz danych MySQL na platformie Azure.  Interfejs API umożliwia tworzenie, wyliczanie i usuwanie serwerów i baz danych MySQL oraz zarządzanie nimi w usłudze Azure Database for MySQL.
 
-Usługa Azure Resource Manager korzysta z podstawowego interfejsu API REST na potrzeby deklarowania i programowania zasobów platformy Azure wymaganych w przypadku wdrożeń na dużą skalę, zgodnie z koncepcją infrastruktury jako kodu. Szablon parametryzuje nazwę zasobu platformy Azure, jednostkę SKU, sieć, konfigurację zapory i ustawienia, co pozwala na jego wielokrotne używanie po jednorazowym utworzeniu.  Szablony usługi Azure Resource Manager można łatwo utworzyć za pomocą [witryny Azure Portal](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) lub [programu Visual Studio Code](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). Umożliwiają one tworzenie pakietów aplikacji i standaryzację oraz automatyzację wdrażania, a operacje te można zintegrować w potoku ciągłej integracji/ciągłego wdrażania metodyki DevOps.  Jeśli na przykład szukasz sposobu szybkiego wdrożenia aplikacji internetowej z wewnętrzną bazą danych Azure Database for MySQL, możesz zrealizować wdrożenie typu end-to-end za pomocą tego [szablonu szybkiego startu](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/) z galerii GitHub.
+Usługa Azure Resource Manager korzysta z podstawowego interfejsu API REST na potrzeby deklarowania i programowania zasobów platformy Azure wymaganych w przypadku wdrożeń na dużą skalę, zgodnie z koncepcją infrastruktury jako kodu. Szablon parametryzuje nazwę zasobu platformy Azure, jednostkę SKU, sieć, konfigurację zapory i ustawienia, co pozwala na jego wielokrotne używanie po jednorazowym utworzeniu.  Szablony usługi Azure Resource Manager można łatwo utworzyć za pomocą [witryny Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal) lub [programu Visual Studio Code](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code?tabs=CLI). Umożliwiają one tworzenie pakietów aplikacji i standaryzację oraz automatyzację wdrażania, a operacje te można zintegrować w potoku ciągłej integracji/ciągłego wdrażania metodyki DevOps.  Jeśli na przykład szukasz sposobu szybkiego wdrożenia aplikacji internetowej z wewnętrzną bazą danych Azure Database for MySQL, możesz zrealizować wdrożenie typu end-to-end za pomocą tego [szablonu szybkiego startu](https://azure.microsoft.com/en-us/resources/templates/101-webapp-managed-mysql/) z galerii GitHub.
 
 Z tego samouczka dowiesz się, jak wykonywać następujące czynności, używając szablonu usługi Azure Resource Manager i innych narzędzi:
 

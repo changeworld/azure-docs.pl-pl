@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 760feae2c9b58e162dae487e240dda72099ed91b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5fe2cab3ac9f9e5f3bbba17b8ab9467a298b24ea
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51227981"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817686"
 ---
 # <a name="azure-api-management-faqs"></a>Często zadawane pytania usługi Azure API Management
 Odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązania dotyczące usługi Azure API Management.
@@ -37,7 +37,7 @@ Odpowiedzi na często zadawane pytania dotyczące, wzorce i najlepsze rozwiązan
 * [Jak skonfigurować wiele środowisk w pojedynczy interfejs API?](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [Dzięki usłudze API Management można używać protokołu SOAP?](#can-i-use-soap-with-api-management)
 * [Jest stałej adresu IP bramy usługi API Management? Można go używać w regułach zapory?](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
-* [Przy użyciu zabezpieczeń usług AD FS można skonfigurować serwera autoryzacji OAuth 2.0?](#can-i-configure-an-oauth-20-authorization-server-with-adfs-security)
+* Przy użyciu zabezpieczeń usług AD FS można skonfigurować serwera autoryzacji OAuth 2.0?
 * [Jakie metody routingu dla usługi API Management używa w przypadku wdrożeń w wielu lokalizacjach geograficznych?](#what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations)
 * [Aby utworzyć wystąpienie usługi API Management można używać szablonu usługi Azure Resource Manager?](#can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance)
 * [Dla zaplecza można używać certyfikatu SSL z podpisem własnym?](#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)

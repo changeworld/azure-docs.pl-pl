@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 12/23/2018
 ms.author: zhshang
-ms.openlocfilehash: 45ceebef85254ff030d237f1af13f0750aaafeba
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 6b3ddf7d8069e689231b9dcb6f0f074e84052511
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53812792"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663268"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure SignalR Service — FAQ
 
@@ -20,7 +20,7 @@ ms.locfileid: "53812792"
 Tak.
 Nasze zawiadomienie o ogólnej dostępności można znaleźć w artykule [Azure SignalR Service now generally available](https://azure.microsoft.com/en-us/blog/azure-signalr-service-now-generally-available/) (Usługa Azure SignalR Service jest teraz ogólnie dostępna). 
 
-[Biblioteka SignalR platformy ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/signalr/introduction) jest w pełni obsługiwana.
+[Biblioteka SignalR platformy ASP.NET Core](https://docs.microsoft.com/aspnet/core/signalr/introduction) jest w pełni obsługiwana.
 
 Obsługa biblioteki SignalR platformy ASP.NET znajduje się nadal w *publicznej wersji zapoznawczej*. Tu można znaleźć [przykładowy kod](https://github.com/aspnet/AzureSignalR-samples/tree/master/aspnet-samples/ChatRoom).
 
@@ -37,7 +37,7 @@ Jeśli masz serwery aplikacji, ten komunikat o błędzie oznacza, że żaden ser
 Możliwe przyczyny to:
 - Żaden serwer aplikacji nie jest połączony z usługą SignalR Service. Sprawdź dzienniki serwera aplikacji pod kątem możliwych błędów połączeń. Ten przypadek jest rzadki przy ustawieniu wysokiej dostępności przy użyciu kilku serwerów aplikacji.
 - Występują problemy z połączeniem z wystąpieniami usługi SignalR Service. Ten problem jest przejściowy i zostanie automatycznie naprawiony.
-Jeśli utrzymuje się dłużej niż przez godzinę, [otwórz problem w serwisie GitHub](https://github.com/Azure/azure-signalr/issues/new) lub [utwórz żądanie obsługi na platformie Azure](https://docs.microsoft.com/en-us/azure/azure-supportability/how-to-create-azure-support-request).
+Jeśli utrzymuje się dłużej niż przez godzinę, [otwórz problem w serwisie GitHub](https://github.com/Azure/azure-signalr/issues/new) lub [utwórz żądanie obsługi na platformie Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Czy w przypadku wielu serwerów aplikacji komunikaty klienckie są wysyłane do wszystkich serwerów czy tylko do jednego z nich?
 
@@ -67,4 +67,4 @@ Nie.
 
 Usługa Azure SignalR Service oferuje wszystkie trzy rodzaje transportu, które domyślnie obsługuje biblioteka SignalR platformy ASP.NET Core. Tego nie można konfigurować. Usługa SignalR Service będzie obsługiwać połączenia i transport dla wszystkich połączeń klienckich.
 
-Możesz skonfigurować transport po stronie klienta, zgodnie z opisem umieszczonym [tutaj](https://docs.microsoft.com/en-us/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).
+Możesz skonfigurować transport po stronie klienta, zgodnie z opisem umieszczonym [tutaj](https://docs.microsoft.com/aspnet/core/signalr/configuration?view=aspnetcore-2.1#configure-allowed-transports).

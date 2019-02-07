@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: yushwang
-ms.openlocfilehash: 97b33ed76776ae00c109e891b3d91638080ed778
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b48382c8f429576a3d15c624c9c9028cffec3872
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508406"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813028"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>Jak skonfigurować protokół BGP w bramach sieci VPN Azure przy użyciu programu PowerShell
 W tym artykule przedstawiono kroki, aby włączyć protokół BGP dla połączenia sieci VPN typu lokacja-lokacja (S2S) między środowiskami lokalnymi i połączenia sieć wirtualna-sieć wirtualna za pomocą modelu wdrażania usługi Resource Manager i programu PowerShell.
@@ -35,7 +35,7 @@ Zobacz [Omówienie protokołu BGP z bramami sieci VPN Azure](vpn-gateway-bgp-ove
 Ten artykuł przeprowadzi Cię przez kroki, aby wykonać następujące zadania:
 
 * [Część 1. Włączanie protokołu BGP dla bramy sieci VPN platformy Azure](#enablebgp)
-* [Część 2 — ustanowić połączenia między środowiskami lokalnymi za pomocą protokołu BGP](#crossprembgp)
+* Część 2 — ustanowić połączenia między środowiskami lokalnymi za pomocą protokołu BGP
 * [Część 3 — ustanowienia połączenia sieć wirtualna-sieć wirtualna za pomocą protokołu BGP](#v2vbgp)
 
 Każda część instrukcji stanowi podstawowy blok konstrukcyjny włączania protokołu BGP w łączność sieciową. Jeśli wykonasz wszystkich trzech części, tworzysz topologii, jak pokazano na poniższym diagramie:

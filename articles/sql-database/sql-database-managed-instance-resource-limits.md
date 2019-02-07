@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/05/2019
-ms.openlocfilehash: be6e2cbea7dd23cbe6932f0110ac1c8b630a17c2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 799f47b291b3943dcb4d6b31bc8df732c28990cd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753201"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816598"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -41,7 +41,7 @@ Wystąpienie usługi Azure SQL Database Managed można wdrożyć na dwa sprzętu
 | Memory (Pamięć) | 7 GB na rdzeń wirtualny | 5.1 GB na rdzeń wirtualny |
 | Pamięć OLTP w pamięci | 3 GB na rdzeń wirtualny | 2.6 GB na rdzeń wirtualny |
 | Maksymalny rozmiar magazynu (ogólnego przeznaczenia) |  8 TB | 1 TB |
-| Maksymalny rozmiar magazynu (krytyczne dla działania firmy) | 8 TB | 1 TB, 2 TB lub 4 TB w zależności od liczby rdzeni |
+| Maksymalny rozmiar magazynu (krytyczne dla działania firmy) | 1 TB | 1 TB, 2 TB lub 4 TB w zależności od liczby rdzeni |
 
 ### <a name="service-tier-characteristics"></a>Właściwości warstwy usług
 

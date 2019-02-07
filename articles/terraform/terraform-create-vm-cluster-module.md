@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: efeae877161b2632112938d63b6f6e31cce96ac5
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: d5a820da94254fe0da416d9219f7582d3a4241cb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077202"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696170"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Tworzenie klastra maszyn wirtualnych za pomocą narzędzia Terraform korzystającego z rejestru modułów
 
@@ -31,7 +31,7 @@ Aby uzyskać więcej informacji na temat narzędzia Terraform, zobacz [dokumenta
 ## <a name="set-up-authentication-with-azure"></a>Konfigurowanie uwierzytelniania na platformie Azure
 
 > [!TIP]
-> Jeśli [używasz zmiennych środowiskowych narzędzia Terraform](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) lub uruchamiasz ten samouczek w usłudze [Azure Cloud Shell](/azure/cloud-shell/overview), pomiń ten krok.
+> Jeśli [używasz zmiennych środowiskowych narzędzia Terraform](/azure/virtual-machines/linux/terraform-install-configure) lub uruchamiasz ten samouczek w usłudze [Azure Cloud Shell](/azure/cloud-shell/overview), pomiń ten krok.
 
  Zapoznaj się z artykułem [Install Terraform and configure access to Azure](/azure/virtual-machines/linux/terraform-install-configure) (Instalowanie narzędzia Terraform i konfigurowanie dostępu do platformy Azure), aby utworzyć jednostkę usługi platformy Azure. Użyj tej jednostki usługi, aby wypełnić nowy plik `azureProviderAndCreds.tf` w pustym katalogu następującym kodem:
 

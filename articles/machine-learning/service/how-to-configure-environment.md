@@ -12,12 +12,12 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 02d0afd18ad966baf8954ae5add180c970fe302e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b322ca0c3a19f0a832fe50b6cfbaaad287205d5e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247412"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812909"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
@@ -27,7 +27,7 @@ Jedynymi wymogami dla swojego środowiska programowania są 3 języka Python, Co
 
 Ten artykuł koncentruje się na następujących środowisk i narzędzia:
 
-* [Notesy platformy Azure](#aznotebooks): Usługa notesów programu Jupyter, która jest hostowana w chmurze platformy Azure. Jest najprostszym sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
+* Azure Notebooks: Usługa notesów programu Jupyter, która jest hostowana w chmurze platformy Azure. Jest najprostszym sposobem na rozpoczęcie pracy, ponieważ zestaw SDK usługi Azure Machine Learning jest już zainstalowany.
 
 * [Maszyna wirtualna do nauki o danych (DSVM)](#dsvm): Wstępnie skonfigurowane rozwoju lub eksperymentowania środowisku w chmurze platformy Azure, który jest przeznaczony do pracy nauki o danych i którą można wdrożyć tylko wystąpienia maszyn wirtualnych procesora CPU lub wystąpienia oparte na procesorze GPU. Python 3, Conda, notesy Jupyter i zestawu SDK usługi Azure Machine Learning są już zainstalowane. Maszyna wirtualna jest powiązana z popularnych uczenia maszynowego i głębokiego uczenia struktur, narzędzi i edytory do tworzenia rozwiązania uczenia maszynowego. Prawdopodobnie jest najbardziej zaawansowane środowiska programistycznego, Machine learning na platformie Azure.
 

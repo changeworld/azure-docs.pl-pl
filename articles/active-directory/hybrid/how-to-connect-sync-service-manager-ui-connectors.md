@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1c6d5754af7455a4e4cf864062a1c29dd32c88b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 40e519495b8a245f72e51167f5807f9c585cb344
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492855"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817550"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Za pomocą łączników za pomocą usługi Azure AD Connect synchronizacji Menedżera usług
 
@@ -42,7 +42,7 @@ Karta łączników jest używana do zarządzania wszystkimi systemami, aparat sy
 | Importowanie łącznika |Nie należy używać. |
 | Zaktualizuj łącznik |Nie należy używać. |
 | Odśwież schemat |Odświeża pamięci podręcznej schematu. Jest preferowana względem zamiast tego użyj opcji w Kreatorze instalacji również od, aktualizacje synchronizacji reguły. |
-| [Wyszukiwania obszaru łącznika](#search-connector-space) |Używana do znajdowania obiektów i [postępuj zgodnie z obiektu i jego danych za pośrednictwem systemu](#follow-an-object-and-its-data-through-the-system). |
+| [Wyszukiwania obszaru łącznika](#search-connector-space) |Używana do znajdowania obiektów i postępuj zgodnie z obiektu i jego danych za pośrednictwem systemu. |
 
 ### <a name="delete"></a>Usuwanie
 Akcja usuwania jest używany do dwóch różnych rzeczy.  

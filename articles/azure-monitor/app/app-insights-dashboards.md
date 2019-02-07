@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 1b0c991c09d1235215dc9b930c529a219d492a8c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: afbf2bc32aa737eb5f6dde41035b206d6e260252
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117081"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813769"
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Nawigacja i pulpity nawigacyjne w portalu Application Insights
 Po utworzeniu [Konfigurowanie usługi Application Insights w projekcie](../../azure-monitor/app/app-insights-overview.md), dane telemetryczne dotyczące użycia i wydajności aplikacji będą wyświetlane w zasobie usługi Application Insights projektu w [witryny Azure portal](https://portal.azure.com).
@@ -62,7 +62,7 @@ Wykres są automatycznie odświeżane z częstotliwością zależną od zakresu 
 * Zakres czasu powyżej 24 godzin: (Zakres czasu) / 60.
 
 ### <a name="pin-any-query-in-analytics"></a>Przypnij wszystkie zapytania w usłudze Analytics
-Możesz również [przypiąć Analytics](../../azure-monitor/log-query/get-started-portal.md) wykresy do [udostępnionego](#share-dashboards-with-your-team) pulpitu nawigacyjnego. Dzięki temu można dodać wykresy dowolnego dowolnego zapytania równolegle standardowych metryk. 
+Możesz również [przypiąć Analytics](../../azure-monitor/log-query/get-started-portal.md) wykresy do udostępnionego pulpitu nawigacyjnego. Dzięki temu można dodać wykresy dowolnego dowolnego zapytania równolegle standardowych metryk. 
 
 Wyniki są automatycznie ponownie obliczane co godzinę. Kliknij ikonę odświeżania na wykresie, aby ponownie obliczyć natychmiast. (Odśwież w przeglądarce nie Oblicz ponownie.)
 

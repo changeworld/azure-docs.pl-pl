@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 1491068248d20a917e28db5a75dee3d4b3753f5c
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 1c58574a96c07dcb4008682efdf96fba111d7b61
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731194"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810341"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [usługi Azure App Service](overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem. Aplikację można przywrócić do migawki poprzedniego stanu przez zastąpienie istniejącej aplikacji lub przywrócenie do innej aplikacji. 
@@ -52,7 +52,7 @@ Następujące rozwiązania bazy danych są obsługiwane za pomocą funkcji Kopia
 ## <a name="requirements-and-restrictions"></a>Wymagania i ograniczenia
 * Funkcja Kopia zapasowa i przywracanie wymaga planu usługi App Service w **standardowa** warstwy lub **Premium** warstwy. Aby uzyskać więcej informacji na temat skalowania planu usługi App Service, aby korzystać z wyższej warstwy, zobacz [skalowanie aplikacji na platformie Azure](web-sites-scale.md).  
   **Premium** warstwy umożliwia większą liczbę dziennych kopii ups niż **standardowa** warstwy.
-* Potrzebujesz konta usługi Azure storage i kontenera w tej samej subskrypcji co aplikacja, którą chcesz utworzyć kopię zapasową. Aby uzyskać więcej informacji na temat konta usługi Azure storage, zobacz [łącza](#moreaboutstorage) na końcu tego artykułu.
+* Potrzebujesz konta usługi Azure storage i kontenera w tej samej subskrypcji co aplikacja, którą chcesz utworzyć kopię zapasową. Aby uzyskać więcej informacji na temat konta usługi Azure storage Zobacz linki na końcu tego artykułu.
 * Kopie zapasowe mogą być 10 GB zawartości aplikacji i bazy danych. Jeśli rozmiar kopii zapasowej przekracza ten limit, wystąpi błąd.
 * Kopie zapasowe protokołu SSL, włączone — Azure Database dla MySQL nie jest obsługiwana. Jeśli skonfigurowano kopię zapasową, zostanie wyświetlony wykonywania kopii zapasowej.
 * Kopie zapasowe SSL włączone — Azure Database dla PostgreSQL nie jest obsługiwana. Jeśli skonfigurowano kopię zapasową, zostanie wyświetlony wykonywania kopii zapasowej.

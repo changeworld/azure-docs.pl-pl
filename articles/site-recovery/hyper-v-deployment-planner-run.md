@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b5f0a2a418c53a5049ebff9bba9188219a9aeb13
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 16c37f5ccaed7c161ecaae65a07c5da7400aad3c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321181"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815081"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Uruchamianie planisty wdrożenia usługi Azure Site Recovery dla funkcji Hyper-V odzyskiwania po awarii na platformie Azure
 
 Usługa Site Recovery można uruchomić narzędzie planista wdrażania wiersza polecenia (ASRDeploymentPlanner.exe) w dowolnym z czterech trybów: 
--   [Pobieranie listy maszyn wirtualnych](#get-vm-list-for-profiling-hyper-v-vms)
+-   Pobieranie listy maszynę wirtualną (VM)
 -   [Profil](#profile-hyper-v-vms)
--   [Generowanie raportu](#generate-report)
+-   Generowanie raportu
 -   [Uzyskiwanie informacji o przepływności](#get-throughput)
 
 Najpierw uruchom narzędzie, aby uzyskać listę maszyn wirtualnych z jednego lub wielu hostów funkcji Hyper-V. Następnie uruchom narzędzie w trybie profilowania, aby zebrać informacje na temat współczynnika zmian danych i liczby operacji we/wy na sekundę maszyny wirtualnej. Następnie uruchom narzędzie w celu wygenerowania raportu, aby uzyskać wymagania dotyczące przepustowości i magazynu.
@@ -74,7 +74,7 @@ Narzędzie wysyła co 15 sekund zapytanie do hosta funkcji Hyper-V w celu zapewn
 Narzędzie bezproblemowo obsługuje migrację maszyn wirtualnych z jednego węzła do innego węzła w klastrze i migrację magazynu w obrębie hosta.
 
 ### <a name="getting-the-vm-list-to-profile"></a>Uzyskiwanie listy maszyn wirtualnych do profilowania
-Aby utworzyć listę maszyn wirtualnych do profilowania, zapoznaj się z operacją [GetVMList](#get-vm-list-for-profiling-hyper-v-vms).
+Aby utworzyć listę maszyn wirtualnych do profilowania, zapoznaj się z operacji GetVMList.
 
 Po utworzeniu listy maszyn wirtualnych do profilowania można uruchomić narzędzie w trybie profilowania. 
 

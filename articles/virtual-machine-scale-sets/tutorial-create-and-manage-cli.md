@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9abf1d1105c112051041688f1d4305c543b148ce
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179484"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751025"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Samouczek: Tworzenie zestawu skalowania maszyn wirtualnych i zarządzanie nim przy użyciu interfejsu wiersza polecenia platformy Azure
 Zestaw skalowania maszyn wirtualnych umożliwia wdrożenie zestawu identycznych, automatycznie skalowanych maszyn wirtualnych, oraz zarządzanie nimi. W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
@@ -41,7 +41,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed utworzeniem zestawu skalowania maszyn wirtualnych. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W tym przykładzie grupa zasobów o nazwie *myResourceGroup* zostanie utworzona w regionie *eastus*. 
+Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed utworzeniem zestawu skalowania maszyn wirtualnych. Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). W tym przykładzie grupa zasobów o nazwie *myResourceGroup* zostanie utworzona w regionie *eastus*. 
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -66,7 +66,7 @@ Utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania oraz wystąp
 
 
 ## <a name="view-the-vm-instances-in-a-scale-set"></a>Wyświetlanie wystąpień maszyn wirtualnych w zestawie skalowania
-Aby wyświetlić listę wystąpień maszyn wirtualnych w zestawie skalowania, użyj polecenia [az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) w następujący sposób:
+Aby wyświetlić listę wystąpień maszyn wirtualnych w zestawie skalowania, użyj polecenia [az vmss list-instances](/cli/azure/vmss) w następujący sposób:
 
 ```azurecli-interactive
 az vmss list-instances \
@@ -85,7 +85,7 @@ Następujące przykładowe dane wyjściowe zawierają dwa wystąpienia maszyn wi
 ```
 
 
-W pierwszej kolumnie danych wyjściowych — *InstanceId* — widać identyfikator wystąpienia. Aby wyświetlić dodatkowe informacje na temat określonego wystąpienia maszyny wirtualnej, dodaj parametr `--instance-id` do polecenia [az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view). W poniższym przykładzie są widoczne informacje o wystąpieniu maszyny wirtualnej *1*:
+W pierwszej kolumnie danych wyjściowych — *InstanceId* — widać identyfikator wystąpienia. Aby wyświetlić dodatkowe informacje na temat określonego wystąpienia maszyny wirtualnej, dodaj parametr `--instance-id` do polecenia [az vmss get-instance-view](/cli/azure/vmss). W poniższym przykładzie są widoczne informacje o wystąpieniu maszyny wirtualnej *1*:
 
 ```azurecli-interactive
 az vmss get-instance-view \
@@ -129,7 +129,7 @@ exit
 
 
 ## <a name="understand-vm-instance-images"></a>Opis obrazów wystąpień maszyn wirtualnych
-Podczas tworzenia zestawu skalowania na początku tego samouczka dla wystąpień maszyn wirtualnych został użyty parametr `--image` obrazu *UbuntuLTS*. Witryna Azure Marketplace zawiera wiele obrazów, za pomocą których można tworzyć wystąpienia maszyn wirtualnych. Aby wyświetlić listę najczęściej używanych obrazów, użyj polecenia [az vm image list](/cli/azure/vm/image#az_vm_image_list).
+Podczas tworzenia zestawu skalowania na początku tego samouczka dla wystąpień maszyn wirtualnych został użyty parametr `--image` obrazu *UbuntuLTS*. Witryna Azure Marketplace zawiera wiele obrazów, za pomocą których można tworzyć wystąpienia maszyn wirtualnych. Aby wyświetlić listę najczęściej używanych obrazów, użyj polecenia [az vm image list](/cli/azure/vm/image).
 
 ```azurecli-interactive
 az vm image list --output table
@@ -243,7 +243,7 @@ az vmss create \
 ## <a name="change-the-capacity-of-a-scale-set"></a>Zmienianie pojemności zestawu skalowania
 Podczas tworzenia zestawu skalowania na początku tego samouczka domyślnie zostały wdrożone dwa wystąpienia maszyn wirtualnych. Polecenie [az vmss create](/cli/azure/vmss) przyjmuje parametr `--instance-count`, który pozwala zmienić liczbę wystąpień tworzonych w zestawie skalowania. Aby zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych w istniejącym zestawie skalowania, można ręcznie zmienić pojemność. Zestaw skalowania tworzy lub usuwa wymaganą liczbę wystąpień maszyn wirtualnych, a następnie konfiguruje moduł równoważenia obciążenia w celu dystrybucji ruchu.
 
-Aby ręcznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych w zestawie skalowania, użyj polecenia [az vmss scale](/cli/azure/vmss#az_vmss_scale). W poniższym przykładzie liczba wystąpień maszyn wirtualnych w zestawie skalowania jest ustawiana na *3*:
+Aby ręcznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych w zestawie skalowania, użyj polecenia [az vmss scale](/cli/azure/vmss). W poniższym przykładzie liczba wystąpień maszyn wirtualnych w zestawie skalowania jest ustawiana na *3*:
 
 ```azurecli-interactive
 az vmss scale \
@@ -252,7 +252,7 @@ az vmss scale \
     --new-capacity 3
 ```
 
-Aktualizacja pojemności zestawu skalowania trwa kilka minut. Aby wyświetlić liczbę bieżących wystąpień w zestawie skalowania, użyj polecenia [az vmss show](/cli/azure/vmss#az_vmss_show) i zapytania *sku.capacity*:
+Aktualizacja pojemności zestawu skalowania trwa kilka minut. Aby wyświetlić liczbę bieżących wystąpień w zestawie skalowania, użyj polecenia [az vmss show](/cli/azure/vmss) i zapytania *sku.capacity*:
 
 ```azurecli-interactive
 az vmss show \
@@ -267,27 +267,27 @@ az vmss show \
 Potrafisz już utworzyć zestaw skalowania, wyświetlić informacje o połączeniu i połączyć się z wystąpieniami maszyn wirtualnych. W tym samouczku omówiliśmy używanie innego obrazu systemu operacyjnego dla wystąpień maszyn wirtualnych, wybieranie innego rozmiaru maszyny wirtualnej oraz ręczne skalowanie liczby wystąpień. Typowe operacje zarządzania obejmują uruchamianie, zatrzymywanie i ponowne uruchamianie wystąpień maszyn wirtualnych w zestawie skalowania.
 
 ### <a name="stop-and-deallocate-vm-instances-in-a-scale-set"></a>Zatrzymywanie i cofanie przydziału wystąpień maszyn wirtualnych w zestawie skalowania
-Aby zatrzymać co najmniej jedno wystąpienie maszyny wirtualnej w zestawie skalowania, użyj polecenia [az vmss stop](/cli/azure/vmss#az_vmss_stop). Parametr `--instance-ids` umożliwia wskazanie wystąpień maszyn wirtualnych, które mają zostać zatrzymane. Jeśli nie podasz identyfikatora wystąpienia, zostaną zatrzymane wszystkie wystąpienia maszyn wirtualnych w zestawie skalowania. W następującym przykładzie zostaje zatrzymane wystąpienie *1*:
+Aby zatrzymać co najmniej jedno wystąpienie maszyny wirtualnej w zestawie skalowania, użyj polecenia [az vmss stop](/cli/azure/vmss). Parametr `--instance-ids` umożliwia wskazanie wystąpień maszyn wirtualnych, które mają zostać zatrzymane. Jeśli nie podasz identyfikatora wystąpienia, zostaną zatrzymane wszystkie wystąpienia maszyn wirtualnych w zestawie skalowania. W następującym przykładzie zostaje zatrzymane wystąpienie *1*:
 
 ```azurecli-interactive
 az vmss stop --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
-Zatrzymane wystąpienia maszyn wirtualnych wciąż mają przydział i generują koszty operacji obliczeniowych. Jeśli chcesz cofnąć przydział wystąpień maszyn wirtualnych i ponosić tylko koszty magazynowania, użyj polecenia [az vmss deallocate](/cli/azure/vmss#az_vmss_deallocate). Następujący przykład przedstawia zatrzymanie i cofnięcie przydziału wystąpienia *1*:
+Zatrzymane wystąpienia maszyn wirtualnych wciąż mają przydział i generują koszty operacji obliczeniowych. Jeśli chcesz cofnąć przydział wystąpień maszyn wirtualnych i ponosić tylko koszty magazynowania, użyj polecenia [az vmss deallocate](/cli/azure/vmss). Następujący przykład przedstawia zatrzymanie i cofnięcie przydziału wystąpienia *1*:
 
 ```azurecli-interactive
 az vmss deallocate --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="start-vm-instances-in-a-scale-set"></a>Uruchamianie wystąpień maszyn wirtualnych w zestawie skalowania
-Aby uruchomić co najmniej jedno wystąpienie maszyny wirtualnej w zestawie skalowania, użyj polecenia [az vmss start](/cli/azure/vmss#az_vmss_start). Parametr `--instance-ids` umożliwia wskazanie wystąpień maszyn wirtualnych, które mają zostać uruchomione. Jeśli nie podasz identyfikatora wystąpienia, zostaną uruchomione wszystkie wystąpienia maszyn wirtualnych w zestawie skalowania. W następującym przykładzie zostaje uruchomione wystąpienie *1*:
+Aby uruchomić co najmniej jedno wystąpienie maszyny wirtualnej w zestawie skalowania, użyj polecenia [az vmss start](/cli/azure/vmss). Parametr `--instance-ids` umożliwia wskazanie wystąpień maszyn wirtualnych, które mają zostać uruchomione. Jeśli nie podasz identyfikatora wystąpienia, zostaną uruchomione wszystkie wystąpienia maszyn wirtualnych w zestawie skalowania. W następującym przykładzie zostaje uruchomione wystąpienie *1*:
 
 ```azurecli-interactive
 az vmss start --resource-group myResourceGroup --name myScaleSet --instance-ids 1
 ```
 
 ### <a name="restart-vm-instances-in-a-scale-set"></a>Ponowne uruchamianie wystąpień maszyn wirtualnych w zestawie skalowania
-Aby uruchomić ponownie co najmniej jedno wystąpienie maszyny wirtualnej w zestawie skalowania, użyj polecenia [az vmss restart](/cli/azure/vmss#az_vm_restart). Parametr `--instance-ids` umożliwia wskazanie wystąpień maszyn wirtualnych, które mają zostać uruchomione ponownie. Jeśli nie podasz identyfikatora wystąpienia, zostaną uruchomione ponownie wszystkie wystąpienia maszyn wirtualnych w zestawie skalowania. W następującym przykładzie zostaje uruchomione ponownie wystąpienie *1*:
+Aby uruchomić ponownie co najmniej jedno wystąpienie maszyny wirtualnej w zestawie skalowania, użyj polecenia [az vmss restart](/cli/azure/vmss). Parametr `--instance-ids` umożliwia wskazanie wystąpień maszyn wirtualnych, które mają zostać uruchomione ponownie. Jeśli nie podasz identyfikatora wystąpienia, zostaną uruchomione ponownie wszystkie wystąpienia maszyn wirtualnych w zestawie skalowania. W następującym przykładzie zostaje uruchomione ponownie wystąpienie *1*:
 
 ```azurecli-interactive
 az vmss restart --resource-group myResourceGroup --name myScaleSet --instance-ids 1

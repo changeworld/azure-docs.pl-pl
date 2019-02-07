@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123176"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817754"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Wywołaj punkty końcowe REST przy użyciu protokołu HTTP + Swagger łącznika w usłudze Azure Logic Apps
 
@@ -40,7 +40,7 @@ Poniżej przedstawiono przykładowy sposób do używają protokołu HTTP + Swagg
 4. Wpisz adres URL dokumentu Swagger:
    
    * Aby pracować z projektanta aplikacji logiki, adres URL musi być punkt końcowy HTTPS i włączono mechanizm CORS.
-   * Jeśli dokument struktury Swagger nie spełnia tego wymagania, możesz użyć [usługi Azure Storage z włączonym mechanizmem CORS](#hosting-swagger-from-storage) do przechowywania dokumentu.
+   * Jeśli dokument struktury Swagger nie spełnia tego wymagania, można użyć usługi Azure Storage przy użyciu mechanizmu CORS włączone do przechowywania dokumentu.
 5. Kliknij przycisk **dalej** do odczytywania i renderowania z dokument struktury Swagger.
 6. Dodaj wszystkie parametry, które są wymagane do wywołania HTTP.
    
@@ -96,7 +96,7 @@ Znak gwiazdki (*) oznacza, że wymagane pole.
 | --- | --- | --- |
 | Metoda * |method |Czasownik HTTP do użycia. |
 | IDENTYFIKATOR URI * |identyfikator URI |Identyfikator URI żądania HTTP. |
-| Nagłówki |nagłówki |Obiekt JSON nagłówków HTTP do uwzględnienia. |
+| Nagłówki |Nagłówki |Obiekt JSON nagłówków HTTP do uwzględnienia. |
 | Treść |treść |Treść żądania HTTP. |
 | Authentication |uwierzytelnianie |Uwierzytelniania dla żądania. Aby uzyskać więcej informacji, zobacz [łącznik protokołu HTTP](connectors-native-http.md#authentication). |
 
@@ -108,7 +108,7 @@ Odpowiedź HTTP
 | --- | --- | --- |
 | Nagłówki |obiekt |Nagłówki odpowiedzi |
 | Treść |obiekt |Obiekt odpowiedzi |
-| Kod stanu |Int |Kod stanu HTTP |
+| Kod stanu |int |Kod stanu HTTP |
 
 ### <a name="http-responses"></a>Odpowiedzi HTTP
 Podczas wykonywania wywołań do różnych działań, możesz otrzymać określone odpowiedzi. Poniżej znajduje się tabela, która przedstawia odpowiedniej odpowiedzi wraz z opisami.

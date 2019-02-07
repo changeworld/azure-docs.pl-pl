@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2be11f97882a7c6353b214886ce6c5a3a66add89
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 81e9ad5affda7b5e246bd7eb3406a40fd7f24dbb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339114"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814031"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -176,7 +176,7 @@ Usługa Security Center umożliwi rozwiązanie będzie odpowiednie w oparciu o w
 Można ręcznie usunąć program Microsoft Monitoring Agent. Nie jest to zalecane, ponieważ ogranicza zaleceń usługi Security Center i alerty.
 
 > [!NOTE]
-> Po włączeniu zbierania danych usługa Security Center będzie ponownie zainstalować agenta po jego usunięciu.  Należy wyłączyć zbieranie danych przed ręczne usunięcie agenta. Zobacz [jak zatrzymać automatyczne agent instalacji i tworzenie obszaru roboczego?](#how-do-i-stop-the-automatic-agent-installation-and-workspace-creation?) Aby uzyskać instrukcje dotyczące wyłączania zbierania danych.
+> Po włączeniu zbierania danych usługa Security Center będzie ponownie zainstalować agenta po jego usunięciu.  Należy wyłączyć zbieranie danych przed ręczne usunięcie agenta. Zobacz, jak zatrzymać automatyczne agent instalacji i tworzenie obszaru roboczego? Aby uzyskać instrukcje dotyczące wyłączania zbierania danych.
 >
 >
 

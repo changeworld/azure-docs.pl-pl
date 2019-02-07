@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 494acc55001bd3180d345801ef8d62800dd5e837
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174040"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817533"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services — Rozwiązywanie problemów z alertami
 Ten artykuł zawiera przewodniki dotyczące rozwiązywania problemów w ramach wszystkich alertów, które mogą występować w domenie zarządzanej.
@@ -42,7 +42,7 @@ Wybierz kroki rozwiązywania problemów, które odnoszą się do Identyfikatora 
 | AADDS108 | *Subskrypcja używana przez usługę Azure AD Domain Services został przeniesiony do innego katalogu. Usługi domenowe Azure AD musi mieć aktywną subskrypcję, w tym samym katalogu, aby działać prawidłowo.* | [Katalogi przenieść subskrypcję](#aadds108-subscription-moved-directories) |
 | AADDS109 | *Usunięto zasób, który jest używany na potrzeby domeny zarządzanej. Ten zasób jest wymagany dla usług domenowych Azure AD działać prawidłowo.* | [Zasób został usunięty.](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest pełny i nie ma miejsca na dodatkowy kontroler domeny, musi zostać utworzona.* | [Podsieć jest pełna](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | * Jednostki usługi używany przez usługi domenowe Azure AD do usługi domeny nie ma uprawnień do zarządzania zasobami w ramach subskrypcji Azure. Jednostka usługi musi uzyskać uprawnienia do obsługi Twojej domeny zarządzanej. * | [Brak jednostki usługi autoryzacji](#aadds111-service-principal-unauthorized) |
+| AADDS111 | * Jednostki usługi używany przez usługi domenowe Azure AD do usługi domeny nie ma uprawnień do zarządzania zasobami w ramach subskrypcji Azure. Jednostka usługi musi uzyskać uprawnienia do obsługi Twojej domeny zarządzanej. * | Brak jednostki usługi autoryzacji |
 | AADDS112 | *Odkryliśmy, że podsieć sieci wirtualnej w tej domenie może nie mieć wystarczającej liczby adresów IP. Azure AD Domain Services wymaga co najmniej dwóch dostępnych adresów IP w podsieci, w której jest włączone w. Firma Microsoft zaleca posiadanie co najmniej 3 – 5 Alokacja adresów IP w obrębie podsieci. To może wystąpić, jeśli inne maszyny wirtualne są wdrażane w obrębie podsieci, w związku z tym wyczerpaniem liczby dostępnych adresów IP lub czy istnieje ograniczenie liczby dostępnych adresów IP w podsieci.* | [Nie ma wystarczającej liczby adresów IP](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Zasoby używane przez usługi Azure AD Domain Services zostały wykryte w nieoczekiwanym stanie i nie można go odzyskać.* | [Zasoby są nie do odzyskania](#aadds113-resources-are-unrecoverable) |
 | AADDS114 | * Podsieć wybrana dla wdrożenia usług domenowych Azure AD jest nieprawidłowy i nie można użyć. * | [Podsieć jest nieprawidłowa](#aadds114-subnet-invalid) |
@@ -201,7 +201,7 @@ Nasze jednostek usługi muszą mieć dostęp do zarządzania i tworzenia zasobó
 
 **Rozwiązanie:**
 
-1. [Usuwanie domeny zarządzanej](#active-directory-ds-disable-aadds.md) z dzierżawy.
+1. Usuń domenę zarządzaną z Twojej dzierżawy.
 2. Usuń zakres adresów IP w podsieci
   1. Przejdź do [stronie sieci wirtualnej w witrynie Azure portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
   2. Wybierz sieć wirtualną, której planujesz używać dla usług domenowych Azure AD.

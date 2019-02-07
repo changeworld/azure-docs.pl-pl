@@ -4,17 +4,17 @@ description: Azure oceny zasad i efekty określenia zgodności. Dowiedz się, ja
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/31/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7925bc8a9f7cb65d0e92c943aa0a54d48611e286
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9fc22e35b2e435b6452f0f36c34687a15bee39c2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509000"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766425"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych dotyczących zgodności
 
@@ -141,6 +141,26 @@ Zdarzenia (Dołącz, inspekcji, Odmów, Wdrażaj) wyzwalane przez żądanie do u
 Kliknij prawym przyciskiem myszy w wierszu zdarzenia, o których chcesz zbierać szczegółowe informacje o, a następnie wybierz pozycję **Pokaż dzienniki aktywności**. Na stronie dziennik aktywności otwiera się i jest wstępnie filtrowane do wyszukiwanie przedstawiający szczegółowe informacje dotyczące przypisania i zdarzenia. Dziennik aktywności zawiera dodatkowy kontekst oraz informacje o tych zdarzeń.
 
 ![Dziennik aktywności zgodności zasad](../media/getting-compliance-data/compliance-activitylog.png)
+
+### <a name="change-history-preview"></a>Historia zmian (wersja zapoznawcza)
+
+Jako część nowego **publicznej wersji zapoznawczej**, ostatnich dni czternastu historię zmian są dostępne dla niezgodnych zasobów. Historię zmian zawiera szczegółowe informacje o, gdy wykryte zmiany i a _visual diff_ dla każdej zmiany. Wykrywanie zmian jest wyzwalany, gdy dodane, usunięte lub zmienione właściwości usługi Resource Manager niezgodnym zasobem.
+
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
+
+1. Na **Przegląd** lub **zgodności** wybierz zasadę, która jest _niezgodne_.
+
+1. W obszarze **zgodność zasobów** karcie **zgodność z zasadami** wybierz zasób, to _niezgodne_.
+
+1. Wybierz **historię zmian (wersja zapoznawcza)** karcie **zgodność zasobów** strony. Lista Wykryto zmiany, jeśli nie są wyświetlane wszelkie istnieje.
+
+   ![Historię zmian zasad — karta](../media/getting-compliance-data/change-history-tab.png)
+
+1. Wybierz jeden z wykryte zmiany. _Visual diff_ dla niezgodnych zasobów są przedstawione na **historię zmian** strony.
+
+   ![Historię zmian zasad — Visual Diff](../media/getting-compliance-data/change-history-visual-diff.png)
+
+_Visual diff_ aides do identyfikowania zmiany w zasobie. Wykryto zmiany mogą być niepowiązane z przyczyn zasób powinien być niezgodne do wybranych zasad.
 
 ## <a name="command-line"></a>Wiersz polecenia
 

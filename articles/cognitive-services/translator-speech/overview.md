@@ -10,12 +10,12 @@ ms.subservice: translator-speech
 ms.topic: overview
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: e2fd6f88f34ac34ea304b5298940f317b4c0d37e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1983ecbdee3d15efc73ad395fd07cbc7cd4f279c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472494"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769729"
 ---
 # <a name="what-is-translator-speech-api"></a>Co to jest interfejs API tłumaczenia mowy w usłudze Translator?
 
@@ -23,7 +23,7 @@ ms.locfileid: "55472494"
 
 Interfejs API tłumaczenia mowy w usłudze Translator może być używany w celu dodawania kompleksowych tłumaczeń mowy w czasie rzeczywistym do aplikacji, narzędzi i dowolnych rozwiązań wymagających usługi tłumaczenia mowy obsługującej wiele języków niezależnie od docelowego systemu operacyjnego lub języków programowania. Interfejs API może służyć do tłumaczeń polegających na zamianie mowy na mowę i mowy na tekst.
 
-Interfejs API tłumaczenia tekstu w usłudze Translator to usługa platformy Azure stanowiąca część [kolekcji interfejsów API usług Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive), zbioru algorytmów uczenia maszynowego i sztucznej inteligencji w chmurze, który można łatwo wykorzystać w swoich projektach programistycznych.
+Interfejs API tłumaczenia tekstu w usłudze Translator to usługa platformy Azure stanowiąca część [kolekcji interfejsów API usług Cognitive Services](https://docs.microsoft.com/azure/), zbioru algorytmów uczenia maszynowego i sztucznej inteligencji w chmurze, który można łatwo wykorzystać w swoich projektach programistycznych.
 
 Za pomocą interfejsu API tłumaczenia mowy w usłudze Translator aplikacje klienckie przesyłają strumieniowo dźwięk mowy do usługi i odbierają strumień wyników opartych na tekście i dźwięku, które obejmują rozpoznany tekst w języku źródłowym i jego tłumaczenie w języku docelowym. Wyniki tekstowe są tworzone przez zastosowanie automatycznego rozpoznawania mowy (ASR, Automatic Speech Recognition) obsługiwanego przez głębokie sieci neuronowe do przychodzącego strumienia audio. Nieprzetworzone dane wyjściowe funkcji ASR są ulepszane w jeszcze większym stopniu dzięki użyciu nowej techniki o nazwie TrueText, aby lepiej odzwierciedlać intencję użytkownika. Na przykład technika TrueText usuwa dźwięki zakłócające mowę (chrząknięcia i odkasływanie) i powtarzające się wyrazy oraz przywraca odpowiednie znaki interpunkcyjne oraz wielkość liter. Oferuje ona również możliwość maskowania lub wykluczania przekleństw. Aparaty rozpoznawania i tłumaczenia są specjalnie uczone pod kątem obsługi rozmów. 
 
@@ -66,6 +66,6 @@ Dowiedz się więcej o [sposobie działania technologii NMT](https://www.microso
 > [Rozpoczynanie kodowania](quickstarts/csharp.md)
 
 ## <a name="see-also"></a>Zobacz też
-- [Strona dokumentacji usług Cognitive Services](https://docs.microsoft.com/azure/#pivot=products&panel=cognitive)
+- [Strona dokumentacji usług Cognitive Services](https://docs.microsoft.com/azure/)
 - [Strona produktu usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)
 - [Informacje o rozwiązaniach i cenach](https://www.microsoft.com/en-us/translator/home.aspx) 

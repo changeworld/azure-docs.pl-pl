@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b59bb835c9858c6e47b8bb3a3518086e887d0d84
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ba64ecc334d93c8ff973345cfd10ed12436d3fb6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542836"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813912"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Uruchamianie zadań w ramach kont użytkowników w usłudze Batch
 
@@ -66,7 +66,7 @@ Konto użytkownika podniesienie poziomu wskazuje, czy zadanie jest uruchamiane z
 
 Domyślnie zadania uruchamiane w usłudze Batch przy użyciu konta użytkownika automatycznie jako użytkownik standardowy bez podwyższonego poziomu dostępu, a także w zakresie zadania. Gdy specyfikacja automatycznie niezwiązanych z użytkownikiem jest skonfigurowany dla zakresu zadań, usługa Batch tworzy konto użytkownika automatycznie tylko tego zadania.
 
-Alternatywa dla zakresu zadań jest zakres puli. Gdy specyfikacji automatycznie użytkownika dla zadania jest skonfigurowany dla zakresu w puli, zadanie jest uruchamiane na koncie użytkownika automatycznie dostępne dla dowolnego zadania w puli. Aby uzyskać więcej informacji na temat zakresu w puli, zobacz sekcję pod tytułem [uruchomienia zadania jako użytkownik automatycznie zakresie puli](#run-a-task-as-the-autouser-with-pool-scope).   
+Alternatywa dla zakresu zadań jest zakres puli. Gdy specyfikacji automatycznie użytkownika dla zadania jest skonfigurowany dla zakresu w puli, zadanie jest uruchamiane na koncie użytkownika automatycznie dostępne dla dowolnego zadania w puli. Aby uzyskać więcej informacji na temat zakresu w puli zobacz sekcję pod tytułem wykonywania zadania jako użytkownik automatycznie zakresie puli.   
 
 Domyślny zakres różni się w węzłach Windows i Linux:
 

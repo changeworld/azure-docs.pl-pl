@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 93534cf80a007dbb848a515ec4ec165c67e3b456
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: deca97b0749ceab9f2dfaf3c3940ac6b02b9c104
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730700"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822191"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -52,7 +52,7 @@ Podczas tworzenia maszyny wirtualnej przy użyciu witryny Azure portal, w portal
     |Przypisanie prywatnego adresu IP|Yes| W tym ustawieniu wybrać metodę przypisywania dla adresu IPv4. Wybierz jedną z następujących metod przypisania: **Dynamiczne:** Po wybraniu tej opcji, Azure automatycznie przypisuje następny dostępny adres z przestrzeni adresowej podsieci, w której wybrano. **Statyczna:** Po wybraniu tej opcji, należy ręcznie przypisać dostępne z adresu IP w przestrzeni adresowej podsieci, w której wybrano. Nie należy zmieniać adresów statycznych i dynamicznych, aż do ich zmiany lub usunięcia interfejsu sieciowego. Można zmienić metodę przypisywania po utworzeniu interfejsu sieciowego. Serwer Azure DHCP przypisuje ten adres z interfejsem sieciowym, w ramach systemu operacyjnego maszyny wirtualnej.|
     |Sieciowa grupa zabezpieczeń|Nie| Pozostaw wartość **Brak**, wybierz istniejącą [sieciowej grupy zabezpieczeń](security-overview.md), lub [Utwórz sieciową grupę zabezpieczeń](tutorial-filter-network-traffic.md). Sieciowe grupy zabezpieczeń umożliwiają do filtrowania ruchu sieciowego do i z interfejsem sieciowym. Zero lub jeden sieciowej grupy zabezpieczeń można stosować do interfejsu sieciowego. Zero lub jedna grupa zabezpieczeń sieci można również będą stosowane do podsieci, w której interfejs sieciowy jest przypisany do. Gdy sieciowa grupa zabezpieczeń jest stosowana do karty sieciowej i podsieci, w której interfejs sieciowy jest przypisany do, występuje czasami nieoczekiwane wyniki. Aby rozwiązać problemy sieciowe grupy zabezpieczeń stosowane do interfejsów sieciowych i podsieci, zobacz [Rozwiązywanie problemów z sieciowymi grupami zabezpieczeń](diagnose-network-traffic-filter-problem.md).|
     |Subskrypcja|Yes|Wybierz jedną z subskrypcji platformy Azure [subskrypcje](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription). Maszyny wirtualnej, dołączenie do interfejsu sieciowego i sieci wirtualnej, z którymi są nawiązywane połączenia muszą istnieć w tej samej subskrypcji.|
-    |Prywatny adres IP (IPv6)|Nie| Jeśli zaznaczysz to pole wyboru, adres IPv6 jest przypisany do interfejsu sieciowego, oprócz adres IPv4 przypisany do interfejsu sieciowego. Zobacz [IPv6](#IPv6) dalszej części tego artykułu, aby uzyskać ważne informacje na temat używania protokołu IPv6 z interfejsami sieciowymi. Nie można wybrać metodę przypisywania adresów IPv6. Jeśli chcesz przypisać adresu IPv6 jest przypisana metoda dynamiczna.
+    |Prywatny adres IP (IPv6)|Nie| Jeśli zaznaczysz to pole wyboru, adres IPv6 jest przypisany do interfejsu sieciowego, oprócz adres IPv4 przypisany do interfejsu sieciowego. Zobacz sekcję IPv6 w tym artykule, aby uzyskać ważne informacje na temat używania protokołu IPv6 z interfejsami sieciowymi. Nie można wybrać metodę przypisywania adresów IPv6. Jeśli chcesz przypisać adresu IPv6 jest przypisana metoda dynamiczna.
     |Nazwa IPv6 (pojawia się wtedy kiedy **prywatny adres IP (IPv6)** pole wyboru jest zaznaczone) |Tak, jeśli **prywatny adres IP (IPv6)** po zaznaczeniu pola wyboru.| Ta nazwa jest przypisany do pomocniczej konfiguracji adresów IP dla interfejsu sieciowego. Aby dowiedzieć się więcej na temat konfiguracji adresu IP, zobacz [wyświetlić ustawienia interfejsu sieciowego](#view-network-interface-settings).|
     |Grupa zasobów|Yes|Wybierz istniejącą [grupy zasobów](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) lub utworzyć nowe. Interfejs sieciowy może znajdować się w grupie zasobów w tej samej lub innej niż maszyna wirtualna, które można dołączyć, lub sieć wirtualną można ją połączyć.|
     |Lokalizacja|Yes|Maszyna wirtualna, możesz dołączyć do interfejsu sieciowego i sieci wirtualnej, połącz go musi istnieć w tym samym [lokalizacji](https://azure.microsoft.com/regions), nazywany również region.|

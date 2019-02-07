@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: barbkess
-ms.openlocfilehash: 02c25490ba19521715b48dc7ec92861078332a48
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 236ba7e2a76e95f3a78457fbdb0b49fd82e20b36
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731788"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815408"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-an-azure-ad-gallery-application"></a>Jak skonfigurować hasło logowania jednokrotnego dla aplikacji galerii usługi Azure AD
 
@@ -50,7 +50,7 @@ Aby skonfigurować aplikację z galerii usługi Azure AD, które należy:
 
 -   [Konfigurowanie aplikacji dla hasła logowania jednokrotnego](#configure-the-application-for-password-single-sign-on)
 
--   [Przypisz aplikację do użytkownika lub grupy](#assign-the-application-to-a-user-or-a-group)
+-   Przypisz aplikację do użytkownika lub grupy
 
     -   [Bezpośrednio przypisać użytkownika do aplikacji](#assign-a-user-to-an-application-directly)
 

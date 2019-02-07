@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: f51ce90d9349d345bb1e77ca5e254315c20c1b1d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54034476"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816632"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Połączyć z usługą Azure Cosmos DB za pomocą narzędzi analitycznych do analizy Biznesowej ze sterownikiem ODBC
 
@@ -71,8 +71,8 @@ Zacznijmy od sterownika ODBC.
     - **Liczba ponownych prób**: Wprowadź liczbę ponownych prób operacji, jeśli żądania wstępnego nie została zakończona z powodu ograniczania szybkości usług.
     - **Plik schematu**: W tym miejscu masz kilka opcji.
         - Domyślnie ten wpis jest (pusty), pozostawiając sterownik skanuje pierwszej strony danych dla wszystkich kolekcji ustalić schemat każdej kolekcji. Jest to nazywane mapowanie kolekcji. Nie zdefiniowano pliku schematu sterownik ma skanowania dla każdej sesji sterowników i może spowodować wyższe czas uruchamiania aplikacji przy użyciu nazwy DSN. Firma Microsoft zaleca, zawsze skojarzenie pliku schematu dla nazwy DSN.
-        - Jeśli masz już plik schematu (prawdopodobnie takie, które zostały utworzone za pomocą [Edytor schematów](#schema-editor)), możesz kliknąć pozycję **Przeglądaj**, przejdź do pliku, kliknij przycisk **Zapisz**, a następnie kliknij przycisk **OK**.
-        - Jeśli chcesz utworzyć nowy schemat, kliknij przycisk **OK**, a następnie kliknij przycisk **Edytor schematów** w głównym oknie. Następnie przejdź do [Edytor schematów](#schema-editor) informacji. Po utworzeniu nowego pliku schematu, pamiętaj, aby przejść z powrotem do **zaawansowane opcje** okna, aby dołączyć plik schematu nowo utworzony.
+        - Jeśli masz już plik schematu (prawdopodobnie jeden, utworzony za pomocą edytora schemat), możesz kliknąć **Przeglądaj**, przejdź do pliku, kliknij przycisk **Zapisz**, a następnie kliknij przycisk **OK**.
+        - Jeśli chcesz utworzyć nowy schemat, kliknij przycisk **OK**, a następnie kliknij przycisk **Edytor schematów** w głównym oknie. Następnie należy przejść do informacji Edytor schematów. Po utworzeniu nowego pliku schematu, pamiętaj, aby przejść z powrotem do **zaawansowane opcje** okna, aby dołączyć plik schematu nowo utworzony.
 
 1. Po ukończeniu i Zamknij **ustawienia DSN sterownika ODBC usługi Azure Cosmos DB** oknie nowego użytkownika nazwy DSN jest dodawany do karty DSN użytkownika.
 

@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 02/06/2019
 ms.author: banders
-ms.openlocfilehash: 14b6125bd1467efcd6120bc367a7042ad29552bb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a93bfd8f71c515bdd5112170f27336a0df62c6e5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744504"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818859"
 ---
 # <a name="what-are-azure-reservations"></a>Co to jest Azure Reservations?
 
-Rezerwacje platformy Azure pomoże Ci zaoszczędzić pieniądze, płacąc wstępnie za rok lub trzy lata maszyny wirtualnej, aby uzyskać moc obliczeniową bazy danych SQL, przepływności usługi Azure Cosmos DB lub innych zasobów platformy Azure. Wstępnie płacenia pozwala uzyskać rabat na zasoby, których używasz. Rezerwacje mogą znacznie zmniejszyć maszynę wirtualną, mocy obliczeniowej z bazy danych SQL, Azure Cosmos DB lub innego zasobu koszty do 72% przy cenach zgodnie z rzeczywistym użyciem w. Rezerwacje Podaj rozliczeń rabat, a nie wpływają na stan środowiska uruchomieniowego zasobów.
+Rezerwacje platformy Azure ułatwiają Oszczędzaj pieniądze, wstępnie płacenia za rok lub trzy lata maszyny wirtualne, bazy danych SQL obliczeniowych, pojemność przepływności usługi Azure Cosmos DB i innych zasobów platformy Azure. Wstępnie płacenia pozwala uzyskać rabat na zasoby, których używasz. Rezerwacje mogą znacznie zmniejszyć maszynę wirtualną, mocy obliczeniowej z bazy danych SQL, Azure Cosmos DB lub innego zasobu koszty do 72% przy cenach zgodnie z rzeczywistym użyciem w. Rezerwacje Podaj rozliczeń rabat, a nie wpływają na stan środowiska uruchomieniowego zasobów.
 
 Możesz kupić rezerwację [witryny Azure portal](https://aka.ms/reservations). Aby uzyskać więcej informacji, zobacz następujące tematy:
 
@@ -38,24 +38,23 @@ Jeśli masz maszyny wirtualne, usługi Azure Cosmos DB lub baz danych SQL, dzia�
 
 - Rezerwacja wystąpienia maszyny wirtualnej: Rezerwacja obejmuje jedynie koszty operacji obliczeniowych maszyn wirtualnych. Nie omówiono dodatkowe opłaty za oprogramowanie, sieci i magazynu.
 - Bazy danych SQL zastrzeżone rdzeniach wirtualnych: Tylko koszty operacji obliczeniowych są dołączone do rezerwacji. Licencja jest rozliczana osobno.
-- Usługa Azure Cosmos DB wydajności rezerwowej: Rezerwacja obejmuje przepływnością aprowizowaną dla zasobów, nie obejmuje koszty magazynu i sieci.
+- Usługa Azure Cosmos DB wydajności rezerwowej: Rezerwacja obejmuje przepływnością aprowizowaną dla zasobów, nie omówiono opłaty za magazyn i sieć.
 
 Dla maszyn wirtualnych Windows i usługi SQL Database, mogą obejmują koszty licencjonowania z [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 ## <a name="whos-eligible-to-purchase-a-reservation"></a>Kto może skorzystać kupić rezerwację?
 
-Klienci platformy Azure z tego typu subskrypcji kupić rezerwację:
+Klienci platformy Azure z następujących typów subskrypcji kupić rezerwację:
 
 - Enterprise agreement typu oferty subskrypcji (MS-AZR - 0017P lub MS-AZR - 0148P).
 - Płatność za rzeczywiste użycie typu oferty subskrypcji (MS-AZR - 003P lub MS-AZR - 0023P).
-- Partnerzy programu cloud Solution Provider (CSP), można użyć witryny Azure portal lub [Centrum partnerskiego](https://docs.microsoft.com/partner-center/azure-reservations) do zakupu rezerwacji platformy Azure.
+- Partnerzy programu cloud Solution Provider (CSP) mogą korzystać z portalu Azure lub [Centrum partnerskiego](https://docs.microsoft.com/partner-center/azure-reservations) do zakupu rezerwacji platformy Azure.
 
 Rabat związany z rezerwacją dotyczy tylko zasobów skojarzonych z typów subskrypcji Enterprise, płatność za rzeczywiste użycie lub dostawcy usług Kryptograficznych.
 
  Aby kupić plan:
 
 - Musisz być w roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.
-- W przypadku subskrypcji Enterprise **Dodawanie wystąpień zarezerwowanych** musi być włączona w [portalu EA portal](https://ea.azure.com). Lub, jeśli to ustawienie jest wyłączone, musi być administratorem subskrypcji umowy EA.
 
 ## <a name="how-is-a-reservation-billed"></a>Jak jest rozliczana rezerwacji
 
@@ -69,7 +68,7 @@ Rabat związany z rezerwacją dotyczy tylko zasobów skojarzonych z typów subsk
 
 Aby lepiej zrozumieć, jak rezerwacje wpływa na rozliczeniami, zobacz następujące tematy:
 
--  [Świadomość, że Azure Reserved VM Instances rabatów](billing-understand-vm-reservation-charges.md)
+- [Świadomość, że Azure Reserved VM Instances rabatów](billing-understand-vm-reservation-charges.md)
 - [Zrozumienie rabat związany z rezerwacją platformy Azure](billing-understand-vm-reservation-charges.md)
 - [Omówienie usługi Azure Cosmos DB rabat związany z rezerwacją](billing-understand-cosmosdb-reservation-charges.md)
 - [Opis rabat związany z rezerwacją platformy Azure i użycia z systemem SUSE](billing-understand-suse-reservation-charges.md)
@@ -87,18 +86,16 @@ W przypadku dokonywania zakupu rezerwacji, Rabat można stosować do innych wyst
 - Wydajności rezerwowej bazy danych SQL: Pokrycie Rabat zależy od warstwy wydajności, które można wybrać. Aby uzyskać więcej informacji, zobacz [zrozumieć, jak jest stosowany rabat związany z rezerwacją Azure](billing-understand-reservation-charges.md).
 - Usługa Azure Cosmos DB wydajności rezerwowej: Pokrycie Rabat zależy od aprowizowanej przepływności. Aby uzyskać więcej informacji, zobacz [zrozumieć, jak stosowany jest rabat związany z rezerwacją usługi Azure Cosmos DB](billing-understand-cosmosdb-reservation-charges.md).
 
-## <a name="next-steps"></a>Kolejne kroki
-
-Rozpoczęcie zapisywania na maszynach wirtualnych, kupując [wystąpienia zarezerwowanego maszyny Wirtualnej](../virtual-machines/windows/prepay-reserved-vm-instances.md), [wydajności rezerwowej bazy danych SQL](../sql-database/sql-database-reserved-capacity.md), lub [wydajności rezerwowej usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md).
-
-Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
-
-- [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
-- [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
-- [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
-- [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)
-- [Rezerwacje platformy Azure w programie partnera Centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)
-
 ## <a name="need-help-contact-us"></a>Potrzebujesz pomocy? Skontaktuj się z nami.
 
 Jeśli masz pytania lub potrzebujesz pomocy, [Utwórz żądanie obsługi](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Rozpoczęcie zapisywania na maszynach wirtualnych, kupując [wystąpienia zarezerwowanego maszyny Wirtualnej](../virtual-machines/windows/prepay-reserved-vm-instances.md), [wydajności rezerwowej bazy danych SQL](../sql-database/sql-database-reserved-capacity.md), lub [wydajności rezerwowej usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md).
+- Dowiedz się więcej o Azure rezerwacji z następujących artykułów:
+    - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
+    - [Opis zastrzeżenia dla Twojej subskrypcji zgodnie z rzeczywistym użyciem](billing-understand-reserved-instance-usage.md)
+    - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
+    - [Koszty oprogramowania Windows nie jest dołączony do rezerwacji](billing-reserved-instance-windows-software-costs.md)
+    - [Rezerwacje platformy Azure w programie partnera Centrum Cloud Solution Provider (CSP)](https://docs.microsoft.com/partner-center/azure-reservations)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ''
 ms.date: 06/12/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2c7d6f75b9f2d6932ae3c8de863ad277fea8ffe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 420f69e246b322eff28b56237613cea250be7530
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460543"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766558"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Zadania obejmujące wiele wystąpień umożliwiają uruchamianie aplikacji interfejsu przekazywania komunikatów (MPI) w usłudze Batch
 
@@ -49,7 +49,7 @@ Gdy prześlesz zadanie przy użyciu ustawienia wielu wystąpień do zadania usł
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>Wymagania dotyczące zadania obejmujące wiele wystąpień
-Zadania obejmujące wiele wystąpień wymagają puli z **komunikacji między węzłami włączone**i **wykonywania zadań jednoczesnych wyłączone**. Aby wyłączyć wykonywanie zadań jednoczesnych, ustaw [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool#Microsoft_Azure_Batch_CloudPool_MaxTasksPerComputeNode) właściwości na wartość 1.
+Zadania obejmujące wiele wystąpień wymagają puli z **komunikacji między węzłami włączone**i **wykonywania zadań jednoczesnych wyłączone**. Aby wyłączyć wykonywanie zadań jednoczesnych, ustaw [CloudPool.MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) właściwości na wartość 1.
 
 > [!NOTE]
 > Batch [limity](batch-quota-limit.md#other-limits) rozmiar puli, który ma włączoną komunikacji między węzłami.

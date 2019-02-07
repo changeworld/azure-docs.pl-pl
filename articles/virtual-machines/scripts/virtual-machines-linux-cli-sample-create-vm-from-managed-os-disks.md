@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: 319803a8b6c07de6efafa80789248c60a9cdad06
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3ec3d152864ab8caf9f0c68966b6d4f8fd9e64dd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241445"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695240"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Tworzenie maszyny wirtualnej przy użyciu istniejącego zarządzanego dysku systemu operacyjnego za pomocą interfejsu wiersza polecenia
 
@@ -52,8 +52,8 @@ Ten skrypt używa następujących poleceń w celu uzyskania właściwości dysku
 
 | Polecenie | Uwagi |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | Pobiera właściwości dysku zarządzanego przy użyciu nazwy dysku i nazwy grupy zasobów. W celu dołączenia dysku zarządzanego do nowej maszyny wirtualnej jest używana właściwość Id |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | Tworzy maszynę wirtualną przy użyciu zarządzanego dysku systemu operacyjnego. |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk) | Pobiera właściwości dysku zarządzanego przy użyciu nazwy dysku i nazwy grupy zasobów. W celu dołączenia dysku zarządzanego do nowej maszyny wirtualnej jest używana właściwość Id |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm) | Tworzy maszynę wirtualną przy użyciu zarządzanego dysku systemu operacyjnego. |
 ## <a name="next-steps"></a>Następne kroki
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [dokumentację interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure).

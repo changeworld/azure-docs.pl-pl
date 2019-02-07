@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8232a197b7916c069ef17393e44a4f9a512a7598
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264686"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818536"
 ---
 # <a name="requirements-by-listing-type"></a>Wymagania dotyczące przez typ oferty  
 Wymagania techniczne i marketingowe zawartości zależą od storefront, typ oferty i typ oferty. Przejrzyj następujące specyfikacje, aby sprawdzić zgodność.  
@@ -64,17 +64,17 @@ Listy Typ oferty w portalu marketplace dostępne są następujące typy oferty n
 
 | Typ oferty | Witryna sklepu | Szczegóły |  
 |:---        |:---        |:---     |  
-| Usługi doradcze | AppSource | [Wymagania: AppSource: List: Consulting Services](#requirements-appsource-list-consulting-services) |  
-| Usługi doradcze | Azure Marketplace | [Wymagania: Azure Marketplace: List: Consulting Services](#requirements-azure-marketplace-list-consulting-services) |  
+| Usługi doradcze | AppSource | Wymagania: AppSource: List: Usługi doradcze |  
+| Usługi doradcze | Azure Marketplace | Wymagania: Azure Marketplace: List: Usługi doradcze |  
 | Kontakt ze mną | AppSource | [](#) |  
-| Kontakt ze mną | Azure Marketplace | [Wymagania: AppSource: List: Kontakt ze mną](#requirements-azure-marketplace-list-contact-me) |  
+| Kontakt ze mną | Azure Marketplace | Wymagania: AppSource: List: Kontakt ze mną |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Wymagania: AppSource: List: Usługa DORADCZA  
 
 | Wymagania | Szczegóły |  
 |:--- |:--- |  
 | Charakterystyki oferty usługi | Usługi doradcze musi spełniać następujące kryteria.<ul> <li>Dostarczaj zaangażowania ustalony zakres, czas, stałej cenie (lub wolne).</li> <li>Orient przede wszystkim dla przedsprzedaży.</li> <li>Ogranicz do jednego klienta.</li> <li>Należy przeprowadzić w lokacji.</li> </ul> |  
-| Partner wymagania dotyczące usług doradczych | Spełniasz kryteria, które w obszarze odpowiednie dla Twojej usługi.<table><tr><th>Obszar rozwiązania</th><th>Kryteria</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Mieć kompetencję na poziomie Silver lub Gold zarządzania relacjami z klientami chmury.</td></tr><tr><td>Dynamics 365 for Finance and Operations, wersja Enterprise</td><td>Mieć kompetencję na poziomie Silver lub Gold Planowanie zasobów przedsiębiorstwa i przychody od operacji w chmurze w końcu 12 miesięcy najmniej 25 000 USD.</td></tr><tr><td>Dynamics 365 for Finance and Operations, wersja Business</td><td>Służą jako dostawca usług chmury (CSP) lub cyfrowego partnera z rekordu (jako uprawniony partner CYFROWY) dla jednego lub więcej klientów.</td></tr><tr><td>Power BI</td><td>Spełnia kryteria partnera z zakresu rozwiązań.</td></tr><tr><td>PowerApps</td><td>Ma to rozwiązanie pokaz partnerów.</td></tr></table><ul> <li>Aby uzyskać więcej informacji na temat zarządzania relacjami z klientami, odwiedź stronę chmury zarządzania relacjami z klientami strony znajduje się w [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Aby uzyskać więcej informacji o planowaniu zasobów, odwiedź stronę planowania zasobów przedsiębiorstwa strony znajduje się w [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>Aby uzyskać więcej informacji o dostawcy usług Kryptograficznych, odwiedź witrynę dostawcy usług w chmurze strony znajduje się w [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Aby uzyskać więcej informacji na temat jako uprawniony partner CYFROWY, odwiedź stronę Digital Partner of Record i skojarzenie partnera strony znajduje się w [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Aby uzyskać więcej informacji na temat rozwiązania partnera kryteria, odwiedź stronę Partner — Przegląd rozwiązania i zachęty dokumencie znajdującym się w [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx? SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Aby uzyskać więcej informacji na temat pokaz partnerów można znaleźć pokaz partnerów strony znajduje się w [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
+| Partner wymagania dotyczące usług doradczych | Spełniasz kryteria, które w obszarze odpowiednie dla Twojej usługi.<table><tr><th>Obszar rozwiązania</th><th>Kryteria</th></tr><tr><td>Dynamics 365 for Customer Engagement</td><td>Mieć kompetencję na poziomie Silver lub Gold zarządzania relacjami z klientami chmury.</td></tr><tr><td>Dynamics 365 for Finance and Operations, wersja Enterprise</td><td>Mieć kompetencję na poziomie Silver lub Gold Planowanie zasobów przedsiębiorstwa i przychody od operacji w chmurze w końcu 12 miesięcy najmniej 25 000 USD.</td></tr><tr><td>Dynamics 365 for Finance and Operations, wersja Business</td><td>Służą jako dostawca usług chmury (CSP) lub cyfrowego partnera z rekordu (jako uprawniony partner CYFROWY) dla jednego lub więcej klientów.</td></tr><tr><td>Power BI</td><td>Spełnia kryteria partnera z zakresu rozwiązań.</td></tr><tr><td>PowerApps</td><td>Ma to rozwiązanie pokaz partnerów.</td></tr></table><ul> <li>Aby uzyskać więcej informacji na temat zarządzania relacjami z klientami, odwiedź stronę chmury zarządzania relacjami z klientami strony znajduje się w [partner.microsoft.com/membership/cloud-customer-relationship-management-competency](https://partner.microsoft.com/membership/cloud-customer-relationship-management-competency).</li> <li>Aby uzyskać więcej informacji o planowaniu zasobów, odwiedź stronę planowania zasobów przedsiębiorstwa strony znajduje się w [partner.microsoft.com/membership/enterprise-resource-planning-competency](https://partner.microsoft.com/membership/enterprise-resource-planning-competency).</li> <li>Aby uzyskać więcej informacji o dostawcy usług Kryptograficznych, odwiedź witrynę dostawcy usług w chmurze strony znajduje się w [partner.microsoft.com/cloud-solution-provider](https://partner.microsoft.com/cloud-solution-provider).</li> <li>Aby uzyskać więcej informacji na temat jako uprawniony partner CYFROWY, odwiedź stronę Digital Partner of Record i skojarzenie partnera strony znajduje się w [partner.microsoft.com/membership/digital-partner-of-record](https://partner.microsoft.com/membership/digital-partner-of-record).</li> <li>Aby uzyskać więcej informacji na temat rozwiązania partnera kryteria, odwiedź stronę Partner — Przegląd rozwiązania i zachęty dokumencie znajdującym się w [www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Power%20BI%20Program%20Overview%20%26%20Incentives.pdf).</li> <li>Aby uzyskać więcej informacji na temat pokaz partnerów można znaleźć pokaz partnerów strony znajduje się w [powerapps.microsoft.com/partner-showcase](https://powerapps.microsoft.com/partner-showcase).</li> </ul> |  
 
 #### <a name="requirements-azure-marketplace-list-consulting-service"></a>Wymagania: Azure Marketplace: List: Usługa DORADCZA  
 
@@ -91,11 +91,11 @@ Listy Typ oferty w portalu marketplace dostępne są następujące typy oferty n
 
 | Typ oferty | Witryna sklepu | Szczegóły |  
 |:---        |:---        |:---     |  
-| Bezpłatne / wersja próbna SaaS | AppSource | [Wymagania dotyczące typu listy: Trial](#listing-type-requirements-trial) |  
-| Bezpłatne / wersja próbna SaaS | Azure Marketplace | [Wymagania: Azure Marketplace: Trial: Bezpłatna wersja próbna / wersja próbna SaaS](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| Interaktywna demonstracja | AppSource | [Wymagania dotyczące typu listy: Trial](#listing-type-requirements-trial) |  
+| Bezpłatne / wersja próbna SaaS | AppSource | Wymagania dotyczące typu listy: Wersja próbna |  
+| Bezpłatne / wersja próbna SaaS | Azure Marketplace | Wymagania: Azure Marketplace: Trial: Bezpłatna wersja próbna / wersja próbna SaaS |  
+| Interaktywna demonstracja | AppSource | Wymagania dotyczące typu listy: Wersja próbna |  
 | Interaktywna demonstracja | Azure Marketplace | [Wymagania: Azure Marketplace: Trial: Interaktywna demonstracja](#requirements-azure-marketplace-trial-interactive-demo) |  
-| Wersja testowa | AppSource | [Wymagania dotyczące typu listy: Trial](#listing-type-requirements-trial) |  
+| Wersja testowa | AppSource | Wymagania dotyczące typu listy: Wersja próbna |  
 | Wersja testowa | Azure Marketplace | [Wymagania: Azure Marketplace: Trial: Wersja testowa](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Wymagania: Azure Marketplace: Wersja próbna  
@@ -133,8 +133,8 @@ Listy Typ oferty w portalu marketplace dostępne są następujące typy oferty n
 
 | Typ oferty | Witryna sklepu | Szczegóły |   
 |:---        |:---        | :--- |  
-| Aplikacje platformy Azure: Aplikacje zarządzane | Azure Marketplace | [Wymagania: Azure Marketplace: Przeprowadzaj transakcje: Aplikacje platformy Azure: Aplikacje zarządzane](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Aplikacje platformy Azure: Szablon rozwiązania | Azure Marketplace | [Wymagania: Azure Marketplace: Przeprowadzaj transakcje: Aplikacje platformy Azure: Szablon rozwiązania](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Aplikacje platformy Azure: Aplikacje zarządzane | Azure Marketplace | Wymagania: Azure Marketplace: Przeprowadzaj transakcje: Aplikacje platformy Azure: Aplikacje zarządzane |  
+| Aplikacje platformy Azure: Szablon rozwiązania | Azure Marketplace | Wymagania: Azure Marketplace: Przeprowadzaj transakcje: Aplikacje platformy Azure: Szablon rozwiązania |  
 | Containers | Azure Marketplace | [Wymagania: Azure Marketplace: Przeprowadzaj transakcje: Kontener](#requirements-azure-marketplace-transact-container) |  
 | Aplikacja SaaS  | Azure Marketplace | [Wymagania: Azure Marketplace: Przeprowadzaj transakcje: Aplikacja SaaS](#requirements-azure-marketplace-transact-saas-app) |  
 | Maszyna wirtualna | Azure Marketplace | [Wymagania: Azure Marketplace: Przeprowadzaj transakcje: Maszyna wirtualna](#requirements-azure-marketplace-transact-virtual-machine) |  

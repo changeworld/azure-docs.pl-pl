@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 805f8d55b1627ad12ce58e8a64728a42867a858e
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e1eced2d00737a950ed441bd83614d9d6d0b9230
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53260620"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731278"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Szybki start: tworzenie pokoju rozmów za pomocą usługi SignalR Service
 
@@ -97,7 +97,7 @@ W tej sekcji dodasz narzędzie [Secret Manager](https://docs.microsoft.com/aspne
 
     Narzędzie Secret Manager będzie służyć do testowania aplikacji internetowej, tylko gdy będzie hostowana lokalnie. W późniejszym samouczku wdrożysz aplikację internetową do rozmów na platformie Azure. Po wdrożeniu aplikacji internetowej na platformie Azure użyjesz ustawienia aplikacji zamiast zapisywania parametrów połączenia za pomocą narzędzia Secret Manager.
 
-    Dostęp do tego wpisu tajnego można uzyskać za pomocą interfejsu API konfiguracji. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0#configuration-by-environment). 
+    Dostęp do tego wpisu tajnego można uzyskać za pomocą interfejsu API konfiguracji. Dwukropek (:) działa w nazwie konfiguracji z interfejsem API konfiguracji na wszystkich obsługiwanych platformach. Zobacz [Konfiguracja przez środowisko](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0). 
 
 
 4. Otwórz plik *Startup.cs* i zaktualizuj metodę `ConfigureServices` tak, aby używała usługi SignalR Service przez wywołanie metody `services.AddSignalR().AddAzureSignalR()`:

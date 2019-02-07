@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 4dba6aff2002c1f17055cd647be94c4d8f644ad7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: feaedff2cb9f8eae30fd17c497b4a2f6de490b07
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992204"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822599"
 ---
 # <a name="administer-your-iot-central-application"></a>Zarządzać aplikacją IoT Central
 
@@ -70,7 +70,7 @@ Użyj **Usuń** przycisk, aby trwale usunąć aplikację IoT Central. W ten spos
 
 Każdy użytkownik musi mieć konto użytkownika, zanim Zaloguj się i uzyskać dostęp do aplikacji usługi Azure IoT Central. Accounts Microsoft (MSA) i konta usługi Azure Active Directory (Azure AD) są obsługiwane w usłudze Azure IoT Central. Grupy usługi Azure Active Directory nie są obecnie obsługiwane w usłudze Azure IoT Central.
 
-Aby uzyskać więcej informacji, zobacz [pomocy konta firmy Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account) i [Szybki Start: dodawanie nowych użytkowników do usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
+Aby uzyskać więcej informacji, zobacz [pomocy konta firmy Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account) i [Szybki Start: Dodawanie nowych użytkowników do usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/add-users-azure-active-directory).
 
 1. Aby dodać użytkownika do aplikacji IoT Central, przejdź do **użytkowników** strony w **administracji** sekcji.
 
@@ -141,15 +141,15 @@ Aby ukończyć ten samoobsługowy proces, wykonaj następujące kroki:
 
 ## <a name="export-data"></a>Eksportowanie danych
 
-Aby umożliwić **ciągły Eksport danych** do wyeksportowania pomiarów, urządzeń i danych szablonów urządzenie do swojego konta magazynu obiektów Blob platformy Azure. Dowiedz się więcej o [sposób eksportowania danych](#howto-export-data).
+Aby umożliwić **ciągły Eksport danych** do wyeksportowania pomiarów, urządzeń i danych szablonów urządzenie do swojego konta magazynu obiektów Blob platformy Azure. Dowiedz się więcej na temat eksportowania danych.
 
 ## <a name="manage-device-connection"></a>Zarządzanie połączenie z urządzeniem
 
-Łączenie urządzeń na dużą skalę w Twojej aplikacji, w tym miejscu przy użyciu kluczy i certyfikatów. Dowiedz się więcej o [podłączania urządzeń](#concepts-connectivity).
+Łączenie urządzeń na dużą skalę w Twojej aplikacji, w tym miejscu przy użyciu kluczy i certyfikatów. Dowiedz się więcej na temat łączenia urządzeń.
 
 ## <a name="use-access-tokens"></a>Używanie tokenów dostępu
 
-Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany w propreties i ustawień. Dowiedz się więcej o [explorer IoT Central](#howto-use-iotc-explorer). 
+Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany w propreties i ustawień. Dowiedz się więcej o Eksploratorze IoT Central. 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Zestawy SDK platformy Azure na użytek operacje warstwy kontroli
 

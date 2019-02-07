@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 29997b2ff7d3834a91389790256cd0d075ce1ece
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744912"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768566"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -30,14 +30,6 @@ Usługa Azure Stream Analytics obsługuje usługi Azure SQL Database jako źród
 ### <a name="integration-with-azure-machine-learning"></a>Integracja z usługą Azure Machine Learning
 
 Możesz skalować zadania usługi Stream Analytics, za pomocą usługi Machine Learning () ml. Aby dowiedzieć się więcej na temat wykorzystania funkcji uczenia Maszynowego w ramach zadania usługi Stream Analytics, odwiedź stronę [skalować zadania usługi Stream Analytics przy użyciu funkcji usługi Azure Machine Learning](stream-analytics-scale-with-machine-learning-functions.md). Zapoznaj się z rzeczywistych scenariuszy za pomocą [przeprowadzania analizy tonacji za pomocą usługi Azure Stream Analytics i Azure Machine Learning](stream-analytics-machine-learning-integration-tutorial.md).
-
-### <a name="blob-output-partitioning-by-custom-time"></a>Dane wyjściowe obiektu blob partycjonowanie przez niestandardowy czas
-
-Usługa Azure Stream Analytics mogą przesyłać dane wyjściowe do magazynu obiektów blob, w oparciu o atrybuty niestandardowe czasu. Aby uzyskać więcej informacji, odwiedź stronę [blob niestandardowych usługi Azure Stream Analytics, partycjonowanie danych wyjściowych](stream-analytics-custom-path-patterns-blob-storage-output.md).
-
-### <a name="blob-output-partitioning-by-field-or-attribute"></a>Dane wyjściowe obiektu blob partycjonowanie według pola lub atrybutu
-
-Usługa Azure Stream Analytics mogą przesyłać dane wyjściowe do magazynu obiektów blob na podstawie pól niestandardowych lub atrybutów. Aby uzyskać więcej informacji, odwiedź stronę [blob niestandardowych usługi Azure Stream Analytics, partycjonowanie danych wyjściowych](stream-analytics-custom-path-patterns-blob-storage-output.md).
 
 ### <a name="javascript-user-defined-aggregate"></a>Agregacja zdefiniowana przez użytkownika języka JavaScript
 

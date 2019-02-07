@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.date: 08/09/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86c62c021c6668783b3f843a908f4b17845f8c72
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 0ea781188e40d6389da8188379d792c922d3bdca
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172990"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768354"
 ---
-# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Żądanie tokenów dostępu
+# <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: Żądanie tokeny dostępu
 
 Token dostępu (oznaczonego jako **dostępu\_tokenu** w odpowiedzi z usługi Azure AD B2C) jest formą token zabezpieczający, który klient może używać dostępu do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md), takich jak interfejs API sieci web. Tokeny dostępu są reprezentowane jako [tokenów Jwt](active-directory-b2c-reference-tokens.md) i zawierają informacje o serwerze zamierzony zasobów i udzielone uprawnienia do serwera. Podczas wywoływania serwera zasobów, token dostępu musi być obecne w żądaniu HTTP.
 
@@ -78,8 +78,15 @@ Podczas żądania tokenu dostępu, aplikacja kliencka musi określić odpowiedni
 > [!NOTE]
 > Obecnie domen niestandardowych nie są obsługiwane razem z tokenów dostępu. Należy użyć domeny tenantName.onmicrosoft.com w adresie URL żądania.
 
+W poniższym przykładzie Zastąp są następujące wartości:
+
+- `<tenant-name>` — Nazwa dzierżawy usługi Azure AD B2C.
+- `<policy-name>` — Nazwa przepływu niestandardowych zasad lub użytkownika.
+- `<application-ID>` — Identyfikator aplikacji dla aplikacji klienckiej, która została zarejestrowana.
+- `<redirect-uri>` **Identyfikator URI przekierowania** wprowadzona podczas rejestrowania aplikacji klienckiej.
+
 ```
-https://<tenantName>.b2clogin.com/tfp/<tenantName>.onmicrosoft.com/<yourPolicyId>/oauth2/v2.0/authorize?client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
+https://<tenant-name>.b2clogin.com/tfp/<tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/authorize?client_id=<application-ID>&nonce=anyRandomValue&redirect_uri=<redirect_uri>&scope=https%3A%2F%2F<tenant-name>.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
 Aby nabyć wiele uprawnień w tym samym żądaniu, można dodać wiele wpisów w jednej **zakres** parametru, rozdzielone spacjami. Na przykład:
@@ -114,7 +121,7 @@ Jeśli `response_type` parametru w `/authorize` żądanie zawiera `token`, `scop
 
 W pomyślnie minted **dostępu\_tokenu** (albo `/authorize` lub `/token` punktu końcowego), następujące oświadczenia będą znajdować się:
 
-| Name | Claim | Opis |
+| Name (Nazwa) | Claim | Opis |
 | --- | --- | --- |
 |Grupy odbiorców |`aud` |**Identyfikator aplikacji** z pojedynczego zasobu, którego token przyznaje dostęp. |
 |Zakres |`scp` |Uprawnienia udzielone do zasobu. Wiele udzielone uprawnienia będą rozdzielone spacjami. |

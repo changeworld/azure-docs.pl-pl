@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 150147a0fe0fdfcf2e6c9f2b780587749af1ded0
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: e1013047bb66581e7f9d26854f2cd91655c8bd93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857911"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810086"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Umożliwia dostęp do programu GRUB i tryb jednego użytkownika konsoli szeregowej
 Program GRUB jest sumy Unified programu inicjującego. Z programu GRUB są możliwość modyfikowania konfiguracji rozruchu do rozruchu w trybie jednego użytkownika, między innymi.
@@ -39,7 +39,7 @@ Należy upewnić się, że CHODNIKÓW jest włączona na maszynie Wirtualnej, ab
 Ponowne uruchamianie maszyny Wirtualnej za pomocą bloku konsoli szeregowej, otwórz może odbywać się przy użyciu SysRq `'b'` polecenia, jeśli [SysRq](./serial-console-nmi-sysrq.md) jest włączona lub przez kliknięcie przycisku ponownego uruchomienia znajdujący się w bloku przeglądu (Otwieranie maszyny Wirtualnej w nowej karcie przeglądarki, ponowne uruchomienie bez zamknięcia Blok konsoli szeregowej). Postępuj zgodnie z poniższymi instrukcjami specyficzne dla dystrybucji, aby dowiedzieć się, czego można oczekiwać od CHODNIKÓW, po ponownym uruchomieniu.
 
 ## <a name="general-single-user-mode-access"></a>Ogólnego dostępu tryb jednego użytkownika
-Ręczne dostęp do trybu jednego użytkownika mogą być potrzebne w sytuacjach, w których nie skonfigurowano konta przy użyciu uwierzytelniania hasła. Należy zmodyfikować konfigurację programu GRUB, aby ręcznie wprowadzić w trybie jednego użytkownika. Gdy to zrobisz, zobacz [tryb jednego użytkownika użycia zresetować lub Dodaj hasło](#-Use-Single-User-Mode-to-reset-or-add-a-password) uzyskać dalsze instrukcje.
+Ręczne dostęp do trybu jednego użytkownika mogą być potrzebne w sytuacjach, w których nie skonfigurowano konta przy użyciu uwierzytelniania hasła. Należy zmodyfikować konfigurację programu GRUB, aby ręcznie wprowadzić w trybie jednego użytkownika. Gdy to zrobisz, zobacz tryb jednego użytkownika użycia zresetować lub Dodaj hasło, aby uzyskać dalsze instrukcje.
 
 W przypadku gdy maszyna wirtualna nie uruchamia dystrybucje będzie często automatycznie pomijać możesz w trybie jednego użytkownika lub w trybie awaryjnym. Innych osób, jednak wymagają dodatkowej konfiguracji, zanim mogą porzucić możesz w trybie jednego użytkownika lub awaryjnego automatycznie (takich jak konfigurowanie hasła głównego).
 
@@ -103,7 +103,7 @@ Jeśli użytkownik nie powiodło się powyższe kroki, aby włączyć jako użyt
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-rhel-emergency-mount-no-root.gif)
 
-> Uwaga: Uruchomiona przy użyciu powyższych instrukcji spowoduje porzucenie należy do awaryjnego shell, dzięki czemu można również wykonywać zadania, takie jak edytowanie `fstab`. Jednak powszechnie akceptowane sugestia jest do zresetowania hasła głównego i używać go do trybu jednego użytkownika. 
+> Uwaga: Uruchamianie przy użyciu powyższych instrukcji spowoduje porzucenie do awaryjnego shell można również wykonywać zadania, takie jak edytowanie `fstab`. Jednak powszechnie akceptowane sugestia jest do zresetowania hasła głównego i używać go do trybu jednego użytkownika. 
 
 
 ## <a name="access-for-centos"></a>Dostęp do CentOS
@@ -136,7 +136,7 @@ Ubuntu spowoduje porzucenie możesz w trybie jednego użytkownika automatycznie,
 1. Dodaj `single` po `ro`, zapewnianie występuje znak spacji przed i po nim `single`
 1. Naciśnij klawisze Ctrl + X ponowny rozruch przy użyciu tych ustawień, a następnie wprowadź w trybie jednego użytkownika
 
-## <a name="access-for-coreos"></a>Dostęp do systemu CoreOS
+## <a name="access-for-coreos"></a>Access for CoreOS
 Tryb jednego użytkownika w CoreOS wymaga CHODNIKÓW włączyć. 
 
 ### <a name="grub-access-in-coreos"></a>Program GRUB dostępu w CoreOS

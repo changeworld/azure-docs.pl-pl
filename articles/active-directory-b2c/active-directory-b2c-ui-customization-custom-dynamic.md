@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7c17b873daf3cf77760f934b6c8a591f232b0c7b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 54d98c02ee9e5202c09e333843f8c16955f4e2d4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658202"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819251"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurowanie interfejsu użytkownika z zawartością dynamiczną za pomocą zasad niestandardowych
 
@@ -83,10 +83,10 @@ W tym przewodniku możesz:
 6. Wybierz przycisk **OK**, aby utworzyć projekt.
 
 ## <a name="step-2-create-mvc-view"></a>Krok 2: Tworzenie widoku MVC
-### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2.1: Pobierz szablon HTML5 z wbudowanych B2C
+### <a name="step-21-download-the-b2c-built-in-html5-template"></a>Krok 2.1. Pobierz szablon HTML5 z wbudowanych B2C
 Szablon niestandardowy, HTML5 opiera się na wbudowany szablon języka HTML5 usługi Azure AD B2C. Możesz pobrać [pliku unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) lub pobrać szablon z [pakiet startowy](https://github.com/AzureADQuickStarts/B2C-AzureBlobStorage-Client/tree/master/sample_templates/wingtip). Ten plik HTML5 umożliwia utworzenie ujednoliconego strony rejestracji lub logowania.
 
-### <a name="step-22-add-the-mvc-view"></a>Krok 2.2: Dodawanie widoku MVC
+### <a name="step-22-add-the-mvc-view"></a>Krok 2.2. Dodawanie widoku MVC
 1. Kliknij prawym przyciskiem myszy folder domowych widoki, a następnie **Dodaj** > **nowy element**.
 
     ![Dodaj nowy element MVC](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-add-view1.png)
@@ -247,16 +247,18 @@ Zmiana tła, w oparciu o nazwę parametru ciągu zapytania _campaignId_. Aplikac
 Dodaj `ContentDefinitionParameters` elementu, wykonując następujące czynności:
 1. Otwórz *SignUpOrSignin* pliku zasad (na przykład *SignUpOrSignin.xml*).
 
-2. Wyszukaj `<DefaultUserJourney>` węzła. 
-
-3. W `<DefaultUserJourney>` węzła, Dodaj następujący fragment kodu XML:  
+2. W obszarze `<DefaultUserJourney>` węzła, Dodaj `UserJourneyBehaviors` węzła:  
 
     ```XML
-    <UserJourneyBehaviors>
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+      <UserJourneyBehaviors>
         <ContentDefinitionParameters>
-            <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
+          <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
         </ContentDefinitionParameters>
-    </UserJourneyBehaviors>
+      </UserJourneyBehaviors>
+      ...
+    </RelyingParty>
     ```
 
 ### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>Krok 8.2: Zmień swój kod, aby zaakceptować jako parametr ciągu zapytania i zamienić obraz tła

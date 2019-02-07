@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: 5d45e4cc8781f4c235c641c4c99f1720871d57fb
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 82418c03039219adedf45828d769d278a14499ff
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359004"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816173"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-dbs-api-for-mongodb-by-using-azure-data-factory"></a>Kopiowanie danych do lub z interfejsem API usługi Azure Cosmos DB dla bazy danych MongoDB przy użyciu usługi Azure Data Factory
 
@@ -34,7 +34,7 @@ Interfejs API usługi Azure Cosmos DB można użyć łącznika MongoDB:
 
 - Kopiowanie danych z i do [interfejsu API usługi Azure Cosmos DB, bazy danych mongodb](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction).
 - Zapis do usługi Azure Cosmos DB jako **Wstaw** lub **upsert**.
-- Importowanie i eksportowanie dokumentów JSON jako — jest lub kopiowania danych z lub do tabelarycznego zestawu danych. Przykłady obejmują bazy danych SQL i w pliku CSV. Skopiuj dokumenty w formacie — pliki do lub z formatu JSON lub do lub z innej kolekcji usługi Azure Cosmos DB, zobacz [importowanie lub eksportowanie dokumentów JSON](#importexport-json-documents).
+- Importowanie i eksportowanie dokumentów JSON jako — jest lub kopiowania danych z lub do tabelarycznego zestawu danych. Przykłady obejmują bazy danych SQL i w pliku CSV. Skopiuj dokumenty w formacie-polega na lub z plików JSON lub do / z innej kolekcji usługi Azure Cosmos DB, zobacz Importowanie lub eksportowanie dokumentów JSON.
 
 ## <a name="get-started"></a>Rozpoczęcie pracy
 

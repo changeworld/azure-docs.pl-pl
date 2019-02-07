@@ -1,6 +1,6 @@
 ---
-title: Przekazywanie plików do konta usługi Azure Media Services przy użyciu REST | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak pobrać zawartości nośnika do usługi Media Services przez tworzenie i przekazywanie zasoby.
+title: Przekazywanie plików na konto usługi Azure Media Services przy użyciu usługi REST | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uzyskać zawartości multimedialnej do usługi Media Services, tworząc i przekazując zasoby.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,68 +13,68 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: juliako
-ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3b5c277f51b8ff1b2d3babf23329dcde829573a9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070431"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813963"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików do konta usługi Media Services za pomocą usługi REST
+# <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików na konto usługi Media Services przy użyciu usługi REST
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)
 > * [Portal](media-services-portal-upload-files.md)
 > 
 
-Za pomocą usługi Media Services można przekazać pliki cyfrowe do elementu zawartości. [Zasobów](https://docs.microsoft.com/rest/api/media/operations/asset) może zawierać wideo, audio, obrazy, kolekcje miniatur, tekst ścieżek i napisów plików (oraz metadane dotyczące tych plików.)  Po przekazaniu plików do zawartości, zawartość jest bezpiecznie przechowywana w chmurze na potrzeby dalszego przetwarzania i przesyłania strumieniowego. 
+Za pomocą usługi Media Services można przekazać pliki cyfrowe do elementu zawartości. [Zasobów](https://docs.microsoft.com/rest/api/media/operations/asset) jednostki może zawierać wideo, audio, obrazy, kolekcje miniatur, tekst śledzi i napisów plików (i metadane dotyczące tych plików.)  Po przekazaniu plików do elementu zawartości, zawartość jest bezpiecznie przechowywana w chmurze na potrzeby dalszego przetwarzania i przesyłania strumieniowego. 
 
-Z tego samouczka dowiesz się sposób przekazywania plików i innych operacji:
+W tym samouczku dowiesz się, jak przekazać plik i innych operacji skojarzonych z nią:
 
 > [!div class="checklist"]
-> * Ustawienia dla wszystkich operacji przekazywania Postman
+> * Konfigurowanie narzędzia Postman dla wszystkich operacji przekazywania
 > * Łączenie się z usługą Media Services 
 > * Tworzenie zasad dostępu z uprawnieniami do zapisu
-> * Utwórz zasób
-> * Tworzenie lokalizatora SAS i Utwórz adres URL przesyłania
+> * Utworzenie elementu zawartości
+> * Tworzenie lokalizatora SAS następuje i Utwórz adres URL przesyłania
 > * Przekazywanie pliku do magazynu obiektów blob przy użyciu adresu URL przesyłania
-> * Utwórz metadanych w zasobu dla pliku nośnika, który został przekazany
+> * Utworzenie metadanych w elemencie zawartości dla pliku nośnika, który został przekazany
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- [Tworzenie konta usługi Azure Media Services przy użyciu portalu Azure](media-services-portal-create-account.md).
-- Przegląd [podczas uzyskiwania dostępu do usługi Azure Media usług interfejsu API za pomocą omówienie uwierzytelniania usługi AAD](media-services-use-aad-auth-to-access-ams-api.md) artykułu.
-- Konfiguruj **Postman** zgodnie z opisem w [wymaga skonfigurowania Postman interfejsu API REST usługi Media](media-rest-apis-with-postman.md).
+- [Tworzenie konta usługi Azure Media Services przy użyciu witryny Azure portal](media-services-portal-create-account.md).
+- Przegląd [uzyskiwania dostępu do usługi Azure Media Services interfejsu API za pomocą omówienie uwierzytelniania usługi AAD](media-services-use-aad-auth-to-access-ams-api.md) artykułu.
+- Konfiguruj **Postman** zgodnie z opisem w [wywołuje Konfigurowanie narzędzia Postman dla interfejsu API REST usługi Media Services](media-rest-apis-with-postman.md).
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
-Następujące kwestie przy użyciu interfejsu API REST usługi Media:
+Korzystając z interfejsu API REST usługi Media Services, obowiązują następujące zastrzeżenia:
  
-* Podczas uzyskiwania dostępu do jednostek przy użyciu interfejsu API REST usług nośnika, należy ustawić określonych pól nagłówka i wartości w Twoich żądań HTTP. Aby uzyskać więcej informacji, zobacz [ustawień dla rozwoju interfejsu API REST usługi Media](media-services-rest-how-to-use.md). <br/>Kolekcja Postman używane w tym samouczku odpowiada on za ustawienie wszystkie niezbędne nagłówki.
-* Usługa Media Services używa wartości właściwości IAssetFile.Name podczas kompilowania adresy URL przesyłania strumieniowego zawartości (na przykład http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tego powodu kodowania procent jest niedozwolone. Wartość **nazwa** właściwość nie może mieć następujące [procent kodowanie zarezerwowanych znaków](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! *' ();: @& = + $, /? % # [] ". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
-* Długość nazwy nie może być większa niż 260 znaków.
+* Podczas uzyskiwania dostępu do jednostek przy użyciu interfejsu API REST usługi Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora w celu tworzenia interfejsu API REST usługi Media](media-services-rest-how-to-use.md). <br/>Odpowiada kolekcji Postman, w tym samouczku używane ustawienie wszystkie niezbędne nagłówki.
+* Usługa Media Services używa wartości właściwości IAssetFile.Name podczas tworzenia adresów URL przesyłania strumieniowego zawartości (na przykład http://{AMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters.) Z tego powodu kodowania procent nie jest dozwolone. Wartość **nazwa** właściwość nie może zawierać żadnych z następujących [procent kodowanie — zastrzeżone znaki](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters):! * "();: @& = + $, /? [] % #". Ponadto może istnieć tylko jeden "." dla rozszerzenia nazwy pliku.
+* Długość nazwy nie powinna być dłuższa niż 260 znaków.
 * Istnieje limit maksymalnego rozmiaru pliku do przetwarzania w usłudze Media Services. Zobacz [ten](media-services-quotas-and-limitations.md) artykuł, aby uzyskać szczegółowe informacje na temat ograniczeń rozmiarów plików.
 
 ## <a name="set-up-postman"></a>Konfigurowanie narzędzia Postman
 
-Aby uzyskać instrukcje dotyczące sposobu konfigurowania Postman, w tym samouczku, zobacz [skonfigurować Postman](media-rest-apis-with-postman.md).
+Aby uzyskać instrukcje dotyczące sposobu konfigurowania Postman na potrzeby tego samouczka, zobacz [Konfigurowanie narzędzia Postman](media-rest-apis-with-postman.md).
 
 ## <a name="connect-to-media-services"></a>Łączenie się z usługą Media Services
 
-1. Dodawanie wartości połączenia dla danego środowiska. 
+1. Dodaj wartości połączenia dla danego środowiska. 
 
-    Niektóre zmienne, które są częścią **MediaServices** [środowiska](postman-environment.md) należy ręcznie ustawić przed rozpoczęciem wykonywania operacji zdefiniowanej w [kolekcji](postman-collection.md).
+    Niektóre zmienne, które są częścią **MediaServices** [środowiska](postman-environment.md) należy skonfigurować ręcznie przed rozpoczęciem wykonywania operacji, które zdefiniowano w [kolekcji](postman-collection.md).
 
-    Można pobrać wartości pierwsze pięć zmiennych, zobacz [dostępu Azure Media Services API przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
+    Aby uzyskać wartości dla pierwszych pięć zmiennych, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postman-import-env.png)
-2. Określ wartość dla **MediaFileName** zmiennej środowiskowej.
+2. Określ wartość **MediaFileName** zmiennej środowiskowej.
 
-    Określ nazwę pliku nośnika, który zamierzasz przekazać. W tym przykładzie zamierzamy przekazać BigBuckBunny.mp4. 
-3. Sprawdź **AzureMediaServices.postman_environment.json** pliku. Zobaczysz, że prawie wszystkie operacje w kolekcji do wykonywania skryptu "test". Skrypty podjęcia niektórych wartości zwracane przez odpowiedź, a następnie ustaw zmienne środowiskowe odpowiednie.
+    Określ nazwę pliku nośnika, który zamierzasz przekazać. W tym przykładzie użyjemy do przekazania BigBuckBunny.mp4. 
+3. Sprawdź **AzureMediaServices.postman_environment.json** pliku. Zobaczysz, że prawie wszystkich operacji w kolekcji wykonać skrypt "test". Skrypty wykonać niektóre wartości zwracane przez odpowiedź, a następnie ustawić odpowiednie zmienne środowiskowe.
 
-    Na przykład pierwszej operacji pobiera token dostępu i ustaw go na **AccessToken** zmiennej środowiskowej, która jest używana w innych operacji.
+    Na przykład pierwsza operacja pobiera token dostępu i ustaw ją na **AccessToken** zmienną środowiskową, która jest używana w innych operacji.
 
     ```    
     "listen": "test",
@@ -86,17 +86,17 @@ Aby uzyskać instrukcje dotyczące sposobu konfigurowania Postman, w tym samoucz
         ]
     }
     ```
-4. Po lewej stronie **Postman** kliknij na **1. Pobierz token usługi AAD MFA** -> **uzyskać Azure AD tokenu dla jednostki usługi**.
+4. W lewej części **Postman** okna, kliknij pozycję **1. Uzyskiwanie tokenu uwierzytelniania usługi AAD** -> **Get usługi Azure AD Token dla jednostki usługi**.
 
-    Część adresu URL jest wypełniony **AzureADSTSEndpoint** zmiennej środowiskowej (wcześniej w samouczku, można ustawić wartości właściwości [zmiennych środowiskowych](#configure-the-environment) obsługujące [kolekcji](#configure-the-collection)).
+    Część adresu URL jest wypełniany **AzureADSTSEndpoint** zmienna środowiskowa (we wcześniejszej części tego samouczka można ustawić wartości zmiennych środowiskowych, które obsługują kolekcji).
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postment-get-token.png)
 
 5. Kliknij pozycję **Wyślij**.
 
-    Widać odpowiedzi, który zawiera "' access_token '". Skrypt "test" przyjmuje tę wartość i ustawia **AccessToken** zmiennej środowiskowej (jak opisano powyżej). Sprawdź zmienne środowiskowe, pojawi się czy ta zmienna uwzględnia teraz wartość token (token elementu nośnego) dostępu, która jest używana w pozostałej części operacji. 
+    Możesz zobaczyć odpowiedź, która zawiera "access_token". Skrypt "test" przyjmuje tę wartość i ustawia **AccessToken** zmienna środowiskowa (zgodnie z opisem powyżej). Możesz zbadać zmienne środowiskowe, zobaczysz że ta zmienna zawiera teraz wartość token (token elementu nośnego) dostępu, która jest używana w pozostałej części operacji. 
 
-    Jeśli token jest ważny przez przejść przez "Pobierz Azure AD Token dla usługi podmiotu zabezpieczeń" krok ponownie. 
+    Jeśli token jest ważny przejść przez krok "Pobierz usługi Azure AD Token dla usługi głównej" ponownie. 
 
 ## <a name="create-an-access-policy-with-write-permission"></a>Tworzenie zasad dostępu z uprawnieniami do zapisu
 
@@ -105,47 +105,47 @@ Aby uzyskać instrukcje dotyczące sposobu konfigurowania Postman, w tym samoucz
 >[!NOTE]
 >Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Należy używać tego samego identyfikatora zasad, jeśli zawsze są używane uprawnienia dotyczące tych samych dni lub tego samego dostępu, na przykład dla lokalizatorów przeznaczonych do długotrwałego stosowania (nieprzekazywanych zasad). Więcej informacji znajduje się w [tym](media-services-dotnet-manage-entities.md#limit-access-policies) artykule.
 
-Przed przekazaniem żadnych plików do magazynu obiektów blob, należy ustawić dostęp zasad prawa do zapisu do elementu zawartości. W tym celu po żądania HTTP AccessPolicies zestawem jednostek. Zdefiniuj wartość DurationInMinutes po utworzeniu lub pojawi się komunikat o błędzie 500 wewnętrzny serwer w odpowiedzi. Aby uzyskać więcej informacji o AccessPolicies, zobacz [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
+Przed przekazaniem żadnych plików do magazynu obiektów blob, należy ustawić dostępu zasady prawa do zapisu do elementu zawartości. Aby to zrobić, OPUBLIKUJ żądanie HTTP AccessPolicies zestawem jednostek. Zdefiniuj wartość DurationInMinutes po utworzeniu lub pojawi się komunikat 500 Błąd wewnętrzny serwera w odpowiedzi. Aby uzyskać więcej informacji na temat AccessPolicies, zobacz [AccessPolicy](https://docs.microsoft.com/rest/api/media/operations/accesspolicy).
 
 ### <a name="create-an-access-policy"></a>Tworzenie zasad dostępu
 
-1. Wybierz **AccessPolicy** -> **utworzyć AccessPolicy przekazywania**.
+1. Wybierz **AccessPolicy** -> **tworzenie AccessPolicy w celu przekazania**.
 2. Kliknij pozycję **Wyślij**.
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postman-access-policy.png)
 
-    Skrypt "test" identyfikator AccessPolicy pobiera i ustawia zmienną środowiskową odpowiednie.
+    Skrypt "test" pobiera identyfikator AccessPolicy i ustawia zmienną środowiskową odpowiednie.
 
-## <a name="create-an-asset"></a>Utwórz zasób
+## <a name="create-an-asset"></a>Utworzenie elementu zawartości
 
 ### <a name="overview"></a>Przegląd
 
-[Zasobów](https://docs.microsoft.com/rest/api/media/operations/asset) to kontener dla wielu typów lub zestawów obiektów w usłudze Media Services: wideo, audio, obrazy, kolekcje miniatur, ścieżek tekstu i pliki napisów. W interfejsie API REST tworzenie zasobu wymaga wysłanie żądania POST do usługi Media Services i umieszczenie wszelkie informacje o zawartości w treści żądania.
+[Zasobów](https://docs.microsoft.com/rest/api/media/operations/asset) jest kontenerem dla wielu typów lub zestawów obiektów w usłudze Media Services, w tym wideo, audio, obrazy, kolekcje miniatur, ścieżki tekstowe i pliki napisów. W interfejsie API REST tworzenia zasobu wymaga wysłanie żądania POST do usługi Media Services oraz umieszczanie właściwości informacji o elementów zawartości w treści żądania.
 
-Jedna z właściwości, które można dodać podczas tworzenia zasobu jest **opcje**. Można określić jedną z następujących opcji szyfrowania: **Brak** (domyślnie bez szyfrowania jest używany), **StorageEncrypted** (dla zawartości, które zostały zaszyfrowane wstępnie przy użyciu szyfrowania magazynu po stronie klienta), **CommonEncryptionProtected**, lub **EnvelopeEncryptionProtected**. Jeśli masz zasób zaszyfrowane, należy skonfigurować zasady dostarczania. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasady dostarczania zasobów](media-services-rest-configure-asset-delivery-policy.md).
+Jedna z właściwości, które można dodać podczas tworzenia zasobu jest **opcje**. Można określić jedną z następujących opcji szyfrowania: **Brak** (ustawienie domyślne, bez szyfrowania jest używany), **StorageEncrypted** (w przypadku zawartości, który został wstępnie zaszyfrowane przy użyciu szyfrowania magazynu po stronie klienta), **CommonEncryptionProtected**, lub  **EnvelopeEncryptionProtected**. W przypadku elementu zawartości zaszyfrowanej należy skonfigurować zasady dostarczania. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zasad dostarczania elementów zawartości](media-services-rest-configure-asset-delivery-policy.md).
 
-Jeśli zawartości jest zaszyfrowany, należy utworzyć **ContentKey** i łącza do zawartości zgodnie z opisem w artykule: [tworzenie ContentKey](media-services-rest-create-contentkey.md). Po przekazaniu plików do zawartości, należy zaktualizować właściwości szyfrowania na **AssetFile** jednostki o wartości uzyskano podczas **zasobów** szyfrowania. To zrobić za pomocą **scalania** żądania HTTP. 
+Jeśli element zawartości jest zaszyfrowany, należy utworzyć **ContentKey** i link do elementu zawartości zgodnie z opisem w następującym artykule: [Jak utworzyć ContentKey](media-services-rest-create-contentkey.md). Po przekazaniu plików do niego, musisz zaktualizować właściwości szyfrowania na **AssetFile** jednostki o wartości stało się podczas **zasobów** szyfrowania. Zrobić to za pomocą **scalania** żądania HTTP. 
 
-W tym przykładzie tworzymy zasób niezaszyfrowane. 
+W tym przykładzie tworzymy niezaszyfrowanych zasobów. 
 
-### <a name="create-an-asset"></a>Utwórz zasób
+### <a name="create-an-asset"></a>Utworzenie elementu zawartości
 
-1. Wybierz **zasoby** -> **utworzenia zasobu**.
+1. Wybierz **zasoby** -> **utworzyć zasób**.
 2. Kliknij pozycję **Wyślij**.
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postman-create-asset.png)
 
-    Skrypt "test" pobiera identyfikator zasobu i ustawia zmienną środowiskową odpowiednie.
+    Skrypt "test" pobiera identyfikator elementu zawartości i ustawia zmienną środowiskową odpowiednie.
 
-## <a name="create-a-sas-locator-and-create-the-upload-url"></a>Tworzenie lokalizatora SAS i utworzyć adres URL przekazywania
+## <a name="create-a-sas-locator-and-create-the-upload-url"></a>Tworzenie lokalizatora SAS następuje i utworzyć adres URL przekazywania
 
 ### <a name="overview"></a>Przegląd
 
-Po utworzeniu AccessPolicy, a także ustawić rzeczywisty plik jest przekazywany do kontenera magazynu obiektów Blob Azure przy użyciu interfejsów API REST usługi Magazyn Azure. Należy przekazać pliki jako blokowych obiektów blob. Stronicowe obiekty BLOB nie są obsługiwane przez usługi Azure Media Services.  
+Po utworzeniu AccessPolicy i lokalizatora zestawu rzeczywisty plik zostanie przekazany do kontenera usługi Azure Blob Storage przy użyciu interfejsów API REST usługi Azure Storage. Należy przekazać pliki jako blokowe obiekty BLOB. Stronicowe obiekty BLOB nie są obsługiwane przez usługę Azure Media Services.  
 
-Aby uzyskać więcej informacji na temat pracy z obiektami blob magazynu Azure, zobacz [interfejsu API REST usługi Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
+Aby uzyskać więcej informacji na temat pracy z obiektami blob usługi Azure storage, zobacz [interfejsu API REST usługi Blob](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
-Aby uzyskać adres URL przesyłania rzeczywistej, tworzenie lokalizatora SAS (pokazana poniżej). Lokalizatory zdefiniuj czas rozpoczęcia i typ punktu końcowego połączenia dla klientów, którzy mają dostęp do plików w zasób. Możesz utworzyć wiele jednostek lokalizatora dla danego pary AccessPolicy i zasobów do obsługi żądań klientów różnych i potrzeb. Wartość StartTime oraz wartość DurationInMinutes AccessPolicy każdego z tych lokalizatorów używa do określenia czasu, można użyć adresu URL. Aby uzyskać więcej informacji, zobacz [lokalizatora](https://docs.microsoft.com/rest/api/media/operations/locator).
+Aby otrzymywać z adresem URL rzeczywistej przekazywania, należy utworzyć lokalizatora SAS następuje (pokazana poniżej). Lokalizatory definiują czas rozpoczęcia i typu punktu końcowego połączenia dla klientów, którzy chcą uzyskać dostęp do plików w zasobie. Możesz utworzyć wiele jednostek lokalizatora dla danego pary AccessPolicy i zasobów do obsługi żądań różnych klientów i potrzeb. Wartość StartTime plus wartość DurationInMinutes AccessPolicy każdego z tych lokalizatorów używa do określenia czasu, można użyć adresu URL. Aby uzyskać więcej informacji, zobacz [lokalizatora](https://docs.microsoft.com/rest/api/media/operations/locator).
 
 Adres URL SAS ma następujący format:
 
@@ -155,16 +155,16 @@ Adres URL SAS ma następujący format:
 
 Zagadnienia do rozważenia:
 
-* Nie może mieć więcej niż pięć lokalizatorów unikatowy skojarzone z danym zawartości w tym samym czasie. Aby uzyskać więcej informacji zobacz lokalizatora.
-* Jeśli chcesz przekazać pliki natychmiast, należy ustawić wartość StartTime do pięciu minut przed bieżącym czasem. Jest to spowodowane mogą istnieć zegara pochylenia między komputer klienta i usługi Media Services. Ponadto wartość StartTime musi być w następującym formacie daty/godziny: RRRR-MM-ddtgg (na przykład "2014-05-23T17:53:50Z").    
-* Może być 30 40 sekund opóźnienia po utworzeniu lokalizatora, gdy jest ona dostępna do użycia.
+* Nie może mieć więcej niż pięć unikatowe Lokalizatory skojarzone z danym elementem zawartości w tym samym czasie. Aby uzyskać więcej informacji zobacz lokalizatora.
+* Jeśli zachodzi potrzeba natychmiast przekazać pliki, należy ustawić wartość StartTime do pięciu minut przed bieżącym czasem. Jest to spowodowane mogą istnieć zegara niesymetryczność między komputerem klienckim i Media Services. Ponadto wartość StartTime musi być w następującym formacie daty/godziny: RRRR-MM-ddtgg (na przykład "2014-05-23T17:53:50Z").    
+* Może to być sekundy 30 – 40 opóźnienie po utworzeniu lokalizatora, gdy będzie ona dostępna do użytku.
 
-### <a name="create-a-sas-locator"></a>Tworzenie lokalizatora SAS
+### <a name="create-a-sas-locator"></a>Tworzenie lokalizatora sygnatury dostępu Współdzielonego
 
-1. Wybierz **lokalizatora** -> **tworzenie lokalizatora SAS**.
+1. Wybierz **lokalizatora** -> **utworzenie lokalizatora sygnatury dostępu Współdzielonego**.
 2. Kliknij pozycję **Wyślij**.
 
-    Skrypt "test" tworzy "Przekazywanie adresu URL" na podstawie podanej nazwy pliku nośnika, a informacje lokalizatora SAS i ustawia zmienną środowiskową odpowiednie.
+    Skrypt "test" tworzy "Przekazywanie adresu URL" na podstawie podanej nazwy pliku multimediów i informacji lokalizatora sygnatury dostępu Współdzielonego i ustawia zmienną środowiskową odpowiednie.
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postman-create-sas-locator.png)
 
@@ -172,45 +172,45 @@ Zagadnienia do rozważenia:
 
 ### <a name="overview"></a>Przegląd
 
-Teraz, gdy masz adresu URL przesyłania, należy napisać kodu za pomocą interfejsów API usługi Azure Blob bezpośrednio, aby przesłać plik do kontenera sygnatury dostępu Współdzielonego. Aby uzyskać więcej informacji zobacz następujące artykuły:
+Teraz, gdy masz adres URL przesyłania, należy napisać kodu za pomocą interfejsów API usługi Azure Blob bezpośrednio do przekazania pliku do kontenera sygnatury dostępu Współdzielonego. Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Użycie magazynu Azure, interfejsu API REST](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-- [UMIESZCZANIE obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-- [Przekaż obiekty BLOB do magazynu obiektów Blob](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage)
+- [Za pomocą interfejsu API REST usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-rest-api-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+- [WSTAWIENIE obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/put-blob)
+- [Przekazywanie obiektów blob do magazynu obiektów Blob](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy#upload-blobs-to-blob-storage)
 
-### <a name="upload-a-file-with-postman"></a>Przekaż plik z Postman
+### <a name="upload-a-file-with-postman"></a>Przekaż plik za pomocą narzędzia Postman
 
-Na przykład używamy Postman można przekazać pliku mały plik MP4. Być może na przekazywanie danych binarnych za pośrednictwem Postman limit rozmiaru pliku.
+Na przykład używamy narzędzia Postman do przekazania plików MP4 małe. Być może na przekazywanie danych binarnych za pomocą narzędzia Postman limit rozmiaru pliku.
 
 Żądanie przekazania nie jest częścią **AzureMedia** kolekcji. 
 
-Utwórz i skonfiguruj nowe żądanie:
-1. Naciśnij klawisz **+**, aby utworzyć nową kartę żądania.
-2. Wybierz **PUT** operacji i Wklej **{{UploadURL}}** w adresie URL.
-2. Pozostaw **autoryzacji** karcie, ponieważ jest (nie należy ustawiać na **tokenów Bearer**).
-3. W **nagłówki** karcie, określ: **klucza**: "x-ms-blob-type" i **wartość**: "BlockBlob".
-2. W **treści** , kliknij pozycję **binarne**.
+Tworzenie i konfigurowanie nowego żądania:
+1. Naciśnij klawisz **+**, aby utworzyć nową kartę żądanie.
+2. Wybierz **umieścić** operacji i Wklej **{{UploadURL}}** w adresie URL.
+2. Pozostaw **autoryzacji** karcie, ponieważ jest (nie należy ustawiać na **tokenu elementu nośnego**).
+3. W **nagłówki** karcie, określ: **Klucz**: "x-ms-blob-type" i **wartość**: "BlockBlob".
+2. W **treści** kliknij pozycję **binarne**.
 4. Wybierz plik o nazwie określonej w **MediaFileName** zmiennej środowiskowej.
 5. Kliknij pozycję **Wyślij**.
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postman-upload-file.png)
 
-##  <a name="create-a-metadata-in-the-asset"></a>Utwórz metadanych w elemencie zawartości
+##  <a name="create-a-metadata-in-the-asset"></a>Utworzenie metadanych w zasobie
 
-Po przekazaniu pliku, należy utworzyć metadanych w zasobu dla pliku nośnika, który został przekazany do magazynu obiektów blob skojarzony z zawartości.
+Po przekazaniu pliku należy utworzyć metadanych w elemencie zawartości dla pliku nośnika, który został przekazany do magazynu obiektów blob skojarzony element zawartości.
 
 1. Wybierz **AssetFiles** -> **CreateFileInfos**.
 2. Kliknij pozycję **Wyślij**.
 
     ![Przekazywanie pliku](./media/media-services-rest-upload-files/postman-create-file-info.png)
 
-Można przekazać pliku, i ustaw jej metadane.
+Można przekazać pliku, a następnie ustaw jego metadanych.
 
 ## <a name="validate"></a>Walidacja
 
-Aby zweryfikować, że plik został przekazany pomyślnie, należy zbadać [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) i porównaj **ContentFileSize** (lub inne szczegóły) można oczekiwać w nowych zasobów. 
+Aby sprawdzić, czy plik został przekazany pomyślnie, możesz chcieć zbadać [AssetFile](https://docs.microsoft.com/rest/api/media/operations/assetfile) i porównaj **ContentFileSize** (lub inne szczegóły) będzie oczekiwać w nowy zasób. 
 
-Na przykład następująca **UZYSKAĆ** operacji łączy dane pliku dla pliku zasobów (w lub w przypadku pliku BigBuckBunny.mp4). Zapytanie używa [zmiennych środowiskowych](postman-environment.md) wcześniej skonfigurowane.
+Na przykład następująca **UZYSKAĆ** operacji udostępnia dane pliku dla pliku zasobów (w lub w przypadku pliku BigBuckBunny.mp4). Zapytanie jest za pomocą [zmienne środowiskowe](postman-environment.md) ustawionej wcześniej.
 
     {{RESTAPIEndpoint}}/Assets('{{LastAssetId}}')/Files
 

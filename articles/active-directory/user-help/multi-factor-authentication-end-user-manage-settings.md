@@ -13,12 +13,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
-ms.openlocfilehash: ab3de9b010c0356dea17520b497235e0bf7c818e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2129b1f70ea19bdb2144f0f2a9ca4a6dbac0acbd
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181320"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766823"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>Zarządzanie ustawieniami weryfikacji dwuetapowej
 Ten artykuł zawiera odpowiedzi na pytania o tym, jak można zaktualizować ustawień uwierzytelniania dwuetapowego weryfikacji lub usługi Multi-Factor Authentication. Jeśli występują problemy z logowaniem do swojego konta, zobacz [występują problemy z weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md) pomocy w rozwiązywaniu problemów.
@@ -74,7 +74,7 @@ W zależności od ustawień organizacji, mogą mieć pola wyboru, który jest wy
 2. Przy następnym zalogowaniu się na dowolnym urządzeniu, zostanie wyświetlony monit weryfikacji dwuetapowej.
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>Jak wyczyścić Microsoft Authenticator z stare urządzenia i przenieść do nowego?
-Odinstaluj aplikację z urządzenia lub zresetowania urządzenia, nie powoduje usunięcia aktywacji na zapleczu. Aby uzyskać więcej informacji, zobacz [Microsoft Authenticator](microsoft-authenticator-app-how-to.md).
+Odinstaluj aplikację z urządzenia lub zresetowania urządzenia, nie powoduje usunięcia aktywacji na zapleczu. Aby uzyskać więcej informacji, zobacz [Microsoft Authenticator](user-help-auth-app-download-install.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Uzyskaj porady dotyczące rozwiązywania problemów i pomoc na temat [występują problemy z weryfikacji dwuetapowej](multi-factor-authentication-end-user-troubleshoot.md)

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 17167271df81914c76882fc4d06717043e1befc1
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 06c385b1ca43277b59c337646c41cae360ce48a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214300"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816564"
 ---
 # <a name="glossary"></a>Słownik
 
@@ -23,14 +23,14 @@ ms.locfileid: "55214300"
 
 #### <a name="attributes"></a>Atrybuty
 
-Atrybuty są opcjonalne w [wykrywania](#Detection-Face-Detection) wyniki, takie jak [wiek](#Age-Attribute), [płeć](#Gender-Attribute), [poza siedzibę](#Head-Pose-Attribute), [zarost](#Facial-Hair-Attribute), [uśmiechające](#Smile-Attribute).
-Można je uzyskać z [wykrywania](#Detection-Face-Detection) interfejsu API, określając parametry zapytania: returnFaceAttributes. Atrybuty zapewniają dodatkowe informacje dotyczące wybranego [twarzy](#Face); oprócz [face ID](#Face-ID) i [prostokąt](#Face-Rectangle).
+Atrybuty są opcjonalne w wynikach wykrywania, takie jak [wiek](#Age-Attribute), [płeć](#Gender-Attribute), [poza siedzibę](#Head-Pose-Attribute), [zarost](#Facial-Hair-Attribute), [uśmiech ](#Smile-Attribute).
+Można je uzyskać z interfejsu API wykrywania, określając parametry zapytania: returnFaceAttributes. Atrybuty zapewniają dodatkowe informacje dotyczące wybranego [twarzy](#Face); oprócz [face ID](#Face-ID) i [prostokąt](#Face-Rectangle).
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="age-attribute"></a>Wiek (atrybut)
 
-Okres ważności jest jednym z [atrybuty](#Attributes) opisujący wiek konkretnej powierzchnię. Atrybut okres ważności jest opcjonalny w [wykrywania](#Detection-Face-Detection) wyniki i mogą być kontrolowane za pomocą [wykrywania](#Detection-Face-Detection) żądania, określając parametr returnFaceAttributes.
+Okres ważności jest jednym z [atrybuty](#Attributes) opisujący wiek konkretnej powierzchnię. Atrybut wiek jest opcjonalna w wynikach wykrywania i pozwala kontrolować, określając parametr returnFaceAttributes żądaniu wykrywania.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -64,13 +64,13 @@ Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykr
 
 #### <a name="face"></a>Rozpoznawanie twarzy
 
-Krój to ujednolicone termin określający wyniki pochodzące z interfejsu API rozpoznawania twarzy, związane z wykryte twarze. Ostatecznie twarzy jest reprezentowany przez ujednolicony tożsamości ([funkcji Face ID](#Face-ID)), określony region w obrazach ([obrys twarzy](#Face-Rectangle)) i dodatkowych twarzy związane z [atrybuty](#Face-Attributes-Facial-Attributes), takich jak [wiek](#Age-Attribute), [płeć](#Gender-Attribute), [charakterystycznych elementów krajobrazu](#Face-Landmarks-Facial-Landmarks) i [poza siedzibę](#Head-Pose-Attribute). Ponadto twarzy mogą być zwracane przez [wykrywania](#Detection-Face-Detection).
+Krój to ujednolicone termin określający wyniki pochodzące z interfejsu API rozpoznawania twarzy, związane z wykryte twarze. Ostatecznie twarzy jest reprezentowany przez ujednolicony tożsamości ([funkcji Face ID](#Face-ID)), określony region w obrazach ([obrys twarzy](#Face-Rectangle)) i dodatkowych twarzy powiązanych atrybutów, takich jak [wiek](#Age-Attribute), [płeć](#Gender-Attribute), charakterystycznych elementów krajobrazu i [poza siedzibę](#Head-Pose-Attribute). Ponadto twarzy mogą być zwracane z wykrywania.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="face-api"></a>Interfejs API rozpoznawania twarzy
 
-Interfejs API rozpoznawania twarzy jest oparta na chmurze interfejs API, który udostępnia najbardziej zaawansowane algorytmy wykrywania twarzy i rozpoznawania. Główne funkcje interfejsu API rozpoznawania twarzy można podzielić na dwie kategorie: twarzy [wykrywania](#Detection-Face-Detection) z [atrybuty](#Face-Attributes-Facial-Attributes)i twarzy [rozpoznawania](#Recognition).
+Interfejs API rozpoznawania twarzy jest oparta na chmurze interfejs API, który udostępnia najbardziej zaawansowane algorytmy wykrywania twarzy i rozpoznawania. Główne funkcje interfejsu API rozpoznawania twarzy można podzielić na dwie kategorie: wykrywanie z atrybutami i twarzy twarzy [rozpoznawania](#Recognition).
 
 Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach: [Omówienie interfejsu API twarzy](./Overview.md), [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), [twarzy — Znajdź podobne](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), [twarzy — grupa](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238), [twarzy — ustalenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239), [ Twarzy — weryfikowanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 
@@ -80,13 +80,13 @@ Zobacz [atrybuty](#Attributes).
 
 #### <a name="face-id"></a>Identyfikator twarzy
 
-Funkcji Face ID jest tworzony na podstawie [wykrywania](#Detection-Face-Detection) wyniki, w których ciąg reprezentuje [twarzy](#Face) w [interfejsu API rozpoznawania twarzy](#Face-API).
+Funkcji Face ID jest tworzony na podstawie wyników wykrywania, w których ciąg reprezentuje [twarzy](#Face) w [interfejsu API rozpoznawania twarzy](#Face-API).
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="face-landmarksfacial-landmarks"></a>To punktów charakterystycznych elementów krajobrazu/twarzy charakterystycznych
 
-Charakterystycznych elementów krajobrazu są opcjonalne w [wykrywania](#Detection-Face-Detection) wyniki; będące semantycznego punktów twarzy, takich jak Ty masz dostęp, czołowych i ujścia (zilustrowane na poniższym rysunku). Charakterystycznych elementów krajobrazu mogą być kontrolowane za pomocą [wykrywania](#Detection-Face-Detection) żądania logiczna returnFaceLandmarks liczb. Jeśli returnFaceLandmarks jest ustawiona na wartość true, zwrócone twarzy będzie miał charakterystycznych elementów krajobrazu atrybutów.
+Charakterystycznych elementów krajobrazu są opcjonalne w wynikach wykrywania; które są semantycznego punktów twarzy, takich jak Ty masz dostęp, czołowych i ujścia (zilustrowane na poniższym rysunku). Charakterystycznych elementów krajobrazu można kontrolować z żądaniem wykrywania, logiczna returnFaceLandmarks liczb. Jeśli returnFaceLandmarks jest ustawiona na wartość true, zwrócone twarzy będzie miał charakterystycznych elementów krajobrazu atrybutów.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -94,19 +94,19 @@ Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykr
 
 #### <a name="face-rectangle"></a>Obrys twarzy
 
-Obrys twarzy jest tworzony na podstawie [wykrywania](#Detection-Face-Detection) wyniki, które jest pionowo prostokąt (po lewej stronie, top, szerokość, wysokość), w przypadku obrazów w pikselach. W lewym górnym rogu [twarzy](#Face) (lewo, top), oprócz szerokość i wysokość, wskazuje rozmiarów twarzy na platformie x i osi y, odpowiednio.
+Obrys twarzy jest tworzony na podstawie wyników wykrywania, czyli prostokąt pionowo (po lewej stronie, top, szerokość, wysokość) w przypadku obrazów w pikselach. W lewym górnym rogu [twarzy](#Face) (lewo, top), oprócz szerokość i wysokość, wskazuje rozmiarów twarzy na platformie x i osi y, odpowiednio.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="facial-hair-attribute"></a>Zarost (atrybut)
 
-Zarost jest jednym z [atrybuty](#Attributes) używane do opisywania długość zarost dostępne twarzy. Atrybut zarost jest opcjonalny w [wykrywania](#Detection-Face-Detection) wyniki i mogą być kontrolowane za pomocą [wykrywania](#Detection-Face-Detection) żądania returnFaceAttributes. Jeśli returnFaceAttributes zawiera "facialHair", zwracane twarzy będzie miał zarost atrybutów.
+Zarost jest jednym z [atrybuty](#Attributes) używane do opisywania długość zarost dostępne twarzy. Atrybut zarost jest opcjonalna w wynikach wykrywania i mogą być kontrolowane za pomocą żądania wykrywania returnFaceAttributes. Jeśli returnFaceAttributes zawiera "facialHair", zwracane twarzy będzie miał zarost atrybutów.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
 #### <a name="facelist"></a>FaceList
 
-FaceList to zbiór [PersistedFace](#PersistedFace) i jest jednostką [Znajdź podobne](#Find-Similar). Dołączono FaceList [identyfikator FaceList](#FaceList-ID), jak również inne atrybuty, takie jak [nazwa](#Name) i [dane użytkownika](#UserData-User-Data).
+FaceList to zbiór [PersistedFace](#PersistedFace) i jest jednostką [Znajdź podobne](#Find-Similar). Dołączono FaceList [identyfikator FaceList](#FaceList-ID), jak również inne atrybuty, takie jak nazwa i dane użytkownika.
 
 Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach: [FaceList — tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b), [FaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524c).
 
@@ -118,7 +118,7 @@ Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach
 
 #### <a name="find-similar"></a>Znajdź podobne
 
-Ten interfejs API jest używany do wyszukiwania podobnych twarzy na podstawie kolekcji twarzy. Twarzy kwerend i kolekcji twarzy, które są reprezentowane jako [twarzy identyfikatory](#Face-ID) lub [identyfikator FceList](#FaceList-ID)/[identyfikator LargeFaceList](#LargeFaceList-ID) w żądaniu. Zwrócone wyniki są przeszukiwane podobnych twarzy, reprezentowane przez [twarzy identyfikatory](#Face-ID) lub [identyfikatory PersistedFace](#PersistedFace-ID).
+Ten interfejs API jest używany do wyszukiwania podobnych twarzy na podstawie kolekcji twarzy. Twarzy kwerend i kolekcji twarzy, które są reprezentowane jako [twarzy identyfikatory](#Face-ID) lub [identyfikator FceList](#FaceList-ID)/[identyfikator LargeFaceList](#LargeFaceList-ID) w żądaniu. Zwrócone wyniki są przeszukiwane podobnych twarzy, reprezentowane przez [twarzy identyfikatory](#Face-ID) lub identyfikatory PersistedFace.
 
 Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach: [Twarzy — Znajdź podobne](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), [LargeFaceList — tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [FaceList — tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b).
 
@@ -126,7 +126,7 @@ Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach
 
 #### <a name="gender-attribute"></a>Płeć (atrybut)
 
-Płeć jest jednym z [atrybuty](#Attributes) używane do opisywania płci dostępne twarze. Atrybut płeć jest opcjonalny w [wykrywania](#Detection-Face-Detection) wyniki i mogą być kontrolowane za pomocą [wykrywania](#Detection-Face-Detection) żądania returnFaceAttributes. Jeśli returnfaceAttributes zawiera "płeć", zwracane twarzy będzie mieć atrybuty płci.
+Płeć jest jednym z [atrybuty](#Attributes) używane do opisywania płci dostępne twarze. Atrybut płeć jest opcjonalna w wynikach wykrywania i mogą być kontrolowane za pomocą żądania wykrywania returnFaceAttributes. Jeśli returnfaceAttributes zawiera "płeć", zwracane twarzy będzie mieć atrybuty płci.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -146,7 +146,7 @@ Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — grup
 
 #### <a name="head-pose-attribute"></a>HEAD stanowić (atrybut)
 
-Poza HEAD jest jednym z [atrybuty](#Attributes) reprezentuje twarzy w przestrzeni 3D zgodnie z kąty wdrożenie, skoku i odchylenia, orientacji, jak pokazano na poniższej ilustracji. Zakresy wartości Przywracanie i yaw są [-180, 180] i [-90, 90] w stopniach. W bieżącej wersji pomysłu wartość zwracana z wykrywania zawsze wynosi 0. Atrybut ułożenia główny jest opcjonalny w [wykrywania](#Detection-Face-Detection) wyniki i mogą być kontrolowane za pomocą [wykrywania](#Detection-Face-Detection) żądania przez parametr returnFaceAttributes. Jeśli parametr returnFaceAttributes zawiera "headPose", zwracane twarzy będzie mieć główny każdego z atrybutów.
+Poza HEAD jest jednym z [atrybuty](#Attributes) reprezentuje twarzy w przestrzeni 3D zgodnie z kąty wdrożenie, skoku i odchylenia, orientacji, jak pokazano na poniższej ilustracji. Zakresy wartości Przywracanie i yaw są [-180, 180] i [-90, 90] w stopniach. W bieżącej wersji pomysłu wartość zwracana z wykrywania zawsze wynosi 0. Atrybut ułożenia główny jest opcjonalny w wynikach wykrywania i mogą być kontrolowane za pomocą żądania wykrywania przez parametr returnFaceAttributes. Jeśli parametr returnFaceAttributes zawiera "headPose", zwracane twarzy będzie mieć główny każdego z atrybutów.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
 
@@ -182,11 +182,11 @@ Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wery
 
 #### <a name="landmarks"></a>Charakterystycznych elementów krajobrazu
 
-Zobacz [twarzy charakterystycznych elementów krajobrazu](#Face-Landmarks-Facial-Landmarks).
+Zobacz to punktów charakterystycznych.
 
 #### <a name="largefacelist"></a>LargeFaceList
 
-LargeFaceList to zbiór [PersistedFace](#PersistedFace) i jest jednostką [Znajdź podobne](#Find-Similar). Dołączono LargeFaceList [identyfikator LargeFaceList](#LargeFaceList-ID), jak również inne atrybuty, takie jak [nazwa](#Name) i [dane użytkownika](#UserData-User-Data).
+LargeFaceList to zbiór [PersistedFace](#PersistedFace) i jest jednostką [Znajdź podobne](#Find-Similar). Dołączono LargeFaceList [identyfikator LargeFaceList](#LargeFaceList-ID), jak również inne atrybuty, takie jak nazwa i dane użytkownika.
 
 Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach: [LargeFaceList — tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc), [LargeFaceList - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a15827cd2de3616c086f2ce), [LargeFaceList - List twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158db4d2de3616c086f2d6).
 
@@ -198,7 +198,7 @@ Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach
 
 #### <a name="largepersongroup"></a>LargePersonGroup
 
-LargePersonGroup to zbiór [osób](#Person) i jest jednostką [identyfikacji](#Identification). Dołączono LargePersonGroup [identyfikator LargePersonGroup](#LargePersonGroup-ID), jak również inne atrybuty, takie jak [nazwa](#Name) i [dane użytkownika](#UserData-User-Data).
+LargePersonGroup to zbiór [osób](#Person) i jest jednostką [identyfikacji](#Identification). Dołączono LargePersonGroup [identyfikator LargePersonGroup](#LargePersonGroup-ID), jak również inne atrybuty, takie jak nazwa i dane użytkownika.
 
 Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach: [LargePersonGroup — tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d), [LargePersonGroup - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acebb6ac60f11b48b5a9e), [osoba LargePersonGroup — lista](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adda06ac60f11b48b5aa1).
 
@@ -236,7 +236,7 @@ Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach
 
 #### <a name="persistedface"></a>PersistedFace
 
-PersistedFace jest strukturą danych w interfejsie API rozpoznawania twarzy. Dołączono PersistedFace [identyfikator PersistedFace](#PersistedFace-ID), jak również inne atrybuty, takie jak [nazwa](#Name), i [dane użytkownika](#UserData-User-Data).
+PersistedFace jest strukturą danych w interfejsie API rozpoznawania twarzy. PersistedFace jest powiązana z Identyfikatorem PersistedFace, jak również inne atrybuty, takie jak nazwa i dane użytkownika.
 
 Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach: [LargeFaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3), [FaceList — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250), [osoba LargePersonGroup — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42), [osoba grupie — Dodaj twarzy](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b).
 
@@ -248,7 +248,7 @@ Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach
 
 #### <a name="person"></a>Person (Osoba)
 
-Osoba jest strukturą danych zarządzanych w interfejsie API rozpoznawania twarzy. Osoby, który jest dostarczany z [identyfikator osoby](#Person-ID), jak również inne atrybuty, takie jak [nazwa](#Name), zbiór [PersistedFace](#PersistedFace), i [dane użytkownika](#UserData-User-Data).
+Osoba jest strukturą danych zarządzanych w interfejsie API rozpoznawania twarzy. Osoby, który jest dostarczany z [identyfikator osoby](#Person-ID), jak również inne atrybuty, takie jak nazwa, zbiór [PersistedFace](#PersistedFace)i dane użytkowników.
 
 Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach: [Osoba LargePersonGroup - utworzyć](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adcba3a7b9412a4d53f40), [osoba LargePersonGroup — Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599add376ac60f11b48b5aa0), [osoba grupie - utworzyć](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523c), [osoba grupie — Pobierz](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523f).
 
@@ -260,7 +260,7 @@ Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach
 
 #### <a name="persongroup"></a>PersonGroup
 
-Grupie jest kolekcją [osób](#Person) i jest jednostką [identyfikacji](#Identification). Dołączono grupie [identyfikator grupie](#PersonGroup-ID), jak również inne atrybuty, takie jak [nazwa](#Name) i [dane użytkownika](#UserData-User-Data).
+Grupie jest kolekcją [osób](#Person) i jest jednostką [identyfikacji](#Identification). Dołączono grupie [identyfikator grupie](#PersonGroup-ID), jak również inne atrybuty, takie jak nazwa i dane użytkownika.
 
 Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach: [Grupie — Tworzenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244), [grupie - Get](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246), [osoba grupie — lista](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395241).
 
@@ -290,19 +290,25 @@ Zobacz [obrys twarzy](#Face-Rectangle).
 
 ## <a name="s"></a>S
 
-#### <a name="smile-attribute"></a>Uśmiech (atrybut)
-
-Uśmiech jest jednym z [atrybuty](#Attributes) używane do opisywania wyrażenia uśmiech dostępne twarzy. Atrybut uśmiech jest opcjonalny w [wykrywania](#Detection-Face-Detection) wyniki i mogą być kontrolowane za pomocą [wykrywania](#Detection-Face-Detection) żądania returnFaceAttributes. Jeśli returnFaceAttributes zawiera "uśmiech", zwracane twarzy będzie miał uśmiech atrybutów.
-
-Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
-
 #### <a name="similar-face-searching"></a>Wyszukiwanie podobnych twarzy
 
 Zobacz [Znajdź podobne](#Find-Similar).
 
+#### <a name="smile-attribute"></a>Uśmiech (atrybut)
+
+Uśmiech jest jednym z [atrybuty](#Attributes) używane do opisywania wyrażenia uśmiech dostępne twarzy. Atrybut uśmiech jest opcjonalna w wynikach wykrywania i mogą być kontrolowane za pomocą żądania wykrywania returnFaceAttributes. Jeśli returnFaceAttributes zawiera "uśmiech", zwracane twarzy będzie miał uśmiech atrybutów.
+
+Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — wykrywanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).
+
+#### <a name="snapshot"></a>Snapshot
+
+Migawka jest tymczasowego magazynu zdalnego dla niektórych typów danych twarzy. Działa ona jako rodzaj Schowka do kopiowania danych z jednej subskrypcji do innego. Najpierw użytkownik "tworzy" migawkę danych w subskrypcji źródłowej, a następnie "odnoszą się" go do nowego obiektu danych w subskrypcji docelowej. 
+
+Aby uzyskać więcej informacji, zobacz [Przewodnik po migracji twarzy](./face-api-how-to-topics/how-to-migrate-face-data.md) , jak również [wykonać migawki -](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/take) i [migawki — Zastosuj](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot/apply) dokumentacji (REST).
+
 #### <a name="status-train"></a>Stan (Train)
 
-Stan to ciąg, który opisuje procedurę [szkolenia LargeFaceList/LargePersonGroups/grup osób](#Train), w tym stanie "notstarted", "uruchomiona", "Powodzenie", "nie powiodło się".
+Ciąg używany do opisania procedury do szkolenia LargeFaceList/LargePersonGroups/grup osób, w tym stanie "notstarted", "uruchomiona", "Powodzenie", "nie powiodło się" jest w stanie.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [LargeFaceList — szkolenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158422d2de3616c086f2d1), [LargePersonGroup — szkolenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599ae2d16ac60f11b48b5aa4), [grupie — szkolenie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395249).
 
@@ -330,7 +336,7 @@ Aby uzyskać więcej informacji można znaleźć w następujących przewodnikach
 
 #### <a name="verification"></a>Weryfikacja
 
-Ten interfejs API jest używany do sprawdzenia, czy dwie twarze powodują takie same, czy nie. Obie strony są reprezentowane jako twarzy identyfikatorów w żądaniu. Zweryfikowano wyniki zawierają pola logicznych ([isIdentical](#Is-Identical)) wskazujący takie same, w przypadku opcji true i pola liczbowego ([ufności](#Confidence)) wskazujący poziom zaufania.
+Ten interfejs API jest używany do sprawdzenia, czy dwie twarze powodują takie same, czy nie. Obie strony są reprezentowane jako twarzy identyfikatorów w żądaniu. Zweryfikowano wyniki zawierają pola logicznych (isIdentical) wskazujący takie same, w przypadku opcji true i pole Liczba ([ufności](#Confidence)) wskazujący poziom zaufania.
 
 Aby uzyskać więcej informacji można znaleźć w podręczniku [twarzy — weryfikowanie](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a).
 

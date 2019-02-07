@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: f74dc441016a0064aca388ce4881eeae9e7bc6d0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657862"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813827"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Zagadnienia dotyczące zabezpieczeń do uzyskiwania dostępu do aplikacji, które zdalnie za pomocą serwera Proxy aplikacji usługi Azure AD
 
@@ -128,11 +128,11 @@ Zawsze, gdy usługa serwera Proxy aplikacji do aktualizacji ustawień konfigurac
 
 Gdy użytkownicy uzyskują dostęp do opublikowanej aplikacji, następujące zdarzenia miejsce między usługą Serwer Proxy aplikacji i łącznik serwera Proxy aplikacji:
 
-1. [Usługa uwierzytelnia użytkownika dla aplikacji](#the-service-checks-the-configuration-settings-for-the-app)
-2. [Usługa stosuje żądania w kolejce łącznika](#The-service-places-a-request-in-the-connector-queue)
-3. [Łącznik przetwarza żądania z kolejki](#the-connector-receives-the-request-from-the-queue)
-4. [Łącznik czeka na odpowiedź](#the-connector-waits-for-a-response)
-5. [Usługa strumieni danych użytkownika](#the-service-streams-data-to-the-user)
+1. Usługa uwierzytelnia użytkownika dla aplikacji
+2. Usługa stosuje żądania w kolejce łącznika
+3. Łącznik przetwarza żądania z kolejki
+4. Łącznik czeka na odpowiedź
+5. Usługa strumieni danych użytkownika
 
 Aby dowiedzieć się, co ma miejsce w każdym z tych kroków, zachować odczytu.
 

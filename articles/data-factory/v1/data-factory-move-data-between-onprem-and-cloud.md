@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015835"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822429"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Przenoszenie danych między źródłami lokalnymi i w chmurze przy użyciu bramy zarządzania danymi
 > [!NOTE]
@@ -172,7 +172,7 @@ W tym kroku utworzysz dwie połączone usługi: **AzureStorageLinkedService** i 
       4. W **Ustawianie poświadczeń** okno dialogowe, określ typ uwierzytelniania, nazwa użytkownika i hasło, a następnie kliknij przycisk **OK**. Jeśli połączenie zostanie nawiązane, zaszyfrowane poświadczenia są przechowywane w formacie JSON, a okno dialogowe zostanie zamknięte.
       5. Zamknij kartę przeglądarki pusty, który uruchomił okno dialogowe, jeśli nie zostaną automatycznie zamknięte, a następnie wrócić do karty z witryny Azure portal.
 
-         Na maszynie bramy, te poświadczenia są **zaszyfrowanych** przy użyciu certyfikatu, który jest właścicielem usługi Data Factory. Jeśli chcesz korzystać z certyfikatu, który jest skojarzony z bramy zarządzania danymi w zamian, zobacz [bezpiecznie ustawić poświadczenia](#set-credentials-and-security).    
+         Na maszynie bramy, te poświadczenia są **zaszyfrowanych** przy użyciu certyfikatu, który jest właścicielem usługi Data Factory. Jeśli chcesz użyć certyfikatu, który jest skojarzony z bramy zarządzania danymi w zamian, zobacz Ustaw poświadczenia bezpieczne.    
    3. Kliknij przycisk **Wdróż** na pasku poleceń, aby wdrożenie programu SQL Server połączoną usługę. Powinien zostać wyświetlony połączonej usługi, w widoku drzewa.
 
       ![Połączonej usługi SQL Server w widoku drzewa](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    
@@ -280,7 +280,7 @@ W tym kroku utworzysz zestawy danych wejściowych i wyjściowych, które repreze
    * **folderPath** ustawiono **adftutorial/outfromonpremdf** gdzie outfromonpremdf to folder w kontenerze adftutorial. Tworzenie **adftutorial** kontener, jeśli jeszcze nie istnieje.
    * Parametr **availability** (dostępność) został ustawiony na wartość **hourly** (co godzinę) (parametr **frequency** [częstotliwość] został ustawiony na **hour** [godzinę], a **interval** [interwał] został ustawiony na wartość **1**).  Usługa Data Factory generuje wycinek danych wyjściowych, co godzinę w **emp** tabeli w bazie danych SQL Azure.
 
-   Jeśli nie określisz **fileName** dla **tabeli wyjściowej**, wygenerowane pliki w **folderPath** są nazwane w następującym formacie: Dane. <Guid>.txt (przykład:: Data.0a405f8a-93ff-4C6F-B3BE-f69616f1df7a.txt.).
+   Jeśli nie określisz **fileName** dla **tabeli wyjściowej**, wygenerowane pliki w **folderPath** są nazwane w następującym formacie: Dane. <Guid>.txt (przykład:: Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.).
 
    Aby ustawić **folderPath** i **fileName** dynamicznie na podstawie **SliceStart** czasu, należy użyć właściwości partitionedBy. W poniższym przykładzie parametr folderPath używa elementów Year, Month i Day z parametru SliceStart (czas rozpoczęcia przetwarzania wycinka), a parametr fileName używa elementu Hour z parametru SliceStart. Na przykład jeśli wycinek jest generowany dla czasu 2014-10-20T08:00:00, parametr folderName zostaje ustawiony na wikidatagateway/wikisampledataout/2014/10/20, a parametr fileName zostaje ustawiony na wartość 08.csv.
 
@@ -389,7 +389,7 @@ W tym kroku opisano użycie witryny Azure Portal do monitorowania tego, co dziej
 
 1. Na diagramie, kliknij dwukrotnie **EmpOnPremSQLTable**.  
 
-    ![Wycinki EmpOnPremSQLTable](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
+    ![EmpOnPremSQLTable slices](./media/data-factory-move-data-between-onprem-and-cloud/OnPremSQLTableSlicesBlade.png)
 2. Należy zauważyć, że wszystkie dane dzieli się znajdują się w **gotowe** stanu, ponieważ czas trwania potoku (czasu rozpoczęcia do czasu zakończenia) jest w przeszłości. To również, że wstawiono dane w bazie danych programu SQL Server i jest cały czas. Upewnij się, że są wyświetlane żadne wycinki w **wycinki z problemami** sekcji u dołu. Aby wyświetlić wszystkie wycinki, kliknij **Zobacz więcej** w dolnej części listę wycinków.
 3. Teraz w **zestawów danych** kliknij **OutputBlobTable**.
 

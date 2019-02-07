@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: 78290f6d1b31788c3f2de99996739cc8e7b20419
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: d865028a2ddc7315192030b704a77a332dab14aa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810938"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822714"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -103,7 +103,7 @@ namespace Company.Function
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [pakietów](#packages), [atrybuty](#attributes), [konfiguracji](#configuration), i [użycia](#usage).
+Aby uzyskać więcej informacji, zobacz pakietów, [atrybuty](#attributes), [konfiguracji](#configuration), i [użycia](#usage).
 
 ### <a name="c-script-example"></a>Przykładowy skrypt w języku C#
 
@@ -155,7 +155,7 @@ public static void Run(EventGridEvent eventGridEvent, ILogger log)
 }
 ```
 
-Aby uzyskać więcej informacji, zobacz [pakietów](#packages), [atrybuty](#attributes), [konfiguracji](#configuration), i [użycia](#usage).
+Aby uzyskać więcej informacji, zobacz pakietów, [atrybuty](#attributes), [konfiguracji](#configuration), i [użycia](#usage).
 
 ### <a name="javascript-example"></a>Przykład JavaScript
 

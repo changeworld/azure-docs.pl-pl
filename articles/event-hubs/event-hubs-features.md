@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 917a551b8a187db6645e523d0189533e333d5371
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a1b60bdf27e1a5f5cb6b9cfba72d78f8afa068eb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075170"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768685"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Funkcje i terminologią dotyczącą usługi Azure Event Hubs
 
@@ -160,8 +160,8 @@ Usługa Event Hubs ma wysoce skalowalną architekturę równoległą i istnieje 
 
 Pojemność przepływności usługi Event Hubs jest kontrolowana przez *jednostki przepływności*. Jednostki przepływności to zakupione wcześniej jednostki pojemności. Pojedyncza jednostka przepływności ma następującą pojemność:
 
-* Transfer danych przychodzących: Maksymalnie 1 MB na sekundę lub 1000 zdarzeń na sekundę (w zależności od tego osiągnięty pierwszy).
-* Transfer danych wychodzących: Maksymalnie 2 MB na sekundę lub 4096 zdarzeń na sekundę.
+* Transfer danych przychodzących: Do 1 MB na sekundę lub 1000 zdarzeń na sekundę (w zależności od tego osiągnięty pierwszy).
+* Transfer danych wychodzących: Do 2 MB na sekundę lub 4096 zdarzeń na sekundę.
 
 Po przekroczeniu pojemności zakupionych jednostek przepływności ruch przychodzący jest ograniczany i jest zwracany wyjątek [ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception). Ruch wychodzący nie generuje wyjątków ograniczania, ale też jest ograniczony do pojemności zakupionych jednostek przepływności. Jeśli wystąpią wyjątki szybkości publikowania lub oczekiwany będzie większy transfer danych wychodzących, należy sprawdzić liczbę jednostek przepływności zakupionych dla przestrzeni nazw. Jednostkami przepływności można zarządzać na **skalowania** bloku przestrzeni nazw w [witryny Azure portal](https://portal.azure.com). Można również zarządzać programowo przy użyciu wszystkich jednostek przepływności [Event Hubs API](event-hubs-api-overview.md).
 
@@ -169,7 +169,7 @@ Jednostki przepływności to zakupione wcześniej i jest rozliczana godzinowo. P
 
 Aby kupić więcej jednostek przepływności w blokach po 20 maksymalnie 100 jednostek przepływności, kontaktując się z pomocą techniczną platformy Azure. Po przekroczeniu tego limitu możesz kupić blokach po 100 jednostek przepływności.
 
-Zalecane jest równoważenie jednostek przepływności i partycji w celu osiągnięcia optymalnej skali. Jedna partycja ma maksymalną skalę wynoszącą jedną jednostkę przepływności. Liczba jednostek przepływności powinna być mniejsza lub równa liczbie partycji w ramach centrum zdarzeń.
+Zalecane jest równoważenie jednostek przepływności i partycji w celu osiągnięcia optymalnej skali. Jedna partycja ma minimalne skalę wynoszącą jedną jednostkę przepływności. Liczba jednostek przepływności powinna być mniejsza lub równa liczbie partycji w ramach centrum zdarzeń.
 
 Aby uzyskać szczegółowe informacje o cenach za korzystanie z usługi Event Hubs, zobacz [Usługa Event Hubs — cennik](https://azure.microsoft.com/pricing/details/event-hubs/).
 

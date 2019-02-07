@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 2f34b6c71c448f7273ba7477f18f5abb8f89cdec
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391200"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815255"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Tworzenie i zarządzanie nimi w usłudze Azure Lab Services szablonu klasy
 Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Możesz skonfigurować maszynę wirtualną szablonu dokładnie tak jak chcesz dla użytkowników laboratorium. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Następnie możesz opublikować szablonu, aby udostępnić użytkownikom laboratorium wystąpień szablonu maszyny Wirtualnej. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon.
@@ -72,7 +72,7 @@ Najpierw należy skonfigurować i publikowanie szablonu podczas tworzenia labora
 
         > [!WARNING]
         > Nie można cofnąć publikowania szablonu. 
-    2. Aby opublikować później, wybierz pozycję **Zachowaj na później**. Maszynę wirtualną szablonu można opublikować po zakończeniu działania kreatora. Aby uzyskać więcej informacji na temat sposobu konfigurowania i publikowania, gdy kreator zakończy pracę, zobacz szczegółowe informacje na temat konfigurowania i publikowania, gdy kreator zakończy pracę, zobacz [opublikować szablon](#publish-the-template) sekcji [sposób zarządzania laboratorium na potrzeby zajęć ](how-to-manage-classroom-labs.md) artykułu.
+    2. Aby opublikować później, wybierz pozycję **Zachowaj na później**. Maszynę wirtualną szablonu można opublikować po zakończeniu działania kreatora. Szczegółowe informacje na temat konfigurowania i publikowania, gdy kreator zakończy pracę, można znaleźć szczegółowe informacje na temat konfigurowania i publikowania, gdy kreator zakończy pracę, zobacz publikowania w temacie szablon [sposób zarządzania laboratorium na potrzeby zajęć](how-to-manage-classroom-labs.md) artykułu.
 
         ![Publikowanie szablonu](../media/tutorial-setup-classroom-lab/publish-template.png)
 11. Zostanie wyświetlony **postęp publikowania** szablonu. Ten proces może potrwać do godziny. 

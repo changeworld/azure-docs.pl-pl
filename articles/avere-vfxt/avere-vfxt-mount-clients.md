@@ -6,19 +6,19 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 5d55879a5a8487636e2252abd359accf07e60ce6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41065b4ac6bc486e204c2bfd72b78ba8722270c4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50634086"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809167"
 ---
-# <a name="mount-the-avere-vfxt-cluster"></a>Instalowanie klastra vFXT Avere  
+# <a name="mount-the-avere-vfxt-cluster"></a>Instalowanie klastra Avere vFXT  
 
 Wykonaj następujące kroki, aby połączyć komputery klienckie z klastrem vFXT.
 
 1. Zdecyduj, jak Równoważenie obciążenia ruchu klientów między węzły klastra. Odczyt [Równoważenie obciążenia klienta](#balance-client-load)poniżej, aby uzyskać szczegółowe informacje. 
-1. Identyfikowanie [adresów IP i Rozgałęzienie ścieżek](#identify-ip-addresses-and-paths-to-mount) do zainstalowania.
+1. Zidentyfikuj adresów IP i Rozgałęzienie ścieżek do zainstalowania.
 1. Problem [polecenie instalacji](#mount-command-arguments), z odpowiednimi argumentami.
 
 ## <a name="balance-client-load"></a>Równoważenie obciążenia klienta
@@ -28,7 +28,7 @@ Aby ułatwić równoważenie żądań klientów między wszystkie węzły w klas
 > [!TIP] 
 > Inne metody równoważenia obciążenia może być odpowiednie dla dużych lub złożonych systemów; [Otwórz bilet pomocy technicznej](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) celu uzyskania pomocy.)
 > 
-> Jeśli wolisz używać serwera DNS dla równoważenia obciążenia usługi automatycznego po stronie serwera, musisz skonfigurować i zarządzać swoim własnym serwerze DNS w systemie Azure. W takim przypadku można skonfigurować DNS okrężnego vFXT klastra zgodnie z tym dokumencie: [konfiguracji DNS klastra Avere](avere-vfxt-configure-dns.md).
+> Jeśli wolisz używać serwera DNS dla równoważenia obciążenia usługi automatycznego po stronie serwera, musisz skonfigurować i zarządzać swoim własnym serwerze DNS w systemie Azure. W takim przypadku można skonfigurować DNS okrężnego vFXT klastra zgodnie z tym dokumencie: [Konfiguracja DNS klastra Avere](avere-vfxt-configure-dns.md).
 
 ### <a name="sample-balanced-client-mounting-script"></a>Przykładowy klient o zrównoważonym obciążeniu instalowania skryptu
 
@@ -68,7 +68,7 @@ Z komputera klienckiego z ``mount`` polecenie mapuje serwera wirtualnego (vserve
 
 Istnieją trzy elementy do polecenia instalacji: 
 
-* Ścieżka vFXT - (kombinację adresów IP i nazw Rozgałęzienie ścieżek opisem [poniżej](#junction-and-ip-address))
+* Ścieżka vFXT - (kombinację adresów IP i nazw Rozgałęzienie ścieżek opisanych poniżej)
 * Ścieżka lokalna — ścieżka na komputerze klienckim 
 * Opcje polecenia - instalacji (wymienione w [argumenty wiersza polecenia instalacji](#mount-command-arguments))
 

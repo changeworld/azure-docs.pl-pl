@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: b2a262e6829aca75f03db41ff72ab0cc067c93be
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: f5c8880535d5b4b89ec3f13caa20051ae1709925
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025797"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812790"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -91,7 +91,7 @@ Podczas tworzenia tras zdefiniowanych przez użytkownika możesz określić poni
 
     Możesz określić trasę 0.0.0.0/0 jako prefiks adresu i typ następnego przeskoku urządzenia wirtualnego, umożliwiając urządzeniu sprawdzanie ruchu i określanie, czy przekazać ruch dalej, czy też go porzucić. Jeśli zamierzasz utworzyć trasę zdefiniowaną przez użytkownika, która zawiera prefiks adresu 0.0.0.0/0, przeczytaj najpierw [0.0.0.0/0 address prefix (Prefiks adresu 0.0.0.0/0)](#default-route).
 
-- **Brama sieci wirtualnej**: Określ, kiedy ruch przeznaczony dla określonych prefiksów adresów ma być kierowany do bramy sieci wirtualnej. Brama sieci wirtualnej musi zostać utworzona z typem **VPN**. W zdefiniowanej przez użytkownika trasie nie możesz określić bramy sieci wirtualnej utworzonej jako typ **ExpressRoute**, ponieważ dla usługi ExpressRoute musisz użyć protokołu [BGP](#border-gateway-protocol-routes) dla tras niestandardowych. Możesz zdefiniować trasę, która kieruje ruch przeznaczony dla prefiksu adresu 0.0.0.0/0 do bramy sieci wirtualnej [opartej na trasach](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype). W swojej lokalizacji możesz mieć urządzenie, które sprawdza ruch i określa, czy przekazać go dalej, czy też go porzucić. Jeśli zamierzasz utworzyć zdefiniowaną przez użytkownika trasę dla prefiksu adresu 0.0.0.0/0, przeczytaj najpierw [0.0.0.0/0 address prefix (Prefiks adresu 0.0.0.0/0)](#default-route). Zamiast konfigurować zdefiniowaną przez użytkownika trasę dla prefiksu adresu 0.0.0.0/0, możesz anonsować trasę z prefiksem 0.0.0.0/0 za pomocą protokołu BGP, jeśli [masz włączony protokół BGP dla bramy sieci wirtualnej sieci VPN](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **Brama sieci wirtualnej**: Określ, kiedy ruch przeznaczony dla określonych prefiksów adresów ma być kierowany do bramy sieci wirtualnej. Brama sieci wirtualnej musi zostać utworzona z typem **VPN**. Nie można określić bramy sieci wirtualnej utworzonej jako typ **ExpressRoute** w trasie zdefiniowanej przez użytkownika, ponieważ przy użyciu usługi ExpressRoute, należy użyć protokołu BGP dla tras niestandardowych. Możesz zdefiniować trasę, która kieruje ruch przeznaczony dla prefiksu adresu 0.0.0.0/0 do bramy sieci wirtualnej [opartej na trasach](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#vpntype). W swojej lokalizacji możesz mieć urządzenie, które sprawdza ruch i określa, czy przekazać go dalej, czy też go porzucić. Jeśli zamierzasz utworzyć zdefiniowaną przez użytkownika trasę dla prefiksu adresu 0.0.0.0/0, przeczytaj najpierw [0.0.0.0/0 address prefix (Prefiks adresu 0.0.0.0/0)](#default-route). Zamiast konfigurować zdefiniowaną przez użytkownika trasę dla prefiksu adresu 0.0.0.0/0, możesz anonsować trasę z prefiksem 0.0.0.0/0 za pomocą protokołu BGP, jeśli [masz włączony protokół BGP dla bramy sieci wirtualnej sieci VPN](../vpn-gateway/vpn-gateway-bgp-resource-manager-ps.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - **Brak**: Określ, kiedy chcesz porzucić ruch do prefiksu adresu, zamiast przekazywać ten ruch do miejsca docelowego. Jeśli nie skonfigurowano w pełni możliwości, platforma Azure może wyświetlać pozycję *Brak* dla niektórych opcjonalnych tras systemowych. Jeśli na przykład pozycja *Brak* zostanie wyświetlona jako **Adres IP następnego przeskoku** dla **Typu następnego przeskoku** równego *Brama sieci wirtualnej* lub *Urządzenie wirtualne*, może to wynikać z tego, że urządzenie nie jest uruchomione lub nie jest w pełni skonfigurowane. Platforma Azure tworzy [domyślne trasy](#default) systemowe dla zarezerwowanych prefiksów adresów mające pozycję **Brak** jako typ następnego przeskoku.
 - **Sieć wirtualna**: Określ, kiedy chcesz zastąpić domyślny routing w sieci wirtualnej. Zobacz [przykład routingu](#routing-example), aby zapoznać się z przykładem, dlaczego możesz utworzyć trasę z typem przeskoku **Sieć wirtualna**.
 - **Internet**: Określ, kiedy chcesz jawnie skierować ruch przeznaczony do prefiksu adresu do Internetu lub czy chcesz, aby ruch przeznaczony do usług platformy Azure mających publiczne adresy IP pozostał w sieci szkieletowej platformy Azure.

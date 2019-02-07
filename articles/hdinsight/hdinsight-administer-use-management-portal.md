@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4210528003cdb1f584bec3dea80c1aa1db2f86df
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: dd94330835c52b27c61c484d44991152d092fbe7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632029"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811702"
 ---
 # <a name="manage-windows-based-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Apache Hadoop oparte na Windows w HDInsight przy użyciu witryny Azure portal
 
@@ -203,7 +203,7 @@ Istnieje wiele sposobów, można programować procesu:
 Aby uzyskać informacje o cenach, zobacz [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Aby usunąć klaster z poziomu portalu, zobacz [usuwać klastry](#delete-clusters)
 
 ## <a name="change-cluster-username"></a>Zmień nazwę użytkownika z klastra
-Klaster usługi HDInsight może mieć dwóch kont użytkowników. Konto użytkownika klastra HDInsight jest tworzony podczas procesu tworzenia. Można również utworzyć konto użytkownika protokołu RDP do uzyskiwania dostępu do klastra za pośrednictwem protokołu RDP. Zobacz [Włącz pulpit zdalny](#connect-to-hdinsight-clusters-by-using-rdp).
+Klaster usługi HDInsight może mieć dwóch kont użytkowników. Konto użytkownika klastra HDInsight jest tworzony podczas procesu tworzenia. Można również utworzyć konto użytkownika protokołu RDP do uzyskiwania dostępu do klastra za pośrednictwem protokołu RDP. Zobacz Włączanie pulpitu zdalnego.
 
 **Aby zmienić nazwę użytkownika klastra HDInsight i hasło**
 

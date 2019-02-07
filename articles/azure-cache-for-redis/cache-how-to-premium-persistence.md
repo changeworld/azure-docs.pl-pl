@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
 ms.author: wesmc
-ms.openlocfilehash: 60f9baf7fb54706dc9d31c6920c0df24173d7b35
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 903fd465ce2a88e94b821c9a1b4c6c531083180a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105850"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819063"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Konfigurowanie trwałości danych dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera ofert różnych pamięci podręcznych, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. W tym artykule opisano sposób konfigurowania trwałości w warstwie premium usługi Azure Cache dla wystąpienia usługi Redis.
@@ -133,7 +133,7 @@ Aby uzyskać RDB i AOF trwałości:
 * Jeśli mają być skalowane do mniejszego rozmiaru i mniejszy rozmiar do przechowywania wszystkich danych z ostatniej kopii zapasowej nie ma wystarczająco dużo miejsca, kluczy zostanie wykluczona podczas procesu przywracania, zazwyczaj przy użyciu [allkeys lru](https://redis.io/topics/lru-cache) zasady eksmisji.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Częstotliwość wykonywania kopii zapasowych pliku RDB można zmienić po utworzeniu pamięci podręcznej?
-Tak, można zmienić częstotliwość wykonywania kopii zapasowych dla trwałości RDB na **trwałość danych Redis** bloku. Aby uzyskać instrukcje, zobacz [Redis Konfigurowanie trwałości](#configure-redis-persistence).
+Tak, można zmienić częstotliwość wykonywania kopii zapasowych dla trwałości RDB na **trwałość danych Redis** bloku. Aby uzyskać instrukcje zobacz Konfigurowanie Redis trwałości.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Dlaczego mam częstotliwość tworzenia kopii zapasowej RDB 60 minut czy ponad 60 minut między kopią zapasową?
 Interwał częstotliwości tworzenia kopii zapasowej trwałości RDB nie uruchamia, dopóki poprzedniego procesu tworzenia kopii zapasowej zakończyła się pomyślnie. Jeśli częstotliwości tworzenia kopii zapasowej jest 60 minut i potrzebny procesu tworzenia kopii zapasowej 15 minut do pomyślnego ukończenia, następnej kopii zapasowej nie będą naliczane do dnia 75 minut od czasu rozpoczęcia z poprzedniej kopii zapasowej.

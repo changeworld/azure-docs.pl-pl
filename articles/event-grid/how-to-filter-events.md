@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: fa7deb8a1ef536ef0c2b7fbb0a184a950821aebf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 95a0d1b8afba71f6c8226dfe1ad5268d9e6f24e1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477340"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816921"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtrowanie zdarzeń usługi Event Grid
 
@@ -20,7 +20,7 @@ W tym artykule przedstawiono sposób filtrowania zdarzeń podczas tworzenia subs
 
 ## <a name="filter-by-event-type"></a>Filtruj według typu zdarzenia
 
-Podczas tworzenia subskrypcji usługi Event Grid, można określić, które [typy zdarzeń](event-schema.md) wysyłać do punktu końcowego. Przykłady w tej sekcji Tworzenie subskrypcji zdarzeń dla grupy zasobów, ale ograniczenia zdarzeń, które są wysyłane do `Microsoft.Resources.ResourceWriteFailure` i `Microsoft.Resources.ResourceWriteSuccess`. Jeśli potrzebujesz większej elastyczności podczas filtrowania zdarzenia według typów zdarzeń, zobacz [Filtruj według Zaawansowane operatory i pola danych](#filter-by-advanced-operators-and-data-fields).
+Podczas tworzenia subskrypcji usługi Event Grid, można określić, które [typy zdarzeń](event-schema.md) wysyłać do punktu końcowego. Przykłady w tej sekcji Tworzenie subskrypcji zdarzeń dla grupy zasobów, ale ograniczenia zdarzeń, które są wysyłane do `Microsoft.Resources.ResourceWriteFailure` i `Microsoft.Resources.ResourceWriteSuccess`. Jeśli potrzebujesz większej elastyczności podczas filtrowania zdarzenia według typów zdarzeń, zobacz Filtruj według Zaawansowane operatory i pola danych.
 
 W przypadku programu PowerShell, użyj `-IncludedEventType` parametru podczas tworzenia subskrypcji.
 
@@ -77,7 +77,7 @@ Szablon usługi Resource Manager można użyć `includedEventTypes` właściwoś
 
 ## <a name="filter-by-subject"></a>Filtruj według tematu
 
-Można filtrować zdarzenia według tematu w danych zdarzenia. Można określić wartość do dopasowania do początku lub na końcu tematu. Jeśli potrzebujesz większej elastyczności podczas filtrowania zdarzeń według tematu, zobacz [Filtruj według Zaawansowane operatory i pola danych](#filter-by-advanced-operators-and-data-fields).
+Można filtrować zdarzenia według tematu w danych zdarzenia. Można określić wartość do dopasowania do początku lub na końcu tematu. Jeśli potrzebujesz większej elastyczności podczas filtrowania zdarzeń według tematu, zobacz Filtruj według Zaawansowane operatory i pola danych.
 
 W poniższym przykładzie programu PowerShell utworzysz subskrypcję zdarzeń filtrujące według początku tematu. Możesz użyć `-SubjectBeginsWith` parametr w celu ograniczenia zdarzeń do tych dla określonego zasobu. Identyfikator zasobu sieciowej grupy zabezpieczeń są przekazywane.
 

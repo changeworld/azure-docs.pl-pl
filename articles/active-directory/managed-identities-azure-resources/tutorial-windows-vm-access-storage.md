@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/24/2019
 ms.author: priyamo
-ms.openlocfilehash: c19c5031c27ac37aee3707911268965912c20994
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e266ebca40ac9a3c1d6c1a77e30fed717f4b1b51
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158200"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753460"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem klucza dostępu przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Windows
 
@@ -173,5 +173,5 @@ Name              : testblob
 W tym samouczku przedstawiono sposób tworzenia przypisanej przez system tożsamości zarządzanej w celu uzyskania dostępu do usługi Azure Storage przy użyciu klucza dostępu.  Aby dowiedzieć się więcej o kluczach dostępu usługi Azure Storage, zobacz:
 
 > [!div class="nextstepaction"]
->[Zarządzanie kluczami dostępu do magazynu](/azure/storage/common/storage-create-storage-account#manage-your-storage-access-keys)
+>[Zarządzanie kluczami dostępu do magazynu](/azure/storage/common/storage-create-storage-account)
 

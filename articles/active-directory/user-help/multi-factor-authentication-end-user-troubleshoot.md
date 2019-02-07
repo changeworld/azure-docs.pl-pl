@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: lizross
 ms.reviewer: kexia
-ms.openlocfilehash: 2b8a0db21ab4beb2128ae0a1cebbf9fb42691f3c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2ede7a172eda1122b0668984cc8e11937b3ae852
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177411"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768187"
 ---
 # <a name="get-help-with-two-step-verification"></a>Uzyskaj pomoc dotyczącą weryfikacji dwuetapowej
 
@@ -36,7 +36,7 @@ Istnieje kilka powodów dlaczego konieczne może być metodą weryfikacji altern
 
 - **Utraty telefonu lub masz nowy numer telefonu.** Jeśli utraty telefonu lub uzyskane nowy numer, możesz zalogować się przy użyciu innej metody lub skontaktuj się z administratorem, aby wyczyścić ustawienia. Zdecydowanie zaleca się umożliwienie Twojego administratora o Jeśli Twój telefon został utraty lub kradzieży odpowiednie aktualizacje można więc ustawić do Twojego konta. Po ustawienia zostaną wyczyszczone, zostanie wyświetlony monit [zarejestrować na potrzeby weryfikacji dwuetapowej](multi-factor-authentication-end-user-first-time.md) przy następnym logowaniu.
 
-- **Pobieranie nie tekst uwierzytelniania lub połączenia telefonicznego.** Istnieje kilka powodów dlaczego możesz nie otrzymać tekst lub połączenia telefonicznego. Jeśli w przeszłości zostało pomyślnie udostępnione teksty lub połączeń telefonicznych, to prawdopodobnie wystąpił problem z dostawcy telefonu, a nie konta. Jeśli masz często opóźnienia z powodu nieprawidłowych sygnał, zalecamy użycie [aplikacji Microsoft Authenticator](microsoft-authenticator-app-how-to.md) na swoim urządzeniu przenośnym. Ta aplikacja może generować kody losowe zabezpieczeń podczas logowania, bez żadnych sygnału komórki lub połączenie z Internetem.<br><br>Jeśli chcesz odbierać wiadomość tekstową, ask przyjaznego tekstu jako test, aby upewnić się, Uzyskaj ją, a jeśli trafiła do Ciebie wiele wiadomości, upewnij się, że używasz kodu z najbardziej aktualny plan.
+- **Pobieranie nie tekst uwierzytelniania lub połączenia telefonicznego.** Istnieje kilka powodów dlaczego możesz nie otrzymać tekst lub połączenia telefonicznego. Jeśli w przeszłości zostało pomyślnie udostępnione teksty lub połączeń telefonicznych, to prawdopodobnie wystąpił problem z dostawcy telefonu, a nie konta. Jeśli masz często opóźnienia z powodu nieprawidłowych sygnał, zalecamy użycie [aplikacji Microsoft Authenticator](user-help-auth-app-download-install.md) na swoim urządzeniu przenośnym. Ta aplikacja może generować kody losowe zabezpieczeń podczas logowania, bez żadnych sygnału komórki lub połączenie z Internetem.<br><br>Jeśli chcesz odbierać wiadomość tekstową, ask przyjaznego tekstu jako test, aby upewnić się, Uzyskaj ją, a jeśli trafiła do Ciebie wiele wiadomości, upewnij się, że używasz kodu z najbardziej aktualny plan.
 
 - **Hasła aplikacji nie działają.** Hasła aplikacji Zastąp normalne hasło starsze aplikacje klasyczne, które nie obsługują weryfikacji dwuetapowej. Najpierw upewnij się, że hasło została wpisana poprawnie. Jeśli to nie rozwiąże go, spróbuj zalogować się, aby [Utwórz nowe hasło aplikacji](multi-factor-authentication-end-user-app-passwords.md) lub skontaktować się z administratorem, aby [usunąć istniejące hasła aplikacji](../authentication/howto-mfa-userdevicesettings.md) aby można było utworzyć nowy.
 
@@ -61,4 +61,4 @@ Jeśli sprawdzone następujące kroki, ale nadal są uruchomione w problemy, sko
 
 * [Zarządzanie ustawieniami weryfikacji dwuetapowej](multi-factor-authentication-end-user-manage-settings.md)
 
-* [Często zadawane pytania na temat aplikacji Microsoft Authenticator](microsoft-authenticator-app-faq.md)
+* [Często zadawane pytania na temat aplikacji Microsoft Authenticator](user-help-auth-app-faq.md)

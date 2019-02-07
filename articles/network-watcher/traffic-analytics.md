@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: 3b0db93d44827e3f5d0543f28a6f4b5fb0c4818e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 4f1ce84dba4e9f35e7884ebd9058781eb30c3ec4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429093"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815850"
 ---
 # <a name="traffic-analytics"></a>Analiza ruchu
 
@@ -164,7 +164,7 @@ Wybierz następujące opcje, jak pokazano na ilustracji:
 2. Wybierz istniejące konto magazynu do przechowywania dzienników przepływów na platformie. Jeśli chcesz przechowywać dane w nieskończoność, ustaw wartość *0*. Powoduje naliczenie opłat za magazyn Azure dla konta magazynu.
 3. Ustaw **przechowywania** do liczby dni, które mają być przechowywane dane.
 4. Wybierz *na* dla **stan analizy ruchu**.
-5. Wybierz istniejący obszar roboczy Log Analytics lub **Utwórz nowy obszar roboczy** Aby utworzyć nową. Analiza ruchu służy obszar roboczy usługi Log Analytics do przechowywania danych zagregowanych i indeksowane, który jest następnie używany do generowania analizami. Jeśli wybierzesz istniejącego obszaru roboczego, musi istnieć w jednym z [obsługiwane regiony](#traffic-analytics-supported-regions) i zostały uaktualnione do nowego języka zapytań. Jeśli nie chcesz, aby uaktualnić istniejący obszar roboczy lub w obsługiwanym regionie nie ma obszaru roboczego, Utwórz nową. Aby uzyskać więcej informacji na temat język zapytań, zobacz [usługi Azure Log Analytics, uaktualnienie do nową funkcją przeszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
+5. Wybierz istniejący obszar roboczy Log Analytics lub **Utwórz nowy obszar roboczy** Aby utworzyć nową. Analiza ruchu służy obszar roboczy usługi Log Analytics do przechowywania danych zagregowanych i indeksowane, który jest następnie używany do generowania analizami. Jeśli wybierzesz istniejącego obszaru roboczego, musi istnieć w jednym z obsługiwanych regionów i zostały uaktualnione do nowego języka zapytań. Jeśli nie chcesz, aby uaktualnić istniejący obszar roboczy lub w obsługiwanym regionie nie ma obszaru roboczego, Utwórz nową. Aby uzyskać więcej informacji na temat język zapytań, zobacz [usługi Azure Log Analytics, uaktualnienie do nową funkcją przeszukiwania dzienników](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
     Obszaru roboczego analizy dzienników hostingu rozwiązanie do analizy ruchu i sieciowe grupy zabezpieczeń nie muszą znajdować się w tym samym regionie. Na przykład można mieć sieciowych grup zabezpieczeń w regionie wschodnie stany USA i zachodnie stany USA, w obszarze roboczym w regionie Europa Zachodnia, może być analizy ruchu. Wiele sieciowych grup zabezpieczeń można skonfigurować w tym samym obszarze roboczym.
 6. Wybierz pozycję **Zapisz**.

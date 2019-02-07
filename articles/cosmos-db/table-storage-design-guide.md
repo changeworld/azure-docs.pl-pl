@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: bb759c0b21287f8198f2f4e0dac10020a3b31d62
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 433f99d72feb7dc697050049817478a8c8b679e6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913601"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820967"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel
 
@@ -205,9 +205,9 @@ W poniższych przykładach założono, usłudze table service zapisuje jednostek
 | **Imię** |Ciąg |
 | **Nazwisko** |Ciąg |
 | **Wiek** |Liczba całkowita |
-| **EmailAddress** |Ciąg |
+| **EmailAddress** |String |
 
-We wcześniejszej sekcji [Omówienie usługi Azure Table](#overview) opisano niektóre z kluczowymi funkcjami usługi Azure Table service, które mają bezpośredni wpływ na projektowanie pod kątem zapytań. Wynikiem tych ogólne wytyczne dotyczące projektowania zapytań usługi tabeli. Składnia filtru użyte w poniższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
+Wcześniej Omówienie usługi Azure Table sekcji opisano niektóre z kluczowymi funkcjami usługi Azure Table service, które mają bezpośredni wpływ na projektowanie pod kątem zapytań. Wynikiem tych ogólne wytyczne dotyczące projektowania zapytań usługi tabeli. Składnia filtru użyte w poniższych przykładach jest z usługi tabel interfejsu API REST, aby uzyskać więcej informacji, zobacz [wykonywanie zapytań dotyczących jednostek](https://msdn.microsoft.com/library/azure/dd179421.aspx).  
 
 * A ***kwerendy punktu*** jest najbardziej efektywny sposób wyszukiwania, aby użyć i jest zalecana służący do wyszukiwania mocno obciążające lub wyszukiwania, wymagających najmniejszego opóźnienia. W przypadku takiego zapytania umożliwia wydajne Znajdź pojedynczą jednostkę, określając zarówno indeksy **PartitionKey** i **RowKey** wartości. Na przykład: $filter = (PartitionKey eq "Sprzedaż") i (RowKey eq '2')  
 * Po drugie, najlepiej jest ***kwerendy zakresu*** , który używa **PartitionKey** i filtry na szeroką gamę **RowKey** wartości do zwrócenia więcej niż jedną jednostkę. **PartitionKey** wartość określa określonej partycji i **RowKey** wartości identyfikują podzestawu jednostek w partycji. Na przykład: $filter = PartitionKey eq "Sprzedaż i RowKey ge" i RowKey lt t "  
@@ -1294,7 +1294,7 @@ Każda jednostka może nadal mieć **PartitionKey**, **RowKey**, i **sygnatura c
 
 Pierwsza opcja AS jednostki wpisz, aby **RowKey**, jest przydatne, jeśli istnieje możliwość, że dwie jednostki o różnych typach może mieć taką samą wartość klucza. Grup jednostek z tego samego typu, ze sobą w partycji.  
 
-Techniki opisane w tej sekcji są szczególnie istotne w dyskusji [relacje dziedziczenia](#inheritance-relationships) wcześniej w tym przewodniku, w sekcji [modelowanie relacji](#modelling-relationships).  
+Techniki opisane w tej sekcji są szczególnie istotne w dyskusji [relacje dziedziczenia](#inheritance-relationships) we wcześniejszej części tego przewodnika, w sekcji modelowanie relacji.  
 
 > [!NOTE]
 > Należy rozważyć, w tym numer wersji w wartości typu jednostki, aby umożliwić aplikacjom klienckim ewoluować obiektów POCO i pracy z różnymi wersjami.  

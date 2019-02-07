@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473813"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822140"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Rozwiązywanie problemów z usługi Diagnostyka Azure
 W tym artykule opisano informacje dotyczące rozwiązywania problemów, która jest odpowiednia do korzystania z usługi Azure Diagnostics. Aby uzyskać więcej informacji na temat usługi Diagnostyka Azure, zobacz [Omówienie usługi Azure Diagnostics](diagnostics-extension-overview.md).
@@ -105,7 +105,7 @@ Najczęstszą przyczyną, że dane zdarzenia nie jest wyświetlana jest, że inf
 
 Rozwiązanie: Popraw konfigurację diagnostyki i ponownie zainstaluj diagnostyki.
 
-Jeśli konto magazynu jest poprawnie skonfigurowane, dostęp zdalny do maszyny i sprawdź, czy uruchomiono DiagnosticsPlugin.exe i MonAgentCore.exe. Jeśli nie są uruchomione, wykonaj kroki opisane w [nie uruchamia usługi Azure Diagnostics](#azure-diagnostics-is-not-starting).
+Jeśli konto magazynu jest poprawnie skonfigurowane, dostęp zdalny do maszyny i sprawdź, czy uruchomiono DiagnosticsPlugin.exe i MonAgentCore.exe. Jeśli nie są uruchomione, postępuj zgodnie z instrukcjami w usłudze Diagnostyka Azure nie jest uruchamiana.
 
 Jeśli są uruchomione procesy, przejdź do strony [danych wprowadzenie przechwytywane lokalnie?](#is-data-getting-captured-locally) i postępuj zgodnie z instrukcjami.
 
@@ -119,7 +119,7 @@ Konfiguracja diagnostyki zawiera instrukcje dotyczące określonego typu danych,
 - **Liczniki wydajności**: Otwórz monitora wydajności i Sprawdź licznik.
 
 - **Dzienniki śledzenia**:  Zdalny dostęp do maszyny Wirtualnej i Dodaj TextWriterTraceListener do pliku konfiguracyjnego aplikacji.  Zobacz https://msdn.microsoft.com/library/sk36c28t.aspx skonfigurować odbiornik tekstu.  Upewnij się, że `<trace>` element ma `<trace autoflush="true">`.<br />
-Jeśli nie widzisz dzienników generowanych, zobacz [więcej informacji na temat dzienników śledzenia Brak](#more-about-trace-logs-missing).
+Jeśli nie widzisz, że generowany w dziennikach śledzenia, zobacz więcej o dziennikach śledzenia Brak.
 
 - **Śladów funkcji ETW**: Dostęp zdalny do maszyny Wirtualnej i instalowanie narzędzia PerfView.  W narzędzia PerfView, uruchom **pliku** > **polecenie użytkownika** > **nasłuchiwania etwprovder1** > **etwprovider2**i tak dalej. **Nasłuchiwania** polecenia jest rozróżniana wielkość liter i nie może być spacji między rozdzielana przecinkami lista dostawców ETW. Jeśli polecenie nie powiedzie się uruchomić, możesz wybrać **dziennika** przycisk w prawym dolnym rogu narzędzia Perfview, aby zobaczyć, jakie podjęto próbę uruchomienia i jakiego wyniku.  Przy założeniu, że dane wejściowe są poprawne, nowe okno podręczne z. W ciągu kilku sekund możesz rozpocząć wyświetlanie śladów funkcji ETW.
 
@@ -127,13 +127,13 @@ Jeśli nie widzisz dzienników generowanych, zobacz [więcej informacji na temat
 
 #### <a name="is-data-getting-captured-locally"></a>To wprowadzenie przechwytywane dane lokalnie?
 Następnie upewnij się, że dane są wprowadzenie przechwytywane lokalnie.
-Dane są przechowywane lokalnie w `*.tsf` pliki [magazynu lokalnego dla danych diagnostycznych](#log-artifacts-path). Różne rodzaje dzienniki Pobierz zebranych w różnych `.tsf` plików. Nazwy są podobne do nazwy tabel w usłudze Azure Storage.
+Dane są przechowywane lokalnie w `*.tsf` pliki w lokalnym magazynie danych diagnostycznych. Różne rodzaje dzienniki Pobierz zebranych w różnych `.tsf` plików. Nazwy są podobne do nazwy tabel w usłudze Azure Storage.
 
 Na przykład `Performance Counters` uzyskać zbierane w `PerformanceCountersTable.tsf`. Dzienniki zdarzeń Pobierz zebranych w `WindowsEventLogsTable.tsf`. Postępuj zgodnie z instrukcjami w [wyodrębniania w lokalnym dzienniku](#local-log-extraction) sekcji, aby otwierać pliki kolekcji lokalnej i sprawdzić, zobacz ich wprowadzenie zebrane na dysku.
 
 Jeśli nie widzisz dzienników wprowadzenie zbierane lokalnie, a już sprawdzeniu, że host jest generowanie danych, należy prawdopodobnie występuje problem z konfiguracją. Uważnie Przejrzyj konfigurację.
 
-Sprawdź również konfiguracji, który został wygenerowany dla MonitoringAgent [MaConfig.xml](#log-artifacts-path). Sprawdź, czy sekcja, która opisuje źródło odpowiedniego dziennika. Następnie sprawdź, że nie zostaną utracone w tłumaczeniu między konfiguracji diagnostyki i konfiguracji agenta monitorowania.
+Sprawdź również konfiguracji, który został wygenerowany dla MonitoringAgent MaConfig.xml. Sprawdź, czy sekcja, która opisuje źródło odpowiedniego dziennika. Następnie sprawdź, że nie zostaną utracone w tłumaczeniu między konfiguracji diagnostyki i konfiguracji agenta monitorowania.
 
 #### <a name="is-data-getting-transferred"></a>To wprowadzenie przesyłanych danych?
 Jeśli upewnieniu się, że dane są wprowadzenie przechwytywane lokalnie, ale nadal nie widać jej w ramach konta magazynu, wykonaj następujące czynności:
@@ -142,10 +142,10 @@ Jeśli upewnieniu się, że dane są wprowadzenie przechwytywane lokalnie, ale n
 
 - Sprawdź poprawność podanego konta magazynu. Upewnij się, że nie ma ograniczenia sieci, które uniemożliwiają składniki docieranie do publicznych punktów końcowych. Jednym ze sposobów, w tym ma dostęp zdalny do maszyny, a następnie spróbuj zapisać coś, co do tego samego konta magazynu samodzielnie.
 
-- Na koniec można sprawdzić jakie błędy są zgłaszane przez agenta monitorowania. Agent monitorowania zapisuje jej dzienników w `maeventtable.tsf`, który znajduje się w [magazynu lokalnego dla danych diagnostycznych](#log-artifacts-path). Postępuj zgodnie z instrukcjami w [wyodrębniania w lokalnym dzienniku](#local-log-extraction) sekcji do otwierania tego pliku. Spróbuj ustalić, czy są `errors` wskazujące błędy odczytu do plików lokalnych zapisywanie w magazynie.
+- Na koniec można sprawdzić jakie błędy są zgłaszane przez agenta monitorowania. Agent monitorowania zapisuje jej dzienników w `maeventtable.tsf`, który znajduje się w magazynie lokalnym dla danych diagnostycznych. Postępuj zgodnie z instrukcjami w [wyodrębniania w lokalnym dzienniku](#local-log-extraction) sekcji do otwierania tego pliku. Spróbuj ustalić, czy są `errors` wskazujące błędy odczytu do plików lokalnych zapisywanie w magazynie.
 
 ### <a name="capturing-and-archiving-logs"></a>Przechwytywanie i archiwizowanie dzienników
-Jeśli myślisz o kontaktując się z pomocą techniczną, pierwszą rzeczą, jaką może poprosić Cię jest zbieranie dzienników z Twojego komputera. Aby zaoszczędzić czas, wykonując ten samodzielnie. Uruchom `CollectGuestLogs.exe` narzędzie [ścieżkę narzędzia kolekcji dziennika](#log-artifacts-path). Generuje plik zip pliku przy użyciu platformy Azure wszystkie istotne rejestruje się w tym samym folderze.
+Jeśli myślisz o kontaktując się z pomocą techniczną, pierwszą rzeczą, jaką może poprosić Cię jest zbieranie dzienników z Twojego komputera. Aby zaoszczędzić czas, wykonując ten samodzielnie. Uruchom `CollectGuestLogs.exe` narzędzie w ścieżce narzędzia kolekcji dziennika. Generuje plik zip pliku przy użyciu platformy Azure wszystkie istotne rejestruje się w tym samym folderze.
 
 ## <a name="diagnostics-data-tables-not-found"></a>Nie można odnaleźć tabel danych diagnostycznych
 Tabel w usłudze Azure storage, które zawierają zdarzenia ETW są nazywane przy użyciu następującego kodu:
@@ -213,7 +213,7 @@ Ten kod generuje cztery tabele:
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Jak sprawdzić konfiguracji rozszerzenia diagnostyki
 Najprostszym sposobem, aby sprawdzić konfigurację rozszerzenia jest przejdź do [Eksploratora zasobów Azure](http://resources.azure.com), a następnie przejdź do maszyny wirtualnej lub w chmurze usługi gdzie przez rozszerzenie Diagnostyka Azure (IaaSDiagnostics / PaaDiagnostics) jest.
 
-Alternatywnie pulpitu zdalnego do maszyny i spójrz na plik konfiguracji diagnostyki platformy Azure, który jest opisany w [dziennika artefaktów pierwszą sekcją ścieżki](#log-artifacts-path).
+Alternatywnie pulpitu zdalnego do maszyny i spójrz na plik konfiguracji diagnostyki platformy Azure, opisana w sekcji ścieżki dziennika artefaktów.
 
 W obu przypadkach Wyszukaj **Microsoft.Azure.Diagnostics**, a następnie dla **xmlCfg** lub **WadCfg** pola.
 

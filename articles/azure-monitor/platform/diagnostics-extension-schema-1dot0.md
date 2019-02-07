@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 0e1a0919975253e24318bb8029249958cbc50d62
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473167"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811532"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Schemat konfiguracji usługi Diagnostyka Azure 1.0
 > [!NOTE]
@@ -101,7 +101,7 @@ Element najwyższego poziomu w pliku konfiguracji diagnostyki.
 
 Atrybuty:
 
-|Atrybut  |Typ   |Wymagane| Domyślne | Opis|  
+|Atrybut  |Type   |Wymagane| Domyślne | Opis|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|czas trwania|Optional (Opcjonalność) | PT1M| Określa interwał, jaką monitor diagnostyczny sonduje zmiany konfiguracji diagnostycznych.|  
 |**overallQuotaInMB**|unsignedInt|Optional (Opcjonalność)| 4000 MB. Jeśli podano wartość nie może przekraczać tę kwotę |Łączna kwota magazyn systemu plików przydzielony dla wszystkich buforów rejestrowania.|  
@@ -109,11 +109,11 @@ Atrybuty:
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs Element  
 Definiuje konfigurację buforu dla dzienników, które są generowane przez podstawowej infrastruktury diagnostyki.
 
-Element nadrzędny: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).  
+Element nadrzędny: DiagnosticMonitorConfiguration Element.  
 
 Atrybuty:
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|ciąg|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
@@ -122,11 +122,11 @@ Atrybuty:
 ## <a name="logs-element"></a>Dzienniki elementu  
  Definiuje konfigurację buforu dla podstawowych dzienniki platformy Azure.
 
- Element nadrzędny: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).  
+ Element nadrzędny: DiagnosticMonitorConfiguration Element.  
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|ciąg|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
@@ -135,12 +135,12 @@ Atrybuty:
 ## <a name="directories-element"></a>Element katalogów  
 Definiuje konfigurację buforu dla dzienników opartych na plikach, które można zdefiniować.
 
-Element nadrzędny: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).  
+Element nadrzędny: DiagnosticMonitorConfiguration Element.  
 
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
@@ -148,11 +148,11 @@ Atrybuty:
 ## <a name="crashdumps-element"></a>Element zrzutów awaryjnych  
  Określa katalog zrzuty awarii.
 
- Element nadrzędny: [Element katalogi](#Directories).  
+ Element nadrzędny: Element katalogów.  
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Kontener**|ciąg|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
@@ -160,11 +160,11 @@ Atrybuty:
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs Element  
  Określa katalog dziennika nie powiodło się żądanie.
 
- Nadrzędny Element [Element katalogi](#Directories).  
+ Element katalogi Element nadrzędny.  
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Kontener**|ciąg|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
@@ -172,11 +172,11 @@ Atrybuty:
 ##  <a name="iislogs-element"></a>IISLogs Element  
  Określa katalog dziennika usług IIS.
 
- Nadrzędny Element [Element katalogi](#Directories).  
+ Element katalogi Element nadrzędny.  
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Kontener**|ciąg|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
@@ -184,16 +184,16 @@ Atrybuty:
 ## <a name="datasources-element"></a>Element źródła danych  
  Określa zero lub więcej katalogów dzienniku dodatkowe.
 
- Element nadrzędny: [Element katalogi](#Directories).
+ Element nadrzędny: Element katalogów.
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration Element  
  Określa katalog plików dziennika do monitorowania.
 
- Element nadrzędny: [Element źródła danych](#DataSources).
+ Element nadrzędny: Element źródła danych.
 
 Atrybuty:
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Kontener**|ciąg|Nazwa kontenera, w którym ma zostać przeniesiony zawartość katalogu.|  
 |**directoryQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalny rozmiar katalogu w megabajtach.<br /><br /> Wartość domyślna to 0.|  
@@ -201,23 +201,23 @@ Atrybuty:
 ## <a name="absolute-element"></a>Element bezwzględne  
  Definiuje ścieżkę bezwzględną katalogu do monitorowania za pomocą środowiska opcjonalne rozszerzenia.
 
- Element nadrzędny: [DirectoryConfiguration Element](#DirectoryConfiguration).  
+ Element nadrzędny: DirectoryConfiguration Element.  
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
-|**Ścieżka**|ciąg|Wymagany. Ścieżka bezwzględna do katalogu, do monitorowania.|  
+|**path**|ciąg|Wymagany. Ścieżka bezwzględna do katalogu, do monitorowania.|  
 |**expandEnvironment**|wartość logiczna|Wymagany. Jeśli ustawiono **true**, zostaną rozwinięte zmiennych środowiskowych w ścieżce.|  
 
 ## <a name="localresource-element"></a>LocalResource Element  
  Określa ścieżkę względną zasób lokalny, określone w definicji usługi.
 
- Element nadrzędny: [DirectoryConfiguration Element](#DirectoryConfiguration).  
+ Element nadrzędny: DirectoryConfiguration Element.  
 
 Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Nazwa**|ciąg|Wymagany. Nazwa zasobu lokalnego, która zawiera katalog do monitorowania.|  
 |**relativePath**|ciąg|Wymagany. Ścieżka względna zasobu lokalnego do monitorowania.|  
@@ -225,12 +225,12 @@ Atrybuty:
 ## <a name="performancecounters-element"></a>Performancecounters — Element  
  Określa ścieżkę licznika wydajności do zbierania.
 
- Element nadrzędny: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).
+ Element nadrzędny: DiagnosticMonitorConfiguration Element.
 
 
  Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferPeriod**|czas trwania|Opcjonalny. Określa interwał między zaplanowanego transferu danych, zaokrąglane w górę do najbliższej minuty.<br /><br /> Wartość domyślna to PT0S.|  
@@ -238,11 +238,11 @@ Atrybuty:
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration Element  
  Określa licznik wydajności do zbierania.
 
- Element nadrzędny: [Performancecounters — Element](#PerformanceCounters).  
+ Element nadrzędny: Element liczniki wydajności.  
 
  Atrybuty:  
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|ciąg|Wymagany. Ścieżka do liczników wydajności do zbierania.|  
 |**sampleRate**|czas trwania|Wymagany. Szybkość, licznik wydajności powinny być zbierane.|  
@@ -250,11 +250,11 @@ Atrybuty:
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element  
  Definiuje dzienniki zdarzeń, aby monitorować.
 
- Element nadrzędny: [DiagnosticMonitorConfiguration Element](#DiagnosticMonitorConfiguration).
+ Element nadrzędny: DiagnosticMonitorConfiguration Element.
 
   Atrybuty:
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Opcjonalny. Określa maksymalną ilość magazyn systemu plików, które są dostępne dla określonych danych.<br /><br /> Wartość domyślna to 0.|  
 |**scheduledTransferLogLevelFilter**|ciąg|Opcjonalny. Określa minimalny poziom ważności wpisy dziennika, które są przenoszone. Wartość domyślna to **niezdefiniowane**. Inne możliwe wartości to **pełne**, **informacji**, **ostrzeżenie**, **błąd**, i **krytyczny**.|  
@@ -263,11 +263,11 @@ Atrybuty:
 ## <a name="datasource-element"></a>Element źródła danych  
  Definiuje dziennika zdarzeń do monitorowania.
 
- Element nadrzędny: [WindowsEventLog Element](#windowsEventLog).  
+ Element nadrzędny: WindowsEventLog Element.  
 
  Atrybuty:
 
-|Atrybut|Typ|Opis|  
+|Atrybut|Type|Opis|  
 |---------------|----------|-----------------|  
 |**Nazwa**|ciąg|Wymagany. Wyrażenie XPath, określając dziennika do zbierania.|  
 

@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 139f6283c2b59aee53afa3f0dd52e06e2b0eff4c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9c463740acf6ef464880a43e0e68de683b97f64f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695223"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813427"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
 
@@ -34,13 +34,13 @@ Filtry są reguły po stronie serwera, które umożliwiają klientom wykonywać 
 - Dostarczaj tylko określonej wersji i/lub ścieżek określonego języka, które są obsługiwane przez urządzenia, które służy do odtwarzania zawartości ("odwzorowanie filtering"). 
 - Dostosuj prezentacji okna (DVR) w celu zapewnienia ograniczona długość okna funkcji DVR w odtwarzaczu ("Dostosowywanie prezentacji okno").
 
-W tym temacie opisano [pojęcia](#concepts) i [pokazuje filtrów definicje](#definitions). Udostępnia szczegółowe informacje o typowych scenariuszach. Na końcu tego artykułu możesz znaleźć linki, które pokazują, jak programowo utworzyć filtry.  
+W tym temacie opisano [pojęcia](#concepts) i przedstawia filtry definicje. Udostępnia szczegółowe informacje o typowych scenariuszach. Na końcu tego artykułu możesz znaleźć linki, które pokazują, jak programowo utworzyć filtry.  
 
 ## <a name="concepts"></a>Pojęcia
 
 ### <a name="dynamic-manifests"></a>O nazwie manifesty dynamiczne
 
-Usługa Media Services oferuje **manifestów dynamicznych** oparte na wstępnie zdefiniowane [filtry](#filters). Po zdefiniowaniu filtrów, klientów można ich używać do strumienia określonej wersji lub podrzędnych klipów wideo. Filtry mogą określić w adresie URL przesyłania strumieniowego. Filtry można zastosować do adaptacyjną szybkością transmisji bitów, protokołów przesyłania strumieniowego: Apple HTTP Live przesyłania strumieniowego (HLS), między innymi MPEG-DASH i Smooth Streaming. 
+Usługa Media Services oferuje **manifestów dynamicznych** oparte na wstępnie zdefiniowane filtry. Po zdefiniowaniu filtrów, klientów można ich używać do strumienia określonej wersji lub podrzędnych klipów wideo. Filtry mogą określić w adresie URL przesyłania strumieniowego. Filtry można zastosować do adaptacyjną szybkością transmisji bitów, protokołów przesyłania strumieniowego: Apple HTTP Live przesyłania strumieniowego (HLS), między innymi MPEG-DASH i Smooth Streaming. 
 
 W poniższej tabeli przedstawiono przykładowe adresy URL przy użyciu filtrów:
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 13e00acaf287a9e153aaa8e5ce7d630f8d198f02
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a7789f9a3f3da46305a9d8cd7cda24019658f2ad
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330419"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811491"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -199,7 +199,7 @@ Przykładowy skrypt kopiuje dane szeregów czasowych (co godzinę, codziennie it
   }
 }
 ```
-Zobacz [połączona usługa SQL Azure](#linked-service) część listy właściwości obsługiwanych przez tej połączonej usługi.
+Zobacz sekcję połączona usługa SQL Azure na liście właściwości obsługiwanych przez tej połączonej usługi.
 
 **Połączona usługa Azure Blob storage:**
 
@@ -248,7 +248,7 @@ Ustawienie "external": "true" informuje o usłudze Azure Data Factory, zestaw da
 }
 ```
 
-Zobacz [właściwości typu zestawu danych usługi Azure SQL](#dataset) część listy właściwości obsługiwanych przez ten typ zestawu danych.
+Sekcji usługi Azure SQL dataset typu właściwości listy właściwości obsługiwanych przez ten typ zestawu danych.
 
 **Usługa Azure Blob wyjściowy zestaw danych:**
 
@@ -391,7 +391,7 @@ Kopiuje przykładowe szeregów czasowych danych (co godzinę, codziennie itp.) z
   }
 }
 ```
-Zobacz [połączona usługa SQL Azure](#linked-service) część listy właściwości obsługiwanych przez tej połączonej usługi.
+Zobacz sekcję połączona usługa SQL Azure na liście właściwości obsługiwanych przez tej połączonej usługi.
 
 **Połączona usługa Azure Blob storage:**
 
@@ -499,7 +499,7 @@ Przykład kopiuje dane do tabeli o nazwie "MyTable" w tabeli SQL Azure. Tworzeni
   }
 }
 ```
-Zobacz [właściwości typu zestawu danych usługi Azure SQL](#dataset) część listy właściwości obsługiwanych przez ten typ zestawu danych.
+Sekcji usługi Azure SQL dataset typu właściwości listy właściwości obsługiwanych przez ten typ zestawu danych.
 
 **Działanie kopiowania w potoku za pomocą obiektu Blob źródła i ujścia SQL:**
 

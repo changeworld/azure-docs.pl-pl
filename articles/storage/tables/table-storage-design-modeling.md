@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 7f629ceb9fe5bd19c0558d1fde45d0bddcee744e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458877"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813011"
 ---
 # <a name="modeling-relationships"></a>Modelowanie relacji
 W tym artykule omówiono proces modelowania, aby ułatwić projektowanie rozwiązania usługi Azure Table storage.
@@ -101,7 +101,7 @@ Modeli domeny może zawierać jeden do jednego relacje między jednostkami. Musi
 Dostępne są również istotne informacje dotyczące implementacji, które mogą prowadzić do zaimplementowania relacji jeden do jednego w usłudze Table service:  
 
 * Obsługa dużych jednostek (Aby uzyskać więcej informacji, zobacz [dużych jednostek wzorzec](table-storage-design-patterns.md#large-entities-pattern)).  
-* Implementowanie kontroli dostępu (Aby uzyskać więcej informacji, zobacz [kontrolowanie dostępu przy użyciu sygnatury dostępu współdzielonego](#controlling-access-with-shared-access-signatures)).  
+* Implementowanie kontroli dostępu (Aby uzyskać więcej informacji, zobacz Kontrola dostępu za pomocą sygnatur dostępu współdzielonego).  
 
 ## <a name="join-in-the-client"></a>Dołącz do klienta
 Mimo że istnieją sposoby relacje modelu w usłudze Table service, należy nie zapominać, że dwie główne przyczyny za pomocą usługi Table jest skalowalność i wydajność. Jeśli okaże się, że są modelowania wiele relacji, które negatywnie wpłynąć na wydajność i skalowalność rozwiązania, należy poprosić samodzielnie Jeśli jest niezbędne do utworzenia relacji danych w projekcie tabeli. Można Uproszczenie projektowania i poprawy skalowalności i wydajności rozwiązania, jeśli zezwolisz aplikacji klienckiej wykonać wszelkie niezbędne sprzężenia.  
@@ -117,7 +117,7 @@ Jednak można utrwalić wystąpieniami dwóch klas konkretnych w usłudze Table 
 
 ![Tabela osoby](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-Aby uzyskać więcej informacji na temat pracy z wieloma typami jednostki w tej samej tabeli, w kodzie klienta, zobacz sekcję [Praca z typami encji heterogenicznych](#working-with-heterogeneous-entity-types) później w tym przewodniku. Zapewnia to przykłady sposobu rozpoznaje typ jednostki w kodzie klienta.  
+Aby uzyskać więcej informacji na temat pracy z wieloma typami jednostki w tej samej tabeli, w kodzie klienta, zobacz sekcję Praca z typami encji heterogenicznych w dalszej części tego przewodnika. Zapewnia to przykłady sposobu rozpoznaje typ jednostki w kodzie klienta.  
 
 
 ## <a name="next-steps"></a>Kolejne kroki

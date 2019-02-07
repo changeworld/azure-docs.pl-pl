@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 97d35eb3442b63736b40d51dda57b872813293ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 668d69921fd2001cd52bc864e5ee272d179a7bbc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164065"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770473"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Potencjalne przyczyny komunikat o błędzie "Nie można dostać się tam z tego miejsca"
 Podczas uzyskiwania dostępu do wewnętrznej sieci web aplikacji lub usług w organizacji, może uzyskać komunikat o błędzie informujący, że, **nie możesz tam przejść stąd**. Ten komunikat oznacza, że Twoja organizacja opracowała zasady, co uniemożliwia urządzeniu dostęp do zasobów organizacji. Gdy użytkownik może pozostać konieczności kontaktowania się z pomocą techniczną, aby rozwiązać ten problem, Oto kilka rzeczy, które możesz najpierw wypróbować.
@@ -68,4 +68,4 @@ Jeśli urządzenie nie jest przyłączone do sieci organizacji, możesz wykonaj 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Co to jest MyApps portal?](active-directory-saas-access-panel-introduction.md)
 
-- [Logowanie się za pomocą telefonu zamiast hasła](microsoft-authenticator-app-phone-signin-faq.md)
+- [Logowanie się za pomocą telefonu zamiast hasła](user-help-auth-app-sign-in.md)

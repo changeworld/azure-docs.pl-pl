@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 48e20df61844d83deb8ac992f783cf227e658aaf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119989"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812471"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.
@@ -52,7 +52,7 @@ Informacje o zależnościach częściowe są zbierane automatycznie przez [zesta
 * [Mapa aplikacji](#application-map) wizualizuje zależności między aplikacji i składników sąsiednich.
 * [Wydajność, przeglądarki i błędów bloków](#performance-and-blades) Pokaż dane zależności serwera.
 * [Blok przeglądarki](#ajax-calls) przedstawia wywołania AJAX z przeglądarek użytkowników.
-* [Przejść przez wolne lub zakończone niepowodzeniem żądania](#diagnose-slow-requests) do sprawdzenia ich zależności wywołań.
+* Klikaj elementy z żądań wolno lub nie powiodło się, aby sprawdzić, wywołania ich zależności.
 * [Analiza](#analytics) może służyć do zależności zapytania o dane.
 
 ## <a name="application-map"></a>Mapa aplikacji
@@ -210,7 +210,7 @@ Zapoznaj się z poniższej tabeli, a następnie upewnij się, że wybrano prawid
 | Serwer usług IIS |Albo [Zainstaluj Monitor stanu na serwerze](../../azure-monitor/app/monitor-performance-live-website-now.md). Lub [uaktualnić aplikację .NET Framework 4.6 lub nowszy](https://go.microsoft.com/fwlink/?LinkId=528259) i zainstaluj [zestawu SDK usługi Application Insights](asp-net.md) w swojej aplikacji. |
 | IIS Express |Zamiast tego użyj serwera IIS. |
 | Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [otworzyć bloku usługi Application Insights w Panelu sterowania aplikacji sieci web](../../azure-monitor/app/azure-web-apps.md) i wybierz opcję instalacji, jeśli zostanie wyświetlony monit. |
-| Usługa w chmurze platformy Azure |[Zadanie uruchamiania użyj](../../azure-monitor/app/cloudservices.md) lub [Instalowanie programu .NET framework 4.6 +](../../cloud-services/cloud-services-dotnet-install-dotnet.md). |
+| Azure Cloud Service |[Zadanie uruchamiania użyj](../../azure-monitor/app/cloudservices.md) lub [Instalowanie programu .NET framework 4.6 +](../../cloud-services/cloud-services-dotnet-install-dotnet.md). |
 
 ## <a name="video"></a>Połączenia wideo
 

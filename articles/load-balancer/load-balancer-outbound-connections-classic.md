@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ec3fcc0301083e6cd5eff34c111586ef6463f8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53190003"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821511"
 ---
 # <a name="outbound-connections-classic"></a>Połączenia wychodzące (klasyczne)
 
@@ -54,7 +54,7 @@ Różnych wdrożeń w modelu klasycznym mają różne funkcje:
 
 [Strategii ograniczania ryzyka](#snatexhaust) też różnią się w ten sam sposób.
 
-[Algorytm używany do przydzielone porty efemeryczne](#ephemeralports) osobisty token dostępu w przypadku wdrożeń klasycznych jest taka sama, jak w przypadku wdrożenia zasobów usługi Azure Resource Manager.
+Algorytm używany do przydzielone portów tymczasowych dla osobisty token dostępu w przypadku wdrożeń klasycznych jest taka sama, jak w przypadku wdrożenia zasobów usługi Azure Resource Manager.
 
 ### <a name="ilpip"></a>Scenariusz 1: Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia
 
@@ -74,13 +74,13 @@ Efemeryczne porty frontonu adres IP publicznego modułu równoważenia obciąże
 
 Są wstępnie przydzielonych portów SNAT, zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji. Są one ograniczone zasób, który może wyczerpać. Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
 
-Gdy [wielu publicznych ze zrównoważonym obciążeniem punktów końcowych](load-balancer-multivip.md) istnieją, są te publiczne adresy IP [Release candidate programu przepływy wychodzące](#multivipsnat), a jeden losowo wybrany.  
+Gdy [wielu publicznych ze zrównoważonym obciążeniem punktów końcowych](load-balancer-multivip.md) istnieje, te publiczne adresy IP są kandydatem do przepływy wychodzące i jeden losowo wybrany.  
 
 ### <a name="defaultsnat"></a>Scenariusz 3: Brak publicznego adresu IP, które są skojarzone
 
 W tym scenariuszu maszyny Wirtualnej lub sieci Web, rola procesu roboczego nie jest częścią publicznego punktu końcowego o zrównoważonym obciążeniu.  A w przypadku maszyn wirtualnych, nie ma przypisanego adresu ILPIP. Podczas tworzenia maszyny Wirtualnej przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego do publicznych źródłowego adresu IP. Publiczny adres IP używany dla tego przepływu ruchu wychodzącego nie konfiguruje się i nie wliczają subskrypcji publicznego adresu IP limit zasobów.  Platforma Azure automatycznie przydziela ten adres.
 
-Platforma Azure używa SNAT przy użyciu portu maskaradę ([osobisty token dostępu](#pat)) do wykonywania tej funkcji. Ten scenariusz jest podobny do [Scenariusz 2](#lb), z wyjątkiem ma nie kontroluje adres IP używany. Jest to rezerwowego scenariusz dla sytuacji scenariusze 1 i 2, nie istnieje. Jeśli chcesz mieć kontrolę nad adresów ruchu wychodzącego nie zaleca tego scenariusza. W przypadku połączeń wychodzących krytycznych części aplikacji została wybrana opcja inny scenariusz.
+Platforma Azure używa SNAT przy użyciu portu maskaradę ([osobisty token dostępu](#pat)) do wykonywania tej funkcji. Ten scenariusz jest podobny do scenariusza 2, jednak istnieje nie kontroluje adres IP używany. Jest to rezerwowego scenariusz dla sytuacji scenariusze 1 i 2, nie istnieje. Jeśli chcesz mieć kontrolę nad adresów ruchu wychodzącego nie zaleca tego scenariusza. W przypadku połączeń wychodzących krytycznych części aplikacji została wybrana opcja inny scenariusz.
 
 Są wstępnie przydzielonych portów SNAT, zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji.  Liczba maszyn wirtualnych lub ról procesów roboczych w sieci Web do udostępniania publiczny adres IP określa liczbę przydzielonych wstępnie portów tymczasowych.   Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
 
@@ -104,7 +104,7 @@ Wzorce i ułatwiają eliminowanie warunki, które często prowadzą do wyczerpan
 
 Używa platformy Azure, algorytm, aby określić liczbę użyć funkcji SNAT względem wstępnie przydzielonych portów dostępnych na podstawie rozmiaru puli zaplecza przy użyciu portu zamaskowany SNAT ([osobisty token dostępu](#pat)). SNAT porty są dostępne dla określonego publicznego źródłowego adresu IP portów tymczasowych.
 
-Azure preallocates SNAT portów w przypadku wystąpienia jest wdrażany w oparciu o liczbę wystąpień maszyn wirtualnych lub roli procesu roboczego internetowych udostępnianie danego publicznego adresu IP.  Po utworzeniu przepływy wychodzące [osobisty token dostępu](#pat) dynamicznie zużywa (w granicach przydzielony wstępnie) i zwalnia te porty, gdy strumień zostanie zamknięty lub [przekroczeń limitu czasu bezczynności (%)](#ideltimeout) się zdarzyć.
+Azure preallocates SNAT portów w przypadku wystąpienia jest wdrażany w oparciu o liczbę wystąpień maszyn wirtualnych lub roli procesu roboczego internetowych udostępnianie danego publicznego adresu IP.  Po utworzeniu przepływy wychodzące [osobisty token dostępu](#pat) dynamicznie zużywa (w granicach przydzielony wstępnie) i zwalnia te porty, gdy strumień zostanie zamknięty lub się zdarzyć, limity czasu bezczynności.
 
 W poniższej tabeli przedstawiono preallocations portu SNAT dla warstw rozmiary pul zaplecza:
 

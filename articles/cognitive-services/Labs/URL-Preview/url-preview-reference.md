@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: f7925c3eb14915c2b811ccfcd3a3803b9bd7c806
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: cd99f8bce8eca622412b834b5a7b75fda3ceb1f7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222919"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812059"
 ---
 # <a name="project-url-preview-v7-reference"></a>Odwołanie do projektu Podgląd adresu URL w wersji 7
 
@@ -73,12 +73,12 @@ Dostępne są następujące nagłówki, które mogą obejmować żądania i odpo
 ## <a name="query-parameters"></a>Parametry zapytania
 Żądanie może obejmować następujące parametry zapytania. Zobacz wymaganej kolumny dla wymaganych parametrów. Należy najpierw, adres URL zakodować parametry zapytania. Zapytanie musi być bezwzględnym adresem URL za pomocą protokołu http lub https schematu; Firma Microsoft nie obsługuje względnych adresów URL lub innych systemów, takich jak ftp: / /
 
-|Name|Value|Type|Wymagany|
+|Name (Nazwa)|Wartość|Type|Wymagane|
 |----------|-----------|----------|--------------|
-|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku, zobacz [kody rynku](#market-codes).<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko język angielski i położenia geograficznego w Stanach Zjednoczonych.<br /><br />|Ciąg|Yes|
-|<a name="query" />q|Adres URL, aby wyświetlić podgląd|Ciąg|Yes|
-|<a name="responseformat" />responseFormat|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](http://json-ld.org/).|Ciąg|Nie|
-|<a name="safesearch"/>safeSearch|Nielegalnych treści dla dorosłych lub pirackich zawartości jest zablokowany kod błędu: 400 i *isFamilyFriendly* flaga nie jest zwracana. <p>Treści dla dorosłych prawnych poniżej jest to zachowanie. Zwraca wartość Kod stanu 200, a *isFamilyFriendly* flaga jest ustawiona na wartość false.<ul><li>bezpieczne wyszukiwanie = ograniczeniami: Tytuł i opis, adres URL obrazu nie zostaną zwrócone.</li><li>bezpieczne wyszukiwanie = średni; Uzyskaj tytuł, adres URL i opis, ale nie opisowy obraz.</li><li>bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie odpowiedzi obiektów/elementy — tytuł, adres URL, opis i obraz.</li></ul> |Ciąg|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = strict.|
+|<a name="mkt" />mkt|Rynek, z którego pochodzą wyniki. <br /><br />Aby uzyskać listę możliwych wartości na rynku Zobacz kodów na rynku.<br /><br /> **UWAGA:** Adres URL interfejsu API w wersji zapoznawczej aktualnie obsługuje tylko język angielski i położenia geograficznego w Stanach Zjednoczonych.<br /><br />|String|Yes|
+|<a name="query" />q|Adres URL, aby wyświetlić podgląd|String|Yes|
+|<a name="responseformat" />responseFormat|Typ multimediów do użycia dla odpowiedzi. Poniżej przedstawiono możliwe wartości bez uwzględniania wielkości liter.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Wartość domyślna to JSON. Aby uzyskać informacje o formacie JSON obiektów, że odpowiedź zawiera, zobacz [obiekty odpowiedzi](#response-objects).<br /><br />Jeśli określisz JsonLd, treść odpowiedzi zawiera obiekty JSON-LD, zawierające wyniki wyszukiwania. Aby uzyskać informacji na temat JSON LD, zobacz [JSON-LD](http://json-ld.org/).|String|Nie|
+|<a name="safesearch"/>safeSearch|Nielegalnych treści dla dorosłych lub pirackich zawartości jest zablokowany kod błędu: 400 i *isFamilyFriendly* flaga nie jest zwracana. <p>Treści dla dorosłych prawnych poniżej jest to zachowanie. Zwraca wartość Kod stanu 200, a *isFamilyFriendly* flaga jest ustawiona na wartość false.<ul><li>bezpieczne wyszukiwanie = ograniczeniami: Tytuł i opis, adres URL obrazu nie zostaną zwrócone.</li><li>bezpieczne wyszukiwanie = średni; Uzyskaj tytuł, adres URL i opis, ale nie opisowy obraz.</li><li>bezpieczne wyszukiwanie = wyłączone; Pobierz wszystkie odpowiedzi obiektów/elementy — tytuł, adres URL, opis i obraz.</li></ul> |String|Nie jest wymagane. </br> Wartość domyślna to bezpieczne wyszukiwanie = strict.|
 
 ## <a name="response-objects"></a>Obiekty odpowiedzi
 Schemat odpowiedzi to albo [Strona internetowa] lub ErrorResponse, tak jak API wyszukiwania w Internecie. Jeśli żądanie zakończy się niepowodzeniem, jest obiektem najwyższego poziomu [ErrorResponse](#errorresponse) obiektu.
@@ -92,36 +92,36 @@ Definiuje błąd, który wystąpił.
 
 |Element|Opis|Type|
 |-------------|-----------------|----------|
-|<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|Ciąg|
-|<a name="error-message" />Komunikat|Opis błędu.|Ciąg|
-|<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o tym błędzie.|Ciąg|
-|<a name="error-parameter" />Parametr|Parametr zapytania w żądaniu, które spowodowały błąd.|Ciąg|
-|<a name="error-subcode" />subCode|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |Ciąg|
-|<a name="error-value" />Wartość|Wartość parametru zapytania, która nie jest prawidłowa.|Ciąg|
+|<a name="error-code" />Kod|Kod błędu, który identyfikuje kategorii błędów. Aby uzyskać listę możliwych kodów, zobacz [kody błędów](#error-codes).|String|
+|<a name="error-message" />Komunikat|Opis błędu.|String|
+|<a name="error-moredetails" />moreDetails|Opis, który zawiera dodatkowe informacje o tym błędzie.|String|
+|<a name="error-parameter" />Parametr|Parametr zapytania w żądaniu, które spowodowały błąd.|String|
+|<a name="error-subcode" />subCode|Kod błędu, który identyfikuje błąd. Na przykład jeśli `code` jest InvalidRequest, `subCode` może być ParameterInvalid lub ParameterInvalidValue. |String|
+|<a name="error-value" />Wartość|Wartość parametru zapytania, która nie jest prawidłowa.|String|
 
 ### <a name="errorresponse"></a>ErrorResponse
 Obiekt najwyższego poziomu, który zawiera odpowiedź, gdy żądanie zakończy się niepowodzeniem.
 
-|Name|Value|Type|
+|Name (Nazwa)|Wartość|Type|
 |----------|-----------|----------|
-|_type|Wskazówka typu.|Ciąg|
+|_type|Wskazówka typu.|String|
 |<a name="errors" />Błędy|Lista błędów, które opisują przyczyny niepowodzenia żądania.|[Błąd](#error)]|
 
 ### <a name="webpage"></a>Strony sieci Web
 Określa informacje o stronie sieci Web w wersji zapoznawczej.
 
-|Name|Value|Type|
+|Name (Nazwa)|Wartość|Type|
 |----------|-----------|----------|
-|name|Tytuł strony, niekoniecznie tytuł HTML|Ciąg|
-|url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|Ciąg|
-|description|Krótki opis strony i zawartości|Ciąg|
+|name|Tytuł strony, niekoniecznie tytuł HTML|String|
+|url|Adres URL, który faktycznie został przeszukane (żądanie może wykonano przekierowania)|String|
+|description|Krótki opis strony i zawartości|String|
 |isFamilyFriendly|Najdokładniejszych dla elementów w indeksie sieci web; Odczyty w czasie rzeczywistym, czy to wykrywanie wyłącznie na podstawie adresu URL i nie zawartości strony|wartość logiczna|
-|primaryImageOfPage/contentUrl|Adres URL, który jest reprezentatywny obraz do uwzględnienia w wersji zapoznawczej|Ciąg|
+|primaryImageOfPage/contentUrl|Adres URL, który jest reprezentatywny obraz do uwzględnienia w wersji zapoznawczej|String|
 
 ### <a name="identifiable"></a>Do zidentyfikowania
-|Name|Value|Type|
+|Name (Nazwa)|Wartość|Type|
 |-------------|-----------------|----------|
-|id|Identyfikator zasobu|Ciąg|
+|id|Identyfikator zasobu|String|
 
 ## <a name="error-codes"></a>Kody błędów
 

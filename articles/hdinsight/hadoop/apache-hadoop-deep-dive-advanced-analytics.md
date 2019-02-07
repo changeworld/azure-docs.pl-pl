@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: c6a47448fc99c2f58b315898c1b6af65f894da8d
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0e17fa877bc2e1e4f72891315d940546a11e674d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436691"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812501"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Szczegółowe informacje — zaawansowane analizy
 
@@ -50,16 +50,16 @@ Wraz z wybraniu najlepszego dopasowania algorytmy, należy wziąć pod uwagę, c
 | Klastrowanie | Dzielenie zestaw przykładów na jednorodnego grup | Nienadzorowane | K-średnich klastrowania |
 | Wzorzec wykrywania | Identyfikowanie częste powiązania danych | Nienadzorowane | Reguły kojarzenia |
 | Regresji | Przewidywanie wyników liczbowych | W trybie nadzorowanym | Regresja liniowa sieci neuronowych |
-| Wzmocnienie | Określ zachowanie optymalne dla robotów | Wzmocnienie | Symulacje Monte Carlo DeepMind |
+| Wzmocnienie | Określ zachowanie optymalne dla robotów | Wzmocnienie | Monte Carlo Simulations, DeepMind |
 
 ## <a name="machine-learning-on-hdinsight"></a>Uczenia maszynowego w HDInsight
 
 HDInsight ma kilka usługi machine learning opcje przepływ pracy zaawansowanej analizy:
 
-* [Uczenie maszynowe i Apache Spark](#machine-learning-and-spark)
-* [R i usługi ML](#r-and-r-server)
-* [Usługi Azure Machine Learning i Apache Hive](#azure-machine-learning-and-hive)
-* [Platforma Apache Spark i uczenie głębokie](#spark-and-deep-learning)
+* Uczenie maszynowe i Apache Spark
+* R i usługi ML
+* Usługi Azure Machine Learning i Apache Hive
+* Platforma Apache Spark i uczenie głębokie
 
 ### <a name="machine-learning-and-apache-spark"></a>Uczenie maszynowe i Apache Spark
 

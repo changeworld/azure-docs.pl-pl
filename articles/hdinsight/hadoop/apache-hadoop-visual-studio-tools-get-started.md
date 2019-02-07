@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: dc93d0b44d6d99e8418d4333ca8698bc9ebf3a96
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: a23a2f536f765c62919960f3c582d04543b1f49a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53629683"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820832"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Użyj narzędzi Data Lake Tools for Visual Studio, aby nawiązać połączenie z usługi Azure HDInsight i uruchomić zapytania usługi Apache Hive
 
@@ -250,11 +250,11 @@ Widok wykonywania zadania dla zadań Hive w aplikacji Tez może służyć do uzy
 ![Zrzut ekranu przedstawiający okno Widok wykonywania zadań narzędzi Data Lake Visual Studio Tools](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight.visual.studio.tools.task.execution.view.png "Widok wykonywania zadań")
 
 ## <a name="run-hive-batch-jobs"></a>Uruchamianie zadań wsadowych Hive
-Testowanie skryptu Hive na klastrze usługi HDInsight może być czasochłonne (nie dotyczy to klastra zapytania interakcyjnego). Proces może potrwać kilka minut lub dłużej. Narzędzia Data Lake Tools for Visual Studio mogą sprawdzić poprawność skryptu Hive lokalnie bez konieczności nawiązywania połączenia z działającym klastrem. Aby uzyskać więcej informacji na temat uruchamiania interakcyjnych zapytań, zobacz [Uruchamianie interakcyjnych zapytań Hive](#run-interactive-hive-queries).
+Testowanie skryptu Hive na klastrze usługi HDInsight może być czasochłonne (nie dotyczy to klastra zapytania interakcyjnego). Proces może potrwać kilka minut lub dłużej. Narzędzia Data Lake Tools for Visual Studio mogą sprawdzić poprawność skryptu Hive lokalnie bez konieczności nawiązywania połączenia z działającym klastrem. Aby uzyskać więcej informacji na temat uruchamiania interakcyjnych zapytań Zobacz wykonywania interakcyjnych zapytań Hive.
 
 Przy użyciu narzędzi Data Lake Tools for Visual Studio możesz zobaczyć zawartość zadania Hive, zbierając i udostępniając dzienniki Yarn wybranych zadań Hive.
 
-Aby dowiedzieć się więcej o uruchamianiu zadań wsadowych Hive, zobacz [Uruchamianie interakcyjnych zapytań Hive](#run-interactive-hive-queries). Informacje przedstawione w tej sekcji dotyczą uruchamiania zadań wsadowych Hive o dłuższym czasie uruchamiania.
+Aby dowiedzieć się więcej o uruchamianiu zadań wsadowych Hive, zobacz wykonywania interakcyjnych zapytań Hive. Informacje przedstawione w tej sekcji dotyczą uruchamiania zadań wsadowych Hive o dłuższym czasie uruchamiania.
 
 ## <a name="run-apache-pig-scripts"></a>Uruchamianie skryptów Apache Pig
 Możesz użyć narzędzi Data Lake Tools for Visual Studio, aby utworzyć i przesłać skrypty usługi Pig do klastrów usługi HDInsight. Najpierw utwórz projekt usługi Pig na podstawie szablonu. Następnie prześlij skrypt do klastrów usługi HDInsight.

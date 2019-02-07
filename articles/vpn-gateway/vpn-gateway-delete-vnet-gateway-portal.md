@@ -1,5 +1,5 @@
 ---
-title: 'Usuwanie bramy sieci wirtualnej: witryna Azure portal: Resource Manager | Dokumentacja firmy Microsoft'
+title: 'Usuwanie bramy sieci wirtualnej: Azure Portal: Resource Manager | Microsoft Docs'
 description: Usuwanie bramy sieci wirtualnej przy użyciu portalu Azure w modelu wdrażania usługi Resource Manager.
 services: vpn-gateway
 documentationcenter: na
@@ -7,12 +7,12 @@ author: cherylmc
 ms.service: vpn-gateway
 ms.date: 10/23/2018
 ms.author: cherylmc
-ms.openlocfilehash: 78af43510e5fc2bed38e109a546944d4a649241c
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: d0c54a00afd723b68bedc0a305cfb0f16edf4ac9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49984115"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816259"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>Usuwanie bramy sieci wirtualnej przy użyciu portalu
 
@@ -60,5 +60,5 @@ W tym momencie usuwana jest brama sieci wirtualnej. Następne kroki pomóc usun�
 Jeśli nie jesteś zajmującym się przechowywanie wszystkich zasobów w grupie zasobów i po prostu chcesz zacząć od początku, możesz usunąć całą grupę zasobów. Jest to szybki sposób, aby usunąć wszystkie elementy. Poniższe kroki mają zastosowanie tylko do modelu wdrażania usługi Resource Manager.
 
 1. W **wszystkie zasoby**, Znajdź grupę zasobów i kliknij, aby otworzyć blok.
-2. Kliknij polecenie **Usuń**. W bloku usuwanie wyświetlanie uwzględnionych zasobów. Upewnij się, że chcesz usunąć wszystkich tych zasobów. Jeśli nie, użyj kroków w [usuwanie bramy sieci VPN](#deletegw) w górnej części tego artykułu.
+2. Kliknij polecenie **Usuń**. W bloku usuwanie wyświetlanie uwzględnionych zasobów. Upewnij się, że chcesz usunąć wszystkich tych zasobów. Jeśli nie, wykonaj kroki w obszarze usuwanie bramy sieci VPN w górnej części tego artykułu.
 3. Aby kontynuować, wpisz nazwę grupy zasobów, którą chcesz usunąć, a następnie kliknij przycisk **Usuń**.

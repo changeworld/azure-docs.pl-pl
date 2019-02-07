@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a70c3ddb624639411dbee961b1c4d59ac1277147
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016090"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817434"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Planowanie fabryki danych i wykonywanie
 > [!NOTE]
@@ -190,7 +190,7 @@ W poniższej tabeli opisano właściwości można używać w **dostępności** s
 | interval |Określa mnożnik częstotliwości<br/><br/>"Interwał częstotliwości x" Określa, jak często wycinek jest generowany.<br/><br/>Zestaw danych można podzielić w systemie godzinowym, należy ustawić <b>częstotliwość</b> do <b>godzinę</b>, i <b>interwał</b> do <b>1</b>.<br/><br/><b>Uwaga</b>: Jeśli określisz częstotliwość co minutę, zaleca się ustawić interwał wynoszący nie mniej niż 15 |Yes |Nie dotyczy |
 | Styl |Określa, czy wycinek powinny być tworzone na początku/końca zakresu.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Jeśli parametr Frequency ma wartość miesiąca i styl jest równa EndOfInterval, wycinek jest generowany na ostatni dzień miesiąca. Jeśli styl StartOfInterval wycinek jest generowany pierwszego dnia miesiąca.<br/><br/>Jeśli parametr Frequency ma wartość dnia i styl jest równa EndOfInterval, wycinek jest generowany w ciągu ostatniej godziny, dnia.<br/><br/>Jeśli ustawiono styl EndOfInterval Frequency ma wartość Hour, wycinek jest generowany na koniec godziny. Na przykład dla wycinka okres 13: 00 – 2 PM, wycinek jest generowany w 14: 00. |Nie |EndOfInterval |
 | anchorDateTime |Definiuje położenie bezwzględne w czasie używanych przez harmonogram do obliczenia granice wycinek zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli AnchorDateTime części daty, które są bardziej szczegółowe niż częstotliwość bardziej szczegółowego części są ignorowane. <br/><br/>Na przykład jeśli <b>interwał</b> jest <b>co godzinę</b> (frequency: hour, interval: (1) i <b>AnchorDateTime</b> zawiera <b>minuty i sekundy</b>, a następnie <b>minuty i sekundy</b> części AnchorDateTime są ignorowane. |Nie |01/01/0001 |
-| Przesunięcie |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli określono zarówno anchorDateTime, jak i przesunięcie, wynik jest połączone shift. |Nie |Nie dotyczy |
+| offset |Zakres czasu za pomocą którego przesunięte początek i koniec okresu wszystkich wycinków zestawu danych. <br/><br/><b>Uwaga</b>: Jeśli określono zarówno anchorDateTime, jak i przesunięcie, wynik jest połączone shift. |Nie |Nie dotyczy |
 
 ### <a name="offset-example"></a>przykład przesunięcia
 Domyślnie codziennie (`"frequency": "Day", "interval": 1`) wycinki rozpoczynają się od 12: 00 czasu UTC (północ). Czas rozpoczęcia to 6: 00 czasu UTC, zamiast tego należy ustawić przesunięcie, jak pokazano w poniższym fragmencie kodu: 
@@ -273,10 +273,10 @@ Zasady wpływają na zachowania w czasie wykonywania działania, w szczególnoś
 | Współbieżność |Liczba całkowita <br/><br/>Wartość maksymalna: 10 |1 |Liczba współbieżnych wykonań działania.<br/><br/>Określa liczbę wykonań działania równoległego, które mogą być uruchomione na różnych wycinki. Na przykład jeśli działanie musi przechodzić przez duży zestaw dostępnych danych, o wartości większej współbieżności przyspiesza przetwarzanie danych. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Określa kolejność wycinki danych, które są przetwarzane.<br/><br/>Na przykład jeśli masz 2 dzieli (jeden występuje o 16: 00 i inną o 17: 00), a oba są oczekiwanie na wykonanie. Jeśli ustawisz executionPriorityOrder jako NewestFirst, jest przetwarzana najpierw wycinek o 17: 00. Podobnie jeśli ustawisz executionPriorityORder jako OldestFIrst, następnie wycinka u 16: 00 jest przetwarzany. |
 | retry |Liczba całkowita<br/><br/>Maksymalna wartość może wynosić 10 |0 |Liczba ponownych prób zanim przetwarzania danych dla wycinka jest oznaczony jako niepowodzenie. Wykonania działania dla wycinka danych zostanie ponowiony do określonej liczby ponownych prób. Ponowienie próby jest wykonywane tak szybko, jak to możliwe po niepowodzeniu. |
-| timeout |Przedział czasu |00:00:00 |Limit czasu działania. Przykład: 00:10:00 (oznacza limit czasu 10 minut)<br/><br/>Jeśli wartość nie została określona lub ma wartość 0, limit czasu jest nieskończona.<br/><br/>Jeśli czas przetwarzania danych na wycinek przekracza wartość limitu czasu, zostanie anulowane, a system podejmuje próbę przetwarzania. Liczba ponownych prób, zależy od właściwości ponownych prób. W przypadku przekroczenia limitu czasu stan jest ustawiony na przekroczenie limitu czasu. |
-| Opóźnienie |Przedział czasu |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych startów wycinka.<br/><br/>Wykonywanie działania dla wycinka danych została uruchomiona po oczekiwanym czasie wykonywania opóźnienie.<br/><br/>Przykład: 00:10:00 (implikuje użycie opóźnieniem 10 minut) |
+| timeout |TimeSpan |00:00:00 |Limit czasu działania. Przykład: 00:10:00 (oznacza limit czasu 10 minut)<br/><br/>Jeśli wartość nie została określona lub ma wartość 0, limit czasu jest nieskończona.<br/><br/>Jeśli czas przetwarzania danych na wycinek przekracza wartość limitu czasu, zostanie anulowane, a system podejmuje próbę przetwarzania. Liczba ponownych prób, zależy od właściwości ponownych prób. W przypadku przekroczenia limitu czasu stan jest ustawiony na przekroczenie limitu czasu. |
+| delay |TimeSpan |00:00:00 |Określ opóźnienie przed rozpoczęciem przetwarzania danych startów wycinka.<br/><br/>Wykonywanie działania dla wycinka danych została uruchomiona po oczekiwanym czasie wykonywania opóźnienie.<br/><br/>Przykład: 00:10:00 (implikuje użycie opóźnieniem 10 minut) |
 | longRetry |Liczba całkowita<br/><br/>Wartość maksymalna: 10 |1 |Liczba prób długa — ponowienie próby, zanim wycinek wykonanie nie powiodło się.<br/><br/>są rozciągane w prób longRetry, longRetryInterval. Więc jeśli potrzebujesz określić czas między ponownymi próbami, należy użyć longRetry. Jeśli określono zarówno longRetry, jak i ponów próbę kolejnymi próbami longRetry zawiera ponownymi próbami i maksymalną liczbę prób ponawiania * longRetry.<br/><br/>Na przykład, mamy następujące ustawienia zasad dotyczących działań:<br/>Ponów próbę: 3<br/>longRetry: 2<br/>longRetryInterval: 01:00:00<br/><br/>Przyjęto założenie, istnieje tylko jeden wycinek do wykonania (oczekiwanie stanu) i wykonania działania każdym razem, gdy kończy się niepowodzeniem. Początkowo będzie można 3 próby wykonania kolejnych. Po każdej próbie stan wycinka byłoby ponownych prób. Po pierwsze 3 prób przez, stan wycinka byłoby LongRetry.<br/><br/>Po upływie godziny (czyli wartość longRetryInteval firmy) będzie inny zbiór 3 próby wykonania kolejnych. Po tym stan wycinka, czy nie, a wszystkie próby może nastąpić. Dlatego całkowity podejmowano próby 6.<br/><br/>Jeśli wykonanie dowolnego zakończy się powodzeniem, stan wycinka będzie gotowy, a wszystkie próby są próby.<br/><br/>longRetry mogą być używane w sytuacji, w którym dane zależne dociera niedeterministyczne razy lub niestabilnym całego środowiska, w ramach której przetwarzania danych. W takich przypadkach to ponownych prób po kolei może nie pozwalających i sposób po upływie czasu skutkuje żądaną produktu wyjściowego.<br/><br/>Word Przestroga: nie należy ustawiać wysokiej wartości longRetry lub longRetryInterval. Zazwyczaj wyższe wartości oznaczają innych kwestii systemowych. |
-| longRetryInterval |Przedział czasu |00:00:00 |Opóźnienie między próbami długa — ponowienie próby |
+| longRetryInterval |TimeSpan |00:00:00 |Opóźnienie między próbami długa — ponowienie próby |
 
 Aby uzyskać więcej informacji, zobacz [potoki](data-factory-create-pipelines.md) artykułu. 
 
@@ -320,7 +320,7 @@ Jak wspomniano wcześniej, działania może być w różnych potoków. W takiej 
 
 ![Tworzenie łańcuchów działań w dwa potoki](./media/data-factory-scheduling-and-execution/chaining-two-pipelines.png)
 
-Zobacz [skopiuj sekwencyjnie](#copy-sequentially) sekcji w dodatku, na przykład.
+Zobacz kopiowania sekwencyjnie w dodatku, na przykład sekcji.
 
 ## <a name="model-datasets-with-different-frequencies"></a>Zestawy modelu danych z różnych częstotliwości
 W przykładach częstotliwości dla danych wejściowych i wyjściowych zestawów danych i okno harmonogramu działania są takie same. Niektóre scenariusze wymagają możliwość generowania danych wyjściowych z częstotliwością różni się od częstotliwości co najmniej jedne dane wejściowe. Usługa Data Factory obsługuje modelowanie tych scenariuszy.

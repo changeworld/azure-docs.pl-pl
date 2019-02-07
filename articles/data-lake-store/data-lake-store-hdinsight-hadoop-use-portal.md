@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: b81916de0940aa56eda97df94527fa6adc208285
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 23a1b2853423dd9f2a62c32792e27e3174495aff
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49955834"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817040"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>Tworzenie klastrów HDInsight za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu witryny Azure portal
 > [!div class="op_single_selector"]
@@ -56,9 +56,9 @@ W tej sekcji tworzysz klaster HDInsight przy użyciu konta Data Lake Storage Gen
     ![Dodaj jednostkę usługi z klastrem HDInsight](./media/data-lake-store-hdinsight-hadoop-use-portal/hdi.adl.1.adls.storage.png "Dodaj jednostkę usługi z klastrem HDInsight")
 
     - **Wybierz opcję Data Lake Store konta**: Wybierz istniejące konto Data Lake Storage Gen1. Istniejące konta Data Lake Storage Gen1 jest wymagany.  Zobacz [Wymagania wstępne](#prerequisites).
-    - **Ścieżka katalogu głównego**: wprowadź ścieżkę, w którym mają być przechowywane pliki dotyczące klastra. Na zrzucie ekranu jest __/klastrów/myhdiadlcluster/__, w którym __/klastrów__ folder musi istnieć i Portal tworzy *myhdicluster* folderu.  *Myhdicluster* jest nazwą klastra.
-    - **Data Lake Store dostępu**: skonfigurować dostęp między konta Data Lake Storage Gen1 oraz klastra HDInsight. Aby uzyskać instrukcje, zobacz [dostępu skonfigurować Data Lake Storage Gen1](#configure-data-lake-store-access).
-    - **Dodatkowe konta magazynu**: kontach magazynu Azure Dodaj jako dodatkowe konta magazynu dla klastra. Aby dodać dodatkowe konta Data Lake Storage Gen1 odbywa się przez nadanie uprawnień do klastra na danych w kolejnych kont Data Lake Storage Gen1 podczas konfigurowania konta Data Lake Storage Gen1 jako typ podstawowy magazyn. Zobacz [dostępu skonfigurować Data Lake Storage Gen1](#configure-data-lake-store-access).
+    - **Ścieżka katalogu głównego**: Wprowadź ścieżkę, w którym mają być przechowywane pliki dotyczące klastra. Na zrzucie ekranu jest __/klastrów/myhdiadlcluster/__, w którym __/klastrów__ folder musi istnieć i Portal tworzy *myhdicluster* folderu.  *Myhdicluster* jest nazwą klastra.
+    - **Data Lake Store dostępu**: Konfigurowanie dostępu między konta Data Lake Storage Gen1 oraz klastra HDInsight. Aby uzyskać instrukcje, zobacz skonfigurować Data Lake Storage Gen1 dostępu.
+    - **Dodatkowe konta magazynu**: Dodawanie konta usługi Azure storage jako dodatkowe konta magazynu dla klastra. Aby dodać dodatkowe konta Data Lake Storage Gen1 odbywa się przez nadanie uprawnień do klastra na danych w kolejnych kont Data Lake Storage Gen1 podczas konfigurowania konta Data Lake Storage Gen1 jako typ podstawowy magazyn. Zobacz Konfigurowanie Data Lake Storage Gen1 dostęp.
 
 4. Na **dostępu Data Lake Store**, kliknij przycisk **wybierz**, a następnie kontynuuj tworzenia klastra zgodnie z opisem w [Tworzenie klastrów usługi Hadoop w HDInsight](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md).
 

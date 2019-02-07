@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/26/2018
 ms.author: shvija
-ms.openlocfilehash: 4a0e2cd7e0c768512e1aafc042fe55338fdc206e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 88fdaec9e19c082a6fe981dc4d9a0e015335f1e2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084978"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818622"
 ---
 # <a name="how-to-use-azure-event-hubs-from-a-python-application"></a>Jak używać usługi Azure Event Hubs z poziomu aplikacji Python
 Azure Event Hubs to platforma do pozyskiwania i strumieniowego przesyłania danych, która umożliwia odbieranie i przetwarzanie milionów zdarzeń na sekundę. Usługa Event Hubs pozwala przetwarzać i przechowywać zdarzenia, dane lub dane telemetryczne generowane przez rozproszone oprogramowanie i urządzenia. Dane wysłane do centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Event Hubs](event-hubs-what-is-event-hubs.md). 
@@ -29,10 +29,10 @@ Ten artykuł zawiera linki do artykułów, które pokazują, jak wykonać nastę
 
 - [Wysyłanie zdarzeń do Centrum zdarzeń](#send-events-to-event-hubs)
 - [Odbieranie zdarzeń z Centrum zdarzeń](#receive-events-from-event-hubs)
-- [Odczyt przechwytywane dane zdarzeń z usługi Azure storage](#capture-event-hubs-data). 
+- Odczyt przechwytywane dane zdarzeń z usługi Azure storage. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- Tworzenie Centrum zdarzeń, wykonując jedną z tych przewodników Szybki Start: [witryny Azure portal](event-hubs-create.md), [wiersza polecenia platformy Azure](event-hubs-quickstart-cli.md), [programu Azure PowerShell](event-hubs-quickstart-powershell.md), [szablonu usługi Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md). 
+- Tworzenie Centrum zdarzeń, wykonując jedną z tych przewodników Szybki Start: [Witryna Azure portal](event-hubs-create.md), [wiersza polecenia platformy Azure](event-hubs-quickstart-cli.md), [programu Azure PowerShell](event-hubs-quickstart-powershell.md), [szablonu usługi Azure Resource Manager](event-hubs-resource-manager-namespace-event-hub.md). 
 - Python 3.4 lub nowszy zainstalowany na tym komputerze.
 
 ## <a name="install-python-package"></a>Zainstaluj pakiet języka Python

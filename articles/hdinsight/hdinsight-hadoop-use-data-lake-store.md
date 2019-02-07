@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a174ae5eb31620646167f36a6f3e13605db5eac6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5ba12e48092c02f9628e15166c84e871310d7556
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052772"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816377"
 ---
 # <a name="use-data-lake-storage-with-azure-hdinsight-clusters"></a>Użyj usługi Data Lake Storage z klastrami usługi Azure HDInsight
 
@@ -69,7 +69,7 @@ Aby można było używać usługi Data Lake Storage jako magazynu domyślnego, n
 - Folder zawierający wszystkie foldery klastra,  na przykład: adl://mydatalakestore/clusters.
 - Folder klastra,  na przykład: adl://mydatalakestore/clusters/cluster1storage.
 
-Aby uzyskać więcej informacji do tworzenia usługi podmiot zabezpieczeń i Udziel dostępu, zobacz [dostępu Konfigurowanie usługi Data Lake Storage](#configure-data-lake-store-access).
+Aby uzyskać więcej informacji do tworzenia usługi podmiot zabezpieczeń i Udziel dostępu, zobacz skonfigurować magazyn usługi Data Lake dostępu.
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>Wyodrębnianie certyfikatu z magazynu kluczy Azure do użycia w procesie tworzenia klastra
 
@@ -117,12 +117,12 @@ Aby można było używać usługi Data Lake Storage jako magazynu dodatkowego, w
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Aby uzyskać więcej informacji do tworzenia usługi podmiot zabezpieczeń i Udziel dostępu, zobacz [dostępu Konfigurowanie usługi Data Lake Storage](#configure-data-lake-store-access).
+Aby uzyskać więcej informacji do tworzenia usługi podmiot zabezpieczeń i Udziel dostępu, zobacz skonfigurować magazyn usługi Data Lake dostępu.
 
 
 ## <a name="use-more-than-one-data-lake-storage-accounts"></a>Używanie wielu kont usługi Data Lake Storage
 
-Dodawania konta usługi Data Lake Storage jako dodatkowe i więcej niż jeden magazyn usługi Data Lake kont są realizowane przez nadanie uprawnień klastra HDInsight na danych w ramach jednej lub wielu kont usługi Data Lake Storage. Zobacz [dostępu Konfigurowanie usługi Data Lake Storage](#configure-data-lake-store-access).
+Dodawania konta usługi Data Lake Storage jako dodatkowe i więcej niż jeden magazyn usługi Data Lake kont są realizowane przez nadanie uprawnień klastra HDInsight na danych w ramach jednej lub wielu kont usługi Data Lake Storage. Zobacz Konfigurowanie Data Lake dostępu do magazynu.
 
 ## <a name="configure-data-lake-storage-access"></a>Konfigurowanie dostępu do usługi Data Lake Storage
 

@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 6ac5a44f941f8ebcecc3a1d7e6b5e9dccf5704de
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242216"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813164"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Udzielić aplikacji dostępu do zasobów usługi Azure Stack, tworząc jednostki usługi
 
@@ -73,7 +73,7 @@ Podczas logowania programowo, użyj Identyfikatora swojej aplikacji i klucza uwi
 
 1. Z **rejestracje aplikacji** w usłudze Active Directory, wybierz swoją aplikację.
 
-2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Aplikacje w [przykładowe aplikacje](#sample-applications) użyj **identyfikator klienta** przy odwoływaniu się do **identyfikator aplikacji**.
+2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Te aplikacje w aplikacji przykładowych **identyfikator klienta** przy odwoływaniu się do **identyfikator aplikacji**.
 
      ![Identyfikator aplikacji dla aplikacji](./media/azure-stack-create-service-principal/image12.png)
 3. Aby wygenerować klucz uwierzytelniania, wybierz pozycję **Klucze**.

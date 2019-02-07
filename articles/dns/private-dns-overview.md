@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826483"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816326"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Użyj usługi Azure DNS dla domen prywatnych
 
@@ -32,7 +32,7 @@ Usługa DNS platformy Azure zapewnia następujące korzyści:
 
 * **Eliminuje konieczność stosowania niestandardowego rozwiązania DNS**. Wielu klientów utworzone wcześniej, niestandardowych rozwiązań DNS, aby zarządzać strefami DNS w sieci wirtualnej. Zarządzanie strefami DNS można teraz wykonywać za pomocą natywnej infrastruktury platformy Azure, co spowoduje usunięcie obciążeń tworzenia i zarządzania niestandardowego rozwiązania DNS.
 
-* **Użyj wszystkie popularne typy rekordów DNS**. Usługa DNS platformy Azure obsługuje rekordów A, AAAA, CNAME, MX, NS, PTR, SOA, SRV i TXT.
+* **Użyj wszystkie popularne typy rekordów DNS**. Usługa DNS platformy Azure obsługuje rekordów A, AAAA, CNAME, MX, PTR, SOA, SRV i TXT.
 
 * **Automatyczne hostname zarządzania rekordami**. Wraz z hostingu niestandardowych rekordów DNS, Azure automatycznie utrzymuje rekordy nazw hosta dla maszyn wirtualnych w określonej sieci wirtualnej. W tym scenariuszu można zoptymalizować nazwy domeny, które umożliwia bez konieczności tworzenia niestandardowego rozwiązania DNS lub modyfikowania aplikacji.
 

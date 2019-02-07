@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/01/2018
+ms.date: 02/05/2019
 ms.author: kumud
-ms.openlocfilehash: d8ca70efd3b1ba77b1b1bb0e11a9234e5fd440c4
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f0ebb5cc913dda99d7e927ccf45c0f1478fa86c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201384"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814830"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -34,17 +34,17 @@ Platforma Azure używa translatora adresów sieciowych źródła (SNAT), aby wyk
 Dostępnych jest wiele [scenariusze ruchu wychodzącego](#scenarios). Można połączyć te scenariusze, zgodnie z potrzebami. Zapoznaj się z nimi, aby zrozumieć możliwości, ograniczenia i wzorce, ponieważ mają one zastosowanie do modelu wdrażania i scenariusz aplikacji. Przejrzyj wskazówki dotyczące [Zarządzanie te scenariusze](#snatexhaust).
 
 >[!IMPORTANT] 
->Load Balancer w warstwie standardowa wprowadza nowe możliwości i różne zachowania do łączności wychodzącej.   Na przykład [Scenariusz 3](#defaultsnat) nie istnieje, gdy występuje wewnętrznego standardowego modułu równoważenia obciążenia i innych czynności należy wykonać.   Uważnie przeczytaj ten całego dokumentu, aby poznać ogólne pojęcia i różnice między jednostkami SKU.
+>Standardowy moduł równoważenia obciążenia i standardowego publicznego adresu IP wprowadzenia nowych możliwości i różne zachowania do łączności wychodzącej.  Nie są one takie same jak podstawowych wersji SKU.  Jeśli chcesz korzystać z łączności wychodzącej podczas pracy ze standardowej jednostki SKU, należy jawnie można zdefiniować ją przy użyciu standardowych publicznych adresów IP lub standardowego publicznego modułu równoważenia obciążenia.  Obejmuje to tworzenie łączności wychodzącej przy użyciu i wewnętrznego modułu równoważenia obciążenia standardowego.  Zaleca się, że zawsze używać reguł dla ruchu wychodzącego standardowego publicznego modułu równoważenia obciążenia.  [Scenariusz 3](#defaultsnat) nie jest dostępna za pomocą standardowej jednostki SKU.  To oznacza użycie wewnętrznego standardowego modułu równoważenia obciążenia, które należy wykonać kroki, aby utworzyć połączenia ruchu wychodzącego dla maszyn wirtualnych w puli zaplecza, jeśli łączność wychodząca jest pożądane.  W kontekście wychodzącym pojedynczą autonomiczną maszyną Wirtualną, wszystkie maszyny Wirtualnej w zestawie dostępności wszystkich wystąpień w VMSS zachowują się w grupie. Oznacza to, jeśli pojedyncza maszyna wirtualna w zestawie dostępności jest skojarzony z standardowej jednostki SKU, wszystkie wystąpienia maszyn wirtualnych w zestawie dostępności teraz zachowują się przez te same zasady tak, jakby są oni skojarzeni z standardowej jednostki SKU, nawet jeśli poszczególne wystąpienia nie jest bezpośrednio związane z nią.  Uważnie przeczytaj ten całego dokumentu, aby zapoznać się z pojęciami ogólną, przejrzyj [Balancer w warstwie standardowa](load-balancer-standard-overview.md) różnic między jednostkami SKU i przejrzyj [reguł dla ruchu wychodzącego](load-balancer-outbound-rules-overview.md).  Za pomocą reguł ruchu wychodzącego umożliwia bardziej szczegółową kontrolę nad wszystkimi aspektami łączności wychodzącej.
 
 ## <a name="scenarios"></a>Omówienie scenariusza
 
 Usługa Azure Load Balancer i powiązane zasoby są jawnie zdefiniowane podczas korzystania z [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).  System Azure oferuje obecnie trzech różnych metod na osiągnięcie wychodzącym dla zasobów usługi Azure Resource Manager. 
 
-| Scenariusz | Metoda | Protokoły IP | Opis |
-| --- | --- | --- | --- |
-| [1. Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia (z lub bez modułu równoważenia obciążenia)](#ilpip) | Nieużywany port maskaradę SNAT, | TCP, UDP, ICMP, ESP | Platforma Azure korzysta z publicznego adresu IP, przypisany do konfiguracji IP karty sieciowej. wystąpienie programu Wystąpienie ma wszystkie dostępne porty efemeryczne. |
-| [2. Publiczny moduł równoważenia obciążenia skojarzone z maszyną Wirtualną (Brak adresu publicznym adresem IP na poziomie wystąpienia na wystąpieniu)](#lb) | SNAT przy użyciu portu maskaradę (PAT) przy użyciu frontonów modułu równoważenia obciążenia | TCP, UDP |Platforma Azure udostępnia publiczny adres IP publicznego frontonów modułu równoważenia obciążenia za pomocą wielu prywatnych adresów IP. Platforma Azure używa portów tymczasowych z frontonów osobisty token dostępu. |
-| [3. Autonomiczna maszyna wirtualna, (Brak usługi równoważenia obciążenia, żaden adres publiczny adres IP poziomu wystąpienia)](#defaultsnat) | SNAT przy użyciu portu maskaradę (PAT) | TCP, UDP | Azure automatycznie wyznacza publiczny adres IP dla SNAT, udostępnia ten publiczny adres IP za pomocą wielu prywatnych adresów IP zestawu dostępności i korzysta z portów tymczasowych ten publiczny adres IP. Ten scenariusz jest rezerwowych dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać lepszy wgląd i kontrolę. |
+| Jednostki SKU | Scenariusz | Metoda | Protokoły IP | Opis |
+| --- | --- | --- | --- | --- |
+| Standardowa i podstawowa | [1. Maszyny Wirtualnej przy użyciu adresu publicznego adresu IP poziomu wystąpienia (z lub bez modułu równoważenia obciążenia)](#ilpip) | Nieużywany port maskaradę SNAT, | TCP, UDP, ICMP, ESP | Platforma Azure korzysta z publicznego adresu IP, przypisany do konfiguracji IP karty sieciowej. wystąpienie programu Wystąpienie ma wszystkie dostępne porty efemeryczne. Gdy użycie standardowego modułu równoważenia obciążenia, należy użyć [reguł dla ruchu wychodzącego](load-balancer-outbound-rules-overview.md) umożliwia jawne zdefiniowanie łączności wychodzącej |
+| Standardowa i podstawowa | [2. Publiczny moduł równoważenia obciążenia skojarzone z maszyną Wirtualną (Brak adresu publicznym adresem IP na poziomie wystąpienia na wystąpieniu)](#lb) | SNAT przy użyciu portu maskaradę (PAT) przy użyciu frontonów modułu równoważenia obciążenia | TCP, UDP |Platforma Azure udostępnia publiczny adres IP publicznego frontonów modułu równoważenia obciążenia za pomocą wielu prywatnych adresów IP. Platforma Azure używa portów tymczasowych z frontonów osobisty token dostępu. |
+| Brak lub podstawowe | [3. Autonomiczna maszyna wirtualna, (Brak usługi równoważenia obciążenia, żaden adres publiczny adres IP poziomu wystąpienia)](#defaultsnat) | SNAT przy użyciu portu maskaradę (PAT) | TCP, UDP | Azure automatycznie wyznacza publiczny adres IP dla SNAT, udostępnia ten publiczny adres IP za pomocą wielu prywatnych adresów IP zestawu dostępności i korzysta z portów tymczasowych ten publiczny adres IP. Ten scenariusz jest rezerwowych dla powyższych scenariuszy. Firma Microsoft nie zaleca, aby uzyskać lepszy wgląd i kontrolę. |
 
 Jeśli nie chcesz, aby maszyny Wirtualnej w celu komunikowania się z punktami końcowymi spoza platformy Azure w publicznej przestrzeni adresów IP, można użyć grup zabezpieczeń sieci (NSG) w celu zablokowania dostępu, zgodnie z potrzebami. Sekcja [zapobieganie łączności wychodzącej](#preventoutbound) omówienie sieciowych grup zabezpieczeń w bardziej szczegółowo. Wskazówki dotyczące projektowania, wdrażania i zarządzania bez żadnych wychodzącego dostępu do sieci wirtualnej znajduje się poza zakres tego artykułu.
 
@@ -68,7 +68,7 @@ Efemeryczne porty frontonu adres IP publicznego modułu równoważenia obciąże
 
 Porty SNAT wstępnie są przydzielane zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji. Są one ograniczone zasób, który może wyczerpać. Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
 
-Gdy [wiele publicznych adresów IP skojarzonych z podstawowego modułu równoważenia obciążenia](load-balancer-multivip-overview.md), dowolne z publicznym adresem IP na te adresy są [Release candidate programu przepływy wychodzące](#multivipsnat), a jeden losowo wybrany.  
+Gdy [wiele publicznych adresów IP skojarzonych z podstawowego modułu równoważenia obciążenia](load-balancer-multivip-overview.md)te publiczne adresy IP są kandydatem do przepływy wychodzące i jeden losowo wybrany.  
 
 Aby monitorować kondycję połączenia wychodzące z podstawowego modułu równoważenia obciążenia, możesz użyć [usługi Log Analytics dla usługi Load Balancer](load-balancer-monitor-log.md) i [alertów dzienników zdarzeń](load-balancer-monitor-log.md#alert-event-log) do monitorowania komunikatów wyczerpanie portów SNAT.
 
@@ -161,10 +161,10 @@ W poniższej tabeli przedstawiono preallocations portu SNAT dla warstw rozmiary 
 | 101-200 | 256 |
 | 201-400 | 128 |
 | 401-800 | 64 |
-| 1000 801 | 32 |
+| 801-1,000 | 32 |
 
 >[!NOTE]
-> Gdy użycie standardowego modułu równoważenia obciążenia za pomocą [wiele frontonów](load-balancer-multivip-overview.md), [poszczególnych adresów IP frontonu mnoży liczbę dostępnych portów SNAT](#multivipsnat) w powyższej tabeli. Na przykład pula zaplecza 50 maszyn wirtualnych przy użyciu 2 reguły równoważenia obciążenia, każdy z adresu IP frontonu oddzielne użyje portów SNAT 2048 (2 x 1024) na konfigurację adresu IP. Zobacz szczegóły dotyczące [wiele frontonów](#multife).
+> Gdy użycie standardowego modułu równoważenia obciążenia za pomocą [wiele frontonów](load-balancer-multivip-overview.md), każdy adres IP frontonu mnoży liczbę dostępnych portów SNAT w powyższej tabeli. Na przykład pula zaplecza 50 maszyn wirtualnych przy użyciu 2 reguły równoważenia obciążenia, każdy z adresu IP frontonu oddzielne użyje portów SNAT 2048 (2 x 1024) na konfigurację adresu IP. Zobacz szczegóły dotyczące [wiele frontonów](#multife).
 
 Należy pamiętać, że liczba dostępnych portów SNAT nie przekłada się bezpośrednio do liczba przepływów. Pojedynczy port SNAT można ponownie wielu unikatowe miejsca docelowe. Porty są używane tylko wtedy, gdy jest to niezbędne do zapewnienia unikatowych przepływów. Aby uzyskać wskazówki dotyczące projektowania i ograniczania ryzyka, zapoznaj się z sekcją o [sposób zarządzać tym zasobem wyczerpującymi](#snatexhaust) i sekcji, która opisuje [osobisty token dostępu](#pat).
 
@@ -257,7 +257,8 @@ Jeśli sieciowa grupa zabezpieczeń blokuje żądania sondy kondycji z tagu domy
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [modułu równoważenia obciążenia](load-balancer-overview.md).
 - Dowiedz się więcej o [usłudze Load Balancer w warstwie Standardowa](load-balancer-standard-overview.md).
+- Dowiedz się więcej o [reguł dla ruchu wychodzącego](load-balancer-outbound-rules-overview.md) dla standardowego publicznego modułu równoważenia obciążenia.
+- Dowiedz się więcej o [modułu równoważenia obciążenia](load-balancer-overview.md).
 - Dowiedz się więcej o [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md).
 - Poznaj inne kluczowe [możliwości sieciowe](../networking/networking-overview.md) na platformie Azure.

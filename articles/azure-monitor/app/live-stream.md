@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f369eb6241a8eb3d44a0a38e243c533da47103e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b741528b2770314be7e851f38817611d6908352b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104618"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814949"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Stream metryki na żywo: Monitorowanie i diagnozowanie z opóźnieniem 1 sekundę
 
@@ -64,7 +64,7 @@ Sprawdź [porty wychodzące dla Live Stream metryki](../../azure-monitor/app/ip-
 |Na żądanie|Dane są przesyłane strumieniowo, gdy otworzysz metryki na żywo|Dane są wysyłane zawsze, gdy zestaw SDK jest zainstalowane i włączone|
 |Bezpłatna|Nie ma opłat dla danych Live Stream.|Podlegają [ceny](../../azure-monitor/app/pricing.md)
 |Próbkowanie|Wszystkie wybrane metryk i liczników są przesyłane. Błędy i ślady stosu są próbkowane. TelemetryProcessors nie są stosowane.|Zdarzenia mogą być [próbkowania](../../azure-monitor/app/api-filtering-sampling.md)|
-|Kanał kontrolny|Sygnały formant filtru są wysyłane do zestawu SDK. Firma Microsoft zaleca [ten kanał](#secure-channel).|Komunikacja jest jednokierunkowe do portalu|
+|Kanał kontrolny|Sygnały formant filtru są wysyłane do zestawu SDK. Zaleca się, że zabezpieczenia tego kanału.|Komunikacja jest jednokierunkowe do portalu|
 
 
 ## <a name="select-and-filter-your-metrics"></a>Wybierania i filtrowania metryk

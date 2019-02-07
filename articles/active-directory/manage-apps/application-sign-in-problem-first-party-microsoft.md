@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 4d75ab2328cbc18142742c3111ef1f5e7d8eb8f2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f67633ec62b28f54a97cccd0f27b43bdb626ee58
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731482"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822769"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Problemy z logowaniem do aplikacji firmy Microsoft
 
@@ -34,11 +34,11 @@ Istnieją trzy sposoby, czy użytkownik może uzyskać dostęp do aplikacji opub
 
 -   W przypadku aplikacji, które firmy Microsoft lub innych firm 3 publikuje bezpłatnie dla wszystkich użytkowników może również uzyskać dostęp za pośrednictwem **zgody administratora**. Oznacza to, że administrator wykrył, że aplikacji mogą być używane przez wszystkich użytkowników w organizacji, tak aby zalogować się do aplikacji przy użyciu konta administratora globalnego i przyznać dostęp do wszystkich osób w organizacji.
 
-Aby rozwiązać problem, zacznij od [ogólne obszarów problemów z dostępem aplikacji do należy wziąć pod uwagę](#general-problem-areas-with-application-access-to-consider) i odczytania ich [wskazówki: Kroki umożliwiające rozwiązywanie problemów z dostępem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access) Aby uzyskać szczegóły.
+Aby rozwiązać problem, zacznij od [ogólne obszarów problemów z dostępem aplikacji do należy wziąć pod uwagę](#general-problem-areas-with-application-access-to-consider) , a następnie zapoznaj się z tym przewodnikiem: Kroki rozwiązywania problemów z Microsoft Application dostępu, aby uzyskać szczegóły.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Ogólne obszarów problemów z dostępem aplikacji do uwzględnienia
 
-Lista obszarów ogólny problem, które można rozwinąć Jeśli masz pomysł gdzie zacząć, ale zalecamy przeczytać wskazówki, aby szybko zacząć: [Wskazówki: Kroki umożliwiające rozwiązywanie problemów z dostępem Microsoft Application](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
+Lista obszarów ogólny problem, które można rozwinąć Jeśli masz pomysł gdzie zacząć, ale zalecamy przeczytać wskazówki, aby szybko zacząć: Przewodnik: Kroki rozwiązywania problemów z Microsoft Application dostępu.
 
 -   [Problemy z konta użytkownika](#problems-with-the-users-account)
 

@@ -9,14 +9,14 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8effa84c9d7adc14060fb00fae9915a04c1d04cc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435519"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821222"
 ---
-# <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurowanie zasad usługi Apache Hive HDInsight z pakietem Enterprise Security
+# <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurowanie zasad technologii Apache Hive w usłudze HDInsight przy użyciu pakietu Enterprise Security
 Dowiedz się, jak skonfigurować zasady platformy Apache Ranger dla Apache Hive. Korzystając z tego artykułu, utworzysz dwie zasady platformy Ranger, aby ograniczyć dostęp do tabeli hivesampletable. Tabela hivesampletable jest dołączana do klastrów usługi HDInsight. Po skonfigurowaniu zasad łączysz się z tabelami usługi Hive w usłudze HDInsight przy użyciu sterownika ODBC i programu Excel.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -45,7 +45,7 @@ W tej sekcji utworzysz dwie zasady platformy Ranger umożliwiające uzyskiwanie 
 
 **Aby utworzyć zasady platformy Ranger**
 
-1. Otwórz interfejs użytkownika administratora platformy Ranger. Zobacz sekcję [Łączenie z interfejsem użytkownika administratora platformy Apache Ranger](#connect-to-apache-ranager-admin-ui).
+1. Otwórz interfejs użytkownika administratora platformy Ranger. Zobacz nawiązać połączenie z interfejsem użytkownika administratora platformy Apache Ranger.
 2. Kliknij pozycję **&lt;nazwa_klastra>_hive** w obszarze **Hive**. Zostaną wyświetlone dwie wstępnie skonfigurowane zasady.
 3. Kliknij pozycję **Add New Policy** (Dodaj nowe zasady), a następnie wprowadź następujące wartości:
 

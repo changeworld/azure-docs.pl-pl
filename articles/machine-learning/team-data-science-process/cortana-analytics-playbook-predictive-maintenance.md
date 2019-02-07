@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466833"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816649"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -325,7 +325,7 @@ W przypadku stałych i łatwy do przewidzenia szeregów czasowych losowych i zal
 ### <a name="time-dependent-split"></a>Podziel zależne od czasu
 W tej sekcji opisano najlepsze rozwiązania w celu zaimplementowania podziału zależne od czasu. Poniżej opisano podziału dwukierunkowe zależne od czasu między zestawy szkoleniowe i testowe.
 
-Przyjęto założenie, strumień oznaczony sygnaturą czasową zdarzenia, takie jak miar z różnymi czujników. Definiowanie funkcji i etykiety, szkolenia oraz przykłady testu za pośrednictwem ramy czasowe, które zawierają wiele zdarzeń. Na przykład dla klasyfikacji binarnej, tworzenie funkcji na podstawie ostatnich zdarzeń i utworzyć etykiety na podstawie przyszłych zdarzeń w ciągu "X" jednostki w przyszłości (znajduje się w sekcjach na [Inżynieria funkcji](#Feature-engineering) i [modelowania techniki](#Modeling-techniques-applied-to-PdM-use-cases)). W związku z tym etykietowania przedział czasu przykładem jest dostarczany później niż przedział czasu jego funkcji.
+Przyjęto założenie, strumień oznaczony sygnaturą czasową zdarzenia, takie jak miar z różnymi czujników. Definiowanie funkcji i etykiety, szkolenia oraz przykłady testu za pośrednictwem ramy czasowe, które zawierają wiele zdarzeń. Na przykład dla klasyfikacji binarnej, tworzenie funkcji na podstawie ostatnich zdarzeń i utworzyć etykiety na podstawie przyszłych zdarzeń w ciągu "X" jednostki w przyszłości (znajduje się w sekcjach na [Inżynieria funkcji](#Feature-engineering) i technik modelowania). W związku z tym etykietowania przedział czasu przykładem jest dostarczany później niż przedział czasu jego funkcji.
 
 Podział zależne od czasu, można wybrać _szkolenia odcięcia czasu T<sub>c</sub>_  jaką do nauczenia modelu, za pomocą hiperparametrów dopasowane, przy użyciu danych historycznych maksymalnie T<sub>c</sub>. Aby zapobiec wyciekom przyszłych etykiety, które wykraczają poza T<sub>c</sub> do danych szkoleniowych, wybierz ostatni czas przykłady szkolenia etykiety jako X jednostki przed T<sub>c</sub>. W tym przykładzie pokazano na rysunku 7 każdy kwadrat reprezentuje rekordu w zestawie danych, których funkcji i etykiety są obliczane zgodnie z powyższym opisem. Na ilustracji przedstawiono rekordy, które powinny przejść do szkolenia i testowania zestawów dla X = 2, a W = 3:
 

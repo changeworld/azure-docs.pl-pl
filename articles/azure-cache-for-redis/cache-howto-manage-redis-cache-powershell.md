@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: wesmc
-ms.openlocfilehash: 746e1c082d370cdcf1fca6597923b0e38b9a6d62
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ffbd785126bbc204191554e5d62d642a582a3c8d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105240"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822565"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Zarządzanie pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu programu Azure PowerShell
 > [!div class="op_single_selector"]
@@ -137,20 +137,20 @@ Poniższa tabela zawiera właściwości i opisy parametrów często używane pod
 | StaticIP |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podana, jeden jest wybierany automatycznie z podsieci. | |
 | Podsieć |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa nazwę podsieci, w której ma zostać wdrożony w pamięci podręcznej. | |
 | VirtualNetwork |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa identyfikator zasobu sieci Wirtualnej, w której ma zostać wdrożony w pamięci podręcznej. | |
-| Właściwość KeyType |Określa, które klucz dostępu, można wygenerować ponownie podczas odnawiania klucze dostępu. Prawidłowe wartości to: Podstawowy i pomocniczy | |
+| KeyType |Określa, które klucz dostępu, można wygenerować ponownie podczas odnawiania klucze dostępu. Prawidłowe wartości to: Podstawowy i pomocniczy | |
 
 ### <a name="redisconfiguration-properties"></a>Właściwości RedisConfiguration
 | Właściwość | Opis | Warstwy cenowe |
 | --- | --- | --- |
-| włączone kopia zapasowa RDB |Czy [trwałość danych Redis](cache-how-to-premium-persistence.md) jest włączona |Tylko w warstwie Premium |
+| rdb-backup-enabled |Czy [trwałość danych Redis](cache-how-to-premium-persistence.md) jest włączona |Tylko w warstwie Premium |
 | rdb-storage-connection-string |Parametry połączenia konta magazynu dla [trwałość danych Redis](cache-how-to-premium-persistence.md) |Tylko w warstwie Premium |
 | rdb-backup-frequency |Częstotliwość wykonywania kopii zapasowych dla [trwałość danych Redis](cache-how-to-premium-persistence.md) |Tylko w warstwie Premium |
 | maxmemory-reserved |Konfiguruje [pamięci zarezerwowanej](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) dla procesów pamięć podręczna |Standardowa i Premium |
 | maxmemory-policy |Konfiguruje [zasady eksmisji](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) dla pamięci podręcznej |Wszystkie warstwy cenowe |
-| powiadomienia przestrzeni kluczy — zdarzenia |Konfiguruje [powiadomienia przestrzeni kluczy](cache-configure.md#keyspace-notifications-advanced-settings) |Standardowa i Premium |
+| notify-keyspace-events |Konfiguruje [powiadomienia przestrzeni kluczy](cache-configure.md#keyspace-notifications-advanced-settings) |Standardowa i Premium |
 | hash-max-ziplist-entries |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
 | hash-max-ziplist-value |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
-| zestaw max-intset — wpisy |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
+| set-max-intset-entries |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
 | zset-max-ziplist-entries |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
 | zset-max-ziplist-value |Konfiguruje [optymalizacji pamięci](https://redis.io/topics/memory-optimization) dla typów małych agregowanie danych |Standardowa i Premium |
 | bazy danych |Umożliwia skonfigurowanie liczby baz danych. Tej właściwości można skonfigurować tylko podczas tworzenia pamięci podręcznej. |Standardowa i Premium |
@@ -260,7 +260,7 @@ Aby określić wartości `RedisConfiguration` parametru, należy ująć wartośc
 
     New-AzureRmRedisCache -ResourceGroupName myGroup -Name mycache -Location "North Central US" -Sku Premium -Size P3 -RedisConfiguration @{"databases" = "48"}
 
-Aby uzyskać więcej informacji na temat `databases` właściwości, zobacz [domyślne usługi Azure Cache konfiguracji serwera Redis](cache-configure.md#default-redis-server-configuration). Aby uzyskać więcej informacji na temat tworzenia pamięci podręcznej przy użyciu [polecenia New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) polecenia cmdlet, zobacz poprzedni [do utworzenia pamięć podręczna systemu Azure dla usługi Redis](#to-create-a-redis-cache) sekcji.
+Aby uzyskać więcej informacji na temat `databases` właściwości, zobacz [domyślne usługi Azure Cache konfiguracji serwera Redis](cache-configure.md#default-redis-server-configuration). Aby uzyskać więcej informacji na temat tworzenia pamięci podręcznej przy użyciu [polecenia New-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/new-azurermrediscache?view=azurermps-6.6.0) polecenia cmdlet, zobacz poprzedni do utworzenia usługi Azure Cache dla sekcji pamięci podręcznej Redis.
 
 ## <a name="to-update-an-azure-cache-for-redis"></a>Aby zaktualizować pamięć podręczna systemu Azure dla usługi Redis
 Pamięć podręczna systemu Azure dla wystąpienia usługi Redis są aktualizowane przy użyciu [polecenia Set-AzureRmRedisCache](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Set-AzureRmRedisCache?view=azurermps-6.6.0) polecenia cmdlet.

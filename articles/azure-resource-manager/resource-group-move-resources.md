@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: e47334a20072f4b9f4d1401b5dd1f848fa99df5a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 84f8d8ecbeacc5acb6b19462096e6fbd1aa45816
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497319"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810290"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -239,7 +239,7 @@ Podczas przenoszenia zasobów między grupami zasobów do innej grupy zasobów w
 * Jednocześnie można przenosić tylko jedno konto magazynu (klasyczne).
 * Nie można przenieść konta magazynu (klasyczne) w tej samej operacji przy użyciu maszyny wirtualnej lub usługi w chmurze.
 
-Aby przenieść zasobów klasycznych do nowej grupy zasobów w ramach tej samej subskrypcji, użyj operacji przenoszenia standard, za pośrednictwem [portal](#use-portal), [programu Azure PowerShell](#use-powershell), [wiersza polecenia platformy Azure](#use-azure-cli), lub [interfejsu API REST](#use-rest-api). Możesz użyć tych samych operacji jak używane do przenoszenia zasobów usługi Resource Manager.
+Aby przenieść zasobów klasycznych do nowej grupy zasobów w ramach tej samej subskrypcji, użyj operacji przenoszenia standard, za pośrednictwem [portal](#use-portal), programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST. Możesz użyć tych samych operacji jak używane do przenoszenia zasobów usługi Resource Manager.
 
 #### <a name="new-subscription"></a>Nowa subskrypcja
 
@@ -310,7 +310,7 @@ Operacja może trwać kilka minut.
 
 ### <a name="recovery-services-limitations"></a>Ograniczenia usług odzyskiwania
 
- Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się w prywatnej wersji zapoznawczej. Aby wypróbować tę funkcję, zapisać AskAzureBackupTeam@microsoft.com.
+ Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się w prywatnej wersji zapoznawczej. Aby ją wypróbować, napisz na adres AskAzureBackupTeam@microsoft.com.
 
 Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie. Nie można przenieść magazynów, które wykonują kopie zapasowe usługi Azure Files, usługi Azure File Sync lub SQL w przypadku maszyn wirtualnych IaaS.
 

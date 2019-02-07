@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: juliako
-ms.openlocfilehash: 06ecdf31c2627eda5bf651667703ddcf39c9d307
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 24ee0083ec79265f0ac4dfc0a2e235bc72522831
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604103"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813895"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Konfigurowanie narzędzia Postman dla wywołań interfejsu API REST usługi Media Services
 
@@ -30,7 +30,7 @@ W tym artykule dowiesz się, jak skonfigurować **Postman** , dzięki czemu moż
 - Uzyskaj informacje potrzebne do [dostęp do interfejsów API](access-api-cli-how-to.md)
 - Zainstaluj klienta REST programu [Postman](https://www.getpostman.com/), aby uruchomić interfejsy API REST przedstawione w niektórych samouczkach dotyczących AMS REST. 
 
-    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Inne alternatywy są: **Visual Studio Code** za pomocą wtyczki REST lub **narzędzia Telerik Fiddler**. 
+    W przykładzie użyto programu **Postman**, ale odpowiednie będzie każde narzędzie REST. Inne możliwości: Program **Visual Studio Code** z wtyczką REST lub program **Telerik Fiddler**. 
 
 ## <a name="download-postman-files"></a>Pobieranie plików Postman
 
@@ -57,7 +57,7 @@ W tej sekcji skonfigurowano program Postman.
     > [!Note]
     > Zaktualizuj zmienne dostępu przy użyciu wartości z sekcji **Uzyskiwanie dostępu do interfejsu API usługi Media Services** powyżej.
 
-7. Kliknij dwukrotnie wybrany plik, a następnie wprowadź wartości uzyskane podczas wykonywania kroków [uzyskiwania dostępu do interfejsu API](#access-the-media-services-api).
+7. Kliknij dwukrotnie wybrany plik, a następnie wprowadź wartości, które stało się postępując zgodnie z instrukcjami uzyskiwania dostępu do interfejsu API.
 8. Zamknij okno dialogowe.
 9. Z listy rozwijanej wybierz środowisko **Azure Media Service v3 Environment**.
 
@@ -75,7 +75,7 @@ W tej sekcji skonfigurowano program Postman.
 
 Przed rozpoczęciem manipulowanie AMS v3 zasobów należy do pobierania i ustawiania usługi Azure AD tokenu uwierzytelniania jednostki usługi.
 
-1. W lewym okienku okna narzędzia Postman, wybierz pozycję "krok 1: Pobierz uwierzytelniania usługi AAD token".
+1. W lewym oknie programu Postman wybierz opcję „Krok 1: Pobierz token uwierzytelniania usługi AAD”.
 2. Następnie wybierz pozycję „Pobieranie tokenu usługi Azure AD do uwierzytelniania jednostki usługi”.
 3. Kliknij pozycję **Wyślij**.
 

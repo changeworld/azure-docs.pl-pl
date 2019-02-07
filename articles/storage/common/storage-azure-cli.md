@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: d815bae2478d8853c63cd773cbfeaf5d3e90458c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f485f38d4c580937b027bb76d0c34c98f699ed93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659767"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816853"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage
 
@@ -98,7 +98,7 @@ Aby pracować z zasobami w Twojej subskrypcji platformy Azure, musi pierwszego l
 
 ## <a name="azure-cli-sample-script"></a>Skrypt przykładowy interfejsu wiersza polecenia platformy Azure
 
-Następnie możemy będziesz pracować skrypt powłoki małe, który wystawia kilka podstawowych poleceń interfejsu wiersza polecenia platformy Azure do interakcji z zasobami usługi Azure Storage. Skrypt najpierw tworzy nowy kontener na koncie magazynu, a następnie przekazuje istniejącego pliku (jako obiekt blob) do tego kontenera. Następnie wyświetla listę wszystkich obiektów blob w kontenerze, a na koniec pobiera plik do miejsca docelowego na komputerze lokalnym, który określisz.
+Następnie możemy będziesz pracować skrypt powłoki małe, który wystawia kilka podstawowych poleceń interfejsu wiersza polecenia platformy Azure do interakcji z zasobami usługi Azure Storage. Skrypt najpierw tworzy nowy kontener na koncie magazynu, a następnie przekazuje do tego kontenera istniejący plik (jako obiekt blob). Następnie wyświetla listę wszystkich obiektów blob w kontenerze, a na koniec pobiera plik do miejsca docelowego na komputerze lokalnym, który określisz.
 
 ```bash
 #!/bin/bash
@@ -173,7 +173,7 @@ Done
 ## <a name="manage-storage-accounts"></a>Zarządzanie kontami magazynu
 
 ### <a name="create-a-new-storage-account"></a>Tworzenie nowego konta magazynu
-Aby móc użyć usługi Azure Storage, musisz mieć konto magazynu. Można utworzyć nowe konto usługi Azure Storage, po skonfigurowaniu komputera do [nawiązać połączenie z subskrypcją](#connect-to-your-azure-subscription).
+Aby móc użyć usługi Azure Storage, musisz mieć konto magazynu. Można utworzyć nowe konto usługi Azure Storage, po skonfigurowaniu komputera, aby nawiązać połączenie z subskrypcją.
 
 ```azurecli
 az storage account create \
@@ -277,7 +277,7 @@ az storage blob download \
 
 ### <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Wyświetlanie listy obiektów blob w kontenerze za pomocą [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) polecenia.
+Wyświetlanie listy obiektów blob w kontenerze za pomocą [az storage blob list](/cli/azure/storage/blob) polecenia.
 
 ```azurecli
 az storage blob list \

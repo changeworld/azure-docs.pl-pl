@@ -9,12 +9,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 84cc99bac9ae5fa1743ed151e5bf8c3043cf5869
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851024"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821392"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>Konfigurowanie odzyskiwania po awarii dla usługi Active Directory i DNS
 
@@ -31,10 +31,10 @@ W tym artykule wyjaśniono, jak utworzyć rozwiązanie odzyskiwania po awarii dl
 
 ## <a name="replicate-the-domain-controller"></a>Replikowanie kontrolera domeny
 
-- Należy zdefiniować [replikacji usługi Site Recovery](#enable-protection-using-site-recovery), na co najmniej jednej maszyny Wirtualnej, który hostuje kontrolera domeny lub DNS.
-- Jeśli masz [wielu kontrolerów domeny](#environment-with-multiple-domain-controllers) w danym środowisku, należy również skonfigurować [dodatkowy kontroler domeny](#protect-active-directory-with-active-directory-replication) w lokacji docelowej. Dodatkowy kontroler domeny może być na platformie Azure lub w pomocniczej w lokalnym centrum danych.
+- Należy zdefiniować replikacji usługi Site Recovery, na co najmniej jednej maszyny Wirtualnej, który hostuje kontrolera domeny lub systemu DNS.
+- Jeśli masz wiele kontrolerów domeny w danym środowisku, można także skonfigurować dodatkowy kontroler domeny w lokacji docelowej. Dodatkowy kontroler domeny może być na platformie Azure lub w pomocniczej w lokalnym centrum danych.
 - Jeśli masz tylko kilka aplikacji i jeden kontroler domeny, możesz chcieć razem przechodzą w całej lokacji. W tym przypadku zaleca się przy użyciu Site Recovery do replikacji kontrolera domeny w lokacji docelowej, (lub na platformie Azure w centrum danych z lokalnego, pomocniczego). Możesz użyć tego samego kontrolera domeny replikowanych lub DNS maszyny wirtualnej pod kątem [testowanie trybu failover](#test-failover-considerations).
-- - Jeśli masz wiele aplikacji i więcej niż jeden kontroler domeny w środowisku lub jeśli planowane jest do trybu failover kilka aplikacji w czasie, oprócz replikowania maszyny wirtualnej kontrolera domeny z usługą Site Recovery zaleca się konfigurowania [dodatkowy kontroler domeny](#protect-active-directory-with-active-directory-replication) w docelowej lokacji (lub na platformie Azure w centrum danych z lokalnego, pomocniczego). Aby uzyskać [testowanie trybu failover](#test-failover-considerations), można użyć kontrolera domeny, które są replikowane przez usługę Site Recovery. Dla trybu failover można użyć dodatkowy kontroler domeny w lokacji docelowej.
+- - Jeśli masz wiele aplikacji i więcej niż jeden kontroler domeny w środowisku lub jeśli planowane jest do trybu failover kilka aplikacji w czasie, oprócz replikowania maszyny wirtualnej kontrolera domeny z usługą Site Recovery, firma Microsoft zaleca skonfigurowanie dodatkowy kontroler domeny w lokacji docelowej (lub na platformie Azure w centrum danych z lokalnego, pomocniczego). Aby uzyskać [testowanie trybu failover](#test-failover-considerations), można użyć kontrolera domeny, które są replikowane przez usługę Site Recovery. Dla trybu failover można użyć dodatkowy kontroler domeny w lokacji docelowej.
 
 ## <a name="enable-protection-with-site-recovery"></a>Włącz ochronę za pomocą usługi Site Recovery
 
@@ -165,7 +165,7 @@ Jeśli powyższe warunki są spełnione, istnieje prawdopodobieństwo, że kontr
 1. Wykonaj Przywracanie autorytatywne kontrolera domeny. Należy przestrzegać następujących informacji:
     * Chociaż nie jest zalecane [replikacji usługi FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/), jeśli używasz replikacji usługi FRS, postępuj zgodnie z instrukcjami dla przywracania autorytatywnego. Proces jest opisany w [Usługa replikacji plików za pomocą klucza rejestru BurFlags](https://support.microsoft.com/kb/290762).
 
-        Aby uzyskać więcej informacji na temat BurFlags, zobacz wpis w blogu [D2 i D4: co to jest dla?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
+        Aby uzyskać więcej informacji na temat BurFlags, zobacz wpis w blogu [D2 i D4: Co to jest dla? ](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/).
     * Jeśli używasz replikacji DFSR, wykonaj kroki procedury przywracania autorytatywnego. Proces jest opisany w [wymusić autorytatywne autorytatywną i nieautorytatywną synchronizację dla folderem SYSVOL replikowanym w DFSR (na przykład "D4/D2" w przypadku usługi FRS)](https://support.microsoft.com/kb/2218556).
 
         Można również użyć funkcji programu PowerShell. Aby uzyskać więcej informacji, zobacz [funkcji PowerShell autorytatywne/przywracanie nieautorytatywne DFSR SYSVOL](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/).
@@ -174,7 +174,7 @@ Jeśli powyższe warunki są spełnione, istnieje prawdopodobieństwo, że kontr
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
-    Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z 4013 identyfikator zdarzenia DNS: serwer DNS nie może załadować stref DNS zintegrowanych usługi AD](https://support.microsoft.com/kb/2001093).
+    Aby uzyskać więcej informacji, zobacz [Rozwiązywanie problemów z 4013 identyfikator zdarzenia DNS: Serwer DNS nie może załadować stref DNS zintegrowanych usługi AD](https://support.microsoft.com/kb/2001093).
 
 3. Wyłącz wymagania serwera wykazu globalnego i udostępnienie do sprawdzania poprawności nazwy logowania użytkownika. W tym celu na kontrolerze domeny w środowisku lokalnym, należy ustawić następujący klucz rejestru **1**. Jeśli wartości DWORD nie istnieje, możesz utworzyć je w obszarze **Lsa** węzła.
 

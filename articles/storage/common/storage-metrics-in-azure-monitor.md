@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 4b71c5818ee6eade526134ab1b2508ed55f0c400
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: aabd0ab55c061c9d2cdc27b4ab5a241ad9e9793c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699945"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811773"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -39,7 +39,7 @@ Metryki obsługi wymiarów można filtrować metryki z żądaną wartością. Po
 
 ### <a name="access-metrics-with-the-rest-api"></a>Dostęp do metryk z interfejsu API REST
 
-Usługa Azure Monitor zapewnia [interfejsów API REST](/rest/api/monitor/) na odczytywanie definicji metryk i wartości. W tej sekcji dowiesz się, jak odczytać metryk usługi storage. Identyfikator zasobu jest używana w wszystkich interfejsów API REST. Aby uzyskać więcej informacji, przeczytaj [informacje o identyfikatorze zasobu usługi w ramach magazynu](#understanding-resource-id-for-services-in-storage).
+Usługa Azure Monitor zapewnia [interfejsów API REST](/rest/api/monitor/) na odczytywanie definicji metryk i wartości. W tej sekcji dowiesz się, jak odczytać metryk usługi storage. Identyfikator zasobu jest używana w wszystkich interfejsów API REST. Aby uzyskać więcej informacji, przeczytaj informacje o identyfikatorze zasobu usługi w ramach magazynu.
 
 Poniższy przykład pokazuje, jak używać [ArmClient](https://github.com/projectkudu/ARMClient) w wierszu polecenia, aby uprościć testowanie za pomocą interfejsu API REST.
 
@@ -136,7 +136,7 @@ Następującą odpowiedź zawiera wartości metryk w formacie JSON:
 
 ### <a name="access-metrics-with-the-net-sdk"></a>Metryki dostępu przy użyciu zestawu .net SDK
 
-Usługa Azure Monitor zapewnia [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) na odczytywanie definicji metryk i wartości. [Przykładowego kodu](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) pokazuje, jak używać zestawu SDK z innymi parametrami. Należy użyć `0.18.0-preview` lub nowsza wersja dla metryk usługi storage. Identyfikator zasobu jest używana na platformie .net SDK. Aby uzyskać więcej informacji, przeczytaj [informacje o identyfikatorze zasobu usługi w ramach magazynu](#understanding-resource-id-for-services-in-storage).
+Usługa Azure Monitor zapewnia [.Net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/) na odczytywanie definicji metryk i wartości. [Przykładowego kodu](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/) pokazuje, jak używać zestawu SDK z innymi parametrami. Należy użyć `0.18.0-preview` lub nowsza wersja dla metryk usługi storage. Identyfikator zasobu jest używana na platformie .net SDK. Aby uzyskać więcej informacji, przeczytaj informacje o identyfikatorze zasobu usługi w ramach magazynu.
 
 Poniższy przykład pokazuje, jak odczytywanie metryk usługi storage przy użyciu usługi Azure Monitor .net SDK.
 

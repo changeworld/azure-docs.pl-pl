@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 5982fcee41dd8c99aaa781a8ff3cd55ff2489929
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/06/2019
+ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511305"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810069"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -222,7 +222,7 @@ Tak. Niektóre funkcje usługi Azure SQL Database nie są obsługiwane w Hipersk
 
 Tak. Można użyć wszystkich istniejących technologii migracji przeprowadzić migrację do na dużą skalę, łącznie z pliku BACPAC replikacji transakcyjnej, trwa ładowanie danych logicznych. Zobacz też [Azure Database Migration Service](../dms/dms-overview.md).
 
-### <a name="what-is-my-downtown-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Co to jest Moja Centrum podczas migracji ze środowiska lokalnego lub w środowisku maszyny wirtualnej o dużej skali i jak mogę je zminimalizować
+### <a name="what-is-my-downtime-during-migration-from-an-on-premises-or-virtual-machine-environment-to-hyperscale-and-how-can-i-minimize-it"></a>Co to jest Moja przestój podczas migracji ze środowiska lokalnego lub w środowisku maszyny wirtualnej o dużej skali i jak mogę je zminimalizować
 
 Czas przestoju, jest taka sama jak przestój podczas migracji baz danych do pojedynczej bazy danych w usłudze Azure SQL Database. Możesz użyć [replikacji transakcyjnej](replication-to-sql-database.md#data-migration-scenario
 ) aby zminimalizować przestoje migracji baz danych do kilku TB, rozmiar. Dla bardzo dużych baz danych (ponad 10 TB), można rozważyć, aby przeprowadzić migrację danych za pomocą usługi ADF, Spark lub inne technologie przenoszenia danych.

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 290f0426befa322b20882682bf4555f80af016d1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 95dc004e1a4b34f1f3a3c547da4ea7cd35e8c753
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660395"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821477"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
 
@@ -128,7 +128,7 @@ Po zatrzymaniu zbierania danych OperationStatus jest ostrzeżenie. Podczas uruch
 |Zatrzymuje kolekcję Przyczyna| Rozwiązanie| 
 |-----------------------|---------|
 |Osiągnięto dzienny limit starsze warstwy cenowej bezpłatna |Poczekaj, aż do następnego dnia, aby Kolekcjonowanie mogło być automatycznie uruchomiony ponownie lub Zmień na płatną warstwę cenową.|
-|Osiągnięto dzienny limit obszaru roboczego|Poczekaj, aż kolekcji do automatycznego ponownego uruchamiania lub zwiększenia dziennego limitu woluminu danych opisanych w [Zarządzanie Maksymalna dzienna ilość danych](#manage-the-maximum-daily-volume). Godzina codziennego resetowania zakończenia są wyświetlane na **zarządzanie ilością danych** strony. |
+|Osiągnięto dzienny limit obszaru roboczego|Poczekaj, aż kolekcji do automatycznego ponownego uruchamiania lub zwiększenia dziennego limitu woluminu danych opisanych w zarządzać Maksymalna dzienna ilość danych. Godzina codziennego resetowania zakończenia są wyświetlane na **zarządzanie ilością danych** strony. |
 |Subskrypcja platformy Azure jest w stanie wstrzymania ze względu na:<br> Bezpłatny okres próbny zakończył się<br> Azure — dostęp próbny wygasł<br> Co miesiąc limit wydatków osiągnięto (na przykład w ramach subskrypcji MSDN lub Visual Studio)|Konwertuj na płatną subskrypcję<br> Usuń limit lub poczekaj na zresetowanie limitu|
 
 Aby otrzymać powiadomienie po zatrzymaniu zbierania danych, należy użyć procedury opisanej w *dziennego limitu danych utwórz* alert, aby otrzymywać powiadomienia, po zatrzymaniu zbierania danych i postępuj zgodnie z instrukcjami, wykonaj czynności opisane w Dodawanie akcji do wyzwalania alertu, zasady Skonfiguruj wiadomość e-mail Element webhook lub akcję runbook dla reguły alertu. 

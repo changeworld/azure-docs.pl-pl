@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: 93614d4889c9c884f25c5e05cd620e8303226323
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: ae8315b2a484cddc500b5c2dd02a019cb4f46d8e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39357770"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819148"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Opcje rozpoznawania nazw DNS dla maszyn wirtualnych systemu Linux na platformie Azure
 Platforma Azure udostępnia rozpoznawanie nazw DNS domyślnie dla wszystkich maszyn wirtualnych, które znajdują się w jednej sieci wirtualnej. Możesz zaimplementować własnego rozwiązania rozpoznawania nazw DNS przez skonfigurowanie usługi DNS na maszynach wirtualnych obsługujący platformy Azure. Następujące scenariusze powinny pomóc w wybierz ten, który działa w danej sytuacji.
@@ -33,7 +33,7 @@ W poniższej tabeli przedstawiono scenariusze i odpowiedniego rozwiązania rozpo
 
 | **Scenariusz** | **Rozwiązanie** | **Suffix** |
 | --- | --- | --- |
-| Rozpoznawanie nazw między wystąpieniami roli lub maszyn wirtualnych w tej samej sieci wirtualnej |[Rozpoznawanie nazw, które platforma Azure udostępnia](#azure-provided-name-resolution) |Nazwa hosta lub w pełni kwalifikowana nazwa domeny (FQDN) |
+| Rozpoznawanie nazw między wystąpieniami roli lub maszyn wirtualnych w tej samej sieci wirtualnej |Rozpoznawanie nazw, które platforma Azure udostępnia |Nazwa hosta lub w pełni kwalifikowana nazwa domeny (FQDN) |
 | Rozpoznawanie nazw między wystąpieniami roli lub maszynami wirtualnymi w różnych sieciach wirtualnych |Zarządzane przez klienta serwerów DNS, które przesyłają dalej zapytań między sieciami wirtualnymi rozpoznawania przez platformę Azure (serwer proxy DNS). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozpoznawanie komputerów w środowisku lokalnym i nazwy usług z wystąpień roli lub maszynach wirtualnych platformy Azure |Zarządzane przez klienta z serwerów DNS (na przykład lokalnego kontrolera domeny, kontrolera domeny tylko do odczytu lokalnej lub synchronizowane przy użyciu transferu strefy DNS dodatkowej). Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |
 | Rozwiązania platformy Azure nazw hostów z komputerów w środowisku lokalnym |Przesyła zapytania do serwera proxy DNS zarządzanych przez klienta w odpowiedniej sieci wirtualnej. Serwer proxy przekazuje zapytania na platformie Azure, do rozpoznania. Zobacz [rozpoznawanie nazw przy użyciu własnego serwera DNS](#name-resolution-using-your-own-dns-server). |Tylko nazwa FQDN |

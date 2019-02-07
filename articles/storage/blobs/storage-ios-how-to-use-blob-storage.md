@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244766"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811668"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak używać magazynu obiektów Blob z poziomu systemu iOS
 
@@ -162,7 +162,7 @@ Poniższy przykład pokazuje jak utworzyć kontener z **kontenera** dostęp do u
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Przekazywanie obiektu blob do kontenera
-Jak wspomniano w [pojęcia dotyczące usługi Blob](#blob-service-concepts) sekcji, Blob Storage oferuje trzy różne typy obiektów blob: blokowe obiekty BLOB, uzupełnialne obiekty BLOB i stronicowe obiekty BLOB. Biblioteka platformy iOS usługi Azure Storage obsługuje wszystkie trzy typy obiektów blob. W większości przypadków zalecane jest użycie blokowych obiektów blob.
+Jak wspomniano w sekcji pojęcia dotyczące usługi Blob, Blob Storage oferuje trzy różne typy obiektów blob: blokowe obiekty BLOB, uzupełnialne obiekty BLOB i stronicowe obiekty BLOB. Biblioteka platformy iOS usługi Azure Storage obsługuje wszystkie trzy typy obiektów blob. W większości przypadków zalecane jest użycie blokowych obiektów blob.
 
 Poniższy przykład pokazuje, jak przekazać blokowy obiekt blob z NSString. Jeśli obiekt blob z tej samej nazwie już istnieje w tym kontenerze, zawartość tego obiektu blob zostanie zastąpiony.
 

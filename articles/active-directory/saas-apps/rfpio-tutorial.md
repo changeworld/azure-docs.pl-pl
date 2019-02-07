@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b216d8a8a2c6e1ab7c7b71eedfca9cbd6dbd5cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23d745e084bf3439d8400b0cd6ac43bac75c7751
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197351"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RFPIO
 
@@ -88,11 +88,11 @@ W RFPIO, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą RFPIO, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**— aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**— do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego RFPIO](#creating-a-rfpio-test-user)**  — aby odpowiednikiem Britta Simon w RFPIO połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**— Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **Konfigurowanie usługi Azure AD logowania jednokrotnego**— aby umożliwić użytkownikom korzystać z tej funkcji.
+1. **Tworzenie użytkownika testowego usługi Azure AD**— do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **Tworzenie użytkownika testowego RFPIO** — aby odpowiednikiem Britta Simon w RFPIO połączonego z usługi Azure AD reprezentacja użytkownika.
+1. **Przypisywanie użytkownika testowego usługi Azure AD**— Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+1. **Testowanie logowania jednokrotnego** — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 

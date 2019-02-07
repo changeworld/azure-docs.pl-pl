@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 199343fce4774ea643bc22c879efc6717aa0a510
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 658cee95d695a310291d5b7180815c89bc2f0401
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244733"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818111"
 ---
 # <a name="upload-a-generalized-vhd-to-azure-to-create-a-new-vm"></a>Przekazywanie uogólnionego wirtualnego dysku twardego do systemu Azure do tworzenia nowej maszyny Wirtualnej
 
@@ -97,7 +97,7 @@ Aby wyświetlić konta dostępnego magazynu, wpisz:
 Get-AzureRmStorageAccount
 ```
 
-Jeśli chcesz użyć istniejącego konta magazynu, przejdź do [przekazywanie obrazu maszyny Wirtualnej](#upload-the-vm-vhd-to-your-storage-account) sekcji.
+Jeśli chcesz użyć istniejącego konta magazynu, przejdź do przekazywania sekcję obrazu maszyny Wirtualnej.
 
 Jeśli musisz utworzyć konto magazynu, wykonaj następujące czynności:
 

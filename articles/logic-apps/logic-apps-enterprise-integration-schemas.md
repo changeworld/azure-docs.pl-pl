@@ -1,6 +1,6 @@
 ---
-title: Dodawanie schematów na potrzeby weryfikacji danych XML — Azure Logic Apps | Dokumentacja firmy Microsoft
-description: Tworzenie schematów, sprawdzania poprawności XML dokumenty w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+title: Walidacja danych XML przy użyciu schematów — Azure Logic Apps | Dokumentacja firmy Microsoft
+description: Dodaj schematy do sprawdzania poprawności XML dokumenty w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,124 +9,185 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
-ms.date: 07/29/2016
-ms.openlocfilehash: e03346da1c2b77f885c39d5329f990684979c56e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 02/06/2019
+ms.openlocfilehash: 03ac2e0f42ff05165aa2313d823710a71c7dffec
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123077"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768328"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Walidacja danych XML przy użyciu schematów w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
-Schematy upewnij się, że dokumentów XML, które otrzymujesz są prawidłowe i zawiera oczekiwane dane wstępnie zdefiniowany format. Schematy również okazać pomocny sprawdzania poprawności komunikatów, które są wymieniane w scenariuszu B2B.
+Aby sprawdzić, czy dokumenty Użyj prawidłowy kod XML i masz oczekiwanych danych w formacie wstępnie zdefiniowanych na potrzeby scenariuszy integracji przedsiębiorstwa w usłudze Azure Logic Apps, aplikacja logiki można użyć schematów. Schemat można zweryfikować wiadomości, które aplikacje logiki programu exchange w różnych scenariuszy biznesowych (B2B).
 
-## <a name="add-a-schema"></a>Dodawanie schematu
+Limity dotyczące kont integracji i artefakty, takie jak schematy, zobacz [limity i informacje o konfiguracji dla usługi Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-1. W witrynie Azure portal wybierz **wszystkich usług**.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-    ![Witryny Azure portal, "Wszystkie usługi"](media/logic-apps-enterprise-integration-schemas/overview-11.png)
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
 
-2. W polu wyszukiwania filtr wprowadź **integracji**i wybierz **kont integracji** z listy wyników.
+* [Konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md) przechowywania swoje schematy i innych artefaktów dla integracji dla przedsiębiorstw i rozwiązań biznesowych (B2B). 
 
-    ![Filtruj pola wyszukiwania](media/logic-apps-enterprise-integration-schemas/overview-21.png)
+  Jeśli jest schematu [2 MB lub mniej](#smaller-schema), można dodać schematu na koncie integracji bezpośrednio w witrynie Azure portal. Jednak jeśli schematu jest większy niż 2 MB, ale nie większa niż [limit rozmiaru schematu](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits), możesz przekazać schematu do konta usługi Azure storage. 
+  Aby dodać ten schemat na koncie integracji, konieczne jest połączenie z kontem usługi storage z poziomu konta integracji. 
+  Dla tego zadania Oto elementy, które są potrzebne: 
 
-3. Wybierz **konta integracji** której chcesz dodać schematu.
+  * [Konto usługi Azure storage](../storage/common/storage-account-overview.md) gdzie Utwórz kontener obiektów blob dla schematu. Dowiedz się, jak [Tworzenie konta magazynu](../storage/common/storage-quickstart-create-account.md). 
 
-    ![Lista kont integracji](media/logic-apps-enterprise-integration-schemas/overview-31.png)
+  * Kontener obiektów blob do przechowywania schematu. Dowiedz się, jak [Utwórz kontener obiektów blob](../storage/blobs/storage-quickstart-blobs-portal.md). 
+  Będą potrzebne identyfikator URI zawartości z kontenerem później podczas dodawania schemat na koncie integracji.
 
-4. Wybierz **schematów** kafelka.
+  * [Eksplorator usługi Azure Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md), których można użyć do zarządzania kontami magazynu i kontenerach obiektów blob. 
+  Aby użyć Eksploratora usługi Storage, wybierz jedną z opcji w tym miejscu:
+  
+    * W witrynie Azure portal Znajdź i wybierz swoje konto magazynu. 
+    Wybierz z menu konta magazynu, **Eksploratora usługi Storage**.
 
-    ![Konto integracji przykład, "Schematy"](media/logic-apps-enterprise-integration-schemas/schema-11.png)
+    * W przypadku klasycznej wersji [pobieranie i instalowanie Eksploratora usługi Azure Storage](https://www.storageexplorer.com/). 
+    Następnie połącz Eksplorator usługi Storage do konta magazynu, wykonując kroki opisane w [wprowadzenie do Eksploratora usługi Storage](../vs-azure-tools-storage-manage-with-storage-explorer.md). 
+    Aby dowiedzieć się więcej, zobacz [Szybki start: Tworzenie obiektu blob w magazynie obiektów przy użyciu usługi Azure Storage Explorer](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
 
-### <a name="add-a-schema-file-smaller-than-2-mb"></a>Dodać plik schematu, które jest mniejszy niż 2 MB
+Aplikacja logiki, gdy tworzenie i dodawanie schematów nie jest konieczne. Jednak aby używać schematu, potrzebuje aplikacja logiki łączenia z kontem integracji, gdzie przechowujesz tego schematu. Dowiedz się, [sposobu łączenia aplikacji logiki z konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Dowiedz się, jeśli nie masz jeszcze aplikacji logiki, [jak tworzyć aplikacje logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. W **schematów** bloku, który otworzy (z poprzednich kroków), wybierz opcję **Dodaj**.
+## <a name="add-schemas"></a>Dodawanie schematów
 
-    ![Schematy bloku "Dodaj".](media/logic-apps-enterprise-integration-schemas/schema-21.png)
+1. Zaloguj się do <a href="https://portal.azure.com" target="_blank">witryny Azure Portal</a> przy użyciu poświadczeń konta Azure.
 
-2. Wprowadź nazwę dla schematu. Przekaż plik schematu, wybierając ikonę folderu obok pozycji **schematu** pole. Po zakończeniu procesu przekazywania wybierz **OK**.
+1. Aby znaleźć i otworzyć konto integracji w głównym menu platformy Azure, wybierz pozycję **wszystkich usług**. W polu wyszukiwania wprowadź "konto integracji". Wybierz **kont integracji**.
 
-    ![Zrzut ekranu przedstawiający "Dodaj Schema", przy użyciu małych "pliku" wyróżniony](media/logic-apps-enterprise-integration-schemas/schema-31.png)
+   ![Znajdź konto integracji](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
 
-### <a name="add-a-schema-file-larger-than-2-mb-up-to-8-mb-maximum"></a>Dodać plik schematu, które jest większe niż 2 MB (maksymalnie 8 MB)
+1. Wybierz konto integracji, w której chcesz dodać schematu, na przykład:
 
-Te kroki różnią się w zależności na poziomie dostępu do kontenera obiektów blob: **publicznych** lub **bez dostępu anonimowego**.
+   ![Wybierz konto integracji](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-**Aby określić, ten poziom dostępu**
+1. Na koncie integracji **Przegląd** w obszarze **składniki**, wybierz opcję **schematów** kafelka.
 
-1.  Otwórz **Eksplorator usługi Azure Storage**. 
+   ![Wybierz pozycję "Schematy"](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
-2.  W obszarze **kontenery obiektów Blob**, wybierz kontener obiektów blob, które chcesz. 
+1. Po **schematów** zostanie otwarta strona, wybierz polecenie **Dodaj**.
 
-3.  Wybierz **zabezpieczeń**, **poziom dostępu**.
+   ![Wybieranie pozycji "Dodaj"](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
 
-Jeśli poziom dostępu zabezpieczeń obiektu blob jest **publicznych**, wykonaj następujące kroki.
+Na podstawie pliku schematu (XSD) rozmiaru, postępuj zgodnie z instrukcjami przekazywania schematu, który jest albo [do 2 MB](#smaller-schema) lub [więcej niż 2 MB, maksymalnie 8 MB](#larger-schema).
 
-![Eksplorator usługi Azure Storage, za pomocą "Kontenery obiektów Blob", "Zabezpieczenia" i "Publicznej" wyróżniony](media/logic-apps-enterprise-integration-schemas/blob-public.png)
+<a name="smaller-schema"></a>
 
-1. Przekaż schemat do konta magazynu i skopiuj identyfikator URI.
+### <a name="add-schemas-up-to-2-mb"></a>Dodaj schematy do 2 MB
 
-    ![Konto magazynu, za pomocą identyfikatora URI wyróżniony](media/logic-apps-enterprise-integration-schemas/schema-blob.png)
+1. W obszarze **schemat Dodaj**, wprowadź nazwę dla schematu. 
+   Zachowaj **mały plik** wybrane. Obok pozycji **schematu** , wybierz ikonę folderu. Znajdź i wybierz schemat, który jest przekazywany, na przykład:
 
-2. W **schemat Dodaj**, wybierz opcję **plików o dużym rozmiarze**i podaj identyfikator URI w **identyfikator URI zawartości** pola tekstowego.
+   ![Przekaż mniejszy schematu](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
 
-    ![Schematy, za pomocą przycisku "Dodaj" i "Dużych plików" wyróżniony](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
+1. Gdy wszystko będzie gotowe, wybierz pozycję **OK**.
 
-Jeśli poziom dostępu zabezpieczeń obiektu blob jest **bez dostępu anonimowego**, wykonaj następujące kroki.
+   Po zakończeniu przekazywania schematu schemat pojawi się w **schematów** listy.
 
-![Eksplorator usługi Azure Storage, za pomocą "Kontenery obiektów Blob", "Zabezpieczenia" i "Brak dostępu anonimowego" wyróżniony](media/logic-apps-enterprise-integration-schemas/blob-1.png)
+<a name="larger-schema"></a>
 
-1. Przekaż schemat do konta magazynu.
+### <a name="add-schemas-more-than-2-mb"></a>Dodawanie schematów, więcej niż 2 MB
 
-    ![Konto magazynu](media/logic-apps-enterprise-integration-schemas/blob-3.png)
+Aby dodać większej schematów, możesz przekazać schematu do kontenera obiektów blob platformy Azure w ramach konta magazynu platformy Azure. Twoje kroki, aby dodać mapy różnią się w zależności czy kontenera obiektów blob jest publiczny dostęp do odczytu. Dlatego najpierw należy sprawdzić, czy kontenera obiektów blob ma publiczny dostęp do odczytu, wykonaj następujące czynności: [Ustaw poziom dostępu publicznego do kontenera obiektów blob](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
-2. Generowanie sygnatury dostępu współdzielonego dla schematu.
+#### <a name="check-container-access-level"></a>Sprawdź poziom dostępu do kontenera
 
-    ![Konto magazynu, z kartą sygnatur dostępu współdzielonego wyróżniony](media/logic-apps-enterprise-integration-schemas/blob-2.png)
+1. Otwórz Eksplorator usługi Azure Storage. W oknie Eksploratora rozwiń subskrypcji platformy Azure, jeśli nie jest jeszcze rozwinięty.
 
-3. W **schemat Dodaj**, wybierz opcję **plików o dużym rozmiarze**i podaj identyfikatora URI sygnatury dostępu współdzielonego w **identyfikator URI zawartości** pola tekstowego.
+1. Rozwiń **kont magazynu** > {*swoje konto magazynu*} > **kontenerach obiektów Blob**. Wybierz kontener obiektów blob.
 
-    ![Schematy, za pomocą przycisku "Dodaj" i "Dużych plików" wyróżniony](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
+1. Wybierz z menu skrótów dla kontenera obiektów blob, **Ustaw poziom dostępu publicznego**.
 
-4. W **schematów** bloku konta usługi integracji, powinien być widoczny nowo dodanych schematu.
+   * Jeśli co najmniej publicznego dostępu do kontenera obiektów blob, wybierz **anulować**i wykonaj następujące czynności w późniejszym czasie na tę stronę: [Przekaż do kontenerów przy użyciu dostępu publicznego](#public-access)
 
-    ![Konta integracji z "Schematy" i nowego schematu wyróżniony](media/logic-apps-enterprise-integration-schemas/schema-41.png)
+     ![Dostęp publiczny](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+
+   * Jeśli kontener obiektów blob nie ma publicznego dostępu, wybierz opcję **anulować**i wykonaj następujące czynności w późniejszym czasie na tę stronę: [Przekazywanie do kontenerów, bez dostępu publicznego](#public-access)
+
+     ![Brak dostępu publicznego](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+
+<a name="public-access"></a>
+
+#### <a name="upload-to-containers-with-public-access"></a>Przekaż do kontenerów przy użyciu dostępu publicznego
+
+1. Przekaż schemat do konta magazynu. 
+   W oknie po prawej stronie wybierz **przekazywanie**.
+
+1. Po zakończeniu przekazywania wybierz przekazany schematu. Na pasku narzędzi wybierz **URL kopii** tak, aby skopiować adres URL schematu.
+
+1. Wróć do witryny Azure portal gdzie **schemat Dodaj** okienko jest otwarte. 
+   Wprowadź nazwę zestawu. 
+   Wybierz **duży plik (więcej niż 2 MB)**. 
+
+   **Identyfikator URI zawartości** pojawi się pole, a nie **schematu** pole.
+
+1. W **identyfikator URI zawartości** pole, wklej adres URL usługi schematu. 
+   Zakończ, dodawanie schematu.
+
+Po zakończeniu przekazywania schematu schemat pojawi się w **schematów** listy. Na koncie integracji **Przegląd** w obszarze **składniki**, **schematów** Kafelek pokazuje teraz liczba przekazanych schematów.
+
+<a name="no-public-access"></a>
+
+#### <a name="upload-to-containers-without-public-access"></a>Przekazywanie do kontenerów, bez dostępu publicznego
+
+1. Przekaż schemat do konta magazynu. 
+   W oknie po prawej stronie wybierz **przekazywanie**.
+
+1. Po zakończeniu przekazywania Generowanie sygnatury dostępu współdzielonego (SAS) dla schematu. 
+   Wybierz z menu skrótów dla swojej schematu, **Uzyskaj sygnaturę dostępu współdzielonego**.
+
+1. W **udostępnionej sygnatury dostępu** okienku wybierz **identyfikatora URI sygnatury dostępu współdzielonego na poziomie kontenera Generuj** > **Utwórz**. 
+   Po adres URL sygnatury dostępu Współdzielonego pobiera wygenerowany, obok **adresu URL** wybierz **kopiowania**.
+
+1. Wróć do witryny Azure portal gdzie **schemat Dodaj** okienko jest otwarte. Wybierz **plików o dużym rozmiarze**.
+
+   **Identyfikator URI zawartości** pojawi się pole, a nie **schematu** pole.
+
+1. W **identyfikator URI zawartości** pole, wklej identyfikator URI sygnatury dostępu Współdzielonego, wcześniej wygenerowany. Zakończ, dodawanie schematu.
+
+Po zakończeniu przekazywania schematu schemat pojawi się w **schematów** listy. Na koncie integracji **Przegląd** w obszarze **składniki**, **schematów** Kafelek pokazuje teraz liczba przekazanych schematów.
 
 ## <a name="edit-schemas"></a>Edytowanie schematów
 
-1. Wybierz **schematów** kafelka.
+Aby zaktualizować istniejący schemat, musisz Przekaż nowy plik schematu, który zawiera zmiany, które mają. Jednakże można najpierw pobrać istniejącego schematu do edycji.
 
-2. Po **schematów** zostanie otwarty blok, wybierz schemat, który chcesz edytować.
+1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Znajdź i Otwórz swoje konto integracji, jeśli nie już otwarty.
 
-3. Na **schematów** bloku wybierz **Edytuj**.
+1. W głównym menu platformy Azure, wybierz **wszystkich usług**. 
+   W polu wyszukiwania wprowadź "konto integracji". 
+   Wybierz **kont integracji**.
 
-    ![Blok schematów](media/logic-apps-enterprise-integration-schemas/edit-12.png)
+1. Wybierz konto integracji, w której chcesz aktualizować schematu.
 
-4. Wybierz plik schematu, który chcesz edytować, a następnie wybierz **Otwórz**.
+1. Na koncie integracji **Przegląd** w obszarze **składniki**, wybierz opcję **schematów** kafelka.
 
-    ![Plik schematu Otwórz do edycji](media/logic-apps-enterprise-integration-schemas/edit-31.png)
+1. Po **schematów** zostanie otwarta strona, wybierz opcję schematu. 
+   Aby pobrać i edytowania schematu pierwszy, wybierz opcję **Pobierz**i Zapisz schematu.
 
-Usługa Azure przedstawiono wiadomości, które pomyślnie przekazano schemat.
+1. Kiedy wszystko będzie gotowe przekazać zaktualizowany schemat **schematów** zaznacz opcję schematu, w którym chcesz zaktualizować, a następnie wybierz pozycję **aktualizacji**.
+
+1. Znajdź i wybierz zaktualizowany schemat, który chcesz przekazać. 
+   Po zakończeniu przekazywania pliku schematu zaktualizowany schemat pojawi się w **schematów** listy.
 
 ## <a name="delete-schemas"></a>Usuwanie schematów
 
-1. Wybierz **schematów** kafelka.
+1. W <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a>, Znajdź i Otwórz swoje konto integracji, jeśli nie już otwarty.
 
-2. Po **schematów** zostanie otwarty blok, wybierz schemat do usunięcia.
+1. W głównym menu platformy Azure, wybierz **wszystkich usług**. 
+   W polu wyszukiwania wprowadź "konto integracji". 
+   Wybierz **kont integracji**.
 
-3. Na **schematów** bloku wybierz **Usuń**.
+1. Wybierz konto integracji, które chcesz usunąć schematu.
 
-    ![Blok schematów](media/logic-apps-enterprise-integration-schemas/delete-12.png)
+1. Na koncie integracji **Przegląd** w obszarze **składniki**, wybierz opcję **schematów** kafelka.
 
-4. Aby upewnić się, że chcesz usunąć wybrany schemat, wybierz opcję **tak**.
+1. Po **schematów** zostanie otwarta strona, wybierz opcję schematu, a następnie wybierz **Usuń**.
 
-    !["Usuwanie schematu" komunikat z potwierdzeniem](media/logic-apps-enterprise-integration-schemas/delete-21.png)
-
-    W **schematów** bloku, listy schematu odświeża i nie zawiera już schemat, który został usunięty.
-
-    ![Twoje konto z wyróżnioną pozycją "schematy" integracji](media/logic-apps-enterprise-integration-schemas/delete-31.png)
+1. Aby upewnić się, że chcesz usunąć schematu, wybierz opcję **tak**.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md "więcej informacji na temat pakietu integracyjnego dla przedsiębiorstw").  
 
+* [Dowiedz się więcej na temat pakietu integracyjnego dla przedsiębiorstw](logic-apps-enterprise-integration-overview.md)
+* [Dowiedz się więcej na temat map](../logic-apps/logic-apps-enterprise-integration-maps.md)
+* [Dowiedz się więcej na temat przekształceń](../logic-apps/logic-apps-enterprise-integration-transform.md)

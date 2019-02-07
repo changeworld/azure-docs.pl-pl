@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 8ac8f2fe62898cdeb386fd3a8275fec1712c1728
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5e8d45a9bf9fdffc824994238add2b8541a878a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491556"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812723"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Synchronizacja programu Azure AD Connect: Omówienie aprowizacji deklaratywnej
 W tym temacie opisano model konfiguracji w programie Azure AD Connect. Model jest wywoływana, Aprowizacja Deklaratywna i umożliwia zapewnienie zmiany z łatwością konfiguracji. Wiele rzeczy, które opisano w tym temacie są zaawansowane i nie jest wymagana dla większości scenariuszy.
@@ -37,7 +37,7 @@ Ten potok ma kilka różnych modułów. Każdy z nich jest odpowiedzialny za jed
 * Źródło i obiekt źródłowy
 * [Zakres](#scope), znajdzie wszystkie reguły synchronizacji, które znajdują się w zakresie
 * [Dołącz do](#join), określa relację między obszar łączników i metaverse
-* [Przekształcanie](#transform), powoduje obliczenie jak atrybuty powinny zostać przekształcone i flow
+* Przekształcanie powoduje obliczenie jak atrybuty powinny zostać przekształcone i flow
 * [Pierwszeństwo](#precedence), rozwiązuje powodujące konflikt wkładów atrybutu
 * Cel, obiekt docelowy
 

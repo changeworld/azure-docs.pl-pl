@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: b73cdc7e55a60fbefc294a54f70daa9b2a11ced1
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452461"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817339"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Rozwiązywanie problemów z połączeniami pulpitu zdalnego na maszynie wirtualnej platformy Azure
 Połączenia protokołu RDP (Remote Desktop) z systemem Windows Azure maszyną wirtualną (VM) może zakończyć się niepowodzeniem z różnych powodów, pozostawiając do użytkownika nie może uzyskać dostępu do maszyny Wirtualnej. Ten problem może być za pomocą usług pulpitu zdalnego na maszynę Wirtualną, połączenie sieciowe lub klienta pulpitu zdalnego na komputerze hosta. Ten artykuł przeprowadzi Cię przez niektóre z najbardziej typowych metod, aby rozwiązać problemy z połączeniem RDP. 
@@ -50,8 +50,8 @@ Czytaj dalej, aby uzyskać bardziej szczegółowy opis kroków i wyjaśnienia. S
 ## <a name="ways-to-troubleshoot-rdp-issues"></a>Sposoby rozwiązywania problemów z protokołu RDP
 Można rozwiązywać problemy z maszyn wirtualnych utworzonych przy użyciu modelu wdrażania usługi Resource Manager przy użyciu jednej z następujących metod:
 
-* [Witryna Azure portal](#using-the-azure-portal) — jest to świetny, jeśli muszą błyskawicznie Zresetuj RDP konfiguracji lub poświadczenia użytkownika, a nie masz zainstalowane narzędzia platformy Azure.
-* [Program Azure PowerShell](#using-azure-powershell) — Jeśli masz doświadczenia w wierszu polecenia programu PowerShell błyskawicznie Zresetuj RDP konfiguracji lub poświadczenia użytkownika przy użyciu poleceń cmdlet programu Azure PowerShell.
+* Witryna Azure portal — dobrze, jeśli muszą błyskawicznie Zresetuj RDP konfiguracji lub poświadczenia użytkownika i nie ma zainstalowane narzędzia platformy Azure.
+* Azure PowerShell — Jeśli masz doświadczenia w wierszu polecenia programu PowerShell błyskawicznie Zresetuj RDP konfiguracji lub poświadczenia użytkownika przy użyciu poleceń cmdlet programu Azure PowerShell.
 
 Możesz również znaleźć instrukcje dotyczące rozwiązywania problemów z maszyn wirtualnych utworzonych za pomocą [klasycznego modelu wdrażania](#troubleshoot-vms-created-using-the-classic-deployment-model).
 
@@ -239,7 +239,7 @@ Możesz napotkać komunikat o błędzie podczas próby nawiązania połączenia 
 * [Błąd zabezpieczeń Windows: Twoje poświadczenia nie działają](troubleshoot-specific-rdp-errors.md#wincred).
 * [Ten komputer nie może połączyć się z komputerem zdalnym](troubleshoot-specific-rdp-errors.md#rdpconnect).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 Jeśli nadal nie można połączyć z maszyną wirtualną za pośrednictwem pulpitu zdalnego wystąpił żaden z tych błędów, przeczytaj szczegółowe [przewodnik rozwiązywania problemów dla pulpitu zdalnego](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Rozwiązywanie problemów podczas uzyskiwania dostępu do aplikacji działających na maszynie Wirtualnej, dla [Rozwiązywanie problemów z dostępem do aplikacji uruchamianej na Maszynie wirtualnej platformy Azure](../linux/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 * Jeśli występują problemy przy użyciu protokołu Secure Shell (SSH), aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure, zobacz [Rozwiązywanie problemów z połączeń protokołu SSH z maszyny Wirtualnej z systemem Linux na platformie Azure](../linux/troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

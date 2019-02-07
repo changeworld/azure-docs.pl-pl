@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f03fc201c1bce3187fdbd25c1de3567170478d30
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 38bb0840269d4b7bacbb0101590b389c8542a9b1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488452"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814235"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Usługa Azure Active Directory Connect sync: Konfigurowanie Preferowana lokalizacja danych dla zasobów usługi Office 365
 Celem tego tematu jest przeprowadzi Cię przez Konfigurowanie atrybutu Preferowana lokalizacja danych podczas synchronizacji usługi Azure Active Directory (Azure AD) Connect. Gdy ktoś będzie korzystać z możliwości wielu regionów geograficznych w usłudze Office 365 możesz użyć tego atrybutu do wyznaczenia lokalizacja geograficzna użytkownika danych usługi Office 365. (Warunki *region* i *geograficznie* są używane zamiennie.)
@@ -238,7 +238,7 @@ Ponownie włączyć harmonogram synchronizacji wbudowane:
 ## <a name="step-8-verify-the-result"></a>Krok 8: Sprawdź wynik
 Teraz nadszedł czas na sprawdzenie konfiguracji i włącz ją dla użytkowników.
 
-1. Dodaj geo do wybranego atrybutu na koncie użytkownika. Lista dostępnych obszarach geograficznych można znaleźć w [tej tabeli](#enable-synchronization-of-preferreddatalocation).  
+1. Dodaj geo do wybranego atrybutu na koncie użytkownika. Lista dostępnych obszarach geograficznych można znaleźć w poniższej tabeli.  
 ![Zrzut ekranu przedstawiający atrybutu usługi AD, które dodano do użytkownika](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. Poczekaj, aż atrybutów, które mają być synchronizowane z usługą Azure AD.
 3. Za pomocą programu Exchange Online PowerShell, sprawdź, czy region skrzynki pocztowej został poprawnie ustawiony.  

@@ -10,12 +10,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: kivenkat
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 13454e7dfb18e4d0e87b9b041b53dbef155153a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cd42a347de236de2e3374d7ac854779f4c222a00
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251643"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768150"
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Wprowadzenie do maszyn wirtualnych usługi Azure Stack
 
@@ -95,7 +95,7 @@ Typowe zadania można realizować przy użyciu różnych rozszerzeń:
 
 W poniższej tabeli przedstawiono zasoby są używane przez maszynę Wirtualną i muszą istnieć lub być tworzone podczas tworzenia maszyny Wirtualnej:
 
-|Zasób|Wymagany|Opis|
+|Zasób|Wymagane|Opis|
 |---------|---------|---------|
 |Grupa zasobów|Yes|Maszyna wirtualna musi być zawarta w grupie zasobów.|
 |Konto magazynu|Nie|Maszyna wirtualna nie wymaga konta magazynu do przechowywania wirtualnych dysków twardych, jeśli korzystają z dysków zarządzanych. <br>Maszyna wirtualna wymagane jest konto magazynu do przechowywania wirtualnych dysków twardych, jeśli przy użyciu dysków niezarządzanych.|

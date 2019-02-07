@@ -6,17 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/06/2018
+ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.lastreviewed: 12/06/2018
-keywords: ''
-ms.openlocfilehash: 5946f62821d05bd9036b9fc0e6b0fc8daa74c5dc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/06/2019
+ms.openlocfilehash: 0bb2f3ffb4b615451abc41d0d8945b4b3efdde53
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241206"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816360"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -53,8 +52,8 @@ Nie są wyświetlane wewnętrznej infrastruktury adresów VIP, ponieważ nie są
 |Kolejka magazynu|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Tabela magazynu|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |Storage Blob|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
-|Dostawcy zasobów bazy danych SQL|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
-|Dostawcy zasobów MySQL|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|Dostawca zasobów programu SQL|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|Dostawca zasobów programu MySQL|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
 |App Service|&#42;.appservice.*&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172 (MSDeploy)|
 |  |&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
 |  |api.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 (usługa azure Resource Manager)|
@@ -69,19 +68,24 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 > [!Note]  
 > Usługa Azure Stack nie obsługuje używania Express Route do uzyskania dostępu do usług platformy Azure, przedstawione w poniższej tabeli.
 
-|Przeznaczenie|Adres URL|Protokół|Porty|
-|---------|---------|---------|---------|
-|Tożsamość|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|
-|Syndykacja witryny Marketplace|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|
-|Akt & poprawki|https://&#42;.azureedge.net|HTTPS|443|
-|Rejestracja|https://management.azure.com|HTTPS|443|
-|Sposób użycia|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net|HTTPS|443|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|
-|NTP|(Dostarczone dla wdrożenia serwera IP NTP)|UDP|123|
-|DNS|(Dostarczone dla wdrożenia serwera IP DNS)|TCP<br>UDP|53|
-|LISTY CRL|Adres URL (w ramach punktów dystrybucji listy CRL na Twój certyfikat)|HTTP|80|
-|Tworzenie kopii zapasowych|(IP lub nazwa FQDN serwera plików zewnętrznego docelowego)|SMB|445|
-|     |     |     |     |
+|Przeznaczenie|Docelowy adres URL|Protokół|Porty|Sieć źródłowa|
+|---------|---------|---------|---------|---------|
+|Tożsamość|login.windows.net<br>login.microsoftonline.com<br>graph.windows.net<br>https://secure.aadcdn.microsoftonline-p.com<br>office.com|HTTP<br>HTTPS|80<br>443|Publiczne wirtualne adresy IP — wartość/27<br>Infrastruktura publicznych sieci|
+|Syndykacja witryny Marketplace|https://management.azure.com<br>https://&#42;.blob.core.windows.net<br>https://*.azureedge.net<br>https://&#42;.microsoftazurestack.com|HTTPS|443|Publiczne wirtualne adresy IP — wartość/27|
+|Akt & poprawki|https://&#42;.azureedge.net|HTTPS|443|Publiczne wirtualne adresy IP — wartość/27|
+|Rejestracja|https://management.azure.com|HTTPS|443|Publiczne wirtualne adresy IP — wartość/27|
+|Sposób użycia|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|Publiczne wirtualne adresy IP — wartość/27|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Publiczne wirtualne adresy IP — wartość/27<br>Infrastruktura publicznych sieci|
+|NTP|(Dostarczone dla wdrożenia serwera IP NTP)|UDP|123|Publiczne wirtualne adresy IP — wartość/27|
+|DNS|(Dostarczone dla wdrożenia serwera IP DNS)|TCP<br>UDP|53|Publiczne wirtualne adresy IP — wartość/27|
+|LISTY CRL|Adres URL (w ramach punktów dystrybucji listy CRL na Twój certyfikat)|HTTP|80|Publiczne wirtualne adresy IP — wartość/27|
+|Tworzenie kopii zapasowych|(IP lub nazwa FQDN serwera plików zewnętrznego docelowego)|SMB|445|Infrastruktura publicznych sieci|
+|LDAP|Podany integracji narzędzia Graph lasu usługi Active Directory|TCP<br>UDP|389|Publiczne wirtualne adresy IP — wartość/27|
+|LDAP SSL|Podany integracji narzędzia Graph lasu usługi Active Directory|TCP|636|Publiczne wirtualne adresy IP — wartość/27|
+|LDAP GC|Podany integracji narzędzia Graph lasu usługi Active Directory|TCP|3268|Publiczne wirtualne adresy IP — wartość/27|
+|LDAP GC SSL|Podany integracji narzędzia Graph lasu usługi Active Directory|TCP|3269|Publiczne wirtualne adresy IP — wartość/27|
+|AD FS|Usługi AD FS metadanych podany punkt końcowy elementu integracji usług AD FS|TCP|443|Publiczne wirtualne adresy IP — wartość/27|
+|     |     |     |     |     |
 
 > [!Note]  
 > Wychodzące adresy URL są równoważone za pomocą usługi Azure traffic manager, aby zapewnić najlepszą łączność możliwe na podstawie lokalizacji geograficznej. Adresy URL równoważenia obciążenia, zaktualizować i zmienić punktów końcowych zaplecza bez wywierania wpływu na klientów firmy Microsoft. Firma Microsoft udostępnia listę adresów IP dla ze zrównoważonym obciążeniem: adresy URL. Należy używać urządzenia, które obsługuje filtrowanie według adresu URL, a nie adresu IP.

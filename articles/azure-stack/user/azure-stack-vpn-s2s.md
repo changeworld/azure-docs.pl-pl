@@ -14,16 +14,19 @@ ms.topic: article
 ms.date: 01/19/2019
 ms.author: sethm
 ms.lastreviewed: 01/19/2019
-ms.openlocfilehash: 9a14c819acbc46d8a281f73fd4f3185caa8a1e02
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 96cb07ca4ede26e9bf0e5ceba28f1549061d0bf3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478155"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815680"
 ---
 # <a name="configure-ipsecike-policy-for-site-to-site-vpn-connections"></a>Konfigurowanie zasad protokołu IPsec/IKE dla połączeń VPN typu lokacja lokacja
 
 W tym artykule opisano kroki konfigurowania zasad protokołu IPsec/IKE dla sieci VPN typu lokacja lokacja (S2S) połączenia w usłudze Azure Stack.
+
+>[!NOTE]
+> Musi mieć uruchomioną kompilację usługi Azure Stack **1809** lub później, aby użyć tej funkcji.  Jeśli obecnie używasz kompilacji przed 1809, zaktualizuj system usługi Azure Stack do najnowszej kompilacji przed podjęciem próby korzystać z tej funkcji, lub wykonaj kroki opisane w tym artykule.
 
 ## <a name="ipsec-and-ike-policy-parameters-for-vpn-gateways"></a>Parametry zasad IPsec i IKE bramy sieci VPN
 

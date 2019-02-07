@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 57b27854b973ec369ae0e06b854964774f5d91cd
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 15d5b824525bc19d83abfbf2c08e068bd3837350
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487776"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821205"
 ---
 # <a name="azure-ad-connect-upgrade-from-dirsync"></a>Program Azure AD Connect: Uaktualnianie przy użyciu narzędzia DirSync
 Program Azure AD Connect zastępuje narzędzie DirSync. W tym temacie opisano sposoby uaktualniania z narzędzia DirSync. Czynności te nie zadziałają w przypadku aktualizowania z innej wersji programu Azure AD Connect lub z narzędzia Azure AD Sync.
@@ -34,7 +34,7 @@ Przed rozpoczęciem instalacji należy [pobrać program Azure AD Connect](https:
 > [!NOTE]
 > Aby po włączeniu serwera programu Azure AD Connect rozpocząć synchronizowanie zmian z usługą Azure AD, nie można powrócić do używania narzędzia DirSync lub Azure AD Sync. Obniżenie wersji programu z Azure AD Connect do starszych klientów, w tym DirSync i Azure AD Sync, nie jest obsługiwane i może prowadzić do problemów takich jak utrata danych w usłudze Azure AD.
 
-Jeśli nie przeprowadzasz uaktualnienia z narzędzia DirSync, zobacz [dokumentację pokrewną](#related-documentation), aby zapoznać się z innymi scenariuszami.
+Jeśli nie przeprowadzasz uaktualnienia z narzędzia DirSync, zobacz powiązanej dokumentacji dla innych scenariuszy.
 
 ## <a name="upgrade-from-dirsync"></a>Uaktualnianie przy użyciu narzędzia DirSync
 Istnieją różne opcje uaktualniania, w zależności od istniejącego wdrożenia narzędzia DirSync. Jeśli szacowany czas uaktualniania wynosi mniej niż trzy godziny, zalecane jest przeprowadzenie uaktualnienia w miejscu. Jeśli szacowany czas uaktualniania wynosi ponad trzy godziny, zalecane jest przeprowadzenie wdrożenia równoległego na innym serwerze. Szacuje się, że uaktualnienie trwa więcej niż trzy godziny, jeśli masz ponad 50 000 obiektów.
@@ -127,7 +127,7 @@ Jeśli chcesz przeprowadzić wdrożenie równoległe, wykonaj następujące krok
 
 * Kliknij przycisk **Eksportuj ustawienia**. Po zainstalowaniu programu Azure AD Connect na osobnym serwerze te ustawienia są migrowane z bieżącego narzędzia DirSync do nowej instalacji programu Azure AD Connect.
 
-Po pomyślnym wyeksportowaniu ustawień możesz zakończyć działanie kreatora instalacji programu Azure AD Connect na serwerze narzędzia DirSync. Przejdź do następnego kroku, aby [zainstalować program Azure AD Connect na osobnym serwerze](#installation-of-azure-ad-connect-on-separate-server)
+Po pomyślnym wyeksportowaniu ustawień możesz zakończyć działanie kreatora instalacji programu Azure AD Connect na serwerze narzędzia DirSync. Przejdź do następnego kroku, aby zainstalować program Azure AD Connect na osobnym serwerze
 
 **Wdrożenie równoległe, gdy liczba obiektów jest mniejsza niż 50 000**
 
@@ -141,7 +141,7 @@ Jeśli masz mniej niż 50 000 obiektów, ale mimo to chcesz przeprowadzić wdro
 
 ![Analiza zakończona](./media/how-to-dirsync-upgrade-get-started/forceexport.png)
 
-Po pomyślnym wyeksportowaniu ustawień możesz zakończyć działanie kreatora instalacji programu Azure AD Connect na serwerze narzędzia DirSync. Przejdź do następnego kroku, aby [zainstalować program Azure AD Connect na osobnym serwerze](#installation-of-azure-ad-connect-on-separate-server).
+Po pomyślnym wyeksportowaniu ustawień możesz zakończyć działanie kreatora instalacji programu Azure AD Connect na serwerze narzędzia DirSync. Przejdź do następnego kroku, aby zainstalować program Azure AD Connect na osobnym serwerze.
 
 ### <a name="install-azure-ad-connect-on-separate-server"></a>Instalowanie programu Azure AD Connect na osobnym serwerze
 W przypadku instalowania programu Azure AD Connect na nowym serwerze domyślnym wariantem jest czysta instalacja programu Azure AD Connect. Ponieważ jednak planujesz użyć konfiguracji narzędzia DirSync, należy wykonać kilka dodatkowych kroków:

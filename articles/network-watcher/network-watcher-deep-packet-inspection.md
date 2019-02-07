@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 7af14143e8ce4924c17a41c6bb1ff33954f4b583
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568730"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818366"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Inspekcja pakietów przy użyciu usługi Azure Network Watcher
 
@@ -45,7 +45,7 @@ Po nawiązaniu połączenia protokołu TCP, pierwsze trzy pakiety wysyłane prze
 
 ### <a name="step-1"></a>Krok 1
 
-Uruchomienie programu WireShark
+Launch WireShark
 
 ### <a name="step-2"></a>Krok 2
 
@@ -61,7 +61,7 @@ Aby łatwiej przeglądać pierwsze dwa pakiety w trójstopniowego TCP, firma Mic
 
 Aby zastosować filtr w WireShark, rozwiń Segment "Transmission Control Protocol" pakiet [SYN] w swojej przechwytywania i zbadać flag ustawionych w nagłówku protokołu TCP.
 
-Ponieważ czekamy, aby odfiltrować wszystkie [SYN] i [SYN potwierdzenia] pakietów w obszarze flagi cofirm bitu Syn jest ustawiona na 1, a następnie kliknij prawym przyciskiem bitu Syn -> Zastosuj jako filtr -> wybrany.
+Ponieważ czekamy, aby odfiltrować wszystkie [SYN] i [SYN potwierdzenia] pakietów w obszarze flagi upewnij się, Syn bit jest ustawiona na 1, a następnie kliknij prawym przyciskiem bitu Syn -> Zastosuj jako filtr -> wybrany.
 
 ![Rysunek 7][7]
 

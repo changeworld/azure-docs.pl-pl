@@ -9,16 +9,16 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
-ms.openlocfilehash: d5425cf7c2ea39770bbc3e9368f34d57d7279842
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: e3d2b377df6a3ed8312ca8b2563fe466236c2741
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534880"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818298"
 ---
 # <a name="monitor-b2b-messages-with-azure-log-analytics-in-azure-logic-apps"></a>Monitorowanie komunikatów B2B w usłudze Azure Log Analytics w usłudze Azure Logic Apps
 
-Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integracji tych partnerów mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy ta komunikacja działa w oczekiwany sposób, można monitorować AS2, X12, i EDIFACT komunikatów i konfigurowanie logowania dla konta integracji z diagnostyki [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Ta usługa monitoruje środowiska w chmurze i lokalnych zachowania ich dostępności i wydajności i zbiera szczegóły środowiska uruchomieniowego i zdarzenia dla bardziej zaawansowane debugowanie. Możesz również [użyć tych danych z innymi usługami](#extend-diagnostic-data) takich jak Azure Storage i Azure Event Hubs.
+Po skonfigurowaniu komunikacji B2B między partnerami handlowymi na koncie integracji tych partnerów mogą wymieniać komunikaty ze sobą. Aby sprawdzić, czy ta komunikacja działa w oczekiwany sposób, można monitorować AS2, X12, i EDIFACT komunikatów i konfigurowanie logowania dla konta integracji z diagnostyki [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md). Ta usługa monitoruje środowiska w chmurze i lokalnych zachowania ich dostępności i wydajności i zbiera szczegóły środowiska uruchomieniowego i zdarzenia dla bardziej zaawansowane debugowanie. Można również użyć tych danych z innymi usługami, takimi jak usługi Azure Storage i Azure Event Hubs.
 
 > [!NOTE]
 > Na tej stronie może nadal mieć odwołania do programu Microsoft Operations Management Suite (OMS), czyli [wycofywania w styczniu 2019](../azure-monitor/platform/oms-portal-transition.md), lecz zastępuje te kroki z usługą Azure Log Analytics, jeśli jest to możliwe. 
@@ -47,9 +47,9 @@ Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj ustawienie diagnostyczne**
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure, która jest skojarzona z kontem integracji | 
-   | **Grupa zasobów** | <*Azure-resource nazwa_grupy*> | Grupy zasobów platformy Azure dla konta integracji | 
+   | **Grupa zasobów** | <*Azure-resource-group-name*> | Grupy zasobów platformy Azure dla konta integracji | 
    | **Typ zasobu** | **Integracja kont** | Typ dla zasobów platformy Azure, której chcesz włączyć rejestrowanie | 
-   | **Zasób** | <*Nazwa konta integracji*> | Nazwa dla swoich zasobów platformy Azure, w której chcesz włączyć rejestrowanie | 
+   | **Zasób** | <*integration-account-name*> | Nazwa dla swoich zasobów platformy Azure, w której chcesz włączyć rejestrowanie | 
    ||||  
 
    Na przykład:
@@ -89,9 +89,9 @@ Gdy wszystko będzie gotowe, wybierz pozycję **Dodaj ustawienie diagnostyczne**
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
    | **Subskrypcja** | <*Azure-subscription-name*> | Subskrypcja platformy Azure, która jest skojarzona z kontem integracji | 
-   | **Grupa zasobów** | <*Azure-resource nazwa_grupy*> | Grupy zasobów platformy Azure dla konta integracji | 
+   | **Grupa zasobów** | <*Azure-resource-group-name*> | Grupy zasobów platformy Azure dla konta integracji | 
    | **Typ zasobu** | **Integracja kont** | Typ dla zasobów platformy Azure, której chcesz włączyć rejestrowanie | 
-   | **Zasób** | <*Nazwa konta integracji*> | Nazwa dla swoich zasobów platformy Azure, w której chcesz włączyć rejestrowanie | 
+   | **Zasób** | <*integration-account-name*> | Nazwa dla swoich zasobów platformy Azure, w której chcesz włączyć rejestrowanie | 
    ||||  
 
    Na przykład:

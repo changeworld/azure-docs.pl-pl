@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: f36ee3ce6a8d678cdd846474576fc049df0b4f88
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 14b3d62235cfcc8bbc8a929757a16cf99b860753
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472307"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815765"
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>Migrowanie kodu SQL w usłudze SQL Data Warehouse
 W tym artykule opisano zmiany kodu, które mają być upewnij się, migrując kodu z innej bazy danych SQL Data Warehouse. Niektóre funkcje SQL Data Warehouse może znacznie poprawić wydajność, ponieważ są one przeznaczone do pracy w sposób rozproszonych. Jednak aby zachować wydajność i skalę, niektóre funkcje są również dostępne.
@@ -32,7 +32,7 @@ Poniższa lista zawiera podsumowanie najbardziej typowych funkcji, które nie ob
 * klauzuli OUTPUT
 * wbudowane funkcje zdefiniowane przez użytkownika
 * wieloinstrukcyjnych funkcji
-* [wspólnych wyrażeń tabel](#Common-table-expressions)
+* wspólnych wyrażeń tabel
 * [cyklicznych wspólnych wyrażeń tabel (CTE)] (#Recursive-common-table-expressions-(CTE)
 * Funkcje środowiska CLR i procedury
 * $partition — funkcja

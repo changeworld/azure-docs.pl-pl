@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 548bc9afb37f8c4a1c6c208a8741d1e3da0a784c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469400"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814116"
 ---
 # <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacji transakcyjnej przy użyciu autonomicznej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
-Replikacja transakcyjna to funkcja usługi Azure SQL Database, wystąpienia zarządzanego i programu SQL Server, która pozwala na replikowanie danych z tabeli w usłudze Azure SQL Database lub SQL Server do tabel umieszczone na zdalne bazy danych. Ta funkcja służy do synchronizowania wielu tabel w różnych bazach danych.
+Replikacja transakcyjna to funkcja usługi Azure SQL Database i programu SQL Server, która pozwala na replikowanie danych z tabeli w usłudze Azure SQL Database lub SQL Server do tabel umieszczone na zdalne bazy danych. Ta funkcja służy do synchronizowania wielu tabel w różnych bazach danych.
 
 ## <a name="when-to-use-transactional-replication"></a>Kiedy należy używać replikacji transakcyjnej
 
@@ -38,15 +38,15 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
 ![Replikacja za pomocą bazy danych SQL](media/replication-to-sql-database/replication-to-sql-database.png)
 
 
-**Wydawcy** to wystąpienie lub serwer, który publikuje zmiany wprowadzone na niektórych tabel (artykuły), wysyłając aktualizacje z dystrybutorem. Publikowanie do usługi Azure SQL Database z lokalnego programu SQL Server jest obsługiwana w następujących wersjach programu SQL Server:
+**Wydawcy** to wystąpienie lub serwer, który publikuje zmiany wprowadzone na niektórych tabel (artykuły), wysyłając aktualizacje z dystrybutorem. Publikowanie do dowolnej usługi Azure SQL bazy danych z lokalnego programu SQL Server jest obsługiwany przez następujące wersje programu SQL Server:
 
-    - 2019 r programu SQL Server (wersja zapoznawcza)
-    - SQL Server 2016 do programu SQL 2017
-    - SQL Server 2014 SP1 CU3 lub większa (12.00.4427)
-    - SQL Server 2014 RTM CU10 (12.00.2556)
-    - SQL Server 2012 SP3 lub większa (11.0.6020)
-    - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-    - W przypadku innych wersji programu SQL Server, które nie obsługują publikowania do obiektów na platformie Azure, jest możliwe wykorzystanie [ponowne publikowanie danych](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metodę, aby przenieść dane do nowszych wersji programu SQL Server. 
+   - 2019 r programu SQL Server (wersja zapoznawcza)
+   - SQL Server 2016 do programu SQL 2017
+   - SQL Server 2014 SP1 CU3 lub większa (12.00.4427)
+   - SQL Server 2014 RTM CU10 (12.00.2556)
+   - SQL Server 2012 SP3 lub większa (11.0.6020)
+   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
+   - W przypadku innych wersji programu SQL Server, które nie obsługują publikowania do obiektów na platformie Azure, jest możliwe wykorzystanie [ponowne publikowanie danych](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metodę, aby przenieść dane do nowszych wersji programu SQL Server. 
 
 **Dystrybutora** to wystąpienie lub serwer, który zbiera zmian w artykułach z wydawcą i przesyła je do subskrybentów. Dystrybutor może być wystąpienia zarządzanego Azure SQL Database lub SQL Server (dowolna wersja, jak długie go równą lub większą niż wersja, wydawca). 
 
