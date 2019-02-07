@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2018
-ms.openlocfilehash: 94d878f8a17b0c0d62afbabe8125068bbf3a2e85
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: fce70916cef96cee6496478503305e2bb1e73c09
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075808"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55656346"
 ---
 # <a name="test-terraform-modules-in-azure-by-using-terratest"></a>Testowanie modułów programu Terraform na platformie Azure za pomocą struktury Terratest
 
@@ -298,7 +298,7 @@ Zacznijmy od przykładów. Nowy przykładowy folder o nazwie `hello-world/` zost
 </head>
 <body>
     <h1>Hi, Terraform Module</h1>
-    <p>This is a sample webpage to demonstrate Terratest.</p>
+    <p>This is a sample web page to demonstrate Terratest.</p>
 </body>
 </html>
 ```

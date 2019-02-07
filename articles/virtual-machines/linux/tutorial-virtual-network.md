@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 8548fe53288b2f9c486c9ccdc42afa08f40b4ae1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e90880aeaae17c80d6714f917f2ea849c953711f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181602"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755412"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Samouczek: tworzenie sieci wirtualnych platformy Azure i zarządzanie nimi za pomocą interfejsu wiersza polecenia platformy Azure na maszynach wirtualnych z systemem Linux
 
@@ -60,7 +60,7 @@ Po ukończeniu samouczka zostaną utworzone następujące zasoby sieci wirtualne
 
 W tym samouczku zostanie utworzona jedna sieć wirtualna z dwoma podsieciami. Zostanie utworzona podsieć frontonu do hostowania aplikacji internetowej oraz podsieć zaplecza do hostowania serwera bazy danych.
 
-Przed utworzeniem sieci wirtualnej należy utworzyć grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myRGNetwork* w lokalizacji eastus.
+Przed utworzeniem sieci wirtualnej należy utworzyć grupę zasobów za pomocą polecenia [az group create](/cli/azure/group). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myRGNetwork* w lokalizacji eastus.
 
 ```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
@@ -68,7 +68,7 @@ az group create --name myRGNetwork --location eastus
 
 ### <a name="create-virtual-network"></a>Tworzenie sieci wirtualnej
 
-Użyj polecenia [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create), aby utworzyć sieć wirtualną. W tym przykładzie sieć nazywa się *mvVNet*, a jej prefiks adresu to *10.0.0.0/16*. Tworzona jest również podsieć o nazwie *myFrontendSubnet* z prefiksem *10.0.1.0/24*. W dalszej części tego samouczka maszyna wirtualna frontonu zostanie połączona z tą podsiecią. 
+Użyj polecenia [az network vnet create](/cli/azure/network/vnet), aby utworzyć sieć wirtualną. W tym przykładzie sieć nazywa się *mvVNet*, a jej prefiks adresu to *10.0.0.0/16*. Tworzona jest również podsieć o nazwie *myFrontendSubnet* z prefiksem *10.0.1.0/24*. W dalszej części tego samouczka maszyna wirtualna frontonu zostanie połączona z tą podsiecią. 
 
 ```azurecli-interactive 
 az network vnet create \
@@ -81,7 +81,7 @@ az network vnet create \
 
 ### <a name="create-subnet"></a>Tworzenie podsieci
 
-Nowa podsieć jest dodawana do maszyny wirtualnej przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). W tym przykładzie podsieć nazywa się *myBackendSubnet*, a jej prefiks adresu to *10.0.2.0/24*. Ta podsieć jest używana ze wszystkimi usługami zaplecza.
+Nowa podsieć jest dodawana do maszyny wirtualnej przy użyciu polecenia [az network vnet subnet create](/cli/azure/network/vnet/subnet). W tym przykładzie podsieć nazywa się *myBackendSubnet*, a jej prefiks adresu to *10.0.2.0/24*. Ta podsieć jest używana ze wszystkimi usługami zaplecza.
 
 ```azurecli-interactive 
 az network vnet subnet create \
@@ -103,11 +103,11 @@ Można też ustawić statyczną metodę alokacji, co gwarantuje, że adres IP po
 az network public-ip create --resource-group myRGNetwork --name myPublicIPAddress
 ```
 
-Podczas tworzenia maszyny wirtualnej za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create) domyślnie stosowana jest dynamiczna metoda alokacji publicznego adresu IP. Aby przypisać statyczny publiczny adres IP do maszyny wirtualnej, należy podczas tworzenia jej za pomocą polecenia [az vm create](/cli/azure/vm#az_vm_create) dołączyć argument `--public-ip-address-allocation static`. Ta operacja nie jest pokazana w samouczku, ale w kolejnej sekcji dynamicznie przypisany adres IP zostanie zmieniony na adres przypisany statycznie. 
+Podczas tworzenia maszyny wirtualnej za pomocą polecenia [az vm create](/cli/azure/vm) domyślnie stosowana jest dynamiczna metoda alokacji publicznego adresu IP. Aby przypisać statyczny publiczny adres IP do maszyny wirtualnej, należy podczas tworzenia jej za pomocą polecenia [az vm create](/cli/azure/vm) dołączyć argument `--public-ip-address-allocation static`. Ta operacja nie jest pokazana w samouczku, ale w kolejnej sekcji dynamicznie przypisany adres IP zostanie zmieniony na adres przypisany statycznie. 
 
 ### <a name="change-allocation-method"></a>Zmiana metody alokacji
 
-Metodę alokacji adresu IP można zmienić za pomocą polecenia [az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update). W tym przykładzie metoda alokacji adresu IP maszyny wirtualnej frontonu zostanie zmieniona na statyczną.
+Metodę alokacji adresu IP można zmienić za pomocą polecenia [az network public-ip update](/cli/azure/network/public-ip). W tym przykładzie metoda alokacji adresu IP maszyny wirtualnej frontonu zostanie zmieniona na statyczną.
 
 Najpierw cofnij przydział maszyny wirtualnej.
 
@@ -115,7 +115,7 @@ Najpierw cofnij przydział maszyny wirtualnej.
 az vm deallocate --resource-group myRGNetwork --name myFrontendVM
 ```
 
-Użyj polecenia [az network public-ip update](/cli/azure/network/public-ip#az_network_public_ip_update), aby zaktualizować metodę alokacji. W tym przypadku parametr `--allocation-method` zostanie zmieniony na *static*.
+Użyj polecenia [az network public-ip update](/cli/azure/network/public-ip), aby zaktualizować metodę alokacji. W tym przypadku parametr `--allocation-method` zostanie zmieniony na *static*.
 
 ```azurecli-interactive 
 az network public-ip update --resource-group myRGNetwork --name myPublicIPAddress --allocation-method static
@@ -133,7 +133,7 @@ Maszyna wirtualna często nie musi być dostępna przez Internet. Aby utworzyć 
 
 ## <a name="create-a-front-end-vm"></a>Tworzenie maszyny wirtualnej frontonu
 
-Użyj polecenia [az vm create](/cli/azure/vm#az_vm_create), aby utworzyć maszynę wirtualną o nazwie *myFrontendVM*, korzystającą z adresu *myPublicIPAddress*.
+Użyj polecenia [az vm create](/cli/azure/vm), aby utworzyć maszynę wirtualną o nazwie *myFrontendVM*, korzystającą z adresu *myPublicIPAddress*.
 
 ```azurecli-interactive 
 az vm create \
@@ -165,7 +165,7 @@ Domyślne reguły dla sieciowych grup zabezpieczeń to:
 
 ### <a name="create-network-security-groups"></a>Tworzenie sieciowych grup zabezpieczeń
 
-Sieciową grupę zabezpieczeń można utworzyć podczas tworzenia maszyny wirtualnej przy użyciu polecenia [az vm create](/cli/azure/vm#az_vm_create). W takim przypadku sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym tej maszyny wirtualnej, z automatycznie utworzoną regułą zezwalającej na ruch z dowolnego źródła przez port *22*. Wcześniej w tym samouczku sieciowa grupa zabezpieczeń frontonu została automatycznie utworzona wraz z maszyną wirtualną frontonu. Została również automatycznie utworzona reguła sieciowej grupy zabezpieczeń dla portu 22. 
+Sieciową grupę zabezpieczeń można utworzyć podczas tworzenia maszyny wirtualnej przy użyciu polecenia [az vm create](/cli/azure/vm). W takim przypadku sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym tej maszyny wirtualnej, z automatycznie utworzoną regułą zezwalającej na ruch z dowolnego źródła przez port *22*. Wcześniej w tym samouczku sieciowa grupa zabezpieczeń frontonu została automatycznie utworzona wraz z maszyną wirtualną frontonu. Została również automatycznie utworzona reguła sieciowej grupy zabezpieczeń dla portu 22. 
 
 W niektórych przypadkach pomocne może być wcześniejsze utworzenie sieciowej grupy zabezpieczeń, na przykład wtedy, gdy nie powinny być tworzone domyślne reguły protokołu SSH, lub jeśli sieciowa grupa zabezpieczeń ma być połączona z podsiecią. 
 
@@ -191,7 +191,7 @@ az network vnet subnet update \
 
 Podczas tworzenia maszyny wirtualnej frontonu utworzona została reguła sieciowej grupy zabezpieczeń, zezwalająca na ruch przychodzący na porcie 22. Ta reguła umożliwia nawiązywanie połączeń SSH z maszyną wirtualną. W tym przykładzie ruch powinien być również dozwolony na porcie *80*. Ta konfiguracja umożliwia uzyskanie dostępu do aplikacji internetowej na maszynie wirtualnej.
 
-Użyj polecenia [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create), aby utworzyć regułę dla portu *80*.
+Użyj polecenia [az network nsg rule create](/cli/azure/network/nsg/rule), aby utworzyć regułę dla portu *80*.
 
 ```azurecli-interactive 
 az network nsg rule create \
@@ -218,7 +218,7 @@ az network nsg rule list --resource-group myRGNetwork --nsg-name myFrontendNSG -
 
 Reguły sieciowych grup zabezpieczeń można także stosować pomiędzy maszynami wirtualnymi. W tym przykładzie maszyna wirtualna frontonu musi połączyć się z maszyną wirtualną zaplecza na porcie *22* i *3306*. Ta konfiguracja umożliwia nawiązywanie połączeń SSH wychodzących z maszyny wirtualnej frontonu, a także umożliwia aplikacji na maszynie wirtualnej frontonu komunikację z bazą danych MySQL zaplecza. Cały pozostały ruch pomiędzy maszynami wirtualnymi frontonu i zaplecza powinien zostać zablokowany.
 
-Użyj polecenia [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create), aby utworzyć regułę dla portu 22. Zwróć uwagę, że argument `--source-address-prefix` ma wartość *10.0.1.0/24*. Ta konfiguracja gwarantuje, że ruch z podsieci frontonu jest dozwolony wyłącznie za pośrednictwem sieciowej grupy zabezpieczeń.
+Użyj polecenia [az network nsg rule create](/cli/azure/network/nsg/rule), aby utworzyć regułę dla portu 22. Zwróć uwagę, że argument `--source-address-prefix` ma wartość *10.0.1.0/24*. Ta konfiguracja gwarantuje, że ruch z podsieci frontonu jest dozwolony wyłącznie za pośrednictwem sieciowej grupy zabezpieczeń.
 
 ```azurecli-interactive 
 az network nsg rule create \

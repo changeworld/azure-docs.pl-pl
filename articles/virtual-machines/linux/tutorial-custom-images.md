@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9c6729abefc62aeae232fff5ea48619377630635
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1c2be140e4d7156a1e23e1064436dda959c9cd14
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197623"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750005"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Samouczek: Tworzenie niestandardowego obrazu maszyny wirtualnej na platformie Azure za pomocą interfejsu wiersza polecenia platformy Azure
 
@@ -79,7 +79,7 @@ Aby można było utworzyć obraz, należy cofnąć przydział maszyny wirtualnej
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-Na koniec ustaw dla maszyny wirtualnej stan uogólniony za pomocą polecenia [az vm generalize](/cli//azure/vm#generalize), aby poinformować platformę Azure, że maszyna została uogólniona. Obraz można utworzyć tylko za pomocą uogólnionej maszyny wirtualnej.
+Na koniec ustaw dla maszyny wirtualnej stan uogólniony za pomocą polecenia [az vm generalize](/cli//azure/vm), aby poinformować platformę Azure, że maszyna została uogólniona. Obraz można utworzyć tylko za pomocą uogólnionej maszyny wirtualnej.
    
 ```azurecli-interactive 
 az vm generalize --resource-group myResourceGroup --name myVM
@@ -87,7 +87,7 @@ az vm generalize --resource-group myResourceGroup --name myVM
 
 ### <a name="create-the-image"></a>Tworzenie obrazu
 
-Teraz można utworzyć obraz maszyny wirtualnej za pomocą polecenia [az image create](/cli//azure/image#create). W poniższym przykładzie utworzono obraz o nazwie *myImage* za pomocą maszyny wirtualnej o nazwie *myVM*.
+Teraz można utworzyć obraz maszyny wirtualnej za pomocą polecenia [az image create](/cli//azure/image). W poniższym przykładzie utworzono obraz o nazwie *myImage* za pomocą maszyny wirtualnej o nazwie *myVM*.
    
 ```azurecli-interactive 
 az image create \
@@ -98,7 +98,7 @@ az image create \
  
 ## <a name="create-vms-from-the-image"></a>Tworzenie maszyn wirtualnych z obrazu
 
-Obraz już istnieje, można więc za jego pomocą utworzyć jedną lub więcej nowych maszyn wirtualnych przy użyciu polecenia [az vm create](/cli/azure/vm#az_vm_create). W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVMfromImage* za pomocą obrazu o nazwie *myImage*.
+Obraz już istnieje, można więc za jego pomocą utworzyć jedną lub więcej nowych maszyn wirtualnych przy użyciu polecenia [az vm create](/cli/azure/vm). W poniższym przykładzie utworzono maszynę wirtualną o nazwie *myVMfromImage* za pomocą obrazu o nazwie *myImage*.
 
 ```azurecli-interactive 
 az vm create \

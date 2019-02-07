@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/26/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 82d1a83dfd96dd6d4c2b37567c745998a6f0cbdb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ee8dcf1488cfb407793bdb35cdbbee18b2ef15ab
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473514"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750974"
 ---
 # <a name="quickstart-create-and-manage-azure-file-shares-using-azure-cli"></a>Szybki start: tworzenie udziałów plików platformy Azure i zarządzanie nimi przy użyciu interfejsu wiersza polecenia platformy Azure
 W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z [udziałami plików platformy Azure](storage-files-introduction.md) przy użyciu interfejsu wiersza polecenia platformy Azure. Udziały plików platformy Azure są podobne do innych udziałów plików, ale są przechowywane w chmurze i obsługiwane przez platformę Azure. Udziały plików platformy Azure obsługują standardowy w branży protokół SMB i umożliwiają udostępnianie plików między wieloma maszynami, aplikacjami i wystąpieniami. 
@@ -34,7 +34,7 @@ az login
 ```
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
-Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Jeśli nie masz jeszcze grupy zasobów platformy Azure, możesz utworzyć nową grupę za pomocą polecenia [az group create](/cli/azure/group#create). 
+Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Jeśli nie masz jeszcze grupy zasobów platformy Azure, możesz utworzyć nową grupę za pomocą polecenia [az group create](/cli/azure/group). 
 
 Poniższy przykład umożliwia utworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *Wschodnie stany USA*:
 
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 Konto magazynu to udostępniona pula magazynu, w której można wdrażać udziały plików platformy Azure lub inne zasoby magazynu, takie jak obiekty blob i kolejki. Konto magazynu może zawierać nieograniczoną liczbę udziałów plików. W udziale można przechowywać nieograniczoną liczbę plików, aż do osiągnięcia limitów pojemności konta magazynu.
 
-Następujący przykład umożliwia utworzenie konta magazynu o nazwie *mystorageaccount\<losowa liczba\>* przy użyciu polecenia [az storage account create](/cli/azure/storage/account#create), a następnie umieszczenie nazwy tego konta magazynu w zmiennej `$STORAGEACCT`. Nazwy kont magazynu muszą być unikatowe. Zmienna `$RANDOM` powoduje dołączenie liczby do nazwy konta magazynu, co zapewnia jego unikatowość. 
+Następujący przykład umożliwia utworzenie konta magazynu o nazwie *mystorageaccount\<losowa liczba\>* przy użyciu polecenia [az storage account create](/cli/azure/storage/account), a następnie umieszczenie nazwy tego konta magazynu w zmiennej `$STORAGEACCT`. Nazwy kont magazynu muszą być unikatowe. Zmienna `$RANDOM` powoduje dołączenie liczby do nazwy konta magazynu, co zapewnia jego unikatowość. 
 
 ```azurecli-interactive 
 STORAGEACCT=$(az storage account create \
@@ -57,7 +57,7 @@ STORAGEACCT=$(az storage account create \
 ```
 
 ### <a name="get-the-storage-account-key"></a>Pobieranie klucza konta magazynu
-Klucze konta magazynu kontrolują dostęp do zasobów na koncie magazynu. Klucze są tworzone automatycznie podczas tworzenia konta magazynu. Klucze konta magazynu możesz pobrać przy użyciu polecenia [az storage account keys list](/cli/azure/storage/account/keys#list): 
+Klucze konta magazynu kontrolują dostęp do zasobów na koncie magazynu. Klucze są tworzone automatycznie podczas tworzenia konta magazynu. Klucze konta magazynu możesz pobrać przy użyciu polecenia [az storage account keys list](/cli/azure/storage/account/keys): 
 
 ```azurecli-interactive 
 STORAGEKEY=$(az storage account keys list \
@@ -67,7 +67,7 @@ STORAGEKEY=$(az storage account keys list \
 ```
 
 ## <a name="create-an-azure-file-share"></a>Tworzenie udziału plików platformy Azure
-Teraz możesz utworzyć swój pierwszy udział plików platformy Azure. Udziały plików tworzy się przy użyciu polecenia [az storage share create](/cli/azure/storage/share#create). W tym przykładzie jest tworzony udział plików platformy Azure o nazwie *myshare*: 
+Teraz możesz utworzyć swój pierwszy udział plików platformy Azure. Udziały plików tworzy się przy użyciu polecenia [az storage share create](/cli/azure/storage/share). W tym przykładzie jest tworzony udział plików platformy Azure o nazwie *myshare*: 
 
 ```azurecli-interactive
 az storage share create \
@@ -98,7 +98,7 @@ Zdajemy sobie sprawę, że większość użytkowników usługi Azure Files będz
 W poniższych przykładach przedstawiono, jak używać interfejsu wiersza polecenia platformy Azure do obsługi udziałów plików platformy Azure przy użyciu protokołu REST usługi Files. 
 
 ### <a name="create-a-directory"></a>Tworzenie katalogu
-Aby utworzyć nowy katalog o nazwie *myDirectory* w katalogu głównym udziału plików platformy Azure, użyj polecenia [`az storage directory create`](/cli/azure/storage/directory#az_storage_directory_create):
+Aby utworzyć nowy katalog o nazwie *myDirectory* w katalogu głównym udziału plików platformy Azure, użyj polecenia [`az storage directory create`](/cli/azure/storage/directory):
 
 ```azurecli-interactive
 az storage directory create \
@@ -109,7 +109,7 @@ az storage directory create \
 ```
 
 ### <a name="upload-a-file"></a>Przekazywanie pliku
-Aby zademonstrować sposób przekazywania pliku przy użyciu polecenia [`az storage file upload`](/cli/azure/storage/file#az_storage_file_upload), najpierw utwórz plik do przekazania na dysku zapasowym usługi Cloud Shell. Poniższy przykład umożliwia utworzenie, a następnie przekazanie pliku:
+Aby zademonstrować sposób przekazywania pliku przy użyciu polecenia [`az storage file upload`](/cli/azure/storage/file), najpierw utwórz plik do przekazania na dysku zapasowym usługi Cloud Shell. Poniższy przykład umożliwia utworzenie, a następnie przekazanie pliku:
 
 ```azurecli-interactive
 date > ~/clouddrive/SampleUpload.txt
@@ -124,7 +124,7 @@ az storage file upload \
 
 Jeśli korzystasz z interfejsu wiersza polecenia platformy Azure lokalnie, zastąp ciąg `~/clouddrive` ścieżką, która istnieje na Twojej maszynie.
 
-Po przekazaniu pliku możesz upewnić się, że plik został przekazany do udziału plików platformy Azure, korzystając z polecenia [`az storage file list`](/cli/azure/storage/file#az_storage_file_list):
+Po przekazaniu pliku możesz upewnić się, że plik został przekazany do udziału plików platformy Azure, korzystając z polecenia [`az storage file list`](/cli/azure/storage/file):
 
 ```azurecli-interactive
 az storage file list \
@@ -136,7 +136,7 @@ az storage file list \
 ```
 
 ### <a name="download-a-file"></a>Pobieranie pliku
-Za pomocą polecenia [`az storage file download`](/cli/azure/storage/file#az_storage_file_download) możesz pobrać kopię pliku, który został przekazany na dysk zapasowy usługi Cloud Shell:
+Za pomocą polecenia [`az storage file download`](/cli/azure/storage/file) możesz pobrać kopię pliku, który został przekazany na dysk zapasowy usługi Cloud Shell:
 
 ```azurecli-interactive
 # Delete an existing file by the same name as SampleDownload.txt, if it exists, because you've run this example before
@@ -191,7 +191,7 @@ Inną przydatną czynnością, którą można wykonywać na udziałach plików p
 
 - Migawki [Menedżera woluminów logicznych (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) dla systemu Linux
 - Migawki [systemu plików firmy Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) dla systemu macOS
-- [Usługa kopiowania woluminów w tle (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) dla systemów plików systemu Windows, takich jak NTFS i ReFS Migawkę udziału możesz utworzyć przy użyciu polecenia [`az storage share snapshot`](/cli/azure/storage/share#az_storage_share_snapshot):
+- [Usługa kopiowania woluminów w tle (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) dla systemów plików systemu Windows, takich jak NTFS i ReFS Migawkę udziału możesz utworzyć przy użyciu polecenia [`az storage share snapshot`](/cli/azure/storage/share):
 
 ```azurecli-interactive
 SNAPSHOT=$(az storage share snapshot \
@@ -250,7 +250,7 @@ az storage file copy start \
 ```
 
 ### <a name="delete-a-share-snapshot"></a>Usuwanie migawki udziału
-Migawkę udziału możesz usunąć przy użyciu polecenia [`az storage share delete`](/cli/azure/storage/share#az_storage_share_delete). Użyj zmiennej, która zawiera odwołanie `$SNAPSHOT` do parametru `--snapshot`:
+Migawkę udziału możesz usunąć przy użyciu polecenia [`az storage share delete`](/cli/azure/storage/share). Użyj zmiennej, która zawiera odwołanie `$SNAPSHOT` do parametru `--snapshot`:
 
 ```azurecli-interactive
 az storage share delete \
@@ -261,7 +261,7 @@ az storage share delete \
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Gdy skończysz, możesz usunąć grupę zasobów i wszystkie powiązane zasoby za pomocą polecenia [`az group delete`](/cli/azure/group#delete): 
+Gdy skończysz, możesz usunąć grupę zasobów i wszystkie powiązane zasoby za pomocą polecenia [`az group delete`](/cli/azure/group): 
 
 ```azurecli-interactive 
 az group delete --name "myResourceGroup"
