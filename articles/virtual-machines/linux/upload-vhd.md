@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 47227b1f9ceb4ba9e35180aa0cb171d1edd5bb9a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: edebd2efda7d8217c9b554f2d1f54135203502cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696850"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821562"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure
 
@@ -31,8 +31,8 @@ W tym artykule dowiesz się, jak przekazać niestandardowe wirtualnego dysku twa
 Aby utworzyć wiele maszyn wirtualnych z dysku dostosowane, należy najpierw utworzyć obraz z maszyny Wirtualnej lub wirtualnego dysku twardego. Aby uzyskać więcej informacji, zobacz [Tworzenie niestandardowego obrazu maszyny wirtualnej portalu Azure przy użyciu interfejsu wiersza polecenia](tutorial-custom-images.md).
 
 Masz dwie opcje w celu utworzenia niestandardowego dysku:
-* [Przekazywanie wirtualnego dysku twardego](#option-1-upload-a-specialized-vhd)
-* [Kopiowanie istniejących maszyn wirtualnych platformy Azure](#option-2-copy-an-existing-azure-vm)
+* Przekazywanie wirtualnego dysku twardego
+* Kopiowanie istniejących maszyn wirtualnych platformy Azure
 
 ## <a name="quick-commands"></a>Szybkie polecenia
 

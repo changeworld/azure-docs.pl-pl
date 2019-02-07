@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 757891a6968313c1a31ce67b399d6aa052abfa21
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 7bd228a01cd3841772750882d13c33459385cc21
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999955"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817720"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla systemu Windows Server umożliwia użycie licencji na system Windows Server w środowisku lokalnym i uruchamianie maszyn wirtualnych Windows na platformie Azure, przy niższych kosztach. Azure korzyści użycia hybrydowego dla systemu Windows Server służy do wdrażania nowych maszyn wirtualnych z systemem operacyjnym Windows. W tym artykule przechodzi przez instrukcje dotyczące sposobu wdrażania nowych maszyn wirtualnych za pomocą usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oraz jak zaktualizować istniejące uruchamianie maszyn wirtualnych. Aby uzyskać więcej informacji na temat usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oszczędności licencjonowania i kosztów, zobacz [strony licencjonowania platformy Azure korzyści użycia hybrydowego dla systemu Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -40,7 +40,7 @@ Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla sy
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Sposoby korzystania z platformy Azure korzyści użycia hybrydowego dla systemu Windows Server
 Istnieje kilka sposobów na maszynach wirtualnych Windows za pomocą korzyści użycia hybrydowego platformy Azure:
 
-1. Można wdrożyć maszyny wirtualne z jednego z dostarczonych [obrazy systemu Windows Server w witrynie Azure Marketplace](# https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview)
+1. Można wdrożyć maszyny wirtualne z jednego z podanych obrazy systemu Windows Server w witrynie Azure Marketplace
 2. Możesz przekazać niestandardową maszynę Wirtualną i wdrażanie jej za pomocą szablonu usługi Resource Manager lub programu Azure PowerShell
 3. Możesz przełączać i konwertowanie istniejącej maszyny Wirtualnej między systemem dzięki korzyści użycia hybrydowego platformy Azure lub naliczana jest opłata za na żądanie w systemie Windows Server
 4. Azure korzyści użycia hybrydowego dla systemu Windows Server można zastosować również na także zestaw skalowania maszyn wirtualnych

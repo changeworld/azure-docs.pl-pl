@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: fb9725e18c53e9d42ae51418a1eb614aaa10fd12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157332"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816785"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Jak używać zarządzanego klienta usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -103,7 +103,7 @@ W poniższej sekcji przedstawiono sposób wyszukiwania i pobierania rekordów i 
 * [Wyszukaj według identyfikatora](#lookingup)
 * [Obsługa zapytań bez typu](#untypedqueries)
 * [Wstawianie danych](#inserting)
-* [Aktualizowanie danych](#updating)
+* Aktualizowanie danych
 * [Usuwanie danych](#deleting)
 * [Rozwiązywanie konfliktów i optymistycznej współbieżności](#optimisticconcurrency)
 * [Powiązanie z interfejsu użytkownika Windows](#binding)
@@ -292,7 +292,7 @@ Podczas wykonywania zapytania za pomocą obiektu tabeli bez typu, należy jawnie
 JToken untypedItems = await untypedTodoTable.ReadAsync("$filter=complete eq 0&$orderby=text");
 ```
 
-Możesz odzyskać wartości JSON, które można używać jak zbiór właściwości. Aby uzyskać więcej informacji na temat JToken i Newtonsoft Json.NET, zobacz [Program Json.NET] lokacji.
+Możesz odzyskać wartości JSON, które można używać jak zbiór właściwości. Aby uzyskać więcej informacji na temat JToken i Newtonsoft Json.NET, zobacz [Json.NET] lokacji.
 
 ### <a name="inserting"></a>Jak: Wstawianie danych do zaplecza aplikacji mobilnej
 Wszystkie typy klientów musi zawierać element o nazwie **identyfikator**, która jest domyślnie ciągu. To **identyfikator** jest wymagane do wykonywania operacji CRUD i synchronizacji w trybie offline. Poniższy kod ilustruje sposób używania [InsertAsync] metodę, aby wstawić nowe wiersze do tabeli. Parametr zawiera dane, które ma zostać wstawiony jako obiekt .NET.
@@ -338,13 +338,13 @@ jo.Add("id", Guid.NewGuid().ToString("N"));
 ```
 
 ### <a name="modifying"></a>Jak: Modyfikowanie danych w zaplecza aplikacji mobilnej
-Poniższy kod ilustruje sposób używania [metod UpdateAsync] metodę, aby zaktualizować istniejący rekord o tym samym identyfikatorze o nowe informacje. Parametr zawiera dane, które mają zostać zaktualizowane w obiekt .NET.
+Poniższy kod ilustruje sposób używania [UpdateAsync] metodę, aby zaktualizować istniejący rekord o tym samym identyfikatorze o nowe informacje. Parametr zawiera dane, które mają zostać zaktualizowane w obiekt .NET.
 
 ```csharp
 await todoTable.UpdateAsync(todoItem);
 ```
 
-Do aktualizowania danych bez typu, użytkownik może skorzystać z [Program Json.NET] w następujący sposób:
+Do aktualizowania danych bez typu, użytkownik może skorzystać z [Json.NET] w następujący sposób:
 
 ```csharp
 JObject jo = new JObject();
@@ -404,7 +404,7 @@ Aplikacje przy użyciu tabel bez typu Włącz optymistycznej współbieżności,
 todoTable.SystemProperties |= MobileServiceSystemProperties.Version;
 ```
 
-Oprócz włączenia optymistycznej współbieżności, należy również przechwytywać `MobileServicePreconditionFailedException<T>` wyjątków w kodzie podczas wywoływania [metod UpdateAsync].  Rozwiąż konflikt, stosując poprawny `version` zaktualizowanym rekordem i wywołania [metod UpdateAsync] z rekordem rozwiązane. Poniższy kod przedstawia sposób rozwiązania, gdy wykryto konflikt podczas zapisywania:
+Oprócz włączenia optymistycznej współbieżności, należy również przechwytywać `MobileServicePreconditionFailedException<T>` wyjątków w kodzie podczas wywoływania [UpdateAsync].  Rozwiąż konflikt, stosując poprawny `version` zaktualizowanym rekordem i wywołania [UpdateAsync] z rekordem rozwiązane. Poniższy kod przedstawia sposób rozwiązania, gdy wykryto konflikt podczas zapisywania:
 
 ```csharp
 private async void UpdateToDoItem(TodoItem item)
@@ -827,7 +827,7 @@ private async System.Threading.Tasks.Task Authenticate()
 
 Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, zmień wartość [MobileServiceAuthenticationProvider] wartości dla dostawcy.
 
-W przepływie serwera usługi Azure App Service zarządza przepływem uwierzytelniania OAuth, wyświetlając stronę logowania wybranego dostawcy.  Po powrocie dostawcy tożsamości usługi Azure App Service generuje token uwierzytelniania usługi App Service. [LoginAsync] metoda zwraca [MobileServiceUser], który zawiera oba [Identyfikator użytkownika] uwierzytelnionego użytkownika i [MobileServiceAuthenticationToken], jako tokenu web JSON (JWT). Ten token można zapisać w pamięci podręcznej i ponownie go używać, dopóki nie wygaśnie. Aby uzyskać więcej informacji, zobacz [buforowania tokenu uwierzytelniania](#caching).
+W przepływie serwera usługi Azure App Service zarządza przepływem uwierzytelniania OAuth, wyświetlając stronę logowania wybranego dostawcy.  Po powrocie dostawcy tożsamości usługi Azure App Service generuje token uwierzytelniania usługi App Service. [LoginAsync] metoda zwraca [MobileServiceUser], który zawiera oba [UserId] uwierzytelnionego użytkownika i [MobileServiceAuthenticationToken], jako tokenu web JSON (JWT). Ten token można zapisać w pamięci podręcznej i ponownie go używać, dopóki nie wygaśnie. Aby uzyskać więcej informacji, zobacz [buforowania tokenu uwierzytelniania](#caching).
 
 ### <a name="caching"></a>Buforowanie tokenu uwierzytelniania
 W niektórych przypadkach można uniknąć wywołania metody logowania po pierwszym pomyślnym uwierzytelnieniu przez zapisanie tokenu uwierzytelniania od dostawcy.  Aplikacje Microsoft Store i platformy uniwersalnej systemu Windows mogą używać [PasswordVault] w pamięci podręcznej bieżącego tokenu uwierzytelniania po pomyślnym zalogowaniu, w następujący sposób:
@@ -902,7 +902,7 @@ private async void InitNotificationsAsync()
 Jeśli wypychasz do usługi WNS, a następnie należy [uzyskać identyfikator SID pakietu Microsoft Store](#package-sid).  Aby uzyskać więcej informacji na aplikacje systemu Windows, w tym jak zarejestrować do rejestracji szablonów, zobacz [Dodawanie powiadomień wypychanych do aplikacji].
 
 Żądanie tagi z klienta nie jest obsługiwane.  Tag żądań dyskretnie są usuwane z rejestracji.
-Jeśli chcesz zarejestrować urządzenie przy użyciu tagów, należy utworzyć niestandardowy interfejs API, który używa interfejsu API centrów powiadomień w celu przeprowadzenia rejestracji w Twoim imieniu.  [Wywoływanie niestandardowego interfejsu API](#customapi) zamiast `RegisterNativeAsync()` metody.
+Jeśli chcesz zarejestrować urządzenie przy użyciu tagów, należy utworzyć niestandardowy interfejs API, który używa interfejsu API centrów powiadomień w celu przeprowadzenia rejestracji w Twoim imieniu.  Wywoływanie niestandardowego interfejsu API, zamiast `RegisterNativeAsync()` metody.
 
 ### <a name="package-sid"></a>Jak: Uzyskaj identyfikator SID pakietu Microsoft Store
 Identyfikator SID pakietu jest wymagany przez włączenie powiadomień wypychanych w aplikacji Microsoft Store.  Aby otrzymać identyfikator SID pakietu, należy zarejestrować aplikację w usłudze Microsoft Store.
@@ -1065,8 +1065,8 @@ public class MyHandler : DelegatingHandler
 [Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
 [Wybierz]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
 [Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
-[Metod UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
-[Identyfikator użytkownika]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
+[UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
+[UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
 [Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure Portal]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
@@ -1083,7 +1083,7 @@ public class MyHandler : DelegatingHandler
 <!-- External URLs -->
 [Dokumentacja usługi OData v3]: https://www.odata.org/documentation/odata-version-3-0/
 [Fiddler]: https://www.telerik.com/fiddler
-[Program Json.NET]: https://www.newtonsoft.com/json
+[Json.NET]: https://www.newtonsoft.com/json
 [Xamarin.Auth]: https://components.xamarin.com/view/xamarin.auth/
 [AuthStore.cs]: https://github.com/azure-appservice-samples/ContosoMoments
 [ContosoMoments photo sharing sample]: https://github.com/azure-appservice-samples/ContosoMoments

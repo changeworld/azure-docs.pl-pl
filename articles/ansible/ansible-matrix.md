@@ -1,6 +1,6 @@
 ---
-title: Macierz modułu i wersji rozwiązania Ansible na platformie Azure
-description: Macierz modułu i wersji rozwiązania Ansible na platformie Azure
+title: Moduł rozwiązania Ansible i macierz wersji dla platformy Azure
+description: Moduł rozwiązania Ansible i macierz wersji dla platformy Azure
 ms.service: ansible
 keywords: rozwiązanie ansible, ról, macierz, wersji, azure, metodyki devops
 author: tomarchermsft
@@ -8,20 +8,20 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/22/2018
 ms.topic: article
-ms.openlocfilehash: 5265b6f6ebf779c83792ab2569c1b613d11070da
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 149f37d0231ecc0547e8dc7937d22a9cc38b7df3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051530"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810222"
 ---
 # <a name="ansible-module-and-version-matrix"></a>Macierz modułu i wersji rozwiązania Ansible
 
 ## <a name="ansible-modules-for-azure"></a>Rozwiązanie Ansible moduły dla platformy Azure
-Ansible jest dostarczany z modułów, które mogą być wykonywane bezpośrednio na hostach zdalnych lub za pomocą elementów playbook.
+Rozwiązanie Ansible jest dostarczane z kilkoma modułami, które można wykonywać bezpośrednio na hostach zdalnych lub za pośrednictwem elementów playbook.
 W tym artykule wymieniono modułów Ansible na platformie Azure, które można udostępnić zasoby platformy Azure w chmurze, takie jak maszyny wirtualnej, sieci i usługi kontenerów. Możesz uzyskać te moduły z jej oficjalnym wydaniem Ansible lub następujące role elementu playbook opublikowane przez firmę Microsoft.
 
-| Moduł Ansible na platformie Azure                   |  2.4 rozwiązania Ansible |  2.5 rozwiązania Ansible |  2.6 rozwiązania Ansible | Rozwiązanie Ansible w wersji 2.7 | [Rozwiązanie Ansible roli](#introduction-to-azurepreviewmodule) | 
+| Moduł Ansible na platformie Azure                   |  2.4 rozwiązania Ansible |  2.5 rozwiązania Ansible |  2.6 rozwiązania Ansible | Rozwiązanie Ansible w wersji 2.7 | Rozwiązanie Ansible roli | 
 |---------------------------------------------|--------------|--------------|-----------------------------|-------------------------------------|-------------------------------------| 
 | **Obliczanie**                    |           |                          |                          |                            |                                | 
 | azure_rm_availabilityset                    | Yes          | Yes                         | Yes          | Yes          | Yes                                 | 
