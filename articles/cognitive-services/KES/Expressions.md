@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak używać wyrażeń zapytań ze strukturą w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 335bcc025d2f3e972a02234da89e35c90c91afeb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a544cdca1ef4be56fcf368a39040f4ee85076a9e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222700"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860144"
 ---
 # <a name="structured-query-expression"></a>Wyrażenia zapytań ze strukturą
 
@@ -31,15 +31,15 @@ Wyrażenie zapytania atrybut identyfikuje zestaw obiektów, w oparciu o dopasowa
 
 | Type | Operacja | Przykłady |
 |------|-------------|------------|
-| Ciąg | równa się | Title = "ukryte analizy semantycznej" (canonical + synonimy) |
-| Ciąg | równa się | Author.Name=='susan t dumais (canonical tylko)|
-| Ciąg | starts_with | Title = "ukryte s"... |
+| String | równa się | Title = "ukryte analizy semantycznej" (canonical + synonimy) |
+| String | równa się | Author.Name=='susan t dumais (canonical tylko)|
+| String | starts_with | Title = "ukryte s"... |
 | Int32/Int64/podwójnej precyzji | równa się | Roku = 2000 |
 | Int32/Int64/podwójnej precyzji | starts_with | Rok = "20"... (wartości dziesiętnej począwszy od "20") |
 | Int32/Int64/podwójnej precyzji | is_between | Rok&lt;2000 <br/> Rok&lt;= 2000 <br/> Rok&gt;2000 <br/> Rok&gt;= 2000 <br/> Year=[2010,2012) *(zawiera tylko lewej granicy, wartość: 2010, 2011)* <br/> Rok = [2000,2012] *(obejmuje zarówno wartości granic: 2010, 2011, 2012)* |
 | Date | równa się | BirthDate='1984-05-14' |
 | Date | is_between | Data urodzenia&lt;= "2008/03/14' <br/> PublishDate = ["01-01-2000", "2009-12-31'] |
-| Identyfikator GUID | równa się | Id='602DD052-CC47-4B23-A16A-26B52D30C05B' |
+| Guid | równa się | Id='602DD052-CC47-4B23-A16A-26B52D30C05B' |
 
 
 Na przykład, wyrażenie "Title ="ukryte s"..." dopasowuje wszystkie publikacje typu akademickich, których tytuł zaczyna się od ciągu "ukryte s".  Aby można było obliczyć to wyrażenie, atrybut tytułu należy określić operację "starts_with" w schemacie, używany do tworzenia indeksu.

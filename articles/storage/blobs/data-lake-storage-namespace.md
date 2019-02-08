@@ -1,6 +1,6 @@
 ---
-title: Namespace hierarchiczne usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
-description: Omówienie pojęć dotyczących hierarchicznej przestrzeni nazw dla usługi Azure Data Lake Gen2 — wersja zapoznawcza
+title: Usługa Azure Data Lake Storage Gen2 hierarchiczne Namespace
+description: Omówienie pojęć dotyczących hierarchicznej przestrzeni nazw dla usługi Azure Data Lake Storage Gen2
 services: storage
 author: jamesbak
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 967e24ae6e004fe6ce2b1c0aa6c039f46be2598c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b423d40884dd9132312e79ba0cbff00b8771b207
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244508"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877035"
 ---
-# <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Azure Data Lake Gen2 — wersja zapoznawcza hierarchiczne — przestrzeń nazw
+# <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Azure Data Lake Storage Gen2 hierarchiczne — przestrzeń nazw
 
-Mechanizm klucza, który umożliwia usługi Azure Data Lake Gen2 — wersja zapoznawcza zapewnienie wydajności systemu plików obiektów magazynu oraz ceny, to dodanie **hierarchicznej przestrzeni nazw**. Umożliwia to zbiór obiektów/plików, w ramach konta, które mają być organizowane w hierarchii katalogów i podkatalogów zagnieżdżonych w taki sam sposób, że system plików na komputerze jest zorganizowana. W hierarchicznej przestrzeni nazw, włączone konto magazynu staje się możliwość zapewnienia skalowalności i ekonomiczności magazynie obiektów przy użyciu semantyki systemu plików, które są znane analytics aparatów i struktur.
+Mechanizm klucza, który umożliwia Azure Data Lake Storage Gen2 zapewnienie wydajności systemu plików obiektów magazynu oraz ceny, to dodanie **hierarchicznej przestrzeni nazw**. Umożliwia to zbiór obiektów/plików, w ramach konta, które mają być organizowane w hierarchii katalogów i podkatalogów zagnieżdżonych w taki sam sposób, że system plików na komputerze jest zorganizowana. W hierarchicznej przestrzeni nazw, włączone konto magazynu staje się możliwość zapewnienia skalowalności i ekonomiczności magazynie obiektów przy użyciu semantyki systemu plików, które są znane analytics aparatów i struktur.
 
 ## <a name="the-benefits-of-the-hierarchical-namespace"></a>Korzyści wynikające z hierarchicznej przestrzeni nazw
 
@@ -29,18 +29,17 @@ Następujące korzyści są skojarzone z systemami plików, które implementują
 
 - **Styl znany interfejs:** Systemy plików są dobrze zrozumiałe przez programistów i użytkowników. Istnieje nie musisz uczyć się nowego modelu magazynu po przeniesieniu do chmury, interfejsu systemu plików, które są udostępniane przez Data Lake Storage Gen2 jest tego samego modelu, używany przez komputery, małych i dużych.
 
-Jest jednym z powodów, że magazyny obiektów nie ma w przeszłości obsługiwane hierarchiczne przestrzenie nazw, że hierarchiczne przestrzenie nazw ograniczone skali. Jednak Data Lake Storage Gen2 hierarchicznej przestrzeni nazw jest skalowana liniowo i nie zmniejsza pojemnością danych lub wydajnością.
+Jedną z przyczyn, że magazyny obiektów w przeszłości nie jeszcze obsługiwane hierarchicznej przestrzeni nazw jest limitów skalowania hierarchicznej przestrzeni nazw. Jednak Data Lake Storage Gen2 hierarchicznej przestrzeni nazw jest skalowana liniowo i nie zmniejsza pojemnością danych lub wydajnością.
 
 ## <a name="when-to-enable-the-hierarchical-namespace"></a>Kiedy należy włączyć hierarchicznej przestrzeni nazw
 
-Włączanie hierarchicznej przestrzeni nazw jest zalecane dla obciążeń magazynowania, które są przeznaczone dla systemów plików, które manipulowania katalogów. Dotyczy to wszystkich obciążeń, które są przeznaczone głównie dla przetwarzania analizy. Zestawy danych, które wymagają wysokiego stopnia organizacji również będą mogli korzystać, włączając hierarchicznej przestrzeni nazw.
+Firma Microsoft zaleca włączenie hierarchicznej przestrzeni nazw dla obciążeń magazynowania, które są przeznaczone dla systemów plików, które manipulowania katalogów. Dotyczy to wszystkich obciążeń, które są przeznaczone głównie dla przetwarzania analizy. Zestawy danych, które wymagają wysokiego stopnia organizacji również będą mogli korzystać, włączając hierarchicznej przestrzeni nazw.
 
 Ze względu na włączenie hierarchicznej przestrzeni nazw są określone przez analizę całkowitego kosztu posiadania. Ogólnie rzecz biorąc ulepszenia obciążenia opóźnienia z powodu przyspieszenie magazynu będzie wymagać zasoby obliczeniowe dla mniej czasu. Opóźnienie dla wielu zadań mogą być ulepszane z powodu atomic katalog został zmanipulowany, można włączyć, konfigurując hierarchicznej przestrzeni nazw. W wielu obciążeń zasobów obliczeniowych reprezentuje > 85% całkowitego kosztu, a nawet niewielkie zmniejszenie obciążenia opóźnienia jest równa znacznej ilości całkowitego kosztu posiadania oszczędności. Nawet w przypadkach, w którym Włączanie hierarchicznej przestrzeni nazw zwiększa koszty magazynowania całkowitego kosztu posiadania nadal jest obniżona z powodu koszty operacji obliczeniowych mniejsze.
 
 ## <a name="when-to-disable-the-hierarchical-namespace"></a>Gdy wyłączenie hierarchicznej przestrzeni nazw
 
-Niektórych obciążeń magazynu obiektów nie może uzyskać korzyści przez włączenie hierarchicznej przestrzeni nazw. Te obciążenia przykłady kopii zapasowych, magazyn obrazów i innych aplikacji, w którym organizacja obiektu były przechowywane osobno od samych obiektach (*np.*, w oddzielnej bazy danych).
-
+Niektórych obciążeń magazynu obiektów mogą nie uzyskać żadnych korzyści, należy włączyć hierarchicznej przestrzeni nazw. Przykłady obejmują tworzenie kopii zapasowych, magazyn obrazów i innych aplikacji, w którym organizacja obiektu były przechowywane osobno od samych obiektach (na przykład: w oddzielnej bazy danych).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

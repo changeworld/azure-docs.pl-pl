@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 3e2fa51bcf6040eb94a9d270a7f5f375f726e62a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d70b7acb906c60001ad005a0fe9361950bc029b7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846340"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895860"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Kontrola dostępu usługi Service Bus przy użyciu sygnatury dostępu współdzielonego
 
@@ -96,7 +96,7 @@ Token sygnatury dostępu Współdzielonego jest prawidłowa dla wszystkich zasob
 
 Zalecane jest, okresowo generować ponownie klucze używane w [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) obiektu. Gniazda klucza podstawowego i pomocniczego istnieje, dzięki czemu można stopniowo wymiany kluczy. Jeśli Twoja aplikacja ogólnie używa klucza podstawowego, skopiuj klucz podstawowy do pomocniczego klucza gniazda, a dopiero wtedy ponownie wygenerować klucz podstawowy. Następnie można skonfigurować nową wartość klucza podstawowego w aplikacji klienta, które mają stały dostęp przy użyciu starego klucza podstawowego w gnieździe dodatkowej. Gdy wszyscy klienci zostaną zaktualizowane, można ponownie wygenerować klucza pomocniczego, aby na koniec wycofać stary klucz podstawowy.
 
-Jeśli jest Ci znana lub podejrzeń, że klucz zostanie naruszony, i że masz odwołać kluczy, można ponownie wygenerować zarówno [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) i [klucz pomocniczy](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), zastępując je za pomocą nowych kluczy. Ta procedura powoduje unieważnienie wszystkie tokeny podpisane przy użyciu starych kluczy.
+Jeśli jest Ci znana lub podejrzeń, że klucz zostanie naruszony, i że masz odwołać kluczy, można ponownie wygenerować zarówno [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) i [klucz pomocniczy](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) z [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule), zastępując je za pomocą nowych kluczy. Ta procedura powoduje unieważnienie wszystkie tokeny podpisane przy użyciu starych kluczy.
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>Udostępnione uwierzytelniania sygnatury dostępu za pomocą usługi Service Bus
 
@@ -255,7 +255,7 @@ W poniższej tabeli przedstawiono prawa dostępu wymagane dla różnych operacji
 
 | Operacja | Wymagane oświadczenia | Oświadczenie zakresu |
 | --- | --- | --- |
-| **Namespace** | | |
+| **Przestrzeń nazw** | | |
 | Skonfiguruj reguły autoryzacji w przestrzeni nazw |Zarządzanie |Dowolny adres przestrzeni nazw |
 | **Service Registry** | | |
 | Wyliczać zasady prywatne |Zarządzanie |Dowolny adres przestrzeni nazw |

@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0b74b6ef1d849f40e7a8e6f50d87e7b322e919e7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567285"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891781"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -66,7 +66,7 @@ W portalu sieci web Video Indexer można przekazać pliku multimediów za pomoc�
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Jak długo trwa indeksatora wideo, aby wyodrębnić szczegółowe informacje z nośnika?
 
-Czas potrzebny do indeksu pliku audio lub wideo, zarówno przy użyciu interfejs API indeksatora wideo i interfejsu opartego na sieci web usługa Video Indexer zależy od wielu parametrów, takich jak plik długość i jakość, liczba insights znajdującą się w pliku, liczba [jednostek zarezerwowanych](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) dostępna oraz tego, czy [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) jest włączony, czy nie. Dla typów najbardziej zawartości przy założeniu, że 10 jednostek zarezerwowanych typu S3 są włączone, możemy prognozować czy indeksowanie trwa od 1/3 ½ czasie trwania pliku audio lub wideo (na przykład źródło 10-minutowe wideo przyjmuje 3.5 do 5 minut). Jednak firma Microsoft zaleca uruchomienie kilku plików testowych za pomocą własnej zawartości, a następnie uzyskać średnią, aby lepiej zrozumieć.
+Czas potrzebny do indeksu pliku audio lub wideo, zarówno przy użyciu interfejs API indeksatora wideo i interfejsu opartego na sieci web usługa Video Indexer zależy od wielu parametrów, takich jak plik długość i jakość, liczba insights znajdującą się w pliku, liczba [jednostek zarezerwowanych](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) dostępna oraz tego, czy [punkt końcowy przesyłania strumieniowego](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview) jest włączony, czy nie. Zalecamy uruchomienie kilku plików testowych za pomocą własnej zawartości i uzyskać średnią, aby lepiej zrozumieć.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Można tworzyć niestandardowe przepływy pracy służące do automatyzacji procesów za pomocą indeksatora wideo?
 

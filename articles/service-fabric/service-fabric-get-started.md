@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: f4ae164a9862a32b45fd5bd0ae7bc09a1180c344
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 373bcecfb1780aa567b1250e53096b9eed0d0f21
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733488"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858743"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Bieżące wersje:
 * Service Fabric Tools for Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 obejmuje narzędzia usługi Service Fabric dla programu Visual Studio 2.4.11024.1 
 
-Listę obsługiwanych wersji można znaleźć na stronie [pomocy technicznej usługi Service Fabric](service-fabric-support.md)
+Aby uzyskać listę obsługiwanych wersji, zobacz [wersji usługi Service Fabric](service-fabric-versions.md)
 
 > [!NOTE]
 > Uaktualnia jednej maszynie klastry (OneBox) nie są obsługiwane dla aplikacji lub klastra; Usuwanie klastra OneBox i utworzyć ją ponownie, jeśli chcesz przeprowadzić uaktualnienie klastra lub jakichkolwiek problemów w przypadku uaktualniania aplikacji. 

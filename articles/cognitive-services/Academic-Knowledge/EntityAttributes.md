@@ -4,31 +4,31 @@ titlesuffix: Azure Cognitive Services
 description: Więcej informacji na temat atrybutów jednostki, których można używać z Academic Graph w interfejsu Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: f227cc03578adcfbf73fec3ae8941045e8352513
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: accc2803895f3892075cdd9877ca98344ab88bd1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183003"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884821"
 ---
 # <a name="entity-attributes"></a>Atrybuty obiektu:
 
 Interfejs academic graph składa się z 7 typów jednostek. Wszystkie jednostki będą mieć identyfikator jednostki i typu jednostki.
 
 ## <a name="common-entity-attributes"></a>Wspólne atrybuty jednostki
-Name    |Opis                |Type       | Operacje
+Name (Nazwa)    |Opis                |Type       | Operacje
 ------- | ------------------------- | --------- | ----------------------------
 Identyfikator      |Identyfikator jednostki                  |Int64      |Równa się
 Ty      |Typ jednostki                |Wyliczenia   |Równa się
 
 ## <a name="entity-type-enum"></a>Jednostka typu enum
-Name                                                            |wartość
+Name (Nazwa)                                                            |wartość
 ----------------------------------------------------------------|-----
 [Dokument](PaperEntityAttributes.md)                               |0
 [Autor](AuthorEntityAttributes.md)                             |1

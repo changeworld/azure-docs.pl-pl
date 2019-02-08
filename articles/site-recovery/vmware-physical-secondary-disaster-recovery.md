@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0cc9c8dc214589e03e5a6a5405c07c9f6b3e53e6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105189"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895843"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Konfigurowanie odzyskiwania po awarii maszyn wirtualnych programu VMware w środowisku lokalnym lub serwerów fizycznych do lokacji dodatkowej
 
@@ -50,7 +50,7 @@ o maszyn fizycznych, postępuj zgodnie z tym [samouczek](./physical-azure-disast
 --|--|--
 **Wymagane składniki** |Usługa mobilności na replikowanych maszynach. Lokalny serwer konfiguracji, serwer przetwarzania i główny serwer docelowy. Serwer tymczasowy przetwarzania na platformie Azure do powrotu po awarii.|Usługa mobilności, serwer przetwarzania, serwer konfiguracji i główny element docelowy
 **Konfiguracji i aranżacji** |Magazyn usługi Recovery Services w witrynie Azure portal | Za pomocą vContinuum 
-**Replikowane**|Dysk (Windows i Linux) |Windows woluminu<br> Dysk Linux
+**Replikowane**|Dysk (Windows i Linux) |Volume-Windows<br> Disk-Linux
 **Udostępniony klaster dysków**|Nieobsługiwane|Obsługiwane
 **Współczynnik zmian danych limitów (średnia)** |10 danych w MB/s na dysk<br> Dane 25MB/s na maszynę Wirtualną<br> [Dowiedz się więcej](./site-recovery-vmware-deployment-planner-analyze-report.md#azure-site-recovery-limits) | Dane > 10 MB/s na dysk  <br> Dane > 25 MB/s na maszynę Wirtualną
 **Monitorowanie** |Z witryny Azure portal|Z CX (serwer konfiguracji)
@@ -82,7 +82,7 @@ Zainstaluj następujące aktualizacje:
 
 Pobierz [aktualizacji](https://aka.ms/asr-scout-update7) pliku zip i [MySQL i PHP uaktualniania](https://aka.ms/asr-scout-u7-mysql-php-manualupgrade) plików konfiguracyjnych. Aktualizuj plik zip zawiera wszystkie bazy danych binarnych i zbiorcze uaktualnienia plików binarnych w następujących składników: 
   - InMage_ScoutCloud_RX_8.0.1.0_RHEL6-64_GA_02Mar2015.tar.gz
-  - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.GZ
+  - RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz
   - InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe
   - InMage_CX_TP_8.0.1.0_Windows_GA_26Feb2015_release.exe
   - CX_Windows_8.0.7.0_GA_Update_7_2965621_28Dec18.exe
@@ -100,22 +100,22 @@ Pobierz [aktualizacji](https://aka.ms/asr-scout-update7) pliku zip i [MySQL i PH
   - InMage_UA_8.0.7.0_RHEL7-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-32_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-64_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10 — dodatek SP1-32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10 — dodatek SP1-64_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10 — z dodatkiem SP2 — 32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10 — z dodatkiem SP2 — 64_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10-SP3 — 32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES10-SP3 — 64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP1-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP2-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP3-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES10-SP3-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-SP4-32_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES10-SP4-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES11-32_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES11-64_GA_04Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11 — dodatek SP1-32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11 — dodatek SP1-64_GA_04Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11 — z dodatkiem SP2 — 32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11 — z dodatkiem SP2 — 64_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11-SP3 — 32_GA_03Dec2018_release.tar.gz
-  - InMage_UA_8.0.7.0_SLES11-SP3 — 64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP1-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP1-64_GA_04Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP2-64_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP3-32_GA_03Dec2018_release.tar.gz
+  - InMage_UA_8.0.7.0_SLES11-SP3-64_GA_03Dec2018_release.tar.gz
   - InMage_UA_8.0.7.0_SLES11-SP4-64_GA_03Dec2018_release.tar.gz
 1. Wyodrębnij pliki z rozszerzeniem .zip.
 2. **Serwer RX**: Kopiuj **RX_8.0.7.0_GA_Update_7_2965621_28Dec18.tar.gz** serwerowi RX i Wyodrębnij jego zawartość. W folderze wyodrębnione Uruchom **/Install**.
@@ -171,8 +171,8 @@ Aktualizacja programu Scout 6 jest aktualizacją zbiorczą. Zawiera ona wszystki
 #### <a name="new-platform-support"></a>Obsługa nowych platform
 * Dodano obsługę źródła systemu Windows Server 2016
 * Dodano obsługę w następujących systemach operacyjnych Linux:
-    - Red Hat Enterprise Linux (RHEL) 6,9
-    - CentOS 6,9
+    - Red Hat Enterprise Linux (RHEL) 6.9
+    - CentOS 6.9
     - Oracle Linux 5.11
     - Oracle Linux 6.8
 * Dodano obsługę dla 6.5 Centrum oprogramowania VMware
@@ -218,7 +218,7 @@ Aktualizacja programu Scout 5 jest aktualizacją zbiorczą. Zawiera on wszystkie
 
 #### <a name="new-platform-support"></a>Obsługa nowych platform
 * SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
-* SLES 11 z dodatkiem SP4 64 bitowych **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** jest spakowana ze pakiet podstawowy Scout GA (**InMage_Scout_Standard_8.0.1 GA.zip**). Pobierz pakiet wersji ogólnie dostępnej z poziomu portalu, zgodnie z opisem w [Utwórz magazyn](#create-a-vault).
+* SLES 11 z dodatkiem SP4 64 bitowych **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** jest spakowana ze pakiet podstawowy Scout GA (**InMage_Scout_Standard_8.0.1 GA.zip**). Pobieranie pakietu wersji ogólnie dostępnej z poziomu portalu, zgodnie z opisem w Utwórz magazyn.
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Poprawki błędów i ulepszenia
@@ -252,7 +252,7 @@ Scout Update 4 jest aktualizacją zbiorczą. Zawiera wszystkie poprawki z wersj�
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64-bitowy **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** jest spakowana ze pakiet podstawowy Scout GA **InMage_Scout_Standard_8.0.1 GA.zip**. Pobierz pakiet programu Scout wersji ogólnie dostępnej z poziomu portalu, zgodnie z opisem w [Utwórz magazyn](#create-a-vault).
+> RHEL/CentOS 7 64-bitowy **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** jest spakowana ze pakiet podstawowy Scout GA **InMage_Scout_Standard_8.0.1 GA.zip**. Pobieranie pakietu programu Scout GA z portalu zgodnie z opisem w Utwórz magazyn.
 
 #### <a name="bug-fixes-and-enhancements"></a>Poprawki błędów i ulepszenia
 
@@ -306,7 +306,7 @@ Aktualizacja 3 rozwiązuje następujące problemy:
 * Dodano więcej statystyki w dzienniku dla operacji wycofywania, aby śledzić czas potrzebny do jego wykonania.
 * Dodano obsługę dla systemów operacyjnych Linux, na serwerze źródłowym:
   * Aktualizacja usługi Red Hat Enterprise Linux (RHEL) 6, 7
-  * CentOS 6, aktualizacja 7
+  * CentOS 6 update 7
 * Serwer konfiguracji i RX teraz konsole Pokaż powiadomienia dla pary, który przechodzi w tryb mapy bitowej.
 * Dodano następujące poprawki zabezpieczeń w RX:
     * Autoryzacja obejścia za pośrednictwem modyfikowaniu parametru: Ograniczony dostęp do innych odpowiednich użytkowników.
@@ -331,7 +331,7 @@ Aktualizacja Update 1 obejmuje następujące poprawki i nowe funkcje:
 * Dodano obsługę dla tych systemów operacyjnych Linux, na serwerze źródłowym:
     * RHEL 6 aktualizacji 6
     * RHEL 5 aktualizacja Update 11
-    * CentOS 6, aktualizacja 6
+    * CentOS 6 Update 6
     * CentOS 5 Update 11
 * Poprawki błędów rozwiązać następujące problemy:
   * Rejestracja w magazynie nie powiedzie się na serwerze konfiguracji lub serwerze RX.

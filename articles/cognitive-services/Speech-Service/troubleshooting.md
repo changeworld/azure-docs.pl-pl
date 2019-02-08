@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera informacje, aby pomóc w rozwiązywaniu problemów, które można napotkać, korzystając z zestawu SDK usługi mowy.
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: c906a45443bcba8c84a0624c74255f19a492a4e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dbcdfd117a39939491914ebddb717f404e07f09c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217182"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859321"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Rozwiązywanie problemów z zestawu SDK usługi mowy
 
@@ -67,6 +67,8 @@ Aby sprawdzić, mają klucz ważnej subskrypcji, uruchamiając jeden z następuj
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
+Po wprowadzeniu klucza ważnej subskrypcji, to polecenie zwraca token autoryzacji, w przeciwnym razie zostanie zwrócony błąd.
+
 ### <a name="validate-an-authorization-token"></a>Zweryfikuj token autoryzacji
 
 Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poniższych poleceń, aby sprawdzić, czy token autoryzacji jest nadal ważny. Tokeny są ważne przez 10 minut.
@@ -101,6 +103,8 @@ Jeśli token autoryzacji jest używany do uwierzytelniania, uruchom jedno z poni
     ```
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
+
+Jeśli wprowadzono prawidłowy token autoryzacji, polecenie zwraca transkrypcji audio pliku, w przeciwnym razie zostanie zwrócony błąd.
 
 ---
 

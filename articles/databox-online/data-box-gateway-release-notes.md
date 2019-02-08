@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0265de5b224e62d188fe6e3b9322d5c2e3f77fa1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302125"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883138"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Informacje o wersji usługi Azure Data Box — wersja zapoznawcza bramy
 
@@ -52,9 +52,8 @@ Poniższa tabela zawiera podsumowanie znanych problemów występujących dla bra
 | **7.** |Odświeżanie | Uprawnienia i listy kontroli dostępu (ACL) nie są zachowywane w ramach operacji odświeżania.  | |
 | **8.** |Copy | Kopiowanie danych kończy się niepowodzeniem z powodu błędu:  Nie można ukończyć żądanej operacji ze względu na ograniczenia systemu plików.  |Ten błąd występuje, gdy alternatywne Data Stream (ADS) skojarzone z plikiem przekracza 128 KB (maksymalny limit dla systemu plików ReFS).  |
 | **9.** |Linki symboliczne |Łącza symbolicznego nie są obsługiwane.  |Linki symboliczne z katalogami spowodować katalogi, które nigdy nie wprowadzenie oznaczone w trybie offline. W rezultacie nie widać szarego między na katalogi, które wskazuje, że katalogi są w trybie offline i powiązanej zawartości całkowicie został przekazany na platformę Azure. |
-| **10.** |Pomoc online |Linki pomocy w witrynie Azure portal nie może połączyć się z dokumentacją.|Linki pomocy będzie działać w wersji ogólnodostępnej. |
-
-
+| **10.** |Udziały |Odświeżanie istniejącego kontenera za pomocą stronicowych obiektów blob, Udostępnij blokowych obiektów Blob (lub odwrotnie) prowadzi do przekazywania błędów w modyfikacji pliku.  |To zachowanie występuje, gdy należy wykonać następujące kroki: <li> Utwórz udział blokowych obiektów Blob na urządzeniu. </li><li> Skojarzyć udział z istniejącego kontenera w chmurze zawierającej stronicowych obiektów blob.</li><li>Odśwież tego udziału. </li><li>Modyfikowanie niektórych plików odświeżenia, które już są przechowywane jako stronicowe obiekty BLOB w chmurze.</li> Przekazywanie błędów są widoczne. |
+| **11.** |Pomoc online |Linki pomocy w witrynie Azure portal nie może połączyć się z dokumentacją.|Linki pomocy będzie działać w wersji ogólnodostępnej. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

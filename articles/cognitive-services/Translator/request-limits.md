@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: W tym artykule wymieniono limity żądań do interfejsu API tłumaczenia tekstu. Opłaty są naliczane na podstawie liczby znaków, nie żądania częstotliwość limit 5000 znaków na żądanie. Limity znaków są subskrypcji, za pomocą F0 ograniczona do 2 miliony znaków na godzinę.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: erhopf
-ms.openlocfilehash: 2115baae3f13c6ca6c0b9aca73d6fd43f5fcdbb4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f89e7e674efe3a823b7c969840772565650d8d07
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455715"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859474"
 ---
 # <a name="request-limits-for-translator-text"></a>Limity żądań dla tekstu w usłudze Translator
 

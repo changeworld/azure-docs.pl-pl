@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Aby zwrócić zestaw obiektów akademickich oparte na wyrażeniu zapytania, należy użyć metody Evaluate.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187304"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871323"
 ---
 # <a name="evaluate-method"></a>Oceń — metoda
 
@@ -28,7 +28,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 ```   
 <br>
 ## <a name="request-parameters"></a>Parametry żądania  
-Name     | Value | Wymagana?  | Opis
+Name (Nazwa)     | Wartość | Wymagana?  | Opis
 -----------|-----------|---------|--------
 **expr**       | Ciąg tekstowy | Yes | Wyrażenie zapytania, które określa jednostki, która ma zostać zwrócony.
 **model**      | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
@@ -39,7 +39,7 @@ Name     | Value | Wymagana?  | Opis
   
  <br>
 ## <a name="response-json"></a>Odpowiedź (JSON)
-Name | Opis
+Name (Nazwa) | Opis
 -------|-----   
 **expr** |  *Expr* parametrów z żądania.
 **Jednostki** |  Tablica 0 lub więcej jednostek, które dopasowane wyrażenia zapytania. Każda jednostka zawiera wartość prawdopodobieństwa logarytmu naturalnego i wartości innych wymaganych atrybutów.

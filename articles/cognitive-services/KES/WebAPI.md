@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Użyj interfejsu API sieci web, aby utworzyć środowisko rozbudowanych semantycznej wyszukiwania w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 131d8d58982b5430063aa3dc7b3d1982cd430148
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 970db5984eedebf98bbb087cfd0b4a35a21a0f54
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211308"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861191"
 ---
 # <a name="web-api-interface"></a>Interfejs API sieci Web
 

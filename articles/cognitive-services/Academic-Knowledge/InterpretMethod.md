@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Aby powrócić do interpretacji sformatowane ciągi zapytań użytkowników na podstawie danych Academic Graph i akademickich gramatyki w usługach Microsoft Cognitive Services, należy użyć metody interpretację.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: d79e14fa48631ec6ce3cde42a7dbe300034782cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6db9a5b65fc2723af2eae006ad81716e23e52133
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171664"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860528"
 ---
 # <a name="interpret-method"></a>Interpretowanie — metoda
 
@@ -29,7 +29,7 @@ Aby zapewnić środowisko interaktywne, tę metodę można wywołać wielokrotni
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Name     | Value | Wymagana?  | Opis
+Name (Nazwa)     | Wartość | Wymagana?  | Opis
 ---------|---------|---------|---------
 **Zapytanie**    | Ciąg tekstowy | Yes | Zapytanie wprowadzonej przez użytkownika.  Pełne jest ustawiona na 1, zapytania będą interpretowane jako prefiks dla generowania sugestie automatyczne uzupełnianie zapytań.        
 **model**    | Ciąg tekstowy | Nie  | Nazwa modelu, który chcesz zbadać.  Obecnie ma domyślnie wartość *najnowsze*.        
@@ -40,7 +40,7 @@ Name     | Value | Wymagana?  | Opis
 <br>
   
 ## <a name="response-json"></a>Odpowiedź (JSON)
-Name     | Opis
+Name (Nazwa)     | Opis
 ---------|---------
 **Zapytanie** |*Zapytania* parametrów z żądania.
 **interpretacji** |Tablica 0 lub więcej różnych sposobów dopasowywania danych wejściowych użytkownika względem gramatyki.

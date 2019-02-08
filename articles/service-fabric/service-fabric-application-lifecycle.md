@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: cb44311ecdf6a2c9284b14884184863237422f96
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e7939b8d7a6a64519ac8239591c37e06ced56599
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754544"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890522"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Cykl życia aplikacji usługi Service Fabric
 Zgodnie z innymi platformami aplikacji w usłudze Azure Service Fabric zwykle odbywa się przez następujące fazy: projektowania, rozwoju, testowania, wdrażanie, uaktualnianie, obsługi i usuwania. Usługa Service Fabric zapewnia najwyższej jakości pomoc techniczna dla całego cyklu życia aplikacji z aplikacji w chmurze, od projektowania do wdrażania, zarządzania infrastrukturą i konserwacji do ostatecznego wycofania. Model usługi umożliwia kilku różnych ról niezależnie uczestniczyć w cyklu życia aplikacji. Ten artykuł zawiera omówienie interfejsów API i jak są one używane przez różne role, w fazach cyklu życia aplikacji usługi Service Fabric.
@@ -58,7 +58,7 @@ Zobacz [wdrażania aplikacji](service-fabric-deploy-remove-applications.md) przy
 
 ## <a name="test"></a>Testowanie
 1. Po wdrożeniu na lokalny klaster projektowy lub klastra testowego, *usługi dla deweloperów* uruchamia scenariusza testu trybu failover wbudowanej za pomocą [ **FailoverTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) i [ **FailoverTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.failovertestscenario) klas, lub [ **Invoke ServiceFabricFailoverTestScenario** polecenia cmdlet](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps). Scenariusz testu w trybie failover uruchamia określonej usługi za pośrednictwem ważne przejścia i trybu failover, aby upewnić się, że jest nadal dostępne i działają.
-2. *Usługi dla deweloperów* następnie uruchamia chaos wbudowany test scenariusza za pomocą [ **ChaosTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) i [  **ChaosTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario#System_Fabric_Testability_Scenario_ChaosTestScenario) klas, lub [ **Invoke ServiceFabricChaosTestScenario** polecenia cmdlet](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). Scenariusz testów chaos losowo wywołuje wiele węzłów, pakiet kodu i usterek repliki do klastra.
+2. *Usługi dla deweloperów* następnie uruchamia chaos wbudowany test scenariusza za pomocą [ **ChaosTestScenarioParameters** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) i [  **ChaosTestScenario** ](https://docs.microsoft.com/dotnet/api/system.fabric.testability.scenario.chaostestscenario) klas, lub [ **Invoke ServiceFabricChaosTestScenario** polecenia cmdlet](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps). Scenariusz testów chaos losowo wywołuje wiele węzłów, pakiet kodu i usterek repliki do klastra.
 3. *Usługi dla deweloperów* [testy komunikacji między usługami](service-fabric-testability-scenarios-service-communication.md) tworzenie scenariuszy testowych, łączące replikami podstawowymi w całym klastrze.
 
 Zobacz [Introduction to usługa analizy błędów](service-fabric-testability-overview.md) Aby uzyskać więcej informacji.

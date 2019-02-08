@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 9a3cb06e662699b214d9cdf0aa9699b8953e4aa9
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 592131bf6cca4c4c3c827de23742e8d52bcb4d1c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165094"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889480"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-mount-initialize-and-format-a-volume"></a>Aby zainstalować, zainicjować i sformatować wolumin
 1. Uruchom inicjatora iSCSI firmy Microsoft.
 2. W oknie **Właściwości inicjatora iSCSI** na karcie **Odnajdowanie** kliknij pozycję **Odnajdź portal**.

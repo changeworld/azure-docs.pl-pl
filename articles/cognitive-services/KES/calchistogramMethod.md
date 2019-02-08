@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak użyć metody CalcHistogram w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f994a254e661cd245d2e953efd3bd595d50c6fc7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: aaa5b3a85c08f11d821557257de451b8ffc8a3fc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214317"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860460"
 ---
 # <a name="calchistogram-method"></a>calchistogram — metoda
 *Calchistogram* metoda oblicza obiektów dopasowywania wyrażeń zapytań ze strukturą i oblicza rozkład wartości atrybutu.
@@ -23,7 +23,7 @@ ms.locfileid: "55214317"
 ## <a name="request"></a>Żądanie
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-Name|Value|Opis
+Name (Nazwa)|Wartość|Opis
 ----|-----|-----------
 expr | Ciąg tekstowy | Wyrażenia zapytań ze strukturą, które określa jednostki indeksu, względem którego ma zostać obliczanie histogramów.
 Atrybuty | Ciąg tekstowy (domyślny = "") | Rozdzielana przecinkami lista atrybutów do dołączenia w odpowiedzi.

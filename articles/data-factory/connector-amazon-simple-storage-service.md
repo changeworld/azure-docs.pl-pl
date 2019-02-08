@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: jingwang
-ms.openlocfilehash: cd07343e056493369d2093651ecf7c466595f412
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 16d0002ec8e42eec92895aaf582a8c2b3df2c3a6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656587"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895265"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Kopiowanie danych z Amazon Simple Storage Service przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,7 +57,7 @@ Następujące właściwości są obsługiwane przez usługi Amazon S3 połączon
 | type | Właściwość type musi być równa **AmazonS3**. | Yes |
 | accessKeyId | Identyfikator klucza dostępu do kluczy tajnych. |Yes |
 | secretAccessKey | Sam klucz dostępu do kluczy tajnych. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
-| serviceUrl | Określ niestandardowy punkt końcowy S3, jeśli kopiujesz danych od dostawcy magazynu zgodny S3 innych niż Usługa Amazon S3 oficjalnych. Na przykład, aby [kopiowanie danych z usługi Google Cloud Storage](#copy-from-google-cloud-storage), określ `https://storage.googleapis.com`. | Nie |
+| serviceUrl | Określ niestandardowy punkt końcowy S3, jeśli kopiujesz danych od dostawcy magazynu zgodny S3 innych niż Usługa Amazon S3 oficjalnych. Na przykład, aby skopiować dane z usługi Google Cloud Storage, należy określić `https://storage.googleapis.com`. | Nie |
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli Twój magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 >[!TIP]

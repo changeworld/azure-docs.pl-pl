@@ -11,17 +11,18 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: bdb4db2d1a9447e8e328728288c1cf425c65a988
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: 3521f910ded2e24de9cfa7b1aa1d635843527ef5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511837"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878820"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Warstwy usługi w usłudze Azure SQL Database
 
 Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych programu SQL Server, która jest uwzględniany w środowisku chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy modele architektury, które są używane w usłudze Azure SQL Database:
+
 - [Ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) przeznaczone dla większości obciążeń ogólnego.
 - [Krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) przeznaczone dla obciążeń o małym opóźnieniu za pomocą jednej z replik do odczytu.
 - [W Hiperskali](sql-database-service-tier-hyperscale.md) przeznaczony dla bardzo dużych baz danych (maksymalnie 100 TB) przy użyciu wielu replik z możliwością odczytu.
@@ -40,8 +41,8 @@ Rozważ następujące źródła:
 - Po skonfigurowaniu rozmiar wymagany pojedynczej bazy danych (rozmiar MDF), 30% dodatkowego miejsca do magazynowania jest automatycznie dodawany do obsługi LDF
 - Określony rozmiar magazynu w wystąpieniu zarządzanym usługi musi być wielokrotność 32 GB.
 - Można wybrać żadnych rozmiar pojedynczej bazy danych między 10 GB i maksymalnej obsługiwanej
-  - Dla magazynu w warstwie standardowa należy zwiększyć lub zmniejszyć rozmiar w przyrostach co 10 GB
-  - Dla usługi Premium storage należy zwiększyć lub zmniejszyć rozmiar w partiach po 250 GB
+  - W przypadku usługi storage w warstwach usług standardowa lub ogólnego przeznaczenia należy zwiększyć lub zmniejszyć rozmiar w przyrostach co 10 GB
+  - W przypadku usługi storage w warstwach usług krytycznych w wersji premium lub buxiness zwiększyć lub zmniejszyć rozmiar w partiach po 250 GB
 - W przypadku warstwy usług ogólnego przeznaczenia `tempdb` używa dołączone dyski SSD i ten koszt przechowywania jest uwzględniona w cenie — rdzeń wirtualny.
 - W warstwie krytyczne dla działalności `tempdb` udziałów dołączonych dysków SSD przy użyciu pliki MDF i LDF i kosztach magazynowania w bazie danych tempDB jest uwzględniona w cenie — rdzeń wirtualny.
 

@@ -4,47 +4,47 @@ titlesuffix: Azure Cognitive Services
 description: Dowiedz się, atrybuty, które można użyć z jednostką papieru w interfejsu Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/31/2017
 ms.author: alch
-ms.openlocfilehash: d36a39f10f9e0129af3b730a65387d7108209004
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 240541dd76221ee19c96b162da02ced90fb0ad90
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168383"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873091"
 ---
 # <a name="paper-entity"></a>Jednostka papieru
 
 <sub> * Poniżej atrybuty są specyficzne dla jednostki papieru. (Ty = "0") </sub>
 
 
-Name (Nazwa)    |Opis                                        |Typ       | Operacje
+Name (Nazwa)    |Opis                                        |Type       | Operacje
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Identyfikator      |Identyfikator jednostki                                          |Int64      |Równa się
-Oś      |Dokument tytułu                                        |Ciąg     |Równa się,<br/>StartsWith
-L       |Kod języka dokument oddzielone "\@@@"            |Ciąg     |Równa się
+Oś      |Dokument tytułu                                        |String     |Równa się,<br/>StartsWith
+L       |Kod języka dokument oddzielone "\@@@"            |String     |Równa się
 Tak       |Rok papieru                                         |Int32      |Równa się,<br/>IsBetween
 D       |Data papieru                                         |Date       |Równa się,<br/>IsBetween
 DW      |Liczba cytatu                                     |Int32      |brak  
 ECC     |Cytat szacowana liczba                           |Int32      |brak
-AA. AuN  |Autor                                        |Ciąg     |Równa się,<br/>StartsWith
+AA. AuN  |Autor                                        |String     |Równa się,<br/>StartsWith
 AA.AuId |Tworzenie Identyfikatora                                          |Int64      |Równa się
-AA. AfN  |Nazwa przynależność do autora                            |Ciąg     |Równa się,<br/>StartsWith
+AA. AfN  |Nazwa przynależność do autora                            |String     |Równa się,<br/>StartsWith
 AA.AfId |ID przynależność do autora                              |Int64      |Równa się
 AA.S    |Kolejność Autor papieru                         |Int32      |Równa się
-F.FN    |Pole o nazwie analiza                                |Ciąg     |Równa się,<br/>StartsWith
+F.FN    |Pole o nazwie analiza                                |String     |Równa się,<br/>StartsWith
 F.FId   |Pole Identyfikator badania                                  |Int64      |Równa się
-J.JN    |Nazwa dziennika                                       |Ciąg     |Równa się,<br/>StartsWith
+J.JN    |Nazwa dziennika                                       |String     |Równa się,<br/>StartsWith
 J.JId   |Identyfikator dziennika                                         |Int64      |Równa się
-C.CN    |Nazwa serii konferencji                             |Ciąg     |Równa się,<br/>StartsWith
+C.CN    |Nazwa serii konferencji                             |String     |Równa się,<br/>StartsWith
 C.CId   |Identyfikator seria konferencji                               |Int64      |Równa się
 Identyfikator rId     |Identyfikator przywoływanego dokumentów                              |Int64[]    |Równa się
 W       |Wyrazy z tytułu dokument i abstrakcyjny                |Ciąg]   |Równa się
-E       |Rozszerzone metadane (zobacz w poniższej tabeli)                |Ciąg     |brak  
+E       |Rozszerzone metadane (zobacz w poniższej tabeli)                |String     |brak  
         
 
 

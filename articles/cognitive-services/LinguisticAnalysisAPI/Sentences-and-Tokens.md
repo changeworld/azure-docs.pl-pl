@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Więcej informacji na temat oddzielanie w interfejsu API analizy językowej wyrazów i tokenów.
 services: cognitive-services
 author: DavidLiCIG
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3b88336866909f527aa17cf77514a5ca4a4830b5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 435513023cf74bbc259cb922220d5f9940452d79
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213450"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879398"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Oddzielanie wyrazów i tokenów
 

@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: e4b217ada2aae159680b113b6ddcb41c9d121f24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753065"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894704"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse IP
 
@@ -92,7 +92,7 @@ Aby poprawić wydajność, reguły zapory IP poziomu serwera są tymczasowo prze
 > [!TIP]
 > Możesz użyć [inspekcji usługi SQL Database](sql-database-auditing.md) inspekcji zmian w zaporze serwera i na poziomie bazy danych.
 
-## <a name="manage-ip-firewall-rules-using-the-azure-portal"></a>Zarządzanie regułami zapory adresów IP przy użyciu witryny Azure portal
+## <a name="manage-server-level-ip-firewall-rules-using-the-azure-portal"></a>Zarządzanie regułami zapory na IP na poziomie serwera przy użyciu witryny Azure portal
 
 Aby ustawić regułę zapory na poziomie serwera IP w witrynie Azure portal, możesz albo przejść do strony Przegląd dla bazy danych Azure SQL lub na stronie Przegląd dla serwera usługi SQL Database.
 
@@ -196,7 +196,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 | [Delete Firewall Rule](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) (Usuwanie reguły zapory) |Serwer |Usuwa reguły zapory IP poziomu serwera |
 | [Pobierz reguły zapory](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Serwer | Pobiera reguły zapory IP poziomu serwera |
 
-## <a name="server-level-ip-firewall-rule-versus-a-database-level-ip-firewall-rule"></a>Reguła zapory adresów IP poziomu serwera i regułę zapory na poziomie bazy danych adresów IP
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>Poziom serwera i adres IP na poziomie bazy danych reguły zapory
 
 PYTANIE: Użytkownicy jedna baza danych powinna być w pełni odizolowane od innej bazy danych?
 Jeśli tak, należy udzielić dostępu przy użyciu reguły zapory IP poziomu bazy danych. Umożliwia to uniknięcie przy użyciu adresu IP reguły zapory poziomu serwera, które zezwolenie na dostęp przez zaporę do wszystkich baz danych, zmniejszenie głębokość obrony.

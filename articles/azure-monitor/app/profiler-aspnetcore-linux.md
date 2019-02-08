@@ -3,20 +3,21 @@ title: Profil aplikacji sieci web platformy ASP.NET Core platformy Azure w syste
 description: Omówienie pojęć i samouczek krok po kroku dotyczące sposobu używania Application Insights Profiler.
 services: application-insights
 documentationcenter: ''
-author: mrbullwinkle
+author: cweining
 manager: carmonm
+ms.reviewer: mbullwin
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
-ms.author: mbullwin
-ms.openlocfilehash: cb294f0a3c22d52bc40f30e1d8655aed185857c6
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.author: cweining
+ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118493"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884311"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Profil aplikacji sieci web platformy ASP.NET Core platformy Azure w systemie Linux za pomocą Application Insights Profiler
 
@@ -174,4 +175,4 @@ Pracujemy nad istnieje rozwiązanie tego problemu.
 ## <a name="next-steps"></a>Kolejne kroki
 Jeśli używasz kontenerów niestandardowych, które są hostowane przez usługę Azure App Service, postępuj zgodnie z instrukcjami [ Włącz Profiler usługi dla konteneryzowanych aplikacji platformy ASP.NET Core](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp) umożliwiające Application Insights Profiler.
 
-Zgłoś wszelkie problemy lub sugestie do repozytorium usługi Application Insights w witrynie GitHub: [Dotycząca usługi Application Insights — Profiler-AspNetCore: Problemy z](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).
+Zgłoś wszelkie problemy lub sugestie do repozytorium usługi Application Insights w witrynie GitHub: [ApplicationInsights-Profiler-AspNetCore: Problemy z](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/issues).

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9db6736813b6d99efad687581f19d23023e1593a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0ac37c2bb0430cc4299947638596be8698ae4a34
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814541"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892343"
 ---
 # <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>Tworzenie usługi WSFC, odbiornik i konfigurowanie wewnętrznego modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na maszynę Wirtualną programu SQL Server przy użyciu szablonu szybkiego startu platformy Azure
 W tym artykule opisano, jak częściowo zautomatyzować wdrożenia zawsze włączonej konfiguracji grupy dostępności dla maszyn wirtualnych serwera SQL na platformie Azure za pomocą szablonów szybkiego startu platformy Azure. Istnieją dwa szablony szybkiego startu platformy Azure, które są używane w ramach tego procesu. 
@@ -166,7 +166,7 @@ Grupa dostępności wybranego już użyty w odbiornika grupy dostępności szabl
 ### <a name="connection-only-works-from-primary-replica"></a>Połączenie działa tylko z repliki podstawowej
 To zachowanie jest prawdopodobnie po nieudanej **101-sql-vm-aglistener — setup** wdrożenia szablonu, pozostawiając konfiguracji wewnętrznego modułu równoważenia obciążenia w niespójnym stanie. Sprawdź, czy puli wewnętrznej bazy danych zawiera zestaw dostępności oraz istnieją reguły dla sondy kondycji i reguł równoważenia obciążenia. Jeśli brakuje niektórych elementów, konfiguracja wewnętrznego modułu równoważenia obciążenia jest niespójna. 
 
-Aby rozwiązać ten problem, Usuń odbiornika przy użyciu [PowerShell](#remove-availability-group-listener), usunąć wewnętrznego modułu równoważenia obciążenia w witrynie Azure portal i rozpocznij ponownie od [kroku 3](#step-3---manually-create-the-internal-load-balanced-ilb). 
+Aby rozwiązać ten problem, Usuń odbiornika przy użyciu [PowerShell](#remove-availability-group-listener), usunąć wewnętrznego modułu równoważenia obciążenia w witrynie Azure portal i rozpocznij ponownie od kroku 3. 
 
 ### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>Element BadRequest — można aktualizować tylko listy maszyn wirtualnych SQL
 Ten błąd może wystąpić podczas wdrażania **101-sql-vm-aglistener — setup** szablonu, jeśli odbiornik został usunięty za pośrednictwem programu SQL Server Management Studio (SSMS), ale nie został usunięty z maszyny Wirtualnej SQL dostawcy zasobów. Usuwanie odbiornik za pomocą programu SSMS nie powoduje usunięcia metadanych odbiornika od dostawcy zasobów maszyny Wirtualnej SQL; odbiornik muszą zostać usunięte od dostawcy zasobów za pomocą [PowerShell](#remove-availability-group-listener). 

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3a404c9f7abae979a4f4d54c6ff502a33edc9b7f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: bf79947ef3622bbbd1e41308497534a5599f8da6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814406"
+ms.locfileid: "55884481"
 documentType: LandingData
 title: 'Azure SQL Database: Pojedyncza baza danych'
 metadata:
@@ -80,6 +80,7 @@ sections:
     - html: (Wersja zapoznawcza) Nowy program SQL Server 2019 <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">przetwarzania zapytań inteligentnych</a> funkcje, takie jak <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">zmiennej tabeli odroczone kompilacji</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">tryb usługi batch w tabelach magazynu wierszy</a>, i <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> skalarne funkcji zdefiniowanej przez użytkownika ze śródwierszowaniem</a>.
     - html: (Wersja zapoznawcza) Nowe funkcje języka Transact-SQL, takich jak <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">agregacji APPROX_COUNT_DISTINCT</a> i <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">zbiorcze importowanie z usługi Azure Blob storage</a>.
     - html: (Wersja zapoznawcza) Nowe Online programu SQL Server 2019 <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">kompilacji</a> i skompiluj ponownie operacje indeksów klastrowanego magazynu kolumn.
+    - html: (Wersja zapoznawcza) Nowe <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">usługi Azure SQL Database usługi Machine Learning (przy użyciu języka R)</a>.
 - title: 5 minutowych przewodników Szybki Start
   items:
   - type: paragraph

@@ -1,21 +1,18 @@
 ---
 title: Pobieranie zasobów platformy Azure przy użyciu interfejsu API REST zdarzenia dotyczące kondycji | Dokumentacja firmy Microsoft
 description: Użyj interfejsów API REST platformy Azure, aby pobrać zdarzenia kondycji zasobów platformy Azure.
-services: Resource health
-author: rloutlaw
-ms.reviewer: routlaw
-manager: angerobe
+author: stephbaron
+ms.author: stbaron
 ms.service: service-health
 ms.custom: REST
 ms.topic: article
 ms.date: 06/06/2017
-ms.author: routlaw
-ms.openlocfilehash: 6e4bd5977eb1761a065d5583675e6fd405b4610a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6d83aed6910127ceb34b9a694f48ca9c19ab6d18
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750362"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878395"
 ---
 # <a name="get-resource-health-using-the-rest-api"></a>Pobierz kondycję zasobów przy użyciu interfejsu API REST 
 

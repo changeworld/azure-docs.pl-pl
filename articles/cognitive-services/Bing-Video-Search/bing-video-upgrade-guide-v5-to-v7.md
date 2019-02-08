@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Identyfikuje części Twojej aplikacji, należy zaktualizować do używania w wersji 7.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2587ae5070aec1a049c131874240e6e4ea794152
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 633981682bd8820d72a98b3fc6fbd802e0cd2afb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563239"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867226"
 ---
 # <a name="video-search-api-upgrade-guide"></a>Przewodnik uaktualnienia z interfejsu API wyszukiwania wideo
 

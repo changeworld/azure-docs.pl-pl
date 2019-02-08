@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Więcej informacji na temat składni wyszukiwania JSON, których można używać w interfejsu Academic Knowledge API.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: b3f0c5c22775a6eb0ab7a34592d816ed174539c0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fddd2291fe7fbb46c57d31e9aebc7fc6244df971
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196569"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884804"
 ---
 # <a name="json-search-syntax"></a>Składnia wyszukiwania JSON
 

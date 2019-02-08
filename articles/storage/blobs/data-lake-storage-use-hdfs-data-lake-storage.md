@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu interfejsu wiersza polecenia systemu plików HDFS za pomocą usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza)
-description: Wprowadzenie do systemu plików HDFS interfejs wiersza polecenia dla Data Lake Gen2 — wersja zapoznawcza
+title: Za pomocą usługi Azure Data Lake Storage Gen2 przy użyciu interfejsu wiersza polecenia systemu plików HDFS
+description: Wprowadzenie do systemu plików HDFS interfejs wiersza polecenia dla Gen2 Lake magazynu danych
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2691346433b3cc29b22446152ea797cefb02a380
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241274"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874191"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Przy użyciu interfejsu wiersza polecenia systemu plików HDFS z Gen2 Lake magazynu danych
 
-Usługa Azure Data Lake Gen2 — wersja zapoznawcza pozwala zarządzać i uzyskiwać dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Czy istnieje klastra usługi HDInsight, dołączony, lub uruchomić zadanie platformy Apache Spark przy użyciu usługi Azure Databricks w celu przeprowadzenia analizy danych przechowywanych na koncie usługi Azure Storage, można użyć interfejsu wiersza polecenia (CLI) do pobrania i manipulowania nimi załadowanych danych.
+Azure Data Lake magazynu Gen2 pozwala zarządzać i uzyskiwać dostęp do danych, tak samo, jak za pomocą [pliku System (HDFS, Hadoop Distributed)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Czy istnieje klastra usługi HDInsight, dołączony, lub uruchomić zadanie platformy Apache Spark przy użyciu usługi Azure Databricks w celu przeprowadzenia analizy danych przechowywanych na koncie usługi Azure Storage, można użyć interfejsu wiersza polecenia (CLI) do pobrania i manipulowania nimi załadowanych danych.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>System plików HDFS interfejsu wiersza polecenia przy użyciu HDInsight
 

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 630ecb5f6efff9f08bbf5d2f1dec1c35af30b673
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 1ebbce89c7a977dd9620bd8be67da647c107eadc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164913"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889357"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Uaktualnienie programu SharePoint 2010 do programu SharePoint 2013, a następnie zainstaluj StorSomple Adapter dla programu SharePoint
 > [!IMPORTANT]
 > Wszystkie pliki, które wcześniej zostały przeniesione do magazynu zewnętrznego za pośrednictwem SPZ nie będą dostępne do momentu zakończenia uaktualnienia i SPZ jest aktywna, ponownie. Aby ograniczyć wpływu na użytkowników, wykonaj uaktualnienie ani ponowna instalacja podczas okna zaplanowanej konserwacji.

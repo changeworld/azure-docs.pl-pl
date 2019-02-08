@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych do usługi Azure Data Lake Gen2 — wersja zapoznawcza korzystanie z narzędzia DistCp | Dokumentacja firmy Microsoft
-description: Kopiowanie danych do i z Data Lake Gen2 — wersja zapoznawcza za pomocą narzędzia DistCp
+title: Kopiowanie danych do usługi Azure Data Lake Storage Gen2 korzystanie z narzędzia DistCp | Dokumentacja firmy Microsoft
+description: Kopiowanie danych do i z Data Lake Storage Gen2 za pomocą narzędzia DistCp
 services: storage
 author: seguler
 ms.subservice: data-lake-storage-gen2
@@ -8,14 +8,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 9c12f96399de218241c8aa7ed686113c17a7410c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244151"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864064"
 ---
-# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2-preview"></a>Kopiowanie danych między obiektów blob usługi Azure Storage i Azure Data Lake Storage Gen2 (wersja zapoznawcza) za pomocą narzędzia DistCp
+# <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Kopiowanie danych między obiektów blob usługi Azure Storage i Azure Data Lake Storage Gen2 za pomocą narzędzia DistCp
 
 Możesz użyć [DistCp](https://hadoop.apache.org/docs/stable/hadoop-distcp/DistCp.html) do skopiowania danych między kontem magazynu ogólnego przeznaczenia w wersji 2 i konto magazynu ogólnego przeznaczenia w wersji 2 z hierarchicznej przestrzeni nazw, włączone. Ten artykuł zawiera instrukcje na temat za pomocą narzędzia DistCp.
 
@@ -24,8 +24,8 @@ Narzędzia DistCp oferuje szereg parametrów wiersza polecenia i zdecydowanie za
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Istniejące konto magazynu platformy Azure bez możliwości w wersji zapoznawczej Data Lake Storage Gen2 (hierarchicznej przestrzeni nazw) włączone**.
-* **Konto usługi Azure Storage za pomocą Data Lake Storage Gen2 włączoną funkcję (wersja zapoznawcza)**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Tworzenie konta magazynu Azure Data Lake Gen2 — wersja zapoznawcza](data-lake-storage-quickstart-create-account.md)
+* **Istniejące konto magazynu platformy Azure bez Data Lake Storage Gen2 możliwości (hierarchicznej przestrzeni nazw)**.
+* **Konto usługi Azure Storage z włączoną funkcją Data Lake Storage Gen2**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Tworzenie konta magazynu Azure Data Lake Storage Gen2](data-lake-storage-quickstart-create-account.md)
 * **System plików** , została utworzona w ramach konta magazynu z hierarchicznej przestrzeni nazw, włączone.
 * **Klaster usługi Azure HDInsight** dzięki dostępowi do konta magazynu z magazynu Gen2 jeziora danych, włączone. Zobacz [użycia usługi Azure Data Lake magazynu Gen2 za pomocą usługi Azure HDInsight clusters](data-lake-storage-use-hdi-cluster.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
 

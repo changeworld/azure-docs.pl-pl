@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2ef37e9661139b0b1d24ddc005df7bf338397803
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163810"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856363"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Zarządzanie logowania jednokrotnego i dostosowywanie tokenu za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -52,7 +52,18 @@ Następujące wartości są ustawione w poprzednim przykładzie:
 - **Czas życia tokenu odświeżania** — czas życia tokenu odświeżania wartość została ustawiona za pomocą **refresh_token_lifetime_secs** elementu metadanych. Wartość domyślna to 1209600 sekund (14 dni).
 - **Czas życia okna przewijania tokenu odświeżania** — Jeśli chcesz Ustaw okres istnienia okna przewijania tokenu odświeżania, ustaw wartość **rolling_refresh_token_lifetime_secs** elementu metadanych. Wartość domyślna to 7776000 (90 dni). Jeśli nie chcesz wymusić okres istnienia okna przewijania, należy zastąpić element o `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
 - **Oświadczenie wystawcy (iss)** -Oświadczenie wystawcy (iss) została ustawiona za pomocą **IssuanceClaimPattern** elementu metadanych. Odpowiednie wartości są `AuthorityAndTenantGuid` i `AuthorityWithTfp`.
-- **Ustawienie oświadczenie reprezentujące identyfikator zasad** — opcje ustawienie tej wartości są `TFP` (framework zasady zaufania) i `ACR` (odwołanie w kontekście uwierzytelniania). `TFP` jest to zalecana wartość. Ustaw **AuthenticationContextReferenceClaimPattern** z wartością `None`. W swojej **OutputClaims** , należy dodać ten element:
+- **Ustawienie oświadczenie reprezentujące identyfikator zasad** — opcje ustawienie tej wartości są `TFP` (framework zasady zaufania) i `ACR` (odwołanie w kontekście uwierzytelniania). `TFP` jest to zalecana wartość. Ustaw **AuthenticationContextReferenceClaimPattern** z wartością `None`. 
+
+    W **ClaimsSchema** elementu Dodawanie tego elementu: 
+    
+    ```XML
+    <ClaimType Id="trustFrameworkPolicy">
+      <DisplayName>Trust framework policy name</DisplayName>
+      <DataType>string</DataType>
+    </ClaimType>
+    ```
+    
+    W swojej **OutputClaims** elementu Dodawanie tego elementu:
     
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />

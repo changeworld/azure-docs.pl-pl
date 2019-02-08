@@ -4,19 +4,19 @@ titlesuffix: Face - Azure Cognitive Services
 description: Ustawienia konfiguracji dla kontenerów.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 218343db4d8ac7e35f58951ee177f5c288aed3d9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb5bea5fb74c48e4568898d77763d442db5b41c7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476421"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870541"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurowanie kontenerów platformy Docker twarzy
 

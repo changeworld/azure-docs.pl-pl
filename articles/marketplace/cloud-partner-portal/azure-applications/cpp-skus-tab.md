@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0af7a7fd43bba46de6faa770bf3042fbf58a90f6
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7f73e71677a700ba8047246addb2d27799c5a616
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196982"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890902"
 ---
 # <a name="azure-application-skus-tab"></a>Karta jednostki SKU aplikacji platformy Azure
 
@@ -90,7 +90,7 @@ Skonfiguruj następujące ustawienia jednostki SKU:
   >[!NOTE]
   >Zapisz zmiany cen, aby włączyć eksportu/importu danych cen.
 
-- **Uproszczony ceny waluty** -wprowadź ceny dla jednostki SKU w USD miesięcznie. Musi to być takie same jak ceny stary. Aby uzyskać więcej informacji, zobacz [uproszczony ceny waluty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer#simplified-currency-pricing).
+- **Uproszczony ceny waluty** -wprowadź ceny dla jednostki SKU w USD miesięcznie. Musi to być takie same jak ceny stary. Aby uzyskać więcej informacji, zobacz [uproszczony ceny waluty](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-update-existing-offer).
 
 ### <a name="package-details-for-solution-template"></a>Szczegóły pakietu szablon rozwiązania
 
@@ -112,7 +112,7 @@ Podaj następujące szczegóły pakietu:
 
 - **Wersja** — wersja pakietu, który trzeba będzie przekazać. Tagi wersji musi być w postaci X.Y.Z, gdzie X, Y i Z są liczbami całkowitymi.
 - **Plik pakietu (zip)** — ten pakiet zawiera następujące pliki zapisane w pliku zip.
-  - applianceMainTemplate.json — pliki szablonu wdrożenia, który służy do wdrażania rozwiązania/aplikacji oraz tworzenia zasobów, które są zdefiniowane. Aby uzyskać więcej informacji, zobacz [Szybki Start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal). 
+  - applianceMainTemplate.json — pliki szablonu wdrożenia, który służy do wdrażania rozwiązania/aplikacji oraz tworzenia zasobów, które są zdefiniowane. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal). 
   - applianceCreateUIDefinition.json — ten plik jest używany przez witryny Azure portal do wygenerowania interfejsu użytkownika do obsługi administracyjnej rozwiązania/aplikacji. Aby uzyskać więcej informacji, zobacz [interfejs użytkownika portalu tworzenie platformy Azure dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
   - mainTemplate.json — plik szablonu, który zawiera tylko zasób Microsoft.Solution/appliances. Aby uzyskać więcej informacji, zobacz [Omówienie struktury i składni szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates). <br>
 Należy zwrócić uwagę następujących właściwości kluczy tego zasobu:

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/22/2017
+ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: 76ebdc85db2c65b1ad99c1e7abe5e697f1c1284c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: dd09dd337cfe11729ef3ddc5d9b19f024d64300e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064002"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873006"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Skonfiguruj co najmniej jeden Always On odbiorników grup dostępności — Resource Manager
 W tym temacie przedstawiono sposób:
@@ -40,16 +40,42 @@ Powiązane tematy obejmują:
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
+## <a name="verify-powershell-version"></a>Sprawdź wersję programu PowerShell
+
+Przykłady w niniejszym artykule są badane za pomocą programu Azure PowerShell w wersji 5.4.1 modułu.
+
+Sprawdź modułu programu PowerShell jest 5.4.1 lub nowszej.
+
+Zobacz [Instalowanie modułu Azure PowerShell](http://docs.microsoft.com/powershell/azure/install-az-ps).
+
 ## <a name="configure-the-windows-firewall"></a>Skonfiguruj zaporę Windows
+
 Skonfiguruj zaporę Windows, aby zezwolić na dostęp do programu SQL Server. Reguły zapory zezwalają na połączenia protokołu TCP do użycia portów w programie wystąpienia programu SQL Server i badania odbiornika. Aby uzyskać szczegółowe instrukcje, zobacz [skonfigurować zaporę Windows dla dostępu aparatu bazy danych](https://msdn.microsoft.com/library/ms175043.aspx#Anchor_1). Utwórz regułę ruchu przychodzącego dla portu programu SQL Server i port sondy.
 
 Jeśli jesteś ograniczanie dostępu przy użyciu grupy zabezpieczeń sieci platformy Azure, upewnij się, że reguły Zezwalaj obejmują adresy IP maszyn wirtualnych serwera SQL w wewnętrznej bazie danych, pływający adres IP modułu równoważenia obciążenia adresów dla odbiornika grupy dostępności i adres IP podstawowe klastra, jeśli ma to zastosowanie.
 
+## <a name="determine-the-load-balancer-sku-required"></a>Określić wymagane jednostki SKU modułu równoważenia obciążenia
+
+[Usługa Azure load balancer](../../../load-balancer/load-balancer-overview.md) jest dostępna w 2 jednostki SKU: Podstawowa i standardowa. Zaleca się standardowego modułu równoważenia obciążenia. W przypadku maszyn wirtualnych w zestawie dostępności, podstawowego modułu równoważenia obciążenia jest dozwolony. Standardowego modułu równoważenia obciążenia wymaga, że wszystkie adresy IP maszyn wirtualnych za pomocą standardowe adresy IP.
+
+Bieżący [szablonów Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) dostępności grupy używa podstawowego modułu równoważenia obciążenia za pomocą podstawowych adresów IP.
+
+Przykłady w niniejszym artykule Określ standardowego modułu równoważenia obciążenia. W przykładach skrypt zawiera `-sku Standard`.
+
+```PowerShell
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+```
+
+Aby utworzyć podstawowego modułu równoważenia obciążenia, należy usunąć `-sku Standard` z wiersza, który tworzy moduł równoważenia obciążenia. Na przykład:
+
+```PowerShell
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe
+```
+
 ## <a name="example-script-create-an-internal-load-balancer-with-powershell"></a>Przykładowy skrypt: Tworzenie wewnętrznego modułu równoważenia obciążenia przy użyciu programu PowerShell
+
 > [!NOTE]
-> Jeśli utworzono grupy dostępności z [szablonów Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), wewnętrznego modułu równoważenia obciążenia został już utworzony. 
-> 
-> 
+> Jeśli utworzono grupy dostępności z [szablonów Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), wewnętrznego modułu równoważenia obciążenia został już utworzony.
 
 Poniższy skrypt programu PowerShell tworzy wewnętrznego modułu równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP modułu równoważenia obciążenia. Aby uruchomić skrypt, Otwórz program Windows PowerShell ISE, a następnie wklej skrypt w okienku skryptów. Użyj `Connect-AzureRmAccount` zalogować się do programu PowerShell. Jeśli masz wiele subskrypcji platformy Azure, użyj `Select-AzureRmSubscription ` Aby ustawić subskrypcję. 
 
@@ -86,7 +112,7 @@ $SQLHealthProbe = New-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -Protoco
 
 $ILBRule = New-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
 
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe 
+$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
 
 $bepool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
 

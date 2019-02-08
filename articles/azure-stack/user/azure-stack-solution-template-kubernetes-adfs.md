@@ -15,12 +15,12 @@ ms.date: 02/05/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: df84562c3ff95ac6fef65ea7c9911d5e12e558ef
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: a197a366d70958859eed47a9d66606adf80344e4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744967"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891276"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack przy użyciu usługi Active Directory Federation Services
 
@@ -60,7 +60,7 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
         RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
     ```
 
-2. Przypisz nową nazwę główną usługi rolę współautora do subskrypcji. Aby uzyskać instrukcje, zobacz [przypisania roli](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal#assign-role-to-service-principal).
+2. Przypisz nową nazwę główną usługi rolę współautora do subskrypcji. Aby uzyskać instrukcje, zobacz [przypisania roli](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
 3. Tworzenie magazynu kluczy do przechowywania certyfikatu do wdrożenia.
 

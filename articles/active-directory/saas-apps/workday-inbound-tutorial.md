@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
-ms.openlocfilehash: d4a47130dadb782f41579bd20c4b5e1d1e9978bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 11541318ca7e693cc422ecaeab182407cc5bd736
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188596"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895758"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
 
@@ -532,7 +532,7 @@ W tej sekcji skonfigurujesz przepływ danych użytkownika z produktu Workday do 
 | **Firmy**         | Firmy   |     |  Tworzenie i aktualizowanie |
 | **SupervisoryOrganization**  | department  |     |  Tworzenie i aktualizowanie |
 | **ManagerReference**   | menedżer  |     |  Tworzenie i aktualizowanie |
-| **BusinessTitle**   |  tytuł     |     |  Tworzenie i aktualizowanie | 
+| **BusinessTitle**   |  title     |     |  Tworzenie i aktualizowanie | 
 | **AddressLineData**    |  Adres  |     |   Tworzenie i aktualizowanie |
 | **Jednostki administracyjnej**   |   l   |     | Tworzenie i aktualizowanie |
 | **CountryReferenceTwoLetter**      |   co |     |   Tworzenie i aktualizowanie |
@@ -713,7 +713,7 @@ Po ukończeniu inicjowania obsługi administracyjnej konfiguracji produktu Workd
 
 3. Ta operacja zostanie uruchomione początkowej synchronizacji może potrwać zmienną liczbę godzin w zależności od liczby użytkowników w ramach dzierżawy produktu Workday. 
 
-4. W każdej chwili sprawdzić **dzienniki inspekcji** kartę w witrynie Azure portal, aby zobaczyć, jakie akcje przeprowadził usługi aprowizacji. Dzienniki inspekcji zawiera listę wszystkich zdarzeń indywidualnych synchronizacji, wykonywane przez usługę aprowizacji, np użytkowników ich odczytu z produktu Workday i następnie później dodane lub zaktualizowane w usłudze Active Directory. Zapoznaj się [Rozwiązywanie problemów](#troubleshooting-provisioning-issues) sekcję, aby uzyskać instrukcje dotyczące sposobu przeglądać dzienniki inspekcji i poprawki błędów aprowizacji.
+4. W każdej chwili sprawdzić **dzienniki inspekcji** kartę w witrynie Azure portal, aby zobaczyć, jakie akcje przeprowadził usługi aprowizacji. Dzienniki inspekcji zawiera listę wszystkich zdarzeń indywidualnych synchronizacji, wykonywane przez usługę aprowizacji, np użytkowników ich odczytu z produktu Workday i następnie później dodane lub zaktualizowane w usłudze Active Directory. Zapoznaj się z sekcją rozwiązywanie problemów, aby uzyskać instrukcje, jak przeglądać dzienniki inspekcji i usuń błędy inicjowania obsługi administracyjnej.
 
 5. Po ukończeniu synchronizacji początkowej zapisze raport z podsumowaniem inspekcji **aprowizacji** karty, jak pokazano poniżej.
 

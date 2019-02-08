@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a83cf6b37a28ec38165778faa7a9ecc266cce7bd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870342"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858267"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Replikacja geograficzna w usłudze Azure Container Registry
 
@@ -26,14 +26,18 @@ Rejestr z replikacją geograficzną zapewnia następujące korzyści:
 * Nie trzeba ponosić opłat dodatkowy ruch wychodzący jako obrazy są pobierane z lokalnego, replikowany rejestru w tym samym regionie, co hosta kontenera
 * To samo Zarządzanie rejestru w wielu regionach
 
+> [!NOTE]
+> Jeśli zachodzi potrzeba obsługa kopiowania obrazów kontenerów w więcej niż jednej usługi Azure container registry, Azure Container Registry obsługuje również [obraz importowania](container-registry-import-images.md). Na przykład w przepływie pracy DevOps zaimportowaniem obrazu z rejestru rozwoju do rejestru produkcji, bez konieczności używania poleceń platformy Docker.
+>
+
 ## <a name="example-use-case"></a>Przykład przypadek użycia
-Contoso uruchamia obecności publicznej witryny sieci Web znajdujących się w różnych Stanach Zjednoczonych, Kanadzie i Europie. Aby obsługiwać te rynki z zawartości lokalnej i sieci w pobliżu, uruchamia Contoso [usługi Azure Container Service](/azure/container-service/kubernetes/) klastrów Kubernetes (ACS), w regionie zachodnie stany USA, wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Aplikację witryny sieci Web, wdrażane jako obraz platformy Docker, korzysta z tego samego kodu i obrazów we wszystkich regionach. Zawartość lokalnego do tego regionu są pobierane z bazy danych, która jest obsługiwana w sposób unikatowy w każdym regionie. Każde wdrożenie regionalnych ma konfigurację unikatowy dla zasobów, takich jak lokalnej bazy danych.
+Contoso uruchamia obecności publicznej witryny sieci Web znajdujących się w różnych Stanach Zjednoczonych, Kanadzie i Europie. Aby obsługiwać te rynki z zawartości lokalnej i sieci w pobliżu, uruchamia Contoso [usługi Azure Kubernetes Service](/azure/aks/) (AKS), klastrów w regionie zachodnie stany USA, wschodnie stany USA, Kanada Środkowa i Europa Zachodnia. Aplikację witryny sieci Web, wdrażane jako obraz platformy Docker, korzysta z tego samego kodu i obrazów we wszystkich regionach. Zawartość lokalnego do tego regionu są pobierane z bazy danych, która jest obsługiwana w sposób unikatowy w każdym regionie. Każde wdrożenie regionalnych ma konfigurację unikatowy dla zasobów, takich jak lokalnej bazy danych.
 
 Zespół deweloperów znajduje się w Seattle, WA, przy użyciu Centrum danych w regionie zachodnie stany USA.
 
 ![Wypychanie do wielu rejestrów](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Wypychanie do wielu rejestrów*
 
-Przed użyciem funkcji replikacji geograficznej, firma Contoso ma rejestru amerykańskiej w regionie zachodnie stany USA, za pomocą dodatkowych rejestru w regionie Europa Zachodnia. Aby obsługiwać te różnych regionach, zespół miał wypchnąć obrazy do dwóch różnych rejestrów.
+Przed użyciem funkcji replikacji geograficznej, firma Contoso ma rejestru amerykańskiej w regionie zachodnie stany USA, za pomocą dodatkowych rejestru w regionie Europa Zachodnia. Do obsługi tych różnych regionach, zespół opracowujący wypchnąć obrazy do dwóch różnych rejestrów.
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2

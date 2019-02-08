@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 1430bc4a9de863c25e40a2655f0a1cd7a75ae0f7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561403"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858284"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurowanie i zarządzanie nimi zabezpieczeń usługi Azure SQL Database funkcja przywracania geograficznego lub pracy awaryjnej
 
@@ -32,6 +32,9 @@ Jest głównym to kompromis Zarządzanie proces odzyskiwania po awarii w skali j
 ## <a name="how-to-configure-logins-and-users"></a>Sposób konfigurowania kont logowania i użytkowników
 
 Jeśli używasz kont logowania i użytkowników (zamiast zawartych użytkowników), należy wykonać dodatkowe kroki, aby upewnić się, że tej samej nazwy logowania istnieją w bazie danych master. W poniższych sekcjach opisano zagadnienia związane i dodatkowe kroki.
+
+  >[!NOTE]
+  > Istnieje również możliwość logowania do usługi Azure Active Directory (AAD) umożliwia zarządzanie bazami danych. Aby uzyskać więcej informacji, zobacz [kont logowania Azure SQL i użytkownicy](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Konfigurowanie dostępu użytkowników do dodatkowej lub odzyskanej bazy danych
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 8bfa4178baae0d92f7efb5ea156cfd35a8b32b1b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 08189522f4f73e996ed98f3996f87da8d93b5d2a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157469"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895639"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-the-azure-cli"></a>Kierowanie ruchem sieciowym za pomocą tabeli tras z użyciem wiersza polecenia platformy Azure
 
@@ -44,7 +44,7 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 
 ## <a name="create-a-route-table"></a>Tworzenie tabeli tras
 
-Zanim będzie można utworzyć tabelę tras, Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group#az_group_create) dla wszystkich zasobów utworzonych w tym artykule. 
+Zanim będzie można utworzyć tabelę tras, Utwórz grupę zasobów za pomocą [Tworzenie grupy az](/cli/azure/group) dla wszystkich zasobów utworzonych w tym artykule. 
 
 ```azurecli-interactive
 # Create a resource group.
@@ -78,7 +78,7 @@ az network route-table route create \
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Kojarzenie tabeli tras z podsiecią
 
-Zanim skojarzysz tabelę tras z podsiecią, musisz utworzyć sieć wirtualną i podsieć. Utwórz sieć wirtualną z jedną podsiecią z [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet#az_network_vnet_create).
+Zanim skojarzysz tabelę tras z podsiecią, musisz utworzyć sieć wirtualną i podsieć. Utwórz sieć wirtualną z jedną podsiecią z [tworzenie sieci wirtualnej sieci az](/cli/azure/network/vnet).
 
 ```azurecli-interactive
 az network vnet create \
@@ -107,7 +107,7 @@ az network vnet subnet create \
   --address-prefix 10.0.2.0/24
 ```
 
-Skojarz *myRouteTablePublic* tabelę tras w celu *publicznych* podsieć o [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update).
+Skojarz *myRouteTablePublic* tabelę tras w celu *publicznych* podsieć o [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet).
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -136,7 +136,7 @@ az vm create \
 
 W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie należy kontynuować do następnego kroku, dopóki nie zakończy tworzenia maszyny Wirtualnej platformy Azure i zwraca dane wyjściowe o maszynie Wirtualnej. 
 
-Aby karta sieciowa mogła przekazywać dalej wysyłany do niej ruch sieciowy, który nie jest przeznaczony dla jej własnego adresu IP, musi być włączone przekazywanie adresu IP dla interfejsu sieciowego. Włączanie przekazywania adresów IP dla interfejsu sieciowego z [aktualizacji karty sieciowej sieci az](/cli/azure/network/nic#az_network_nic_update).
+Aby karta sieciowa mogła przekazywać dalej wysyłany do niej ruch sieciowy, który nie jest przeznaczony dla jej własnego adresu IP, musi być włączone przekazywanie adresu IP dla interfejsu sieciowego. Włączanie przekazywania adresów IP dla interfejsu sieciowego z [aktualizacji karty sieciowej sieci az](/cli/azure/network/nic).
 
 ```azurecli-interactive
 az network nic update \
@@ -145,7 +145,7 @@ az network nic update \
   --ip-forwarding true
 ```
 
-W ramach maszyny wirtualnej system operacyjny lub aplikacja działająca na maszynie wirtualnej musi także móc przekazywać dalej ruch sieciowy. Włączanie przekazywania adresów IP w ramach systemu operacyjnego maszyny Wirtualnej za pomocą [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension#az_vm_extension_set):
+W ramach maszyny wirtualnej system operacyjny lub aplikacja działająca na maszynie wirtualnej musi także móc przekazywać dalej ruch sieciowy. Włączanie przekazywania adresów IP w ramach systemu operacyjnego maszyny Wirtualnej za pomocą [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension):
 
 ```azurecli-interactive
 az vm extension set \
@@ -268,7 +268,7 @@ Zamykanie sesji SSH do obu *myVmPublic* i *myVmPrivate* maszyn wirtualnych.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure/group#az_group_delete) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
+Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure/group) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

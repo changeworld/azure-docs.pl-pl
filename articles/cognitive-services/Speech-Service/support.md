@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Jak uzyskać pomoc i Obsługa pytań i problemów podczas tworzenia aplikacji, które integrują się z usługą mowy
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: 9ed4f14ee5c3f6023e5529aca7fbd824f5ca460a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 88efa6b16e33fe928ad9354b7283f7c651e6710c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207041"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881304"
 ---
 # <a name="support-and-help-options"></a>Opcje pomocy technicznej i pomocy
 
@@ -28,7 +28,7 @@ To właśnie zaczynają zapoznaj się z funkcji usługi mowy? Możesz wdrażania
 > * Jeśli znajdziesz problem z jednym z przykładów w witrynie GitHub podnieść *GitHub* problem.
 > * Wyszukaj rozwiązanie w *UserVoice forum*.
 
-## <a name="stay-informed"></a>Bądź na bieżąco z informacjami
+## <a name="stay-informed"></a>Bądź na bieżąco
 
 Wiadomości o usługach Cognitive Services są gromadzone w [blog usług Cognitive Services](https://azure.microsoft.com/blog/topics/cognitive-services/). Najnowsze informacje dotyczące usługi rozpoznawania mowy, śledzić [blog usługi mowy](https://azure.microsoft.com/blog/tag/speech-service/).
 

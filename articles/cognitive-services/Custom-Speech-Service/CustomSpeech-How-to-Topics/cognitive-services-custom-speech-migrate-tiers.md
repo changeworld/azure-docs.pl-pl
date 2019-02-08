@@ -8,13 +8,13 @@ ms.service: cognitive-services
 ms.subservice: custom-speech
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: panosper
-ms.openlocfilehash: 71aa20c779ae0c73db3d7ce6f267524c5bf71ea5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: nitinme
+ms.openlocfilehash: 8e6c662545ae1275b2193341f9311f403551671f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214572"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858257"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>Migracja wdrożenia do nowego modelu cen
 

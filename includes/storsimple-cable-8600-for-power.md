@@ -4,16 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8e6db54853efcba4d648c1d3bc793a9d1ce57441
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 9b9922602218280d58331a755ed0dfed7df96f40
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165374"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889557"
 ---
-<!--author=alkohli last changed: 9/16/15-->
-
-
 #### <a name="to-cable-your-device-for-power"></a>Aby Podłączanie kabli do urządzenia zasilania
 > [!NOTE]
 > Zarówno obudów w urządzeniu StorSimple obejmują PCMs nadmiarowe. Dla każdej obudowie PCMs musi być zainstalowane i połączone z różnymi źródłami zasilania aby zapewnić wysoką dostępność.
@@ -44,7 +41,7 @@ ms.locfileid: "50165374"
     |:--- |:--- |
     | 1 |Podstawowy obudowy |
     | 2 |MODULE PCM 0 |
-    | 3 |MODULE PCM 1 |
+    | 3 |PCM 1 |
     | 4 |Kontrolera 0 |
     | 5 |Kontrolera 1 |
     | 6 |Kontrolera EBOD 0 |

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ten samouczek przeprowadzi Cię przez tworzenie bota pytań i odpowiedzi, przy użyciu usługi Azure Bot service w wersji 3 w witrynie Azure portal.
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker`
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: tulasim
-ms.openlocfilehash: 1e1152f810bffb2ab4dfe230c2d3b3c2a8198492
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 930d2d7279f23974e937fd0d858891d0bcaa1291
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811923"
+ms.locfileid: "55869164"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>Samouczek: Utwórz Bota pytań i odpowiedzi z usługi Azure Bot Service w wersji 3
 

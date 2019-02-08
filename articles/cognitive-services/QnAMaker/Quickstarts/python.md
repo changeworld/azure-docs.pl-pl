@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Pobierz Python informacji i przykładowy kod w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ca0d8bcbf2d4b050560d1575ef690205eacca830
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9ff23ab0314012c32e75e667997a2e6c8f61ecb7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222171"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865764"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>Jak używać usługi QnA Maker interfejsu API REST przy użyciu języka Python
 <a name="HOLTop"></a>

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Więcej informacji na temat format gramatyki w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f3cb307a52cfddebfa97c1b8608549acdd89169d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 72dec3effe5e350818c01cf65c9140e778effd17
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215077"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860290"
 ---
 # <a name="grammar-format"></a>Format gramatyki
 
@@ -128,8 +128,8 @@ W poniższej tabeli wymieniono obsługiwane `op` wartości dla każdego typu atr
 
 | Typ atrybutu | Wartość operacji | Opis | Operacja indeksu
 |----|----|----|----|
-| Ciąg | eq | Dokładne dopasowanie ciągu | równa się |
-| Ciąg | starts_with | Dopasowanie prefiksu w ciągu | starts_with |
+| String | eq | Dokładne dopasowanie ciągu | równa się |
+| String | starts_with | Dopasowanie prefiksu w ciągu | starts_with |
 | Podwójne typu Int32, Int64, | eq |  Dopasowanie dokładne liczbowe | równa się |
 | Podwójne typu Int32, Int64, | lt, le, gt, ge | Dopasowanie liczbowych nierówności (<, < =, >, > =) | is_between |
 | Podwójne typu Int32, Int64, | starts_with | Dopasowanie prefiksu wartości w notacji dziesiętnej | starts_with |

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: a4fc037ed566905133f59163ef99d5e107ca4bcc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e47bf2a75b06f0804e446b0fdde4215b6e8193f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190925"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874723"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) pozwala zautomatyzować procesy tworzenia, obs
 
 * Możliwość dopasowania istniejących tożsamości między systemami źródłowym i docelowym.
 * Mapowania atrybutów można dostosowywać, które określają, jakie dane użytkownika powinna przepływać z systemu źródłowego do systemu docelowego.
-* Opcjonalne wiadomości e-mail dla alertów do inicjowania obsługi błędów
+* Alerty e-mail opcjonalne do inicjowania obsługi błędów.
 * Raportowanie i Dzienniki aktywności ułatwiające monitorowanie i rozwiązywanie problemów.
 
 ## <a name="why-use-automated-provisioning"></a>Dlaczego warto używać automatyczne Inicjowanie obsługi?
@@ -47,7 +47,7 @@ Azure Active Directory (Azure AD) pozwala zautomatyzować procesy tworzenia, obs
 Niektóre typowe zresztą za używanie tej funkcji to:
 
 * Unikanie kosztów, nieefektywności i błędu ludzkiego związanego z ręcznego procesu inicjowania obsługi administracyjnej.
-* Unikanie kosztów związanych z udostępniania i utrzymywania niestandardowej inicjowania obsługi administracyjnej rozwiązania i skrypty
+* Unikanie kosztów związanych z udostępniania i utrzymywania niestandardowej inicjowania obsługi administracyjnej rozwiązania i skryptów.
 * Aby zabezpieczyć Twoją organizację, natychmiastowe usuwanie tożsamości użytkowników z kluczowych aplikacjach SaaS, gdy opuszczają organizację.
 * Łatwo zaimportować dużą liczbę użytkowników do określonej aplikacji SaaS lub systemu.
 * Aby cieszyć się o jeden zestaw zasad, aby określić, kto jest aprowizowana i kto może się zalogować do aplikacji.
@@ -107,7 +107,7 @@ Na ekranie zarządzania aplikacji aprowizacji jest skonfigurowana w **aprowizacj
 
 ![Ustawienia](./media/user-provisioning/provisioning_settings1.PNG)
 
-* **Filtrami zakresu** poinformować usługę aprowizacji użytkowników i grupy w systemie źródłowym powinny zostać aprowizowane i/lub anulowanie aprowizacji do systemu docelowego. Istnieją dwa aspekty filtrami, które są oceniane razem zakresu określające, który znajduje się w zakresie do inicjowania obsługi:
+* **Filtrami zakresu** poinformować usługę aprowizacji użytkowników i grup w systemie źródłowym powinny zostać aprowizowane i/lub anulowanie aprowizacji do systemu docelowego. Istnieją dwa aspekty filtrami, które są oceniane razem zakresu określające, który znajduje się w zakresie do inicjowania obsługi:
 
     * **Filtrować dane według wartości atrybutów** — menu "Zakres obiektów źródłowych" w mapowania atrybutów umożliwia filtrowanie według wartości określonych atrybutów. Na przykład można określić, że tylko użytkownicy z atrybutem "Dział" w "Sprzedaż" musi należeć do zakresu do inicjowania obsługi. Aby uzyskać więcej informacji, zobacz [przy użyciu filtrów określania zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -214,13 +214,13 @@ Dla konfiguracji **synchronizacji przypisane tylko grupy użytkowników i**, nas
     
 Podsumowanie czynniki wpływające na czas potrzebny do ukończenia **początkowej synchronizacji**:
 
-* Całkowita liczba użytkowników i grup w zakresie udostępniania
+* Całkowita liczba użytkowników i grup w zakresie udostępniania.
 
-* Całkowita liczba użytkowników, grup i członków grupy obecne w systemie źródłowym (Azure AD)
+* Całkowita liczba użytkowników, grup i członków grupy obecne w systemie źródłowym (Azure AD).
 
 * Określa, czy użytkownicy w zakresie udostępniania są dopasowywane do istniejących użytkowników w aplikacji docelowej lub konieczne będzie utworzenie po raz pierwszy. Zadania synchronizacji, dla których wszyscy użytkownicy są tworzone po raz pierwszy, potrwa około *dwa razy dłużej* synchronizacji jako zadania, dla których wszyscy użytkownicy są dopasowywane do istniejących użytkowników.
 
-* Liczba błędów w [dzienniki inspekcji](check-status-user-account-provisioning.md). Wydajność jest niższa, jeśli ma wiele błędów i usługi aprowizacji włożono w stan kwarantanny 
+* Liczba błędów w [dzienniki inspekcji](check-status-user-account-provisioning.md). Wydajność jest niższa, jeśli ma wiele błędów i usługi aprowizacji włożono w stan kwarantanny.    
 
 * Żądanie, limitów szybkości i ograniczania przepustowości zaimplementowana przez system docelowy. Niektóre systemy docelowe zaimplementować żądania limitów szybkości i ograniczania przepustowości, co może mieć wpływ na wydajność podczas operacji synchronizacji dużej. W tych warunkach aplikację, która odbiera zbyt wiele żądań zbyt szybko może spowolnić jej wskaźnika odpowiedzi lub zamknąć połączenie. Aby zwiększyć wydajność, łącznik wymaga dostosowania przez nie wysyła szybciej niż aplikacji mogły je przetwarzać żądań aplikacji. Inicjowania obsługi administracyjnej łączniki utworzone przez firmę Microsoft, należy to dostosowanie. 
 

@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: f6874b1d97c36d22e60606ad8c8a356baec53b85
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734627"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893600"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego
 
@@ -65,14 +65,14 @@ Można skonfigurować bazy danych Azure SQL zebrać następujące dane telemetry
 
 | Monitorowanie telemetrii dla baz danych | Pojedynczą bazę danych i obsługi technicznej baza danych w puli | Obsługa wystąpienia zarządzanego |
 | :------------------- | ------------------- | ------------------- |
-| [Wszystkie metryki](sql-database-metrics-diag-logging.md#all-metrics): Zawiera procent jednostek DTU/użycia procesora CPU, limit jednostek DTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu i procent użycia magazynu XTP. | Yes | Nie |
-| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Zawiera informacje dotyczące zapytań środowiska uruchomieniowego statystyki, takie jak użycie procesora CPU i Statystyki czasu trwania zapytań. | Yes | Yes |
-| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany), takie jak procesor CPU, DZIENNIKÓW i blokowanie. | Yes | Yes |
-| [Błędy](sql-database-metrics-diag-logging.md#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Yes | Yes |
-| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Zawiera informacje o ile czasu, w bazie danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Yes | Nie |
-| [Limity czasu](sql-database-metrics-diag-logging.md#time-outs-dataset): Zawiera informacje dotyczące limitów czasu w bazie danych. | Yes | Nie |
-| [Bloki](sql-database-metrics-diag-logging.md#blockings-dataset): Zawiera informacje o blokowaniu zdarzeń w bazie danych. | Yes | Nie |
-| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Zawiera inteligentne wgląd w wydajność. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Yes | Yes |
+| [Wszystkie metryki](#all-metrics): Zawiera procent jednostek DTU/użycia procesora CPU, limit jednostek DTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu i procent użycia magazynu XTP. | Yes | Nie |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Zawiera informacje dotyczące zapytań środowiska uruchomieniowego statystyki, takie jak użycie procesora CPU i Statystyki czasu trwania zapytań. | Yes | Yes |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): Zawiera informacje o statystyki oczekiwania zapytań (co zapytań oczekiwany), takie jak procesor CPU, DZIENNIKÓW i blokowanie. | Yes | Yes |
+| [Błędy](#errors-dataset): Zawiera informacje na temat błędów SQL w bazie danych. | Yes | Yes |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Zawiera informacje o ile czasu, w bazie danych poświęcony na oczekiwanie na oczekiwania różnych typów. | Yes | Nie |
+| [Limity czasu](#time-outs-dataset): Zawiera informacje dotyczące limitów czasu w bazie danych. | Yes | Nie |
+| [Bloki](#blockings-dataset): Zawiera informacje o blokowaniu zdarzeń w bazie danych. | Yes | Nie |
+| [SQLInsights](#intelligent-insights-dataset): Zawiera inteligentne wgląd w wydajność. Aby dowiedzieć się więcej, zobacz [Intelligent Insights](sql-database-intelligent-insights.md). | Yes | Yes |
 
 ### <a name="azure-portal"></a>Azure Portal
 
@@ -169,7 +169,7 @@ Można skonfigurować wystąpienia zarządzanego zasobu zebrać następujące da
 
 | Zasób | Monitorowanie danych telemetrycznych |
 | :------------------- | ------------------- |
-| **Wystąpienie zarządzane** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) zawiera liczbę rdzeni wirtualnych, średni procent użycia procesora CPU, żądań We/Wy, bajtów odczytanych/zapisanych, zarezerwowane miejsca i użyte miejsce do magazynowania. |
+| **Wystąpienie zarządzane** | [ResourceUsageStats](#logs-for-managed-instances) zawiera liczbę rdzeni wirtualnych, średni procent użycia procesora CPU, żądań We/Wy, bajtów odczytanych/zapisanych, zarezerwowane miejsca i użyte miejsce do magazynowania. |
 
 Aby włączyć przesyłanie strumieniowe dane diagnostyczne i telemetryczne dla wystąpienia zarządzanego zasobu, wykonaj następujące kroki:
 

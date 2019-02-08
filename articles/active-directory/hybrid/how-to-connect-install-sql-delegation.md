@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 89d5c9c4e553ac82b604c1d3a20eb67b4055e6c4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e681d192b3df429fc7aa5f340baa56fa739bad34
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492899"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891644"
 ---
 # <a name="install-azure-ad-connect-using-sql-delegated-administrator-permissions"></a>Instalowanie programu Azure AD Connect przy użyciu języka SQL delegowane uprawnienia administratora
 Przed najnowszej kompilacji program Azure AD Connect administracyjne delegowania, podczas wdrażania konfiguracje, które wymagały SQL, nie jest obsługiwana.  Użytkownicy, którzy chcieli zainstalować program Azure AD Connect potrzebne musi mieć uprawnienia administratora serwera w programie SQL server.
@@ -54,10 +54,7 @@ Aby aprowizować bazę danych poza pasmem i zainstalować program Azure AD Conne
 ## <a name="additional-information"></a>Dodatkowe informacje
 Po zaaprowizowaniu bazy danych, administrator usługi Azure AD Connect zainstalować i skonfigurować synchronizację lokalnych własnego uznania.  
 
-**/Useexistingdatabase** flaga jest wymagane w przypadku, gdy przy użyciu wstępnie utworzonej bazy danych.  Jest ono nie używane wyłącznie w sytuacji odzyskiwania.
-
-Oprócz obsługi nowych instalacji programu Azure AD Connect, ta funkcja umożliwia także delegowania dla dowolnych scenariuszy związanych z **/useexistingdatabase** flagi.  Aby uzyskać więcej informacji na temat instalowania usługi Azure AD Connect przy użyciu istniejącej bazy danych, zobacz [zainstalować program Azure AD Connect przy użyciu istniejącej bazy danych ADSync](how-to-connect-install-existing-database.md)
-
+Aby uzyskać więcej informacji na temat instalowania usługi Azure AD Connect przy użyciu istniejącej bazy danych, zobacz [zainstalować program Azure AD Connect przy użyciu istniejącej bazy danych ADSync](how-to-connect-install-existing-database.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Rozpoczynanie pracy z programem Azure AD Connect przy użyciu ustawień ekspresowych](how-to-connect-install-express.md)

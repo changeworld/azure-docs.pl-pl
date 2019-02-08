@@ -15,12 +15,12 @@ ms.date: 01/30/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 8d2d8d0595099081498202a3103caa10df8cf67d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: b7214230d55831fa33d547ecf9e65051aa5bb4d9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657845"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891457"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-azure-active-directory"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack przy użyciu usługi Azure Active Directory
 
@@ -37,7 +37,7 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
 
 1. Upewnij się, że możesz tworzyć aplikacje w Twojej dzierżawie usługi Azure Active Directory (Azure AD). Te uprawnienia są potrzebne do wdrożenia rozwiązania Kubernetes.
 
-    Aby uzyskać instrukcje dotyczące sprawdzania uprawnień, zobacz [uprawnień Sprawdź usługi Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#check-azure-active-directory-permissions).
+    Aby uzyskać instrukcje dotyczące sprawdzania uprawnień, zobacz [uprawnień Sprawdź usługi Azure Active Directory](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal).
 
 1. Generowanie publicznego i prywatnego pary kluczy SSH do logowania do maszyny Wirtualnej systemu Linux w usłudze Azure Stack. Klucz publiczny będą potrzebne podczas tworzenia klastra.
 

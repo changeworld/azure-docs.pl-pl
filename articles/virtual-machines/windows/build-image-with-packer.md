@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: cynthn
-ms.openlocfilehash: f848c6b654f3378df04d1320d957e76ac5384465
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: bab3b37d2d5063c77f8aceee84646b1ee72b0617
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49427828"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892545"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych Windows na platformie Azure za pomocą usługi Packer
 Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje Windows dystrybucji i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace zawiera wiele obrazów pierwszy i innych firm dla typowych systemu operacyjnego i środowiska aplikacji albo można utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open-source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
@@ -70,7 +70,6 @@ Utwórz plik o nazwie *windows.json* i wklej następującą zawartością. Wprow
 | *client_secret*                     | Hasło określone w `$securePassword` |
 | *tenant_id*                         | Dane wyjściowe z `$sub.TenantId` polecenia |
 | *subscription_id*                   | Dane wyjściowe z `$sub.SubscriptionId` polecenia |
-| *object_id*                         | Identyfikator obiektu nazwy głównej usługi widoku przy użyciu `$sp.Id` |
 | *managed_image_resource_group_name* | Nazwa grupy zasobów, utworzonego w pierwszym kroku |
 | *managed_image_name*                | Nazwa obrazu dysku zarządzanego, który jest tworzony |
 
@@ -83,7 +82,6 @@ Utwórz plik o nazwie *windows.json* i wklej następującą zawartością. Wprow
     "client_secret": "P@ssw0rd!",
     "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
     "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "object_id": "a7dfb070-0d5b-47ac-b9a5-cf214fff0ae2",
 
     "managed_image_resource_group_name": "myResourceGroup",
     "managed_image_name": "myPackerImage",

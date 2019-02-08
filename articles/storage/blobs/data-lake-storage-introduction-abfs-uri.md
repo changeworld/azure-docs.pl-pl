@@ -1,6 +1,6 @@
 ---
-title: Użyj usługi Azure Data Lake Storage Gen2 Podgląd identyfikatora URI
-description: Użyj usługi Azure Data Lake Storage Gen2 Podgląd identyfikatora URI
+title: Użyj Gen2 usługi Azure Data Lake Storage — identyfikator URI
+description: Użyj Gen2 usługi Azure Data Lake Storage — identyfikator URI
 services: storage
 author: jamesbak
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 63dcea94fd880102a784e6f776855c44d4e97c87
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: fe020ab1091b91ba21174b59d0ce25ab0c6122ca
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243321"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878310"
 ---
 # <a name="use-the-azure-data-lake-storage-gen2-uri"></a>Użyj Gen2 usługi Azure Data Lake Storage — identyfikator URI
 
-[System plików Hadoop](http://www.aosabook.org/en/hdfs.html) sterownika, który jest zgodny z usługi Azure Data Lake Gen2 — wersja zapoznawcza jest znany identyfikator jego schematu `abfs` (systemu plików obiektów Blob platformy Azure). Zgodnie z innych sterowników systemu plików usługi Hadoop, sterownik ABFS stosuje format identyfikatora URI, adresowanie plików i katalogów w ramach konta Data Lake Storage Gen2 stanie.
+[System plików Hadoop](http://www.aosabook.org/en/hdfs.html) sterownika, który jest zgodny z usługi Azure Data Lake Storage Gen2 określane przez jego identyfikator schematu `abfs` (systemu plików obiektów Blob platformy Azure). Zgodnie z innych sterowników systemu plików usługi Hadoop, sterownik ABFS stosuje format identyfikatora URI, adresowanie plików i katalogów w ramach konta Data Lake Storage Gen2 stanie.
 
 ## <a name="uri-syntax"></a>Składnia identyfikatora URI
 
@@ -48,4 +48,4 @@ Jednak jeśli konto, którego chcesz adres jest ustawiony jako domyślny system 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](data-lake-storage-use-hdi-cluster.md)
+- [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](data-lake-storage-use-hdi-cluster.md)

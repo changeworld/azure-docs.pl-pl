@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak używać interpretacja semantyczna w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 2b0065dbdac8e3bdbc535f2d7d103b24110e1d02
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 26f8d885f8cf85ab849ba221392df206e492aac4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217275"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860817"
 ---
 # <a name="semantic-interpretation"></a>Interpretacja semantyczna
 
@@ -35,12 +35,12 @@ Poniżej znajduje się lista aktualnie obsługiwanych typów danych:
 
 |Type|Opis|Przykłady|
 |----|----|----|
-|Ciąg|Sekwencja 0 lub więcej znaków|"Hello World!"<br/>""|
-|wartość logiczna|Wartość logiczna|true<br/>false|
+|String|Sekwencja 0 lub więcej znaków|"Hello World!"<br/>""|
+|Bool|Wartość logiczna|true<br/>false|
 |Int32|całkowita 32-bitowych.  -2.1e9 do 2.1e9|123<br/>-321|
 |Int64|Całkowita 64-bitowych. -9.2e18 i 9.2e18|9876543210|
-|Podwójne|Zmiennoprzecinkowe podwójnej precyzji. 308 (15 cyfr) 1, 7e|123.456789<br/>1.23456789e2|
-|Identyfikator GUID|Unikatowy identyfikator globalny|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
+|Double|Zmiennoprzecinkowe podwójnej precyzji. 308 (15 cyfr) 1, 7e|123.456789<br/>1.23456789e2|
+|Guid|Unikatowy identyfikator globalny|"602DD052-CC47-4B23-A16A-26B52D30C05B"|
 |Zapytanie|Wyrażenie zapytania, które określa podzbiór obiektów danych w indeksie|All()<br/>I (*q1*, *q2*)|
 
 ## <a name="semantic-functions"></a>Funkcje semantyczne
@@ -139,10 +139,10 @@ Zmienne zakresu żądania są współużytkowane przez wszystkie interpretacji w
 
 Zmienne systemowe są wstępnie zdefiniowane przez usługę i może służyć do pobierania różne statystyki dotyczące bieżącego stanu systemu.  Poniżej znajduje się zestaw zmiennych aktualnie obsługiwany system:
 
-|Name|Typ|Opis|
+|Name (Nazwa)|Typ|Opis|
 |----|----|----|
-|IsAtEndOfQuery|wartość logiczna|wartość true, jeśli bieżący interpretacji spowodowało dopasowanie całego tekstu kwerendy wejściowej|
-|IsBeyondEndOfQuery|wartość logiczna|wartość true, jeśli bieżący interpretacji proponuje uzupełnienia poza tekst wejściowy zapytania|
+|IsAtEndOfQuery|Bool|wartość true, jeśli bieżący interpretacji spowodowało dopasowanie całego tekstu kwerendy wejściowej|
+|IsBeyondEndOfQuery|Bool|wartość true, jeśli bieżący interpretacji proponuje uzupełnienia poza tekst wejściowy zapytania|
 
 ### <a name="setvariable-function"></a>SetVariable — funkcja
 

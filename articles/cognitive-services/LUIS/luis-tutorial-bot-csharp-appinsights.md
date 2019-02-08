@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Twórz Boty zintegrowana z usługą aplikacji LUIS i Application Insights przy użyciu języka C#.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: dce0a34ea9d195748c47dd30cdd5f591ba597c2f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d546951cf283cf15874b1b6d95da75549a8a93ac
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228155"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884940"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z botem wC#
 

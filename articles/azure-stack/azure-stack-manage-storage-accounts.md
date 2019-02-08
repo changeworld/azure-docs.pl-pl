@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: a8134e2350b650f7dfe0b3a1d58d107e42493223
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766507"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895070"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu w usłudze Azure Stack
 
@@ -67,7 +67,7 @@ Może być w sytuacji, gdy trzeba odzyskać usuniętego konta.
 
 W usłudze Azure Stack istnieje najprościej można to zrobić:
 
-1. Przejdź do listy kont magazynu. Zobacz [Znajdź konto magazynu](#find) w tym artykule, aby uzyskać więcej informacji.
+1. Przejdź do listy kont magazynu. Zobacz Znajdź konto magazynu, w tym artykule, aby uzyskać więcej informacji.
 2. Znajdź tego konkretnego konta na liście. Może być konieczne do filtrowania.
 3. Sprawdź *stanu* konta. Powinna być widoczna nazwa **usunięte**.
 4. Wybierz konto, co spowoduje otwarcie okienka szczegółów konta.
@@ -113,7 +113,7 @@ Jednym z efekty uboczne mające okres przechowywania jest, że usunięte konto w
 Można odzyskać pojemność przy użyciu portalu lub programu PowerShell.
 
 **Aby odzyskać pojemność przy użyciu portalu:**
-1. Przejdź do okienka kont magazynu. Zobacz [Znajdź konto magazynu](#find).
+1. Przejdź do okienka kont magazynu. Zobacz Znajdź konto magazynu.
 2. Wybierz **odzyskać miejsce** u góry okienka.
 3. Przeczytaj komunikat, a następnie wybierz pozycję **OK**.
 

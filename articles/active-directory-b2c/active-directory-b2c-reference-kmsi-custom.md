@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e2aa52e8ad19274d45f648978e7b2f021139fe4a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a8ad5c3091c3c78aa31dbf38eb6b3032e4dc7662
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812309"
+ms.locfileid: "55870966"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Włączanie opcji nie wylogowuj mnie (KMSI) w usłudze Azure Active Directory B2C
 
@@ -154,7 +154,7 @@ Należy zaktualizować plik innych firm (RP) jednostki uzależnionej, która ini
 
     Wartość **SessionExpiryInSeconds** reprezentuje czas wygaśnięcia sesji logowania jednokrotnego. Jest to używane wewnętrznie przez usługę Azure AD B2C do sprawdzenia, czy sesja dla KMSI wygasł lub nie. Wartość **KeepAliveInDays** określa wartość Expires/Max-Age plik cookie logowania jednokrotnego w przeglądarce sieci web. W odróżnieniu od **SessionExpiryInSeconds**, **KeepAliveInDays** służy do przeglądarki uniemożliwiają wyczyszczenie plików cookie, jest ono zamknięte. Użytkownik może dyskretnie zalogować się tylko wtedy, gdy istnieje plik cookie sesji logowania jednokrotnego, które są kontrolowane przez **KeepAliveInDays**i nie jest uznawane za wygasłe, którymi steruje **SessionExpiryInSeconds**. 
     
-    Jeśli użytkownik nie włączysz **nie wylogowuj mnie** na stronie rejestracji i logowania sesja wygasa po upływie czasu wskazywanym przez **SessionExpiryInSeconds** został przekazany lub przeglądarka jest zamknięta. Jeśli użytkownik włączy **nie wylogowuj mnie**, wartość **KeepAliveInDays** zastępuje wartość **SessionExpiryInSeconds** i decyduje o czas wygaśnięcia sesji. Nawet użytkownicy, zamknij przeglądarkę i otwórz go ponownie, może nadal w trybie dyskretnym logowania tak długo, jak znajduje się on w czasie **KeepAliveInDays**. Zalecane jest, aby ustawić wartość **SessionExpiryInSeconds** krótki okres (1200 sekund), podczas wartość **KeepAliveInDays** można ustawić na względnie długiego okresu (7 dni), jak pokazano w Poniższy przykład:
+    Jeśli użytkownik nie włączysz **nie wylogowuj mnie** na stronie rejestracji i logowania sesja wygasa po upływie czasu wskazywanym przez **SessionExpiryInSeconds** został przekazany lub przeglądarka jest zamknięta. Jeśli użytkownik włączy **nie wylogowuj mnie**, wartość **KeepAliveInDays** zastępuje wartość **SessionExpiryInSeconds** i decyduje o czas wygaśnięcia sesji. Nawet jeśli użytkownicy Zamknij przeglądarkę i otwórz go ponownie, może nadal w trybie dyskretnym logowania tak długo, jak znajduje się on w czasie **KeepAliveInDays**. Zalecane jest, aby ustawić wartość **SessionExpiryInSeconds** krótki okres (1200 sekund), podczas wartość **KeepAliveInDays** można ustawić na względnie długiego okresu (7 dni), jak pokazano w Poniższy przykład:
 
     ```XML
     <RelyingParty>

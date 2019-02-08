@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Interfejs API zamiany mowy na tekst transcribes strumieni audio na tekst, który aplikacji można wyświetlić lub reagowanie na nie, jako dane wejściowe. Usługa jest dostępna za pośrednictwem zestawu SDK oraz punkt końcowy usługi RESTful.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 4884756c50e181e5536ad93ae795543bf1edf8ba
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5dd544f221699bb342021f9bbd3432c70cff37de
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220237"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55862534"
 ---
 # <a name="about-the-speech-to-text-api"></a>Zamiana mowy na tekst interfejsu API — informacje
 

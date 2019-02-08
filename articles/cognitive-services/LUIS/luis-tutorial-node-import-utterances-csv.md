@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: Dowiedz się, jak utworzyć aplikację usługi LUIS programowo z istniejących danych w formacie CSV przy użyciu interfejsu API tworzenia usługi LUIS.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: diberry
-ms.openlocfilehash: e4b1e9bcdedd802b1937aad25027a1ab8546f674
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 314d121e8964ba1cdbb457260826d85bf8505fbc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495500"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883257"
 ---
 # <a name="build-a-luis-app-programmatically-using-nodejs"></a>Tworzenie aplikacji usługi LUIS programowo przy użyciu środowiska Node.js
 

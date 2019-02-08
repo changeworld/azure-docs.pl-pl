@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 59599686b2a9ccee7250e33f0786d4c7af816983
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734610"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894313"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Usługa Azure SQL Database managed różnice wystąpienia języka T-SQL z programu SQL Server
 
@@ -27,7 +27,7 @@ Opcji wdrożenia wystąpienia zarządzanego zapewnia wysoką zgodność z aparat
 
 Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artykuł zawiera podsumowanie i opisano te różnice. <a name="Differences"></a>
 - [Dostępność](#availability) włącznie z różnicami w [zawsze włączonej](#always-on-availability) i [kopie zapasowe](#backup),
-- [Zabezpieczenia](#security) włącznie z różnicami w [inspekcji](#auditing), [certyfikaty](#certificates), [poświadczenia](#credentials), [dostawcy usług kryptograficznych](#cryptographic-providers), [Logowania / użytkownicy](#logins--users), [klucza oraz klucza głównego usługi](#service-key-and-service-master-key),
+- [Zabezpieczenia](#security) włącznie z różnicami w [inspekcji](#auditing), [certyfikaty](#certificates), [poświadczenia](#credential), [dostawcy usług kryptograficznych](#cryptographic-providers), [Logowania / użytkownicy](#logins--users), [klucza oraz klucza głównego usługi](#service-key-and-service-master-key),
 - [Konfiguracja](#configuration) włącznie z różnicami w [buforu rozszerzenia puli](#buffer-pool-extension), [sortowania](#collation), [poziomy zgodności](#compatibility-levels),[bazy danych dublowanie](#database-mirroring), [opcje bazy danych](#database-options), [programu SQL Server Agent](#sql-server-agent), [Opcje tabeli](#tables),
 - [Funkcje](#functionalities) tym [ZBIORCZEGO WSTAWIANIA/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [transakcje rozproszone](#distributed-transactions), [ Rozszerzone zdarzenia](#extended-events), [zewnętrznych bibliotekach](#external-libraries), [Filestream i Filetable](#filestream-and-filetable), [pełnotekstowe wyszukiwanie semantyczne](#full-text-semantic-search), [połączonej serwery](#linked-servers), [Polybase](#polybase), [replikacji](#replication), [PRZYWRÓCIĆ](#restore-statement), [programu Service Broker](#service-broker), [ Procedury składowane, funkcje i wyzwalacze](#stored-procedures-functions-triggers),
 - [Funkcje, które mają różne zachowanie w wystąpieniach zarządzanych](#Changes)
@@ -74,13 +74,13 @@ Aby uzyskać informacji na temat kopii zapasowych przy użyciu języka T-SQL, zo
 
 Podstawowe różnice między inspekcji w bazach danych Azure SQL Database i baz danych programu SQL Server są:
 
-- Za pomocą opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database, inspekcja działa na poziomie serwera i magazyny `.xel` dzienniki na koncie magazynu obiektów blob platformy Azure.
+- Za pomocą opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database, inspekcja działa na poziomie serwera i magazyny `.xel` pliki dziennika w usłudze Azure Blob storage.
 - Korzystając z pojedynczą bazę danych i pul elastycznych opcji wdrażania w usłudze Azure SQL Database inspekcja działa na poziomie bazy danych.
 - W programie SQL Server w środowisku lokalnym / wirtualnej maszyny, inspekcji działa na serwerze poziomu, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.
   
-Przeprowadzanie inspekcji w zarządzanym wystąpieniu systemu XEvent obsługuje obiekty docelowe magazynu obiektów blob platformy Azure. Dzienniki plików i systemu windows nie są obsługiwane.
+Wystąpienie zarządzane inspekcji systemu XEvent obsługuje cele usługi Azure Blob storage. Dzienniki plików i systemu windows nie są obsługiwane.
 
-Klucz różnice w `CREATE AUDIT` składnia dla inspekcji w usłudze Azure blob storage są:
+Klucz różnice w `CREATE AUDIT` składnia dla inspekcji w usłudze Azure Blob storage są:
 
 - Nowa składnia `TO URL` jest dostarczany i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure gdzie `.xel` zostaną umieszczone pliki
 - Składnia `TO FILE` nie jest obsługiwana, ponieważ wystąpienia zarządzanego nie można uzyskać dostępu do udziałów plików w Windows.
@@ -170,7 +170,7 @@ Aby uzyskać więcej informacji, zobacz [ALTER DATABASE SET PARTNER i SET WITNES
 - Obiekty w pamięci nie są obsługiwane w przypadku warstwy usług ogólnego przeznaczenia.  
 - Ma limitu 280 plików dla każdego wystąpienia obszaru max 280 plików na bazę danych. Plików dziennika i danych są wliczane do tego limitu.  
 - Baza danych nie mogą zawierać grup plików zawierających dane filestream.  Przywracania zakończy się niepowodzeniem, jeśli zawiera .bak `FILESTREAM` danych.  
-- Każdy plik jest umieszczany w usłudze Azure Premium storage. We/Wy i przepływność na plik zależeć od rozmiaru każdego pliku, w taki sam sposób jak w przypadku dysków usługi Premium Storage dla platformy Azure. Zobacz [wydajności dysków Azure w wersji Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)  
+- Każdy plik zostanie umieszczony w usłudze Azure Blob storage. We/Wy i przepływność na pliku są zależne od rozmiaru każdego pliku.  
 
 #### <a name="create-database-statement"></a>Instrukcja CREATE DATABASE
 
@@ -275,10 +275,10 @@ Aby uzyskać informacji na temat tworzenia i modyfikowania tabel, zobacz [CREATE
 
 ### <a name="bulk-insert--openrowset"></a>Wstawianie zbiorcze / openrowset
 
-Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc należy importować pliki z usługi Azure blob storage:
+Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc należy importować pliki z usługi Azure Blob storage:
 
-- `DATASOURCE` jest wymagany w `BULK INSERT` polecenia podczas importowania plików z magazynu obiektów blob platformy Azure. Zobacz [WSTAWIANIA ZBIORCZEGO](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- `DATASOURCE` jest wymagany w `OPENROWSET` działają w przypadku odczytać zawartość pliku z usługi Azure blob storage. Zobacz [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+- `DATASOURCE` jest wymagany w `BULK INSERT` polecenia podczas importowania plików z usługi Azure Blob storage. Zobacz [WSTAWIANIA ZBIORCZEGO](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
+- `DATASOURCE` jest wymagany w `OPENROWSET` działają w przypadku odczytać zawartość pliku z usługi Azure Blob storage. Zobacz [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 
 ### <a name="clr"></a>CLR
 
@@ -305,7 +305,7 @@ Nieudokumentowany instrukcji DBCC, które są włączone w programie SQL Server 
 
 Niektóre cele Windows specyficznych dla systemu XEvents nie są obsługiwane:
 
-- `etw_classic_sync target` nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej etw_classic_sync](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
+- `etw_classic_sync target` nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej etw_classic_sync](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
 - `event_file target`nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej event_file](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Zewnętrzne biblioteki
@@ -347,7 +347,7 @@ Operacje
 
 ### <a name="polybase"></a>Program Polybase
 
-Tabele zewnętrzne odwołujące się do plików w systemie plików HDFS lub Azure blob storage nie są obsługiwane. Aby uzyskać informacji na temat technologii Polybase, zobacz [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
+Tabele zewnętrzne odwołujące się do plików w systemie plików HDFS lub Azure Blob storage nie są obsługiwane. Aby uzyskać informacji na temat technologii Polybase, zobacz [Polybase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikacja
 
@@ -365,7 +365,7 @@ Replikacja jest dostępna w publicznej wersji zapoznawczej dla wystąpienia zarz
   - `RESTORE LOG ONLY`
   - `RESTORE REWINDONLY ONLY`
 - Element źródłowy  
-  - `FROM URL` (Magazyn obiektów blob platformy azure) jest tylko obsługiwaną opcją.
+  - `FROM URL` (Magazyn obiektów Blob platformy azure) jest tylko obsługiwaną opcją.
   - `FROM DISK`/`TAPE`/ urządzenie kopii zapasowej nie jest obsługiwana.
   - Zestawy kopii zapasowych nie są obsługiwane.
 - `WITH` Opcje nie są obsługiwane (Brak `DIFFERENTIAL`, `STATS`itp.)

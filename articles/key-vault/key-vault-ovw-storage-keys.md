@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: pryerram
 manager: mbaldwin
 ms.date: 10/03/2018
-ms.openlocfilehash: 152e1e5892e3a72286205c2f5bf4e18b2a2bcbf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c71c7423b4cde2a24c8154899eec256e5746b6d7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814847"
+ms.locfileid: "55865373"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Usługa Azure Key Vault zarządzanego konta magazynu — interfejs wiersza polecenia
 
@@ -56,13 +56,13 @@ W poniższych instrukcji, przypisujemy usługi Key Vault, jako usługa musi mie�
     ```
     Skopiuj identyfikator pola z wynikiem powyższego polecenia
     
-2. Pobierz obiekt identyfikator z usługi Azure Key Vault dla usługi jednostki, uruchamiając poniższe polecenie
+2. Pobierz identyfikator obiektu z usługi Azure Key Vault usługi jednostki, uruchamiając poniższe polecenie
 
     ```
     az ad sp show --id cfa8b339-82a2-471a-a3c9-0fc0be7a4093
     ```
     
-    Po pomyślnym zakończeniu tego polecenia należy znaleźć identyfikator obiektu w wyniku
+    Po pomyślnym zakończeniu tego polecenia można znaleźć Identyfikatora obiektu w wyniku:
     ```console
         {
             ...
@@ -71,7 +71,7 @@ W poniższych instrukcji, przypisujemy usługi Key Vault, jako usługa musi mie�
         }
     ```
     
-3. Przypisz rolę operatora klucza magazynu do usługi Azure Key Vault Identity
+3. Przypisz rolę operatora klucza magazynu do usługi Azure Identity magazynu klucza.
 
     ```
     az role assignment create --role "Storage Account Key Operator Service Role"  --assignee-object-id <ObjectIdOfKeyVault> --scope <IdOfStorageAccount>

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b4de9efbe85d5ab497bccd1742df23ddc1b3af43
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bb88736762219028d58fe70d0ec32309967c95a4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354663"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55830727"
 ---
 Magazyn zoptymalizowanych rozmiarów maszyn wirtualnych zapewniają Wysoka przepływność dysku i we/wy oraz idealnie nadają się do obsługi dużych ilości danych, SQL, NoSQL baz danych, magazynowanie danych i dużych transakcyjnych baz danych.  Przykłady obejmują bazy danych Cassandra, MongoDB, Cloudera i Redis. Ten artykuł zawiera informacje o liczbie procesorów wirtualnych, dysków z danymi i kart sieciowych, a także przepustowość przepływności i sieć magazynu lokalnego dla każdego rozmiaru zoptymalizowane.
 
@@ -31,7 +31,7 @@ Magazyn w warstwie Premium: Obsługiwane
 
 Buforowanie Premium Storage: Nieobsługiwane
 
-| Rozmiar          | Procesor wirtualny | Pamięć (GiB) | Dysku tymczasowego<sup>1</sup> (GiB) | NVMe Disks | Przepływność dysków NVMe<sup>2</sup> (odczytu na SEKUNDĘ / MB/s) | Rozmiar pamięci podręcznej hosta<sup>3</sup> | Dyski z danymi maksymalna | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
+| Rozmiar          | Procesor wirtualny | Pamięć (GiB) | Dysku tymczasowego<sup>1</sup> (GiB) | Dyski NVMe<sup>2</sup> | Przepływność dysków NVMe<sup>3</sup> (odczytu na SEKUNDĘ / MB/s) | Host Cache Size<sup>4</sup> | Dyski z danymi maksymalna | Maksymalna liczba kart sieciowych / oczekiwana przepustowość sieci (MB/s) | 
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
 | Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 340,000 / 2,000 | ND | 16 | 2 / 3,200  | 
 | Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 680,000 / 4,500 | ND | 32 | 4 / 6,400  | 
@@ -39,11 +39,13 @@ Buforowanie Premium Storage: Nieobsługiwane
 | Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.7 M / 18,000   | ND | 32 | 8 / 25,600 |
 | Standard_L80s_v2  | 80 | 640 | 800 | 10x1.92TB   | 3.4 M / 22 000   | ND | 32 | 8 / 32,000 |
  
-<sup>1</sup> maszyny wirtualne z serii Lsv2 ma standardowy dysk na podstawie zasobów temp SCSI dla użycie pliku stronicowania/wymiany systemu operacyjnego (D: na Windows, /dev/sdb w systemie Linux). Ten dysk zapewnia 80 GiB pamięci, 4000 operacje We/Wy i 80 MB/s transferu kurs co 8 wirtualnych procesorów CPU (np. Standard_L80s_v2 zapewnia 800 GiB 40 000 operacji We/Wy i 800 MB/s). Gwarantuje to, że dyski NVMe, które mogą być w pełni przeznaczone do użycia w aplikacji.
+<sup>1</sup> maszyny wirtualne z serii Lsv2 ma standardowy dysk na podstawie zasobów temp SCSI dla użycie pliku stronicowania/wymiany systemu operacyjnego (D: na Windows, /dev/sdb w systemie Linux). Ten dysk zapewnia 80 GiB pamięci, 4000 operacje We/Wy i 80 MB/s transferu kurs co 8 wirtualnych procesorów CPU (np. Standard_L80s_v2 zapewnia 800 GiB 40 000 operacji We/Wy i 800 MB/s). Gwarantuje to, że dyski NVMe, które mogą być w pełni przeznaczone do użycia w aplikacji. Ten dysk jest tymczasowych, a wszystkie dane zostaną utracone na Zatrzymaj/Cofnij Przydział.
 
-<sup>2</sup> technologii bezpośredniego NVMe funkcji Hyper-V udostępnia bez ograniczania dostępu do dysków NVMe bezpiecznie mapowane na miejsce maszyny Wirtualnej gościa.  Osiągnięcie maksymalnej wydajności wymaga, przy użyciu najnowszej kompilacji WS2019 lub Ubuntu 18.04 lub 16.04 w portalu Azure Marketplace.  Wydajność zapisu zależy od rozmiaru operacji We/Wy, obciążenia dysku i wykorzystanie pojemności.
+<sup>2</sup> efemeryczne dyski NVMe lokalne, dane zostaną utracone na tych dyskach, jeśli użytkownik Zatrzymaj/Cofnij Przydział maszyny Wirtualnej.
 
-<sup>3</sup> maszyny wirtualne z serii Lsv2 nie są oferowane pamięci podręcznej hosta dla dysku z danymi, ponieważ nie korzysta obciążeń Lsv2.  Jednak Lsv2 maszyn wirtualnych może obsłużyć opcji dysku Efemeryczne system operacyjny maszyny Wirtualnej platformy Azure (maksymalnie 30 GiB). 
+<sup>3</sup> technologii bezpośredniego NVMe funkcji Hyper-V udostępnia bez ograniczania dostępu do lokalnych dysków NVMe bezpiecznie mapowane na miejsce maszyny Wirtualnej gościa.  Osiągnięcie maksymalnej wydajności wymaga, przy użyciu najnowszej kompilacji WS2019 lub Ubuntu 18.04 lub 16.04 w portalu Azure Marketplace.  Wydajność zapisu zależy od rozmiaru operacji We/Wy, obciążenia dysku i wykorzystanie pojemności.
+
+<sup>4</sup> maszyny wirtualne z serii Lsv2 nie są oferowane pamięci podręcznej hosta dla dysku z danymi, ponieważ nie korzysta obciążeń Lsv2.  Jednak Lsv2 maszyn wirtualnych może obsłużyć opcji dysku Efemeryczne system operacyjny maszyny Wirtualnej platformy Azure (maksymalnie 30 GiB). 
 
 
 

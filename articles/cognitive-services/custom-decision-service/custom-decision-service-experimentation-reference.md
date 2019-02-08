@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ten artykuł to podręcznik eksperymentów przy użyciu usługi Custom Decision Service.
 services: cognitive-services
 author: marco-rossi29
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
-ms.openlocfilehash: 90a99d4910b0afb885b415760f6a7ef1ca2aec33
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219825"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55870269"
 ---
 # <a name="experimentation"></a>Eksperymentowanie
 
@@ -80,7 +80,7 @@ Dziennik wyników jest dołączana do *mwt-ds/DataScience/experiments.csv* pliku
 | Dane wejściowe | Opis | Domyślne |
 | --- | --- | --- |
 | `-h`, `--help` | Pokaż komunikat pomocy i zakończenia. | |
-| `-f FILE_PATH`, `--file_path FILE_PATH` | Ścieżka pliku danych (`.json` lub `.json.gz` format — każdy wiersz jest `dsjson`). | Wymagany |  
+| `-f FILE_PATH`, `--file_path FILE_PATH` | Ścieżka pliku danych (`.json` lub `.json.gz` format — każdy wiersz jest `dsjson`). | Wymagane |  
 | `-b BASE_COMMAND`, `--base_command BASE_COMMAND` | Podstawowy polecenie Vowpal Wabbit.  | `vw --cb_adf --dsjson -c` |  
 | `-p N_PROC`, `--n_proc N_PROC` | Liczba równoległych procesów do użycia. | Procesory logiczne |  
 | `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | Udostępnione funkcji w przestrzeni nazw (na przykład `abc` oznacza, że przestrzenie nazw `a`, `b`, i `c`).  | Automatyczne wykrywanie z pliku danych |  

@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 121b5542f9388355b97744aa224ac824dd8d8728
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631946"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867209"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analizatory do przetwarzania w usłudze Azure Search tekstu
 
@@ -92,7 +92,7 @@ Instruktaż następująco:
 * Analizatory to właściwość klasy polu możliwym do przeszukania.
 * Analizatora niestandardowego jest częścią definicji indeksu. Może on lekko dostosować (na przykład dostosowywania pojedynczego opcję w jeden filtr) lub dostosowanych w kilku miejscach.
 * W tym przypadku analizatora niestandardowego to "my_analyzer", który z kolei używa dostosowane tokenizatora standardowy "my_standard_tokenizer" i dwa filtry tokenu: małe litery i dostosowane asciifolding filtru "my_asciifolding".
-* Definiuje filtr char niestandardowe "map_dash", aby zastąpić wszystkie łączniki podkreślenia przed tokenizacji (standardowa tokenizatora podziały dash, ale nie na podkreślenie).
+* Definiuje również 2 filtry niestandardowe char "map_dash" i "remove_whitespace". Pierwsza z nich zamienia wszystkie łączniki znaki podkreślenia, natomiast drugi spowoduje usunięcie wszystkich spacji. Odstęp musi być zakodowany w reguły mapowania UTF-8. Filtry char są stosowane przed tokenizacji i będzie mieć wpływ na wynikowy tokenów (standardowa tokenizatora podziały dash i miejsca do magazynowania, ale nie na podkreślenia).
 
 ~~~~
   {
@@ -116,7 +116,8 @@ Instruktaż następująco:
            "name":"my_analyzer",
            "@odata.type":"#Microsoft.Azure.Search.CustomAnalyzer",
            "charFilters":[
-              "map_dash"
+              "map_dash",
+              "remove_whitespace"
            ],
            "tokenizer":"my_standard_tokenizer",
            "tokenFilters":[
@@ -130,6 +131,11 @@ Instruktaż następująco:
            "name":"map_dash",
            "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
            "mappings":["-=>_"]
+        },
+        {
+           "name":"remove_whitespace",
+           "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
+           "mappings":["\\u0020=>"]
         }
      ],
      "tokenizers":[

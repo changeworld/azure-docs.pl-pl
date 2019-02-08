@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f7df77447d0571b6d111e316f3f2bcf85b4e1aa4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813827"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893766"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Zagadnienia dotyczące zabezpieczeń do uzyskiwania dostępu do aplikacji, które zdalnie za pomocą serwera Proxy aplikacji usługi Azure AD
 
@@ -147,7 +147,7 @@ Jeśli skonfigurowano aplikację, aby preauthenticate z usługą Azure AD, użyt
 
 2. Po upływie wszystkie testy usługi Azure AD, Usługa STS wystawia podpisany token dla aplikacji i przekierowuje użytkownika z powrotem do usługi serwera Proxy aplikacji.
 
-3. Serwer Proxy aplikacji weryfikuje, czy token został wystawiony, aby poprawić aplikacji. Inne procesy kontrolne, wykonuje też, takie jak zagwarantowanie, że token został podpisany przez usługę Azure AD i jest nadal mieszczą się w oknie prawidłowe.
+3. Serwer Proxy aplikacji weryfikuje, czy token został wystawiony do właściwej aplikacji. Inne procesy kontrolne, wykonuje też, takie jak zagwarantowanie, że token został podpisany przez usługę Azure AD i jest nadal mieszczą się w oknie prawidłowe.
 
 4. Ustawia serwer Proxy aplikacji, pliku cookie uwierzytelniania szyfrowanego, aby wskazać, że uwierzytelnianie w aplikacji wystąpił. Plik cookie zawiera znacznik czasu wygaśnięcia, oparty na token z usługi Azure AD i innych danych, takie jak nazwa użytkownika, na podstawie uwierzytelniania. Plik cookie jest zaszyfrowany przy użyciu klucza prywatnego, znanego tylko usługę Serwer Proxy aplikacji.
 

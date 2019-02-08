@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Transkrypcja partii jest idealnym rozwiązaniem, jeśli chcesz także dużej ilości dźwięk w magazynie, takim jak obiektów blob platformy Azure. Za pomocą dedykowanego interfejsu API REST, można wskazać pliki audio, przy użyciu sygnatury dostępu współdzielonego (SAS) identyfikator URI i asynchronicznie otrzymywać transkrypcji.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: bf89180ea98473d2da3495286396a12c6f25288f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e03c388dac4a70fc45150287154406551ac2672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228665"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867124"
 ---
 # <a name="why-use-batch-transcription"></a>Dlaczego warto używać usługi Batch transkrypcji?
 
@@ -49,7 +49,7 @@ Interfejs API transkrypcji usługi Batch obsługuje następujące formaty:
 > [!NOTE]
 > Interfejs API usługi Batch transkrypcji wymaga klucza S0 (płacenia warstwy). Nie działa z kluczem bezpłatna (f0).
 
-Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. Poniższy przykładowy kod JSON zawiera dane wyjściowe kanału, właściwości includuing do filtra wulgaryzmów i modelu znaki interpunkcyjne.
+Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kanału lewy i prawy podczas transkrypcji. Każdy dwa pliki JSON z wynikiem są tworzone z pojedynczy kanał. Sygnatury czasowe na wypowiedź Włącz dla deweloperów utworzyć uporządkowany końcowego transkrypcji. Następujący kod JSON zawiera przykładowe żądanie, właściwości includuing konfigurowania wulgaryzmów filtrowania modelu znaków interpunkcyjnych i word poziomu sygnatur czasowych
 
 ```json
 {
@@ -60,7 +60,8 @@ Dla strumieni audio stereo transkrypcji interfejsu API usługi Batch dzieli kana
   "description": "An optional description of the transcription.",
   "properties": {
     "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic"
+    "PunctuationMode": "DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True"
   },
 ```
 
@@ -208,7 +209,7 @@ Obecnie tylko magazynu obsługiwane jest usługi Azure Blob storage.
 Przykład można znaleźć w tym artykule, na [GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
-> Transkrypcję audio zazwyczaj wymaga przedział czasu równy okresowi plik audio oraz obciążenie dwu - na trzy minuty.
+> Nie oferujemy umowy SLA czas dla audio trascriptions za pomocą usługi batch. Jednak po actioned (w stanie uruchomienia) zadania przekształcania są typially przetwarzane szybciej niż w czasie rzeczywistym.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

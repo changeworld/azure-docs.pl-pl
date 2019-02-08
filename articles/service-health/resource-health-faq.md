@@ -1,25 +1,18 @@
 ---
 title: Usługa Azure Resource Health — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Omówienie usługi Azure Resource Health
-services: Resource health
-documentationcenter: dev-center-name
 author: stephbaron
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
-ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Supportability
-ms.date: 11/16/2018
 ms.author: stbaron
-ms.openlocfilehash: 821495ceb052184f3216c8ed696b39db33db00ac
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.topic: conceptual
+ms.service: service-health
+ms.date: 01/29/2019
+ms.workload: Supportability
+ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977214"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884549"
 ---
 # <a name="azure-resource-health-faq"></a>Usługa Azure Resource Health — często zadawane pytania
 Dowiedz się, odpowiedzi na często zadawane pytania dotyczące usługi Azure Resource Health.
@@ -38,8 +31,8 @@ Funkcja kondycji zasobów sprawdza różne na podstawie [typ zasobu](resource-he
 
 ## <a name="what-does-each-of-the-health-status-mean"></a>Co każdy stan kondycji oznacza?
 Istnieją trzy stany kondycji innego:
-- Dostępne: Nie ma żadnych znanych problemów na platformie Azure, która może mieć wpływ na ten zasób
-- Niedostępna: Usługa Resource health wykrył problemy mające wpływ na zasób
+- Dostępne: Na platformie Azure, która może mieć wpływ na ten zasób nie ma żadnych znanych problemów
+- Niedostępne: Usługa Resource health wykrył problemy mające wpływ na zasób
 - Nieznane: Kondycja zasobu nie można określić kondycji zasobu, ponieważ została zatrzymana, odbieranie informacji o nim. 
 
 ## <a name="what-does-the-unknown-status-mean-is-something-wrong-with-my-resource"></a>Co oznacza nieznany stan Jest wystąpił problem z Mój zasób?

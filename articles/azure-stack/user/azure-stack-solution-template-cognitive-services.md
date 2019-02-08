@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 7d719ee6bdb8ce1f4131b474fe7602b492e69cd3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1ccbe8b268725cf3d0747486a20e0597d023662e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810681"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890607"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Wdrażanie usług Azure Cognitive Services do usługi Azure Stack
 
@@ -205,7 +205,7 @@ print(faces)
 
 [Jak zainstalować i uruchomić interfejs API przetwarzania obrazów kontenerów.](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers)
 
-[Jak zainstalować i uruchamiać kontenery interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/face-how-to-install-containers#create-a-face-resource-on-azure)
+[Jak zainstalować i uruchamiać kontenery interfejsu API rozpoznawania twarzy](https://docs.microsoft.com/azure/cognitive-services/face/face-how-to-install-containers)
 
 [Jak zainstalować i uruchamiać kontenery interfejsu API analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-install-containers)
 

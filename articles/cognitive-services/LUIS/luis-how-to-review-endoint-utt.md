@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Funkcja przełomowe LUIS jest koncepcji aktywne uczenie. Gdy usługi LUIS ma punkt końcowy zapytań, aktywne uczenie zwiększa jakość wyników, wypowiedzi wybiera jest nieznany. Jeśli etykiety te wypowiedzi uczenie i publikowanie, a następnie LUIS identyfikuje wypowiedzi dokładniej.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 13a9fba996ea2929bb7165c395176fbfb8c051c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 04590c447d6d4499d50115fbf7bed0a600fe3142
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208061"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864251"
 ---
 # <a name="how-to-review-endpoint-utterances-in-luis-portal"></a>Jak przeglądać wypowiedzi punktu końcowego w portalu usługi LUIS
 

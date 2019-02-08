@@ -4,16 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: cd7eafa251d50e5b5c4e84b1586926f8c5e27c5f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 92036cebf0541f9e9928acf1a9c32db0037bde48
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165782"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889341"
 ---
-<!--author=alkohli last changed: 01/02/17-->
-
-
 #### <a name="to-add-or-remove-a-volume"></a>Aby dodać lub usunąć wolumin
 
 1. Przejdź do urządzenia StorSimple i kliknij pozycję **Zasady kopii zapasowych**.

@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Jak użyć metody analizy interfejsu API analizy językowej do analizowania określonych danych wejściowych języka naturalnego.
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b02b048719dd7707db7e97df3641a314b512177
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208639"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861684"
 ---
 # <a name="analyze-method"></a>Metoda analyze
 
@@ -38,7 +38,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 ## <a name="request-parameters"></a>Parametry żądania
 
-Name | Type | Wymagane | Opis
+Name (Nazwa) | Type | Wymagane | Opis
 -----|-------|----------|------------
 **Język**    | ciąg | Yes | Dwuliterowa kod języka ISO ma być używany do analizy. Na przykład "en" jest angielski.
 **analyzerIds** | Lista ciągów | Yes | Lista identyfikatorów GUID analizatorów, aby zastosować. Zobacz dokumentację analizatorów, aby uzyskać więcej informacji.
@@ -50,7 +50,7 @@ Tablica wyników analizy, po jednym dla każdego atrybutu określona w żądaniu
 
 Wyniki wyglądają następująco:
 
-Name | Typ | Opis
+Name (Nazwa) | Typ | Opis
 -----|------|--------------
 analyzerId | ciąg | Analizator określony identyfikator GUID
 wynik | obiekt | wynik analizatora
@@ -59,7 +59,7 @@ Należy pamiętać, że typ wyniku zależy od typu analizatora danych wejściowy
 
 ### <a name="tokens-response-json"></a>Tokeny odpowiedzi (JSON)
 
-Name | Typ | Opis
+Name (Nazwa) | Typ | Opis
 -----|------|-------------
 wynik | Lista obiektów zdania | granice zdania zidentyfikowany w tekście |
 result[x].Offset | int | każde zdanie początkowe przesunięcie znaku |

@@ -1,5 +1,5 @@
 ---
-title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute — portalu: Azure | Dokumentacja firmy Microsoft'
+title: 'Tworzenie i modyfikowanie obwodu usługi ExpressRoute — portal: Azure | Microsoft Docs'
 description: Tworzenie, aprowizować, sprawdź, aktualizacji, usuwania i anulować aprowizację obwodu usługi ExpressRoute.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3abdeff3c3f1a4069130ed7c8d49d485feea4093
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091531"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894721"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Tworzenie i modyfikowanie obwodu usługi ExpressRoute
 > [!div class="op_single_selector"]
@@ -51,7 +51,8 @@ Przejdź w przeglądarce do witryny [Azure Portal](http://portal.azure.com) i za
   ![Konfigurowanie warstwa jednostki SKU i pomiaru danych](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
   * **Warstwa** Określa, czy włączona jest standardem usługi ExpressRoute lub dodatek ExpressRoute premium. Można określić **standardowa** można pobrać standardowej jednostki SKU lub **Premium** używania dodatku premium.
-  * **Funkcji pomiaru danych** Określa typ rozliczeń. Można określić **Metered** plan taryfowy z danymi i **nieograniczone** dla plan z nieograniczonymi danymi. Należy pamiętać, że można zmienić typ rozliczeń z **Metered** do **nieograniczone**, ale nie można zmienić typu z **nieograniczone** do **Metered**.
+  * **Funkcji pomiaru danych** Określa typ rozliczeń. Można określić **Metered** plan taryfowy z danymi i **nieograniczone** dla plan z nieograniczonymi danymi. Należy pamiętać, że można zmienić typ rozliczeń z **Metered** do **nieograniczone**.
+    > [!IMPORTANT] Nie można zmienić typu z **nieograniczone** do **Metered**.
   * **Lokalizacja komunikacji równorzędnej** jest lokalizacji fizycznej, w którym są komunikacji równorzędnej z firmą Microsoft.
 
     > [!IMPORTANT]
@@ -77,20 +78,20 @@ Na tej stronie **stan dostawcy** zawiera informacje dotyczące bieżącego stanu
 
 Podczas tworzenia nowego obwodu usługi ExpressRoute obwód jest w następującym stanie:
 
-Stan dostawcy: nie zainicjowano obsługi administracyjnej<BR>
-Circuit stan: włączony
+Stan dostawcy: Nie zainicjowano obsługi administracyjnej<BR>
+Stan obwodu: Enabled (Włączony)
 
 ![Zainicjuj proces aprowizacji](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 Po dostawcy połączenia Trwa włączanie go dla Ciebie, obwodu zmienia się w następującym stanie:
 
-Stan dostawcy: Inicjowanie obsługi administracyjnej<BR>
-Circuit stan: włączony
+Stan dostawcy: Inicjowanie obsługi<BR>
+Stan obwodu: Enabled (Włączony)
 
 Należy mieć możliwość użycia obwodu usługi ExpressRoute musi być w następującym stanie:
 
-Stan dostawcy: zainicjowano obsługę administracyjną<BR>
-Circuit stan: włączony
+Stan dostawcy: Obsługiwane administracyjnie<BR>
+Stan obwodu: Enabled (Włączony)
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. Okresowo sprawdzać stan i stan klawisza obwodu
 Można wyświetlić właściwości obwodu, w którym chcesz się dowiedzieć, wybierając ją. Sprawdź **stan dostawcy** i upewnij się, że została przeniesiona do **Aprowizowana** przed kontynuowaniem.
@@ -117,10 +118,11 @@ Można modyfikować niektórych właściwości obwodu usługi ExpressRoute, bez 
 Można wykonać poniższe zadania bez przerw w dostępności:
 
 * Włącz lub Wyłącz dodatek ExpressRoute Premium dla obwodu usługi ExpressRoute.
-* Zwiększyć przepustowość obwodu usługi ExpressRoute, pod warunkiem, że pojemność dostępna na porcie. Obniżenie przepustowości obwodu nie jest obsługiwane. 
-* Zmień zliczania plan z *plan taryfowy z danymi* do *dane nieograniczone*. Zmiana planu zliczania z danymi nieograniczonymi plan taryfowy z danymi nie jest obsługiwana.
+* Zwiększyć przepustowość obwodu usługi ExpressRoute, pod warunkiem, że pojemność dostępna na porcie.
+  > [!IMPORTANT] Obniżenie przepustowości obwodu nie jest obsługiwane. 
+* Zmień zliczania plan z *plan taryfowy z danymi* do *dane nieograniczone*.
+  > [!IMPORTANT] Zmiana planu zliczania z danymi nieograniczonymi plan taryfowy z danymi nie jest obsługiwana.
 * Można włączać i wyłączać *Zezwalaj na klasyczne operacje*.
-
 > [!IMPORTANT]
 > Może być konieczne odtworzenie obwód usługi ExpressRoute, jeśli istnieje niewystarczająca wydajność przy użyciu istniejącego portu. Nie można uaktualnić obwodu, jeśli w tej lokalizacji jest dostępna nie dodatkowej pojemności.
 >

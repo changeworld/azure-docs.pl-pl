@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: jamesbak
-ms.openlocfilehash: d49c8a8434dfa7202707731f46ea31c77d32541d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4ec63251e73e694a69f84262e9de7cce6eb8f11f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812263"
+ms.locfileid: "55878497"
 ---
 # <a name="quickstart-set-up-clusters-in-hdinsight"></a>Szybki start: Konfigurowanie klastrów w HDInsight
 
-W tym przewodniku Szybki Start dowiesz się, jak instalowanie i konfigurowanie klastrów w HDInsight przy użyciu Hadoop, Spark, Kafka, Interactive Query, HBase, R Server i Storm. Dowiesz się też dostosowywać klastry, dołącz je do domeny i dołącz je do konta magazynu przy użyciu [wersji zapoznawczej usługi Azure Data Lake Storage Gen2](data-lake-storage-introduction.md) włączone.
+W tym przewodniku Szybki Start dowiesz się, jak instalowanie i konfigurowanie klastrów w HDInsight przy użyciu Hadoop, Spark, Kafka, Interactive Query, HBase, R Server i Storm. Dowiesz się też dostosowywać klastry, dołącz je do domeny i dołącz je do konta magazynu przy użyciu [usługi Azure Data Lake Storage Gen2](data-lake-storage-introduction.md) włączone.
 
 Klaster Hadoop składa się z kilku maszyn wirtualnych (węzłów), które są używane do przetwarzania rozproszonego zadań. Usługa Azure HDInsight obsługuje szczegóły implementacji instalacji i konfiguracji poszczególnych węzłów, więc musisz podać informacje o konfiguracji ogólnych.
 

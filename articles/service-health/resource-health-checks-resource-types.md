@@ -1,25 +1,17 @@
 ---
 title: Obsługiwane typy zasobów w usłudze Azure Resource Health | Dokumentacja firmy Microsoft
 description: Obsługiwane typy zasobów w usłudze Azure Resource health
-services: Resource health
-documentationcenter: ''
 author: stephbaron
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
-ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Supportability
-ms.date: 01/29/2019
 ms.author: stbaron
-ms.openlocfilehash: d88eb0ee5e8ec4c14efeb47a144ec7080ac6eee3
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.topic: how-to
+ms.service: service-health
+ms.date: 01/29/2019
+ms.openlocfilehash: 6945573fffa5a8398a61bfa44737bec798e16be2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508797"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881444"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Typy zasobów i kontrole kondycji w usłudze Azure resource health
 Poniżej znajduje się pełna lista wszystkich testów, które są wykonywane w usłudze resource health według typów zasobów.

@@ -4,19 +4,19 @@ titleSuffix: Language Understadning - Azure Cognitive Services
 description: LUIS używa dwa klucze, bezpłatny klucz tworzenia pakietów administracyjnych, aby utworzyć model i klucza punktu końcowego mierzonych podczas wykonywania zapytań do endpoint prognoz z wypowiedzi użytkowników.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 81744e2af75410da911ee17f2c4acd05d5a57051
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0bb535a75d1eefcb835d25d28dc65c565655d2c5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222597"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881812"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Do tworzenia i zapytania kluczy punktu końcowego prognozowania w usługi LUIS
 Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, musisz [tworzenia klucza punktu końcowego](luis-how-to-azure-subscription.md), [ją przypisać](luis-how-to-azure-subscription.md) z aplikacją usługi LUIS i [pomocą kwerendy punktu końcowego](#use-endpoint-key-in-query). 

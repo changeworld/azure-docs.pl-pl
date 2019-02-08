@@ -7,12 +7,12 @@ ms.service: healthcare-apis
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: mihansen
-ms.openlocfilehash: c0602d44a5b01e31cd2082e2b05d17c4289adaa1
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e8305c5a69fa3fda29f4f1292b7faa59f8ec3608
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824150"
+ms.locfileid: "55870150"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Rejestrowanie zasobów aplikacji w usłudze Azure Active Directory
 
@@ -42,7 +42,9 @@ Aplikacja zasobów ma identyfikator URI (identyfikator URI Identyfikatora aplika
 
 2. Kliknij przycisk **ustaw** obok *identyfikator URI Identyfikatora aplikacji*.
 
-3. Kliknij przycisk **Dodaj zakres** i dodać wszystkie zakresy, które chcesz zdefiniować dla Ciebie interfejsu API. Usługa Azure AD nie zezwala obecnie ukośniki (`/`) w zakresie nazwy. Firma Microsoft zaleca używanie `$` zamiast tego. Zakres, takich jak `patient/*.read` będzie `patient$*.read`.
+3. Wprowadź identyfikator URI, a następnie kliknij przycisk **Zapisz**. Dobry identyfikator URI będzie identyfikator URI serwera FHIR.
+
+4. Kliknij przycisk **Dodaj zakres** i dodać wszystkie zakresy, które chcesz zdefiniować dla Ciebie interfejsu API. Usługa Azure AD nie zezwala obecnie ukośniki (`/`) w zakresie nazwy. Firma Microsoft zaleca używanie `$` zamiast tego. Zakres, takich jak `patient/*.read` będzie `patient$*.read`.
 
     ![Grupy odbiorców i zakresu](media/how-to-aad/portal-aad-register-new-app-registration-AUD-SCOPE.png)
 

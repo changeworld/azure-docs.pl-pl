@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770490"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860411"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Często zadawane pytania: Replikacji Azure – Azure
 
@@ -33,6 +33,10 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące wdrażani
 
 ### <a name="how-is-site-recovery-priced"></a>Jak jest rozliczana Usługa Site Recovery?
 Przegląd [cennika usługi Azure Site Recovery](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) szczegółowe informacje.
+### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Jak działa bezpłatna warstwa usługi Azure Site Recovery?
+Każde wystąpienie chronione przez usługę Azure Site Recovery jest bezpłatne przez pierwsze 31 dni tej ochrony. Od 32. dnia opłaty za ochronę wystąpienia są naliczane według powyższych stawek.
+###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy podczas pierwszych 31 dni będą naliczane inne opłaty usługi Azure?
+Tak, nawet jeśli usługa Azure Site Recovery będzie bezpłatna przez pierwsze 31 dni dla chronionego wystąpienia, mogą zostać naliczone opłaty za usługę Azure Storage, transakcje magazynowe i transfer danych. Opłaty za zasoby obliczeniowe platformy Azure mogą zostać również naliczone dla odzyskanej maszyny wirtualnej. Uzyskaj szczegółowe informacje na temat cen [tutaj](https://azure.microsoft.com/pricing/details/site-recovery)
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Jakie są najlepsze rozwiązania dotyczące konfigurowania Site Recovery na maszynach wirtualnych platformy Azure?
 1. [Informacje na temat architektury Azure – Azure](azure-to-azure-architecture.md)
@@ -70,6 +74,10 @@ Usługa Site Recovery może replikowanie i odzyskiwanie maszyn wirtualnych międ
 
 Nie, Usługa Site Recovery nie wymaga łączności z Internetem. Jednak wymaga dostępu do adresów URL Site Recovery i zakresami IP, jak wspomniano w [w tym artykule](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges).
 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Czy można replikować aplikacji mających oddzielnej grupy zasobów dla oddzielnych warstw? 
+Tak, możesz zreplikować aplikacji i zbyt zachować konfiguracji odzyskiwania po awarii w oddzielnej grupie zasobów.
+Na przykład, jeśli będziesz mieć aplikację z każdej warstwy aplikacji, bazy danych i sieci web w oddzielnej grupie zasobów, a następnie być konieczne kliknięcie pozycji [kreatora replikacji](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) trzy razy, aby chronić wszystkie warstwy. Funkcja automatycznego odzyskiwania systemu będzie replikować tych trzech warstw w trzech różnych grupach zasobów.
+
 ## <a name="replication-policy"></a>Zasady replikacji
 
 ### <a name="what-is-a-replication-policy"></a>Co to są zasady replikacji?
@@ -89,9 +97,12 @@ Obecnie większość aplikacji można odzyskać dobrze z migawek spójnych awary
 Usługa Site Recovery tworzy punkt odzyskiwania spójnego na poziomie awarii, co 5 minut.
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Co to jest punkt odzyskiwania zapewniających spójność aplikacji? 
-Punkty odzyskiwania spójne na poziomie aplikacji są tworzone na podstawie migawki spójne z aplikacjami. Migawki spójne z aplikacjami przechwytują te same dane jako migawki spójne na poziomie awarii, dodając wszystkie dane w pamięci i wszystkie trwające transakcje. 
+Punkty odzyskiwania spójne na poziomie aplikacji są tworzone na podstawie migawki spójne z aplikacjami. Punktów odzyskiwania zapewniających spójność aplikacji przechwytywać te same dane jako migawki spójne na poziomie awarii, dodając wszystkie dane w pamięci i wszystkie trwające transakcje. 
 
 Ze względu na ich zawartość dodatkowa migawki spójne z aplikacjami są najbardziej zaangażowani i trwało najdłużej wykonywanie. Firma Microsoft zaleca punktów odzyskiwania zapewniających spójność aplikacji dla systemów operacyjnych bazy danych i aplikacji, takich jak SQL Server.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Jaki jest wpływ punktów odzyskiwania zapewniających spójność aplikacji na wydajność aplikacji?
+Biorąc pod uwagę punktów odzyskiwania zapewniających spójność aplikacji przechwytuje wszystkie dane w pamięci i w procesie wymaga środowiska, takiego jak usługi VSS w systemie windows, aby przełączyć w stan spoczynku aplikacji. Jeśli będą wykonywane bardzo często może to mieć wpływ na wydajność, jeśli obciążenie jest już bardzo zajęty. Zazwyczaj zalecane jest nie należy używać niskiej częstotliwości dla punktów odzyskiwania spójnego na poziomie aplikacji dla obciążeń innych baz danych, a nawet w przypadku obciążeń bazy danych 1 godzina jest wystarczająca. 
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Jaka jest minimalna częstotliwość generowania punktów odzyskiwania zapewniających spójność aplikacji?
 Usługa Site Recovery może tworzy punkt odzyskiwania zapewniających spójność aplikacji z minimalna częstotliwość w ciągu 1 godziny.

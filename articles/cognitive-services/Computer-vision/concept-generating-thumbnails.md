@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Pojęcia dotyczące generowania miniatur obrazów przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 638a54a4cf902693dcdccecf4236e75569a677a9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8881a0c5e809dc75d1b9f4b6f6bd3af7142333cb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157605"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884634"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Generowanie miniatur przycięte inteligentnej przy użyciu przetwarzania obrazów
 

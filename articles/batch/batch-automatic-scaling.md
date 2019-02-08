@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730017"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869096"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Utwórz formułę skalowania automatycznego skalowania węzłów obliczeniowych w puli usługi Batch
 
@@ -376,7 +376,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Podczas tworzenia puli z włączoną funkcją automatycznego skalowania nie określaj _targetDedicatedComputeNodes_ parametru lub _targetLowPriorityComputeNodes_ parametr w wywołaniu **CreatePool** . Zamiast tego należy określić **AutoScaleEnabled** i **AutoScaleFormula** właściwości puli. Wartości tych właściwości określenia docelowej liczby każdy typ węzła. Również, aby ręcznie włączyć Skalowanie automatyczne zmienianie rozmiaru puli (na przykład za pomocą [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync]), jest to pierwszy **wyłączyć** automatyczne skalowanie w puli, a następnie zmień jego rozmiar.
+> Podczas tworzenia puli z włączoną funkcją automatycznego skalowania nie określaj _targetDedicatedNodes_ parametru lub _targetLowPriorityNodes_ parametr w wywołaniu **CreatePool** . Zamiast tego należy określić **AutoScaleEnabled** i **AutoScaleFormula** właściwości puli. Wartości tych właściwości określenia docelowej liczby każdy typ węzła. Również, aby ręcznie włączyć Skalowanie automatyczne zmienianie rozmiaru puli (na przykład za pomocą [BatchClient.PoolOperations.ResizePoolAsync][net_poolops_resizepoolasync]), jest to pierwszy **wyłączyć** automatyczne skalowanie w puli, a następnie zmień jego rozmiar.
 >
 >
 
@@ -412,7 +412,7 @@ Po włączeniu automatycznego skalowania w istniejącej puli należy przestrzega
   * Jeżeli pominięto formułę skalowania automatycznego lub interwał oceny, usługa partia zadań w dalszym ciągu używać bieżącej wartości tego ustawienia.
 
 > [!NOTE]
-> Jeśli podano wartości dla *targetDedicatedComputeNodes* lub *targetLowPriorityComputeNodes* parametry **CreatePool** metody podczas tworzenia puli w .NET, lub porównywalny parametrów w innym języku, następnie te wartości są ignorowane, gdy jest oceniana formuła automatycznego skalowania.
+> Jeśli podano wartości dla *targetDedicatedNodes* lub *targetLowPriorityNodes* parametry **CreatePool** metody podczas tworzenia puli na platformie .NET lub dla podczas automatycznego skalowania formuła jest oceniana, porównywalnych parametrów w innym języku, a następnie te wartości są ignorowane.
 >
 >
 

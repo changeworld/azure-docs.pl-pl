@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 31d583456f2ca0a2804c2215906965c2241af52d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e4f8b99cfeaa35644ed51fd8ad712fe4744c0226
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751501"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890947"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>Ograniczanie dostępu sieciowego do zasobów PaaS za pomocą punktów końcowych usługi sieci wirtualnej przy użyciu wiersza polecenia platformy Azure
 
@@ -72,7 +72,7 @@ az network vnet list-endpoint-services \
   --out table
 ``` 
 
-Utwórz dodatkowe podsieci w sieci wirtualnej za pomocą [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create). W tym przykładzie punkt końcowy usługi dla *Microsoft.Storage* jest tworzony w podsieci: 
+Utwórz dodatkowe podsieci w sieci wirtualnej za pomocą [az podsieci sieci wirtualnej Utwórz](/cli/azure/network/vnet/subnet). W tym przykładzie punkt końcowy usługi dla *Microsoft.Storage* jest tworzony w podsieci: 
 
 ```azurecli-interactive
 az network vnet subnet create \
@@ -85,7 +85,7 @@ az network vnet subnet create \
 
 ## <a name="restrict-network-access-for-a-subnet"></a>Ograniczanie dostępu sieciowego dla podsieci
 
-Utwórz sieciową grupę zabezpieczeń z [tworzenie az sieciowej](/cli/azure/network/nsg#az_network_nsg_create). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsgPrivate*.
+Utwórz sieciową grupę zabezpieczeń z [tworzenie az sieciowej](/cli/azure/network/nsg). Poniższy przykład tworzy sieciową grupę zabezpieczeń o nazwie *myNsgPrivate*.
 
 ```azurecli-interactive
 az network nsg create \
@@ -93,7 +93,7 @@ az network nsg create \
   --name myNsgPrivate
 ```
 
-Kojarzenie sieciowej grupy zabezpieczeń do *prywatnej* podsieć o [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update). W poniższym przykładzie *myNsgPrivate* sieciowej grupy zabezpieczeń *prywatnej* podsieci:
+Kojarzenie sieciowej grupy zabezpieczeń do *prywatnej* podsieć o [aktualizacji podsieci sieci wirtualnej sieci az](/cli/azure/network/vnet/subnet). W poniższym przykładzie *myNsgPrivate* sieciowej grupy zabezpieczeń *prywatnej* podsieci:
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -156,7 +156,7 @@ Kroki niezbędne do ograniczenia dostępu sieciowego do zasobów utworzonych za 
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Tworzenie konta usługi Azure storage za pomocą [Tworzenie konta magazynu az](/cli/azure/storage/account#az_storage_account_create). Zastąp `<replace-with-your-unique-storage-account-name>` nazwą, która jest unikatowa dla wszystkich lokalizacji platformy Azure od 3 do 24 znaków długości, przy użyciu tylko cyfry i małe litery.
+Tworzenie konta usługi Azure storage za pomocą [Tworzenie konta magazynu az](/cli/azure/storage/account). Zastąp `<replace-with-your-unique-storage-account-name>` nazwą, która jest unikatowa dla wszystkich lokalizacji platformy Azure od 3 do 24 znaków długości, przy użyciu tylko cyfry i małe litery.
 
 ```azurecli-interactive
 storageAcctName="<replace-with-your-unique-storage-account-name>"
@@ -197,7 +197,7 @@ az storage share create \
 
 ### <a name="deny-all-network-access-to-a-storage-account"></a>Odmowa dostępu do całej sieci do konta magazynu
 
-Domyślnie konta magazynu akceptują połączenia sieciowe od klientów w dowolnej sieci. Aby ograniczyć dostęp do wybranych sieci, należy zmienić domyślną akcję na *Odmów* z [aktualizacja konta magazynu az](/cli/azure/storage/account#az_storage_account_update). Po odmówiono dostępu do sieci, konto magazynu nie są dostępne z dowolnej sieci.
+Domyślnie konta magazynu akceptują połączenia sieciowe od klientów w dowolnej sieci. Aby ograniczyć dostęp do wybranych sieci, należy zmienić domyślną akcję na *Odmów* z [aktualizacja konta magazynu az](/cli/azure/storage/account). Po odmówiono dostępu do sieci, konto magazynu nie są dostępne z dowolnej sieci.
 
 ```azurecli-interactive
 az storage account update \
@@ -208,7 +208,7 @@ az storage account update \
 
 ### <a name="enable-network-access-from-a-subnet"></a>Włączanie dostępu sieciowego z podsieci
 
-Zezwalanie na dostęp sieciowy do konta magazynu z *prywatnej* podsieć o [az reguły sieci konta magazynu — Dodaj](/cli/azure/storage/account/network-rule#az_storage_account_network_rule_add).
+Zezwalanie na dostęp sieciowy do konta magazynu z *prywatnej* podsieć o [az reguły sieci konta magazynu — Dodaj](/cli/azure/storage/account/network-rule).
 
 ```azurecli-interactive
 az storage account network-rule add \
@@ -334,7 +334,7 @@ Odmowa dostępu oraz otrzymasz *to żądanie nie ma autoryzacji do wykonania tej
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure#az_group_delete) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
+Gdy nie jest już potrzebny, należy użyć [usunięcie grupy az](/cli/azure) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes

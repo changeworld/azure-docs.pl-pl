@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ten artykuł zawiera przykładowy kod do tłumaczenia mowy przy użyciu zestawu SDK rozpoznawania mowy w C# środowiska.
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 8d45b152885274b63aff660f29fb28e1539f5cb3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b4e3c2c678789e661b4d6e2d857da2a298ae68f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215931"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877188"
 ---
 # <a name="translate-speech-with-the-cognitive-services-speech-sdk-for-c"></a>Tłumaczenie mowy z zestawem SDK mowy usług Cognitive dla języka C#
 

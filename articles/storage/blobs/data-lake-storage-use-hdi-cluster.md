@@ -1,22 +1,22 @@
 ---
-title: Użyj usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza) przy użyciu klastrów usługi Azure HDInsight
-description: Dowiedz się, jak wykonywać zapytania na danych z usługi Azure Data Lake Gen2 — wersja zapoznawcza i przechowywać wyniki analiz.
+title: Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
+description: Dowiedz się, jak wykonywać zapytania na danych z usługi Azure Data Lake Storage Gen2 i przechowywać wyniki analiz.
 author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 739076289a1324cb47f0c980f0d21b153c7b5edc
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 0932c576a47af85c496d5d2d12dbc1b997d48e16
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662962"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874332"
 ---
-# <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Użyj usługi Azure Data Lake Storage Gen2 (wersja zapoznawcza) przy użyciu klastrów usługi Azure HDInsight
+# <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 
-Aby analizować dane w klastrze usługi HDInsight, można przechowywać dane w dowolnej kombinacji usługi Azure Blob Storage, Azure Blob Storage za pomocą usługi Azure Data Lake Gen2 — wersja zapoznawcza włączone lub Azure Data Lake Storage Gen1. Wszystkie opcje magazynowania pozwalają bezpiecznie usuwać klastry HDInsight, które są używane do obliczeń bez utraty danych użytkownika.
+Aby analizować dane w klastrze usługi HDInsight, można przechowywać dane w dowolnej kombinacji usługi Azure Blob Storage, Azure Blob Storage za pomocą usługi Azure Data Lake magazynu Gen2 włączone lub Azure Data Lake Storage Gen1. Wszystkie opcje magazynowania pozwalają bezpiecznie usuwać klastry HDInsight, które są używane do obliczeń bez utraty danych użytkownika.
 
 Platforma Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra HDInsight można wskazać kontener obiektów blob w usłudze Azure Storage lub hierarchicznej przestrzeni nazw, oferowane przez Data Lake Storage Gen2 jako domyślny system plików. Alternatywnie za pomocą HDInsight 3.5, można wybierać kontenera lub hierarchicznej przestrzeni nazw jako domyślny system plików z pewnymi wyjątkami.
 
@@ -154,7 +154,7 @@ az storage account create \
 ```
 
 > [!NOTE]
-> W publicznej wersji zapoznawczej programu Data Lake Storage Gen2 tylko `--sku Standard_LRS` jest obsługiwana.
+> Podczas public Data Lake Storage Gen2 tylko `--sku Standard_LRS` jest obsługiwana.
 
 Pojawi się monit o region geograficzny, w którym zostanie utworzone konto magazynu. Utwórz konto magazynu, w tym samym regionie, w którym planujesz utworzenie klastra usługi HDInsight.
 

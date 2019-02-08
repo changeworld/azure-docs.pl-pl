@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 2e2bf4f0f7ba4546c2f8609ee3ec7efc072024ae
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: c0067dc96837d758e4c2551bcb29faf63c1a7715
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751552"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895045"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -93,8 +93,8 @@ Obie warstwy usług gwarantuje dostępność na poziomie 99,99% i pozwalają na 
 Na poniższej liście opisano kluczowe cechy charakterystyczne dla warstwy usług ogólnego przeznaczenia:
 
 - Projektowanie pod kątem większość aplikacji biznesowych z wymaganiami dotyczącymi wydajności typowe
-- Magazyn Azure w wersji Premium o wysokiej wydajności (8 TB)
-- Wbudowane [wysokiej dostępności](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) oparte na niezawodnej usługi Azure Premium Storage i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md)
+- Magazyn obiektów Blob platformy Azure o wysokiej wydajności (8 TB)
+- Wbudowane [wysokiej dostępności](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) oparciu o niezawodny magazyn obiektów Blob platformy Azure i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md)
 
 Aby uzyskać więcej informacji, zobacz [magazynu w warstwie ogólnie rzecz biorąc warstwie przeznaczenie](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) i [magazynu najlepsze rozwiązania w zakresie wydajności i zagadnienia dotyczące zarządzane wystąpienia (ogólnego przeznaczenia)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
@@ -107,7 +107,7 @@ Warstwy usług krytycznych firm zaprojektowano pod kątem aplikacji za pomocą w
 Poniższa lista zawiera opis kluczowych charakterystyk krytyczne dla działania firmy warstwy usług:
 
 - Przeznaczona dla aplikacji biznesowych o najwyższej wydajności i wymaganiami wysokiej dostępności
-- Dołączono superszybkiego magazyn SSD (maksymalnie 1 TB na Gen 4 i maksymalnie 4 TB w Gen 5)
+- Dołączono superszybkiego lokalny magazyn SSD (maksymalnie 1 TB na Gen 4 i maksymalnie 4 TB w Gen 5)
 - Wbudowane [wysokiej dostępności](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) na podstawie [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md).
 - Dodatkowe wbudowane [repliki bazy danych tylko do odczytu](sql-database-read-scale-out.md) mogą służyć do raportowania i innych obciążeń, tylko do odczytu
 - [Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) które mogą być używane w przypadku obciążeń z wymogami wysokiej wydajności  
@@ -179,7 +179,7 @@ Scenariusze użytkownika obiektów docelowych — Opcja wdrażania wystąpienia 
 
 ### <a name="back-up-and-restore"></a>Tworzenie kopii zapasowej i przywracanie  
 
-Podejście do migracji wykorzystuje kopii zapasowych SQL w usłudze Azure blob storage. Kopie zapasowe przechowywane w obiekcie blob usługi Azure storage może bezpośrednio przywrócony do wystąpienia zarządzanego przy użyciu [polecenia języka T-SQL RESTORE](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
+Podejście do migracji wykorzystuje kopii zapasowych SQL w usłudze Azure Blob storage. Kopie zapasowe przechowywane w obiekcie blob usługi Azure storage może bezpośrednio przywrócony do wystąpienia zarządzanego przy użyciu [polecenia języka T-SQL RESTORE](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current).
 
 - Aby uzyskać szybki start przedstawiający sposób przywracania Wide World Importers — Standard pliku kopii zapasowej, zobacz [przywrócić pliku kopii zapasowej do wystąpienia zarządzanego](sql-database-managed-instance-get-started-restore.md). Ten przewodnik Szybki Start pokazuje, że trzeba przekazać plik kopii zapasowej do magazynu w blogu dotyczącym platformy Azure i bezpieczne, za pomocą klucza podpisu (SAS) dostępu współdzielonego.
 - Aby uzyskać informacji na temat przywracania z adresu URL, zobacz [natywnych przywracania z adresu URL](sql-database-managed-instance-migrate.md#native-restore-from-url).

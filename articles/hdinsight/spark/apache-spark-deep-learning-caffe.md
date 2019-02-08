@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118238"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891083"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Używanie platformy Caffe na platformie Azure HDInsight Spark na potrzeby rozproszonej uczenia głębokiego
 
@@ -64,7 +64,7 @@ Istnieją dwa kroki w akcji skryptu. Pierwszym krokiem jest instalowanie wymagan
 
 Drugim krokiem jest pobrać, skompilować i zainstalować protobuf 2.5.0 dla Caffe w czasie wykonywania. Formatu Protobuf 2.5.0 [jest wymagana](https://github.com/yahoo/CaffeOnSpark/issues/87), ale ta wersja nie jest dostępna jako pakiet w systemie Ubuntu 16, więc należy skompilować go z kodu źródłowego. Dostępne są także kilka zasobów w Internecie na temat sposobu go skompilować. Aby uzyskać więcej informacji, zobacz [tutaj](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
-Aby rozpocząć pracę, możesz po prostu uruchomić tę akcję skryptu względem klastra do wszystkich węzłów procesu roboczego i węzły główne (na HDInsight 3.5). Możesz uruchomić akcji skryptów w istniejącym klastrze lub użyj akcji skryptu, podczas tworzenia klastra. Aby uzyskać więcej informacji na temat akcji skryptu, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions).
+Aby rozpocząć pracę, możesz po prostu uruchomić tę akcję skryptu względem klastra do wszystkich węzłów procesu roboczego i węzły główne (na HDInsight 3.5). Możesz uruchomić akcji skryptów w istniejącym klastrze lub użyj akcji skryptu, podczas tworzenia klastra. Aby uzyskać więcej informacji na temat akcji skryptu, zobacz dokumentację [tutaj](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux).
 
 ![Akcje skryptu, aby zainstalować zależności](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 

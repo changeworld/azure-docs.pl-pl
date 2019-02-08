@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Kontener usługi LUIS spowoduje załadowanie aplikacji uczonego lub opublikowane w kontenerze platformy docker i zapewnia dostęp do przewidywania zapytania z punktów końcowych interfejsu API kontenera.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 97f11523c0418caaee66930c87a7de64570097d6
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 1ae4396c6b91f81e273e6ad171f4cac9b55445f6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296906"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864737"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -252,7 +252,7 @@ Więcej [przykłady](luis-container-configuration.md#example-docker-run-commands
 
 Kontener udostępnia punkt końcowy usługi oparte na protokole REST zapytania prognozowania interfejsów API. Punkty końcowe dla opublikowanych aplikacji (przejściowych lub produkcyjnych) mają _różnych_ trasy niż punktów końcowych dla uczonego aplikacji. 
 
-Użyj hosta, https://localhost:5000, dla kontenera interfejsów API. 
+Użyj hosta, `https://localhost:5000`, dla kontenera interfejsów API. 
 
 |Typ pakietu|Metoda|Trasa|Parametry zapytania|
 |--|--|--|--|

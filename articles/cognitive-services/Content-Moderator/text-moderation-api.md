@@ -3,18 +3,18 @@ title: Moderowanie tekstu — usługi Content Moderator
 description: Użyj Moderowanie tekstu dla możliwości niechciane tekst, dane osobowe, listy i niestandardowe warunków.
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 0b5cfdd69539caa7f9dcceb3e1d435d3a7e97fed
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225472"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864302"
 ---
 # <a name="learn-text-moderation-concepts"></a>Pojęcia dotyczące moderowania tekstu
 

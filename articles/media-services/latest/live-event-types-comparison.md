@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/06/2019
 ms.author: juliako
-ms.openlocfilehash: 9c8bff5a0a4f1599a3d23e0c7b07a1caca536a9b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d62ef2295abbb8f8fc6f45ffc0c7ab1ce9616e4
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153967"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878361"
 ---
 # <a name="live-event-types-comparison"></a>Porównanie typów zdarzeń na żywo
 
@@ -45,7 +45,7 @@ W poniższej tabeli porównano funkcje dwa typy wydarzenie na żywo.
 | Maksymalna rozdzielczość wideo wyjścia wideo|Takie same jak dane wejściowe|720p (o 30 klatek na sekundę)|
 | Protokoły danych wejściowych|RTMP, fragmentacji — w formacie MP4 (Smooth Streaming)|RTMP, fragmentacji — w formacie MP4 (Smooth Streaming)|
 | Cena|Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "Wideo na żywo"|Zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/media-services/) i kliknij kartę "Wideo na żywo"|
-| Maksymalny czas działania|24 x 365 live liniowego|Całodobowo|
+| Maksymalny czas działania| 24 godz. x 365 dni na żywo liniowego | Maksymalnie 24 godziny|
 | Możliwość przekazywania napisy kodowane CEA za pośrednictwem osadzonego 608/708 etykiety danych|Yes|Yes|
 | Obsługa wstawiania plansz|Nie|Nie|
 | Obsługa ad sygnalizowanie za pośrednictwem interfejsu API| Nie|Nie|

@@ -1,6 +1,6 @@
 ---
 title: Przechowywanie i dostęp do kluczy usługi Azure Cosmos DB za pomocą usługi Key Vault
-description: Przechowywanie i dostęp do usługi Azure Cosmos DB parametry połączenia, kluczy, identyfikator URI firmy za pomocą usługi Azure Key Vault.
+description: Użyj usługi Azure Key Vault do przechowywania i dostępu do usługi Azure Cosmos DB parametry połączenia, kluczy i punktów końcowych.
 author: rafats
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: rafats
 ms.reviewer: sngun
-ms.openlocfilehash: 8a3863ff67549c77692f8629c2e7315aec94faf8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 770e1e543a16bb54acc216aa550c44be26ab7a1a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463314"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858455"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpieczanie kluczy Azure Cosmos przy użyciu usługi Azure Key Vault 
 
-W przypadku używania usługi Azure Cosmos DB dla aplikacji, możesz uzyskać dostęp do bazy danych, kolekcje, dokumenty, korzystając z identyfikator URI punktu końcowego i klucz w pliku konfiguracji aplikacji.  Jednak nie jest bezpieczne przełączyć klucze i adres URL bezpośrednio w kodzie aplikacji, ponieważ są one dostępne w formacie zwykłego tekstu dla wszystkich użytkowników. Chcesz upewnić się, że identyfikator URI i klucze są dostępne, ale za pomocą mechanizmu bezpiecznego. Jest to, gdzie usługi Azure Key Vault ułatwia bezpieczne przechowywanie i zarządzanie wpisami tajnymi aplikacji.
+W przypadku używania usługi Azure Cosmos DB dla aplikacji, możesz uzyskać dostęp do bazy danych, kolekcje, dokumenty, przy użyciu punktu końcowego i klucz w pliku konfiguracji aplikacji.  Jednak nie jest bezpieczne przełączyć klucze i adres URL bezpośrednio w kodzie aplikacji, ponieważ są one dostępne w formacie zwykłego tekstu dla wszystkich użytkowników. Chcesz upewnić się, że punkt końcowy i klucze są dostępne, ale za pomocą mechanizmu bezpiecznego. Jest to, gdzie usługi Azure Key Vault ułatwia bezpieczne przechowywanie i zarządzanie wpisami tajnymi aplikacji.
 
 Poniższe kroki są wymagane do przechowywania i klucze dostępu usługi Azure Cosmos DB do odczytu z usługi Key Vault:
 

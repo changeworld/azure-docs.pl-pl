@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie replikacji w wystąpieniu zarządzanym usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Informacje na temat konfigurowania replikacji transakcyjnej w wystąpieniu zarządzanym usługi Azure SQL Database
+title: Konfigurowanie replikacji w bazie danych wystąpienia zarządzanego usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Informacje na temat konfigurowania replikacji transakcyjnej w bazie danych wystąpienia zarządzanego usługi Azure SQL Database
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,28 +11,28 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: b0188a0983ea18490f3997b857386e313daa58ed
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 038d8c919e68e68f886525a6c78139496edef8e1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467667"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893022"
 ---
-# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Konfigurowanie replikacji w wystąpieniu zarządzanym usługi Azure SQL Database
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurowanie replikacji w bazie danych wystąpienia zarządzanego usługi Azure SQL Database
 
-Replikacja transakcyjna umożliwia replikowanie danych z baz danych programu SQL Server lub wystąpienia zarządzanego Azure SQL Database do wystąpienia zarządzanego lub wypychanie zmian w bazach danych w wystąpieniu zarządzanym usługi do innego programu SQL Server, pojedynczej bazy danych SQL Database lub Pula elastyczna, lub inne wystąpienia zarządzanego. Replikacja jest w publicznej wersji zapoznawczej na [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md). Wystąpienie zarządzane umożliwia hostowanie bazy danych wydawcy dystrybutora i subskrybenta. Zobacz [konfiguracji replikacji transakcyjnej](sql-database-managed-instance-transactional-replication.md#common-configurations) dla dostępnymi konfiguracjami.
+Replikacja transakcyjna umożliwia replikowanie danych do wystąpienia zarządzanego usługi Azure SQL Database bazy danych z bazy danych programu SQL Server lub innego wystąpienia bazy danych. Replikacja transakcyjna umożliwia również wypychanie zmian wprowadzonych w bazie danych wystąpienia w wystąpieniu zarządzanym usługi Azure SQL Database z bazą danych programu SQL Server w jednej bazie danych Azure SQL Database — do puli bazy danych w puli elastycznej bazy danych SQL Azure. Replikacja transakcyjna jest w publicznej wersji zapoznawczej na [wystąpienie zarządzane usługi Azure SQL Database](sql-database-managed-instance.md). Wystąpienie zarządzane umożliwia hostowanie bazy danych wydawcy dystrybutora i subskrybenta. Zobacz [konfiguracji replikacji transakcyjnej](sql-database-managed-instance-transactional-replication.md#common-configurations) dla dostępnymi konfiguracjami.
 
 ## <a name="requirements"></a>Wymagania
 
-Wymaga wydawcą i dystrybutorem w usłudze Azure SQL Database:
+Konfigurowanie wystąpienia zarządzanego do działania jako wydawca lub dystrybutora wymaga:
 
-- Usługa Azure wystąpienia zarządzanego SQL Database, która nie znajduje się w konfiguracji Geo-DR.
+- Czy wystąpienia zarządzanego jest aktualnie nie uczestniczy w relacji replikacji geograficznej.
 
    >[!NOTE]
-   >Azure baz danych SQL, które nie zostały skonfigurowane za pomocą wystąpienia zarządzanego można tylko subskrybentów.
+   >Pojedynczych baz danych i baz danych w puli usługi Azure SQL Database może być tylko subskrybentów.
 
-- Wszystkie wystąpienia programu SQL Server muszą znajdować się w tej samej sieci wirtualnej.
+- Wszystkie wystąpienia zarządzane musi być w tej samej sieci wirtualnej.
 
 - Połączenie korzysta z uwierzytelniania programu SQL między uczestnikami replikacji.
 
@@ -44,28 +44,25 @@ Wymaga wydawcą i dystrybutorem w usłudze Azure SQL Database:
 
 Obsługuje:
 
-- Mieszany replikacji transakcyjnej i migawki lokalne i wystąpień wystąpienia zarządzanego Azure SQL Database.
-
-- Subskrybenci mogą być w środowisku lokalnym, pojedynczej bazy danych w usłudze Azure SQL Database lub bazy danych w puli w elastycznych pulach usługi Azure SQL Database.
-
+- Replikacji transakcyjnej i migawki różnych lokalnego programu SQL Server i wystąpienia zarządzanego usługi Azure SQL Database.
+- Subskrybenci mogą należeć do bazy danych programu SQL Server w środowisku lokalnym, pojedynczych baz danych w usłudze Azure SQL Database lub bazy danych w puli w elastycznych pulach usługi Azure SQL Database.
 - Jednokierunkowa lub replikację dwukierunkową.
 
-Następujące funkcje nie są obsługiwane:
+Następujące funkcje nie są obsługiwane w wystąpieniu zarządzanym usługi Azure SQL Database:
 
 - Aktualizowalne subskrypcje.
-
 - Replikacja aktywnej replikacji geograficznej.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Skonfiguruj publikowanie i dystrybucję przykład
 
-1. [Tworzenie wystąpienia usługi Azure SQL Database Managed](sql-database-managed-instance-create-tutorial-portal.md) w portalu.
+1. [Tworzenie wystąpienia zarządzanego usługi Azure SQL Database](sql-database-managed-instance-create-tutorial-portal.md) w portalu.
 2. [Tworzenie konta usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) dla katalogu roboczego.
 
    Pamiętaj skopiować kluczy magazynu. Zobacz [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys
 ).
-3. Tworzenie bazy danych wydawcy.
+3. Utwórz wystąpienie bazy danych dla danego wydawcy.
 
-   W poniższych skryptów przykładzie Zastąp `<Publishing_DB>` o nazwie tej bazy danych.
+   W poniższych skryptów przykładzie Zastąp `<Publishing_DB>` o nazwie wystąpienia bazy danych.
 
 4. Utwórz użytkownika bazy danych przy użyciu uwierzytelniania SQL dystrybutora. Użyj bezpiecznego hasła.
 

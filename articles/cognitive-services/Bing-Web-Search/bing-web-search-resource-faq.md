@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące korzystania z interfejsu API wyszukiwania w sieci Web Bing.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: troubleshooting
 ms.date: 10/06/2017
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: d11165b22665eec09e5025a4daa5ecd1171b7d80
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 890900e65950767b226f697bb8bd01af80447645
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159033"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867855"
 ---
 # <a name="frequently-asked-questions-faq"></a>Często zadawane pytania
 

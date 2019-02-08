@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: cce78fb6a5472a625e973bb8ca4afdfd6290a26c
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fa433f55839db66bcf8245fe058ac56702af3d6e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165505"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889632"
 ---
-<!--author=alkohli last changed: 07/19/2017-->
-
 #### <a name="to-create-a-volume"></a>Aby utworzyć wolumin
 1. Z tabelarycznej listy urządzeń w bloku **Urządzenia** wybierz swoje urządzenie. Kliknij pozycję **+ Dodaj wolumin**.
 

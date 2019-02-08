@@ -1,25 +1,18 @@
 ---
 title: Omówienie usługi Azure Resource Health | Dokumentacja firmy Microsoft
 description: Omówienie usługi Azure Resource Health
-services: Resource health
-documentationcenter: ''
 author: stephbaron
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
+ms.author: stbaron
+ms.topic: conceptual
 ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 11/16/2018
-ms.author: stbaron
-ms.openlocfilehash: 918ff674e57a14f685c7f9ef2aaaca5ca064976e
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: d2a77e831290aa1ee0fcb6d4addf8f6e90786d52
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53012848"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858913"
 ---
 # <a name="azure-resource-health-overview"></a>Omówienie usługi Azure Resource Health
  
@@ -57,7 +50,7 @@ Zdarzenia inne niż platformy są wyzwalane przez działania użytkowników. Prz
 
 ![Stan "Niedostępne" dla maszyny wirtualnej ze względu na to zdarzenie-platform](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
-### <a name="unknown"></a>Nieznane
+### <a name="unknown"></a>Nieznana
 Stan kondycji **nieznany** wskazuje, że kondycja zasobu nie odebrał informacji na temat tego zasobu na więcej niż 10 minut. Mimo że ten stan nie jest ostateczną wskazanie stan zasobu, to ważny punkt danych w proces rozwiązywania problemów.
 
 Jeśli zasób działa zgodnie z oczekiwaniami, stan zasobu zmieni się na **dostępne** po kilku minutach.

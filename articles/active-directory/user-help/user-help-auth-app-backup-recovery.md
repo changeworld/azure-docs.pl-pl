@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 734e337ba8dff996e9b9cecd7602115bf97b4810
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 97785927d5629aeca81b08353f2f9850c0a31ea0
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773990"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894636"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Kopia zapasowa i odzyskiwanie poświadczeń konta, za pomocą aplikacji Microsoft Authenticator
 
@@ -83,7 +83,7 @@ Dla osobistych kont Microsoft można potwierdzić swoją tożsamość, wprowadza
     ![Aplikacja Microsoft Authenticator, co umożliwia skanowanie kodu QR](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat sposobu uzyskania kodu QR, zobacz [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install#add-accounts-to-the-app) lub [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app), zależnie od tego, czy Twój administrator wyłączył informacji zabezpieczających.
+    >Aby uzyskać więcej informacji na temat sposobu uzyskania kodu QR, zobacz [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) lub [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app), zależnie od tego, czy Twój administrator wyłączył informacji zabezpieczających.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Rozwiązywanie problemów z kopii zapasowej i odzyskiwania
 Istnieje kilka powodów dlaczego kopii zapasowej może nie być dostępne:

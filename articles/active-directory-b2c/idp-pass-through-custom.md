@@ -10,20 +10,17 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: b291c8e15b771163d7986f78695bc74ef3084162
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f21f835ea50563497b73fb6e4505f60411029406
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150805"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883002"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą zasad niestandardowych dla aplikacji w usłudze Azure Active Directory B2C
 
 > [!NOTE]
 > Ta funkcja jest obecnie w publicznej wersji zapoznawczej.
-
-> [!Important]
-> Ta funkcja publicznej wersji zapoznawczej jest tymczasowo niedostępna.
 
 A [zasad niestandardowych](active-directory-b2c-get-started-custom.md) w usłudze Azure Active Directory (Azure AD) B2C umożliwia użytkownikom aplikacji Zarejestruj się lub zaloguj się przy użyciu dostawcy tożsamości. W takiej sytuacji usługa Azure AD B2C odbiera [token dostępu](active-directory-b2c-reference-tokens.md) od dostawcy tożsamości. Usługa Azure AD B2C używa tego tokenu, można pobrać informacji o użytkowniku. Możesz dodać typ oświadczenia i dane wyjściowe oświadczenia do niestandardowych zasad do przekazania tokenu za pośrednictwem aplikacji, które należy zarejestrować w usłudze Azure AD B2C. 
 
@@ -98,7 +95,7 @@ Podczas testowania aplikacji w usłudze Azure AD B2C, może być przydatne do ma
 7. Kliknij pozycję **Przekaż**.
 8. Powtórz kroki od 5 do 7 dla jednostki uzależnionej pliku innych firm, takich jak *SignUpOrSignIn.xml*.
 
-### <a name="run-the-policy"></a>Uruchamianie zasad
+### <a name="run-the-policy"></a>Uruchom zasady
 
 1. Otwórz zasady, który został zmodyfikowany. Na przykład *B2C_1A_signup_signin*.
 2. Aby uzyskać **aplikacji**, wybierz swoją aplikację, która została wcześniej zarejestrowana. Aby wyświetlić token w poniższym przykładzie **adres URL odpowiedzi** powinien być wyświetlony `https://jwt.ms`.

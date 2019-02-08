@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Pobierz pliki dziennika, które są produkowane przez Azure Custom Decision Service.
 services: cognitive-services
 author: marco-rossi29
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: 227caaa1b726210fd498596d716aa41365a63c7a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c03278c0d0faced20f4e02fcc1f61531c88ae141
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228121"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869674"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -44,8 +44,8 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | Dane wejściowe | Opis | Domyślne |
 | --- | --- | --- |
 | `-h`, `--help` | Pokaż komunikat pomocy i wyjścia. | |
-| `-a APP_ID`, `--app_id APP_ID` | Identyfikator aplikacji (czyli usługi Azure Storage blob nazwę kontenera). | Wymagany |
-| `-l LOG_DIR`, `--log_dir LOG_DIR` | Katalog podstawowy dla pobieranie danych (są tworzone).  | Wymagany |
+| `-a APP_ID`, `--app_id APP_ID` | Identyfikator aplikacji (czyli usługi Azure Storage blob nazwę kontenera). | Wymagane |
+| `-l LOG_DIR`, `--log_dir LOG_DIR` | Katalog podstawowy dla pobieranie danych (są tworzone).  | Wymagane |
 | `-s START_DATE`, `--start_date START_DATE` | Pobieranie rozpoczęcia (włączone), w *RRRR-MM-DD* formatu. | `None` |
 | `-e END_DATE`, `--end_date END_DATE` | Pobieranie Data zakończenia (włączone), w *RRRR-MM-DD* formatu. | `None` |
 | `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | Tryb zastępowania do użycia. | |

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/6/2018
-ms.openlocfilehash: 19fc20f21a57c2325254581c642b75c92c221fd9
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 55106f855d1f2cab82b751b306a3a289bd740e9e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536094"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895350"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące usługi Azure Database for MySQL
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
@@ -36,7 +36,7 @@ Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następ
 |Pamięć| 32| 10 000|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
-> BŁĄD 1040 (08004): Zbyt wiele połączeń
+> ERROR 1040 (08004): Zbyt wiele połączeń
 
 ## <a name="storage-engine-support"></a>Obsługa aparatu magazynu
 
@@ -55,6 +55,7 @@ Po przekroczeniu limitu połączeń może zostać wyświetlony następujący bł
 ### <a name="unsupported"></a>Nieobsługiwane
 - Rola Administrator: Wiele parametrów serwera i ustawień można przypadkowo obniżają wydajność serwerów lub odwrócić właściwości ACID systemu DBMS. Jako takie utrzymanie integralności usługi i umowa SLA na poziomie produktu, ta usługa nie ujawnia roli Administrator. Domyślne konto użytkownika, który jest tworzony, gdy tworzone jest nowe wystąpienie bazy danych, umożliwia użytkownikowi wykonać większość instrukcji DDL i DML w wystąpieniu zarządzanym bazy danych. 
 - Uprawnienia administratora: Podobnie [uprawnień administratora](https://dev.mysql.com/doc/refman/5.7/en/privileges-provided.html#priv_super) również jest ograniczony.
+- DEFINER: Wymaga uprawnień administratora do tworzenia i jest ograniczona. Importowanie danych przy użyciu kopii zapasowej, usunięcie `CREATE DEFINER` poleceń ręcznie lub za pomocą `--skip-definer` polecenia podczas wykonywania polecenia mysqldump.
 
 ## <a name="data-manipulation-statement-support"></a>Obsługa instrukcji manipulacji danych
 

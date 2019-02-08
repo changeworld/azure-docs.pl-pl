@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ten przewodnik uaktualniania zawiera opis zmian między wersjami w wersji 5 i interfejsu API wyszukiwania obrazów Bing w wersji 7. Użyj tego przewodnika, aby pomóc w zidentyfikowaniu części Twojej aplikacji, należy zaktualizować do używania w wersji 7.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 7F78B91F-F13B-40A4-B8A7-770FDB793F0F
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: ec870ee8b40e732bf12c90689fb7ca79a7ff516c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4cd77dc6572ed100a7bef34829ed17579e3b5491
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55204188"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876786"
 ---
 # <a name="bing-image-search-api-upgrade-guide"></a>Podręcznik uaktualnienia interfejsu API wyszukiwania obrazów Bing
 

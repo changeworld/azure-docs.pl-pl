@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ogólne omówienie dotyczące korzystania z wyszukiwania niestandardowego Bing można pobrać pliki wideo z sieci Web w widoku niestandardowym.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: scottwhi
-ms.openlocfilehash: 5b73acb633512960d7aa6d6eea9b1d6e10dd3c22
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 202691bc03a7447cce28932406b00cc945a889db
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174299"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878293"
 ---
 # <a name="get-videos-from-your-custom-view"></a>Obejrzyj filmy wideo z widoku niestandardowego
 

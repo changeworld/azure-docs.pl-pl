@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: juliako
-ms.openlocfilehash: be4c08bc31c8811655230ab89b48271f4c2b3164
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a447c359c38c2173ea42b6d717067fc8b3a88f9a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756584"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875495"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure Media Services v3 — często zadawane pytania
 
@@ -36,17 +36,7 @@ Zalecane jest, przesyłania zadań przy użyciu adresu URL HTTP (s) wskazuje fil
 
 ### <a name="how-does-pagination-work"></a>Jak działa dzielenia na strony
 
-Usługa Media Services obsługuje $top dla zasobów, które obsługują OData, ale wartość przekazana do $top musi być mniejsza niż 1000 (na przykład rozmiar strony dla podziału na strony).
-
-Dzięki temu można uzyskać małą próbkę elementów za pomocą $top (na przykład 100 najnowsze elementy) lub stronie mimo że wszystkie elementy przy użyciu dzielenia na strony. 
-
-Usługa Media Services nie obsługuje stronicować je z użytkownikiem, który został określony rozmiar strony.
-
-Aby uzyskać więcej informacji, zobacz [filtrowanie, porządkowanie, stronicowanie](entities-overview.md).
-
-### <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Jak pobrać jednostki w usłudze Media Services v3?
-
-v3 opiera się na ujednoliconego powierzchni interfejsu API, który udostępnia funkcje zarządzania i operacje oparte na **usługi Azure Resource Manager**. Zgodnie z **usługi Azure Resource Manager**, nazw zasobów są unikatowe. W związku z tym można użyć wszelkie ciągi Unikatowy identyfikator (na przykład, GUID) dla zasobu.
+Korzystając z podziałem na strony, zawsze należy używać następny link do wyliczania kolekcji i nie są zależne od wielkości określonej strony. Aby uzyskać szczegółowe informacje i przykłady, zobacz [filtrowanie, porządkowanie, stronicowanie](entities-overview.md).
 
 ## <a name="live-streaming"></a>Transmisja strumieniowa na żywo 
 
