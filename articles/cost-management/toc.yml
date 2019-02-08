@@ -23,10 +23,14 @@ items:
     items:
     - name: Najlepsze rozwiązania dotyczące usługi Azure Cost Management
       href: cost-mgt-best-practices.md
+    - name: Omówienie danych usługi Cost Management
+      href: understand-cost-mgt-data.md
   - name: Przewodniki z instrukcjami
     items:
     - name: Przypisywanie dostępu do danych
       href: assign-access-acm-data.md
+    - name: Korzystanie z alertów dotyczących kosztów
+      href: cost-mgt-alerts-monitor-usage-spending.md
   - name: Dokumentacja
     items:
     - name: Interfejs API REST usługi Azure Cost Management
@@ -109,9 +113,9 @@ items:
         href: cost-mgt-faq.md
       - name: Skontaktuj się z pomocą techniczną platformy Cloudyn
         href: support-request-cost-management.md
-ms.openlocfilehash: 3e37e0d145b50326b8c7f878216ead0bc4a665e3
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: ae9155548a839db18fc80f40c12e5264643cea9d
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120397"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769019"

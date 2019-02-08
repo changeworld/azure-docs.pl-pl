@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d33b1415f15c72cdc6678af44127d8ca781c9d7a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8762449fbc9254bd3dc6548e74234e1f34c00355
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716569"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770337"
 documentType: LandingData
 title: Dokumentacja usługi Azure Database Migration Service
 metadata:
@@ -55,6 +55,7 @@ sections:
     - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Migracja online programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS</a>
     - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">Migrowanie programu MySQL do usługi Azure Database for MySQL w trybie online przy użyciu usługi DMS</a>
     - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">Migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS</a>
+    - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">Migrowanie bazy danych MongoDB do interfejsu Mongo API usługi Azure Cosmos DB w trybie offline za pomocą usługi DMS</a>
 - title: Przykłady
   items:
   - type: list

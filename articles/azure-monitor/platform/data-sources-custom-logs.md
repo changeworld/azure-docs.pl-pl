@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 624091d4b5c1e17a301d9087f56ec5f9b0fecc5c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 628cbcbfb712d2fcaa53bdaee262f88a78dd1527
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198783"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895673"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Dzienniki niestandardowe w usłudze Log Analytics
 Źródło danych dzienników niestandardowych w usłudze Log Analytics można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog. Po zebraniu możesz analizować dane na poszczególne pola w zapytaniach lub wyodrębniania danych podczas zbierania do poszczególnych pól.
@@ -29,7 +29,7 @@ Pliki dziennika mają być zbierane musi spełniać następujące kryteria.
 
 - Dziennika musi mieć pojedynczy wpis dla każdego wiersza albo użyj sygnatury czasowej dopasowane do jednej z następujących formatów na początku każdego wpisu.
 
-    RRRR MM-DD HH: MM:<br>M/D/RRRR GG: MM: SS AM/PM<br>MON DD rrrr hh: mm:<br />rrmmdd: mm: ss<br />ddMMyy: mm: ss<br />MMM d hh: mm:<br />dd/mm/yyyy zzz<br />RRRR-MM-ddTHH:mm:ssK
+    RRRR MM-DD HH: MM:<br>M/D/RRRR GG: MM: SS AM/PM<br>MON DD rrrr hh: mm:<br />rrmmdd: mm: ss<br />ddMMyy: mm: ss<br />MMM d hh: mm:<br />dd/mm/yyyy zzz<br />yyyy-MM-ddTHH:mm:ssK
 
 - Plik dziennika nie może dopuszczać logowanie cykliczne lub rotacji dziennika, gdy plik jest zastępowany przy użyciu nowych wpisów.
 - Plik dziennika, należy użyć kodowanie ASCII lub UTF-8.  Innych formatach, takich jak UTF-16 nie są obsługiwane.
@@ -40,6 +40,10 @@ Pliki dziennika mają być zbierane musi spełniać następujące kryteria.
   
 >[!NOTE]
 > Jeśli aplikacja tworzy nowy plik dziennika, każdego dnia lub gdy osiągnie pewien rozmiar, agenta usługi Log Analytics dla systemu Linux nie wykrywa ich aż po ponownym uruchomieniu. Jest to spowodowane agenta, tylko wylicza i rozpoczyna monitorowanie pod kątem wzorców z określonym dzienników w przypadku uruchamiania i w związku z tym należy zaplanować wokół niego, automatyzując ponownego uruchomienia agenta.  Za pomocą agenta usługi Log Analytics dla Windows nie ma tego ograniczenia.  
+>
+
+>[!NOTE]
+> Można utworzyć maksymalnie 500 dziennikami niestandardowymi na obszar roboczy usługi Log Analytics. 
 >
 
 ## <a name="defining-a-custom-log"></a>Definiowanie dziennika niestandardowego
