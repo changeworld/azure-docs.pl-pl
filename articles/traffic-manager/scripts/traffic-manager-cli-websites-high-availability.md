@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: traffic-manager
 ms.date: 04/26/2018
 ms.author: kumud
-ms.openlocfilehash: 6070c037138cfb0716c9a31d5923ecddb1a30790
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 284e0817023c13cee441d50dc226d5c2aa5f54c2
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413570"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891525"
 ---
 # <a name="route-traffic-for-high-availability-of-applications-using-azure-cli"></a>Kierowanie ruchem w celu zapewnienia wysokiej dostępności aplikacji przy użyciu wiersza polecenia platformy Azure
 
@@ -50,10 +50,10 @@ W tym skrypcie użyto następujących poleceń do utworzenia grupy zasobów, apl
 
 | Polecenie | Uwagi |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | Tworzy plan usługi App Service. Przypomina farmę serwerów dla aplikacji sieci web platformy Azure. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan) | Tworzy plan usługi App Service. Przypomina farmę serwerów dla aplikacji sieci web platformy Azure. |
 | [Tworzenie aplikacji sieci Web az w sieci web](https://docs.microsoft.com/cli/azure/webapp#az-webapp-create) | Tworzy aplikację internetową platformy Azure w ramach planu usługi App Service. |
-| [Tworzenie profilu usługi traffic manager sieci az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Tworzy profil usługi Azure Traffic Manager. |
+| [Tworzenie profilu usługi traffic manager sieci az](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile) | Tworzy profil usługi Azure Traffic Manager. |
 | [Tworzenie punktu końcowego usługi traffic manager sieci az](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint) | Dodaje punkt końcowy do profilu usługi Traffic Manager platformy Azure. |
 
 ## <a name="next-steps"></a>Kolejne kroki

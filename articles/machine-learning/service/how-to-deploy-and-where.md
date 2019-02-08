@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c83342e5eb0e6c1f45daa54ea3c4f3c602ff7a39
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766626"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878616"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -463,7 +463,7 @@ Usługi sieci Web jest interfejs API REST, aby można było utworzyć aplikacje 
 
 ## <a id="update"></a> Aktualizacja usługi sieci web
 
-Podczas tworzenia nowego obrazu musi należy ręcznie zaktualizować wszystkich usług, które chcesz użyć nowego obrazu. Aby zaktualizować usługę sieci web, użyj `update` metody. Poniższy kod ilustruje sposób aktualizacji usługi sieci web w celu użycia nowego obrazu:
+Podczas tworzenia nowego obrazu, należy ręcznie zaktualizować wszystkich usług, które chcesz użyć nowego obrazu. Aby zaktualizować usługę sieci web, użyj `update` metody. Poniższy kod ilustruje sposób aktualizacji usługi sieci web w celu użycia nowego obrazu:
 
 ```python
 from azureml.core.webservice import Webservice

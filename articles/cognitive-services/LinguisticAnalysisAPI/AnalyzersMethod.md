@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Analizatory interfejsu API REST zawiera listę analizatorów, które są obecnie obsługiwane przez interfejsu API analizy językowej.
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 8bf13bffe763b88e95da94f885e30d271e36da42
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9338e87644554ac8b3121c5341cea6f2bc512a97
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221695"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878191"
 ---
 # <a name="analyzers-method"></a>Metoda analyzers
 
@@ -32,7 +32,7 @@ Brak
 <br>
 
 ## <a name="response-parameters"></a>Parametrów odpowiedzi
-Name | Typ | Opis
+Name (Nazwa) | Typ | Opis
 -----|------|--------------
 Języki | Lista ciągów | Lista dwóch kodów literę ISO języka, dla których można użyć tego analizatora.
 id   | ciąg | Unikatowy identyfikator dla tego analizatora

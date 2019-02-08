@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 92c2d59ffe8c144bea6e7f8676880c866e234885
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c7b3695e5cb43a9c8f659a3ac1baddab51526b2d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299048"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893735"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Źródła danych obsługiwane w usługach Azure Analysis Services
 
@@ -28,14 +28,15 @@ ms.locfileid: "55299048"
 |Azure Blob Storage<sup>[1](#tab1400a)</sup>     |   Yes       |    Nie      |
 |Azure Table Storage<sup>[1](#tab1400a)</sup>    |   Yes       |    Nie      |
 |Azure Cosmos DB<sup>[1](#tab1400a)</sup>     |  Yes        |  Nie        |
-|Azure Data Lake Store<sup>[1](#tab1400a)</sup>     |   Yes       |    Nie      |
+|Azure Data Lake Store (Gen1)<sup>[1](#tab1400a)</sup>, <sup>[4](#gen2)</sup>      |   Yes       |    Nie      |
 |Usługa Azure HDInsight HDFS<sup>[1](#tab1400a)</sup>     |     Yes     |   Nie       |
 |Usługi Azure HDInsight Spark<sup>[1](#tab1400a)</sup>, <sup> [3](#databricks)</sup>     |   Yes       |   Nie       |
 ||||
 
-<a name="tab1400a">1</a> tabelarycznych 1400 i wyższych modeli tylko.   
-<a name="azsqlmanaged">2</a> wystąpienia zarządzanego azure SQL Database jest obsługiwana. Wystąpienie zarządzane jest uruchamiany w ramach sieci wirtualnej platformy Azure za pomocą prywatnego adresu IP, jest wymagany dla lokalnej bramy danych.   
-<a name="databricks">3</a> usługi azure Databricks służy łącznik Spark nie jest obecnie obsługiwane.
+<a name="tab1400a">1</a> — tabelaryczny 1400 i wyższych modeli tylko.   
+<a name="azsqlmanaged">2</a> — wystąpienie zarządzane usługi azure SQL Database jest obsługiwana. Wystąpienie zarządzane jest uruchamiany w ramach sieci wirtualnej platformy Azure za pomocą prywatnego adresu IP, jest wymagany dla lokalnej bramy danych.   
+<a name="databricks">3</a> — usługa azure Databricks przy użyciu platformy Spark, łącznik nie jest obecnie obsługiwane.   
+<a name="gen2">4</a> -ADLS Gen2 — nie jest obecnie obsługiwane.
 
 
 **Dostawcy**   

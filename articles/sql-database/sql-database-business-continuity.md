@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 90d95d7ad1ffb3200a69e0e7980dae2d7ed97470
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755173"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894330"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -132,7 +132,7 @@ Korzystając z automatycznych kopii zapasowych z magazynu geograficznie nadmiaro
 Po odzyskaniu za pomocą dowolnego mechanizmu odzyskiwania należy wykonać następujące zadania dodatkowe, zanim będzie możliwe ponowne rozpoczęcie pracy przez użytkowników i aplikacje:
 
 - Przekieruj klientów i aplikacje klienckie na nowy serwer i przywróconą bazę danych
-- Upewnij się, odpowiednie reguły zapory IP w poziomie serwera są stosowane dla użytkowników połączyć lub użyj [zapór na poziomie bazy danych](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal) włączyć odpowiednie zasady.
+- Upewnij się, odpowiednie reguły zapory IP w poziomie serwera są stosowane dla użytkowników połączyć lub użyj [zapór na poziomie bazy danych](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal) włączyć odpowiednie zasady.
 - Zapewnij użycie odpowiednich danych logowania i uprawnień na poziomie głównej bazy danych (lub użyj [użytkowników, którzy się w niej znajdują](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - W razie potrzeby skonfiguruj inspekcję
 - W razie potrzeby skonfiguruj alerty

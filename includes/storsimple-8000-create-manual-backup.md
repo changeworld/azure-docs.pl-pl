@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 50c0c781e7e1c95896a22f0cd71ed20bbad4c2b3
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 4fc92931979aa367bdead435c3d6fd758d66a397
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165478"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889206"
 ---
-<!--author=alkohli last changed: 01/20/2017-->
-
 #### <a name="to-create-a-manual-backup"></a>Ręczne tworzenie kopii zapasowej
 
 1. Przejdź do usługi Menedżer urządzeń StorSimple, a następnie kliknij pozycję **Urządzenia**. Na tabelarycznej liście urządzeń wybierz urządzenie. Przejdź kolejno do pozycji **Ustawienia > Zarządzaj > Zasady dotyczące kopii zapasowych**.
@@ -23,7 +21,7 @@ ms.locfileid: "50165478"
 
 3. W bloku **Utwórz kopię zapasową teraz** wykonaj następujące czynności:
 
-    1. Wybierz odpowiedni **typ migawki** z listy rozwijanej: migawka **lokalna** lub migawka **w chmurze**. Wybierz migawkę lokalną, jeśli chcesz szybko tworzyć kopie zapasowe lub je przywracać, albo migawkę w chmurze, jeśli zależy Ci na odporności danych.
+    1. Wybierz odpowiedni **typ migawki** z listy rozwijanej: **Lokalne** migawki lub **chmury** migawki. Wybierz migawkę lokalną, jeśli chcesz szybko tworzyć kopie zapasowe lub je przywracać, albo migawkę w chmurze, jeśli zależy Ci na odporności danych.
 
         ![Ręczne tworzenie kopii zapasowych](./media/storsimple-8000-create-manual-backup/createmanualbu2.png)
 

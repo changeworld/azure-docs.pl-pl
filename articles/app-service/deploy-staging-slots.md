@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 1d0f89285095e7edd67883a2bad1411f6e8942d2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 2a5ff771064c860447427c9e3cc1345a03a69634
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107202"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893762"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -163,7 +163,7 @@ Aby zamienić z podglądem, wykonaj następujące kroki.
 
 4. Gdy skończysz, zamknij okno dialogowe, klikając **Zamknij**.
 
-Aby zautomatyzować wymiany wielofazowych, zobacz [Automatyzacja przy użyciu programu PowerShell](#automate-with-azure-powershell).
+Aby zautomatyzować wymiany wielofazowych, zobacz Automatyzacja przy użyciu programu PowerShell.
 
 <a name="Rollback"></a>
 
@@ -306,7 +306,7 @@ Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Calle
 
 - - -
 ### <a name="delete-slot"></a>Usuń gniazdo
-```
+```PowerShell
 Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 

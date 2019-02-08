@@ -12,22 +12,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 4bdebe415bcd86867bebeb7f03dc6dafa8480169
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3f37b996caa60a54c18388cb1f65873bf0aa4ed9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259788"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877698"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porównanie usługi Azure Data Lake Storage Gen1 i usługi Azure Blob Storage
-  >[!NOTE] 
-    >[Usługa Azure Data Lake Gen2 — wersja zapoznawcza](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) niedawno ogłoszono. Data Lake Gen2 — wersja zapoznawcza jest wynikiem zbieżności możliwości naszych usług magazynu istniejących dwie usługi Azure Blob Storage i [usługi Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index). Poziom plików funkcji z usługi Azure Data Lake Storage Gen1, takich jak semantyki systemu plików, zabezpieczeń i skalowania są połączone z magazynem niskie koszty i warstwowego możliwości odzyskiwania wysoka dostępność/po awarii z [usługi Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction). <br> Zdecydowanie zalecamy rozpocząć korzystanie z narzędzia Data Lake Gen2 — wersja zapoznawcza jako podstawa do tworzenia jeziora danych przedsiębiorstwa, a następnie okazję połączyć zalety usługi Azure Blob Storage, a także usługi Azure Data Lake Storage Gen1.
+
+[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)] 
 
 Tabela, w tym artykule zawiera podsumowanie różnic między usługi Azure Data Lake Storage Gen1 i Azure Blob Storage, które wzdłuż niektórych kluczowych aspektów przetwarzania danych big Data. Usługa Azure Blob Storage jest ogólnego przeznaczenia, skalowalny magazyn obiektów przeznaczony do szerokiej gamy scenariuszy magazynowania. Azure Data Lake Storage Gen1 to ogromne repozytorium, które jest zoptymalizowane pod kątem obciążeń analizy danych big data.
-
-
-
-
 
 |  | Usługa Azure Data Lake Storage 1. generacji | Azure Blob Storage |
 | --- | --- | --- |

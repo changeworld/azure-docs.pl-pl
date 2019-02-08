@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: afcac73af84010f37eccd018f39852712e495b84
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: f0f0e32ccbb8fdac934f81e2f90132f63a91f069
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55773509"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892120"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Dodawanie kont innych niż Microsoft
 Dodaj konta firmy Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication. Aplikacja Microsoft Authenticator współpracuje z dowolnej aplikacji, która używa weryfikacji two-Factor Authentication i konto, które obsługuje standardy oparte na czasie hasła jednorazowego (TOTP).
@@ -55,7 +55,7 @@ Dodaj swoje konto Google przez włączenie weryfikacji two-Factor Authentication
 4. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **Konfigurowanie uwierzytelniania** strony na komputerze.
 
     >[!Note]
-    >Jeśli aparat fotograficzny nie działa prawidłowo, możesz to zrobić [ręcznie wprowadzić kod QR i adres URL](#add-an-account-to-the-app-manually).
+    >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
 
 5. Przegląd **kont** strony aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o Twoim koncie jest po prawej stronie i że jest skojarzony 6 cyfrowy kod weryfikacyjny.
 
@@ -94,7 +94,7 @@ Przez włączenie weryfikacji two-Factor Authentication, a następnie dodanie ko
 3. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **uwierzytelniania dwuskładnikowego** strony na komputerze.
 
     >[!Note]
-    >Jeśli aparat fotograficzny nie działa prawidłowo, możesz to zrobić [ręcznie wprowadzić kod QR i adres URL](#add-an-account-to-the-app-manually).
+    >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
 
 4. Przegląd **kont** strony aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o Twoim koncie jest po prawej stronie i że jest skojarzony 6 cyfrowy kod weryfikacyjny.
 
@@ -165,7 +165,7 @@ Dodaj swoje konto Amazon przez włączenie weryfikacji two-Factor Authentication
 6. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **wybierz, jak otrzymasz kodów** strony na komputerze.
 
     >[!Note]
-    >Jeśli aparat fotograficzny nie działa prawidłowo, możesz to zrobić [ręcznie wprowadzić kod QR i adres URL](#add-an-account-to-the-app-manually).
+    >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
 
 5. Przegląd **kont** strony aplikacji Microsoft Authenticator na urządzeniu, aby upewnić się, że informacje o Twoim koncie jest po prawej stronie i że jest skojarzony 6 cyfrowy kod weryfikacyjny.
 

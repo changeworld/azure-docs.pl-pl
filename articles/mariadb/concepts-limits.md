@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 12/03/2018
-ms.openlocfilehash: e611c5e11d3c86474a7775971918ba95b8487da4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.date: 02/07/2019
+ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970291"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895792"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Ograniczenia dotyczące usługi Azure Database dla serwera MariaDB
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych.
@@ -34,7 +34,7 @@ Maksymalna liczba połączeń na warstwa cenowa i rdzeni wirtualnych są następ
 |Pamięć| 16| 5000|
 
 Po przekroczeniu limitu połączeń może zostać wyświetlony następujący błąd:
-> BŁĄD 1040 (08004): Zbyt wiele połączeń
+> ERROR 1040 (08004): Zbyt wiele połączeń
 
 ## <a name="storage-engine-support"></a>Obsługa aparatu magazynu
 
@@ -52,6 +52,7 @@ Po przekroczeniu limitu połączeń może zostać wyświetlony następujący bł
 ### <a name="unsupported"></a>Nieobsługiwane
 - Rola Administrator: Wiele parametrów serwera i ustawień można przypadkowo obniżają wydajność serwerów lub odwrócić właściwości ACID systemu DBMS. Jako takie utrzymanie integralności usługi i umowa SLA na poziomie produktu, ta usługa nie ujawnia roli Administrator. Domyślne konto użytkownika, który jest tworzony, gdy tworzone jest nowe wystąpienie bazy danych, umożliwia użytkownikowi wykonać większość instrukcji DDL i DML w wystąpieniu zarządzanym bazy danych.
 - Uprawnienia administratora: Podobnie [uprawnień administratora](https://mariadb.com/kb/en/library/grant/#global-privileges) również jest ograniczony.
+- DEFINER: Wymaga uprawnień administratora do tworzenia i jest ograniczona. Importowanie danych przy użyciu kopii zapasowej, usunięcie `CREATE DEFINER` poleceń ręcznie lub za pomocą `--skip-definer` polecenia podczas wykonywania polecenia mysqldump.
 
 ## <a name="data-manipulation-statement-support"></a>Obsługa instrukcji manipulacji danych
 
@@ -76,6 +77,9 @@ Po przekroczeniu limitu połączeń może zostać wyświetlony następujący bł
 
 ### <a name="subscription-management"></a>Zarządzanie subskrypcjami
 - Dynamicznie przenoszenie serwerów wstępnie utworzonych w subskrypcji i grupy zasobów nie jest obecnie obsługiwane.
+
+### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
+- Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
 
 ## <a name="current-known-issues"></a>Obecnie znane problemy
 - Wystąpienie serwera MariaDB Wyświetla wersję serwerem nieprawidłowego po nawiązaniu połączenia. Aby uzyskać z właściwym serwerem w wystąpieniu aparatu wersji, użyj `select version();` polecenia.

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8f22885d67537194342115f07e4d04bc4b5c66da
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 3e1d5ed05b7acc8f7e0fcc772a4124984c6cba45
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911748"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884542"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>Migrowanie lokalnych klastrów Apache Hadoop do usługi Azure HDInsight — najlepsze rozwiązania magazynu
 
@@ -50,7 +50,7 @@ Usługa Azure Storage oferuje [usuwania nietrwałego dla obiektów blob](../../s
 Możesz utworzyć [migawek obiektów blob](https://docs.microsoft.com/rest/api/storageservices/creating-a-snapshot-of-a-blob). Migawki to wersja tylko do odczytu obiektów blob, która jest wykonywana w punkcie w czasie i zapewnia sposób, aby utworzyć kopię zapasową obiektu blob. Po utworzeniu migawki go można odczytać, kopiowana, lub usunięte, ale nie zostały zmodyfikowane.
 
 > [!Note]
-> Dla starszej wersji w środowisku lokalnym w środowisku lokalnym Hadoop dystrybucji, który nie ma certyfikatu "wasbs" musi ona zostać zaimportowane do magazynu zaufania Java.
+> Dla starszych wersji lokalnej usługi Hadoop dystrybucji, które nie mają certyfikatu "wasbs" muszą one zostać zaimportowane do magazynu zaufania Java.
 
 Następujące metody może służyć do importowania certyfikatów do magazynu zaufanych Java:
 
@@ -117,7 +117,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 - [Wprowadzenie do usługi Azure Data Lake Storage 2. generacji (wersja zapoznawcza)](../../storage/data-lake-storage/introduction.md)
 - [Sterownik systemu plików obiektów Blob platformy Azure (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
-- [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+- [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 ## <a name="secure-azure-storage-keys-within-on-premises-hadoop-cluster-configuration"></a>Kluczy zabezpieczeń usługi Azure Storage w konfiguracji klastra usługi Hadoop w środowisku lokalnym
 

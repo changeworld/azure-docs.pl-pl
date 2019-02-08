@@ -13,13 +13,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 452811cae74253570591e5ffe2c58708fe632b39
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729001"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894398"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z inspekcją wystąpienie zarządzane bazy danych SQL Azure
 
@@ -154,7 +154,7 @@ W poniższej sekcji opisano konfigurację inspekcji w ramach wystąpienia zarzą
 
 Dodatkowe informacje:
 
-- [Inspekcja różnice między pojedynczych baz danych, pul elastycznych, s i wystąpienia zarządzanego Azure SQL Database i baz danych programu SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Inspekcja różnice między pojedynczych baz danych, pul elastycznych, s i wystąpienia zarządzanego Azure SQL Database i baz danych programu SQL Server](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
 - [TWORZENIE INSPEKCJI SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [INSTRUKCJA ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -223,13 +223,13 @@ Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za 
 
 Podstawowe różnice między inspekcji w bazach danych Azure SQL Database i baz danych programu SQL Server są:
 
-- Za pomocą opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database, inspekcja działa na poziomie serwera i magazyny `.xel` dzienniki na koncie magazynu obiektów blob platformy Azure.
+- Za pomocą opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database, inspekcja działa na poziomie serwera i magazyny `.xel` pliki dziennika w usłudze Azure Blob storage.
 - Korzystając z pojedynczą bazę danych i pul elastycznych opcji wdrażania w usłudze Azure SQL Database inspekcja działa na poziomie bazy danych.
 - W programie SQL Server w środowisku lokalnym / wirtualnej maszyny, inspekcji działa na serwerze poziomu, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.
 
-Przeprowadzanie inspekcji w zarządzanym wystąpieniu systemu XEvent obsługuje obiekty docelowe magazynu obiektów blob platformy Azure. Dzienniki plików i systemu windows są **nieobsługiwane**.
+Wystąpienie zarządzane inspekcji systemu XEvent obsługuje cele usługi Azure Blob storage. Dzienniki plików i systemu windows są **nieobsługiwane**.
 
-Klucz różnice w `CREATE AUDIT` składnia inspekcji w usłudze Azure blob storage są:
+Klucz różnice w `CREATE AUDIT` składnia inspekcji w usłudze Azure Blob storage są:
 
 - Nowa składnia `TO URL` jest dostarczany i umożliwia określenie adresu URL kontenera magazynu obiektów blob platformy Azure gdzie `.xel` pliki zostaną umieszczone.
 - Nowa składnia `TO EXTERNAL MONITOR` jest dostarczana, aby umożliwić cele nawet Centrum i usługi Log Analytics.

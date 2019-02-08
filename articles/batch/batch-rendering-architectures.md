@@ -5,15 +5,15 @@ services: batch
 author: davefellows
 manager: jeconnoc
 ms.author: lahugh
-ms.date: 08/13/2018
+ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: d5102ba94e2b7808a457df00a87b35ef7022c454
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b8813466b9c0f74a608c0150c037dfec3db08dbc
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543499"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893820"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Architektury referencyjne platformy Azure renderowanie
 
@@ -25,11 +25,11 @@ Na poniższym diagramie przedstawiono scenariusza hybrydowego, który zawiera na
 
 * **Obliczenia** -puli Azure Batch lub zestawu skalowania maszyn wirtualnych.
 
-* **Sieć** -On-premises: Usługa Azure ExpressRoute lub sieci VPN. Azure: Sieć wirtualna platformy Azure.
+* **Sieć** -On-premises: Usługa Azure ExpressRoute lub sieci VPN. Azure: Azure VNet.
 
-* **Magazynu** — danych wejściowych i wyjściowych plików: Systemu plików NFS lub CFS przy użyciu maszyn wirtualnych platformy Azure, są synchronizowane z magazynu lokalnego przy użyciu usługi Azure File Sync lub polecenia RSync.
+* **Magazynu** — danych wejściowych i wyjściowych plików: Systemu plików NFS lub CFS przy użyciu maszyn wirtualnych platformy Azure, są synchronizowane z magazynu lokalnego przy użyciu usługi Azure File Sync lub polecenia RSync. Alternatywnie: VFXT Avere jako danych wejściowych lub wyjściowych plików z urządzeń NAS w środowisku lokalnym przy użyciu systemu plików NFS.
 
-  ![Rozszerzanie możliwości — chmury hybrydowej przy użyciu systemu plików NFS lub CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs.png)
+  ![Rozszerzanie możliwości — chmury hybrydowej przy użyciu systemu plików NFS lub CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
 ## <a name="hybrid-with-blobfuse"></a>Hybrydowe za pomocą Blobfuse
 
@@ -37,7 +37,7 @@ Na poniższym diagramie przedstawiono scenariusza hybrydowego, który zawiera na
 
 * **Obliczenia** -puli Azure Batch lub zestawu skalowania maszyn wirtualnych.
 
-* **Sieć** -On-premises: Usługa Azure ExpressRoute lub sieci VPN. Azure: Sieć wirtualna platformy Azure.
+* **Sieć** -On-premises: Usługa Azure ExpressRoute lub sieci VPN. Azure: Azure VNet.
 
 * **Magazynu** — danych wejściowych i wyjściowych plików: Magazyn obiektów blob, zainstalowany zasobów za pomocą usługi Azure Blobfuse obliczeniowych.
 
@@ -49,11 +49,11 @@ Poniższy diagram przedstawia scenariusza hybrydowego pełni połączone zarówn
 
 * **Obliczenia** -puli Azure Batch lub zestawu skalowania maszyn wirtualnych.
 
-* **Sieć** -On-premises: Usługa Azure ExpressRoute lub sieci VPN. Azure: Sieć wirtualna platformy Azure.
+* **Sieć** -On-premises: Usługa Azure ExpressRoute lub sieci VPN. Azure: Azure VNet.
 
-* **Magazyn** — między środowiskami lokalnymi: Avere vFXT. Opcjonalne archiwizację lokalnych plików przy użyciu usługi Azure Data Box do usługi Blob storage.
+* **Magazyn** — między środowiskami lokalnymi: Avere vFXT. Opcjonalne archiwizacji lokalnych plików za pomocą usługi Azure Data Box do usługi Blob storage lub on-premises Avere FXT dla NAS przyspieszenia.
 
-  ![Rozszerzanie możliwości — chmury hybrydowej zasobów obliczeniowych i magazynu](./media/batch-rendering-architectures/hybrid-compute-storage.png)
+  ![Rozszerzanie możliwości — chmury hybrydowej zasobów obliczeniowych i magazynu](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki

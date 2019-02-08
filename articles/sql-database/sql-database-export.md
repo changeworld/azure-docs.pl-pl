@@ -12,16 +12,16 @@ ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: e980ec81f66e1045a4d9df33b3392589f5c1a668
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d00d9b4a945b139ed7b930609fdab24e4a211551
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463756"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891101"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Eksportuj bazę danych Azure SQL database do pliku BACPAC
 
-Gdy trzeba wyeksportować bazę danych do archiwizacji lub przenoszenia do innej platformy, możesz wyeksportować schemat bazy danych i dane mają być [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) pliku. Plik BACPAC jest plikiem ZIP z rozszerzeniem pliku BACPAC zawierające metadane i dane z bazy danych programu SQL Server. Plik BACPAC można przechowywanych w usłudze Azure blob storage lub w magazynie lokalnym w lokalizacji lokalnej i później zaimportować do usługi Azure SQL Database lub do instalacji lokalnych programu SQL Server.
+Gdy trzeba wyeksportować bazę danych do archiwizacji lub przenoszenia do innej platformy, możesz wyeksportować schemat bazy danych i dane mają być [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) pliku. Plik BACPAC jest plikiem ZIP z rozszerzeniem pliku BACPAC zawierające metadane i dane z bazy danych programu SQL Server. Plik BACPAC mogą być przechowywane w usłudze Azure Blob storage lub w magazynie lokalnym w lokalizacji lokalnej i później zaimportowane wstecz do usługi Azure SQL Database lub SQL Server w środowisku lokalnym instalacji.
 
 > [!IMPORTANT]
 > Usługa Azure SQL Database zautomatyzowanego eksportu zostało wycofane z dniem 1 marca 2017 r. Możesz użyć [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md

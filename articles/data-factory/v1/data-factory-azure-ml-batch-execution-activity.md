@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c280a1f7e060ab7637e8d0b2484951f72b58a89c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081198"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894109"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Tworzenie potoków predykcyjnych przy użyciu usługi Azure Machine Learning i Azure Data Factory
 
@@ -54,7 +54,7 @@ Usługa Data Factory pozwala tworzyć potoki danych służące do przenoszenia i
 Zobacz [wprowadzenie do usługi Azure Data Factory](data-factory-introduction.md) i [Tworzenie pierwszego potoku](data-factory-build-your-first-pipeline.md) artykuły, aby szybko rozpocząć pracę z usługą Azure Data Factory.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Fabryka danych i uczenia maszynowego razem
-Usługa Azure Data Factory umożliwia łatwe tworzenie potoki, które używają opublikowanych [usługi Azure Machine Learning] [ azure-machine-learning] sieci web usługi do analizy predykcyjnej. Za pomocą **działanie wykonywania wsadowego** w potoku usługi Azure Data Factory można wywołać usługi sieci web Azure Machine Learning studio, jak tworzyć prognozy na danych w usłudze batch. Zobacz [wywoływania usługi sieci web Azure Machine Learning studio za pomocą działanie wykonywania wsadowego](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity) sekcji, aby uzyskać szczegółowe informacje.
+Usługa Azure Data Factory umożliwia łatwe tworzenie potoki, które używają opublikowanych [usługi Azure Machine Learning] [ azure-machine-learning] sieci web usługi do analizy predykcyjnej. Za pomocą **działanie wykonywania wsadowego** w potoku usługi Azure Data Factory można wywołać usługi sieci web Azure Machine Learning studio, jak tworzyć prognozy na danych w usłudze batch. Zobacz wywoływanie usługi sieci web Azure Machine Learning studio przy użyciu sekcji działanie wykonywania wsadowego, aby uzyskać szczegółowe informacje.
 
 Wraz z upływem czasu modele predykcyjne w programie Azure Machine Learning studio, oceniania eksperymentów konieczne retrained, przy użyciu nowych danych wejściowych zestawów danych. Model usługi Azure Machine Learning studio z potoku usługi fabryka danych mogą przechowywać, wykonując następujące czynności:
 

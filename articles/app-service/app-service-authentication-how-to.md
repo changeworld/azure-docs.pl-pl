@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 34902016578d92847bd83a7dede8ef73bb640b3e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: da3c90579dafebf1b5b362c7129e681663a0a7ab
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301581"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891882"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Zaawansowane zastosowania uwierzytelniania i autoryzacji w usłudze Azure App Service
 
@@ -174,7 +174,7 @@ W kodzie serwera tokenów właściwe dla dostawcy są wprowadzane w nagłówku �
 Z poziomu kodu klienta (np. aplikacji mobilnej lub JavaScript w przeglądarce) wysyłania HTTP `GET` limit czasu żądania `/.auth/me`. Zwrócone dane JSON ma właściwe dla dostawcy tokenów.
 
 > [!NOTE]
-> Tokeny dostępu służą do uzyskiwania dostępu do dostawcy zasobów, dzięki czemu są one występuje tylko w przypadku konfigurowania dostawcy z kluczem tajnym klienta. Aby zobaczyć, jak uzyskać tokeny odświeżania, zobacz [odświeżanie tokenów dostępu](#refresh-access-tokens).
+> Tokeny dostępu służą do uzyskiwania dostępu do dostawcy zasobów, dzięki czemu są one występuje tylko w przypadku konfigurowania dostawcy z kluczem tajnym klienta. Aby zobaczyć, jak uzyskać tokeny odświeżania, zobacz Odświeżanie tokenów dostępu.
 
 ## <a name="refresh-identity-provider-tokens"></a>Tożsamość dostawcy tokenów odświeżania
 

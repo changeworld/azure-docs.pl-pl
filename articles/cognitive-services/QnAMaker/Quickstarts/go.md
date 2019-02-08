@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Uzyskaj informacje oparte na protokole G0 REST i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, usług Microsoft Cognitive Services na platformie Azure przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 67654e11f3f5b883c587a4fdc0bb7a25f56cd48b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: bd3dfc9b2b0b169ebb27909812256dbee91e1dec
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220029"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883971"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>Jak używać usługi QnA Maker interfejsu API REST za pomocą języka Go 
 <a name="HOLTop"></a>

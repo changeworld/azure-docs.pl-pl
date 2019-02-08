@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: c62be5041792690f023361da6254157aed1beeb2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: e0455ef99016fe1029f17256a6dbf5d9bbd8aa4d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749056"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890573"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
@@ -56,10 +56,13 @@ Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać z
 
 > [!IMPORTANT]
 > Moc obliczeniowa, IOs, dane i Magazyn dzienników są naliczane zgodnie z bazy danych lub elastycznej puli. Magazyn kopii zapasowych jest rozliczane na każdej bazy danych. Aby moreinformation o opłatach za wystąpienie zarządzane, zobacz [wystąpienia zarządzane](sql-database-managed-instance.md).
-> **Ograniczenia regionu:** Aby uzyskać bieżącą listę obsługiwanych regionów, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Jeśli chcesz utworzyć wystąpienie zarządzane w regionie, który nie jest obecnie obsługiwane, możesz to zrobić [Wyślij żądanie pomocy technicznej za pośrednictwem witryny Azure portal](#obtaining-a-larger-quota-for-sql-managed-instance).
+> **Ograniczenia regionu:** Aby uzyskać bieżącą listę obsługiwanych regionów, zobacz [dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Jeśli chcesz utworzyć wystąpienie zarządzane w regionie, który nie jest obecnie obsługiwane, możesz to zrobić [Wyślij żądanie pomocy technicznej za pośrednictwem witryny Azure portal](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance).
 .
 
-Jeśli bazy danych lub elastycznej puli zajmuje ponad 300 Konwersja jednostek DTU na rdzeniach wirtualnych może zmniejszyć koszt. Możesz również przekonwertować przy użyciu wybranego interfejsu API lub portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model zakupu jednostek DTU spełnia swoje wymagania biznesowe i wydajności, można nadal jej używać. Jeśli zdecydujesz się przekonwertować modelu rdzenia wirtualnego z modelu jednostek DTU, należy wybrać rozmiar obliczeń przy użyciu następujące reguły akceptacji: każdy 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie przeznaczenie ogólne; Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie krytyczne dla działania firmy.
+Jeśli z pojedynczej bazy danych lub elastycznej puli zużywa ponad 300 jednostek Dtu, konwertowanie do modelu zakupu opartego na rdzeniach wirtualnych może zmniejszyć koszt. Jeśli zdecydujesz się przekonwertować, możesz przekonwertować przy użyciu wybranego interfejsu API lub portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana i nie odbywa się automatycznie. Jeśli model zakupu opartego na jednostkach DTU spełnia swoje wymagania biznesowe i wydajności, można nadal go używać. Jeśli zdecydujesz się przekonwertować z modelu zakupu opartego na jednostkach DTU do modelu zakupu opartego na rdzeniach wirtualnych, wybierz rozmiar obliczeń przy użyciu następujące reguły akceptacji: 
+
+- Każdy 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie przeznaczenie ogólne
+- Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie krytyczne dla działania firmy
 
 ## <a name="dtu-based-purchasing-model"></a>Model zakupu w oparciu o jednostki DTU
 

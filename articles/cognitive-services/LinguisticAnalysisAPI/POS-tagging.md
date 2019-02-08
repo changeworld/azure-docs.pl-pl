@@ -3,19 +3,19 @@ title: Tagowanie części mowy — interfejs API analizy językowej
 description: Dowiedz się, jak znakowanie część mowy w interfejsu API analizy językowej identyfikuje kategorii lub część mowy wystąpień poszczególnych wyrazów tekstu.
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: 41383b5bbad0eb5c32b98c57f3ea35e6018993e8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0269397b0f8da66d2bafecfb427ba705fdfff001
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218125"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883155"
 ---
 # <a name="part-of-speech-tagging"></a>Tagowanie części mowy
 

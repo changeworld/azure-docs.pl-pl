@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f8a5c12bb57a8f59960320c6227174b240bcbc3d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258854"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892239"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Zabezpieczenia na poziomie wierszy przy użyciu kolekcji obszarów roboczych usługi Power BI
 
@@ -48,7 +48,7 @@ Zabezpieczenia na poziomie wiersza są tworzone w programie Power BI Desktop. Po
 Poniżej przedstawiono kilka istotnych kwestii dotyczących tego schematu:
 
 * Wszystkie miary, takie jak **Total Sales**, są przechowywane w **sprzedaży** tabeli faktów.
-* Istnieją cztery dodatkowe powiązane tabele wymiarów: **elementu**, **czasu**, **Store**, i **District**.
+* Istnieją cztery dodatkowe powiązane tabele wymiarów: **Element**, **czasu**, **Store**, i **District**.
 * Strzałki w liniach relacji wskazują którędy filtry mogą przepływać z jednej tabeli do innej. Na przykład, jeśli filtr zostanie umieszczony na **Time [Date]**, w bieżącym schemacie będzie filtrować wyłącznie wartości w **sprzedaży** tabeli. Żadne inne tabele będzie mieć wpływ ten filtr, ponieważ wszystkie strzałki w liniach relacji wskazują do tabeli sprzedaży, a nie od niej.
 * **District** tabela wskazuje, który menedżera każdego regionu:
   
@@ -56,7 +56,7 @@ Poniżej przedstawiono kilka istotnych kwestii dotyczących tego schematu:
 
 Na podstawie tego schematu, jeśli zastosujemy filtr, aby **menedżerów** kolumny w tabeli District i jeśli ten filtr będzie zgodny użytkownikiem wyświetlającym raport, który odfiltrowanie także filtry **Store** i  **Sprzedaż** tabele tylko Pokaż dane dla tego konkretnego district manager.
 
-Oto jak:
+Oto, jak to zrobić:
 
 1. Na karcie modelowanie kliknij **Zarządzanie rolami**.  
    ![Zarządzanie przycisk ról w Wstążka modelowania](media/row-level-security/modeling-tab-5.png)
@@ -94,7 +94,7 @@ To opakowuje pracy, które należy wykonać w programie Power BI Desktop, ale ma
 * **Nazwa użytkownika** (opcjonalnie) — używany na poziomie wiersza jest to ciąg, który może służyć do zidentyfikowania użytkownika podczas stosowania reguł zabezpieczeń na poziomie wiersza. Zobacz wiersz zabezpieczenia na poziomie w usłudze Power BI Embedded
 * **role** — ciąg zawierający role do wybrania podczas stosowania reguł zabezpieczeń na poziomie wiersza. W przypadku przekazywania więcej niż jednej roli, należy je przekazywać jako tablicę ciągów.
 
-Utwórz token za pomocą [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__) metody. Jeśli właściwość username jest obecny, możesz też przekazać co najmniej jedną wartość w ramach ról.
+Utwórz token za pomocą [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN) metody. Jeśli właściwość username jest obecny, możesz też przekazać co najmniej jedną wartość w ramach ról.
 
 Na przykład można zmienić EmbedSample. Można zaktualizować wiersza DashboardController 55
 

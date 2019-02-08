@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 3888242f0379cc97bbe511e49a31a0f7eb8c5372
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f84fe995e65d2b67aaaf4ff9acc4a6a44ce607dc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165470"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889555"
 ---
-<!--author=SharS last changed: 1/14/2016 -->
-
 > [!NOTE]
 > Podczas wprowadzania zmian do adaptera StorSimple dla konfiguracji SPZ programu SharePoint, użytkownik musi być zalogowany przy użyciu konta użytkownika, który należy do grupy Administratorzy domeny. Ponadto należy uzyskać dostęp do strony konfiguracji z poziomu przeglądarki uruchomionych na tym samym hoście jako witryny Administracja centralna.
 > 

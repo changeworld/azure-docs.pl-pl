@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Jak utworzyć konta interfejsów API firmy Microsoft Cognitive Services w witrynie Azure portal.
 services: cognitive-services
 author: garyericson
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: garye
-ms.openlocfilehash: f4c6375dcdefe62fbfb224f766f642953acf1623
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: c69e8b7360774971316b5a060aff9e7057d3e9aa
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435977"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873976"
 ---
-# <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Szybki Start: Utwórz konto usług Cognitive Services w witrynie Azure portal
+# <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Szybki start: Utwórz konto usług Cognitive Services w witrynie Azure portal
 
 W tym przewodniku Szybki Start dowiesz się, jak utworzyć konto usług Azure Cognitive Services i utworzyć subskrypcję usługi jednego lub wielu usług. Te usługi są reprezentowane przez platformę Azure [zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), które umożliwiają łączenie się z jednego lub wielu interfejsów API usługi Azure Cognitive Services.
 
@@ -61,13 +61,13 @@ W kolejnych sekcjach prowadzą użytkownika przez proces tworzenia subskrypcji j
 
     ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreenMulti.png)
 
-2. Znajdź pasek wyszukiwania i wprowadź: **Usługi cognitive Services**.
+2. Znajdź pasek wyszukiwania i wprowadź: **Cognitive Services**.
 
     ![Wyszukiwanie poznawcze](media/cognitive-services-apis-create-account/azureCogServSearchMulti.png)
 
 3. Wybierz **usług Cognitive Services**.
 
-    ![Wybierz usługi Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplaceMulti.png)
+    ![Select Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplaceMulti.png)
 
 3. Na **Utwórz** Podaj następujące informacje:
 
@@ -99,7 +99,7 @@ W ramach zasobu usług Cognitive Services, można użyć adresu URL punktu końc
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Szybki Start: Wyodrębnianie tekstu odręcznego z obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)
+* [Szybki start: Wyodrębnianie tekstu odręcznego z obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)
 * [Samouczek: Utwórz aplikację, aby wykryć i ramek twarzy na obrazie](https://docs.microsoft.com/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial)
 * [Tworzenie strony sieci Web wyszukiwania niestandardowego](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)
 * [Integrowanie Language Understanding (LUIS) z botem przy użyciu platformy Bot Framework](https://docs.microsoft.com/azure/cognitive-services/luis/luis-nodejs-tutorial-build-bot-framework-sample)

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 0541b15743cff16ec0d19f8b450150c5430afb8d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 02274bacb66a33ef54e07bc8113d7db46d4d5296
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164271"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888815"
 ---
-<!--author=alkohli last changed: 02/10/17-->
-
 #### <a name="to-add-a-storsimple-backup-policy"></a>Aby dodać zasady kopii zapasowych danych StorSimple
 
 1. Przejdź do urządzenia StorSimple i kliknij pozycję **Zasady kopii zapasowych**.

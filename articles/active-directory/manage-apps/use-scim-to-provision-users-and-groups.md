@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: faebf6c5e7b32ec842c19af07e36a1120156e103
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732587"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894126"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -38,7 +38,7 @@ Ta funkcja może służyć w połączeniu z funkcją "Przynieś własną aplikac
 
 Istnieją dwa przypadki użycia dla usługi Azure Active Directory przy użyciu Standard SCIM:
 
-* **Inicjowanie obsługi administracyjnej użytkowników i grup do aplikacji obsługujących standard SCIM** — aplikacje, które obsługują standard SCIM w wersji 2.0 i używać tokenów elementu nośnego OAuth dla uwierzytelniania współpracuje z usługą Azure AD bez konfiguracji.
+* **Inicjowanie obsługi administracyjnej użytkowników i grup do aplikacji obsługujących standard SCIM** -działania aplikacji, które obsługują standard SCIM w wersji 2.0 i tokenów elementu nośnego OAuth jest używany do uwierzytelniania z usługą Azure AD bez konfiguracji.
   
 * **Kompilowanie rozwiązania inicjowania obsługi administracyjnej dla aplikacji, która obsługę innych oparte na interfejsie API** — w przypadku aplikacji innych niż standard SCIM można utworzyć punktu końcowego Standard SCIM tłumaczenie z punktu końcowego usługi Azure AD w Standard SCIM i dowolny interfejs API obsługuje aplikację Inicjowanie obsługi użytkowników. Aby ułatwić tworzenie punktu końcowego Standard SCIM istnieje biblioteki Common Language Infrastructure (CLI) oraz przykłady kodu, które pokazują, jak Podaj punkt końcowy Standard SCIM i tłumaczenie wiadomości Standard SCIM.  
 
@@ -74,7 +74,7 @@ Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może
    *Rysunek 3: Konfigurowanie inicjowania obsługi w witrynie Azure portal*
     
 6. W **adres URL dzierżawy** wprowadź adres URL punktu końcowego Standard SCIM aplikacji. Przykład: https://api.contoso.com/scim/v2/
-7. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługi Azure AD uwzględnione tokenu elementu nośnego OAuth wydawane z usługi Azure AD z każdym żądaniem. Aplikacje, które korzystają z usługi Azure AD jako dostawcy tożsamości można sprawdzić poprawność tej usługi Azure AD — wystawiony token.
+7. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługi Azure AD zawiera tokenu elementu nośnego OAuth wydawane z usługi Azure AD z każdym żądaniem. Aplikacje korzystające z usługi Azure AD jako dostawcy tożsamości można sprawdzić poprawność tej platformy Azure token wystawiony przez usługi AD.
 8. Kliknij przycisk **Testuj połączenie** przycisk, aby mieć Azure Active Directory podejmować próby nawiązania połączenia z punktem końcowym Standard SCIM. Jeśli zakończy się niepowodzeniem, informacje o błędzie jest wyświetlany.  
 
     >[!NOTE]
@@ -86,7 +86,7 @@ Aplikacje, które obsługują profile Standard SCIM opisane w tym artykule może
     >[!NOTE]
     >Opcjonalnie można wyłączyć synchronizację grupy obiektów, wyłączając mapowania "groups". 
 
-11. W obszarze **ustawienia**, **zakres** pole definiuje, które użytkownicy i grupy są synchronizowane. Wybieranie "Synchronizuj tylko przypisanych użytkowników i grup" (zalecane) będzie zsynchronizować tylko użytkownicy i grupy przypisane w **użytkowników i grup** kartę.
+11. W obszarze **ustawienia**, **zakres** pole definiuje, którzy użytkownicy i grupy są synchronizowane. Wybieranie "Synchronizuj tylko przypisanych użytkowników i grup" (zalecane) będzie zsynchronizować tylko użytkownicy i grupy przypisane w **użytkowników i grup** kartę.
 12. Po zakończeniu konfiguracji, zmień **stanie aprowizacji** do **na**.
 13. Kliknij przycisk **Zapisz** można uruchomić usługi aprowizacji usługi Azure AD. 
 14. Jeśli synchronizacja tylko przypisanych użytkowników i grup (zalecane), pamiętaj o wybraniu **użytkowników i grup** karcie, a następnie Przypisz użytkowników i/lub grup, które chcesz synchronizować.
@@ -153,7 +153,7 @@ Najłatwiejszym sposobem realizowania Standard SCIM punktu końcowego, który mo
    ![][2]
    *Rysunek 4: Konfigurowanie inicjowania obsługi w witrynie Azure portal*
     
-6. W **adres URL dzierżawy** wprowadź adres URL i port punktu końcowego usługi Standard SCIM udostępnianych przez internet. Wpis jest podobny do http://testmachine.contoso.com:9000 lub http://<ip-address>:9000/, gdzie < adres ip > jest internet narażona adresu IP.  
+6. W **adres URL dzierżawy** wprowadź adres URL i port punktu końcowego usługi Standard SCIM udostępnianych przez internet. Wpis jest podobny do http://testmachine.contoso.com:9000 lub http://\<adres ip >: 9000 /, gdzie \<adres ip > jest internet udostępniane IP adresów.  
 7. Jeśli punkt końcowy Standard SCIM wymaga tokenu elementu nośnego OAuth od wystawcy innych niż Usługa Azure AD, następnie skopiuj wymagany token elementu nośnego OAuth do opcjonalnego **klucz tajny tokenu** pola. Jeśli to pole pozostanie puste, usługi Azure AD będą zawierać tokenu elementu nośnego OAuth wydawane z usługi Azure AD z każdym żądaniem. Aplikacje, które korzystają z usługi Azure AD jako dostawcy tożsamości można sprawdzić poprawność tej usługi Azure AD — wystawiony token.
 8. Kliknij przycisk **Testuj połączenie** przycisk, aby mieć Azure Active Directory podejmować próby nawiązania połączenia z punktem końcowym Standard SCIM. Jeśli zakończy się niepowodzeniem, informacje o błędzie jest wyświetlany.  
 

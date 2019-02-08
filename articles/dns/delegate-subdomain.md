@@ -5,24 +5,27 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/22/2019
+ms.date: 2/7/2019
 ms.author: victorh
-ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452721"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895484"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Delegowanie poddomeny usługi Azure DNS
 
-Aby delegować domenę podrzędną DNS, można użyć witryny Azure portal. Na przykład, jeśli jesteś właścicielem domeny contoso.com, należy delegować domenę podrzędną o nazwie *inżynierów* inną, oddzielną strefę, które mogą być zarządzane oddzielnie od strefy contoso.com.
+Aby delegować domenę podrzędną DNS, można użyć witryny Azure portal. Na przykład, jeśli jesteś właścicielem domeny contoso.com, należy delegować domenę podrzędną o nazwie *inżynierów* inną, oddzielną strefę, które mogą administrować niezależnie od strefy contoso.com.
+
+Jeśli wolisz, możesz delegować domeny podrzędnej przy użyciu [programu Azure PowerShell](delegate-subdomain-ps.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby delegować przywoływana jest poddomena DNS platformy Azure, musisz delegować domenę publiczną do usługi Azure DNS. Zobacz [delegować domenę do usługi Azure DNS](./dns-delegate-domain-azure-dns.md) instrukcje dotyczące sposobu konfigurowania serwerów nazw dla celów delegacji. Gdy domeny jest delegowane do strefy DNS platformy Azure, możesz delegować Twojej domeny podrzędnej.
 
-W przykładach w tym artykule używany w domenie contoso.com. Należy zastąpić własnej domeny, korzystając z tych procedur.
+> [!NOTE]
+> Contoso.com jest używany jako przykład w tym artykule. Zastąp contoso.com swoją nazwą domeny.
 
 ## <a name="create-a-zone-for-your-subdomain"></a>Utwórz strefę w Twojej domenie podrzędnej
 
@@ -38,10 +41,13 @@ Najpierw należy utworzyć strefę dla **inżynierów** poddomeny.
 
 ## <a name="note-the-name-servers"></a>Należy pamiętać, serwery nazw
 
-Następnie skopiuj cztery serwery nazw dla swojej domeny podrzędnej.
+Następnie należy zwrócić uwagę cztery serwery nazw dla inżynierów poddomeny.
 
-1. Na **inżynierów** strefa okienko, należy pamiętać, cztery serwery nazw dla strefy. Te serwery nazw będzie on potrzebny później.
-2. Tworzenie **A** rekordu na potrzeby testowania. Na przykład można utworzyć **www** A rejestrowanie i skonfigurować go za pomocą **10.10.10.10** adresu IP.
+Na **inżynierów** strefa okienko, należy pamiętać, cztery serwery nazw dla strefy. Te serwery nazw będzie on potrzebny później.
+
+## <a name="create-a-test-record"></a>Utwórz rekord testu
+
+Tworzenie **A** rekordu na potrzeby testowania. Na przykład można utworzyć **www** A rejestrowanie i skonfigurować go za pomocą **10.10.10.10** adresu IP.
 
 ## <a name="create-an-ns-record"></a>Tworzenie rekordów NS
 
@@ -59,10 +65,8 @@ Następnie utwórz rekord serwera (nazw NS) nazwa **inżynierów** strefy.
 Nslookup umożliwia testowanie delegowanie.
 
 1. Otwórz okno programu PowerShell.
-2. W wierszu polecenia wpisz polecenie `nslookup www.engineering.<your domain name>.`
+2. W wierszu polecenia wpisz polecenie `nslookup www.engineering.contoso.com.`
 3. Powinna pojawić się jako nieautorytatywny odpowiedzi, wyświetlanie adresu **10.10.10.10**.
-
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

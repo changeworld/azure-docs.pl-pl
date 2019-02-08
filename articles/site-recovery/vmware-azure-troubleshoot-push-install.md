@@ -6,23 +6,29 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 01/18/2019
-ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/07/2019
+ms.openlocfilehash: 3de5996f574bf076b856a4d0cf7e18d77b1a9e5d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411751"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895690"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
 Instalacja usługi mobilności jest krokiem podczas włączania replikacji. Powodzenie ten krok zależy wyłącznie spełnienie wymagań wstępnych i pracą z nimi przy użyciu obsługiwanych konfiguracji. Są najbardziej typowych błędów, stosowanych podczas instalacji usługi mobilności ze względu na:
 
-* Poświadczenie/uprawnień błędy
-* Niepowodzenia logowania
-* Błędy związane z łącznością
-* Nieobsługiwanych systemów operacyjnych
-* Błędy instalacji usługi VSS
+* [Poświadczenie/uprawnień błędy](#credentials-check-errorid-95107--95108)
+* [Niepowodzenia logowania](#login-failures-errorid-95519-95520-95521-95522)
+* [Błędy łączności](#connectivity-failure-errorid-95117--97118)
+* [Błędy udostępniania plików i drukarek](#file-and-printer-sharing-services-check-errorid-95105--95106)
+* [Błędy usługi WMI](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [Nieobsługiwanych systemów operacyjnych](#unsupported-operating-systems)
+* [Nieobsługiwane konfiguracje rozruchu](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
+* [Błędy instalacji usługi VSS](#vss-installation-failures)
+* [Nazwa urządzenia w konfiguracji programu GRUB zamiast identyfikatora UUID urządzenia](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
+* [Wolumin LVM](#lvm-support-from-920-version)
+* [Ponowne uruchomienie ostrzeżenia](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
 Po włączeniu replikacji usługa Azure Site Recovery próbuje wypchnąć zainstalować agenta usługi mobilności na maszynie wirtualnej. W ramach tego serwera konfiguracji próbuje nawiązywanie połączenia z maszyną wirtualną i kopiowanie agenta. Aby umożliwić pomyślną instalację, postępuj zgodnie z wskazówki dotyczące rozwiązywania problemów krok po kroku przedstawionych poniżej.
 
@@ -56,12 +62,14 @@ Ustanowienia relacji zaufania domeny, między domeny głównej i stacji roboczej
 
 Jeśli chcesz zmodyfikować poświadczeń konta wybranego użytkownika, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="login-failure-errorid-95519"></a>Błąd logowania (identyfikator błędu: 95519)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Niepowodzenia logowania (identyfikator błędu: 95519, 95520, 95521, 95522)
+
+### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>Poświadczenia konta użytkownika zostały wyłączone (identyfikator błędu: 95519)
 
 Wyłączono konto użytkownika, podczas włączania replikacji. Aby włączyć konto użytkownika, można znaleźć w artykule [tutaj](https://aka.ms/enable_login_user) lub uruchom następujące polecenie, zastępując tekst *username* nazwą rzeczywistego użytkownika.
 `net user 'username' /active:yes`
 
-## <a name="login-failure-errorid-95520"></a>Błąd logowania (identyfikator błędu: 95520)
+### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Poświadczenia zablokowane z powodu wielu nieudanych prób logowania (identyfikator błędu: 95520)
 
 Wiele zakończonych niepowodzeniem ponownych prób działań mających na celu dostęp maszyny zostanie zablokowane konta użytkownika. Błędu mogą być następujące:
 
@@ -70,11 +78,11 @@ Wiele zakończonych niepowodzeniem ponownych prób działań mających na celu d
 
 Dlatego modyfikować poświadczeń wybranego przez zgodnie z instrukcjami [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) i spróbuj ponownie wykonać operację po pewnym czasie.
 
-## <a name="login-failure-errorid-95521"></a>Błąd logowania (identyfikator błędu: 95521)
+### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Serwerów logowania nie są dostępne na maszynie źródłowej (identyfikator błędu: 95521)
 
 Ten błąd występuje, gdy serwerów logowania nie są dostępne na maszynie źródłowej. Niedostępności serwerów logowania doprowadzi do błędu żądanie logowania i w związku z tym nie można zainstalować agenta mobilności. Pomyślne logowanie upewnij się, że serwery logowania są dostępne na maszynie źródłowej, a następnie uruchom usługę logowania. Aby uzyskać szczegółowe instrukcje, kliknij przycisk [tutaj](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
 
-## <a name="login-failure-errorid-95522"></a>Błąd logowania (identyfikator błędu: 95522)
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Usługa logowania nie jest uruchomiona na maszynie źródłowej (identyfikator błędu: 95522)
 
 Usługa logowania nie jest uruchomiona na maszynie źródłowej i powodowała błąd żądanie logowania. Dlatego nie można zainstalować agenta mobilności. Aby rozwiązać problem, upewnij się, że usługa logowania jest uruchomiona na maszynie źródłowej dla pomyślnego logowania. Aby uruchomić usługę logowania, uruchom polecenie "net start logowania" w wierszu polecenia lub uruchom usługę "NetLogon" z poziomu Menedżera zadań.
 
@@ -138,15 +146,17 @@ Inne artykuły dotyczące rozwiązywania problemów WMI można znaleźć w nast�
 Inny najbardziej typową przyczyną błędu może być spowodowany nieobsługiwany system operacyjny. Upewnij się, że używasz obsługiwanej wersji jądra systemu operacyjnego/pomyślną instalację usługi mobilności. Należy unikać użycia prywatnych poprawki.
 Aby wyświetlić listę systemów operacyjnych i wersji jądra obsługiwanych przez usługę Azure Site Recovery, zobacz nasze [dokumencie macierz obsługi](vmware-physical-azure-support-matrix.md#replicated-machines).
 
-## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Partycje rozruchowe i systemowe woluminy nie są tego samego dysku (identyfikator błędu: 95309)
+## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Obsługiwane konfiguracje dysków rozruchowych (identyfikator błędu: 95309, 95310, 95311)
+
+### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Partycje rozruchowe i systemowe woluminy nie są tego samego dysku (identyfikator błędu: 95309)
 
 Przed 9.20 partycje wersji, rozruchowy i systemowy / woluminy na dyskach inną was nieobsługiwaną konfigurację. Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ta konfiguracja jest obsługiwana. Obsługa jest możliwa, należy używać najnowszej wersji.
 
-## <a name="boot-disk-not-found-errorid-95310"></a>Brak dysku rozruchowego (identyfikator błędu: 95310)
+### <a name="the-boot-disk-is-not-available-errorid-95310"></a>Nie jest dyskiem rozruchowym (identyfikator błędu: 95310)
 
 Nie można chronić maszyny wirtualnej bez dysku rozruchowego. To, aby zapewnić sprawne odzyskiwanie maszyny wirtualnej podczas operacji trybu failover. Brak dysku rozruchowego powoduje niepowodzenie Przeprowadź rozruch komputera, po włączeniu trybu failover. Upewnij się, że maszyna wirtualna zawiera dysk rozruchowy, a następnie spróbuj ponownie wykonać operację. Należy również zauważyć, że wiele dysków rozruchowych na tym samym komputerze nie jest obsługiwany.
 
-## <a name="multiple-boot-disks-found-errorid-95311"></a>Znaleziono wiele dysków rozruchowych (identyfikator błędu: 95311)
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Wiele dysków rozruchowych znajduje się na maszynie źródłowej (identyfikator błędu: 95311)
 
 Nie jest maszyną wirtualną z wieloma dyskami rozruchowymi [obsługiwana konfiguracja](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
@@ -154,9 +164,45 @@ Nie jest maszyną wirtualną z wieloma dyskami rozruchowymi [obsługiwana konfig
 
 Przed wersją 9.20 główny partycji lub woluminie, na wielu dyskach był nieobsługiwaną konfigurację. Z [9.20 wersji](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery), ta konfiguracja jest obsługiwana. Obsługa jest możliwa, należy używać najnowszej wersji.
 
-## <a name="grub-uuid-failure-errorid-95320"></a>Błąd CHODNIKÓW UUID (identyfikator błędu: 95320)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Włączanie ochrony nie powiodło się, jak nazwa urządzenia, wymienione w konfiguracji programu GRUB zamiast identyfikatora UUID (identyfikator błędu: 95320)
 
-Jeśli program GRUB maszyny źródłowej używa nazwy urządzenia zamiast identyfikatora UUID, instalacji agenta mobilności kończy się niepowodzeniem. Skontaktuj się z administratorem systemu, aby wprowadź zmiany w pliku programu GRUB.
+**Możliwa przyczyna:** </br>
+Pliki konfiguracji programu GRUB ("/ boot/grub/menu.lst", "/ boot/grub/grub.cfg", "/ boot/grub2/grub.cfg" lub "/ etc/domyślne/chodników") może zawierać wartości dla parametrów **głównego** i **wznowić** jako nazwy rzeczywistego urządzenia zamiast identyfikatora UUID. Usługa Site Recovery określającemu UUID podejście, jak nazwa urządzenia mogą ulec zmianie między ponowny rozruch maszyny wirtualnej jako maszyny Wirtualnej może nie wróć w górę o takiej samej nazwie w trybie failover powodujące problemy. Na przykład: </br>
+
+
+- Następujący wiersz jest z pliku programu GRUB **/boot/grub2/grub.cfg**. <br>
+*Linux /boot/vmlinuz-3.12.49-11-default **główny = / dev/sda2** ${extra_cmdline} **wznowić = / dev/sda1** splash = dyskretnej showopts cichy*
+
+
+- Następujący wiersz jest z pliku programu GRUB **/boot/grub/menu.lst**
+ */boot/vmlinuz-3.0.101-63-default jądra **główny = / dev/sda2** **wznowić = / dev/sda1 ** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
+
+Jeśli zauważysz bold ciągu powyżej, program GRUB zawiera rzeczywistego urządzenia nazwy parametrów "root" i "resume" zamiast identyfikatora UUID.
+ 
+**Jak naprawić:**<br>
+Nazwy urządzeń należy zastąpić je klasą odpowiedni identyfikator UUID.<br>
+
+
+1. Znajdź identyfikator UUID urządzenia, wykonując polecenie "blkid <device name>". Na przykład:<br>
+```
+blkid /dev/sda1
+/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+blkid /dev/sda2 
+/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```
+
+2. Teraz Zastąp nazwy urządzenia za pomocą jego identyfikatora UUID w formacie, takich jak "główny = UUID =<UUID>". Na przykład, jeśli firma Microsoft Zastąp nazwy urządzenia o identyfikatorze UUID dla głównego i wznowić parametrów wymienionych powyżej w plikach "/ boot/grub2/grub.cfg", "/ boot/grub2/grub.cfg" lub "/ etc/domyślne/chodników:, a następnie wygląda wierszy w plikach. <br>
+*jądra /boot/vmlinuz-3.0.101-63-default **główny = UUID = 62927e85-f7ba-40bc-9993-cc1feeb191e4** **wznowić = UUID = 6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash = dyskretnej crashkernel = 256M-:128M showopts vga = 0x314*
+3. Ponownie uruchom ochronę ponownie
+
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Instalowanie usługi mobilności Ukończono z ostrzeżeniem o ponownym uruchomieniu (identyfikator błędu: 95265 & 95266)
+
+Usługę mobilności usługi Site Recovery ma wiele składników, z których jedno nosi nazwę sterownika filtru. Sterownik filtru pobiera ładowane do pamięci systemowej tylko na czas ponownego uruchomienia systemu. Oznacza to, że poprawki sterownika filtru tylko można realizować po załadowaniu nowego sterownika filtru; który może się zdarzyć tylko w momencie ponownego uruchomienia systemu.
+
+**Należy pamiętać,** to ostrzeżenie, która istniejącą mapowanie replikację będzie działać nawet po zakończeniu nowa aktualizacja agenta. Można ponownie uruchomić w dowolnym momencie w celu uzyskania korzyści z nowego sterownika filtru, ale użytkownik nie należy ponownie uruchomić niż również stare filtr sterownika przechowuje na temat pracy. Tak, po aktualizacji bez ponownego uruchomienia, oprócz sterownik filtru **zalety innych ulepszeń i poprawek w ramach usługi mobilności pobiera rzędu milionów dolarów**. Dlatego, chociaż jest to zalecane, nie jest wymagane ponowne uruchomienie po każdym uaktualnieniu. Instrukcje dotyczące podczas ponownego uruchomienia jest obowiązkowy, kliknij przycisk [tutaj](https://aka.ms/v2a_asr_reboot).
+
+> [!TIP]
+>Aby uzyskać najlepsze rozwiązania dotyczące planowania uaktualnienia podczas okna obsługi, zobacz [tutaj](https://aka.ms/v2a_asr_upgrade_practice).
 
 ## <a name="lvm-support-from-920-version"></a>Obsługa LVM 9.20 wersji
 

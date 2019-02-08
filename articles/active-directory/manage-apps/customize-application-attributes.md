@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: barbkess
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eaf6890223526b213ac4ec1180288b95fe6eaa29
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c32b24007a041b9eb2cc1a5418c221239f3267b6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149866"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893881"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika aprowizacji mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
 Microsoft Azure AD zapewnia obsługę aprowizacji użytkowników do aplikacji SaaS innych firm, takich jak Salesforce, Google Apps i innych. Jeśli aprowizacja użytkowników dla aplikacji SaaS innych firm, włączone, witryny Azure portal steruje jego wartości atrybutów w formie mapowania atrybutów.
@@ -102,7 +102,7 @@ Aplikacje i systemy, które obsługują dostosowania listy atrybutów to:
 * Aplikacje, które obsługują [2.0 Standard SCIM](https://tools.ietf.org/html/rfc7643), w którym atrybuty zdefiniowane w [schematu core](https://tools.ietf.org/html/rfc7643) muszą zostać dodane
 
 >[!NOTE]
->Edytowanie listy atrybutów obsługiwane jest zalecane tylko dla administratorów, którzy dostosowali schematu swoich aplikacji i systemów i dysponują wiedzą pierwszej ręki na temat sposobu ich atrybuty niestandardowe zostały zdefiniowane. Czasami ta migracja wymaga znajomości narzędzia deweloperów i interfejsów API dostarczonych przez aplikację lub system. 
+>Edytowanie listy atrybutów obsługiwane jest zalecane tylko dla administratorów, którzy dostosowali schematu swoich aplikacji i systemów i dysponują wiedzą pierwszej ręki na temat sposobu ich atrybuty niestandardowe zostały zdefiniowane. Czasami wymaga to znajomość interfejsów API i narzędzia dla deweloperów aplikacji lub systemu. 
 
 ![Edytor](./media/customize-application-attributes/25.png) 
 

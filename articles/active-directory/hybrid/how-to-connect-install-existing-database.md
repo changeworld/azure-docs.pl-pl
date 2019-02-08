@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f863c4b115616ff709634f3c68955c3be3241707
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2f1b6cec49507c5106434bf42743aadd1b3230aa
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494191"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894976"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Zainstaluj program Azure AD Connect przy użyciu istniejącej bazy danych ADSync
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowane za pomocą usługi Azure AD Connect lub użyć pełnej wersji programu SQL Server. Wcześniej Jeśli zainstalowano program Azure AD Connect, nową bazę danych o nazwie ADSync zawsze został utworzony. Za pomocą usługi Azure AD Connect w wersji 1.1.613.0 (lub po) masz możliwość zainstalowania Azure AD Connect, wskazując je do istniejącej bazy danych ADSync.
@@ -59,7 +59,11 @@ Ważne uwagi do wykonania należy pamiętać o przed kontynuowaniem:
 2.  Po zakończeniu instalacji pliku MSI kreator programu Azure AD Connect rozpocznie instalację w trybie ekspresowym. Zamknij ekran, klikając ikonę zakończenia.
 ![Powitanie](./media/how-to-connect-install-existing-database/db1.png)
 3.  Uruchom nowy wiersz polecenia lub sesję programu PowerShell. Przejdź do folderu <drive>\program files\Microsoft Azure AD Connect. Uruchom polecenie .\AzureADConnect.exe /useexistingdatabase w celu uruchomienia kreatora programu Azure AD Connect w trybie instalacji „Użyj istniejącej bazy danych”.
-![Program PowerShell](./media/how-to-connect-install-existing-database/db2.png)
+
+> [!NOTE]
+> Użyj przełącznika **/useexistingdatabase** tylko kiedy baza danych już zawiera dane z poprzedniej instalacji program Azure AD Connect. Na przykład gdy przenosisz z lokalnej bazy danych do pełnego bazy danych programu SQL Server lub kiedy został odbudowany serwer programu Azure AD Connect i przywrócić kopię zapasową SQL bazy danych ADSync z poprzedniej instalacji programu Azure AD Connect. Jeśli utworzono pustą bazę danych i używać go w ramach instalacji, Pomiń ten krok.
+
+![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 4.  Zobaczysz ekran powitalny programu Azure AD Connect. Gdy zaakceptujesz postanowienia licencyjne i uwagi na temat ochrony prywatności, kliknij pozycję **Kontynuuj**.
 ![Powitanie](./media/how-to-connect-install-existing-database/db3.png)
 5.  Na ekranie **Instalowanie wymaganych składników** włączona jest opcja **Użyj istniejącego serwera SQL Server**. Określ nazwę serwera SQL Server hostującego bazę danych programu ADSync. Jeśli wystąpienie aparatu SQL używane do hostowania bazy danych programu ADSync nie jest domyślnym wystąpieniem serwera SQL Server, musisz określić nazwę wystąpienia aparatu SQL. Ponadto jeśli nie jest włączone przeglądanie SQL, musisz też określić numer portu wystąpienia aparatu SQL. Na przykład:         

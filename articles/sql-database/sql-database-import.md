@@ -12,23 +12,23 @@ ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: c1b6c55475c1600c89c1ac1cae9dee0068b92070
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b717e26e61a6633ea51817bcb21ebeb15a20969
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478223"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892007"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-new-azure-sql-database"></a>Szybki start: Importowanie pliku BACPAC do nowej bazy danych SQL Azure
 
-Można przeprowadzić migrację bazy danych programu SQL Server do usługi Azure SQL database za pomocą [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) pliku (pliku zip z `.bacpac` rozszerzenia, które ma metadanych i danych w bazie danych). Można zaimportować plik BACPAC z magazynu obiektów blob platformy Azure (tylko w przypadku magazynu standardowego) lub z magazynu lokalnego w lokalizacji lokalnej. Aby zapewnić maksymalną szybkość importowania, możesz określić wyższej warstwy usługi i obliczenia rozmiaru (na przykład P6). Następnie można skalować w dół po import zakończy się pomyślnie. Poziom zgodności zaimportowanej bazy danych opiera się na poziomie zgodności bazy danych źródłowych.
+Można przeprowadzić migrację bazy danych programu SQL Server do usługi Azure SQL database za pomocą [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) pliku (pliku zip z `.bacpac` rozszerzenia, które ma metadanych i danych w bazie danych). Można zaimportować plik BACPAC z magazynu obiektów Blob platformy Azure (tylko w przypadku magazynu standardowego) lub z magazynu lokalnego w lokalizacji lokalnej. Aby zapewnić maksymalną szybkość importowania, możesz określić wyższej warstwy usługi i obliczenia rozmiaru (na przykład P6). Następnie można skalować w dół po import zakończy się pomyślnie. Poziom zgodności zaimportowanej bazy danych opiera się na poziomie zgodności bazy danych źródłowych.
 
 > [!IMPORTANT]
 > Po zaimportowaniu bazy danych, istnieje możliwość obsługi bazy danych w jego bieżący poziom zgodności (poziom 100 AdventureWorks2008R2 bazy danych) lub na wyższym poziomie. Aby uzyskać więcej informacji o implikacjach i opcjach związanych z używaniem bazy danych na określonym poziomie zgodności, zobacz [ALTER DATABASE Compatibility Level](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) (Instrukcja ALTER DATABASE — poziom zgodności). Zapoznaj się też z tematem [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql), aby uzyskać informacje o dodatkowych ustawieniach na poziomie bazy danych związanych z poziomem zgodności.
 
 ## <a name="import-from-a-bacpac-file-in-the-azure-portal"></a>Importuj z pliku BACPAC w witrynie Azure portal
 
-W tej sekcji przedstawiono sposób, w [witryny Azure portal](https://portal.azure.com), aby utworzyć bazę danych Azure SQL database z pliku BACPAC przechowywanego w usłudze Azure blob storage. Portal *tylko* magazynu obiektów blob obsługuje importowanie pliku BACPAC na platformie Azure.
+W tej sekcji przedstawiono sposób, w [witryny Azure portal](https://portal.azure.com), aby utworzyć bazę danych Azure SQL database z pliku BACPAC przechowywanego w usłudze Azure Blob storage. Portal *tylko* obsługuje importowanie pliku BACPAC z magazynu obiektów Blob platformy Azure.
 
 > [!NOTE]
 > [Wystąpienie usługi Azure SQL Database Managed](sql-database-managed-instance.md) obsługuje importowania z pliku BACPAC przy użyciu innych metod, w tym artykule, ale obecnie nie obsługuje migracji w witrynie Azure portal.
@@ -58,7 +58,7 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
 ```
 
 > [!IMPORTANT]
-> Serwer SQL Database nasłuchuje na porcie 1433. Połączyć się z serwerem bazy danych SQL za pośrednictwem zapory firmowej zapory muszą mieć ten port, Otwórz.
+> Serwer SQL Database nasłuchuje na porcie 1433. Aby można było nawiązać połączenie z serwerem usługi SQL Database spoza firmowej zapory, ten port w zaporze musi być otwarty.
 >
 
 Ten przykład przedstawia sposób importowania bazy danych przy użyciu narzędzia SqlPackage przy użyciu uwierzytelniania usługi Active Directory Universal.

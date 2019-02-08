@@ -11,13 +11,13 @@ author: vainolo
 ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/03/2019
-ms.openlocfilehash: 0c79554d2db4c1dc17cfbdeed052c1ae16cd68c2
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 02/07/2019
+ms.openlocfilehash: 26517e55685de6e1fd9174bb1892b877f0e263d6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297688"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895656"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -43,7 +43,7 @@ Można użyć inspekcji usługi SQL database do:
 > [!IMPORTANT]
 > Dzienniki inspekcji są zapisywane w **obiekty BLOB dołączania** w usłudze Azure Blob storage w ramach subskrypcji platformy Azure.
 >
-> - **Usługa Premium Storage** jest obecnie **nieobsługiwane** przez obiekty BLOB dołączania.
+> - **Usługa Premium storage** jest obecnie **nieobsługiwane** przez obiekty BLOB dołączania.
 > - **Magazyn w sieci wirtualnej** jest obecnie **nieobsługiwane**.
 
 ## <a id="subheading-8"></a>Zdefiniuj poziom serwera, a zasady inspekcji na poziomie bazy danych
@@ -251,7 +251,7 @@ Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dod
 
 Można zarządzać za pomocą inspekcja bazy danych Azure SQL [usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) szablonów, jak pokazano w tych przykładach:
 
-- [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji do konta magazynu obiektów blob platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
+- [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji do konta magazynu obiektów Blob platformy Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
 - [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji usługi Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
 - [Wdrażanie serwera SQL Azure za pomocą inspekcji włączone zapisywanie dzienników inspekcji usługi Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 

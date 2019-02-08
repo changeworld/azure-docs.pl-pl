@@ -1,6 +1,6 @@
 ---
 title: Instalowanie bazy danych MySQL na maszynie Wirtualnej z dystrybucją systemu OpenSUSE na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak instalowanie bazy danych MySQL na maszynie z dystrybucją systemu OpenSUSE Linux VMirtual na platformie Azure.
+description: Dowiedz się zainstalować MySQL na maszynie wirtualnej systemu Linux OpenSUSE na platformie Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: za-rhoads
-ms.openlocfilehash: 98eb331fbd82ff718b01c99afd6840e3c2252777
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 06fb4b9c39b773393d7a58bba44f240265e2200f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227866"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893705"
 ---
 # <a name="install-mysql-on-a-virtual-machine-running-opensuse-linux-in-azure"></a>Instalowanie bazy danych MySQL na maszynie wirtualnej z dystrybucją systemu OpenSUSE Linux na platformie Azure
 
@@ -130,7 +130,7 @@ To przełączników do wiersza polecenia MySQL gdzie można wydać instrukcji SQ
 
 Teraz Utwórz nowego użytkownika programu MySQL.
 
-```   
+```sql
 CREATE USER 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
    
@@ -142,7 +142,7 @@ Rozdzielana średnikami (;) na końcu wiersza jest kluczowa dla zakończenie pol
 
 Tworzenie bazy danych i udzielanie `mysqluser` uprawnień użytkownika.
 
-```   
+```sql
 CREATE DATABASE testdatabase;
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'localhost' IDENTIFIED BY 'password';
 ```
@@ -151,7 +151,7 @@ Bazy danych, nazwy użytkownika i hasła są używane tylko przez skrypty połą
 
 Włącz logowanie z innego komputera. W tym przykładzie jest adres IP komputera, aby umożliwić logowanie z *10.112.113.114*.
 
-```   
+```sql
 GRANT ALL ON testdatabase.* TO 'mysqluser'@'10.112.113.114' IDENTIFIED BY 'password';
 ```
    
