@@ -3,8 +3,8 @@ title: Publikowanie usług pulpitu zdalnego z serwera Proxy aplikacji usługi Az
 description: Zawiera podstawowe informacje dotyczące łączników serwera Proxy aplikacji usługi Azure AD.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: barbkess
+ms.author: celested
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.openlocfilehash: 2bd87b69b332cf9acfdf7cbaa80900c9559c2c8e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dc9418f07344382a985da7c31eba26d6b8a9b2cb
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159782"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962540"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikowanie usług pulpitu zdalnego z serwerem Proxy aplikacji usługi Azure AD
 

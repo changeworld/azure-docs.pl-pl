@@ -1,19 +1,19 @@
 ---
 title: Często zadawane pytania — program VMware do odzyskiwania po awarii platformy Azure za pomocą usługi Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera podsumowanie często zadawane pytania, podczas konfigurowania odzyskiwania po awarii lokalnych maszyn wirtualnych programu VMware do platformy Azure przy użyciu usługi Azure Site Recovery
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 1/29/2019
+ms.date: 2/7/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fb4add1194f7fe6d10859f76f244f027b35ad92d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212243"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960585"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -108,6 +108,9 @@ W przypadku replikacji maszyny Wirtualnej programu VMware musi działać obsług
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Jak często można replikować na platformę Azure?
 Replikacja jest ciągłe podczas replikowania maszyn wirtualnych VMware na platformę Azure.
+
+### <a name="can-i-retain-the-ip-address-on-failover"></a>Czy można zachować adres IP w trybie failover?
+Tak, można zachować adres IP w trybie failover. Upewnij się, wspomnieć o docelowy adres IP w bloku "Obliczenia i sieć" przed włączeniem trybu failover. Upewnij się również, aby zamknąć maszyny w momencie przejścia w tryb failover w celu uniknięcia konfliktów adresów IP w momencie powrotu po awarii.
 
 ### <a name="can-i-extend-replication"></a>Czy mogę rozszerzyć replikację
 Replikacja rozszerzona lub łańcuchowa nie jest obsługiwana. Zażądać tej funkcji w [forum z opiniami](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).

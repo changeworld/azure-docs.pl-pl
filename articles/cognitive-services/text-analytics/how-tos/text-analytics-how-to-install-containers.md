@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 105b4e34d307ac08b8efbb5e263825f2df28e28c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f2b8b97878fc0970c8cfc95e5bd4420306e34cc0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862330"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977104"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>Instalowanie i uruchamianie kontenerów analizy tekstu
 
@@ -77,19 +77,19 @@ Użyj [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pul
 
 ### <a name="docker-pull-for-the-key-phrase-extraction-container"></a>Polecenie docker pull kontenera klucza frazy wyodrębniania
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/keyphrase:latest
 ```
 
 ### <a name="docker-pull-for-the-language-detection-container"></a>Polecenie docker pull dla kontenera wykrywanie języka
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/language:latest
 ```
 
 ### <a name="docker-pull-for-the-sentiment-container"></a>Polecenie docker pull dla kontenera tonacji
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 ```
 
@@ -156,18 +156,7 @@ Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](../text-analytics
 
 Wyślij kontenery analizy tekstu, rozliczeń, informacje na platformie Azure, przy użyciu _analizy tekstu_ zasobów dla konta systemu Azure. 
 
-Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klienta do firmy Microsoft. 
-
-`docker run` Polecenie używa następujących argumentów na potrzeby rozliczeń:
-
-| Opcja | Opis |
-|--------|-------------|
-| `ApiKey` | Klucz interfejsu API _analizy tekstu_ zasoby używane do śledzenia informacji dotyczących rozliczeń. |
-| `Billing` | Punkt końcowy _analizy tekstu_ zasoby używane do śledzenia informacji dotyczących rozliczeń.|
-| `Eula` | Wskazuje, że zaakceptowano licencję dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
-
-> [!IMPORTANT]
-> Prawidłowe wartości należy określić wszystkie trzy opcje, lub uruchomić kontenera.
+[!INCLUDE [Container's Billing Settings](../../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](../text-analytics-resource-container-config.md).
 

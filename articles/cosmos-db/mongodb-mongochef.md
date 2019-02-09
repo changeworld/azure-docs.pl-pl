@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: c679d2e6b7dc8998016e79d265f368504d6def3d
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: f2ba1a6fef944911c0706ca4e71be6a55bc4b16a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038418"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961843"
 ---
 # <a name="connect-to-cosmos-account-using-studio-3t"></a>Łączenie się z kontem Cosmos korzystanie z programu Studio 3T
 
@@ -26,7 +26,7 @@ Aby nawiązać połączenie konta usługi Cosmos przy użyciu interfejsu API us�
 ## <a name="create-the-connection-in-studio-3t"></a>Tworzenie połączenia w z programu Studio 3T
 Aby dodać swoje konto Cosmos Menedżera połączeń z programu 3T Studio, wykonaj następujące kroki:
 
-1. Pobierz informacje o połączeniu dla konta usługi Cosmos skonfigurowane za pomocą usługi Azure Cosmos DB interfejsu API MongoDB przy użyciu instrukcji w [połączyć aplikację MongoDB w usłudze Azure Cosmos DB](connect-mongodb-account.md) artykułu.
+1. Pobierz informacje o połączeniu dla konta usługi Cosmos skonfigurowane za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB, zgodnie z instrukcjami przedstawionymi w [połączyć aplikację MongoDB w usłudze Azure Cosmos DB](connect-mongodb-account.md) artykułu.
 
     ![Zrzut ekranu strony parametrów połączenia](./media/mongodb-mongochef/ConnectionStringBlade.png)
 2. Kliknij przycisk **Connect** , aby otworzyć Menedżera połączeń, a następnie przycisk **nowe połączenie**
@@ -111,5 +111,5 @@ Aby utworzyć bazę danych, kolekcję i dokumenty przy użyciu z programu Studio
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [korzystać z programu 3T Robo](mongodb-robomongo.md) przy użyciu interfejsu API usługi Azure Cosmos DB, bazy danych mongodb.
-- Zapoznaj się z bazą danych MongoDB [przykłady](mongodb-samples.md) przy użyciu interfejsu API usługi Azure Cosmos DB, bazy danych mongodb.
+- Dowiedz się, jak [korzystać z programu Robo 3T](mongodb-robomongo.md) za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.
+- Eksploruj [przykłady](mongodb-samples.md) bazy danych MongoDB za pomocą interfejsu API usługi Azure Cosmos DB dla bazy danych MongoDB.

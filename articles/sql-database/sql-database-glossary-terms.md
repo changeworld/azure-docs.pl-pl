@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 0ae6dea86019b84e8d086a595995f8bd5b2a55ed
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: d773d270b3b352bcaef189d201d824695b42bcef
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753303"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980146"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Usługa Azure SQL Database słownik pojęć
 
@@ -28,7 +28,7 @@ ms.locfileid: "55753303"
 ||Pula elastyczna|[Pula elastyczna](sql-database-elastic-pool.md)|
 ||Wystąpienie zarządzane|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
 |Obiekty serwera|Bazy danych programu SQL server lub serwer bazy danych|[Serwer bazy danych](sql-database-servers.md)|
-||Wystąpienie zarządzane bazy danych SQL Database lub wystąpienia zarządzanego|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
+||Serwer wystąpienia zarządzanego usługi SQL Database, wystąpienia zarządzanego serwera lub wystąpienia serwera|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
 Obiekty bazy danych|Baza danych Azure SQL Database|Wszystkie bazy danych w usłudze Azure SQL Database|
 ||Pojedyncza baza danych|Z bazy danych utworzonej jako autonomicznej bazy danych przy użyciu opcji wdrożenia pojedynczej bazy danych|
 ||Baza danych w puli|Bazy danych utworzone w ramach lub przeniesiona do puli elastycznej|
@@ -47,6 +47,6 @@ Obiekty bazy danych|Baza danych Azure SQL Database|Wszystkie bazy danych w usłu
 ||Ilość miejsca w magazynie|Ilość miejsca dostępna dla pojedynczej bazy danych, pul elastycznych lub wystąpienia zarządzanego|
 ||Generacja obliczeń|Generowanie procesora w ramach warstwy usług|
 |Reguły zapory dotyczące adresu IP serwera bazy danych|Reguły zapory IP|[Reguły zapory IP](sql-database-firewall-configure.md)|
-||Reguły zapory IP poziomu serwera|[Reguły zapory IP poziomu serwera](sql-database-firewall-configure.md#overview)|
+||Reguły zapory na poziomie serwera|[Reguły zapory IP poziomu serwera](sql-database-firewall-configure.md#overview)|
 || Reguły zapory IP poziomu bazy danych|[Reguły zapory IP poziomu bazy danych](sql-database-firewall-configure.md#overview)|
 ||Punkty końcowe sieci wirtualnej i reguł|[Punkty końcowe i reguły sieci wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md)|

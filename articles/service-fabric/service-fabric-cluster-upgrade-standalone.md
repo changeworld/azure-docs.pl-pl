@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 6f0ffac9ecf4d0c8f6c3dc7c57670b168417cd3a
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: ed50f49b110d910a298e608f3625a3bddfe8a0a8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51855140"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963170"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Uaktualnianie i aktualizowanie klastra autonomicznego usługi Service Fabric
 
 Dla każdego nowoczesnego systemu projektowanie pod kątem możliwość jest kluczem do osiągnięcia długoterminowym sukcesie produktu. Klaster autonomiczny usługi Azure Service Fabric jest zasobem, którego jesteś właścicielem. W tym artykule opisano, jakie można ją uaktualnić lub zaktualizować.
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Kontrolowanie wersja sieci szkieletowej, która działa w klastrze
-Upewnij się, że klaster zawsze działa obsługiwana wersja usługi Service Fabric. Microsoft zapowiada wydaniu nowej wersji usługi Service Fabric, poprzednia wersja jest oznaczony do zakończenia wsparcia po co najmniej 60 dni od daty anonsu. Nowe wersje są anonsowane [na blogu zespołu usługi Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nowa wersja jest dostępna do wyboru, w tym momencie.
+Upewnij się, że klaster jest zawsze uruchamiany [obsługiwana wersja usługi Service Fabric](service-fabric-versions.md). Microsoft zapowiada wydaniu nowej wersji usługi Service Fabric, poprzednia wersja jest oznaczony do zakończenia wsparcia po co najmniej 60 dni od daty anonsu. Nowe wersje są anonsowane [na blogu zespołu usługi Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/). Nowa wersja jest dostępna do wyboru, w tym momencie.
 
 Można ustawić do klastra, aby otrzymywać uaktualnienia sieci szkieletowej automatyczne, zgodnie z ich wydaniu przez firmę Microsoft lub ręcznym wybraniu pozycji wersji obsługiwanych w sieci szkieletowej, że chcesz użyć do klastra, aby znajdować się na. Aby uzyskać więcej informacji, przeczytaj [uaktualniania wersji usługi Service Fabric, który działa w klastrze](service-fabric-cluster-upgrade-windows-server.md).
 

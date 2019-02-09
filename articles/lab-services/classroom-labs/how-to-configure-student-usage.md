@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 577860baa74d9f0cd7f411a64d9e6bfa9322731c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894994"
+ms.locfileid: "55964818"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurowanie zasad i ustawień użycia
 W tym artykule opisano, jak dodać użytkowników do laboratorium, Uzyskaj je zarejestrowane w usłudze laboratorium, kontrolować liczbę godzin, które mogą używać maszyny Wirtualnej i nie tylko. 
@@ -66,11 +66,14 @@ Można ustawić limity przydziału dla poszczególnych użytkowników wykonując
 
 1. W menu po lewej stronie wybierz pozycję **Użytkownicy**.
 2. Wybierz **limitu przydziału dla poszczególnych użytkowników: bez ograniczeń** na pasku narzędzi. 
-3. Na **limitu przydziału dla poszczególnych użytkowników** wybierz opcję **ograniczyć liczbę godzin, które użytkownik może używać maszyny Wirtualnej**. 
-4. Dla **ile godzin czy chcesz dać każdemu użytkownikowi**, wprowadź liczbę godzin, a wybierz **Zapisz**. 
+3. Na **limitu przydziału dla poszczególnych użytkowników** zaznacz jedną z następujących opcji: 
+    1. **Brak**. Użytkownicy mogą używać ich maszyn wirtualnych tylko w trakcie zaplanowanego czasu lub właściciel laboratorium zmieni się na maszynach wirtualnych dla nich.
+    2. **Bez ograniczeń (ustawienie domyślne)**. Użytkownicy mogą używać ich maszyn wirtualnych bez ograniczeń czasowych.
+    3. **Określ liczbę godzin na użytkownika**. Użytkownicy mogą używać ich maszyn wirtualnych przez liczbę godzin (wymienionymi poniżej), poza zaplanowanym terminie. Jeśli wybierzesz tę opcję, wprowadź **liczby godzin** w polu tekstowym. 
 
-    ![Liczba godzin na użytkownika](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. Teraz wyświetlić liczbę godzin na pasku narzędzi: **Limit przydziału dla poszczególnych użytkowników: &lt;liczby godzin&gt;**. 
+        ![Liczba godzin na użytkownika](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. Wybierz pozycję **Zapisz**. 
+5. Teraz widać zmienionymi wartościami na pasku narzędzi: **Limit przydziału dla poszczególnych użytkowników: &lt;liczby godzin&gt;**. 
 
     ![Limit przydziału dla poszczególnych użytkowników](../media/how-to-configure-student-usage/quota-per-user.png)
 
@@ -80,8 +83,19 @@ Można ustawić limity przydziału dla poszczególnych użytkowników wykonując
 ### <a name="add-users-by-uploading-a-csv-file"></a>Aby dodać użytkowników, przekazywanie pliku CSV
 Możesz również dodać użytkowników, przekazując plik CSV z adresów e-mail użytkowników.
 
-1. Wybierz **przekazywanie CSV** na pasku narzędzi.
-2. Wybierz plik CSV zawierający adresy e-mail użytkowników. Wszystkie adresy e-mail powinna mieć jedną kolumnę, po otwarciu go przy użyciu programu Excel. 
+1. Utwórz plik CSV z adresów e-mail użytkowników w jednej kolumnie.
+
+    ![Limit przydziału dla poszczególnych użytkowników](../media/how-to-configure-student-usage/csv-file-with-users.png)
+2. Na **użytkowników** strony laboratorium, wybierz opcję **przekazywanie CSV** na pasku narzędzi.
+
+    ![CSV przycisk Przekaż](../media/how-to-configure-student-usage/upload-csv-button.png)
+3. Wybierz plik CSV zawierający adresy e-mail użytkowników. Po wybraniu **Otwórz** po wybraniu pliku CSV, zapoznaj się z poniższymi **dodawania użytkowników** okna. Lista adresów e-mail jest wypełniony adresy e-mail z pliku CSV. 
+
+    ![Dodaj okno Użytkownicy wypełniane przy użyciu adresów e-mail, z pliku CSV](../media/how-to-configure-student-usage/add-users-window.png)
+4. Wybierz **Zapisz** w **dodawania użytkowników** okna. 
+5. Upewnij się, że widzisz użytkowników na liście użytkowników. 
+
+    ![Lista dodanych użytkowników](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="manage-user-vms"></a>Zarządzanie maszynami wirtualnymi użytkownika
 Gdy uczniowie rejestru za pomocą usługi Azure Lab Services przy użyciu rejestracji link, pod warunkiem, zostanie wyświetlony przypisane maszyny wirtualne dla uczniów i studentów w **maszyn wirtualnych** kartę. 

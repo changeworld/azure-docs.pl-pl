@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 97cdae49b4676500e29ac25b12712c94e575e5f8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819522"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960569"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Zarządzanie pojemnością magazynu dla usługi Azure Stack 
 
@@ -91,7 +91,7 @@ Jako operator chmury z portalu administracyjnego służy również do wyświetla
 1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
 2. Wybierz **wszystkich usług** > **magazynu** aby otworzyć listę udziału pliku, gdzie można wyświetlić informacje o użyciu. 
 
-  ![Przykład: Udziałów plików magazynu](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![Przykład: Udziałów plików magazynu](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - **Łączna liczba** jest całkowita ilość miejsca w bajtach, które są dostępne w udziale. To miejsce jest używane dla danych i metadanych, które są obsługiwane przez usługi magazynu.
   - **UŻYWANE** ilość danych w bajtach, który jest używany przez wszystkie zakresy z plików, które przechowują dane dzierżawy i skojarzone metadane.

@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 02/07/2019
 ms.reviewer: mbullwin
 ms.author: harelbr
-ms.openlocfilehash: 7e4756fb241500a2f153b452c6dc5a4e332bdd6b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3ab50c92543615488d9ced599df433bf7e1e4061
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881600"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962234"
 ---
 # <a name="manage-application-insights-smart-detection-rules-using-azure-resource-manager-templates"></a>Zarządzanie regułami wykrywania inteligentnego usługi Application Insights przy użyciu szablonów usługi Azure Resource Manager
 
@@ -31,6 +31,7 @@ Można skonfigurować następujące ustawienia dla reguły wykrywania inteligent
 - Jeśli zasada jest włączona (wartość domyślna to **true**.)
 - Jeśli mają być wysyłane wiadomości e-mail do właścicieli subskrypcji, współautorzy i czytelnicy podczas wykrywania znajduje się (wartość domyślna to **true**.)
 - Znajduje wszystkie dodatkowi adresaci wiadomości e-mail, które powinien otrzymywać powiadomienie, gdy wykrycie.
+- * Konfiguracja poczty e-mail jest niedostępna dla reguły wykrywania inteligentnego oznaczone jako _Podgląd_.
 
 Aby zezwolić na konfigurowanie ustawień reguły za pomocą usługi Azure Resource Manager, konfiguracji reguły wykrywania inteligentnego jest teraz dostępny jako wewnętrzny zasobów w ramach zasobu usługi Application Insights, o nazwie **ProactiveDetectionConfigs**.
 Maksymalny elastyczności każdej reguły wykrywania inteligentnego można skonfigurować ustawienia powiadomień unikatowy.

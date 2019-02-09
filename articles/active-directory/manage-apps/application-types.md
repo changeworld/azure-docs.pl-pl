@@ -3,8 +3,8 @@ title: Nieoczekiwaną aplikację na liście aplikacji | Dokumentacja firmy Micro
 description: Jak wyświetlać wszystkie aplikacje w Twojej dzierżawie i zrozumieć, jak aplikacje pojawiają się na liście wszystkich aplikacji w obszarze aplikacje dla przedsiębiorstw
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: 55632acf516198b5ad0b6430480836dcc62fd5a5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.author: celested
+ms.openlocfilehash: 716d6d1c39a671e3da28f8005ee82e1c2022f932
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755389"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959878"
 ---
 # <a name="unexpected-application-in-my-applications-list"></a>Nieoczekiwaną aplikację na liście aplikacji
 

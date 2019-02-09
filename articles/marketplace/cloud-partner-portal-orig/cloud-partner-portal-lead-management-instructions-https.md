@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0d14b2eeb90bd360b71b315d7b4f4459f17f5672
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8898149e6858c5a1cdb2d4510ad2764ffe25fda5
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073770"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964257"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Skonfiguruj zarządzanie potencjalnymi klientami przy użyciu punktu końcowego HTTPS
 
@@ -65,7 +65,7 @@ Punkt końcowy HTTPS można użyć do obsługi portalu Azure Marketplace i AppSo
 
     ![Wybierz potencjalnych klientów](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
 
-4. Przepływ przedstawia formularz zapewniające informacje o potencjalnym kliencie. Wybierając polecenie Dodaj zawartość dynamiczną, można mapować elementy z danych wejściowych żądania. Poniższy ekran przechwytywania pokazuje **LeadTitle** jako przykład.
+4. Przepływ przedstawia formularz zapewniające informacje o potencjalnym kliencie. Wybierając polecenie Dodaj zawartość dynamiczną, można mapować elementy z danych wejściowych żądania. Poniższy ekran przechwytywania pokazuje **OfferTitle** jako przykład.
 
     ![Dodaj zawartość dynamiczną](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 

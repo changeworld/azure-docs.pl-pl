@@ -3,8 +3,8 @@ title: Dowiedz się, gdy określony użytkownik będzie można uzyskać dostęp 
 description: Jak ustalić, kiedy znaczenie użytkownik będzie mógł uzyskać dostęp do aplikacji skonfigurowanych do aprowizacji użytkowników z usługą Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 13568c42ed520ba9963541eb7c890612d9657b91
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2f6ebd6d9024c912e1af427ac5a5b62a817651ab
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174197"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964376"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>Dowiedz się, gdy określony użytkownik będzie można uzyskać dostęp do aplikacji
 Korzystając z automatycznej aprowizacji użytkowników z aplikacją, usługi Azure AD automatycznie aprowizować i zaktualizuj kont użytkowników w aplikacji na podstawie elementów, takich jak [przypisania użytkowników i grup](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) w zaplanowany czas interwału, zazwyczaj co 10 minut.

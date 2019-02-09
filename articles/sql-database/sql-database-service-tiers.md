@@ -12,19 +12,19 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: e0455ef99016fe1029f17256a6dbf5d9bbd8aa4d
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 3e4e9d9fb3b7e9a66ec3522e046bdca1ecad98c9
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890573"
+ms.locfileid: "55965095"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
 Usługa Azure SQL Database umożliwia łatwy zakup w pełni zarządzany aparat bazy danych PaaS, który spełnia Twoje potrzeby wydajności i kosztów. W zależności od modelu wdrażania usługi Azure SQL Database można wybrać model zakupu, która spełnia Twoje potrzeby:
 
 - [model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md) (zalecane), pozwala wybrać dokładne zalecenia dotyczące ilości pojemność magazynu i obliczeń potrzebne dla danego obciążenia.
-- [Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) , aby wybrać powiązany obliczeniowych i magazynu pakiety ze zrównoważonym dla typowych obciążeń.
+- [Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md) , aby wybrać powiązane zasoby obliczeniowe i Magazyn pakiety ze zrównoważonym dla typowych obciążeń.
 
 Różne modele zakupu są dostępne w modelach wdrażania usługi Azure SQL Database:
 
@@ -39,10 +39,20 @@ Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
 |**Model zakupu**|**Opis**|**Najlepsze dla**|
 |---|---|---|
 |Model oparty na jednostkach DTU|Ten model opiera się na powiązane miary obliczeniowe, magazynu i zasobów we/wy. Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu?](sql-database-service-tiers.md#dtu-based-purchasing-model).|Najlepsze dla klientów chcących zasobów proste, wstępnie skonfigurowanych opcji.|
-|Model oparty na rdzeniach wirtualnych|Ten model umożliwia niezależne Wybierz zasoby obliczeniowe i magazynowe. Umożliwia on również używać korzyści użycia hybrydowego platformy Azure dla programu SQL Server w celu uzyskania oszczędności kosztów.|Najlepsze dla klientów, którzy wartości elastyczności, kontroli i przejrzystości.|
+|Model oparty na rdzeniach wirtualnych|Ten model umożliwia niezależne Wybierz zasoby obliczeniowe i magazynowe. Model zakupu opartego na rdzeniach wirtualnych pozwala również na używanie [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) uzyskanie oszczędności kosztów.|Najlepsze dla klientów, którzy wartości elastyczności, kontroli i przejrzystości.|
 ||||  
 
 ![model cen](./media/sql-database-service-tiers/pricing-model.png)
+
+## <a name="compute-costs"></a>Koszty operacji obliczeniowych
+
+Koszt obliczeń odpowiada moc obliczeniową całkowita, które jest obsługiwane dla aplikacji. W warstwie krytyczne usługi biznesowej firma Microsoft automatycznie Przydziel co najmniej 3 replik. Aby uwzględnić ten dodatkowy przydział zasobów obliczeniowych, cena w modelu zakupu opartego na rdzeniach wirtualnych jest większa w warstwie krytyczne usługi biznesowe, niż w warstwie ogólnego przeznaczenia około 2.7 x. Z tego samego powodu wyższe magazynu cena za GB warstwy krytyczne usługi biznesowej odzwierciedla wysokiej We/Wy i małe opóźnienia magazyn SSD. W tym samym czasie koszt magazynu kopii zapasowych nie jest różnica między tymi warstwami dwóch usług, ponieważ w obu przypadkach używamy klasę magazynu w warstwie standardowa.
+
+## <a name="storage-costs"></a>Koszty magazynowania
+
+Różnych typów pamięci masowej są rozliczane w różny sposób. Do przechowywania danych opłaty są naliczane za aprowizowanego magazynu na podstawie maksymalny rozmiar bazy danych lub puli, którą wybierzesz. Koszt nie ulega zmianie, chyba że zmniejszyć lub zwiększyć maksymalną tego. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia i jest przydzielany dynamicznie. Wydłużenie okresu przechowywania kopii zapasowych zwiększa ilość przestrzeni w magazynie kopii zapasowych używanej przez wystąpienie. Magazyn kopii zapasowych jest bezpłatny do poziomu 100 procent łącznie zaprowizowanej pojemności magazynu serwera. Dodatkowe użycie magazynu kopii zapasowych jest rozliczane w GB na miesiąc. Jeśli na przykład magazyn bazy danych ma rozmiar 100 GB, otrzymasz bezpłatnie 100 GB magazynu kopii zapasowych. Ale jeśli kopia zapasowa ma rozmiar 110 GB, płacisz za dodatkowe 10 GB.
+
+W magazynie kopii zapasowej pojedynczej bazy danych opłaty są naliczane proporcjonalnie do magazynowania, która została przydzielona do kopii zapasowych bazy danych o wielkości bazy danych. W przypadku magazynu kopii zapasowych elastycznej puli jest naliczana proporcjonalnie do magazynowania, która została przydzielona do kopii zapasowych bazy danych wszystkich baz danych w puli minus danych maksymalny rozmiar puli elastycznej. Wszelkie wzrost rozmiaru bazy danych lub puli elastycznej lub zwiększenie szybkości transakcji, wymaga więcej pamięci masowej, a zatem zwiększa opłata za magazyn kopii zapasowych.  Wraz ze zwiększeniem rozmiaru maksymalnego danych to nowa kwota jest odejmowany od rozmiar magazynu kopii zapasowych rozliczane.
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
 
@@ -97,6 +107,22 @@ Jeśli chcesz migrować istniejące lokalne lub obciążenie maszyny wirtualnej 
 ### <a name="workloads-that-benefit-from-an-elastic-pool-of-resources"></a>Obciążenia, które korzystają z elastycznej puli zasobów
 
 Pule są odpowiednie dla wielu baz danych o określonych wzorcach użycia. Dla danej bazy danych ten wzorzec charakteryzuje się średnio o niskim zapotrzebowaniu, przy użyciu stosunkowo rzadkimi okresami zwiększonego. Usługa SQL Database automatycznie ocenia historyczne użycie zasobów przez bazy danych na istniejącym serwerze usługi SQL Database i zaleca odpowiednią konfigurację puli w witrynie Azure Portal. Aby uzyskać więcej informacji, zobacz [Kiedy należy użyć puli elastycznej?](sql-database-elastic-pool.md)
+
+## <a name="service-tier-frequently-asked-questions-faq"></a>Warstwy usługi — często zadawane pytania (FAQ)
+
+### <a name="do-i-need-to-take-my-application-offline-to-convert-from-a-dtu-based-database-to-a-vcore-based-service-tier"></a>Czy muszę przenieść aplikację do trybu offline można przekonwertować z bazy danych oparty na jednostkach DTU do warstwy usług oparte na rdzeniach wirtualnych
+
+Nowe warstwy usługi oferują prostą metodę konwersji online, która jest podobna do istniejącego procesu uaktualniania baz danych od warstwy Standard do Premium i odwrotnie. Ta konwersja może być inicjowane przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, T-SQL lub interfejsu API REST. Zobacz [zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [Zarządzanie elastycznymi pulami](sql-database-elastic-pool.md).
+
+### <a name="can-i-convert-a-database-from-a-vcore-based-service-tier-to-a-dtu-based-one"></a>Czy mogę przekonwertować bazę danych z warstwy usług oparte na rdzeniach wirtualnych się na konto oparte na jednostkach DTU
+
+Tak, można z łatwością przekształcić bazę danych do dowolnego celu obsługiwanych wydajności przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, T-SQL lub interfejsu API REST. Zobacz [zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [Zarządzanie elastycznymi pulami](sql-database-elastic-pool.md).
+
+### <a name="can-i-upgrade-or-downgrade-between-the-general-purpose-and-business-critical-service-tiers"></a>Czy mogę przełączać się między warstwami usług ogólnego przeznaczenia i krytyczne dla działania firmy
+
+Tak, z pewnymi ograniczeniami. Lokalizacji docelowej jednostki SKU musi spełniać maksymalna bazy danych lub rozmiaru puli elastycznej, skonfigurowanego dla istniejącego wdrożenia. Jeśli używasz [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/), jednostki SKU krytycznej firmy jest dostępna tylko dla klientów z licencjami Enterprise Edition. Tylko w przypadku klientów, którzy przeprowadzili migracji ze środowiska lokalnego do warstwy usług ogólnego przeznaczenia, za pomocą korzyści użycia hybrydowego platformy Azure dla programu SQL Server z licencjami Enterprise Edition, można uaktualnić do warstwy krytyczne usługi biznesowej. Aby uzyskać szczegółowe informacje, zobacz [co to są określone prawa korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/)?
+
+Ta konwersja nie powoduje przestojów i mogą być inicjowane przy użyciu witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure, T-SQL lub interfejsu API REST. Zobacz [zarządzanie pojedynczymi bazami danych](sql-database-single-database-scale.md) i [Zarządzanie elastycznymi pulami](sql-database-elastic-pool.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

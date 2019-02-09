@@ -11,46 +11,59 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 02/07/2018
 ms.author: spelluru
-ms.openlocfilehash: 20412efac553458f3028f873bcc6d918a673f261
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7e3142e0274f2328d3e0c8a3e6f9a2e4c3d45d87
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52838821"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959141"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Zarządzanie kontami laboratorium w usłudze Azure Lab Services 
 W usługach Azure Lab Services konta laboratorium jest kontenerem dla zarządzanych laboratoriów, takich jak laboratorium na potrzeby zajęć. Administrator konfiguruje konta laboratorium przy użyciu usługi Azure Lab Services i zapewnia dostęp do laboratorium właścicieli, którzy mogą tworzyć laboratoriów w ramach konta. W tym artykule opisano sposób tworzenia konta laboratorium, są wyświetlane wszystkie konta laboratorium lub usuwanie konta laboratorium.
 
 ## <a name="create-a-lab-account"></a>Tworzenie konta laboratorium
+Następujące kroki ilustrują tworzenie konta laboratorium w usłudze Azure Lab Services przy użyciu witryny Azure Portal. 
+
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Z menu głównego po lewej stronie wybierz polecenie **Utwórz zasób**.
-3. Wyszukaj pozycję **Lab Services** w witrynie Azure Marketplace, a następnie wybierz pozycję **Lab Services** z listy rozwijanej. 
-4. Wybierz pozycję **Lab Services (wersja zapoznawcza)** z przefiltrowanej listy usług. 
-5. W oknie **Tworzenie konta laboratorium** wybierz pozycję **Utwórz**.
-7. W oknie **Konto laboratorium** wykonaj następujące czynności: 
+2. Wybierz **wszystkich usług** w menu po lewej stronie. Wybierz **kontami laboratorium** w **DEVOPS** sekcji. Jeśli wybierzesz star (`*`) obok pozycji **kontami laboratorium**, jest ona dodawana do **ulubione** sekcji, w menu po lewej stronie. W następnym roku, wybierz **kontami laboratorium** w obszarze **ulubione**.
+
+    ![Wszystkie usługi -> kontami laboratorium](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Na **kontami laboratorium** wybierz opcję **Dodaj** na pasku narzędzi. 
+
+    ![Wybierz pozycję Dodaj na stronie konta laboratorium](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. Na **konta laboratorium** wykonaj następujące czynności: 
     1. W obszarze **Nazwa konta laboratorium** wprowadź nazwę. 
     2. Wybierz **subskrypcję platformy Azure**, w której chcesz utworzyć konto laboratorium.
     3. W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową** i wprowadź nazwę grupy zasobów.
     4. W obszarze **Lokalizacja** wybierz lokalizację/region, w których chcesz utworzyć konto laboratorium. 
     5. Wybierz pozycję **Utwórz**. 
 
-        ![Okno Tworzenie konta laboratorium](../media/how-to-manage-lab-accounts/lab-account-settings.png)
-5. Jeśli nie widzisz strony konta laboratorium, wybierz przycisk **powiadomień**, a następnie kliknij przycisk **Przejdź do zasobu** w obszarze powiadomień. 
+        ![Okno Tworzenie konta laboratorium](../media/tutorial-setup-lab-account/lab-account-settings.png)
+5. Wybierz **ikonę dzwonka** na pasku narzędzi (**powiadomienia**), upewnij się, że wdrożenie zakończyło się pomyślnie, a następnie wybierz **przejdź do zasobu**. 
 
-    ![Okno Tworzenie konta laboratorium](../media/how-to-manage-lab-accounts/notification-go-to-resource.png)    
+    Można także wybrać **Odśwież** na **kontami laboratorium** strony, a następnie wybierz utworzone konto laboratorium. 
+
+    ![Okno Tworzenie konta laboratorium](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. Zobaczysz następującą stronę **konta laboratorium**:
 
-    ![Strona konta laboratorium](../media/how-to-manage-lab-accounts/lab-account-page.png)
+    ![Strona konta laboratorium](../media/tutorial-setup-lab-account/lab-account-page.png)
 
 ## <a name="add-a-user-to-the-lab-creator-role"></a>Dodawanie użytkownika do roli twórcy laboratorium
 Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium, użytkownik musi być członkiem roli **Twórca laboratorium** na koncie laboratorium. Konto, którego użyto do utworzenia konta laboratorium, jest automatycznie dodawane do tej roli. Jeśli planujesz użyć tego samego konta użytkownika w celu utworzenia laboratorium na potrzeby zajęć, możesz pominąć ten krok. Aby użyć innego konta użytkownika do utworzenia laboratorium na potrzeby zajęć, wykonaj następujące czynności: 
 
-1. Na **konta laboratorium** wybierz opcję **kontrola dostępu (IAM)** i kliknij przycisk **+ Dodaj przypisanie roli** na pasku narzędzi. 
-2. Na stronie **Dodawanie uprawnień** wybierz pozycję **Twórca laboratorium** w obszarze **Rola**, wybierz użytkownika do dodania do roli Twórcy laboratorium, a następnie wybierz pozycję **Zapisz**.
+Aby przyznać nauczycielom uprawnienie do tworzenia laboratoriów na potrzeby zajęć, dodaj ich do roli **Twórca laboratorium**:
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>Określanie obrazów w portalu Marketplace dostępnych dla właścicieli laboratorium
+1. Na stronie **Konto laboratorium** wybierz pozycję **Kontrola dostępu (Zarządzanie dostępem i tożsamościami)** i kliknij pozycję **+ Dodaj przypisanie roli** na pasku narzędzi. 
+
+    ![Kontrola dostępu -> przycisku Dodaj przypisanie roli](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. Na **Dodaj przypisanie roli** wybierz opcję **twórca laboratorium** dla **roli**, wybierz użytkownika, aby dodać do roli twórcy laboratorium, a następnie wybierz pozycję **Zapisz**. 
+
+    ![Dodaj twórca laboratorium](../media/tutorial-setup-lab-account/add-lab-creator.png)
+
+
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>Określ obrazy z witryny Marketplace dostępne dla twórców laboratorium
 Jako właściciel konta laboratorium możesz określić obrazy witryny Marketplace, których twórcy laboratorium mogą używać do tworzenia laboratoriów na koncie laboratorium. 
 
 1. W menu po lewej stronie wybierz pozycję **Obrazy w portalu Marketplace**. Domyślnie zobaczysz pełną listę obrazów (włączonych i wyłączonych). Tę listę można filtrować, aby wyświetlić tylko obrazy włączone/wyłączone, wybierając z listy rozwijanej u góry opcję **Tylko włączone**/**Tylko wyłączone**. 
@@ -76,16 +89,23 @@ Jako właściciel konta laboratorium możesz określić obrazy witryny Marketpla
 ## <a name="view-lab-accounts"></a>Wyświetl konta laboratorium
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **wszystkie zasoby** z menu. 
-3. Wybierz **Lab Services** dla **typu**. 
+3. Wybierz **kontami laboratorium** dla **typu**. 
     Można również filtrować według subskrypcji, grupy zasobów, lokalizacje i tagów. 
+
+    ![Wszystkie zasoby -> kontami laboratorium](../media/how-to-manage-lab-accounts/all-resources-lab-accounts.png)
+
 
 ## <a name="delete-a-lab-account"></a>Usuwanie konta laboratorium
 Wykonaj instrukcje z poprzedniej sekcji, która wyświetla kontami laboratorium na liście. Użyj poniższych instrukcji, aby usunąć konto laboratorium: 
 
 1. Wybierz **konta laboratorium** , którą chcesz usunąć. 
 2. Wybierz **Usuń** na pasku narzędzi. 
-3. Typ **tak** o potwierdzenie.
-4. Wybierz pozycję **Usuń**. 
+
+    ![Kontami laboratorium -> przycisk Usuń](../media/how-to-manage-lab-accounts/delete-button.png)
+1. Typ **tak** o potwierdzenie.
+1. Wybierz pozycję **Usuń**. 
+
+    ![Usuń konto laboratorium — potwierdzenie](../media/how-to-manage-lab-accounts/delete-lab-account-confirmation.png)
 
 ## <a name="view-and-manage-labs-in-the-lab-account"></a>Wyświetlanie i zarządzanie laboratoriami na koncie laboratorium
 
@@ -107,7 +127,7 @@ Postępuj zgodnie z instrukcjami w poprzedniej sekcji, aby wyświetlić listę l
     ![Usuń laboratorium — przycisk](../media/how-to-manage-lab-accounts/delete-lab-button.png)
 2. Wybierz **tak** w komunikacie ostrzegawczym. 
 
-
+    ![Potwierdź usunięcie laboratorium](../media/how-to-manage-lab-accounts/confirm-lab-delete.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły:

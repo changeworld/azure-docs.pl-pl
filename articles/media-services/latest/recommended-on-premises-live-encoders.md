@@ -1,5 +1,5 @@
 ---
-title: Dowiedz się więcej o koderów na żywo transmisji strumieniowej w środowisku lokalnym zalecane przez usługę Media Services — Azure | Dokumentacja firmy Microsoft
+title: Strumieniowe na żywo koderów zalecane przez usługę Media Services — Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o zalecanych przez usługę Media Services na żywo transmisji strumieniowej kodery lokalne
 services: media-services
 keywords: encoding;encoders;media
@@ -9,18 +9,18 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c3e42ba9fe84ded8c60fc71f19de785945852116
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a165fac2de89d5510b21b9185d4bc61e730b09ff
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656672"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960126"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Zalecane kodery transmisji strumieniowej na żywo
 
-W usłudze Media Services [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) (kanał) reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Wydarzenie na żywo odbiera strumieni danych wejściowych w jeden z dwóch sposobów:
+W usłudze Azure Media Services [wydarzenie na żywo](https://docs.microsoft.com/rest/api/media/liveevents) (kanał) reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Wydarzenie na żywo odbiera strumieni danych wejściowych w jeden z dwóch sposobów.
 
-* Koder na żywo w środowisku lokalnym wysyła różnych szybkościach transmisji bitów RTMP lub Smooth Streaming (pofragmentowany MP4) strumienia do wydarzenie na żywo, która nie jest włączona kodowanie na żywo za pomocą usługi Media Services. Pozyskiwane strumienie są przekazywane za pośrednictwem zdarzenia na żywo bez dalszego przetwarzania. Ta metoda jest wywoływana **przekazywanego**. Koder na żywo może wysyłać strumień z jedną szybkością transmisji bitów do przebiegu za pośrednictwem kanału, ale ta konfiguracja nie jest zalecane, ponieważ nie zezwala na adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klienta.
+* Koder na żywo w środowisku lokalnym wysyła różnych szybkościach transmisji bitów RTMP lub Smooth Streaming (pofragmentowany MP4) strumienia do wydarzenie na żywo, która nie jest włączona kodowanie na żywo za pomocą usługi Media Services. Pozyskiwane strumienie są przekazywane za pośrednictwem zdarzenia na żywo bez dalszego przetwarzania. Ta metoda jest wywoływana **przekazywanego**. Koder na żywo może wysyłać strumień z jedną szybkością transmisji bitów do kanału przekazującego. Nie zaleca tej konfiguracji, ponieważ nie dopuszcza do adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klienta
 
   > [!NOTE]
   > Metoda przekazywania to najbardziej ekonomiczny sposób transmisja strumieniowa na żywo.
@@ -50,9 +50,9 @@ Usługa Media Services zaleca się przy użyciu jednej z następujących koderó
 - VMIX
 - xStream
 
-## <a name="live-encoders-that-output-fragmented-mp4"></a>Dane wyjściowe pofragmentowany plik MP4 koderów na żywo
+## <a name="live-encoders-that-output-fragmented-mp4"></a>Koderów na żywo podzielonej zawartości w formacie MP4
 
-Usługa Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają różnych szybkościach transmisji bitów Smooth Streaming (pofragmentowany plik MP4) jako dane wyjściowe. Obsługiwane schematy adresów URL są `http://` lub `https://`.
+Usługa Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają różnych szybkościach transmisji bitów Smooth Streaming (pofragmentowany MP4) jako dane wyjściowe. Obsługiwane schematy adresów URL są `http://` lub `https://`.
 
 - Ateme TITAN Live
 - Kodera multimediów cyfrowych Cisco 2200
@@ -67,65 +67,65 @@ Aby uzyskać informacje o jakie ustawienia są prawidłowe dla danego typu zdarz
 
 ### <a name="playback-requirements"></a>Wymagania odtwarzania
 
-Zarówno strumień audio i wideo musi być obecny w kolejności do odtwarzania zawartości. Odtwarzanie strumienia tylko do filmu wideo nie jest obsługiwane.
+Do odtwarzania zawartości, musi być obecny zarówno strumień audio i wideo. Odtwarzanie strumienia tylko do filmu wideo nie jest obsługiwane.
 
 ### <a name="configuration-tips"></a>Porady dotyczące konfiguracji
 
 - Jeśli to możliwe, przy użyciu połączenia internetowego hardwired.
-- Jest regułą podczas określania wymagań dotyczących przepustowości dwukrotnie różnych przesyłania strumieniowego. Chociaż nie jest to wymagane, może to pomóc, łagodzenia skutków przeciążenie sieci.
-- Gdy za pomocą oprogramowania na podstawie koderów, zamknąć wszystkie zbędne programy.
-- Nie należy zmieniać konfiguracji kodera, po rozpoczęciu wypychania. Ma negatywny wpływ na zdarzenia i może spowodować, że zdarzenie, aby być niestabilny. 
-- Upewnij się, aby przyznać sobie wystarczającą ilość czasu, aby skonfigurować zdarzenia. W przypadku zdarzeń dużej skali, jego zalecane jest, aby uruchomić Instalatora na godzinę przed zdarzenia.
+- Podczas określania, wymagania dotyczące przepustowości, double szybkości transmisji strumieniowych. Chociaż nie jest to konieczne, tę prostą zasadę pomaga złagodzić skutki przeciążenie sieci.
+- Podczas korzystania z koderów opartych na oprogramowaniu, zamknąć wszystkie zbędne programy.
+- Zmiana konfiguracji kodera, po jego uruchomieniu, wypychanie ma negatywny wpływ na zdarzenie. Zmiany w konfiguracji może powodować zdarzenie stanie się niestabilna. 
+- Upewnij się, że należy przyznać sobie wystarczającą ilość czasu, aby skonfigurować zdarzenia. W przypadku zdarzeń o dużej skali zaleca się uruchamiania Instalatora, godzina, zanim zdarzenia.
 
-## <a name="how-to-become-an-on-premises-encoder-partner"></a>Jak zostać partnerem kodera w środowisku lokalnym
+## <a name="becoming-an-on-premises-encoder-partner"></a>Zostać partnerem kodera w środowisku lokalnym
 
-Jako partner usługi Azure Media Services Encoder w warstwie lokalnej usługi Media Services wspiera produktu przez polecanie koder klientom korporacyjnym. Aby zostać partnerem kodera w środowisku lokalnym, należy sprawdzić zgodność koder w środowisku lokalnym za pomocą usługi Media Services. Aby to zrobić, wykonaj następujące weryfikacji:
+Jako partner usługi Azure Media Services Encoder w warstwie lokalnej usługi Media Services wspiera produktu przez polecanie koder klientom korporacyjnym. Aby zostać partnerem kodera w środowisku lokalnym, należy sprawdzić zgodność koder w środowisku lokalnym za pomocą usługi Media Services. Aby to zrobić, wykonaj następujące weryfikacji.
 
 ### <a name="pass-through-live-event-verification"></a>Weryfikacja wydarzenie na żywo przekazywania
 
-1. Upewnij się, w ramach konta usługi Media Services **punkt końcowy przesyłania strumieniowego** jest uruchomiona. 
-2. Tworzenie i uruchamianie **przekazywanego** wydarzenie na żywo. <br/> Aby uzyskać więcej informacji, zobacz [stany wydarzenie na żywo i rozliczenia](live-event-states-billing.md).
-3. Uzyskaj adresy URL pozyskiwania i skonfigurować koder środowiska lokalnego do używania adresu URL do wysyłania strumienia na żywo o różnych szybkościach transmisji bitów do usługi Media Services.
+1. Upewnij się, że na Twoim koncie usługi Media Services **punkt końcowy przesyłania strumieniowego** jest uruchomiona. 
+2. Tworzenie i uruchamianie **przekazywanego** wydarzenie na żywo. <br/> Aby uzyskać więcej informacji, zobacz [Live Event states and billing](live-event-states-billing.md) (Stany i rozliczenia dotyczące wydarzenia na żywo).
+3. Uzyskiwanie adresów URL pozyskiwania i skonfiguruj swoje lokalny koder wysyłać strumień na żywo o różnych szybkościach transmisji bitów do usługi Media Services przy użyciu adresu URL.
 4. Adres URL (wersja zapoznawcza) i weryfikować, czy rzeczywiście są odbierane dane wejściowe z kodera.
 5. Utwórz nową **zasobów** obiektu.
 6. Tworzenie **na żywo dane wyjściowe** i użyj nazwy zasobu, który został utworzony.
 7. Tworzenie **lokalizatora przesyłania strumieniowego** dzięki wbudowanej **przesyłania strumieniowego zasad** typów.
 8. Wyświetlanie listy ścieżek na **lokalizatora przesyłania strumieniowego** odzyskać adresy URL do użycia.
-9. Pobieranie nazwy hosta dla **punkt końcowy przesyłania strumieniowego** chcesz przesyłać strumieniowo z.
-10. Adres URL w kroku 8 należy połączyć z nazwą hosta w kroku 9, aby uzyskać pełny adres URL.
+9. Pobierz nazwę hosta dla **punkt końcowy przesyłania strumieniowego** , którą chcesz strumieniowo przesyłać z.
+10. Adres URL w kroku 8 należy połączyć z nazwy hosta określonej w kroku 9, aby uzyskać pełny adres URL.
 11. Uruchom koder na żywo przez około 10 minut.
 12. Zatrzymaj wydarzenie na żywo. 
-13. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) Obejrzyj zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości (lub też oglądanie i zweryfikować za pośrednictwem adresu URL w wersji zapoznawczej podczas sesji na żywo).
-14. Zapisz identyfikator zasobu adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo opublikowane.
+13. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) obejrzeć zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie widoczne występującymi na wszystkich poziomach jakości. Można także obejrzeć i zweryfikować za pośrednictwem adresu URL w wersji zapoznawczej podczas sesji na żywo.
+14. Zapisz identyfikator zasobu opublikowanego adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo.
 15. Resetowanie stanu wydarzenie na żywo po utworzeniu każdej próbki.
-16. Powtórz kroki od 5 do 15 w przypadku wszystkich konfiguracji obsługiwanych przez koder (z lub bez ad sygnalizowanie/napisów/inną kodowanie szybkości).
+16. Powtórz kroki od 5 do 15 w przypadku wszystkich konfiguracji obsługiwanych przez koder (z lub bez sygnalizowanie ad, podpisów lub inną szybkość kodowania).
 
 ### <a name="live-encoding-live-event-verification"></a>Na żywo kodowania weryfikacji wydarzenie na żywo
 
-1. Upewnij się, w ramach konta usługi Media Services **punkt końcowy przesyłania strumieniowego** jest uruchomiona. 
-2. Tworzenie i uruchamianie **kodowanie na żywo** wydarzenie na żywo. <br/> Aby uzyskać więcej informacji, zobacz [stany wydarzenie na żywo i rozliczenia](live-event-states-billing.md).
-3. Uzyskaj adresy URL pozyskiwania i skonfigurować koder wypychanie strumienia na żywo jedną szybkością transmisji bitów do usługi Media Services.
+1. Upewnij się, że na Twoim koncie usługi Media Services **punkt końcowy przesyłania strumieniowego** jest uruchomiona. 
+2. Tworzenie i uruchamianie **kodowanie na żywo** wydarzenie na żywo. <br/> Aby uzyskać więcej informacji, zobacz [Live Event states and billing](live-event-states-billing.md) (Stany i rozliczenia dotyczące wydarzenia na żywo).
+3. Uzyskiwanie adresów URL pozyskiwania i skonfigurować koder wypychanie strumienia na żywo jedną szybkością transmisji bitów do usługi Media Services.
 4. Adres URL (wersja zapoznawcza) i weryfikować, czy rzeczywiście są odbierane dane wejściowe z kodera.
 5. Utwórz nową **zasobów** obiektu.
 6. Tworzenie **na żywo dane wyjściowe** i użyj nazwy zasobu, który został utworzony.
 7. Tworzenie **lokalizatora przesyłania strumieniowego** dzięki wbudowanej **przesyłania strumieniowego zasad** typów.
 8. Wyświetlanie listy ścieżek na **lokalizatora przesyłania strumieniowego** odzyskać adresy URL do użycia.
-9. Pobieranie nazwy hosta dla **punkt końcowy przesyłania strumieniowego** chcesz przesyłać strumieniowo z.
-10. Adres URL w kroku 8 należy połączyć z nazwą hosta w kroku 9, aby uzyskać pełny adres URL.
+9. Pobierz nazwę hosta dla **punkt końcowy przesyłania strumieniowego** , którą chcesz strumieniowo przesyłać z.
+10. Adres URL w kroku 8 należy połączyć z nazwy hosta określonej w kroku 9, aby uzyskać pełny adres URL.
 11. Uruchom koder na żywo przez około 10 minut.
 12. Zatrzymaj wydarzenie na żywo.
-13. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) Obejrzyj zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości (lub też oglądanie i zweryfikować za pośrednictwem adresu URL w wersji zapoznawczej podczas sesji na żywo).
-14. Zapisz identyfikator zasobu adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo opublikowane.
+13. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) obejrzeć zarchiwizowanego elementu zawartości to upewnić się, że odtwarzanie nie występującymi widoczne dla wszystkich poziomów jakości. Można także obejrzeć i zweryfikować za pośrednictwem adresu URL w wersji zapoznawczej podczas sesji na żywo.
+14. Zapisz identyfikator zasobu opublikowanego adresu URL przesyłania strumieniowego na żywo archiwum i ustawień i wersja używanego z koder na żywo.
 15. Resetowanie stanu wydarzenie na żywo po utworzeniu każdej próbki.
-16. Powtórz kroki od 5 do 15 w przypadku wszystkich konfiguracji obsługiwanych przez koder (z lub bez ad sygnalizowanie/napisów/inną kodowanie szybkości).
+16. Powtórz kroki od 5 do 15 w przypadku wszystkich konfiguracji obsługiwanych przez koder (z lub bez sygnalizowanie ad, podpisów lub inną szybkość kodowania).
 
 ### <a name="longevity-verification"></a>Weryfikacja trwałość
 
-Takie same kroki co [weryfikacji wydarzenie na żywo przekazywanego](#pass-through-live-event-verification) z wyjątkiem krok 11. <br/>Zamiast 10 minut Uruchom koder na żywo przez jednego tygodnia lub dłużej. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) obejrzeć transmisji strumieniowych na żywo od czasu do czasu (lub zarchiwizowanego elementu zawartości) to upewnić się, że odtwarzanie nie występującymi widoczne.
+Te same czynności co w [weryfikacji wydarzenie na żywo przekazywanego](#pass-through-live-event-verification) z wyjątkiem krok 11. <br/>Zamiast 10 minut Uruchom koder na żywo przez jednego tygodnia lub dłużej. Używanie odtwarzacz, takiej jak [usługi Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html) obejrzeć transmisji strumieniowych na żywo od czasu do czasu (lub zarchiwizowanego elementu zawartości) to upewnić się, że odtwarzanie nie występującymi widoczne.
 
 ### <a name="email-your-recorded-settings"></a>Swoje zarejestrowane ustawienia poczty e-mail
 
-Na koniec swoje zarejestrowane ustawienia poczty e-mail i na żywo parametry archiwum usługi Azure Media Services na amsstreaming@microsoft.com jako powiadomienie, które przeszły wszystkie testy weryfikacyjne opisane samooceny. Także informacji kontaktowych w dowolnym ups postępuj zgodnie z. Możesz skontaktować się z zespołu usługi Azure Media Services za pomocą jakieś pytania dotyczące tego procesu.
+Na koniec swoje zarejestrowane ustawienia poczty e-mail i parametry archiwum usługi Azure Media Services na żywo amsstreaming@microsoft.com jako powiadomienie, które przeszły wszystkie testy weryfikacyjne opisane samooceny. Także informacji kontaktowych w dowolnym przegapisz odpowiedzi członka. Możesz skontaktować się z zespołu usługi Azure Media Services za pomocą jakieś pytania dotyczące tego procesu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

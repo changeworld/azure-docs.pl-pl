@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 02/07/2019
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 0b56451231f1fda4e5bd156d0aded6e84c9c0162
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8e9cb570f69eb29887f4f904ba7b2b35548f3771
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117456"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965362"
 ---
 # <a name="sampling-in-application-insights"></a>Próbkowanie w usłudze Application Insights
 
@@ -195,6 +195,63 @@ Gdy użytkownik [Konfigurowanie stron sieci web usługi Application Insights](..
 Dla wartości procentowej pobierania próbek wybierz wartość procentowa jest bliskie 100/N, gdzie N to liczba całkowita.  Próbkowanie aktualnie nie obsługuje inne wartości.
 
 Włączenie próbkowania szybkościami transmisji na serwerze, klientami a serwerem będzie synchronizować tak, w wyszukiwania, możesz przechodzić między żądań i wyświetleń stron powiązane.
+
+## <a name="aspnet-core-sampling"></a>Próbkowanie platformy ASP.NET Core
+
+Próbkowanie adaptacyjne jest domyślnie włączone dla wszystkich aplikacji platformy ASP.NET Core. Można wyłączyć lub dostosować zachowanie pobierania próbek.
+
+### <a name="turning-off-adaptive-sampling"></a>Wyłączenie próbkowania adaptacyjnego
+
+Funkcję próbkowania domyślne można wyłączyć po dodaniu usługi Application Insights w metodzie ```ConfigureServices```przy użyciu ```ApplicationInsightsServiceOptions```:
+
+``` c#
+public void ConfigureServices(IServiceCollection services)
+{
+// ...
+
+var aiOptions = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+aiOptions.EnableAdaptiveSampling = false;
+services.AddApplicationInsightsTelemetry(aiOptions);
+
+//...
+}
+```
+
+Powyższy kod spowoduje wyłączenie funkcji pobierania próbek. Wykonaj poniższe kroki, aby dodać próbkowanie z innych opcji dostosowywania.
+
+### <a name="configure-sampling-settings"></a>Skonfiguruj ustawienia próbkowania
+
+Należy użyć metod rozszerzenia ```TelemetryProcessorChainBuilder``` jak pokazano poniżej, aby dostosować zachowanie pobierania próbek.
+
+> [!IMPORTANT]
+> Jeśli używasz tej metody do skonfigurowania próbkowania, upewnij się, że używasz aiOptions.EnableAdaptiveSampling = false;. ustawienia z AddApplicationInsightsTelemetry().
+
+``` c#
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+var configuration = app.ApplicationServices.GetService<TelemetryConfiguration>();
+
+var builder = configuration .TelemetryProcessorChainBuilder;
+// version 2.5.0-beta2 and above should use the following line instead of above. (https://github.com/Microsoft/ApplicationInsights-aspnetcore/blob/develop/CHANGELOG.md#version-250-beta2)
+// var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+
+// Using adaptive sampling
+builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond:10);
+ 
+// OR Using fixed rate sampling   
+double fixedSamplingPercentage = 50;
+builder.UseSampling(fixedSamplingPercentage);
+
+builder.Build();
+
+// ...
+}
+
+```
+
+**Jeśli przy użyciu powyższej metody, aby skonfigurować pobieranie próbek, upewnij się, że używasz ```aiOptions.EnableAdaptiveSampling = false;``` ustawienia z AddApplicationInsightsTelemetry().**
+
+Bez tego będzie istnieć wiele procesorów próbkowania w łańcuchu TelemetryProcessor, co prowadzi do niezamierzonych skutków.
 
 ## <a name="fixed-rate-sampling-for-aspnet-and-java-web-sites"></a>Próbkowanie stałej stawki dla witryn sieci web platformy ASP.NET i Java
 Stałą stawkę próbkowania powoduje zmniejszenie ruchu wysyłane z serwera sieci web i przeglądarek sieci web. W przeciwieństwie do próbkowania adaptacyjnego zmniejsza telemetrii według stałej stawki ustalanej postanowiła przez użytkownika. Także synchronizuje klienta i serwera próbkowania tak, aby powiązane elementy są zachowywane — na przykład, kiedy wyświetlasz widok strony, w polu wyszukiwania można znaleźć jego powiązanego żądania.

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a6ae388107e527b399dc758abccbefcec955a60d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 9682b9b832a8fd7374cb84e8cc6faad69df15945
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661636"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979075"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Uwierzytelnianie przy użyciu prywatnego rejestru kontenerów platformy Docker
 
@@ -60,7 +60,7 @@ Nazwy główne usług włączyć bezobsługowego łączność z rejestru w scena
 
 Możesz również zalogować się bezpośrednio za pomocą jednostki usługi. Po uruchomieniu następującego polecenia, podaj interaktywnie appID nazwy głównej usługi (nazwa użytkownika) i hasło po wyświetleniu monitu. Aby uzyskać najlepsze rozwiązania do zarządzania poświadczeń logowania, zobacz [docker login](https://docs.docker.com/engine/reference/commandline/login/) poleceń:
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -80,7 +80,7 @@ Każdego rejestru kontenera obejmuje konta administratora, który jest domyślni
 
 Konto administratora jest udostępniane z dwa hasła, które może być generowany ponownie. Dwa hasła pozwala utrzymać połączenia w rejestrze za pomocą jednego hasła podczas ponownego generowania drugiego. Jeśli konto administratora jest włączona, można przekazać nazwę użytkownika i hasło albo `docker login` polecenia, gdy zostanie wyświetlony monit o uwierzytelnianie podstawowe w rejestrze. Na przykład:
 
-```Docker
+```
 docker login myregistry.azurecr.io 
 ```
 

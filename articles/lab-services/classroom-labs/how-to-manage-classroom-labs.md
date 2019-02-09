@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie laboratoriami na potrzeby zajęć w usłudze Azure Lab Services | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć i skonfigurować laboratorium na potrzeby zajęć, wyświetlać wszystkie laboratorium na potrzeby zajęć, plk, rejestracja połączyć z użytkownikiem laboratorium lub usunąć laboratorium.
+description: Dowiedz się, jak utworzyć i skonfigurować laboratorium na potrzeby zajęć, wyświetlać wszystkie laboratorium na potrzeby zajęć, Udostępnij link rejestracji użytkownika laboratorium lub usuwanie laboratorium.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 7d311a3fa1b00a6324c9bb81a14c1a575319472f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4f6d94c7090c2bbb0335d46b60be320b2fc19375
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819998"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962829"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Zarządzanie laboratoriami na potrzeby zajęć w usłudze Azure Lab Services 
 W tym artykule opisano sposób tworzenia i usuwania laboratorium na potrzeby zajęć. On również dowiesz się, jak wyświetlić wszystkie laboratorium na potrzeby zajęć na koncie laboratorium. 
@@ -107,7 +107,12 @@ Aby skonfigurować laboratorium na potrzeby zajęć w ramach konta laboratorium,
 3. Na **Delete lab** okno dialogowe, wybierz opcję **Usuń**. 
 
     ![Okno dialogowe Usuwanie](../media/how-to-manage-classroom-labs/delete-lab-dialog-box.png)
- 
+
+## <a name="switch-to-another-classroom-lab"></a>Przełącz się do innego laboratorium na potrzeby zajęć
+Aby przełączyć się do innego laboratorium na potrzeby zajęć z bieżącej, wybierz na liście rozwijanej laboratoriów w ramach konta laboratorium u góry.
+
+![Z listy rozwijanej u góry wybierz laboratorium](../media/how-to-manage-classroom-labs/switch-lab.png)
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 Zobacz następujące artykuły:

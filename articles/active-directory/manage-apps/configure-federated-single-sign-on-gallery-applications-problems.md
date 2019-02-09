@@ -3,8 +3,8 @@ title: Problem podczas konfigurowania federacyjnego logowania jednokrotnego dla 
 description: Niektóre typowe problemy, które można napotkać podczas konfigurowania federacyjnego pojedynczego logowania jednokrotnego za pośrednictwem protokołu SAML dla aplikacji, które są wyświetlane w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: 94c1a70e0a4492489a8a2a7348e08d49b29e40cb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 5fd0d6a46de6f4799e995262bb81d780798d473e
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168434"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959991"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Problem podczas konfigurowania federacyjnego logowania jednokrotnego dla aplikacji galerii usługi Azure AD
 

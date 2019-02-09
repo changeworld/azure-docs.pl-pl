@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: d9de6100e3bb7c3cc71a7a251d790df4907be5f2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: 01c4bcfcea038f3e69620cdce78719c8c5128faf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820355"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964801"
 ---
 # <a name="sql-database-application-development-overview"></a>Omówienie tworzenia aplikacji bazy danych SQL
 
 W tym artykule przedstawiono podstawowe zagadnienia, jakie powinien mieć na uwadze programista podczas pisania kodu nawiązującego połączenie z usługą Azure SQL Database. Ten artykuł dotyczy wszystkich modelach wdrażania usługi Azure SQL Database (pojedynczą bazę danych, pul elastycznych, wystąpienie zarządzane).
 
 > [!TIP]
-> Przyjrzeć dotyczącym pracę przewodniki dotyczące [pojedynczej bazy danych](sql-database-single-database-quickstart-guide.md) i [wystąpienia zarządzanego](sql-database-managed-instance-quickstart-guide.md) Jeśli musisz skonfigurować usługi Azure SQL Database.
+> Przyjrzeć dotyczącym pracę przewodniki dotyczące [pojedyncze bazy danych](sql-database-single-database-quickstart-guide.md) i [wystąpienia zarządzane](sql-database-managed-instance-quickstart-guide.md) Jeśli musisz skonfigurować usługi Azure SQL Database.
 >
 
 ## <a name="language-and-platform"></a>Język i platforma
@@ -49,14 +49,16 @@ Należy unikać długotrwałych transakcji, ponieważ jakiekolwiek niepowodzenie
 
 ## <a name="resiliency"></a>Odporność
 
-Usługa Azure SQL Database to usługa w chmurze, w której można by oczekiwać błędów przejściowych, które występują w podstawowej infrastruktury lub w ramach komunikacji między jednostkami w chmurze.
-Mimo że bazy danych SQL Azure jest odporna na awarie przechodnie infrastruktury, te błędy mogą mieć wpływ na łączność. Gdy wystąpi błąd przejściowy podczas nawiązywania połączenia z bazą danych SQL, kod powinien [ponowić wywołanie](sql-database-connectivity-issues.md). Zalecamy, aby logika ponawiania korzystała z logiki wycofywania, co pozwoli uniknąć przeciążenia usługi SQL Database z powodu jednoczesnych ponownych prób ze strony wielu klientów. Logika ponawiania jest zależna od [komunikaty o błędach dotyczących programów klienckich usługi SQL Database](sql-database-develop-error-messages.md).
+Usługa Azure SQL Database to usługa w chmurze, w której można by oczekiwać błędów przejściowych, które występują w podstawowej infrastruktury lub w ramach komunikacji między jednostkami w chmurze. Mimo że bazy danych SQL Azure jest odporna na awarie przechodnie infrastruktury, te błędy mogą mieć wpływ na łączność. Gdy wystąpi błąd przejściowy podczas nawiązywania połączenia z bazą danych SQL, kod powinien [ponowić wywołanie](sql-database-connectivity-issues.md). Zalecamy, aby logika ponawiania korzystała z logiki wycofywania, co pozwoli uniknąć przeciążenia usługi SQL Database z powodu jednoczesnych ponownych prób ze strony wielu klientów. Logika ponawiania jest zależna od [komunikaty o błędach dotyczących programów klienckich usługi SQL Database](sql-database-develop-error-messages.md).
+
+Aby uzyskać więcej informacji na temat przygotowywania w planowanych pracach konserwacyjnych na bazie danych Azure SQL, zobacz [planowanie zdarzenia konserwacji platformy Azure w usłudze Azure SQL Database](sql-database-planned-maintenance.md).
 
 ## <a name="network-considerations"></a>Zagadnienia dotyczące sieci
 
 - Upewnij się, że zapora na komputerze hostującym program kliencki zezwala na wychodzącą komunikację TCP na porcie 1433.  Więcej informacji: [Konfigurowanie zapory usługi Azure SQL Database](sql-database-configure-firewall-settings.md).
 - Jeśli program kliencki łączy z bazą danych SQL, gdy kliencki jest uruchomiony na maszynie wirtualnej (VM) platformy Azure, musisz otworzyć określone zakresy portów na maszynie Wirtualnej. Więcej informacji: [Porty inne niż 1433 dla platformy ADO.NET 4.5 i usługi SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Połączenia klientów z usługi Azure SQL Database czasami pomijają serwer proxy i bezpośrednią interakcję z bazy danych. Porty inne niż 1433 nabierają znaczenia. Aby uzyskać więcej informacji [architektura łączności usługi Azure SQL Database](sql-database-connectivity-architecture.md) i [portów wyższych niż 1433 dla platformy ADO.NET 4.5 i usługi SQL Database](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Dla sieci configation dla wystąpienia zarządzanego, zobacz [konfigurację sieci dla wystąpienia zarządzanego](sql-database-howto-managed-instance.md#network-configuration).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

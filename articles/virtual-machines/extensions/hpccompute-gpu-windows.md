@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: roiyz
-ms.openlocfilehash: 4bb27959bb57f3d59621e5bbbfaba9aa0c331432
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 5adc86b161770f2502b6ef9cf5ec2189ec3d4f99
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200687"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977630"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Procesor GPU NVIDIA sterownika rozszerzenia dla Windows
 
@@ -39,7 +39,7 @@ To rozszerzenie obsługuje następujące OSs:
 |---|---|
 | Windows 10 (maksymalnie wersji 1803)| Podstawowe |
 | Windows Server 2016 | Podstawowe |
-| Windows Server 2012 R2 | Podstawowe |
+| Windows Server 2012R2 | Podstawowe |
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
@@ -112,7 +112,7 @@ W poniższym przykładzie założono, że rozszerzenie jest zagnieżdżona w obr
 ### <a name="powershell"></a>PowerShell
 
 ```powershell
-Set-AzureRmVMExtension
+Set-AzVMExtension
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Location "southcentralus" `
@@ -144,7 +144,7 @@ az vm extension set `
 Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą programu Azure PowerShell i wiersza polecenia platformy Azure. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie.
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 ```azurecli
@@ -164,7 +164,7 @@ C:\WindowsAzure\Logs\Plugins\Microsoft.HpcCompute.NvidiaGpuDriverMicrosoft\
 | 0 | Operacja zakończona powodzeniem |
 | 1 | Operacja zakończona powodzeniem. Wymagany jest ponowny rozruch. |
 | 100 | Operacja nie obsługiwany lub nie można ukończyć. | Możliwe przyczyny: Nieobsługiwana wersja programu PowerShell, rozmiar maszyny Wirtualnej nie jest maszyn wirtualnych serii N niepowodzenia pobierania danych. Sprawdź pliki dziennika, aby ustalić przyczynę błędu. |
-| 240, 840 operacji | Limit czasu operacji. | Ponów próbę wykonania operacji. |
+| 240, 840 | Limit czasu operacji. | Ponów próbę wykonania operacji. |
 | -1 | Wystąpił wyjątek. | Sprawdź pliki dziennika, aby ustalić przyczynę wystąpienia wyjątku. |
 | -5 x | Operacja została przerwana ze względu na oczekujące na ponowny rozruch. | Uruchom ponownie maszynę Wirtualną. Instalacja będzie kontynuowana po ponownym uruchomieniu. Odinstaluj powinno zostać uruchomione ręcznie. |
 

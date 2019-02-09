@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 7bd228a01cd3841772750882d13c33459385cc21
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4de6e4429543ea4f691cc3a38c15b896b866075b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817720"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980724"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla systemu Windows Server umożliwia użycie licencji na system Windows Server w środowisku lokalnym i uruchamianie maszyn wirtualnych Windows na platformie Azure, przy niższych kosztach. Azure korzyści użycia hybrydowego dla systemu Windows Server służy do wdrażania nowych maszyn wirtualnych z systemem operacyjnym Windows. W tym artykule przechodzi przez instrukcje dotyczące sposobu wdrażania nowych maszyn wirtualnych za pomocą usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oraz jak zaktualizować istniejące uruchamianie maszyn wirtualnych. Aby uzyskać więcej informacji na temat usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oszczędności licencjonowania i kosztów, zobacz [strony licencjonowania platformy Azure korzyści użycia hybrydowego dla systemu Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -36,6 +36,7 @@ Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla sy
 > Klasyczne maszyny wirtualne obsługiwane są tylko wdrożenie nowej maszyny Wirtualnej na podstawie niestandardowych obrazów środowiska lokalnego. Aby móc korzystać z funkcji obsługiwanych w tym artykule, należy najpierw przeprowadzić migrację maszyn wirtualnych w klasycznym modelu usługi Resource Manager.
 >
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Sposoby korzystania z platformy Azure korzyści użycia hybrydowego dla systemu Windows Server
 Istnieje kilka sposobów na maszynach wirtualnych Windows za pomocą korzyści użycia hybrydowego platformy Azure:
@@ -53,8 +54,10 @@ Wszystkie obrazy z systemem operacyjnym Windows Server są obsługiwane dla usł
 Aby utworzyć Maszynę wirtualną za pomocą usługi Azure korzyści użycia hybrydowego dla systemu Windows Server, użyj przełącznika, w sekcji "Oszczędności".
 
 ### <a name="powershell"></a>PowerShell
+
+
 ```powershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVM" `
     -Location "East US" `
@@ -95,17 +98,17 @@ W witrynie portal w bloku maszyny Wirtualnej możesz zaktualizować maszyny Wirt
 - Konwertowanie istniejących maszyn wirtualnych z serwera systemu Windows na platformie Azure korzyści użycia hybrydowego dla systemu Windows Server
 
     ```powershell
-    $vm = Get-AzureRmVM -ResourceGroup "rg-name" -Name "vm-name"
+    $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
     $vm.LicenseType = "Windows_Server"
-    Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
+    Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
 - Konwertuj maszyny wirtualne z systemem Windows Server dzięki korzyściom z powrotem do płatność za rzeczywiste użycie
 
     ```powershell
-    $vm = Get-AzureRmVM -ResourceGroup "rg-name" -Name "vm-name"
+    $vm = Get-AzVM -ResourceGroup "rg-name" -Name "vm-name"
     $vm.LicenseType = "None"
-    Update-AzureRmVM -ResourceGroupName rg-name -VM $vm
+    Update-AzVM -ResourceGroupName rg-name -VM $vm
     ```
     
 ### <a name="cli"></a>Interfejs wiersza polecenia
@@ -124,7 +127,7 @@ W witrynie portal w bloku maszyny Wirtualnej można wyświetlić przełącznik A
 ### <a name="powershell"></a>PowerShell
 Poniższy przykład przedstawia typ licencji dla pojedynczej maszyny Wirtualnej
 ```powershell
-Get-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
+Get-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
 ```
 
 Dane wyjściowe:
@@ -158,7 +161,7 @@ Z maszyny wirtualnej lub maszyny wirtualnej scale sets bloku zasobów możesz wy
 
 ### <a name="powershell"></a>PowerShell
 ```powershell
-$vms = Get-AzureRMVM 
+$vms = Get-AzVM 
 $vms | ?{$_.LicenseType -like "Windows_Server"} | select ResourceGroupName, Name, LicenseType
 ```
 

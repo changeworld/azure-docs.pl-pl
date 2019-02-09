@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/19/2018
-ms.openlocfilehash: 421e3bf4465f5aa9aafc4ad666af2178faedb7c3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112e9aa023fb29bd960b61139861db4007c61b4d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245977"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962251"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Zagadnienia dotyczące korzystania z maszyn wirtualnych w usłudze Azure Stack
 
@@ -41,8 +41,9 @@ Maszyny wirtualne w usłudze Azure Stack zapewnia zasoby obliczeniowe na żądan
 | Wydajność dysków maszyny wirtualnej | Zależy od typu dysku oraz jego rozmiaru. | Zależy od rozmiaru maszyny Wirtualnej maszyny wirtualnej, które dyski są dołączone do odwoływania się do [rozmiarów maszyn wirtualnych obsługiwanych w usłudze Azure Stack](azure-stack-vm-sizes.md) artykułu.
 | Wersje interfejsu API | Platforma Azure ma zawsze najnowsze wersje interfejsu API dla wszystkich funkcji maszyny wirtualnej. | Usługa Azure Stack obsługuje określonych usług platformy Azure i określonych wersji interfejsu API w przypadku tych usług. Aby wyświetlić listę obsługiwanych wersji interfejsu API, zapoznaj się [wersji interfejsu API](#api-versions) dalszej części tego artykułu. |
 | Usługa Azure Instance Metadata service | Azure Instance Metadata Service dostarcza informacji o uruchomionych wystąpień maszyn wirtualnych, które może służyć do zarządzania i konfigurowania maszyn wirtualnych.  | Wystąpienia usługi metadanych nie jest obsługiwana w usłudze Azure Stack. |
-|Zestawy dostępności maszyny wirtualnej|Wiele domen błędów (2 lub 3 na region)<br>Wiele domen aktualizacji<br>Obsługa dysku zarządzanego|Wiele domen błędów (2 lub 3 na region)<br>Wiele domen aktualizacji (maksymalnie 20)<br>Brak obsługi dysku zarządzanego|
-|Zestawy skalowania maszyn wirtualnych|Automatyczne skalowanie jest obsługiwane|Automatyczne skalowanie nie jest obsługiwane.<br>Dodaj więcej wystąpień zestawu skalowania przy użyciu witryny portal, szablonów usługi Resource Manager lub programu PowerShell.
+| Zestawy dostępności maszyny wirtualnej|Wiele domen błędów (2 lub 3 na region)<br>Wiele domen aktualizacji|Wiele domen błędów (2 lub 3 na region)<br>Wiele domen aktualizacji (maksymalnie 20)|
+| Zestawy skalowania maszyn wirtualnych|Automatyczne skalowanie jest obsługiwane|Automatyczne skalowanie nie jest obsługiwane.<br>Dodaj więcej wystąpień zestawu skalowania przy użyciu witryny portal, szablonów usługi Resource Manager lub programu PowerShell. |
+| Diagnostyka maszyny wirtualnej | Diagnostyka maszyn wirtualnych systemu Linux | Diagnostyka maszyn wirtualnych systemu Linux nie są obsługiwane w usłudze Azure Stack. Podczas wdrażania maszyny Wirtualnej z systemem Linux przy użyciu włączenia diagnostyki maszyn wirtualnych, wdrożenie zakończy się niepowodzeniem. Wdrażanie nie powiedzie, jeśli włączysz podstawowe metryki maszyny Wirtualnej systemu Linux, za pomocą ustawień diagnostycznych.
 
 ## <a name="virtual-machine-sizes"></a>Rozmiary maszyn wirtualnych
 
@@ -71,7 +72,7 @@ Rozmiary maszyn wirtualnych i ich ilości skojarzonego zasobu są spójne z usł
 
 ## <a name="virtual-machine-extensions"></a>Rozszerzenia maszyny wirtualnej
 
- Usługa Azure Stack obejmuje niewielki zestaw rozszerzeń. Aktualizacje i dodatkowe rozszerzenia są dostępne za pośrednictwem witryny Marketplace syndykacji.
+Usługa Azure Stack obejmuje niewielki zestaw rozszerzeń. Aktualizacje i dodatkowe rozszerzenia są dostępne za pośrednictwem witryny Marketplace syndykacji.
 
 Użyj następującego skryptu programu PowerShell można pobrać listy rozszerzeń maszyn wirtualnych, które są dostępne w środowisku usługi Azure Stack:
 
@@ -82,6 +83,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+Jeśli aprowizacja rozszerzenia na wdrożenie maszyny Wirtualnej trwa zbyt długo, poinformuj limit czasu inicjowania obsługi administracyjnej zamiast próby zatrzymania procesu cofnięcie przydziału lub Usuń maszynę Wirtualną.
 
 ## <a name="api-versions"></a>Wersje interfejsu API
 

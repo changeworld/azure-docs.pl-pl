@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 17fdcb4a57379fd11e841715a6908a4a0d280bd9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 67217b63588946782d42b4287cf5f24e29ebe5bd
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891474"
+ms.locfileid: "55961274"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)
 Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Chociaż można monitorować różne warunki przy użyciu usługi Log Analytics lub Azure Monitor, nie zostało zaprojektowane do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
@@ -44,7 +44,7 @@ Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtual
 >
 >Nie ma żadnych regresji żadnej funkcji, dostarczonych już dzisiaj za pomocą funkcji kondycji usługi Azure Monitor dla maszyn wirtualnych.
 
->W wyniku tej zmiany będzie niektóre przerw w działaniu przez krótki okres czasu z usługą i historii kondycji. Dotyczy dwóch środowisk w diagnostyce kondycji — historię zmian stanu zostaną zresetowane i wcześniejszych zmian stanu kondycji kryteriów nie będą dostępne do przeglądu w kolumnie zmiany stanu kondycji strony diagnostyki. Jeśli interesuje Cię w danych historycznych dowolnego o znaczeniu strategicznym krytyczne maszyny Wirtualnej, w, a następnie można wykonać zrzut ekranu przedstawiający dane kryteria kondycji i odpowiednie zmiany stanu w przypadku której można się odwołać. 
+>W wyniku tej zmiany wpływają na dwa środowiska w diagnostyce kondycji — historię zmian stanu zostaną zresetowane i poprzedniej zmiany stanu dla kryteria kondycji nie będzie dostępne do przeglądu w kolumnie zmiany stanu kondycji strony diagnostyki. Jeśli interesuje Cię w danych historycznych dowolnego o znaczeniu strategicznym krytyczne maszyny Wirtualnej, w, a następnie można wykonać zrzut ekranu przedstawiający dane kryteria kondycji i odpowiednie zmiany stanu w przypadku której można się odwołać. 
 
 ## <a name="monitoring-configuration-details"></a>Szczegóły konfiguracji monitorowania
 W tej sekcji opisano kryteria kondycji domyślne, które są zdefiniowane w celu monitorowania Windows Azure i maszyn wirtualnych systemu Linux. Wszystkie kryteria kondycji wstępnie skonfigurowanych alert po spełnieniu warunku złej kondycji. 

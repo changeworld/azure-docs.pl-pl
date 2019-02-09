@@ -3,8 +3,8 @@ title: Raporty dotyczące usługi Azure Active Directory użytkownika automatycz
 description: Dowiedz się, jak sprawdzić stan inicjowania obsługi zadań konta użytkowników i jak rozwiązywać problemy z aprowizacji poszczególnych użytkowników.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 833fe24f83a2f159fd00d24c67b6864ce614c445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a013c8d3c78801414ab83fd89a59caa316f1c28f
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203916"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958706"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Samouczek: Raporty dotyczące aprowizacja kont użytkowników
 
@@ -58,13 +58,13 @@ W tym miejscu są dostępne raport z podsumowaniem aprowizacji i inicjowania obs
 
 Raport z podsumowaniem inicjowania obsługi administracyjnej jest widoczna w **aprowizacji** kartę dla danej aplikacji. Znajduje się w **szczegóły synchronizacji** sekcji poniżej **ustawienia**i zawiera następujące informacje:
 
-* Całkowita liczba użytkowników i / grup, zostały zsynchronizowane i są obecnie dostępne w zakresie aprowizacji między systemem źródłowego i docelowego systemu
+* Całkowita liczba użytkowników i / grup, zostały zsynchronizowane i są obecnie dostępne w zakresie aprowizacji między systemem źródłowego i docelowego systemu.
 
 * Czas ostatniej synchronizacji zostało uruchomione. Zazwyczaj odbyła się co 20 – 40 minut, po [początkowej synchronizacji](user-provisioning.md#what-happens-during-provisioning) zostało zakończone.
 
-* Określa, czy [początkowej synchronizacji](user-provisioning.md#what-happens-during-provisioning) zostało ukończone
+* Określa, czy [początkowej synchronizacji](user-provisioning.md#what-happens-during-provisioning) zostało ukończone.
 
-* Określa, czy Proces inicjowania obsługi został umieszczony w kwarantannie, a Przyczyna stanu kwarantanny jest (na przykład błąd komunikacji z systemu docelowego, z powodu poświadczeń Nieprawidłowa wartość pola administrator)
+* Określa, czy Proces inicjowania obsługi został umieszczony w kwarantannie, a Przyczyna stanu kwarantanny jest (na przykład błąd komunikacji z systemu docelowego, z powodu poświadczeń Nieprawidłowa wartość pola administrator).
 
 Raport z podsumowaniem inicjowania obsługi administracyjnej powinna być pierwsze spojrzenie Administratorzy miejsca, aby sprawdzić kondycję operacyjną zadanie inicjowania obsługi administracyjnej.
 
@@ -79,7 +79,7 @@ Wszystkie działania wykonywane przez usługę aprowizacji są rejestrowane w dz
 
 * **Eksportuj zdarzenia** — "export" zdarzenie jest rejestrowane każdorazowo usługi aprowizacji usługi Azure AD zapisuje obiekt konta lub grupy użytkowników systemu docelowego. Te zdarzenia rejestruje wszystkie atrybuty użytkownika i ich wartości, które zostały napisane przez usługę Azure AD usługi aprowizacji w czasie zdarzenia. Jeśli wystąpił błąd podczas zapisywania obiektu konta lub grupy użytkowników do systemu docelowego, która będzie wyświetlana w tym miejscu.
 
-* **Przetwarzanie depozytu zdarzeń** -Escrow procesu — wystąpienia usługi aprowizacji napotka błąd podczas próby wykonania operacji, gdy rozpoczyna się ponowić próbę wykonania operacji na interwał wycofywania czasu. Zdarzenie "depozytu" jest rejestrowana w każdym razem, gdy operacja aprowizacji została wycofana.
+* **Przetwarzanie depozytu zdarzeń** -Escrow procesu — wystąpienia usługi aprowizacji napotka błąd podczas próby wykonania operacji, gdy rozpoczyna się ponowić próbę wykonania operacji na interwał wycofywania czasu. Zdarzenie "depozytu" jest rejestrowana w każdym razem, gdy prób ponownego wykonania operacji inicjowania obsługi administracyjnej.
 
 Po wyświetleniu inicjowania obsługi zdarzeń dla poszczególnych użytkowników, zdarzenia są zwykle zachodzą w następującej kolejności:
 
@@ -102,7 +102,7 @@ To najbardziej typowy przypadek użycia, w przypadku inicjowania obsługi dzienn
 
 2. Z **kategorii** menu, wybierz opcję **Inicjowanie obsługi administracyjnej konta**.
 
-3. W **zakres dat** menu, wybierz zakres dat, który chcesz przeszukać,
+3. W **zakres dat** menu, wybierz zakres dat, który chcesz wyszukać.
 
 4. W **wyszukiwania** paska, wprowadź identyfikator użytkownika chcesz wyszukać. Format wartości Identyfikator powinien być zgodny w dowolnie wybrany jako podstawowy identyfikator dopasowania w konfiguracji mapowanie atrybutu (na przykład, userPrincipalName lub pracowniku numer identyfikacyjny). Wartość Identyfikatora, wymagane będzie widoczny w kolumnie cele.
 
