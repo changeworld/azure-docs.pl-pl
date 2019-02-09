@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: d0942d3465811687937ce113e664fbf3f91277d0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b287a67c470cc1697065838e52916c285a2233a7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815255"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960194"
 ---
 # <a name="create-and-manage-a-classroom-template-in-azure-lab-services"></a>Tworzenie i zarządzanie nimi w usłudze Azure Lab Services szablonu klasy
 Szablon w laboratorium to podstawowy obraz maszyny wirtualnej, który służy do tworzenia maszyn wirtualnych wszystkich użytkowników. Możesz skonfigurować maszynę wirtualną szablonu dokładnie tak jak chcesz dla użytkowników laboratorium. Możesz podać nazwę i opis szablonu, które będą widoczne dla użytkowników laboratorium. Następnie możesz opublikować szablonu, aby udostępnić użytkownikom laboratorium wystąpień szablonu maszyny Wirtualnej. Gdy opublikujesz szablon, usługa Azure Lab Services utworzy maszyny wirtualne w laboratorium przy użyciu tego szablonu. Liczba maszyn wirtualnych utworzonych w ramach tego procesu jest taka sama jak maksymalna liczba użytkowników, którzy mogą korzystać z laboratorium. Tę liczbę można ustawić w zasadach użytkowania laboratorium. Wszystkie maszyny wirtualne mają taką samą konfigurację jak szablon.
@@ -92,7 +92,7 @@ Wykonaj następujące kroki, aby ustawić tytuł i opis po raz pierwszy i zaktua
 1. W **szablonu** sekcji, przesuń wskaźnik myszy **nazwa** szablonu lub **opis** szablonu, a następnie wybierz ją. 
 2. Wprowadź **nową nazwę** lub **nowy opis** dla szablonu, a następnie naciśnij klawisz **ENTER**.
 
-    ![Templae nazwę i opis](../media/how-to-create-manage-template/template-name-description.png)
+    ![Nazwę i opis szablonu](../media/how-to-create-manage-template/template-name-description.png)
 
 ## <a name="set-up-or-update-a-template-vm"></a>Konfigurowanie lub zaktualizować szablon maszyny Wirtualnej
  Nawiąż połączenie z maszyną wirtualną szablonu i zainstaluj na niej wszelkie wymagane oprogramowanie przed udostępnieniem jej swoim uczniom. Wykonaj następujące kroki, aby skonfigurować szablon maszyny Wirtualnej po raz pierwszy lub zaktualizować maszyny Wirtualnej. 
@@ -103,7 +103,12 @@ Wykonaj następujące kroki, aby ustawić tytuł i opis po raz pierwszy i zaktua
 1. Przejrzyj ostrzeżenie o, a następnie wybierz pozycję **Start**. 
 
     ![Uruchom szablon — ostrzeżenie](../media/how-to-create-manage-template/start-template-warning.png)
+2. Wyświetlany jest stan w laboratorium, Kafelek w **szablonu** sekcji.
+
+    ![Uruchom szablon — stan](../media/how-to-create-manage-template/template-start-status.png)
 1. Po jej ponownym uruchomieniu, aby nawiązać połączenie z maszyną Wirtualną, wybrać **Connect**i postępuj zgodnie z instrukcjami. 
+
+    ![Łączenie się z lub Zatrzymaj szablonu maszyny Wirtualnej](../media/how-to-create-manage-template/connect-stop-vm.png)
 1. Zainstaluj wszelkie oprogramowanie wymagane, aby uczniowie mogli ukończyć laboratorium (na przykład program Visual Studio, Eksplorator usługi Azure Storage itp.). 
 2. Zakończ połączenie (zamknij sesję pulpitu zdalnego) z maszyną wirtualną szablonu. 
 3. **Zatrzymaj** maszynę wirtualną szablonu, wybierając pozycję **Zatrzymaj**. 

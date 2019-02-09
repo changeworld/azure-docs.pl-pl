@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: bba03d8e62c481e9eb5cce8468a6a84f5e492d2f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 051c9cb0c6c1af121a1bdd1f553ef124f980b49d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51253996"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977155"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Omówienie agenta maszyny wirtualnej na platformie Azure
 Agent maszyny wirtualnej usług Microsoft Azure (Agent maszyny Wirtualnej) jest bezpieczne, uproszczonego procesu, który zarządza interakcją maszyny wirtualnej (VM) z kontrolerem sieci szkieletowej platformy Azure. Agent maszyny wirtualnej odgrywa podstawową rolę w procesie włączania i wykonywania rozszerzeń maszyny wirtualnej platformy Azure. Rozszerzenia maszyny Wirtualnej Włącz konfigurację po wdrożeniu maszyny wirtualnej, takie jak instalowanie i konfigurowanie oprogramowania. Rozszerzenia maszyn wirtualnych również włączyć funkcje odzyskiwania, takie jak zresetować hasło administracyjne maszyny wirtualnej. Bez agenta maszyny Wirtualnej platformy Azure nie można uruchomić rozszerzenia maszyn wirtualnych.
@@ -72,12 +72,13 @@ msiexec.exe /i WindowsAzureVmAgent.2.7.1198.778.rd_art_stable.160617-1120.fre /q
 
 ### <a name="powershell"></a>PowerShell
 
-Moduł Azure PowerShell Resource Manager może służyć do pobierania informacji o maszynach wirtualnych platformy Azure. Aby wyświetlić informacje o maszynie Wirtualnej, takie jak stan aprowizacji agenta maszyny Wirtualnej platformy Azure, użyj [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm):
+Moduł Azure PowerShell Resource Manager może służyć do pobierania informacji o maszynach wirtualnych platformy Azure. Aby wyświetlić informacje o maszynie Wirtualnej, takie jak stan aprowizacji agenta maszyny Wirtualnej platformy Azure, użyj [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm):
 
-""powershell"Get-AzureRmVM
+```powershell
+Get-AzVM
 ```
 
-The following condensed example output shows the *ProvisionVMAgent* property nested inside *OSProfile*. This property can be used to determine if the VM agent has been deployed to the VM:
+Dane wyjściowe poniższego, skróconego przykładu *ProvisionVMAgent* właściwości zagnieżdżone wewnątrz *OSProfile*. Ta właściwość może służyć do określenia, jeśli agent maszyny Wirtualnej został wdrożony na maszynie Wirtualnej:
 
 ```PowerShell
 OSProfile                  :
@@ -91,7 +92,7 @@ OSProfile                  :
 Poniższy skrypt może służyć do zwrócenia zwięzłe listę nazw maszyn wirtualnych i stan agenta maszyny Wirtualnej:
 
 ```PowerShell
-$vms = Get-AzureRmVM
+$vms = Get-AzVM
 
 foreach ($vm in $vms) {
     $agent = $vm | Select -ExpandProperty OSProfile | Select -ExpandProperty Windowsconfiguration | Select ProvisionVMAgent

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2af68c0b9deb9d5b065f5fae42cf4bf927f0c671
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 2f45b8e5a8fbf06a86a16336b825d185baf4976b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386458"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959679"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Umożliwia monitorowanie klastrów HDInsight w usłudze Azure Log Analytics
 
@@ -46,9 +46,19 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 W tej sekcji skonfigurujesz istniejącego klastra usługi HDInsight Hadoop używać obszaru roboczego usługi Azure Log Analytics do monitorowania zadań, dzienniki debugowania itd.
 
-1. Otwórz klaster usługi HDInsight w witrynie Azure portal.
-2. W okienku po lewej stronie wybierz **monitorowanie**.
-3. W okienku po prawej stronie wybierz **Włącz**wybierz istniejący obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Zapisz**.
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+
+2. Z menu po lewej stronie wybierz **wszystkich usług**.
+
+3. W obszarze **ANALYTICS**, wybierz opcję **klastry HDInsight**.
+
+4. Z lewej strony w obszarze **monitorowanie**, wybierz opcję **pakietu Operations Management Suite**.
+
+5. W widoku głównego w obszarze **monitorowania pakietu OMS**, wybierz opcję **Włącz**.
+
+6. Z **wybierz obszar roboczy** listy rozwijanej wybierz istniejący obszar roboczy usługi Log Analytics.
+
+7. Wybierz pozycję **Zapisz**.
 
     ![Aby włączyć monitorowanie klastrów HDInsight](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "Włącz monitorowanie dla klastrów HDInsight")
 

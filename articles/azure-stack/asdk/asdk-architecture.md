@@ -12,33 +12,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 01/21/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2cee4d75a111f56012782228d8070bb728720aca
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9157acc7517aea56f087a3dbff0fe7114f8b4c87
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238349"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958809"
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Architektura systemu Microsoft Azure Stack Development Kit
-Azure Stack Development Kit (ASDK) jest wdrożenia z pojedynczym węzłem usługi Azure Stack. Wszystkie składniki są instalowane na maszynach wirtualnych z systemem jednego komputera-hosta. 
+Azure Stack Development Kit (ASDK) jest wdrożenia z pojedynczym węzłem usługi Azure Stack, działającego na komputerze hosta. Krawędź compontents routingu są instalowane na komputerze hosta, aby zapewnić funkcje usługi translatora adresów Sieciowych i sieci VPN dla usługi Azure Stack. Role infrastruktury w usłudze Azure Stack, uruchom na warstwie komputera fizycznego hosta funkcji Hyper-V.
 
-## <a name="logical-architecture-diagram"></a>Diagram architektury logiczne
-Poniższy diagram ilustruje logiczną architekturę ASDK i jego składników.
-
-![Architektura ASDK](media/asdk-architecture/image1.png)
 
 ## <a name="virtual-machine-roles"></a>Role maszyny wirtualnej
 ASDK oferuje przy użyciu następujących maszyn wirtualnych hostowanych na komputerze deweloperskim zestaw hosta usługi:
 
-| Name | Opis |
+| Name (Nazwa) | Opis |
 | ----- | ----- |
 | **AzS-ACS01** | Usługi magazynu platformy Azure Stack.|
 | **AzS-ADFS01** | Active Directory Federation Services (ADFS).  |
-| **AzS-BGPNAT01** | Krawędzi routera i udostępnia możliwości translatora adresów Sieciowych i sieci VPN dla usługi Azure Stack. |
 | **AzS-CA01** | Certyfikat usługi urzędu usług roli usługi Azure Stack.|
 | **AzS-DC01** | Active Directory, DNS i DHCP usługi dla usługi Microsoft Azure Stack.|
 | **AzS-ERCS01** | Konsola odzyskiwania awaryjnego maszyny Wirtualnej. |

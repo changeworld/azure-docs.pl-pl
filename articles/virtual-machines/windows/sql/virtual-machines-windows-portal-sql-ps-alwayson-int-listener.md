@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: dd09dd337cfe11729ef3ddc5d9b19f024d64300e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b412d2b054fc8703c7524479359a3670782fd646
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873006"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980895"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Skonfiguruj co najmniej jeden Always On odbiorników grup dostępności — Resource Manager
 W tym temacie przedstawiono sposób:
@@ -37,6 +37,8 @@ Powiązane tematy obejmują:
 
 * [Konfigurowanie grup dostępności AlwaysOn na maszynie wirtualnej platformy Azure (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna za pomocą usługi Azure Resource Manager i programu PowerShell](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
+
+[!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 [!INCLUDE [Start your PowerShell session](../../../../includes/sql-vm-powershell.md)]
 
@@ -77,11 +79,11 @@ $ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupN
 > [!NOTE]
 > Jeśli utworzono grupy dostępności z [szablonów Microsoft](virtual-machines-windows-portal-sql-alwayson-availability-groups.md), wewnętrznego modułu równoważenia obciążenia został już utworzony.
 
-Poniższy skrypt programu PowerShell tworzy wewnętrznego modułu równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP modułu równoważenia obciążenia. Aby uruchomić skrypt, Otwórz program Windows PowerShell ISE, a następnie wklej skrypt w okienku skryptów. Użyj `Connect-AzureRmAccount` zalogować się do programu PowerShell. Jeśli masz wiele subskrypcji platformy Azure, użyj `Select-AzureRmSubscription ` Aby ustawić subskrypcję. 
+Poniższy skrypt programu PowerShell tworzy wewnętrznego modułu równoważenia obciążenia, konfiguruje reguły równoważenia obciążenia i ustawia adres IP modułu równoważenia obciążenia. Aby uruchomić skrypt, Otwórz program Windows PowerShell ISE, a następnie wklej skrypt w okienku skryptów. Użyj `Connect-AzAccount` zalogować się do programu PowerShell. Jeśli masz wiele subskrypcji platformy Azure, użyj `Select-AzSubscription ` Aby ustawić subskrypcję. 
 
 ```powershell
-# Connect-AzureRmAccount
-# Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
+# Connect-AzAccount
+# Select-AzSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<Resource Group Name>" # Resource group name
 $VNetName = "<Virtual Network Name>"         # Virtual network name
@@ -100,30 +102,30 @@ $LBConfigRuleName = "ILBCR_$ListenerPort"    # The Load Balancer Rule Object Nam
 $FrontEndConfigurationName = "FE_SQLAGILB_1" # Object name for the front-end configuration 
 $BackEndConfigurationName ="BE_SQLAGILB_1"   # Object name for the back-end configuration
 
-$VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
+$VNet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
 
-$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName 
+$Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName 
 
-$FEConfig = New-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.id
+$FEConfig = New-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.id
 
-$BEConfig = New-AzureRMLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName 
+$BEConfig = New-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName 
 
-$SQLHealthProbe = New-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -Protocol tcp -Port $ProbePort -IntervalInSeconds 15 -ProbeCount 2
+$SQLHealthProbe = New-AzLoadBalancerProbeConfig -Name $LBProbeName -Protocol tcp -Port $ProbePort -IntervalInSeconds 15 -ProbeCount 2
 
-$ILBRule = New-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
+$ILBRule = New-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP 
 
-$ILB= New-AzureRmLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe -sku Standard
+$ILB= New-AzLoadBalancer -Location $Location -Name $ILBName -ResourceGroupName $ResourceGroupName -FrontendIpConfiguration $FEConfig -BackendAddressPool $BEConfig -LoadBalancingRule $ILBRule -Probe $SQLHealthProbe 
 
-$bepool = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
+$bepool = Get-AzLoadBalancerBackendAddressPoolConfig -Name $BackEndConfigurationName -LoadBalancer $ILB 
 
 foreach($VMName in $VMNames)
     {
-        $VM = Get-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VMName 
+        $VM = Get-AzVM -ResourceGroupName $ResourceGroupName -Name $VMName 
         $NICName = ($vm.NetworkProfile.NetworkInterfaces.Id.split('/') | select -last 1)
-        $NIC = Get-AzureRmNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName
+        $NIC = Get-AzNetworkInterface -name $NICName -ResourceGroupName $ResourceGroupName
         $NIC.IpConfigurations[0].LoadBalancerBackendAddressPools = $BEPool
-        Set-AzureRmNetworkInterface -NetworkInterface $NIC
-        start-AzureRmVM -ResourceGroupName $ResourceGroupName -Name $VM.Name 
+        Set-AzNetworkInterface -NetworkInterface $NIC
+        start-AzVM -ResourceGroupName $ResourceGroupName -Name $VM.Name 
     }
 ```
 
@@ -141,8 +143,8 @@ Port frontonu jest port, którego aplikacje za pośrednictwem nawiąż połącze
 Poniższy skrypt dodaje nowy adres IP do istniejącego modułu równoważenia obciążenia. Wewnętrznego modułu równoważenia obciążenia korzysta z portu odbiornika dla frontonu port równoważenia obciążenia. Ten port może być numer portu, którego nasłuchuje program SQL Server. Dla domyślnego wystąpienia programu SQL Server numer portu to 1433. Regułę grupy dostępności równoważenia obciążenia wymaga pływającego adresu IP (bezpośredni zwrot serwera), dzięki czemu portu zaplecza jest taki sam jak port frontonu. Zaktualizuj zmienne w danym środowisku. 
 
 ```powershell
-# Connect-AzureRmAccount
-# Select-AzureRmSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
+# Connect-AzAccount
+# Select-AzSubscription -SubscriptionId <xxxxxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx>
 
 $ResourceGroupName = "<ResourceGroup>"          # Resource group name
 $VNetName = "<VirtualNetwork>"                  # Virtual network name
@@ -153,7 +155,7 @@ $ILBIP = "<n.n.n.n>"                            # IP address
 [int]$ListenerPort = "<nnnn>"                   # AG listener port
 [int]$ProbePort = "<nnnnn>"                     # Probe port 
 
-$ILB = Get-AzureRmLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName 
+$ILB = Get-AzLoadBalancer -Name $ILBName -ResourceGroupName $ResourceGroupName 
 
 $count = $ILB.FrontendIpConfigurations.Count+1
 $FrontEndConfigurationName ="FE_SQLAGILB_$count"  
@@ -161,22 +163,22 @@ $FrontEndConfigurationName ="FE_SQLAGILB_$count"
 $LBProbeName = "ILBPROBE_$count"
 $LBConfigrulename = "ILBCR_$count"
 
-$VNet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
-$Subnet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
+$VNet = Get-AzVirtualNetwork -Name $VNetName -ResourceGroupName $ResourceGroupName 
+$Subnet = Get-AzVirtualNetworkSubnetConfig -VirtualNetwork $VNet -Name $SubnetName
 
-$ILB | Add-AzureRmLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id 
+$ILB | Add-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -PrivateIpAddress $ILBIP -SubnetId $Subnet.Id 
 
-$ILB | Add-AzureRmLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 15  | Set-AzureRmLoadBalancer 
+$ILB | Add-AzLoadBalancerProbeConfig -Name $LBProbeName  -Protocol Tcp -Port $Probeport -ProbeCount 2 -IntervalInSeconds 15  | Set-AzLoadBalancer 
 
-$ILB = Get-AzureRmLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
+$ILB = Get-AzLoadBalancer -Name $ILBname -ResourceGroupName $ResourceGroupName
 
-$FEConfig = get-AzureRMLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
+$FEConfig = get-AzLoadBalancerFrontendIpConfig -Name $FrontEndConfigurationName -LoadBalancer $ILB
 
-$SQLHealthProbe  = Get-AzureRmLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
+$SQLHealthProbe  = Get-AzLoadBalancerProbeConfig -Name $LBProbeName -LoadBalancer $ILB
 
-$BEConfig = Get-AzureRmLoadBalancerBackendAddressPoolConfig -Name $ILB.BackendAddressPools[0].Name -LoadBalancer $ILB 
+$BEConfig = Get-AzLoadBalancerBackendAddressPoolConfig -Name $ILB.BackendAddressPools[0].Name -LoadBalancer $ILB 
 
-$ILB | Add-AzureRmLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort  $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP | Set-AzureRmLoadBalancer   
+$ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfiguration $FEConfig  -BackendAddressPool $BEConfig -Probe $SQLHealthProbe -Protocol tcp -FrontendPort  $ListenerPort -BackendPort $ListenerPort -LoadDistribution Default -EnableFloatingIP | Set-AzLoadBalancer   
 ```
 
 ## <a name="configure-the-listener"></a>Konfigurowanie odbiornika
@@ -231,9 +233,9 @@ Aby uzyskać więcej informacji, zobacz [dostępności Konfigurowanie zawsze wł
 ## <a name="powershell-cmdlets"></a>Polecenia cmdlet programu PowerShell
 Użyj następujących poleceń cmdlet programu PowerShell do utworzenia wewnętrznego modułu równoważenia obciążenia maszyn wirtualnych platformy Azure.
 
-* [Nowy-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) tworzy moduł równoważenia obciążenia. 
-* [Nowe AzureRMLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) tworzy konfigurację adresu IP frontonu dla modułu równoważenia obciążenia. 
-* [Nowy-AzureRmLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) tworzy konfiguracji reguły dla modułu równoważenia obciążenia. 
-* [Nowe AzureRmLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) tworzy konfigurację puli adresów zaplecza dla modułu równoważenia obciążenia. 
-* [Nowy-AzureRmLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) tworzy konfigurację sondowania dla modułu równoważenia obciążenia.
-* [Remove-AzureRmLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) usuwa modułu równoważenia obciążenia z grupy zasobów platformy Azure.
+* [Nowe AzLoadBalancer](https://msdn.microsoft.com/library/mt619450.aspx) tworzy moduł równoważenia obciążenia. 
+* [Nowe AzLoadBalancerFrontendIpConfig](https://msdn.microsoft.com/library/mt603510.aspx) tworzy konfigurację adresu IP frontonu dla modułu równoważenia obciążenia. 
+* [Nowe AzLoadBalancerRuleConfig](https://msdn.microsoft.com/library/mt619391.aspx) tworzy konfiguracji reguły dla modułu równoważenia obciążenia. 
+* [Nowe AzLoadBalancerBackendAddressPoolConfig](https://msdn.microsoft.com/library/mt603791.aspx) tworzy konfigurację puli adresów zaplecza dla modułu równoważenia obciążenia. 
+* [Nowe AzLoadBalancerProbeConfig](https://msdn.microsoft.com/library/mt603847.aspx) tworzy konfigurację sondowania dla modułu równoważenia obciążenia.
+* [Usuń AzLoadBalancer](https://msdn.microsoft.com/library/mt603862.aspx) usuwa modułu równoważenia obciążenia z grupy zasobów platformy Azure.

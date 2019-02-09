@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 36d6733ddc73ace2026ea838cf8f701db95469e6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 93402f9124a5c2f6a251cb0e3b3dab21386fa5ff
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448470"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965260"
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>Przykład 3 — Tworzenie sieci obwodowej do ochrony sieci z zapory, przez i grupy NSG
 [Wróć do strony zabezpieczeń granic najlepsze praktyki][HOME]
@@ -109,35 +109,46 @@ Po utworzeniu tabele routingu są powiązane swoje podsieci. Dla podsieci Fronte
 Na przykład następujące polecenia służą do tworzenia tabeli tras, Dodaj trasy zdefiniowanej przez użytkownika, a następnie powiązania tabeli tras do podsieci (Uwaga; wszystkie elementy poniżej zaczynający się od znaku dolara (np.: $BESubnet) są zmienne zdefiniowane przez użytkownika ze skryptu w Odwołanie do sekcji tego dokumentu):
 
 1. Najpierw należy utworzyć podstawowej tabeli routingu. Ten fragment kodu przedstawia tworzenie tabeli podsieci wewnętrznej bazy danych. W skrypcie tworzony jest także odpowiedniej tabeli dla podsieci frontonu.
-   
-     New-AzureRouteTable -Name $BERouteTableName `
-   
-         -Location $DeploymentLocation `
-         -Label "Route table for $BESubnet subnet"
+
+   ```powershell
+   New-AzureRouteTable -Name $BERouteTableName `
+       -Location $DeploymentLocation `
+       -Label "Route table for $BESubnet subnet"
+   ```
+
 2. Po utworzeniu tabeli tras można dodać trasy zdefiniowane przez określonego użytkownika. W tym odbierającej cały ruch (0.0.0.0/0) będą kierowane za pośrednictwem urządzenia wirtualnego (zmienną $VMIP [0] jest używany do przekazywania adresu IP przypisanego podczas tworzenia urządzenia wirtualnego wcześniej w skrypcie). W skrypcie odpowiednia reguła jest tworzona w tabeli frontonu.
-   
-     Get-AzureRouteTable $BERouteTableName | `
-   
-         Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
-         -NextHopType VirtualAppliance `
-         -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "All traffic to FW" -AddressPrefix 0.0.0.0/0 `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 3. Powyższe wejście dla trasy przesłonią "0.0.0.0/0" trasy domyślnej, ale domyślna reguła 10.0.0.0/16 nadal istniejące umożliwiające ruch sieciowy w ramach sieci wirtualnej w celu kierowania bezpośrednio do miejsca docelowego, a nie wirtualnego urządzenia sieciowego. Aby poprawne to zachowanie reguły postępuj zgodnie z musi zostać dodany.
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
-            -NextHopType VirtualAppliance `
-            -NextHopIpAddress $VMIP[0]
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Internal traffic to FW" -AddressPrefix $VNetPrefix `
+       -NextHopType VirtualAppliance `
+       -NextHopIpAddress $VMIP[0]
+   ```
+
 4. W tym momencie jest wybór ma zostać wykonane. Za pomocą powyższych dwóch tras cały ruch będzie kierować do zapory dla oceny, nawet ruch sieciowy w ramach pojedynczej podsieci. To może być wskazane, jednak, aby zezwolić na ruch w obrębie podsieci do rozsyłania lokalnie bez angażowania w zaporze trzeci, można dodać bardzo szczegółowych reguł. Ta trasa stanów, które każdy adres destine dla lokalnej podsieci można po prostu ma kierować bezpośrednio (Typ następnego przeskoku = VNETLocal).
-   
-        Get-AzureRouteTable $BERouteTableName | `
-            Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
-            -NextHopType VNETLocal
+
+   ```powershell
+   Get-AzureRouteTable $BERouteTableName | `
+       Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $BEPrefix `
+           -NextHopType VNETLocal
+   ```
+
 5. Na koniec z tabeli routingu utworzony i wypełniony tras zdefiniowanych przez użytkownika, tabela musi teraz być powiązana z podsiecią. W skrypcie tabeli tras frontonu również jest powiązana z podsiecią Frontend. Oto skrypt powiązania dla podsieci zaplecza.
-   
-     Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
-   
-        -SubnetName $BESubnet `
-        -RouteTableName $BERouteTableName
+
+   ```powershell
+   Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
+       -SubnetName $BESubnet `
+       -RouteTableName $BERouteTableName
+   ```
 
 ## <a name="ip-forwarding"></a>Przesyłanie dalej IP
 Funkcja pomocnika trasy zdefiniowanej przez użytkownika, to przekazywanie adresów IP. To ustawienie na urządzenie wirtualne, które umożliwia odbieranie ruchu nie jest skierowana do urządzenia, a następnie przekazują ruch do ostatecznego miejsca przeznaczenia.
@@ -149,13 +160,14 @@ Na przykład jeśli ruch z AppVM01 kieruje żądanie do serwera DNS01 trasy zdef
 > 
 > 
 
-Konfigurowanie przekazywania adresów IP jest pojedyncze polecenie i może odbywać się podczas tworzenia maszyny Wirtualnej. Przepływ w tym przykładzie fragment kodu się w kierunku końca skryptu i zgrupowane za pomocą poleceń trasy zdefiniowanej przez użytkownika:
+Konfigurowanie przekazywania adresów IP jest pojedyncze polecenie i może odbywać się podczas tworzenia maszyny Wirtualnej. Przepływ w tym przykładzie fragment kodu jest pod koniec skryptu i zgrupowane za pomocą poleceń trasy zdefiniowanej przez użytkownika:
 
 1. Wywołać wystąpienia maszyny Wirtualnej, który w tym przypadku jest urządzenie wirtualne zapory, a następnie włączyć funkcję przekazywania adresów IP (Uwaga; dowolny element w czerwonym zaczynający się od znaku dolara (np.: $VMName[0]) jest zdefiniowane przez użytkownika zmienną ze skryptu zamieszczone w tej sekcji niniejszego dokumentu. Zero w nawiasie [0] reprezentuje pierwszą maszynę Wirtualną w tablicy, której maszyny wirtualne, aby uzyskać przykładowy skrypt działać bez żadnych modyfikacji, pierwsza maszyna wirtualna (VM, 0) muszą być zapory):
-   
-     Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
-   
+
+    ```powershell
+    Get-AzureVM -Name $VMName[0] -ServiceName $ServiceName[0] | `
         Set-AzureIPForwarding -Enable
+    ```
 
 ## <a name="network-security-groups-nsg"></a>Sieciowe grupy zabezpieczeń (NSG)
 W tym przykładzie grupa NSG jest wbudowana i następnie ładowane przy użyciu jednej reguły. Ta grupa jest następnie powiązany tylko z podsieciami frontonu i wewnętrznej bazy danych (nie SecNet). Deklaratywne budowanego następującą regułę:
@@ -166,22 +178,26 @@ Mimo że sieciowe grupy zabezpieczeń są używane w tym przykładzie, jego gł�
 
 Jeden punkt interesujące dotyczące sieciowej grupy zabezpieczeń, w tym przykładzie jest to, czy zawiera on tylko jedną regułę, pokazano poniżej, aby zablokować ruch internetowy do całej sieci wirtualnej, która obejmuje podsieci zabezpieczeń, czyli. 
 
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
-        Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
-        from the Internet" `
-        -Type Inbound -Priority 100 -Action Deny `
-        -SourceAddressPrefix INTERNET -SourcePortRange '*' `
-        -DestinationAddressPrefix VIRTUAL_NETWORK `
-        -DestinationPortRange '*' `
-        -Protocol *
+```powershell
+Get-AzureNetworkSecurityGroup -Name $NSGName | `
+    Set-AzureNetworkSecurityRule -Name "Isolate the $VNetName VNet `
+    from the Internet" `
+    -Type Inbound -Priority 100 -Action Deny `
+    -SourceAddressPrefix INTERNET -SourcePortRange '*' `
+    -DestinationAddressPrefix VIRTUAL_NETWORK `
+    -DestinationPortRange '*' `
+    -Protocol *
+```
 
 Jednak ponieważ sieciowa grupa zabezpieczeń jest powiązana tylko z podsieci frontonu i zaplecza, reguła nie jest przetwarzane na ruch przychodzący do podsieci zabezpieczeń. W rezultacie mimo że reguła sieciowej grupy zabezpieczeń jest wyświetlany komunikat nie ruch internetowy do dowolnego adresu w sieci wirtualnej, ponieważ sieciowa grupa zabezpieczeń nigdy nie została powiązana z podsiecią zabezpieczeń, ruch będzie przepływać do podsieci zabezpieczeń.
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $FESubnet -VirtualNetworkName $VNetName
+```powershell
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $FESubnet -VirtualNetworkName $VNetName
 
-    Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
-        -SubnetName $BESubnet -VirtualNetworkName $VNetName
+Set-AzureNetworkSecurityGroupToSubnet -Name $NSGName `
+    -SubnetName $BESubnet -VirtualNetworkName $VNetName
+```
 
 ## <a name="firewall-rules"></a>Reguły zapory
 Na zaporze reguły przekazywania będzie muszą zostać utworzone. Ponieważ Zapora blokuje lub funkcji przekazywania, wszystkie przychodzące, wychodzące, sieć wirtualną wewnątrz ruchu wiele reguł zapory są wymagane. Ponadto wszystkie ruch przychodzący będzie trafień usługi zabezpieczeń publiczny adres IP (na różne porty) do przetworzenia przez zaporę. Najlepszym rozwiązaniem jest diagram logiczny przepływów, przed rozpoczęciem konfigurowania podsieci i reguły zapory, aby uniknąć przerabiać później. Poniższa ilustracja jest widok logiczny reguł zapory, w tym przykładzie:
@@ -233,9 +249,11 @@ Jeden warunek wstępny dla maszyny wirtualnej z systemem zapory są publiczne pu
 
 Punkt końcowy, można otworzyć zarówno w czasie tworzenia maszyny Wirtualnej lub po kompilacji, jak jest wykonywane w skrypcie przykład i przedstawionym poniżej na następujący fragment kodu (Uwaga; dowolnego elementu rozpoczynający się od znaku dolara (np.: $VMName[$i]) jest zdefiniowane przez użytkownika zmienną ze skryptu w sectio odwołania n tego dokumentu. "$I" w nawiasie [$i] reprezentuje tablicę określonej maszyny Wirtualnej w tablicy maszyn wirtualnych):
 
-    Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
-        -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
-        Update-AzureVM
+```powershell
+Add-AzureEndpoint -Name "HTTP" -Protocol tcp -PublicPort 80 -LocalPort 80 `
+    -VM (Get-AzureVM -ServiceName $ServiceName[$i] -Name $VMName[$i]) | `
+    Update-AzureVM
+```
 
 Chociaż nie wyraźnie przedstawiony tutaj ze względu na użycie zmiennych, ale punkty końcowe są **tylko** otworzyć zabezpieczenia usługi w chmurze. Pozwala to upewnić się, że cały ruch przychodzący jest obsługiwane (kierowane, translatora adresów Sieciowych spadły) przez zaporę.
 
@@ -338,7 +356,7 @@ Szczegółowe informacje na temat każdej reguły wymaganiem do wykonania w tym 
   
     Ta zasada — dostęp próbny umożliwia dowolnego serwera usług IIS w podsieci frontonu w celu osiągnięcia AppVM01 (adresu IP 10.0.2.5) na dowolnym porcie przy użyciu dowolnego protokołu dostępu do danych wymagane przez aplikację sieci web.
   
-    Na tym zrzucie ekranu "\<jawne dest\>" jest używana w pole docelowe oznaczającego 10.0.2.5 jako miejsca docelowego. Może to być albo jawne pokazany lub w nazwie obiektu Network (jak zostało to zrobione w sekcji wymagania wstępne dla serwera DNS). Jest to w gestii administratora zapory, które zostanie użyta metoda. Aby dodać 10.0.2.5 jako Desitnation stosowany jawny, kliknij dwukrotnie ikonę na pierwszym pustym wierszu pod \<jawne dest\> i w oknie wyskakującym wprowadź adres.
+    Na tym zrzucie ekranu "\<jawne dest\>" jest używana w pole docelowe oznaczającego 10.0.2.5 jako miejsca docelowego. Może to być albo jawne pokazany lub w nazwie obiektu Network (jak zostało to zrobione w sekcji wymagania wstępne dla serwera DNS). Jest to w gestii administratora zapory, które zostanie użyta metoda. Aby dodać 10.0.2.5 jako miejsce docelowe stosowany jawny, kliknij dwukrotnie ikonę na pierwszym pustym wierszu pod \<jawne dest\> i w oknie wyskakującym wprowadź adres.
   
     Z tą regułą przekazać odłączenia translatora adresów Sieciowych jest wymagana, ponieważ jest to ruch wewnętrzny, aby metoda połączenia można ustawić na "Brak SNAT".
   
@@ -389,7 +407,7 @@ Za pomocą aktywacji zestawu reguł zapory na przykład kompilacji środowiska z
 
 ## <a name="traffic-scenarios"></a>Scenariusze ruchu
 > [!IMPORTANT]
-> Takeway klucza jest należy pamiętać, że **wszystkich** ruchu pojawią się przez zaporę. Więc do pulpitu zdalnego z serwerem IIS01, mimo że jest w pierwszej usłudze końcowy w chmurze i w podsieci frontonu dostępu do tego serwera firma Microsoft będzie konieczne protokołu RDP do zapory na porcie 8014, a następnie pozwól zaporę, tak aby kierować żądania protokołu RDP wewnętrznie do IIS01 Por protokołu RDP t. Przycisk "Połącz" w witrynie Azure portal nie będą działać, ponieważ nie ma bezpośredniego RDP ścieżki do IIS01 (o ile zobaczyć portalu). Oznacza to, że wszystkie połączenia z Internetem będzie usługa zabezpieczeń i Port, np. secscv001.cloudapp.net:xxxx.
+> Należy pamiętać, że jest kluczowym wnioskiem **wszystkich** ruchu pojawią się przez zaporę. Więc do pulpitu zdalnego z serwerem IIS01, mimo że jest w pierwszej usłudze końcowy w chmurze i w podsieci frontonu dostępu do tego serwera firma Microsoft będzie konieczne protokołu RDP do zapory na porcie 8014, a następnie pozwól zaporę, tak aby kierować żądania protokołu RDP wewnętrznie do IIS01 Por protokołu RDP t. Przycisk "Połącz" w witrynie Azure portal nie będą działać, ponieważ nie ma bezpośredniego RDP ścieżki do IIS01 (o ile zobaczyć portalu). Oznacza to, że wszystkie połączenia z Internetem będzie usługa zabezpieczeń i Port, np. secscv001.cloudapp.net:xxxx.
 > 
 > 
 
@@ -592,6 +610,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
 > 
 > 
 
+```powershell
     <# 
      .SYNOPSIS
       Example of DMZ and User Defined Routing in an isolated network (Azure only, no hybrid connections)
@@ -604,7 +623,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
        - A Network Virtual Appliance (NVA), in this case a Barracuda NextGen Firewall
        - One server on the FrontEnd Subnet
        - Three Servers on the BackEnd Subnet
-       - IP Forwading from the FireWall out to the internet
+       - IP Forwarding from the FireWall out to the internet
        - User Defined Routing FrontEnd and BackEnd Subnets to the NVA
 
       Before running script, ensure the network configuration file is created in
@@ -702,7 +721,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
           $SubnetName += $FESubnet
           $VMIP += "10.0.1.4"
 
-        # VM 2 - The First Appliaction Server
+        # VM 2 - The First Application Server
           $VMName += "AppVM01"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -711,7 +730,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
           $SubnetName += $BESubnet
           $VMIP += "10.0.2.5"
 
-        # VM 3 - The Second Appliaction Server
+        # VM 3 - The Second Application Server
           $VMName += "AppVM02"
           $ServiceName += $BackEndService
           $VMFamily += "Windows"
@@ -730,7 +749,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
           $VMIP += "10.0.2.4"
 
     # ----------------------------- #
-    # No User Defined Varibles or   #
+    # No User Defined Variables or   #
     # Configuration past this point #
     # ----------------------------- #
 
@@ -741,7 +760,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
 
       # Create Storage Account
         If (Test-AzureName -Storage -Name $StorageAccountName) { 
-            Write-Host "Fatal Error: This storage account name is already in use, please pick a diffrent name." -ForegroundColor Red
+            Write-Host "Fatal Error: This storage account name is already in use, please pick a different name." -ForegroundColor Red
             Return}
         Else {Write-Host "Creating Storage Account" -ForegroundColor Cyan 
               New-AzureStorageAccount -Location $DeploymentLocation -StorageAccountName $StorageAccountName}
@@ -872,7 +891,7 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
             |Set-AzureRoute -RouteName "Allow Intra-Subnet Traffic" -AddressPrefix $FEPrefix `
             -NextHopType VNETLocal
 
-      # Assoicate the Route Tables with the Subnets
+      # Associate the Route Tables with the Subnets
         Write-Host "Binding Route Tables to the Subnets" -ForegroundColor Cyan 
         Set-AzureSubnetRouteTable -VirtualNetworkName $VNetName `
             -SubnetName $BESubnet `
@@ -920,11 +939,12 @@ Ten skrypt programu PowerShell można uruchamiać lokalnie na połączone z Inte
       Write-Host " - Install Test Web App (Run Post-Build Script on the IIS Server)" -ForegroundColor Gray
       Write-Host " - Install Backend resource (Run Post-Build Script on the AppVM01)" -ForegroundColor Gray
       Write-Host
-
+```
 
 #### <a name="network-config-file"></a>Plik konfiguracji sieci
 Zapisz ten plik xml z lokalizacją zaktualizowane i dodać link do tego pliku do zmiennej $NetworkConfigFile w skrypcie powyżej.
 
+```xml
     <NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
       <VirtualNetworkConfiguration>
         <Dns>
@@ -957,6 +977,7 @@ Zapisz ten plik xml z lokalizacją zaktualizowane i dodać link do tego pliku do
         </VirtualNetworkSites>
       </VirtualNetworkConfiguration>
     </NetworkConfiguration>
+```
 
 #### <a name="sample-application-scripts"></a>Przykładowe skrypty aplikacji
 Jeśli chcesz zainstalować przykładową aplikację w tym i inne przykłady strefy DMZ, jedno zostało podane z łącza: [Przykładowy skrypt aplikacji][SampleApp]

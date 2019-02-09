@@ -3,8 +3,8 @@ title: Grupa łączników nie pracy znaleziono dla aplikacji serwera Proxy aplik
 description: Rozwiązywanie problemów, które mogą wystąpić po nie pracy łącznika w grupie łączników dla aplikacji przy użyciu serwera Proxy aplikacji usługi AD systemu Azure
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: f874999bc5bc767fd4501951fc0ea0706976c9f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b99140a6b0d3e830cd7dd1eb341f05581c75643d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189990"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959463"
 ---
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>Nie znaleziono aplikacji serwera Proxy aplikacji grupy łącznika pracy
 

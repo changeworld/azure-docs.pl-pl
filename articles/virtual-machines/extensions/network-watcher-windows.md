@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 2f07107ad63ddd04e67528bf4f409dabf4a4d0c0
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6e02f5a5b42da9c99a08782903cdc05ee32ec9d4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054796"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976928"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Rozszerzenie maszyny wirtualnej agenta obserwatora sieciowe dla Windows
 
@@ -79,10 +79,10 @@ Można wdrożyć rozszerzeń maszyny Wirtualnej platformy Azure przy użyciu sza
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-Użyj `Set-AzureRmVMExtension` polecenie, aby wdrożyć rozszerzenie maszyny wirtualnej Agent usługi Network Watcher do istniejącej maszyny wirtualnej:
+Użyj `Set-AzVMExtension` polecenie, aby wdrożyć rozszerzenie maszyny wirtualnej Agent usługi Network Watcher do istniejącej maszyny wirtualnej:
 
 ```powershell
-Set-AzureRmVMExtension `
+Set-AzVMExtension `
   -ResourceGroupName "myResourceGroup1" `
   -Location "WestUS" `
   -VMName "myVM1" `
@@ -99,7 +99,7 @@ Set-AzureRmVMExtension `
 Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i programu PowerShell. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając modułu Azure PowerShell:
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
+Get-AzVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
 Dane wyjściowe wykonywania rozszerzenia jest rejestrowany wpis pliki znajdujące się w następującym katalogu:

@@ -14,44 +14,45 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 03/29/2018
 ms.author: cynthn
-ms.openlocfilehash: bab3b37d2d5063c77f8aceee84646b1ee72b0617
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 0ae4c883baa156276646755273547a17d23edc55
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892545"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982492"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych Windows na platformie Azure za pomocą usługi Packer
 Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje Windows dystrybucji i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace zawiera wiele obrazów pierwszy i innych firm dla typowych systemu operacyjnego i środowiska aplikacji albo można utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open-source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-azure-resource-group"></a>Utwórz grupę zasobów platformy Azure
 Podczas procesu kompilacji narzędzia Packer tworzy tymczasowy zasobów platformy Azure opiera się źródłowa maszyna wirtualna. Aby przechwycić tego źródła do użycia jako obraz maszyny Wirtualnej, należy zdefiniować grupy zasobów. Dane wyjściowe z procesu kompilacji narzędzia Packer znajduje się w tej grupie zasobów.
 
-Utwórz grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Utwórz grupę zasobów za pomocą [New AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```powershell
 $rgName = "myResourceGroup"
 $location = "East US"
-New-AzureRmResourceGroup -Name $rgName -Location $location
+New-AzResourceGroup -Name $rgName -Location $location
 ```
 
 ## <a name="create-azure-credentials"></a>Tworzenie poświadczeń platformy Azure
 Narzędzia packer uwierzytelnia się za pomocą platformy Azure przy użyciu nazwy głównej usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń używanej z aplikacjami, usługami i narzędzia automatyzacji, takie jak usługi Packer. Ty określasz i zdefiniować uprawnienia dotyczące jakie operacje nazwy głównej usługi można wykonać na platformie Azure.
 
-Tworzenie usługi podmiotu zabezpieczeń za pomocą [New AzureRmADServicePrincipal](/powershell/module/azurerm.resources/new-azurermadserviceprincipal) i przypisać uprawnienia dla jednostki usługi do tworzenia i zarządzania zasobami przy użyciu [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment). Zastąp *&lt;hasło&gt;* w przykładzie z własnego hasła.  
+Tworzenie usługi podmiotu zabezpieczeń za pomocą [New AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) i przypisać uprawnienia dla jednostki usługi do tworzenia i zarządzania zasobami przy użyciu [New AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment). Zastąp *&lt;hasło&gt;* w przykładzie z własnego hasła.  
 
 ```powershell
-$sp = New-AzureRmADServicePrincipal -DisplayName "AzurePacker" `
+$sp = New-AzADServicePrincipal -DisplayName "AzurePacker" `
     -Password (ConvertTo-SecureString "<password>" -AsPlainText -Force)
 Sleep 20
-New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
+New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-Aby uwierzytelniać się na platformie Azure, trzeba będzie również uzyskać Azure identyfikatorów dzierżawę i subskrypcję z [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription):
+Aby uwierzytelniać się na platformie Azure, trzeba będzie również uzyskać Azure identyfikatorów dzierżawę i subskrypcję z [Get AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription):
 
 ```powershell
-$sub = Get-AzureRmSubscription
+$sub = Get-AzSubscription
 $sub.TenantId[0]
 $sub.SubscriptionId[0]
 ```
@@ -206,10 +207,10 @@ Trwa kilka minut, zanim Packer tworzenie maszyny Wirtualnej, uruchom provisioner
 
 
 ## <a name="create-a-vm-from-the-packer-image"></a>Tworzenie maszyny Wirtualnej na podstawie obrazu usługi Packer
-Teraz można utworzyć Maszynę wirtualną z obrazu za pomocą [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Pomocnicze zasoby sieciowe zostaną utworzone, jeśli jeszcze nie istnieje. Po wyświetleniu monitu wprowadź administracyjne nazwę użytkownika i hasło, które ma zostać utworzony na maszynie Wirtualnej. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* z *myPackerImage*:
+Teraz można utworzyć Maszynę wirtualną z obrazu za pomocą [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Pomocnicze zasoby sieciowe zostaną utworzone, jeśli jeszcze nie istnieje. Po wyświetleniu monitu wprowadź administracyjne nazwę użytkownika i hasło, które ma zostać utworzony na maszynie Wirtualnej. Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVM* z *myPackerImage*:
 
 ```powershell
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
     -Location $location `
@@ -221,16 +222,16 @@ New-AzureRmVm `
     -Image "myPackerImage"
 ```
 
-Jeśli chcesz utworzyć maszyny wirtualne w regionie niż obrazu usługi Packer lub innej grupy zasobów, należy określić identyfikator obrazu, a nie nazwę obrazu. Można uzyskać identyfikator obrazu z [Get-AzureRmImage](/powershell/module/AzureRM.Compute/Get-AzureRmImage).
+Jeśli chcesz utworzyć maszyny wirtualne w regionie niż obrazu usługi Packer lub innej grupy zasobów, należy określić identyfikator obrazu, a nie nazwę obrazu. Można uzyskać identyfikator obrazu z [Get AzImage](https://docs.microsoft.com/powershell/module/az.compute/Get-AzImage).
 
 Trwa kilka minut, aby utworzyć maszynę Wirtualną z obrazu usługi Packer.
 
 
 ## <a name="test-vm-and-webserver"></a>Test maszyny Wirtualnej, a serwer sieci Web
-Uzyskaj publiczny adres IP maszyny wirtualnej za pomocą polecenia [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). W poniższym przykładzie uzyskano utworzony wcześniej adres IP *myPublicIP*:
+Uzyskaj publiczny adres IP maszyny wirtualnej za pomocą [Get AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). W poniższym przykładzie uzyskano utworzony wcześniej adres IP *myPublicIP*:
 
 ```powershell
-Get-AzureRmPublicIPAddress `
+Get-AzPublicIPAddress `
     -ResourceGroupName $rgName `
     -Name "myPublicIPAddress" | select "IpAddress"
 ```

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 3ec5b9c6357f0d075ddd9b0fd5c8a88ee2846209
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 8770aaeff3e0d7b2d6a39f596aafebf15ed48b23
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192261"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985003"
 ---
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 
@@ -27,31 +27,31 @@ Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym gór
 Udostępnione galerie obrazów jest w wersji zapoznawczej, ale trzeba zarejestrować tę funkcję, przed jego użyciem. Aby zarejestrować funkcji udostępnione, galerie obrazów:
 
 ```azurepowershell-interactive
-Register-AzureRmProviderFeature `
+Register-AzProviderFeature `
    -FeatureName GalleryPreview `
    -ProviderNamespace Microsoft.Compute
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
 ## <a name="get-the-managed-image"></a>Pobieranie obrazu zarządzanego
 
-Można wyświetlić listę obrazów, które są dostępne w grupie zasobów przy użyciu [Get-AzureRmImage](/powershell/module/AzureRM.Compute/get-azurermimage). Jeśli znasz już nazwę obrazu i grupie zasobów, które znajduje się w, można użyć `Get-AzureRmImage` ponownie, aby pobrać obiekt obrazu i zapisz go w zmiennej, do użycia w przyszłości. W tym przykładzie pobiera obraz o nazwie *myImage* z grupy zasobów "myResourceGroup", a następnie przypisuje go do zmiennej *$managedImage*. 
+Można wyświetlić listę obrazów, które są dostępne w grupie zasobów przy użyciu [Get AzImage](https://docs.microsoft.com/powershell/module/az.compute/get-azimage). Jeśli znasz już nazwę obrazu i grupie zasobów, które znajduje się w, można użyć `Get-AzImage` ponownie, aby pobrać obiekt obrazu i zapisz go w zmiennej, do użycia w przyszłości. W tym przykładzie pobiera obraz o nazwie *myImage* z grupy zasobów "myResourceGroup", a następnie przypisuje go do zmiennej *$managedImage*. 
 
 ```azurepowershell-interactive
-$managedImage = Get-AzureRmImage `
+$managedImage = Get-AzImage `
    -ImageName myImage `
    -ResourceGroupName myResourceGroup
 ```
 
 ## <a name="create-an-image-gallery"></a>Tworzenie galerii obrazów 
 
-Galeria obrazów jest podstawowy zasób umożliwiający włączenie udostępniania obrazów. Galeria nazwy muszą być unikatowe w ramach Twojej subskrypcji. Tworzenie galerii obrazów przy użyciu [New AzureRmGallery](/powershell/module/AzureRM.Compute/new-azurermgallery). Poniższy przykład tworzy Galeria o nazwie *myGallery* w *myGalleryRG* grupy zasobów.
+Galeria obrazów jest podstawowy zasób umożliwiający włączenie udostępniania obrazów. Galeria nazwy muszą być unikatowe w ramach Twojej subskrypcji. Tworzenie galerii obrazów przy użyciu [New AzGallery](https://docs.microsoft.com/powershell/module/az.compute/new-azgallery). Poniższy przykład tworzy Galeria o nazwie *myGallery* w *myGalleryRG* grupy zasobów.
 
 ```azurepowershell-interactive
-$resourceGroup = New-AzureRMResourceGroup `
+$resourceGroup = New-AzResourceGroup `
    -Name 'myGalleryRG' `
    -Location 'West Central US'  
-$gallery = New-AzureRmGallery `
+$gallery = New-AzGallery `
    -GalleryName 'myGallery' `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $resourceGroup.Location `
@@ -60,10 +60,10 @@ $gallery = New-AzureRmGallery `
    
 ## <a name="create-an-image-definition"></a>Utwórz definicję obrazu 
 
-Tworzenie galerii obrazów definicji przy użyciu [New AzureRmGalleryImageDefinition](/powershell/module/azurerm.compute/new-azurermgalleryimageversion). W tym przykładzie nosi nazwę obrazu z galerii *myGalleryImage*.
+Tworzenie galerii obrazów definicji przy użyciu [New AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion). W tym przykładzie nosi nazwę obrazu z galerii *myGalleryImage*.
 
 ```azurepowershell-interactive
-$galleryImage = New-AzureRmGalleryImageDefinition `
+$galleryImage = New-AzGalleryImageDefinition `
    -GalleryName $gallery.Name `
    -ResourceGroupName $resourceGroup.ResourceGroupName `
    -Location $gallery.Location `
@@ -87,7 +87,7 @@ Wszystkie trzy z nich ma unikatowe zbiory wartości. W kolejnej wersji można po
 
 ```powershell
 # The following should set the source image as myImage1 from the table above
-$vmConfig = Set-AzureRmVMSourceImage `
+$vmConfig = Set-AzVMSourceImage `
    -VM $vmConfig `
    -PublisherName myPublisher `
    -Offer myOffer `
@@ -98,14 +98,14 @@ Jest to podobne do jak obecnie określić je pod kątem [obrazów portalu Azure 
 
 ##<a name="create-an-image-version"></a>Utwórz wersję obrazu
 
-Utwórz wersję obrazu na podstawie obrazu zarządzanego przy użyciu [New AzureRmGalleryImageVersion](/powershell/module/AzureRM.Compute/new-azurermgalleryimageversion) . W tym przykładzie jest wersja obrazu *1.0.0* i są replikowane do obu *zachodnio-środkowe stany USA* i *południowo-środkowe stany USA* centrów danych.
+Utwórz wersję obrazu na podstawie obrazu zarządzanego przy użyciu [New AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) . W tym przykładzie jest wersja obrazu *1.0.0* i są replikowane do obu *zachodnio-środkowe stany USA* i *południowo-środkowe stany USA* centrów danych.
 
 
 ```azurepowershell-interactive
 $region1 = @{Name='South Central US';ReplicaCount=1}
 $region2 = @{Name='West Central US';ReplicaCount=2}
 $targetRegions = @($region1,$region2)
-$job = $imageVersion = New-AzureRmGalleryImageVersion `
+$job = $imageVersion = New-AzGalleryImageVersion `
    -GalleryImageDefinitionName $galleryImage.Name `
    -GalleryImageVersionName '1.0.0' `
    -GalleryName $gallery.Name `

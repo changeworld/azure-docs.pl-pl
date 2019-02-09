@@ -10,12 +10,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/25/2017
 ROBOTS: NOINDEX
-ms.openlocfilehash: 983ea87a7387c4ce6bb0c1c67bf46d81c717e69a
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 5048a4ab4db6d4cb168d2a643a412f89273658b4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993088"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984260"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-in-hdinsight"></a>Za pomocą programu Apache Oozie Apache Hadoop do definiowania i uruchomić przepływ pracy w HDInsight
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
@@ -123,26 +123,23 @@ Istnieją dwie akcje zdefiniowane w przepływie pracy. Akcja do rozpoczęcia jes
 
 RunHiveScript ma kilka zmiennych. Możesz przekazać wartości, gdy prześlesz zadanie Oozie ze swojej stacji roboczej przy użyciu programu Azure PowerShell.
 
-<table border = "1">
-<tr><th>Zmienne przepływu pracy</th><th>Opis</th></tr>
-<tr><td>${jobTracker}</td><td>Określa adres URL śledzenia zadań usługi Hadoop. Użyj <strong>jobtrackerhost:9010</strong> w HDInsight w wersji 3.0 i 2.1.</td></tr>
-<tr><td>${nameNode}</td><td>Określa adres URL węzła nazwa usługi Hadoop. Użyj domyślnego adresu systemu plików, na przykład <i>wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net</i>.</td></tr>
-<tr><td>${queueName}</td><td>Określa nazwę kolejki, który zadanie jest przesyłany do usługi. Użyj <strong>domyślne</strong>.</td></tr>
-</table>
+|Zmienne przepływu pracy|Opis|
+|---|---|
+|${jobTracker}|Określa adres URL śledzenia zadań usługi Hadoop. Użyj **jobtrackerhost:9010** w HDInsight w wersji 3.0 i 2.1.|
+|${nameNode}|Określa adres URL węzła nazwa usługi Hadoop. Użyj domyślnego adresu systemu plików, na przykład *wasb: / /&lt;containerName&gt;@&lt;storageAccountName&gt;. blob.core.windows.net*.|
+|${queueName}|Określa nazwę kolejki, który zadanie jest przesyłany do usługi. Użyj **domyślne**.|
 
-<table border = "1">
-<tr><th>Hive zmiennej akcji</th><th>Opis</th></tr>
-<tr><td>${hiveDataFolder}</td><td>Określa katalog źródłowy dla polecenia Hive Create Table.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Określa folder wyjściowy dla instrukcji INSERT zastąpić.</td></tr>
-<tr><td>${hiveTableName}</td><td>Określa nazwę tabeli programu Hive, która odwołuje się do plików danych log4j.</td></tr>
-</table>
+|Hive zmiennej akcji|Opis|
+|---|---|
+|${hiveDataFolder}|Określa katalog źródłowy dla polecenia Hive Create Table.|
+|${hiveOutputFolder}|Określa folder wyjściowy dla instrukcji INSERT zastąpić.|
+|${hiveTableName}|Określa nazwę tabeli programu Hive, która odwołuje się do plików danych log4j.|
 
-<table border = "1">
-<tr><th>Sqoop zmiennej akcji</th><th>Opis</th></tr>
-<tr><td>${sqlDatabaseConnectionString}</td><td>Określa parametry połączenia bazy danych Azure SQL.</td></tr>
-<tr><td>${sqlDatabaseTableName}</td><td>Określa, gdzie dane są eksportowane do tabeli bazy danych Azure SQL.</td></tr>
-<tr><td>${hiveOutputFolder}</td><td>Określa folder wyjściowy dla instrukcji Hive Wstaw zastąpić. To ten sam folder eksportu Sqoop (export-dir).</td></tr>
-</table>
+|Sqoop zmiennej akcji|Opis|
+|---|---|
+|${sqlDatabaseConnectionString}|Określa parametry połączenia bazy danych Azure SQL.|
+|${sqlDatabaseTableName}|Określa, gdzie dane są eksportowane do tabeli bazy danych Azure SQL.|
+|${hiveOutputFolder}|Określa folder wyjściowy dla instrukcji Hive Wstaw zastąpić. To ten sam folder eksportu Sqoop (export-dir).|
 
 Aby uzyskać więcej informacji o przepływie pracy programu Oozie i przy użyciu akcji przepływu pracy, zobacz [dokumentację Apache Oozie 4.0] [ apache-oozie-400] (w przypadku HDInsight w wersji 3.0 lub nowszej) lub [dokumentację Apache Oozie 3.3.2] [ apache-oozie-332] (w przypadku HDInsight w wersji 2.1).
 

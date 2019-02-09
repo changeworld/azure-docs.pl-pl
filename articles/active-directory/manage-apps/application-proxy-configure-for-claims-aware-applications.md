@@ -3,8 +3,8 @@ title: Aplikacje obsługujące oświadczenia — serwera Proxy aplikacji usługi
 description: Sposób publikowania lokalnych aplikacji programu ASP.NET, które akceptują oświadczeń ADFS, aby uzyskać bezpieczny dostęp zdalny przez użytkowników.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: efab95e926e72397f15a5b6a79e63833e19f0676
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3cb1849f9fbf99bcd811761f6b72b0d0cb61945d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153474"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965056"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Praca z aplikacji obsługujących oświadczenia na serwerze Proxy aplikacji
 [Aplikacje obsługujące oświadczenia](https://msdn.microsoft.com/library/windows/desktop/bb736227.aspx) wykonania przekierowania do Usługa tokenu zabezpieczającego (STS). Usługa STS żąda poświadczeń użytkownika w zamian za token, a następnie przekierowuje użytkownika do aplikacji. Istnieje kilka sposobów, aby włączyć serwer Proxy aplikacji do pracy z tymi przekierowania. Aby skonfigurować wdrożenie aplikacji z obsługą oświadczeń, należy użyć w tym artykule. 

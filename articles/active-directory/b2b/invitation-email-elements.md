@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 57ba4b35cf470eff040d4a2dca42c60820fa9d9e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a119e2797c4771551b6087e148d609c68ffd36db
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079974"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977531"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Elementy e-mail z zaproszeniem współpracy B2B — usługi Azure Active Directory
 
@@ -66,6 +66,14 @@ Stopka zawiera marki firmy Microsoft i umożliwia odbiorcy znać, jeśli wiadomo
 
   ![Kiedy adresat nie ma konieczności zrealizować zaproszenia](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
+## <a name="how-the-language-is-determined"></a>Jak język jest określana.
+Język prezentowane użytkownikowi Gość w wiadomości e-mail z zaproszeniem jest określany przez następujące ustawienia. Te ustawienia są wymienione w kolejności priorytetu. Jeśli to ustawienie nie zostanie skonfigurowane, następne ustawienie na liście określa język. 
+- **MessageLanguage** właściwość [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0) obiektu, jeśli używana jest zaproszenia do tworzenia interfejsu API
+-   **PreferredLanguage** właściwości określonej w przez gościa [obiektu użytkownika](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0)
+-   **Język powiadomienia** ustaw we właściwościach użytkownika gościa dzierżawy głównej (dla tylko dzierżaw usługi Azure AD)
+-   **Język powiadomienia** ustaw we właściwościach zasobu dzierżawy
+
+Jeśli żadne z tych ustawień są skonfigurowane, wartości domyślne języka angielskiego (US).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

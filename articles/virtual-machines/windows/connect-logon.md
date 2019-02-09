@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 4bfb17a7c50e97ae71908f052f7f38110cf376df
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 14bbb77678a70b51c7f640b501827c5618cce606
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296891"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978963"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak połączyć i logowanie się na maszynie wirtualnej platformy Azure, systemem Windows
 Korzystając z przycisku **Połącz** w witrynie Azure Portal, uruchomisz sesję pulpitu zdalnego z poziomu pulpitu systemu Windows. Najpierw nawiążesz połączenie z maszyną wirtualną, a następnie zaloguj się.
@@ -56,18 +56,18 @@ Aby połączyć się z maszyny Wirtualnej z systemem Windows z poziomu komputera
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>Łączenie z maszyną wirtualną przy użyciu programu PowerShell
 
-Jeśli są przy użyciu programu PowerShell i mieć zainstalowany moduł AzureRM może nawiązywać połączenie przy użyciu `Get-AzureRmRemoteDesktopFile` polecenia cmdlet, jak pokazano poniżej.
+Jeśli są przy użyciu programu PowerShell i mieć zainstalowany moduł AzureRM może nawiązywać połączenie przy użyciu `Get-AzRemoteDesktopFile` polecenia cmdlet, jak pokazano poniżej.
 
 W tym przykładzie zostanie uruchomiony natychmiast połączenia RDP, poruszają podobne monity jako powyżej.
 
 ```powershell
-Get-AzureRmRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -Launch
+Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -Launch
 ```
 
 Możesz również zapisać plik RDP do użytku w przyszłości.
 
 ```powershell
-Get-AzureRmRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
+Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

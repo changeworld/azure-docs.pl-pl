@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 9678259f4eb6fc634459f80e47b507ebe435ea37
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 281358e51ed8585e5deb407b2432ee3b7ee1537f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878922"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983274"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurowanie kontenerów platformy Docker interpretacji języka 
 
@@ -59,7 +59,7 @@ Nie należy używać klucza starter lub tworzenia klucza.
 
 ## <a name="billing-setting"></a>Ustawienie rozliczeń
 
-`Billing` Ustawienie określa identyfikator URI punktu końcowego z _Language Understanding_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _Language Understanding_ zasobów na platformie Azure.
+`Billing` Ustawienie określa identyfikator URI punktu końcowego z _Language Understanding_ zasobów na platformie Azure używane do pomiarów informacji rozliczeniowych dla kontenera. Należy określić wartość dla tego ustawienia konfiguracji, a wartość musi być prawidłowy identyfikator URI punktu końcowego dla _Language Understanding_ zasobów na platformie Azure. Kontener raportów użycia dotyczących co 10 do 15 minut.
 
 To ustawienie można znaleźć w następujących miejscach:
 

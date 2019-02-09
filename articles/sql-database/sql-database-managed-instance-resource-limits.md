@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 799f47b291b3943dcb4d6b31bc8df732c28990cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: a9e5be3c1dcbf4461bd00b2b1ce530aa16e441ef
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816598"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962132"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Limity zasobów wystąpienia zarządzanego Azure SQL Database — omówienie
 
@@ -51,7 +51,7 @@ Wystąpienia zarządzanego istnieją dwie warstwy usług - ogólnego przeznaczen
 | --- | --- | --- |
 | Liczba rdzeni wirtualnych\* | Gen4: 8, 16, 24<br/>5. generacji: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> 5. generacji: 8, 16, 24, 32, 40, 64, 80 |
 | Memory (Pamięć) | Gen4: 56 GB - 168 GB<br/>5. generacji: 40.8 GB – 408 GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych | Gen4: 56 GB - 168 GB <br/> 5. generacji: 40.8 GB – 408 GB<br/>\*Proporcjonalnie do liczby rdzeni wirtualnych |
-| Maksymalny rozmiar magazynu | 8 TB | 4. generacji: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
+| Maksymalny rozmiar magazynu | 8 TB | Gen4: 1 TB <br/> 5. generacji: <br/>-1 TB, 8, 16 rdzeni wirtualnych<br/>-2 TB dla 24 rdzenie wirtualne<br/>-4 TB dla 32, 40, 64, 80 rdzeni wirtualnych |
 | Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
 | Maksymalna liczba baz danych dla każdego wystąpienia | 100 | 100 |
 | Maksymalna liczba plików bazy danych dla każdego wystąpienia | Maksymalnie 280 | 32 767 plików na bazę danych |

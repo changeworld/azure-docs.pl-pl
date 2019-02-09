@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/24/2018
 ms.author: cshoe
-ms.openlocfilehash: a44b348e0c41e96c575555f2b5c275e196284c5b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: df722f305d60eb0ab53964bfc4e3f48961036708
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074543"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984855"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Pojęcia powiązania i Wyzwalacze usługi Azure Functions
 
@@ -506,11 +506,11 @@ Na przykład wyzwalacz usługi Azure Queue storage obsługuje następujące wła
 
 * QueueTrigger — wyzwalanie treści wiadomości, jeśli prawidłowy ciąg
 * DequeueCount
-* czas wygaśnięcia
+* ExpirationTime
 * Identyfikator
 * InsertionTime
 * NextVisibleTime
-* Elementem PopReceipt
+* PopReceipt
 
 Wartości te metadane są dostępne w *function.json* właściwości pliku. Załóżmy na przykład, można użyć wyzwalacza kolejki i komunikatu w kolejce zawiera nazwę obiektu blob, który chcesz odczytać. W *function.json* pliku, można użyć `queueTrigger` metadanych właściwości w obiekcie blob `path` właściwości, jak pokazano w poniższym przykładzie:
 
@@ -702,4 +702,3 @@ Więcej informacji na temat określonego powiązania na ten temat można znaleź
 - [Twilio](functions-bindings-twilio.md)
 - [Notification Hubs](functions-bindings-notification-hubs.md)
 - [Mobile Apps](functions-bindings-mobile-apps.md)
-- [Plik zewnętrzny](functions-bindings-external-file.md)

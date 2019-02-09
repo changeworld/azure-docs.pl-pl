@@ -4,7 +4,7 @@ description: Ta specyfikacja opisano dwa tryby, które są obsługiwane przez us
 services: media-services
 documentationcenter: ''
 author: johndeu
-manager: cfowler
+manager: femila
 editor: johndeu
 ms.assetid: 265b94b1-0fb8-493a-90ec-a4244f51ce85
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2018
+ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: f29efb9a58c0b269f64d637fa3c5d59bb3610bbc
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3c51b5fd5bf577479aaeb316d5c1b5f8704f2d19
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265894"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980435"
 ---
-# <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo
+# <a name="signaling-timed-metadata-in-live-streaming-legacy"></a>Sygnalizowanie metadanych upłynął limit czasu w transmisji strumieniowej na żywo (starsza wersja)
 
 
 ## <a name="1-introduction"></a>Wprowadzenie 1 
@@ -68,8 +68,8 @@ Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji 
 
 | Nazwa pola | Typ pola | Wymagana? | Opisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| Podpowiedź        | Ciąg     | Wymagane | Komunikat zdarzenia.  Musi być "SpliceOut", aby wyznaczyć tryb prosty splice.                                              |
-| id         | Ciąg     | Wymagane | Unikatowy identyfikator, który opisujący splice lub segmentu. Określa wystąpienie tego komunikatu                            |
+| Podpowiedź        | String     | Wymagane | Komunikat zdarzenia.  Musi być "SpliceOut", aby wyznaczyć tryb prosty splice.                                              |
+| id         | String     | Wymagane | Unikatowy identyfikator, który opisujący splice lub segmentu. Określa wystąpienie tego komunikatu                            |
 | czas trwania   | Liczba     | Wymagane | Czas trwania splice. Jednostki są ułamków sekund.                                                                |
 | elapsed    | Liczba     | Optional (Opcjonalność) | Gdy sygnał jest jest powtarzany w celu zapewnienia obsługi Obejrzyj, w tym polu są prezentacji czas, jaki upłynął od chwili rozpoczęcia splice. Jednostki są ułamków sekund. Podczas korzystania z trybu simple ta wartość nie powinna przekraczać splice oryginalnego czasu trwania.                                                  |
 | time       | Liczba     | Wymagane | Jest czas splice, w czasie prezentacji. Jednostki są ułamków sekund.                                     |
@@ -80,9 +80,9 @@ Tryb prosty RTMP Media Services obsługuje pojedynczą wiadomość sygnalizacji 
 
 | Nazwa pola | Typ pola | Wymagana? | Opisy                                                                                                             |
 |------------|------------|----------|--------------------------------------------------------------------------------------------------------------------------|
-| Podpowiedź        | Ciąg     | Wymagane | Komunikat zdarzenia.  Komunikaty [SCTE 35], musi to być base64 pliku binarnego (4648 RFC organizacji IETF) zakodowane splice_info_section() w kolejności wiadomości można wysyłać do klientów HLS i Smooth, Dash zgodne z [SCTE 67].                                              |
-| type       | Ciąg     | Wymagane | Nazwa URN lub adres URL identyfikujący schemat wiadomości. Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67].  |
-| id         | Ciąg     | Wymagane | Unikatowy identyfikator, który opisujący splice lub segmentu. Określa wystąpienie tej wiadomości.  Komunikaty z semantyką równoważne mają taką samą wartość.|
+| Podpowiedź        | String     | Wymagane | Komunikat zdarzenia.  Komunikaty [SCTE 35], musi to być base64 pliku binarnego (4648 RFC organizacji IETF) zakodowane splice_info_section() w kolejności wiadomości można wysyłać do klientów HLS i Smooth, Dash zgodne z [SCTE 67].                                              |
+| type       | String     | Wymagane | Nazwa URN lub adres URL identyfikujący schemat wiadomości. Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67].  |
+| id         | String     | Wymagane | Unikatowy identyfikator, który opisujący splice lub segmentu. Określa wystąpienie tej wiadomości.  Komunikaty z semantyką równoważne mają taką samą wartość.|
 | czas trwania   | Liczba     | Wymagane | Czas trwania zdarzenia lub ad splice — segmentu, jeśli jest znany. Jeśli jest nieznana, wartość powinna być 0.                                                                 |
 | elapsed    | Liczba     | Optional (Opcjonalność) | Gdy w celu Obejrzyj powtarza się sygnale reklamowym [SCTE 35] i to pole będzie prezentacji czas, jaki upłynął od chwili rozpoczęcia splice. Jednostki są ułamków sekund. W trybie [SCTE 35] Ta wartość może przekroczyć oryginalnego określonego czasu trwania splice lub segmentu.                                                  |
 | time       | Liczba     | Wymagane | Splice — czas prezentacji zdarzenia lub ad.  Czas prezentacji i czas trwania należy wyrównać za pomocą punktów dostępu Stream (SAP) typu 1 lub 2, zgodnie z definicją w [ISO-14496-12] załącznika. Dla ruchu wychodzącego HLS czas i czas trwania powinno odpowiadać granice segmentu. Prezentacja czas i czas trwania komunikaty o różnych zdarzeniach w tej samej strumienia zdarzeń nie może nakładać. Jednostki są ułamków sekund.
@@ -102,11 +102,11 @@ Rozrzedzony śledzenie musi być zadeklarowana w polu manifestu serwera na żywo
 | **Nazwa atrybutu** | **Typ pola** | **Wymagane?** | **Opis**                                                                                                                                                                                                                                                 |
 |--------------------|----------------|---------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | systemBitrate      | Liczba         | Wymagane      | MUSI być "0", wskazującą śledzenie przy użyciu nieznanego, zmiennej szybkości transmisji bitów.                                                                                                                                                                                                 |
-| parentTrackName    | Ciąg         | Wymagane      | MUSI być nazwą ścieżki nadrzędnej, kody czasowe rozrzedzone śledzenia są wyrównane do skali czasu. Śledź nadrzędny nie może być rozrzedzone śledzenia.                                                                                                                    |
+| parentTrackName    | String         | Wymagane      | MUSI być nazwą ścieżki nadrzędnej, kody czasowe rozrzedzone śledzenia są wyrównane do skali czasu. Śledź nadrzędny nie może być rozrzedzone śledzenia.                                                                                                                    |
 | manifestOutput     | Wartość logiczna        | Wymagane      | MUSI być "prawda", aby wskazać, czy śledzenie rozrzedzone zostanie osadzony w manifest Smooth klienta.                                                                                                                                                               |
-| Podtyp            | Ciąg         | Wymagane      | MUSI być czterech znaków kodu "Dane".                                                                                                                                                                                                                         |
-| Schemat             | Ciąg         | Wymagane      | MUSI być adres URL lub URN identyfikowanie schemat wiadomości. Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67]. |
-| trackName          | Ciąg         | Wymagane      | MUSI być nazwą ścieżki rozrzedzone. TrackName może służyć do odróżniania wiele strumieni zdarzeń z tego samego schematu. Każdego strumienia zdarzeń unikatowy musi mieć nazwę unikatową ścieżkę.                                                                           |
+| Podtyp            | String         | Wymagane      | MUSI być czterech znaków kodu "Dane".                                                                                                                                                                                                                         |
+| Schemat             | String         | Wymagane      | MUSI być adres URL lub URN identyfikowanie schemat wiadomości. Komunikaty [SCTE 35] musi to być "urn: scte:scte35:2013a:bin", aby komunikaty wysyłane do klientów HLS i Smooth, Dash zgodne z [SCTE 67]. |
+| trackName          | String         | Wymagane      | MUSI być nazwą ścieżki rozrzedzone. TrackName może służyć do odróżniania wiele strumieni zdarzeń z tego samego schematu. Każdego strumienia zdarzeń unikatowy musi mieć nazwę unikatową ścieżkę.                                                                           |
 | Skala czasu          | Liczba         | Optional (Opcjonalność)      | MUSI być skali czasu ścieżki nadrzędnej.                                                                                                                                                                                                                      |
 
 -------------------------------------

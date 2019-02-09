@@ -4,7 +4,7 @@ description: W tym artykule umożliwiają wskazówki na temat aktualizacji usłu
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a892ebb0-0ea0-4fc8-b715-60347cc5c95b
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 4ab2c58e5a0f9e04d824eeea443a13af7a32617d
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 096372215ae44902c633489d197dc1d8aa60f193
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619660"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983019"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu
+# <a name="update-media-services-after-rolling-storage-access-keys-legacy"></a>Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu (starsza wersja)
 
 Podczas tworzenia nowego konta usługi Azure Media Services (AMS), możesz również monit o wybranie konta usługi Azure Storage, który jest używany do przechowywania zawartości multimedialnej. Można dodać więcej niż jednego konta magazynu, do konta usługi Media Services. W tym artykule przedstawiono sposób rotacja kluczy magazynu. Prezentuje również sposób dodawania konta magazynu do konta usługi media. 
 
@@ -68,7 +68,7 @@ Poniższy przykład pokazuje, jak pobrać konta magazynu, a następnie zsynchron
  
 ## <a name="steps-to-add-storage-accounts-to-your-ams-account"></a>Kroki, aby dodać konta usługi storage z kontem usługi AMS
 
-Następujący artykuł pokazuje, jak dodać konta magazynu do konta usługi AMS: [dołączanie wielu kont magazynu do konta usługi Media Services](meda-services-managing-multiple-storage-accounts.md).
+Następujący artykuł pokazuje, jak dodać konta magazynu do konta usługi AMS: [Dołączanie wielu kont magazynu do konta usługi Media Services](meda-services-managing-multiple-storage-accounts.md).
 
 ## <a name="media-services-learning-paths"></a>Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

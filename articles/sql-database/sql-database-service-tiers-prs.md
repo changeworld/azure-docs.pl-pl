@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: c223b55e8854c9d304354d917e07f4dd7720e72c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/07/2019
+ms.openlocfilehash: aa9f3b42bbbe8255be328240d26ed4b8740cc5f7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507821"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55958494"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Warstwy usług w usłudze Azure SQL Database Premium RS (wersja zapoznawcza) zostanie wycofana — opcje migracji
 
@@ -50,8 +50,8 @@ Dla obciążeń intensywnie korzystających z obliczeń warstwa Premium RS zalec
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|
-|Premium RS 1|Ogólnego przeznaczenia 1 rdzeń wirtualny (Gen 4)|Standard 3|
-|Premium RS 2|Ogólnego przeznaczenia, 2 rdzenie wirtualne (Gen 4)|Standard 4|
+|Premium RS 1|Ogólnego przeznaczenia 1 rdzeń wirtualny (4. generacji)|Standard 3|
+|Premium RS 2|Ogólnego przeznaczenia, 2 rdzenie wirtualne (4. generacji)|Standard 4|
 |Premium RS 4|Ogólnego przeznaczenia 4 rdzenie wirtualne (4. generacji)|Standardowa 6|
 |Premium RS 6|Ogólnego przeznaczenia 6 rdzeni (4. generacji)|Standard 7|
 
@@ -59,8 +59,8 @@ Dla obciążeń intensywnie korzystających z obliczeń warstwa Premium RS zalec
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|
-|Warstwa Premium RS puli 125 jednostek DTU|Ogólnego przeznaczenia 1 rdzeń wirtualny (Gen 4)|Pula w warstwie standardowa 100 jednostek Edtu|
-|Warstwa Premium RS puli 250 jednostek DTU|Ogólnego przeznaczenia, 2 rdzenie wirtualne (Gen 4)|Jednostki Edtu puli standardowej 250|
+|Warstwa Premium RS puli 125 jednostek DTU|Ogólnego przeznaczenia 1 rdzeń wirtualny (4. generacji)|Pula w warstwie standardowa 100 jednostek Edtu|
+|Warstwa Premium RS puli 250 jednostek DTU|Ogólnego przeznaczenia, 2 rdzenie wirtualne (4. generacji)|Jednostki Edtu puli standardowej 250|
 |Warstwa Premium RS puli 500 jednostek DTU|Ogólnego przeznaczenia 4 rdzenie wirtualne (4. generacji)|Jednostki Edtu puli standardowej 500|
 |Warstwa Premium RS puli 1000 jednostek DTU|Ogólnego przeznaczenia 8 rdzeni (4. generacji)|Pula w warstwie standardowa 1000 jednostek Edtu|
 
@@ -70,10 +70,10 @@ Zalecamy przeprowadzenie migracji pojedynczej bazy danych intensywnie korzystaj�
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|
-|Premium RS 1|(Wersja zapoznawcza) 1 na dużą skalę — rdzeń wirtualny (Gen 4) lub Business krytyczne 1 rdzeń wirtualny (Gen 4)|W wersjach Premium 1|
-|Premium RS 2|(Wersja zapoznawcza) W Hiperskali 2 rdzenie wirtualne (Gen 4) lub biznesowe krytyczne 2 rdzenie wirtualne (Gen 4|Premium 2|
-|Premium RS 4|(Wersja zapoznawcza) W Hiperskali 4 rdzenie wirtualne (Gen 4) lub biznesowe krytyczne 4 rdzenie wirtualne (4. generacji)|Premium 4
-|Premium RS 6|(Wersja zapoznawcza) Rdzenie wirtualne w Hiperskali 6 (Gen 4) lub rdzeni wirtualnych 6 krytyczne biznesowych (4. generacji)|Premium 6|
+|Premium RS 1|(Wersja zapoznawcza) 1 na dużą skalę — rdzeń wirtualny (4. generacji) lub Business krytyczne 1 rdzeń wirtualny (4. generacji)|W wersjach Premium 1|
+|Premium RS 2|(Wersja zapoznawcza) W Hiperskali 2 rdzenie wirtualne (4. generacji) lub biznesowe krytyczne 2 rdzenie wirtualne (4. generacji|Premium 2|
+|Premium RS 4|(Wersja zapoznawcza) W Hiperskali 4 rdzenie wirtualne (4. generacji) lub biznesowe krytyczne 4 rdzenie wirtualne (4. generacji)|Premium 4
+|Premium RS 6|(Wersja zapoznawcza) Rdzenie wirtualne w Hiperskali 6 (4. generacji) lub rdzeni wirtualnych 6 krytyczne biznesowych (4. generacji)|Premium 6|
 
 |**Jeśli jesteś obecnie włączone...**|**Migrowanie do porównywalnych oparty na rdzeniach wirtualnych...**|**Migrowanie do porównywalnych oparty na jednostkach DTU...**|
 |---|---|---|

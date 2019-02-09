@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 794c2cf6c52ead465d35d3d551cfe76e87c06787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: b76adda6e09cdce1f94c2d0691cbe7e4cc2b6b50
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237608"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983529"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Wprowadzenie do dostarczania zawartości na żądanie przy użyciu usługi REST
+# <a name="get-started-with-delivering-content-on-demand-using-rest-legacy"></a>Wprowadzenie do dostarczania zawartości na żądanie przy użyciu interfejsu REST (starsza wersja)
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 Ten przewodnik Szybki Start przeprowadzi Cię przez kroki wdrażania aplikacji do dostarczania zawartości wideo na żądanie (VoD) przy użyciu interfejsów API REST usługi Azure Media Services (AMS).
@@ -407,7 +408,7 @@ Jeśli to się powiedzie, jest zwracany następujące czynności:
 
 Po wprowadzane, które mogą być zakodowane zasoby do usługi Media Services, media, transmultipleksacji znakiem wodnym i tak dalej przed dostarczeniem do klientów. Te działania są zaplanowane i uruchamiane w wielu wystąpieniach ról w tle, aby zapewnić wysoką wydajność oraz dostępność. Te działania są nazywane zadaniami, a każde zadanie składa się z niepodzielnych podzadań, które wykonują rzeczywistą pracę w pliku zasobów (Aby uzyskać więcej informacji, zobacz [zadania](https://docs.microsoft.com/rest/api/media/operations/job), [zadań](https://docs.microsoft.com/rest/api/media/operations/task) opisy).
 
-Jak wspomniano wcześniej, podczas pracy za pomocą usługi Azure Media Services jednym z najbardziej typowych scenariuszy jest dostarczanie adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klientów. Usługa Media Services może utworzyć pakiet zestawu plików MP4 do jednej z następujących formatów: HTTP Live Streaming (HLS), Smooth Streaming i MPEG DASH.
+Jak wspomniano wcześniej, podczas pracy za pomocą usługi Azure Media Services jednym z najbardziej typowych scenariuszy jest dostarczanie adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klientów. Usługa Media Services może utworzyć pakiet zestawu plików MP4 z adaptacyjną szybkością transmisji bitów w jednym z następujących formatów: HTTP na żywo przesyłania strumieniowego (HLS), Smooth Streaming i MPEG DASH.
 
 W poniższej sekcji pokazano, jak utworzyć zadanie, które zawiera jedno zadanie kodowania. Zadanie określa transkodowanie pliku mezzanine do zestawu z każdego pliku MP4 z adaptacyjną szybkością transmisji bitów przy użyciu **Media Encoder Standard**. W sekcji przedstawiono również sposób monitorowania zadania postęp przetwarzania. Po zakończeniu zadania będzie możliwe do utworzenia lokalizatorów, które są niezbędne do uzyskiwania dostępu do zasobów.
 
@@ -458,7 +459,7 @@ Poniższy kod żądania identyfikator kodera.
     }
 
 ### <a name="create-a-job"></a>Tworzenie zadania
-Każde zadanie może mieć jedno lub więcej zadań, w zależności od rodzaju przetwarzania, które chcesz osiągnąć. Za pomocą interfejsu API REST, można utworzyć zadania i ich powiązane zadania w jeden z dwóch sposobów: zadania mogą być zdefiniowano w tekście za pomocą właściwości nawigacji zadania na jednostkach zadania lub przetwarzanie wsadowe OData. Zestaw SDK usług Media Services korzysta z przetwarzania wsadowego. Aby zwiększyć czytelność, przykładowe kody w tym artykule, zadania są zdefiniowano w tekście. Aby uzyskać informacji na temat przetwarzania wsadowego, zobacz [przetwarzanie wsadowe Open Data Protocol (OData)](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
+Każde zadanie może mieć jedno lub więcej zadań, w zależności od rodzaju przetwarzania, które chcesz osiągnąć. Za pomocą interfejsu API REST można utworzyć zadań i ich powiązane zadania, w jeden z dwóch sposobów: Zadania mogą być zdefiniowano w tekście za pomocą właściwości nawigacji zadania na jednostkach zadania lub przetwarzanie wsadowe OData. Zestaw SDK usług Media Services korzysta z przetwarzania wsadowego. Aby zwiększyć czytelność, przykładowe kody w tym artykule, zadania są zdefiniowano w tekście. Aby uzyskać informacji na temat przetwarzania wsadowego, zobacz [przetwarzanie wsadowe Open Data Protocol (OData)](http://www.odata.org/documentation/odata-version-3-0/batch-processing/).
 
 Poniższy przykład pokazuje, jak utworzyć i opublikuj zadania przy użyciu jednego, ustawionych przez zadanie do zakodowania filmu w określonym rozwiązania i jakości. Poniższa sekcja dokumentacji zawiera listę wszystkich [zadań wstępne](https://msdn.microsoft.com/library/mt269960) obsługiwane przez procesora Media Encoder Standard.  
 
@@ -692,7 +693,7 @@ Poniższy kod pokazuje, jak żądania elementu zawartości wyjściowej identyfik
 
 ## <a id="publish_get_urls"></a>Publikowanie elementu zawartości i uzyskiwanie przesyłania strumieniowego i pobierania progresywnego adresy URL przy użyciu interfejsu API REST
 
-Aby przesłać strumieniowo lub pobrać element zawartości, należy go najpierw opublikować, tworząc lokalizator. Lokalizatory zapewniają dostęp do plików znajdujących się w elemencie zawartości. Usługa Media Services obsługuje dwa typy lokalizatorów: lokalizatory OnDemandOrigin używane do strumieniowego przesyłania plików multimedialnych (na przykład w formacie MPEG DASH, HLS i Smooth Streaming) oraz lokalizatory sygnatury dostępu współdzielonego (SAS) używane do pobierania plików multimedialnych. 
+Aby przesłać strumieniowo lub pobrać element zawartości, należy go najpierw opublikować, tworząc lokalizator. Lokalizatory zapewniają dostęp do plików znajdujących się w elemencie zawartości. Usługa Media Services obsługuje dwa typy lokalizatorów: Lokalizatory OnDemandOrigin używane do przesyłania strumieniowego multimediów (na przykład MPEG DASH, HLS lub Smooth Streaming) oraz lokalizatory sygnatury dostępu Współdzielonego, używane do pobierania plików multimedialnych. 
 
 Po utworzeniu lokalizatorów można tworzyć adresy URL, które są używane do przesyłania strumieniowego lub pobierania plików.
 
@@ -915,7 +916,7 @@ Do przesyłania strumieniowego zawartości wideo użyj [odtwarzacza usługi Azur
 
 Aby przetestować pobieranie progresywne, wklej adres URL do przeglądarki (na przykład programu Internet Explorer, Chrome, Safari).
 
-## <a name="next-steps-media-services-learning-paths"></a>Następne kroki: ścieżki szkoleniowe dotyczące usługi Media Services
+## <a name="next-steps-media-services-learning-paths"></a>Następne kroki: Ścieżki szkoleniowe dotyczące usługi Media Services
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Przekazywanie opinii

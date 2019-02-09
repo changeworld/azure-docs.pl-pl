@@ -3,8 +3,8 @@ title: Problem podczas konfigurowania federacyjnego logowania jednokrotnego dla 
 description: Niektóre typowe problemy, które można napotkać podczas konfigurowania federacyjnego logowania jednokrotnego do aplikacji SAML niestandardowego, który nie znajduje się w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
-ms.openlocfilehash: c3770f876fe6031ffe266dcf86046fbab631a515
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 41e5790bea0328fabe4ca871dbc0b7d305e513b9
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168230"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963458"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>Problem podczas konfigurowania federacyjnego logowania jednokrotnego dla aplikacji spoza galerii
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 968c8aa74a35bf753d92e7c417aaec2a1361f425
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0caa88939e263aa5d18460144893cdbce72f10ec
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467972"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961537"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Magazyn dysków dla maszyn wirtualnych Windows Azure — informacje
 
@@ -34,7 +34,7 @@ Do każdej maszyny wirtualnej ma jeden dysk dołączony systemu operacyjnego. Ma
 
 ### <a name="temporary-disk"></a>Dysk tymczasowy
 
-Każda maszyna wirtualna zawiera dyski tymczasowe. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) lub po użytkownik [ponowne wdrożenie maszyny Wirtualnej](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej utrwalać danych na dysku tymczasowego. Jednakże istnieją przypadki, w którym dane mogą nie będzie się powtarzać, takie jak przeniesienie do nowego hosta. W związku z tym wszystkie dane na dysku tymczasowego nie powinien być dane, które mają kluczowe znaczenie dla systemu.
+Każda maszyna wirtualna zawiera dyski tymczasowe. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) lub po użytkownik [ponowne wdrożenie maszyny Wirtualnej](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej utrwalać danych na dysku tymczasowego. Jednakże istnieją przypadki, w którym dane mogą nie będzie się powtarzać, takie jak przeniesienie do nowego hosta. W związku z tym wszystkie dane na dysku tymczasowego nie powinien być dane, które mają kluczowe znaczenie dla systemu. Podczas projektowania aplikacji, która używa dysku tymczasowego jako pamięci podręcznej, aby zwiększyć wydajność aplikacji, założono w projekcie, że pamięć podręczna danych na dysku tymczasowym zostaną utracone podczas ponownego uruchomienia komputera i aplikację czasu Odbuduj pamięć podręczną danych przed podobny Osiągnięto wydajności.
 
 Dysk tymczasowy jest oznaczony jako dysku D: domyślnie i używany do przechowywania pagefile.sys. Aby ponownie zamapować dysk inną literę dysku, zobacz [zmienić literę dysku tymczasowego Windows](change-drive-letter.md). Rozmiar dysku tymczasowego zależy od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [maszyn wirtualnych rozmiary dla Windows](sizes.md).
 

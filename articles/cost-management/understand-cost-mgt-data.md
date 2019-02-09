@@ -10,14 +10,14 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 6a888df453a2626756fa47115ef97d04be701265
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892865"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981761"
 ---
-# <a name="understand-cost-management-data"></a>Zrozumienie danych rozwiązania Cost Management
+# <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
 Ten artykuł pomoże Ci lepiej zrozumieć, jakie dane znajdują się w usłudze Azure Cost Management. I wyjaśniono, jak często dane są przetwarzane, zebranych, jak pokazano i zamknięte. Są naliczane za użycie systemu Azure co miesiąc. Jednak do typu Twojej subskrypcji platformy Azure Określa, kiedy kończy się miesiąca rozliczeniowego. Jak często Cost Management odbiera użycia, który różni się w danych na podstawie różnych czynników. Takie czynniki obejmują, jak długo trwa przetwarzanie danych i jak często usług platformy Azure emitować użycia systemów rozliczeniowych.
 
@@ -28,14 +28,13 @@ Poniższe informacje zawierają aktualnie obsługiwany [platforma Microsoft Azur
 | Kategoria  | **Nazwa oferty** | **Numer oferty** |
 | --- | --- | --- |
 | **Azure (Niemcy)** | [Płatność za rzeczywiste użycie platformy Azure (Niemcy)](https://azure.microsoft.com/offers/ms-azr-de-0003p/) | MS-AZR-DE-0003P |
-|**Platforma Azure Government**|Azure Government — przedsiębiorstwa|MS-AZR-USGOV-0017P|
-| **Umowy Enterprise Agreement (EA)**| Tworzenie i testowanie (przedsiębiorstwo) | MS-AZR-0148P |
+| **Platforma Azure Government** | Azure Government — przedsiębiorstwa | MS-AZR-USGOV-0017P |
+| **Umowy Enterprise Agreement (EA)** | Tworzenie i testowanie (przedsiębiorstwo) | MS-AZR-0148P |
 | **Umowy Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade/) | MS-AZR-0017P |
 | **Sieć Microsoft Developer Network (MSDN)** | [Platformy MSDN](https://azure.microsoft.com/offers/ms-azr-0062p/) | MS-AZR-0062P |
 | **Pay-As-You-Go** | [Pay-As-You-Go](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
 | **Pay-As-You-Go** | [Płatność za rzeczywiste użycie, tworzenie i testowanie](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
 | **Pay-As-You-Go** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
-| **Pay-As-You-Go** | [Dostęp sponsorowany Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **Pay-As-You-Go** | [Bezpłatna wersja próbna](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
 | **Pay-As-You-Go** | [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
 | **Pay-As-You-Go** | [Oferta Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/) | MS-AZR-0170P |
@@ -54,6 +53,7 @@ W poniższej tabeli przedstawiono oferty nieobsługiwany.
 | **Dostawca rozwiązań w chmurze (CSP)** | Azure Government — CSP | MS-AZR-USGOV-0145P |
 | **Dostawca rozwiązań w chmurze (CSP)** | Platforma Azure (Niemcy) w programie CSP dla usługi Microsoft Cloud (Niemcy) | MS-AZR-DE-0145P |
 | **Pay-As-You-Go** | Azure for Students Starter | MS-AZR-0144P |
+| **Pay-As-You-Go** | [Dostęp sponsorowany Microsoft Azure](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **Plany pomocy technicznej** | Pomoc techniczna Standard | MS-AZR-0041P |
 | **Plany pomocy technicznej** | Pomoc techniczna Professional Direct | MS-AZR-0042P |
 | **Plany pomocy technicznej** | Pomoc techniczna Developer | MS-AZR-0043P |
@@ -69,17 +69,6 @@ Jeśli nie widzisz danych w ramach subskrypcji i chcesz określić, jeśli Twoja
 ## <a name="costs-included-in-cost-management"></a>Koszty objęte Cost Management
 
 W poniższych tabelach przedstawiono dane, które ma włączone lub nie znajduje się w Cost Management.
-
-**Typy kont**
-
-| **Uwzględnione** | **Niedołączone** |
-| --- | --- |
-| Enterprise Agreement (EA) | W chmurze dostawcy rozwiązań (CSP) — Aby uzyskać więcej informacji, zobacz [Przegląd Centrum partnerskiego](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview). |
-| Płatność za rzeczywiste użycie (PAYG) |   |
-| Tworzenie i testowanie aplikacji |   |
-| Wersja bezpłatna i próbna |   |
-| Partner Network |   |
-| Licencja Azure w ramach programu licencjonowania Open | &nbsp;  |
 
 **Dane kosztów i użycia**
 

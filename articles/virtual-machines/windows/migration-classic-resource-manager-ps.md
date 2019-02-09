@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: e1144611c68e8a3c450f8017388cfa84629f9921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5e905168ab2c2f10bcfadfc605fdcaa800e70332
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256497"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982011"
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Migrację zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager przy użyciu programu Azure PowerShell
 Te kroki pokazują, jak używać poleceń programu Azure PowerShell do migracji infrastruktury jako zasoby usługi (IaaS) z klasycznego modelu wdrażania do modelu wdrażania usługi Azure Resource Manager.
@@ -36,6 +36,8 @@ W tym miejscu jest blokowy do identyfikowania zamówienia, w którym kroki nale�
 
 ![Zrzut ekranu przedstawiający kroki migracji](media/migration-classic-resource-manager/migration-flow.png)
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="step-1-plan-for-migration"></a>Krok 1: Planowanie migracji
 Poniżej przedstawiono kilka najlepszych rozwiązań, które są zalecane, ponieważ oceny migracji zasobów IaaS z klasycznego do usługi Resource Manager:
 
@@ -48,7 +50,7 @@ Poniżej przedstawiono kilka najlepszych rozwiązań, które są zalecane, ponie
 >Nie można zmigrować automatycznie bramy usługi ExpressRoute, nawiązywania połączenia z obwodów usługi ExpressRoute w innej subskrypcji. W takiej sytuacji należy usunąć bramę usługi ExpressRoute, migrację sieci wirtualnej i ponownie utworzyć bramę. Zobacz [migracji usługi ExpressRoute circuits i skojarzonych sieci wirtualnych z klasycznego modelu wdrażania usługi Resource Manager](../../expressroute/expressroute-migration-classic-resource-manager.md) Aby uzyskać więcej informacji.
 
 ## <a name="step-2-install-the-latest-version-of-azure-powershell"></a>Krok 2: Zainstaluj najnowszą wersję programu Azure PowerShell
-Istnieją dwie główne opcje instalacji programu Azure PowerShell: [galerii programu PowerShell](https://www.powershellgallery.com/profiles/azure-sdk/) lub [Instalatora platformy sieci Web (WebPI)](https://aka.ms/webpi-azps). WebPI odbiera comiesięcznych aktualizacji. Galeria programu PowerShell otrzymywać aktualizacje w sposób ciągły. Ten artykuł jest oparty na Azure PowerShell w wersji 2.1.0.
+Istnieją dwie główne opcje instalacji programu Azure PowerShell: [Galeria programu PowerShell](https://www.powershellgallery.com/profiles/azure-sdk/) lub [sieci Web Platform Installer (WebPI)](https://aka.ms/webpi-azps). WebPI odbiera comiesięcznych aktualizacji. Galeria programu PowerShell otrzymywać aktualizacje w sposób ciągły. Ten artykuł jest oparty na Azure PowerShell w wersji 2.1.0.
 
 Aby uzyskać instrukcje dotyczące instalacji, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
@@ -69,19 +71,19 @@ Po pierwsze uruchom wiersz polecenia programu PowerShell. W przypadku migracji n
 Zaloguj się do swojego konta, dla modelu usługi Resource Manager.
 
 ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
 ```
 
 Pobierz dostępne subskrypcje przy użyciu następującego polecenia:
 
 ```powershell
-    Get-AzureRMSubscription | Sort Name | Select Name
+    Get-AzSubscription | Sort Name | Select Name
 ```
 
 Ustaw subskrypcję platformy Azure dla bieżącej sesji. W tym przykładzie ustawia domyślną nazwę subskrypcji **moją subskrypcję Azure**. Przykładowa nazwa subskrypcji należy zastąpić własnymi.
 
 ```powershell
-    Select-AzureRmSubscription –SubscriptionName "My Azure Subscription"
+    Select-AzSubscription –SubscriptionName "My Azure Subscription"
 ```
 
 > [!NOTE]
@@ -92,13 +94,13 @@ Ustaw subskrypcję platformy Azure dla bieżącej sesji. W tym przykładzie usta
 Zarejestruj u dostawcy zasobów migracji za pomocą następującego polecenia:
 
 ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+    Register-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
 Poczekaj pięć minut rejestracji zakończyć. Aby sprawdzić stan zatwierdzenia, za pomocą następującego polecenia:
 
 ```powershell
-    Get-AzureRmResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
+    Get-AzResourceProvider -ProviderNamespace Microsoft.ClassicInfrastructureMigrate
 ```
 
 Upewnij się, że RegistrationState `Registered` przed kontynuowaniem.
@@ -123,16 +125,16 @@ Ustaw subskrypcję platformy Azure dla bieżącej sesji. W tym przykładzie usta
 
 <br>
 
-## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Krok 5: Upewnij się, że masz wystarczającej liczby procesorów wirtualnych maszyny wirtualnej usługi Resource Manager platformy Azure w regionie platformy Azure w bieżącym wdrożeniu lub sieci Wirtualnej
+## <a name="step-5-make-sure-you-have-enough-azure-resource-manager-virtual-machine-vcpus-in-the-azure-region-of-your-current-deployment-or-vnet"></a>Krok 5. Upewnij się, że masz wystarczającej liczby procesorów wirtualnych maszyny wirtualnej usługi Resource Manager platformy Azure w regionie platformy Azure w bieżącym wdrożeniu lub sieci Wirtualnej
 Można użyć następującego polecenia programu PowerShell, aby sprawdzić bieżącą liczbę procesorów wirtualnych, które masz w usłudze Azure Resource Manager. Aby dowiedzieć się więcej na temat limitów przydziału procesorów wirtualnych, zobacz [limity i usługi Azure Resource Manager](../../azure-subscription-service-limits.md#limits-and-the-azure-resource-manager).
 
 W tym przykładzie, sprawdza dostępność **zachodnie stany USA** regionu. Przykładowa nazwa regionu Zastąp własnymi.
 
 ```powershell
-Get-AzureRmVMUsage -Location "West US"
+Get-AzVMUsage -Location "West US"
 ```
 
-## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Krok 6. uruchamianie poleceń, aby przeprowadzić migrację zasobów IaaS
+## <a name="step-6-run-commands-to-migrate-your-iaas-resources"></a>Krok 6: Uruchamianie poleceń, aby przeprowadzić migrację zasobów IaaS
 * [Migrowanie maszyn wirtualnych w usłudze w chmurze (a nie w sieci wirtualnej)](#step-61-option-1---migrate-virtual-machines-in-a-cloud-service-not-in-a-virtual-network)
 * [Migrowanie maszyn wirtualnych w sieci wirtualnej](#step-61-option-2---migrate-virtual-machines-in-a-virtual-network)
 * [Migrację konta magazynu](#step-62-migrate-a-storage-account)

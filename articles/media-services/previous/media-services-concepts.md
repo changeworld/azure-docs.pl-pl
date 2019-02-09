@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/08/2018
 ms.author: juliako
-ms.openlocfilehash: 06c6451a7c8532b32a1c130f6b71df97857d2e7f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: b3805cf46fe0fbf2461ab11959de101d8d4154f0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353709"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984600"
 ---
-# <a name="azure-media-services-concepts"></a>Pojęcia dotyczące usługi Azure Media Services
+# <a name="azure-media-services-concepts-legacy"></a>Pojęcia dotyczące usługi Media Services usługi Azure (starsza wersja)
+
 Ten temat zawiera przegląd najważniejszych założeń usługi Media Services.
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Zasoby i magazynu
@@ -74,7 +75,7 @@ Kontener obiektów blob zawiera grupowanie zestawu obiektów blob. Kontenery obi
 ### <a name="a-idlocatorslocators"></a><a id="locators"/>Lokalizatory
 [Lokalizator](https://docs.microsoft.com/rest/api/media/operations/locator)s zapewnia punkt wejścia, dostępu do plików znajdujących się w zasobie. Zasady dostępu jest używana do definiowania uprawnień i czas trwania, że klient ma dostęp do danego zasobu. Lokalizatory może mieć wiele-do jednej relacji z zasad dostępu w taki sposób, że różne lokalizatorów można udostępnić godziny rozpoczęcia różnych i typów połączeń do różnych klientów podczas za pomocą tego samego uprawnienia i ustawienia czasu trwania; Jednak ze względu na ograniczenia zasad dostępu współdzielonego ustawione przez usługi magazynu platformy Azure, nie może mieć więcej niż pięć unikatowe lokalizatory skojarzone z danym elementem zawartości w tym samym czasie. 
 
-Usługa Media Services obsługuje dwa typy lokalizatorów: lokalizatory OnDemandOrigin używane do przesyłania strumieniowego (na przykład MPEG DASH, HLS lub Smooth Streaming) lub pobrać progresywnie multimediów oraz lokalizatory adresu URL sygnatury dostępu Współdzielonego umożliwia przekazywanie lub pobieranie to\from plików multimediów usługi Azure storage. 
+Usługa Media Services obsługuje dwa typy lokalizatorów: Lokalizatory OnDemandOrigin używane do przesyłania strumieniowego (na przykład MPEG DASH, HLS lub Smooth Streaming) lub pobrać progresywnie multimediów oraz adres URL sygnatury dostępu Współdzielonego lokalizatory umożliwia przekazywanie lub pobieranie to\from plików multimediów usługi Azure storage. 
 
 >[!NOTE]
 >Listy uprawnień (AccessPermissions.List) nie stosuje się, tworząc Lokalizator OnDemandOrigin. 
@@ -107,7 +108,7 @@ Aby uzyskać informacje o obsługiwanych koderów, zobacz [koderów](media-servi
 ## <a name="live-streaming"></a>Przesyłanie strumieniowe na żywo
 W usłudze Azure Media Services kanał reprezentuje potok przetwarzania zawartości transmisji strumieniowej na żywo. Kanał odbiera strumieni danych wejściowych w jeden z dwóch sposobów:
 
-* Lokalny koder na żywo wysyła różnych szybkościach transmisji bitów RTMP lub Smooth Streaming (pofragmentowany plik MP4) do kanału. Można użyć następujących koderów na żywo, które zwracają Smooth Streaming o różnych szybkościach transmisji bitów: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco i Elemental. Następujące kodery na żywo dane wyjściowe RTMP: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision i Transkodery koderów. Pozyskiwane strumienie są przekazywane za pośrednictwem kanałów bez dalszego transkodowania i kodowania. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
+* Lokalny koder na żywo wysyła różnych szybkościach transmisji bitów RTMP lub Smooth Streaming (pofragmentowany plik MP4) do kanału. Można użyć następujących koderów na żywo, które zwracają Smooth Streaming o różnych szybkościach transmisji bitów: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco i Elemental. Następujące kodery na żywo danych wyjściowych RTMP: Kodery Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision i Tricaster. Pozyskiwane strumienie są przekazywane za pośrednictwem kanałów bez dalszego transkodowania i kodowania. Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 * Strumień o pojedynczej szybkości transmisji bitów (w jednym z następujących formatów: RTMP lub Smooth Streaming (pofragmentowany plik MP4)) są wysyłane do kanału, który jest skonfigurowany do przeprowadzania kodowania na żywo za pomocą usługi Media Services. Kanał wykonuje następnie kodowanie na żywo przychodzącego strumienia o pojedynczej szybkości transmisji bitów do postaci strumienia wideo o różnych szybkościach transmisji bitów (adaptacyjnej szybkości transmisji bitów). Po odebraniu żądania usługa Media Services dostarcza strumień do klientów.
 
 ### <a name="channel"></a>Kanał

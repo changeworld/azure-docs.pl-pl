@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/11/2016
+ms.date: 02/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189936"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960687"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Rozwiązywanie problemów z analizą w usłudze Application Insights
 Problemy z [analizy usługi Application Insights](analytics.md)? Zacznij tutaj. Analytics to zaawansowane wyszukiwanie narzędzia usługi Azure Application Insights.
@@ -36,7 +36,7 @@ Wyłącz rozszerzenia, lub użyj innej przeglądarki.
 
 Wystąpił błąd wewnętrzny podczas portalu środowiska uruchomieniowego nieobsługiwany wyjątek.
 
-* Wyczyść pamięć podręczną przeglądarki. 
+* Wyczyść pamięć podręczną przeglądarki.
 
 ## <a name="e-b"></a>403 ... Spróbuj załadować ponownie
 ![403 ... Spróbuj załadować ponownie](media/analytics-troubleshooting/020.png)
@@ -71,7 +71,7 @@ Wystąpił błąd (podczas uwierzytelniania lub podczas generowania tokenu dost�
 ## <a name="e-d"></a>404 ... Nie znaleziono zasobu
 ![404 ... nie można odnaleźć zasobu](media/analytics-troubleshooting/040.png)
 
-Zasób aplikacji został usunięty z usługi Application Insights i t nie jest dostępna już. Może to nastąpić, jeśli adres URL został zapisany do strony usługi Analytics.
+Zasób aplikacji został usunięty z usługi Application Insights i nie jest już dostępna. Może to nastąpić, jeśli adres URL został zapisany do strony usługi Analytics.
 
 ## <a name="e-e"></a>403 ... Brak autoryzacji
 ![403 ... nieautoryzowane](media/analytics-troubleshooting/050.png)
@@ -81,11 +81,11 @@ Nie masz uprawnień do otwarcia tej aplikacji w usłudze Analytics.
 * Czy został wyświetlony link od kogoś innego? Poproś go, aby upewnić się, że jesteś w [czytelnicy lub współautorzy dla tej grupy zasobów](../../azure-monitor/app/resources-roles-access-control.md).
 * Czy zapisać link przy użyciu innych poświadczeń? Otwórz [witryny Azure portal](https://portal.azure.com), wyloguj się, a następnie spróbuj ten link ponownie, podając poprawne poświadczenia.
 
-## <a name="html-storage"></a>403 ... Magazyn HTML5
+## <a name="html-storage"></a>403 ... HTML5 Storage
 Nasz portal używa HTML5 localStorage i sessionStorage.
 
 * Dla programu Chrome: Ustawienia prywatności, ustawienia zawartości.
-* Program Internet Explorer: Opcje internetowe, karta Zaawansowane zabezpieczenia, Włącz magazyn modelu DOM
+* Internet Explorer: Opcje internetowe, karta Zaawansowane zabezpieczenia, Włącz magazyn modelu DOM
 
 ![403 ... Spróbuj włączyć magazyn HTML5](media/analytics-troubleshooting/060.png)
 

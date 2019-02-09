@@ -3,9 +3,8 @@ title: Zarządzanie dostępem do aplikacji przy użyciu usługi Azure AD | Dokum
 description: W tym artykule opisano, jak usługi Azure Active Directory umożliwia organizacjom określić aplikacje, do których każdy użytkownik ma dostęp.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
-ms.author: barbkess
-ms.openlocfilehash: 0c8450523890430587bedebbcd77ceddd8a03e42
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: 1be695384ff6828561fe8e1e858d052cba302dc0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183394"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982703"
 ---
 # <a name="managing-access-to-apps"></a>Zarządzanie dostępem do aplikacji
 Ciągły dostęp do zarządzania, użycie oceny i raportowania nadal żądanie po aplikacji jest zintegrowany system obsługi tożsamości organizacji. W wielu przypadkach administratorzy IT lub pomocą techniczną wymagać trwającą aktywną rolę w zarządzaniu dostępem do aplikacji. Czasami przydziału jest wykonywane przez zespół IT ogólne lub działów. Często decyzja przydziału jest przeznaczona do należy delegować domenę do osoba podejmująca decyzje biznesowe, wymaganie zatwierdzenia przed IT sprawia, że przypisanie.  Innym organizacjom inwestowanie w integracji z istniejących automatycznych tożsamościami i dostępem system zarządzania, takich jak kontrola dostępu oparta na rolach (RBAC) lub atrybutu-Based Access Control (ABAC). Integracji i programowania reguły zwykle wyspecjalizowanych i drogich. Monitorowania i raportowania w obu podejścia do zarządzania jest inwestycji oddzielne kosztownych i złożonych.
@@ -39,7 +38,7 @@ Za pomocą tych trybów dwóch przypisania, Administratorzy mogą osiągnąć ws
 Za pomocą usługi Azure AD użycia i przypisanie raportowania jest w pełni zintegrowana, dzięki czemu nawet administratorzy łatwo sporządzić raport na temat stanu przypisania, błędy przypisania i nawet użycia.
 
 ## <a name="complex-application-assignment-with-azure-ad"></a>Przypisanie aplikacji złożonych z usługą Azure AD
-Rozważmy aplikację, takich jak Salesforce. W wielu organizacjach Salesforce jest używany głównie przez organizacje sprzedaży i marketingu. Często członków zespołu ds. marketingu wysoce ma uprzywilejowany dostęp do usługi Salesforce, gdy członkowie zespołu sprzedaży mają ograniczony dostęp. W wielu przypadkach szerokiego populacji pracowników przetwarzających informacje ma ograniczony dostęp do aplikacji. Wyjątki od tych reguł skomplikować. Często jest prawa poszczególnych zespoły kierownicze marketingu i sprzedaży, aby udzielić użytkownikowi dostępu lub zmień ich ról, niezależnie od tych ogólnych reguł.
+Rozważmy aplikację, takich jak Salesforce. W wielu organizacjach Salesforce jest używany głównie przez zespoły sprzedaży i marketingu. Często członków zespołu ds. marketingu wysoce ma uprzywilejowany dostęp do usługi Salesforce, gdy członkowie zespołu sprzedaży mają ograniczony dostęp. W wielu przypadkach szerokiego populacji pracowników przetwarzających informacje ma ograniczony dostęp do aplikacji. Wyjątki od tych reguł skomplikować. Często jest prawa poszczególnych zespoły kierownicze marketingu i sprzedaży, aby udzielić użytkownikowi dostępu lub zmień ich ról, niezależnie od tych ogólnych reguł.
 
 Z usługą Azure AD aplikacji, takich jak Salesforce, można wstępnie skonfigurowane dla logowania jednokrotnego (SSO) i automatyczną aprowizację. Gdy aplikacja jest skonfigurowana, Administrator może przejąć Akcja jednorazowa, aby utworzyć i przypisać odpowiednie grupy. W tym przykładzie administrator można wykonać następujące przypisania:
 
@@ -47,7 +46,7 @@ Z usługą Azure AD aplikacji, takich jak Salesforce, można wstępnie skonfigur
   
   * Wszyscy członkowie grupy marketing, może zostać przypisana do roli "marketing" w usłudze Salesforce
   * Wszyscy członkowie zespołu sprzedaży, które grupy zostanie przypisana do roli "terminy sprzedaż" w usłudze Salesforce. Dalsze dopracowanie można użyć wielu grup, które reprezentują regionalnych zespołów sprzedaży, przypisane do różnych ról usługi Salesforce.
-* Aby włączyć mechanizm wyjątków, można utworzyć grupy samoobsługi dla każdej roli. Na przykład "Salesforce marketingowych wyjątek" grupy tworzyć jako grupa samoobsługi. Grupy można przypisać do marketingu rola usługi Salesforce i zespołu ds. marketingu kierownictwo może się właścicieli. Członkowie zespołu ds. marketingu kierownictwo może dodać lub usunąć użytkowników, ustawić zasady dołączania lub nawet zatwierdzenia lub odmowy żądania dołączenia do poszczególnych użytkowników. Ten mechanizm jest obsługiwany za pośrednictwem informacji procesu roboczego odpowiednie środowisko, które wymagają specjalistycznego szkolenia dla właścicieli i członków.
+* Aby włączyć mechanizm wyjątków, można utworzyć grupy samoobsługi dla każdej roli. Na przykład "Salesforce marketingowych wyjątek" grupy tworzyć jako grupa samoobsługi. Grupy można przypisać do marketingu rola usługi Salesforce i zespołu ds. marketingu kierownictwo może się właściciela. Członkowie zespołu ds. marketingu kierownictwo może dodać lub usunąć użytkowników, ustawić zasady dołączania lub nawet zatwierdzenia lub odmowy żądania dołączenia do poszczególnych użytkowników. Ten mechanizm jest obsługiwany za pośrednictwem informacji procesu roboczego odpowiednie środowisko, które wymagają specjalistycznego szkolenia dla właścicieli i członków.
 
 W tym przypadku wszystkich przypisanych użytkowników będzie automatycznie aprowizowane do usługi Salesforce, gdy są one dodawane do różnych grup, ich przypisanie roli może zostać zaktualizowane w usłudze Salesforce. Użytkownicy będą mogli odnaleźć i dostęp do usługi Salesforce, za pomocą panelu dostępu do aplikacji firmy Microsoft, klientów sieci web pakietu Office, lub nawet przechodząc do ich organizacji strony logowania usługi Salesforce. Administratorzy będzie można łatwo wyświetlić stan użycia i przydziałów za pomocą raportowania usługi Azure AD.
 

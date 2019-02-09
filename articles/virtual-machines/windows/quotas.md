@@ -15,24 +15,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: c766303920913a3ed6e654b3f9b29a0b99bb012a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 92fee850b6ba013c759d3441219f1946a0faedb3
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041279"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984146"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Limity przydziału procesorów wirtualnych maszyny wirtualnej
 
 Limity przydziału procesorów wirtualnych dla maszyn wirtualnych i zestawów skalowania maszyn wirtualnych są rozmieszczone w dwóch warstwach dla każdej subskrypcji, w każdym regionie. Pierwsza warstwa jest łączna liczba procesorów wirtualnych Vcpu, a druga warstwa jest różnych rdzeni maszyn wirtualnych rozmiar rodziny takich jak seria D procesorów wirtualnych Vcpu. Zawsze, gdy nowa maszyna wirtualna jest wdrożona procesorów wirtualnych dla maszyny Wirtualnej nie może przekraczać limit przydziału procesorów wirtualnych dla rodziny rozmiaru maszyny Wirtualnej lub limitu przydziału łączna liczba procesorów wirtualnych w regionalnych. Jeśli jedno z tych limitów przydziału zostaną przekroczone, wdrażanie maszyny Wirtualnej będzie niemożliwe. Istnieje również limit przydziału dla całkowitej liczby maszyn wirtualnych w regionie. Informacji dotyczących każdej z tych limitów przydziału można zobaczyć w **użycie i przydziały** części **subskrypcji** strony w [witryny Azure portal](https://portal.azure.com), lub można wyszukać wartości za pomocą Program PowerShell.
 
+ [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)] 
  
 ## <a name="check-usage"></a>Sprawdzanie użycia
 
-Możesz użyć [Get-AzureRmVMUsage](/powershell/module/azurerm.compute/get-azurermvmusage) polecenia cmdlet, aby sprawdzić użycie przydziału.
+Możesz użyć [Get AzVMUsage](https://docs.microsoft.com/powershell/module/az.compute/get-azvmusage) polecenia cmdlet, aby sprawdzić użycie przydziału.
 
 ```azurepowershell-interactive
-Get-AzureRmVMUsage -Location "East US"
+Get-AzVMUsage -Location "East US"
 ```
 
 Dane wyjściowe będą wyglądać następująco:

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 2e5838046cdb60023495c7e9e111506c333cecc7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f19693853672b6274265c95b851f478b4f3ef4a2
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102400"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961894"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Uaktualnianie i aktualizowanie klastra usługi Azure Service Fabric
 
@@ -27,7 +27,7 @@ Dla każdego nowoczesnego systemu projektowanie pod kątem możliwość jest klu
 
 ## <a name="controlling-the-fabric-version-that-runs-on-your-cluster"></a>Kontrolowanie wersja sieci szkieletowej, która działa w klastrze
 
-Upewnij się, że utrzymywania klastra usługi zawsze uruchomiona wersja obsługiwana w sieci szkieletowej. Gdy firma Microsoft ogłaszamy wydanie nowej wersji usługi Service fabric, poprzednia wersja jest oznaczony do zakończenia wsparcia po co najmniej 60 dni od tego dnia. Nowe wersje są ogłaszane na blogu zespołu usługi Service fabric. Nowa wersja jest dostępna dla wybrany.
+Upewnij się zachować klaster [obsługiwana wersja sieci szkieletowej](service-fabric-versions.md) zawsze. Gdy firma Microsoft ogłaszamy wydanie nowej wersji usługi Service fabric, poprzednia wersja jest oznaczony do zakończenia wsparcia po co najmniej 60 dni od tego dnia. Nowe wersje są ogłaszane na blogu zespołu usługi Service fabric. Nowa wersja jest dostępna dla wybrany.
 
 14 dni przed wygaśnięciem wersji, którą klaster działa, zdarzenie kondycji jest generowany tak, że przełączenie klastra w wskazuje ostrzegawczy stan kondycji. Klaster będzie pozostawał w stanie ostrzeżenia, dopóki nie można uaktualnić do wersji obsługiwanej sieci szkieletowej.
 

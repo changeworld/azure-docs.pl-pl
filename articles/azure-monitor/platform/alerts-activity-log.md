@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 2b90457ed939999b5163078750650c92a3516cca
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 17a7b0e0ee76490ef43fb869260dceef83cbd124
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816581"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984498"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -203,20 +203,28 @@ Przykładowy kod json powyżej, można zapisać jako (np.) sampleActivityLogAler
 [Usługa Azure Monitor — interfejs API alertów dziennika aktywności](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.
 
 ## <a name="powershell"></a>PowerShell
-Przedstawione poniżej użycia za pomocą polecenia cmdlet programu PowerShell usługi Resource Manager platformy Azure, w przykładzie przedstawionym wcześniej szablon zasobu (sampleActivityLogAlert.json) w sekcji zasobów szablonu:
-```powershell
-New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
-```
-Którym sampleActivityLogAlert.parameters.json ma wartości podanych dla parametrów wymaganych do utworzenia reguły alertu.
+
+Alerty dziennika aktywności są wyposażone w dedykowane dostępnych poleceń cmdlet programu PowerShell:
+
+- [Set-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermactivitylogalert): Aby utworzyć lub zaktualizować istniejący zasób reguły alertu dziennika aktywności
+- [Get-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermactivitylogalert): Aby pobrać jeden lub więcej zasobów reguły alertu dziennika aktywności
+- [Remove-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/remove-azurermactivitylogalert): Aby usunąć zasób reguły alertu dziennika aktywności o potwierdzenie przez użytkownika
+- [Enable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/enable-azurermactivitylogalert): Aby włączyć istniejącego zasobu reguły alertu dziennika aktywności
+- [Disable-AzureRmActivityLogAlert](https://docs.microsoft.com/powershell/module/azurerm.insights/disable-azurermactivitylogalert): Aby wyłączyć istniejącego zasobu reguły alertu dziennika aktywności
 
 ## <a name="cli"></a>Interfejs wiersza polecenia
-Przedstawione poniżej użycia za pomocą polecenia usługi Azure Resource Manager w interfejsie wiersza polecenia platformy Azure w przykładzie przedstawionym wcześniej szablon zasobu (sampleActivityLogAlert.json) w sekcji zasobów szablonu:
 
-```azurecli
-az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json
-```
-*SampleActivityLogAlert.parameters.json* plik zawiera wartości podanych dla parametrów wymaganych do utworzenia reguły alertu.
+Polecenia wiersza polecenia platformy Azure w ramach zestawu w wersji dedykowanej [alert dziennika aktywności monitora az](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert) są dostępne do zarządzania reguł alertów dzienników aktywności.
 
+Aby utworzyć nową regułę alertu dziennika aktywności, należy użyć w następującej kolejności:
+
+1. [Utwórz alert dziennika aktywności monitora az](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-create): Tworzenie nowego zasobu reguły alertu dziennika aktywności
+1. [zakres alertu dziennika aktywności monitora az](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/scope): Dodaj zakres dla reguł alertów dzienników utworzonego działania
+1. [AZ monitor dziennika aktywności alertu — grupy akcji](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert/action-group): Dodaj grupę akcji do reguł alertów dzienników aktywności
+
+Do pobrania jednego działania reguły alertu zasób dziennika, polecenia wiersza polecenia platformy Azure [Pokaż alertu dziennika aktywności monitora az](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
+) mogą być używane. W przypadku wyświetlania wszystkich zasobów reguły alertu dziennika aktywności w grupie zasobów, użyj [Lista alertów dziennika aktywności az monitor](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
+Zasoby reguły alertu dziennika aktywności można usunąć za pomocą polecenia interfejsu wiersza polecenia Azure [Usuwanie alertu dziennika aktywności az monitor](https://docs.microsoft.com/en-us/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

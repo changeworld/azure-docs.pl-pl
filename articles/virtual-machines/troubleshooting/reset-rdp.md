@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 77eb372bbe3647e03919aae21087d3270c22148a
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 875f2d9dbbece4e9587462c6e8bdb2b2d8536c86
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506562"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979891"
 ---
 # <a name="reset-remote-desktop-services-or-its-administrator-password-in-a-windows-vm"></a>Resetowanie usług pulpitu zdalnego lub jego hasło administratora na maszynie wirtualnej Windows
 Jeśli nie możesz połączyć z maszyną wirtualną (VM) Windows, możesz zresetować hasło administratora lokalnego lub zresetowanie konfiguracji usług pulpitu zdalnego (nie obsługiwany na kontrolerach domeny Windows). Możesz zresetować hasło w witrynie Azure Portal lub za pośrednictwem rozszerzenia VM Access w programie Azure PowerShell. Po zalogowaniu się na maszynie wirtualnej zresetuj hasło administratora lokalnego.  
@@ -54,11 +54,11 @@ Najpierw zaloguj się do [witryny Azure portal](https://portal.azure.com) , a na
 
 ## <a name="reset-by-using-the-vmaccess-extension-and-powershell"></a>Resetuj przy użyciu programu PowerShell i rozszerzenie VMAccess
 
-Najpierw upewnij się, że masz [najnowszy moduł programu PowerShell, zainstalować i skonfigurować](/powershell/azure/overview) i zalogowano się w Twojej subskrypcji platformy Azure przy użyciu [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) polecenia cmdlet.
+Najpierw upewnij się, że masz [najnowszy moduł programu PowerShell, zainstalować i skonfigurować](/powershell/azure/overview) i zalogowano się w Twojej subskrypcji platformy Azure przy użyciu [Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) polecenia cmdlet.
 
 ### <a name="reset-the-local-administrator-account-password"></a>**Zresetuj hasło konta administratora lokalnego**
 
-- Resetuj nazwy użytkownika lub hasło administratora przy użyciu [AzureRmVMAccessExtension zestaw](/powershell/module/azurerm.compute/set-azurermvmaccessextension) polecenia cmdlet programu PowerShell. `typeHandlerVersion` Ustawienie musi być 2.0 lub nowszej, ponieważ wersja 1 jest przestarzały. 
+- Resetuj nazwy użytkownika lub hasło administratora przy użyciu [AzVMAccessExtension zestaw](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) polecenia cmdlet programu PowerShell. `typeHandlerVersion` Ustawienie musi być 2.0 lub nowszej, ponieważ wersja 1 jest przestarzały. 
 
     ```powershell
     $SubID = "<SUBSCRIPTION ID>" 
@@ -66,9 +66,9 @@ Najpierw upewnij się, że masz [najnowszy moduł programu PowerShell, zainstalo
     $VmName = "<VM NAME>" 
     $Location = "<LOCATION>" 
  
-    Connect-AzureRmAccount 
-    Select-AzureRMSubscription -SubscriptionId $SubID 
-    Set-AzureRmVMAccessExtension -ResourceGroupName $RgName -Location $Location -VMName $VmName -Credential (get-credential) -typeHandlerVersion "2.0" -Name VMAccessAgent 
+    Connect-AzAccount 
+    Select-AzSubscription -SubscriptionId $SubID 
+    Set-AzVMAccessExtension -ResourceGroupName $RgName -Location $Location -VMName $VmName -Credential (get-credential) -typeHandlerVersion "2.0" -Name VMAccessAgent 
     ```
 
     > [!NOTE] 
@@ -76,10 +76,10 @@ Najpierw upewnij się, że masz [najnowszy moduł programu PowerShell, zainstalo
 
 ### <a name="reset-the-remote-desktop-services-configuration"></a>**Zresetowanie konfiguracji usług pulpitu zdalnego**
 
-1. Zresetuj dostęp zdalny do maszyny Wirtualnej za pomocą [AzureRmVMAccessExtension zestaw](/powershell/module/azurerm.compute/set-azurermvmaccessextension) polecenia cmdlet programu PowerShell. Poniższy przykład powoduje zresetowanie rozszerzenia dostępu o nazwie `myVMAccess` na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup` grupy zasobów:
+1. Zresetuj dostęp zdalny do maszyny Wirtualnej za pomocą [AzVMAccessExtension zestaw](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) polecenia cmdlet programu PowerShell. Poniższy przykład powoduje zresetowanie rozszerzenia dostępu o nazwie `myVMAccess` na maszynie Wirtualnej o nazwie `myVM` w `myResourceGroup` grupy zasobów:
 
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
+    Set-AzVMAccessExtension -ResourceGroupName "myResoureGroup" -VMName "myVM" -Name "myVMAccess" -Location WestUS -typeHandlerVersion "2.0" -ForceRerun
     ```
 
     > [!TIP]

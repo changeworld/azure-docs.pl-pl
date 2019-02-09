@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: f8cac174844d7f87687d08975b6fbf17ed47b03e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7c391e84f335e013ce1914063ccec75ba20f8685
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543295"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980095"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Obsługa Planned maintenance notifications zaplanowanej dla maszyn wirtualnych Windows
 
@@ -77,12 +77,14 @@ Najlepiej użyć konserwacji samoobsługowej w następujących przypadkach:
 
 ## <a name="check-maintenance-status-using-powershell"></a>Sprawdzanie stanu konserwacji przy użyciu programu PowerShell
 
-Można również użyć programu Azure Powershell pozwalają zobaczyć, kiedy maszyn wirtualnych jest zaplanowana do konserwacji. Informacje o planowanej konserwacji jest dostępne z [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) polecenia cmdlet, gdy używasz `-status` parametru.
+Można również użyć programu Azure Powershell pozwalają zobaczyć, kiedy maszyn wirtualnych jest zaplanowana do konserwacji. Informacje o planowanej konserwacji jest dostępne z [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) polecenia cmdlet, gdy używasz `-status` parametru.
  
 Informacje o konserwacji jest zwracany tylko wtedy, gdy planowanej konserwacji. Nie konserwacja jest zaplanowana, która ma wpływ na maszynę Wirtualną, polecenie cmdlet nie zwraca żadnych informacji konserwacji. 
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Name vmName -Status
+Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 ```
 
 W obszarze MaintenanceRedeployStatus zwracane są następujące właściwości: 
@@ -97,10 +99,10 @@ W obszarze MaintenanceRedeployStatus zwracane są następujące właściwości:
 
 
 
-Można również uzyskać stanu konserwacji dla wszystkich maszyn wirtualnych w grupie zasobów, za pomocą [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) i nie został podany maszyny Wirtualnej.
+Można również uzyskać stanu konserwacji dla wszystkich maszyn wirtualnych w grupie zasobów, za pomocą [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) i nie został podany maszyny Wirtualnej.
  
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Status
+Get-AzVM -ResourceGroupName rgName -Status
 ```
 
 Używając następującej funkcji programu PowerShell ma identyfikator subskrypcji i wyświetla listę maszyn wirtualnych, które jest zaplanowana do konserwacji.
@@ -109,18 +111,18 @@ Używając następującej funkcji programu PowerShell ma identyfikator subskrypc
 
 function MaintenanceIterator
 {
-    Select-AzureRmSubscription -SubscriptionId $args[0]
+    Select-AzSubscription -SubscriptionId $args[0]
 
-    $rgList= Get-AzureRmResourceGroup 
+    $rgList= Get-AzResourceGroup 
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
         $rg = $rgList[$rgIdx]        
-    $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+    $vmList = Get-AzVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
-            $vmDetails = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
+            $vmDetails = Get-AzVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
               if ($vmDetails.MaintenanceRedeployStatus )
             {
                 Write-Output "VM: $($vmDetails.Name)  IsCustomerInitiatedMaintenanceAllowed: $($vmDetails.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed) $($vmDetails.MaintenanceRedeployStatus.LastOperationMessage)"               
@@ -136,7 +138,7 @@ function MaintenanceIterator
 Korzystając z informacji z funkcji, w poprzedniej sekcji, następujące rozpoczęciem konserwacji na maszynie Wirtualnej Jeśli **IsCustomerInitiatedMaintenanceAllowed** jest ustawiona na wartość true.
 
 ```powershell
-Restart-AzureRmVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
+Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
 ```
 
 ## <a name="classic-deployments"></a>Klasyczne wdrożenia
@@ -159,48 +161,48 @@ Restart-AzureVM -InitiateMaintenance -ServiceName <service name> -Name <VM name>
 ## <a name="faq"></a>Często zadawane pytania
 
 
-**PYT.: Dlaczego należy teraz przeprowadzić ponowny rozruch maszyny wirtualne?**
+**Pyt.: Dlaczego należy teraz przeprowadzić ponowny rozruch maszyny wirtualne?**
 
 **ODP.:** Chociaż większość aktualizacji i uaktualnień do platformy Azure nie miało wpływu na dostępność maszyn wirtualnych, są przypadki, w których nie możemy uniknąć, ponowne uruchamianie maszyn wirtualnych hostowanych na platformie Azure. Zakumulowaliśmy kilka zmian, które wymagają ponownego uruchomienia naszych serwerów, które będą powodować ponowny rozruch maszyn wirtualnych.
 
-**PYT.: Jeśli I postępuj zgodnie z zaleceniami, usługi wysokiej dostępności przy użyciu zestawu dostępności, mogę bezpieczne?**
+**Pyt.: Jeśli I postępuj zgodnie z zaleceniami, usługi wysokiej dostępności przy użyciu zestawu dostępności, mogę bezpieczne?**
 
 **ODP.:** Maszyny wirtualne wdrożone w zestawie dostępności lub zestawach skalowania maszyn wirtualnych obsługują pojęcie domen aktualizacji (UD). Podczas przeprowadzania konserwacji platforma Azure honoruje ograniczenia domen aktualizacji i nie zostanie wykonany ponowny rozruch maszyn wirtualnych z różnych UD (w tym samym zestawie dostępności).  Azure oczekuje również co najmniej 30 minut przed przejściem do następnej grupy maszyn wirtualnych. 
 
 Aby uzyskać więcej informacji na temat wysokiej dostępności, zobacz [regiony i dostępność maszyn wirtualnych na platformie Azure](regions-and-availability.MD).
 
-**PYT.: Jak otrzymywanie powiadomień o planowanej konserwacji?**
+**Pyt.: Jak otrzymywanie powiadomień o planowanej konserwacji?**
 
 **ODP.:** Uruchamia planowanej konserwacji przez ustawienie harmonogramu na jednym lub wielu regionach platformy Azure. Wkrótce po wiadomość e-mail z powiadomieniem są wysyłane do właścicieli subskrypcji (jedną wiadomość e-mail na subskrypcję). Dodatkowe kanały i adresatów dla tego powiadomienia można konfigurować za pomocą alertów dziennika aktywności. W przypadku, gdy wdrożono maszynę wirtualną w regionie, gdzie jest już zaplanowana planowanej konserwacji, nie będą otrzymywać powiadomienia, ale raczej muszą sprawdzać stan konserwacji maszyny wirtualnej.
 
-**PYT.: Nie widzę żadnego wskazania dotyczącego planowanej konserwacji w portalu, programu Powershell lub interfejsu wiersza polecenia. Co jest nie tak?**
+**Pyt.: Nie widzę żadnego wskazania dotyczącego planowanej konserwacji w portalu, programu Powershell lub interfejsu wiersza polecenia. Co jest nie tak?**
 
 **ODP.:** Informacje dotyczące planowanej konserwacji jest dostępne podczas fali planowanej konserwacji tylko dla maszyn wirtualnych, które będą mieć wpływ na jej. Innymi słowy Jeśli dane nie są wyświetlane, możliwe że fala konserwacji została już zakończona (lub Nierozpoczęte) lub maszyny wirtualnej jest już hostowana na zaktualizowanym serwerze.
 
-**PYT.: Czy istnieje sposób, aby dowiedzieć się, kiedy będzie mieć wpływ na mojej maszynie wirtualnej?**
+**Pyt.: Czy istnieje sposób, aby dowiedzieć się, kiedy będzie mieć wpływ na mojej maszynie wirtualnej?**
 
 **ODP.:** Gdy ustawienia harmonogramu, definiujemy przedział czasu w kilka dni. Jednak dokładne sekwencjonowanie serwerów (i maszyn wirtualnych), w tym przedziale czasu jest nieznany. Klienci, którzy chcieliby wiedzieć dokładny czas dla maszyn wirtualnych, można użyć [zaplanowane zdarzenia](scheduled-events.md) zapytania z poziomu maszyny wirtualnej i Otrzymuj powiadomienie 15 minut przed ponownym rozruchem maszyny Wirtualnej.
 
-**PYT.: Jak długo potrwa ponowne uruchomienie mojej maszyny wirtualnej?**
+**Pyt.: Jak długo potrwa ponowne uruchomienie mojej maszyny wirtualnej?**
 
 **ODP.:**  W zależności od rozmiaru maszyny Wirtualnej ponowne uruchomienie komputera może zająć do kilku minut w oknie konserwacji samoobsługowej. Podczas Azure zainicjował ponowne uruchomienia w okna zaplanowanej konserwacji podczas ponownego rozruchu zwykle zajmie około 25 minut. Należy pamiętać, że w przypadku, gdy używasz usługi Cloud Services (internetowy proces roboczy), zestawy skalowania maszyn wirtualnych lub zestawów dostępności, będziesz mieć możliwość wybrania 30 minut między poszczególnymi grupami z maszyn wirtualnych (UD) podczas okna zaplanowanej konserwacji. 
 
-**PYT.: Co to jest środowisko w przypadku zestawów skalowania maszyn wirtualnych?**
+**Pyt.: Co to jest środowisko w przypadku zestawów skalowania maszyn wirtualnych?**
 
 **ODP.:** Planowana konserwacja jest teraz dostępna dla zestawów skalowania maszyn wirtualnych. Aby uzyskać instrukcje dotyczące sposobu inicjowania konserwacji samoobsługowej, zobacz [planowanej konserwacji dla zestawu skalowania maszyn wirtualnych](../../virtual-machine-scale-sets/virtual-machine-scale-sets-maintenance-notifications.md) dokumentu.
 
-**PYT.: Co to jest środowisko w przypadku usług Cloud Services (internetowy proces roboczy) i usługi Service Fabric?**
+**Pyt.: Co to jest środowisko w przypadku usług Cloud Services (internetowy proces roboczy) i usługi Service Fabric?**
 
 **ODP.:** Mimo że planowana konserwacja ma wpływ na te platformy, klienci korzystający z tych platform są uznawani za bezpiecznych, o ile w danym momencie konserwacja będzie miała wpływ tylko na maszyny wirtualne w jednej domenie uaktualnienia. Konserwacji samoobsługowej nie jest obecnie dostępna w przypadku usług Cloud Services (internetowy proces roboczy) i usługi Service Fabric.
 
-**PYT.: Nie widzę żadnych informacji konserwacji na moich maszynach wirtualnych. Czym jest problem?**
+**Pyt.: Nie widzę żadnych informacji konserwacji na moich maszynach wirtualnych. Czym jest problem?**
 
 **ODP.:** Istnieje kilka powodów dlaczego nie widzisz żadnych informacji konserwacji na maszynach wirtualnych:
 1.  Używane są oznaczone jako Microsoft wewnętrzne subskrypcji.
 2.  Maszyny wirtualne nie jest zaplanowana do konserwacji. Możliwe, że fala konserwacji została zakończona, anulowana lub zmodyfikować tak, aby maszyny wirtualne są nie wpływa już go.
 3.  Nie masz **konserwacji** kolumną dodaną do widoku listy maszyn wirtualnych. Dodaliśmy tę kolumnę do widoku domyślnego, klienci, którzy skonfigurowali, aby zobaczyć kolumn innych niż domyślne należy ręcznie dodać **konserwacji** kolumnę do widoku listy ich maszyn wirtualnych.
 
-**PYT.: Moja maszyna wirtualna jest zaplanowana do konserwacji po raz drugi. Dlaczego?**
+**Pyt.: Moja maszyna wirtualna jest zaplanowana do konserwacji po raz drugi. Dlaczego?**
 
 **ODP.:** Istnieje kilka przypadków użycia, w których zobaczysz, że maszyna wirtualna została zaplanowana do konserwacji po zakończeniu konserwacji i ponownego wdrożenia:
 1.  Firma Microsoft ma anulowane fala konserwacji i ponownego uruchomienia go przy użyciu różnych ładunku. Możliwe, że Wykryliśmy, że ładunek błędowi i po prostu należy wdrożyć dodatkowe ładunku.

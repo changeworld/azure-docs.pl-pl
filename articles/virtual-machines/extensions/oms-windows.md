@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/14/2017
 ms.author: roiyz
-ms.openlocfilehash: 12f7c52f916f385ddf95cf16aa89c4848ab7c118
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 6a128f8fbfd39c364d63ff03a156788e44f37119
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49406606"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981302"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-windows"></a>Dziennik analizy rozszerzenia maszyny wirtualnej, aby uzyskać Windows
 
@@ -74,7 +74,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia agenta usługi Log Analy
 | Wydawcy | Microsoft.EnterpriseCloud.Monitoring |
 | type | MicrosoftMonitoringAgent |
 | typeHandlerVersion | 1.0 |
-| Identyfikator obszaru roboczego (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
+| workspaceId (e.g)* | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | klucz workspaceKey (np.) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI+rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ== |
 
 \* Identyfikator obszaru roboczego jest nazywany consumerId w interfejsu API programu Log Analytics.
@@ -140,13 +140,13 @@ Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zaso
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-`Set-AzureRmVMExtension` Polecenie może służyć do wdrożenia rozszerzenia maszyny wirtualnej agenta usługi Log Analytics do istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell. 
+`Set-AzVMExtension` Polecenie może służyć do wdrożenia rozszerzenia maszyny wirtualnej agenta usługi Log Analytics do istniejącej maszyny wirtualnej. Przed uruchomieniem polecenia, konfiguracje publicznymi i prywatnymi muszą być przechowywane w tabeli wyznaczania wartości skrótu programu PowerShell. 
 
 ```powershell
 $PublicSettings = @{"workspaceId" = "myWorkspaceId"}
 $ProtectedSettings = @{"workspaceKey" = "myWorkspaceKey"}
 
-Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
+Set-AzVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.EnterpriseCloud.Monitoring" `
@@ -164,7 +164,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
 Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą modułu Azure PowerShell. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie, używając modułu Azure PowerShell.
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 Dane wyjściowe wykonywania rozszerzenia jest rejestrowany wpis pliki znajdujące się w następującym katalogu:

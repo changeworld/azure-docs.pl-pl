@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/05/2016
 ms.author: memccror
-ms.openlocfilehash: 75a6466578808cb5c0dd8d2e32d9445a6e5a5bf8
-ms.sourcegitcommit: 0f54b9dbcf82346417ad69cbef266bc7804a5f0e
+ms.openlocfilehash: ca389814b35a666a48959a50de58a231df6728c5
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50140540"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981132"
 ---
 # <a name="how-to-tag-a-windows-virtual-machine-in-azure"></a>Jak oznaczyć maszynę wirtualną Windows na platformie Azure
 W tym artykule opisano różne sposoby, aby oznaczyć maszynę wirtualną Windows na platformie Azure za pomocą modelu wdrażania usługi Resource Manager. Tagi to pary klucz/wartość zdefiniowanych przez użytkownika, które mogą być umieszczone bezpośrednio na zasób lub grupa zasobów. Platforma Azure obsługuje obecnie maksymalnie 15 tagów na zasób i grupy zasobów. Znaczniki może być umieszczone na zasób w czasie tworzenia lub dodawane do istniejącego zasobu. Należy pamiętać, że tagi są obsługiwane w przypadku zasobów utworzonych za pomocą modelu wdrażania usługi Resource Manager tylko. Jeśli chcesz oznaczyć maszynę wirtualną systemu Linux, zobacz [jak oznaczyć maszynę wirtualną z systemem Linux na platformie Azure](../linux/tag.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -30,9 +30,11 @@ W tym artykule opisano różne sposoby, aby oznaczyć maszynę wirtualną Window
 ## <a name="tagging-with-powershell"></a>Znakowanie przy użyciu programu PowerShell
 Aby utworzyć, dodawanie i usuwanie tagów za pomocą programu PowerShell, najpierw trzeba skonfigurować swoje [środowiska PowerShell z usługą Azure Resource Manager][PowerShell environment with Azure Resource Manager]. Po zakończeniu instalacji można umieścić znaczniki dla zasobów obliczeniowych, sieci i magazynu podczas tworzenia lub po utworzeniu zasobu za pomocą programu PowerShell. Ten artykuł koncentruje się na wyświetlanie oraz edytowanie tagów umieszczone na maszynach wirtualnych.
 
-Przejdź do maszyny wirtualnej za pośrednictwem `Get-AzureRmVM` polecenia cmdlet.
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-        PS C:\> Get-AzureRmVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
+Przejdź do maszyny wirtualnej za pośrednictwem `Get-AzVM` polecenia cmdlet.
+
+        PS C:\> Get-AzVM -ResourceGroupName "MyResourceGroup" -Name "MyTestVM"
 
 Jeśli maszyna wirtualna zawiera już znaczników, następnie zobaczysz wszystkie tagi zasobu:
 
@@ -43,11 +45,11 @@ Jeśli maszyna wirtualna zawiera już znaczników, następnie zobaczysz wszystki
                 "Environment": "Production"
                }
 
-Jeśli chcesz dodać tagi za pomocą programu PowerShell, możesz użyć `Set-AzureRmResource` polecenia. Należy pamiętać podczas aktualizowania tagów za pomocą programu PowerShell, tagi zostaną zaktualizowane jako całości. Więc jeden tag w przypadku dodawania do zasobu, który ma już tagi, konieczne będzie obejmować wszystkie tagi, które mają zostać umieszczone w zasobie. Poniżej przedstawiono przykładowy sposób dodać dodatkowe tagi do zasobu za pomocą poleceń cmdlet programu PowerShell.
+Jeśli chcesz dodać tagi za pomocą programu PowerShell, możesz użyć `Set-AzResource` polecenia. Należy pamiętać podczas aktualizowania tagów za pomocą programu PowerShell, tagi zostaną zaktualizowane jako całości. Więc jeden tag w przypadku dodawania do zasobu, który ma już tagi, konieczne będzie obejmować wszystkie tagi, które mają zostać umieszczone w zasobie. Poniżej przedstawiono przykładowy sposób dodać dodatkowe tagi do zasobu za pomocą poleceń cmdlet programu PowerShell.
 
-To pierwsze polecenie cmdlet Ustawia wszystkie tagi umieszczone na *MyTestVM* do *$tags* zmiennej za pomocą `Get-AzureRmResource` i `Tags` właściwości.
+To pierwsze polecenie cmdlet Ustawia wszystkie tagi umieszczone na *MyTestVM* do *$tags* zmiennej za pomocą `Get-AzResource` i `Tags` właściwości.
 
-        PS C:\> $tags = (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+        PS C:\> $tags = (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
 Drugie polecenie wyświetla znaczniki dla danego zmiennej.
 
@@ -68,12 +70,12 @@ Trzecie polecenie dodaje tag dodatkowe *$tags* zmiennej. Zwróć uwagę na użyc
 
 Czwarty polecenie ustawia parametry logowania wszystkich znaczników zdefiniowane w *$tags* zmiennej do danego zasobu. W tym przypadku jest to MyTestVM.
 
-        PS C:\> Set-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
+        PS C:\> Set-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM -ResourceType "Microsoft.Compute/VirtualMachines" -Tag $tags
 
 Piąty polecenie wyświetla listę wszystkich tagów w zasobie. Jak widać, *lokalizacji* teraz jest zdefiniowany jako tag *MyLocation* jako wartość.
 
 ```
-    PS C:\> (Get-AzureRmResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
+    PS C:\> (Get-AzResource -ResourceGroupName MyResourceGroup -Name MyTestVM).Tags
 
     Key           Value
     ----          -----
@@ -93,7 +95,7 @@ Aby dowiedzieć się więcej o znakowaniu za pomocą programu PowerShell, zapozn
 * Aby dowiedzieć się, jak tagi zarządzanie może ułatwić korzystanie z zasobów platformy Azure, zobacz [informacje o rachunku Azure] [ Understanding your Azure Bill] i [wgląd w użycie zasobów usługi Microsoft Azure] [Gain insights into your Microsoft Azure resource consumption].
 
 [PowerShell environment with Azure Resource Manager]: ../../azure-resource-manager/powershell-azure-resource-manager.md
-[Azure Resource Cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.resources/
+[Azure Resource Cmdlets]: https://docs.microsoft.com/powershell/module/az.resources/
 [Azure Resource Manager Overview]: ../../azure-resource-manager/resource-group-overview.md
 [Using Tags to organize your Azure Resources]: ../../azure-resource-manager/resource-group-using-tags.md
 [Understanding your Azure Bill]: ../../billing/billing-understand-your-bill.md

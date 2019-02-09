@@ -4,23 +4,23 @@ description: Ten artykuł zawiera definicję kolekcji Postman na potrzeby połą
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 34eb7c48c8ebc36f9172f97dda845542b3840a19
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: f9f8d9fcdca649494088ad9c53415429c5232384
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747683"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978531"
 ---
-# <a name="import-a-postman-collection-with-on-demand-streaming-operations"></a>Importuj kolekcję Postman z operacjami On-Demand Streaming
+# <a name="import-a-postman-collection-with-on-demand-streaming-operations-legacy"></a>Importuj kolekcję Postman operacje przesyłania strumieniowego na żądanie (starsza wersja)
 
 Ten artykuł zawiera definicję **Postman** kolekcję zawierającą pogrupowane żądań HTTP, które wywołują interfejsów API REST usługi Azure Media. Aby uzyskać informacje o sposobie konfigurowania **Postman** , dzięki czemu może służyć do wywołania interfejsów API REST usługi Media Services, zobacz [wywołuje Konfigurowanie narzędzia Postman dla interfejsu API REST usługi Media Services](media-rest-apis-with-postman.md) samouczek.
 

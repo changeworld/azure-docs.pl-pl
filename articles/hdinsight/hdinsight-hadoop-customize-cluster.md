@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f67ad04fed2018ba71dd39ed03c24e6aebecf90
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746796"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984736"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Dostosowywanie klastrów HDInsight z systemem Windows za pomocą akcji skryptu
 **Akcja skryptu** może służyć do wywołania [niestandardowe skrypty](hdinsight-hadoop-script-actions.md) podczas procesu tworzenia klastra w przypadku instalowania dodatkowego oprogramowania w klastrze.
@@ -62,17 +62,12 @@ HDInsight udostępnia szereg skryptów do zainstalowania następujących składn
 
     ![Użyć akcji skryptu, aby dostosować klaster](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "użyj akcji skryptu, aby dostosować klastra")
 
-    <table border='1'>
-        <tr><th>Właściwość</th><th>Wartość</th></tr>
-        <tr><td>Name (Nazwa)</td>
-            <td>Określ nazwę dla akcji skryptu.</td></tr>
-        <tr><td>Identyfikator URI skryptu</td>
-            <td>Określ identyfikator URI do skryptu, który jest wywoływana w celu dostosowania do klastra. s</td></tr>
-        <tr><td>Główny/procesu roboczego</td>
-            <td>Określ węzły (**Head** lub **procesu roboczego**) uruchamiania skryptu dostosowania.</b>.
-        <tr><td>Parametry</td>
-            <td>Określ parametry, jeśli jest to wymagane przez skrypt.</td></tr>
-    </table>
+      |Właściwość|Wartość|  
+      |---|---|
+      |Name (Nazwa)|Określ nazwę dla akcji skryptu.|
+      |Identyfikator URI skryptu|Określ identyfikator URI do skryptu, które jest wywoływane, aby dostosować klastry.|
+      |Główny/procesu roboczego|Określ węzły (**Head** lub **procesu roboczego**) uruchamiania skryptu dostosowywania.|
+      |Parametry|Określ parametry, jeśli jest to wymagane przez skrypt.|
 
     Naciśnij klawisz ENTER, aby dodać więcej niż jedna akcja skryptu do zainstalowania wiele składników w klastrze.
 3. Kliknij przycisk **wybierz** Aby zapisać konfigurację akcji skryptu, a następnie kontynuuj tworzenia klastra.
@@ -80,7 +75,7 @@ HDInsight udostępnia szereg skryptów do zainstalowania następujących składn
 ## <a name="call-scripts-using-azure-powershell"></a>Wywoływanie skryptów przy użyciu programu Azure PowerShell
 Ten poniższy skrypt programu PowerShell pokazuje, jak zainstalować program w Windows oparte na klastrze HDInsight Spark.  
 
-    ```powershell
+```powershell  
     # Provide values for these variables
     $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
@@ -159,7 +154,7 @@ Ten poniższy skrypt programu PowerShell pokazuje, jak zainstalować program w W
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-    ```
+```
 
 Aby zainstalować inne oprogramowanie, należy zastąpić plik skryptu w skrypcie:
 
@@ -172,12 +167,14 @@ Poniższy przykład pokazuje, jak zainstalować platformę Apache Spark w klastr
 
 1. Tworzenie aplikacji konsolowej C# w programie Visual Studio.
 2. Z poziomu konsoli Menedżera pakietów Nuget uruchom następujące polecenie.
-    ```powershell
+
+    ```powershell  
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
     ```
-3. Należy użyć następującego przy użyciu instrukcji w pliku Program.cs:
+
+1. Należy użyć następującego przy użyciu instrukcji w pliku Program.cs:
 
     ```csharp
         using System;

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 93fbcb96415aa2c800a772fdeb925b1513d7512d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2be50b7f2583f7f15b2a0783ef729b91bc158234
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863010"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983665"
 ---
 # <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
 
@@ -68,7 +68,7 @@ Dostępne są obrazy kontenerów dla interfejsu API rozpoznawania twarzy.
 
 ### <a name="docker-pull-for-the-face-container"></a>Polecenie docker pull dla kontenera twarzy
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/face:latest
 ```
 
@@ -132,18 +132,7 @@ Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](./face-resource-c
 
 Wyślij kontenerów interfejsu API rozpoznawania twarzy, rozliczeń, informacje na platformie Azure, przy użyciu _interfejsu API rozpoznawania twarzy_ zasobów dla konta systemu Azure. 
 
-Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klienta do firmy Microsoft. 
-
-`docker run` Polecenie używa następujących argumentów na potrzeby rozliczeń:
-
-| Opcja | Opis |
-|--------|-------------|
-| `ApiKey` | Klucz interfejsu API _interfejsu API rozpoznawania twarzy_ zasoby używane do śledzenia informacji dotyczących rozliczeń. |
-| `Billing` | Punkt końcowy _interfejsu API rozpoznawania twarzy_ zasoby używane do śledzenia informacji dotyczących rozliczeń.|
-| `Eula` | Wskazuje, że zaakceptowano licencję dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
-
-> [!IMPORTANT]
-> Prawidłowe wartości należy określić wszystkie trzy opcje, lub uruchomić kontenera.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](./face-resource-container-config.md).
 

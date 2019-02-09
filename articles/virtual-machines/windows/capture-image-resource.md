@@ -15,16 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: cynthn
-ms.openlocfilehash: ff2352005470755c8ca0f472c4a790a820fea6b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a5e3fbc3369f19af8d93e23d669a4449ab3d414c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754391"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980588"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Tworzenie obrazu zarządzanego uogólnionej maszyny Wirtualnej na platformie Azure
 
 Można utworzyć zasobu obrazu zarządzanego z uogólnionej maszyny wirtualnej (VM), która jest przechowywana jako dysk zarządzany lub dysk niezarządzany na koncie magazynu. Obraz, który następnie może służyć do tworzenia wielu maszyn wirtualnych. Aby uzyskać informacje dotyczące zarządzanych obrazy są rozliczane, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks/). 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Uogólnianie maszyny wirtualnej z systemem Windows za pomocą narzędzia Sysprep
 
@@ -85,11 +87,11 @@ Aby uogólnić maszynę Wirtualną Windows, wykonaj następujące kroki:
 Tworzenie obrazu bezpośrednio z poziomu maszyny Wirtualnej sprawdza, czy obraz, który zawiera wszystkie dyski skojarzone z maszyną Wirtualną, w tym dysk systemu operacyjnego i dysków z danymi. Ten przykład przedstawia sposób tworzenia obrazu zarządzanego z maszyny Wirtualnej używa dysków zarządzanych.
 
 
-Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu programu AzureRM.Compute PowerShell, który musi być w wersji 5.7.0 lub nowszej. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable AzureRM.Compute` w programie PowerShell. Jeśli musisz uaktualnić, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, uruchom `Connect-AzureRmAccount` do utworzenia połączenia z platformą Azure.
+Przed rozpoczęciem upewnij się, że masz najnowszą wersję modułu programu AzureRM.Compute PowerShell, który musi być w wersji 5.7.0 lub nowszej. Aby znaleźć wersję, uruchom `Get-Module -ListAvailable AzureRM.Compute` w programie PowerShell. Jeśli musisz uaktualnić, zobacz [Instalowanie programu Azure PowerShell na Windows przy użyciu funkcji PowerShellGet](/powershell/azure/azurerm/install-az-ps). Jeśli używasz programu PowerShell lokalnie, uruchom `Connect-AzAccount` do utworzenia połączenia z platformą Azure.
 
 
 > [!NOTE]
-> Jeśli chcesz przechowywać obraz w magazyn strefowo nadmiarowy, należy je utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i obejmują `-ZoneResilient` parametr w konfiguracji obrazu (`New-AzureRmImageConfig` polecenie).
+> Jeśli chcesz przechowywać obraz w magazyn strefowo nadmiarowy, należy je utworzyć w regionie, który obsługuje [strefy dostępności](../../availability-zones/az-overview.md) i obejmują `-ZoneResilient` parametr w konfiguracji obrazu (`New-AzImageConfig` polecenie).
 
 Aby utworzyć obraz maszyny Wirtualnej, wykonaj następujące kroki:
 
@@ -104,30 +106,30 @@ Aby utworzyć obraz maszyny Wirtualnej, wykonaj następujące kroki:
 2. Upewnij się, że maszyna wirtualna została wycofana.
 
     ```azurepowershell-interactive
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
+    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. Ustaw stan maszyny wirtualnej do **Uogólniono**. 
    
     ```azurepowershell-interactive
-    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized
+    Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized
     ```
     
 4. Pobierz maszynę wirtualną. 
 
     ```azurepowershell-interactive
-    $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
+    $vm = Get-AzVM -Name $vmName -ResourceGroupName $rgName
     ```
 
 5. Utwórz konfigurację obrazu.
 
     ```azurepowershell-interactive
-    $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
+    $image = New-AzImageConfig -Location $location -SourceVirtualMachineId $vm.Id 
     ```
 6. Utwórz obraz.
 
     ```azurepowershell-interactive
-    New-AzureRmImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
+    New-AzImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
     ``` 
 
 ## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Tworzenie obrazu na podstawie dysku zarządzanego przy użyciu programu PowerShell
@@ -148,7 +150,7 @@ Jeśli chcesz utworzyć obraz na dysku systemu operacyjnego, należy określić 
 2. Uzyskiwanie maszyny Wirtualnej.
 
    ```azurepowershell-interactive
-   $vm = Get-AzureRmVm -Name $vmName -ResourceGroupName $rgName
+   $vm = Get-AzVm -Name $vmName -ResourceGroupName $rgName
    ```
 
 3. Pobierz identyfikator dysku zarządzanego.
@@ -160,14 +162,14 @@ Jeśli chcesz utworzyć obraz na dysku systemu operacyjnego, należy określić 
 3. Utwórz konfigurację obrazu.
 
     ```azurepowershell-interactive
-    $imageConfig = New-AzureRmImageConfig -Location $location
-    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -ManagedDiskId $diskID
+    $imageConfig = New-AzImageConfig -Location $location
+    $imageConfig = Set-AzImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -ManagedDiskId $diskID
     ```
     
 4. Utwórz obraz.
 
     ```azurepowershell-interactive
-    New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
+    New-AzImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ``` 
 
 
@@ -188,19 +190,19 @@ Można utworzyć obrazu zarządzanego z migawki uogólnionej maszyny Wirtualnej,
 2. Pobieranie migawki.
 
    ```azurepowershell-interactive
-   $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
+   $snapshot = Get-AzSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
    ```
    
 3. Utwórz konfigurację obrazu.
 
     ```azurepowershell-interactive
-    $imageConfig = New-AzureRmImageConfig -Location $location
-    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -SnapshotId $snapshot.Id
+    $imageConfig = New-AzImageConfig -Location $location
+    $imageConfig = Set-AzImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -SnapshotId $snapshot.Id
     ```
 4. Utwórz obraz.
 
     ```azurepowershell-interactive
-    New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
+    New-AzImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ``` 
 
 
@@ -221,20 +223,20 @@ Utworzenie obrazu zarządzanego z uogólnionego wirtualnego dysku twardego syste
 2. Zatrzymaj/Cofnij Przydział maszyny Wirtualnej.
 
     ```azurepowershell-interactive
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
+    Stop-AzVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. Oznaczanie maszyny Wirtualnej jako uogólnionej.
 
     ```azurepowershell-interactive
-    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized 
+    Set-AzVm -ResourceGroupName $rgName -Name $vmName -Generalized  
     ```
 4.  Tworzenie obrazu przy użyciu uogólnionego wirtualnego dysku twardego systemu operacyjnego.
 
     ```azurepowershell-interactive
-    $imageConfig = New-AzureRmImageConfig -Location $location
-    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized -BlobUri $osVhdUri
-    $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
+    $imageConfig = New-AzImageConfig -Location $location
+    $imageConfig = Set-AzImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized -BlobUri $osVhdUri
+    $image = New-AzImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ```
 
     

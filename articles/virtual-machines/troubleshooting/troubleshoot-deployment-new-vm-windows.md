@@ -16,12 +16,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 24a12c9144535fecd23be432ee33402eb6528b28
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 8f18fbabe52c9170cde70900933ce96a3a6400c7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413816"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984345"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Rozwiązywanie problemów dotyczących wdrażania podczas tworzenia nowej maszyny Wirtualnej Windows na platformie Azure
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -44,23 +44,23 @@ Aby rozpocząć rozwiązywanie problemów, zbieranie dzienników aktywności, ab
 
 [!INCLUDE [virtual-machines-windows-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-windows-troubleshoot-deployment-new-vm-table.md)]
 
-**Katalog** Jeśli systemu operacyjnego jest uogólniony, Windows i przekazać lub przechwycone z ustawieniem uogólniony, a następnie nie będzie żadnych błędów. Podobnie jeśli systemem operacyjnym jest Windows wyspecjalizowany, przekazany lub przechwycone z ustawieniem specjalistyczne, a następnie nie będzie żadnych błędów.
+**Y:** Jeśli systemem operacyjnym jest Windows uogólniony, a przekazane lub przechwycone z ustawieniem uogólniony, nie będzie żadnych błędów. Podobnie jeśli systemem operacyjnym jest Windows wyspecjalizowany, przekazany lub przechwycone z ustawieniem specjalistyczne, a następnie nie będzie żadnych błędów.
 
 **Błędy przekazywania:**
 
-**N<sup>1</sup>:** Jeśli systemem operacyjnym jest Windows uogólnione i jest przekazywany jako wyspecjalizowany, wystąpi błąd limitu czasu inicjowania obsługi administracyjnej z maszyną Wirtualną została zablokowana na ekranie OOBE.
+**N<sup>1</sup>:** Jeśli system operacyjny Windows uogólniony, a jest przekazywany jako wyspecjalizowany, wystąpi błąd limitu czasu inicjowania obsługi administracyjnej z maszyną Wirtualną została zablokowana na ekranie OOBE.
 
-**N<sup>2</sup>:** w przypadku systemu operacyjnego Windows wyspecjalizowane i przekazaniu jako uogólniony, otrzymasz błąd inicjowania obsługi administracyjnej z maszyny Wirtualnej została zablokowana na ekranie OOBE, ponieważ nowa maszyna wirtualna jest uruchomiona z oryginalną nazwę komputera Nazwa użytkownika i hasło.
+**N<sup>2</sup>:** W przypadku systemu operacyjnego Windows wyspecjalizowane i przekazaniu jako uogólniony, otrzyma błąd inicjowania obsługi administracyjnej z maszyną Wirtualną została zablokowana na ekranie OOBE, ponieważ nowa maszyna wirtualna jest uruchomiona przy użyciu oryginalnej nazwy komputera, nazwę użytkownika i hasło.
 
 **Rozdzielczość**
 
-Aby usunąć oba te błędy, należy użyć [Add-AzureRmVhd, aby przekazać oryginalny dysk VHD](https://docs.microsoft.com/powershell/module/azurerm.compute/add-azurermvhd), dostępne lokalnie, za pomocą tego samego ustawienia, jak dla systemu operacyjnego (uogólniony/wyspecjalizowane). Można przekazać jako uogólniony, pamiętaj, aby najpierw uruchom program sysprep.
+Aby usunąć oba te błędy, należy użyć [AzVhd Dodaj, aby przekazać oryginalny dysk VHD](https://docs.microsoft.com/powershell/module/az.compute/add-azvhd), dostępne lokalnie, za pomocą tego samego ustawienia, jak dla systemu operacyjnego (uogólniony/wyspecjalizowane). Można przekazać jako uogólniony, pamiętaj, aby najpierw uruchom program sysprep.
 
 **Przechwytywania błędów:**
 
-**N<sup>3</sup>:** Jeśli systemem operacyjnym jest Windows uogólniony, a jest przechwytywany jako wyspecjalizowany, otrzymasz błąd limitu czasu inicjowania obsługi administracyjnej ponieważ oryginalna maszyna wirtualna nie jest używany, ponieważ jest ona oznaczona jako uogólniona.
+**N<sup>3</sup>:** Jeśli system operacyjny Windows uogólniony, a jest przechwytywany jako wyspecjalizowany, otrzymasz błąd limitu czasu inicjowania obsługi administracyjnej ponieważ oryginalna maszyna wirtualna nie jest używany, ponieważ jest ona oznaczona jako uogólniona.
 
-**N<sup>4</sup>:** w przypadku systemu operacyjnego Windows wyspecjalizowane i są przechwytywane, jako uogólniony, otrzymasz błąd inicjowania obsługi, ponieważ nowa maszyna wirtualna jest uruchomiona z oryginalną nazwę komputera, nazwę użytkownika i hasło. Ponadto oryginalnego maszyny Wirtualnej nie jest używany, ponieważ jest ona oznaczona jako specjalne.
+**N<sup>4</sup>:** Jeśli systemem operacyjnym jest Windows wyspecjalizowane i są przechwytywane, jako uogólniony, zostanie wyświetlony błąd inicjowania obsługi administracyjnej, ponieważ nowa maszyna wirtualna jest uruchomiona z oryginalną nazwę komputera, nazwę użytkownika i hasło. Ponadto oryginalnego maszyny Wirtualnej nie jest używany, ponieważ jest ona oznaczona jako specjalne.
 
 **Rozdzielczość**
 
@@ -69,7 +69,7 @@ Usuń oba te błędy, Usuń bieżący obraz z portalu i [ponownie wykonaj operac
 ## <a name="issue-customgallerymarketplace-image-allocation-failure"></a>Problem: Niestandardowe/Galeria/obrazu portalu marketplace; Niepowodzenie alokacji
 Ten błąd pojawia się w sytuacjach, gdy nowe żądanie maszyna wirtualna jest przypięta do klastra, który nie obsługuje żądanego rozmiaru maszyny Wirtualnej lub nie ma dostępnego wolnego miejsca, aby obsłużyć żądanie.
 
-**Przyczyny 1:** klaster nie obsługuje żądanego rozmiaru maszyny Wirtualnej.
+**Przyczyny 1:** Klaster nie obsługuje żądanego rozmiaru maszyny Wirtualnej.
 
 **Rozwiązanie nr 1.**
 
@@ -80,7 +80,7 @@ Ten błąd pojawia się w sytuacjach, gdy nowe żądanie maszyna wirtualna jest 
   * Po zatrzymania wszystkich maszyn wirtualnych, należy utworzyć nową maszynę Wirtualną w żądany rozmiar.
   * Najpierw należy uruchomić nową maszynę Wirtualną, a następnie wybierz poszczególne zatrzymanych maszyn wirtualnych i kliknij **Start**.
 
-**Przyczyny 2:** klastra ma bezpłatnymi zasobami.
+**Przyczyny 2:** Klaster nie ma bezpłatnymi zasobami.
 
 **Rozwiązanie nr 2.**
 

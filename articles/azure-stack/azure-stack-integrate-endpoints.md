@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 0bb2f3ffb4b615451abc41d0d8945b4b3efdde53
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816360"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977751"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -38,11 +38,11 @@ Nie są wyświetlane wewnętrznej infrastruktury adresów VIP, ponieważ nie są
 |Punkt końcowy (VIP)|Rekord hosta DNS|Protokół|Porty|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Portal (administrator)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
+|Portal (administrator)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Adminhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
-|Usługa Azure Resource Manager (administrator)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
-|Portal (użytkownik)|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
-|Usługa Azure Resource Manager (użytkownik)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
+|Usługa Azure Resource Manager (administrator)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Portal (użytkownik)|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Usługa Azure Resource Manager (użytkownik)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Lista odwołania certyfikatów|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP I UDP|53|
@@ -79,7 +79,6 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 |NTP|(Dostarczone dla wdrożenia serwera IP NTP)|UDP|123|Publiczne wirtualne adresy IP — wartość/27|
 |DNS|(Dostarczone dla wdrożenia serwera IP DNS)|TCP<br>UDP|53|Publiczne wirtualne adresy IP — wartość/27|
 |LISTY CRL|Adres URL (w ramach punktów dystrybucji listy CRL na Twój certyfikat)|HTTP|80|Publiczne wirtualne adresy IP — wartość/27|
-|Tworzenie kopii zapasowych|(IP lub nazwa FQDN serwera plików zewnętrznego docelowego)|SMB|445|Infrastruktura publicznych sieci|
 |LDAP|Podany integracji narzędzia Graph lasu usługi Active Directory|TCP<br>UDP|389|Publiczne wirtualne adresy IP — wartość/27|
 |LDAP SSL|Podany integracji narzędzia Graph lasu usługi Active Directory|TCP|636|Publiczne wirtualne adresy IP — wartość/27|
 |LDAP GC|Podany integracji narzędzia Graph lasu usługi Active Directory|TCP|3268|Publiczne wirtualne adresy IP — wartość/27|
@@ -89,9 +88,6 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 
 > [!Note]  
 > Wychodzące adresy URL są równoważone za pomocą usługi Azure traffic manager, aby zapewnić najlepszą łączność możliwe na podstawie lokalizacji geograficznej. Adresy URL równoważenia obciążenia, zaktualizować i zmienić punktów końcowych zaplecza bez wywierania wpływu na klientów firmy Microsoft. Firma Microsoft udostępnia listę adresów IP dla ze zrównoważonym obciążeniem: adresy URL. Należy używać urządzenia, które obsługuje filtrowanie według adresu URL, a nie adresu IP.
-
-> [!Note]  
-> W 1809 infrastruktura kopii zapasowej usługa komunikuje się z serwerem plików zewnętrznych z sieci publicznych adresów VIP. Przed 1809 usługa przekazywane za pośrednictwem sieci infrastruktury publicznych. Jeśli w danym środowisku nie zezwala na dostęp do zasobów infrastruktury z sieci publicznych adresów VIP, zastosuj najnowsze [poprawkę 1809](azure-stack-update-1809.md#post-update-steps) dla usługi Azure Stack. Ta poprawka będzie powrót infrastruktury usługi kopii zapasowej do sieci publicznych infrastruktury. Jeśli należy zastosować poprawkę 1809 w 1811, infrastruktury usługi kopii zapasowej są pozostaje w sieci publicznych infrastruktury. Jeśli nie zostanie zastosowana poprawka, aktualizacja przeniesienie usługi sieci publicznych infrastruktury.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

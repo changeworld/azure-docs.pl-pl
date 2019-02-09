@@ -11,13 +11,13 @@ author: douglaslMS
 ms.author: douglasl
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6066ca586ce9923158026fbeaa405de16681de9b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 080cfb43f8fef04d2459dd0bb8779d2aa66cc359
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461343"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960977"
 ---
 # <a name="copy-an-transactionally-consistent-copy-of-an-azure-sql-database"></a>Skopiuj spójnej transakcyjnie kopii bazy danych Azure SQL
 
@@ -68,6 +68,7 @@ Zaloguj się w bazie danych master przy użyciu głównego identyfikatora logowa
 Rozpocznij kopiowanie źródłowa baza danych o [CREATE DATABASE](https://msdn.microsoft.com/library/ms176061.aspx) instrukcji. Wykonywanie tej instrukcji inicjuje proces kopiowania bazy danych. Kopiowanie bazy danych jest proces asynchroniczny, instrukcji CREATE DATABASE zwraca przed ukończeniem kopiowania bazy danych.
 
 ### <a name="copy-a-sql-database-to-the-same-server"></a>Kopiowanie bazy danych SQL na tym samym serwerze
+
 Zaloguj się w bazie danych master przy użyciu głównego identyfikatora logowania poziomu serwera lub logowania, który utworzył bazę danych, które mają zostać skopiowane. Do kopiowania bazy danych zakończyło się sukcesem, logowania, które nie są jednostki poziomu serwera muszą być elementami członkowskimi roli dbmanager.
 
 To polecenie kopiuje bazadanych1 do nowej bazy danych o nazwie bazy danych 2 na tym samym serwerze. W zależności od rozmiaru bazy danych operacji kopiowania może zająć trochę czasu.
@@ -86,6 +87,9 @@ To polecenie kopiuje bazadanych1 na serwerze1 do nowej bazy danych o nazwie bazy
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
+## <a name="to-move-a-database-between-subscriptions"></a>Przenoszenie bazy danych między subskrypcjami
+
+W [witryny Azure portal](https://portal.azure.com), kliknij przycisk **serwerów SQL** a następnie wybierz serwer, który hostuje bazę danych z listy. Kliknij przycisk **przenieść**, a następnie wybierz zasoby do przeniesienia oraz subskrypcję, której chcesz przenieść.
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>Monitoruj postęp operacji kopiowania
 
@@ -96,7 +100,6 @@ Monitorowanie procesu kopiowania, badając sys.databases i sys.dm_database_copie
 
 > [!NOTE]
 > Jeśli zechcesz anulować, kopiując je w trakcie wykonywania [DROP DATABASE](https://msdn.microsoft.com/library/ms178613.aspx) instrukcji na nową bazę danych. Alternatywnie wykonywania instrukcji DROP DATABASE źródłowej bazy danych również przerywa proces kopiowania.
-> 
 
 ## <a name="resolve-logins"></a>Rozwiąż logowania
 

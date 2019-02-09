@@ -3,8 +3,8 @@ title: Konfigurowanie logowania automatycznego przyspieszenia aplikacji za pomoc
 description: Wyjaśnia, jakie dzierżawę usługi Azure AD i sposobu zarządzania nią za pomocą usługi Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.author: barbkess
-ms.openlocfilehash: eaadd24789baf9da49397a65f9cd1a18b40ff918
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.openlocfilehash: a84c39af30b66b3ca33659885d0909e97ee3e985
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168721"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961418"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurowanie logowania usługi Azure Active Directory w zachowaniu aplikacji za pomocą zasad odnajdowania obszaru macierzystego
 

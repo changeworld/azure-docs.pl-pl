@@ -16,12 +16,12 @@ ms.date: 01/24/2019
 ms.author: sethm
 ms.reviewer: justini
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: beb86284256d42c119e551a18d9900f0dad61b7f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d23aab91df2d69850e8c3b80a1c12f49f2e7fcaa
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247497"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965175"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -130,9 +130,9 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-- Instalowanie usługi Azure Stack [aktualizacji 1807](azure-stack-update-1807.md) przed zastosowaniem aktualizacji usługi Azure Stack 1808. 
+- Przed zastosowaniem aktualizacji usługi Azure Stack 1808, należy zainstalować aktualizację usługi Azure Stack 1807. 
 
-- Zainstaluj najnowszy dostępny [aktualizacja lub poprawka dla wersji 1807](azure-stack-update-1807.md#post-update-steps).  
+- Instalowanie najnowszej dostępnej aktualizacji lub poprawek dla wersji 1807.  
   > [!TIP]  
   > Subskrybowania następujących *RRS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:
   > - REKORDY ZASOBÓW: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 

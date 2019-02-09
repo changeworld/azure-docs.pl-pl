@@ -14,16 +14,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 34b70b1a6a77a20a034a7822d9c4961c36cdd51c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d3ed1078f1f334a5732befa49cbdc5043767ad2c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663965"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978684"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozszerzenie DSC dla systemu Linux (Microsoft.OSTCExtensions.DSCForLinux)
-
-## <a name="overview"></a>Przegląd
 
 Desired State Configuration (DSC) to platforma zarządzania, która pozwala na zarządzanie IT i rozwój infrastruktury za pomocą konfiguracji jako kodu.
 
@@ -35,6 +33,8 @@ Rozszerzenie DSCForLinux jest opublikowany i obsługiwane przez firmę Microsoft
 - Zastosuj konfigurację Meta pliku MOF do maszyny Wirtualnej systemu Linux, aby skonfigurować serwer ściągania w celu ściągania konfiguracji węzła (ściągnięcia ExtensionAction)
 - Zainstaluj moduły niestandardowe DSC maszyny Wirtualnej systemu Linux (instalowanie ExtensionAction)
 - Usuń niestandardowe moduły DSC do maszyny Wirtualnej systemu Linux (Usuń ExtensionAction)
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -366,7 +366,7 @@ Set-AzureVMExtension -ExtensionName $extensionName -VM $vm -Publisher $publisher
 Możesz zalogować się do konta platformy Azure (tryb usługi Azure Resource Manager), uruchamiając:
 
 ```powershell>
-Login-AzureRmAccount
+Login-AzAccount
 ```
 
 Kliknij przycisk [ **tutaj** ](../../azure-resource-manager/powershell-azure-resource-manager.md) Aby dowiedzieć się więcej o sposobie używania programu Azure PowerShell z usługą Azure Resource Manager.
@@ -398,7 +398,7 @@ $publicConfig = '{
 ```
 
 ```
-Set-AzureRmVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
+Set-AzVMExtension -ResourceGroupName $rgName -VMName $vmName -Location $location `
   -Name $extensionName -Publisher $publisher -ExtensionType $extensionName `
   -TypeHandlerVersion $version -SettingString $publicConfig -ProtectedSettingString $privateConfig
 ```

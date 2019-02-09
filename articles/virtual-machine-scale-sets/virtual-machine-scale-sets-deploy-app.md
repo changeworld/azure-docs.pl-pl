@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733148"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980078"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji na zestawach skalowania maszyn wirtualnych
+
 Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W tym artykule przedstawiono sposoby tworzenia niestandardowego obrazu maszyny Wirtualnej dla wystąpień w skalowania zestawu lub skryptów instalacji automatycznie są uruchamiane w istniejących wystąpieniach maszyn wirtualnych. Poznasz również sposób zarządzania aplikacji lub aktualizacji systemu operacyjnego w zestawie skalowania.
 
 
@@ -50,8 +51,8 @@ Rozszerzenie DSC programu PowerShell umożliwia dostosowanie wystąpień maszyn 
 
 - Powoduje, że wystąpień maszyn wirtualnych, aby pobrać pakiet DSC z usługi GitHub — *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Ustawia rozszerzenie do uruchomienia skryptu install- `configure-http.ps1`
-- Pobiera informacje o zestawu skalowania z [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss)
-- Stosuje rozszerzenie do wystąpień maszyn wirtualnych za pomocą [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss)
+- Pobiera informacje o zestawu skalowania z [Get AzVmss](/powershell/module/az.compute/get-azvmss)
+- Stosuje rozszerzenie do wystąpień maszyn wirtualnych za pomocą [AzVmss aktualizacji](/powershell/module/az.compute/update-azvmss)
 
 Rozszerzenie DSC jest stosowany do *myScaleSet* wystąpień maszyn wirtualnych w grupie zasobów o nazwie *myResourceGroup*. Wprowadź własne nazwy w następujący sposób:
 
@@ -67,12 +68,12 @@ $dscConfig = @{
 }
 
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
                 -ResourceGroupName "myResourceGroup" `
                 -VMScaleSetName "myScaleSet"
 
 # Add the Desired State Configuration extension to install IIS and configure basic website
-$vmss = Add-AzureRmVmssExtension `
+$vmss = Add-AzVmssExtension `
     -VirtualMachineScaleSet $vmss `
     -Publisher Microsoft.Powershell `
     -Type DSC `
@@ -81,13 +82,13 @@ $vmss = Add-AzureRmVmssExtension `
     -Setting $dscConfig
 
 # Update the scale set and apply the Desired State Configuration extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
     -ResourceGroupName "myResourceGroup" `
     -Name "myScaleSet"  `
     -VirtualMachineScaleSet $vmss
 ```
 
-Jeśli zasady uaktualniania na zestaw skalowania jest *ręczne*, zaktualizować wystąpień maszyn wirtualnych za pomocą [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance). To polecenie cmdlet ma zastosowanie do konfiguracji zestawu skalowania zaktualizowane do wystąpień maszyn wirtualnych i instaluje aplikację.
+Jeśli zasady uaktualniania na zestaw skalowania jest *ręczne*, zaktualizować wystąpień maszyn wirtualnych za pomocą [AzVmssInstance aktualizacji](/powershell/module/az.compute/update-azvmssinstance). To polecenie cmdlet ma zastosowanie do konfiguracji zestawu skalowania zaktualizowane do wystąpień maszyn wirtualnych i instaluje aplikację.
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Instalowanie aplikacji na Maszynę wirtualną systemu Linux przy użyciu pakietu cloud-init

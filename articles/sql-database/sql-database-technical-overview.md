@@ -12,15 +12,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f4b72a95c64467ce287d2cb762222d17334aad57
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755429"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982271"
 ---
-# <a name="the-azure-sql-database-service"></a>Usługa Azure SQL Database
+# <a name="what-is-azure-sql-database-service"></a>Co to jest usługa Azure SQL Database?
 
 Usługa SQL Database jest zarządzaną usługą relacyjnej bazy danych ogólnego przeznaczenia na platformie Microsoft Azure, obsługującą struktury takie jak dane relacyjne, JSON, dane przestrzenne i XML. SQL Database oferuje dynamicznie skalowalną wydajność w dwóch różnych modeli zakupu: modelu zakupu opartego na rdzeniach wirtualnych i model zakupu jednostek DTU. Usługa SQL Database udostępnia również opcje, takie jak [indeksy magazynu kolumn](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview), używane w skomplikowanych analizach i raportowaniu, oraz [przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) na potrzeby ekstremalnego przetwarzania transakcyjnego. Firma Microsoft bezproblemowo obsługuje wprowadzanie poprawek i aktualizowanie bazy kodu SQL i ukrywa procesy zarządzania podstawową infrastrukturą.
 
@@ -67,10 +67,10 @@ Dynamiczna skalowalność różni się od skalowania automatycznego. O skalowani
 Usługa SQL Database oferuje dwa modele zakupu:
 
 - [Modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) oferuje blend obliczeniowych, pamięci, we/wy pozwalający w trzech warstwach usług do obsługi niewielkich obciążeń bazy danych. Obliczenia rozmiarów w każdej warstwie udostępniają różne kombinacje tych zasobów, do których można dodawać kolejne zasoby magazynu.
-- [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu.
+- [Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) pozwala wybrać liczbę rdzeni wirtualnych, ilość lub pamięć i wielkość i szybkość magazynu. Model zakupu opartego na rdzeniach wirtualnych pozwala również na używanie [korzyść użycia hybrydowego platformy Azure dla programu SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) uzyskanie oszczędności kosztów. Aby uzyskać więcej informacji na temat korzyści użycia hybrydowego platformy Azure, zobacz [— często zadawane pytania](#sql-database-frequently-asked-questions-faq).
 
   > [!IMPORTANT]
-  > [Warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md) jest obecnie dostępna w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania firma Microsoft zaleca, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
+  > [Warstwy usługi w hiperskali](sql-database-service-tier-hyperscale.md) dla pojedynczych baz danych jest obecnie dostępna w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania firma Microsoft zaleca, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pule elastyczne umożliwiające zmaksymalizowanie wykorzystania zasobów
 
@@ -195,6 +195,41 @@ Dzięki usłudze SQL Database tworzenie i konserwowanie aplikacji jest łatwiejs
   Edytor kodu bezpłatny, dostępny do pobrania, typu open source dla Windows, macOS i Linux obsługujący rozszerzenia, w tym [rozszerzenie mssql](https://aka.ms/mssql-marketplace) do wykonywania zapytań programu Microsoft SQL Server, usługi Azure SQL Database i SQL Data Warehouse.
 
 Usługa SQL Database obsługuje tworzenie aplikacji za pomocą narzędzi Python, Java, Node.js, PHP, Ruby i .NET w systemach MacOS, Linux i Windows. Usługa SQL Database obsługuje te same [biblioteki połączeń](sql-database-libraries.md) co program SQL Server.
+
+## <a name="sql-database-frequently-asked-questions-faq"></a>SQL Database — często zadawane pytania (FAQ)
+
+### <a name="what-is-the-current-version-of-sql-database"></a>Co to jest bieżąca wersja bazy danych SQL
+
+Bieżąca wersja bazy danych SQL jest wersja V12. W wersji V11 został wycofany.
+
+### <a name="can-i-control-when-patching-downtime-occurs"></a>Czy mogę kontrolować to sytuacji poprawek przestoju
+
+Nie. Zwykle wpływ poprawek nie jest widoczne w przypadku możesz [stosować logikę ponawiania próby](sql-database-develop-overview.md#resiliency) w swojej aplikacji. Aby uzyskać więcej informacji na temat przygotowywania w planowanych pracach konserwacyjnych na bazie danych Azure SQL, zobacz [planowanie zdarzenia konserwacji platformy Azure w usłudze Azure SQL Database](sql-database-planned-maintenance.md).
+
+### <a name="azure-hybrid-benefit-questions"></a>Pytania dotyczące korzyści użycia hybrydowego platformy Azure
+
+#### <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Czy istnieją praw produktów podwójnego zastosowania dzięki korzyści użycia hybrydowego platformy Azure dla programu SQL Server
+
+Masz prawa do używania dwóch licencji na upewnij się, że migracja działają bezproblemowo na 180 dni. Po tym okresie 180-dniowy licencję programu SQL Server można używać tylko w chmurze w usłudze SQL Database i nie ma podwójnego zastosowania praw w środowisku lokalnym i w chmurze.
+
+#### <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Czym różni się korzyści użycia hybrydowego platformy Azure dla programu SQL Server z przenoszenia licencji
+
+Obecnie firma Microsoft oferuje korzyści przenoszenia licencji dla klientów programu SQL Server z pakietem Software Assurance, która umożliwia ponowne przypisanie licencji do udostępnionego serwerów innych firm. Ta korzyść może służyć w modelu IaaS platformy Azure i usługi EC2 usług AWS.
+Korzyść użycia hybrydowego platformy Azure dla programu SQL Server różni się od przenoszenia licencji w dwóch podstawowych obszarach:
+
+- Zapewnia korzyści ekonomiczne przenoszenie wysoce zwirtualizowanych obciążeń na platformę Azure. SQL EE klienci mogą uzyskać 4 rdzenie na platformie Azure w jednostki SKU ogólnego przeznaczenia na każdy rdzeń posiadanych on-premises dla wysoko zwirtualizowane aplikacje. Przenośność licencji nie zezwala na żadnych specjalnych oszczędności przenoszenia zwirtualizowanych obciążeń do chmury.
+- Zapewnia miejsce docelowe PaaS na platformie Azure (wystąpienie zarządzane SQL Database), wysoce zgodną z programu SQL Server w środowisku lokalnym
+
+#### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Co to są określone prawa korzyść użycia hybrydowego platformy Azure dla programu SQL Server
+
+Baza danych SQL, klienci będą mogli korzystać następujące prawa, które są skojarzone z korzyścią użycia hybrydowego platformy Azure dla programu SQL Server:
+
+|Zużycie licencji|Jaki jest korzyść użycia hybrydowego platformy Azure dla programu SQL Server uzyskać Ciebie?|
+|---|---|
+|SQL Server Enterprise Edition core klientom SA|<li>Płacić można stawka podstawowa, ogólnego przeznaczenia lub jednostki SKU krytycznej biznesowych</li><br><li>1 rdzeń w środowisku lokalnym = 4 rdzenie w jednostki SKU ogólnego przeznaczenia</li><br><li>1 rdzeń w środowisku lokalnym = 1 rdzeń w jednostce SKU krytycznej biznesowych</li>|
+|SQL Server Standard Edition core klientom SA|<li>Można tylko płacić stawka podstawowa według jednostki SKU ogólnego przeznaczenia</li><br><li>1 rdzeń w środowisku lokalnym = 1 rdzeń w jednostki SKU ogólnego przeznaczenia</li>|
+|||
+
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kontakt z zespołem inżynierów programu SQL Server
 

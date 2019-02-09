@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 95dc004e1a4b34f1f3a3c547da4ea7cd35e8c753
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 45ecc1cbe2a9cf7d11d7b17a7a72887dcb7aa1e3
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821477"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965413"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
 
@@ -117,6 +117,9 @@ Jeśli chcesz przenieść obszar roboczy do bieżącej warstwy cenowej, trzeba [
 > [!NOTE]
 > Jeśli obszar roboczy jest połączony z kontem usługi Automation, przed wybraniem warstwy cenowej *Autonomiczna (za GB)* musisz usunąć wszystkie rozwiązania **Automation and Control** i odłączyć konto usługi Automation. W bloku obszaru roboczego w obszarze **Ogólne** kliknij pozycję **Rozwiązania**, aby wyświetlić i usunąć rozwiązania. Aby odłączyć konto usługi Automation, kliknij nazwę konta usługi Automation w bloku **Warstwa cenowa**.
 
+> [!NOTE]
+> Dowiedz się więcej o (ustawienie warstwy cenowej za pośrednictwem ARM) [https://docs.microsoft.com/en-us/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace] oraz sposób upewnić się, że wdrożenie ARM powiedzie się niezależnie od tego, czy subskrypcja jest w starszej wersji lub nowy model cen. 
+
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Rozwiązywanie problemów związanych z usługi Log Analytics nie jest już jest zbieranie danych
 Jeśli znajdują się na warstwie cenowej bezpłatna starszej wersji i wysłane w ciągu dnia więcej niż 500 MB danych, zbierania danych nie będzie możliwy do końca dnia. Osiągnięcia dziennego limitu jest typową przyczyną, usługi Log Analytics zatrzymuje proces zbierania danych lub danych prawdopodobnie brakuje.  Usługa log Analytics tworzy zdarzenie typu operacji podczas zbierania danych uruchamia i zatrzymuje. W polu wyszukiwania, aby sprawdzić, jeśli osiągnięcia dziennego limitu i brakujące dane, uruchom następujące zapytanie: 
@@ -128,7 +131,7 @@ Po zatrzymaniu zbierania danych OperationStatus jest ostrzeżenie. Podczas uruch
 |Zatrzymuje kolekcję Przyczyna| Rozwiązanie| 
 |-----------------------|---------|
 |Osiągnięto dzienny limit starsze warstwy cenowej bezpłatna |Poczekaj, aż do następnego dnia, aby Kolekcjonowanie mogło być automatycznie uruchomiony ponownie lub Zmień na płatną warstwę cenową.|
-|Osiągnięto dzienny limit obszaru roboczego|Poczekaj, aż kolekcji do automatycznego ponownego uruchamiania lub zwiększenia dziennego limitu woluminu danych opisanych w zarządzać Maksymalna dzienna ilość danych. Godzina codziennego resetowania zakończenia są wyświetlane na **zarządzanie ilością danych** strony. |
+|Osiągnięto dzienny limit obszaru roboczego|Poczekaj, aż kolekcji do automatycznego ponownego uruchamiania lub zwiększenia dziennego limitu woluminu danych opisanych w [Zarządzanie Maksymalna dzienna ilość danych](#manage-the-maximum-daily-volume). Godzina codziennego resetowania zakończenia są wyświetlane na **zarządzanie ilością danych** strony. |
 |Subskrypcja platformy Azure jest w stanie wstrzymania ze względu na:<br> Bezpłatny okres próbny zakończył się<br> Azure — dostęp próbny wygasł<br> Co miesiąc limit wydatków osiągnięto (na przykład w ramach subskrypcji MSDN lub Visual Studio)|Konwertuj na płatną subskrypcję<br> Usuń limit lub poczekaj na zresetowanie limitu|
 
 Aby otrzymać powiadomienie po zatrzymaniu zbierania danych, należy użyć procedury opisanej w *dziennego limitu danych utwórz* alert, aby otrzymywać powiadomienia, po zatrzymaniu zbierania danych i postępuj zgodnie z instrukcjami, wykonaj czynności opisane w Dodawanie akcji do wyzwalania alertu, zasady Skonfiguruj wiadomość e-mail Element webhook lub akcję runbook dla reguły alertu. 

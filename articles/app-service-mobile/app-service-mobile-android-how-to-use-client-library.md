@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: c0e6aa34b80389689e49ac6ad3566a3a109a96e1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 803c9af7b6c40f7deee2b81fb7ff0ae82ef6778a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158166"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965158"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Jak używać zestawu SDK aplikacji usługi Azure Mobile dla systemu Android
 
@@ -55,7 +55,7 @@ Zmień **build.gradle** plików:
 
 1. Dodaj następujący kod do *projektu* poziom **build.gradle** pliku wewnątrz *buildscript* tag:
 
-    ```text
+    ```gradle
     buildscript {
         repositories {
             jcenter()
@@ -65,7 +65,7 @@ Zmień **build.gradle** plików:
 
 2. Dodaj następujący kod do *aplikacji modułu* poziom **build.gradle** pliku wewnątrz *zależności* tag:
 
-    ```text
+    ```gradle
     compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
@@ -496,7 +496,7 @@ Układ jest definiowany przez kilka fragmentów kodu XML. Biorąc pod uwagę ist
 
 W poprzednim kodzie *listitem* atrybut określa identyfikator układ dla pojedynczego wiersza na liście. Ten kod określa pole wyboru i jego tekst i pobiera jednorazowego dla każdego elementu na liście. Nie są wyświetlane w tym układzie **identyfikator** pola i bardziej złożonych układ określić dodatkowych pól na ekranie. Ten kod znajduje się w **row_list_to_do.xml** pliku.
 
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -520,7 +520,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 Zastąp kart **getView** metody. Na przykład:
 
-```
+```java
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -770,7 +770,7 @@ Zestaw SDK klienta usługi Azure Mobile Apps implementuje również synchronizac
 * Synchronizacja przyrostowa: Tylko zaktualizowanych i nowych rekordów są pobierane, zapisywanie zużycie przepustowości i pamięci.
 * Optymistyczna współbieżność: Przyjęto założenie, że operacje są poprawne.  Rozwiązywanie konfliktów jest odroczone do czasu aktualizacje są wykonywane na serwerze.
 * Rozwiązywanie konfliktów: Zestaw SDK wykrywa zmiany powodujące konflikt stało się na serwerze i zawiera punkty zaczepienia, aby ostrzec użytkownika.
-* Usuwanie nietrwałe: Usunięte rekordy są oznaczane usuniętych, dzięki czemu inne urządzenia, aby zaktualizować ich pamięci podręcznej offline.
+* Soft Delete: Usunięte rekordy są oznaczane usuniętych, dzięki czemu inne urządzenia, aby zaktualizować ich pamięci podręcznej offline.
 
 ### <a name="initialize-offline-sync"></a>Inicjowanie synchronizacji w trybie Offline
 
@@ -959,7 +959,7 @@ Ponadto należy skonfigurować projekt dla customtabs.  Najpierw określić adre
 
 Dodaj **redirectUriScheme** do `build.gradle` pliku dla aplikacji:
 
-```text
+```gradle
 android {
     buildTypes {
         release {
@@ -976,7 +976,7 @@ android {
 
 Na koniec należy dodać `com.android.support:customtabs:23.0.1` listę zależności w `build.gradle` pliku:
 
-```text
+```gradle
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3'
@@ -1076,7 +1076,7 @@ Active Directory Authentication Library (ADAL) służy do logowania się użytko
 1. Skonfiguruj zaplecza aplikacji mobilnej do logowania w usłudze AAD, wykonując [sposób konfigurowania usługi App Service dla nazwy logowania usługi Active Directory] [ 22] samouczka. Upewnij się ukończyć opcjonalny krok rejestrowanie natywnej aplikacji klienckiej.
 2. Zainstaluj biblioteki ADAL, modyfikując z plikiem build.gradle, aby uwzględnić następujące definicje:
 
-    ```
+    ```gradle
     repositories {
         mavenCentral()
         flatDir {

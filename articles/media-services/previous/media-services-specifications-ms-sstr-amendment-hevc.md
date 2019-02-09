@@ -4,7 +4,7 @@ description: Tej specyfikacji opisuje protokół i format podzielonej zawartośc
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: f27d85de-2cb8-4269-8eed-2efb566ca2c6
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: c87795c1203a8639ba224a646f8f0c5f5515b840
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 3261e84dcd3dee06071b0fed78b61e2959e3bbf9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812764"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978771"
 ---
-# <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>Bezproblemowe przesyłania strumieniowego zmiany protokołu (MS-SSTR) dla — HEVC
+# <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc-legacy"></a>Bezproblemowe zmiany protokołu przesyłania strumieniowego (MS-SSTR) dla — HEVC (starsza wersja)
 
 ## <a name="1-introduction"></a>Wprowadzenie 1 
 

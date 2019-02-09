@@ -3,8 +3,8 @@ title: Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directo
 description: Dowiedz się, jak używać mapowań wyrażenia do przekształcania wartości atrybutów akceptowalny format podczas automatycznego inicjowania obsługi obiektów aplikacji SaaS w usłudze Azure Active Directory.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: 3361bc384f3da3d2bde6eab703056dd85356b5f8
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: c97fd915e9022171125c7c0f687413e433f82871
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895418"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983845"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -49,7 +49,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego |
+| **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
 | **suffix** |Wymagane |Ciąg |Ciąg, który chcesz dołączyć do końca wartość źródła. |
 
 - - -
@@ -72,7 +72,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 
 **Opis:**<br> JOIN() przypomina Append(), z tą różnicą, że można łączyć w wielu **źródła** ciąg wartości w pojedynczy ciąg, a każda wartość będzie rozdzielone **separator** ciągu.
 
-Jeśli jedna z wartości źródła jest atrybutu wielowartościowego, każda wartość w tego atrybutu zostaną połączone razem, oddzielonych wartości separatora.
+Jeśli jedna z wartości źródłowej jest atrybutu wielowartościowego, każda wartość tego atrybutu zostaną dołączone ze sobą, oddzielając wartości separatora.
 
 **Parametry:**<br> 
 
@@ -105,7 +105,7 @@ Jeśli jedna z wartości źródła jest atrybutu wielowartościowego, każda war
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg | Zazwyczaj nazwę pierwszego lub ostatniego atrybutu nazwy |
+| **source** |Wymagane |String | Zazwyczaj imię lub ostatniego atrybutu name. |
 
 - - -
 ### <a name="not"></a>nie
@@ -117,7 +117,7 @@ Jeśli jedna z wartości źródła jest atrybutu wielowartościowego, każda war
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Wartości logicznych |Oczekiwano **źródła** wartości to "True" lub "False"... |
+| **source** |Wymagane |Wartości logicznych |Oczekiwano **źródła** wartości to "True" lub "False". |
 
 - - -
 ### <a name="replace"></a>Replace
@@ -128,7 +128,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 * Gdy **oldValue** i **replacementValue** znajdują się:
   
-  * Zamienia wszystkie wystąpienia oldValue w źródle replacementValue
+  * Zamienia wszystkie wystąpienia **oldValue** w **źródła** z *replacementValue**
 * Gdy **oldValue** i **szablonu** znajdują się:
   
   * Zamienia wszystkie wystąpienia **oldValue** w **szablonu** z **źródła** wartość
@@ -167,7 +167,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **uniqueValueRule1... uniqueValueRuleN** |Co najmniej 2 są wymagane, nie górnej granicy |Ciąg | Lista reguł generowania unikatową wartość do oceny |
+| **uniqueValueRule1... uniqueValueRuleN** |Co najmniej 2 są wymagane, nie górnej granicy |String | Lista reguł generowania unikatową wartość do oceny. |
 
 
 - - -
@@ -219,7 +219,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego |
+| **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
 | **Kultury** |Optional (Opcjonalność) |String |Format nazwy kultury, oparte na RFC 4646 *languagecode2 — kraj/regioncode2*, gdzie *languagecode2* jest kod języka dwuliterowych i *kraju/regioncode2*znajduje się kod przeszczepiania dwuliterowych. Przykłady obejmują ja-JP japoński (Japonia) i en US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowych nie jest dostępna trzyliterowy kod pochodzi od ISO 639-2 jest używany.|
 
 - - -
@@ -232,7 +232,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego |
+| **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
 | **Kultury** |Optional (Opcjonalność) |String |Format nazwy kultury, oparte na RFC 4646 *languagecode2 — kraj/regioncode2*, gdzie *languagecode2* jest kod języka dwuliterowych i *kraju/regioncode2*znajduje się kod przeszczepiania dwuliterowych. Przykłady obejmują ja-JP japoński (Japonia) i en US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowych nie jest dostępna trzyliterowy kod pochodzi od ISO 639-2 jest używany.|
 
 ## <a name="examples"></a>Przykłady

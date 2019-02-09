@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 63334c861cc85c7119ccd3111429dee47ada3162
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862942"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984362"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Zrozumienie, co dobre wypowiedzi związanych z aplikacją usługi LUIS
 
@@ -39,7 +39,7 @@ Gdy użytkownik najpierw początek [Dodawanie wypowiedzi przykład](luis-how-to-
 
 ### <a name="utterances-arent-always-well-formed"></a>Wypowiedzi nie są zawsze poprawnie sformułowany.
 
-Może być dowolne zdanie, takich jak "Zarezerwuj biletu do Paryża dla mnie" lub fragment zdania, takich jak "Rezerwacji" lub "Paryż lot."  Użytkownicy często wykonują błędy pisowni. Podczas planowania aplikacji należy wziąć pod uwagę, czy używasz [Check][(luis-tutorial-bing-spellcheck) pisowni Bing do Popraw dane wejściowe użytkownika przed przekazaniem go do usługi LUIS. 
+Może być dowolne zdanie, takich jak "Zarezerwuj biletu do Paryża dla mnie" lub fragment zdania, takich jak "Rezerwacji" lub "Paryż lot."  Użytkownicy często wykonują błędy pisowni. Podczas planowania aplikacji należy wziąć pod uwagę, czy używasz [sprawdzania pisowni Bing](luis-tutorial-bing-spellcheck.md) aby poprawić dane wejściowe użytkownika przed przekazaniem go do usługi LUIS. 
 
 Jeśli wypowiedzi użytkownika wyboru nie jest pisowni, możesz później LUIS, na wypowiedzi obejmujących literówki i błędy pisowni.
 

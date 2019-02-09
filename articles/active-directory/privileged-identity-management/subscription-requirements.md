@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: ad64fba0288aa5663e008484d6f0d2cbdff0bca6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f6e2042f94ce653c1d569385deddbade548a58b4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187293"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977834"
 ---
 # <a name="license-requirements-to-use-pim"></a>Wymagania licencyjne, aby używać aplikacji PIM
 
@@ -33,6 +33,7 @@ Aby korzystać z usługi PIM, katalogiem musi mieć jedną z następujących pł
 
 - Usługa Azure AD — warstwa Premium P2
 - Enterprise Mobility + Security (EMS) E5
+- Microsoft 365 M5
 
 Aby uzyskać więcej informacji, zobacz [Co to jest usługa Azure Active Directory?](../fundamentals/active-directory-whatis.md).
 
@@ -63,5 +64,6 @@ Jeśli program Azure AD Premium P2, EMS E5 lub licencja próbna wygaśnie, funkc
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+- [Wdrażanie usługi PIM](pim-deployment-plan.md)
 - [Rozpoczynanie korzystania z usługi PIM](pim-getting-started.md)
 - [Role nie można zarządzać w usłudze PIM](pim-roles.md)

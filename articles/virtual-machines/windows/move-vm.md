@@ -15,19 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 1daf04e3f878d0748bfa0904259c7b7187481843
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: ede2092be4e4eaf201e15307a7d9934ea267ae37
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580492"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980707"
 ---
 # <a name="move-a-windows-vm-to-another-azure-subscription-or-resource-group"></a>Przenoszenie maszyny Wirtualnej z systemem Windows do innego systemu Azure subskrypcji lub grupy zasobów
 W tym artykule przedstawiono sposób przenoszenia Windows maszyny wirtualnej (VM) między grupami zasobów lub subskrypcji. Przenoszenie między subskrypcjami może być przydatna, jeśli pierwotnie utworzono Maszynę wirtualną w ramach subskrypcji osobistych i teraz chcesz przenieść je do subskrypcji w firmie, aby kontynuować pracę.
 
 > [!IMPORTANT]
->W tej chwili nie można przenieść usługę Azure Managed Disks. 
->
 >Nowych identyfikatorów zasobów są tworzone w ramach przejścia. Po przeniesieniu maszyny Wirtualnej należy zaktualizować narzędzia i skrypty do używania nowych identyfikatorów zasobów. 
 > 
 > 
@@ -36,23 +34,23 @@ W tym artykule przedstawiono sposób przenoszenia Windows maszyny wirtualnej (VM
 
 ## <a name="use-powershell-to-move-a-vm"></a>Przenoszenie maszyny Wirtualnej przy użyciu programu Powershell
 
-Aby przenieść maszynę wirtualną do innej grupy zasobów, należy się upewnić, że możesz również przenieść wszystkie zasoby zależne. Aby uzyskać listę o identyfikatorze zasobu każdego z tych zasobów, użyj [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource) polecenia cmdlet.
+Aby przenieść maszynę wirtualną do innej grupy zasobów, należy się upewnić, że możesz również przenieść wszystkie zasoby zależne. Aby uzyskać listę o identyfikatorze zasobu każdego z tych zasobów, użyj [Get AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) polecenia cmdlet.
 
 ```azurepowershell-interactive
- Get-AzureRMResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
+ Get-AzResource -ResourceGroupName <sourceResourceGroupName> | Format-table -Property ResourceId 
 ```
 
-Dane wyjściowe poprzedniego polecenia można użyć jako rozdzielaną przecinkami listę identyfikatorów zasobów do [Move-AzureRMResource](/powershell/module/azurerm.resources/move-azurermresource) można przenieść każdego zasobu do miejsca docelowego. 
+Dane wyjściowe poprzedniego polecenia można użyć jako rozdzielaną przecinkami listę identyfikatorów zasobów do [AzResource przenoszenia](https://docs.microsoft.com/powershell/module/az.resources/move-azresource) można przenieść każdego zasobu do miejsca docelowego. 
 
 ```azurepowershell-interactive
-Move-AzureRmResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
+Move-AzResource -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```
     
 Aby przenieść zasoby do innej subskrypcji, należy dołączyć **- DestinationSubscriptionId** parametru. 
 
 ```azurepowershell-interactive
-Move-AzureRmResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
+Move-AzResource -DestinationSubscriptionId "<myDestinationSubscriptionID>" `
     -DestinationResourceGroupName "<myDestinationResourceGroup>" `
     -ResourceId <myResourceId,myResourceId,myResourceId>
 ```

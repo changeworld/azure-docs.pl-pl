@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: d43adf7009fcd668299f018b6308765bb115b237
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: e103124b2b0e720517106f9b4453ee8a76688eca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565908"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977222"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Zarządzanie zasobami usługi Media Services na wielu kontach magazynu
+# <a name="managing-media-services-assets-across-multiple-storage-accounts-legacy"></a>Zarządzanie zasobami usługi Media Services na wielu kontach magazynu (starsza wersja)
 
 Można dołączyć wiele kont magazynu do jednego konta usługi Media Services. Możliwość dołączenia wielu kont magazynu do konta usługi Media Services zapewnia następujące korzyści:
 
@@ -33,7 +33,7 @@ W tym artykule pokazano, jak można dołączyć wiele kont magazynu do konta us�
 
 Podczas podłączania wielu kont magazynu do konta usługi Media Services, obowiązują następujące zastrzeżenia:
 
-* Konto usługi Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Zalecane jest korzystanie z kont magazynu w tej samej lokalizacji co konto usługi Media Services.
+* Konto usług Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Zalecane jest korzystanie z kont magazynu w tej samej lokalizacji, co konto usług Media Services.
 * Gdy konto magazynu jest dołączony do określonego konta usługi Media Services, nie można odłączyć.
 * Konto magazynu podstawowego jest ta wskazana w czasie tworzenia konta usługi Media Services. Obecnie nie można zmienić domyślne konto magazynu. 
 * Jeśli chcesz dodać konto magazynu chłodnego na konto AMS, konto magazynu musi być typem obiektów Blob i równa innych niż podstawowe.

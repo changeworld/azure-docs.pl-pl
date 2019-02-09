@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 1/30/2019
+ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658390"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979653"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -209,7 +209,7 @@ W poniższej tabeli wymieniono zmiennych utworzonych na koncie usługi Automatio
 |External_AutoStop_TimeAggregationOperator | Operator agregacji czasu, która jest stosowana do rozmiaru okna wybranego warunku. Dopuszczalne wartości to **średni**, **co najmniej**, **maksymalna**, **całkowita**, i **ostatniego**.|
 |External_AutoStop_TimeWindow | Rozmiar okna, w którym Azure analizuje wybrane metryki służącą do wyzwalania alertu. Ten parametr akceptuje dane wejściowe w formacie przedziału czasu. Możliwe wartości to od 5 minut do 6 godzin.|
 |External_EnableClassicVMs| Określa, czy klasyczne maszyny wirtualne są objęte rozwiązania. Wartość domyślna to True. Należy można ustawić na wartość False dla subskrypcji programu CSP.|
-|External_ExcludeVMNames | Wprowadź nazwy maszyn wirtualnych, które mają być wykluczone, oddzielając nazwy za pomocą przecinka bez spacji.|
+|External_ExcludeVMNames | Wprowadź nazwy maszyn wirtualnych, które mają być wykluczone, oddzielając nazwy za pomocą przecinka bez spacji. To jest ograniczona do 140 maszyn wirtualnych. Jeśli dodasz ponad 140 maszyny wirtualne są dodawane maszyny wirtualne przeznaczone do wykluczenia, mogą być uruchamiane lub zamknięcie przypadkowo|
 |External_Start_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości przecinkami, przeznaczone dla działania uruchamiania.|
 |External_Stop_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości za pomocą przecinków, przeznaczony dla akcji stop.|
 |Internal_AutomationAccountName | Określa nazwę konta usługi Automation.|
@@ -333,7 +333,7 @@ Istnieje kilka opcji, których można użyć, aby upewnić się, czy maszyny Wir
 
 ### <a name="exclude-a-vm"></a>Wyklucz Maszynę wirtualną
 
-Aby wykluczyć Maszynę wirtualną z rozwiązania, należy dodać go do **External_ExcludeVMNames** zmiennej. Ta zmienna jest rozdzielana przecinkami lista wybranych maszyn wirtualnych, które mają zostać wykluczone z rozwiązania uruchomień/zatrzymań.
+Aby wykluczyć Maszynę wirtualną z rozwiązania, należy dodać go do **External_ExcludeVMNames** zmiennej. Ta zmienna jest rozdzielana przecinkami lista wybranych maszyn wirtualnych, które mają zostać wykluczone z rozwiązania uruchomień/zatrzymań. Ta lista jest ograniczona do 140 maszyn wirtualnych. Jeśli ponad 140 maszyny wirtualne zostaną dodane do tej listy rozdzielanej przecinkami, maszyn wirtualnych, które są ustawione, które mają być wykluczone mogą zostać przypadkowo uruchomiona lub zatrzymana.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Modyfikuj harmonogramy uruchamiania i zamykania
 

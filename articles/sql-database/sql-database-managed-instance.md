@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: c0067dc96837d758e4c2551bcb29faf63c1a7715
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895045"
+ms.locfileid: "55964155"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -107,7 +107,7 @@ Warstwy usług krytycznych firm zaprojektowano pod kątem aplikacji za pomocą w
 Poniższa lista zawiera opis kluczowych charakterystyk krytyczne dla działania firmy warstwy usług:
 
 - Przeznaczona dla aplikacji biznesowych o najwyższej wydajności i wymaganiami wysokiej dostępności
-- Dołączono superszybkiego lokalny magazyn SSD (maksymalnie 1 TB na Gen 4 i maksymalnie 4 TB w Gen 5)
+- Dołączono superszybkiego lokalny magazyn SSD (do 1 TB na 4. generacji i maksymalnie 4 TB na 5. generacji)
 - Wbudowane [wysokiej dostępności](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) na podstawie [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md).
 - Dodatkowe wbudowane [repliki bazy danych tylko do odczytu](sql-database-read-scale-out.md) mogą służyć do raportowania i innych obciążeń, tylko do odczytu
 - [Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) które mogą być używane w przypadku obciążeń z wymogami wysokiej wydajności  

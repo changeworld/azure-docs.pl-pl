@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2019
+ms.date: 01/31/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 05efa7eaf6d95cbf63efd17b00d321d8c8509f28
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: acd92c711f432cf103b9309247704ff348287ff6
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246783"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964070"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Usługi Azure Managed Disks stosu: różnice i zagadnienia dotyczące
 
@@ -32,13 +32,12 @@ Usługa Managed Disks upraszcza zarządzanie dyskami dla maszyn wirtualnych IaaS
 > [!Note]  
 > Dyski zarządzane w usłudze Azure Stack jest dostępna aktualizacja 1808. Włączono domyślnie podczas tworzenia maszyn wirtualnych przy użyciu portalu Azure Stack z 1811 aktualizacji.
   
-
 ## <a name="cheat-sheet-managed-disk-differences"></a>Ściągawka: Różnice dysku zarządzanego
 
 | Cecha | Azure (globalna) | Azure Stack |
 | --- | --- | --- |
 |Szyfrowanie danych magazynowanych |Szyfrowanie usługi Azure Storage (SSE), usługa Azure Disk Encryption (ADE)     |Funkcja BitLocker 128-bitowego szyfrowania AES      |
-|Image (Obraz)          | Obsługa zarządzany obraz niestandardowy |Nie jest jeszcze obsługiwany|
+|Image (Obraz)          | Obsługa zarządzany obraz niestandardowy |Obsługiwane|
 |Opcje kopii zapasowych |Obsługa usługi Azure Backup |Nie jest jeszcze obsługiwany |
 |Opcje odzyskiwania po awarii |Obsługa usługi Azure Site Recovery |Nie jest jeszcze obsługiwany|
 |Typy dysków     |Dysk SSD w warstwie Premium SSD w warstwie standardowa (wersja zapoznawcza) i standardowych dysków Twardych |Premium SSD, HDD standardowe |
@@ -66,6 +65,72 @@ Usługa Azure Stack Managed Disks obsługuje następujące wersje interfejsu API
 
 - 2017-03-30
 
+## <a name="managed-images"></a>Zarządzane obrazów
+
+Platforma Azure obsługuje stosu *zarządzanych obrazów*, umożliwiające dysku należy utworzyć obiekt obrazu zarządzanego uogólnionej maszyny wirtualnej (zarówno niezarządzane i zarządzane), można tworzyć tylko zarządzane maszyny wirtualne w przyszłości. Obrazy zarządzanych umożliwiają dwa następujące scenariusze:
+
+- Zostały uogólnione niezarządzanych maszyn wirtualnych i chcesz używać dysków zarządzanych w przyszłości.
+- Masz zarządzanego uogólnionej maszyny Wirtualnej i chcesz utworzyć wiele, podobne zarządzanych maszyn wirtualnych.
+
+### <a name="migrate-unmanaged-vms-to-managed-disks"></a>Migrowanie maszyn wirtualnych niezarządzanych do dysków zarządzanych
+
+Postępuj zgodnie z instrukcjami [tutaj](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-vhd-in-a-storage-account) do tworzenie obrazu zarządzanego na podstawie uogólnionego wirtualnego dysku twardego w ramach konta magazynu. Ten obraz może służyć do tworzenia zarządzanych maszyn wirtualnych w przyszłości.
+
+### <a name="create-managed-image-from-vm"></a>Tworzenie obrazu zarządzanego z maszyny Wirtualnej
+
+Po utworzeniu obrazu z istniejącego zarządzanego dysku maszyny Wirtualnej przy użyciu skryptu [tutaj](../../virtual-machines/windows/capture-image-resource.md#create-an-image-from-a-managed-disk-using-powershell) , następujący skrypt przykładowy tworzy podobne maszyny Wirtualnej systemu Linux na podstawie istniejącego obiektu obrazu:
+
+```powershell
+# Variables for common values
+$resourceGroup = "myResourceGroup"
+$location = "redmond"
+$vmName = "myVM"
+$imagerg = "managedlinuxrg"
+$imagename = "simplelinuxvmm-image-2019122"
+
+# Create user object
+$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
+
+# Create a resource group
+New-AzureRmResourceGroup -Name $resourceGroup -Location $location
+
+# Create a subnet configuration
+$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet -AddressPrefix 192.168.1.0/24
+
+# Create a virtual network
+$vnet = New-AzureRmVirtualNetwork -ResourceGroupName $resourceGroup -Location $location `
+  -Name MYvNET -AddressPrefix 192.168.0.0/16 -Subnet $subnetConfig
+
+# Create a public IP address and specify a DNS name
+$pip = New-AzureRmPublicIpAddress -ResourceGroupName $resourceGroup -Location $location `
+  -Name "mypublicdns$(Get-Random)" -AllocationMethod Static -IdleTimeoutInMinutes 4
+
+# Create an inbound network security group rule for port 3389
+$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig -Name myNetworkSecurityGroupRuleRDP  -Protocol Tcp `
+  -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * -DestinationAddressPrefix * `
+  -DestinationPortRange 3389 -Access Allow
+
+# Create a network security group
+$nsg = New-AzureRmNetworkSecurityGroup -ResourceGroupName $resourceGroup -Location $location `
+  -Name myNetworkSecurityGroup -SecurityRules $nsgRuleRDP
+
+# Create a virtual network card and associate with public IP address and NSG
+$nic = New-AzureRmNetworkInterface -Name myNic -ResourceGroupName $resourceGroup -Location $location `
+  -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $pip.Id -NetworkSecurityGroupId $nsg.Id
+
+$image = get-azurermimage -ResourceGroupName $imagerg -ImageName $imagename
+# Create a virtual machine configuration
+$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 | `
+Set-AzureRmVMOperatingSystem -Linux -ComputerName $vmName -Credential $cred | `
+Set-AzureRmVMSourceImage -Id $image.Id | `
+Add-AzureRmVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
+```
+
+Aby uzyskać więcej informacji, zobacz platformy Azure zarządzanego obrazu artykuły [utworzenie obrazu zarządzanego uogólnionej maszyny wirtualnej na platformie Azure](../../virtual-machines/windows/capture-image-resource.md) i [Utwórz Maszynę wirtualną z obrazu zarządzanego](../../virtual-machines/windows/create-vm-generalized-managed.md).
+
 ## <a name="configuration"></a>Konfigurowanie
 
 Po zastosowaniu 1808 aktualizacji lub nowszej, należy wykonać następującą konfigurację, przed rozpoczęciem korzystania z dysków zarządzanych:
@@ -73,8 +138,7 @@ Po zastosowaniu 1808 aktualizacji lub nowszej, należy wykonać następującą k
 - Jeśli subskrypcja została utworzona przed aktualizacją 1808, wykonaj poniższe kroki, aby zaktualizować subskrypcji. W przeciwnym razie wdrażanie maszyn wirtualnych w ramach tej subskrypcji może zakończyć się komunikat o błędzie "Błąd wewnętrzny w Menedżerze dysków."
    1. W portalu dzierżawcy, przejdź do **subskrypcje** i Znajdź subskrypcji. Kliknij przycisk **dostawców zasobów**, następnie kliknij przycisk **Microsoft.Compute**, a następnie kliknij przycisk **ponownie zarejestrować**.
    2. W ramach tej samej subskrypcji, przejdź do **kontrola dostępu (IAM)** i upewnij się, że **usługi Azure Stack — dysk zarządzany** znajduje się na liście.
-- Jeśli używasz środowiska z wieloma dzierżawami, poproś operator chmury (może być w swojej organizacji lub od dostawcy usług) Aby zmienić konfigurację wszystkich katalogów gościa wykonaj następujące czynności w [w tym artykule](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). W przeciwnym razie wdrażanie maszyn wirtualnych w ramach subskrypcji skojarzonych z nim gościa może zakończyć się komunikat o błędzie "Błąd wewnętrzny w Menedżerze dysków."
-
+- Jeśli używasz środowiska z wieloma dzierżawami, poproś o swojej chmury operatora (która może znajdować się w Twojej organizacji lub od dostawcy usług) Zmień konfigurację wszystkich katalogów gościa czynności opisane w [w tym artykule](../azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory). W przeciwnym razie wdrażanie maszyn wirtualnych w ramach subskrypcji skojarzonych z nim gościa może zakończyć się komunikat o błędzie "Błąd wewnętrzny w Menedżerze dysków."
 
 ## <a name="next-steps"></a>Kolejne kroki
 

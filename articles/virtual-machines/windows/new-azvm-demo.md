@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyny Wirtualnej Windows w usłudze Azure Cloud Shell za pomocą uproszczonego cmdlet New-AzureRMVM | Dokumentacja firmy Microsoft
-description: Szybka nauka tworzenia maszyn wirtualnych Windows za pomocą polecenia cmdlet New-AzureRMVM uproszczone w usłudze Azure Cloud Shell.
+title: Tworzenie maszyny Wirtualnej Windows za pomocą uproszczonego polecenia cmdlet New-AzVM usługi Azure Cloud Shell | Dokumentacja firmy Microsoft
+description: Szybka nauka tworzenia maszyn wirtualnych Windows za pomocą uproszczonego polecenia cmdlet New-AzVM usługi Azure Cloud Shell.
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: cynthn
@@ -16,40 +16,40 @@ ms.workload: infrastructure
 ms.date: 12/12/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: d078a9d319ea914c0cab9113ee71283213471261
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 32862d06cfa6a9a8dd9b99459362ec53fd88cec2
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428669"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978969"
 ---
-# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azurermvm-cmdlet-in-cloud-shell"></a>Utwórz maszynę wirtualną Windows za pomocą polecenia cmdlet New-AzureRMVM uproszczone w usłudze Cloud Shell 
+# <a name="create-a-windows-virtual-machine-with-the-simplified-new-azvm-cmdlet-in-cloud-shell"></a>Utwórz maszynę wirtualną Windows za pomocą polecenia cmdlet New-AzVM uproszczone w usłudze Cloud Shell 
 
-[New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) polecenia cmdlet dodano uproszczony zestaw parametrów do tworzenia nowej maszyny Wirtualnej przy użyciu programu PowerShell. W tym temacie przedstawiono sposób używania programu PowerShell w usłudze Azure Cloud Shell z najnowszą wersją polecenia cmdlet New-AzureVM wstępnie zainstalowane, aby utworzyć nową maszynę Wirtualną. Firma Microsoft użyje zestaw uproszczone parametr, który automatycznie utworzy wszystkie wymagane zasoby przy użyciu inteligentnych wartości domyślnych. 
+[New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azurermps-6.8.1) polecenia cmdlet dodano uproszczony zestaw parametrów do tworzenia nowej maszyny Wirtualnej przy użyciu programu PowerShell. W tym temacie przedstawiono sposób używania programu PowerShell w usłudze Azure Cloud Shell z najnowszą wersją polecenia cmdlet New-AzureVM wstępnie zainstalowane, aby utworzyć nową maszynę Wirtualną. Firma Microsoft użyje zestaw uproszczone parametr, który automatycznie utworzy wszystkie wymagane zasoby przy użyciu inteligentnych wartości domyślnych. 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [cloud-shell-powershell](../../../includes/cloud-shell-powershell.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 5.1.1 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-the-vm"></a>Tworzenie maszyny wirtualnej
 
-Możesz użyć [New-AzureRMVM](https://docs.microsoft.com/powershell/module/azurerm.compute/new-azurermvm?view=azurermps-6.8.1) polecenia cmdlet, aby utworzyć Maszynę wirtualną przy użyciu domyślnych ustawień inteligentnych, obejmujących przy użyciu obrazu systemu Windows Server 2016 Datacenter z witryny Azure Marketplace. Możesz użyć polecenia New-AzureRMVM przy użyciu tylko **— nazwa** parametru i będzie używać tej wartości dla wszystkich nazw zasobów. W tym przykładzie parametr **-Nazwa** zostanie ustawiony na wartość *myVM*. 
+Polecenie cmdlet [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azurermps-6.8.1) pozwala utworzyć maszynę wirtualną przy użyciu inteligentnych ustawień domyślnych, umożliwiających na przykład użycie obrazu systemu Windows Server 2016 Datacenter pochodzącego z witryny Azure Marketplace. Można użyć New-AzVM, za pomocą tylko **— nazwa** parametru i będzie używać tej wartości dla wszystkich nazw zasobów. W tym przykładzie parametr **-Nazwa** zostanie ustawiony na wartość *myVM*. 
 
 Upewnij się, że w usłudze Cloud Shell wybrano program **PowerShell** i wpisz:
 
 ```azurepowershell-interactive
-New-AzureRMVm -Name myVM
+New-AzVm -Name myVM
 ```
 
 Pojawi się monit o utworzenie nazwy użytkownika i hasła dla maszyny wirtualnej. Dane te będą używane do połączenia się z maszyną wirtualną w dalszej części tego tematu. Hasło musi mieć długość od 12 do 123 znaków i spełniać trzy z czterech następujących wymagań dotyczących złożoności: mała litera, wielka litera, cyfra i znak specjalny.
 
-Utworzenie maszyny wirtualnej i skojarzonych zasobów trwa około minutę. Gdy skończysz, możesz zobaczyć wszystkie zasoby, które zostały utworzone przy użyciu [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) polecenia cmdlet.
+Utworzenie maszyny wirtualnej i skojarzonych zasobów trwa około minutę. Gdy skończysz, możesz zobaczyć wszystkie zasoby, które zostały utworzone przy użyciu [Get AzResource](https://docs.microsoft.com/powershell/module/az.resources/get-azresource) polecenia cmdlet.
 
 ```azurepowershell-interactive
-Get-AzureRmResource `
+Get-AzResource `
     -ResourceGroupName myVMResourceGroup | Format-Table Name
 ```
 
@@ -57,10 +57,10 @@ Get-AzureRmResource `
 
 Po zakończeniu wdrożenia utwórz połączenie pulpitu zdalnego z maszyną wirtualną.
 
-Wróć do publicznego adresu IP maszyny wirtualnej za pomocą polecenia [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress). Zanotuj ten adres IP.
+Użyj [Get AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) polecenie, aby zwrócić publiczny adres IP maszyny wirtualnej. Zanotuj ten adres IP.
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
     -ResourceGroupName myVMResourceGroup | Select IpAddress
 ```
 
@@ -74,7 +74,7 @@ mstsc /v:<publicIpAddress>
 Zapewniają również bardziej opisowe nazwy zasobów i nadal masz ich tworzone automatycznie. Oto przykład gdzie możemy mają nazwane wiele zasobów dla nowej maszyny Wirtualnej, w tym nową grupę zasobów.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroup" `
     -Name "myVM" `
     -Location "East US" `
@@ -87,11 +87,11 @@ New-AzureRmVm `
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy grupa zasobów, maszyna wirtualna i wszystkie pokrewne zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+Jeśli nie będą już potrzebne, możesz użyć [AzResourceGroup Usuń](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) polecenia, aby usunąć grupę zasobów maszyny Wirtualnej i wszystkie pokrewne zasoby.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myVM
-Remove-AzureRmResourceGroup -Name myResourceGroup
+Remove-AzResourceGroup -Name myVM
+Remove-AzResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

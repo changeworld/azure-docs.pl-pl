@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 749a599936825f5f69ae18affad0fa89a4f1118f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 95b5bbb6c227b5001865a751abddddc4924e7b2d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259635"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981081"
 ---
 # <a name="install-and-use-apache-solr-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie Apache Solr w klastrach HDInsight z systemem Windows
 
@@ -46,17 +46,12 @@ Przykładowy skrypt używaną w tym temacie tworzy klaster z systemem Windows z 
 
     ![Użyć akcji skryptu, aby dostosować klaster](./media/hdinsight-hadoop-solr-install/hdi-script-action-solr.png "użyj akcji skryptu, aby dostosować klastra")
 
-    <table border='1'>
-        <tr><th>Właściwość</th><th>Wartość</th></tr>
-        <tr><td>Name (Nazwa)</td>
-            <td>Określ nazwę dla akcji skryptu. Na przykład <b>zainstalować platformę Solr</b>.</td></tr>
-        <tr><td>Identyfikator URI skryptu</td>
-            <td>Określ identyfikator URI (Uniform Resource) do skryptu, który jest wywoływana w celu dostosowania do klastra. Na przykład <i>https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1</i></td></tr>
-        <tr><td>Typ węzła</td>
-            <td>Określ węzły, na których jest uruchamiany skrypt dostosowywania. Możesz wybrać <b>wszystkie węzły</b>, <b>tylko węzłami głównymi</b>, lub <b>węzłów procesu roboczego tylko</b>.
-        <tr><td>Parametry</td>
-            <td>Określ parametry, jeśli jest to wymagane przez skrypt. Skrypt, aby zainstalować platformę Solr nie wymaga żadnych parametrów, dzięki czemu użytkownik może pozostaw to pole puste.</td></tr>
-    </table>
+    |Właściwość|Wartość|
+    |---|---|
+    |Name (Nazwa)|Określ nazwę dla akcji skryptu. Na przykład **zainstalować platformę Solr**.|
+    |Identyfikator URI skryptu|Określ identyfikator URI (Uniform Resource) do skryptu, który jest wywoływana w celu dostosowania do klastra. Na przykład *https://hdiconfigactions.blob.core.windows.net/solrconfigactionv01/solr-installer-v01.ps1*|
+    |Typ węzła|Określ węzły, na których jest uruchamiany skrypt dostosowywania. Możesz wybrać **wszystkie węzły**, **tylko węzłami głównymi**, lub **węzłów procesu roboczego tylko**.
+    |Parametry|Określ parametry, jeśli jest to wymagane przez skrypt. Skrypt, aby zainstalować platformę Solr nie wymaga żadnych parametrów, dzięki czemu użytkownik może pozostaw to pole puste.|
 
     Możesz dodać więcej niż jedna akcja skryptu do zainstalowania wiele składników w klastrze. Po dodaniu skryptów, kliknij znacznik wyboru, aby rozpocząć tworzenie klastra.
 

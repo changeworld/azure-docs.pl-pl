@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 292063183561722eae76c3d30ce242facd22df26
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756533"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981455"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Konfigurowanie celów obliczeń do trenowania modelu
 
@@ -47,6 +47,11 @@ Usługa Azure Machine Learning obsługuje różne w różnych obliczeniowych ele
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Usługa Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
+**Wszystkie zasoby obliczeniowe elementy docelowe mogą być ponownie używane dla wielu zadań szkoleniowych**. Na przykład po dołączeniu maszyny Wirtualnej z systemem zdalnym do swojego obszaru roboczego, można ponownie użyć go dla wielu zadań.
+
+> [!NOTE]
+> Azure obliczeniowego usługi Machine Learning mogą być tworzone jako trwałe zasobu lub tworzone dynamicznie, na żądanie uruchomienia. Tworzenie na podstawie wykonywania usuwa obliczeniowego elementu docelowego po przebiegu szkolenia, więc nie można ponownie użyć obliczeniowych elementów docelowych, utworzone w ten sposób.
+
 ## <a name="whats-a-run-configuration"></a>Co to jest konfiguracji uruchamiania?
 
 Szkolenia, jest często Uruchom na komputerze lokalnym, a później Uruchom ten skrypt szkolenia na innego obliczeniowego elementu docelowego. Usługa Azure Machine Learning umożliwia uruchamianie skryptu na różnych celów obliczeń bez konieczności zmiany skryptu. 
@@ -65,7 +70,7 @@ Użyj środowiska system zarządzany, jeśli chcesz [Conda](https://conda.io/doc
 
 Wszystko, czego potrzebujesz, aby zrobić to określić każdy pakiet zależności za pomocą [klasy CondaDependency](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) Conda następnie tworzy plik o nazwie **conda_dependencies.yml** w **aml_config** katalog w swojej przestrzeni roboczej z listy zależności pakietów i skonfigurowanie środowiska Python, podczas przesyłania eksperymentu szkolenia. 
 
-Wstępna konfiguracja nowego środowiska może potrwać kilka minut w zależności od rozmiaru wymagane zależności. Tak długo, jak lista pakietów pozostaje niezmieniony, skonfiguruj czas odbywa się tylko raz.
+Wstępnej instalacji nowego środowiska może potrwać kilka minut w zależności od rozmiaru wymagane zależności. Tak długo, jak lista pakietów pozostaje niezmieniony, czas instalacji odbywa się tylko raz.
   
 Poniższy kod przedstawia przykład dla środowiska system zarządzany wymagające scikit-Dowiedz się więcej:
     
@@ -73,7 +78,7 @@ Poniższy kod przedstawia przykład dla środowiska system zarządzany wymagają
 
 #### <a name="user-managed-environment"></a>Środowiska zarządzanego przez użytkownika
 
-W środowiskach zarządzanych przez użytkowników jest odpowiedzialny za konfigurowanie środowiska i instalowanie pakietu, co wymaga skrypt szkolenia na obliczeniowego elementu docelowego. Jeśli już skonfigurowano środowiska szkolenia (takich jak na komputerze lokalnym), możesz pominąć konfigurowanie krok, ustawiając `user_managed_dependencies` na wartość True. Conda będą Sprawdź środowisko lub nie zainstalować wszystko dla Ciebie.
+W środowisku zarządzane przez użytkownika jesteś odpowiedzialny za konfigurowanie środowiska i instalowanie pakietu, co wymaga skrypt szkolenia na obliczeniowego elementu docelowego. Jeśli już skonfigurowano środowiska szkolenia (takich jak na komputerze lokalnym), możesz pominąć krok konfiguracji, ustawiając `user_managed_dependencies` na wartość True. Conda będą Sprawdź środowisko lub nie zainstalować wszystko dla Ciebie.
 
 Poniższy kod przedstawia przykład Konfigurowanie przebiegów szkoleniowych w środowisku zarządzane przez użytkownika:
 
@@ -242,7 +247,7 @@ Możesz uzyskać dostęp do celów obliczeń, które są skojarzone z obszarem r
 
 * [Wyświetl celów obliczeń](#portal-view) dołączone do obszaru roboczego
 * [Utworzyć cel obliczenia](#portal-create) w obszarze roboczym
-* [Ponowne używanie istniejących celów obliczeń](#portal-reuse)
+* [Dołącz obliczeniowego elementu docelowego](#portal-reuse) utworzony poza obszarem roboczym
 
 Po obiekt docelowy jest utworzone i dołączone do obszaru roboczego, zostanie użyty w swojej konfiguracji uruchamiania, za pomocą `ComputeTarget` obiektu: 
 
@@ -293,9 +298,11 @@ Wykonaj poprzednie kroki, aby wyświetlić listę obliczeniowych elementów doce
 
 
 
-### <a id="portal-reuse"></a>Ponowne używanie istniejących celów obliczeń
+### <a id="portal-reuse"></a>Dołącz obliczeniowych elementów docelowych
 
-Wykonaj kroki opisane wcześniej, aby wyświetlić listę obliczeniowych elementów docelowych. Następnie wykonaj następujące kroki, aby ponownie użyć obliczeniowego elementu docelowego: 
+Aby użyć obliczeniowych elementów docelowych utworzony poza obszarem roboczym usługi Azure Machine Learning, dołącz je. Dołączanie obliczeniowego elementu docelowego udostępnia go do obszaru roboczego.
+
+Wykonaj kroki opisane wcześniej, aby wyświetlić listę obliczeniowych elementów docelowych. Następnie wykonaj następujące kroki, aby dołączyć obliczeniowego elementu docelowego: 
 
 1. Wybierz znak plus (+), aby dodać obliczeniowego elementu docelowego. 
 1. Wprowadź nazwę dla obliczeniowego elementu docelowego. 

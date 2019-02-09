@@ -1,5 +1,5 @@
 ---
-title: 'Dodawanie bramy do sieci wirtualnej platformy Azure dla usługi ExpressRoute: Portal | Dokumentacja firmy Microsoft'
+title: 'Dodawanie bramy do sieci wirtualnej platformy Azure dla usługi ExpressRoute: Portal | Microsoft Docs'
 description: Ten artykuł przeprowadzi dodawania bramy sieci wirtualnej do sieci wirtualnej usługi Resource Manager zostały już utworzone dla usługi ExpressRoute.
 services: expressroute
 author: cherylmc
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 37fe2e2adb947e2e9ddc86a34baf6994b5771be6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a21c9682cfeaa7421d089bf75eb9d8b45e1d3d46
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091207"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982764"
 ---
 # <a name="configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Konfigurowanie bramy sieci wirtualnej dla usługi ExpressRoute za pomocą witryny Azure portal
 > [!div class="op_single_selector"]
@@ -42,9 +42,8 @@ Kroki opisane w tym celu użyć sieci wirtualnej na podstawie wartości na poni�
 * Nazwa podsieci bramy: "Gatewaysubent" podsieć bramy należy zawsze nazywać *GatewaySubnet*.
     * Przestrzeń adresową podsieci bramy = "192.168.200.0/26"
 * Nazwa bramy = "ERGW"
-* Nazwa adresu IP bramy = "MyERGWVIP"
-* Typ bramy "ExpressRoute" = tego typu jest wymagany dla konfiguracji usługi ExpressRoute.
 * Nazwa publicznego adresu IP bramy = "MyERGWVIP"
+* Typ bramy "ExpressRoute" = tego typu jest wymagany dla konfiguracji usługi ExpressRoute.
 
 Możesz wyświetlić [wideo](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-vpn-gateway-for-your-virtual-network) z następujących czynności przed rozpoczęciem konfiguracji.
 
@@ -67,14 +66,14 @@ Możesz wyświetlić [wideo](https://azure.microsoft.com/documentation/videos/az
 2. W bloku **Tworzenie bramy sieci wirtualnej** wypełnij wartości dla swojej bramy sieci wirtualnej.
 
     ![Pola bloku Tworzenie bramy sieci wirtualnej](./media/expressroute-howto-add-gateway-portal-resource-manager/gw.png "Pola bloku Tworzenie bramy sieci wirtualnej")
-3. **Nazwa**: Nadaj nazwę bramie. Nie chodzi o nazwę podsieci bramy. Jest to nazwa obiektu bramy, który zostanie utworzony.
+3. **Nazwa**: Nazwa bramy. Nie chodzi o nazwę podsieci bramy. Jest to nazwa obiektu bramy, który zostanie utworzony.
 4. **Typ bramy**: Wybierz **ExpressRoute**.
-5. **Jednostka SKU**: Wybierz jednostkę SKU bramy z listy rozwijanej.
-6. **Lokalizacja**: Dostosuj wartość w polu **Lokalizacja**, aby wskazywała lokalizację sieci wirtualnej. Jeśli lokalizacja nie wskazuje regionu, w którym znajduje się Twoja sieć wirtualna, sieć ta nie jest widoczna na liście rozwijanej „Wybierz sieć wirtualną”.
+5. **SKU**: Wybierz jednostkę SKU bramy z listy rozwijanej.
+6. **Lokalizacja**: Dostosuj pole **Lokalizacja**, aby wskazywało miejsce, w którym znajduje się sieć wirtualna. Jeśli lokalizacja nie wskazuje regionu, w którym znajduje się Twoja sieć wirtualna, sieć ta nie jest widoczna na liście rozwijanej „Wybierz sieć wirtualną”.
 7. Wybierz sieć wirtualną, do której chcesz dodać bramę. Kliknij polecenie **Sieć wirtualna**, aby otworzyć blok **Wybieranie sieci wirtualnej**. Wybierz sieć wirtualną. Jeśli sieć wirtualna nie jest widoczna, upewnij się, że wartość w polu **Lokalizacja** wskazuje region, w którym znajduje się sieć wirtualna.
 9. Wybierz publiczny adres IP. Kliknij polecenie **Publiczny adres IP**, aby otworzyć blok **Wybieranie publicznego adresu IP**. Następnie kliknij przycisk **Utwórz nowy**, aby otworzyć **blok Tworzenie bramy sieci lokalnej**. Wprowadź nazwę dla publicznego adresu IP. W bloku zostanie utworzony obiekt publicznego adresu IP, do którego publiczny adres IP zostanie dynamicznie przypisany. Kliknij przycisk **OK**, aby zapisać zmiany w tym bloku.
 10. **Subskrypcja**: Sprawdź, czy wybrano poprawną subskrypcję.
-11. **Grupa zasobów**: To ustawienie jest określane przez wybraną sieć wirtualną.
+11. **Grupa zasobów**: To ustawienie jest określane przez sieci wirtualnej, która została wybrana.
 12. Nie zmieniaj ustawienia **Lokalizacja** po określeniu poprzednich ustawień.
 13. Sprawdź poprawność ustawień. Jeśli chcesz, aby brama była wyświetlana na pulpicie nawigacyjnym, możesz wybrać opcję **Przypnij do pulpitu nawigacyjnego** znajdującą się u dołu bloku.
 14. Kliknij przycisk **Utwórz**, aby rozpocząć tworzenie bramy. Ustawienia zostaną zweryfikowane i brama zostanie wdrożona. Tworzenie bramy sieci wirtualnej może potrwać do 45 minut.

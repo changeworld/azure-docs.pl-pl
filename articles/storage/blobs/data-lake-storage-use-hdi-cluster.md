@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 0932c576a47af85c496d5d2d12dbc1b997d48e16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: df65c29b39921eda6ba2bd682e5938f58a9e4de7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874332"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964581"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 
@@ -20,7 +20,7 @@ Aby analizować dane w klastrze usługi HDInsight, można przechowywać dane w d
 
 Platforma Hadoop obsługuje pojęcie domyślnego systemu plików. Domyślny system plików wyznacza domyślny schemat i element authority. Może również służyć do rozpoznawania ścieżek względnych. W trakcie procesu tworzenia klastra HDInsight można wskazać kontener obiektów blob w usłudze Azure Storage lub hierarchicznej przestrzeni nazw, oferowane przez Data Lake Storage Gen2 jako domyślny system plików. Alternatywnie za pomocą HDInsight 3.5, można wybierać kontenera lub hierarchicznej przestrzeni nazw jako domyślny system plików z pewnymi wyjątkami.
 
-W tym artykule dowiesz się, jak Data Lake Storage Gen2 działa z klastrami HDInsight. Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight, zobacz [Konfigurowanie HDInsight clusters, za pomocą usługi Azure Data Lake Storage za pomocą usługi Hadoop, Spark, Kafka i](data-lake-storage-quickstart-create-connect-hdi-cluster.md).
+W tym artykule dowiesz się, jak Data Lake Storage Gen2 działa z klastrami HDInsight. Aby uzyskać więcej informacji na temat tworzenia klastra usługi HDInsight, zobacz [Konfigurowanie HDInsight clusters, za pomocą usługi Azure Data Lake Storage za pomocą usługi Hadoop, Spark, Kafka i](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).
 
 Usługa Azure Storage to niezawodne rozwiązanie ogólnego przeznaczenia, które bezproblemowo integruje się z usługą HDInsight. HDInsight można użyć usługi Azure Data Lake Storage jako domyślny system plików dla klastra. Korzystając Hadoop interfejsu rozproszonego systemu plików (hadoop HDFS) pełny zestaw składników w HDInsight może operować bezpośrednio na pliki w usłudze Azure Data Lake Storage.
 
@@ -209,7 +209,6 @@ Aby uzyskać więcej informacji, zobacz:
 
 * [Sterownik systemu plików Hadoop ABFS dla usługi Azure Data Lake Storage Gen2](data-lake-storage-abfs-driver.md)
 * [Wprowadzenie do usługi Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)
-* [Konfigurowanie klastrów HDInsight, za pomocą usługi Azure Data Lake Storage Gen2 za pomocą usługi Hadoop, Spark, Kafka i więcej](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 * [Pozyskiwanie danych do usługi Azure Data Lake Storage Gen2 korzystanie z narzędzia distcp](data-lake-storage-use-distcp.md)
 
 [powershell-install]: /powershell/azure/install-az-ps

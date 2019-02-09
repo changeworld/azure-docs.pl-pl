@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 1ae4396c6b91f81e273e6ad171f4cac9b55445f6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a8251881b114d7b102481476d3e77923b34d34c7
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864737"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982390"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>Zainstaluj i uruchom usługi LUIS kontenerów platformy docker
  
@@ -60,7 +60,7 @@ Każdego rdzenia musi mieć co najmniej 2,6 gigaherc (GHz) lub szybszy.
 
 Użyj [ `docker pull` ](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby pobrać obraz kontenera z `mcr.microsoft.com/azure-cognitive-services/luis` repozytorium:
 
-```Docker
+```
 docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 ```
 
@@ -324,18 +324,7 @@ Jeśli uruchamiasz kontener z danymi wyjściowymi [instalacji](luis-container-co
 
 Wysyła kontenera usługi LUIS rozliczeń informacje na platformie Azure, przy użyciu _Language Understanding_ zasobów dla konta systemu Azure. 
 
-Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klienta (wypowiedź) do firmy Microsoft. 
-
-`docker run` Używa następujących argumentów na potrzeby rozliczeń:
-
-| Opcja | Opis |
-|--------|-------------|
-| `ApiKey` | Klucz interfejsu API _Language Understanding_ zasoby używane do śledzenia informacji dotyczących rozliczeń.<br/>Wartość tej opcji, musi być równa klucza interfejsu API dla aprowizowanego zasobu LUIS Azure określone w `Billing`. |
-| `Billing` | Punkt końcowy _Language Understanding_ zasoby używane do śledzenia informacji dotyczących rozliczeń.<br/>Wartość ta opcja musi być równa punkt końcowy identyfikatora URI zasobu LUIS Azure elastycznie.|
-| `Eula` | Wskazuje, że zaakceptowano licencję dla kontenera.<br/>Wartość ta opcja musi być równa `accept`. |
-
-> [!IMPORTANT]
-> Prawidłowe wartości należy określić wszystkie trzy opcje, lub uruchomić kontenera.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Aby uzyskać więcej informacji o tych opcjach, zobacz [skonfigurować kontenery](luis-container-configuration.md).
 

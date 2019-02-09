@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 9992e7d280472186b32dea3c102a02e3df4d25ce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 871b6314bff7c984bc6cc779c43800883b8ff767
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872904"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963815"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2
 
@@ -87,5 +87,4 @@ Następujące artykuły opisano niektóre główne pojęcia Data Lake Storage Ge
 
 -   [Hierarchicznej przestrzeni nazw](data-lake-storage-namespace.md)
 -   [Tworzenie konta magazynu](data-lake-storage-quickstart-create-account.md)
--   [Tworzenie klastra HDInsight z usługą Data Lake Storage Gen2](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 -   [Użyj konta Data Lake Storage Gen2 w usłudze Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md)

@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: danlep
-ms.openlocfilehash: 46965842831673d25d636e0cfbfa3d0097b82f99
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fdba8969ad326565834625fe1ca7ece5e089a904
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857348"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984209"
 ---
 # <a name="use-an-azure-managed-identity-to-authenticate-to-an-azure-container-registry"></a>Skorzystaj z platformy Azure zarządzane tożsamości do uwierzytelniania w usłudze Azure container registry 
 
@@ -178,7 +178,7 @@ az acr login --name myContainerRegistry
 
 Powinien zostać wyświetlony `Login succeeded` wiadomości. Następnie możesz uruchomić `docker` polecenia bez podawania poświadczeń. Na przykład uruchomić [polecenie docker pull] [ docker-pull] do ściągnięcia `aci-helloworld:v1` obrazu, określając nazwę serwera logowania rejestru. Nazwę serwera logowania składa się z nazwy rejestru kontenerów (wszystkie małe litery) następuje `.azurecr.io` — na przykład `mycontainerregistry.azurecr.io`.
 
-```docker
+```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 
@@ -230,7 +230,7 @@ az acr login --name myContainerRegistry
 
 Powinien zostać wyświetlony `Login succeeded` wiadomości. Następnie możesz uruchomić `docker` polecenia bez podawania poświadczeń. Na przykład uruchomić [polecenie docker pull] [ docker-pull] do ściągnięcia `aci-helloworld:v1` obrazu, określając nazwę serwera logowania rejestru. Nazwę serwera logowania składa się z nazwy rejestru kontenerów (wszystkie małe litery) następuje `.azurecr.io` — na przykład `mycontainerregistry.azurecr.io`.
 
-```docker
+```
 docker pull mycontainerregistry.azurecr.io/aci-helloworld:v1
 ```
 

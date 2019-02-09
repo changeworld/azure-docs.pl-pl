@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 8774792879443cb39238285b0fdc63ca1097dbea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cef6f47b62a500737e5b01865f73253f18fa470c
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191185"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960602"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: Często zadawane pytania 
 Ta strona odpowiedzi na często zadawane pytania dotyczące usługi Azure Active Directory (Azure AD) B2C. Wracaj aktualizacje.
@@ -83,7 +83,7 @@ Można zapisać narzędzie do migracji, można użyć interfejsu API programu Gr
 Przepływ użytkownika hasła usługi Azure AD B2C dla kont lokalnych jest na podstawie zasad dla usługi Azure AD. Usługa Azure AD B2C jego rejestracji, zarejestruj się lub logowanie i hasła przepływy użytkownika resetowania korzystanie z poziomu "silnego" hasła i nie wygasa hasła. Odczyt [zasad haseł usługi Azure AD](https://msdn.microsoft.com/library/azure/jj943764.aspx) Aby uzyskać więcej informacji. Aby uzyskać informacje dotyczące blokady konta i hasła, zobacz [zarządza zagrożeń bezpieczeństwa zasobów i danych w usłudze Azure Active Directory B2C](active-directory-b2c-reference-threat-management.md).
 
 ### <a name="can-i-use-azure-ad-connect-to-migrate-consumer-identities-that-are-stored-on-my-on-premises-active-directory-to-azure-ad-b2c"></a>Aby przeprowadzić migrację tożsamości klientów, które są przechowywane na mojej lokalnej usługi Active Directory do usługi Azure AD B2C można używać program Azure AD Connect?
-Nie, usługa Azure AD Connect nie jest przeznaczona do pracy z usługą Azure AD B2C. Należy rozważyć użycie [interfejsu API programu Graph](active-directory-b2c-devquickstarts-graph-dotnet.md) przypadku migracji użytkownika.  Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.
+Nie, usługa Azure AD Connect nie jest przeznaczona do pracy z usługą Azure AD B2C. Należy rozważyć użycie [interfejsu API usługi Azure AD Graph](active-directory-b2c-devquickstarts-graph-dotnet.md) przypadku migracji użytkownika.  Zobacz [Przewodnik po migracji użytkownika](active-directory-b2c-user-migration.md) Aby uzyskać szczegółowe informacje.
 
 ### <a name="can-my-app-open-up-azure-ad-b2c-pages-within-an-iframe"></a>Strony usługi Azure AD B2C w elemencie iFrame otworzyć mojej aplikacji?
 Nie, ze względów bezpieczeństwa strony usługi Azure AD B2C nie można otworzyć w elemencie iFrame.  Nasza usługa komunikuje się za pośrednictwem przeglądarki, aby uniemożliwić ramek IFRAME.  Zaleca się korzystania ramek iframe dla środowiska tożsamości ze względu na ryzyko miejsca kliknij branży zabezpieczeń w ogóle i specyfikację OAUTH2.

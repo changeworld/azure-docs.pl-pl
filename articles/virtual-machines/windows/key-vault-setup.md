@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: 599b16f633d9a0de5165bdf5cb3d7b82abca655b
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: f5aa04da40c6681385f0debc3999b94a1f507f05
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39597714"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978990"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie usługi Key Vault dla maszyn wirtualnych w usłudze Azure Resource Manager
 
@@ -39,11 +39,11 @@ Aby utworzyć magazyn kluczy przy użyciu programu PowerShell, zobacz [Rozpoczyn
 
 Dla nowych magazynów kluczy można użyć tego polecenia cmdlet programu PowerShell:
 
-    New-AzureRmKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
+    New-AzKeyVault -VaultName 'ContosoKeyVault' -ResourceGroupName 'ContosoResourceGroup' -Location 'East Asia' -EnabledForDeployment
 
 Dla istniejących magazynów kluczy można użyć tego polecenia cmdlet programu PowerShell:
 
-    Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
+    Set-AzKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -EnabledForDeployment
 
 ## <a name="use-cli-to-set-up-key-vault"></a>Skonfigurować usługi Key Vault za pomocą interfejsu wiersza polecenia
 Aby utworzyć magazyn kluczy przy użyciu interfejsu wiersza polecenia (CLI), zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia](../../key-vault/key-vault-manage-with-cli2.md#create-a-key-vault).

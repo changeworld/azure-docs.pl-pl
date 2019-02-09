@@ -10,18 +10,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 344b049c46243c06c32ed061410f48f71bc70f54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4d336f657baef99d97568ba722e64a1f4440367f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580947"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984583"
 ---
-# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Zbieranie dzienników aktywności platformy Azure w usłudze Log Analytics w wielu subskrypcjach
+# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions-in-different-azure-active-directory-tenants"></a>Zbieranie dzienników aktywności platformy Azure w usłudze Log Analytics w wielu subskrypcji w różnych dzierżawach usługi Azure Active Directory
 
-W tym artykule omówiono metodę zbierania dzienników aktywności platformy Azure w obszarze roboczym usługi Log Analytics przy użyciu łącznika Azure Log Analytics Data Collector dla usługi Logic Apps. Użyj procesu opisanego w tym artykule, jeśli chcesz wysłać dzienniki do obszaru roboczego w innej usłudze Azure Active Directory. Jeśli na przykład jesteś dostawcą zarządzanej usługi, możesz zebrać dzienniki aktywności z subskrypcji klienta i przechować je w obszarze roboczym usługi Log Analytics we własnej subskrypcji.
+W tym artykule omówiono metodę zbierania dzienników aktywności platformy Azure w obszarze roboczym usługi Log Analytics przy użyciu łącznika Azure Log Analytics Data Collector dla usługi Logic Apps. W tym artykule korzystają z procesu, gdy trzeba wysłać dzienniki do obszaru roboczego w innej dzierżawie usługi Azure Active Directory. Jeśli na przykład jesteś dostawcą zarządzanej usługi, możesz zebrać dzienniki aktywności z subskrypcji klienta i przechować je w obszarze roboczym usługi Log Analytics we własnej subskrypcji.
 
 Jeśli obszar roboczy usługi Log Analytics znajduje się w tej samej subskrypcji platformy Azure lub w innej subskrypcji, ale w tej samej usłudze Azure Active Directory, użyj kroków w [rozwiązaniu dziennika aktywności platformy Azure](collect-activity-logs.md), aby zebrać dzienniki aktywności platformy Azure.
 

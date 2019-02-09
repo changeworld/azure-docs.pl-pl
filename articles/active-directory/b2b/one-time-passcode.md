@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 412e114fde8f9b9017d476083f1237c922c67bc8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c6bfa9acb29820a2c9646d6302871bb6a2dd1ac6
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463059"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982169"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Uwierzytelnianie jednorazowy kod dostępu konta e-mail (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ Funkcję powiadomienia E-mail jednorazowy kod dostępu uwierzytelnia użytkownik
 Ta funkcja jest obecnie dostępna w wersji zapoznawczej (zobacz [zgody na korzystanie z wersji zapoznawczej](#opting-in-to-the-preview) poniżej). Po (wersja zapoznawcza) ta funkcja będzie można włączyć domyślnie dla wszystkich dzierżaw.
 
 > [!NOTE]
-> Jednorazowy kod dostępu musi logowania za pomocą linku zawierający kontekstu dzierżawy (na przykład `https://myapps.microsoft.com/?tenantid=<tenant id>` lub `https://portal.azure.com/<tenant id>`, lub w przypadku domeną zweryfikowaną domyślną `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Bezpośrednie linki do aplikacji i zasobów również działać tak długo, jak należą do kontekstu dzierżawy. Użytkownicy-goście, są obecnie nie można zalogować się przy użyciu punktów końcowych, które mają nie kontekstu dzierżawy. Na przykład za pomocą `https://myapps.microsoft.com`, `https://portal.azure.com`, lub endpoint wspólnego zespoły spowoduje wystąpienie błędu. 
+> Jednorazowy kod dostępu musi logowania za pomocą linku zawierający kontekstu dzierżawy (na przykład `https://myapps.microsoft.com/?tenantid=<tenant id>` lub `https://portal.azure.com/<tenant id>`, lub w przypadku zweryfikowanej domeny `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Bezpośrednie linki do aplikacji i zasobów również działać tak długo, jak należą do kontekstu dzierżawy. Użytkownicy-goście, są obecnie nie można zalogować się przy użyciu punktów końcowych, które mają nie kontekstu dzierżawy. Na przykład za pomocą `https://myapps.microsoft.com`, `https://portal.azure.com`, lub endpoint wspólnego zespoły spowoduje wystąpienie błędu. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Środowisko użytkownika dla użytkowników-gości jednorazowy kod dostępu
 Jednorazowy kod dostępu uwierzytelniania użytkownik-Gość można zrealizować zaproszenia, klikając łącze bezpośrednie lub za pomocą wiadomości e-mail z zaproszeniem. W obu przypadkach komunikat w przeglądarce wskazuje, że kod zostanie wysłany na adres e-mail użytkownika gościa. Użytkownik-Gość wybiera **Wyślij kod**:

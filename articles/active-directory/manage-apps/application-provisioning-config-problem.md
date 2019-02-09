@@ -3,8 +3,8 @@ title: Problem z konfigurowaniem aprowizacji użytkowników do aplikacji galerii
 description: Jak rozwiązywać typowe problemy zmierzyła się z zespołem podczas konfigurowania aprowizacji użytkowników do aplikacji już wyświetlane w galerii aplikacji usługi Azure AD
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 38075c9216eab955a023fee53aad74f3768d783c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 90f53624a05b462f517c8e2b36034326348f9899
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822276"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959378"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problem z konfigurowaniem aprowizacji użytkowników do aplikacji galerii usługi Azure AD
 
@@ -55,7 +55,7 @@ Jeśli ustawisz **stanie aprowizacji** jako **na** w **usługi Azure Active Dire
 
 ## <a name="cant-save-configuration-due-to-app-credentials-not-working"></a>Nie można zapisać konfiguracji z powodu poświadczeń aplikacja nie działa
 
-Aby Inicjowanie obsługi administracyjnej do pracy usługa Azure AD wymaga prawidłowe poświadczenia umożliwiające nawiązać połączenia z interfejsem API przez tę aplikację zarządzania użytkownikami. Jeśli te poświadczenia nie działają lub nie znasz wat, w której są, sprawdź samouczek dotyczący konfigurowania tej aplikacji z wcześniejszym opisem.
+Aby Inicjowanie obsługi administracyjnej do pracy usługa Azure AD wymaga prawidłowe poświadczenia umożliwiające nawiązać połączenia z interfejsem API przez tę aplikację zarządzania użytkownikami. Jeśli te poświadczenia nie działają lub nie wiesz, czym są, sprawdź samouczek dotyczący konfigurowania tej aplikacji z wcześniejszym opisem.
 
 ## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>Dzienniki inspekcji Załóżmy, że użytkownicy są pomijane i nie zainicjowano obsługi administracyjnej, nawet jeśli są przypisane
 

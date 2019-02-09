@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/31/2016
+ms.date: 02/07/2019
 ms.author: mbullwin
-ms.openlocfilehash: c284236af64c3981a5d15570bcd2705bb7d6a99b
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: edbd7000001ae6927078e2f1bb9e348cc78f9efa
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121058"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962115"
 ---
 # <a name="smart-detection-in-application-insights"></a>Wykrywanie inteligentne w usłudze Application Insights
  Wykrywanie inteligentne automatycznie ostrzega o potencjalnych problemów z wydajnością w aplikacji sieci web. Wykonuje aktywnego analizy telemetrii, że aplikacja wysyła do [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Jeśli istnieje nagły wzrost częstotliwości awarii lub nietypowe wzorce wydajności klienta lub serwera, zostanie wyświetlony alert. Ta funkcja wymaga żadna konfiguracja. Działa on tak, jeśli aplikacja wysyła taką ilość telemetrii.
@@ -46,6 +46,14 @@ Istnieją trzy rodzaje wykrywania:
 * [Inteligentne wykrywanie — problemy z usługą w chmurze Azure](https://azure.microsoft.com/blog/proactive-notifications-on-cloud-service-issues-with-azure-diagnostics-and-application-insights/). Możesz otrzymywać alerty, jeśli aplikacja jest hostowana w usłudze Azure Cloud Services i wystąpienia roli wystąpiły błędy podczas uruchamiania, częste odtwarzanie lub awarie środowiska uruchomieniowego.
 
 (Każde powiadomienie łącza pomocy prowadzą do odpowiednich artykułów.)
+
+## <a name="smart-detection-email-notifications"></a>Powiadomienia e-mail w usłudze inteligentnego wykrywania
+
+Wszystkie reguły wykrywania inteligentnego, z wyjątkiem zasady oznaczone jako wersji zapoznawczej, są skonfigurowane domyślnie do wysyłania powiadomień e-mail, gdy zostaną odnalezione wykrywania.
+
+Konfigurowanie powiadomień e-mail o określonej reguły wykrywania inteligentnego może odbywać się przez otwarcie wykrywania inteligentnego **ustawienia** bloku i wybierając pozycję reguły, co spowoduje otwarcie **edycji reguły** bloku.
+
+Alternatywnie można zmienić konfiguracji za pomocą szablonów usługi Azure Resource Manager. [Zobacz reguły wykrywania inteligentnego zarządzania usługi Application Insights przy użyciu szablonów usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-monitor/app/proactive-arm-config) Aby uzyskać więcej informacji.
 
 ## <a name="video"></a>Połączenia wideo
 

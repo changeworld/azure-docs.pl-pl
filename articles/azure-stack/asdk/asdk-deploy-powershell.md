@@ -13,16 +13,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 09/10/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.lastreviewed: 09/10/2018
-ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: 0fb3e9cd193e570a965d6bbd3e16c86dc39de350
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247735"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984277"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Wdrażanie ASDK z wiersza polecenia
 ASDK jest środowiskiem środowisk testowych i programistycznych, które można wdrożyć do oceny i zademonstrowania funkcji usługi Azure Stack i usług. Jego skonfigurowaniu i uruchomieniu należy przygotować środowisko sprzętu i uruchomić niektóre skrypty (będzie to potrwać kilka godzin). Po tym można Zaloguj się do portali administratora i użytkownika Aby rozpocząć korzystanie z usługi Azure Stack.
@@ -134,21 +134,18 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 Jeśli Twoje środowisko nie ma włączony protokół DHCP, należy uwzględnić następujące dodatkowe parametry do jednej z opcji powyżej (przykład użycia podano): 
 
 ```powershell
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -NatIPv4Subnet 10.10.10.0/24 -NatIPv4Address 10.10.10.3 -NatIPv4DefaultGateway 10.10.10.1 -TimeServer 10.222.112.26
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -TimeServer 10.222.112.26
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>Parametry opcjonalne ASDK InstallAzureStackPOC.ps1
 |Parametr|Wymagane/opcjonalne|Opis|
 |-----|-----|-----|
-|AdminPassword|Wymagany|Ustawia konta administratora lokalnego i innych kont użytkowników na wszystkich maszynach wirtualnych utworzonych jako część wdrożenia zestawu rozwoju. To hasło musi być zgodna bieżące hasło administratora lokalnego na hoście.|
-|InfraAzureDirectoryTenantName|Wymagany|Określa katalog dzierżawy. Ten parametr umożliwia określenie katalogu, gdzie konto usługi AAD ma uprawnienia do zarządzania wieloma katalogami. Pełna nazwa dzierżawy katalogu usługi AAD w formacie. onmicrosoft.com lub usługi Azure AD należy zweryfikować niestandardowej nazwy domeny.|
-|TimeServer|Wymagany|Użyj tego parametru, aby określić serwer określony czas. Ten parametr musi zostać podana jako adres IP serwera prawidłową godzinę. Nazwy serwerów nie są obsługiwane.|
+|AdminPassword|Wymagane|Ustawia konta administratora lokalnego i innych kont użytkowników na wszystkich maszynach wirtualnych utworzonych jako część wdrożenia zestawu rozwoju. To hasło musi być zgodna bieżące hasło administratora lokalnego na hoście.|
+|InfraAzureDirectoryTenantName|Wymagane|Określa katalog dzierżawy. Ten parametr umożliwia określenie katalogu, gdzie konto usługi AAD ma uprawnienia do zarządzania wieloma katalogami. Pełna nazwa dzierżawy katalogu usługi AAD w formacie. onmicrosoft.com lub usługi Azure AD należy zweryfikować niestandardowej nazwy domeny.|
+|TimeServer|Wymagane|Użyj tego parametru, aby określić serwer określony czas. Ten parametr musi zostać podana jako adres IP serwera prawidłową godzinę. Nazwy serwerów nie są obsługiwane.|
 |InfraAzureDirectoryTenantAdminCredential|Optional (Opcjonalność)|Ustawia nazwę użytkownika usługi Azure Active Directory i hasło. Te poświadczenia platformy Azure musi być identyfikatorem organizacji.|
 |InfraAzureEnvironment|Optional (Opcjonalność)|Wybierz środowisko platformy Azure, z którym chcesz zarejestrować tego wdrożenia usługi Azure Stack. Opcje obejmują publicznej platformy Azure, Azure — Chiny, Azure — instytucje rządowe USA.|
 |DNSForwarder|Optional (Opcjonalność)|Serwer DNS jest tworzona jako część wdrożenia usługi Azure Stack. Aby zezwolić komputerom wewnątrz rozwiązania do rozpoznawania nazw poza sygnatury, podaj istniejącej infrastruktury serwera DNS. Serwer DNS w sygnatury przekazuje żądania rozpoznania nieznanej nazwy do tego serwera.|
-|NatIPv4Address|Wymagane do obsługi protokołu DHCP translatora adresów Sieciowych|Określa statyczny adres IP dla MAS-BGPNAT01. Tego parametru należy używać tylko wówczas, gdy usługa DHCP nie może przypisać prawidłowego adresu IP w celu uzyskania dostępu do Internetu.|
-|NatIPv4Subnet|Wymagane do obsługi protokołu DHCP translatora adresów Sieciowych|Prefiks podsieci IP używanego dla protokołu DHCP za pośrednictwem pomocy technicznej translatora adresów Sieciowych. Tego parametru należy używać tylko wówczas, gdy usługa DHCP nie może przypisać prawidłowego adresu IP w celu uzyskania dostępu do Internetu.|
-|PublicVlanId|Optional (Opcjonalność)|Ustawia identyfikator sieci VLAN. Tego parametru należy użyć tylko wtedy, gdy host i MAS-BGPNAT01, należy skonfigurować identyfikator sieci VLAN do uzyskania dostępu do sieci fizycznej (i Internetu). Na przykład.\InstallAzureStackPOC.ps1-Verbose - PublicVLan 305|
 |Uruchom ponownie|Optional (Opcjonalność)|Aby ponownie uruchomić wdrożenie, należy użyć tej flagi. Wszystkie poprzednie dane wejściowe są używane. Ponownego wprowadzania danych, które poprzednio oferowana nie jest obsługiwana, ponieważ wiele unikatowych wartości są generowane i używane w ramach wdrożenia.|
 
 

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z błędami rozszerzenia maszyny Wirtualnej systemu Windows | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat rozwiązywania problemów z błędami rozszerzenia maszyny Wirtualnej systemu Windows Azure
+title: Rozwiązywanie problemów z błędami rozszerzeń maszyn wirtualnych Windows | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat rozwiązywania problemów z błędami rozszerzeń maszyn wirtualnych Windows Azure
 services: virtual-machines-windows
 documentationcenter: ''
 author: kundanap
@@ -15,24 +15,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
-ms.openlocfilehash: 9973eaa7e930d38e78289219e726b5934d82ee86
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: cf53df30dfccb76a6f33621038ba7f031a69f6de
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33945421"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979704"
 ---
-# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Rozwiązywanie problemów z błędami rozszerzenia maszyny Wirtualnej systemu Windows Azure
+# <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Rozwiązywanie problemów z błędami rozszerzeń maszyn wirtualnych Windows Azure
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
 
 ## <a name="viewing-extension-status"></a>Wyświetlanie stanu rozszerzenia
-Szablony usługi Azure Resource Manager można wykonać z programu Azure PowerShell. Po wykonaniu szablonu z Eksploratora zasobów Azure lub narzędzia wiersza polecenia można wyświetlić stan rozszerzenia.
+Szablony usługi Azure Resource Manager mogą być wykonywane za pomocą programu Azure PowerShell. Po wykonaniu szablonu z Eksploratora zasobów Azure lub narzędzi wiersza polecenia można wyświetlić stan rozszerzenia.
 
 Oto przykład:
 
 Azure PowerShell:
 
-      Get-AzureRmVM -ResourceGroupName $RGName -Name $vmName -Status
+      Get-AzVM -ResourceGroupName $RGName -Name $vmName -Status
 
 Oto przykładowe dane wyjściowe:
 
@@ -59,13 +59,13 @@ Oto przykładowe dane wyjściowe:
     }
   ]
 
-## <a name="troubleshooting-extension-failures"></a>Rozwiązywanie problemów z błędami rozszerzenia
-### <a name="rerun-the-extension-on-the-vm"></a>Uruchom ponownie rozszerzenia na maszynie Wirtualnej
-Jeśli skrypty są uruchomione na maszynie Wirtualnej za pomocą niestandardowego rozszerzenia skryptu, można uruchomić czasami wystąpił błąd, gdy maszyna wirtualna została utworzona pomyślnie, ale skryptu nie powiodło się. W tych warunkach zalecanym sposobem odzyskania tego błędu jest Usuń rozszerzenie i ponownie uruchom szablon ponownie.
-Uwaga: W przyszłości tej funkcji można rozszerzyć do konieczności odinstalowywania rozszerzenia.
+## <a name="troubleshooting-extension-failures"></a>Rozwiązywanie problemów z błędami rozszerzeń
+### <a name="rerun-the-extension-on-the-vm"></a>Ponownie uruchom rozszerzenie na maszynie Wirtualnej
+Jeśli skrypty są uruchomione na maszynie Wirtualnej za pomocą rozszerzenia niestandardowego skryptu, można czasami napotkasz błąd, gdy maszyna wirtualna została utworzona pomyślnie, ale skryptu nie powiodło się. W tych warunkach zalecane sposobu odzyskania sprawności tego błędu jest usunąć rozszerzenie i ponownie szablon.
+Uwaga: W przyszłości można rozszerzyć tę funkcję w celu usunięcia potrzeby odinstalować rozszerzenie.
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>Usuń rozszerzenie z programu Azure PowerShell
-    Remove-AzureRmVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
+    Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"
 
-Po usunięciu rozszerzenia szablon może być ponowne wykonanie uruchamiania skryptów na maszynie Wirtualnej.
+Po usunięciu rozszerzenia szablon może być wykonany ponownie na uruchamianie skryptów na maszynie Wirtualnej.
 

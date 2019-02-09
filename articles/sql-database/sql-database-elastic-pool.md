@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1e7ec07c29f742202b17e94d96d88b0dfb223100
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 4e4de6d487aaad8a0d036928fe59b47f25157bf6
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464351"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963849"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -34,6 +34,9 @@ Pule elastyczne rozwiązują ten problem przez zapewnienie, że bazy danych uzys
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
+
+> [!IMPORTANT]
+> Brak opłat za bazę danych dla pul elastycznych. Opłaty są naliczane za każdą godzinę istnienia puli o najwyższej liczby jednostek eDTU lub rdzeni wirtualnych, niezależnie od użycia lub tego, czy pula był aktywny przez mniej niż godzinę.
 
 Elastyczne pule umożliwiają deweloperowi zakupienie zasobów dla puli współdzielonej przez wiele baz danych, aby obsługiwać nieprzewidywalne okresy użycia pojedynczych bazy danych. Można skonfigurować zasoby puli albo na podstawie [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Zapotrzebowanie na zasoby dla puli jest określana na podstawie zagregowanego użycia jej baz danych. Ilość zasobów dostępnych dla puli jest kontrolowana przez budżet dewelopera. Deweloper po prostu dodaje bazy danych do puli, ustawia minimum i maksimum zasobów dla baz danych (minimalnej i maksymalnej liczby jednostek Dtu lub minimalna lub maksymalna rdzeni wirtualnych, w zależności od wybranego personalne modelu), a następnie ustawia zasobów puli na podstawie ich Budżet. Korzystając z pul, deweloper może bezproblemowo rozwijać swoją usługę od niewielkiego startupu do dojrzałego biznesu w coraz większej skali.
 

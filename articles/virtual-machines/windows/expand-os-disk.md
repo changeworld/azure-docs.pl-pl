@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: kirpas
 ms.subservice: disks
-ms.openlocfilehash: 3d5d0d4b17bcdc5e0461b977c4c832762a46b99b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bd863a8ddd9e2277b628673d2146efd8c458c319
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456191"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979500"
 ---
 # <a name="how-to-expand-the-os-drive-of-a-virtual-machine"></a>Sposobu rozszerzania dysku systemu operacyjnego maszyny wirtualnej
 
@@ -37,6 +37,10 @@ Po utworzeniu nowej maszyny wirtualnej (VM) w grupie zasobów przez wdrożenie o
 > Po rozwinięciu na dyskach, należy [rozszerzyć woluminu w ramach systemu operacyjnego](#expand-the-volume-within-the-os) z zalet większy dysk.
 > 
 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
+
 ## <a name="resize-a-managed-disk"></a>Zmiana rozmiaru dysku zarządzanego
 
 Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
@@ -44,8 +48,8 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 1. Zaloguj się do konta usługi Microsoft Azure w trybie zarządzania zasobami, a następnie wybierz swoją subskrypcję w następujący sposób:
    
    ```powershell
-   Connect-AzureRmAccount
-   Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
+   Connect-AzAccount
+   Select-AzSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Ustaw nazwę swojej grupy zasobów i nazwę maszyny wirtualnej w następujący sposób:
    
@@ -56,19 +60,19 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 3. Uzyskaj odwołanie do maszyny wirtualnej w następujący sposób:
    
    ```powershell
-   $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 4. Zatrzymaj maszynę wirtualną przed zmianą rozmiaru dysku w następujący sposób:
    
     ```Powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+    Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 5. Uzyskaj odwołanie do zarządzanego dysku systemu operacyjnego. Ustaw rozmiar zarządzanego dysku systemu operacyjnego na żądaną wartość i zaktualizuj dysk w następujący sposób:
    
    ```Powershell
-   $disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
+   $disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
    $disk.DiskSizeGB = 1023
-   Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
+   Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
    ```   
    > [!WARNING]
    > Nowy rozmiar powinien być większy niż istniejący rozmiar dysku. Maksymalna dozwolona wartość to 2048 GB dla dysków systemu operacyjnego. (Istnieje możliwość rozwinąć obiektu blob dysku VHD poza ten rozmiar, ale system operacyjny będzie można tylko do pracy z pierwszym 2048 GB miejsca).
@@ -77,7 +81,7 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 6. Zaktualizowanie maszyny wirtualnej może potrwać kilka sekund. Po zakończeniu wykonywania polecenia uruchom ponownie maszynę wirtualną w następujący sposób:
    
    ```Powershell
-   Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   Start-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 
 To wszystko! Teraz połącz protokół RDP z maszyną wirtualną, otwórz okno Zarządzanie komputerem (lub Zarządzanie dyskiem) i rozszerz dysk przy użyciu nowo przydzielonego miejsca.
@@ -89,8 +93,8 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 1. Zaloguj się do konta usługi Microsoft Azure w trybie zarządzania zasobami, a następnie wybierz swoją subskrypcję w następujący sposób:
    
    ```Powershell
-   Connect-AzureRmAccount
-   Select-AzureRmSubscription –SubscriptionName 'my-subscription-name'
+   Connect-AzAccount
+   Select-AzSubscription –SubscriptionName 'my-subscription-name'
    ```
 2. Ustaw nazwę swojej grupy zasobów i nazwę maszyny wirtualnej w następujący sposób:
    
@@ -101,18 +105,18 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 3. Uzyskaj odwołanie do maszyny wirtualnej w następujący sposób:
    
    ```Powershell
-   $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   $vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 4. Zatrzymaj maszynę wirtualną przed zmianą rozmiaru dysku w następujący sposób:
    
     ```Powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+    Stop-AzVM -ResourceGroupName $rgName -Name $vmName
     ```
 5. Ustaw rozmiar dysku niezarządzanego systemu operacyjnego na żądaną wartość i zaktualizuj maszynę Wirtualną w następujący sposób:
    
    ```Powershell
    $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
-   Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
+   Update-AzVM -ResourceGroupName $rgName -VM $vm
    ```
    
    > [!WARNING]
@@ -123,7 +127,7 @@ Otwórz okno programu Powershell ISE lub Powershell w trybie administracyjnym:
 6. Zaktualizowanie maszyny wirtualnej może potrwać kilka sekund. Po zakończeniu wykonywania polecenia uruchom ponownie maszynę wirtualną w następujący sposób:
    
    ```Powershell
-   Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+   Start-AzVM -ResourceGroupName $rgName -Name $vmName
    ```
 
 
@@ -135,30 +139,30 @@ Oto kompletny skrypt, dla której można się odwołać w przypadku dysków zarz
 **Dyski zarządzane**
 
 ```Powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
-$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-$disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
+$vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+Stop-AzVM -ResourceGroupName $rgName -Name $vmName
+$disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.OsDisk.Name
 $disk.DiskSizeGB = 1023
-Update-AzureRmDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
-Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+Update-AzDisk -ResourceGroupName $rgName -Disk $disk -DiskName $disk.Name
+Start-AzVM -ResourceGroupName $rgName -Name $vmName
 ```
 
 **Dyski niezarządzane**
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionName 'my-subscription-name'
+Connect-AzAccount
+Select-AzSubscription -SubscriptionName 'my-subscription-name'
 $rgName = 'my-resource-group-name'
 $vmName = 'my-vm-name'
-$vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+$vm = Get-AzVM -ResourceGroupName $rgName -Name $vmName
+Stop-AzVM -ResourceGroupName $rgName -Name $vmName
 $vm.StorageProfile.OSDisk.DiskSizeGB = 1023
-Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
-Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
+Update-AzVM -ResourceGroupName $rgName -VM $vm
+Start-AzVM -ResourceGroupName $rgName -Name $vmName
 ```
 
 ## <a name="resizing-data-disks"></a>Zmienianie rozmiaru dysków z danymi
@@ -168,7 +172,7 @@ Ten artykuł koncentruje się głównie na rozszerzeniu dysku systemu operacyjne
 **Dysk zarządzany**
 
 ```powershell
-$disk= Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.DataDisks[0].Name
+$disk= Get-AzDisk -ResourceGroupName $rgName -DiskName $vm.StorageProfile.DataDisks[0].Name
 $disk.DiskSizeGB = 1023
 ```
 
@@ -187,7 +191,7 @@ Podobnie możesz odwoływać się do innych dysków danych dołączonych do masz
 **Dysk zarządzany**
 
 ```powershell
-(Get-AzureRmDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
+(Get-AzDisk -ResourceGroupName $rgName -DiskName ($vm.StorageProfile.DataDisks | Where ({$_.Name -eq 'my-second-data-disk'})).Name).DiskSizeGB = 1023
 ```
 
 **Dysk niezarządzany**

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 1370f541f8913d86db948a3165d6660a8cd66528
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f29c995c4fb4a1e87c95295779ff83dd133ac61c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963508"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984396"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozszerzenie niestandardowego skryptu dla Windows
 
@@ -31,7 +31,7 @@ W tym dokumencie przedstawiono sposób korzystania z rozszerzenia niestandardowe
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 > [!NOTE]  
-> Nie należy używać rozszerzenia niestandardowego skryptu do uruchomienia Update-AzureRmVM przy użyciu tej samej maszyny Wirtualnej jako parametr, ponieważ będzie czekać na siebie.  
+> Nie należy używać rozszerzenia niestandardowego skryptu uruchamiać AzVM aktualizacji za pomocą tej samej maszyny Wirtualnej jako jego parametr, ponieważ będzie czekać na siebie.  
 >   
 > 
 
@@ -145,10 +145,10 @@ Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu sz
 
 ## <a name="powershell-deployment"></a>Wdrożenie programu PowerShell
 
-`Set-AzureRmVMCustomScriptExtension` Polecenia można dodać rozszerzenie niestandardowego skryptu do istniejącej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [AzureRmVMCustomScriptExtension zestaw](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension).
+`Set-AzVMCustomScriptExtension` Polecenia można dodać rozszerzenie niestandardowego skryptu do istniejącej maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [AzVMCustomScriptExtension zestaw](https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
-Set-AzureRmVMCustomScriptExtension -ResourceGroupName myResourceGroup `
+Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
     -VMName myVM `
     -Location myLocation `
     -FileUri myURL `
@@ -173,7 +173,7 @@ $storagekey = "1234ABCD"
 $ProtectedSettings = @{"storageAccountName" = $storageaccname; "storageAccountKey" = $storagekey; "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File 1_Add_Tools.ps1"};
 
 #run command
-Set-AzureRmVMExtension -ResourceGroupName myRG `
+Set-AzVMExtension -ResourceGroupName myRG `
     -Location myLocation ` 
     -VMName myVM ` 
     -Name "buildserver1" ` 
@@ -190,7 +190,7 @@ W tym przykładzie warto używać lokalnego serwera SMB dla Twojej lokalizacji s
 ```powershell
 $ProtectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
  
-Set-AzureRmVMExtension -ResourceGroupName myRG 
+Set-AzVMExtension -ResourceGroupName myRG 
     -Location myLocation ` 
     -VMName myVM ` 
     -Name "serverUpdate" 
@@ -213,7 +213,7 @@ Jeśli chcesz więcej niż jeden raz uruchomić rozszerzenia niestandardowego sk
 Dane dotyczące stanu wdrożeń rozszerzenia można pobrać z witryny Azure portal i za pomocą modułu Azure PowerShell. Aby wyświetlić stan wdrożenia rozszerzeń dla danej maszyny Wirtualnej, uruchom następujące polecenie:
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 Dane wyjściowe wykonywania rozszerzenia jest rejestrowane w plikach znaleźć w następującym katalogu na docelowej maszynie wirtualnej.

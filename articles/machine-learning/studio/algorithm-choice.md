@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: d60c99349fef26fc1ead7f6ea4b77d0c364c4abb
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ee2ea608fb2a53563340b76ea916160231b27dca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868144"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978429"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
 
@@ -245,8 +245,6 @@ Pracę i prowadzone przez Microsoft Research własnych John Langford, VW jest fo
 * Aby uzyskać listę według kategorii wszystkich algorytmów uczenia maszynowego dostępnych w usłudze Machine Learning Studio, zobacz [zainicjować modelu](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model) algorytmu Studio uczenia maszynowego i pomóc w Module.
 
 * Aby uzyskać pełną listę alfabetyczną algorytmów i modułów w usłudze Machine Learning Studio, zobacz [A-Z listy modułów usługi Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list) algorytmu Studio uczenia maszynowego i pomóc w Module.
-
-* Możesz pobrać i wydrukować diagram, który zawiera omówienie możliwości usługi Machine Learning Studio: [Microsoft Azure Machine Learning Studio przegląd możliwości usługi (PDF)](https://download.microsoft.com/download/C/4/6/C4606116-522F-428A-BE04-B6D3213E9E52/ml_studio_overview_v1.1.pdf).
 
 <!-- Media -->
 

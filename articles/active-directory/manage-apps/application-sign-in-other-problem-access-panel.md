@@ -3,8 +3,8 @@ title: Problemy z logowaniem do aplikacji przy użyciu panelu dostępu | Dokumen
 description: Jak rozwiązywać problemy z dostępu do aplikacji z poziomu panelu dostępu usługi Microsoft Azure AD w myapps.microsoft.com
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: 6dfc0f80285dfd7da6e78d7cbf9c993fed388a2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: acb1b5749d617bc4608a2165420e709c7412a8d2
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813538"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965192"
 ---
 # <a name="problems-signing-in-to-an-application-from-the-access-panel"></a>Problemy z logowaniem do aplikacji przy użyciu panelu dostępu
 

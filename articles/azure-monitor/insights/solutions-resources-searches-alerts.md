@@ -13,14 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c46c65fe7e720e3afdd976e2480e8f183cc4398d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 97e6029ff85ce7ee8572fd76d04a5d72b27b2950
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901194"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980112"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
+
+> [!IMPORTANT]
+> Szczegółowe informacje w tym miejscu do tworzenia alertu przy użyciu szablonu usługi Resource Manager są poza Data teraz [alertów usługi Log Analytics zostały rozszerzone do usługi Azure Monitor](../platform/alerts-extend.md). Aby uzyskać więcej informacji na temat tworzenia alertu dziennika za pomocą szablonu usługi Resource Manager, zobacz [alertów dzienników zarządzanie przy użyciu szablonu usługi Azure Resource](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template).
 
 > [!NOTE]
 > Jest to wstępne dokumentację dotyczącą tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.
@@ -180,7 +183,7 @@ Właściwości dla akcji alertu zasoby są opisane w poniższych tabelach.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| Typ | Yes | Typ akcji.  Jest to **Alert** dla akcje alertu. |
+| Type | Yes | Typ akcji.  Jest to **Alert** dla akcje alertu. |
 | Name (Nazwa) | Yes | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguły alertu. |
 | Opis | Nie | Opcjonalny opis alertu. |
 | Ważność | Yes | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**

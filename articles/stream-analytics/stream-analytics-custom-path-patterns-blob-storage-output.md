@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc28ddd006e8a117dddd67a6d6668b9639dddec5
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765199"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982679"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Usługa Azure Stream Analytics niestandardowych obiektów blob, partycjonowanie danych wyjściowych
 
@@ -67,8 +67,6 @@ Należy zauważyć, że każdy rekord w obiekcie blob ma **client_id** kolumny d
 ## <a name="custom-datetime-path-patterns"></a>Niestandardowe wzorców ścieżki daty/godziny
 
 Zezwalaj na niestandardowe wzorców ścieżki daty/godziny, można określić format danych wyjściowych, była zgodna z konwencjami Hive przesyłania strumieniowego, co daje możliwość wysyłania danych do usługi Azure HDInsight i Azure Databricks dla podrzędnych przetwarzania usługi Azure Stream Analytics. Niestandardowe wzorców ścieżki daty/godziny są łatwo zaimplementować przy użyciu `datetime` — słowo kluczowe w polu Prefiks ścieżki obiektu blob danych wyjściowych, wraz ze specyfikatora formatu. Na przykład `{datetime:yyyy}`.
-
-Użyj tego linku, aby [witryny Azure Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) Aby przełączać flagę funkcji, umożliwiająca niestandardowe wzorców ścieżki daty/godziny dla obiektu blob magazynu danych wyjściowych w wersji zapoznawczej. Ta funkcja zostanie wkrótce włączona w głównej portalu.
 
 ### <a name="supported-tokens"></a>Obsługiwane tokeny
 

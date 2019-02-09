@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: e4963ebae73bdd81246433fe43206139caa1661c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295784"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982849"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Wypchnij swój pierwszy obraz do prywatnego rejestru kontenerów platformy Docker za pomocą interfejsu wiersza polecenia platformy Docker
 
@@ -37,7 +37,7 @@ az acr login --name myregistry
 
 Możesz również zalogować się przy użyciu [docker login](https://docs.docker.com/engine/reference/commandline/login/). Na przykład, Niewykluczone, że [przypisać nazwę główną usługi](container-registry-authentication.md#service-principal) do rejestru dla scenariusza automatyzacji. Po uruchomieniu następującego polecenia, podaj interaktywnie appID nazwy głównej usługi (nazwa użytkownika) i hasło po wyświetleniu monitu. Aby uzyskać najlepsze rozwiązania do zarządzania poświadczeń logowania, zobacz [docker login](https://docs.docker.com/engine/reference/commandline/login/) poleceń:
 
-```Docker
+```
 docker login myregistry.azurecr.io
 ```
 
@@ -50,7 +50,7 @@ Oba polecenia zwracają `Login Succeeded` po ukończeniu.
 
 Najpierw Ściągnij publiczny obraz kontenera Nginx na komputerze lokalnym.
 
-```Docker
+```
 docker pull nginx
 ```
 
@@ -58,7 +58,7 @@ docker pull nginx
 
 Wykonaj poniższe [platformy docker, uruchom](https://docs.docker.com/engine/reference/run/) polecenie, aby uruchomić lokalne wystąpienie kontenera Nginx interaktywnie (`-it`) na porcie 8080. `--rm` Argument określa, że kontener powinny zostać usunięte po jej zatrzymaniu.
 
-```Docker
+```
 docker run -it --rm -p 8080:80 nginx
 ```
 
@@ -74,7 +74,7 @@ Aby zatrzymać i usunąć kontener, naciśnij klawisz `Control` + `C`.
 
 Użyj [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) utworzyć alias obrazu z w pełni kwalifikowaną ścieżką do Twojego rejestru. W tym przykładzie jest określana przestrzeń nazw `samples`, aby uniknąć zaśmiecania katalogu głównego rejestru.
 
-```Docker
+```
 docker tag nginx myregistry.azurecr.io/samples/nginx
 ```
 
@@ -84,7 +84,7 @@ Aby uzyskać więcej informacji na temat znakowanie z obszary nazw, zobacz [prze
 
 Teraz, po otagowaniu obrazu z w pełni kwalifikowaną ścieżką do rejestru prywatnego, można wypchnąć go do rejestru przy użyciu [docker push](https://docs.docker.com/engine/reference/commandline/push/):
 
-```Docker
+```
 docker push myregistry.azurecr.io/samples/nginx
 ```
 
@@ -92,7 +92,7 @@ docker push myregistry.azurecr.io/samples/nginx
 
 Użyj [polecenie docker pull](https://docs.docker.com/engine/reference/commandline/pull/) polecenie, aby ściągnąć obraz z rejestru:
 
-```Docker
+```
 docker pull myregistry.azurecr.io/samples/nginx
 ```
 
@@ -100,7 +100,7 @@ docker pull myregistry.azurecr.io/samples/nginx
 
 Użyj [platformy docker, uruchom](https://docs.docker.com/engine/reference/run/) polecenia do uruchomienia obrazu zostały pobrane z rejestru:
 
-```Docker
+```
 docker run -it --rm -p 8080:80 myregistry.azurecr.io/samples/nginx
 ```
 
@@ -112,7 +112,7 @@ Aby zatrzymać i usunąć kontener, naciśnij klawisz `Control` + `C`.
 
 Jeśli nie potrzebujesz już obraz Nginx, możesz usunąć ją lokalnie za pomocą [docker rmi](https://docs.docker.com/engine/reference/commandline/rmi/) polecenia.
 
-```Docker
+```
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 32679e37062fbf77ce6ab03b6ea708c0d5eeea30
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dbf614f9749039b054e1134df31334a6248e2b78
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816241"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981404"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyn wirtualnych, który używa strefy dostępności
 
@@ -117,12 +117,12 @@ Trwa kilka minut, aby utworzyć i skonfigurować wszystko, co zestaw skalowania 
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 
-Aby korzystać ze stref dostępności, musisz utworzyć skalowania jest ustawiana w obsługiwanym regionie platformy Azure. Dodaj `-Zone` parametr [polecenia New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) polecenia i określić które strefę do użycia (takie jak strefy *1*, *2*, lub *3*).
+Aby korzystać ze stref dostępności, musisz utworzyć skalowania jest ustawiana w obsługiwanym regionie platformy Azure. Dodaj `-Zone` parametr [New AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) polecenia i określić które strefę do użycia (takie jak strefy *1*, *2*, lub *3*).
 
 Poniższy przykład tworzy jednostrefowego zestawu skalowania o nazwie *myScaleSet* w *wschodnie stany USA 2* strefy *1*. Zasoby sieciowe platformy Azure dla sieci wirtualnej, publiczny adres IP i moduł równoważenia obciążenia są tworzone automatycznie. Po wyświetleniu monitu podaj własne odpowiednie poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `
@@ -139,7 +139,7 @@ New-AzureRmVmss `
 Aby utworzyć zestaw skalowania strefowo nadmiarowe, należy określić wieloma strefami z `-Zone` parametru. Poniższy przykład tworzy strefowo nadmiarowego zestawu skalowania o nazwie *myScaleSet* między *wschodnie stany USA 2* stref *1, 2, 3*. Zasoby strefowo nadmiarowa sieć platformy Azure dla sieci wirtualnej, publiczny adres IP i równoważenia obciążenia są tworzone automatycznie. Po wyświetleniu monitu podaj własne odpowiednie poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
 
 ```powershell
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS2" `
   -VMScaleSetName "myScaleSet" `

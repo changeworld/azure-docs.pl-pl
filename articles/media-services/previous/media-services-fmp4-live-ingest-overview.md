@@ -4,7 +4,7 @@ description: Tej specyfikacji opisuje protokół i format podzielonej zawartośc
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 43fac263-a5ea-44af-8dd5-cc88e423b4de
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 16b8b5a012c5d2073a3472a70cf2064b8b0e59cd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228882"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984838"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Specyfikacja odbierania usługi Azure Media Services na żywo podzielonej zawartości w formacie MP4
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification-legacy"></a>Usługa Azure Media Services na żywo podzielonej zawartości w formacie MP4 pozyskiwania specyfikacji (starsza wersja)
+
 Tej specyfikacji opisuje protokół i format podzielonej zawartości w formacie MP4 oparte na żywo transmisji strumieniowej przyjmowanie danych z usługi Azure Media Services. Media Services udostępnia usługi przesyłania strumieniowego na żywo, którego klienci mogą przeprowadzać przesyłanie strumieniowe wydarzeń na żywo i emisji zawartość w czasie rzeczywistym, korzystając z platformy Azure jako platformy usług w chmurze. W tym dokumencie omówiono również najlepsze wskazówki dotyczące tworzenia wysoce nadmiarowy i niezawodne na żywo pozyskiwać mechanizmami.
 
 ## <a name="1-conformance-notation"></a>1. Notacja zgodności
@@ -92,7 +93,7 @@ W przypadku tej opcji kodera umieszcza jedną ścieżkę z każdego fragmentu w 
 
 ![Śledzi oddzielne strumienie][image3]
 
-### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>Opcja 3: Pakiet dźwiękową z najniższą Ścieżka wideo szybkości transmisji bitów w jeden strumień
+### <a name="option-3-bundle-audio-track-with-the-lowest-bitrate-video-track-into-one-stream"></a>Opcja 3: Pakiet ścieżki audio z najniższą Ścieżka wideo szybkości transmisji bitów w jeden strumień
 W przypadku tej opcji klient zdecyduje się na pakietu ścieżki audio z Ścieżka wideo najniższej szybkości transmisji bitów w jeden fragment w formacie MP4 bitstream i pozostawić inne dwóch ścieżek wideo jako osobne strumieni. 
 
 ![Śledzi strumieni audio i wideo][image4]

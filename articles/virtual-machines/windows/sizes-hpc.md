@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: e00a4c5f5ee307a2d574702844e481894d28cb93
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 6ace72aea22224e2df04ecfe872dafdd497b1d37
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49340311"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976779"
 ---
 # <a name="high-performance-compute-vm-sizes"></a>Rozmiary maszyn wirtualnych obliczeń o wysokiej wydajności
 
@@ -45,7 +45,7 @@ ms.locfileid: "49340311"
   Poniższe polecenie instaluje najnowsze rozszerzenia w wersji 1.1 w HpcVMDrivers istniejącej obsługą dostępu RDMA maszyny wirtualnej o nazwie *myVM* wdrożone w grupie zasobów o nazwie *myResourceGroup* w  *Zachodnie stany USA* regionu:
 
   ```PowerShell
-  Set-AzureRmVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
+  Set-AzVMExtension -ResourceGroupName "myResourceGroup" -Location "westus" -VMName "myVM" -ExtensionName "HpcVmDrivers" -Publisher "Microsoft.HpcCompute" -Type "HpcVmDrivers" -TypeHandlerVersion "1.1"
   ```
   
   Aby uzyskać więcej informacji, zobacz [rozszerzeniach i funkcjach maszyn wirtualnych](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Możesz także pracować z rozszerzeniami dla maszyn wirtualnych wdrożonych w [klasycznego modelu wdrażania](classic/manage-extensions.md).

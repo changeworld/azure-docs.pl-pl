@@ -12,13 +12,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 81ec99c5de94736d68392cc7cf0bc3e305e0ce7d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 436dbccfe8d5b732bc64b58ff79dc772ac8b2bce
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754020"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964189"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych SQL Database i SQL Data Warehouse
 
@@ -37,11 +37,14 @@ Istnieją dwa konta z uprawnieniami administracyjnymi (**Administrator serwera**
 
 - **Administrator serwera**
 
-Podczas tworzenia serwera Azure SQL musi zostać podany **identyfikator logowania administratora serwera**. Serwer SQL tworzy to konto jako identyfikator logowania w bazie danych master. To konto używa do połączenia uwierzytelnienia programu SQL Server (nazwy użytkownika i hasła). Może istnieć tylko jedno z tych kont.   
+  Podczas tworzenia serwera Azure SQL musi zostać podany **identyfikator logowania administratora serwera**. Serwer SQL tworzy to konto jako identyfikator logowania w bazie danych master. To konto używa do połączenia uwierzytelnienia programu SQL Server (nazwy użytkownika i hasła). Może istnieć tylko jedno z tych kont.
 
-- **Administrator usługi Active Directory systemu Azure**   
+  > [!NOTE]
+  > Aby zresetować hasło administratora serwera, przejdź do [witryny Azure portal](https://portal.azure.com), kliknij przycisk **serwerów SQL**, wybierz serwer z listy, a następnie kliknij przycisk **resetowania hasła**.
 
-Jako konto administratora można również skonfigurować jedno konto usługi Azure Active Directory (indywidualne lub grupy zabezpieczeń). Opcjonalnie można skonfigurować, administrator usługi Azure AD, ale administrator usługi Azure AD **musi** skonfigurowane, jeśli chcesz nawiązać połączenie z bazą danych SQL przy użyciu konta usługi Azure AD. Aby uzyskać więcej informacji na temat konfigurowania dostępu do usługi Azure Active Directory, zobacz artykuły [Connecting to SQL Database or SQL Data Warehouse By Using Azure Active Directory Authentication](sql-database-aad-authentication.md) (Łączenie się z usługą SQL Database lub SQL Data Warehouse przy użyciu uwierzytelnienia usługi Azure Active Directory) i [SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md) (Obsługa programu SSMS w usłudze Azure AD MFA przy użyciu usługi SQL Database i SQL Data Warehouse).
+- **Administrator usługi Active Directory systemu Azure**
+
+  Jako konto administratora można również skonfigurować jedno konto usługi Azure Active Directory (indywidualne lub grupy zabezpieczeń). Opcjonalnie można skonfigurować, administrator usługi Azure AD, ale administrator usługi Azure AD **musi** skonfigurowane, jeśli chcesz nawiązać połączenie z bazą danych SQL przy użyciu konta usługi Azure AD. Aby uzyskać więcej informacji na temat konfigurowania dostępu do usługi Azure Active Directory, zobacz artykuły [Connecting to SQL Database or SQL Data Warehouse By Using Azure Active Directory Authentication](sql-database-aad-authentication.md) (Łączenie się z usługą SQL Database lub SQL Data Warehouse przy użyciu uwierzytelnienia usługi Azure Active Directory) i [SSMS support for Azure AD MFA with SQL Database and SQL Data Warehouse](sql-database-ssms-mfa-authentication.md) (Obsługa programu SSMS w usłudze Azure AD MFA przy użyciu usługi SQL Database i SQL Data Warehouse).
 
 Konta **Administrator serwera** i **Administrator usługi Azure AD** mają następujące cechy:
 
@@ -71,7 +74,6 @@ Aby uzyskać szczegółowe omówienie tworzenia serwera, bazy danych i reguły z
 
 > [!IMPORTANT]
 > Zalecane jest używanie najnowszej wersji programu Management Studio, aby zachować synchronizację z aktualizacjami platformy Microsoft Azure i usługi SQL Database. [Zaktualizuj program SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx).
-
 
 ## <a name="additional-server-level-administrative-roles"></a>Dodatkowe role administracyjne na poziomie serwera
 

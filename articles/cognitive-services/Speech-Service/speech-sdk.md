@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 749def4df4aa210583f778668a398419ec08a07d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5d98ae7fe4062ce88ee2a3df5f9bb4d992d4023c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861429"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984685"
 ---
 # <a name="about-the-speech-service-sdk"></a>Temat zestawu SDK usługi mowy
 
@@ -76,13 +76,13 @@ Korzystanie z pakietu z projektu w programie Android Studio, należy wprowadzić
 
 * W pliku build.gradle na poziomie projektu, Dodaj następujący kod do `repository` sekcji:
 
-  ```text
+  ```gradle
   maven { url 'https://csspeechstorage.blob.core.windows.net/maven/' }
   ```
 
 * W pliku build.gradle poziom modułu, Dodaj następujący kod do `dependencies` sekcji:
 
-  ```text
+  ```gradle
   implementation 'com.microsoft.cognitiveservices.speech:client-sdk:1.2.0'
   ```
 

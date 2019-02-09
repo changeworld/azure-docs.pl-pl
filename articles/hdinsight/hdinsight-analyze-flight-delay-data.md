@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e95440f72580b928cd41b6d03f30459cfb70a510
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817669"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965396"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analizowanie danych dotyczących opóźnień lotów przy użyciu technologii Hive w HDInsight
 [Apache Hive](https://hive.apache.org/) umożliwia uruchamianie [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html) zadania za pomocą języka skryptów przypominającego SQL o nazwie *[HiveQL] [ hadoop-hiveql]*, które mogą być stosowane do podsumowania, odpytywania i analizowania dużych ilości danych.
@@ -66,13 +66,13 @@ Jeśli chcesz dowiedzieć się, jak get lub przekazywanie danych do konta magazy
 
 W poniższej tabeli wymieniono pliki używane w ramach tego samouczka:
 
-<table border="1">
-<tr><th>Pliki</th><th>Opis</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Plik skryptu HiveQL używany przez zadania Hive. Ten skrypt został przekazany do konta magazynu obiektów Blob platformy Azure przy użyciu publicznego dostępu. <a href="#appendix-b">Dodatek B</a> zawiera instrukcje dotyczące przygotowania i przekazanie tego pliku na swoje konto magazynu obiektów Blob platformy Azure.</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Dane wejściowe dla zadania Hive. Danych został przekazany do konta magazynu obiektów Blob platformy Azure przy użyciu publicznego dostępu. <a href="#appendix-a">Dodatek A</a> ma instrukcje pobierania danych i przekazywania danych do swojego konta magazynu obiektów Blob platformy Azure.</td></tr>
-<tr><td>\tutorials\flightdelays\output</td><td>Ścieżka danych wyjściowych zadania Hive. Domyślny kontener jest używany do przechowywania danych wyjściowych.</td></tr>
-<tr><td>\tutorials\flightdelays\jobstatus</td><td>Folder stanu zadania Hive w domyślnym kontenerze.</td></tr>
-</table>
+|Pliki|Opis|  
+|----|----|   
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql|Plik skryptu HiveQL używany przez zadania Hive. Ten skrypt został przekazany do konta magazynu obiektów Blob platformy Azure przy użyciu publicznego dostępu. <a href="#appendix-b">Dodatek B</a> zawiera instrukcje dotyczące przygotowania i przekazanie tego pliku na swoje konto magazynu obiektów Blob platformy Azure.|
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data|Dane wejściowe dla zadania Hive. Danych został przekazany do konta magazynu obiektów Blob platformy Azure przy użyciu publicznego dostępu. <a href="#appendix-a">Dodatek A</a> ma instrukcje pobierania danych i przekazywania danych do swojego konta magazynu obiektów Blob platformy Azure.|
+|\tutorials\flightdelays\output|Ścieżka danych wyjściowych zadania Hive. Domyślny kontener jest używany do przechowywania danych wyjściowych.|
+|\tutorials\flightdelays\jobstatus|Folder stanu zadania Hive w domyślnym kontenerze.|
+
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Tworzenie klastra i uruchamiać zadania Hive/narzędzia Sqoop
 MapReduce usługi Hadoop jest przetwarzanie wsadowe. Najbardziej ekonomiczny sposób uruchamiania zadania Hive jest tworzenie klastra dla zadania i usunąć zadanie po zakończeniu zadania. Poniższy skrypt obejmuje cały proces.
@@ -250,12 +250,11 @@ Przekazywanie plików danych i [HiveQL](https://cwiki.apache.org/confluence/disp
 1. Przejdź do strony [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website].
 2. Na stronie wybierz następujące wartości:
 
-    <table border="1">
-    <tr><th>Name (Nazwa)</th><th>Wartość</th></tr>
-    <tr><td>Rok filtrowania</td><td>2013 </td></tr>
-    <tr><td>Filter Period (Okres filtrowania)</td><td>January (Styczeń)</td></tr>
-    <tr><td>Pola</td><td>*Rok*, *FlightDate*, *UniqueCarrier*, *operatora*, *FlightNum*, *OriginAirportID*, *Pochodzenia*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (Usuń zaznaczenie wszystkich innych pól)</td></tr>
-    </table>
+    |Name (Nazwa)|Wartość|
+    |---|---|
+    |Rok filtrowania|2013|
+    |Filter Period (Okres filtrowania)|January (Styczeń)|
+    |Pola|*Rok*, *FlightDate*, *UniqueCarrier*, *operatora*, *FlightNum*, *OriginAirportID*, *Pochodzenia*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*,  *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*,  *LateAircraftDelay* (Usuń zaznaczenie wszystkich innych pól)|
 
 3. Kliknij pozycję **Pobierz**.
 4. Rozpakuj plik do **C:\Tutorials\FlightDelay\2013Data** folderu. Każdy plik jest plikiem CSV i jest rozmiar około 60GB.
@@ -266,11 +265,10 @@ Przekazywanie plików danych i [HiveQL](https://cwiki.apache.org/confluence/disp
 
 1. Przygotuj parametry:
 
-    <table border="1">
-    <tr><th>Nazwa zmiennej</th><th>Uwagi</th></tr>
-    <tr><td>$storageAccountName</td><td>Konto usługi Azure Storage, gdzie chcesz przekazać dane.</td></tr>
-    <tr><td>$blobContainerName</td><td>Kontener obiektów Blob, które chcesz przekazać dane do.</td></tr>
-    </table>
+    |Nazwa zmiennej|Uwagi|
+    |---|---|
+    |$storageAccountName|Konto usługi Azure Storage, gdzie chcesz przekazać dane.|
+    |$blobContainerName|Kontener obiektów Blob, które chcesz przekazać dane do.|
     
 2. Otwórz środowiska Azure PowerShell ISE.
 3. Wklej poniższy skrypt w okienku skryptu:
@@ -375,11 +373,10 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Ap
 
 1. Przygotuj parametry:
 
-    <table border="1">
-    <tr><th>Nazwa zmiennej</th><th>Uwagi</th></tr>
-    <tr><td>$storageAccountName</td><td>Gdzie chcesz przekazać skrypt HiveQL, aby konto usługi Azure Storage.</td></tr>
-    <tr><td>$blobContainerName</td><td>Kontener obiektów Blob, które chcesz przekazać skrypt HiveQL, aby.</td></tr>
-    </table>
+    |Nazwa zmiennej|Uwagi|
+    |---|---|
+    |$storageAccountName|Gdzie chcesz przekazać skrypt HiveQL, aby konto usługi Azure Storage.|
+    |$blobContainerName|Kontener obiektów Blob, które chcesz przekazać skrypt HiveQL, aby.|
     
 2. Otwórz środowiska Azure PowerShell ISE.  
 
@@ -564,14 +561,14 @@ Aby uzyskać pełną listę poleceń HiveQL, zobacz [języka definicji danych Ap
 
 1. Przygotuj parametry:
 
-    <table border="1">
-    <tr><th>Nazwa zmiennej</th><th>Uwagi</th></tr>
-    <tr><td>$sqlDatabaseServerName</td><td>Nazwa serwera bazy danych Azure SQL. Wprowadź nie ma nic do utworzenia nowego serwera.</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>Nazwa logowania dla serwera bazy danych Azure SQL. $SqlDatabaseServerName w przypadku istniejącego serwera, nazwa logowania i hasło logowania są używane do uwierzytelniania z serwerem. W przeciwnym razie są używane do utworzenia nowego serwera.</td></tr>
-    <tr><td>$sqlDatabasePassword</td><td>Hasło logowania dla serwera bazy danych Azure SQL.</td></tr>
-    <tr><td>$sqlDatabaseLocation</td><td>Ta wartość jest używana tylko wtedy, gdy tworzysz nowy serwer bazy danych platformy Azure.</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>Baza danych SQL, użyty do utworzenia tabeli AvgDelays zadania narzędzia Sqoop. Utworzy bazę danych o nazwie HDISqoop pozostawić je puste. Nazwa tabeli danych wyjściowych zadania Sqoop jest AvgDelays. </td></tr>
-    </table>
+    |Nazwa zmiennej|Uwagi|
+    |---|---|
+    |$sqlDatabaseServerName|Nazwa serwera bazy danych Azure SQL. Wprowadź nie ma nic do utworzenia nowego serwera.|
+    |$sqlDatabaseUsername|Nazwa logowania dla serwera bazy danych Azure SQL. $SqlDatabaseServerName w przypadku istniejącego serwera, nazwa logowania i hasło logowania są używane do uwierzytelniania z serwerem. W przeciwnym razie są używane do utworzenia nowego serwera.|
+    |$sqlDatabasePassword|Hasło logowania dla serwera bazy danych Azure SQL.|
+    |$sqlDatabaseLocation|Ta wartość jest używana tylko wtedy, gdy tworzysz nowy serwer bazy danych platformy Azure.|
+    |$sqlDatabaseName|Baza danych SQL, użyty do utworzenia tabeli AvgDelays zadania narzędzia Sqoop. Utworzy bazę danych o nazwie HDISqoop pozostawić je puste. Nazwa tabeli danych wyjściowych zadania Sqoop jest AvgDelays.|
+
     
 2. Otwórz środowiska Azure PowerShell ISE.
 

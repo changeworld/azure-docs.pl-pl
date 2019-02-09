@@ -16,18 +16,18 @@ ms.date: 12/10/2018
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: f900fa5105f42dac57b392d41a8cd888850fc648
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 491664067c87de8f94d2395cb2ffbdeade2595b0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249499"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979551"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Integracja z usługą Azure datacenter stosu
 
-W tym artykule opisano obsługę klientów usługi Azure Stack end-to-end z zakupu za pośrednictwem zintegrowane rozwiązanie do pomyślnego wdrożenia na miejscu przez dostawcę rozwiązania. Dzięki tym informacjom do jej obsługi ułatwiają realizację swoją podróż i pomóc w ustaleniu oczekiwań, na jakie, jako klient usługi Azure Stack, należy się spodziewać podczas integrowania usługi Azure Stack w centrum danych.
+W tym artykule opisano obsługę klientów usługi Azure Stack end-to-end z zakupu zintegrowanego systemu za pośrednictwem do pomyślnego wdrożenia na miejscu przez dostawcę rozwiązania. Dzięki tym informacjom do jej obsługi ułatwiają realizację swoją podróż i pomóc w ustaleniu oczekiwań dla Ciebie już klientem usługi Azure Stack.
 
-Jako klient korzystający z usługi Azure Stack powinna przewidywać następujące fazy integrację centrum danych:
+Jako klient korzystający z usługi Azure Stack powinna przewidywać następujących faz:
 
 |     |Faza planowania|Kolejność przetwarzania|Przed wdrożeniem|Fabryka procesu|Dostarczanie sprzętu|Wdrożenia u klienta|
 |-----|-----|-----|-----|-----|-----|-----|
@@ -63,7 +63,7 @@ W tej fazie należy zdecydować, jak zintegrować usługę Azure Stack w centrum
 [Zagadnienia dotyczące integracji ogólne datacenter](azure-stack-datacenter-integration.md) artykuł zawiera informacje ułatwiające ukończyć szablon, znane jako arkusz wdrażania. 
 
 > [!IMPORTANT]
-> Na tym etapie należy badają i decyzję przed porządkowanie rozwiązania wszystkie wstępnie wymagane informacje. Należy pamiętać, że ten krok jest czasochłonne i wymaga koordynacji i zbieranie danych z wielu dyscyplin w Twojej organizacji. 
+> Na tym etapie należy badają i decyzję przed porządkowanie rozwiązania wszystkie wstępnie wymagane informacje. Należy pamiętać, że ten krok jest czasochłonne i wymaga koordynacji i zbieranie danych z wielu dyscyplin w Twojej organizacji. Dłużej wdrożenia może powodować niepoprawne lub niepełne informacje. 
 
 W fazie przed wdrożeniem należy zdecydować, od następujących czynników:
 
@@ -90,7 +90,7 @@ Jest **kluczowym** że wszystkie wstępnie wymagane dane, jest zablokowany i *pr
 
 -   Wszystkie certyfikaty należy zakupić i gotowe.
 
--   Nazwa domeny, należy podejmować.
+-   Nazwa regionu, należy podejmować.
 
 -   Wszystkie parametry integracji sieci sfinalizowaniu i jest zgodna z zostały udostępnione przez z dostawcą rozwiązania.
 
@@ -102,16 +102,16 @@ Aby wdrożyć usługę Azure Stack, inżynier ds przez dostawcę rozwiązania sp
 
 Oto co Spodziewaj od inżyniera ds podczas wdrażania:
 
-- Sprawdź wszystkie obramowania i okablowania łączność upewnij się, rozwiązanie jest prawidłowo Podsumowując i spełnia Twoje wymagania
-- Konfigurowanie rozwiązania HLH (Host cyklu życia sprzętu)
+- Sprawdź wszystkie obramowania i okablowania łączność upewnij się, rozwiązanie jest prawidłowo Podsumowując i spełnia Twoje wymagania.
+- Skonfiguruj rozwiązanie HLH (sprzętu cyklu życia hosta), jeśli jest obecny.
 - Sprawdź, upewnij się, że ustawienia kontrolera BMC, systemu BIOS i sieci są poprawne.
-- Upewnij się, że oprogramowanie układowe wszystkich składników jest w najnowszej wersji zatwierdzonych przez rozwiązanie
-- Rozpocząć wdrażanie
+- Upewnij się, że oprogramowanie układowe wszystkich składników jest w najnowszej wersji zatwierdzonych przez rozwiązanie.
+- Rozpocząć wdrażanie.
 
 > [!NOTE]
 > Procedury wdrażania, zadając je inżynierom DS na miejscu może zająć około jeden tydzień roboczy.
 
-## <a name="post-integration-phase"></a>Faza po integracji
+## <a name="post-deployment-phase"></a>Po wdrożeniu fazy
 Kilka kroków muszą być wykonywane przez partnera, zanim rozwiązanie jest przekazywane do klienta w fazie po integracji. W tej fazie sprawdzania poprawności jest ważne, aby upewnić się, że system jest wdrażana i działają prawidłowo. 
 
 Dostępne są następujące akcje, które powinny zostać podjęte przez partnera OEM:
@@ -122,13 +122,13 @@ Dostępne są następujące akcje, które powinny zostać podjęte przez partner
 
 -   [Marketplace Syndication](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   Pliki konfiguracji przełącznika kopii zapasowej
+-   Pliki kopii zapasowej konfiguracji przełącznika i HLH
 
 -   Usuń Menedżer DVM
 
 -   Przygotowywanie podsumowania klienta do wdrożenia
 
--   [Sprawdź dostępność aktualizacji, aby upewnić się, że oprogramowanie rozwiązanie jest aktualizowane do najnowszej wersji](azure-stack-updates.md)
+-   [Sprawdź dostępność aktualizacji, aby upewnić się, że oprogramowanie rozwiązanie jest aktualizowane do najnowszej wersji](.\azure-stack-updates.md)
 
 Istnieje kilka kroków, które są wymagane lub opcjonalne w zależności od typu instalacji.
 

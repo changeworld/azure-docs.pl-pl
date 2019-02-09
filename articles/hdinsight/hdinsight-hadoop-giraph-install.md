@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4bcd7bcef0969cec82d42ead6307e72a3abea6e1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260495"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978872"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Instalowanie i używanie Apache Giraph w klastrach HDInsight z systemem Windows
 
@@ -46,17 +46,12 @@ Można zainstalować system Giraph z każdym typem klastra (Hadoop, Storm, HBase
 
     ![Użyć akcji skryptu, aby dostosować klaster](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "użyj akcji skryptu, aby dostosować klastra")
 
-    <table border='1'>
-        <tr><th>Właściwość</th><th>Wartość</th></tr>
-        <tr><td>Name (Nazwa)</td>
-            <td>Określ nazwę dla akcji skryptu. Na przykład <b>zainstalować system Giraph</b>.</td></tr>
-        <tr><td>Identyfikator URI skryptu</td>
-            <td>Określ identyfikator URI (Uniform Resource) do skryptu, który jest wywoływana w celu dostosowania do klastra. Na przykład <i>https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1</i></td></tr>
-        <tr><td>Typ węzła</td>
-            <td>Określ węzły, na których jest uruchamiany skrypt dostosowywania. Możesz wybrać <b>wszystkie węzły</b>, <b>tylko węzłami głównymi</b>, lub <b>węzłów procesu roboczego tylko</b>.
-        <tr><td>Parametry</td>
-            <td>Określ parametry, jeśli jest to wymagane przez skrypt. Skrypt, aby zainstalować system Giraph nie wymaga żadnych parametrów, dzięki czemu użytkownik może pozostaw to pole puste.</td></tr>
-    </table>
+    |Właściwość|Wartość|  
+    |---|---|  
+    |Name (Nazwa)|Określ nazwę dla akcji skryptu. Na przykład **zainstalować system Giraph**|
+    |Identyfikator URI skryptu|Określ identyfikator URI (Uniform Resource) do skryptu, który jest wywoływana w celu dostosowania do klastra. Na przykład *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
+    |Typ węzła|Określ węzły, na których jest uruchamiany skrypt dostosowywania. Możesz wybrać **wszystkie węzły**, **tylko węzłami głównymi**, lub **węzłów procesu roboczego tylko**.
+    |Parametry|Określ parametry, jeśli jest to wymagane przez skrypt. Skrypt, aby zainstalować system Giraph nie wymaga żadnych parametrów, dzięki czemu użytkownik może pozostaw to pole puste.|  
 
     Możesz dodać więcej niż jedna akcja skryptu do zainstalowania wiele składników w klastrze. Po dodaniu skryptów, kliknij znacznik wyboru, aby rozpocząć tworzenie klastra.
 
@@ -78,6 +73,7 @@ Używamy przykład SimpleShortestPathsComputation aby zademonstrować podstawowa
     Rysowania, i przy użyciu wartości (lub waga) jako odległość między obiektami, powyższe dane może wyglądać następująco:
 
     ![tiny_graph.txt rysowana w formie okręgów linie różnych odległość między](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
+
 2. Uruchom przykład SimpleShortestPathsComputation. Użyj następujących poleceń cmdlet programu Azure PowerShell, aby uruchomić przykład z użyciem tiny_graph.txt pliku jako dane wejściowe.
 
     > [!IMPORTANT]  

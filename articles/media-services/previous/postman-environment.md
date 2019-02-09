@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 037bdc233090e79695c17df197bb4c7adb517b20
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: a5a08b851bf726a221662d7ec9fb28ae33958e69
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50229801"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981693"
 ---
-# <a name="import-the-postman-environment"></a>Importuj środowiska Postman 
+# <a name="import-the-postman-environment-legacy"></a>Importuj środowiska Postman (starsza wersja)
 
 Ten artykuł zawiera definicję **Postman** zmienne środowiskowe, które są używane [kolekcji Postman](postman-collection.md) zawierający pogrupowanych żądań HTTP, które wywołują interfejsów API REST usługi Media Services. Pliki środowiska i kolekcji są używane przez [wywołuje Konfigurowanie narzędzia Postman dla interfejsu API REST usługi Media Services](media-rest-apis-with-postman.md) samouczka.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 540abeed3587959af5ca229f59343774b824547b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566241"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982900"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager
 Gdy usługi Azure Resource Manager oferuje wiele wspaniałych nowych funkcji, ważne jest zaplanowanie podróż migracyjną Postaramy się bezproblemowym przejściu. Poświęcania czasu na temat planowania będą upewnij się, czy nie występują problemy podczas wykonywania działania migracji.
@@ -131,23 +131,25 @@ Poniżej zostały problemów znalezionych w wielu większych migracji. To nie je
     - Tabele tras
 
     Możesz sprawdzić bieżące limity przydziału usługi Azure Resource Manager przy użyciu następujących poleceń do najnowszej wersji programu Azure PowerShell.
+    
+    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
     **Obliczenia** *(rdzenie, zestawy dostępności)*
 
     ```powershell
-    Get-AzureRmVMUsage -Location <azure-region>
+    Get-AzVMUsage -Location <azure-region>
     ```
 
     **Sieć** *(sieci wirtualne, statyczne publiczne adresy IP, publiczne adresy IP, sieciowe grupy zabezpieczeń, sieciowego tabele tras interfejsów, moduły równoważenia obciążenia)*
 
     ```powershell
-    Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
+    Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
     **Magazyn** *(konta magazynu)*
 
     ```powershell
-    Get-AzureRmStorageUsage
+    Get-AzStorageUsage
     ```
 
 - **Menedżer zasobów interfejsu API usługi Azure limity ograniczania przepływności** — Jeśli masz wystarczająco duże środowisko (np.) > 400 maszyn wirtualnych w sieci Wirtualnej) może napotkać API domyślne ograniczenie do zapisu (obecnie `1200 writes/hour`) w usłudze Azure Resource Manager. Przed rozpoczęciem migracji, należy zgłosić bilet pomocy technicznej w celu zwiększenia tego limitu dla Twojej subskrypcji.

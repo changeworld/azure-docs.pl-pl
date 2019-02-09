@@ -15,18 +15,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: e32e2833edc7027a984bb27b34608e4b1b898113
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 094df21bb0264ebbd8ad23c594ceb52db19d9c2f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767087"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979619"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie usługi Azure Resource Manager
 
 W tym artykule opisano aspekty szablonu usługi Azure Resource Manager, które są stosowane do maszyn wirtualnych. W tym artykule nie opisano kompletny szablon, podczas tworzenia maszyny wirtualnej; w tym należy definicji zasobu dla konta magazynu, interfejsy sieciowe, publiczne adresy IP i sieci wirtualnych. Aby uzyskać więcej informacji na temat sposobu te zasoby można zdefiniować ze sobą, zobacz [Przewodnik po szablonie usługi Resource Manager](../../azure-resource-manager/resource-manager-template-walkthrough.md).
 
 Istnieje wiele [szablonów w galerii](https://azure.microsoft.com/documentation/templates/?term=VM) zawierające zasób maszyny Wirtualnej. Nie wszystkie elementy, które mogły zostać uwzględnione w szablonie są opisane poniżej.
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 W tym przykładzie pokazano sekcję typowe zasobu szablon służący do tworzenia ciągu określonej liczby maszyn wirtualnych:
 
@@ -163,8 +165,9 @@ Wersja interfejsu API, określ w szablonie ma wpływ na właściwości, które m
 Użyj tych możliwości w celu uzyskania najnowszej wersji interfejsu API:
 
 - Interfejs API REST — [listy wszystkich dostawców zasobów](https://docs.microsoft.com/rest/api/resources/providers)
-- PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Interfejs wiersza polecenia Azure - [az provider show](https://docs.microsoft.com/cli/azure/provider)
+- PowerShell — [Get AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/get-azresourceprovider)
+- Interfejs wiersza polecenia Azure - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+
 
 ## <a name="parameters-and-variables"></a>Parametry i zmienne
 
@@ -442,7 +445,7 @@ Można wyświetlić stan zainstalowanych rozszerzeń z ustawień rozszerzenia w 
 
 ![Pobierz stan rozszerzenia](./media/template-description/virtual-machines-show-extensions.png)
 
-Można również uzyskać informacji o rozszerzeniu za pomocą **Get-AzureRmVMExtension** polecenia programu PowerShell **get rozszerzenia maszyny wirtualnej** polecenia wiersza polecenia platformy Azure lub **uzyskiwanie informacji o rozszerzeniu**Interfejsu API REST.
+Można również uzyskać informacji o rozszerzeniu za pomocą **Get AzVMExtension** polecenia programu PowerShell **get rozszerzenia maszyny wirtualnej** polecenia wiersza polecenia platformy Azure lub **uzyskiwanie informacji o rozszerzeniu**Interfejsu API REST.
 
 ## <a name="deployments"></a>Wdrożenia
 

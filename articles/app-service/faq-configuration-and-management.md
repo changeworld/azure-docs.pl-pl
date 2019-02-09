@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 14f74c26822ac1dc9e781ada82809bf3a4166f18
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5ab47165118b68e91c1218be35c6f88aa55350e2
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190905"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982611"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfiguracja i zarządzanie nim często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -244,7 +244,7 @@ Zaplanowane zadania WebJob można utworzyć za pomocą wyrażeń Cron:
 
 1. Należy utworzyć plik settings.job.
 2. W tym pliku JSON zawierają właściwości harmonogramu przy użyciu wyrażenia Cron: 
-    ```
+    ```json
     { "schedule": "{second}
     {minute} {hour} {day}
     {month} {day of the week}" }
@@ -270,7 +270,7 @@ Jak wskazuje komunikat, ten proces sprawdzania poprawności oszustwa, może potr
 
 Jeśli certyfikat usługi App Service w dalszym ciągu wyświetlać ten komunikat po 24 godzinach, uruchom następujący skrypt programu PowerShell. Kontakty skryptu [dostawcę certyfikatów](https://www.godaddy.com/) bezpośrednio, aby rozwiązać ten problem.
 
-```
+```powershell
 Connect-AzureRmAccount
 Set-AzureRmContext -SubscriptionId <subId>
 $actionProperties = @{
@@ -312,10 +312,10 @@ Jeśli żaden z tych warunków, a problem nie zniknie, Prześlij żądanie pomoc
 
 Aby włączyć kompresję obu typów zawartości statycznej i dynamicznej, Dodaj następujący kod do pliku web.config na poziomie aplikacji:
 
-```
+```xml
 <system.webServer>
-<urlCompression doStaticCompression="true" doDynamicCompression="true" />
-< /system.webServer>
+    <urlCompression doStaticCompression="true" doDynamicCompression="true" />
+</system.webServer>
 ```
 
 Można również określić określone statycznych i dynamicznych typów MIME, które chcesz kompresować. Aby uzyskać więcej informacji, zobacz nasze odpowiedzi na pytanie na forum [httpCompression ustawień prostą witrynę sieci Web platformy Azure](https://social.msdn.microsoft.com/Forums/azure/890b6d25-f7dd-4272-8970-da7798bcf25d/httpcompression-settings-on-a-simple-azure-website?forum=windowsazurewebsitespreview).

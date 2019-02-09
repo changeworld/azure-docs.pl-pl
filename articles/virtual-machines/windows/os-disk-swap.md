@@ -1,5 +1,5 @@
 ---
-title: Dysk wymiany systemu operacyjnego dla maszyny Wirtualnej platformy Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
+title: Dysk wymiany systemu operacyjnego na Maszynie wirtualnej platformy Azure przy użyciu programu PowerShell | Dokumentacja firmy Microsoft
 description: Zmień dysk systemu operacyjnego używany przez maszynę wirtualną platformy Azure przy użyciu programu PowerShell.
 services: virtual-machines-windows
 documentationcenter: ''
@@ -15,50 +15,52 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: caa8fe2088995e3d30c9b808f639b9280e3a74be
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 73aab0750d97981d6684d04415683435bbd28797
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32196196"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980418"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Zmień dysk systemu operacyjnego używany przez maszyny Wirtualnej platformy Azure przy użyciu programu PowerShell
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-powershell"></a>Zmień dysk systemu operacyjnego używany przez Maszynę wirtualną platformy Azure przy użyciu programu PowerShell
 
-Jeśli masz istniejącą maszynę Wirtualną, ale chcesz wymienić dysk kopii zapasowej dysku lub innego dysku systemu operacyjnego, można użyć programu Azure PowerShell, można zamienić na dyskach systemu operacyjnego. Nie masz usunięcie i ponowne utworzenie maszyny Wirtualnej. Nawet służy dysków zarządzanych w innej grupie zasobów, jak długo nie znajduje się już w użyciu.
+Jeśli masz istniejącą maszynę Wirtualną, ale chcesz zamienić na dysku dla dysku kopii zapasowej lub inny dysk systemu operacyjnego, można użyć programu Azure PowerShell o zamianę dysków systemu operacyjnego. Nie masz usunięcie i ponowne utworzenie maszyny Wirtualnej. Nawet służy dysku zarządzanego w innej grupie zasobów, tak długo, jak go nie jest już używana.
 
-Maszyna wirtualna musi być stopped\deallocated, a następnie identyfikator zasobu zarządzanego dysku można zastąpić identyfikator zasobu zarządzanego inny dysk.
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-Upewnij się, że typu rozmiaru i magazynu maszyny Wirtualnej są zgodne z dysku, który chcesz dołączyć. Na przykład jeśli dysk, który ma być używany jest magazyn w warstwie Premium, następnie maszyny Wirtualnej musi być w stanie magazyn w warstwie Premium (takich jak rozmiar z serii DS). 
+Maszyna wirtualna musi być stopped\deallocated, a następnie identyfikator zasobu dysku zarządzanego można zastąpić o identyfikatorze zasobu z innego dysku zarządzanego.
 
-Pobierz listę dysków w grupie zasobów przy użyciu [Get AzureRmDisk](/powershell/module/azurerm.compute/get-azurermdisk)
+Upewnij się, że typ rozmiaru i magazynu maszyny Wirtualnej są zgodne z dysku, który chcesz dołączyć. Na przykład w przypadku dysku, którego chcesz użyć w usłudze Premium Storage, maszyny Wirtualnej musi być w stanie magazynu w warstwie Premium (na przykład rozmiar serii DS). 
+
+Pobierz listę dysków w grupie zasobów przy użyciu [Get AzDisk](https://docs.microsoft.com/powershell/module/az.compute/get-azdisk)
 
 ```azurepowershell-interactive
-Get-AzureRmDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
+Get-AzDisk -ResourceGroupName myResourceGroup | Format-Table -Property Name
 ```
  
-Jeśli nazwa dysku, który chcesz użyć, ustawić go jako dysk systemu operacyjnego dla maszyny Wirtualnej. Ten przykład stop\deallocates maszyny Wirtualnej o nazwie *myVM* i przypisuje dysku o nazwie *newDisk* jako nowy dysk systemu operacyjnego. 
+Jeśli masz nazwę dysku, którego chcesz użyć, ustaw ją jako dysk systemu operacyjnego dla maszyny Wirtualnej. Ten przykład stop\deallocates maszyny Wirtualnej o nazwie *myVM* i przypisuje dysku o nazwie *newDisk* jako nowy dysk systemu operacyjnego. 
  
 ```azurepowershell-interactive 
 # Get the VM 
-$vm = Get-AzureRmVM -ResourceGroupName myResourceGroup -Name myVM 
+$vm = Get-AzVM -ResourceGroupName myResourceGroup -Name myVM 
 
 # Make sure the VM is stopped\deallocated
-Stop-AzureRmVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
+Stop-AzVM -ResourceGroupName myResourceGroup -Name $vm.Name -Force
 
 # Get the new disk that you want to swap in
-$disk = Get-AzureRmDisk -ResourceGroupName myResourceGroup -Name newDisk
+$disk = Get-AzDisk -ResourceGroupName myResourceGroup -Name newDisk
 
 # Set the VM configuration to point to the new disk  
-Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name 
+Set-AzVMOSDisk -VM $vm -ManagedDiskId $disk.Id -Name $disk.Name 
 
 # Update the VM with the new OS disk
-Update-AzureRmVM -ResourceGroupName myResourceGroup -VM $vm 
+Update-AzVM -ResourceGroupName myResourceGroup -VM $vm 
 
 # Start the VM
-Start-AzureRmVM -Name $vm.Name -ResourceGroupName myResourceGroup
+Start-AzVM -Name $vm.Name -ResourceGroupName myResourceGroup
 
 ```
 
 **Następne kroki**
 
-Aby utworzyć kopię dysku, zobacz [migawki dysku](snapshot-copy-managed-disk.md).
+Aby utworzyć kopię dysku, zobacz [Tworzenie migawki dysku](snapshot-copy-managed-disk.md).

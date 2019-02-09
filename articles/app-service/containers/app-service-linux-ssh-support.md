@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.custom: seodec18
-ms.openlocfilehash: ff5c18b08a2921efe72a35b9bd982986c1867812
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 9a05769b4cfd4bcaca0df9e1af1816d99f78bc62
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53251311"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984478"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux
 
@@ -58,7 +58,7 @@ Te kroki są wyświetlane w repozytorium usługi Azure App Service jako [przykł
     > [!NOTE]
     > Ta konfiguracja nie zezwala na połączenia zewnętrzne z kontenerem. Protokół SSH może zostać oceniony jedynie za pomocą aparatu Kudu / SCM lokacji, który jest uwierzytelniany przy użyciu poświadczeń publikowania.
 
-    ```docker
+    ```Dockerfile
     # ------------------------
     # SSH Server support
     # ------------------------
@@ -74,13 +74,13 @@ Te kroki są wyświetlane w repozytorium usługi Azure App Service jako [przykł
     > * `Ciphers` musi zawierać co najmniej jedną z następujących: `aes128-cbc,3des-cbc,aes256-cbc`.
     > * `MACs` musi zawierać co najmniej jedną z następujących: `hmac-sha1,hmac-sha1-96`.
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
 3. Obejmują port 2222 w [ `EXPOSE` instrukcji](https://docs.docker.com/engine/reference/builder/#expose) dla pliku Dockerfile. Mimo iż hasło konta root jest znane, nie można uzyskać dostępu do portu 2222 z Internetu. Jest to tylko port wewnętrzny dostępny tylko przez kontenerów w sieci mostkowanej prywatnej sieci wirtualnej.
 
-    ```docker
+    ```Dockerfile
     EXPOSE 2222 80
     ```
 
@@ -93,7 +93,7 @@ Te kroki są wyświetlane w repozytorium usługi Azure App Service jako [przykł
 
 Plik Dockerfile używa [ `ENTRYPOINT` instrukcji](https://docs.docker.com/engine/reference/builder/#entrypoint) do uruchomienia skryptu.
 
-    ```docker
+    ```Dockerfile
     COPY init_container.sh /opt/startup
     ...
     RUN chmod 755 /opt/startup/init_container.sh

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/08/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 059c90df16a46c2575635d7c729ec563ef1130c6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1015e6774dac1258820e3ca4b3d06786046a8554
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459727"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980860"
 ---
 # <a name="create-a-snapshot"></a>Utwórz migawkę
 
@@ -42,9 +42,9 @@ Jeśli zamierzasz utworzyć nową maszynę Wirtualną przy użyciu migawki, zale
 
 ## <a name="use-powershell"></a>Korzystanie z programu PowerShell
 
-Poniższe kroki pokazują jak skopiuj dysk VHD, utworzyć konfigurację migawki i migawki dysku przy użyciu [New AzureRmSnapshot](/powershell/module/azurerm.compute/new-azurermsnapshot) polecenia cmdlet. 
+Poniższe kroki pokazują jak skopiuj dysk VHD, utworzyć konfigurację migawki i migawki dysku przy użyciu [New AzSnapshot](https://docs.microsoft.com/powershell/module/az.compute/new-azsnapshot) polecenia cmdlet. 
 
-Przed rozpoczęciem upewnij się, masz najnowszą wersję modułu programu AzureRM.Compute PowerShell, który musi być w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli korzystasz z programu PowerShell lokalnie, uruchom [Connect-AzureRmAccount](https://docs.microsoft.com/powershell/module/azurerm.profile/connect-azurermaccount) do utworzenia połączenia z platformą Azure.
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 1. Ustaw niektóre parametry: 
 
@@ -58,7 +58,7 @@ $snapshotName = 'mySnapshot'
 2. Uzyskiwanie maszyny Wirtualnej:
 
  ```azurepowershell-interactive
-$vm = get-azurermvm `
+$vm = get-azvm `
    -ResourceGroupName $resourceGroupName 
    -Name $vmName
 ```
@@ -66,7 +66,7 @@ $vm = get-azurermvm `
 3. Utwórz konfigurację migawki. W tym przykładzie ma migawki dysku systemu operacyjnego:
 
  ```azurepowershell-interactive
-$snapshot =  New-AzureRmSnapshotConfig 
+$snapshot =  New-AzSnapshotConfig 
    -SourceUri $vm.StorageProfile.OsDisk.ManagedDisk.Id 
    -Location $location 
    -CreateOption copy
@@ -78,7 +78,7 @@ $snapshot =  New-AzureRmSnapshotConfig
 4. Migawki:
 
  ```azurepowershell-interactive
-New-AzureRmSnapshot 
+New-AzSnapshot 
    -Snapshot $snapshot 
    -SnapshotName $snapshotName 
    -ResourceGroupName $resourceGroupName 
