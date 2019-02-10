@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 912d5ec399ac59d81a7d9da9b494d8ee50e720e1
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 72aadcb5d1459518cda41f1d4dcafc670fa393c5
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55736103"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985473"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Typowe błędy występujące podczas migracji z modelu klasycznego do modelu opartego na usłudze Azure Resource Manager
 W tym artykule skatalogowano najbardziej typowe błędy i środki zaradcze w trakcie migracji zasobów IaaS z klasycznego modelu wdrażania platformy Azure do stosu usługi Azure Resource Manager.
@@ -163,9 +163,9 @@ Po zakończeniu procesu migracji można przenieść maszynę wirtualną do innej
 
 #### <a name="powershell"></a>PowerShell
 ```powershell
-$vm = Get-AzureRmVM -ResourceGroupName "MyRG" -Name "MyVM"
-Remove-AzureRmVMSecret -VM $vm
-Update-AzureRmVM -ResourceGroupName "MyRG" -VM $vm
+$vm = Get-AzVM -ResourceGroupName "MyRG" -Name "MyVM"
+Remove-AzVMSecret -VM $vm
+Update-AzVM -ResourceGroupName "MyRG" -VM $vm
 ```
 #### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 

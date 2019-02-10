@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 01/27/2019
 ms.author: cynthn
-ms.openlocfilehash: a13ce8d3dc71be83e05fae5bd07f30f413ce59f2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 2978da7f2e7ec27ded6b5994570fa50a9032d0d2
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55147930"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985476"
 ---
 Można korzystać z zalet wiele okazji do monitorowania maszyn wirtualnych, zbierając, wyświetlanie i analizowanie danych diagnostycznych i dane dziennika. W prostych [monitorowania](../articles/azure-monitor/overview.md) ekran Przegląd maszyny wirtualnej, można użyć dla maszyny Wirtualnej w witrynie Azure portal. Możesz użyć [rozszerzenia](../articles/virtual-machines/windows/extensions-features.md) Aby skonfigurować diagnostykę na maszynach wirtualnych, aby zbierać dodatkowe dane metryk. Umożliwia również bardziej zaawansowane opcje monitorowania, takich jak [usługi Application Insights](../articles/azure-monitor/app/app-insights-overview.md) i [usługi Log Analytics](../articles/azure-monitor/log-query/log-query-overview.md).
 
@@ -23,7 +23,7 @@ Można skonfigurować i monitorować zbiorem [dane diagnostyczne](https://docs.m
 
     Jak rozruchu maszyny wirtualnej agenta diagnostyki rozruchu przechwytuje dane wyjściowe rozruchu i zapisuje go w usłudze Azure storage. Dane te mogą posłużyć do rozwiązywania problemów związanych z rozruchem maszyny wirtualnej. Diagnostyka rozruchu nie są włączane automatycznie podczas tworzenia maszyny Wirtualnej z poziomu narzędzi wiersza polecenia. Przed włączeniem diagnostyki rozruchu należy utworzyć konto magazynu do przechowywania dzienników rozruchu. Włączenie diagnostyki rozruchu w witrynie Azure portal, konto magazynu jest tworzone automatycznie dla Ciebie.
 
-    Jeśli nie zostały włączone diagnostyki rozruchu, podczas tworzenia maszyny Wirtualnej, zawsze można włączyć je później za pomocą [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmbootdiagnostics), lub [szablonu usługi Azure Resource Manager](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
+    Jeśli nie zostały włączone diagnostyki rozruchu, podczas tworzenia maszyny Wirtualnej, zawsze można włączyć je później za pomocą [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics), [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/az.compute/set-azvmbootdiagnostics), lub [szablonu usługi Azure Resource Manager](../articles/virtual-machines/windows/extensions-diagnostics-template.md).
 
 - **Włącz zbieranie danych diagnostycznych systemu operacyjnego gościa.** Podczas tworzenia maszyny Wirtualnej, masz szansę na ekranie ustawienia, aby włączyć diagnostykę systemu operacyjnego gościa. Po włączeniu funkcji zbierania danych diagnostycznych [IaaSDiagnostics rozszerzenie dla systemu Linux](../articles/virtual-machines/linux/diagnostic-extension.md) lub [IaaSDiagnostics rozszerzenia dla Windows](../articles/virtual-machines/windows/ps-extensions-diagnostics.md) zostanie dodany do maszyny Wirtualnej, co umożliwia zbieranie dodatkowych dane na dysku, Procesora i pamięci.
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 93103311e8a9f6f4998195e21cdbc7523b1d4fca
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53594327"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985474"
 ---
 Możesz z łatwością [automatyczne skalowanie](../articles/azure-monitor/platform/autoscale-best-practices.md) swoje [maszyn wirtualnych (VM)](../articles/virtual-machines/windows/overview.md) zastosowania [zestawy skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) i [funkcja automatycznego skalowania platformy Azure Monitor](../articles/azure-monitor/platform/autoscale-overview.md). Maszyny wirtualne muszą należeć do zestawu skalowania automatycznego skalowania. Ten artykuł zawiera informacje, która pozwala na lepsze zrozumienie, jak skalowanie w pionie i w poziomie przy użyciu automatycznej i ręcznej metody maszyn wirtualnych.
 
@@ -57,11 +57,11 @@ Możesz [ustawić wyzwalacze](../articles/azure-monitor/platform/autoscale-webho
 
 Można dodać lub usunąć zmianę pojemności zestawu skalowania maszyn wirtualnych. W witrynie Azure portal, można zmniejszyć lub zwiększyć liczbę maszyn wirtualnych (wyświetlana jako **liczba wystąpień**) w zestawie skalowania za przesuwanie na pasku stanu zastąpienie na ekranie skalowanie w lewo lub w prawo.
 
-Przy użyciu programu Azure PowerShell, należy uzyskać, używając obiektu zestawu skalowania [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss). Następnie ustawiamy **sku.capacity** liczbę maszyn wirtualnych, które mają i zaktualizuj zestaw skalowania za pomocą [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss). Przy użyciu wiersza polecenia platformy Azure, możesz zmienić pojemnością przy użyciu **— nową pojemność** parametr [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) polecenia.
+Przy użyciu programu Azure PowerShell, należy uzyskać, używając obiektu zestawu skalowania [Get AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss). Następnie ustawiamy **sku.capacity** liczbę maszyn wirtualnych, które mają i zaktualizuj zestaw skalowania za pomocą [AzVmss aktualizacji](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss). Przy użyciu wiersza polecenia platformy Azure, możesz zmienić pojemnością przy użyciu **— nową pojemność** parametr [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) polecenia.
 
 ### <a name="vertical"></a>Pionowa
 
-Można ręcznie zmienić rozmiar maszyn wirtualnych w witrynie Azure portal w rozmiaru ekranu dla zestawu skalowania. Za pomocą programu Azure PowerShell Get-AzureRmVmss, ustawiając właściwość sku obrazu odniesienia, a następnie używając [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) i [Update-AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance).
+Można ręcznie zmienić rozmiar maszyn wirtualnych w witrynie Azure portal w rozmiaru ekranu dla zestawu skalowania. Za pomocą programu Azure PowerShell Get-AzVmss, ustawiając właściwość sku obrazu odniesienia, a następnie używając [AzVmss aktualizacji](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) i [AzVmssInstance aktualizacji](https://docs.microsoft.com/powershell/module/az.compute/update-azvmssinstance).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
