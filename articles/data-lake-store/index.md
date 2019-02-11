@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
-ms.openlocfilehash: 4e2fcdac282d0cca9fe993efdaf787e43c2b6e9d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 68e4a7bd73b7fdd4b21140c912422b062f51c775
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433820"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869198"
 ---
 # <a name="azure-data-lake-storage-gen1-documentation"></a>Dokumentacja usługi Azure Data Lake Storage 1. generacji
 
-Dowiedz się, jak przy użyciu usługi Azure Data Lake Storage 1. generacji (poprzednio znanej jako Azure Data Lake Store) utworzyć zgodne z usługą Hadoop repozytorium o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować repozytorium usługi Data Lake na potrzeby analiz operacyjnych i poznawczych, oraz jak nim zarządzać i uzyskiwać do niego dostęp.
+Usługa Azure Data Lake Storage Gen2 jest teraz ogólnie dostępna. Zalecamy, aby zacząć z niej korzystać już dziś. Aby uzyskać więcej informacji, zobacz [stronę produktu](https://aka.ms/adlsgen2-product).
 
-Jeśli chcesz dowiedzieć się więcej na temat wersji zapoznawczej usługi Data Lake Storage 2. generacji, zobacz [stronę produktu](https://aka.ms/adlsgen2-product).
+Dowiedz się, jak przy użyciu usługi Azure Data Lake Storage 1. generacji (poprzednio znanej jako Azure Data Lake Store) utworzyć zgodne z usługą Hadoop repozytorium o ogromnej skali na potrzeby przeprowadzania analiz danych o dowolnym rozmiarze, typie i szybkości wprowadzania. W samouczkach, dokumentacji interfejsu API i innych dokumentach pokazano, jak skonfigurować repozytorium usługi Data Lake na potrzeby analiz operacyjnych i poznawczych, oraz jak nim zarządzać i uzyskiwać do niego dostęp.
 
 <ul class="panelContent cardsFTitle">
     <li>

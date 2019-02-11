@@ -1,5 +1,5 @@
 # [Dokumentacja usługi Azure Data Lake Storage 1. generacji](index.md)
-# [Dokumentacja dotycząca przełączania do usługi Azure Data Lake Storage 2. generacji (wersja zapoznawcza)](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
+# [Dokumentacja dotycząca przełączania na usługę Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/data-lake-storage/introduction)
 
 # Omówienie
 ## [Omówienie usługi Data Lake Storage 1. generacji](data-lake-store-overview.md)

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd7254a9ec1ce5671aa5271ca26c678b20ef48cb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608634"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978072"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Korzystanie z platformy Apache Kafka w HDInsight z usługą Azure IoT Hub
 
@@ -127,7 +127,7 @@ Z połączenia SSH z węzłem krawędzi wykonaj następujące kroki, aby skonfig
 
     * Zmiana `key.converter=` i `value.converter=` wierszy na następujące wartości:
 
-        ```text
+        ```ini
         key.converter=org.apache.kafka.connect.storage.StringConverter
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
@@ -189,7 +189,7 @@ Aby pobrać IoT hub informacje używane przez łącznik, użyj następujących k
 
         Zastąp `myhubname` nazwą Centrum IoT Hub. Odpowiedź jest podobna do następującego tekstu:
 
-        ```text
+        ```json
         "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
         "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
         "Partitions": 2
@@ -349,7 +349,7 @@ Aby wysyłać komunikaty za pośrednictwem łącznika, wykonaj następujące kro
     > [!IMPORTANT]  
     > Należy ustawić wartość z `"deviceId"` wpis, aby identyfikator urządzenia. W poniższym przykładzie nosi nazwę urządzenia `fakepi`:
 
-    ```text
+    ```json
     {"messageId":"msg1","message":"Turn On","deviceId":"fakepi"}
     ```
 
