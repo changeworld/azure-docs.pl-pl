@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: 358e8cd92fe250741adbbb9208b5e149a5f60216
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: cddb3769cfc5a2ba002e19036d986f4165670dc1
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52959737"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962455"
 ---
 # <a name="how-to-use-apache-cordova-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej Apache Cordova dla usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -55,7 +55,7 @@ ionic plugin add cordova-plugin-ms-azure-mobile-apps
 
 Dodaj następujące wiersze do `app.component.ts` do utworzenia obiektu klienta:
 
-```
+```typescript
 declare var WindowsAzure: any;
 var client = new WindowsAzure.MobileServiceClient("https://yoursite.azurewebsites.net");
 ```
@@ -71,19 +71,19 @@ Wtyczka usługi Azure Mobile Apps Cordova obsługuje obie platformy Ionic aplika
 
 [!INCLUDE [app-service-mobile-html-js-library.md](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Instrukcje: uwierzytelnianie użytkowników
-Usługa Azure App Service obsługuje uwierzytelnianie i autoryzowanie użytkowników aplikacji za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, Account Microsoft i Twitter. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w skryptów serwera. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] samouczka.
+## <a name="auth"></a>Jak: Uwierzytelnianie użytkowników
+Usługa Azure App Service obsługuje uwierzytelnianie i autoryzowanie użytkowników aplikacji za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, konta Microsoft i Twitter. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w skryptów serwera. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] samouczka.
 
 Podczas uwierzytelniania w aplikacji Apache Cordova, następujące wtyczki Cordova muszą być dostępne:
 
-* [cordova wtyczka urządzenie]
-* [cordova wtyczka inappbrowser]
+* [cordova-plugin-device]
+* [cordova-plugin-inappbrowser]
 
 Obsługiwane są dwa przepływy uwierzytelniania: przepływ serwera i klienta przepływu.  Przepływ serwera zapewnia najprostszą proces uwierzytelniania opiera się na interfejs uwierzytelniania sieci web dostawcy. Przepływ klienta pozwala na lepszą integrację z funkcjami specyficznych dla urządzenia, takich jak logowanie jednokrotne ponieważ opiera się na zestawy SDK specyficzne dla urządzenia specyficzny dla dostawcy.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library.md](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Porady: Konfigurowanie usługi Mobile App Service dla adresy URL zewnętrznego przekierowania.
+### <a name="configure-external-redirect-urls"></a>Jak: Konfigurowanie usługi Mobile App Service dla adresy URL zewnętrznego przekierowania.
 Kilka typów aplikacji Apache Cordova używać możliwości sprzężenia zwrotnego do obsługi uwierzytelniania OAuth interfejsu użytkownika przepływów.  Przepływy uwierzytelniania OAuth interfejsu użytkownika na hoście lokalnym powodować problemy, ponieważ usługa uwierzytelniania wie jedynie, sposób wykorzystywania usługi domyślnie.  Przykłady problematyczne przepływów uwierzytelniania OAuth interfejsu użytkownika:
 
 * Ripple emulator.
@@ -123,10 +123,10 @@ Te adresy URL sprzężenia zwrotnego można również dodać ustawienia mechaniz
 
 Trwa około 10 – 15 sekund nowe ustawienia zaczęły obowiązywać.
 
-## <a name="register-for-push"></a>Porady: zarejestrować odbieranie powiadomień wypychanych
+## <a name="register-for-push"></a>Jak: Rejestrowanie na potrzeby powiadomień wypychanych
 Zainstaluj [phonegap wtyczka push] do obsługi powiadomień wypychanych.  Ta wtyczka można łatwo dodać przy użyciu `cordova plugin add` polecenia w wierszu polecenia lub za pomocą Instalatora wtyczki usługi Git w programie Visual Studio.  Poniższy kod w swojej aplikacji Apache Cordova wykonywana jest rejestracja urządzenia dla powiadomień wypychanych:
 
-```
+```javascript
 var pushOptions = {
     android: {
         senderId: '<from-gcm-console>'
@@ -179,6 +179,6 @@ Można znaleźć szczegółowe szczegółów interfejsu API w naszym [dokumentac
 [Twoja pierwsza aplikacja Apache Cordova]: https://cordova.apache.org/#getstarted
 [phonegap-facebook-plugin]: https://github.com/wizcorp/phonegap-facebook-plugin
 [phonegap wtyczka push]: https://www.npmjs.com/package/phonegap-plugin-push
-[cordova wtyczka urządzenie]: https://www.npmjs.com/package/cordova-plugin-device
-[cordova wtyczka inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
+[cordova-plugin-device]: https://www.npmjs.com/package/cordova-plugin-device
+[cordova-plugin-inappbrowser]: https://www.npmjs.com/package/cordova-plugin-inappbrowser
 [Query object documentation]: https://msdn.microsoft.com/library/azure/jj613353.aspx

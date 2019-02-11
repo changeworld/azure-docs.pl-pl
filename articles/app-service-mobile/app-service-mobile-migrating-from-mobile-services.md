@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118996"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960745"
 ---
 # <a name="article-top"></a>Migrowanie istniejącej usługi mobilnej platformy Azure w usłudze Azure App Service
 Za pomocą [ogólnie dostępne w usłudze Azure App Service], witryn usług Azure Mobile Services mogą zostać łatwo zmigrowane w miejscu można korzystać ze wszystkich funkcji usługi Azure App Service.  W tym dokumencie opisano, czego można oczekiwać podczas migracji lokacji z usług Azure Mobile Services w usłudze Azure App Service.
@@ -185,7 +185,7 @@ Uwaga: **MS\_AadTenants** są przechowywane jako rozdzielana przecinkami lista d
 >
 >
 
-### <a name="easytables"></a>Dane
+### <a name="easytables"></a>Data
 *Danych* kartę w usłudze Mobile Services została zastąpiona *łatwych tabel* w witrynie Azure portal.  Dostęp do łatwych tabel:
 
 1. Zaloguj się do witryny [Azure Portal].
@@ -231,7 +231,7 @@ Zaplanowane zadania są wyświetlane z częstotliwością, jaką określono prze
 
 Zadania na żądanie znajdują się w `App_Data/config/scripts/scheduler post-migration`.  Zalecamy przekonwertowanie wszystkich zadań na żądanie [webjobs] lub [Funkcje].  Pisanie nowego zadania usługi scheduler jako [WebJobs] lub [Funkcje].
 
-### <a name="notification-hubs"></a>Usługa Notification Hubs
+### <a name="notification-hubs"></a>Notification Hubs
 Usługi Mobile Services korzysta z usługi Notification Hubs dla powiadomień wypychanych.  Poniższe ustawienia aplikacji są używane do łączenia z Centrum powiadomień do usługi mobilnej po migracji:
 
 | Ustawienie aplikacji | Opis |
@@ -270,7 +270,7 @@ Następujące ustawienia dodatkowe aplikacji są migrowane w ramach usługi mobi
 | Ustawienie aplikacji | Opis |
 |:--- |:--- |
 | **MS\_MobileServiceName** |Nazwa aplikacji |
-| **MS\_MobileServiceDomainSuffix** |Prefiks domeny. tj azure-mobile.net |
+| **MS\_MobileServiceDomainSuffix** |Prefiks domeny. i.e azure-mobile.net |
 | **MS\_wartości ApplicationKey** |Klucz aplikacji |
 | **MS\_MasterKey** |Twój klucz główny aplikacji |
 
@@ -279,7 +279,7 @@ Klucz aplikacji i klucz główny są identyczne klucze aplikacji z usługi mobil
 ### <a name="cliequivalents"></a>Odpowiedniki wiersza polecenia
 Można już korzystać z *usługi mobilne azure* polecenia Zarządzaj swoją witryną usług Azure Mobile Services.  Zamiast tego zostały zastąpione wiele funkcji *usługi azure site* polecenia.  Skorzystaj z poniższej tabeli, aby znaleźć odpowiedniki Typowe polecenia:
 
-| *Usługa Azure Mobile* polecenia | Równoważne *witryny w systemie Azure* polecenia |
+| *Azure Mobile* Command | Równoważne *witryny w systemie Azure* polecenia |
 |:--- |:--- |
 | lokalizacje mobilnych |Lista lokalizacji witryny |
 | listy dla urządzeń przenośnych |Lista witryn |
@@ -321,7 +321,7 @@ Aby wyświetlić dzienniki:
 3. Kliknij przycisk **narzędzia** przycisku
 4. Wybierz **Stream dziennika** menu OBSERVE.
 
-Dzienniki są wyświetlane w oknie, ponieważ są one generowane.  Można również pobrać dzienniki do późniejszej analizy przy użyciu poświadczeń wdrożenia. Aby uzyskać więcej informacji, zobacz [Rejestrowanie] dokumentacji.
+Dzienniki są wyświetlane w oknie, ponieważ są one generowane.  Można również pobrać dzienniki do późniejszej analizy przy użyciu poświadczeń wdrożenia. Aby uzyskać więcej informacji, zobacz [Logging] dokumentacji.
 
 ## <a name="known-issues"></a>Znane problemy
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>Usuwanie migracji klonowania aplikacji mobilnej powoduje, że awarii lokacji
@@ -332,7 +332,7 @@ Rozwiązanie: Jeśli chcesz sklonować witryny to zrobić za pośrednictwem port
 ### <a name="changing-webconfig-does-not-work"></a>Zmienianie pliku Web.config nie działa
 Jeśli masz witrynę programu ASP.NET, zmieni się na `Web.config` pliku nie zastosowane.  Azure App Service tworzy odpowiedni `Web.config` pliku podczas uruchamiania systemu do obsługi środowiska uruchomieniowego usług Mobile Services.  Niektóre ustawienia (takie jak nagłówki niestandardowe) można zastąpić za pomocą transformacji pliku XML.  Utwórz plik w o nazwie `applicationHost.xdt` — ten plik musi pozostać w `D:\home\site` katalogu usługi Azure.  Przekaż `applicationHost.xdt` bezpośrednio przy użyciu narzędzia Kudu lub plik przez skrypt wdrożenia niestandardowego.  Poniżej przedstawiono przykładowy dokument:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <system.webServer>
@@ -388,7 +388,7 @@ Teraz, gdy aplikacja jest migrowana do usługi App Service, istnieją nawet wię
 [Fiddler]: https://www.telerik.com/fiddler
 [ogólnie dostępne w usłudze Azure App Service]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[Rejestrowanie]: ../app-service/troubleshoot-diagnostic-logs.md
+[Logging]: ../app-service/troubleshoot-diagnostic-logs.md
 [Zestaw SDK środowiska Node.js w aplikacjach mobilnych]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services a App Service]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
