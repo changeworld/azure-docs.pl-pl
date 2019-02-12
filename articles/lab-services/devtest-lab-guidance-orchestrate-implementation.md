@@ -3,21 +3,23 @@ title: Organizowanie wdrażania usługi Azure DevTest Labs
 description: Ten artykuł zawiera wskazówki dotyczące organizowanie wdrożenia usługi Azure DevTest Labs w Twojej organizacji.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: spelluru
+author: christianreddington
 manager: femila
+editor: spelluru
 ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
-ms.author: spelluru
-ms.openlocfilehash: 61ec9d0639f4bee950be69ee951492974ac95c64
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 02/11/2019
+ms.author: chredd
+ms.reviewer: anthdela,juselph
+ms.openlocfilehash: 1e657260eeb36dc813f856ab172882a396324450
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52867481"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004438"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Organizowanie wdrażania usługi Azure DevTest Labs
 Ten artykuł zawiera zalecane podejście do szybkiego wdrażania i stosowania usługi Azure DevTest Labs. Poniższa ilustracja kładzie nacisk całego procesu jako wskazówki podczas obserwowania elastyczność do obsługi różnych wymagania branżowe i scenariuszy.
@@ -27,11 +29,11 @@ Ten artykuł zawiera zalecane podejście do szybkiego wdrażania i stosowania us
 ## <a name="assumptions"></a>Założenia
 W tym artykule założono, że następujące elementy w miejscu przed wdrożeniem pilotażu DevTest Labs:
 
-- **Subskrypcja platformy Azure**: zespołu pilotażowego ma dostęp do wdrażania zasobów w subskrypcji platformy Azure. W przypadku obciążeń tylko tworzenia i testowania aplikacji, zaleca się wybranie oferty Enterprise DevTest dodatkowe dostępnych obrazów i niższe stawki na maszynach wirtualnych Windows.
-- **Dostępu do lokalnego**: Jeśli to konieczne, dostępu do lokalnego została już skonfigurowana. Dostępu do lokalnego może się odbywać za pośrednictwem połączenia sieci VPN typu lokacja lokacja lub Expressroute. Połączeń za pomocą usługi Express Route zazwyczaj może trwać wiele tygodni ustanowić, zaleca się mieć Express Route w miejscu przed rozpoczęciem projektu.
-- **Pilotażowy zespoły**: zespoły projektu początkowego projektowania, które korzysta z usługi DevTest Labs wykryto wraz z odpowiednich rozwoju lub testowania działania i określać wymagania/celów/wyznaczone cele dotyczące tych zespołów.
+- **Subskrypcja platformy Azure**: Zespołu pilotażowego ma dostęp do wdrażania zasobów w subskrypcji platformy Azure. W przypadku obciążeń tylko tworzenia i testowania aplikacji, zaleca się wybranie oferty Enterprise DevTest dodatkowe dostępnych obrazów i niższe stawki na maszynach wirtualnych Windows.
+- **Dostęp do lokalnego**: Jeśli to konieczne, dostępu do lokalnego została już skonfigurowana. Dostępu do lokalnego może się odbywać za pośrednictwem połączenia sieci VPN typu lokacja lokacja lub Expressroute. Połączeń za pomocą usługi Express Route zazwyczaj może trwać wiele tygodni ustanowić, zaleca się mieć Express Route w miejscu przed rozpoczęciem projektu.
+- **Pilotażowy zespoły**: Zespoły projektu początkowego projektowania, które korzysta z usługi DevTest Labs wykryto wraz z odpowiednich rozwoju lub testowania działania i określać wymagania/celów/wyznaczone cele dotyczące tych zespołów.
 
-## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Punkt kontrolny 1: Ustalenie topologii sieci początkowej i projekt
+## <a name="milestone-1-establish-initial-network-topology-and-design"></a>Punkt kontrolny 1: Ustanów sieciowego początkowej topologii i projekt
 Pierwszy obszar koncentracji uwagi podczas wdrażania rozwiązania w usłudze Azure DevTest Labs jest ustanowienie planowane łączności dla maszyn wirtualnych. Poniższe kroki przedstawiają niezbędnych procedur:
 
 1. Zdefiniuj **początkowej zakresów adresów IP** są przypisane do subskrypcji usługi DevTest Labs na platformie Azure. Ten krok wymaga prognozowania oczekiwanego użycia w wielu maszyn wirtualnych, tak, aby można było zapewnić dużą wystarczająco dużo bloku na przyszłe rozszerzenia.
@@ -50,7 +52,7 @@ Po umieszczeniu topologii sieci w miejscu laboratorium pierwszy/projekt pilotaż
 6. Zdecyduj, przy użyciu repozytoriów publicznych lub prywatnych lub kombinację obu tych elementów. Organizowanie szablonów JSON dla wdrożeń i sustainment długoterminowego.
 7. Jeśli to konieczne, należy utworzyć niestandardowe artefakty. Ten krok jest opcjonalny. 
 
-## <a name="milestone-3-documentation-support-learn-and-improve"></a>Punkt kontrolny 3: Dokumentacji, pomocy technicznej, się uczyć i poprawiać
+## <a name="milestone-3-documentation-support-learn-and-improve"></a>Punkt kontrolny 3: Dokumentacji, pomocy technicznej, Dowiedz się więcej i poprawy
 Początkowej zespołów pilotowego może wymagać szczegółowe pomocy technicznej dla klientów zaczynających pracę. Użyj swojego środowiska, aby zapewnić dokumentację i pomoc techniczna jest w miejscu na potrzeby ciągłego wdrażania usługi Azure DevTest Labs.
 
 1. Wprowadzenie zespołów pilotowego do swoich nowych zasobów DevTest Labs (pokazy, dokumentacja)
@@ -60,4 +62,4 @@ Początkowej zespołów pilotowego może wymagać szczegółowe pomocy techniczn
 5. Upewnij się, zostały ukończone odpowiednie przeglądy zgodności i zabezpieczeń
 
 ## <a name="next-steps"></a>Kolejne kroki
-Następny artykuł w tej serii: [infrastruktury zarządzania w usłudze Azure DevTest Labs](devtest-lab-guidance-governance-resources.md)
+Zobacz następny artykuł w tej serii: [Zarządzanie infrastrukturą usługi Azure DevTest Labs](devtest-lab-guidance-governance-resources.md)

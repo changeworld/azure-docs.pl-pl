@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 95f7d5cafa39daccccbd35c44510038d28601aed
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: 58306780978189749b592b6cd9d13c63ecd25641
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241756"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996155"
 ---
 # <a name="media-encoder-standard-schema"></a>Schemat usługi Media Encoder Standard
 W tym artykule opisano niektóre elementy i typy schematu XML, na którym [ustawienia wstępne usługi Media Encoder Standard](media-services-mes-presets-overview.md) opierają się. Artykuł zawiera omówienie elementów i ich ważnych wartości.  
@@ -31,7 +31,7 @@ Definiuje ustawienie wstępne kodowania.
 | --- | --- | --- |
 | **Kodowanie** |[Kodowanie](media-services-mes-schema.md#Encoding) |Element główny wskazuje, że źródeł danych wejściowych do zakodowania. |
 | **Dane wyjściowe** |[Dane wyjściowe](media-services-mes-schema.md#Output) |Kolekcja plików żądaną produktu wyjściowego. |
-| **StretchMode**<br/>minOccurs="0"<br/>domyślne = "AutoSize|xs:String|Kontrolować rozmiar wideo ramki danych wyjściowych, dopełnienie, pikseli lub wyświetlić współczynnik proporcji. **StretchMode** mogą mieć jedną z następujących wartości: **Brak**, **AutoSize** (ustawienie domyślne) lub **Autodopasowanie**.<br/><br/>**Brak**: ścisłe rozdzielczość wyjściową (na przykład **szerokość** i **wysokość** predefiniowanymi) bez uwzględniania współczynnik proporcji pikseli lub współczynnik proporcji ekranu wejściowego filmu wideo. Zalecane w scenariuszach, takich jak [przycinanie](media-services-crop-video.md), gdzie wyjście wideo ma inny współczynnik proporcji, w porównaniu z danych wejściowych. <br/><br/>**AutoSize**: rozdzielczość wyjściową zmieści się w oknie (szerokość * wysokość) określony przez ustawienie wstępne. Jednak kodera tworzy wideo danych wyjściowych, który ma współczynnik proporcji kwadratowy pikseli (1:1). W związku z tym, dane wyjściowe szerokość lub danych wyjściowych wysokość może zostać zastąpiona w celu dopasowania współczynnik proporcji ekranu danych wejściowych, bez uzupełnień. Na przykład jeśli dane wejściowe są 1920 x 1080 pikseli i ustawienia wstępne kodowania poprosi o podanie 1280 x 1280, następnie wartość wysokości predefiniowanymi zostanie zastąpiona, a dane wyjściowe będą miały 1280 x 720, który przechowuje wprowadzania proporcje 16:9. <br/><br/>**Autodopasowanie**: w razie potrzeby konsoli danych wyjściowych filmu (letterbox lub pillarbox) przestrzegać rozwiązanie żądaną produktu wyjściowego przy jednoczesnym zapewnieniu, że aktywnym regionem wideo w danych wyjściowych ma takiego samego współczynnika proporcji jako dane wejściowe. Na przykład załóżmy, że dane wejściowe są 1920 x 1080 pikseli i ustawienia wstępne kodowania poprosi o podanie 1280 x 1280. Następnie wyjście wideo będą miały 1280 x 1280, ale będzie ona zawierać wewnętrzny 1280 x 720 prostokąt "active wideo" proporcje 16:9 i letterbox regionów 280 pikseli u góry i u dołu. Inny przykład jeśli dane wejściowe są 1440 x 1080 pikseli i ustawienia wstępne kodowania poprosi o podanie 1280 x 720 to dane wyjściowe będą na 1280 x 720, który zawiera wewnętrzny prostokąt 960 x 720 na współczynnik proporcji 4:3 i słupka pole regionów 160 pikseli w lewo i w prawo. 
+| **StretchMode**<br/>minOccurs="0"<br/>default="AutoSize|xs:String|Kontrolować rozmiar wideo ramki danych wyjściowych, dopełnienie, pikseli lub wyświetlić współczynnik proporcji. **StretchMode** mogą mieć jedną z następujących wartości: **Brak**, **AutoSize** (ustawienie domyślne) lub **Autodopasowanie**.<br/><br/>**Brak**: Ścisłe rozdzielczość wyjściową (na przykład **szerokość** i **wysokość** predefiniowanymi) bez uwzględniania współczynnik proporcji pikseli lub współczynnik proporcji ekranu wejściowego filmu wideo. Zalecane w scenariuszach, takich jak [przycinanie](media-services-crop-video.md), gdzie wyjście wideo ma inny współczynnik proporcji, w porównaniu z danych wejściowych. <br/><br/>**AutoSize**: Rozdzielczość wyjściową zmieści się w oknie (szerokość * wysokość) określony przez ustawienie wstępne. Jednak kodera tworzy wideo danych wyjściowych, który ma współczynnik proporcji kwadratowy pikseli (1:1). W związku z tym, dane wyjściowe szerokość lub danych wyjściowych wysokość może zostać zastąpiona w celu dopasowania współczynnik proporcji ekranu danych wejściowych, bez uzupełnień. Na przykład jeśli dane wejściowe są 1920 x 1080 pikseli i ustawienia wstępne kodowania poprosi o podanie 1280 x 1280, następnie wartość wysokości predefiniowanymi zostanie zastąpiona, a dane wyjściowe będą miały 1280 x 720, który przechowuje wprowadzania proporcje 16:9. <br/><br/>**Autodopasowanie**: Jeśli to konieczne, konsoli danych wyjściowych filmu (letterbox lub pillarbox) przestrzegać rozwiązanie żądaną produktu wyjściowego przy jednoczesnym zapewnieniu, że aktywnym regionem wideo w danych wyjściowych ma takiego samego współczynnika proporcji jako dane wejściowe. Na przykład załóżmy, że dane wejściowe są 1920 x 1080 pikseli i ustawienia wstępne kodowania poprosi o podanie 1280 x 1280. Następnie wyjście wideo będą miały 1280 x 1280, ale będzie ona zawierać wewnętrzny 1280 x 720 prostokąt "active wideo" proporcje 16:9 i letterbox regionów 280 pikseli u góry i u dołu. Inny przykład jeśli dane wejściowe są 1440 x 1080 pikseli i ustawienia wstępne kodowania poprosi o podanie 1280 x 720 to dane wyjściowe będą na 1280 x 720, który zawiera wewnętrzny prostokąt 960 x 720 na współczynnik proporcji 4:3 i słupka pole regionów 160 pikseli w lewo i w prawo. 
 
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
@@ -56,8 +56,8 @@ Zawiera sekwencję następujące elementy:
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:Boolean** |Aktualnie obsługiwana jest tylko jeden przebieg kodowania. |
 | **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs: Time** |Określa stały odstęp między IDR ramki w jednostkach czasu w sekundach. Również określany jako czas trwania GOP. Zobacz **SceneChangeDetection** do kontrolowania, czy kodera można różni się od tej wartości. |
-| **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> domyślne = "false" |**xs: wartość logiczna** |Jeśli ustawiona na wartość true, koder próbuje wykryć zmianę sceny w filmie wideo i wstawia IDR ramkę. |
-| **Złożoność**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:String** |Kontroluje kompromis między kodowanie szybkość i wideo w jakości. Może być jedną z następujących wartości: **szybkość**, **zrównoważony**, lub **jakości**<br/><br/> Wartość domyślna: **równoważenia** |
+| **SceneChangeDetection**<br/><br/> minOccurs="0"<br/><br/> default=”false” |**xs: wartość logiczna** |Jeśli ustawiona na wartość true, koder próbuje wykryć zmianę sceny w filmie wideo i wstawia IDR ramkę. |
+| **Złożoność**<br/><br/> minOccurs="0"<br/><br/> default="Balanced" |**xs:String** |Kontroluje kompromis między kodowanie szybkość i wideo w jakości. Może być jedną z następujących wartości: **Szybkość**, **równoważenia**, lub **jakości**<br/><br/> Domyślne: **Zrównoważone** |
 | **SyncMode**<br/><br/> minOccurs="0" | |Funkcja zostaną ujawnione w przyszłej wersji. |
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Kolekcja warstw wideo w danych wyjściowych. |
 
@@ -84,7 +84,7 @@ Domyślnie Jeśli wyślesz dane wejściowe do kodera, który zawiera tylko audio
 ### <a name="elements"></a>Elementy
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: ciąg** |Może być jedną z następujących **xs: ciąg** wartości: **automatycznie**, **linii bazowej**, **Main**, **wysokiej**. |
+| **Profil**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: ciąg** |Może być jedną z następujących **xs: ciąg** wartości: **Automatyczne**, **linii bazowej**, **Main**, **wysokiej**. |
 | **Poziom**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: ciąg** | |
 | **Szybkość transmisji bitów**<br/><br/> minOccurs="0" |**xs:int** |Szybkość transmisji bitów używany dla tej warstwy wideo określonej w KB/s. |
 | **MaxBitrate**<br/><br/> minOccurs="0" |**xs: int** |Maksymalna szybkość transmisji bitów używany dla tej warstwy wideo określonej w KB/s. |
@@ -106,7 +106,7 @@ Domyślnie Jeśli wyślesz dane wejściowe do kodera, który zawiera tylko audio
 ### <a name="elements"></a>Elementy
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Profil**<br/><br/> minOccurs = "0"<br/><br/> default="AACLC" |**xs: ciąg** |Może być jedną z następujących wartości: **AACLC**, **HEAACV1**, lub **HEAACV2**. |
+| **Profil**<br/><br/> minOccurs="0 "<br/><br/> default="AACLC" |**xs: ciąg** |Może być jedną z następujących wartości: **AACLC**, **HEAACV1**, lub **HEAACV2**. |
 
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
@@ -124,16 +124,16 @@ Aby uzyskać szczegółowe informacje o jakie wartości są prawidłowe dla każ
 ### <a name="elements"></a>Elementy
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **kanały**<br/><br/> minOccurs="0" |**xs: int** |Liczba kanałów audio zakodowany. Poniżej przedstawiono prawidłowe opcje: 1, 2, 5, 6, 8.<br/><br/> Domyślne: 2. |
+| **Channels**<br/><br/> minOccurs="0" |**xs: int** |Liczba kanałów audio zakodowany. Poniżej przedstawiono prawidłowe opcje: 1, 2, 5, 6, 8.<br/><br/> Domyślne: 2. |
 | **SamplingRate**<br/><br/> minOccurs="0" |**xs: int** |Częstotliwość próbkowania audio określone w Hz. |
 | **Szybkość transmisji bitów**<br/><br/> minOccurs="0" |**xs: int** |Szybkość transmisji bitów związanych z kodowaniem audio, określonej w KB/s. |
 
 ### <a name="audio-codec-details"></a>Szczegóły kodera-dekodera audio
-Kodera-dekodera audio|Szczegóły  
+Audio Codec|Szczegóły  
 -----------------|---  
-**AACLC**|1:<br/><br/> -11025: 8 &lt;= szybkości transmisji bitów &lt; 16<br/><br/> -12000: 8 &lt;= szybkości transmisji bitów &lt; 16<br/><br/> -16000: 8 &lt;= szybkości transmisji bitów &lt;32<br/><br/>-22050: 24 &lt;= szybkości transmisji bitów &lt; 32<br/><br/> -24000: 24 &lt;= szybkości transmisji bitów &lt; 32<br/><br/> -32000: 32 &lt;= szybkości transmisji bitów &lt;= 192<br/><br/> -44100: 56 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> -48000: 56 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> -88200: 128 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> -96000: 128 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> 2:<br/><br/> -11025: 16 &lt;= szybkości transmisji bitów &lt; 24<br/><br/> -12000: 16 &lt;= szybkości transmisji bitów &lt; 24<br/><br/> -16000: 16 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> -22050: 32 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> -24000: 32 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> -32000: 40 &lt;= szybkości transmisji bitów &lt;= 384<br/><br/> -44100: 96 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> -48000: 96 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> -88200: 256 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> -96000: 256 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> 5/6:<br/><br/> -32000: 160 &lt;= szybkości transmisji bitów &lt;= 896<br/><br/> -44100: 240 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> -48000: 240 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> -88200: 640 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> -96000: 640 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> 8:<br/><br/> -32000: 224 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> -44100: 384 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> -48000: 384 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> -88200: 896 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> -96000: 896 &lt;= szybkości transmisji bitów &lt;= 1024  
-**HEAACV1**|1:<br/><br/> -22050 b: szybkość transmisji bitów = 8<br/><br/> -24000: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> -32000: 12 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -44100: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -48000: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -88200 b: szybkość transmisji bitów = 64<br/><br/> 2:<br/><br/> -32000: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> -44100: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> -48000: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> -88200: 96 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> -96000: 96 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> 5/6:<br/><br/> -32000: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> -44100: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> -48000: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> -88200: 256 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> -96000: 256 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> 8:<br/><br/> -32000: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> -44100: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> -48000: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> -88200: 384 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> -96000: 384 &lt;= szybkości transmisji bitów &lt;= 448  
-**HEAACV2**|2:<br/><br/> -22050: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> -24000: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> -32000: 12 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -44100: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -48000: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -88200: 64 &lt;= szybkości transmisji bitów &lt;= 64  
+**AACLC**|1.<br/><br/> - 11025: 8 &lt;= szybkości transmisji bitów &lt; 16<br/><br/> - 12000: 8 &lt;= szybkości transmisji bitów &lt; 16<br/><br/> - 16000: 8 &lt;= szybkości transmisji bitów &lt;32<br/><br/>- 22050: 24 &lt;= szybkości transmisji bitów &lt; 32<br/><br/> - 24000: 24 &lt;= szybkości transmisji bitów &lt; 32<br/><br/> - 32000: 32 &lt;= szybkości transmisji bitów &lt;= 192<br/><br/> - 44100: 56 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 48000: 56 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 88200 : 128 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> - 96000 : 128 &lt;= szybkości transmisji bitów &lt;= 288<br/><br/> 2.<br/><br/> - 11025: 16 &lt;= szybkości transmisji bitów &lt; 24<br/><br/> - 12000: 16 &lt;= szybkości transmisji bitów &lt; 24<br/><br/> - 16000: 16 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 22050: 32 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 24000 : 32 &lt;= szybkości transmisji bitów &lt; 40<br/><br/> - 32000:  40 &lt;= szybkości transmisji bitów &lt;= 384<br/><br/> - 44100: 96 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 48000 : 96 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 88200: 256 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> - 96000: 256 &lt;= szybkości transmisji bitów &lt;= 576<br/><br/> 5/6:<br/><br/> - 32000: 160 &lt;= szybkości transmisji bitów &lt;= 896<br/><br/> - 44100: 240 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 48000: 240 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 88200: 640 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 96000: 640 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> 8:<br/><br/> - 32000 : 224 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 44100 : 384 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 48000: 384 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 88200: 896 &lt;= szybkości transmisji bitów &lt;= 1024<br/><br/> - 96000: 896 &lt;= szybkości transmisji bitów &lt;= 1024  
+**HEAACV1**|1.<br/><br/> -22050 b: szybkość transmisji bitów = 8<br/><br/> - 24000: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 32000: 12 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 44100: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 48000: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> -88200 b: szybkość transmisji bitów = 64<br/><br/> 2.<br/><br/> - 32000: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 44100: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 48000: 16 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 88200 : 96 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> - 96000: 96 &lt;= szybkości transmisji bitów &lt;= 128<br/><br/> 5/6:<br/><br/> - 32000 : 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 44100: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 48000: 64 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 88200 : 256 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> - 96000: 256 &lt;= szybkości transmisji bitów &lt;= 320<br/><br/> 8:<br/><br/> - 32000: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 44100: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 48000: 96 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 88200: 384 &lt;= szybkości transmisji bitów &lt;= 448<br/><br/> - 96000: 384 &lt;= szybkości transmisji bitów &lt;= 448  
+**HEAACV2**|2.<br/><br/> - 22050: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 24000: 8 &lt;= szybkości transmisji bitów &lt;= 10<br/><br/> - 32000: 12 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 44100: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 48000: 20 &lt;= szybkości transmisji bitów &lt;= 64<br/><br/> - 88200: 64 &lt;= szybkości transmisji bitów &lt;= 64  
   
 ## <a name="Clip"></a> Klipu
 ### <a name="attributes"></a>Atrybuty
@@ -146,7 +146,7 @@ Kodera-dekodera audio|Szczegóły
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **FileName** |**xs:String** |Nazwa pliku wyjściowego.<br/><br/> Makra, które opisano w poniższej tabeli można użyć do tworzenia nazw plików wyjściowych. Na przykład:<br/><br/> **"Wyjście": [{"Nazwa_pliku": "{Basename} *{rozpoznawania}* MP4 {szybkości transmisji bitów}", "Format": {"Type": "MP4Format"}}]** |
+| **FileName** |**xs:String** |Nazwa pliku wyjściowego.<br/><br/> Makra, które opisano w poniższej tabeli można użyć do tworzenia nazw plików wyjściowych. Na przykład:<br/><br/> **"Wyjście": [{"Nazwa_pliku": "{Basename}*{rozpoznawania}* MP4 {szybkości transmisji bitów}", "Format": {"Type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makra
 | Macro | Opis |
@@ -167,7 +167,7 @@ Kodera-dekodera audio|Szczegóły
 | **Rozpocznij** |**xs:String** | |
 | **Step** |**xs:String** | |
 | **Range** |**xs:String** | |
-| **PreserveResolutionAfterRotation** |**xs:Boolean** |Aby uzyskać szczegółowe informacje na ten temat, zobacz następującą sekcję: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
+| **PreserveResolutionAfterRotation** |**xs:Boolean** |Aby uzyskać szczegółowe informacje na ten temat zobacz następującą sekcję: [PreserveResolutionAfterRotation](media-services-mes-schema.md#PreserveResolutionAfterRotation) |
 
 ### <a name="PreserveResolutionAfterRotation"></a> PreserveResolutionAfterRotation
 Zalecane jest użycie **PreserveResolutionAfterRotation** flagi w połączeniu z wartości rozdzielczości wyrażony w procentach (Width = "100%" Height = "100%").  
@@ -222,7 +222,7 @@ Alternatywnie można wprowadzać użytkowania **PreserveResolutionAfterRotation*
 | --- | --- | --- |
 | **Szerokość**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Wysokość**<br/><br/> minOccurs="0" |**xs:int** | |
-| **Jakość**<br/><br/> minOccurs="0" |**xs:int** |Prawidłowe wartości: 1(worst)-100(best) |
+| **Jakość**<br/><br/> minOccurs="0" |**xs:int** |Prawidłowe wartości: 1(worst)-100(Best) |
 
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |

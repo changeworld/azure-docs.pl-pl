@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 95206d0e3cb7bdb619524237ca1e466414c5acf5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492888"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989427"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Korzystanie z usługi sieci Web Azure Machine Learning Studio z poziomu programu Excel
 
@@ -26,7 +26,7 @@ Jeśli używasz programu Excel 2013 (lub nowszego) lub usłudze Excel Online, a 
 
 
 ## <a name="steps"></a>Kroki
-Publikowanie usługi sieci web. [Ta strona](walkthrough-5-publish-web-service.md) wyjaśnia, jak to zrobić. Obecnie funkcja skoroszytu programu Excel jest obsługiwana tylko dla usług żądań/odpowiedzi, które mają jeden z (czyli pojedynczej oceniania etykiety). 
+Publikowanie usługi sieci web. [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md) wyjaśnia, jak to zrobić. Obecnie funkcja skoroszytu programu Excel jest obsługiwana tylko dla usług żądań/odpowiedzi, które mają jeden z (czyli pojedynczej oceniania etykiety). 
 
 Po utworzeniu usługi sieci web, kliknij pozycję **usług sieci WEB** sekcji po lewej stronie programu studio, a następnie wybierz usługę sieci web do korzystania z programu Excel.
 

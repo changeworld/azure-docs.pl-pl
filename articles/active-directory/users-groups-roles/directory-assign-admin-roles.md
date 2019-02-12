@@ -9,22 +9,23 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 02/08/19
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 6fc85bd96294650eb2bbf9495642851ade7c7868
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: b38be081a7fefe465f0b6fa3683c183891c6e7bf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731516"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002310"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
 Za pomocą usługi Azure Active Directory (Azure AD), można wyznaczyć oddzielny administratorom różne funkcje. Administratorzy mogą umieszczoną w portalu usługi Azure AD do wykonania zadania, takie jak dodanie lub zmiana użytkowników, przypisywanie ról administracyjnych, resetowanie haseł użytkowników, zarządzanie licencjami użytkowników i zarządzanie nazwami domen.
 
-Administrator globalny ma dostęp do wszystkich funkcji administracyjnych. Domyślnie osoba, która zarejestruje się w subskrypcji platformy Azure przypisano rolę administratora globalnego dla katalogu. Tylko administratorzy globalni i Administratorzy ról uprzywilejowanych mogą delegować ról administratora.
+Administrator globalny ma dostęp do wszystkich funkcji administracyjnych. Domyślnie osoba, która zarejestruje się w subskrypcji platformy Azure przypisano rolę administratora globalnego dla katalogu. Tylko administratorzy globalni i Administratorzy ról uprzywilejowanych mogą delegować ról administratora. Aby zmniejszyć ryzyko dla Twojej firmy, zaleca się przypisania tej roli tylko kilku osobom w firmie.
+
 
 ## <a name="assign-or-remove-administrator-roles"></a>Przypisywanie lub usuwanie ról administratora
 
@@ -86,6 +87,9 @@ Dostępne są następujące role administratora:
   > [!NOTE]
   > Aby wdrożyć zasady dostępu warunkowego programu Exchange ActiveSync na platformie Azure, użytkownik musi być administratorem globalnym.
   
+* **[Osoba zatwierdzająca dostęp do skrytki klienta](#customer-lockbox-access-approver)**: Zarządza [skrytki klienta żąda](https://docs.microsoft.com/office365/admin/manage/customer-lockbox-requests) w Twojej organizacji. One otrzymywać powiadomienia e-mail dla żądania do skrytki klienta można zatwierdzać i odrzucać żądania z poziomu Centrum administracyjnego usługi Microsoft 365. Funkcja skrytki klienta mogą również włączyć lub wyłączyć. Tylko administratorzy globalni mogą resetować hasła użytkowników przypisanych do tej roli.
+<!--  This was announced in August of 2018. https://techcommunity.microsoft.com/t5/Security-Privacy-and-Compliance/Customer-Lockbox-Approver-Role-Now-Available/ba-p/223393-->
+
 * **[Administratorzy urządzenia](#device-administrators)**: Ta rola jest dostępne do przypisania tylko jako dodatkowego administratora lokalnego w [ustawienia urządzenia](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Użytkownicy z tą rolą stają się administratorami maszyny lokalnej na wszystkich urządzeniach z systemem Windows 10 dołączonych do usługi Azure Active Directory. Nie mają możliwość zarządzania obiektami urządzeń w usłudze Azure Active Directory. 
 
 * **[Odczytywanie katalogów](#directory-readers)**: Jest to rola starszej wersji, która ma być przypisana do aplikacji, które nie obsługują [zgody Framework](../develop/quickstart-v1-integrate-apps-with-azure-ad.md). Nie powinien zostać przypisany do żadnych użytkowników.
@@ -98,9 +102,10 @@ Dostępne są następujące role administratora:
   > [!NOTE] 
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Dynamics 365". Jest on "Administrator Dynamics 365" [witryny Azure portal](https://portal.azure.com).
 
-* **[Administrator programu Exchange](#exchange-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, jeśli została zainstalowana. a także możliwość tworzenia i zarządzania wszystkich grup usługi Office 365, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
+* **[Administrator programu Exchange](#exchange-service-administrator)**: Użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft CRM Online, jeśli została zainstalowana. Ma również możliwość tworzenia i zarządzania wszystkich grup usługi Office 365, zarządzanie biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
   > [!NOTE]
-  > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Exchange". Jest on "Administrator programu Exchange" [witryny Azure portal](https://portal.azure.com).
+  > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Exchange". Jest on "Administrator programu Exchange" [witryny Azure portal](https://portal.azure.com). Jest "Exchange Online polu" [Centrum administracyjne Exchange](https://go.microsoft.com/fwlink/p/?LinkID=529144). 
+
 
 * **[Administrator globalny / Administrator firmy](#company-administrator)**: Użytkownicy z tą rolą mają dostęp do wszystkich funkcji administracyjnych w usłudze Azure Active Directory, a także usług korzystających z tożsamości usługi Azure Active Directory, takich jak Centrum zabezpieczeń firmy Microsoft 365, Microsoft 365 Centrum zgodności, Exchange Online, SharePoint Online i Skype dla firm Online. Osoba, która zarejestruje się dla dzierżawy usługi Azure Active Directory staje się administratorem globalnym. Tylko administratorzy globalni mogą przypisywać pozostałe role administratorów. Może istnieć więcej niż jednego administratora globalnego w Twojej firmie. Administratorzy globalni mogą resetować hasła dla wszystkich użytkowników oraz wszystkich innych administratorów.
 

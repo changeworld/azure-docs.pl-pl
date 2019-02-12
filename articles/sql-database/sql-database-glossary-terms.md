@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d773d270b3b352bcaef189d201d824695b42bcef
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980146"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990074"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Usługa Azure SQL Database słownik pojęć
 
@@ -30,7 +30,7 @@ ms.locfileid: "55980146"
 |Obiekty serwera|Bazy danych programu SQL server lub serwer bazy danych|[Serwer bazy danych](sql-database-servers.md)|
 ||Serwer wystąpienia zarządzanego usługi SQL Database, wystąpienia zarządzanego serwera lub wystąpienia serwera|[Wystąpienie zarządzane](sql-database-managed-instance.md)|
 Obiekty bazy danych|Baza danych Azure SQL Database|Wszystkie bazy danych w usłudze Azure SQL Database|
-||Pojedyncza baza danych|Z bazy danych utworzonej jako autonomicznej bazy danych przy użyciu opcji wdrożenia pojedynczej bazy danych|
+||Pojedyncza baza danych|Z bazy danych utworzonej przy użyciu opcji wdrożenia pojedynczej bazy danych|
 ||Baza danych w puli|Bazy danych utworzone w ramach lub przeniesiona do puli elastycznej|
 ||Wystąpienie bazy danych|Z bazy danych utworzonej w ramach wystąpienia zarządzanego|
 ||Podstawowej bazy danych|Bazy danych utworzone w ramach lub przeniesiony do warstwy podstawowej usługi do modelu zakupu opartego na jednostkach DTU|
@@ -39,7 +39,7 @@ Obiekty bazy danych|Baza danych Azure SQL Database|Wszystkie bazy danych w usłu
 ||Bazy danych ogólnego przeznaczenia|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług ogólnego przeznaczenia modelu zakupu opartego na rdzeniach wirtualnych|
 ||Bazy danych na dużą skalę|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług na dużą skalę modelu zakupu opartego na rdzeniach wirtualnych|
 ||Krytyczne bazy danych firmy|Bazy danych utworzone w ramach lub przeniesiony do warstwy usług krytycznych biznesowej modelu zakupu opartego na rdzeniach wirtualnych|
-|[Modelami zakupów i zasoby](sql-database-service-tiers.md)|Model zakupu w oparciu o jednostki DTU|[Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md)|
+|[Modelami zakupów i zasoby](sql-database-purchase-models.md)|Model zakupu w oparciu o jednostki DTU|[Model zakupu w oparciu o jednostki DTU](sql-database-service-tiers-dtu.md)|
 ||Model zakupu bazujący na rdzeniach wirtualnych|[model zakupu w oparciu o rdzeń wirtualny](sql-database-service-tiers-vcore.md)|
 ||Rdzeń wirtualny|Podstawowa dostarczane do systemu operacyjnego gościa przez funkcję hypervisor.|
 ||Warstwa usług|Poziom usługi, w ramach modelu zakupu|

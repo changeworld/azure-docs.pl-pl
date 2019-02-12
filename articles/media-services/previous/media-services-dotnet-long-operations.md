@@ -1,10 +1,10 @@
 ---
-title: Sondowanie długotrwałe operacje | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono sposób sondowania długotrwałej operacji.
+title: Sondowanie operacji długotrwałych | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak sondowanie długotrwałych operacji.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 9a68c4b1-6159-42fe-9439-a3661a90ae03
 ms.service: media-services
@@ -12,29 +12,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: fa456a2d0bb427af80d67a0b971fe8bd41bb7868
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f5098b2691f7c73be5df6b44479082bf25effde7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788424"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998046"
 ---
-# <a name="delivering-live-streaming-with-azure-media-services"></a>Dostarczanie transmisję strumieniową na żywo za pomocą usługi Azure Media Services
+# <a name="delivering-live-streaming-with-azure-media-services"></a>Dostarczanie transmisja strumieniowa na żywo za pomocą usługi Azure Media Services
 
 ## <a name="overview"></a>Przegląd
 
-Microsoft Azure Media Services udostępnia interfejsy API, które wysyłają żądania do usługi Media Services można uruchomić operacji (na przykład: Utwórz, uruchom, Zatrzymaj lub usuwanie kanału). Operacje te są długotrwałe.
+Microsoft Azure Media Services oferuje interfejsy API, które wysyłają żądania do usługi Media Services można uruchomić operacji (na przykład: tworzenie, uruchamianie, zatrzymywanie lub usuwanie kanału). Te operacje są długo działającymi.
 
-SDK .NET usługi Media Services udostępnia interfejsy API, która wysłać żądania i poczekaj na ukończenie tej operacji (wewnętrznie, interfejsy API są sondowanie postęp operacji niektórych odstępach). Na przykład w przypadku wywołania kanału. Funkcji Start(), metoda zwraca po rozpoczęciu kanału. Można również użyć to wersja asynchroniczna: oczekiwania kanału. StartAsync() (Aby uzyskać informacje dotyczące wzorca asynchronicznego opartego na zadaniach, zobacz [wybierz](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Interfejsy API, które Wyślij żądanie operacji, a następnie wykonać sondowanie stanu, aż do zakończenia operacji są nazywane "sondowania metody". Te metody (szczególnie wersję Async) są zalecane w przypadku zaawansowanych aplikacji klienckich i/lub usług stanowych.
+Zestawu SDK .NET usługi Media Services udostępnia interfejsy API, który wysłać żądanie i poczekaj na zakończenie operacji (wewnętrznie, interfejsy API są sondowanie postęp operacji niektóre odstępach). Na przykład gdy wywołujesz kanału. Start(), metoda zwraca po uruchomieniu kanału. Można również użyć asynchroniczna wersja: await kanału. StartAsync() (Aby uzyskać informacji na temat wzorca asynchronicznego opartego na zadaniach, zobacz [NACIŚNIJ](https://msdn.microsoft.com/library/hh873175\(v=vs.110\).aspx)). Interfejsy API, Wyślij żądanie operacji, a następnie wykonać sondowanie stanu, aż do zakończenia operacji, które są nazywane "sondowania metody". Te metody (szczególnie wersję Async) są zalecane w przypadku zaawansowanych aplikacji klienckich i/lub usług stanowych.
 
-Brak scenariuszy, w którym aplikacja nie może czekać na długo działające żądanie http i chce ręcznie sondować postęp operacji. Typowym przykładem jest przeglądarką interakcji z usługą sieci web bezstanowe: gdy przeglądarka żąda próba utworzenia kanału, usługę sieci web inicjuje operacją wymagającą dużo czasu i zwraca identyfikator operacji w przeglądarce. Przeglądarka może następnie poprosić usługi sieci web można uzyskać stanu działania na podstawie identyfikatora. SDK .NET usługi Media Services udostępnia interfejsy API, które są przydatne w przypadku tego scenariusza. Te interfejsy API są nazywane "metod innych niż sondowania".
-"Metody z systemem innym niż sondowania" mają następujący wzór nazewnictwa: wysyłanie*OperationName*operacji (na przykład SendCreateOperation). Wyślij*OperationName*operacji metody zwracają **IOperation** obiekt; zwrócona obiektu zawiera informacje, które mogą służyć do śledzenia wykonać operację. Wyślij*OperationName*OperationAsync metody zwracają **zadań<IOperation>**.
+Istnieją scenariusze, w których aplikacja nie może czekać na długo działające żądanie http i chce, aby sondować postęp operacji ręcznie. Typowym przykładem może być interakcji z bezstanowej usługi internetowej przeglądarki: gdy przeglądarka żąda próba utworzenia kanału, usługę sieci web inicjuje długotrwałej operacji i zwraca identyfikator operacji w przeglądarce. Przeglądarka może następnie poproś usługę sieci web, aby pobrać stan operacji na podstawie identyfikatora. Zestawu SDK .NET usługi Media Services udostępnia interfejsy API, które są przydatne w przypadku tego scenariusza. Te interfejsy API są nazywane "bez sondowania metody".
+"Metody bez sondowania" mają następującym wzorcem nazewnictwa: Wyślij*OperationName*operacji (na przykład SendCreateOperation). Wyślij*OperationName*operacji metody zwracają **IOperation** obiekt; zwrócony obiekt zawiera informacje, które mogą być używane do śledzenia operacji. Wyślij*OperationName*OperationAsync metody zwracają **zadań<IOperation>**.
 
-Obecnie następujące klasy obsługuje metod innych niż sondowania: **kanału**, **StreamingEndpoint**, i **Program**.
+Obecnie następujące klasy obsługuje metod innych niż sondowania:  **Kanał**, **StreamingEndpoint**, i **Program**.
 
-Aby wykonać sondowanie stanu operacji, należy użyć **GetOperation** metoda **OperationBaseCollection** klasy. Użyj następujących przedziałów czasu, aby sprawdzić stan operacji: dla **kanału** i **StreamingEndpoint** operacji, użyj 30 sekund; dla **Program** operacji, użyj 10 sekund.
+Aby wykonać sondowanie dotyczące stanu operacji, użyj **GetOperation** metody **OperationBaseCollection** klasy. Użyj następujących przedziałów czasu, aby sprawdzić stan operacji: dla **kanału** i **StreamingEndpoint** operacje, używają 30 sekund; **Program** operacje, używają 10 sekund.
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -42,9 +42,9 @@ Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu info
 
 ## <a name="example"></a>Przykład
 
-W poniższym przykładzie zdefiniowano klasę o nazwie **ChannelOperations**. Ta definicja klasy może być punkt początkowy dla definicji klasy usługi sieci web. Dla uproszczenia przedstawiono przykłady Użyj wersji z systemem innym niż asynchronicznych metod.
+W poniższym przykładzie zdefiniowano klasę o nazwie **ChannelOperations**. Tę definicję klasy może być punkt początkowy dla swojej definicji klasy usługi sieci web. Dla uproszczenia w poniższych przykładach używane wersji bez asynchronicznych metod.
 
-W przykładzie przedstawiono również sposób klient może używać tej klasy.
+W przykładzie pokazano również, jak klient może używać tej klasy.
 
 ### <a name="channeloperations-class-definition"></a>Definicja klasy ChannelOperations
 

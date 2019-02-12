@@ -10,16 +10,16 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: ''
-ms.date: 02/08/2019
+ms.date: 02/10/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 800cd04f8f4acf7a9768a8ccdce5a4d9783d3a4d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3b6daa60e8c8945d49170a00da5bd3ffb57b48ac
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985176"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000118"
 ---
-# <a name="manage-multiple-tenants"></a>Zarządzanie wieloma dzierżawcami
+# <a name="manage-multiple-tenants"></a>Zarządzanie wieloma dzierżawami
 
 W tym artykule omówiono różne opcje do zarządzania wieloma dzierżawami za pomocą indeksatora wideo. Wybierz metodę, która jest najbardziej odpowiednie dla danego scenariusza:
 

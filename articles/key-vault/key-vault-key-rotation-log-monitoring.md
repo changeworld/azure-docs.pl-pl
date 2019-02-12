@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 10e60076fe527e6e773e966ccdae52a7fe99c4b2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077712"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997210"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Konfigurowanie usługi Azure Key Vault o rotacji i inspekcji kluczy
 
 ## <a name="introduction"></a>Wprowadzenie
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Po utworzeniu magazynu kluczy, można uruchomić, używany do przechowywania kluczy i wpisów tajnych. Aplikacje nie są już potrzebne zachować swoje klucze i wpisy tajne, ale zażądać ich z magazynu zgodnie z potrzebami. Dzięki temu można zaktualizować kluczy i wpisów tajnych, bez wywierania wpływu na działanie aplikacji, która otwiera szerokie możliwości dotyczące Twojego klucza i zarządzanie wpisami tajnymi.
 
@@ -45,7 +47,7 @@ Ten artykuł przeprowadzi:
 Aby umożliwić aplikacji do pobrania wpisu tajnego z usługi Key Vault, należy najpierw utworzyć wpis tajny i przekaż go do magazynu. Można to zrobić, uruchamiając sesję programu Azure PowerShell i logowania do konta platformy Azure za pomocą następującego polecenia:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem. Pierwsza z nich domyślnie korzysta z programu PowerShell.
@@ -53,19 +55,19 @@ W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla kon
 Jeśli masz wiele subskrypcji, trzeba będzie określić ten, który został użyty do utworzenia magazynu kluczy. Wprowadź następujące polecenie, aby zobaczyć subskrypcje dla konta:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Aby określić subskrypcję, która jest skojarzona z magazynem kluczy, który będziesz rejestrować, wpisz:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscriptionID>
+Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
 Ponieważ w tym artykule przedstawiono przechowywania klucza konta magazynu jako klucz tajny, należy pobrać ten klucz konta magazynu.
 
 ```powershell
-Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
+Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
 Po pobraniu klucz tajny (w tym przypadku klucz konta magazynu), należy przekonwertować, bezpieczny ciąg i następnie utworzyć wpis tajny z tej wartości w magazynie kluczy.
@@ -73,13 +75,13 @@ Po pobraniu klucz tajny (w tym przypadku klucz konta magazynu), należy przekonw
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
-Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
+Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
 Następnie uzyskać identyfikator URI klucza tajnego, który został utworzony. Służy to w późniejszym kroku podczas wywoływania magazynu kluczy, aby pobrać klucz tajny. Uruchom następujące polecenie programu PowerShell i zanotuj wartość Identyfikatora, czyli identyfikator URI klucza tajnego:
 
 ```powershell
-Get-AzureKeyVaultSecret –VaultName <vaultName>
+Get-AzKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>Konfigurowanie aplikacji
@@ -110,7 +112,7 @@ Kolejny krok to generowanie klucza dla aplikacji, dzięki czemu może współdzi
 Przed nawiązaniem wszelkie wywołania z aplikacji do magazynu kluczy, musisz poinformować usługi key vault o aplikacji i ich uprawnienia. Następujące polecenie przyjmuje nazwę magazynu i identyfikator aplikacji z poziomu aplikacji usługi Azure Active Directory i przyznaje **uzyskać** dostępu do magazynu kluczy dla aplikacji.
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
 W tym momencie możesz gotowe do rozpoczęcia tworzenia wywołaniami aplikacji. W aplikacji należy zainstalować pakiety NuGet, musieli korzystać z usługi Azure Key Vault i Azure Active Directory. Z poziomu konsoli Menedżera pakietów Visual Studio wprowadź następujące polecenia. Na zapisywanie w tym artykule bieżącą wersję pakietu usługi Azure Active Directory jest 3.10.305231913, dzięki czemu możesz chcieć sprawdzić najnowsza wersja, a następnie odpowiednio zaktualizować.
@@ -188,7 +190,7 @@ W **zasoby**, wybierz **modułów**. Z **modułów**, wybierz opcję **galerii**
 Po pobraniu Identyfikatora aplikacji połączenia usługi Azure Automation, musisz poinformować magazynu kluczy czy ta aplikacja ma dostęp do zaktualizowania wpisów tajnych w magazynie. Można to zrobić za pomocą następującego polecenia programu PowerShell:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
 Następnie wybierz pozycję **elementów Runbook** w ramach wystąpienia usługi Azure Automation, a następnie wybierz **Dodaj element Runbook**. Wybierz pozycję **Szybkie tworzenie**. Nazwa elementu runbook, a następnie wybierz pozycję **PowerShell** jako typ elementu runbook. Masz opcję, aby dodać opis. Na koniec kliknij **Utwórz**.
@@ -205,7 +207,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -230,12 +232,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 W okienku Edytora wybierz **okienko testowania** Aby przetestować skrypt. Gdy skrypt jest uruchamiany bez błędów, można wybrać **Publikuj**, a następnie zostanie zastosowana harmonogram dla elementu runbook w okienku Konfiguracja elementu runbook.
@@ -246,9 +248,9 @@ Po skonfigurowaniu magazynu kluczy można włączyć inspekcję do zbierania dzi
 Najpierw należy włączyć rejestrowanie w magazynie kluczy. Można to zrobić za pomocą następujących poleceń programu PowerShell (szczegółowe informacje są widoczne w [key vault rejestrowania](key-vault-logging.md)):
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
-$kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+$sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
+$kv = Get-AzKeyVault -VaultName '<vaultName>'
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
 Po włączeniu to rozpoczęcia zbierania do konta magazynu wyznaczonego dzienników inspekcji. Te dzienniki zawierają zdarzenia dotyczące sposobu i czasu Twoich magazynów kluczy są dostępne i przez kogo.

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: d2276eb11ce904b485440a6ce91981846a980dbc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 096f310b7c82718ea836d1b2048ca665a1e1e2f4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462192"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994960"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Eksportowanie i usunąć dane użytkownika w produkcie z usługi Azure Machine Learning Studio
 
@@ -53,7 +53,7 @@ Istnieją trzy rodzaje kont w usłudze Machine Learning Studio. Rodzaj konta okr
     - Możesz wyeksportować dane osobiste i klientów za pośrednictwem pakietu interfejsu użytkownika, interfejsów API REST lub programu PowerShell
     - Można usunąć danych w witrynie Azure portal.
 
-## <a name="delete-workspace-data-in-studio"></a>Usuwanie danych obszaru roboczego w programie Studio 
+## <a name="delete"></a>Usuwanie danych obszaru roboczego w programie Studio 
 
 ### <a name="delete-individual-assets"></a>Usuwać poszczególne zasoby
 

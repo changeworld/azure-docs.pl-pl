@@ -1,10 +1,10 @@
 ---
-title: Umożliwia tworzenie podsumowań wideo miniatur wideo multimediów Azure | Dokumentacja firmy Microsoft
-description: Podsumowanie wideo mogą pomóc tworzyć podsumowania długich filmów wideo, wybierając automatycznie interesujące fragmenty kodu ze źródła wideo. Jest to przydatne, gdy chcesz zapewnić szybki przegląd czego można oczekiwać w długich wideo.
+title: Użyj miniatur wideo multimediów platformy Azure, aby utworzyć podsumowanie wideo | Dokumentacja firmy Microsoft
+description: Podsumowanie wideo może pomóc w tworzenie podsumowań długich wideo, automatycznie wybierając interesujący fragmenty kodu z źródłowy plik wideo. Jest to przydatne, gdy chcesz zapewnić szybki przegląd czego można oczekiwać w długich wideo.
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a245529f-3150-4afc-93ec-e40d8a6b761d
 ms.service: media-services
@@ -12,38 +12,38 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/08/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: aba01314b26f11df41aef25215697389bc7f46b2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c0a6feb1eba1e409c29a650741eadc31f1017342
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790475"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004812"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Umożliwia tworzenie podsumowań wideo miniatur wideo multimediów Azure
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Umożliwia tworzenie podsumowań wideo miniatur wideo multimediów platformy Azure  
 ## <a name="overview"></a>Przegląd
-**Miniatur wideo multimediów Azure** procesor multimediów (MP) umożliwia tworzenie podsumowanie wideo, które są przydatne do klientów, którzy po prostu chcesz przeglądać podsumowanie wideo długo. Na przykład klienci mogą być wyświetlane krótki "Podsumowanie wideo" gdy umieść kursor nad miniatury. Przez dostosowywanie parametry **miniatur wideo multimediów Azure** za pomocą ustawienia domyślne konfiguracji, można użyć MP zaawansowanego zrzut wykrywania i łączenia rozwiązania algorithmically wygenerować subclip opisowy.  
+**Miniatur wideo multimediów Azure** procesor multimediów (MP) pozwala na tworzenie podsumowanie wideo, które są przydatne do klientów, którzy po prostu chcesz podsumowanie długich wideo w wersji zapoznawczej. Klienci mogą na przykład chcesz zobaczyć short "Podsumowanie wideo" po zatrzymaniu wskaźnika myszy na miniaturze. Przez dostosowywanie parametrów **miniatur wideo multimediów Azure** przy użyciu predefiniowanej konfiguracji, można użyć MP zaawansowaną zrzut wykrywania i łączenia technologię algorithmically wygenerować opisu klipu podrzędnego.  
 
-**Miniatur wideo multimediów Azure** pakiet administracyjny jest obecnie w przeglądzie.
+**Miniatur wideo multimediów Azure** pakiet administracyjny jest obecnie w wersji zapoznawczej.
 
-Ten artykuł zawiera szczegółowe informacje o **miniatur wideo multimediów Azure** i pokazuje, jak z niego korzystać z zestawu SDK usługi Media Services dla platformy .NET.
+Ten artykuł zawiera szczegółowe informacje o **miniatur wideo multimediów Azure** i pokazuje, jak z niej korzystać z zestawu SDK usługi Media Services dla platformy .NET.
 
 ## <a name="limitations"></a>Ograniczenia
 
-W niektórych przypadkach Jeśli wideo nie składa się z różnych scen dane wyjściowe będą tylko jednego zrzut.
+W niektórych przypadkach Jeśli Twój film wideo nie składa się z różnych scen, dane wyjściowe będą tylko pojedynczy zrzut.
 
-## <a name="video-summary-example"></a>Przykład podsumowanie wideo
-Oto kilka przykładów czynności procesor multimediów miniatur wideo multimediów Azure:
+## <a name="video-summary-example"></a>Przykład podsumowania wideo
+Poniżej przedstawiono kilka przykładów, co robić procesor multimediów miniatur wideo multimediów Azure:
 
-### <a name="original-video"></a>Oryginalnego wideo
-[Oryginalnego wideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
+### <a name="original-video"></a>Oryginalne wideo
+[Oryginalne wideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
 
 ### <a name="video-thumbnail-result"></a>Wynik miniatur wideo
 [Wynik miniatur wideo](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
-## <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienia domyślne)
-Podczas tworzenia zadania miniatur wideo z **miniatur wideo multimediów Azure**, należy określić ustawienia domyślne konfiguracji. Powyższym przykładzie miniatur został utworzony przy użyciu następującej konfiguracji JSON podstawowe:
+## <a name="task-configuration-preset"></a>Konfiguracja zadania (ustawienie wstępne)
+Podczas tworzenia zadania miniatury wideo z **miniatur wideo multimediów Azure**, należy określić ustawienie wstępne konfiguracji. Powyższe przykładowe miniatury został utworzony za pomocą następujących podstawowych konfiguracji JSON:
 
 ```json
     {
@@ -55,18 +55,18 @@ Obecnie można zmienić następujące parametry:
 
 | Param | Opis |
 | --- | --- |
-| outputAudio |Określa, czy Wynikowy klip wideo zawiera żadnego dźwięku. <br/>Dozwolone wartości to: True lub False. Domyślna wartość to True. |
-| fadeInFadeOut |Określa, czy przejścia zanikania służą między miniatur oddzielne ruchu.  <br/>Dozwolone wartości to: True lub False.  Domyślna wartość to True. |
-| maxMotionThumbnailDurationInSecs |Liczba całkowita, która określa, jak długo są całe wideo wynikowe.  Domyślna zależy od oryginalnego wideo czasu trwania. |
+| outputAudio |Określa, czy wynikowy film wideo zawiera audio. <br/>Dozwolone wartości to: Wartość TRUE lub False. Domyślna wartość to True. |
+| fadeInFadeOut |Określa, czy fade przejścia są używane między miniatury oddzielne ruchu.  <br/>Dozwolone wartości to: Wartość TRUE lub False.  Domyślna wartość to True. |
+| maxMotionThumbnailDurationInSecs |Liczba całkowita określająca, ile wynosi całe wideo wynikowe.  Domyślna jest zależna od oryginalnego czas trwania wideo. |
 
 W poniższej tabeli opisano domyślny czas trwania, gdy **maxMotionThumbnailInSecs** nie jest używany.
 
 |  |  |  |
 | --- | --- | --- | --- | --- |
 | Czas trwania wideo |d < 3 min |3 min < d < 15 min |
-| Czas trwania miniatur |s 15 (sceny 2 – 3) |30 sekund (3 – 5 sceny) |
+| Czas trwania miniatury |15 sek (sceny 2 – 3) |30 sekund (sceny 3 – 5) |
 
-Następujące JSON ustawia dostępne parametry.
+Następujące dane JSON ustawia dostępne parametry.
 
 ```json
     {
@@ -79,12 +79,12 @@ Następujące JSON ustawia dostępne parametry.
     }
 ```
 
-## <a name="net-sample-code"></a>.NET przykładowy kod
+## <a name="net-sample-code"></a>Przykładowy kod .NET
 
-Następujących programów przedstawiono sposób:
+Poniższy program pokazuje jak:
 
-1. Utworzenie elementu zawartości i przesyłanie pliku multimediów do elementu zawartości.
-2. Tworzy zadanie z zadaniem miniatur wideo oparty na pliku konfiguracji, który zawiera następujące ustawienie json: 
+1. Utworzenie elementu zawartości i przekaż plik multimedialny do niego.
+2. Tworzy zadanie z zadaniem miniatury wideo oparte na pliku konfiguracji, który zawiera następujące ustawienie wstępne json: 
     
     ```json
             {                
@@ -97,7 +97,7 @@ Następujących programów przedstawiono sposób:
             }
     ```
 
-3. Pobiera pliki danych wyjściowych. 
+3. Pobieranie plików wyjściowych. 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 
@@ -285,7 +285,7 @@ Skonfiguruj środowisko projektowe i wypełnij plik app.config przy użyciu info
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-links"></a>Powiązane linki
-[Przegląd analiz usługi Azure Media Services](media-services-analytics-overview.md)
+[Przegląd Analityki usługi Azure Media Services](media-services-analytics-overview.md)
 
-[W trakcie analizy multimediów Azure](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Pokazy usługi Azure Media Analytics](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

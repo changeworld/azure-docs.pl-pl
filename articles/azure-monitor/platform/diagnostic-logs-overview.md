@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885851"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002001"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -40,7 +40,9 @@ Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych:
 
 * Zapisywanie ich [ **konta magazynu** ](../../azure-monitor/platform/archive-diagnostic-logs.md) do wglądu, inspekcji czy ręcznie. Można określić przy użyciu czasu (w dniach) przechowywania **ustawień diagnostycznych zasobu**.
 * [Stream im **usługi Event Hubs** ](diagnostic-logs-stream-event-hubs.md) dla pozyskiwania przez usługi innych firm lub rozwiązania analizy niestandardowych, takich jak usługi Power BI.
-* Analizuj je za pomocą [usługi Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md), gdzie dane są zapisywane bezpośrednio do usługi Log Analytics bez konieczności najpierw zapisać dane do magazynu.  
+* Analizuj je za pomocą [usługi Azure Monitor](../../azure-monitor/platform/collect-azure-metrics-logs.md), gdzie dane są zapisywane bezpośrednio do usługi Azure Monitor bez konieczności najpierw zapisać dane do magazynu.  
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Można użyć konta magazynu lub przestrzeni nazw usługi Event Hubs, która nie znajduje się w tej samej subskrypcji co emitowane dzienniki. Użytkownik, który konfiguruje ustawienie, musi mieć odpowiedni dostęp RBAC do obu subskrypcji.
 
@@ -56,7 +58,7 @@ Można użyć konta magazynu lub przestrzeni nazw usługi Event Hubs, która nie
 
 Dzienniki diagnostyczne zasobu są skonfigurowane za pomocą ustawień diagnostycznych zasobu. Dzienniki diagnostyczne dzierżawy są skonfigurowane przy użyciu ustawienia diagnostyczne dzierżawy. **Ustawienia diagnostyczne** kontroli usługi:
 
-* Której dzienniki diagnostyczne i metryki są wysyłane (konto magazynu, usługa Event Hubs i/lub usługi Log Analytics).
+* Której dzienniki diagnostyczne i metryki są wysyłane (konto magazynu, usługa Event Hubs i/lub usługi Azure Monitor).
 * Kategorie dziennika, które są wysyłane i tego, czy też są wysyłane dane metryk.
 * Jak długo każda kategoria dziennika ma być przechowywana na koncie magazynu
     - Wpisanie wartości zero oznacza, że dzienniki są przechowywane w nieskończoność. W przeciwnym razie wartość może być dowolną liczbę dni z zakresu od 1 do 2147483647.
@@ -235,5 +237,4 @@ Dodawanie ustawienia diagnostyczne powoduje wyświetlenie widoku ustawień diagn
 
 * [Stream dzienników diagnostycznych zasobów do **usługi Event Hubs**](diagnostic-logs-stream-event-hubs.md)
 * [Zmień ustawienia diagnostyczne zasobów przy użyciu interfejsu API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/)
-* [Analizowanie dzienników z usługi Azure storage za pomocą usługi Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-
+* [Analizowanie dzienników z usługi Azure storage z usługą Azure Monitor](collect-azure-metrics-logs.md)

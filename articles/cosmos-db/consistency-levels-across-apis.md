@@ -7,26 +7,26 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4d2994ea6ab6d6472ec56f0f2e378062590c8920
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b620ca76cfea296e504afffd91852308a01575db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807001"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002010"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>Poziomy spójności i interfejsy API usługi Azure Cosmos DB
 
-Pięć modeli spójności oferowanych przez usługę Azure Cosmos DB są natywnie obsługiwane przez interfejs API SQL usługi Azure Cosmos DB. Gdy używasz usługi Azure Cosmos DB, interfejs API SQL jest ustawieniem domyślnym. 
+Pięć modeli spójności oferowanych przez usługę Azure Cosmos DB są natywnie obsługiwane przez interfejs API SQL. Gdy używasz usługi Azure Cosmos DB, interfejs API SQL jest ustawieniem domyślnym. 
 
-Usługa Azure Cosmos DB również zapewnia natywną obsługę sieci zgodnego z protokołem interfejsów API na potrzeby popularnych baz danych. Bazy danych obejmują bazy danych MongoDB, Apache Cassandra, Gremlin i Azure Table storage. Te bazy danych nie ma możliwości dokładnie zdefiniowanych modeli spójności lub objętym umową SLA gwarancje dotyczące poziomów spójności. Zwykle zapewniają tylko podzbiór pięcioma modelami spójności oferowanych przez usługę Azure Cosmos DB. Dla interfejsu API SQL, interfejs API Gremlin i interfejsu API tabel jest używany domyślny poziom spójności skonfigurowany na koncie usługi Azure Cosmos DB. 
+Usługa Azure Cosmos DB również zapewnia natywną obsługę sieci zgodnego z protokołem interfejsów API na potrzeby popularnych baz danych. Bazy danych obejmują bazy danych MongoDB, Apache Cassandra, Gremlin i Azure Table storage. Te bazy danych nie ma możliwości dokładnie zdefiniowanych modeli spójności lub objętym umową SLA gwarancje dotyczące poziomów spójności. Zwykle zapewniają tylko podzbiór pięcioma modelami spójności oferowanych przez usługę Azure Cosmos DB. Dla interfejsu API SQL, interfejs API Gremlin i interfejsu API tabel jest używany domyślny poziom spójności skonfigurowany na koncie usługi Azure Cosmos. 
 
-W poniższych sekcjach przedstawiono mapowanie między spójności danych wymagany przez sterownik klienta OSS dla bazy danych Apache Cassandra 4.x i MongoDB 3.4. Ten dokument zawiera również odpowiadającymi im poziomami spójności usługi Azure Cosmos DB dla bazy danych Apache Cassandra i bazy danych MongoDB.
+W poniższych sekcjach przedstawiono mapowanie między spójności danych, żądane przez sterownik klienta OSS dla bazy danych Apache Cassandra, MongoDB i odpowiadającymi im poziomami spójności w usłudze Azure Cosmos DB.
 
 ## <a id="cassandra-mapping"></a>Mapowanie między poziomami spójności bazy danych Apache Cassandra usługi Azure Cosmos DB
 
-W poniższej tabeli przedstawiono mapowania spójności bazy danych Apache Cassandra oraz poziomów spójności w usłudze Azure Cosmos DB. Dla każdej bazy danych Cassandra odczytu i zapisu poziomów spójności, odpowiedni poziom spójności bazy danych Cosmos zapewnia silniejsza, czyli bardziej rygorystyczne gwarancji.
+Poniższa tabela zawiera opis różnych kombinacji spójności, które umożliwia korzystanie z interfejsu API rozwiązania Cassandra i równoważne spójności natywne mapowanie poziomu usługi Cosmos DB. Połączenie wszystkich trybach odczytu i zapisu bazy danych Apache Cassandra są natywnie obsługiwane przez usługi Cosmos DB. W przypadku każdej kombinacji zapisu bazy danych Apache Cassandra i modelu spójności odczytu usługi Cosmos DB zapewnia gwarancje spójności równym lub większym niż bazy danych Apache Cassandra. Ponadto usługi Cosmos DB zapewnia gwarancje większą trwałość niż bazy danych Apache Cassandra, nawet w trybie najsłabsza, liczby operacji zapisu.
 
-W poniższej tabeli przedstawiono **zapisu mapowania spójności** między usługi Azure Cosmos DB i bazy danych Cassandra:
+W poniższej tabeli przedstawiono **zapisu mapowanie spójności** między usługi Azure Cosmos DB i bazy danych Cassandra:
 
 | Cassandra | Azure Cosmos DB | Gwarancja |
 | - | - | - |
@@ -42,7 +42,7 @@ W poniższej tabeli przedstawiono **zapisu mapowania spójności** między usłu
 | LOCAL_QUORUM, LOCAL_SERIAL, DWÓCH, TRZECH    | Powiązana nieaktualność | <ul><li>Powiązana nieaktualność.</li><li>Co najwyżej K wersji lub czasu (t) za zaporą.</li><li>Odczytaj najnowsze zatwierdzone wartość w regionie.</li></ul> |
 | JEDEN, LOCAL_ONE, WSZYSTKIE   | Spójny prefiks | Spójny prefiks regionu |
 
-W poniższej tabeli przedstawiono **mapowania spójności odczytu** między usługi Azure Cosmos DB i bazy danych Cassandra:
+W poniższej tabeli przedstawiono **mapowanie spójności odczytu** między usługi Azure Cosmos DB i bazy danych Cassandra:
 
 | Cassandra | Azure Cosmos DB | Gwarancja |
 | - | - | - |

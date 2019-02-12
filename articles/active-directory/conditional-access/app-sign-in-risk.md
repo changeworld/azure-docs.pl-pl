@@ -16,16 +16,16 @@ ms.workload: identity
 ms.date: 12/14/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2c889368afe601bc7188f3b0989e7799c88131b4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b6738496a25c49a74d3156b5dfba1ba2a91f102c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081963"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002051"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory  
 
-Aby zachować ochronę środowiska, można uniemożliwić użytkownikom podejrzane działanie insign podpisywania. [Usługa Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analizuje każdy logowania, a następnie oblicza prawdopodobieństwo, że logowanie próba nie było wykonywane przez prawowitym właścicielem konta użytkownika. Prawdopodobieństwo (niskiej, średniej, wysokiej) jest wskazywany w postaci obliczonej wartości o nazwie [poziomy ryzyka logowania](conditions.md#sign-in-risk). Ustawiając warunek ryzyka logowania, można skonfigurować zasady dostępu warunkowego, aby odpowiedzieć na poziomach określonych ryzyka logowania. 
+Aby zachować ochronę środowiska, można zablokować podejrzanych użytkowników logowania. [Usługa Azure Active Directory (Azure AD) Identity Protection](../active-directory-identityprotection.md) analizuje każdy logowania, a następnie oblicza prawdopodobieństwo, że logowanie próba nie było wykonywane przez prawowitym właścicielem konta użytkownika. Prawdopodobieństwo (niskiej, średniej, wysokiej) jest wskazywany w postaci obliczonej wartości o nazwie [poziomy ryzyka logowania](conditions.md#sign-in-risk). Ustawiając warunek ryzyka logowania, można skonfigurować zasady dostępu warunkowego, aby odpowiedzieć na poziomach określonych ryzyka logowania. 
 
 Ten przewodnik Szybki Start przedstawia sposób konfigurowania [zasad dostępu warunkowego](../active-directory-conditional-access-azure-portal.md) blokuje logowania podczas wykryto poziom skonfigurowany ryzyka logowania. 
 

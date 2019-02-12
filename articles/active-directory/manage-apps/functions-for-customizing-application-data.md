@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: c97fd915e9022171125c7c0f687413e433f82871
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d601425ee5641c1bb07c47dcc0f9a1d94ff3dc87
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983845"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990381"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Pisanie wyrażeń do mapowania atrybutów w usłudze Azure Active Directory
 Podczas konfigurowania, inicjowania obsługi administracyjnej aplikacji SaaS, jest jeden z typów mapowania atrybutów, które można określić mapowanie wyrażenia. W tym przypadku trzeba napisać wyrażenia podobne do skryptu, która pozwala na przekształcanie danych użytkowników w formatach, które są bardziej akceptowalne dla aplikacji SaaS.
@@ -37,7 +37,7 @@ Składnia wyrażeń do mapowania atrybutów jest przypominający języka Visual 
 * Dla stałych ciągów Jeśli potrzebujesz kreski ułamkowej odwróconej (\) lub cudzysłowu (") w ciągu go należy użyć znaków ucieczki symbolem kreski ułamkowej odwróconej (\). Na przykład: "Nazwa firmy: \\"Firma Contoso\\" "
 
 ## <a name="list-of-functions"></a>Lista funkcji
-[Dołącz](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Dołącz](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nie](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Zastąp](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [Przełącznika](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
+[Dołącz](#append) &nbsp; &nbsp; &nbsp; &nbsp; [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; &nbsp; [Dołącz](#join) &nbsp; &nbsp; &nbsp; &nbsp; [Mid](#mid) &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [nie](#not) &nbsp; &nbsp; &nbsp; &nbsp; [Zastąp](#replace) &nbsp; &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) &nbsp; &nbsp; &nbsp; &nbsp; [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; &nbsp; [Podziału](#split) &nbsp; &nbsp; &nbsp; &nbsp; [ StripSpaces](#stripspaces) &nbsp; &nbsp; &nbsp; &nbsp; [przełącznika](#switch) &nbsp; &nbsp; &nbsp; &nbsp; [ToLower](#tolower) &nbsp; &nbsp; &nbsp; &nbsp; [ToUpper](#toupper)
 
 - - -
 ### <a name="append"></a>Append
@@ -128,7 +128,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 * Gdy **oldValue** i **replacementValue** znajdują się:
   
-  * Zamienia wszystkie wystąpienia **oldValue** w **źródła** z *replacementValue**
+  * Zamienia wszystkie wystąpienia oldValue w źródle replacementValue
 * Gdy **oldValue** i **szablonu** znajdują się:
   
   * Zamienia wszystkie wystąpienia **oldValue** w **szablonu** z **źródła** wartość
@@ -183,6 +183,19 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 | **[appRoleAssignments]** |Wymagane |Ciąg |**[appRoleAssignments]**  obiektu. |
 
 - - -
+### <a name="split"></a>Podziel
+**Funkcja:**<br> Podziel (źródło, ogranicznik)
+
+**Opis:**<br> Dzieli ciąg na zwracającej mulit tablicy, korzystając ze znaku określonego ogranicznika.
+
+**Parametry:**<br> 
+
+| Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
+| --- | --- | --- | --- |
+| **source** |Wymagane |Ciąg |**źródło** wartość do zaktualizowania. |
+| **delimiter** |Wymagane |String |Określa znak, który będzie używany do dzielenia ciągu (przykład: ",") |
+
+- - -
 ### <a name="stripspaces"></a>StripSpaces
 **Funkcja:**<br> StripSpaces(source)
 
@@ -219,7 +232,7 @@ Zamienia wartości ciągu. Działa inaczej w zależności od parametrów podanyc
 
 | Name (Nazwa) | Wymagane / powtarzające się | Typ | Uwagi |
 | --- | --- | --- | --- |
-| **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego. |
+| **source** |Wymagane |Ciąg |Zazwyczaj nazwa atrybutu z obiektu źródłowego |
 | **Kultury** |Optional (Opcjonalność) |String |Format nazwy kultury, oparte na RFC 4646 *languagecode2 — kraj/regioncode2*, gdzie *languagecode2* jest kod języka dwuliterowych i *kraju/regioncode2*znajduje się kod przeszczepiania dwuliterowych. Przykłady obejmują ja-JP japoński (Japonia) i en US dla języka angielskiego (Stany Zjednoczone). W przypadkach, gdy kod języka dwuliterowych nie jest dostępna trzyliterowy kod pochodzi od ISO 639-2 jest używany.|
 
 - - -
@@ -282,8 +295,18 @@ NormalizeDiacritics([givenName])
 * **Dane wejściowe** (givenName): "Zoë"
 * **DANE WYJŚCIOWE**:  "Zoe"
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Dane wyjściowe daty w postaci ciągu w określonym formacie
+### <a name="split-a-string-into-a-multi-valued-array"></a>Dzieli ciąg na tablicę o wielu wartościach
+Musisz wykonać rozdzielana przecinkami lista ciągów i podzielić tablicę, która może być podłączane do atrybutów wielowartościowych, takich jak Salesforce firmy PermissionSets atrybutu. W tym przykładzie lista zestawów uprawnień zostały wypełnione w extensionAttribute5 w usłudze Azure AD.
 
+**Wyrażenie:** <br>
+Podziel ([extensionAttribute5] ",")
+
+**Przykładowe dane wejściowe/wyjściowe:** <br>
+
+* **Dane wejściowe** (extensionAttribute5): "PermissionSetOne PermisionSetTwo"
+* **Dane wyjściowe**: ["PermissionSetOne", "PermissionSetTwo"]
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>Dane wyjściowe daty w postaci ciągu w określonym formacie
 Chcesz wysłać daty do aplikacji SaaS w określonym formacie. <br>
 Na przykład chcesz formatować daty dla usługi ServiceNow.
 
@@ -302,7 +325,6 @@ Musisz zdefiniować strefy czasowej użytkownika, na podstawie kodu stanu, przec
 Jeśli kod stanu nie odpowiada żadnemu z wstępnie zdefiniowanych opcji, należy użyć wartości domyślnej "Australia/Sydney".
 
 **Wyrażenie:** <br>
-
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **Przykładowe dane wejściowe/wyjściowe:**
@@ -310,8 +332,19 @@ Jeśli kod stanu nie odpowiada żadnemu z wstępnie zdefiniowanych opcji, należ
 * **Dane wejściowe** (stan): "QLD"
 * **DANE WYJŚCIOWE**: "Australia/Brisbane"
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Konwertuj wartość wygenerowanego userPrincipalName (UPN) na małe litery
+### <a name="replace-characters-using-a-regular-expression"></a>Zastąp znaki przy użyciu wyrażeń regularnych
+Musisz znaleźć znaki, które pasują do wartości wyrażenia regularnego i usuń je.
 
+**Wyrażenie:** <br>
+
+Zastąp ([mailNickname], "[a-zA zł] *", "",)
+
+**Przykładowe dane wejściowe/wyjściowe:**
+
+* **Dane wejściowe** (mailNickname: "john_doe72"
+* **DANE WYJŚCIOWE**: "72"
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Konwertuj wartość wygenerowanego userPrincipalName (UPN) na małe litery
 W poniższym przykładzie wartość nazwy UPN jest generowana przez połączenie pola źródłowego PreferredFirstName i PreferredLastName i funkcji ToLower operuje na wygenerowany ciąg do konwersji wszystkich liter na małe litery. 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
@@ -323,7 +356,6 @@ W poniższym przykładzie wartość nazwy UPN jest generowana przez połączenie
 * **DANE WYJŚCIOWE**: "john.smith@contoso.com"
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generowanie unikatową wartość dla atrybutu userPrincipalName (UPN)
-
 Oparte na użytkownika imię, drugie imię i nazwisko, należy do generowania wartości atrybutu nazwy UPN i sprawdzić jego unikatowości w katalogu docelowym AD przed przypisaniem wartości do atrybutu nazwy UPN.
 
 **Wyrażenie:** <br>
@@ -349,4 +381,3 @@ Oparte na użytkownika imię, drugie imię i nazwisko, należy do generowania wa
 * [Włączanie automatycznej aprowizacji użytkowników i grup z usługi Azure Active Directory do aplikacji przy użyciu SCIM](use-scim-to-provision-users-and-groups.md)
 * [Powiadomienia z Aprowizacją kont](user-provisioning.md)
 * [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)
-

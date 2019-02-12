@@ -1,5 +1,5 @@
 ---
-title: Monitoruje stan replikacji usługi Active Directory z usługą Azure Log Analytics | Dokumentacja firmy Microsoft
+title: Monitoruje stan replikacji usługi Active Directory z usługą Azure Monitor | Dokumentacja firmy Microsoft
 description: Pakiet rozwiązań stan replikacji usługi Active Directory regularnie monitoruje środowiska usługi Active Directory pod kątem awarii replikacji.
 services: log-analytics
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 8d597a3491f80bc09c3e0676d17971f2509ba47a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3b7aa932d24b7879ee3f46419afa2327ee48b403
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818740"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001004"
 ---
-# <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Monitoruje stan replikacji usługi Active Directory z usługą Log Analytics
+# <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Monitoruje stan replikacji usługi Active Directory z usługą Azure Monitor
 
 ![Symbol stanu replikacji usługi AD](./media/ad-replication-status/ad-replication-status-symbol.png)
 
@@ -28,11 +28,26 @@ Usługa Active Directory jest kluczowym elementem środowisko IT przedsiębiorst
 
 Pakiet rozwiązań stan replikacji usługi AD regularnie monitoruje środowiska usługi Active Directory pod kątem awarii replikacji.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand-solution.md)]
+
 ## <a name="installing-and-configuring-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
-* Konieczne jest zainstalowanie agentów na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone. Alternatywnie należy zainstalować agentów na serwerach członkowskich i konfigurować agentów do przesyłania danych replikacji usługi AD do usługi Log Analytics. Aby dowiedzieć się, jak połączyć komputery Windows do usługi Log Analytics, zobacz [Windows łączenie komputerów do usługi Log Analytics](../../azure-monitor/platform/agent-windows.md). Jeśli kontroler domeny jest już częścią istniejącego środowiska programu System Center Operations Manager, który chcesz połączyć z usługą Log Analytics, zobacz [łączenie programu Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md).
-* Dodaj rozwiązanie stan replikacji usługi Active Directory do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../../azure-monitor/insights/solutions.md).  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+### <a name="install-agents-on-domain-controllers"></a>Instalowanie agentów na kontrolerach domeny
+Konieczne jest zainstalowanie agentów na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone. Alternatywnie należy zainstalować agentów na serwerach członkowskich i konfigurować agentów do przesyłania danych replikacji usługi AD do usługi Azure Monitor. Aby dowiedzieć się, jak połączyć komputery Windows do usługi Azure Monitor, zobacz [Windows łączenie komputerów do usługi Azure Monitor](../../azure-monitor/platform/agent-windows.md). Jeśli kontroler domeny jest już częścią istniejącego środowiska programu System Center Operations Manager, którą chcesz nawiązać połączenie z usługi Azure Monitor, zobacz [łączenie programu Operations Manager do usługi Azure Monitor](../../azure-monitor/platform/om-agents.md).
+
+### <a name="enable-non-domain-controller"></a>Włącz niebędącym kontrolerem domeny
+Nie chcesz połączyć dowolny z kontrolerami domeny bezpośrednio do usługi Azure Monitor, można użyć dowolnego innego komputera w domenie podłączone do usługi Azure Monitor, zbieranie danych dla pakietu rozwiązań stan replikacji usługi AD i Wyślij dane.
+
+1. Sprawdź, czy komputer jest członkiem domeny, który chcesz monitorować za pomocą rozwiązania stan replikacji usługi AD.
+2. [Podłącz komputer Windows do usługi Azure Monitor](../../azure-monitor/platform/om-agents.md) lub [połączyć za pomocą istniejącego środowiska programu Operations Manager do usługi Azure Monitor](../../azure-monitor/platform/om-agents.md), jeśli nie jest już połączony.
+3. Na tym komputerze należy ustawić następujący klucz rejestru:<br>Klucz: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**<br>Wartość: **IsTarget**<br>Dane wartości: **true**
+
+   > [!NOTE]
+   > Te zmiany nie obowiązywać do Twojej ponowne uruchomienie usługi Microsoft Monitoring Agent (HealthService.exe).
+### <a name="install-solution"></a>Zainstalować rozwiązanie
+Wykonaj czynności opisane w [zainstalować rozwiązanie do monitorowania](solutions.md#install-a-monitoring-solution) dodać **stan replikacji usługi Active Directory** rozwiązania do obszaru roboczego usługi Log Analytics. Nie są wymagane żadne dalsze czynności konfiguracyjne.
+
 
 ## <a name="ad-replication-status-data-collection-details"></a>Szczegóły kolekcji danych stanu replikacji usługi AD
 W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dotyczące jak zbierane są dane dotyczące stanu replikacji usługi AD.
@@ -41,28 +56,15 @@ W poniższej tabeli przedstawiono metody zbierania danych i inne szczegóły dot
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |co pięć dni |
 
-## <a name="optionally-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Opcjonalnie możesz włączyć niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics
-Nie chcesz połączyć dowolny z kontrolerami domeny bezpośrednio do usługi Log Analytics, można użyć dowolnego innego komputera w domenie połączona z usługą Log Analytics, zbieranie danych dla pakietu rozwiązań stan replikacji usługi AD i Wyślij dane.
 
-### <a name="to-enable-a-non-domain-controller-to-send-ad-data-to-log-analytics"></a>Aby włączyć niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics
-1. Sprawdź, czy komputer jest członkiem domeny, który chcesz monitorować za pomocą rozwiązania stan replikacji usługi AD.
-2. [Podłącz komputer Windows do usługi Log Analytics](../../azure-monitor/platform/om-agents.md) lub [połączyć za pomocą istniejącego środowiska programu Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md), jeśli nie jest już połączony.
-3. Na tym komputerze należy ustawić następujący klucz rejestru:
-
-   * Klucz: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication**
-   * Wartość: **IsTarget**
-   * Dane wartości: **true**
-
-   > [!NOTE]
-   > Te zmiany nie obowiązywać do Twojej ponowne uruchomienie usługi Microsoft Monitoring Agent (HealthService.exe).
-   >
-   >
 
 ## <a name="understanding-replication-errors"></a>Informacje o błędach replikacji
-Po utworzeniu dane stanu replikacji usługi AD wysyłane do usługi Log Analytics, zobaczysz Kafelek podobny do poniższej ilustracji w usłudze Log Analytics, wskazującą, ile błędy replikacji aktualnie.  
-![Kafelek stanu replikacji usługi AD](./media/ad-replication-status/oms-ad-replication-tile.png)
 
-**Błędy krytyczne replikacji** błędów, które są co najmniej 75% [okres istnienia reliktu](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) dla lasu usługi Active Directory.
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
+Kafelek stanu replikacji usługi AD Wyświetla ile błędy replikacji aktualnie zainstalowana. **Błędy krytyczne replikacji** błędów, które są co najmniej 75% [okres istnienia reliktu](https://technet.microsoft.com/library/cc784932%28v=ws.10%29.aspx) dla lasu usługi Active Directory.
+
+![Kafelek stanu replikacji usługi AD](./media/ad-replication-status/oms-ad-replication-tile.png)
 
 Po kliknięciu kafelka, możesz wyświetlić więcej informacji na temat błędów.
 ![Pulpit nawigacyjny stan replikacji usługi AD](./media/ad-replication-status/oms-ad-replication-dash.png)
@@ -104,11 +106,11 @@ Jak wspomniano wcześniej, Kafelek pulpitu nawigacyjnego dla rozwiązania stan r
 >
 
 ### <a name="ad-replication-status-details"></a>Szczegóły stanu replikacji usługi AD
-Po kliknięciu dowolnego elementu w wykazie, zobaczysz dodatkowe szczegóły dotyczące za pomocą wyszukiwania w dziennikach. Wyniki są filtrowane w celu wyświetlenia tylko błędy związane z tym elementem. Na przykład kliknięcie pierwszego kontrolera domeny na liście **stan serwera docelowego (ADDC02)**, zostaną wyświetlone wyniki wyszukiwania filtrowana w celu Pokaż błędy przy użyciu tego kontrolera domeny jest wymieniony jako serwer docelowy:
+Po kliknięciu dowolnego elementu w wykazie, zobaczysz dodatkowe szczegóły dotyczące za pomocą zapytań log. Wyniki są filtrowane w celu wyświetlenia tylko błędy związane z tym elementem. Na przykład kliknięcie pierwszego kontrolera domeny na liście **stan serwera docelowego (ADDC02)**, zostaną wyświetlone wyniki zapytania filtrowana w celu Pokaż błędy przy użyciu tego kontrolera domeny jest wymieniony jako serwer docelowy:
 
-![Błędy stanu replikacji usługi AD w wynikach wyszukiwania](./media/ad-replication-status/oms-ad-replication-search-details.png)
+![Błędy stanu replikacji usługi AD w wynikach kwerendy](./media/ad-replication-status/oms-ad-replication-search-details.png)
 
-W tym miejscu można dalej filtrować, zmodyfikuj zapytanie wyszukiwania i tak dalej. Aby uzyskać więcej informacji o używaniu przeszukiwania dzienników, zobacz [dziennikach](../../azure-monitor/log-query/log-query-overview.md).
+W tym miejscu można dalej filtrować, zmodyfikuj zapytanie dziennika i tak dalej. Aby uzyskać więcej informacji o używaniu zapytań dzienników w usłudze Azure Monitor, zobacz [Analizuj dane dzienników w usłudze Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
 
 **HelpLink** polu wyświetlany adres URL strony TechNet, z dodatkowymi szczegółami dotyczącymi tego wystąpienia określonego błędu. Można skopiować i wkleić ten link do okna przeglądarki w celu wyświetlenia informacji na temat rozwiązywania problemów i usunięciu błędu.
 
@@ -124,10 +126,11 @@ Odp.: Informacje są aktualizowane co pięć dni.
 Odp.: Nie w tej chwili.
 
 **Pyt.: Należy dodać wszystkie moje kontrolerów domeny do mojego obszaru roboczego usługi Log Analytics, aby można było wyświetlić stan replikacji?**
-Odp.: Nie można dodać tylko jednego kontrolera domeny. Jeśli masz wiele kontrolerów domeny w obszarze roboczym usługi Log Analytics, dane ze wszystkich z nich są wysyłane do usługi Log Analytics.
+Odp.: Nie można dodać tylko jednego kontrolera domeny. Jeśli masz wiele kontrolerów domeny w obszarze roboczym usługi Log Analytics, dane ze wszystkich z nich są wysyłane do usługi Azure Monitor.
 
 **Pyt.: Nie chcę dodać kontrolerów domeny do mojego obszaru roboczego usługi Log Analytics. Można nadal korzystać z rozwiązania stan replikacji usługi AD?**
-Odp.: Tak. Można ustawić wartość klucza rejestru, aby go włączyć. Zobacz Aby włączyć niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics.
+
+Odp.: Tak. Można ustawić wartość klucza rejestru, aby go włączyć. Zobacz [Włącz niebędącym kontrolerem domeny](#enable-non-domain-controller).
 
 **Pyt.: Co to jest nazwa procesu, który wykonuje zbierania danych?**
 Odp.: AdvisorAssessment.exe
@@ -147,9 +150,9 @@ Odp.: Uprawnieniami zwykłego użytkownika w usłudze Active Directory są wysta
 ## <a name="troubleshoot-data-collection-problems"></a>Rozwiązywanie problemów kolekcji danych
 Aby zbierać dane, pakiet rozwiązań stan replikacji usługi AD wymaga co najmniej jeden kontroler domeny do podłączenia do obszaru roboczego usługi Log Analytics. Dopiero po nawiązaniu połączenia z kontrolerem domeny, zostanie wyświetlony komunikat, który **jest wciąż są zbierane dane**.
 
-Jeśli potrzebujesz pomocy przy podłączaniu jeden z kontrolerów domeny, można wyświetlić dokumentację w [Windows łączenie komputerów do usługi Log Analytics](../../azure-monitor/platform/om-agents.md). Alternatywnie, jeśli kontroler domeny jest podłączony do istniejącego środowiska programu System Center Operations Manager, można wyświetlić dokumentację na [połączyć System Center Operations Manager do usługi Log Analytics](../../azure-monitor/platform/om-agents.md).
+Jeśli potrzebujesz pomocy przy podłączaniu jeden z kontrolerów domeny, można wyświetlić dokumentację w [Windows łączenie komputerów do usługi Azure Monitor](../../azure-monitor/platform/om-agents.md). Alternatywnie, jeśli kontroler domeny jest podłączony do istniejącego środowiska programu System Center Operations Manager, można wyświetlić dokumentację na [połączyć System Center Operations Manager do usługi Azure Monitor](../../azure-monitor/platform/om-agents.md).
 
-Jeśli nie chcesz połączyć wszystkich kontrolerów domeny, bezpośrednio do usługi Log Analytics lub System Center Operations Manager, zobacz umożliwiające niebędącym kontrolerem domeny do przesyłania danych do usługi AD do usługi Log Analytics.
+Jeśli nie chcesz połączyć dowolny z kontrolerami domeny bezpośrednio do usługi Azure Monitor lub System Center Operations Manager, zobacz [Włącz niebędącym kontrolerem domeny](#enable-non-domain-controller).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](../../azure-monitor/log-query/log-query-overview.md) Aby wyświetlić szczegółowe dane stanu replikacji usługi Active Directory.
+* Użyj [rejestrowania zapytań w usłudze Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) Aby wyświetlić szczegółowe dane stanu replikacji usługi Active Directory.

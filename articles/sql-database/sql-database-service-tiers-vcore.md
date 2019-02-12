@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 48180d4a9dcf7219815b5bc397647d7d97467cf7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: da43d1261b0ba9bd65998fbaa9fe9e364e686071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961792"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992130"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>warstwy usług (rdzeń wirtualny), korzyść użycia hybrydowego platformy Azure i migracji
 
@@ -29,7 +29,7 @@ Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie skalować
 4. generacji sprzętu oferuje znacznie więcej pamięci na rdzeń wirtualny. 5. generacji sprzętu pozwala jednak skalować zasoby obliczeniowe, które znacznie wyższa.
 
 > [!NOTE]
-> Aby uzyskać informacji na temat warstwy usług oparte na jednostkach DTU, zobacz [warstwy usług oparte na jednostkach DTU](sql-database-service-tiers-dtu.md). Aby dowiedzieć się, jak rozróżnianie warstwy usług oparte na jednostkach DTU i warstwy usług oparte na rdzeniach wirtualnych, zobacz [usługi Azure SQL Database, zakup modeli](sql-database-service-tiers.md).
+> Aby uzyskać informacji na temat warstwy usług oparte na jednostkach DTU, zobacz [warstwy usług oparte na jednostkach DTU](sql-database-service-tiers-dtu.md). Aby dowiedzieć się, jak rozróżnianie warstwy usług oparte na jednostkach DTU i warstwy usług oparte na rdzeniach wirtualnych, zobacz [usługi Azure SQL Database, zakup modeli](sql-database-purchase-models.md).
 
 ## <a name="service-tier-characteristics"></a>Właściwości warstwy usług
 

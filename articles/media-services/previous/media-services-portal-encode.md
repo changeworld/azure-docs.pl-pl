@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 958c53108c024cb349922a1bd10b2cdc2dba41a3
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 90a94612248dead5b57ebff67562dda083d8669f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50247286"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996138"
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard w witrynie Azure portal
 
@@ -28,7 +28,7 @@ ms.locfileid: "50247286"
 > 
 > 
 
-Jednym z najbardziej typowych scenariuszy, w pracy z usługą Azure Media Services jest dostarczanie adaptacyjną szybkością transmisji bitów klientom usługi przesyłania strumieniowego. Usługa Media Services obsługuje następujące technologie przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming i Dynamic Adaptive Streaming over HTTP (DASH, nazywany także MPEG-DASH). Do przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów, należy przygotować pliki wideo, najpierw należy zakodować źródłowy plik wideo jako pliki o różnych szybkościach transmisji bitów. Usługi Azure Media Encoder Standard umożliwia kodowanie filmów wideo.  
+Jednym z najbardziej typowych scenariuszy, w pracy z usługą Azure Media Services jest dostarczanie adaptacyjną szybkością transmisji bitów klientom usługi przesyłania strumieniowego. Usługa Media Services obsługuje następujące technologie przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: Apple HTTP Live Streaming (HLS), Microsoft Smooth Streaming i Dynamic Adaptive Streaming za pośrednictwem protokołu HTTP (DASH, również o nazwie MPEG-DASH). Do przesyłania strumieniowego z adaptacyjną szybkością transmisji bitów, należy przygotować pliki wideo, najpierw należy zakodować źródłowy plik wideo jako pliki o różnych szybkościach transmisji bitów. Usługi Azure Media Encoder Standard umożliwia kodowanie filmów wideo.  
 
 Usługa Media Services udostępnia funkcję dynamicznego tworzenia pakietów. Za pomocą funkcji dynamicznego tworzenia pakietów można dostarczać usługi każdego pliku MP4 o różnych szybkościach transmisji bitów w HLS, Smooth Streaming i MPEG-DASH, bez ponownego pakowania w tych formatach. Korzystając z funkcji dynamicznego tworzenia pakietów, można przechowywać i opłacać pliki w formacie jednego magazynu. Usługa Media Services skompiluje oraz udostępni właściwą odpowiedź na podstawie żądania klienta.
 

@@ -1,5 +1,5 @@
 ---
-title: Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal | Dokumentacja firmy Microsoft
+title: Wprowadzenie do usługi log analytics w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera samouczek do pisania zapytań, za pomocą usługi Log Analytics w witrynie Azure portal.
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 6ed8906066d66b6e16ec482a53137f9ca70ae9c7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: b9a5c78ff9d6c1e2c7194f5b92511e94dfafb058
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000047"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990500"
 ---
-# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal
+# <a name="get-started-with-azure-monitor-log-analytics"></a>Wprowadzenie do usługi log analytics w usłudze Azure Monitor
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym samouczku dowiesz się, jak pisać zapytania usługi Log Analytics za pomocą strony usługi Log Analytics w witrynie Azure portal (obecnie w wersji zapoznawczej). Jego nauczą Cię, jak do:
+W tym samouczku dowiesz się, jak usługa Azure Monitor log analytics w witrynie Azure portal umożliwia pisanie zapytań dzienników usługi Azure Monitor. Jego nauczą Cię, jak do:
 
 - Tworzenie prostych zapytań
 - Zrozumieć schemat danych
@@ -35,8 +35,8 @@ W tym samouczku dowiesz się, jak pisać zapytania usługi Log Analytics za pomo
 - Eksportowanie i udostępnianie zapytań
 
 
-## <a name="meet-the-log-analytics-page"></a>Spełnia strony usługi Log Analytics 
-Strona usługi Log Analytics jest w sieci web narzędzie służące do zapisu i wykonywania zapytań usługi Azure Log Analytics. Otwórz go, wybierając **dzienniki (wersja zapoznawcza)** w menu usługi Log Analytics. Rozpoczynają się one od nowego pustego zapytania.
+## <a name="meet-log-analytics"></a>Spełnia usługi log analytics
+Log analytics jest w sieci web narzędzie służące do zapisu i wykonywania zapytań dzienników usługi Azure Monitor. Otwórz go, wybierając **dzienniki** w menu usługi Azure Monitor. Rozpoczynają się one od nowego pustego zapytania.
 
 ![Strona główna](media/get-started-portal/homepage.png)
 
@@ -64,7 +64,7 @@ W tym przykładzie **wyszukiwania** obejmuje _zdarzeń_ tabeli, a wszystkie reko
 ## <a name="running-a-query"></a>Uruchamianie zapytania
 Uruchom zapytanie, klikając pozycję **Uruchom** przycisku lub naciskając **Shift + Enter**. Należy wziąć pod uwagę następujące informacje, które określają kodu, która będzie uruchamiana i danych, który jest zwracany:
 
-- Podziały wiersza: podziału pojedynczej sprawia, że zapytanie bardziej zrozumiały. Podziały wierszy wielu podzielić ją na oddzielne zapytania.
+- Podziały wierszy: Podział pojedynczego sprawia, że zapytanie bardziej zrozumiały. Podziały wierszy wielu podzielić ją na oddzielne zapytania.
 - Kursor: Umieść kursor gdzieś w zapytaniu do jego wykonania. Bieżące zapytanie jest uważana za kod, aż zostanie znaleziony pusty wiersz.
 - Zakres - przedział czasu czasu _ostatnich 24 godzinach_ jest ustawieniem domyślnym. Do używania innego zakresu, użyj selektora czasu, lub Dodaj godzinę jawne filtru zakresu do zapytania.
 
@@ -83,10 +83,10 @@ Od zebrania wszystko _zdarzeń_ tabeli.
 Event
 ```
 
-Na stronie usługi Log Analytics zakresów automatycznie wyniki według:
+Automatycznego logowania analytics zakresów wyniki według:
 
-- Zakres czasu: domyślnie zapytania są ograniczone do ostatnich 24 godzin.
-- Liczba wyników: wyniki są ograniczone do maksymalnie 10 000 rekordów.
+- Zakres czasu:  Domyślnie kwerendy są ograniczone do ostatnich 24 godzin.
+- Liczba wyników: Wyniki są ograniczone do maksymalnie 10 000 rekordów.
 
 To zapytanie jest bardzo ogólny i zwraca zbyt wiele wyników były przydatne. Możesz filtrować wyniki za pomocą elementów tabeli lub przez jawne dodanie filtru do zapytania. Filtrowanie wyników za pomocą elementów tabeli stosowana do istniejącego zestawu wyników, gdy filtr, aby samo zapytanie zwróci nowy wynik filtrowanego zestawu i w związku z tym można wygenerować bardziej precyzyjne wyniki.
 
@@ -121,7 +121,7 @@ Tabela wyników zawiera często wiele kolumn. Może okazać się, że niektóre 
 
 
 ## <a name="select-a-time-range"></a>Wybierz zakres czasu
-Domyślnie stosuje się na stronie usługi Log Analytics _ostatnich 24 godzinach_ zakres czasu. Aby użyć innego zakresu, wybierz inną wartość za pomocą selektora czasu, a następnie kliknij przycisk **Uruchom**. Oprócz wstępnie zdefiniowane wartości, można użyć _niestandardowego przedziału czasu_ możliwość dokonania wyboru bezwzględny zakres zapytania.
+Domyślnie stosuje usługa log analytics _ostatnich 24 godzinach_ zakres czasu. Aby użyć innego zakresu, wybierz inną wartość za pomocą selektora czasu, a następnie kliknij przycisk **Uruchom**. Oprócz wstępnie zdefiniowane wartości, można użyć _niestandardowego przedziału czasu_ możliwość dokonania wyboru bezwzględny zakres zapytania.
 
 ![Selektor godziny](media/get-started-portal/time-picker.png)
 
@@ -164,8 +164,8 @@ Aby przypiąć na diagramie lub tabeli na jedną z udostępnionych pulpitów naw
 
 Niektóre definiowaniu są stosowane do wykresu, gdy możesz przypiąć do pulpitu nawigacyjnego:
 
-- Tabela z kolumnami i wierszami: Aby przypiąć tabelę do pulpitu nawigacyjnego, musi mieć cztery lub mniejszą liczbę kolumn. Wyświetlanych jest tylko pierwszych wierszy siedem.
-- Czas ograniczania: zapytania są automatycznie ograniczone do ostatnich 14 dni.
+- Wierszy i kolumn tabeli: Aby przypiąć tabelę do pulpitu nawigacyjnego, musi on mieć cztery lub mniejszą liczbę kolumn. Wyświetlanych jest tylko pierwszych wierszy siedem.
+- Ograniczenie czasu: Zapytania są automatycznie ograniczone do ostatnich 14 dni.
 - Ograniczenie liczby bin: Jeśli możesz wyświetlić wykres, który ma wiele pojemniki dyskretnych, mniej pojemniki wypełnione automatycznie są grupowane w jednym _innych_ bin.
 
 ## <a name="save-queries"></a>Zapisywanie zapytań
@@ -183,12 +183,12 @@ Ikona Eksplorator zapytań, znajduje się w prawym górnym rogu obszaru. Ta list
 ![Eksplorator zapytań](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Eksportuj i Udostępnij jako łącze
-Na stronie usługi Log Analytics obsługuje kilka metod eksportowania:
+Usługa log analytics obsługuje kilka metod eksportowania:
 
-- Excel: Zapisać wyniki w postaci pliku CSV.
-- Usługa Power BI: Wyeksportować wyniki do power BI. Zobacz [danych importu usługi Azure Log Analytics w usłudze Power BI](../../azure-monitor/platform/powerbi.md) Aby uzyskać szczegółowe informacje.
-- Udostępnij link: samo zapytanie mogą być udostępniane jako łącze, które następnie mogą być wysyłane i wykonywane przez innych użytkowników, które mają dostęp do tego samego obszaru roboczego.
+- Excel: Zapisz wyniki jako plik CSV.
+- Power BI: Eksportuj wyniki do power BI. Zobacz [dane dziennika importu usługi Azure Monitor do usługi Power BI](../../azure-monitor/platform/powerbi.md) Aby uzyskać szczegółowe informacje.
+- Link udostępniania: Samo zapytanie może być udostępniane jako łącze, które następnie mogą być wysyłane i wykonywane przez innych użytkowników, które mają dostęp do tego samego obszaru roboczego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [Pisanie zapytań usługi Log Analytics](get-started-queries.md).
+- Dowiedz się więcej o [Pisanie zapytań dzienników w usłudze Azure Monitor](get-started-queries.md).

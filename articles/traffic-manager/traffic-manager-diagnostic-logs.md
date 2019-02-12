@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: abdc50d6d3d27ab7611994089345a997afc72cae
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d4d4420e2d38b1418a08ad1ca51dd0f75f3fe7b9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082532"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001106"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Włącz rejestrowanie diagnostyczne w usłudze Azure Traffic Manager
 
@@ -26,29 +26,31 @@ Dzienniki diagnostyczne platformy Azure Traffic Manager zapewniają wgląd w zac
 
 ## <a name="enable-diagnostic-logging"></a>Włączanie rejestrowania diagnostycznego
 
-Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, 6.13.1 lub nowszej. Możesz uruchomić `Get-Module -ListAvailable AzureRM` można odnaleźć zainstalowanej wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się do platformy Azure.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy moduł Azure PowerShell 1.0.0 lub nowszym. Możesz uruchomić `Get-Module -ListAvailable Az` można odnaleźć zainstalowanej wersji. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzAccount` zalogować się do platformy Azure.
 
 1. **Pobierz profil usługi Traffic Manager:**
 
-    Aby włączyć rejestrowanie diagnostyczne, potrzebny jest identyfikator profilu usługi Traffic Manager. Pobieranie profilu usługi Traffic Manager, który chcesz włączyć diagnostyki rejestrowanie dla za pomocą [polecenia Get-AzureRmTrafficManagerProfile](/powershell/module/AzureRM.TrafficManager/Get-AzureRmTrafficManagerProfile). Dane wyjściowe obejmują informacje o identyfikatorze profilu usługi Traffic Manager.
+    Aby włączyć rejestrowanie diagnostyczne, potrzebny jest identyfikator profilu usługi Traffic Manager. Pobieranie profilu usługi Traffic Manager, który chcesz włączyć diagnostyki rejestrowanie dla za pomocą [Get AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile). Dane wyjściowe obejmują informacje o identyfikatorze profilu usługi Traffic Manager.
 
     ```azurepowershell-interactive
-    Get-AzureRmTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
+    Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
     ```
 
 2. **Włączanie rejestrowania diagnostycznego dla profilu usługi Traffic Manager:**
 
-    Włączanie rejestrowania diagnostycznego dla profilu usługi Traffic Manager przy użyciu Identyfikatora uzyskanego w poprzednim kroku przy użyciu [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermdiagnosticsetting?view=latest). Poniższe polecenie zapisuje pełne dzienniki profilu usługi Traffic Manager, aby określone konto usługi Azure Storage. 
+    Włączanie rejestrowania diagnostycznego dla profilu usługi Traffic Manager przy użyciu Identyfikatora uzyskanego w poprzednim kroku przy użyciu [AzDiagnosticSetting zestaw](https://docs.microsoft.com/powershell/module/az.insights/set-azdiagnosticsetting?view=latest). Poniższe polecenie zapisuje pełne dzienniki profilu usługi Traffic Manager, aby określone konto usługi Azure Storage. 
 
       ```azurepowershell-interactive
-    Set-AzureRmDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
+    Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Sprawdź ustawienia diagnostyczne:**
 
-      Sprawdź ustawienia diagnostyczne dla profilu usługi Traffic Manager za pomocą [polecenia Get-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermdiagnosticsetting?view=latest). Następujące polecenie wyświetla kategorie, które są rejestrowane dla zasobu.
+      Sprawdź ustawienia diagnostyczne dla profilu usługi Traffic Manager za pomocą [Get AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.insights/get-azdiagnosticsetting?view=latest). Następujące polecenie wyświetla kategorie, które są rejestrowane dla zasobu.
 
      ```azurepowershell-interactive
-     Get-AzureRmDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
+     Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
      ```  
       Upewnij się, że wszystkie kategorie skojarzone z wyświetlaniem zasobów profilu usługi Traffic Manager jako włączone dziennika. Sprawdź także, że konto magazynu jest poprawnie ustawiona.
 
@@ -70,8 +72,8 @@ Poniższa tabela zawiera schemat dzienniki specyficzne dla zasobów profilu usł
 |||||
 |----|----|---|---|
 |**Nazwa pola**|**Typ pola**|**Definicja**|**Przykład**|
-|EndpointName|Ciąg|Nazwa punktu końcowego usługi Traffic Manager, których stan kondycji jest rejestrowany.|*myPrimaryEndpoint*|
-|Stan|Ciąg|Stan kondycji punktu końcowego usługi Traffic Manager, który został sondowany. Stan może być **się** lub **dół**.|**W górę**|
+|EndpointName|String|Nazwa punktu końcowego usługi Traffic Manager, których stan kondycji jest rejestrowany.|*myPrimaryEndpoint*|
+|Stan|String|Stan kondycji punktu końcowego usługi Traffic Manager, który został sondowany. Stan może być **się** lub **dół**.|**W górę**|
 |||||
 
 ## <a name="next-steps"></a>Kolejne kroki

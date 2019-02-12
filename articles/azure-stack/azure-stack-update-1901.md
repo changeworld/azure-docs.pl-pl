@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/09/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.openlocfilehash: cf86fafc1fcb0ffd6513abc9d02da16d1f00f22b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: MT
+ms.openlocfilehash: 45905b5180ac248394e52b1d03a034acc47e8dbc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978959"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993598"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizacja usługi Azure Stack 1901
 
@@ -68,6 +68,35 @@ Usługa Azure Stack poprawki dotyczą tylko usługi Azure Stack, zintegrowanych 
 Ta aktualizacja obejmuje następujące nowe funkcje i ulepszenia dla usługi Azure Stack:
 
 - Zarządzanych obrazów na włączenie usługi Azure Stack dysku można utworzyć obiektu obrazu zarządzanego uogólnionej maszyny wirtualnej (zarówno niezarządzane i zarządzane), można tworzyć tylko zarządzane maszyny wirtualne w przyszłości. Aby uzyskać więcej informacji, zobacz [stosu usługi Azure Managed Disks](user/azure-stack-managed-disk-considerations.md#managed-images).
+
+- **AzureRm 2.4.0**
+   * **AzureRm.Profile**  
+         Naprawienie usterki — `Import-AzureRmContext` poprawnie zdeserializować zapisane tokenu.  
+   * **AzureRm.Resources**  
+         Naprawienie usterki — `Get-AzureRmResource` przypadkiem zapytania insensitively według typów zasobów.  
+   * **Azure.Storage**  
+         AzureRm zbiorczy moduł zawiera teraz obsługuje już opublikowanej wersji 4.5.0 **interfejsu api w wersji 2017-07-29**.  
+   * **AzureRm.Storage**  
+         AzureRm zbiorczy moduł zawiera teraz obsługuje już opublikowanej wersji 5.0.4 **interfejsu api w wersji 2017-10-01**.  
+   * **AzureRm.Compute**  
+         Dodano parametr proste ustawia w `New-AzureRMVM` i `NewAzureRMVMSS`, `-ImageName` parametr obsługuje określanie obrazów użytkowników.  
+   * **AzureRm.Insights**  
+         AzureRm zbiorczy moduł zawiera teraz obsługuje już opublikowanej wersji 5.1.5 **interfejsu api w wersji 2018-01-01** dla metryk, definicje metryk typów zasobów.
+
+- **AzureStack 1.7.0** tej istotnej zmiany wersji. Aby uzyskać informacji na temat przełomowych zmianach zobacz https://aka.ms/azspshmigration170
+   * **Moduł Azs.Backup.Admin**  
+         Zmiana powodująca niezgodność: Kopia zapasowa zmieni się na tryb szyfrowania oparte na certyfikatach. Obsługa dla kluczy symetrycznych jest przestarzała.  
+   * **Moduł Azs.Fabric.Admin**  
+         `Get-AzsInfrastructureVolume` jest przestarzała. Nowe polecenie cmdlet `Get-AzsVolume`.  
+         `Get-AzsStorageSystem` jest przestarzała.  Użyj nowego nowe polecenie cmdlet `Get-AzsStorageSubSystem`.  
+         `Get-AzsStoragePool` jest przestarzała. `StorageSubSystem` Obiekt zawiera właściwości pojemności.  
+   * **Moduł Azs.Compute.Admin**  
+         Naprawienie usterki — `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: Wywoływanie `ConvertTo-PlatformImageObject` tylko w ścieżce sukces.  
+         Poprawka - `Add-AzsVmExtension`, `Get-AzsVmExtension`: Wywoływanie ConvertTo-VmExtensionObject tylko w ścieżce sukces.  
+   * **Moduł Azs.Storage.Admin**  
+         Naprawienie usterki — nowy limit przydziału magazynu używa ustawień domyślnych, jeśli nie podano.
+
+Aby przejrzeć odwołania do zaktualizowanych modułów, zobacz [odwołania do usługi Azure Stack modułu](https://docs.microsoft.com/powershell/azure/azure-stack/overview?view=azurestackps-1.6.0&viewFallbackFrom=azurestackps-1.7.0).
 
 ## <a name="fixed-issues"></a>Rozwiązane problemy
 

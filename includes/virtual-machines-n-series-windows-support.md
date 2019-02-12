@@ -5,19 +5,19 @@ services: virtual-machines-windows
 author: cynthn
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 11/27/2018
+ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 0276ccdec19e130da59cd215769d2ea17273f1c2
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5fb92c95463a5c1766b543dfc7b08a49250beda7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54084042"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56078608"
 ---
 ## <a name="supported-operating-systems-and-drivers"></a>Obsługiwane systemy operacyjne i sterowniki
 
-### <a name="nvidia-tesla-cuda-drivers"></a>Sterowniki NVIDIA Tesla (CUDA)
+### <a name="nvidia-tesla-cuda-drivers"></a>NVIDIA Tesla (CUDA) drivers
 
 Sterowniki NVIDIA Tesla (CUDA) dla NC, NCv2, NCv3, ND i NDv2 maszyny wirtualne z serii (opcjonalnie na potrzeby seria NV) są obsługiwane tylko w systemach operacyjnych wymienionych w poniższej tabeli. Linki pobierania sterownika są aktualne w momencie publikacji. Aby uzyskać najnowsze sterowniki, odwiedź witrynę internetową firmy [NVIDIA](http://www.nvidia.com/).
 
@@ -36,5 +36,5 @@ Microsoft dystrybuuje instalatory sterownik technologii NVIDIA GRID NV i maszyny
 
 | System operacyjny | Sterownik |
 | -------- |------------- |
-| Windows Server 2016<br/><br/>Windows 10 (maksymalnie wersji 1803) | [Siatka 7 (411.81)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
-| Windows Server 2012 R2 | [Siatka 7 (411.81)](https://go.microsoft.com/fwlink/?linkid=874184) (.exe)  |
+| Windows Server 2016<br/><br/>Windows 10 (maksymalnie wersji 1803) | [Siatka 7.1 (412.16)](https://go.microsoft.com/fwlink/?linkid=874181) (.exe) |
+| Windows Server 2012 R2 | [Siatka 7.1 (412.16)](https://go.microsoft.com/fwlink/?linkid=874184) (.exe)  |

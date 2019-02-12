@@ -4,7 +4,7 @@ description: W tym artykule opisano, jak Azure Media Services (AMS) umożliwia d
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 9c93fa4e-b4da-4774-ab6d-8b12b371631d
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 02/08/2019
 ms.author: willzhan;Mingfeiy;rajputam;Juliako
-ms.openlocfilehash: d269818e82261c51b63379bb41f69efdc21de18a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ae9a8873be3fbd3cead23e27e80931f78ea57eb4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191262"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992542"
 ---
-# <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Korzystanie z Axinom w celu dostarczania licencji Widevine do usługi Azure Media Services
+# <a name="using-axinom-to-deliver-widevine-licenses-to-azure-media-services"></a>Korzystanie z Axinom w celu dostarczania licencji Widevine do usługi Azure Media Services 
 > [!div class="op_single_selector"]
 > * [castLabs](media-services-castlabs-integration.md)
 > * [Axinom](media-services-axinom-integration.md)

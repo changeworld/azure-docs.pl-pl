@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 0c574aab722cdce91cd5a2569c14c4f1710483ed
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/08/2019
+ms.openlocfilehash: b39967c071b21978324f205eb62d305011b65fb6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965226"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995068"
 ---
 # <a name="create-readable-secondary-databases-using-active-geo-replication"></a>Utwórz odczytu pomocniczych baz danych przy użyciu aktywnej replikacji geograficznej
 
@@ -102,7 +102,7 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
 - **Można konfigurować obliczeń rozmiaru pomocniczej bazy danych**
 
-  Podstawowych i pomocniczych baz danych muszą mieć taką samą warstwę usług. Również zdecydowanie zaleca się że tej dodatkowej bazy danych jest tworzony przy użyciu tych samych obliczeń rozmiaru (jednostki Dtu lub rdzeni wirtualnych) jako podstawowy. Pomocniczego z niższym rozmiaru obliczeń jest narażony na opóźnienie replikacji zwiększona, potencjalne niedostępności lokacji dodatkowej, a w konsekwencji na ryzyko utraty danych znacznej po przejściu w tryb failover. Dzięki temu usługa opublikowane cel punktu odzyskiwania = nie można zagwarantować 5 s. Inne ryzyko to, że po włączeniu trybu failover aplikacji będzie mieć wpływ na wydajność ze względu na brak moc obliczeniową nową podstawową, dopóki nie zostanie uaktualniony na większy rozmiar obliczeń. Czas uaktualniania zależy od rozmiaru bazy danych. Ponadto obecnie takie uaktualnienia wymaga podstawowych i pomocniczych baz danych są w trybie online i, w związku z tym, nie można ukończyć zminimalizowaniu wpływu awarii. Jeśli zdecydujesz się utworzyć pomocniczej z niższym rozmiaru obliczeń, wykres wartość procentową operacji We/Wy dziennika w witrynie Azure portal oferuje dobry sposób, aby oszacować rozmiar minimalny obliczeń pomocniczy, który jest wymagany do obsługi obciążenia replikacji. Na przykład, jeśli podstawowej bazy danych jest P6 (1000 jednostek DTU) i jego procent we/wy dziennika to 50% pomocnicza musi wynosić co najmniej P4 (500 jednostek DTU). Możesz również pobrać dane we/wy dziennika przy użyciu [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) bazy danych widoków.  Aby uzyskać więcej informacji na temat rozmiarów wystąpień obliczeniowych bazy danych SQL, zobacz [co to są warstwy usługi bazy danych SQL](sql-database-service-tiers.md).
+  Podstawowych i pomocniczych baz danych muszą mieć taką samą warstwę usług. Również zdecydowanie zaleca się że tej dodatkowej bazy danych jest tworzony przy użyciu tych samych obliczeń rozmiaru (jednostki Dtu lub rdzeni wirtualnych) jako podstawowy. Pomocniczego z niższym rozmiaru obliczeń jest narażony na opóźnienie replikacji zwiększona, potencjalne niedostępności lokacji dodatkowej, a w konsekwencji na ryzyko utraty danych znacznej po przejściu w tryb failover. Dzięki temu usługa opublikowane cel punktu odzyskiwania = nie można zagwarantować 5 s. Inne ryzyko to, że po włączeniu trybu failover aplikacji będzie mieć wpływ na wydajność ze względu na brak moc obliczeniową nową podstawową, dopóki nie zostanie uaktualniony na większy rozmiar obliczeń. Czas uaktualniania zależy od rozmiaru bazy danych. Ponadto obecnie takie uaktualnienia wymaga podstawowych i pomocniczych baz danych są w trybie online i, w związku z tym, nie można ukończyć zminimalizowaniu wpływu awarii. Jeśli zdecydujesz się utworzyć pomocniczej z niższym rozmiaru obliczeń, wykres wartość procentową operacji We/Wy dziennika w witrynie Azure portal oferuje dobry sposób, aby oszacować rozmiar minimalny obliczeń pomocniczy, który jest wymagany do obsługi obciążenia replikacji. Na przykład, jeśli podstawowej bazy danych jest P6 (1000 jednostek DTU) i jego procent we/wy dziennika to 50% pomocnicza musi wynosić co najmniej P4 (500 jednostek DTU). Możesz również pobrać dane we/wy dziennika przy użyciu [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) lub [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) bazy danych widoków.  Aby uzyskać więcej informacji na temat rozmiarów wystąpień obliczeniowych bazy danych SQL, zobacz [co to są warstwy usługi bazy danych SQL](sql-database-purchase-models.md).
 
 - **Kontrolowane przez użytkownika trybu failover i powrotu po awarii**
 
@@ -130,7 +130,7 @@ Ze względu na duże opóźnienia sieci rozległej ciągłych kopii używa mecha
 
 Jak wspomniano wcześniej, aktywną replikację geograficzną można również zarządzać programowo przy użyciu programu Azure PowerShell i interfejsu API REST. W poniższych tabelach opisano zestaw poleceń dostępnych. Aktywna replikacja geograficzna zawiera zestaw interfejsów API usługi Azure Resource Manager do zarządzania, w tym [interfejs API REST usługi Azure SQL Database](https://docs.microsoft.com/rest/api/sql/) i [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). Te interfejsy API korzystają z grup zasobów i obsługuje zabezpieczenia oparte na rolach (RBAC). Aby uzyskać więcej informacji o tym, jak można zaimplementować ról dostępu, zobacz [kontroli dostępu](../role-based-access-control/overview.md).
 
-### <a name="t-sql-manage-failover-of-standalone-and-pooled-databases"></a>T-SQL: Zarządzaj trybem failover autonomiczne i bazy danych w puli
+### <a name="t-sql-manage-failover-of-single-and-pooled-databases"></a>T-SQL: Zarządzaj trybem failover jednym i puli baz danych
 
 > [!IMPORTANT]
 > Te polecenia języka Transact-SQL tylko dotyczą aktywnej replikacji geograficznej i nie są stosowane do grupy trybu failover. Jako takie również nie mają zastosowania do wystąpienia zarządzanego, ponieważ obsługują one tylko grupy trybu failover.
@@ -146,7 +146,7 @@ Jak wspomniano wcześniej, aktywną replikację geograficzną można również z
 | [sp_wait_for_database_copy_sync](/sql/relational-databases/system-stored-procedures/active-geo-replication-sp-wait-for-database-copy-sync) |powoduje, że aplikacja poczekaj, aż wszystkie zatwierdzone transakcje są replikowane i potwierdzone przez aktywnej pomocniczej bazy danych. |
 |  | |
 
-### <a name="powershell-manage-failover-of-standalone-and-pooled-databases"></a>Program PowerShell: Zarządzaj trybem failover autonomiczne i bazy danych w puli
+### <a name="powershell-manage-failover-of-single-and-pooled-databases"></a>Program PowerShell: Zarządzaj trybem failover jednym i puli baz danych
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
@@ -160,7 +160,7 @@ Jak wspomniano wcześniej, aktywną replikację geograficzną można również z
 > [!IMPORTANT]
 > Przykładowe skrypty można zobaczyć [Konfiguruj i pracy awaryjnej pojedynczej bazy danych przy użyciu aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) i [Konfiguruj i pracy awaryjnej bazy danych w puli przy użyciu aktywnej replikacji geograficznej](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md).
 
-### <a name="rest-api-manage-failover-of-standalone-and-pooled-databases"></a>INTERFEJS API REST: Zarządzaj trybem failover autonomiczne i bazy danych w puli
+### <a name="rest-api-manage-failover-of-single-and-pooled-databases"></a>INTERFEJS API REST: Zarządzaj trybem failover jednym i puli baz danych
 
 | Interfejs API | Opis |
 | --- | --- |

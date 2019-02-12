@@ -1,10 +1,10 @@
 ---
-title: Konfigurowanie usługi Azure Media Services dane telemetryczne z POZOSTAŁĄ | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono sposób użycia telemetrii usługi Azure Media Services przy użyciu interfejsu API REST...
+title: Konfigurowanie telemetrii usługi Azure Media Services za pomocą architektury REST | Dokumentacja firmy Microsoft
+description: W tym artykule pokazano, jak korzystanie z telemetrii usługi Azure Media Services przy użyciu interfejsu API REST...
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e1a314fb-cc05-4a82-a41b-d1c9888aab09
 ms.service: media-services
@@ -12,39 +12,39 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: ceb2eafdb3df0d24a98d0d3b4afc7d1d9424b4de
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 4b2028b16c395b770e935fdba47dc0e965284fc2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790356"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993676"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurowanie usługi Azure Media Services telemetrii REST
+# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Konfigurowanie telemetrii usługi Azure Media Services za pomocą architektury REST
 
 W tym temacie opisano ogólne kroki, które może wykonać podczas konfigurowania telemetrii usługi Azure Media Services (AMS) przy użyciu interfejsu API REST. 
 
 >[!NOTE]
->Aby uzyskać szczegółowy opis co to jest AMS telemetrii oraz sposób pobrać go, zobacz [omówienie](media-services-telemetry-overview.md) tematu.
+>Aby uzyskać szczegółowy opis co to jest telemetrii usługi AMS i jak go używać, zobacz [Przegląd](media-services-telemetry-overview.md) tematu.
 
 Czynności opisane w tym temacie są następujące:
 
 - Uzyskiwanie konta magazynu skojarzone z kontem usługi Media Services
-- Pobieranie punktów końcowych powiadomienia
-- Tworzenie punktu końcowego powiadomienia do monitorowania. 
+- Pobieranie punktów końcowych powiadomień
+- Tworzenie punktu końcowego powiadomienia dotyczące monitorowania. 
 
-    Aby utworzyć punkt końcowy powiadomienia, ustaw EndPointType AzureTable (2) i endPontAddress ustawić tabeli magazynu (na przykład https://telemetryvalidationstore.table.core.windows.net/).
+    Aby utworzyć punkt końcowy powiadomienia, ustaw EndPointType AzureTable (2) i endPontAddress równa tabeli magazynu (na przykład https://telemetryvalidationstore.table.core.windows.net/).
   
-- Uzyskiwanie konfiguracji monitorowania
+- Pobieranie konfiguracji monitorowania
 
-    Tworzenie konfiguracji monitorowania ustawienia usługi, które chcesz monitorować. Nie więcej niż jednego ustawienia konfiguracji monitorowania jest dozwolone. 
+    Tworzenie konfiguracji monitorowania ustawienia usług, które chcesz monitorować. Nie więcej niż jednej konfiguracji ustawień monitorowania jest dozwolone. 
 
-- Dodawanie konfiguracji monitorowania
+- Dodaj konfigurację monitorowania
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Pobierz konta magazynu skojarzone z kontem usługi Media Services
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Utwórz konto magazynu skojarzone z kontem usługi Media Services
 
 ### <a name="request"></a>Żądanie
 
@@ -72,7 +72,7 @@ Czynności opisane w tym temacie są następujące:
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-the-notification-endpoints"></a>Pobierz punktów końcowych powiadomienia
+## <a name="get-the-notification-endpoints"></a>Pobieranie punktów końcowych powiadomień
 
 ### <a name="request"></a>Żądanie
 
@@ -105,7 +105,7 @@ Czynności opisane w tym temacie są następujące:
         }
     }
  
-## <a name="create-a-notification-endpoint-for-monitoring"></a>Tworzenie punktu końcowego powiadomienia do monitorowania
+## <a name="create-a-notification-endpoint-for-monitoring"></a>Tworzenie punktu końcowego powiadomienia dotyczące monitorowania
 
 ### <a name="request"></a>Żądanie
 
@@ -147,7 +147,7 @@ Czynności opisane w tym temacie są następujące:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-the-monitoring-configurations"></a>Uzyskiwanie konfiguracji monitorowania
+## <a name="get-the-monitoring-configurations"></a>Pobieranie konfiguracji monitorowania
 
 ### <a name="request"></a>Żądanie
 
@@ -177,7 +177,7 @@ Czynności opisane w tym temacie są następujące:
     
     {"d":{"results":[]}}
 
-## <a name="add-a-monitoring-configuration"></a>Dodawanie konfiguracji monitorowania
+## <a name="add-a-monitoring-configuration"></a>Dodaj konfigurację monitorowania
 
 ### <a name="request"></a>Żądanie
 
@@ -220,7 +220,7 @@ Czynności opisane w tym temacie są następujące:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.MonitoringConfiguration"},"Id":"nb:mcid:UUID:1a8931ae-799f-45fd-8aeb-9641740295c2","NotificationEndPointId":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Created":"2015-12-02T05:10:43.7680396Z","LastModified":"2015-12-02T05:10:43.7680396Z","Settings":{"__metadata":{"type":"Collection(Microsoft.Cloud.Media.Vod.Rest.Data.Models.ComponentMonitoringSettings)"},"results":[{"Component":"Channel","Level":"Normal"},{"Component":"StreamingEndpoint","Level":"Disabled"}]}}}
 
-## <a name="stop-telemetry"></a>Zatrzymaj telemetrii
+## <a name="stop-telemetry"></a>Zatrzymać przesyłanie telemetrii
 
 ### <a name="request"></a>Żądanie
 
@@ -233,9 +233,9 @@ Czynności opisane w tym temacie są następujące:
     Content-Type: application/json; charset=utf-8
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-## <a name="consuming-telemetry-information"></a>Wykorzystywanie informacji telemetrii
+## <a name="consuming-telemetry-information"></a>Wykorzystywanie informacji telemetrycznych
 
-Informacji o odbierającą telemetrii, zobacz [to](media-services-telemetry-overview.md) tematu.
+Informacji dotyczących odbierająca komunikaty telemetryczne, zobacz [to](media-services-telemetry-overview.md) tematu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -12,12 +12,12 @@ ms.author: vainolo
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 26517e55685de6e1fd9174bb1892b877f0e263d6
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 26e131ef598feae099e789bc51909c4eb249bd79
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895656"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002019"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -125,6 +125,7 @@ W przypadku wybrania tylko zapisywanie dzienników inspekcji usługi Log Analyti
 W przypadku wybrania tylko zapisywanie dzienników inspekcji w Centrum zdarzeń:
 
 - Korzystanie z danych dzienników inspekcji z Centrum zdarzeń, należy skonfigurować strumienia na korzystanie ze zdarzeń i zapisywać je do obiektu docelowego. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+- Dzienniki inspekcji w Centrum zdarzeń są przechwytywane w treści [Apache Avro](http://avro.apache.org/) zdarzeń i zmagazynowane przy użyciu formatu JSON formatowanie przy użyciu kodowania UTF-8. Aby odczytać dzienniki inspekcji, możesz użyć [narzędzia Avro](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-capture-overview#use-avro-tools) lub podobne narzędzia, które przetwarzają tego formatu.
 
 Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage, istnieje kilka metod, których można użyć, aby wyświetlić dzienniki:
 

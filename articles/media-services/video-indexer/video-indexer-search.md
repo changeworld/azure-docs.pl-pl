@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bbe26b19f9467034a4612ac1b40124122bee7f0c
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: d2c2e87b3dade68dc311aa38743c11a60a69f68b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292337"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004557"
 ---
 # <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
 
@@ -26,7 +26,6 @@ Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkr
     W poniższym przykładzie przeszukaliśmy dla wszystkich filmów wideo utworzone przez Channel9 ze Scottem Hanselmanem.
 
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search01.png)
-    
 3. Wyszukaj podsumowane szczegółowe informacje dotyczące filmu wideo.
 
     Możesz wyszukiwać w filmie wideo, klikając **Odtwórz** film wideo. Następnie możesz przeszukiwać wideo, wybierając **wyszukiwania** kartę. Na przykład przeszukaliśmy dla wszystkich miejsc, w których jest używany tekst "identity protection". 
@@ -34,8 +33,6 @@ Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkr
     ![Wyszukiwanie](./media/video-indexer-search/video-indexer-search02.png)
 
     Po kliknięciu jednego z wyników, gracz oferuje do tej pory w trakcie filmu wideo. W aplikacji, można osiągnąć player/szczegółowe dane i synchronizacja. Aby uzyskać więcej informacji, zobacz [osadzić Video Indexer widżetów w aplikacji](video-indexer-embed-widgets.md). 
-
-    
 4. Wyszukaj szczegółowy podział filmu wideo.
 
     Jeśli chcesz tworzyć własne podział oparty na film wideo, który można znaleźć, naciśnij **Edytuj** przycisku. Na stronie zostanie wyświetlone pełne zestawienie dotyczące tego pliku wideo. Możesz przeszukiwać podział do pokazania tylko wiersze, które Cię interesuje. Aby uzyskać więcej informacji, zobacz [wyświetlanie i edytowanie informacji szczegółowych indeksatora wideo](video-indexer-view-edit.md).

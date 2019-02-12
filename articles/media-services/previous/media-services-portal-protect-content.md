@@ -4,7 +4,7 @@ description: W tym artykule przedstawiono sposób konfigurowania zasad ochrony z
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 270b3272-7411-40a9-ad42-5acdbba31154
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: c46faf2298ebaac4f40fb1d18cbfca83076e0d4f
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: dc5439c98b5abc69b6cb1ba144e015426bb887ce
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423554"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996962"
 ---
 # <a name="configure-content-protection-policies-by-using-the-azure-portal"></a>Konfigurowanie zasad ochrony zawartości przy użyciu witryny Azure portal
  Usługa Azure Media Services można zabezpieczyć multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services umożliwia dostarczanie zawartości dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES) przy użyciu kluczy szyfrowania 128-bitowego. Ponadto można korzystania z szyfrowania common encryption (CENC) przy użyciu technologii PlayReady i Widevine zarządzania prawami cyfrowymi (DRM) i technologii FairPlay firmy Apple. 
@@ -93,7 +93,7 @@ Aby wyświetlić wszystkie elementy zawartości, wybierz **ustawienia** > **zaso
 Po wybraniu **Szyfruj** dla zasobu, zobacz jedną z dwóch opcji: **AES** lub **DRM**. 
 
 #### <a name="aes"></a>AES
-AES, wyczyść, szyfrowanie klucza jest włączone na wszystkich protokołów przesyłania strumieniowego: Smooth Streaming, HLS i MPEG-DASH.
+AES jest jasne, że szyfrowanie klucza jest włączone na wszystkich protokołów przesyłania strumieniowego: Smooth Streaming, HLS i MPEG-DASH.
 
 ![Konfiguracja szyfrowania](./media/media-services-portal-content-protection/media-services-content-protection008.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Zaawansowane zapytania w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek dotyczący korzystania z portalu usługi analiza pisać zapytania w usłudze Log Analytics.
+title: Zaawansowane zapytania w usłudze Azure usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera samouczek dotyczący korzystania z portalu usługi analiza pisać zapytania w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: b8441d72f85c2160cf756df37722fa6037441236
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4e5574fa5a615e43d94069a03716fa290b957342
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191550"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993218"
 ---
-# <a name="writing-advanced-queries-in-log-analytics"></a>Zapisywanie zaawansowanych zapytań w usłudze Log Analytics
+# <a name="writing-advanced-queries-in-azure-monitor"></a>Zapisywanie zaawansowanych zapytań w usłudze Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
+> Należy wykonać [wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -130,7 +130,7 @@ SecurityEvent
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dla przy użyciu języka zapytań usługi Log Analytics:
+Zobacz inne lekcje dotyczące korzystania z [język zapytań w Eksploratorze danych](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
 
 - [Operacje na ciągach](string-operations.md)
 - [Operacje daty i godziny](datetime-operations.md)

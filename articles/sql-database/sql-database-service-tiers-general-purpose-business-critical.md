@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 3521f910ded2e24de9cfa7b1aa1d635843527ef5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2a9b84b20ab1480c9b0222980cb36c40e8017973
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878820"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989318"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Warstwy usługi w usłudze Azure SQL Database
 
@@ -30,7 +30,7 @@ Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych prog
 W tym artykule omówiono zagadnienia magazynu i kopii zapasowych dla warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy w modelu zakupu opartego na rdzeniach wirtualnych.
 
 > [!NOTE]
-> Szczegółowe informacje na temat warstwy usług na dużą skalę w modelu zakupu opartego na rdzeniach wirtualnych, [warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md). Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-service-tiers.md).
+> Szczegółowe informacje na temat warstwy usług na dużą skalę w modelu zakupu opartego na rdzeniach wirtualnych, [warstwy usługi w Hiperskali](sql-database-service-tier-hyperscale.md). Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-purchase-models.md).
 
 ## <a name="data-and-log-storage"></a>Magazyn danych i dziennika
 

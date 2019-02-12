@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 3b49ac0a38c18ab19d991e4f07350c56db6a172f
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3a21fe180dca4cc0b678624e775b67c3868f57ab
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250391"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992361"
 ---
-# <a name="h264-multiple-bitrate-1080p-audio-51"></a>H264 Wiele transmisji bitów 1080p Audio 5.1
+# <a name="h264-multiple-bitrate-1080p-audio-51-legacy"></a>Różne szybkości transmisji bitów H264 1080p Audio 5.1 (starsza wersja)
+
 `Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
   
  W tym temacie przedstawiono `H264 Multiple Bitrate 1080p Audio 5.1` wstępnie ustawione w formacie XML i JSON.  
@@ -29,7 +30,7 @@ ms.locfileid: "50250391"
  To ustawienie wstępne tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 6000 KB/s do 400 KB/s i audio AAC 5.1. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów, próbkowanie wskaźnik, itp., to ustawień, sprawdź zdefiniowane poniżej w formacie JSON lub XML. Objaśnienia dotyczące oznacza jaki każdy element i prawidłowe wartości dla każdego elementu, zobacz [schemat usługi Media Encoder Standard](media-services-mes-schema.md).  
   
 > [!NOTE]
->  Podczas modyfikowania `Width` i `Height` wartości wielu warstw, upewnij się, że współczynnik proporcji pozostanie spójna. Na przykład: 1920 x 1080 pikseli, 1280 x 720, 1080 x 576 640 x 360. Nie należy używać kombinacji proporcji, takich jak: 1280 x 720, 720 x 480, 640 x 360.  
+>  Podczas modyfikowania `Width` i `Height` wartości wielu warstw, upewnij się, że współczynnik proporcji pozostanie spójna. Na przykład: 1920x1080, 1280x720, 1080x576, 640x360. Nie należy używać kombinacji proporcji, takich jak: 1280x720, 720x480, 640x360.  
   
  XML  
   

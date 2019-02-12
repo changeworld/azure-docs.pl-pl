@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie i analizowanie danych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano portale, które można używać w przeszukiwania dzienników w usłudze Azure Log Analytics można tworzyć i edytować.
+title: Wyświetlanie i analizowanie danych dzienników w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: W tym artykule opisano używanie usługi Log Analytics w witrynie Azure portal do tworzenia i edytowania zapytań dzienników w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -10,22 +10,19 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 12/22/2018
 ms.author: bwren
-ms.openlocfilehash: 9a5472a6dfc944eb793e863704897c92b1a7572e
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9567f8a6b581d7c246ebaa8eb8d72ad201bf2641
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183356"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990415"
 ---
-# <a name="viewing-and-analyzing-data-in-log-analytics"></a>Wyświetlanie i analizowanie danych w usłudze Log Analytics
-Dostępne są dwie opcje dostępne w witrynie Azure portal do analizowania danych przechowywanych w usłudze Log analytics oraz do tworzenia zapytań dotyczących analizy ad-hoc. Zapytania, które możesz utworzyć przy użyciu tych portali może służyć do innych funkcji, takich jak alerty i pulpity nawigacyjne.
+# <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Wyświetlanie i analizowanie danych dzienników w usłudze Azure Monitor
+Log Analytics jest podstawowym umożliwiający pracę z danymi dzienników i tworzenie zapytań w usłudze Azure Monitor. Otwórz program Log Analytics z **dzienniki** w **usługi Azure Monitor** menu. Możesz zapoznaj się z wprowadzeniem do tego portalu i sprawdzić jego funkcje na [Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal](get-started-portal.md).
 
-## <a name="log-analytics-page"></a>Strona analizy dziennika
-Otwórz stronę usługi Log Analytics z **dzienniki** w menu usługi Log Analytics. Jest to nowe środowisko pracy z danymi dzienników i tworzenie zapytań. Możesz zapoznaj się z wprowadzeniem do tego portalu i sprawdzić jego funkcje na [wprowadzenie stronie Log Analytics w witrynie Azure portal](../../azure-monitor/log-query/get-started-portal.md).
-
-Na stronie usługi Log Analytics udostępnia następujące ulepszenia w porównaniu z [wyszukiwanie w dzienniku (wersja klasyczna)](#log-search-classic) środowiska.
+Usługa log Analytics oferuje następujące funkcje do pracy z zapytaniami dziennika.
 
 * Wiele kart — Utwórz osobne karty, aby pracować z wieloma zapytaniami.
 * Rozbudowane wizualizacje — różne opcje wykresów.
@@ -38,14 +35,14 @@ Na stronie usługi Log Analytics udostępnia następujące ulepszenia w porówna
 * Wybór kolumn — sortowanie i grupowanie kolumn w wynikach zapytania.
 
 > [!NOTE]
-> Strona usługi Log Analytics ma taką samą funkcjonalność jak portalu analizy zaawansowanej, czyli narzędzie zewnętrzne poza witryny Azure portal. Portalu analizy zaawansowanej jest nadal dostępna, ale linki i inne odwołania do niego w witrynie Azure portal są zastępowane przy użyciu tej nowej strony.
+> Usługa log Analytics ma taką samą funkcjonalność jak portalu analizy zaawansowanej, czyli narzędzie zewnętrzne poza witryny Azure portal. Portalu analizy zaawansowanej jest nadal dostępna, ale linki i inne odwołania do niego w witrynie Azure portal są zastępowane przy użyciu tej nowej strony.
 
-![Portal analizy zaawansowanej](media/portals/advanced-analytics-portal.png)
+![Log Analytics](media/portals/log-analytics.png)
 
 ### <a name="resource-logs"></a>Dzienniki zasobów
-Nowe środowisko usługi Log Analytics jest zintegrowana z różnymi zasobami platformy Azure, takie jak maszyny wirtualne. Oznacza to, że można otworzyć stronę usługi Log Analytics, bezpośrednio za pomocą menu monitorowania zasobów bez przełączania się do usługi Azure Monitor lub usługi Log Analytics i utraty kontekstu zasobu. **Dzienniki** nie jeszcze została włączona dla wszystkich zasobów platformy Azure, ale zaczną się pojawiać w menu portalu dla różnych zasobów typów.
+Usługa log Analytics integruje się z różnymi zasobami platformy Azure, takie jak maszyny wirtualne. Oznacza to, możesz otworzyć usługi Log Analytics bezpośrednio za pomocą menu monitorowania zasobów, bez konieczności przełączania do usługi Azure Monitor i utraty kontekstu zasobu. **Dzienniki** nie jeszcze została włączona dla wszystkich zasobów platformy Azure, ale zaczną się pojawiać w menu portalu dla różnych zasobów typów.
 
-Otwieranie usługi Log Analytics z określonego zasobu, jest objęty zakresem automatycznie do rejestrowania rekordów tylko do tego zasobu.   Jeśli chcesz napisać zapytanie, które zawiera inne rekordy, czy należy ją otworzyć z menu usługi Log Analytics lub Azure Monitor.
+Otwieranie usługi Log Analytics z określonego zasobu, jest objęty zakresem automatycznie do rejestrowania rekordów tylko do tego zasobu.   Jeśli chcesz napisać zapytanie, które zawiera inne rekordy, czy należy ją otworzyć z menu usługi Azure Monitor.
 
 Następujące opcje nie są jeszcze dostępne za pośrednictwem widoku zasobów usługi Log Analytics:
 
@@ -56,7 +53,7 @@ Następujące opcje nie są jeszcze dostępne za pośrednictwem widoku zasobów 
 
 
 ### <a name="firewall-requirements"></a>Wymagania dotyczące zapory
-Przeglądarka wymaga dostępu do następujących adresów, aby uzyskać dostęp do strony usługi Log Analytics i portalu analizy zaawansowanej.  Jeśli przeglądarka jest dostęp do witryny Azure portal za pośrednictwem zapory, należy włączyć dostęp do tych adresów.
+Przeglądarka wymaga dostępu do następujących adresów do dostępu do usługi Log Analytics.  Jeśli przeglądarka jest dostęp do witryny Azure portal za pośrednictwem zapory, należy włączyć dostęp do tych adresów.
 
 | Identyfikator URI | Adres IP | Porty |
 |:---|:---|:---|
@@ -66,15 +63,15 @@ Przeglądarka wymaga dostępu do następujących adresów, aby uzyskać dostęp 
 
 
 ## <a name="log-search-classic"></a>Wyszukiwanie w dzienniku (wersja klasyczna)
-Otwórz stronę wyszukiwania dziennika z **dzienniki (wersja klasyczna)** w menu usługi Log Analytics lub z **usługi Log Analytics** w menu usługi Azure Monitor. Jest to strona programu klasycznego używane do pracy za pomocą zapytań usługi Log Analytics, które nie ma dodatkowych funkcji [strony Log Analytics](#log-analytics-page) wymienionych powyżej.
+Przeszukiwanie dzienników to starszego środowiska użytkownika w witrynie Azure portal do odpytywania i analizowania danych dziennika w usłudze Azure Monitor. Będzie zostanie wkrótce wycofany, ale obecnie jest nadal dostępna. Otworzyć wyszukiwanie w dzienniku z **dzienniki (wersja klasyczna)** w menu usługi Log Analytics.
 
 
 
-![Strona wyszukiwania dziennika](media/portals/log-search-portal.png)
+![Przeszukiwanie dzienników](media/portals/log-search-portal.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przeprowadzenie [samouczku, korzystając z wyszukiwania w dziennikach](../../azure-monitor/learn/tutorial-viewdata.md) dowiesz się, jak tworzyć zapytania przy użyciu języka zapytań
-- Przeprowadzenie [lekcja przy użyciu portalu analizy zaawansowanej](../../azure-monitor/log-query/get-started-portal.md) zapewniającą taki sam sposób jak strona usługi Log Analytics.
+- Przeprowadzenie [samouczku, korzystając z usługi Log Analytics](../../azure-monitor/log-query/get-started-portal.md).
+- Przeprowadzenie [samouczku, korzystając z wyszukiwania w dziennikach](../../azure-monitor/learn/tutorial-viewdata.md).
 

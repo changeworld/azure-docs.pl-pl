@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 11829256451990401b6de4bcf62f2b0b51010832
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: d2568a4dfc4fefe9628fc63dcc0526b0876fde00
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241156"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993881"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Najlepszych rozwiązań dotyczących infrastruktury usługi Backup
 
@@ -43,9 +43,18 @@ Ciąg Universal Naming Convention (UNC) dla ścieżki, należy użyć w pełni k
 
 ### <a name="encryption"></a>Szyfrowanie
 
+#### <a name="version-1901-and-newer"></a>Wersja 1901 i nowszych
+
+Certyfikat szyfrowania jest używany do szyfrowania danych kopii zapasowej, które są eksportowane do magazynu zewnętrznego. Certyfikat może być certyfikat z podpisem własnym, ponieważ certyfikat jest używana wyłącznie do transportu kluczy. Dotyczą New-SelfSignedCertificate, aby uzyskać więcej informacji na temat tworzenia certyfikatu.  
+Klucz musi być przechowywany w bezpiecznym miejscu (na przykład globalnej certyfikat usługi Azure Key Vault). Format CER certyfikatu jest używany do szyfrowania danych. PFX format musi służyć podczas wdrażania odzyskiwania chmury Azure Stack można odszyfrować danych kopii zapasowej.
+
+![Przechowywane certyfikat w bezpiecznym miejscu.](media/azure-stack-backup/azure-stack-backup-encryption-store-cert.png)
+
+#### <a name="1811-and-older"></a>1811 i starsze
+
 Klucz szyfrowania jest używany do szyfrowania danych kopii zapasowej, które są eksportowane do magazynu zewnętrznego. Klucz jest generowany jako część [opcja włączania kopii zapasowych dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
 
-Klucz musi być przechowywany w bezpiecznym miejscu (na przykład, publiczne usługi Azure Key Vault klucz tajny). Ten klucz musi używany podczas ponownego wdrażania usługi Azure Stack. 
+Klucz musi być przechowywany w bezpiecznym miejscu (na przykład globalnej usługi Azure Key Vault klucz tajny). Ten klucz musi używany podczas ponownego wdrażania usługi Azure Stack. 
 
 ![Przechowywany klucz bezpiecznej lokalizacji.](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 
@@ -95,6 +104,6 @@ System obsługuje następujące alerty:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przejrzyj materiał referencyjny dla [infrastruktura kopii zapasowej usługa](azure-stack-backup-reference.md).
+Przejrzyj materiał referencyjny dla [infrastruktury usługi Backup](azure-stack-backup-reference.md)
 
-Włącz [infrastruktura kopii zapasowej usługa](azure-stack-backup-enable-backup-console.md).
+Włącz [infrastruktury usługi kopii zapasowej](azure-stack-backup-enable-backup-console.md)

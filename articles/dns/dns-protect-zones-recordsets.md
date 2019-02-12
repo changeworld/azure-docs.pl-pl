@@ -7,14 +7,16 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: victorh
-ms.openlocfilehash: 137d8e1c1477d5b9c88cecc39316d62a79a4cab8
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9340a43eb88b4be03c0f0ccc0d07a32f22a9001c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873931"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997383"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>Jak chronić strefy i rekordy DNS
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Strefy i rekordy DNS są zasoby o znaczeniu krytycznym. Usunięcie strefy DNS lub nawet tylko jeden rekord DNS może spowodować awarię łączna liczba usług.  Dlatego ważne jest krytyczne strefy i rekordy DNS są chronione przed nieautoryzowanych lub przypadkowych zmian.
 
@@ -38,7 +40,7 @@ Uprawnienia można też [przyznać za pomocą programu Azure PowerShell](../role
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to all zones in a resource group
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>"
 ```
 
 Równoważne polecenia jest także [dostępne za pośrednictwem wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md):
@@ -62,7 +64,7 @@ Uprawnienia można też [przyznać za pomocą programu Azure PowerShell](../role
 
 ```azurepowershell
 # Grant 'DNS Zone Contributor' permissions to a specific zone
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -ResourceGroupName "<resource group name>" -ResourceName "<zone name>" -ResourceType Microsoft.Network/DNSZones
 ```
 
 Równoważne polecenia jest także [dostępne za pośrednictwem wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md):
@@ -84,7 +86,7 @@ Zestaw rekordów poziomu uprawnień RBAC można też [przyznać za pomocą progr
 
 ```azurepowershell
 # Grant permissions to a specific record set
-New-AzureRmRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
+New-AzRoleAssignment -SignInName "<user email address>" -RoleDefinitionName "DNS Zone Contributor" -Scope "/subscriptions/<subscription id>/resourceGroups/<resource group name>/providers/Microsoft.Network/dnszones/<zone name>/<record type>/<record name>"
 ```
 
 Równoważne polecenia jest także [dostępne za pośrednictwem wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md):
@@ -140,7 +142,7 @@ Definicji ról niestandardowych obecnie nie można zdefiniować za pośrednictwe
 
 ```azurepowershell
 # Create new role definition based on input file
-New-AzureRmRoleDefinition -InputFile <file path>
+New-AzRoleDefinition -InputFile <file path>
 ```
 
 Jego można również utworzyć za pomocą wiersza polecenia platformy Azure:
@@ -172,7 +174,7 @@ Poziomu strefy zasób, który blokad można również utworzyć za pomocą progr
 
 ```azurepowershell
 # Lock a DNS zone
-New-AzureRmResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
+New-AzResourceLock -LockLevel <lock level> -LockName <lock name> -ResourceName <zone name> -ResourceType Microsoft.Network/DNSZones -ResourceGroupName <resource group name>
 ```
 
 Konfigurowanie blokad zasobów platformy Azure nie jest obecnie obsługiwane za pośrednictwem wiersza polecenia platformy Azure.
@@ -188,7 +190,7 @@ Blokad zasobów na poziomie zestawu rekordów można obecnie tylko można skonfi
 
 ```azurepowershell
 # Lock a DNS record set
-New-AzureRmResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel <lock level> -LockName "<lock name>" -ResourceName "<zone name>/<record set name>" -ResourceType "Microsoft.Network/DNSZones/<record type>" -ResourceGroupName "<resource group name>"
 ```
 
 ### <a name="protecting-against-zone-deletion"></a>Ochrona przed usunięciem strefy
@@ -203,7 +205,7 @@ Następujące polecenie programu PowerShell tworzy CanNotDelete blokadą rekord 
 
 ```azurepowershell
 # Protect against zone delete with CanNotDelete lock on the record set
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
+New-AzResourceLock -LockLevel CanNotDelete -LockName "<lock name>" -ResourceName "<zone name>/@" -ResourceType" Microsoft.Network/DNSZones/SOA" -ResourceGroupName "<resource group name>"
 ```
 
 Innym sposobem uniknięcia zapobiec przypadkowemu usunięciu strefy jest przy użyciu rolę niestandardową, aby upewnić się, operator i konta usług używane do zarządzania strefami nie mają strefy Usuń uprawnienia. Musisz usunąć strefę, można wymusić delete dwuetapowej, pierwszy musi udzielać strefy uprawnienia do usuwania (w zakresie strefy, aby uniemożliwić usunięcie nieprawidłową strefę) i sekundy można usunąć strefy.

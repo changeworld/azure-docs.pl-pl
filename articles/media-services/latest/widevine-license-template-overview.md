@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: bd09205d4bdc60891044728cf0dcafa092ae9846
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: 3615bd88cfadf2f59942fab7678d36d4d20d8c9f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49377450"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992742"
 ---
 # <a name="widevine-license-template-overview"></a>Omówienie szablonu licencji Widevine 
 
@@ -82,7 +82,7 @@ Każda wartość content_key_specs należy określić dla wszystkich ścieżek, 
 | --- | --- | --- |
 | content_key_specs. track_type |ciąg |Nazwa typu ścieżki. Jeśli content_key_specs jest określony w żądaniu licencji, upewnij się, do określania, że wszystkie typy śledzenia jawnie. Niewykonanie tej czynności powoduje niepowodzenie odtwarzania ostatnie 10 sekund. |
 | content_key_specs  <br/> security_level |uint32 |Określa wymagania dotyczące niezawodności klienta do odtwarzania. <br/> Oprogramowania oparte na kryptografii biały pole jest wymagane. <br/> — Kryptografia oprogramowanie i zaciemnionego dekodera są wymagane. <br/> Kluczowych operacji materiał i kryptografii muszą być wykonywane w środowisku sprzętowej zaufanych wykonywania. <br/> Kryptografii i dekodowania zawartości muszą być wykonywane w środowisku sprzętowej zaufanych wykonywania.  <br/> Kryptografii dekodowanie i obsługę wszystkich nośnika (skompresowanym i nieskompresowanym formatem) muszą być obsługiwane w środowisku sprzętowej zaufanych wykonywania. |
-| content_key_specs <br/> required_output_protection.hdc |ciąg, z których jeden HDCP_V2 HDCP_NONE, HDCP_V1, |Wskazuje, czy HDCP jest wymagana. |
+| content_key_specs <br/> required_output_protection.hdc |string, one of HDCP_NONE, HDCP_V1, HDCP_V2 |Wskazuje, czy HDCP jest wymagana. |
 | content_key_specs <br/>key |Base64 —<br/>Ciąg zakodowany |Klucz zawartości do użycia dla tej ścieżki. Jeśli zostanie określony, track_type lub key_id jest wymagany. Dostawcy zawartości można użyć tej opcji do dodania klucza zawartości dla tej ścieżki samodzielny serwer licencji Widevine wygenerować lub wyszukać klucz. |
 | content_key_specs.key_id |Plik binarny z ciągu zakodowanego algorytmem Base64, 16 bajtów |Unikatowy identyfikator klucza. |
 

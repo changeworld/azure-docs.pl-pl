@@ -1,5 +1,5 @@
 ---
-title: Zbieraj wydajności aplikacji systemu Linux w usłudze Log Analytics | Dokumentacja firmy Microsoft
+title: Zbieraj wydajności aplikacji systemu Linux w usłudze Azure Monitor | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania agenta usługi Log Analytics dla systemu Linux można zebrać liczników wydajności for MySQL i Apache HTTP Server.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bf14e06f52f1b5a32ea3922083cc1f9bdbfb2aae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 453e66934b93ab4368c4d3816d3db1a4588ae660
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104849"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001338"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Log Analytics 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Zbierz liczniki wydajności dla aplikacji systemu Linux w usłudze Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [agenta usługi Log Analytics dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności określonych aplikacji w usłudze Log Analytics.  Aplikacje zawarte w tym artykule są następujące:  
+Ten artykuł zawiera szczegółowe informacje dotyczące konfigurowania [agenta usługi Log Analytics dla systemu Linux](https://github.com/Microsoft/OMS-Agent-for-Linux) można zebrać liczników wydajności określonych aplikacji do usługi Azure Monitor.  Aplikacje zawarte w tym artykule są następujące:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -51,7 +51,7 @@ Wpisy w pliku uwierzytelniania są opisane w poniższej tabeli.
 | Właściwość | Opis |
 |:--|:--|
 | Port | Reprezentuje bieżący port, który nasłuchuje wystąpienie programu MySQL. Port 0 określa, że właściwości po są używane domyślne wystąpienie. |
-| Powiązanie adresu| Bieżącego powiązania MySQL-adresu. |
+| Bind-Address| Bieżącego powiązania MySQL-adresu. |
 | nazwa użytkownika| Użytkownik programu MySQL używane na potrzeby monitorowania wystąpienia serwera MySQL. |
 | Hasło kodowany w formacie Base64| Hasło użytkownika monitorowania MySQL zakodowane w formacie Base64. |
 | AutoUpdate| Określa, czy ponownego skanowania dla zmian w pliku my.cnf i nadpisać plik uwierzytelniania OMI MySQL, po uaktualnieniu dostawcy OMI bazy danych MySQL. |
@@ -114,7 +114,7 @@ Tych uprawnień można udzielić, uruchamiając następujące polecenia grant.
 
 ### <a name="define-performance-counters"></a>Zdefiniuj liczników wydajności
 
-Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Log Analytics, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](data-sources-performance-counters.md) liczników w poniższej tabeli.
+Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Azure Monitor, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor](data-sources-performance-counters.md) liczników w poniższej tabeli.
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Zdefiniuj liczników wydajności
 
-Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Log Analytics, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Log Analytics](data-sources-performance-counters.md) liczników w poniższej tabeli.
+Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyłania danych do usługi Azure Monitor, skonfiguruj zbierane liczniki wydajności.  Procedura [Windows i Linux źródła danych dotyczących wydajności w usłudze Azure Monitor](data-sources-performance-counters.md) liczników w poniższej tabeli.
 
 | Nazwa obiektu | Nazwa licznika |
 |:--|:--|
@@ -168,4 +168,4 @@ Po skonfigurowaniu agenta usługi Log Analytics dla systemu Linux w celu wysyła
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Liczniki wydajności są zbierane](data-sources-performance-counters.md) z agentów dla systemu Linux.
-* Dowiedz się więcej o [rejestrowania zapytań](../../log-analytics/log-analytics-queries.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

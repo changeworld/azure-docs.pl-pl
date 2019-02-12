@@ -10,17 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 02/08/2018
+ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 24a911978d6c9f9a33c81254a5e2f5951029ff3a
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c9392d910098e8a2dfadc4842dfcfe185f01fafc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54120890"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004523"
 ---
 # <a name="analytics-in-application-insights"></a>Analiza w usłudze Application Insights
-Analytics to zaawansowane narzędzie wyszukiwania i zapytanie o [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md). Analytics to narzędzia sieci web, aby konfiguracja nie jest wymagana. Jeśli już skonfigurowano usługę Application Insights dla jednej z aplikacji, a następnie można analizować dane swojej aplikacji, otwierając analizy z Twojej aplikacji [bloku przeglądu](../../azure-monitor/app/app-insights-dashboards.md).
+Analytics to zaawansowane narzędzie wyszukiwania i zapytanie o [usługi Application Insights](app-insights-overview.md). Analytics to narzędzia sieci web, aby konfiguracja nie jest wymagana.
+Jeśli już skonfigurowano usługę Application Insights dla jednej z aplikacji, a następnie można analizować dane swojej aplikacji, otwierając analizy z Twojej aplikacji [bloku przeglądu](app-insights-dashboards.md).
 
 ![Otwórz portal.azure.com otwórz zasób usługi Application Insights, a następnie kliknij przycisk Analiza.](./media/analytics/001.png)
 
@@ -28,6 +29,12 @@ Można również użyć [Plac zabaw dla analizy](https://go.microsoft.com/fwlink
 <br>
 <br>
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
+
+## <a name="relation-to-azure-monitor-logs"></a>Relacja do dzienników usługi Azure Monitor
+Analiza usługi Application Insights opiera się na [Eksploratora danych usługi Azure](/azure/data-explorer) takich jak dzienniki usługi Azure Monitor, a także wykorzystuje [język zapytań w Eksploratorze danych](/azure/kusto/query). Używa ona taka sama [portal analizy dzienników](../log-query/get-started-portal.md) jako dzienniki usługi Azure Monitor, chociaż jego dane są przechowywane w oddzielnej partycji.
+
+Nie można bezpośrednio dostęp do danych w obszarze roboczym usługi Log Analytics, z usługi Application Insights analytics ani uzyskać bezpośrednio dostęp do danych aplikacji z usługą log analytics. Aby można było zbadać oba zestawy danych ze sobą, należy napisać [zapytania w usłudze log analytics](../log-query/log-query-overview.md) i wykorzystywania [wyrażenie metodzie app()](../log-query/app-expression.md) do dostępu do danych aplikacji.
+
 
 ## <a name="query-data-in-analytics"></a>Wykonywanie zapytań dotyczących danych w usłudze Analytics
 Typowe zapytania zaczyna się od nazwy tabeli, następuje szereg *operatory* rozdzielone `|`.

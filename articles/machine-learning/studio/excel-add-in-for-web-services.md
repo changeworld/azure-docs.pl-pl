@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 57c9f9a0b6f3a0502a07ca3124cbe157d8008117
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c9c5ad0af39b698175c4bc7cb7f720452546ec10
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486898"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997083"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Dodatek programu Excel dla usług sieci web Azure Machine Learning Studio
 Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pisania kodu.
@@ -24,8 +24,8 @@ Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pis
 
 1. Otwórz [przykładowy plik programu Excel](https://aka.ms/amlexcel-sample-2), który zawiera dodatek programu Excel i danych dotyczących osób na Titanica. 
  
-> [!NOTE]
-> Zobaczysz, że na liście usług sieci Web związane z nim do pliku i u dołu pola wyboru "Automatycznie — przewidywanie". Po włączeniu automatycznego — przewidywanie przewidywań **wszystkie** usługi zostanie zaktualizowany, za każdym razem, gdy brak zmian w danych wejściowych. Jeśli nie jest zaznaczone trzeba będzie kliknąć "Przewidzieć All" w przypadku odświeżania. Umożliwiające automatyczne — przewidywanie na usługę poziomu przejdź do kroku 6.
+    > [!NOTE]
+    > Zobaczysz, że na liście usług sieci Web związane z nim do pliku i u dołu pola wyboru "Automatycznie — przewidywanie". Po włączeniu automatycznego — przewidywanie przewidywań **wszystkie** usługi zostanie zaktualizowany, za każdym razem, gdy brak zmian w danych wejściowych. Jeśli nie jest zaznaczone trzeba będzie kliknąć "Przewidzieć All" w przypadku odświeżania. Umożliwiające automatyczne — przewidywanie na usługę poziomu przejdź do kroku 6.
 
 2. Wybierz usługę sieci web, klikając go — "Titanic renty predykcyjne (przykład dodatku Excel) [Wynik]" w tym przykładzie.
    
@@ -37,7 +37,7 @@ Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pis
    
     ![Przewidywanie sekcji][02]
 
-Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [wskazówki krok 5: Wdrażanie usługi Azure Machine Learning w sieci Web](walkthrough-5-publish-web-service.md).
+Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [Tutorial 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md).
 
 Uzyskaj klucz interfejsu API dla usługi sieci web. W przypadku, gdy wykonujesz tej akcji jest zależna od tego, czy opublikowana klasycznego uczenia maszynowego usługi sieci web usługi sieci web nowej usługi Machine Learning.
 
@@ -65,7 +65,7 @@ Uzyskaj klucz interfejsu API dla usługi sieci web. W przypadku, gdy wykonujesz 
 
 ## <a name="steps-to-add-a-new-web-service"></a>Kroki, aby dodać nową usługę sieci web
 
-1. Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [wskazówki krok 5: Wdrażanie usługi Azure Machine Learning w sieci Web](walkthrough-5-publish-web-service.md).
+1. Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [Tutorial 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md).
 2. Kliknij przycisk **używanie**.
 3. Wyszukaj **informacje podstawowe użycie** sekcji. Skopiuj i Zapisz **klucza podstawowego** i **odpowiedź na żądanie** adresu URL.
 4. W programie Excel, przejdź do **usług sieci Web** sekcji (jeśli znajdują się w **Predict** kliknij strzałkę Wstecz, aby przejść do listy usług sieci web).

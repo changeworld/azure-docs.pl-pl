@@ -1,6 +1,6 @@
 ---
-title: wyrażenie metodzie App() w zapytaniu usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Wyrażenie aplikacji jest używany w zapytaniu usługi Log Analytics można pobrać danych z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji.
+title: metodzie App() wyrażenia w zapytaniach dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Wyrażenie aplikacji jest używany w zapytaniu usługi Azure Monitor dziennika można pobrać danych z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: db92db315875348ff05ec3a34b1a9fa946479c27
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104664"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998539"
 ---
-# <a name="app-expression-in-log-analytics-query"></a>wyrażenie metodzie App() zapytanie usługi Log Analytics
+# <a name="app-expression-in-azure-monitor-query"></a>wyrażenie metodzie App() w zapytaniu usługi Azure Monitor
 
-`app` Wyrażenie jest używane w zapytaniu usługi Log Analytics można pobrać danych z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Jest to przydatne do uwzględnienia w zapytaniu usługi Log Analytics i wykonywać zapytania względem danych dane aplikacji dla wielu aplikacji w zapytaniu usługi Application Insights.
+`app` Wyrażenie jest używane w zapytaniu usługi Azure Monitor do pobierania danych z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Jest to przydatne do uwzględnienia w zapytaniu dzienników usługi Azure Monitor i wykonywać zapytania względem danych dane aplikacji dla wielu aplikacji w zapytaniu usługi Application Insights.
 
 
 
@@ -79,4 +79,5 @@ union
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [wyrażenie obszaru roboczego](workspace-expression.md) do odwoływania się do obszaru roboczego usługi Log Analytics.
-- Przeczytaj o tym, jak [danych usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md) są przechowywane.
+- Przeczytaj o tym, jak [danych usługi Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) są przechowywane.
+- Dostęp do pełną dokumentację dotyczącą [język zapytań w Eksploratorze danych](/azure/kusto/query/).

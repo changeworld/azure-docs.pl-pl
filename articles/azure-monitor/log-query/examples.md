@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Monitor zapytań usługi Log Analytics przykłady | Dokumentacja firmy Microsoft
-description: Przykłady zapytań w usłudze Log Analytics przy użyciu języka Kusto.
+title: Przykłady zapytań dzienników w usłudze Azure Monitor usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Przykłady zapytań dzienników w usłudze Azure Monitor przy użyciu języka zapytań Eksploratora danych.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52883105"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993201"
 ---
-# <a name="log-analytics-query-examples"></a>Zaloguj się przykłady zapytań usługi Analytics
-W tym artykule przedstawiono różne przykłady [zapytania](../../azure-monitor/log-query/log-query-overview.md) przy użyciu [języka Kusto](https://docs.microsoft.com/azure/kusto/query/) można pobrać różne typy danych z usługi Log Analytics. Różne metody są używane do konsolidacji i analizowania danych, aby można było używać tych przykładów, aby zidentyfikować różne strategie, których można użyć do własnych wymagań.  
+# <a name="azure-monitor-log-query-examples"></a>Przykłady zapytań dzienników w usłudze Azure Monitor
+W tym artykule przedstawiono różne przykłady [zapytania](log-query-overview.md) przy użyciu [język zapytań w Eksploratorze danych](https://docs.microsoft.com/azure/kusto/query/) pobrać różnego rodzaju dane dzienników z usługi Azure Monitor. Różne metody są używane do konsolidacji i analizowania danych, aby można było używać tych przykładów, aby zidentyfikować różne strategie, których można użyć do własnych wymagań.  
 
-Zobacz [Skorowidz języka Kusto](https://docs.microsoft.com/azure/kusto/query/) szczegółowe informacje dotyczące innych słów kluczowych, używane w tych przykładów. Zapoznaj się z artykułem [lekcji na temat tworzenia zapytań](get-started-queries.md) Jeśli dopiero zaczynasz pracę z usługą Log Analytics.
+Zobacz [Skorowidz języka Kusto](https://docs.microsoft.com/azure/kusto/query/) szczegółowe informacje dotyczące innych słów kluczowych, używane w tych przykładów. Zapoznaj się z artykułem [lekcji na temat tworzenia zapytań](get-started-queries.md) Jeśli jesteś nowym użytkownikiem usługi Azure Monitor.
 
 ## <a name="events"></a>Zdarzenia
 
@@ -237,7 +237,7 @@ protection_data | join (heartbeat_data) on Computer, round_time
 ### <a name="count-security-events-by-activity-id"></a>Liczba zdarzeń zabezpieczeń za pomocą Identyfikatora działania
 
 
-W tym przykładzie opiera się na strukturze stały **działania** kolumny: \<identyfikator\>-\<nazwa\>.
+W tym przykładzie opiera się na strukturze stały **działania** kolumny: \<Identyfikator\>-\<nazwa\>.
 Analizuje **działania** wartości do dwóch nowych kolumn i zlicza wystąpienia każdego **activityID**.
 
 ```Kusto
@@ -278,7 +278,7 @@ SecurityEvent
 ```
 
 ### <a name="parse-activity-name-and-id"></a>Nazwa działania analizy i identyfikator
-Poniższych dwóch przykładach opierają się na strukturze stały **działania** kolumny: \<identyfikator\>-\<nazwa\>. W pierwszym przykładzie użyto **przeanalizować** operator przypisywania wartości do dwie nowe kolumny: **activityID** i **activityDesc**.
+Poniższych dwóch przykładach opierają się na strukturze stały **działania** kolumny: \<Identyfikator\>-\<nazwa\>. W pierwszym przykładzie użyto **przeanalizować** operator przypisywania wartości do dwie nowe kolumny: **activityID** i **activityDesc**.
 
 ```Kusto
 SecurityEvent
@@ -440,4 +440,4 @@ Update
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zapoznaj się [Skorowidz języka Kusto](/azure/kusto/query) szczegółowe informacje na temat języka.
-- Przeprowadzenie [lekcji o pisaniu zapytań w usłudze Log Analytics](get-started-queries.md).
+- Przeprowadzenie [lekcji o pisaniu zapytań dzienników w usłudze Azure Monitor](get-started-queries.md).

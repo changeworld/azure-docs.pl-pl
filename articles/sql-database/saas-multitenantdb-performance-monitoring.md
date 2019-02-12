@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458129"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002378"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty bazy danych Azure SQL wielu dzierżaw w aplikacji SaaS z wieloma dzierżawami
 
 W tym samouczku zbadano kilka podstawowych scenariuszy zarządzania wydajnością używanych w aplikacjach SaaS. Za pomocą generator obciążenia, aby symulować działanie w bazach danych w wielu dzierżawców podzielonej na fragmenty, wbudowane funkcje monitorowania i alertów usługi SQL Database zostały przedstawione.
 
-Aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych używa modelu danych podzielonych na fragmenty wielodostępne, dane miejsce (dzierżawca) jest dystrybuowane za pomocą Identyfikatora dzierżawy potencjalnie wielu bazom danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby móc korzystać z tego wzorca użycia typowych bazy danych, baz danych mogą być skalowane górę i w dół do optymalizację kosztu rozwiązania. W przypadku tego typu wzorca ważne jest monitorować użycie zasobów bazy danych, aby upewnić się, że obciążenia rozsądne Równoważenie obciążenia między potencjalnie wiele baz danych. Należy również upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, a nie zbliżają ich [jednostek DTU](sql-database-service-tiers.md#dtu-based-purchasing-model) limity. W tym samouczku przedstawiono sposób monitorowania i zarządzania bazami danych i sposobu podejmowanie działań naprawczych w odpowiedzi na wahania obciążenia.
+Aplikacji Wingtip Tickets SaaS wielodostępnej w bazie danych używa modelu danych podzielonych na fragmenty wielodostępne, dane miejsce (dzierżawca) jest dystrybuowane za pomocą Identyfikatora dzierżawy potencjalnie wielu bazom danych. Podobnie jak w przypadku wielu innych aplikacji SaaS, oczekiwany wzorzec obciążenia dzierżawy charakteryzuje się nieprzewidywalnością i sporadycznością występowania. Innymi słowy, sprzedaż biletów może nastąpić w dowolnej chwili. Aby móc korzystać z tego wzorca użycia typowych bazy danych, baz danych mogą być skalowane górę i w dół do optymalizację kosztu rozwiązania. W przypadku tego typu wzorca ważne jest monitorować użycie zasobów bazy danych, aby upewnić się, że obciążenia rozsądne Równoważenie obciążenia między potencjalnie wiele baz danych. Należy również upewnić się, że pojedyncze bazy danych posiadają odpowiednie zasoby, a nie zbliżają ich [jednostek DTU](sql-database-purchase-models.md#dtu-based-purchasing-model) limity. W tym samouczku przedstawiono sposób monitorowania i zarządzania bazami danych i sposobu podejmowanie działań naprawczych w odpowiedzi na wahania obciążenia.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 

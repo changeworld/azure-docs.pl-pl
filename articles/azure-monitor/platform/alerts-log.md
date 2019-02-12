@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 7ff4a4d64b69809c53ad70edf1455880da24d52a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892511"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990449"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie alerty dzienników przy użyciu usługi Azure Monitor
 
@@ -106,8 +106,7 @@ Szczegółowe dalej jest przewodnik krok po kroku za pomocą alertów dziennikó
 
     W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
 
-Użytkownicy mogą również zakończona ich zapytania usługi analytics w [analizy dzienników strony w witrynie Azure portal](../../azure-monitor/log-query/portals.md#log-analytics-page
-) i wypchnąć je w celu utworzenia alertu za pośrednictwem "+ Nowa reguła alertu" przycisk — a następnie postępując zgodnie z instrukcjami krok 6 lub nowszym w tym samouczku powyżej.
+Użytkownicy mogą również zakończona ich zapytania usługi analytics w [dziennika analizy](../log-query/portals.md) i Wypchnij go do utworzenia alertu, klikając przycisk "Ustaw Alert" - następnie postępując zgodnie z instrukcjami krok 6 lub nowszym w tym samouczku powyżej.
 
  ![Log Analytics — Ustawianie alertu](media/alerts-log/AlertsAnalyticsCreate.png)
 

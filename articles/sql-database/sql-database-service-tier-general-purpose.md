@@ -12,17 +12,17 @@ ms.author: jovanpop-msft
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: d8a7ffd680ab38d78fa3675f49569dd79b91efe4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 83be636317299adf820a60716866aa35d318d6dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895112"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997366"
 ---
 # <a name="general-purpose-service-tier---azure-sql-database"></a>Warstwy usług ogólnego przeznaczenia — usługi Azure SQL Database
 
 > [!NOTE]
-> Warstwy usług ogólnego przeznaczenia w modelu zakupu opartego na rdzeniach wirtualnych nosi nazwę w modelu zakupu opartego na jednostkach DTU warstwie usługi standardowa. Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-service-tiers.md).
+> Warstwy usług ogólnego przeznaczenia w modelu zakupu opartego na rdzeniach wirtualnych nosi nazwę w modelu zakupu opartego na jednostkach DTU warstwie usługi standardowa. Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-purchase-models.md).
 
 Usługa Azure SQL Database jest oparty na architekturze aparatu bazy danych programu SQL Server zostało dostosowane do środowiska chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją trzy warstwy usług, które są używane w usłudze Azure SQL Database, każdy z różnych modeli architektury. Te warstwy usługi są:
 

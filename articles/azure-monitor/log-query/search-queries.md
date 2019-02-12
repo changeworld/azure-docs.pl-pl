@@ -1,6 +1,6 @@
 ---
-title: Zapytań wyszukiwania w usłudze Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek dla klientów zaczynających pracę Pisanie zapytań wyszukiwania w usłudze Log Analytics.
+title: Zapytań wyszukiwania w dziennikach w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera samouczek, w celu uzyskania pracy z usługą wyszukiwania w usłudze Azure Monitor dziennika zapytań.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 1f3131585a8f6581690eda777b8ffc96768b3cc6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cda66b91a0e829ec3bc84a82c190b9d856827ad3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882835"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004455"
 ---
-# <a name="search-queries-in-log-analytics"></a>Zapytania wyszukiwania w usłudze Log Analytics
+# <a name="search-queries-in-azure-monitor-logs"></a>Zapytania wyszukiwania w dziennikach w usłudze Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [wprowadzenie do zapytań w usłudze Log Analytics](get-started-queries.md) przed wykonaniem tej lekcji.
+> Należy wykonać [Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Usługa Azure zapytań usługi Log Analytics można uruchomić w nazwie tabeli lub polecenie wyszukiwania. Ten samouczek obejmuje zapytań na podstawie wyszukiwania. Istnieją zalety łączenia poszczególnych metod.
+Usługa Azure Monitor dziennika zapytań można uruchomić w nazwie tabeli lub polecenie wyszukiwania. Ten samouczek obejmuje zapytań na podstawie wyszukiwania. Istnieją zalety łączenia poszczególnych metod.
 
 Zapytania w oparciu o tabelę początek zakresu zapytania i dlatego zwykle bardziej efektywne niż zapytania wyszukiwania. Zapytania wyszukiwania są mniej strukturalnych, co sprawia, że ich lepszym rozwiązaniem podczas wyszukiwania określonej wartości w kolumnach lub tabel. **Wyszukiwanie** może skanować wszystkie kolumny w danej tabeli lub wszystkie tabele dla określonej wartości. Ilość przetwarzanych danych może być ogromną, dlatego te zapytania może potrwać dłużej i może zwrócić bardzo dużych zestawów wyników.
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz więcej samouczków w [lokacji języka zapytań usługi Log Analytics](https://aka.ms/LogAnalyticsLanguage).
+- Zobacz więcej samouczków w [lokacji języka zapytań Eksploratora danych](/azure/kusto/query/).

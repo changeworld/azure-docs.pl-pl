@@ -4,7 +4,7 @@ description: Dowiedz się więcej o tym, jak do licencjonowania programu Microso
 services: media-services
 documentationcenter: ''
 author: xpouyat
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: e3b488e7-8428-4c10-a072-eb3af46c82ad
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/08/2019
 ms.author: xpouyat
-ms.openlocfilehash: 71cb4ff7c5948067dfb039caf69241cfa9e22408
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 1954ccf07badbd4632c653bb1af4d6e96153e1fb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243900"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000084"
 ---
-# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencjonowania Microsoft® Smooth Streaming Client Porting Kit
+# <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>Licencjonowania Microsoft® Smooth Streaming Client Porting Kit 
 ## <a name="overview"></a>Przegląd
 Microsoft Smooth Streaming klienta przenoszenie Kit (**SSPK** w skrócie) jest Smooth Streaming implementacji klienta, który jest zoptymalizowany pod kątem ułatwiające producenci urządzeń osadzonych, kabel i operatorów komórkowych, dostawców usług zawartości, słuchawki producentów niezależnych dostawców oprogramowania (ISV) i dostawców rozwiązań do tworzenia produktów i usług do przesyłania strumieniowego zawartości przesyłanej w formacie Smooth Streaming. SSPK to urządzenie i niezależne od platformy implementacji klienta Smooth Streaming, które mogą być przenoszone przez licencjobiorcę do dowolnego urządzenia i platformy. 
 
@@ -80,31 +80,31 @@ Przejściowe i końcowe SSPK licencjobiorców mogą przesyłać pytania technicz
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming licencjobiorców umowy pośrednie produktu klienta
 * Adroit Business Solutions, Inc
 * Zaawansowane SA emisji cyfrowej
-* AirTies Kablosuz Iletism Sanayive dys Ticaret A.S.
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Albis Technologies Ltd.
 * Alticast Corporation
-* Cyfrowy Amazon usług, Inc.
-* Technologia Arion, Inc.
-* Oprogramowanie Multimedia AVC Co., Ltd.
+* Amazon Digital Services, Inc.
+* Arion Technology, Inc.
+* AVC Multimedia Software Co., Ltd.
 * Cavium, Inc.
 * EchoStar Corporation zakupu
 * Enseo, Inc.
-* Fluendo SA
-* BroadInfoCom HANDAN Co., Ltd.
+* Fluendo S.A.
+* HANDAN BroadInfoCom Co., Ltd.
 * Infomir GMBH
 * Irdeto USA Inc.
-* iWEDIA SA 
-* Liberty globalnej usługi BV
+* iWEDIA S.A. 
+* Liberty Global Services BV
 * MediaTek Inc.
-* MStar Co, Ltd.
+* MStar Co, Ltd
 * Nintendo Co., Ltd.
 * OpenTV, Inc.
 * Szafran cyfrowy Limited
-* Prowincji Syczuan Changhong Electric Co., Ltd.
+* Sichuan Changhong Electric Co., Ltd
 * SoftAtHome
 * Sony Corporation
 * Tatung technologii Inc.
-* TCL technologii (Huizhou) Electronics Co., Ltd.
+* TCL Technology Electronics (Huizhou) Co., Ltd.
 * TOP zwycięstwa inwestycje, Ltd.
 * Ve Vestel Elektronik Sanayi Ticaret A.S.
 * VisualOn, Inc.
@@ -112,27 +112,27 @@ Przejściowe i końcowe SSPK licencjobiorców mogą przesyłać pytania technicz
 
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Microsoft Smooth Streaming licencjobiorców umowy produktu końcowego klienta
 * Zaawansowane SA emisji cyfrowej
-* AirTies Kablosuz Iletism Sanayive dys Ticaret A.S.
+* AirTies Kablosuz Iletism Sanayive Dis Ticaret A.S.
 * Albis Technologies Ltd.
-* Cyfrowy Amazon usług, Inc.
-* Technologia AmTRAN Co., Ltd.
-* Arcadyan technologii Corporation
-* Technologia Arion, Inc.
+* Amazon Digital Services, Inc.
+* AmTRAN Technology Co., Ltd.
+* Arcadyan Technology Corporation
+* Arion Technology, Inc.
 * ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
-* Kolumbia Sky emisji Limited
+* British Sky Broadcasting Limited
 * Technologia CastPal, Inc., Shenzhen
 * Compal Electronics, Inc.
-* Dongguan cyfrowy AV technologii Corp., Ltd.
+* Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar Corporation zakupu
 * Enseo, Inc.
-* Filmflex filmy Limited
-* Fluendo SA
+* Filmflex Movies Limited
+* Fluendo S.A.
 * Gibson innowacje Limited
 * Haier informacji Applicantion S.R.L
-* BroadInfoCom HANDAN Co., Ltd.
-* International Hisense Co., Ltd. 
-* Homecast Co., Ltd.
-* HON Hai dokładności Industry Co., Ltd.
+* HANDAN BroadInfoCom Co., Ltd.
+* Hisense International Co., Ltd. 
+* Homecast Co., Ltd
+* Hon Hai Precision Industry Co., Ltd.
 * Infomir GMBH
 * Kaonmedia Co., Ltd.
 * KDDI Corporation
@@ -141,20 +141,20 @@ Przejściowe i końcowe SSPK licencjobiorców mogą przesyłać pytania technicz
 * Szafran cyfrowy Limited
 * Połączenie szerokopasmowe Sagemcom sygnatury dostępu Współdzielonego
 * Shenzhen Coship Electronics CO., Ltd.
-* Shenzhen Jiuzhou Electric Co., Ltd.
-* Shenzhen Skyworth cyfrowy technologii Co., Ltd.
-* Prowincji Syczuan Changhong Electric Co., Ltd.
+* Shenzhen Jiuzhou Electric Co., Ltd
+* Shenzhen Skyworth Digital Technology Co., Ltd
+* Sichuan Changhong Electric Co., Ltd.
 * Skardin przemysłowej Corp.
 * Sky Deutschland Fernsehen GmbH & Co. KG
-* SmarDTV SA
+* SmarDTV S.A.
 * SoftAtHome
 * Sony Corporation
 * Ograniczone TCL Zbiorowość Marketing (urządzeniach oddalonych od brzegu komercyjne SRA Makau)
 * Technicolor dostarczanie technologii, sygnatury dostępu Współdzielonego
-* Tongfang globalnego Ltd.
+* Tongfang Global Ltd.
 * TOP zwycięstwa inwestycje, Ltd.
-* Toshiba stylu życia produktów i usług Corporation
-* S.r.o. /Slovakia/ uniwersalnej Corporation multimediów
+* Toshiba Lifestyle Products & Services Corporation
+* Universal Media Corporation /Slovakia/ s.r.o.
 * VIZIO, Inc.
 * Wistron Corporation
 * ZTE Corporation

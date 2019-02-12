@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: magoedte
-ms.openlocfilehash: 9c62f4c58742c2c3247ff19b76575d1ca11499cb
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: a6542838acba3143123dc90d96746179a2b4469b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101637"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989172"
 ---
 # <a name="delete-an-azure-log-analytics-workspace-with-the-azure-portal"></a>Usuń obszar roboczy usługi Azure Log Analytics w witrynie Azure portal
 W tym artykule przedstawiono sposób użyj witryny Azure portal, aby usunąć obszar roboczy usługi Log Analytics może nie są już potrzebne. 
@@ -39,7 +39,7 @@ Wszystkich agentów i skonfigurowany pod kątem raportowania do obszaru roboczeg
 Jeśli jesteś administratorem i z tym obszarem roboczym jest skojarzonych wielu użytkowników, skojarzenie między tymi użytkownikami i obszarem roboczym zostanie przerwane. Jeśli użytkownicy są skojarzeni z innymi obszarami roboczymi, mogą nadal z nich korzystać w usłudze Log Analytics. Jednakże jeśli nie są oni skojarzeni z innymi obszarami roboczymi następnie muszą utworzyć obszar roboczy, aby użyć usługi Log Analytics. 
 
 1. Zaloguj się do [Azure Portal](https://portal.azure.com). 
-2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+2. W witrynie Azure Portal kliknij pozycję **Więcej usług** w lewym dolnym rogu. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **obszarów roboczych usługi Log Analytics**.
 3. W okienku subskrypcji usługi Log Analytics wybierz obszar roboczy, a następnie kliknij przycisk **Usuń** od góry w środkowym okienku.<br><br> ![Usuń opcję z okienka właściwości obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace.png)<br>  
 4. Gdy pojawi się okno komunikatu potwierdzenia, za pomocą prośbą o potwierdzenie usunięcia obszaru roboczego, kliknij przycisk **tak**.<br><br> ![Potwierdzenie usunięcia obszaru roboczego](media/delete-workspace/log-analytics-delete-workspace-confirm.png)
 

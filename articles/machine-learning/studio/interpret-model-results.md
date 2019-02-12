@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: fe22a465c21e9522b70ba307e2ec9772674000f2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488547"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997009"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretacja wyników modelu w usłudze Azure Machine Learning Studio
 W tym temacie wyjaśniono, jak wizualizować i interpretacji wyników przewidywań w usłudze Azure Machine Learning Studio. Po uczony model i gotowe prognozy na nim ("oceniane modelu"), musisz zrozumieć i zinterpretować wyniki prognozy.
@@ -74,7 +74,7 @@ Istnieje sześć kolumn w tabeli wyników. Po lewej stronie cztery kolumny są c
 
 **Publikacja usług sieci Web**
 
-Po uwzględnione wyników przewidywań i ocenić dźwięku doświadczenia mogą być publikowane jako usługi sieci web tak, aby można go wdrożyć w różnych aplikacjach i wywołać go uzyskać klasy prognozy na wszelkie nowe kwiat irysa. Aby dowiedzieć się, jak zmienić eksperymentu szkolenia na eksperyment oceniania i opublikujesz je jako usługi sieci web, zobacz [opublikować usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md). Ta procedura umożliwia oceniania eksperymentu jak pokazano na rysunku 3.
+Po uwzględnione wyników przewidywań i ocenić dźwięku doświadczenia mogą być publikowane jako usługi sieci web tak, aby można go wdrożyć w różnych aplikacjach i wywołać go uzyskać klasy prognozy na wszelkie nowe kwiat irysa. Aby dowiedzieć się, jak zmienić eksperymentu szkolenia na eksperyment oceniania i opublikujesz je jako usługi sieci web, zobacz [Tutorial 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md). Ta procedura umożliwia oceniania eksperymentu jak pokazano na rysunku 3.
 
 ![Zrzut ekranu przedstawiający oceny eksperymentu](./media/interpret-model-results/3.png)
 

@@ -3,7 +3,7 @@ title: Tworzenie, zarządzanie serwerami usługi Azure SQL Database i pojedynczy
 description: Dowiedz się więcej na temat tworzenia i zarządzania, serwery usługi SQL Database i pojedynczych baz danych.
 services: sql-database
 ms.service: sql-database
-ms.subservice: standalone-database
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 7d1f11abbe88bff5a7e16984aacd4953ad4f9e12
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.date: 02/08/2019
+ms.openlocfilehash: 5612926b26ac71675a42c7c726d0354a1738ac31
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751195"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996432"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Tworzenie i zarządzanie nimi, serwery usługi SQL Database i pojedynczych baz danych w usłudze Azure SQL Database
 
@@ -57,7 +57,7 @@ Aby zarządzać istniejącej bazy danych, przejdź do **baz danych SQL** strony,
 
 ## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>Program PowerShell: Zarządzanie serwerami bazy danych SQL i pojedynczych baz danych
 
-Aby utworzyć i zarządzać nimi, serwery usługi Azure SQL Database, autonomicznej i bazy danych w puli oraz zapory serwera bazy danych SQL przy użyciu programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
+Aby utworzyć i zarządzać serwerów usługi Azure SQL Database, pojedynczej i puli baz danych i zapory serwera bazy danych SQL przy użyciu programu Azure PowerShell, użyj następujących poleceń cmdlet programu PowerShell. Jeśli musisz zainstalować lub uaktualnić programu PowerShell, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
 
 > [!TIP]
 > W przypadku skryptów przykład programu PowerShell, zobacz [Użyj programu PowerShell do tworzenia pojedynczej bazy danych Azure SQL i konfigurowanie reguły zapory serwera bazy danych SQL](scripts/sql-database-create-and-configure-database-powershell.md) i [Monitor i skala SQL pojedyncze bazy danych przy użyciu programu PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md) .

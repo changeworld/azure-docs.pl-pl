@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/15/2019
-ms.openlocfilehash: edc6e651c3ec352115e360e50f98a3e36cd287c0
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/11/2019
+ms.openlocfilehash: 39a7f7ce6660016f00e36c5f6619eba2fa461023
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904084"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993167"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Stan scenariuszy migracji obsługiwanych przez usługi Azure Database Migration Service
 Azure Database Migration Service jest przeznaczona do obsługi różnych scenariuszy migracji (źródło i cel pary) zarówno w trybie offline (jednorazowy) i migracji online (ciągłej synchronizacji). Pokrycie scenariusza dostarczane przez usługi Azure Database Migration Service jest rozszerzany wraz z upływem czasu. Udostępnione nowe scenariusze są dodawane na bieżąco. W tym artykule identyfikuje scenariusze migracji, są obecnie obsługiwane przez usługi Azure Database Migration Service i stan (prywatnej [lub ograniczone] (wersja zapoznawcza), publiczną wersję zapoznawczą lub jest ogólnie dostępna) lub każdego scenariusza.
@@ -25,7 +25,7 @@ Azure Database Migration Service jest przeznaczona do obsługi różnych scenari
 Przeprowadzając migrację baz danych na platformie Azure przy użyciu usługi Azure Database Migration Service, można wykonać migracji online lub offline. Za pomocą *offline* migracji, w tym samym czasie, który rozpoczyna się migracja rozpoczyna się przerwy w działaniu aplikacji. Aby uzyskać *online* migracji, okres przestoju jest ograniczony do czasu wymaganego do jednorazową do nowego środowiska po zakończeniu migracji. Zaleca się testowania migracji w trybie offline w celu ustalenia, czy przestój jest dopuszczalny; Jeśli nie, należy dokonać migracji online.
 
 ## <a name="migration-scenario-status"></a>Stan scenariusza migracji
-Stan każdego scenariusza migracji, obsługiwane przez usługi Azure Database Migration Service zależy od czasu. Ogólnie rzecz biorąc, scenariusze są wydawane najpierw w **prywatnej wersji zapoznawczej**, korzystając z zalet funkcji wymaga, że klient Prześlij nominację za pośrednictwem [witryny w wersji zapoznawczej usługi DMS](https://aka.ms/dms-preview). Po zakończeniu prywatnej wersji zapoznawczej scenariuszu stan zmieni się na **publicznej wersji zapoznawczej**. Wszyscy użytkownicy usługi Azure Database Migration Service korzystać z zalet scenariusze migracji jest dostępne w publicznej wersji zapoznawczej. Jednak scenariusz migracji nie mogą być dostępne we wszystkich regionach i funkcje mogą być poddawane dodatkowe zmiany przed ostateczną. Jeśli scenariusz migracji staje się **jest ogólnie dostępna**, stan końcowy, wydanej funkcji są kompletne i dostępne dla wszystkich użytkowników usługi Azure Database Migration Service. 
+Stan każdego scenariusza migracji, obsługiwane przez usługi Azure Database Migration Service zależy od czasu. Ogólnie rzecz biorąc, scenariusze są wydawane najpierw w **prywatnej wersji zapoznawczej**, korzystając z zalet funkcji wymaga klientowi Prześlij nominację za pośrednictwem [witryny w wersji zapoznawczej usługi DMS](https://aka.ms/dms-preview). Po zakończeniu prywatnej wersji zapoznawczej scenariuszu stan zmieni się na **publicznej wersji zapoznawczej**. Wszyscy użytkownicy usługi Azure Database Migration Service korzystać z zalet scenariusze migracji jest dostępne w publicznej wersji zapoznawczej. Jednak scenariusz migracji nie mogą być dostępne we wszystkich regionach i funkcje mogą być poddawane dodatkowe zmiany przed ostateczną. Jeśli scenariusz migracji staje się **jest ogólnie dostępna**, ostatni stan zwolnienia, funkcje są kompletne i dostępne dla wszystkich użytkowników usługi Azure Database Migration Service. 
 
 ## <a name="migration-scenario-support"></a>Obsługa scenariuszy migracji
 
@@ -50,7 +50,7 @@ W poniższej tabeli przedstawiono usługi Azure Database Migration Service obsł
 | **Azure Cosmos DB**  | MongoDB | ✔ |
 | **Azure DB dla MySQL**  | MySQL |  |
 |   | RDS MySQL  |  |
-| **Azure DB dla PostgresSQL**  | PostgreSQL |  |
+| **Azure DB dla PostgreSQL**  | PostgreSQL |  |
 |  | RDS PostgreSQL  |  |
 
 ### <a name="online-continuous-sync-migration-support"></a>Obsługa migracji online (ciągłej synchronizacji)
@@ -69,7 +69,7 @@ W poniższej tabeli przedstawiono usługi Azure Database Migration Service obsł
 | **Azure Cosmos DB**  | MongoDB  | ✔ |
 | **Azure DB dla MySQL**  | MySQL | ✔ |
 |   | RDS MySQL  | ✔ |
-| **Azure DB dla PostgresSQL**  | PostgreSQL | ✔ |
+| **Azure DB dla PostgreSQL**  | PostgreSQL | ✔ |
 |  | RDS PostgreSQL  | ✔ |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: 64481be769cf7506508a0d06e10fe0f59e975f16
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/08/2019
+ms.openlocfilehash: af3a654010fa676096bfad895d5814b2cefa8e71
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895877"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997138"
 ---
 # <a name="automated-backups"></a>Automatyczne kopie zapasowe
 
@@ -63,7 +63,7 @@ Domyślny okres przechowywania dla bazy danych utworzone za pomocą modelu zakup
 
 #### <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
 
-Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), domyślny okres przechowywania kopii zapasowych to 7 dni (dla autonomicznej, puli i wystąpienia bazy danych). Dla wszystkich baz danych Azure SQL (autonomicznej, puli i wystąpienie bazy danych, możesz [zmienić okres przechowywania kopii zapasowej do 35 dni](#how-to-change-the-pitr-backup-retention-period).
+Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), domyślny okres przechowywania kopii zapasowych to 7 dni (dla pojedynczego, puli i wystąpienia bazy danych). Dla wszystkich baz danych Azure SQL (pojedynczy, puli i bazy danych wystąpień, możesz [zmienić okres przechowywania kopii zapasowej do 35 dni](#how-to-change-the-pitr-backup-retention-period).
 
 > [!WARNING]
 > Czy możesz zmniejszyć bieżącym okresem przechowywania, wszystkie istniejące kopie zapasowe starsze niż przechowywania nowy okres są przestanie być dostępny. Jeśli zwiększysz bieżącego okresu przechowywania bazy danych SQL Database zostanie zachowana istniejące kopie zapasowe, aż do osiągnięcia dłuższy okres przechowywania danych.
@@ -80,7 +80,7 @@ Aby uzyskać więcej informacji, zobacz [punktu w czasie przywracania](sql-datab
 
 ### <a name="backups-for-long-term-retention"></a>Długoterminowe przechowywanie kopii zapasowych
 
-Autonomiczne i bazy danych w puli umożliwiają konfigurowanie długoterminowego przechowywania danych (od lewej do prawej) pełnych kopii zapasowych dla maksymalnie 10 lat w usłudze Azure Blob storage. Włączenie zasad pisowni LTR tygodniowe pełne kopie zapasowe są automatycznie kopiowane do innego kontenera magazynu RA-GRS. Aby spełnić wymagania zgodności w różnych, możesz wybrać różnych okresów przechowywania dla kopii zapasowych co tydzień, miesięczny lub roczny. Użycie magazynu zależy od wybranej częstotliwości tworzenia kopii zapasowych i okresy przechowywania. Możesz użyć [Kalkulator cen od lewej do prawej](https://azure.microsoft.com/pricing/calculator/?service=sql-database) do szacowania kosztów magazynowania od lewej do prawej.
+Jedno- i puli baz danych umożliwiają konfigurowanie długoterminowego przechowywania danych (od lewej do prawej) pełnych kopii zapasowych dla maksymalnie 10 lat w usłudze Azure Blob storage. Włączenie zasad pisowni LTR tygodniowe pełne kopie zapasowe są automatycznie kopiowane do innego kontenera magazynu RA-GRS. Aby spełnić wymagania zgodności w różnych, możesz wybrać różnych okresów przechowywania dla kopii zapasowych co tydzień, miesięczny lub roczny. Użycie magazynu zależy od wybranej częstotliwości tworzenia kopii zapasowych i okresy przechowywania. Możesz użyć [Kalkulator cen od lewej do prawej](https://azure.microsoft.com/pricing/calculator/?service=sql-database) do szacowania kosztów magazynowania od lewej do prawej.
 
 Podobnie jak Odzyskiwanie, kopie zapasowe od lewej do prawej są geograficznie nadmiarowy i chronione przez [replikacji między regionami w usłudze Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 

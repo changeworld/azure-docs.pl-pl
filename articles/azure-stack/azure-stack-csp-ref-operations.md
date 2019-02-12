@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 01/23/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 5ae8297f8e189fbe9374cec826bf5e566e5403da
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aca051dd20ceaeb608baa144a81e0584043a1c52
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241954"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002058"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Zarządzanie rejestracją dzierżawy w usłudze Azure Stack
 
@@ -60,7 +60,7 @@ Aby uzyskać więcej informacji na temat usługi Azure Stack i profilami interfe
 
 ### <a name="powershell"></a>PowerShell
 
-Użyj polecenia cmdlet New-AzureRmResource na aktualizację zasobu rejestracji. Oto przykład sposobu dodawania dzierżawy:
+Użyj polecenia cmdlet New-AzureRmResource, aby dodać dzierżawy. [Łączenie z usługą Azure Stack](/azure-stack-powershell-configure-admin.md), a następnie w wierszu polecenia z podwyższonym poziomem uprawnień za pomocą następującego polecenia cmdlet:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -91,7 +91,7 @@ Zostanie wyświetlona lista wszystkich dzierżaw, które zostały dodane do reje
 
 ### <a name="powershell"></a>PowerShell
 
-Aby wyświetlić listę wszystkich zarejestrowanych dzierżaw, należy użyć polecenia cmdlet Get-AzureRmResource. Logowanie do platformy Azure (`Add-AzureRmAccount`) przy użyciu konta używanego do pierwszej rejestracji. Oto przykład sposobu dodawania dzierżawy:
+Aby wyświetlić listę wszystkich zarejestrowanych dzierżaw, należy użyć polecenia cmdlet Get-AzureRmResource. [Łączenie z usługą Azure Stack](/azure-stack-powershell-configure-admin.md), a następnie w wierszu polecenia z podwyższonym poziomem uprawnień za pomocą następującego polecenia cmdlet:
 
 ```powershell
   Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
@@ -99,7 +99,7 @@ Aby wyświetlić listę wszystkich zarejestrowanych dzierżaw, należy użyć po
 
 ### <a name="api-call"></a>Wywołanie interfejsu API
 
-Możesz uzyskać listę wszystkich mapowań dzierżawy przy użyciu operacji GET
+Możesz uzyskać listę wszystkich mapowań dzierżawy przy użyciu operacji GET.
 
 **Operacja**: GET  
 **RequestURI**: `subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}  
@@ -111,15 +111,15 @@ api-version=2017-06-01 HTTP/1.1`
 ```JSON  
 {
     "value": [{
-            "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 1}”,
+            "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 1}",
             "name": " cspSubscriptionId 1",
-            "type": “Microsoft.AzureStack\customerSubscriptions”,
+            "type": "Microsoft.AzureStack\customerSubscriptions",
             "properties": { "tenantId": "tId1" }
         },
         {
-            "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 2}”,
+            "id": " subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{ cspSubscriptionId 2}",
             "name": " cspSubscriptionId2 ",
-            "type": “Microsoft.AzureStack\customerSubscriptions”,
+            "type": "Microsoft.AzureStack\customerSubscriptions",
             "properties": { "tenantId": "tId2" }
         }
     ],
@@ -141,6 +141,8 @@ Istnieje możliwość usunięcia dzierżawy, który został dodany do rejestracj
 | customerSubscriptionId     | Identyfikator subskrypcji klienta.  |
 
 ### <a name="powershell"></a>PowerShell
+
+Aby usunąć dzierżawę, należy użyć polecenia cmdlet Remove-AzureRmResource. [Łączenie z usługą Azure Stack](/azure-stack-powershell-configure-admin.md), a następnie w wierszu polecenia z podwyższonym poziomem uprawnień za pomocą następującego polecenia cmdlet:
 
 ```powershell
   Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01

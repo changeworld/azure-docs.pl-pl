@@ -1,6 +1,6 @@
 ---
-title: Zbieraj alerty programów Nagios i Zabbix w usłudze Log Analytics | Dokumentacja firmy Microsoft
-description: Programów Nagios i Zabbix są typu open source, narzędzi do monitorowania. Z tych narzędzi może zbierać alerty w usłudze Log Analytics, aby analizować je oraz alertów z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
+title: Zbieraj alerty programów Nagios i Zabbix w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Programów Nagios i Zabbix są typu open source, narzędzi do monitorowania. Z tych narzędzi może zbierać alerty w usłudze Azure Monitor, aby analizować je oraz alertów z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: 1ae719237cb1afee6d2340e1734d008799da8a86
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: ac8e214df6b6990e2b27b5897350c85e0a944e0c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107535"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997961"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Azure Monitor z agenta usługi Log Analytics dla systemu Linux 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
-[Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) typu open source, narzędzi do monitorowania. Z tych narzędzi może zbierać alerty w usłudze Log Analytics, aby można było analizować je przy użyciu danych dziennika z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
+[Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) typu open source, narzędzi do monitorowania. Umożliwia zbieranie alertów z tych narzędzi do usługi Azure Monitor w celu przeanalizowania danych dziennika z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta usługi Log Analytics dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
 
 
 > [!NOTE]
-> [Alerty utworzone w usłudze Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) są przechowywane oddzielnie od danych dzienników i nie jest dostępny z dziennika zapytań.
+> [Alerty utworzone w usłudze Azure Monitor](alerts-overview.md) są przechowywane oddzielnie od danych dzienników i nie jest dostępny z dziennika zapytań.
 
  
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -84,7 +84,7 @@ Aby zbierać alerty na Nagios serwerze, wykonaj następujące czynności.
 
 
 ## <a name="alert-records"></a>Rekordy alertów
-Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [rejestrowania zapytań](../log-query/log-query-overview.md) w usłudze Log Analytics.
+Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [rejestrowania zapytań](../log-query/log-query-overview.md) w usłudze Azure Monitor.
 
 ### <a name="nagios-alert-records"></a>Rekordy Nagios alertu
 
@@ -96,7 +96,7 @@ Zgłoś alert, ma rekordów zbieranych przez Nagios **typu** z **alertu** i **sy
 | SourceSystem |*Nagios* |
 | AlertName |Nazwa alertu. |
 | AlertDescription | Opis alertu. |
-| AlertState | Stan hosta lub usługi.<br><br>OK<br>OSTRZEŻENIE<br>W GÓRĘ<br>W DÓŁ |
+| AlertState | Stan hosta lub usługi.<br><br>OK<br>OSTRZEŻENIE<br>UP<br>W DÓŁ |
 | Nazwa hosta | Nazwa hosta, która utworzyła alert. |
 | PriorityNumber | Priorytet alertu. |
 | StateType | Typ stanu alertu.<br><br>SOFT - problem, który nie został zresetowany.<br>TWARDE — problem, który został zresetowany określoną liczbę razy.  |
@@ -122,5 +122,5 @@ Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **sy
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [alerty](../../monitoring-and-diagnostics/monitoring-overview-alerts.md) w usłudze Azure Monitor.
+* Dowiedz się więcej o [alerty](alerts-overview.md) w usłudze Azure Monitor.
 * Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

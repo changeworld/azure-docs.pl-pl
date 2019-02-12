@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4601628fd0fbdbd80c2b159a4578e25cb4e3c4c5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f2be733fc0f127288a86372adf54a547983285db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250771"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998709"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Kodowanie zaawansowane, dostosowując ustawienia wstępne usługi MES 
 
@@ -238,14 +238,14 @@ Mają zastosowanie następujące kwestie:
 * Użycie jawnego sygnatury czasowe początku/krok/zakresu przyjęto założenie, że źródło danych wejściowych jest co najmniej 1 minutę.
 * Jpg/Png/BmpImage elementy mają Start kroku i zakresu z atrybutami ciągu — mogą być interpretowane jako:
 
-  * Numer klatki, jeśli są one nieujemnymi liczbami całkowitymi, na przykład "Start": "120"
-  * Względna czasu trwania źródła, jeśli nieujemnej, na przykład "Start": "15%", lub
-  * Sygnatura czasowa, jeśli wyrażonej w postaci: mm: ss... Format, na przykład "Start": "00: 01:00"
+  * Numer klatki, jeśli są one nieujemnymi liczbami całkowitymi, na przykład "Start": "120",
+  * Względem czasu trwania źródła, jeśli wyrażonej w postaci nieujemnej, na przykład "Start": "15%", OR
+  * Sygnatura czasowa, jeśli wyrażonej w postaci: mm: ss... Format, na przykład "Start": "00:01:00"
 
     Możesz mieszać i dopasowywać notacji, jak należy.
 
-    Ponadto Start obsługuje makro specjalne: {najlepsze}, który próbuje określić pierwszej ramki "interesujący" uwagi zawartości: (krok i zakres są ignorowane, gdy rozpoczęcia jest ustawiona na {najlepiej})
-  * Wartości domyślne: Start: {najlepsze}
+    Ponadto Start obsługuje makro specjalne: {najlepsze}, który próbuje określić pierwszej ramki "interesujący" uwagi zawartości: (Krok i zakres są ignorowane, gdy rozpoczęcia jest ustawiona na {najlepiej})
+  * Domyślne: Start: {najlepsze}
 * Format danych wyjściowych musi zostać podane jawnie dla każdego format obrazu: Jpg/Png/BmpFormat. Jeśli jest obecny, MES dopasowuje JpgVideo do JpgFormat i tak dalej. OutputFormat wprowadza nowe makro określonych koder-dekoder obrazu: {Index}, który musi być obecne (jeden raz i tylko jeden raz) dla formatów danych wyjściowych obrazu.
 
 ## <a id="trim_video"></a>Przycinanie wideo (wycinka)
@@ -752,7 +752,7 @@ Można wyłączyć przeplotu cofnąć automatycznie. Ta opcja nie jest zalecane.
 
 
 ## <a id="audio_only"></a>Ustawienia wstępne tylko dane audio
-W tej sekcji przedstawiono dwa ustawienia tylko dane audio wstępne usługi MES: AAC Audio i AAC dobrej jakości Audio.
+W tej sekcji przedstawiono dwa ustawienia tylko dane audio wstępne usługi MES: AAC Audio i AAC dobrą jakość dźwięku.
 
 ### <a name="aac-audio"></a>AAC Audio
     {

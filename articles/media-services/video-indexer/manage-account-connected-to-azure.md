@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 43e08298618f059ff706d11ce6bbb3d486642872
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52292368"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004550"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Zarządzanie kontem Video Indexer połączony z platformą Azure
 
@@ -75,6 +75,6 @@ Jeśli Twoje konto musi mieć pewnych zmian, zobaczysz istotne błędy i ostrze�
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Mogą programowo współdziałać z konta wersji próbnej i/lub z kontami usługi Video Indexer, które są podłączone do platformy azure, postępując zgodnie z instrukcjami wyświetlanymi w: [użycia interfejsów API](video-indexer-use-apis.md).
+Mogą programowo współdziałać z konta wersji próbnej i/lub z kontami usługi Video Indexer, które są podłączone do platformy azure, postępując zgodnie z instrukcjami wyświetlanymi w: [Korzystanie z interfejsów API](video-indexer-use-apis.md).
 
 Należy używać tego samego użytkownika usługi Azure AD, używane podczas nawiązywania połączenia z platformą Azure.

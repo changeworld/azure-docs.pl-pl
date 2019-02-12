@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 5ddee0ca94535688a0634ef8575f3aedad649a43
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a863915ceef437957170d87ac4cc452d651a8dab
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037502"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994956"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Usługa Azure Queue storage do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net-legacy"></a>Usługa Azure Queue storage do monitorowania powiadomień dotyczących zadań usługi Media Services przy użyciu platformy .NET (starsza wersja)
+
 Po uruchomieniu zadania kodowania, często wymagają sposób śledzenia postępu zadań. Można skonfigurować usługi Media Services w celu dostarczenia powiadomienia [Azure Queue storage](../../storage/storage-dotnet-how-to-use-queues.md). Aby monitorować postęp zadania, otrzymywanie powiadomień z usługi Queue storage. 
 
 Wiadomości dostarczone do usługi Queue storage jest możliwy z dowolnego miejsca na świecie. Architektura komunikatów kolejki magazynu jest niezawodny i wysoce skalowalne. Zaleca się sondowania magazyn kolejek komunikatów, za pośrednictwem za pomocą innych metod.
@@ -338,7 +339,7 @@ namespace JobNotification
 }
 ```
 
-Poprzedni przykład utworzone następujące dane wyjściowe: wartości będą się różnić.
+Poprzedni przykład utworzone następujące dane wyjściowe: Wartości będą się różnić.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

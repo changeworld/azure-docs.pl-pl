@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do zapytań w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek, w celu uzyskania wprowadzenie Pisanie zapytań w usłudze Log Analytics.
+title: Wprowadzenie do zapytań dzienników w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera samouczek dla klientów zaczynających pracę Pisanie zapytań dzienników w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 326e12444067e950b9d6ae0862424589d444b83d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882973"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994891"
 ---
-# <a name="get-started-with-queries-in-log-analytics"></a>Wprowadzenie do zapytań w usłudze Log Analytics
+# <a name="get-started-with-azure-monitor-log-queries"></a>Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań
 
 
 > [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-portal.md) przed ukończenie tego samouczka.
+> Należy wykonać [wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) przed ukończenie tego samouczka.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym samouczku dowiesz się pisać zapytania usługi Azure Log Analytics. Jego nauczą Cię, jak do:
+W tym samouczku dowiesz się pisać zapytania dziennika LMonitor platformy Azure. Jego nauczą Cię, jak do:
 
 - Zrozumienie struktury zapytań
 - Sortowanie wyników zapytania
@@ -43,10 +43,10 @@ W tym samouczku dowiesz się pisać zapytania usługi Azure Log Analytics. Jego 
 Zapytania można zacząć od jednej nazwy tabeli lub *wyszukiwania* polecenia. Należy rozpocząć z nazwą tabeli, ponieważ definiuje wyczyść zakres zapytania i zwiększa wydajność zapytań i znaczenie wyników.
 
 > [!NOTE]
-> Język zapytań usługi Azure Log Analytics jest rozróżniana wielkość liter. Słowa kluczowe języka są zwykle zapisywane w małe. Korzystając z nazwy tabel lub kolumn w zapytaniu, pamiętaj mieć poprawną wielkość, jak pokazano w okienku schematu.
+> Język zapytań Eksploratora danych, które są używane przez usługi Azure Monitor jest rozróżniana wielkość liter. Słowa kluczowe języka są zwykle zapisywane w małe. Korzystając z nazwy tabel lub kolumn w zapytaniu, pamiętaj mieć poprawną wielkość, jak pokazano w okienku schematu.
 
 ### <a name="table-based-queries"></a>Zapytania w oparciu o tabeli
-Usługa Azure Log Analytics służy do organizowania danych w tabelach, każdy składa się z wielu kolumn. Wszystkie tabele i kolumny są wyświetlane w okienku schematu w portalu usługi analiza. Określ tabelę interesują, a następnie zapoznaj się z bitu danych:
+Usługa Azure Monitor organizuje dane dziennika w tabelach, każdy składa się z wielu kolumn. Wszystkie tabele i kolumny są wyświetlane w okienku schematu w usłudze Log Analytics w portalu usługi analiza. Określ tabelę interesują, a następnie zapoznaj się z bitu danych:
 
 ```Kusto
 SecurityEvent
@@ -112,7 +112,7 @@ Podczas pisania warunków filtrowania, można użyć następujących wyrażeń:
 |:---|:---|:---|
 | == | Sprawdź równości<br>(z uwzględnieniem wielkości liter) | `Level == 8` |
 | =~ | Sprawdź równości<br>(bez uwzględniania wielkości liter) | `EventSourceName =~ "microsoft-windows-security-auditing"` |
-| ! = <> | Sprawdź nierówności<br>(oba wyrażenia są identyczne) | `Level != 4` |
+| !=, <> | Sprawdź nierówności<br>(oba wyrażenia są identyczne) | `Level != 4` |
 | *i*, *lub* | Wymagane między warunkami| `Level == 16 or CommandLine != ""` |
 
 Aby filtrować według wielu warunków, można użyć **i**:
@@ -164,7 +164,7 @@ SecurityEvent
 
 Poprzedni przykład generuje następujące dane wyjściowe:
 
-![Zaloguj się wyników projektu analizy](media/get-started-queries/project.png)
+![Wyniki projektu zapytania](media/get-started-queries/project.png)
 
 Można również użyć **projektu** zmiana nazw kolumn i definiowania nowych. W poniższym przykładzie użyto projektu, wykonaj następujące czynności:
 
@@ -236,7 +236,7 @@ Perf
 
 Aby dane wyjściowe bardziej zrozumiały, wybierz wyświetlania go jako wykres czasu, przedstawiając ilość dostępnej pamięci w czasie:
 
-![Log Analytics pamięci wraz z upływem czasu](media/get-started-queries/chart.png)
+![Zapytanie pamięci wraz z upływem czasu](media/get-started-queries/chart.png)
 
 
 

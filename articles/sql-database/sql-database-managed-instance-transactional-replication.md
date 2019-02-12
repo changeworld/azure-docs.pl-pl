@@ -1,6 +1,6 @@
 ---
 title: Replikacja transakcyjna, za pomocą usługi Azure SQL Database | Dokumentacja firmy Microsoft"
-description: Informacje o używaniu replikację transakcyjną programu SQL Server przy użyciu autonomicznej, puli i wystąpienie bazy danych w usłudze Azure SQL Database.
+description: Dowiedz się więcej o przy użyciu replikację transakcyjną programu SQL Server za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,15 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/08/2019
+ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814116"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993813"
 ---
-# <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacji transakcyjnej przy użyciu autonomicznej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
+# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Replikacja transakcyjna, za pomocą pojedynczej, puli i wystąpienie bazy danych w usłudze Azure SQL Database
 
 Replikacja transakcyjna to funkcja usługi Azure SQL Database i programu SQL Server, która pozwala na replikowanie danych z tabeli w usłudze Azure SQL Database lub SQL Server do tabel umieszczone na zdalne bazy danych. Ta funkcja służy do synchronizowania wielu tabel w różnych bazach danych.
 
@@ -37,22 +37,21 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
 
 ![Replikacja za pomocą bazy danych SQL](media/replication-to-sql-database/replication-to-sql-database.png)
 
-
 **Wydawcy** to wystąpienie lub serwer, który publikuje zmiany wprowadzone na niektórych tabel (artykuły), wysyłając aktualizacje z dystrybutorem. Publikowanie do dowolnej usługi Azure SQL bazy danych z lokalnego programu SQL Server jest obsługiwany przez następujące wersje programu SQL Server:
 
-   - 2019 r programu SQL Server (wersja zapoznawcza)
-   - SQL Server 2016 do programu SQL 2017
-   - SQL Server 2014 SP1 CU3 lub większa (12.00.4427)
-   - SQL Server 2014 RTM CU10 (12.00.2556)
-   - SQL Server 2012 SP3 lub większa (11.0.6020)
-   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-   - W przypadku innych wersji programu SQL Server, które nie obsługują publikowania do obiektów na platformie Azure, jest możliwe wykorzystanie [ponowne publikowanie danych](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metodę, aby przenieść dane do nowszych wersji programu SQL Server. 
+- 2019 r programu SQL Server (wersja zapoznawcza)
+- SQL Server 2016 do programu SQL 2017
+- SQL Server 2014 SP1 CU3 lub większa (12.00.4427)
+- SQL Server 2014 RTM CU10 (12.00.2556)
+- SQL Server 2012 SP3 lub większa (11.0.6020)
+- SQL Server 2012 SP2 CU8 (11.0.5634.0)
+- W przypadku innych wersji programu SQL Server, które nie obsługują publikowania do obiektów na platformie Azure, jest możliwe wykorzystanie [ponowne publikowanie danych](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) metodę, aby przenieść dane do nowszych wersji programu SQL Server. 
 
 **Dystrybutora** to wystąpienie lub serwer, który zbiera zmian w artykułach z wydawcą i przesyła je do subskrybentów. Dystrybutor może być wystąpienia zarządzanego Azure SQL Database lub SQL Server (dowolna wersja, jak długie go równą lub większą niż wersja, wydawca). 
 
-**Subskrybenta** to wystąpienie lub serwerze, który odbiera zmiany wprowadzone na wydawcy. Subskrybentów można osobno, puli i wystąpienia bazy danych w bazach danych Azure SQL Database lub SQL Server. Subskrybent w przypadku autonomicznych lub próbkowania bazy danych musi być skonfigurowany jako subskrybenta wypychania. 
+**Subskrybenta** to wystąpienie lub serwerze, który odbiera zmiany wprowadzone na wydawcy. Subskrybenci mogą być albo pojedynczej, puli i wystąpienie bazy danych w bazach danych Azure SQL Database lub SQL Server. Subskrybent pojedyncze lub zbiorcze bazy danych musi być skonfigurowany jako subskrybenta wypychania. 
 
-| Rola | Autonomiczne i bazy danych w puli | Wystąpienie bazy danych |
+| Rola | Jedno- i puli baz danych | Wystąpienie bazy danych |
 | :----| :------------- | :--------------- |
 | **Wydawca** | Nie | Yes | 
 | **Dystrybutor** | Nie | Yes|
@@ -63,7 +62,7 @@ Główne składniki replikacji transakcyjnej przedstawiono na poniższej ilustra
 Istnieją różne [typy replikacji](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
 
 
-| Replikacja | Autonomiczne i bazy danych w puli | Wystąpienie bazy danych|
+| Replikacja | Jedno- i puli baz danych | Wystąpienie bazy danych|
 | :----| :------------- | :--------------- |
 | [**transakcyjne**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Tak (tylko jako subskrybenta) | Yes | 
 | [**Snapshot**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Tak (tylko jako subskrybenta) | Yes|
@@ -107,11 +106,11 @@ Wydawcą i dystrybutorem są konfigurowane na dwa wystąpienia zarządzanego. W 
 - Oba wystąpienia zarządzane przez usługę znajdują się w tej samej lokalizacji.
 - Wystąpienia zarządzane, które hostują opublikowane i baz danych dystrybutora nie może być [replikacją geograficzną za pomocą grupy trybu failover automatycznie](sql-database-auto-failover-group.md).
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-standalone-pooled-and-instance-database"></a>Wydawcą i dystrybutorem lokalnie przy użyciu subskrybenta w autonomicznym, puli i wystąpienie bazy danych 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Wydawcy i dystrybutora lokalnego z subskrypcją w ramach jednej puli lub wystąpienie bazy danych 
 
 ![Usługa Azure SQL DB subskrybenta](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-W tej konfiguracji usługi Azure SQL Database (autonomicznej, puli i wystąpienia bazy danych) jest subskrybentem. Ta konfiguracja obsługuje migracji ze środowiska lokalnego na platformę Azure. Jeśli subskrybent znajduje się w przypadku autonomicznych lub baza danych w puli, wartość musi być w trybie wypychania.  
+W tej konfiguracji usługi Azure SQL Database (pojedyncze, puli i wystąpienia bazy danych) jest subskrybentem. Ta konfiguracja obsługuje migracji ze środowiska lokalnego na platformę Azure. Jeśli subskrybent znajduje się w jednym lub w puli bazy danych, należy w trybie wypychania.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 

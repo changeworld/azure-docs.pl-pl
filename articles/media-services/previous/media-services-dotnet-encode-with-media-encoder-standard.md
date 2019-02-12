@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/09/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: e557b7220077be7fcca418f0c2cf8aceeace1eb5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d2d910c5f031329e952f4892431877ec690c2a5a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54809585"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991196"
 ---
-# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard za pomocą platformy .NET 
+# <a name="encode-an-asset-with-media-encoder-standard-using-net"></a>Kodowanie elementu zawartości za pomocą usługi Media Encoder Standard za pomocą platformy .NET  
+
 Zadania kodowania to jedna z operacji najczęściej przeprowadzanych przy użyciu usługi Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania, możesz użyć wbudowanych Media Encoder usługi Media Services. Można również użyć koder świadczonych przez partnera usługi Media Services; kodery innych firm są dostępne za pośrednictwem portalu Azure Marketplace. 
 
 W tym artykule przedstawiono sposób kodowania elementów zawartości przy użyciu Media Encoder Standard (MES) za pomocą platformy .NET. Usługi Media Encoder Standard jest skonfigurowany przy użyciu jednego z ustawień wstępnych koderów opisem [tutaj](https://go.microsoft.com/fwlink/?linkid=618336&clcid=0x409).

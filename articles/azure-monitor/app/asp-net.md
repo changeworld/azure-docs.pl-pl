@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: f41d54f97861a4df7d50cb3b4f0f99970de354cc
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 4a1ea364180d389ffdbfc7cedd740a0e493070b3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121502"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998998"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Konfigurowanie usługi Application Insights dla witryny sieci Web ASP.NET.
 
@@ -104,7 +104,7 @@ W portalu kliknij dowolny kafelek lub wykres, aby wyświetlić więcej szczegó�
 ## <a name="step-4-publish-your-app"></a>Krok 4: Publikowanie aplikacji
 Opublikuj aplikacje na serwerze IIS lub na platformie Azure. Obejrzyj [transmisję strumieniową metryk na żywo](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream), aby upewnić się, że wszystko działa bez problemów.
 
-Dane telemetryczne są gromadzone w portalu Application Insights, w którym można monitorować metryki, przeszukiwać telemetrię i konfigurować [pulpity nawigacyjne](../../azure-monitor/app/app-insights-dashboards.md). Można także użyć zaawansowanego [języka zapytań usługi Log Analytics](https://aka.ms/LogAnalyticsLanguage) do przeanalizowania użycia i wydajności lub znalezienia określonych zdarzeń.
+Dane telemetryczne są gromadzone w portalu Application Insights, w którym można monitorować metryki, przeszukiwać telemetrię i konfigurować [pulpity nawigacyjne](../../azure-monitor/app/app-insights-dashboards.md). Można także użyć zaawansowanego [język zapytań w Eksploratorze danych](https://aka.ms/LogAnalyticsLanguage) do przeanalizowania użycia i wydajności lub znalezienia określonych zdarzeń.
 
 Można również analizować telemetrię w programie [Visual Studio](../../azure-monitor/app/visual-studio.md) za pomocą narzędzi, takich jak wyszukiwanie diagnostyczne i [trendy](../../azure-monitor/app/visual-studio-trends.md).
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: tomfitz
-ms.openlocfilehash: 84f8d8ecbeacc5acb6b19462096e6fbd1aa45816
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 59322e303824d3a0db89e9e1252476d52106ba56
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810290"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991348"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -310,7 +310,7 @@ Operacja może trwać kilka minut.
 
 ### <a name="recovery-services-limitations"></a>Ograniczenia usług odzyskiwania
 
- Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się w prywatnej wersji zapoznawczej. Aby ją wypróbować, napisz na adres AskAzureBackupTeam@microsoft.com.
+ Aby przenieść magazyn usługi Recovery Services, musisz zarejestrować się [ograniczonej publicznej wersji zapoznawczej](../backup/backup-azure-move-recovery-services-vault.md).
 
 Obecnie można przenieść jeden magazyn usługi Recovery Services, na region, w danym momencie. Nie można przenieść magazynów, które wykonują kopie zapasowe usługi Azure Files, usługi Azure File Sync lub SQL w przypadku maszyn wirtualnych IaaS.
 

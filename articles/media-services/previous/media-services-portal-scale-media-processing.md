@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2aabdc503a694de46796b7c3afeedfcdb2f39ca9
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 810d1bf6a550539b402721d089d8b041cfb48634
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037874"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991461"
 ---
 # <a name="change-the-reserved-unit-type"></a>Zmiana typu jednostki zarezerwowanej
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.locfileid: "51037874"
 
 ## <a name="overview"></a>Przegląd
 
-Konto usługi Media Services jest skojarzone z typem jednostki zarezerwowanej określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2** lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**.
+Konto usługi Media Services jest skojarzone z typem jednostki zarezerwowanej określającym szybkość, z jaką są przetwarzane zadania przetwarzania multimediów. Można wybrać jeden z następujących typów jednostki zarezerwowanej: **S1**, **S2**, lub **S3**. Na przykład to samo zadanie kodowania jest wykonywane szybciej przy użyciu typu jednostki zarezerwowanej **S2** niż w przypadku użycia typu **S1**.
 
 Oprócz określenia typu jednostki zarezerwowanej można określić aprowizację swojego konta przy użyciu **jednostek zarezerwowanych** (RU, Reserved Unit). Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta.
 
@@ -53,7 +53,7 @@ Aby zmienić typ jednostki zarezerwowanej i liczbę jednostek zarezerwowanych, w
    
     Aby zmienić liczbę jednostek zarezerwowanych dla typu jednostki zarezerwowanej wybrane, użyj **jednostek obsługiwane multimediów** suwaka w górnej części ekranu.
    
-    Aby zmienić **ZASTRZEŻONY typ jednostki**, kliknij pozycję **szybkość jednostek zarezerwowanych przetwarzania** paska. Następnie wybierz warstwę cenową, potrzebujesz: S1, S2 lub S3.
+    Aby zmienić **ZASTRZEŻONY typ jednostki**, kliknij pozycję **szybkość jednostek zarezerwowanych przetwarzania** paska. Wybierz warstwę cenową, czego potrzebujesz: S1, S2 lub S3.
    
 3. Kliknij przycisk ZAPISZ, aby zapisać zmiany.
    

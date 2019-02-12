@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159744"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005458"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Omówienie interfejsu API REST usługi Media Services operacji
+# <a name="media-services-operations-rest-api-overview"></a>Omówienie interfejsu API REST usługi Media Services operacji 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 **Media Services operacji REST** interfejsu API są używane do tworzenia zadań, zasobów, kanały na żywo i innych zasobów w ramach konta usługi Media Services. Aby uzyskać więcej informacji, zobacz [odwołanie do interfejsu API usług Media Services operacji REST](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
@@ -55,12 +55,12 @@ Obowiązują następujące zastrzeżenia, gdy przy użyciu interfejsu REST.
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Standardowa nagłówków żądań HTTP obsługiwane przez usługę Media Services
 Za każde wywołanie, wprowadzone do usługi Media Services ustawiono wymagane nagłówki, które należy uwzględnić w żądaniu, a także zestaw opcjonalne nagłówki warto uwzględnić. W poniższej tabeli przedstawiono wymagane nagłówki:
 
-| Nagłówek | Typ | Wartość |
+| Nagłówek | Type | Wartość |
 | --- | --- | --- |
 | Autoryzacja |Elementu nośnego |Elementu nośnego jest mechanizm autoryzacji akceptowane tylko. Wartość musi również zawierać token dostępu udostępniony przez usługę Azure Active Directory. |
-| x-ms-version |Dziesiętny |2.17 (lub najnowsza wersja)|
-| DataServiceVersion |Dziesiętny |3.0 |
-| MaxDataServiceVersion |Dziesiętny |3.0 |
+| x-ms-version |Decimal |2.17 (lub najnowsza wersja)|
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > Ponieważ usługa Media Services korzysta z protokołu OData do udostępnienia jej interfejsów API REST, nagłówki DataServiceVersion i MaxDataServiceVersion powinny być uwzględnione w wszystkie żądania; Jednak jeśli nie są one następnie obecnie usługi Media Services przyjęto założenie, że wartość DataServiceVersion używana jest 3.0.
@@ -69,24 +69,24 @@ Za każde wywołanie, wprowadzone do usługi Media Services ustawiono wymagane n
 
 Oto zbiór opcjonalne nagłówki:
 
-| Nagłówek | Typ | Wartość |
+| Nagłówek | Type | Wartość |
 | --- | --- | --- |
 | Date |RFC 1123 daty |Sygnatura czasowa żądania |
-| Zaakceptuj |Typ zawartości |Żądany typ zawartości odpowiedzi podobny do następującego:<p> -application/json; odata = pełne<p> -application/atom + xml<p> Odpowiedzi mogą mieć inny typ zawartości, takie jak pobieranie obiektów blob, gdy odpowiedź oznaczająca Powodzenie zawiera strumienia obiektu blob jako ładunek. |
-| Zaakceptuj kodowania |Gzip, deflate |GZIP i DEFLATE, kodowanie, jeśli ma to zastosowanie. Uwaga: W przypadku dużych zasobów usługi Media Services może zignorować ten nagłówek i zwróć nieskompresowanych danych. |
+| Zaakceptuj |Typ zawartości |Żądany typ zawartości odpowiedzi podobny do następującego:<p> -application/json;odata=verbose<p> -application/atom + xml<p> Odpowiedzi mogą mieć inny typ zawartości, takie jak pobieranie obiektów blob, gdy odpowiedź oznaczająca Powodzenie zawiera strumienia obiektu blob jako ładunek. |
+| Accept-Encoding |Gzip, deflate |GZIP i DEFLATE, kodowanie, jeśli ma to zastosowanie. Uwaga: W przypadku dużych zasobów usługi Media Services może zignorować ten nagłówek i zwróć nieskompresowanych danych. |
 | Zaakceptuj języka |"en", "es" i tak dalej. |Określa preferowany język dla odpowiedzi. |
 | Accept-Charset |Typ zestaw znaków, takich jak "UTF-8" |Domyślna to UTF-8. |
 | X-HTTP-Method. |Metoda HTTP |Umożliwia klientom lub zapory, które nie obsługują metod HTTP, takich jak PUT lub DELETE w celu użycia tych metod tunelowania przez wywołanie GET. |
 | Content-Type |Typ zawartości |Typ zawartości treści żądania PUT lub WPIS żądań. |
-| Identyfikator żądania klienta |Ciąg |Wartość zdefiniowana przez obiekt wywołujący, która identyfikuje danego żądania. Jeśli zostanie określony, ta wartość będzie zawarty w komunikacie odpowiedzi jako sposób mapowania żądania. <p><p>**Ważne**<p>Wartości powinny być ograniczone do 2096b (2k). |
+| client-request-id |String |Wartość zdefiniowana przez obiekt wywołujący, która identyfikuje danego żądania. Jeśli zostanie określony, ta wartość będzie zawarty w komunikacie odpowiedzi jako sposób mapowania żądania. <p><p>**Ważne**<p>Wartości powinny być ograniczone do 2096b (2k). |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Standardowych nagłówków odpowiedzi HTTP obsługiwane przez usługę Media Services
 Poniżej znajduje się zestaw nagłówków, które mogą być zwrócone do użytkownika w zależności od tego, czy zasób, do którego zostały żądania i akcję, którą zamierzasz wykonać.
 
-| Nagłówek | Typ | Wartość |
+| Nagłówek | Type | Wartość |
 | --- | --- | --- |
-| Identyfikator żądania |Ciąg |Unikatowy identyfikator dla bieżącej operacji usługi wygenerowany. |
-| Identyfikator żądania klienta |Ciąg |Identyfikator określony przez obiekt wywołujący w oryginalne żądanie, jeśli jest obecny. |
+| Identyfikator żądania |String |Unikatowy identyfikator dla bieżącej operacji usługi wygenerowany. |
+| client-request-id |String |Identyfikator określony przez obiekt wywołujący w oryginalne żądanie, jeśli jest obecny. |
 | Date |RFC 1123 daty |Data/czas przetwarzania żądania. |
 | Content-Type |Różna |Typ zawartości treści odpowiedzi. |
 | Content-Encoding |Różna |Gzip lub deflate, odpowiednio. |

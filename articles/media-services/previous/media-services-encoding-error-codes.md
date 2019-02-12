@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 7e32d0826d36b0d6f68264ba8c74aec49574b0c2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5ab537d94c56f1d5a9a0b32e3a18a416baf74a75
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254557"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995751"
 ---
 # <a name="encoding-error-codes"></a>Kody błędów kodowania
 
@@ -27,7 +27,7 @@ Poniższa tabela zawiera listę kodów błędów, które mogą być zwracane w p
 
 | ErrorDetail.Code | Możliwe przyczyny błędu |
 | --- | --- |
-| Nieznane |Nieznany błąd podczas wykonywania zadania |
+| Nieznana |Nieznany błąd podczas wykonywania zadania |
 | ErrorDownloadingInputAssetMalformedContent |Kategorii błędów, który obejmuje błędy podczas pobierania danych wejściowych zasobów, takich jak nazwy uszkodzonych plików, zerowego pliki o długości, niepoprawny formatuje i tak dalej. |
 | ErrorDownloadingInputAssetServiceFailure |Kategoria błędów, który obejmuje problemów po stronie usługi — na przykład błędy sieci i magazynu podczas pobierania. |
 | ErrorParsingConfiguration |Kategoria błędów, gdy zadanie <see cref="MediaTask.PrivateData"/> (Konfiguracja) nie jest prawidłowa, na przykład konfiguracja nie jest ustawienie wstępne systemu nieprawidłowy lub zawiera nieprawidłowy kod XML. |

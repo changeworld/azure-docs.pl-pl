@@ -1,6 +1,6 @@
 ---
-title: Rozwiązania do zarządzania w usłudze Azure Monitor | Dokumentacja firmy Microsoft
-description: Rozwiązania do zarządzania w usłudze Azure Monitor to zbiór reguł nabycia logiki, wizualizacji i danych, które udostępniają metryki dotyczące określonego obszaru problemów.  Ten artykuł zawiera informacje na temat instalowania i za pomocą rozwiązania do zarządzania.
+title: Monitorowanie rozwiązań w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Rozwiązania do monitorowania w usłudze Azure Monitor to zbiór reguł nabycia logiki, wizualizacji i danych, które udostępniają metryki dotyczące określonego obszaru problemów.  Ten artykuł zawiera informacje na temat instalowania i używania rozwiązania do monitorowania.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 8a6a679aaf43e4a92eb380368f3d68704853d3a3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ff7d886d3f219d007f159167cacfed1b8ee13863
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816819"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001021"
 ---
-# <a name="management-solutions-in-azure-monitor"></a>Rozwiązania do zarządzania w usłudze Azure Monitor
-Rozwiązania do zarządzania korzystać z usług na platformie Azure, aby zapewnić dodatkowy wgląd w działania określonej aplikacji lub usługi. Ten artykuł zawiera krótkie omówienie rozwiązania do zarządzania na platformie Azure i uzyskać szczegółowe informacje na temat używania i instalując je.
+# <a name="monitoring-solutions-in-azure-monitor"></a>Monitorowanie rozwiązań w usłudze Azure Monitor
+Rozwiązania do monitorowania korzystać z usług na platformie Azure, aby zapewnić dodatkowy wgląd w działania określonej aplikacji lub usługi. Ten artykuł zawiera krótkie omówienie rozwiązania na platformie Azure i uzyskać szczegółowe informacje na temat używania i instalując je do monitorowania.
 
-Rozwiązania do zarządzania zwykle gromadzić dane dzienników i zapewnić zapytań i widoków do analizowania zebranych danych. Mogą one również korzystać z innych usług, takich jak usługa Azure Automation do wykonania akcji związanych z aplikacji lub usługi.
+> [!NOTE]
+> Rozwiązania do monitorowania były wcześniej nazywane rozwiązań do zarządzania.
 
-Rozwiązania do zarządzania można dodać do usługi Azure Monitor dla dowolnej aplikacji i usług, których używasz. Są one zazwyczaj dostępne w żadnych kosztów, ale zbieranie danych, które można wywołać opłaty za użycie. Oprócz rozwiązania firmy Microsoft, partnerów i klientów można [tworzenie rozwiązań do zarządzania](solutions-creating.md) do użycia we własnym środowisku lub udostępniane klientom za pośrednictwem społeczności.
+Rozwiązania do monitorowania zazwyczaj zbierają dane dzienników i zapewnić zapytań i widoków do analizowania zebranych danych. Mogą one również korzystać z innych usług, takich jak usługa Azure Automation do wykonania akcji związanych z aplikacji lub usługi.
 
-## <a name="use-management-solutions"></a>Użyj rozwiązań do zarządzania
-Otwórz **Przegląd** strony dla obszaru roboczego usługi Log Analytics wyświetlanie kafelka dla każdego rozwiązania zainstalowane w obszarze roboczym. 
+Rozwiązania do monitorowania można dodać do usługi Azure Monitor dla dowolnej aplikacji i usług, których używasz. Są one zazwyczaj dostępne w żadnych kosztów, ale zbieranie danych, które można wywołać opłaty za użycie. Oprócz rozwiązania firmy Microsoft, partnerów i klientów można [tworzenie rozwiązań do zarządzania](solutions-creating.md) do użycia we własnym środowisku lub udostępniane klientom za pośrednictwem społeczności.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="use-monitoring-solutions"></a>Używanie rozwiązań do monitorowania
+Otwórz **Przegląd** strony w usłudze Azure Monitor, aby wyświetlić Kafelek dla każdego rozwiązania w obszarze roboczym. 
 
 1. Zaloguj się w witrynie Azure Portal.
 1. Otwórz **wszystkich usług** i Znajdź **Monitor**.
@@ -38,14 +43,14 @@ Otwórz **Przegląd** strony dla obszaru roboczego usługi Log Analytics wyświe
 
 ![Przegląd](media/solutions/overview.png)
 
-Rozwiązania do zarządzania może zawierać wiele typów zasobów platformy Azure i wyświetlić wszystkie zasoby dołączone do rozwiązania, tak jak każdy inny zasób. Na przykład żadnych zapytań log zawarty w rozwiązaniu są wyświetlane w obszarze **zapytania rozwiązania** w [Eksplorator zapytań](../log-query/get-started-portal.md#load-queries) podczas przeprowadzania analizy ad-hoc z usługą Log Analytics, można użyć tych zapytań.
+Rozwiązania do monitorowania może zawierać wiele typów zasobów platformy Azure i wyświetlić wszystkie zasoby dołączone do rozwiązania, tak jak każdy inny zasób. Na przykład żadnych zapytań log zawarty w rozwiązaniu są wyświetlane w obszarze **zapytania rozwiązania** w [Eksplorator zapytań](../log-query/get-started-portal.md#load-queries) te zapytania można używać podczas wykonywania analiz ad hoc z [rejestrowania zapytań ](../log-query/log-query-overview.md).
 
-## <a name="list-installed-management-solutions"></a>Wyświetlanie listy zainstalowanych rozwiązań do zarządzania 
-Aby wyświetlić listę rozwiązań do zarządzania zainstalowany w ramach subskrypcji, należy użyć następującej procedury.
+## <a name="list-installed-monitoring-solutions"></a>Lista zainstalowanych rozwiązania do monitorowania 
+Aby wyświetlić listę rozwiązań do monitorowania zainstalowane w ramach subskrypcji, należy użyć poniższej procedury.
 
 1. Zaloguj się w witrynie Azure Portal.
 1. Otwórz **wszystkich usług** i Znajdź **rozwiązania**.
-4. Rozwiązania zainstalowane we wszystkich obszarach roboczych są wyświetlane. Nazwa rozwiązania następuje nazwa obszaru roboczego usługi Log Analytics, który jest instalowany w.
+4. Rozwiązania zainstalowane we wszystkich obszarach roboczych są wyświetlane. Nazwa rozwiązania następuje nazwa obszaru roboczego, który jest instalowany w.
 1. Użyj pola listy rozwijanej w górnej części ekranu, aby filtrować według subskrypcji lub grupy zasobów.
 
 
@@ -57,12 +62,12 @@ Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania. Ta strona w
 
 
 
-## <a name="install-a-management-solution"></a>Zainstalować rozwiązanie do zarządzania
-Rozwiązania do zarządzania firmy Microsoft i partnerów są dostępne z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com). Możesz wyszukiwać dostępnych rozwiązań i zainstalować je przy użyciu poniższej procedury. Po zainstalowaniu rozwiązania, należy wybrać [obszaru roboczego usługi Log Analytics](../platform/manage-access.md) zainstalowanym rozwiązania i gdzie będą zbierane dane.
+## <a name="install-a-monitoring-solution"></a>Zainstalować rozwiązanie do monitorowania
+Rozwiązania firmy Microsoft i partnerów do monitorowania są dostępne z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com). Możesz wyszukiwać dostępnych rozwiązań i zainstalować je przy użyciu poniższej procedury. Po zainstalowaniu rozwiązania, należy wybrać [obszaru roboczego usługi Log Analytics](../platform/manage-access.md) zainstalowanym rozwiązania i gdzie będą zbierane dane.
 
 1. Z [listę rozwiązań dla Twojej subskrypcji](#list-installed-management-solutions), kliknij przycisk **Dodaj**. 
 1. Po prawej stronie **rozwiązań do zarządzania**, kliknij przycisk **więcej**. 
-1. Znajdź rozwiązania do zarządzania ma i zapoznaj się z jego opis.
+1. Znajdź rozwiązania do monitorowania ma i zapoznaj się z jego opis.
 1. Kliknij przycisk **Utwórz** do uruchamiania procesu instalacji.
 1. Podczas uruchamiania procesu instalacji, zostanie wyświetlony monit podanie wymaganej konfiguracji, które różni się w poszczególnych rozwiązań.
 
@@ -81,7 +86,7 @@ Członkowie społeczności mogą przesyłać do platformy Azure — szablony szy
 
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Obszar roboczy usługi log Analytics i konto usługi Automation
-Wszystkie rozwiązania zarządzania wymagają [obszaru roboczego usługi Log Analytics](../platform/manage-access.md) do przechowywania danych zbieranych przez to rozwiązanie i hostowania wyszukiwań w dziennikach i widoków. Niektóre rozwiązania wymagają również [konta usługi Automation](../../automation/automation-security-overview.md#automation-account-overview) zawiera elementy runbook i powiązane zasoby. Obszar roboczy i konto musi spełniać następujące wymagania.
+Wszystkie rozwiązania monitorowania wymagają [obszaru roboczego usługi Log Analytics](../platform/manage-access.md) do przechowywania danych zbieranych przez to rozwiązanie i hostowania wyszukiwań w dziennikach i widoków. Niektóre rozwiązania wymagają również [konta usługi Automation](../../automation/automation-security-overview.md#automation-account-overview) zawiera elementy runbook i powiązane zasoby. Obszar roboczy i konto musi spełniać następujące wymagania.
 
 * Każda instalacja rozwiązania można używać tylko jednego obszaru roboczego usługi Log Analytics i jedno konto usługi Automation. Oddzielnie zainstalować rozwiązanie do wielu obszarów roboczych.
 * Jeśli to rozwiązanie wymaga konta usługi Automation, następnie obszaru roboczego usługi Log Analytics i konto usługi Automation muszą być połączone ze sobą. Obszar roboczy usługi Log Analytics mogą być łączone tylko na jednym koncie usługi Automation, a konto usługi Automation mogą być łączone tylko z jednym obszarem roboczym usługi Log Analytics.
@@ -100,13 +105,11 @@ Można sprawdzić połączenie między obszar roboczy usługi Log Analytics i ko
 1. Przewiń do **powiązane zasoby** części menu.
 1. Jeśli **obszaru roboczego** ustawienie jest włączone, a następnie to konto jest połączone z obszarem roboczym usługi Log Analytics. Możesz kliknąć **obszaru roboczego** Aby wyświetlić szczegóły obszaru roboczego.
 
-## <a name="remove-a-management-solution"></a>Usuń to rozwiązanie do zarządzania
-Aby usunąć zainstalowane rozwiązanie, znajdź go na liście zainstalowane rozwiązania. Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania, a następnie kliknij polecenie **Usuń**.
-
-
+## <a name="remove-a-monitoring-solution"></a>Usuwanie rozwiązania do monitorowania
+Aby usunąć rozwiązanie zainstalowany, znajdź go w [listę zainstalowanych rozwiązań](#list-installed-monitoring-solutions). Kliknij nazwę rozwiązania, aby otworzyć jej stronę podsumowania, a następnie kliknij polecenie **Usuń**.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Pobierz [listę rozwiązań do zarządzania przez firmę Microsoft](solutions-inventory.md).
-* Dowiedz się, jak [tworzenia zapytań](../../azure-monitor/log-query/log-query-overview.md) analizować dane zbierane przez rozwiązania do zarządzania.
+* Pobierz [listę monitorowanie rozwiązań firmy Microsoft](solutions-inventory.md).
+* Dowiedz się, jak [tworzenia zapytań](../log-query/log-query-overview.md) analizować dane zbierane przez rozwiązania do monitorowania.
 

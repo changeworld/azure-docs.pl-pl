@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 1bada751ffac45b36faad6e978567233901adc7d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 285f4f4aad18943399511cbcac711933f23f7cb2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700319"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004798"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Limity przydziału i ograniczenia dotyczące usługi Azure Media Services v3
 
@@ -48,7 +48,7 @@ W tym artykule opisano przydziały i ograniczenia dotyczące usługi Azure Media
 
 Wszystkie rekordy zadań na Twoim koncie, które są starsze niż 90 dni zostaną automatycznie usunięte, nawet jeśli łączna liczba rekordów jest poniżej maksymalny limit przydziału. 
 
-<sup>3</sup> podczas korzystania z niestandardowej [przesyłania strumieniowego zasad](https://docs.microsoft.com/rest/api/media/streamingpolicies), należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi multimediów i ponownie używać ich na potrzeby usługi StreamingLocators za każdym razem szyfrowania tych samych opcji i protokołów są wymagane. Należy nie można utworzeniem nowej zasady przesyłania strumieniowego dla każdego lokalizatora przesyłania strumieniowego.
+<sup>3</sup> podczas korzystania z niestandardowej [przesyłania strumieniowego zasad](https://docs.microsoft.com/rest/api/media/streamingpolicies), należy zaprojektować ograniczony zestaw tych zasad dla swojego konta usługi multimediów i ponownie używać ich na potrzeby usługi StreamingLocators za każdym razem szyfrowania tych samych opcji i protokołów są wymagane. Nie należy tworzyć nowych zasad przesyłania strumieniowego dla każdego lokalizatora przesyłania strumieniowego.
 
 <sup>4</sup> konta magazynu muszą pochodzić z tej samej subskrypcji platformy Azure.
 

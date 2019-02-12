@@ -4,7 +4,7 @@ description: W tym temacie omówiono hybrydowy projekt subsystem(s) DRM przy uż
 services: media-services
 documentationcenter: ''
 author: willzhan
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 02/08/2019
 ms.author: willzhan;juliako
-ms.openlocfilehash: 9026cab0651cd5f8433f9a8a7db0366a6ab13464
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 349bc45305539578aeebe851cf42df123bbd863e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190259"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998255"
 ---
-# <a name="hybrid-design-of-drm-subsystems"></a>Projekt hybrydowego DRM subsystem(s)
+# <a name="hybrid-design-of-drm-subsystems-legacy"></a>Hybrydowy projekt podsystemu DRM (starsza wersja)
 
 W tym temacie omówiono hybrydowy projekt subsystem(s) DRM przy użyciu usługi Azure Media Services.
 
@@ -68,7 +68,7 @@ Jako część w chmurze kompleksową platformę wideo usługi Azure Media Servic
 
 ### <a name="drm-license-delivery"></a>Dostarczanie licencji DRM
 
-* USŁUGI AMS: Licencji DRM są dostarczane przez usługi dostarczania licencji usługi AMS.
+* AMS: Licencji DRM są dostarczane przez usługi dostarczania licencji usługi AMS.
 * Innych firm: Licencji DRM są dostarczane przez serwer licencji DRM innych firm, poza usługi AMS.
 
 ## <a name="configure-based-on-your-hybrid-scenario"></a>Konfigurowanie oparte na scenariusza hybrydowego

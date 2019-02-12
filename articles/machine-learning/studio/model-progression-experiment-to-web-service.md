@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: a2e7c45615c1f9d07ef3392ee10579a1b5e3588f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 31005077c9c149f9aff055432d9577a63bac8e1c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477985"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992296"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak modelu usługi Machine Learning Studio w miarę z eksperymentu do zoperacjonalizowanej usługi sieci Web
 Usługa Azure Machine Learning Studio udostępnia interaktywne kanwy, która pozwala na tworzenie, uruchamianie, testów i modyfikować ***eksperymentować*** reprezentujący modelu analizy predykcyjnej. Istnieją szerokiej gamy dostępnych modułów, które można:
@@ -46,7 +46,7 @@ Oto etapy, które następują typowe rozwiązanie, podczas tworzenia i wdrażani
 *Rysunek 1 — etapy modelu Typowa analizy predykcyjnej*
 
 ### <a name="the-training-experiment"></a>Eksperymentu szkolenia
-***Eksperymentu szkolenia*** jest początkowa faza związanych z tworzeniem usługi sieci Web w usłudze Machine Learning Studio. Eksperymentu szkolenia ma na celu zapewniają miejsce opracowywanie, testowanie, iteracji i ostatecznie szkolenie modelu uczenia maszynowego. Możesz nawet uczyć wielu modeli jednocześnie poszukaj najlepszym rozwiązaniem, ale po zakończeniu eksperymentowanie, możesz wybrać jeden uczony model obsługi i eliminowanie rest z eksperymentu. Aby uzyskać przykład tworzenia eksperymentu analizy predykcyjnej, zobacz [tworzenia rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+***Eksperymentu szkolenia*** jest początkowa faza związanych z tworzeniem usługi sieci Web w usłudze Machine Learning Studio. Eksperymentu szkolenia ma na celu zapewniają miejsce opracowywanie, testowanie, iteracji i ostatecznie szkolenie modelu uczenia maszynowego. Możesz nawet uczyć wielu modeli jednocześnie poszukaj najlepszym rozwiązaniem, ale po zakończeniu eksperymentowanie, możesz wybrać jeden uczony model obsługi i eliminowanie rest z eksperymentu. Aby uzyskać przykład tworzenia eksperymentu analizy predykcyjnej, zobacz [tworzenia rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](tutorial-part1-credit-risk.md).
 
 ### <a name="the-predictive-experiment"></a>Eksperyment predykcyjny
 Po utworzeniu uczonego modelu w eksperymentu szkolenia, kliknij przycisk **ustawić usługę sieci Web** i wybierz **predykcyjne usługi sieci Web** w celu zainicjowania procesu konwersji szkolenia usługi Machine Learning Studio eksperymentowanie do ***eksperyment predykcyjny***. Eksperyment predykcyjny ma na celu użyj uczonego modelu, aby oceniać nowe dane, z celem ostatecznie staje się przygotowany do działania jako usługa sieci Web platformy Azure.
@@ -104,7 +104,7 @@ Jeśli chcesz zachować modelu uczenia maszynowego, ale chcesz ponownie ucz je z
 
 Jeśli chcesz wprowadzić zmiany w oryginalnym eksperyment predykcyjny, np. wybranie innego algorytmu, uczenia maszynowego podjęcie próby szkolenia różne metody, itp., a następnie należy wykonać drugiej procedury opisane powyżej, aby ponowne trenowanie modelu: Otwórz szkolenie eksperymentu, kliknij przycisk **Zapisz jako** do skopiowania, a następnie uruchom nową ścieżkę opracowanie modelu, tworzenie eksperyment predykcyjny i wdrażanie usługi sieci web w dół. Spowoduje to utworzenie nowej sieci Web usługi niezwiązanych ze sobą do oryginalnego — można określić, który z nich lub obie umożliwia kontynuowanie działania.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 Aby uzyskać szczegółowe informacje na temat procesu opracowywaniem i eksperymentu zobacz następujące artykuły:
 
 * Konwertowanie eksperymentu - [jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md)
@@ -114,5 +114,5 @@ Aby uzyskać szczegółowe informacje na temat procesu opracowywaniem i eksperym
 Aby uzyskać przykłady całego procesu zobacz:
 
 * [Samouczek dotyczący uczenia maszynowego: Tworzenie pierwszego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md)
-* [Wskazówki: Tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](walkthrough-develop-predictive-solution.md)
+* [Wskazówki: Tworzenie rozwiązania analizy predykcyjnej w celu oceny ryzyka kredytowego w usłudze Azure Machine Learning](tutorial-part1-credit-risk.md)
 

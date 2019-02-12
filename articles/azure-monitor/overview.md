@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 804044dbfc5428c3a80aab13227730ed13c43ce2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4f92860ac128bdb6e4e2e059592745285779688d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098034"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001996"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -28,6 +28,7 @@ Usługa Azure Monitor maksymalizuje dostępność i wydajność aplikacji, zapew
 ## <a name="overview"></a>Przegląd
 Poniższy diagram zawiera widok wysokiego poziomu usługi Azure Monitor. W środku diagramu są magazynów danych dla metryki i dzienniki, które są dwa podstawowe typy danych używany przez usługi Azure Monitor. Po lewej stronie są [źródła danych monitorowania](platform/data-sources.md) , wypełnić te [magazyny danych](platform/data-collection.md). Po prawej stronie są różne funkcje, które usługi Azure Monitor wykonuje się za pomocą tego zebranych danych, takich jak analiza, alertów i przesyłania strumieniowego z systemami zewnętrznymi.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ![Omówienie usługi Azure Monitor](media/overview/overview.png)
 
@@ -35,11 +36,11 @@ Poniższy diagram zawiera widok wysokiego poziomu usługi Azure Monitor. W środ
 ## <a name="monitoring-data-platform"></a>Platforma danych monitorowania
 Wszystkie dane zebrane przez usługi Azure Monitor pasuje do jednej z dwóch typów podstawowych, [metryk i dzienników](platform/data-collection.md). [Metryki](platform/data-collection.md#metrics) są wartości liczbowe, które opisują niektóre aspekty systemu w określonym punkcie w czasie. Są one uproszczone i zdolność do obsługi scenariuszy w czasie rzeczywistym w pobliżu. [Dzienniki](platform/data-collection.md#logs) zawierają różne rodzaje danych zorganizowanych w rekordy z różnymi zestawami właściwości dla każdego typu. Dane telemetryczne, np. zdarzeniami i śladami są przechowywane jako dzienniki dodatkowo na dane wydajności, aby wszystkie można zbudować do analizy.
 
-Dla wielu zasobów platformy Azure zostaną wyświetlone dane zebrane przez usługi Azure Monitor po prawej stronie na ich stronie Przegląd w witrynie Azure portal. Mają się z dowolną maszyną wirtualną, na przykład, a zobaczysz kilka wykresów, wyświetlanie metryk wydajności. Kliknij dowolne wykresy, aby otworzyć je w [Eksplorator metryk](platform/metrics-charts.md) w witrynie Azure portal, co pozwala na wykresie wartości wielu metryk wraz z upływem czasu.  Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami.
+Dla wielu zasobów platformy Azure zostaną wyświetlone dane zebrane przez usługi Azure Monitor po prawej stronie na ich stronie Przegląd w witrynie Azure portal. Mają się z dowolną maszyną wirtualną, na przykład, a zobaczysz kilka wykresów, wyświetlanie metryk wydajności. Kliknij dowolne wykresy, aby otworzyć je w [Eksploratora metryk](platform/metrics-charts.md) w witrynie Azure portal, co pozwala na wykresie wartości wielu metryk wraz z upływem czasu.  Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami.
 
 ![Metryki](media/overview/metrics.png)
 
-Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w usłudze Log Analytics, która zawiera [zaawansowany język zapytań](log-query/log-query-overview.md) do szybkiego pobierania, konsolidacji i analizowania zebranych danych.  Można tworzyć i testować przy użyciu [strony Log Analytics](log-query/portals.md) w witrynie Azure portal, a następnie bezpośrednio analizować dane za pomocą tych narzędzi lub zapisać zapytania do użycia z [wizualizacje](visualizations.md) lub [ reguły alertów](platform/alerts-overview.md).
+Dane dzienników zbieranych przez usługi Azure Monitor mogą być analizowane za pomocą [zapytania](log-query/log-query-overview.md) do szybkiego pobierania, konsolidacji i analizowania zebranych danych.  Można tworzyć i testować przy użyciu [dziennika analizy](log-query/portals.md) w witrynie Azure portal, a następnie bezpośrednio analizować dane za pomocą tych narzędzi lub zapisać zapytania do użycia z [wizualizacje](visualizations.md) lub [alertu reguły](platform/alerts-overview.md).
 
 Usługa Azure Monitor korzysta z wersji [język zapytań w Eksploratorze danych](/azure/kusto/query/) jest odpowiedni dla prostego dziennika zapytań, ale oferuje także zaawansowane funkcje, takie jak agregacje, sprzężenia i analiza inteligentna. Możesz szybko dowiedzieć się przy użyciu języka zapytań [wielu lekcje](log-query/get-started-queries.md).  Specjalne instrukcje udostępniono dla użytkowników, którzy znają już [SQL](log-query/sql-cheatsheet.md) i [Splunk](log-query/splunk-cheatsheet.md).
 
@@ -54,7 +55,7 @@ Usługa Azure Monitor umożliwia zbieranie danych z różnych źródeł. Można 
 - **Subskrypcja platformy Azure, danych monitorowania**: Dane dotyczące operacji i zarządzania subskrypcją platformy Azure, a także dane dotyczące kondycji i działanie systemu Azure sam. 
 - **Dzierżawa usługi Azure monitoring danych**: Dane o poziomie dzierżawy usług platformy Azure, takich jak Azure Active Directory.
 
-Zaraz po utworzeniu subskrypcji platformy Azure i zacznij dodawać zasoby, takie jak maszyny wirtualne i aplikacje sieci web usługi Azure Monitor rozpoczyna zbieranie danych.  [Dzienniki aktywności](platform/activity-logs-overview.md) rejestrowania po utworzeniu lub zmodyfikowaniu zasobów. [Metryki](../monitoring-and-diagnostics/monitoring-overview-metrics.md) informujące, jaka jest wydajność zasobów i zasoby, które go używa. 
+Zaraz po utworzeniu subskrypcji platformy Azure i zacznij dodawać zasoby, takie jak maszyny wirtualne i aplikacje sieci web usługi Azure Monitor rozpoczyna zbieranie danych.  [Dzienniki aktywności](platform/activity-logs-overview.md) rejestrowania po utworzeniu lub zmodyfikowaniu zasobów. [Metryki](platform/data-collection.md) informujące, jaka jest wydajność zasobów i zasoby, które go używa. 
 
 Rozszerzanie danych, Trwa zbieranie danych do bieżącej operacji zasobów przez [włączenie diagnostyki](platform/diagnostic-logs-overview.md) i [dodanie agenta](platform/agent-windows.md) zasobów obliczeniowych. Spowoduje to zbieranie danych telemetrycznych dla operacji wewnętrznej zasobu i umożliwiają skonfigurowanie różnych [źródeł danych](platform/agent-data-sources.md) do gromadzenia dzienników i metryk w systemie operacyjnym gościa Windows i Linux. 
 

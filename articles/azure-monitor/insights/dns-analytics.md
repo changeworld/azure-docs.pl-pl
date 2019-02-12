@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie analiza DNS w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Konfigurowanie i korzystanie z odpowiedniego rozwiązania analiza DNS w usłudze Log Analytics do zbierania informacji o infrastrukturze DNS dotyczące zabezpieczeń, wydajności i operacji.
+title: Rozwiązanie analiza DNS w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Konfigurowanie i korzystanie z odpowiedniego rozwiązania analiza DNS w usłudze Azure Monitor do zbierania informacji o infrastrukturze DNS dotyczące zabezpieczeń, wydajności i operacji.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 21b44b1c739818206fdba9d10250a2976f1d90db
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746867"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992725"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbierz informacje na temat infrastruktury DNS za pomocą rozwiązania DNS Analytics w wersji zapoznawczej
 
 ![Symbol analiza DNS](./media/dns-analytics/dns-analytics-symbol.png)
 
-W tym artykule opisano sposób konfigurowania i używania rozwiązania analiza DNS platformy Azure w usłudze Azure Log Analytics do zbierania informacji o infrastrukturze DNS dotyczące zabezpieczeń, wydajności i operacji.
+W tym artykule opisano sposób konfigurowania i używania rozwiązania analiza DNS platformy Azure w usłudze Azure Monitor do zbierania informacji o infrastrukturze DNS dotyczące zabezpieczeń, wydajności i operacji.
 
 Analiza DNS umożliwia:
 
@@ -42,21 +42,21 @@ W poniższej tabeli opisano połączone źródła, które są obsługiwane przez
 
 | **Połączone źródło** | **Pomoc techniczna** | **Opis** |
 | --- | --- | --- |
-| [Agenci dla systemu Windows](../../azure-monitor/platform/agent-windows.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów dla Windows. |
-| [Agenci dla systemu Linux](../../azure-monitor/learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje DNS z bezpośrednich agentów systemu Linux. |
-| [Grupa zarządzania programu System Center Operations Manager](../../azure-monitor/platform/om-agents.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów w połączonej grupie zarządzania programu Operations Manager. Bezpośrednie połączenie agenta programu Operations Manager z usługą Log Analytics nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
-| [Konto usługi Azure Storage](../../azure-monitor/platform/collect-azure-metrics-logs.md) | Nie | Usługa Azure storage nie jest używana przez to rozwiązanie. |
+| [Agenci dla systemu Windows](../platform/agent-windows.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów dla Windows. |
+| [Agenci dla systemu Linux](../learn/quick-collect-linux-computer.md) | Nie | Rozwiązanie zbiera informacje DNS z bezpośrednich agentów systemu Linux. |
+| [Grupa zarządzania programu System Center Operations Manager](../platform/om-agents.md) | Yes | Rozwiązanie zbiera informacje DNS z agentów w połączonej grupie zarządzania programu Operations Manager. Bezpośrednie połączenie agenta programu Operations Manager do usługi Azure Monitor nie jest wymagane. Dane są przekazywane z grupy zarządzania do obszaru roboczego usługi Log Analytics. |
+| [Konto usługi Azure Storage](../platform/collect-azure-metrics-logs.md) | Nie | Usługa Azure storage nie jest używana przez to rozwiązanie. |
 
 ### <a name="data-collection-details"></a>Szczegóły dotyczące zbierania danych
 
-Rozwiązanie zbiera spis DNS i dane dotyczące zdarzeń DNS z serwerów DNS, którym jest zainstalowany agent usługi Log Analytics. Te dane są następnie przekazywane do usługi Log Analytics i wyświetlane na pulpicie nawigacyjnym rozwiązania. Dane dotyczące zapasów, takie jak liczba serwerów DNS, strefy i rekordy zasobów są zbierane przez uruchomienie polecenia cmdlet programu DNS PowerShell. Dane są aktualizowane co dwa dni. Dane dotyczące zdarzeń są zbierane w czasie rzeczywistym z [analitycznych i dzienników inspekcji](https://technet.microsoft.com/library/dn800669.aspx#enhanc) podał rozszerzonych DNS rejestrowania i diagnostyki w systemie Windows Server 2012 R2.
+Rozwiązanie zbiera spis DNS i dane dotyczące zdarzeń DNS z serwerów DNS, którym jest zainstalowany agent usługi Log Analytics. Te dane są następnie przekazywane do usługi Azure Monitor i wyświetlane na pulpicie nawigacyjnym rozwiązania. Dane dotyczące zapasów, takie jak liczba serwerów DNS, strefy i rekordy zasobów są zbierane przez uruchomienie polecenia cmdlet programu DNS PowerShell. Dane są aktualizowane co dwa dni. Dane dotyczące zdarzeń są zbierane w czasie rzeczywistym z [analitycznych i dzienników inspekcji](https://technet.microsoft.com/library/dn800669.aspx#enhanc) podał rozszerzonych DNS rejestrowania i diagnostyki w systemie Windows Server 2012 R2.
 
 ## <a name="configuration"></a>Konfigurowanie
 
 Skorzystaj z poniższych informacji, aby skonfigurować rozwiązania:
 
-- Konieczne jest posiadanie [Windows](../../azure-monitor/platform/agent-windows.md) lub [programu Operations Manager](../../azure-monitor/platform/om-agents.md) agenta na każdym serwerze DNS, który chcesz monitorować.
-- Rozwiązanie analiza DNS można dodać do obszaru roboczego usługi Log Analytics z [portalu Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Można także użyć procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](../../azure-monitor/insights/solutions.md).
+- Konieczne jest posiadanie [Windows](../platform/agent-windows.md) lub [programu Operations Manager](../platform/om-agents.md) agenta na każdym serwerze DNS, który chcesz monitorować.
+- Rozwiązanie analiza DNS można dodać do obszaru roboczego usługi Log Analytics z [portalu Azure Marketplace](https://aka.ms/dnsanalyticsazuremarketplace). Można także użyć procesu opisanego w [rozwiązań Dodaj usługi Azure Monitor z galerii rozwiązań](solutions.md).
 
 Rozwiązanie rozpoczyna zbieranie danych bez konieczności dalszej konfiguracji. Jednak można użyć następującej konfiguracji, aby dostosować zbieranie danych.
 
@@ -64,7 +64,7 @@ Rozwiązanie rozpoczyna zbieranie danych bez konieczności dalszej konfiguracji.
 
 Na pulpicie nawigacyjnym rozwiązania kliknij **konfiguracji** aby otworzyć stronę konfiguracji analizy DNS. Istnieją dwa typy, które można wprowadzać zmian w konfiguracji:
 
-- **Nazwy domen na liście dozwolonych**. Rozwiązanie nie przetwarza wszystkie zapytania wyszukiwania. Przechowuje go z listy dozwolonych sufiksów nazw domen. Zapytania dotyczące wyszukiwania rozpoznawane jako nazwy domen zgodne z sufiksami nazw domen na tej liście dozwolonych elementów nie są przetwarzane przez to rozwiązanie. Nie przetwarza nazwy domen na liście dozwolonych pomaga zoptymalizować dane wysyłane do usługi Log Analytics. Domyślna lista dozwolonych zawiera popularne publiczne nazwy domen, takie jak www.google.com i www.facebook.com. Możesz wyświetlić domyślną pełną listę, przewijając.
+- **Nazwy domen na liście dozwolonych**. Rozwiązanie nie przetwarza wszystkie zapytania wyszukiwania. Przechowuje go z listy dozwolonych sufiksów nazw domen. Zapytania dotyczące wyszukiwania rozpoznawane jako nazwy domen zgodne z sufiksami nazw domen na tej liście dozwolonych elementów nie są przetwarzane przez to rozwiązanie. Nie przetwarza nazwy domen na liście dozwolonych pomaga zoptymalizować dane wysyłane do usługi Azure Monitor. Domyślna lista dozwolonych zawiera popularne publiczne nazwy domen, takie jak www.google.com i www.facebook.com. Możesz wyświetlić domyślną pełną listę, przewijając.
 
  Można zmodyfikować listę, aby dodać do sufiks nazwy domeny, który chcesz wyświetlić szczegółowe informacje wyszukiwania. Można również usunąć wszystkie sufiks nazwy domeny, których nie chcesz, aby wyświetlić szczegółowe informacje wyszukiwania.
 
@@ -83,13 +83,14 @@ Jeśli grupa zarządzania programu Operations Manager jest połączona z obszare
 - Pakiet analizy modułu zbierającego dane DNS firmy Microsoft (Microsoft.IntelligencePacks.Dns)
 - Analiza DNS Klasyfikator programu Microsoft System Center — konfiguracja (Microsoft.IntelligencePack.Dns.Configuration)
 
-Aby uzyskać więcej informacji na temat aktualizowania pakietów administracyjnych rozwiązania, zobacz artykuł [Connect Operations Manager to Log Analytics](../../azure-monitor/platform/om-agents.md) (Połączenie programu Operations Manager z usługą Log Analytics).
+Aby uzyskać więcej informacji na temat aktualizowania pakietów administracyjnych rozwiązania, zobacz artykuł [Connect Operations Manager to Log Analytics](../platform/om-agents.md) (Połączenie programu Operations Manager z usługą Log Analytics).
 
 ## <a name="use-the-dns-analytics-solution"></a>Korzystanie z odpowiedniego rozwiązania analiza DNS
 
-W tej sekcji opisano wszystkie pulpitu nawigacyjnego funkcje i sposobu ich używania.
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
 
-Po dodaniu rozwiązania do obszaru roboczego, strona Przegląd usługi Log Analytics w witrynie Azure portal zawiera **Wyświetl rozwiązania** łączy się z krótkim podsumowaniem infrastruktury DNS. Obejmuje liczba serwerów DNS, w którym są zbierane dane. Obejmuje również liczbę żądań wysyłanych przez klientów, aby rozwiązać złośliwe domeny w ciągu ostatnich 24 godzin. Kliknięcie kafelka spowoduje otwarcie pulpitu nawigacyjnego rozwiązania.
+
+Na kafelku DNS zawiera liczbę serwerów DNS, w którym są zbierane dane. Obejmuje również liczbę żądań wysyłanych przez klientów, aby rozwiązać złośliwe domeny w ciągu ostatnich 24 godzin. Kliknięcie kafelka spowoduje otwarcie pulpitu nawigacyjnego rozwiązania.
 
 ![Analiza DNS kafelka](./media/dns-analytics/dns-tile.png)
 
@@ -188,4 +189,4 @@ Istnieją dwa sposoby, można przesłać opinię:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przeszukiwanie dzienników](../../azure-monitor/log-query/log-query-overview.md) do wyświetlania szczegółowych rekordów dziennika DNS.
+[Zapytanie dzienniki](../log-query/log-query-overview.md) do wyświetlania szczegółowych rekordów dziennika DNS.

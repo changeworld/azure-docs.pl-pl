@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6511eb7a4651f0b95b7821e1959ba7e4130c2d6e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105801"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999372"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Tworzenie pliku rozwiązania zarządzania na platformie Azure (wersja zapoznawcza)
 > [!NOTE]
@@ -53,7 +53,7 @@ Podstawowa struktura pliku rozwiązania zarządzania jest taka sama jak [szablon
 ## <a name="parameters"></a>Parametry
 [Parametry](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) są wartościami, które wymagają od użytkownika podczas instalacjo rozwiązania do zarządzania.  Istnieją standardowe parametry, które będą miały wszystkie rozwiązania, a następnie można dodać dodatkowe parametry zgodnie z wymaganiami dla określonego rozwiązania.  Jak użytkownicy będą podać wartości parametrów podczas instalacjo rozwiązania będzie zależeć od określonego parametru i sposób instalacji rozwiązania.
 
-Gdy użytkownik [zainstalowanie rozwiązania do zarządzania](solutions.md#install-a-management-solution) za pośrednictwem witryny Azure Marketplace lub szybkiego startu platformy Azure szablonów wyświetlony monit o wybranie [obszar roboczy usługi Log Analytics i konto usługi Automation](solutions.md#log-analytics-workspace-and-automation-account).  Są one używane do wypełniania wartości każdego standardowe parametry.  Użytkownik nie jest monitowany o bezpośrednio podać wartości parametrów standardowych, ale są monitowani o podanie wartości żadnych dodatkowych parametrów.
+Gdy użytkownik [zainstalowanie rozwiązania do zarządzania](solutions.md#install-a-monitoring-solution) za pośrednictwem witryny Azure Marketplace lub szybkiego startu platformy Azure szablonów wyświetlony monit o wybranie [obszar roboczy usługi Log Analytics i konto usługi Automation](solutions.md#log-analytics-workspace-and-automation-account).  Są one używane do wypełniania wartości każdego standardowe parametry.  Użytkownik nie jest monitowany o bezpośrednio podać wartości parametrów standardowych, ale są monitowani o podanie wartości żadnych dodatkowych parametrów.
 
 
 Poniżej przedstawiono przykładowy parametr.  
@@ -83,7 +83,7 @@ W poniższej tabeli wymieniono standardowe parametry dla wszystkich rozwiązań 
 >
 >
 
-| Parametr | Typ | Opis |
+| Parametr | Type | Opis |
 |:--- |:--- |:--- |
 | accountName |ciąg |Nazwa konta usługi Azure Automation. |
 | pricingTier |ciąg |Warstwa cenowa obszaru roboczego usługi Log Analytics i konto usługi Azure Automation. |

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: f3a98af11d551a94b79e2b326657b0bc1f4c803e
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: ca88af6b62b984e0a61326cdebcb2d7411e49ed3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249969"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998471"
 ---
 # <a name="h264-multiple-bitrate-4x3-for-ios"></a>Wiele szybkość transmisji bitów H264 4 x 3 dla systemu iOS
 `Media Encoder Standard` definiuje zestaw kodowania ustawienia wstępne, których można użyć podczas tworzenia zadań kodowania. Można użyć `preset name` do określenia do formatu, który chcesz zakodować pliku multimedialnego. Lub można utworzyć własne JSON lub XML na podstawie ustawień wstępnych (przy użyciu kodowania UTF-8 lub UTF-16. Następnie należy wprowadzić niestandardowego ustawienia wstępnego z koderem. Aby uzyskać listę wszystkich wstępnie zdefiniowanych nazw obsługiwanych przez to `Media Encoder Standard` encoder, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](media-services-mes-presets-overview.md).  
@@ -29,7 +29,7 @@ ms.locfileid: "50249969"
  To ustawienie wstępne tworzy zbiór 8 wyrównane GOP pliki MP4 z, od 8500 KB/s do 200 KB/s i stereo AAC audio. Aby uzyskać szczegółowe informacje o profilu szybkości transmisji bitów, próbkowanie wskaźnik, itp., to ustawień, sprawdź zdefiniowane poniżej w formacie JSON lub XML. Objaśnienia każdego elementu w tych oznacza, że ustawienia i prawidłowe wartości dla każdego elementu, zobacz [schemat usługi Media Encoder Standard](media-services-mes-schema.md) tematu.  
   
 > [!NOTE]
->  Podczas modyfikowania `Width` i `Height` wartości wielu warstw, upewnij się, że współczynnik proporcji pozostanie spójna. Na przykład: 1920 x 1080 pikseli, 1280 x 720, 1080 x 576 640 x 360. Nie należy używać kombinacji proporcji, takich jak: 1280 x 720, 720 x 480, 640 x 360.  
+>  Podczas modyfikowania `Width` i `Height` wartości wielu warstw, upewnij się, że współczynnik proporcji pozostanie spójna. Na przykład: 1920x1080, 1280x720, 1080x576, 640x360. Nie należy używać kombinacji proporcji, takich jak: 1280x720, 720x480, 640x360.  
   
  XML  
   

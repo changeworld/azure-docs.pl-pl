@@ -11,17 +11,17 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 64302a04050196b4299be45d910f7136f3ecaaa6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/08/2019
+ms.openlocfilehash: 4e853b9edbd000d8b61b5e05f3ae65c07258d73f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734270"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002160"
 ---
-# <a name="azure-sql-database-threat-detection-for-standalone-or-pooled-databases"></a>Wykrywania zagrożeń usługi Azure SQL Database dla autonomicznych lub bazy danych w puli
+# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>Wykrywania zagrożeń usługi Azure SQL Database dla jednego lub pulami baz danych
 
-[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) autonomiczne i bazy danych w puli wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych. Wykrywanie zagrożeń można zidentyfikować **wstrzyknięcie kodu SQL potencjalne**, **dostęp z nietypowej lokalizacji lub danych Centrum**, **dostępu z nieznanego podmiotu zabezpieczeń lub potencjalnie szkodliwe aplikacji**, i **siłowe poświadczenia SQL** — Zobacz więcej szczegółów w [alerty związane z wykrywaniem zagrożeń](sql-database-threat-detection-overview.md#threat-detection-alerts).
+[Wykrywanie zagrożeń](sql-database-threat-detection-overview.md) dla pojedynczych i puli baz danych wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych. Wykrywanie zagrożeń można zidentyfikować **wstrzyknięcie kodu SQL potencjalne**, **dostęp z nietypowej lokalizacji lub danych Centrum**, **dostępu z nieznanego podmiotu zabezpieczeń lub potencjalnie szkodliwe aplikacji**, i **siłowe poświadczenia SQL** — Zobacz więcej szczegółów w [alerty związane z wykrywaniem zagrożeń](sql-database-threat-detection-overview.md#threat-detection-alerts).
 
 Możesz otrzymywać powiadomienia o wykrytych zagrożeniach, za pośrednictwem [wiadomości e-mail z powiadomieniami](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) lub [witryny Azure portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.author: Evgeny.Ternovsky
-ms.openlocfilehash: d034bf130440fdb5b783db41161ab5a21a306478
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: b7814ce2ae94216da691b9a54049d20a03aafdd9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103116"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994820"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Korelowanie danych usługi Application Insights z niestandardowymi źródłami danych
 
@@ -28,19 +28,19 @@ Sytuacje, w których możesz chcieć niestandardowe dane obejmują:
 
 - Tabele danych wzbogacenia lub wyszukiwania: na przykład uzupełnienia nazwy serwera z właścicielem serwera i lokalizacji laboratorium, w którym można znaleźć 
 - Korelacja ze źródłami danych — usługa Application Insights: na przykład zostały korelowanie danych dotyczących zakupu w sklepie sieci web przy użyciu informacji z usługi realizacji zakupu w celu określenia, jak dokładny szacowania czasu wysyłania 
-- Dane niestandardowe całkowicie: liczbę naszym klientom lubisz język zapytań i wydajność platformy danych usługi Log Analytics, która będzie tworzyć kopię usługi Application Insights, a chcesz go użyć do zapytania o dane, w ogóle nie jest powiązany z usługi Application Insights. Na przykład śledzić wydajność słoneczny panelu inteligentnego instalacja głównego w ramach opisanych [tutaj]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
+- Dane niestandardowe całkowicie: liczbę naszym klientom lubisz język zapytań i wydajności usługi Azure Monitor platformę log, która będzie tworzyć kopię usługi Application Insights i chcesz używać go do zapytania o dane, w ogóle nie jest powiązany z usługi Application Insights. Na przykład śledzić wydajność słoneczny panelu inteligentnego instalacja głównego w ramach opisanych [tutaj]( https://blogs.catapultsystems.com/cfuller/archive/2017/10/04/using-log-analytics-and-a-special-guest-to-forecast-electricity-generation/).
 
 ## <a name="how-to-correlate-custom-data-with-application-insights-data"></a>Sposób korelowania danych niestandardowych z danych usługi Application Insights 
 
-Ponieważ usługa Application Insights jest objęta zaawansowana platforma danych usługi Log Analytics, możemy użyć pełnego zestawu funkcji usługi Log Analytics do pozyskiwania danych. Następnie napiszemy zapytań przy użyciu operatora "Dołącz", który będzie skorelować te dane niestandardowe dane, które są dostępne dla nas w usłudze Log Analytics. 
+Ponieważ usługa Application Insights jest objęta zaawansowana platforma Azure Monitor w dzienniku, jesteśmy w stanie używać pełnych możliwości usługi Azure Monitor do pozyskiwania danych. Następnie napiszemy zapytań przy użyciu operatora "Dołącz", który będzie skorelować te dane niestandardowe dane, które są dostępne dla nas w dziennikach w usłudze Azure Monitor. 
 
 ## <a name="ingesting-data"></a>Dane wprowadzane
 
-W tej sekcji omówimy się, jak pobierać dane do usługi Log Analytics.
+W tej sekcji omówimy się, jak pobierać dane do dzienników usługi Azure Monitor.
 
-Jeśli nie masz jeszcze jedną, aprowizacja nowego obszaru roboczego usługi Log Analytics postępując zgodnie z [w instrukcjach]( https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm) za pomocą, a w tym kroku "Tworzenie obszaru roboczego".
+Jeśli nie masz jeszcze jedną, aprowizacja nowego obszaru roboczego usługi Log Analytics postępując zgodnie z [w instrukcjach](../learn/quick-collect-azurevm.md) za pomocą, a w tym kroku "Tworzenie obszaru roboczego".
 
-Aby rozpocząć wysyłanie danych do usługi Log Analytics. Istnieje kilka opcji:
+Aby rozpocząć wysyłanie dzienników danych do usługi Azure Monitor. Istnieje kilka opcji:
 
 - Mechanizm synchronicznej, można albo bezpośrednio wywołać [interfejs API modułu zbierającego dane](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-collector-api) lub użyć naszego łącznika aplikacji logiki — po prostu wyszukaj "Azure Log Analytics" i wybierz opcję "Wyślij dane":
 
@@ -50,9 +50,9 @@ Aby rozpocząć wysyłanie danych do usługi Log Analytics. Istnieje kilka opcji
 
 ## <a name="correlating-data"></a>Korelowanie danych
 
-Usługa Application Insights opiera się na platformie danych usługi Log Analytics. Możemy więc użyć [sprzężeń między zasobami](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) do skorelowania wszelkich danych pozyskanych do usługi Log Analytics firma Microsoft z danych usługi Application Insights.
+Usługa Application Insights opiera się na platformie Azure Monitor dziennika. Możemy więc użyć [sprzężeń między zasobami](https://docs.microsoft.com/azure/log-analytics/log-analytics-cross-workspace-search) do skorelowania wszelkich danych pozyskanych do usługi Azure Monitor firma Microsoft z danych usługi Application Insights.
 
-Na przykład możemy pozyskiwać nasze laboratorium spisu i lokalizacji do tabeli o nazwie "LabLocations_CL" w obszarze roboczym usługi Log Analytics o nazwie "myLA". Jeśli chcemy następnie przejrzyj nasz żądań śledzone w aplikacji usługi Application Insights o nazwie "myAI" i korelowanie nazw maszyn, które obsłużone żądania do lokalizacji tych maszyn, przechowywane w tabeli niestandardowej wspomniano wcześniej, można uruchomić następujące zapytanie z Kontekst usługi Application Insights ani Log Analytics:
+Na przykład możemy pozyskiwać nasze laboratorium spisu i lokalizacji do tabeli o nazwie "LabLocations_CL" w obszarze roboczym usługi Log Analytics o nazwie "myLA". Jeśli chcemy następnie przejrzyj nasz żądań śledzone w aplikacji usługi Application Insights o nazwie "myAI" i korelowanie nazw maszyn, które obsłużone żądania do lokalizacji tych maszyn, przechowywane w tabeli niestandardowej wspomniano wcześniej, można uruchomić następujące zapytanie z Kontekst usługi Application Insights lub Azure Monitor:
 
 ```
 app('myAI').requests

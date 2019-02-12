@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 1477242e10918a9836ceea15d418fb462e193b1b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f367d6e1b1c545bcad0faf030a56fdec2ffafca2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811744"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989069"
 ---
-# <a name="implement-failover-streaming-with-azure-media-services"></a>Implementowanie trybu failover, przesyłanie strumieniowe przy użyciu usługi Azure Media Services
+# <a name="implement-failover-streaming-with-media-services-legacy"></a>Implementowanie trybu failover przesyłania strumieniowego za pomocą usługi Media Services (starsza wersja)
 
 W tym instruktażu pokazano, jak kopiowanie zawartości (obiektów BLOB) z jednego zasobu do innego w celu obsługi nadmiarowości przesyłania strumieniowego na żądanie. Ten scenariusz jest przydatne, jeśli chcesz skonfigurować usługi Azure Content Delivery Network do trybu failover między dwoma centrami danych, na wypadek awarii w jednym centrum danych. Ten przewodnik korzysta z zestawu SDK usługi Azure Media Services, interfejsu API REST usługi Azure Media Services i zestawu SDK usługi Azure Storage, następujące zadania:
 

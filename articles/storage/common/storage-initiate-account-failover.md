@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/11/2019
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 1290a990515cd68f46d137c276e8bb36834ff482
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: d1fb921f72af58eacde5f1ef35ee3aec80f767c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513491"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994682"
 ---
 # <a name="initiate-a-storage-account-failover-preview"></a>Zainicjuj tryb failover konta magazynu (wersja zapoznawcza)
 
@@ -82,7 +82,7 @@ Aby zainicjować trybu failover konta przy użyciu programu PowerShell, należy 
 1. Instalowanie modułu w wersji zapoznawczej usługi Azure Storage, który obsługuje usługi Azure AD:
    
     ```powershell
-    Install-Module -Name AzureRM.Storage -AllowPrerelease
+    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
     ```
 1. Zamknij i Otwórz okno programu PowerShell.
  
@@ -90,7 +90,7 @@ Aby zainicjować trybu failover konta przy użyciu programu PowerShell, należy 
 Aby zainicjować trybu failover konta, za pomocą programu PowerShell, uruchom następujące polecenie:
 
 ```powershell
-Invoke-AzureRmStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
+Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
 ```
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure

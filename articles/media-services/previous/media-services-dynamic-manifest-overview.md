@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/25/2018
+ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312973"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000014"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filtrów i manifestów dynamicznych
 
@@ -35,7 +35,7 @@ W tym temacie omówiono typowe scenariusze, w którym przy użyciu filtrów moż
 Podczas dostarczania zawartości do klientów (przesyłanie strumieniowe wydarzeń na żywo lub wideo na żądanie) celem użytkownika jest dostarczanie wideo o wysokiej jakości do różnych urządzeń warunki panujące w sieci. Aby osiągnąć ten cel, wykonaj następujące czynności:
 
 * kodowanie strumienia do różnych szybkościach transmisji bitów ([adaptacyjną szybkością transmisji bitów](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) strumienia wideo (to zajmie się jakość i warunki sieciowe) i 
-* zastosowania usług Media Services [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md) do dynamicznego ponownego skompilowania pakietów strumienia do różnych protokołów (ten proces obsłuży przesyłania strumieniowego na różnych urządzeniach). Usługa Media Services obsługuje dostarczanie następujących technologii przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: HTTP Live Streaming (HLS), Smooth Streaming i MPEG DASH. 
+* zastosowania usług Media Services [funkcję dynamicznego tworzenia pakietów](media-services-dynamic-packaging-overview.md) do dynamicznego ponownego skompilowania pakietów strumienia do różnych protokołów (ten proces obsłuży przesyłania strumieniowego na różnych urządzeniach). Usługa Media Services obsługuje dostarczanie następujących technologii przesyłania strumieniowego adaptacyjną szybkością transmisji bitów: HTTP na żywo, przesyłania strumieniowego (HLS), Smooth Streaming i MPEG DASH. 
 
 ### <a name="manifest-files"></a>Pliki manifestu
 Podczas kodowania zasobów do przesyłania strumieniowego o adaptacyjnej szybkości transmisji bitów, **manifestu** (listy odtwarzania), plik zostanie utworzony (pliku jest tekstowa lub opartych na języku XML). **Manifestu** plik zawiera przesyłania strumieniowego metadane, takie jak: śledzenie typu (audio, wideo lub tekst), śledzenie, name, godzina rozpoczęcia i zakończenia, szybkości transmisji bitów (właściwości), Śledź języków, okna prezentacji (przesuwającego się okna o określonej długości) i kodera-dekodera wideo ( FourCC). Informuje również gracza, aby pobrać następny fragment, podając informacje o następnej rozgrywane fragmenty wideo dostępne i ich lokalizacji. Fragmenty (lub segmentów) są rzeczywiste "fragmentów" zawartości wideo.
@@ -120,7 +120,7 @@ Manifestów dynamicznych, umożliwia tworzenie profilów urządzeń takich jak a
 
 ![Odwzorowanie filtrowanie przykład][renditions2]
 
-W poniższym przykładzie koder użytego do kodowania zasobów mezzanine do siedmiu odwzorowaniami wideo każdego pliku MP4 z ISO (z 180p, aby 1080p). Zakodowanym elementem zawartości, które mogą być dynamicznie pakowane do żadnego z następujących protokołów: MPEG DASH, HLS i Smooth.  W górnej części diagramu są wyświetlane manifest HLS dla zasobu bez filtrów (zawiera wszystkie wersje siedem).  W lewym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "ott" jest wyświetlana. Filtr "ott" Określa, aby usunąć wszystkie różnych poniżej 1 MB/s, co spowodowało dolnej dwa poziomy jakości jest usunięta, a w odpowiedzi. W prawym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "mobilnymi" jest wyświetlany. Filtr "przenośnych" Określa usunięcie wersji, gdy rozwiązanie jest większy niż 720p, co spowodowało dwóch wersji 1080p jest odłączony.
+W poniższym przykładzie koder użytego do kodowania zasobów mezzanine do siedmiu odwzorowaniami wideo każdego pliku MP4 z ISO (z 180p, aby 1080p). Zakodowanym elementem zawartości można dynamicznie spakowane do żadnego z następujących protokołów: HLS, Smooth i MPEG DASH.  W górnej części diagramu są wyświetlane manifest HLS dla zasobu bez filtrów (zawiera wszystkie wersje siedem).  W lewym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "ott" jest wyświetlana. Filtr "ott" Określa, aby usunąć wszystkie różnych poniżej 1 MB/s, co spowodowało dolnej dwa poziomy jakości jest usunięta, a w odpowiedzi. W prawym dolnym rogu manifest HLS, do którego zastosowano filtr o nazwie "mobilnymi" jest wyświetlany. Filtr "przenośnych" Określa usunięcie wersji, gdy rozwiązanie jest większy niż 720p, co spowodowało dwóch wersji 1080p jest odłączony.
 
 ![Filtrowania wyświetlania][renditions1]
 
@@ -130,7 +130,7 @@ Twoje zasoby mogą obejmować wiele języków audio, takich jak angielski, hiszp
 ![Język ścieżki filtrowania][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Przycinanie początek elementu zawartości
-W większości wydarzeń transmisji strumieniowej na żywo Operatorzy uruchomić niektóre testy przed rzeczywistego zdarzenia. Na przykład może obejmować plansz następująco przed rozpoczęciem zdarzenia: "Program rozpocznie się chwilowo". Jeśli program jest archiwizacji, testów i planszy danych również są archiwizowane i w prezentacji. Jednak te informacje nie być wyświetlane na klientach. Za pomocą manifestów dynamicznych możesz utworzyć filtr godziny rozpoczęcia i usuwanie niepożądanych danych z manifestu.
+W większości wydarzeń transmisji strumieniowej na żywo Operatorzy uruchomić niektóre testy przed rzeczywistego zdarzenia. Na przykład może być obejmują one plansz następująco przed rozpoczęciem zdarzenia: "Program rozpocznie chwilowo". Jeśli program jest archiwizacji, testów i planszy danych również są archiwizowane i w prezentacji. Jednak te informacje nie być wyświetlane na klientach. Za pomocą manifestów dynamicznych możesz utworzyć filtr godziny rozpoczęcia i usuwanie niepożądanych danych z manifestu.
 
 ![Przycinanie start][trim_filter]
 

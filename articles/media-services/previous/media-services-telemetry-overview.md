@@ -1,10 +1,10 @@
 ---
-title: Telemetrii usługi Azure Media Services | Dokumentacja firmy Microsoft
+title: Telemetria usługi Azure Media Services | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera omówienie telemetrii usługi Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
 ms.service: media-services
@@ -12,82 +12,82 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 97df0876afd8b7258f985ab375b14f4aabde6e22
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48b88aed833b0cd15f47195c67be80fe75fe153f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790566"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005186"
 ---
-# <a name="azure-media-services-telemetry"></a>Telemetrii usługi Azure Media Services
+# <a name="azure-media-services-telemetry"></a>Azure Media Services telemetry  
 
-Azure Media Services (AMS) można uzyskać dostępu do swoich usług danych telemetrycznych/metryki. Bieżąca wersja AMS umożliwia zbieranie danych telemetrycznych dla na żywo **kanału**, **StreamingEndpoint**i na żywo **archiwum** jednostek. 
+Usługa Azure Media Services (AMS) można uzyskać dostępu do swoich usług przy użyciu danych telemetrycznych/metryki. Bieżąca wersja usługi AMS umożliwia zbieranie danych telemetrycznych na żywo **kanału**, **StreamingEndpoint**i na żywo **archiwum** jednostek. 
 
-Dane telemetryczne są zapisywane do tabeli magazynu na konto magazynu Azure (zazwyczaj używasz konta magazynu skojarzone z kontem AMS). 
+Dane telemetryczne są zapisywane w tabeli magazynu na koncie magazynu platformy Azure, który określisz (zazwyczaj można użyć konta magazynu skojarzone z kontem usługi AMS). 
 
-System telemetrii nie zarządza przechowywania danych. Można usunąć stare dane telemetryczne, usuwając tabel do przechowywania.
+System telemetrii nie zarządza przechowywania danych. Usuwanie tabel magazynu można usunąć stare dane telemetryczne.
 
-W tym temacie omówiono sposób konfigurowania i zużywać telemetrii AMS.
+W tym temacie omówiono sposób konfigurowania i korzystania z danych telemetrycznych usługi AMS.
 
 ## <a name="configuring-telemetry"></a>Konfigurowanie telemetrii
 
-Dane telemetryczne można skonfigurować na poziom szczegółowości na poziomie składnika. Istnieją dwa poziomy szczegółowości "Normal" i "Pełne". Obecnie obu poziomach zwracać tych samych informacji. Zalecane jest użycie "Normalny. 
+Telemetrię można skonfigurować na składnika z poziomu szczegółowości. Istnieją dwa poziomy szczegółowości "Normal" i "Pełne". Obecnie obu poziomach zwracają te same informacje. Zalecane jest użycie "Normal. 
 
-W następujących tematach opisano sposób włączania telemetrii:
+W następujących tematach opisano, jak włączyć telemetrię:
 
-[Włączanie danych telemetrycznych z platformą .NET](media-services-dotnet-telemetry.md) 
+[Włączanie telemetrii przy użyciu platformy .NET](media-services-dotnet-telemetry.md) 
 
-[Włączanie telemetrii REST](media-services-rest-telemetry.md)
+[Włączanie telemetrii za pomocą architektury REST](media-services-rest-telemetry.md)
 
-## <a name="consuming-telemetry-information"></a>Wykorzystywanie informacji telemetrii
+## <a name="consuming-telemetry-information"></a>Wykorzystywanie informacji telemetrycznych
 
-Dane telemetryczne są zapisywane do tabeli magazynu Azure w ramach konta magazynu, które określone podczas konfigurowania dane telemetryczne dla konta usługi Media Services. W tej sekcji opisano magazynu tabel na podstawie metryk.
+Dane telemetryczne są zapisywane do tabeli usługi Azure Storage na koncie magazynu, który określiłeś, podczas konfigurowania telemetrii dla konta usługi Media Services. W tej sekcji opisano tabel magazynu dla metryk.
 
-Dane telemetryczne można korzystać w jednym z następujących sposobów:
+Korzystanie z danych telemetrycznych, w jednym z następujących sposobów:
 
-- Odczytywanie danych bezpośrednio z magazynem tabel Azure (np. przy użyciu zestawu SDK usługi Magazyn). Opis tabel do przechowywania danych telemetrycznych zawiera **wykorzystywanie informacji telemetrii** w [to](https://msdn.microsoft.com/library/mt742089.aspx) tematu.
+- Odczytywać dane bezpośrednio z usługi Azure Table Storage (np. przy użyciu zestawu SDK usługi Storage). Opis tabel magazynu danych telemetrycznych, patrz **wykorzystywanie informacje telemetryczne** w [to](https://msdn.microsoft.com/library/mt742089.aspx) tematu.
 
 Lub
 
-- Użyć funkcji w SDK .NET usługi Media Services do odczytywania danych z magazynu, zgodnie z opisem w [to](media-services-dotnet-telemetry.md) tematu. 
+- Na użytek obsługi w Media Services .NET SDK odczytu magazynu danych, zgodnie z opisem w [to](media-services-dotnet-telemetry.md) tematu. 
 
 
-Schemat danych telemetrycznych opisanych poniżej zaprojektowano w celu zapewnić dobrą wydajność w granicach magazynu tabel platformy Azure:
+Aby zapewnić dobrą wydajność w ramach usługi Azure Table Storage została zaprojektowana w schematu danych telemetrycznych, opisane poniżej:
 
-- Konto, identyfikator i identyfikator usługi Zezwalaj na podstawie danych telemetrycznych z każdej usługi można wykonać zapytania niezależnie partycjonowanego danych.
-- Partycje zawierają daty umożliwiają uzasadnione górna granica na rozmiar partycji.
-- Są klucze komponentu wierszy w kolejności odwrotnej czas do najnowszych elementów danych telemetrycznych można wykonać zapytania dla danej usługi.
+- Dane są partycjonowane przez identyfikator konta i identyfikator usługi umożliwia przetwarzanie danych telemetrycznych z każdej usługi niezależne zostać wykonane zapytanie.
+- Partycje zawierają datę, aby nadać uzasadnione górną granicę na rozmiar partycji.
+- Klucze wiersza są w kolejności odwrotnej czas do najnowszych elementów danych telemetrycznych można wykonywać zapytania dla danej usługi.
 
-Powinno to umożliwić wiele typowych kwerend za skuteczny:
+Powinno to umożliwić wiele typowych zapytań, aby były skuteczne:
 
-- Równoległe, niezależne pobieranie danych dla poszczególnych usług.
+- Równoległe, niezależnie od pobierania danych dla poszczególnych usług.
 - Pobieranie wszystkich danych dla danej usługi w zakresie daty.
 - Pobieranie najnowszych danych dla usługi.
 
-### <a name="telemetry-table-storage-output-schema"></a>Schemat danych wyjściowych magazynu tabeli telemetrii
+### <a name="telemetry-table-storage-output-schema"></a>Schemat danych wyjściowych magazynu tabel danych telemetrycznych
 
-Dane telemetryczne są przechowywane w agregacji w jednej tabeli, "TelemetryMetrics20160321", gdzie "20160321" jest data utworzonej tabeli. Dane telemetryczne system tworzy osobnej tabeli dla każdego dnia nowy, oparty na 00:00 czasu UTC. Tabela jest używana do przechowywania wartości cykliczne pozyskiwania, takich jak szybkości transmisji bitów w ramach danego okna czasu wysłane bajty, itp. 
+Dane telemetryczne są przechowywane w agregacji w jednej tabeli, "TelemetryMetrics20160321" gdzie "20160321" jest data utworzonej tabeli. System telemetrii tworzy tabelę oddzielnych za każdy dzień nowy, oparty o 00:00 czasu UTC. Tabela jest używana do przechowywania wartości cyklicznych takich jak pozyskiwania szybkości transmisji bitów w danym przedziale godzina, liczba wysłanych bajtów, itp. 
 
 Właściwość|Wartość|Przykłady/notes
 ---|---|---
-PartitionKey|{Identyfikator konta} _ {identyfikator jednostki}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66 < br /<br/>Identyfikator konta znajduje się w kluczu partycji w celu uproszczenia przepływy pracy, gdzie wiele kont usługi Media Services będą zapisywane do tego samego konta magazynu.
-RowKey|{sekund północy} _ {losowych wartości}|01688_00199<br/><br/>Klucz wiersza rozpoczyna się od liczby sekund północy umożliwiającej dostęp zapytań top n stylu w partycji. Więcej informacji znajduje się w [tym](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) artykule. 
-Sygnatura czasowa|Data/godzina|Automatycznie sygnatura czasowa z tabeli platformy Azure 2016-09-09T22:43:42.241Z
-Typ|Typ jednostki, dostarczając danych telemetrii|Kanał/StreamingEndpoint/archiwum<br/><br/>Typ zdarzenia jest tylko wartość ciągu.
+PartitionKey|{account ID}_{entity ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>Identyfikator konta znajduje się w kluczu partycji można uproszczenie przepływów pracy, w których wielu kont usługi Media Services będą zapisywane do tego samego konta magazynu.
+RowKey|{seconds północy} _ {losową wartość}|01688_00199<br/><br/>Klucz wiersza rozpoczyna się od liczbę sekund, północy górnego n zapytań w ramach partycji. Więcej informacji znajduje się w [tym](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern) artykule. 
+Znacznik czasu|Data/godzina|Auto sygnatury czasowej z tabeli platformy Azure 2016-09-09T22:43:42.241Z
+Type|Typ jednostki, podając dane telemetryczne|Archiwum/StreamingEndpoint/kanału<br/><br/>Typ zdarzenia jest po prostu wartość ciągu.
 Name (Nazwa)|Nazwa zdarzenia telemetrii|ChannelHeartbeat/StreamingEndpointRequestLog
-ObservedTime|Czas wystąpiło zdarzenie telemetrii (UTC)|2016-09-09T22:42:36.924Z<br/><br/>Czas obserwowanych są udostępniane przez jednostki wysyłania danych telemetrycznych (na przykład kanał). Może to być problemy z synchronizacją między składnikami, dlatego ta wartość jest w przybliżeniu czas
-ServiceID|{Identyfikator usługi}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-Właściwości jednostki|Zgodnie z definicją zdarzenia|StreamName: stream1, szybkości transmisji bitów 10123...<br/><br/>Pozostałe właściwości są definiowane dla danego typu zdarzenia. Zawartości tabeli platformy Azure jest pary wartości klucza.  (to znaczy różne wiersze w tabeli mają różne zestawy właściwości).
+ObservedTime|Czas wystąpienia zdarzenia telemetrii (UTC)|2016-09-09T22:42:36.924Z<br/><br/>Zaobserwowany czasu jest zapewniana przez jednostki wysyłania danych telemetrycznych (na przykład kanał). Może to być razem, gdy problemy z synchronizacją między składnikami, więc ta wartość jest przybliżona
+Identyfikator usługi|{Identyfikator usługi}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+Właściwości specyficzne dla jednostki|Zgodnie z definicją zdarzenia|StreamName: stream1, szybkości transmisji bitów 10123...<br/><br/>Pozostałe właściwości są zdefiniowane dla danego typu zdarzenia. Zawartość tabel platformy Azure to pary klucz-wartość.  (czyli różne wiersze w tabeli mają różne zestawy właściwości).
 
 ### <a name="entity-specific-schema"></a>Schemat specyficzne dla jednostki
 
-Istnieją trzy typy jednostek danych telemetrycznego wpisów wypychana z następującą częstotliwością:
+Istnieją trzy typy telemetria dane specyficzne dla jednostki wpisów, wypychane z częstotliwością następujące:
 
-- Punkty końcowe przesyłania strumieniowego: co 30 sekund
-- Na żywo kanałów: co minutę
-- Na żywo archiwum: co minutę
+- Punkty końcowe przesyłania strumieniowego: Co 30 sekund
+- Usługa kanały na żywo: Co minutę
+- Dynamiczne archiwum: Co minutę
 
 **Punkt końcowy przesyłania strumieniowego**
 
@@ -95,17 +95,17 @@ Właściwość|Wartość|Przykłady
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Sygnatura czasowa|Sygnatura czasowa|Automatycznie sygnatury czasowej z Azure tabeli 2016-09-09T22:43:42.241Z
-Typ|Typ|StreamingEndpoint
+Znacznik czasu|Znacznik czasu|Auto sygnaturę czasową od usługi Azure Table 2016-09-09T22:43:42.241Z
+Type|Type|StreamingEndpoint
 Name (Nazwa)|Name (Nazwa)|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-Nazwa hosta|Nazwa hosta punktu końcowego|builddemoserver.Origin.mediaservices.Windows.NET
+Identyfikator usługi|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+Nazwa hosta|Nazwa hosta punktu końcowego|builddemoserver.origin.mediaservices.windows.net
 StatusCode|Stan rekordów HTTP|200
-ResultCode|Szczegóły kod wyniku|S_OK
-RequestCount|Całkowita liczba żądań w agregacji|3
-Żądania|Wysłane bajty zagregowane|2987358
-ServerLatency|Server Średni czas oczekiwania (łącznie z magazynem)|129
+ResultCode|Szczegóły kodu wyniku|S_OK
+RequestCount|Łączna liczba żądań w agregacji|3
+BytesSent|Wysłane bajty zagregowanych|2987358
+ServerLatency|Opóźnienie serwera średni (w tym magazyn)|129
 E2ELatency|Średnie opóźnienie end-to-end|250
 
 **Kanału na żywo**
@@ -114,73 +114,73 @@ Właściwość|Wartość|Przykłady/notes
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Sygnatura czasowa|Sygnatura czasowa|Automatycznie sygnatura czasowa z tabeli platformy Azure 2016-09-09T22:43:42.241Z
-Typ|Typ|Kanał
+Znacznik czasu|Znacznik czasu|Auto sygnatury czasowej z tabeli platformy Azure 2016-09-09T22:43:42.241Z
+Type|Type|Kanał
 Name (Nazwa)|Name (Nazwa)|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-TrackType|Typ ścieżki nr audio/wideo/tekstu|audio/wideo
-TrackName|Nazwy ścieżki|wideo/audio_1
+Identyfikator usługi|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+TrackType|Typ ścieżki wideo/audio/tekstu|audio/wideo
+TrackName|Nazwy ścieżki|Film wideo/audio_1
 Szybkość transmisji bitów|Śledź szybkości transmisji bitów|785000
 Customattributes —||   
 IncomingBitrate|Rzeczywista szybkość transmisji bitów przychodzących|784548
-OverlapCount|Nakładanie w pozyskiwanie|0
-DiscontinuityCount|Brak ciągłości dla ścieżki|0
-LastTimestamp|Sygnatura czasowa ostatniego pozyskiwane danych|1800488800
-NonincreasingCount|Liczba fragmentów odrzuconych z powodu nierosnąca sygnatury czasowej|2
-UnalignedKeyFrames|Gdzie klucza ramek nie jest wyrównana czy odebrano fragment(s) (za pośrednictwem poziomy jakości) |True
-UnalignedPresentationTime|Określa, czy odebrano fragment(s) (za pośrednictwem poziomy jakości/ścieżek), gdzie czas prezentacji nie jest wyrównany|True
-UnexpectedBitrate|Wartość PRAWDA Jeśli jest obliczana rzeczywista szybkość transmisji bitów audio/wideo śledzenia > 40 000/s i IncomingBitrate == lub IncomingBitrate i actualBitrate różnią się 50% 0 |True
-W dobrej kondycji|Wartość true, jeśli <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> są wszystkie 0|True<br/><br/>Dobrej kondycji jest złożonych funkcji, która zwraca wartość false, jeśli zawiera jeden z następujących warunków:<br/><br/>-OverlapCount > 0.<br/>-DiscontinuityCount > 0.<br/>-NonincreasingCount > 0.<br/>-UnalignedKeyFrames == True<br/>-UnalignedPresentationTime == True<br/>-UnexpectedBitrate == True
+OverlapCount|Nakładanie w pozyskiwania|0
+DiscontinuityCount|Ciągłości dla ścieżki|0
+LastTimestamp|Sygnatura czasowa ostatniego pozyskiwanych danych|1800488800
+NonincreasingCount|Liczba fragmentów dla odrzuconych z powodu bez zwiększania znacznik czasu:|2
+UnalignedKeyFrames|Czy odebraliśmy fragment(s) (za pośrednictwem poziomy jakości) gdzie nie jest wyrównana klatki kluczowe |True
+UnalignedPresentationTime|Czy odebraliśmy fragment(s) (za pośrednictwem poziomy jakości/ścieżek), gdzie czas prezentacji nie jest wyrównany|True
+UnexpectedBitrate|Wartość true Jeśli obliczane rzeczywistego transmisji bitów dla audio/wideo śledzenia > 40 000 b/s i IncomingBitrate == 0 lub IncomingBitrate i actualBitrate różnią się o 50% |True
+W dobrej kondycji|Wartość true, jeśli <br/>overlapCount, <br/>DiscontinuityCount, <br/>NonIncreasingCount, <br/>UnalignedKeyFrames, <br/>UnalignedPresentationTime, <br/>UnexpectedBitrate<br/> to wszystkie 0|True<br/><br/>Dobrej kondycji jest złożone funkcja, która zwraca wartość false, gdy przytrzymać dowolne z następujących warunków:<br/><br/>-OverlapCount > 0<br/>-DiscontinuityCount > 0<br/>-NonincreasingCount > 0<br/>-UnalignedKeyFrames == True<br/>-UnalignedPresentationTime == True<br/>-UnexpectedBitrate == True
 
-**Archiwum na żywo**
+**Dynamiczne archiwum**
 
 Właściwość|Wartość|Przykłady/notes
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Sygnatura czasowa|Sygnatura czasowa|Automatycznie sygnatura czasowa z tabeli platformy Azure 2016-09-09T22:43:42.241Z
-Typ|Typ|Archiwum
+Znacznik czasu|Znacznik czasu|Auto sygnatury czasowej z tabeli platformy Azure 2016-09-09T22:43:42.241Z
+Type|Type|Archiwum
 Name (Nazwa)|Name (Nazwa)|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
-ServiceID|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-ManifestName|Adres url programu|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ISM
+Identyfikator usługi|Identyfikator usługi|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
+ManifestName|Adres url programu|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|Nazwy ścieżki|audio_1
-TrackType|Typ ścieżki|Audio i wideo
-Element CustomAttribute|Liczba szesnastkowa ciąg, który rozróżnia między inną ścieżkę o tej samej nazwie i szybkości transmisji bitów (multi aparatu kąt)|
+TrackType|Typ ścieżki|Audio/wideo
+CustomAttribute —|Wartość szesnastkową ciąg, który rozróżnia między różnych śledzenie o takiej samej nazwie i szybkości transmisji bitów (kąt multi aparatu fotograficznego)|
 Szybkość transmisji bitów|Śledź szybkości transmisji bitów|785000
-W dobrej kondycji|Wartość true, jeśli FragmentDiscardedCount == 0 & & ArchiveAcquisitionError == False|Wartość true (te dwie wartości nie są obecne w metrykę, ale są one obecne w zdarzeniu źródła)<br/><br/>Dobrej kondycji jest złożonych funkcji, która zwraca wartość false, jeśli zawiera jeden z następujących warunków:<br/><br/>-FragmentDiscardedCount > 0.<br/>-ArchiveAcquisitionError == True
+W dobrej kondycji|Wartość true, jeśli FragmentDiscardedCount == 0 & & ArchiveAcquisitionError == False|Wartość true, (te dwie wartości nie są obecne w metrykę, ale są obecne w zdarzeniu źródła)<br/><br/>Dobrej kondycji jest złożone funkcja, która zwraca wartość false, gdy przytrzymać dowolne z następujących warunków:<br/><br/>-FragmentDiscardedCount > 0<br/>-ArchiveAcquisitionError == True
 
-## <a name="general-qa"></a>Ogólne pytań i odpowiedzi
+## <a name="general-qa"></a>Ogólne pytania i odpowiedzi
 
-### <a name="how-to-consume-metrics-data"></a>Jak korzystać z danych metryk?
+### <a name="how-to-consume-metrics-data"></a>Jak używać danych metryk?
 
-Metryki dane są przechowywane w postaci serii tabel Azure na koncie magazynu klienta. Te dane mogą być używane, za pomocą następujących narzędzi:
+Dane metryk są przechowywane jako serię tabele platformy Azure na koncie magazynu klienta. Te dane mogą być wykorzystywane za pomocą następujących narzędzi:
 
-- AMS SDK
-- Eksplorator usługi Storage Azure firmy Microsoft (obsługuje eksportu w formacie wartości rozdzielanych przecinkami i przetworzonych w programie Excel)
+- ZESTAW SDK USŁUGI AMS
+- Microsoft Azure Storage Explorer (obsługuje eksportowania do formatu wartości rozdzielane przecinkami i przetworzone w programie Excel)
 - Interfejs API REST
 
 ### <a name="how-to-find-average-bandwidth-consumption"></a>Jak znaleźć średniej przepustowości?
 
-Średniej przepustowości jest średnią żądania w danym okresie czasu.
+Użycia Średnia przepustowość jest średnia BytesSent w danym okresie czasu.
 
-### <a name="how-to-define-streaming-unit-count"></a>Jak określić liczbę jednostek przesyłania strumieniowego?
+### <a name="how-to-define-streaming-unit-count"></a>Jak zdefiniować liczby jednostek przesyłania strumieniowego?
 
-Liczba jednostek przesyłania strumieniowego można zdefiniować jako przepływności szczytu z rozdzielonych przepływność szczytu jeden punkt końcowy przesyłania strumieniowego punktów końcowych przesyłania strumieniowego usługi. Szczytowa przepływność można używać jednego punktu końcowego przesyłania strumieniowego to 160 MB/s.
-Na przykład załóżmy, że przepływność szczytu z klienta usługi jest 40 MB/s (maksymalna wartość BytesSent w danym okresie czasu). Następnie, liczba jednostek przesyłania strumieniowego jest równa (40 MB/s) * (8 bitów/bajtów) /(160 Mbps) = 2 jednostki przesyłania strumieniowego.
+Liczba jednostek przesyłania strumieniowego mogą być definiowane jako przepływności szczytu od podzielona przez przepływność szczytu jeden punkt końcowy przesyłania strumieniowego punkty końcowe przesyłania strumieniowego usługi. Szczytowy przepływności można używać jednego punktu końcowego przesyłania strumieniowego jest 160 MB/s.
+Na przykład załóżmy, że przepływność szczytu z działem obsługi klienta jest 40 MB/s (maksymalna wartość BytesSent w danym okresie czasu). Następnie liczby jednostek przesyłania strumieniowego jest równa (40 MB/s) * (8 bitów/bajtów) /(160 Mbps) = 2 jednostki przesyłania strumieniowego.
 
-### <a name="how-to-find-average-requestssecond"></a>Jak znaleźć średnią żądań/sekundę?
+### <a name="how-to-find-average-requestssecond"></a>Jak znaleźć średnia żądań na sekundę?
 
-Aby znaleźć średnią liczbę żądań na sekundę, obliczeń średnia liczba żądań (RequestCount) w danym okresie czasu.
+Aby znaleźć średnią liczbę żądań na sekundę, należy obliczyć średnia liczba żądań (RequestCount) w danym okresie czasu.
 
-### <a name="how-to-define-channel-health"></a>Jak zdefiniować kanał kondycji?
+### <a name="how-to-define-channel-health"></a>Jak zdefiniować kondycji kanał?
 
-Kanał kondycji można zdefiniować jako złożone funkcja logiczna taki sposób, że ma wartość false, gdy przytrzymaj dowolny z następujących warunków:
+Kanał kondycji mogą być definiowane jako funkcja logiczna złożonego, taki sposób, że ma wartość false, gdy dowolne z następujących warunków przechowywania:
 
-- OverlapCount > 0.
-- DiscontinuityCount > 0.
-- NonincreasingCount > 0.
+- OverlapCount > 0
+- DiscontinuityCount > 0
+- NonincreasingCount > 0
 - UnalignedKeyFrames == True 
 - UnalignedPresentationTime == True 
 - UnexpectedBitrate == True
@@ -188,29 +188,29 @@ Kanał kondycji można zdefiniować jako złożone funkcja logiczna taki sposób
 
 ### <a name="how-to-detect-discontinuities"></a>Jak wykryć przerw?
 
-Aby wykrywać przerw, Znajdź wszystkie wpisy danych kanału gdzie DiscontinuityCount > 0. Odpowiednie sygnatury czasowej ObservedTime wskazuje czas, w których wystąpił brak ciągłości.
+Aby wykryć przerw, znaleźć wszystkie wpisy danych kanału gdzie DiscontinuityCount > 0. Odpowiednie sygnatura czasowa ObservedTime wskazuje czas, w których wystąpił brak ciągłości.
 
-### <a name="how-to-detect-timestamp-overlaps"></a>Jak wykryć sygnatury czasowej nakłada się na?
+### <a name="how-to-detect-timestamp-overlaps"></a>Jak wykrywać nakładania się sygnatura czasowa?
 
-Aby wykryć sygnatury czasowej nakładania się, Znajdź wszystkie wpisy danych kanału gdzie OverlapCount > 0. Odpowiednie sygnatury czasowej ObservedTime wskazuje, że wystąpił razy, w których pokrywa się to sygnatura czasowa.
+Aby wykrywać nakładania się sygnatura czasowa, znaleźć wszystkie wpisy danych kanału gdzie OverlapCount > 0. Znacznik czasu: ObservedTime odpowiedniego wskazuje, że wystąpił razy, w których nakłada sygnaturę czasową.
 
 ### <a name="how-to-find-streaming-request-failures-and-reasons"></a>Jak znaleźć przesyłania strumieniowego błędów żądań i przyczyny?
 
-Aby znaleźć przesyłania strumieniowego błędów żądań i przyczyn, Znajdź wszystkie wpisy danych punktu końcowego przesyłania strumieniowego gdzie ResultCode nie jest równa S_OK. Odpowiednie pole StatusCode wskazuje przyczynę błędu żądania.
+Można znaleźć przesyłania strumieniowego błędów żądań i przyczyny, należy znaleźć wszystkie wpisy danych punktu końcowego przesyłania strumieniowego, gdzie kod wyniku nie jest równa S_OK. Odpowiednie pole StatusCode wskazuje przyczynę błędu żądania.
 
-### <a name="how-to-consume-data-with-external-tools"></a>Jak korzystać z danych za pomocą narzędzi zewnętrznych?
+### <a name="how-to-consume-data-with-external-tools"></a>Jak używać danych za pomocą narzędzi zewnętrznych?
 
-Telemetrycznego danych mogą być przetwarzane i wizualizowane z następujących narzędzi:
+Telemetria dane mogą być przetwarzane i wizualizowane za pomocą następujących narzędzi:
 
 - Usługa PowerBI
 - Application Insights
-- Monitor Azure (dawniej Shoebox)
+- Usługa Azure Monitor (dawniej Shoebox)
 - Pulpit nawigacyjny na żywo usług AMS
-- Portalu Azure (oczekiwanie wersji)
+- Witryna Azure Portal (oczekiwanie na wydanie)
 
 ### <a name="how-to-manage-data-retention"></a>Jak zarządzać przechowywania danych?
 
-System telemetrii nie zapewnia zarządzanie przechowywania danych ani automatycznego usuwania starych rekordów. W związku z tym należy do zarządzania i ręcznie usuń stare rekordy z tabeli magazynu. Może się odwoływać do magazynu zestawu SDK dla jak to zrobić.
+System telemetrii nie zapewnia zarządzanie przechowywania danych lub automatycznego usuwania starych rekordów. W związku z tym należy zarządzać i ręcznie usuń stare rekordy z tabeli magazynu. Mogą odwoływać się do usługi storage SDK for jak to zrobić.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

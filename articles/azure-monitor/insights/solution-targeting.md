@@ -1,6 +1,6 @@
 ---
-title: Określanie wartości docelowej rozwiązania do zarządzania na platformie Azure | Dokumentacja firmy Microsoft
-description: Określanie wartości docelowej rozwiązania do zarządzania umożliwia ograniczenie rozwiązania do określonej grupy agentów zarządzania.  W tym artykule opisano sposób tworzenia konfiguracji zakresu i zastosować go do rozwiązania.
+title: Określanie wartości docelowej monitorowanie rozwiązań w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Określanie wartości docelowej rozwiązania do monitorowania umożliwia ograniczenie rozwiązania do monitorowania do określonego zestawu agentów.  W tym artykule opisano sposób tworzenia konfiguracji zakresu i zastosować go do rozwiązania.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d82c42fa734932655f536d4fc04a50b4d6904ac5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d1d2dd689cb389b6adfe1dd534e7c73e17f755f5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192757"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989189"
 ---
-# <a name="targeting-management-solutions-in-azure-preview"></a>Określanie wartości docelowej rozwiązania do zarządzania na platformie Azure (wersja zapoznawcza)
-Po dodaniu rozwiązania do zarządzania subskrypcją, jest automatycznie wdrażane domyślnie wszyscy agenci Windows i Linux, połączonego z obszarem roboczym usługi Log Analytics.  Można zarządzać koszty i ograniczyć ilość danych zebranych dla rozwiązania przez ograniczenie go do określonego zestawu agentów.  W tym artykule opisano sposób używania **określania celu rozwiązania** czyli funkcja umożliwiająca można zastosować zakres do rozwiązania.
+# <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Określanie wartości docelowej rozwiązania do monitorowania w usłudze Azure Monitor (wersja zapoznawcza)
+Po dodaniu rozwiązania do monitorowania ze swoją subskrypcją, jest automatycznie wdrażane domyślnie wszyscy agenci Windows i Linux, połączonego z obszarem roboczym usługi Log Analytics.  Można zarządzać koszty i ograniczyć ilość danych zebranych dla rozwiązania przez ograniczenie go do określonego zestawu agentów.  W tym artykule opisano sposób używania **określania celu rozwiązania** czyli funkcja umożliwiająca można zastosować zakres do rozwiązania.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="how-to-target-a-solution"></a>Jak docelowego rozwiązania
 Istnieją trzy kroki, aby przeznaczonych dla rozwiązania, zgodnie z opisem w poniższych sekcjach. 
 
 
 ### <a name="1-create-a-computer-group"></a>1. Utwórz grupę komputerów
-Określ komputery, które mają zostać uwzględnione w zakresie, tworząc [grupa](../../azure-monitor/platform/computer-groups.md) w usłudze Log Analytics.  Grupy komputerów można oparte na wyszukiwanie w dzienniku lub zaimportowanych z innych źródeł, takich jak grupy usługi Active Directory lub programu WSUS. Jako [opisanych poniżej](#solutions-and-agents-that-cant-be-targeted), tylko te komputery, które są podłączone bezpośrednio do usługi Log Analytics, które zostaną uwzględnione w zakresie.
+Określ komputery, które mają zostać uwzględnione w zakresie, tworząc [grupa](../platform/computer-groups.md) w usłudze Azure Monitor.  Grupy komputerów można opartych na zapytaniach dzienników lub zaimportowanych z innych źródeł, takich jak grupy usługi Active Directory lub programu WSUS. Jako [opisanych poniżej](#solutions-and-agents-that-cant-be-targeted), tylko te komputery, które są podłączone bezpośrednio do usługi Azure Monitor, które zostaną uwzględnione w zakresie.
 
 Raz masz grupa utworzona w obszarze roboczym, a następnie zostaną objęte konfiguracji zakresu, który można zastosować do jednego lub więcej rozwiązań.
  
@@ -38,7 +40,7 @@ Raz masz grupa utworzona w obszarze roboczym, a następnie zostaną objęte konf
  
  Tworzenie konfiguracji zakresu, za pomocą poniższego procesu.  
 
- 1. W witrynie Azure portal przejdź do **usługi Log Analytics** i wybierz swój obszar roboczy.
+ 1. W witrynie Azure portal przejdź do **obszarów roboczych usługi Log Analytics** i wybierz swój obszar roboczy.
  2. We właściwościach obszaru roboczego w ramach **źródła danych obszaru roboczego** wybierz **konfiguracji zakresu**.
  3. Kliknij przycisk **Dodaj** można utworzyć nowej konfiguracji zakresu.
  4. Wpisz **nazwa** dla konfiguracji zakresu.
@@ -52,7 +54,7 @@ Po utworzeniu konfiguracji zakresu, następnie można zastosować go do jednego 
 
 Zastosuj konfigurację zakresu, za pomocą poniższego procesu.  
 
- 1. W witrynie Azure portal przejdź do **usługi Log Analytics** i wybierz swój obszar roboczy.
+ 1. W witrynie Azure portal przejdź do **obszarów roboczych usługi Log Analytics** i wybierz swój obszar roboczy.
  2. We właściwościach dla obszaru roboczego wybierz **rozwiązania**.
  3. Kliknij rozwiązanie nad którym chcesz zakresu.
  4. We właściwościach rozwiązania w folderze **źródła danych obszaru roboczego** wybierz **określania celu rozwiązania**.  Jeśli nie jest dostępna opcja następnie [tego rozwiązania nie mogą być celem](#solutions-and-agents-that-cant-be-targeted).
@@ -65,7 +67,7 @@ Poniżej przedstawiono kryteria agentów i ich rozwiązania, które nie mogą by
 
 - Określanie celu rozwiązania ma zastosowanie tylko do rozwiązania, które wdrożyć agentów.
 - Określanie celu rozwiązania ma zastosowanie tylko do rozwiązania firmy Microsoft.  Nie ma zastosowania do rozwiązania [utworzonych przez siebie lub partnerów](solutions-creating.md).
-- Można odfiltrować tylko agentów, które łączą się bezpośrednio do usługi Log Analytics.  Rozwiązania automatycznie wdroży go do wszystkich agentów, które są częścią podłączonej grupy zarządzania programu Operations Manager, czy są one dołączone w konfiguracji zakresu.
+- Można odfiltrować tylko agentów, które łączą się bezpośrednio do usługi Azure Monitor.  Rozwiązania automatycznie wdroży go do wszystkich agentów, które są częścią podłączonej grupy zarządzania programu Operations Manager, czy są one dołączone w konfiguracji zakresu.
 
 ### <a name="exceptions"></a>Wyjątki
 Określanie celu rozwiązania nie można używać z następujących rozwiązań, mimo że mieściły się podanych kryteriów.
@@ -73,5 +75,5 @@ Określanie celu rozwiązania nie można używać z następujących rozwiązań,
 - Ocena kondycji agenta
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Dowiedz się więcej o rozwiązaniach do zarządzania rozwiązania, które są dostępne do zainstalowania w Twoim środowisku, w tym [rozwiązań do zarządzania Dodawanie usługi Azure Log Analytics do swojego obszaru roboczego](solutions.md).
-- Dowiedz się więcej na temat tworzenia grup komputerów na [grup komputerów w usłudze Log Analytics dziennikach](../../azure-monitor/platform/computer-groups.md).
+- Dowiedz się więcej na temat rozwiązania, które są dostępne do zainstalowania w Twoim środowisku, w tym rozwiązania do monitorowania [Dodawanie usługi Azure Log Analytics monitorowanie rozwiązań do obszaru roboczego](solutions.md).
+- Dowiedz się więcej na temat tworzenia grup komputerów na [grup komputerów w usłudze Azure Monitor rejestrowania zapytań](../platform/computer-groups.md).

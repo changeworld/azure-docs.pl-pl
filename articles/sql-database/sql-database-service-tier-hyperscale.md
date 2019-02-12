@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 524e10b93905372377fe388a38c5dc55fdcee877
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 49c41b436e0d935d1f9fce5ba2de10e0f2d0c99d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509992"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991230"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Warstwy usług na dużą skalę (wersja zapoznawcza) do 100 TB
 
@@ -32,7 +32,7 @@ Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza war
 > [!IMPORTANT]
 > Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępny w niektórych regionach platformy Azure. Aby region pełną listę, zobacz [na dużą skalę usługa regiony dostępne w warstwie](#available-regions). Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 > [!NOTE]
-> Aby uzyskać więcej informacji o warstwach usług ogólnego przeznaczenia i krytyczne dla działania firmy w modelu zakupu opartego na rdzeniach wirtualnych, zobacz [ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) warstwy usług. Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-service-tiers.md).
+> Aby uzyskać więcej informacji o warstwach usług ogólnego przeznaczenia i krytyczne dla działania firmy w modelu zakupu opartego na rdzeniach wirtualnych, zobacz [ogólnego przeznaczenia](sql-database-service-tier-general-purpose.md) i [krytyczne dla działania firmy](sql-database-service-tier-business-critical.md) warstwy usług. Dla porównania modelu zakupu opartego na rdzeniach wirtualnych za pomocą modelu zakupu opartego na jednostkach DTU, zobacz [zakupu modeli i zasobów bazy danych SQL Azure](sql-database-purchase-models.md).
 > [!IMPORTANT]
 > Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 
@@ -162,7 +162,7 @@ Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby — często zadawane pytania na dużą skalę, zobacz [często zadawane pytania dotyczące Hiperskali](sql-database-service-tier-hyperscale-faq.md).
-- Aby uzyskać informacji o warstwach usługi, zobacz [warstwy usług](sql-database-service-tiers.md)
+- Aby uzyskać informacji o warstwach usługi, zobacz [warstwy usług](sql-database-purchase-models.md)
 - Zobacz [Przegląd zasobów limity na serwerze bazy danych SQL](sql-database-resource-limits-database-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Zakupu limity modelu pojedynczej bazy danych, zobacz [usługi Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md).
 - Dla funkcji i listy porównanie, zobacz [typowe funkcje SQL](sql-database-features.md).

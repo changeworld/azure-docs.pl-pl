@@ -1,25 +1,26 @@
 ---
-title: Skonfiguruj ustawienia klawiatury funkcji tworzenia wycinków Azure Media | Dokumentacja firmy Microsoft
-description: Kroki konfigurowania można skonfigurować skróty klawiaturowe dla funkcji tworzenia wycinków multimediów Azure
+title: Skonfiguruj ustawienia klawiatury usługi Azure Media Clipper | Dokumentacja firmy Microsoft
+description: Procedura konfigurowania można skonfigurować skróty klawiaturowe dla usługi Azure Media Clipper
 services: media-services
-keywords: klip subclip; kodowanie; nośnika
+keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: d6fa463f71c00787c994b41d84bb349dce676de5
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 6d50c99b64442bf009707b7619ec19f3d40e604e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788074"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992504"
 ---
-# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurowanie usługi Azure Media funkcji tworzenia wycinków skróty klawiaturowe
-Azure Media funkcji tworzenia wycinków obsługuje Dostosowywanie domyślne skróty klawiaturowe, zapewniając opcjonalny `keymap` parametru JSON.
+# <a name="configure-azure-media-clipper-keyboard-shortcuts"></a>Konfigurowanie skróty klawiaturowe usługi Azure Media Clipper 
 
-Poniżej przedstawiono JSON przykładową domyślne skróty klawiaturowe. Te ustawienia można dostosować, zmieniając pola klucza i przekazując parametr podczas inicjowania funkcji tworzenia wycinków.
+Usługa Azure Media Clipper obsługuje dostosowywania domyślne skróty klawiaturowe, zapewniając opcjonalny `keymap` parametru JSON.
+
+Poniższy przykład JSON przedstawiono domyślne skróty klawiaturowe. Te ustawienia można dostosować, zmieniając pola kluczy i przekazywanie w parametrze podczas inicjowania Clipper.
 
 ```json
 {

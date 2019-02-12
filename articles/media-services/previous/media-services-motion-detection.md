@@ -4,21 +4,21 @@ description: Wykrywanie ruchu multimediów Azure procesor multimediów (MP) umo�
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/10/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: 12af87ab0a8b15528acbd9ce8a1bc92f478aba28
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 26090067923c468b7102ac5b7bb78b9d7b7960bb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54820975"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995616"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Wykrywanie ruchów za pomocą usługi Azure Media Analytics
 ## <a name="overview"></a>Przegląd
@@ -103,7 +103,7 @@ W poniższej tabeli opisano elementy danych wyjściowych pliku JSON.
 | Czas trwania |Długość zdarzenia w "znaczników". |
 | Interval |Interwał każdego wpisu w zdarzeniu w "taktach". |
 | Zdarzenia |Każdy fragment zdarzeń zawiera ruchu wykryte w tym czas trwania. |
-| Typ |W bieżącej wersji jest to zawsze "2" dla ogólnego ruchu. Dzięki temu etykiety interfejsów API Video elastyczność do kategoryzowania ruchu w przyszłych wersji. |
+| Type |W bieżącej wersji jest to zawsze "2" dla ogólnego ruchu. Dzięki temu etykiety interfejsów API Video elastyczność do kategoryzowania ruchu w przyszłych wersji. |
 | RegionID |Jak wyjaśniono powyżej, ta będzie zawsze równa 0 w tej wersji. Ta etykieta dostarcza interfejs API wideo elastyczność, aby znaleźć ruchu w różnych regionach w przyszłych wersjach. |
 | Regiony |Odnosi się do obszaru w wideo, gdzie interesujące Cię ruchu. <br/><br/>-"id" reprezentuje obszar region — w tej wersji jest tylko jedna, identyfikator: 0. <br/>-"type" reprezentuje kształt obszaru interesujące Cię do ruchu. Obecnie są obsługiwane "prostokąt" i "polygon".<br/> Jeśli określono "prostokąt" region ma wymiarów w X, Y, szerokość i wysokość. Współrzędne X i Y reprezentują współrzędnych XY po lewej stronie górnego regionu na znormalizowaną skali od 0.0 do 1.0. Szerokość i wysokość reprezentuje rozmiar obszaru na znormalizowaną skali od 0.0 do 1.0. W bieżącej wersji X, Y, szerokość i wysokość są zawsze ustalone na poziomie 0, 0 i 1, 1. <br/>Jeśli określono "polygon" region ma wymiarów w punktach. <br/> |
 | Fragments |Metadane jest podzielony się w różnych segmentach fragmentów. Każdy fragment zawiera rozpoczęcie, czas trwania, wartość interwału i zdarzenia. Fragment ze zdarzeniami nie oznacza, że ruchu nie został wykryty podczas tej godziny rozpoczęcia i czas trwania. |

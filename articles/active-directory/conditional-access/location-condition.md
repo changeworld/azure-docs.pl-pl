@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 26721aa0eac69875f6a3704025e6ab71a54a1e31
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 086816bdb93873a39575564496cf043797f3a530
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078104"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993269"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Co to jest warunek lokalizacji w funkcji dostępu warunkowego usługi Azure Active Directory? 
 
@@ -34,9 +34,9 @@ Ten artykuł zawiera informacje, które należy skonfigurować warunek lokalizac
 
 Usługa Azure AD umożliwia logowanie na urządzeniami i aplikacjami i usługami z dowolnego miejsca w publicznym Internecie. Dostęp do aplikacji w chmurze na podstawie lokalizacji sieciowej użytkownika można kontrolować z warunkiem lokalizacji. Typowe przypadki użycia dla warunku lokalizacji są następujące:
 
-- Wymaganie uwierzytelniania wieloskładnikowego dla użytkowników uzyskujących dostęp do usługi, gdy znajdują się poza siecią firmową  
+- Wymaganie uwierzytelniania wieloskładnikowego dla użytkowników uzyskujących dostęp do usługi, gdy znajdują się poza siecią firmową.
 
-- Blokuje dostęp dla użytkowników uzyskujących dostęp do usługi z określonych krajów lub regionów. 
+- Blokuje dostęp dla użytkowników uzyskujących dostęp do usługi z określonych krajów lub regionów.
 
 Lokalizacja jest etykietę dla lokalizacji sieciowej albo reprezentuje nazwanych lokalizacji czy uwierzytelnianie wieloskładnikowe zaufane adresy IP.
 
@@ -62,9 +62,9 @@ Lokalizacja o nazwie zawiera następujące składniki:
 
 - **Oznacz jako zaufaną lokalizację** -flagę można ustawić dla nazwanych lokalizacji do wskazania zaufanej lokalizacji. Zazwyczaj zaufanych lokalizacji są obszarów sieci, które są kontrolowane przez dział IT. Oprócz dostępu warunkowego, Zaufane lokalizacje nazwane są również używane przez raporty dotyczące zabezpieczeń usługi Azure Identity Protection i usługą Azure AD do zmniejszenia [wyników fałszywie dodatnich](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1).
 
-- **Krajów / regionów** — ta opcja umożliwia wybranie co najmniej jeden kraj lub region, aby zdefiniować nazwanych lokalizacji. 
+- **Kraje/regiony** — ta opcja umożliwia wybranie co najmniej jeden kraj lub region, aby zdefiniować nazwanych lokalizacji. 
 
-- **Uwzględnij nieznane obszary** — adresy IP niektóre nie są zamapowane na konkretnym kraju. Ta opcja pozwala wybrać, czy te adresy IP powinien być uwzględniony w lokalizacji o nazwie. Podczas stosowania zasad za pomocą nazwanych lokalizacji dla nieznanych lokalizacjach, może być wyboru.
+- **Uwzględnij nieznane obszary** — adresy IP niektóre nie są zamapowane na konkretnym kraju. Ta opcja pozwala wybrać, czy te adresy IP powinien być uwzględniony w lokalizacji o nazwie. Użyj tego ustawienia podczas stosowania zasad za pomocą nazwanych lokalizacji dla nieznanych lokalizacjach.
 
 Rozmiar obiektu pokrewnego ograniczają liczbę nazwane lokalizacje, które można skonfigurować w usłudze Azure AD. Można skonfigurować:
 
@@ -87,7 +87,7 @@ Na stronie Ustawienia usługi uwierzytelnianie wieloskładnikowe, można zidenty
 
 Po zaznaczeniu tej opcji, w tym nazwanych lokalizacji **zaufane adresy IP usługi MFA** będzie dotyczyć wszystkie zasady z tym wybrane.
 
-Dla aplikacji mobilnych i klasycznych, które długo mieszkałem okresy istnienia sesji, dostęp warunkowy jest okresowo ponownie oceniane. Wartość domyślna to raz godzinę. Gdy wewnątrz sieci firmowej oświadczenia i tylko wydaniu podczas początkowego uwierzytelniania usługi Azure AD nie może mieć listy zaufanych zakresów adresów IP. W tym przypadku jest trudne do ustalenia, czy użytkownik jest nadal w sieci firmowej:
+Dla aplikacji mobilnych i klasycznych, które długo mieszkałem okresy istnienia sesji, dostęp warunkowy jest okresowo ponownie oceniane. Wartość domyślna to raz godzinę. Gdy wewnątrz tylko wystawiane jest oświadczenie sieci firmowej w czasie początkowe uwierzytelnianie, usługa Azure AD nie może mieć listy zaufanych zakresów adresów IP. W tym przypadku jest trudne do ustalenia, czy użytkownik jest nadal w sieci firmowej:
 
 1. Sprawdź, czy adres IP użytkownika w jednym z zaufanych zakresów adresów IP.
 
@@ -150,7 +150,7 @@ Podczas tworzenia lub aktualizacji o nazwie lokalizacje, aktualizacji zbiorczych
 
 ### <a name="cloud-proxies-and-vpns"></a>Serwery proxy w chmurze i sieci VPN 
 
-Gdy używasz serwera proxy hostowane w chmurze lub rozwiązanie sieci VPN, adres IP usługi Azure AD używa podczas oceny zasad jest adres IP serwera proxy. Nagłówek X-Forwarded-For (XFF), która zawiera użytkowników, dla których publiczny adres IP nie jest używana, ponieważ nie ma możliwości weryfikacji, który pochodzi z zaufanego źródła, więc przedstawiałoby metodę faking adresu IP. 
+Gdy używasz serwera proxy hostowane w chmurze lub rozwiązanie sieci VPN, adres IP usługi Azure AD używa podczas oceny zasad jest adres IP serwera proxy. Nagłówek X-Forwarded-For (XFF), która zawiera publiczny adres IP użytkownika nie jest używana, ponieważ nie ma możliwości weryfikacji, który pochodzi z zaufanego źródła, więc przedstawiałoby metodę faking adresu IP. 
 
 Gdy serwer proxy w chmurze jest w miejscu, zasady, które służy do Wymagaj urządzenia połączonego z domeną mogą być używane lub wewnątrz sieci firmowej oświadczeń z usług AD FS.
 

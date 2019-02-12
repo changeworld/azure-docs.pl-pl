@@ -1,10 +1,10 @@
 ---
-title: Utwórz ContentKeys z platformą .NET
-description: Informacje o sposobie tworzenia kluczy zawartości, które zapewniają bezpieczny dostęp do zasobów.
+title: Tworzenie kluczy zawartości przy użyciu platformy .NET
+description: Dowiedz się, jak utworzyć kluczy zawartości, które zapewniają bezpieczny dostęp do zasobów.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 53df4c4cef19f6eef99aa15bb265317aa0cd1d58
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: af8c2b547e1ce1b15410ee20eb59934559ac41ac
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788186"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992164"
 ---
-# <a name="create-contentkeys-with-net"></a>Utwórz ContentKeys z platformą .NET
+# <a name="create-contentkeys-with-net-legacy"></a>Tworzenie kluczy zawartości przy użyciu platformy .NET (starsza wersja)
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-create-contentkey.md)
 > * [.NET](media-services-dotnet-create-contentkey.md)
@@ -30,19 +30,19 @@ ms.locfileid: "33788186"
 
 Usługa Media Services umożliwia tworzenie i dostarczanie zaszyfrowanych zasoby. A **ContentKey** zapewnia bezpieczny dostęp do Twojego **zasobów**s. 
 
-Podczas tworzenia nowego elementu zawartości (na przykład przed [przekazać pliki](media-services-dotnet-upload-files.md)), można określić następujące opcje szyfrowania: **StorageEncrypted**, **CommonEncryptionProtected**, lub **EnvelopeEncryptionProtected**. 
+Po utworzeniu nowego elementu zawartości (na przykład, zanim [przekazywanie plików](media-services-dotnet-upload-files.md)), można określić następujące opcje szyfrowania: **StorageEncrypted**, **CommonEncryptionProtected**, lub **EnvelopeEncryptionProtected**. 
 
-Zasoby można dostarczyć do klientów, można [skonfigurować trwałych był dynamicznie szyfrowany](media-services-dotnet-configure-asset-delivery-policy.md) z jednym z następujących dwie metody szyfrowania: **DynamicEnvelopeEncryption** lub  **DynamicCommonEncryption**.
+Gdy zasoby można dostarczać klientom, możesz ją [konfigurowanie dla zasobów, aby był dynamicznie szyfrowany](media-services-dotnet-configure-asset-delivery-policy.md) przy użyciu jednego z następujących dwóch metody szyfrowania: **DynamicEnvelopeEncryption** lub **DynamicCommonEncryption**.
 
-Zasoby zaszyfrowanych ma ma być skojarzone z **ContentKey**s. W tym artykule opisano sposób tworzenia klucza zawartości.
+Zaszyfrowane obiekty muszą być skojarzone z **ContentKey**s. W tym artykule opisano sposób tworzenia klucza zawartości.
 
 > [!NOTE]
-> Podczas tworzenia nowego **StorageEncrypted** zasobów przy użyciu zestawu SDK .NET usługi Media, **ContentKey** jest automatycznie tworzony i połączone z trwałym.
+> Podczas tworzenia nowego **StorageEncrypted** zasobów przy użyciu Media Services .NET SDK **ContentKey** jest automatycznie tworzony i połączone z elementem zawartości.
 > 
 > 
 
 ## <a name="contentkeytype"></a>ContentKeyType
-Jedna z wartości, że należy ustawić podczas tworzenia zawartości klucz jest typ klucza zawartości. Wybierz jedną z następujących wartości. 
+Jedna z wartości, należy ustawić podczas tworzenia zawartości klucza jest typ klucza zawartości. Wybierz jedną z następujących wartości. 
 
 ```csharp
     public enum ContentKeyType
@@ -70,8 +70,8 @@ Jedna z wartości, że należy ustawić podczas tworzenia zawartości klucz jest
     }
 ```
 
-## <a id="envelope_contentkey"></a>Tworzenie typu koperty ContentKey
-Poniższy fragment kodu tworzy klucz zawartości typu szyfrowania koperty. Następnie kojarzy klucz z określonym zasobie.
+## <a id="envelope_contentkey"></a>Utwórz typ schematu envelope ContentKey
+Poniższy fragment kodu tworzy klucz zawartości typu schematu envelope szyfrowania. Następnie kojarzy klucz z określonym zasobie.
 
 ```csharp
     static public IContentKey CreateEnvelopeTypeContentKey(IAsset asset)
@@ -108,8 +108,8 @@ call
 ```
 
 
-## <a id="common_contentkey"></a>Tworzenie wspólnego typu ContentKey
-Poniższy fragment kodu tworzy zawartości klucza wspólnego typu szyfrowania. Następnie kojarzy klucz z określonym zasobie.
+## <a id="common_contentkey"></a>Utwórz wspólny typ ContentKey
+Poniższy fragment kodu tworzy zawartości klucz wspólny typ szyfrowania. Następnie kojarzy klucz z określonym zasobie.
 
 ```csharp
     static public IContentKey CreateCommonTypeContentKey(IAsset asset)

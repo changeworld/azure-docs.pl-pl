@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 880b4e4ce09fec3caf70586c2cfb54236d13b668
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812471"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996308"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
 A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](../../azure-monitor/app/app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.
@@ -133,7 +133,7 @@ Kliknij, aby wystąpienia żądań zakończonych niepowodzeniem i spójrz na jeg
 ![Kliknij typ żądania, kliknij wystąpienie aby przejść do innego widoku tego samego wystąpienia, kliknij je, aby uzyskać szczegóły wyjątku.](./media/asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analiza
-Możesz śledzić zależności w [języka zapytań usługi Log Analytics](https://aka.ms/LogAnalyticsLanguage). Oto kilka przykładów.
+Możesz śledzić zależności w [język zapytań w Eksploratorze danych](https://aka.ms/LogAnalyticsLanguage). Oto kilka przykładów.
 
 * Znajdź wszystkie nieudane wywołania zależności:
 

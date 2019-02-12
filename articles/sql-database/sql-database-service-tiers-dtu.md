@@ -1,6 +1,6 @@
 ---
-title: Warstwy usługi SQL Database platformy Azure — jednostek DTU | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat warstw usług dla pojedynczych i puli baz danych rozmiarów wystąpień obliczeniowych i rozmiaru magazynu.
+title: Warstwy usługi SQL Database platformy Azure — model zakupowy oparty na jednostkach DTU | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej na temat warstw usługi w modelu zakupu opartego na jednostkach DTU dla pojedynczej i puli baz danych zapewnienie rozmiarów wystąpień obliczeniowych i magazynu.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -11,22 +11,22 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6319deb36088317cb289134b7068720e97cb10b7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/08/2019
+ms.openlocfilehash: b960e0f670b66ea1759da441e7b1cf53151de7f6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507658"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993609"
 ---
-# <a name="dtu-based-service-tiers"></a>Warstwy usług oparte na jednostkach DTU
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Warstwy usług w modelu zakupu opartego na jednostkach DTU
 
-Warstwy usług oparte na jednostkach DTU są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych o stałą ilość miejsca do magazynowania, ustalony okres przechowywania kopii zapasowych i stałej cenie. Wszystkie warstwy usługi oferują elastyczność zmiany rozmiarów wystąpień obliczeniowych bez przestojów. Pojedyncze bazy danych i pul elastycznych są rozliczane godzinowo na podstawie warstwy usługi i obliczeń rozmiaru.
+Warstwy usług w modelu zakupu opartego na jednostkach DTU są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych o stałą ilość miejsca do magazynowania, ustalony okres przechowywania kopii zapasowych i stałej cenie. Wszystkie warstwy usługi w modelu zakupu opartego na jednostkach DTU zapewniają elastyczność zmiany rozmiarów wystąpień obliczeniowych bez przestojów. Pojedyncze bazy danych i pul elastycznych są rozliczane godzinowo na podstawie warstwy usługi i obliczeń rozmiaru.
 
 > [!IMPORTANT]
-> Wystąpienie zarządzane SQL Database, obecnie w publicznej wersji zapoznawczej nie obsługuje model zakupu jednostek DTU. Aby uzyskać więcej informacji, zobacz [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).
+> Wystąpienie zarządzane usługi SQL Database nie obsługuje model zakupu jednostek DTU. Aby uzyskać więcej informacji, zobacz [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).
 > [!NOTE]
-> Aby uzyskać informacji na temat warstw usług opartych na rdzeniach wirtualnych, zobacz [warstwy usług oparte na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Aby dowiedzieć się, jak rozróżnianie warstwy usług oparte na jednostkach DTU i warstwy usług oparte na rdzeniach wirtualnych, zobacz [usługi Azure SQL Database, zakup modeli](sql-database-service-tiers.md).
+> Aby uzyskać informacji na temat warstw usług opartych na rdzeniach wirtualnych, zobacz [warstwy usług oparte na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Aby dowiedzieć się, jak rozróżnianie warstwy usług oparte na jednostkach DTU i warstwy usług oparte na rdzeniach wirtualnych, zobacz [usługi Azure SQL Database, zakup modeli](sql-database-purchase-models.md).
 
 ## <a name="compare-the-dtu-based-service-tiers"></a>Porównaj warstwy usług oparte na jednostkach DTU
 
@@ -34,8 +34,8 @@ Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, maga
 
 ||Podstawowa|Standardowa (Standard)|Premium|
 | :-- | --: |--:| --:| --:|
-|Docelowego obciążenia|Rozwoju i produkcji|Rozwoju i produkcji|Rozwoju i produkcji||
-|Umowa SLA dotycząca czasu dostępności|99,99%|99,99%|99,99%|N/d w wersji zapoznawczej|
+|Docelowego obciążenia|Rozwoju i produkcji|Rozwoju i produkcji|Rozwoju i produkcji|
+|Umowa SLA dotycząca czasu dostępności|99,99%|99,99%|99,99%|
 |Przechowywanie kopii zapasowych|7 dni|35 dni|35 dni|
 |Procesor CPU|Małe|Niska, średnia, wysoka|Średni i wysoki|
 |Przepustowość operacji We/Wy (w przybliżeniu) |2.5 operacje We/Wy na jednostkach DTU| 2.5 operacje We/Wy na jednostkach DTU | 48 operacje We/Wy na jednostkach DTU|
@@ -49,12 +49,12 @@ Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, maga
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Limity liczby jednostek DTU i magazynu pojedynczej bazy danych
 
-Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers.md#dtu-based-purchasing-model)?
+Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [modelu zakupu opartego na jednostkach DTU](sql-database-purchase-models.md#dtu-based-purchasing-model)?
 
 ||Podstawowa|Standardowa (Standard)|Premium|
 | :-- | --: | --: | --: | --: |
 | Maksymalny rozmiar magazynu | 2 GB | 1 TB | 4 TB  |
-| Maksymalna liczba jednostek Dtu | 5 | 3000 | 4000 | |
+| Maksymalna liczba jednostek Dtu | 5 | 3000 | 4000 | 
 ||||||
 
 > [!IMPORTANT]
@@ -72,7 +72,7 @@ Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) d
 ||||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępne we wszystkich regionach poza następującymi: Zachód środkowe stany USA, Chiny wschodnie, USDoDCentral, Niemcy środkowe, Południowy Zachód klientów rządowych USA USDoDEast, USGov — Iowa, Niemcy północno-wschodnie, Chiny Północne. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB magazynu w warstwie premium jest obecnie dostępna we wszystkich regionach z wyjątkiem następujących: Zachód środkowe stany USA, Chiny wschodnie, USDoDCentral, Niemcy środkowe, Południowy Zachód klientów rządowych USA USDoDEast, USGov — Iowa, Niemcy północno-wschodnie, Chiny Północne. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
@@ -88,7 +88,7 @@ Testu wydajności i jego metody są opisane bardziej szczegółowo poniżej.
 
 ### <a name="benchmark-summary"></a>Podsumowanie testu porównawczego
 
-ASDB mierzy wydajność operacje podstawowej bazy danych, najczęściej występujące w obciążeń OLTP przetwarzania transakcji online. Mimo że testu porównawczego zaprojektowano z chmury obliczeniowej w uwadze, schemat bazy danych, wypełnianie danymi, a transakcje zostały zaprojektowane, aby być szeroko reprezentatywne podstawowych elementów, które są najczęściej używane w obciążeń OLTP.
+Test porównawczy mierzy wydajności różnych operacji podstawowej bazy danych, które występują najczęściej w obciążeń OLTP przetwarzania transakcji online. Mimo że testu porównawczego zaprojektowano z chmury obliczeniowej w uwadze, schemat bazy danych, wypełnianie danymi, a transakcje zostały zaprojektowane, aby być szeroko reprezentatywne podstawowych elementów, które są najczęściej używane w obciążeń OLTP.
 
 ### <a name="schema"></a>Schemat
 

@@ -13,16 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9194d5fe6553607ac5a0bb4e133da97f53790984
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809637"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005356"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Chroń za pomocą elementu Runbook usługi Automation z wyniki wyszukiwania dziennika usługi Log Analytics
 
-Wyniki wyszukiwania dziennika w usłudze Azure Log Analytics, można teraz wybrać **reakcję** do uruchamiania elementu runbook usługi Automation. Element runbook może służyć do rozwiązania problemu lub wykonania określonego działania, takie jak zbierać informacje dotyczące rozwiązywania problemów, Wyślij wiadomość e-mail, lub Utwórz żądanie obsługi. 
+> [!NOTE]
+> Uruchamianie elementu runbook z poziomu wyników wyszukiwania jest funkcją klasycznego portalu przeszukiwania dzienników, które staną się przestarzałe na 15 lutego 2019 r. Można skonfigurować grupę akcji, która może uruchomić element runbook, oprócz innych akcji z [reguły alertu](../platform/alerts-log.md) w usłudze Azure Monitor.
+
+Wyniki wyszukiwania dziennika w usłudze Azure Log Analytics, można teraz wybrać **reakcję** do uruchamiania elementu runbook usługi Automation.  Element runbook może służyć do rozwiązania problemu lub wykonania określonego działania, takie jak zbierać informacje dotyczące rozwiązywania problemów, Wyślij wiadomość e-mail, lub Utwórz żądanie obsługi. 
+
 
 ## <a name="components-and-features-used"></a>Używane składniki i funkcje
 * [Konto usługi Azure Automation](../../automation/automation-quickstart-create-account.md)

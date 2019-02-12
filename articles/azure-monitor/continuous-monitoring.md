@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fdccb4e94d9b9fd8b698575c890efad56a115a3e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452823"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994027"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Monitorowanie ciągłe za pomocą usługi Azure Monitor
 
@@ -64,7 +64,7 @@ Ciągła integracja / ciągłe wdrażanie pozwala na integrowanie i wdrażanie z
 
 - Użyj [potoki Azure](/azure/devops/pipelines) Implementowanie ciągłego wdrażania i automatyzowanie całego procesu od zatwierdzania kodu do środowiska produkcyjnego, oparte na testach ciągłej integracji/ciągłego wdrażania.
 - Użyj [bramki jakości](/azure/devops/pipelines/release/approvals/gates) można zintegrować monitorowanie w przed wdrożeniem lub po wdrożeniu. Dzięki temu są spełniane metryki klucza kondycji i wydajności (KPI) jako aplikacji przenieść z deweloperów do produkcji i różnice w środowisku infrastruktury lub skalowania jest do niekorzystnego wpływu na kluczowych wskaźników wydajności.
-- [Obsługa osobne monitorowania instancje](../azure-monitor/app/separate-resources.md) między środowiska innego wdrożenia, takie jak deweloperów, testerów, Canary i produkcyjne. Dzięki temu zebranych danych odpowiednich dla skojarzonych aplikacji i infrastruktury. Jeśli zachodzi potrzeba skorelowania danych między środowiskami, możesz użyć [wykresy wielu zasobów w Eksploratorze metryk](../azure-monitor/platform/metrics-charts.md) lub Utwórz [zapytania obejmujące wiele zasobów w usłudze Log Analytics](log-query/cross-workspace-query.md).
+- [Obsługa osobne monitorowania instancje](../azure-monitor/app/separate-resources.md) między środowiska innego wdrożenia, takie jak deweloperów, testerów, Canary i produkcyjne. Dzięki temu zebranych danych odpowiednich dla skojarzonych aplikacji i infrastruktury. Jeśli zachodzi potrzeba skorelowania danych między środowiskami, możesz użyć [wykresy wielu zasobów w Eksploratorze metryk](../azure-monitor/platform/metrics-charts.md) lub Utwórz [zapytania obejmujące wiele zasobów w usłudze Azure Monitor](log-query/cross-workspace-query.md).
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Tworzenie alertów informacje z możliwością działania za pomocą akcji

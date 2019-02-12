@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 300673ffd62324de1207a29551694f12dd84ea93
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: bb64aff27aaacc3523552beb9eada12bdeb37ca8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366373"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995717"
 ---
-# <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Usługa Azure Media Services umożliwia dostarczanie licencji DRM lub kluczy AES
+# <a name="use-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Usługa Media Services umożliwia dostarczanie licencji DRM lub kluczy AES 
 
 Usługa Azure Media Services umożliwia pozyskiwania, kodowania, Dodaj ochronę zawartości i przesyłanie strumieniowe zawartości. Aby uzyskać więcej informacji, zobacz [Użyj PlayReady i Widevine dynamicznego szyfrowania common encryption](media-services-protect-with-playready-widevine.md). Niektórzy klienci mają być Media Services można używać tylko w celu dostarczania licencji i/lub kluczy i kodowania, szyfrowania i przesyłanie strumieniowe przy użyciu ich na serwerach lokalnych. W tym artykule opisano, jak można użyć usługi Media Services do dostarczania licencji PlayReady i Widevine, ale pozostałe to zrobić za pomocą usługi na serwerach lokalnych. 
 

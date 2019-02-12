@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: ba5e3fae04c47420d90aa1bc800a3dbd0e5ba984
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: ff198bc5e921f1c78e2d7cb7c80bfe0615fc91bc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364435"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003265"
 ---
-# <a name="encrypting-your-content-with-storage-encryption"></a>Szyfrowanie zawartości przy użyciu szyfrowania magazynu
+# <a name="encrypting-your-content-with-storage-encryption"></a>Szyfrowanie zawartości przy użyciu szyfrowania magazynu 
 
 Zdecydowanie zaleca się szyfrowanie zawartości lokalnie przy użyciu algorytmu AES-256-bitowego, a następnie przekaż go do usługi Azure Storage gdzie są przechowywane, szyfrowane w stanie spoczynku.
 

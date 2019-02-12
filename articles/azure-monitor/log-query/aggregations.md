@@ -1,6 +1,6 @@
 ---
-title: Agregacje w zapytaniach usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano funkcje agregacji w zapytaniach usługi Log Analytics, które oferują przydatna do analizowania danych.
+title: Agregacje w usłudze Azure Monitor rejestrowania zapytań | Dokumentacja firmy Microsoft
+description: W tym artykule opisano funkcje agregacji w zapytaniach dzienników usługi Azure Monitor, które oferują przydatna do analizowania danych.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: f5ecd68c1538fb9e21345221aa22c28217002271
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 31ff0435487592577915e526abcb97197f591449
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185753"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000851"
 ---
-# <a name="aggregations-in-log-analytics-queries"></a>Agregacje w zapytań usługi Log Analytics
+# <a name="aggregations-in-azure-monitor-log-queries"></a>Agregacje w zapytaniach dzienników usługi Azure Monitor
 
 > [!NOTE]
 > Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym artykule opisano funkcje agregacji w zapytaniach usługi Log Analytics, które oferują przydatna do analizowania danych. Te wszystkie funkcje współdziałają z `summarize` operator, który tworzy tabelę z zagregowanych wyników w tabeli wejściowej.
+W tym artykule opisano funkcje agregacji w zapytaniach dzienników usługi Azure Monitor, które oferują przydatna do analizowania danych. Te wszystkie funkcje współdziałają z `summarize` operator, który tworzy tabelę z zagregowanych wyników w tabeli wejściowej.
 
 ## <a name="counts"></a>Liczniki
 
@@ -147,7 +147,7 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-Zobacz inne lekcje dla przy użyciu języka zapytań usługi Log Analytics:
+Zobacz inne lekcje dotyczące korzystania z [język zapytań w Eksploratorze danych](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
 
 - [Operacje na ciągach](string-operations.md)
 - [Operacje daty i godziny](datetime-operations.md)

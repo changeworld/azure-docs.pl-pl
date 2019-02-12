@@ -1,6 +1,6 @@
 ---
-title: SQL do ściągawka dotycząca języka zapytań usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Typowe funkcje do użycia w różnych scenariuszach zapytań usługi Log Analytics.
+title: SQL do ściągawka dotycząca usługi Azure Monitor dziennika zapytań | Dokumentacja firmy Microsoft
+description: Pomoc dla użytkowników, które już znasz z usług SQL Pisanie zapytań dzienników w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 35438644842d5280bd789efa135805ba9943cb8b
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 121f9ff602907e64bba0c98342e38477109e9294
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183051"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993671"
 ---
-# <a name="sql-to-log-analytics-query-language-cheat-sheet"></a>SQL do ściągawka dotycząca języka zapytań usługi Log Analytics 
+# <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL do ściągawka dotycząca usługi Azure Monitor dziennika zapytań 
 
-W poniższej tabeli ułatwiają użytkownikom, którzy są zaznajomieni z językiem SQL, aby dowiedzieć się więcej na język zapytań usługi Log Analytics. Ma wygląd w wierszu polecenia języka T-SQL w rozwiązywaniu typowych scenariuszy i odpowiednika przy użyciu usługi Log Analytics.
+W poniższej tabeli ułatwiają użytkownikom, którzy są zaznajomieni z językiem SQL, aby dowiedzieć się, język zapytań Eksploratora danych, do pisania zapytań dzienników w usłudze Azure Monitor. Ma wygląd w wierszu polecenia języka T-SQL w rozwiązywaniu typowych scenariuszy i odpowiedniej wartości wyrażonej w zapytanie dziennika usługi Azure Monitor.
 
-## <a name="sql-to-log-analytics"></a>SQL do usługi Log Analytics
+## <a name="sql-to-azure-monitor"></a>SQL do usługi Azure Monitor
 
-Opis                             |Zapytanie SQL                                                                                          |Zapytanie analizy dzienników platformy Azure
+Opis                             |SQL Query                                                                                          |Zapytanie dziennika w usłudze Azure Monitor
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
 Zaznacz wszystkie dane z tabeli            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
 Wybrać określone kolumny z tabeli    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>
@@ -50,4 +50,4 @@ Join                                    |`SELECT * FROM dependencies JOIN except
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejdź przez lekcji [Pisanie zapytań w usłudze Log Analytics](get-started-queries.md).
+- Przejdź przez lekcji [Pisanie zapytań dzienników w usłudze Azure Monitor](get-started-queries.md).

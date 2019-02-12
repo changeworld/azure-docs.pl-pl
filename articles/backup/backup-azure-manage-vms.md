@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: sogup
-ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d0fac3a075923b000c453480edbf18599f5fed3d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564140"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994901"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Zarządzanie kopiami zapasowymi maszyny wirtualnej platformy Azure
 
@@ -142,7 +142,7 @@ Jeśli zdecydujesz się na zatrzymanie ochrony maszyny wirtualnej, zostanie wyś
 
 Istnieje koszt związany z pozostawienia punktów odzyskiwania w magazynie. Jednak zaletą pozostawienia punktów odzyskiwania jest później, można przywrócić maszynę wirtualną w razie potrzeby. Aby uzyskać informacje o koszcie pozostawienia punktów odzyskiwania, zobacz [cennik](https://azure.microsoft.com/pricing/details/backup/). Jeśli zdecydujesz się usunąć wszystkie punkty odzyskiwania, nie można przywrócić maszyny wirtualnej.
 
-Zawsze, gdy zatrzymasz tworzenie kopii zapasowych na przechowywanie danych, wygaśnie zgodnie z zasadami przechowywania punktów odzyskiwania, ale kopia zapasowa Azure zawsze przechowuje jeden ostatni punkt odzyskiwania do momentu jawnie usuniesz dane kopii zapasowej. Podobnie po usunięciu źródła danych bez przeprowadzenia Zatrzymaj tworzenie kopii zapasowej, nowych kopii zapasowych będzie kończyć się niepowodzeniem i wygaśnie stare punkty odzyskiwania zgodnie z zasadami przechowywania, ale jeden z ostatniego punktu odzyskiwania zawsze będą przechowywane do momentu wykonania Zatrzymaj tworzenie kopii zapasowej za pomocą usunięcie danych.
+Punkt odzyskiwania zostaną zachowane nieskończoność, dopóki elementu kopii zapasowej jest przełączona do trybu zasady przechowywania lub StopProtection usuwanie danych. W przypadku ponownego włączania ochrony nowe zasady, które skojarzono wprowadzenie określi przechowywania punktów odzyskiwania. Podobnie po usunięciu źródła danych bez przeprowadzenia Zatrzymaj tworzenie kopii zapasowej, nowych kopii zapasowych będzie kończyć się niepowodzeniem i wygaśnie stare punkty odzyskiwania zgodnie z zasadami przechowywania, ale jeden z ostatniego punktu odzyskiwania zawsze będą przechowywane do momentu wykonania Zatrzymaj tworzenie kopii zapasowej za pomocą usunięcie danych.
 
 Aby zatrzymać ochronę dla maszyny wirtualnej:
 

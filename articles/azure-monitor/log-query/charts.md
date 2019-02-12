@@ -1,6 +1,6 @@
 ---
-title: Tworzenie wykresów i diagramów z zapytań usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano różne wizualizacje w usłudze Azure Log Analytics, aby wyświetlać dane na różne sposoby.
+title: Tworzenie wykresów i diagramów z usługi Azure Monitor dziennika zapytań | Dokumentacja firmy Microsoft
+description: W tym artykule opisano różne wizualizacje w usłudze Azure Monitor, aby wyświetlić dane dziennika na różne sposoby.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 049e50f5800194c4126003f7e5ff7ae60b3de768
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 381e8361d31660d90eaee3f7a500139af1ef2a82
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186229"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992999"
 ---
-# <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Tworzenie wykresów i diagramów z zapytań usługi Log Analytics
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Tworzenie wykresów i diagramów z usługi Azure Monitor dziennika zapytań
 
 > [!NOTE]
-> Należy wykonać [zaawansowane agregacji w zapytań usługi Log Analytics](advanced-aggregations.md) przed wykonaniem tej lekcji.
+> Należy wykonać [zaawansowane agregacji w zapytaniach dzienników usługi Azure Monitor](advanced-aggregations.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym artykule opisano różne wizualizacje w usłudze Azure Log Analytics, aby wyświetlać dane na różne sposoby.
+W tym artykule opisano różne wizualizacje w usłudze Azure Monitor, aby wyświetlić dane dziennika na różne sposoby.
 
 ## <a name="charting-the-results"></a>Tworzenie wykresów wyników
 Rozpocznij od przejrzenia liczbę komputerów, które istnieją na system operacyjny, w ciągu ostatniej godziny:
@@ -93,7 +93,7 @@ Możesz przełączać się między, wybierając listę rozwijaną z nazwą kolum
 ![Wykres słupkowy dla konta](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dla przy użyciu języka zapytań usługi Log Analytics:
+Zobacz inne lekcje dotyczące korzystania z [język zapytań w Eksploratorze danych](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
 
 - [Operacje na ciągach](string-operations.md)
 - [Operacje daty i godziny](datetime-operations.md)

@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c81701dff8d7eebf08aa6b16c61e6915a905c729
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 767e64d4d53702ede7b55edc747366ab3d32ae4d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172718"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996103"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Dostosowywanie interfejsu użytkownika w usłudze Azure Active Directory B2C — informacje
 
@@ -24,17 +24,19 @@ Można oznaczyć i dostosowywanie interfejsu użytkownika (UI) Azure Active Dire
 Jeśli chodzi o tych środowisk, w zależności od potrzeb, możesz dostosować interfejsu użytkownika aplikacji na różne sposoby. Na przykład:
 
 - Jeśli używasz [przepływy użytkownika](active-directory-b2c-reference-policies.md) Podaj hasło rejestracji lub logowania, zresetuj lub edytowania profilu środowiska w aplikacji, należy użyć [witryny Azure portal, aby dostosować interfejs użytkownika](tutorial-customize-ui.md).
+- Jeśli używasz wersji 2 przepływ użytkownika, możesz użyć [szablon układu strony](#page-layout-templates) można zmienić wygląd stron przepływ użytkownika bez dalszego dostosowania. Na przykład można zastosować motyw niebieski oceanem lub tablecie szary do wszystkich stron w przepływie użytkownika.
 - Jeśli udostępniasz logowania tylko, strony resetowania jego hasła towarzyszący i weryfikacji wiadomości e-mail, użyj te same kroki dostosowywania, które są używane do [strony logowania usługi Azure AD](../active-directory/fundamentals/customize-branding.md).
 - Jeśli klienci spróbujesz edytować swój profil, aby się zalogować, zostanie przekierowany do strony można dostosować za pomocą te same kroki, które są używane do dostosowania strony logowania usługi Azure AD.
 - Jeśli używasz [zasady niestandardowe](active-directory-b2c-overview-custom.md) podać hasło rejestracji lub logowania, należy zresetować lub profilu edycji w aplikacji, możesz użyć [pliki zasad, aby dostosować interfejs użytkownika](active-directory-b2c-ui-customization-custom.md).
 - Jeśli konieczne jest zapewnienie dynamicznej zawartości, w oparciu o decyzji klienta, możesz użyć [zawartości strony zasad niestandardowych, które można zmienić](active-directory-b2c-ui-customization-custom-dynamic.md) w zależności od parametru, który będzie wysyłany w ciągu zapytania. Na przykład obraz tła na stronie tworzenia konta lub logowania usługi Azure AD B2C zmiany, na podstawie parametru, które przechodzą z sieci web lub aplikacji mobilnej.
+- Można włączyć kodu po stronie klienta JavaScript w usługi Azure AD B2C [przepływy użytkownika](user-flow-javascript-overview.md) lub [zasady niestandardowe](page-contract.md).
 
 Usługa Azure AD B2C kodu w przeglądarce klienta, korzysta z nowoczesnego podejścia o nazwie [udostępniania zasobów między źródłami (CORS)](https://www.w3.org/TR/cors/). W czasie wykonywania zawartość jest ładowany z adresu URL, który określisz w przepływ użytkownika lub zasad. Możesz określić inny adres URL dla różnych stronach. Po załadowaniu zawartości z adresu URL zostało scalone z fragment kodu HTML wstawione z usługi Azure AD B2C, a następnie wyświetlane do klienta.
 
-Przed rozpoczęciem należy przejrzeć następujące wskazówki:
+Dostosowywanie interfejsu użytkownika za pomocą własnych plików HTML i CSS, przed rozpoczęciem należy przejrzeć poniższe wskazówki:
 
 - Usługa Azure AD B2C Scala zawartość HTML strony. Nie Kopiuj i spróbuj zmienić domyślnej zawartości, który zapewnia usługi Azure AD B2C. Najlepiej do tworzenia zawartości HTML od nowa i użyj domyślnej zawartości jako odwołanie.
-- Ze względów bezpieczeństwa nie jest dozwolone do uwzględnienia JavaScript w zawartości.
+- JavaScript mogą być teraz dołączane w zawartości niestandardowej.
 - Dostępne są następujące wersje obsługiwanych przeglądarek: 
     - Internet Explorer 11, 10 i Microsoft Edge
     - Ograniczona obsługa programu Internet Explorer 9 i 8
@@ -42,9 +44,23 @@ Przed rozpoczęciem należy przejrzeć następujące wskazówki:
     - Mozilla Firefox 38.0 i nowsze wersje
 - Upewnij się, że nie uwzględniono tagów w kodzie HTML ponieważ zakłócać operacji POST, generowanych przez wprowadzonego kodu HTML z usługi Azure AD B2C.
 
+## <a name="page-layout-templates"></a>Szablony układu strony
+
+Przepływy użytkownika w wersji 2 można wstępnie zdefiniowanych szablon, który zapewnia lepszą wygląd domyślnych stron i służy jako podstawa dobre dla własne dostosowania.
+
+W menu po lewej stronie w obszarze **Dostosuj**, wybierz opcję **strony układów**. Następnie wybierz pozycję **szablonu (wersja zapoznawcza)**.
+
+![Wybierz szablon układu strony](media/customize-ui-overview/template.png)
+
+Wybierz szablon z listy. Na przykład **Ocean niebieski** szablonu dotyczy następujących układu strony przepływ użytkownika:
+
+![Szablon Ocean niebieski](media/customize-ui-overview/ocean-blue.png)
+
+Wybierz szablon, wybrany układ jest stosowany do wszystkich stron w Twój przepływ użytkownika i identyfikator URI dla każdej strony jest widoczna w **identyfikator URI strony niestandardowe** pola.
+
 ## <a name="where-do-i-store-ui-content"></a>Gdzie przechowywać zawartość interfejsu użytkownika?
 
-Możesz hostować zawartość w dowolnym miejscu, takich jak na interfejs użytkownika [usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md), serwery usługi CDN, AWS S3 w sieci web lub systemów do udostępniania plików. Istotną kwestią jest to użytkownik obsługujących zawartość publicznie dostępnego punktu końcowego HTTPS z włączonym mechanizmem CORS. Po określeniu we własnych Treściach, należy użyć bezwzględnego adresu URL.
+Dostosowywanie interfejsu użytkownika za pomocą własnych plików HTML i CSS, może obsługiwać interfejs użytkownika zawartości w dowolnym miejscu, takich jak na [usługi Azure Blob storage](../storage/blobs/storage-blobs-introduction.md), serwery usługi CDN, AWS S3 w sieci web lub systemów do udostępniania plików. Istotną kwestią jest to użytkownik obsługujących zawartość publicznie dostępnego punktu końcowego HTTPS z włączonym mechanizmem CORS. Po określeniu we własnych Treściach, należy użyć bezwzględnego adresu URL.
 
 ## <a name="how-do-i-get-started"></a>Jak rozpocząć?
 

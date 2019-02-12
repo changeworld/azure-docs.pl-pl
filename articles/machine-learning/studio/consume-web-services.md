@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464385"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998108"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Jak używać usługi sieci web Azure Machine Learning Studio
 
@@ -70,7 +70,7 @@ Aby pobrać klucz interfejsu API usługi sieci Web Machine Learning:
 ## <a id="connect"></a>Łączenie z usługą Machine Learning w sieci Web
 Możesz połączyć się z usługą Machine Learning w sieci Web, za pomocą dowolnego języka programowania, który obsługuje żądania HTTP i odpowiedzi. Możesz wyświetlić przykłady w C#, Python i R ze strony pomocy usługi Machine Learning w sieci Web.
 
-**Usługi Machine Learning API Pomocy** pomocy interfejsu API usługi Machine Learning jest tworzona, gdy wdrażasz usługę sieci Web. Zobacz [Przewodnik po usłudze Azure Machine Learning — wdrażanie usługi sieci Web](walkthrough-5-publish-web-service.md).
+**Usługi Machine Learning API Pomocy** pomocy interfejsu API usługi Machine Learning jest tworzona, gdy wdrażasz usługę sieci Web. Zobacz [samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md).
 Pomoc interfejsu API usługi Machine Learning zawiera szczegóły dotyczące prognoz usługi sieci Web.
 
 1. Kliknij usługę sieci Web, z którym pracujesz.

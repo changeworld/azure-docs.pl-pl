@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885800"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002002"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Używanie danych monitorowania na platformie Azure
 
 Na platformie Azure łączymy dane monitorowania w jednym miejscu dzięki usłudze Azure Monitor potoku, ale praktycznie potwierdza, że obecnie nie wszystkie dane monitorowania jest jeszcze dostępna w tym potoku. W tym artykule firma Microsoft zawiera podsumowanie różnych sposobów można programowego dostępu do danych monitorowania z usług platformy Azure.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="options-for-data-consumption"></a>Opcje do użycia danych
 
@@ -40,7 +42,7 @@ Na platformie Azure łączymy dane monitorowania w jednym miejscu dzięki usłud
 | Alerty metryk usługi Azure Monitor | Powiadomienia | [Zobacz tutaj](metrics-supported.md) | <ul><li>**Webhook:** [Alerty metryk platformy Azure](alerts-webhooks.md)</li></ul> |
 | Alerty dziennika aktywności monitora platformy Azure | Powiadomienia | Wszystkich usług platformy Azure | <ul><li>**Webhook:** Alerty dziennika aktywności platformy Azure</li></ul> |
 | Powiadomienia skalowania automatycznego | Powiadomienia | [Zobacz tutaj](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Schematu ładunek elementu webhook powiadomienia skalowania automatycznego](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Zapytanie wyszukiwania, alerty dzienników | Powiadomienia | Log Analytics | <ul><li>**Webhook:** [Akcja elementu Webhook dla reguł alertów dzienników](alerts-log-webhook.md)</li></ul> |
+| Zapytanie wyszukiwania, alerty dzienników | Powiadomienia | Dzienniki usługi Azure Monitor | <ul><li>**Webhook:** [Akcja elementu Webhook dla reguł alertów dzienników](alerts-log-webhook.md)</li></ul> |
 | Application Insights alertów dotyczących metryk | Powiadomienia | Application Insights | <ul><li>**Webhook:** [Alerty szczegółowe informacje o aplikacji](../../azure-monitor/app/alerts.md)</li></ul> |
 | Testy sieci web programu Application Insights | Powiadomienia | Application Insights | <ul><li>**Webhook:** [Alerty szczegółowe informacje o aplikacji](../../azure-monitor/app/alerts.md)</li></ul> |
 

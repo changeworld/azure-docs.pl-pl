@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: c08759f4682c6010c2338ff7aaf61cda92eb0484
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 3dac469c2932276a903a516b71caa860f8870fa6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232091"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989342"
 ---
-# <a name="comparison-of-azure-on-demand-media-encoders"></a>Porównanie platformy Azure na żądanie koderów multimediów
+# <a name="comparison-of-azure-on-demand-media-encoders"></a>Porównanie platformy Azure na żądanie koderów multimediów  
 
 W tym temacie porównano możliwości kodowania **Media Encoder Standard** i **Media Encoder Premium Workflow**.
 
@@ -33,7 +33,7 @@ W poniższej tabeli porównano funkcje między Media Encoder Standard (MES) i Me
 |---|---|---|
 |Zastosuj logikę warunkową podczas kodowania<br/>(na przykład, jeśli dane wejściowe są HD, następnie zakodować 5.1 audio)|Nie|Yes|
 |Podpisy kodowane|Nie|[Tak](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
-|[Korekta profesjonalnych parametrów akustycznych Dolby®](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> za pomocą Intelligence™ dialogu|Nie|Yes|
+|[Dolby® Professional Loudness Correction](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> za pomocą Intelligence™ dialogu|Nie|Yes|
 |Usuwania przeplotu, odwrotność telecine|Podstawowa|Jakości odpowiedniej do emisji|
 |Wykrywania i usuwania czarne obramowanie <br/>(pillarboxes letterboxes)|Nie|Yes|
 |Generowanie miniatur|[Tak](media-services-dotnet-generate-thumbnail-with-mes.md)|[Tak](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
@@ -61,27 +61,27 @@ W poniższej tabeli porównano funkcje między Media Encoder Standard (MES) i Me
 | AVI (nieskompresowany 8-bitowy/10-bitowy) |Yes |Yes |
 | 3GPP/3GPP2 |Yes |Nie |
 | Bezproblemowe przesyłania strumieniowego Format pliku (PIFF 1.3) |Yes |Nie |
-| [Microsoft Digital Video Recording](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Yes |Nie |
+| [Microsoft Digital Video Recording(DVR-MS)](https://msdn.microsoft.com/library/windows/desktop/dd692984) |Yes |Nie |
 | Matroska/WebM |Yes |Nie |
-| QuickTime (mov) |Yes |Nie |
+| QuickTime (.mov) |Yes |Nie |
 
 ## <a name="input-video-codecs"></a>Dane wejściowe koderów-dekoderów wideo
 | Dane wejściowe koderów-dekoderów wideo | Usługa Media Encoder Standard | Przepływ pracy usługi Media Encoder w warstwie Premium |
 | --- | --- | --- |
 | AVC 8-bitowy/10-bitowy, maksymalnie 4:2:2, wraz z AVCIntra |8-bitowy 4:2:0 oraz 4:2:2 |Yes |
-| Avid DNxHD (w pliku MXF) |Yes |Yes |
+| Avid DNxHD (in MXF) |Yes |Yes |
 | DVCPro/DVCProHD (in MXF) |Yes |Yes |
 | JPEG2000 |Yes |Yes |
 | MPEG-2 (profil 422 i wysoki poziom; wraz z wariantami, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® oraz D10) |Maksymalnie profil 422 |Yes |
 | MPEG-1 |Yes |Yes |
 | Windows Media Video/VC-1 |Yes |Yes |
 | Canopus Centrali/HQX |Nie |Nie |
-| MPEG-4 część 2 |Yes |Nie |
+| MPEG-4 Part 2 |Yes |Nie |
 | [Theora](https://en.wikipedia.org/wiki/Theora) |Yes |Nie |
 | Apple ProRes 422 |Yes |Nie |
 | Apple ProRes 422 LT |Yes |Nie |
 | Apple ProRes 422 Centralą |Yes |Nie |
-| Serwer Proxy ProRes firmy Apple |Yes |Nie |
+| Apple ProRes Proxy |Yes |Nie |
 | Apple ProRes 4444 |Yes |Nie |
 | XQ 4444 ProRes firmy Apple |Yes |Nie |
 | HEVC/H.265|Główny profil|Główne i profilu Main 10|
@@ -92,9 +92,9 @@ W poniższej tabeli porównano funkcje między Media Encoder Standard (MES) i Me
 | AES (SMPTE 331 M oraz 302 M, AES3-2003) |Nie |Yes |
 | Dolby® E |Nie |Yes |
 | Dolby® Digital (AC3) |Nie |Yes |
-| Cyfrowy Dolby® Plus (E-AC3) |Nie |Yes |
+| Dolby® Digital Plus (E-AC3) |Nie |Yes |
 | AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Yes |Yes |
-| MPEG warstwy 2 |Yes |Yes |
+| MPEG Layer 2 |Yes |Yes |
 | Mp3 (MPEG-1 Audio warstwa 3) |Yes |Yes |
 | Program Windows Media Audio |Yes |Yes |
 | WAV/PCM |Yes |Yes |
@@ -120,7 +120,7 @@ W poniższej tabeli porównano funkcje między Media Encoder Standard (MES) i Me
 | --- | --- | --- |
 | AVC (H.264; 8-bitową; do profilu wysokiego poziomu 5.2; 4 K najwyższej jakości HD; Wewnątrz AVC) |Tylko 8-bitowy 4:2:0 |Yes |
 | — HEVC (H.265; 8-bitową i 10-bitowy)  |Nie |Yes |
-| Avid DNxHD (w pliku MXF) |Nie |Yes |
+| Avid DNxHD (in MXF) |Nie |Yes |
 | MPEG-2 (profil 422 i wysoki poziom; wraz z wariantami, takich jak XDCAM, XDCAM HD, XDCAM IMX, CableLabs® oraz D10) |Nie |Yes |
 | MPEG-1 |Nie |Yes |
 | Windows Media Video/VC-1 |Nie |Yes |
@@ -135,7 +135,7 @@ W poniższej tabeli porównano funkcje między Media Encoder Standard (MES) i Me
 | Dolby® Digital (AC3) |Nie |Yes |
 | Dolby® Digital Plus (E-AC3) do 7.1 |Nie |Yes |
 | AAC (AAC-LC, AAC-HE oraz AAC-HEv2; maksymalnie 5.1) |Yes |Yes |
-| MPEG warstwy 2 |Nie |Yes |
+| MPEG Layer 2 |Nie |Yes |
 | Mp3 (MPEG-1 Audio warstwa 3) |Nie |Yes |
 | Program Windows Media Audio |Nie |Yes |
 

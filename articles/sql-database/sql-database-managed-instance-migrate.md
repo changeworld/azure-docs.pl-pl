@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: ce7892401b2b04565a00c33c5301b9c0cd05d5f5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: MT
+ms.date: 02/08/2019
+ms.openlocfilehash: 8127abf19c31b8a50079f416e73c98efebfd0983
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732757"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999423"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do usługi Azure SQL Database, wystąpienia zarządzanego
 
@@ -47,7 +47,7 @@ W przypadku niektórych zgłaszane problemy z blokowaniem, które nie są usuwan
 - W razie potrzeby bezpośredniego dostępu do systemu operacyjnego lub systemu plików, na przykład instalowanie innych firm lub niestandardowych agentów na tej samej maszyny wirtualnej z programem SQL Server.
 - W przypadku ścisłej zależności od funkcji, które nadal nie są obsługiwane, takich jak typu FileStream / FileTable, PolyBase i transakcje dla wielu wystąpień.
 - Jeśli bezwzględnie musisz pozostać na określonej wersji programu SQL Server (2012, na przykład).
-- Jeśli wymagania dotyczące obliczeń są znacznie niższe tego wystąpienia zarządzanego oferuje w publicznej wersji zapoznawczej (jeden rdzeń wirtualny, na przykład) i konsolidacji bazy danych nie jest dopuszczalne opcji.
+- Jeśli wymagania dotyczące obliczeń są znacznie niższe oferuje tego wystąpienia zarządzanego (jeden rdzeń wirtualny, na przykład) i konsolidacji bazy danych nie jest dopuszczalne opcji.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Wdrażanie na optymalny rozmiar wystąpienia zarządzanego
 

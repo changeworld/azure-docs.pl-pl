@@ -4,7 +4,7 @@ description: W tym temacie wymieniono istniejącego odtwarzacze służącego do 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 7e9fcf89-0fb6-4fa4-96cb-666320684d69
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/02/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3fe82b98163182c73a144b72da371e8aa195e8cf
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: ae057feb70d9ddb2c2dae10bae20eca1b613f76f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435861"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996961"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Odtwarzanie zawartości za pomocą istniejących odtwarzaczy
 Usługa Azure Media Services obsługuje wiele popularnych formatów przesyłania strumieniowego, takich jak Smooth Streaming, HTTP Live Streaming i MPEG-Dash. W tym temacie wskazuje istniejącego odtwarzacze, które można użyć do testowania strumienie.
@@ -41,7 +41,7 @@ Użyj [usługi Azure Media Player](http://amsplayer.azurewebsites.net/azuremedia
 * Smooth Streaming
 * MPEG DASH
 * HLS
-* Progresywne plików MP4.
+* Progressive MP4
 
 ### <a name="flash-player"></a>Odtwarzacza w środowisku Flash
 #### <a name="aes-encrypted-with-token"></a>Z szyfrowaniem AES przy użyciu tokenu

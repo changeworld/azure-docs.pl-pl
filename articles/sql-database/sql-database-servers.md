@@ -11,19 +11,19 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ea7f32a08a6a183bac21436e7d58afe10c4d7b20
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: MT
+ms.date: 02/08/2019
+ms.openlocfilehash: d08deda0483516180b9923838104cfb6596e7495
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756652"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003299"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Serwery usługi Azure SQL Database i zarządzanie nimi
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Co to jest serwer usługi Azure SQL Database
 
-Serwer bazy danych SQL jest konstrukcją logiczną, która działa jako centralny punkt administracyjny dla wielu autonomicznej lub [puli](sql-database-elastic-pool.md) baz danych, [logowania](sql-database-manage-logins.md), [reguły zapory](sql-database-firewall-configure.md), [zasady inspekcji](sql-database-auditing.md), [zasady wykrywania zagrożeń](sql-database-threat-detection.md), i [grupy trybu failover](sql-database-auto-failover-group.md) bazy danych programu SQL server może być w innym regionie niż jego grupie zasobów. Serwer bazy danych SQL musi istnieć przed utworzeniem bazy danych Azure SQL. Wszystkie bazy danych, zarządza serwer bazy danych SQL są tworzone w tym samym regionie co serwer bazy danych SQL.
+Serwer bazy danych SQL jest konstrukcją logiczną, która działa jako centralny punkt administracyjny dla wielu pojedynczego lub [puli](sql-database-elastic-pool.md) baz danych, [logowania](sql-database-manage-logins.md), [reguły zapory](sql-database-firewall-configure.md), [zasady inspekcji](sql-database-auditing.md), [zasady wykrywania zagrożeń](sql-database-threat-detection.md), i [grupy trybu failover](sql-database-auto-failover-group.md) bazy danych programu SQL server może być w innym regionie niż jego grupie zasobów. Serwer bazy danych SQL musi istnieć przed utworzeniem bazy danych Azure SQL. Wszystkie bazy danych, zarządza serwer bazy danych SQL są tworzone w tym samym regionie co serwer bazy danych SQL.
 
 Serwer bazy danych SQL różni się od wystąpienia programu SQL Server, który można zapoznać się z w środowisku lokalnym. W szczególności usługa SQL Database nie udziela żadnych gwarancji dotyczących lokalizacji baz danych w odniesieniu do serwera bazy danych SQL, który zarządza nimi, a ujawnia nie dostęp na poziomie wystąpienia lub funkcji. Z kolei wystąpienia bazy danych w wystąpieniu zarządzanym są wszystkie wspólnie — w ten sam sposób, że jesteś zaznajomiony z programem SQL Server w środowisku lokalnym.
 

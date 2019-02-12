@@ -1,6 +1,6 @@
 ---
-title: Zaloguj się Analytics interfejs API modułu zbierającego dane HTTP | Dokumentacja firmy Microsoft
-description: Interfejs API modułu zbierającego dane HTTP analizy dziennika umożliwia dodawanie danych POST JSON do repozytorium usługi Log Analytics za pomocą dowolnego klienta, który można wywołać interfejsu API REST. W tym artykule opisano sposób korzystania z interfejsu API i zawiera przykłady dotyczące publikowania danych przy użyciu różnych języków programowania.
+title: Usługa Azure Monitor interfejs API modułu zbierającego dane HTTP | Dokumentacja firmy Microsoft
+description: Interfejsu API modułu zbierającego dane HTTP monitora platformy Azure umożliwia dodawanie danych POST JSON do obszaru roboczego usługi Log Analytics za pomocą dowolnego klienta, który można wywołać interfejsu API REST. W tym artykule opisano sposób korzystania z interfejsu API i zawiera przykłady dotyczące publikowania danych przy użyciu różnych języków programowania.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,23 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: bwren
-ms.openlocfilehash: 9fe25821d5a234326570b1681807c6f9dfd6ffc8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 918cfb36c3afb9fc5c9a3f2c25b7c14b04354db1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211104"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002219"
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Wysyłanie danych do usługi Log Analytics przy użyciu interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
-W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania danych do usługi Log Analytics z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji przez usługę Log Analytics.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
+# <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
+W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania dzienników danych do usługi Azure Monitor z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji usługi Azure Monitor.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
-> Interfejs API modułu zbierającego dane HTTP analizy dziennika jest w publicznej wersji zapoznawczej.
+> Interfejsu API modułu zbierającego dane HTTP monitora platformy Azure jest dostępna w publicznej wersji zapoznawczej.
 
 ## <a name="concepts"></a>Pojęcia
-Za pomocą interfejsu API modułu zbierającego dane HTTP do wysyłania danych do usługi Log Analytics za pomocą dowolnego klienta, który można wywołać interfejs API REST.  Może to być element runbook w usłudze Azure Automation, która gromadzi zarządzania danymi z platformy Azure lub w innej chmurze albo go może być to system zarządzania alternatywne, korzystającą z usługi Log Analytics w celu konsolidacji i analizowania danych.
+Za pomocą interfejsu API modułu zbierającego dane HTTP do wysłania danych dziennika z obszarem roboczym usługi Log Analytics w usłudze Azure Monitor za pomocą dowolnego klienta, który można wywołać interfejs API REST.  Może to być element runbook w usłudze Azure Automation, która gromadzi zarządzania danymi z platformy Azure lub w innej chmurze albo go może być to system zarządzania alternatywnego, który używa usługi Azure Monitor do konsolidacji i Analizuj dane dzienników.
 
-Wszystkie dane w repozytorium usługi Log Analytics jest przechowywana jako rekord o typie określonego rekordu.  Formatowania danych będzie wysyłać do interfejsu API modułu zbierającego dane HTTP jako wiele rekordów w formacie JSON.  Po przesłaniu danych pojedynczego rekordu jest tworzony w repozytorium dla każdego rekordu w ładunku żądania.
+Wszystkie dane w obszarze roboczym usługi Log Analytics są przechowywane jako rekord o typie określonego rekordu.  Formatowania danych będzie wysyłać do interfejsu API modułu zbierającego dane HTTP jako wiele rekordów w formacie JSON.  Po przesłaniu danych pojedynczego rekordu jest tworzony w repozytorium dla każdego rekordu w ładunku żądania.
 
 
 ![Omówienie modułu zbierającego dane HTTP](media/data-collector-api/overview.png)
@@ -62,7 +64,7 @@ Aby użyć interfejsu API modułu zbierającego dane HTTP, należy utworzyć ż�
 | time-generated-field |Nazwa pola danych, które zawiera sygnaturę czasową elementu danych. Jeśli określasz pole, a następnie jej zawartość są używane do **TimeGenerated**. Jeśli to pole nie jest określona, wartość domyślna dla **TimeGenerated** to czas, pobieranym wiadomości. Zawartość pola komunikat powinien być zgodny z formatu ISO 8601 RRRR-MM-Ddtgg. |
 
 ## <a name="authorization"></a>Autoryzacja
-Każde żądanie do interfejsu API modułu zbierającego dane HTTP analizy dziennika musi zawierać nagłówek autoryzacji. Aby uwierzytelnić żądania, musisz podpisać żądanie z podstawowej lub klucz pomocniczy dla obszaru roboczego, który wysłał żądanie. Następnie przekaż ten podpis jako część żądania.   
+Każde żądanie do interfejsu API modułu zbierającego dane HTTP monitora platformy Azure musi zawierać nagłówek autoryzacji. Aby uwierzytelnić żądania, musisz podpisać żądanie z podstawowej lub klucz pomocniczy dla obszaru roboczego, który wysłał żądanie. Następnie przekaż ten podpis jako część żądania.   
 
 Oto format nagłówek autoryzacji:
 
@@ -130,24 +132,24 @@ Wiele rekordów ze sobą w pojedynczym żądaniu może batch przy użyciu nastę
 ```
 
 ## <a name="record-type-and-properties"></a>Typ rekordu i właściwości
-Typ rekordu niestandardowego należy zdefiniować podczas przesyłania danych za pośrednictwem interfejsu API modułu zbierającego dane HTTP analizy dziennika. Obecnie nie można zapisać danych do istniejących typów rekordów, które zostały utworzone przez inne typy danych i rozwiązań. Usługa log Analytics odczytuje dane przychodzące, a następnie tworzy właściwości, które pasują do typów danych, które należy wprowadzić wartości.
+Typ rekordu niestandardowego należy zdefiniować podczas przesyłania danych za pośrednictwem interfejsu API modułu zbierającego dane HTTP monitora platformy Azure. Obecnie nie można zapisać danych do istniejących typów rekordów, które zostały utworzone przez inne typy danych i rozwiązań. Usługa Azure Monitor odczytuje przychodzące dane, a następnie tworzy właściwości, które pasują do typów danych, które należy wprowadzić wartości.
 
-Każde żądanie do interfejsu API programu Log Analytics mogą zawierać **typ dziennika** nagłówek o nazwie dla typu rekordu. Sufiks **_CL** jest automatycznie dołączany do nazwy wprowadź odróżniający go od innych typów dziennika jako dziennik niestandardowy. Na przykład, jeśli wprowadzasz nazwę **MyNewRecordType**, usługi Log Analytics jest tworzony rekord o typie **MyNewRecordType_CL**. Pozwala to zagwarantować, że nie istnieją żadne konflikty między nazwami typów, utworzone przez użytkownika i wysłane w bieżących lub przyszłych rozwiązaniach firmy Microsoft.
+Każde żądanie do interfejsu API modułu zbierającego dane mogą zawierać **typ dziennika** nagłówek o nazwie dla typu rekordu. Sufiks **_CL** jest automatycznie dołączany do nazwy wprowadź odróżniający go od innych typów dziennika jako dziennik niestandardowy. Na przykład, jeśli wprowadzasz nazwę **MyNewRecordType**, usługi Azure Monitor jest tworzony rekord o typie **MyNewRecordType_CL**. Pozwala to zagwarantować, że nie istnieją żadne konflikty między nazwami typów, utworzone przez użytkownika i wysłane w bieżących lub przyszłych rozwiązaniach firmy Microsoft.
 
-Aby określić typ danych właściwości, usługi Log Analytics dodaje sufiks nazwy właściwości. Jeśli jakaś właściwość zawiera wartość null, właściwość nie ma tego rekordu. Poniższa tabela zawiera listę właściwości typu danych i odpowiedniego sufiksu:
+Aby określić typ danych właściwości, usługi Azure Monitor dodaje sufiks nazwy właściwości. Jeśli jakaś właściwość zawiera wartość null, właściwość nie ma tego rekordu. Poniższa tabela zawiera listę właściwości typu danych i odpowiedniego sufiksu:
 
 | Typ danych właściwości | Sufiks |
 |:--- |:--- |
-| Ciąg |_s |
+| String |_s |
 | Wartość logiczna |_b |
-| Podwójne |_d |
+| Double |_d |
 | Data/Godzina |_t |
 | GUID |_g |
 
-Typ danych, który korzysta z usługi Log Analytics dla każdej właściwości zależy od tego, czy typ rekordu dla nowego rekordu już istnieje.
+Typ danych, który korzysta z usługi Azure Monitor dla każdej właściwości zależy od tego, czy typ rekordu dla nowego rekordu już istnieje.
 
-* Jeśli typ rekordu nie istnieje, usługa Log Analytics utworzony zostaje nowy indeks. Usługa log Analytics używa wnioskowanie o typie JSON można ustalić typu danych dla każdej właściwości w nowym rekordzie.
-* Jeśli istnieje typ rekordu, usługi Log Analytics próbuje utworzyć nowy rekord na podstawie istniejącej właściwości. Jeśli typ danych dla właściwości w nowym rekordzie nie jest zgodny i nie można przekonwertować na typ istniejących lub jeśli rekord zawiera właściwość, która nie istnieje, usługa Log Analytics tworzy nową właściwość, którą ma odpowiednie sufiks.
+* Jeśli typ rekordu nie istnieje, usługa Azure Monitor utworzenie nowej za pomocą wnioskowanie o typie JSON można ustalić typu danych dla każdej właściwości w nowym rekordzie.
+* Jeśli typ rekordu istnieje, usługa Azure Monitor próbuje utworzyć nowy rekord na podstawie istniejącej właściwości. Jeśli typ danych dla właściwości w nowym rekordzie nie jest zgodny i nie można przekonwertować na typ istniejących lub jeśli rekord zawiera właściwość, która nie istnieje, usługa Azure Monitor tworzy nową właściwość, którą ma odpowiednie sufiks.
 
 Na przykład, ten wpis przesyłania utworzyć rekord za pomocą trzech właściwości **number_d**, **boolean_b**, i **string_s**:
 
@@ -157,18 +159,18 @@ Jeśli następnie przesłane tej następnej pozycji ze wszystkimi wartościami c
 
 ![Przykładowy rekord 2](media/data-collector-api/record-02.png)
 
-Jednak jeśli podejmowana tym przesyłania dalej usługi Log Analytics utworzyć nowe właściwości **boolean_d** i **string_d**. Nie można przekonwertować wartości:
+Jednak jeśli podejmowana tym przesyłania dalej usługi Azure Monitor utworzyć nowe właściwości **boolean_d** i **string_d**. Nie można przekonwertować wartości:
 
 ![Przykładowy rekord 3](media/data-collector-api/record-03.png)
 
-Przesłane wcześniej następnie następujący wpis przed utworzeniem typ rekordu, usługi Log Analytics może utworzyć rekord o trzy właściwości **liczba_s**, **boolean_s**, i **string_s**. W tym wpisie początkowej wartości jest w formacie ciągu:
+Jeśli następujący wpis jest następnie przesłane, przed utworzeniem typ rekordu, usługi Azure Monitor utworzyć rekord z trzech właściwości **liczba_s**, **boolean_s**, i **string_s**. W tym wpisie początkowej wartości jest w formacie ciągu:
 
 ![Przykładowy rekord 4](media/data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>Limity danych
-Istnieją pewne ograniczenia wokół danych opublikowane dane analizy dziennika kolekcji interfejs API.
+Istnieją pewne ograniczenia wokół danych opublikowane w usłudze Azure Monitor interfejsu API zbierania danych.
 
-* Maksymalnie 30 MB na wpis do interfejsu API modułu zbierającego dane usługi Log Analytics. Jest to limit rozmiaru dla pojedynczego wpisu. Jeśli wpis danych z jednej, która przekracza 30 MB, należy podzielić dane maksymalnie mniejszych fragmentach o rozmiarze i wysyłać je jednocześnie.
+* Maksymalnie 30 MB na wpis do interfejsu API modułu zbierającego dane usługi Azure Monitor. Jest to limit rozmiaru dla pojedynczego wpisu. Jeśli wpis danych z jednej, która przekracza 30 MB, należy podzielić dane maksymalnie mniejszych fragmentach o rozmiarze i wysyłać je jednocześnie.
 * Maksymalny limit 32 KB dla wartości pól. Jeśli wartość pola jest większa niż 32 KB, dane zostaną obcięte.
 * Zalecana maksymalna liczba pól dla danego typu jest 50. Jest to praktyczne ograniczenie z użytecznością i perspektywy środowisko wyszukiwania.  
 
@@ -196,15 +198,10 @@ Poniższa tabela zawiera listę pełnego zestawu kodów stanu, które mogą zwra
 | 503 |Usługa niedostępna |ServiceUnavailable |Usługa jest obecnie odbierać żądań. Prześlij żądanie ponownie. |
 
 ## <a name="query-data"></a>Zapytania o dane
-Przesyłać zapytania dotyczące danych przesyłanych przez Log Analytics HTTP danych interfejsu API modułu zbierającego, wyszukiwać rekordy z **typu** jest równa **LogType** wartości, który określiłeś, jest dołączany wraz z **_CL**. Na przykład, jeśli użyto **MyCustomLog**, a następnie zwróci wszystkie rekordy z **typu = MyCustomLog_CL**.
-
->[!NOTE]
-> Jeśli obszar roboczy został uaktualniony do [nowych zapytań usługi Log Analytics język](../../azure-monitor/log-query/log-query-overview.md), a następnie powyższe zapytania zmienią się następujące czynności.
-
-> `MyCustomLog_CL`
+Przesyłać zapytania dotyczące danych przesyłanych przez usługi Azure Monitor HTTP danych interfejsu API modułu zbierającego, wyszukiwać rekordy z **typu** jest równa **LogType** wartości, który określiłeś, jest dołączany wraz z **_CL**. Na przykład, jeśli użyto **MyCustomLog**, a następnie zwróci wszystkie rekordy z `MyCustomLog_CL`.
 
 ## <a name="sample-requests"></a>Prośby o przykłady
-W kolejnych sekcjach znajdują się przykłady dotyczące przesyłania danych do interfejsu API modułu zbierającego dane HTTP analizy dziennika przy użyciu różnych języków programowania.
+W kolejnych sekcjach znajdują się przykłady dotyczące przesyłania danych do interfejsu API modułu zbierającego dane HTTP monitora platformy Azure przy użyciu różnych języków programowania.
 
 Dla każdego przykładu wykonaj następujące kroki, aby ustawić zmienne dla nagłówka autoryzacji:
 
@@ -226,7 +223,7 @@ $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 # Specify the name of the record type that you'll be creating
 $LogType = "MyRecordType"
 
-# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
 $TimeStampField = ""
 
 
@@ -321,10 +318,10 @@ namespace OIAPIExample
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-        // LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of the event type that is being submitted to Azure Monitor
         static string LogName = "DemoExample";
 
-        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
         static string TimeStampField = "";
 
         static void Main()
@@ -468,6 +465,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Użyj [interfejsu API wyszukiwania w dzienniku](../../azure-monitor/log-query/log-query-overview.md) do pobierania danych z repozytorium usługi Log Analytics.
+- Użyj [interfejsu API wyszukiwania w dzienniku](../log-query/log-query-overview.md) do pobierania danych z obszaru roboczego usługi Log Analytics.
 
-- Dowiedz się więcej o tym, jak [tworzenie potoku danych przy użyciu interfejsu API modułu zbierającego dane](../../azure-monitor/platform/create-pipeline-datacollector-api.md) przy użyciu przepływu pracy aplikacji logiki do usługi Log Analytics.
+- Dowiedz się więcej o tym, jak [tworzenie potoku danych przy użyciu interfejsu API modułu zbierającego dane](create-pipeline-datacollector-api.md) przy użyciu przepływu pracy aplikacji logiki do usługi Azure Monitor.

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: bfc3ed5553802c8a87776dc1a5372bc27ac8d13d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 457f64b9ae9101628df5347c921bfa057a7cb754
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475197"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991433"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Dokumentacja języka SQL dla usługi Azure Cosmos DB 
 
@@ -493,7 +493,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |**Operacje arytmetyczne**|+<br /><br /> -<br /><br /> *<br /><br /> /<br /><br /> %|Dodatek.<br /><br /> Odejmowanie.<br /><br /> Mnożenia.<br /><br /> Dzielenie.<br /><br /> Modulacja.|  
 |**bitowe**|&#124;<br /><br /> &<br /><br /> ^<br /><br /> <<<br /><br /> >><br /><br /> >>>|Bitowe OR.<br /><br /> Operatora bitowego AND.<br /><br /> Bitowe XOR.<br /><br /> Przesunięcie w lewo.<br /><br /> Przesunięcia w prawo.<br /><br /> Wypełnienie zero przesunięcia bitowego w prawo.|  
-|**logical**|**I**<br /><br /> **OR**|Połączenie logiczne. Zwraca **true** Jeśli oba argumenty **true**, zwraca **false** inaczej.<br /><br /> Połączenie logiczne. Zwraca **true** Jeśli oba argumenty **true**, zwraca **false** inaczej.|  
+|**logical**|**I**<br /><br /> **OR**|Połączenie logiczne. Zwraca **true** Jeśli oba argumenty **true**, zwraca **false** inaczej.<br /><br /> Rozłączenie logiczne. Zwraca **true** Jeśli wszystkie argumenty mają **true**, zwraca **false** inaczej.|  
 |**Porównanie**|**=**<br /><br /> **!=, <>**<br /><br /> **>**<br /><br /> **>=**<br /><br /> **<**<br /><br /> **<=**<br /><br /> **??**|Equals. Zwraca **true** argumenty są równe, funkcja zwraca **false** inaczej.<br /><br /> Nie ma wartości. Zwraca **true** argumenty nie są równe, zwraca **false** inaczej.<br /><br /> Większe niż. Zwraca **true** Jeśli pierwszy argument jest większy niż drugi, zwracają **false** inaczej.<br /><br /> Większa niż lub równe. Zwraca **true** Jeśli pierwszy argument jest większy lub równy do drugiej, zwracają **false** inaczej.<br /><br /> Mniejsze niż. Zwraca **true** Jeśli pierwszy argument jest mniejszy niż drugi jeden zwracany **false** inaczej.<br /><br /> Mniejsze niż lub równe. Zwraca **true** Jeśli pierwszy argument jest mniejszy niż drugi, zwracają **false** inaczej.<br /><br /> COALESCE. Zwraca wartość drugiego argumentu, jeśli pierwszy argument jest **niezdefiniowane** wartość.|  
 |**Ciąg**|**&#124;&#124;**|Łączenie. Zwraca połączenie obu argumentów.|  
   
@@ -620,7 +620,7 @@ ORDER BY <sort_specification>
 |-|-|-|  
 |\\'|apostrof (')|U+0027|  
 |\\"|znak cudzysłowu (")|U+0022|  
-|\\\|kreska ułamkowa odwrotnej (\\)|U+005C|  
+|\\\ |kreska ułamkowa odwrotnej (\\)|U+005C|  
 |\\/|kreska ułamkowa (/)|U+002F|  
 |\b|BACKSPACE|U+0008|  
 |\f|Wysuw strony|U+000C|  

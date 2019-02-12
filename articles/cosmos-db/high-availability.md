@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: eca20b775b97296510545c4d2f2f005fd91d6758
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0903756ba7df34e7dba20301d45cbd4b6cc4d5ea
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471321"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992521"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
@@ -34,8 +34,8 @@ Jako globalnie rozproszonej bazy danych Cosmos DB zapewnia kompleksowe umowy SLA
 
 |Typ operacji  | Pojedynczy region |Multiregionalne (zapisuje pojedynczy region)|Multiregionalne (zapisuje wielu regionów) |
 |---------|---------|---------|-------|
-|Zapisuje    | 99.99    |99.99   |99.999|
-|Czyta     | 99.99    |99.999  |99.999|
+|Operacje zapisu    | 99.99    |99.99   |99.999|
+|Operacje odczytu     | 99.99    |99.999  |99.999|
 
 > [!NOTE]
 > W praktyce dostępność rzeczywiste zapisu powiązana nieaktualność, sesja, spójny prefiks i spójność ostateczna modeli jest znacznie wyższa niż opublikowanych umowy SLA. Rzeczywiste dostępność do odczytu dla wszystkich poziomów spójności jest znacznie wyższa niż opublikowanych umowy SLA.
@@ -63,6 +63,20 @@ Regionalnej awarii nie są niczym niezwykłym, a usługi Azure Cosmos DB zapewni
 - Dla konta usługi Cosmos wielu regionów, które są skonfigurowane z regionem zapisu pojedynczego [włączyć automatyczny tryb failover przy użyciu wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#automatic-failover). Po włączeniu automatycznej pracy awaryjnej, zawsze, gdy występuje regionalnej awarii, Cosmos DB zostanie automatycznie trybu failover Twoje konto.  
 
 - Nawet w przypadku Twojego konta usługi Cosmos o wysokiej dostępności, aplikacja może nie być poprawnie zaprojektowana pozostaje o wysokiej dostępności. Aby przetestować end-to-end wysokiej dostępności dla aplikacji, okresowo wywoływać [ręcznej pracy awaryjnej przy użyciu wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#manual-failover), jako część testowania aplikacji lub odzyskiwania po awarii (DR) awarii.
+
+
+Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO).
+
+W poniższej tabeli przedstawiono cel punktu odzyskiwania i cel czasu odzyskiwania dla najbardziej typowych scenariuszy.
+
+|Liczba regiony |Konfigurowanie |Poziom spójności|Cel punktu odzyskiwania |CEL CZASU ODZYSKIWANIA |
+|---------|---------|---------|-------|-------|
+|1    | *    |*   | < 240 minut | < 1 tydzień |
+|>1     | Replikacja pojedynczego elementu głównego | Sesja, spójny prefiks i ostateczna | < 15 minut | < 15 minut |
+|>1     | Replikacja pojedynczego elementu głównego | Powiązana nieaktualność | K & T | < 15 minut |
+|>1     | Replikacji wielu wzorców | Sesja, spójny prefiks i ostateczna | < 15 minut | 0 |
+|>1     | Replikacji wielu wzorców | Powiązana nieaktualność | K & T | 0 |
+|>1     | * | Silna | 0 | < 15 minut |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

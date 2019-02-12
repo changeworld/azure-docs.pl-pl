@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 884775fc2783256d9fff43e8bc6b26cc4f638648
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018716"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998624"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Omówienie monitorowania kondycji bramy aplikacji
 
@@ -27,7 +27,7 @@ Oprócz używania, sondowanie kondycji domyślnej funkcji monitorowania, można 
 
 Bramy aplikacji automatycznie konfiguruje domyślnego badania kondycji, gdy nie skonfigurowano żadnej konfiguracji niestandardowej sondy. Monitorowanie zachowania działa poprzez wysłanie żądania HTTP do adresów IP skonfigurowane dla puli zaplecza. Dla domyślnej sondy Jeśli ustawienia http zaplecza są skonfigurowane do obsługi protokołu HTTPS, sondy używa protokołu HTTPS oraz aby sprawdzić kondycję zaplecza.
 
-Na przykład: Konfigurowanie bramy aplikacji na potrzeby serwerów zaplecza, A, B i C, aby odbierać ruch sieciowy protokołu HTTP na porcie 80. Domyślne monitorowanie kondycji sprawdza trzy serwery co 30 sekund w dobrej kondycji odpowiedzi HTTP. Dobra odpowiedzi HTTP ma [kod stanu](https://msdn.microsoft.com/library/aa287675.aspx) między 200 a 399.
+Na przykład: Brama aplikacji umożliwia serwerów zaplecza, A, B i C, aby odbierać ruch sieciowy protokołu HTTP na porcie 80. Domyślne monitorowanie kondycji sprawdza trzy serwery co 30 sekund w dobrej kondycji odpowiedzi HTTP. Dobra odpowiedzi HTTP ma [kod stanu](https://msdn.microsoft.com/library/aa287675.aspx) między 200 a 399.
 
 Jeśli domyślnego wyboru sondowania serwera A nie powiedzie się, bramy aplikacji powoduje jej usunięcie z jej puli zaplecza i ruchu sieciowego, docierać do tego serwera. Domyślnej funkcji badania nadal kontynuuje pod kątem serwera co 30 sekund. Gdy serwer A pomyślnie odpowiada na jedno żądanie od domyślnego badania kondycji, dodaniu ponownie jako w dobrej kondycji do puli zaplecza i rozpoczęciu ruchu danych do serwera ponownie.
 
@@ -44,7 +44,7 @@ Kryteria dopasowania można określać z użyciem `New-AzureRmApplicationGateway
 
 Na przykład:
 
-```
+```powershell
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -Body "Healthy"
 ```
@@ -55,7 +55,7 @@ Po określeniu kryteria dopasowania, może być dołączane do sondowania przy u
 | Właściwość sondy | Wartość | Opis |
 | --- | --- | --- |
 | Adres URL sondy |http://127.0.0.1:\<port\>/ |Ścieżka adresu URL |
-| Interwał |30 |Czas w sekundach czas oczekiwania przed następnym sondy kondycji są wysyłane.|
+| Interval |30 |Czas w sekundach czas oczekiwania przed następnym sondy kondycji są wysyłane.|
 | Limit czasu |30 |Czas w sekundach bramy application gateway czeka na odpowiedź sondy przed oznaczeniem sondy komunikat o złej kondycji. Jeśli sonda zwraca jako w dobrej kondycji, odpowiedniego zaplecza natychmiast jest oznaczony jako w dobrej kondycji.|
 | Próg złej kondycji |3 |Określa, ile sondy do wysłania w przypadku, gdy wystąpi awaria sondy kondycji regularne. Tych sond kondycji dodatkowe są wysyłane w szybko, aby szybko ustalić kondycję wewnętrznej bazy danych i czeka na interwał sondowania. Serwer zaplecza jest oznaczony w dół po liczba niepowodzeń sondy kolejnych osiąga próg złej kondycji. |
 
@@ -84,7 +84,7 @@ Poniższa tabela zawiera definicje dla właściwości sondę kondycji niestandar
 | Protokół |Protokół używany do wysyłania sondy. Sonda korzysta z protokołu, zdefiniowane w ustawieniach HTTP zaplecza |
 | Host |Nazwa hosta, aby wysłać sondy. Dotyczy tylko wtedy, gdy połączenia obejmujące wiele lokacji jest skonfigurowany w usłudze Application Gateway, w przeciwnym razie użyj "127.0.0.1". Ta wartość jest inna niż nazwa hosta maszyny Wirtualnej. |
 | Ścieżka |Ścieżka względna sondy. Nieprawidłowa ścieżka zaczyna się od "/". |
-| Interwał |Interwał sondy w sekundach. Ta wartość jest odstęp czasu między dwóch następujących po sobie sondy. |
+| Interval |Interwał sondy w sekundach. Ta wartość jest odstęp czasu między dwóch następujących po sobie sondy. |
 | Limit czasu |Sonda limitu czasu w sekundach. Jeśli prawidłowe odpowiedzi nie zostanie odebrany w ramach tego limitu czasu, sondy jest oznaczony jako zakończony niepowodzeniem.  |
 | Próg złej kondycji |Sonda liczbę ponownych prób. Serwer zaplecza jest oznaczony w dół po liczba niepowodzeń sondy kolejnych osiąga próg złej kondycji. |
 

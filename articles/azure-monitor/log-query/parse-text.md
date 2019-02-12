@@ -1,6 +1,6 @@
 ---
-title: Analizowanie danych tekstowych w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano różne opcje do analizowania danych w dokumentacji usługi Log Analytics, gdy dane są pozyskiwane i podczas pobierania w zapytaniu, porównywanie względnych zalet dla każdego.
+title: Analizowanie danych tekstowych w dziennikach w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: W tym artykule opisano różne opcje do analizowania danych dziennika w dokumentacji usługi Azure Monitor, gdy dane są pozyskiwane i gdy jest pobierana w zapytaniu, porównywanie względnych zalet dla każdego.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214134"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002228"
 ---
-# <a name="parse-text-data-in-log-analytics"></a>Analizowanie danych tekstowych w usłudze Log Analytics
-Niektóre dane zebrane przez usługę Log Analytics będzie zawierać kilka rodzajów informacji w pojedynczej właściwości. Analizowanie tych danych na wiele właściwości atrybutu ułatwić używane w kwerendach. Typowym przykładem jest [dziennik niestandardowy](../../log-analytics/log-analytics-data-sources-custom-logs.md) , umożliwia zbieranie informacji o wpisu dziennika całego z wieloma wartościami w jednej właściwości. Tworząc osobne właściwości dla różnych wartości, można wyszukiwać i agregacji w każdego.
+# <a name="parse-text-data-in-azure-monitor-logs"></a>Analizowanie danych tekstowych w dziennikach w usłudze Azure Monitor
+Niektóre dane dzienników zbieranych przez usługi Azure Monitor będzie zawierać kilka rodzajów informacji w pojedynczej właściwości. Analizowanie tych danych na wiele właściwości atrybutu ułatwić używane w kwerendach. Typowym przykładem jest [dziennik niestandardowy](../../log-analytics/log-analytics-data-sources-custom-logs.md) , umożliwia zbieranie informacji o wpisu dziennika całego z wieloma wartościami w jednej właściwości. Tworząc osobne właściwości dla różnych wartości, można wyszukiwać i agregacji w każdego.
 
-W tym artykule opisano różne opcje do analizowania danych w dokumentacji usługi Log Analytics, gdy dane są pozyskiwane i podczas pobierania w zapytaniu, porównywanie względnych zalet dla każdego.
+W tym artykule opisano różne opcje do analizowania danych dziennika w usłudze Azure Monitor, gdy dane są pozyskiwane i gdy jest pobierana w zapytaniu, porównywanie względnych zalet dla każdego.
 
 
 ## <a name="parsing-methods"></a>Metody analizy
@@ -60,7 +60,7 @@ Następujące wady tej metody:
 - Można tworzyć obciążenia przy uruchamianiu złożonej logiki rekordu bardzo duże zestawy (miliardów rekordów).
 
 ## <a name="parse-data-as-its-collected"></a>Analizowanie danych, zgodnie z ich zebraniu
-Zobacz [Tworzenie pól niestandardowych w usłudze Log Analytics](../../log-analytics/log-analytics-custom-fields.md) szczegółowe informacje na temat analizy danych, ponieważ ich zebraniu. Spowoduje to utworzenie właściwości niestandardowe w tabeli, które mogą być używane w zapytaniach, podobnie jak inne właściwości.
+Zobacz [Tworzenie pól niestandardowych w usłudze Azure Monitor](../platform/custom-fields.md) szczegółowe informacje na temat analizy danych, ponieważ ich zebraniu. Spowoduje to utworzenie właściwości niestandardowe w tabeli, które mogą być używane w zapytaniach, podobnie jak inne właściwości.
 
 ## <a name="parse-data-in-query-using-patterns"></a>Analizowanie danych w zapytaniu przy użyciu wzorców
 Gdy dane chcesz przeanalizować może zostać zidentyfikowany przez wzorzec powtarzane na rekordy, można użyć różnych operatorów w [język zapytań w Eksploratorze danych](/azure/kusto/query/) można wyodrębnić określone dane w jedną lub więcej nowych właściwości.
@@ -106,7 +106,7 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-Umożliwia wydajne analizowanie w dużej skali usługi Log Analytics używa re2 wersji wyrażeń regularnych, który jest podobny, ale nie są identyczne do niektórych innych wariantów wyrażenia regularnego. Zapoznaj się [składni wyrażenia re2](https://aka.ms/kql_re2syntax) Aby uzyskać szczegółowe informacje.
+Umożliwia wydajne analizowanie w dużej skali usługi Azure Monitor używa re2 wersji wyrażeń regularnych, który jest podobny, ale nie są identyczne do niektórych innych wariantów wyrażenia regularnego. Zapoznaj się [składni wyrażenia re2](https://aka.ms/kql_re2syntax) Aby uzyskać szczegółowe informacje.
 
 
 ## <a name="parse-delimited-data-in-a-query"></a>Analizowanie danych rozdzielany w zapytaniu

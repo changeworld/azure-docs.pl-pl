@@ -12,17 +12,18 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 89e28a9b70d078c3fe385225af305252ececefce
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3ac07b06e1cf7b5b24956c10e202f9baeab60b2b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249935"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992250"
 ---
-# <a name="content-protection-overview"></a>Omówienie ochrony zawartości
- Usługa Azure Media Services umożliwia zabezpieczenie multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services umożliwia dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128), lub jeden z systemów zarządzania (prawami cyfrowymi DRM) trzech głównych prawami cyfrowymi: PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów. 
+# <a name="content-protection-overview"></a>Omówienie ochrony zawartości 
+
+ Usługa Azure Media Services umożliwia zabezpieczenie multimediów od momentu wysłania komputera za pośrednictwem przechowywania, przetwarzania i dostarczania. Usługa Media Services można dostarczanie zawartości na żywo i na żądanie dynamicznie zaszyfrowany za pomocą Advanced Encryption Standard (AES-128), lub z trzech głównych prawami cyfrowymi systemów zarządzania (prawami cyfrowymi DRM): PlayReady firmy Microsoft, Google Widevine i FairPlay firmy Apple. Media Services udostępnia również usługę dostarczania kluczy AES i technologii DRM (PlayReady, Widevine i FairPlay) licencji do autoryzowanych klientów. 
 
 Na poniższym obrazie przedstawiono przepływ pracy usługi Media Services Ochrona zawartości: 
 
@@ -36,7 +37,7 @@ W tym artykule opisano pojęcia i terminologia istotne dla zrozumienia, ochrony 
 - AES: MPEG-DASH, Smooth Streaming i HLS
 - PlayReady: MPEG-DASH, Smooth Streaming i HLS
 - Widevine: MPEG-DASH
-- Technologia FairPlay: HLS
+- FairPlay: HLS
 
 Aby zaszyfrować element zawartości, musisz skojarzyć klucz szyfrowania zawartości z elementów zawartości, a także skonfigurować zasady autoryzacji klucza. Kluczy zawartości można określić lub automatycznie generowane przez usługę Media Services.
 
@@ -80,9 +81,9 @@ Mają zastosowanie następujące kwestie:
 * Typ szyfrowania nie ma określonego w adresie URL, jeśli tylko jeden szyfrowania została zastosowana do zasobu.
 * Typ szyfrowania jest uwzględniana wielkość liter.
 * Można określić następujące typy szyfrowania:
-  * **cenc**: dla PlayReady lub Widevine (common encryption)
-  * **cbcs-aapl**: dla technologii FairPlay (szyfrowanie AES-CBC)
-  * **CBC**: AES dla koperty szyfrowania
+  * **cenc**: Aby uzyskać PlayReady lub Widevine (common encryption)
+  * **cbcs-aapl**: Dla technologii FairPlay (szyfrowanie AES-CBC)
+  * **cbc**: Do szyfrowania koperty AES
 
 ## <a name="next-steps"></a>Kolejne kroki
 Następujące artykuły opisano kolejne kroki, aby pomóc Ci rozpocząć pracę z usługą content protection:

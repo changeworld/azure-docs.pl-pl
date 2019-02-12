@@ -12,14 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: cbd1a7a3a797cc20be92583bbb5ac163333729fc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a9a1b5599468df6bc85cc1d535b577c508dd0a9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969805"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995650"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurowanie odwrotnego systemu DNS dla usług hostowanych na platformie Azure
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 W tym artykule opisano sposób konfigurowania wstecznego wyszukiwania DNS dla usług hostowanych na platformie Azure.
 
@@ -62,22 +64,22 @@ Usługa Azure obecnie obsługuje odwrotne DNS tylko dla zasobów PublicIpAddress
 Aby dodać odwrotnym systemem DNS do istniejącego publicznego adresu IP:
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
 Odwrotnym systemem DNS należy dodać do istniejącego publicznego adresu IP, który nie ma jeszcze nazwę DNS, należy również określić nazwę DNS:
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings = New-Object -TypeName "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings"
 $pip.DnsSettings.DomainNameLabel = "contosoapp1"
 $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
+#### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 
 Aby dodać odwrotnym systemem DNS do istniejącego publicznego adresu IP:
 
@@ -112,10 +114,10 @@ Aby utworzyć nowy publiczny adres IP za pomocą odwrotnego DNS już określona 
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
+New-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 ```
 
-#### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
+#### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 
 ```azurecli
 azure network public-ip create -n PublicIp -g MyResourceGroup -l westus -d contosoapp3 -f contosoapp3.westus.cloudapp.azure.com.
@@ -134,10 +136,10 @@ Aby wyświetlić wartość skonfigurowana dla istniejącego publicznego adresu I
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 ```
 
-#### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
+#### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 
 ```azurecli
 azure network public-ip show -n PublicIp -g MyResourceGroup
@@ -156,12 +158,12 @@ Aby usunąć właściwość odwrotnego DNS z istniejącego publicznego adresu IP
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = ""
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
-#### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
+#### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 
 ```azurecli
 azure network public-ip set -n PublicIp -g MyResourceGroup –f ""

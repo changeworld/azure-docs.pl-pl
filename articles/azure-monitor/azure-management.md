@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2018
 ms.author: bwren
-ms.openlocfilehash: 29daa447be051af3df86ba9211bc2e4871d8c71e
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: e0ad6b212e328612d2934562e1292b5c36546478
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52965109"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990276"
 ---
 # <a name="azure-management---monitoring"></a>Zarządzanie platformą Azure — monitorowanie
 
@@ -52,13 +52,3 @@ Ochrona dotyczy zapewniania, że aplikacje i dane są zawsze dostępne, nawet w 
 ## <a name="migrate"></a>Migrate (Migracja) 
 Migracja dotyczy przenoszenia obciążeń działających obecnie lokalnie do chmury platformy Azure.  [Usługa Azure Migrate](../migrate/migrate-overview.md) pomaga oceniać gotowość do migracji maszyn wirtualnych do platformy Azure, uwzględniając dostosowywanie rozmiaru do wydajności oraz szacunkowe koszty.  Usługa Azure Site Recovery może ułatwić rzeczywistą migrację maszyn wirtualnych [ze środowiska lokalnego](../site-recovery/migrate-tutorial-on-premises-azure.md) lub [z usług Amazon Web Services](../site-recovery/migrate-tutorial-aws-azure.md).  [Usługa Azure Database Migration](../dms/dms-overview.md) pomaga w migracji wielu źródłowych baz danych do platformy danych Azure.
 
-
-## <a name="operations-management-suite"></a>Operations Management Suite
-Wcześniejsza dokumentacja techniczna związana z zarządzaniem platformą Azure uwzględniała pakiet Operations Management Suite (OMS), który obejmuje następujące usługi zarządzania platformą Azure:
-
-- Azure Automation
-- Azure Backup
-- Log Analytics
-- Site Recovery
-
-Odchodzimy od opisywania tego pakietu w naszej dokumentacji technicznej, ponieważ funkcje zarządzania platformą Azure zostały rozwinięte i obejmują teraz inne usługi. Żadne z usług będących częścią pakietu OMS nie uległy zmianie. Każda z nich nadal pełni ważną rolę w zarządzaniu zasobami i aplikacjami platformy Azure. Należy skupiać się na zadaniach zarządzania, które trzeba wykonać, i różnych usługach Azure, które współpracują ze sobą w celu wykonania każdego zadania.

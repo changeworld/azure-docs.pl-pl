@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 3458bdc0f010cab622a5ddbb87cb8e1077c404a5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 928ed383c08dd87cb003d1f729bc3fecce0c6935
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693888"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999236"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Dodano bezpieczeństwa korzystając z usługi Azure Key Vault, można importować lub generować klucze w sprzętowych modułach zabezpieczeń (HSM), które nigdy nie opuszczają modułu HSM. Ten scenariusz jest często nazywany *Użyj własnego klucza*, byok. Moduły HSM są zweryfikowane w trybie FIPS 140-2 poziom 2. Usługa Azure Key Vault używa rodziny nShield firmy Thales sprzętowych modułów zabezpieczeń do ochrony kluczy.
 
@@ -78,21 +80,19 @@ To pierwszy krok wykonaj następujące procedury na stacji roboczej podłączone
 
 ### <a name="step-11-install-azure-powershell"></a>Krok 1.1: Instalowanie programu Azure PowerShell
 
-Ze stacji roboczej podłączonej do Internetu należy pobrać i zainstalować moduł programu Azure PowerShell, który zawiera polecenia cmdlet do zarządzania usługi Azure Key Vault. Wymaga minimalnej wersji 0.8.13.
-
-Aby uzyskać instrukcje dotyczące instalacji, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
+Ze stacji roboczej podłączonej do Internetu należy pobrać i zainstalować moduł programu Azure PowerShell, który zawiera polecenia cmdlet do zarządzania usługi Azure Key Vault. Aby uzyskać instrukcje dotyczące instalacji, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>Krok 1.2: Pobierz swój identyfikator subskrypcji platformy Azure
 
 Uruchom sesję programu Azure PowerShell, a następnie zaloguj się do konta platformy Azure przy użyciu następującego polecenia:
 
 ```Powershell
-   Add-AzureRMAccount
+   Connect-AzAccount
 ```
-W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Następnie należy użyć [Get-AzureSubscription](/powershell/module/servicemanagement/azure/get-azuresubscription?view=azuresmps-3.7.0) polecenia:
+W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Następnie należy użyć [Get AzSubscription](/powershell/module/az.accounts/get-azsubscription) polecenia:
 
 ```powershell
-   Get-AzureRMSubscription
+   Get-AzSubscription
 ```
 Z danych wyjściowych zlokalizuj identyfikator subskrypcji, które będą używane dla usługi Azure Key Vault. Ten identyfikator subskrypcji będzie potrzebny później.
 
@@ -222,7 +222,7 @@ Skopiuj pakiet na dysku USB lub innego przenośnego urządzenia pamięci masowej
 
 Ten drugi krok wykonaj następujące procedury na stacji roboczej, który nie jest podłączony do sieci (Internetu lub sieci wewnętrznej).
 
-### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>Krok 2.1: Przygotowanie odłączonej stacji roboczej za pomocą modułu HSM firmy Thales
+### <a name="step-21-prepare-the-disconnected-workstation-with-thales-hsm"></a>Krok 2.1. Przygotowanie odłączonej stacji roboczej za pomocą modułu HSM firmy Thales
 
 Zainstaluj oprogramowanie wspomagające nCipher (firmy Thales) na komputerze Windows, a następnie dołącz HSM firmy Thales do tego komputera.
 
@@ -234,7 +234,7 @@ Upewnij się, że narzędzia firmy Thales znajdują się w ścieżce (**%nfast_h
 
 Aby uzyskać więcej informacji zobacz w podręczniku użytkownika dołączonym do modułu HSM firmy Thales.
 
-### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Krok 2.2: Zainstaluj zestaw narzędzi BYOK na odłączonej stacji roboczej
+### <a name="step-22-install-the-byok-toolset-on-the-disconnected-workstation"></a>Krok 2.2. Zainstaluj zestaw narzędzi BYOK na odłączonej stacji roboczej
 
 Skopiuj pakiet zestawu narzędzi BYOK z dysku USB lub innego przenośnego urządzenia pamięci masowej, a następnie wykonaj następujące czynności:
 
@@ -247,7 +247,7 @@ Skopiuj pakiet zestawu narzędzi BYOK z dysku USB lub innego przenośnego urząd
 To trzeci krok wykonaj następujące procedury na rozłączonej stacji roboczej. Aby ukończyć ten krok modułu HSM musi być w trybie inicjowania. 
 
 
-### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1 Zmień tryb sprzętowego modułu zabezpieczeń na wartość "I"
+### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1. Zmień tryb sprzętowego modułu zabezpieczeń na wartość "I"
 
 Jeśli używasz nShield firmy Thales Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
 
@@ -493,10 +493,10 @@ Aby skopiować plik wyjściowy z poprzedniego kroku (KeyTransferPackage-ContosoF
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Krok 5. Przesłanie klucza do usługi Azure Key Vault
 
-W tym ostatnim kroku na stacji roboczej podłączonej do Internetu, użyj [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) polecenia cmdlet, aby przesłać pakiet przekazywania klucza, który został skopiowany z odłączonej stacji roboczej do magazynu Azure klucza sprzętowego modułu zabezpieczeń:
+W tym ostatnim kroku na stacji roboczej podłączonej do Internetu, użyj [AzKeyVaultKey Dodaj](/powershell/module/az.keyvault/add-azkeyvaultkey) polecenia cmdlet, aby przesłać pakiet przekazywania klucza, który został skopiowany z odłączonej stacji roboczej do magazynu Azure klucza sprzętowego modułu zabezpieczeń:
 
    ```powershell
-        Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+        Add-AzKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
    ```
 
 Jeśli przekazywanie zakończy się pomyślnie, zobaczysz wyświetlone właściwości klucza, który właśnie został dodany.

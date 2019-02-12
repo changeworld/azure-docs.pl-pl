@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/26/2017
 ms.author: jjed
 ms.custom: seodec2018
-ms.openlocfilehash: 0b36ee9aa54f0d8dd3d246d6c5a96e767326d2d8
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1b37b3c52abd3750c3452a46bdf5b0c5954de4dd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634681"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005339"
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Wprowadzenie do usługi Azure Search w środowisku Node.js
 > [!div class="op_single_selector"]
@@ -100,7 +100,7 @@ Możesz też wprowadzić jeden z poniższych terminów:
 ## <a name="next-steps"></a>Kolejne kroki
 To jest pierwszy samouczek usługi Azure Search oparty na środowisku Node.js i zestawie danych agencji USGS. Wraz z upływem czasu będziemy rozszerzać ten samouczek, aby zademonstrować dodatkowe funkcje wyszukiwania, których mogą być przydatne w rozwiązaniach niestandardowych.
 
-Jeśli masz już pewną wiedzę w usłudze Azure Search, możesz użyć tego przykładu jako punktu wyjścia do wypróbowania sugestory (wpisywaniu lub Autouzupełnianie zapytań), filtrów i nawigacji aspektowej. Możesz również ulepszyć stronę wyników wyszukiwania przez dodanie liczników i łączenie dokumentów w partie, aby użytkownicy mogli przechodzić do kolejnych stron wyników.
+Jeśli masz już jakieś doświadczenie z usługą Azure Search, możesz użyć tego przykładu jako punktu wyjścia do wypróbowania sugestorów (uzupełnianie przy wpisywaniu lub autouzupełnianie zapytań), filtrów i nawigacji aspektowej. Możesz również ulepszyć stronę wyników wyszukiwania przez dodanie liczników i łączenie dokumentów w partie, aby użytkownicy mogli przechodzić do kolejnych stron wyników.
 
 Dopiero zaczynasz korzystać z usługi Azure Search? Zalecamy wypróbować inne samouczki, aby poznać możliwości tworzenia w usłudze. Aby znaleźć więcej zasobów, odwiedź naszą [stronę dokumentacji](https://azure.microsoft.com/documentation/services/search/). 
 

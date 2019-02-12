@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 707cd7e72245ce47289c0a744d7103c713acecb9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d0051f081f005d61a1eed43d177a11781b2b3fa8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765487"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997104"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Dodaj rozwiązanie Kubernetes w portalu Marketplace usługi Azure Stack
 
@@ -65,15 +65,15 @@ Tworzenie planu, oferty i subskrypcji dla elementu portalu Marketplace platformy
 
 Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarządzania tożsamościami, należy utworzyć jednostkę dla użytkowników, wdrażaniu klastra Kubernetes usługi.
 
-1. Utwórz i wyeksportuj certyfikat służący do tworzenia nazwy głównej usługi. Poniższy fragment kodu, poniżej przedstawiono sposób tworzenia certyfikatu z podpisem własnym. 
+1. Tworzenie i eksportowanie certyfikatu z podpisem własnym używany do tworzenia nazwy głównej usługi. 
 
     - Potrzebujesz następujących rodzajów informacji:
 
        | Wartość | Opis |
        | ---   | ---         |
-       | Hasło | Hasło certyfikatu. |
-       | Ścieżka do lokalnego certyfikatu | Ścieżka i nazwa pliku certyfikatu. Na przykład: `path\certfilename.pfx` |
-       | Nazwa certyfikatu | Nazwa certyfikatu. |
+       | Hasło | Wprowadź nowe hasło dla certyfikatu. |
+       | Ścieżka do lokalnego certyfikatu | Wprowadź ścieżkę i nazwę certyfikatu. Na przykład: `c:\certfilename.pfx` |
+       | Nazwa certyfikatu | Wprowadź nazwę certyfikatu. |
        | Lokalizacja magazynu certyfikatów |  Na przykład: `Cert:\LocalMachine\My` |
 
     - Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza. Uruchom poniższy skrypt z parametrami zaktualizowany do wartości:
@@ -82,8 +82,7 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
         # Creates a new self signed certificate 
         $passwordString = "<password>"
         $certlocation = "<local certificate path>.pfx"
-        $certificateName = "<certificate name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
+        $certificateName = "CN=<certificate name>"
         $certStoreLocation="<certificate store location>"
         
         $params = @{
@@ -105,24 +104,33 @@ Jeśli używasz Active Directory federacyjnego Services (AD FS) dla usługi zarz
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. Tworzenie usługi podmiotu zabezpieczeń, za pomocą certyfikatu.
+2.  Zanotuj identyfikator certyfikatu wyświetlane w sesji programu PowerShell `1C2ED76081405F14747DC3B5F76BB1D83227D824`. Ten identyfikator będzie używany podczas tworzenia nazwy głównej usługi.
+
+    ```PowerShell  
+    VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
+    ```
+
+3. Tworzenie usługi podmiotu zabezpieczeń, za pomocą certyfikatu.
 
     - Potrzebujesz następujących rodzajów informacji:
 
        | Wartość | Opis                     |
        | ---   | ---                             |
        | ERCS IP | W ASDK uprzywilejowanych punkt końcowy jest zwykle `AzS-ERCS01`. |
-       | Nazwa aplikacji | Prosta nazwa dla nazwy głównej usługi aplikacji. |
-       | Lokalizacja magazynu certyfikatów | Ścieżka na komputerze, na którym są przechowywane certyfikatu. Na przykład: `Cert:\LocalMachine\My\<someuid>` |
+       | Nazwa aplikacji | Wprowadź prostą nazwę jednostki usługi aplikacji. |
+       | Lokalizacja magazynu certyfikatów | Ścieżka na komputerze, na którym są przechowywane certyfikatu. Jest to wskazywane przez lokalizacji magazynu, a identyfikator certyfikatu generowane w pierwszym kroku. Na przykład: `Cert:\LocalMachine\My\1C2ED76081405F14747DC3B5F76BB1D83227D824` |
 
-    - Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza. Uruchom poniższy skrypt z parametrami zaktualizowany do wartości:
+       Po wyświetleniu monitu użyj poniższych poświadczeń, aby nawiązać połączenie z punktem końcowym uprawnień. 
+        - Nazwa użytkownika: Określ konto CloudAdmin w formacie <Azure Stack domain>\cloudadmin. (Dla ASDK, nazwa użytkownika jest azurestack\cloudadmin).
+        - Hasło: Wprowadź to samo hasło, które zostało podane podczas instalacji dla konta administratora domeny AzureStackAdmin.
+
+    - Uruchom poniższy skrypt z parametrami zaktualizowany do wartości:
 
         ```PowerShell  
         #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
-        $certStoreLocation="<certificate store location>"
+        $certStoreLocation="<certificate location>"
         
         # Get certificate information
         $cert = Get-Item $certStoreLocation
@@ -189,7 +197,7 @@ Dodaj poniższy obraz Ubuntu Server w portalu Marketplace:
 
 1. Wybierz **+ Dodaj na platformie Azure**.
 
-1. Wprowadź polecenie `UbuntuServer`.
+1. Wprowadź polecenie `Ubuntu Server`.
 
 1. Wybierz najnowszą wersję serwera. Zapoznaj się z pełną wersją i upewnij się, że masz najnowszą wersję:
     - **Wydawca**: Canonical

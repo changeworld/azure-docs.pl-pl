@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 065845bb2abd02f02fe2050780bc0613cbd2f12c
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: 4b5196a995576e5b00a988e14183eb720d5b2eae
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51036006"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989874"
 ---
-# <a name="widevine-license-template-overview"></a>Omówienie szablonu licencji Widevine
+# <a name="widevine-license-template-overview"></a>Omówienie szablonu licencji Widevine 
 Aby skonfigurować i żądania licencji Google Widevine, można użyć usługi Azure Media Services. Gdy gracz próbuje odtwarzanie zawartości chronionej przez technologię Widevine, żądanie jest wysyłane do usługi dostarczania licencji uzyskanie licencji. Jeśli usługa licencji zatwierdza żądanie, problemy z usługą licencji. Ona są wysyłane do klienta i jest używany do odszyfrowania i odtwarzania określonej zawartości.
 
 Żądania licencji Widevine są sformatowane jako komunikat JSON.  
@@ -81,7 +81,7 @@ Każda wartość content_key_specs należy określić dla wszystkich ścieżek, 
 | --- | --- | --- |
 | content_key_specs. track_type |ciąg |Nazwa typu ścieżki. Jeśli content_key_specs jest określony w żądaniu licencji, upewnij się, do określania, że wszystkie typy śledzenia jawnie. Niewykonanie tej czynności powoduje niepowodzenie odtwarzania ostatnie 10 sekund. |
 | content_key_specs  <br/> security_level |uint32 |Określa wymagania dotyczące niezawodności klienta do odtwarzania. <br/> Oprogramowania oparte na kryptografii biały pole jest wymagane. <br/> — Kryptografia oprogramowanie i zaciemnionego dekodera są wymagane. <br/> Kluczowych operacji materiał i kryptografii muszą być wykonywane w środowisku sprzętowej zaufanych wykonywania. <br/> Kryptografii i dekodowania zawartości muszą być wykonywane w środowisku sprzętowej zaufanych wykonywania.  <br/> Kryptografii dekodowanie i obsługę wszystkich nośnika (skompresowanym i nieskompresowanym formatem) muszą być obsługiwane w środowisku sprzętowej zaufanych wykonywania. |
-| content_key_specs <br/> required_output_protection.hdc |ciąg, z których jeden HDCP_V2 HDCP_NONE, HDCP_V1, |Wskazuje, czy HDCP jest wymagana. |
+| content_key_specs <br/> required_output_protection.hdc |string, one of HDCP_NONE, HDCP_V1, HDCP_V2 |Wskazuje, czy HDCP jest wymagana. |
 | content_key_specs <br/>key |Base64 —<br/>Ciąg zakodowany |Klucz zawartości do użycia dla tej ścieżki. Jeśli zostanie określony, track_type lub key_id jest wymagany. Dostawcy zawartości można użyć tej opcji do dodania klucza zawartości dla tej ścieżki samodzielny serwer licencji Widevine wygenerować lub wyszukać klucz. |
 | content_key_specs.key_id |Plik binarny z ciągu zakodowanego algorytmem Base64, 16 bajtów |Unikatowy identyfikator klucza. |
 

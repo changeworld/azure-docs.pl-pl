@@ -1,6 +1,6 @@
 ---
-title: Praca z ciągami zapytań usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek dotyczący korzystania z portalu usługi analiza pisać zapytania w usłudze Log Analytics.
+title: Praca z ciągami zapytań dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera samouczek dotyczący korzystania z usługi Azure Monitor log analytics w witrynie Azure portal do tworzenia zapytań i analizowania danych dziennika w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 24f22d659ccfb6923ad2a038e12454716b2c5445
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: dda7ef2e4e974ea053f030a3ebe71a16872612b0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263887"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993728"
 ---
-# <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>Praca z formatami JSON i danych struktury zapytań usługi Log Analytics
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Praca z formatami JSON i danych struktury w zapytaniach dzienników usługi Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
+> Należy wykonać [wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) i [wprowadzenie do usługi Azure Monitor dziennika zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -131,7 +131,7 @@ print hosts_object
 ![Tworzenie schematu](media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dla przy użyciu języka zapytań usługi Log Analytics:
+Zobacz inne lekcje dotyczące korzystania z zapytań dzienników w usłudze Azure Monitor:
 
 - [Operacje na ciągach](string-operations.md)
 - [Operacje daty i godziny](datetime-operations.md)

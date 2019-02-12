@@ -1,6 +1,6 @@
 ---
 title: Rozwiązanie do zarządzania usługi Office 365 na platformie Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera szczegółowe informacje dotyczące konfiguracji i użytkowania rozwiązanie usługi Office 365 na platformie Azure.  Zawiera szczegółowy opis rekordy usługi Office 365 w usłudze Log Analytics.
+description: Ten artykuł zawiera szczegółowe informacje dotyczące konfiguracji i użytkowania rozwiązanie usługi Office 365 na platformie Azure.  Zawiera szczegółowy opis rekordy usługi Office 365 w usłudze Azure Monitor.
 services: operations-management-suite
 documentationcenter: ''
 author: bwren
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216616"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999304"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
 ![Logo usługi Office 365](media/solution-office-365/icon.png)
 
-Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środowiska usługi Office 365 w usłudze Log Analytics.
+Rozwiązanie do zarządzania usługi Office 365 umożliwia monitorowanie środowiska usługi Office 365 w usłudze Azure Monitor.
 
 - Monitorowanie aktywności użytkowników na konta usługi Office 365, aby analizować wzorce użycia, a także trendów zachowania. Na przykład można wyodrębnić scenariusze użycia określonych, takich jak pliki, które są udostępniane poza swoją organizację lub Najpopularniejsze witryny programu SharePoint.
 - Monitorowanie działania wykonywane przez administratora do śledzenia zmian konfiguracji lub operacji na wysokim poziomie uprawnień.
 - Wykrywanie i badanie użytkownika niepożądane zachowanie, które można dostosować do potrzeb organizacji.
 - Prezentacja inspekcje i zapewniaj zgodność. Na przykład można monitorować operacji na plikach dostęp do poufnych plików, które pomogą Ci z procesem inspekcje i zapewniaj zgodność.
-- Rozwiązywać problemy operacyjne przy użyciu [dziennikach](../log-query/log-query-overview.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
+- Rozwiązywać problemy operacyjne przy użyciu [rejestrowania zapytań](../log-query/log-query-overview.md) na podstawie danych aktywności usługi Office 365 w Twojej organizacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowane i skonfigurowane.
@@ -43,7 +43,7 @@ Wymagane jest spełnienie następujących przed to rozwiązanie jest zainstalowa
 To rozwiązanie nie można zainstalować wszystkie pakiety administracyjne w [podłączone grupy zarządzania](../platform/om-agents.md).
   
 ## <a name="install-and-configure"></a>Instalowanie i konfigurowanie
-Rozpocznij od dodania [rozwiązanie usługi Office 365, aby Twoja subskrypcja](solutions.md#install-a-management-solution). Po dodaniu, należy wykonać kroki konfiguracji w tej sekcji, aby umożliwić dostęp do subskrypcji usługi Office 365.
+Rozpocznij od dodania [rozwiązanie usługi Office 365, aby Twoja subskrypcja](solutions.md#install-a-monitoring-solution). Po dodaniu, należy wykonać kroki konfiguracji w tej sekcji, aby umożliwić dostęp do subskrypcji usługi Office 365.
 
 ### <a name="required-information"></a>Wymagane informacje
 Przed rozpoczęciem tej procedury, Zbierz następujące informacje.
@@ -375,7 +375,7 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>Dezinstalacja
-Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu procesu w [usunąć to rozwiązanie do zarządzania](solutions.md#remove-a-management-solution). Zbierane dane z usługi Office 365 w usłudze Log Analytics jednak nie powoduje wstrzymania. Postępuj zgodnie z poniższą procedurą, aby anulować subskrypcję usługi Office 365 i zatrzymać zbieranie danych.
+Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu procesu w [usunąć to rozwiązanie do zarządzania](solutions.md#remove-a-monitoring-solution). Zbierane dane z usługi Office 365 do usługi Azure Monitor jednak nie powoduje wstrzymania. Postępuj zgodnie z poniższą procedurą, aby anulować subskrypcję usługi Office 365 i zatrzymać zbieranie danych.
 
 1. Zapisz poniższy skrypt jako *office365_unsubscribe.ps1*.
 
@@ -479,9 +479,12 @@ Można usunąć rozwiązania do zarządzania usługi Office 365 przy użyciu pro
 Rozwiązania usługi Office 365 nie pobierać dane z dowolnego z [agentów usługi Log Analytics](../platform/agent-data-sources.md).  Pobiera dane bezpośrednio z usługi Office 365.
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
-Może upłynąć kilka godzin początkowo zbierane dane. Po uruchomieniu zbieranie, usługi Office 365 wysyła [powiadomień elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) szczegółowych danych do usługi Log Analytics zawsze jest tworzony rekord. Ten rekord jest dostępna w usłudze Log Analytics w ramach po kilku minutach od jego odebrania.
+Może upłynąć kilka godzin początkowo zbierane dane. Po uruchomieniu zbieranie, usługi Office 365 wysyła [powiadomień elementu webhook](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) szczegółowych danych do usługi Azure Monitor zawsze jest tworzony rekord. Ten rekord jest dostępna w usłudze Azure Monitor w ramach po kilku minutach od jego odebrania.
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
+
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 Po dodaniu rozwiązania usługi Office 365 do obszaru roboczego usługi Log Analytics, **usługi Office 365** zostanie dodany Kafelek do pulpitu nawigacyjnego. Ten kafelek zawiera liczbę oraz graficzną reprezentację liczby komputerów w środowisku wraz z informacjami o ich zgodności aktualizacji.<br><br>
 ![Kafelek podsumowania usługi Office 365](media/solution-office-365/tile.png)  
 
@@ -501,9 +504,9 @@ Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. 
 
 
 
-## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
+## <a name="azure-monitor-log-records"></a>Rekordy dziennika w usłudze Azure Monitor
 
-Wszystkie rekordy utworzone w obszarze roboczym usługi Log Analytics, rozwiązanie usługi Office 365 mają **typu** z **OfficeActivity**.  **OfficeWorkload** właściwość określa, które usługi Office 365, rekord, który odwołuje się do — Exchange, usługi AzureActiveDirectory, SharePoint lub OneDrive.  **RecordType** właściwość określa typ operacji.  Właściwości różnią się dla każdego typu operacji i przedstawiono w poniższych tabelach.
+Wszystkie rekordy utworzone w obszarze roboczym usługi Log Analytics w usłudze Azure Monitor przez rozwiązania usługi Office 365 mają **typu** z **OfficeActivity**.  **OfficeWorkload** właściwość określa, które usługi Office 365, rekord, który odwołuje się do — Exchange, usługi AzureActiveDirectory, SharePoint lub OneDrive.  **RecordType** właściwość określa typ operacji.  Właściwości różnią się dla każdego typu operacji i przedstawiono w poniższych tabelach.
 
 ### <a name="common-properties"></a>Wspólne właściwości
 Następujące właściwości są wspólne dla wszystkich rekordów w usłudze Office 365.
@@ -708,6 +711,6 @@ Poniższa tabela zawiera przykładowe wyszukiwania w dzienniku dotyczące rekord
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Korzystanie z wyszukiwania w dzienniku usługi [Log Analytics](../log-query/log-query-overview.md) w celu wyświetlania szczegółowych danych aktualizacji.
+* Użyj [rejestrowania zapytań w usłudze Azure Monitor](../log-query/log-query-overview.md) do wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie własnych pulpitów nawigacyjnych](../learn/tutorial-logs-dashboards.md) Aby wyświetlić ulubione zapytania wyszukiwania usługi Office 365.
 * [Tworzenie alertów](../platform/alerts-overview.md) do aktywnego powiadomienia o ważnych działań usługi Office 365.  

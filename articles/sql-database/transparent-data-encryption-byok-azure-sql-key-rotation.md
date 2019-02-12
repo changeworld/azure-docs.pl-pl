@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: jhubbard
 ms.date: 12/06/2018
-ms.openlocfilehash: 14a39d283d9ec4f8d5267e6a6628609ac79879ee
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 45cd4e884530836d515e0c6cce8a6fc9be109d88
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567506"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992011"
 ---
 # <a name="rotate-the-transparent-data-encryption-tde-protector-using-powershell"></a>Obróć ochrony przezroczystego szyfrowania danych (TDE) przy użyciu programu PowerShell
 
@@ -35,26 +35,13 @@ Ten przewodnik w tym artykule omówiono dwa sposoby Obróć ochrony TDE na serwe
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- W tym przewodniku przyjęto założenie, że korzystasz już klucza z usługi Azure Key Vault jako funkcja ochrony TDE dla usługi Azure SQL Database lub magazynu danych. Zobacz [Transparent Data Encryption z obsługą funkcji BYOK](transparent-data-encryption-byok-azure-sql.md).
+- W tym przewodniku przyjęto założenie, że korzystasz już klucza z usługi Azure Key Vault jako funkcja ochrony TDE dla usługi Azure SQL Database lub magazynu danych. Zobacz [funkcji Transparent Data Encryption dzięki integracji usługi Azure Key Vault — z obsługą funkcji BYOK](transparent-data-encryption-byok-azure-sql.md).
 - Konieczne jest posiadanie programu Azure PowerShell w wersji numer 3.7.0 lub nowszej zainstalowany i uruchomiony. 
 - [Zalecane, ale opcjonalny] Utworzyć materiału klucza dla funkcji ochrony TDE w sprzętowego modułu zabezpieczeń (HSM) lub klucza lokalnego przechowywania pierwszy i zaimportować materiału klucza do usługi Azure Key Vault. Postępuj zgodnie z [instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started) Aby dowiedzieć się więcej.
 
-## <a name="option-1-auto-rotation"></a>Opcja 1: Automatyczne obracanie
+## <a name="manual-key-rotation"></a>Ręczna wymiana kluczy
 
-Wygeneruj nową wersję istniejącego klucza funkcji ochrony TDE w usłudze Key Vault w ramach tej samej nazwy kluczy i kluczy. Usługa Azure SQL jest uruchamiana przy użyciu tej nowej wersji w ciągu 24 godzin. 
-
-Aby utworzyć nową wersję TDE ochrony za pomocą [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) polecenia cmdlet:
-
-   ```powershell
-   Add-AzureKeyVaultKey `
-   -VaultName <KeyVaultName> `
-   -Name <KeyVaultKeyName> `
-   -Destination <HardwareOrSoftware>
-   ```
-
-## <a name="option-2-manual-rotation"></a>Opcja 2: Ręczne obrotu
-
-Ta opcja używa [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey), [AzureRmSqlServerKeyVaultKey Dodaj](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey), i [polecenia Set-AzureRmSqlServerTransparentDataEncryptionProtector](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) poleceń cmdlet, aby dodać zupełnie nowy klucz, który może być pod nową nazwą klucza lub nawet inny magazyn kluczy. 
+Ręczna wymiana kluczy używa [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey), [AzureRmSqlServerKeyVaultKey Dodaj](/powershell/module/azurerm.sql/add-azurermsqlserverkeyvaultkey), i [polecenia Set-AzureRmSqlServerTransparentDataEncryptionProtector](/powershell/module/azurerm.sql/set-azurermsqlservertransparentdataencryptionprotector) polecenia cmdlet, aby dodać zupełnie nowy klucz, który może być pod nową nazwą klucza lub nawet inny magazyn kluczy. To podejście obsługuje dodawanie tego samego klucza do różnych magazynów kluczy w celu obsługi scenariuszy wysokiej dostępności i geo-dr.
 
 >[!NOTE]
 >Łączna długość nazwy magazynu kluczy i nazwę klucza nie może przekraczać 94 znaki.
@@ -107,4 +94,4 @@ Ta opcja używa [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-a
 
 - W przypadku zagrożenie bezpieczeństwa Dowiedz się, jak usunąć mogą mieć złamane zabezpieczenia ochrony TDE: [Usuń klucz mogą mieć złamane zabezpieczenia](transparent-data-encryption-byok-azure-sql-remove-tde-protector.md) 
 
-- Rozpoczynanie pracy z usługą Bring Your Own Key pomocy technicznej dla funkcji TDE: [Włączanie funkcji TDE przy użyciu własnego klucza z usługi Key Vault przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-configure.md)
+- Rozpocznij pracę dzięki integracji usługi Azure Key Vault i obsłudze własnego klucza dla funkcji TDE: [Włączanie funkcji TDE przy użyciu własnego klucza z usługi Key Vault przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-configure.md)

@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: ea6fc4b155075084150d5bb732f3f8a08846974f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 975a020cb6dee5881c6addaafa0cf7d2b75368be
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074312"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996274"
 ---
 # <a name="change-a-key-vault-tenant-id-after-a-subscription-move"></a>Zmiana identyfikatora dzierżawy magazynu kluczy po przeniesieniu subskrypcji
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="q-my-subscription-was-moved-from-tenant-a-to-tenant-b-how-do-i-change-the-tenant-id-for-my-existing-key-vault-and-set-correct-acls-for-principals-in-tenant-b"></a>PYT.: Moja subskrypcja została przeniesiona z dzierżawy A do dzierżawy B. Jak zmienić identyfikator dzierżawy dla istniejącego magazynu kluczy i ustawić prawidłowe listy ACL dla nazw głównych w dzierżawie B?
 
@@ -33,17 +35,17 @@ Po utworzeniu nowego magazynu kluczy w subskrypcji zostaje on automatycznie powi
 Jeśli na przykład masz magazyn kluczy „myvault” w subskrypcji przeniesionej z dzierżawy a do dzierżawy B, oto jak zmienić identyfikator dzierżawy dla tego magazynu kluczy i usunąć stare zasady dostępu.
 
 <pre>
-Select-AzureRmSubscription -SubscriptionId YourSubscriptionID
-$vaultResourceId = (Get-AzureRmKeyVault -VaultName myvault).ResourceId
-$vault = Get-AzureRmResource –ResourceId $vaultResourceId -ExpandProperties
-$vault.Properties.TenantId = (Get-AzureRmContext).Tenant.TenantId
+Select-AzSubscription -SubscriptionId YourSubscriptionID
+$vaultResourceId = (Get-AzKeyVault -VaultName myvault).ResourceId
+$vault = Get-AzResource –ResourceId $vaultResourceId -ExpandProperties
+$vault.Properties.TenantId = (Get-AzContext).Tenant.TenantId
 $vault.Properties.AccessPolicies = @()
-Set-AzureRmResource -ResourceId $vaultResourceId -Properties $vault.Properties
+Set-AzResource -ResourceId $vaultResourceId -Properties $vault.Properties
 </pre>
 
-Ponieważ ten magazyn przed przeniesieniem był w dzierżawie A, pierwotna wartość właściwości **$vault.Properties.TenantId** to dzierżawa A, podczas gdy wartość właściwości **(Get-AzureRmContext).Tenant.TenantId** to dzierżawa B.
+Ponieważ ten magazyn był w dzierżawie A, przed przeniesieniem oryginalnej wartości elementu **$vault. Properties.TenantId** to dzierżawa A, podczas **(Get-AzContext). Tenant.TenantId** to dzierżawa B.
 
-Po skojarzeniu magazynu z poprawnym identyfikatorem dzierżawy i usunięciu starych wpisów zasad dostępu ustaw nowe wpisy zasad dostępu za pomocą polecenia [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Set-AzureRmKeyVaultAccessPolicy).
+Teraz, gdy Twój magazyn jest skojarzony z poprawnym Identyfikatorem dzierżawy i usunięciu starych wpisów zasad dostępu Ustaw nowe wpisy zasad dostępu za pomocą [AzKeyVaultAccessPolicy zestaw](https://docs.microsoft.com/powershell/module/az.keyvault/Set-azKeyVaultAccessPolicy).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

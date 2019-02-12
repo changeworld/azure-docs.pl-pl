@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 02/05/2019
 ms.author: v-doglov
-ms.openlocfilehash: 5a328e64128503f98476deccf33a4395f99eeeb0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 9423fc844e766129ad81a8a286cb5bbdc722e2ca
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985169"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989325"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>Rozwiązywanie problemów z błędami uaktualniania dostawcy Microsoft Azure Site Recovery
 
@@ -64,5 +64,5 @@ Aby rozwiązać ten problem.
     CX_THIRDPARTY_SETUP. / NORESTART /SUPPRESSMSGBOXES /VERYSILENT EXE
 
 5. Za pomocą Menedżera zadań można monitorować postęp instalacji. Podczas procesu CX_THIRDPARTY_SETUP. Plik EXE nie jest już widoczna w Menedżerze zadań, przejdź do następnego kroku.
-6. Sprawdź, czy istnieje C:\thirdparty i że folder zawiera biblioteki RRD.
+6. Sprawdź, czy C:\thirdparty istnieje i że folder zawiera biblioteki RRD.
 1. Wróć do folderu, do którego pobrano ujednoliconego Instalatora i uruchom MicrosoftAzureSiteRecoveryUnifiedSetup.exe w celu zakończenia uaktualniania. 

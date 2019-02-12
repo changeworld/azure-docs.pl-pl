@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 23faf3b88584f8031b4a2fdbc6d94ac2ae861431
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cca3c69997865f22d22fc5b86565ae9f206b9aee
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104458"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990142"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>Szczegóły konfiguracji sieci dla środowiska App Service Environment dla usługi PowerApps z usługą Azure ExpressRoute
 
@@ -59,9 +59,9 @@ Klienci mogą się łączyć [usługi Azure ExpressRoute] [ ExpressRoute] obwodu
 
 * Dostęp do sieci dla ruchu przychodzącego do wymagane porty dla środowiska App Service Environment muszą być dozwolone. Aby uzyskać więcej informacji, zobacz [jak kontrolować ruch przychodzący do środowiska App Service Environment][requiredports].
 
-Aby spełnić wymagania dotyczące usługi DNS, upewnij się, prawidłowy infrastruktura DNS jest konfigurowane i obsługiwane dla sieci wirtualnej. Zmiana konfiguracji DNS po utworzeniu środowiska App Service Environment deweloperów można wymusić środowiska App Service Environment w celu zastosowania nowej konfiguracji DNS. Możesz wyzwolić stopniowe ponowny rozruch środowiska za pomocą **ponowne uruchomienie** ikonę w obszarze zarządzania środowiska App Service Environment w [witrynie Azure portal] [NewPortal]. Ponowne uruchomienie powoduje, że do środowiska, aby wczytać nowej konfiguracji DNS.
+Aby spełnić wymagania dotyczące usługi DNS, upewnij się, prawidłowy infrastruktura DNS jest konfigurowane i obsługiwane dla sieci wirtualnej. Zmiana konfiguracji DNS po utworzeniu środowiska App Service Environment deweloperów można wymusić środowiska App Service Environment w celu zastosowania nowej konfiguracji DNS. Możesz wyzwolić stopniowe ponowny rozruch środowiska za pomocą **ponowne uruchomienie** ikonę w obszarze zarządzania środowiska App Service Environment w [witryny Azure portal][NewPortal]. Ponowne uruchomienie powoduje, że do środowiska, aby wczytać nowej konfiguracji DNS.
 
-Aby spełnić wymagania dotyczące dostępu do sieci dla ruchu przychodzącego, należy skonfigurować [sieciowej grupy zabezpieczeń (NSG)][NetworkSecurityGroups] w podsieci środowiska App Service Environment. Sieciowa grupa zabezpieczeń zezwala na dostęp wymagany [kontrolować ruch przychodzący do środowiska App Service Environment][requiredports].
+Aby spełnić wymagania dotyczące dostępu do sieci dla ruchu przychodzącego, należy skonfigurować [sieciowej grupy zabezpieczeń (NSG)] [ NetworkSecurityGroups] w podsieci środowiska App Service Environment. Sieciowa grupa zabezpieczeń zezwala na dostęp wymagany [kontrolować ruch przychodzący do środowiska App Service Environment][requiredports].
 
 ## <a name="outbound-network-connectivity"></a>Połączenia sieciowego ruchu wychodzącego
 
@@ -87,7 +87,7 @@ Połączone ta konfiguracja powoduje, że trasa zdefiniowana przez użytkownika 
 
 Aby uzyskać ogólne informacje o trasach definiowanych przez użytkownika, zobacz [routing ruchu w sieci wirtualnej][UDROverview].  
 
-Aby dowiedzieć się, jak utworzyć i skonfigurować trasy zdefiniowane przez użytkownika, zobacz [kierowanie ruchem sieciowym za pomocą tabeli tras przy użyciu programu PowerShell] [UDRHowTo].
+Aby dowiedzieć się, jak utworzyć i skonfigurować trasy zdefiniowane przez użytkownika, zobacz [kierowanie ruchu sieciowego z tabelą tras przy użyciu programu PowerShell][UDRHowTo].
 
 ## <a name="udr-configuration"></a>Konfiguracja trasy zdefiniowanej przez użytkownika
 
@@ -95,7 +95,7 @@ W tej sekcji przedstawiono przykładową konfigurację trasy zdefiniowanej przez
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-* Zainstaluj program Azure PowerShell z [Strona plików do pobrania Azure] [AzureDownloads]. Wybierz dostępny do pobrania z datą, czerwiec 2015 lub nowszego. W obszarze **narzędzia wiersza polecenia** > **programu Windows PowerShell**, wybierz opcję **zainstalować** zainstalować najnowsze polecenia cmdlet programu PowerShell.
+* Instalowanie programu Azure PowerShell z [strony plików do pobrania Azure][AzureDownloads]. Wybierz dostępny do pobrania z datą, czerwiec 2015 lub nowszego. W obszarze **narzędzia wiersza polecenia** > **programu Windows PowerShell**, wybierz opcję **zainstalować** zainstalować najnowsze polecenia cmdlet programu PowerShell.
 
 * Tworzenie unikatowej podsieci do wyłącznego użytku przez usługę App Service Environment. Unikatowej podsieci zapewnia, że stosowane do podsieci Otwórz ruchu wychodzącego dla środowiska App Service Environment tylko tras zdefiniowanych przez użytkownika.
 
@@ -118,7 +118,7 @@ Konfigurowanie wychodzącego dostępu do Internetu. Należy zdefiniować trasę 
 
 0.0.0.0/0 jest zakresem adresów szerokiego. Zakres jest zastępowany przez anonsowane przez usługę ExpressRoute zakresów adresów, które są bardziej szczegółowe. Trasa zdefiniowana przez użytkownika trasa 0.0.0.0/0 należy używać w połączeniu z konfiguracją usługi ExpressRoute, który anonsuje tylko 0.0.0.0/0. 
 
-Jako alternatywę Pobierz bieżący, wszechstronnymi listę zakresy CIDR używane przez platformę Azure. Plik XML dla wszystkich zakresów adresów IP platformy Azure jest dostępna w [Microsoft Download Center] [DownloadCenterAddressRanges].  
+Jako alternatywę Pobierz bieżący, wszechstronnymi listę zakresy CIDR używane przez platformę Azure. Plik XML dla wszystkich zakresów adresów IP platformy Azure jest dostępna z [Microsoft Download Center][DownloadCenterAddressRanges].  
 
 > [!NOTE]
 >
@@ -148,16 +148,23 @@ Teraz można przystąpić do wdrażania środowiska App Service Environment!
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby rozpocząć pracę z środowisko usługi App Service w usłudze PowerApps, zobacz [wprowadzenie do środowiska usługi App Service] [IntroToAppServiceEnvironment].
+Aby rozpocząć pracę z środowisko usługi App Service w usłudze PowerApps, zobacz [wprowadzenie do środowiska App Service Environment][IntroToAppServiceEnvironment].
 
 <!-- LINKS -->
 [virtualnetwork]: https://azure.microsoft.com/services/virtual-network/
 [ExpressRoute]: https://azure.microsoft.com/services/expressroute/
 [requiredports]: app-service-app-service-environment-control-inbound-traffic.md
-[networkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [UDROverview]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-overview/
-<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ --> [UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell [HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md [AzureDownloads]: https://azure.microsoft.com/downloads/ [DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
-[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/ [IntroToAppServiceEnvironment]: app-service-app-service-environment-intro.md [NewPortal]:  https://portal.azure.com
+<!-- Old link -- [UDRHowTo]: https://azure.microsoft.com/documentation/articles/virtual-networks-udr-how-to/ -->
+
+[UDRHowTo]: https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-powershell
+[HowToCreateAnAppServiceEnvironment]: app-service-web-how-to-create-an-app-service-environment.md
+[AzureDownloads]: https://azure.microsoft.com/downloads/ 
+[DownloadCenterAddressRanges]: https://www.microsoft.com/download/details.aspx?id=41653  
+[NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
+[IntroToAppServiceEnvironment]:  app-service-app-service-environment-intro.md
+[NewPortal]:  https://portal.azure.com
 
 
 <!-- IMAGES -->

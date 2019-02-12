@@ -1,6 +1,6 @@
 ---
-title: Język zapytań usługi Azure Monitor Log Analytics | Dokumentacja firmy Microsoft
-description: Odwołania do zasobów do nauki, jak pisać zapytania w usłudze Log Analytics.
+title: Usługa Azure Monitor dziennika zapytań | Dokumentacja firmy Microsoft
+description: Odwołania do zasobów do nauki, jak pisać zapytania dzienników w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,55 +11,57 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/29/2018
+ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: 32e64ce7772d562ea34a0d74afbd737be27d247d
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f2c4939436db5ae4c862cb311cc66a162ac716e3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968872"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989257"
 ---
-# <a name="log-analytics-query-language"></a>Zaloguj się języka zapytań usługi Analytics
-Log Analytics udostępnia zbieranie dzienników i analizy dla usługi Azure Monitor. Ona bazuje na Eksploratora danych usługi Azure i korzysta z wersji tego samego języka zapytań. [Dokumentacja języka zapytań Eksploratora danych usługi Azure](/azure/kusto/query) zawiera wszystkie szczegółowe informacje dotyczące języka i powinien być podstawowy zasób do pisania zapytań usługi Log Analytics. Ta strona zawiera linki do innych zasobów do nauki, jak pisać zapytania, a także na różnice z implementacją usługi Log Analytics języka.
+# <a name="azure-monitor-log-queries"></a>Usługa Azure Monitor dziennika zapytań
+Dzienniki platformy Azure Monitor są oparte na Eksploratora danych usługi Azure, i zapytań dzienników usługi Azure Monitor korzysta z wersji tego samego języka zapytań. [Dokumentacja języka zapytań Eksploratora danych usługi Azure](/azure/kusto/query) zawiera wszystkie szczegółowe informacje dotyczące języka i powinien być podstawowy zasoby umożliwiające korzystanie z Pisanie zapytań dzienników w usłudze Azure Monitor. Ta strona zawiera linki do innych zasobów do nauki, jak pisać zapytania i niedostępne w przypadku wdrożenia usługi Azure Monitor języka.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-- [Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal](get-started-portal.md) jest lekcji Pisanie zapytań i pracy z wynikami w witrynie Azure portal.
--  [Wprowadzenie do zapytań w usłudze Log Analytics](get-started-queries.md) jest lekcji do pisania zapytań przy użyciu danych usługi Log Analytics.
+- [Wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) jest lekcji Pisanie zapytań i pracy z wynikami w witrynie Azure portal.
+- [Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań](get-started-queries.md) jest lekcji do pisania zapytań przy użyciu usługi Azure Monitor dane dziennika.
 
 ## <a name="concepts"></a>Pojęcia
-- [Analizowanie danych usługi Log Analytics w usłudze Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) zawiera krótkie omówienie dziennika zapytań i opisuje strukturę danych usługi Log Analytics.
-- [Wyświetlanie i analizowanie danych w usłudze Log Analytics](../../azure-monitor/log-query/portals.md) wyjaśnia portali, gdzie tworzenie i uruchamianie zapytań usługi Log Analytics.
+- [Analizuj dane dzienników w usłudze Azure Monitor](../../azure-monitor/log-query/log-query-overview.md) zawiera krótkie omówienie dziennika zapytania i opisuje strukturę danych dzienników usługi Azure Monitor.
+- [Wyświetlanie i analizowanie danych dzienników w usłudze Azure Monitor](../../azure-monitor/log-query/portals.md) wyjaśnia portali, gdzie tworzenie i uruchamianie zapytań log.
 
 ## <a name="reference"></a>Informacje ogólne
 
 - [Dokumentacja języka zapytań](/azure/kusto/query) jest odwołanie do języka pełny język zapytań Eksploratora danych.
-- [Zaloguj się różnic języka zapytań analizy](data-explorer-difference.md) w tym artykule opisano różnice między wersjami języka zapytań Eksploratora danych.
-- [Właściwości standardowe w rekordach usługi Log Analytics](../../azure-monitor/platform/log-standard-properties.md) opisuje właściwości, które są standardowe do wszystkich danych usługi Log Analytics.
-- [Wykonaj wyszukiwanie w dzienniku między zasobami w usłudze Log Analytics](../../azure-monitor/log-query/cross-workspace-query.md) w tym artykule opisano sposób pisania zapytań, które używają danych z wielu obszarów roboczych usługi Log Analytics i aplikacji usługi Application Insights.
+- [Różnice języka zapytań usługi Azure Monitor dziennika](data-explorer-difference.md) w tym artykule opisano różnice między wersjami języka zapytań Eksploratora danych.
+- [Standardowe właściwości w usłudze Azure Monitor rekordów dziennika](../../azure-monitor/platform/log-standard-properties.md) opisuje właściwości, które są standardowe do wszystkich danych dziennika usługi Azure Monitor.
+- [Wykonywać zapytania obejmujące wiele zasobów dzienników w usłudze Azure Monitor](../../azure-monitor/log-query/cross-workspace-query.md) opisano, jak pisać zapytania dziennika, zawierających dane z wielu obszarów roboczych usługi Log Analytics i aplikacje usługi Application Insights.
 
 
 ## <a name="examples"></a>Przykłady
 
-- [Przykłady zapytań analizy dziennika](examples.md) zawiera przykładowe zapytania przy użyciu danych usługi Log Analytics.
+- [Przykłady zapytań dzienników w usłudze Azure Monitor](examples.md) zawiera przykładowe zapytania przy użyciu usługi Azure Monitor dane dziennika.
 
 
 
 ## <a name="lessons"></a>Lekcje
 
-- [Praca z ciągami zapytań usługi Log Analytics](string-operations.md) w tym artykule opisano sposób pracy z danymi w ciągu.
-- [Praca z wartości daty / godziny w zapytań usługi Log Analytics](datetime-operations.md) w tym artykule opisano sposób pracy z danych daty i godziny. 
-- [Agregacje w zapytań usługi Log Analytics](aggregations.md) i [zaawansowane agregacji w zapytań usługi Log Analytics](advanced-aggregations.md) opisują sposób agregują i podsumowują dane.
-- [Sprzężenia w zapytań usługi Log Analytics](joins.md) w tym artykule opisano sposób łączenia danych z wielu tabel.
-- [Praca z formatami JSON i danych struktury zapytań usługi Log Analytics](json-data-structures.md) opisano, jak analizować dane json.
-- [Zapisywanie zaawansowanych zapytań w usłudze Log Analytics](advanced-query-writing.md) opisano strategie do tworzenia złożonych kwerend i ponowne użycie kodu.
-- [Tworzenie wykresów i diagramów z zapytań usługi Log Analytics](charts.md) opisano, jak wizualizować dane z zapytania.
+- [Praca z ciągami zapytań dzienników usługi Azure Monitor](string-operations.md) w tym artykule opisano sposób pracy z danymi w ciągu.
+- [Praca z wartości daty / godziny w zapytaniach dzienników usługi Azure Monitor](datetime-operations.md) w tym artykule opisano sposób pracy z danych daty i godziny. 
+- [Agregacje w usłudze Azure Monitor rejestrowania zapytań](aggregations.md) i [zaawansowane agregacji w zapytaniach dzienników usługi Azure Monitor](advanced-aggregations.md) opisują sposób agregują i podsumowują dane.
+- [Sprzężenia w usłudze Azure Monitor dziennika zapytań](joins.md) w tym artykule opisano sposób łączenia danych z wielu tabel.
+- [Praca z formatami JSON i danych struktury w zapytaniach dzienników usługi Azure Monitor](json-data-structures.md) opisano, jak analizować dane json.
+- [Zapisywanie zaawansowanej rejestrowania zapytań w usłudze Azure Monitor](advanced-query-writing.md) opisano strategie do tworzenia złożonych kwerend i ponowne użycie kodu.
+- [Tworzenie wykresów i diagramów z usługi Azure Monitor dziennika zapytań](charts.md) opisano, jak wizualizować dane z zapytania dziennika.
 
 ## <a name="cheatsheets"></a>Ściągawki
 
--  [SQL do ściągawka dotycząca języka zapytań usługi Log Analytics](sql-cheatsheet.md) pomaga użytkownikom, którzy są już zaznajomieni z programu SQL.
--  [Splunk do ściągawka dotycząca języka zapytań usługi Log Analytics](sql-cheatsheet.md) pomaga użytkownikom, którzy są już zaznajomieni z Splunk.
+-  [SQL do wykonywania zapytań w usłudze Azure Monitor dziennika](sql-cheatsheet.md) pomaga użytkownikom, którzy są już zaznajomieni z programu SQL.
+-  [Splunk do wykonywania zapytań w usłudze Azure Monitor dziennika](sql-cheatsheet.md) pomaga użytkownikom, którzy są już zaznajomieni z Splunk.
  
 ## <a name="next-steps"></a>Kolejne kroki
 

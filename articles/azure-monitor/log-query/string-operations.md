@@ -1,6 +1,6 @@
 ---
-title: Praca z ciągami zapytań usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek dotyczący korzystania z portalu usługi analiza pisać zapytania w usłudze Log Analytics.
+title: Praca z ciągami zapytań dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Opisuje sposób edytowania, porównaj, wyszukiwanie i wykonywanie wielu innych operacji na ciągi w zapytaniach dzienników usługi Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186246"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995411"
 ---
-# <a name="working-with-strings-in-log-analytics-queries"></a>Praca z ciągami zapytań usługi Log Analytics
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Praca z ciągami zapytań dzienników usługi Azure Monitor
 
 
 > [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed ukończenie tego samouczka.
+> Należy wykonać [wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) i [wprowadzenie do usługi Azure Monitor dziennika zapytań](get-started-queries.md) przed ukończenie tego samouczka.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym artykule opisano jak edytowanie, porównaj, wyszukiwanie i wykonywanie wielu innych operacji na ciągi. 
+W tym artykule opisano jak edytowanie, porównaj, wyszukiwanie i wykonywanie wielu innych operacji na ciągi.
 
 Każdy znak w ciągu ma numer indeksu, zgodnie z jego lokalizacją. Pierwszy znak ma pod indeksem 0, następny znak jest 1, a więc jedno. Funkcje ciągów różnych Użyj numery indeksu, jak pokazano w poniższych sekcjach. Wielu z poniższych przykładów **drukowanie** polecenia dla pokazują manipulowanie ciągami, bez korzystania z określonego źródła danych.
 
@@ -49,12 +49,12 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Porównywanie ciągów
 
-Operator       |Opis                         |Wielkość liter|Przykład (daje `true`)
+Operator       |Opis                         |Case-Sensitive|Przykład (daje `true`)
 ---------------|------------------------------------|--------------|-----------------------
 `==`           |Równa się                              |Yes           |`"aBc" == "aBc"`
-`!=`           |Nie równa się                          |Yes           |`"abc" != "ABC"`
+`!=`           |Nierówne                          |Yes           |`"abc" != "ABC"`
 `=~`           |Równa się                              |Nie            |`"abc" =~ "ABC"`
-`!~`           |Nie równa się                          |Nie            |`"aBc" !~ "xyz"`
+`!~`           |Nierówne                          |Nie            |`"aBc" !~ "xyz"`
 `has`          |Po prawej stronie jest cały termin w po lewej stronie |Nie|`"North America" has "america"`
 `!has`         |Po prawej stronie nie jest pełną termin w po lewej stronie       |Nie            |`"North America" !has "amer"` 
 `has_cs`       |Po prawej stronie jest cały termin w po lewej stronie |Yes|`"North America" has_cs "America"`
@@ -306,7 +306,7 @@ print strcat("hello", " ", "world") // result: "hello world"
 ```
 
 
-## <a name="strlen"></a>strlen —
+## <a name="strlen"></a>strlen
 
 Zwraca długość ciągu.
 
