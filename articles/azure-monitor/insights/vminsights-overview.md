@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 0733b4179793e88759ca1c3330880546650fbe09
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9a4c31df51f804d4738e3a2eb4ce904e793c3f1b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856387"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004999"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Co to jest usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza)?
 
@@ -41,7 +41,7 @@ Funkcje są podzielone na trzy perspektyw:
 >[!NOTE]
 >Obecnie funkcję kondycji jest oferowana tylko w przypadku maszyn wirtualnych platformy Azure i skalowania maszyn wirtualnych zestawów. Funkcje wydajności i mapy obsługuje zarówno w przypadku maszyn wirtualnych platformy Azure, jak i maszyny wirtualne, które są hostowane w środowisku lub innych dostawców chmury.
 
-Integracja z usługą Log Analytics oferuje zaawansowane agregacji i filtrowania, a jego analizowanie trendów danych wraz z upływem czasu. Takie obciążenia kompleksowe monitorowanie, nie można osiągnąć za pomocą usługi Azure Monitor, Usługa Service Map lub samej usługi Log Analytics.  
+Integracja przy użyciu dzienników usługi Azure Monitor zapewnia zaawansowane agregacji i filtrowania, a jego analizowanie trendów danych wraz z upływem czasu. Takie obciążenia kompleksowe monitorowanie nie można osiągnąć za pomocą usługi Azure Monitor lub mapy usługi autonomicznej.  
 
 Dane te można wyświetlić bezpośrednio w pojedynczej maszyny Wirtualnej z maszyny wirtualnej lub usługi Azure Monitor umożliwia dostarczanie zagregowany widok maszyn wirtualnych. Ten widok jest oparty na perspektywy każdą z tych funkcji:
 

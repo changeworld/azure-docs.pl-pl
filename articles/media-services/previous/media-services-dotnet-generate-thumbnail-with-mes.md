@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 9f717f0ae70c503d3527d5df2e6556c120146f3b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 430e3f0db2f053a2d5a6ea2a3e2a2d1c4418b501
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249346"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995139"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generowanie miniatur przy użyciu usługi Media Encoder Standard za pomocą platformy .NET
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generowanie miniatur przy użyciu usługi Media Encoder Standard za pomocą platformy .NET 
 
 Umożliwia Media Encoder Standard generowanie miniatur co najmniej jeden z wejściowego pliku wideo w [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics), lub [BMP](https://en.wikipedia.org/wiki/BMP_file_format) formatów plików obrazów. Możesz przesłać zadania, które tworzą tylko obrazy lub można połączyć generowanie miniatur przy użyciu kodowania. Ten artykuł zawiera kilka przykładowych XML i JSON miniatury wstępne w przypadku takich scenariuszy. Na końcu tego artykułu jest [przykładowego kodu](#code_sample) pokazujący, jak używać zestawu SDK .NET usługi Media Services do wykonywania tego zadania kodowania.
 
@@ -415,7 +415,7 @@ Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następuj
 * Określ wejściowego elementu do zakodowania.
 * Tworzenie zasobu danych wyjściowych, który zawiera zakodowanym elementem zawartości.
 * Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
-* Prześlij zadanie.
+* Przesyłanie zadania.
 
 Zobacz [projektowanie usługi Media Services przy użyciu platformy .NET](media-services-dotnet-how-to-use.md) artykuł, aby uzyskać wskazówki dotyczące sposobu konfigurowania środowiska deweloperskiego.
 
@@ -551,14 +551,14 @@ Mają zastosowanie następujące kwestie:
 * Użycie jawnego sygnatury czasowe początku/krok/zakresu przyjęto założenie, że źródło danych wejściowych jest co najmniej 1 minutę.
 * Jpg/Png/BmpImage elementy mają Start kroku i zakresu z atrybutami ciągu — mogą być interpretowane jako:
   
-  * Numer klatki, jeśli są one nieujemnymi liczbami całkowitymi, na przykład "Start": "120"
-  * Względna czasu trwania źródła, jeśli nieujemnej, na przykład "Start": "15%", lub
-  * Sygnatura czasowa, jeśli wyrażonej w postaci: mm: ss... Format. Na przykład "Start": "00: 01:00"
+  * Numer klatki, jeśli są one nieujemnymi liczbami całkowitymi, na przykład "Start": "120",
+  * Względem czasu trwania źródła, jeśli wyrażonej w postaci nieujemnej, na przykład "Start": "15%", OR
+  * Sygnatura czasowa, jeśli wyrażonej w postaci: mm: ss... Format. Na przykład "Start": "00:01:00"
     
     Możesz mieszać i dopasowywać notacji, jak należy.
     
-    Ponadto Start obsługuje makro specjalne: {najlepsze}, który próbuje określić pierwszej ramki "interesujący" uwagi zawartości: (krok i zakres są ignorowane, gdy rozpoczęcia jest ustawiona na {najlepiej})
-  * Wartości domyślne: Start: {najlepsze}
+    Ponadto Start obsługuje makro specjalne: {najlepsze}, który próbuje określić pierwszej ramki "interesujący" uwagi zawartości: (Krok i zakres są ignorowane, gdy rozpoczęcia jest ustawiona na {najlepiej})
+  * Domyślne: Start: {najlepsze}
 * Format danych wyjściowych musi zostać podane jawnie dla każdego format obrazu: Jpg/Png/BmpFormat. Jeśli jest obecny, MES dopasowuje JpgVideo do JpgFormat i tak dalej. OutputFormat wprowadza nowe makro określonych koder-dekoder obrazu: {Index}, który musi być obecne (jeden raz i tylko jeden raz) dla formatów danych wyjściowych obrazu.
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 23650a3ad4bb9e1e00c07ec0312b02952a9a12ac
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8e527d4f580acbff55c07d90c564d443780fce2b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981234"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005033"
 ---
-# <a name="upload-files-into-a-media-services-account-using-rest-legacy"></a>Przekazywanie plików na konto usługi Media Services przy użyciu interfejsu REST (starsza wersja)
+# <a name="upload-files-into-a-media-services-account-using-rest"></a>Przekazywanie plików na konto usługi Media Services przy użyciu usługi REST  
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-upload-files.md)
 > * [REST](media-services-rest-upload-files.md)

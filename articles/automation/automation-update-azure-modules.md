@@ -6,24 +6,21 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/06/2019
+ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 637cf4b0e53055e114536e591b334d51d5ddcc92
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d8f57310cf4dbc2a27761fc44cfde6c8fd2791a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883903"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005543"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation
 
-Aby zaktualizować moduły platformy Azure na koncie usługi Automation zaleca możesz teraz użyj [elementu runbook usługi Azure aktualizowanie modułów](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), czyli "open source" teraz. Ponadto, możesz nadal używać elementu runbook Pomocnika [AzureModule.ps1 aktualizacji](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) lub użyj **Aktualizuj moduły platformy Azure** przycisk w portalu, aby zaktualizować moduły platformy Azure. Aby dowiedzieć się więcej o korzystaniu z elementów runbook typu open source, zobacz [aktualizowania modułów platformy Azure przy użyciu elementów runbook typu open source](#open-source).
+Aby zaktualizować moduły platformy Azure na koncie usługi Automation zaleca możesz teraz użyj [elementu runbook usługi Azure aktualizowanie modułów](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update), czyli "open source" teraz. Ponadto, możesz nadal używać **Aktualizuj moduły platformy Azure** przycisk w portalu, aby zaktualizować moduły platformy Azure. Aby dowiedzieć się więcej o korzystaniu z elementów runbook typu open source, zobacz [aktualizowania modułów platformy Azure przy użyciu elementów runbook typu open source](#open-source).
 
 Najbardziej typowe moduły programu Azure PowerShell znajdują się domyślnie w ramach każdego konta usługi Automation. Zespół platformy Azure, które regularnie aktualizuje moduły platformy Azure. Na koncie usługi Automation otrzymasz sposób aktualizowania modułów w ramach konta, gdy nowe wersje są dostępne z poziomu portalu.
-
-> [!NOTE]
-> Nowy [modułu Azure PowerShell Az](/powershell/azure/new-azureps-module-az?view=azurermps-6.13.0) nie są obsługiwane w usłudze Azure Automation.
 
 Ponieważ moduły są regularnie aktualizowane przez grupę produktu, zmiany mogą być uwzględniane polecenia cmdlet. Ta akcja może niekorzystnie wpłynąć na Twoje elementy runbook w zależności od typu zmiany, takiej jak zmiana nazwy parametru lub całkowicie wycofano polecenie cmdlet.
 
@@ -88,18 +85,6 @@ Poniżej przedstawiono niektóre zagadnienia, weź pod uwagę podczas korzystani
 
 Jeśli używasz polecenia cmdlet z tych modułów programu Azure PowerShell w elementach runbook, chcesz, aby do uruchamiania tego procesu aktualizacji co miesiąc lub więc upewnij się, że najnowsze moduły. Usługa Azure Automation używa `AzureRunAsConnection` połączenia do uwierzytelniania podczas aktualizowania modułów. Nazwa główna usługi wygasł lub nie istnieje już na poziomie subskrypcji, aktualizacja modułu zakończy się niepowodzeniem.
 
-## <a name="alternative-ways-to-update-your-modules"></a>Alternatywne sposoby, aby zaktualizować moduły
-
-Jak wspomniano wcześniej, **aktualizowania modułów platformy Azure** przycisk nie jest dostępna w chmurach suwerennych, jest on dostępny tylko w chmurze globalnej platformy Azure. Jest to z faktu, że najnowsza wersja modułów programu Azure PowerShell z galerii programu PowerShell może nie działać z zasobami usługi Resource Manager aktualnie zaimplementowane w tych chmurach.
-
-Nadal można zaimportować i uruchomić [AzureModule.ps1 aktualizacji](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) element runbook, aby podejmował próbę zaktualizowania moduły platformy Azure na koncie usługi Automation. Jednak zaleca się, że używasz **AutomationAzureModulesForAccount aktualizacji** elementu runbook, aby zaktualizować moduły platformy Azure. Możesz ją pobrać z [repozytorium runbook modułów Azure aktualizacji](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update). Aby dowiedzieć się więcej o korzystaniu z elementów runbook typu open source, zobacz [aktualizowania modułów platformy Azure przy użyciu elementów runbook typu open source](#open-source).
-
-Ogólnie jest dobry pomysł, aby zaktualizować wszystkie moduły platformy Azure, w tym samym czasie. Jednak ten proces może zakończyć się niepowodzeniem, jeśli wersje, które próbujesz zaimportować z galerii nie są zgodne z usługami platformy Azure Trwa wdrażanie w docelowym środowisku platformy Azure. Może to wymagać można zweryfikować, że zgodne wersje moduły są określone w parametry elementu runbook.
-
-Użyj `AzureRmEnvironment` parametr do przekazania odpowiednie środowisko do elementu runbook.  Dopuszczalne wartości to **AzureCloud**, **AzureChinaCloud**, **AzureGermanCloud**, i **AzureUSGovernment**. Te wartości mogą być pobierane z przy użyciu `Get-AzureRmEnvironment | select Name`. Jeśli nie możesz przekazać wartość tego parametru, elementu runbook będą domyślnie chmury publicznej platformy Azure **AzureCloud**
-
-Jeśli chcesz użyć określonej wersji modułu Azure PowerShell zamiast najnowszy dostępny w galerii programu PowerShell, należy przekazać te wersje, opcjonalny `ModuleVersionOverrides` parametru **AzureModule aktualizacji** elementu runbook. Aby uzyskać przykłady, zobacz [AzureModule.ps1 aktualizacji](https://github.com/azureautomation/runbooks/blob/master/Utility/ARM/Update-AzureModule.ps1) elementu runbook. Moduły programu Azure PowerShell, które nie są wymienione w `ModuleVersionOverrides` parametru są aktualizowane przy użyciu najnowszej wersji modułu w galerii programu PowerShell. Jeśli nie ma niczego do przekazania `ModuleVersionOverrides` parametru, wszystkie moduły są aktualizowane przy użyciu najnowszej wersji modułu w galerii programu PowerShell. To zachowanie jest taka sama jak **aktualizowania modułów platformy Azure** przycisku.
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Odwiedź stronę [elementu runbook usługi Azure aktualizacji modułów](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) Aby dowiedzieć się więcej na ten temat.
+Odwiedź stronę "open source" [elementu runbook usługi Azure aktualizacji modułów](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update) Aby dowiedzieć się więcej na ten temat.

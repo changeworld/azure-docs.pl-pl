@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec4b03629b56c09973c1ecc5c55930c33c24990b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994674"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997579"
 ---
 # <a name="output-metadata"></a>Metadane wyjściowe
 ## <a name="overview"></a>Przegląd
@@ -39,7 +39,7 @@ Kolekcja wpisów AssetFile dla zadania kodowania.
 ### <a name="child-elements"></a>Elementy podrzędne
 | Name (Nazwa) | Opis |
 | --- | --- |
-| **AssetFile**<br/><br/> minOccurs = maxOccurs "0" = "1" |[Elementu AssetFile](media-services-output-metadata-schema.md) będącego częścią kolekcji AssetFiles. |
+| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |[Elementu AssetFile](media-services-output-metadata-schema.md) będącego częścią kolekcji AssetFiles. |
 
 ## <a name="AssetFile "></a> AssetFile element
 Przykład XML można znaleźć [XML — przykład](media-services-output-metadata-schema.md#xml).  
@@ -48,15 +48,15 @@ Przykład XML można znaleźć [XML — przykład](media-services-output-metadat
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
 | **Nazwa**<br/><br/> Wymagane |**xs:String** |Nazwa pliku zasobu multimediów. |
-| **Rozmiar**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:Long** |Rozmiar pliku elementu zawartości, w bajtach. |
+| **Rozmiar**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:Long** |Rozmiar pliku elementu zawartości, w bajtach. |
 | **Czas trwania**<br/><br/> Wymagane |**DURATION** |Czas trwania wstecz odtwarzania zawartości. |
 
 ### <a name="child-elements"></a>Elementy podrzędne
 | Name (Nazwa) | Opis |
 | --- | --- |
 | **Źródła** |Kolekcja danych wejściowych/źródłowych plików multimedialnych, która została przetworzona w celu utworzenia tego AssetFile. Aby uzyskać więcej informacji, zobacz [elementu źródłowego](media-services-output-metadata-schema.md). |
-| **VideoTracks**<br/><br/> minOccurs = maxOccurs "0" = "1" |Każdy fizyczny AssetFile może zawierać w nim wideo zero lub więcej ścieżek do formatu odpowiedniego kontenera z przeplotem. Aby uzyskać więcej informacji, zobacz [elementu VideoTracks](media-services-output-metadata-schema.md). |
-| **AudioTracks**<br/><br/> minOccurs = maxOccurs "0" = "1" |Każdy fizyczny AssetFile może zawierać w nim zero lub więcej ścieżki audio z przeplotem do formatu odpowiedniego kontenera. To jest kolekcja wszystkie te ścieżki audio. Aby uzyskać więcej informacji, zobacz [elementu AudioTracks](media-services-output-metadata-schema.md). |
+| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Każdy fizyczny AssetFile może zawierać w nim wideo zero lub więcej ścieżek do formatu odpowiedniego kontenera z przeplotem. Aby uzyskać więcej informacji, zobacz [elementu VideoTracks](media-services-output-metadata-schema.md). |
+| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Każdy fizyczny AssetFile może zawierać w nim zero lub więcej ścieżki audio z przeplotem do formatu odpowiedniego kontenera. To jest kolekcja wszystkie te ścieżki audio. Aby uzyskać więcej informacji, zobacz [elementu AudioTracks](media-services-output-metadata-schema.md). |
 
 ## <a name="Sources "></a> Element źródeł
 Kolekcja danych wejściowych/źródłowych plików multimedialnych, która została przetworzona w celu utworzenia tego AssetFile.  
@@ -66,7 +66,7 @@ Przykład XML można znaleźć [XML — przykład](media-services-output-metadat
 ### <a name="child-elements"></a>Elementy podrzędne
 | Name (Nazwa) | Opis |
 | --- | --- |
-| **Element źródłowy**<br/><br/> minOccurs = maxOccurs "1" = "niepowiązanego" |Plik źródła danych wejściowych/używana podczas generowania tego zasobu. Aby uzyskać więcej informacji, zobacz [elementu źródłowego](media-services-output-metadata-schema.md). |
+| **Element źródłowy**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Plik źródła danych wejściowych/używana podczas generowania tego zasobu. Aby uzyskać więcej informacji, zobacz [elementu źródłowego](media-services-output-metadata-schema.md). |
 
 ## <a name="Source "></a> element źródłowy
 Plik źródła danych wejściowych/używana podczas generowania tego zasobu.  
@@ -86,7 +86,7 @@ Przykład XML można znaleźć [XML — przykład](media-services-output-metadat
 ### <a name="child-elements"></a>Elementy podrzędne
 | Name (Nazwa) | Opis |
 | --- | --- |
-| **VideoTrack**<br/><br/> minOccurs = maxOccurs "1" = "niepowiązanego" |Określonej ścieżki wideo w elemencie nadrzędnym AssetFile. Aby uzyskać więcej informacji, zobacz [elementu VideoTrack](media-services-output-metadata-schema.md#VideoTrack). |
+| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Określonej ścieżki wideo w elemencie nadrzędnym AssetFile. Aby uzyskać więcej informacji, zobacz [elementu VideoTrack](media-services-output-metadata-schema.md#VideoTrack). |
 
 ## <a name="VideoTrack"></a> VideoTrack element
 Określonej ścieżki wideo w elemencie nadrzędnym AssetFile.  
@@ -96,19 +96,19 @@ Przykład XML można znaleźć [XML — przykład](media-services-output-metadat
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Identyfikator**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Liczony od zera indeks to ścieżka wideo. **Uwaga:** to **identyfikator** niekoniecznie jest TrackID w przypadku użycia w pliku MP4. |
+| **Identyfikator**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Liczony od zera indeks to ścieżka wideo. **Uwaga:**  To **identyfikator** niekoniecznie jest TrackID w przypadku użycia w pliku MP4. |
 | **FourCC**<br/><br/> Wymagane |**xs:String** |Kodera-dekodera wideo FourCC kodu. |
 | **Profil** |**xs:String** |Profil H264 (dotyczy to tylko H264 koder-dekoder). |
 | **Poziom** |**xs:String** |Poziom H264 (dotyczy to tylko H264 koder-dekoder). |
-| **Szerokość**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Kodowany w formacie wideo szerokość w pikselach. |
-| **Wysokość**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Kodowany w formacie wideo wysokość w pikselach. |
-| **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:Double** |Licznik współczynnik proporcji ekranu wideo. |
-| **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:Double** |Denominator współczynnik proporcji ekranu wideo. |
-| **szybkość klatek**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:decimal** |Mierzone szybkość odtwarzania wideo w formacie .3f. |
-| **TargetFramerate**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:decimal** |Wstępnie docelowej szybkość odtwarzania wideo, w formacie .3f. |
-| **Szybkość transmisji bitów**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Średnia wideo szybkość transmisji bitów w kilobitów na sekundę obliczoną z AssetFile. Zlicza tylko ładunek podstawowe strumienia, a nie ma konieczności tworzenia pakietów. |
-| **TargetBitrate**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Celem średnia szybkość transmisji bitów dla tej ścieżki wideo, zgodnie z żądaniem przy użyciu kodowania ustawiony w kilobitów na sekundę. |
-| **MaxGOPBitrate**<br/><br/> minInclusive = "0" |**xs:int** |Maksymalna liczba GOP średnia szybkość transmisji bitów dla tej ścieżki wideo w kilobitów na sekundę. |
+| **Szerokość**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Kodowany w formacie wideo szerokość w pikselach. |
+| **Wysokość**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Kodowany w formacie wideo wysokość w pikselach. |
+| **DisplayAspectRatioNumerator**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:double** |Licznik współczynnik proporcji ekranu wideo. |
+| **DisplayAspectRatioDenominator**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:double** |Denominator współczynnik proporcji ekranu wideo. |
+| **szybkość klatek**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:decimal** |Mierzone szybkość odtwarzania wideo w formacie .3f. |
+| **TargetFramerate**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:decimal** |Wstępnie docelowej szybkość odtwarzania wideo, w formacie .3f. |
+| **Szybkość transmisji bitów**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Średnia wideo szybkość transmisji bitów w kilobitów na sekundę obliczoną z AssetFile. Zlicza tylko ładunek podstawowe strumienia, a nie ma konieczności tworzenia pakietów. |
+| **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Celem średnia szybkość transmisji bitów dla tej ścieżki wideo, zgodnie z żądaniem przy użyciu kodowania ustawiony w kilobitów na sekundę. |
+| **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maksymalna liczba GOP średnia szybkość transmisji bitów dla tej ścieżki wideo w kilobitów na sekundę. |
 
 ## <a name="AudioTracks "></a> AudioTracks element
 Każdy fizyczny AssetFile może zawierać w nim zero lub więcej ścieżki audio z przeplotem do formatu odpowiedniego kontenera. **AudioTracks** element reprezentuje kolekcję te ścieżki audio.  
@@ -118,7 +118,7 @@ Przykład XML można znaleźć [XML — przykład](media-services-output-metadat
 ### <a name="child-elements"></a>Elementy podrzędne
 | Name (Nazwa) | Opis |
 | --- | --- |
-| **AudioTrack**<br/><br/> minOccurs = maxOccurs "1" = "niepowiązanego" |Określone ścieżki audio w obiekcie nadrzędnym AssetFile. Aby uzyskać więcej informacji, zobacz [elementu AudioTrack](media-services-output-metadata-schema.md). |
+| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Określone ścieżki audio w obiekcie nadrzędnym AssetFile. Aby uzyskać więcej informacji, zobacz [elementu AudioTrack](media-services-output-metadata-schema.md). |
 
 ## <a name="AudioTrack "></a> AudioTrack element
 Określone ścieżki audio w obiekcie nadrzędnym AssetFile.  
@@ -128,18 +128,18 @@ Przykład XML można znaleźć [XML — przykład](media-services-output-metadat
 ### <a name="attributes"></a>Atrybuty
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Identyfikator**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Liczony od zera indeks tej ścieżki audio. **Uwaga:** nie jest TrackID w przypadku użycia w pliku MP4. |
+| **Identyfikator**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Liczony od zera indeks tej ścieżki audio. **Uwaga:**  To nie jest koniecznie TrackID w przypadku użycia w pliku MP4. |
 | **Koder-dekoder** |**xs:String** |Parametry kodera-dekodera ścieżkę audio. |
 | **EncoderVersion** |**xs:String** |Ciąg wersji kodera opcjonalne, wymagane do EAC3. |
-| **kanały**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Liczba kanałów audio. |
-| **SamplingRate**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Częstotliwość próbkowania audio w prób. / s lub Hz. |
-| **Szybkość transmisji bitów**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Średnia audio szybkość transmisji bitów w bitach na sekundę obliczoną z AssetFile. Zlicza tylko ładunek podstawowe strumienia, a nie ma konieczności tworzenia pakietów. |
-| **Bitspersample obsahuje neplatnou Hodnotu**<br/><br/> minInclusive = "0"<br/><br/> Wymagane |**xs:int** |Bity na przykład wFormatTag format typu. |
+| **Channels**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Liczba kanałów audio. |
+| **SamplingRate**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Częstotliwość próbkowania audio w prób. / s lub Hz. |
+| **Szybkość transmisji bitów**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Średnia audio szybkość transmisji bitów w bitach na sekundę obliczoną z AssetFile. Zlicza tylko ładunek podstawowe strumienia, a nie ma konieczności tworzenia pakietów. |
+| **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Wymagane |**xs:int** |Bity na przykład wFormatTag format typu. |
 
 ### <a name="child-elements"></a>Elementy podrzędne
 | Name (Nazwa) | Opis |
 | --- | --- |
-| **LoudnessMeteringResultParameters**<br/><br/> minOccurs = maxOccurs "0" = "1" |Parametry wynik pomiaru głośności. Aby uzyskać więcej informacji, zobacz [elementu LoudnessMeteringResultParameters](media-services-output-metadata-schema.md). |
+| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parametry wynik pomiaru głośności. Aby uzyskać więcej informacji, zobacz [elementu LoudnessMeteringResultParameters](media-services-output-metadata-schema.md). |
 
 ## <a name="LoudnessMeteringResultParameters "></a> LoudnessMeteringResultParameters element
 Parametry wynik pomiaru głośności.  
@@ -150,15 +150,15 @@ Przykład XML można znaleźć [XML — przykład](media-services-output-metadat
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:String** |**Dolby** profesjonalnych parametrów akustycznych pomiaru development kit w wersji. |
-| **DialogNormalization**<br/><br/> minInclusive = maxInclusive "-31" = "-1"<br/><br/> Wymagane |**xs:int** |DialogNormalization wygenerowanych za pośrednictwem DPLM, LoudnessMetering jest ustawiona. |
-| **IntegratedLoudness**<br/><br/> minInclusive = maxInclusive "-70" = "10"<br/><br/> Wymagane |**xs:float** |Zintegrowane głośności |
+| **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Wymagane |**xs:int** |DialogNormalization wygenerowanych za pośrednictwem DPLM, LoudnessMetering jest ustawiona. |
+| **IntegratedLoudness**<br/><br/> minInclusive="-70" maxInclusive="10"<br/><br/> Wymagane |**xs:float** |Zintegrowane głośności |
 | **IntegratedLoudnessUnit**<br/><br/> Wymagane |**xs:String** |Jednostka zintegrowane głośności. |
 | **IntegratedLoudnessGatingMethod**<br/><br/> Wymagane |**xs:String** |Uzyskania bramowego identyfikator |
-| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive = "0" maxInclusive = "100" |**xs:float** |Mowy zawartości przez program, jako wartość procentowa. |
+| **IntegratedLoudnessSpeechPercentage**<br/><br/> minInclusive ="0" maxInclusive="100" |**xs:float** |Mowy zawartości przez program, jako wartość procentowa. |
 | **SamplePeak**<br/><br/> Wymagane |**xs:float** |Wartość bezwzględna przykładowa szczytu, od resetowania lub od momentu jego ostatniego wyczyszczone, na kanał.  Jednostki są dBFS. |
-| **SamplePeakUnit**<br/><br/> Naprawiono = "dBFS"<br/><br/> Wymagane |**xs:anySimpleType** |Przykładowe piku jednostki. |
+| **SamplePeakUnit**<br/><br/> fixed="dBFS"<br/><br/> Wymagane |**xs:anySimpleType** |Przykładowe piku jednostki. |
 | **TruePeak**<br/><br/> Wymagane |**xs:float** |Wartość true, maksymalne wartości, zgodnie z BS.1770 ITU-R-2, od resetowania lub od momentu jego ostatniego wyczyszczone na kanał. Jednostki są dBTP. |
-| **TruePeakUnit**<br/><br/> Naprawiono = "dBTP"<br/><br/> Wymagane |**xs:anySimpleType** |Jednostka szczytowa wartość true. |
+| **TruePeakUnit**<br/><br/> fixed="dBTP"<br/><br/> Wymagane |**xs:anySimpleType** |Jednostka szczytowa wartość true. |
 
 ## <a name="schema-code"></a>Kod schematu
     <?xml version="1.0" encoding="utf-8"?>  

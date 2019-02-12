@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 08/16/2018
-ms.openlocfilehash: 10d7303c4323305e177cf006b9a259a817dc695e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: 280a811e943c2e81a96875e3c8ba8efdb86fbf2a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247480"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004829"
 ---
 # <a name="enable-backup-for-azure-stack-with-powershell"></a>Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell
 
@@ -29,8 +29,10 @@ ms.locfileid: "55247480"
 Włącz usługę Backup infrastruktury za pomocą programu Windows PowerShell więc warto poświęcić okresowe kopie zapasowe:
  - Wewnętrzny tożsamości usługi i certyfikatu głównego
  - Plany, oferty i subskrypcje
- - Wpisów tajnych usługi Keyvault
+ - Wystąpienia obliczeniowe, Magazyn i limitów przydziałów sieci użytkownika
+ - Wpisy tajne z magazynu klucz użytkownika
  - Role RBAC użytkownika i zasady
+ - Konta magazynu użytkownika
 
 Można uzyskać dostęp do poleceń cmdlet programu PowerShell do włączenia kopii zapasowej, rozpocząć tworzenie kopii zapasowej i pobieranie informacji o kopii zapasowej za pośrednictwem punktu końcowego zarządzania operatora.
 
@@ -49,30 +51,42 @@ W tej samej sesji programu PowerShell należy edytować poniższy skrypt program
 | $sharepath      | Wpisz ścieżkę do **lokalizacja magazynu kopii zapasowej**. Należy użyć ciągu Universal Naming Convention (UNC) dla ścieżki do udziału plików hostowane na oddzielnym urządzeniu. Ciąg UNC Określa lokalizację zasobów, takich jak udostępnione pliki lub urządzeń. Aby zapewnić dostępność danych kopii zapasowej, urządzenie powinno być w innej lokalizacji. |
 | $frequencyInHours | Określa częstotliwość w godzinach, jak często kopie zapasowe są tworzone. Wartością domyślną jest 12. Usługa Scheduler obsługuje maksymalnie 12 i co najmniej 4.|
 | $retentionPeriodInDays | Czas przechowywania w dniach Określa, ile dni kopii zapasowych zostaną zachowane w lokalizacji zewnętrznej. Wartość domyślna to 7. Usługa Scheduler obsługuje maksymalnie 14 i co najmniej 2. Starszy niż okres przechowywania kopii zapasowych Pobierz automatycznie usuwane z lokalizacji zewnętrznej.|
+| $encryptioncertpath | Ścieżka certyfikatu szyfrowania określa ścieżkę pliku. Plik CER przy użyciu klucza publicznego używany do szyfrowania danych. |
 |     |     |
 
-   ```powershell
+```powershell
     # Example username:
     $username = "domain\backupadmin"
+ 
     # Example share path:
     $sharepath = "\\serverIP\AzSBackupStore\contoso.com\seattle"
-   
-    $password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
-    
-    # The encryption key is generated using the New-AzsEncryptionKeyBase64 cmdlet provided in Azure Stack PowerShell.
-    # Make sure to store your encryption key in a secure location after it is generated.
-    $Encryptionkey = New-AzsEncryptionKeyBase64
-    $key = ConvertTo-SecureString -String ($Encryptionkey) -AsPlainText -Force
 
-    Set-AzsBackupShare -BackupShare $sharepath -Username $username -Password $password -EncryptionKey $key
-   ```
+    $password = Read-Host -Prompt ("Password for: " + $username) -AsSecureString
+
+    # Create a self-signed certificate using New-SelfSignedCertificate, export the public key portion and save it locally.
+
+    $cert = New-SelfSignedCertificate `
+        -DnsName "www.contoso.com" `
+        -CertStoreLocation "cert:\LocalMachine\My" 
+
+    New-Item -Path "C:\" -Name "Certs" -ItemType "Directory" 
+
+    #make sure to export the PFX format of the certificate with the public and private keys and then delete the certifcate from the local certificate store of the machine where you created the certificate
+    
+    Export-Certificate `
+        -Cert $cert `
+        -FilePath c:\certs\AzSIBCCert.cer 
+
+    # Set the backup settings with the name, password, share, and CER certificate file.
+    Set-AzsBackupConfiguration -BackupShare $sharepath -Username $username -Password $password -EncryptionCertPath "c:\temp\cert.cer"
+```
    
 ##  <a name="confirm-backup-settings"></a>Potwierdź ustawienia kopii zapasowej
 
 W tej samej sesji programu PowerShell uruchom następujące polecenia:
 
    ```powershell
-    Get-AzsBackupLocation | Select-Object -Property Path, UserName
+    Get-AzsBackupConfiguration | Select-Object -Property Path, UserName
    ```
 
 Wynik powinien wyglądać następujące przykładowe dane wyjściowe:
@@ -90,8 +104,9 @@ W tej samej sesji programu PowerShell można zaktualizować wartości domyślne 
     $frequencyInHours = 10
     $retentionPeriodInDays = 5
 
-    Set-AzsBackupShare -BackupFrequencyInHours $frequencyInHours -BackupRetentionPeriodInDays $retentionPeriodInDays
-    Get-AzsBackupLocation | Select-Object -Property Path, UserName, AvailableCapacity, BackupFrequencyInHours, BackupRetentionPeriodInDays
+    Set-AzsBackupConfiguration -BackupFrequencyInHours $frequencyInHours -BackupRetentionPeriodInDays $retentionPeriodInDays
+
+    Get-AzsBackupConfiguration | Select-Object -Property Path, UserName, AvailableCapacity, BackupFrequencyInHours, BackupRetentionPeriodInDays
    ```
 
 Wynik powinien wyglądać następujące przykładowe dane wyjściowe:
@@ -104,7 +119,15 @@ Wynik powinien wyglądać następujące przykładowe dane wyjściowe:
     BackupRetentionPeriodInDays : 5
    ```
 
+###<a name="azure-stack-powershell"></a>Azure Stack PowerShell 
+Polecenia cmdlet programu PowerShell w celu skonfigurowania kopii zapasowej infrastruktury jest AzsBackupConfiguration zestawu. W poprzednich wersjach polecenia cmdlet została AzsBackupShare zestawu. To polecenie cmdlet wymaga zapewnienia certyfikatu. Jeśli tworzenie kopii zapasowych jest skonfigurowany przy użyciu klucza szyfrowania, nie można zaktualizować klucza szyfrowania lub wyświetlić właściwości. Należy użyć programu PowerShell w wersji 1.6. 
+
+Jeśli tworzenie kopii zapasowych została skonfigurowana przed zaktualizowaniem do 1901, można użyć programu PowerShell w wersji 1.6, i wyświetlić klucz szyfrowania. W wersji 1.6 uniemożliwi Aktualizuj na podstawie klucza szyfrowania do pliku certyfikatu.
+Zapoznaj się [Instalowanie programu Azure Stack PowerShell](azure-stack-powershell-install.md) Aby uzyskać więcej informacji na temat instalowania odpowiedniej wersji modułu. 
+
+
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Dowiedz się, jak uruchomić tworzenia kopii zapasowych, zobacz [wykonywanie kopii zapasowych usługi Azure Stack](azure-stack-backup-back-up-azure-stack.md ).  
- - Dowiedz się zweryfikować kopii zapasowej, zobacz [Potwierdź kopia zapasowa została wykonana w portalu administracyjnym](azure-stack-backup-back-up-azure-stack.md ).
+Dowiedz się, jak uruchomić tworzenia kopii zapasowych, zobacz [wykonywanie kopii zapasowych usługi Azure Stack](azure-stack-backup-back-up-azure-stack.md)
+
+Dowiedz się zweryfikować kopii zapasowej, zobacz [Potwierdź kopia zapasowa została wykonana w portalu administracyjnym](azure-stack-backup-back-up-azure-stack.md)

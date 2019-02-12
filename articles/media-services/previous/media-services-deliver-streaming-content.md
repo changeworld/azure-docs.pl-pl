@@ -1,8 +1,8 @@
 ---
 title: Publikowanie zawartości usługi Azure Media Services przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć Lokalizator, który jest używany do tworzenia adresu URL przesyłania strumieniowego. Przykłady kodu są napisane w języku C# i używają SDK usługi Media Services dla platformy .NET.
+description: Dowiedz się, jak utworzyć Lokalizator, który jest używany do tworzenia adresu URL przesyłania strumieniowego. Przykłady kodu są napisane C# i użyj Media Services SDK dla platformy .NET.
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 224c9cf5ef9925645de1d94dc5bc03c15ba91432
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 8e34d8cfbcd655dbb49279a0cefd63818963652a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788515"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999185"
 ---
-# <a name="publish-azure-media-services-content-using-net"></a>Publikowanie zawartości usługi Azure Media Services przy użyciu platformy .NET
+# <a name="publish-media-services-content-using-net"></a>Publikowanie zawartości Media Services przy użyciu platformy .NET  
 > [!div class="op_single_selector"]
 > * [REST](media-services-rest-deliver-streaming-content.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -30,33 +30,33 @@ ms.locfileid: "33788515"
 > 
 
 ## <a name="overview"></a>Przegląd
-Można strumienia o adaptacyjnej szybkości bitowej MP4 ustawione przez utworzenie lokalizatora OnDemand przesyłania strumieniowego i tworzenia adresu URL przesyłania strumieniowego. [Kodowanie zasób](media-services-encode-asset.md) temacie przedstawiono sposób kodowania w adaptacyjnej szybkości bitowej MP4 zestawu. 
+Można przesyłanie strumieniowe z adaptacyjną szybkością transmisji bitów w formacie MP4 ustawione przez utworzenie lokalizatora OnDemand przesyłania strumieniowego i tworzenia adresu URL przesyłania strumieniowego. [Kodowanie elementu zawartości](media-services-encode-asset.md) temacie pokazano, jak do zakodowania w adaptacyjną szybkością transmisji bitów zestawu plików MP4. 
 
 > [!NOTE]
-> Jeśli zawartość jest zaszyfrowany, należy skonfigurować zasady dostarczania elementu zawartości (zgodnie z opisem w [to](media-services-dotnet-configure-asset-delivery-policy.md) tematu) przed utworzeniem lokalizatora. 
+> Jeśli zawartość jest zaszyfrowany, konfigurowanie zasad dostarczania elementów zawartości (zgodnie z opisem w [to](media-services-dotnet-configure-asset-delivery-policy.md) tematu) przed utworzeniem lokalizatora. 
 > 
 > 
 
-Lokalizator OnDemand przesyłania strumieniowego umożliwia również tworzenie adresów URL wskazujących na pliki MP4, które można pobrać progresywnie.  
+Lokalizatora OnDemand przesyłania strumieniowego służy również do tworzenia adresów URL, które wskazują na pliki MP4, które można pobrać progresywnie.  
 
-W tym temacie pokazano, jak utworzyć Lokalizator OnDemand przesyłania strumieniowego do publikowania zawartości i tworzenie Smooth, MPEG DASH i HLS adresów URL przesyłania strumieniowego. Zawiera także gorących do tworzenia adresów URL pobierania progresywnego. 
+W tym temacie pokazano, jak utworzyć Lokalizator OnDemand przesyłania strumieniowego można opublikować element zawartości i tworzyć Smooth, MPEG DASH i HLS adresów URL przesyłania strumieniowego. Pokazuje także gorąca tworzyć adresy URL pobierania progresywnego. 
 
-## <a name="create-an-ondemand-streaming-locator"></a>Utwórz Lokalizator OnDemand przesyłania strumieniowego
+## <a name="create-an-ondemand-streaming-locator"></a>Tworzenie lokalizatora OnDemand przesyłania strumieniowego
 Aby utworzyć Lokalizator przesyłania strumieniowego na żądanie i uzyskiwanie adresów URL, należy wykonać następujące czynności:
 
 1. Jeśli zawartość jest zaszyfrowany, należy zdefiniować zasadę dostępu.
-2. Utwórz Lokalizator OnDemand przesyłania strumieniowego.
-3. Jeśli planujesz strumieniowo, Pobierz przesyłania strumieniowego pliku manifestu (.ism) w elemencie zawartości. 
+2. Tworzenie lokalizatora OnDemand przesyłania strumieniowego.
+3. Jeśli użytkownik chce przesyłać strumieniowo, Pobierz przesyłania strumieniowego pliku manifestu (ISM) w elemencie zawartości. 
    
-   Jeśli planujesz ma być pobierana progresywnie, Pobierz nazwy plików MP4 w elemencie zawartości.  
+   Jeśli planujesz progresywnie uzyskać nazwy plików MP4 w elemencie zawartości.  
 4. Tworzenie adresów URL do pliku manifestu lub plików MP4. 
 
 
 >[!NOTE]
->Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Użyj tego samego Identyfikatora zasad, jeśli są zawsze przy użyciu tego samego dni / uprawnień dostępu. Na przykład zasady lokalizatorów, które powinny pozostać w miejscu przez długi czas (— przekazywanie zasady). Aby uzyskać więcej informacji, zobacz [ten](media-services-dotnet-manage-entities.md#limit-access-policies) temat.
+>Limit różnych zasad usługi AMS wynosi 1 000 000 (na przykład zasad lokalizatorów lub ContentKeyAuthorizationPolicy). Użyj tego samego Identyfikatora zasad, jeśli zawsze używasz tych samych dni / uprawnień dostępu. Na przykład zasad lokalizatorów, które powinny pozostać w miejscu przez długi czas (nieprzekazywane zasady). Aby uzyskać więcej informacji, zobacz [ten](media-services-dotnet-manage-entities.md#limit-access-policies) temat.
 
-### <a name="use-media-services-net-sdk"></a>Użyj usługi Media Services zestawu .NET SDK
-Tworzenie adresy URL przesyłania strumieniowego 
+### <a name="use-media-services-net-sdk"></a>Zastosowania usług Media Services .NET SDK
+Tworzyć adresy URL przesyłania strumieniowego 
 
 ```csharp
     private static void BuildStreamingURLs(IAsset asset)
@@ -108,11 +108,11 @@ Dane wyjściowe:
 
 
 > [!NOTE]
-> Można również strumienia zawartości za pośrednictwem połączenia SSL. Aby wykonać tą metodą, upewnij się, uruchamiania adresy URL przesyłania strumieniowego z protokołu HTTPS. Obecnie usługa AMS nie obsługuje protokołu SSL z domen niestandardowych.
+> Można również przesyłać strumieniowo zawartość, za pośrednictwem połączenia SSL. Aby zrobić to podejście, upewnij się, rozpoczęciu adresy URL przesyłania strumieniowego przy użyciu protokołu HTTPS. Obecnie usługa AMS nie obsługuje protokołu SSL z zastosowaniem domen niestandardowych.
 > 
 > 
 
-Tworzenie adresy URL pobierania progresywnego 
+Tworzyć adresy URL pobierania progresywnego 
 
 ```csharp
     private static void BuildProgressiveDownloadURLs(IAsset asset)
@@ -153,7 +153,7 @@ Dane wyjściowe:
     . . . 
 
 ### <a name="use-media-services-net-sdk-extensions"></a>Użyj rozszerzenia SDK .NET usługi Media Services
-Poniższy kod wywołuje metody rozszerzenia zestawu .NET SDK, które tworzenie lokalizatora i generowanie Smooth Streaming, HLS i MPEG-DASH adresy URL do adaptacyjnego przesyłania strumieniowego.
+Poniższy kod wywołuje metody rozszerzenia zestawu .NET SDK, które utworzyć Lokalizator oraz generować Smooth Streaming, HLS i MPEG-DASH w adresach URL do adaptacyjnego przesyłania strumieniowego.
 ```csharp
     // Create a loctor.
     _context.Locators.Create(
@@ -179,6 +179,6 @@ Poniższy kod wywołuje metody rozszerzenia zestawu .NET SDK, które tworzenie l
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Pobieranie zasobów](media-services-deliver-asset-download.md)
+* [Pobierz zasoby](media-services-deliver-asset-download.md)
 * [Konfigurowanie zasad dostarczania elementów zawartości](media-services-dotnet-configure-asset-delivery-policy.md)
 

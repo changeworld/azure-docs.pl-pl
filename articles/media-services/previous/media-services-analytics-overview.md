@@ -1,10 +1,10 @@
 ---
 title: Analiza multimediów na platformie Media Services | Dokumentacja firmy Microsoft
-description: Omówienie publicznej wersji zapoznawczej z analizy multimediów, Kolekcja usług wizji mowy i komputera w skali przedsiębiorstwa, zgodności i zabezpieczeń oraz globalne
+description: Omówienie publicznej wersji zapoznawczej usługi Media Analytics to zbiór usług przetwarzania mowy i komputera na skalę przedsiębiorstwa, zgodność, bezpieczeństwo i globalny zasięg
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: c56e3781-8510-4f7f-b5ff-a218c1bb6f4c
 ms.service: media-services
@@ -12,70 +12,71 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0ac8b9fad35267ceaec5b5acec4722b6005f68a9
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c60fd90adda4c362b15fe2e324aa55a581c9e59a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788781"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003776"
 ---
-# <a name="media-analytics-on-the-media-services-platform"></a>Analiza multimediów na platformie Media Services
+# <a name="media-analytics-on-the-media-services-platform"></a>Analiza multimediów na platformie Media Services 
+
 ## <a name="overview"></a>Przegląd
-Więcej organizacji korzystają wideo jako preferowany średni uczenia pracownikom, zaangażowania klientów i udokumentować znaczenie biznesowe. Przetwarzania umożliwia przechowywanie, strumienia i dostępu do tych duże pliki multimedialne w chmurze. Jednak wraz z rozwojem firmy biblioteki zawartości wideo, musi on równie skuteczne środki wyodrębniania wgląd w zawartość. 
+Więcej organizacji używasz wideo jako preferowany średni szkolenie pracowników, angażować swoich klientów i udokumentować funkcje biznesowe. Przetwarzanie zapewnia sposób przechowywania, przesyłanie strumieniowe i dostępu do tych duże pliki multimedialne w chmurze. Ale wraz z rozwojem firmy biblioteki zawartości filmu wideo muszą równie skutecznym sposobem przeprowadzanie analizy zawartości. 
 
-Aby rozwiązać ten wzrasta potrzeba, usługi Azure Media Services udostępnia analizy multimediów Azure. Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają organizacjom i przedsiębiorstwom pozyskiwanie przydatnych informacji z posiadanych plików wideo. Utworzony przy użyciu podstawowe składniki platformy Media Services, analiza multimediów może obsługiwać nośnika przetwarzania na dużą skalę na jeden dzień.
+Aby zaspokoić te potrzeby rosnący, usługi Azure Media Services oferuje analizy multimediów Azure. Analiza multimediów to kolekcja składników mowy i obrazu, które ułatwiają organizacjom i przedsiębiorstwom pozyskiwanie przydatnych informacji z posiadanych plików wideo. Utworzony za pomocą podstawowe składniki platformy Media Services, usługi Media Analytics może obsłużyć przetwarzanie na dużą skalę, od pierwszego dnia multimediów.
 
-Z analizy multimediów deweloperzy mogą szybko Przełącz zaawansowane funkcje wideo do aplikacji. Przedsiębiorstw zapewnia skali, zgodności, zabezpieczeń oraz globalne wymagane przez dużych organizacji.
+Za pomocą usługi Media Analytics deweloperom szybkie przenoszenie zaawansowane funkcje wideo w aplikacjach. Zapewnia środowiskach korporacyjnych przy użyciu pełnej skali, zgodność, bezpieczeństwo i globalny zasięg, o których wymagane przez duże organizacje.
 
-Na poniższym diagramie przedstawiono analizy multimediów i inne główne elementy platformy Media Services. 
+Na poniższym diagramie przedstawiono usługi Media Analytics i inne główne elementy platformy Media Services. 
 
 ![Wideo na żądanie — przepływ pracy](./media/media-services-analytics-overview/media-services-analytics-overview01.png)
 
-Procesory multimediów usługi Analiza multimediów tworzą pliki MP4 lub JSON. Jeśli procesor multimediów tworzy plik MP4, można pobrać progresywnie pliku. Jeśli procesor multimediów powoduje utworzenie pliku JSON, możesz pobrać plik z magazynu obiektów Blob platformy Azure. 
+Procesory multimediów usługi Analiza multimediów tworzą pliki MP4 lub JSON. Procesor multimediów tworzy plik w formacie MP4, można pobrać progresywnie pliku. Jeśli procesor multimediów generuje plik w formacie JSON, możesz pobrać plik z magazynu obiektów Blob platformy Azure. 
 
-## <a name="media-analytics-services"></a>Usług analizy multimediów
+## <a name="media-analytics-services"></a>Usługi analizy multimediów
 
 ### <a name="indexer"></a>Indeksator
-Z usługi Azure Media indeksatora możesz wprowadzić zawartości można wyszukiwać i generować-kodowane ścieżki. W porównaniu do poprzednich wersji Preview 2 indeksatora multimediów Azure ma szybciej indeksowania i szerszych języka obsługuje. Obsługiwane języki angielski, hiszpański, francuski, niemiecki, włoski, chiński, portugalski i arabski. Aby uzyskać szczegółowe informacje i przykłady, zobacz [przetwarzanie plików wideo z usługi Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
+Za pomocą usługi Azure Media Indexer, który ułatwia zawartości można wyszukiwać i generowanie napisów ścieżki. W porównaniu do poprzedniej wersji usługi Azure Media Indexer 2 w wersji zapoznawczej ma języka szybciej indeksowania i szerszej pomocy technicznej. Obsługiwane języki angielski, hiszpański, francuski, niemiecki, włoski, chiński, Portugalskiej i arabskim. Aby uzyskać szczegółowe informacje i przykłady, zobacz [przetwarzanie plików wideo za pomocą usługi Azure Media Indexer 2](media-services-process-content-with-indexer2.md).
 ### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse łączy stabilizacji wideo i ujęć poklatkowych możliwości tworzenia szybkie, eksploatacyjny filmy wideo z zawartości długiej. Oprócz tworzenia ujęć poklatkowych wideo, przyspieszonych ujęć poklatkowych służy również do tworzenia stabilna filmy wideo z obraz wideo przechwycone przez telefony komórkowe i kamery. Aby uzyskać szczegółowe informacje i przykłady, zobacz [przyspieszonych ujęć poklatkowych plików multimedialnych na pliki z usługi Azure Media Hyperlapse](media-services-hyperlapse-content.md).
+Microsoft Hyperlapse łączy stabilizacji wideo i ujęć poklatkowych możliwości tworzenia szybkie, konsumpcyjnych wideo z Twojej zawartości w formie długiej. Oprócz tworzenia wideo poklatkowych, można użyć usługi przyspieszone ujęcia Poklatkowe utworzyć stabilną filmów wideo z trzęsącym wideo przechwycone przy użyciu telefonów komórkowych i są. Aby uzyskać szczegółowe informacje i przykłady, zobacz [Hyperlapse plików multimedialnych za pomocą usługi Azure Media Hyperlapse](media-services-hyperlapse-content.md).
 ### <a name="motion-detector"></a>Wykrywanie ruchu
-Czujnik ruchu można użyć do wykrywania ruchu na obrazie wideo z nieruchomy tła. Dzięki temu można wyszukać fałszywych alarmów zdarzeń ruchu wykrywane przez kamer nadzoru. Aby uzyskać szczegółowe informacje i przykłady, zobacz [wykrywanie na potrzeby analizy multimediów Azure ruchu](media-services-motion-detection.md).
+Wykrywanie ruchu służy do wykrywania ruchu w wideo z nieruchomym. Umożliwia pod kątem wyników fałszywie dodatnich zdarzeń ruchu wykrywane przez kamery nadzoru. Aby uzyskać szczegółowe informacje i przykłady, zobacz [wykrywanie na potrzeby analizy multimediów Azure ruchu](media-services-motion-detection.md).
 ### <a name="face-detector"></a>Wykrywanie twarzy
-Przy użyciu detektora krój, można wykryć powierzchni użytkowników i ich emocji, w tym szczęście, sadness i niespodziewanego. To ma kilka przydatne branży aplikacji, w dalszej części, tym agregowanie i analizowanie danych reakcji uczestników zdarzenia. Aby uzyskać szczegółowe informacje i przykłady, zobacz [wykrywania twarzy na obrazie i emocji dla analizy multimediów Azure](media-services-face-and-emotion-detection.md).
+Za pomocą wykrywanie twarzy, można wykryć osób twarzy i emocji, w tym szczęście, smutek i zaskoczenie. Ma to kilka przydatne w branży aplikacji, opisanym w dalszej części w tym agregowania i jednoczesnej reakcje uczestników zdarzenia. Aby uzyskać szczegółowe informacje i przykłady, zobacz [wykrywanie twarzy i emocji na potrzeby analizy multimediów Azure](media-services-face-and-emotion-detection.md).
 ### <a name="video-summarization"></a>Podsumowanie wideo
-Podsumowanie wideo mogą pomóc tworzyć podsumowania długich filmów wideo, wybierając automatycznie interesujące fragmenty kodu ze źródła wideo. Ta możliwość jest przydatne, gdy chcesz zapewnić szybki przegląd czego można oczekiwać w długich wideo. Aby uzyskać szczegółowe informacje i przykłady, zobacz [miniatur wideo multimediów Azure Użyj utworzyć podsumowanie wideo](media-services-video-summarization.md).
+Podsumowanie wideo może pomóc w tworzenie podsumowań długich wideo, automatycznie wybierając interesujący fragmenty kodu z źródłowy plik wideo. Ta możliwość jest przydatne, gdy chcesz zapewnić szybki przegląd czego można oczekiwać w długich wideo. Aby uzyskać szczegółowe informacje i przykłady, zobacz [miniatur wideo multimediów Azure Użyj do utworzenia podsumowanie wideo](media-services-video-summarization.md).
 ### <a name="optical-character-recognition"></a>Optyczne rozpoznawanie znaków
-Z usługi Azure Media Rozpoznawania (OCR) zawartość tekstu w plikach wideo można przekonwertować na tekst cyfrowy można edytować, wyszukiwanie. Następnie można zautomatyzować wyodrębniania łatwy do rozpoznania metadanych z sygnału wideo multimediów.
-### <a name="scalable-face-redaction"></a>Skalowalna krój redakcyjne
-Azure Media Redactor jest procesora nośnika analizy multimediów, które oferuje skalowalne krój redakcyjne w chmurze. Za pomocą redakcyjne krój, można zmodyfikować wideo do rozmycia kroje wybrane osoby. Można korzystać z usługi redakcyjne krój, na nośniku wiadomości lub uczestniczy bezpieczeństwa publicznego. Kilka minut najmniejszym zawiera wiele kroje może zająć godzin redagowanie ręcznie, ale z tą usługą redakcyjne krój trwa tylko kilka prostych kroków. Aby uzyskać więcej informacji, zobacz [redagowanie krojów z analizy multimediów Azure](media-services-face-redaction.md) artykułu.
+Za pomocą usługi Azure Media optyczne rozpoznawanie znaków (OCR) zawartości tekstowej w plikach wideo można przekonwertować na tekst cyfrowy można edytować, którą można przeszukiwać. Następnie można zautomatyzować ekstrakcji istotne metadane z multimediów sygnału wideo.
+### <a name="scalable-face-redaction"></a>Pomocą redakcji twarzy skalowalne
+Usługa Azure Media Redactor to procesor multimediów usługi Media Analytics, który oferuje pomocą redakcji twarzy skalowalny w chmurze. Za pomocą redakcji twarzy, można zmodyfikować filmu wideo, aby Rozmycie twarze wybranych osób. Można korzystać z niej redakcji twarzy w mediami lub gdy uczestniczy bezpieczeństwa publicznego. Kilka minut materiał, który zawiera wiele powierzchni może zająć godzin redagowanie ręcznie, ale w tej usłudze pomocą redakcji twarzy trwa zaledwie kilku prostych krokach. Aby uzyskać więcej informacji, zobacz [redagowanie twarze za pomocą usługi Azure Media Analytics](media-services-face-redaction.md) artykułu.
 ### <a name="content-moderation"></a>Moderowanie zawartości
-Azure moderatora zawartości pozwala na użycie łagodzenia wspierana maszyny dla plików wideo. Na przykład można wykryć możliwe zawartość dla dorosłych i luksusowych w wideo i przejrzeć zawartość oflagowane przez zespoły łagodzenia człowieka. Ręcznie Moderowanie wideo niepożądanych zawartości jest czasochłonne i kosztowne zadania. Z tej usługi i przejrzyj skojarzone narzędzia wydajne i ekonomiczne łączyć się przy pomocy maszyny łagodzenia o możliwości ludzkich w pętli, aby uzyskać najlepsze wyniki. Aby dowiedzieć się więcej, zobacz [przetwarzać pliki wideo z moderatora zawartości Azure](media-services-content-moderation.md) artykułu.
+Usługa Azure Content Moderator pozwala na potrzeby wspomagane maszynowo Moderowanie filmów wideo. Na przykład możesz chcieć wykrywanie możliwej zawartości dla dorosłych w filmach wideo i przejrzeć flagą zawartość przez Twoje zespoły Moderowanie ludzi. Ręcznie Moderowanie filmów wideo niepożądanych zawartości to zadania czasochłonne i kosztowne. Z usługą i narzędziom do przeglądu skojarzonych możesz połączyć wspomaganego maszynowo moderowania możliwości człowieka w pętli, aby uzyskać najlepsze wyniki wydajnie i ekonomicznie. Aby dowiedzieć się więcej, zobacz [przetwarzać pliki wideo przy użyciu usługi Azure Content Moderator](media-services-content-moderation.md) artykułu.
 
 ## <a name="common-scenarios"></a>Typowe scenariusze
-Analiza multimediów może ułatwić organizacjom i przedsiębiorstwom zgromadzonych nowych danych z wideo i więcej efektywnie zarządzać dużych ilości zawartości wideo. Poniżej przedstawiono kilka scenariuszy:
+Analiza multimediów może pomóc organizacjom i przedsiębiorstwom gromadzić nowe analizy z wideo więcej wydajne zarządzanie dużymi ilościami zawartości wideo. Poniżej przedstawiono kilka scenariuszy:
 
-* **Wywołaj centrów**. Nawet w przypadku pojawienie się mediów społecznościowych odbiorcy biura obsługi ułatwienia nadal znaczną część transakcji obsługi klienta. Zakodowane w tych danych audio jest duża ilość informacji klienta, który można przeprowadzić analizę w celu osiągnięcia wyższej zadowolenia klienta. Przy użyciu nośnika indeksatora, organizacje można wyodrębnić tekst i twórz indeksów wyszukiwania i pulpity nawigacyjne. Następnie mogli wyodrębnić informacji dotyczących typowych utrudnień, źródeł utrudnień i inne odpowiednie dane.
-* **Łagodzenie zawartość wygenerowaną przez użytkowników**. Z nośnika wiadomości gniazda do działów polecenie w wielu organizacjach istnieją portale publicznych, które akceptują wygenerowaną przez użytkowników nośniki, takie jak pliki wideo i obrazów. Wielkość zawartości można zwiększyć z powodu nieoczekiwanego zdarzenia. W tych scenariuszach jest trudne do przeprowadzenia skuteczne recenzje ręczne zawartości dla właściwości. Klienci mogą polegać na usługę łagodzenia zawartości, aby skupić się na zawartość, która jest odpowiednia.
-* **Nadzoru**. Wzrost używany kamer IP pochodzą rosnącym spisu nadzoru wideo. Ręcznie recenzowania nadzoru wideo jest czas znacznym i podatne na błędy człowieka. Analiza multimediów udostępnia usługi, takie jak wykrywanie ruchu, wykrywania twarzy na obrazie i przyspieszonych ujęć poklatkowych w celu uproszczenia procesu przeglądu, zarządzania i tworzenie pochodnych łatwiejsze.
+* **Wywołaj centra**. Nawet w przypadku pojawienie się mediów społecznościowych centra wywołania klienta nadal ułatwić znaczną część transakcji obsługi klienta. Zakodowane w tym dane audio jest dużych ilości informacji klientów, które mogą być analizowane w celu osiągnięcia wyższej zadowolenie klientów. Za pomocą Media Indexer, organizacje mogą wyodrębniania tekstu i twórz indeksy wyszukiwania i pulpity nawigacyjne. Następnie mogli wyodrębnić analizy dotyczące typowych utrudnień, źródeł skarg i inne odpowiednie dane.
+* **Moderowanie zawartości wygenerowanej przez użytkowników**. Z mediami gniazda do działów policji, w wielu organizacjach portale publicznych, które zaakceptować wygenerowaną przez użytkowników nośników, takich jak filmy wideo i obrazy. Ilość zawartości można skacze z powodu nieoczekiwanych zdarzeń. W tych scenariuszach jest trudne do przeprowadzenia skuteczne przeglądy ręczne zawartości dla właściwości. Klienci mogą polegać na usługę moderowanie zawartości, aby skupić się na treści, która jest odpowiednia.
+* **Nadzór**. Za pomocą wzrost użycia kamer IP pochodzą rosnącą spisu nadzoru wideo. Ręcznie przeglądanie nadzoru wideo jest intensywnie i podatne na błędy człowieka. Usługa Media Analytics zapewnia usług, takich jak wykrywanie ruchu, wykrywanie twarzy i przyspieszone ujęcia Poklatkowe w celu uproszczenia procesu recenzowania, zarządzania i tworzenie pochodnych łatwiejsze.
 
-## <a name="media-analytics-media-processors"></a>Procesory multimediów usługi analiza multimediów
-W tej sekcji wymieniono procesory multimediów usługi analiza multimediów i przedstawia sposób użycia platformy .NET lub REST można pobrać obiektu procesora (MP) nośnika.
+## <a name="media-analytics-media-processors"></a>Procesory multimediów usługi analizy multimediów
+W tej sekcji wymieniono procesory multimediów usługi analizy multimediów i pokazuje, jak użyć .NET lub REST, aby uzyskać obiekt multimedialny procesora (MP).
 
 ### <a name="mp-names"></a>Nazwy pakietu administracyjnego
-* Podgląd indeksatora 2 multimediów Azure
+* Azure Media Indexer 2 w wersji zapoznawczej
 * Azure Media Indexer
 * Azure Media Hyperlapse
 * Azure Media Face Detector
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails
 * Azure Media OCR
-* Azure Media moderatora zawartości
+* Azure Media Content Moderator
 
 ### <a name="net"></a>.NET
-Następująca funkcja przyjmuje jeden z określonych nazw pakietu administracyjnego i zwraca obiekt pakietu administracyjnego.
+Następującą funkcję, ma jedną z określonej nazwy pakietu administracyjnego i zwraca obiekt pakietu administracyjnego.
 
     static IMediaProcessor GetLatestMediaProcessorByName(string mediaProcessorName)
     {
@@ -124,14 +125,14 @@ Odpowiedź:
        ]
     }
 
-## <a name="demos"></a>Pokazy
+## <a name="demos"></a>Wersje demonstracyjne
 Zobacz [pokazy analizy multimediów Azure](http://azuremedialabs.azurewebsites.net/demos/Analytics.html).
 
 ## <a name="provide-feedback"></a>Przekazywanie opinii
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-Zobacz [anonsu analiza usługi multimediów](https://azure.microsoft.com/blog/introducing-azure-media-analytics/).
+Zobacz [ogłoszenie analizy usługi multimediów](https://azure.microsoft.com/blog/introducing-azure-media-analytics/).
 
 <!-- Images -->
 

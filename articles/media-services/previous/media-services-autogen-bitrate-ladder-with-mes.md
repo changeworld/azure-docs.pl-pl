@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 1d02f64cce5e539dd43a9372a00cd3ec1ddd5f0c
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 5ccd53ac03235bd114218135488bef25891754be
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50246980"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004065"
 ---
-#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Użyj usługi Azure Media Encoder Standard automatyczne generowanie drabiny szybkości transmisji bitów
+#  <a name="use-azure-media-encoder-standard-to-auto-generate-a-bitrate-ladder"></a>Użyj usługi Azure Media Encoder Standard automatyczne generowanie drabiny szybkości transmisji bitów  
 
 ## <a name="overview"></a>Przegląd
 
@@ -43,7 +43,7 @@ Poniższy przykład kodu używa Media Services .NET SDK do wykonywania następuj
 - Dodaj zadanie kodowania, zadania i określanie użycia **adaptacyjnego przesyłania strumieniowego** wstępnie zdefiniowane. 
 - Tworzenie zasobu danych wyjściowych, który zawiera zakodowanym elementem zawartości.
 - Dodaj program obsługi zdarzeń, aby sprawdzić postęp zadania.
-- Prześlij zadanie.
+- Przesyłanie zadania.
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Tworzenie i konfigurowanie projektu programu Visual Studio
 

@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f78f0cd98a5a1960737ce37c5540889ca395bea
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 073ce3075f6c14230ad76f70feb8d01d17b4e2e0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428867"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005475"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Utwórz obszar roboczy usługi Log Analytics przy użyciu programu Azure PowerShell
 
-Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. Ten przewodnik Szybki Start dowiesz się, jak wdrożyć obszar roboczy usługi Log Analytics na platformie Azure, która jest unikatowa środowiska z własnym repozytorium danych, źródłami danych i rozwiązań za pomocą modułu Azure PowerShell.  Kroki opisane w tym artykule są wymagane, jeśli jest planowane na zbieranie danych z następujących źródeł:
+Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. Ten przewodnik Szybki Start pokazano, jak użyć modułu programu Azure PowerShell do wdrożenia obszaru roboczego usługi Log Analytics w usłudze Azure Monitor. Obszar roboczy usługi Log Analytics jest unikatowy środowiska za dane dziennika usługi Azure Monitor. Każdy obszar roboczy ma własne repozytorium danych i konfiguracji i źródeł danych i rozwiązań, które są skonfigurowane do przechowywania swoich danych w określonym obszarze roboczym. Obszar roboczy usługi Log Analytics jest wymagane, jeśli jest planowane na zbieranie danych z następujących źródeł:
 
 * Zasoby platformy Azure w ramach subskrypcji  
 * Lokalnych komputerów monitorowanych przez program System Center Operations Manager  
@@ -31,8 +31,8 @@ Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządz
  
 W przypadku innych źródeł, takie jak maszyny wirtualne platformy Azure i Windows lub maszyny wirtualne systemu Linux w środowisku zobacz następujące tematy:
 
-* [Zbieranie danych z maszyn wirtualnych platformy Azure](../../azure-monitor/learn/quick-collect-azurevm.md)
-* [Zbieranie danych z komputera z systemem Linux hybrydowe](../../azure-monitor/learn/quick-collect-linux-computer.md)
+* [Zbieranie danych z maszyn wirtualnych platformy Azure](../learn/quick-collect-azurevm.md)
+* [Zbieranie danych z komputera z systemem Linux hybrydowe](../learn/quick-collect-linux-computer.md)
 * [Zbieranie danych z komputera Windows hybrydowe](quick-collect-windows-computer.md)
 
 Jeśli nie masz subskrypcji platformy Azure, Utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) przed przystąpieniem do wykonywania.
@@ -126,7 +126,7 @@ Wdrożenie może potrwać kilka minut. Po zakończeniu zostanie wyświetlony kom
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, gdy masz dostępnego obszaru roboczego, możesz skonfigurować zbieranie danych telemetrycznych monitorowania, uruchamiają przeszukiwanie dzienników w celu analizowania danych i dodać rozwiązanie do zarządzania w celu zapewnienia dodatkowych danych i szczegółowych informacji analitycznych.  
 
-* Aby włączyć zbieranie danych z zasobów platformy Azure Diagnostyka Azure lub usługi Azure storage, zobacz [zbieranie dzienników platformy Azure usługi i metryk do użycia w usłudze Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md).  
-* Dodaj [programu System Center Operations Manager jako źródła danych](../../azure-monitor/platform/om-agents.md) do zbierania danych z agentów raportujących do grupy zarządzania programu Operations Manager i zapisać ją w obszarze roboczym usługi Log Analytics.  
-* Połącz [programu Configuration Manager](../../azure-monitor/platform/collect-sccm.md) do zaimportowania komputerów, które są członkami kolekcji w hierarchii.  
-* Przegląd [rozwiązań do zarządzania](../../azure-monitor/insights/solutions.md) dostępne i jak dodać lub usunąć rozwiązanie z obszaru roboczego.
+* Aby włączyć zbieranie danych z zasobów platformy Azure Diagnostyka Azure lub usługi Azure storage, zobacz [zbieranie dzienników platformy Azure usługi i metryk do użycia w usłudze Azure Monitor](../platform/collect-azure-metrics-logs.md).  
+* Dodaj [programu System Center Operations Manager jako źródła danych](../platform/om-agents.md) do zbierania danych z agentów raportujących do grupy zarządzania programu Operations Manager i zapisać ją w obszarze roboczym usługi Log Analytics.  
+* Połącz [programu Configuration Manager](../platform/collect-sccm.md) do zaimportowania komputerów, które są członkami kolekcji w hierarchii.  
+* Przegląd [rozwiązania do monitorowania](../insights/solutions.md) dostępne i jak dodać lub usunąć rozwiązanie z obszaru roboczego.

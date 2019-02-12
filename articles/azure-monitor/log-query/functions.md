@@ -1,6 +1,6 @@
 ---
-title: Funkcje usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób używania funkcji do wywołania zapytania z innego zapytania w usłudze Log Analytics.
+title: Funkcje w zapytaniach dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób używania funkcji do wywołania zapytania z innego zapytania dzienników w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 8f2855ed56d298ec4c6abee02dd59ce9471f0d2e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6c6bd31961022957ec1a09fef6058ad32476e1c7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882853"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005101"
 ---
-# <a name="using-functions-in-azure-monitor-log-analytics"></a>Za pomocą funkcji w usłudze Azure Monitor Log Analytics
+# <a name="using-functions-in-azure-monitor-log-queries"></a>Za pomocą funkcji w zapytaniach dzienników usługi Azure Monitor
 
 > [!NOTE]
 > Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
@@ -28,11 +28,11 @@ ms.locfileid: "52882853"
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 
-Zapytanie usługi Log Analytics za pomocą innego zapytania można zapisać go w funkcji. To umożliwia uproszczenie kwerend złożonych, dzieląc je na części i pozwala na ponowne użycie typowych kodu z wieloma zapytaniami.
+Zapytanie dziennika za pomocą innego zapytania można zapisać go w funkcji. To umożliwia uproszczenie kwerend złożonych, dzieląc je na części i pozwala na ponowne użycie typowych kodu z wieloma zapytaniami.
 
 ## <a name="create-a-function"></a>Tworzenie funkcji
 
-Tworzenie funkcji w witrynie Azure portal, klikając **Zapisz** i podają informacje przedstawione w poniższej tabeli.
+Tworzenie funkcji w usłudze log analytics w witrynie Azure portal, klikając **Zapisz** i podają informacje przedstawione w poniższej tabeli.
 
 | Ustawienie | Opis |
 |:---|:---|
@@ -42,10 +42,10 @@ Tworzenie funkcji w witrynie Azure portal, klikając **Zapisz** i podają inform
 | Kategoria       | Kategorię, aby zorganizować zapisanych zapytań i funkcji w **Eksplorator zapytań**. |
 
 > [!NOTE]
-> Funkcja w usłudze Log Analytics nie może zawierać innej funkcji.
+> Funkcja w usłudze Azure Monitor nie może zawierać innej funkcji.
 
 > [!NOTE]
-> Zapisywanie funkcji jest możliwe w zapytań usługi Log Analytics, ale obecnie nie zapytania usługi Application Insights.
+> Zapisywanie funkcji jest możliwe w zapytaniach dzienników usługi Azure Monitor, ale obecnie nie zapytania usługi Application Insights.
 
 
 
@@ -69,7 +69,7 @@ security_updates_last_day | where Title contains "SQL"
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dla przy użyciu języka zapytań usługi Log Analytics:
+Zobacz inne lekcje dotyczące pisania usługi Azure Monitor dziennika zapytań:
 
 - [Operacje na ciągach](string-operations.md)
 - [Operacje daty i godziny](datetime-operations.md)

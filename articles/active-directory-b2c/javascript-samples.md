@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d664c33c4535d25ec93fd1f36c990f2764a4e071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729272"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000817"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>Przykładowe skrypty JavaScript do użycia w usłudze Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Do aplikacji w usłudze Azure Active Directory (Azure AD) B2C można dodać własny kod po stronie klienta języka JavaScript. W tym artykule opisano, jak możesz zmienić swoje [zasad niestandardowych](active-directory-b2c-overview-custom.md) umożliwiające wykonywanie skryptu.
+Do aplikacji w usłudze Azure Active Directory (Azure AD) B2C można dodać własny kod po stronie klienta języka JavaScript. W tym artykule opisano, jak możesz zmienić swoje [przepływ użytkownika](user-flow-javascript-overview.md) lub [zasad niestandardowych](active-directory-b2c-overview-custom.md) umożliwiające wykonywanie skryptu.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Wybierz [strony umowy](page-contract.md) elementów interfejsu użytkownika aplikacji. Jeśli zamierzasz użyć języka JavaScript, musisz zdefiniować wersja kontraktu strony dla wszystkich definicji zawartości w zasadach niestandardowych.
+Wybierz [strony umowy](page-contract.md) elementów interfejsu użytkownika aplikacji. Jeśli zamierzasz użyć języka JavaScript, musisz zdefiniować wersja kontraktu strony dla wszystkich definicji zawartości przepływu użytkownika lub niestandardowych zasad.
 
 ## <a name="add-the-scriptexecution-element"></a>Dodaj ScriptExecution element
 

@@ -4,7 +4,7 @@ description: W tym temacie przedstawiono instrukcje krok po kroku na temat uruch
 services: media-services
 documentationcenter: ''
 author: Lichard
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 02/10/2019
 ms.author: rli; juliako;
-ms.openlocfilehash: 81618446930a23a7ea713da19bb7c63a06d135ed
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 14a274dbbc45f00ecf914d5bb0a3e1c040fb3a89
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162447"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994527"
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Redagowanie twarze z przewodnikiem analizy multimediów Azure
 

@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: ecfcfd5026f310a617f81af42483c29d89385288
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700727"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991365"
 ---
 # <a name="understand-role-definitions"></a>Omówienie definicji ról
 
@@ -147,7 +147,7 @@ Współautor danych obiektu blob magazynu (wersja zapoznawcza)
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
 
-Ponieważ Alicja zawiera symbol wieloznaczny (`*`) działania w zakresie subskrypcji, jej uprawnienia dziedziczyć dół umożliwiające jej wykonywać wszystkie akcje zarządzania. Jednak gdy Alicja nie mogą wykonywać operacje na danych. Na przykład domyślnie Alicja nie może odczytać obiektów blob w kontenerze, ale ona odczytu, zapisu i usunięcia kontenerów.
+Ponieważ Alicja zawiera symbol wieloznaczny (`*`) działania w zakresie subskrypcji, jej uprawnienia dziedziczyć dół umożliwiające jej wykonywać wszystkie akcje zarządzania. Alicja może odczytu, zapisu i usuwania kontenerów. Jednak Alicja nie mogą wykonywać operacje na danych bez wykonywania dodatkowych czynności. Na przykład domyślnie Alicja nie może odczytać obiektów blob w kontenerze. Do odczytywania obiektów blob, Alicja musi pobrać klucze dostępu do magazynu i używać ich do uzyskania dostępu do obiektów blob.
 
 Uprawnienia przez Boba są ograniczone do właśnie `Actions` i `DataActions` określonych w [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](built-in-roles.md#storage-blob-data-contributor-preview) roli. W zależności od roli Bob można wykonywać operacje na danych i zarządzania. Na przykład Bob może odczytu, zapisu i usuwania kontenerów na koncie magazynu określonym i użytkownik może również odczytu, zapisu i usuwania obiektów blob.
 

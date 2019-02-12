@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: 096372215ae44902c633489d197dc1d8aa60f193
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 419e7b1ae05f92b5b97f5317c0315a71958eff9e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983019"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005169"
 ---
-# <a name="update-media-services-after-rolling-storage-access-keys-legacy"></a>Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu (starsza wersja)
+# <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu 
 
 Podczas tworzenia nowego konta usługi Azure Media Services (AMS), możesz również monit o wybranie konta usługi Azure Storage, który jest używany do przechowywania zawartości multimedialnej. Można dodać więcej niż jednego konta magazynu, do konta usługi Media Services. W tym artykule przedstawiono sposób rotacja kluczy magazynu. Prezentuje również sposób dodawania konta magazynu do konta usługi media. 
 

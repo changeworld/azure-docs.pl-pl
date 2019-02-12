@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fecd5cf3b5a6aac1133f94b4dc220eec826392f6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7133ed74c9862a7e3d496a9093faaf3959e0d78
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54057031"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993422"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor
 
@@ -77,7 +77,7 @@ Sekcje zapytania są bardzo elastyczne i może służyć do odpowiedzi na pytani
 
 * Jak wiele wyjątków throw witryny w przedziale czasu jako spadek użycia?
 * Jaki był Rozkład czasów ładowania strony użytkownikom, którzy wyświetlają niektóre strony?
-* Ilu użytkowników wyświetlane niektóre zbiór stron w witrynie, ale nie inny zestaw stron? Może to być przydatne do zrozumienia, jeśli masz klastrów użytkowników, którzy korzystają z różnych podzbiory funkcji witryny sieci (Użyj `join` operator `kind=leftanti` modyfikator w języku zapytań usługi Log Analytics).
+* Ilu użytkowników wyświetlane niektóre zbiór stron w witrynie, ale nie inny zestaw stron? Może to być przydatne do zrozumienia, jeśli masz klastrów użytkowników, którzy korzystają z różnych podzbiory funkcji witryny sieci (Użyj `join` operator `kind=leftanti` modyfikator w języku kwerend Eksploratora danych).
 
 Możesz również nie są tylko ograniczone do wykonywania zapytań w kontekście aplikacji uruchomiony ten skoroszyt z. Wiele aplikacji usługi Application Insights monitorowane, jak i obszarów roboczych usługi Log Analytics można badać, tak długo, jak długo mają uprawnienia dostępu do tych zasobów.
 
@@ -251,7 +251,7 @@ Aby przypiąć łącze do skoroszytu na pulpicie nawigacyjnym platformy Azure:
 
 1. Kliknij przycisk **Otwórz** na pasku akcji
 2. Kliknij przycisk "..." obok skoroszytu, który chcesz przypiąć
-3. Kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
+3. Kliknij pozycję **Przypnij do pulpitu nawigacyjnego**.
 
 ## <a name="contributing-workbook-templates"></a>Współtworzenie szablony skoroszytów
 

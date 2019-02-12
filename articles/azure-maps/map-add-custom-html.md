@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5df3b9541dafad64e012519802b09b19ef199a03
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 1c812a77429e13ea39b2f4946043c13e10aaf097
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231738"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993746"
 ---
 # <a name="add-html-markers-to-the-map"></a>Dodaj znaczniki HTML do mapy
 
@@ -68,20 +68,11 @@ Niniejszy przykład pokazuje sposób wprowadzania przeciąganego znaczników HTM
 
 ## <a name="add-mouse-events-to-html-markers"></a>Dodawanie zdarzeń myszy do znaczników HTML
 
-Te przykłady pokazują, jak dodać zdarzeń myszy do znaczników HTML, dodając standardowych zdarzeń języka JavaScript w zawartości HTML znacznika. 
-
-Jeśli `htmlContent` znacznika jest elementu modelu DOM (div, img...), można dodać zdarzenia bezpośrednio do nich. 
+Te przykłady przedstawiają sposób dodawania myszy, a następnie przeciągnij zdarzenia do znacznik HTML.
 
 <br/>
 
 <iframe height='500' scrolling='no' title='Dodawanie zdarzeń myszy do znaczników HTML' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>Dodawanie zdarzeń myszy do znaczników HTML</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
-</iframe>
-
-Jeśli `htmlContent` to ciąg (tj.) jak wartość domyślna), można utworzyć elementu modelu DOM i dodaj ciąg jako wewnętrzny kod HTML do niej, a następnie dodaj DOM element jako htmlContent. Jeśli `htmlContent` jest ciągiem oparte na szablonach, konieczne będzie Znajdź/Zamień `{text}` i `{color}` wartości w ciągu jako pierwsze.
-
-<br/>
-
-<iframe height='500' scrolling='no' title='Dodawanie zdarzeń myszy do domyślnego znacznika HTML' src='//codepen.io/azuremaps/embed/ZmZLBa/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/ZmZLBa/'>Dodawanie zdarzenia myszy domyślne znacznik HTML</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
 ## <a name="next-steps"></a>Kolejne kroki

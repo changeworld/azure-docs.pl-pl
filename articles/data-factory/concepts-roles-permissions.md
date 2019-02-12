@@ -11,12 +11,12 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.openlocfilehash: e296606d219623c29bedca4fb0906a955a394b30
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ee35c7ae1b75c6fb4d656927d7e6e4384cd76836
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013421"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003945"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Role i uprawnienia dla usługi Azure Data Factory
 
@@ -78,7 +78,7 @@ Poniżej przedstawiono kilka przykładów, które pokazują, co można osiągną
   Ten scenariusz wymaga dwóch przypisań ról.
 
   1. Przypisanie wbudowanej **Współautor** roli na poziomie usługi data factory.
-  2. Utworzyć niestandardową rolę z uprawnieniami do * Microsoft.Resources/deployments/**. Przypisz tę rolę niestandardową do użytkownika na poziomie grupy zasobów.
+  2. Utworzyć niestandardową rolę z uprawnieniami **Microsoft.Resources/deployments/**. Przypisz tę rolę niestandardową do użytkownika na poziomie grupy zasobów.
 
 - Umożliwia użytkownikowi zaktualizować fabrykę danych z programu PowerShell lub zestawu SDK, ale nie w witrynie Azure portal.
 

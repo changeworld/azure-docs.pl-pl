@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6bbb2bfa0fe3c157114d53b070d6c98e68099643
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464742"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003673"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich bazy danych SQL: Błędy połączenia bazy danych i inne problemy
 
@@ -99,8 +99,8 @@ Tematy pokrewne:
 
 | Kod błędu | Ważność | Opis |
 | ---:| ---:|:--- |
-| 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL dla autonomicznych i bazy danych w puli](sql-database-resource-limits-database-server.md).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL dla autonomicznych i bazy danych w puli](sql-database-resource-limits-database-server.md). W przeciwnym razie spróbuj ponownie później.<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |Identyfikator zasobu: %d. Limit %s dla bazy danych wynosi %d i został osiągnięty. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](sql-database-resource-limits-database-server.md).<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |Identyfikator zasobu: %d. Gwarancji minimalne %s to %d, maksymalny limit to %d, a bieżące użycie dla bazy danych to %d. Jednak serwer jest obecnie zbyt zajęty, aby obsługiwać żądania przekracza %d dla tej bazy danych. Aby uzyskać więcej informacji, zobacz [limity zasobów bazy danych SQL Database dla pojedynczych i puli baz danych](sql-database-resource-limits-database-server.md). W przeciwnym razie spróbuj ponownie później.<br/><br/>Identyfikator zasobu wskazuje zasób, który osiągnął limit. Dla wątków, identyfikator zasobu = 1. Dla sesji, identyfikator zasobu = 2.<br/><br/>Aby uzyskać więcej informacji na temat tego błędu i sposobie jego rozwiązania zobacz:<br/>• [Limity zasobów usługi azure SQL Database](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Baza danych osiągnęła limit przydziału rozmiaru. Partycji lub Usuń dane, Porzuć indeksy lub zapoznaj się z dokumentacją, aby ustalić możliwe rozwiązania. |
 | 40549 |16 |Sesja jest przerwana z powodu długotrwałej transakcji. Spróbuj skrócić transakcję. |
 | 40550 |16 |Sesja została przerwana, ponieważ uzyskała zbyt wiele blokad. Spróbuj odczytu lub modyfikować mniej wierszy w ramach jednej transakcji. |

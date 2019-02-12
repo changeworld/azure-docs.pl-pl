@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 5f111fea8fa1ef9f6e07c01f507e487c992729d5
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: fb6f492f465f6570afea911dfca8a92d4ed3dc7c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233535"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001413"
 ---
-# <a name="media-services-development-with-net"></a>Projektowanie usługi Media Services przy użyciu platformy .NET
+# <a name="media-services-development-with-net-legacy"></a>Projektowanie usługi Media Services przy użyciu platformy .NET (starsza wersja)
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 W tym artykule omówiono sposób rozpoczęcia tworzenia aplikacji usługi Media Services przy użyciu platformy .NET.
@@ -30,7 +30,7 @@ W tym artykule omówiono sposób rozpoczęcia tworzenia aplikacji usługi Media 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * Konto usługi Media Services w nowej lub istniejącej subskrypcji platformy Azure. Zapoznaj się z artykułem [sposób tworzenia konta usługi Media Services](media-services-portal-create-account.md).
-* Systemy operacyjne: Windows 10, Windows 7, Windows 2008 R2 lub Windows 8.
+* Operating Systems (Systemy operacyjne): System Windows 10, Windows 7, Windows 2008 R2 lub Windows 8.
 * .NET framework 4.5 lub nowszej.
 * Program Visual Studio.
 

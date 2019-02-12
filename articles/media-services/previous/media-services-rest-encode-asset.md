@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ada3210a59e0c3044551bee54b0a705b4b513594
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e51fa086b26e5692d8dd572654b7c1ec50c641c5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254438"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005152"
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Jak kodować zasoby przy użyciu usługi Media Encoder Standard
 > [!div class="op_single_selector"]
@@ -30,6 +30,7 @@ ms.locfileid: "51254438"
 >
 
 ## <a name="overview"></a>Przegląd
+
 Do dostarczania wideo za pośrednictwem Internetu, trzeba skompresować nośniki. Pliki wideo cyfrowe są duże i może być zbyt duża, aby dostarczyć za pośrednictwem Internetu lub dla klientów urządzeń, aby wyświetlać się poprawnie. Kodowanie jest procesem kompresowania audio i wideo, dzięki czemu klienci mogą wyświetlać multimediów.
 
 Zadania kodowania to jedna z najbardziej typowych operacji w usłudze Azure Media Services. Zadania kodowania są tworzone w celu konwertowania plików multimediów z jednego formatu kodowania na inny. Podczas kodowania, możesz użyć kodera wbudowanej usługi Media Services (usługi Media Encoder Standard). Można również użyć koder świadczonych przez partnera usługi Media Services. Kodery innych firm są dostępne za pośrednictwem portalu Azure Marketplace. Można określić szczegóły zadania kodowania, przy użyciu predefiniowanej ciągów zdefiniowane dla usługi encoder lub za pomocą plików konfiguracji ustawienia wstępnego. Aby wyświetlić typy ustawień wstępnych, które są dostępne, zobacz [ustawienia wstępne zadań usługi Media Encoder Standard](https://msdn.microsoft.com/library/mt269960).
@@ -54,12 +55,13 @@ Przed rozpoczęciem odwołujące się do procesorów multimediów, sprawdź, czy
 Aby uzyskać informacje o tym, jak połączyć się z interfejsem API usługi AMS, zobacz [dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD](media-services-use-aad-auth-to-access-ams-api.md). 
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>Tworzenie zadania z pojedynczym zadaniem kodowania
+
 > [!NOTE]
 > Podczas pracy z interfejsem API REST usługi Media Services, obowiązują następujące zastrzeżenia:
 >
 > Podczas uzyskiwania dostępu do jednostek w usłudze Media Services, należy ustawić określonych pól nagłówka i wartości w żądaniach HTTP. Aby uzyskać więcej informacji, zobacz [Instalatora do tworzenia aplikacji interfejsu API REST usługi Media Services](media-services-rest-how-to-use.md).
 >
-> Gdy przy użyciu formatu JSON i określając do użycia **__metadata** — słowo kluczowe w żądaniu (na przykład, aby odwołanie obiektu połączonego), należy ustawić **Akceptuj** nagłówka do [format JSON trybu informacji pełnej](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Zaakceptuj: application/json; odata = pełne.
+> Gdy przy użyciu formatu JSON i określając do użycia **__metadata** — słowo kluczowe w żądaniu (na przykład, aby odwołanie obiektu połączonego), należy ustawić **Akceptuj** nagłówka do [format JSON trybu informacji pełnej](http://www.odata.org/documentation/odata-version-3-0/json-verbose-format/): Accept: application/json;odata=verbose.
 >
 >
 

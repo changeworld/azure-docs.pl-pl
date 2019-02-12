@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 55cbca97d369bea80ea9caece14754e81b5738a1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fee172eccd79fd28e281b2beece9702630ac39b5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661517"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001191"
 ---
 # <a name="application-insights-for-web-pages"></a>Usługa Application Insights dla stron sieci Web
-Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](../../azure-monitor/app/app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
+Poznaj wydajność i użycie strony sieci Web lub aplikacji. Jeśli dodasz usługę [Application Insights](app-insights-overview.md) do skryptu strony, uzyskasz chronometraż ładowania strony i wywołań AJAX, liczniki i szczegóły dotyczące wyjątków przeglądarki i błędów AJAX, a także liczniki użytkowników i sesji. Wszystkie te dane możesz rozdzielić według strony, systemu operacyjnego klienta i wersji przeglądarki, lokalizacji geograficznej i innych wymiarów. Możesz ustawić alerty związane z liczbami błędów lub powolnym ładowaniem strony. A wstawiając wywołania śledzenia w kodzie JavaScript, możesz śledzić sposób użycia różnych funkcji aplikacji strony sieci Web.
 
-Usługi Application Insights można używać z dowolnymi stronami sieci Web — wystarczy dodać krótki fragment kodu JavaScript. Jeśli Twoja usługa sieci Web jest zaprogramowana w technologii [Java](java-get-started.md) lub [ASP.NET](../../azure-monitor/app/asp-net.md), możesz zintegrować telemetrię pochodzącą z serwera i klientów.
+Usługi Application Insights można używać z dowolnymi stronami sieci Web — wystarczy dodać krótki fragment kodu JavaScript. Jeśli Twoja usługa sieci Web jest zaprogramowana w technologii [Java](java-get-started.md) lub [ASP.NET](asp-net.md), możesz zintegrować telemetrię pochodzącą z serwera i klientów.
 
-![W witrynie portal.azure.com otwórz zasób swojej aplikacji, a następnie kliknij pozycję Przeglądarka](./media/javascript/03.png)
+![W witrynie portal.azure.com otwórz zasób swojej aplikacji, a następnie kliknij pozycję Przeglądarka](media/javascript/03.png)
 
 Potrzebna jest subskrypcja platformy [Microsoft Azure](https://azure.com). Jeśli zespół ma subskrypcję organizacyjną, poproś właściciela, aby dodał do niej Twoje konto Microsoft.
 
@@ -38,13 +38,13 @@ Zaloguj się do [portalu Azure](https://portal.azure.com).
 
 Jeśli skonfigurowano już monitorowanie po stronie serwera aplikacji, zasób jest już utworzony:
 
-![Wybierz kolejno opcje Przeglądaj, Usługi dla deweloperów, Application Insights.](./media/javascript/01-find.png)
+![Wybierz kolejno opcje Przeglądaj, Usługi dla deweloperów, Application Insights.](media/javascript/01-find.png)
 
 Jeśli nie ma zasobu, utwórz go:
 
-![Wybierz kolejno opcje Nowe, Usługi dla deweloperów, Application Insights.](./media/javascript/01-create.png)
+![Wybierz kolejno opcje Nowe, Usługi dla deweloperów, Application Insights.](media/javascript/01-create.png)
 
-*Już masz pytania?* [Więcej informacji na temat tworzenia zasobu](../../azure-monitor/app/create-new-resource.md ).
+*Już masz pytania?* [Więcej informacji na temat tworzenia zasobu](create-new-resource.md ).
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Dodawanie skryptu zestawu SDK do aplikacji lub stron sieci Web
 
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 Wstaw skrypt tuż przed tagiem `</head>` na każdej stronie, którą chcesz śledzić. Jeśli witryna ma stronę wzorcową, możesz umieścić skrypt na tej stronie. Na przykład:
 
 * W projekcie ASP.NET MVC możesz umieścić go w pliku `View\Shared\_Layout.cshtml`
-* W przypadku witryny programu SharePoint w panelu sterowania otwórz plik [Ustawienia witryny / Strona wzorcowa](../../azure-monitor/app/sharepoint.md).
+* W przypadku witryny programu SharePoint w panelu sterowania otwórz plik [Ustawienia witryny / Strona wzorcowa](sharepoint.md).
 
 Skrypt zawiera klucz instrumentacji, który kieruje dane do odpowiedniego zasobu usługi Application Insights. 
 
@@ -118,9 +118,9 @@ Otwórz blok Przeglądarka, aby wyświetlić agregowane dane wydajności z przeg
 
 ![W witrynie portal.azure.com otwórz zasób swojej aplikacji, a następnie kliknij kolejno opcje Ustawienia, Przeglądarki](./media/javascript/03.png)
 
-Jeszcze nie ma danych? Kliknij przycisk **Odśwież** w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](../../azure-monitor/app/troubleshoot-faq.md).
+Jeszcze nie ma danych? Kliknij przycisk **Odśwież** w górnej części strony. Nadal nic? Zobacz [Rozwiązywanie problemów](troubleshoot-faq.md).
 
-Blok Przeglądarka jest [blokiem Eksploratora metryk](../../azure-monitor/app/metrics-explorer.md) z wstępnie ustawionymi filtrami i wybranymi wykresami. Jeśli chcesz, możesz edytować przedział czasu, filtry i konfiguracje wykresów, a następnie zapisać wynik jako ulubiony. Kliknij przycisk **Przywróć domyślne**, aby wrócić do oryginalnej konfiguracji bloku.
+Blok Przeglądarka jest [blokiem Eksploratora metryk](metrics-explorer.md) z wstępnie ustawionymi filtrami i wybranymi wykresami. Jeśli chcesz, możesz edytować przedział czasu, filtry i konfiguracje wykresów, a następnie zapisać wynik jako ulubiony. Kliknij przycisk **Przywróć domyślne**, aby wrócić do oryginalnej konfiguracji bloku.
 
 ## <a name="page-load-performance"></a>Wydajność ładowania strony
 U góry znajduje się segmentowany wykres czasów ładowania strony. Całkowita wysokość wykresu reprezentuje średni czas ładowania oraz wyświetlania stron z aplikacji w przeglądarkach użytkowników. Czas jest mierzony od momentu wysłania z przeglądarki początkowego żądania HTTP do momentu przetworzenia wszystkich synchronicznych zdarzeń ładowania, wraz z układem i uruchamianiem skryptów. Nie obejmuje zadań asynchronicznych, takich jak ładowanie składników Web Part z wywołań AJAX.
@@ -178,7 +178,6 @@ Klikaj poszczególne wiersze, aby uzyskać szczegółowe informacje.
 
 ![](./media/javascript/37.png)
 
-
 Kliknij przycisk `...`, aby uzyskać pełną telemetrię wywołania Ajax.
 
 ### <a name="no-ajax-calls-reported"></a>Brak zgłoszonych wywołań Ajax?
@@ -202,7 +201,7 @@ W bloku Wyszukiwanie diagnostyczne jako Filtry ustaw Wyświetlenie strony.
 Wybierz dowolne zdarzenie, aby wyświetlić więcej szczegółów. Na stronie szczegółów kliknij przycisk „...”, aby wyświetlić jeszcze więcej szczegółów.
 
 > [!NOTE]
-> Jeśli używasz [wyszukiwania](../../azure-monitor/app/diagnostic-search.md), zwróć uwagę, że musisz dopasowywać całe wyrazy: "Wpisy Abou" i "bout" nie są zgodne "About".
+> Jeśli używasz [wyszukiwania](diagnostic-search.md), zwróć uwagę, że musisz dopasowywać całe wyrazy: "Wpisy Abou" i "bout" nie są zgodne "About".
 > 
 > 
 
@@ -227,8 +226,8 @@ Nazwa strony może zawierać te same znaki co adres URL, ale wszystko po znakach
 ## <a name="usage-tracking"></a>Śledzenie użycia
 Chcesz dowiedzieć się, w jaki sposób użytkownicy korzystają z aplikacji?
 
-* [Dowiedz się więcej o narzędziach analizy zachowania użytkowników](../../azure-monitor/app/usage-overview.md)
-* [Informacje o interfejsie API do monitorowania niestandardowych zdarzeń i metryk](../../azure-monitor/app/api-custom-events-metrics.md).
+* [Dowiedz się więcej o narzędziach analizy zachowania użytkowników](usage-overview.md)
+* [Informacje o interfejsie API do monitorowania niestandardowych zdarzeń i metryk](api-custom-events-metrics.md).
 
 ## <a name="video"></a> Wideo
 
@@ -238,7 +237,7 @@ Chcesz dowiedzieć się, w jaki sposób użytkownicy korzystają z aplikacji?
 
 
 ## <a name="next"></a> Następne kroki
-* [Śledzenie użycia](../../azure-monitor/app/usage-overview.md)
-* [Niestandardowe zdarzenia i metryki](../../azure-monitor/app/api-custom-events-metrics.md)
-* [Tworzenie — pomiar— nauka](../../azure-monitor/app/usage-overview.md)
+* [Śledzenie użycia](usage-overview.md)
+* [Niestandardowe zdarzenia i metryki](api-custom-events-metrics.md)
+* [Tworzenie — pomiar— nauka](usage-overview.md)
 

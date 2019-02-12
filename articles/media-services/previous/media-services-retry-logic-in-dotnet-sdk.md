@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: a5171484bb4377e0f9cd84dc0a517f4ea84123e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 909a68ff0fd78fbdd4870506d1ad579392036dbf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228321"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999202"
 ---
-# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika ponawiania w zestawie SDK usługi multimediów dla platformy .NET
+# <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Logika ponawiania w zestawie SDK usługi multimediów dla platformy .NET  
+
 Podczas pracy z usługami Microsoft Azure, mogą wystąpić błędy przejściowe. Jeśli wystąpi błąd przejściowy, w większości przypadków, po kilku próbach operacja powiedzie się. Media Services SDK dla platformy .NET implementuje logikę ponawiania, do obsługi błędów przejściowych, skojarzone z wyjątków i błędów, które są spowodowane przez żądania sieci web, wykonywanie zapytań, zapisywanie zmian i operacji magazynu.  Domyślnie Media Services SDK dla platformy .NET wykonuje czterech ponownych prób przed ponownego zgłaszania wyjątku do aplikacji. Kod w aplikacji następnie musi poprawnie obsługiwać tego wyjątku.  
 
  Poniżej przedstawiono krótki opis wytyczne dotyczące zasad żądania sieci Web, przechowywania, zapytania i SaveChanges:  
@@ -39,7 +40,7 @@ W poniższej tabeli opisano wyjątki, które obsługuje Media Services SDK dla p
 | Wyjątek | Żądania sieci Web | Magazyn | Zapytanie | SaveChanges |
 | --- | --- | --- | --- | --- |
 | Klasa WebException<br/>Aby uzyskać więcej informacji, zobacz [kodów stanu WebException](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) sekcji. |Yes |Yes |Yes |Yes |
-| Wyjątek DataServiceClientException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Yes |
+| DataServiceClientException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Yes |
 | DataServiceQueryException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Yes |
 | DataServiceRequestException<br/> Aby uzyskać więcej informacji, zobacz [kody stanu błędu HTTP](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nie |Yes |Yes |Yes |
 | DataServiceTransportException |Nie |Nie |Yes |Yes |

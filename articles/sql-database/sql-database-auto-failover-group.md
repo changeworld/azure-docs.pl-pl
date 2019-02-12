@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: d24f7ce20a9dfb8ede184e8f013c2d988a8a96c2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468703"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004251"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
 Automatyczny tryb failover grupy jest funkcją bazy danych SQL, która umożliwia zarządzanie replikacji i trybu failover dla grupy baz danych na serwerze bazy danych SQL lub wszystkich baz danych w wystąpieniu zarządzanym w innym regionie (obecnie dostępna w publicznej wersji zapoznawczej dla wystąpienia zarządzanego). Używa tych samych podstawowych technologii jako [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md). Należy ręcznie zainicjować trybu failover, lub możesz go delegować do usługi SQL Database, na podstawie zasad zdefiniowanych przez użytkownika. Tę druga opcję umożliwia automatyczne odzyskiwanie wielu powiązanych baz danych w regionie pomocniczym oddalonym po poważnej awarii lub innych nieplanowanego zdarzenia, które powoduje utratę pełnej lub częściowej dostępności usługi SQL Database w regionie podstawowym. Ponadto można użyć odczytu pomocniczych baz danych w celu odciążenia obciążeń związanych z zapytaniami tylko do odczytu. Ponieważ grupy automatyczny tryb failover obejmują wiele baz danych, te bazy danych musi być skonfigurowany na serwerze podstawowym. Podstawowych i pomocniczych serwerów baz danych w grupie trybu failover musi być w tej samej subskrypcji. Automatyczny tryb failover grupy obsługuje replikację wszystkich baz danych w grupie, aby tylko jeden serwer pomocniczy w innym regionie.
 
 > [!NOTE]
-> Praca z autonomicznych baz danych w puli na serwerze bazy danych SQL wielu pomocnicze bazy danych w tej samej lub różnych regionach, należy zastosować [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md).
+> Korzystanie z jednego lub pulami baz danych na serwerze bazy danych SQL wielu pomocnicze bazy danych w tej samej lub różnych regionach, należy zastosować [aktywnej replikacji geograficznej](sql-database-active-geo-replication.md).
 
 Jeśli używasz grup automatyczny tryb failover zasady automatycznej pracy awaryjnej, ewentualnej awarii, która ma wpływ na co najmniej kilka baz danych w grupie skutkuje automatycznej pracy awaryjnej. Ponadto automatyczny tryb failover grupy zapewniają odczytu i zapisu oraz punktów końcowych odbiornika tylko do odczytu, które pozostają bez zmian podczas pracy w trybie Failover. Czy korzystasz z aktywacji ręcznego lub automatycznego trybu failover, pracy awaryjnej przełącza wszystkie pomocnicze bazy danych w grupie do podstawowej. Po zakończeniu pracy w trybie failover bazy danych rekord DNS jest automatycznie aktualizowana do przekierowania punktów końcowych w nowym regionie. Dla określonych danych RPO i RTO, zobacz [omówienie ciągłości](sql-database-business-continuity.md).
 
@@ -331,7 +331,7 @@ Zgodnie z opisem wcześniej grupy automatyczny tryb failover i aktywna replikacj
 | Switch-AzureRmSqlDatabaseInstanceFailoverGroup |Wyzwalacze pracy w trybie failover grupy trybu failover na serwer pomocniczy|
 | Remove-AzureRmSqlDatabaseInstanceFailoverGroup | Usuwa grupę trybu failover|
 
-### <a name="rest-api-manage-sql-database-failover-groups-with-standalone-and-pooled-databases"></a>INTERFEJS API REST: Zarządzanie grupami w tryb failover bazy danych SQL przy użyciu autonomicznego i bazy danych w puli
+### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>INTERFEJS API REST: Zarządzanie grupy trybu failover bazy danych SQL za pomocą jednego i puli baz danych
 
 | Interfejs API | Opis |
 | --- | --- |

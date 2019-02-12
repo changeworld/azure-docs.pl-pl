@@ -4,7 +4,7 @@ description: 'W tym temacie pokazano, jak skonfigurować koder na żywo Wirecast
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 0d2f1e81-51a6-4ca9-894a-6dfa51ce4c70
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/09/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: e0e41714f6979a9cd699df70498b9c89a44d5ee1
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: c734c8033947c4f4d5636bc8d82d38a3d871bdbd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53138960"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998573"
 ---
-# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder Wirecast
+# <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder Wirecast 
 > [!div class="op_single_selector"]
 > * [Wirecast](media-services-configure-wirecast-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -74,15 +74,15 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
 
 **Film wideo**:
 
-* Koder-dekoder: H.264
+* Codec: H.264
 * Profil: Wysoki (poziom 4.0)
 * Szybkość transmisji bitów: 5000 KB/s
-* Ramka kluczowa: 2 sekundy (60 sekund)
-* Klatki, szybkości: 30
+* Klatki kluczowe: 2 sekundy (60 sekund)
+* Szybkość klatek: 30
 
 **Dźwięk**:
 
-* Koder-dekoder: AAC (LC)
+* Codec: AAC (LC)
 * Szybkość transmisji bitów: 192 kb/s
 * Częstotliwość próbkowania: 44,1 kHz
 
@@ -106,7 +106,7 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
    * Koder: MainConcept H.264
    * Liczba klatek na sekundę: 30
    * Średnia szybkość transmisji bitów: 5000 kbitów na sekundę (mogą być dostosowywane według ograniczenia sieci)
-   * Profil: Main
+   * Profil: Główny
    * Klatka kluczowa co: 60 klatek
 
     **Audio**

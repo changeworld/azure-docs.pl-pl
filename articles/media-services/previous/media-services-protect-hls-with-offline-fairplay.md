@@ -13,14 +13,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 02/10/2019
 ms.author: willzhan, dwgeo
-ms.openlocfilehash: 7d4094abacb46c5e2b525766d61cb0ede7fc20ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 710ec72e9867ad180afcae8273a093f48933112a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51251836"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991518"
 ---
 # <a name="offline-fairplay-streaming-for-ios"></a>W trybie offline FairPlay Streaming dla systemu iOS 
  Usługa Azure Media Services udostępnia zestaw dobrze zaprojektowanego [usług ochrony zawartości](https://azure.microsoft.com/services/media-services/content-protection/) określające:
@@ -115,14 +115,14 @@ Teraz konto usługi Media Services jest skonfigurowany do dostarczania licencje 
 ## <a name="sample-ios-player"></a>Przykładowe odtwarzacza dla systemu iOS
 Obsługa trybu offline kl. / s jest dostępne tylko w systemie iOS 10 i nowszych wersjach. Zestaw SDK serwera kl. / s (w wersji 3.0 lub nowszej) zawiera przykład do trybu offline kl. / s i dokumentów. W szczególności SDK serwera kl. / s (w wersji 3.0 lub nowszej) zawiera dwa poniższe elementy związane z trybu offline:
 
-* Dokument: "odtwarzania w trybie Offline przy użyciu technologii FairPlay Streaming i HTTP transmisja strumieniowa na żywo." Firmy Apple 14 września 2016 r. W zestawie SDK serwera kl. / s w wersji 4.0 w tym dokumencie są scalane dokumentu głównego kl. / s.
-* Przykładowy kod: przykład HLSCatalog do trybu offline kl. / s w 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ wersji przesyłania strumieniowego Server SDK \FairPlay. Przykładowa aplikacja HLSCatalog następujące pliki kodu są używane do implementowania funkcji w trybie offline:
+* Dokument: "W trybie offline odtwarzania za pomocą technologii FairPlay Streaming i HTTP transmisja strumieniowa na żywo." Firmy Apple 14 września 2016 r. W zestawie SDK serwera kl. / s w wersji 4.0 w tym dokumencie są scalane dokumentu głównego kl. / s.
+* Przykładowy kod: Przykład HLSCatalog do trybu offline kl. / s w 3.1\Development\Client\HLSCatalog_With_FPS\HLSCatalog\ wersji przesyłania strumieniowego Server SDK \FairPlay. Przykładowa aplikacja HLSCatalog następujące pliki kodu są używane do implementowania funkcji w trybie offline:
 
     - Plik kodu AssetPersistenceManager.swift: AssetPersistenceManager jest główna klasa, w tym przykładzie, który demonstruje sposób:
 
         - Pobieranie strumieni HLS, zarządzania, takich jak interfejsy API używane do uruchamiania i anulować pobieranie i usuwanie istniejących zasobów wyłączanie urządzeń.
         - Monitoruj postęp pobierania.
-    - Pliki z kodem AssetListTableViewController.swift i AssetListTableViewCell.swift: AssetListTableViewController to główny interfejs tego przykładu. Zapewnia listę zasobów, które przykład służy do odtwarzania, Pobierz, usuń lub Anuluj pobieranie. 
+    - Pliki kodu AssetListTableViewController.swift i AssetListTableViewCell.swift: AssetListTableViewController jest głównym interfejsu tego przykładu. Zapewnia listę zasobów, które przykład służy do odtwarzania, Pobierz, usuń lub Anuluj pobieranie. 
 
 Te kroki pokazują, jak skonfigurować uruchamianie odtwarzacza dla systemu iOS. Przy założeniu, że zaczynasz od przykładowej HLSCatalog w zestawie SDK serwera kl. / s w wersji 4.0.1, dokonaj następujących zmian kodu:
 

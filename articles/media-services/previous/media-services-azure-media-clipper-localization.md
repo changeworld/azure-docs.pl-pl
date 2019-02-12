@@ -6,17 +6,18 @@ keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 227a312839950652924e75f0bafb474ce7bac588
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: def72c1bb42d083c38640f7c6165c305a5820c75
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448673"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003282"
 ---
-# <a name="configure-localization"></a>Konfigurowanie lokalizacji
+# <a name="configure-localization-legacy"></a>Konfigurowanie lokalizacji (starsza wersja)
+
 Usługa Azure Media Clipper jest dostępna w językach w 18. Aby ustawić język widżet, należy zdefiniować `language` parametr podczas inicjowania. Przekaż w ciągu kodu żądany język z następującej listy:
 - Chiński (uproszczony): nazwy zh-hans
 - Chiński (tradycyjny): zh-hant

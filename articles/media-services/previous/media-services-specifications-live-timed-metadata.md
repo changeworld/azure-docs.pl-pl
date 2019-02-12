@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: johndeu;
-ms.openlocfilehash: 3c51b5fd5bf577479aaeb316d5c1b5f8704f2d19
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 89a19d53046afd8d2b16b23508e952989091c8d2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980435"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005271"
 ---
-# <a name="signaling-timed-metadata-in-live-streaming-legacy"></a>Sygnalizowanie metadanych upłynął limit czasu w transmisji strumieniowej na żywo (starsza wersja)
+# <a name="signaling-timed-metadata-in-live-streaming"></a>Sygnalizowanie metadanych czasowych w transmisji strumieniowej na żywo 
 
 
 ## <a name="1-introduction"></a>Wprowadzenie 1 

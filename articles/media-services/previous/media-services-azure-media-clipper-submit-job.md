@@ -6,17 +6,18 @@ keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 585cb88ca853954b23369c8e097583e7e8656355
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821451"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002143"
 ---
-# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Przesyłanie zadań przycinania z usługi Azure Media Clipper
+# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Przesyłanie zadań przycinania z usługi Azure Media Clipper 
+
 Wymaga usługi Azure Media Clipper **submitSubclipCallback** metodę, aby zaimplementować obsługę przesyłanie zadań przycinania. Ta funkcja jest implementacji metody POST protokołu HTTP Clipper danych wyjściowych do usługi sieci web. Ta usługa sieci web jest, którego można przesłać zadania kodowania. Dane wyjściowe Clipper jest albo usługi Media Encoder Standard kodowania renderowanych zadań wstępne ustawienie lub ładunek filtr manifestów dynamicznych wywołań interfejsu API REST. Ten model przekazywania jest konieczne, ponieważ poświadczenia konta usługi media services nie są bezpieczne w przeglądarce klienta.
 
 Na poniższym diagramie sekwencji przedstawiono przepływ pracy między klient przeglądarki, usługa sieci web i usługi Azure Media Services: ![Diagram sekwencji usługi Azure Media Clipper](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)

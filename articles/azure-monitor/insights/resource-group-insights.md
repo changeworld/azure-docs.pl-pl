@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53585447"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997027"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitor grupy zasobów z usługą Azure Monitor (wersja zapoznawcza)
 
@@ -50,7 +50,7 @@ Stronie szczegółowe informacje dotyczące grupy zasobów zawiera kilka innych 
 
    |         |          |
    | ---------------- |:-----|
-   | [**Alerty**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Wyświetlanie, tworzenie i Zarządzanie alertami. |
+   | [**Alerts**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)      |  Wyświetlanie, tworzenie i Zarządzanie alertami. |
    | [**Metryki**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics) | Wizualizować i eksplorować dane na podstawie metryki.    |
    | [**Dzienniki aktywności**](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs) | Subskrypcja zdarzeń na poziomie, które wystąpiły na platformie Azure.  |
    | [**Mapa aplikacji**](https://docs.microsoft.com/azure/application-insights/app-insights-app-map) | Przejdź topologii aplikacji rozproszonej do identyfikowania wąskich gardeł wydajności lub obszarów nadmiernej aktywności błędów. |
@@ -93,9 +93,9 @@ Szereg **Edytuj** pola są wyświetlane w pobliżu różne elementy skoroszytu. 
 
 ![Zrzut ekranu przedstawiający pól edycji](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-Takie działanie spowoduje wyświetlenie podstawowych zapytań usługi Log Analytics, umożliwiające obsługę wizualizacji tabeli.
+Takie działanie spowoduje wyświetlenie zapytanie dziennika podstawowego, umożliwiające obsługę wizualizacji tabeli.
 
- ![Zrzut ekranu przedstawiający okno zapytania analizy dzienników](./media/resource-group-insights/0010-failure-edit-query.png)
+ ![Zrzut ekranu przedstawiający okno zapytania dziennika](./media/resource-group-insights/0010-failure-edit-query.png)
 
 Zapytania można zmodyfikować bezpośrednio. Lub można go użyć jako odwołania i "pożyczać" z niego, opracowując własne niestandardowe skoroszytu sparametryzowanych.
 
@@ -122,5 +122,5 @@ Usługa Azure Monitor dla grup zasobów zależy od systemu zarządzania alertami
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Usługa Azure Monitor skoroszytów](https://docs.microsoft.com/azure/application-insights/app-insights-usage-workbooks)
-- [Usługa Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
+- [Azure Resource Health](https://docs.microsoft.com/azure/service-health/resource-health-overview)
 - [Alerty usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)

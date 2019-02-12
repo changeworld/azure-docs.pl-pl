@@ -1,6 +1,6 @@
 ---
-title: Zaawansowane agregacji w zapytaniach usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Opisuje niektóre bardziej zaawansowane opcje agregacji, dostępne dla zapytań usługi Log Analytics.
+title: Zaawansowane agregacji w zapytaniach dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Opisuje niektóre bardziej zaawansowane opcje agregacji, dostępne dla usługi Azure Monitor dziennika zapytań.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 1116d03fc9c2328365b0bde29cf9ea900e58b7ed
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5e2152397a4a965e6d62f8fafc2a59bf318b4a5e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186365"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005424"
 ---
-# <a name="advanced-aggregations-in-log-analytics-queries"></a>Zaawansowane agregacji w zapytań usługi Log Analytics
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Zaawansowane agregacji w zapytaniach dzienników usługi Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [agregacji w zapytań usługi Log Analytics](./aggregations.md) przed wykonaniem tej lekcji.
+> Należy wykonać [agregacji w zapytaniach usługi Azure Monitor](./aggregations.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym artykule opisano niektóre bardziej zaawansowane opcje agregacji, dostępne dla zapytań usługi Log Analytics.
+W tym artykule opisano niektóre bardziej zaawansowane opcje agregacji, dostępne dla zapytań usługi Azure Monitor.
 
 ## <a name="generating-lists-and-sets"></a>Generowanie listy i zestawy
 Możesz użyć `makelist` z danymi obrotu przez kolejność wartości w określonej kolumnie. Można na przykład, zapoznaj się z najbardziej typowych kolejność zdarzeń miejsce na maszynach. Zasadniczo można przestawiać danych przez kolejność EventIDs na każdym komputerze. 
@@ -41,7 +41,7 @@ Event
 |Computer (Komputer)|list_EventID|
 |---|---|
 | KOMPUTER1 | [704,701,1501,1500,1085,704,704,701] |
-| KOMPUTER2 | [326,105,302,301,300,102] |
+| computer2 | [326,105,302,301,300,102] |
 | Przyciski ... | Przyciski ... |
 
 `makelist` generuje listę w kolejności, który danych został przekazany do niego. Aby posortować zdarzenia od najstarszych do najnowszych, należy użyć `asc` w instrukcji order zamiast `desc`. 
@@ -57,7 +57,7 @@ Event
 |Computer (Komputer)|list_EventID|
 |---|---|
 | KOMPUTER1 | [704,701,1501,1500,1085] |
-| KOMPUTER2 | [326,105,302,301,300,102] |
+| computer2 | [326,105,302,301,300,102] |
 | Przyciski ... | Przyciski ... |
 
 Podobnie jak `makelist`, `makeset` również współpracuje z uporządkowane danych i wygeneruje tablic, na podstawie kolejności wierszy, które są przekazywane do niego.
@@ -74,7 +74,7 @@ Heartbeat
 | Computer (Komputer) | Rozwiązania | 
 |--------------|----------------------|
 | KOMPUTER1 | "zabezpieczenia", "aktualizacje", "śledzenia zmian" |
-| KOMPUTER2 | "zabezpieczenia", "aktualizacji" |
+| computer2 | "zabezpieczenia", "aktualizacji" |
 | KOMPUTER3 | "ochrony przed złośliwym kodem", "śledzenia zmian" |
 | Przyciski ... | Przyciski ... | Przyciski ... |
 
@@ -92,8 +92,8 @@ Heartbeat
 | KOMPUTER1 | "zabezpieczenia" |
 | KOMPUTER1 | "aktualizacji" |
 | KOMPUTER1 | "śledzenia zmian" |
-| KOMPUTER2 | "zabezpieczenia" |
-| KOMPUTER2 | "aktualizacji" |
+| computer2 | "zabezpieczenia" |
+| computer2 | "aktualizacji" |
 | KOMPUTER3 | "ochrony przed złośliwym kodem" |
 | KOMPUTER3 | "śledzenia zmian" |
 | Przyciski ... | Przyciski ... | Przyciski ... |
@@ -110,10 +110,10 @@ Heartbeat
 ```
 |Rozwiązania | list_Computer |
 |--------------|----------------------|
-| "zabezpieczenia" | ["Komputer1", "komputer2"] |
-| "aktualizacji" | ["Komputer1", "komputer2"] |
-| "śledzenia zmian" | ["Komputer1", "KOMPUTER3"] |
-| "ochrony przed złośliwym kodem" | ["KOMPUTER3"] |
+| "zabezpieczenia" | ["computer1", "computer2"] |
+| "aktualizacji" | ["computer1", "computer2"] |
+| "śledzenia zmian" | ["computer1", "computer3"] |
+| "ochrony przed złośliwym kodem" | ["computer3"] |
 | Przyciski ... | Przyciski ... |
 
 ## <a name="handling-missing-bins"></a>Obsługa brakujących pojemników
@@ -181,7 +181,7 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zobacz inne lekcje dla przy użyciu języka zapytań usługi Log Analytics:
+Zobacz inne lekcje dotyczące korzystania z [język zapytań w Eksploratorze danych](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
 
 - [Operacje na ciągach](string-operations.md)
 - [Operacje daty i godziny](datetime-operations.md)

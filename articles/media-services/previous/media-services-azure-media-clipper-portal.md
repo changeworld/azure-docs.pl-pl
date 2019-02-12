@@ -1,44 +1,45 @@
 ---
-title: Użyj w portalu Azure Media funkcji tworzenia wycinków | Dokumentacja firmy Microsoft
-description: Utwórz klipy przy użyciu usługi Azure Media funkcji tworzenia wycinków w portalu Azure
+title: Użyj usługi Azure Media Clipper w portalu | Dokumentacja firmy Microsoft
+description: Twórz klipy przy użyciu usługi Azure Media Clipper z witryny Azure Portal
 services: media-services
-keywords: klip subclip; kodowanie; nośnika
+keywords: clip;subclip;encoding;media
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1deca68cd6a61ede7536c4d5544036a10c54209b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 510176331a1b79a1069b42afabb63b6b326951cc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788221"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992324"
 ---
-# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Utwórz klipy z usługi Azure Media funkcji tworzenia wycinków w portalu
-Azure Media funkcji tworzenia wycinków w portalu służy do tworzenia klipy z zasobów kont usługi multimediów. Aby rozpocząć, przejdź do Twojego konta usługi media services w portalu. Następnie wybierz pozycję **Subclip** kartę.
+# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Twórz klipy z usługi Azure Media Clipper w portalu  
 
-Na **Subclip** karcie, możesz rozpocząć tworzenie klipów. W portalu funkcji tworzenia wycinków ładuje MP4s pojedynczej szybkości transmisji bitów, MP4s wielokrotnej szybkości transmisji bitów i archiwa na żywo, które są publikowane z prawidłową Lokalizator przesyłania strumieniowego. Nie załadowano nieopublikowane zasoby.
+Usługi Azure Media Clipper w portalu umożliwia Twórz klipy z zasobów na kontach usługi media services. Aby rozpocząć, przejdź do konta usługi media services w portalu. Następnie wybierz pozycję **klipu podrzędnego** kartę.
 
-Funkcji tworzenia wycinków jest obecnie w wersji zapoznawczej. Aby uzyskać dostęp do funkcji tworzenia wycinków w portalu Azure, przejdź do tego [strony publicznej wersji zapoznawczej](https://portal.azure.com/?feature.subclipper=true).
+Na **klipu podrzędnego** karty, możesz rozpocząć tworzenie klipów. W portalu Clipper ładuje pliki mp4 o pojedynczej szybkości transmisji bitów, pliki mp4 o różnej szybkości transmisji bitów i archiwa na żywo, które są publikowane za pomocą nieprawidłowy Lokalizator przesyłania strumieniowego. Cofnięto publikowanie zasobów nie są ładowane.
 
-Na poniższym obrazie przedstawiono strony docelowej funkcji tworzenia wycinków w Twojego konta usługi media services: ![Azure Media funkcji tworzenia wycinków w portalu Azure](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-portal.png)
+Clipper jest obecnie dostępna w publicznej wersji zapoznawczej. Aby uzyskać dostęp Clipper w witrynie Azure portal, przejdź do tej [strony publicznej wersji zapoznawczej](https://portal.azure.com/?feature.subclipper=true).
+
+Na poniższym obrazie przedstawiono stroną docelową Clipper w konto usługi media services: ![Usługa Azure Media Clipper w witrynie Azure portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-portal.png)
 
 ## <a name="producing-clips"></a>Tworzenie klipów
-Aby utworzyć klip, należy przeciągnij i upuść zasobów na interfejsie klip. Jeśli znacznik czasu są znane, należy ręcznie wprowadzić je w interfejsie. W przeciwnym razie wartość odtwarzania zasobu lub przeciągnij głowica Znajdź z żądaną znaku w i czas znacznika. Jeśli czas znacznika lub znacznik końcowy nie zostanie podany, klip rozpoczyna się od początku lub w dalszym ciągu koniec zasobów wejściowych, odpowiednio.
+Do utworzenia klipu, przeciągnij i upuść element zawartości na interfejsie klipu. Jeśli znacznik i godziny są znane, możesz ręcznie wprowadzić je w interfejsie. W przeciwnym razie, odtwarzania elementu zawartości lub przeciągnij wskaźnik odtwarzania, aby znajdź żądany znak do i czas znacznika. Jeśli nie zostanie podany czas w znaku lub znak w poziomie, klip rozpoczyna się od początku lub kontynuuje do końca danych wejściowych zasobu, odpowiednio.
 
-Do nawigacji z ramki dokładność/GOP-dokładność, użyj przycisków ramki do przodu/GOP-następny lub ramki wstecz/GOP — do tyłu. Dla wycinka przed wiele zasobów, należy przeciągnąć i upuścić wiele zasobów w interfejsie klip z panelu wyboru zasobów. Można wybrać i zmienić kolejność zasoby w interfejsie w wymaganej kolejności. Panel wyboru zasobów zawiera czas trwania zasobów, typ i rozpoznawania metadanych dla każdego zasobu. Podczas łączenia ze sobą wiele zasobów, należy wziąć pod uwagę rozpoznanie źródła każdego pliku wejściowego. Jeśli rozwiązania źródła są różne, dolnej wprowadzania rozpoznawania jest upscaled do spełnienia rozpoznanie najwyższy zasobów rozpoznawania. Aby wyświetlić dane wyjściowe zadania wycinka, wybierz przycisk i odtwarza klip z razy wybranego znaku.
+Aby przejść z ramki dokładność/GOP-dokładności, przyciski GOP następny, ramki do przodu w/lub ramki — ze starszymi wersjami/GOP — do tyłu. Dla wycinka względem wielu zasobów, przeciągnij i upuść wiele zasobów w interfejsie klipu z panelu wyboru zasobów. Można wybrać i zmienić kolejność zasoby w interfejsie żądanej kolejności. Panel wyboru zasobów zawiera czas trwania elementu zawartości, typ i rozpoznawanie metadanych dla każdego zasobu. Podczas łączenia ze sobą wiele zasobów, należy wziąć pod uwagę rozpoznanie źródła każdego pliku wejściowego. Jeśli są różne rozwiązania źródła, niższych rozdzielczości danych wejściowych jest upscaled do spełnienia rozwiązanie najwyższego elementu rozpoznawania zawartości. Aby wyświetlić podgląd danych wyjściowych zadania wycinka elementu, wybierz przycisk podglądu i odtwarza klip z razy wybranego zapytania.
 
-## <a name="producing-dynamic-manifest-filters"></a>Tworzenie filtrów dynamicznych manifestu
-[Filtrów dynamicznych manifestu](https://azure.microsoft.com/blog/dynamic-manifest/) opisano zestaw reguł na podstawie atrybutów manifestu i zasobów osi czasu. Reguły te określają, jak punkt końcowy przesyłania strumieniowego manipuluje odtwarzania danych wyjściowych (manifest). Filtr można zmienić segmentów, które są przesyłane strumieniowo do odtwarzania. Filtry utworzonego przez funkcji tworzenia wycinków filtrów lokalnego i są specyficzne dla zawartości źródłowej. W odróżnieniu od renderowanego klipy filtry nie są nowe zasoby i nie wymagają zadania kodowania w celu utworzenia. Można można szybko utworzyć za pomocą [zestawu .NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-dynamic-manifest) lub [interfejsu API REST](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest), jednak są tylko GOP-prawidłowe. Zazwyczaj zasoby zakodowanego do przesyłania strumieniowego mieć rozmiar GOP dwie sekundy.
+## <a name="producing-dynamic-manifest-filters"></a>Tworzenie filtry manifestów dynamicznych
+[Filtry manifestów dynamicznych](https://azure.microsoft.com/blog/dynamic-manifest/) opisują zestaw reguł na podstawie atrybutów manifestu i zawartości osi czasu. Reguły te określają, jak punkt końcowy przesyłania strumieniowego obsługuje listy odtwarzania danych wyjściowych (manifest). Filtr może służyć do zmiany, które segmenty są przesyłane strumieniowo do odtwarzania. Filtry produkowane przez Clipper znajdują się filtry lokalnych i są specyficzne dla zawartości źródłowej. W odróżnieniu od renderowanych klipów filtry nie są nowe zasoby i nie wymagają zadania kodowania do produkcji. Może być szybko tworzone przez [zestawu .NET SDK](https://docs.microsoft.com/azure/media-services/media-services-dotnet-dynamic-manifest) lub [interfejsu API REST](https://docs.microsoft.com/azure/media-services/media-services-rest-dynamic-manifest), jednak są one tylko GOP dokładne. Zazwyczaj zasoby zakodowany na potrzeby przesyłania strumieniowego mają rozmiar GOP dwóch sekund.
 
-Aby utworzyć filtr dynamiczny manifestu, przejdź do **zasoby** i wybierz odpowiednią zasobów. Wybierz **Subclip** przycisk menu u góry. Wybierz filtr dynamiczny manifestu jako tryb przycinania w menu Ustawienia zaawansowane. Można następnie wykonaj te same czynności wygenerowało klipem renderowanych do tworzenia filtru. Filtry można dostarczać tylko z pojedynczego zasobu.
+Aby utworzyć filtr manifestów dynamicznych, przejdź do **zasoby** kartę, a następnie wybierz żądany zasób. Wybierz **klipu podrzędnego** przycisk menu u góry. Wybierz filtr manifestów dynamicznych, jako tryb przycinania w menu Ustawienia zaawansowane. Można następnie postępuj zgodnie z tym samym procesie do tworzenia renderowanych klipów do utworzenia filtru. Filtry można tworzyć tylko z jednego zasobu.
 
-Na poniższym obrazie przedstawiono funkcji tworzenia wycinków w trybie dynamicznym manifestu filtru w portalu Azure: ![Azure Media funkcji tworzenia wycinków w trybie dynamicznym manifestu filtru w portalu Azure](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
+Na poniższym obrazie przedstawiono Clipper w trybie dynamicznym manifestu filtru w witrynie Azure portal: ![Usługa Azure Media Clipper w trybie dynamicznym manifestu filtru w witrynie Azure portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
 
-## <a name="submitting-clipping-jobs"></a>Przesyłanie zadań wycinka
-Po zakończeniu tworzenia klip przycisk przesyłania zadania dla inicjowania odpowiedniego zadania wycinka lub wywołania dynamicznego manifestu.
+## <a name="submitting-clipping-jobs"></a>Przesyłanie zadań przycinania
+Po zakończeniu tworzenia klip przycisk Prześlij zadanie dla inicjowania odpowiedniego wycinka zadania lub wywołania dynamicznego manifestu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby rozpocząć korzystanie z funkcji tworzenia wycinków multimediów Azure, przeczytaj [wprowadzenie](media-services-azure-media-clipper-getting-started.md) artykułu, aby uzyskać więcej informacji na temat wdrażania elementu widget.
+Aby rozpocząć korzystanie z usługi Azure Media Clipper przeczytaj [wprowadzenie](media-services-azure-media-clipper-getting-started.md) artykuł, aby uzyskać szczegółowe informacje na temat wdrażania elementu widget.

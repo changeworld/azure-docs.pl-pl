@@ -1,5 +1,5 @@
 ---
-title: Wyszukiwanie w zasobach za pomocą usługi Azure Log Analytics | Dokumentacja firmy Microsoft
+title: Zapytania w zasobach za pomocą usługi Azure Monitor | Dokumentacja firmy Microsoft
 description: W tym artykule opisano, jak wykonać zapytanie względem zasobów z wielu obszarów roboczych i aplikacji usługi App Insights w Twojej subskrypcji.
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 42191b21faec7bb1929a12e6bc1a724d269acb1d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: ccc9a74c4e238ebfcab0fc05a3bf825000917843
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298878"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998952"
 ---
-# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Wykonaj wyszukiwanie w dzienniku między zasobami w usłudze Log Analytics  
+# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Wykonywać zapytania obejmujące wiele zasobów dzienników w usłudze Azure Monitor  
 
-Wcześniej przy użyciu usługi Azure Log Analytics można było tylko analizować dane z bieżącego obszaru roboczego i jego ograniczoną możliwość wysyłania zapytań w wielu obszarach roboczych zdefiniowanych w subskrypcji.  Ponadto można przeszukiwać tylko elementy danych telemetrycznych zebranych z aplikacji sieci web za pomocą usługi Application Insights bezpośrednio w usłudze Application Insights lub z programu Visual Studio.  To również on żądania do natywnie analizy operacyjnej i dane aplikacji ze sobą.   
+Wcześniej z usługą Azure Monitor, można było tylko analizować dane z bieżącego obszaru roboczego i jego ograniczoną możliwość wysyłania zapytań w wielu obszarach roboczych zdefiniowanych w subskrypcji.  Ponadto można przeszukiwać tylko elementy danych telemetrycznych zebranych z aplikacji sieci web za pomocą usługi Application Insights bezpośrednio w usłudze Application Insights lub z programu Visual Studio.  To również on żądania do natywnie analizy operacyjnej i dane aplikacji ze sobą.   
 
-Teraz można tworzyć zapytania nie tylko między wiele obszarów roboczych usługi Log Analytics, ale także dane z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Zapewnia widok całego systemu danych.  Można wykonać tylko te typy zapytań w [usługi Log Analytics](portals.md#log-analytics-page). Liczba zasobów (obszary robocze usługi Log Analytics i aplikacji usługi Application Insights), które można uwzględnić w ramach pojedynczego zapytania jest ograniczona do 100. 
+Teraz można tworzyć zapytania nie tylko między wiele obszarów roboczych usługi Log Analytics, ale także dane z określonej aplikacji usługi Application Insights w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Zapewnia widok całego systemu danych.  Można wykonać tylko te typy zapytań w [usługi Log Analytics](portals.md). Liczba zasobów (obszary robocze usługi Log Analytics i aplikacji usługi Application Insights), które można uwzględnić w ramach pojedynczego zapytania jest ograniczona do 100. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Wykonywanie zapytań w obszarach roboczych usługi Log Analytics i z usługi Application Insights
 Aby odwoływać się do innego obszaru roboczego w zapytaniu, należy użyć [ *obszaru roboczego* ](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) identyfikatora w przypadku aplikacji z usługi Application Insights, użyj [ *aplikacji* ](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)identyfikatora.  
@@ -101,9 +101,9 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ```
 
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Przy użyciu zapytania obejmujące wiele zasobów dla wielu zasobów
-Korelowanie danych z wielu usługi Log Analytics i zasoby usługi Application Insights za pomocą zapytania obejmujące wiele zasobów, zapytanie może stać się złożona i trudne w utrzymaniu. Powinny wykorzystywać [funkcji w usłudze Log Analytics](../../azure-monitor/log-query/functions.md) do oddzielania logiki zapytania od zakres zasobów kwerendy, co upraszcza strukturę zapytania. Poniższy przykład pokazuje, jak można monitorować wiele zasobów usługi Application Insights i zwizualizować liczbę żądań zakończonych niepowodzeniem według nazwy aplikacji. 
+Korelowanie danych z wielu obszarów roboczych usługi Log Analytics i zasoby usługi Application Insights za pomocą zapytania obejmujące wiele zasobów, zapytanie może stać się złożona i trudne w utrzymaniu. Powinny wykorzystywać [zapytania dziennika usługi functions w usłudze Azure Monitor](functions.md) do oddzielania logiki zapytania od zakres zasobów kwerendy, co upraszcza strukturę zapytania. Poniższy przykład pokazuje, jak można monitorować wiele zasobów usługi Application Insights i zwizualizować liczbę żądań zakończonych niepowodzeniem według nazwy aplikacji. 
 
-Utwórz zapytanie, podobnie do poniższego, który odwołuje się do zakresu zasobów usługi Application Insights. `withsource= SourceApp` Polecenie dodaje kolumny, która określa nazwę aplikacji, które są wysyłane dziennika. [Zapisz zapytanie jako funkcja](../../azure-monitor/log-query/functions.md#create-a-function) z aliasem _applicationsScoping_.
+Utwórz zapytanie, podobnie do poniższego, który odwołuje się do zakresu zasobów usługi Application Insights. `withsource= SourceApp` Polecenie dodaje kolumny, która określa nazwę aplikacji, które są wysyłane dziennika. [Zapisz zapytanie jako funkcja](functions.md#create-a-function) z aliasem _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -131,4 +131,5 @@ applicationsScoping
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Przegląd [Zaloguj się odwołanie do wyszukiwania usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/kusto) Aby wyświetlić wszystkie opcje składni zapytań dostępnych w usłudze Log Analytics.    
+- Przegląd [Analizuj dane dzienników w usłudze Azure Monitor](log-query-overview.md) Przegląd dziennika zapytań i struktury danych dzienników usługi Azure Monitor.
+- Przegląd [zapytań dzienników usługi Azure Monitor](query-language.md) do wyświetlania wszystkich zasobów usługi Azure Monitor dziennika zapytań.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883776"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002119"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -83,7 +83,7 @@ W witrynie Azure portal można filtrować według tych pól dziennik aktywności
 
 Po zdefiniowaniu zestaw filtrów kwerendy można przypiąć do pulpitu nawigacyjnego platformy Azure, aby zawsze nadzorować określonych zdarzeń.
 
-Aby uzyskać jeszcze większe możliwości, możesz kliknąć **dzienniki** ikonę, która wyświetla dane dziennika aktywności w [rozwiązanie Log Analytics Activity Log Analytics](../../azure-monitor/platform/collect-activity-logs.md). Blok dziennika aktywności oferuje środowisko podstawowa filtru/przeglądania dzienników, ale usługi Log Analytics umożliwia przestawianie, zapytania i wizualizować dane w sposób bardziej wydajne.
+Aby uzyskać jeszcze większe możliwości, możesz kliknąć **dzienniki** ikonę, która wyświetla dane dziennika aktywności w [zbieranie i analizowanie dzienników aktywności rozwiązania](../../azure-monitor/platform/collect-activity-logs.md). Blok dziennika aktywności oferuje środowisko podstawowa filtru/przeglądania dzienników, ale umożliwia funkcji dzienniki usługi Azure Monitor przestawić, zapytania i wizualizować dane w sposób bardziej wydajne.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Eksportuj Dziennik aktywności, za pomocą profilu dziennika
 A **profilu dziennika** kontroluje sposób dziennik aktywności jest eksportowana. Przy użyciu profilu dziennika, można skonfigurować:
@@ -142,7 +142,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | Właściwość | Wymagane | Opis |
 | --- | --- | --- |
-| Nazwa |Yes |Nazwa profilu dziennika. |
+| Name |Yes |Nazwa profilu dziennika. |
 | StorageAccountId |Nie |Identyfikator zasobu konta magazynu, w którym można zapisać w dzienniku aktywności. |
 | serviceBusRuleId |Nie |Identyfikator reguły usługi Service Bus dla przestrzeni nazw usługi Service Bus chcesz mieć centra zdarzeń utworzonych w. Jest to ciąg w formacie: `{service bus resource ID}/authorizationrules/{key name}`. |
 | Lokalizacja |Yes |Rozdzielana przecinkami lista regionów, dla których chcesz zbierać zdarzenia dziennika aktywności. |

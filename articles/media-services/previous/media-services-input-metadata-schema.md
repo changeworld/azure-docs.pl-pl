@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 3eea59eba9fc1fc79a6f72a61860ee7e66a7df5b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 42e3464a190f296675b544e0087b664ff256f2fa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994284"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003248"
 ---
-# <a name="input-metadata"></a>Metadane wejściowe
+# <a name="input-metadata-legacy"></a>Metadane wejściowe (starsza wersja)
 
 Zadania kodowania jest skojarzony z wejściowego elementu (lub zasoby), w której chcesz wykonać kilka zadań kodowania.  Po zakończeniu zadania elementu zawartości wyjściowej jest generowany.  Elementu zawartości wyjściowej zawiera film wideo, audio, miniatury, manifest itp. Elementu zawartości wyjściowej zawiera także plik o metadane dotyczące zasobu danych wejściowych. Nazwa pliku XML metadanych ma następujący format: &lt;asset_id&gt;_metadata.xml (na przykład 41114ad3-eb5e - 4c, d 57 8 92-5354e2b7d4a4_metadata.xml), gdzie &lt;asset_id&gt; jest wartością AssetId zasób wejściowy.  
 
@@ -40,7 +40,7 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 
 | Name (Nazwa) | Opis |
 | --- | --- |
-| **AssetFile**<br /><br /> minOccurs = maxOccurs "1" = "niepowiązanego" |Jeden typ elementów podrzędnych. Aby uzyskać więcej informacji, zobacz [elementu AssetFile](media-services-input-metadata-schema.md#AssetFile). |
+| **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |Jeden typ elementów podrzędnych. Aby uzyskać więcej informacji, zobacz [elementu AssetFile](media-services-input-metadata-schema.md#AssetFile). |
 
 ## <a name="AssetFile"></a> AssetFile element
  Zawiera atrybuty i elementy, które opisują pliku elementu zawartości.  
@@ -52,11 +52,11 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 | --- | --- | --- |
 | **Nazwa**<br /><br /> Wymagane |**xs:String** |Nazwa pliku zasobu. |
 | **Rozmiar**<br /><br /> Wymagane |**xs:Long** |Rozmiar pliku elementu zawartości, w bajtach. |
-| **Czas trwania**<br /><br /> Wymagane |**DURATION** |Czas trwania wstecz odtwarzania zawartości. Przykład: Czas trwania = "PT25M37.757S". |
+| **Czas trwania**<br /><br /> Wymagane |**DURATION** |Czas trwania wstecz odtwarzania zawartości. Przykład: Duration="PT25M37.757S". |
 | **NumberOfStreams**<br /><br /> Wymagane |**xs:int** |Liczba strumieni w pliku elementu zawartości. |
 | **FormatNames**<br /><br /> Wymagane |**xs: ciąg** |Format nazwy. |
 | **FormatVerboseNames**<br /><br /> Wymagane |**xs: ciąg** |Pełne nazwy formatu. |
-| **Godzina rozpoczęcia** |**DURATION** |Godzina rozpoczęcia zawartości. Przykład: StartTime = "PT2.669S". |
+| **Godzina rozpoczęcia** |**DURATION** |Godzina rozpoczęcia zawartości. Przykład: StartTime="PT2.669S". |
 | **OverallBitRate** |**xs: int** |Średnia szybkość transmisji bitów pliku zasobów w KB/s. |
 
 > [!NOTE]
@@ -81,10 +81,10 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 | **Identyfikator**<br /><br /> Wymagane |**xs:int** |Liczony od zera indeks tej ścieżki audio lub wideo.<br /><br /> To nie jest koniecznie że TrackID jako używane w pliku MP4. |
 | **Koder-dekoder** |**xs:String** |Parametry kodera-dekodera wideo śledzenie. |
 | **CodecLongName** |**xs: ciąg** |Koder długa nazwa ścieżki audio lub wideo. |
-| **Podstawy czasu**<br /><br /> Wymagane |**xs:String** |Podstawa czasu. Przykład: Podstawy czasu = "1/48000" |
+| **TimeBase**<br /><br /> Wymagane |**xs:String** |Podstawa czasu. Przykład: TimeBase="1/48000" |
 | **NumberOfFrames** |**xs:int** |Liczba ramek (stosowany w przypadku ścieżek wideo). |
-| **Godzina rozpoczęcia** |**xs: czas trwania** |Godzina rozpoczęcia śledzenia. Przykład: StartTime = "PT2.669S" |
-| **Czas trwania** |**DURATION** |Śledzenie czasu trwania. Przykład: Czas trwania = "PTSampleFormat M37.757S". |
+| **Godzina rozpoczęcia** |**xs: czas trwania** |Godzina rozpoczęcia śledzenia. Przykład: StartTime="PT2.669S" |
+| **Czas trwania** |**DURATION** |Śledzenie czasu trwania. Przykład: Duration="PTSampleFormat M37.757S". |
 
 > [!NOTE]
 > Następujących elementów podrzędnych dwóch musi znajdować się w sekwencji.  
@@ -94,7 +94,7 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 ### <a name="child-elements"></a>Elementy podrzędne
 | Name (Nazwa) | Typ | Opis |
 | --- | --- | --- |
-| **Dyspozycja**<br /><br /> minOccurs = maxOccurs "0" = "1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Zawiera informacje o prezentacji (na przykład, czy określonej ścieżki audio jest przeznaczone dla osób niedowidzących). |
+| **Dyspozycja**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Zawiera informacje o prezentacji (na przykład, czy określonej ścieżki audio jest przeznaczone dla osób niedowidzących). |
 | **Metadata**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Ciągi ogólny klucz/wartość, które mogą służyć do przechowywania różnych informacji. Na przykład klucz = "język" i wartość = "eng". |
 
 ## <a name="AudioTrackType"></a> AudioTrackType (dziedziczy TrackType)
@@ -109,10 +109,10 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 | --- | --- | --- |
 | **SampleFormat** |**xs:String** |Przykładowy format. |
 | **ChannelLayout** |**xs: ciąg** |Układ kanału. |
-| **kanały**<br /><br /> Wymagane |**xs:int** |Liczba (0 lub więcej) audio kanałów. |
+| **Channels**<br /><br /> Wymagane |**xs:int** |Liczba (0 lub więcej) audio kanałów. |
 | **SamplingRate**<br /><br /> Wymagane |**xs:int** |Częstotliwość próbkowania audio w prób. / s lub Hz. |
 | **Szybkość transmisji bitów** |**xs:int** |Średnia audio szybkość transmisji bitów w bitach na sekundę obliczone z pliku zasobów. Tylko ładunek strumienia podstawowych są traktowane, a obciążenie pakowania jest niedostępna w tej liczby. |
-| **Bitspersample obsahuje neplatnou Hodnotu** |**xs:int** |Bity na przykład wFormatTag format typu. |
+| **BitsPerSample** |**xs:int** |Bity na przykład wFormatTag format typu. |
 
 ## <a name="VideoTrackType"></a> VideoTrackType (dziedziczy TrackType)
 **VideoTrackType** to globalny typ złożony, który dziedziczy z [TrackType](media-services-input-metadata-schema.md#TrackType).  
@@ -131,10 +131,10 @@ Zobacz przykład XML na końcu tego artykułu: [XML — przykład](media-service
 | **Szerokość**<br /><br /> Wymagane |**xs:int** |Kodowany w formacie wideo szerokość w pikselach. |
 | **Wysokość**<br /><br /> Wymagane |**xs:int** |Kodowany w formacie wideo wysokość w pikselach. |
 | **DisplayAspectRatioNumerator**<br /><br /> Wymagane |**xs: double** |Licznik współczynnik proporcji ekranu wideo. |
-| **DisplayAspectRatioDenominator**<br /><br /> Wymagane |**xs:Double** |Denominator współczynnik proporcji ekranu wideo. |
+| **DisplayAspectRatioDenominator**<br /><br /> Wymagane |**xs:double** |Denominator współczynnik proporcji ekranu wideo. |
 | **DisplayAspectRatioDenominator**<br /><br /> Wymagane |**xs: double** |Licznik współczynnik proporcji próbki wideo. |
 | **SampleAspectRatioNumerator** |**xs: double** |Licznik współczynnik proporcji próbki wideo. |
-| **SampleAspectRatioNumerator** |**xs:Double** |Denominator współczynnik proporcji próbki wideo. |
+| **SampleAspectRatioNumerator** |**xs:double** |Denominator współczynnik proporcji próbki wideo. |
 | **Szybkość klatek**<br /><br /> Wymagane |**xs:decimal** |Mierzone szybkość odtwarzania wideo w formacie .3f. |
 | **Szybkość transmisji bitów** |**xs:int** |Średnia wideo szybkość transmisji bitów w kilobitów na sekundę obliczone z pliku zasobów. Tylko ładunek strumienia podstawowych są traktowane, a obciążenie pakietu nie jest dołączony. |
 | **MaxGOPBitrate** |**xs: int** |Maksymalna liczba GOP średnia szybkość transmisji bitów dla tej ścieżki wideo w kilobitów na sekundę. |

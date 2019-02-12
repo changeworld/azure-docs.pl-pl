@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 37dd51a60d9ec6e018f58e2cfd593490d126670b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3dac11ac4409ddde5264307439533bd583d75a9d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888655"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993062"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importowanie i eksportowanie pliku strefy DNS przy użyciu wiersza polecenia platformy Azure 
 
@@ -116,7 +116,7 @@ Aby sprawdzić strefy DNS, po zaimportowaniu pliku, można użyć jednej z nast�
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* Możesz wyświetlić listę rekordów za pomocą polecenia cmdlet programu PowerShell `Get-AzureRmDnsRecordSet`.
+* Możesz wyświetlić listę rekordów za pomocą polecenia interfejsu wiersza polecenia Azure `az network dns record-set ns list`.
 * Możesz użyć `nslookup` można sprawdzić rozpoznawanie nazw dla rekordów. Ponieważ strefa nie jest jeszcze delegować, musisz jawnie określić poprawne serwery nazw usługi Azure DNS. Poniższy przykład pokazuje, jak można pobrać nazw serwerów nazw przypisanych do strefy. To także pokazuje, jak wykonywać zapytania rekordów "www" za pomocą `nslookup`.
 
     ```azurecli
@@ -188,6 +188,6 @@ Jako importowanie strefy można najpierw należy do logowania, wybierz subskrypc
 
 Aby wyeksportować istniejącej strefy DNS platformy Azure **contoso.com** w grupie zasobów **myresourcegroup** do pliku **contoso.com.txt** (w bieżącym folderze), uruchom `azure network dns zone export`. To polecenie wymaga usługi Azure DNS, aby wyliczyć zestawów rekordów w strefie i wyeksportować wyniki do pliku strefy zgodny z BIND.
 
-    ```
-    az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
-    ```
+```
+az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
+```

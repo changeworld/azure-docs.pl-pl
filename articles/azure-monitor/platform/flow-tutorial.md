@@ -1,5 +1,5 @@
 ---
-title: Automatyzacja procesów usługi Azure Log Analytics przy użyciu Microsoft Flow
+title: Automatyzacja procesów dzienników usługi Azure Monitor z Microsoft Flow
 description: Dowiedz się, jak Microsoft Flow umożliwia szybkie zautomatyzować powtarzalnych procesów za pomocą łącznika usługi Azure Log Analytics.
 services: log-analytics
 documentationcenter: ''
@@ -11,33 +11,35 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 441064d6cbb5b3b2fae77caef3125c8db3467553
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: f38d9b40143391be34ce5f72627720e2f5119dc6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187453"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993779"
 ---
-# <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Automatyzacja procesów usługi Log Analytics przy użyciu łącznika dla Microsoft Flow
-[Microsoft Flow](https://ms.flow.microsoft.com) pozwala tworzyć zautomatyzowane przepływy pracy przy użyciu setek akcji dla wielu usług. Dane wyjściowe z akcji może służyć jako dane wejściowe do innego, co pozwala na tworzenie integracja między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow, umożliwiają tworzenie przepływów pracy, które zawierają dane pobierane przez wyszukiwań w dziennikach w usłudze Log Analytics.
+# <a name="automate-azure-monitor-log-processes-with-the-connector-for-microsoft-flow"></a>Zautomatyzować procesy dzienników usługi Azure Monitor z łącznikiem usługi Microsoft Flow
+[Microsoft Flow](https://ms.flow.microsoft.com) pozwala tworzyć zautomatyzowane przepływy pracy przy użyciu setek akcji dla wielu usług. Dane wyjściowe z akcji może służyć jako dane wejściowe do innego, co pozwala na tworzenie integracja między różnymi usługami.  Łącznik usługi Azure Log Analytics dla Microsoft Flow, umożliwiają tworzenie przepływów pracy, które zawierają dane pobierane przez dziennika zapytań z obszaru roboczego usługi Log Analytics w usłudze Azure Monitor.
 
-Na przykład można użyć Microsoft Flow do korzystania z danych usługi Log Analytics na powiadomienie e-mail z usługi Office 365, Utwórz usterkę w DevOps platformy Azure lub opublikuj wiadomość Slack.  Możesz wyzwolić przepływu pracy przez harmonogram prosty lub niektóre akcje w przypadku połączonych usług, takich jak po odebraniu wiadomości e-mail lub tweet.  
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatycznie wysyła wyniki przeszukiwania dzienników usługi Log Analytics za pośrednictwem poczty e-mail, tylko jeden przykład wykorzystania usługi Log Analytics w Microsoft Flow. 
+Na przykład można użyć Microsoft Flow do korzystania z danych dziennika LAzure monitora na powiadomienie e-mail z usługi Office 365, Utwórz usterkę w DevOps platformy Azure lub opublikuj wiadomość Slack.  Możesz wyzwolić przepływu pracy przez harmonogram prosty lub niektóre akcje w przypadku połączonych usług, takich jak po odebraniu wiadomości e-mail lub tweet.  
+
+Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatycznie wysyła wyników kwerendy dzienników usługi Azure Monitor za pośrednictwem poczty e-mail, tylko jeden przykład sposobu korzystania z łącznika usługi Log Analytics w Microsoft Flow. 
 
 
-## <a name="step-1-create-a-flow"></a>Krok 1. Tworzenie przepływu
+## <a name="step-1-create-a-flow"></a>Krok 1: Tworzenie przepływu
 1. Zaloguj się do [Microsoft Flow](https://flow.microsoft.com)i wybierz **moje przepływy**.
 2. Kliknij przycisk **+ Utwórz z pustego**.
 
-## <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2. Tworzenie wyzwalacza przepływu
+## <a name="step-2-create-a-trigger-for-your-flow"></a>Krok 2: Tworzenie wyzwalacza przepływu
 1. Kliknij przycisk **Przeszukaj setki łączników i wyzwalaczy**.
 2. Typ **harmonogram** w polu wyszukiwania.
 3. Wybierz **harmonogram**, a następnie wybierz pozycję **harmonogram — cyklicznie**.
 4. W **częstotliwość** polu Wybierz **dzień** i **interwał** wprowadź **1**.<br><br>![Okno dialogowe wyzwalacz Microsoft Flow](media/flow-tutorial/flow01.png)
 
 
-## <a name="step-3-add-a-log-analytics-action"></a>Krok 3. Dodaj akcję usługi Log Analytics
+## <a name="step-3-add-a-log-analytics-action"></a>Krok 3: Dodaj akcję usługi Log Analytics
 1. Kliknij przycisk **+ nowy krok**, a następnie kliknij przycisk **Dodaj akcję**.
 2. Wyszukaj **Log Analytics**.
 3. Kliknij przycisk **usługi Azure Log Analytics — uruchom zapytanie, a wizualizacja wyników**.<br><br>![Uruchom okno zapytania w usłudze log Analytics](media/flow-tutorial/flow02.png)
@@ -45,7 +47,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 ## <a name="step-4-configure-the-log-analytics-action"></a>Krok 4: Skonfiguruj akcję usługi Log Analytics
 
 1. Określ szczegóły dla Twojego obszaru roboczego, w tym subskrypcji identyfikator, grupy zasobów i nazwę obszaru roboczego.
-2. Następujące zapytanie usługi Log Analytics, aby dodać **zapytania** okna.  Jest to tylko przykładowe zapytanie, i możesz zastąpić dowolne inne zwracającej dane.
+2. Następujące zapytanie dziennika, aby dodać **zapytania** okna.  Jest to tylko przykładowe zapytanie, i możesz zastąpić dowolne inne zwracającej dane.
 ```
     Event
     | where EventLevelName == "Error" 
@@ -56,7 +58,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 
 2. Wybierz **tabeli HTML** dla **typ wykresu**.<br><br>![Akcja analizy dzienników](media/flow-tutorial/flow03.png)
 
-## <a name="step-5-configure-the-flow-to-send-email"></a>Krok 5: Konfiguruj przepływ do wysyłania wiadomości e-mail
+## <a name="step-5-configure-the-flow-to-send-email"></a>Krok 5. Konfiguruj przepływ do wysyłania wiadomości e-mail
 
 1. Kliknij przycisk **nowy krok**, a następnie kliknij przycisk **+ Dodaj akcję**.
 2. Wyszukaj **usługi Office 365 Outlook**.
@@ -77,7 +79,7 @@ Samouczek, w tym artykule pokazano, jak utworzyć przepływ, który automatyczni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [przeszukiwanie dzienników w usłudze Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+- Dowiedz się więcej o [rejestrowania zapytań w usłudze Azure Monitor](../log-query/log-query-overview.md).
 - Dowiedz się więcej o [Microsoft Flow](https://ms.flow.microsoft.com).
 
 

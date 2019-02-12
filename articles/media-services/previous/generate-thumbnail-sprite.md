@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 09/24/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 93222129b80592ef5b4e1ed2e1420d975fe9f108
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: b4d760d8520f43b223665f17c85d3932761ebe17
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190734"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003112"
 ---
-# <a name="generate-a-thumbnail-sprite"></a>Generowanie miniatur sprite 
+# <a name="generate-a-thumbnail-sprite"></a>Generowanie miniatur sprite  
 
 Usługi Media Encoder Standard umożliwia generowanie miniatur sprite, który plik JPEG, który zawiera wiele miniatur małych rozpoznawania połączonych w jeden obraz (duża liczba godzin), wraz z plik VTT. Ten plik VTT określa zakres czasu w wejściowy plik wideo, który reprezentuje poszczególne miniatury, wraz z rozmiarem i współrzędne tego miniaturę w dużych plików JPEG. Odtwarzacze wideo użyć obrazu pliku i sprite VTT Pokaż "visual" seekbar, dostarczając przeglądarka wizualną opinię podczas szybkiej kontroli Wstecz i do przodu osi wideo.
 

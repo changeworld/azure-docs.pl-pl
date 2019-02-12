@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: ba3ca363afe96c137a4a9eecdeda33e0f9129111
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 89778375c6362007a81eab72663f56492f4fe206
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868433"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997910"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy
 Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji. 
@@ -362,6 +362,9 @@ Odpowiedź oznaczająca Powodzenie z punktem końcowym usługi LUIS jest:
 ## <a name="use-the-traffic-manager-parent-profile"></a>Użyj profilu usługi Traffic Manager nadrzędnego
 Aby można było zarządzać ruchem między punktami końcowymi, należy wstawić numer telefonu w systemie DNS usługi Traffic Manager, aby znaleźć punkt końcowy usługi LUIS. To wywołanie jest wykonywane dla każdego żądania punktu końcowego usługi LUIS i musi zostać symulować lokalizację geograficzną użytkownika aplikacji klienckiej usługi LUIS. Dodaj kod odpowiedzi DNS w zakresie od aplikacji klienckiej usługi LUIS do żądania do usługi LUIS do przewidywania punktu końcowego. 
 
+## <a name="resolving-a-degraded-state"></a>Rozpoznawanie ze stanem obniżonej wydajności
+
+Włącz [dzienniki diagnostyczne](../../traffic-manager/traffic-manager-diagnostic-logs.md) usługi Traffic Manager aby zobaczyć, dlaczego stan punktu końcowego ma obniżoną wydajność.
 
 ## <a name="clean-up"></a>Czyszczenie
 Usuń dwa klucze punktu końcowego usługi LUIS, trzy profile usługi Traffic Manager i grupę zasobów, która zawiera następujące pięć zasoby. Można to zrobić w witrynie Azure portal. Pięć zasoby możesz usunąć z listy zasobów. Następnie usuń grupę zasobów. 

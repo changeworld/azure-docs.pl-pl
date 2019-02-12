@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/12/2018
-ms.openlocfilehash: 8ffda7fd1b987e34dc0e8157b535ccef65571247
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 95a86dafc4705d58ac459ff57e4f221d19fb7a37
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567897"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990295"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Usuwanie ochrony przezroczystego szyfrowania danych (TDE), przy użyciu programu PowerShell
 
@@ -25,11 +25,11 @@ ms.locfileid: "55567897"
 
 - Konieczne jest posiadanie subskrypcji platformy Azure oraz mieć uprawnienia administratora na tę subskrypcję
 - Konieczne jest posiadanie programu Azure PowerShell w wersji 4.2.0 lub nowszej zainstalowany i uruchomiony. 
-- W tym przewodniku przyjęto założenie, że korzystasz już klucza z usługi Azure Key Vault jako funkcja ochrony TDE dla usługi Azure SQL Database lub magazynu danych. Zobacz [funkcji Transparent Data Encryption z obsługą funkcji BYOK](transparent-data-encryption-byok-azure-sql.md) Aby dowiedzieć się więcej.
+- W tym przewodniku przyjęto założenie, że korzystasz już klucza z usługi Azure Key Vault jako funkcja ochrony TDE dla usługi Azure SQL Database lub magazynu danych. Zobacz [funkcji Transparent Data Encryption dzięki integracji usługi Azure Key Vault — z obsługą funkcji BYOK](transparent-data-encryption-byok-azure-sql.md) Aby dowiedzieć się więcej.
 
 ## <a name="overview"></a>Przegląd
 
-W tym przewodniku opisano sposób reagowania na mogą mieć złamane zabezpieczenia ochrony TDE dla usługi Azure SQL Database lub magazynu danych, który używa funkcji TDE z obsługą Bring Your Own Key (BYOK). Aby dowiedzieć się więcej na temat obsługi funkcji BYOK dla funkcji TDE, zobacz [strony Przegląd](transparent-data-encryption-byok-azure-sql.md). 
+W tym przewodniku opisano sposób reagowania na mogą mieć złamane zabezpieczenia ochrony TDE dla usługi Azure SQL Database lub magazynu danych, który używa funkcji TDE za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault — Obsługa Bring Your Own Key (BYOK). Aby dowiedzieć się więcej na temat obsługi funkcji BYOK dla funkcji TDE, zobacz [strony Przegląd](transparent-data-encryption-byok-azure-sql.md). 
 
 Poniższych procedur należy to robić tylko w ekstremalnych przypadkach lub w środowiskach testowych. Należy uważnie przeczytać Przewodnik z instrukcjami dotyczącymi, ponieważ usunięcie aktywnie używanych funkcji TDE funkcje ochrony kluczy z usługi Azure Key Vault może spowodować **utraty danych**. 
 

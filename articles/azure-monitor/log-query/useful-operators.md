@@ -1,6 +1,6 @@
 ---
-title: Przydatne operatorów zapytań usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Typowe funkcje do użycia w różnych scenariuszach zapytań usługi Log Analytics.
+title: Operatory przydatne w usłudze Azure Monitor rejestrowania zapytań | Dokumentacja firmy Microsoft
+description: Typowe funkcje na potrzeby różnych scenariuszy, w usłudze Azure Monitor rejestrowania zapytań.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 060b1e469a31c335f062ccd332157d13e64f9318
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: d11445c3f31f9aced6fdb9783575d10a026de1f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53183986"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000152"
 ---
-# <a name="useful-operators-in-log-analytics-queries"></a>Przydatne operatorów zapytań usługi Log Analytics
+# <a name="useful-operators-in-azure-monitor-log-queries"></a>Operatory przydatne w zapytaniach dzienników usługi Azure Monitor
 
-W poniższej tabeli przedstawiono niektóre typowe funkcje do użycia w różnych scenariuszach zapytań usługi Log Analytics.
+W poniższej tabeli przedstawiono niektóre typowe funkcje na potrzeby różnych scenariuszy w zapytaniach dzienników usługi Azure Monitor.
 
 ## <a name="useful-operators"></a>Przydatne operatory
 
@@ -46,4 +46,4 @@ Uczenie maszynowe                        |`evaluate autocluster`, `basket`, `dif
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przejdź przez lekcji [Pisanie zapytań w usłudze Log Analytics](get-started-queries.md).
+- Przejdź przez lekcji [Pisanie zapytań dzienników w usłudze Azure Monitor](get-started-queries.md).

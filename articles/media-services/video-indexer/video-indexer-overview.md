@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 12/24/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 58124ab5938c7bee9f83a8c37ab5c5618b4b7d54
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 78b362eb75ab4e0ca17045f8c32761a65897d449
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789827"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000186"
 ---
 # <a name="what-is-video-indexer"></a>Co to jest Video Indexer?
 
@@ -22,7 +22,7 @@ Usługa Azure Video Indexer to aplikacja w chmurze utworzona za pomocą usługi 
  
 - **Automatyczne wykrywanie języka**: Automatycznie rozpoznaje dominujący język mówiony. Obsługiwane języki: angielski, chiński (uproszczony), francuski, hiszpański, japoński, niemiecki, portugalski (Brazylia), rosyjski i włoski. Gdy języka nie będzie można wykryć, użyty zostanie język angielski.
 - **Transkrypcję audio**: Konwertuje mowy na tekst w 12 języków i umożliwia rozszerzeń. Obsługiwane języki angielski, hiszpański, francuski, niemiecki, włoski, chiński (uproszczony), japoński, arabski, rosyjski, portugalski (Brazylia), Hindi i koreańskim.
-- **Podpisy kodowane**: Tworzy kodowanych w trzech formatach: SRT VTT, TTML.
+- **Podpisy kodowane**: Tworzy kodowanych w trzech formatach: VTT, TTML, SRT.
 - **Dwa kanału przetwarzania**: Automatycznie wykryje, oddziel transkrypcji i scalenia na pojedynczej osi czasu.
 - **Redukcja szumów**:  Czyści się nagrania audio lub hałas telefonii (oparte na filtry Skype).
 - **Dostosowywanie transkrypcji (CRI)**: Szkolenie modeli i wykonuje rozszerzonej niestandardowa zamiana mowy na tekst modele, aby utworzyć zapisy branżowych.

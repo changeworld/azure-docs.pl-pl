@@ -4,23 +4,23 @@ description: W tym temacie pokazano, jak modyfikowanie twarze za pomocą usługi
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/09/2019
 ms.author: juliako;
-ms.openlocfilehash: 910cc246aa19e19b109fc660682c6b2dc239cbb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7fa1bec1b6f83b18684f6139bf6ac8db1ae9daec
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "33789383"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004897"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>Redagowanie twarze za pomocą usługi Azure Media Analytics
+# <a name="redact-faces-with-azure-media-analytics-legacy"></a>Redagowanie twarze za pomocą usługi Azure Media Analytics (starsza wersja)
 ## <a name="overview"></a>Przegląd
 **Usługa Azure Media Redactor** jest [analizy multimediów Azure](media-services-analytics-overview.md) procesor multimediów (MP), który oferuje pomocą redakcji twarzy skalowalny w chmurze. Pomocą redakcji twarzy umożliwia modyfikowanie wideo w celu rozmycie twarze wybranych osób. Można użyć usługa redakcji twarzy w publicznych scenariuszach bezpieczeństwa i mediów informacyjnych. Kilka minut materiał, który zawiera wiele powierzchni może zająć godzin redagowanie ręcznie, ale z tą usługą procesu redakcji twarzy wymaga tylko kilku prostych krokach. Aby uzyskać więcej informacji, zobacz [to](https://azure.microsoft.com/blog/azure-media-redactor/) blogu.
 
@@ -118,7 +118,7 @@ Dane wyjściowe z analizy — dostęp próbny nie obejmuje oryginalnego filmu wi
 | --- | --- | --- |
 | Zasób wejściowy |foo.bar |Film wideo w formacie MP4, WMV i MPV. Wartość taka sama wideo, tak jak w kroku 1. |
 | Zasób wejściowy |foo_annotations.json |plik metadanych adnotacje z fazy, z modyfikacjami opcjonalne. |
-| Zasób wejściowy |foo_IDList.txt (Opcjonalnie) |Opcjonalne nowy wiersz rozdzielaną listę identyfikatorów redagowanie rozpoznawania twarzy. Jeśli pole pozostanie puste, to rozmywa twarze na wszystkie. |
+| Zasób wejściowy |foo_IDList.txt (opcjonalnie) |Opcjonalne nowy wiersz rozdzielaną listę identyfikatorów redagowanie rozpoznawania twarzy. Jeśli pole pozostanie puste, to rozmywa twarze na wszystkie. |
 | Dane wejściowe konfiguracji |Ustawienie konfiguracji Zadań wstępne |{"version": "1.0',"Opcje": {"mode":"redagowanie"}} |
 | Elementu zawartości wyjściowej |foo_redacted.mp4 |Plik wideo za pomocą Rozmycie stosowane na podstawie adnotacji |
 
@@ -135,7 +135,7 @@ Przykład foo_IDList.txt
 
 ## <a name="blur-types"></a>Rozmycie typów
 
-W **łączony** lub **Redact** trybie 5 tryby różnych rozmycia, możesz wybrać spośród za pośrednictwem konfiguracji danych wejściowych JSON: **niski**, **Med**, **Wysokiej**, **pole**, i **czarny**. Domyślnie **Med** jest używany.
+W **łączony** lub **Redact** trybie 5 tryby różnych rozmycia, możesz wybrać spośród za pośrednictwem konfiguracji danych wejściowych JSON: **Niska**, **Med**, **wysokiej**, **pole**, i **czarny**. Domyślnie **Med** jest używany.
 
 Można znaleźć przykłady typów Rozmycie poniżej.
 

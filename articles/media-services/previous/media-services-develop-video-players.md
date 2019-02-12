@@ -2,7 +2,7 @@
 title: Opracowywanie aplikacji odtwarzacza wideo
 description: Temat zawiera linki do różnym Architekturom odtwarzaczy i wtyczek, używanej do tworzenia własnych aplikacji klienckich, które mogą wykorzystywać multimediów strumieniowych dostarczanych przez usługi Media Services.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: d7f55022dc526f44251814ac953787d6652e6f90
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 6c57c8ad85ef83e8739bc2bf35b3bd0dc6d5a902
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237047"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004846"
 ---
 # <a name="develop-video-player-applications"></a>Opracowywanie aplikacji odtwarzacza wideo
 ## <a name="overview"></a>Przegląd
@@ -46,14 +46,14 @@ Można również użyć dowolnego z następujących SDK:
 
 * [Zestaw Smooth Streaming Client SDK](http://www.iis.net/downloads/microsoft/smooth-streaming) 
 * [Bezproblemowe przesyłania strumieniowego aplikacji Windows Store](media-services-build-smooth-streaming-apps.md)
-* [Microsoft Media Platform: Struktury odtwarzacza](http://playerframework.codeplex.com/) 
+* [Microsoft Media Platform: Player Framework](http://playerframework.codeplex.com/) 
 * [HTML5 Dokumentacja Framework odtwarzaczu](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [Microsoft Smooth Streaming wtyczkę dla platformy OSMF](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [Licencjonowania Microsoft® Smooth Streaming Client Porting Kit](https://aka.ms/sspk) 
 * [Tworzenie aplikacji wideo XBOX](https://xbox.create.msdn.com/) 
 
 ## <a name="advertising"></a>Reklama
-Usługa Azure Media Services zapewnia obsługę wstawiania reklam za pośrednictwem platformy Media Windows: architektury odtwarzaczy. Architektury odtwarzaczy z obsługą usługi ad są dostępne dla urządzeń z systemem Windows 8, Silverlight, Windows Phone 8 i iOS. Każdy struktury odtwarzacza zawiera przykładowy kod, który pokazuje, jak zaimplementować aplikacja odtwarzacza. Istnieją trzy różne rodzaje reklam, które można wstawić do multimediów:
+Usługa Azure Media Services zapewnia obsługę wstawiania reklam za pośrednictwem platformy Media Windows: Architektury odtwarzaczy. Architektury odtwarzaczy z obsługą usługi ad są dostępne dla urządzeń z systemem Windows 8, Silverlight, Windows Phone 8 i iOS. Każdy struktury odtwarzacza zawiera przykładowy kod, który pokazuje, jak zaimplementować aplikacja odtwarzacza. Istnieją trzy różne rodzaje reklam, które można wstawić do multimediów:
 
 Liniowy — reklamy pełną ramki, które wstrzymanie odtwarzania filmu głównego
 
@@ -61,7 +61,7 @@ Nieliniowych — reklamy nakładki, które są wyświetlane jako odtwarzania wid
 
 Pomocnik — reklam, które są wyświetlane poza odtwarzacza
 
-Usługa AD można umieścić w dowolnym momencie w głównym wideo osi czasu. Musisz poinformować odtwarzacza, kiedy należy odtworzyć ad i reklam, które do odtwarzania. Odbywa się przy użyciu zestawu standardowych plików oparty na formacie XML: wideo Ad usługi szablonu (VAST), cyfrowe wideo wielu Ad listy odtwarzania (VMAP), Media abstrakcyjne sekwencjonowania szablonu (MASZTÓW) i cyfrowe wideo Player Ad interfejsu definicji (VPAID). OGROMNA pliki określają, jakie reklam, aby wyświetlić. Pliki VMAP Określ, kiedy do odtwarzania różnych reklam i zawierać OGROMNA kod XML. Pliki MASZTÓW są sekwencji reklam, które również mogą zawierać duże XML w inny sposób. Pliki VPAID definiują interfejs między odtwarzacza wideo i usługi ad lub serwera usługi ad. Aby uzyskać więcej informacji, zobacz [Wstawianie reklam](https://msdn.microsoft.com/library/dn387398.aspx).
+Usługa AD można umieścić w dowolnym momencie w głównym wideo osi czasu. Musisz poinformować odtwarzacza, kiedy należy odtworzyć ad i reklam, które do odtwarzania. Odbywa się przy użyciu zestawu standardowych plików oparty na formacie XML: Szablon (VAST), Digital Video usługi Ad wideo, wiele Ad odtwarzania (VMAP), Media abstrakcji sekwencjonowania szablonu (MASZTÓW), a definicja interfejsu Ad cyfrowy odtwarzacz wideo (VPAID). OGROMNA pliki określają, jakie reklam, aby wyświetlić. Pliki VMAP Określ, kiedy do odtwarzania różnych reklam i zawierać OGROMNA kod XML. Pliki MASZTÓW są sekwencji reklam, które również mogą zawierać duże XML w inny sposób. Pliki VPAID definiują interfejs między odtwarzacza wideo i usługi ad lub serwera usługi ad. Aby uzyskać więcej informacji, zobacz [Wstawianie reklam](https://msdn.microsoft.com/library/dn387398.aspx).
 
 Dla informacji o kodowane i obsługa reklam w transmisji strumieniowej na żywo w filmach wideo, zobacz [Ad wstawiania standardów i obsługiwane kodowane](https://msdn.microsoft.com/library/c49e0b4d-357e-4cca-95e5-2288924d1ff3#caption_ad).
 

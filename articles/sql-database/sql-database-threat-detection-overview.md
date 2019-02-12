@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 395bf57b967ebeefe0a4168b53a4341c304e3d4f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/08/2019
+ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729510"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001889"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń w usłudze Azure SQL Database
 
@@ -77,7 +77,7 @@ Kliknij przycisk **alert wykrycia zagrożeń** można uruchomić usługi Azure S
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się więcej o [wykrywanie w autonomicznych i bazy danych w puli zagrożeń](sql-database-threat-detection.md).
+- Dowiedz się więcej o [wykrywanie w bazach danych pojedyncze i zbiorcze zagrożeń](sql-database-threat-detection.md).
 - Dowiedz się więcej o [wykrywanie zagrożeń w wystąpieniu zarządzanym](sql-database-managed-instance-threat-detection.md).
 - Dowiedz się więcej o [zaawansowanych zabezpieczeń danych](sql-database-advanced-data-security.md).
 - Dowiedz się więcej o [inspekcji usługi Azure SQL Database](sql-database-auditing.md)

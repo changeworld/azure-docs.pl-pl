@@ -9,16 +9,29 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.custom: seodec2018
-ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214831"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005050"
 ---
-# <a name="query-types-and-composition-in-azure-search"></a>Typy zapytań i składu w usłudze Azure Search
+# <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
 
-W usłudze Azure Search zapytania jest pełną specyfikację obustronne operacji. Parametry zawierają kryteria dopasowania do znajdowania dokumentów w indeksie, instrukcje wykonywania dla aparatu i dyrektyw kształtowania odpowiedzi. Mówiąc ściślej można określić pola, które są w zakresie, jak wyszukiwać, które pola, aby powrócić do sortowania lub filtrowania i tak dalej. Nie określono tego parametru, uruchomieniu zapytania względem wszystkie pola z możliwością wyszukiwania jako operacji wyszukiwania pełnotekstowego, zwracając wynik nie została ona oceniona zestawu w dowolnej kolejności.
+W usłudze Azure Search zapytania jest pełną specyfikację obustronne operacji. Parametry żądania podać kryteria dopasowania do znajdowania dokumentów w indeksie, instrukcje wykonywania dla aparatu i dyrektyw kształtowania odpowiedzi. 
+
+Żądanie zapytania jest zaawansowanych konstrukcji, określając pola, które są w zakresie, jak wyszukiwać, które pola, aby powrócić do sortowania lub filtrowania i tak dalej. Nie określono tego parametru, uruchomieniu zapytania względem wszystkie pola z możliwością wyszukiwania jako operacji wyszukiwania pełnotekstowego, zwracając wynik nie została ona oceniona zestawu w dowolnej kolejności.
+
+### <a name="apis-and-tools-for-testing"></a>Interfejsy API i narzędzia do testowania
+
+W poniższej tabeli wymieniono interfejsów API i oparte na narzędziu podejścia do przesyłania kwerend.
+
+| Metodologia | Opis |
+|-------------|-------------|
+| [Eksplorator wyszukiwania (portal)](search-explorer.md) | Zawiera pasek wyszukiwania i opcje dla opcji indeksu i interfejsu api-version. Wyniki są zwracane jako dokumenty JSON. <br/>[Dowiedz się więcej.](search-get-started-portal.md#query-index) | 
+| [Postman lub innego narzędzia do testowania HTTP](search-fiddler.md) | Wyjaśnia, jak skonfigurować nagłówek żądania HTTP i treści do wysyłania zapytań do usługi Azure Search.  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, który może służyć do tworzenie zapytań względem indeksu usługi Azure Search.  <br/>[Dowiedz się więcej.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Wyszukiwanie dokumentów (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET lub POST metod w indeksie, za pomocą parametrów zapytania, aby uzyskać dodatkowe dane wejściowe.  |
 
 ## <a name="a-first-look-at-query-requests"></a>Pierwsze spojrzenie na żądań zapytań
 
@@ -52,7 +65,7 @@ Do wykonania tego zapytania, należy użyć [wyszukiwania Eksploratora i indeks 
 
 W pasku wyszukiwania programu explorer można wkleić tego ciągu zapytania: `search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-### <a name="how-query-operations-are-enabled-by-the-index"></a>Jak operacje zapytań są włączone przez indeks
+## <a name="how-query-operations-are-enabled-by-the-index"></a>Jak operacje zapytań są włączone przez indeks
 
 Projekt indeksu i zapytania projektu są ściśle powiązane w usłudze Azure Search. Podstawowe fakt wiedzieć na początku jest fakt, że *schemat indeksu*, za pomocą atrybutów w każdym polu, określa rodzaj zapytania można tworzyć. 
 
@@ -148,17 +161,6 @@ Jeśli chcesz, aby usługa Azure Search zwracała wyniki uporządkowane według 
 
 ### <a name="hit-highlighting"></a>Wyróżnianie trafień
 W usłudze Azure Search, podkreślając części, w wynikach wyszukiwania, zgodne z zapytaniem wyszukiwania umożliwiają łatwe za pomocą **`highlight`**, **`highlightPreTag`**, i **`highlightPostTag`** parametrów. Można wskazać, w których polach *z możliwością wyszukiwania* ma zostać wyróżniony dopasowany tekst, a także dokładnie określić tagi ciągów, które mają zostać dodane na początku i na końcu dopasowanego tekstu zwracanego przez usługę Azure Search.
-
-## <a name="apis-and-tools-for-testing"></a>Interfejsy API i narzędzia do testowania
-
-W poniższej tabeli wymieniono interfejsów API i oparte na narzędziu podejścia do przesyłania kwerend.
-
-| Metodologia | Opis |
-|-------------|-------------|
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, który może służyć do tworzenie zapytań względem indeksu usługi Azure Search.  <br/>[Dowiedz się więcej.](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Wyszukiwanie dokumentów (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET lub POST metod w indeksie, za pomocą parametrów zapytania, aby uzyskać dodatkowe dane wejściowe.  |
-| [Narzędzie fiddler, Postman lub innego narzędzia do testowania HTTP](search-fiddler.md) | Wyjaśnia, jak skonfigurować nagłówek żądania i treści do wysyłania zapytań do usługi Azure Search.  |
-| [Eksplorator wyszukiwania w witrynie Azure portal](search-explorer.md) | Zawiera pasek wyszukiwania i opcje dla opcji indeksu i interfejsu api-version. Wyniki są zwracane jako dokumenty JSON. <br/>[Dowiedz się więcej.](search-get-started-portal.md#query-index) | 
 
 ## <a name="see-also"></a>Zobacz także
 

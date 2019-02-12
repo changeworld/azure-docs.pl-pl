@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2f6ceeebd18a91472ee12f04c0ac8e602b05f269
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4a65e88e3f94f64a56bde882b535030968ae354d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197555"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991280"
 ---
 # <a name="create-highlights-from-existing-videos"></a>Utwórz najważniejsze wydarzenia z istniejących wideo
 
@@ -27,17 +27,14 @@ W tym temacie pokazano, jak tworzyć i publikować szczegółowe informacje o wi
     Na stronie zostaną wyświetlone podsumowane szczegółowe informacje dotyczące tego pliku wideo. 
 
     ![Insights](./media/video-indexer-create-new/video-indexer-summarized-insights.png)
-
 3. Naciśnij przycisk **Edit** (Edytuj).
 
     Na stronie zostanie wyświetlone pełne zestawienie dotyczące tego pliku wideo. Zestawienie to jest podzielone na bloki. Bloki mają ułatwić nawigowanie po danych. Blok może zostać wyodrębniony na przykład na podstawie zmiany osoby mówiącej lub wystąpienia długiej przerwy. Możesz utworzyć własną listę odtwarzania zawierającą tylko wybrane wypowiedzi. Aby zaprezentować tylko określone części źródłowego nagrania wideo, możesz przefiltrować je według tematów/słów kluczowych, tonacji, osób i osób mówiących. Możesz wybrać opcję wyświetlania tylko transkrypcji lub wyników optycznego rozpoznawania znaków (OCR) z nagrania wideo.    
 
     ![Insights](./media/video-indexer-create-new/video-indexer-create-new-playlist.png)
-
 4. Utwórz listę odtwarzania.
 
     Aby dodać lub usunąć wypowiedzi na liście odtwarzania, naciskaj znaki **+**/**-**.
-
 5. Wyświetl podgląd listy odtwarzania.
 
     Po utworzeniu listy odtwarzania naciśnij przycisk **Preview** (Podgląd).

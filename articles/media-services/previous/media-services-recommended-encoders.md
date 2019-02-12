@@ -2,44 +2,44 @@
 title: Dowiedz się więcej o koderów zalecane przez usługę Azure Media Services | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o koderów zalecane przez usługę media services
 services: media-services
-keywords: kodowanie koderów; multimediów
+keywords: encoding;encoders;media
 author: dbgeorge
 manager: johndeu
 ms.author: johndeu
-ms.date: 09/13/2018
+ms.date: 02/09/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c90d6a5784fe9d80df4fab304b6122d3fa24d0b5
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: f07b2d128bd770854b7c240fd3c964d880029d3c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605168"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999015"
 ---
 # <a name="recommended-on-premises-encoders"></a>Zalecane kodery lokalne
 Gdy strumieniowo na żywo za pomocą usługi Azure Media Services, można określić, jak chcesz kanał w taki sposób, aby otrzymywać strumień wejściowy. Jeśli zdecydujesz się koder lokalnej za pomocą kanału kodowania na żywo, koder ma wypychać strumienia wysokiej jakości jedną szybkością transmisji bitów jako dane wyjściowe. Jeśli zdecydujesz się koder lokalnej za pomocą przebiegu za pośrednictwem kanału, koder ma wypychać strumień o wielokrotnej szybkości transmisji bitów jako dane wyjściowe z wszystkich klas żądaną produktu wyjściowego. Aby uzyskać więcej informacji, zobacz [przesyłania strumieniowego przy użyciu lokalnych koderów na żywo](media-services-live-streaming-with-onprem-encoders.md).
 
 Usługa Azure Media Services zaleca się przy użyciu jednej z poniższych koderów na żywo, które mają RTMP jako dane wyjściowe:
 - Adobe Flash Media Live Encoder 3.2
-- X Makito Haivision — HEVC
+- Haivision Makito X HEVC
 - Haivision KB
 - Telestream Wirecast 8.1 +
 - Telestream Wirecast S
-- Wycinek Teradek 756
+- Teradek Slice 756
 - TriCaster 8000
 - HD Tricaster Mini-4
-- Studio systemu bankowości Internetowej
+- OBS Studio
 - VMIX
 - xStream
 - Przełącznik Studio (iOS)
 
 Usługa Azure Media Services zaleca się przy użyciu jednej z następujących koderów na żywo, które mają różnych szybkościach transmisji bitów podzielonej zawartości — w formacie MP4 (Smooth Streaming) jako dane wyjściowe:
 - Nośnik w programie Excel Hero na żywo i Hero 4K (UHD / — HEVC)
-- Ateme TITAN na żywo
+- Ateme TITAN Live
 - Kodera multimediów cyfrowych Cisco 2200
 - Elemental Live
 - Envivio 4Caster C4 ogólnego III
-- Wyobraź sobie Selenio MCP3 komunikacji
+- Imagine Communications Selenio MCP3
 
 > [!NOTE]
 > Koder na żywo może wysyłać strumień z jedną szybkością transmisji bitów do przebiegu za pośrednictwem kanału, ale ta konfiguracja nie jest zalecane, ponieważ nie zezwala na adaptacyjną szybkością transmisji bitów, przesyłanie strumieniowe do klienta.

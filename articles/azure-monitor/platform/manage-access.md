@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie obszarami roboczymi w usłudze Azure Log Analytics i portalu pakietu OMS | Microsoft Docs
-description: Możesz zarządzać obszarami roboczymi w usłudze Azure Log Analytics i portalu pakietu OMS przy użyciu różnych zadań administracyjnych dotyczących użytkowników, kont, obszarów roboczych i kont platformy Azure.
+title: Zarządzanie obszarami roboczymi usługi Log Analytics, w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Możesz zarządzać obszarów roboczych usługi Log Analytics w usłudze Azure Monitor przy użyciu różnych zadań administracyjnych na użytkowników, kont, obszarów roboczych i kont platformy Azure.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,17 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 32a31a87bacbb13cd3b2cb4561ac04e54d51ba46
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 4a777c2bd57d40b4bb6c8d36c996b655cb019e5f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656757"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005374"
 ---
-# <a name="manage-workspaces"></a>Zarządzanie obszarami roboczymi
-
-Dostępem do usługi Log Analytics można zarządzać, wykonując różne zadania administracyjne dotyczące obszarów roboczych. Ten artykuł zawiera wskazówki i procedury umożliwiające zarządzanie obszarami roboczymi. Obszar roboczy to kontener, który zawiera informacje o koncie i podstawowe informacje o konfiguracji konta. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
+# <a name="manage-log-analytics-workspaces-in-azure-monitor"></a>Zarządzanie obszarami roboczymi usługi Log Analytics, w usłudze Azure Monitor
+Magazyny usługi Azure Monitor możesz rejestrować dane w obszarze roboczym usługi Log Analytics, która jest kontener, który zawiera dane i informacje konfiguracyjne. W celu zarządzania dostępem do danych logowania, należy wykonać różne zadania administracyjne dotyczące obszarów roboczych. Ty i inni członkowie organizacji możecie używać wielu obszarów roboczych, aby zarządzać różnymi zestawami danych zebranymi z całej infrastruktury IT lub jej części.
 
 Aby utworzyć obszar roboczy, trzeba:
 
@@ -32,11 +31,11 @@ Aby utworzyć obszar roboczy, trzeba:
 4. Wybrać lokalizację geograficzną.
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Określanie wymaganej liczby obszarów roboczych
-Obszar roboczy jest zasobem platformy Azure w postaci kontenera, w którym dane są zbierane, agregowane, analizowane i przedstawiane w witrynie Azure Portal.
+Obszar roboczy usługi Log Analytics jest zasobem platformy Azure i kontenerów, w którym dane są zbierane, agregowane, analizowane i znajdujące się w usłudze Azure Monitor.
 
-Możesz mieć wiele obszarów roboczych na subskrypcję platformy Azure i dostęp do więcej niż jednego obszaru roboczego, aby łatwo wykonywać zapytania obejmujące różne obszary. W tej sekcji opisano sytuacje, w których pomocne może być utworzenie więcej niż jednego obszaru roboczego.
+Może mieć wiele obszarów roboczych na subskrypcję platformy Azure i masz dostęp do więcej niż jednego obszaru roboczego, umożliwia łatwe wyszukiwanie między nimi. W tej sekcji opisano sytuacje, w których pomocne może być utworzenie więcej niż jednego obszaru roboczego.
 
-Obecnie obszar roboczy oferuje następujące możliwości:
+Obszar roboczy usługi Log Analytics oferuje:
 
 * Lokalizacja geograficzna do przechowywania danych
 * Izolacja danych, aby zdefiniować prawa dostępu różnych użytkowników
@@ -44,7 +43,7 @@ Obecnie obszar roboczy oferuje następujące możliwości:
 
 Z punktu widzenia użycia firma Microsoft zaleca się utworzenie w kilku obszarów roboczych jak to możliwe. Ułatwia administrowanie i zapytania łatwiej i szybciej. Jednak na podstawie poprzedniego właściwości, warto utworzyć wiele obszarów roboczych, jeśli:
 
-* Globalna firma wymaga, aby jej dane były przechowywane w określonych regionach w celu zachowania poufności danych i ich zgodności z przepisami.
+* Są globalne firmy i należy rejestrować — dane przechowywane w określonych regionach ze względów danych suwerenności lub zgodności.
 * Korzystasz z platformy Azure i chcesz uniknąć naliczania opłat za transfer danych wychodzących przez umieszczenie obszaru roboczego w tym samym regionie co zarządzane przez niego zasoby platformy Azure.
 * Chcesz przydzielić opłaty do różnych działów lub grup biznesowych na podstawie ich użycia, tworząc obszar roboczy dla każdego działu lub grupie biznesowej w jego własnej subskrypcji platformy Azure.
 * Jesteś dostawcą usługi zarządzanej i chcesz, aby dane usługi Log Analytics dla klientów, którymi zarządzasz, były odizolowane od danych innych klientów.
@@ -55,16 +54,14 @@ Jeśli zbierasz dane przy użyciu agentów systemu Windows, możesz [skonfigurow
 Jeśli używasz programu System Center Operations Manager, jedna grupa zarządzania programu Operations Manager może być połączona tylko z jednym obszarem roboczym. Możesz zainstalować program Microsoft Monitoring Agent na komputerach zarządzanych przez program Operations Manager oraz skonfigurować agenta w celu raportowania do programu Operations Manager i innego obszaru roboczego usługi Log Analytics.
 
 ## <a name="workspace-information"></a>Informacje o obszarze roboczym
+Podczas analizowania danych w obszarze roboczym usługi Log Analytics w **usługi Azure Monitor** menu w witrynie Azure portal, możesz utworzyć i zarządzać obszarami roboczymi w **obszarów roboczych usługi Log Analytics** menu.
+ 
 
-Szczegółowe informacje o obszarze roboczym można wyświetlić w witrynie Azure Portal. 
-
-1. Jeśli jeszcze tego nie zrobiono, zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-
-2. W witrynie Azure Portal kliknij pozycję **Wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.  
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) i kliknij przycisk **wszystkich usług**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz **usługi Log Analytics** obszarów roboczych.  
 
     ![Azure Portal](media/manage-access/azure-portal-01.png)  
 
-3. W okienku subskrypcji usługi Log Analytics wybierz obszar roboczy.
+3. Wybierz swój obszar roboczy z listy.
 
 4. Strona obszaru roboczego zawiera szczegółowe informacje o wprowadzenie, konfiguracji i linki do dodatkowych informacji.  
 
@@ -84,10 +81,10 @@ Następujące działania również wymagają uprawnień platformy Azure:
 | Tworzenie obszaru roboczego w witrynie Azure Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Zarządzanie dostępem do usługi Log Analytics przy użyciu uprawnień platformy Azure
+### <a name="managing-access-to-log-analytics-workspace-using-azure-permissions"></a>Zarządzanie dostępem do obszaru roboczego usługi Log Analytics przy użyciu uprawnień platformy Azure
 Aby udzielić dostępu do obszaru roboczego usługi Log Analytics przy użyciu uprawnień platformy Azure, wykonaj kroki opisane w części [Zarządzanie dostępem do zasobów subskrypcji platformy Azure za pomocą przypisań ról](../../role-based-access-control/role-assignments-portal.md).
 
-Platforma Azure ma dwie wbudowane role użytkownika w usłudze Log Analytics:
+Platforma Azure ma dwie wbudowane role użytkownika w przypadku obszarów roboczych usługi Log Analytics:
 - Czytelnik usługi Log Analytics
 - Współautor usługi Log Analytics
 
@@ -149,5 +146,4 @@ Zaleca się wykonanie przypisań na poziomie zasobów (obszar roboczy), aby zape
 ## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [omówienie agenta usługi Log Analytics](../../azure-monitor/platform/log-analytics-agent.md) do zbierania danych z komputerów w centrum danych lub w innym środowisku chmury.
 * Aby skonfigurować zbieranie danych z maszyn wirtualnych platformy Azure, zobacz [Zbieranie danych dotyczących infrastruktury Azure Virtual Machines](../../azure-monitor/learn/quick-collect-azurevm.md).  
-* [Dodaj rozwiązania Log Analytics z galerii rozwiązań](../../azure-monitor/insights/solutions.md), aby dodać funkcje i zebrać dane.
 

@@ -1,5 +1,5 @@
 ---
-title: Optymalizuj środowisko usługi Active Directory z usługą Azure Log Analytics | Dokumentacja firmy Microsoft
+title: Optymalizuj środowisko usługi Active Directory z usługą Azure Monitor | Dokumentacja firmy Microsoft
 description: Rozwiązanie kondycja Sprawdzanie usługi Active Directory można użyć do oceny ryzyka i kondycji środowisk w regularnych odstępach czasu.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 063cedc679c3365e6352549e78c75ecff903cae7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 8a1e08263790f1a04e672fd9d5a17c2bd1b45ce8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193012"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999032"
 ---
-# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Optymalizuj środowisko usługi Active Directory za pomocą rozwiązania Active Directory Health Check w usłudze Log Analytics
+# <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>Optymalizuj środowisko usługi Active Directory za pomocą rozwiązania Active Directory Health Check w usłudze Azure Monitor
 
 ![Symbol sprawdzanie kondycji usługi AD](./media/ad-assessment/ad-assessment-symbol.png)
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Rozwiązanie kondycja Sprawdzanie usługi Active Directory umożliwia oceniaj ryzyko i kondycję środowisk serwera w regularnych odstępach czasu. Ten artykuł pomoże Ci Instalowanie i korzystanie z odpowiedniego rozwiązania, tak, aby można podjąć akcje naprawcze o potencjalnych problemach.
 
@@ -40,22 +42,22 @@ Po dodaniu rozwiązania i kontrola jest zakończone, podsumowanie informacje o o
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Rozwiązanie kondycja Sprawdzanie usługi Active Directory wymaga obsługiwanej wersji programu .NET Framework 4.5.2 lub powyżej zainstalowane na każdym komputerze, który zawiera program Microsoft Monitoring Agent (MMA) zainstalowane.  MMA agent jest używana przez System Center 2016 — Operations Manager i Operations Manager 2012 R2 oraz usługi Log Analytics.
+* Rozwiązanie kondycja Sprawdzanie usługi Active Directory wymaga obsługiwanej wersji programu .NET Framework 4.5.2 lub powyżej zainstalowane na każdym komputerze, który zawiera program Microsoft Monitoring Agent (MMA) zainstalowane.  MMA agent jest używana przez System Center 2016 — Operations Manager i Operations Manager 2012 R2 oraz usługi Azure Monitor.
 * Rozwiązanie obsługuje kontrolery domeny z systemem Windows Server 2008 i 2008 R2, Windows Server 2012 i 2012 R2 i Windows Server 2016.
 * Obszar roboczy usługi Log Analytics można dodać rozwiązania Active Directory Health Check z witryny Azure marketplace w witrynie Azure portal.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
   > [!NOTE]
-  > Po dodaniu rozwiązania pliku AdvisorAssessment.exe jest dodawane do serwerów przy użyciu agentów. Dane konfiguracji jest odczytać i następnie wysyłane do usługi Log Analytics w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane.
+  > Po dodaniu rozwiązania pliku AdvisorAssessment.exe jest dodawane do serwerów przy użyciu agentów. Dane konfiguracji jest odczytać i następnie wysyłane do usługi Azure Monitor w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane.
   >
   >
 
-Aby sprawdzić kondycję na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone, wymagają agenta i łączności z usługą Log Analytics przy użyciu jednej z następujących obsługiwanych metod:
+Aby sprawdzić kondycję na kontrolerach domeny, które są członkami domeny, która ma zostać obliczone, wymagają agenta i łączność z usługi Azure Monitor, przy użyciu jednej z następujących obsługiwanych metod:
 
 1. Zainstaluj [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md) Jeśli kontroler domeny nie jest już monitorowane przez program System Center 2016 — Operations Manager lub Operations Manager 2012 R2.
-2. Jeśli grupa zarządzania nie jest zintegrowana z usługą Log Analytics jest monitorowana przy użyciu programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2, kontroler domeny może być wieloadresowych z usługą Log Analytics, aby zbierać dane i przekazywać je do usługi i nadal być monitorowane przez program Operations Manager.  
+2. Jeśli grupa zarządzania nie jest zintegrowana z usługą Azure Monitor jest monitorowana przy użyciu programu System Center 2016 — Operations Manager lub Operations Manager 2012 R2, kontroler domeny może być wieloadresowych z usługą Azure Monitor do zbierania danych i przekazywać je do usługi i nadal monitorowane przez program Operations Manager.  
 3. W przeciwnym razie, jeśli grupa zarządzania programu Operations Manager jest zintegrowany z usługą, należy dodać kontrolerów domeny do zbierania danych przez usługę, wykonaj czynności w ramach [dodać komputery zarządzane z wykorzystaniem agentów](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-log-analytics) po włączeniu rozwiązania w Twoim obszarze roboczym.  
 
-Agenta na kontrolerze domeny, które raporty z grupą zarządzania programu Operations Manager służy do zbierania danych, przekazuje do jego serwera zarządzania w przypisanej, a następnie będą wysyłane bezpośrednio z serwera zarządzania do usługi Log Analytics.  Dane nie są zapisywane w bazach danych programu Operations Manager.  
+Agenta na kontrolerze domeny, które raporty z grupą zarządzania programu Operations Manager służy do zbierania danych, przekazuje do jego serwera zarządzania w przypisanej, a następnie będą wysyłane bezpośrednio z serwera zarządzania do usługi Azure Monitor.  Dane nie są zapisywane w bazach danych programu Operations Manager.  
 
 ## <a name="active-directory-health-check-data-collection-details"></a>Active Directory Health Check danych kolekcji uzyskać szczegółowe informacje
 
@@ -73,7 +75,7 @@ Active Directory Health Check zbiera dane z następujących źródeł przy użyc
 - Interfejs API usługi (NTFRS) replikacji plików
 - Kod niestandardowy C#
 
-Dane są zbierane na kontrolerze domeny i przekazywane do usługi Log Analytics, co siedem dni.  
+Dane są zbierane na kontrolerze domeny i przekazywane do usługi Azure Monitor co siedem dni.  
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>Zrozumienie, jak zalecenia są uszeregowane według priorytetów
 Każdy zalecenie wprowadzone otrzymuje wartość wagi, która identyfikuje względnego zalecenia. 10 najważniejszych zalecenia są wyświetlane.
@@ -107,30 +109,33 @@ Po jego zainstalowaniu, możesz wyświetlić podsumowanie zalecenia za pomocą k
 Wyświetlanie ocen zgodności podsumowania dla Twojej infrastruktury, a następnie wejdź do zalecenia.
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>Aby wyświetlić zalecenia dotyczące obszar koncentracji uwagi i podejmij działania naprawcze
-3. Kliknij przycisk **Przegląd** kafelka dla obszaru roboczego usługi Log Analytics w witrynie Azure portal.
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 4. Na **Przegląd** kliknij **Active Directory Health Check** kafelka.
 5. Na **sprawdzanie kondycji** strony, przejrzyj dane podsumowania w jednym z bloków obszaru fokus, a następnie kliknij jedną, aby wyświetlić zalecenia dla tego obszaru.
 6. Na wszystkich stronach obszar koncentracji uwagi można wyświetlać zaleceń z priorytetami wprowadzone dla danego środowiska. Kliknij przycisk rekomendacji w obszarze **wpływ na obiekty** Aby wyświetlić szczegóły dotyczące Dlaczego tworzone są zalecenia.<br><br> ![Obraz przedstawiający sprawdzanie kondycji zalecenia](./media/ad-assessment/ad-healthcheck-dashboard-02.png)
 7. Można wykonać akcje naprawcze sugerowane w **sugerowane akcje**. Jeśli element został rozwiązany, nowsze rekordy ocen, które są zalecane akcje zostały wykonane i zwiększy ocenę zgodności. Poprawiony elementy są wyświetlane jako **obiektów przekazywane**.
 
 ## <a name="ignore-recommendations"></a>Zignoruj zalecenia
-Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy, który usługi Log Analytics będzie używany do zapobiegania zaleceń znajdujących się w wynikach oceny.
+Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy, który będzie użyć usługi Azure Monitor, aby zapobiec zaleceń znajdujących się w wynikach oceny.
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>Aby zidentyfikować zaleceń, które będzie ignorować
-1. W witrynie Azure portal na stronie obszaru roboczego usługi Log Analytics dla wybranego obszaru roboczego kliknij **wyszukiwanie w dzienniku** kafelka.
-2. Użyj następującego zapytania do zaleceń listy, które nie powiodły, na komputerach w danym środowisku.
+[!INCLUDE [azure-monitor-log-queries](../../../includes/azure-monitor-log-queries.md)]
 
-    ```
-    ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
-    ```
-    Poniżej przedstawiono zrzut ekranu przedstawiający zapytaniu przeszukiwania dzienników:<br><br> ![zalecenia nie powiodło się](./media/ad-assessment/ad-failed-recommendations.png)
+Użyj następującego zapytania do zaleceń listy, które nie powiodły, na komputerach w danym środowisku.
 
-3. Wybierz zaleceń, które chcesz zignorować. Użyjesz wartości RecommendationId w następnej procedurze.
+```
+ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
+```
+
+Poniżej przedstawiono zrzut ekranu przedstawiający zapytanie dziennika:<br><br> ![zalecenia nie powiodło się](media/ad-assessment/ad-failed-recommendations.png)
+
+Wybierz zaleceń, które chcesz zignorować. Użyjesz wartości RecommendationId w następnej procedurze.
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>Tworzenie i używanie pliku tekstowego IgnoreRecommendations.txt
 1. Utwórz plik o nazwie IgnoreRecommendations.txt.
-2. Wklej lub wpisz każdy RecommendationId dla każdego zalecenia mają Log Analytics, aby zignorować w osobnym wierszu i następnie zapisz i zamknij plik.
-3. Umieść plik w następującym folderze na każdym komputerze, w której chcesz zignorować zalecenia w usłudze Log Analytics.
+2. Wklej lub wpisz każdy RecommendationId dla każdego zalecenia mają usługi Azure Monitor, aby zignorować w osobnym wierszu i następnie zapisz i zamknij plik.
+3. Umieść plik w następującym folderze na każdym komputerze, którego usługi Azure Monitor, aby zignorować zalecenia.
    * Na komputerach za pomocą programu Microsoft Monitoring Agent (połączenie bezpośrednio lub za pośrednictwem programu Operations Manager) - *SystemDrive*: \Program Files\Microsoft Monitoring Agent\Agent
    * Na serwerze zarządzania programu Operations Manager 2012 R2 — *SystemDrive*: System Center 2012 R2\Operations Manager\Server \Program Files\Microsoft
    * Na serwerze zarządzania programu Operations Manager 2016 - *SystemDrive*: \Program Files\Microsoft programu System Center 2016\Operations Manager\Server
@@ -138,7 +143,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 ### <a name="to-verify-that-recommendations-are-ignored"></a>Aby zweryfikować, że zalecenia są ignorowane
 Po następnego zaplanowanego uruchomienia sprawdzania kondycji, domyślnie co siedem dni, są oznaczone określonym zalecenia *ignorowane* i nie będą widoczne na pulpicie nawigacyjnym.
 
-1. Aby wyświetlić listę wszystkich zaleceń dotyczących zignorowane, można użyć następujących zapytań przeszukiwania dzienników.
+1. Aby wyświetlić listę wszystkich zaleceń dotyczących zignorowane, można użyć następujących zapytań log.
 
     ```
     ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
@@ -177,11 +182,11 @@ Po następnego zaplanowanego uruchomienia sprawdzania kondycji, domyślnie co si
 
 *Dlaczego są wyświetlane tylko 10 najlepszych zaleceń?*
 
-* Zamiast daje wyczerpujący przytłaczająca listę zadań, zaleca się skupić się na temat zaleceń z priorytetami najpierw. Po ich wykonaniu, dodatkowe zalecenia staną się dostępne. Jeśli wolisz wyświetlić szczegółową listę, możesz wyświetlić wszystkie zalecenia za pomocą wyszukiwania w dziennikach.
+* Zamiast daje wyczerpujący przytłaczająca listę zadań, zaleca się skupić się na temat zaleceń z priorytetami najpierw. Po ich wykonaniu, dodatkowe zalecenia staną się dostępne. Jeśli wolisz wyświetlić szczegółową listę, możesz wyświetlić wszystkie zalecenia za pomocą zapytania dziennika.
 
 *Czy istnieje sposób, aby zignorować zalecenie?*
 
 * Tak, zobacz [Zignoruj zalecenia](#ignore-recommendations) powyższej sekcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](../../azure-monitor/log-query/log-query-overview.md) Aby dowiedzieć się, jak analizować szczegółowe sprawdzanie kondycji AD danych i zalecenia.
+* Użyj [zapytań dzienników usługi Azure Monitor](../log-query/log-query-overview.md) Aby dowiedzieć się, jak analizować szczegółowe sprawdzanie kondycji AD danych i zalecenia.

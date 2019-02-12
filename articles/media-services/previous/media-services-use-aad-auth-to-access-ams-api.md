@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 320afdb1e4f71150680e9bed6a4c1c9955c99936
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230628"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994105"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Dostęp do interfejsu API usługi multimediów Azure przy użyciu uwierzytelniania usługi Azure AD  
  
 Interfejsu API usługi Azure Media Services to API typu RESTful. Służy do wykonywania operacji na zasoby multimediów, za pomocą interfejsu API REST lub przy użyciu zestawów SDK klienta dostępne. Usługa Azure Media Services oferuje zestaw SDK klienta usługi Media Services dla programu Microsoft .NET. Autoryzowanie dostępu do zasobów usługi Media Services i interfejsu API usług Media Services, użytkownik musi najpierw zostać uwierzytelnione. 
 
@@ -138,9 +138,9 @@ Jeśli nie używasz zestawu SDK klienta platformy .NET usług Media Services, na
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Wystąpił wyjątek: "serwer zdalny zwrócił błąd: Brak autoryzacji (401)."
+Wyjątek: "Serwer zdalny zwrócił błąd: (401) nieautoryzowane."
 
-Rozwiązanie: Dla żądania REST usługi Media zakończyło się sukcesem, użytkownika wywołującego musi być roli współautora lub właściciela w ramach konta usługi Media Services, który próbuje uzyskać dostęp. Aby uzyskać więcej informacji, zobacz [kontroli dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control) sekcji.
+Rozwiązanie: Dla żądania REST usługi Media zakończyło się sukcesem użytkownika wywołującego musi być roli współautora lub właściciela w ramach konta usługi Media Services, który próbuje uzyskać dostęp. Aby uzyskać więcej informacji, zobacz [kontroli dostępu](media-services-use-aad-auth-to-access-ams-api.md#access-control) sekcji.
 
 ## <a name="resources"></a>Zasoby
 

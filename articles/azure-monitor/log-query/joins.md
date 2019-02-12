@@ -1,6 +1,6 @@
 ---
-title: Sprzężenia w zapytaniach usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera lekcji dotyczących używania sprzężeń w języku zapytań usługi Log Analytics.
+title: Sprzężenia w zapytaniach dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera lekcji dotyczących używania sprzężeń w zapytaniach dzienników usługi Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: c1f578c11fff963ee4bec47bd3737cd224b14720
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52882931"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004659"
 ---
-# <a name="joins-in-log-analytics-queries"></a>Sprzężenia w zapytań usługi Log Analytics
+# <a name="joins-in-azure-monitor-log-queries"></a>Sprzężenia w zapytaniach dzienników usługi Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
+> Należy wykonać [wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) i [zapytań dzienników usługi Azure Monitor](get-started-queries.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -105,7 +105,7 @@ Należy wziąć pod uwagę następujące kwestie, aby uzyskać optymalną wydajn
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dla przy użyciu języka zapytań usługi Log Analytics:
+Zobacz inne lekcje dotyczące korzystania z usługi Azure Monitor dziennika zapytań:
 
 - [Operacje na ciągach](string-operations.md)
 - [Funkcje agregacji](aggregations.md)

@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 18c05f2a9dd9f7e4a6d5ec62806870311c5eb130
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 70f53ed06daad8adf10ef5a88f0672f86d6a8b48
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745721"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004132"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
-Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](../../azure-monitor/platform/alerts-overview.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
+Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](../platform/alerts-overview.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
 
-Alert dziennika składa się z wyszukiwania w dziennikach reguł utworzonych dla [usługi Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Aby dowiedzieć się więcej na temat jej użycia, zobacz [Tworzenie alertów dziennika na platformie Azure](../../azure-monitor/platform/alerts-log.md)
+Alert dziennika składa się z dziennika zapytań reguł utworzonych dla [usługi Azure Monitor](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../app/cloudservices.md#view-azure-diagnostics-events). Aby dowiedzieć się więcej na temat jej użycia, zobacz [Tworzenie alertów dziennika na platformie Azure](../platform/alerts-log.md)
 
 > [!NOTE]
-> Dane dzienników popularnych z [usługi Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](../../azure-monitor/platform/alerts-metric-logs.md)
+> Dane dzienników popularnych z [usługi Azure Monitor](../learn/tutorial-viewdata.md) jest obecnie również dostępna na platformie metryki w usłudze Azure Monitor. Dla widoku szczegółów [alertu metryki dla dzienników](../platform/alerts-metric-logs.md)
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Wyszukiwania reguł alertów dzienników — definicja i typów
@@ -41,7 +41,7 @@ Dziennik wyszukiwania reguł są definiowane przez następujące informacje:
 
 - **Próg**.  Wyniki przeszukiwania dzienników są oceniane w celu ustalenia, czy należy utworzyć alert.  Próg różni się dla różnych typów reguł alertów wyszukiwania dziennika.
 
-Reguły wyszukiwania dziennika można je [usługi Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) lub [usługi Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events), mogą być dwojakiego rodzaju. Każdy z tych typów opisano szczegółowo w kolejnych sekcjach.
+Zaloguj reguły zapytania, można je [usługi Azure Monitor](../learn/tutorial-viewdata.md) lub [usługi Application Insights](../app/cloudservices.md#view-azure-diagnostics-events), mogą być dwojakiego rodzaju. Każdy z tych typów opisano szczegółowo w kolejnych sekcjach.
 
 - **[Liczba wyników](#number-of-results-alert-rules)**. Pojedynczy alert utworzony, jeśli liczba rekordów zwracanych przez wyszukiwanie w dzienniku przekracza określoną liczbę.
 - **[Pomiar metryki](#metric-measurement-alert-rules)**.  Alert został utworzony dla każdego obiektu w wynikach wyszukiwania dziennika z wartościami, które przekracza określoną wartość progową.
@@ -114,11 +114,11 @@ Reguły alertów wyszukiwania dziennika działa na logice uzależniona przez uż
 
 Teraz załóżmy mamy reguł alertów dzienników o nazwie *Contoso-dziennika — Alert*, ponieważ na konfiguracji w [przykładu przewidzianego dla alertu dziennika typu Liczba wyników](#example-of-number-of-records-type-log-alert). 
 - O 13:05 po Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika uzyskane rekordy 0; poniżej progu i dlatego nie wyzwalania alertu. 
-- W następnej iteracji o 13:10 podczas Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika podane rekordy 5; przekracza wartość progową i wyzwalania alertów, wkrótce po wyzwalając [grupy akcji](../../azure-monitor/platform/action-groups.md) skojarzone. 
-- O 13:15 po Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika podane rekordy 2; przekracza wartość progową i wyzwalania alertów, wkrótce po wyzwalając [grupy akcji](../../azure-monitor/platform/action-groups.md) skojarzone.
+- W następnej iteracji o 13:10 podczas Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika podane rekordy 5; przekracza wartość progową i wyzwalania alertów, wkrótce po wyzwalając [grupy akcji](../platform/action-groups.md) skojarzone. 
+- O 13:15 po Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika podane rekordy 2; przekracza wartość progową i wyzwalania alertów, wkrótce po wyzwalając [grupy akcji](../platform/action-groups.md) skojarzone.
 - Teraz w następnej iteracji o 13:20 po Contoso-dziennika — Alert został wykonany przez alert dotyczący platformy Azure, wyniki wyszukiwania dziennika udostępniany ponownie 0 rekordów poniżej progu i dlatego nie wyzwalania alertu.
 
-Jednak w przypadku wymienionych powyżej o 13:15 - alertów platformy Azure nie może określić, podstawowych problemów, które wystąpienie 1:10 zostaną zachowane, a jeśli jest netto nowe błędy; kwerendy dostarczone przez użytkownika może biorąc pod uwagę wcześniej rekordów - alertów platformy Azure mogą być się. Dlatego aby błąd po stronie ostrożnie, Contoso-dziennika — Alert jest wykonywany o 13:15, skonfigurowany [grupy akcji](../../azure-monitor/platform/action-groups.md) jest uruchamiany ponownie. Teraz o 13:20 Jeśli żadne rekordy nie są widoczne — alertów platformy Azure nie może być pewność, że przyczyną rekordy ma został rozwiązany; Dlatego Contoso-dziennika — Alert będzie nie zmieni się na rozwiązany w pulpit nawigacyjny alertów platformy Azure i/lub powiadomienia wysłane z informacją, rozpoznawanie alertu.
+Jednak w przypadku wymienionych powyżej o 13:15 - alertów platformy Azure nie może określić, podstawowych problemów, które wystąpienie 1:10 zostaną zachowane, a jeśli jest netto nowe błędy; kwerendy dostarczone przez użytkownika może biorąc pod uwagę wcześniej rekordów - alertów platformy Azure mogą być się. Dlatego aby błąd po stronie ostrożnie, Contoso-dziennika — Alert jest wykonywany o 13:15, skonfigurowany [grupy akcji](../platform/action-groups.md) jest uruchamiany ponownie. Teraz o 13:20 Jeśli żadne rekordy nie są widoczne — alertów platformy Azure nie może być pewność, że przyczyną rekordy ma został rozwiązany; Dlatego Contoso-dziennika — Alert będzie nie zmieni się na rozwiązany w pulpit nawigacyjny alertów platformy Azure i/lub powiadomienia wysłane z informacją, rozpoznawanie alertu.
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Cennik i rozliczenia alertów dziennika
@@ -133,9 +133,8 @@ Ceny dla dziennika alertów jest podany w [cennik usługi Azure Monitor](https:/
     > Jeśli występują nieprawidłowe znaki takie jak `<, >, %, &, \, ?, /` są obecne, zostaną one zastąpione przy użyciu `_` na rachunku. Aby usunąć zasoby scheduleQueryRules utworzone dla Naliczanie opłat za reguły alertów za pomocą [starszej wersji interfejsu API programu Log Analytics](api-alerts.md) — użytkownik musi usunąć oryginalny harmonogramu i przy użyciu akcji alertu [starszej wersji interfejsu API programu Log Analytics](api-alerts.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [Tworzenie alertów dziennika na platformie Azure](../../azure-monitor/platform/alerts-log.md).
+* Dowiedz się więcej o [Tworzenie alertów dziennika na platformie Azure](../platform/alerts-log.md).
 * Zrozumienie [elementami webhook w dzienniku alertów na platformie Azure](alerts-log-webhook.md).
-* Dowiedz się więcej o [alertów platformy Azure](../../azure-monitor/platform/alerts-overview.md).
-* Dowiedz się więcej o [usługi Application Insights](../../azure-monitor/app/analytics.md).
-* Dowiedz się więcej o [usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md).    
-
+* Dowiedz się więcej o [alertów platformy Azure](../platform/alerts-overview.md).
+* Dowiedz się więcej o [usługi Application Insights](../app/analytics.md).
+* Dowiedz się więcej o [zapytań dzienników usługi Azure Monitor](../log-query/log-query-overview.md).    

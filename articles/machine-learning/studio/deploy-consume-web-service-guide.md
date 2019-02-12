@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 64276047410280f8e818cf695f1fbb0c80fdd693
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2add42e56f939dbfeb33ac2774d404411b1fefb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497676"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997255"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Usługi Azure Machine Learning Studio, usług sieci Web: Wdrażanie i korzystanie
 Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez Internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. Ponieważ usługi sieci web są zgodne ze specyfikacją REST, można je wywoływać z różnych języków programowania i platform, takich jak .NET, Java i z aplikacji, takich jak program Excel.
@@ -31,10 +31,10 @@ Poniższe linki zawierają ogólne informacje o sposobie wdrażania nowej usług
 
 * Aby uzyskać ogólne informacje o sposobie wdrażania nowej usługi sieci web, który jest oparty na usłudze Resource Manager, zobacz [Wdrażanie nowej usługi sieci web](publish-a-machine-learning-web-service.md).
 * Aby uzyskać wskazówki dotyczące wdrażania usługi sieci web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
-* Pełny przewodnik o tym, jak utworzyć i wdrożyć usługi sieci web, zobacz [wskazówki krok 1: Tworzenie obszaru roboczego usługi Machine Learning](walkthrough-1-create-ml-workspace.md).
+* Pełny przewodnik o tym, jak utworzyć i wdrożyć usługi sieci web, rozpoczynać się [ samouczek 1: Prognozowanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
 * Aby uzyskać szczegółowe przykłady, które wdrażanie usługi sieci web zobacz:
 
-  * [Przewodnik, krok 5 Wdrażanie usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md)
+  * [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md)
   * [Jak wdrożyć usługę sieci web do wielu regionów](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Za pomocą dostawcy zasobów usługi sieci web API (interfejsów API usługi Azure Resource Manager)
@@ -84,7 +84,7 @@ Można testować usługi sieci web z poziomu portalu usług sieci Web Azure Mach
 
 * [Wdrażanie nowej usługi sieci Web](publish-a-machine-learning-web-service.md)
 * [Wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md)
-* [Przewodnik, krok 5 Wdrażanie usługi sieci web Azure Machine Learning](walkthrough-5-publish-web-service.md)
+* [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z poziomu programu Excel
 Można pobrać szablonu programu Excel, który wykorzystuje usługę sieci web:

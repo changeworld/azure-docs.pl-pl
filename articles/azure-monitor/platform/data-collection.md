@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: efc5fb022d117caeaec9da014252b501f2d06769
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450027"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002302"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -81,7 +81,7 @@ Na przykład ilu użytkowników w swojej aplikacji w danym momencie mogą wskaza
 ### <a name="sources-of-metric-data"></a>Źródła danych metryk
 Istnieją trzy podstawowe źródła metryki zebrane przez usługi Azure Monitor. Wszystkie te metryki są dostępne w sklepie metryki, gdzie one mogą być obliczane razem niezależnie od ich źródła.
 
-**Metryki platformy** są tworzone przez zasoby platformy Azure i zapewniają wgląd w ich kondycję i wydajność. Tworzy każdego typu zasobu [odrębnym zestawem metryki](../../azure-monitor/platform/metrics-supported.md) bez żadnej konfiguracji wymagane.
+**Metryki platformy** są tworzone przez zasoby platformy Azure i zapewniają wgląd w ich kondycję i wydajność. Tworzy każdego typu zasobu [odrębnym zestawem metryki](metrics-supported.md) bez żadnej konfiguracji wymagane. 
 
 **Metryki aplikacji** są tworzone przez usługę Application Insights dla aplikacji monitorowanych i pozwalają wykryć problemy z wydajnością i śledzenie trendów w sposobu korzystania z aplikacji. Obejmuje to wartości, takich jak _czas odpowiedzi serwera_ i _wyjątków przeglądarki_.
 
@@ -96,32 +96,39 @@ Istnieją trzy podstawowe źródła metryki zebrane przez usługi Azure Monitor.
 ### <a name="what-can-you-do-with-metrics"></a>Co można zrobić za pomocą metryk?
 Następujące zadania, które można wykonywać za pomocą metryk:
 
-- Użyj [Eksploratora metryk](../../azure-monitor/platform/metrics-charts.md) do analizowania zebranych metryk i vykreslit v je. Śledzić wydajność zasobu (np. maszyn wirtualnych, witryny sieci Web lub logiki aplikacji), przypinając wykresy, aby [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).
+- Użyj [analytics metryki](metrics-charts.md) do analizowania zebranych metryk i vykreslit v je. Śledzić wydajność zasobu (np. maszyn wirtualnych, witryny sieci Web lub logiki aplikacji), przypinając wykresy, aby [pulpitu nawigacyjnego platformy Azure](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurowanie [regułę alertu metryki](alerts-metric.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](action-groups.md) gdy Metryka przekracza próg.
-- Użyj [skalowania automatycznego](../../azure-monitor/platform/autoscale-overview.md) lub zwiększ zasoby na podstawie metryki przekroczenia wartości progowej.
-- Metryki tras do usługi Log Analytics do analizowania danych metryk wraz z danymi dziennika oraz do przechowywania wartości metryk przez okres dłuższy niż 93 dni.
-- Stream metryki, aby [Centrum zdarzeń](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md) do kierowania ich do [usługi Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) lub systemów zewnętrznych.
+- Użyj [skalowania automatycznego](autoscale-overview.md) lub zwiększ zasoby na podstawie metryki przekroczenia wartości progowej.
+- Metryki tras do dzienników do analizowania danych metryk wraz z danymi dziennika oraz do przechowywania wartości metryk przez okres dłuższy niż 93 dni. 
+- Stream metryki, aby [Centrum zdarzeń](stream-monitoring-data-event-hubs.md) do kierowania ich do [usługi Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) lub systemów zewnętrznych.
 - [Archiwum](../../azure-monitor/learn/tutorial-archive-data.md) historii wydajności i kondycji zasobu pod kątem zgodności, inspekcji lub w trybie offline do celów raportowania.
-- Dostęp do wartości metryk z wiersza polecenia lub niestandardowych aplikacji przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) lub [interfejsu API REST](../../azure-monitor/platform/rest-api-walkthrough.md).
+- Dostęp do wartości metryk z wiersza polecenia lub niestandardowych aplikacji przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) lub [interfejsu API REST](rest-api-walkthrough.md).
+
+
 
 ### <a name="viewing-metrics"></a>Wyświetlanie metryk
 Metryki w usłudze Azure Monitor są przechowywane w szeregach czasowych bazy danych zoptymalizowane pod kątem szybkiego pobierania i magazyny wartości metryk 93 dni. Skopiuj metryki dzienniki długoterminowych analizy i określania trendów.
 
-Dane metryk są używane w na różne sposoby, zgodnie z powyższym opisem. Użyj [Eksploratora metryk](../../azure-monitor/platform/metrics-charts.md) bezpośrednio analizować dane w magazynie metryki i wykres wartości wielu metryk wraz z upływem czasu. Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać za pomocą metryk [platformy Azure, interfejsu API REST monitorowania](../../azure-monitor/platform/rest-api-walkthrough.md).
+Dane metryk są używane w na różne sposoby, zgodnie z powyższym opisem. Użyj [analytics metryki](metrics-charts.md) bezpośrednio analizować dane w magazynie metryki i wykres wartości wielu metryk wraz z upływem czasu. Można wyświetlać wykresy interakcyjnie lub przypiąć je do pulpitu nawigacyjnego, aby wyświetlić je z innymi wizualizacjami. Możesz również pobrać za pomocą metryk [platformy Azure, interfejsu API REST monitorowania](rest-api-walkthrough.md).
 
-![Eksplorator metryk](media/data-collection/metrics-explorer.png)
+![Analiza metryki](media/data-collection/metrics-explorer.png)
 
 ## <a name="logs"></a>Dzienniki
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 Dzienniki zawierają różne rodzaje danych zorganizowanych w rekordy z różnymi zestawami właściwości dla każdego typu. Dzienniki mogą zawierać wartości liczbowe, takie jak metryki, ale zwykle zawierają dane tekstowe za pomocą szczegółowe opisy. Dodatkowo różnią się od metryki, różnią się one w ich struktury i często nie są zbierane w regularnych odstępach czasu.
 
 Typowe typ wpisu dziennika jest zdarzenie, które są zbierane sporadycznie. One tworzone przez aplikację lub usługę i zazwyczaj zawierają informacje wystarczające do zapewnienia pełnego kontekstu własnych. Na przykład zdarzenie może wskazywać, że określony zasób został utworzony lub zmodyfikowany nowego hosta uruchomionego w odpowiedzi zwiększonego ruchu lub wykryto błąd w aplikacji.
 
 Dzienniki są szczególnie przydatne dla łączenie danych z różnych źródeł, złożoną analizę i umożliwia analizę trendów wraz z upływem czasu. Ponieważ format danych może się różnić w aplikacji można utworzyć niestandardowe dzienniki przy użyciu struktury, które potrzebują. Metryki nawet są replikowane w dziennikach, aby połączyć je z innych danych monitorowania umożliwia analizę trendów i innych danych.
 
+
+
 ### <a name="sources-of-log-data"></a>Źródła danych dziennika
 Usługa Azure Monitor może zbierać dane dzienników z różnych źródeł, zarówno w obrębie platformy Azure i z zasobami lokalnymi. Następujące źródła danych dziennika:
 
-- [Dzienniki aktywności](collect-activity-logs.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md) zapewniające wgląd w ich działania.
+- [Dzienniki aktywności](collect-activity-logs.md) z zasobów platformy Azure, które obejmują informacje o swojej konfiguracji i kondycji i [dzienniki diagnostyczne](diagnostic-logs-stream-log-store.md) zapewniające wgląd w ich działania.
 - Agenci na [Windows](agent-windows.md) i [Linux](../learn/quick-collect-linux-computer.md) maszyn wirtualnych, które wysyłają dane telemetryczne z systemu operacyjnego gościa i aplikacji do usługi Azure Monitor, zgodnie z opisem w [źródeł danych](data-sources.md) , należy skonfigurować.
 - Dane aplikacji są zbierane przez [usługi Application Insights](https://docs.microsoft.com/azure/application-insights/).
 - Danych zapewniające wgląd w określonej aplikacji lub usługi [rozwiązania do monitorowania](../insights/solutions.md) lub funkcje, takie jak szczegółowe informacje o kontenerze, szczegółowych informacji z maszyny Wirtualnej lub grupy zasobów w szczegółowe informacje.
@@ -159,12 +166,12 @@ Możesz uzyskać wskazówki dotyczące zbieranie metryk z zasobów platformy Azu
 ### <a name="logs-to-metrics"></a>Dzienniki, metryki
 Zgodnie z powyższym opisem metryki są bardziej elastyczny niż dzienniki, aby można było utworzyć alerty z mniejszymi opóźnieniami i przy niskich kosztach. Znacznej ilości danych liczbowych są przechowywane jako dzienniki, które będą właściwe dla metryk, ale nie są przechowywane jako metryki w usłudze Azure Monitor. Typowym przykładem są dane dotyczące wydajności zbierane z agentów i rozwiązań do zarządzania. Niektóre z tych wartości mogły zostać skopiowane do metryk, jeśli są one dostępne dla alertów i analizy przy użyciu Eksploratora metryk.
 
-WYJAŚNIENIE Ta funkcja jest dostępna na [Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor](../../azure-monitor/platform/alerts-metric-logs.md). Lista wartości pomocy technicznej znajduje się w temacie [metryki obsługiwane z usługą Azure Monitor](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces).
+WYJAŚNIENIE Ta funkcja jest dostępna na [Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor](alerts-metric-logs.md). Lista wartości pomocy technicznej znajduje się w temacie [metryki obsługiwane z usługą Azure Monitor](metrics-supported.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Data Stream z systemami zewnętrznymi
 Oprócz używania narzędzi na platformie Azure do analizowania danych monitorowania, może być wymagane ją przesłać do zewnętrznego narzędzia, takie jak informacje o zabezpieczeniach i produktów do zarządzania (SIEM) zdarzenia. Przekazywanie ten jest zazwyczaj wykonywane bezpośrednio z monitorowanych zasobów za pomocą [usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 
-Możesz też uzyskać wskazówki dotyczące różnych rodzajów danych monitorowania na [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Możesz też uzyskać wskazówki dotyczące różnych rodzajów danych monitorowania na [Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne](stream-monitoring-data-event-hubs.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

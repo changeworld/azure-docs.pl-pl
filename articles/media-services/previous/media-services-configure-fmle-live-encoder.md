@@ -4,7 +4,7 @@ description: W tym temacie pokazano, jak skonfigurować koder interfejsu Flash M
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3113f333-517a-47a1-a1b3-57e200c6b2a2
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/08/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 1a7cbd19b89663ab874fc5a7a86587e292b86f81
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 32bed77146284799faebdb8a44e2e610f49913cf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665889"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003741"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Wysyłać strumień na żywo o pojedynczej szybkości transmisji bitów przy użyciu koder FMLE
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream-legacy"></a>Koder FMLE umożliwia wysyłania strumienia na żywo o pojedynczej szybkości transmisji bitów (starsza wersja)
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -33,7 +33,7 @@ W tym artykule przedstawiono sposób konfigurowania [Flash Media Live Encoder](h
 
 W tym samouczku przedstawiono sposób zarządzania usługi Azure Media Services (AMS) przy użyciu narzędzia Azure Media Services Explorer (AMSE). To narzędzie jest uruchamiane tylko na komputerze Windows. Jeśli na komputerze Mac lub Linux, użyj witryny Azure portal do utworzenia [kanały](media-services-portal-creating-live-encoder-enabled-channel.md#create-a-channel) i [programy](media-services-portal-creating-live-encoder-enabled-channel.md).
 
-W tym samouczku opisano sposób używania adaptacyjnych kontrolek aplikacji. Jednak domyślnie adaptacyjnych kontrolek aplikacji nie obsługuje FMLE. Należy zakupić wtyczkę AAC kodowania, np. od 1.02.2016 MainConcept: [wtyczkę AAC](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
+W tym samouczku opisano sposób używania adaptacyjnych kontrolek aplikacji. Jednak domyślnie adaptacyjnych kontrolek aplikacji nie obsługuje FMLE. Należy zakupić wtyczkę AAC kodowania takich jak przez firmę MainConcept: [Wtyczkę AAC](http://www.mainconcept.com/products/plug-ins/plug-ins-for-adobe/aac-encoder-fmle.html)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * [Tworzenie konta usługi Azure Media Services](media-services-portal-create-account.md)
@@ -76,15 +76,15 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
 
 **Film wideo**:
 
-* Koder-dekoder: H.264
+* Codec: H.264
 * Profil: Wysoki (poziom 4.0)
 * Szybkość transmisji bitów: 5000 KB/s
-* Ramka kluczowa: 2 sekundy (60 sekund)
-* Klatki, szybkości: 30
+* Klatki kluczowe: 2 sekundy (60 sekund)
+* Szybkość klatek: 30
 
 **Dźwięk**:
 
-* Koder-dekoder: AAC (LC)
+* Codec: AAC (LC)
 * Szybkość transmisji bitów: 192 kb/s
 * Częstotliwość próbkowania: 44,1 kHz
 
@@ -93,24 +93,24 @@ W tym samouczku są używane następujące ustawienia danych wyjściowych. W poz
 
     Interfejs jest jeden główna strona ustawień. Zwróć uwagę na następujące ustawienia, aby zacząć korzystać z przesyłania strumieniowego przy użyciu FMLE zalecane.
 
-   * Format: Szybkość klatek H.264: 30,00
+   * Format: Szybkość klatek H.264: 30.00
    * Rozmiar danych wejściowych: 1280 x 720
-   * Szybkość transmisji bitów: 5000 KB/s (mogą być dostosowywane według ograniczenia sieci)  
+   * Szybkość transmisji bitów: (Może być określany na podstawie ograniczenia sieci) do 5000 KB/s  
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
 
      Przy użyciu z przeplotem źródeł, skontaktuj się znacznik wyboru opcji "Opcji Usuń przeplot"
 2. Wybierz ikonę klucza, obok Format, należy te dodatkowe ustawienia:
 
-   * Profil: Main
+   * Profil: Główny
    * Poziom: 4.0
-   * Ramka kluczowa częstotliwość: 2 sekundy.
+   * Ramka kluczowa częstotliwość: 2 sekundy
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
 3. Ustawienie następujących ważnych audio:
 
-   * Format: adaptacyjnych kontrolek aplikacji
-   * Częstotliwość próbkowania: Hz 44100 b
+   * Format: AAC
+   * Częstotliwość próbkowania: 44100 Hz
    * Szybkość transmisji bitów: 192 kb/s
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)

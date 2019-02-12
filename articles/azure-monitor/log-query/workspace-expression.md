@@ -1,6 +1,6 @@
 ---
-title: wyrażenie Workspace() w zapytaniu usługi Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Wyrażenie obszar roboczy jest używany w zapytaniu usługi Log Analytics do pobierania danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji.
+title: wyrażenie Workspace() w zapytaniu dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
+description: Wyrażenie obszar roboczy jest używany w zapytaniu dzienników usługi Azure Monitor do pobierania danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 24a737a728b0a249fda76cbff481bea284ac24aa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d1bb3c99c82683dde9247da86e80d800fe06631
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182948"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992997"
 ---
-# <a name="workspace-expression-in-log-analytics-query"></a>wyrażenie Workspace() zapytanie usługi Log Analytics
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>wyrażenie Workspace() w zapytaniu dzienników usługi Azure Monitor
 
-`workspace` Wyrażenie jest używane w zapytaniu usługi Log Analytics można pobrać danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Jest to przydatne dołączyć dane dziennika w zapytaniu usługi Application Insights i wykonywać zapytania względem danych w wielu obszarach roboczych w zapytaniu dziennika.
+`workspace` Wyrażenie jest używane w zapytaniu usługi Azure Monitor do pobierania danych z określonego obszaru roboczego w tej samej grupie zasobów, innej grupy zasobów lub innej subskrypcji. Jest to przydatne dołączyć dane dziennika w zapytaniu usługi Application Insights i wykonywać zapytania względem danych w wielu obszarach roboczych w zapytaniu dziennika.
 
 
 ## <a name="syntax"></a>Składnia
@@ -36,9 +36,9 @@ ms.locfileid: "53182948"
 | Identyfikator | Opis | Przykład
 |:---|:---|:---|
 | Nazwa zasobu | Ludzi czytelna nazwa obszaru roboczego (zwane również "Nazwa składnika") | Workspace("contosoretail") |
-| Kwalifikowana nazwa | Pełna nazwa obszaru roboczego w postaci: "componentName-subscriptionName/resourceGroup" | Workspace('Contoso/ContosoResource/ContosoWorkspace') |
-| ID | Identyfikator GUID obszaru roboczego | Workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
-| Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure | Workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/Providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
+| Kwalifikowana nazwa | Pełna nazwa obszaru roboczego w postaci: "componentName-subscriptionName/resourceGroup" | workspace('Contoso/ContosoResource/ContosoWorkspace') |
+| ID | Identyfikator GUID obszaru roboczego | workspace("b438b3f6-912a-46d5-9db1-b42069242ab4") |
+| Identyfikator zasobu platformy Azure | Identyfikator zasobu platformy Azure | workspace("/subscriptions/e4227-645-44e-9c67-3b84b5982/resourcegroups/ContosoAzureHQ/providers/Microsoft.OperationalInsights/workspaces/contosoretail") |
 
 
 ## <a name="notes"></a>Uwagi
@@ -71,5 +71,6 @@ union
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz [wyrażenie aplikacji](workspace-expression.md) do odwoływania się do aplikacji usługi Application Insights.
-- Przeczytaj o tym, jak [danych usługi Log Analytics](../../azure-monitor/log-query/log-query-overview.md) są przechowywane.
+- Zobacz [wyrażenie aplikacji](app-expression.md) do odwoływania się do aplikacji usługi Application Insights.
+- Przeczytaj o tym, jak [danych usługi Azure Monitor](log-query-overview.md) są przechowywane.
+- Dostęp do pełną dokumentację dotyczącą [język zapytań w Eksploratorze danych](/azure/kusto/query/).

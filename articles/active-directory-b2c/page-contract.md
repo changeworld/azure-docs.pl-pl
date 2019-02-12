@@ -10,18 +10,21 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 637cdb338496764e64c18a887673808ef4e8415a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fa48d3825b5b942497b1eabd19a1eeb7e0141058
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203457"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003146"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Zaznacz kontrakt strony w usłudze Azure Active Directory B2C, za pomocą zasad niestandardowych
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Kontrakt strony można wybrać w usłudze Azure Active Directory (Azure AD) B2C, przez skonfigurowanie go w [zasady niestandardowe](active-directory-b2c-overview-custom.md). Kontrakt strony jest skojarzenie elementów, które oferuje usługa Azure AD B2C i zawartości, przez Ciebie. Jeśli zamierzasz używać [Javascript](javascript-samples.md), należy zdefiniować wersja kontraktu strony dla wszystkich definicji zawartości w zasadach niestandardowych.
+W zasadach usługi Azure Active Directory (Azure AD) B2C, można włączyć kodu po stronie klienta JavaScript, czy używasz przepływy użytkownika lub niestandardowych zasad. W tym artykule omówiono sposób zaznacz kontrakt strony w usłudze Azure AD B2C, konfigurując go w [zasad niestandardowych](active-directory-b2c-overview-custom.md). Umowa strony jest skojarzenie elementów, które oferuje usługa Azure AD B2C i zawartości, przez Ciebie. Jeśli zamierzasz używać [Javascript](javascript-samples.md), należy zdefiniować wersja kontraktu strony dla wszystkich definicji zawartości w zasadach niestandardowych.
+
+> [!NOTE]
+> Jeśli chcesz włączyć język JavaScript, w przypadku przepływów użytkownika, zobacz [o wersji JavaScript i strony umowy w ramach przepływu użytkownika](user-flow-javascript-overview.md).
 
 ## <a name="replace-datauri-values"></a>Zastąp wartości Identyfikator URI
 

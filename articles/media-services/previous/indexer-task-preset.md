@@ -4,23 +4,23 @@ description: Ten temat zawiera omówienie zadań ustawienie wstępne dla usługi
 services: media-services
 documentationcenter: ''
 author: Asolanki
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 02/08/2019
 ms.author: adsolank;juliako;
-ms.openlocfilehash: 65b4e2da2cb019c46ee566cd14f0a576c2376db2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8790a5dd596a98409db9a3470b17461359882a38
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54463092"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994357"
 ---
-# <a name="task-preset-for-azure-media-indexer"></a>Zadanie ustawienie wstępne dla usługi Azure Media Indexer
+# <a name="task-preset-for-azure-media-indexer"></a>Zadanie ustawienie wstępne dla usługi Azure Media Indexer 
 
 Usługa Azure Media Indexer jest procesor multimediów, którego używasz do wykonywania następujących zadań: Dodaj plików multimedialnych i zawartości multimedialnej możliwość wyszukiwania, Generuj zamknięte śledzi napisów i słów kluczowych, indeksowanie plików zasobów, będące częścią element zawartości.
 
