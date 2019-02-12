@@ -1,6 +1,6 @@
 ---
-title: Zbieranie dzienników niestandardowych w usłudze Log Analytics | Dokumentacja firmy Microsoft
-description: Usługa log Analytics może zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux.  W tym artykule opisano sposób definiowania nowy dziennik niestandardowy i szczegóły rekordów, utworzonego przez siebie w usłudze Log Analytics.
+title: Zbieranie dzienników niestandardowych w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Usługa Azure Monitor może zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux.  W tym artykule opisano sposób definiowania nowy dziennik niestandardowy i szczegóły rekordów, utworzonego przez siebie w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
-ms.openlocfilehash: 628cbcbfb712d2fcaa53bdaee262f88a78dd1527
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7a25686ffa80b831e5d459a8795595a00f869fda
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895673"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997596"
 ---
-# <a name="custom-logs-in-log-analytics"></a>Dzienniki niestandardowe w usłudze Log Analytics
-Źródło danych dzienników niestandardowych w usłudze Log Analytics można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog. Po zebraniu możesz analizować dane na poszczególne pola w zapytaniach lub wyodrębniania danych podczas zbierania do poszczególnych pól.
+# <a name="custom-logs-in-azure-monitor"></a>Dzienniki niestandardowe w usłudze Azure Monitor
+Źródło danych dzienników niestandardowych w usłudze Azure Monitor umożliwia zbieranie zdarzeń z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog. Po zebraniu możesz analizować dane na poszczególne pola w zapytaniach lub wyodrębniania danych podczas zbierania do poszczególnych pól.
 
 ![Zbieranie dzienników niestandardowych](media/data-sources-custom-logs/overview.png)
 
@@ -35,7 +35,7 @@ Pliki dziennika mają być zbierane musi spełniać następujące kryteria.
 - Plik dziennika, należy użyć kodowanie ASCII lub UTF-8.  Innych formatach, takich jak UTF-16 nie są obsługiwane.
 
 >[!NOTE]
->Jeśli istnieją zduplikowane wpisy w pliku dziennika, usługi Log Analytics będzie zbierać je.  Jednak wyniki zapytania będą niespójne gdzie wyników filtrowania Pokaż więcej zdarzeń niż liczba wyników.  Ważne jest, sprawdź poprawność dziennika, aby określić, jeśli aplikacja, która tworzy on jest przyczyną tego zachowania i rozwiązać problem, jeśli jest to możliwe, przed utworzeniem definicji kolekcji dzienników niestandardowych.  
+>Jeśli istnieją zduplikowane wpisy w pliku dziennika, usługi Azure Monitor będzie zbierać je.  Jednak wyniki zapytania będą niespójne gdzie wyników filtrowania Pokaż więcej zdarzeń niż liczba wyników.  Ważne jest, sprawdź poprawność dziennika, aby określić, jeśli aplikacja, która tworzy on jest przyczyną tego zachowania i rozwiązać problem, jeśli jest to możliwe, przed utworzeniem definicji kolekcji dzienników niestandardowych.  
 >
   
 >[!NOTE]
@@ -52,17 +52,17 @@ Poniższa procedura umożliwia zdefiniowanie niestandardowego pliku dziennika.  
 ### <a name="step-1-open-the-custom-log-wizard"></a>Krok 1. Otwórz kreatora dziennika niestandardowego
 Niestandardowego kreatora dziennika jest uruchamiany w witrynie Azure portal i pozwala na zdefiniowanie nowego dziennika niestandardowego do zbierania.
 
-1. W witrynie Azure portal wybierz **usługi Log Analytics** > obszar roboczy > **Zaawansowane ustawienia**.
+1. W witrynie Azure portal wybierz **obszarów roboczych usługi Log Analytics** > obszar roboczy > **Zaawansowane ustawienia**.
 2. Kliknij pozycję **danych** > **niestandardowe dzienniki**.
 3. Domyślnie wszystkie zmiany konfiguracji są automatycznie przekazywane do wszystkich agentów.  Agenci dla systemu Linux, aby uzyskać plik konfiguracji są wysyłane do Fluentd modułów zbierających dane.  Jeśli chcesz zmodyfikować ten plik ręcznie na każdym agencie systemu Linux, usuń zaznaczenie pola *Zastosuj poniższą konfigurację do moich maszyn z systemem Linux*.
 4. Kliknij przycisk **Dodaj +** aby otworzyć Kreatora dziennika niestandardowego.
 
 ### <a name="step-2-upload-and-parse-a-sample-log"></a>Krok 2. Przekazywanie i analizowanie przykładowy dziennik
-Możesz uruchomić przykład dzienników niestandardowych.  Kreator przeanalizować i wyświetla wpisy w tym pliku dla Ciebie do sprawdzania poprawności.  Usługa log Analytics będzie używać ogranicznik, którego należy określić do identyfikowania każdego rekordu.
+Możesz uruchomić przykład dzienników niestandardowych.  Kreator przeanalizować i wyświetla wpisy w tym pliku dla Ciebie do sprawdzania poprawności.  Usługa Azure Monitor użyje ogranicznik, którego należy określić do identyfikowania każdego rekordu.
 
 **Nowy wiersz** domyślnym ogranicznikiem i są używane dla plików dziennika, które mają pojedynczy wpis dla każdego wiersza.  Jeśli wiersz zaczyna się od daty i godziny w jednej z dostępnych formatów, a następnie możesz określić **sygnatura czasowa** ogranicznik, który obsługuje wpisy, które rozciągają się więcej niż jeden wiersz.
 
-Jeśli jest używany ogranicznik sygnatury czasowej, właściwość TimeGenerated poszczególnych rekordów przechowywanych w usłudze Log Analytics zostaną wypełnione przy użyciu daty/godziny określone dla tego wpisu w pliku dziennika.  Jeśli jest używany nowy ogranicznik wiersza, TimeGenerated jest wypełniana z datą i godziną, że usługi Log Analytics zebrany wpis.
+Jeśli jest używany ogranicznik sygnatury czasowej, właściwość TimeGenerated poszczególnych rekordów przechowywanych w usłudze Azure Monitor zostaną wypełnione przy użyciu daty/godziny określone dla tego wpisu w pliku dziennika.  Jeśli jest używany nowy ogranicznik wiersza, TimeGenerated jest wypełniana z datą i godziną, że usługa Azure Monitor zebrany wpis.
 
 
 1. Kliknij przycisk **Przeglądaj** i przejdź do przykładowego pliku.  Należy zauważyć, że ten przycisk, może być oznaczony jako **wybierz plik** w niektórych przeglądarkach.
@@ -101,16 +101,16 @@ Typ dziennika umożliwi podanej nazwie zgodnie z powyższym opisem.  Zawsze zako
 3. Kliknij przycisk **dalej** można zapisać definicji dzienników niestandardowych.
 
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>Krok 5. Zweryfikuj, że niestandardowe dzienniki są zbierane
-Może potrwać do godziny początkowe dane z nowego dziennika niestandardowego pojawią się w usłudze Log Analytics.  Rozpocznie się zbieranie wpisy z dzienników odnaleziona w ścieżce określonej z punktu zdefiniowane dziennika niestandardowego.  Wpisy, które przekazane podczas tworzenia niestandardowego dziennika nie zostaną zachowane, ale już istniejącymi zapisów w plikach dziennika, które klient zlokalizuje będą zbierane.
+Może potrwać do godziny początkowe dane z nowego dziennika niestandardowego pojawią się w usłudze Azure Monitor.  Rozpocznie się zbieranie wpisy z dzienników odnaleziona w ścieżce określonej z punktu zdefiniowane dziennika niestandardowego.  Wpisy, które przekazane podczas tworzenia niestandardowego dziennika nie zostaną zachowane, ale już istniejącymi zapisów w plikach dziennika, które klient zlokalizuje będą zbierane.
 
-Po uruchomieniu usługi Log Analytics zbieranie z dziennika niestandardowego jego rekordy będą dostępne z zapytaniem dziennika.  Użyj nazwy, która udostępniła dziennika niestandardowego jako **typu** w zapytaniu.
+Po uruchomieniu usługi Azure Monitor zbieranie z dziennika niestandardowego jego rekordy będą dostępne z zapytaniem dziennika.  Użyj nazwy, która udostępniła dziennika niestandardowego jako **typu** w zapytaniu.
 
 > [!NOTE]
 > Jeśli brakuje właściwości RawData zapytanie, może być konieczne zamknięcie i ponowne otwarcie przeglądarki.
 
 
 ### <a name="step-6-parse-the-custom-log-entries"></a>Krok 6. Analizowanie wpisy dziennika niestandardowego
-Wpis dziennika całego będą przechowywane w pojedynczej właściwości o nazwie **RawData**.  Prawdopodobnie należy oddzielić różnych rodzajów informacji w każdej pozycji w poszczególnych właściwości dla każdego rekordu. Zapoznaj się [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md) opcji podczas analizy **RawData** na wiele właściwości.
+Wpis dziennika całego będą przechowywane w pojedynczej właściwości o nazwie **RawData**.  Prawdopodobnie należy oddzielić różnych rodzajów informacji w każdej pozycji w poszczególnych właściwości dla każdego rekordu. Zapoznaj się [analizy danych tekstowych w usłudze Azure Monitor](../log-query/parse-text.md) opcji podczas analizy **RawData** na wiele właściwości.
 
 ## <a name="removing-a-custom-log"></a>Usuwanie dziennika niestandardowego
 Użyj następującego procesu w witrynie Azure portal, można usunąć dziennika niestandardowego, który wcześniej zdefiniowany.
@@ -120,16 +120,16 @@ Użyj następującego procesu w witrynie Azure portal, można usunąć dziennika
 
 
 ## <a name="data-collection"></a>Zbieranie danych
-Usługa log Analytics będzie zbierać nowe wpisy z każdego dziennika niestandardowego co 5 minut.  Agent zarejestruje jej miejscu w każdym pliku dziennika, które są zbierane z.  Jeśli agent przejdzie do trybu offline w okresie czasu, następnie usługi Log Analytics będzie zbierać wpisów z tam, gdzie ją ostatnia przerwaliśmy, nawet jeśli te wpisy zostały utworzone, gdy agent był w trybie offline.
+Usługa Azure Monitor będzie zbierać nowe wpisy z każdego dziennika niestandardowego co 5 minut.  Agent zarejestruje jej miejscu w każdym pliku dziennika, które są zbierane z.  Jeśli agent przejdzie do trybu offline w okresie czasu, następnie usługi Azure Monitor będzie zbierać wpisów z tam, gdzie ją ostatnia przerwaliśmy, nawet jeśli te wpisy zostały utworzone, gdy agent był w trybie offline.
 
-Całą zawartość wpis dziennika są zapisywane w pojedynczej właściwości o nazwie **RawData**.  Zobacz [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md) dla metody na potrzeby analizowania każdego zaimportowane wpisu dziennika na wiele właściwości.
+Całą zawartość wpis dziennika są zapisywane w pojedynczej właściwości o nazwie **RawData**.  Zobacz [analizy danych tekstowych w usłudze Azure Monitor](../log-query/parse-text.md) dla metody na potrzeby analizowania każdego zaimportowane wpisu dziennika na wiele właściwości.
 
 ## <a name="custom-log-record-properties"></a>Właściwości rekordu dziennika niestandardowego
 Rekordy dziennika niestandardowego mają typ o nazwie dziennika, przez Ciebie i właściwości w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| TimeGenerated |Data i godzina, który rekord został zebrany przez usługę Log Analytics.  Jeśli dziennik używa rozdzielnika oparte na czasie to czas, zebranych z wpisu. |
+| TimeGenerated |Data i godzina, który rekord został zebrany przez usługi Azure Monitor.  Jeśli dziennik używa rozdzielnika oparte na czasie to czas, zebranych z wpisu. |
 | SourceSystem |Typ agenta, które zostały zebrane rekordu. <br> Połącz OpsManager — Windows agent, bezpośrednio lub System Center Operations Manager <br> Linux — Wszyscy agenci systemu Linux |
 | RawData |Pełny tekst wpisu zebrane. Prawdopodobnie warto [przeanalizować te dane do poszczególnych właściwości](../log-query/parse-text.md). |
 | ManagementGroupName |Nazwa grupy zarządzania agentów System Center Operations Manager.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
@@ -178,9 +178,9 @@ Niestandardowe dzienniki są przydatne, jeśli pasuje do kryteriów wymienionych
 
 W przypadkach, w których nie można zebrać danych z dziennikami niestandardowymi należy wziąć pod uwagę następujące alternatywne strategie:
 
-- Użyj niestandardowego skryptu lub innej metody, aby zapisywać danych [zdarzeń Windows](data-sources-windows-events.md) lub [Syslog](data-sources-syslog.md) które są zbierane przez usługę Log Analytics. 
-- Wysłać dane bezpośrednio do usługi Log Analytics przy użyciu [interfejsu API modułu zbierającego dane HTTP](data-collector-api.md). Przykład za pomocą elementów runbook w usłudze Azure Automation można znaleźć w [zbieranie danych w usłudze Log Analytics przy użyciu elementu runbook usługi Azure Automation](runbook-datacollect.md).
+- Użyj niestandardowego skryptu lub innej metody, aby zapisywać danych [zdarzeń Windows](data-sources-windows-events.md) lub [Syslog](data-sources-syslog.md) które są zbierane przez usługi Azure Monitor. 
+- Wysłać dane bezpośrednio w usłudze Azure Monitor za pomocą [interfejsu API modułu zbierającego dane HTTP](data-collector-api.md). Przykład za pomocą elementów runbook w usłudze Azure Automation można znaleźć w [danych zbieranie dzienników w usłudze Azure Monitor z elementu runbook usługi Azure Automation](runbook-datacollect.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz [analizy danych tekstowych w usłudze Log Analytics](../log-query/parse-text.md) dla metody na potrzeby analizowania każdego zaimportowane wpisu dziennika na wiele właściwości.
+* Zobacz [analizy danych tekstowych w usłudze Azure Monitor](../log-query/parse-text.md) dla metody na potrzeby analizowania każdego zaimportowane wpisu dziennika na wiele właściwości.
 * Dowiedz się więcej o [rejestrowania zapytań](../log-query/log-query-overview.md) analizować dane zbierane z innych źródeł danych i rozwiązań.

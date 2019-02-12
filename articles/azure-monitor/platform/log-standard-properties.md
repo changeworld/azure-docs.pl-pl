@@ -1,6 +1,6 @@
 ---
-title: Właściwości standardowe w dokumentacji usługi Azure Monitor Log Analytics | Dokumentacja firmy Microsoft
-description: Opisuje właściwości, które są wspólne dla wielu typów danych w usłudze Azure Monitor Log Analytics.
+title: Rekordów dziennika standardowe właściwości w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Opisuje właściwości, które są wspólne dla wielu typów danych w dziennikach w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381949"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997043"
 ---
-# <a name="standard-properties-in-log-analytics-records"></a>Właściwości standardowe w rekordach usługi Log Analytics
-Dane w [usługi Log Analytics](../log-query/log-query-overview.md) jest przechowywany jako zestaw rekordów, każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
+# <a name="standard-properties-in-azure-monitor-log-records"></a>Standardowe właściwości w usłudze Azure Monitor rekordów dziennika
+Dane z dzienników w usłudze Azure Monitor [przechowywane jako zbiór rekordów](../log-query/log-query-overview.md), każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.
 
 Niektóre z tych właściwości są nadal w trakcie zaimplementowana, może je wyświetlić, w niektórych typach danych, ale jeszcze nie w innych.
 
@@ -39,7 +39,7 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Typ
+## <a name="type"></a>Type
 **Typu** właściwość przechowuje nazwę tabeli, z którego pobrano rekord może również być uważane za typu rekordu. Ta właściwość jest przydatna w zapytaniach, które łączą rekordy z wielu tabel, takich jak implementacje używające `search` operator rozróżnienie między rekordami różnych typów. **$table** mogą być używane zamiast **typu** w jednych miejscach.
 
 ### <a name="examples"></a>Przykłady
@@ -151,6 +151,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przeczytaj więcej na temat [są przechowywane dane usługi Log Analytics](../log-query/log-query-overview.md).
-- Uzyskaj lekcji na [Pisanie zapytań w usłudze Log Analytics](../../azure-monitor/log-query/get-started-queries.md).
-- Uzyskaj lekcji na [sprzężenie tabel w zapytań usługi Log Analytics](../../azure-monitor/log-query/joins.md).
+- Przeczytaj więcej na temat [są przechowywane dane dziennika usługi Azure Monitor](../log-query/log-query-overview.md).
+- Uzyskaj lekcji na [Pisanie zapytań log](../../azure-monitor/log-query/get-started-queries.md).
+- Uzyskaj lekcji na [sprzężenie tabel w dzienniku zapytań](../../azure-monitor/log-query/joins.md).

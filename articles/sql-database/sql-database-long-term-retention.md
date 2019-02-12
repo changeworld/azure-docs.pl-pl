@@ -11,20 +11,20 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 3d6010df64c4e3c75bd05e2eb9828c07cf3fb342
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 68bcddeee2cec1a77f20f8f470669f170fa50743
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471389"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992487"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store kopie zapasowe bazy danych SQL platformy Azure przez maksymalnie 10 lat
 
-Wiele aplikacji ma prawnych, zgodności lub innych firm do celów, które można przechowywać kopie zapasowe bazy danych dłużej niż 7 – 35 dni, dostarczone przez usługę Azure SQL Database wymagają [automatyczne tworzenie kopii zapasowych](sql-database-automated-backups.md). Funkcja długoterminowego przechowywania (od lewej do prawej), można przechowywać określonego SQL pełne kopie zapasowe bazy danych w [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) magazynu obiektów blob do 10 lat. Jakiejkolwiek kopii zapasowej można przywrócić jako nową bazę danych.
+Wiele aplikacji ma prawnych, zgodności lub innych firm do celów, które można przechowywać kopie zapasowe bazy danych dłużej niż 7 – 35 dni, dostarczone przez usługę Azure SQL Database wymagają [automatyczne tworzenie kopii zapasowych](sql-database-automated-backups.md). Funkcja długoterminowego przechowywania (od lewej do prawej), można przechowywać określonego SQL pełne kopie zapasowe bazy danych w [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) magazynu obiektów blob do 10 lat. Następnie możesz przywrócić dowolną kopię zapasową jako nową bazę danych.
 
 > [!NOTE]
-> Od lewej do prawej, które mogą być włączone dla autonomicznych i puli baz danych. Go nie są jeszcze dostępne dla wystąpienia bazy danych w wystąpieniach zarządzanych. Można użyć zadania agenta programu SQL, aby zaplanować [kopie zapasowe bazy danych tylko do kopiowania](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) zamiast od lewej do prawej dłużej niż 35 dni.
+> Od lewej do prawej, można włączyć dla pojedynczych i puli baz danych. Go nie są jeszcze dostępne dla wystąpienia bazy danych w wystąpieniach zarządzanych. Można użyć zadania agenta programu SQL, aby zaplanować [kopie zapasowe bazy danych tylko do kopiowania](https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server) zamiast od lewej do prawej dłużej niż 35 dni.
 > 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak działa długoterminowe przechowywanie bazy danych SQL
