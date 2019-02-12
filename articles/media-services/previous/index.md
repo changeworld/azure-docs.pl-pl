@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/08/2018
 ms.author: carolz
-ms.openlocfilehash: 742e6a556045874d57c810373f2297582ca8140e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: dce69041176840765817d561f61a0d5f3d2b9a66
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979671"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998032"
 ---
-# <a name="media-services-documentation-legacy"></a>Dokumentacja usługi Media Services (starsza zawartość)
+# <a name="media-services-documentation"></a>Dokumentacja usługi Media Services  
 
 Dowiedz się, jak za pomocą usługi Media Services — rozszerzalnej platformy w chmurze — zapewnić przesyłanie strumieniowe materiałów wideo w jakości odpowiedniej do emisji. Samouczki, dokumentacja interfejsu API i inne dokumenty przedstawiające sposób zapewnienia bezpiecznej transmisji strumieniowej materiałów wideo lub audio na żywo lub na żądanie, którą można skalować na potrzeby milionów użytkowników.
 
