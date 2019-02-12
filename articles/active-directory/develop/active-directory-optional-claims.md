@@ -16,12 +16,12 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7efac4138f21a3f8e9dae087991f97dabad61822
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fa8328039c82ffb8be94c1d7abde7b2b6b6dd52d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077254"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098242"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app-public-preview"></a>Instrukcje: Podaj opcjonalne oświadczenia do aplikacji usługi Azure AD (publiczna wersja zapoznawcza)
 
@@ -76,7 +76,7 @@ Zestaw oświadczeń opcjonalne, domyślnie dostępne do użycia przez aplikacje 
 | `ztdid`                    | Bezobsługowa identyfikator wdrożenia | JWT | | Tożsamość urządzenia używana dla [rozwiązania Windows AutoPilot](https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) |
 |`email`                     | Adresy e-mail dla tego użytkownika, jeśli użytkownik ma jeden.  | JWT, SAML | | Ta wartość jest domyślnie, jeśli użytkownik Gość w dzierżawie.  Dla zarządzanych użytkowników (te wewnątrz dzierżawy) jej należy wystąpić za pomocą tego opcjonalnego roszczenia, lub w wersji 2.0, z zakresu OpenID.  Dla zarządzanych użytkowników, adres e-mail musi być ustawiona w [portalu administracyjnego usługi Office](https://portal.office.com/adminportal/home#/users).|  
 | `acct`             | Stan konta użytkowników w dzierżawie. | JWT, SAML | | Jeśli użytkownik jest członkiem dzierżawy, wartość jest `0`. Jeśli są one gościa, wartość jest `1`. |
-| `upn`                      | Oświadczenie UserPrincipalName. | JWT, SAML  |           | Mimo że to oświadczenie jest automatycznie dołączane, możesz je określić jako opcjonalnego roszczenia, aby dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika gościa. <br> Dodatkowe właściwości: <br> `include_externally_authenticated_upn` <br> `include_externally_authenticated_upn_without_hash` |
+| `upn`                      | Oświadczenie UserPrincipalName. | JWT, SAML  |           | Mimo że to oświadczenie jest automatycznie dołączane, możesz je określić jako opcjonalnego roszczenia, aby dołączyć dodatkowe właściwości, aby zmodyfikować jego zachowanie w przypadku użytkownika gościa.  |
 
 ### <a name="v20-optional-claims"></a>Opcjonalne oświadczeń w wersji 2.0
 
@@ -85,30 +85,28 @@ Te oświadczenia są zawsze dołączane w tokenach v1.0, ale nie zostały uwzgl�
 **Tabela 3: Tylko do wersji 2.0 opcjonalnych oświadczeń**
 
 | Token JWT oświadczeń     | Name (Nazwa)                            | Opis                                | Uwagi |
-|---------------|---------------------------------|--------------------------------------------------------------------------------------------------------------------------------|-------|
+|---------------|---------------------------------|-------------|-------|
 | `ipaddr`      | Adres IP                      | Adres IP klienta, zalogowany z.   |       |
 | `onprem_sid`  | Identyfikator zabezpieczeń lokalnych |                                             |       |
 | `pwd_exp`     | Czas wygaśnięcia hasła        | Data i godzina jaką hasło wygaśnie. |       |
-| `pwd_url`     | Zmień hasło, adres URL             | Adres URL, który użytkownik może odwiedzić, aby zmienić swoje hasło.   |       |
-| `in_corp`     | Inside Corporate Network        | Sygnały, jeśli klient jest logowania się z siecią firmową. Jeśli nie są one oświadczenia nie zostaną uwzględnione.   |       |
-| `nickname`    | Pseudonim                        | Dodatkową nazwę użytkownika, niezależnie od imię lub nazwisko. |       |                                                                                                                |       |
+| `pwd_url`     | Zmień hasło, adres URL             | Adres URL, który użytkownik może odwiedzić, aby zmienić swoje hasło.   |   |
+| `in_corp`     | Inside Corporate Network        | Sygnały, jeśli klient jest logowania się z siecią firmową. Jeśli nie są one oświadczenia nie zostaną uwzględnione.   |  Na podstawie wylogować się z [zaufane adresy IP](../authentication/howto-mfa-mfasettings.md#trusted-ips) ustawień w usłudze MFA.    |
+| `nickname`    | Pseudonim                        | Dodatkową nazwę użytkownika, niezależnie od imię lub nazwisko. | 
 | `family_name` | Nazwisko                       | Zawiera ostatni nazwę, nazwisko lub nazwę rodziny użytkownika, zgodnie z definicją w obiekcie użytkownika usługi Azure AD. <br>"family_name":"Miller" |       |
 | `given_name`  | Imię                      | Zawiera pierwszy lub "" Nazwa użytkownika, według stawki ustalonej w obiekcie użytkownika usługi Azure AD.<br>"given_name": "Piotr"                   |       |
+| `upn`       | Nazwa główna użytkownika | Identyfikator użytkownika, który może być używany z parametrem username_hint.  Nie trwały identyfikator dla użytkownika i nie należy używać do kluczowych danych. | Zobacz [dodatkowe właściwości](#additional-properties-of-optional-claims) poniżej dla konfiguracji oświadczenia. |
 
 ### <a name="additional-properties-of-optional-claims"></a>Dodatkowe właściwości opcjonalnych oświadczeń
 
-Aby zmienić sposób, w jaki oświadczenie jest zwracany można skonfigurować kilka opcjonalnych oświadczeń. Te dodatkowe właściwości są najczęściej używane migracji aplikacji lokalnych przy użyciu różnych danych oczekiwania (na przykład `include_externally_authenticated_upn_without_hash` może ułatwić realizację klientów, którzy nie może obsługiwać hashmarks (`#`) nazwę UPN)
+Aby zmienić sposób, w jaki oświadczenie jest zwracany można skonfigurować kilka opcjonalnych oświadczeń. Te dodatkowe właściwości są najczęściej używane migracji aplikacji lokalnych przy użyciu różnych danych oczekiwania (na przykład `include_externally_authenticated_upn_without_hash` pomaga z klientami, które nie obsługują znaki hash (`#`) nazwę UPN)
 
-**Tabela 4: Wartości dotyczące konfigurowania standardowa oświadczenia opcjonalne**
+**Tabela 4: Wartości dotyczące konfigurowania opcjonalnych oświadczeń**
 
-| Nazwa właściwości                                     | Nazwa właściwości dodatkowe                                                                                                             | Opis |
-|---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `upn`                                                 |                                                                                                                                      |  Może służyć do odpowiedzi SAML i tokenu JWT.        |
-| | `include_externally_authenticated_upn`              | Obejmuje gościa nazwy UPN jako przechowywane w dzierżawie zasobów. Na przykład: `foo_hometenant.com#EXT#@resourcetenant.com`                            |             
-| | `include_externally_authenticated_upn_without_hash` | Jak wyżej, poza tym, że hashmarks (`#`) są zastępowane znakami podkreślenia (`_`), na przykład `foo_hometenant.com_EXT_@resourcetenant.com` |             
-
-> [!Note]
->Określanie nazwy upn opcjonalnego roszczenia, bez dodatkowych właściwości nie powoduje zmiany wszelkich zachowań — aby zobaczyć nowe oświadczenie wystawionych w tokenie, co najmniej jeden z dodatkowych właściwości muszą zostać dodane. 
+| Nazwa właściwości  | Nazwa właściwości dodatkowe | Opis |
+|----------------|--------------------------|-------------|
+| `upn`          |                          | Może służyć dla odpowiedzi SAML i token JWT i tokenów w wersji 1.0 i 2.0. |
+|                | `include_externally_authenticated_upn`  | Obejmuje gościa nazwy UPN jako przechowywane w dzierżawie zasobów. Na przykład: `foo_hometenant.com#EXT#@resourcetenant.com` |             
+|                | `include_externally_authenticated_upn_without_hash` | Taki sam jak powyżej, z tą różnicą, że oznacza skrót (`#`) są zastępowane znakami podkreślenia (`_`), na przykład `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>Przykład dodatkowe właściwości
 
@@ -151,12 +149,12 @@ Można skonfigurować opcjonalny oświadczenia dla danej aplikacji, modyfikując
 "saml2Token": [ 
               { 
                     "name": "upn", 
-                    "essential": true
+                    "essential": false
                },
                { 
                     "name": "extension_ab603c56068041afb2f6832e2a17e237_skypeId",
                     "source": "user", 
-                    "essential": true
+                    "essential": false
                }
        ]
    }

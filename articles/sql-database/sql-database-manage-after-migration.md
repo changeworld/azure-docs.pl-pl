@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751943"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099738"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -310,7 +310,7 @@ SQL Database przy użyciu kilka technik inteligentne, które zezwolić na obsłu
 Istnieje kilka sposobów osiągnięcia tego:
 
 - **[Synchronizacja danych](sql-database-sync-data.md)**  — ta funkcja pomaga w synchronizacji danych dwukierunkowo między wieloma bazami danych SQL Server w środowisku lokalnym i bazy danych SQL. Aby zsynchronizować z bazami danych programu SQL Server w środowisku lokalnym, musisz zainstalować i skonfigurować agenta synchronizacji na komputerze lokalnym i otwarciu wychodzącego portu TCP 1433.
-- **[Replikacji transakcji](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  — za pomocą replikacji transakcji można synchronizować dane z lokalnej bazy danych SQL Azure z lokalnego wydawcy i bazy danych SQL Azure, subskrybent jest. Obecnie jest obsługiwana tylko w tej konfiguracji. Aby uzyskać więcej informacji na temat sposobu migrować dane ze środowiska lokalnego do usług SQL Azure przy minimalnych przestojach zobacz: [Użycie replikacji transakcji](sql-database-cloud-migrate.md#method-2-use-transactional-replication)
+- **[Replikacji transakcji](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**  — za pomocą replikacji transakcji można synchronizować dane z lokalnej bazy danych SQL Azure z lokalnego wydawcy i bazy danych SQL Azure, subskrybent jest. Obecnie jest obsługiwana tylko w tej konfiguracji. Aby uzyskać więcej informacji na temat sposobu migrować dane ze środowiska lokalnego do usług SQL Azure przy minimalnych przestojach zobacz: [Użycie replikacji transakcji](sql-database-single-database-migrate.md#method-2-use-transactional-replication)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

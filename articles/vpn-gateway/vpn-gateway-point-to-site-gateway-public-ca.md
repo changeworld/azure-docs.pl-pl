@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 02/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: c6d696f8bf5f649321ee0be93ae13571a7ba3019
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: a5634054746d7e60aff154165f651f7c815c39a3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896706"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100826"
 ---
 # <a name="transition-from-self-signed-to-public-ca-certificates-for-p2s-gateways"></a>Przejście z podpisem własnym do publicznych certyfikatów urzędu certyfikacji dla bram P2S
 
@@ -23,14 +23,14 @@ Wcześniej certyfikat z podpisem własnym dla bramy trzeba aktualizować co 18 m
 Ta zmiana dotyczy tylko starsze bramy. Jeśli certyfikatu bramy musi miesięcznego okresu nastąpi przejście, otrzymasz komunikat lub wyskakującego powiadomienia w witrynie Azure portal. Można sprawdzić, brama ma wpływ wykonując kroki opisane w tym artykule.
 
 >[!IMPORTANT]
->Przejście jest zaplanowana do marca 09,2019 zaczynając od 18:00 czasu UTC. Można utworzyć zgłoszenie do pomocy technicznej, jeśli użytkownik sobie tego życzy okna innym czasie. Możesz poprosić o jedną z następujących okien:
+>Przejście jest zaplanowana do marca 12,2019 zaczynając od 18:00 czasu UTC. Można utworzyć zgłoszenie do pomocy technicznej, jeśli użytkownik sobie tego życzy okna innym czasie. Możesz poprosić o jedną z następujących okien:
 >
 >* 06:00 UTC na 25 lutego
 >* 18:00 UTC na 25 lutego
 >* 06:00 UTC na 1 marca
 >* 18:00 UTC na 1 marca
 >
->**Wszystkie pozostałe bramy zostanie zastąpiona 2019 09 marca, zaczynając od 18:00 UTC**.
+>**Wszystkie pozostałe bramy zostanie zastąpiona 2019 12 marca, zaczynając od 18:00 UTC**.
 >
 
 ## <a name="1-verify-your-certificate"></a>1. Zweryfikuj swój certyfikat

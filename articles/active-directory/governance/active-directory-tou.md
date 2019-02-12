@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2019
+ms.date: 02/09/2019
 ms.author: rolyon
-ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d063fd27d4de2fa37825294cd10f4f9a69731f63
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822514"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099993"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Funkcja Warunki użytkowania usługi Azure Active Directory
 Warunki użytkowania usługi Azure AD pozwalają organizacjom przedstawiać informacje użytkownikom końcowym w prosty sposób. Dzięki tej prezentacji użytkownicy mogą zapoznać się z istotnymi zastrzeżeniami do wymagań prawnych lub wymagań dotyczących zgodności. W tym artykule opisano sposób rozpoczęcia pracy z warunkami użytkowania.
@@ -266,7 +266,7 @@ Warunki użytkowania na urządzenie ma następujące ograniczenia:
 
 - Urządzenie może być częścią tylko jednej dzierżawy.
 - Użytkownik musi mieć uprawnienia do przyłączania urządzenia.
-- Rejestrowanie aplikacji usługi Intune nie jest obsługiwana.
+- Aplikacja rejestracji w usłudze Intune nie jest obsługiwana.
 
 Jeśli urządzenie użytkownika nie jest połączony, otrzymają komunikat, który potrzebują w celu przyłączenia urządzenia. Ich środowisko pracy będzie zależny od platformy i oprogramowania.
 
@@ -333,6 +333,9 @@ Można skonfigurować zasady dostępu warunkowego dla aplikacji usługi Azure In
 Można skonfigurować zasady dostępu warunkowego dla aplikacji rejestracja w usłudze Microsoft Intune i wymagają warunków użytkowania przed zarejestrowaniem urządzenia w usłudze Intune. Aby uzyskać więcej informacji, zobacz odczytu [Wybieranie odpowiedniego warunki rozwiązanie dla Twojej organizacji wpis w blogu](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409).
 
 ![Aplikacja w chmurze Microsoft Intune](./media/active-directory-tou/cloud-app-intune.png)
+
+> [!NOTE]
+> W aplikacji rejestracji w usłudze Intune nie jest obsługiwana dla [na urządzenie z warunkami użytkowania](#per-device-terms-of-use).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 

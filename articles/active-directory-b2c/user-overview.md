@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a901072875d6810711cb0b23d17555d9492c240a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d4bcc66cfd82fee13ce57d096e061ddd8706720
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157979"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100129"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Omówienie kont użytkowników w usłudze Azure Active Directory B2C
 
@@ -47,21 +47,21 @@ Po dodaniu nowego konta służbowego, należy wziąć pod uwagę następujące u
 Aby utworzyć nowe konto służbowe, można użyć następujących informacji:
 
 - [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Aktualizowanie profilu użytkownika
 
 Można zaktualizować profilu użytkownika, można użyć następujących informacji:
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Resetowanie hasła dla użytkownika
 
 Do zresetowania hasła użytkownika, można użyć następujących informacji: 
 
 - [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Użytkownik-gość
 
@@ -69,7 +69,7 @@ Możesz zaprosić użytkowników zewnętrznych do dzierżawy jako Gość. Typowy
 
 Zaproszenie użytkownika-gościa do swojej dzierżawy, możesz podać adres e-mail odbiorcy i komunikat opisujący zaproszenia. Zaproszenie łącze powoduje otwarcie strona zgody użytkownika gdzie **wprowadzenie** przycisk jest zaznaczony i zaakceptowaniu Przegląd uprawnień. Jeśli skrzynki odbiorczej nie jest dołączony do adresu e-mail, użytkownik może przejść do strony zgody, przechodząc do strony firmy Microsoft przy użyciu poświadczeń, które otrzymało zaproszenie. Użytkownik jest następnie zmuszony do zrealizowania zaproszenia taki sam sposób jak kliknięcie linku w wiadomości e-mail. Na przykład: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Można również użyć [interfejsu API Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/invitation_post) można zaprosić użytkownika-gościa.
+Można również użyć [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) można zaprosić użytkownika-gościa.
 
 ## <a name="consumer-user"></a>Konsument użytkownika
 

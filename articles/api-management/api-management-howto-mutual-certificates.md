@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b76b64ddf854b32c51b8b319479a35331e0f72f3
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: b8f8d0a089a74334a908e3dad65c63231bbe5975
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957439"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098939"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Zabezpieczanie usług zaplecza za pomocą klienta uwierzytelniania certyfikatów w usłudze Azure API Management
 
@@ -38,7 +38,7 @@ Wykonaj poniższe kroki, aby przekazać nowy certyfikat klienta. Jeśli nie utwo
 
 1. Przejdź do wystąpienia usługi Azure API Management w witrynie Azure portal.
 2. Wybierz **certyfikaty klienta** z menu.
-3. Kliknij przycisk **+ Dodaj** przycisku.  
+3. Kliknij przycisk **+ Dodaj**.  
     ![Dodaj certyfikaty klienta](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)  
 4. Przeglądaj w poszukiwaniu certyfikatu, podaj jego identyfikator i hasło.  
 5. Kliknij pozycję **Utwórz**.
@@ -83,7 +83,7 @@ Jeśli certyfikat jest używany przez interfejs API, a następnie zostanie wyśw
 
 W przypadku korzystania z certyfikatów z podpisem własnym należy wyłączyć sprawdzanie poprawności łańcucha certyfikatów w kolejności dla usługi API Management do komunikowania się z system wewnętrznej bazy danych. W przeciwnym razie zwróci kod błędu 500. Aby to skonfigurować, można użyć [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (dla nowego zaplecza) lub [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (w przypadku istniejącego zaplecza) polecenia cmdlet programu PowerShell i ustaw `-SkipCertificateChainValidation` parametr `True`.
 
-```
+```powershell
 $context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
 New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```

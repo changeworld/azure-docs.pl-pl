@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f21c54100a46d2f6ba28d2063bea91b84ea06d4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 160bc0e67b2686d17357241887a207cb4a03002c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769325"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098106"
 ---
 # <a name="use-ssl-to-secure-web-services-with-azure-machine-learning-service"></a>Użyj protokołu SSL do zabezpieczania usług sieci web za pomocą usługi Azure Machine Learning
 
@@ -82,6 +82,16 @@ Aby wdrożyć (lub ponownie wdrożyć) usługi z włączonym protokołem SSL, us
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
++ **Wdrażanie na Tablice bramek programowane (FPGA)**
+
+  Podczas wdrażania FPGA, podaj wartości dla parametrów związanych z protokołu SSL, jak pokazano we fragmencie kodu:
+
+    ```python
+    from azureml.contrib.brainwave import BrainwaveWebservice
+
+    deployment_config = BrainwaveWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem")
+    ```
+
 ## <a name="update-your-dns"></a>Zaktualizuj serwer DNS
 
 Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
@@ -97,10 +107,6 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
   Aktualizowanie systemu DNS, na karcie "Konfiguracja" "Publiczny adres IP" dla klastra AKS, jak pokazano na ilustracji. Możesz znaleźć publiczny adres IP jako jeden z typów zasobów utworzonych w ramach grupy zasobów, która zawiera węzły agenta usługi AKS i innych zasobów sieciowych.
 
   ![Usługa Azure Machine Learning: Zabezpieczanie usług sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
-
-+ **Aby uzyskać FPGA**:
-
-Używanie protokołu SSL z usługami wdrożonymi FPGA nie jest obecnie obsługiwane.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Instrukcje:

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 6c498f51bffeadce7a7c0dba8491942f1d4d0248
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 09e1f99c7d0b56f5e2af893385dde19b8f358a19
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766099"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099143"
 ---
 # <a name="azure-stack-1811-update"></a>Aktualizacja usługi Azure Stack 1811
 
@@ -118,6 +118,18 @@ Ta aktualizacja obejmuje następujące nowe funkcje i ulepszenia dla usługi Azu
 - Managed Disks jest teraz włączony domyślnie podczas tworzenia maszyn wirtualnych przy użyciu portalu Azure Stack. Zobacz [znane problemy dotyczące](#known-issues-post-installation) sekcja dotycząca dodatkowych kroków wymaganych do dysków Managed Disks w celu uniknięcia niepowodzeń tworzenia maszyny Wirtualnej.
 
 - W tej wersji wprowadzono alert **naprawy** akcje operatora usługi Azure Stack. Podaj niektórych alertów w programie 1811 **naprawy** przycisk alert, który można wybrać, aby rozwiązać ten problem. Aby uzyskać więcej informacji, zobacz [monitorowania kondycji i alertów w usłudze Azure Stack](azure-stack-monitor-health.md).
+
+- Aktualizacje środowiska aktualizacji w usłudze Azure Stack. Ulepszenia aktualizacji obejmują: 
+    - Karty, na których podzielić aktualizacji historii aktualizacji lepsze aktualizacji śledzenia w toku i ukończone aktualizacje.
+    - Stan rozszerzone wizualizacje w sekcji podstawy, nowe ikony i układu do wersji bieżącej i OEM, a także ostatni aktualizowane daty.
+    - **Widok** link dla kolumny informacje o wersji powoduje otwarcie bezpośrednio do dokumentacji określonych tej aktualizacji, a nie na stronie Ogólne aktualizacji.
+    - **Aktualizacji historii** kartę używany do określenia czasu wykonywania dla każdej z aktualizacji, a także rozszerzone funkcje filtrowania.  
+    - Jednostki usługi Azure skalowania stosu, które są połączone, będą nadal automatycznie otrzymywać **dostępna aktualizacja** po ich udostępnieniu.
+    - Azure stosu jednostek skalowania, które nie są połączone można zaimportować aktualizacje tak samo jak przed. 
+    - Nie wprowadzono żadnych zmian w procesie, aby pobrać dzienniki JSON z poziomu portalu. Operatorzy usługi Azure Stack będą widzieć, rozszerzając kroki wyrażania postępu.
+
+    Aby uzyskać więcej informacji, zobacz [stosowanie aktualizacji w usłudze Azure Stack](azure-stack-apply-updates.md).
+
 
 ## <a name="fixed-issues"></a>Rozwiązane problemy
 

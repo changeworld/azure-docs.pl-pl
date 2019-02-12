@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: fbafd2d224879dbe33c581c13dfe52fc9a22ae55
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510830"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098542"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Zasady usługi API Management obejmujące różne domeny)
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -145,7 +145,7 @@ W tym przykładzie pokazano, jak obsługiwać żądania krótkiej, takich jak na
 Ta zasada może służyć w następujących zasadach [sekcje](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) i [zakresy](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes).
 
 - **Sekcje zasad:** dla ruchu przychodzącego
-- **Zakresy zasad:** Operacja interfejsu API
+- **Zakresy zasad:** globalnej, operacji interfejsu API
 
 ## <a name="JSONP"></a> JSONP
 `jsonp` Zasad dodaje JSON z obsługą dopełnienie (JSONP) do operacji lub interfejsu API, aby zezwolić na międzydomenowe wywołania z klientów oparte na przeglądarce języka JavaScript. JSONP jest metodą używaną w programach języka JavaScript do dane żądania z serwera w innej domenie. JSONP pomija ograniczenia wymuszane przez większość przeglądarek internetowych, w którym dostęp do stron sieci web musi być w tej samej domenie.

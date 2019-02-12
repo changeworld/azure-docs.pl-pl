@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: a2500988b174e49870f4da7087b3fa4c81f3c77a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754986"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099330"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co to jest pojedynczej bazy danych w usłudze Azure SQL Database
 
-Opcja wdrażania pojedynczej bazy danych tworzy autonomicznej bazy danych w usłudze Azure SQL Database przy użyciu swój własny zestaw zasobów i jest zarządzana za pośrednictwem serwera usługi SQL Database. Za pomocą pojedynczej bazy danych, każda baza danych jest odizolowana od innych i przenośna, z własną warstwę usług, w ramach [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) i gwarancji obliczenia rozmiaru.
+Opcja wdrażania pojedynczej bazy danych tworzy bazę danych w usłudze Azure SQL Database przy użyciu swój własny zestaw zasobów i jest zarządzana za pośrednictwem serwera usługi SQL Database. Za pomocą pojedynczej bazy danych, każda baza danych jest odizolowana od innych i przenośna, z własną warstwę usług, w ramach [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) lub [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) i gwarancji obliczenia rozmiaru.
 
 > [!IMPORTANT]
 > Pojedyncza baza danych jest jednym z trzech opcji wdrożenia usługi Azure SQL Database. Istnieją dwie [pul elastycznych](sql-database-elastic-pool.md) i [wystąpienia zarządzanego](sql-database-managed-instance.md).
@@ -58,5 +58,5 @@ SQL Database oferuje szeroką gamę [wbudowanych rozwiązań zabezpieczeń i zgo
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby szybko rozpocząć pracę z pojedynczej bazy danych, zacznij od [pojedynczy guide.md Szybki Start bazy danych](sql-database-single-database-quickstart-guide.md).
-- Aby dowiedzieć się więcej o migracji bazy danych programu SQL Server na platformie Azure, zobacz [migracja do usługi Azure SQL Database](sql-database-cloud-migrate.md).
+- Aby dowiedzieć się więcej o migracji bazy danych programu SQL Server na platformie Azure, zobacz [migracja do usługi Azure SQL Database](sql-database-single-database-migrate.md).
 - Informacje dotyczące obsługiwanych funkcji można znaleźć w temacie [Funkcje](sql-database-features.md).

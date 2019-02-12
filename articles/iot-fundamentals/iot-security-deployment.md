@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 01/17/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: b2d69f6ee24ced392da09585c9e934f647efbf14
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
+ms.openlocfilehash: de4896ac1022cbd2bc19af102c96cfbfa89c0041
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51286881"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099024"
 ---
 [!INCLUDE [iot-secure-your-deployment](../../includes/iot-secure-your-deployment.md)]
 
@@ -21,7 +21,7 @@ ms.locfileid: "51286881"
 
 Akceleratory rozwiązań IoT obsługują następujące mechanizmy szyfrowania w podanej kolejności.
 
-| Mechanizmy szyfrowania | Długość |
+| Cipher Suite | Długość |
 | --- | --- |
 | TLS\_ECDHE\_RSA\_WITH\_AES\_256\_CBC\_SHA384 secp384r1 ECDH (0xc028) (korektora 7680 bits RSA) FS |256 |
 | TLS\_ECDHE\_RSA\_WITH\_AES\_128\_CBC\_SHA256 secp256r1 ECDH (0xc027) (korektora 3072 bits RSA) FS |128 |

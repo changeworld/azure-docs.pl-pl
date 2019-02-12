@@ -14,16 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1fe847bd0cdceec7eccab8218ccf787d8f4366ba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53196957"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097794"
 ---
 # <a name="azure-application-prerequisites"></a>Wstępnie wymagane składniki aplikacji platformy Azure
 
-W tym artykule opisano wymagania wstępne techniczne i biznesowe dotyczące publikowania w portalu Azure Marketplace oferty aplikacji zarządzanej.
+W tym artykule opisano wymagania wstępne techniczne i biznesowe dotyczące publikowania w portalu Azure Marketplace oferty aplikacji zarządzanej.  Jeśli jeszcze tego nie zrobiono, Obejrzyj klip wideo [tworzenia szablonów rozwiązań, a Managed Applications dla witryny Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
+
 
 ## <a name="technical-requirements"></a>Wymagania techniczne
 
@@ -36,6 +37,7 @@ Wymagania techniczne zawierają następujące elementy:
   * [GitHub: Szablony szybkiego startu usługi Azure Resource Manager](https://github.com/azure/azure-quickstart-templates). To repozytorium zawiera wszystkie aktualnie dostępne usługi Azure Resource Manager Szablony udostępnione przez społeczność. Indeks szablonu z możliwością wyszukiwania jest utrzymywany na https://azure.microsoft.com/en-us/documentation/templates/.
 * Tworzenie definicji interfejsu użytkownika<br>
 Aby uzyskać więcej informacji, zobacz [interfejs użytkownika portalu tworzenie platformy Azure dla aplikacji zarządzanej](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview). W tym artykule przedstawiono podstawowe pojęcia dotyczące pliku createUiDefinition.json. Azure portal używa tego pliku do generowania interfejsu użytkownika do tworzenia aplikacji zarządzanej.
+
 
 ## <a name="business-requirements"></a>Wymagania biznesowe
 
@@ -54,6 +56,7 @@ Wymagania biznesowe obejmują następujące obowiązki umowne stosowane w UE i p
 * Musisz wyrazić zgodę na warunki Microsoft Azure Marketplace — zasady udziału oraz Umowie wydawcy portalu.
 * Muszą być zgodne z Microsoft Azure warunkami korzystania z witryny, zasady zachowania poufności informacji firmy Microsoft i umowę programu certyfikat platformy Azure firmy Microsoft.
 
+
 ## <a name="publishing-requirements"></a>Wymagania dotyczące publikowania
 
 Aby opublikować nową ofertę aplikacji platformy Azure, musi spełniać następujące wymagania wstępne:
@@ -62,10 +65,12 @@ Aby opublikować nową ofertę aplikacji platformy Azure, musi spełniać nastę
   * Tytuł
   * Opis (format HTML)
   * Obraz logo (w formacie PNG) i te rozmiary obrazów: 40 40 pikseli, 90 x 90 pikseli, 115 x 115 pikseli i 255 x 115 pikseli.
-* Warunki użytkowania i zasady zachowania poufności informacji
+* A *warunki użytkowania* i *zasady zachowania poufności informacji*
 * Dokumentacja
 * Kontakt z pomocą techniczną
 
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Tworzenie oferty aplikacji platformy Azure](./cpp-create-offer.md) 
+Jeśli zostały spełnione wszystkie wymagania, wszystko będzie gotowe do [Tworzenie oferty usługi Azure application](./cpp-create-offer.md). 
+ 

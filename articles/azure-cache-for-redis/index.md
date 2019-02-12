@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 9204e12abbbdfdf9ac303497b828ebc39a629f37
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: cd7cb65f6f76987eb891759bb50f4bb92b2e6234
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198330"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098822"
 ---
 # <a name="azure-cache-for-redis-documentation"></a>Dokumentacja usługi Azure Cache for Redis
 
@@ -205,8 +205,8 @@ Dowiedz się, jak używać usługi Azure Cache for Redis, bezpiecznego brokera p
                 <div class="card">
                     <div class="cardText">
                         <h3>Wiersz polecenia</h3>
-                        <p><a href="/powershell/module/azurerm.rediscache">Program PowerShell</a></p>
-                        <p><a href="/cli/azure/redis">Interfejs wiersza polecenia platformy Azure 2.0 (wersja zapoznawcza)</a></p>
+                        <p><a href="/powershell/module/az.rediscache">Program PowerShell</a></p>
+                        <p><a href="/cli/azure/redis">Interfejs wiersza polecenia platformy Azure</a></p>
                     </div>
                 </div>
             </div>

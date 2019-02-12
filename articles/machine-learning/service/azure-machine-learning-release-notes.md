@@ -11,18 +11,40 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564344"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100180"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
 Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uzyskać pełny opis każdego zestawu SDK odwiedź dokumenty referencyjne dotyczące:
 + Usługi Azure Machine Learning [ **głównego zestawu SDK dla języka Python**](https://aka.ms/aml-sdk)
 + Usługi Azure Machine Learning [ **przygotowania danych zestawu SDK**](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-02-11"></a>2019-02-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.15
+
++ **Nowe funkcje**
+  + Azure potoków uczenia maszynowego dodano AzureBatchStep ([notesu](https://aka.ms/pl-azbatch)), HyperDriveStep ([notesu](https://aka.ms/pl-hyperdrive)) i na podstawie czasu planowania fuctionality ([notesu](https://aka.ms/pl-schedule)).
+  +  DataTranferStep zaktualizowane do pracy z serwera SQL Azure i usługa Azure database for PostgreSQL ([notesu](https://aka.ms/pl-data-trans)).
+
++ **Changes**
+  + Przestarzałe `PublishedPipeline.get_published_pipeline` uzyskać `PublishedPipeline.get`.
+  + Przestarzałe `Schedule.get_schedule` uzyskać `Schedule.get`.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Zestaw SDK v1.0.12 przeznaczonego do przygotowania danych usługi Azure Machine Learning
+
++ **Nowe funkcje**
+  + Odczytywanie z usługi Azure SQL database przy użyciu magazynu danych obsługuje teraz przygotowania bazy danych.
+ 
++ **Changes**
+  + Znaczne zwiększenie wydajności pamięci niektórych działań na dużej ilości danych.
+  + `read_pandas_dataframe()` wymagane jest teraz `temp_folder` należy określić.
+  + `name` Właściwość `ColumnProfile` został przestarzałe — użyj `column_name` zamiast tego.
 
 ## <a name="2019-01-28"></a>2019-01-28
 

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: a7a7c8a6f16183d677aeb09ca62ac601cbd01289
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2366bd5543a7c3ee4a45eff74f71232a9c60989f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694044"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098544"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Często zadawane pytania dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -60,7 +60,7 @@ Jeśli tworzysz zasoby przeznaczone do użycia z klastrem usługi AKS, takich ja
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Można zmodyfikować tagów i innych właściwości zasobów usługi AKS w grupie zasobów MC_ *?
 
-Modyfikowanie i usuwanie tagi utworzone przez platformę Azure i innych właściwości zasobów w *MC_** grupy zasobów może prowadzić do nieoczekiwanych wyników, takich jak skalowanie i uaktualnianie błędy. Możliwe jest tworzenie i modyfikowanie dodatkowe znaczniki niestandardowe, takie jak przypisać centrum kosztu lub jednostki biznesowej. Modyfikowanie zasobów w ramach *MC_** w usłudze AKS klastra przerywa poziomu usługi.
+Modyfikowanie i usuwanie tagi utworzone przez platformę Azure i innych właściwości zasobów w *MC_** grupy zasobów może prowadzić do nieoczekiwanych wyników, takich jak skalowanie i uaktualnianie błędy. Możliwe jest tworzenie i modyfikowanie dodatkowe znaczniki niestandardowe, takie jak przypisać centrum kosztu lub jednostki biznesowej. Modyfikowanie zasobów w ramach *MC_** w usłudze AKS klastra przerywa cel poziomu usług (SLO). Aby uzyskać więcej informacji, zobacz [AKS jest oferują umowy dotyczącej poziomu usług?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Jakie kontrolery dopuszczenie Kubernetes obsługuje AKS? Można kontrolerów dopuszczenie dodane lub usunięte?
 

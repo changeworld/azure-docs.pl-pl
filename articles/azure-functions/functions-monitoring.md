@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: glenga
-ms.openlocfilehash: ba82aeff1ce699efaa850e50d6840fa0d5483f20
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: cbc4507a7dd29afb429949a017319a63ef4cd9a2
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321096"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100207"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -121,7 +121,7 @@ W [Eksploratora metryk](../azure-monitor/app/metrics-explorer.md), możesz tworz
 
 Na [błędy](../azure-monitor/app/asp-net-exceptions.md) karty, możesz tworzyć wykresy i alerty oparte na błędy funkcji i serwera, wyjątki. **Nazwy operacji** jest nazwą funkcji. Błędy w zależności nie są wyświetlane, chyba że możesz wdrożyć [niestandardowych danych telemetrycznych](#custom-telemetry-in-c-functions) zależności.
 
-![Błędy](media/functions-monitoring/failures.png)
+![Niepowodzenia](media/functions-monitoring/failures.png)
 
 Na [wydajności](../azure-monitor/app/performance-counters.md) karcie, można analizować problemy z wydajnością.
 
@@ -665,10 +665,10 @@ az webapp log tail --resource-group <resource group name> --name <function app n
 Dla programu Azure PowerShell Użyj następujących poleceń, aby dodać konta platformy Azure, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika:
 
 ```powershell
-PS C:\> Add-AzureAccount
-PS C:\> Get-AzureSubscription
-PS C:\> Get-AzureSubscription -SubscriptionName "<subscription name>" | Select-AzureSubscription
-PS C:\> Get-AzureWebSiteLog -Name <function app name> -Tail
+Add-AzAccount
+Get-AzSubscription
+Get-AzSubscription -SubscriptionName "<subscription name>" | Select-AzSubscription
+Get-AzWebSiteLog -Name <function app name> -Tail
 ```
 
 Aby uzyskać więcej informacji, zobacz [jak przesyłanie strumieniowe dzienników](../app-service/troubleshoot-diagnostic-logs.md#streamlogs).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: jdial
-ms.openlocfilehash: 7c35961894cbc8fb33f15b36910021f8ad38fac8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 3d97f84ba7809ba54fe7a5670fc1602f1ed6e180
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976396"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100889"
 ---
 # <a name="read-nsg-flow-logs"></a>Odczytywanie dzienników przepływu sieciowych grup zabezpieczeń
 
@@ -185,6 +185,6 @@ Ten scenariusz jest przykładem sposobu odczytywania wpisów dzienników przepł
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Odwiedź stronę [wizualizowanie dzienników przepływów Azure Network Watcher NSG przy użyciu narzędzi typu open source](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) dowiedzieć się więcej o innych sposobach wyświetlania dzienników przepływu sieciowych grup zabezpieczeń.
+Odwiedź stronę [Użyj Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [Grafana użyj](network-watcher-nsg-grafana.md), i [korzystanie z narzędzia Graylog](network-watcher-nsg-graylog.md) Aby dowiedzieć się więcej na temat sposobów wyświetlania dzienników przepływu sieciowych grup zabezpieczeń. Otwórz funkcję platformy Azure źródła sposób korzystanie z obiektów blob bezpośrednio i emitowanie dla różnych klientów analizy dziennika można znaleźć tutaj: [Przepływu sieciowej grupy zabezpieczeń obserwatora sieci platformy Azure rejestruje łącznik](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
 Aby dowiedzieć się więcej o obiektach blob magazynu, odwiedź stronę: [Powiązania magazynu w usłudze Azure Functions obiektów Blob](../azure-functions/functions-bindings-storage-blob.md)

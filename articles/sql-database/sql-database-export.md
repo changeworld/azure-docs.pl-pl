@@ -7,17 +7,17 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: douglaslMS
-ms.author: douglasl
+author: CarlRabeler
+ms.author: carlrab
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d00d9b4a945b139ed7b930609fdab24e4a211551
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 050da5e71fd804055d0a2ece1150b79b3922170f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891101"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100588"
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Eksportuj bazę danych Azure SQL database do pliku BACPAC
 
@@ -100,5 +100,5 @@ $exportStatus
 - Aby dowiedzieć się więcej na temat Importowanie pliku BACPAC do bazy danych programu SQL Server, zobacz [Importowanie pliku BACPAC do bazy danych programu SQL Server](https://msdn.microsoft.com/library/hh710052.aspx).
 - Aby dowiedzieć się więcej na temat Eksportowanie pliku BACPAC z bazy danych programu SQL Server, zobacz [eksportowania aplikacji warstwy danych](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application)
 - Aby dowiedzieć się więcej o korzystaniu z usługi migracji danych do migracji bazy danych, zobacz [migracji programu SQL Server do usługi Azure SQL Database w trybie offline przy użyciu usługi DMS](../dms/tutorial-sql-server-to-azure-sql.md).
-- Jeśli eksportujesz z programu SQL Server jako prelude do migracji do usługi Azure SQL Database, zobacz [migracji bazy danych programu SQL Server do usługi Azure SQL Database](sql-database-cloud-migrate.md).
+- Jeśli eksportujesz z programu SQL Server jako prelude do migracji do usługi Azure SQL Database, zobacz [migracji bazy danych programu SQL Server do usługi Azure SQL Database](sql-database-single-database-migrate.md).
 - Aby dowiedzieć się, jak zarządzać i udostępniania kluczy magazynu i dostępu współdzielonego podpisów bezpieczne, zobacz [Przewodnik po zabezpieczeniach magazynu Azure](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

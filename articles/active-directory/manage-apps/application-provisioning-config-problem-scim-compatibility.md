@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: d0176cde824346c80fff097b87c107b7052e822f
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3588496a2f41af0af273497ea3952d138385f0af
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959565"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100866"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Znane problemy i rozwiązania dzięki zgodności protokołu 2.0 Standard SCIM usługi aprowizacji użytkownika usługi Azure AD
 
@@ -59,7 +59,7 @@ Tak. Jeśli korzystasz już z tego wystąpienia aplikacji dla logowania jednokro
 1. Zaloguj się do witryny Azure portal pod https://portal.azure.com.
 2. W **usługi Azure Active Directory > aplikacje dla przedsiębiorstw** sekcji w witrynie Azure Portal zlokalizuj i wybierz istniejącą aplikację Standard SCIM.
 3.  W **właściwości** sekcji Twoją istniejącą aplikację Standard SCIM kopiowania **obiektu o identyfikatorze**.
-4.  W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/en-us/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
+4.  W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
 5. W Eksploratorze programu Graph uruchom poniższe polecenie, aby zlokalizować identyfikator zadania inicjowania obsługi administracyjnej. Zastąp "[identyfikator obiektu]" w usłudze identyfikator podmiotu zabezpieczeń (identyfikator obiektu:) skopiowane z trzeciego stopnia.
  
  `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -99,7 +99,7 @@ Tak. Jeśli było kodowane stare zachowanie, które istniały przed poprawki i m
 1.  Zaloguj się do witryny Azure portal pod https://portal.azure.com.
 2. w **usługi Azure Active Directory > aplikacje dla przedsiębiorstw > Tworzenie aplikacji** sekcji w witrynie Azure Portal utworzyć nową **spoza galerii** aplikacji.
 3.  W **właściwości** części Twojej nowej aplikacji niestandardowej kopiowania **obiektu o identyfikatorze**.
-4.  W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/en-us/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
+4.  W nowym oknie przeglądarki internetowej przejdź do https://developer.microsoft.com/graph/graph-explorer i zaloguj się jako administrator dzierżawy usługi Azure AD, w którym aplikacja zostanie dodany.
 5. W Eksploratorze programu Graph uruchom poniższe polecenie, aby zainicjować konfiguracji aprowizacji dla aplikacji.
 Zastąp "[identyfikator obiektu]" w usłudze identyfikator podmiotu zabezpieczeń (identyfikator obiektu:) skopiowane z trzeciego stopnia.
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 02/11/2019
 ms.author: diberry
-ms.openlocfilehash: 2be50b7f2583f7f15b2a0783ef729b91bc158234
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 7a41bfaada64528e90f43064b34c394f9a9b8f8f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983665"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099092"
 ---
 # <a name="install-and-run-containers"></a>Instalowanie i uruchamianie kontenerów
 
@@ -69,7 +69,7 @@ Dostępne są obrazy kontenerów dla interfejsu API rozpoznawania twarzy.
 ### <a name="docker-pull-for-the-face-container"></a>Polecenie docker pull dla kontenera twarzy
 
 ```
-docker pull mcr.microsoft.com/azure-cognitive-services/face:latest
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>Jak używać kontenera

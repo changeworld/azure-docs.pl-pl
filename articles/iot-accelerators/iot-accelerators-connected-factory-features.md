@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 04/20/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: af2a2c84f9eb420a7ca9a8bd5909cbf856d29a5e
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b54331e644d55497a7c7d33344cf29a82404847e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309199"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56096916"
 ---
 # <a name="what-is-connected-factory-iot-solution-accelerator"></a>Co to jest akcelerator rozwiązań IoT połączona fabryka?
 
@@ -27,19 +27,19 @@ Połączona fabryka obejmuje następujące funkcje:
 
 ## <a name="industrial-device-interoperability"></a>Współdziałanie urządzeń przemysłowych
 
-- Nawiązać zasobów przemysłowych za pomocą interfejsu serwera OPC UA.
+- Połącz zasoby przemysłowe z interfejsem OPC UA.
 - Użyj symulowanych linii produkcyjnych (działają serwery OPC UA w kontenerach platformy Docker), aby wyświetlić na żywo dane telemetryczne z nich.
 - Przeglądaj modelu informacji OPC UA serwerów OPC UA z pulpitu nawigacyjnego w chmurze.
 
 ## <a name="remote-management"></a>Zdalne zarządzanie
 
-- Konfigurowanie zasobów OPC UA na pulpicie nawigacyjnym chmury (wywołanie metody, Odczyt i zapis danych).
-- Publikowanie lub anulowanie publikacji danych telemetrycznych z zasobów OPC UA z pulpitu nawigacyjnego w chmurze.
+- Konfigurowanie zasobów OPC UA za pomocą pulpitu nawigacyjnego w chmurze (wywoływanie metod, odczytywanie i zapisywanie danych).
+- Publikuj dane telemetryczne w zasobach OPC UA i cofaj ich publikację za pomocą pulpitu nawigacyjnego w chmurze.
 
-## <a name="cloud-dashboard"></a>Pulpit nawigacyjny rozwiązania cloud
+## <a name="cloud-dashboard"></a>Pulpit nawigacyjny w chmurze
 
 - Wyświetl podgląd danych telemetrycznych bezpośrednio na pulpicie nawigacyjnym chmury.
-- Wyświetlanie trendów w danych telemetrycznych i Utwórz korelacji za pomocą pulpitu nawigacyjnego Eksplorator usługi Time Series Insights.
+- Wyświetlaj trendy danych telemetrycznych i twórz korelacje za pomocą pulpitu nawigacyjnego eksploratora usługi Time Series Insights.
 - Zobacz obliczone ogólnej wydajności sprzętu (OEE) i kluczowe wskaźniki wydajności (KPI) z pulpitu nawigacyjnego w chmurze.
 - Widok zasobów przemysłowych hierarchie w topologii drzewa, a także na mapie.
 - Wyświetlanie, użytkownik potwierdza i Zamknij alerty z pulpitu nawigacyjnego chmury.
@@ -53,9 +53,9 @@ Połączona fabryka obejmuje następujące funkcje:
 
 [Konfigurowanie reguł alertów opartych na próg](iot-accelerators-connected-factory-configure.md).
 
-## <a name="end-to-end-security"></a>Zabezpieczenia end-to-end
+## <a name="end-to-end-security"></a>Kompleksowe zabezpieczenia
 
-- Konfigurowania uprawnień zabezpieczeń dla użytkowników za pomocą kontroli dostępu opartej na rolach (RBAC).
+- Konfiguruj uprawnienia zabezpieczeń dla użytkowników korzystających z kontroli dostępu opartej na rolach.
 - End-to-end szyfrowania jest implementowany przy użyciu uwierzytelniania serwera OPC UA (przy użyciu certyfikatów X.509), a także tokenów zabezpieczających.
 
 ## <a name="customizability"></a>Dostosowywalności

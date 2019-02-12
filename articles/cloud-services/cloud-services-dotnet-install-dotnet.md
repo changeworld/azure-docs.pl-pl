@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2018
 ms.author: jeconnoc
-ms.openlocfilehash: 698cae13b9e78de6318c28bde998e195540c513c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 87c55634b6502a8a0c00fe52c7740a60f3afd80d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51256803"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098286"
 ---
 # <a name="install-net-on-azure-cloud-services-roles"></a>Zainstaluj program .NET w ramach ról usług Azure Cloud Services
 W tym artykule opisano sposób instalowania wersji programu .NET Framework, które nie pochodzą z systemu operacyjnego gościa platformy Azure. Aby skonfigurować role usługi w chmurze w sieci web i proces roboczy, można użyć platformy .NET w systemie operacyjnym gościa.
@@ -183,10 +183,11 @@ Zadania uruchamiania służy do wykonywania operacji przed rozpoczęciem roli. I
        if %ERRORLEVEL%== 3010 goto restart
        if %ERRORLEVEL%== 1641 goto restart
        echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
-   
+       goto exit
+       
    :restart
    echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
-   EXIT /B %ERRORLEVEL%
+   shutdown.exe /r /t 5 /c "Installed .NET framework" /f /d p:2:4
    
    :installed
    echo .NET (%netfx%) is installed >> %startuptasklog%
@@ -223,7 +224,7 @@ Poniższy kod XML konfiguruje diagnostyki do transferu plików w katalogu dzienn
 ## <a name="deploy-your-cloud-service"></a>Wdrażanie usługi w chmurze
 Podczas wdrażania usługi w chmurze, jeśli jeszcze nie zainstalowano zadania uruchamiania zainstalować program .NET Framework. Role usługi w chmurze znajdują się w *zajęty* stan podczas instalowania programu framework. Jeśli instalacja framework wymaga ponownego uruchomienia, ról usługi również może zostać ponownie uruchomiony. 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 * [Instalowanie programu .NET Framework][Installing the .NET Framework]
 * [Określanie, które wersje programu .NET Framework są zainstalowane.][How to: Determine Which .NET Framework Versions Are Installed]
 * [Rozwiązywanie problemów z instalacją .NET Framework][Troubleshooting .NET Framework Installations]

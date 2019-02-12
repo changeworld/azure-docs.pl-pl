@@ -4,14 +4,14 @@ description: Dowiedz się więcej o wzorcu projektowym w sieciach społeczności
 author: ealsur
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/11/2019
 ms.author: maquaran
-ms.openlocfilehash: 8d6dfa292bd597c2e37f7111e3a068010dc4653c
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 36b77ff6666c2c8b0d27cbdc8552ade15b21d005
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042687"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100367"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB w zastosowaniach społecznościowych
 
@@ -222,7 +222,7 @@ Innym dostępną opcją jest użycie [usług Azure Cognitive Services](https://w
 
 Jest ostatni, ale nie najmniej artykułu ważne I muszą spełnić: **skalowalność**. Podczas projektowania architektury każdego składnika powinny być skalowane samodzielnie. Po pewnym czasie będzie konieczne przetwarzanie większej ilości danych lub należy z większym zasięgiem geograficznym. Szczęście osiągnięcie zarówno do zadań jest **gotową** za pomocą usługi Cosmos DB.
 
-Usługa cosmos DB obsługuje [dynamiczne partycjonowanie](https://azure.microsoft.com/blog/10-things-to-know-about-documentdb-partitioned-collections/) poza pole. Automatycznie utworzy partycje na podstawie danego **klucza partycji**, który jest zdefiniowany jako atrybut w dokumentach. Definiowanie odpowiedniego klucza partycji musi odbywać się w czasie projektowania. Aby uzyskać więcej informacji, zobacz [wybierz klucz partycji prawo](partitioning-overview.md#choose-partitionkey) artykułu.
+Usługa cosmos DB obsługuje dynamiczne partycjonowania out-of--box. Automatycznie utworzy partycje na podstawie danego **klucza partycji**, który jest zdefiniowany jako atrybut w dokumentach. Definiowanie odpowiedniego klucza partycji musi odbywać się w czasie projektowania. Aby uzyskać więcej informacji, zobacz [partycjonowanie w usłudze Azure Cosmos DB](partitioning-overview.md).
 
 Społecznościowe środowisko pracy należy wyrównać strategii partycjonowania ze sposobem zapytań i zapisu. (Na przykład, operacje odczytu w ramach tej samej partycji są pożądane i uniknąć "aktywne" Dzięki rozdzieleniu zapisy na wielu partycjach.) Niektóre opcje są: partycji na podstawie danych czasowych klucza (dzień/miesiąc/tydzień), według kategorii zawartości, regionu geograficznego lub użytkownika. To wszystko zależy sposób będzie wysłać zapytanie dotyczące danych i wyświetlanie danych w środowisko społecznościowe.
 

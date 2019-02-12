@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: mialdrid
+ms.date: 02/11/2019
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0415c329364f8df312667e725f3c5376ea13a6f4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098102"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100741"
 ---
 # <a name="about-expressroute-direct-preview"></a>Temat usługi ExpressRoute bezpośrednie (wersja zapoznawcza)
 
@@ -58,7 +58,7 @@ Funkcje, które w większości przypadków jest odpowiednikiem obwodów, które 
 
 ## <a name="circuit-skus"></a>Jednostki SKU obwodu
 
-Bezpośrednie ExpressRoute obsługuje scenariuszy pozyskiwania duża ilość danych do usługi Azure storage i innych usług danych big data. Usługi ExpressRoute circuits na bezpośrednio z usługi ExpressRoute teraz również obsługę **40 GB/s** i **100 GB/s** circuit jednostki SKU.
+Bezpośrednie ExpressRoute obsługuje scenariuszy pozyskiwania duża ilość danych do usługi Azure storage i innych usług danych big data. Usługi ExpressRoute circuits na bezpośrednio z usługi ExpressRoute teraz również obsługę **40 GB/s** i **100 GB/s** circuit jednostki SKU. Pary fizycznego portu są **100 GB/s** tylko i może zawierać wiele obwodów wirtualnych przy użyciu przepustowości 5 GB/s, 10 GB/s, 40 GB/s, 100 GB/s — maksymalnie 200 GB/s w dowolnej kombinacji. 
 
 ## <a name="vlan-tagging"></a>Znakowanie sieci VLAN
 

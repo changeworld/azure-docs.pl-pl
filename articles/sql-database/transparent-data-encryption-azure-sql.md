@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 7b1d58b82f2ccc99ecacb6099f6063fba5899421
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/11/2019
+ms.openlocfilehash: c5d74c707c34cdcfba7bb0556c6e91a356123296
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478461"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099698"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
@@ -40,15 +40,14 @@ Firma Microsoft również bezproblemowo przenosi i zarządza kluczami, zgodnie z
 > [!IMPORTANT]
 > Wszystkie nowo utworzone bazy danych SQL są domyślnie szyfrowane za pomocą zarządzane przez usługę przezroczyste szyfrowanie danych. Domyślnie nie są szyfrowane baz danych w wystąpieniu zarządzanym usługi SQL Azure, utworzonych przed maj 2017 istniejących baz danych SQL i SQL bazy danych utworzone przez Przywracanie, replikację geograficzną i kopii bazy danych.
 
-## <a name="bring-your-own-key"></a>Użyj własnego klucza
+## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Zarządzane przez klienta niewidoczne szyfrowanie danych — własnego klucza
 
-Dzięki obsłudze własnego klucza, może potrwać kontrolę nad kluczami szyfrowania danych i określania, kto może uzyskiwać do nich dostęp i kiedy. Key Vault, która jest system Azure opartych na chmurze zewnętrzne zarządzanie kluczami, to pierwsza usługa zarządzania kluczami tej technologii transparent data encryption została zintegrowana z własnego klucza pomocy technicznej. Z obsługą własnego klucza klucz szyfrowania bazy danych jest chroniony przez klucz asymetryczny przechowywanych w usłudze Key Vault. Klucz asymetryczny nigdy nie opuszcza usługi Key Vault. Po serwer ma uprawnienia do usługi Key Vault, serwer wysyła żądania operacja klucza podstawowego do niego za pośrednictwem usługi Key Vault. Ustaw klucz asymetryczny na poziomie serwera i wszystkie *zaszyfrowanych* baz danych na tym serwerze dziedziczą go.
+[Funkcja TDE za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) umożliwia szyfrowania klucza szyfrowania bazy danych (DEK) przy użyciu zarządzanych przez klienta klucza asymetrycznego wywoływana funkcja ochrony TDE.  Funkcja ochrony TDE jest przechowywany w należącej do klienta i zarządzane [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), platformy Azure opartej na chmurze zewnętrznego kluczy systemu zarządzania. Funkcja TDE klucza szyfrowania danych, który jest przechowywany na stronę rozruchu bazy danych, zostaje zaszyfrowany i odszyfrowany przez funkcji ochrony TDE, która jest przechowywana w usłudze Azure Key Vault i nigdy nie opuszcza magazynu kluczy.  Baza danych SQL musi mieć przyznane uprawnienia do należącej do klienta magazynu kluczy do odszyfrowywania i szyfrowania klucza szyfrowania danych. Jeśli uprawnienia serwera logicznego SQL do magazynu kluczy zostaną odwołane, bazy danych staną się niedostępne, a wszystkie dane są szyfrowane. Usługi Azure SQL Database funkcji ochrony TDE jest ustawiona na poziomie serwera logicznego SQL i jest dziedziczona przez wszystkie bazy danych skojarzonych z tym serwerem. Dla wystąpienia zarządzanego Azure SQL, funkcji ochrony TDE jest ustawiona na poziomie wystąpienia i jest dziedziczona przez wszystkie *zaszyfrowanych* baz danych w tym wystąpieniu. Termin *serwera* odnosi się zarówno do serwera i wystąpienia, w tym dokumencie, o ile nie wskazano inaczej.
 
-Dzięki obsłudze własnego klucza możesz kontrolować zadań zarządzania kluczami, takich jak uprawnienia usługi key vault i wymiany kluczy. Możesz również usunąć klucze i Włącz inspekcję/raporty dotyczące wszystkich kluczy szyfrowania. Usługa Key Vault umożliwia centralne zarządzanie kluczami i używa ściśle monitorowanych sprzętowych modułach zabezpieczeń. Usługa Key Vault promuje separacji zarządzania kluczami i dane, aby zapewnić zgodność z przepisami. Aby dowiedzieć się więcej o usłudze Key Vault, zobacz [stronę z dokumentacją dotyczącą usługi Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault).
+Za pomocą funkcji TDE dzięki integracji usługi Azure Key Vault użytkownicy można kontrolować zadania zarządzania kluczami, w tym wymiany kluczy, uprawnień usługi key vault, kopie zapasowe kluczy i Włącz inspekcję/raportowanie na wszystkie funkcje ochrony TDE, za pomocą funkcji usługi Azure Key Vault. Usługa Key Vault umożliwia centralne zarządzanie kluczami, wykorzystuje ściśle monitorowanych sprzętowych modułach zabezpieczeń (HSM) i umożliwia rozdzielenie obowiązków między danych i zarządzanie kluczami w celu zapewnienia zgodności z zasadami zabezpieczeń.
+Aby dowiedzieć się więcej na temat technologii transparent data encryption dzięki integracji usługi Azure Key Vault (Obsługa Bring Your Own Key) dla usługi Azure SQL Database, wystąpienia zarządzanego SQL i magazynu danych, zobacz [przezroczyste szyfrowanie danych za pomocą usługi Azure Key Vault integration](transparent-data-encryption-byok-azure-sql.md).
 
-Aby dowiedzieć się więcej na temat technologii transparent data encryption z obsługą Bring Your Own Key dla usługi Azure SQL Database, wystąpienia zarządzanego SQL i magazynu danych, zobacz [technologii Transparent data encryption z obsługą Bring Your Own Key](transparent-data-encryption-byok-azure-sql.md).
-
-Aby rozpocząć korzystanie z technologii transparent data encryption z obsługą własnego klucza, zobacz Przewodnik z instrukcjami dotyczącymi [Włączanie technologii transparent data encryption przy użyciu własnego klucza z usługi Key Vault przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-configure.md).
+Aby rozpocząć korzystanie z technologii transparent data encryption dzięki integracji usługi Azure Key Vault (Obsługa Bring Your Own Key), zobacz Przewodnik z instrukcjami dotyczącymi [Włączanie technologii transparent data encryption przy użyciu własnego klucza z usługi Key Vault przy użyciu programu PowerShell](transparent-data-encryption-byok-azure-sql-configure.md).
 
 ## <a name="move-a-transparent-data-encryption-protected-database"></a>Przenoszenie bazy danych chronione przez szyfrowanie danych
 

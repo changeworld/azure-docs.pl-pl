@@ -15,14 +15,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 72efe156920bb78631ea71a0f47f7f5fe19c7e23
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 639bc4ff9c69bca3d5f8bca6967bfc3e8e6a13d4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53133659"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100554"
 ---
-# <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture Instruktaż: języka Python
+# <a name="event-hubs-capture-walkthrough-python"></a>Wskazówki koncentratory przechwytywania zdarzeń: Python
 
 Przechwytywanie jest funkcją usługi Azure Event Hubs. Służy on do automatycznie dostarczać strumień danych do konta magazynu obiektów Blob platformy Azure wybranym Centrum zdarzeń. Ta możliwość ułatwia przeprowadzenie wsadowo na danych przesyłanych strumieniowo w czasie rzeczywistym. W tym artykule opisano sposób używania funkcji przechwytywania usługi Event Hubs za pomocą języka Python. Aby uzyskać więcej informacji na temat przechwytywania usługi Event Hubs, zobacz [artykuł z omówieniem](event-hubs-capture-overview.md).
 
@@ -62,7 +62,7 @@ W tym przykładzie użyto [zestawu Azure Python SDK](https://azure.microsoft.com
    import datetime
    import random
    import json
-   from azure.servicebus import ServiceBusService
+   from azure.servicebus.control_client import ServiceBusService
    
    sbs = ServiceBusService(service_namespace='INSERT YOUR NAMESPACE NAME', shared_access_key_name='RootManageSharedAccessKey', shared_access_key_value='INSERT YOUR KEY')
    devices = []

@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: 8e0b0572f0d728474c17b41a0f92948451f4ef3f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 69f40a482997e7cafa665ab1cb53e26d8653e45e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746952"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099875"
 ---
 # <a name="create-an-azure-cache-for-redis-using-a-template"></a>Tworzenie pamięci podręcznej Azure dla pamięci podręcznej Redis przy użyciu szablonu
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 W tym temacie dowiesz się, jak utworzyć szablon usługi Azure Resource Manager, która wdraża pamięć podręczna systemu Azure dla usługi Redis. Pamięć podręczna może służyć za pomocą istniejącego konta magazynu do przechowywania danych diagnostycznych. Dowiesz się również, jak zdefiniować zasoby, które są wdrażane i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
 
 Obecnie ustawienia diagnostyczne są wspólne dla wszystkich pamięci podręcznych, w tym samym regionie, w ramach subskrypcji. Trwa aktualizacja co pamięci podręcznej w regionie ma wpływ na wszystkie inne pamięci podręczne w regionie.
@@ -127,7 +130,8 @@ Tworzy pamięć podręczna systemu Azure dla usługi Redis.
 [!INCLUDE [app-service-deploy-commands](../../includes/app-service-deploy-commands.md)]
 
 ### <a name="powershell"></a>PowerShell
-    New-AzureRmResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
+
+    New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -ResourceGroupName ExampleDeployGroup -redisCacheName ExampleCache
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
     azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-redis-cache/azuredeploy.json -g ExampleDeployGroup

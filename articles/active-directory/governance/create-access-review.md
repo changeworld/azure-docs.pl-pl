@@ -14,12 +14,12 @@ ms.subservice: compliance
 ms.date: 11/15/2018
 ms.author: rolyon
 ms.reviewer: mwahl
-ms.openlocfilehash: 1c71333a49643647bae3730e4f14f26939388c4f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2393aaec32f2813860ab422b42772eef11ccd8a3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153747"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099160"
 ---
 # <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Utwórz Przegląd dostępu członków grupy lub dostęp do aplikacji z usługą Azure AD
 
@@ -115,7 +115,7 @@ Na podstawie dokonanego wyboru w ustawienia działań po zakończeniu, automatyc
 
 ## <a name="create-reviews-via-apis"></a>Utwórz przeglądy za pośrednictwem interfejsów API
 
-Można również utworzyć przeglądów dostępu za pomocą interfejsów API. Co zrobić, aby zarządzać dostępem do przeglądów grup i użytkowników aplikacji w witrynie Azure portal można również wykonać przy użyciu interfejsów API programu Microsoft Graph. Aby uzyskać więcej informacji, zobacz [dokumentacja przeglądów dostępu usługi Azure AD interfejsu API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/accessreviews_root). Przykładowy kod, zobacz [przykład pobierania przeglądów dostępu usługi Azure AD za pomocą programu Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
+Można również utworzyć przeglądów dostępu za pomocą interfejsów API. Co zrobić, aby zarządzać dostępem do przeglądów grup i użytkowników aplikacji w witrynie Azure portal można również wykonać przy użyciu interfejsów API programu Microsoft Graph. Aby uzyskać więcej informacji, zobacz [dokumentacja przeglądów dostępu usługi Azure AD interfejsu API](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta). Przykładowy kod, zobacz [przykład pobierania przeglądów dostępu usługi Azure AD za pomocą programu Microsoft Graph](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

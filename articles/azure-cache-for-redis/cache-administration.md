@@ -14,15 +14,17 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: wesmc
-ms.openlocfilehash: 0f86bd807bf7bf0d00ad659f86b6e1170f31074c
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: 72e27b7098d9891dc54b31c34e2211362e7c9f50
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53019687"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099976"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Administrowanie pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano sposób wykonywania zadań administracyjnych, takich jak [ponowny rozruch](#reboot) i [Planowanie aktualizacji](#schedule-updates) dla pamięci podręcznej Azure dla wystąpienia usługi Redis.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="reboot"></a>Ponowne uruchamianie
 **Ponowny rozruch** bloku pozwala na ponowne uruchomienie co najmniej jeden węzeł pamięci podręcznej. Ta możliwość ponownego uruchomienia umożliwia testowanie aplikacji pod kątem odporności, jeśli wystąpi awaria węzła pamięci podręcznej.
@@ -92,7 +94,7 @@ Ponowny rozruch jest dostępny dla wszystkich warstw cenowych.
 
 Aby określić okna obsługi, sprawdź odpowiednią dni i określ godzina rozpoczęcia okna konserwacji za każdy dzień i kliknij **OK**. Należy pamiętać, że czas okna obsługi jest w formacie UTC. 
 
-Domyślny i minimum, okno konserwacji dla aktualizacji jest pięć godzin. Ta wartość nie jest można skonfigurować w witrynie Azure portal, ale można ją skonfigurować przy użyciu programu PowerShell `MaintenanceWindow` parametru [New AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry) polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [zaplanowanych aktualizacji przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania można zarządzać?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+Domyślny i minimum, okno konserwacji dla aktualizacji jest pięć godzin. Ta wartość nie jest można skonfigurować w witrynie Azure portal, ale można ją skonfigurować przy użyciu programu PowerShell `MaintenanceWindow` parametru [New AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [zaplanowanych aktualizacji przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania można zarządzać?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
 
 
 ## <a name="schedule-updates-faq"></a>Zaplanuj aktualizacje — często zadawane pytania
@@ -110,10 +112,10 @@ Tylko usługa Redis serwera, które aktualizacje są wprowadzane podczas okna za
 ### <a name="can-i-managed-scheduled-updates-using-powershell-cli-or-other-management-tools"></a>Czy można zarządzać aktualizacjami zaplanowane przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania?
 Tak, można zarządzać zaplanowane aktualizacje za pomocą następujących poleceń cmdlet programu PowerShell:
 
-* [Get-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/get-azurermrediscachepatchschedule)
-* [New-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/new-azurermrediscachepatchschedule)
-* [New-AzureRmRedisCacheScheduleEntry](/powershell/module/azurerm.rediscache/new-azurermrediscachescheduleentry)
-* [Remove-AzureRmRedisCachePatchSchedule](/powershell/module/azurerm.rediscache/remove-azurermrediscachepatchschedule)
+* [Get-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/get-azrediscachepatchschedule)
+* [New-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/new-azrediscachepatchschedule)
+* [New-AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry)
+* [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
 ### <a name="what-pricing-tiers-can-use-the-schedule-updates-functionality"></a>Jakie ceny warstwy można użyć funkcji Aktualizacje harmonogramu?
 **Lizacje** funkcja jest dostępna tylko w warstwy cenowej premium.

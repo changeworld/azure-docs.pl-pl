@@ -14,18 +14,23 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6050ad98c87dbe38516a6ee3c4862495ad868031
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 78aa65614920d093b6ba0b8fa43614fd7f3c5176
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53414386"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100435"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Przygotowanie zasobów technicznych aplikacji platformy Azure
 
 W tym artykule opisano zasoby do przygotowania zasoby techniczne oferty aplikacji platformy Azure.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
+
+Przejrzyj następujący film [tworzenia szablonów rozwiązań, a Managed Applications dla witryny Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603), omówienie sposobu tworzenia szablonu usługi Azure Resource Manager do definiowania rozwiązania aplikacji platformy Azure i następnie sposobu następnie należy opublikować ofertę aplikacji w portalu Azure Marketplace.
+
+>[!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK3603/player]
+
 
 Przejrzyj następująca dokumentacja aplikacji Azure zawiera Przewodniki Szybki Start, samouczków i przykładów.
 

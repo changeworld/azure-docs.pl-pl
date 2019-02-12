@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: hectorl
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 607356bb59550626c9fe5f71d4609b9c3e2b2fe0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 77493782802eeb29313b57d11442535f1734c12e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251303"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097389"
 ---
 # <a name="backup-and-data-recovery-for-azure-stack-with-the-infrastructure-backup-service"></a>Kopia zapasowa i odzyskiwanie danych dla usługi Azure Stack przy użyciu infrastruktury usługi Backup
 
@@ -52,12 +52,16 @@ Usługi zawiera następujące funkcje.
   Udział plików należy dostępne z usługi Azure Stack może zawierać siedem kopii zapasowych. Każda kopia zapasowa wynosi około 10 GB. Swój udział powinno być możliwe do przechowywania kopii zapasowych 140 GB. Aby uzyskać więcej informacji o wybieraniu lokalizacji magazynu dla usługi Azure Stack infrastruktury kopii zapasowych, zobacz [wymagania dotyczące kontrolera kopii zapasowej](azure-stack-backup-reference.md#backup-controller-requirements).
 - **Poświadczenia**  
   Potrzebujesz konta użytkownika domeny i poświadczenia, na przykład, może użyć poświadczeń administratora usługi Azure Stack.
-- **Klucz szyfrowania**  
-  Pliki kopii zapasowej są szyfrowane przy użyciu tego klucza. Upewnij się, że przechowywanie tego klucza w bezpiecznej lokalizacji. Po wprowadzeniu tego klucza po raz pierwszy lub wymienić główny klucz w przyszłości, nie można wyświetlić tego klucza, w tym interfejsie. Więcej instrukcji do generowania klucza wstępnego, należy wykonać skryptów w [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
+- **Certyfikat szyfrowania**  
+  Pliki kopii zapasowej są szyfrowane za pomocą klucza publicznego w certyfikacie. Upewnij się, że ten certyfikat są przechowywane w bezpiecznej lokalizacji. 
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Dowiedz się, jak [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack z portalu administratora](azure-stack-backup-enable-backup-console.md).
-- Dowiedz się, jak [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
-- Dowiedz się, jak [wykonywanie kopii zapasowych usługi Azure Stack](azure-stack-backup-back-up-azure-stack.md )
-- Dowiedz się, jak [sprawności po utracie danych w wyniku katastrofy](azure-stack-backup-recover-data.md)
+Dowiedz się, jak [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack z portalu administratora](azure-stack-backup-enable-backup-console.md).
+
+Dowiedz się, jak [Włącz wykonywanie kopii zapasowej dla usługi Azure Stack przy użyciu programu PowerShell](azure-stack-backup-enable-backup-powershell.md).
+
+Dowiedz się, jak [wykonywanie kopii zapasowych usługi Azure Stack](azure-stack-backup-back-up-azure-stack.md )
+
+Dowiedz się, jak [sprawności po utracie danych w wyniku katastrofy](azure-stack-backup-recover-data.md)

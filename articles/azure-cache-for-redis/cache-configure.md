@@ -14,12 +14,12 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: 67cc7d0dc162f2b36e38f1068f46079f46120f1c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c9158eebb876f5c3349528ffb7707629791421ce
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819845"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099942"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Jak skonfigurować pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano konfiguracje dla pamięci podręcznej Azure dla wystąpienia usługi Redis. W tym temacie omówiono również domyślne Redis konfiguracji serwera dla usługi Azure Cache do wystąpienia usługi Redis.
@@ -429,7 +429,7 @@ Nowej usługi Azure Cache dla wystąpień usługi Redis są konfigurowane przy u
 Aby uzyskać więcej informacji na temat baz danych, zobacz [co to są bazy danych Redis?](cache-faq.md#what-are-redis-databases)
 
 > [!NOTE]
-> `databases` Ustawienie może być skonfigurowane tylko podczas tworzenia pamięci podręcznej i tylko przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych klientów zarządzania. Aby uzyskać przykład konfigurowania `databases` podczas tworzenia pamięci podręcznej przy użyciu programu PowerShell, zobacz [polecenia New-AzureRmRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
+> `databases` Ustawienie może być skonfigurowane tylko podczas tworzenia pamięci podręcznej i tylko przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych klientów zarządzania. Aby uzyskać przykład konfigurowania `databases` podczas tworzenia pamięci podręcznej przy użyciu programu PowerShell, zobacz [New AzRedisCache](cache-howto-manage-redis-cache-powershell.md#databases).
 > 
 > 
 

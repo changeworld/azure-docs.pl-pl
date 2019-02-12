@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: celested
 ms.reviewer: paulgarn
-ms.openlocfilehash: 0e2b6e29e159970784ab8c321bbc8c16e96b60e3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 21bd83511f09c3049c396e13161e02dead6e3459
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757692"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100010"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Instrukcje: Konfigurowanie szyfrowania tokenu języka SAML programu Azure AD (wersja zapoznawcza)
 
@@ -33,19 +33,19 @@ Szyfrowanie twierdzenia SAML między usługą Azure AD i aplikacja udostępnia d
 
 Nawet bez szyfrowania tokenu tokeny Azure AD SAML nigdy nie są przekazywane w sieci niezaszyfrowane. Usługa Azure AD wymaga wymiany tokenu żądania/odpowiedzi pozwalają na zaszyfrowane kanały protokołu HTTPS/TLS tak, aby komunikacja między dostawcy tożsamości, przeglądarki i aplikacje odbywać się za pośrednictwem łącza zaszyfrowane. Należy wziąć pod uwagę wartości szyfrowania tokenu w danej sytuacji, w porównaniu z związanym z zarządzaniem dodatkowych certyfikatów.   
 
-Aby skonfigurować szyfrowanie tokenów, należy przekazać X509 plik certyfikatu, który zawiera klucz publiczny, który obiekt aplikacji usługi Azure AD, który reprezentuje aplikację. Aby uzyskać X509 certyfikatu, możesz pobrać go z aplikacji lub get przypadków z dostawcą aplikacji, w którym dostawca aplikacji udostępnia klucze szyfrowania lub w przypadkach, w którym aplikacja oczekuje, musisz podać klucz prywatny, może być utworzony za pomocą narzędzia kryptografii, część klucza prywatnego przekazany do magazynu kluczy aplikacji i zgodnego certyfikatu klucza publicznego przekazany do usługi Azure AD.
+Do skonfigurowania szyfrowania tokenu, należy przekazać plik certyfikatu X.509, który zawiera klucz publiczny, który obiekt aplikacji usługi Azure AD, który reprezentuje aplikację. W celu uzyskania certyfikatu X.509 możesz pobrać go z aplikacji sam lub get przypadków z dostawcą aplikacji, w którym dostawca aplikacji udostępnia klucze szyfrowania lub w przypadkach, w którym aplikacja oczekuje, musisz podać klucz prywatny, może być utworzony za pomocą narzędzia kryptografii, część klucza prywatnego przekazany do magazynu kluczy aplikacji i zgodnego certyfikatu klucza publicznego przekazany do usługi Azure AD.
 
 Usługa Azure AD używa algorytmu AES-256 do szyfrowania danych potwierdzenie SAML.
 
 ## <a name="configure-saml-token-encryption"></a>Skonfiguruj szyfrowanie tokenu języka SAML
 
-Aby skonfigurować szyfrowanie tokenu języka SAML, wykonaj następujące kroki.
+Aby skonfigurować szyfrowanie tokenu języka SAML, wykonaj następujące kroki:
 
 1. Uzyskaj certyfikat klucza publicznego, który pasuje do klucza prywatnego, który jest skonfigurowany w aplikacji.
 
-    Utwórz asymetryczną parę kluczy do użycia podczas szyfrowania. Lub, jeśli aplikacja dostarcza klucza publicznego do użycia podczas szyfrowania, postępuj zgodnie z instrukcjami aplikacji, aby pobrać X509 certyfikatu.
+    Utwórz asymetryczną parę kluczy do użycia podczas szyfrowania. Lub, jeśli aplikacja dostarcza klucza publicznego do użycia podczas szyfrowania, postępuj zgodnie z instrukcjami aplikacji, aby pobrać certyfikat X.509.
 
-    Klucz publiczny, powinny być przechowywane w X509 plik certyfikatu w formacie cer.
+    Klucz publiczny powinny być przechowywane w pliku certyfikatu X.509 w formacie cer.
 
     Jeśli aplikacja używa klucza, które tworzysz dla swojego wystąpienia, postępuj zgodnie z instrukcjami wyświetlanymi przez aplikację do instalowania klucza prywatnego, który aplikacja będzie używany do odszyfrowywania tokenów z dzierżawą usługi Azure AD.
 
@@ -66,9 +66,9 @@ Można dodać certyfikatu publicznego do konfiguracji aplikacji w witrynie Azure
     > [!NOTE]
     > **Tokenem szyfrowania** opcja jest dostępna tylko dla aplikacji SAML, które zostały skonfigurowane z **aplikacje dla przedsiębiorstw** bloku w witrynie Azure portal, z poziomu galerii aplikacji lub Aplikacja spoza galerii. Dla innych aplikacji ta opcja jest wyłączona. Dla aplikacji jest rejestrowane za pomocą **rejestracje aplikacji** środowisko w witrynie Azure portal, którą można skonfigurować szyfrowania dla manifestu tokeny SAML za pomocą aplikacji, za pomocą programu Microsoft Graph lub programu PowerShell.
 
-1. Na **tokenem szyfrowania** wybierz opcję **zaimportować certyfikat** można zaimportować plik cer, który zawiera Twoje X509 publicznego certyfikatu.
+1. Na **tokenem szyfrowania** wybierz opcję **zaimportować certyfikat** można zaimportować plik cer zawierający publicznego certyfikatu X.509.
 
-    ![Zaimportuj plik cer zawierający X509 certyfikatu](./media/howto-saml-token-encryption/import-certificate-small.png)
+    ![Zaimportuj plik cer zawierający certyfikat X.509](./media/howto-saml-token-encryption/import-certificate-small.png)
 
 1. Po zaimportowaniu certyfikatu i klucza prywatnego jest skonfigurowana do użycia na stronie aplikacji, Aktywuj szyfrowania, wybierając **...**  dalej, aby stan odcisku palca, a następnie wybierz **aktywować szyfrowania tokenu** opcję z menu rozwijanego.
 
@@ -94,7 +94,7 @@ Po skonfigurowaniu keyCredential, przy użyciu programu Graph, programu PowerShe
 
 ### <a name="to-configure-token-encryption-using-microsoft-graph"></a>Aby skonfigurować szyfrowanie tokenu przy użyciu programu Microsoft Graph
 
-1. Aktualizuj aplikację `keyCredentials` z X509 certyfikat na potrzeby szyfrowania. Poniższy przykład pokazuje, jak to zrobić.
+1. Aktualizuj aplikację `keyCredentials` za pomocą certyfikatu X.509 do szyfrowania. Poniższy przykład pokazuje, jak to zrobić.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid>

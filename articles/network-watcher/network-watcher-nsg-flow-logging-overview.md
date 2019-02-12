@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ff3c1e51bcf0b7d730019fad66ed8b0c3fe17a20
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332306"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097652"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń
 
@@ -65,7 +65,7 @@ Dzienniki przepływów obejmują następujące właściwości:
                     * **Protokół** — protokół przepływ. Prawidłowe wartości to **T** dla protokołu TCP i **U** protokołu UDP
                     * **Traffic Flow** -kierunek przepływu ruchu. Prawidłowe wartości to **I** dla ruchu przychodzącego i **O** dla ruchu wychodzącego.
                     * **Ruch decyzji** — czy zezwolenie lub odrzucenie ruchu. Prawidłowe wartości to **A** dla dozwolone i **D** dla odmowa.
-                    * **Stan usługi Flow — tylko w wersji 2** -przechwytuje stan przepływu. Możliwe stany są **B**: Rozpocznij, gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: Kontynuowanie ciągłego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: Zakończenie, gdy przepływ zostanie zakończony. Statystyki są podawane.
+                    * **Stan usługi Flow — tylko w wersji 2** -przechwytuje stan przepływu. Możliwe stany to **B**: początek — gdy zostanie utworzony przepływ. Statystyki nie są podawane. **C**: kontynuacja — dotyczy trwającego przepływu. Statystyki są podawane w 5-minutowych odstępach. **E**: koniec — gdy przepływ zostanie zakończony. Statystyki są podawane.
                     * **Pakiety - źródła do miejsca docelowego — w wersji 2 tylko** całkowita liczba pakietów TCP lub UDP, które są odsyłane ze źródła do miejsca docelowego od czasu ostatniej aktualizacji.
                     * **Liczba wysłanych bajtów - źródła do miejsca docelowego — w wersji 2 tylko** całkowita liczba bajtów pakiet TCP lub UDP, odsyłane ze źródła do miejsca docelowego od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.
                     * **Pakiety - docelowe źródło — tylko w wersji 2** całkowita liczba pakietów TCP lub UDP, które są wysyłane z docelowym źródłem od czasu ostatniej aktualizacji.
@@ -73,7 +73,7 @@ Dzienniki przepływów obejmują następujące właściwości:
 
 ## <a name="nsg-flow-logs-version-2"></a>W wersji 2 dzienników przepływów sieciowych grup zabezpieczeń
 > [!NOTE] 
-> Dzienniki przepływu w wersji 2 są dostępne tylko w regionie Zachodnio-środkowe stany USA. Włączanie w wersji 2 spowoduje dzienniki w nieobsługiwany region dzienników w wersji 1, zwrócone do swojego konta magazynu.
+> Dzienniki przepływu w wersji 2 są dostępne tylko w regionie Zachodnio-środkowe stany USA. Włączenie dzienników w wersji 2 w nieobsługiwanym regionie spowoduje zwrócenie na koncie magazynu dzienników w wersji 1.
 
 Dzienniki w wersji 2 wprowadzono stan przepływu. Można skonfigurować, która wersja dzienników przepływu pojawi się. Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
 
@@ -287,5 +287,6 @@ Tekst, który następuje jest przykładem dziennika przepływu. Jak widać, istn
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
+- Aby dowiedzieć się, jak odczytywać dzienniki przepływu, zobacz [dzienników przepływu sieciowej grupy zabezpieczeń odczytu](network-watcher-read-nsg-flow-logs.md).
 - Aby dowiedzieć się więcej na temat rejestrowania sieciowej grupy zabezpieczeń, zobacz [Log analytics dla sieciowych grup zabezpieczeń (NSG)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 - Aby określić, czy ruch jest dozwolony lub wychodzić do / z maszyny Wirtualnej, zobacz [diagnozowanie problemu z filtrowaniem ruchu maszyny Wirtualnej sieci](diagnose-vm-network-traffic-filtering-problem.md)

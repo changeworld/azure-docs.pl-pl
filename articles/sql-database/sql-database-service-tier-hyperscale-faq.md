@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/06/2019
-ms.openlocfilehash: 3ee952f10cebe374767e0db4a592695eeb1b4417
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 16d536ff5bd1f7d9a3427877a93036d9f711564e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810069"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099784"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>Często zadawane pytania dotyczące bazy danych SQL Azure na dużą skalę
 
@@ -243,7 +243,7 @@ Nie. Baza danych SQL na dużą skalę jest architektura SMP i nie asymetrycznego
 
 ### <a name="what-is-the-oldest-sql-server-version-will-sql-database-hyperscale-support-migration-from"></a>Co to jest najstarsze programu SQL Server wersji będą migracji obsługi bazy danych SQL na dużą skalę z
 
-SQL Server 2005. Aby uzyskać więcej informacji, zobacz [Przeprowadź migrację do pojedynczej bazy danych lub baza danych w puli](sql-database-cloud-migrate.md#migrate-to-a-single-database-or-a-pooled-database). W przypadku problemów ze zgodnością, zobacz [Rozwiązywanie problemów ze zgodnością migracji bazy danych](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues).
+SQL Server 2005. Aby uzyskać więcej informacji, zobacz [Przeprowadź migrację do pojedynczej bazy danych lub baza danych w puli](sql-database-single-database-migrate.md#migrate-to-a-single-database-or-a-pooled-database). W przypadku problemów ze zgodnością, zobacz [Rozwiązywanie problemów ze zgodnością migracji bazy danych](sql-database-single-database-migrate.md#resolving-database-migration-compatibility-issues).
 
 ### <a name="does-sql-database-hyperscale-support-migration-from-other-data-sources-such-as-aurora-mysql-oracle-db2-and-other-database-platforms"></a>Baza danych SQL na dużą skalę obsługuje migrację z innych źródeł danych, takich jak Aurora, MySQL, Oracle, DB2 i innych platform bazy danych
 

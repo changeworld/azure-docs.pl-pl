@@ -12,19 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/07/2018
+ms.date: 02/11/2019
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: b739db654a182433bbe1f47528d1ab99f1b10c08
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: e0f6e3068a26eef3b6cca79cffbb98614eb44a34
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242165"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100163"
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Architektura tożsamości dla usługi Azure Stack
-Przed wybraniem dostawcy tożsamości do użycia z usługą Azure Stack, poznać ważne różnice między opcje usługi Azure Active Directory (Azure AD) i Active Directory Federation Services (AD FS). 
+
+Podczas wybierania dostawcy tożsamości do użycia z usługą Azure Stack, należy zrozumieć istotnych różnic między opcjami usługi Azure Active Directory (Azure AD) i Active Directory Federation Services (AD FS).
 
 ## <a name="capabilities-and-limitations"></a>Możliwości i ograniczeń 
 Dostawcy tożsamości, który wybierzesz można ograniczyć opcje, takie jak obsługa wielu dzierżawców. 

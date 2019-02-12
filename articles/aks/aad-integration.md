@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081249"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099262"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrowanie usługi Azure Active Directory z usługą Azure Kubernetes Service
 
@@ -220,7 +220,9 @@ aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.9
 
 Po wykonaniu tych czynności, jest buforowany token uwierzytelniania. Są tylko ponownie monitowany, aby zalogować się po token wygasł lub ponowne utworzenie pliku konfiguracji platformy Kubernetes.
 
-Jeśli widzisz komunikat o błędzie autoryzacji, po pomyślnym zalogowaniu, sprawdź, czy użytkownik logujesz się nie Gość w usłudze Azure AD (jest to często w przypadku korzystania z logowania federacyjnego z innego katalogu).
+Jeśli widzisz komunikat o błędzie autoryzacji po zalogowaniu się pomyślnie, sprawdź, czy:
+1. Użytkownik logujesz się nie gościa w wystąpieniu usługi Azure AD (jest to często w przypadku korzystania z logowania federacyjnego z innego katalogu).
+2. Użytkownik nie jest członkiem więcej niż 200 grup.
 
 ```console
 error: You must be logged in to the server (Unauthorized)

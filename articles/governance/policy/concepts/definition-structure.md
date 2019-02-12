@@ -4,17 +4,17 @@ description: W tym artykule opisano, jak zasobu definicji zasad jest używany pr
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 14c5a9a5d9e3bd71ca1fdaf3545af3e74b3973c2
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698296"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100651"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -90,8 +90,20 @@ Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz param
 > [!NOTE]
 > Parametry mogą być dodawane do definicji interfejsu istniejące i przypisane. Nowy parametr musi zawierać **defaultValue** właściwości. Zapobiega to pośrednio odbywa się nieprawidłowe istniejące przypisania zasad lub inicjatywy.
 
-Na przykład można zdefiniować zasadę, aby ograniczyć lokalizacje, w której można wdrożyć zasoby.
-Podczas tworzenia zasad, może zadeklarować następujące parametry:
+### <a name="parameter-properties"></a>Właściwości parametru
+
+Parametr ma następujące właściwości, które są używane w definicji zasad:
+
+- **Nazwa**: Nazwa parametru. Używane przez `parameters` funkcji wdrażania w ramach reguły zasad. Aby uzyskać więcej informacji, zobacz [przy użyciu wartości parametru](#using-a-parameter-value).
+- `type`: Określa, czy parametr **ciąg** lub **tablicy**.
+- `metadata`: Definiuje właściwości podrzędnych głównie używana przez witryny Azure portal, aby wyświetlić informacje o przyjazny dla użytkownika:
+  - `description`: Opis dotyczący przeznaczenia parametru. Może służyć do zapewnienia przykładowe dopuszczalne wartości.
+  - `displayName`: Przyjazna nazwa wyświetlana w portalu dla parametru.
+  - `strongType`: (Opcjonalnie) Używane podczas przypisywania definicji zasad za pośrednictwem portalu. Zawiera listę pamiętać kontekstu. Aby uzyskać więcej informacji, zobacz [strongType](#strongtype).
+- `defaultValue`: (Opcjonalnie) Jeśli wartość nie zostanie określony, ustawia wartość parametru w przypisania. Wymagane podczas aktualizowania istniejącej definicji zasad, która jest przypisana.
+- `allowedValues`: (Opcjonalnie) Zawiera listę wartości, które akceptuje parametr, podczas przypisywania.
+
+Na przykład można zdefiniować definicję zasad, aby ograniczyć lokalizacje, w której można wdrożyć zasoby. Parametr dla tej definicji zasad może być **allowedLocations**. Ten parametr będzie używany przez każdy przypisanie definicji zasad, aby ograniczyć akceptowanych wartości. Korzystanie z **strongType** udostępnia udoskonalone funkcje podczas kończenia przypisania za pośrednictwem portalu:
 
 ```json
 "parameters": {
@@ -102,21 +114,17 @@ Podczas tworzenia zasad, może zadeklarować następujące parametry:
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2"
+        "defaultValue": "westus2",
+        "allowedValues": [
+            "eastus2",
+            "westus2",
+            "westus"
+        ]
     }
 }
 ```
 
-Typ parametru może być ciąg lub tablicy. Właściwość metadanych służy do narzędzi, takich jak witryny Azure portal do wyświetlania informacji przyjazny dla użytkownika.
-
-W ramach właściwości metadanych, możesz użyć **strongType** zapewnienie wielokrotnego wyboru listę opcji w witrynie Azure portal. Dozwolone wartości **strongType** obejmują:
-
-- `"location"`
-- `"resourceTypes"`
-- `"storageSkus"`
-- `"vmSKUs"`
-- `"existingResourceGroups"`
-- `"omsWorkspace"`
+### <a name="using-a-parameter-value"></a>Przy użyciu wartości parametru
 
 W regule zasad możesz odwoływać się do parametrów za pomocą następujących `parameters` Składnia funkcji wartość wdrożenia:
 
@@ -126,6 +134,19 @@ W regule zasad możesz odwoływać się do parametrów za pomocą następującyc
     "in": "[parameters('allowedLocations')]"
 }
 ```
+
+W tym przykładzie odwołuje się do **allowedLocations** parametru, która została przedstawiona w [właściwości parametru](#parameter-properties).
+
+### <a name="strongtype"></a>strongType
+
+W ramach `metadata` właściwości, można użyć **strongType** zapewnienie wielokrotnego wyboru listę opcji w witrynie Azure portal. Dozwolone wartości **strongType** obejmują:
+
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 ## <a name="definition-location"></a>Lokalizacja definicji
 

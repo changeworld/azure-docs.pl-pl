@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 198fb3376d44123d39a0b3ca2fb1edbd070f1f09
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 7822b5abe78bf969171f7f6ee7d706dadb8d0188
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510990"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100452"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Zarządzanie niestandardowymi nazwami domen w usłudze Azure Active Directory
 
@@ -66,7 +66,7 @@ Należy zmienić ani usunąć tych zasobów w katalogu usługi Azure AD, aby mo�
 
 ### <a name="forcedelete-option"></a>Opcja ForceDelete
 
-Możesz **ForceDelete** nazwę domeny w [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) lub za pomocą [interfejsu API Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete). Te opcje, użyj operacji asynchronicznej i zaktualizuj wszystkie odwołania, na podstawie nazwy domeny niestandardowej, takich jak "user@contoso.com"Aby nazwa wstępnej domyślnej domeny takie jak"user@contoso.onmicrosoft.com." 
+Możesz **ForceDelete** nazwę domeny w [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) lub za pomocą [interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta). Te opcje, użyj operacji asynchronicznej i zaktualizuj wszystkie odwołania, na podstawie nazwy domeny niestandardowej, takich jak "user@contoso.com"Aby nazwa wstępnej domyślnej domeny takie jak"user@contoso.onmicrosoft.com." 
 
 Aby wywołać **ForceDelete** w witrynie Azure portal, upewnij się, że istnieją mniej niż 1000 odwołania do nazwy domeny, a wszelkie odwołania, w przypadku inicjowania obsługi administracyjnej usługi Exchange musi zostać zaktualizowane lub usunięte w [ Centrum administracyjne Exchange](https://outlook.office365.com/ecp/). Obejmuje to Exchange Mail-Enabled grup zabezpieczeń i listy rozproszonych; Aby uzyskać więcej informacji, zobacz [usuwanie grup zabezpieczeń z włączoną obsługą poczty](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Ponadto **ForceDelete** operacja nie powiodła się, jeśli jest spełniony jeden z następujących czynności:
 
@@ -112,4 +112,4 @@ Większości zadań administracyjnych dla nazw domen w usłudze Azure Active Dir
 
 * [Dodawanie niestandardowych nazw domen](/azure/active-directory/fundamentals/add-custom-domain?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Usuwanie grupy zabezpieczeń z włączoną obsługą poczty programu Exchange w Centrum administracyjnym programu Exchange na niestandardowej nazwy domeny w usłudze Azure AD](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups)
-* [ForceDelete niestandardowej nazwy domeny za pomocą interfejsu API Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/domain_forcedelete)
+* [ForceDelete niestandardowej nazwy domeny za pomocą interfejsu API Microsoft Graph](https://docs.microsoft.com/graph/api/domain-forcedelete?view=graph-rest-beta)

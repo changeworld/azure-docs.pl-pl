@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/09/2019
+ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: fe730c826e082f26ce7b4604a5fbf46692ef0bed
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982509"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100265"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozszerzenie sterowników procesora GPU NVIDIA dla systemu Linux
 
@@ -85,7 +85,7 @@ Wszystkie ustawienia są opcjonalne. Domyślnym zachowaniem jest nie aktualizacj
 | Name (Nazwa) | Opis | Wartość domyślna | Prawidłowe wartości | Typ danych |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualizacji jądra, nawet jeśli nie są wymagane do instalacji sterowników | false | wartość true, false | wartość logiczna |
-| driverVersion | NV: Wersja sterownika siatki<br> NC/ND: Wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla architektury CUDA wybrana są instalowane automatycznie. | najnowsza | GRID: "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | ciąg |
+| driverVersion | NV: Wersja sterownika siatki<br> NC/ND: Wersja zestawu narzędzi CUDA. Najnowsze sterowniki dla architektury CUDA wybrana są instalowane automatycznie. | najnowsza | GRID: "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA: "10.0.130", "9.2.88", "9.1.85" | ciąg |
 | installCUDA | Zainstaluj zestaw narzędzi CUDA. Istotne tylko w przypadku maszyny wirtualne z serii NC/ND. | true | wartość true, false | wartość logiczna |
 
 

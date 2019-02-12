@@ -17,20 +17,20 @@ ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: nigu
 ms.custom: seohack1
-ms.openlocfilehash: 4ee2f0387ee3c56dda7cd1a89f5c808f55699856
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 47786ac687272cc2a88c3fa885fece9c858a3c2b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658627"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099075"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Rozpoczynanie pracy z usługą Azure Active Directory Identity Protection i Microsoft Graph
 
 Usługa Microsoft Graph programu Microsoft unified punkt końcowy interfejsu API i stroną główną [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md) interfejsów API. Istnieją trzy interfejsy API, które udostępniają informacje o ryzykownych użytkowników i logowania. Pierwszym interfejsem API **identityRiskEvents**, służy do wykonywania zapytań programu Microsoft Graph, aby uzyskać listę [zdarzeń o podwyższonym ryzyku](../reports-monitoring/concept-risk-events.md) i skojarzonych informacji. Drugi interfejs API **riskyUsers**, pozwala do wykonywania zapytań w programie Microsoft Graph dla informacji o użytkownikach Identity Protection wykryte jako ryzyka. Trzeci interfejsu API, **signIn**, można wyszukać Microsoft Graph informacji na temat usługi Azure AD, logowania z określonymi właściwościami, które dotyczą stan ryzyka szczegółów i poziomu. Ten artykuł ułatwia rozpoczęcie pracy z [nawiązywania połączenia z programu Microsoft Graph](#Connect-to-Microsoft-Graph) i [podczas badania tych interfejsów API](#Query-the-APIs). Szczegółowe wprowadzenie, pełną dokumentację i dostępu do programu Graph Explorer, zobacz [witryny programu Microsoft Graph](https://graph.microsoft.io/) lub określonych dokumentacji dla tych interfejsów API:
 
-* [identityRiskEvents interfejsu API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/identityriskevent)
-* [riskyUsers API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/riskyuser)
-* [Logowanie za pomocą interfejsu API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/signin)
+* [identityRiskEvents interfejsu API](https://docs.microsoft.com/graph/api/resources/identityriskevent?view=graph-rest-beta)
+* [riskyUsers API](https://docs.microsoft.com/graph/api/resources/riskyuser?view=graph-rest-beta)
+* [Logowanie za pomocą interfejsu API](https://docs.microsoft.com/graph/api/resources/signin?view=graph-rest-beta)
 
 
 ## <a name="connect-to-microsoft-graph"></a>Nawiązać połączenie z programu Microsoft graph
@@ -217,7 +217,7 @@ Wystarczy dodać Identyfikatora klienta, klucza tajnego i domena dzierżawy.
 
 ## <a name="query-the-apis"></a>Kwerendy interfejsów API
 
-Te trzy interfejsy API zapewniają wiele możliwości, aby pobrać informacje o ryzykownych użytkowników i logowania w Twojej organizacji. Poniżej przedstawiono niektóre typowe przypadki użycia dla tych interfejsów API i prośby o przykłady skojarzone. Możesz uruchomić te zapytania, korzystającą z przykładowego kodu powyżej lub za pomocą [Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer).
+Te trzy interfejsy API zapewniają wiele możliwości, aby pobrać informacje o ryzykownych użytkowników i logowania w Twojej organizacji. Poniżej przedstawiono niektóre typowe przypadki użycia dla tych interfejsów API i prośby o przykłady skojarzone. Możesz uruchomić te zapytania, korzystającą z przykładowego kodu powyżej lub za pomocą [Graph Explorer](https://developer.microsoft.com/graph/graph-explorer).
 
 ### <a name="get-the-high-risk-and-medium-risk-events-identityriskevents-api"></a>Pobieranie zdarzeń o wysokim ryzyku i średniego ryzyka (identityRiskEvents interfejsu API)
 
@@ -251,7 +251,7 @@ Gratulacje, właśnie wykonana pierwszego wywołania w programie Microsoft Graph
 Teraz możesz zbadać zdarzenia o podwyższonym ryzyku tożsamości i używania danych, jednak wedle uznania.
 
 
-Aby dowiedzieć się więcej na temat programu Microsoft Graph i jak tworzyć aplikacje przy użyciu interfejsu API programu Graph, zapoznaj się z [dokumentacji](https://docs.microsoft.com/graph/overview) i znacznie więcej informacji na temat [witryny programu Microsoft Graph](https://developer.microsoft.com/en-us/graph). 
+Aby dowiedzieć się więcej na temat programu Microsoft Graph i jak tworzyć aplikacje przy użyciu interfejsu API programu Graph, zapoznaj się z [dokumentacji](https://docs.microsoft.com/graph/overview) i znacznie więcej informacji na temat [witryny programu Microsoft Graph](https://developer.microsoft.com/graph). 
 
 
 Aby uzyskać powiązane informacje Zobacz:

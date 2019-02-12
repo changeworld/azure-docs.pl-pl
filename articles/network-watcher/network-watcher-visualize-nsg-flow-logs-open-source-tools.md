@@ -1,6 +1,6 @@
 ---
-title: Wizualizowanie dzienników przepływów Azure Network Watcher NSG przy użyciu narzędzi typu open source | Dokumentacja firmy Microsoft
-description: Ta strona zawiera opis sposobu wizualizowanie dzienników przepływów sieciowych grup zabezpieczeń przy użyciu narzędzi typu open source.
+title: Zarządzanie i analizować dzienniki przepływu sieciowych grup zabezpieczeń przy użyciu usługi Network Watcher i Elastic Stack | Dokumentacja firmy Microsoft
+description: Zarządzanie i analizować dzienniki sieciowych grup zabezpieczeń przepływu na platformie Azure przy użyciu usługi Network Watcher i Elastic Stack.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 10f76ea58b859611483c99c2f4accec607bc2939
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822912"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099007"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Wizualizowanie dzienników przepływów Azure Network Watcher NSG przy użyciu narzędzi typu open source
 
