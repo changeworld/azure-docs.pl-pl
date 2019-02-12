@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: db1bdeed75264e32d5a96800096b6b433c62c44a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: eb05d1b28b80cb7bf48bc1160c251936423763e6
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822633"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100802"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Powiązania programu Microsoft Graph dla usługi Azure Functions
 
@@ -670,7 +670,7 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - byte[]
-- Stream
+- Strumień
 - ciąg
 - Microsoft.Graph.DriveItem
 
@@ -817,7 +817,7 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - byte[]
-- Stream
+- Strumień
 - ciąg
 - Microsoft.Graph.DriveItem
 
@@ -982,7 +982,7 @@ Elementy Webhook umożliwiają reagowanie na zdarzenia w programie Microsoft Gra
 - A [powiązania danych wejściowych subskrypcji elementu webhook programu Microsoft Graph](#webhook-input) można wyświetlić listę istniejących subskrypcji i możesz odświeżyć je.
 - A [powiązania danych wyjściowych subskrypcja elementu webhook programu Microsoft Graph](#webhook-output) pozwala tworzyć i usuwać subskrypcje elementów webhook.
 
-Powiązania, sami nie wymagają żadnych uprawnień usługi Azure AD, ale muszą zażądać uprawnień typ zasobu, który chcesz, aby reagować na istotne. Aby uzyskać listę, które uprawnienia są wymagane dla każdego typu zasobu, zobacz [uprawnienia subskrypcji](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/subscription_post_subscriptions).
+Powiązania, sami nie wymagają żadnych uprawnień usługi Azure AD, ale muszą zażądać uprawnień typ zasobu, który chcesz, aby reagować na istotne. Aby uzyskać listę, które uprawnienia są wymagane dla każdego typu zasobu, zobacz [uprawnienia subskrypcji](https://docs.microsoft.com/graph/api/subscription-post-subscriptions?view=graph-rest-1.0).
 
 Aby uzyskać więcej informacji na temat elementów webhook, zobacz [Praca z elementami webhook w usłudze Microsoft Graph].
 

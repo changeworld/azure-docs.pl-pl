@@ -14,12 +14,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: ba2eb5a7f888e4cffcd798259afa8194b4021025
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 16871bdc59d141334bc2c95f26929f270d7971cf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38488896"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100542"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>Jak używać biblioteki klienckiej JavaScript dla usługi Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "38488896"
 Tego przewodnika dowiesz się, aby wykonać typowe scenariusze za pomocą najnowszej [zestaw JavaScript SDK usługi Azure Mobile Apps]. Jeśli jesteś nowym użytkownikiem usługi Azure Mobile Apps, najpierw wykonaj [Azure mobilnych: aplikacje Szybki Start] tworzenie zaplecza i Utwórz tabelę. W tym przewodniku skupimy się na korzystanie z zaplecza aplikacji mobilnych w aplikacji sieci Web HTML/JavaScript.
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
-Ograniczona obsługa przeglądarek na bieżące i ostatnie wersje ważniejszymi przeglądarkami: Google Chrome, Microsoft Edge, program Microsoft Internet Explorer i Mozilla Firefox.  Oczekujemy, że zestaw SDK do funkcji z dowolnej stosunkowo nowoczesnej przeglądarce.
+Ograniczona obsługa przeglądarek na bieżące i ostatnie wersje ważniejszymi przeglądarkami:  Google Chrome, Microsoft Edge, Microsoft Internet Explorer, and Mozilla Firefox.  Oczekujemy, że zestaw SDK do funkcji z dowolnej stosunkowo nowoczesnej przeglądarce.
 
 Dystrybucji pakietu jako moduł uniwersalny język JavaScript obsługuje funkcje globalne, AMD, i formatuje CommonJS.
 
@@ -42,10 +42,10 @@ npm install azure-mobile-apps-client --save
 
 Biblioteki może również służyć jako moduł ES2015 w środowiskach CommonJS, takie jak Browserify i Webpack i jako biblioteka AMD.  Na przykład:
 
-```
-# For ECMAScript 5.1 CommonJS
+```javascript
+// For ECMAScript 5.1 CommonJS
 var WindowsAzure = require('azure-mobile-apps-client');
-# For ES2015 modules
+// For ES2015 modules
 import * as WindowsAzure from 'azure-mobile-apps-client';
 ```
 
@@ -57,14 +57,14 @@ Umożliwia także wstępnie skompilowanych wersji zestawu SDK, pobierając bezpo
 
 [!INCLUDE [app-service-mobile-html-js-library](../../includes/app-service-mobile-html-js-library.md)]
 
-## <a name="auth"></a>Instrukcje: uwierzytelnianie użytkowników
-Usługa Azure App Service obsługuje uwierzytelnianie i autoryzowanie użytkowników aplikacji za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, Account Microsoft i Twitter. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w skryptów serwera. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] samouczka.
+## <a name="auth"></a>Jak: Uwierzytelnianie użytkowników
+Usługa Azure App Service obsługuje uwierzytelnianie i autoryzowanie użytkowników aplikacji za pomocą różnych dostawców tożsamości zewnętrznych: Facebook, Google, konta Microsoft i Twitter. Możesz ustawić uprawnienia w tabelach ograniczyć dostęp dla określonych operacji tylko do uwierzytelnionych użytkowników. Tożsamość uwierzytelnionych użytkowników umożliwia również zaimplementować reguły autoryzacji w skryptów serwera. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z uwierzytelnianiem] samouczka.
 
 Obsługiwane są dwa przepływy uwierzytelniania: przepływ serwera i klienta przepływu.  Przepływ serwera zapewnia najprostszą proces uwierzytelniania opiera się na interfejs uwierzytelniania sieci web dostawcy. Przepływ klienta pozwala na lepszą integrację z funkcjami specyficznych dla urządzenia, takich jak logowanie jednokrotne ponieważ opiera się na zestawy SDK specyficzne dla dostawcy.
 
 [!INCLUDE [app-service-mobile-html-js-auth-library](../../includes/app-service-mobile-html-js-auth-library.md)]
 
-### <a name="configure-external-redirect-urls"></a>Porady: Konfigurowanie usługi Mobile App Service dla adresy URL zewnętrznego przekierowania.
+### <a name="configure-external-redirect-urls"></a>Jak: Konfigurowanie usługi Mobile App Service dla adresy URL zewnętrznego przekierowania.
 Kilka typów aplikacji JavaScript Użyj możliwości sprzężenia zwrotnego do obsługi uwierzytelniania OAuth interfejsu użytkownika przepływów.  Te funkcje obejmują:
 
 * Uruchamianie usługi lokalnie
