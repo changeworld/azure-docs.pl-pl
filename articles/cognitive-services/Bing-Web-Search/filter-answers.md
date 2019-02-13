@@ -9,18 +9,18 @@ ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 01/12/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: 945f89633060df7f57aa937be392149340acc21d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 26c38c34543683a3fc450d3a0ae932d8bd30dc98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55856006"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199497"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrowanie odpowiedzi, które obejmuje odpowiedzi wyszukiwania  
 
-Gdy zapytanie sieci web Bing zwraca całej zawartości, który według niego ma zastosowanie do wyszukiwania. Na przykład jeśli zapytanie wyszukiwania jest "dinghies pływających +", odpowiedź może zawierać następujące odpowiedzi:
+Kiedy wykonujesz zapytanie o sieci web, Wyszukiwarka Bing zwróci wszystkie znalezione dla wyszukiwania odpowiedniej zawartości. Na przykład jeśli zapytanie wyszukiwania jest "dinghies pływających +", odpowiedź może zawierać następujące odpowiedzi:
 
 ```json
 {
@@ -44,8 +44,16 @@ Gdy zapytanie sieci web Bing zwraca całej zawartości, który według niego ma 
     }
 }    
 ```
+Typy zawartości, otrzymasz (na przykład obrazy, wideo i wiadomości) można filtrować przy użyciu [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) parametr zapytania. Bing umożliwia znalezienie odpowiedniej zawartości odpowiedzi określony, zostaną zwrócone. Filtr odpowiedzi jest rozdzielana przecinkami lista odpowiedzi. 
 
-Jeśli interesuje Cię określonych typów zawartości, takiej jak obrazy, filmy wideo i wiadomości, mogą zażądać tylko tych odpowiedzi, przy użyciu [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) parametr zapytania. Jeśli Bing umożliwia znalezienie odpowiedniej zawartości dla określonej odpowiedzi, Wyszukiwarka Bing zwraca go. Filtr odpowiedzi jest rozdzielana przecinkami lista odpowiedzi. Poniżej pokazano sposób użycia `responseFilter` żądania obrazów, filmów wideo i wiadomości dinghies prowadzenia. Kodowanie ciągu zapytania przecinki zmienia na %2 C.  
+Aby wykluczyć określonych typów zawartości, takiej jak obrazy, z odpowiedzi, możesz dodać `-` znak na początku `responseFilter` wartość. Wykluczone typy można oddzielić przecinkami (`,`). Na przykład:
+
+```
+&responseFilter=-images,-videos
+```
+
+
+Poniżej pokazano sposób użycia `responseFilter` żądania obrazów, filmów wideo i wiadomości dinghies prowadzenia. Kodowanie ciągu zapytania przecinki zmienia na %2 C.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -57,7 +65,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Poniżej przedstawiono odpowiedź na poprzednie zapytanie. Jak widać Bing nie znaleziono odpowiednich wyników wideo i wiadomości, więc odpowiedzi nie zawiera ich.
+Poniżej przedstawiono odpowiedź na poprzednie zapytanie. Ponieważ Bing nie znaleziono odpowiednich wideo i wiadomości wyniki, odpowiedź nie zawiera ich.
 
 ```json
 {
@@ -80,12 +88,6 @@ Poniżej przedstawiono odpowiedź na poprzednie zapytanie. Jak widać Bing nie z
         }
     }
 }
-```
-
-Jeśli chcesz wykluczyć określonych typów zawartości, takiej jak obrazy, z odpowiedzi, można wykluczyć je z łącznikiem (prefiks wartości responseFilter minus). Oddzielne typy wykluczonych przecinkami:
-
-```
-&responseFilter=-images,-videos
 ```
 
 Chociaż Bing nie zwrócił wyników wideo i wiadomości w poprzedniej odpowiedzi, nie oznacza to, że zawartości wideo i wiadomości nie istnieje. Oznacza to po prostu strony nie obejmują ich. Jednak jeśli użytkownik [strony](./paging-webpages.md) za pośrednictwem więcej wyników kolejnych stronach będzie prawdopodobnie je uwzględnić. Ponadto jeśli wywołasz [interfejsu API wyszukiwania wideo](../bing-video-search/search-the-web.md) i [interfejsu API wyszukiwania wiadomości](../bing-news-search/search-the-web.md) punktów końcowych w bezpośrednio odpowiedzi prawdopodobnie będzie zawierać wyniki.
