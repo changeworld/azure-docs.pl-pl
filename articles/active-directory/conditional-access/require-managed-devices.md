@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 06/14/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 8b772f24bf86cebbee8c10526c344681dc91dac4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bec86ee095fb5011c80cd26efcb79efc639189ed
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075115"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192323"
 ---
-# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Jak: Wymagaj urządzenia zarządzanego do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
+# <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Instrukcje: Wymagaj urządzenia zarządzanego do uzyskania dostępu do aplikacji w chmurze przy użyciu dostępu warunkowego
 
 W świecie urządzeń przenośnych i chmurze — Azure Active Directory (Azure AD) umożliwia logowanie jednokrotne do aplikacji i usług z dowolnego miejsca. Autoryzowani użytkownicy będą mogli swoje aplikacje w chmurze z szerokiej gamy urządzeń w tym komórkowego, a także urządzeniami osobistymi. Jednak w wielu środowiskach ma co najmniej kilka aplikacji, które powinny zostać oceniony jedynie przez urządzenia, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. Urządzenia te są nazywane także zarządzanych urządzeń. 
 
