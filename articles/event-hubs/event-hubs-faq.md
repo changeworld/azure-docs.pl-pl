@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: bcbb249c6cb3c886b94f8ad68dd668cb8858ac77
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d1ed16465efb6c70b4426f22e8b9983112142c79
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354593"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162649"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Usługa Event Hubs — często zadawane pytania
 
@@ -183,7 +183,7 @@ Aby uzyskać listę wszystkich przydziałów usługi Event Hubs, zobacz [przydzi
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Dlaczego nie mogę utworzyć przestrzeń nazw po usunięciu jej z inną subskrypcję? 
-Jeśli usuniesz przestrzeni nazw z subskrypcji, poczekaj przez 4 godziny przed odtworzenia go o tej samej nazwie w innej subskrypcji. 
+Jeśli usuniesz przestrzeni nazw z subskrypcji, poczekaj przez 4 godziny przed odtworzenia go o tej samej nazwie w innej subskrypcji. W przeciwnym razie może być wyświetlony następujący komunikat o błędzie: `Namespace already exists`. 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-event-hubs-and-their-suggested-actions"></a>Co to są wyjątki generowane przez centra zdarzeń i ich sugerowane akcje?
 

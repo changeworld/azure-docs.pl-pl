@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: aa0d209cf3da65bb3d50a6458ecc33cfcd85eecb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240600"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109321"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra usługi Service Fabric
 Klaster usługi Azure Service Fabric jest zasobem, którego jesteś właścicielem. Jest odpowiedzialny za Zabezpieczanie klastrów zapobiega nieautoryzowanym użytkownikom nawiązywanie połączeń z nich. Zabezpieczonego klastra jest szczególnie ważne w przypadku obciążeń produkcyjnych są uruchomione w klastrze. Chociaż można utworzyć z niezabezpieczonym klastrem, jeśli klaster udostępnia punktów końcowych zarządzania do publicznej sieci internet, użytkowników anonimowych można się z nim. Niezabezpieczonych klastrów nie są obsługiwane w przypadku obciążeń produkcyjnych. 
@@ -78,14 +78,14 @@ W przypadku klastrów Azure zabezpieczeń między węzłami zaleca się używać
 W przypadku autonomicznych klastrów systemu Windows Server w przypadku systemu Windows Server 2012 R2 i Windows Active Directory, zaleca się używać zabezpieczeń Windows za pomocą kont usługi zarządzanych przez grupę. W przeciwnym razie za pomocą Windows zabezpieczenia konta Windows.
 
 ## <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
-Można użyć kontroli dostępu, aby ograniczyć dostęp do pewnych operacji klastra dla różnych grup użytkowników. Dzięki temu zabezpieczeniu klastra. Dwa typy kontroli dostępu są obsługiwane w przypadku klientów nawiązujących połączenie z klastrem: rola administratora i roli użytkownika.
+Można użyć kontroli dostępu, aby ograniczyć dostęp do pewnych operacji klastra dla różnych grup użytkowników. Dzięki temu zabezpieczeniu klastra. Dwa typy kontroli dostępu są obsługiwane w przypadku klientów nawiązujących połączenie z klastrem: Rola administratora i roli użytkownika.
 
 Użytkownicy, którzy są przypisani do roli Administrator ma pełny dostęp do funkcji zarządzania, w tym do odczytu i zapisu funkcje. Użytkownicy z przypisaną rolą użytkownika, domyślnie mają dostęp tylko do odczytu do funkcji zarządzania (na przykład możliwości zapytań). Mogą również można rozwiązać, aplikacji i usług.
 
 Ustaw role administratora i użytkownika klienta podczas tworzenia klastra. Przypisz role, zapewniając osobne tożsamości (np. przy użyciu certyfikatów lub Azure AD) dla poszczególnych ról. Aby uzyskać więcej informacji na temat domyślne ustawienia kontroli dostępu oraz sposobu zmiany ustawień domyślnych, zobacz [opartej na rolach kontrola dostępu dla klientów usługi Service Fabric](service-fabric-cluster-security-roles.md).
 
 ## <a name="x509-certificates-and-service-fabric"></a>Certyfikaty X.509 i Service Fabric
-Cyfrowe certyfikaty X.509 często są używane do uwierzytelniania klientów i serwerów. Są używane do szyfrowania i cyfrowego podpisywania wiadomości. Usługa Service Fabric używa certyfikatów X.509 do zabezpieczenia klastra i udostępnia funkcje zabezpieczeń aplikacji. Aby uzyskać więcej informacji na temat certyfikatów cyfrowych X.509, zobacz [Praca z certyfikatami](https://msdn.microsoft.com/library/ms731899.aspx). Możesz użyć [usługi Key Vault](../key-vault/key-vault-get-started.md) do zarządzania certyfikatami klastrów usługi Service Fabric na platformie Azure.
+Cyfrowe certyfikaty X.509 często są używane do uwierzytelniania klientów i serwerów. Są używane do szyfrowania i cyfrowego podpisywania wiadomości. Usługa Service Fabric używa certyfikatów X.509 do zabezpieczenia klastra i udostępnia funkcje zabezpieczeń aplikacji. Aby uzyskać więcej informacji na temat certyfikatów cyfrowych X.509, zobacz [Praca z certyfikatami](https://msdn.microsoft.com/library/ms731899.aspx). Możesz użyć [usługi Key Vault](../key-vault/key-vault-overview.md) do zarządzania certyfikatami klastrów usługi Service Fabric na platformie Azure.
 
 Niektóre ważne kwestie należy wziąć pod uwagę:
 

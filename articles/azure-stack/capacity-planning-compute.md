@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: e756b48003ebfaff98271d93a3d8f0231571b5f9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ca0a6569dda89586c629cc46909862de4f27cf04
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242437"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160915"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Usługa Azure Stack obliczeń, planowania pojemności
 [Rozmiarów maszyn wirtualnych obsługiwanych w usłudze Azure Stack](./user/azure-stack-vm-sizes.md) są podzbiorem obsługiwane na platformie Azure. Azure nakłada ograniczenia zasobów wzdłuż wektorów wiele, aby uniknąć nadmierne zużycie zasobów (serwera lokalnego i poziomu usług). Bez nakładania pewne ograniczenia użycia dzierżawy, środowisk dzierżawy będzie niekorzystnie wpłynąć na w przypadku pozostałych dzierżaw overconsume zasobów. Dla danych sieciowych wychodzących z maszyny Wirtualnej istnieją limity przepustowości w miejscu w usłudze Azure Stack, które odpowiadają ograniczenia platformy Azure. Dla zasobów magazynu limity operacji We/Wy magazynu zostały wdrożone w usłudze Azure Stack, aby uniknąć podstawowe nadmierne zużycie zasobów przez dzierżawy, aby uzyskać dostęp do magazynu.  

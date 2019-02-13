@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2018
 ms.author: jeedes
-ms.openlocfilehash: efb905364e5ae4736b058472e66b3a8850a99fe3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a36b87f0a440bb2bf8d8d75cf0d29dbd521ff43f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167843"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175000"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą BorrowBox
 
@@ -119,7 +120,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![image](./media/borrowbox-tutorial/tutorial_borrowbox_url1.png)
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta BorrowBox](mailto:borrowbox@bolinda.com) można uzyskać wartość.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta BorrowBox](mailto:borrowbox@bolinda.com) można uzyskać wartość.
 
 5. Aplikacja BorrowBox oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty i oświadczenia użytkownika** na stronie integracji aplikacji. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **atrybutów użytkowników i oświadczeń** okna dialogowego.
 
@@ -196,7 +197,7 @@ W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowani
 
 4. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
+5. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

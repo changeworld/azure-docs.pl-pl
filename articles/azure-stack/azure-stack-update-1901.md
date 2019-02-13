@@ -16,12 +16,12 @@ ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 0865227a05d5cb25a44114fc053f61b8f70ffb94
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100095"
+ms.locfileid: "56115712"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizacja usługi Azure Stack 1901
 
@@ -89,7 +89,7 @@ Ta aktualizacja obejmuje następujące nowe funkcje i ulepszenia dla usługi Azu
          Zmiana powodująca niezgodność: Kopia zapasowa zmieni się na tryb szyfrowania oparte na certyfikatach. Obsługa dla kluczy symetrycznych jest przestarzała.  
    * **Moduł Azs.Fabric.Admin**  
          `Get-AzsInfrastructureVolume` jest przestarzała. Nowe polecenie cmdlet `Get-AzsVolume`.  
-         `Get-AzsStorageSystem` jest przestarzała.  Użyj nowego nowe polecenie cmdlet `Get-AzsStorageSubSystem`.  
+         `Get-AzsStorageSystem` jest przestarzała.  Nowe polecenie cmdlet `Get-AzsStorageSubSystem`.  
          `Get-AzsStoragePool` jest przestarzała. `StorageSubSystem` Obiekt zawiera właściwości pojemności.  
    * **Moduł Azs.Compute.Admin**  
          Naprawienie usterki — `Add-AzsPlatformImage`, `Get-AzsPlatformImage`: Wywoływanie `ConvertTo-PlatformImageObject` tylko w ścieżce sukces.  
@@ -134,7 +134,7 @@ Aby przejrzeć odwołania do zaktualizowanych modułów, zobacz [odwołania do u
 - Rozwiązano problem podczas ustawiania wartości przydziały dysków Managed Disks w ramach [typy limitów przydziału obliczeniowych](azure-stack-quota-types.md#compute-quota-types) 0, jest to równoważne wartość domyślną 2048 GiB. Teraz jest zachowana zero wartości limitu przydziału.
 
 <!-- 2724873 - IS --> 
-- Rozwiązano problem, korzystając z polecenia cmdlet programu PowerShell **Start AzsScaleUnitNode** lub **Stop AzsScaleunitNode** Zarządzanie jednostek skalowania, w których pierwsza próba uruchomienia lub zatrzymania jednostki skalowania może zakończyć się niepowodzeniem.
+- Rozwiązano problem, korzystając z polecenia cmdlet programu PowerShell **Start AzsScaleUnitNode** lub **Stop AzsScaleUnitNode** Zarządzanie jednostek skalowania, w których pierwsza próba uruchomienia lub zatrzymania jednostki skalowania może zakończyć się niepowodzeniem.
 
 <!-- 2724961- IS ASDK --> 
 - Rozwiązano problem, w którym zarejestrowana **Microsoft.Insight** dostawcy zasobów w ustawieniach subskrypcji i utworzyć maszyny Wirtualnej z systemem Windows z włączoną gościa systemu operacyjnego diagnostycznych, ale wykresu procent użycia procesora CPU na stronie Omówienie maszyny Wirtualnej nie wykazała dane metryk. Dane zostaną poprawnie wyświetlone.

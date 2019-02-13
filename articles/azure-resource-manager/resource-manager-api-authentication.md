@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2018
 ms.author: dugill
-ms.openlocfilehash: a81c1d20e0f7b58c132a5ece04f05d6740c2308f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 40f7f15c85d5676fefe8daff0aa6a6fb5d95cf53
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498254"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117072"
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>Interfejs API uwierzytelniania Użyj usługi Resource Manager do dostępu do subskrypcji
 
@@ -75,6 +75,8 @@ Przed rozpoczęciem kodowania, Zarejestruj swoją aplikację sieci web za pomoc�
 Ponieważ aplikacja uzyskuje dostęp do innej subskrypcji, należy go skonfigurować jako aplikacji z wieloma dzierżawami. Aby pomyślnie weryfikacji, należy podać domeny skojarzone z usługi Azure Active Directory. Aby wyświetlić domeny skojarzone z usługi Azure Active Directory, zaloguj się do portalu.
 
 Poniższy przykład pokazuje, jak zarejestrować aplikację przy użyciu programu Azure PowerShell. Konieczne jest posiadanie najnowszej wersji programu Azure PowerShell na potrzeby to polecenie mogło działać (sierpnia 2016 r.).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $app = New-AzADApplication -DisplayName "{app name}" -HomePage "https://{your domain}/{app name}" -IdentifierUris "https://{your domain}/{app name}" -Password "{your password}" -AvailableToOtherTenants $true

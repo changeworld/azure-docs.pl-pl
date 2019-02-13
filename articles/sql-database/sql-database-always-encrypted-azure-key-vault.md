@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/03/2019
-ms.openlocfilehash: fa37a83799ec50c7a8a87a0ac8a3232035a49234
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 670bdd43a4a581f349ca84c17ead67975fa0232e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755666"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110170"
 ---
 # <a name="always-encrypted-protect-sensitive-data-and-store-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Ochrona poufnych danych i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
 
@@ -53,7 +53,7 @@ Aby uzyskać *identyfikator aplikacji* i *klucz*, postępuj zgodnie z instrukcja
 ## <a name="create-a-key-vault-to-store-your-keys"></a>Tworzenie magazynu kluczy do przechowywania kluczy przy użyciu
 Teraz, gdy skonfigurowano aplikację kliencką i masz swój identyfikator aplikacji, nadszedł czas na tworzenie magazynu kluczy oraz skonfigurować jego zasady dostępu, aby Tobie i Twojej aplikacji mogą uzyskiwać dostęp do magazynu kluczy tajnych (klucze są zawsze szyfrowane). *Tworzenie*, *uzyskać*, *listy*, *logowania*, *Sprawdź*, *wrapKey*, i *unwrapKey* uprawnienia są wymagane do utworzenia nowego kluczem głównym kolumny i konfigurowanie szyfrowania przy użyciu programu SQL Server Management Studio.
 
-Można szybko utworzyć magazyn kluczy, uruchamiając następujący skrypt. Aby uzyskać szczegółowy opis tych poleceń cmdlet i więcej informacji na temat tworzenia i konfigurowania magazynu kluczy, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](../key-vault/key-vault-get-started.md).
+Można szybko utworzyć magazyn kluczy, uruchamiając następujący skrypt. Aby uzyskać szczegółowy opis tych poleceń cmdlet i więcej informacji na temat tworzenia i konfigurowania magazynu kluczy, zobacz [co to jest usługa Azure Key Vault?](../key-vault/key-vault-overview.md).
 
 ```powershell
     $subscriptionName = '<your Azure subscription name>'

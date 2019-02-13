@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: cdc48cf278fdd68bacf74c2d6d762c8d731949e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745593"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111575"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 
@@ -217,7 +217,7 @@ W ramach szablonu można utworzyć własne funkcje. Te funkcje są dostępne do 
 Podczas definiowania funkcji użytkownika, istnieją pewne ograniczenia:
 
 * Funkcja nie może uzyskać dostęp do zmiennych.
-* Funkcja nie może uzyskać dostęp do parametrów szablonu. Oznacza to, że [parametrów funkcji](resource-group-template-functions-deployment.md#parameters) jest ograniczony do parametrów funkcji.
+* Funkcja może używać tylko parametry, które są zdefiniowane w funkcji. Kiedy używasz [parametrów funkcji](resource-group-template-functions-deployment.md#parameters) w funkcji zdefiniowanej przez użytkownika, użytkownik jest ograniczony do parametrów dla tej funkcji.
 * Funkcja nie można wywołać inne funkcje zdefiniowane przez użytkownika.
 * Nie można użyć funkcji [odwoływać się do funkcji](resource-group-template-functions-resource.md#reference).
 * Parametry funkcji nie może mieć wartości domyślne.
@@ -298,9 +298,23 @@ W sekcji danych wyjściowych należy określić wartości, które są zwracane z
 
 Aby uzyskać więcej informacji, zobacz [wyprowadza części szablonów usługi Azure Resource Manager](resource-manager-templates-outputs.md).
 
-## <a name="comments"></a>Komentarze
+<a id="comments" />
 
-Istnieje kilka opcji dodawania komentarzy do szablonu.
+## <a name="comments-and-metadata"></a>Komentarze i metadane
+
+Masz kilka opcji dodawania komentarzy i metadane szablonu.
+
+Możesz dodać `metadata` obiektu praktycznie dowolnym miejscu w szablonie. Menedżer zasobów ignoruje obiektu, ale edytora JSON może ostrzega użytkownika, że właściwość jest nieprawidłowa. W obiekcie Zdefiniuj właściwości, których potrzebujesz.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template was developed for demonstration purposes.",
+        "author": "Example Name"
+    },
+```
 
 Aby uzyskać **parametry**, Dodaj `metadata` obiekt z `description` właściwości.
 
@@ -342,18 +356,6 @@ Aby uzyskać **zasobów**, Dodaj `comments` elementu lub obiektu metadanych. Pon
     "properties": {}
   }
 ]
-```
-
-Możesz dodać `metadata` obiektu praktycznie dowolnym miejscu w szablonie. Menedżer zasobów ignoruje obiektu, ale edytora JSON może ostrzega użytkownika, że właściwość jest nieprawidłowa. W obiekcie Zdefiniuj właściwości, których potrzebujesz.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "metadata": {
-        "comments": "This template was developed for demonstration purposes.",
-        "author": "Example Name"
-    },
 ```
 
 Aby uzyskać **generuje**, dodanie obiektu metadanych do wartości danych wyjściowych.

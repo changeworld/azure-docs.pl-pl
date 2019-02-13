@@ -4,7 +4,7 @@ description: Ten artykuł zawiera omówienie usługi Azure database funkcje zabe
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f9297946b7e09bc8c516470515d0eee9885d5d38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584778"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116324"
 ---
 # <a name="azure-database-security-overview"></a>Omówienie zabezpieczeń usługi Azure database
 
@@ -114,8 +114,8 @@ Usługa Azure SQL Database jest dostępna wyłącznie za pośrednictwem portu TC
 
 Uwierzytelnianie to sposób potwierdzenia tożsamości podczas nawiązywania połączenia z bazą danych. Usługa SQL Database obsługuje dwa typy uwierzytelniania:
 
--   **Uwierzytelnianie programu SQL Server**: pojedyncze konto logowania jest tworzony podczas tworzenia logicznego wystąpienia SQL o nazwie konto subskrybenta usługi SQL Database. To konto łączy się za pomocą [uwierzytelniania programu SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (nazwa użytkownika i hasło). To konto jest administratorem wystąpienia serwera logicznego i wszystkich baz danych użytkownika dołączonych do tego wystąpienia. Uprawnień konta subskrybenta nie może być ograniczony. Może istnieć tylko jedno z tych kont.
--   **Uwierzytelnianie usługi Azure Active Directory**: [uwierzytelniania usługi Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) jest mechanizmem nawiązywania połączenia z usługą Azure SQL Database i Azure SQL Data Warehouse przy użyciu tożsamości w usłudze Azure AD. Służy on do centralne zarządzanie tożsamościami użytkowników bazy danych.
+-   **Uwierzytelnianie programu SQL Server**: Konto jednej nazwy logowania jest tworzone podczas tworzenia logicznego wystąpienia SQL o nazwie konto subskrybenta usługi SQL Database. To konto łączy się za pomocą [uwierzytelniania programu SQL Server](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (nazwa użytkownika i hasło). To konto jest administratorem wystąpienia serwera logicznego i wszystkich baz danych użytkownika dołączonych do tego wystąpienia. Uprawnień konta subskrybenta nie może być ograniczony. Może istnieć tylko jedno z tych kont.
+-   **Uwierzytelnianie usługi Azure Active Directory**: [Uwierzytelnianie usługi Azure AD](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) jest mechanizmem nawiązywania połączenia z usługą Azure SQL Database i Azure SQL Data Warehouse przy użyciu tożsamości w usłudze Azure AD. Służy on do centralne zarządzanie tożsamościami użytkowników bazy danych.
 
 ![Uwierzytelnianie usługi Azure AD z usługą SQL Database](./media/azure-databse-security-overview/azure-database-fig2.png)
 
@@ -176,8 +176,8 @@ Możesz użyć inspekcji do bazy danych SQL:
 
 Istnieją dwie metody inspekcji:
 
--   **Inspekcja obiektów blob**: dzienniki są zapisywane w usłudze Azure Blob storage. Jest nowsza metoda inspekcji. Go zapewnia wyższą wydajność, obsługuje wyższy poziom szczegółowości na poziomie obiektu inspekcji i jest bardziej opłacalna.
--   **Inspekcja tabeli**: dzienniki są zapisywane w usłudze Azure Table storage.
+-   **Inspekcja obiektów blob**: Dzienniki są zapisywane w magazynie Azure Blob. Jest nowsza metoda inspekcji. Go zapewnia wyższą wydajność, obsługuje wyższy poziom szczegółowości na poziomie obiektu inspekcji i jest bardziej opłacalna.
+-   **Inspekcja tabeli**: Dzienniki są zapisywane w usłudze Azure Table storage.
 
 ### <a name="threat-detection"></a>Wykrywanie zagrożeń
 

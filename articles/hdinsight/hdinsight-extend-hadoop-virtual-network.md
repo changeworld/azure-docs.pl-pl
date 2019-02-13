@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 2e986e26f22e41e1cbf7b8d1c1af694522a01d06
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821579"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169976"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -253,11 +253,11 @@ Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu
 >
 > Jeśli nie używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do kontroli ruchu, możesz zignorować tę sekcję.
 
-Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika muszą zezwalać na ruch z usługi kondycji i zarządzania platformy Azure do osiągnięcia HDInsight. Musisz również zezwolić na ruch między maszynami wirtualnymi w tej podsieci. Aby znaleźć adresy IP, które muszą być dozwolone, wykonaj następujące kroki:
+Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kondycji i zarządzania platformy Azure do osiągnięcia klastry HDInsight na porcie 443. Musisz również zezwolić na ruch między maszynami wirtualnymi w tej podsieci. Aby znaleźć adresy IP, które muszą być dozwolone, wykonaj następujące kroki:
 
 1. Zawsze muszą zezwalać na ruch z następujących adresów IP:
 
-    | Adres IP | Dozwolone portu | Kierunek |
+    | Źródłowy adres IP | Port docelowy | Kierunek |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | Przychodzący |
     | 23.99.5.239 | 443 | Przychodzący |
@@ -269,7 +269,7 @@ Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez uży
     > [!IMPORTANT]  
     > Jeśli region platformy Azure, którego używasz, nie jest wymieniony, następnie używać tylko cztery adresy IP z kroku 1.
 
-    | Kraj | Region | Dozwolone adresy IP | Dozwolone portu | Kierunek |
+    | Kraj | Region | Dozwolone adresy IP źródła | Dozwolone port docelowy | Kierunek |
     | ---- | ---- | ---- | ---- | ----- |
     | Azja | Azja Wschodnia | 23.102.235.122</br>52.175.38.134 | 443 | Przychodzący |
     | &nbsp; | Azja Południowo-Wschodnia | 13.76.245.160</br>13.76.136.249 | 443 | Przychodzący |
@@ -306,15 +306,13 @@ Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez uży
 
 Aby uzyskać więcej informacji, zobacz [kontrolowanie ruchu sieciowego](#networktraffic) sekcji.
 
+W przypadku wychodzących reguł sieciowej grupy zabezpieczeń zezwalają na ruch z dowolnego źródła w sieci Wirtualnej, aby osiągnąć powyższe adresy jako "Adresy Desitnation IP".
+
+Jeśli używasz routes(UDRs) zdefiniowanych przez użytkownika, możesz określić trasę i zezwolić na ruch wychodzący z sieci Wirtualnej do powyższych adresów IP z następnego przeskoku jest ustawiona na "Internet".
+    
 ## <a id="hdinsight-ports"></a> Wymagane porty
 
-Jeśli planujesz użycie **zapory** do zabezpieczania sieci wirtualnej i uzyskać dostęp do klastra na określonych portach, powinien zezwalać na ruch przez porty wymagane dla danego scenariusza. Domyślnie nie należy do listy dozwolonych tych portów:
-
-* 53
-* 443
-* 1433
-* 11000-11999
-* 14000-14999
+Jeśli planujesz użycie **zapory** i uzyskać dostęp do klastra z poza na określonych portach, może być konieczne zezwolić na ruch na tych portach potrzebnych do danego scenariusza. Domyślnie nie specjalne umieszczania na białej liście portów potrzebny jest tak długo, jak opisano w poprzedniej sekcji ruch zarządzania platformy azure może dotrzeć klastra na porcie 443.
 
 Aby uzyskać listę portów dla określonych usług, zobacz [porty używane przez usługi Apache Hadoop w HDInsight](hdinsight-hadoop-port-settings-for-services.md) dokumentu.
 

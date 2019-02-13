@@ -4,7 +4,7 @@ description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące zabez
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: 718b6b38121981bdec1f677537f9cd1180dfdb08
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391225"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114709"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Usługa Azure Service Fabric najlepsze rozwiązania dotyczące zabezpieczeń
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed przystąpieniem do wdrażania aplikacji w chmurze w środowisku produkcyjnym, Przejrzyj naszą listę podstawowych i zalecane najlepsze rozwiązania dotyczące wdrażania zabezpieczonych klastrów w aplikacji.
@@ -173,7 +173,7 @@ Istnieją dwa podstawowe kroki, aby skonfigurować magazyn kluczy:
 
     Magazynu kluczy musi być włączona dla wdrożenia. Dostawcy zasobów obliczeniowych można uzyskać certyfikaty z magazynu i zainstalować je na wystąpieniach maszyn wirtualnych.
 
-Aby dowiedzieć się więcej na temat sposobu konfigurowania magazynu kluczy, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).
+Aby dowiedzieć się więcej na temat sposobu konfigurowania magazynu kluczy, zobacz [co to jest usługa Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).
 
 ## <a name="assign-users-to-roles"></a>Przypisywanie użytkowników do ról
 Po utworzeniu aplikacji ma reprezentować klaster przypisać użytkowników do ról, które są obsługiwane przez usługę Service Fabric: tylko do odczytu i administratora. Te role można przypisać za pomocą witryny Azure portal.

@@ -4,7 +4,7 @@ description: Dowiedz się, jak zarządzać problemy z ochroną punktu końcowego
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 1599ad5f-d810-421d-aafc-892e831b403f
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 1e1401d7f7f383f60b37a3af3a18569bd5a2520a
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1ce1faa13c541939335d188866e15c683b6ffc28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336922"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110272"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>Zarządzanie problemy z ochroną punktu końcowego w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje stan ochrony przed złośliwym kodem i to w raportach w obszarze bloku problemy dotyczące ochrony punktu końcowego. Usługa Security Center wyróżnia problemy, takie jak wykrytych zagrożeń i ochronę niewystarczające, co może narazić Twoje maszyny wirtualne (VM) i komputerów na zagrożenia ochrony przed złośliwym oprogramowaniem. Korzystając z informacji podanych w ramach **problemy z ochroną punktu końcowego**, można zidentyfikować plan, aby rozwiązać wszystkie zidentyfikowane problemy.
@@ -49,7 +49,7 @@ W tym przykładzie użyjemy **obliczenia**.  Przedstawiony zostanie sposób inst
 
 1. Wybierz **obliczenia** menu głównym usługi Security Center lub **Przegląd**.
 
-   ![Wybierz opcję Oblicz][1]
+   ![Select Compute][1]
 
 2. W obszarze **obliczenia**, wybierz opcję **problemy z ochroną punktu końcowego**. **Problemy z ochroną punktu końcowego** zostanie otwarty pulpit nawigacyjny.
 

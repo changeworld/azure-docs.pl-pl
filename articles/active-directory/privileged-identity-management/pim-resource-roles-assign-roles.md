@@ -14,12 +14,13 @@ ms.subservice: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 19c1e5bfdd7a510a52e23cc3f216a6b0c4448ce7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 87c92387c14cd0b82ec26acb411609c794c2601e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155225"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171268"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Przypisz role zasobów platformy Azure w usłudze PIM
 
@@ -80,7 +81,7 @@ Wykonaj następujące kroki, aby Ustaw użytkownika z uprawnieniami dla ról zas
 
     Usługa PIM dla zasobów platformy Azure udostępnia dwa typy distinct przypisania:
 
-    - **Kwalifikujące się** przypisania wymagają członek roli do wykonania działania, aby korzystać z roli. Akcje mogą obejmować sprawdzanie uwierzytelniania wieloskładnikowego (MFA), zapewniając uzasadnienie biznesowe lub żądanie zatwierdzenia od wyznaczone osoby zatwierdzające.
+    - **Kwalifikujące się** przypisania wymagają członek roli do wykonania działania, aby korzystać z roli. Akcje te mogą obejmować przeprowadzenie uwierzytelniania wieloskładnikowego (MFA), podanie uzasadnienia biznesowego lub żądanie zatwierdzenia od wyznaczonych osób zatwierdzających.
 
     - **Aktywne** przypisania nie wymagają elementu członkowskiego do wykonywania dowolnych akcji, aby użyć roli. Członkowie przypisani jako aktywny mają uprawnienia przypisane do roli przez cały czas.
 

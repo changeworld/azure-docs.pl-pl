@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 5ae69d365a183f7d2a219d853241e73c1e27212b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: fa2ae313ab18d6e474f1dd0953a3b0a0d094c7c3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060266"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111819"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpieczanie komunikatów B2B przy użyciu certyfikatów
 
@@ -47,9 +47,9 @@ Aby użyć *certyfikatu publicznego* w usłudze logic apps, które mają możliw
 
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
-   | **Nazwa** | <*Nazwa certyfikatu*> | Nazwa certyfikatu, który jest "publicCert", w tym przykładzie | 
+   | **Nazwa** | <*certificate-name*> | Nazwa certyfikatu, który jest "publicCert", w tym przykładzie | 
    | **Typ certyfikatu** | Public | Typ certyfikatu |
-   | **Certyfikat** | <*Nazwa pliku certyfikatu*> | Aby znaleźć i wybrać plik certyfikatu, który chcesz przekazać, wybierz ikonę folderu **certyfikatu** pole. |
+   | **Certyfikat** | <*certificate-file-name*> | Aby znaleźć i wybrać plik certyfikatu, który chcesz przekazać, wybierz ikonę folderu **certyfikatu** pole. |
    ||||
 
    ![Wybieranie pozycji "Dodaj", podaj szczegóły certyfikatu](media/logic-apps-enterprise-integration-certificates/public-certificate-details.png)
@@ -60,14 +60,14 @@ Aby użyć *certyfikatu publicznego* w usłudze logic apps, które mają możliw
 
 ## <a name="upload-a-private-certificate"></a>Przekaż certyfikat prywatny
 
-Aby użyć *certyfikatu prywatnego* w usłudze logic apps, które mają możliwości B2B usługi, należy najpierw przekazać certyfikat na koncie integracji. Musisz również mieć klucz prywatny, należy najpierw dodać do [usługi Azure Key Vault](../key-vault/key-vault-get-started.md). 
+Aby użyć *certyfikatu prywatnego* w usłudze logic apps, które mają możliwości B2B usługi, należy najpierw przekazać certyfikat na koncie integracji. Musisz również mieć klucz prywatny, należy najpierw dodać do [usługi Azure Key Vault](../key-vault/key-vault-overview.md). 
 
 Po zdefiniowaniu właściwości w [umów](logic-apps-enterprise-integration-agreements.md) , tworzenia, certyfikat jest dostępny zabezpieczyć swoje komunikatów B2B.
 
 > [!NOTE]
 > W przypadku certyfikatów prywatnych, upewnij się, dodawania odpowiedniego certyfikatu publicznego, który pojawia się w [umowy AS2](logic-apps-enterprise-integration-as2.md) **wysyłania i odbierania** ustawień podpisywania i szyfrowania wiadomości.
 
-1. [Dodaj klucz prywatny do usługi Azure Key Vault](../key-vault/key-vault-get-started.md#add) i podaj **klucz o nazwie**.
+1. [Dodaj klucz prywatny do usługi Azure Key Vault](../key-vault/quick-create-cli.md#add-a-secret-to-key-vault) i podaj **klucz o nazwie**.
    
 2. Zezwól aplikacji logiki platformy Azure do wykonywania operacji w usłudze Azure Key Vault. Aby udzielić dostępu do jednostki usługi Logic Apps, należy użyć polecenia programu PowerShell [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy), na przykład:
 
@@ -86,12 +86,12 @@ Po zdefiniowaniu właściwości w [umów](logic-apps-enterprise-integration-agre
 
    | Właściwość | Wartość | Opis | 
    |----------|-------|-------------|
-   | **Nazwa** | <*Nazwa certyfikatu*> | Nazwa certyfikatu, który jest "privateCert", w tym przykładzie | 
+   | **Nazwa** | <*certificate-name*> | Nazwa certyfikatu, który jest "privateCert", w tym przykładzie | 
    | **Typ certyfikatu** | Private | Typ certyfikatu |
-   | **Certyfikat** | <*Nazwa pliku certyfikatu*> | Aby znaleźć i wybrać plik certyfikatu, który chcesz przekazać, wybierz ikonę folderu **certyfikatu** pole. | 
-   | **Grupa zasobów** | <*Integracja — konto resource-group*> | Grupa zasobów konta integracji, czyli "MyResourceGroup" w tym przykładzie | 
-   | **Usługa Key Vault** | <*— Nazwa usługi Key vault*> | Nazwa Twojego magazynu kluczy Azure |
-   | **Nazwa klucza** | <*Nazwa klucza*> | Nazwa klucza usługi |
+   | **Certyfikat** | <*certificate-file-name*> | Aby znaleźć i wybrać plik certyfikatu, który chcesz przekazać, wybierz ikonę folderu **certyfikatu** pole. | 
+   | **Grupa zasobów** | <*integration-account-resource-group*> | Grupa zasobów konta integracji, czyli "MyResourceGroup" w tym przykładzie | 
+   | **Usługa Key Vault** | <*key-vault-name*> | Nazwa Twojego magazynu kluczy Azure |
+   | **Nazwa klucza** | <*key-name*> | Nazwa klucza usługi |
    ||||
 
    ![Wybieranie pozycji "Dodaj", podaj szczegóły certyfikatu](media/logic-apps-enterprise-integration-certificates/private-certificate-details.png)

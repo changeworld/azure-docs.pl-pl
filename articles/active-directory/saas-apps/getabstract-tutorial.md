@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: jeedes
-ms.openlocfilehash: cc5ed33f40d1500124aeed2d215d281ded47f5c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3725089c8b2e7dc71e652ddcbd20a757d9bbf726
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191673"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169756"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getabstract"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Getabstract
 
@@ -133,7 +134,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W środowisku produkcyjnym: `https://www.getabstract.com/portal/<org_username>`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Getabstract](https://www.getabstract.com/en/contact) aby zyskać tę wartość.
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Getabstract](https://www.getabstract.com/en/contact) aby zyskać tę wartość.
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 

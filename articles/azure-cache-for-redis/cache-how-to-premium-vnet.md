@@ -3,7 +3,7 @@ title: Konfigurowanie sieci wirtualnej platformy Azure — wersja Premium pamię
 description: Dowiedz się, jak tworzyć i zarządzać nimi obsługi sieci wirtualnej w warstwie Premium usługi Azure Cache dla wystąpień usługi Redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 8b1e43a0-a70e-41e6-8994-0ac246d8bf7f
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: wesmc
-ms.openlocfilehash: e71d92b2cf7888fd9e3c560beb6e0e7f18e7add0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: yegu
+ms.openlocfilehash: 399c6ef1d14137708ef37d4265517d41432e2dd2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822650"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106499"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować Obsługa sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. Sieć wirtualna jest prywatna sieć w chmurze. Po skonfigurowaniu usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej nie jest adresowany publicznie i może zostać oceniony jedynie z maszyn wirtualnych i aplikacji w ramach sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej dla warstwy premium usługi Azure Cache dla wystąpienia usługi Redis.

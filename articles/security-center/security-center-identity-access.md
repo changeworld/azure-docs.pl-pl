@@ -4,7 +4,7 @@ description: Dowiedz się, jak korzystać z funkcji zarządzania tożsamościami
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 9f04e730-4cfa-4078-8eec-905a443133da
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 01c8f864d25a35d42abcd624e31728f4fee0d80c
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: 845227ea5e32d10eaed555cee80c8fc520a1771a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51012075"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105556"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Monitorowanie tożsamości i dostępu w usłudze Azure Security Center (wersja zapoznawcza)
 Ten artykuł ułatwia korzystanie z usługi Azure Security Center w celu monitorowania tożsamości i dostępu użytkowników.
@@ -47,7 +47,7 @@ Zobacz [zalecenia](security-center-identity-access.md#recommendations) listę za
 ## <a name="monitoring-security-health"></a>Monitorowanie kondycji zabezpieczeń
 Możesz monitorować stan zabezpieczeń zasobów na **Security Center — Przegląd** pulpitu nawigacyjnego. **Zasobów** sekcja jest wskaźnik kondycji przedstawiający ważności dla każdego typu zasobu.
 
-Można wyświetlić listę wszystkich problemów, wybierając **zalecenia**. W obszarze **zasobów**, można wyświetlić listę kwestie związane z obliczeniowe i aplikacje, bezpieczeństwo danych, sieci, lub tożsamość i dostęp. Aby uzyskać więcej informacji na temat stosowania zaleceń, zobacz [wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
+Można wyświetlić listę wszystkich problemów, wybierając **zalecenia**. W obszarze **zasobów**, można wyświetlić listę kwestie związane z obliczeniowe i aplikacje, bezpieczeństwo danych, sieci, lub tożsamość i dostęp. Więcej informacji dotyczących stosowania rekomendacji można znaleźć w temacie [Wdrażanie zaleceń dotyczących zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md).
 
 Aby uzyskać pełną listę zaleceń dotyczących tożsamości i dostępu, zobacz [zalecenia](security-center-identity-access.md#recommendations).
 
@@ -118,7 +118,7 @@ Używany jako odwołanie w tabeli poniżej, aby lepiej zrozumieć dostępne zale
 |Subskrypcja|20|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji|Usuń przestarzałe konta z uprawnieniami właściciela z subskrypcji.|
 |Subskrypcja|5|Usuń przestarzałe konta z subskrypcji|Usuń przestarzałe konta z subskrypcji, aby umożliwić dostęp do tylko bieżąca liczba użytkowników. |
 |Subskrypcja|5|Wyznaczenie więcej niż jednego właściciela subskrypcji|Wyznaczenie więcej niż jednego właściciela subskrypcji w celu posiadania nadmiarowości dostępu administratora.|
-|Subskrypcja|5|Wyznacz maksymalnie 3 właścicieli w ramach subskrypcji|Wyznaczanie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia zabezpieczeń przez właściciela z naruszonymi zabezpieczeniami.|
+|Subskrypcja|5|Wyznacz do 3 właścicieli w swojej subskrypcji|Wyznaczanie mniejszej niż 3 właścicieli subskrypcji, aby zmniejszyć ryzyko naruszenia zabezpieczeń przez właściciela z naruszonymi zabezpieczeniami.|
 |Magazyn kluczy|5|Włączanie dzienników diagnostycznych w usłudze Key Vault|Włączanie dzienników i zachowują je nawet przez rok. Dzięki temu można ponownie utworzyć dzienników aktywności na potrzeby analizy, gdy wystąpi zdarzenie naruszenia zabezpieczeń lub złamania zabezpieczeń sieci. |
 |Subskrypcja|15|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji|Usuń konta zewnętrzne z uprawnieniami do odczytu z subskrypcji, aby uniknąć niemonitorowanego dostępu.|
 |Subskrypcja|1|Podawanie szczegółów dotyczących kontaktu ds. zabezpieczeń|Podaj informacje kontaktowe zabezpieczeń dla każdej subskrypcji. Informacje kontaktowe są e-mail adres i numer telefonu. Informacje są używane z Tobą, jeśli nasz zespół ds. zabezpieczeń wykryje, że Twoje zasoby zostały naruszone.|

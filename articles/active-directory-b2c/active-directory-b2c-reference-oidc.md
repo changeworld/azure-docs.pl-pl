@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39a3164c27fa30250fe08e864db889eac844f646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c27be7da2aceea8581fd4a5baef96103faa0c1d4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173007"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107314"
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Logowanie w sieci Web za pomocą protokołu OpenID Connect
 OpenID Connect to protokół uwierzytelniania, korzystających z protokołu OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników do aplikacji sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) wdrażania protokołu OpenID Connect, można zlecają obsługę tworzenia nowych kont i logowania oraz skuteczniejszego innych zarządzania tożsamościami w aplikacjach sieci web w usłudze Azure Active Directory (Azure AD). Ten przewodnik pokazuje, jak to zrobić w sposób niezależny od języka. Przedstawiono sposób wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek skorzystać z bibliotek typu open source.
@@ -27,7 +27,7 @@ Ponieważ stanowi rozszerzenie protokołu OAuth 2.0, umożliwia ona także aplik
 Usługa Azure AD B2C rozszerza ze standardowego protokołu OpenID Connect, aby zrobić więcej niż proste uwierzytelnianie i autoryzacja. Wprowadza [parametr przepływ użytkownika](active-directory-b2c-reference-policies.md), który pozwala dodać środowisk użytkowników — takich jak za pomocą protokołu OpenID Connect rejestracji, logowania i zarządzania profilami — do swojej aplikacji. W tym miejscu pokazujemy, jak zaimplementuj każdą z tych środowisk w aplikacji sieci web za pomocą protokołu OpenID Connect i użytkownika przepływów. Ponadto pokażemy sposób uzyskiwania tokenów dostępu do uzyskiwania dostępu do interfejsów API sieci web.
 
 Żądania przykład HTTP w następnej sekcji przy użyciu naszej przykładowej katalogu B2C, fabrikamb2c.onmicrosoft.com, a także naszą przykładową aplikacją https://aadb2cplayground.azurewebsites.neti przepływy użytkownika. Możesz wypróbować żądania samodzielnie za pomocą tych wartości, lub można je zastąpić własnymi.
-Dowiedz się, jak [uzyskać własne przepływy dzierżawy, aplikacji i użytkownika B2C](#use-your-own-b2c-directory).
+Dowiedz się, jak [uzyskać własne przepływy dzierżawy, aplikacji i użytkownika B2C](#use-your-own-b2c-tenant).
 
 ## <a name="send-authentication-requests"></a>Wysyłanie żądań uwierzytelniania
 W przypadku aplikacji sieci web wymaga uwierzytelnienia użytkownika i wykonywanie przepływu użytkownika, można je skierować użytkownika `/authorize` punktu końcowego. Jest to interaktywne części przepływu, gdy użytkownik wykona akcję, zależnie od przepływu użytkownika.

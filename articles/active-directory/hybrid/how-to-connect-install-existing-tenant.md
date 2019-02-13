@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: e0e4331b245edcfcbe1529354e605e7505b81268
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6775f6e37a5b282afcfcdce7f93751e852923366
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494973"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168362"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Program Azure AD Connect: Jeśli masz dzierżawę celowe
 Większość tematów w zakresie używania usługi Azure AD Connect przyjęto założenie, rozpoczynać się nowej usługi Azure AD dzierżawy i się, że żadni użytkownicy ani innych obiektów. Ale jeśli rozpoczęto za pomocą dzierżawy usługi Azure AD wypełnić go użytkowników i innych obiektów, a teraz chcesz użyć Connect, a następnie w tym temacie jest dla Ciebie.

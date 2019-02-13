@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: japere
-ms.openlocfilehash: ee2a0b9f731c9fbf7dc2fa248f7b3e9a3de3bc72
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 75570cb289af7c7b718414974e5770f692233758
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963323"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210870"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Problem z instalacją łącznika agenta serwera proxy aplikacji
 

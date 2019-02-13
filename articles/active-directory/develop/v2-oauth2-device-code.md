@@ -17,12 +17,13 @@ ms.date: 10/02/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: df45ec1478314e0d60f2c66a42a48801f1ce0643
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 36b717bfd05a71639c5d1f467af8e9238474160d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093091"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170198"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-device-code-flow"></a>Azure Active Directory w wersji 2.0 i przepływ kodu urządzenia OAuth 2.0
 
@@ -72,13 +73,13 @@ Odpowiedź oznaczająca Powodzenie będzie obiektem JSON zawierającym wymagane 
 
 | Parametr | Format | Opis |
 | ---              | --- | --- |
-|`device_code`     |Ciąg| Długi ciąg używany do sprawdzenia sesji między klientem a serwerem autoryzacji.  To jest używany przez klienta do wysłania żądania tokenu dostępu z serwera autoryzacji. |
-|`user_code`       |Ciąg| Krótkiego ciągu dla użytkownika, używany do identyfikowania sesji na urządzeniach pomocniczych.|
+|`device_code`     |String| Długi ciąg używany do sprawdzenia sesji między klientem a serwerem autoryzacji.  To jest używany przez klienta do wysłania żądania tokenu dostępu z serwera autoryzacji. |
+|`user_code`       |String| Krótkiego ciągu dla użytkownika, używany do identyfikowania sesji na urządzeniach pomocniczych.|
 |`verification_uri`|URI| Identyfikator URI, użytkownik powinien przejdź do widoku `user_code` Aby móc się zalogować. |
 |`verification_uri_complete`|URI| Łączenie URI `user_code` i `verification_uri`, który jest używany do transmisji tekstowej dla użytkownika (na przykład za pośrednictwem połączenia Bluetooth na urządzeniu lub za pomocą kodu QR).  |
 |`expires_in`      |int| Liczba sekund przed `device_code` i `user_code` wygaśnie. |
 |`interval`        |int| Liczba sekund, które klient powinien upłynąć między żądaniami sondowania. |
-| `message`        |Ciąg| Ciąg czytelny dla człowieka z instrukcjami dla użytkownika.  To może być lokalizowana umieszczając **parametr zapytania** w żądaniu formularza `?mkt=xx-XX`, napełniania w kodzie kultury odpowiedni język. |
+| `message`        |String| Ciąg czytelny dla człowieka z instrukcjami dla użytkownika.  To może być lokalizowana umieszczając **parametr zapytania** w żądaniu formularza `?mkt=xx-XX`, napełniania w kodzie kultury odpowiedni język. |
 
 ## <a name="authenticating-the-user"></a>Uwierzytelnianie użytkownika
 
@@ -130,7 +131,7 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 
 | Parametr | Format | Opis |
 | --------- | ------ | ----------- |
-|`token_type` | Ciąg| Zawsze "Bearer. |
+|`token_type` | String| Zawsze "Bearer. |
 |`scope` | Ciągi oddzielone spacjami | Jeśli token dostępu został zwrócony, ta lista zawiera token dostępu jest prawidłowy dla zakresy. |
 |`expires_in`| int | Liczba sekund przed token dostępu dołączony jest prawidłowy dla. |
 |`access_token`| Nieprzezroczysty ciąg | Wystawiony dla [zakresy](v2-permissions-and-consent.md) którego zażądano.  |

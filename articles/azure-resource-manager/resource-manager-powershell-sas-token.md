@@ -14,14 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2017
 ms.author: tomfitz
-ms.openlocfilehash: 0935952011bf4cbcae9bf2e9ac218a9fc3be47ad
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 837effaa2b699d51a420609415396a11a0d9892c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497659"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113213"
 ---
 # <a name="deploy-private-resource-manager-template-with-sas-token-and-azure-powershell"></a>Wdrażanie prywatnego szablonu usługi Resource Manager przy użyciu tokenu sygnatury dostępu Współdzielonego i programu Azure PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Gdy szablon znajduje się na koncie magazynu, można ograniczyć dostęp do szablonu, a także dostarczają token sygnatury (SAS) dostępu współdzielonego podczas wdrażania. W tym temacie wyjaśniono, jak użyć programu Azure PowerShell przy użyciu szablonów usługi Resource Manager, aby zapewnić tokenu sygnatury dostępu Współdzielonego podczas wdrażania. 
 
@@ -45,8 +47,8 @@ New-AzStorageAccount -ResourceGroupName ManageGroup -Name {your-unique-name} -Ty
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name {your-unique-name}
 
 # create a container and upload template
-New-AzureStorageContainer -Name templates -Permission Off
-Set-AzureStorageBlobContent -Container templates -File c:\MyTemplates\storage.json
+New-AzStorageContainer -Name templates -Permission Off
+Set-AzStorageBlobContent -Container templates -File c:\MyTemplates\storage.json
 ```
 
 ## <a name="provide-sas-token-during-deployment"></a>Podaj token sygnatury dostępu Współdzielonego podczas wdrażania
@@ -56,7 +58,7 @@ Aby wdrożyć szablon prywatne w ramach konta magazynu, wygeneruj token sygnatur
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name {your-unique-name}
 
 # get the URI with the SAS token
-$templateuri = New-AzureStorageBlobSASToken -Container templates -Blob storage.json -Permission r `
+$templateuri = New-AzStorageBlobSASToken -Container templates -Blob storage.json -Permission r `
   -ExpiryTime (Get-Date).AddHours(2.0) -FullUri
 
 # provide URI with SAS token during deployment

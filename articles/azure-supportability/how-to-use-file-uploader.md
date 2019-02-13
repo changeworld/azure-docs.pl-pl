@@ -4,7 +4,7 @@ description: Wskazówki, korzystając z nowe żądanie pomocy technicznej przeka
 services: ''
 documentationcenter: ''
 author: genlin
-manager: mbaldwin
+manager: ''
 editor: ''
 tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 015d5bcdb7ab4e4e666471163bb027c74c9bb377
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 949d6b00b4e04921ea745dd4efa1b8a58c49f534
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50418028"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108436"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Przekazywanie plików wskazówki dotyczące narzędzia żądania obsługi nowego Microsoft Azure
 Gdy użytkownik [Utwórz żądanie obsługi](https://portal.azure.com/#create/Microsoft.Support), narzędzie przekazywania plików mogą ułatwić przekazywania plików diagnostycznych lub innych plików, które uważasz za istotne zdarzenia.  
@@ -40,14 +40,14 @@ Za pomocą narzędzia przekazywania plików, należy przestrzegać następujący
 ## <a name="table-of-the-allowed-file-name-extensions"></a>Tabela rozszerzeń nazw plików dozwolonych
 | 0-9, A-C    | D-G   | H-M         | N-P   | R-T      | U-W        | X-Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
-| .7z         | dat  | .hwl        | .odx  | .RAR     | .tdb       | .xlam   |
-| .a          | .db   | ICS        | oft  | RDL     | .tdf       | .xlr    |
-| .abc        | .DMP  | .ini        | .old  | RDLC    | .Text      | xls    |
+| .7z         | .dat  | .hwl        | .odx  | .RAR     | .tdb       | .xlam   |
+| .a          | .db   | ICS        | .oft  | .rdl     | .tdf       | .xlr    |
+| .abc        | .DMP  | .ini        | .old  | .rdlc    | .Text      | xls    |
 | adm.        | .do_  | .java       | one  | .re_     | .thmx      | .xlsb   |
-| .aspx       | doc  | jpg        | .OSD  | reg     | .tif       | .xlsm   |
-| . ATF        | docm | .LDF        | . OUT  | .Remove  | TRC       | .xlsx   |
-| .b          | .docx | .letterhead | .p1   | .Ren     | .TTD       | .xlt    |
-| .ba_        | dotm | .lnk        | .pcap | .rename  | .tx_       | .xltx   |
+| .aspx       | .doc  | jpg        | .osd  | reg     | .tif       | .xlsm   |
+| .ATF        | docm | .LDF        | . OUT  | .Remove  | TRC       | .xlsx   |
+| .b          | .docx | .letterhead | .p1   | .ren     | .TTD       | .xlt    |
+| .ba_        | .dotm | .lnk        | .pcap | .rename  | .tx_       | .xltx   |
 | .bak        | dotx | .lo_        | .pdb  | .rft     | .txt       | .xml    |
 | bat        | .dtsx | .log        | .pdf  | rpt     | .uccapilog | .xmla   |
 | .blg        | .EDS  | lpk        | .piz  | .RTE     | .uccplog   | XPS    |
@@ -55,15 +55,15 @@ Za pomocą narzędzia przekazywania plików, należy przestrzegać następujący
 | .CAB        | .eml  | .Master     | .png  | .Run     | .vb_       | xsn    |
 | Cap        | .emz  | .mdmp       | potx | .saz     | .vbs_      | .xxx    |
 | .catx       | .err —  | .mof        | ppt  | .sql     | .vcf       | .z_     |
-| .CFG        | etl  | .mp3        | .pptm | .sqlplan | VSD       | .z01    |
+| .CFG        | .etl  | .mp3        | .pptm | .sqlplan | VSD       | .z01    |
 | .Compressed | .evt  | .mpg        | .pptx | .stp     | .wdb       | .z02    |
-| . Config     | evtx | .ms_        | prn  | .svclog  | konwersji       | .zi     |
-| .cpk        | . NA PRZYKŁAD   | .msg        | .psf  |   -       | .wma       | .zi_    |
-| .cpp        | .ex_  | .msi        | pst  |  -        | .wmv       | zip    |
-| .CS         | .ex0  | .Mso        | .pub  | -         | .wmz       | .zip_   |
+| . Config     | .evtx | .ms_        | prn  | .svclog  | .wks       | .zi     |
+| .cpk        | .EX   | .msg        | .psf  |   -       | .wma       | .zi_    |
+| .cpp        | .ex_  | .msi        | .pst  |  -        | .wmv       | zip    |
+| .cs         | .ex0  | .mso        | .pub  | -         | .wmz       | .zip_   |
 | .CSV        | .FRD  | .msu        | -      |-          | wps       | .zipp   |
 | .cvr        | .gif  | .nfo        | -      |-          | wpt zostanie zmienione       | .zipped |
-| -            | .GUID | -            | -      | -         | .WSDL      | .zippy  |
+| -            | .GUID | -            | -      | -         | .wsdl      | .zippy  |
 | -            | .gz   | -            | -      | -         | .wsp       | .zipx   |
 | -            | -      | -            | -      | -         | .wtl       | .zit    |
 | -            | -      | -            | -      | -         |     -       | .zix    |

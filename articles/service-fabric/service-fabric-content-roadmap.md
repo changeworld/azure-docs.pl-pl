@@ -14,26 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 58db410fe5a6c2b081507eae2ccad3a258ec0864
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 226fea2df2b4a5d6dd428c1d28d8c09f47bca7de
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52427594"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162292"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Dlatego potrzebujesz więcej informacji na temat usługi Service Fabric?
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych i niezawodnych mikrousług oraz zarządzanie nimi.  Usługa Service Fabric ma dużej powierzchni, jednak i jest dużo, aby dowiedzieć się więcej.  Ten artykuł zawiera streszczenie usługi Service Fabric i w tym artykule opisano podstawowe pojęcia programowania modeli i cyklem życia aplikacji, testowania, klastrów i monitorowanie kondycji. Odczyt [Przegląd](service-fabric-overview.md) i [co to są mikrousługi?](service-fabric-overview-microservices.md) wprowadzenie i jak usługi Service Fabric można utworzyć mikrousługi. Ten artykuł nie zawiera pełną listę zawartości, ale łącze do omówienie i wprowadzenie wprowadzenie artykułów dla każdego obszaru usługi Service Fabric. 
 
 ## <a name="core-concepts"></a>Kluczowe pojęcia
 [Terminologia dotycząca usługi Service Fabric](service-fabric-technical-overview.md), [model aplikacji](service-fabric-application-model.md), i [obsługiwane modele programowania](service-fabric-choose-framework.md) zapewniają więcej pojęć i opisów, ale poniżej przedstawiono podstawowe informacje.
-
-<table><tr><th>Kluczowe pojęcia</th><th>Czas projektowania</th><th>W czasie wykonywania</th></tr>
-<tr><td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
-<img src="./media/service-fabric-content-roadmap/CoreConceptsVid.png" WIDTH="240" HEIGHT="162"></a></td>
-<td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tlkI046yC_2906218965"><img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td>
-<td><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=x7CVH56yC_1406218965">
-<img src="./media/service-fabric-content-roadmap/RunTimeVid.png" WIDTH="240" HEIGHT="162"></a></td></tr>
-</table>
 
 ### <a name="design-time-application-type-service-type-application-package-and-manifest-service-package-and-manifest"></a>Czas projektowania: typ aplikacji, typ usługi, pakiet aplikacji i manifest pakietu usługi i manifestu
 Typ aplikacji jest nazwa/wersja przypisane do kolekcji typów usług. To jest zdefiniowany w *ApplicationManifest.xml* pliku, który jest osadzony w katalogu pakietu aplikacji. Pakiet aplikacji jest następnie kopiowany do magazynu obrazów klastra usługi Service Fabric. Będzie można utworzyć aplikacji o nazwie tego typu aplikacji i następnie uruchamia w klastrze. 
@@ -106,10 +98,6 @@ Zgodnie z innymi platformami aplikacji w usłudze Service Fabric zwykle odbywa s
 
 Cykl życia całej aplikacji mogą być zarządzane przy użyciu [poleceń cmdlet programu PowerShell](/powershell/module/ServiceFabric/), [poleceń interfejsu wiersza polecenia](service-fabric-sfctl.md), [interfejsów API języka C#](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient), [interfejsów API języka Java](/java/api/overview/azure/servicefabric), i [ Interfejsy API REST](/rest/api/servicefabric/). Możesz również skonfigurować ciągłej integracji/ciągłego wdrażania potoki, za pomocą narzędzi takich jak [potoki Azure](service-fabric-set-up-continuous-integration.md) lub [Jenkins](service-fabric-cicd-your-linux-applications-with-jenkins.md).
 
-Poniższy klip wideo Microsoft Virtual Academy opisano sposób zarządzania cyklem życia Twojej aplikacji: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=My3Ka56yC_6106218965">
-<img src="./media/service-fabric-content-roadmap/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
-
 ## <a name="test-applications-and-services"></a>Testowanie aplikacji i usług
 Aby utworzyć naprawdę usług w skali chmury, koniecznie sprawdź, czy aplikacje i usługi może wytrzymać rzeczywiste błędy. Usługa analizy błędów jest przeznaczony do testowania usług, które są wbudowane w usłudze Service Fabric. Za pomocą [usługa analizy błędów](service-fabric-testability-overview.md), można wywołać istotne błędy i uruchamianie scenariuszy ukończenia testowej względem aplikacji. Te błędy i scenariuszy wykonywania i zweryfikować liczne Stany i przejścia, które usługa będzie wystąpić w okresie swojego istnienia, wszystko to w sposób kontrolowany, bezpieczne i zgodne.
 
@@ -129,10 +117,6 @@ Aby utworzyć naprawdę usług w skali chmury, koniecznie sprawdź, czy aplikacj
 [Klaster usługi Service Fabric](service-fabric-deploy-anywhere.md) jest połączonym z siecią zestawem maszyn wirtualnych lub fizycznych, w którym wdraża się mikrousługi i nimi zarządza. Klastry mogą obejmować nawet tysiące maszyn. Komputer lub maszynę Wirtualną, która jest częścią klastra, jest nazywana węzłem klastra. Każdy węzeł ma przypisaną nazwę węzła (ciąg). Węzły mają swoje właściwości — na przykład właściwości dotyczące umieszczania. Każda maszyna lub maszyna wirtualna jest automatycznie uruchamiana usługa `FabricHost.exe`, która zacznie działać po rozruchu, a następnie uruchamia dwa pliki wykonywalne: Fabric.exe i FabricGateway.exe. Te dwa pliki wykonywalne tworzą węzła. W przypadku testowania scenariuszy może obsługiwać wiele węzłów na jednym komputerze lub maszynie Wirtualnej, uruchamiając wiele wystąpień `Fabric.exe` i `FabricGateway.exe`.
 
 Można tworzyć klastry usługi Service Fabric na maszynach wirtualnych lub fizycznych z systemem Windows Server lub Linux. Masz możliwość wdrażania i uruchamiania aplikacji usługi Service Fabric w każdym środowisku, w którym masz zestaw komputerów Windows Server lub Linux, które są połączone ze sobą: w środowisku lokalnym, Microsoft Azure lub wśród dostawców chmury.
-
-Następujące Microsoft Virtual Academy wideo w tym artykule opisano klastrów usługi Service Fabric: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tbuZM46yC_5206218965">
-<img src="./media/service-fabric-content-roadmap/ClusterOverview.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="clusters-on-azure"></a>Klastry na platformie Azure
 Z klastrami usługi Service Fabric na platformie Azure zapewnia integrację z innych funkcji platformy Azure i usług, co sprawia, że operacje i zarządzania klastrem łatwiejsze i bardziej niezawodne. Klaster jest zasobem usługi Azure Resource Manager, więc umożliwia modelowanie klastrów, takich jak wszystkich innych zasobów na platformie Azure. Resource Manager umożliwia również łatwe zarządzanie wszelkie zasoby używane przez klaster jako pojedyncza jednostka. Klastry na platformie Azure są zintegrowane z diagnostyki platformy Azure i usługi Log Analytics. Typy węzłów klastra są [zestawy skalowania maszyn wirtualnych](/azure/virtual-machine-scale-sets/index), więc jest wbudowane funkcje automatycznego skalowania.
@@ -187,10 +171,6 @@ Usługa Service Fabric udostępnia wiele sposobów, aby [wyświetlanie raportów
 * [Narzędzie Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) lub innych narzędzi do wizualizacji.
 * Zapytania o kondycję (za pośrednictwem [PowerShell](/powershell/module/ServiceFabric/), [interfejsu wiersza polecenia](service-fabric-sfctl.md), [C# interfejsy API FabricClient](/dotnet/api/system.fabric.fabricclient.healthclient) i [Java interfejsy API FabricClient](/java/api/system.fabric), lub [REST Interfejsy API](/rest/api/servicefabric)).
 * Ogólne kwerendy oznacza zwracaną listę obiektów, które mają kondycji jako jedna z właściwości (przy użyciu programu PowerShell, interfejsu wiersza polecenia, interfejsy API lub REST).
-
-Poniższy klip wideo Microsoft Virtual Academy w tym artykule opisano model kondycji usługi Service Fabric i sposobie ich użycia: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-content-roadmap/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ## <a name="monitoring-and-diagnostics"></a>Monitorowanie i diagnostyka
 [Monitorowanie i Diagnostyka](service-fabric-diagnostics-overview.md) mają kluczowe znaczenie dla programowania, testowania i wdrażania aplikacji i usług w każdym środowisku. Rozwiązania usługi Service Fabric działają najlepiej, podczas planowania i implementacji, monitorowania i diagnostyki, które pomagają upewnić się, aplikacje i usługi działają zgodnie z oczekiwaniami w środowisku programowania lokalnego lub w środowisku produkcyjnym.

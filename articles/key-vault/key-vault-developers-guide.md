@@ -2,19 +2,19 @@
 title: Przewodnik dewelopera usługi Azure Key Vault
 description: Deweloperzy mogą używać usługi Azure Key Vault do zarządzania kluczami kryptograficznymi w środowisku Microsoft Azure.
 services: key-vault
-author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/05/2018
-ms.author: bryanla
-ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 02/11/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 274ba6d6a1ce2e9c8f2cae0ca29de8442525391e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237540"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106491"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera usługi Azure Key Vault
 
@@ -23,7 +23,7 @@ Usługa Key Vault umożliwia bezpieczny dostęp do poufnych informacji z poziomu
 - Klucze i wpisy tajne, które są chronione bez konieczności pisania kodu, samodzielnie i łatwo można z nich korzystać z aplikacji.
 - Mogą mieć własne klientów i zarządzanie nimi własne klucze, dzięki czemu możesz skoncentrować się na dostarczaniu podstawowych funkcji oprogramowania. W ten sposób aplikacje nie będą właścicielami ponosić odpowiedzialności ani mieć potencjalnych problemów względem klientów dzierżawy kluczy i wpisów tajnych.
 - Aplikacja może używać kluczy do podpisywania i szyfrowania jeszcze bardziej zarządzania kluczami zewnętrznych z aplikacji, dzięki czemu Twoje rozwiązanie jest odpowiednie, jako aplikacja rozproszona geograficznie.
-- Począwszy od września 2016 r. wersję usługi Key Vault aplikacji mogą teraz zarządzać certyfikatami usługi Key Vault. Aby uzyskać więcej informacji, zobacz [o kluczy, wpisów tajnych i certyfikatów](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates).
+- Począwszy od września 2016 r. wersję usługi Key Vault aplikacji mogą teraz zarządzać certyfikatami usługi Key Vault. Aby uzyskać więcej informacji, zobacz [o kluczy, wpisów tajnych i certyfikatów](/rest/api/keyvault/about-keys--secrets-and-certificates).
 
 Aby uzyskać bardziej ogólne informacje na temat usługi Azure Key Vault, zobacz [co to jest usługa Key Vault](key-vault-whatis.md).
 
@@ -36,7 +36,7 @@ Okresowo wydaniu publiczną wersję zapoznawczą nowej funkcji usługi Key Vault
 >[!NOTE]
 >Dla tej aktualizacji usługi Azure Key Vault tylko **kluczy konta magazynu** funkcja jest dostępna w wersji zapoznawczej.
 
-Ta wersja zapoznawcza zawiera naszej nowej kluczy konta magazynu funkcji, dostępne za pośrednictwem tych interfejsów; [.NET / C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/), [REST](https://docs.microsoft.com/rest/api/keyvault/) i [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/). 
+Ta wersja zapoznawcza zawiera naszej nowej kluczy konta magazynu funkcji, dostępne za pośrednictwem tych interfejsów; [.NET / C#](/dotnet/api/microsoft.azure.keyvault/), [REST](/rest/api/keyvault/) i [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
 
 Aby uzyskać więcej informacji na temat nowych funkcji kluczy konta magazynu, zobacz [omówienie kluczy konta magazynu usługi Azure Key Vault](key-vault-ovw-storage-keys.md).
 
@@ -55,19 +55,19 @@ Zasoby w powyższym wideo:
 
 Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. Zarządzanych tożsamości dla zasobów platformy Azure sprawia, że rozwiązywania tego problemu, prostsze, zapewniając tożsamości automatycznie zarządzanych usług platformy Azure w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie. 
 
-Aby uzyskać więcej informacji na temat zarządzanych tożsamości dla zasobów platformy Azure, zobacz [Przegląd zarządzanych tożsamości](../active-directory/managed-identities-azure-resources/overview.md). Aby uzyskać więcej informacji na temat pracy z usługą AAD, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
+Aby uzyskać więcej informacji na temat zarządzanych tożsamości dla zasobów platformy Azure, zobacz [Przegląd zarządzanych tożsamości](../active-directory/managed-identities-azure-resources/overview.md). Aby uzyskać więcej informacji na temat pracy z usługą AAD, zobacz [Integrowanie aplikacji z usługą Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
 
 Przed rozpoczęciem pracy z kluczy, wpisów tajnych lub certyfikatów w magazynie kluczy, możesz utworzyć i zarządzania magazynem kluczy przy użyciu interfejsu wiersza polecenia, programu PowerShell, szablony usługi Resource Manager lub REST, zgodnie z opisem w następujących artykułach:
 
 - [Tworzenie i zarządzanie nimi Key Vault z interfejsem wiersza polecenia](key-vault-manage-with-cli2.md)
-- [Tworzenie i zarządzanie nimi Key Vault przy użyciu programu PowerShell](key-vault-get-started.md)
+- [Tworzenie i zarządzanie nimi Key Vault przy użyciu programu PowerShell](key-vault-overview.md)
 - [Tworzenie magazynu kluczy i dodać wpis tajny przy użyciu szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-manager-template-keyvault.md)
-- [Tworzenie i zarządzanie nimi Key Vault za pomocą architektury REST](https://docs.microsoft.com/rest/api/keyvault/)
+- [Tworzenie i zarządzanie nimi Key Vault za pomocą architektury REST](/rest/api/keyvault/)
 
 
 ## <a name="coding-with-key-vault"></a>Kodowanie za pomocą usługi Key Vault
 
-System zarządzania usługi Key Vault dla programistów składa się z kilku interfejsów. Ta sekcja zawiera linki do wszystkich języków, a także niektóre exampls kodu. 
+System zarządzania usługi Key Vault dla programistów składa się z kilku interfejsów. Ta sekcja zawiera linki do wszystkich języków, a także kilka przykładów kodu. 
 
 ### <a name="supported-programming-and-scripting-languages"></a>Obsługiwanych językach programowania i skryptów
 
@@ -75,35 +75,35 @@ System zarządzania usługi Key Vault dla programistów składa się z kilku int
 
 Wszystkie zasoby usługi Key Vault są dostępne za pośrednictwem interfejsu REST; magazyny kluczy, wpisów tajnych, itp. 
 
-[Dokumentacja interfejsu API REST magazynu kluczy](https://docs.microsoft.com/rest/api/keyvault/). 
+[Dokumentacja interfejsu API REST magazynu kluczy](/rest/api/keyvault/).
 
 #### <a name="net"></a>.NET
 
-[Porządkowy interfejsu API platformy .NET dla usługi Key Vault](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault) 
+[Dokumentacja interfejsu API .NET usługi Key Vault](/dotnet/api/microsoft.azure.keyvault).
 
 Aby uzyskać więcej informacji na temat zestawu SDK programu .NET w wersji 2.x, zobacz [informacje o wersji](key-vault-dotnet2api-release-notes.md).
 
 #### <a name="java"></a>Java
 
-[Java SDK dla usługi Key Vault](https://docs.microsoft.com/java/api/overview/azure/keyvault)
+[Java SDK dla usługi Key Vault](/java/api/overview/azure/keyvault)
 
 #### <a name="nodejs"></a>Node.js
 
 W języku Node.js interfejs API zarządzania usługi Key Vault i interfejsu API obiektu usługi Key Vault są oddzielone. Poniższy artykuł z omówieniem daje dostęp do obu. 
 
-[Moduły platformy Azure Key Vault dla środowiska Node.js](https://docs.microsoft.com/nodejs/api/overview/azure/key-vault)
+[Moduły platformy Azure Key Vault dla środowiska Node.js](/nodejs/api/overview/azure/key-vault)
 
 #### <a name="python"></a>Python
 
-[Biblioteki usługi Azure Key Vault dla języka Python](https://docs.microsoft.com/python/api/overview/azure/key-vault)
+[Biblioteki usługi Azure Key Vault dla języka Python](/python/api/overview/azure/key-vault)
 
 #### <a name="azure-cli-2"></a>Interfejs wiersza polecenia platformy Azure 2
 
-[Wiersza polecenia platformy Azure dla usługi Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+[Wiersza polecenia platformy Azure dla usługi Key Vault](/cli/azure/keyvault)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 
-[Program Azure PowerShell dla usługi Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault)
+[Program Azure PowerShell dla usługi Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
 ### <a name="quick-start-guides"></a>Przewodniki Szybki start
 
@@ -139,7 +139,7 @@ Następujące artykuły i scenariusze zawierają ze wskazówek specyficznych dla
 Te artykuły są dotyczących innych scenariuszy lub usług, które używane lub zintegrować z usługą Key Vault.
 
 - [Usługa Azure Disk Encryption](../security/azure-security-disk-encryption.md) wykorzystuje będące standardami branżowymi [funkcji BitLocker](https://technet.microsoft.com/library/cc732774.aspx) funkcja systemu Windows i [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkcji systemu Linux, aby zapewnić szyfrowanie woluminów systemu operacyjnego i dysków z danymi. Rozwiązanie jest zintegrowana z usługą Azure Key Vault ułatwia kontrolowanie oraz zarządzanie tymi wpisami tajnymi w ramach subskrypcji usługi key vault, przy jednoczesnym zapewnieniu, że wszystkie dane na dyskach maszyn wirtualnych są szyfrowane, gdy w usłudze Azure storage i kluczami szyfrowania dysków.
-- [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) udostępniana opcja szyfrowania danych przechowywanych na koncie. Do zarządzania kluczami Data Lake Store udostępnia dwa tryby zarządzania kluczami szyfrowania głównego (głównymi kluczami szyfrowania), które są wymagane w celu odszyfrowania żadnych danych, która jest przechowywana w Data Lake Store. Można albo pozwolić Data Lake Store zarządzania głównymi kluczami szyfrowania lub zachowanych własności głównymi kluczami szyfrowania za pomocą konta usługi Azure Key Vault. Tryb zarządzania kluczami należy określić podczas tworzenia konta Data Lake Store. 
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) udostępniana opcja szyfrowania danych przechowywanych na koncie. Do zarządzania kluczami Data Lake Store udostępnia dwa tryby zarządzania kluczami szyfrowania głównego (głównymi kluczami szyfrowania), które są wymagane w celu odszyfrowania żadnych danych, która jest przechowywana w Data Lake Store. Można albo pozwolić Data Lake Store zarządzania głównymi kluczami szyfrowania lub zachowanych własności głównymi kluczami szyfrowania za pomocą konta usługi Azure Key Vault. Tryb zarządzania kluczami należy określić podczas tworzenia konta Data Lake Store.
 - [Usługa Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) pozwala na Menedżera własnym kluczem dzierżawy. Na przykład firma Microsoft zarządza kluczem dzierżawy (opcja domyślna), można zarządzać własnym kluczem dzierżawy w celu zachowania zgodności z konkretnymi przepisami mającymi zastosowanie w danej organizacji. Zarządzanie własnym kluczem dzierżawy jest również określany jako bring własnego klucza — byok.
 
 ## <a name="key-vault-overviews-and-concepts"></a>Omówienie usługi Key Vault i pojęcia
@@ -158,5 +158,3 @@ Te artykuły są dotyczących innych scenariuszy lub usług, które używane lub
 
 - [Microsoft Azure klucza magazynu podstawowej biblioteki](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) zapewnia **IKey** i **IKeyResolver** interfejsy do lokalizowania kluczy z identyfikatorów i wykonywanie operacji za pomocą kluczy.
 - [Rozszerzeń platformy Microsoft Azure Key Vault](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) zapewnia rozszerzone możliwości usługi Azure Key Vault.
-
-

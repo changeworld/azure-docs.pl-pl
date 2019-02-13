@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2017
 ms.author: jeedes
-ms.openlocfilehash: 5cc6873ff1c823aad5165c89572c7a9f50e30e1c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e5b1fa6284979a8c0bd0698f85b119117dd27a05
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55204137"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kudos"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą pochwałę
 
@@ -115,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<company>.kudosnow.com`
     
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pochwałę](http://success.kudosnow.com/home) aby zyskać tę wartość. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pochwałę](http://success.kudosnow.com/home) aby zyskać tę wartość. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
@@ -131,7 +132,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy pochwałę, jako administrator.
 
-1. W menu u góry kliknij **ustawienia**.
+1. W menu u góry kliknij pozycję **Settings** (Ustawienia).
    
     ![Ustawienia](./media/kudos-tutorial/ic787806.png "Ustawienia")
 
@@ -196,7 +197,7 @@ W przypadku pochwałę Inicjowanie obsługi administracyjnej jest zadanie ręczn
 
 1. Zaloguj się do Twojej **pochwałę** witryny firmy jako administrator.
 
-1. W menu u góry kliknij **ustawienia**.
+1. W menu u góry kliknij pozycję **Settings** (Ustawienia).
    
    ![Ustawienia](./media/kudos-tutorial/ic787806.png "Ustawienia")
 

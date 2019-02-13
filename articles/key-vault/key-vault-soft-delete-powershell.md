@@ -2,17 +2,17 @@
 title: Usługa Azure Key Vault — jak używać usuwania nietrwałego za pomocą programu PowerShell
 description: Wielkość przykłady usuwania nietrwałego za pomocą wycinki kodu programu PowerShell
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: bryanla
-ms.openlocfilehash: 48c471e17fb28843bf61f1591faafc119eb8dec8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 70437403d3b78b7f8b9eef921c933a68793450da
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002339"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113587"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Jak używać usuwania nietrwałego w usłudze Key Vault przy użyciu programu PowerShell
 
@@ -236,5 +236,5 @@ Wyświetlanie listy obiektów usuniętych usługi key vault pokazuje również, 
 ## <a name="other-resources"></a>Inne zasoby
 
 - Aby uzyskać omówienie funkcji usuwania nietrwałego w usłudze Key Vault, zobacz [omówienie usuwania nietrwałego w usłudze Azure Key Vault](key-vault-ovw-soft-delete.md).
-- Aby uzyskać ogólne omówienie użycia usługi Azure Key Vault, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md).
+- Aby uzyskać ogólne omówienie użycia usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md).
 

@@ -8,30 +8,32 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 12/06/2018
-ms.openlocfilehash: 31f3cf9bd8f83c5da32569ed370de1ed35299749
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.date: 02/12/2019
+ms.openlocfilehash: 8d7fc6d8f581c3ad0e0f3266ea615acadcb7bc25
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062387"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176207"
 ---
-# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-through-an-integration-service-environment-ise"></a>Połączyć się z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps za pośrednictwem środowiska usług integracji (ISE)
+# <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Łączenie z sieciami wirtualnymi platformy Azure z usługi Azure Logic Apps, za pomocą środowiska usługi integracji (ISE)
 
 > [!NOTE]
-> Ta funkcja jest w *prywatnej wersji zapoznawczej*. Aby zażądać dostępu, [utworzyć Twoje żądanie dołączenia do tutaj](https://aka.ms/iseprivatepreview).
+> Ta funkcja jest w *prywatnej wersji zapoznawczej*. Do dołączenia do prywatnej wersji zapoznawczej [tworzenia żądania w tym miejscu](https://aka.ms/iseprivatepreview).
 
-W scenariuszach, w której muszą mieć dostęp do usługi logic apps i kont integracji [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE jest prywatne i izolowanym środowisku, używającej dedykowanego magazynu i inne zasoby oddzielone z usługi Logic Apps publicznej lub "global". Ta separacja zmniejsza żadnego wpływu, której innych dzierżaw usługi Azure może występować na wydajność Twojej aplikacji. Twoje ISE jest *wprowadzony* w sieci wirtualnej platformy Azure, który następnie wdraża usługę Logic Apps do sieci wirtualnej. Podczas tworzenia konta aplikacji lub Integracja z usługą Logic Apps, wybierz ten ISE ich lokalizacji. Twoje konto aplikacji lub Integracja z usługą Logic Apps mogą uzyskiwać bezpośrednio dostęp do zasobów, takich jak maszyny wirtualne (VM), serwery, systemów i usług w Twojej sieci wirtualnej. 
+W scenariuszach, w której muszą mieć dostęp do usługi logic apps i kont integracji [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md), Utwórz [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE jest prywatne i izolowanym środowisku, używającej dedykowanego magazynu i inne zasoby oddzielone z usługi Logic Apps publicznej lub "global". Ta separacja zmniejsza żadnego wpływu, której innych dzierżaw usługi Azure może występować na wydajność Twojej aplikacji. Twoje ISE jest *wprowadzony* w sieci wirtualnej platformy Azure, który następnie wdraża usługę Logic Apps do sieci wirtualnej. Podczas tworzenia konta aplikacji lub Integracja z usługą Logic Apps, wybierz ten ISE ich lokalizacji. Twoje konto aplikacji lub Integracja z usługą Logic Apps mogą uzyskiwać bezpośrednio dostęp do zasobów, takich jak maszyny wirtualne (VM), serwery, systemów i usług w Twojej sieci wirtualnej.
 
 ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment/select-logic-app-integration-service-environment.png)
 
 W tym artykule przedstawiono sposób wykonania następujących zadań:
 
+* Konfigurowanie portów w sieci wirtualnej platformy Azure umożliwiające ruchu mogą być przesyłane za pośrednictwem środowiska integration service environment (ISE) między podsieciami w sieci wirtualnej.
+
 * Umożliwia skonfigurowanie uprawnień w sieci wirtualnej platformy Azure, aby wystąpieniem prywatnym Logic Apps może uzyskiwać dostęp do sieci wirtualnej.
 
-* Tworzenie środowiska integration service environment (ISE). 
+* Tworzenie środowiska integration service environment (ISE).
 
-* Tworzenie aplikacji logiki, które mogą być uruchamiane w swoje środowiska ISE. 
+* Tworzenie aplikacji logiki, które mogą być uruchamiane w swoje środowiska ISE.
 
 * Tworzenie konta integracji aplikacji logiki w swoje środowiska ISE.
 
@@ -39,16 +41,40 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>. 
+* Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, <a href="https://azure.microsoft.com/free/" target="_blank">zarejestruj się w celu założenia bezpłatnego konta platformy Azure</a>.
 
   > [!IMPORTANT]
   > Logic apps, wbudowanych akcji i łączników, działających w Twojej platformy ISE przy użyciu innego planu cen nie na podstawie użycia planu cenowego zawiera. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](../logic-apps/logic-apps-pricing.md).
 
-* [Sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli nie masz sieci wirtualnej, Dowiedz się, jak [tworzenie sieci wirtualnej platformy Azure](../virtual-network/quick-create-portal.md). 
+* [Sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Jeśli nie masz sieci wirtualnej, Dowiedz się, jak [tworzenie sieci wirtualnej platformy Azure](../virtual-network/quick-create-portal.md). Należy również podsieci w sieci wirtualnej do wdrażania Twojego środowiska ISE. Możesz utworzyć te podsieci z wyprzedzeniem lub poczekaj, aż Utwórz swoje środowiska ISE, gdzie można utworzyć podsieci, w tym samym czasie. Ponadto [upewnij się, Twoja sieć wirtualna sprawia, że te porty są dostępne](#ports) swoje ISE działa poprawnie i pozostaje dostępna.
 
-* Zostać zapewniony bezpośredni dostęp do sieci wirtualnej platformy Azure, aplikacje logiki [skonfigurowanie uprawnień kontroli dostępu opartej na rolach (RBAC)](#vnet-access) dzięki usłudze Logic Apps ma uprawnienia do uzyskiwania dostępu do sieci wirtualnej. 
+* Zostać zapewniony bezpośredni dostęp do sieci wirtualnej platformy Azure, aplikacje logiki [skonfigurowanie uprawnień kontroli dostępu opartej na rolach (RBAC) w sieci](#vnet-access) dzięki usłudze Logic Apps ma uprawnienia do uzyskiwania dostępu do sieci wirtualnej.
+
+* Na potrzeby wdrażania w sieci wirtualnej platformy Azure co najmniej jeden niestandardowe serwery DNS [Konfigurowanie tych serwerów następujące wskazówki te](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) przed wdrożeniem usługi ISE z siecią wirtualną. W przeciwnym razie po każdej zmianie serwera DNS, musisz też ponowne uruchomienie usługi ISE, co jest to funkcja, która jest dostępna w publicznej wersji zapoznawczej środowiska ISE.
 
 * Podstawową wiedzę na temat o [sposób tworzenia aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+
+<a name="ports"></a>
+
+## <a name="set-up-network-ports"></a>Konfigurowanie portów sieciowych
+
+Aby działać poprawnie i pozostają dostępne, środowiska integration service environment (ISE) musi mieć określone porty dostępne w sieci wirtualnej. W przeciwnym razie jeśli którekolwiek z tych portów są niedostępne, mogą utracić dostęp do ISE może spowodować nieoczekiwane zatrzymanie. Gdy używasz środowiska ISE w sieci wirtualnej powszechny problem konfiguracji ma co najmniej jeden port blokowania. W przypadku połączeń między swoje ISE i systemu docelowego łącznik, którego używasz, że własne wymagania dotyczące portów. Na przykład jeśli komunikować się z systemem FTP za pomocą łącznika usługi FTP, upewnij się, port, z którego korzystasz na dostępnej systemu FTP, takich jak port 21 do wysyłania poleceń.
+
+Aby kontrolować ruch przychodzący i wychodzący między podsieciami sieci wirtualnej, w którym wdrożyć swoje ISE, można skonfigurować [sieciowe grupy zabezpieczeń](../virtual-network/security-overview.md) dla tych podsieci ucząc [jak filtrowanie ruchu sieciowego między podsieci](../virtual-network/tutorial-filter-network-traffic.md). Te tabele zawierają opis portów w sieci wirtualnej korzystającej z ISE i Pobierz użycia tych portów. Gwiazdka (*) reprezentuje źródła wszystkie ruchu. [Tag usługi](../virtual-network/security-overview.md#service-tags) reprezentuje grupę prefiksów adresów IP, które zminimalizować złożoność podczas tworzenia reguł zabezpieczeń.
+
+| Przeznaczenie | Kierunek | Port źródłowy <br>Port docelowy | Tag usługi źródłowej <br>Docelowy tag usługi |
+|---------|-----------|---------------------------------|-----------------------------------------------|
+| Komunikacja z usługi Azure Logic Apps <br>Komunikacja z usługi Azure Logic Apps | Przychodzący <br>Wychodzący | * <br>80 & 443 | INTERNET <br>VIRTUAL_NETWORK |
+| Usługa Azure Active Directory | Wychodzący | * <br>80 & 443 | VIRTUAL_NETWORK <br>AzureActiveDirectory |
+| Zależności usługi Azure Storage | Wychodzący | * <br>80 & 443 | VIRTUAL_NETWORK <br>Magazyn |
+| Zarządzanie połączeniami | Wychodzący | * <br>443 | VIRTUAL_NETWORK <br>INTERNET |
+| Publikowanie dzienniki diagnostyczne i metryki | Wychodzący | * <br>443 | VIRTUAL_NETWORK <br>AzureMonitor |
+| Projektant aplikacji logiki — właściwości dynamiczne <br>Twoja aplikacja logiki, historii uruchamiania <br>Wdrażanie łącznika <br>Punkt końcowy wyzwalacza żądania | Przychodzący | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
+| App Service Management zależności | Przychodzący | * <br>454 & 455 | AppServiceManagement <br>VIRTUAL_NETWORK |
+| API Management — punkt końcowy zarządzania | Przychodzący | * <br>3443 | APIManagement <br>VIRTUAL_NETWORK |
+| Zależność od dziennika do zasad Centrum zdarzeń i agenta monitorowania | Wychodzący | * <br>5672 | VIRTUAL_NETWORK <br>EventHub |
+| Uzyskiwanie dostępu do usługi Azure Cache dla wystąpienia usługi Redis między wystąpieniami roli | Przychodzący <br>Wychodzący | * <br>6381-6383 | VIRTUAL_NETWORK <br>VIRTUAL_NETWORK |
+|||||
 
 <a name="vnet-access"></a>
 
@@ -56,27 +82,27 @@ Aby uzyskać więcej informacji na temat środowisk usługi integracji, zobacz [
 
 Podczas tworzenia środowiska usług integracji (ISE) wybierzesz siecią wirtualną platformy Azure, gdzie możesz *wstrzyknąć* środowiska. Jednak aby można było wybrać sieć wirtualną wstrzykiwania środowiska, można ustawić uprawnień kontroli dostępu opartej na rolach (RBAC) w sieci wirtualnej. Aby skonfigurować uprawnienia, Przypisz te określone role w usłudze Azure Logic Apps:
 
-1. W [witryny Azure portal](https://portal.azure.com), Znajdź i wybierz sieć wirtualną. 
+1. W [witryny Azure portal](https://portal.azure.com), Znajdź i wybierz sieć wirtualną.
 
-1. Sieci wirtualnej menu wybierz kolejno pozycje **kontrola dostępu (IAM)**. 
+1. Sieci wirtualnej menu wybierz kolejno pozycje **kontrola dostępu (IAM)**.
 
-1. W obszarze **kontrola dostępu (IAM)**, wybierz **Dodaj przypisanie roli**. 
+1. W obszarze **kontrola dostępu (IAM)**, wybierz **Dodaj przypisanie roli**.
 
    ![Dodawanie ról](./media/connect-virtual-network-vnet-isolated-environment/set-up-role-based-access-control-vnet.png)
 
-1. Na **Dodaj przypisanie roli** okienko, Dodaj wymagane role w usłudze Azure Logic Apps, zgodnie z opisem. 
+1. Na **Dodaj przypisanie roli** okienko, Dodaj wymagane role w usłudze Azure Logic Apps, zgodnie z opisem.
 
-   1. W obszarze **roli**, wybierz opcję **Współautor sieci**. 
-   
+   1. W obszarze **roli**, wybierz opcję **Współautor sieci**.
+
    1. W obszarze **Przypisz dostęp do**, wybierz opcję **użytkownika, grupy lub jednostki usługi Azure AD**.
 
-   1. W obszarze **wybierz**, wprowadź **usługi Azure Logic Apps**. 
+   1. W obszarze **wybierz**, wprowadź **usługi Azure Logic Apps**.
 
-   1. Po wyświetleniu listy elementów członkowskich, wybierz **usługi Azure Logic Apps**. 
+   1. Po wyświetleniu listy elementów członkowskich, wybierz **usługi Azure Logic Apps**.
 
       > [!TIP]
-      > Jeśli nie możesz znaleźć tę usługę, wprowadź identyfikator aplikacji usługi Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba` 
-   
+      > Jeśli nie możesz znaleźć tę usługę, wprowadź identyfikator aplikacji usługi Logic Apps: `7cd684f4-8a78-49b0-91ec-6a35d38739ba`
+
    1. Gdy wszystko będzie gotowe, wybierz pozycję **Zapisz**.
 
    Na przykład:
@@ -106,15 +132,15 @@ Wybierz z listy wyników **środowisko usługi integracji (wersja zapoznawcza)**
 
    ![Podaj szczegóły środowiska](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Właściwość | Wymagany | Wartość | Opis |
+   | Właściwość | Wymagany | Value | Opis |
    |----------|----------|-------|-------------|
-   | **Subskrypcja** | Yes | <*Azure-subscription-name*> | Subskrypcji platformy Azure do użycia w danym środowisku | 
-   | **Grupa zasobów** | Yes | <*Azure-resource nazwa_grupy*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
-   | **Nazwa środowiska usługi integracji** | Yes | <*Nazwa środowiska*> | Nazwa do nadania środowiska | 
-   | **Lokalizacja** | Yes | <*Region platformy Azure — centrum danych*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska | 
-   | **Dodatkowe możliwości obliczeniowe** | Yes | 0, 1, 2, 3 | Liczba jednostek przetwarzania do użycia dla tego zasobu środowiska ISE | 
-   | **Sieć wirtualna** | Yes | <*Azure — — nazwa sieci wirtualnej —*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, można utworzyć jeden tutaj. <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. Jednakże przed utworzeniem tej relacji, upewnij się, że już [Konfigurowanie kontroli dostępu opartej na rolach w Twojej sieci wirtualnej dla usługi Azure Logic Apps](#vnet-access). | 
-   | **Podsieci** | Yes | <*podsieć resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Dlatego upewnij się, te podsieci *nie są delegowane* do każdej usługi. Możesz *nie można zmienić* tych adresów podsieci po utworzeniu środowiska. <p><p>Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet). Każda podsieć musi spełniać następujące kryteria: <p>-Musi być pusta. <br>-Używa nazwy, która nie zaczyna się od numeru lub łącznik. <br>— Wykorzystanie [formatu Bezklasowego routingu międzydomenowego (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) i przestrzeń adresów klasy B. <br>-Zawiera co najmniej jeden `/27` przestrzeni adresowej, aby podsieć pobiera co najmniej 32 adresów. Aby dowiedzieć się więcej na temat obliczania liczby adresów, zobacz [bloków IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Na przykład: <p>- `10.0.0.0/24` ma 256 adresów, ponieważ 2<sup>(32-24)</sup> 2<sup>8</sup> lub 256. <br>- `10.0.0.0/27` zawiera 32 adresów, ponieważ 2<sup>(32-27)</sup> 2<sup>5</sup> lub 32. <br>- `10.0.0.0/28` ma tylko 16 adresów, ponieważ 2<sup>(32-28)</sup> 2<sup>4</sup> lub 16. |
+   | **Subskrypcja** | Yes | <*Azure-subscription-name*> | Subskrypcji platformy Azure do użycia w danym środowisku |
+   | **Grupa zasobów** | Yes | <*Azure-resource-group-name*> | Grupa zasobów platformy Azure, w którym chcesz utworzyć swoje środowisko |
+   | **Nazwa środowiska usługi integracji** | Yes | <*Nazwa środowiska*> | Nazwa do nadania środowiska |
+   | **Lokalizacja** | Yes | <*Azure-datacenter-region*> | Region centrum danych platformy Azure miejsca wdrożenia środowiska |
+   | **Dodatkowe możliwości obliczeniowe** | Yes | 0, 1, 2, 3 | Liczba jednostek przetwarzania do użycia dla tego zasobu środowiska ISE |
+   | **Sieć wirtualna** | Yes | <*Azure-virtual-network-name*> | Azure sieci wirtualnej, której chcesz wstawić środowiska, dzięki czemu aplikacje logiki w tym środowisku mają dostęp do sieci wirtualnej. Jeśli nie masz sieci, można utworzyć jeden tutaj. <p>**Ważne**: Możesz *tylko* wykonywać takie działanie, podczas tworzenia usługi ISE. Jednakże przed utworzeniem tej relacji, upewnij się, że już [Konfigurowanie kontroli dostępu opartej na rolach w Twojej sieci wirtualnej dla usługi Azure Logic Apps](#vnet-access). |
+   | **Podsieci** | Yes | <*subnet-resource-list*> | ISE wymaga czterech *pusty* podsieci w celu tworzenia zasobów w danym środowisku. Dlatego upewnij się, te podsieci *nie są delegowane* do każdej usługi. Możesz *nie można zmienić* tych adresów podsieci po utworzeniu środowiska. <p><p>Do tworzenia każdej podsieci [wykonaj czynności opisane w tej tabeli](#create-subnet). Każda podsieć musi spełniać następujące kryteria: <p>-Musi być pusta. <br>-Używa nazwy, która nie zaczyna się od numeru lub łącznik. <br>— Wykorzystanie [formatu Bezklasowego routingu międzydomenowego (CIDR)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) i przestrzeń adresów klasy B. <br>-Zawiera co najmniej jeden `/27` przestrzeni adresowej, aby podsieć pobiera co najmniej 32 adresów. Aby dowiedzieć się więcej na temat obliczania liczby adresów, zobacz [bloków IPv4 CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks). Na przykład: <p>- `10.0.0.0/24` ma 256 adresów, ponieważ 2<sup>(32-24)</sup> 2<sup>8</sup> lub 256. <br>- `10.0.0.0/27` zawiera 32 adresów, ponieważ 2<sup>(32-27)</sup> 2<sup>5</sup> lub 32. <br>- `10.0.0.0/28` ma tylko 16 adresów, ponieważ 2<sup>(32-28)</sup> 2<sup>4</sup> lub 16. |
    |||||
 
    <a name="create-subnet"></a>

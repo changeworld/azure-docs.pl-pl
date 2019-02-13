@@ -4,7 +4,7 @@ description: Ten artykuł zawiera omówienie kwestii bezpieczeństwa działania 
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238543"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116477"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie kwestii bezpieczeństwa działania platformy Azure
 
@@ -139,15 +139,15 @@ Usługa Network Watcher ułatwia monitorowanie i diagnozowanie sieci platformy A
 
 Usługa Network Watcher jest obecnie ma następujące możliwości:
 
-- [Topologia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): zapewnia wgląd w różnych połączeń i skojarzenia między zasobami sieci w grupie zasobów.
-- [Przechwytywanie pakietów zmiennych](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): przechwytuje pakietów danych do i z maszyny wirtualnej. Bardzo przydatne są zaawansowane opcje filtrowania i dostosowywania ustawień, takie jak określanie czasu i limitów rozmiaru. Dane pakietu mogą być przechowywane w magazynie obiektów blob lub na dysku lokalnym w formacie .cap.
-- [Weryfikowanie przepływu protokołu IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): sprawdza, czy pakiet jest dozwolony lub zablokowany na podstawie 5-elementowe spójne kolekcje pakietów parametrów dla informacji o przepływie (docelowy adres IP, źródłowy adres IP, port docelowy, port źródłowy i protokół). Jeśli grupa zabezpieczeń nie zezwala na pakiet, zwracane są reguły i grupy, która odrzuciła pakiet.
-- [Następny przeskok](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): określa następny przeskok dla pakiety przesyłane w sieci szkieletowej sieci platformy Azure, więc można zdiagnozować dowolne błędnie skonfigurowane trasy zdefiniowane przez użytkownika.
-- [Widok grup zabezpieczeń](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): pobiera reguł zabezpieczeń efektywny i zastosowane, które są stosowane na maszynie Wirtualnej.
-- [Dzienniki przepływu sieciowych grup zabezpieczeń dla sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): umożliwiają przechwytywanie dzienniki dotyczące ruchu, który jest dozwolony lub zablokowany przez zasady zabezpieczeń w grupie. Przepływ jest definiowany przez 5-elementowe spójne kolekcje informacji: źródłowego adresu IP, docelowy adres IP, portu źródłowego, port docelowy i protokołu.
-- [Brama sieci wirtualnej i rozwiązywanie problemów z połączeniem](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): umożliwia rozwiązywanie problemów z bramy sieci wirtualnej i połączenia.
-- [Limity subskrypcji sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): umożliwia wyświetlenie użycia zasobów sieciowych limitów.
-- [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): zapewnia jedną taflę, aby włączyć lub wyłączyć dzienniki diagnostyczne na potrzeby zasobów sieciowych w grupie zasobów.
+- [Topologia](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Zapewnia widok różnych połączeń i skojarzenia między zasobami sieci w grupie zasobów.
+- [Przechwytywanie pakietów zmiennych](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Umożliwia przechwytywanie danych pakietów do i z maszyny wirtualnej. Bardzo przydatne są zaawansowane opcje filtrowania i dostosowywania ustawień, takie jak określanie czasu i limitów rozmiaru. Dane pakietu mogą być przechowywane w magazynie obiektów blob lub na dysku lokalnym w formacie .cap.
+- [Weryfikowanie przepływu protokołu IP](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Sprawdza, czy pakiet jest dozwolony lub zablokowany na podstawie 5-elementowe spójne kolekcje pakietów parametrów dla informacji o przepływie (docelowy adres IP, źródłowy adres IP, port docelowy, port źródłowy i protokół). Jeśli grupa zabezpieczeń nie zezwala na pakiet, zwracane są reguły i grupy, która odrzuciła pakiet.
+- [Dla następnego przeskoku](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Określa następny przeskok dla pakiety przesyłane w sieci szkieletowej sieci platformy Azure, więc można zdiagnozować wszelkie nieprawidłowo trasy zdefiniowane przez użytkownika.
+- [Widok grup zabezpieczeń](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): Pobiera reguły zabezpieczeń efektywny i zastosowane, które są stosowane na maszynie Wirtualnej.
+- [Dzienniki przepływu sieciowych grup zabezpieczeń dla sieciowych grup zabezpieczeń](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Umożliwiają przechwytywanie dzienniki dotyczące ruchu, który jest dozwolony lub zablokowany przez zasady zabezpieczeń w grupie. Przepływ jest definiowany przez 5-elementowe spójne kolekcje informacji: źródłowego adresu IP, docelowy adres IP, portu źródłowego, port docelowy i protokołu.
+- [Brama sieci wirtualnej i rozwiązywanie problemów z połączeniem](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Umożliwia Rozwiązywanie problemów z bramy sieci wirtualnej i połączenia.
+- [Limity subskrypcji sieci](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Umożliwia wyświetlenie użycia zasobów sieciowych limitów.
+- [Dzienniki diagnostyczne](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Zapewnia jedną taflę, aby włączyć lub wyłączyć dzienniki diagnostyczne na potrzeby zasobów sieciowych w grupie zasobów.
 
 Aby uzyskać więcej informacji, zobacz [Konfigurowanie usługi Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).
 

@@ -4,7 +4,7 @@ description: Niniejszy instruktaż umożliwia pomocy można skonfigurować za po
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 10e60076fe527e6e773e966ccdae52a7fe99c4b2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: deb50a71b179c3cb03d5da22e336c42b26fe0bfa
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997210"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106124"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Konfigurowanie usługi Azure Key Vault o rotacji i inspekcji kluczy
 
@@ -38,7 +38,7 @@ Ten artykuł przeprowadzi:
 - Pokazuje sposób monitorowania dzienników inspekcji usługi key vault i zgłaszać alerty w przypadku nieoczekiwanych żądań.
 
 > [!NOTE]
-> W tym samouczku nie jest przeznaczona do szczegółowo wyjaśniono wszystkie początkowej konfiguracji magazynu kluczy. Te informacje można znaleźć w temacie [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md). Aby uzyskać instrukcje dotyczące Wieloplatformowego interfejsu wiersza polecenia, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia](key-vault-manage-with-cli2.md).
+> W tym samouczku nie jest przeznaczona do szczegółowo wyjaśniono wszystkie początkowej konfiguracji magazynu kluczy. Aby uzyskać te informacje, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Aby uzyskać instrukcje dotyczące Wieloplatformowego interfejsu wiersza polecenia, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia](key-vault-manage-with-cli2.md).
 >
 >
 
