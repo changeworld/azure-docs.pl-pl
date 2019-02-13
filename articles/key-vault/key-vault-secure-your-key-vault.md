@@ -1,10 +1,10 @@
 ---
-title: Zabezpieczanie usługi Azure Key Vault — usługa Azure Key Vault | Dokumentacja firmy Microsoft
+title: Bezpieczny dostęp do magazynu kluczy — usługi Azure Key Vault | Dokumentacja firmy Microsoft
 description: Zarządzaj uprawnieniami dostępu do usługi Azure Key Vault, klucze i wpisy tajne. Obejmuje model uwierzytelniania i autoryzacji dla usługi Key Vault i sposób zabezpieczania własnego magazynu kluczy.
 services: key-vault
 documentationcenter: ''
 author: amitbapat
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: e5b4e083-4a39-4410-8e3a-2832ad6db405
 ms.service: key-vault
@@ -13,238 +13,213 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 7dfda29525d73bebd7a2201e5c9e85314e08d46a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 320a23e425ecb11e36af3efe988b25e598948132
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993847"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118517"
 ---
-# <a name="secure-your-key-vault"></a>Zabezpieczanie własnego magazynu kluczy
+# <a name="secure-access-to-a-key-vault"></a>Bezpieczny dostęp do magazynu kluczy
 
-Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia i hasła). Ponieważ te dane są poufne i krytyczne dla działania, należy zabezpieczyć dostęp do Twoich magazynów kluczy, dzięki czemu tylko autoryzowane aplikacje i użytkowników. Ten artykuł zawiera omówienie modelu dostępu do usługi Key Vault. Wyjaśnia uwierzytelnianie i autoryzację, a w tym artykule opisano sposób zabezpieczania dostępu.
-
-## <a name="overview"></a>Przegląd
+Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne, takie jak certyfikaty, parametry połączenia i hasła. Ponieważ te dane są poufne i krytyczne dla działania, należy zabezpieczyć dostęp do magazynów kluczy, zezwalając tylko autoryzowane aplikacje i użytkownicy. Ten artykuł zawiera omówienie modelu dostępu do usługi Key Vault. Wyjaśnia uwierzytelnianie i autoryzację, a w tym artykule opisano sposób zabezpieczania dostępu do magazynów kluczy.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Dostęp do magazynu kluczy jest kontrolowany za pośrednictwem dwóch oddzielnych interfejsów: płaszczyzny zarządzania i płaszczyzny danych. 
-**Płaszczyzna zarządzania** zajmuje się zarządzanie magazynem, na przykład — tworzenie magazynu, aktualizowanie magazynu, usuwanie magazynu. 
-**Płaszczyzna danych** ofertami przy użyciu kluczy tajnych w magazynie, który jest utworzony, aktualizowanie, usuwanie i odczytu wpisu tajnego w magazynie. W przypadku obu płaszczyzn odpowiednie uwierzytelnianie i autoryzacja są wymagane zanim obiekt wywołujący (użytkownik lub aplikacja) mogą uzyskać dostęp do magazynu kluczy. Uwierzytelnianie ustala tożsamość elementu wywołującego, podczas gdy autoryzacja określa operacje, które może wykonywać obiekt wywołujący.
+## <a name="access-model-overview"></a>Omówienie modelu dostępu
 
-Na potrzeby uwierzytelniania płaszczyzna zarządzania i płaszczyzna danych używają usługi Azure Active Directory. Na potrzeby autoryzacji płaszczyzna zarządzania używa kontroli dostępu opartej na rolach (RBAC), natomiast płaszczyzna danych używa zasad dostępu magazynu kluczy.
+Dostęp do magazynu kluczy jest kontrolowany za pośrednictwem dwóch interfejsów: *płaszczyzny zarządzania* i *płaszczyzny danych*. Płaszczyzna zarządzania zarządza się usługi Key Vault sam. Operacje w tej płaszczyzny obejmują tworzenie i usuwanie magazynów kluczy, pobieranie właściwości usługi Key Vault i aktualizowanie zasad dostępu. Płaszczyzna danych jest miejscem służącym do pracy z danymi przechowywanymi w magazynie kluczy. Możesz dodawać, usuwanie i modyfikowanie kluczy, wpisów tajnych i certyfikatów.
 
-Oto krótki przegląd omówionych tematów:
+Aby uzyskać dostęp do magazynu kluczy, albo płaszczyźnie, wszystkie podmioty wywołujące (użytkownicy lub aplikacje) musi mieć odpowiednie uwierzytelnianie i autoryzacja. Uwierzytelnianie ustala tożsamość elementu wywołującego. Autoryzacja Określa, jakie operacje może wykonywać obiekt wywołujący. 
 
-Uwierzytelnianie przy użyciu usługi Azure Active Directory — w tej sekcji wyjaśniono, jak obiekt wywołujący uwierzytelnia się za pomocą usługi Azure Active Directory do dostępu do magazynu kluczy za pośrednictwem płaszczyzny zarządzania i płaszczyzny danych. 
+Obu płaszczyzn używać usługi Azure Active Directory (Azure AD) do uwierzytelniania. Na potrzeby autoryzacji płaszczyzna zarządzania używa kontroli dostępu opartej na rolach (RBAC) i płaszczyzna danych używa zasad dostępu magazynu kluczy.
 
-W przypadku uwierzytelniania obu płaszczyzn usługa Azure Active Directory (Azure AD). Na potrzeby autoryzacji płaszczyzna zarządzania używa kontroli dostępu opartej na rolach (RBAC), natomiast płaszczyzna danych używa zasad dostępu magazynu kluczy.
+## <a name="active-directory-authentication"></a>Uwierzytelnianie za pomocą usługi Active Directory
 
-## <a name="authenticate-by-using-azure-active-directory"></a>Uwierzytelnianie przy użyciu usługi Azure Active Directory
+Po utworzeniu magazynu kluczy w subskrypcji platformy Azure ma automatycznie skojarzone z dzierżawą usługi Azure AD subskrypcji. Wszystkie obiekty wywołujące w obu płaszczyzn należy zarejestrować się w tej dzierżawie i uwierzytelnianie dostępu do magazynu kluczy. W obu przypadkach aplikacje mają dostęp do magazynu kluczy na dwa sposoby:
 
-Po utworzeniu magazynu kluczy w subskrypcji platformy Azure ma automatycznie skojarzone z dzierżawą usługi Azure AD dla subskrypcji. Wszystkie obiekty wywołujące muszą być zarejestrowane w tej dzierżawie i muszą zostać uwierzytelnione na dostęp do magazynu kluczy. To wymaganie dotyczy zarówno płaszczyzny i dane dostępu do płaszczyzny zarządzania. W obu przypadkach aplikacja może uzyskiwać dostęp do usługi Key Vault na dwa sposoby:
+- **Dostęp użytkownika, a także aplikacji**: Aplikacja uzyskuje dostęp do usługi Key Vault w imieniu zalogowanego użytkownika. Przykłady tego typu dostępu programu Azure PowerShell i witryny Azure portal. Dostęp użytkownika jest udzielany na dwa sposoby. Użytkownicy mogą uzyskiwać dostęp do usługi Key Vault z poziomu dowolnej aplikacji lub muszą oni korzystać z określonej aplikacji (nazywane _złożone tożsamości_).
+- **Dostęp tylko do aplikacji**: Aplikacja działa jako demon usługi lub w tle zadanie. Tożsamości aplikacji udzielany jest dostęp do magazynu kluczy.
 
-* **dostęp użytkownika i aplikacji**: Używane z aplikacji uzyskujących dostęp do usługi Key Vault w imieniu zalogowanego użytkownika. Program Azure PowerShell i witryny Azure portal to przykłady tego typu dostępu. Istnieją dwa sposoby udzielania dostępu użytkownikom:
+Dla obu typów dostępu do aplikacji uwierzytelnia się za pomocą usługi Azure AD. Aplikacja wykorzystuje dowolne [obsługiwane metody uwierzytelniania](../active-directory/develop/authentication-scenarios.md) na podstawie typu aplikacji. Aplikacja uzyskuje token zasobu na płaszczyźnie, aby udzielić dostępu. Zasób jest punktem końcowym w płaszczyzny zarządzania lub dane w zależności od środowiska platformy Azure. Aplikacja używa tokenu i wysyła żądanie interfejsu API REST do usługi Key Vault. Aby dowiedzieć się więcej, zapoznaj się z [całego przepływu uwierzytelniania](../active-directory/develop/v1-protocols-oauth-code.md).
 
-  - Dostęp do usługi Key Vault z poziomu dowolnej aplikacji.
-  - Dostęp do usługi Key Vault tylko wtedy, gdy korzystają z określonej aplikacji (nazywane złożone tożsamości).
+Model pojedynczy mechanizm uwierzytelniania obu płaszczyzn ma kilka zalet:
 
-* **dostęp tylko do aplikacji**: Używane z aplikacjami, które są uruchamiane jako demon usługi lub zadania w tle. Tożsamości aplikacji udzielany jest dostęp do magazynu kluczy.
+- Organizacje mogą kontrolować dostęp centralnie do wszystkich magazynów kluczy w organizacji.
+- Jeśli użytkownik pozostawi, natychmiast utraci dostęp do wszystkich magazynów kluczy w organizacji.
+- Organizacje mogą dostosowywać uwierzytelnianie za pomocą opcji w usłudze Azure AD, takie jak włączyć uwierzytelnianie wieloskładnikowe w celu zwiększenia poziomu bezpieczeństwa.
 
-W przypadku obu typów aplikacji Aplikacja uwierzytelnia się za pomocą usługi Azure AD przy użyciu dowolnej z [obsługiwanych metod uwierzytelniania](../active-directory/develop/authentication-scenarios.md)i uzyskuje token. Metodę uwierzytelniania używaną zależy od typu aplikacji. Następnie aplikacja używa tego tokenu i wysyła żądanie interfejsu API REST do usługi Key Vault. Żądania płaszczyzny zarządzania są przesyłane za pośrednictwem punktu końcowego usługi Azure Resource Manager. Podczas uzyskiwania dostępu do płaszczyzny danych, aplikacja komunikuje się bezpośrednio do punktu końcowego usługi Key Vault. Aby uzyskać więcej informacji, zobacz [całego przepływu uwierzytelniania](../active-directory/develop/v1-protocols-oauth-code.md). 
+## <a name="resource-endpoints"></a>Punktów końcowych zasobów
 
-Uzyskuje dostęp do nazwy zasobu, dla której aplikacja żąda tokenu zależy które warstwy aplikacji. Nazwa zasobu jest punkt końcowy płaszczyzny zarządzania lub punkt końcowy płaszczyzny danych, w zależności od środowiska platformy Azure. Aby uzyskać więcej informacji zobacz tabelę w dalszej części tego artykułu.
+Aplikacje dostęp do płaszczyzny za pośrednictwem punktów końcowych. Kontrolę dostępu dla dwóch płaszczyzn działać niezależnie. Aby udzielić dostępu aplikacji do używania kluczy w magazynie kluczy, można przyznać dostęp do płaszczyzny danych za pośrednictwem zasad dostępu magazynu kluczy. Aby przyznać dostęp do odczytu użytkowników do usługi Key Vault, właściwości i tagów, ale nie umożliwia uzyskiwania dostępu do danych (kluczy, wpisów tajnych lub certyfikatów), można przyznać dostęp do płaszczyzny zarządzania przy użyciu RBAC.
 
-Jeden pojedynczy mechanizm uwierzytelniania obu płaszczyzn ma kilka zalet:
+W poniższej tabeli przedstawiono punktów końcowych zarządzania i płaszczyzny danych.
 
-* Organizacje mogą centralnie kontrolować dostęp do wszystkich magazynów kluczy w organizacji.
-* Jeśli użytkownik pozostawi, użytkownik utraci natychmiast dostęp do wszystkich magazynów kluczy w organizacji.
-* Organizacje mogą dostosowywać uwierzytelnianie za pomocą opcji w usłudze Azure AD (na przykład włączyć uwierzytelnianie wieloskładnikowe bezpieczeństwo).
-
-## <a name="the-management-plane-and-the-data-plane"></a>Płaszczyzna zarządzania i płaszczyzna danych
-
-Płaszczyzna zarządzania umożliwia zarządzanie usługi Key Vault, sam. Dotyczy to również operacji, takich jak zarządzanie atrybutów i ustawienie zasady dostępu do płaszczyzny danych. Płaszczyzna danych umożliwia dodawanie, usuwanie, modyfikowanie i używanie kluczy, wpisów tajnych i certyfikatów przechowywanych w usłudze Key Vault.
-
-Dostęp do interfejsów płaszczyzny płaszczyzna i danych zarządzania za pośrednictwem różnych punktów końcowych, wymienione w poniższej tabeli. Druga kolumna w tabeli opisano nazwy DNS dla tych punktów końcowych w różnych środowiskach Azure. W trzeciej kolumnie opisano operacje, które można wykonywać na danej płaszczyźnie dostępu. Każda płaszczyzna dostępu ma również swój własny mechanizm kontroli dostępu. Kontrola dostępu do płaszczyzny zarządzania można ustawić za pomocą kontroli dostępu opartej na rolach usługi Azure Resource Manager (RBAC). Kontrola dostępu do płaszczyzny danych można ustawić za pomocą zasad dostępu magazynu kluczy.
-
-| Płaszczyzna dostępu | Punkty końcowe dostępu | Operacje | Mechanizm kontroli dostępu |
+| Access&nbsp;plane | Punkty końcowe dostępu | Operacje | Dostęp&nbsp;mechanizmy kontroli |
 | --- | --- | --- | --- |
-| Płaszczyzna zarządzania |**Cały świat:**<br> management.azure.com:443<br><br> **Usługa Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> management.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> management.microsoftazure.de:443 |Tworzenie/odczyt/aktualizowanie/usuwanie magazynu kluczy <br> Ustawienie zasad dostępu do usługi Key Vault<br>Ustawianie tagów dla usługi Key Vault |RBAC usługi Azure Resource Manager |
-| Płaszczyzna danych |**Cały świat:**<br> &lt;nazwa_magazynu&gt;.vault.azure.net:443<br><br> **Usługa Azure China 21Vianet:**<br> &lt;nazwa_magazynu&gt;.vault.azure.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> &lt;nazwa_magazynu&gt;.vault.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> &lt;nazwa_magazynu&gt;.vault.microsoftazure.de:443 |Klucze: Odszyfruj, Szyfruj, UnwrapKey, WrapKey, sprawdź, zaloguj się, pobieranie, listy, zaktualizować, tworzenie, importowanie, Usuń, kopia zapasowa, Przywróć<br><br> Aby uzyskać wpisy tajne: Pobierz, lista, ustaw, usuwanie |Zasady dostępu magazynu kluczy |
+| Płaszczyzna zarządzania | **Cały świat:**<br> management.azure.com:443<br><br> **Usługa Azure China 21Vianet:**<br> management.chinacloudapi.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> management.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> management.microsoftazure.de:443 | Tworzenie, Odczyt, aktualizowanie i usuwanie magazynów kluczy<br><br>Ustawianie zasad dostępu magazynu kluczy<br><br>Ustawianie tagów usługi Key Vault | RBAC usługi Azure Resource Manager |
+| Płaszczyzna danych | **Cały świat:**<br> &lt;nazwa_magazynu&gt;.vault.azure.net:443<br><br> **Usługa Azure China 21Vianet:**<br> &lt;nazwa_magazynu&gt;.vault.azure.cn:443<br><br> **Wersja platformy Azure dla administracji USA:**<br> &lt;nazwa_magazynu&gt;.vault.usgovcloudapi.net:443<br><br> **Niemiecka wersja platformy Azure:**<br> &lt;nazwa_magazynu&gt;.vault.microsoftazure.de:443 | Klucze: Odszyfruj, Szyfruj,<br> unwrap, opakowywanie, sprawdź, zaloguj się,<br> Pobierz, lista, aktualizować, tworzyć,<br> Import, usuwania, przywracania kopii zapasowych,<br><br> Wpisy tajne: pobieranie, listy, ustaw, Usuń | Zasady dostępu magazynu kluczy |
 
-Zarządzanie płaszczyzna i danych płaszczyzna kontroli dostępu działać niezależnie. Na przykład jeśli użytkownik chce udzielić aplikacji dostępu do używania kluczy w magazynie kluczy, wystarczy przyznać dostęp do płaszczyzny danych. Możesz udzielić dostępu za pomocą zasad dostępu magazynu kluczy. Z drugiej strony użytkownika, który można odczytać właściwości usługi Key Vault i tagi, ale nie dostęp do danych (kluczy, wpisów tajnych lub certyfikatów), wymaga dostępu do płaszczyzny zarządzania. Możesz udzielić dostępu, przypisując dostęp do odczytu dla użytkownika przy użyciu RBAC.
+## <a name="management-plane-and-rbac"></a>Płaszczyzna zarządzania i RBAC
 
-## <a name="management-plane-access-control"></a>Kontrola dostępu do płaszczyzny zarządzania
+Na płaszczyźnie zarządzania umożliwia RBAC autoryzować operacje, które może wykonywać obiekt wywołujący. W modelu RBAC każdej subskrypcji platformy Azure ma wystąpienia usługi Azure AD. Możesz udzielić dostępu użytkownikom, grupom i aplikacjom z tego katalogu. Dostęp jest udzielany do zarządzania zasobami w subskrypcji platformy Azure, które używają modelu wdrażania usługi Azure Resource Manager. Aby udzielić dostępu, należy użyć [witryny Azure portal](https://portal.azure.com/), [wiersza polecenia platformy Azure](../cli-install-nodejs.md), [programu Azure PowerShell](/powershell/azureps-cmdlets-docs), lub [interfejsów API REST usługi Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn906885.aspx).
 
-Płaszczyzna zarządzania składa się z operacji, które wpływają na samym magazynem kluczy, takie jak:
+Tworzenie magazynu kluczy w grupie zasobów i zarządzanie dostępem przy użyciu usługi Azure AD. Zezwolenie użytkownikom na lub grup możliwość zarządzania magazynami kluczy w grupie zasobów. Przypisując odpowiednie role RBAC, można przyznać dostęp na poziomie określonego zakresu. Aby udzielić dostępu użytkownika do zarządzania magazynami kluczy, możesz przypisać wstępnie zdefiniowanej `key vault Contributor` roli do użytkownika o określonym zakresie. Następujące poziomy zakresów można przypisać do roli RBAC:
 
-- Tworzenie lub usuwanie magazynu kluczy.
-- Pobieranie listy magazynów w ramach subskrypcji.
-- Pobieranie właściwości usługi Key Vault (na przykład jednostki SKU i tagi).
-- Ustawianie zasad dostępu magazynu kluczy, które kontrolki użytkownika i aplikacji dostępu do kluczy i wpisów tajnych.
+- **Subskrypcja**: Rola RBAC, przypisana na poziomie subskrypcji ma zastosowanie do wszystkich grup zasobów i zasobów w ramach tej subskrypcji.
+- **Grupa zasobów**: Rola RBAC, przypisana na poziomie grupy zasobów ma zastosowanie do wszystkich zasobów w danej grupie zasobów.
+- **Określony zasób**: Rola RBAC, przypisane do określonego zasobu ma zastosowanie do tego zasobu. W tym przypadku zasób jest określonego magazynu kluczy.
 
-Kontrola dostępu do płaszczyzny zarządzania korzysta z funkcji RBAC.  
-
-### <a name="role-based-access-control-rbac"></a>Kontrola dostępu oparta na rolach (RBAC)
-
-Każda subskrypcja platformy Azure znajduje się wystąpienie usługi Azure AD. Możesz udzielić dostępu użytkownikom, grupom i aplikacjom z tego katalogu do zarządzania zasobami w subskrypcji platformy Azure, które używają modelu wdrażania usługi Azure Resource Manager. Ten typ kontroli dostępu jest nazywane RBAC. Do zarządzania tym dostępem można użyć witryny [Azure Portal](https://portal.azure.com/), [narzędzi interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md), [programu PowerShell](/powershell/azureps-cmdlets-docs) lub [interfejsów API REST usługi Azure Resource Manager](https://msdn.microsoft.com/library/azure/dn906885.aspx).
-
-Tworzenie magazynu kluczy w grupie zasobów i kontrolować dostęp do płaszczyzny zarządzania za pomocą usługi Azure AD. Na przykład można przyznać użytkownikom lub grupie możliwość zarządzania magazynami kluczy w grupie zasobów.
-
-Przypisując odpowiednie role RBAC mogą przyznawać dostęp użytkownikom, grupom i aplikacjom, które w określonym zakresie. Na przykład aby udzielić dostępu użytkownika do zarządzania magazynami kluczy, przypisaniu wstępnie zdefiniowaną rolę Współautor magazynu klucz do danego użytkownika, w określonym zakresie. Zakres w tym przypadku będzie subskrypcją, grupą zasobów lub określonego magazynu kluczy. Rola przypisana na poziomie subskrypcji ma zastosowanie do wszystkich grup zasobów i zasobów w ramach tej subskrypcji. Rola przypisana na poziomie grupy zasobów ma zastosowanie do wszystkich zasobów w danej grupie zasobów. Rola przypisana dla określonego zasobu ma zastosowanie do tego zasobu. Istnieje kilka wstępnie zdefiniowanych ról (zobacz [RBAC: Wbudowane role](../role-based-access-control/built-in-roles.md)). Jeśli wstępnie zdefiniowaną rolę nie odpowiadają potrzebom, można zdefiniować własne roli.
+Istnieje kilka wstępnie zdefiniowanych ról. Jeśli wstępnie zdefiniowaną rolę nie odpowiadają potrzebom, można zdefiniować własne roli. Aby uzyskać więcej informacji, zobacz [RBAC: Built-in roles](../role-based-access-control/built-in-roles.md) (Kontrola dostępu oparta na rolach: role wbudowane).
 
 > [!IMPORTANT]
-> Należy pamiętać, że jeśli użytkownik ma uprawnienia do płaszczyzny zarządzania usługi Key Vault, może udzielić sobie Współautor dostęp do płaszczyzny danych przez ustawienie zasad dostępu magazynu kluczy. Dlatego należy ściśle kontrolować, kto ma dostęp współautora do magazynów kluczy. Sprawdź, czy tylko upoważnione osoby mogą uzyskać dostęp i Zarządzanie magazynami kluczy, kluczy, wpisów tajnych i certyfikatów.
+> Jeśli użytkownik ma `Contributor` uprawnienia do płaszczyzny zarządzania magazynu kluczy, użytkownik może udzielić sobie dostępu do płaszczyzny danych przez ustawienie zasad dostępu magazynu kluczy. Należy ściśle kontrolować, kto ma `Contributor` roli dostęp do Twoich magazynów kluczy. Sprawdź, czy tylko upoważnione osoby mogą uzyskać dostęp i Zarządzanie magazynami kluczy, kluczy, wpisów tajnych i certyfikatów.
 >
 
-## <a name="data-plane-access-control"></a>Kontrola dostępu do płaszczyzny danych
+<a id="data-plane-access-control"></a> 
+## <a name="data-plane-and-access-policies"></a>Zasady płaszczyzna i dostęp do danych
 
-Operacje płaszczyzny danych usługi Key Vault dotyczą przechowywanych obiektów, takich jak klucze, wpisy tajne i certyfikaty. Kluczowe operacje obejmują tworzenie, importowanie, aktualizowanie, lista, tworzenie kopii zapasowej i przywracanie kluczy. Operacje kryptograficzne znak, sprawdź, szyfrowania, odszyfrowywania, opakowywanie, Odkodowywanie, ustawić tagi i ustawić innych atrybutów kluczy. Podobnie, operacje na klucze tajne to między innymi get, set, listy, Usuń.
+Można przyznać dostęp do płaszczyzny danych przez ustawienie zasad dostępu magazynu kluczy dla magazynu kluczy. Aby ustawić zasady dostępu, użytkownika, grupy lub aplikacji musi mieć `Contributor` uprawnienia do płaszczyzny zarządzania dla tego magazynu kluczy.
 
-Można przyznać dostęp do płaszczyzny danych przez ustawienie zasad dostępu magazynu kluczy. Użytkownika, grupy lub aplikacji musi mieć uprawnienia współautora do płaszczyzny zarządzania dla magazynu kluczy można było ustawić zasady dostępu dla tego magazynu kluczy. Można przyznać użytkownika, grupy lub dostęp do aplikacji do wykonywania określonych operacji dotyczących kluczy lub wpisów tajnych w magazynie kluczy. Magazyn kluczy obsługuje maksymalnie 1024 wpisów zasad dostępu magazynu kluczy. Aby udzielić dostępu do płaszczyzny danych wielu użytkownikom, Utwórz grupę zabezpieczeń usługi Azure AD i dodawanie użytkowników do tej grupy.
+Można przyznać użytkownika, grupy lub dostęp do aplikacji do wykonywania określonych operacji dotyczących kluczy lub wpisów tajnych w magazynie kluczy. Magazyn kluczy obsługuje maksymalnie 1024 wpisów zasad dostępu dla magazynu kluczy. Aby udzielić dostępu do płaszczyzny danych wielu użytkownikom, Utwórz grupę zabezpieczeń usługi Azure AD i dodawanie użytkowników do tej grupy.
 
-### <a name="key-vault-access-policies"></a>Zasady dostępu magazynu kluczy
-
-Zasady dostępu magazynu kluczy przyznają oddzielnie uprawnienia do kluczy, wpisów tajnych i certyfikatów. Na przykład można udzielić użytkownikowi dostępu tylko do kluczy i nie uprawnień do wpisów tajnych. Uprawnienia do dostępu do kluczy, wpisów tajnych lub certyfikatów są na poziomie magazynu. Zasady dostępu magazynu kluczy nie obsługuje uprawnienia szczegółowe, na poziomie obiektu, takie jak określony klucz, hasło lub certyfikat. Możesz użyć [witryny Azure portal](https://portal.azure.com/), [narzędzia wiersza polecenia platformy Azure](../cli-install-nodejs.md), [PowerShell](/powershell/azureps-cmdlets-docs), lub [interfejsy API REST zarządzania Key Vault](https://msdn.microsoft.com/library/azure/mt620024.aspx) można ustawić zasady dostępu dla magazynu kluczy.
+<a id="key-vault-access-policies"></a> Zasady dostępu magazynu kluczy przyznają uprawnienia oddzielnie do kluczy, wpisów tajnych i certyfikatów. Możesz udzielić użytkownikowi dostępu tylko do kluczy, a nie wpisów tajnych. Uprawnienia dostępu do kluczy, wpisów tajnych i certyfikatów są na poziomie magazynu. Zasady dostępu magazynu kluczy nie obsługują szczegółowe, na poziomie obiektu uprawnień, takich jak określony klucz, hasło lub certyfikat. Aby ustawić zasady dostępu magazynu kluczy, użyj [witryny Azure portal](https://portal.azure.com/), [wiersza polecenia platformy Azure](../cli-install-nodejs.md), [programu Azure PowerShell](/powershell/azureps-cmdlets-docs), lub [interfejsy API REST zarządzania magazyn klucz](https://msdn.microsoft.com/library/azure/mt620024.aspx).
 
 > [!IMPORTANT]
-> Zasady dostępu magazynu kluczy są stosowane na poziomie magazynu. Na przykład jeśli użytkownikowi udzielono uprawnień do tworzenia i usuwania kluczy, będzie on mógł wykonywać te operacje na wszystkich kluczach w tym magazynie kluczy.
+> Zasady dostępu magazynu kluczy są stosowane na poziomie magazynu. Jeśli użytkownikowi udzielono uprawnień do tworzenia i usuwania kluczy, można wykonać te operacje na wszystkie klucze, w tym magazynie kluczy.
+>
 
-Oprócz używania zasad dostępu, można ograniczyć dostęp do płaszczyzny danych przy użyciu [punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault](key-vault-overview-vnet-service-endpoints.md). Możesz skonfigurować [zapory i reguł sieci wirtualnej](key-vault-network-security.md) dla dodatkową warstwę zabezpieczeń.
+Możesz ograniczyć dostęp do płaszczyzny danych za pomocą [punkty końcowe usługi sieci wirtualnej dla usługi Azure Key Vault](key-vault-overview-vnet-service-endpoints.md). Można skonfigurować [zapory i reguł sieci wirtualnej](key-vault-network-security.md) dla dodatkową warstwę zabezpieczeń.
 
 ## <a name="example"></a>Przykład
 
-Załóżmy, że projektujesz aplikację, która używa certyfikatu dla protokołu SSL, usługi Azure Storage do przechowywania danych i klucza szyfrowania RSA 2048-bitowego dla operacji podpisywania. Załóżmy, że ta aplikacja jest uruchomiona w maszynie wirtualnej platformy Azure (lub zestawu skalowania maszyn wirtualnych). Używanie magazynu kluczy do przechowywania wszystkich wpisów tajnych aplikacji i przechowywania certyfikatu uruchamiania, używanych przez aplikację do uwierzytelniania za pomocą usługi Azure AD.
+W tym przykładzie pracujemy nad aplikacji korzystającej z certyfikatu protokołu SSL, usługi Azure Storage do przechowywania danych oraz klucza RSA 2048-bitowych dla operacji podpisywania. Nasza aplikacja działa w maszynie wirtualnej platformy Azure (VM) (lub zestawu skalowania maszyn wirtualnych). Możemy użyć magazynu kluczy do przechowywania wpisów tajnych aplikacji. Firma Microsoft może przechowywać certyfikatu uruchamiania, który jest używany przez aplikację do uwierzytelniania za pomocą usługi Azure AD.
 
-Poniżej przedstawiono podsumowanie typów kluczy i kluczy tajnych przechowywanych:
+Konieczny jest dostęp do następujących przechowywane klucze i wpisy tajne:
+- **Certyfikat SSL**: Używane do obsługi protokołu SSL.
+- **Klucz magazynu**: Umożliwia dostęp do konta magazynu.
+- **RSA 2048 bitowego klucza**: Używane dla operacji podpisywania.
+- **Certyfikatu uruchamiania**: Używany do uwierzytelniania za pomocą usługi Azure AD. Po nadaniu prawa dostępu możemy pobrania klucza magazynu i użycia klucza RSA do podpisywania.
 
-* **Certyfikat SSL**: Używane do obsługi protokołu SSL.
-* **Klucz magazynu**: Używane do uzyskania dostępu do konta magazynu.
-* **RSA 2048-bitowy klucz**: Używane dla operacji podpisywania.
-* **Certyfikatu uruchamiania**: Używany do uwierzytelniania za pomocą usługi Azure AD. Po nadaniu prawa dostępu można pobrać klucza magazynu i użycia klucza RSA do podpisywania.
+Należy zdefiniować następujące role, aby określić, kto zarządzanie, wdrażanie i inspekcję naszej aplikacji:
+- **Zespół ds. zabezpieczeń**: Pracownicy działu IT z biura dyrektora CSO (Dyrektor ds. bezpieczeństwa) lub podobnych współautorów. Zespół ds. zabezpieczeń jest odpowiedzialny za właściwe bezpieczne przechowywanie wpisów tajnych. Wpisy tajne mogą obejmować certyfikaty SSL, klucze RSA do podpisywania, parametry połączenia i klucze konta magazynu.
+- **Deweloperów i operatorów**: Pracowników, którzy opracowywanie aplikacji i wdrożyć ją na platformie Azure. Członkowie zespołu nie należą do pracowników działu zabezpieczeń. Nie mają dostępu do poufnych danych, takich jak certyfikaty SSL i klucze RSA. Tylko aplikacji wdrażanych powinien mieć dostęp do poufnych danych.
+- **Audytorzy**: Ta rola jest dla współautorów, którzy nie są członkami rozwoju lub pracowników ogólnego działu IT. Przejrzyj ich użycia i obsługi certyfikatów, kluczy i wpisów tajnych w celu zapewnienia zgodności ze standardami zabezpieczeń. 
 
-Teraz określmy osoby, które są wdrażanie i zarządzanie inspekcji tej aplikacji. W tym przykładzie użyjemy trzech ról.
+Istnieje inna rola, który znajduje się poza zakresem naszej aplikacji: subskrypcji (lub grupy zasobów) administratora. Administrator subskrypcji konfiguruje początkowe uprawnienia dostępu dla zespołu ds. zabezpieczeń. Mogą udzielać dostępu do zespołu zabezpieczeń za pomocą grupy zasobów, który zawiera zasoby wymagane przez aplikację.
 
-* **Zespół ds. zabezpieczeń**: Zazwyczaj pracownicy działu IT z biura dyrektora CSO (Dyrektor ds. bezpieczeństwa) lub równoważnej. Ten zespół jest odpowiedzialny za właściwe bezpieczne przechowywanie wpisów tajnych. Przykłady obejmują certyfikaty SSL, klucze RSA używane do podpisywania, parametry połączenia i klucze konta magazynu.
-* **Deweloperzy/Operatorzy**: Osoby, które opracowywanie aplikacji, a następnie wdrożyć go na platformie Azure. Zazwyczaj nie są częścią zespołu ds. zabezpieczeń i dlatego nie powinny mieć dostępu do poufnych danych, takich jak certyfikaty SSL i klucze RSA. Tylko wdrażana przez nich aplikacja powinna mieć dostęp do tych obiektów.
-* **Audytorzy**: Zazwyczaj inny zestaw osób, odizolowany od deweloperów i pracowników ogólnego działu IT. Ich zadaniem jest przeglądanie użycia i obsługi certyfikatów, kluczy i wpisów tajnych w celu zapewnienia zgodności ze standardami zabezpieczeń. 
+Potrzebujemy autoryzować następujące operacje nasze role:
 
-Istnieje jeszcze jedna rola, która znajduje się poza zakresem tej aplikacji, ale odpowiedni w tym miejscu mają być wymienione. Ta rola jest subskrypcji (lub grupy zasobów) administratora. Administrator subskrypcji konfiguruje początkowe uprawnienia dostępu dla zespołu ds. zabezpieczeń. Administrator subskrypcji udziela dostępu do zespołu ds. zabezpieczeń, za pomocą grupy zasobów, która zawiera zasoby wymagane przez tę aplikację.
+**Zespół ds. zabezpieczeń**
+- Tworzenie magazynów kluczy.
+- Włączenie rejestrowania usługi Key Vault.
+- Dodawanie kluczy i wpisów tajnych.
+- Tworzenie kopii zapasowych kluczy na potrzeby odzyskiwania po awarii.
+- Ustawianie zasad dostępu usługi Key Vault, aby udzielić uprawnień użytkownikom i aplikacjom dla określonych operacji.
+- Okresowo przerzucenie kluczy i wpisów tajnych.
 
-Teraz zobaczmy, jakie akcje wykonują poszczególne role w kontekście tej aplikacji.
+**Deweloperów i operatorów**
+- Pobieranie odwołań z zespołu zabezpieczeń ładowania początkowego i certyfikatów SSL (odcisków palca), klucza magazynu (identyfikator URI klucza tajnego) i klucz RSA (identyfikator URI klucza) do podpisywania.
+- Tworzenie i wdrażanie aplikacji do programowego dostępu do kluczy i wpisów tajnych.
 
-* **Zespół ds. zabezpieczeń**
-  * Tworzy magazynów kluczy.
-  * Włącza funkcję rejestrowania usługi Key Vault.
-  * Dodaje kluczy/wpisów tajnych.
-  * Tworzy kopii zapasowych kluczy na potrzeby odzyskiwania po awarii.
-  * Ustawia zasady dostępu do usługi Key Vault, aby udzielić uprawnień użytkownikom i aplikacjom do wykonywania określonych operacji.
-  * Okresowo przedstawia kluczy/wpisów tajnych.
-* **Deweloperzy/operatorzy**
-  * Pobieranie odwołań do ładowania początkowego i certyfikatów SSL (odcisków palca), klucza magazynu (identyfikatora URI wpisu tajnego) i klucza podpisywania (identyfikator URI klucza) od zespołu zabezpieczeń.
-  * Tworzenie i wdrażanie aplikacji, który uzyskuje dostęp do kluczy i wpisów tajnych programowo.
-* **Audytorzy**
-  * Przeglądanie dzienników użycia w celu potwierdzenia prawidłowego użycia kluczy/wpisów tajnych i zgodności ze standardami zabezpieczeń danych.
+**Audytorzy**
+- Przejrzyj dzienniki usługi Key Vault w celu potwierdzenia prawidłowego użycia kluczy i wpisów tajnych i zgodności ze standardami zabezpieczeń danych.
 
-Teraz zobaczmy, jakie uprawnienia są wymagane dla poszczególnych ról i aplikacji, aby wykonywać przydzielone im zadania. 
+Poniższa tabela podsumowuje uprawnienia dostępu dla naszych ról i aplikacji. 
 
-| Rola użytkownika | Uprawnienia do płaszczyzny zarządzania | Uprawnienia do płaszczyzny danych |
+| Rola | Uprawnienia do płaszczyzny zarządzania | Uprawnienia do płaszczyzny danych |
 | --- | --- | --- |
-| Zespół ds. zabezpieczeń |Współautor magazynu kluczy |Klucze: wykonywanie kopii zapasowej, tworzenie, usuwanie, pobieranie, importowanie, wyświetlanie, przywracanie <br> Wpisy tajne: wszystkie |
-| Deweloperzy/Operatorzy |Uprawnienia, do wdrażania usługi Key Vault, aby maszyny wirtualne, które są wdrażanie mogły pobierać wpisy tajne z magazynu kluczy. |Brak |
-| Audytorzy |Brak |Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie |
-| Aplikacja |Brak |Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
+| Zespół ds. zabezpieczeń | Współautor magazynu kluczy | Klucze: tworzenie kopii zapasowej, tworzenia, usuwania, Pobierz, importowanie, listy, Przywracanie<br>Wpisy tajne: wszystkie operacje |
+| Deweloperzy i&nbsp;operatorów | Uprawnienia do wdrażania usługi Key Vault<br><br> **Uwaga**: To uprawnienie umożliwia wdrożone maszyny wirtualne można pobrać Wpisy tajne z magazynu kluczy. | Brak |
+| Audytorzy | Brak | Klucze: wyświetlanie<br>Wpisy tajne: wyświetlanie<br><br> **Uwaga**: To uprawnienie umożliwia audytorów do atrybutów (tagi, daty aktywacji, daty wygaśnięcia) klucze i wpisy tajne nie są emitowane w dziennikach inspekcji. |
+| Aplikacja | Brak | Klucze: podpisywanie<br>Wpisy tajne: pobieranie |
 
-> [!NOTE]
-> Audytorzy musi uprawnienia listy kluczy i wpisów tajnych, aby móc dokonywać inspekcji atrybutów kluczy i wpisów tajnych, które nie są emitowane w dziennikach. Te atrybuty zawierają tagów, aktywacji i daty wygaśnięcia.
-> 
-> 
+Trzy role zespołu muszą mieć dostęp do innych zasobów oraz uprawnień usługi Key Vault. Aby wdrożyć maszyny wirtualne (lub funkcji Web Apps w usłudze Azure App Service), deweloperów i operatorów potrzeby `Contributor` dostęp do tych typów zasobów. Audytorzy muszą mieć dostęp do konta magazynu, w którym są przechowywane dzienniki magazynu kluczy.
 
-Oprócz uprawnień usługi Key Vault wszystkie trzy role potrzebują również dostępu do innych zasobów. Na przykład aby można było wdrożyć maszyny wirtualne (lub funkcji Web Apps w usłudze Azure App Service), deweloperów i operatorów również potrzebne prawa dostępu współautora do tych typów zasobów. Audytorzy muszą mieć dostęp do konta magazynu, w którym są przechowywane dzienniki magazynu kluczy.
+Aby uzyskać więcej informacji na temat sposobu wdrażania certyfikatów programowego dostępu do kluczy i wpisów tajnych, zobacz następujące zasoby:
+- Dowiedz się, jak [wdrażanie certyfikatów na maszynach wirtualnych z magazynu kluczy zarządzanych przez klienta](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) (wpis na blogu).
+- Pobierz [przykłady klienta usługi Azure Key Vault](https://www.microsoft.com/download/details.aspx?id=45343). Ta zawartość ilustruje sposób użycia certyfikatu uruchamiania do uwierzytelniania w usłudze Azure AD do dostępu do magazynu kluczy.
 
-Ponieważ ten artykuł koncentruje się na zabezpieczaniu dostępu do magazynu kluczy, firma Microsoft pokazują tylko pojęć odnoszących się do tego tematu. Szczegóły dotyczące wdrażania certyfikatów i uzyskiwanie dostępu do kluczy i wpisów tajnych programowo są omówione w innym miejscu. Na wystąpienie:
+Większość uprawnień dostępu można przyznać za pomocą witryny Azure portal. Aby udzielić szczegółowych uprawnień, można użyć programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
-- Wdrażanie certyfikatów przechowywanych w usłudze Key Vault do maszyn wirtualnych zostało omówione w [wdrażanie certyfikatów na maszynach wirtualnych z zarządzanego przez klienta usługi Key Vault](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) (wpis na blogu).
-- [Pobierania próbek klienta usługi Azure Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) ilustruje sposób użycia certyfikatu uruchamiania do uwierzytelniania w usłudze Azure AD do dostępu do magazynu kluczy.
+Fragmenty kodu programu PowerShell w tej sekcji są tworzone za pomocą następujące założenia:
+- Administrator usługi Azure AD utworzył grupy zabezpieczeń, aby przedstawić trzy role: Zespół ds. zabezpieczeń firmy Contoso, Contoso App DevOps i audytorzy aplikacji Contoso. Administrator dodał użytkowników do odpowiednich grup.
+- Wszystkie zasoby znajdują się w **ContosoAppRG** grupy zasobów.
+- Dzienniki magazynu kluczy są przechowywane w **contosologstorage** konta magazynu. 
+- **ContosoKeyVault** usługi key vault i **contosologstorage** konta magazynu znajdują się w tej samej lokalizacji platformy Azure.
 
-Większość uprawnień dostępu można przyznać za pomocą witryny Azure portal. Celu przyznania szczegółowych uprawnień, może być konieczne użycie programu Azure PowerShell lub interfejsu wiersza polecenia, aby osiągnąć oczekiwany rezultat. 
-
-W poniższych fragmentach kodu programu PowerShell przyjęto następujące założenia:
-
-* Administrator usługi Azure AD utworzył grupy zabezpieczeń, które reprezentują trzy role (zespół ds. zabezpieczeń firmy Contoso, Contoso App Devops i audytorzy aplikacji Contoso). Administrator dodał również użytkowników do grup, do których należą.
-* **ContosoAppRG** to grupa zasobów, w której znajdują się wszystkie zasoby. **contosologstorage** to miejsce, w którym przechowywane są dzienniki. 
-* Magazyn kluczy **ContosoKeyVault**, a konto magazynu używane dla dzienników usługi Key Vault **contosologstorage**, musi znajdować się w tej samej lokalizacji platformy Azure.
-
-Najpierw administrator subskrypcji przypisuje `key vault Contributor` i `User Access Administrator` ról do zespołu zabezpieczeń. Te role Zezwalaj na zespół ds. zabezpieczeń Zarządzanie dostępem do innych zasobów i Zarządzanie magazynami kluczy, w grupie zasobów ContosoAppRG.
+Administrator subskrypcji przypisuje `key vault Contributor` i `User Access Administrator` ról do zespołu zabezpieczeń. Te role Zezwalaj na zespół ds. zabezpieczeń Zarządzanie dostępem do innych zasobów i magazynów kluczy, które w **ContosoAppRG** grupy zasobów.
 
 ```PowerShell
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "key vault Contributor" -ResourceGroupName ContosoAppRG
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -RoleDefinitionName "User Access Administrator" -ResourceGroupName ContosoAppRG
 ```
 
-Poniższy skrypt pokazuje, jak zespół ds. zabezpieczeń można utworzyć magazyn kluczy i konfigurowanie rejestrowania i uprawnienia dostępu. Aby uzyskać szczegółowe informacje o uprawnieniach zasad dostępu magazynu kluczy, zobacz [klucze, wpisy tajne i certyfikaty usługi Azure Key Vault](about-keys-secrets-and-certificates.md).
+Zespół ds. zabezpieczeń utworzenie magazynu kluczy i konfiguruje rejestrowanie i uprawnienia dostępu. Aby uzyskać szczegółowe informacje o uprawnieniach zasad dostępu magazynu kluczy, zobacz [klucze usługi Azure Key Vault, klucze tajne i certyfikaty](about-keys-secrets-and-certificates.md).
 
 ```PowerShell
-# Create key vault and enable logging
+# Create a key vault and enable logging
 $sa = Get-AzStorageAccount -ResourceGroup ContosoAppRG -Name contosologstorage
 $kv = New-AzKeyVault -Name ContosoKeyVault -ResourceGroup ContosoAppRG -SKU premium -Location 'westus' -EnabledForDeployment
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 
-# Data plane permissions for Security team
+# Set up data plane permissions for the Contoso Security Team role
 Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -SearchString 'Contoso Security Team')[0].Id -PermissionsToKeys backup,create,delete,get,import,list,restore -PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge
 
-# Management plane permissions for Dev/ops
-# Create a new role from an existing role
+# Set up management plane permissions for the Contoso App DevOps role
+# Create the new role from an existing role
 $devopsrole = Get-AzRoleDefinition -Name "Virtual Machine Contributor"
 $devopsrole.Id = $null
-$devopsrole.Name = "Contoso App Devops"
-$devopsrole.Description = "Can deploy VMs that need secrets from key vault"
+$devopsrole.Name = "Contoso App DevOps"
+$devopsrole.Description = "Can deploy VMs that need secrets from a key vault"
 $devopsrole.AssignableScopes = @("/subscriptions/<SUBSCRIPTION-GUID>")
 
-# Add permission for dev/ops so they can deploy VMs that have secrets deployed from key vaults
+# Add permissions for the Contoso App DevOps role so members can deploy VMs with secrets deployed from key vaults
 $devopsrole.Actions.Add("Microsoft.KeyVault/vaults/deploy/action")
 New-AzRoleDefinition -Role $devopsrole
 
-# Assign this newly defined role to Dev ops security group
+# Assign the new role to the Contoso App DevOps security group
 New-AzRoleAssignment -ObjectId (Get-AzADGroup -SearchString 'Contoso App Devops')[0].Id -RoleDefinitionName "Contoso App Devops" -ResourceGroupName ContosoAppRG
 
-# Data plane permissions for Auditors
+# Set up data plane permissions for the Contoso App Auditors role
 Set-AzKeyVaultAccessPolicy -VaultName ContosoKeyVault -ObjectId (Get-AzADGroup -SearchString 'Contoso App Auditors')[0].Id -PermissionsToKeys list -PermissionsToSecrets list
 ```
 
-Zdefiniowaną rolę niestandardową jest tylko można przypisać do subskrypcji gdzie `ContosoAppRG` zostanie utworzona grupa zasobów. Jeśli te same role niestandardowe będą używane dla innych projektów w innych subskrypcjach, jej zakresu może być dodane więcej subskrypcji.
+Można przypisać tylko do subskrypcji są nasze zdefiniowanych ról niestandardowych gdzie **ContosoAppRG** zostanie utworzona grupa zasobów. Aby użyć roli niestandardowej dla innych projektów w innych subskrypcjach, należy dodać inne subskrypcje do zakresu roli.
 
-Przypisanie roli niestandardowej dla deweloperów i operatorów uprawnienia "Wdrażanie/Akcja" obejmuje grupę zasobów. Dzięki temu tylko maszyny wirtualne utworzone w grupie zasobów `ContosoAppRG` na dostęp do wpisy tajne (certyfikat SSL i certyfikat uruchamiania). Maszyny wirtualne utworzone w innej grupie zasobów przez deweloperów i operatorów członek zespołu nie mają dostępu do tych kluczy tajnych, nawet jeśli mają one wpisu tajnego identyfikatorów URI.
+Dla naszych pracownicy działu DevOps, przypisanie roli niestandardowej dla usługi key vault `deploy/action` uprawnienie jest ograniczone do grupy zasobów. Tylko maszyny wirtualne utworzone w **ContosoAppRG** grupę zasobów będą miały dostęp do wpisów tajnych (protokołu SSL i certyfikatów bootstrap). Maszyny wirtualne utworzone w innych grupach zasobów przez członka DevOps nie może uzyskać dostępu tych kluczy tajnych, nawet wtedy, gdy maszyna wirtualna ma tajny identyfikatorów URI.
 
-Ten przykład pokazuje Prosty scenariusz. Rzeczywiste scenariusze mogą być bardziej skomplikowane i uprawnień można dostosować do własnego magazynu kluczy, w zależności od potrzeb. W tym przykładzie przyjęto założenie, że zespół ds. zabezpieczeń zawiera klucza i wpisu tajnego odwołania (identyfikatory URI i odciski palca), które deweloperów i operatorów musi odwoływać się w swoich aplikacjach. Deweloperów i operatorów nie wymagają żadnych dostęp do płaszczyzny danych. Ten przykład koncentruje się na zabezpieczaniu magazynu kluczy. Należy nadać kontu podobne uwagi, aby zabezpieczyć [maszyn wirtualnych z systemem](https://azure.microsoft.com/services/virtual-machines/security/), [kont magazynu](../storage/common/storage-security-guide.md)i innych zasobów platformy Azure.
+Naszym przykładzie przedstawiono prosty scenariusz. Rzeczywistych scenariuszach może być bardziej skomplikowane. Uprawnienia można dostosować do własnego magazynu kluczy, w zależności od potrzeb. Firma Microsoft zakłada, że zespół ds. zabezpieczeń zapewnia klucza i wpisu tajnego odwołania (identyfikatory URI i odciski palca), które są używane przez pracownicy działu DevOps w swoich aplikacjach. Deweloperów i operatorów nie wymagają żadnych dostęp do płaszczyzny danych. Skupiliśmy się na sposób zabezpieczania własnego magazynu kluczy. Zapewniają podobne uwagi podczas zabezpieczania [maszyn wirtualnych z systemem](https://azure.microsoft.com/services/virtual-machines/security/), [kont magazynu](../storage/common/storage-security-guide.md)i innych zasobów platformy Azure.
 
 > [!NOTE]
-> Ten przykład pokazuje, w jaki sposób dostępu do magazynu kluczy będzie zabezpieczany w środowisku produkcyjnym. Deweloperzy powinni mieć swoją własną subskrypcję lub grupę zasobów gdzie mają pełne uprawnienia do zarządzania ich magazynów, maszyny wirtualne i konta magazynu gdzie opracowują aplikacje.
+> Ten przykład pokazuje, jak dostęp do usługi Key Vault jest zablokowana w środowisku produkcyjnym. Deweloperzy powinni mieć własne subskrypcji lub grupy zasobów z pełnymi uprawnieniami do zarządzania ich magazynów, maszyny wirtualne i konta magazynu, gdzie opracowują aplikacje.
 
-Zdecydowanie zaleca się bardziej szczegółowo bezpiecznego dostępu do magazynu kluczy przez [Konfigurowanie usługi Key Vault zapory i sieci wirtualne](key-vault-network-security.md).
+Zalecane jest skonfigurowanie dodatkowych bezpiecznego dostępu do magazynu kluczy przez [Konfigurowanie usługi Key Vault zapory i sieci wirtualne](key-vault-network-security.md).
 
 ## <a name="resources"></a>Zasoby
 
-* [Kontroli dostępu opartej na rolach w usłudze Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
-  
+* [Usługa Azure AD RBAC](../role-based-access-control/role-assignments-portal.md)
+
 * [RBAC: Wbudowane role](../role-based-access-control/built-in-roles.md)
-  
-* [Omówienie wdrażania przy użyciu usługi Resource Manager oraz wdrażania klasycznego](../azure-resource-manager/resource-manager-deployment-model.md)
-  
-* [Zarządzanie kontrolą dostępu opartej na rolach przy użyciu programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md)
-  
-* [Zarządzanie kontrolą dostępu opartej na rolach za pomocą interfejsu API REST](../role-based-access-control/role-assignments-rest.md)
-  
-* [Kontrola dostępu oparta na rolach dla usługi Microsoft Azure z konferencji Ignite](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
-  
-  Ta 2015 Microsoft Ignite konferencji wideo omawia zarządzania dostępem i możliwości raportowania w systemie Azure. Analizuje ona również najlepsze rozwiązania dotyczące zabezpieczania dostępu do subskrypcji platformy Azure przy użyciu usługi Azure AD.
+
+* [Omówienie wdrażania usługi Resource Manager oraz wdrażania klasycznego](../azure-resource-manager/resource-manager-deployment-model.md) 
+
+* [Zarządzanie funkcją RBAC przy użyciu programu Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) 
+
+* [Zarządzanie funkcją RBAC przy użyciu interfejsu API REST](../role-based-access-control/role-assignments-rest.md)
+
+* [RBAC na platformie Microsoft Azure](https://channel9.msdn.com/events/Ignite/2015/BRK2707)
+
+    Ta 2015 Microsoft Ignite konferencji wideo omawia zarządzania dostępem i możliwości raportowania w systemie Azure. Analizuje ona również najlepsze rozwiązania dotyczące zabezpieczania dostępu do subskrypcji platformy Azure przy użyciu usługi Azure AD.
+
 * [Autoryzowanie dostępu do aplikacji sieci web przy użyciu protokołu OAuth 2.0 i usługi Azure AD](../active-directory/develop/v1-protocols-oauth-code.md)
-  
+
 * [Zarządzanie usługą Key Vault interfejsów API REST](https://msdn.microsoft.com/library/azure/mt620024.aspx)
-  
-  Ten dokument jest odwołanie do interfejsów API REST do zarządzania magazynem kluczy programowo, włącznie z ustawieniem zasad dostępu magazynu kluczy.
+
+    Dokumentacja interfejsów API REST do zarządzania klucz magazynu programowo, włącznie z ustawieniem zasad dostępu magazynu kluczy.
+
 * [Interfejsy API REST usługi Key Vault](https://msdn.microsoft.com/library/azure/dn903609.aspx)
-  
+
 * [Kontrola dostępu do kluczy](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_KeyAccessControl)
   
 * [Kontrola dostępu do kluczy tajnych](https://msdn.microsoft.com/library/azure/dn903623.aspx#BKMK_SecretAccessControl)
@@ -253,13 +228,12 @@ Zdecydowanie zaleca się bardziej szczegółowo bezpiecznego dostępu do magazyn
   
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Konfigurowanie zapór i sieci wirtualnych usługi Key Vault](key-vault-network-security.md)
+Konfigurowanie [usługi Key Vault zapory i sieci wirtualne](key-vault-network-security.md).
 
-Aby zapoznać się z samouczkiem wprowadzającym dla administratora, zobacz [Wprowadzenie do usługi Azure Key Vault](key-vault-get-started.md).
+Samouczek — Wprowadzenie dla administratora, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md).
 
 Aby uzyskać więcej informacji na temat rejestrowania użycia usługi Key Vault, zobacz [Funkcja rejestrowania usługi Azure Key Vault](key-vault-logging.md).
 
 Aby uzyskać więcej informacji na temat używania kluczy i wpisów tajnych za pomocą usługi Azure Key Vault, zobacz [o kluczach i wpisach tajnych](https://msdn.microsoft.com/library/azure/dn903623.aspx).
 
 Jeśli masz pytania dotyczące usługi Key Vault, odwiedź stronę [forów](https://social.msdn.microsoft.com/forums/azure/home?forum=AzureKeyVault).
-

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: jeedes
-ms.openlocfilehash: a1d12784fb3f88889cd9ba0d622d1bc5d84374a8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 175b90318a3f66c1a30ee3c4002d863582767b34
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55165340"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fmsystems"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą FM:Systems
 
@@ -115,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W **adres URL odpowiedzi** polu tekstowym wpisz swoje FM:Systems **adres URL odpowiedzi**, wpisz adres URL, za pomocą następującego wzorca: `https://<companyname>.fmshosted.com/fminteract/ConsumerService2.aspx`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywistego adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej FM:Systems](https://fmsystems.com/ask-us/) aby zyskać tę wartość.
+    > Ta wartość nie jest prawdziwa. Zaktualizuj tę wartość przy użyciu rzeczywistego adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej FM:Systems](https://fmsystems.com/ask-us/) aby zyskać tę wartość.
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 

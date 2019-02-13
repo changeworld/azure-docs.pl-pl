@@ -1,5 +1,5 @@
 ---
-title: Program PowerShell dla punktów końcowych usługi sieci wirtualnej i reguł w usłudze Azure SQL | Dokumentacja firmy Microsoft
+title: Program PowerShell dla punktów końcowych sieci wirtualnej i reguł dla pojedynczych i puli baz danych w usłudze Azure SQL | Dokumentacja firmy Microsoft
 description: Zawiera skrypty programu PowerShell, aby utworzyć i zarządzać punktami końcowymi usługi wirtualnej dla usługi Azure SQL Database i SQL Data Warehouse.
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 10/23/2018
-ms.openlocfilehash: ae29fcfe39b5844ab948eb55ca314ae51dcae174
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/11/2019
+ms.openlocfilehash: b30240620e3a8d3dea1849e895ec021c96fc11c6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566299"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117616"
 ---
 # <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>Program PowerShell:  Tworzenie punktu końcowego usługi wirtualnego i regułę sieci wirtualnej dla programu SQL
 
-Usługa Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) obsługują punkty końcowe usługi wirtualnego.
+*Reguł sieci wirtualnej* są jednym zapory funkcja zabezpieczeń, która określa, czy serwer bazy danych dla pojedynczych baz danych i pul elastycznych w systemie Azure [bazy danych SQL](sql-database-technical-overview.md) lub baz danych w [danych serwera SQL Magazyn](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych.
 
-> [!NOTE]
-> Ten artykuł dotyczy serwera Azure SQL i bazy danych SQL Database i SQL Data Warehouse baz danych, które są tworzone na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. W tym artykule jest *nie* dotyczą **wystąpienia zarządzanego Azure SQL Database** mają, punkt końcowy usługi skojarzone z podsieci wystąpienia zarządzanego.
+> [!IMPORTANT]
+> Ten artykuł dotyczy serwera Azure SQL i bazy danych SQL Database i SQL Data Warehouse baz danych, które są tworzone na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. W tym artykule jest *nie* dotyczą **wystąpienia zarządzanego** wdrożenia w usłudze Azure SQL Database, ponieważ nie ma punktu końcowego usługi skojarzono.
 
 Ten artykuł zawiera oraz wyjaśniono skrypt programu PowerShell, który wykonuje następujące akcje:
 

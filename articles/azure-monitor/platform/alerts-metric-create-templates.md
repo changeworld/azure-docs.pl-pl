@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 0c7e0e539ca884739f5bf633946a4704d29b132b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9f8d6488d12b5550c3390699b9c34380b51b60f9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448232"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112601"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 
 W tym artykule pokazano, jak za pomocą [szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) skonfigurować [nowszych alertów metryk](../../azure-monitor/platform/alerts-metric-near-real-time.md) w usłudze Azure Monitor. Szablony usługi Resource Manager umożliwiają programowe Konfigurowanie alertów w sposób spójny i odtworzenia w środowiskach. Nowszych alertów metryk są obecnie dostępne na [tego zestawu typów zasobów](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported).
 
 > [!IMPORTANT]
-> Szablon usługi Resource Manager, określony dla alertu metryki nie będzie działać dla typu zasobu: Microsoft.OperationalInsights/workspaces; Obsługa metryki z usługi Log Analytics jest dostępna w wersji zapoznawczej. Użytkownicy zainteresowani korzystając z funkcji wersji zapoznawczej za pomocą szablonu zasobów mogą kontaktować się z [opinii alertów platformy Azure](mailto:azurealertsfeedback@microsoft.com)
+> Zasobu szablon umożliwiający tworzenie alertów dotyczących metryk dla typu zasobu: Usługa Azure obszar roboczy usługi Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces`, wymagane jest wykonanie dodatkowych kroków. Aby uzyskać więcej informacji, zobacz artykuł na [metryki alertów dzienników — szablon zasobu](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Podstawowe kroki są następujące:
 

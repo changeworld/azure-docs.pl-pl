@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 1e638bd348b7a5272dd8bfbe25aa841f38a51b9a
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: e568a8b7cfb21483f447b8244056de292e21093f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53409704"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169405"
 ---
 # <a name="run-apache-hive-queries-using-the-query-console"></a>Uruchamianie zapytania usługi Apache Hive przy użyciu konsoli zapytań
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
@@ -62,7 +62,7 @@ Aby wykonać kroki opisane w tym artykule, potrzebne następujące elementy.
    * **PRZECHOWYWANE JAKO LOKALIZACJA TEXTFILE**: Informuje, Hive, w którym przechowywane są dane (katalog przykład/danych) i które są przechowywane jako tekst
    * **WYBIERZ**: Wybierz liczbę wszystkich wierszy gdzie kolumna **t4** zawierają wartość **[Błąd]**. Powinny zostać zwrócone wartości **3** ponieważ istnieją trzy wiersze, które zawierają tę wartość.
    * **INPUT__FILE__NAME takich jak "%.log"** — informuje Hive, firma Microsoft powinno zwrócić tylko dane z plików kończy się rozszerzeniem. log. To ogranicza wyszukiwanie do pliku sample.log, który zawiera dane i utrzymuje je zwracanie danych z innych przykładu plików danych, które nie są zgodne ze schematem zdefiniowaliśmy.
-3. Kliknij przycisk **Submit** (Prześlij). **Sesji zadania** w dolnej części strony powinna zostać wyświetlona szczegóły zadania.
+3. Kliknij przycisk **Prześlij**. **Sesji zadania** w dolnej części strony powinna zostać wyświetlona szczegóły zadania.
 4. Gdy **stan** zmiany pola z **Ukończono**, wybierz opcję **Wyświetl szczegóły** dla zadania. Na stronie szczegółów **dane wyjściowe zadania** zawiera `[ERROR]    3`. Możesz użyć **Pobierz** przycisku w tym polu, aby pobrać plik, który zawiera dane wyjściowe zadania.
 
 ## <a id="summary"></a>Podsumowanie
@@ -80,10 +80,7 @@ Aby uzyskać informacje o innych metodach można pracować z platformą Hadoop w
 * [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
 * [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
-Jeśli używasz aplikacji Tez przy użyciu technologii Hive, zobacz następujące dokumenty, aby uzyskać informacje o debugowaniu:
-
-* [Użyj interfejsu użytkownika Tez Apache na HDInsight z systemem Windows](../hdinsight-debug-tez-ui.md)
-* [Użyj widoku Apache Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
+Jeśli używasz aplikacji Tez przy użyciu technologii Hive, zobacz poniższy dokument, aby uzyskać informacje o debugowaniu: [Użyj widoku Apache Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md).
 
 [1]:apache-hadoop-visual-studio-tools-get-started.md
 

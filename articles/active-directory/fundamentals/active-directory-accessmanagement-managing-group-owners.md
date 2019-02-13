@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 887f376eafadfb556ce69611195301b25b24bbd5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2541a1d76b56f92b250fb422951769db7877213e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104256"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181749"
 ---
 # <a name="add-or-remove-group-owners-in-azure-active-directory"></a>Dodawanie lub usuwanie właściciele grupy w usłudze Azure Active Directory
 Grupy usługi Azure Active Directory (Azure AD), są własnością i zarządzane przez właścicieli grupy. Właściciele grupy są przypisywane do zarządzania grupą i jej elementów członkowskich według właściciela zasobu (administrator). Właściciele grupy nie muszą być członkami grupy. Po przypisaniu właściciela grupy właściciela zasobu, można dodać lub usunąć właścicieli.

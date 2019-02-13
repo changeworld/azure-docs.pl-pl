@@ -16,12 +16,13 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: a7dc8fc5e2a705612cecc3cf7d108d38f1e3b2bc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ce2dc95aae2ba4677da81ce6af45b8a715000e10
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169284"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210343"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>Szybki start: Zablokuj dostęp po wykryciu zagrożenia sesji przy użyciu usługi Azure Active Directory Identity Protection  
 
@@ -66,7 +67,7 @@ Scenariusz, w tym przewodniku Szybki Start używa logowania za pomocą przegląd
 
 W tej sekcji przedstawiono sposób tworzenia zasad dostępu warunkowego wymagany ryzyka logowania. Ustaw w zasadach:
 
-|Ustawienie |Value|
+|Ustawienie |Wartość|
 |---     | --- |
 | Użytkownicy  | Alain Charon  |
 | Warunki | Ryzyko logowania, średnie i wyższe |

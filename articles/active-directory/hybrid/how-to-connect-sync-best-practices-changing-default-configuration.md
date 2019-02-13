@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1cebd5d049475a5962a87abede449bd6d53f3ee2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 940a35d89996b1eb9600fe4214863d2b5304750e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492457"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168650"
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Synchronizacja programu Azure AD Connect: Najlepsze rozwiązania dotyczące zmieniania konfiguracji domyślnej
 Ten temat ma na celu opisania obsługiwanych i nieobsługiwanych zmian do synchronizacji Azure AD Connect.

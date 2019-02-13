@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 69a0bde58a365ff124bc41b6039c606cb38f71fe
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768549"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168151"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Usługa Azure Stack VM update i zarządzanie
 Następujące funkcje rozwiązania usługi Azure Automation służy do zarządzania Windows i maszyn wirtualnych systemu Linux, które są wdrażane przy użyciu usługi Azure Stack:
@@ -100,4 +100,4 @@ Maszyny wirtualne Azure Stack mogą być teraz dołączane w zaplanowanych wdro�
 Jeśli masz dużą liczbę maszyn wirtualnych platformy Azure Stack, możesz użyć [tego szablonu usługi Azure Resource Manager](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) łatwo wdrożyć rozwiązanie na maszynach wirtualnych. Szablon wdraża rozszerzenia Microsoft Monitoring Agent do istniejącej maszyny Wirtualnej usługi Azure Stack i dodaje go do istniejącego obszaru roboczego LogAnalytics platformy Azure.
  
 ## <a name="next-steps"></a>Kolejne kroki
-[Optymalizacja wydajności programu SQL Server](azure-stack-sql-server-vm-considerations.md)
+[Optymalizuj wydajność maszyny Wirtualnej programu SQL Server](azure-stack-sql-server-vm-considerations.md)

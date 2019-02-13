@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: bb9277a9e8f5e8bacb6b7aab7b9a5b411c86edbd
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 3d7fd9b3e7ab8e5f193fd3b34a804b9ed0780d66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55967628"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105692"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Przekształcanie danych za pomocą usługi Databricks w usłudze Azure Data Factory
 
@@ -89,13 +89,13 @@ W celu uproszczenia tego szablonu, szablon nie tworzy zaplanowane wyzwalanie. Mo
 
     1.  **Obiekt sink** — służy do kopiowania danych do.
 
-        Wybierz magazyn, utworzone w [warunku wstępnego 1](#prerequisite), w ujściu połączoną usługę.
+        Wybierz magazyn, utworzone w ramach warunku wstępnego 1, w usłudze połączonej ujścia.
 
         ![7](media/solution-template-Databricks-notebook/Databricks-tutorial-image07.png)
 
     1.  **Usługi Databricks** — służy do łączenia się z klastrem usługi Databricks
 
-        Utwórz połączoną usługę przy użyciu klucza dostępu wygenerowanych w usługi Databricks [wymagań wstępnych 2.c](#prerequisite). Jeśli masz *klastra interaktywne*, może wybrać, który. (W tym przykładzie użyto *nowego klastra zadań* opcję.)
+        Utwórz połączoną usługę Databricks przy użyciu klucza dostępu wygenerowanych w 2.c wymagań wstępnych. Jeśli masz *klastra interaktywne*, może wybrać, który. (W tym przykładzie użyto *nowego klastra zadań* opcję.)
 
         ![8](media/solution-template-Databricks-notebook/Databricks-tutorial-image08.png)
 

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f336f6fdb5cde638fe62d1410a9f993492be21ed
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f91ccc93dcd2ac9b96379c4aa94d1f430faaf66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747564"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118296"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 
@@ -961,7 +961,7 @@ W tym przypadku chcemy przekazywanie wirtualnego dysku twardego, z lub bez syste
 * Zaloguj się do subskrypcji za pomocą *logowania az*
 * Wybierz swoją subskrypcję z *set konta az--subskrypcji `<subscription name or id`>*
 * Przekazywanie wirtualnego dysku twardego z *az storage blob upload* — zobacz [przy użyciu wiersza polecenia platformy Azure z usługą Azure Storage][storage-azure-cli]
-* (Opcjonalnie) Tworzenie dysku zarządzanego na podstawie wirtualnego dysku twardego z *tworzenia dysku az* — zobacz https://docs.microsoft.com/cli/azure/disk#az_disk_create
+* (Opcjonalnie) Tworzenie dysku zarządzanego na podstawie wirtualnego dysku twardego z *tworzenia dysku az* — zobacz https://docs.microsoft.com/cli/azure/disk
 * Utwórz nową maszynę Wirtualną, określając przekazanych wirtualnego dysku twardego lub dysku zarządzanego jako dysk systemu operacyjnego za pomocą *tworzenie az vm* i parametru *— dołączanie os-disk*
 * Dodaj dysk danych do nowej maszyny Wirtualnej za pomocą *dołączanie dysku maszyny wirtualnej az* i parametru *— nowe*
 
@@ -990,7 +990,7 @@ Do przekazania istniejącej maszyny Wirtualnej lub wirtualnego dysku twardego z 
 * Zaloguj się do subskrypcji za pomocą *logowania az*
 * Wybierz swoją subskrypcję z *set konta az--subskrypcji `<subscription name or id`>*
 * Przekazywanie wirtualnego dysku twardego z *az storage blob upload* — zobacz [przy użyciu wiersza polecenia platformy Azure z usługą Azure Storage][storage-azure-cli]
-* (Opcjonalnie) Tworzenie obrazu dysku zarządzanego na podstawie wirtualnego dysku twardego z *utworzyć obraz az* — zobacz https://docs.microsoft.com/cli/azure/image#az_image_create
+* (Opcjonalnie) Tworzenie obrazu dysku zarządzanego na podstawie wirtualnego dysku twardego z *utworzyć obraz az* — zobacz https://docs.microsoft.com/cli/azure/image
 * Utwórz nową maszynę Wirtualną, określając przekazanych wirtualnego dysku twardego lub obrazu dysku zarządzanego jako dysk systemu operacyjnego za pomocą *tworzenie az vm* i parametru *— obraz*
 
 **Szablon**

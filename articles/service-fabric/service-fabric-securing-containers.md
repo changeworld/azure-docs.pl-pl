@@ -14,16 +14,16 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: twhitney, subramar
-ms.openlocfilehash: d49c16741f581b2ad09dc173e8380fdf77391dbe
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: deb8eacb1e9c55feba6b356eedc61ba57c3a6566
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299065"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110323"
 ---
 # <a name="import-a-certificate-file-into-a-container-running-on-service-fabric"></a>Zaimportuj plik certyfikatu w kontenerze uruchomiona w usłudze Service Fabric
 
-Można zabezpieczyć usługi kontenera, określając certyfikatu. Usługa Service Fabric udostępnia mechanizm dla usług w kontenerze na dostęp do certyfikatu, który jest zainstalowany na węzłach w klastrze Windows lub Linux (w wersji 5.7 lub nowszej). Certyfikat musi być zainstalowany w LocalMachine we wszystkich węzłach klastra. Informacje o certyfikacie znajduje się w manifeście aplikacji, w obszarze `ContainerHostPolicies` tag, co ilustruje poniższy fragment kodu:
+Można zabezpieczyć usługi kontenera, określając certyfikatu. Usługa Service Fabric udostępnia mechanizm dla usług w kontenerze na dostęp do certyfikatu, który jest zainstalowany na węzłach w klastrze Windows lub Linux (w wersji 5.7 lub nowszej). Certyfikat musi być zainstalowany w magazynie certyfikatów w obszarze LocalMachine we wszystkich węzłach klastra. Klucza prywatnego odpowiadająca certyfikatu musi być dostępny, dostępny i - Windows - eksportowalny. Informacje o certyfikacie znajduje się w manifeście aplikacji, w obszarze `ContainerHostPolicies` tag, co ilustruje poniższy fragment kodu:
 
 ```xml
   <ContainerHostPolicies CodePackageRef="NodeContainerService.Code">
@@ -31,7 +31,7 @@ Można zabezpieczyć usługi kontenera, określając certyfikatu. Usługa Servic
     <CertificateRef Name="MyCert2" X509FindValue="[Thumbprint2]"/>
  ```
 
-W przypadku klastrów Windows, podczas uruchamiania aplikacji środowisko uruchomieniowe odczytuje certyfikaty i generuje plik PFX i hasło dla każdego certyfikatu. Ten plik PFX i hasło są dostępne w kontenerze za pomocą następujące zmienne środowiskowe: 
+W przypadku klastrów Windows, podczas uruchamiania aplikacji środowisko uruchomieniowe eksportuje każdego odwołania certyfikatu i odpowiedniego klucza prywatnego do pliku PFX zabezpieczony hasłem generowany losowo. Pliki PFX oraz hasła, odpowiednio, są dostępne w kontenerze za pomocą następujące zmienne środowiskowe: 
 
 * Certificates_ServicePackageName_CodePackageName_CertName_PFX
 * Certificates_ServicePackageName_CodePackageName_CertName_Password

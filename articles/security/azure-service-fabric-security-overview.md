@@ -4,7 +4,7 @@ description: Ten artykuł zawiera omówienie zabezpieczeń usługi Azure Service
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
-ms.openlocfilehash: 629b6fba9ced5fa2ccf22f473fe25c87d1cc4818
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 3e7717d4ee07a1f3bfebb5e09b983af68aa4ea31
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436814"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116224"
 ---
 # <a name="azure-service-fabric-security-overview"></a>Omówienie zabezpieczeń usługi Azure Service Fabric
 [Usługa Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) to platforma systemów rozproszonych ułatwiająca pakowanie, wdrażanie i zarządzanie nimi skalowalnych i niezawodnych mikrousług. Usługa Service Fabric sprostać wyzwaniom związanym z opracowywaniem i zarządzaniem nimi aplikacji w chmurze. Deweloperzy i Administratorzy mogą uniknąć złożonych problemów z infrastrukturą i skoncentrować się na wdrażaniu krytycznych, wymagających obciążeń, które są skalowalne i niezawodne.
@@ -47,8 +47,8 @@ Węzeł klienta zabezpieczeń można skonfigurować za pomocą tożsamości klie
 
 Usługa Service Fabric obsługuje dwa typy kontroli dostępu dla klientów, które są podłączone do klastra usługi Service Fabric:
 
--   **Administrator**: pełny dostęp do możliwości zarządzania, w tym możliwości odczytu/zapisu.
--   **Użytkownik**: tylko do odczytu możliwości zarządzania (na przykład, zapytanie możliwości) i możliwość usuwania aplikacji i usług.
+-   **Administrator**: Pełny dostęp do możliwości zarządzania, w tym możliwości odczytu/zapisu.
+-   **Użytkownik**: Dostęp tylko do odczytu do funkcji zarządzania (na przykład możliwości zapytań), a możliwość usuwania aplikacji i usług.
 
 Za pomocą kontroli dostępu, Administratorzy klastra można ograniczyć dostęp do niektórych typów operacji klastra. To sprawia, że klaster bardziej bezpieczne.
 
@@ -83,11 +83,11 @@ Z punktu widzenia zabezpieczeń głównych celów monitorowania i diagnostyki s�
 
 Przepływ pracy monitorowania i diagnostyki składa się z trzech kroków:
 
-1.  **Generowanie zdarzeń**: generowanie zdarzeń zawiera zdarzenia (dzienników, ślady, zdarzenia niestandardowe), zarówno w poziomie infrastruktury (klaster), jak i na poziomie aplikacji/usługi. Przeczytaj więcej na temat [zdarzenia na poziomie infrastruktury](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) i [zdarzenia na poziomie aplikacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) Aby zrozumieć, jaka jest dostępna i jak dodać więcej instrumentacji.
+1.  **Generowanie zdarzeń**: Generowanie zdarzeń zawiera zdarzenia (dzienników, ślady, zdarzenia niestandardowe), zarówno w poziomie infrastruktury (klaster), jak i na poziomie aplikacji/usługi. Przeczytaj więcej na temat [zdarzenia na poziomie infrastruktury](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-infra) i [zdarzenia na poziomie aplikacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-generation-app) Aby zrozumieć, jaka jest dostępna i jak dodać więcej instrumentacji.
 
-2.  **Zdarzenie agregacji**: generowanych zdarzeń muszą być zbierane i zagregowane, zanim będzie można je wyświetlić. Zwykle zaleca się używanie [diagnostyki Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobne do zbierania dzienników opartej o agentów) lub [użyciu struktury EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (w procesie zbieranie danych dziennika).
+2.  **Zdarzenie agregacji**: Wygenerowane zdarzenia muszą być zbierane i zagregowane, zanim będzie można je wyświetlić. Zwykle zaleca się używanie [diagnostyki Azure](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-wad) (podobne do zbierania dzienników opartej o agentów) lub [użyciu struktury EventFlow](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-aggregation-eventflow) (w procesie zbieranie danych dziennika).
 
-3.  **Analiza**: zdarzenia muszą być wizualizowany i jest dostępny w niektórych formacie, aby zezwolić na potrzeby analizy i wyświetlania. Istnieje kilka platformy do analizy i wizualizacji danych monitorowania i diagnostyki. Firma Microsoft zaleca [usługi Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) i [usługi Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) ponieważ ich bezproblemową integrację z usługi Service Fabric.
+3.  **Analiza**: Zdarzenia muszą być wizualizowany i jest dostępny w niektórych formacie, aby zezwolić na potrzeby analizy i wyświetlania. Istnieje kilka platformy do analizy i wizualizacji danych monitorowania i diagnostyki. Firma Microsoft zaleca [usługi Azure Log Analytics](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-oms) i [usługi Azure Application Insights](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights) ponieważ ich bezproblemową integrację z usługi Service Fabric.
 
 Można również użyć [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview) do monitorowania wielu zasobów platformy Azure, na których bazuje klaster usługi Service Fabric.
 

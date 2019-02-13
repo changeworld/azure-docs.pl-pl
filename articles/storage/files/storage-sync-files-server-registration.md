@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: cec6da78ae47b509e2bb5f8ba0007208545062e7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 493f6f3380dee4ed70bb6e0bc9bba24f93071097
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478070"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165335"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Zarządzanie serwerami zarejestrowanych za pomocą usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files bez rezygnacji z elastyczności, wydajności i zgodności lokalnego serwera plików. Robi to poprzez przekształcenie serwerów Windows w szybką pamięć podręczną udziału plików platformy Azure. Możesz użyć dowolnego dostępnego protokołu w systemie Windows Server w celu uzyskania lokalnego dostępu do danych (w tym protokołu SMB, systemu plików NFS i protokołu FTPS) i możesz mieć dowolną potrzebną Ci liczbę pamięci podręcznych na całym świecie.
@@ -165,7 +165,10 @@ Ponieważ usługi Azure File Sync będą rzadko tylko usługi działające w Two
 > Ustawienie zbyt niskich limity wpływają na wydajność synchronizacji usługi Azure File Sync i odwołania.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Ustaw limity sieci usługa Azure File Sync
-Możliwość ograniczania użycia sieci usługi Azure File Sync za pomocą `StorageSyncNetworkLimit` polecenia cmdlet. 
+Możliwość ograniczania użycia sieci usługi Azure File Sync za pomocą `StorageSyncNetworkLimit` polecenia cmdlet.
+
+> [!Note]  
+> Limity sieci nie są stosowane podczas uzyskiwania dostępu do plików warstwowych lub polecenia cmdlet Invoke-StorageSyncFileRecall jest używany.
 
 Na przykład można utworzyć nowy limit przepustowości, aby upewnić się, że usługi Azure File Sync nie korzysta z więcej niż 10 MB/s, między 9: 00 i 17: 00 (godz. 17:00) podczas tygodnia pracy: 
 

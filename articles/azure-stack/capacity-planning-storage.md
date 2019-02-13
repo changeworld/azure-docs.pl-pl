@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 5d9d01a482483d030569a4dcad03c9ecef7cffc0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 29244c20bb4bbad8077788abbc29e6267f701d2e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245154"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176360"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Planowanie pojemności magazynu stosu platformy Azure
 Pojemność magazynu usługi Azure Stack informacje dotyczące planowania ułatwiających planowanie potrzeb dotyczących magazynowania te rozwiązania można znaleźć w poniższych sekcjach.
@@ -49,10 +49,7 @@ Krótkie podsumowanie bezpośrednimi miejscami do magazynowania i konfiguracja m
 
 — Dyski wirtualne utworzone automatycznie i ich możliwości są następujące:
 
-
-
-
-|Name|Obliczenia pojemności|Opis|
+|Name (Nazwa)|Obliczenia pojemności|Opis|
 |-----|-----|-----|
 |Urządzenie lokalne/rozruchowe|Minimalna 340 GB<sup>1</sup>|Magazyn poszczególnych serwerów dla obrazów systemu operacyjnego i maszynami wirtualnymi infrastruktury "local"|
 |Infrastruktura|3,5 TB|Całe użycie infrastruktury Azure Stack|

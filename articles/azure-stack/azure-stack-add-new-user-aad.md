@@ -3,7 +3,7 @@ title: Dodaj nowe konto dzierżawy usługi Azure Stack w usłudze Azure Active D
 description: Po wdrożeniu systemu Microsoft Azure Stack Development Kit, należy utworzyć konta użytkownika co najmniej jednej dzierżawy, dzięki czemu możesz zapoznać się z portalu dzierżawcy.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: patricka
 manager: femila
 editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
-ms.author: jeffgilb
+ms.date: 02/12/2019
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: c0f457955bd8df7fe07e2a96469fde0a751417bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c07288bbfbf70be62723f835192cf09d92166ab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240323"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163227"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Dodaj nowe konto dzierżawy usługi Azure Stack w usłudze Azure Active Directory
 
@@ -56,14 +56,12 @@ Musisz mieć subskrypcję platformy Azure za pomocą witryny Azure portal.
 7. Zaloguj się do portalu Microsoft Azure przy użyciu nowego konta. Zmień hasło po wyświetleniu monitu.
 8. Zaloguj się do `https://portal.local.azurestack.external` przy użyciu nowego konta, aby wyświetlić portalu dzierżawcy.
 
-## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Utwórz konto dzierżawy usługi Azure Stack przy użyciu programu PowerShell
+## <a name="create-an-azure-stack-user-account-using-powershell"></a>Tworzenie konta użytkownika usługi Azure Stack przy użyciu programu PowerShell
 
 Jeśli nie masz subskrypcji platformy Azure, nie można użyć witryny Azure portal, aby dodać konto użytkownika dzierżawy. W takim przypadku można zamiast tego użyj usługi Azure Active Directory modułu dla Windows PowerShell.
 
 > [!NOTE]
 > Jeśli używasz Account firmy Microsoft (Live ID) do wdrożenia usługi Azure Stack Development Kit, nie można utworzyć konta dzierżawy za pomocą programu PowerShell usługi AAD. 
-> 
-> 
 
 1. Zainstaluj [Microsoft Online Services Sign-In Assistant for IT Professionals RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
 2. Zainstaluj [Azure Active Directory Module for Windows PowerShell (wersja 64-bitowa)](https://go.microsoft.com/fwlink/p/?linkid=236297) i otwórz go.
@@ -85,3 +83,6 @@ Jeśli nie masz subskrypcji platformy Azure, nie można użyć witryny Azure por
 1. Zaloguj się do systemu Microsoft Azure przy użyciu nowego konta. Zmień hasło po wyświetleniu monitu.
 2. Zaloguj się do `https://portal.local.azurestack.external` przy użyciu nowego konta, aby wyświetlić portalu dzierżawcy.
 
+## <a name="next-steps"></a>Kolejne kroki
+
+[Dodaj użytkowników usługi Azure Stack w usługach AD FS](azure-stack-add-users-adfs.md)

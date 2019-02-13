@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2a2fafb5da50dbd26786284592cd330df7f5557a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273871"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113706"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Rozproszona geograficznie skala przy użyciu środowisk usługi App Service
 ## <a name="overview"></a>Przegląd
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Scenariusze aplikacji, które wymagają bardzo dużej skali będą mogli przekraczać pojemność zasobów obliczeniowych dostępne dla pojedynczego wdrożenia aplikacji.  Głosowanie aplikacji, imprez sportowych i zdarzenia programu Rozrywka są wszystkie przykładowe scenariusze, które wymagają bardzo dużej skali. Mogą być spełnione wymogi dużej skali, skalując w poziomie aplikacje z wieloma wdrożeniami aplikacji, które zostaną wprowadzone w jednym regionie, a także w regionach, aby zaspokoić wymagania ekstremalne obciążenie.
 
 Środowiska usługi App Service jest idealną platformą do skalowanie w poziomie.  Po środowiska usługi App Service została wybrana konfiguracja obsługujące znanych żądań zakończonych, deweloperzy można wdrożyć dodatkowe środowiska usługi App Service w sposób "plików cookie krajarki" do osiągnięcia żądanego szczytowe obciążenie.
@@ -52,9 +55,9 @@ Przed kompilacją limit rozmiaru aplikacji rozproszonej, warto ma kilka informac
 ## <a name="setting-up-the-traffic-manager-profile"></a>Konfigurowanie profilu usługi Traffic Manager
 Wiele wystąpień aplikacji, wdrożenie w wielu środowiskach usługi App Service wystąpień poszczególnych aplikacji można zarejestrować za pomocą usługi Traffic Manager.  Przykładowa aplikacja usługi Traffic Manager profil na potrzeby dla *demo.trafficmanager.net skalowalne środowisko ase* która może kierować klientów do żadnego z następujących wystąpień wdrożonej aplikacji:
 
-* **webfrontend1.fe1ase.p.azurewebsites.NET:**  Wystąpienie przykładowej aplikacji wdrożonych na pierwszej usługi App Service Environment.
-* **webfrontend2.fe2ase.p.azurewebsites.NET:**  Wystąpienie przykładowej aplikacji wdrożonych na drugim środowisku usługi App Service.
-* **webfrontend3.fe3ase.p.azurewebsites.NET:**  Wystąpienie przykładowej aplikacji wdrożonych w trzecim usługi App Service Environment.
+* **webfrontend1.fe1ase.p.azurewebsites.net:**  Wystąpienie przykładowej aplikacji wdrożonych na pierwszej usługi App Service Environment.
+* **webfrontend2.fe2ase.p.azurewebsites.net:**  Wystąpienie przykładowej aplikacji wdrożonych na drugim środowisku usługi App Service.
+* **webfrontend3.fe3ase.p.azurewebsites.net:**  Wystąpienie przykładowej aplikacji wdrożonych w trzecim usługi App Service Environment.
 
 Najprostszym sposobem zarejestrować wiele usługi Azure App Service punktów końcowych, działającą w **tego samego** region platformy Azure, to przy użyciu programu Powershell [pomocy technicznej usługi Azure Resource Manager Traffic Manager] [ ARMTrafficManager].  
 
@@ -68,13 +71,13 @@ Zwróć uwagę sposób, w jaki *RelativeDnsName* ustawiono parametr *pokaz skalo
 
 Za pomocą utworzony profil każdego wystąpienia aplikacji jest dodawany do profilu jako natywny punkt końcowy platformy Azure.  Poniższy kod pobiera odwołanie do każdej aplikacji sieci web frontonu, a następnie dodaje każdą aplikację jako punktu końcowego usługi Traffic Manager za *element TargetResourceId* parametru.
 
-    $webapp1 = Get-AzureRMWebApp -Name webfrontend1
+    $webapp1 = Get-AzWebApp -Name webfrontend1
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp1.Id –EndpointStatus Enabled –Weight 10
 
-    $webapp2 = Get-AzureRMWebApp -Name webfrontend2
+    $webapp2 = Get-AzWebApp -Name webfrontend2
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend2 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp2.Id –EndpointStatus Enabled –Weight 10
 
-    $webapp3 = Get-AzureRMWebApp -Name webfrontend3
+    $webapp3 = Get-AzWebApp -Name webfrontend3
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend3 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp3.Id –EndpointStatus Enabled –Weight 10
 
     Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile

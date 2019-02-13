@@ -11,16 +11,16 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: fddd54e7c4e88b85f6e6fa8f7319661db96e9524
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 973a82e97bc9770c30e791512b13e4c57a4c5bca
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877545"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116902"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Testowanie za pomocą zestawu wypowiedzi przykład usługi Batch
 
- Testowanie usługi Batch jest kompleksowe testu, bieżące uczonego modelu do pomiaru jego wydajności w usługi LUIS. Przykład wypowiedzi w intencji lub wypowiedzi otrzymany z punktem końcowym runtime prognozowania nie powinien zawierać zestawy danych używane do testowania usługi batch. 
+ Testowanie usługi Batch jest kompleksowe testu, bieżące uczonego modelu do pomiaru jego wydajności w usługi LUIS. Zestawy danych używane do testowania usługi batch nie powinien zawierać wypowiedzi przykład intencji lub wypowiedzi otrzymany z punktem końcowym runtime prognozy. 
 
 <a name="batch-testing"></a>
 

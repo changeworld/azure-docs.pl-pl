@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e4e935a9c78950517623acdf8196d51793fff18a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 879a91d7007057e577631e157dae71f1566acab6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462464"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118228"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Przełącz preferencji interfejsu API dla dziennika alertów
 
@@ -30,6 +30,7 @@ Ma kilka zalet tworzenia i zarządzania alertów za pomocą [scheduledQueryRules
 
 - Możliwość [krzyżowe przeszukiwania dzienników w obszarze roboczym](../log-query/cross-workspace-query.md) reguł alertów oraz zakres zasobów zewnętrznych, takich jak obszary robocze usługi Log Analytics lub nawet aplikacje usługi Application Insights
 - W przypadku wielu pól używanych do grupy w zapytaniu, za pomocą [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) użytkownik może określić które pole ma być agregacji na w witrynie Azure portal
+- Alerty utworzone przy użyciu dzienników [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) można okres zdefiniować maksymalnie 48 godzin i pobierania danych dla dłuższego niż wcześniej
 - Tworzenie reguł alertów w jednym działaniu jako pojedynczy zasób bez konieczności tworzenia trzech poziomów zasobów jako [interfejsu API starszych Log Analytics alertu](api-alerts.md)
 - Pojedynczy interfejs programistyczny dla wszystkich wariantów alertów opartych na zapytaniach dzienników na platformie Azure — nowe [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) może służyć do zarządzania regułami dla usługi Log Analytics, a także usługi Application Insights
 - Wszystkie nowe dziennika funkcji alertów i przyszłego rozwoju będą dostępne tylko w nowej witrynie [scheduledQueryRules interfejsu API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
@@ -57,6 +58,13 @@ Za pomocą zawierającą treść żądań poniżej JSON.
 }
 ```
 
+Interfejsu API mogą być również dostępne z wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API usługi Azure Resource Manager. Jak pokazano poniżej, w wywołaniu PUT przykładowe przełączanie wszystkich reguł alertów za pomocą narzędzia ARMclient skojarzone z określonym obszarem roboczym usługi Log Analytics.
+
+```PowerShell
+$switchJSON = {'scheduledQueryRulesEnabled': 'true'}
+armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
+```
+
 Jeśli przełącznik wszystkich reguł alertów w obszarze roboczym usługi Log Analytics, aby użyć nowych [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) to się powiedzie, następującą odpowiedź będą dostępne.
 
 ```json
@@ -70,6 +78,12 @@ Użytkownicy mogą również sprawdzić bieżący stan obszaru roboczego usługi
 
 ```
 GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
+```
+
+Wykonanie powyższych przy użyciu wiersza polecenia programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient) narzędzia, zobacz poniższy przykład.
+
+```PowerShell
+armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
 Jeśli określony obszar roboczy usługi Log Analytics została przełączona do użycia [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) tylko; odpowiedź JSON zostaną wymienione poniżej.

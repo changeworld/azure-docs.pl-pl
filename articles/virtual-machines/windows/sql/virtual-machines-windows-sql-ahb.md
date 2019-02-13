@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/14/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: deae35565c1da2f38ad9d3482ab686ef6314c9d2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8526716b299d26d8d70c9c5e5cdace34e188d019
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982220"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111071"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure
 W tym artykule opisano, jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure za pomocą nowego dostawcę zasobów maszyny Wirtualnej SQL — **Microsoft.SqlVirtualMachine**. Istnieją dwa modele dla maszyny wirtualnej (VM) hostowany program SQL Server — płatność za użycie, licencjonowania i model dostarczania własnej licencji (BYOL). A teraz przy użyciu programu PowerShell lub wiersza polecenia platformy Azure, możesz zmodyfikować model licencjonowania, który korzysta z maszyny Wirtualnej programu SQL Server. 
@@ -111,7 +111,7 @@ $SqlVm | Set-AzResource -Force
 ```
 
   >[!NOTE]
-  > Aby przełączyć się między licencji, należy używać nowego dostawcę zasobów maszyny Wirtualnej SQL. Jeśli spróbujesz uruchomić te polecenia przed zarejestrowaniem maszyny Wirtualnej programu SQL Server przy użyciu nowego dostawcę, może wystąpić ten błąd: `Get-AzResource : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set. ` Jeśli zostanie wyświetlony ten błąd [zarejestrować maszyny Wirtualnej programu SQL Server przy użyciu nowego dostawcę zasobów](#register-existing-SQL-vm-with-new-resource-provider). 
+  > Aby przełączyć się między licencji, należy używać nowego dostawcę zasobów maszyny Wirtualnej SQL. Jeśli spróbujesz uruchomić te polecenia przed zarejestrowaniem maszyny Wirtualnej programu SQL Server przy użyciu nowego dostawcę, może wystąpić ten błąd: `Get-AzResource : The Resource 'Microsoft.SqlVirtualMachine/SqlVirtualMachines/AHBTest' under resource group 'AHBTest' was not found. The property 'sqlServerLicenseType' cannot be found on this object. Verify that the property exists and can be set. ` Jeśli zostanie wyświetlony ten błąd, zarejestruj maszyny Wirtualnej programu SQL Server za pomocą nowego dostawcy zasobów. 
 
  
 

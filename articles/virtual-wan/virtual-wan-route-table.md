@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 45e5c43cf5eb8df1df5b26ffae50d2881bb086e4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190174"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115202"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Utwórz koncentrator wirtualny tabelę tras w celu kierowania ruchu do wirtualnego urządzenia sieciowego
 
@@ -36,7 +36,7 @@ Sprawdź, czy są spełnione następujące kryteria:
 
 1. Masz wirtualnego urządzenia sieciowego (WUS) to oprogramowanie innych firm wybranych przez użytkownika jest zazwyczaj zainicjowanym do obsługi administracyjnej z witryny Azure Marketplace (Link) w sieci wirtualnej.
 2. Masz prywatny adres IP przypisany do interfejsu sieciowego urządzenia WUS. 
-3. Nie można wdrożyć urządzenie WUS w koncentrator wirtualny. Musi zostać wdrożony w oddzielnych sieci wirtualnej. W tym artykule sieć wirtualna nazywa się "strefy DMZ sieci wirtualnej".
+3. Nie można wdrożyć urządzenie WUS w koncentrator wirtualny. Musi zostać wdrożony w oddzielnych sieci wirtualnej. W tym artykule sieci wirtualnej urządzenie WUS nazywa się "strefy DMZ sieci wirtualnej".
 4. "Strefy DMZ sieci wirtualnej" może zawierać jeden lub wiele sieci wirtualnych połączonych z nim. W tym artykule ta sieć wirtualna nazywa się "Pośrednich sieć wirtualną będącą szprychą". Tych sieciach wirtualnych mogą być połączone z siecią wirtualną strefy DMZ przy użyciu komunikacji równorzędnej sieci wirtualnych.
 5. Sprawdź, czy masz 2 sieci wirtualne, które już utworzone. Zostaną one użyte jako sieci wirtualne będące szprychami. W tym artykule przestrzenie adresów sieci wirtualnej szprychy są 10.0.2.0/24 i 10.0.3.0/24. Jeśli potrzebujesz informacji na temat tworzenia sieci wirtualnej, zobacz [Utwórz sieć wirtualną przy użyciu programu PowerShell](../virtual-network/quick-create-powershell.md).
 6. Upewnij się, że nie ma żadnych bram sieci wirtualnej w dowolnej sieci wirtualnych.

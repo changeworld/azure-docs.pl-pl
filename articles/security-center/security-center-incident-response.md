@@ -4,7 +4,7 @@ description: Ten dokument przedstawia sposób używania usługi Azure Security C
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 8af12f1c-4dce-4212-8ac4-170d4313492d
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 684098dd2780e827ccc74b7fbbb16a2be75fa3e1
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 99bfab5a5f80fc0a49c7cc6405154394391f43e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619881"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114301"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Używanie usługi Azure Security Center do reagowania na zdarzenia
 Wiele organizacji uczy się reagowania na zdarzenia zabezpieczeń dopiero wtedy, gdy zostaną celem ataku. Aby zmniejszyć koszty i straty, ważne jest dysponowanie planem reagowania na takie zdarzenia jeszcze przed wystąpieniem ataku. Usługi Azure Security Center można używać na różnych etapach reagowania na zdarzenia.
@@ -84,7 +84,7 @@ Magda zalogowała się w witrynie Azure Portal i otworzyła konsolę usługi Sec
    > Na potrzeby tego scenariusza Magda zamierza przeprowadzić ocenę alertu dotyczącego złośliwego działania SQL, jak widać na poprzednim rysunku.
    >
    >
-2. Kliknij alert **Złośliwe działanie SQL** i przejrzyj zaatakowane zasoby w bloku **Złośliwe działanie SQL**: ![Szczegóły zdarzenia](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Kliknij przycisk **złośliwe działanie SQL** alertów i przejrzyj zaatakowane zasoby w **złośliwe działanie SQL** bloku:  ![Szczegóły zdarzenia](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     W tym bloku Magda może zanotować zaatakowane zasoby, liczbę ataków i czas ich wykrycia.
 3. Kliknij pozycję **Zaatakowany zasób**, aby uzyskać więcej informacji na temat ataku.
@@ -96,7 +96,7 @@ Szymon otrzymuje zgłoszenie od Magdy i zaczyna przeglądanie czynności zaradcz
 
 ![Cykl życia reakcji na zdarzenie](./media/security-center-incident-response/security-center-incident-response-fig6.png)
 
-### <a name="additional-resources"></a>Zasoby dodatkowe
+### <a name="additional-resources"></a>Dodatkowe zasoby
 Firmy, które podczas analizy korzystają z rozwiązania do zarządzania informacjami i zdarzeniami dotyczącymi bezpieczeństwa (SIEM), mogą również [zintegrować usługę Security Center z używanym rozwiązaniem](security-center-integrating-alerts-with-log-integration.md). Dzienniki inspekcji platformy Azure i zdarzenia zabezpieczeń dotyczące maszyn wirtualnych można też zintegrować przy użyciu [narzędzia do integracji dziennika Azure](https://azure.microsoft.com/blog/introducing-hdinsight-integration-with-azure-log-analytics/). Aby zbadać atak, możesz użyć tych informacji w połączeniu z informacjami dostarczonymi przez usługę Security Center. W celu ustalenia głównej przyczyny wystąpienia zdarzenia można również użyć funkcji [analizy](https://docs.microsoft.com/azure/security-center/security-center-investigation) w usłudze Security Center.
 
 ## <a name="conclusion"></a>Podsumowanie

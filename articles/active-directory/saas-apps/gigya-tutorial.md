@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/18/2017
 ms.author: jeedes
-ms.openlocfilehash: a4141dc5a4d7be663e382e5aadb80d42a653f807
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2ab947e17569f809ed4532c99dad7350b6b6814a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179264"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165066"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gigya"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Gigya
 
@@ -141,7 +142,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
    
     ![Konfiguracja SAML](./media/gigya-tutorial/ic789533.png "Konfiguracja SAML")
    
-    a. W **nazwa** polu tekstowym wpisz nazwę dla danej konfiguracji.
+    a. W polu tekstowym **Name** (Nazwa) wpisz nazwę konfiguracji.
    
     b. W **wystawcy** pola tekstowego, Wklej wartość **identyfikator jednostki SAML** skopiowanej z witryny Azure Portal. 
    
@@ -208,7 +209,7 @@ W przypadku Gigya Inicjowanie obsługi administracyjnej jest zadanie ręczne.
    
     a. W **E-mail** polu tekstowym wpisz alias e-mail prawidłowego konta usługi Azure Active Directory do aprowizowania.
     
-    b. Kliknij przycisk **zaprosić użytkownika**.
+    b. Kliknij przycisk **Invite User** (Zaproś użytkownika).
       
     > [!NOTE]
     > Właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail zawierającą link do potwierdzenia konta, zanim stanie się aktywny.

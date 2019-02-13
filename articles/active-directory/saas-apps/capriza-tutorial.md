@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 811382fa5195c5ab38104d31ca903caabbfbc574
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1ce57fdaa4b34787d7e23e2798aef897802c2b8f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192506"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174677"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-capriza-platform"></a>Samouczek: Integracja usługi Azure Active Directory z platformą Capriza
 
@@ -115,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.capriza.com/<tenantid>`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespół obsługi klienta platformy Capriza](mailTo:support@capriza.com) aby zyskać tę wartość. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespół obsługi klienta platformy Capriza](mailTo:support@capriza.com) aby zyskać tę wartość. 
 
 1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 

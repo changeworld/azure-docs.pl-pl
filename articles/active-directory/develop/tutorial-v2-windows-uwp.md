@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 10/24/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: a0c2d13b2ac6715db047d56e998294688d9b65cf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4f7d4e586dcb90153fb4d037c9c9821cd3ea3182
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097065"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176717"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywołanie interfejsu API Microsoft Graph z poziomu aplikacji platformy uniwersalnej Windows (XAML)
 
@@ -360,7 +361,7 @@ Zobacz też podstawowe informacje o tokenie pozyskane za pośrednictwem `Acquire
 |**Nazwa** |Imię i nazwisko użytkownika|Użytkownik na imię i nazwisko.|
 |**Nazwa użytkownika** |<span>user@domain.com</span> |Nazwa użytkownika identyfikuje użytkownika.|
 |**Token wygasa** |DateTime |Czas, po wygaśnięciu ważności tokenu. Biblioteka MSAL rozszerza datę wygaśnięcia, odnawianie tokenu zgodnie z potrzebami.|
-|**Token dostępu** |Ciąg |Ciąg tokenu, który jest wysyłany do protokołu HTTP żądania, które wymagają *nagłówek autoryzacji*.|
+|**Token dostępu** |String |Ciąg tokenu, który jest wysyłany do protokołu HTTP żądania, które wymagają *nagłówek autoryzacji*.|
 
 #### <a name="see-whats-in-the-access-token-optional"></a>Zobacz, co w tokenie dostępu (opcjonalnie)
 Opcjonalnie, skopiuj wartość w **Token dostępu** i wklej go w https://jwt.ms zdekodować i zapoznać się z listą oświadczeń.

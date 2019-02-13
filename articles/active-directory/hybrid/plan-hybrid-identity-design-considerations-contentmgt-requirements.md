@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 61ca57f2fd5bb6d5e56902dddecfade406267b91
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 81a1ab0ee411f05b353317b0d781e0cb292c7d6a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486269"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166627"
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>Określanie wymagań dotyczących zarządzania zawartością, rozwiązania tożsamości hybrydowej
 Opis wymagań dotyczących zarządzania zawartością w firmie bezpośrednie może wpływać na Twoją decyzję, na których rozwiązania tożsamości hybrydowej do użycia. Powszechne stosowanie wielu urządzeń i możliwość przynoszą własne urządzenia użytkowników ([BYOD](https://aka.ms/byodcg)), firmy muszą chronić swoje własne dane, ale jego również należy zachować prywatność użytkowników. Zwykle, gdy użytkownik ma swoje własne urządzenia, może również mieć wiele poświadczenia, które będą alternatywnych zgodnie z aplikacji, które używają. Jest ważne, aby odróżnić, jakie zawartość została utworzona przy użyciu osobistych poświadczeń w porównaniu z utworzonymi przy użyciu poświadczeń firmowych. Rozwiązanie tożsamości powinien mieć możliwość interakcji z chmury usługi, aby zapewnić bezproblemowe środowisko użytkownika końcowego podczas zapewnienia zachowania ich poufności i zwiększyć ochronę przed wyciekami danych. 

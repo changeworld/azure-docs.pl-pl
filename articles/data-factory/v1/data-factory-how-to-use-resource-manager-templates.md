@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e9a99fcbe161e0b6cdabf1363ab3121a77869df7
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9fb63ae141665dbeb64ee7046427098d4482aa55
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024862"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111326"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Szablony umożliwiają tworzenie jednostki usługi Azure Data Factory
 > [!NOTE]
@@ -236,7 +236,7 @@ Aby uzyskać najlepsze rozwiązania dotyczące parametryzacja, zobacz [najlepsze
 * Ustawienia zależą od środowiska (przykład: rozwoju, testowania i produkcji)
 * Klucze tajne (takie jak hasła)
 
-Jeśli chcesz ściągnąć wpisy tajne z [usługi Azure Key Vault](../../key-vault/key-vault-get-started.md) podczas wdrażania jednostek usługi fabryka danych Azure przy użyciu szablonów, określ **usługi key vault** i **Nazwa wpisu tajnego** pokazany na Poniższy przykład:
+Jeśli chcesz ściągnąć wpisy tajne z [usługi Azure Key Vault](../../key-vault/key-vault-overview.md) podczas wdrażania jednostek usługi fabryka danych Azure przy użyciu szablonów, określ **usługi key vault** i **Nazwa wpisu tajnego** pokazany na Poniższy przykład:
 
 ```JSON
 "parameters": {

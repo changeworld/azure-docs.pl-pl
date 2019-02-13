@@ -7,14 +7,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11eb849567079bfb1293c3c1e8ce97c43b66d493
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468873"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116851"
 ---
-# <a name="choose-the-right-consistency-level"></a>Wybierz poziom spójności w prawo 
+# <a name="choose-the-right-consistency-level"></a>Wybieranie właściwego poziomu spójności 
 
 Rozproszonych baz danych, opierając się na replikację, wysoką dostępność, małych opóźnień, czy oba rodzaje, wprowadzić podstawowe zależnościami między spójności odczytu, a dostępność, opóźnienia i przepływności. Większość komercyjnego rozproszonych baz danych, poproś deweloperów dokonać wyboru między dwoma modelami spójności extreme: wysoki poziom spójności i spójności ostatecznej. Usługa Azure Cosmos DB umożliwia deweloperom wybranie jednego z pięciu dobrze zdefiniowanych modeli spójności: silne, powiązana nieaktualność, sesja, spójny prefiks i "eventual". Każda z tych modeli spójności jest dobrze zdefiniowany i intuicyjny i może służyć do określonych scenariuszy w rzeczywistych warunkach. Każda z pięcioma modelami spójności oferuje [wpływ na dostępność i wydajność](consistency-levels-tradeoffs.md) i jest wspierana przez kompleksowe umowy SLA. Następujące kwestie proste ułatwi właściwym wyborem w wielu typowych scenariuszy.
 
@@ -33,6 +33,8 @@ Należy wziąć pod uwagę następujące kwestie, aplikacja powstała przy użyc
 - Gwarancje ścisłej spójności, mniej niż te dostarczone przez spójność sesji, należy zaleca się, że używasz poziomu spójności spójny prefiks.
 
 - Jeśli potrzebujesz najwyższej dostępności i najniższym opóźnieniu, użyj poziomu spójności ostatecznej.
+
+- Jeśli potrzebujesz jeszcze większą trwałość danych bez obniżania oczekiwanego poziomu wydajności, można utworzyć poziomu spójności niestandardowych w warstwie aplikacji. Aby uzyskać więcej informacji, zobacz [instrukcje Implementowanie niestandardowych synchronizacji w swoich aplikacjach](how-to-custom-synchronization.md).
 
 ## <a name="cassandra-mongodb-and-gremlin-api"></a>Interfejs API rozwiązania Cassandra, MongoDB i języka Gremlin
 

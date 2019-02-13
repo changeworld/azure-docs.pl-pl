@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 5ab47165118b68e91c1218be35c6f88aa55350e2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 88051c45f21bdf11807ffcc63d8248cba81ae70b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982611"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118449"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfiguracja i zarządzanie nim często zadawane pytania dotyczące aplikacji sieci Web na platformie Azure
 
@@ -262,6 +262,8 @@ Aby dowiedzieć się, jak używać niestandardowej nazwy domeny za pomocą aplik
 
 ## <a name="my-app-service-certificate-is-flagged-for-fraud-how-do-i-resolve-this"></a>Certyfikatu usługi App Service ma flagę oszustwa. Jak rozwiązać ten problem?
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Podczas weryfikacji domeny zakup certyfikatu usługi App Service może zostać wyświetlony następujący komunikat:
 
 "Twój certyfikat oznaczono jako ewentualnym oszustwem. Żądanie jest obecnie w trakcie przeglądu. Jeśli certyfikat nie zostanie można używać w ciągu 24 godzin, skontaktuj się z pomocą techniczną platformy Azure."
@@ -271,12 +273,12 @@ Jak wskazuje komunikat, ten proces sprawdzania poprawności oszustwa, może potr
 Jeśli certyfikat usługi App Service w dalszym ciągu wyświetlać ten komunikat po 24 godzinach, uruchom następujący skrypt programu PowerShell. Kontakty skryptu [dostawcę certyfikatów](https://www.godaddy.com/) bezpośrednio, aby rozwiązać ten problem.
 
 ```powershell
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId <subId>
+Connect-AzAccount
+Set-AzContext -SubscriptionId <subId>
 $actionProperties = @{
     "Name"= "<Customer Email Address>"
     };
-Invoke-AzureRmResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
+Invoke-AzResourceAction -ResourceGroupName "<App Service Certificate Resource Group Name>" -ResourceType Microsoft.CertificateRegistration/certificateOrders -ResourceName "<App Service Certificate Resource Name>" -Action resendRequestEmails -Parameters $actionProperties -ApiVersion 2015-08-01 -Force   
 ```
 
 ## <a name="how-do-authentication-and-authorization-work-in-app-service"></a>Jak uwierzytelnianie i autoryzacja działają w usłudze App Service?

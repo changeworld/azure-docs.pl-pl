@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 04732d6541fd6132360d4c235b35979c70772922
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42058521"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161936"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Co się stało z moim projektem WebAPI (usługa połączona programu Visual Studio usługi Azure Active Directory)
 
@@ -33,7 +34,7 @@ Aby uzyskać informacje na temat pracy z podłączoną usługę, zobacz [wprowad
 
 Ma wpływ na odwołania *.NET pliku projektu) i `packages.config` (odwołań NuGet).
 
-| Typ | Informacje ogólne |
+| Type | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -46,7 +47,7 @@ Ma wpływ na odwołania *.NET pliku projektu) i `packages.config` (odwołań NuG
 
 Dodatkowe informacje, w przypadku wybrania **Odczyt danych katalogu** opcji:
 
-| Typ | Informacje ogólne |
+| Type | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (Visual Studio 2015 tylko) |
@@ -60,7 +61,7 @@ Dodatkowe informacje, w przypadku wybrania **Odczyt danych katalogu** opcji:
 
 Zostaną usunięte następujące odwołania (ASP.NET 4 wyłącznie dla projektów, tak jak w programie Visual Studio 2015):
 
-| Typ | Informacje ogólne |
+| Type | Informacje ogólne |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -84,7 +85,7 @@ Zostaną usunięte następujące odwołania (ASP.NET 4 wyłącznie dla projektó
     </appSettings>
     ```
 
-- Programu Visual Studio 2017 tylko: dodano także następujący wpis w obszarze `<appSettings>`"
+- Program Visual Studio 2017 tylko: Dodano także następujący wpis w obszarze `<appSettings>`"
 
     ```xml
     <add key="ida:MetadataAddress" value="<domain URL + /federationmetadata/2007-06/federationmetadata.xml>" />

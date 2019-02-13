@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: fd03a0b1cd3f0ab55377d597a0c6e6595bc876fc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 877393de20788b0aa1c76084b121a82f12715cd3
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004149"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118075"
 ---
 # <a name="use-the-azure-maps-map-control"></a>Korzystanie z kontrolki mapy usługi Azure Maps
 
@@ -68,7 +68,7 @@ Mapę można osadzić na stronie sieci web przy użyciu biblioteki Javascript po
     </body>
     ```
 
-5. Aby zainicjować formantu mapy, zdefiniować nową sekcję w treści html i utworzyć skrypt. Użyj własnego klucza konta usługi Azure Maps lub poświadczeń usługi Azure Active Directory (AAD) do uwierzytelniania za pomocą mapy [authOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.authoptions). Jeśli musisz utworzyć konto usługi lub znaleźć Twojego klucza, zobacz [jak zarządzać swoim kontem usługi Azure Maps i klucze](how-to-manage-account-keys.md). **Języka** opcja określa język do zastosowania etykiety mapy i kontrolek. Aby uzyskać więcej informacji na temat obsługiwanych języków, zobacz [obsługiwane języki](supported-languages.md). Jeśli do uwierzytelniania, przy użyciu klucza subskrypcji.
+5. Aby zainicjować formantu mapy, zdefiniować nową sekcję w treści html i utworzyć skrypt. Użyj własnego klucza konta usługi Azure Maps lub poświadczeń usługi Azure Active Directory (AAD) do uwierzytelniania za pomocą mapy [opcje uwierzytelniania](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.atlas.authenticationoptions). Jeśli musisz utworzyć konto usługi lub znaleźć Twojego klucza, zobacz [jak zarządzać swoim kontem usługi Azure Maps i klucze](how-to-manage-account-keys.md). **Języka** opcja określa język do zastosowania etykiety mapy i kontrolek. Aby uzyskać więcej informacji na temat obsługiwanych języków, zobacz [obsługiwane języki](supported-languages.md). Jeśli do uwierzytelniania, przy użyciu klucza subskrypcji.
 
     ```html
     <script type='text/javascript'>

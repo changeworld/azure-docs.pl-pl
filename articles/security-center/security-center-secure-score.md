@@ -4,7 +4,7 @@ description: " Ustaw priorytet swoje zalecenia dotyczące zabezpieczeń przy uż
 services: security-center
 documentationcenter: na
 author: monhaber
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: c42d02e4-201d-4a95-8527-253af903a5c6
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: monhaber
-ms.openlocfilehash: 4c7f272cbf98fefbf70e917634fb623c9e1b6a3b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 22791fc43ff17d56e1f51e7f7737a10109f47c59
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425897"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104773"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Poprawa bezpiecznego ocenę w usłudze Azure Security Center
 
@@ -80,7 +80,7 @@ Zalecenie przedstawia zagrożenia, które obciążenia jest narażony na, jeśli
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Ten artykuł pokazuje, jak zwiększyć, używając poziom zabezpieczeń **bezpiecznego wynik** w usłudze Azure Security Center. Aby dowiedzieć się więcej o usłudze Security Center, zobacz:
+Ten artykuł pokazuje, jak zwiększyć, używając poziom zabezpieczeń **bezpiecznego wynik** w usłudze Azure Security Center. Aby dowiedzieć się więcej na temat usługi Security Center, zobacz:
 
 * [Centrum zabezpieczeń Azure — często zadawane pytania](security-center-faq.md) — odpowiedzi na najczęstsze pytania dotyczące korzystania z usługi.
 * [Monitorowanie kondycji zabezpieczeń w Centrum zabezpieczeń Azure](security-center-monitoring.md) — informacje na temat monitorowania kondycji zasobów platformy Azure.

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 7775c8ae92ebf6015f12bdebf0934752a5240f0f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1d3b9cd5fd359d0b75bfc08242a0b36a8647bff0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172412"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169585"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-teamworkcom"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Teamwork.com
 
@@ -120,7 +121,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://eu.teamwork.com/saml`|
 
     > [!NOTE] 
-    > Ta wartość adresu URL logowania jednokrotnego nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Teamwork.com](mailto:support@teamwork.com) aby zyskać tę wartość. 
+    > Ta wartość adresu URL logowania jednokrotnego nie jest prawdziwe. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Teamwork.com](mailto:support@teamwork.com) aby zyskać tę wartość. 
 
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 

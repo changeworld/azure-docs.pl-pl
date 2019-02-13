@@ -4,7 +4,7 @@ description: W tym dokumencie przedstawiono sposób realizacji zalecenia w usłu
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f53ed853-ffaf-4530-a019-1906ba6f341b
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f10365f4acf62ba4719e89932f18433e70925ebf
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 14b7cc8f8162574380ca21ac515af8b7d3d5ded9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341766"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111700"
 ---
 # <a name="enable-network-security-groups-in-azure-security-center"></a>Włącz sieciowe grupy zabezpieczeń w usłudze Azure Security Center
 Usługa Azure Security Center zaleca Włącz sieciową grupę zabezpieczeń (NSG), jeśli nie jest już włączona. Sieciowe grupy zabezpieczeń zawierają listę reguł listy kontroli dostępu (ACL), które blokują lub zezwalają na ruch sieciowy do wystąpień maszyn wirtualnych w sieci wirtualnej. Grupy NSG można kojarzyć z podsieciami lub poszczególnymi wystąpieniami maszyn wirtualnych w danej podsieci. Gdy sieciowa grupa zabezpieczeń jest skojarzona z podsiecią, reguły listy ACL dotyczą wszystkich wystąpień maszyn wirtualnych w tej podsieci. Ponadto ruch do poszczególnych maszyn wirtualnych można ograniczyć jeszcze bardziej przez skojarzenie sieciowej grupy zabezpieczeń bezpośrednio do tej maszyny Wirtualnej. Aby dowiedzieć się więcej, zobacz [co to jest grupa zabezpieczeń sieci (NSG)?](../virtual-network/security-overview.md)

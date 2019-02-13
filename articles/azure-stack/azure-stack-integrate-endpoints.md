@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 9a209aaf730b356c8c102eab7a8832ce670204cc
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: fee5db2cde4e4056a8cb1fca80e09511d0ca0b53
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977751"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117279"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -66,7 +66,7 @@ Nie są wyświetlane wewnętrznej infrastruktury adresów VIP, ponieważ nie są
 Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W przypadku wdrożenia w przypadku, gdy pasm przezroczystym serwerem proxy, aby serwer proxy tradycyjnych musisz zezwolić na następujących portów i adresów URL dla komunikacji wychodzącej:
 
 > [!Note]  
-> Usługa Azure Stack nie obsługuje używania Express Route do uzyskania dostępu do usług platformy Azure, przedstawione w poniższej tabeli.
+> Usługa Azure Stack nie obsługuje przy użyciu usługi ExpressRoute w celu uzyskania dostępu do usług platformy Azure, przedstawione w poniższej tabeli.
 
 |Przeznaczenie|Docelowy adres URL|Protokół|Porty|Sieć źródłowa|
 |---------|---------|---------|---------|---------|
@@ -75,7 +75,7 @@ Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W 
 |Akt & poprawki|https://&#42;.azureedge.net|HTTPS|443|Publiczne wirtualne adresy IP — wartość/27|
 |Rejestracja|https://management.azure.com|HTTPS|443|Publiczne wirtualne adresy IP — wartość/27|
 |Sposób użycia|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|Publiczne wirtualne adresy IP — wartość/27|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Publiczne wirtualne adresy IP — wartość/27<br>Infrastruktura publicznych sieci|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*. updates.microsoft.com<br>*. witrynie download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Publiczne wirtualne adresy IP — wartość/27<br>Infrastruktura publicznych sieci|
 |NTP|(Dostarczone dla wdrożenia serwera IP NTP)|UDP|123|Publiczne wirtualne adresy IP — wartość/27|
 |DNS|(Dostarczone dla wdrożenia serwera IP DNS)|TCP<br>UDP|53|Publiczne wirtualne adresy IP — wartość/27|
 |LISTY CRL|Adres URL (w ramach punktów dystrybucji listy CRL na Twój certyfikat)|HTTP|80|Publiczne wirtualne adresy IP — wartość/27|

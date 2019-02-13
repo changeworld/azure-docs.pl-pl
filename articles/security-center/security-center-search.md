@@ -4,7 +4,7 @@ description: Dowiedz się, jak usługa Azure Security Center używa wyszukiwania
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
-ms.openlocfilehash: 19aed3d3da1250e6ad47bf9266f2e57aa255156a
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c02a9f61a4a8b88f8b6c4d861f1a6cbe904ad70d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963781"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110544"
 ---
 # <a name="azure-security-center-search"></a>Wyszukiwanie w usłudze Azure Security Center
 Usługa Azure Security Center używa [wyszukiwania usługi Log Analytics](../log-analytics/log-analytics-log-searches.md) pobieranie i analizowanie danych zabezpieczeń. Usługa log Analytics obejmuje język zapytań, można szybko pobierać i konsolidować dane. W usłudze Security Center możesz korzystać z wyszukiwania usługi Log Analytics w celu utworzenia zapytań i analizowania zebranych danych.
@@ -59,7 +59,7 @@ W tym artykule przedstawiono sposób dostępu do wyszukiwania w usłudze Securit
 - [Wyszukiwanie danych przy użyciu przeszukiwania dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md) — samouczek na temat korzystania z wyszukiwania w Dzienniku
 - [Usługa log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-search-reference.md) — w tym artykule opisano język zapytań w usłudze Log Analytics
 
-Aby dowiedzieć się więcej o usłudze Security Center, zobacz:
+Aby dowiedzieć się więcej na temat usługi Security Center, zobacz:
 
 - [Security Center — Przegląd](security-center-intro.md) — Centrum zabezpieczeń w tym artykule opisano kluczowe funkcje
 

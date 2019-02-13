@@ -3,7 +3,7 @@ title: Administrowanie pamięć podręczna systemu Azure dla usługi Redis | Dok
 description: Dowiedz się, jak wykonywać zadania administracyjne, takie jak ponowne uruchomienie komputera oraz planowanie aktualizacji dla usługi Azure Cache dla usługi Redis
 services: azure-cache-for-redis
 documentationcenter: na
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: tysonn
 ms.assetid: 8c915ae6-5322-4046-9938-8f7832403000
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: azure-cache-for-redis
 ms.workload: tbd
 ms.date: 07/05/2017
-ms.author: wesmc
-ms.openlocfilehash: 72e27b7098d9891dc54b31c34e2211362e7c9f50
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.author: yegu
+ms.openlocfilehash: 92a28beeae14b253c84c56e497be242d9c60de17
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099976"
+ms.locfileid: "56112074"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Administrowanie pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano sposób wykonywania zadań administracyjnych, takich jak [ponowny rozruch](#reboot) i [Planowanie aktualizacji](#schedule-updates) dla pamięci podręcznej Azure dla wystąpienia usługi Redis.

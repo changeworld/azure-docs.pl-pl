@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: d79e423dd617a498aee09cff6b774bbe90eeaa83
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 79f0e58ea11d8bdb8c30ca1e50fae2635f719681
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701835"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118024"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job-preview"></a>Korzystanie z danych referencyjnych z bazy danych SQL dla zadania usługi Azure Stream Analytics (wersja zapoznawcza)
 
@@ -154,7 +154,7 @@ Gdy użycie zapytania różnicowego [tabele danych czasowych w usłudze Azure SQ
 
 **Czy zostaną naliczone dodatkowych kosztów, za pomocą wejściowych danych referencyjnych SQL w usłudze Azure Stream Analytics?**
 
-Nie dodatkowe [koszt jednostka przesyłania strumieniowego](https://azure.microsoft.com/pricing/details/stream-analytics/) w zadaniu Stream Analytics. Jednak zadanie usługi Stream Analytics musi mieć konto magazynu platformy Azure skojarzone. Zadanie usługi Stream Analytics wysyła zapytanie bazy danych SQL (podczas wykonywania zadania Uruchom i interwał odświeżania) do pobierania zestawu danych referencyjnych i magazynów, które migawki na koncie magazynu. Przechowywania migawek zostaną naliczone dodatkowe opłaty, które szczegółowo opisane w [stronę z cennikiem](https://azure.microsoft.compricing/details/storage/) dla konta usługi Azure storage.
+Nie dodatkowe [koszt jednostka przesyłania strumieniowego](https://azure.microsoft.com/pricing/details/stream-analytics/) w zadaniu Stream Analytics. Jednak zadanie usługi Stream Analytics musi mieć konto magazynu platformy Azure skojarzone. Zadanie usługi Stream Analytics wysyła zapytanie bazy danych SQL (podczas wykonywania zadania Uruchom i interwał odświeżania) do pobierania zestawu danych referencyjnych i magazynów, które migawki na koncie magazynu. Przechowywania migawek zostaną naliczone dodatkowe opłaty, które szczegółowo opisane w [stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/) dla konta usługi Azure storage.
 
 **Skąd mam wiedzieć, migawki danych odwołania jest pobierane z bazy danych SQL i używane w ramach zadania usługi Azure Stream Analytics?**
 

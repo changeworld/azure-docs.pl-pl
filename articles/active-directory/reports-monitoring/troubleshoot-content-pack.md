@@ -16,12 +16,13 @@ ms.subservice: report-monitor
 ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: e786a2af8f86b69116b612c266dd40bbe7580e30
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be5220c5f28505bd83110705e08a6b1c7fb12529
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161855"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210700"
 ---
 # <a name="troubleshooting-azure-active-directory-activity-logs-content-pack-errors"></a>Rozwiązywanie problemów z działanie usługi Azure Active Directory rejestruje błędy pakietu zawartości 
 
@@ -34,7 +35,7 @@ Podczas pracy z pakietu zawartości usługi Power BI dla usługi Azure Active Di
 
 - [Odświeżanie nie powiodło się](troubleshoot-content-pack.md#refresh-failed) 
 - [Nie można zaktualizować poświadczeń źródła danych](troubleshoot-content-pack.md#failed-to-update-data-source-credentials) 
-- [Importowanie danych trwa zbyt długo](troubleshoot-content-pack.md#importing-of-data-is-taking-too-long) 
+- [Importowanie danych trwa zbyt długo](#data-import-is-too-slow) 
 
 Ten artykuł zawiera informacje na temat możliwych przyczyn i jak naprawić te błędy.
  

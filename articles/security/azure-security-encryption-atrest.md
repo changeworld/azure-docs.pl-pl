@@ -4,7 +4,7 @@ description: Ten artykuł zawiera omówienie programu Microsoft Azure szyfrowani
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: c9e3a98b1073a2b198a341f31a320bba670b0596
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994406"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117905"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Usługa Azure Data szyfrowanie w spoczynku
 
@@ -259,8 +259,8 @@ Szyfrowanie po stronie klienta, danych usługi Azure SQL Database jest świadczo
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Po stronie serwera za pomocą klucza zarządzanego przez usługę**     | **Strona serwera przy użyciu zarządzanych przez klienta w usłudze Key Vault**             | **Po stronie klienta przy użyciu zarządzanych przez klienta**      |
 | **Magazynowi i bazom danych**        |                    |                    |                    |                    |
-| Dysk (IaaS)                      | -                  | Tak, RSA 2048-bitowe  | -                  |
-| Program SQL Server (IaaS)                | Yes                | Tak, RSA 2048-bitowe  | Yes                |
+| Disk (IaaS)                      | -                  | Tak, RSA 2048-bitowe  | -                  |
+| SQL Server (IaaS)                | Yes                | Tak, RSA 2048-bitowe  | Yes                |
 | Usługi Azure SQL (baza danych/Data Warehouse) | Yes                | Tak, RSA 2048-bitowe  | Yes                |
 | Usługi Azure SQL (wystąpienie zarządzane bazy danych) | Yes                | (Wersja zapoznawcza) i RSA 2048-bitowe  | Yes                |
 | Usługa Azure Storage (Blokuj/stronicowych obiektów blob) | Yes                | Tak, RSA 2048-bitowe  | Yes                |
@@ -279,7 +279,7 @@ Szyfrowanie po stronie klienta, danych usługi Azure SQL Database jest świadczo
 | Azure Data Lake Store            | Yes                | Tak, RSA 2048-bitowe  | -                  |
 | Azure Data Catalog               | Yes                | -                  | -                  |
 | Power BI                         | Yes                | -                  | -                  |
-| **Usługi IoT**                 |                    |                    |                    |
+| **IoT Services**                 |                    |                    |                    |
 | Usługa IoT Hub                          | -                  | -                  | Yes                |
 | Service Bus                      | Yes                | -                  | Yes                |
 | Event Hubs                       | Yes                | -                  | -                  |

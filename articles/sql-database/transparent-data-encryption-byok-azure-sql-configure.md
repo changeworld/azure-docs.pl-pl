@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: b6abfa24d790554de239171ffef1899cdc135d26
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f1cb99799e3aa5c0b37643112f8644d1aabfd666
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996257"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108096"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>Program PowerShell i interfejsu wiersza polecenia: Włączanie funkcji Transparent Data Encryption przy użyciu klucza zarządzanego przez klienta z usługi Azure Key Vault
 
@@ -29,8 +29,8 @@ W tym artykule przedstawiono sposób użycia klucza z usługi Azure Key Vault dl
 - [Zalecane, ale opcjonalny] Mieć sprzętowego modułu zabezpieczeń (HSM) lub klucza lokalnego magazynu dla tworzenia kopii lokalnej materiału klucza funkcji ochrony TDE.
 - Konieczne jest posiadanie programu Azure PowerShell w wersji 4.2.0 lub nowszej zainstalowany i uruchomiony. 
 - Utwórz usługę Azure Key Vault i klucz do użycia dla funkcji TDE.
-   - [Instrukcje dotyczące programu PowerShell z usługi Key Vault](../key-vault/key-vault-get-started.md)
-   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-get-started.md#HSM)
+   - [Instrukcje dotyczące programu PowerShell z usługi Key Vault](../key-vault/key-vault-overview.md)
+   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
  - Usługi key vault musi mieć następującą właściwość, która ma być używany dla funkcji TDE:
    - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
    - [Jak używać usuwania nietrwałego w usłudze Key Vault z programem PowerShell](../key-vault/key-vault-soft-delete-powershell.md) 
@@ -196,7 +196,7 @@ Jeśli problem występuje, sprawdź następujące kwestie:
 - Interfejs wiersza polecenia w wersji 2.0 lub nowszej. Aby zainstalować najnowszą wersję i nawiązać połączenie z subskrypcją platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia dla wielu Platform Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
 - Utwórz usługę Azure Key Vault i klucz do użycia dla funkcji TDE.
    - [Zarządzanie przy użyciu interfejsu wiersza polecenia 2.0 w usłudze Key Vault](../key-vault/key-vault-manage-with-cli2.md)
-   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-get-started.md#HSM)
+   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-hsm-protected-keys.md)
  - Usługi key vault musi mieć następującą właściwość, która ma być używany dla funkcji TDE:
    - [soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
    - [Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia](../key-vault/key-vault-soft-delete-cli.md) 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ebca3060e902c0a45619c2bd64240537cd95308d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b43e496323da75dfc63f889283257fac41f48abf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811855"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117735"
 ---
 # <a name="administer-your-iot-central-application"></a>Zarządzać aplikacją IoT Central
 
@@ -141,15 +141,15 @@ Aby ukończyć ten samoobsługowy proces, wykonaj następujące kroki:
 
 ## <a name="export-data"></a>Eksportowanie danych
 
-Aby umożliwić **ciągły Eksport danych** do wyeksportowania pomiarów, urządzeń i danych szablonów urządzenie do swojego konta magazynu obiektów Blob platformy Azure. Dowiedz się więcej o [sposób eksportowania danych](#howto-export-data).
+Aby umożliwić **ciągły Eksport danych** do wyeksportowania pomiarów, urządzeń i danych szablonów urządzenie do swojego konta magazynu obiektów Blob platformy Azure. Dowiedz się więcej na temat [eksportowania danych](#export-data).
 
 ## <a name="manage-device-connection"></a>Zarządzanie połączenie z urządzeniem
 
-Łączenie urządzeń na dużą skalę w Twojej aplikacji, w tym miejscu przy użyciu kluczy i certyfikatów. Dowiedz się więcej o [podłączania urządzeń](#concepts-connectivity).
+Łączenie urządzeń na dużą skalę w Twojej aplikacji, w tym miejscu przy użyciu kluczy i certyfikatów. Dowiedz się więcej o [podłączania urządzeń](/azure/iot-central/concepts-connectivity-experimental?toc=/azure/iot-central-experimental/toc.json&bc=/azure/iot-central-experimental/breadcrumb/toc.json).
 
 ## <a name="use-access-tokens"></a>Używanie tokenów dostępu
 
-Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany w propreties i ustawień. Dowiedz się więcej o [explorer IoT Central](#howto-use-iotc-explorer). 
+Generowanie tokenów dostępu z nich korzystać w narzędzia dla deweloperów. Obecnie ma dostępnych co narzędzie dla deweloperów, czyli Eksploratora usługi IoT Central do monitorowania komunikatów przesyłanych z urządzenia i zmiany w propreties i ustawień. Dowiedz się więcej o Eksploratorze IoT Central. 
 
 ## <a name="use-the-azure-sdks-for-control-plane-operations"></a>Zestawy SDK platformy Azure na użytek operacje warstwy kontroli
 

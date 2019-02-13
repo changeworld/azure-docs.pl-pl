@@ -1,10 +1,10 @@
 ---
-title: Internet rzeczy najlepsze rozwiązania w zakresie zabezpieczeń | Dokumentacja firmy Microsoft
-description: Artykuł zawiera listę nadzorowaną dotyczącą programu Microsoft Internet rzeczy najlepsze rozwiązania i ogólne zalecenia.
+title: Internet of Things Security Best Practices | Dokumentacja firmy Microsoft
+description: Artykuł zawiera listę nadzorowaną dotyczącą programu Microsoft Internet of Things Security Best Practices and ogólne zalecenia.
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 2d5598c5-4c30-481d-b8f4-51ee024ea9a7
 ms.service: security
@@ -14,59 +14,59 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/26/2018
 ms.author: barclayn
-ms.openlocfilehash: 804dd6828931ca2801360ab18be938c8bacf2bfa
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 9413c0503c1b78550776d1c2f6ab8239205a788b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32185344"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117871"
 ---
 # <a name="internet-of-things-security-best-practices"></a>Internet rzeczy najlepsze rozwiązania w zakresie zabezpieczeń
 
-Zabezpieczanie infrastruktury Internetu rzeczy (IoT) jest krytyczne przedsiębiorstwa dla każdego związanego z rozwiązania IoT. Ze względu na liczbę urządzeń i Rozproszony charakter tych urządzeń wpływ zdarzeń zabezpieczeń związane z naruszenia miliony urządzenia IoT jest nieuproszczony i może mieć wpływ powszechnie.
+Zabezpieczanie infrastruktury Internetu rzeczy (IoT) jest krytyczna przedsiębiorstwa dla każdego, kto jest związane z rozwiązań IoT. Ze względu na liczbę urządzeń i Rozproszony charakter tych urządzeń wpływ zdarzenie związane z zabezpieczeniami dotyczą naruszenia milionami urządzeń IoT jest trywialny i może mieć wpływ powszechne.
 
-Z tego powodu podejście zabezpieczeń zabezpieczeń w zakresie zabezpieczeń IoT. Dane muszą być bezpieczne w chmurze i przesyłane za pośrednictwem sieci prywatnej i publicznej. Metody muszą być spełnione, aby bezpiecznie udostępnić z samymi urządzeniami IoT. Każda warstwa z urządzenia do sieci wewnętrznej w chmurze musi silne zabezpieczenie gwarancji.
+Z tego powodu podejście zabezpieczeń zabezpieczeń w zakresie zabezpieczeń IoT. Dane muszą być bezpieczne w chmurze i kiedy przesuwa się on w sieciach prywatnych i publicznych. Metody muszą być spełnione, aby bezpiecznie aprowizacja urządzeń IoT, samodzielnie. Każda warstwa z urządzenia do sieci z chmurą zaplecza wymaga zapewnienia silne zabezpieczenia.
 
 Najlepsze rozwiązania IoT mogą zostać podzielone w następujący sposób:
 
-* IoT producenta sprzętu lub integrator
-* Deweloper rozwiązania IoT
+* Producent sprzętu IoT lub integrator
+* Dla deweloperów rozwiązań IoT
 * Narzędzie wdrażania rozwiązania IoT
 * Operator rozwiązania IoT
 
-Ten artykuł zawiera podsumowanie [Internet z innymi najlepszych rozwiązań dotyczących zabezpieczeń](../iot-suite/iot-security-best-practices.md). Można znaleźć w tym artykule, aby uzyskać szczegółowe informacje.
+Ten artykuł zawiera podsumowanie [Internet z rzeczy najlepszych rozwiązań dotyczących zabezpieczeń](../iot-suite/iot-security-best-practices.md). Zapoznaj się z tego artykułu, aby uzyskać szczegółowe informacje.
 
-## <a name="iot-hardware-manufacturer-or-integrator"></a>IoT producenta sprzętu lub integrator
+## <a name="iot-hardware-manufacturer-or-integrator"></a>Producent sprzętu IoT lub integrator
 
-Wykonaj poniższe najlepsze rozwiązania IoT produkcji sprzętu lub integrator sprzętu:
+Wykonaj poniższe najlepsze rozwiązania, jeśli są produkcji sprzętu IoT lub integrator sprzętu:
 
-* **Zakres sprzętu do minimalnych wymagań**: projekt sprzętu powinna zawierać minimalne funkcje wymagane dla operacji sprzętu i nic więcej. 
-* **Należy sprzętu manipulację dowód**: kompilacji w mechanizmów przed naruszeniem fizycznego sprzętu, takich jak otwieranie pokrywy urządzenia, usunięcie części urządzenia itd. 
-* **Tworzenie wokół bezpiecznych składników sprzętowych**: Jeśli [kst](https://en.wikipedia.org/wiki/Cost_of_goods_sold) zezwolić, tworzenia funkcji zabezpieczeń, takich jak bezpieczna i szyfrowana magazynowania i funkcji rozruchowego opartego na modułu TPM.
-* **Zabezpieczyć uaktualnień**: uaktualnienie oprogramowania układowego okres istnienia urządzenia są nieuniknione.
+* **Zakres sprzętu minimalne wymagania**: projekt sprzętu powinna zawierać minimalne funkcje wymagane dla operacji sprzęt i nic więcej. 
+* **Uczynienia sprzętu naruszanie dowód**: dołączanie mechanizmów naruszeniem fizycznego sprzętu, takich jak otwieranie pokrycia urządzenia, usuwając część urządzeń itp. 
+* **Tworzenie wokół bezpieczny sprzęt**: Jeśli [KWS](https://en.wikipedia.org/wiki/Cost_of_goods_sold) zezwolić, tworzyć funkcje zabezpieczeń, takie jak magazynowanie bezpieczna i szyfrowana i opartych na Trusted Platform Module TPM funkcje.
+* **Zwiększyć bezpieczeństwo uaktualnień**: uaktualnienie oprogramowania układowego w okresie istnienia urządzenia jest nieuniknione.
 
-## <a name="iot-solution-developer"></a>Deweloper rozwiązania IoT
+## <a name="iot-solution-developer"></a>Dla deweloperów rozwiązań IoT
 
-Jeśli jesteś deweloperem rozwiązania IoT, wykonaj poniższe najlepsze rozwiązania:
+Jeśli jesteś deweloperem rozwiązań IoT, postępuj zgodnie z najlepszymi poniżej:
 
-* **Postępuj zgodnie z metodologii rozwoju oprogramowania bezpiecznego**: tworzenie bezpiecznej oprogramowania wymaga podstaw planowania zabezpieczeń od momentu rozpoczęcia projektu aż do jej wdrożenia, testowania i wdrażania.
-* **Wybierz oprogramowanie typu open source z rozwagą**: oprogramowanie typu open source zapewnia możliwość szybkiego opracowywania rozwiązań.
-* **Integracja z rozwagą**: istnieje wiele luk w zabezpieczeniach oprogramowania na granicy bibliotek i interfejsów API. 
+* **Postępuj zgodnie z metodologii rozwoju oprogramowania bezpiecznego**: tworzenie bezpiecznego oprogramowania wymaga podstaw myśleć o zabezpieczeniach od powstania projektu aż do jej implementacji, testowania i wdrażania.
+* **Wybierz oprogramowanie typu open source z rozwagą**: oprogramowanie typu open source umożliwia szybkie opracowywanie rozwiązań.
+* **Integracja z rozwagą**: istnieje wiele luki w zabezpieczeniach oprogramowania na granicy bibliotek i interfejsów API. 
 
 ## <a name="iot-solution-deployer"></a>Narzędzie wdrażania rozwiązania IoT
 
-Wykonaj poniższe najlepsze rozwiązania w przypadku wdrażania rozwiązania IoT:
+Wykonaj poniższe najlepsze rozwiązania, jeśli są wdrażania rozwiązania IoT:
 
-* **Wdrażanie sprzętu bezpiecznie**: IoT wdrożenia może wymagać sprzętu, który ma zostać wdrożony w lokalizacjach niezabezpieczone, taki jak publiczny spacji lub ustawień nienadzorowanych.
-* **Bezpieczeństwa kluczy uwierzytelniania**: podczas wdrażania, każde urządzenie wymaga identyfikatory urządzeń i skojarzonych kluczy uwierzytelniania generowane przez usługę w chmurze. Zachowaj te klucze fizycznie bezpieczne nawet po wdrożeniu. Dowolny klawisz, którego bezpieczeństwo zostało naruszone można za pomocą złośliwych urządzenia udają istniejące urządzenie.
+* **Bezpieczne wdrażanie sprzętu**: Wdrożenia usługi IoT, mogą wymagać sprzętu, który ma zostać wdrożony w niezabezpieczonych lokalizacjach, takich jak publicznego miejsca do magazynowania lub ustawień nienadzorowanych.
+* **Zabezpieczanie klucze uwierzytelniania**: podczas wdrażania, każde urządzenie wymaga identyfikatorów urządzeń i skojarzone klucze uwierzytelniania, generowane przez usługę w chmurze. Zabezpieczenie tych kluczy fizycznie nawet po wdrożeniu. Dowolny klawisz, którego bezpieczeństwo zostało naruszone, może służyć przez złośliwych urządzenie poczynania jako istniejące urządzenie.
 
 ## <a name="iot-solution-operator"></a>Operator rozwiązania IoT
 
-Wykonaj poniższe najlepsze rozwiązania w przypadku operator rozwiązania IoT:
+Wykonaj poniższe najlepsze rozwiązania, jeśli uprawnienia operatora rozwiązania IoT:
 
-* **Aktualności systemów**: Upewnij się, systemów operacyjnych urządzeń i wszystkie sterowniki zostały zaktualizowane do najnowszej wersji. 
-* **Ochrona przed złośliwych działań**: pozwala na system operacyjny, umieść najnowszych funkcji oprogramowania antywirusowego i przed złośliwym oprogramowaniem w każdym systemie operacyjnym urządzenia. 
-* **Inspekcji, często**: inspekcja IoT infrastruktury zabezpieczeń związanych z problemów jest kluczem podczas reagowania na przypadki naruszenia zabezpieczeń.
-* **Fizycznie ochrona infrastruktury IoT**: najgorszy ataki zabezpieczeń infrastruktury IoT jest uruchomiony przy użyciu fizyczny dostęp do urządzeń.
-* **Ochrona poświadczeń w chmurze**: chmury uwierzytelniania poświadczenia używane do konfigurowania i obsługi wdrażania IoT są prawdopodobnie najłatwiejszym sposobem na uzyskanie dostępu i złamanie IoT. 
+* **Aktualizuj systemy**: Upewnij się, systemów operacyjnych urządzeń i wszystkie sterowniki urządzeń, które zostały zaktualizowane do najnowszej wersji. 
+* **Ochrona przed złośliwymi działaniami**: pozwala na system operacyjny, umieść najnowszych funkcji ochrony antywirusowej i chroniące przed złośliwym kodem na każdy system operacyjny urządzenia. 
+* **Inspekcja często**: inspekcja początek infrastruktury IoT zabezpieczeń związanych z problemów jest klucz, w przypadku reagowania na zdarzenia związane z bezpieczeństwem.
+* **Fizycznie ochrona infrastruktury IoT**: najgorsze ataków bezpieczeństwa infrastruktury IoT uruchamianych przy użyciu fizyczny dostęp do urządzeń.
+* **Ochrona poświadczeń w chmurze**: chmura poświadczenia uwierzytelniania używany do konfigurowania i obsługi wdrożenia usługi IoT są prawdopodobnie Najprostszym sposobem na uzyskanie dostępu i naruszenia bezpieczeństwa systemu IoT. 
 

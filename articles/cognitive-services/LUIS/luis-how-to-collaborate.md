@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: 4ccf703ffde0d4a5a0961135e81259519b0a0e41
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f23212a854fb37dda89fd2bf6b223cf0dc69526b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878973"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167592"
 ---
 # <a name="how-to-manage-authors-and-collaborators"></a>Jak zarządzać autorzy i współpracowników 
 
@@ -44,14 +44,13 @@ Gdy usługa LUIS nie obsługuje obecnie przeniesienie prawa własności, można 
 
 ## <a name="azure-active-directory-resources"></a>Zasoby platformy Azure Active Directory
 
-Jeśli używasz usługi Azure Active Directory (Azure AD) w Twojej organizacji, LUIS wymaga zgody na dostęp do informacji o użytkownikach, podczas korzystania z usługi LUIS. Zasoby, które wymaga usługi LUIS są minimalne. 
+Jeśli używasz [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) w organizacji, Language Understanding (LUIS) wymaga uprawnień do informacji o dostępie użytkowników podczas korzystania z usługi LUIS. Zasoby, które wymaga usługi LUIS są minimalne. 
 
 Szczegółowy opis zostanie wyświetlony, gdy spróbujesz zarejestrować się przy użyciu konta, które ma zgody administratora, lub nie wymagają zgody administratora, takich jak zgody administratora:
 
-* Umożliwia logowanie do aplikacji za pomocą konta organizacyjnego i umożliwia aplikacji odczytanie profilu. Umożliwia również aplikacji na odczytywanie podstawowych informacji o firmie.
-* Zezwala aplikacji na wyświetlanie i aktualizowanie danych, nawet wtedy, gdy nie używasz obecnie aplikacji.
+* Umożliwia logowanie do aplikacji za pomocą konta organizacyjnego i umożliwia aplikacji odczytanie profilu. Umożliwia również aplikacji na odczytywanie podstawowych informacji o firmie. Dzięki temu usługa LUIS uprawnienia do odczytu danych profilu podstawowego, takich jak identyfikator użytkownika, adres e-mail, nazwy
+* Zezwala aplikacji na wyświetlanie i aktualizowanie danych, nawet wtedy, gdy nie używasz obecnie aplikacji. Uprawnienie jest wymagany do odświeżenia tokenu dostępu użytkownika.
 
-Pierwszy uprawnienie daje LUIS uprawnienia do odczytu danych profilu podstawowego, takich jak identyfikator użytkownika, adres e-mail, nazwy. Drugi uprawnienie jest wymagane do odświeżenia tokenu dostępu użytkownika.
 
 ## <a name="azure-active-directory-tenant-user"></a>Użytkownik dzierżawy usługi Azure Active Directory
 
@@ -59,11 +58,8 @@ Usługa LUIS używa standardowych przepływu wyrażania zgody usługi Azure Acti
 
 Administrator dzierżawy powinny współpracować bezpośrednio z użytkownikiem, który musi mieć dostęp udzielony do korzystania z usługi LUIS w usłudze Azure AD. 
 
-Po pierwsze użytkownik zaloguje się do usługi LUIS i widzi wyskakującego okna dialogowego, wymagające zatwierdzenia administratora. Użytkownik skontaktuje się z administratorem dzierżawy przed kontynuowaniem. 
-
-Po drugie Administrator dzierżawy zaloguje się do usługi LUIS i widzi zgody przepływu wyskakującego okna dialogowego. To okno dialogowe, administrator musi udzielić uprawnień dla użytkownika. Gdy administrator zaakceptuje uprawnień, użytkownik będzie mógł kontynuować z użyciem usługi LUIS.
-
-Jeśli Administrator dzierżawy nie będą logować się LUIS, administrator może uzyskać dostęp do [zgody](https://account.activedirectory.windowsazure.com/r#/applications) dla usługi LUIS. 
+* Po pierwsze użytkownik zaloguje się do usługi LUIS i widzi wyskakującego okna dialogowego, wymagające zatwierdzenia administratora. Użytkownik skontaktuje się z administratorem dzierżawy przed kontynuowaniem. 
+* Po drugie Administrator dzierżawy zaloguje się do usługi LUIS i widzi zgody przepływu wyskakującego okna dialogowego. To okno dialogowe, administrator musi udzielić uprawnień dla użytkownika. Gdy administrator zaakceptuje uprawnień, użytkownik będzie mógł kontynuować z użyciem usługi LUIS. Jeśli Administrator dzierżawy nie będą logować się LUIS, administrator może uzyskać dostęp do [zgody](https://account.activedirectory.windowsazure.com/r#/applications) LUIS, pokazane na poniższym zrzucie ekranu. Zwróć uwagę, lista jest filtrowana do elementów, które należy dołączyć nazwę `LUIS`.
 
 ![Uprawnienia usługi Azure active directory, witryna sieci Web aplikacji](./media/luis-how-to-collaborate/tenant-permissions.png)
 

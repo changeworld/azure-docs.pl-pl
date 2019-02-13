@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/04/2018
 ms.author: cshoe
-ms.openlocfilehash: d865028a2ddc7315192030b704a77a332dab14aa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: cf972075aeeb780f44972e5b9134261fef33817f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822714"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118313"
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Wyzwalacz siatki zdarzeń dla usługi Azure Functions
 
@@ -46,7 +46,7 @@ Wyzwalacz usługi Event Grid jest podawany jako [Microsoft.Azure.WebJobs.Extensi
 
 Zobacz przykład charakterystyczny dla wyzwalacza usługi Event Grid:
 
-* [C#](#c-example)
+* C#
 * [Skryptu C# (csx)](#c-script-example)
 * [Java](#trigger---java-examples)
 * [JavaScript](#javascript-example)

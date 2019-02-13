@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55757537"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213135"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności
 
@@ -63,7 +63,7 @@ W związku z tym jest ważne jest określenie optymalnej wartości przepustowoś
 
 ## <a name="latency"></a>Opóźnienie
 
-Opóźnienie to czas potrzebny aplikacji do odbierania pojedynczego żądania, wyślij go do dyski magazynu i czy wysłać odpowiedź do klienta. Jest to krytyczne miary wydajności aplikacji, oprócz operacje We/Wy i przepływność. Opóźnienie dysku magazynu premium to czas potrzebny do pobrania informacji dla żądania i przekazuje ją do swojej aplikacji. Usługa Premium Storage zapewnia stale niskimi opóźnieniami. Jeśli zostanie włączone buforowanie na dyskach magazynu premium hosta tylko do odczytu, możesz uzyskać znacznie mniejsze opóźnienie odczytu. Omówimy buforowania dysku bardziej szczegółowo w dalszej części tego tematu na *Optymalizowanie wydajności aplikacji*.
+Opóźnienie to czas potrzebny aplikacji do odbierania pojedynczego żądania, wyślij go do dyski magazynu i czy wysłać odpowiedź do klienta. Jest to krytyczne miary wydajności aplikacji, oprócz operacje We/Wy i przepływność. Opóźnienie dysku magazynu premium to czas potrzebny do pobrania informacji dla żądania i przekazuje ją do swojej aplikacji. Usługa Premium Storage zapewnia stale niskimi opóźnieniami. Dyski w warstwie Premium są przeznaczone do zapewnienia milisekundowe opóźnienia większość operacji We/Wy. Jeśli zostanie włączone buforowanie na dyskach magazynu premium hosta tylko do odczytu, możesz uzyskać znacznie mniejsze opóźnienie odczytu. Omówimy buforowania dysku bardziej szczegółowo w dalszej części tego tematu na *Optymalizowanie wydajności aplikacji*.
 
 Podczas optymalizacji aplikacji w taki sposób, aby uzyskać wyższą operacje We/Wy i przepływność ma wpływ na opóźnienia w aplikacji. Po dostrajanie wydajności aplikacji, zawsze należy przeprowadzić ocenę opóźnienie aplikacji, aby uniknąć zachowania nieoczekiwany duże opóźnienie.
 

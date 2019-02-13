@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 14f4d4dbdd06de91e126652497c49e4d74b4d3ad
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 713905ac0c6dcd53f468fe7e9af7c565ee38ac66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098157"
+ms.locfileid: "56106532"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Wprowadzenie do usługi Azure Data Lake Storage Gen2
 
@@ -76,10 +76,10 @@ Wiele platform typu open source obsługi Gen2 magazynu programu Data Lake. Tych 
 | Platforma |  Obsługiwane wersje | Więcej informacji |
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 + | [Jakie są składniki platformy Apache Hadoop i wersje dostępne z HDInsight?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-| [Hadoop](https://hadoop.apache.org/) | 2.7+ | [Apache Hadoop zwalnia archiwum](https://hadoop.apache.org/release.html) |
+| [Hadoop](https://hadoop.apache.org/) | 3.2+ | [Apache Hadoop zwalnia archiwum](https://hadoop.apache.org/release.html) |
 | [Platformy Cloudera](https://www.cloudera.com/) | 6.1 + | [Informacje o wersji 6.x platformy Cloudera Enterprise](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
-| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 4.2 + | [Wersje środowiska uruchomieniowego usługi Databricks](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[Hortonworks](https://hortonworks.com/)| 3.1.x+ | [Dokumentacja Hortonworks](https://docs.hortonworks.com/) |
+| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1+ | [Wersje środowiska uruchomieniowego usługi Databricks](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
+|[Hortonworks](https://hortonworks.com/)| 3.1.x++ | [Konfigurowanie dostępu do danych w chmurze](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

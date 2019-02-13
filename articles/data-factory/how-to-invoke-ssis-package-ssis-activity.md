@@ -8,17 +8,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 02/09/2019
+ms.date: 02/12/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a848e160406a458c5a6307919bfb866693babbef
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2a948a75ce3f6c21d7e92e3e1ccb1ef98dbe2ea0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002209"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114387"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>Uruchamianie pakietów SSIS za pomocą działania wykonywania pakietów SSIS w usłudze Azure Data Factory
 W tym artykule opisano sposób uruchamiania pakietu SSIS w potoku usługi Azure Data Factory (ADF) za pomocą działania wykonywanie pakietu SSIS. 
@@ -140,7 +140,7 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
                    "runtime": "x64",
                    "loggingLevel": "Basic",
                    "packageLocation": {
-                       "packagePath": "FolderName/ProjectName/PackageName.dtsx"            
+                       "packagePath": "FolderName/ProjectName/PackageName.dtsx"
                    },
                    "environmentPath": "FolderName/EnvironmentName",
                    "projectParameters": {
@@ -180,7 +180,7 @@ W tym kroku utworzysz potok z działaniem wykonywanie pakietu SSIS. Działanie z
                        }
                    },
                    "propertyOverrides": {
-                       "\\PackageName.dtsx\\MaxConcurrentExecutables": {
+                       "\\Package.MaxConcurrentExecutables": {
                            "value": 8,
                            "isSensitive": false
                        }

@@ -4,7 +4,7 @@ description: Więcej informacji na temat obliczeń usług w chmurze, które zawi
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405977"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111292"
 ---
 # <a name="azure-network-security"></a>Zabezpieczenia sieci na platformie Azure
 
@@ -88,11 +88,11 @@ Sieci wirtualne platformy Azure są podobne wirtualnej sieci lokalnej za pomocą
 
 Łączenie sieci wirtualnych między sobą Włączanie zasobów podłączonej do jednej sieci wirtualnej do komunikowania się ze sobą w ramach sieci wirtualnych. Łączenie sieci wirtualnych między sobą, można użyć jednego lub obu z następujących opcji:
 
-- **Komunikacja równorzędna:** dzięki zasoby podłączone do różnych sieci wirtualnych platformy Azure w ramach tej samej lokalizacji platformy Azure do komunikowania się ze sobą. Przepustowość i opóźnienie między siecią wirtualną jest taki sam, jakby zasoby były podłączone do tej samej sieci wirtualnej. Aby dowiedzieć się więcej na temat komunikacji równorzędnej, przeczytaj [komunikacja równorzędna sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+- **Komunikacja równorzędna:** Dzięki zasoby podłączone do różnych sieci wirtualnych platformy Azure w ramach tej samej lokalizacji platformy Azure do komunikowania się ze sobą. Przepustowość i opóźnienie między siecią wirtualną jest taki sam, jakby zasoby były podłączone do tej samej sieci wirtualnej. Aby dowiedzieć się więcej na temat komunikacji równorzędnej, przeczytaj [komunikacja równorzędna sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
  ![Komunikacja równorzędna](media/azure-network-security/azure-network-security-fig-3.png)
 
-- **Połączenia sieć wirtualna-sieć wirtualna:** dzięki zasoby podłączony do innej sieci wirtualnej platformy Azure w ramach tej samej lub innej lokalizacji platformy Azure. W przeciwieństwie do komunikacji równorzędnej, przepustowość jest ograniczona między sieciami wirtualnymi, ponieważ ruch musi przepływać za pośrednictwem bramy sieci VPN Azure.
+- **Połączenie sieć wirtualna-sieć wirtualna:** Dzięki zasoby podłączony do innej sieci wirtualnej platformy Azure w ramach tej samej lub innej lokalizacji platformy Azure. W przeciwieństwie do komunikacji równorzędnej, przepustowość jest ograniczona między sieciami wirtualnymi, ponieważ ruch musi przepływać za pośrednictwem bramy sieci VPN Azure.
 
 ![Połączenia sieć wirtualna-sieć wirtualna](media/azure-network-security/azure-network-security-fig-4.png)
 
@@ -151,9 +151,9 @@ Kilka zasobów platformy Azure można połączyć z siecią wirtualną, takie ja
 
 Łączenie sieci wirtualnych między sobą Włączanie zasobów podłączonej do jednej sieci wirtualnej do komunikowania się ze sobą w ramach sieci wirtualnych. Łączenie sieci wirtualnych między sobą, można użyć jednego lub obu z następujących opcji:
 
-- **Komunikacja równorzędna:** dzięki zasoby podłączone do różnych sieci wirtualnych platformy Azure w ramach tej samej lokalizacji platformy Azure do komunikowania się ze sobą. Przepustowość i opóźnienie między sieciami wirtualnymi jest taka sama tak, jakby zasoby były podłączone do tej samej VNet.To więcej informacji na temat komunikacji równorzędnej, przeczytaj [komunikacja równorzędna sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+- **Komunikacja równorzędna:** Dzięki zasoby podłączone do różnych sieci wirtualnych platformy Azure w ramach tej samej lokalizacji platformy Azure do komunikowania się ze sobą. Przepustowość i opóźnienie między sieciami wirtualnymi jest taka sama tak, jakby zasoby były podłączone do tej samej VNet.To więcej informacji na temat komunikacji równorzędnej, przeczytaj [komunikacja równorzędna sieci wirtualnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
-- **Połączenia sieć wirtualna-sieć wirtualna:** dzięki zasoby podłączony do innej sieci wirtualnej platformy Azure w ramach tej samej lub innej lokalizacji platformy Azure. W przeciwieństwie do komunikacji równorzędnej, przepustowość jest ograniczona między sieciami wirtualnymi, ponieważ ruch musi przepływać za pośrednictwem bramy sieci VPN Azure. Aby dowiedzieć się więcej na temat łączenia sieci wirtualnych za pomocą połączenia sieć wirtualna-sieć wirtualna. Aby dowiedzieć się więcej, przeczytaj [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json) .
+- **Połączenie sieć wirtualna-sieć wirtualna:** Dzięki zasoby podłączony do innej sieci wirtualnej platformy Azure w ramach tej samej lub innej lokalizacji platformy Azure. W przeciwieństwie do komunikacji równorzędnej, przepustowość jest ograniczona między sieciami wirtualnymi, ponieważ ruch musi przepływać za pośrednictwem bramy sieci VPN Azure. Aby dowiedzieć się więcej na temat łączenia sieci wirtualnych za pomocą połączenia sieć wirtualna-sieć wirtualna. Aby dowiedzieć się więcej, przeczytaj [Konfigurowanie połączenia sieć wirtualna-sieć wirtualna](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json) .
 
 **Łączność lokalna**
 
@@ -161,9 +161,9 @@ Sieci wirtualne mogą być połączone z [lokalnych](https://docs.microsoft.com/
 
 Można połączyć sieć lokalną z siecią wirtualną przy użyciu dowolnej kombinacji następujących opcji:
 
-- **Punkt lokacja wirtualnej sieci prywatnej (VPN):** między jeden komputer połączony z siecią i siecią wirtualną. Ten typ połączenia jest świetny, jeśli dopiero rozpoczynasz pracę z platformą Azure. Jest też odpowiedni dla deweloperów, ponieważ wymaga niewielkich zmian w istniejącej sieci lub nie wymaga ich wcale. Połączenie korzysta z protokołu SSTP, zapewnienie szyfrowaną komunikację przez Internet między Komputerem a siecią wirtualną. Opóźnienie w sieci VPN punkt lokacja jest nieprzewidywalne, ponieważ ruch przechodzi przez Internet.
+- **Wirtualna sieć prywatna typu punkt-lokacja:** Ustanowić między jeden komputer połączony z siecią i siecią wirtualną. Ten typ połączenia jest świetny, jeśli dopiero rozpoczynasz pracę z platformą Azure. Jest też odpowiedni dla deweloperów, ponieważ wymaga niewielkich zmian w istniejącej sieci lub nie wymaga ich wcale. Połączenie korzysta z protokołu SSTP, zapewnienie szyfrowaną komunikację przez Internet między Komputerem a siecią wirtualną. Opóźnienie w sieci VPN punkt lokacja jest nieprzewidywalne, ponieważ ruch przechodzi przez Internet.
 
-- **Sieć VPN lokacja lokacja:** między urządzeniem sieci VPN i bramą sieci VPN platformy Azure. Ten typ połączenia umożliwia dowolnego zasobu w środowisku lokalnym, zezwalają na dostęp do sieci wirtualnej. Połączenie jest VPN protokołu IPsec/IKE, który zapewnia szyfrowaną komunikację przez Internet między urządzeniem lokalnej i bramy sieci VPN platformy Azure. Czas oczekiwania na połączenie lokacja lokacja jest nieprzewidywalne, ponieważ ruch przechodzi przez Internet.
+- **Sieć VPN typu lokacja-lokacja:** Ustanowić między urządzeniem sieci VPN i bramą sieci VPN platformy Azure. Ten typ połączenia umożliwia dowolnego zasobu w środowisku lokalnym, zezwalają na dostęp do sieci wirtualnej. Połączenie jest VPN protokołu IPsec/IKE, który zapewnia szyfrowaną komunikację przez Internet między urządzeniem lokalnej i bramy sieci VPN platformy Azure. Czas oczekiwania na połączenie lokacja lokacja jest nieprzewidywalne, ponieważ ruch przechodzi przez Internet.
 
 - **Azure ExpressRoute:** połączenie nawiązywane pomiędzy siecią i platformą Azure za pośrednictwem partnera usługi ExpressRoute. To połączenie jest prywatne. Ruch nie przechodzi przez Internet. Czas oczekiwania na połączenie usługi ExpressRoute jest przewidywalne, ponieważ ruch nie przechodzi przez Internet. Aby dowiedzieć się więcej na temat wszystkich poprzednich opcji połączenia, przeczytaj [diagramy topologii połączeń](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -173,9 +173,9 @@ Wystąpienia roli maszyn wirtualnych i usług w chmurze [ruch sieciowy](https://
 
 Ruch sieciowy pomiędzy podsieciami możesz filtrować przy użyciu jednej lub obu poniższych opcji:
 
-- **Sieciowe grupy zabezpieczeń (NSG):** każdej sieciowej grupy zabezpieczeń może zawierać wiele reguł zabezpieczeń dla ruchu przychodzącego i wychodzącego, które pozwalają do filtrowania ruchu przez źródłowy i docelowy adres IP, portu i protokołu. Sieciowa grupa zabezpieczeń można stosować do każdej karty Sieciowej na maszynie wirtualnej. Można także zastosować sieciową grupę zabezpieczeń do podsieci karty Sieciowej lub innych zasobów platformy Azure jest połączona. Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, przeczytaj [sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- **Sieciowe grupy zabezpieczeń (NSG):** Poszczególnych sieciowych grupach zabezpieczeń może zawierać wiele reguł zabezpieczeń dla ruchu przychodzącego i wychodzącego, które pozwalają do filtrowania ruchu przez źródłowy i docelowy adres IP, portu i protokołu. Sieciowa grupa zabezpieczeń można stosować do każdej karty Sieciowej na maszynie wirtualnej. Można także zastosować sieciową grupę zabezpieczeń do podsieci karty Sieciowej lub innych zasobów platformy Azure jest połączona. Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, przeczytaj [sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
-- **Wirtualne urządzenia sieciowe:** urządzenie sieci wirtualnej jest uruchomione oprogramowanie, która realizuje funkcje sieci, takimi jak Zapora maszyny Wirtualnej. Wyświetl listę dostępnych urządzeń WUS w witrynie Azure Marketplace. Urządzenia WUS są również dostępne, zapewniające Optymalizacja sieci WAN i innych sieci ruchu funkcji. Urządzenia WUS są zwykle używane przy użyciu zdefiniowanych przez użytkownika lub tras BGP. Urządzenie WUS można również użyć do filtrowania ruchu między sieciami wirtualnymi.
+- **Urządzenia sieci wirtualnej:** Urządzenie sieci wirtualnej jest uruchomione oprogramowanie, która realizuje funkcje sieci, takimi jak Zapora maszyny Wirtualnej. Wyświetl listę dostępnych urządzeń WUS w witrynie Azure Marketplace. Urządzenia WUS są również dostępne, zapewniające Optymalizacja sieci WAN i innych sieci ruchu funkcji. Urządzenia WUS są zwykle używane przy użyciu zdefiniowanych przez użytkownika lub tras BGP. Urządzenie WUS można również użyć do filtrowania ruchu między sieciami wirtualnymi.
 
 **Routing**
 
@@ -183,11 +183,11 @@ Opcjonalnie można zastąpić domyślne platformy Azure routing, dbając o Konfi
 
 Platforma Azure tworzy tabel tras, które umożliwiają zasobów podłączone do żadnej podsieci w dowolnej sieci wirtualnej do komunikowania się ze sobą, domyślnie. Możesz zaimplementować jedną lub obie poniższe opcje, aby zastąpić domyślne trasy tworzone przez platformę Azure:
 
-- **Trasy zdefiniowane przez użytkownika:** można utworzyć niestandardowe tabele tras z trasami tę kontrolkę, której ruch jest kierowany do każdej podsieci. Aby dowiedzieć się więcej o trasach definiowanych przez użytkownika, przeczytaj [trasy zdefiniowane przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+- **Trasy zdefiniowane przez użytkownika:** możesz utworzyć niestandardowe tabele tras z trasami kontrolującymi przekierowywanie ruchu do każdej podsieci. Aby dowiedzieć się więcej o trasach definiowanych przez użytkownika, przeczytaj [trasy zdefiniowane przez użytkownika](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 
-- **Trasy protokołu BGP:** Jeśli łączysz sieć wirtualną z siecią lokalną przy użyciu połączenia usługi Azure VPN Gateway lub ExpressRoute, możesz propagować trasy protokołu BGP w Twoich sieciach wirtualnych.
+- **Trasy protokołu BGP:** Jeśli łączysz sieć wirtualną z siecią lokalną przy użyciu usługi Azure VPN Gateway lub połączenia ExpressRoute, możesz propagować trasy protokołu BGP w Twoich sieciach wirtualnych.
 
-### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>Hybrydowe połączenie z Internetem: łączenie z siecią lokalną
+### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>Hybrydowe połączenie z Internetem: Łączenie z siecią lokalną
 Można połączyć sieć lokalną z siecią wirtualną przy użyciu dowolnej kombinacji następujących opcji:
 
 -   Łączność z Internetem
@@ -236,7 +236,7 @@ Usługa Microsoft Azure ExpressRoute umożliwia rozszerzanie sieci lokalnych na 
 
 Połączenia ExpressRoute nie odbywają się za pośrednictwem publicznego Internetu. Dzięki temu oferują one większą niezawodność i szybkość oraz mniejsze opóźnienia i lepsze zabezpieczenia niż typowe połączenia przez Internet.
 
-![ Łącza sieci WAN w wersji dedykowanej](media/azure-network-security/azure-network-security-fig-7.png)
+![ Dedicated WAN Link](media/azure-network-security/azure-network-security-fig-7.png)
 
 > [!Note]
 > Aby uzyskać informacje na temat łączenia sieci z firmą Microsoft, przy użyciu usługi ExpressRoute, zobacz [modele połączeń usługi ExpressRoute](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) i [ExpressRoute — opis techniczny](https://docs.microsoft.com/azure/expressroute/expressroute-introduction).
@@ -282,13 +282,13 @@ Oznacza to, że można kontrolować dostęp między jedną maszynę Wirtualną i
 
 Sieciowa grupa zabezpieczeń zawiera kilka wbudowanych zasad, które trzeba wiedzieć. Są to:
 
--   **Zezwalaj na cały ruch w ramach określonej sieci wirtualnej:** wszystkich maszyn wirtualnych w tej samej sieci wirtualnej platformy Azure może komunikować się ze sobą.
+-   **Zezwalaj na cały ruch w ramach określonej sieci wirtualnej:** Wszystkie maszyny wirtualne w tej samej sieci wirtualnej platformy Azure mogą komunikować się ze sobą.
 
 -   **Zezwalaj na przychodzący Równoważenie obciążenia platformy Azure:** ta reguła zezwala na ruch z dowolnego źródłowego adresu do dowolnego adresu docelowego dla modułu równoważenia obciążenia platformy Azure.
 
 -   **Odmów wszystkich przychodzących:** ta reguła blokuje cały ruch, określania źródła z Internetu, który ma być jawnie dozwolone.
 
--   **Zezwalaj na cały ruch wychodzący do Internetu:** ta reguła umożliwia maszynom wirtualnym można zainicjować połączenia z Internetem. Jeśli użytkownik nie chce tych połączeń inicjowanych, należy utworzyć zasadę, aby zablokować te połączenia lub wymuszanie tunelowania.
+-   **Zezwalaj na ruch wychodzący do Internetu cały ruch:** Ta zasada umożliwia maszyn wirtualnych do zainicjowania połączeń z Internetu. Jeśli użytkownik nie chce tych połączeń inicjowanych, należy utworzyć zasadę, aby zablokować te połączenia lub wymuszanie tunelowania.
 
 #### <a name="system-routes-and-user-defined-routes"></a>Trasy systemowe i trasy zdefiniowane przez użytkownika
 
@@ -320,11 +320,11 @@ W poniższej sekcji przedstawiono bieżące ograniczenie tabeli routingu i trasy
 
 -   Każda podsieć sieci wirtualnej ma wbudowane i tabelę routingu systemu. Tabela routingu system ma trzy następujące grupy trasy:
 
- -  **Lokalne trasy sieci wirtualnej:** bezpośrednio do lokalizacji docelowej maszyny wirtualne w tej samej sieci wirtualnej
+ -  **Lokalne trasy sieci wirtualnej:** Bezpośrednio do lokalizacji docelowej maszyny wirtualne w tej samej sieci wirtualnej
 
- - **Na trasach lokalnego:** bramy do sieci VPN platformy Azure
+ - **W lokalnej trasy:** Do bramy sieci VPN platformy Azure
 
- -  **Trasa domyślna:** bezpośrednio do Internetu. Pakiety przeznaczone do prywatnych adresów IP nieuwzględnionych przez poprzednie dwie trasy są porzucane.
+ -  **Trasa domyślna:** Bezpośrednio do Internetu. Pakiety przeznaczone do prywatnych adresów IP nieuwzględnionych przez poprzednie dwie trasy są porzucane.
 
 -   Wraz z wydaniem trasy zdefiniowane przez użytkownika można utworzyć tabeli routingu, aby dodać trasę domyślną i skojarz tabeli routingu do podsieci sieci wirtualnej można włączyć tunelowania wymuszonego tych podsieci.
 
@@ -464,7 +464,7 @@ Zabezpieczenia usługi Azure Operational odnosi się do usługi, formanty i funk
 
 -   [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview)
 
--   [Usługa Azure Network watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
+-   [Azure Network watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)
 
 -   [Analizy usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)
 
@@ -505,7 +505,7 @@ Platforma Azure oferuje wiele narzędzi do monitorowania, zapobieganie, wykrywan
 
 -   Network Watcher
 
--   Poziom monitorowania zasobów sieciowych
+-   Network Resource Level Monitoring
 
 -   Log Analytics
 
@@ -645,9 +645,9 @@ Następujące metryki są obsługiwane w przypadku bram Application Gateway:
 
 Następujące dzienniki są obsługiwane w przypadku [sieciowe grupy zabezpieczeń](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log):
 
-- **NetworkSecurityGroupEvent:** zawiera wpisy, dla których sieciowej grupy zabezpieczeń reguły są stosowane do maszyn wirtualnych i wystąpień ról na podstawie adresu MAC. Stan reguły te są gromadzone co 60 sekund.
+- **NetworkSecurityGroupEvent:** Zawiera wpisy, dla których sieciowej grupy zabezpieczeń reguły są stosowane do maszyn wirtualnych i ról wystąpień na podstawie adresu MAC. Stan reguły te są gromadzone co 60 sekund.
 
-- **NetworkSecurityGroupRuleCounter:** wpisy ile razy poszczególnych sieciowych grupach zabezpieczeń zawiera reguły, jest stosowany do odmowy lub zezwolić na ruch.
+- **NetworkSecurityGroupRuleCounter:** Zawiera wpisy dla tyle razy, każda reguła sieciowej grupy zabezpieczeń są stosowane do odmowy lub zezwolić na ruch.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o zabezpieczeń, zapoznając się niektóre z naszych tematy szczegółowe zabezpieczeń:

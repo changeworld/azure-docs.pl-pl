@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: 03782ddc60da495fec5551f91f797948024acb5e
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5b9cf271f694c0ea5da8996baac2261684e66d83
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965345"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217891"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>Problemy z logowaniem do aplikacji przy użyciu linku bezpośredniego
 

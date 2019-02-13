@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: d4d4420e2d38b1418a08ad1ca51dd0f75f3fe7b9
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a7d6893c42028790ec565961f2a2cb54035aefa1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001106"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106465"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Włącz rejestrowanie diagnostyczne w usłudze Azure Traffic Manager
 
@@ -40,14 +40,14 @@ Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Sh
 
 2. **Włączanie rejestrowania diagnostycznego dla profilu usługi Traffic Manager:**
 
-    Włączanie rejestrowania diagnostycznego dla profilu usługi Traffic Manager przy użyciu Identyfikatora uzyskanego w poprzednim kroku przy użyciu [AzDiagnosticSetting zestaw](https://docs.microsoft.com/powershell/module/az.insights/set-azdiagnosticsetting?view=latest). Poniższe polecenie zapisuje pełne dzienniki profilu usługi Traffic Manager, aby określone konto usługi Azure Storage. 
+    Włączanie rejestrowania diagnostycznego dla profilu usługi Traffic Manager przy użyciu Identyfikatora uzyskanego w poprzednim kroku przy użyciu [AzDiagnosticSetting zestaw](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest). Poniższe polecenie zapisuje pełne dzienniki profilu usługi Traffic Manager, aby określone konto usługi Azure Storage. 
 
       ```azurepowershell-interactive
     Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Sprawdź ustawienia diagnostyczne:**
 
-      Sprawdź ustawienia diagnostyczne dla profilu usługi Traffic Manager za pomocą [Get AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.insights/get-azdiagnosticsetting?view=latest). Następujące polecenie wyświetla kategorie, które są rejestrowane dla zasobu.
+      Sprawdź ustawienia diagnostyczne dla profilu usługi Traffic Manager za pomocą [Get AzDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest). Następujące polecenie wyświetla kategorie, które są rejestrowane dla zasobu.
 
      ```azurepowershell-interactive
      Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>

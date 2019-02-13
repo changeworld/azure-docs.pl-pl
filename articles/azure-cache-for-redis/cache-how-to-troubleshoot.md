@@ -3,7 +3,7 @@ title: Jak rozwiązywać problemy z pamięć podręczna systemu Azure dla usług
 description: Dowiedz się, jak rozwiązać typowe problemy z pamięcią podręczną Azure dla usługi Redis.
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 928b9b9c-d64f-4252-884f-af7ba8309af6
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: wesmc
-ms.openlocfilehash: d513825cad397763792fdc9ffb833ba54e957e7d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: yegu
+ms.openlocfilehash: 5df659a91e31069406c97664a869d9f9445104f4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822667"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110629"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>Jak rozwiązywać problemy z pamięć podręczna systemu Azure dla usługi Redis
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów z następujących kategorii pamięć podręczna systemu Azure w przypadku problemów z pamięci podręcznej Redis.

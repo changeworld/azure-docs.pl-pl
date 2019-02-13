@@ -4,7 +4,7 @@ description: Ten artykuł zawiera opis ogólny, jak usługi Azure SQL Database c
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: cce1ff1102c42bd1627caeba7b2c86432b228607
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: cd2ad16f910f5d2b3b801c8d54e9df7660751462
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170858"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56103952"
 ---
 # <a name="azure-sql-database-security-features"></a>Funkcje zabezpieczeń w usłudze Azure SQL Database    
 Usługa Azure SQL Database udostępnia usługę relacyjnej bazy danych na platformie Azure. Aby chronić dane klientów i zapewnia silne zabezpieczenia funkcji, których klienci oczekują od usługa relacyjnej bazy danych, SQL Database ma swoje własne zestawy funkcji zabezpieczeń. Te możliwości bazują na kontrolki, które są dziedziczone z platformy Azure.
 
-## <a name="security-capabilities"></a>Funkcje zabezpieczeń
+## <a name="security-capabilities"></a>Możliwości zabezpieczeń
 
 ### <a name="usage-of-the-tds-protocol"></a>Użycie protokołu TDS
 Usługa Azure SQL Database obsługuje tylko dane tabelaryczne usługi stream (TDS) protokołu, który wymaga bazy danych był dostępny za pośrednictwem tylko domyślny port dla protokołu TCP/1433.
@@ -61,9 +61,9 @@ Ponieważ kontroler sieci szkieletowej (FC) jest centralnego koordynatora w usł
 ### <a name="vlan-isolation"></a>Izolacja sieci VLAN
 Sieć platformy Azure środowiska produkcyjnego logicznie można podzielić na trzy podstawowe sieci VLAN:
 
-- Główny sieci VLAN: węzły niezaufanego klienta dla połączeń.
+- Główny sieci VLAN: Dla połączeń klientów niezaufanych węzłów.
 - Sieć VLAN FC: Zawiera zaufanych FCs i obsługi systemów.
-- Urządzenie sieci VLAN: zawiera zaufanych sieci i innych urządzeniach infrastruktury.
+- Urządzenie sieci VLAN: Zawiera zaufanych sieci i innych urządzeniach infrastruktury.
 
 ### <a name="packet-filtering"></a>Filtrowanie pakietów
 IPFilter zapory oprogramowania, które są implementowane w główny system operacyjny i systemu operacyjnego gościa węzłów wymuszać ograniczenia łączności i uniemożliwić nieautoryzowany ruch między maszynami wirtualnymi.

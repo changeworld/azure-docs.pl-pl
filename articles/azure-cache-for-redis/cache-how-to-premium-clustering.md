@@ -3,7 +3,7 @@ title: Konfigurowanie pamięci podręcznej Redis klastrowania dla usługi Azure 
 description: Dowiedz się, jak tworzyć i zarządzać nimi klastrowanie Redis w warstwie Premium usługi Azure Cache dla wystąpień usługi Redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2018
-ms.author: wesmc
-ms.openlocfilehash: 44b25263dbeb0d787120ae3a86076b2f888ed46f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 2a170fed00c9978fd3a05af3590805904b243010
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107484"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104121"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>Konfigurowanie pamięci podręcznej Redis klastrowania dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. W tym artykule opisano jak skonfigurować klaster w warstwie premium usługi Azure Cache dla wystąpienia usługi Redis.

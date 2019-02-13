@@ -4,7 +4,7 @@ description: Dowiedz się więcej o różnych opcji szyfrowania na platformie Az
 services: security
 documentationcenter: na
 author: Barclayn
-manager: MBaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: dc1ca62ce184ac290f289975ff609b8240351099
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 272cc843ab90eade06525f665d3cf2decf74a26f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035100"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114658"
 ---
 # <a name="azure-encryption-overview"></a>Omówienie szyfrowania platformy Azure
 
@@ -50,11 +50,11 @@ Za pomocą szyfrowania po stronie klienta dostawców usług w chmurze nie ma dos
 
 Trzy modele szyfrowanie po stronie serwera mają właściwości różnych zarządzania kluczami, które można wybrać zgodnie z wymaganiami:
 
-- **Klucze zarządzane przez usługę**: zapewnia kombinację kontrola i wygoda niskie obciążenie.
+- **Klucze zarządzane przez usługę**: Zapewnia kombinację kontrola i wygoda niskie obciążenie.
 
-- **Klucze zarządzane przez klienta**: zapewnia kontrolę nad kluczami, łącznie z obsługą rozwiązania Bring Your Own kluczy (BYOK) lub umożliwia generowanie nowych.
+- **Klucze zarządzane przez klienta**: Zapewnia kontrolę nad kluczami, łącznie z obsługą rozwiązania Bring Your Own kluczy (BYOK) lub umożliwia generowanie nowych.
 
-- **Klucze zarządzane przez usługę sprzętu kontrolowane przez klienta**: pozwala na zarządzanie kluczami w repozytorium własnościowych poza kontrolą firmy Microsoft. Cecha ta nosi nazwę hosta Your Own Key (HYOK). Jednak konfiguracja jest złożona i większość usług platformy Azure nie obsługują tego modelu.
+- **Klucze zarządzane przez usługę sprzętu kontrolowane przez klienta**: Umożliwia zarządzanie kluczami w repozytorium własnościowych poza kontrolą firmy Microsoft. Cecha ta nosi nazwę hosta Your Own Key (HYOK). Jednak konfiguracja jest złożona i większość usług platformy Azure nie obsługują tego modelu.
 
 ### <a name="azure-disk-encryption"></a>Usługa Azure disk encryption
 
@@ -78,7 +78,7 @@ Aby dowiedzieć się więcej o i Pobierz biblioteki klienta usługi Azure Storag
 
 Korzystając z szyfrowania po stronie klienta za pomocą usługi Key Vault, dane są szyfrowane za pomocą jednorazowego symetrycznego zawartości szyfrowania klucza (CEK) generowany przez zestaw SDK klienta usługi Azure Storage. CEK są szyfrowane przy użyciu klucza szyfrowania klucza (KEK), który może być klucza symetrycznego lub para kluczy asymetrycznych. Można zarządzać nią lokalnie lub przechowywać je w usłudze Key Vault. Zaszyfrowane dane są następnie przekazywane do usługi Azure Storage.
 
-Aby dowiedzieć się więcej o funkcji Szyfrowanie po stronie klienta za pomocą usługi Key Vault i rozpoczynanie pracy z usługą instrukcji, zobacz [samouczek: szyfrowanie i odszyfrowywanie obiektów blob w usłudze Azure Storage za pomocą usługi Key Vault](../storage/storage-encrypt-decrypt-blobs-key-vault.md).
+Aby dowiedzieć się więcej o funkcji Szyfrowanie po stronie klienta za pomocą usługi Key Vault i rozpoczynanie pracy z usługą instrukcji, zobacz [samouczka: Szyfrowanie i odszyfrowywanie obiektów blob w usłudze Azure Storage za pomocą usługi Key Vault](../storage/storage-encrypt-decrypt-blobs-key-vault.md).
 
 Ponadto umożliwia także biblioteki klienta usługi Azure Storage dla języka Java do wykonywania szyfrowania po stronie klienta, aby przekazać dane do usługi Azure Storage, a także do odszyfrowania danych po pobraniu jej do klienta. Ta biblioteka obsługuje również integrację z [usługi Key Vault](https://azure.microsoft.com/services/key-vault/) do zarządzania kluczami konta magazynu.
 
@@ -170,7 +170,7 @@ Można skonfigurować połączenie VPN punkt lokacja z siecią wirtualną przy u
 
 Aby dowiedzieć się więcej na temat połączeń sieci VPN punkt lokacja z siecią wirtualną platformy Azure, zobacz:
 
-[Konfigurowanie połączenia punkt lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikacji: witryna Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
+[Konfigurowanie połączenia punkt lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikacji: Witryna Azure portal](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md) 
 
 [Konfigurowanie połączenia punkt lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu: PowerShell](../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md)
 

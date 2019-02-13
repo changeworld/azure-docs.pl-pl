@@ -13,18 +13,29 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 61bbc65c543801b0f783d01dfb803f47dbcf8a07
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d6e8d943d14cfddc260ba502e724543c6dc9cf4f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215303"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110340"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
 Usługa Azure App Service w systemie Linux umożliwia deweloperom szybkie tworzenie, wdrażanie i skalowanie ich Tomcat języka Java lub Java Standard Edition (SE) w pakiecie aplikacji sieci web w pełni zarządzanej usługi opartej na systemie Linux. Wdrażanie aplikacji przy użyciu wtyczki usługi Maven w wierszu polecenia lub w edytorach, takich jak IntelliJ, Eclipse lub Visual Studio Code.
 
 Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów języka Java przy użyciu w usłudze App Service dla systemu Linux. Jeśli nie znasz usługi Azure App Service dla systemu Linux, należy przeczytać za pośrednictwem [Szybki Start Java](quickstart-java.md) pierwszy. W odpowiedzi są ogólne pytania dotyczące korzystania z usługi App Service dla systemu Linux, które nie są specyficzne dla programowania Java [App Service Linux — często zadawane pytania](app-service-linux-faq.md).
+
+## <a name="deploying-your-app"></a>Wdrażanie aplikacji
+
+Aby wdrożyć pliki JAR i WAR, można użyć wtyczki Maven. Zobacz [tej dokumentacji](https://docs.microsoft.com/en-us/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) więcej informacji na temat wtyczki Maven. 
+
+Jeśli nie używasz narzędzia Maven, metody wdrażania będzie zależeć od typu archiwum:
+
+- Aby wdrożyć pliki WAR Tomcat, użyj `/api/wardeploy/` punktu końcowego można OPUBLIKOWAĆ pliku archiwum. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tej dokumentacji](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip#deploy-war-file).
+- Aby wdrożyć pliki JAR w obrazach Java SE, użyj `/api/zipdeploy/` witryny Kudu punktu końcowego. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tej dokumentacji](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip#rest).
+
+Nie należy wdrażać swoje WAR lub JAR przy użyciu protokołu FTP. Narzędzie FTP jest przeznaczony do przekazania skrypty uruchamiania, zależności lub innych plików środowiska uruchomieniowego. Nie jest optymalnym wyborem do wdrażania aplikacji sieci web.
 
 ## <a name="logging-and-debugging-apps"></a>Rejestrowanie i debugowanie aplikacji
 

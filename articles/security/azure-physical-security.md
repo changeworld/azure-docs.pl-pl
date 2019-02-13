@@ -4,7 +4,7 @@ description: W artykule opisano centrach danych platformy Azure, w tym infrastru
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 69a54640ae3b4e71d7782712ad1764babab7104a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170681"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112048"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Urządzenia platformy Azure, lokalnie i zabezpieczenia fizyczne
 Azure składa się z [infrastrukturę centrów danych rozproszonych globalnie](https://azure.microsoft.com/global-infrastructure/), obsługa tysięcy usług online i obejmujące więcej niż 100 kompleksowo zabezpieczonych obiektów na całym świecie.
@@ -53,7 +53,7 @@ Firma Microsoft podejmuje warstwowego podejścia do zabezpieczeń fizycznych, w 
 
 - **Budynku.** Po wprowadzeniu budynku, musi pomyślnie przejść uwierzytelnianie dwuskładnikowe za pomocą biometria, aby kontynuować, Nawigacja po centrum danych. Jeśli tożsamości zostanie zweryfikowana, można wprowadzić tylko część centrum danych, które zostały zatwierdzone dostęp do. Nadal istnieje tylko na okres czasu, zatwierdzone.
 
-- **Floor centrum danych.** Możesz tylko na Zaokrąglenie w dół, są zatwierdzone do wprowadzania. Jest wymagane do przekazywania kontroli wykrywanie systemu operacyjnego pełną treść. Aby zmniejszyć ryzyko nieautoryzowanych danych wprowadzanych lub opuszczających centrum danych bez wiedzy naszych, przedostają można w tylko zatwierdzonego urządzenia się do floor centrum danych. Ponadto monitor kamery wideo przodu i Wstecz każdego serwera w stojaku. Po zakończeniu floor centrum danych, możesz ponownie musi przechodzić przez pełną treść wykrywanie systemu operacyjnego kontroli. Aby wyjść z centrum danych, musisz przechodzić przez skanowanie za pomocą dodatkowych zabezpieczeń.
+- **Datacenter floor.** Możesz tylko na Zaokrąglenie w dół, są zatwierdzone do wprowadzania. Jest wymagane do przekazywania kontroli wykrywanie systemu operacyjnego pełną treść. Aby zmniejszyć ryzyko nieautoryzowanych danych wprowadzanych lub opuszczających centrum danych bez wiedzy naszych, przedostają można w tylko zatwierdzonego urządzenia się do floor centrum danych. Ponadto monitor kamery wideo przodu i Wstecz każdego serwera w stojaku. Po zakończeniu floor centrum danych, możesz ponownie musi przechodzić przez pełną treść wykrywanie systemu operacyjnego kontroli. Aby wyjść z centrum danych, musisz przechodzić przez skanowanie za pomocą dodatkowych zabezpieczeń.
 
 Firma Microsoft wymaga gości na przekazanie wskaźniki po wyjściu z dowolnej funkcji firmy Microsoft.
 

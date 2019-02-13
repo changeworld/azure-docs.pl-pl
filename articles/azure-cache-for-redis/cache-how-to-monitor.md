@@ -3,7 +3,7 @@ title: Jak monitorować pamięć podręczna systemu Azure dla usługi Redis | Do
 description: Dowiedz się, jak monitorować kondycję i wydajność pamięci podręcznej Azure dla wystąpienia usługi Redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: 7e70b153-9c87-4290-85af-2228f31df118
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
-ms.author: wesmc
-ms.openlocfilehash: b6264d47c7627d72b8746c79e7e050fd468171de
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 3884d45eadb6ea373a511442c024d1d368f0b80a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105121"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115168"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>Jak monitorować pamięć podręczna systemu Azure dla usługi Redis
 Pamięć podręczna systemu Azure do celów Redis [usługi Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) zapewnienie kilka opcji do monitorowania wystąpień pamięci podręcznej. Można wyświetlić metryki, przypinać wykresy metryk do tablicy startowej, dostosować zakres dat i godzin, wykresy monitorowania, Dodaj i Usuń metryki z wykresów i ustawić alerty, gdy są spełnione określone warunki. Te narzędzia umożliwiają monitorowanie kondycji pamięci podręcznej Azure dla wystąpienia usługi Redis i ułatwia zarządzanie aplikacjami buforowania.
@@ -67,7 +67,7 @@ Aby skonfigurować konto magazynu dla metryk pamięci podręcznej:
 
 1. Kliknij przycisk **diagnostyki** z **menu zasobów** w **pamięci podręcznej Redis Azure** bloku.
 2. Kliknij przycisk **na**.
-3. Sprawdź **Zarchiwizuj na koncie magazynu**.
+3. Zaznacz pozycję **Zarchiwizuj na koncie magazynu**.
 4. Wybierz konto magazynu, w którym będzie przechowywany metryki pamięci podręcznej.
 5. Sprawdź **1 minutę** pole wyboru i określ **przechowywania (dni)** zasad. Jeśli nie chcesz stosować żadnych zasad przechowywania i przechowywać dane w nieskończoność, ustaw **przechowywania (dni)** do **0**.
 6. Kliknij pozycję **Zapisz**.

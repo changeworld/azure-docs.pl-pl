@@ -1,6 +1,6 @@
 ---
-title: Zarządzaj swoim kontem usługi Azure Maps i klucze | Dokumentacja firmy Microsoft
-description: Za pomocą witryny Azure portal do zarządzania kontem usługi Azure Maps oraz Zarządzaj kluczami dostępu.
+title: Zarządzaj swoim kontem usługi Azure Maps | Dokumentacja firmy Microsoft
+description: Za pomocą witryny Azure portal do zarządzania kontem usługi Azure Maps.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/12/2018
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 81746279e935f9fa5b6ef00bc8d31e75f4d3bd20
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 488167b4893c314af99b354a2422204ebbf34c5e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103048"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113700"
 ---
-# <a name="manage-your-azure-maps-account-and-keys"></a>Zarządzaj swoim kontem usługi Azure Maps i klucze
+# <a name="manage-your-azure-maps-account"></a>Zarządzaj swoim kontem usługi Azure Maps
 
-Możesz zarządzać swoim kontem usługi Azure Maps i klucze w witrynie Azure portal. Po utworzeniu konta i klucz, można zaimplementować interfejsów API w witrynie sieci Web lub aplikacji mobilnej.
+Możesz zarządzać kontem usługi Azure Maps w witrynie Azure portal. Po utworzeniu konta usługi, można zaimplementować interfejsów API w witrynie sieci Web lub aplikacji mobilnej.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -32,16 +32,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 4. Wprowadź informacje dla nowego konta.
 
 ![Wprowadź informacje o koncie w portalu](./media/how-to-manage-account-keys/new-account-portal.png)
-
-## <a name="manage-keys-on-the-account-page"></a>Zarządzanie kluczami na stronie konta
-
-Po utworzeniu konta otrzymasz dwa klucze losowo generowany. Aby pobrać dane mapy lub utworzyć nowe wystąpienie mapy JavaScript, użyj klawiszy do uwierzytelniania względem interfejsów API usługi Azure Maps.
-
-Klucze możesz znaleźć w witrynie Azure portal. Przejdź do swojego konta. Następnie wybierz pozycję **klucze** z menu.
-
-![Zarządzanie kluczami konta w portalu](./media/how-to-manage-account-keys/account-keys-portal.png)
-
-Na tej stronie można skopiować klucze lub wygenerować nowe.
 
 ## <a name="delete-an-account"></a>Usuwanie konta
 

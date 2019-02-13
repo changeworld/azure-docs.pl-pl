@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 503e52266c1c6be71e60a751c40ef0a54f0d9b12
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181898"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112500"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Rozwiązywanie problemów z nieprawidłowej konfiguracji sieci dla domeny zarządzanej
 Ten artykuł pomoże Ci rozwiązać błędy konfiguracji odnoszące się do sieci, których wynikiem następujący komunikat alertu:
@@ -36,7 +36,7 @@ Nieprawidłowe konfiguracje sieciowej grupy zabezpieczeń są najbardziej typowe
 2. Z tabeli wybierz sieciową grupę zabezpieczeń skojarzoną z podsiecią, w którym Twoja domena zarządzana jest włączona.
 3. W obszarze **ustawienia** w okienku po lewej stronie kliknij **reguły zabezpieczeń dla ruchu przychodzącego**
 4. Zapoznaj się z zasadami w miejscu i zidentyfikować, które zasady blokują dostęp do [tych portów](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services)
-5. Edytuj sieciowej grupy zabezpieczeń w celu zapewnienia zgodności przez usunięcie reguły, dodanie reguły albo całkowicie tworzenia nowej sieciowej grupy zabezpieczeń. Kroki umożliwiające [Dodaj regułę](#add-a-rule-to-a-network-security-group-using-the-azure-portal) lub [Utwórz nowe, zgodne sieciowa grupa zabezpieczeń](#create-a-nsg-for-azure-ad-domain-services-using-powershell) są poniżej
+5. Edytuj sieciowej grupy zabezpieczeń w celu zapewnienia zgodności przez usunięcie reguły, dodanie reguły albo całkowicie tworzenia nowej sieciowej grupy zabezpieczeń. Kroki umożliwiające [Dodaj regułę](#add-a-rule-to-a-network-security-group-using-the-azure-portal) lub Utwórz nową, zgodne sieciowej grupy zabezpieczeń znajdują się poniżej
 
 ## <a name="sample-nsg"></a>Sample NSG
 Poniższa tabela przedstawia przykładowe sieciowej grupy zabezpieczeń, który będzie chronić Twojej domeny zarządzanej zezwalając firmy Microsoft, aby monitorować, zarządzania i aktualizowania informacji.

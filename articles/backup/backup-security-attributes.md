@@ -4,17 +4,17 @@ description: Lista kontrolna typowych atrybutów zabezpieczeń do oceny usługi 
 services: backup
 documentationcenter: ''
 author: msmbaldwin
-manager: mbaldwin
+manager: barbkess
 ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 669a0616684990725058e8dc2987a22948819d10
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1de148005b2f1e5a543507a5bff5378221a454df
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513421"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116681"
 ---
 # <a name="security-attributes-for-azure-backup"></a>Atrybuty zabezpieczeń usługi Azure Backup
 

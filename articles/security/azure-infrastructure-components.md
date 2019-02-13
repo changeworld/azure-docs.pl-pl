@@ -4,7 +4,7 @@ description: Ten artykuł zawiera ogólny opis architektury Microsoft Azure i za
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: b2e8ef232e1b25c7d000f4683830ff2e188047fb
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186480"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118143"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Usługi Azure information składników systemu i granice
 Ten artykuł zawiera ogólny opis architektury platformy Azure i zarządzania. Środowisko systemu Azure składa się z następującymi sieciami:
@@ -54,9 +54,9 @@ Zespół systemu operacyjnego zawiera obrazy w formularzu z wirtualnych dysków 
 
 Istnieją trzy typy obrazów systemu operacyjnego zarządzane w sieci szkieletowej:
 
-- Host: Dostosowany system operacyjny działający na hoście maszyn wirtualnych.
-- Natywne: Macierzysty system operacyjny działający na dzierżawy (na przykład Azure Storage). Ten system operacyjny nie ma żadnych funkcji hypervisor.
-- Gość: System operacyjny gościa uruchomionym na maszynach wirtualnych gościa.
+- Host: Dostosowane systemu operacyjnego uruchomionego na hoście maszyn wirtualnych.
+- Natywne: Natywne systemu operacyjnego uruchamianego na dzierżawy (na przykład Azure Storage). Ten system operacyjny nie ma żadnych funkcji hypervisor.
+- Guest: System operacyjny gościa, które jest uruchamiane na maszynach wirtualnych gościa.
 
 Host i systemy operacyjne zarządzanych FC natywnych są skonstruowane do użycia w chmurze, a nie są publicznie dostępne.
 
@@ -79,9 +79,9 @@ Zespoły usług są:
 - Platforma aplikacji
 - Usługa Azure Active Directory
 - Azure Compute
-- Sieć platformy Azure
+- Azure Net
 - Usługi inżynieryjne chmury
-- ISSD: zabezpieczenia
+- ISSD: Bezpieczeństwo
 - Uwierzytelnianie wieloskładnikowe
 - SQL Database
 - Magazyn

@@ -12,12 +12,13 @@ ms.date: 09/13/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 86ba8f77121e6d4f6358887e13b8f86a5e020f1b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a116355c8140d30f8297cde067a82f37f72e02a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103704"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165862"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Skojarzyć lub dodać subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory
 Subskrypcja platformy Azure ma relację zaufania w usłudze Azure Active Directory (Azure AD), co oznacza, że subskrypcja ufa usługi Azure AD do uwierzytelniania użytkowników, usług i urządzeń. Wiele subskrypcji może ufać tego samego katalogu usługi Azure AD, ale każda subskrypcja zaufać tylko jeden katalog.

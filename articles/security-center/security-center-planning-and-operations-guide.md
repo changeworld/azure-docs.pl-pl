@@ -4,7 +4,7 @@ description: Ten dokument ułatwia planowanie przed wdrożeniem Centrum zabezpie
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f984e4a2-ac97-40bf-b281-2f7f473494c4
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: b3d6f30aa2a7858d673199e55090e96fb9aba915
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1532c863a7906e7f3c1e0bc98d2080513263b9f8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337633"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105098"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Przewodnik planowania i obsługi usługi Azure Security Center
 Ten przewodnik jest przeznaczony dla specjalistów IT, architektów IT, analityków zabezpieczeń informacji i administratorów chmury, których organizacje planują wdrożenie usługa Azure Security Center.
@@ -161,7 +161,7 @@ Dane zbierane z programu Microsoft Monitoring Agent (w imieniu usługi Security 
 
 W witrynie Azure Portal można wyświetlić listę swoich obszarów roboczych usługi Log Analytics, w tym wszystkich utworzonych przez usługę Azure Security Center. W przypadku nowych obszarów roboczych zostanie utworzona powiązana grupa zasobów. W obu przypadkach stosowana będzie następująca konwencja nazewnictwa:
 
-* Obszar roboczy: *DefaultWorkspace-[identyfikator subskrypcji]-[geograficzna]*
+* Workspace: *DefaultWorkspace-[identyfikator subskrypcji]-[geograficzna]*
 * Grupa zasobów: *DefaultResourceGroup — [geograficzna]*
 
 W przypadku obszarów roboczych utworzonych przez usługę Azure Security Center dane są przechowywane przez 30 dni. W przypadku istniejących obszarów przechowywanie zależy od warstwy cenowej obszaru roboczego. Jeśli chcesz, możesz również użyć istniejącego obszaru roboczego.

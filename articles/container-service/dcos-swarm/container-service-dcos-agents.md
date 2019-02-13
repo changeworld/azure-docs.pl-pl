@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: ee1a2a75d6a003a6bc53c5216dd01d379193ea77
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994952"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113791"
 ---
 # <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(PRZESTARZAŁE) Pule agentów platformy DC/OS usługi kontenera platformy Azure
 
@@ -23,11 +23,11 @@ ms.locfileid: "52994952"
 Klastry DC/OS w usłudze Azure Container Service zawiera węzły agenta w dwie pule, pulę publicznych i prywatnych puli. Aplikację można wdrożyć do jednej puli wpływu na dostępność między komputerami w usłudze kontenera. Maszyny można połączenie z Internetem (publicznego) lub przechowywane wewnętrzny (prywatny). Ten artykuł zawiera krótkie omówienie, dlatego istnieją pule prywatnych i publicznych.
 
 
-* **Agenci prywatni**: węzły agenta prywatnego uruchamiać za pośrednictwem sieci bez obsługi routingu. Ta sieć jest dostępny tylko w przypadku, ze strefy administratora lub za pośrednictwem routera brzegowego strefy publicznej. Domyślnie DC/OS spowoduje uruchomienie aplikacji w węzłach agenta prywatnego. 
+* **Agenci prywatni**: Węzły agenta prywatnego uruchamiać za pośrednictwem sieci bez obsługi routingu. Ta sieć jest dostępny tylko w przypadku, ze strefy administratora lub za pośrednictwem routera brzegowego strefy publicznej. Domyślnie DC/OS spowoduje uruchomienie aplikacji w węzłach agenta prywatnego. 
 
-* **Agentów publicznych**: węzły agenta publicznego uruchamiać aplikacje platformy DC/OS i usługi za pomocą publicznie dostępnej sieci. 
+* **Agentów publicznych**: Uruchamianie aplikacji platformy DC/OS i usługi za pośrednictwem publicznie dostępnej sieci węzły agenta publicznego. 
 
-Aby uzyskać więcej informacji na temat zabezpieczeń sieciowych DC/OS, zobacz [dokumentacji rozwiązania DC/OS](https://dcos.io/docs/1.8/administration/securing-your-cluster/).
+Aby uzyskać więcej informacji na temat zabezpieczeń sieciowych DC/OS, zobacz [dokumentacji rozwiązania DC/OS](https://docs.mesosphere.com/).
 
 ## <a name="deploy-agent-pools"></a>Pule agentów wdrażania
 
