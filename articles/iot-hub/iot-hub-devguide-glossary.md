@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: dobett
-ms.openlocfilehash: 3725117b90ec2574737686881e47967f3d9a9e39
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320094"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817390"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
@@ -82,7 +82,7 @@ Możesz używać parametrów połączenia w kodzie aplikacji do hermetyzacji inf
 Możesz utworzyć niestandardowe [punktów końcowych](iot-hub-devguide-endpoints.md) w Centrum IoT hub w celu dostarczania komunikatów wysłanych przez [reguły routingu](#routing-rules). Niestandardowe punkty końcowe łączyć się bezpośrednio z Centrum zdarzeń, kolejki usługi Service Bus lub tematu usługi Service Bus.
 
 ## <a name="custom-gateway"></a>Bram
-Brama zapewnia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub). Możesz użyć [usługi Azure IoT Edge](#azure-iot-edge) Tworzenie niestandardowych bram, które implementują logikę niestandardową do obsługi komunikatów, konwersje niestandardowego protokołu i inne procesy przetwarzania na urządzeniach brzegowych.
+Brama zapewnia łączność urządzeń, które nie może połączyć się bezpośrednio do [usługi IoT Hub](#iot-hub). Usługa Azure IoT Edge umożliwia tworzenie niestandardowych bram, które implementują logikę niestandardową do obsługi komunikatów, konwersje niestandardowego protokołu i inne procesy przetwarzania na urządzeniach brzegowych.
 
 ## <a name="data-point-message"></a>Punkt danych komunikatu
 Komunikat punktu danych jest [urządzenia do chmury](#device-to-cloud) wiadomość, która zawiera [telemetrii](#telemetry) dane, takie jak prędkość wiatru lub temperatury.
@@ -224,7 +224,7 @@ Użyj zasad ponawiania do obsługi [błędów przejściowych](/azure/architectur
 Możesz skonfigurować [reguł routingu](iot-hub-devguide-messages-read-custom.md) w usłudze IoT hub do rozsyłania komunikatów z urządzenia do chmury do [wbudowany punkt końcowy](#built-in-endpoints) lub [niestandardowe punkty końcowe](#custom-endpoints) do przetworzenia przez w zapleczu rozwiązania .
 
 ## <a name="sasl-plain"></a>ZWYKŁY SASL
-ZWYKŁY SASL to protokół, [AMQP](#advanced-message-queue-protocol) protokół używa do przesyłania tokenów zabezpieczających.
+ZWYKŁY SASL jest protokołem, który korzysta z protokołu AMQP do przesyłania tokenów zabezpieczających.
 
 ## <a name="service-rest-api"></a>Interfejs API REST usługi
 Możesz użyć [interfejsu API REST usługi](https://docs.microsoft.com/rest/api/iothub/service) z rozwiązania zaplecza do zarządzania urządzeniami. Interfejs API umożliwia pobieranie i aktualizowanie [bliźniaczej reprezentacji urządzenia](#device-twin) wywoływanie właściwości [metody bezpośrednie](#direct-method)i harmonogram [zadań](#job). Zwykle, należy użyć jednej z wyższego poziomu [usługi SDK](#azure-iot-service-sdks) pokazany w ramach samouczków usługi IoT Hub.
@@ -251,7 +251,7 @@ W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-t
 W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md), tagi są metadane urządzenia przechowywane i pobierane przez zaplecze rozwiązania w postaci dokumentów JSON. Tagi nie są widoczne dla aplikacji na urządzeniu.
 
 ## <a name="telemetry"></a>Telemetria
-Urządzenia zbierania danych telemetrycznych, takich jak prędkość wiatru lub temperatury i użyj [punktu danych wiadomości](#data-point-messages) do wysyłania danych telemetrycznych do Centrum IoT.
+Urządzenia zbierania danych telemetrycznych, takich jak prędkość wiatru lub temperatury i umożliwia wysyłanie danych telemetrycznych do Centrum IoT komunikaty punktu danych.
 
 ## <a name="token-service"></a>Usługa tokenu
 Usługa tokenu umożliwia zaimplementować mechanizm uwierzytelniania dla urządzeń. Używa usługi IoT Hub [współużytkowane zasady dostępu](#shared-access-policy) z **DeviceConnect** uprawnień do utworzenia *urządzenia o określonym zakresie* tokenów. Te tokeny włączyć w urządzeniu połączyć się z Centrum IoT hub. Urządzenie używa mechanizmu uwierzytelniania niestandardowego do uwierzytelniania za pomocą usługi tokenu. Jeśli urządzenie uwierzytelnia pomyślnie, usługi tokenu wystawia token SAS dla urządzenia na potrzeby dostępu do usługi IoT hub.
