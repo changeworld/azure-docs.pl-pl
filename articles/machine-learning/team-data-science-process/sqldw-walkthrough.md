@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 21eec258b14bb0524170c9307d06fee7b7abc644
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8d9e59a11957e8d108ae86ebba157a06129efa58
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466647"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111551"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse
 W tym samouczku, w jaki sposób Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu magazynu danych SQL (SQL data Warehouse) dla publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany przewiduje czy Porada czy płatna komunikacji dwustronnej i modele wieloklasowej klasyfikacji i regresji zostały również omówione, które przewidzieć dystrybucja przypadku ilości Porada płatne.
@@ -881,7 +881,7 @@ Na podsumowanie wykonaliśmy w tym samouczku wskazówki, utworzono środowisko d
 Ten przewodnik po przykładzie i towarzyszące jej IPython notebook(s) i skrypty są udostępniane przez firmę Microsoft na licencji MIT. Sprawdź, czy w pliku LICENSE.txt w katalogu przykładowego kodu w serwisie GitHub Aby uzyskać więcej informacji.
 
 ## <a name="references"></a>Dokumentacja
-• [Andrés Monroy taksówek NYC przesłania strony pobierania](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC taksówki danych podróży, Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [taksówek NYC i Limousine Komisji badań i statystyk](http://www.nyc.gov/html/tlc/html/technology/aggregated_data.shtml)
+• [Andrés Monroy taksówek NYC przesłania strony pobierania](http://www.andresmh.com/nyctaxitrips/) • [FOILing NYC taksówki danych podróży, Chris Whong](http://chriswhong.com/open-data/foil_nyc_taxi/) • [taksówek NYC i Limousine Komisji badań i statystyk](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)
 
 [1]: ./media/sqldw-walkthrough/sql-walkthrough_26_1.png
 [2]: ./media/sqldw-walkthrough/sql-walkthrough_28_1.png

@@ -168,6 +168,8 @@ items:
       href: kubernetes-service-principal.md
     - name: Ograniczanie dostępu do pliku konfiguracji klastra
       href: control-kubeconfig-access.md
+    - name: Zabezpieczanie ruchu związanego z zasobnikiem za pomocą zasad sieciowych (wersja zapoznawcza)
+      href: use-network-policies.md
     - name: Aktualizowanie poświadczeń jednostki usługi klastra
       href: update-credentials.md
     - name: Uwierzytelnianie przy użyciu rekordu ACR
@@ -316,9 +318,9 @@ items:
     href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
   - name: Często zadawane pytania
     href: faq.md
-ms.openlocfilehash: c657d805188d5c5760e65290437414ab98f83a05
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6f5b944ba1ce02d05478fa97b0376c0f42fa98e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768753"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206535"

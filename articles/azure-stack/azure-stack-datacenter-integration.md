@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: afb4e634b7e255ef8f2cfc84319029af7412372e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251881"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207538"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integracja z centrum danych informacje dotyczące usługi Azure Stack zintegrowane systemy
-Jeśli interesuje Cię to system zintegrowany z usługi Azure Stack, zapoznaj się niektóre z najważniejszych kwestii dotyczących planowania dotyczące wdrażania i jak system znajdzie się w centrum danych. Ten artykuł zawiera ogólne omówienie tych zagadnień, aby łatwiej podejmować decyzje dotyczące infrastruktury ważne w systemie Azure Stack wieloma węzłami. Zrozumienie tych zagadnień pomaga podczas pracy z dostawcą sprzętu OEM, zgodnie z ich wdrażanie usługi Azure Stack w swoim centrum danych.  
+Jeśli interesuje Cię to system zintegrowany z usługi Azure Stack, należy zrozumieć główne zagadnienia dotyczące planowania wdrożenia i jak system znajdzie się w centrum danych. Ten artykuł zawiera ogólne omówienie tych zagadnień, aby łatwiej podejmować decyzje dotyczące infrastruktury ważne w systemie Azure Stack wieloma węzłami. Zrozumienie tych zagadnień pomaga podczas pracy z dostawcą sprzętu OEM, zgodnie z ich wdrażanie usługi Azure Stack w swoim centrum danych.  
 
 > [!NOTE]
 > Systemy wielowęzłowego usługi Azure Stack można kupić tylko od dostawców autoryzowanym sprzętem. 
@@ -53,8 +53,6 @@ Gdy wyższy poziom dostępu jest potrzebny do rozwiązywania problemów, które 
 
 ### <a name="choose-identity-provider"></a>Wybierz dostawcę tożsamości
 Należy wziąć pod uwagę którego dostawcy tożsamości, którego chcesz użyć dla wdrożenia usługi Azure Stack, Azure AD lub AD FS. Nie można przełączyć dostawców tożsamości, po wdrożeniu bez ponownego wdrażania pełnej wersji systemu. Jeśli nie jesteś właścicielem konta usługi Azure AD i korzystania z konta dostarczonego przez dostawcę usługi w chmurze, a jeśli zdecydujesz się przełączyć dostawcę i używać różnych usługi Azure AD konto, w tym momencie należy skontaktować się z dostawcą rozwiązań do ponownego wdrożenia rozwiązania f lub na koszt.
-
-
 
 Wybranego dostawcy tożsamości nie ma żadnego wpływu na maszyny wirtualne dzierżawcy, system obsługi tożsamości i kont, których używają, czy mogły one dołączyć do domeny usługi Active Directory itp. Jest to oddzielne.
 
@@ -110,9 +108,9 @@ Aby uzyskać więcej informacji o jakie infrastruktury kluczy publicznych certyf
 
 
 ## <a name="time-synchronization"></a>Synchronizacja czasu
-Musisz wybrać określony czas, serwera przy użyciu służy do synchronizacji usługi Azure Stack.  Symbolization czasu jest mają kluczowe znaczenie dla usługi Azure Stack i jego role infrastruktury, ponieważ jest używany do generowania bilety protokołu Kerberos, które są używane do uwierzytelniania wewnętrznych usług ze sobą.
+Musisz wybrać określony czas, serwera przy użyciu służy do synchronizacji usługi Azure Stack.  Synchronizacja czasu jest mają kluczowe znaczenie dla usługi Azure Stack i jego role infrastruktury, ponieważ jest używany do generowania bilety protokołu Kerberos, które są używane do uwierzytelniania wewnętrznych usług ze sobą.
 
-Należy określić, że adres IP dla serwera synchronizacji czasu, mimo że większość składników infrastruktury może rozpoznać adresu URL, niektóre może obsługiwać tylko adresy IP. Jeśli są przy użyciu opcji wdrażania rozłączona, należy określić serwer czasu w sieci firmowej, którego jesteś można połączyć się z siecią infrastruktury w usłudze Azure Stack.
+Należy określić, że adres IP dla serwera synchronizacji czasu, mimo że większość składników infrastruktury może rozpoznać adresu URL, niektóre może obsługiwać tylko adresy IP. Jeśli używasz opcji wdrażania odłączonego należy określić, że serwer czasu w sieci firmowej, którego jesteś można połączyć się z siecią infrastruktury w usłudze Azure Stack.
 
 ## <a name="connect-azure-stack-to-azure"></a>Łączenie usługi Azure Stack z platformą Azure
 

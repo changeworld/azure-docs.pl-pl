@@ -13,12 +13,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 309e686d563798c34d2ab40af0ac1a6e6368b4e7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f8d5ecd33f0bc67b6e0ec2e559a8475da490369e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509120"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210666"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
@@ -85,7 +86,7 @@ Poniżej przedstawiono właściwości użytkownika, które można użyć do utwo
 | facsimileTelephoneNumber |Dowolną wartość ciągu lub *o wartości null* |(user.facsimileTelephoneNumber - eq "value") |
 | givenName |Dowolną wartość ciągu lub *o wartości null* |(user.givenName - eq "value") |
 | Stanowisko |Dowolną wartość ciągu lub *o wartości null* |(user.jobTitle - eq "value") |
-| poczta |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
+| mail (poczta) |Dowolną wartość ciągu lub *null* (adresu SMTP użytkownika) |(user.mail - eq "value") |
 | mailNickName |Dowolną wartość ciągu (alias poczty użytkownika) |(user.mailNickName - eq "value") |
 | Telefon komórkowy |Dowolną wartość ciągu lub *o wartości null* |(user.mobile - eq "value") |
 | Identyfikator obiektu |Identyfikator GUID obiektu użytkownika |(user.objectId - eq "11111111-1111-1111-1111-111111111111") |
