@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: f1b39601f0f6d254daadfafdd812549c6c95ed35
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1cef0010464671982109b8dc4bc94e6925eaf825
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239472"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210530"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
-Wystąpienie serwera SQL na maszynie wirtualnej (VM) można hostować w [usługi Azure Stack](azure-stack-poc.md), lub na maszynie Wirtualnej poza środowiskiem usługi Azure Stack, tak długo, jak dostawcy zasobów bazy danych SQL można połączyć się z wystąpieniem.
+Możesz utworzyć bazę danych SQL Server, serwerów, na maszynie wirtualnej (VM) hosta w [usługi Azure Stack](azure-stack-poc.md), lub na maszynie Wirtualnej poza środowiskiem usługi Azure Stack, tak długo, jak dostawcy zasobów bazy danych SQL można połączyć się z wystąpieniem.
 
 > [!NOTE]
-> Bazy danych SQL, należy utworzyć w programie SQL server dostawcy zasobów. Dostawcy zasobów bazy danych SQL, powinny zostać utworzone w domyślnej subskrypcji dostawcy, a serwerami hostingu SQL powinny zostać utworzone w płatnych, subskrypcja użytkownika. Serwer dostawcy zasobów nie powinny służyć do baz danych użytkownika hosta.
+> Dostawcy zasobów bazy danych SQL, powinny zostać utworzone w domyślnej subskrypcji dostawcy, a serwerami hostingu SQL powinny zostać utworzone w płatnych, subskrypcja użytkownika. Serwer dostawcy zasobów nie powinny służyć do baz danych użytkownika hosta.
 
 ## <a name="overview"></a>Przegląd
 

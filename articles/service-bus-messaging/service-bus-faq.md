@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0b419343829e7e7bbbd31260b9cd0c8d93cd255d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847819"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210598"
 ---
 # <a name="service-bus-faq"></a>Service Bus — często zadawane pytania
 
@@ -83,6 +83,9 @@ Podobnie jak w przypadku innych usług na platformie Azure, Usługa Service Bus 
 Usług obsługi wiadomości usługi Service Bus (kolejek i tematów/subskrypcji) Zezwalaj aplikacji na wysyłanie wiadomości o rozmiarze do 256 KB (warstwa standardowa) lub 1 MB (warstwa premium). Jeśli masz do czynienia z komunikatami o rozmiarze większym niż 1 MB, użyj wzorca wyboru oświadczenia, które są opisane w [ten wpis w blogu](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Dlaczego nie mogę utworzyć przestrzeń nazw po usunięciu jej z inną subskrypcję? 
+Jeśli usuniesz przestrzeni nazw z subskrypcji, poczekaj przez 4 godziny przed odtworzenia go o tej samej nazwie w innej subskrypcji. W przeciwnym razie może być wyświetlony następujący komunikat o błędzie: `Namespace already exists`. 
+
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Co to są wyjątki generowane przez interfejsów API usługi Azure Service Bus i ich sugerowane rozwiązania?
 Aby uzyskać listę możliwych wyjątków usługi Service Bus, zobacz [Przegląd wyjątki][Exceptions overview].
 

@@ -3,7 +3,7 @@ title: Jak używać pamięci podręcznej redis — interfejs wiersza polecenia z
 description: Dowiedz się, jak za pomocą usługi redis-cli pamięć podręczna systemu Azure dla usługi Redis.
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.service: cache
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
-ms.author: wesmc
-ms.openlocfilehash: 30288c338785c45b860b4b2b29a646662572e179
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.author: yegu
+ms.openlocfilehash: 5f6d50de9f15b6ed08b09506d5a8f93f19919a4d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100635"
+ms.locfileid: "56107597"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Jak używać narzędzia wiersza polecenia usługi Redis z usługą Azure Cache dla pamięci podręcznej Redis
 

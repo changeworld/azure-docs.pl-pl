@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 19ed1c12768eed0265f65388984a5859b8f0630b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48247758"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210734"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Mój zespół Sub/górną pierwszych punktów Award
 
@@ -29,7 +30,7 @@ Integrowanie Mój zespół Sub/górną pierwszych punktów Award z usługą Azur
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Mój zespół Sub/górną pierwszych punktów Award.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do moje punkty górnej Sub/górną zespół Award (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
@@ -43,9 +44,9 @@ Do konfigurowania integracji z usługą Azure AD za pomocą Mój zespół Sub/g�
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -70,15 +71,15 @@ Aby skonfigurować integrację Mój zespół Sub/górną pierwszych punktów Awa
 
     ![W bloku aplikacji przedsiębiorstwa][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Mój zespół Sub/górną pierwszych punktów Award**, wybierz opcję **Mój zespół Sub/górną pierwszych punktów Award** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Mój zespół Sub/górną Award punktów góry na liście wyników](./media/myawardpoints-tutorial/tutorial_myawardpoints_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą My Award punktów górnej Sub/górną zespołu, na podstawie użytkownika testu o nazwie "Britta Simon".
 
@@ -86,13 +87,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Mój zespół Sub/górną pierwszych punktów Award, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 3. **[Tworzenie użytkownika testowego Mój zespół Sub/górną pierwszych punktów Award](#create-a-my-award-points-top-subtop-team-test-user)**  — aby odpowiednikiem Britta Simon w Moje Award punktów górnej Sub/górną zespołu, który jest połączony z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Mój zespół Sub/górną pierwszych punktów Award.
 
@@ -100,7 +101,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Mój zespół Sub/górną pierwszych punktów Award** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
 
@@ -110,7 +111,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Moje Award punktów górnej Sub/górną zespołu domena i adresy URL pojedynczego logowania jednokrotnego informacje](./media/myawardpoints-tutorial/tutorial_myawardpoints_url.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>`
 
     > [!NOTE]
     > Zostanie wyświetlony `<SAMLENTITYID>` wartości w kolejnych krokach w tym samouczku.
@@ -121,11 +122,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/myawardpoints-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/myawardpoints-tutorial/tutorial_general_400.png)
 
 6. W **Mój Award punktów górnej Sub/górną zespołu Konfiguracja** zaznacz **Skonfiguruj moje punkty górnej Sub/górną zespół Award** aby otworzyć okno Konfigurowanie logowania jednokrotnego. Skopiuj identyfikator jednostki SAML z **krótki** sekcji, a następnie dołącz wartość Identyfikatora jednostki protokołu SAML ze znakiem w adresie URL zamiast z `<SAMLENTITYID>` w **Moje Award punktów górnej Sub/górną zespołu domena i adresy URL** sekcja w witrynie Azure portal.
 
-7. Aby skonfigurować logowanie jednokrotne na **Mój zespół Sub/górną pierwszych punktów Award** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Mój zespół Sub/górną pierwszych punktów Award](mailto:myawardpoints@biworldwide.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+7. Aby skonfigurować logowanie jednokrotne na **Mój zespół Sub/górną pierwszych punktów Award** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Mój zespół Sub/górną pierwszych punktów Award](mailto:myawardpoints@biworldwide.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -161,7 +162,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="create-a-my-award-points-top-subtop-team-test-user"></a>Tworzenie użytkownika testowego Mój zespół Sub/górną pierwszych punktów Award
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Mój zespół Sub/górną pierwszych punktów Award. Praca z [zespołem pomocy technicznej Mój zespół Sub/górną pierwszych punktów Award](mailto:myawardpoints@biworldwide.com) Aby dodać użytkowników na platformie Mój zespół Sub/górną pierwszych punktów Award. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Mój zespół Sub/górną pierwszych punktów Award. Praca z [zespołem pomocy technicznej Mój zespół Sub/górną pierwszych punktów Award](mailto:myawardpoints@biworldwide.com) Aby dodać użytkowników na platformie Mój zespół Sub/górną pierwszych punktów Award. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

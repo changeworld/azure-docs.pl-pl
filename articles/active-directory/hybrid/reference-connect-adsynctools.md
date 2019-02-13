@@ -9,12 +9,13 @@ ms.date: 10/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
-ms.openlocfilehash: 5a897482c07be900cf9a1c2cea62d08f831c312e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8988035d2ef28dfe4da632baca2e11205bc88340
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497999"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218112"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Program Azure AD Connect:  Dokumentacja programu PowerShell ADSyncTools
 Poniższa dokumentacja zawiera informacje dotyczące modułu programu PowerShell ADSyncTools.psm1, dostępnej w programie Azure AD Connect.

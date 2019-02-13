@@ -1,6 +1,6 @@
 ---
-title: Połącz i łączyć się z usługami w sieci szkieletowej usług Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozwiązać, łączenie i łączyć się z usługami w sieci szkieletowej usług.
+title: Łączenie i komunikować się z usługami Azure Service Fabric | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozwiązać, łączenie i komunikować się z usługami w usłudze Service Fabric.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,99 +14,90 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 2b6fd2373a9cd0b376a6c8729d5952c5fc48ddf8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f11d680330a43dd49b3c36c864f50b9dc869d172
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205590"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211856"
 ---
-# <a name="connect-and-communicate-with-services-in-service-fabric"></a>Połącz i łączyć się z usługami w sieci szkieletowej usług
-W sieci szkieletowej usług Usługa gdzieś działa w klastrze usługi sieć szkieletowa, zazwyczaj są rozproszone na wielu maszyn wirtualnych. Można można przenosić z jednego miejsca do innego, przez właściciela usługi lub automatycznie przez sieć szkieletowa usług. Usługi nie są statycznie związane z określonego komputera lub adres.
+# <a name="connect-and-communicate-with-services-in-service-fabric"></a>Łączenie i komunikować się z usługami w usłudze Service Fabric
+W usłudze Service Fabric usługa jest uruchamiana gdzieś w klastrze usługi Service Fabric, zazwyczaj dystrybuowane w wielu maszyn wirtualnych. Można ją przenosić z jednego miejsca do innego, przez właściciela usługi lub automatycznie przez usługę Service Fabric. Usługi nie są statycznie związany z określonego komputera lub adres.
 
-Aplikacji usługi Service Fabric zazwyczaj składa się z wielu różnych usług, w którym każda usługa wykonuje zadanie specjalne. Te usługi może komunikować się ze sobą do utworzenia pełnej funkcji, takich jak renderowania różne części aplikacji sieci web. Dostępne są także aplikacji klienckich, które nawiązać połączenie i łączyć się z usługami. Tego dokumentu zawiera omówienie sposobu konfigurowania komunikacji z i od usługi w sieci szkieletowej usług.
+Aplikacja usługi Service Fabric zazwyczaj składa się z wielu różnych usług, w którym każda usługa wykonuje specjalne zadanie. Te usługi mogą komunikować się ze sobą w celu utworzenia pełne funkcji, np. renderowania różne części aplikacji sieci web. Dostępne są także aplikacji klienckich, które nawiązać połączenie i komunikować się z usługami. W tym dokumencie omówiono sposób konfigurowania komunikacji przy użyciu oraz między usługami w usłudze Service Fabric.
 
-Ten film Microsoft Virtual Academy omówiono także komunikacji usługi: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
-<img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
+## <a name="bring-your-own-protocol"></a>Przenieś swoje własne protokołu
+Usługa Service Fabric pomaga zarządzać cyklem życia Twoich usług, ale go nie należy podejmować decyzji dotyczących działania usługi. Dotyczy to również komunikacji. Po otwarciu usługi przez usługę Service Fabric, który jest możliwość usługi konfigurowania punktu końcowego dla żądań przychodzących za pomocą dowolnych stosu protokołu lub komunikacji chcesz. Usługa będzie nasłuchiwać normalnego **IP:port** adresu, przy użyciu dowolnego schematu adresowania, takie jak identyfikator URI. Wiele wystąpień usługi lub replik może udostępniać procesu hosta, w którym to przypadku albo muszą używało innych portów, lub użyj mechanizm współużytkowania portów, takie jak sterownik http.sys jądra w Windows. W obu przypadkach każdego wystąpienia usługi lub replik w procesie hosta musi być unikatowo adresowane.
 
-## <a name="bring-your-own-protocol"></a>Przełącz własnego protokołu
-Sieć szkieletowa usług ułatwia zarządzanie cyklem życia usługi, ale nie powoduje decyzje na temat działania usługi. W tym komunikacji. Po otwarciu usługi przez sieć szkieletowa usług, który jest możliwość usługi konfigurowania punktu końcowego dla przychodzących żądań przy użyciu dowolnego stosu protokołu lub komunikacji ma. Usługa będzie nasłuchiwać zwykłym **IP:port** adresów przy użyciu dowolnego schematu adresowania, takich jak identyfikator URI. Wiele wystąpień usługi lub replik może udostępniać procesu hosta, w którym to przypadku albo muszą używać różnych portów lub mechanizm współużytkowania portów, takie jak sterownik http.sys jądra systemu Windows. W obu przypadkach musi być unikatowo adresowane każdego wystąpienia usługi lub repliki w ramach procesu hosta.
-
-![Punkty końcowe usługi][1]
+![punkty końcowe usługi][1]
 
 ## <a name="service-discovery-and-resolution"></a>Odnajdowanie usługi i rozwiązania
-W rozproszonym systemie usługi może przenieść z jednego komputera na inny wraz z upływem czasu. Może to nastąpić z różnych powodów, takich jak zasób równoważenia uaktualnień, pracy w trybie Failover lub skalowalnych w poziomie. Oznacza to, że adresy punktów końcowych usługi zmienić, ponieważ usługa przenosi do węzłów z różnych adresów IP i może otwierać na różnych portów, jeśli usługa używa portu dynamicznego wybrane.
+W rozproszonym systemie usług mogą przenieść z jednej maszyny na inną wraz z upływem czasu. Może to nastąpić z różnych powodów, takich jak równoważenia uaktualnień, pracy w trybie Failover lub skalowania w poziomie zasobów. Oznacza to, że adresy punktów końcowych usługi zmianę w usłudze przenosi do węzłów z różnymi adresami IP oraz mogą otwierać na różnych portów, jeśli usługa używa dynamicznie wybrany port.
 
-![Dystrybucja usług programu][7]
+![Dystrybucja usług][7]
 
-Sieć szkieletowa usług udostępnia usługę odnajdywania i rozwiązania o nazwie Naming Service. Naming Service obsługuje tabelę, która mapuje nazwanych wystąpień usług adresy punktów końcowych, do których one nasłuchiwania. Wszystkie wystąpienia usługi o nazwie w sieci szkieletowej usług mają unikatowe nazwy, reprezentowane jako identyfikatory URI, na przykład `"fabric:/MyApplication/MyService"`. Nazwa usługi nie zmienia się w okresie istnienia usługi, jest tylko adresy punktów końcowych, które można zmienić podczas przenoszenia usług. To jest analogiczne do witryn sieci Web, gdy mają stałe adresy URL, ale gdzie adresu IP mogą ulec zmianie. I podobne w systemie DNS w sieci web, który jest rozpoznawany jako adresy URL witryny sieci Web adresy IP, usługi Service Fabric ma rejestratora, która mapuje nazwy usługi na swój adres punktu końcowego.
+Usługa Service Fabric udostępnia usługę odnajdywania i rozwiązywania o nazwie Usługa nazewnictwa. Usługa nazewnictwa przechowuje tabelę, która mapuje nazwanych wystąpień usług adresy punktów końcowych, które mogą nasłuchiwać. Wszystkie wystąpienia nazwaną usługę w usłudze Service Fabric mieć unikatowe nazwy reprezentowane jako identyfikatory URI, na przykład `"fabric:/MyApplication/MyService"`. Nazwa usługi nie zmienia się w okresie istnienia usługi, jest tylko adresy punktów końcowych, które mogą być zmieniane podczas przenoszenia usług. Jest to analogiczne do witryn sieci Web, które mają stałe adresy URL, ale których adres IP mogą ulec zmianie. I podobne do serwera DNS w sieci web, który jest rozpoznawany jako adresy URL witryn internetowych adresów IP, Usługa Service Fabric ma rejestratora, która mapuje nazwy usługi do ich adres punktu końcowego.
 
-![Punkty końcowe usługi][2]
+![punkty końcowe usługi][2]
 
-Rozpoznawanie i łączących się z usługami obejmuje następujące kroki uruchamiania w pętli:
+Rozpoznawanie i łączenie się z usługami obejmuje następujące kroki, które są uruchamiane w pętli:
 
-* **Rozwiąż**: uzyskanie punktu końcowego, który został opublikowany usługą Naming Service.
-* **Połącz**: połączyć się z usługą za pośrednictwem niezależnie od protokołu używa w tym punkcie końcowym.
-* **Spróbuj ponownie**: próba połączenia może zakończyć się niepowodzeniem dla dowolnej liczby przyczyn, na przykład jeśli usługi zostały przeniesione od czasu ostatniego adres punktu końcowego został rozwiązany. W takim przypadku poprzedni rozwiązania i połączyć kroki potrzebę ponowione, a ten cykl powtarza się do chwili pomyślnego połączenia.
+* **Rozwiąż**: Pobierz punkt końcowy, który został opublikowany usługi z usługi nazw.
+* **Połącz**: Połączenia z usługą, niezależnie od protokołu używa w tym punkcie końcowym.
+* **Ponów próbę wykonania**: Próba połączenia może zakończyć się niepowodzeniem dla dowolnej liczby powodów, na przykład jeśli usługi zostały przeniesione od czasu ostatniego adresu punktu końcowego został rozwiązany. W takim przypadku poprzedniego rozwiązania i połączyć kroki potrzebę ponowienie próby, a ten cykl jest powtarzany, dopóki połączenie powiedzie się.
 
-## <a name="connecting-to-other-services"></a>Nawiązywanie połączenia z innymi usługami
-Łączenie ze sobą w klastrze zazwyczaj usług bezpośrednio mają dostęp do punktów końcowych innych usług, ponieważ węzły w klastrze są w tej samej sieci lokalnej. Aby łatwiej łączyć między usługami, Service Fabric zawiera dodatkowe usługi, które korzystają z usługi nazw. Usługa DNS i usługa zwrotnego serwera proxy.
+## <a name="connecting-to-other-services"></a>Łączenie się z innymi usługami
+Łączenie ze sobą ogólnie wewnątrz klastra usługi można uzyskać dostęp do punktów końcowych w innych usługach ponieważ węzłów w klastrze znajdują się w tej samej sieci lokalnej. Aby łatwiej łączyć między usługami, Usługa Service Fabric udostępnia dodatkowe usługi, które korzystają z usługi nazw. Usługi DNS i usługa zwrotnego serwera proxy.
 
 
 ### <a name="dns-service"></a>Usługa DNS
-Począwszy od wielu usług zwłaszcza konteneryzowanych usług może mieć nazwę istniejącego adresu URL, możliwość rozwiązać te przy użyciu standardowych DNS protokołu (zamiast protokołu Naming Service) jest bardzo wygodny, szczególnie w scenariuszach "przyrostu i przesunięcia". Jest to dokładnie, jak działa usługa DNS. Umożliwia ona mapowania nazw DNS na nazwę usługi i dlatego rozpoznać adresów IP punktu końcowego. 
+Od wielu usług zwłaszcza konteneryzowanych usług może mieć nazwę istniejącego adresu URL, możliwość je rozwiązać przy użyciu standardowego systemu DNS protokołu (zamiast protokołu nazewnictwa Service) jest bardzo wygodne, szczególnie w przypadku scenariuszy aplikacji "metodą lift and shift". Jest to dokładnie, jak działa usługa DNS. Umożliwia mapowanie nazw DNS na nazwę usługi i dlatego rozpoznawać adresy IP punktów końcowych. 
 
-Jak pokazano na poniższym diagramie, usługa DNS działa w klastrze usługi sieć szkieletowa mapuje nazwy DNS nazwy usługi, które następnie są rozpoznawane przez usługę nazewnictwa do zwrócenia adresy punktów końcowych, aby nawiązać połączenie. Nazwy DNS dla usługi znajduje się w momencie tworzenia obiektu. 
+Jak pokazano na poniższym diagramie, usługi DNS działające w klastrze usługi Service Fabric mapuje nazwy DNS nazwy usługi, które następnie są rozwiązywane przez usługę nazewnictwa do zwrócenia adresy punktów końcowych, aby nawiązać połączenie. Nazwa DNS usługi znajduje się w czasie tworzenia. 
 
-![Punkty końcowe usługi][9]
+![punkty końcowe usługi][9]
 
-Więcej informacji na temat sposobu korzystania z usługi DNS usługi zobacz [usługa DNS w sieci szkieletowej usług Azure](service-fabric-dnsservice.md) artykułu.
+Aby uzyskać więcej informacji na temat sposobu korzystania z serwera DNS usługi zobacz [usługa DNS w usłudze Azure Service Fabric](service-fabric-dnsservice.md) artykułu.
 
 ### <a name="reverse-proxy-service"></a>Zwrotny serwer proxy usługi
-Zwrotnego serwera proxy dotyczy usługi w klastrze, który udostępnia punktów końcowych HTTP, łącznie z protokołu HTTPS. Zwrotny serwer proxy znacząco upraszcza wywoływania innych usług i ich metod przez określony format identyfikatora URI i obsługuje rozpoznania, połączenia, powtórz kroki wymagane do jedną usługę do komunikowania się z inną przy użyciu usługi nazw. Innymi słowy ukrywa on Naming Service od użytkownika podczas wywoływania metody innych usług, dokonując to prosty jak wywołanie adresu URL.
+Zwrotny serwer proxy dotyczy usług w klastrze, który uwidacznia punkty końcowe HTTP, łącznie z protokołu HTTPS. Zwrotny serwer proxy znacznie upraszcza wywołującego innych usług i ich metod, o określonym formacie identyfikatora URI i obsługuje rozpoznania, połączenia, ponów próbę wykonania kroków wymaganych do jednej usługi do komunikowania się z innego za pomocą usługi nazewnictwa. Innymi słowy ukrywa usługi nazewnictwa od użytkownika podczas wywoływania innych usług, wprowadzając to tak proste, jak wywołanie adresu URL.
 
-![Punkty końcowe usługi][10]
+![punkty końcowe usługi][10]
 
-Więcej informacji na temat sposobu korzystania z usługi zwrotny serwer proxy można znaleźć [odwrotny serwer proxy w sieci szkieletowej usług Azure](service-fabric-reverseproxy.md) artykułu.
+Aby uzyskać więcej informacji na temat sposobu korzystania z usługi zwrotny serwer proxy, zobacz [zwrotny serwer proxy w usłudze Azure Service Fabric](service-fabric-reverseproxy.md) artykułu.
 
 ## <a name="connections-from-external-clients"></a>Połączenia z klientami zewnętrznymi
-Łączenie ze sobą w klastrze zazwyczaj usług bezpośrednio mają dostęp do punktów końcowych innych usług, ponieważ węzły w klastrze są w tej samej sieci lokalnej. W przypadku środowisk jednak klastra może być za modułem równoważenia obciążenia, który przekierowuje ruch przychodzący zewnętrznych za pomocą ograniczonego zestawu portów. W takich przypadkach usługi nadal mogą komunikować się ze sobą i rozpoznawania adresów przy użyciu usługi nazw, ale dodatkowe kroki należy zezwolić zewnętrznych klientom na łączenie się z usługami.
+Łączenie ze sobą ogólnie wewnątrz klastra usługi można uzyskać dostęp do punktów końcowych w innych usługach ponieważ węzłów w klastrze znajdują się w tej samej sieci lokalnej. W niektórych środowiskach, klaster może być za modułem równoważenia obciążenia, która kieruje ruch zewnętrzny ruch przychodzący przez ograniczony zestaw portów. W takich przypadkach usługi nadal mogą komunikować się ze sobą i rozpoznać adresów przy użyciu usługi nazewnictwa, ale dodatkowe kroki należy podjąć, aby umożliwić zewnętrznych klientom łączenie się z usługami.
 
-## <a name="service-fabric-in-azure"></a>Sieć szkieletowa usług na platformie Azure
-Klastra sieci szkieletowej usług w usłudze Azure znajduje się za usługą równoważenia obciążenia Azure. Wszystkie zewnętrznego ruchu do klastra musi przejść przez moduł równoważenia obciążenia. Moduł równoważenia obciążenia będzie automatycznie przesyłał dalej ruch przychodzący na porcie danego do losowe *węzła* mający ten sam port, Otwórz. Moduł równoważenia obciążenia Azure tylko zna porty otwarty na *węzłów*, nie może określić dotyczących otwarte porty przez osobę *usług*.
+## <a name="service-fabric-in-azure"></a>Usługa Service Fabric na platformie Azure
+Klaster usługi Service Fabric na platformie Azure jest umieszczany za modułem równoważenia obciążenia platformy Azure. Cały ruch zewnętrzny do klastra musi przechodzić przez moduł równoważenia obciążenia. Modułu równoważenia obciążenia automatycznie przekazują ruch przychodzący na danym porcie do losową *węzła* ma tego samego portu, Otwórz. Usługi Azure Load Balancer tylko zna porty otwarte na *węzłów*, nie wie o otwarte porty przez osobę *usług*.
 
-![Azure topologii równoważenia obciążenia i sieci szkieletowej usług][3]
+![Usługa Azure topologii równoważenia obciążenia i usługi Service Fabric][3]
 
-Na przykład, aby zaakceptować zewnętrznych ruch na porcie **80**, muszą być skonfigurowane następujące czynności:
+Na przykład w celu akceptowania ruchu zewnętrznego na porcie **80**, muszą być skonfigurowane następujące elementy:
 
-1. Zapisu to usługa, która nasłuchuje na porcie 80. Skonfiguruj port 80 w pliku ServiceManifest.xml usługi i otwórz odbiornik usługi, na przykład serwer sieci web siebie.
+1. Napisz to usługa, która nasłuchuje na porcie 80. Skonfiguruj port 80 w ServiceManifest.xml usługi, a następnie otwórz odbiornik usługi, na przykład serwer samodzielnie hostowanej sieci web.
 
-    ```xml
-    <Resources>
-        <Endpoints>
-            <Endpoint Name="WebEndpoint" Protocol="http" Port="80" />
-        </Endpoints>
-    </Resources>
+    ```xml    <Resources> <Endpoints> <Endpoint Name="WebEndpoint" Protocol="http" Port="80" /> </Endpoints> </Resources>
     ```
     ```csharp
-        class HttpCommunicationListener : ICommunicationListener
+        class HttpCommunicationListener : ICommunicationListener
         {
             ...
 
             public Task<string> OpenAsync(CancellationToken cancellationToken)
             {
-                EndpointResourceDescription endpoint =
+                EndpointResourceDescription endpoint =
                     serviceContext.CodePackageActivationContext.GetEndpoint("WebEndpoint");
 
-                string uriPrefix = $"{endpoint.Protocol}://+:{endpoint.Port}/myapp/";
+                string uriPrefix = $"{endpoint.Protocol}://+:{endpoint.Port}/myapp/";
 
-                this.httpListener = new HttpListener();
+                this.httpListener = new HttpListener();
                 this.httpListener.Prefixes.Add(uriPrefix);
                 this.httpListener.Start();
 
-                string publishUri = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
-                return Task.FromResult(publishUri);
+                string publishUri = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
+                return Task.FromResult(publishUri);
             }
 
             ...
@@ -118,7 +109,7 @@ Na przykład, aby zaakceptować zewnętrznych ruch na porcie **80**, muszą być
 
             protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
             {
-                return new[] { new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
+                return new[] { new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
             }
 
             ...
@@ -160,30 +151,30 @@ Na przykład, aby zaakceptować zewnętrznych ruch na porcie **80**, muszą być
             ...
         }
     ```
-2. Tworzenie klastra sieci szkieletowej usług na platformie Azure i określić port **80** jako port punktu końcowego niestandardowych dla typu węzła, który będzie hostem usługi. Jeśli masz więcej niż jeden typ węzła, można skonfigurować *ograniczenia umieszczania* na usługę, aby upewnić się, że działa tylko na typ węzła mającego otworzyć port punktu końcowego niestandardowych.
+2. Utwórz klaster usługi Service Fabric na platformie Azure i określ port **80** jako port niestandardowy punkt końcowy dla typu węzła, który będzie hostować usługę. Jeśli masz więcej niż jeden typ węzła, możesz skonfigurować *ograniczeń umieszczania* w usłudze, aby upewnić się, że działa tylko dla typu węzła, który ma otworzyć port niestandardowy punkt końcowy.
 
     ![Otwarcie portu dla typu węzła][4]
-3. Po utworzeniu klastra, należy skonfigurować usługę równoważenia obciążenia Azure w grupie zasobów klastra, aby przesyłał dalej ruch na porcie 80. Podczas tworzenia klastra za pośrednictwem portalu Azure, to jest automatycznie utworzyć dla każdego portu niestandardowego punktu końcowego, który został skonfigurowany.
+3. Po utworzeniu klastra należy skonfigurować Równoważenie obciążenia Azure, w grupie zasobów klastra do przesyłania dalej ruchu na porcie 80. Podczas tworzenia klastra za pośrednictwem witryny Azure portal, to jest automatycznie utworzyć dla każdego portu niestandardowego punktu końcowego, który został skonfigurowany.
 
-    ![Ruch do przodu w usłudze równoważenia obciążenia Azure][5]
-4. Moduł równoważenia obciążenia Azure używa badanie w celu określenia, czy przesyłają dane do określonego węzła. Sonda okresowo sprawdza, czy punkt końcowy na każdym węźle, aby określić, czy węzeł odpowiada. Jeśli sondy nie można odebrać odpowiedzi od skonfigurowanych wiele razy, usługi równoważenia obciążenia zatrzymuje wysyłania ruchu do tego węzła. Podczas tworzenia klastra za pośrednictwem portalu Azure, badanie automatycznie jest konfigurowane dla poszczególnych portów niestandardowych punktu końcowego, który został skonfigurowany.
+    ![Przesyłanie ruchu sieciowego w module równoważenia obciążenia platformy Azure][5]
+4. Usługi Azure Load Balancer używa sondy, aby określić, czy chce wysyłać ruch do określonego węzła. Sonda okresowo sprawdza dostępność punktu końcowego w każdym węźle, aby ustalić, czy węzeł odpowiada. Jeśli sonda nie otrzymasz odpowiedzi po określonej liczbie razy, moduł równoważenia obciążenia zaprzestaje wysyłania ruchu do tego węzła. Podczas tworzenia klastra za pośrednictwem witryny Azure portal, sondy automatycznie skonfigurowano dla każdego portu niestandardowego punktu końcowego, który został skonfigurowany.
 
-    ![Ruch do przodu w usłudze równoważenia obciążenia Azure][8]
+    ![Przesyłanie ruchu sieciowego w module równoważenia obciążenia platformy Azure][8]
 
-Należy pamiętać, że moduł równoważenia obciążenia Azure i badania tylko wiedzieć o *węzłów*, a nie *usług* działających w węzłach. Moduł równoważenia obciążenia Azure będą zawsze wysyłały ruchu do węzłów, które odpowiada sondowania, więc należy uważać, aby upewnić się, że usługi są dostępne w węzłach, które są w stanie odpowiadać na sondę.
+Należy pamiętać, że usługi Azure Load Balancer i badania tylko wiedzieć o *węzłów*, a nie *usług* działających w węzłach. Usługi Azure Load Balancer zawsze będzie wysyłać ruch do węzłów, które odpowiadają sondowania, więc należy uważać, aby upewnić się, że usługi są dostępne w węzły, które są w stanie odpowiadać na sondy.
 
-## <a name="reliable-services-built-in-communication-api-options"></a>Niezawodnej usługi: Opcje komunikacji wbudowanej interfejsu API
-Framework niezawodne usługi jest dostarczany z kilku opcji wbudowanych komunikacji. Decyzja o tym, które jedną będzie najlepsza, zależy od wybór modelu programowania, w ramach komunikacji i język programowania, które usługi są zapisywane w.
+## <a name="reliable-services-built-in-communication-api-options"></a>Usług Reliable Services: Opcje komunikacji wbudowanej interfejsu API
+W ramach usług Reliable Services jest dostarczany z kilku opcji wstępnie skompilowanych komunikacji. Decyzja o tym, które jeden będą najlepiej działać dla Ciebie zależy od wybranego modelu programowania, w ramach komunikacji i języka programowania, które usługi są zapisywane w.
 
-* **Nie określonego protokołu:** Jeśli nie ma określonego wybór framework komunikacji, ale chcesz coś się szybkie i uruchomienie, a następnie jest doskonałym rozwiązaniem dla Ciebie [service remoting](service-fabric-reliable-services-communication-remoting.md), dzięki czemu Wywołanie procedury zdalnej jednoznacznie dla Reliable Services i Reliable Actors. Jest to najprostszy i najszybszym sposobem na szybkie wprowadzenie do komunikacji usługi. Service remoting obsługuje rozpoznawanie adresy usługi, połączenia, ponów próbę i obsługa błędów. To jest dostępna dla C# i aplikacji Java.
-* **HTTP**: komunikat niezależny od języka HTTP zapewnia wybór standardowych z narzędziami i serwery HTTP dostępne w wielu językach obsługiwanych przez sieć szkieletowa usług. Usługi mogą używać żadnych HTTP stosu, w tym [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) dla aplikacji C#. Napisany w języku C# klienci mogą używać `ICommunicationClient` i `ServicePartitionClient` klas, natomiast dla języka Java, użyj `CommunicationClient` i `FabricServicePartitionClient` klas, [usługi rozdzielczości, połączeń HTTP i ponów próbę wykonania pętli](service-fabric-reliable-services-communication.md).
-* **Usługi WCF**: Jeśli masz istniejący kod, który używa WCF jako platforma sieci komunikacji, a następnie można użyć `WcfCommunicationListener` po stronie serwera i `WcfCommunicationClient` i `ServicePartitionClient` klasy dla klienta. To jednak jest dostępna tylko dla aplikacji C# w klastrach z systemem Windows. Aby uzyskać więcej informacji, zobacz ten artykuł [WCF na podstawie wykonania stosu komunikacji](service-fabric-reliable-services-communication-wcf.md).
+* **Nie określonego protokołu:**  Jeśli nie masz określonego wybór strukturę komunikacji, ale chcesz rozpocząć coś się szybko, a następnie jest doskonałym rozwiązaniem dla Ciebie [zdalna komunikacja usług](service-fabric-reliable-services-communication-remoting.md), co pozwala silnie typizowane procedury zdalnej wymaga Usług Reliable Services i Reliable Actors. Jest to najłatwiejszych i najszybszych obecnie sposobem rozpoczęcia pracy z komunikacji usług. Zdalna komunikacja usług obsługuje rozpoznawanie adresy usługi, połączenia, ponownych prób i obsługi błędów. Ta opcja jest dostępna zarówno dla C# i aplikacji w języku Java.
+* **HTTP**: W przypadku komunikacji niezależny od języka HTTP zapewnia wybór będące standardami branżowymi, za pomocą narzędzi i serwerów HTTP jest dostępna w wielu językach obsługiwanych przez usługi Service Fabric. Usługi mogą używać dowolnego stos HTTP niedostępnych, w tym [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) dla C# aplikacji. Klienci napisane w C# mogą korzystać z `ICommunicationClient` i `ServicePartitionClient` klasy, natomiast dla języka Java, należy użyć `CommunicationClient` i `FabricServicePartitionClient` klas, [usługi rozdzielczości, połączeń HTTP i pętli ponawiania](service-fabric-reliable-services-communication.md).
+* **WCF**: Jeśli masz istniejący kod, który używa programu WCF jako preferowanej struktury komunikacji, a następnie można użyć `WcfCommunicationListener` po stronie serwera i `WcfCommunicationClient` i `ServicePartitionClient` klasy dla klienta. Jednak jest to możliwe tylko dla C# aplikacji na Windows na podstawie klastrów. Aby uzyskać więcej informacji znajduje się w artykule [implementacji stos komunikacji WCF na podstawie](service-fabric-reliable-services-communication-wcf.md).
 
-## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Przy użyciu protokołów niestandardowych i innych platform komunikacji
-Usługi można użyć protokołu lub framework do komunikacji, czy jest protokołem binarne niestandardowych za pośrednictwem gniazda TCP lub za pośrednictwem przesyłania strumieniowego zdarzenia [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) lub [Centrum IoT Azure](https://azure.microsoft.com/services/iot-hub/). Sieć szkieletowa usług zapewnia komunikację interfejsów API stosu komunikacji, można podłączyć podczas całą pracę na potrzeby odnajdywania i połączyć jest pobieranej przez użytkownika. Znajduje się w artykule [model komunikacji niezawodnej usługi](service-fabric-reliable-services-communication.md) więcej szczegółów.
+## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Przy użyciu niestandardowych protokołów i innych platform komunikacji
+Usługi można użyć dowolnego protokołu lub framework do komunikacji, czy jest to za pośrednictwem gniazda TCP lub przesyłanie strumieniowe zdarzeń za pomocą niestandardowego protokołu binarne [usługi Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) lub [usługi Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/). Usługa Service Fabric zapewnia komunikację interfejsów API, które można podłączyć stosu komunikacji, podczas gdy cała praca odnajdywanie i połączyć to wyodrębnione ze strony użytkownika. Znajduje się w artykule [model komunikacji niezawodnej usługi](service-fabric-reliable-services-communication.md) Aby uzyskać więcej informacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej na temat pojęć i interfejsami API dostępnymi w [model komunikacji niezawodnej usługi](service-fabric-reliable-services-communication.md), następnie szybko rozpocząć pracę z [service remoting](service-fabric-reliable-services-communication-remoting.md) lub przejdź szczegółowe informacje na temat zapisu komunikatu przy użyciu odbiornika [interfejsu API sieci Web z hosta samodzielnego OWIN](service-fabric-reliable-services-communication-webapi.md).
+Dowiedz się więcej na temat pojęć i interfejsami API dostępnymi w [model komunikacji usług Reliable Services](service-fabric-reliable-services-communication.md), następnie szybko rozpocząć pracę z [zdalna komunikacja usług](service-fabric-reliable-services-communication-remoting.md) lub dokładniejszym, aby dowiedzieć się, jak napisać komunikat odbiornik za pomocą [internetowego interfejsu API z OWIN hosta samodzielnego](service-fabric-reliable-services-communication-webapi.md).
 
 [1]: ./media/service-fabric-connect-and-communicate-with-services/serviceendpoints.png
 [2]: ./media/service-fabric-connect-and-communicate-with-services/namingservice.png

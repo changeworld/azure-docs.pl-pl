@@ -4,7 +4,7 @@ description: Dowiedz się, jak używać interfejsów API REST usługi Azure, aby
 services: billing
 documentationcenter: na
 author: lleonard-msft
-manager: MBaldwin
+manager: ''
 editor: ''
 ms.assetid: 82D50B98-40F2-44B1-A445-4391EA9EBBAA
 ms.service: billing
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/06/2018
 ms.author: erikre
-ms.openlocfilehash: d0199711370dae6a23626337946e45e84fd33047
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: a4e5307a151439dde5ac41cb5b1bbb80f43ad71c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394729"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112754"
 ---
 # <a name="review-subscription-billing-using-rest-apis"></a>Przegląd rozliczeń subskrypcji przy użyciu interfejsów API REST
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 Authorization: Bearer
 ```
 
-## <a name="build-the-request"></a>Żądanie kompilacji  
+## <a name="build-the-request"></a>Tworzenie żądania  
 
 `{subscriptionID}` Parametr jest wymagany i identyfikuje subskrypcji docelowej.
 
@@ -84,7 +84,7 @@ Każdy element na **wartość** reprezentuje szczegóły dotyczące korzystania 
 |Właściwość Response|Opis|
 |----------------|----------|
 |**subscriptionGuid** | Globalnie unikatowy identyfikator dla subskrypcji. | 
-|**Oprócz parametru startDate** | Data wykorzystania pracę. |
+|**startDate** | Data wykorzystania pracę. |
 |**endDate** | Data wykorzystania zakończył się. |
 |**useageQuantity** | Użytej ilości. | 
 |**billableQuantity** | Ilość rzeczywiście jest rozliczane. |

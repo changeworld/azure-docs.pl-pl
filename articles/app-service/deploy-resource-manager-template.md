@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: tomfitz
 ms.custom: seodec18
-ms.openlocfilehash: 1431ba658a6eb898553804f0c81b3babb23f4fe2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 780d2134aa00f828a614af6938978e24df3534cd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015206"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105115"
 ---
 # <a name="guidance-on-deploying-web-apps-by-using-azure-resource-manager-templates"></a>Wskazówki dotyczące wdrażania aplikacji sieci web przy użyciu szablonów usługi Azure Resource Manager
 
@@ -40,7 +40,7 @@ Możesz wdrożyć zasoby w następującej kolejności:
 * Plan usługi App Service.
 * Wszystkie inne powiązane zasoby, takie jak bazy danych lub konta magazynu.
 
-**Warstwa 2**
+**Tier 2**
 * Web app — zależy od planu usługi App Service.
 * Wystąpienie usługi Application Insights platformy Azure, który jest przeznaczony dla farmy serwerów — zależy od planu usługi App Service.
 
@@ -53,7 +53,7 @@ Możesz wdrożyć zasoby w następującej kolejności:
 * Certyfikat usługi App Service — zależy od kontroli źródła lub MSDeploy, jeśli jest obecny. W przeciwnym razie to zależy od aplikacji sieci web.
 * Ustawienia konfiguracji (parametry połączenia, wartości w pliku web.config, ustawienia aplikacji) — zależy od kontroli źródła lub MSDeploy Jeśli albo jest obecny. W przeciwnym razie to zależy od aplikacji sieci web.
 
-**W warstwie 5**
+**Tier 5**
 * Hosta powiązania nazwy — zależy od certyfikatu, jeśli jest obecny. W przeciwnym razie to zależy od zasobu wyższego poziomu.
 * Rozszerzenia — lokacji zależy od ustawień konfiguracji, jeśli jest obecny. W przeciwnym razie to zależy od zasobu wyższego poziomu.
 
@@ -113,12 +113,14 @@ Nazwa aplikacji sieci web musi być globalnie unikatowa. Można użyć konwencji
 
 ## <a name="deploy-web-app-certificate-from-key-vault"></a>Wdróż certyfikat aplikacji internetowej z usługi Key Vault
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Jeśli szablon zawiera [Microsoft.Web/certificates](/azure/templates/microsoft.web/certificates) zasobu na potrzeby powiązania SSL i certyfikat są przechowywane w usłudze Key Vault, należy upewnić się, że tożsamość usługi App Service mogą uzyskiwać dostęp do certyfikatu.
 
 Na platformie Azure globalne nazwy głównej usługi App Service ma identyfikator **abfa0a7c-a6b6-4736-8310-5855508787cd**. Aby udzielić dostępu do usługi Key Vault dla jednostki usługi App Service, należy użyć:
 
 ```azurepowershell-interactive
-Set-AzureRmKeyVaultAccessPolicy `
+Set-AzKeyVaultAccessPolicy `
   -VaultName KEY_VAULT_NAME `
   -ServicePrincipalName abfa0a7c-a6b6-4736-8310-5855508787cd `
   -PermissionsToSecrets get `

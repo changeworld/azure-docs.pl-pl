@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f4a9b4aba54f3968584187e108e87177c44bbc8e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fd05913a982d88a1e4fe4ff72bca0387e280e230
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815800"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211635"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Synchronizacja tożsamości i odporność względem zduplikowanych atrybutów
 Odporność na zduplikowane atrybuty to funkcja usługi Azure Active Directory, która zostanie całkowicie wyeliminować zajmowania się przyczyną **UserPrincipalName** i **ProxyAddress** powoduje konflikt podczas uruchamiania jednego z firmy Microsoft narzędzia do synchronizacji.

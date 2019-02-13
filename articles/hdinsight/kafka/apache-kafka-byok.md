@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8525b1450ae8b7badfe1c569c2040ecf1ab78070
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a3b719f4b2a19f4ea399d6a0858719a1709adc93
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52314375"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109498"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Użyj własnego klucza dla platformy Apache Kafka w usłudze Azure HDInsight (wersja zapoznawcza)
 
@@ -39,7 +39,7 @@ Bezpiecznie wymiany kluczy w magazynie kluczy, można użyć witryny Azure porta
 
    HDInsight obsługuje tylko usługi Azure Key Vault. Jeśli masz magazynu kluczy, kluczy można zaimportować do usługi Azure Key Vault. Należy pamiętać, że klucze muszą mieć "Usuwanie nietrwałe" i "Przeczyszczanie" włączone. Funkcje "Usuwanie nietrwałe" i "Przeczyszczanie" są dostępne za pośrednictwem interfejsu REST, .NET / C#, programu PowerShell i wiersza polecenia platformy Azure interfejsów.
 
-   Aby utworzyć nowy magazyn kluczy, wykonaj [usługi Azure Key Vault](../../key-vault/key-vault-get-started.md) Szybki Start. Aby uzyskać więcej informacji na temat importowania istniejących kluczy, odwiedź stronę [o kluczy, wpisów tajnych i certyfikatów](../../key-vault/about-keys-secrets-and-certificates.md).
+   Aby utworzyć nowy magazyn kluczy, wykonaj [usługi Azure Key Vault](../../key-vault/key-vault-overview.md) Szybki Start. Aby uzyskać więcej informacji na temat importowania istniejących kluczy, odwiedź stronę [o kluczy, wpisów tajnych i certyfikatów](../../key-vault/about-keys-secrets-and-certificates.md).
 
    Aby utworzyć nowy klucz, wybierz **Generuj/Import** z **klucze** menu w obszarze **ustawienia**.
 
@@ -120,4 +120,4 @@ Bezpiecznie wymiany kluczy w magazynie kluczy, można użyć witryny Azure porta
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby uzyskać więcej informacji na temat usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault](../../key-vault/key-vault-whatis.md)?
-* Aby rozpocząć pracę z usługą Azure Key Vault, zobacz [wprowadzenie do usługi Azure Key Vault](../../key-vault/key-vault-get-started.md).
+* Aby rozpocząć pracę z usługą Azure Key Vault, zobacz [wprowadzenie do usługi Azure Key Vault](../../key-vault/key-vault-overview.md).

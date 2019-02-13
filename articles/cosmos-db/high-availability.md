@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 0903756ba7df34e7dba20301d45cbd4b6cc4d5ea
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992521"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109762"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
@@ -58,7 +58,7 @@ Regionalnej awarii nie są niczym niezwykłym, a usługi Azure Cosmos DB zapewni
 
 ## <a name="building-highly-available-applications"></a>Tworzenie aplikacji o wysokiej dostępności
 
-- Aby upewnić się wysoką zapisu, a także dostępność do odczytu, skonfiguruj konto usługi Cosmos, na co najmniej dwóch regionach za pomocą zapisu wielu regionów. Ta konfiguracja zapewnia dostępność, najmniejszego opóźnienia i skalowalności, zarówno dla odczytuje i zapisuje je to jest poparte umowy SLA. Aby dowiedzieć się więcej, zobacz temat jak [Skonfiguruj konto usługi Cosmos z wieloma regionami zapisu](tutorial-global-distribution-sql-api.md).
+- Aby upewnić się wysoką zapisu, a także dostępność do odczytu, skonfiguruj konto usługi Cosmos, na co najmniej dwóch regionach za pomocą zapisu wielu regionów. Ta konfiguracja zapewnia dostępność, najmniejszego opóźnienia i skalowalności, zarówno dla odczytuje i zapisuje je to jest poparte umowy SLA. Aby dowiedzieć się więcej, zobacz temat jak [Skonfiguruj konto usługi Cosmos z wieloma regionami zapisu](tutorial-global-distribution-sql-api.md). Aby skonfigurować Multi-Master w swoich aplikacjach, zobacz [sposobu konfigurowania Multi-Master](how-to-multi-master.md).
 
 - Dla konta usługi Cosmos wielu regionów, które są skonfigurowane z regionem zapisu pojedynczego [włączyć automatyczny tryb failover przy użyciu wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#automatic-failover). Po włączeniu automatycznej pracy awaryjnej, zawsze, gdy występuje regionalnej awarii, Cosmos DB zostanie automatycznie trybu failover Twoje konto.  
 
@@ -86,3 +86,4 @@ Następnie informacje na temat skalowania przepływności w następującym artyk
 * [Globalnie skalowanie aprowizowana przepływność](scaling-throughput.md)
 * [Dystrybucja globalna - kulisy](global-dist-under-the-hood.md)
 * [Poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md)
+* [Jak skonfigurować Multi-Master w swoich aplikacjach](how-to-multi-master.md)

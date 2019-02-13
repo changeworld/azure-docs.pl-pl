@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/22/2018
 ms.author: bwren
-ms.openlocfilehash: 9567f8a6b581d7c246ebaa8eb8d72ad201bf2641
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6e84344e1c0229d15891bd15a512880da6e20cfe
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990415"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110774"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>Wyświetlanie i analizowanie danych dzienników w usłudze Azure Monitor
 Log Analytics jest podstawowym umożliwiający pracę z danymi dzienników i tworzenie zapytań w usłudze Azure Monitor. Otwórz program Log Analytics z **dzienniki** w **usługi Azure Monitor** menu. Możesz zapoznaj się z wprowadzeniem do tego portalu i sprawdzić jego funkcje na [Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal](get-started-portal.md).
@@ -63,7 +63,7 @@ Przeglądarka wymaga dostępu do następujących adresów do dostępu do usługi
 
 
 ## <a name="log-search-classic"></a>Wyszukiwanie w dzienniku (wersja klasyczna)
-Przeszukiwanie dzienników to starszego środowiska użytkownika w witrynie Azure portal do odpytywania i analizowania danych dziennika w usłudze Azure Monitor. Będzie zostanie wkrótce wycofany, ale obecnie jest nadal dostępna. Otworzyć wyszukiwanie w dzienniku z **dzienniki (wersja klasyczna)** w menu usługi Log Analytics.
+Przeszukiwanie dzienników to starszego środowiska użytkownika w witrynie Azure portal do odpytywania i analizowania danych dziennika w usłudze Azure Monitor. Zostanie wkrótce wycofany, ale obecnie jest nadal dostępna. Otworzyć wyszukiwanie w dzienniku z **dzienniki (wersja klasyczna)** w menu usługi Log Analytics.
 
 
 

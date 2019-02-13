@@ -12,21 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4481bcf7a794423f98f45e4a21a139dbe4c32b4f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691171"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210785"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Wdrożenie usługi Azure odłączonego planowanie decyzji dla usługi Azure Stack zintegrowane systemy
-Po podjęciu [zostanie sposób Zintegruj usługę Azure Stack w środowisku chmury hybrydowej](azure-stack-connection-models.md), następnie można zakończyć swoje decyzje dotyczące wdrożenia usługi Azure Stack.
+Po podjęciu [zostanie sposób Zintegruj usługę Azure Stack w środowisku chmury hybrydowej](azure-stack-connection-models.md), może zakończyć swoje decyzje dotyczące wdrożenia usługi Azure Stack.
 
-Można wdrożyć i używania usługi Azure Stack bez połączenia z Internetem. Jednak z wdrożeniem odłączonego, są ograniczone do magazynu tożsamości usługi AD FS i model rozliczeń oparty na pojemności. Wielodostępność wymagają użycia usługi Azure AD, dlatego wielodostępności nie jest obsługiwane dla wdrożeń o odłączony. 
+Można wdrożyć i używania usługi Azure Stack bez połączenia z Internetem. Jednak z wdrożeniem odłączonego, są ograniczone do magazynu tożsamości usługi AD FS i model rozliczeń oparty na pojemności. Wielodostępność wymagają użycia usługi Azure Active Directory (Azure AD), dlatego wielodostępności nie jest obsługiwane dla wdrożeń o odłączony. 
 
 Wybierz tę opcję, jeśli użytkownik:
 - Mieć zabezpieczeń lub innych ograniczeń, które wymagają wdrożenia usługi Azure Stack w środowisku, w którym nie jest połączony z Internetem.
@@ -34,9 +34,9 @@ Wybierz tę opcję, jeśli użytkownik:
 - Chcesz używać usługi Azure Stack wyłącznie jako rozwiązanie w chmurze prywatnej, jest wdrażana do firmowego intranetu, a nie chcesz w scenariuszach hybrydowych.
 
 > [!TIP]
-> Czasami środowisku tego typu jest również nazywane "podmorskich scenariusza".
+> Czasami środowisku tego typu jest również nazywany *podmorskich scenariusza*.
 
-Odłączony wdrożenia nie ściśle oznacza, że dla hybrydowe scenariusze maszyn wirtualnych dzierżawy nie może połączyć później swojego wystąpienia usługi Azure Stack na platformie Azure. Oznacza to, że nie masz łączności na platformie Azure podczas wdrażania lub nie chcesz używać usługi Azure Active Directory jako magazyn tożsamości.
+Rozłączona wdrożenia nie uniemożliwiają później nawiązaniem połączenia z wystąpieniem usługi Azure Stack na platformie Azure hybrydowe scenariusze maszyn wirtualnych dzierżawcy. Oznacza to, że nie masz łączności na platformie Azure podczas wdrażania lub nie chcesz używać usługi Azure AD jako magazyn tożsamości.
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>Funkcje, które są naruszone lub jest niedostępna w odłączonej wdrożeń 
 Usługa Azure Stack został zaprojektowany w celu działają najlepiej, jeśli połączone na platformie Azure, dlatego należy pamiętać, że istnieją pewne funkcje i możliwości, które są naruszone lub staną się całkowicie niedostępne w trybie rozłączonym. 

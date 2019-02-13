@@ -4,7 +4,7 @@ description: Dowiedz się więcej o usłudze Azure Storage security najlepsze ro
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: TomShinder
-ms.openlocfilehash: ac01aaca8c147b1f474b59ac57424f5cdc5f8a8d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 3ad97c7adb5901c1da1d174d12d5d6a91831cc74
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451871"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108929"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Najlepsze rozwiązania dotyczące zabezpieczania PaaS w sieci web i mobilnych przy użyciu usługi Azure Storage
 W tym artykule omawiane jest kolekcją usługi Azure Storage najlepsze rozwiązania dotyczące zabezpieczania platformy jako usługi (PaaS) w sieci web i aplikacji mobilnych. Następujące najlepsze rozwiązania są uzyskiwane z naszych doświadczeń z platformą Azure i procesy, przez klientów, takich jak samodzielnie.
@@ -64,7 +64,7 @@ Organizacje, które nie wymusza kontrola dostępu do danych przy użyciu funkcji
 Aby dowiedzieć się więcej o ROLACH, zobacz:
 
 - [Manage access using RBAC and the Azure portal (Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal)](../role-based-access-control/role-assignments-portal.md)
-- [Wbudowane role zasobów platformy Azure](../role-based-access-control/built-in-roles.md)
+- [Wbudowane role dla zasobów platformy Azure](../role-based-access-control/built-in-roles.md)
 - [Azure Storage security guide (Przewodnik po zabezpieczeniach usługi Azure Storage)](../storage/common/storage-security-guide.md) 
 
 ## <a name="use-client-side-encryption-for-high-value-data"></a>Użyj szyfrowania po stronie klienta w przypadku danych o wysokiej wartości

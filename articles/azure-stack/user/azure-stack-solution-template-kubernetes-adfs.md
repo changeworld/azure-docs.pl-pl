@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: a197a366d70958859eed47a9d66606adf80344e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: c2ef0d34897171e04d0982405909183634ebb696
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891276"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115406"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack przy użyciu usługi Active Directory Federation Services
 
@@ -43,13 +43,19 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
 
     Nie można wdrożyć klaster do usługi Azure Stack **administratora** subskrypcji. Należy użyć **użytkownika** subskrypcji. 
 
-1. Jeśli nie masz klastra Kubernetes w portalu marketplace, skontaktuj się z administratorem usługi Azure Stack.
+1. Konieczne będzie usługi Key Vault w ramach subskrypcji usługi Azure Stack.
+
+1. Klaster Kubernetes, należy w portalu marketplace. 
+
+Jeśli brakuje usługi Key Vault i elementu portalu marketplace klastra Kubernetes, skontaktuj się z administratorem usługi Azure Stack.
 
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
 Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jednostki usługi, korzystając z usług AD FS jako rozwiązania tożsamości. Nazwa główna usługi daje aplikacji dostęp do zasobów usługi Azure Stack.
 
-1. Administrator usługi Azure Stack umożliwia certyfikatu i informacje dotyczące nazwy głównej usługi. Te informacje powinny wyglądać:
+1. Administrator usługi Azure Stack umożliwia certyfikatu i informacje dotyczące nazwy głównej usługi.
+
+    - Informacji o jednostce usługi powinien wyglądać podobnie jak:
 
     ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -60,9 +66,11 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
         RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
     ```
 
+    - Twój certyfikat będzie plik z rozszerzeniem `.pfx`. Twój certyfikat w magazynie keyvault zapisze jako klucz tajny.
+
 2. Przypisz nową nazwę główną usługi rolę współautora do subskrypcji. Aby uzyskać instrukcje, zobacz [przypisania roli](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
 
-3. Tworzenie magazynu kluczy do przechowywania certyfikatu do wdrożenia.
+3. Tworzenie magazynu kluczy do przechowywania certyfikatu do wdrożenia. Za pomocą następujących skryptów programu PowerShell, a nie w portalu.
 
     - Potrzebujesz następujących rodzajów informacji:
 
@@ -70,12 +78,12 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
         | ---   | ---         |
         | Punkt końcowy usługi Azure Resource Manager | Menedżer zasobów platformy Azure to platforma zarządzania, która umożliwia administratorom wdrażanie, zarządzanie i monitorowanie zasobów platformy Azure. Usługa Azure Resource Manager może obsługiwać te zadania jako grupę, a nie indywidualnie, w ramach jednej operacji.<br>Punkt końcowy w usłudze Azure Stack Development Kit (ASDK) to: `https://management.local.azurestack.external/`<br>Punktu końcowego w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | Identyfikator subskrypcji | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack. |
-        | Nazwa użytkownika | Nazwa użytkownika. |
+        | Nazwa użytkownika | Użyj po prostu swoją nazwę użytkownika, a nie nazwę domeny i nazwę użytkownika, takie jak `username` zamiast `azurestack\username`. |
         | Nazwa grupy zasobów  | Nazwa nowej grupy zasobów lub wybierz istniejącą grupę zasobów. Nazwa zasobu musi być alfanumeryczne i małe litery. |
         | Nazwa elementu Keyvault | Nazwa magazynu.<br> Wzorzec wyrażenia regularnego: `^[a-zA-Z0-9-]{3,24}$` |
         | Lokalizacja grupy zasobów | Lokalizacja grupy zasobów. Jest to region, w wybranym dla instalacji programu Azure Stack. |
 
-    - Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza. Uruchom poniższy skrypt z parametrami zaktualizowany do wartości:
+    - Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i [nawiązać połączenie z usługi Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Uruchom poniższy skrypt z parametrami zaktualizowany do wartości:
 
     ```PowerShell  
         $armEndpoint="<Azure Resource Manager Endpoint>"
@@ -111,12 +119,12 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
         | ---   | ---         |
         | Ścieżka do certyfikatu | Ścieżka pliku lub nazwa FQDN certyfikatu. |
         | Hasło certyfikatu | Hasło certyfikatu. |
-        | Nazwa wpisu tajnego | Klucz tajny utworzone w poprzednim kroku. |
-        | Nazwa elementu Keyvault | Nazwa magazynu kluczy, utworzone w poprzednim kroku. |
+        | Nazwa wpisu tajnego | Nazwa wpisu tajnego, używany do odwoływania certyfikatów przechowywanych w magazynie. |
+        | Nazwa magazynu kluczy | Nazwa magazynu kluczy, utworzony w poprzednim kroku. |
         | Punkt końcowy usługi Azure Resource Manager | Punkt końcowy w usłudze Azure Stack Development Kit (ASDK) to: `https://management.local.azurestack.external/`<br>Punktu końcowego w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` |
         | Identyfikator subskrypcji | [Identyfikator subskrypcji](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) jest sposób uzyskiwania dostępu do oferty w usłudze Azure Stack. |
 
-    - Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza. Uruchom poniższy skrypt z parametrami zaktualizowany do wartości:
+    - Otwórz program PowerShell z podwyższonym poziomem uprawnień wiersza i [nawiązać połączenie z usługi Azure Stack](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Uruchom poniższy skrypt z parametrami zaktualizowany do wartości:
 
     ```PowerShell  
         
@@ -124,7 +132,7 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
     $tempPFXFilePath = "<certificate path>"
     $password = "<certificate password>"
     $keyVaultSecretName = "<secret name>"
-    $keyVaultName = "<keyvault name>"
+    $keyVaultName = "<key vault name>"
     $armEndpoint="<Azure Resource Manager Endpoint>"
     $subscriptionId="<Your Subscription ID>"
     # Login Azure Stack Environment
@@ -194,11 +202,11 @@ Musisz pracować z administratorem usługi Azure Stack, aby skonfigurować jedno
 
 1. Wprowadź **ClientId nazwy głównej usługi** jest on używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta zidentyfikowane jako identyfikator aplikacji, utworzenia jednostki usługi, administrator usługi Azure Stack.
 
-1. Wprowadź **grupy zasobów usługi Key Vault**. 
+1. Wprowadź **grupy zasobów usługi Key Vault** źródeł, magazynu kluczy, który zawiera certyfikat.
 
-1. Wprowadź **nazwę usługi Key Vault**.
+1. Wprowadź **nazwę usługi Key Vault** nazwę magazynu kluczy, który zawiera certyfikat jako wpis tajny. 
 
-1. Wprowadź **wpisu tajnego usługi Key Vault**.
+1. Wprowadź **wpisu tajnego usługi Key Vault**. Nazwa wpisu tajnego odwołuje się do certyfikatu.
 
 1. Wprowadź **wersja dostawcy chmury Kubernetes Azure**. To jest wersja dostawcy usługi Kubernetes Azure. Usługa Azure Stack zwalnia niestandardowej kompilacji rozwiązania Kubernetes dla każdej wersji usługi Azure Stack.
 

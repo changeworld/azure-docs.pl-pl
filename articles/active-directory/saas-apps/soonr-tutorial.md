@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: jeedes
-ms.openlocfilehash: 334e1efd805e484f686cab9e88ab594cee8a6229
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e81ff0f1d92fcf644287fd0cf417a245581bfeb7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187372"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210938"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-soonr-workplace"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Soonr w miejscu pracy
 
@@ -142,7 +143,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 1. Aby skonfigurować logowanie jednokrotne na **Soonr w miejscu pracy** stronie, musisz wysłać pobrany **XML metadanych**, **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** Aby [zespołem pomocy technicznej w miejscu pracy Soonr](https://awp.autotask.net/help/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
     >[!Note]
-    >Jeśli potrzebujesz pomocy w konfigurowaniu Autotask w miejscu pracy, zobacz [na tej stronie](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) Aby uzyskać pomoc przy użyciu konta firmowego.
+    >Jeśli potrzebujesz pomocy w konfigurowaniu aplikacji Autotask Workplace, zobacz [tę stronę](https://awp.autotask.net/help/Content/0_HOME/Support_for_End_Clients.htm) w celu uzyskania pomocy dla swojego konta aplikacji Workplace.
 
 > [!TIP]
 > Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)

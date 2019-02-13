@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2018
 ms.author: jeedes
-ms.openlocfilehash: c3eb96c15991c3b470164bf504c68fbc266e69a8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c70d58669fe6351c67a54c282ee1310fb52ed50a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193421"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ZSCloud rozwiązania Zscaler
 
@@ -168,7 +169,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     b. Kliknij pozycję **Skonfiguruj język SAML**.
 
-11. Na **Edytuj SAML** okna, wykonaj następujące kroki: i kliknij przycisk Zapisz.  
+11. W oknie **Edytowanie języka SAML** wykonaj następujące kroki i kliknij pozycję Zapisz.  
             
     ![Zarządzanie użytkownikami i uwierzytelnianiem](./media/zscaler-zscloud-tutorial/ic800208.png "Zarządzanie użytkownikami i uwierzytelnianiem")
     
@@ -197,35 +198,35 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     b. Kliknij pozycję **Aktywuj**.
 
 ## <a name="configuring-proxy-settings"></a>Konfigurowanie ustawień serwera proxy
-### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Aby skonfigurować ustawienia serwera proxy w programie Internet Explorer
+### <a name="to-configure-the-proxy-settings-in-internet-explorer"></a>Konfigurowanie ustawień serwera proxy w programie Internet Explorer
 
-1. Rozpocznij **programu Internet Explorer**.
+1. Uruchom program **Internet Explorer**.
 
-1. Wybierz **Opcje internetowe** z **narzędzia** menu Otwórz **Opcje internetowe** okna dialogowego.   
+1. Wybierz pozycję **Opcje internetowe** z menu **Narzędzia**, aby otworzyć okno dialogowe **Opcje internetowe**.   
     
      ![Opcje internetowe](./media/zscaler-zscloud-tutorial/ic769492.png "Opcje internetowe")
 
-1. Kliknij przycisk **połączeń** kartę.   
+1. Kliknij kartę **Połączenia**.   
   
-     ![Połączenia](./media/zscaler-zscloud-tutorial/ic769493.png "połączeń")
+     ![Połączenia](./media/zscaler-zscloud-tutorial/ic769493.png "Połączenia")
 
-1. Kliknij przycisk **ustawienia sieci LAN** otworzyć **ustawienia sieci LAN** okna dialogowego.
+1. Kliknij przycisk **Ustawienia sieci LAN**, aby otworzyć okno dialogowe **Ustawienia sieci lokalnej (LAN)**.
 
-1. W sekcji serwer Proxy wykonaj następujące czynności:   
+1. W sekcji Serwer proxy wykonaj następujące kroki:   
    
-    ![Serwer proxy](./media/zscaler-zscloud-tutorial/ic769494.png "serwera Proxy")
+    ![Serwer proxy](./media/zscaler-zscloud-tutorial/ic769494.png "Serwer proxy")
 
-    a. Wybierz **Użyj serwera proxy dla sieci LAN**.
+    a. Zaznacz pole wyboru **Użyj serwera proxy dla sieci LAN**.
 
     b. W polu tekstowym adresu wpisz **bramy. Rozwiązania Zscaler ZSCloud.net**.
 
-    c. W polu tekstowym portu, wpisz **80**.
+    c. W polu tekstowym Port wpisz **80**.
 
-    d. Wybierz **używaj serwera proxy dla adresów lokalnych**.
+    d. Zaznacz pole wyboru **Nie używaj serwera proxy dla adresów lokalnych**.
 
-    e. Kliknij przycisk **OK** zamknąć **ustawienia sieci lokalnej (LAN)** okna dialogowego.
+    e. Kliknij przycisk **OK**, aby zamknąć okno dialogowe **Ustawienia sieci lokalnej (LAN)**.
 
-1. Kliknij przycisk **OK** zamknąć **Opcje internetowe** okna dialogowego.
+1. Kliknij przycisk **OK**, aby zamknąć okno dialogowe **Opcje internetowe**.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -278,15 +279,15 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![Przypisz użytkownika][203]
 
-5. W **użytkowników i grup** okno dialogowe, wybierz użytkownika, takie jak **Britta Simon** z listy, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
     ![image](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_users.png)
 
-6. Z **wybierz rolę** okno dialogowe Wybieranie odpowiedniej roli użytkownika na liście, a następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+6. W oknie dialogowym **Wybieranie roli** wybierz odpowiednią rolę użytkownika na liście, a następnie kliknij przycisk **Wybierz** znajdujący się u dołu ekranu.
 
     ![image](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_roles.png)
 
-7. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
     ![image](./media/zscaler-zscloud-tutorial/tutorial_zscalerzscloud_assign.png)
 

@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z sieci szkieletowej zabezpieczeń chmury | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory przy użyciu sieci szkieletowej zabezpieczeń chmury | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i sieci szkieletowej zabezpieczeń chmury.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 1fe0db2f0c7fea4b24cc23aaa52deb16376012b2
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a556b38ca4947b71555ba7b023607b392900bdaf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092013"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210394"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Samouczek: Integracja usługi Azure Active Directory z sieci szkieletowej zabezpieczeń chmury
+# <a name="tutorial-azure-active-directory-integration-with-the-cloud-security-fabric"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu sieci szkieletowej zabezpieczeń chmury
 
 W tym samouczku dowiesz się, jak zintegrować sieci szkieletowej zabezpieczeń chmury z usługi Azure Active Directory (Azure AD).
 
@@ -43,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD przy użyciu sieci szkieletowej 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -67,7 +68,7 @@ Aby skonfigurować integrację z sieci szkieletowej zabezpieczeń chmury w usłu
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
 
@@ -87,7 +88,7 @@ Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne z sieci s
 1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
 1. **[Tworzenie użytkownika testowego sieci szkieletowej zabezpieczeń chmury](#create-a-the-cloud-security-fabric-test-user)**  — aby odpowiednikiem Britta Simon w chmurze zabezpieczeń sieci szkieletowej jest połączony z usługi Azure AD reprezentacja użytkownika.
 1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 

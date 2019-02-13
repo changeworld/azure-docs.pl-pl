@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 366637274a8006455f05702f47c02f505a615820
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 56f9226f1bee630895725eb0b3806e294e9a5b51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063237"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218146"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Wybrać właściwą warstwę cenową w usługi Azure Maps
 
@@ -34,15 +34,14 @@ Warstwy cenowe S0 i S1 obsługiwać różne ilości przepływność danych. Prze
 | Renderowanie                                  |        ✓           |     ✓    |
 | Ruch                                 |        ✓           |     ✓    |
 | Strefy czasowe                              |        ✓           |     ✓    |
-| * Obrazach i obrazach hybrydowych (wersja zapoznawcza)  |        ✓           |     ✓    |
-| * Zakres z trasy (wersja zapoznawcza)                  |        ✓           |     ✓    |
-| * Lokalizacja adresu IP 2 (wersja zapoznawcza)                |        ✓           |     ✓    |
-| * Wielokąty z wyszukiwania (wersja zapoznawcza)         |        ✓           |     ✓    |
-| * Geokodowanie usługi batch (wersja zapoznawcza)              |        ✓           |     ✓    |
-| * Batch routingu (wersja zapoznawcza)                |        ✓           |     ✓    |
-| * Macierzy routingu (wersja zapoznawcza)               |        ✓           |     ✓    |
+| Zdjęcia i obrazach hybrydowych    |            |     ✓    |
+| Zakres z trasy                    |                   |     ✓    |
+| Lokalizacja adresu IP 2 (wersja zapoznawcza)                |        ✓           |     ✓    |
+| Wielokąty z wyszukiwania          |                   |     ✓    |
+| Geokodowanie usługi Batch (wersja zapoznawcza)              |                   |     ✓    |
+| Batch routingu (wersja zapoznawcza)                |                   |     ✓    |
+| Tabela routingu (wersja zapoznawcza)               |                   |     ✓    |
 
-\* Dostęp do funkcji z S0 warstwy cenowej staną się przestarzałe po 4 lutego 2019 r.
 
 Warto wspomnieć biorąc pod uwagę te dodatkowych punktów danych:
 * Jakiego rodzaju przedsiębiorstwa mają?

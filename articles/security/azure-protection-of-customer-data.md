@@ -4,7 +4,7 @@ description: W tym artykule opisano, jak platforma Azure chroni dane klientów.
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 0b702cec6113e6b31e34750872479dce162e4cb6
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 49615dcb2f077d2e1d8b93a4bb900b435e4c87bf
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173071"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104501"
 ---
 # <a name="azure-customer-data-protection"></a>Ochrona danych klientów platformy Azure   
 Odmowa dostępu do danych klienta przez Microsoft operations i obsługą techniczną domyślnie. Po nadaniu prawa dostępu do danych klienta kierownicze zatwierdzenie jest wymagane, a następnie dostęp jest dokładnie zarządzane i zarejestrowane. Wymagania dotyczące kontroli dostępu są wyznaczane przez następujące zasady zabezpieczeń platformy Azure:
@@ -35,16 +35,16 @@ Wszystkie próby uzyskania dostępu są monitorowane i mogą być wyświetlane z
 ## <a name="data-protection"></a>Ochrona danych
 Platforma Azure zapewnia klientom zabezpieczeń typu danych domyślnie oraz jak opcje klienta.
 
-**Podział danych**: platforma Azure to usługa dla wielu dzierżawców, co oznacza, że wielu klientów wdrożenia i maszyny wirtualne są przechowywane na tym samym sprzęcie fizycznym. Platforma Azure używa izolacji logicznej, do oddzielania danych jednych klientów od danych innych drugich. Podział zapewnia skalowalność i korzyściach ekonomicznych wynikających z wieloma dzierżawami usługi, jednocześnie rygorystycznie pilnując klientom dostęp do danych kogoś innego.
+**Podział danych**: Platforma Azure to usługa dla wielu dzierżawców, co oznacza, że wielu klientów wdrożenia i maszyny wirtualne są przechowywane na tym samym sprzęcie fizycznym. Platforma Azure używa izolacji logicznej, do oddzielania danych jednych klientów od danych innych drugich. Podział zapewnia skalowalność i korzyściach ekonomicznych wynikających z wieloma dzierżawami usługi, jednocześnie rygorystycznie pilnując klientom dostęp do danych kogoś innego.
 
-**Ochrona danych w spoczynku**: klienci są odpowiedzialni za zadbanie szyfrowanie danych przechowywanych na platformie Azure, zgodnie z ich standardy. Platforma Azure oferuje szeroki zakres funkcji szyfrowania, zapewniając klientom swobodę wyboru rozwiązania, które najlepiej odpowiadają ich potrzebom. Usługa Azure Key Vault pomaga klientom łatwe zachować kontrolę nad kluczami, które są używane przez aplikacje w chmurze i usług do szyfrowania danych. Usługa Azure Disk Encryption pozwala klientom szyfrować maszyny wirtualne. Szyfrowanie usługi Azure Storage sprawia, że możliwość szyfrowania wszystkich danych, które jest umieszczana w koncie magazynu klienta.
+**Ochrona danych w spoczynku**: Klienci są odpowiedzialni za zadbanie szyfrowanie danych przechowywanych na platformie Azure, zgodnie z ich standardy. Platforma Azure oferuje szeroki zakres funkcji szyfrowania, zapewniając klientom swobodę wyboru rozwiązania, które najlepiej odpowiadają ich potrzebom. Usługa Azure Key Vault pomaga klientom łatwe zachować kontrolę nad kluczami, które są używane przez aplikacje w chmurze i usług do szyfrowania danych. Usługa Azure Disk Encryption pozwala klientom szyfrować maszyny wirtualne. Szyfrowanie usługi Azure Storage sprawia, że możliwość szyfrowania wszystkich danych, które jest umieszczana w koncie magazynu klienta.
 
-**Ochrona danych podczas przesyłania**: Klienci mogą włączyć szyfrowanie ruchu między maszynami wirtualnymi i użytkowników końcowych. Platforma Azure chroni dane przesyłane do lub z zewnętrznych składników i w przesyłania danych wewnętrznie przykład między dwiema sieciami wirtualnymi. Platforma Azure używa standardowych zabezpieczeń TLS (Transport Layer) 1.2 lub nowszej protokołu przy użyciu 2048 bitowych kluczy szyfrowania RSA/SHA256, zgodnie z zaleceniami CESG/NCSC do szyfrowania komunikacji między:
+**Ochrona danych podczas przesyłania**: Klientów można włączyć szyfrowanie ruchu między maszynami wirtualnymi i użytkowników końcowych. Platforma Azure chroni dane przesyłane do lub z zewnętrznych składników i w przesyłania danych wewnętrznie przykład między dwiema sieciami wirtualnymi. Platforma Azure używa standardowych zabezpieczeń TLS (Transport Layer) 1.2 lub nowszej protokołu przy użyciu 2048 bitowych kluczy szyfrowania RSA/SHA256, zgodnie z zaleceniami CESG/NCSC do szyfrowania komunikacji między:
 
 - Klient i chmury.
 - Wewnętrznie między systemami Azure i centrami danych.
 
-**Szyfrowanie**: można wdrożyć szyfrowanie danych w magazynie i przesyłanych przez klientów, najlepszym rozwiązaniem dla zapewnienia poufności i integralności danych. Jest to prosta do konfigurowania usług w chmurze platformy Azure do używania protokołu SSL do ochrony łączności z Internetem, a nawet między swoich maszyn wirtualnych hostowanych na platformie Azure przez klientów.
+**Szyfrowanie**: Szyfrowanie danych w magazynie i w drodze można wdrożyć przez klientów, najlepszym rozwiązaniem dla zapewnienia poufności i integralności danych. Jest to prosta do konfigurowania usług w chmurze platformy Azure do używania protokołu SSL do ochrony łączności z Internetem, a nawet między swoich maszyn wirtualnych hostowanych na platformie Azure przez klientów.
 
 **Nadmiarowość danych**: Microsoft pomaga zapewnić, że dane są chronione w przypadku cyberattack lub uszkodzeniem fizycznym centrum danych. Klienci mogą wybrać:
 
@@ -59,7 +59,7 @@ Podczas tworzenia konta magazynu, wybierz jedną z następujących opcji replika
 - **Magazyn strefowo nadmiarowy (ZRS)**: Magazyn strefowo nadmiarowy przechowuje trzy kopie danych. Magazyn ZRS jest replikowany trzy razy w dwóch do trzech lokalizacjach, aby zapewnić większą trwałość niż magazyn LRS. Replikacja odbywa się w jednym regionie lub w dwóch regionach. Magazyn ZRS pomaga upewnić się, że Twoje dane są trwałe w pojedynczym regionie.
 - **Magazyn geograficznie nadmiarowy (GRS)**: Magazyn geograficznie nadmiarowy jest domyślnie włączany dla konta magazynu podczas jego tworzenia. Magazyn GRS przechowuje sześć kopii danych. W przypadku magazynu GRS Twoje dane są replikowane trzy razy w regionie podstawowym. Dane są także replikowane trzy razy w regionie pomocniczym oddalonym setki odległości od regionu podstawowego, co zapewnia najwyższy poziom trwałości. Jeśli wystąpi awaria w regionie podstawowym usługi Azure Storage awaryjnie do regionu pomocniczego. GRS zapewnia, że Twoje dane są trwałe w dwóch oddzielnych regionach.
 
-**Zniszczenie danych**: gdy klienci usuwania danych lub pozostaw platformy Azure, Microsoft stosuje rygorystyczne standardy dla zastępowanie zasobów magazynu przed ich ponownego użycia, jak również fizyczne zniszczenie zlikwidowana sprzętu. Microsoft wykonuje pełną usuwania danych na żądanie klienta, a na zakończenie umowy.
+**Zniszczenie danych**: Gdy klienci usuwania danych lub pozostaw platformy Azure, Microsoft stosuje rygorystyczne standardy dla zastępowanie zasobów magazynu przed ich ponownego użycia, jak również fizyczne zniszczenie zlikwidowana sprzętu. Microsoft wykonuje pełną usuwania danych na żądanie klienta, a na zakończenie umowy.
 
 ## <a name="customer-data-ownership"></a>Prawa własności do danych klienta
 Microsoft nie kontrolują, zatwierdzanie i monitorować aplikacje, które klienci wdrażanie na platformie Azure. Ponadto firmy Microsoft nie zna dokonanego wyboru rodzaju danych klientów do przechowywania na platformie Azure. Microsoft zastrzega sobie prawa własności do danych za pośrednictwem informacje o kliencie, wprowadzony na platformie Azure.

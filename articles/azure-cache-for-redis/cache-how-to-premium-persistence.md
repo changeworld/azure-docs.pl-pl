@@ -3,7 +3,7 @@ title: Konfigurowanie trwałości danych dla usługi Azure Cache w warstwie Prem
 description: Dowiedz się, jak skonfigurować i zarządzać funkcji trwałości danych usługi w warstwie Premium usługi Azure Cache dla wystąpień usługi Redis
 services: azure-cache-for-redis
 documentationcenter: ''
-author: wesmc7777
+author: yegu-ms
 manager: cfowler
 editor: ''
 ms.assetid: b01cf279-60a0-4711-8c5f-af22d9540d38
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: azure-cache-for-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2017
-ms.author: wesmc
-ms.openlocfilehash: 903fd465ce2a88e94b821c9a1b4c6c531083180a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.author: yegu
+ms.openlocfilehash: 8a98d82f00ebf6288ab35681a665d56557bbde4a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819063"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107790"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Konfigurowanie trwałości danych dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera ofert różnych pamięci podręcznych, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. W tym artykule opisano sposób konfigurowania trwałości w warstwie premium usługi Azure Cache dla wystąpienia usługi Redis.

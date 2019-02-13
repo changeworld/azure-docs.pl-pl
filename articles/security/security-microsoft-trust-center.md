@@ -1,10 +1,10 @@
 ---
-title: Informacje o zabezpieczeniach Microsoft Trust Center i na platformie Azure | Dokumentacja firmy Microsoft
-description: Centrum firmy Microsoft Trust udostępnia informacje, które muszą mieć pewność, że platformy Azure, na którym uruchomiono usługi jest bezpieczna.
+title: Informacje o zabezpieczeniach Microsoft Trust Center i platformy Azure | Dokumentacja firmy Microsoft
+description: Microsoft Trust center zawiera informacje, które muszą mieć pewność, że platforma Azure, na którym są uruchomione usługi jest bezpieczne.
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 0b94f9a3-8648-4860-812c-be689b0b327b
 ms.service: security
@@ -14,29 +14,29 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 183496dec7826843046af5f130f9c65f31253b0b
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 794c78e6e31c58563b68a58774db90af98a44d95
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25541574"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111038"
 ---
 # <a name="microsoft-trust-center"></a>Centrum zaufania firmy Microsoft
-Witryny Azure zabezpieczeń informacji w witrynie Azure.com zapewnia informacji do planowania i projektowania, wdrażania, skonfigurować i bezpieczne zarządzanie rozwiązaniach w chmurze. Z Centrum Microsoft Trust również mieć informacje, musisz mieć pewność, że platformy Azure, na którym uruchomiono usługi jest bezpieczna.
+Informacje o zabezpieczeniach platformy Azure w witrynie Azure.com zapewnia informacje potrzebne do planowania, projektowania wdrażanie, konfigurowanie i bezpieczne zarządzanie rozwiązań w chmurze. Za pomocą Centrum firmy Microsoft Trust również mieć informacje, które muszą mieć pewność, że platforma Azure, na którym są uruchomione usługi jest bezpieczne.
 
-Wiemy, że gdy powierzyć aplikacji i danych Azure, możesz zacząć pytań. Gdzie jest ona? Kto ma dostęp do jego? Microsoft czynności go chronić? Jak można sprawdzić, czy działają co mówi?
+Wiemy, czy podczas powierzonych aplikacji i danych na platformie Azure, możesz zacząć pytań. Gdzie jest ona? Kto ma dostęp do jej? Co robi firma Microsoft go chronić? Jak można sprawdzić, czy wykonywane przez firmę Microsoft co mówi?
 
-I mamy odpowiedzi. Danych, dlatego należy zdecydować, kto ma dostęp i pracy z nam zdecydować, gdzie znajduje się. Ochrona danych, używamy technologii zabezpieczeń stanu grafiki i światowej klasy kryptografii. Nasze zgodności niezależnie podlega inspekcji i jesteśmy przezroczysty na wiele poziomów — z jak chronimy wymagania prawne dane klienta zabezpieczeń naszego kodu.
+I mamy odpowiedzi. Ponieważ jest ona dane, możesz zdecydować, kto ma dostęp, a wspólnie z nami zdecyduj, gdzie się znajdują. Aby chronić swoje dane, używamy zabezpieczeń z najnowocześniejszych technologii i światowej klasy kryptografii. Zapewniamy zgodność niezależnie podlega inspekcji, a obecnie trwają przezroczyste na wielu poziomach — od sposobu obsługi prawne żądania przekazania danych klienta zabezpieczeń naszego kodu.
 
-Oto, znajdziesz w Center Trust firmy Microsoft:
+Oto, co można znaleźć w Microsoft Trust Center:
 
-* [Zabezpieczenia](https://aka.ms/tcsecurity) — Dowiedz się jak są zabezpieczone przez usługi Microsoft Cloud.
-* [Ochrona prywatności](https://aka.ms/tcprivacy) — zrozumieć, jak Microsoft zapewnia poufność danych w chmurze firmy Microsoft.
-* [Zgodność](https://aka.ms/tccompliance) — odnajdywania, jak firma Microsoft zapewnia organizacji zapewnienia zgodności z wymaganiami krajowych, regionalnych i branżowe dotyczące zbierania i używania danych poszczególnych osób.
-* [Przezroczystość](https://aka.ms/tctransparency) — wyświetlanie, jak firma Microsoft uzna, że kontroli danych w chmurze i jak Microsoft pomaga wiedzieć, jak to możliwe sposób obsługi tych danych.
-* [Produkty i usługi](https://aka.ms/tcproductsservices) — zobacz Microsoft Cloud produktów i usług w jednym miejscu
-* [Portalu zaufania](https://aka.ms/tcservicetrportal) — uzyskania kopii niezależne inspekcji raporty dotyczące usług chmurowych firmy Microsoft, oceny ryzyka zabezpieczeń najlepsze rozwiązania i materiały związane.
-* [What's New](https://aka.ms/tcwhatsnew) — sprawdzić nowości w przypadku zaufania chmury firmy Microsoft
-* [Zasoby](https://aka.ms/tcresources) — Zbadaj oficjalne dokumenty, klipów wideo i analizy przypadków zaufane firmy Microsoft w chmurze
+* [Zabezpieczenia](https://aka.ms/tcsecurity) — Dowiedz się, jak są zabezpieczone wszystkich usług Microsoft Cloud.
+* [Ochrona prywatności](https://aka.ms/tcprivacy) — zrozumieć, jak firma Microsoft zapewnia prywatność Twoich danych w chmurze firmy Microsoft.
+* [Zgodność](https://aka.ms/tccompliance) — Odkryj, jak firma Microsoft zapewnia organizacjom zachowania zgodności z wymogami krajowe, regionalne i branżowe dotyczące zbierania i używania danych poszczególnych osób.
+* [Przezroczystość](https://aka.ms/tctransparency) — wyświetlanie jak Microsoft uważa, że możesz kontrolować swoje dane w chmurze i jak firma Microsoft zapewnia o tym, jak to możliwe sposób obsługi tych danych.
+* [Produkty i usługi](https://aka.ms/tcproductsservices) — Zobacz wszystkie produkty Microsoft Cloud i usług w jednym miejscu
+* [Portal zaufania usługi](https://aka.ms/tcservicetrportal) — uzyskania kopii raportów inspekcji niezależnie od firmy Microsoft usług w chmurze, ocen ryzyka zabezpieczeń najlepsze rozwiązania i powiązane z materiałami.
+* [What's New](https://aka.ms/tcwhatsnew) — Dowiedz się, what's new in ufają chmurze Microsoft
+* [Zasoby](https://aka.ms/tcresources) — badanie oficjalne dokumenty, materiały wideo i analizy przypadków: miejsca zaufanej chmury firmy Microsoft
 
-[Microsoft Trust Center](https://www.microsoft.com/trustcenter) ma co trzeba wiedzieć przejdziemy do zabezpieczania Microsoft Cloud.
+[Microsoft Trust Center](https://www.microsoft.com/trustcenter) ma, co jest potrzebne zrozumieć, co możemy zrobić, aby zabezpieczyć Microsoft Cloud.

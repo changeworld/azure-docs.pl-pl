@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cb2d3bc128a3508f85ac349242d9a33f2a88424e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 73cba950a159bd1f70fc231f0923e55332af0199
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022754"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108810"
 ---
 # <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Przenoszenie danych źródła z OData przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -31,7 +31,7 @@ ms.locfileid: "54022754"
 
 W tym artykule wyjaśniono, jak użyć działania kopiowania w usłudze Azure Data Factory do przenoszenia danych ze źródła OData. Opiera się na [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, który przedstawia ogólne omówienie przenoszenie danych za pomocą działania kopiowania.
 
-Można skopiować danych ze źródła danych OData, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Data factory obsługuje obecnie tylko przenosi dane ze źródła OData do innych magazynów danych, ale nie do przenoszenia danych z innych magazynów danych ze źródłem danych OData. 
+Można skopiować danych ze źródła danych OData, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych obsługiwanych jako ujścia działania kopiowania, zobacz [obsługiwane magazyny danych](data-factory-data-movement-activities.md#supported-data-stores-and-formats) tabeli. Data factory obsługuje obecnie tylko przenosi dane ze źródła OData do innych magazynów danych, ale nie do przenoszenia danych z innych magazynów danych ze źródłem danych OData.
 
 ## <a name="supported-versions-and-authentication-types"></a>Obsługiwane wersje i typy uwierzytelniania
 Ten łącznik OData obsługi protokołu OData w wersji 3.0 i 4.0, a kopiowanie danych z obu chmury OData i lokalnego źródła danych OData. W przypadku drugiego nagłówka musisz zainstalować bramę zarządzania danymi. Zobacz [przenoszenie danych między lokalizacją lokalną i chmurą](data-factory-move-data-between-onprem-and-cloud.md) artykuł, szczegółowe informacje na temat bramy zarządzania danymi.
@@ -46,15 +46,15 @@ Utworzysz potok z działaniem kopiowania, które przenosi dane ze źródła dany
 
 Najprostszym sposobem utworzenia potoku jest użycie **kreatora kopiowania**. Zobacz [samouczka: Tworzenie potoku przy użyciu Kreatora kopiowania](data-factory-copy-data-wizard-tutorial.md) szybki przewodnik dotyczący tworzenia potoku za pomocą Kreatora kopiowania danych.
 
-Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania. 
+Aby utworzyć potok umożliwia także następujących narzędzi: **Witryna Azure portal**, **programu Visual Studio**, **programu Azure PowerShell**, **szablonu usługi Azure Resource Manager**, **interfejsu API platformy .NET**i  **Interfejs API REST**. Zobacz [samouczka działania kopiowania](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
-Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia: 
+Czy używasz narzędzi lub interfejsów API, należy wykonać poniższe kroki, aby utworzyć potok, który przenosi dane z magazynu danych źródłowych do magazynu danych ujścia:
 
 1. Tworzenie **połączonych usług** połączyć dane wejściowe i wyjściowe przechowywane z fabryką danych.
-2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania. 
-3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe. 
+2. Tworzenie **zestawów danych** do reprezentowania dane wejściowe i wyjściowe operacji kopiowania.
+3. Tworzenie **potoku** za pomocą działania kopiowania, która przyjmuje jako dane wejściowe zestawu danych i zestaw danych jako dane wyjściowe.
 
-Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykład definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych ze źródła danych OData, zobacz [przykład kodu JSON: Kopiowanie danych ze źródła OData do usługi Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) dalszej części tego artykułu. 
+Korzystając z kreatora, definicje JSON dotyczące tych jednostek usługi Data Factory (połączone usługi, zestawy danych i potok) są tworzone automatycznie dla Ciebie. Korzystając z narzędzi/interfejsów API (z wyjątkiem interfejsu API platformy .NET), należy zdefiniować te jednostki usługi Data Factory przy użyciu formatu JSON.  Przykład definicje JSON dotyczące jednostek usługi Data Factory, które są używane do kopiowania danych ze źródła danych OData, zobacz [przykład kodu JSON: Kopiowanie danych ze źródła OData do usługi Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) dalszej części tego artykułu.
 
 Poniższe sekcje zawierają szczegółowe informacje o właściwościach JSON, które są używane do definiowania jednostek usługi fabryka danych określonej do źródła OData:
 
@@ -78,7 +78,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi OData, połączone element
     "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
@@ -93,7 +93,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi OData, połączone element
 ```json
 {
     "name": "ODataLinkedService",
-        "properties":
+    "properties":
     {
         "type": "OData",
         "typeProperties":
@@ -112,7 +112,7 @@ Poniższa tabela zawiera opis specyficzne dla usługi OData, połączone element
     "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "<endpoint of on-premises OData source e.g. Dynamics CRM>",
             "authenticationType": "Windows",
@@ -172,19 +172,19 @@ Podczas przenoszenia danych z OData, następujące mapowania są używane z typ�
 | Typ danych OData | Typ architektury .NET |
 | --- | --- |
 | Edm.Binary |Byte[] |
-| Edm.Boolean |wartość logiczna |
+| Edm.Boolean |Bool |
 | Edm.Byte |Byte[] |
 | Edm.DateTime |DateTime |
-| Edm.Decimal |Dziesiętny |
-| Edm.Double |Podwójne |
-| Edm.Single |Pojedyncze |
-| Edm.Guid |Identyfikator GUID |
+| Edm.Decimal |Decimal |
+| Edm.Double |Double |
+| Edm.Single |Single |
+| Edm.Guid |Guid |
 | Edm.Int16 |Int16 |
 | Edm.Int32 |Int32 |
 | Edm.Int64 |Int64 |
 | Edm.SByte |Int16 |
-| Edm.String |Ciąg |
-| Edm.Time |Przedział czasu |
+| Edm.String |String |
+| Edm.Time |TimeSpan |
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
@@ -206,15 +206,15 @@ Przykład kopiuje dane z zapytania względem źródła OData do obiektu blob pla
 ```json
 {
     "name": "ODataLinkedService",
-        "properties":
+    "properties":
     {
         "type": "OData",
-            "typeProperties":
+        "typeProperties":
         {
             "url": "http://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
-            }
         }
+    }
 }
 ```
 
@@ -222,13 +222,13 @@ Przykład kopiuje dane z zapytania względem źródła OData do obiektu blob pla
 
 ```json
 {
-        "name": "AzureStorageLinkedService",
+    "name": "AzureStorageLinkedService",
     "properties": {
         "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
-        }
+    }
 }
 ```
 
@@ -244,7 +244,7 @@ Ustawienie "external": "true" informuje usługa Data Factory, zestaw danych jest
         "type": "ODataResource",
         "typeProperties":
         {
-                "path": "Products"
+            "path": "Products"
         },
         "linkedServiceName": "ODataLinkedService",
         "structure": [],
@@ -256,7 +256,7 @@ Ustawienie "external": "true" informuje usługa Data Factory, zestaw danych jest
         "policy": {
             "retryInterval": "00:01:00",
             "retryTimeout": "00:10:00",
-            "maximumRetry": 3                
+            "maximumRetry": 3
         }
     }
 }
@@ -324,7 +324,6 @@ Dane są zapisywane do nowego obiektu blob, co godzinę (frequency: godzina, int
 }
 ```
 
-
 **Działanie kopiowania w potoku za pomocą protokołu OData źródła i ujścia obiektu Blob:**
 
 Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzystania z danych wejściowych i wyjściowych zestawów danych i jest zaplanowane do uruchomienia na godzinę. W definicji JSON potok **źródła** ustawiono typ **RelationalSource** i **ujścia** ustawiono typ **BlobSink**. Zapytanie SQL, określony dla **zapytania** właściwość wybiera najnowsze dane (najnowsze) ze źródła OData.
@@ -376,7 +375,6 @@ Potoku zawierającego działanie kopiowania, który jest skonfigurowany do korzy
 ```
 
 Określanie **zapytania** w potoku definicja jest opcjonalna. **Adresu URL** że usługa Data Factory używa do pobierania danych jest: Adres URL określony w połączonej usłudze (wymagane) i ścieżce określonej w zestawie danych (opcjonalnie) i zapytania w potoku (opcjonalnie).
-
 
 ### <a name="type-mapping-for-odata"></a>Mapowanie typu dla protokołu OData
 Jak wspomniano w [działania przenoszenia danych](data-factory-data-movement-activities.md) artykułu, działanie kopiowania wykonuje operację automatyczne konwersje z typów źródła do ujścia typów przy użyciu następujących podejść krok 2:

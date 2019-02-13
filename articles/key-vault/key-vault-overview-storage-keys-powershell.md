@@ -5,14 +5,14 @@ ms.topic: conceptual
 ms.service: key-vault
 author: bryanla
 ms.author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.date: 11/28/2018
-ms.openlocfilehash: d6cb019ff01a1e6df5361c62629aa2e7b52523f7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3566f7514f10bc8fb1de417583c6db17bb4e091e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999287"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104979"
 ---
 # <a name="azure-key-vault-managed-storage-account---powershell"></a>Usługa Azure Key Vault zarządzanego konta magazynu — PowerShell
 
@@ -157,4 +157,4 @@ Tags                :
 
 - [Zarządzane przykłady klucza konta magazynu](https://github.com/Azure-Samples?utf8=%E2%9C%93&q=key+vault+storage&type=&language=)
 - [Informacje o kluczach, wpisach tajnych i certyfikatach](about-keys-secrets-and-certificates.md)
-- [Dokumentacja programu PowerShell dla klucza magazynu](/powershell/module/azurerm.keyvault/)
+- [Dokumentacja programu PowerShell dla klucza magazynu](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
 ms.author: kasing
-ms.openlocfilehash: f5aa04da40c6681385f0debc3999b94a1f507f05
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: bc83a2cde841e7d1e90cb46304c879fcc6cedb72
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978990"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105777"
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager"></a>Konfigurowanie usługi Key Vault dla maszyn wirtualnych w usłudze Azure Resource Manager
 
@@ -35,7 +35,7 @@ W stosie usługi Azure Resource Manager wpisów tajnych/certyfikaty są modelowa
 >
 
 ## <a name="use-powershell-to-set-up-key-vault"></a>Konfigurowanie usługi Key Vault przy użyciu programu PowerShell
-Aby utworzyć magazyn kluczy przy użyciu programu PowerShell, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](../../key-vault/key-vault-get-started.md#vault).
+Aby utworzyć magazyn kluczy przy użyciu programu PowerShell, zobacz [zestawu i pobierania klucza tajnego z usługi Azure Key Vault przy użyciu programu PowerShell](../../key-vault/quick-create-powershell.md).
 
 Dla nowych magazynów kluczy można użyć tego polecenia cmdlet programu PowerShell:
 

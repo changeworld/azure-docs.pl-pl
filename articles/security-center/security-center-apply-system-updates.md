@@ -4,7 +4,7 @@ description: W tym dokumencie przedstawiono sposób implementowania zaleceń Cen
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: e5bd7f55-38fd-4ebb-84ab-32bd60e9fa7a
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: f3c055d55da06e6410520084a1c96baa78b91496
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: afd6ded48bc330032b77be4bc8cd186a6f71ee5f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341716"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105131"
 ---
 # <a name="apply-system-updates-in-azure-security-center"></a>Zastosuj aktualizacje systemu w usłudze Azure Security Center
 Usługa Azure Security Center monitoruje dzienne Windows i Linux maszyn wirtualnych (VM) i komputerów w celu znalezienia brakujących aktualizacji systemu operacyjnego. Usługa Security Center pobiera listę dostępnych zabezpieczeń i aktualizacje krytyczne z witryny Windows Update lub Windows Server Update Services (WSUS) w zależności od którego usługa jest skonfigurowana na komputerze Windows. Centrum zabezpieczeń sprawdza również uzyskać najnowsze aktualizacje w systemach Linux. Jeśli komputera lub maszyny Wirtualnej, na których brakuje aktualizacji systemu, usługa Security Center zaleca zastosowanie aktualizacji systemu.
@@ -31,7 +31,7 @@ W tym przykładzie użyjemy **obliczenia**.
 
 1. Wybierz **obliczenia** menu głównym usługi Security Center.
 
-   ![Wybierz opcję Oblicz][1]
+   ![Select Compute][1]
 
 2. W obszarze **obliczenia**, wybierz opcję **brakujące aktualizacje systemu**. **Zastosuj aktualizacje systemu** zostanie otwarty pulpit nawigacyjny.
 

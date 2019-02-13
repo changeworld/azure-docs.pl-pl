@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156684"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107382"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Jak tworzyć środowisko ASE wewnętrznego modułu równoważenia przy użyciu szablonów usługi Azure Resource Manager
 
 > [!NOTE] 
 > Ten artykuł dotyczy środowiska App Service Environment w wersji 1. Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
 >
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Przegląd
 Środowiska usługi App Service można tworzyć przy użyciu wewnętrznego adresu sieci wirtualnej zamiast publicznych adresów VIP.  Ten adres wewnętrzny jest zapewniana przez składnik platformy Azure o nazwie wewnętrznego modułu równoważenia obciążenia (ILB).  Środowisko ASE z wewnętrznym modułem równoważenia obciążenia mogą być tworzone przy użyciu witryny Azure portal.  Można także tworzyć, używając usługi automation za pomocą szablonów usługi Azure Resource Manager.  W tym artykule opisano kolejne kroki oraz składni konieczna utworzyć środowisko ASE z wewnętrznym modułem równoważenia obciążenia przy użyciu szablonów usługi Azure Resource Manager.
@@ -42,8 +44,8 @@ Przykładowy szablon usługi Azure Resource Manager i jego pliku skojarzone z ni
 
 Większość parametrów w *azuredeploy.parameters.json* pliku są wspólne dla tworzenia zarówno środowiska ASE z wewnętrznym modułem równoważenia obciążenia, a także za pomocą środowisk ASE powiązany z publicznych adresów VIP.  Poniżej wywołania parametrów ważne out lub które są unikatowe, podczas tworzenia środowiska ASE z wewnętrznym modułem równoważenia obciążenia:
 
-* *Tryb internalLoadBalancingMode*:  W większości przypadków zestawie to 3, co oznacza, że ruch HTTP/HTTPS na portach 80/443 i kanału kontroli/danych, które porty wysłuchaliśmy przez usługę FTP w środowisku ASE, będą powiązane wewnętrznego przydzielony adres wewnętrznej sieci wirtualnej.  Jeśli ta właściwość zamiast tego jest równa 2, następnie usługę FTP powiązanych portów (kanały zarówno kontroli, jak i dane), będą powiązane adresu wewnętrznego modułu równoważenia obciążenia, podczas gdy ruch HTTP/HTTPS pozostanie na publicznych adresów VIP.
-* *sufiks DNS*:  Ten parametr określa domyślne domeny katalogu głównego, który zostanie przypisany do środowiska ASE.  W publicznej wersji usługi Azure App Service, domyślnej domeny katalogu głównego dla wszystkich aplikacji sieci web jest *azurewebsites.net*.  Jednak ponieważ środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest wewnętrzny do sieci wirtualnej klienta, nie ma sensu do korzystania z domeny katalogu głównego domyślnego usług publicznych.  Zamiast tego środowisko ASE z wewnętrznym modułem równoważenia obciążenia powinien mieć domyślnej domeny katalogu głównego, pasującą do użycia w wewnętrznej sieci wirtualnej firmy.  Na przykład użyć domyślnej domeny katalogu głównego, z hipotetyczny Contoso Corporation *wewnętrznego contoso.com* dla aplikacji, które mają być tylko do rozpoznania i jest dostępny w sieci wirtualnej firmy Contoso. 
+* *internalLoadBalancingMode*:  W większości przypadków zestawie to 3, co oznacza, że ruch HTTP/HTTPS na portach 80/443 i kanału kontroli/danych, które porty wysłuchaliśmy przez usługę FTP w środowisku ASE, będą powiązane wewnętrznego przydzielony adres wewnętrznej sieci wirtualnej.  Jeśli ta właściwość zamiast tego jest równa 2, następnie usługę FTP powiązanych portów (kanały zarówno kontroli, jak i dane), będą powiązane adresu wewnętrznego modułu równoważenia obciążenia, podczas gdy ruch HTTP/HTTPS pozostanie na publicznych adresów VIP.
+* *dnsSuffix*:  Ten parametr określa domyślne domeny katalogu głównego, który zostanie przypisany do środowiska ASE.  W publicznej wersji usługi Azure App Service, domyślnej domeny katalogu głównego dla wszystkich aplikacji sieci web jest *azurewebsites.net*.  Jednak ponieważ środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest wewnętrzny do sieci wirtualnej klienta, nie ma sensu do korzystania z domeny katalogu głównego domyślnego usług publicznych.  Zamiast tego środowisko ASE z wewnętrznym modułem równoważenia obciążenia powinien mieć domyślnej domeny katalogu głównego, pasującą do użycia w wewnętrznej sieci wirtualnej firmy.  Na przykład użyć domyślnej domeny katalogu głównego, z hipotetyczny Contoso Corporation *wewnętrznego contoso.com* dla aplikacji, które mają być tylko do rozpoznania i jest dostępny w sieci wirtualnej firmy Contoso. 
 * *ipSslAddressCount*:  Ten parametr jest automatycznie ustawiana domyślnie na wartość 0 w *azuredeploy.json* pliku, ponieważ środowiska ASE z wewnętrznym modułem równoważenia obciążenia ma tylko jeden adres wewnętrznego modułu równoważenia obciążenia.  Nie ma żadnych jawnych adresów IP SSL za środowisko ASE wewnętrznego modułu równoważenia obciążenia i dlatego puli adresów IP protokołu SSL dla środowiska ASE z wewnętrznym modułem równoważenia obciążenia musi być równa zero, w przeciwnym razie wystąpi błąd inicjowania obsługi administracyjnej. 
 
 Gdy *azuredeploy.parameters.json* pliku zostało wypełnione za środowisko ASE wewnętrznego modułu równoważenia obciążenia, następnie można utworzyć środowisko ASE wewnętrznego modułu równoważenia obciążenia za pomocą poniższej wstawki kodu programu Powershell.  Zmienianie pliku ścieżki do dopasowania, gdzie są pliki szablonu usługi Azure Resource Manager znajdują się na swojej maszynie.  Pamiętaj również podać własne wartości dla nazwy wdrożenia usługi Azure Resource Manager i nazwy grupy zasobów.
@@ -51,7 +53,7 @@ Gdy *azuredeploy.parameters.json* pliku zostało wypełnione za środowisko ASE 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 Po usługi Azure Resource Manager szablon jest złożone z potrwa kilka godzin ASE wewnętrznego modułu równoważenia obciążenia, który ma zostać utworzony.  Po zakończeniu tworzenia środowiska ASE wewnętrznego modułu równoważenia obciążenia zostaną wyświetlone w portalu środowiska użytkownika na liście środowisk usługi App Service dla subskrypcji, która wyzwoliła wdrożenia.
 
@@ -124,7 +126,7 @@ Gdy *azuredeploy.parameters.json* pliku została wypełniona, domyślny certyfik
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 Po usługi Azure Resource Manager szablon jest złożone z potrwa około 40 minut na ASE frontonu, aby zastosować zmiany.  Na przykład za pomocą środowiska ASE domyślny rozmiar przy użyciu dwóch połączeń frontonach szablon będzie zająć około jednej godziny i dwadzieścia minut.  Uruchomionej szablonu środowiska ASE nie będzie można skalować.  
 

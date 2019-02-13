@@ -15,14 +15,17 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 49b5978fd647a4667503676528120a36495021c6
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 08d6d0c31e1cff799e952c50bae3446e41477aba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731266"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104573"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Hosting o dużej gęstości w usłudze Azure App Service przy użyciu skalowania dla aplikacji
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Domyślnie, skalować aplikacje usługi App Service, skalując [planu usługi App Service](overview-hosting-plans.md) działają one na. Gdy wiele aplikacji są uruchamiane w tym samym planie usługi App Service, każdego wystąpienia skalowanego uruchamia wszystkie aplikacje w planie.
 
 Aby umożliwić *skalowania dla aplikacji* na usługi App Service plan poziom. Zostanie przeprowadzone skalowanie aplikacji niezależnie od planu usługi App Service, który ją obsługuje. W ten sposób można skalować do 10 wystąpień planu usługi App Service, ale można ustawić aplikację do używania tylko pięciu.
@@ -33,20 +36,20 @@ Aby umożliwić *skalowania dla aplikacji* na usługi App Service plan poziom. Z
 
 ## <a name="per-app-scaling-using-powershell"></a>Dla aplikacji, skalowanie przy użyciu programu PowerShell
 
-Tworzenie planu z poszczególnych aplikacji skalowania, przekazując ```-PerSiteScaling $true``` parametr ```New-AzureRmAppServicePlan``` polecenia cmdlet.
+Tworzenie planu z poszczególnych aplikacji skalowania, przekazując ```-PerSiteScaling $true``` parametr ```New-AzAppServicePlan``` polecenia cmdlet.
 
 ```powershell
-New-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
+New-AzAppServicePlan -ResourceGroupName $ResourceGroup -Name $AppServicePlan `
                             -Location $Location `
                             -Tier Premium -WorkerSize Small `
                             -NumberofWorkers 5 -PerSiteScaling $true
 ```
 
-Włącz Skalowanie z istniejący Plan usługi App Service przez przekazanie aplikacji `-PerSiteScaling $true` parametr ```Set-AzureRmAppServicePlan``` polecenia cmdlet.
+Włącz Skalowanie z istniejący Plan usługi App Service przez przekazanie aplikacji `-PerSiteScaling $true` parametr ```Set-AzAppServicePlan``` polecenia cmdlet.
 
 ```powershell
 # Enable per-app scaling for the App Service Plan using the "PerSiteScaling" parameter.
-Set-AzureRmAppServicePlan -ResourceGroupName $ResourceGroup `
+Set-AzAppServicePlan -ResourceGroupName $ResourceGroup `
    -Name $AppServicePlan -PerSiteScaling $true
 ```
 
@@ -56,13 +59,13 @@ W poniższym przykładzie aplikacja jest ograniczona do dwóch wystąpień, niez
 
 ```powershell
 # Get the app we want to configure to use "PerSiteScaling"
-$newapp = Get-AzureRmWebApp -ResourceGroupName $ResourceGroup -Name $webapp
+$newapp = Get-AzWebApp -ResourceGroupName $ResourceGroup -Name $webapp
     
 # Modify the NumberOfWorkers setting to the desired value.
 $newapp.SiteConfig.NumberOfWorkers = 2
     
 # Post updated app back to azure
-Set-AzureRmWebApp $newapp
+Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]

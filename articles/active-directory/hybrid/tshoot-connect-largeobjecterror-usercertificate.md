@@ -16,12 +16,13 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: e0d5e466da8804e89ffecd38dd2db6e37a3cb334
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 776e3f7047e2f6b43063e085a8ae7a8d29835a75
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663642"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217357"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Synchronizacja programu Azure AD Connect: Obsługa błędów LargeObject spowodowanych przez atrybut userCertificate
 
@@ -41,7 +42,7 @@ Aby uzyskać listę obiektów w dzierżawie, z błędami LargeObject, użyj jedn
 ## <a name="mitigation-options"></a>Opcje ograniczania ryzyka
 Do momentu rozwiązania błąd LargeObject inne zmiany atrybutów ten sam obiekt nie można wyeksportować do usługi Azure AD. Aby naprawić błąd, należy wziąć pod uwagę następujące opcje:
 
- * Uaktualnij program Azure AD Connect do tworzenia w 1.1.524.0 lub po. W programie Azure AD Connect kompilacji 1.1.524.0, out-of-box synchronizacji, które zasady zostały zaktualizowanie, aby nie Eksportuj atrybutów userCertificate i userSMIMECertificate, jeśli więcej niż 15 wartości atrybutów. Aby uzyskać szczegółowe informacje o tym, jak uaktualnić program Azure AD Connect, można znaleźć w artykule [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
+ * Uaktualnij program Azure AD Connect do tworzenia w 1.1.524.0 lub po. W programie Azure AD Connect kompilacji 1.1.524.0, out-of-box synchronizacji, które zasady zostały zaktualizowanie, aby nie Eksportuj atrybutów userCertificate i userSMIMECertificate, jeśli więcej niż 15 wartości atrybutów. Aby uzyskać szczegółowe informacje o tym, jak uaktualnić program Azure AD Connect, można znaleźć w artykule [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version).
 
  * Implementowanie **reguły synchronizacji ruchu wychodzącego** w programie Azure AD Connect, które eksportuje **wartość null, wartość zamiast wartości faktycznych dla obiektów z więcej niż 15 wartości certyfikatu**. Ta opcja jest odpowiednia, jeśli nie potrzebujesz dowolna z wartości certyfikatów, które mają zostać wyeksportowane do usługi Azure AD dla obiektów z więcej niż 15 wartości. Aby uzyskać szczegółowe informacje na temat sposobu wykonania tej reguły synchronizacji, można znaleźć w następnej sekcji [Implementowanie reguły synchronizacji, aby ograniczyć eksportu atrybutu userCertificate](#implementing-sync-rule-to-limit-export-of-usercertificate-attribute).
 

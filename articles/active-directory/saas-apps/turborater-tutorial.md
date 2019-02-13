@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: jeedes
-ms.openlocfilehash: 9a72fd5cea21b3b3b82ce560d1ed8d178e49679b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: fa3fb0f2bf698ccdb20e45aba59b84c3553edf98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154751"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210768"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą TurboRater
 

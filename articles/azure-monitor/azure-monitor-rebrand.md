@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/07/2019
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: fb33f6006a1456669facd8baf80161ab115f2689
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 77a806d328a6dbac0e57c9d99e06debbb25e88b8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995089"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108385"
 ---
 # <a name="azure-monitor-naming-and-terminology-changes"></a>Usługa Azure Monitor nazewnictwa i terminologia zmiany
 Istotne zmiany zostały dokonane do usługi Azure Monitor niedawno z różnymi usługami konsolidowana Aby uprościć monitorowanie dla klientów platformy Azure. W tym artykule opisano ostatnie nazwy i terminologii zmian w dokumentacji usługi Azure Monitor.
@@ -26,18 +26,15 @@ Istotne zmiany zostały dokonane do usługi Azure Monitor niedawno z różnymi u
 Po konsolidacji różnych usług w ramach usługi Azure Monitor Przenosimy kolejnego kroku, modyfikując terminologii w naszej dokumentacji, aby lepiej opisać, usługa Azure Monitor i jego różnych składników. 
 
 ### <a name="log-analytics"></a>Log Analytics
-Dzienników platformy Azure Monitor, dane są nadal przechowywane w obszarze roboczym usługi Log Analytics nadal pobierane i analizowane przez tę samą usługę Log Analytics, ale Zmieniamy termin _usługi Log Analytics_ w wielu miejscach do _dzienniki usługi Azure Monitor_ . To lepiej odzwierciedla swojej roli w usłudze Azure Monitor i zapewnia lepsze spójność [metryk w usłudze Azure Monitor](platform/data-collection.md).
+Dzienników platformy Azure Monitor, dane są nadal przechowywane w obszarze roboczym usługi Log Analytics nadal pobierane i analizowane przez tę samą usługę Log Analytics, ale Zmieniamy termin _usługi Log Analytics_ w wielu miejscach do _dzienniki usługi Azure Monitor_ . Pojęcie to lepiej odzwierciedla swojej roli w usłudze Azure Monitor i zapewnia lepsze spójność [metryk w usłudze Azure Monitor](platform/data-collection.md).
 
-Termin _dziennika analizy_ teraz dotyczy ona głównie strony w witrynie Azure portal umożliwia pisanie i uruchamianie zapytań i analizować dane dzienników. Jest odpowiednikiem funkcjonalności [Eksploratora metryk](platform/metrics-charts.md) czyli stronę w witrynie Azure portal umożliwia analizowanie danych metryk.
+Termin _dziennika analizy_ teraz dotyczy ona głównie strony w witrynie Azure portal umożliwia pisanie i uruchamianie zapytań i analizować dane dzienników. Jest odpowiednikiem funkcjonalności [Eksploratora metryk](platform/metrics-charts.md), czyli stronę w witrynie Azure portal umożliwia analizowanie danych metryk.
 
 ### <a name="log-analytics-workspaces"></a>Obszary robocze usługi Log Analytics
 [Obszary robocze](platform/manage-access.md) , przechowywania danych dziennika w usłudze Azure Monitor nadal są określane jako obszarów roboczych usługi Log Analytics. **Usługi Log Analytics** strony w witrynie Azure portal została zmieniona na **obszarów roboczych usługi Log Analytics** i gdzie można [utworzyć nowych obszarów roboczych](learn/quick-create-workspace.md) i skonfigurować źródła danych. Analizowanie dzienników i innych danych monitorowania w **usługi Azure Monitor** i konfigurowanie obszaru roboczego w **obszarów roboczych usługi Log Analytics**.
 
-### <a name="log-query-language"></a>Język zapytań log
-Usługa Azure Monitor używa języka zapytań w Eksploratorze danych dziennika zapytań. Zanim został wydany Eksploratora danych usługi Azure, ten język była określana jako Kusto lub język zapytań usługi Azure Monitor. Firma Microsoft teraz odwoływaniu się do niego z taką samą nazwę jak Eksplorator danych w celu wzmocnienia będą używać tego samego języka. Występują niewielkie różnice za pomocą usługi Azure Monitor wersję języka zgodnie z opisem w [różnice języka zapytań log usługi Azure Monitor](log-query/data-explorer-difference.md).
-
 ### <a name="management-solutions"></a>Rozwiązania do zarządzania
-[Rozwiązania do zarządzania](insights/solutions.md) nazwa została zmieniona na _rozwiązania do monitorowania_ lepiej opisano ich funkcje.
+[Rozwiązania do zarządzania](insights/solutions.md) nazwa została zmieniona na _rozwiązania do monitorowania_, która lepiej opisano ich funkcje.
 
 
 ## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>Sierpnia 2018 - Konsolidacja monitorowania usług w usłudze Azure Monitor

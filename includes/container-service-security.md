@@ -4,12 +4,12 @@ ms.service: container-service
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: danlep
-ms.openlocfilehash: cc72fb39bf62915be10493a780538121f26ca835
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 39bb75a6f834789f91cb590ffebb72f45624eb25
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002275"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213138"
 ---
 # <a name="deprecated-securing-docker-containers-in-azure-container-service"></a>(PRZESTARZAŁE) Zabezpieczanie kontenerów Docker w usłudze Azure Container Service
 
@@ -58,11 +58,11 @@ Każdy koordynator dostępny w usłudze Azure Container Service ma własne wzgl�
 
 Aby uzyskać dodatkowe informacje na temat zabezpieczeń poszczególnych koordynatorów, zobacz następujące zasoby:
 
-* **Kubernetes**: [Security Best Practices for Kubernetes Deployment (Kubernetes: najlepsze rozwiązania dotyczące zabezpieczeń na potrzeby wdrażania rozwiązania Kubernetes)](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
+* **Kubernetes**: [Najlepsze rozwiązania dotyczące wdrażania rozwiązania Kubernetes](https://kubernetes.io/blog/2016/08/security-best-practices-kubernetes-deployment/)
 
-* **DC/OS**: [Securing Your Cluster (DC/OS: zabezpieczanie klastra)](https://dcos.io/docs/1.8/administration/securing-your-cluster/)
+* **DC/OS**: [Zabezpieczanie klastra](http://docs.mesosphere.com/1.12/administering-clusters/securing-your-cluster)
 
-* **Docker Swarm**: [Docker Security (Docker Swarm: zabezpieczenia platformy Docker)](https://www.docker.com/docker-security)
+* **Rozwiązanie docker Swarm**: [Zabezpieczenia platformy docker](https://www.docker.com/docker-security)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

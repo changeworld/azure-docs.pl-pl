@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 70f53ed06daad8adf10ef5a88f0672f86d6a8b48
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5722db5be656641301299956172ee19249be7895
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004132"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106414"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
 Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](../platform/alerts-overview.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
@@ -99,14 +99,28 @@ Rozważmy scenariusz, w którym alert potrzebowała przekroczeniu użycie proces
 - **Zapytanie:** Wydajności | Gdzie ObjectName == "Procesor" i CounterName == "% czasu procesora" | summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 5 min), komputer<br>
 - **Okres:** 30 minut<br>
 - **Częstotliwość alertów:** pięć minut<br>
-- **Wartość agregacji:** Większa niż 90<br>
+- **Alert Logic - próg & warunku:** Większa niż 90<br>
+- **Pole grupy (agregacji on):** Computer (Komputer)
 - **Wyzwalaj alert na podstawie:** Łączna liczba naruszeń większej niż 2<br>
 
-Zapytanie spowodowałoby średnią wartość dla każdego komputera w 5-minutowych odstępach czasu.  To zapytanie zostałoby uruchomione co 5 minut przez dane zebrane przez poprzednie 30 minut.  Poniżej przedstawiono przykładowe dane na trzech komputerach.
+Zapytanie spowodowałoby średnią wartość dla każdego komputera w 5-minutowych odstępach czasu.  To zapytanie zostałoby uruchomione co 5 minut przez dane zebrane przez poprzednie 30 minut. Ponieważ pola grupy (agregacji jednokrotnego) wybrane jest kolumnowych "Computer" — elementy AggregatedValue jest dzielony na różne wartości "Computer", a średnie użycie procesorów dla każdego komputera jest określana dla pojemnika czasu wynoszącą 5 minut.  Przykładowe wyniki zapytania (powiedzieć) trzy komputery będą poniżej.
+
+
+|TimeGenerated [UTC] |Computer (Komputer)  |AggregatedValue  |
+|---------|---------|---------|
+|20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
+|20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
+|20xx-xx-xxT01:00:00Z     |   srv03.contoso.com      |    83     |
+|Przyciski ...     |   Przyciski ...      |    Przyciski ...     |
+|20xx-xx-xxT01:30:00Z     |   srv01.contoso.com      |    88     |
+|20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
+|20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
+
+Jeżeli wynik kwerendy można wykreślić, pojawią się jako.
 
 ![Przykładowe wyniki zapytania](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-W tym przykładzie oddzielne alerty zostałyby utworzone srv02 i srv03, ponieważ ich naruszenia 90% progu trzy razy w okresie czasu.  Jeśli **Wyzwalaj alert na podstawie:** zostały zmienione na **kolejno** , a następnie będzie można utworzyć alertu tylko w przypadku srv03, ponieważ jego naruszenia progu dla trzech kolejnych próbek.
+W tym przykładzie widzimy w pojemnikach 5 minut dla każdej z trzech komputerów — średnie użycie procesorów jako obliczane 5 minut. Próg 90 naruszane przez tylko jeden raz srv01 godzinie 1:25 bin. W odróżnieniu od srv02 przekracza próg 90 na 1:10, 1:15 i 1:25 pojemniki; gdy srv03 przekracza próg 90 na 1:10, 1:15, 1:20 i 1:30. Ponieważ alert jest skonfigurowany do wyzwalacza opartego na łączna liczba naruszeń są więcej niż dwa, widzimy, że srv02 i srv03 tylko spełniają kryteria. Dlatego oddzielne alerty zostałyby utworzone srv02 i srv03, ponieważ ich naruszenia 90% progu dwa razy między wieloma pojemniki czasu.  Jeśli *Wyzwalaj alert na podstawie:* parametru zamiast tego zostały skonfigurowane na potrzeby *ciągłe naruszeń* opcji, a następnie alert będzie uruchamiany **tylko** dla srv03 od momentu jego naruszone próg dla trzech pojemników kolejnych czasu z 1:10 do 1:20. I **nie** dla srv02, ponieważ naruszeniem próg dla dwóch pojemniki kolejnych czasu z 1:10 do 1:15.
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Wyszukiwania reguł alertów dzienników — uruchomieniu którego i stanu
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: dd74cac3000f6a280d5b8faa858c2143d17a7e55
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247803"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211448"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie usługą Azure Blob storage w cyklu życia (wersja zapoznawcza)
 
@@ -37,7 +37,7 @@ Zasady zarządzania cyklem życia jest dostępny z obu ogólnego przeznaczenia w
 Funkcja zarządzania cyklem życia jest bezpłatne w wersji zapoznawczej. Klienci są obciążani koszt normalnej [wyświetlanie listy obiektów blob](https://docs.microsoft.com/rest/api/storageservices/list-blobs) i [Ustawianie warstwy obiektu Blob](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) wywołań interfejsu API. Aby uzyskać więcej informacji o cenach, zobacz [ceny blokowych obiektów Blob](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="register-for-preview"></a>Rejestrowanie na potrzeby wersji zapoznawczej 
-Aby zarejestrować się w publicznej wersji zapoznawczej, musisz przesłać żądanie, aby zarejestrować tę funkcję, aby Twoja subskrypcja. Żądania odbywa się zwykle w ciągu dwóch tygodni. Po zatwierdzeniu funkcji dołączania wszystkie istniejące i nowe konta GPv2 lub Blob konta magazynu w następujących regionach: Zachodnie stany USA 2, zachodnie środkowe stany USA, wschodnie stany USA 2 i Europa Zachodnia. Wersja zapoznawcza obsługuje tylko blokowe obiekty blob. Podobnie jak w przypadku większości wersji Preview, nie należy używać tej funkcji dla obciążeń produkcyjnych aż do napotkania GA.
+Aby zarejestrować się w publicznej wersji zapoznawczej, musisz przesłać żądanie, aby zarejestrować tę funkcję, aby Twoja subskrypcja. Żądania odbywa się zwykle w ciągu 72 godzin. Po zatwierdzeniu funkcji dołączania wszystkie istniejące i nowe konta GPv2 lub Blob konta magazynu w następujących regionach: Zachodnie stany USA 2, zachodnie środkowe stany USA, wschodnie stany USA 2 i Europa Zachodnia. Wersja zapoznawcza obsługuje tylko blokowe obiekty blob. Podobnie jak w przypadku większości wersji Preview, nie należy używać tej funkcji dla obciążeń produkcyjnych aż do napotkania GA.
 
 Aby przesłać żądanie, uruchom następujące polecenia programu PowerShell lub interfejsu wiersza polecenia.
 
@@ -136,7 +136,7 @@ Każda reguła w ramach zasad wymaga trzech parametrów:
 
 | Nazwa parametru | Typ parametru | Uwagi |
 |----------------|----------------|-------|
-| Name           | Ciąg | Nazwa reguły może zawierać dowolną kombinację znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter. Musi być unikatowa w ramach zasad. |
+| Name (Nazwa)           | String | Nazwa reguły może zawierać dowolną kombinację znaków alfanumerycznych. Nazwa reguły jest rozróżniana wielkość liter. Musi być unikatowa w ramach zasad. |
 | type           | Wartość wyliczenia | Nieprawidłowa wartość (wersja zapoznawcza) jest `Lifecycle`. |
 | definicja     | Obiekt, który definiuje reguły cyklu życia | Każda definicja składa się z zestawem filtru i zestawem akcji. |
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: a4b73b191cef132176da185b3ebf206c9e05e483
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8c6895d5e975a4894c439e3a1ddb1238beefc6e0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167975"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56218163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-patentsquare"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą PatentSQUARE
 

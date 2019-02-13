@@ -4,7 +4,7 @@ description: Ten artykuł zawiera zestaw listę kontrolną dla bezpieczeństwa p
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: aa68bb0cb2e404072ef359591ce9309f8c27b631
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 7895093eeb97857764530b52486c99b451dfc303
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49403989"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56105913"
 ---
 # <a name="azure-operational-security-checklist"></a>Lista kontrolna zabezpieczeń działania platformy Azure
 Wdrażanie aplikacji na platformie Azure jest szybkie, łatwe i ekonomiczne. Przed wdrożeniem aplikacji w chmurze w środowisku produkcyjnym warto mieć listę kontrolną do pomocy w aplikacji z listą podstawowych i zalecane kwestii bezpieczeństwa działania umożliwiające należy wziąć pod uwagę oceny.

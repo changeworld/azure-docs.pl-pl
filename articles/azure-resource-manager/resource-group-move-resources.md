@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 59322e303824d3a0db89e9e1252476d52106ba56
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1902d00bc69fd12e7d424a2c2ab3bea562ff4e79
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991348"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108776"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -28,7 +28,7 @@ Grupy źródłowej i docelowej grupy są zablokowane podczas operacji przenoszen
 Przenoszenie zasobu tylko przenosi je do nowej grupy zasobów. Operacji przenoszenia nie można zmienić lokalizacji zasobu. Nowa grupa zasobów może mieć inną lokalizację, ale to nie ulega zmianie lokalizacji zasobu.
 
 > [!NOTE]
-> W tym artykule opisano sposób przenoszenia zasobów na platformie Azure istniejących kont oferty. Jeśli rzeczywiście chcesz zmienić oferty (na przykład uaktualnianie z bezpłatnej, do płatności) konto platformy Azure, musisz przekonwertować subskrypcję.
+> W tym artykule opisano sposób przenoszenia zasobów między istniejącymi subskrypcjami systemu Azure. Jeśli rzeczywiście chcesz uaktualnić swoją subskrypcję platformy Azure (np. przełączanie z bezpłatnej na płatność za rzeczywiste użycie), musisz przekonwertować subskrypcję.
 > * Aby uaktualnić z bezpłatnej wersji próbnej, zobacz [Zmień poziom subskrypcji bezpłatnej wersji próbnej lub programu Microsoft Imagine platformy Azure rozliczana według bieżącego użycia](..//billing/billing-upgrade-azure-subscription.md).
 > * Aby zmienić konto zgodnie z rzeczywistym użyciem, zobacz [zmienić subskrypcję platformy Azure rozliczana według bieżącego użycia do innej oferty](../billing/billing-how-to-switch-azure-offer.md).
 > * Jeśli nie można przekonwertować subskrypcję, [utworzyć żądanie pomocy technicznej platformy Azure](../azure-supportability/how-to-create-azure-support-request.md). Wybierz **zarządzania subskrypcjami** jako typ problemu.
@@ -102,7 +102,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Pulpity nawigacyjne portalu
 * Usługa Power BI — zarówno Power BI Embedded i Power kolekcji obszarów roboczych usługi BI
 * Publiczny adres IP — podstawowa publiczny adres IP jednostki SKU mogą zostać przeniesione. Nie można przenieść standardowego publicznego adresu IP jednostki SKU.
-* Usługi Recovery Services vault — Zarejestruj się w [prywatnej wersji zapoznawczej](#recovery-services-limitations).
+* Usługi Recovery Services vault — Zarejestruj się w [Podgląd](#recovery-services-limitations).
 * Pamięć podręczna systemu Azure dla usługi Redis — skonfigurowanie usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej, a wystąpienia nie można przenieść do innej subskrypcji. Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations).
 * Scheduler
 * Wyszukiwanie — nie można przenieść kilka wyszukiwania zasobów w różnych regionach w ramach jednej operacji. Zamiast tego należy przenieść je w oddzielne operacje.

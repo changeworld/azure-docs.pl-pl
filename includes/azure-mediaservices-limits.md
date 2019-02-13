@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 1e1316ef568cbc6409a8653022d9acff9837b59d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9cd5a63b5b1d7000605f90752be755356d40bb4a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279825"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56213149"
 ---
 >[!NOTE]
 >W przypadku zasobów, których ilość nie jest stała, możesz poprosić o zwiększenie limitów przydziału, otwierając bilet pomocy technicznej. **Nie** twórz dodatkowych kont usługi Azure Media Services w celu uzyskania wyższych limitów.
@@ -27,7 +27,7 @@ ms.locfileid: "52279825"
 | Kanały na żywo dla każdego konta AMS |5|
 | Programy w stanie zatrzymania na kanał |50|
 | Programy w stanie działania na kanał |3|
-| Punkty końcowe przesyłania strumieniowego w stanie działania na konto AMS|2|
+| Punkty końcowe przesyłania strumieniowego (zatrzymana lub uruchomiona) na konto usługi Media Services|2|
 | Jednostki przesyłania strumieniowego na punkt końcowy przesyłania strumieniowego |10 |
 | Konta magazynu | 1000<sup>(5)</sup> (stały) |
 | Zasady | 1 000 000<sup>(6)</sup> |

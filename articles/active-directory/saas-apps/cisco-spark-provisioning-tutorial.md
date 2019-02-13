@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Konfigurowanie platformy Spark firmy Cisco dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Konfigurowanie Spark firmy Cisco dla automatycznej aprowizacji użytkowników z usługą Azure Active Directory | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować usługi Azure Active Directory do automatycznego aprowizowania lub cofania aprowizacji kont użytkowników do platformy Spark firmy Cisco.
 services: active-directory
 documentationcenter: ''
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: v-wingf
-ms.openlocfilehash: aafbde6907e59be3b0ff1d5807ffe4a7d2fffaa4
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 03c45a19c8f6bbce2ffdfff0758eb3e57203b7cf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346108"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211210"
 ---
-# <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie platformy Spark firmy Cisco dla automatycznej aprowizacji użytkowników
+# <a name="tutorial-configure-cisco-spark-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Spark firmy Cisco dla automatycznej aprowizacji użytkowników
 
 
 Celem tego samouczka jest pokazują kroki do wykonania w Cisco Spark i Azure Active Directory (Azure AD), aby skonfigurować usługę Azure AD automatycznego aprowizowania lub cofania aprowizacji użytkowników do platformy Spark firmy Cisco.
@@ -42,14 +43,14 @@ Scenariusz opisany w tym samouczku przyjęto założenie, iż już następujące
 > [!NOTE]
 > Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [Cisco Spark Webservice](https://developer.webex.com/getting-started.html), który jest dostępny dla zespołów Spark firmy Cisco.
 
-## <a name="adding-cisco-spark-from-the-gallery"></a>Dodawanie Cisco Spark za pomocą galerii
+## <a name="adding-cisco-spark-from-the-gallery"></a>Dodawanie aplikacji Cisco Spark z galerii
 Przed rozpoczęciem konfigurowania platformy Spark firmy Cisco dla automatycznej aprowizacji użytkowników z usługą Azure AD, musisz dodać Cisco Spark z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Cisco Spark z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
@@ -57,7 +58,7 @@ Przed rozpoczęciem konfigurowania platformy Spark firmy Cisco dla automatycznej
 
 3. Aby dodać Cisco Spark, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Cisco Spark**.
 
@@ -176,7 +177,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 
 * Cisco Spark jest obecnie w fazie wczesnego testowania pola (EFT) firmy Cisco. Aby uzyskać więcej informacji, skontaktuj się z pomocą [zespołem pomocy technicznej firmy Cisco](https://www.webex.co.in/support/support-overview.html). 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

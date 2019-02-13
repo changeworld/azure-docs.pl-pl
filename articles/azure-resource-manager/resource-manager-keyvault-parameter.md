@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: cd45384bfd548cb73c10306dfee942cbcf7c8ca1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c78601d49dd6bb341570be08c5be491c7afc006f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491913"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112720"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Użyj usługi Azure Key Vault, aby przekazać wartość parametru secure podczas wdrażania
 
-Zamiast umieszczać wartość bezpieczną (na przykład hasło) bezpośrednio w pliku parametrów, można pobrać wartość z [usługi Azure Key Vault](../key-vault/key-vault-whatis.md) podczas wdrażania. Możesz pobrać wartość przez odwołanie się do magazynu kluczy i klucz tajny w pliku parametrów. Wartość nigdy nie jest uwidaczniana, ponieważ możesz odwoływać się tylko do jego identyfikator magazynu kluczy. Magazyn kluczy może znajdować się w innej subskrypcji niż grupa zasobów, które są wdrażane do.
+Zamiast umieszczać wartość bezpieczną (na przykład hasło) bezpośrednio w pliku parametrów, można pobrać wartość z [usługi Azure Key Vault](../key-vault/key-vault-whatis.md) podczas wdrażania. Możesz pobrać wartość przez odwołanie się do magazynu kluczy i klucz tajny w pliku parametrów. Wartość nigdy nie jest uwidoczniana, ponieważ używane jest tylko odwołanie do jej identyfikatora magazynu kluczy. Magazyn kluczy może znajdować się w innej subskrypcji niż grupa zasobów, które są wdrażane do.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -274,5 +274,5 @@ New-AzResourceGroupDeployment `
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać ogólne informacje dotyczące magazynów kluczy, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](../key-vault/key-vault-get-started.md).
+- Aby uzyskać ogólne informacje dotyczące magazynów kluczy, zobacz [co to jest usługa Azure Key Vault?](../key-vault/key-vault-overview.md).
 - Przykłady pełny odwołujące się do wpisy tajne klucza, zobacz [przykłady usługi Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).

@@ -4,17 +4,17 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: mikeray
-ms.openlocfilehash: f9a45da2703518000aa464da067c5cf71a198fd4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3dc799ecc75589279c8d1c73062a8f2157761330
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984974"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213136"
 ---
 ## <a name="start-your-powershell-session"></a>Uruchamianie sesji programu PowerShell
  
 
-Uruchom [ **Connect Az Account** ](https://docs.microsoft.com/powershell/module/az.accounts/connect-azmaccount) polecenia cmdlet zostanie wyświetlony ekran logowania, w którym należy wprowadzić poświadczenia. Użyj tych samych poświadczeń, których używasz do logowania w witrynie Azure Portal.
+Uruchom [ **Connect Az Account** ](https://docs.microsoft.com/powershell/module/Az.Accounts/Connect-AzAccount) polecenia cmdlet zostanie wyświetlony ekran logowania, w którym należy wprowadzić poświadczenia. Użyj tych samych poświadczeń, których używasz do logowania w witrynie Azure Portal.
 
 ```powershell
 Connect-AzAccount

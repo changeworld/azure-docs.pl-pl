@@ -4,7 +4,7 @@ description: Ten dokument zawiera informacje pomocne podczas walidowania alertó
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: f8f17a55-e672-4d86-8ba9-6c3ce2e71a57
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2c0bb2a68eaaa8183463efbdc2848567ab67d1b9
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 009f5fe7243b8ce597c2be9f9c6874cdb56d103c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619748"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108549"
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Walidacja alertów w usłudze Azure Security Center
 Ten dokument zawiera informacje dotyczące sposobu weryfikacji systemu pod kątem prawidłowej konfiguracji alertów usługi Azure Security Center.
@@ -32,7 +32,7 @@ Po zainstalowaniu agenta usługi Security Center wykonaj poniższe kroki na komp
 
 1. Skopiuj plik wykonywalny (na przykład calc.exe) na pulpit komputera lub do wybranego katalogu.
 2. Zmień nazwę tego pliku na **ASC_AlertTest_662jfi039N.exe**.
-3. Otwórz wiersz polecenia i wykonaj ten plik z dowolnym argumentem, na przykład: *ASC_AlertTest_662jfi039N.exe -foo*
+3. Otwórz wiersz polecenia, a następnie wykonaj ten plik przy użyciu argumentu (po prostu fałszywych argument nazwy), takich jak: *ASC_AlertTest_662jfi039N.exe -foo*
 4. Zaczekaj od 5 do 10 minut, a następnie otwórz alerty usługi Security Center. Powinien znajdować się tam alert podobny do następującego:
 
     ![Walidacja alertu](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)

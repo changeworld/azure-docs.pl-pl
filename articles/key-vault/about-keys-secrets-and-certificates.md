@@ -4,7 +4,7 @@ description: Omówienie usługi Azure Key Vault REST interfejs i deweloperów sz
 services: key-vault
 documentationcenter: ''
 author: BryanLa
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 0dcfd1bd75fa54a1bbea93497a0cc872ad6d5184
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 49879d36937a0f0d7ccf1a82cf8b6ca09453894d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078375"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106985"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informacje o kluczach, wpisów tajnych i certyfikatów
 
@@ -27,7 +27,7 @@ Usługa Azure Key Vault umożliwia aplikacji Microsoft Azure i użytkowników do
 - Klucze kryptograficzne: Obsługuje wiele typów kluczy i algorytmów i umożliwia użycie sprzętowych modułów zabezpieczeń (HSM) o wysokiej wartości kluczy. 
 - Wpisy tajne: Pozwala na bezpieczne przechowywanie wpisów tajnych, takich jak hasła i parametry połączenia bazy danych.
 - Certyfikaty: Obsługuje certyfikaty, które są oparte na kluczach i wpisach tajnych i dodać funkcję automatycznego odnawiania.
-- Usługa Azure Storage: Można zarządzać kluczami konta usługi Azure Storage dla Ciebie. Wewnętrznie usługa Key Vault można wyświetlić listę kluczy (synchronizacja) za pomocą konta usługi Azure Storage i ponownie wygenerować (Obróć) okresowo kluczy. 
+- Azure Storage: Można zarządzać kluczami konta usługi Azure Storage dla Ciebie. Wewnętrznie usługa Key Vault można wyświetlić listę kluczy (synchronizacja) za pomocą konta usługi Azure Storage i ponownie wygenerować (Obróć) okresowo kluczy. 
 
 Aby uzyskać więcej ogólnych informacji na temat usługi Key Vault, zobacz [co to jest usługa Azure Key Vault?](/azure/key-vault/key-vault-whatis)
 
@@ -95,10 +95,10 @@ Klucze szyfrowania w usłudze Key Vault jest reprezentowane przez obiekty klucza
 
 Usługa Key Vault obsługuje jedynie klucze RSA i krzywej eliptycznej. 
 
--   **WE**: "Elastyczne" klucz krzywej eliptycznej.
--   **MODUŁU HSM WE**: "Twarde" klucz krzywej eliptycznej.
+-   **EC**: "Elastyczne" klucz krzywej eliptycznej.
+-   **EC-HSM**: "Twarde" klucz krzywej eliptycznej.
 -   **RSA**: "Elastyczne" klucza RSA.
--   **RSA HSM**: "Twarde" klucza RSA.
+-   **RSA-HSM**: "Twarde" klucza RSA.
 
 Usługa Key Vault obsługuje klucze RSA rozmiarów, 2048, 3072 do 4096. Key Vault obsługuje krzywej eliptycznej klucz typy p-256, p-384, p-521 i P-256_K (SECP256K1).
 
@@ -126,9 +126,9 @@ Modułów kryptograficznych, które korzysta z usługi Key Vault, czy oprogramow
 ###  <a name="rsa-algorithms"></a>Algorytmy RSA  
  Następujące identyfikatory algorytm są obsługiwane przy użyciu kluczy RSA i RSA modułu HSM w usłudze Key Vault.  
 
-#### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, SZYFROWANIA/ODSZYFROWYWANIA
+#### <a name="wrapkeyunwrapkey-encryptdecrypt"></a>WRAPKEY/UNWRAPKEY, ENCRYPT/DECRYPT
 
--   **RSA1_5** — szyfrowanie klucza RSAES PKCS1 V1_5 [RFC3447]  
+-   **RSA1_5** - RSAES-PKCS1-V1_5 [RFC3447] key encryption  
 -   **RSA OAEP** — RSAES optymalne asymetrycznego szyfrowania dopełnienie (OAEP) [RFC3447], przy użyciu parametrów domyślnych, określony przez 3447 RFC w sekcji A.2.1. Te domyślne parametry za pomocą funkcji skrótu SHA-1 i funkcja generowania maski MGF1 SHA-1.  
 
 #### <a name="signverify"></a>SPRAWDŹ/LOGOWANIA
@@ -173,7 +173,7 @@ Aby uzyskać więcej informacji na temat JWK obiektów, zobacz [klucza sieci Web
 Oprócz materiał klucza można określić następujące atrybuty. Żądania JSON, słowo kluczowe atrybuty i nawiasów klamrowych "{" "}", są wymagane, nawet gdy pojawią się nie określone atrybuty.  
 
 - *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Określa, czy klucz jest włączone i niemożliwe do operacji kryptograficznych. *Włączone* atrybut jest używany w połączeniu z *nbf* i *exp*. Podczas operacji odbywa się między *nbf* i *exp*, będzie można dopuścić tylko, jeśli *włączone* jest ustawiona na **true**. Operacje poza *nbf* / *exp* okno automatycznie są niedozwolone, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations).
-- *NBF*: Opcjonalny, ustawienie IntDate, jest teraz. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którym klucz nie może być używany dla operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations). Przetwarzanie *nbf* atrybut wymaga, że bieżąca data/godzina musi przypadać po lub nie ma wartości — przed daty/godziny na liście *nbf* atrybutu. Usługa Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, aby uwzględnić zegara pochylanie. Jego wartość musi być liczbą zawierającą wartość IntDate.  
+- *nbf*: Opcjonalny, ustawienie IntDate, jest teraz. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którym klucz nie może być używany dla operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations). Przetwarzanie *nbf* atrybut wymaga, że bieżąca data/godzina musi przypadać po lub nie ma wartości — przed daty/godziny na liście *nbf* atrybutu. Usługa Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, aby uwzględnić zegara pochylanie. Jego wartość musi być liczbą zawierającą wartość IntDate.  
 - *EXP*: IntDate, opcjonalnie, domyślną jest "nieskończoność". *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia r. lub później, którego klucz nie może służyć do operacji kryptograficznych, z wyjątkiem niektórych typów operacji w ramach [szczególnych warunków](#date-time-controlled-operations). Przetwarzanie *exp* atrybut wymaga bieżącej daty/godziny należy przed Data/godzina wygaśnięcia na liście *exp* atrybutu. Usługa Key Vault może przewidzieć kilka małych swobodę zwykle nie więcej niż kilka minut, aby uwzględnić zegara pochylanie. Jego wartość musi być liczbą zawierającą wartość IntDate.  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które są objęte żadnej odpowiedzi, która obejmuje kluczowych atrybutów:  
@@ -209,9 +209,9 @@ Następujące uprawnienia mogą być udzielone na na użytkownika / usługi gł�
   - *Lista*: Utwórz listę kluczy lub wersji tego klucza, przechowywanych w magazynie kluczy
   - *Aktualizacja*: Aktualizuj atrybuty dla klucza
   - *Utwórz*: Tworzenie nowych kluczy
-  - *Importuj*: Importuj klucz do magazynu kluczy
+  - *import*: Importuj klucz do magazynu kluczy
   - *Usuń*: Usuń klucz obiektu
-  - *Odzyskaj*: Odzyskiwanie usuniętego klucza
+  - *recover*: Odzyskiwanie usuniętego klucza
   - *Kopia zapasowa*: Utwórz kopię zapasową klucza w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej klucza do magazynu kluczy
 
@@ -243,7 +243,7 @@ Usługa Key Vault obsługuje również pola contentType wpisów tajnych. Klienci
 Oprócz tajnych danych można określić następujące atrybuty:  
 
 - *EXP*: IntDate, opcjonalnie, wartością domyślną jest **nieskończona**. *Exp* atrybut (czas wygaśnięcia) określa czas wygaśnięcia na lub po którym wpisu tajnego powinna nie można pobrać danych, z wyjątkiem [sytuacji, w szczególności](#date-time-controlled-operations). To pole jest **informacyjny** tylko wtedy, gdy informuje użytkowników magazynu kluczy usługi określonego klucza tajnego nie mogą być używane w celach. Jego wartość musi być liczbą zawierającą wartość IntDate.   
-- *NBF*: IntDate, opcjonalnie, wartością domyślną jest **teraz**. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którą dane tajne powinna nie można pobrać, z wyjątkiem [sytuacji, w szczególności](#date-time-controlled-operations). To pole jest **informacyjny** wyłącznie do celów. Jego wartość musi być liczbą zawierającą wartość IntDate. 
+- *nbf*: IntDate, opcjonalnie, wartością domyślną jest **teraz**. *Nbf* (nie wcześniej niż) atrybut określa czas, przed którą dane tajne powinna nie można pobrać, z wyjątkiem [sytuacji, w szczególności](#date-time-controlled-operations). To pole jest **informacyjny** wyłącznie do celów. Jego wartość musi być liczbą zawierającą wartość IntDate. 
 - *włączone*: wartość logiczna, opcjonalna, wartością domyślną jest **true**. Ten atrybut określa, czy można pobrać tajnego danych. Atrybut włączony jest używany w połączeniu z *nbf* i *exp* podczas operacji odbywa się między *nbf* i *exp*, będzie dozwolone, gdy włączone jest ustawiona na **true**. Operacje poza *nbf* i *exp* automatycznie są niedozwolone, z wyjątkiem w [sytuacji, w szczególności](#date-time-controlled-operations).  
 
 Istnieją dodatkowe atrybuty tylko do odczytu, które są objęte żadnej odpowiedzi, która zawiera atrybuty wpisu tajnego:  
@@ -268,7 +268,7 @@ Następujące uprawnienia mogą być używane, na podstawie na jednostkę w wpis
   - *Lista*: Utwórz listę kluczy tajnych lub wersji klucza tajnego przechowywanych w usłudze Key Vault  
   - *Ustaw*: Utwórz klucz tajny  
   - *Usuń*: Usuń klucz tajny  
-  - *Odzyskaj*: Odzyskiwanie usuniętego wpisu tajnego
+  - *recover*: Odzyskiwanie usuniętego wpisu tajnego
   - *Kopia zapasowa*: Tworzenie kopii zapasowej wpisu tajnego w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej klucza tajnego do magazynu kluczy
 
@@ -329,7 +329,7 @@ Istnieją dodatkowe atrybuty tylko do odczytu, które znajdują się w odpowiedz
 -   *utworzone*: IntDate: wskazuje, kiedy utworzono tę wersję certyfikatu.  
 -   *Zaktualizowano*: IntDate: wskazuje, kiedy ta wersja certyfikatu została zaktualizowana.  
 -   *EXP*: IntDate: zawiera wartość daty wygaśnięcia x509 certyfikatu.  
--   *NBF*: IntDate: zawiera wartość daty x509 certyfikatu.  
+-   *nbf*: IntDate: zawiera wartość daty x509 certyfikatu.  
 
 > [!Note] 
 > Jeśli upłynie certyfikatem usługi Key Vault, jest adresowalnych klucza i wpisu tajnego przestać działać w.  
@@ -368,12 +368,12 @@ Poniższa tabela przedstawia mapowanie x509 użycia klucza zasady obowiązujące
 |**X509 flagi użycia klucza**|**Platforma ops klucza usługi Key Vault**|**Zachowanie domyślne**|
 |----------|--------|--------|
 |DataEncipherment|szyfrowanie, odszyfrowywanie| ND |
-|DecipherOnly|/ odszyfrowywania| ND  |
+|DecipherOnly|decrypt| ND  |
 |Bity DigitalSignature|Zaloguj się, sprawdź| Domyślne usługi Key Vault bez użycia specyfikacji w czasie tworzenia certyfikatów | 
 |EncipherOnly|encrypt| ND |
 |KeyCertSign|Zaloguj się, sprawdź|ND|
 |KeyEncipherment|wrapKey i unwrapKey| Domyślne usługi Key Vault bez użycia specyfikacji w czasie tworzenia certyfikatów | 
-|Niemożność wyparcia|Zaloguj się, sprawdź| ND |
+|NonRepudiation|Zaloguj się, sprawdź| ND |
 |crlsign|Zaloguj się, sprawdź| ND |
 
 ### <a name="certificate-issuer"></a>Wystawca certyfikatu
@@ -425,9 +425,9 @@ Jeśli ustawiono zasady dotyczące certyfikatów automatycznego odnawiania, powi
   - *Lista*: Lista certyfikatów bieżącego lub wersje certyfikatu  
   - *Aktualizacja*: Aktualizacja certyfikatu
   - *Utwórz*: Utwórz certyfikat z usługi Key Vault
-  - *Importuj*: Zaimportuj certyfikat materiały do certyfikatem usługi Key Vault
+  - *import*: Zaimportuj certyfikat materiały do certyfikatem usługi Key Vault
   - *Usuń*: Usuń certyfikat, jego zasad i wszystkich jego wersji  
-  - *Odzyskaj*: Usunięto certyfikat odzyskiwania
+  - *recover*: Usunięto certyfikat odzyskiwania
   - *Kopia zapasowa*: Tworzenie kopii zapasowej certyfikatu w magazynie kluczy
   - *Przywróć*: Przywracanie kopii zapasowej certyfikatu do magazynu kluczy
   - *managecontacts*: Zarządzaj kontaktami certyfikatu usługi Key Vault  
@@ -462,7 +462,7 @@ Następujące uprawnienia mogą służyć podczas autoryzowania użytkownika lub
   - *Lista*: Wyświetlanie listy kont magazynu zarządzanych przez usługę Key Vault
   - *Aktualizacja*: Aktualizacja konta magazynu
   - *Usuń*: Usuwanie konta magazynu  
-  - *Odzyskaj*: Odzyskać usunięte konto magazynu
+  - *recover*: Odzyskać usunięte konto magazynu
   - *Kopia zapasowa*: Tworzenie kopii zapasowej konta magazynu
   - *Przywróć*: Przywróć na koncie magazynu kopii zapasowych do usługi Key Vault
   - *Ustaw*: Utwórz lub zaktualizuj konto magazynu
@@ -481,4 +481,4 @@ Aby uzyskać więcej informacji, zobacz [operacje kontem magazynu w dokumentacji
 
 - [Uwierzytelnianie, żądań i odpowiedzi](authentication-requests-and-responses.md)
 - [Wersje usługi Key Vault](key-vault-versions.md)
-- [Przewodnik dewelopera magazynu kluczy](/azure/key-vault/key-vault-developers-guide)
+- [Przewodnik dewelopera usługi Key Vault](/azure/key-vault/key-vault-developers-guide)

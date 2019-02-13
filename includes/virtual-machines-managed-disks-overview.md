@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/03/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 403f1cee04da17086a55adfbaed28388afd24d29
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 26268c892b0e900c410cd669454b8b6f02ee8886
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211885"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102325"
 ---
 # <a name="azure-managed-disks-overview"></a>Omówienie usługi Azure Managed Disks
 
@@ -71,19 +71,19 @@ Poniżej przedstawiono rozmiary dysków dla dysku zarządzanego w warstwie premi
 
 | **Premium SSD zarządzane <br>typ dysku** | **P4** | **P6** | **P10** | **P15** | **P20** | **P30** | **P40** | **P50** | **P60*** | **P70*** | **P80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
+| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
 Poniżej przedstawiono rozmiary dysków SSD w warstwie standardowa — dotyczących dysk zarządzany, rozmiary, oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej:
 
-| **Standardowy dysk SSD zarządzane <br>typ dysku** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
-|------------------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Rozmiar dysku        | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
+| **Standardowy dysk SSD zarządzane <br>typ dysku** | **E4** | **E6** | **E10** | **E15** | **E20** | **E30** | **E40** | **E50** | **E60*** | **E70*** | **E80*** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Rozmiar dysku        | 32 GiB | 64 GiB | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
 W tym miejscu są dostępne dla standardowych dysków Twardych rozmiary dysków zarządzanych dysków, rozmiaru, oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej:
 
 | **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (TiB) |
+| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16,384 GiB (16 TiB) | 32,767 GiB (TiB) |
 
 **Liczba transakcji**: Opłaty są naliczane dla liczby transakcji, które można wykonać na standardowa dysku zarządzanego.
 
@@ -96,7 +96,7 @@ Nie ma żadnych kosztów transakcji dla dysku zarządzanego w warstwie premium.
 Aby uzyskać szczegółowe informacje na temat cen dla dysków Managed Disks, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
 
 
-## <a name="managed-disk-snapshots"></a>Migawki dysków zarządzanych
+## <a name="managed-disk-snapshots"></a>Managed Disk Snapshots
 
 Migawka zarządzana to tylko do odczytu pełnej kopii dysku zarządzanego, która jest przechowywana jako dysk zarządzany standardowy domyślnie. Przy użyciu migawek kopii zapasowych dysków zarządzanych w dowolnym momencie w czasie. Migawki te istnieć niezależnie od dysku źródłowego i mogą służyć do tworzenia nowych dysków zarządzanych. One są rozliczane na podstawie rozmiaru używane. Na przykład jeśli utworzysz migawkę dysku zarządzanego z zaprowizowaną pojemnością 64 GiB i rzeczywistym użyciem danych rozmiaru 10 GiB migawki zostaną pobrane opłaty tylko za użyte dane o rozmiarze od 10 GiB.  
 

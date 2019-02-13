@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: dc18a523ff7c275b249704fb3928f2ebde6c81a9
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 108b188b0bbb63a4c9faea936360cf2fa3edc806
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074893"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211618"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -247,7 +248,7 @@ Ten błąd może być spowodowane jedną z kilku powodów. Wykonaj następujące
 1. Uruchom ponownie serwer NPS.
 2. Sprawdź, czy ten certyfikat klienta został zainstalowany zgodnie z oczekiwaniami.
 3. Sprawdź, czy certyfikat jest skojarzony z dzierżawą w usłudze Azure AD.
-4. Upewnij się, że https://login.microsoftonline.com/ jest dostępny z serwera z uruchomionym programem rozszerzenia.
+4. Upewnij się, że adres https://login.microsoftonline.com/ jest dostępny z serwera, na którym działa rozszerzenie.
 
 -------------------------------------------------------------
 
@@ -259,7 +260,7 @@ Sprawdź, czy AD Connect jest uruchomiona, a użytkownik musi być obecny w usł
 
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>Dlaczego widzę HTTP skupionej błędy w dziennikach Moje uwierzytelnień kończy się niepowodzeniem?
 
-Upewnij się, że https://adnotifications.windowsazure.com jest dostępny z serwera z uruchomionym programem rozszerzenia serwera NPS.
+Upewnij się, że adres https://adnotifications.windowsazure.com jest osiągalny z serwera, na którym działa rozszerzenie NPS.
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>Zarządzanie protokołami TLS/SSL i zestawami szyfrowania
 

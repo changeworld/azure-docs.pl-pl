@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/18/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: fea31bf1c5869164dde1eb7014b2aacc8fcc5e9c
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: c82717be3791a1bc397bbbdb369c55cd2ba04439
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55757576"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56213148"
 ---
 | Zasób | Środowisko docelowe | Stały limit |
 |----------|--------------|------------|
@@ -25,8 +25,8 @@ ms.locfileid: "55757576"
 | Punkty końcowe serwera na serwer | 30 punkty końcowe serwera | Yes |
 | Rozmiar końcowy | 4 TiB | Nie |
 | Obiekty systemu (plików i katalogów) dla każdej grupy synchronizacji plików | 25 milionów obiektów | Nie |
-| Maksymalna liczba obiektów systemu plików (pliki i katalogi) w katalogu | 200 000 obiektów. | Yes |
+| Maksymalna liczba obiektów systemu plików (pliki i katalogi) w katalogu | 1 000 000 obiektów. | Yes |
 | Maksymalna (pliki i katalogi) zabezpieczeń deskryptora rozmiar obiektu | 4 KiB | Yes |
 | Rozmiar pliku | 100 GiB | Nie |
 | Minimalny rozmiar pliku do się warstwy | 64 KiB | Yes |
-| Synchronizacja jednoczesnych sesji | Agent w wersji 4: Limit różni się w zależności od dostępnych zasobów systemowych. <BR> V3 agent: 2 sesji ActiveSync na procesora lub maksymalnej 8 sesji ActiveSync na serwerze | Yes
+| Synchronizacja jednoczesnych sesji | Agent w wersji 4 lub nowszy: Limit różni się w zależności od dostępnych zasobów systemowych. <BR> V3 agent: 2 sesji ActiveSync na procesora lub maksymalnej 8 sesji ActiveSync na serwerze | Yes
