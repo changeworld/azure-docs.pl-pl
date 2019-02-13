@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: tutorial
 ms.date: 05/08/2018
 ms.author: slivkins
-ms.openlocfilehash: 1589ef94946a6396ee51b8fecfe2ed3e80db08e5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fce90c05fb2e79be23cfd7a58875f8cb6b3ddbf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212235"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819777"
 ---
 # <a name="tutorial-article-personalization-for-contextual-decision-making"></a>Samouczek: Personalizacja artykułów na potrzeby kontekstowego podejmowania decyzji
 
@@ -44,7 +44,7 @@ Każde źródło danych zawiera listę artykułów. W źródle danych RSS każdy
 </channel></rss>
 ```
 
-Kolejność artykułów jest ważna. Określa ona klasyfikację domyślną, która jest najlepszą podpowiedzią dotyczącą kolejności artykułów na liście. Klasyfikacja domyślna jest następnie stosowana na potrzeby porównania wydajności w [pulpicie nawigacyjnym](#performance-dashboard).
+Kolejność artykułów jest ważna. Określa ona klasyfikację domyślną, która jest najlepszą podpowiedzią dotyczącą kolejności artykułów na liście. Klasyfikacja domyślna jest następnie stosowana na potrzeby porównania wydajności w pulpicie nawigacyjnym.
 
 Aby uzyskać więcej informacji o formacie źródła danych, zobacz [dokumentację interfejsu API](custom-decision-service-api-reference.md#action-set-api-customer-provided).
 

@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 070a6ee4bc712b2dbec598cdb9be5c324895c033
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f65463b534988e0a721a1a5f816183f8dd8ebcaf
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154985"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657658"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Samouczek: Dostosowywanie widoku operatora usługi Azure IoT Central
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>Samouczek: Dostosowywanie widoków operatora usługi Azure IoT Central
 
 W tym samouczku przedstawiono, jak konstruktor może dostosować widok operatora aplikacji. Po wprowadzeniu zmian w aplikacji jako konstruktor możesz wyświetlić podgląd widoku operatora w aplikacji usługi Microsoft Azure IoT Central.
 
@@ -30,6 +30,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wyświetlanie podglądu urządzenia jako operator
 > * Konfigurowanie domyślnej strony głównej
 > * Wyświetlanie podglądu domyślnej strony głównej jako operator
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

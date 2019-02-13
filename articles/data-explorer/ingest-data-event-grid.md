@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 8b56203b700d42f3fdec1b066ed05caf92eb53f1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462039"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743689"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Szybki start: Pozyskiwanie obiektów blob platformy Azure do usługi Azure Data Explorer za pomocą subskrybowania powiadomień usługi Event Grid
 
@@ -111,7 +111,7 @@ Teraz połączysz się z usługą Event Grid z usługi Azure Data Explorer, aby 
      **Ustawienie** | **Sugerowana wartość** | **Opis pola**
     |---|---|---|
     | Tabela | *TestTable* | Tabela utworzona przez Ciebie w obszarze **TestDatabase**. |
-    | Format danych | *JSON* | Obsługiwane są formaty JSON i CSV. |
+    | Format danych | *JSON* | Obsługiwane formaty to: Avro, CSV, JSON, MULTILINE JSON, PSV, SOH, SCSV, TSV i TXT. |
     | Mapowanie kolumn | *TestMapping* | Mapowanie utworzone przez Ciebie w obszarze **TestDatabase**, które mapuje przychodzące dane JSON na nazwy kolumn i typy danych tabeli **TestTable**.|
     | | |
 

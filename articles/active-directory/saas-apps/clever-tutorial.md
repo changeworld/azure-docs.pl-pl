@@ -1,277 +1,248 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Clever | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Clever.
+title: 'Samouczek: Integracja usługi Azure Active Directory aplikacją Clever | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Clever.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 069ff13a-310e-4366-a147-d6ec5cca12a5
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/27/2018
+ms.topic: tutorial
+ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: e65f0cb3ef30fb5b001acdb72481c1c3b55ca058
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: 7ed7306b172947131199646f6fb4b1801194ab5e
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197317"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700149"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-clever"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Clever
+# <a name="tutorial-azure-active-directory-integration-with-clever"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Clever
 
-W tym samouczku dowiesz się, jak zintegrować Clever w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Clever z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Clever z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Clever z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Clever.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Clever (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Clever.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Clever (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Clever, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Clever, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Sprytne logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Clever z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Clever z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-clever-from-the-gallery"></a>Dodawanie Clever z galerii
-Aby skonfigurować integrację Clever w usłudze Azure AD, należy dodać Clever z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Clever obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
-**Aby dodać Clever z galerii, wykonaj następujące czynności:**
+## <a name="adding-clever-from-the-gallery"></a>Dodawanie aplikacji Clever z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Clever z usługą Azure AD, należy dodać aplikację Clever z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać aplikację Clever z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Przycisk Nowa aplikacja][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **Clever**, wybierz opcję **Clever** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Sprytne na liście wyników](./media/clever-tutorial/tutorial_clever_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+
+4. W polu wyszukiwania wpisz **Clever**, wybierz pozycję **Clever** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
+
+     ![Aplikacja Clever na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Clever w oparciu o użytkownika testu o nazwie "Britta Simon".
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Clever, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Clever.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Clever do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Clever musi można ustanowić.
-
-W Clever, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Clever, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Clever, należy ukończyć poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-1. **[Tworzenie użytkownika testowego Sprytne](#create-a-clever-test-user)**  — aby odpowiednikiem Britta Simon w Clever połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Clever](#configure-clever-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Clever](#create-clever-test-user)** — aby mieć w aplikacji Clever odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne do aplikacji inteligentne.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Clever, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Clever, wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **Clever** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Clever** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/clever-tutorial/tutorial_clever_samlbase.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-1. Na **Sprytne domena i adresy URL** sekcji, wykonaj następujące czynności:
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![Sprytne domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/clever-tutorial/tutorial_clever_url.png)
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://clever.com/in/<companyname>`
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL: `https://clever.com/oauth/saml/metadata.xml`
+    ![Informacje o domenie i adresach URL aplikacji Clever na potrzeby logowania jednokrotnego](common/sp-identifier.png)
+
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://clever.com/in/<companyname>`
+
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL: `https://clever.com/oauth/saml/metadata.xml`
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Sprytne](https://clever.com/about/contact/) aby zyskać tę wartość.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zaktualizuj wartość za pomocą rzeczywistego adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta aplikacji Clever](https://clever.com/about/contact/), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
-    
-    ![Konfigurowanie logowania jednokrotnego](./media/clever-tutorial/tutorial_metadataurl.png)
+5. Aplikacja Clever oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
-1. Sprytne aplikacja oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowań atrybutów niestandardowych, aby Twoje **atrybuty tokenu języka SAML** konfiguracji.
+    ![image](common/edit-attribute.png)
 
-    Poniższy zrzut ekranu przedstawia przykład tego działania.
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności: 
 
-    ![Konfigurowanie logowania jednokrotnego](./media/clever-tutorial/tutorial_clever_07.png)
-
-1. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
-    
-    | Nazwa atrybutu  | Wartość atrybutu |
-    | --------------- | -------------------- |
+    | Name (Nazwa) | Atrybut źródłowy|
+    | ---------------| --------------- |
     | clever.teacher.credentials.district_username|user.userprincipalname|
     | clever.student.credentials.district_username| user.userprincipalname |
-    | Imię  | user.givenname |
-    | nazwisko  | user.surname |
+    | Firstname  | user.givenname |
+    | Lastname  | user.surname |
 
-    a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/clever-tutorial/tutorial_attribute_04.png)
-    
-    ![Konfigurowanie logowania jednokrotnego](./media/clever-tutorial/tutorial_attribute_05.png)
-    
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
     b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
-    d. Pozostaw **Namespace** puste pole tekstowe.
-    
-    d. Kliknij przycisk **OK**.
-    
-1. Kliknij przycisk **Save** (Zapisz).
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/clever-tutorial/tutorial_general_400.png)
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-1. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do swojej witryny Sprytne firmy.
+    f. Kliknij przycisk **OK**.
 
-1. Na pasku narzędzi kliknij **błyskawiczne logowania**.
+    g. Kliknij pozycję **Zapisz**.
 
-    ![Błyskawiczne logowania](./media/clever-tutorial/ic798984.png "błyskawiczne logowania")
+7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
+
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
+
+### <a name="configure-clever-single-sign-on"></a>Konfigurowanie aplikacji Clever na potrzeby logowania jednokrotnego
+
+1. W innym oknie przeglądarki internetowej zaloguj się do firmowej witryny aplikacji Clever jako administrator.
+
+1. Na pasku narzędzi kliknij pozycję **Instant Login (Błyskawiczne logowanie)**.
+
+    ![Błyskawiczne logowanie](./media/clever-tutorial/ic798984.png "Błyskawiczne logowanie")
 
     > [!NOTE]
-    > Przed przetestowaniem logowanie jednokrotne, należy skontaktować się z [zespołem pomocy technicznej klienta Sprytne](https://clever.com/about/contact/) do włączenia funkcji logowania jednokrotnego Office 365 w zapleczu.
+    > Przed przetestowaniem logowania jednokrotnego należy skontaktować się z [zespołem obsługi klienta aplikacji Clever](https://clever.com/about/contact/) w celu włączenia funkcji logowania jednokrotnego usługi Office 365 w zapleczu.
 
-1. Na **błyskawiczne logowania** strony, wykonaj następujące czynności:
+1. Na stronie **Instant Login (Błyskawiczne logowanie)** wykonaj następujące kroki:
     
-      ![Błyskawiczne logowania](./media/clever-tutorial/ic798985.png "błyskawiczne logowania")
+      ![Błyskawiczne logowanie](./media/clever-tutorial/ic798985.png "Błyskawiczne logowanie")
     
-      a. Typ **adres URL logowania**.
+      a. Wpisz **adres URL logowania**.
     
       >[!NOTE]
-      >**Adres URL logowania** jest wartość niestandardową. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Sprytne](https://clever.com/about/contact/) aby zyskać tę wartość.
+      >**Adres URL logowania** jest wartością niestandardową. Aby uzyskać tę wartość, skontaktuj się z [zespołem obsługi klienta aplikacji Clever](https://clever.com/about/contact/).
     
-      b. Jako **System obsługi tożsamości**, wybierz opcję **usług AD FS**.
+      b. Jako **system obsługi tożsamości** wybierz pozycję **ADFS**.
 
-      c. W **adres URL metadanych** pola tekstowego, Wklej **adres Url metadanych Federacji aplikacji** wartości, które zostały skopiowane z witryny Azure portal.
+      d. W polu tekstowym **Metadata URL (Adres URL metadanych)** wklej wartość **adresu URL metadanych federacyjnych aplikacji**, którą skopiowano z witryny Azure Portal.
     
       d. Kliknij pozycję **Zapisz**.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/clever-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/clever-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/clever-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/clever-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
-### <a name="create-a-clever-test-user"></a>Tworzenie użytkownika testowego inteligentne
-
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Clever, musi być obsługiwana w Clever.
-
-W przypadku Clever, pracować [zespołem pomocy technicznej klienta Sprytne](https://clever.com/about/contact/) Aby dodać użytkowników do Sprytne platformy. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
-
->[!NOTE]
->Można użyć jakichkolwiek innych Sprytne użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez Clever można uaktywniać ich konta usługi Azure AD.
-
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Clever.
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Clever.
 
-![Przypisanie roli użytkownika][200]
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Clever**.
 
-**Aby przypisać Britta Simon Clever, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Clever**.
 
-    ![Przypisz użytkownika][201]
+    ![Link do aplikacji Clever na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **Clever**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Clever łącze na liście aplikacji](./media/clever-tutorial/tutorial_clever_app.png)
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-clever-test-user"></a>Tworzenie użytkownika testowego aplikacji Clever
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Clever, muszą być oni aprowizowani w tej aplikacji.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+W przypadku aplikacji Clever skontaktuj się z [zespołem obsługi klienta aplikacji Clever](https://clever.com/about/contact/), aby dodać użytkowników na platformie Clever. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+>[!NOTE]
+>Do aprowizowania kont użytkowników usługi Azure Active Directory możesz użyć dowolnych innych interfejsów API lub narzędzi do tworzenia kont użytkowników aplikacji Clever oferowanych przez tę aplikację.
 
-Po kliknięciu kafelka Sprytne w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do aplikacji inteligentne.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+Po kliknięciu kafelka Clever w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Clever, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-<!--Image references-->
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-[1]: ./media/clever-tutorial/tutorial_general_01.png
-[2]: ./media/clever-tutorial/tutorial_general_02.png
-[3]: ./media/clever-tutorial/tutorial_general_03.png
-[4]: ./media/clever-tutorial/tutorial_general_04.png
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[100]: ./media/clever-tutorial/tutorial_general_100.png
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[200]: ./media/clever-tutorial/tutorial_general_200.png
-[201]: ./media/clever-tutorial/tutorial_general_201.png
-[202]: ./media/clever-tutorial/tutorial_general_202.png
-[203]: ./media/clever-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

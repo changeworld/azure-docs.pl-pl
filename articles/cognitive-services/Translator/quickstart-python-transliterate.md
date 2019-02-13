@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 0997b12ed7bc86134d0f2cc875a98ee554c667d2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: dd875fe19bdf9d02fc7217b66c8fd442abef2d42
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461240"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700268"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Szybki start: korzystanie z interfejsu API tłumaczenia tekstu w usłudze Translator do transliterowania tekstu z użyciem języka Python
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-Obecnie na potrzeby tłumaczenia tekstu w usłudze Translator jest dostępny jeden punkt końcowy ustawiony jako `base_url`. Element `path` ustawia trasę `transliterate` i określa, że chcemy korzystać z wersji 3 interfejsu API.
+Globalny punkt końcowy interfejsu API tłumaczenia tekstu w usłudze Translator został ustawiony jako `base_url`. Element `path` ustawia trasę `transliterate` i określa, że chcemy korzystać z wersji 3 interfejsu API.
 
 Elementy `params` służą do ustawiania języka wejściowego oraz skryptów wejściowych i wyjściowych. W tym przykładzie transliterujemy tekst napisany w języku japońskim na alfabet łaciński.
 

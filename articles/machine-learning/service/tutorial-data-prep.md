@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
-ms.date: 12/04/2018
+ms.date: 02/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c199a403e65bd084428fd45e8dc67cca214f5f9f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7be1bf8c003315fc4dbed449283f7c92850edced
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251286"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752045"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Samouczek: Przygotowywanie danych do modelowania regresji
 
@@ -33,34 +33,71 @@ W tym samouczku zostaną wykonane następujące czynności:
 > * Przekształcanie danych za pomocą inteligentnych przekształceń w celu utworzenia nowych cech.
 > * Zapisywanie obiektu przepływu danych do użycia w modelu regresji.
 
-Swoje dane możesz przygotować w języku Python, używając zestawu [Azure Machine Learning Data Prep SDK](https://aka.ms/data-prep-sdk).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-## <a name="get-the-notebook"></a>Pobieranie notesu
+Przejdź do sekcji [Konfigurowanie środowiska projektowego](#start), aby zapoznać się z instrukcjami dotyczącymi notesu, lub skorzystaj z poniższych instrukcji, aby pobrać notes i uruchomić go w usłudze Azure Notebooks lub na swoim serwerze notesów. Do uruchomienia notesu potrzebne są następujące elementy:
 
-Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/regression-part1-data-prep.ipynb). Uruchom notes **regression-part1-data-prep.ipynb** w usłudze [Azure Notebooks](https://notebooks.azure.com/) lub na własnym serwerze notesów programu Notebook.
+* Serwer notesów Python 3.6 z zainstalowanym następującym oprogramowaniem:
+    * Zestaw SDK przygotowywania danych usługi Azure Machine Learning dla języka Python
+* Notes samouczka
 
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+Wszystkie te wymagania wstępne można spełnić, korzystając z jednej z poniższych sekcji.
 
-## <a name="import-packages"></a>Importowanie pakietów
+* Korzystanie z usługi [Azure Notebooks](#azure)
+* Korzystanie z [własnego serwera notesów](#server)
 
-Najpierw zaimportuj zestaw SDK.
+### <a name="azure"></a>Korzystanie z usługi Azure Notebooks: bezpłatne notesy Jupyter Notebook w chmurze
 
-```python
-import azureml.dataprep as dprep
-```
+Rozpoczęcie pracy z usługą Azure Notebooks jest bardzo proste. [Zestaw SDK przygotowywania danych usługi Azure Machine Learning dla języka Python](https://aka.ms/data-prep-sdk) został już zainstalowany i skonfigurowany w usłudze [Azure Notebooks](https://notebooks.azure.com/). Instalacja i przyszłe aktualizacje są automatycznie zarządzane za pomocą usług platformy Azure.
 
-Jeśli korzystasz z tego samouczka we własnym środowisku języka Python, zainstaluj wymagane pakiety za pomocą następującego polecenia.
+Po wykonaniu poniższych czynności uruchom notes **tutorials/regression-part1-data-prep.ipynb** w projekcie **Wprowadzenie**.
+
+[!INCLUDE [aml-azure-notebooks](../../../includes/aml-azure-notebooks.md)]
+
+### <a name="server"></a>Korzystanie z własnego serwera notesów Jupyter Notebook
+
+Wykonaj te kroki, aby utworzyć lokalny serwer notesów Jupyter Notebook na komputerze.  Po wykonaniu kroków uruchom notes **tutorials/regression-part1-data-prep.ipynb**.
+
+1. Wykonaj czynności opisane w [przewodniku Szybki start dotyczącym języka Python dla usługi Azure Machine Learning](quickstart-create-workspace-with-python.md) w celu utworzenia środowiska Miniconda.  Jeśli chcesz możesz pominąć sekcję **Tworzenie obszaru roboczego**, ale będzie ona wymagana na potrzeby [drugiej części](tutorial-auto-train-models.md) tej serii samouczków.
+1. Zainstaluj zestaw SDK przygotowania danych w środowisku przy użyciu polecenia `pip install azureml-dataprep`.
+1. Sklonuj [repozytorium GitHub](https://aka.ms/aml-notebooks).
+
+    ```
+    git clone https://github.com/Azure/MachineLearningNotebooks.git
+    ```
+
+1. Uruchom serwer notesów z poziomu sklonowanego katalogu.
+
+    ```shell
+    jupyter notebook
+
+## <a name="start"></a>Set up your development environment
+
+All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+
+* Install the SDK
+* Import Python packages
+
+### Install and import packages
+
+Use the following to install necessary packages if you don't already have them.
 
 ```shell
 pip install azureml-dataprep
+```
+
+Zaimportuj zestaw SDK.
+
+```python
+import azureml.dataprep as dprep
 ```
 
 ## <a name="load-data"></a>Ładowanie danych
 
 Pobierz dwa różne zestawy danych dotyczących nowojorskich taksówek do obiektów przepływu danych. Te zestawy danych mają nieco inne pola. Metoda `auto_read_file()` automatycznie rozpoznaje typ pliku wejściowego.
 
-
 ```python
+from IPython.display import display
 dataset_root = "https://dprepdata.blob.core.windows.net/demo"
 
 green_path = "/".join([dataset_root, "green-small/*"])

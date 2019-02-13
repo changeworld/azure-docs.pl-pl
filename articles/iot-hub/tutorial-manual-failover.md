@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: f0e8bf922f142b795dd1a2ded4b3ec265c43481a
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: bd9cb76557c65832de5d249cdccdc36101edf646
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39250063"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821290"
 ---
-# <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Samouczek: ręczne przechodzenie w tryb failover w centrum IoT Hub (Podgląd publiczny)
+# <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>Samouczek: Ręczne przechodzenie w tryb failover dla centrum IoT (publiczna wersja zapoznawcza)
 
 Ręczne przechodzenie w tryb failover to funkcja usługi IoT Hub, która umożliwia klientom [przełączanie w tryb failover](https://en.wikipedia.org/wiki/Failover) operacji centrum z regionu podstawowego do odpowiedniego sparowanego geograficznie regionu świadczenia usługi Azure. Ręczne przejście w tryb failover można wykonać w przypadku awarii regionalnej lub dłuższej awarii usługi. Można też wykonać planowane przejście w tryb failover, aby przetestować możliwości odzyskiwania po awarii, mimo że zalecamy użycie testowego centrum IoT Hub zamiast centrum w środowisku produkcyjnym. Funkcja ręcznego przechodzenia w tryb failover jest oferowana klientom bez dodatkowych kosztów.
 
@@ -50,7 +50,7 @@ Ten samouczek obejmuje wykonanie następujących zadań:
     **Region**: wybierz region znajdujący się w pobliżu, który należy do wersji zapoznawczej. W tym samouczku użyto regionu `westus2`. Przejście w tryb failover można wykonać tylko między sparowanymi geograficznie regionami świadczenia usługi Azure. Regionem sparowanym geograficznie z regionem westus2 jest region WestCentralUS.
     
    > [!NOTE]
-   > Ręczne przechodzenie w tryb failover jest obecnie dostępne w podglądzie publicznym i *nie* jest dostępne w następujących regionach świadczenia usługi Azure: Wschodnie stany USA, Zachodnie stany USA, Europa Północna, Europa Zachodnia, Brazylia Południowa i Południowo-środkowe stany USA.
+   > Ręczne przechodzenie do trybu failover jest obecnie w publicznej wersji zapoznawczej i *nie jest* dostępne w następujących regionach platformy Azure: Wschodnie stany USA, Zachodnie stany USA, Europa Północna, Europa Zachodnia, Brazylia Południowa i Południowo-środkowe stany USA.
 
    **Nazwa centrum IoT Hub**:podaj nazwę centrum IoT Hub. Nazwa centrum musi być unikatowa w skali globalnej. 
 
@@ -112,7 +112,7 @@ Powrót po awarii przebiega podobnie do ręcznego przejścia w tryb failover. Po
 
    ![Zrzut ekranu przedstawiający żądanie ręcznego powrotu po awarii](./media/tutorial-manual-failover/trigger-failback-01-regions.png)
 
-   Zostaną wyświetlone transparenty opisane w sekcji [przechodzenia w tryb failover](#perform-a-failover). Po ukończeniu powrotu po awarii jako lokalizacja podstawowa jest ponownie wyświetlany region `westus2`, a jako lokalizacja dodatkowa jest wyświetlany region `WestCentralUS` zgodnie z oryginalnym ustawieniem.
+   Zostaną wyświetlone banery opisane w sekcji przechodzenia w tryb failover. Po ukończeniu powrotu po awarii jako lokalizacja podstawowa jest ponownie wyświetlany region `westus2`, a jako lokalizacja dodatkowa jest wyświetlany region `WestCentralUS` zgodnie z oryginalnym ustawieniem.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów 
 

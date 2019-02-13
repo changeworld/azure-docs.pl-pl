@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015276"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564565"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Przewodnik Szybki start: tworzenie potoku wyszukiwania poznawczego przy użyciu umiejętności i przykładowych danych
 
@@ -147,15 +147,19 @@ Kreator może zazwyczaj wnioskować, korzystając z domyślnego indeksu. W tym k
 
 W przypadku tego przewodnika Szybki start kreator wykonuje dobrą pracę, ustawiając rozsądne wartości domyślne: 
 
-+ Nazwa domyślna to *azureblob-index*.
++ Nazwa domyślna to *azureblob-index* w przypadku tego źródła danych. 
+
++ Domyślne pola opierają się na oryginalnym polu danych źródłowych (`content`) oraz polach danych wyjściowych (`people`, `organizations`, i `locations`) utworzonych przez potok poznawczy. Domyślne typy danych są wnioskowane na podstawie próbkowania metadanych i danych.
+
 + Klucz domyślny to *metadata_storage_path* (to pole zawiera unikatowe wartości).
-+ Domyślne typy danych i atrybuty są prawidłowe dla scenariuszy wyszukiwania pełnotekstowego.
 
-Rozważ wyczyszczenie atrybutu **Możliwość pobierania** dla pola `content`. W obiektach blob to pole może zawierać nawet tysiące wierszy. Można sobie wyobrazić, jakie trudności będzie sprawiało wyświetlanie na liście wyników wyszukiwania zawartości dużych plików, takich jak dokumenty programu Word lub PowerPoint, w formacie JSON. 
-
-Ponieważ zdefiniowano zestaw umiejętności, kreator zakłada, że użytkownik chce mieć początkowe pole danych źródłowych oraz dodatkowo pola danych wyjściowych utworzone przez potok wyszukiwania poznawczego. Z tego powodu portal dodaje pola indeksu dla pól `content`, `people`, `organizations` i `locations`. Zwróć uwagę, że dla tych pól kreator automatycznie włącza atrybuty **Możliwość pobierania** i **Możliwość wyszukiwania**. Atrybut **Możliwość wyszukiwania** wskazuje, że pole może być przeszukiwane. Atrybut **Możliwość pobierania** oznacza, że może ono być zwracane w wynikach. 
++ Atrybuty domyślne tych pól to **Możliwość pobierania** i **Możliwość wyszukiwania**. Atrybut **Możliwość wyszukiwania** wskazuje, że pole może być przeszukiwane. Atrybut **Możliwość pobierania** oznacza, że może ono być zwracane w wynikach. W kreatorze przyjęto założenie, że chcesz, aby te pola oferowały możliwości pobierania i wyszukiwania, ponieważ zostały utworzone za pośrednictwem zestawu umiejętności.
 
   ![Pola indeksu](media/cognitive-search-quickstart-blob/index-fields.png)
+
+Zwróć uwagę na przekreślenie i znak zapytania w atrybucie **Możliwość pobierania** obok pola `content`. W przypadku dokumentów obiektów blob z dużą ilością tekstu pole `content` zawiera większą część pliku, która może potencjalnie składać się z tysięcy wierszy. Jeśli musisz przekazać zawartość pliku do kodu klienta, upewnij się, że opcja **Możliwość pobierania** pozostanie wybrana. W przeciwnym razie rozważ wyczyszczenie tego atrybutu w elemencie `content`, jeśli wyodrębnione elementy (`people`, `organizations` i `locations`) są wystarczające dla Twoich celów.
+
+Oznaczenie pola jako **Możliwość pobierania** nie oznacza, że pole *musi* znajdować się w wynikach wyszukiwania. Można precyzyjnie kontrolować wyniki wyszukiwania za pomocą parametru zapytania **$select** w celu wybrania pól do uwzględnienia. W przypadku pól zawierających dużo tekstu, takich jak `content`, parametr **$select** to rozwiązanie, które oferuje użytkownikom aplikacji łatwe w zarządzaniu wyniki wyszukiwania, gwarantując jednocześnie, że kod klienta ma dostęp do wszystkich wymaganych informacji za pośrednictwem atrybutu **Możliwość pobierania**.
   
 Przejdź do następnej strony.
 

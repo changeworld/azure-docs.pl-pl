@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/24/2018
+ms.date: 02/05/2019
 ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
-ms.openlocfilehash: 3e4cd8859f376fa4fbb9069b145d893483c3fc14
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0ffde84a39ef2955f14af66a05195e35109d41bb
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101264"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692141"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Szybki start: Konfigurowanie środowiska deweloperskiego
 
@@ -64,8 +64,11 @@ Jeśli nie masz istniejącej dzierżawy skojarzonej z kontem, pod nazwą konta z
 Jeśli nie masz jeszcze dzierżawy usługi Azure AD lub chcesz utworzyć nową do celów deweloperskich, wykonaj czynności opisane w artykule dotyczącym [środowiska tworzenia katalogu](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory). Aby utworzyć nową dzierżawę, należy podać następujące informacje:
 
 - **Nazwa organizacji**
-- **Domena początkowa** — to część adresu *. onmicrosoft.com. Możesz dodatkowo dostosować domenę w przyszłości. 
+- **Domena początkowa** — to część adresu *. onmicrosoft.com. Możesz dodatkowo dostosować domenę w przyszłości.
 - **Kraj lub region**
+
+> [!NOTE]
+> Podczas określania nazwy dzierżawy używaj znaków alfanumerycznych. Znaki specjalne są niedozwolone. Długość nazwy nie może przekraczać 256 znaków.
 
 ## <a name="social-and-local-accounts"></a>Konta społecznościowe i lokalne
 

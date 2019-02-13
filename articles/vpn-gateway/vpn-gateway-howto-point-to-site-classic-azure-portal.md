@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6aedfa3f0ef65fdb1b663db8637b648e685e31be
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: c133ba5a95e0476c6d992e53776b384fdc8c97ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53321481"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809807"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurowanie połączenia typu punkt-lokacja przy użyciu uwierzytelniania certyfikatu (wersja klasyczna)
 
@@ -249,7 +249,7 @@ Zaufane certyfikaty główne można dodawać do platformy Azure lub z niej usuwa
 
 ### <a name="to-add-a-trusted-root-certificate"></a>Aby dodać zaufany certyfikat główny
 
-Na platformie Azure można dodać maksymalnie 20 plików cer zaufanego certyfikatu głównego. Aby uzyskać instrukcje, zobacz [Przekazywanie pliku cer certyfikatu głównego](#upload-the-root-certificate-.cer-file).
+Na platformie Azure można dodać maksymalnie 20 plików cer zaufanego certyfikatu głównego. Aby uzyskać instrukcje, zobacz Przekazywanie pliku cer certyfikatu głównego.
 
 ### <a name="to-remove-a-trusted-root-certificate"></a>Usuwanie zaufanego certyfikatu głównego
 
@@ -290,7 +290,7 @@ Po zakończeniu aktualizowania nie będzie można już używać certyfikatu do n
 
 ## <a name="next-steps"></a>Następne kroki
 
-- Po zakończeniu procesu nawiązywania połączenia można dodać maszyny wirtualne do sieci wirtualnych. Aby uzyskać więcej informacji, zobacz [Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) (Maszyny wirtualne). 
+- Po zakończeniu procesu nawiązywania połączenia można dodać maszyny wirtualne do sieci wirtualnych. Aby uzyskać więcej informacji, zobacz [Virtual Machines](https://docs.microsoft.com/azure/) (Maszyny wirtualne). 
 
 - Aby dowiedzieć się więcej o sieci i maszynach wirtualnych z systemem Linux, zobacz [Azure and Linux VM network overview](../virtual-machines/linux/network-overview.md) (Omówienie sieci maszyny wirtualnej z systemem Linux i platformy Azure).
 

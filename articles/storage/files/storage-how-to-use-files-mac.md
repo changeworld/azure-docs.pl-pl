@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
 ms.subservice: files
-ms.openlocfilehash: c393942112f42dc0d56388b8beac44b4287bca23
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 86224b90f7a93eae41c127d4ba87f685f895e15a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475713"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820406"
 ---
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>Instalowanie udziału plików platformy Azure za pomocą protokołu SMB w systemie macOS
 [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. Udziały plików platformy Azure można instalować przy użyciu standardowego w branży protokołu SMB 3 w systemie macOS El Capitan w wersji 10.11 lub nowszej. W tym artykule przedstawiono dwa różne sposoby instalowania udziału plików platformy Azure w systemie macOS: za pomocą interfejsu użytkownika programu Finder i Terminalu.
@@ -38,7 +38,7 @@ ms.locfileid: "55475713"
 1. **Otwórz program Finder**: Program Finder jest domyślnie otwarty w systemie macOS, ale możesz się upewnić, że jest on aktualnie wybraną aplikacją, klikając „ikonę twarzy systemu macOS” w Docku:  
     ![Ikona twarzy systemu macOS](./media/storage-how-to-use-files-mac/mount-via-finder-1.png)
 
-2. **W menu „Idź” wybierz pozycję „Połącz z serwerem”**: W ścieżce UNC z [wymagań wstępnych](#preq) przekształć początkowy podwójny ukośnik odwrotny (`\\`) w ciąg `smb://`, a wszystkie pozostałe ukośniki odwrotne (`\`) w ukośniki (`/`). Link powinien wyglądać następująco: ![Okno dialogowe „Łączenie z serwerem”](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
+2. **W menu „Idź” wybierz pozycję „Połącz z serwerem”**: W ścieżce UNC z wymagań wstępnych przekształć początkowy podwójny ukośnik odwrotny (`\\`) w ciąg `smb://`, a wszystkie pozostałe ukośniki odwrotne (`\`) w ukośniki (`/`). Link powinien wyglądać następująco: ![Okno dialogowe „Łączenie z serwerem”](./media/storage-how-to-use-files-mac/mount-via-finder-2.png)
 
 3. **Podaj nazwę konta magazynu i klucza konta magazynu w wyświetlonym monicie o podanie nazwy użytkownika i hasła**: Po kliknięciu przycisku „Połącz” w oknie dialogowym „Łączenie z serwerem” zostanie wyświetlony monit o podanie nazwy użytkownika i hasła (pole zostanie automatycznie wypełnione przy użyciu Twojej nazwy użytkownika systemu macOS). Istnieje możliwość umieszczenia nazwy konta magazynu / klucza konta magazynu w pęku kluczy systemu macOS.
 

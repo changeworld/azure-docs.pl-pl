@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 97dffa4952354864f90f75ffb909228eb4202e77
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382798"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486813"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Porównanie usługi Azure Resource Manager i wdrożenia klasycznego: omówienie modeli wdrażania i stanu zasobów
 
@@ -30,6 +30,8 @@ Ten artykuł zawiera informacje o modelu wdrażania przy użyciu usługi Resourc
 Aby uprościć wdrażanie i zarządzanie zasobami, firma Microsoft zaleca używanie usługi Resource Manager dla wszystkich nowych zasobów. Firma Microsoft zaleca ponowne wdrożenie istniejących zasobów przy użyciu usługi Resource Manager, jeśli to możliwe.
 
 Jeśli dopiero zaczynasz korzystanie z usługi Resource Manager, zapoznaj się najpierw z terminologią określoną w [omówieniu usługi Azure Resource Manager](resource-group-overview.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="history-of-the-deployment-models"></a>Historia modeli wdrażania
 Pierwotnie na platformie Azure dostępny był tylko klasyczny model wdrażania. W tym modelu każdy zasób istniał niezależnie; nie było możliwości grupowania powiązanych zasobów. Zamiast tego trzeba było ręcznie śledzić, z których zasobów składa się dane rozwiązanie lub aplikacja, i pamiętać o zarządzaniu nimi w sposób skoordynowany. Aby wdrożyć rozwiązanie, trzeba było utworzyć każdy zasób oddzielnie za pośrednictwem portalu lub utworzyć skrypt, który wdrażał wszystkie zasoby w odpowiedniej kolejności. Aby usunąć rozwiązanie, trzeba było usunąć każdy zasób osobno. Nie można było łatwo stosować ani aktualizować zasad kontroli dostępu dla powiązanych zasobów. Nie można było też stosować tagów do zasobów w celu oznaczenia ich terminami ułatwiającymi monitorowanie zasobów i zarządzanie rozliczeniami.
@@ -57,7 +59,7 @@ Jeśli w przypadku maszyn wirtualnych, kont magazynu i sieci wirtualnych zasób 
 W niektórych przypadkach polecenie usługi Resource Manager może pobrać informacje o zasobie utworzonym przy użyciu wdrożenia klasycznego lub może wykonać zadanie administracyjne takie jak przeniesieni zasobu klasycznego do innej grupy zasobów. Jednak nie powinno to sugerować, że dany typ obsługuje operacje usługi Resource Manager. Na przykład załóżmy, że masz grupę zasobów, która zawiera maszynę wirtualną utworzoną przy użyciu wdrażania klasycznego. Jeśli uruchomisz następujące polecenie programu PowerShell usługi Resource Manager:
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
+Get-AzResource -ResourceGroupName ExampleGroup -ResourceType Microsoft.ClassicCompute/virtualMachines
 ```
 
 Zwróci ono maszynę wirtualną:
@@ -72,10 +74,10 @@ Location          : westus
 SubscriptionId    : {guid}
 ```
 
-Jednak polecenie cmdlet usługi Resource Manager **Get AzureRmVM** zwraca tylko maszyny wirtualne wdrożone przy użyciu usługi Resource Manager. Poniższe polecenie nie zwraca maszyny wirtualnej utworzonej przy użyciu wdrożenia klasycznego.
+Jednak polecenie cmdlet usługi Resource Manager **Get-AzVM** zwraca tylko maszyny wirtualne wdrożone przy użyciu usługi Resource Manager. Poniższe polecenie nie zwraca maszyny wirtualnej utworzonej przy użyciu wdrożenia klasycznego.
 
 ```powershell
-Get-AzureRmVM -ResourceGroupName ExampleGroup
+Get-AzVM -ResourceGroupName ExampleGroup
 ```
 
 Tylko zasoby utworzone przy użyciu usługi Resource Manager obsługują tagi. Nie można zastosować tagów do zasobów klasycznych.

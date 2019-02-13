@@ -10,12 +10,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
-ms.openlocfilehash: b51bf83d2e44239ebd6bc17e25efaa2fe94250f3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5cecb11494926444249c8061f1ec93622e4d6c78
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467139"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700708"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces za pomocą platformy .NET Core
 
@@ -99,13 +99,7 @@ Rozbudowane funkcje, takie jak debugowanie rozwiązania Kubernetes, są dostępn
 W tej sekcji utworzysz aplikację internetową ASP.NET Core i uruchomisz ją w kontenerze w środowisku Kubernetes.
 
 ### <a name="create-an-aspnet-core-web-app"></a>Tworzenie aplikacji internetowej ASP.NET Core
-Jeśli masz zainstalowaną platformę [.NET Core](https://www.microsoft.com/net), możesz szybko utworzyć aplikację internetową ASP.NET Core w folderze o nazwie `webfrontend`.
-    
-```cmd
-dotnet new mvc --name webfrontend
-```
-
-Możesz też **pobrać przykładowy kod z serwisu GitHub**. Otwórz stronę https://github.com/Azure/dev-spaces i wybierz pozycję **Clone or Download** (Sklonuj lub pobierz). Repozytorium GitHub zostanie pobrane do środowiska lokalnego. Kod używany w tym przewodniku znajduje się w lokalizacji `samples/dotnetcore/getting-started/webfrontend`.
+Sklonuj lub pobierz [przykładową aplikację Azure Dev Spaces](https://github.com/Azure/dev-spaces). W tym artykule jest używany kod z katalogu *samples/dotnetcore/getting-started/webfrontend*.
 
 ## <a name="preparing-code-for-docker-and-kubernetes-development"></a>Przygotowywanie kodu do opracowywania na platformie Docker i Kubernetes
 W tej chwili masz podstawową aplikację internetową, która działa lokalnie. Teraz konteneryzujesz ją, tworząc zasoby, które definiują kontener aplikacji i sposób jego wdrażania na platformie Kubernetes. To zadanie łatwo wykonać za pomocą usługi Azure Dev Spaces: 
@@ -245,4 +239,4 @@ Odśwież aplikację internetową w przeglądarce, a następnie otwórz stronę 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Więcej informacji na temat programowania zespołowego](team-development-netcore.md)
+> [Dowiedz się więcej o opracowywaniu dla wielu usług](multi-service-netcore.md)

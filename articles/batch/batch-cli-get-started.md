@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 07/24/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0d51052f4e04a1497ccf2e91427e3465bdc5bf2f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5117d426ac9595dfe25828013c1bd8c7fa81f92c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476829"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812365"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Zarządzanie zasobami usługi Batch przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -63,7 +63,7 @@ Aby używać interfejsu wiersza polecenia platformy Azure z usługą Batch, nale
 Istnieje kilka różnych sposobów logowania się na platformie Azure. Opisano je szczegółowo w artykule [Logowanie się za pomocą interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli):
 
 1. [Logowanie interakcyjne](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Zaloguj się interakcyjnie, gdy samodzielnie uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure w wierszu polecenia.
-2. [Logowanie za pomocą jednostki usługi](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az-authenticate-azure-cli-logging-in-with-a-service-principal). Zaloguj się za pomocą jednostki usługi, gdy uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure za pomocą skryptu lub aplikacji.
+2. [Logowanie za pomocą jednostki usługi](https://docs.microsoft.com/cli/azure/authenticate-azure-cli). Zaloguj się za pomocą jednostki usługi, gdy uruchamiasz polecenia interfejsu wiersza polecenia platformy Azure za pomocą skryptu lub aplikacji.
 
 Na potrzeby tego artykułu wyjaśnimy, jak zalogować się interakcyjnie. W wierszu polecenia wpisz [az login](https://docs.microsoft.com/cli/azure/reference-index#az-login):
 
@@ -76,7 +76,7 @@ Polecenie `az login` zwraca token używany do uwierzytelniania, jak to tutaj pok
 
 ![Zaloguj się do platformy Azure.](./media/batch-cli-get-started/az-login.png)
 
-W przykładach wymienionych w sekcji [Przykładowe skrypty powłoki](#sample-shell-scripts) również pokazano, jak uruchomić sesję interfejsu wiersza polecenia platformy Azure przez zalogowanie się interakcyjne na platformie Azure. Po zalogowaniu się można wywoływać polecenia do pracy z zasobami usługi Batch Management, w tym z kluczami, pakietami aplikacji, przydziałami i kontami usługi Batch.  
+W przykładach wymienionych w sekcji „Przykładowe skrypty powłoki” również pokazano, jak uruchomić sesję interfejsu wiersza polecenia platformy Azure przez zalogowanie się interakcyjne na platformie Azure. Po zalogowaniu się można wywoływać polecenia do pracy z zasobami usługi Batch Management, w tym z kluczami, pakietami aplikacji, przydziałami i kontami usługi Batch.  
 
 ### <a name="log-in-to-your-batch-account"></a>Logowanie się na koncie usługi Batch
 
@@ -110,7 +110,7 @@ Dostępne są dwie opcje uwierzytelnienia na koncie usługi Batch:
     az batch account login -g myresourcegroup -n mybatchaccount --shared-key-auth
     ```
 
-W przykładach wymienionych w sekcji [Przykładowe skrypty powłoki](#sample-shell-scripts) pokazano, jak zalogować się na koncie usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure przy użyciu zarówno usługi Azure AD, jak i klucza wspólnego.
+W przykładach wymienionych w sekcji „Przykładowe skrypty powłoki” pokazano, jak zalogować się na koncie usługi Batch za pomocą interfejsu wiersza polecenia platformy Azure przy użyciu zarówno usługi Azure AD, jak i klucza wspólnego.
 
 ## <a name="use-azure-batch-cli-extension-commands"></a>Używanie poleceń rozszerzenia interfejsu wiersza polecenia usługi Azure Batch
 
@@ -168,7 +168,7 @@ Poniższe porady mogą być pomocne w przypadku rozwiązywania problemów związ
 
 * Użyj polecenia `-h`, aby uzyskać **tekst pomocy** dla dowolnego polecenia interfejsu wiersza polecenia
 * Użyj opcji `-v` i `-vv`, aby wyświetlić **pełne** dane wyjściowe polecenia. Gdy jest dołączona flaga `-vv`, w interfejsie wiersza polecenia platformy Azure wyświetlane są faktyczne żądania i odpowiedzi REST. Te przełączniki są przydatne do wyświetlania pełnych danych wyjściowych błędu.
-* Możesz wyświetlić **dane wyjściowe polecenia w formie pliku JSON** przy użyciu opcji `--json`. Przykładowo polecenie `az batch pool show pool001 --json` wyświetla właściwości puli 001 w formacie JSON. Następnie możesz skopiować i zmodyfikować te dane wyjściowe, aby użyć ich w pliku `--json-file` (zobacz sekcję [Pliki JSON](#json-files) wcześniej w tym artykule).
+* Możesz wyświetlić **dane wyjściowe polecenia w formie pliku JSON** przy użyciu opcji `--json`. Przykładowo polecenie `az batch pool show pool001 --json` wyświetla właściwości puli 001 w formacie JSON. Następnie możesz skopiować i zmodyfikować te dane wyjściowe, aby użyć ich w pliku `--json-file` (zobacz sekcję „Pliki JSON” wcześniej w tym artykule).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
 ## <a name="next-steps"></a>Następne kroki

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8ec180b40e52c5702495a0124bf8ae33d2dc24a1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 66e913f6d461d2671bd217745a9d128e24c1a60c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727787"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820933"
 ---
-# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Samouczek: używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (prywatna wersja zapoznawcza)
+# <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Samouczek: Używanie usługi Azure Deployment Manager z szablonami usługi Resource Manager (prywatna wersja zapoznawcza)
 
 Dowiedz się, jak używać usługi [Azure Deployment Manager](./deployment-manager-overview.md), aby wdrażać aplikacje w wielu regionach. Aby użyć usługi Deployment Manager, musisz utworzyć dwa szablony:
 
@@ -172,11 +172,11 @@ Szablon zawiera następujące parametry:
 
 ![Samouczek dotyczący usługi Azure Deployment Manager — parametry szablonu topologii](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-parameters.png)
 
-- **namePrefix**: ten prefiks jest używany do tworzenia nazw zasobów usługi Deployment Manager. Na przykład, w przypadku użycia prefiksu „jdoe” nazwa topologii usługi będzie następująca: **jdoe**ServiceTopology.  Nazwy zasobów są definiowane w sekcji zmiennych tego szablonu.
-- **azureResourcelocation**: aby uprościć ten samouczek, wszystkie zasoby współdzielą tę lokalizację, chyba że określono inaczej. Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
-- **artifactSourceSASLocation**: identyfikator URI sygnatury dostępu współdzielonego do kontenera obiektów blob, w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
-- **templateArtifactRoot**: ścieżka przesunięcia z kontenera obiektów blob, w których przechowywane są szablony i parametry. Wartość domyślna to **templates/1.0.0.0**. Nie zmieniaj tej wartości, chyba że chcesz zmienić strukturę folderów wyjaśnioną w sekcji [Przygotowywanie artefaktów](#prepare-the-artifacts). W tym samouczku używa się ścieżek względnych.  Pełna ścieżka jest tworzona przez połączenie elementów **artifactSourceSASLocation**, **templateArtifactRoot** oraz **templateArtifactSourceRelativePath** (lub **parametersArtifactSourceRelativePath**).
-- **targetSubscriptionID**: identyfikator subskrypcji, w której zasoby usługi Deployment Manager zostaną wdrożone i będą rozliczane. Użyj identyfikatora swojej subskrypcji w tym samouczku.
+- **namePrefix**: Ten prefiks jest używany do tworzenia nazw zasobów usługi Deployment Manager. Na przykład, w przypadku użycia prefiksu „jdoe” nazwa topologii usługi będzie następująca: **jdoe**ServiceTopology.  Nazwy zasobów są definiowane w sekcji zmiennych tego szablonu.
+- **azureResourcelocation**: Aby uprościć ten samouczek, wszystkie zasoby współdzielą tę lokalizację, chyba że określono inaczej. Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
+- **artifactSourceSASLocation**: Identyfikator URI sygnatury dostępu współdzielonego do kontenera obiektów blob, w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
+- **templateArtifactRoot**: Ścieżka przesunięcia z kontenera obiektów blob, w których przechowywane są szablony i parametry. Wartość domyślna to **templates/1.0.0.0**. Nie zmieniaj tej wartości, chyba że chcesz zmienić strukturę folderów wyjaśnioną w sekcji [Przygotowywanie artefaktów](#prepare-the-artifacts). W tym samouczku używa się ścieżek względnych.  Pełna ścieżka jest tworzona przez połączenie elementów **artifactSourceSASLocation**, **templateArtifactRoot** oraz **templateArtifactSourceRelativePath** (lub **parametersArtifactSourceRelativePath**).
+- **targetSubscriptionID**: Identyfikator subskrypcji, w której zasoby usługi Deployment Manager zostaną wdrożone i będą rozliczane. Użyj identyfikatora swojej subskrypcji w tym samouczku.
 
 ### <a name="the-variables"></a>Zmienne
 
@@ -199,7 +199,7 @@ Poniższy zrzut ekranu przedstawia tylko pewne części definicji topologii usł
 ![Samouczek dotyczący usługi Azure Deployment Manager — topologia usługi w zasobach szablonu topologii](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-resources-service-topology.png)
 
 - **artifactSourceId** to identyfikator używany do kojarzenia zasobu źródła artefaktu z zasobem topologii usługi.
-- **dependsOn**: wszystkie zasoby topologii usługi zależą od zasobu źródła artefaktu.
+- **dependsOn**: Wszystkie zasoby topologii usługi zależą od zasobu źródła artefaktu.
 - **artifacts** wskazuje artefakty szablonu.  W tym miejscu używa się ścieżek względnych. Pełna ścieżka jest tworzona przez połączenie elementów artifactSourceSASLocation (lokalizacja definiowana w źródle artefaktu), artifactRoot (lokalizacja definiowana w źródle artefaktu) oraz templateArtifactSourceRelativePath (lub parametersArtifactSourceRelativePath).
 
 > [!NOTE]
@@ -212,11 +212,11 @@ Możesz utworzyć plik parametrów używany z szablonem topologii.
 1. Otwórz plik **\ADMTemplates\CreateADMServiceTopology.Parameters** w programie Visual Studio Code lub dowolnym edytorze tekstów.
 2. Wprowadź wartości parametrów:
 
-    - **namePrefix**: wprowadź ciąg zawierający 4–5 znaków. Ten prefiks jest używany do tworzenia unikatowych nazw zasobów platformy Azure.
-    - **azureResourceLocation**: jeśli nie znasz się na lokalizacjach platformy Azure, użyj lokalizacji **centralus** w tym samouczku.
-    - **artifactSourceSASLocation**: wprowadź identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
-    - **templateArtifactRoot**: użyj wartości **templates/1.0.0.0** w tym samouczku, chyba że chcesz zmienić strukturę folderu artefaktów.
-    - **targetScriptionID**: wprowadź identyfikator subskrypcji platformy Azure.
+    - **namePrefix**: Wprowadź ciąg zawierający 4–5 znaków. Ten prefiks jest używany do tworzenia unikatowych nazw zasobów platformy Azure.
+    - **azureResourceLocation**: Jeśli nie znasz się na lokalizacjach platformy Azure, użyj lokalizacji **centralus** w tym samouczku.
+    - **artifactSourceSASLocation**: Identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
+    - **templateArtifactRoot**: Użyj wartości **templates/1.0.0.0** w tym samouczku, chyba że chcesz zmienić strukturę folderu artefaktów.
+    - **targetScriptionID**: Wprowadź identyfikator subskrypcji platformy Azure.
 
 > [!IMPORTANT]
 > Szablon topologii oraz szablon wprowadzania współdzielą niektóre parametry. Te parametry muszą mieć takie same wartości. Te parametry są następujące: **namePrefix**, **azureResourceLocation** oraz **artifactSourceSASLocation** (oba źródła artefaktów współdzielą to samo konto magazynu w tym samouczku).
@@ -231,11 +231,11 @@ Szablon zawiera następujące parametry:
 
 ![Samouczek dotyczący usługi Azure Deployment Manager — parametry szablonu wprowadzania](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-parameters.png)
 
-- **namePrefix**: ten prefiks jest używany do tworzenia nazw zasobów usługi Deployment Manager. Na przykład w przypadku użycia prefiksu „jdoe” nazwa wprowadzania będzie następująca: **jdoe**Rollout.  Nazwy są definiowane w sekcji zmiennych szablonu.
-- **azureResourcelocation**: aby uprościć ten samouczek, wszystkie zasoby usługi Deployment Manager współdzielą tę lokalizację, chyba że określono inaczej. Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
-- **artifactSourceSASLocation**: identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
-- **binaryArtifactRoot**: wartość domyślna to **binaries/1.0.0.0**. Nie zmieniaj tej wartości, chyba że chcesz zmienić strukturę folderów wyjaśnioną w sekcji [Przygotowywanie artefaktów](#prepare-the-artifacts). W tym samouczku używa się ścieżek względnych.  Pełna ścieżka jest tworzona przez połączenie elementów **artifactSourceSASLocation**, **binaryArtifactRoot** oraz **deployPackageUri** określonych w pliku CreateWebApplicationParameters.json.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
-- **managedIdentityID**: tożsamość zarządzana przypisana przez użytkownika, która wykonuje operacje wdrażania. Zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](#create-the-user-assigned-managed-identity).
+- **namePrefix**: Ten prefiks jest używany do tworzenia nazw zasobów usługi Deployment Manager. Na przykład w przypadku użycia prefiksu „jdoe” nazwa wprowadzania będzie następująca: **jdoe**Rollout.  Nazwy są definiowane w sekcji zmiennych szablonu.
+- **azureResourcelocation**: Aby uprościć ten samouczek, wszystkie zasoby usługi Deployment Manager współdzielą tę lokalizację, chyba że określono inaczej. Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
+- **artifactSourceSASLocation**: Identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
+- **binaryArtifactRoot**:  Wartość domyślna to **binaries/1.0.0.0**. Nie zmieniaj tej wartości, chyba że chcesz zmienić strukturę folderów wyjaśnioną w sekcji [Przygotowywanie artefaktów](#prepare-the-artifacts). W tym samouczku używa się ścieżek względnych.  Pełna ścieżka jest tworzona przez połączenie elementów **artifactSourceSASLocation**, **binaryArtifactRoot** oraz **deployPackageUri** określonych w pliku CreateWebApplicationParameters.json.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
+- **managedIdentityID**: Tożsamość zarządzana przypisana przez użytkownika, która wykonuje akcje wdrażania. Zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](#create-the-user-assigned-managed-identity).
 
 ### <a name="the-variables"></a>Zmienne
 
@@ -259,10 +259,10 @@ Poniższy zrzut ekranu przedstawia tylko niektóre części definicji wprowadzan
 
 ![Samouczek dotyczący usługi Azure Deployment Manager — wprowadzanie zasobów szablonu wprowadzania](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-rollout.png)
 
-- **dependsOn**: zasób wprowadzania zależy od zasobu źródła artefaktu oraz jakichkolwiek zdefiniowanych kroków.
+- **dependsOn**: Zasób wprowadzania zależy od zasobu źródła artefaktu oraz wszelkich zdefiniowanych kroków.
 - **artifactSourceId**: identyfikator używany do kojarzenia zasobu źródła artefaktu z zasobem wprowadzania.
 - **targetServiceTopologyId**: identyfikator używany do kojarzenia zasobu topologii usługi z zasobem wprowadzania.
-- **deploymentTargetId**: to identyfikator zasobu jednostki usługi zasobu topologii usługi.
+- **deploymentTargetId**: Jest to identyfikator zasobu jednostki usługi zasobu topologii usługi.
 - **preDeploymentSteps** i **postDeploymentSteps**: zawierają kroki wprowadzania. W szablonie wywoływany jest krok oczekiwania.
 - **dependsOnStepGroups**: umożliwia konfigurację zależności między grupami kroków.
 
@@ -273,11 +273,11 @@ Możesz utworzyć plik parametrów używany z szablonem wprowadzania.
 1. Otwórz plik **\ADMTemplates\CreateADMRollout.Parameters** w programie Visual Studio Code lub dowolnym edytorze tekstów.
 2. Wprowadź wartości parametrów:
 
-    - **namePrefix**: wprowadź ciąg zawierający 4–5 znaków. Ten prefiks jest używany do tworzenia unikatowych nazw zasobów platformy Azure.
-    - **azureResourceLocation**: obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
-    - **artifactSourceSASLocation**: wprowadź identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
-    - **binaryArtifactRoot**: użyj wartości **binaries/1.0.0.0** w tym samouczku, chyba że chcesz zmienić strukturę folderu artefaktów.
-    - **managedIdentityID**: wprowadź tożsamość zarządzaną przypisaną przez użytkownika. Zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](#create-the-user-assigned-managed-identity). Składnia jest następująca:
+    - **namePrefix**: Wprowadź ciąg zawierający 4–5 znaków. Ten prefiks jest używany do tworzenia unikatowych nazw zasobów platformy Azure.
+    - **azureResourceLocation**: Obecnie zasoby usługi Azure Deployment Manager można tworzyć tylko w lokalizacji **Środkowe stany USA** lub **Wschodnie stany USA 2**.
+    - **artifactSourceSASLocation**: Identyfikator URI sygnatury dostępu współdzielonego do folderu głównego (kontenera obiektów blob), w którym przechowuje się pliki szablonu i parametrów jednostki usługi na potrzeby wdrożenia.  Zobacz [Przygotowywanie artefaktów](#prepare-the-artifacts).
+    - **binaryArtifactRoot**: Użyj wartości **binaries/1.0.0.0** w tym samouczku, chyba że chcesz zmienić strukturę folderu artefaktów.
+    - **managedIdentityID**: Wprowadź tożsamość zarządzaną przypisaną przez użytkownika. Zobacz [Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](#create-the-user-assigned-managed-identity). Składnia jest następująca:
 
         ```
         "/subscriptions/<SubscriptionID>/resourcegroups/<ResourceGroupName>/providers/Microsoft.ManagedIdentity/userassignedidentities/<ManagedIdentityName>"
@@ -336,7 +336,7 @@ Programu Azure PowerShell można użyć do wdrażania szablonów.
         -Name $rolloutName
     ```
 
-    Należy zainstalować polecenia cmdlet programu PowerShell usługi Deployment Manager przed uruchomieniem tego polecenia cmdlet. Zobacz [Wymagania wstępne](#prerequisite).
+    Należy zainstalować polecenia cmdlet programu PowerShell usługi Deployment Manager przed uruchomieniem tego polecenia cmdlet. Zobacz Wymagania wstępne.
 
     Następujący przykład przedstawia stan działania:
     

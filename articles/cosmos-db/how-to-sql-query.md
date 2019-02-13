@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: 5884295e93a14d74a125c27ea597f2311478042a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459030"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822412"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -1365,29 +1365,29 @@ Każda z funkcji matematycznych wykonuje obliczenie na podstawie wartości wejś
 
 | Sposób użycia | Opis |
 |----------|--------|
-| [ABS (wyrażenie_liczbowe)](#bk_abs) | Zwraca wartość bezwzględną (dodatnią) podanego wyrażenia liczbowego. |
-| [CEILING (wyrażenie_liczbowe)](#bk_ceiling) | Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą. |
-| [FLOOR (wyrażenie_liczbowe)](#bk_floor) | Zwraca największą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub mniejszą. |
-| [EXP (wyrażenie_liczbowe)](#bk_exp) | Zwraca wykładnik określonego wyrażenia liczbowego. |
+| [ABS (wyrażenie_liczbowe) | Zwraca wartość bezwzględną (dodatnią) podanego wyrażenia liczbowego. |
+| CEILING (wyrażenie_liczbowe) | Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą. |
+| FLOOR (wyrażenie_liczbowe) | Zwraca największą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub mniejszą. |
+| EXP (wyrażenie_liczbowe) | Zwraca wykładnik określonego wyrażenia liczbowego. |
 | [LOG (wyrażenie_liczbowe [,podstawa])](#bk_log) | Zwraca logarytm naturalny określonego wyrażenia liczbowego lub logarytm o określonej podstawie. |
-| [LOG10 (wyrażenie_liczbowe)](#bk_log10) | Zwraca wartość logarytmiczną przy podstawie 10 określonego wyrażenia liczbowego. |
-| [ROUND (wyrażenie_liczbowe)](#bk_round) | Zwraca wartość liczbową zaokrągloną do najbliższej wartości całkowitej. |
-| [TRUNC (wyrażenie_liczbowe)](#bk_trunc) | Zwraca wartość liczbową przyciętą do najbliższej wartości całkowitej. |
-| [SQRT (wyrażenie_liczbowe)](#bk_sqrt) | Zwraca pierwiastek kwadratowy określonego wyrażenia liczbowego. |
-| [SQUARE (wyrażenie_liczbowe)](#bk_square) | Zwraca kwadrat określonego wyrażenia liczbowego. |
+| LOG10 (wyrażenie_liczbowe) | Zwraca wartość logarytmiczną przy podstawie 10 określonego wyrażenia liczbowego. |
+| ROUND (wyrażenie_liczbowe) | Zwraca wartość liczbową zaokrągloną do najbliższej wartości całkowitej. |
+| TRUNC (wyrażenie_liczbowe) | Zwraca wartość liczbową przyciętą do najbliższej wartości całkowitej. |
+| SQRT (wyrażenie_liczbowe) | Zwraca pierwiastek kwadratowy określonego wyrażenia liczbowego. |
+| SQUARE (wyrażenie_liczbowe) | Zwraca kwadrat określonego wyrażenia liczbowego. |
 | [POWER (wyrażenie liczbowe, wyrażenie_liczbowe)](#bk_power) | Zwraca wartość określonego wyrażenia liczbowego podniesioną do podanej potęgi. |
-| [SIGN (wyrażenie_liczbowe)](#bk_sign) | Zwraca wartość znaku (-1, 0, 1) określonego wyrażenia liczbowego. |
-| [ACOS (wyrażenie_liczbowe)](#bk_acos) | Zwraca kąt w radianach, którego cosinus jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus cosinus. |
-| [ASIN (wyrażenie_liczbowe)](#bk_asin) | Zwraca kąt w radianach, którego sinus jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus sinus. |
-| [ATAN (wyrażenie_liczbowe)](#bk_atan) | Zwraca kąt w radianach, którego tangens jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus tangens. |
-| [ATN2 (wyrażenie_liczbowe)](#bk_atn2) | Zwraca kąt w radianach, między dodatnią osią x i promieniem z początku do punktu (y, x), gdzie x i y to wartości dwóch określonych wyrażeń zmiennoprzecinkowych. |
-| [COS (wyrażenie_liczbowe)](#bk_cos) | Zwraca trygonometryczny cosinus określonego kąta w radianach w określonym wyrażeniu. |
-| [COT (wyrażenie_liczbowe)](#bk_cot) | Zwraca trygonometryczny cotangens określonego kąta w radianach w określonym wyrażeniu liczbowym. |
-| [DEGREES (wyrażenie_liczbowe)](#bk_degrees) | Zwraca kąt w stopniach odpowiadający kątowi określonemu w radianach. |
-| [PI ()](#bk_pi) | Zwraca stałą wartość liczby PI. |
-| [RADIANS (wyrażenie_liczbowe)](#bk_radians) | Zwraca wartość w radianach po wprowadzeniu wyrażenia liczbowego w stopniach. |
-| [SIN (wyrażenie_liczbowe)](#bk_sin) | Zwraca trygonometryczny sinus określonego kąta w radianach w określonym wyrażeniu. |
-| [TAN (wyrażenie_liczbowe)](#bk_tan) | Zwraca tangens wyrażenia wejściowego w określonym wyrażeniu. |
+| SIGN (wyrażenie_liczbowe) | Zwraca wartość znaku (-1, 0, 1) określonego wyrażenia liczbowego. |
+| ACOS (wyrażenie_liczbowe) | Zwraca kąt w radianach, którego cosinus jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus cosinus. |
+| ASIN (wyrażenie_liczbowe) | Zwraca kąt w radianach, którego sinus jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus sinus. |
+| ATAN (wyrażenie_liczbowe) | Zwraca kąt w radianach, którego tangens jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus tangens. |
+| ATN2 (wyrażenie_liczbowe) | Zwraca kąt w radianach, między dodatnią osią x i promieniem z początku do punktu (y, x), gdzie x i y to wartości dwóch określonych wyrażeń zmiennoprzecinkowych. |
+| COS (wyrażenie_liczbowe) | Zwraca trygonometryczny cosinus określonego kąta w radianach w określonym wyrażeniu. |
+| COT (wyrażenie_liczbowe) | Zwraca trygonometryczny cotangens określonego kąta w radianach w określonym wyrażeniu liczbowym. |
+| DEGREES (wyrażenie_liczbowe) | Zwraca kąt w stopniach odpowiadający kątowi określonemu w radianach. |
+| PI () | Zwraca stałą wartość liczby PI. |
+| RADIANS (wyrażenie_liczbowe) | Zwraca wartość w radianach po wprowadzeniu wyrażenia liczbowego w stopniach. |
+| SIN (wyrażenie_liczbowe) | Zwraca trygonometryczny sinus określonego kąta w radianach w określonym wyrażeniu. |
+| TAN (wyrażenie_liczbowe) | Zwraca tangens wyrażenia wejściowego w określonym wyrażeniu. |
 
 Teraz można na przykład uruchomić zapytania, jak pokazano w poniższym przykładzie:
 

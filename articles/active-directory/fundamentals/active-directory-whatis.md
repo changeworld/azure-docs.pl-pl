@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 44533ea4430bb7cd3bc7e0b6451892cc68bacc19
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 251161fbb5213c765463835e4537f1b443699670
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450221"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55491743"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory? 
 Azure Active Directory (Azure AD) to chmurowa usługa firmy Microsoft do zarządzania tożsamościami i dostępem. Usługa Azure AD ułatwia pracownikom logowanie się i dostęp do następujących zasobów:
@@ -72,7 +72,7 @@ Aby lepiej zrozumieć usługę Azure AD i jej dokumentację, zapoznaj się z pon
 |Administrator globalny usługi Azure AD|Ta rola administratora jest automatycznie przypisywana osobie, która utworzyła dzierżawę usługi Azure AD. Administratorzy globalni mogą wykonywać wszystkie funkcje administracyjne dla usługi Azure AD i wszelkich sfederowanych z nią usług, takich jak Exchange Online, SharePoint Online i Skype dla firm Online. Może istnieć wielu administratorów globalnych, ale tylko administratorzy globalni mogą przypisywać użytkownikom role administratora (włącznie z przypisywaniem innych administratorów globalnych).<br><br>**Uwaga**<br>Ta rola administratora jest nazywana administratorem globalnym w witrynie Azure Portal, ale ma nazwę **administrator firmy** w interfejsie API programu Microsoft Graph, interfejsie API programu Graph w usłudze Azure AD oraz w usłudze Azure AD PowerShell.<br><br>Aby uzyskać więcej informacji o różnych rolach administratorów, zobacz [Administrator role permissions in Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md) (Uprawnienia ról administratorów w usłudze Azure Active Directory).|
 |Konto Microsoft (nazywane też kontem MSA)|Konta osobiste, które zapewniają dostęp do produktów i usług w chmurze firmy Microsoft przeznaczonych dla konsumentów, takich jak Outlook, OneDrive, Xbox LIVE i Office 365. Konto Microsoft jest tworzone i przechowywane w systemie kont tożsamości konsumentów firmy Microsoft.|
 
-## <a name="what-features-work-in-azure-ad"></a>Jakie funkcje działają w usłudze Azure AD?
+## <a name="which-features-work-in-azure-ad"></a>Które funkcje działają w usłudze Azure AD?
 Po wybraniu licencji usługi Azure AD uzyskasz dostęp do niektórych lub wszystkich z następujących funkcji dla Twojej organizacji:
 
 |Kategoria|Opis|

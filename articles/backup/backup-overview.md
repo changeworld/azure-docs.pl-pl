@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7156042243b1ba28cea712dc3722600b9fc46c42
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 298c9fabca9d1994e0b952fdf8b48b70370c3ec2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360644"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490674"
 ---
 # <a name="what-is-azure-backup"></a>Co to jest Azure Backup?
 
@@ -47,7 +47,7 @@ Usługi Azure Backup i Azure Site Recovery są częścią strategii zachowywania
 
 Obie usługi oferują różne funkcje, które się uzupełniają.
 
-- **Azure Site Recovery**: Usługa Site Recovery zapewnia rozwiązanie do odzyskiwania po awarii dla maszyn lokalnych i maszyn wirtualnych platformy Azure. Możesz replikować maszyny z lokalizacji podstawowej do dodatkowej. W przypadku awarii maszyny są przełączane w tryb failover do lokalizacji dodatkowej i można uzyskiwać do nich dostęp z tego miejsca. Gdy wszystko będzie ponownie działać normalnie, przełącz maszyny z powrotem, aby odzyskać je w lokacji głównej.
+- **Azure Site Recovery**: Usługa Site Recovery zapewnia rozwiązanie do odzyskiwania po awarii dla maszyn lokalnych i maszyn wirtualnych platformy Azure. Możesz replikować maszyny z lokalizacji podstawowej do dodatkowej. W przypadku awarii przełączasz maszyny w tryb failover do lokalizacji dodatkowej i możesz uzyskiwać do nich dostęp z tego miejsca. Gdy wszystko będzie ponownie działać normalnie, przełączasz maszyny z powrotem, aby odzyskać je w lokacji głównej.
 - **Azure Backup**: Usługa Azure Backup wykonuje kopie zapasowe danych z maszyn lokalnych i maszyn wirtualnych platformy Azure. Kopie zapasowe i odzyskiwanie danych można wykonywać na szczegółowym poziomie, łącznie z kopiami zapasowymi plików, folderów, stanu systemu maszyny i kopiami zapasowymi danych z uwzględnieniem aplikacji. Usługa Azure Backup obsługuje dane na bardziej szczegółowym poziomie niż usługa Site Recovery. Jeśli na przykład prezentacja na laptopie zostanie uszkodzona, możesz ją przywrócić za pomocą usługi Azure Backup. Aby zapewnić bezpieczeństwo i dostępność konfiguracji oraz danych maszyny wirtualnej, możesz użyć usługi Site Recovery.  
 
 Użyj punktów w tabeli, aby łatwiej ustalić wymagania w zakresie strategii BCDR. 

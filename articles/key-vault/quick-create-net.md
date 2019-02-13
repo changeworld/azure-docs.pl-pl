@@ -1,6 +1,6 @@
 ---
 title: 'Szybki start: Konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej Node — Azure Key Vault | Microsoft Docs'
-description: 'Szybki start: Konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET'
+description: W tym przewodniku Szybki start ustawisz i pobierzesz wpis tajny z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,31 +9,32 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 20d47ecaea8ce393f60cba93c3dbcf7ca4a076c8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 300ee1b01f346f7e1c118b76d64d0eda6e4d7934
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002607"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565551"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Szybki start: Konfigurowanie i pobieranie wpisów tajnych z usługi Azure Key Vault przy użyciu aplikacji internetowej .NET
 
-W tym przewodniku Szybki start wykonasz kroki niezbędne do skonfigurowania aplikacji internetowej platformy Azure pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Omawiane kwestie:
+W tym przewodniku Szybki start wykonasz kroki konfigurowania aplikacji internetowej platformy Azure pod kątem odczytu informacji z usługi Azure Key Vault za pomocą tożsamości zarządzanych dla zasobów platformy Azure. Usługa Key Vault pomaga zabezpieczać informacje. Omawiane kwestie:
 
-> [!div class="checklist"]
-> * Tworzenie magazynu kluczy.
-> * Zapisywanie wpisu tajnego w magazynie kluczy.
-> * Pobieranie wpisu tajnego z magazynu kluczy.
-> * Tworzenie aplikacji internetowej platformy Azure.
-> * Włączanie [tożsamości usługi zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla aplikacji internetowej.
-> * Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji internetowej odczytu danych z magazynu kluczy.
+* Tworzenie magazynu kluczy.
+* Zapisywanie wpisu tajnego w magazynie kluczy.
+* Pobieranie wpisu tajnego z magazynu kluczy.
+* Tworzenie aplikacji internetowej platformy Azure.
+* Włączanie [tożsamości usługi zarządzanej](../active-directory/managed-identities-azure-resources/overview.md) dla aplikacji internetowej.
+* Przyznawanie wymaganych uprawnień w celu umożliwienia aplikacji internetowej odczytu danych z magazynu kluczy.
 
-Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami](key-vault-whatis.md#basic-concepts).
+Zanim przejdziesz dalej, zapoznaj się z [podstawowymi pojęciami dotyczącymi usługi Key Vault](key-vault-whatis.md#basic-concepts).
 
 >[!NOTE]
->Usługa Key Vault to centralne repozytorium do programistycznego przechowywania wpisów tajnych. W tym celu aplikacje i użytkownicy muszą najpierw uwierzytelnić się w usłudze Key Vault — czyli podać wpis tajny. Zgodnie z najlepszymi rozwiązaniami dotyczącymi bezpieczeństwa pierwszy wpis tajny musi być okresowo obracany. 
+>Usługa Key Vault to centralne repozytorium do programistycznego przechowywania wpisów tajnych. W tym celu aplikacje i użytkownicy muszą najpierw uwierzytelnić się w usłudze Key Vault — czyli podać wpis tajny. Aby zastosować najlepsze rozwiązania dotyczące bezpieczeństwa, pierwszy wpis tajny musi być okresowo obracany. 
 >
->Dzięki [tożsamościom usługi zarządzanej dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) aplikacje uruchamiane na platformie Azure otrzymują tożsamość, która jest automatycznie zarządzana przez tę platformę. Dzięki temu można rozwiązać *początkowy problem dotyczący wpisu tajnego*, gdzie użytkownicy i aplikacje mogą postępować zgodnie z najlepszymi wskazówkami i nie muszą pamiętać o obracaniu pierwszego wpisu tajnego.
+>Dzięki [tożsamościom usługi zarządzanej dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) aplikacje uruchamiane na platformie Azure uzyskują tożsamość, która jest automatycznie zarządzana przez tę platformę. Dzięki temu można rozwiązać *początkowy problem dotyczący wpisu tajnego*, gdzie użytkownicy i aplikacje mogą postępować zgodnie z najlepszymi wskazówkami i nie muszą pamiętać o obracaniu pierwszego wpisu tajnego.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -77,7 +78,7 @@ W tym artykule jest używana właśnie utworzona grupa zasobów.
 
 Następnie utworzysz magazyn kluczy w grupie zasobów utworzonej w poprzednim kroku. Podaj następujące informacje:
 
-* Nazwa magazynu kluczy: Nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki (0–9, a–z, A–Z i -).
+* Nazwa magazynu kluczy: nazwa musi być ciągiem od 3 do 24 znaków i może zawierać tylko znaki 0–9, a–z, A–Z i myślnik (-).
 * Nazwa grupy zasobów.
 * Lokalizacja: **Wschodnie stany USA**.
 
@@ -143,8 +144,7 @@ Opublikuj tę aplikację na platformie Azure, aby sprawdzić, jak działa na ży
 
 Usługa Azure Key Vault oferuje bezpieczny sposób przechowywania poświadczeń oraz innych kluczy i wpisów tajnych, ale w celu ich pobrania należy uwierzytelnić kod w usłudze Key Vault. [Tożsamości zarządzane dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md) ułatwiają rozwiązanie tego problemu, udostępniając usługom platformy Azure automatycznie zarządzaną tożsamość w usłudze Azure Active Directory (Azure AD). Za pomocą tej tożsamości można uwierzytelnić się w dowolnej usłudze obsługującej uwierzytelnianie usługi Azure AD, w tym w usłudze Key Vault, bez konieczności przechowywania poświadczeń w kodzie.
 
-1. Powrót do interfejsu wiersza polecenia platformy Azure.
-2. Uruchom polecenie assign-identity w celu utworzenia tożsamości dla tej aplikacji:
+W interfejsie wiersza polecenia platformy Azure uruchom polecenie assign-identity w celu utworzenia tożsamości dla tej aplikacji:
 
    ```azurecli
    az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
@@ -171,10 +171,20 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-Teraz, po uruchomieniu aplikacji, powinna pojawić się pobrana wartość wpisu tajnego. W powyższym poleceniu określasz tożsamość (MSI) uprawnień usługi App Service w celu wykonania operacji **get** i **list** dla usługi Key Vault
+Teraz, po uruchomieniu aplikacji, powinna pojawić się pobrana wartość wpisu tajnego. W poprzednim poleceniu określasz tożsamość uprawnień usługi App Service w celu wykonania operacji **get** i **list** dla usługi Key Vault.
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+Gdy grupa zasobów, maszyna wirtualna i wszystkie powiązane zasoby nie będą już potrzebne, można je usunąć. W tym celu wybierz grupę zasobów maszyny wirtualnej i kliknij pozycję **Usuń**.
+
+Usuń magazyn kluczy przy użyciu polecenia [az keyvault delete](https://docs.microsoft.com/en-us/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete):
+
+```azurecli
+az keyvault delete --name
+                   [--resource-group]
+                   [--subscription]
+```
 
 ## <a name="next-steps"></a>Następne kroki
 
-* [Dowiedz się więcej o usłudze Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
-* [Zestaw Azure SDK dla platformy .NET](https://github.com/Azure/azure-sdk-for-net)
-* [Dokumentacja interfejsu API REST platformy Azure](https://docs.microsoft.com/rest/api/keyvault/)
+> [!div class="nextstepaction"]
+> [Dowiedz się więcej o usłudze Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)

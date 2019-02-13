@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: f231fa7624a2babea2a3d91076ad0348b3c9e976
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540386"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812076"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>Samouczek: Poznawanie biblioteki klienta języka JavaScript dla usługi Azure Time Series Insights
 
@@ -147,7 +147,7 @@ Wypełnianie i renderowanie kontrolek wykresów jest zgodne ze ogólnym wzorcem.
    | `splitByObject`   | Właściwość określająca ciąg znaków, którego chcesz użyć do podziału (opcjonalna — może mieć wartość null). | `{property: 'Station', type: 'String'}` |
    | `color`         | Kolor obiektów, który chcesz zastosować podczas renderowania. | `'pink'` |
    | `alias`           | Przyjazna nazwa wyrażenia agregującego. | `'Factory3Temperature'` |
-   | `contextMenuActions` | Tablica akcji, która ma być powiązana z obiektami szeregów czasowych w wizualizacji (opcjonalnie). | Aby uzyskać więcej informacji, zobacz temat [Wyskakujące menu kontekstowe w sekcji Funkcje zaawansowane.](#popup-context-menus) |
+   | `contextMenuActions` | Tablica akcji, która ma być powiązana z obiektami szeregów czasowych w wizualizacji (opcjonalnie). | Aby uzyskać więcej informacji, zobacz część „Wyskakujące menu kontekstowe” w sekcji „Funkcje zaawansowane”. |
 
 3. Wywołaj zapytanie usługi TSI przy użyciu interfejsów API `TsiClient.Server`, aby zażądać dostępu do zagregowanych danych:
 
@@ -260,7 +260,7 @@ Zrzut ekranu pokazuje wykresy wraz z właściwymi dla nich wyskakującymi menu k
 
 Pędzle są używane do określania zakresu czasu w celu definiowania akcji, takich jak powiększanie i eksplorowanie.
 
-Kod używany w celu zademonstrowania działania pędzli jest pokazany w poprzednim przykładzie „Wykres liniowy z menu kontekstowym umożliwiającym utworzenie wykresu kołowego/słupkowego”, dotyczącym [wyskakujących menu kontekstowych](#popup-context-menus-section).
+Kod używany w celu zademonstrowania działania pędzli jest pokazany w poprzednim przykładzie „Wykres liniowy z menu kontekstowym umożliwiającym utworzenie wykresu kołowego/słupkowego”, dotyczącym wyskakujących menu kontekstowych.
 
 1. Akcje związane z pędzlem są bardzo podobne do menu kontekstowego w tym, że definiują dla pędzla szereg akcji niestandardowych. Każda akcja zawiera tablicę z co najmniej jednym elementem. Każdy element definiuje pojedynczy element menu kontekstowego:
    - `name`: tekst, który jest używany dla elementu menu: „Print parameters to console” (Parametry drukowania do konsoli).

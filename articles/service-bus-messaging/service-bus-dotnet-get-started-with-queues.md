@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 81bc37a4bbd63beda122d7254409e2b16f0e3cb1
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 2075f8f83392c9ddd1761a96958fcb6cb12dc013
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852168"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816428"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Wprowadzenie do kolejek usługi Service Bus
 
@@ -45,13 +45,13 @@ Ten samouczek obejmuje następujące kroki:
 > [!NOTE] 
 > Przestrzeń nazw usługi Service Bus i jednostki obsługi komunikatów można tworzyć przy użyciu programu [PowerShell](/powershell/azure/get-started-azureps). Aby uzyskać więcej informacji, zobacz [Use PowerShell to manage Service Bus resources (Używanie programu PowerShell do zarządzania zasobami usługi Service Bus)](service-bus-manage-with-ps.md).
 
-Jeśli przestrzeń nazw obsługi komunikatów usługi Service Bus została już utworzona, przejdź do sekcji [Tworzenie kolejki za pomocą usługi Azure Portal](#2-create-a-queue-using-the-azure-portal).
+Jeśli przestrzeń nazw obsługi komunikatów usługi Service Bus została już utworzona, przejdź do sekcji Tworzenie kolejki za pomocą usługi Azure Portal.
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-queue-using-the-azure-portal"></a>Tworzenie kolejki za pomocą usługi Azure Portal
 
-Jeśli kolejka usługi Service Bus została już utworzona, przejdź do sekcji [Wysyłanie komunikatów do kolejki](#3-send-messages-to-the-queue).
+Jeśli kolejka usługi Service Bus została już utworzona, przejdź do sekcji Wysyłanie komunikatów do kolejki.
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 

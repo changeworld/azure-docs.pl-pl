@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 10/02/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 87cf0f09cbeeee90492e070b25b713546c6631e5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e8efcbe080cc33cb6153d97d4435bcb477587980
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438868"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565857"
 ---
 # <a name="quickstart-run-a-container-application-in-azure-container-instances-with-azure-powershell"></a>Szybki start: uruchamianie aplikacji kontenera w usłudze Azure Container Instances przy użyciu programu PowerShell
 
@@ -39,7 +39,9 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 
 ## <a name="create-a-container"></a>Tworzenie kontenera
 
-Teraz, gdy masz już grupę zasobów, możesz uruchomić kontener na platformie Azure. Aby utworzyć wystąpienie kontenera przy użyciu programu Azure PowerShell, podaj nazwę grupy zasobów, nazwę wystąpienia kontenera i obraz kontenera Docker w poleceniu cmdlet [New-AzureRmContainerGroup][New-AzureRmContainerGroup]. Możesz uwidocznić swoje kontenery w Internecie, określając co najmniej jeden port do otworzenia, etykietę nazwy DNS lub obie te informacje. W tym przewodniku Szybki start wdrożysz kontener z etykietą nazwy DNS, hostujący usługi Internet Information Services (IIS) działające w systemie Nano Server.
+Teraz, gdy masz już grupę zasobów, możesz uruchomić kontener na platformie Azure. Aby utworzyć wystąpienie kontenera przy użyciu programu Azure PowerShell, podaj nazwę grupy zasobów, nazwę wystąpienia kontenera i obraz kontenera Docker w poleceniu cmdlet [New-AzureRmContainerGroup][New-AzureRmContainerGroup]. W tym przewodniku Szybki start jest używany obraz systemu Windows `microsoft/iis:nanoserver` z publicznego rejestru Docker Hub. Ten obraz zawiera pakiet usług Internet Information Services (IIS) do uruchamiania w systemie Nano Server.
+
+Możesz uwidocznić swoje kontenery w Internecie, określając co najmniej jeden port do otworzenia, etykietę nazwy DNS lub obie te informacje. W tym przewodniku Szybki start wdrożysz kontener z etykietą nazwy DNS, aby skonfigurować te usługi IIS jako publicznie dostępne.
 
 Wykonaj poniższe polecenie, aby uruchomić wystąpienie kontenera. Wartość `-DnsNameLabel` musi być unikatowa w regionie platformy Azure, w którym tworzysz wystąpienie. Jeśli zostanie wyświetlony komunikat o błędzie „Etykieta nazwy DNS nie jest dostępna”, spróbuj użyć innej etykiety nazwy DNS.
 

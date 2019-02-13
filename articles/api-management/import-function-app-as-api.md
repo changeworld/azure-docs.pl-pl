@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: b5a38b9f16224c8b2b128b464106fe83d018b308
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e86bd797774448d8e4821ff02d358d420a099442
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129764"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810783"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>Importowanie aplikacji funkcji platformy Azure jako interfejsu API w usłudze Azure API Management
 
@@ -160,7 +160,7 @@ Operacje można wywoływać bezpośrednio w witrynie Azure Portal. Witryna Azure
 
 Operacje można również wywoływać z portalu dla deweloperów w celu przetestowania interfejsów API. 
 
-1. Wybierz interfejs API utworzony w kroku [Importowanie i publikowanie interfejsu API zaplecza](#create-api).
+1. Wybierz interfejs API utworzony w kroku „Importowanie i publikowanie interfejsu API zaplecza”.
 
 2. Wybierz pozycję **Portal dla deweloperów**.
 

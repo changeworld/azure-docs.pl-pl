@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 14dc1ca90ecd342330425db840776fa67caa80b0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e2bb5550cfe07064d595151305955d87f9c61050
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208146"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819539"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>Wprowadzenie do usługi Knowledge Exploration Service
 
@@ -100,7 +100,7 @@ Gdy masz już plik schematu i plik danych, możesz utworzyć skompresowany indek
 
 `kes.exe build_index Academic.schema Academic.data Academic.index`
 
-W przypadku szybkiego prototypowania poza platformą Azure polecenie [`kes.exe build_index`](CommandLine.md#build_index-command) umożliwia lokalne utworzenie małych indeksów z plików danych, zawierających maksymalnie 10 000 obiektów. W przypadku większych plików danych musisz uruchomić polecenie na [maszynie wirtualnej platformy Azure z systemem Windows](../../../articles/virtual-machines/windows/quick-create-portal.md) lub wykonać zdalne budowanie na platformie Azure. Aby poznać szczegółowe informacje, zobacz [Skalowanie w górę](#scaling-up).
+W przypadku szybkiego prototypowania poza platformą Azure polecenie [`kes.exe build_index`](CommandLine.md#build_index-command) umożliwia lokalne utworzenie małych indeksów z plików danych, zawierających maksymalnie 10 000 obiektów. W przypadku większych plików danych musisz uruchomić polecenie na [maszynie wirtualnej platformy Azure z systemem Windows](../../../articles/virtual-machines/windows/quick-create-portal.md) lub wykonać zdalne budowanie na platformie Azure. Aby poznać szczegółowe informacje, zobacz Skalowanie w górę.
 
 ## <a name="use-an-xml-grammar-specification"></a>Użycie specyfikacji XML gramatyki
 
@@ -211,7 +211,7 @@ W przypadku szybkiego prototypowania możesz hostować gramatykę i indeks w us�
 
 `kes.exe host_service Academic.grammar Academic.index --port 8000`
 
-Spowoduje to zainicjowanie lokalnego wystąpienia usługi internetowej. Usługę możesz testować interaktywnie, otwierając adres `http::localhost:<port>` w przeglądarce. Aby uzyskać więcej informacji, zobacz [Testowanie usługi](#testing-service).
+Spowoduje to zainicjowanie lokalnego wystąpienia usługi internetowej. Usługę możesz testować interaktywnie, otwierając adres `http::localhost:<port>` w przeglądarce. Aby uzyskać więcej informacji, zobacz Testowanie usługi.
 
 Różne [internetowe interfejsy API](WebAPI.md) możesz także wywoływać bezpośrednio w celu testowania interpretacji języka naturalnego, wykonywania zapytań, oceniania zapytań ze strukturą i obliczania histogramu. Aby zatrzymać usługę, wpisz „quit” w wierszu polecenia `kes.exe host_service` lub naciśnij klawisze Ctrl+C. Oto kilka przykładów:
 
@@ -220,7 +220,7 @@ Różne [internetowe interfejsy API](WebAPI.md) możesz także wywoływać bezpo
 * [http://localhost:8000/evaluate?expr=Composite(Author.Name=='susan t dumais')&attributes=Title,Year,Author.Name,Author.Id&count=2](http://localhost:8000/evaluate?expr=Composite%28Author.Name==%27susan%20t%20dumais%27%29&attributes=Title,Year,Author.Name,Author.Id&count=2)
 * [http://localhost:8000/calchistogram?expr=And(Composite(Author.Name=='susan t dumais'),Year>=2013)&attributes=Year,Keyword&count=4](http://localhost:8000/calchistogram?expr=And%28Composite%28Author.Name=='susan%20t%20dumais'%29,Year>=2013%29&attributes=Year,Keyword&count=4)
 
-Poza platformą Azure polecenie [`kes.exe host_service`](CommandLine.md#host_service-command) jest ograniczone do indeksów zawierających maksymalnie 10 000 obiektów. Inne limity to maksymalnie 10 żądań interfejsu API na sekundę i łącznie 1000 żądań przed automatycznym przerwaniem procesu. Aby obejść te ograniczenia, uruchom polecenie z [maszyny wirtualnej platformy Azure z systemem Windows](../../../articles/virtual-machines/windows/quick-create-portal.md) lub wdróż do usługi w chmurze na platformie Azure przy użyciu polecenia [`kes.exe deploy_service`](CommandLine.md#deploy_service-command). Aby uzyskać szczegółowe informacje, zobacz [Wdrażanie usługi](#deploying-service).
+Poza platformą Azure polecenie [`kes.exe host_service`](CommandLine.md#host_service-command) jest ograniczone do indeksów zawierających maksymalnie 10 000 obiektów. Inne limity to maksymalnie 10 żądań interfejsu API na sekundę i łącznie 1000 żądań przed automatycznym przerwaniem procesu. Aby obejść te ograniczenia, uruchom polecenie z [maszyny wirtualnej platformy Azure z systemem Windows](../../../articles/virtual-machines/windows/quick-create-portal.md) lub wdróż do usługi w chmurze na platformie Azure przy użyciu polecenia [`kes.exe deploy_service`](CommandLine.md#deploy_service-command). Aby uzyskać szczegółowe informacje, zobacz Wdrażanie usługi.
 
 ## <a name="scale-up-to-host-larger-indices"></a>Skalowanie w górę na potrzeby hostowania większych indeksów
 
@@ -262,7 +262,7 @@ Po wdrożeniu usługi możesz wywoływać różne [internetowe interfejsy API](W
 
 ## <a name="test-the-service"></a>Testowanie usługi
 
-Aby debugować usługę na żywo, otwórz maszynę hostującą w przeglądarce internetowej. W przypadku usługi lokalnej wdrożonej za pomocą polecenia [host_service](#hosting-service) odwiedź stronę `http://localhost:<port>/`.  W przypadku usługi w chmurze platformy Azure wdrożonej za pomocą polecenia [deploy_service](#deploying-service) odwiedź stronę `http://<serviceName>.cloudapp.net/`.
+Aby debugować usługę na żywo, otwórz maszynę hostującą w przeglądarce internetowej. W przypadku usługi lokalnej wdrożonej za pomocą polecenia host_service odwiedź stronę `http://localhost:<port>/`.  W przypadku usługi w chmurze platformy Azure wdrożonej za pomocą polecenia deploy_service odwiedź stronę `http://<serviceName>.cloudapp.net/`.
 
 Ta strona zawiera linki do informacji o podstawowych statystykach wywołań interfejsu API, a także o gramatyce i indeksie hostowanych w tej usłudze. Ta strona zawiera również interfejs interaktywnego wyszukiwania, który demonstruje użycie internetowych interfejsów API. Podaj zapytania w polu wyszukiwania, aby zobaczyć wyniki wywołań interfejsu API [interpret](interpretMethod.md), [evaluate](evaluateMethod.md) i [calchistogram](calchistogramMethod.md). Bazowy kod HTML tej strony służy także jako przykład sposobu integrowania internetowych interfejsów API z aplikacją w celu utworzenia rozbudowanego interaktywnego środowiska wyszukiwania.
 

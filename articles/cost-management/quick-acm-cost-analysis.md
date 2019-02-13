@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/07/2019
+ms.date: 02/05/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: cb07ce71162a766add5ca251c97a11d353ee8084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 931732c047a5ffe22ad456a115c36d7c882d01bc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077661"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769855"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Szybki start: Poznawanie i analizowanie kosztów za pomocą funkcji Analiza kosztów
 
@@ -32,7 +32,9 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Analiza kosztów jest dostępna dla wszystkich klientów z umową [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/). Aby wyświetlać dane kosztów, musisz mieć co najmniej prawa dostępu do odczytu co najmniej jednego z poniższych zakresów. Aby uzyskać więcej informacji na temat przypisywania dostępu do danych usługi Cost Management, zobacz [Przypisywanie dostępu do danych](assign-access-acm-data.md).
+Analiza kosztów obsługuje wiele różnych typów kont platformy Azure. Aby wyświetlić pełną listę obsługiwanych typów kont, zobacz [Omówienie danych usługi Cost Management](understand-cost-mgt-data.md). Aby wyświetlić dane kosztów, potrzebujesz przynajmniej dostępu do odczytu dla Twojego konta platformy Azure.
+
+Dla klientów [Umowy Enterprise (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) musisz mieć przynajmniej dostęp do odczytu do co najmniej jednego z poniższych zakresów, aby wyświetlić dane kosztów.
 
 - Konto billingowe
 - Dział
@@ -41,13 +43,15 @@ Analiza kosztów jest dostępna dla wszystkich klientów z umową [Enterprise Ag
 - Subskrypcja
 - Grupa zasobów
 
+Aby uzyskać więcej informacji na temat przypisywania dostępu do danych usługi Cost Management, zobacz [Przypisywanie dostępu do danych](assign-access-acm-data.md).
+
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 - Zaloguj się do witryny Azure Portal pod adresem https://portal.azure.com.
 
 ## <a name="review-costs-in-cost-analysis"></a>Przeglądanie kosztów w obrębie analizy kosztów
 
-Aby przeglądać koszty przy użyciu analizy kosztów, w witrynie Azure Portal przejdź kolejno do pozycji **Zarządzanie kosztami i rozliczenia** &gt; **Zarządzanie kosztami** &gt; **Zmień zakres**, wybierz zakres, a następnie kliknij pozycję **Wybierz**.
+Aby zapoznać się z kosztami przy użyciu analizy kosztów, w witrynie Azure Portal przejdź do pozycji **Zarządzanie kosztami i rozliczenia** &gt; **Analiza kosztów**. Wybierz pozycję **Zakres: _ScopeName_**, wybierz zakres, a następnie kliknij przycisk **Wybierz**.
 
 Wybrany zakres będzie używany w całej usłudze Cost Management w celu zapewnienia konsolidacji danych i kontrolowania dostępu do informacji o kosztach. Gdy używasz zakresów, nie wybierasz równocześnie wielu z nich. W zamian wybierasz większy zakres obejmujący inne zakresy, a następnie filtrujesz zawartość do potrzebnych szczegółów. Zrozumienie tej kwestii jest ważne, ponieważ niektóre osoby nie powinny mieć dostępu do zakresu nadrzędnego, który obejmuje zakresy podrzędne.
 
@@ -94,7 +98,8 @@ Oto widok kosztów platformy Azure w ostatnim miesiącu.
 
 ![Skumulowany, zgrupowany widok dzienny przedstawiający przykładowe koszty usług platformy Azure w ostatnim miesiącu](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Wykresy przestawne w obszarze wykresu głównego przedstawiają różne sposoby grupowania, co daje szerszy obraz kosztów ogólnych dla wybranego przedziału czasu i filtrów. Wybierz właściwość lub tag, aby wyświetlić zagregowane koszty według dowolnego wymiaru. Pełny zestaw danych dla całkowitego widoku znajduje się w dolnej części ekranu. Można go zobaczyć, rozwijając zasobnik **Dane** lub wybierając kolejno pozycje **Eksportuj > Pobierz plik CSV** w górnej części ekranu. Oto przykład zasobnika danych dla grup zasobów.
+Wykresy przestawne w obszarze wykresu głównego przedstawiają różne sposoby grupowania, co daje szerszy obraz kosztów ogólnych dla wybranego przedziału czasu i filtrów. Wybierz właściwość lub tag, aby wyświetlić zagregowane koszty według dowolnego wymiaru.
+
 
 ![Pełne dane dla bieżącego widoku, w którym są wyświetlane nazwy grup zasobów](./media/quick-acm-cost-analysis/full-data-set.png)
 
@@ -103,6 +108,10 @@ Na poprzedniej ilustracji pokazano nazwy grup zasobów. Możesz grupować wedłu
 Podczas grupowania kosztów według konkretnego atrybutu dziesięć największych składników kosztów jest pokazanych od najwyższego do najniższego. Jeśli istnieje więcej niż dziesięć grup, wyświetlane jest dziewięć największych składników kosztów. Wyświetlana jest również grupa **Inne** obejmująca wszystkie pozostałe grupy. W przypadku grupowania według tagów może również zostać wyświetlona grupa **Bez tagów** dla kosztów, w których nie zastosowano klucza tagu. Grupa **Bez tagów** jest zawsze wyświetlana jako ostatnia, nawet jeśli koszty bez tagów są wyższe niż koszty z tagami. Jeśli liczba wartości tagów jest równa dziesięć lub większa, koszty bez tagów będą częścią grupy **Inne**.
 
 *Klasyczne* maszyny wirtualne (usługi Azure Service Management, ASM), sieci i zasoby magazynu nie udostępniają szczegółowych danych dotyczących rozliczeń. Są one scalane jako **Usługi klasyczne** podczas grupowania kosztów.
+
+Możesz wyświetlić pełny zestaw danych dla dowolnego widoku. Jakiekolwiek zastosowane opcje lub filtry wpływają na prezentowane dane. Aby wyświetlić pełny zestaw danych, kliknij listę **typ wykresu**, a następnie kliknij widok **tabeli**.
+
+![Dane dla bieżącego widoku w widoku tabeli](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
 
 ## <a name="download-cost-analysis-data"></a>Pobieranie danych analizy kosztów

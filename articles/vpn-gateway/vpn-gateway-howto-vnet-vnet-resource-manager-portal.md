@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: 245710d1ae3e7af4db5286a5db985fe35549ad3a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0646488c3dde4b0702d58bbd8905f4ae6bee1485
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098791"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821690"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-by-using-the-azure-portal"></a>Konfigurowanie połączenia bramy sieci VPN między sieciami wirtualnymi przy użyciu witryny Azure Portal
 
@@ -87,7 +87,7 @@ W tym artykule przedstawiono sposób łączenia sieci wirtualnych przy użyciu t
     - **Przestrzeń adresowa**: wprowadź ciąg *10.11.0.0/16*.
     - **Subskrypcja**: wybierz subskrypcję, której chcesz użyć.
     - **Grupa zasobów**: wprowadź ciąg *TestRG1*.
-    - **Lokalizacja**: wybierz pozycję **Wschodnie stany USA**.
+    - **Lokalizacja**: Wybierz pozycję **Wschodnie stany USA**.
     - **Podsieć**
         - **Nazwa**: wprowadź ciąg *FrontEnd*.
         - **Zakres adresów**: wprowadź ciąg *10.11.0.0/24*.
@@ -133,7 +133,7 @@ W tym artykule przedstawiono sposób łączenia sieci wirtualnych przy użyciu t
        - **Klucz wspólny**: wprowadź ciąg *abc123*. Klucz wspólny można utworzyć samodzielnie. Podczas tworzenia połączenia między sieciami wirtualnymi wartości muszą być zgodne.
 
 ## <a name="create-and-configure-testvnet1"></a>Tworzenie i konfigurowanie sieci TestVNet1
-Jeśli masz już sieć wirtualną, sprawdź, czy ustawienia są zgodne z projektem bramy sieci VPN. Zwróć szczególną uwagę na wszelkie podsieci, które mogą pokrywać się z innymi sieciami. Obecność nakładających się podsieci spowoduje, że połączenie nie będzie działać prawidłowo. Po poprawnym skonfigurowaniu sieci wirtualnej można rozpocząć wykonywanie kroków z sekcji [Określanie serwera DNS](#dns).
+Jeśli masz już sieć wirtualną, sprawdź, czy ustawienia są zgodne z projektem bramy sieci VPN. Zwróć szczególną uwagę na wszelkie podsieci, które mogą pokrywać się z innymi sieciami. Obecność nakładających się podsieci spowoduje, że połączenie nie będzie działać prawidłowo. Po poprawnym skonfigurowaniu sieci wirtualnej można rozpocząć wykonywanie kroków z sekcji Określanie serwera DNS.
 
 ### <a name="to-create-a-virtual-network"></a>Aby utworzyć sieć wirtualną
 [!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]

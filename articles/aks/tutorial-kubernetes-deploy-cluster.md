@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 7e5c78e1b30b311c6ce918453fe728ae86060dda
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 54872a1c5a40cdb3f51c17362daed93c3892001e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53720666"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754561"
 ---
 # <a name="tutorial-deploy-an-azure-kubernetes-service-aks-cluster"></a>Samouczek: Wdrażanie klastra usługi Azure Kubernetes Service (AKS)
 
@@ -67,10 +67,10 @@ Najpierw pobierz identyfikator zasobu usługi ACR za pomocą polecenia [az acr s
 az acr show --resource-group myResourceGroup --name <acrName> --query "id" --output tsv
 ```
 
-Aby udzielić poprawnego dostępu do klastra usługi AKS na potrzeby używania obrazów przechowywanych w usłudze ACR, utwórz przypisanie roli za pomocą polecenia [az role assignment create][]. Zastąp ciągi `<appId`> i `<acrId>` wartościami określonymi w dwóch poprzednich krokach.
+Aby udzielić poprawnego dostępu do klastra usługi AKS na potrzeby używania obrazów przechowywanych w usłudze ACR, przypisz rolę `AcrPull` za pomocą polecenia [az role assignment create][]. Zastąp ciągi `<appId`> i `<acrId>` wartościami określonymi w dwóch poprzednich krokach.
 
 ```azurecli
-az role assignment create --assignee <appId> --scope <acrId> --role Reader
+az role assignment create --assignee <appId> --scope <acrId> --role acrpull
 ```
 
 ## <a name="create-a-kubernetes-cluster"></a>Tworzenie klastra Kubernetes

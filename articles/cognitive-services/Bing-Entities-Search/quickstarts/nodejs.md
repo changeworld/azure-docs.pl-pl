@@ -1,94 +1,114 @@
 ---
-title: 'Szybki start: Interfejs API wyszukiwania jednostek Bing, Node.js'
+title: 'Szybki start: Wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing API REST wyszukiwania jednostek Bing przy użyciu środowiska Node.js'
 titlesuffix: Azure Cognitive Services
-description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania jednostek Bing.
+description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejsu API REST wyszukiwania wiadomości Bing przy użyciu języka C# i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 18476b8fa272ea235526693a9e2bab577298244d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 37e00c6cdc5340607a4aabc446d87e1a8575c552
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174469"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755139"
 ---
-# <a name="quickstart-for-bing-entity-search-api-with-nodejs"></a>Przewodnik Szybki start dotyczący korzystania z interfejsu API wyszukiwania jednostek Bing za pomocą środowiska Node.js
+# <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-nodejs"></a>Szybki start: Wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing API REST wyszukiwania jednostek Bing przy użyciu środowiska Node.js
 
-W tym artykule dowiesz się, jak korzystać z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web)  przy użyciu środowiska Node.js.
+Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania jednostek Bing i wyświetlenie odpowiedzi JSON. Ta prosta aplikacja w języku JavaScript wysyła zapytanie wyszukiwania wiadomości do interfejsu API i wyświetla odpowiedź. Kod źródłowy tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingEntitySearchv7.js).
+
+Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić ten kod, potrzebne jest środowisko [Node.js 6](https://nodejs.org/en/download/).
+* Najnowsza wersja środowiska [Node.js](https://nodejs.org/en/download/).
 
-Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API wyszukiwania jednostek Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.  Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* [Biblioteka żądań języka JavaScript](https://github.com/request/request)
 
-## <a name="search-entities"></a>Wyszukiwanie jednostek
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-Aby uruchomić tę aplikację, wykonaj następujące czynności.
+## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
-1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Uruchom program.
+1. Utwórz nowy plik JavaScript w swoim ulubionym środowisku IDE lub edytorze i ustaw wymagania dotyczące poziomu ścisłości oraz protokołu HTTPS.
 
-```nodejs
-'use strict';
+    ```javaScript
+    'use strict';
+    let https = require ('https');
+    ```
 
-let https = require ('https');
+2. Utwórz zmienne dla punktu końcowego interfejsu API, swojego klucza subskrypcji i zapytania wyszukiwania.
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
+    ```javascript
+    let subscriptionKey = 'ENTER YOUR KEY HERE';
+    let host = 'api.cognitive.microsoft.com';
+    let path = '/bing/v7.0/entities';
+    
+    let mkt = 'en-US';
+    let q = 'italian restaurant near me';
+    ```
 
-// Replace the subscriptionKey string value with your valid subscription key.
-let subscriptionKey = 'ENTER KEY HERE';
+3. Dołącz parametry rynku i zapytania do ciągu o nazwie `query`. Pamiętaj, aby zakodować adres URL zapytania przy użyciu `encodeURI()`.
+    ```javascript 
+    let query = '?mkt=' + mkt + '&q=' + encodeURI(q);
+    ```
 
-let host = 'api.cognitive.microsoft.com';
-let path = '/bing/v7.0/entities';
+## <a name="handle-and-parse-the-response"></a>Obsługa i analizowanie odpowiedzi
 
-let mkt = 'en-US';
-let q = 'italian restaurant near me';
+1. Zdefiniuj funkcję o nazwie `response_handler`, która przyjmuje wywołanie HTTP, `response`, jako parametr. W ramach tej funkcji wykonaj następujące czynności:
 
-let params = '?mkt=' + mkt + '&q=' + encodeURI(q);
+    1. Definiowanie zmiennej, by zawierała treść odpowiedzi JSON.  
+        ```javascript
+        let response_handler = function (response) {
+            let body = '';
+        };
+        ```
 
-let response_handler = function (response) {
-    let body = '';
-    response.on ('data', function (d) {
-        body += d;
-    });
-    response.on ('end', function () {
-        let body_ = JSON.parse (body);
-        let body__ = JSON.stringify (body_, null, '  ');
-        console.log (body__);
-    });
-    response.on ('error', function (e) {
-        console.log ('Error: ' + e.message);
-    });
-};
+    2. Zapisanie treści odpowiedzi, gdy wywoływana jest flaga **data**.
+        ```javascript
+        response.on('data', function (d) {
+            body += d;
+        });
+        ```
 
-let Search = function () {
-    let request_params = {
-        method : 'GET',
-        hostname : host,
-        path : path + params,
-        headers : {
-            'Ocp-Apim-Subscription-Key' : subscriptionKey,
-        }
-    };
+    3. Po zasygnalizowaniu flagi **end** przeanalizuj dane JSON i wydrukuj je.
 
-    let req = https.request (request_params, response_handler);
-    req.end ();
-}
+        ```javascript
+        response.on ('end', function () {
+        let json = JSON.stringify(JSON.parse(body), null, '  ');
+        console.log (json);
+        });
+        ```
 
-Search ();
-```
+## <a name="send-a-request"></a>Wysyłanie żądania
 
-**Odpowiedź**
+1. Utwórz funkcję o nazwie `Search`, aby wysłać żądanie wyszukiwania. Wykonaj w niej poniższe czynności.
+
+    1. Utwórz obiekt JSON zawierający parametry Twojego żądania: użyj `Get` dla metody oraz dodaj informacje dotyczące hosta i ścieżki. Dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`. 
+    2. Użyj `https.request()` do wysłania żądania z utworzoną wcześniej procedurą obsługi odpowiedzi i Twoimi parametrami wyszukiwania.
+    
+    ```javascript
+    let Search = function () {
+        let request_params = {
+            method : 'GET',
+            hostname : host,
+            path : path + query,
+            headers : {
+                'Ocp-Apim-Subscription-Key' : subscriptionKey,
+            }
+        };
+    
+        let req = https.request (request_params, response_handler);
+        req.end ();
+    }
+    ```
+
+2. Wywołaj funkcję `Search()`.
+
+## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -153,11 +173,10 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-[Powrót do początku](#HOLTop)
-
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Bing Entity Search tutorial (Samouczek dotyczący wyszukiwania jednostek Bing)](../tutorial-bing-entities-search-single-page-app.md)
-> [Omówienie wyszukiwania jednostek Bing](../search-the-web.md )
-> [API Reference (Dokumentacja interfejsu API)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)
+
+* [Czym jest interfejs API wyszukiwania jednostek Bing?](../overview.md )
+* [Dokumentacja interfejsu API wyszukiwania jednostek Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

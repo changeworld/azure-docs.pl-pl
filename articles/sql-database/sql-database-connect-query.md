@@ -3,7 +3,7 @@ title: Przewodniki Szybki start dotyczące nawiązywania połączeń z usługą 
 description: Przewodniki Szybki start z informacjami na temat nawiązywania połączeń z usługą Azure SQL Database i wykonywania zapytań.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
@@ -11,15 +11,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 11/01/2018
-ms.openlocfilehash: 613b4cf2b08269259a4608a6960b815777cd0ae9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.date: 12/18/2018
+ms.openlocfilehash: c569b7ba6c49a560b4a6a1ecb10a6a61378a1228
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608038"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814900"
 ---
-# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Przewodniki Szybki start: nawiązywanie połączeń z usługą Azure SQL Database i wykonywanie zapytań
+# <a name="quickstarts-azure-sql-database-connect-and-query"></a>Przewodniki Szybki start: Nawiązywanie połączeń z usługą Azure SQL Database i wykonywanie zapytań
 
 Poniższy dokument zawiera linki do przykładów związanych z platformą Azure przedstawiających nawiązywanie połączeń z usługą Azure SQL Database i wykonywanie zapytań. Zawiera także pewne rekomendacje dotyczące protokołu TLS.
 
@@ -53,6 +53,51 @@ Zalecamy również wyłączenie protokołu TLS 1.1 i 1.0 na kliencie, jeśli wym
 
 Sterowniki firm innych niż Microsoft mogą nie używać domyślnie protokołu TLS. Może to mieć znaczenie podczas nawiązywania połączenia z usługą Azure SQL Database. Aplikacje ze sterownikami osadzonymi mogą nie pozwalać na kontrolowanie tych ustawień połączenia. Zaleca się zbadanie zabezpieczeń takich sterowników i aplikacji przed ich użyciem w systemach, które wchodzą w interakcję z danymi poufnymi.
 
+## <a name="libraries"></a>Biblioteki
+
+Do łączenia z usługą Azure SQL Database można używać różnych bibliotek i platform. Zapoznaj się z naszymi [samouczkami wprowadzającymi](https://aka.ms/sqldev), aby szybko rozpocząć pracę z językami programowania, takimi jak C#, Java, Node.js, PHP i Python. Następnie utwórz aplikację przy użyciu programu SQL Server w systemie Linux lub Windows albo platformy Docker w systemie macOS.
+
+W poniższej tabeli wymieniono biblioteki łączności (*sterowniki*), których aplikacje klienckie mogą używać w różnych językach, aby łączyć się z programem SQL Server działającym lokalnie lub w chmurze i korzystać z niego. Można ich używać w systemach Linux i Windows oraz na platformie Docker, a także za ich pomocą łączyć się z usługami Azure SQL Database i Azure SQL Data Warehouse. 
+
+| Język | Platforma | Dodatkowe zasoby | Do pobrania | Rozpoczęcie pracy |
+| :-- | :-- | :-- | :-- | :-- |
+| C# | Windows, Linux, macOS | [Program Microsoft ADO.NET dla programu SQL Server](https://docs.microsoft.com/sql/connect/ado-net/microsoft-ado-net-for-sql-server) | [Pobieranie](https://www.microsoft.com/net/download/) | [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/csharp/ubuntu)
+| Java | Windows, Linux, macOS | [Sterownik JDBC firmy Microsoft dla programu SQL Server](https://msdn.microsoft.com/library/mt484311.aspx) | [Pobieranie](https://go.microsoft.com/fwlink/?linkid=852460) |  [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu)
+| PHP | Windows, Linux, macOS| [Sterowniki PHP SQL dla programu SQL Server](https://docs.microsoft.com/sql/connect/php/microsoft-php-driver-for-sql-server) | [Pobieranie](https://docs.microsoft.com/sql/connect/php/download-drivers-php-sql-server) | [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/php/ubuntu/)
+| Node.js | Windows, Linux, macOS | [Sterowniki Node.js dla programu SQL Server](https://msdn.microsoft.com/library/mt652093.aspx) | [Instalowanie](https://msdn.microsoft.com/library/mt652094.aspx) |  [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu)
+| Python | Windows, Linux, macOS | [Sterownik SQL języka Python](https://msdn.microsoft.com/library/mt652092.aspx) | Opcje instalacji: <br/> \* [pymssql](https://msdn.microsoft.com/library/mt694094.aspx) <br/> \* [pyodbc](https://msdn.microsoft.com/library/mt763257.aspx) |  [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu)
+| Ruby | Windows, Linux, macOS | [Sterowniki Ruby dla programu SQL Server](https://msdn.microsoft.com/library/mt691981.aspx) | [Instalowanie](https://msdn.microsoft.com/library/mt711041.aspx) | [Wprowadzenie](https://www.microsoft.com/sql-server/developer-get-started/ruby/ubuntu)
+| C++ | Windows, Linux, macOS | [Sterownik ODBC firmy Microsoft dla programu SQL Server](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) | [Pobieranie](https://msdn.microsoft.com/library/mt654048(v=sql.1).aspx) |  
+
+Poniższa tabela zawiera przykłady struktur mapowania obiektowo-relacyjnego (ORM) i struktur internetowych, których aplikacje klienckie mogą używać z programem SQL Server działającym lokalnie lub w chmurze. Tych struktur można używać w systemach Linux i Windows oraz na platformie Docker i łączyć się za ich pomocą z usługami SQL Database i SQL Data Warehouse. 
+
+| Język | Platforma | Struktury ORM |
+| :-- | :-- | :-- |
+| C# | Windows, Linux, macOS | [Entity Framework](https://docs.microsoft.com/ef)<br>[Entity Framework Core](https://docs.microsoft.com/ef/core/index) |
+| Java | Windows, Linux, macOS |[Hibernate ORM](https://hibernate.org/orm)|
+| PHP | Windows, Linux, macOS | [Laravel (Eloquent)](https://laravel.com/docs/5.0/eloquent) |
+| Node.js | Windows, Linux, macOS | [Sequelize ORM](https://docs.sequelizejs.com) |
+| Python | Windows, Linux, macOS |[Django](https://www.djangoproject.com/) |
+| Ruby | Windows, Linux, macOS | [Ruby on Rails](https://rubyonrails.org/) |
+||||
+
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać informacje na temat architektury łączności, zobacz artykuł [Azure SQL Database Connectivity Architecture (Architektura łączności usługi Azure SQL Database)](sql-database-connectivity-architecture.md).
+- Aby uzyskać informacje na temat architektury łączności, zobacz artykuł [Azure SQL Database Connectivity Architecture (Architektura łączności usługi Azure SQL Database)](sql-database-connectivity-architecture.md).
+- Znajdź [sterowniki programu SQL Server](https://msdn.microsoft.com/library/mt654049.aspx) służące do łączenia się z aplikacji klienckich
+- Łączenie z usługą SQL Database:
+  - [Nawiązywanie połączenia z bazą danych SQL Database przy użyciu platformy .NET (C#)](sql-database-connect-query-dotnet.md) 
+  - [Nawiązywanie połączenia z bazą danych SQL Database przy użyciu języka PHP](sql-database-connect-query-php.md) 
+  - [Nawiązywanie połączenia z bazą danych SQL Database przy użyciu języka Node.js](sql-database-connect-query-nodejs.md) 
+  - [Nawiązywanie połączenia z bazą danych SQL Database przy użyciu platformy Java](sql-database-connect-query-java.md) 
+  - [Nawiązywanie połączenia z bazą danych SQL Database przy użyciu języka Python](sql-database-connect-query-python.md)
+  - [Nawiązywanie połączenia z bazą danych SQL Database przy użyciu języka Ruby](sql-database-connect-query-ruby.md)
+- Przykłady kodu logiki ponawiania próby:
+  - [Nawiązywanie połączeń odpornych na błędy z bazą danych SQL za pomocą środowiska ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+  - [nawiązywanie połączeń odpornych na błędy z bazą danych SQL za pomocą języka PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
+
+<!-- Link references. -->
+
+[step-4-connect-resiliently-to-sql-with-ado-net-a78n]: https://docs.microsoft.com/sql/connect/ado-net/step-4-connect-resiliently-to-sql-with-ado-net
+
+[step-4-connect-resiliently-to-sql-with-php-p42h]: https://docs.microsoft.com/sql/connect/php/step-4-connect-resiliently-to-sql-with-php

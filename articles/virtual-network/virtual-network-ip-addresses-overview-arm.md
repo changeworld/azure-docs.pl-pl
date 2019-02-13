@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 01/30/2019
 ms.author: jdial
-ms.openlocfilehash: f4af899be489dab2fc73bb33943882d4dc81576f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054762"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488098"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -61,22 +61,23 @@ Publiczne adresy IP są tworzone przy użyciu jednej z następujących jednostek
 Wszystkie publiczne adresy IP utworzone przed wprowadzeniem jednostek SKU są publicznymi adresami IP opartymi na podstawowej jednostce SKU. Od momentu wprowadzenia jednostki SKU masz opcję określania, którą jednostką SKU ma być publiczny adres IP. Podstawowe adresy SKU:
 
 - Są przypisywane przy użyciu metody alokacji statycznej lub dynamicznej.
+- Ich dostosowywalny limit czasu bezczynności dla przepływu opartego na ruchu przychodzącym wynosi od 4 do 30 minut przy domyślnej wartości 4 minut, a stały limit czasu bezczynności dla przepływu opartego na ruchu wychodzącym wynosi 4 minuty.
 - Są domyślnie otwarte.  Użycie sieciowych grup zabezpieczeń do ograniczania ruchu przychodzącego lub wychodzącego jest zalecane, ale opcjonalne.
 - Są przypisywane do zasobów platformy Azure, do których można przypisać publiczny adres IP, takich jak interfejsy sieciowe, bramy VPN Gateway, bramy Application Gateway i moduły równoważenia obciążenia dostępne z Internetu.
-- Mogą być przypisywane do określonej strefy.
-- Nie są strefowo nadmiarowe. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview (Omówienie stref dostępności)](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Nie obsługują scenariuszy ze strefą dostępności.  Dla scenariuszy obejmujących strefę dostępności należy użyć standardowego publicznego adresu IP jednostki SKU. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie stref dostępności) oraz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 #### <a name="standard"></a>Standardowa (Standard)
 
 Standardowe publiczne adresy IP jednostek SKU:
 
-- Są przypisywane tylko przy użyciu metody alokacji statycznej.
+- Zawsze używają metody alokacji statycznej.
+- Ich dostosowywalny limit czasu bezczynności dla przepływu opartego na ruchu przychodzącym i wychodzącym wynosi od 4 do 66 minut przy domyślnej wartości 4 minut.
 - Domyślnie są zabezpieczone i zamknięte dla przychodzącego ruchu sieciowego. Dozwolony przychodzący ruch sieciowy należy jawnie umieścić na liście dozwolonych z użyciem [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups).
-- Są przypisywane do interfejsów sieciowych, publicznych standardowych modułów równoważenia obciążenia, bram Application Gateway lub bram VPN Gateway. Aby uzyskać więcej informacji na temat standardowych modułów równoważenia obciążenia platformy Azure, zobacz [Azure standard load balancer](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie standardowego modułu równoważenia obciążenia).
-- Są domyślnie strefowo nadmiarowe. Mogą być tworzone strefowo i być gwarantowane w określonej strefie dostępności. Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie stref dostępności) oraz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Są przypisywane do interfejsów sieciowych, publicznych usług Load Balancer w warstwie Standardowa, bram Application Gateway lub bram VPN Gateway. Aby uzyskać więcej informacji na temat usługi Load Balancer w warstwie Standardowa, zobacz [Usługa Azure Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Domyślnie strefowo nadmiarowe i opcjonalnie strefowe (mogą zostać utworzone jako strefowe i gwarantowane w określonej strefie dostępności). Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie stref dostępności) oraz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Próba komunikacji ze standardowym zasobem SKU będzie kończyć się niepowodzeniem do momentu utworzenia i skojarzenia [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups), a następnie jawnego zezwolenia na żądany ruch przychodzący.
+> Próba obsługi komunikacji przychodzącej za pomocą standardowego zasobu SKU będzie kończyć się niepowodzeniem do momentu utworzenia i skojarzenia [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups), a następnie jawnego zezwolenia na żądany ruch przychodzący.
 
 ### <a name="allocation-method"></a>Metoda alokacji
 

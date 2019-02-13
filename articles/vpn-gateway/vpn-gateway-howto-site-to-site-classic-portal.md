@@ -1,5 +1,5 @@
 ---
-title: 'Łączenie sieci lokalnej z siecią wirtualną platformy Azure: sieć VPN typu lokacja-lokacja (model klasyczny): portal | Microsoft Docs'
+title: 'Połącz sieć lokalną z siecią wirtualną platformy Azure: Sieć VPN typu lokacja-lokacja (klasyczna): Portal | Microsoft Docs'
 description: Tworzenie połączenia IPsec z sieci lokalnej do sieci wirtualnej klasycznej platformy Azure za pośrednictwem publicznego Internetu.
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4e9736adfce83fc449b68a7448441ecee481ad2a
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: b0fa60d709c2fa6c286e44797d53e8a4a8d47d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38477900"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695608"
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Tworzenie sieci wirtualnej za pomocą połączenia typu lokacja-lokacja przy użyciu witryny Azure Portal (model klasyczny)
 
@@ -65,8 +65,8 @@ W przykładach w tym artykule są stosowane następujące wartości. Tych warto�
 * **Grupa zasobów:** TestRG1
 * **Lokalizacja:** Wschodnie stany USA
 * **Serwer DNS:** 10.11.0.3 (opcjonalnie na potrzeby tego ćwiczenia)
-* **Nazwa lokacji lokalnej:** Lokacja2
-* **Przestrzeń adresowa klienta:** przestrzeń adresowa znajdująca się w lokacji lokalnej.
+* **Nazwa lokacji lokalnej:** Site2
+* **Przestrzeń adresowa klienta:** Przestrzeń adresowa znajdująca się w lokacji lokalnej.
 
 ## <a name="CreatVNet"></a>1. Tworzenie sieci wirtualnej
 
@@ -226,5 +226,5 @@ Aby uzyskać instrukcje zmiany jednostki SKU bramy, zobacz [Resize a gateway SKU
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Aby uzyskać więcej informacji, zobacz [Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) (Maszyny wirtualne).
+* Po zakończeniu procesu nawiązywania połączenia można dodać do sieci wirtualnych maszyny wirtualne. Aby uzyskać więcej informacji, zobacz [Virtual Machines](https://docs.microsoft.com/azure/) (Maszyny wirtualne).
 * Aby uzyskać informacje o wymuszonym tunelowaniu, zobacz [Informacje o wymuszonym tunelowaniu](vpn-gateway-about-forced-tunneling.md).

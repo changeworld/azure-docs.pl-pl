@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: f844b460e5fc6548a17b93038d1232fe61483018
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: b4d0ee26cb9f7283cac871c70737cd701fb74c91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754071"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818587"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch
 
@@ -62,7 +62,7 @@ Niektóre z poniższych zasobów — konta, węzły obliczeniowe, pule, zadania 
   * [Zadanie podrzędne uruchamiania](#start-task)
   * [Zadanie podrzędne Menedżera zadań](#job-manager-task)
   * [Zadania podrzędne przygotowania i zwolnienia zadań](#job-preparation-and-release-tasks)
-  * [Zadanie podrzędne obejmujące wiele wystąpień (MPI)](#multi-instance-tasks)
+  * Zadanie podrzędne obejmujące wiele wystąpień (MPI)
   * [Zależności zadań podrzędnych](#task-dependencies)
 * [Pakiety aplikacji](#application-packages)
 
@@ -153,7 +153,7 @@ Aby uzyskać szczegółowe wymagania i procedury, zobacz [Use a custom image to 
 
 #### <a name="container-support-in-virtual-machine-pools"></a>Obsługa kontenerów w pulach maszyn wirtualnych
 
-Podczas tworzenia puli konfiguracji maszyn wirtualnych za pomocą interfejsów API usługi Batch możesz skonfigurować pulę do uruchamiania zadań w kontenerach platformy Docker. Obecnie musisz utworzyć pulę przy użyciu obrazu, który obsługuje kontenery platformy Docker. Użyj systemu Windows Server 2016 Datacenter z obrazem kontenerów z witryny Azure Marketplace lub podaj niestandardowy obraz maszyny wirtualnej obejmujący platformę Docker Community Edition lub Enterprise Edition i wszystkie wymagane sterowniki. Ustawienia puli muszą zawierać [konfigurację kontenera](/rest/api/batchservice/pool/add#definitions_containerconfiguration), która kopiuje obrazy kontenera do maszyn wirtualnych po utworzeniu puli. Zadania uruchamiane w puli mogą następnie odwoływać się do obrazów kontenera i opcji uruchamiania kontenera.
+Podczas tworzenia puli konfiguracji maszyn wirtualnych za pomocą interfejsów API usługi Batch możesz skonfigurować pulę do uruchamiania zadań w kontenerach platformy Docker. Obecnie musisz utworzyć pulę przy użyciu obrazu, który obsługuje kontenery platformy Docker. Użyj systemu Windows Server 2016 Datacenter z obrazem kontenerów z witryny Azure Marketplace lub podaj niestandardowy obraz maszyny wirtualnej obejmujący platformę Docker Community Edition lub Enterprise Edition i wszystkie wymagane sterowniki. Ustawienia puli muszą zawierać [konfigurację kontenera](/rest/api/batchservice/pool/add), która kopiuje obrazy kontenera do maszyn wirtualnych po utworzeniu puli. Zadania uruchamiane w puli mogą następnie odwoływać się do obrazów kontenera i opcji uruchamiania kontenera.
 
 Aby uzyskać więcej informacji, zobacz [Run Docker container applications on Azure Batch](batch-docker-container-workloads.md) (Uruchamianie aplikacji kontenera platformy Docker w usłudze Azure Batch).
 
@@ -215,7 +215,7 @@ Można wybrać [pakiety aplikacji](#application-packages) do wdrożenia w węzł
 
 ### <a name="network-configuration"></a>Konfiguracja sieci
 
-Możesz określić podsieć [sieci wirtualnej](../virtual-network/virtual-networks-overview.md) platformy Azure, w której powinny zostać utworzone węzły obliczeniowe puli. Zobacz sekcję [Konfiguracja sieciowa puli](#pool-network-configuration), aby uzyskać więcej informacji.
+Możesz określić podsieć [sieci wirtualnej](../virtual-network/virtual-networks-overview.md) platformy Azure, w której powinny zostać utworzone węzły obliczeniowe puli. Zobacz sekcję Konfiguracja sieciowa puli, aby uzyskać więcej informacji.
 
 
 ## <a name="job"></a>Zadanie
@@ -271,7 +271,7 @@ Oprócz zadań podrzędnych zdefiniowanych do wykonywania obliczeń w węźle w 
 * [Zadanie podrzędne uruchamiania](#start-task)
 * [Zadanie podrzędne Menedżera zadań](#job-manager-task)
 * [Zadania podrzędne przygotowania i zwolnienia zadań](#job-preparation-and-release-tasks)
-* [Zadania podrzędne obejmujące wiele wystąpień (MPI)](#multi-instance-tasks)
+* Zadania obejmujące wiele wystąpień
 * [Zależności zadań podrzędnych](#task-dependencies)
 
 ### <a name="start-task"></a>Zadanie uruchamiania

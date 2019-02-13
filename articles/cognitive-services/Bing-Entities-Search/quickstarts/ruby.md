@@ -1,73 +1,81 @@
 ---
-title: 'Szybki start: Interfejs API wyszukiwania jednostek Bing, Ruby'
+title: 'Szybki start: wysyłanie żądania wyszukiwania do interfejsu API REST wyszukiwania jednostek Bing przy użyciu języka Ruby'
 titlesuffix: Azure Cognitive Services
-description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API wyszukiwania jednostek Bing.
+description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania do interfejs API REST wyszukiwania jednostek Bing przy użyciu języka Ruby i otrzymywać odpowiedzi w formacie JSON.
 services: cognitive-services
 author: aahill
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
-ms.date: 11/28/2017
+ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: 2dec6359da7afc9e0e6c8dabaec1afb35e77e85c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ed8b590d5f31daebb0cffb270f72ae156acab778
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191554"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753150"
 ---
 # <a name="quickstart-for-bing-entity-search-api-with-ruby"></a>Przewodnik Szybki start dotyczący korzystania z interfejsu API wyszukiwania jednostek Bing za pomocą języka Ruby
 
-W tym artykule przedstawiono sposób korzystania z interfejsu API [wyszukiwania jednostek Bing](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web) przy użyciu języka Ruby.
+Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania jednostek Bing i wyświetlenie odpowiedzi JSON. Ta prosta aplikacja w języku Ruby wysyła zapytanie wyszukiwania wiadomości do interfejsu API i wyświetla odpowiedź. Kod źródłowy tej aplikacji jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/ruby/Search/BingEntitySearchv7.rb).
+
+Chociaż ta aplikacja jest napisana w języku Ruby, interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić ten kod, potrzebne jest środowisko [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) lub nowsze.
+* [Ruby 2.4](https://www.ruby-lang.org/en/downloads/) lub nowsza wersja.
 
-Trzeba mieć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z dostępem do **interfejsu API wyszukiwania jednostek Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-entity-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki start. Potrzebny jest klucz dostępu podany przy aktywacji bezpłatnej wersji próbnej lub klucz płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.   Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bing](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+[!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../../includes/cognitive-services-bing-entity-search-signup-requirements.md)]
 
-## <a name="search-entities"></a>Wyszukiwanie jednostek
+## <a name="create-and-initialize-the-application"></a>Tworzenie i inicjowanie aplikacji
 
-Aby uruchomić tę aplikację, wykonaj następujące czynności.
+1. W Twoim ulubionym środowisku IDE lub edytorze kodu utwórz plik wiadomości języka Ruby i zaimportuj następujące pakiety.
 
-1. Utwórz nowy projekt Ruby w ulubionym środowisku IDE.
-2. Dodaj kod przedstawiony poniżej.
-3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
-4. Uruchom program.
+    ```ruby
+    require 'net/https'
+    require 'cgi'
+    require 'json'
+    ```
 
-```ruby
-require 'net/https'
-require 'cgi'
-require 'json'
+2. Utwórz zmienne dla swojego punktu końcowego interfejsu API, adresu URL wyszukiwania wiadomości, swojego klucza subskrypcji i zapytania wyszukiwania.
+    
+    ```ruby
+    host = 'https://api.cognitive.microsoft.com'
+    path = '/bing/v7.0/entities'
+    
+    mkt = 'en-US'
+    query = 'italian restaurants near me'
+    ```
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
+## <a name="format-and-make-an-api-request"></a>Formatowanie i wykonywanie żądania interfejsu API
 
-# Replace the subscriptionKey string value with your valid subscription key.
-subscriptionKey = 'ENTER KEY HERE'
+1. Utwórz ciąg parametrów dla swojego żądania, dołączając do zmiennej na rynku parametr `?mkt=`. Zakoduj swoje zapytanie, a następnie dołącz je do parametru `&q=`. Połącz hosta interfejsu API, ścieżkę i parametry żądania, a następnie rzutuj je jako obiekt URI.
 
-host = 'https://api.cognitive.microsoft.com'
-path = '/bing/v7.0/entities'
+    ```ruby
+    params = '?mkt=' + mkt + '&q=' + CGI.escape(query)
+    uri = URI (host + path + params)
+    ```
 
-mkt = 'en-US'
-query = 'italian restaurants near me'
+2. Użyj zmiennych z ostatniego kroku, aby utworzyć żądanie. Dodaj klucz subskrypcji do nagłówka `Ocp-Apim-Subscription-Key`.
 
-params = '?mkt=' + mkt + '&q=' + CGI.escape(query)
-uri = URI (host + path + params)
+    ```ruby
+    request = Net::HTTP::Get.new(uri)
+    request['Ocp-Apim-Subscription-Key'] = subscriptionKey
+    ```
 
-request = Net::HTTP::Get.new(uri)
-request['Ocp-Apim-Subscription-Key'] = subscriptionKey
+3. Wysyłanie żądania i drukowanie odpowiedzi
 
-response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
-    http.request (request)
-end
+    ```ruby
+    response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+        http.request (request)
+    end
 
-puts JSON::pretty_generate (JSON (response.body))
-```
+    puts JSON::pretty_generate (JSON (response.body))
+    ```
 
-**Odpowiedź**
+## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
 Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
@@ -132,11 +140,10 @@ Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie J
 }
 ```
 
-[Powrót do początku](#HOLTop)
-
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Bing Entity Search tutorial (Samouczek dotyczący wyszukiwania jednostek Bing)](../tutorial-bing-entities-search-single-page-app.md)
-> [Omówienie wyszukiwania jednostek Bing](../search-the-web.md )
-> [API Reference (Dokumentacja interfejsu API)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)
+> [Tworzenie jednostronicowej aplikacji internetowej](../tutorial-bing-entities-search-single-page-app.md)
+
+* [Czym jest interfejs API wyszukiwania jednostek Bing](../search-the-web.md)
+* [Dokumentacja interfejsu API wyszukiwania jednostek Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

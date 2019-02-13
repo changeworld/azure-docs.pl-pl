@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 57388b4e2f74a1e9e8d9c322020077dfd67e89c1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1ee28d04bfce00a6fe47d6914b75cfd7b18e634d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198150"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816547"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Co to jest interfejs API przetwarzania obrazów w wersji 1.0?
 
@@ -26,17 +26,17 @@ ms.locfileid: "55198150"
 >- [Interfejs API przetwarzania obrazów w wersji 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
 
 Oparty na chmurze interfejs API przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. Po przekazaniu obrazu lub podaniu jego adresu URL algorytmy funkcji przetwarzania obrazu firmy Microsoft mogą dokonać analizy zawartości wizualnej na różne sposoby w zależności od danych wejściowych i wybranych opcji użytkownika. Za pomocą interfejsu API przetwarzania obrazów użytkownicy mogą analizować obrazy w celu:
-* [Oznaczania obrazów w oparciu o zawartość.](#Tagging)
-* [Kategoryzowania obrazów.](#Categorizing)
-* [Określania typu i jakości obrazów.](#Identifying)
+* Oznaczania obrazów w oparciu o zawartość.
+* Kategoryzowania obrazów.
+* Określania typu i jakości obrazów.
 * [Wykrywania twarzy i zwracania ich współrzędnych.](#Faces)
-* [Rozpoznawania zawartości specyficznej dla domeny.](#Domain-Specific)
-* [Generowania opisów zawartości.](#Descriptions)
-* [Używania optycznego rozpoznawania znaków do identyfikacji tekstu drukowanego w obrazach.](#OCR)
-* [Rozpoznawania tekstu odręcznego.](#RecognizeText)
-* [Rozróżniania schematów kolorów.](#Color)
-* [Flagowania zawartości dla dorosłych.](#Adult)
-* [Przycinania zdjęć do użycia jako miniatury.](#Thumbnails)
+* Rozpoznawania zawartości specyficznej dla domeny.
+* Generowania opisów zawartości.
+* Używania optycznego rozpoznawania znaków do identyfikacji tekstu drukowanego w obrazach.
+* Rozpoznawania tekstu odręcznego.
+* Rozróżniania schematów kolorów.
+* Flagowania zawartości dla dorosłych.
+* Przycinania zdjęć do użycia jako miniatury.
 
 ## <a name="requirements"></a>Wymagania
 * Obsługiwane metody wprowadzania danych: dane binarne nieprzetworzonego obrazu w postaci pliku typu application/octet stream lub adres URL obrazu.

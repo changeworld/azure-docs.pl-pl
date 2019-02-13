@@ -1,296 +1,276 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Czat na żywo Comm100 | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Porozmawiaj na żywo Comm100.
+title: 'Samouczek: integracja usługi Azure Active Directory z aplikacją Comm100 Live Chat | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją Comm100 Live Chat.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 0340d7f3-ab54-49ef-b77c-62a0efd5d49c
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/09/2018
+ms.topic: tutorial
+ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: b85162c8392e8ecdb08a3ed04ff5b9de835808a1
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
-ms.translationtype: MT
+ms.openlocfilehash: 1e0fbf7678ddac76d1a31c4bde4d75545b429add
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42057291"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700703"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Samouczek: Integracja usługi Azure Active Directory rozmowę Comm100 na żywo
+# <a name="tutorial-azure-active-directory-integration-with-comm100-live-chat"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Comm100 Live Chat
 
-W tym samouczku dowiesz się, jak zintegrować Czat na żywo Comm100 w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Comm100 Live Chat z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Comm100 Live Chat z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Czat na żywo Comm100 z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Comm100 Live Chat.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Comm100 Live Chat (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Czat na żywo Comm100.
-- Użytkowników, aby automatycznie uzyskać zalogowane poczatować Comm100 na żywo (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD rozmowę Comm100 na żywo, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Comm100 Live Chat, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Czat na żywo Comm100 logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Włączona subskrypcja logowania jednokrotnego aplikacji Comm100 Live Chat
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Czat na żywo Comm100 z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-comm100-live-chat-from-the-gallery"></a>Dodawanie Czat na żywo Comm100 z galerii
-Aby skonfigurować integrację z Czat na żywo Comm100 w usłudze Azure AD, należy dodać Czat na żywo Comm100 z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Comm100 Live Chat obsługuje jednokrotne logowanie inicjowane przez **dostawcę usługi**
 
-**Aby dodać Czat na żywo Comm100 z galerii, wykonaj następujące czynności:**
+## <a name="adding-comm100-live-chat-from-the-gallery"></a>Dodawanie aplikacji Comm100 Live Chat z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Comm100 Live Chat z usługą Azure AD, musisz dodać aplikację Comm100 Live Chat z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać aplikację Comm100 Live Chat z galerii, wykonaj następujące czynności:**
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Nowy przycisk aplikacji][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-4. W polu wyszukiwania wpisz **Czat na żywo Comm100**, wybierz opcję **Czat na żywo Comm100** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Comm100 Live Czat na liście wyników](./media/comm100livechat-tutorial/tutorial_comm100livechat_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowania usługi Azure AD logowanie jednokrotne, w rozmowę Comm100 na żywo w oparciu o nazwie "Britta Simon" użytkownika testowego.
+4. W polu wyszukiwania wpisz **Comm100 Live Chat**, wybierz pozycję **Comm100 Live Chat** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Czat na żywo Comm100 do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w Czat na żywo Comm100 musi zostać ustanowione.
+     ![Aplikacja Comm100 Live Czat na liście wyników](common/search-new-app.png)
 
-Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego rozmowę Comm100 na żywo, należy wykonać poniższe bloki konstrukcyjne:
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Czat na żywo Comm100](#create-a-comm100-live-chat-test-user)**  — aby odpowiednikiem Britta Simon w Comm100 Live Chat połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Comm100 Live Chat, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Comm100 Live Chat.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Comm100 Live Chat, należy ukończyć poniższe bloki konstrukcyjne:
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Czat na żywo Comm100.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego aplikacji Comm100 Live Chat](#configure-comm100-live-chat-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Comm100 Live Chat](#create-comm100-live-chat-test-user)** — aby mieć w aplikacji Comm100 Live Chat odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne rozmowę Comm100 na żywo, wykonaj następujące czynności:**
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. W witrynie Azure portal na **Czat na żywo Comm100** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Comm100 Live Chat, wykonaj następujące czynności:
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/comm100livechat-tutorial/tutorial_comm100livechat_samlbase.png)
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Comm100 Live Chat** wybierz pozycję **Logowanie jednokrotne**.
 
-3. Na **adresy URL i domen Czat na żywo Comm100** sekcji, wykonaj następujące czynności:
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![Adresy URL i domen Czat na żywo Comm100 pojedynczego logowania jednokrotnego informacji](./media/comm100livechat-tutorial/tutorial_comm100livechat_url.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<SUBDOMAIN>.comm100.com/AdminManage/LoginSSO.aspx?siteId=<SITEID>`
-    
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
+
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Informacje o domenie i adresach URL aplikacji Comm100 Live Chat oraz logowaniu jednokrotnym](common/sp-signonurl.png)
+
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<SUBDOMAIN>.comm100.com/AdminManage/LoginSSO.aspx?siteId=<SITEID>`
+
     > [!NOTE] 
-    > Wartość adres URL logowania nie jest prawdziwe. Wartość adres URL logowania zostaną zaktualizowane o rzeczywisty logowania jednokrotnego adresu URL, który zostało wyjaśnione w dalszej części tego samouczka.
+    > Wartość adresu URL logowania nie jest prawdziwa. Ta wartość adresu URL logowania zostanie zaktualizowana przy użyciu rzeczywistego adresu URL logowania, co objaśniono w dalszej części tego samouczka.
 
-4. Czat na żywo Comm100 aplikacja oczekuje twierdzenia SAML w celu uwzględnienia określonych atrybutów. Skonfiguruj następujące atrybuty dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+5. Aplikacja Comm100 Live Chat oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/comm100livechat-tutorial/tutorial_attribute_03.png)
-    
-5. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
-    
-    |  Nazwa atrybutu  | Wartość atrybutu |
-    | --------------- | -------------------- |    
-    |   e-mail    | User.mail |
+    ![image](common/edit-attribute.png)
 
-    a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności: 
 
-    ![Konfigurowanie logowania jednokrotnego](./media/comm100livechat-tutorial/tutorial_attribute_04.png)
+    | Name (Nazwa) |  Atrybut źródłowy|
+    | ---------------| --------------- |
+    |   email    | user.mail |
 
-    ![Konfigurowanie logowania jednokrotnego](./media/comm100livechat-tutorial/tutorial_attribute_05.png)
-    
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
-    
-    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    d. Pozostaw **Namespace** puste.
-    
-    e. Kliknij przycisk **OK**.
+    ![image](common/new-save-attribute.png)
 
-6. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    ![image](common/new-attribute-details.png)
 
-    ![Link pobierania certyfikatu](./media/comm100livechat-tutorial/tutorial_comm100livechat_certificate.png) 
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-7. Kliknij przycisk **Zapisz** przycisku.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/comm100livechat-tutorial/tutorial_general_400.png)
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-8. Na **konfiguracji Czat na żywo Comm100** , kliknij przycisk **skonfigurować Comm100 Live Chat** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-    ![Comm100 Czat na żywo konfiguracji](./media/comm100livechat-tutorial/tutorial_comm100livechat_configure.png)
+    f. Kliknij przycisk **OK**.
 
-9. W oknie przeglądarki internetowej innej, zaloguj się do Comm100 Live Chat jako Administrator zabezpieczeń.
+    g. Kliknij pozycję **Zapisz**.
 
-10. W prawej górnej części strony, kliknij polecenie **Moje konto**.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Czat na żywo Comm100 myaccount](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-11. W lewej części menu, kliknij **zabezpieczeń** a następnie kliknij przycisk **agenta rejestracji jednokrotnej**.
+6. W sekcji **Konfigurowanie aplikacji Comm100 Live Chat** skopiuj odpowiednie adresy URL zgodnie ze swoimi wymaganiami.
 
-    ![Czat na żywo Comm100 zabezpieczeń](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-12. Na **agenta rejestracji jednokrotnej** strony, wykonaj następujące czynności:
+    a. Adres URL logowania
 
-    ![Czat na żywo Comm100 zabezpieczeń](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
+    b. Identyfikator usługi Azure AD
 
-    a. Skopiuj pierwszą wyróżniony link i wklej ją w **adres URL logowania** polu tekstowym w **Comm100 Live Chat domena i adresy URL** sekcji w witrynie Azure portal.
+    d. Adres URL wylogowywania
 
-    b. W **adres URL logowania jednokrotnego SAML** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, który skopiowano z witryny Azure portal.
+### <a name="configure-comm100-live-chat-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Comm100 Live Chat
 
-    c. W **zdalny adres URL wylogowania** pola tekstowego, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
+9. W innym oknie przeglądarki internetowej zaloguj się do aplikacji Comm100 Live Chat jako administrator zabezpieczeń.
 
-    d. Kliknij przycisk **wybierz plik** do przekazania base-64 zakodowany certyfikat pobrany z witryny Azure portal do **certyfikatu**.
+10. W prawej górnej części strony kliknij pozycję **Moje konto**.
+
+    ![Comm100 Live Chat myaccount](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
+
+11. W lewej części menu kliknij pozycję **Zabezpieczenia**, a następnie kliknij pozycję **Agent logowania jednokrotnego**.
+
+    ![Zabezpieczenia aplikacji Comm100 Live Chat](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+
+12. Na stronie **Agent logowania jednokrotnego** wykonaj następujące czynności:
+
+    ![Zabezpieczenia aplikacji Comm100 Live Chat](./media/comm100livechat-tutorial/tutorial_comm100livechat_singlesignon.png)
+
+    a. Skopiuj pierwszy wyróżniony link i wklej go w polu tekstowym **Adres URL logowania** w sekcji **Domena i adresy URL aplikacji Comm100 Live Chat** w witrynie Azure Portal.
+
+    b. W polu tekstowym **Adres URL logowania jednokrotnego protokołu SAML** wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+
+    d. W polu tekstowym **Adres URL zdalnego wylogowywania** wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+
+    d. Kliknij pozycję **Wybierz plik**, aby przekazać certyfikat zakodowany w formacie base-64 pobrany wcześniej z witryny Azure Portal do pozycji **Certyfikat**.
 
     e. Kliknij przycisk **Zapisz zmiany**
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/comm100livechat-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/comm100livechat-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/comm100livechat-tutorial/create_aaduser_03.png)
-
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/comm100livechat-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-comm100-live-chat-test-user"></a>Tworzenie użytkownika testowego Czat na żywo Comm100
-
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Czat na żywo Comm100, musi być obsługiwana na Czat na żywo Comm100. W ramach rozmowy na żywo Comm100 aprowizacji to zadanie ręczne.
-
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
-
-1. Zaloguj się do Czat na żywo Comm100 jako Administrator zabezpieczeń.
-
-2. W prawej górnej części strony, kliknij polecenie **Moje konto**.
-
-    ![Czat na żywo Comm100 myaccount](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
-
-3. W lewej części menu, kliknij **agentów** a następnie kliknij przycisk **nowy Agent**.
-
-    ![Czat na żywo Comm100 agenta](./media/comm100livechat-tutorial/tutorial_comm100livechat_agent.png)
-
-4. Na **nowy Agent** strony, wykonaj następujące czynności:
-
-    ![Czat na żywo Comm100 nowego agenta](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
-
-    a. a. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **Brittasimon@contoso.com**.
-
-    b. W **imię** tekstu Wprowadź imię użytkownika, takich jak **Britta**.
-
-    c. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak **simon**.
-
-    d. W **nazwy wyświetlanej** polu tekstowym wprowadź nazwę wyświetlaną użytkownika, takich jak **Britta simon**
-
-    e. W **hasło** polu tekstowym wpisz swoje hasło.
-
-    f. Kliknij pozycję **Zapisz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Czat na żywo Comm100.
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Comm100 Live Chat.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Comm100 Live Chat**.
 
-**Aby przypisać Britta Simon Czat na żywo Comm100, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Comm100 Live Chat**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link aplikacji Comm100 Live Chat na liście aplikacji](common/all-applications.png)
 
-2. Na liście aplikacji wybierz **Czat na żywo Comm100**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Czat na żywo Comm100 łącze na liście aplikacji](./media/comm100livechat-tutorial/tutorial_comm100livechat_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-comm100-live-chat-test-user"></a>Tworzenie użytkownika testowego aplikacji Comm100 Live Chat
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+Aby umożliwić użytkownikom usługi Azure AD zalogowanie się do aplikacji Comm100 Live Chat, muszą oni być aprowizowani w aplikacji Comm100 Live Chat. W aplikacji Comm100 Live Chat aprowizacja to zadanie ręczne.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-Po kliknięciu kafelka Czat na żywo Comm100 w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do Czat na żywo Comm100 aplikacji.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+1. Zaloguj się do aplikacji Comm100 Live Chat jako administrator zabezpieczeń.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+2. W prawej górnej części strony kliknij pozycję **Moje konto**.
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+    ![Comm100 Live Chat myaccount](./media/comm100livechat-tutorial/tutorial_comm100livechat_account.png)
 
+3. W lewej części menu, kliknij pozycję **Agenci**, a następnie kliknij pozycję **Nowy agent**.
 
+    ![Agent aplikacji Comm100 Live Chat](./media/comm100livechat-tutorial/tutorial_comm100livechat_agent.png)
 
-<!--Image references-->
+4. Na stronie **Nowy agent** wykonaj następujące czynności:
 
-[1]: ./media/comm100livechat-tutorial/tutorial_general_01.png
-[2]: ./media/comm100livechat-tutorial/tutorial_general_02.png
-[3]: ./media/comm100livechat-tutorial/tutorial_general_03.png
-[4]: ./media/comm100livechat-tutorial/tutorial_general_04.png
+    ![Nowy agent aplikacji Comm100 Live Chat](./media/comm100livechat-tutorial/tutorial_comm100livechat_newagent.png)
 
-[100]: ./media/comm100livechat-tutorial/tutorial_general_100.png
+    a. a. W polu tekstowym **Email** (Adres e-mail) wprowadź adres e-mail użytkownika, na przykład **Brittasimon@contoso.com**.
 
-[200]: ./media/comm100livechat-tutorial/tutorial_general_200.png
-[201]: ./media/comm100livechat-tutorial/tutorial_general_201.png
-[202]: ./media/comm100livechat-tutorial/tutorial_general_202.png
-[203]: ./media/comm100livechat-tutorial/tutorial_general_203.png
+    b. W polu tekstowym **First Name** (Imię) wprowadź imię użytkownika, na przykład **Britta**.
+
+    d. W polu tekstowym **Last Name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
+
+    d. W polu tekstowym **Nazwa wyświetlana** wprowadź nazwę wyświetlaną użytkownika, na przykład **Britta Simon**
+
+    e. W polu tekstowym **Hasło** wpisz swoje hasło.
+
+    f. Kliknij pozycję **Zapisz**.
+
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
+
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka aplikacji Comm100 Live Chat w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Comm100 Live Chat, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+
+## <a name="additional-resources"></a>Dodatkowe zasoby
+
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

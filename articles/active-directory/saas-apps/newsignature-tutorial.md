@@ -1,248 +1,215 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą portalu zarządzania w chmurze dla systemu Microsoft Azure | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i portalu zarządzania w chmurze dla systemu Microsoft Azure.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Cloud Management Portal for Microsoft Azure | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Cloud Management Portal for Microsoft Azure.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 4ea9f47c-25ca-42b0-a878-9e7aa6f34973
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/16/2017
+ms.topic: tutorial
+ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 6aa9bb8214496a5457947eab0b42a01bbe89244a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: a06f0963c90da1d21f1ec0e5545ae45698e46e86
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154001"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692968"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą portalu zarządzania w chmurze dla systemu Microsoft Azure
+# <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Cloud Management Portal for Microsoft Azure
 
-W tym samouczku dowiesz się, jak zintegrować chmury portalu zarządzania Microsoft Azure z usługą Azure Active Directory (Azure AD).
-
+Z tego samouczka dowiesz się, jak zintegrować aplikację Cloud Management Portal for Microsoft Azure z usługą Azure Active Directory (Azure AD).
 Integracja portalu zarządzania w chmurze dla systemu Microsoft Azure z usługą Azure AD zapewnia następujące korzyści:
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do portalu zarządzania w chmurze dla systemu Microsoft Azure
-- Użytkowników, aby automatycznie uzyskać zalogowanych do portalu zarządzania w chmurze dla systemu Microsoft Azure (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Cloud Management Portal for Microsoft Azure.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Cloud Management Portal for Microsoft Azure (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą portalu zarządzania w chmurze dla systemu Microsoft Azure, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Cloud Management Portal for Microsoft Azure, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Portal zarządzania Cloud for Microsoft Azure logowania jednokrotnego włączonych subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Cloud Management Portal for Microsoft Azure z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie portalu zarządzania w chmurze dla systemu Microsoft Azure z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-cloud-management-portal-for-microsoft-azure-from-the-gallery"></a>Dodawanie portalu zarządzania w chmurze dla systemu Microsoft Azure z galerii
-Aby skonfigurować integrację portalu zarządzania w chmurze dla systemu Microsoft Azure w usłudze Azure AD, należy dodać chmury portalu zarządzania Microsoft Azure z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Cloud Management Portal for Microsoft Azure obsługuje logowanie jednokrotne inicjowane przez **dostawcę tożsamości**
 
-**Aby dodać chmury portalu zarządzania Microsoft Azure z galerii, wykonaj następujące czynności:**
+## <a name="adding-cloud-management-portal-for-microsoft-azure-from-the-gallery"></a>Dodawanie aplikacji Cloud Management Portal for Microsoft Azure z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Cloud Management Portal for Microsoft Azure z usługą Azure AD, musisz dodać aplikację Cloud Management Portal for Microsoft Azure z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać aplikację Cloud Management Portal for Microsoft Azure z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Aplikacje][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **chmury portalu zarządzania Microsoft Azure**.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/newsignature-tutorial/tutorial_newsignature_search.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W panelu wyników wybierz **chmury portalu zarządzania Microsoft Azure**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/newsignature-tutorial/tutorial_newsignature_addfromgallery.png)
+4. W polu wyszukiwania wpisz **Cloud Management Portal for Microsoft Azure**, wybierz pozycję **Cloud Management Portal for Microsoft Azure** z panelu wyników i **kliknij przycisk Dodaj**, aby dodać aplikację.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji służy do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą portalu zarządzania w chmurze dla systemu Microsoft Azure, w oparciu o użytkownika testu o nazwie "Britta Simon".
+     ![Aplikacja Cloud Management Portal for Microsoft Azure na liście wyników](common/search-new-app.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi wiedzieć, użytkownik odpowiednika w portalu zarządzania w chmurze dla systemu Microsoft Azure jest dla użytkownika, w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w portalu zarządzania w chmurze dla systemu Microsoft Azure musi nawiązać.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W portalu zarządzania Cloud for Microsoft Azure, przypisz wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Cloud Management Portal for Microsoft Azure, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Cloud Management Portal for Microsoft Azure.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą portalu zarządzania w chmurze dla systemu Microsoft Azure, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Cloud Management Portal for Microsoft Azure, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie portalu zarządzania Cloud dla użytkownika testowego Microsoft Azure](#creating-a-cloud-management-portal-for-microsoft-azure-test-user)**  — aby odpowiednikiem Britta Simon w chmurze portalu zarządzania Microsoft Azure, w którym jest połączony z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Cloud Management Portal for Microsoft Azure](#configure-cloud-management-portal-for-microsoft-azure-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Cloud Management Portal for Microsoft Azure](#create-cloud-management-portal-for-microsoft-azure-test-user)** — aby mieć w aplikacji Cloud Management Portal for Microsoft Azure odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w portalu zarządzania usługi chmury dla aplikacji Microsoft Azure.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą portalu zarządzania w chmurze dla systemu Microsoft Azure, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Cloud Management Portal for Microsoft Azure, wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **chmury portalu zarządzania Microsoft Azure** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Cloud Management Portal for Microsoft Azure** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/newsignature-tutorial/tutorial_newsignature_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **chmury portalu zarządzania Microsoft Azure domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/newsignature-tutorial/tutorial_newsignature_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następujących wzorców: 
-    
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Domena i adresy URL aplikacji Cloud Management Portal for Microsoft Azure — informacje o logowaniu jednokrotnym](common/sp-identifier-reply.png)
+
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
     | |
     |--|
     | `https://portal.newsignature.com/<instancename>` |   
     | `https://portal.igcm.com/<instancename>` |
-    
-    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następujących wzorców: 
-    
+
+    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
     | |
     |--|
     | `https://<subdomain>.igcm.com` |
     | `https://<subdomain>.newsignature.com` |
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następujących wzorców: 
-    
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
     | |
     |--|
     | `https://<subdomain>.igcm.com/<instancename>` |
     | `https://<subdomain>.newsignature.com` |
-    | `https://<subdomain>.newsignature.com/<instancename>` |
+    | `https://<subdomain>.newsignature.com/<instancename>` |<instancename>`
 
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [chmurze Portal zarządzania dla zespołu pomocy technicznej systemu Microsoft Azure Client](mailto:jczernuszka@newsignature.com) do uzyskania tych wartości. 
- 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Cloud Management Portal for Microsoft Azure](mailto:jczernuszka@newsignature.com) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/newsignature-tutorial/tutorial_newsignature_certificate.png) 
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1. Kliknij przycisk **Save** (Zapisz).
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/newsignature-tutorial/tutorial_general_400.png)
+6. W sekcji **Konfigurowanie aplikacji Cloud Management Portal for Microsoft Azure** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-1. Na **chmury portalu zarządzania Microsoft Azure Configuration** kliknij **Konfigurowanie chmury portalu zarządzania Microsoft Azure** otworzyć **Konfigurowanie logowania jednokrotnego** okno. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/newsignature-tutorial/tutorial_newsignature_configure.png) 
+    a. Adres URL logowania
 
-1. Aby skonfigurować logowanie jednokrotne na **chmury portalu zarządzania Microsoft Azure** stronie, musisz wysłać pobrany **certyfikatu**, **adres URL wylogowania**,  **SAML pojedynczego logowania jednokrotnego usługi adresu URL** i **identyfikator jednostki SAML** do [chmurze Portal zarządzania dla zespołu pomocy technicznej Microsoft Azure](mailto:jczernuszka@newsignature.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+    b. Identyfikator usługi Azure AD
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+    d. Adres URL wylogowywania
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="configure-cloud-management-portal-for-microsoft-azure-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Cloud Management Portal for Microsoft Azure
+
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Cloud Management Portal for Microsoft Azure**, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Cloud Management Portal for Microsoft Azure](mailto:jczernuszka@newsignature.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/newsignature-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/newsignature-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/newsignature-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/newsignature-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-cloud-management-portal-for-microsoft-azure-test-user"></a>Tworzenie portalu zarządzania Cloud dla użytkownika testowego Microsoft Azure
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w portalu zarządzania w chmurze dla systemu Microsoft Azure. Skontaktuj się z [chmurze Portal zarządzania dla zespołu pomocy technicznej Microsoft Azure](mailto:jczernuszka@newsignature.com) Aby dodać użytkowników w portalu zarządzania chmury dla konta Microsoft Azure.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Cloud Management Portal for Microsoft Azure.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Cloud Management Portal for Microsoft Azure**.
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do portalu zarządzania w chmurze dla systemu Microsoft Azure.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-![Przypisz użytkownika][200] 
+2. Na liście aplikacji wybierz pozycję **Cloud Management Portal for Microsoft Azure**.
 
-**Aby przypisać Britta Simon do portalu zarządzania w chmurze dla systemu Microsoft Azure, wykonaj następujące czynności:**
+    ![Link aplikacji Cloud Management Portal for Microsoft Azure na liście aplikacji](common/all-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. Na liście aplikacji wybierz **chmury portalu zarządzania Microsoft Azure**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/newsignature-tutorial/tutorial_newsignature_app.png) 
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Przypisz użytkownika][202] 
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-    ![Przypisz użytkownika][203]
+### <a name="create-cloud-management-portal-for-microsoft-azure-test-user"></a>Tworzenie użytkownika testowego aplikacji Cloud Management Portal for Microsoft Azure
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji Cloud Management Portal for Microsoft Azure. Współpracuj z  [zespołem pomocy technicznej platformy Cloud Management Portal for Microsoft Azure](mailto:jczernuszka@newsignature.com), aby dodać użytkowników na platformie Cloud Management Portal for Microsoft Azure. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Celem tej sekcji jest do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-Po kliknięciu chmury portalu zarządzania Microsoft Azure kafelka w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do portalu zarządzania usługi chmury dla aplikacji Microsoft Azure.
-
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka Cloud Management Portal for Microsoft Azure w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Cloud Management Portal for Microsoft Azure, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/newsignature-tutorial/tutorial_general_01.png
-[2]: ./media/newsignature-tutorial/tutorial_general_02.png
-[3]: ./media/newsignature-tutorial/tutorial_general_03.png
-[4]: ./media/newsignature-tutorial/tutorial_general_04.png
-
-[100]: ./media/newsignature-tutorial/tutorial_general_100.png
-
-[200]: ./media/newsignature-tutorial/tutorial_general_200.png
-[201]: ./media/newsignature-tutorial/tutorial_general_201.png
-[202]: ./media/newsignature-tutorial/tutorial_general_202.png
-[203]: ./media/newsignature-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

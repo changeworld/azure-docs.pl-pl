@@ -1,20 +1,20 @@
 ---
 title: Co to jest usługa Azure Search — Azure Search
-description: Azure Search jest w pełni zarządzaną, hostowaną usługą wyszukiwania w chmurze. Przejrzyj opisy funkcji, przepływ pracy tworzenia oprogramowania, porównanie usługi Azure Search z innymi produktami wyszukiwania oraz dowiedz się, jak rozpocząć pracę.
+description: Azure Search jest w pełni zarządzaną, hostowaną usługą wyszukiwania w chmurze firmy Microsoft. Przejrzyj opisy funkcji, przepływ pracy tworzenia oprogramowania, porównanie usługi Azure Search z innymi produktami wyszukiwania firmy Microsoft oraz dowiedz się, jak rozpocząć pracę.
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: overview
-ms.date: 11/09/2018
+ms.date: 02/01/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 884a726dbc7d7f2812f4de2228ca5adaf9b223ea
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 36d65e1ffab79c8f0866d60f4a133798d25e9dea
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630405"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562797"
 ---
 # <a name="what-is-azure-search"></a>Co to jest usługa Azure Search?
 Azure Search jest opartym na chmurze rozwiązaniem typu „wyszukiwanie jako usługa”, które udostępnia deweloperom interfejsy API oraz narzędzia umożliwiające dodawanie zaawansowanych funkcji wyszukiwania do prywatnej, heterogenicznej zawartości w aplikacjach internetowych, mobilnych i firmowych. Wykonywanie zapytań odbywa się na podstawie indeksu zdefiniowanego przez użytkownika.

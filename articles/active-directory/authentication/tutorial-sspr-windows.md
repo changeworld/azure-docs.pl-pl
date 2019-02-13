@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c84d876828ac96bfb44b84e99b13489d51ae3370
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474874"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694027"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: Resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -33,6 +33,7 @@ W tym samouczku umożliwisz użytkownikom resetowanie swoich haseł z ekranu log
    * [dołączone do hybrydowej usługi Azure AD](../device-management-hybrid-azuread-joined-devices-setup.md) z łącznością sieciową z kontrolerem domeny.
 * Musisz włączyć funkcję samoobsługowego resetowania haseł w usłudze Azure AD.
 * Jeśli urządzenia z systemem Windows 10 są za serwerem proxy lub zaporą, musisz dodać adresy URL `passwordreset.microsoftonline.com` oraz `ajax.aspnetcdn.com` do listy Dozwolone adresy URL ruchu protokołu HTTPS (port 443).
+* Przejrzyj ograniczenia poniżej przed wypróbowaniem tej funkcji w danym środowisku.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurowanie linku resetowania hasła przy użyciu usługi Intune
 
@@ -106,6 +107,8 @@ Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i ty
 
 ![Przykład resetowania hasła na ekranie logowania w dzienniku inspekcji usługi Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
 
+Gdy użytkownik resetuje swoje hasło na ekranie logowania urządzenia z systemem Windows 10, tworzone jest tymczasowe konto o niskim poziomie uprawnień i nazwie „defaultuser1”. To konto jest używane, aby zapewnić bezpieczeństwo procesu resetowania hasła. Samo konto ma losowo wygenerowane hasło, nie jest widoczne dla logowania urządzenia i zostanie automatycznie usunięte po zresetowaniu hasła użytkownika. Może istnieć wiele profilów „defaultuser”, ale można je bezpiecznie zignorować.
+
 ## <a name="limitations"></a>Ograniczenia
 
 Podczas testowania tej funkcjonalności za pomocą funkcji Hyper-V link „Resetuj hasło” nie jest wyświetlany.
@@ -116,7 +119,9 @@ Podczas testowania tej funkcjonalności za pomocą pulpitu zdalnego lub rozszerz
 
 * Resetowanie hasła nie jest obecnie obsługiwane z poziomu pulpitu zdalnego.
 
-Jeśli zasady wymagają naciśnięcia klawiszy Ctrl+Alt+Del lub powiadomienia na ekranie blokady są wyłączone, pozycja **Resetuj hasło** nie będzie działać.
+Jeśli zasady w wersjach systemu Windows 10 wcześniejszych niż 1809 wymagają naciśnięcia klawiszy Ctrl+Alt+Del, pozycja **Resetuj hasło** nie będzie działać.
+
+Jeśli powiadomienia na ekranie blokady są wyłączone, pozycja **Resetuj hasło** nie będzie działać.
 
 Wiadomo, że następujące ustawienia zasad zakłócają możliwość resetowania haseł
 
@@ -128,7 +133,7 @@ Wiadomo, że następujące ustawienia zasad zakłócają możliwość resetowani
 
 Ta funkcja nie działa w przypadku sieci z wdrożonym uwierzytelnianiem sieci 802.1x oraz opcji „Wykonaj bezpośrednio przed logowaniem użytkownika”. W sieciach z wdrożonym uwierzytelnianiem sieci 802.1x zalecane jest używanie uwierzytelniania maszynowego w celu włączenia tej funkcji.
 
-W przypadku scenariuszy z hybrydowym dołączeniem do domeny istnieje scenariusz, w którym przepływ pracy samoobsługowego resetowania haseł zakończy się bez konieczności używania kontrolera domeny usługi Active Directory. Łączność z kontrolerem domeny jest wymagana do użycia nowego hasła po raz pierwszy.
+W przypadku scenariuszy z hybrydowym dołączeniem do domeny przepływ pracy samoobsługowego resetowania hasła zakończy się pomyślnie bez konieczności używania kontrolera domeny usługi Active Directory. Jeśli użytkownik wykona proces resetowania hasła w czasie, gdy komunikacja z kontrolerem domeny usługi Active Directory jest niedostępna, na przykład podczas pracy zdalnej, nie będzie mógł zalogować się do urządzenia, dopóki urządzenie nie nawiąże połączenia z kontrolerem domeny i nie zaktualizuje poświadczeń w pamięci podręcznej. **Łączność z kontrolerem domeny jest wymagana do użycia nowego hasła po raz pierwszy**.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 

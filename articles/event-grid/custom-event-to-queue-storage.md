@@ -9,12 +9,12 @@ ms.date: 01/07/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ba48473b0370c2ee0acbb7b03834eb36922db556
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 9d1d9caccac0fcdeb4e1d2dae40e677f36de40ea
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474986"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728050"
 ---
 # <a name="quickstart-route-custom-events-to-azure-queue-storage-with-azure-cli-and-event-grid"></a>Szybki start: Kierowanie zdarzeń niestandardowych do usługi Azure Queue Storage za pomocą interfejsu wiersza polecenia platformy Azure i usługi Event Grid
 
@@ -24,9 +24,12 @@ Azure Event Grid to usługa obsługi zdarzeń dla chmury. Magazyn kolejek platfo
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="install-preview-feature"></a>Instalowanie funkcji w wersji zapoznawczej
+Jeśli używasz interfejsu wiersza polecenia platformy Azure lub modułu Azure PowerShell na komputerze lokalnym zamiast usługi Cloud Shell w witrynie Azure Portal, upewnij się, że masz następujące wersje wiersza polecenia platformy Azure i modułu Azure PowerShell. 
 
-[!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
+- Interfejs wiersza polecenia platformy Azure w wersji 2.0.56 lub nowszej. Aby uzyskać instrukcje na temat instalowania najnowszej wersji interfejsu wiersza polecenia platformy Azure, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
+- Moduł Azure PowerShell w wersji 1.1.0 lub nowszej. Pobierz najnowszą wersję modułu Azure PowerShell na komputer z systemem Windows ze strony [Pliki do pobrania platformy Azure — narzędzia wiersza polecenia](https://azure.microsoft.com/downloads/). 
+
+Ten artykuł zawiera polecenia umożliwiające korzystanie z wiersza polecenia platformy Azure. 
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
@@ -47,10 +50,6 @@ az group create --name gridResourceGroup --location westus2
 Temat usługi Event Grid udostępnia zdefiniowany przez użytkownika punkt końcowy, w którym publikowane są zdarzenia. Poniższy przykład obejmuje tworzenie tematu niestandardowego w grupie zasobów. Zamień nazwę `<topic_name>` na unikatową nazwę tematu niestandardowego. Nazwa tematu usługi Event Grid musi być unikatowa, ponieważ jest reprezentowana przez wpis DNS.
 
 ```azurecli-interactive
-# if you have not already installed the extension, do it now.
-# This extension is required for preview features.
-az extension add --name eventgrid
-
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 ```
 

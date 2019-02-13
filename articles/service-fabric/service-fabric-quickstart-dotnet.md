@@ -15,14 +15,14 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: f2b0cd404c0c5ee94b669f366abc79353096a5a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b7b70a5ac0c74cc920df823d1f9ae1152f86bff
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241416"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561199"
 ---
-# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Szybki start: wdrażanie aplikacji niezawodnych usług .NET w usłudze Service Fabric
+# <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Szybki start: Wdrażanie aplikacji niezawodnych usług .NET w usłudze Service Fabric
 
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi.
 
@@ -36,7 +36,6 @@ Korzystając z tej aplikacji, nauczysz się wykonywać następujące czynności:
 * Używanie platformy ASP.NET Core jako frontonu sieci Web
 * Przechowywanie danych aplikacji w usłudze stanowej
 * Debugowanie aplikacji lokalnie
-* Wdrażanie aplikacji w klastrze na platformie Azure
 * Skalowanie aplikacji w poziomie na wiele węzłów
 * Przeprowadzanie stopniowego uaktualnienia aplikacji
 
@@ -50,6 +49,27 @@ Aby ukończyć ten przewodnik Szybki start:
 4. Uruchom następujące polecenie, aby umożliwić programowi Visual Studio wdrażanie w lokalnym klastrze usługi Service Fabric:
     ```powershell
     Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+    ```
+    
+## <a name="build-a-cluster"></a>Tworzenie klastra
+
+Po zainstalowaniu środowiska uruchomieniowego, zestawów SDK, narzędzi programu Visual Studio i platformy Docker oraz uruchomieniu platformy Docker utwórz pięciowęzłowy lokalny klaster projektowy.
+
+> [!IMPORTANT]
+> Utworzenie klastra **wymaga**  uruchomienia platformy Docker.
+> Aby sprawdzić, czy platforma Docker jest uruchomiona, otwórz okno terminalu i uruchom polecenie `docker ps`. Jeśli odpowiedź nie wskazuje na wystąpienie błędu, oznacza to, że platforma Docker jest uruchomiona i można przystąpić do tworzenia klastra.
+
+
+1. Otwórz nowe okno programu PowerShell jako administrator.
+2. Utwórz klaster projektowy za pomocą następującego polecenia programu PowerShell:
+
+    ```powershell
+    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+    ```
+3. Uruchom menedżera klastra lokalnego za pomocą następującego polecenia:
+
+    ```powershell
+    . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
     ```
 
 >[!NOTE]
@@ -75,9 +95,9 @@ Domyślnie aplikacja do głosowania nasłuchuje na porcie 8080.  Port aplikacji 
 Aby wdrożyć aplikację, naciśnij klawisz **F5**.
 
 > [!NOTE]
-> Przy pierwszym uruchamianiu i wdrażaniu aplikacji program Visual Studio tworzy lokalny klaster na potrzeby debugowania. Ta operacja może trochę potrwać. Stan tworzenia klastra jest wyświetlany w oknie danych wyjściowych programu Visual Studio.  W danych wyjściowych zostanie wyświetlony komunikat „Adres URL aplikacji nie jest ustawiony lub nie jest adresem URL określającym protokół HTTP/HTTPS, więc aplikacja nie zostanie otwarta przez przeglądarkę”.  Ten komunikat nie wskazuje błędu, ale oznacza, że przeglądarka nie zostanie automatyczne uruchomiona.
+> W oknie danych wyjściowych programu Visual Studio zostanie wyświetlony komunikat „Adres URL aplikacji nie jest ustawiony lub nie jest adresem URL określającym protokół HTTP/HTTPS, więc aplikacja nie zostanie otwarta przez przeglądarkę”.  Ten komunikat nie wskazuje błędu, ale oznacza, że przeglądarka nie zostanie automatyczne uruchomiona.
 
-Po zakończeniu wdrażania uruchom przeglądarkę i otwórz tę stronę: `http://localhost:8080` — fronton internetowy aplikacji.
+Po zakończeniu wdrażania uruchom przeglądarkę i otwórz stronę `http://localhost:8080`, aby wyświetlić fronton internetowy aplikacji.
 
 ![Fronton aplikacji](./media/service-fabric-quickstart-dotnet/application-screenshot-new.png)
 
@@ -132,88 +152,6 @@ Aby zobaczyć, co się stanie w kodzie, wykonaj następujące kroki:
 
 Aby zatrzymać sesję debugowania, naciśnij klawisze **Shift+F5**.
 
-## <a name="deploy-the-application-to-azure"></a>Wdrażanie aplikacji na platformie Azure
-
-Aby wdrożyć aplikację na platformie Azure, potrzebny jest klaster usługi Service Fabric używany do uruchamiania aplikacji.
-
-### <a name="join-a-party-cluster"></a>Dołączanie do klastra testowego
-
-Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i uruchamiane przez zespół usługi Service Fabric, w których każdy może wdrażać aplikacje i poznawać platformę. Klaster używa jednego certyfikatu z podpisem własnym w przypadku zabezpieczeń między węzłami, jak i zabezpieczeń między klientem i węzłem.
-
-Zaloguj się i [dołącz do klastra z systemem Windows](https://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Kliknij link **Jak nawiązać połączenie z zabezpieczonym klastrem testowym?** i skopiuj hasło certyfikatu. Certyfikat, hasło certyfikatu oraz wartość pola **Punkt końcowy połączenia** będą używane w kolejnych krokach.
-
-![Plik PFX i punkt końcowy połączenia](./media/service-fabric-quickstart-dotnet/party-cluster-cert.png)
-
-> [!Note]
-> Liczba klastrów testowych dostępnych przez godzinę jest ograniczona. Jeśli wystąpi błąd podczas próby tworzenia konta umożliwiającego korzystanie z klastra testowego, możesz poczekać, a następnie spróbować ponownie. Możesz też wykonać kroki opisane w samouczku [Wdrażanie aplikacji .NET](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-deploy-app-to-party-cluster#deploy-the-sample-application), aby utworzyć klaster usługi Service Fabric w subskrypcji platformy Azure i wdrożyć w nim aplikację. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). Po wdrożeniu i zweryfikowaniu aplikacji w klastrze możesz przejść do sekcji [Skalowanie aplikacji i usług w klastrze](#scale-applications-and-services-in-a-cluster) tego przewodnika Szybki Start.
->
-
-Na komputerze z systemem Windows zainstaluj plik PFX w magazynie certyfikatów *CurrentUser\My*.
-
-```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString 873689604 -AsPlainText -Force)
-
-
-   PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
-
-Thumbprint                                Subject
-----------                                -------
-3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
-```
-
-Zapamiętaj odcisk palca na potrzeby następnego kroku.
-
-> [!Note]
-> Domyślnie usługa internetowa frontonu jest skonfigurowana do nasłuchiwania ruchu przychodzącego na porcie 8080. Port 8080 jest otwarty w klastrze testowym.  Jeśli musisz zmienić port aplikacji, zmień go na jeden z portów, które są otwarte w klastrze testowym.
->
-
-### <a name="deploy-the-application-using-visual-studio"></a>Wdrażanie aplikacji przy użyciu programu Visual Studio
-
-Kiedy aplikacja jest gotowa, można wdrożyć ją w klastrze bezpośrednio z programu Visual Studio.
-
-1. W Eksploratorze rozwiązań kliknij prawym przyciskiem myszy pozycję **Voting (Głosowanie)** i wybierz polecenie **Publikuj**. Zostanie wyświetlone okno dialogowe Publikowanie.
-
-2. Skopiuj **punkt końcowy połączenia** ze strony klastra testowego do pola **Punkt końcowy połączenia**. Na przykład `zwin7fh14scd.westus.cloudapp.azure.com:19000`. Kliknij pozycję **Zaawansowane parametry połączenia** i upewnij się, że wartości *FindValue* i *ServerCertThumbprint* są zgodne z odciskiem palca certyfikatu zainstalowanego w poprzednim kroku.
-
-    ![Okno dialogowe Publikowanie](./media/service-fabric-quickstart-dotnet/publish-app.png)
-
-    Każda aplikacja w klastrze musi mieć unikatową nazwę.  Klastry testowe są jednak publicznym, udostępnionym środowiskiem i może wystąpić konflikt z istniejącą aplikacją.  Jeśli występuje konflikt nazw, zmień nazwę projektu programu Visual Studio i wdróż ponownie.
-
-3. Kliknij przycisk **Opublikuj**.
-
-4. Otwórz przeglądarkę i wpisz adres klastra, a po nim ciąg „:8080”, aby uzyskać dostęp do aplikacji w klastrze — na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:8080`. Aplikacja powinna zostać teraz wyświetlona jako uruchomiona w klastrze na platformie Azure.
-
-    ![Fronton aplikacji](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
-
-## <a name="scale-applications-and-services-in-a-cluster"></a>Skalowanie aplikacji i usług w klastrze
-
-Usługi Service Fabric można łatwo skalować w klastrze w celu dostosowania do zmiany obciążenia w usługach. Skalowanie usługi odbywa się przez zmienianie liczby wystąpień uruchomionych w klastrze. Istnieje wiele sposobów skalowania usług. Można użyć skryptów lub poleceń programu PowerShell lub interfejsu wiersza polecenia usługi Service Fabric (sfctl). W tym przykładzie używane jest narzędzie Service Fabric Explorer.
-
-Narzędzie Service Fabric Explorer działa we wszystkich klastrach usługi Service Fabric i można uzyskać do niego dostęp z przeglądarki, przechodząc do portu HTTP zarządzania klastrami (19080), na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-
-W przeglądarce może pojawić się ostrzeżenie informujące, że lokalizacja nie jest zaufana. Dzieje się tak, ponieważ certyfikat ma podpis własny. Można zignorować to ostrzeżenie i kontynuować.
-1. Po wyświetleniu monitu w przeglądarce wybierz zainstalowany certyfikat do połączenia. Wybrany z listy certyfikat klastra testowego musi być zgodny z klastrem testowym, do którego próbujesz uzyskać dostęp. Na przykład win243uja6w62r.westus.cloudapp.azure.com.
-2. Jeśli przeglądarka wyświetli monit, przyznaj dostęp do klucza prywatnego CryptoAPI na czas tej sesji.
-
-Aby skalować usługę internetową frontonu, wykonaj następujące czynności:
-
-1. Otwórz narzędzie Service Fabric Explorer w klastrze — na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-
-2. W widoku drzewa rozwiń węzeł **Aplikacje**->**VotingType**->**fabric:/Voting**. Kliknij wielokropek (trzy kropki) obok węzła **fabric:/Voting/VotingWeb** w widoku drzewa i wybierz pozycję **Skaluj usługę**.
-
-    ![Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scale.png)
-
-    Teraz możesz skalować liczbę wystąpień usługi internetowej frontonu.
-
-3. Zmień liczbę na **2** i kliknij pozycję **Skaluj usługę**.
-4. Kliknij węzeł **fabric:/Voting/VotingWeb** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID).
-
-    ![Usługa skalowania narzędzia Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/service-fabric-explorer-scaled-service.png)
-
-    Po chwili można zobaczyć, że usługa ma dwa wystąpienia.  W widoku drzewa widać, w których węzłach uruchomiono wystąpienia.
-
-Wykonując to proste zadanie zarządzania, podwoiliśmy zasoby dostępne dla usługi frontonu w celu przetworzenia obciążenia użytkownika. Ważne jest, aby zrozumieć, że nie musisz mieć wielu wystąpień usługi, aby działała ona niezawodnie. W przypadku niepowodzenia usługi usługa Service Fabric zapewnia, że nowe wystąpienie usługi jest uruchamiane w klastrze.
-
 ## <a name="perform-a-rolling-application-upgrade"></a>Przeprowadzanie stopniowego uaktualnienia aplikacji
 
 Podczas wdrażania nowych aktualizacji aplikacji usługa Service Fabric wprowadza aktualizację w bezpieczny sposób. Uaktualnienia stopniowe zapewniają brak przestojów podczas uaktualniania, a także automatyczne wycofywanie w razie wystąpienia błędów.
@@ -228,14 +166,18 @@ Aby uaktualnić aplikację, wykonaj następujące czynności:
 6. Zmień wersję elementu **Kod** w obszarze **VotingWebPkg** na „2.0.0” (na przykład), a następnie kliknij przycisk **Zapisz**.
 
     ![Okno dialogowe zmiany wersji](./media/service-fabric-quickstart-dotnet/change-version.png)
-7. W oknie dialogowym **Publikowanie aplikacji usługi Service Fabric** zaznacz pole wyboru Uaktualnij aplikację, a następnie kliknij przycisk **Publikuj**.
+7. W oknie dialogowym **Publikowanie aplikacji usługi Service Fabric** zaznacz pole wyboru **Uaktualnij aplikację**.
+8.  Zmień **profil docelowy** na **PublishProfiles\Local.5Node.xml** i upewnij się, że jako **punkt końcowy połączenia** ustawiono wartość **Klaster lokalny**. 
+9. Wybierz pozycję **Uaktualnij aplikację**.
 
     ![Okno dialogowe publikowania — ustawienie uaktualnienia](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
+10. Kliknij przycisk **Opublikuj**.
+
     Podczas uaktualniania można nadal korzystać z aplikacji. Ponieważ masz dwa wystąpienia usługi uruchomione w klastrze, niektóre żądania mogą trafiać do uaktualnionej wersji aplikacji, podczas gdy inne mogą nadal otrzymywać starą wersję.
 
-8. Otwórz przeglądarkę i przejdź do adresu klastra na porcie 19080, na przykład `http://zwin7fh14scd.westus.cloudapp.azure.com:19080`.
-9. W widoku drzewa kliknij węzeł **Aplikacje**, a następnie kliknij pozycję **Uaktualnienia w toku** w okienku po prawej stronie. Możesz zobaczyć, jak uaktualnienie jest wprowadzane w domenach uaktualnienia w klastrze, upewniając się, że każda domena jest w dobrej kondycji przed przejściem do następnej. Domena uaktualnienia na pasku postępu będzie wyświetlana w kolorze zielonym po zweryfikowaniu kondycji domeny.
+11. Otwórz przeglądarkę i przejdź do adresu klastra na porcie 19080. Na przykład: `http://localhost:19080/`.
+12. W widoku drzewa kliknij węzeł **Aplikacje**, a następnie kliknij pozycję **Uaktualnienia w toku** w okienku po prawej stronie. Możesz zobaczyć, jak uaktualnienie jest wprowadzane w domenach uaktualnienia w klastrze, upewniając się, że każda domena jest w dobrej kondycji przed przejściem do następnej. Domena uaktualnienia na pasku postępu będzie wyświetlana w kolorze zielonym po zweryfikowaniu kondycji domeny.
     ![Widok uaktualniania w narzędziu Service Fabric Explorer](./media/service-fabric-quickstart-dotnet/upgrading.png)
 
     Usługa Service Fabric zapewnia bezpieczeństwo uaktualnień dzięki oczekiwaniu przez dwie minuty po uaktualnieniu usługi na każdym węźle w klastrze. Całe uaktualnienie zajmuje około ośmiu minut.
@@ -248,7 +190,6 @@ W tym przewodniku Szybki start zawarto informacje na temat wykonywania następuj
 * Używanie platformy ASP.NET Core jako frontonu sieci Web
 * Przechowywanie danych aplikacji w usłudze stanowej
 * Debugowanie aplikacji lokalnie
-* Wdrażanie aplikacji w klastrze na platformie Azure
 * Skalowanie aplikacji w poziomie na wiele węzłów
 * Przeprowadzanie stopniowego uaktualnienia aplikacji
 

@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 11/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 132fca9c8904c4f64fffe167e3a3f2c6bb0d2cfe
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
+ms.openlocfilehash: 2937d1f665dae03795892f9ff0e8a93a894e1992
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51621031"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818043"
 ---
 # <a name="what-is-azure-relay"></a>Co to jest usługa Azure Relay?
 Usługa Azure Relay umożliwia bezpieczne uwidacznianie usług uruchomionych w sieci firmowej do chmury publicznej. Możesz to zrobić bez otwierania portu na zaporze lub wprowadzania niepożądanych zmian w firmowej infrastrukturze sieci. 
@@ -44,7 +44,7 @@ We wzorcu transferu danych z przekazywaniem podstawowe kroki są następujące:
 Usługa Azure Relay ma dwie funkcje:
 
 - [Połączenia hybrydowe](#hybrid-connections) — używają otwartego standardu gniazd sieci Web umożliwiającego scenariusze wieloplatformowe.
-- [Przekaźniki WCF](#wcf-relays) — używają platformy Windows Communication Foundation (WCF) w celu umożliwienia zdalnego wywoływania procedur. Przekaźnik WCF to starsza wersja funkcji przekazywania, której wielu klientów już używa w modelach programowania platformy WCF.
+- Przekaźniki WCF — używają platformy Windows Communication Foundation (WCF) w celu umożliwienia zdalnego wywoływania procedur. Przekaźnik WCF to starsza wersja funkcji przekazywania, której wielu klientów już używa w modelach programowania platformy WCF.
 
 ## <a name="hybrid-connections"></a>Połączenia hybrydowe
 
@@ -70,7 +70,7 @@ Zarówno połączenia hybrydowe, jak i przekaźniki WCF umożliwiają bezpieczne
 | **Otwarty protokół oparty na standardach** | |x |
 | **Modele programowania RPC** | |x |
 
-## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektura: przetwarzanie przychodzących żądań przekaźnika
+## <a name="architecture-processing-of-incoming-relay-requests"></a>Architektura: Przetwarzanie przychodzących żądań przekaźnika
 Na poniższym diagramie przedstawiono sposób obsługiwania przychodzących żądań przekazywania przez usługę Azure Relay:
 
 ![Przetwarzanie przychodzących żądań przekaźnika WCF](./media/relay-what-is-it/ic690645.png)

@@ -14,12 +14,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: priyamo
-ms.openlocfilehash: 7cd599ff75827ca8b0c6f7683cae01210a8fc8ab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 34f6a03fc091fb4d86739af9d56993943ce44956
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183411"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662112"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>Czym są tożsamości zarządzane dla zasobów platformy Azure?
 
@@ -102,6 +102,9 @@ Na poniższym diagramie pokazano, jak tożsamości usługi zarządzanej współp
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Jak można używać tożsamości zarządzanych dla zasobów platformy Azure?
 
 Aby dowiedzieć się, jak uzyskiwać dostęp do różnych zasobów platformy Azure za pomocą tożsamości zarządzanej, wypróbuj te samouczki.
+
+> [!NOTE]
+> Zapoznaj się z kursem [Implementowanie tożsamości zarządzanych dla zasobów platformy Microsoft Azure](https://www.pluralsight.com/courses/microsoft-azure-resources-managed-identities-implementing), aby uzyskać więcej informacji o tożsamościach zarządzanych i obejrzeć szczegółowe przewodniki wideo dotyczące kilku obsługiwanych scenariuszy.
 
 Dowiedz się, jak używać tożsamości zarządzanej z maszyną wirtualną z systemem Windows:
 

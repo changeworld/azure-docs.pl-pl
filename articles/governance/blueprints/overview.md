@@ -4,17 +4,17 @@ description: Azure Blueprints to usługa platformy Azure, która umożliwia twor
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 12/05/2018
+ms.date: 02/01/2019
 ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bea01e8f017622f1407bbac993e50112140cc472
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7803ed99a61a9b4ad819da882daf38cbfd6fffe9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246249"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563375"
 ---
 # <a name="what-is-azure-blueprints"></a>Czym jest usługa Azure Blueprints?
 
@@ -56,17 +56,14 @@ Strategia składa się z _artefaktów_. Usługa Blueprints obsługuje obecnie na
 
 |Zasób  | Opcje hierarchii| Opis  |
 |---------|---------|---------|
-|Grupy zasobów     | Subskrypcja | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager.         |
-|Szablon usługi Azure Resource Manager      | Subskrypcja, grupa zasobów | Szablony służą do tworzenia złożonych środowisk. Przykładowe środowiska: farma programu SharePoint, konfiguracja stanu usługi Azure Automation lub obszar roboczy usługi Log Analytics. |
-|Przypisanie zasad     | Subskrypcja, grupa zasobów | Umożliwia przypisanie zasad lub inicjatywy do subskrypcji, do której przypisano strategię. Zasady lub inicjatywa musi zawierać się w zakresie strategii (w grupie zarządzania strategii lub poniżej niej). Jeśli zasady lub inicjatywa mają parametry, są one przypisywane podczas tworzenia strategii bądź podczas jej przypisywania.       |
-|Przypisanie roli   | Subskrypcja, grupa zasobów | Dodawanie istniejącego użytkownika lub grupy do wbudowanej roli w celu zagwarantowania, że odpowiednie osoby zawsze będą mieć odpowiedni dostęp do zasobów. Przypisania ról mogą być definiowane dla całej subskrypcji lub mogą być zagnieżdżone w konkretnej grupie zasobów uwzględnionej w strategii. |
+|Grupy zasobów | Subskrypcja | Umożliwia utworzenie nowej grupy zasobów do użytku przez inne artefakty w ramach strategii.  Te zastępcze grupy zasobów umożliwiają organizowanie zasobów dokładnie w taką strukturę, jaka jest pożądana. Udostępniają one ogranicznik zakresu na potrzeby uwzględnionych zasad i artefakty przypisania roli oraz szablony usługi Azure Resource Manager. |
+|Szablon usługi Azure Resource Manager | Subskrypcja, grupa zasobów | Szablony służą do tworzenia złożonych środowisk. Przykładowe środowiska: farma programu SharePoint, konfiguracja stanu usługi Azure Automation lub obszar roboczy usługi Log Analytics. |
+|Przypisanie zasad | Subskrypcja, grupa zasobów | Umożliwia przypisanie zasad lub inicjatywy do subskrypcji, do której przypisano strategię. Zasady lub inicjatywa muszą znajdować się w zakresie lokalizacji definicji strategii. Jeśli zasady lub inicjatywa mają parametry, są one przypisywane podczas tworzenia strategii bądź podczas jej przypisywania. |
+|Przypisanie roli | Subskrypcja, grupa zasobów | Dodawanie istniejącego użytkownika lub grupy do wbudowanej roli w celu zagwarantowania, że odpowiednie osoby zawsze będą mieć odpowiedni dostęp do zasobów. Przypisania ról mogą być definiowane dla całej subskrypcji lub mogą być zagnieżdżone w konkretnej grupie zasobów uwzględnionej w strategii. |
 
-### <a name="blueprints-and-management-groups"></a>Strategie i grupy zarządzania
+### <a name="blueprint-definition-locations"></a>Lokalizacje definicji strategii
 
-Podczas tworzenia definicji strategii należy zdefiniować miejsce, w którym strategia zostanie zapisana. Obecnie strategie można zapisywać tylko w [grupie zarządzania](../management-groups/overview.md), do której użytkownik ma dostęp jako **Współautor**. Strategia może zostać przypisana do dowolnej subskrypcji elementu podrzędnego tej grupy zarządzania.
-
-> [!IMPORTANT]
-> Jeśli nie masz dostępu do żadnej grupy zarządzania ani do żadnej skonfigurowanej grupy zarządzania, po załadowaniu listy definicji strategii okazuje się, że żadna grupa nie jest dostępna i kliknięcie pozycji **Zakres** powoduje otwarcie okna z ostrzeżeniem o pobieraniu grup zarządzania. Aby rozwiązać ten problem, upewnij się, że subskrypcja, do której masz odpowiedni dostęp, jest częścią [grupy zarządzania](../management-groups/overview.md).
+Podczas tworzenia definicji strategii należy zdefiniować miejsce, w którym strategia zostanie zapisana. Strategie można zapisywać tylko w [grupie zarządzania](../management-groups/overview.md) lub subskrypcji, do której użytkownik ma dostęp jako **Współautor**. Jeśli lokalizacja znajduje się w grupie zarządzania, strategię można przypisać do dowolnej subskrypcji podrzędnej tej grupy zarządzania.
 
 ### <a name="blueprint-parameters"></a>Parametry strategii
 
@@ -101,7 +98,7 @@ Aby użytkownik mógł usuwać strategie, jego konto musi mieć następujące up
 - `Microsoft.Blueprint/blueprints/versions/delete`
 
 > [!NOTE]
-> Ponieważ definicje strategii są tworzone w grupie zarządzania, uprawnienia definicji strategii muszą zostać przyznane w zakresie grupy zarządzania lub muszą być dziedziczone w zakresie grupy zarządzania.
+> Uprawnienia definicji strategii muszą zostać nadane lub odziedziczone w grupie zarządzania lub w zakresie subskrypcji, w których zostały zapisane.
 
 Aby użytkownik mógł przypisywać strategie lub anulować ich przypisanie, jego konto musi mieć następujące uprawnienia:
 

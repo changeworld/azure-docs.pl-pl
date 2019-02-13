@@ -5,30 +5,37 @@ services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
 ms.topic: include
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: f00ca7ddf44a9d5b850cd47520970a0396a0c1b5
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bc920493b32d500602a5b683c098d23aff855150
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453100"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55823302"
 ---
-1. Otwórz narzędzie Android SDK Manager, klikając ikonę na pasku narzędzi programu Android Studio lub klikając kolejno opcje **Tools** (Narzędzia) > **Android** > **SDK Manager** w menu. Znajdź wersję docelową zestawu SDK systemu Android używaną w projekcie, otwórz ją, klikając opcję **Show Package Details** (Pokaż szczegóły pakietu), po czym wybierz opcję **Google APIs** (Interfejsy API Google), jeśli nie została ona jeszcze zainstalowana.
-2. Kliknij kartę **SDK Tools** (Narzędzia zestawu SDK). Jeśli usługa Google Play nie została jeszcze zainstalowana, kliknij pozycję **Google Play Services** (Usługi Google Play), jak przedstawiono poniżej. Następnie kliknij opcję **Apply** (Zastosuj), aby zainstalować usługę. Zanotuj ścieżkę zestawu SDK, która będzie potrzebna w kolejnym kroku.
+1. W programie **Android Studio**, wybierz z menu pozycję **Tools** (Narzędzia) i wybierz pozycję **SDK Manager** (Menedżer zestawów SDK). 
+2. Wybierz wersję docelową zestawu Android SDK, który jest używany w projekcie, a następnie wybierz pozycję **Show Package Details** (Pokaż szczegóły pakietu). 
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
-3. Otwórz plik `build.gradle` w katalogu aplikacji.
+    ![Menedżer zestawów Android SDK — wybieranie wersji docelowej](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-sdk-manager.png)
+3. Wybierz pozycję **Google APIs** (Interfejsy API firmy Google), jeśli jeszcze nie zostały one zainstalowane.
 
-    ![](./media/notification-hubs-android-studio-add-google-play-services/notification-hubs-android-studio-add-google-play-dependency.png)
-4. Dodaj następujący wiersz w obszarze `dependencies`:
+    ![Menedżer zestawów Android SDK — wybrane interfejsy API firmy Google](./media/notification-hubs-android-studio-add-google-play-services/googole-apis-selected.png)
+4. Przełącz się na kartę **SDK Tools** (Narzędzia zestawu SDK). Jeśli usługa Google Play nie została jeszcze zainstalowana, wybierz pozycję **Google Play Services** (Usługi Google Play), jak pokazano na następującej ilustracji. Następnie kliknij opcję **Apply** (Zastosuj), aby zainstalować usługę. Zanotuj ścieżkę zestawu SDK, która będzie potrzebna w kolejnym kroku.
+
+    ![Menedżer zestawów Android SDK — wybrane usługi Google Play](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
+3. Jeśli zobaczysz okno dialogowe **Potwierdzanie zmiany**, wybierz przycisk **OK**. Instalator składników zainstaluje żądane składniki. Wybierz przycisk **Finish** (Zakończ) po zainstalowaniu składników.
+4. Wybierz przycisk **OK**, aby zamknąć okno dialogowe **Settings for New Projects** (Ustawienia nowego projektu).  
+5. Otwórz plik `build.gradle` w katalogu **app** i dodaj następujący wiersz w sekcji `dependencies`. 
 
     ```text
-    compile 'com.google.android.gms:play-services-gcm:12.0.0'
+    implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
-5. Kliknij ikonę **Sync Project with Gradle Files** (Synchronizuj projekt z plikami narzędzia Gradle) na pasku narzędzi.
-6. Otwórz plik **AndroidManifest.xml** i dodaj ten tag do tagu *aplikacji*.
+5. Wybierz ikonę **Sync Now** (Synchronizuj teraz) na pasku narzędzi.
+
+    ![Synchronizacja za pomocą narzędzia Gradle](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
+1. Otwórz plik **AndroidManifest.xml** i dodaj ten tag do tagu *aplikacji*.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

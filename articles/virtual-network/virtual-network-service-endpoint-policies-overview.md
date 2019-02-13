@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 7a3a94e9759dfb3c525ffcf1e840d5bec18f4808
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 6e5748f5a76ade9cc1bb91902eb0fddcec2a6daa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051315"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812348"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Zasady punktu końcowego usługi sieci wirtualnej (wersja zapoznawcza)
 
@@ -154,7 +154,7 @@ Nie ma dostępnego centralnego rejestrowania dla zasad punktu końcowego usługi
 ### <a name="troubleshooting-scenarios"></a>Scenariusze rozwiązywania problemów
 - Dostęp dozwolony do kont magazynu niewymienionych w zasadach punktu końcowego
   - Sieciowe grupy zabezpieczeń mogą zapewnić dostęp do Internetu lub kont usługi Azure Storage w innych regionach.
-  - Sieciowe grupy zabezpieczeń należy skonfigurować tak, aby zablokować cały wychodzący ruch internetowy i zezwalać tylko na ruch do konkretnych regionów usługi Azure Storage. Aby uzyskać szczegółowe informacje, zobacz [Sieciowe grupy zabezpieczeń](#network-security-groups).
+  - Sieciowe grupy zabezpieczeń należy skonfigurować tak, aby zablokować cały wychodzący ruch internetowy i zezwalać tylko na ruch do konkretnych regionów usługi Azure Storage. Aby uzyskać szczegółowe informacje, zobacz „Sieciowe grupy zabezpieczeń”.
 - Odmowa dostępu dla kont wymienionych w zasadach punktu końcowego
   - Filtrowanie przez sieciowe grupy zabezpieczeń lub zaporę może blokować dostęp
   - Jeśli usunięcie/ponowne zastosowanie zasad powoduje utratę połączenia:

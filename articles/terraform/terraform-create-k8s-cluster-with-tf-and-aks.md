@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 3ccba82e626882a99deaca2f12be3d2f96869b81
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0ef206cf4407c6392ae5d9a70ba156f5635715e9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078953"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814796"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
 Usługa [Azure Kubernetes Service (AKS)](/azure/aks/) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
@@ -352,7 +352,7 @@ W tej sekcji dowiesz się, jak za pomocą polecenia `terraform init` utworzyć z
 
     ![Przykładowe wyniki wykonania polecenia „terraform plan”](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Uruchom polecenie `terraform apply`, aby zastosować plan w celu utworzenia klastra Kubernetes. Proces tworzenia klastra Kubernetes może potrwać kilka minut, powodując przekroczenie limitu czasu sesji usługi Cloud Shell. W przypadku przekroczenia limitu czasu sesji usługi Cloud Shell możesz wykonać kroki opisane w sekcji [„Odzyskiwanie sprawności po przekroczeniu limitu czasu w usłudze Cloud Shell”](#recover-from-a-dloud-shell-timeout), aby ukończyć ten samouczek.
+1. Uruchom polecenie `terraform apply`, aby zastosować plan w celu utworzenia klastra Kubernetes. Proces tworzenia klastra Kubernetes może potrwać kilka minut, powodując przekroczenie limitu czasu sesji usługi Cloud Shell. W przypadku przekroczenia limitu czasu sesji usługi Cloud Shell możesz wykonać kroki opisane w sekcji „Odzyskiwanie sprawności po przekroczeniu limitu czasu w usłudze Cloud Shell”, aby ukończyć ten samouczek.
 
     ```bash
     terraform apply out.plan

@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: c3b8f4f8188a6a28cca8b77f169a00657b11dfc5
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 695050a46df4b208205ce394cc79db891803cfa4
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154815"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731533"
 ---
-# <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Samouczek: dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central
+# <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>Samouczek: Dodawanie rzeczywistego urządzenia do aplikacji usługi Azure IoT Central
 
 Ten samouczek przedstawia dodawanie rzeczywistego urządzenia do aplikacji usługi Microsoft Azure IoT Central i konfigurowanie go.
 
@@ -109,9 +109,11 @@ W poniższej procedurze pokazano, jak przygotować przykład dla oprogramowania 
 
    Dowiedz się więcej na temat [narzędzia wiersza polecenia w tym miejscu](https://www.npmjs.com/package/dps-keygen).
 
-1. Pobierz narzędzie dps_cstr z witryny [GitHub](https://github.com/Azure/dps-keygen/tree/master/bin) i rozpakuj je (system Windows).
+1. Pobierz i rozpakuj (w systemie Windows) narzędzie the dps_cstr z witryny GitHub (https://github.com/Azure/dps-keygen/archive/master.zip
 
-    Upewnij się, że wybierasz narzędzie odpowiednie dla używanej platformy. Na przykład w przypadku systemu Windows plik dps_cstr.exe i pliki dll powinny być teraz dostępne w folderze. 
+)
+
+    Make sure you choose the one that matches your platform. For example, on Windows the dps_cstr.exe and the dll files should be now available in your folder. 
 
 1. Parametry połączenia dla wystąpienia urządzenia w aplikacji są generowane na podstawie informacji o urządzeniu udostępnionych przez usługę IoT Central.
 

@@ -6,29 +6,16 @@ ms.topic: tutorial
 ms.date: 04/20/2018
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: 559bdd479d02a8744f9b113c43c2c860d8218401
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: cbdc57489eb7ebd50e3ce7e2b4e0e4081aef8e27
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038198"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770388"
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>Programowanie i testowanie w środowisku lokalnym przy użyciu emulatora usługi Azure Cosmos DB
 
-<table>
-<tr>
-  <td><strong>Pliki binarne</strong></td>
-  <td>[Pobierz plik MSI](https://aka.ms/cosmosdb-emulator)</td>
-</tr>
-<tr>
-  <td><strong>Docker</strong></td>
-  <td>[Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)</td>
-</tr>
-<tr>
-  <td><strong>Źródło Docker</strong></td>
-  <td>[GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)</td>
-</tr>
-</table>
+|**Pliki binarne**|[Pobierz plik MSI](https://aka.ms/cosmosdb-emulator)| |**Docker**|[Docker Hub](https://hub.docker.com/r/microsoft/azure-cosmosdb-emulator/)| |**Źródło Docker** | [GitHub](https://github.com/Azure/azure-cosmos-db-emulator-docker)|
 
 Emulator usługi Azure Cosmos DB zapewnia środowisko lokalne, które emuluje usługę Azure Cosmos DB do celów programistycznych. Za pomocą emulatora usługi Azure Cosmos DB możesz lokalnie opracowywać i testować swoją aplikację bez konieczności tworzenia subskrypcji platformy Azure i ponoszenia kosztów. Jeśli sposób działania aplikacji w emulatorze usługi Azure Cosmos DB jest zadowalający, możesz zacząć korzystać z konta usługi Azure Cosmos DB w chmurze.
 
@@ -162,133 +149,28 @@ Wiersz polecenia umożliwia uruchamianie i zatrzymywanie emulatora, konfigurowan
 
 Aby wyświetlić listę opcji, wpisz ciąg `CosmosDB.Emulator.exe /?` w wierszu polecenia.
 
-<table>
-<tr>
-  <td><strong>Opcja</strong></td>
-  <td><strong>Opis</strong></td>
-  <td><strong>Polecenie</strong></td>
-  <td><strong>Argumenty</strong></td>
-</tr>
-<tr>
-  <td>[Bez argumentów]</td>
-  <td>Uruchamia emulator usługi Azure Cosmos DB z ustawieniami domyślnymi.</td>
-  <td>CosmosDB.Emulator.exe</td>
-  <td></td>
-</tr>
-<tr>
-  <td>[Help]</td>
-  <td>Wyświetla listę obsługiwanych argumentów wiersza polecenia.</td>
-  <td>CosmosDB.Emulator.exe /?</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GetStatus</td>
-  <td>Pobiera stan emulatora usługi Azure Cosmos DB. Stan jest wskazywany przez kod zakończenia: 1 = uruchamiany, 2 = uruchomiony, 3 = zatrzymany. Kod zakończenia o wartości ujemnej informuje o wystąpieniu błędu. Inne dane wyjściowe nie są generowane.</td>
-  <td>CosmosDB.Emulator.exe /GetStatus</td>
-  <td></td>
-<tr>
-  <td>Shutdown</td>
-  <td>Zamyka emulatora usługi Azure Cosmos DB.</td>
-  <td>CosmosDB.Emulator.exe /Shutdown</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DataPath</td>
-  <td>Określa ścieżkę przechowywania plików danych. Ścieżka domyślna to %LocalAppdata%\CosmosDBEmulator.</td>
-  <td>CosmosDB.Emulator.exe /DataPath=&lt;ścieżka_do_danych&gt;</td>
-  <td>&lt;ścieżka_do_danych&gt;: dostępna ścieżka</td>
-</tr>
-<tr>
-  <td>Port</td>
-  <td>Określa numer portu używanego przez emulatora. Wartość domyślna to 8081.</td>
-  <td>CosmosDB.Emulator.exe /Port=&lt;port&gt;</td>
-  <td>&lt;port&gt;: numer pojedynczego portu</td>
-</tr>
-<tr>
-  <td>MongoPort</td>
-  <td>Określa numer portu używanego w celu zapewnienia zgodności z interfejsem API usługi MongoDB. Wartość domyślna to 10255.</td>
-  <td>CosmosDB.Emulator.exe /MongoPort=&lt;port_mongo&gt;</td>
-  <td>&lt;port_mongo&gt;: numer pojedynczego portu</td>
-</tr>
-<tr>
-  <td>DirectPorts</td>
-  <td>Określa porty używane przez połączenia bezpośrednie. Wartość domyślna to 10251,10252,10253,10254.</td>
-  <td>CosmosDB.Emulator.exe /DirectPorts:&lt;porty_bezpośrednie&gt;</td>
-  <td>&lt;porty_bezpośrednie&gt;: lista rozdzielana przecinkami zawierająca cztery porty</td>
-</tr>
-<tr>
-  <td>Klucz</td>
-  <td>Klucz autoryzacji dla emulatora. Klucz musi być 64-bajtowym wektorem szyfrowanym algorytmem Base-64.</td>
-  <td>CosmosDB.Emulator.exe /Key:&lt;klucz&gt;</td>
-  <td>&lt;klucz&gt;: klucz musi być 64-bajtowym wektorem szyfrowanym algorytmem Base-64</td>
-</tr>
-<tr>
-  <td>EnableRateLimiting</td>
-  <td>Wskazuje, że ograniczanie szybkości żądania jest włączone.</td>
-  <td>CosmosDB.Emulator.exe /EnableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>DisableRateLimiting</td>
-  <td>Wskazuje, że ograniczanie szybkości żądania jest wyłączone.</td>
-  <td>CosmosDB.Emulator.exe /DisableRateLimiting</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoUI</td>
-  <td>Nie wyświetla interfejsu użytkownika emulatora.</td>
-  <td>CosmosDB.Emulator.exe /NoUI</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoExplorer</td>
-  <td>Nie wyświetla Eksploratora danych podczas uruchamiania.</td>
-  <td>CosmosDB.Emulator.exe /NoExplorer</td>
-  <td></td>
-</tr>
-<tr>
-  <td>PartitionCount</td>
-  <td>Określa maksymalną liczbę kolekcji partycjonowanych. Aby uzyskać więcej informacji, zobacz sekcję [Zmienianie liczby kolekcji](#set-partitioncount).</td>
-  <td>CosmosDB.Emulator.exe /PartitionCount=&lt;liczba_partycji&gt;</td>
-  <td>&lt;liczba_partycji&gt;: maksymalna liczba dozwolonych kolekcji z jedną partycją. Wartość domyślna to 25. Maksymalna dozwolona wartość to 250.</td>
-</tr>
-<tr>
-  <td>DefaultPartitionCount</td>
-  <td>Określa domyślną liczbę partycji w kolekcji partycjonowanej.</td>
-  <td>CosmosDB.Emulator.exe /DefaultPartitionCount=&lt;domyślna_liczba_partycji&gt;</td>
-  <td>&lt;domyślna_liczba_partycji&gt;: wartość domyślna to 25.</td>
-</tr>
-<tr>
-  <td>AllowNetworkAccess</td>
-  <td>Włącza dostęp do emulatora za pośrednictwem sieci. Aby umożliwić dostęp w sieci, musisz także podać opcję /Key=&lt;ciąg_klucza&gt; lub /KeyFile=&lt;nazwa_pliku&gt;.</td>
-  <td>CosmosDB.Emulator.exe /AllowNetworkAccess /Key=&lt;ciąg_klucza&gt;<br><br>lub<br><br>CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=&lt;nazwa_pliku&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>NoFirewall</td>
-  <td>Nie dostosowuje reguł zapory w przypadku użycia opcji /AllowNetworkAccess.</td>
-  <td>CosmosDB.Emulator.exe /NoFirewall</td>
-  <td></td>
-</tr>
-<tr>
-  <td>GenKeyFile</td>
-  <td>Generuje nowy klucz autoryzacji i zapisuje go w określonym pliku. Wygenerowanego klucza można używać z opcją /Key lub /KeyFile.</td>
-  <td>CosmosDB.Emulator.exe /GenKeyFile=&lt;ścieżka_do_pliku_klucza&gt;</td>
-  <td></td>
-</tr>
-<tr>
-  <td>Spójność</td>
-  <td>Ustawia domyślny poziom spójności dla konta.</td>
-  <td>CosmosDB.Emulator.exe /Consistency=&lt;spójność&gt;</td>
-  <td>&lt;spójność&gt;: wartość musi być jednym z następujących [poziomów spójności](consistency-levels.md): Sesja, Silna, Ostateczna lub Powiązana nieaktualność. Wartość domyślna to Sesja.</td>
-</tr>
-<tr>
-  <td>?</td>
-  <td>Wyświetla komunikat pomocy.</td>
-  <td></td>
-  <td></td>
-</tr>
-</table>
+|**Opcja** | **Opis** | **Polecenie**| **Argumenty**|
+|---|---|---|---|
+|[Bez argumentów] | Uruchamia emulator usługi Azure Cosmos DB z ustawieniami domyślnymi. |CosmosDB.Emulator.exe| |
+|[Help] |Wyświetla listę obsługiwanych argumentów wiersza polecenia.|CosmosDB.Emulator.exe /? | |
+| GetStatus |Pobiera stan emulatora usługi Azure Cosmos DB. Stan jest wskazywany przez kod zakończenia: 1 = uruchamiany, 2 = uruchomiony, 3 = zatrzymany. Kod zakończenia o wartości ujemnej informuje o wystąpieniu błędu. Inne dane wyjściowe nie są generowane. | CosmosDB.Emulator.exe /GetStatus| |
+| Shutdown| Zamyka emulatora usługi Azure Cosmos DB.| CosmosDB.Emulator.exe /Shutdown | |
+|DataPath | Określa ścieżkę przechowywania plików danych. Ścieżka domyślna to %LocalAppdata%\CosmosDBEmulator. | CosmosDB.Emulator.exe /DataPath=\<ścieżka_do_danych\> | \<ścieżka_do_danych\>: dostępna ścieżka |
+|Port | Określa numer portu używanego przez emulatora. Wartość domyślna to 8081. |CosmosDB.Emulator.exe /Port=\<port\> | \<port\>: numer pojedynczego portu |
+| MongoPort | Określa numer portu używanego w celu zapewnienia zgodności z interfejsem API usługi MongoDB. Wartość domyślna to 10255. |CosmosDB.Emulator.exe /MongoPort= \<mongoport\>|\<port_mongo\>: numer pojedynczego portu|
+| DirectPorts |Określa porty używane przez połączenia bezpośrednie. Wartość domyślna to 10251,10252,10253,10254. | CosmosDB.Emulator.exe /DirectPorts:\<porty_bezpośrednie\> | \<porty_bezpośrednie\>: lista rozdzielana przecinkami zawierająca cztery porty |
+| Klucz |Klucz autoryzacji dla emulatora. Klucz musi być 64-bajtowym wektorem szyfrowanym algorytmem Base-64. | CosmosDB.Emulator.exe /Key:\<klucz\> | \<klucz\>: klucz musi być 64-bajtowym wektorem szyfrowanym algorytmem Base-64|
+| EnableRateLimiting | Wskazuje, że ograniczanie szybkości żądania jest włączone. |CosmosDB.Emulator.exe /EnableRateLimiting | |
+| DisableRateLimiting |Wskazuje, że ograniczanie szybkości żądania jest wyłączone. |CosmosDB.Emulator.exe /DisableRateLimiting | |
+| NoUI | Nie wyświetla interfejsu użytkownika emulatora. | CosmosDB.Emulator.exe /NoUI | |
+| NoExplorer | Nie wyświetla Eksploratora danych podczas uruchamiania. |CosmosDB.Emulator.exe /NoExplorer | | 
+| PartitionCount | Określa maksymalną liczbę kolekcji partycjonowanych. Aby uzyskać więcej informacji, zobacz sekcję [Zmienianie liczby kolekcji](#set-partitioncount). | CosmosDB.Emulator.exe /PartitionCount=\<liczba_partycji\> | \<liczba_partycji\>: maksymalna liczba dozwolonych kolekcji z jedną partycją. Wartość domyślna to 25. Maksymalna dozwolona wartość to 250.|
+| DefaultPartitionCount| Określa domyślną liczbę partycji w kolekcji partycjonowanej. | CosmosDB.Emulator.exe /DefaultPartitionCount=\<domyślna_liczba_partycji\> | \<domyślna_liczba_partycji\>: wartość domyślna to 25.|
+| AllowNetworkAccess | Włącza dostęp do emulatora za pośrednictwem sieci. Aby umożliwić dostęp w sieci, musisz także podać opcję /Key=\<ciąg_klucza\> lub /KeyFile=\<nazwa_pliku\>. | CosmosDB.Emulator.exe /AllowNetworkAccess /Key=\<ciąg_klucza\> lub CosmosDB.Emulator.exe /AllowNetworkAccess /KeyFile=\<nazwa_pliku\>| |
+| NoFirewall | Nie dostosowuje reguł zapory w przypadku użycia opcji /AllowNetworkAccess. |CosmosDB.Emulator.exe /NoFirewall | |
+| GenKeyFile | Generuje nowy klucz autoryzacji i zapisuje go w określonym pliku. Wygenerowanego klucza można używać z opcją /Key lub /KeyFile. | CosmosDB.Emulator.exe /GenKeyFile=\<ścieżka_do_pliku_klucza\> | |
+| Spójność | Ustawia domyślny poziom spójności dla konta. | CosmosDB.Emulator.exe /Consistency=\<spójność\> | \<spójność\>: wartość musi być jednym z następujących [poziomów spójności](consistency-levels.md): Sesja, Silna, Ostateczna lub Powiązana nieaktualność. Wartość domyślna to Sesja. |
+| ? | Wyświetla komunikat pomocy.| | |
 
 ## <a id="set-partitioncount"></a>Zmienianie liczby kolekcji
 

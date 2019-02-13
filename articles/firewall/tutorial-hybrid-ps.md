@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 1/30/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 29af70988cf77b9fad47e5c2478e5c86529fe9cf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cf3c691553f2bc7ae8f10345daee92a8380aba25
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458240"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815748"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Samouczek: Wdrażanie i konfigurowanie usługi Azure Firewall w sieci hybrydowej za pomocą programu Azure PowerShell
 
@@ -54,7 +54,7 @@ Aby ten scenariusz przebiegał prawidłowo, muszą zostać spełnione trzy podst
 - W podsieci usługi Azure Firewall nie jest wymagana trasa zdefiniowana przez użytkownika, ponieważ uzyskuje ona informacje o trasach na podstawie protokołu BGP.
 - Ustaw wartość **AllowGatewayTransit** na potrzeby komunikacji równorzędnej między sieciami VNet-Hub i VNet-Spoke oraz **UseRemoteGateways** na potrzeby komunikacji równorzędnej VNet-Spoke i VNet-Hub.
 
-Zapoznaj się z sekcją [Tworzenie tras](#create-routes) w tym samouczku, aby poznać sposób tworzenia tych tras.
+Zapoznaj się z sekcją Tworzenie tras w tym samouczku, aby poznać sposób tworzenia tych tras.
 
 >[!NOTE]
 >Usługa Azure Firewall musi mieć bezpośrednie połączenie z Internetem. Jeśli włączono wymuszone tunelowanie do środowiska lokalnego za pośrednictwem usługi ExpressRoute lub usługi Application Gateway, musisz skonfigurować trasę zdefiniowaną przez użytkownika 0.0.0.0/0 z wartością **NextHopType** ustawioną jako **Internet**, a następnie przypisać ją do podsieci **AzureFirewallSubnet**.

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: hning86
 ms.author: haining
 ms.reviewer: sgilley
-ms.date: 09/24/2018
+ms.date: 01/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: 887be89060a6d02eea74cd127cfbc93e48c0b3ff
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0f596f40cdea095ea152785e656c44eaa062e28c
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240866"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564038"
 ---
 # <a name="tutorial-deploy-an-image-classification-model-in-azure-container-instances"></a>Samouczek: wdrażanie modelu klasyfikacji obrazów w usłudze Azure Container Instances
 
@@ -33,23 +33,18 @@ W tej części samouczka użyjesz usługi Azure Machine Learning, aby wykonać n
 > * Wdrażanie modelu w usłudze Container Instances.
 > * Testowanie wdrożonego modelu.
 
-Usługa Container Instances nie jest idealnym rozwiązaniem w przypadku wdrożeń produkcyjnych, ale znakomicie nadaje się do testowania i interpretowania przepływu pracy. W przypadku skalowalnych wdrożeń produkcyjnych rozważ skorzystanie z usługi Azure Kubernetes Service. Aby uzyskać więcej informacji, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
-
-## <a name="get-the-notebook"></a>Pobieranie notesu
-
-Dla Twojej wygody ten samouczek jest dostępny jako [notes Jupyter](https://github.com/Azure/MachineLearningNotebooks/blob/master/tutorials/img-classification-part2-deploy.ipynb). Uruchom notes *tutorials/img-classification-part2-deploy.ipynb* w usłudze [Azure Notebooks](https://notebooks.azure.com/) lub na własnym serwerze Jupyter Notebook.
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+Usługa Container Instances to doskonałe rozwiązanie do testowania i interpretowania przepływu pracy. W przypadku skalowalnych wdrożeń produkcyjnych rozważ skorzystanie z usługi Azure Kubernetes Service. Aby uzyskać więcej informacji, zobacz [jak i gdzie wdrażać modele](how-to-deploy-and-where.md).
 
 >[!NOTE]
-> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.2.
+> Kod w tym artykule został przetestowany przy użyciu zestawu Azure Machine Learning SDK w wersji 1.0.8.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+Przejdź do sekcji [Konfigurowanie środowiska programistycznego](#start), aby zapoznać się z krokami dotyczącymi notesu.  
 
-Wykonaj szkolenie modelu przy użyciu następującego notesu: [Samouczek (część 1): uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).  
+Aby uruchomić notes, najpierw przeprowadź trenowanie modelu zgodnie z krokami opisanymi w artykule [Samouczek (część 1): uczenie modelu klasyfikacji obrazów za pomocą usługi Azure Machine Learning](tutorial-train-models-with-aml.md).   Następnie uruchom notes **tutorials/img-classification-part2-deploy.ipynb** za pomocą tego samego serwera notesów.
 
 
-## <a name="set-up-the-environment"></a>Konfigurowanie środowiska
+## <a name="start"></a>Konfigurowanie środowiska
 
 Zacznij od skonfigurowania środowiska testowego.
 
@@ -78,13 +73,16 @@ W poprzednim samouczku w Twoim obszarze roboczym został zarejestrowany model. T
 ```python
 from azureml.core import Workspace
 from azureml.core.model import Model
-
+import os 
 ws = Workspace.from_config()
 model=Model(ws, 'sklearn_mnist')
-model.download(target_dir = '.')
-import os 
+
+model.download(target_dir=os.getcwd(), exist_ok=True)
+
 # verify the downloaded model file
-os.stat('./sklearn_mnist_model.pkl')
+file_path = os.path.join(os.getcwd(), "sklearn_mnist_model.pkl")
+
+os.stat(file_path)
 ```
 
 ## <a name="test-the-model-locally"></a>Testowanie modelu w środowisku lokalnym
@@ -100,12 +98,12 @@ Załaduj dane testowe z katalogu **./data/** utworzonego w ramach samouczka doty
 
 ```python
 from utils import load_data
+import os
 
+data_folder = os.path.join(os.getcwd(), 'data')
 # note we also shrink the intensity values (X) from 0-255 to 0-1. This helps the neural network converge faster
-
-X_test = load_data('./data/test-images.gz', False) / 255.0
-y_test = load_data('./data/test-labels.gz', True).reshape(-1)
-
+X_test = load_data(os.path.join(data_folder, 'test-images.gz'), False) / 255.0
+y_test = load_data(os.path.join(data_folder, 'test-labels.gz'), True).reshape(-1)
 ```
 
 ### <a name="predict-test-data"></a>Przewidywanie danych testowych
@@ -116,7 +114,7 @@ Aby uzyskać przewidywania, dostarcz do modelu zestaw danych testowych:
 import pickle
 from sklearn.externals import joblib
 
-clf = joblib.load('./sklearn_mnist_model.pkl')
+clf = joblib.load( os.path.join(os.getcwd(), 'sklearn_mnist_model.pkl'))
 y_hat = clf.predict(X_test)
 ```
 
@@ -214,7 +212,8 @@ def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
     # make prediction
     y_hat = model.predict(data)
-    return json.dumps(y_hat.tolist())
+    # you can return any data type as long as it is JSON-serializable
+    return y_hat.tolist()
 ```
 
 <a name="make-myenv"></a>
@@ -314,10 +313,10 @@ n = 30
 sample_indices = np.random.permutation(X_test.shape[0])[0:n]
 
 test_samples = json.dumps({"data": X_test[sample_indices].tolist()})
-test_samples = bytes(test_samples, encoding = 'utf8')
+test_samples = bytes(test_samples, encoding='utf8')
 
 # predict using the deployed model
-result = json.loads(service.run(input_data=test_samples))
+result = service.run(input_data=test_samples)
 
 # compare actual value vs. the predicted values:
 i = 0
@@ -347,7 +346,6 @@ W celu przetestowania usługi internetowej możesz również wysłać nieprzetwo
 
 ```python
 import requests
-import json
 
 # send a random row from the test set to score
 random_index = np.random.randint(0, len(X_test)-1)
@@ -380,6 +378,8 @@ service.delete()
 
 ## <a name="next-steps"></a>Następne kroki
 
-+ Dowiedz się więcej o wszystkich [opcjach wdrażania usługi Azure Machine Learning](how-to-deploy-and-where.md). Wśród tych opcji znajdują się usługi Azure Container Instances i Azure Kubernetes Service, układy FPGA i usługa Azure IoT Edge.
-
-+ Zobacz, jak usługa Azure Machine Learning automatycznie wybiera i dostosowuje najlepszy algorytm dla modelu. Tworzy również ten model dla Ciebie. Wypróbuj samouczek dotyczący [algorytmu automatycznego wyboru](tutorial-auto-train-models.md). 
++ Dowiedz się więcej o wszystkich [opcjach wdrażania usługi Azure Machine Learning](how-to-deploy-and-where.md).
++ Dowiedz się, jak [tworzyć klientów na potrzeby usługi internetowej](how-to-consume-web-service.md).
++  Asynchronicznie [twórz prognozy dotyczące dużych ilości danych](how-to-run-batch-predictions.md).
++ Monitoruj swoje modele usługi Azure Machine Learning przy użyciu usługi [Application Insights](how-to-enable-app-insights.md).
++ Wypróbuj samouczek dotyczący [algorytmu automatycznego wyboru](tutorial-auto-train-models.md). 

@@ -11,12 +11,12 @@ ms.topic: tutorial
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: mmontwil
-ms.openlocfilehash: 9dc219078377d8b8da5d1700fb2a93133649d924
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1840a451fc9354b32950283b335455d67ccbf43
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475781"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657250"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>Rozpoczęcie pracy w usłudze Azure Dev Spaces przy użyciu języka Java
 
@@ -226,4 +226,4 @@ Odśwież aplikację internetową w przeglądarce. Twój komunikat powinien zost
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Więcej informacji na temat programowania zespołowego](team-development-java.md)
+> [Dowiedz się więcej o opracowywaniu dla wielu usług](multi-service-java.md)

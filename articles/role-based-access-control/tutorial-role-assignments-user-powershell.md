@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/11/2018
+ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: cac585b36c3b5969a18c941215b623443850cd4c
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 27b48e1d6aabf9cde7152bfb0dbf3e58bc619107
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301732"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696782"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Samouczek: udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell
+# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Samouczek: Udzielanie dostępu użytkownikowi za pomocą kontroli dostępu opartej na rolach i programu Azure PowerShell
 
 [Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym samouczku przyznasz użytkownikowi dostęp z możliwością wyświetlania wszystkiego w ramach subskrypcji i zarządzania wszystkim w grupie zasobów przy użyciu programu Azure PowerShell.
 
@@ -32,6 +32,8 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Usuwanie dostępu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -79,10 +81,10 @@ Do przypisania roli potrzebny jest użytkownik, grupa lub jednostka usługi. Je�
 
 Za pomocą grupy zasobów można zademonstrować przypisywanie roli w zakresie grupy zasobów.
 
-1. Pobierz listę lokalizacji regionów za pomocą polecenia [Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation).
+1. Pobierz listę lokalizacji regionów za pomocą polecenia [Get-AzLocation](/powershell/module/az.resources/get-azlocation).
 
    ```azurepowershell
-   Get-AzureRmLocation | select Location
+   Get-AzLocation | select Location
    ```
 
 1. Wybierz lokalizację w pobliżu i przypisz ją do zmiennej.
@@ -91,10 +93,10 @@ Za pomocą grupy zasobów można zademonstrować przypisywanie roli w zakresie g
    $location = "westus"
    ```
 
-1. Utwórz nową grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).
+1. Utwórz nową grupę zasobów za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup).
 
    ```azurepowershell
-   New-AzureRmResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
+   New-AzResourceGroup -Name "rbac-tutorial-resource-group" -Location $location
    ```
 
    ```Example
@@ -107,12 +109,12 @@ Za pomocą grupy zasobów można zademonstrować przypisywanie roli w zakresie g
 
 ## <a name="grant-access"></a>Udzielanie dostępu
 
-Aby udzielić dostępu użytkownikowi, przypisz rolę za pomocą polecenia [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment). Należy określić podmiot zabezpieczeń, definicję roli i zakres.
+Aby udzielić dostępu użytkownikowi, przypisz rolę za pomocą polecenia [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment). Należy określić podmiot zabezpieczeń, definicję roli i zakres.
 
-1. Pobierz identyfikator subskrypcji za pomocą polecenia [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+1. Pobierz identyfikator subskrypcji za pomocą polecenia [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
 
     ```azurepowershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
     ```Example
@@ -131,7 +133,7 @@ Aby udzielić dostępu użytkownikowi, przypisz rolę za pomocą polecenia [New-
 1. Przypisz użytkownikowi rolę [Czytelnik](built-in-roles.md#reader) w zakresie subskrypcji.
 
     ```azurepowershell
-    New-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    New-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Reader" `
       -Scope $subScope
     ```
@@ -151,7 +153,7 @@ Aby udzielić dostępu użytkownikowi, przypisz rolę za pomocą polecenia [New-
 1. Przypisz użytkownikowi rolę [Współautor](built-in-roles.md#contributor) w zakresie grupy zasobów.
 
     ```azurepowershell
-    New-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    New-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Contributor" `
       -ResourceGroupName "rbac-tutorial-resource-group"
     ```
@@ -170,10 +172,10 @@ Aby udzielić dostępu użytkownikowi, przypisz rolę za pomocą polecenia [New-
 
 ## <a name="list-access"></a>Tworzenie listy dostępu
 
-1. Aby zweryfikować dostęp do subskrypcji, wyświetl listę przypisań ról za pomocą polecenia [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+1. Aby zweryfikować dostęp do subskrypcji, wyświetl listę przypisań ról za pomocą polecenia [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
     ```azurepowershell
-    Get-AzureRmRoleAssignment -SignInName rbacuser@example.com -Scope $subScope
+    Get-AzRoleAssignment -SignInName rbacuser@example.com -Scope $subScope
     ```
 
     ```Example
@@ -190,10 +192,10 @@ Aby udzielić dostępu użytkownikowi, przypisz rolę za pomocą polecenia [New-
 
     W danych wyjściowych widać, że do użytkownika samouczka kontroli dostępu opartej na rolach przypisano rolę Czytelnik w zakresie subskrypcji.
 
-1. Aby zweryfikować dostęp do grupy zasobów, wyświetl listę przypisań ról za pomocą polecenia [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment).
+1. Aby zweryfikować dostęp do grupy zasobów, wyświetl listę przypisań ról za pomocą polecenia [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment).
 
     ```azurepowershell
-    Get-AzureRmRoleAssignment -SignInName rbacuser@example.com -ResourceGroupName "rbac-tutorial-resource-group"
+    Get-AzRoleAssignment -SignInName rbacuser@example.com -ResourceGroupName "rbac-tutorial-resource-group"
     ```
 
     ```Example
@@ -232,12 +234,12 @@ Aby udzielić dostępu użytkownikowi, przypisz rolę za pomocą polecenia [New-
 
 ## <a name="remove-access"></a>Usuwanie dostępu
 
-Aby usunąć dostęp dla użytkowników, grup i aplikacji, usuń przypisanie roli za pomocą polecenia [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment).
+Aby usunąć dostęp dla użytkowników, grup i aplikacji, usuń przypisanie roli za pomocą polecenia [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment).
 
 1. Za pomocą następującego polecenia usuń przypisanie roli Współautor dla użytkownika w zakresie grupy zasobów.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    Remove-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Contributor" `
       -ResourceGroupName "rbac-tutorial-resource-group"
     ```
@@ -245,7 +247,7 @@ Aby usunąć dostęp dla użytkowników, grup i aplikacji, usuń przypisanie rol
 1. Za pomocą następującego polecenia usuń przypisanie roli Czytelnik dla użytkownika w zakresie subskrypcji.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName rbacuser@example.com `
+    Remove-AzRoleAssignment -SignInName rbacuser@example.com `
       -RoleDefinitionName "Reader" `
       -Scope $subScope
     ```
@@ -254,10 +256,10 @@ Aby usunąć dostęp dla użytkowników, grup i aplikacji, usuń przypisanie rol
 
 Aby wyczyścić zasoby utworzone w tym samouczku, usuń grupę zasobów i użytkownika.
 
-1. Usuń grupę zasobów za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup).
+1. Usuń grupę zasobów za pomocą polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup).
 
     ```azurepowershell
-    Remove-AzureRmResourceGroup -Name "rbac-tutorial-resource-group"
+    Remove-AzResourceGroup -Name "rbac-tutorial-resource-group"
     ```
 
     ```Example

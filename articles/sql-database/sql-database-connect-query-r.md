@@ -11,58 +11,42 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/30/2018
-ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/31/2019
+ms.openlocfilehash: 84017e95d41f8934de248065a2b66792628b41d2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725747"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815546"
 ---
-# <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Szybki start: korzystanie z usług Machine Learning Services (z językiem R) w usłudze Azure SQL Database (wersja zapoznawcza)
+# <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Szybki start: Korzystanie z usług Machine Learning Services (z językiem R) w usłudze Azure SQL Database (wersja zapoznawcza)
 
-W tym artykule wyjaśniono, jak używać publicznej wersji zapoznawczej usługi Machine Learning (przy użyciu języka R) w usłudze Azure SQL Database. Przeprowadzi Cię on przez podstawy przenoszenia danych między bazą danych SQL i środowiskiem języka R. Wyjaśnia również sposób opakowywania poprawnie sformułowanego kodu R w procedurze składowanej [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) w celu tworzenia, uczenia i używania modeli uczenia maszynowego w usłudze SQL Database.
+W tym artykule wyjaśniono, jak używać publicznej wersji zapoznawczej usługi [Machine Learning (przy użyciu języka R) w usłudze Azure SQL Database](sql-database-machine-learning-services-overview.md). Przeprowadzi Cię on przez podstawy przenoszenia danych między bazą danych SQL i środowiskiem języka R. Wyjaśnia również sposób opakowywania poprawnie sformułowanego kodu R w procedurze składowanej [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) w celu tworzenia, uczenia i używania modeli uczenia maszynowego w usłudze SQL Database.
 
-Usługa Machine Learning w usłudze SQL Database jest używana do wykonywania kodu i funkcji języka R, a kod jest w pełni dostępny dla danych relacyjnych w postaci procedur składowanych, jako skrypt T-SQL zawierający instrukcje języka R lub jako kod języka R zawierający język T-SQL. Skorzystaj z możliwości pakietów języka R dla przedsiębiorstw w celu dostarczania zaawansowanych funkcji analitycznych na dużą skalę oraz możliwości wykonywania obliczeń i przetwarzania w miejscu, w którym znajdują się dane, eliminując konieczność ściągania danych przez sieć.
+Korzystaj z możliwości języka R, aby dostarczać zaawansowaną analizę i uczenie maszynowe w bazie danych. W ten sposób obliczenia i przetwarzanie przenoszone są do miejsca przechowywania danych, co eliminuje konieczność ściągania danych przez sieć. Ponadto wykorzystaj moc korporacyjnych pakietów języka R do dostarczania zaawansowanej analizy na dużą skalę.
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+Usługa Machine Learning Services obejmuje podstawową dystrybucję języka R z nakładką w postaci korporacyjnych pakietów języka R firmy Microsoft. Funkcje i algorytmy języka R firmy Microsoft zostały opracowane z myślą o skalowaniu i użyteczności, zapewniając analizę predykcyjną, modelowanie statystyczne, wizualizacje danych i najwyższej klasy algorytmy uczenia maszynowego.
 
-## <a name="sign-up-for-the-preview"></a>Tworzenie konta na potrzeby korzystania z wersji zapoznawczej
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz konto](https://azure.microsoft.com/free/).
 
-Publiczna wersja zapoznawcza usługi Machine Learning (z językiem R) w usłudze SQL Database nie jest włączona domyślnie. Wyślij wiadomość e-mail do firmy Microsoft na adres [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com), aby utworzyć konto na potrzeby korzystania z publicznej wersji zapoznawczej.
-
-Kiedy zarejestrujesz się w programie, firma Microsoft dołączy Cię do publicznej wersji zapoznawczej i przeprowadzi migrację Twojej istniejącej bazy danych lub utworzy nową bazę danych w usłudze z włączonym językiem R.
-
-Usługi Machine Learning Services (z językiem R) w usłudze SQL Database są obecnie dostępne tylko w modelu zakupu bazującym na rdzeniach wirtualnych w warstwach usług **Ogólnego przeznaczenia** i **Krytyczne dla działania firmy** dla pojedynczych baz danych i baz danych w puli. W tej początkowej publicznej wersji zapoznawczej nie jest obsługiwana warstwa usług **Hiperskala** ani **Wystąpienie zarządzane**. Podczas korzystania z publicznej wersji zapoznawczej nie należy używać usług Machine Learning Services z językiem R w przypadku obciążeń produkcyjnych.
-
-Po włączeniu usługi Machine Learning (z językiem R) dla usługi SQL Database wróć do tej strony, aby dowiedzieć się, jak wykonywać skrypty języka R w kontekście procedury składowanej.
-
-Obecnie język R jest jedynym obsługiwanym językiem. W tej chwili język Python nie jest obsługiwany.
+> [!NOTE]
+> Usługa Machine Learning Services (z językiem R) w usłudze Azure SQL Database jest obecnie w publicznej wersji zapoznawczej. [Zarejestruj się, aby wypróbować wersję zapoznawczą](sql-database-machine-learning-services-overview.md#signup).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby uruchomić przykładowy kod w tych ćwiczeniach, najpierw musisz mieć usługę SQL Database z włączonymi usługami Machine Learning Services (z językiem R). W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowych baz danych, tak jak opisano powyżej.
+Aby uruchomić przykładowy kod w tych ćwiczeniach, najpierw musisz mieć usługę SQL Database z włączonymi usługami Machine Learning Services (z językiem R). W okresie publicznej wersji zapoznawczej firma Microsoft dołączy Cię i włączy usługę Machine Learning dla Twojej istniejącej lub nowej bazy danych. Postępuj zgodnie z instrukcjami w części [Tworzenie konta na potrzeby korzystania z wersji zapoznawczej](sql-database-machine-learning-services-overview.md#signup).
 
 Możesz nawiązać połączenie z usługą SQL Database i uruchamiać skrypty języka R za pomocą dowolnego narzędzia do zarządzania bazą danych lub obsługi zapytań, o ile może ono nawiązać połączenie z usługą SQL Database i uruchomić zapytanie lub procedurę składowaną T-SQL. W tym przewodniku Szybki start używany jest program [SQL Server Management Studio](sql-database-connect-query-ssms.md).
 
 Na potrzeby ćwiczenia [dodawanie pakietu](#add-package) należy również zainstalować język [R](https://www.r-project.org/) i program [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) na komputerze lokalnym.
 
-Ten przewodnik Szybki start wymaga również skonfigurowania reguły zapory na poziomie serwera. W celu zapoznania się z samouczkiem przedstawiający sposób wykonywania tej czynności zobacz [Create server-level firewall rule](sql-database-get-started-portal-firewall.md) (Tworzenie reguły zapory na poziomie serwera).
-
-## <a name="different-from-sql-server"></a>Różnice w porównaniu z programem SQL Server
-
-Funkcje usług Machine Learning Services (z językiem R) w usłudze Azure SQL Database są podobne do usług [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Jednak istnieją pewne różnice:
-
-- Tylko język R. Obecnie nie ma obsługi języka Python.
-- Nie trzeba konfigurować opcji `external scripts enabled` za pomocą procedury `sp_configure`.
-- Pakiety muszą być instalowane za pomocą narzędzia **sqlmlutils**.
-- Brak osobnego nadzoru nad zasobami zewnętrznymi. Zasoby języka R stanowią pewien procent zasobów SQL, w zależności od warstwy.
+Ten przewodnik Szybki start wymaga również skonfigurowania reguły zapory na poziomie serwera. W celu zapoznania się z samouczkiem przedstawiający sposób wykonywania tej czynności zobacz [Create server-level firewall rule](sql-database-server-level-firewall-rule.md) (Tworzenie reguły zapory na poziomie serwera).
 
 ## <a name="verify-r-exists"></a>Sprawdzanie, czy środowisko języka R istnieje
 
 Możesz sprawdzić, czy usługi Machine Learning Services (z językiem R) są włączone dla Twojej usługi SQL Database. Wykonaj poniższe kroki.
 
-1. Otwórz program SQL Server Management Studio i nawiąż połączenie z usługą SQL Database.
+1. Otwórz program SQL Server Management Studio i nawiąż połączenie z usługą SQL Database. Aby uzyskać więcej informacji na temat nawiązywania połączenia, zobacz [Szybki start: Używanie programu SQL Server Management Studio do nawiązywania połączenia i wykonywania zapytań dotyczących danych w bazie danych SQL Azure](sql-database-connect-query-ssms.md).
 
 1. Uruchom poniższy kod. 
 
@@ -263,7 +247,6 @@ Firma Microsoft udostępnia wiele pakietów języka R wstępnie instalowanych z 
 
     ![Zainstalowane pakiety w języku R](./media/sql-database-connect-query-r/r-installed-packages.png)
 
-
 ## <a name="create-a-predictive-model"></a>Tworzenie modelu predykcyjnego
 
 Możesz wyszkolić model przy użyciu języka R i zapisać model w tabeli w usłudze SQL Database. W tym ćwiczeniu wyszkolisz prosty model regresji, który przewiduje dystans potrzebny na zatrzymanie samochodu na podstawie prędkości. Użyjesz zestawu danych `cars` dołączonego do środowiska języka R, ponieważ jest mały i łatwy do zrozumienia.
@@ -293,7 +276,7 @@ Możesz wyszkolić model przy użyciu języka R i zapisać model w tabeli w usł
     - Podaj dane wejściowe do użycia w uczenia modelu.
 
     > [!TIP]
-    > Jeśli potrzebujesz przypomnienia informacji na temat modeli liniowych, zalecamy skorzystanie z tego samouczka, w którym opisano proces dopasowywania modelu przy użyciu funkcji rxLinMod: [Fitting Linear Models (Dopasowanie modeli liniowych)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
+    > Jeśli potrzebujesz przypomnienia informacji na temat modeli liniowych, zalecamy skorzystanie z tego samouczka, w którym opisano proces dopasowywania modelu przy użyciu funkcji rxLinMod: [Dopasowanie modeli liniowych](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model)
 
     Aby utworzyć model, definiujesz formułę wewnątrz kodu języka R i przekazujesz dane jako parametr wejściowy.
 
@@ -530,9 +513,10 @@ Jeśli zachodzi potrzeba użycia pakietu, który nie jest jeszcze zainstalowany 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji na temat usług Machine Learning Services, zobacz poniższe artykuły dotyczące usług SQL Server Machine Learning Services. Mimo że te artykuły dotyczą programu SQL Server, większość informacji ma również zastosowanie do usług Machine Learning Services (z językiem R) w usłudze Azure SQL Database.
+Aby uzyskać więcej informacji na temat usługi Machine Learning Services, zobacz poniższe artykuły. Mimo że niektóre z tych artykułów dotyczą programu SQL Server, większość informacji ma również zastosowanie do usługi Machine Learning Services (z językiem R) w usłudze Azure SQL Database.
 
+- [Azure SQL Database Machine Learning Services (z językiem R)](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Samouczek: analiza w bazie danych przy użyciu języka R w programie SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
+- [Samouczek: Analiza w bazie danych przy użyciu języka R w programie SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
 - [Kompleksowy przewodnik po nauce o danych dla języka R i programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
-- [Samouczek: używanie funkcji RevoScaleR z danymi programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)
+- [Samouczek: Używanie funkcji RevoScaleR z danymi programu SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

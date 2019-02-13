@@ -1,5 +1,5 @@
 ---
-title: Odkrywaj interfejsy API REST przy użyciu narzędzi Fiddler lub Postman umożliwiających testowanie żądań HTTP — Azure Search
+title: Odkrywaj interfejsy API REST przy użyciu narzędzi Postman lub Fiddler umożliwiających testowanie żądań HTTP — Azure Search
 description: Jak używać narzędzia Fiddler lub Postman do wystawiania żądań HTTP i wywołań interfejsu API REST do usługi Azure Search.
 author: HeidiSteen
 manager: cgronlun
@@ -10,16 +10,16 @@ ms.topic: quickstart
 ms.date: 04/20/2018
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5946ff5e75e7c3fedf42c23200f61e821c0d9d61
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 06e2667b59b27039ad3c62379f654dd693999f99
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631400"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756079"
 ---
-# <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Odkrywaj interfejsy API REST usługi Azure Search przy użyciu narzędzia Fiddler lub Postman
+# <a name="explore-azure-search-rest-apis-using-postman-or-fiddler"></a>Odkrywaj interfejsy API REST usługi Azure Search przy użyciu narzędzi Postman lub Fiddler
 
-Jednym z najprostszych sposobów eksploracji [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice) jest wykorzystanie narzędzia Fiddler lub Postman do sformułowania żądań HTTP i sprawdzenia odpowiedzi. Za pomocą odpowiednich narzędzi i niniejszej instrukcji możesz wysyłać żądania i wyświetlać odpowiedzi przed napisaniem jakiegokolwiek kodu.
+Jednym z najprostszych sposobów eksploracji [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice) jest wykorzystanie narzędzia Postman lub Fiddler do sformułowania żądań HTTP i sprawdzenia odpowiedzi. Za pomocą odpowiednich narzędzi i niniejszej instrukcji możesz wysyłać żądania i wyświetlać odpowiedzi przed napisaniem jakiegokolwiek kodu.
 
 > [!div class="checklist"]
 > * Pobieranie narzędzia do testowania internetowego interfejsu api

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/30/2019
-ms.openlocfilehash: 1fe92f5632544f21506bd19a52a59ed75cabe3b3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461206"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752521"
 ---
 # <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Samouczek: Zabezpieczanie autonomicznej bazy danych lub bazy danych w puli
 
@@ -45,7 +45,7 @@ Aby ukończyć ten samouczek, upewnij się, że dysponujesz następującymi elem
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - Serwer i baza danych SQL na platformie Azure
-  - Utwórz je za pomocą [witryny Azure Portal](sql-database-get-started-portal.md), [interfejsu wiersza polecenia](sql-database-cli-samples.md) lub [programu PowerShell](sql-database-powershell-samples.md).
+  - Utwórz je za pomocą [witryny Azure Portal](sql-database-single-database-get-started.md), [interfejsu wiersza polecenia](sql-database-cli-samples.md) lub [programu PowerShell](sql-database-powershell-samples.md).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
@@ -64,7 +64,7 @@ Najbezpieczniejsza konfiguracja to ustawienie opcji **Zezwalaj na dostęp do us�
 
 ### <a name="set-up-sql-database-server-firewall-rules"></a>Konfigurowanie reguł zapory serwera usługi SQL Database
 
-Reguły zapory na poziomie serwera mają zastosowanie do wszystkich baz danych na tym samym serwerze usługi SQL Database.
+Reguły zapory protokołu internetowego na poziomie serwera mają zastosowanie do wszystkich baz danych na tym samym serwerze usługi SQL Database.
 
 Aby skonfigurować regułę zapory na poziomie serwera:
 
@@ -231,7 +231,7 @@ Aby skopiować bezpieczne parametry połączenia:
 
 ## <a name="enable-security-features"></a>Włączanie funkcji zabezpieczeń.
 
-Usługa Azure SQL Database udostępnia funkcje zabezpieczeń, które są dostępne w witrynie Azure Portal. Te funkcje są dostępne na poziomie bazy danych oraz serwera, z wyjątkiem maskowania danych, które jest dostępne wyłącznie na poziomie bazy danych. Aby dowiedzieć się więcej, zobacz [Zaawansowane zabezpieczenia danych](sql-advanced-threat-protection.md), [Inspekcja](sql-database-auditing.md), [Dynamiczne maskowanie danych](sql-database-dynamic-data-masking-get-started.md) i [Przezroczyste szyfrowanie danych](transparent-data-encryption-azure-sql.md).
+Usługa Azure SQL Database udostępnia funkcje zabezpieczeń, które są dostępne w witrynie Azure Portal. Te funkcje są dostępne na poziomie bazy danych oraz serwera, z wyjątkiem maskowania danych, które jest dostępne wyłącznie na poziomie bazy danych. Aby dowiedzieć się więcej, zobacz [Zaawansowane zabezpieczenia danych](sql-database-advanced-data-security.md), [Inspekcja](sql-database-auditing.md), [Dynamiczne maskowanie danych](sql-database-dynamic-data-masking-get-started.md) i [Przezroczyste szyfrowanie danych](transparent-data-encryption-azure-sql.md).
 
 ### <a name="advanced-data-security"></a>Zaawansowane zabezpieczenia danych
 

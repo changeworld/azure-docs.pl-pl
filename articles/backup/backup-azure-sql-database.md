@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: raynew
-ms.openlocfilehash: 334a476fee6e995c33a290d34df2f111baae34c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fa154b79625fffb8174c510156b3a67df8bff785
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224245"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770439"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -202,6 +202,7 @@ W celu zapewnienia bezproblemowego tworzenia kopii zapasowych programu SQL Serve
 
   * Spacje końcowe/początkowe
   * Końcowy znak „!”
+  * Zamykający nawias kwadratowy „]”
 
 Oferujemy aliasy nieobsługiwanych znaków tabel platformy Azure, ale zalecamy również ich unikanie. Więcej informacji znajduje się w [tym](https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model?redirectedfrom=MSDN) artykule.
 
@@ -721,6 +722,8 @@ W przypadku zatrzymywania ochrony bazy danych programu SQL Server usługa Azure 
 * Zatrzymanie wszystkich przyszłych zadań tworzenia kopii zapasowych, ale pozostawienie punktów odzyskiwania.
 
 Jeśli wybierzesz opcję zatrzymania tworzenia kopii zapasowej z zachowaniem danych, punkty odzyskiwania zostaną wyczyszczone zgodnie z zasadami kopii zapasowych. Zostaną naliczone opłaty za chronione wystąpienie SQL, a także za magazyn używany do momentu wyczyszczenia wszystkich punktów odzyskiwania. Aby uzyskać więcej informacji na temat cen usługi Azure Backup w środowisku SQL, zobacz [stronę cennika usługi Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
+
+Zawsze, gdy zatrzymasz tworzenie kopii zapasowych przechowywanych danych, punkty odzyskiwania wygasną zgodnie z zasadami przechowywania, ale usługa Azure Backup zawsze przechowa jeden ostatni punkt odzyskiwania do momentu aż jawnie usuniesz dane kopii zapasowej. Analogicznie, jeśli usuniesz źródło danych bez zatrzymania tworzenia kopii zapasowej, nowe kopie zapasowe będą kończyć się niepowodzeniem i stare punkty odzyskiwania wygasną zgodnie z zasadami przechowywania, ale jeden ostatni punkt odzyskiwania będzie zawsze przechowywany do momentu aż zatrzymasz tworzenie kopii zapasowej za pomocą usunięcia danych.
 
 Aby zatrzymać ochronę bazy danych:
 

@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 437217bdd3cc2ae8724d6bf24134d8fe725daac7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093312"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819097"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Szybki start: aktualizowanie aplikacji w usłudze Azure Active Directory
 
@@ -156,7 +156,7 @@ Podczas rejestrowania aplikacji w usłudze Azure AD możesz chcieć, aby aplikac
 Warto zwrócić uwagę na różnice między aplikacjami pojedynczej dzierżawy i aplikacjami wielodostępnymi:  
 
 - Aplikacja pojedynczej dzierżawy jest przeznaczona do użytku w jednej organizacji. Jest to zwykle aplikacja biznesowa (LoB) napisana przez dewelopera w przedsiębiorstwie. Dostęp do aplikacji pojedynczej dzierżawy może być uzyskiwany przez użytkowników mających konta w tej samej dzierżawie co rejestracja aplikacji. W rezultacie musi ona być aprowizowana tylko w jednym katalogu.
-- Aplikacja wielodostępna jest przeznaczona do użytku w wielu organizacjach. Jest ona określana jako aplikacja internetowa typu oprogramowanie jako usługa (SaaS) i jest zwykle napisana przez niezależnego dostawcę oprogramowania (ISV). Aplikacje wielodostępne muszą być aprowizowane w każdej dzierżawie, do której użytkownicy potrzebują dostępu. W dzierżawach innych niż ta, w której aplikacja jest zarejestrowana, na jej zarejestrowanie wymagana jest zgoda użytkownika lub administratora. Należy pamiętać, że natywne aplikacje klienckie są domyślnie wielodostępne, ponieważ są instalowane na urządzeniu właściciela zasobu. Zobacz poprzednią sekcję [Omówienie platformy wyrażania zgody](#overview-of-the-consent-framework), aby uzyskać szczegółowe informacje na temat platformy wyrażania zgody.
+- Aplikacja wielodostępna jest przeznaczona do użytku w wielu organizacjach. Jest ona określana jako aplikacja internetowa typu oprogramowanie jako usługa (SaaS) i jest zwykle napisana przez niezależnego dostawcę oprogramowania (ISV). Aplikacje wielodostępne muszą być aprowizowane w każdej dzierżawie, do której użytkownicy potrzebują dostępu. W dzierżawach innych niż ta, w której aplikacja jest zarejestrowana, na jej zarejestrowanie wymagana jest zgoda użytkownika lub administratora. Należy pamiętać, że natywne aplikacje klienckie są domyślnie wielodostępne, ponieważ są instalowane na urządzeniu właściciela zasobu. Zobacz poprzednią sekcję Omówienie platformy wyrażania zgody, aby uzyskać szczegółowe informacje na temat platformy wyrażania zgody.
 
 Przekształcenie aplikacji w wielodostępną wymaga zarówno zmian rejestracji aplikacji, jak i zmian w samej aplikacji internetowej. W poniższych sekcjach opisano oba te procesy.
 
@@ -184,7 +184,7 @@ Obsługa aplikacji wielodostępnych jest oparta głównie na platformie wyrażan
 Aplikacja internetowa może także oferować następujące mechanizmy:
 
 - Możliwość „zarejestrowania mojej firmy” przez administratorów. To środowisko, określane jako „zgoda administratora”, daje administratorowi możliwość udzielenia zgody w imieniu *wszystkich użytkowników* w swojej organizacji. Zgodę administratora może udzielić tylko użytkownik uwierzytelniony przy użyciu konta należącego do roli administratora globalnego. W przypadku innych użytkowników zostanie wyświetlony błąd.
-- Środowisko rejestrowania się dla użytkowników. Oczekuje się, że użytkownik będzie miał możliwość użycia przycisku „Zarejestruj się”, który przekieruje przeglądarkę do punktu końcowego OAuth2.0 `/authorize` usługi Azure AD lub do punktu końcowego `/userinfo` OpenID Connect. Te punkty końcowe umożliwiają aplikacji uzyskanie informacji na temat nowego użytkownika przez zbadanie elementu id_token. Po fazie rejestracji użytkownikowi zostanie wyświetlony monit o wyrażenie zgody podobny do monitu przedstawionego w sekcji [Omówienie platformy wyrażania zgody](#overview-of-the-consent-framework).
+- Środowisko rejestrowania się dla użytkowników. Oczekuje się, że użytkownik będzie miał możliwość użycia przycisku „Zarejestruj się”, który przekieruje przeglądarkę do punktu końcowego OAuth2.0 `/authorize` usługi Azure AD lub do punktu końcowego `/userinfo` OpenID Connect. Te punkty końcowe umożliwiają aplikacji uzyskanie informacji na temat nowego użytkownika przez zbadanie elementu id_token. Po fazie rejestracji użytkownikowi zostanie wyświetlony monit o wyrażenie zgody podobny do monitu przedstawionego w sekcji Omówienie platformy wyrażania zgody.
 
 Aby uzyskać więcej informacji na temat zmian aplikacji, które są wymagane do obsługi dostępu z wieloma dzierżawami oraz środowisk logowania/rejestracji, zobacz:
 

@@ -1,6 +1,6 @@
 ---
-title: Jak zarządzać cyklem życia urządzeń w usłudze Azure AD | Microsoft Docs
-description: Dowiedz się, jak zarządzanie urządzeniami może pomóc w sprawowaniu kontroli nad urządzeniami, które uzyskują dostęp do zasobów w danym środowisku.
+title: Jak zarządzać nieaktywnymi urządzeniami w usłudze Azure AD | Microsoft Docs
+description: Z powodu zgubienia, kradzieży lub uszkodzenia urządzenia albo ponownej instalacji systemu operacyjnego w Twoim środowisku pojawiają się nieaktywne urządzenia. Dowiedz się, jak usunąć nieaktywne urządzenia z bazy danych urządzeń zarejestrowanych w usłudze Azure Active Directory (Azure AD).
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 10/03/2018
+ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 20bfa4cf02c86922836a70f8885f910814eafb22
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d6d0ee1c9a77006df2239f4e0e0457c0c0aa2c28
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55092184"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493322"
 ---
-# <a name="how-to-manage-the-stale-devices-in-azure-ad"></a>Instrukcje: zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
+# <a name="how-to-manage-stale-devices-in-azure-ad"></a>Instrukcje: Zarządzanie nieaktywnymi urządzeniami w usłudze Azure AD
 
 W idealnym przypadku, aby zakończyć cykl życia, zarejestrowane urządzenia powinny zostać wyrejestrowane, gdy nie są już potrzebne. Ale czasami, na przykład z powodu zgubienia, kradzieży lub uszkodzenia urządzenia albo ponownej instalacji systemu operacyjnego, w Twoim środowisku pojawiają się nieaktywne urządzenia. Jako administrator IT prawdopodobnie potrzebujesz metody usuwania takich nieaktywnych urządzeń, aby Twoje zasoby mogły skoncentrować się na zarządzaniu urządzeniami, które faktycznie wymagają zarządzania.
 

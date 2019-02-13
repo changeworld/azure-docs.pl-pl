@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.date: 04/09/2018
 ms.author: mamccrea
 ms.reviewer: jasonh
-ms.openlocfilehash: 818c75feffc5dcf09421b22d82b8b0c767cbed7f
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 8ef1b2a2271106a382faf9e06d57b44ca1bf033b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993012"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810800"
 ---
 # <a name="run-azure-functions-from-azure-stream-analytics-jobs"></a>Uruchamianie usługi Azure Functions z zadań usługi Azure Stream Analytics 
 
@@ -40,10 +40,10 @@ W tej sekcji przedstawiono sposób konfigurowania zadania usługi Stream Analyti
 
 Poniższe kroki są wymagane do wykonania tego zadania:
 * [Utworzenie zadania usługi Stream Analytics z usługą Event Hubs jako wejściem](#create-a-stream-analytics-job-with-event-hubs-as-input)  
-* [Tworzenie wystąpienia pamięci podręcznej Azure Cache for Redis](#create-an-azure-redis-cache-instance)  
-* [Utworzenie funkcji w usłudze Azure Functions, która może zapisywać dane w pamięci podręcznej Azure Cache for Redis](#create-a-function-in-azure-functions-that-can-write-data-to-azure-redis-cache)    
+* Tworzenie wystąpienia pamięci podręcznej Azure Cache for Redis  
+* Tworzenie funkcji w usłudze Azure Functions, która może zapisywać dane w pamięci podręcznej Azure Cache for Redis    
 * [Aktualizacja zadania usługi Stream Analytics za pomocą funkcji jako wyjścia](#update-the-stream-analytics-job-with-the-function-as-output)  
-* [Sprawdzanie pamięci podręcznej Azure Cache for Redis pod kątem wyników](#check-azure-redis-cache-for-results)  
+* Sprawdzanie pamięci podręcznej Azure Cache for Redis pod kątem wyników  
 
 ## <a name="create-a-stream-analytics-job-with-event-hubs-as-input"></a>Tworzenie zadania usługi Stream Analytics z usługą Event Hubs jako wejściem
 

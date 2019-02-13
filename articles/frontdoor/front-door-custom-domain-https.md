@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: 3df96451838fe90b7d45d1aedd272fc10d798e57
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: b6e378263ac8bcd7cfee36209f70f26680988e6e
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48883979"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753802"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>Samouczek: konfigurowanie protokołu HTTPS w niestandardowej domenie usługi Front Door
 
@@ -31,7 +31,7 @@ Niektóre z kluczowych atrybutów niestandardowej funkcji HTTPS to:
 
 - Proste włączanie: w witrynie [Azure Portal](https://portal.azure.com) jest dostępna aprowizacja przy użyciu jednego kliknięcia. Aby włączyć tę funkcję, można użyć interfejsu API REST lub innych narzędzi dla deweloperów.
 
-- Dostępne jest kompletne zarządzanie certyfikatami: użytkownik obsługuje wszystkie operacje nabywania certyfikatów i zarządzania nimi. Certyfikaty są automatycznie aprowizowane i odnawiane przed wygaśnięciem ważności, co powoduje wyeliminowanie ryzyka przerwania działania usługi z powodu wygaśnięcia ważności certyfikatu.
+- Dostępne jest kompletne zarządzanie certyfikatami: wszystkie operacje nabywania certyfikatów i zarządzania nimi są obsługiwane za użytkownika. Certyfikaty są automatycznie aprowizowane i odnawiane przed wygaśnięciem ważności, co powoduje wyeliminowanie ryzyka przerwania działania usługi z powodu wygaśnięcia ważności certyfikatu.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
@@ -43,14 +43,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć usługę Front Door z co najmniej jedną dołączoną domeną niestandardową. Aby uzyskać więcej informacji, zobacz [Samouczek: dodawanie do usługi Front Door domeny niestandardowej](front-door-custom-domain.md).
+Przed wykonaniem kroków opisanych w tym samouczku należy utworzyć usługę Front Door z co najmniej jedną dołączoną domeną niestandardową. Aby uzyskać więcej informacji, zobacz [Samouczek: Dodawanie do usługi Front Door domeny niestandardowej](front-door-custom-domain.md).
 
 ## <a name="ssl-certificates"></a>Certyfikaty SSL
 
 Aby włączyć protokół HTTPS w celu bezpiecznego dostarczania zawartości w niestandardowej domenie usługi Front Door, należy użyć certyfikatu SSL. Możesz użyć certyfikatu zarządzanego przez usługę Azure Front Door lub własnego certyfikatu.
 
 
-### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Opcja 1 (ustawienie domyślne): użycie certyfikatu zarządzanego przez usługę Front Door
+### <a name="option-1-default-use-a-certificate-managed-by-front-door"></a>Opcja 1 (domyślna): użycie certyfikatu zarządzanego przez usługę Front Door
 
 Korzystając z certyfikatu zarządzanego przez usługę Azure Front Door Service, można włączyć funkcję protokołu HTTPS za pomocą kilku kliknięć. Usługa Azure Front Door w pełni obsługuje zadania zarządzania certyfikatami, takie jak nabywanie i odnawianie. Po włączeniu funkcji proces rozpocznie się automatycznie. Jeśli domena niestandardowa jest już zamapowana do domyślnego hosta frontonu usługi Front Door (`{hostname}.azurefd.net`), nie są wymagane żadne dalsze działania. Usługa Front Door przetworzy kroki i wykona żądanie automatycznie. Jeśli jednak domena niestandardowa jest zmapowana w innej lokalizacji, należy użyć widomości e-mail, aby zweryfikować własność domeny.
 
@@ -67,7 +67,7 @@ Aby włączyć protokół HTTPS w domenie niestandardowej, wykonaj następujące
 5. Przejdź do kroku [Weryfikowanie domeny](#validate-the-domain).
 
 
-### <a name="option-2-use-your-own-certificate"></a>Opcja 2: użycie własnego certyfikatu
+### <a name="option-2-use-your-own-certificate"></a>Opcja 2: Używanie własnego certyfikatu
 
 Możesz włączyć funkcję HTTPS przy użyciu własnego certyfikatu. Ten proces odbywa się dzięki integracji z usługą Azure Key Vault, umożliwiającą bezpieczne przechowywanie certyfikatów. Ten bezpieczny mechanizm, używany w usłudze Azure Front Door do pobrania certyfikatu, wymaga wykonania kilku dodatkowych czynności. Tworząc certyfikat SSL, musisz korzystać z dozwolonego urzędu certyfikacji (CA). W przeciwnym razie, jeśli skorzystasz z niedozwolonego urzędu certyfikacji, żądanie zostanie odrzucone. Aby uzyskać listę dozwolonych urzędów certyfikacji, zobacz [Dozwolone urzędy certyfikacji umożliwiające korzystanie z niestandardowego protokołu HTTPS w usłudze Azure Front Door Service](front-door-troubleshoot-allowed-ca.md).
 
@@ -143,7 +143,7 @@ Rekord CNAME powinien mieć następujący format, gdzie *Nazwa* to nazwa domeny 
 |-----------------|-------|-----------------------|
 | www.contoso.com | CNAME | contoso.azurefd.net |
 
-Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [Tworzenie rekordu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain#create-the-cname-dns-records).
+Aby uzyskać więcej informacji na temat rekordów CNAME, zobacz [Tworzenie rekordu DNS CNAME](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
 Jeśli rekord CNAME na poprawny format, firma DigiCert weryfikuje nazwę domeny niestandardowej i tworzy dedykowany certyfikat dla nazwy domeny. Firma DigitCert nie wysyła weryfikacyjnej wiadomości e-mail i nie trzeba zatwierdzać swojego żądania. Certyfikat jest ważny przez jeden rok i jest automatycznie odnawiany przed wygaśnięciem. Przejdź do sekcji [Oczekiwanie na propagację](#wait-for-propagation). 
 

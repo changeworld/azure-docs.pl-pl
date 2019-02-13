@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 1698b89cd32fd7fd90a178ece25ee6869c1aa3e7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7fa72df04b0507a915a75688b38e26ed0f21e5a5
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229697"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55486014"
 ---
 # <a name="what-is-traffic-manager"></a>Co to jest Traffic Manager?
 Usługa Azure Traffic Manager to oparty na systemie DNS moduł równoważenia obciążenia ruchu, który umożliwia optymalną dystrybucję ruchu do usług w wielu regionach platformy Azure na świecie, przy jednoczesnym zapewnieniu wysokiej dostępności i krótkiego czasu odpowiedzi.
@@ -28,7 +28,7 @@ Usługa Traffic Manager używa systemu DNS do kierowania żądań klientów do n
 >[!NOTE]
 > Platforma Azure udostępnia zestaw w pełni zarządzanych rozwiązań do równoważenia obciążenia dla Twoich scenariuszy. Jeśli chcesz zakończyć protokół zabezpieczeń TLS (Transport Layer Security) („odciążanie protokołu SSL”) lub przetwarzanie poszczególnych żądań dotyczących protokołu HTTP/HTTPS na poziomie warstwy aplikacji, zapoznaj się z tematem dotyczącym usługi [Application Gateway](../application-gateway/application-gateway-introduction.md). Jeśli chcesz równoważyć obciążenie w poszczególnych regionach, zapoznaj się z tematem dotyczącym usługi [Load Balancer](../load-balancer/load-balancer-overview.md). Scenariusze kompleksowe mogą w razie potrzeby korzystać z zalet łączenia tych rozwiązań.
 
-W usłudze Traffic Manager są dostępne następujące funkcje:
+Usługa Traffic Manager udostępnia następujące funkcje:
 
 ## <a name="increase-application-availability"></a>Zwiększanie dostępności aplikacji
 
@@ -40,7 +40,7 @@ Platforma Azure umożliwia uruchamianie usług w chmurze lub witryn internetowyc
 
 ## <a name="perform-service-maintenance-without-downtime"></a>Przeprowadzanie konserwacji usługi bez przestojów
 
-Operacje planowanej konserwacji aplikacji można przeprowadzać bez przestojów. W czasie konserwacji usługa Traffic Manager kieruje ruch do alternatywnych punktów końcowych.
+Operacje planowanej konserwacji aplikacji można przeprowadzać bez przestojów. W czasie konserwacji usługa Traffic Manager może kierować ruch do alternatywnych punktów końcowych.
 
 ## <a name="combine-hybrid-applications"></a>Tworzenie aplikacji hybrydowych
 
@@ -48,7 +48,7 @@ Usługa Traffic Manager obsługuje zewnętrzne punkty końcowe poza platformą A
 
 ## <a name="distribute-traffic-for-complex-deployments"></a>Dystrybuowanie ruchu w przypadku wdrożeń złożonych
 
-Dzięki użyciu [zagnieżdżonych profilów usługi Traffic Manager](traffic-manager-nested-profiles.md) można łączyć metody routingu w celu tworzenia zaawansowanych i elastycznych reguł, które pozwolą na skalowanie do potrzeb większych i bardziej złożonych wdrożeń.
+Dzięki użyciu [zagnieżdżonych profilów usługi Traffic Manager](traffic-manager-nested-profiles.md) można łączyć wiele metod routingu w celu tworzenia zaawansowanych i elastycznych reguł, które pozwalają na skalowanie pod kątem potrzeb większych i bardziej złożonych wdrożeń.
 
 ## <a name="pricing"></a>Cennik
 

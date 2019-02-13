@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/15/2018
 ms.author: juliako
-ms.openlocfilehash: 0e9537f09049d5fe056819e6f8b9718cfc52f489
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 6bfc12c17b38543f0c6979b5f5eeada562483bfa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49352818"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819352"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Scenariusze i dostępność funkcji usługi Media Services w centrach danych
 
@@ -26,7 +26,7 @@ Usługa Microsoft Azure Media Services (AMS) umożliwia bezpieczne przekazywanie
 
 Usługa AMS działa w wielu centrach danych na całym świecie. Te centra danych są grupowane w regiony geograficzne, dzięki czemu można elastycznie wybierać miejsca do kompilowania aplikacji. Możesz zapoznać się z [listą regionów i ich lokalizacji](https://azure.microsoft.com/regions/). 
 
-W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żywo](#live_scenarios) lub [na żądanie](#vod_scenarios). Temat zawiera także szczegółowe informacje o dostępności funkcji i usług multimedialnych w centrach danych.
+W tym temacie przedstawiono typowe scenariusze dostarczania zawartości [na żywo](#live_scenarios) lub na żądanie. Temat zawiera także szczegółowe informacje o dostępności funkcji i usług multimedialnych w centrach danych.
 
 ## <a name="overview"></a>Omówienie
 

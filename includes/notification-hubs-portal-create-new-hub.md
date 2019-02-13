@@ -8,34 +8,31 @@ ms.topic: include
 ms.date: 01/17/2019
 ms.author: jowargo
 ms.custom: include file
-ms.openlocfilehash: b68fa345d4772134c30ce8b8b559f98113a0496f
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 00b7ffcba876b6abea59cff170331c7413a61d39
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453112"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55823321"
 ---
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie i wybierz pozycję **Notification Hubs** w sekcji **Urządzenia przenośne**. Wybierz gwiazdkę (`*`) obok nazwy usługi, aby dodać ją do sekcji **ULUBIONE** w menu po lewej stronie. Po dodaniu usługi **Notification Hubs** do sekcji **ULUBIONE** wybierz ją z menu po lewej stronie. 
 
-2. Wybierz kolejno pozycje **Utwórz zasób** > **Aplikacje mobilne** > **Centrum powiadomień**.
+      ![Azure Portal — wybieranie usługi Notification Hubs](./media/notification-hubs-portal-create-new-hub/all-services-select-notification-hubs.png)
+3. Na stronie **Notification Hubs** wybierz pozycję **Dodaj** na pasku narzędzi. 
 
-      ![Azure Portal — tworzenie centrum powiadomień](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
+      ![Notification Hubs — przycisk Dodaj na pasku narzędzi](./media/notification-hubs-portal-create-new-hub/add-toolbar-button.png)
+4. Na stronie **Centrum powiadomień** wykonaj następujące kroki: 
+    1. Podaj **nazwę** **centrum** powiadomień.  
+    2. Podaj **nazwę** **przestrzeni nazw**.
+    3. Wybierz **lokalizację** , w której ma zostać utworzone centrum powiadomień. 
+    4. Wybierz istniejącą grupę zasobów lub wprowadź nazwę nowej **grupy zasobów**.
+    5. Wybierz pozycję **Utwórz**. 
 
-3. W polu **Centrum powiadomień** wpisz unikatową nazwę. Wybierz odpowiednie pozycje w polach **Region**, **Subskrypcja** i **Grupa zasobów** (jeśli już ją masz).
+        ![Azure Portal — ustawianie właściwości centrum powiadomień](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
+4. Wybierz pozycję **Powiadomienia** (ikona dzwonka) i wybierz pozycję **Przejdź do zasobu** albo odśwież listę na stronie **Notification Hubs** i wybierz swoje centrum powiadomień. 
 
-      Jeśli nie masz jeszcze przestrzeni nazw magistrali usług, możesz użyć nazwy domyślnej, która jest tworzona na podstawie nazwy centrum (jeśli ta nazwa przestrzeni nazw jest dostępna).
-
-      Jeśli masz już przestrzeń nazw magistrali usług, w której chcesz utworzyć centrum, wykonaj następujące kroki:
-
-    a. W obszarze **Przestrzeń nazw** wybierz link **Wybierz istniejącą**.
-
-    b. Wybierz pozycję **Utwórz**.
-
-    ![Azure Portal — ustawianie właściwości centrum powiadomień](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-settings.png)
-
-4. Wybierz pozycję **Powiadomienia** (ikonę dzwonka), a następnie polecenie **Przejdź do zasobu**.
-
-      ![Witryna Azure Portal -> Powiadomienia -> Przejdź do zasobu](./media/notification-hubs-portal-create-new-hub/notification-go-to-resource.png)
+      ![Witryna Azure Portal -> Powiadomienia -> Przejdź do zasobu](./media/notification-hubs-portal-create-new-hub/go-to-notification-hub.png)
 5. Wybierz z listy pozycję **Zasady dostępu**. Zanotuj dwa parametry połączenia, które są dla Ciebie dostępne. Będą one potrzebne później do obsługi powiadomień push.
 
       >[!IMPORTANT]

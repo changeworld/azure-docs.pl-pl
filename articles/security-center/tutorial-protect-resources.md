@@ -3,7 +3,7 @@ title: Samouczek dotyczący usługi Azure Security Center — ochrona zasobów p
 description: W tym samouczku przedstawiono sposób konfigurowania zasad dostępu just in time do maszyny wirtualnej oraz zasad kontroli aplikacji.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
@@ -14,16 +14,16 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
-ms.author: rkarlin
-ms.openlocfilehash: 19b5f6d6cb8e0e17dba9944e8b72c6938f168c70
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.author: monhaber
+ms.openlocfilehash: df9e804e8b8f3a9b40a18873f61ec96edee1503d
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52839351"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55490269"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Samouczek: Ochrona zasobów przy użyciu usługi Azure Security Center
-Usługa Security Center ogranicza narażenia na zagrożenia poprzez zastosowanie kontroli dostępu i aplikacji w celu blokowania złośliwych działań. Dostęp just in time do maszyny wirtualnej redukuje narażenie na ataki, umożliwiając odmówienie trwałego dostępu do maszyn wirtualnych. Zamiast tego możesz zapewnić kontrolowany, monitorowany dostęp do maszyn wirtualnych tylko w razie potrzeby. Adaptacyjne kontrole aplikacji pomagają zabezpieczać maszyny wirtualne przed złośliwym oprogramowaniem poprzez kontrolowanie aplikacji, które mogą być uruchamiane na maszynach wirtualnych. Usługa Security Center analizuje procesy uruchomione na maszynie wirtualnej przy użyciu uczenia maszynowego i za pomocą tej analizy ułatwia zastosowanie listy reguł elementów dozwolonych.
+Usługa Security Center ogranicza narażenia na zagrożenia poprzez zastosowanie kontroli dostępu i aplikacji w celu blokowania złośliwych działań. Dostęp typu „just in time” do maszyny wirtualnej redukuje narażenie na ataki, umożliwiając odmówienie trwałego dostępu do maszyn wirtualnych. Zamiast tego możesz zapewnić kontrolowany, monitorowany dostęp do maszyn wirtualnych tylko w razie potrzeby. Adaptacyjne kontrole aplikacji pomagają zabezpieczać maszyny wirtualne przed złośliwym oprogramowaniem poprzez kontrolowanie aplikacji, które mogą być uruchamiane na maszynach wirtualnych. Usługa Security Center analizuje procesy uruchomione na maszynie wirtualnej przy użyciu uczenia maszynowego i za pomocą tej analizy ułatwia zastosowanie listy reguł elementów dozwolonych.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -37,15 +37,15 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby wypróbować funkcje omówione w tym samouczku, musisz korzystać ze standardowej warstwy cenowej usługi Security Center. Warstwę Standardowa usługi Security Center możesz wypróbować bezpłatnie. Aby dowiedzieć się więcej, zobacz [stronę z cennikiem](https://azure.microsoft.com/pricing/details/security-center/). Przewodnik szybkiego startu [Dołączanie subskrypcji platformy Azure do standardowej usługi Security Center](security-center-get-started.md) przeprowadzi Cię przez procedurę uaktualniania do warstwy standardowej.
 
 ## <a name="manage-vm-access"></a>Zarządzanie dostępem do maszyny wirtualnej
-Dostęp just in time do maszyny wirtualnej może być używany do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure w celu zmniejszenia narażenia na ataki przy zapewnianiu łatwego dostępu do łączenia się z maszynami wirtualnymi w razie potrzeby.
+Dostęp typu „ just in time” do maszyny wirtualnej może być używany do blokowania ruchu przychodzącego do maszyn wirtualnych platformy Azure w celu zmniejszenia narażenia na ataki przy zapewnieniu łatwego dostępu do maszyn wirtualnych na potrzeby łączenia się z nimi w razie potrzeby.
 
 Porty zarządzania nie muszą być otwarte przez cały czas. Muszą być otwarte tylko wtedy, gdy nawiązano połączenie z maszyną wirtualną, np. aby wykonać zadania związane z zarządzaniem lub konserwacją. Gdy dostęp just in time jest włączony, usługa Security Center używa reguł sieciowej grupy zabezpieczeń, które ograniczają dostęp do portów zarządzania, aby nie mogły stać się celem osób przeprowadzających ataki.
 
-1. W menu głównym usługi Security Center wybierz opcję **Dostęp just in time do maszyny wirtualnej** w obszarze **ZAAWANSOWANA OCHRONA W CHMURZE**.
+1. W menu głównym usługi Security Center wybierz pozycję **Dostęp just in time do maszyny wirtualnej** w obszarze **ZAAWANSOWANA OCHRONA W CHMURZE**.
 
   ![Dostęp do maszyny wirtualnej dokładnie na czas][1]
 
-  **Dostęp just in time do maszyny wirtualnej** zapewnia informacje o stanie maszyn wirtualnych:
+  Opcja **Dostęp just in time do maszyny wirtualnej** zapewnia informacje o stanie maszyn wirtualnych:
 
   - **Skonfigurowane** — maszyny wirtualne, które zostały skonfigurowane pod kątem dostępu just in time do maszyn wirtualnych.
   - **Zalecane** — maszyny wirtualne, które mogą obsługiwać dostęp just in time, ale nie zostały skonfigurowane pod tym kątem.
@@ -81,7 +81,7 @@ Ta funkcja jest dostępna tylko w przypadku maszyn z systemem Windows.
 
   Sekcja **Grupy zasobów** zawiera trzy karty:
 
-  - **Skonfigurowane**: lista grup zasobów zawierających maszyny wirtualne, dla których skonfigurowano sterowanie aplikacjami.
+  - **Skonfigurowano**: lista grup zasobów zawierających maszyny wirtualne, dla których skonfigurowano sterowanie aplikacjami.
   - **Zalecane**: lista grup zasobów, dla których zaleca się sterowanie aplikacjami.
   - **Brak zaleceń**: lista grup zasobów zawierających maszyny wirtualne bez żadnych zaleceń dotyczących sterowania aplikacjami. Na przykład maszyny wirtualne, na których aplikacje stale się zmieniają i nie osiągają stanu stabilnego.
 
@@ -93,8 +93,8 @@ Ta funkcja jest dostępna tylko w przypadku maszyn z systemem Windows.
 
   - **NAZWA**: pełna ścieżka aplikacji
   - **PROCESY**: ile aplikacji znajduje się w każdej ścieżce
-  - **WSPÓLNE**: wartość „tak” wskazuje, że te procesy są wykonywane na większości maszyn wirtualnych w tej grupie zasobów
-  - **MOŻLIWE DO WYKORZYSTANIA**: ikona ostrzeżenia wskazuje, czy osoba atakująca może wykorzystać aplikacje do pominięcia listy dozwolonych aplikacji. Zaleca się dokonanie przeglądu tych aplikacji przed ich zatwierdzeniem.
+  - **WSPÓLNE**: wartość „Tak” wskazuje, że te procesy są wykonywane na większości maszyn wirtualnych w tej grupie zasobów
+  - **MOŻLIWE DO WYKORZYSTANIA**: ikona ostrzeżenia wskazuje, że osoba atakująca może wykorzystać aplikacje do pominięcia białej listy aplikacji. Zaleca się dokonanie przeglądu tych aplikacji przed ich zatwierdzeniem.
 
 4. Po wybraniu opcji wybierz przycisk **Utwórz**.
 

@@ -1,271 +1,246 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Agiloft | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Agiloft.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Agiloft | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją Agiloft.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: aca13814-cdbd-46b8-93dc-1578099c5ee4
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/09/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 42d8b131d4dde8d257c7ee7cb934fa8cfa814cc2
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: b846aa0392df7e8203cb1cf549e39b768970d34b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172837"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698267"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Agiloft
+# <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Agiloft
 
-W tym samouczku dowiesz się, jak zintegrować Agiloft w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Agiloft z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Agiloft z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Agiloft z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Agiloft.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Agiloft (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Agiloft.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Agiloft (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Agiloft, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Agiloft potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Agiloft logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Agiloft z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Agiloft z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-agiloft-from-the-gallery"></a>Dodawanie Agiloft z galerii
-Aby skonfigurować integrację Agiloft w usłudze Azure AD, należy dodać Agiloft z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Agiloft obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi oraz dostawcę tożsamości**
+* Aplikacja Agiloft obsługuje aprowizowanie użytkowników typu **just in time**
 
-**Aby dodać Agiloft z galerii, wykonaj następujące czynności:**
+## <a name="adding-agiloft-from-the-gallery"></a>Dodawanie aplikacji Agiloft z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Agiloft z usługą Azure AD, należy z poziomu galerii dodać to rozwiązanie do listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać aplikację Agiloft z galerii, wykonaj następujące kroki:**
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
+
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
 3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Przycisk Nowa aplikacja][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **Agiloft**, wybierz opcję **Agiloft** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Agiloft**, wybierz pozycję **Agiloft** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-    ![Agiloft na liście wyników](./media/agiloft-tutorial/tutorial_agiloft_addfromgallery.png)
+     ![Aplikacja Agiloft na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Agiloft w oparciu o użytkownika testu o nazwie "Britta Simon."
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Agiloft, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Agiloft.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Agiloft do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Agiloft musi można ustanowić.
-
-W Agiloft, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Agiloft, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Agiloft, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-3. **[Tworzenie użytkownika testowego Agiloft](#create-an-agiloft-test-user)**  — aby odpowiednikiem Britta Simon w Agiloft połączonego z usługi Azure AD reprezentacja użytkownika.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Agiloft](#configure-agiloft-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+5. **[Tworzenie użytkownika testowego aplikacji Agiloft](#create-agiloft-test-user)** — aby mieć w aplikacji Agiloft odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Agiloft.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Agiloft, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Agiloft, wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **Agiloft** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Agiloft** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/agiloft-tutorial/tutorial_agiloft_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-3. Na **Agiloft domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w trybie zainicjował dostawcy tożsamości należy wykonać następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Agiloft domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/agiloft-tutorial/tutorial_agiloft_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: 
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+
+    ![Domena i adresy URL aplikacji Agiloft — informacje dotyczące logowania jednokrotnego](common/idp-intiated.png)
+
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |-|-|
     | `https://<subdomain>.saas.enterprisewizard.com/project/<KB_NAME>` |
     | `https://<subdomain>.agiloft.com/project/<KB_NAME>` |
+    | |
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |-|-|
     | `https://<subdomain>.saas.enterprisewizard.com:443/gui2/spsamlsso?project=<KB_NAME>` |
     | `https://<subdomain>.agiloft.com:443/gui2/spsamlsso?project=<KB_NAME>` |
+    | |
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Agiloft domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/agiloft-tutorial/tutorial_agiloft_url1.png)
+    ![Domena i adresy URL aplikacji Agiloft — informacje dotyczące logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: 
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
+
     | |
     |-|-|
     | `https://<subdomain>.saas.enterprisewizard.com/gui2/samlssologin.jsp?project=<KB_NAME>` |
     | `https://<subdomain>.agiloft.com/gui2/samlssologin.jsp?project=<KB_NAME>` |
-     
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Agiloft](https://www.agiloft.com/support-login.htm) do uzyskania tych wartości. 
+    | |
 
-5. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta aplikacji Agiloft](https://www.agiloft.com/support-login.htm) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Link do pobierania certyfikatu](./media/agiloft-tutorial/tutorial_agiloft_certificate.png) 
+6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-6. Kliknij przycisk **Zapisz** przycisku.
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/agiloft-tutorial/tutorial_general_400.png)
-    
-7. Na **konfiguracji Agiloft** , kliknij przycisk **skonfigurować Agiloft** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+7. W sekcji **Konfigurowanie aplikacji Agiloft** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Konfiguracja Agiloft](./media/agiloft-tutorial/tutorial_agiloft_configure.png) 
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-8. W oknie przeglądarki innej witryny sieci web należy zalogować się jako administrator do witryny firmy Agiloft.
+    a. Adres URL logowania
 
-9. Kliknij pozycję **instalacji** (w okienku po lewej stronie) i następnie **dostępu**.
+    b. Identyfikator usługi Azure AD
 
-    ![Konfiguracja Agiloft](./media/agiloft-tutorial/setup1.png) 
+    d. Adres URL wylogowywania
 
-10. Kliknij przycisk **"Konfigurowanie protokołu SAML 2.0 logowanie jednokrotne"**. 
-    
-    ![Konfiguracja Agiloft](./media/agiloft-tutorial/setup2.png) 
+### <a name="configure-agiloft-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Agiloft
 
-11. Pojawi się okno dialogowe Kreator. W oknie dialogowym kliknij kartę **"Szczegóły dostawcy tożsamości"** i wypełnij następujące pola:  
-    
-    ![Konfiguracja Agiloft](./media/agiloft-tutorial/setup4.png) 
+1. W innym oknie przeglądarki zaloguj się do witryny firmowej aplikacji Agiloft jako administrator.
 
-    a. W **dostawcy tożsamości, identyfikator jednostki / wystawcy** pola tekstowego, Wklej wartość **SAML identyfikator jednostki**, który skopiowano z witryny Azure portal.
+2. Kliknij pozycję **Setup (Konfigurowanie)** (w okienku po lewej stronie), a następnie wybierz pozycję **Access (Dostęp)**.
 
-    b. W **adres URL logowania dostawcy tożsamości** pola tekstowego, Wklej wartość **pojedynczy znak na adres URL usługi**, który skopiowano z witryny Azure portal.
+    ![Konfiguracja aplikacji Agiloft](./media/agiloft-tutorial/setup1.png)
 
-    c. W **adres URL wylogowania dostawcy tożsamości** pola tekstowego, Wklej wartość **adres URL wylogowania**, które zostały skopiowane z witryny Azure portal.
+3. Kliknij przycisk **Configure SAML 2.0 Single Sign-On (Skonfiguruj logowanie jednokrotne SAML 2.0)**.
 
-    d. Otwórz swoje **certyfikat szyfrowany algorytmem base-64** w Notatniku pobranego z witryny Azure portal, skopiuj zawartość go do Schowka, a następnie wklej go do **zawartość certyfikatu X.509 podana tożsamości**  pola tekstowego.
+    ![Konfiguracja aplikacji Agiloft](./media/agiloft-tutorial/setup2.png)
+
+4. Pojawi się okno dialogowe kreatora. W oknie dialogowym kliknij pozycję **Identity Provider Details (Szczegóły dostawcy tożsamości)** i wypełnij następujące pola:  
+
+    ![Konfiguracja aplikacji Agiloft](./media/agiloft-tutorial/setup4.png)
+
+    a. W polu tekstowym  **IdP Entity Id / Issuer (Identyfikator jednostki dostawcy tożsamości / Wystawca)**  wklej wartość  **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
+
+    b. W polu tekstowym  **IdP Login URL (Adres URL logowania dostawcy tożsamości)**  wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+
+    d. W polu tekstowym  **IdP Logout URL (Adres URL wylogowywania dostawcy tożsamości)**  wklej wartość **adresu URL wylogowywania** skopiowaną z witryny Azure Portal.
+
+    d. Otwórz w Notatniku swój **certyfikat zakodowany w formacie base-64** pobrany z witryny Azure Portal, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym  **IdP Provided X.509 certificate contents (Dostarczona przez dostawcę tożsamości zawartość certyfikatu X.509)** .
 
     e. Kliknij przycisk **Zakończ**.
 
-
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/agiloft-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/agiloft-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/agiloft-tutorial/create_aaduser_03.png)
-
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/agiloft-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-an-agiloft-test-user"></a>Tworzenie użytkownika testowego Agiloft
-
-Aplikacja obsługuje aprowizowanie użytkowników typu Just In Time. Po uwierzytelnieniu użytkownicy zostaną automatycznie utworzeni w aplikacji. W tej sekcji nie musisz niczego robić.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Agiloft.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Agiloft.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Agiloft**.
 
-**Aby przypisać Britta Simon Agiloft, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Agiloft**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link do aplikacji Agiloft na liście aplikacji](common/all-applications.png)
 
-2. Na liście aplikacji wybierz **Agiloft**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link Agiloft na liście aplikacji](./media/agiloft-tutorial/tutorial_agiloft_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-agiloft-test-user"></a>Tworzenie użytkownika testowego aplikacji Agiloft
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+W tej sekcji w aplikacji Agiloft jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Agiloft obsługuje aprowizację użytkowników typu just in time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Agiloft, zostanie utworzony po uwierzytelnieniu.
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Agiloft w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Agiloft.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Agiloft w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Agiloft, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/agiloft-tutorial/tutorial_general_01.png
-[2]: ./media/agiloft-tutorial/tutorial_general_02.png
-[3]: ./media/agiloft-tutorial/tutorial_general_03.png
-[4]: ./media/agiloft-tutorial/tutorial_general_04.png
-
-[100]: ./media/agiloft-tutorial/tutorial_general_100.png
-
-[200]: ./media/agiloft-tutorial/tutorial_general_200.png
-[201]: ./media/agiloft-tutorial/tutorial_general_201.png
-[202]: ./media/agiloft-tutorial/tutorial_general_202.png
-[203]: ./media/agiloft-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

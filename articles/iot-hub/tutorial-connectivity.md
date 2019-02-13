@@ -9,14 +9,14 @@ ms.custom: mvc
 ms.date: 05/29/2018
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: 05f6b32fad4f0a449f0d801c1c7cc6a28be6f940
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51685362"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745813"
 ---
-# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
+# <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Samouczek: Testowanie łączności z centrum IoT za pomocą urządzenia symulowanego
 
 W tym samouczku użyjesz narzędzi portalu usługi Azure IoT Hub i poleceń interfejsu wiersza polecenia platformy Azure, aby przetestować łączność urządzeń. W tym samouczku został użyty również prosty symulator urządzenia działający na komputerze stacjonarnym.
 
@@ -75,7 +75,7 @@ Aby pobrać parametry połączenia dla urządzenia **MyTestDevice**, kliknij je 
 
 Aby symulować wysyłanie danych telemetrycznych przez urządzenie **MyTestDevice** do centrum IoT, uruchom pobraną wcześniej aplikację urządzenia symulowanego Node.js.
 
-W oknie terminalu na komputerze deweloperskim przejdź do folderu głównego pobranego projektu przykładowego Node.js. Następnie przejdź do folderu **iot-hub\Tutorials\ConnectivityTests\simulated-device**.
+W oknie terminalu na komputerze deweloperskim przejdź do folderu głównego pobranego projektu przykładowego Node.js. Następnie przejdź do folderu **iot-hub\Tutorials\ConnectivityTests**.
 
 W oknie terminalu uruchom następujące polecenia, aby zainstalować wymagane biblioteki i uruchomić aplikację urządzenia symulowanego. Użyj parametrów połączenia urządzenia, zanotowanych podczas dodawania urządzenia w portalu.
 

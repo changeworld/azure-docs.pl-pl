@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: fd5a995bf03d530ccbcf9b839ccc840d202b47d6
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d80a10bea58fdcd5b20e24f9f8ba633f2714d55c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556191"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822582"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Szybki start: Tworzenie aplikacji internetowej platformy ASP.NET 
 
@@ -98,9 +98,9 @@ Następnie utworzysz pamięć podręczną dla aplikacji.
 W tej sekcji zaktualizujesz aplikację do obsługi nowego widoku, który wyświetla prosty test dla usługi Azure Cache for Redis.
 
 * [Aktualizowanie pliku web.config ustawieniem aplikacji dla pamięci podręcznej](#Update-the-webconfig-file-with-an-app-setting-for-the-cache)
-* [Konfigurowanie aplikacji do korzystania z klienta programu StackExchange.Redis](#configure-the-application-to-use-stackexchangeredis)
-* [Aktualizowanie pliku HomeController i Layout](#update-the-homecontroller-and-layout)
-* [Dodawanie nowego widoku RedisCache](#add-a-new-rediscache-view)
+* Konfigurowanie aplikacji do korzystania z klienta programu StackExchange.Redis
+* Aktualizowanie plików HomeController i Layout
+* Dodawanie nowego widok RedisCache
 
 ### <a name="update-the-webconfig-file-with-an-app-setting-for-the-cache"></a>Aktualizacja pliku web.config ustawieniem aplikacji dla pamięci podręcznej
 

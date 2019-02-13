@@ -11,14 +11,14 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 06/12/2018
+ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: f49f6f03b6d9f1c51cada58ae782bbc364fc9d66
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7ea9ce47b82dd4ad31caf935fd10e04daa07faba
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427291"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700012"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Samouczek: tworzenie roli niestandardowej przy użyciu programu Azure PowerShell
 
@@ -34,12 +34,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
 - Uprawnienia do tworzenia ról niestandardowych, takie jak [Właściciel](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator)
-- Program [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) zainstalowany lokalnie
+- Program [Azure PowerShell](/powershell/azure/install-az-ps) zainstalowany lokalnie
 
 ## <a name="sign-in-to-azure-powershell"></a>Logowanie się do programu Azure PowerShell
 
@@ -49,10 +51,10 @@ Zaloguj się do programu [Azure PowerShell](/powershell/azure/authenticate-azure
 
 Najprostszym sposobem na utworzenie roli niestandardowej jest rozpoczęcie od wbudowanej roli, poddanie jej edycji, a następnie utworzenie nowej roli.
 
-1. W programie PowerShell użyj polecenia [Get AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation), aby uzyskać listę operacji dla dostawcy zasobów Microsoft.Support. Dobrze jest znać operacje, które są dostępne do tworzenia uprawnień. Można także wyświetlić listę wszystkich operacji w temacie [Operacje dostawcy zasobów usługi Azure Resource Manager](resource-provider-operations.md#microsoftsupport).
+1. W programie PowerShell użyj polecenia [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation), aby uzyskać listę operacji dla dostawcy zasobów Microsoft.Support. Dobrze jest znać operacje, które są dostępne do tworzenia uprawnień. Można także wyświetlić listę wszystkich operacji w temacie [Operacje dostawcy zasobów usługi Azure Resource Manager](resource-provider-operations.md#microsoftsupport).
 
     ```azurepowershell
-    Get-AzureRMProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
+    Get-AzProviderOperation "Microsoft.Support/*" | FT Operation, Description -AutoSize
     ```
     
     ```Output
@@ -63,10 +65,10 @@ Najprostszym sposobem na utworzenie roli niestandardowej jest rozpoczęcie od wb
     Microsoft.Support/supportTickets/write Creates or Updates a Support Ticket. You can create a Support Tic...
     ```
 
-1. Użyj polecenia [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) w celu wygenerowania roli [Czytelnik](built-in-roles.md#reader) w formacie JSON.
+1. Użyj polecenia [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) w celu wygenerowania roli [Czytelnik](built-in-roles.md#reader) w formacie JSON.
 
     ```azurepowershell
-    Get-AzureRmRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json
+    Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole.json
     ```
 
 1. Otwórz plik **ReaderSupportRole.json** w edytorze.
@@ -75,34 +77,28 @@ Najprostszym sposobem na utworzenie roli niestandardowej jest rozpoczęcie od wb
 
     ```json
     {
-        "Name":  "Reader",
-        "Id":  "acdd72a7-3385-48ef-bd42-f606fba81ae7",
-        "IsCustom":  false,
-        "Description":  "Lets you view everything, but not make any changes.",
-        "Actions":  [
-                        "*/read"
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/"
-                             ]
+      "Name": "Reader",
+      "Id": "acdd72a7-3385-48ef-bd42-f606fba81ae7",
+      "IsCustom": false,
+      "Description": "Lets you view everything, but not make any changes.",
+      "Actions": [
+        "*/read"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/"
+      ]
     }
     ```
     
 1. Edytuj plik JSON, aby dodać operację `"Microsoft.Support/*"` do właściwości `Actions`. Pamiętaj o dodaniu przecinka po operacji odczytu. Ta akcja umożliwia użytkownikowi tworzenie biletów pomocy technicznej.
 
-1. Pobierz identyfikator subskrypcji za pomocą polecenia [Get-AzureRmSubscription](/powershell/module/azurerm.profile/get-azurermsubscription).
+1. Pobierz identyfikator subskrypcji za pomocą polecenia [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
 
     ```azurepowershell
-    Get-AzureRmSubscription
+    Get-AzSubscription
     ```
 
 1. W elemencie `AssignableScopes` dodaj swój identyfikator subskrypcji w następującym formacie: `"/subscriptions/00000000-0000-0000-0000-000000000000"`
@@ -117,32 +113,26 @@ Najprostszym sposobem na utworzenie roli niestandardowej jest rozpoczęcie od wb
 
     ```json
     {
-        "Name":  "Reader Support Tickets",
-        "IsCustom":  true,
-        "Description":  "View everything in the subscription and also open support tickets.",
-        "Actions":  [
-                        "*/read",
-                        "Microsoft.Support/*"
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/subscriptions/00000000-0000-0000-0000-000000000000"
-                             ]
+      "Name": "Reader Support Tickets",
+      "IsCustom": true,
+      "Description": "View everything in the subscription and also open support tickets.",
+      "Actions": [
+        "*/read",
+        "Microsoft.Support/*"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
     }
     ```
     
-1. Aby utworzyć nową rolę niestandardową, użyj polecenia [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) i określ plik definicji roli JSON.
+1. Aby utworzyć nową rolę niestandardową, użyj polecenia [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) i określ plik definicji roli JSON.
 
     ```azurepowershell
-    New-AzureRmRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole.json"
+    New-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole.json"
     ```
 
     ```Output
@@ -161,10 +151,10 @@ Najprostszym sposobem na utworzenie roli niestandardowej jest rozpoczęcie od wb
 
 ## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
-- Aby wyświetlić listę wszystkich ról niestandardowych, użyj polecenia [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition).
+- Aby wyświetlić listę wszystkich ról niestandardowych, użyj polecenia [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition).
 
     ```azurepowershell
-    Get-AzureRmRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
+    Get-AzRoleDefinition | ? {$_.IsCustom -eq $true} | FT Name, IsCustom
     ```
 
     ```Output
@@ -181,10 +171,10 @@ Najprostszym sposobem na utworzenie roli niestandardowej jest rozpoczęcie od wb
 
 Aby zaktualizować rolę niestandardową, zaktualizuj plik JSON lub użyj obiektu `PSRoleDefinition`.
 
-1. Aby zaktualizować plik JSON, użyj polecenia [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) w celu wygenerowania roli niestandardowej w formacie JSON.
+1. Aby zaktualizować plik JSON, użyj polecenia [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) w celu wygenerowania roli niestandardowej w formacie JSON.
 
     ```azurepowershell
-    Get-AzureRmRoleDefinition -Name "Reader Support Tickets" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole2.json
+    Get-AzRoleDefinition -Name "Reader Support Tickets" | ConvertTo-Json | Out-File C:\CustomRoles\ReaderSupportRole2.json
     ```
 
 1. Otwórz plik w edytorze.
@@ -195,34 +185,28 @@ Aby zaktualizować rolę niestandardową, zaktualizuj plik JSON lub użyj obiekt
 
     ```json
     {
-        "Name":  "Reader Support Tickets",
-        "Id":  "22222222-2222-2222-2222-222222222222",
-        "IsCustom":  true,
-        "Description":  "View everything in the subscription and also open support tickets.",
-        "Actions":  [
-                        "*/read",
-                        "Microsoft.Support/*",
-                        "Microsoft.Resources/deployments/*"
-                    ],
-        "NotActions":  [
-    
-                       ],
-        "DataActions":  [
-    
-                        ],
-        "NotDataActions":  [
-    
-                           ],
-        "AssignableScopes":  [
-                                 "/subscriptions/00000000-0000-0000-0000-000000000000"
-                             ]
+      "Name": "Reader Support Tickets",
+      "Id": "22222222-2222-2222-2222-222222222222",
+      "IsCustom": true,
+      "Description": "View everything in the subscription and also open support tickets.",
+      "Actions": [
+        "*/read",
+        "Microsoft.Support/*",
+        "Microsoft.Resources/deployments/*"
+      ],
+      "NotActions": [],
+      "DataActions": [],
+      "NotDataActions": [],
+      "AssignableScopes": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000"
+      ]
     }
     ```
         
-1. Aby zaktualizować rolę niestandardową, użyj polecenia [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition) i określ zaktualizowany plik JSON.
+1. Aby zaktualizować rolę niestandardową, użyj polecenia [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) i określ zaktualizowany plik JSON.
 
     ```azurepowershell
-    Set-AzureRmRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole2.json"
+    Set-AzRoleDefinition -InputFile "C:\CustomRoles\ReaderSupportRole2.json"
     ```
 
     ```Output
@@ -237,10 +221,10 @@ Aby zaktualizować rolę niestandardową, zaktualizuj plik JSON lub użyj obiekt
     AssignableScopes : {/subscriptions/00000000-0000-0000-0000-000000000000}
     ```
 
-1. Aby użyć obiektu `PSRoleDefintion` do aktualizacji roli niestandardowej, najpierw użyj polecenia [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) w celu pobrania roli.
+1. Aby użyć obiektu `PSRoleDefintion` do aktualizacji roli niestandardowej, najpierw użyj polecenia [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) w celu pobrania roli.
 
     ```azurepowershell
-    $role = Get-AzureRmRoleDefinition "Reader Support Tickets"
+    $role = Get-AzRoleDefinition "Reader Support Tickets"
     ```
     
 1. Wywołaj metodę `Add` w celu dodania operacji do odczytu ustawień diagnostycznych.
@@ -249,10 +233,10 @@ Aby zaktualizować rolę niestandardową, zaktualizuj plik JSON lub użyj obiekt
     $role.Actions.Add("Microsoft.Insights/diagnosticSettings/*/read")
     ```
 
-1. Użyj polecenia [Set-AzureRmRoleDefinition](/powershell/module/azurerm.resources/set-azurermroledefinition) w celu zaktualizowania roli.
+1. Użyj polecenia [Set-AzRoleDefinition](/powershell/module/az.resources/set-azroledefinition) w celu zaktualizowania roli.
 
     ```azurepowershell
-    Set-AzureRmRoleDefinition -Role $role
+    Set-AzRoleDefinition -Role $role
     ```
     
     ```Output
@@ -270,16 +254,16 @@ Aby zaktualizować rolę niestandardową, zaktualizuj plik JSON lub użyj obiekt
     
 ## <a name="delete-a-custom-role"></a>Usuwanie roli niestandardowej
 
-1. Użyj polecenia [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) w celu uzyskania identyfikatora roli niestandardowej.
+1. Użyj polecenia [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) w celu uzyskania identyfikatora roli niestandardowej.
 
     ```azurepowershell
-    Get-AzureRmRoleDefinition "Reader Support Tickets"
+    Get-AzRoleDefinition "Reader Support Tickets"
     ```
 
-1. Użyj polecenia [Remove-AzureRmRoleDefinition](/powershell/module/azurerm.resources/remove-azurermroledefinition) i określ identyfikator roli w celu usunięcia roli niestandardowej.
+1. Użyj polecenia [Remove-AzRoleDefinition](/powershell/module/az.resources/remove-azroledefinition) i określ identyfikator roli w celu usunięcia roli niestandardowej.
 
     ```azurepowershell
-    Remove-AzureRmRoleDefinition -Id "22222222-2222-2222-2222-222222222222"
+    Remove-AzRoleDefinition -Id "22222222-2222-2222-2222-222222222222"
     ```
 
     ```Output

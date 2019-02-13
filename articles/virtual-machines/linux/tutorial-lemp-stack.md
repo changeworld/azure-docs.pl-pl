@@ -3,7 +3,7 @@ title: Samouczek — wdrażanie stosu LEMP na maszynie wirtualnej z systemem Lin
 description: Z tego samouczka dowiesz się, jak zainstalować stos LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.author: danlep
-ms.openlocfilehash: c4926760162baa5687242f4372377c64c7e24b19
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 01/30/2019
+ms.author: cynthn
+ms.openlocfilehash: 0a9d63f4064952adbfedfc3f9656370ef7c4a1cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999362"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511281"
 ---
-# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Samouczek: instalowanie serwera internetowego LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
+# <a name="tutorial-install-a-lemp-web-server-on-a-linux-virtual-machine-in-azure"></a>Samouczek: Instalowanie serwera internetowego LEMP na maszynie wirtualnej z systemem Linux na platformie Azure
 
 W tym artykule przedstawiono kroki wdrażania serwera internetowego NGINX oraz oprogramowania MySQL i PHP (stosu LEMP) na maszynie wirtualnej z systemem Ubuntu na platformie Azure. Stos LEMP, który stanowi alternatywę dla popularnego [stosu LAMP](tutorial-lamp-stack.md), również można zainstalować na platformie Azure. Aby zobaczyć, jak działa serwer LEMP, możesz opcjonalnie zainstalować i skonfigurować witrynę WordPress. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -46,17 +46,15 @@ Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z
 Uruchom następujące polecenie, aby zaktualizować źródła pakietów systemu Ubuntu oraz zainstalować oprogramowanie NGINX, MySQL i PHP. 
 
 ```bash
-sudo apt update && sudo apt install nginx mysql-server php-mysql php php-fpm
+sudo apt update && sudo apt install nginx && sudo apt install mysql-server php-mysql php-fpm
 ```
 
-Pojawi się monit o zainstalowanie pakietów i innych zależności. Po wyświetleniu monitu ustaw hasło główne programu MySQL, a następnie naciśnij klawisz [Enter], aby kontynuować. Postępuj zgodnie z pozostałymi instrukcjami. W tym procesie jest instalowana minimalna liczba wymaganych rozszerzeń PHP potrzebnych do używania języka PHP z oprogramowaniem MySQL. 
-
-![Strona hasła głównego MySQL][1]
+Pojawi się monit o zainstalowanie pakietów i innych zależności. W tym procesie jest instalowana minimalna liczba wymaganych rozszerzeń PHP potrzebnych do używania języka PHP z oprogramowaniem MySQL.  
 
 ## <a name="verify-installation-and-configuration"></a>Weryfikowanie instalacji i konfiguracji
 
 
-### <a name="nginx"></a>NGINX
+### <a name="verify-nginx"></a>Weryfikowanie serwera NGINX
 
 Sprawdź wersję oprogramowania NGINX przy użyciu następującego polecenia:
 ```bash
@@ -68,7 +66,7 @@ Po zainstalowaniu serwera NGINX i otwarciu portu 80 dla maszyny wirtualnej możn
 ![Strona domyślna serwera NGINX][3]
 
 
-### <a name="mysql"></a>MySQL
+### <a name="verify-and-secure-mysql"></a>Weryfikowanie i zabezpieczanie oprogramowania MySQL
 
 Sprawdź wersję oprogramowania MySQL przy użyciu następującego polecenia (zwróć uwagę na parametr `V` oznaczony wielką literą):
 
@@ -76,24 +74,24 @@ Sprawdź wersję oprogramowania MySQL przy użyciu następującego polecenia (zw
 mysql -V
 ```
 
-Aby ułatwić ochronę instalacji oprogramowania MySQL, uruchom skrypt `mysql_secure_installation`. Jeśli konfigurujesz tylko serwer tymczasowy, możesz pominąć ten krok. 
+Aby ułatwić zabezpieczenie instalacji oprogramowania MySQL, włącznie z ustawieniem hasła głównego, uruchom skrypt `mysql_secure_installation`. 
 
 ```bash
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
-Wprowadź hasło główne oprogramowania MySQL, a następnie skonfiguruj ustawienia zabezpieczeń dla środowiska.
+Opcjonalnie możesz skonfigurować wtyczkę weryfikacji hasła (zalecane). Następnie ustaw hasło użytkownika głównego oprogramowania MySQL i skonfiguruj pozostałe ustawienia zabezpieczeń dla środowiska. Zalecamy udzielenie odpowiedzi Tak („Y”, czyli ang. „Yes”) na wszystkie pytania.
 
 Jeśli chcesz wypróbować funkcje oprogramowania MySQL (na przykład utworzyć bazę danych MySQL, dodać użytkowników lub zmienić ustawienia konfiguracji), zaloguj się do systemu MySQL. Ten krok nie jest wymagany do ukończenia samouczka. 
 
 
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 ```
 
 Gdy skończysz, zamknij wiersz polecenia mysql, wpisując `\q`.
 
-### <a name="php"></a>PHP
+### <a name="verify-php"></a>Weryfikowanie oprogramowania PHP
 
 Sprawdź wersję oprogramowania PHP przy użyciu następującego polecenia:
 
@@ -109,7 +107,7 @@ sudo cp /etc/nginx/sites-available/default /etc/nginx/sites-available/default_ba
 sudo sensible-editor /etc/nginx/sites-available/default
 ```
 
-W edytorze zastąp zawartość pliku `/etc/nginx/sites-available/default` następującym kodem. Komentarze zawierają opisy ustawień. Wartość *yourPublicIPAddress* zastąp publicznym adresem IP swojej maszyny wirtualnej, a resztę ustawień pozostaw bez zmian. Następnie zapisz plik.
+W edytorze zastąp zawartość pliku `/etc/nginx/sites-available/default` następującym kodem. Komentarze zawierają opisy ustawień. Wartość *yourPublicIPAddress* zastąp publicznym adresem IP swojej maszyny wirtualnej, potwierdź wersję PHP w `fastcgi_pass`, a resztę ustawień pozostaw bez zmian. Następnie zapisz plik.
 
 ```
 server {
@@ -129,7 +127,7 @@ server {
     # Include FastCGI configuration for NGINX
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
-        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.2-fpm.sock;
     }
 }
 ```
@@ -177,6 +175,5 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwe
 > [!div class="nextstepaction"]
 > [Zabezpieczanie serwera internetowego przy użyciu protokołu SSL](tutorial-secure-web-server.md)
 
-[1]: ./media/tutorial-lemp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lemp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lemp-stack/nginx.png

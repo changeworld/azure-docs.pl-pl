@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: a0800a434fdfef0002993fdae797af982391321f
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 20bf851cc9b2965a355286699e1ef255887d7650
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883283"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697092"
 ---
 # <a name="create-a-complete-virtual-machine-scale-set-with-powershell"></a>Tworzenie pełnego zestawu skalowania maszyn wirtualnych przy użyciu programu PowerShell
 Ten skrypt tworzy zestaw skalowania maszyn wirtualnych z systemem Windows Server 2016. Poszczególne zasoby są konfigurowane i tworzone bez konieczności korzystania z [wbudowanych opcji tworzenia zasobów dostępnych tutaj w skrypcie New-AzureRmVmss](powershell-sample-create-simple-scale-set.md). Po uruchomieniu skryptu możesz uzyskać dostęp do wystąpień maszyn wirtualnych za pośrednictwem protokołu RDP.

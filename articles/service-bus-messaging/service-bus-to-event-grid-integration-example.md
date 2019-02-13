@@ -14,20 +14,20 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 09/15/2018
 ms.author: spelluru
-ms.openlocfilehash: 55798af8d8e2b50614a3eee51b330c5b4fa0f918
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: a1c0078cf2359de7fa018af749c61880caa8fcdd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409580"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821825"
 ---
 # <a name="azure-service-bus-to-azure-event-grid-integration-examples"></a>Przykłady integracji usług Azure Service Bus i Event Grid
 
 W tym artykule przedstawiamy sposób konfigurowania aplikacji logiki i funkcji platformy Azure odbierających komunikaty na podstawie procesu odbierania zdarzenia z usługi Azure Event Grid. Wykonasz następujące czynności:
  
-* Utworzenie prostej [funkcji testowej platformy Azure](#test-function-setup) na potrzeby debugowania i wyświetlania początkowego przepływu zdarzeń z usługi Event Grid. Wykonaj ten krok niezależnie od tego, czy wykonasz pozostałe.
-* Utworzenie [funkcji platformy Azure na potrzeby odbierania i przetwarzania komunikatów usługi Azure Service Bus](#receive-messages-using-azure-function) na podstawie zdarzeń usługi Event Grid.
-* Użycie [funkcji Logic Apps usługi Azure App Service](#receive-messages-using-azure-logic-app).
+* Utworzenie prostej funkcji testowej platformy Azure na potrzeby debugowania i wyświetlania początkowego przepływu zdarzeń z usługi Event Grid. Wykonaj ten krok niezależnie od tego, czy wykonasz pozostałe.
+* Utworzenie funkcji platformy Azure na potrzeby odbierania i przetwarzania komunikatów usługi Azure Service Bus na podstawie zdarzeń usługi Event Grid.
+* Użycie funkcji Logic Apps usługi Azure App Service.
 
 Na potrzeby tworzonego przykładu przyjęto, że temat usługi Service Bus ma dwie subskrypcje. Przyjęto także, że utworzono subskrypcję usługi Event Grid na potrzeby wysyłania zdarzeń tylko dla jednej subskrypcji usługi Service Bus. 
 

@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 01/02/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: a82ea1e7f584cd9cab794d147c3f19f04e23732b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 953615a9c6b716db1db0c7bfb993f3d47aefd7a9
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474806"
+ms.locfileid: "55507777"
 ---
 # <a name="introduction-to-azure-storage"></a>Wprowadzenie do usługi Azure Storage
 
@@ -130,13 +130,13 @@ Biblioteki klienta magazynu posiadają metody, które możesz wywołać, aby pro
 
 Aby uzyskać więcej informacji o szyfrowaniu po stronie klienta, zobacz [Client-Side Encryption with .NET for Microsoft Azure Storage (Szyfrowanie po stronie klienta przy użyciu programu .NET dla usługi Microsoft Azure Storage)](storage-client-side-encryption.md).
 
-## <a name="replication"></a>Replikacja
+## <a name="redundancy"></a>Nadmiarowość
 
-Aby zapewnić trwałość danych, usługa Azure Storage przeprowadza replikację wielu kopii danych. Podczas konfigurowania konta magazynu należy określić typ replikacji. W większości przypadków to ustawienie można zmodyfikować po skonfigurowaniu konta magazynu. 
+Aby zapewnić trwałość danych, usługa Azure Storage przeprowadza replikację wielu kopii danych. Podczas konfigurowania konta magazynu należy wybrać opcję nadmiarowości. 
 
 [!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
-Aby uzyskać informacje na temat odzyskiwania po awarii, zobacz [Co zrobić po wystąpieniu awarii usługi Azure Storage](storage-disaster-recovery-guidance.md).
+Aby uzyskać więcej informacji na temat odzyskiwania po awarii, zobacz [Disaster recovery and storage account failover (preview) in Azure Storage](storage-disaster-recovery-guidance.md) (Odzyskiwanie po awarii i tryb failover konta magazynu w wersji zapoznawczej w usłudze Azure Storage).
 
 ## <a name="transferring-data-to-and-from-azure-storage"></a>Transferowanie danych do i z usługi Azure Storage
 

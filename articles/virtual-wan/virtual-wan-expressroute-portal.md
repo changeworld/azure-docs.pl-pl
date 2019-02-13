@@ -7,15 +7,15 @@ ms.service: virtual-wan
 ms.topic: tutorial
 ms.date: 10/5/2018
 ms.author: cherylmc
-Customer intent: As someone with a networking background, I want to connect my corporoate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: c02020ba8d49b123cf8914214d52ac40896a3c20
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
+ms.openlocfilehash: 17d80d07f9b272b0dcb7449404d5d6626e72ce65
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248184"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55692887"
 ---
-# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Samouczek: tworzenie skojarzenia usługi ExpressRoute przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
+# <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>Samouczek: Tworzenie skojarzenia usługi ExpressRoute przy użyciu usługi Azure Virtual WAN (wersja zapoznawcza)
 
 W tym samouczku pokazano, w jaki sposób przy użyciu usługi Virtual WAN utworzyć połączenie z zasobami na platformie Azure za pośrednictwem obwodu i skojarzenia usługi ExpressRoute. Aby uzyskać więcej informacji na temat usługi Virtual WAN, zobacz [Omówienie usługi Virtual WAN](virtual-wan-about.md)
 
@@ -45,7 +45,7 @@ Aby móc skonfigurować usługę Virtual WAN, należy najpierw zarejestrować sw
 
 **Zagadnienia dotyczące wersji zapoznawczej:**
 
-* Dostępność w regionie: zachodnio-środkowe stany USA
+* Dostępność w danym regionie: Środkowo-zachodnie stany USA
 * Obwód usługi ExpressRoute musi być włączony w kraju, w którym obsługiwany jest [zasięg globalny usługi ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported)
 
 ## <a name="vnet"></a>1. Tworzenie sieci wirtualnej

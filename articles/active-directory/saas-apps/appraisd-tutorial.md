@@ -1,268 +1,280 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Appraisd | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Appraisd.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Appraisd | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Appraisd.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: db063306-4d0d-43ca-aae0-09f0426e7429
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 10/10/2018
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: dae9a59b89f03a50b1adaed55cd8f97c06906526
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
-ms.translationtype: MT
+ms.openlocfilehash: 44d4988ff68d5ccca575fc29ec3f0b7dce0bf948
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49118665"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765436"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>Samouczek: Integracja usługi Azure Active Directory z Appraisd
+# <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Appraisd
 
-W tym samouczku dowiesz się, jak zintegrować Appraisd w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Appraisd z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Appraisd z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Appraisd z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Appraisd.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Appraisd (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Appraisd.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Appraisd (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Appraisd, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Appraisd, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Appraisd logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Appraisd z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Appraisd z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-appraisd-from-the-gallery"></a>Dodawanie Appraisd z galerii
-Aby skonfigurować integrację Appraisd w usłudze Azure AD, należy dodać Appraisd z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Appraisd obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług i dostawcę tożsamości**
 
-**Aby dodać Appraisd z galerii, wykonaj następujące czynności:**
+## <a name="adding-appraisd-from-the-gallery"></a>Dodawanie aplikacji Appraisd z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Appraisd z usługą Azure AD, należy z poziomu galerii dodać tę aplikację do listy zarządzanych aplikacji SaaS.
 
-    ![image](./media/appraisd-tutorial/selectazuread.png)
+**Aby dodać aplikację Appraisd z galerii, należy wykonać następujące kroki:**
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![image](./media/appraisd-tutorial/a_select_app.png)
-    
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![image](./media/appraisd-tutorial/a_new_app.png)
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-4. W polu wyszukiwania wpisz **Appraisd**, wybierz opcję **Appraisd** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-     ![image](./media/appraisd-tutorial/tutorial_appraisd_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Appraisd w oparciu o użytkownika testu o nazwie "Britta Simon".
+4. W polu wyszukiwania wpisz **Appraisd**, wybierz pozycję **Appraisd** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Appraisd do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Appraisd musi można ustanowić.
+     ![Aplikacja Appraisd na liście wyników](common/search-new-app.png)
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Appraisd, należy wykonać poniższe bloki konstrukcyjne:
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Appraisd](#create-an-appraisd-test-user)**  — aby odpowiednikiem Britta Simon w Appraisd połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Appraisd, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Appraisd.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Appraisd, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Appraisd.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Appraisd](#configure-appraisd-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Appraisd](#create-appraisd-test-user)** — aby mieć w aplikacji Appraisd odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Appraisd, wykonaj następujące czynności:**
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-1. W [witryny Azure portal](https://portal.azure.com/)na **Appraisd** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-    ![image](./media/appraisd-tutorial/B1_B2_Select_SSO.png)
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Appraisd, wykonaj następujące kroki:
 
-2. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, wybierz **SAML** trybu, aby włączyć logowanie jednokrotne.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Appraisd** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![image](./media/appraisd-tutorial/b1_b2_saml_sso.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-3. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-    ![image](./media/appraisd-tutorial/b1-domains_and_urlsedit.png)
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-4. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_url.png)
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    a. Kliknij przycisk **Ustaw dodatkowe adresy URL**. 
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
-    b. W **tan przekaźnika** pole tekstowe, wpisz adres URL: `<TENANTCODE>`
+    ![Informacje o domenie i adresach URL aplikacji Appraisd na potrzeby logowania jednokrotnego](common/both-preintegrated-advanced-urls.png)
 
-    c. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb, w **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://app.appraisd.com/saml/<TENANTCODE>`
+    a. Kliknij pozycję **Ustaw dodatkowe adresy URL**.
+
+    b. W polu tekstowym **Stan przekaźnika** wpisz adres URL: `<TENANTCODE>`
+
+    d. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę usług**, w polu tekstowym **Adres URL logowania** wpisz adres URL przy użyciu następującego wzorca: `https://app.appraisd.com/saml/<TENANTCODE>`
 
     > [!NOTE]
-    > Uzyskujesz rzeczywisty adres URL logowania i stan przekazywania wartości na stronie konfiguracji logowania jednokrotnego Appraisd, które zostało wyjaśnione w dalszej części tego samouczka.
-    
-5. Aplikacja Appraisd oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Kliknij przycisk **Edytuj** przycisk, aby otworzyć **atrybutów użytkownika** okna dialogowego.
+    > Uzyskasz rzeczywisty adres URL logowania i wartość stanu przekaźnika na stronie konfiguracji logowania jednokrotnego aplikacji Appraisd, co zostało wyjaśnione w dalszej części tego samouczka.
 
-    ![image](./media/appraisd-tutorial/i3-attribute.png)
+5. Aplikacja Appraisd oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
-6. W **oświadczenia użytkownika** sekcji na **atrybutów użytkownika** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
-    
-    a. Kliknij przycisk **Edytuj** przycisk, aby otworzyć **Zarządzanie oświadczenia użytkownika** okna dialogowego.
+    ![image](common/edit-attribute.png)
 
-    ![image](./media/appraisd-tutorial/i2-attribute.png)
+6. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
 
-    ![image](./media/appraisd-tutorial/i4-attribute.png)
+    | Name (Nazwa) |  Atrybut źródłowy|
+    | ---------------| --------------- |
+    | nameidentifier | user.mail |
+    | | |
 
-    b. Z **atrybut źródłowy** , wybierz wartość atrybutu na liście.
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    c. Kliknij pozycję **Zapisz**. 
+    ![image](common/new-save-attribute.png)
 
-7. W **certyfikat podpisywania SAML** kliknij **Pobierz** można pobrać **certyfikat (Base64)** i zapisz go na komputerze.
+    ![image](common/new-attribute-details.png)
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_certficate.png) 
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-8. Na **Konfigurowanie Appraisd** sekcji, skopiuj odpowiedni adres URL, zgodnie z wymaganiami.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
+
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
+
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
+
+    f. Kliknij przycisk **OK**.
+
+    g. Kliknij pozycję **Zapisz**.
+
+7. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
+
+8. W sekcji **Konfigurowanie aplikacji Appraisd** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
     a. Adres URL logowania
 
-    b. Identyfikator usługi Azure Ad
+    b. Identyfikator usługi Azure AD
 
-    c. Adres URL wylogowywania
+    d. Adres URL wylogowywania
 
-    ![image](./media/appraisd-tutorial/d1_samlsonfigure.png)
+### <a name="configure-appraisd-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Appraisd
 
-9. W oknie przeglądarki internetowej innej Zaloguj się do Appraisd jako Administrator zabezpieczeń.
+1. W innym oknie przeglądarki internetowej zaloguj się do aplikacji Appraisd jako administrator zabezpieczeń.
 
-10. U góry po prawej stronie kliknij pozycję na **ustawienia** ikonę, a następnie przejdź do **konfiguracji**.
+2. U góry po prawej stronie kliknij ikonę **Settings** (Ustawienia), a następnie przejdź do pozycji  **Configuration** (Konfiguracja).
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
-11. Z lewej strony menu, kliknij pozycję **SAML logowania jednokrotnego**.
+3. Po lewej stronie menu kliknij pozycję **SAML single sign-on** (Logowanie jednokrotne SAML).
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
-12. Na **konfiguracji SAML 2.0 logowania jednokrotnego** strony, wykonaj następujące czynności:
-    
+4. Na stronie **SAML 2.0 Single Sign-On configuration** (Konfiguracja logowania jednokrotnego SAML 2.0) wykonaj następujące kroki:
+
     ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
-    a. Kopiuj **domyślny stan przekazywania** wartości, a następnie wklej je **tan przekaźnika** polu tekstowym w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+    a. Skopiuj wartość **Default Relay State** (Domyślny stan przekaźnika) i wklej ją w polu tekstowym  **Stan przekaźnika** na stronie  **Podstawowa konfiguracja SAML** w witrynie Azure Portal.
 
-    b. Kopiuj **adres URL logowania zainicjowanych przez usługę** wartości, a następnie wklej je **adres URL logowania** polu tekstowym w **podstawową konfigurację protokołu SAML** w witrynie Azure portal.
+    b. Skopiuj wartość **Service-initiated login URL** (Adres URL logowania inicjowanego przez usługę) i wklej ją w polu tekstowym  **Adres URL logowania jednokrotnego** na stronie  **Podstawowa konfiguracja SAML** w witrynie Azure Portal.
 
-13. Przewiń w dół strony w obszarze **identyfikowanie użytkowników**, wykonaj następujące czynności:
+5. Przewiń tę samą stronę do pozycji **Identifying users** (Identyfikowanie użytkowników) i wykonaj następujące kroki:
 
     ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
-    a. W **pojedynczy znak na adres URL dostawcy tożsamości** pola tekstowego, Wklej wartość **adres URL logowania**, skopiowanej w witrynie Azure portal, a następnie kliknij **Zapisz**.
+    a. W polu tekstowym **Identity Provider Single Sign-On URL** (Adres URL logowania jednokrotnego dostawcy tożsamości) wklej wartość **Adres URL logowania** skopiowaną z witryny Azure Portal, a następnie kliknij przycisk **Save** (Zapisz).
 
-    b. W **adres URL wystawcy dostawcy tożsamości** pola tekstowego, Wklej wartość **usługi Azure Ad identyfikator**, skopiowanej w witrynie Azure portal, a następnie kliknij **Zapisz**.
+    b. W polu tekstowym **Identity Provider Issuer URL** (Adres URL wystawcy dostawcy tożsamości) wklej wartość **Identyfikator usługi Azure AD** skopiowaną z witryny Azure Portal, a następnie kliknij przycisk **Save** (Zapisz).
 
-    c. W programie Notatnik, otwórz certyfikat zakodowany base-64, pobrany z witryny Azure portal, skopiuj jego zawartość i następnie wklej go do **certyfikat X.509** pole, a następnie kliknij przycisk **Zapisz**.
+    d. W programie Notatnik otwórz certyfikat zakodowany w formacie Base-64 pobrany z witryny Azure Portal, skopiuj jego zawartość, a następnie wklej go w polu  **X.509 Certificate**  (Certyfikat X.509) i kliknij przycisk **Save** (Zapisz).
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-    ![image](./media/appraisd-tutorial/d_users_and_groups.png)
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-2. Wybierz **nowego użytkownika** w górnej części ekranu.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![image](./media/appraisd-tutorial/d_adduser.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-3. We właściwościach użytkownika wykonaj następujące czynności.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    ![image](./media/appraisd-tutorial/d_userproperties.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    a. W **nazwa** wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
-    c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
-    d. Wybierz pozycję **Utwórz**.
- 
-### <a name="create-an-appraisd-test-user"></a>Tworzenie użytkownika testowego Appraisd
-
-Aby włączyć usługi Azure AD użytkownicy logują się do Appraisd, ich musi być obsługiwana w Appraisd. W Appraisd Inicjowanie obsługi administracyjnej jest zadanie ręczne.
-
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
-
-1. Zaloguj się do Appraisd jako Administrator zabezpieczeń.
-
-2. U góry po prawej stronie kliknij pozycję na **ustawienia** ikonę, a następnie przejdź do **Centrum administracyjne**.
-
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
-
-3. Na pasku narzędzi w górnej części strony kliknij **osób**, a następnie przejdź do **dodać nowego użytkownika**.
-
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
-
-4. Na **dodać nowego użytkownika** strony, wykonaj następujące czynności:
-
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
-    
-    a. W **imię** tekstu Wprowadź imię użytkownika, takich jak **Britta**.
-
-    b. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak **simon**.
-
-    c. W **E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **Brittasimon@contoso.com**.
-
-    d. Kliknij pozycję **Dodaj użytkownika**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Appraisd.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Appraisd.
 
-1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Appraisd**.
 
-    ![image](./media/appraisd-tutorial/d_all_applications.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz **Appraisd**.
 
-    ![image](./media/appraisd-tutorial/tutorial_appraisd_app.png)
+    ![Link do aplikacji Appraisd na liście aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![image](./media/appraisd-tutorial/d_leftpaneusers.png)
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-4. Wybierz **Dodaj** przycisk, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![image](./media/appraisd-tutorial/d_assign_user.png)
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-4. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. W **Dodaj przydziału** okno dialogowe, wybierz opcję **przypisać** przycisku.
-    
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-appraisd-test-user"></a>Tworzenie użytkownika testowego aplikacji Appraisd
+
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji Appraisd, należy ich aprowizować w tej aplikacji. W aplikacji Appraisd aprowizowanie jest zadaniem ręcznym.
+
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
+
+1. Zaloguj się do aplikacji Appraisd jako administrator zabezpieczeń.
+
+2. U góry po prawej stronie kliknij ikonę **Settings** (Ustawienia), a następnie przejdź do pozycji  **Administration centre** (Centrum administracyjne).
+
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+
+3. Na pasku narzędzi w górnej części strony kliknij opcję  **People** (Osoby), a następnie przejdź do pozycji  **Add a new user** (Dodaj nowego użytkownika).
+
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+
+4. Na stronie **Add a new user** (Dodawanie nowego użytkownika) wykonaj następujące kroki:
+
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+
+    a. W polu tekstowym **First name** (Imię) wprowadź imię użytkownika, na przykład **Britta**.
+
+    b. W polu tekstowym **Last name** (Nazwisko) wprowadź nazwisko użytkownika, na przykład **Simon**.
+
+    d. W polu tekstowym **Email** (Adres e-mail) wprowadź adres e-mail użytkownika, na przykład **Brittasimon@contoso.com**.
+
+    d. Kliknij pozycję **Dodaj użytkownika**.
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka Appraisd w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Appraisd.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Appraisd w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Appraisd, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

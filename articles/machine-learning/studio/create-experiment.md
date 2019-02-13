@@ -1,10 +1,22 @@
 ---
-Tytuł: Prosty eksperyment titleSuffix: Opis usługi Azure Machine Learning Studio: Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
-usługi: uczenie maszynowe ms.service: ms.subservice uczenia maszynowego: studio ms.topic: samouczek
-
-author: garyericson ms.author: garye ms.custom: seodec18 ms.date: 03/20/2017
+title: Prosty eksperyment
+titleSuffix: Azure Machine Learning Studio
+description: Ten samouczek uczenia maszynowego przeprowadzi Cię przez łatwy eksperyment dotyczący przetwarzania danych. Będziemy prognozować cenę samochodu, używając algorytmu regresji.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: tutorial
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 03/20/2017
+ms.openlocfilehash: be52f5fbe6c7d282a50e53c4326478b937ea8081
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488388"
 ---
-
 # <a name="tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Samouczek: Tworzenie pierwszego eksperymentu dotyczącego nauki o danych w usłudze Azure Machine Learning Studio
 
 Ten samouczek jest przeznaczony dla osób, którym nie zdarzyło się korzystać z usługi **Azure Machine Learning Studio**.
@@ -301,7 +313,7 @@ Końcowy eksperyment powinien wyglądać następująco:
 <br/>
 ***Eksperyment końcowy***
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 Po ukończeniu pierwszego samouczka dotyczącego uczenia maszynowego i skonfigurowaniu eksperymentu można kontynuować ulepszanie modelu, a następnie wdrożyć go jako predykcyjną usługę sieci Web.
 

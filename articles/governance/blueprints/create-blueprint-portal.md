@@ -4,17 +4,17 @@ description: Usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdra�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0eebf1a2d1c173e2e37d24ff083e5d7ae011a900
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c6c498920d407dbbac2449d1da0d76237db0c63d
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53315302"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566316"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>Definiowanie i przypisywanie usługi Azure Blueprint w portalu
 
@@ -42,10 +42,7 @@ Pierwszym krokiem podczas definiowania standardowego wzorca zgodności jest utwo
 
    ![Tworzenie strategii](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste.  W polu **Lokalizacja definicji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md), w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
-
-   > [!NOTE]
-   > Definicje strategii można zapisywać tylko w grupach zarządzania. Aby utworzyć pierwszą grupę zarządzania, wykonaj [te kroki](../management-groups/create.md).
+1. W polu **Nazwa strategii** podaj nazwę strategii, na przykład „MyBlueprint” (litery i cyfry, maksymalnie 48 znaków, ale bez spacji i znaków specjalnych). Pole **Opis strategii** pozostaw na razie puste.  W polu **Lokalizacja definicji** kliknij wielokropek po prawej stronie, wybierz [grupę zarządzania](../management-groups/overview.md) lub subskrypcji, w której chcesz zapisać strategię, a następnie kliknij pozycję **Wybierz**.
 
 1. Sprawdź, czy informacje są poprawne (wartości pól **Nazwa strategii** i **Lokalizacja definicji** nie można później zmienić), a następnie kliknij pozycję **Dalej: Artefakty** w dolnej części strony lub kartę **Artefakty** w górnej części strony.
 
@@ -154,7 +151,7 @@ Opublikowanie strategii umożliwia przypisanie jej do subskrypcji.
 
 ## <a name="assign-a-blueprint"></a>Przypisywanie strategii
 
-Po opublikowaniu strategii można przypisać ją do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania.
+Po opublikowaniu strategii można przypisać ją do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji.
 
 1. Wybierz pozycję **Definicje strategii** w lewej części strony.
 

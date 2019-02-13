@@ -3,7 +3,7 @@ title: Samouczek — wdrażanie stosu LAMP na maszynie wirtualnej z systemem Lin
 description: Z tego samouczka dowiesz się, jak zainstalować stos LAMP na maszynie wirtualnej z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: dlepow
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: tutorial
-ms.date: 11/27/2017
-ms.author: danlep
-ms.openlocfilehash: 5caed6fba607cb93a6168bded7531bc8bf63b9da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 01/30/2019
+ms.author: cynthn
+ms.openlocfilehash: c69c7055e420ffa64e547f5c3fe53d997cf90168
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970689"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753711"
 ---
 # <a name="tutorial-install-a-lamp-web-server-on-a-linux-virtual-machine-in-azure"></a>Samouczek: instalowanie serwera internetowego LAMP na maszynie wirtualnej z systemem Linux na platformie Azure
 
@@ -50,15 +50,12 @@ Uruchom następujące polecenie, aby zaktualizować źródła pakietów systemu 
 sudo apt update && sudo apt install lamp-server^
 ```
 
-
-Pojawi się monit o zainstalowanie pakietów i innych zależności. Po wyświetleniu monitu ustaw hasło główne programu MySQL, a następnie naciśnij klawisz [Enter], aby kontynuować. Postępuj zgodnie z pozostałymi instrukcjami. W tym procesie jest instalowana minimalna liczba wymaganych rozszerzeń PHP potrzebnych do używania języka PHP z oprogramowaniem MySQL. 
-
-![Strona hasła głównego MySQL][1]
+Pojawi się monit o zainstalowanie pakietów i innych zależności. W tym procesie jest instalowana minimalna liczba wymaganych rozszerzeń PHP potrzebnych do używania języka PHP z oprogramowaniem MySQL.  
 
 ## <a name="verify-installation-and-configuration"></a>Weryfikowanie instalacji i konfiguracji
 
 
-### <a name="apache"></a>Apache
+### <a name="verify-apache"></a>Weryfikowanie oprogramowania Apache
 
 Sprawdź wersję oprogramowania Apache przy użyciu następującego polecenia:
 ```bash
@@ -70,7 +67,7 @@ Po zainstalowaniu oprogramowania Apache i otwarciu portu 80 dla maszyny wirtualn
 ![Strona domyślna oprogramowania Apache][3]
 
 
-### <a name="mysql"></a>MySQL
+### <a name="verify-and-secure-mysql"></a>Weryfikowanie i zabezpieczanie oprogramowania MySQL
 
 Sprawdź wersję oprogramowania MySQL przy użyciu następującego polecenia (zwróć uwagę na parametr `V` oznaczony wielką literą):
 
@@ -78,23 +75,23 @@ Sprawdź wersję oprogramowania MySQL przy użyciu następującego polecenia (zw
 mysql -V
 ```
 
-Aby ułatwić ochronę instalacji oprogramowania MySQL, uruchom skrypt `mysql_secure_installation`. Jeśli konfigurujesz tylko serwer tymczasowy, możesz pominąć ten krok.
+Aby ułatwić zabezpieczenie instalacji oprogramowania MySQL, włącznie z ustawieniem hasła głównego, uruchom skrypt `mysql_secure_installation`. 
 
 ```bash
-mysql_secure_installation
+sudo mysql_secure_installation
 ```
 
-Wprowadź hasło główne oprogramowania MySQL, a następnie skonfiguruj ustawienia zabezpieczeń dla środowiska.
+Opcjonalnie możesz skonfigurować wtyczkę weryfikacji hasła (zalecane). Następnie ustaw hasło użytkownika głównego oprogramowania MySQL i skonfiguruj pozostałe ustawienia zabezpieczeń dla środowiska. Zalecamy udzielenie odpowiedzi Tak („Y”, czyli ang. „Yes”) na wszystkie pytania.
 
 Jeśli chcesz wypróbować funkcje oprogramowania MySQL (na przykład utworzyć bazę danych MySQL, dodać użytkowników lub zmienić ustawienia konfiguracji), zaloguj się do systemu MySQL. Ten krok nie jest wymagany do ukończenia samouczka.
 
 ```bash
-mysql -u root -p
+sudo mysql -u root -p
 ```
 
 Gdy skończysz, zamknij wiersz polecenia mysql, wpisując `\q`.
 
-### <a name="php"></a>PHP
+### <a name="verify-php"></a>Weryfikowanie oprogramowania PHP
 
 Sprawdź wersję oprogramowania PHP przy użyciu następującego polecenia:
 
@@ -114,7 +111,6 @@ Możesz teraz sprawdzić zawartość utworzonej strony z informacjami o języku 
 
 [!INCLUDE [virtual-machines-linux-tutorial-wordpress.md](../../../includes/virtual-machines-linux-tutorial-wordpress.md)]
 
-
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku wdrożono serwer LAMP na platformie Azure. W tym samouczku omówiono:
@@ -131,6 +127,5 @@ Przejdź do następnego samouczka, aby dowiedzieć się, jak zabezpieczyć serwe
 > [!div class="nextstepaction"]
 > [Zabezpieczanie serwera internetowego przy użyciu protokołu SSL](tutorial-secure-web-server.md)
 
-[1]: ./media/tutorial-lamp-stack/configmysqlpassword-small.png
 [2]: ./media/tutorial-lamp-stack/phpsuccesspage.png
 [3]: ./media/tutorial-lamp-stack/apachesuccesspage.png

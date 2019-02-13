@@ -3,7 +3,7 @@ title: Przykłady skryptów interfejsu wiersza polecenia platformy Azure dla baz
 description: Przykłady skryptów interfejsu wiersza polecenia platformy Azure służących do tworzenia serwerów, pul elastycznych, baz danych i zapór usługi Azure SQL Database oraz zarządzania nimi.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: overview-samples, mvc
 ms.devlang: azurecli
 ms.topic: sample
@@ -11,15 +11,25 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 3eb077cf705f08e1ad953211c00c6b1eaa50ee3b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/03/2019
+ms.openlocfilehash: 3b98214da259e9e429c938f8ca7963c9f525e862
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477900"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560825"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla bazy danych Azure SQL Database
+
+Bazę danych Azure SQL Database można skonfigurować za pomocą <a href="/cli/azure">wiersza polecenia platformy Azure</a>.
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten temat będzie wymagał interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
+
+## <a name="single-database--elastic-pools"></a>Pojedyncza baza danych i pule elastyczne
 
 Poniższa tabela zawiera linki do przykładów skryptów interfejsu wiersza polecenia platformy Azure SQL Database.
 
@@ -31,5 +41,19 @@ Poniższa tabela zawiera linki do przykładów skryptów interfejsu wiersza pole
 |**Skalowanie pojedynczej bazy danych i puli elastycznej**||
 | [Skalowanie pojedynczej bazy danych](scripts/sql-database-monitor-and-scale-database-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pojedynczą bazę danych Azure SQL do innego rozmiaru zasobów obliczeniowych po utworzeniu zapytania o informacje na temat rozmiaru bazy danych. |
 | [Skalowanie puli elastycznej](scripts/sql-database-scale-pool-cli.md?toc=%2fcli%2fazure%2ftoc.json) | Ten przykładowy skrypt interfejsu wiersza polecenia skaluje pulę elastyczną SQL do innego rozmiaru zasobów obliczeniowych.  |
-| [Tworzenie wystąpienia zarządzanego i zarządzanie nim](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) | Te skrypty interfejsu wiersza polecenia pokazują, że należy utworzyć wystąpienie zarządzane i zarządzać nim przy użyciu interfejsu wiersza polecenia platformy Azure |
 |||
+
+Dowiedz się więcej o [interfejsie API interfejsu wiersza platformy Azure pojedynczej bazy danych](sql-database-single-databases-manage.md#azure-cli-manage-sql-database-servers-and-single-databases).
+
+## <a name="managed-instance"></a>Wystąpienie zarządzane
+
+Poniższa tabela zawiera linki do przykładów skryptów interfejsu wiersza polecenia platformy Azure dla wystąpienia zarządzanego usługi Azure SQL Database.
+
+| |  |
+|---|---|
+| [Tworzenie wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób tworzenia wystąpienia zarządzanego. |
+| [Aktualizowanie wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/modify-azure-sql-database-managed-instance-using-azure-cli/) | Ten skrypt interfejsu wiersza polecenia ilustruje sposób aktualizowania wystąpienia zarządzanego. |
+| [Przenoszenie bazy danych do innego wystąpienia zarządzanego](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Ten skrypt interfejsu wiersza polecenia ilustruje przywracanie kopii zapasowej bazy danych z jednego wystąpienia do innego. |
+|||
+
+Dowiedz się więcej o [interfejsie API interfejsu wiersza polecenia platformy Azure wystąpienia zarządzanego](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances) i znajdź [tutaj dodatkowe przykłady](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).

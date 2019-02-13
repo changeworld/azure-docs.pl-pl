@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 10/17/2018
+ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: b5307db01cc7242ba73876409f18d511c2516091
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f995c727f46957d663cb6a6a32ac1d4313c71e8f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458163"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697152"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-python"></a>Szybki start: tłumaczenie ciągu za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator oraz języka Python
 
@@ -64,7 +64,7 @@ else:
 #subscriptionKey = 'put_your_key_here'
 ```
 
-Obecnie na potrzeby tłumaczenia tekstu w usłudze Translator jest dostępny jeden punkt końcowy ustawiony jako `base_url`. Element `path` ustawia trasę `translate` i określa, że chcemy korzystać z wersji 3 interfejsu API.
+Globalny punkt końcowy interfejsu API tłumaczenia tekstu w usłudze Translator został ustawiony jako `base_url`. Element `path` ustawia trasę `translate` i określa, że chcemy korzystać z wersji 3 interfejsu API.
 
 Elementy `params` służą do ustawiania języków wyjściowych. W tym przykładzie tłumaczymy z języka angielskiego na włoski i niemiecki: `it` i `de`.
 

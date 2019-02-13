@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: quickstart
 ms.date: 03/02/2018
-ms.openlocfilehash: 9a22e4bb0949544e18237e789ca807e57ed59abf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: db0f18f0e7028f01044cdba8a5d7b719d3fb9e23
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733501"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55749025"
 ---
 # <a name="submit-a-workflow-to-microsoft-genomics-using-a-sas-instead-of-a-storage-account-key"></a>Przesyłanie przepływu pracy do usługi Microsoft Genomics przy użyciu sygnatury dostępu współdzielonego zamiast klucza konta magazynu 
 
@@ -32,12 +32,12 @@ Dla każdego przepływu pracy przesyłanego do usługi Microsoft Genomics wymaga
 
 Sygnatura dostępu współdzielonego dla plików wejściowych powinna mieć następujące właściwości:
 1.  Zakres (konto, kontener, obiekt blob): obiekt blob
-2.  Wygaśnięcie: 48 godzin od teraz
+2.  Wygaśnięcie: 48 godz. od teraz
 3.  Uprawnienia: odczyt
 
 Sygnatura dostępu współdzielonego dla kontenera danych wyjściowych powinna mieć następujące właściwości:
 1.  Zakres (konto, kontener, obiekt blob): kontener
-2.  Wygaśnięcie: 48 godzin od teraz
+2.  Wygaśnięcie: 48 godz. od teraz
 3.  Uprawnienia: odczyt, zapis, usuwanie
 
 
@@ -45,18 +45,18 @@ Sygnatura dostępu współdzielonego dla kontenera danych wyjściowych powinna m
 Istnieją dwa sposoby na utworzenie tokenu sygnatury dostępu współdzielonego: za pomocą eksploratora usługi Azure Storage lub programowo.  W przypadku pisania kodu można samodzielnie utworzyć sygnaturę dostępu współdzielonego lub użyć zestawu SDK usługi Azure Storage w preferowanym przez siebie języku.
 
 
-### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Konfigurowanie: tworzenie sygnatury dostępu współdzielonego za pomocą eksploratora usługi Azure Storage
+### <a name="set-up-create-a-sas-using-azure-storage-explorer"></a>Konfiguracja: Tworzenie sygnatury dostępu współdzielonego za pomocą Eksploratora usługi Azure Storage
 
 [Eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/) to narzędzie do zarządzania zasobami, które są przechowywane w usłudze Azure Storage.  Więcej informacji o sposobie używania eksploratora usługi Azure Storage można znaleźć [tutaj](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
 
-Zakres sygnatury dostępu współdzielonego dla plików wejściowych powinien być ograniczony do określonego pliku wejściowego (obiekt blob). Aby utworzyć token sygnatury dostępu współdzielonego, postęp zgodnie z [tymi instrukcjami](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer#work-with-shared-access-signatures). Po utworzeniu sygnatury dostępu współdzielonego zostanie udostępniony pełny adres URL z ciągiem zapytania oraz sam ciąg zapytania — możliwe jest skopiowanie tych elementów z ekranu.
+Zakres sygnatury dostępu współdzielonego dla plików wejściowych powinien być ograniczony do określonego pliku wejściowego (obiekt blob). Aby utworzyć token sygnatury dostępu współdzielonego, postęp zgodnie z [tymi instrukcjami](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer). Po utworzeniu sygnatury dostępu współdzielonego zostanie udostępniony pełny adres URL z ciągiem zapytania oraz sam ciąg zapytania — możliwe jest skopiowanie tych elementów z ekranu.
 
  ![Eksplorator magazynu sygnatur dostępu współdzielonego usługi Genomics](./media/quickstart-input-sas/genomics-sas-storageexplorer.png "Eksplorator magazynu sygnatur dostępu współdzielonego usługi Genomics")
 
 
-### <a name="set-up-create-a-sas-programattically"></a>Konfigurowanie: tworzenie sygnatury dostępu współdzielonego w sposób programowy
+### <a name="set-up-create-a-sas-programattically"></a>Konfiguracja: Tworzenie sygnatury dostępu współdzielonego w sposób programowy
 
-Aby utworzyć sygnaturę dostępu współdzielonego przy użyciu zestawu SDK usługi Azure Storage, zapoznaj się z istniejącą dokumentacją w kilku językach, w tym [.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) i [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage#work-with-shared-access-signatures). 
+Aby utworzyć sygnaturę dostępu współdzielonego przy użyciu zestawu SDK usługi Azure Storage, zapoznaj się z istniejącą dokumentacją w kilku językach, w tym [.NET](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2#generate-a-shared-access-signature-uri-for-a-blob), [Python](https://docs.microsoft.com/azure/storage/blobs/storage-python-how-to-use-blob-storage) i [Node.js](https://docs.microsoft.com/azure/storage/blobs/storage-nodejs-how-to-use-blob-storage). 
 
 Aby utworzyć sygnaturę dostępu współdzielonego bez używania zestawu SDK, ciąg zapytania sygnatury dostępu współdzielonego może zostać bezpośrednio utworzony i zawierać wszystkie informacje wymagane do uwierzytelniania takiej sygnatury. W tych [instrukcjach](https://docs.microsoft.com/rest/api/storageservices/constructing-a-service-sas) szczegółowo opisano składniki ciągu zapytania sygnatury dostępu współdzielonego oraz sposób jego tworzenia. Wymagana sygnatura dostępu współdzielonego jest tworzona przez generowanie elementu HMAC przy użyciu informacji o uwierzytelnianiu obiektu blob/kontenera w sposób opisany w ramach tych [instrukcji](https://docs.microsoft.com/rest/api/storageservices/service-sas-examples).
 

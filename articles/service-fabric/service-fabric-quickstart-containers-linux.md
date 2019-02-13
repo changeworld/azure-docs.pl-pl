@@ -12,35 +12,42 @@ ms.devlang: python
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/11/2018
+ms.date: 01/30/2019
 ms.author: twhitney,suhuruli
 ms.custom: mvc
-ms.openlocfilehash: c569a100984b77b05eac9f8b345faa05fb6848d7
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: fdb0d8e8def8429ff4c7c377df254fdfc0300637
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299236"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508848"
 ---
-# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: wdrażanie kontenerów systemu Linux w usłudze Service Fabric
+# <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Szybki start: Wdrażanie kontenerów systemu Linux w usłudze Service Fabric
 
 Usługa Azure Service Fabric to platforma systemów rozproszonych ułatwiająca pakowanie i wdrażanie skalowalnych oraz niezawodnych mikrousług i kontenerów, a także zarządzanie nimi.
 
-W tym przewodniku Szybki start przedstawiono sposób wdrażania kontenerów systemu Linux w klastrze usługi Service Fabric. Po wykonaniu tych czynności będziesz mieć gotową aplikację do głosowania składającą się z frontonu internetowego w języku Python oraz zaplecza Redis działającego w klastrze usługi Service Fabric. Dowiesz się też, jak przenieść aplikację do trybu failover oraz jak skalować aplikację w klastrze.
+W tym przewodniku Szybki start przedstawiono sposób wdrażania kontenerów systemu Linux w klastrze usługi Service Fabric na platformie Azure. Po wykonaniu tych czynności będziesz mieć gotową aplikację do głosowania składającą się z frontonu internetowego w języku Python oraz zaplecza Redis działającego w klastrze usługi Service Fabric. Dowiesz się też, jak przenieść aplikację do trybu failover oraz jak skalować aplikację w klastrze.
 
 ![Strona internetowa aplikacji do głosowania][quickstartpic]
 
-W tym przewodniku Szybki start użyjesz środowiska Bash w usłudze Azure Cloud Shell do uruchamiania poleceń interfejsu wiersza polecenia usługi Service Fabric. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+Aby ukończyć ten przewodnik Szybki start:
 
-Jeśli po raz pierwszy uruchamiasz usługę Cloud Shell, zostanie wyświetlona prośba o skonfigurowanie Twojego udziału plików `clouddrive`. Możesz zaakceptować wartości domyślne lub dołączyć istniejący udział plików. Aby dowiedzieć się więcej, zobacz [Konfigurowanie udziału plików `clouddrive`](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage#set-up-a-clouddrive-file-share).
+1. Jeśli nie masz subskrypcji, przed rozpoczęciem [utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
+
+2. Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
+
+3. Zainstaluj [interfejs wiersza polecenia i zestaw SDK usługi Service Fabric](service-fabric-get-started-linux.md#installation-methods).
+
+4. Zainstaluj oprogramowanie [Git](https://git-scm.com/).
+
 
 ## <a name="get-the-application-package"></a>Pobieranie pakietu aplikacji
 
 Do wdrożenia kontenerów w usłudze Service Fabric potrzebujesz zestawu plików manifestu (definicja aplikacji), które opisują poszczególne kontenery i aplikację.
 
-W usłudze Cloud Shell użyj usługi Git, aby sklonować kopię definicji aplikacji, a następnie przejdź do katalogu `Voting` w klonie.
+W konsoli za pomocą usługi Git sklonuj kopię definicji aplikacji, a następnie przejdź do katalogu `Voting` w klonie.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
@@ -50,14 +57,37 @@ cd service-fabric-containers/Linux/container-tutorial/Voting
 
 ## <a name="create-a-service-fabric-cluster"></a>Tworzenie klastra usługi Service Fabric
 
-Aby wdrożyć aplikację na platformie Azure, potrzebujesz klastra usługi Service Fabric używanego do uruchamiania aplikacji. Klastry testowe oferują prosty sposób szybkiego tworzenia klastra usługi Service Fabric. Klastry testowe to bezpłatne, ograniczone czasowo klastry usługi Service Fabric hostowane na platformie Azure i obsługiwane przez zespół usługi Service Fabric. Klastry testowe pozwalają wdrażać aplikacje i uzyskiwać informacje o platformie. Klaster używa jednego certyfikatu z podpisem własnym na potrzeby zabezpieczeń między węzłami oraz między klientem a węzłem.
+Aby wdrożyć aplikację na platformie Azure, potrzebujesz klastra usługi Service Fabric używanego do uruchamiania aplikacji. Następujące polecenia tworzą klaster pięciowęzłowy na platformie Azure.  To polecenie tworzy też certyfikat z podpisem własnym, dodaje go do magazynu kluczy i pobiera certyfikat lokalnie. Nowy certyfikat służy do zabezpieczania klastra podczas wdrażania i jest używany do uwierzytelniania klientów.
 
-Zaloguj się i dołącz do [klastra systemu Linux](https://aka.ms/tryservicefabric). Pobierz certyfikat PFX na komputer, klikając link **PFX**. Kliknij link **ReadMe**, aby znaleźć hasło certyfikatu i instrukcje dotyczące konfigurowania różnych środowisk do użycia certyfikatu. Pozostaw otwarte strony **Powitalna** i **ReadMe**, ponieważ będziesz korzystać z niektórych instrukcji w poniższej procedurze.
+```azurecli
+#!/bin/bash
+
+# Variables
+ResourceGroupName="containertestcluster" 
+ClusterName="containertestcluster" 
+Location="eastus" 
+Password="q6D7nN%6ck@6" 
+Subject="containertestcluster.eastus.cloudapp.azure.com" 
+VaultName="containertestvault" 
+VmPassword="Mypa$$word!321"
+VmUserName="sfadminuser"
+
+# Login to Azure and set the subscription
+az login
+
+az account set --subscription <mySubscriptionID>
+
+# Create resource group
+az group create --name $ResourceGroupName --location $Location 
+
+# Create secure five node Linux cluster. Creates a key vault in a resource group
+# and creates a certficate in the key vault. The certificate's subject name must match 
+# the domain that you use to access the Service Fabric cluster.  The certificate is downloaded locally.
+az sf cluster create --resource-group $ResourceGroupName --location $Location --certificate-output-folder . --certificate-password $Password --certificate-subject-name $Subject --cluster-name $ClusterName --cluster-size 5 --os UbuntuServer1604 --vault-name $VaultName --vault-resource-group $ResourceGroupName --vm-password $VmPassword --vm-user-name $VmUserName
+```
 
 > [!Note]
-> Liczba klastrów testowych dostępnych na godzinę jest ograniczona. Jeśli wystąpi błąd podczas próby tworzenia konta umożliwiającego korzystanie z klastra testowego, możesz poczekać, a następnie spróbować ponownie. Możesz też wykonać kroki opisane w artykule [Create a Service Fabric cluster on Azure](service-fabric-tutorial-create-vnet-and-linux-cluster.md) (Tworzenie klastra usługi Service Fabric na platformie Azure), aby utworzyć klaster usługi w swojej subskrypcji.
->
->Jeśli tworzysz własny klaster, pamiętaj, że usługa internetowa frontonu jest skonfigurowana do nasłuchiwania ruchu przychodzącego na porcie 80. Upewnij się, że port w klastrze został otwarty. (Jeśli używasz klastra testowego, ten port jest otwarty).
+> Usługa frontonu internetowego została skonfigurowana do nasłuchiwania ruchu przychodzącego na porcie 80. Domyślnie port 80 jest otwarty w module równoważenia obciążenia platformy Azure i na maszynach wirtualnych klastra.
 >
 
 ## <a name="configure-your-environment"></a>Konfigurowanie środowiska
@@ -68,53 +98,33 @@ Usługa Service Fabric udostępnia kilka narzędzi, których możesz używać do
 - Interfejs wiersza polecenia usługi Service Fabric, który korzysta z interfejsu wiersza polecenia platformy Azure. 
 - Polecenia programu PowerShell.
 
-W tym przewodniku Szybki start używasz usługi Service Fabric w usłudze Cloud Shell i narzędzia Service Fabric Explorer. Poniższe sekcje pokazują, jak zainstalować certyfikat wymagany w celu nawiązania połączenia z bezpiecznym klastrem za pomocą tych narzędzi.
+W tym przewodniku Szybki start jest używany interfejs wiersza polecenia usługi Service Fabric i (internetowe) narzędzie Service Fabric Explorer. Aby użyć narzędzia Service Fabric Explorer, musisz zaimportować do przeglądarki plik PFX certyfikatu. Domyślnie plik PFX nie ma hasła.
 
-### <a name="configure-certificate-for-the-service-fabric-cli"></a>Konfigurowanie certyfikatu dla interfejsu wiersza polecenia usługi Service Fabric
-
-Aby użyć interfejsu wiersza polecenia w usłudze Cloud Shell, należy przekazać plik PFX certyfikatu do usługi Cloud Shell, a następnie użyć go do utworzenia pliku PEM.
-
-1. Aby przekazać certyfikat do Twojego bieżącego katalogu roboczego w usłudze Cloud Shell, przeciągnij plik PFX certyfikatu z folderu na komputerze, do którego został pobrany, a następnie upuść go w oknie usługi Cloud Shell.
-
-2. Aby przekonwertować plik PFX na plik PEM, użyj następującego polecenia. (W przypadku klastrów testowych możesz skopiować polecenie specyficzne dla Twojego pliku PFX i hasło z instrukcji na stronie **ReadMe**).
-
-    ```bash
-    openssl pkcs12 -in party-cluster-1486790479-client-cert.pfx -out party-cluster-1486790479-client-cert.pem -nodes -passin pass:1486790479
-    ```
-
-### <a name="configure-certificate-for-service-fabric-explorer"></a>Konfigurowanie certyfikatu dla narzędzia Service Fabric Explorer
-
-Aby użyć narzędzia Service Fabric Explorer, musisz zaimportować plik PFX certyfikatu pobrany z witryny internetowej klastra testowego do swojego magazynu certyfikatów (w systemie Windows lub Mac) lub do samej przeglądarki (w systemie Ubuntu). Będzie potrzebne hasło klucza prywatnego PFX, które możesz pobrać ze strony **ReadMe**.
-
-Aby zaimportować certyfikat w swoim systemie, użyj dowolnej, preferowanej przez siebie metody. Na przykład:
-
-- W systemie Windows: kliknij dwukrotnie plik PFX i postępuj zgodnie z monitami, aby zainstalować certyfikat w magazynie osobistym `Certificates - Current User\Personal\Certificates`. Alternatywnie możesz użyć polecenia programu PowerShell podanego w instrukcjach na stronie **ReadMe**.
-- Na komputerach Mac: kliknij dwukrotnie plik PFX, a następnie postępuj zgodnie z monitami, aby zainstalować certyfikat w pęku kluczy.
-- W systemie Ubuntu: domyślną przeglądarką w systemie Ubuntu 16.04 jest Mozilla Firefox. Aby zaimportować certyfikat w przeglądarce Firefox, kliknij przycisk menu w prawym górnym rogu przeglądarki, a następnie kliknij pozycję **Opcje**. Na stronie **Preferencje** użyj pola wyszukiwania, aby wyszukać ciąg „certyfikaty”. Kliknij przycisk **Wyświetl certyfikaty**, wybierz kartę **Twoje certyfikaty**, kliknij pozycję **Importuj** i postępuj zgodnie z monitami, aby zaimportować certyfikat.
+domyślną przeglądarką w systemie Ubuntu 16.04 jest Mozilla Firefox. Aby zaimportować certyfikat w przeglądarce Firefox, kliknij przycisk menu w prawym górnym rogu przeglądarki, a następnie kliknij pozycję **Opcje**. Na stronie **Preferencje** użyj pola wyszukiwania, aby wyszukać ciąg „certyfikaty”. Kliknij przycisk **Wyświetl certyfikaty**, wybierz kartę **Twoje certyfikaty**, kliknij pozycję **Importuj** i postępuj zgodnie z monitami, aby zaimportować certyfikat.
 
    ![Instalowanie certyfikatu w programie Firefox](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
 ## <a name="deploy-the-service-fabric-application"></a>Wdrażanie aplikacji usługi Service Fabric
 
-1. W usłudze Cloud Shell połącz się z klastrem usługi Service Fabric na platformie Azure przy użyciu interfejsu wiersza polecenia. Punkt końcowy to punkt końcowy zarządzania klastrem. Plik PEM został utworzony w poprzedniej sekcji. (W przypadku klastrów testowych możesz skopiować polecenie specyficzne dla Twojego pliku PEM i punkt końcowy zarządzania z instrukcji na stronie **ReadMe**).
+1. Połącz się z klastrem usługi Service Fabric na platformie Azure przy użyciu interfejsu wiersza polecenia. Punkt końcowy to punkt końcowy zarządzania klastrem. Plik PEM został utworzony w poprzedniej sekcji. 
 
     ```bash
-    sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
+    sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
     ```
 
-2. Użyj skryptu instalacji, aby skopiować definicję aplikacji do głosowania do klastra, zarejestrować typ aplikacji i utworzyć wystąpienie aplikacji.
+2. Użyj skryptu instalacji, aby skopiować definicję aplikacji do głosowania do klastra, zarejestrować typ aplikacji i utworzyć wystąpienie aplikacji.  Plik certyfikatu PEM powinien znajdować się w tym samym katalogu co plik *install.sh*.
 
     ```bash
     ./install.sh
     ```
 
-3. Otwórz przeglądarkę internetową i przejdź do punktu końcowego narzędzia Service Fabric Explorer dla Twojego klastra. Punkt końcowy ma następujący format: **https://\<adres-URL-mojego-klastra-usługi-azure-service-fabric>:19080/Explorer**, na przykład `https://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`. </br>(W przypadku klastrów testowych możesz znaleźć punkt końcowy narzędzia Service Fabric Explorer dla swojego klastra na stronie **powitalnej**).
+3. Otwórz przeglądarkę internetową i przejdź do punktu końcowego narzędzia Service Fabric Explorer dla Twojego klastra. Punkt końcowy ma następujący format: **https://\<adres-URL-mojego-klastra-usługi-azure-service-fabric>:19080/Explorer**, na przykład `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
 
 4. Rozwiń węzeł **Aplikacje**, aby sprawdzić, czy istnieje teraz wpis dla typu aplikacji do głosowania i utworzonego wystąpienia.
 
     ![Service Fabric Explorer][sfx]
 
-5. Aby nawiązać połączenie z uruchomionym kontenerem, otwórz przeglądarkę internetową i przejdź do adresu URL swojego klastra, na przykład `http://linh1x87d1d.westus.cloudapp.azure.com:80`. W przeglądarce powinna zostać wyświetlona aplikacja do głosowania.
+5. Aby nawiązać połączenie z uruchomionym kontenerem, otwórz przeglądarkę internetową i przejdź do adresu URL swojego klastra, na przykład `http://containertestcluster.eastus.cloudapp.azure.com:80`. W przeglądarce powinna zostać wyświetlona aplikacja do głosowania.
 
     ![Strona internetowa aplikacji do głosowania][quickstartpic]
 
@@ -130,8 +140,8 @@ Usługa Service Fabric zapewnia, że Twoje wystąpienia kontenera zostaną autom
 
 Aby przenieść kontener frontonu do trybu failover, wykonaj następujące czynności:
 
-1. Otwórz narzędzie Service Fabric Explorer w klastrze, na przykład `https://linh1x87d1d.westus.cloudapp.azure.com:19080/Explorer`.
-2. Kliknij węzeł **fabric:/Voting/azurevotefront** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID). W widoku drzewa zwróć uwagę na nazwę węzła przedstawiającą węzły, w których obecnie uruchomiono kontener, na przykład `_nodetype_4`.
+1. Otwórz narzędzie Service Fabric Explorer w klastrze, na przykład `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`.
+2. Kliknij węzeł **fabric:/Voting/azurevotefront** w widoku drzewa i rozwiń węzeł partycji (reprezentowany przez identyfikator GUID). W widoku drzewa zwróć uwagę na nazwę węzła przedstawiającą węzły, w których obecnie uruchomiono kontener, na przykład `_nodetype_1`.
 3. Rozwiń węzeł **Węzły** w widoku drzewa. Kliknij wielokropek (...) obok węzła działającego w kontenerze.
 4. Wybierz pozycję **Uruchom ponownie**, aby ponownie uruchomić ten węzeł, i potwierdź akcję ponownego uruchomienia. Ponowne uruchomienie powoduje przeniesienie kontenera do trybu failover w innym węźle klastra.
 
@@ -143,7 +153,7 @@ Usługi Service Fabric można łatwo skalować w klastrze w celu uwzględnienia 
 
 Aby skalować usługę internetową frontonu, wykonaj następujące czynności:
 
-1. Otwórz narzędzie Service Fabric Explorer w klastrze, na przykład `https://linh1x87d1d.westus.cloudapp.azure.com:19080`.
+1. Otwórz narzędzie Service Fabric Explorer w klastrze, na przykład `https://containertestcluster.eastus.cloudapp.azure.com:19080`.
 2. Kliknij wielokropek (trzy kropki) obok węzła **fabric:/Voting/azurevotefront** w widoku drzewa i wybierz pozycję **Skaluj usługę**.
 
     ![Rozpoczynanie skalowania usługi w narzędziu Service Fabric Explorer][containersquickstartscale]
@@ -161,18 +171,27 @@ Za pomocą tego prostego zadania zarządzania zostały podwojone zasoby dostępn
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-1. Użyj skryptu odinstalowywania (uninstall.sh) udostępnionego w szablonie, aby usunąć wystąpienie aplikacji z klastra i wyrejestrować typ aplikacji. Ten skrypt wymaga pewnego czasu, aby wyczyścić wystąpienie, dlatego nie należy uruchamiać skryptu instalacji natychmiast po tym skrypcie. Narzędzia Service Fabric Explorer możesz użyć do określenia typu wyrejestrowanej aplikacji i tego, kiedy wystąpienie zostało usunięte.
+Użyj skryptu odinstalowywania (uninstall.sh) udostępnionego w szablonie, aby usunąć wystąpienie aplikacji z klastra i wyrejestrować typ aplikacji. Ten skrypt wymaga pewnego czasu, aby wyczyścić wystąpienie, dlatego nie należy uruchamiać skryptu instalacji natychmiast po tym skrypcie. Narzędzia Service Fabric Explorer możesz użyć do określenia typu wyrejestrowanej aplikacji i tego, kiedy wystąpienie zostało usunięte.
 
-    ```bash
-    ./uninstall.sh
-    ```
+```bash
+./uninstall.sh
+```
 
-2. Po zakończeniu pracy z klastrem, możesz usunąć certyfikat ze swojego magazynu certyfikatów. Na przykład:
-   - W systemie Windows: użyj [przystawki MMC certyfikatów](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Pamiętaj, aby wybrać pozycję **Moje konto użytkownika** podczas dodawania przystawki. Przejdź do pozycji `Certificates - Current User\Personal\Certificates` i usuń certyfikat.
-   - Na komputerze Mac: użyj aplikacji pęku kluczy.
-   - W systemie Ubuntu: wykonaj czynności, które zostały użyte do wyświetlenia certyfikatów, i usuń certyfikat.
+Najprostszym sposobem na usunięcie klastra i wszystkich wykorzystywanych przez niego zasobów jest usunięcie grupy zasobów.
 
-3. Jeśli nie chcesz dalej używać usługi Cloud Shell, możesz usunąć skojarzone z nią konto magazynu, aby uniknąć naliczania opłat. Zamknij sesję usługi Cloud Shell. W witrynie Azure Portal kliknij konto magazynu skojarzone z usługą Cloud Shell, a następnie kliknij przycisk **Usuń** u góry strony i odpowiadaj na monity.
+Zaloguj się do platformy Azure i wybierz identyfikator subskrypcji, za pomocą którego chcesz usunąć klaster. Identyfikator subskrypcji można znaleźć po zalogowaniu się w witrynie Azure Portal. Usuń grupę zasobów i wszystkie zasoby klastra, korzystając z polecenia [az group delete](/cli/azure/group?view=azure-cli-latest).
+
+```azurecli
+az login
+az account set --subscription <guid>
+ResourceGroupName="containertestcluster"
+az group delete --name $ResourceGroupName
+```
+
+Po zakończeniu pracy z klastrem, możesz usunąć certyfikat ze swojego magazynu certyfikatów. Na przykład:
+- W systemie Windows: Użyj [przystawki MMC certyfikatów](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Pamiętaj, aby wybrać pozycję **Moje konto użytkownika** podczas dodawania przystawki. Przejdź do pozycji `Certificates - Current User\Personal\Certificates` i usuń certyfikat.
+- Na komputerze Mac: Użyj aplikacji pęku kluczy.
+- W systemie Ubuntu: Wykonaj czynności, które zostały użyte do wyświetlenia certyfikatów, i usuń certyfikat.
 
 ## <a name="next-steps"></a>Następne kroki
 

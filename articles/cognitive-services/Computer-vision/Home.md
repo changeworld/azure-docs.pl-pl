@@ -11,33 +11,28 @@ ms.topic: overview
 ms.date: 08/22/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: f06269b937a645a5334c1a8015528ad00adb66e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c68e50d02a27097c9fa8a699468ce679162240a1
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154494"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55561301"
 ---
 # <a name="what-is-computer-vision"></a>Czym jest przetwarzanie obrazów?
 
-Oparta na chmurze usługa przetwarzania obrazów oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. Przetwarzanie obrazów współpracuje z popularnymi formatami obrazów, takimi jak JPEG i PNG. W celu analizy obrazu można przekazać obraz lub określić jego adres URL. Algorytmy przetwarzania obrazów pozwalają analizować zawartość obrazu na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. Na przykład usługa przetwarzania obrazów może stwierdzić, czy na obrazie znajduje się zawartość przeznaczona dla dorosłych, lub znaleźć wszystkie twarze na obrazie.
+Usługa przetwarzania obrazów platformy Azure oferuje deweloperom dostęp do zaawansowanych algorytmów przetwarzania obrazów i zwracania informacji. W celu analizy obrazu można przekazać obraz lub określić jego adres URL. Algorytmy przetwarzania obrazów pozwalają analizować zawartość na różne sposoby, w zależności od interesujących Cię funkcji wizualnych. Na przykład usługa przetwarzania obrazów może stwierdzić, czy na obrazie znajduje się zawartość przeznaczona dla dorosłych, lub znaleźć wszystkie twarze na obrazie.
 
-Wywołując usługę za pomocą naszych [bibliotek klienckich](quickstarts-sdk/csharp-analyze-sdk.md) lub wywołując [interfejs API REST](vision-api-how-to-topics/howtocallvisionapi.md) bezpośrednio, można używać przetwarzania obrazów w aplikacji, aby wykonywać następujące czynności:
+Przetwarzania obrazów w aplikacji można używać, korzystając z natywnego zestawu SDK lub wywołując interfejs API REST bezpośrednio. Na tej stronie ogólnie omówiono, co można zrobić za pomocą przetwarzania obrazów.
 
-- [Analizowanie obrazów w celu uzyskania szczegółowych informacji](#analyzing-images-for-insight)
-- [Wyodrębnianie tekstu z obrazów](#extracting-text-from-images)
-- [Moderowanie zawartości na obrazach](#moderating-content-in-images)
+## <a name="analyze-images-for-insight"></a>Analizowanie obrazów w celu uzyskania szczegółowych informacji
 
-## <a name="analyzing-images-for-insight"></a>Analizowanie obrazów w celu uzyskania szczegółowych informacji
-
-Za pomocą usługi przetwarzania obrazów można analizować obrazy, aby wykrywać funkcje wizualne i właściwości obrazów oraz dostarczać szczegółowe informacje na ich temat. Można zarówno przekazać zawartość obrazu w celu analizowania obrazów lokalnych, jak również określić adres URL obrazu, aby analizować obrazy zdalne.
-
-Podczas analizowania obrazu usługa przetwarzania obrazów umożliwia wykonywanie następujących akcji:
+Obrazy można analizować, aby wykrywać cechy wizualne i właściwości obrazów oraz dostarczać szczegółowe informacje na ich temat. Wszystkie funkcje w poniższej tabeli są udostępniane przez interfejs API [analizowania obrazu](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa).
 
 | Akcja | Opis |
 | ------ | ----------- |
 |**[Tagowanie funkcji wizualnych](concept-tagging-images.md)**|Identyfikowanie i tagowanie elementów wizualnych na obrazie w oparciu o zestaw tysięcy rozpoznawalnych obiektów, istot żywych, scenerii i akcji. Gdy tagi są niejednoznaczne lub wykraczają poza popularną wiedzę, odpowiedź interfejsu API zawiera „wskazówki”, aby wyjaśnić ich znaczenie w kontekście znanego otoczenia. Tagowanie nie jest ograniczone do głównego tematu, na przykład do osoby na pierwszym planie, ale uwzględnia także otoczenie (wewnątrz lub na zewnątrz), meble, narzędzia, rośliny, zwierzęta, akcesoria, gadżety itd.|
 |**[Wykrywanie obiektów](concept-object-detection.md)**| Wykrywanie obiektów jest podobne do tagowania, ale interfejs API zwraca współrzędne pola ograniczenia dla każdego zastosowanego tagu. Na przykład jeśli na obrazie znajduje się pies, kot i osoba, operacja wykrywania utworzy listę tych obiektów wraz z ich współrzędnymi na obrazie. Ta funkcja umożliwia przetwarzanie dalszych relacji między obiektami na obrazie. Ponadto w odpowiednich przypadkach informuje, że obraz zawiera wiele wystąpień tego samego tagu.|
+|**[Wykrywanie marek](concept-brand-detection.md)**|Identyfikuj marki handlowe na obrazach lub filmach na podstawie bazy danych z tysiącami znaków logo z całego świata. Za pomocą tej funkcji można na przykład ustalać, które marki są najpopularniejsze w mediach społecznościowych lub najpowszechniej promowane za pomocą lokowania produktów w mediach.|
 |**[Kategoryzowanie obrazu](concept-categorizing-images.md)**|Identyfikowanie i kategoryzowanie całego obrazu za pomocą [taksonomii kategorii](Category-Taxonomy.md) z użyciem dziedzicznych hierarchii obiektów nadrzędnych i podrzędnych. Kategorii można używać oddzielnie lub z naszymi nowymi modelami tagowania.<br/>Obecnie jedynym obsługiwanym językiem tagowania i kategoryzowania obrazów jest angielski.|
 |**[Opisywanie obrazu](concept-describing-images.md)**|Generowanie opisu całego obrazu w języku zrozumiałym dla człowieka przy użyciu pełnych zdań. Algorytmy przetwarzania obrazów generują różne opisy na podstawie obiektów zidentyfikowanych na obrazie. Poszczególne opisy są oceniane, po czym generowany jest współczynnik ufności. Następnie zwracana jest lista uporządkowana od najwyższego do najniższego współczynnika ufności.|
 |**[Wykrywanie twarzy](concept-detecting-faces.md)** |Wykrywanie twarzy na obrazie i dostarczanie informacji o każdej wykrytej twarzy. Usługa przetwarzania obrazów zwraca współrzędne, prostokąt, płeć i wiek osoby dla każdej wykrytej twarzy.<br/>Przetwarzanie obrazów zawiera podzestaw funkcji, które można znaleźć w usłudze [rozpoznawania twarzy](/azure/cognitive-services/face/), a usługa rozpoznawania twarzy umożliwia bardziej szczegółową analizę, np. identyfikację twarzy i wykrywanie póz.|
@@ -47,17 +42,18 @@ Podczas analizowania obrazu usługa przetwarzania obrazów umożliwia wykonywani
 |**[Generowanie miniatur](concept-generating-thumbnails.md)**|Analizowanie zawartości obrazu w celu wygenerowania dla niego odpowiedniej miniatury. Usługa przetwarzania obrazów najpierw generuje wysokiej jakości miniaturę, po czym analizuje obiekty na obrazie, aby określić *obszar zainteresowania*. Następnie przetwarzanie obrazów przycina obraz zgodnie z wymaganiami obszaru zainteresowania. W zależności od potrzeb wygenerowana miniatura może mieć współczynnik proporcji inny od współczynnika proporcji oryginalnego obrazu.|
 |**[Określanie obszaru zainteresowania](concept-generating-thumbnails.md#area-of-interest)**|Przeanalizuj zawartość obrazu w celu zwrócenia współrzędnych *obszaru zainteresowania*. Jest to ta sama funkcja, która służy do generowania miniatur, ale zamiast przycinania obrazu przetwarzanie obrazów zwraca współrzędne pola ograniczenia regionu, dlatego aplikacja wywołująca może modyfikować oryginalny obraz zgodnie z potrzebami.|
 
-## <a name="extracting-text-from-images"></a>Wyodrębnianie tekstu z obrazów
+
+## <a name="extract-text-from-images"></a>Wyodrębnianie tekstu z obrazów
 
 Usługa przetwarzania obrazów umożliwia [wyodrębnianie tekstu za pomocą optycznego rozpoznawania znaków](concept-extracting-text-ocr.md) z obrazu do strumienia znaków czytelnych dla komputera. Jeśli to konieczne, funkcja optycznego rozpoznawania znaków poprawiania kąt obrotu (w stopniach) rozpoznanego tekstu wokół poziomej osi obrazu i podaje współrzędne ramki każdego wyrazu. Funkcja optycznego rozpoznawania znaków obsługuje 25 języków i automatycznie wykrywa język wyodrębnionego tekstu.
 
 Można również [rozpoznawać tekst drukowany i pismo odręczne](concept-recognizing-text.md) na obrazie. Przetwarzanie obrazów potrafi wykrywać i wyodrębniać zarówno tekst drukowany, jak i pismo odręczne z obrazów różnych obiektów na różnych powierzchniach i tłach, takich jak rachunki, plakaty, wizytówki, listy i tablice. Obecnie rozpoznawanie tekstu drukowanego i odręcznego jest w wersji zapoznawczej i jedynym obsługiwanym językiem jest angielski.  
 
-## <a name="moderating-content-in-images"></a>Moderowanie zawartości na obrazach
+## <a name="moderate-content-in-images"></a>Moderowanie zawartości na obrazach
 
 Przy użyciu usługi przetwarzania obrazów można [wykrywać zawartość przeznaczoną dla dorosłych](concept-detecting-adult-content.md) na obrazie, oceniać prawdopodobieństwo, że obraz zawiera treści dla dorosłych, a także generować współczynnik ufności. Filtr umożliwiający wykrywanie zawartości dla dorosłych można ustawiać na ruchomej skali, aby dostosować go do swoich preferencji.
 
-## <a name="using-containers"></a>Korzystanie z kontenerów
+## <a name="use-containers"></a>Korzystanie z kontenerów
 
 Po zainstalowaniu standardowego kontenera platformy Docker blisko danych można lokalnie rozpoznawać tekst drukowany i pismo odręczne, korzystając z [kontenerów przetwarzania obrazów](computer-vision-how-to-install-containers.md).
 
@@ -67,8 +63,8 @@ Przetwarzanie obrazów umożliwia analizowanie obrazów, które spełniają nast
 
 - Obraz musi być w formacie JPEG, PNG, GIF lub BMP
 - Rozmiar pliku obrazu musi być mniejszy niż 4 megabajty (MB)
-- Wymiary obrazu muszą być większe niż 50x50 pikseli  
-  W przypadku funkcji optycznego rozpoznawania znaków wymiary obrazu muszą wynosić od 50x50 pikseli do 4200x4200 pikseli
+- Wymiary obrazu muszą być większe niż 50x50 pikseli
+  - W przypadku funkcji optycznego rozpoznawania znaków wymiary obrazu muszą wynosić od 50x50 pikseli do 4200x4200 pikseli
 
 ## <a name="data-privacy-and-security"></a>Prywatność i zabezpieczenia danych
 
@@ -76,8 +72,8 @@ Jak w przypadku wszystkich usług Cognitive Services, deweloperzy korzystający 
 
 ## <a name="next-steps"></a>Następne kroki
 
-Rozpocznij pracę z usługą przetwarzania obrazów, korzystając z jednego z naszych przewodników:
+Rozpocznij pracę z przetwarzaniem obrazów, korzystając z przewodnika Szybki start:
 
-- [Analizowanie obrazu](quickstarts-sdk/csharp-analyze-sdk.md)
-- [Wyodrębnianie tekstu odręcznego](quickstarts-sdk/csharp-hand-text-sdk.md)
-- [Generowanie miniatur](quickstarts-sdk/csharp-thumb-sdk.md)
+- [Szybki start: Analizowanie obrazu](quickstarts-sdk/csharp-analyze-sdk.md)
+- [Szybki start: Wyodrębnianie tekstu odręcznego](quickstarts-sdk/csharp-hand-text-sdk.md)
+- [Szybki start: Generowanie miniatur](quickstarts-sdk/csharp-thumb-sdk.md)

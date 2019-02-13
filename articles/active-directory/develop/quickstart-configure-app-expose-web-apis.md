@@ -16,12 +16,12 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 3f38162fd4d95127ddf7797638bc9af21e6aaf20
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 5b72bd45299f636a208ab39be5b7eaade2730183
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095706"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814024"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis-preview"></a>Szybki start: Konfigurowanie aplikacji w celu uwidocznienia internetowych interfejsów API (wersja zapoznawcza)
 
@@ -116,7 +116,7 @@ Aby uwidocznić nowy zakres za pomocą manifestu aplikacji:
 ## <a name="verify-the-web-api-is-exposed-to-other-applications"></a>Weryfikowanie, czy internetowy interfejs API został uwidoczniony dla innych aplikacji
 
 1. Wróć do dzierżawy usługi Azure AD, wybierz pozycję **Rejestracje aplikacji**, a następnie znajdź i wybierz aplikację kliencką, którą chcesz skonfigurować.
-1. Powtórz kroki opisane w sekcji [Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API](#configure-a-client-application-to-access-web-apis).
+1. Powtórz kroki opisane w sekcji Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API.
 1. Po przejściu do kroku **wyboru interfejsu API** wybierz zasób. Powinien zostać wyświetlony nowy zakres dostępny dla żądań uprawnień klienta.
 
 ## <a name="more-on-the-application-manifest"></a>Więcej informacji na temat manifestu aplikacji
