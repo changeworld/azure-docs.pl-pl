@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 08e1beb199287db1d030d5ad9357cbd20f1eb859
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5e0942f028752b1e3db89802ee889eac7157815d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168647"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205617"
 ---
 # <a name="azure-ad-connect-how-to-recover-from-localdb-10-gb-limit"></a>Program Azure AD Connect: Jak usunąć limit 10 GB dla lokalnej bazy danych
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych tożsamości. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowanego z programem Azure AD Connect lub użyć własnego pełnego programu SQL. Program SQL Server Express narzuca limit rozmiaru w wysokości 10 GB. Jeśli jest używany program LocalDB i limit zostanie osiągnięty, usługa synchronizacji programu Azure AD Connect nie będzie mogła uruchomić się ani prawidłowo wykonywać synchronizacji. Ten artykuł zawiera kroki odzyskiwania.
@@ -100,7 +101,7 @@ Ten krok jest zmniejszenie prawdopodobieństwa przekroczone problem limitu 10 GB
 ## <a name="long-term-solution--migrate-to-full-sql"></a>Rozwiązaniem długoterminowym — migracja do pełnego rozwiązania SQL
 Ogólnie rzecz biorąc problem polega na wskazywać, że rozmiar bazy danych 10 GB nie jest już wystarczająca dla usługi Azure AD Connect, aby zsynchronizować z lokalnej usługi Active Directory do usługi Azure AD. Zaleca się przejście na pełną wersję programu SQL server. Nie można bezpośrednio zastąpić programu LocalDB istniejącego wdrożenia programu Azure AD Connect za pomocą pełnej wersji programu SQL. Zamiast tego należy wdrożyć nowy serwer programu Azure AD Connect z pełną wersją programu SQL. Zalecana jest migracja typu swing, gdzie nowy serwer programu Azure AD Connect (z bazą danych w programie SQL) jest wdrażany jako serwer przejściowy obok istniejącego serwera programu Azure AD Connect (z programem LocalDB). 
 * Instrukcje dotyczące konfigurowania zdalnego programu SQL pod kątem programu Azure AD Connect znajdują się w artykule [Niestandardowa instalacja programu Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-get-started-custom).
-* Aby uzyskać instrukcje dotyczące migracji swing dla uaktualnienie usługi Azure AD Connect, można znaleźć w artykule [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration).
+* Instrukcje dotyczące migracji typu swing w ramach uaktualniania programu Azure AD Connect znajdują się w artykule [Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#swing-migration).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej na temat [integrowania tożsamości lokalnych z usługą Azure Active Directory](whatis-hybrid-identity.md).

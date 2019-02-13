@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
-ms.openlocfilehash: 0fa487e1ecd419780243b04a273110f3cf43761c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 03e15532d04a4c62796aad884c5e344688814672
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633967"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209238"
 ---
 # <a name="what-is-apache-hive-and-hiveql-on-azure-hdinsight"></a>Co to jest Apache Hive i HiveQL w usłudze Azure HDInsight?
 
@@ -31,7 +31,7 @@ HDInsight zawiera kilka typów klastra, są one dostrojone dla konkretnych obci�
 
 * __Spark__: Platforma Apache Spark ma wbudowaną funkcję do pracy z programu Hive. Aby uzyskać więcej informacji, zobacz [rozpoczynać platformy Apache Spark w HDInsight](../spark/apache-spark-jupyter-spark-sql.md) dokumentu.
 
-* __Baza danych HBase__: HiveQL może służyć do zapytania o dane przechowywane w bazy danych Apache HBase. Aby uzyskać więcej informacji, zobacz [rozpoczynać bazy danych Apache HBase na HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentu.
+* __HBase__: HiveQL może służyć do zapytania o dane przechowywane w bazy danych Apache HBase. Aby uzyskać więcej informacji, zobacz [rozpoczynać bazy danych Apache HBase na HDInsight](../hbase/apache-hbase-tutorial-get-started-linux.md) dokumentu.
 
 ## <a name="how-to-use-hive"></a>Jak wykorzystać technologię Hive
 
@@ -44,7 +44,7 @@ Skorzystaj z poniższej tabeli, aby odnaleźć różne sposoby korzystanie z pro
 | [Widok programu hive](../hadoop/apache-hadoop-use-hive-ambari-view.md) |✔ |✔ |Linux |Wszelkie (opartych na przeglądarce) |
 | [Klient z usługi beeline](../hadoop/apache-hadoop-use-hive-beeline.md) |✔ |✔ |Linux |Linux, Unix, Mac OS X lub Windows |
 | [Interfejs API REST](../hadoop/apache-hadoop-use-hive-curl.md) |&nbsp; |✔ |System Linux lub Windows * |Linux, Unix, Mac OS X lub Windows |
-| [Program Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |System Linux lub Windows * |Windows |
+| [Windows PowerShell](../hadoop/apache-hadoop-use-hive-powershell.md) |&nbsp; |✔ |System Linux lub Windows * |Windows |
 
 > [!IMPORTANT]
 > \* Linux jest jedynym systemem operacyjnym na HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz sekcję [HDInsight retirement on Windows](../hdinsight-component-versioning.md#hdinsight-windows-retirement) (Wycofanie usługi HDInsight w systemie Windows).
@@ -204,11 +204,7 @@ Te instrukcje, wykonaj następujące czynności:
 
 [Apache Hive w aplikacji Tez dokumentów projektowych](https://cwiki.apache.org/confluence/display/Hive/Hive+on+Tez) zawiera szczegółowe informacje na temat opcji wdrażania i dostrajania konfiguracji.
 
-Aby ułatwić debugowanie zadań została uruchomiona przy użyciu aplikacji Tez, HDInsight oferuje następujące web UI, które umożliwiają wyświetlanie szczegółów zadań tez przy:
-
-* [Użyj widoku Apache Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
-
-* [Użyj interfejsu użytkownika Tez Apache na HDInsight z systemem Windows](../hdinsight-debug-tez-ui.md)
+Aby ułatwić debugowanie zadań została uruchomiona przy użyciu aplikacji Tez, HDInsight zawiera następujący internetowy interfejs użytkownika, który służy do wyświetlania szczegółów zadań tez przy: [Użyj widoku Apache Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md).
 
 ### <a name="low-latency-analytical-processing-llap"></a>Małe opóźnienia przetwarzania analitycznego (LLAP)
 

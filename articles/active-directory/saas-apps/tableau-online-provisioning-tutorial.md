@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: 4f6297fa8477ff4794bee589737e047993427c06
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a81754b9b95c7cc6e257707aec188abf1dab58c3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345866"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194873"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Tableau Online dla automatycznej aprowizacji użytkowników
 
@@ -46,7 +47,7 @@ Przed skonfigurowaniem Tableau Online dla automatycznej aprowizacji użytkownik�
 
 1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij **usługi Azure Active Directory** ikony.
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory][1]
 
 2. Przejdź do **aplikacje dla przedsiębiorstw** > **wszystkie aplikacje**.
 
@@ -54,7 +55,7 @@ Przed skonfigurowaniem Tableau Online dla automatycznej aprowizacji użytkownik�
 
 3. Aby dodać Tableau Online, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Tableau Online**.
 
@@ -115,9 +116,9 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
 
 6. Po zalogowaniu się do swojego konta administracyjne dla usługi Online firmy Tableau wartości **domeny** i **adres URL zawartości** można wyodrębnić z adres URL strony administratora.
 
-    *   **Domeny** dla usługi Online firmy Tableau można skopiować konta z tej części adresu URL: ![Tableau Online aprowizacji](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+    *   **Domeny** dla usługi Online firmy Tableau można skopiować konta z tej części adresu URL: ![Tableau Online Provisioning](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
 
-    *   **Adres URL zawartości** dla usługi Online firmy Tableau można skopiować konta z tej sekcji i zdefiniowano wartości podczas konfigurowania konta. W tym przykładzie wartość to "contoso": ![Tableau Online aprowizacji](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+    *   **Adres URL zawartości** dla usługi Online firmy Tableau można skopiować konta z tej sekcji i zdefiniowano wartości podczas konfigurowania konta. W tym przykładzie wartość to "contoso": ![Tableau Online Provisioning](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
         > Twoje **domeny** może różnić się od przedstawionego w tym miejscu. 
@@ -167,7 +168,7 @@ Ta operacja uruchamia początkowa synchronizacja wszystkich użytkowników i/lub
 
 Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienniki usługi Azure AD, zobacz [raportowanie na inicjowanie obsługi administracyjnej konta użytkownika automatyczne](../manage-apps/check-status-user-account-provisioning.md).
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

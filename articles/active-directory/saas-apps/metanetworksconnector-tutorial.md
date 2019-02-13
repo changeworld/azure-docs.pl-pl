@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a3f40624e51ef287d70bed547eba7ec9e0882b0e
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3c4d702a33742da5501be208154cbdd593fa0524
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669199"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199718"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta-networks-connector"></a>Samouczek: Integracja usługi Azure Active Directory z łącznikiem sieci Meta
 
@@ -29,7 +30,7 @@ Integrowanie Meta sieci łącznika z usługą Azure AD zapewnia następujące ko
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do gniazda sieci Meta.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do łącznika sieci Meta (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
@@ -43,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą łącznika sieci Meta
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -67,15 +68,15 @@ Aby skonfigurować integrację Meta sieci łącznika do usługi Azure AD, należ
     
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
     
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
     
 1. W polu wyszukiwania wpisz **Meta sieci łącznika**, wybierz opcję **Meta sieci łącznika** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
     
     ![Meta łącznika sieci na liście wyników](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą łącznika sieci Meta oparte na użytkownika testu o nazwie "Britta Simon".
 
@@ -83,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą łącznika sieci Meta, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego łącznika sieci Meta](#create-a-meta-networks-connector-test-user)**  — aby odpowiednikiem Britta Simon w Meta sieci łącznik, który jest połączony z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Meta sieci łącznika.
 
@@ -97,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **łącznika sieci Meta** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -107,22 +108,22 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Meta sieci łącznika domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_url.png)
 
-    1. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
+    1. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/saml/metadata`
     
-    1. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
+    1. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://login.nsof.io/v1/<ORGANIZATION-SHORT-NAME>/sso/saml`
     
 1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Meta sieci łącznika domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_url1.png)
 
-    1. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
+    1. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/login`
     
     1. W **tan przekaźnika** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<ORGANIZATION-SHORT-NAME>.metanetworks.com/#/`
     
     > [!NOTE]
-    > Te wartości są prawdziwe. Zaktualizuj te wartości identyfikatorem rzeczywisty adres URL odpowiedzi, a adres URL logowania są wyjaśnione w dalszej części tego samouczka.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości identyfikatorem rzeczywisty adres URL odpowiedzi, a adres URL logowania są wyjaśnione w dalszej części tego samouczka.
     
-1. Aplikacja łącznika sieci meta oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
+1. Aplikacja łącznika sieci meta oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego działania.
     
     ![Konfigurowanie logowania jednokrotnego](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_attribute.png)
     
@@ -130,11 +131,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     | Nazwa atrybutu | Wartość atrybutu | Przestrzeń nazw|
     | ---------------| --------------- | -------- |
-    | Imię | user.givenname | |
-    | nazwisko | user.surname | |
-    | emailaddress| User.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
+    | firstname | user.givenname | |
+    | lastname | user.surname | |
+    | emailaddress| user.mail| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
     | name | user.userprincipalname| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims` |
-    | telefon | User.telephonenumber | |
+    | phone | user.telephonenumber | |
 
     1. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
@@ -142,25 +143,25 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
         ![Konfigurowanie logowania jednokrotnego](./media/metanetworksconnector-tutorial/tutorial_attribute_05.png)   
     
-    1. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+    1. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
     
     1. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
     
-    1. W **Namespace** polu tekstowym wpisz wartość przestrzeni nazw wyświetlanego dla tego wiersza.
+    1. W polu tekstowym **Przestrzeń nazw** wpisz wartość przestrzeni nazw pokazaną dla tego wiersza.
     
-    1. Kliknij przycisk **Ok**
+    1. Kliknij przycisk **OK**.
     
 1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
     
-    ![Link pobierania certyfikatu](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_certificate.png)
+    ![Link do pobierania certyfikatu](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_certificate.png)
     
 1. Na **konfiguracji łącznika sieci Meta** , kliknij przycisk **skonfiguruj łącznik sieci Meta** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
     
     ![Konfigurowanie logowania jednokrotnego](./media/metanetworksconnector-tutorial/tutorial_metanetworksconnector_configure.png)
     
-1. Kliknij przycisk **Zapisz** przycisku.
+1. Kliknij przycisk **Save** (Zapisz).
     
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/metanetworksconnector-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/metanetworksconnector-tutorial/tutorial_general_400.png)
     
 1. Otwórz nową kartę w przeglądarce i zaloguj się do konta administratora łącznika sieci Meta.
     
@@ -225,7 +226,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
     
 1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
 
-    ![Okno dialogowe użytkownika](./media/metanetworksconnector-tutorial/create_aaduser_04.png)
+    ![Okno dialogowe Użytkownik](./media/metanetworksconnector-tutorial/create_aaduser_04.png)
     
     1. W **nazwa** wpisz **BrittaSimon**.
 
@@ -237,10 +238,10 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
     
 ### <a name="create-a-meta-networks-connector-test-user"></a>Tworzenie użytkownika testowego Meta sieci łącznika
 
-Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w łączniku sieci Meta. Łącznik sieci meta obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Meta sieci Connector, jeśli go jeszcze nie istnieje.
+Celem tej sekcji jest utworzyć użytkownika o nazwie Britta Simon w łączniku sieci Meta. Łącznik sieci meta obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu Meta sieci Connector, jeśli go jeszcze nie istnieje.
 
 >[!Note]
->Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej klienta łącznika sieci Meta](mailto:support@metanetworks.com).
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej klienta łącznika sieci Meta](mailto:support@metanetworks.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

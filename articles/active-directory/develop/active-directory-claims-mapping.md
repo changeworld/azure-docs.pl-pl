@@ -12,14 +12,15 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes
-ms.openlocfilehash: 18cd96c87f294f1dd8e62f41dd759558c2013aa0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aad699df2de8b745058784790e672f5b8c6e98e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241674"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209748"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Porady: dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie (wersja zapoznawcza)
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Instrukcje: Dostosowywanie oświadczeń emitowane w tokenach dla konkretnej aplikacji w dzierżawie (wersja zapoznawcza)
 
 > [!NOTE]
 > Ta funkcja zastępuje i zastępuje [oświadczeń dostosowywania](active-directory-saml-claims-customization.md) do obecnie oferowanych w portalu. W tej samej aplikacji Jeśli dostosujesz oświadczeń przy użyciu portalu, oprócz metoda wykres/programu PowerShell, szczegółowo opisanych w tym dokumencie tokenów wystawiony dla czy aplikacja będzie ignorować konfiguracji w portalu. Konfiguracje wprowadzone za pomocą metod podanych w tym dokumencie nie zostaną odzwierciedlone w portalu.
@@ -86,7 +87,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 |cloud_graph_host_name|
 |cloud_instance_name|
 |opcją cnf|
-|Kod|
+|kod|
 |funkcje sterowania|
 |credential_keys|
 |Renderowanie po stronie klienta|
@@ -96,7 +97,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 |domain_dns_name|
 |domain_netbios_name|
 |e_exp|
-|e-mail|
+|email|
 |endpoint|
 |enfpolids|
 |EXP|
@@ -120,7 +121,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 |dostawcy tożsamości|
 |in_corp|
 |wystąpienie|
-|IPADDR|
+|ipaddr|
 |isbrowserhostedapp|
 |iss|
 |jwk|
@@ -156,7 +157,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 |refreshtoken|
 |request_nonce|
 |zasób|
-|rola|
+|role (rola)|
 |role|
 |scope|
 |scp|
@@ -174,7 +175,7 @@ Istnieją pewne zestawy oświadczeń, które określają, jak i kiedy są one u�
 |tokenAutologonEnabled|
 |trustedfordelegation|
 |unique_name|
-|nazwy UPN|
+|upn|
 |user_setting_sync_url|
 |nazwa użytkownika|
 |uti|
@@ -243,9 +244,9 @@ Aby kontrolować, jakie oświadczenia są emitowane i skąd pochodzą dane, uży
 
 **Ciąg:** IncludeBasicClaimSet
 
-**Typ danych:** atrybut typu wartość logiczna (True lub False)
+**Typ danych:** Atrybut typu wartość logiczna (True lub False)
 
-**Podsumowanie:** ta właściwość określa, czy zestaw oświadczeń podstawowe znajduje się w tokeny wpływ tych zasad. 
+**Podsumowanie:** Ta właściwość określa, czy zestaw oświadczeń podstawowe znajduje się w tokeny wpływ tych zasad. 
 
 - Jeśli ustawiono wartość True, wszystkie oświadczenia w zestawie oświadczeń podstawowe są emitowane w tokenach objęte zasadami. 
 - Jeśli ma wartość False, oświadczenia w zestawie oświadczeń podstawowych nie są w tokenach, chyba że są one dodawane indywidualnie we właściwości schematu oświadczenia te same zasady.
@@ -257,47 +258,47 @@ Aby kontrolować, jakie oświadczenia są emitowane i skąd pochodzą dane, uży
 
 **Ciąg:** ClaimsSchema
 
-**Typ danych:** blob JSON z co najmniej jeden wpis schematu oświadczeń
+**Typ danych:** Obiektu blob JSON za pomocą co najmniej jeden wpis schematu oświadczeń
 
-**Podsumowanie:** ta właściwość określa, jakie oświadczenia są obecne w tokenach objęte zasadami, dodatkowo do zestawu oświadczeń podstawowe i podstawowego zestawu oświadczeń.
+**Podsumowanie:** Ta właściwość określa, jakie oświadczenia są obecne w tokeny, których dotyczą zasady, oprócz zestawu oświadczeń podstawowe i podstawowy zestaw oświadczeń.
 Dla każdego schematu oświadczenia wpisu zdefiniowane w tej właściwości niektóre informacje są wymagane. Określ, skąd pochodzą dane (**wartość** lub **par identyfikator/źródła**), i które roszczenie danych jest emitowany jako (**typu oświadczenia**).
 
 ### <a name="claim-schema-entry-elements"></a>Elementy wpis schematu oświadczeń
 
-**Wartość:** element wartości definiuje wartość statyczną jako danych maszynowych w oświadczeniu.
+**Wartość:** Element wartości definiuje wartość statyczną danych maszynowych w oświadczeniu.
 
-**Para źródło/ID:** źródło i identyfikator elementów definiowania, gdzie źródło danych w oświadczeniu. 
+**Para źródło/ID:** Elementy źródło i identyfikator definiują, gdzie źródło danych w oświadczeniu. 
 
 Ustaw element źródłowy do jednej z następujących wartości: 
 
-- "user": dane w oświadczenie jest właściwością obiektu User. 
-- "aplikacja": dane w oświadczenie jest właściwością nazwy głównej usługi aplikacji (klienta). 
-- "Zasób": dane w oświadczenie jest właściwością zasobu jednostki usługi.
-- "audience": dane w oświadczenie jest właściwością jednostki usługi, która jest odbiorców tokenu (klienta lub zasób nazwy głównej usługi).
-- "Firma": dane w oświadczenie jest właściwością w obiekcie firmy dzierżawy zasobów.
-- "przekształcenia": dane z oświadczenia pochodzą przekształcania oświadczeń (zobacz sekcję "Przekształcania oświadczeń" w dalszej części tego artykułu).
+- "user": Dane w oświadczenie jest właściwością obiektu User. 
+- "aplikacja": Dane w oświadczenie jest właściwością nazwy głównej usługi aplikacji (klienta). 
+- "Zasób": Dane w oświadczenie jest właściwością jednostki usługi zasobów.
+- "audience": Dane w oświadczenie jest właściwością jednostki usługi, która jest odbiorców tokenu (klienta lub zasób nazwy głównej usługi).
+- "Firma": Dane w oświadczenie jest właściwością w obiekcie firmy dzierżawy zasobów.
+- "przekształcenia": Dane w oświadczeniu pochodzą przekształcania oświadczeń (zobacz sekcję "Przekształcania oświadczeń" w dalszej części tego artykułu).
 
 Jeśli źródło jest przekształcania **TransformationID** elementu muszą być zawarte w tej definicji oświadczenia.
 
 Elementu Identyfikatora Określa, która właściwość na "source" zawiera wartość oświadczenia. W poniższej tabeli wymieniono wartości Identyfikatora prawidłowy dla każdej wartości źródła.
 
-#### <a name="table-3-valid-id-values-per-source"></a>Tabela 3: Nieprawidłowy identyfikator wartości dla każdego źródła
+#### <a name="table-3-valid-id-values-per-source"></a>Tabela 3: Prawidłowe wartości Identyfikatora dla każdego źródła
 
 |Element źródłowy|ID|Opis|
 |-----|-----|-----|
 |Użytkownik|nazwisko|Nazwa rodziny|
 |Użytkownik|Imię|Imię|
-|Użytkownik|Nazwa wyświetlana|Nazwa wyświetlana|
+|Użytkownik|displayname|Nazwa wyświetlana|
 |Użytkownik|Identyfikator obiektu|ObjectID|
-|Użytkownik|poczta|Adres e-mail|
+|Użytkownik|mail (poczta)|Adres e-mail|
 |Użytkownik|userprincipalname|Nazwa główna użytkownika|
-|Użytkownik|Dział|Dział|
+|Użytkownik|department|Dział|
 |Użytkownik|onpremisessamaccountname|Nazwy konta Sam lokalnie|
-|Użytkownik|netbiosname|Nazwa NetBios|
+|Użytkownik|netbiosname|NetBios Name|
 |Użytkownik|dnsdomainname|Nazwa domeny DNS|
 |Użytkownik|onpremisesecurityidentifier|Identyfikator zabezpieczeń w środowisku lokalnym|
 |Użytkownik|companyname|Nazwa organizacji|
-|Użytkownik|adres|Ulica i numer|
+|Użytkownik|streetaddress|Ulica i numer|
 |Użytkownik|KodPocztowy|Kod pocztowy|
 |Użytkownik|preferredlanguange|Preferowany język|
 |Użytkownik|onpremisesuserprincipalname|Nazwa UPN w środowisku lokalnym|
@@ -324,12 +325,12 @@ Elementu Identyfikatora Określa, która właściwość na "source" zawiera wart
 |Użytkownik|stanowisko|Stanowisko|
 |Użytkownik|EmployeeID|Identyfikator pracownika|
 |Użytkownik|facsimiletelephonenumber|Numer faksu|
-|Aplikacja zasobu, grupy odbiorców|Nazwa wyświetlana|Nazwa wyświetlana|
+|Aplikacja zasobu, grupy odbiorców|displayname|Nazwa wyświetlana|
 |Aplikacja zasobu, grupy odbiorców|obiekty|ObjectID|
 |Aplikacja zasobu, grupy odbiorców|tags|Tag jednostki usługi|
 |Firma|tenantcountry|Kraju dzierżawy|
 
-**TransformationID:** elementu TransformationID należy podać tylko wtedy, gdy element źródła jest ustawiony na wartość "transformacji".
+**TransformationID:** TransformationID element należy podać tylko wtedy, gdy element źródła jest ustawiony na wartość "transformacji".
 
 - Ten element musi być zgodny element identyfikator wpisu przekształcania w **ClaimsTransformation** właściwość, która definiuje, jak jest generowany danych dla tego oświadczenia.
 
@@ -345,47 +346,47 @@ Elementu Identyfikatora Określa, która właściwość na "source" zawiera wart
 
 **Ciąg:** ClaimsTransformation
 
-**Typ danych:** obiektu blob JSON za pomocą co najmniej jeden wpis transformacji 
+**Typ danych:** Obiektu blob JSON za pomocą co najmniej jeden wpis transformacji 
 
-**Podsumowanie:** tej właściwości należy użyć do zastosowania typowych przekształceń do źródła danych, aby wygenerować dane wyjściowe do oświadczenia określone w schemacie oświadczeń.
+**Podsumowanie:** Ta właściwość służy do stosowania typowych przekształceń do źródła danych, aby wygenerować dane wyjściowe do oświadczenia określone w schemacie oświadczeń.
 
-**Identyfikator:** Użyj elementu ID, aby odwoływać się do tego wpisu przekształcania we wpisie TransformationID oświadczeń schematu. Ta wartość musi być unikatowy dla każdego wpisu transformacji, w ramach tych zasad.
+**ID:** Użyj elementu ID, aby odwoływać się do tego wpisu przekształcania we wpisie TransformationID oświadczeń schematu. Ta wartość musi być unikatowy dla każdego wpisu transformacji, w ramach tych zasad.
 
-**TransformationMethod:** elementu TransformationMethod identyfikuje, które jest wykonywane na potrzeby generowania danych oświadczenia.
+**TransformationMethod:** TransformationMethod element identyfikuje, które jest wykonywane na potrzeby generowania danych oświadczenia.
 
 Oparty na wybranej metody, oczekiwany jest zestaw danych wejściowych i wyjściowych. Zdefiniować dane wejściowe i wyjściowe przy użyciu **InputClaims**, **InputParameters** i **OutputClaims** elementów.
 
-#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabela 4: Metody przekształcania i oczekiwane dane wejściowe i wyjściowe
+#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabela 4: Metody przekształcania i oczekiwanych danych wejściowych i wyjściowych
 
 |TransformationMethod|Oczekiwanych danych wejściowych|Oczekiwane dane wyjściowe|Opis|
 |-----|-----|-----|-----|
 |Join|ciąg1, ciąg2, separatora|oświadczenie outputClaim|Sprzężenia wejściowe ciągi przy użyciu separatora między. Na przykład: ciąg1: "foo@bar.com", ciąg2: "piaskownicy", separatora: "." skutkuje oświadczenie outputClaim: "foo@bar.com.sandbox"|
-|ExtractMailPrefix|poczta|oświadczenie outputClaim|Wyodrębnia lokalnym składniku adresu e-mail. Na przykład: wiadomości e-mail: "foo@bar.com" skutkuje oświadczenie outputClaim: "foo". Jeśli nie \@ logowania jest obecny, a następnie oryginalnego ciągu wejściowego jest zwracany, ponieważ jest.|
+|ExtractMailPrefix|mail (poczta)|oświadczenie outputClaim|Wyodrębnia lokalnym składniku adresu e-mail. Na przykład: wiadomości e-mail: "foo@bar.com" skutkuje oświadczenie outputClaim: "foo". Jeśli nie \@ logowania jest obecny, a następnie oryginalnego ciągu wejściowego jest zwracany, ponieważ jest.|
 
-**InputClaims:** element InputClaims służy do przekazywania danych z wejścia schematu oświadczenia do przekształcenia. Zawiera dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
+**InputClaims:** Użyj elementu InputClaims do przekazania danych z wpisu schematu oświadczenia do przekształcenia. Zawiera dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
 
 - **ClaimTypeReferenceId** sprzężony z elementem identyfikator wpisu schematu oświadczenia, można znaleźć odpowiednich oświadczeń przychodzących. 
 - **TransformationClaimType** służy do nadaj unikatową nazwę do tych danych wejściowych. Ta nazwa musi być zgodna oczekiwane dane wejściowe dla metody transformacji.
 
-**InputParameters:** element InputParameters służy do przekazywania wartości stałej do przekształcenia. Zawiera dwa atrybuty: **wartość** i **identyfikator**.
+**InputParameters:** Element InputParameters służy do przekazywania wartości stałej do przekształcenia. Zawiera dwa atrybuty: **Wartość** i **identyfikator**.
 
 - **Wartość** jest rzeczywista stała wartość do przekazania.
 - **Identyfikator** służy do nadaj unikatową nazwę w danych wejściowych. Nazwa musi odpowiadać oczekiwane dane wejściowe dla metody transformacji.
 
-**OutputClaims:** element OutputClaims służy do przechowywania danych generowanych przez przekształcenie i powiązanie ich wpis schematu oświadczenia. Zawiera dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
+**OutputClaims:** Element OutputClaims służy do przechowywania danych generowanych przez przekształcenie i powiązanie ich wpis schematu oświadczenia. Zawiera dwa atrybuty: **ClaimTypeReferenceId** i **TransformationClaimType**.
 
 - **ClaimTypeReferenceId** sprzężony z Identyfikatorem wpisu schematu oświadczenia odnaleźć oświadczenia właściwe dane wyjściowe.
 - **TransformationClaimType** służy do nadaj unikatową nazwę w danych wyjściowych. Nazwa musi odpowiadać jednej z oczekiwanych danych wyjściowych dla metody transformacji.
 
 ### <a name="exceptions-and-restrictions"></a>Wyjątki i ograniczenia
 
-**Identyfikatora SAML NameID i nazwy UPN:** atrybutów, z których źródła wartości NameID i głównej nazwy użytkownika i przekształcenia oświadczeń, które są dozwolone, ale są ograniczone. Zobacz tabele 5 i 6, aby wyświetlić dozwolone wartości.
+**Identyfikatora SAML NameID i głównej nazwy użytkownika:** Atrybuty, z których źródła wartości NameID i głównej nazwy użytkownika i przekształcenia oświadczeń, które są dozwolone, ale są ograniczone. Zobacz tabele 5 i 6, aby wyświetlić dozwolone wartości.
 
-#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabela 5: Atrybuty dozwolone jako źródło danych dla identyfikatora SAML NameID
+#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabela 5: Atrybuty można użyć jako źródła danych dla identyfikatora SAML NameID
 
 |Element źródłowy|ID|Opis|
 |-----|-----|-----|
-|Użytkownik|poczta|Adres e-mail|
+|Użytkownik|mail (poczta)|Adres e-mail|
 |Użytkownik|userprincipalname|Nazwa główna użytkownika|
 |Użytkownik|onpremisessamaccountname|Nazwy konta Sam lokalnie|
 |Użytkownik|EmployeeID|Identyfikator pracownika|
@@ -405,7 +406,7 @@ Oparty na wybranej metody, oczekiwany jest zestaw danych wejściowych i wyjścio
 |Użytkownik|extensionattribute14|Atrybut rozszerzenia 14|
 |Użytkownik|extensionattribute15|Atrybut rozszerzenia 15|
 
-#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabela 6: Transformacja metody dozwolone dla identyfikatora SAML NameID
+#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>Tabela 6: Metody przekształcania dozwolone dla identyfikatora SAML NameID
 
 |TransformationMethod|Ograniczenia|
 | ----- | ----- |
@@ -469,7 +470,7 @@ W tym przykładzie utworzysz zasady, które powoduje usunięcie podstawowego zes
     Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
     ```
 
-#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Przykład: Tworzenie i przypisywanie zasad w celu włączenia EmployeeID i TenantCountry jako oświadczenia w tokeny wystawione do nazwy głównej usługi
+#### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Przykład: Tworzenie i przypisywanie zasad, aby uwzględnić EmployeeID i TenantCountry jako oświadczenia w tokeny wystawione do nazwy głównej usługi
 
 W tym przykładzie utworzysz zasadę, która dodaje EmployeeID i TenantCountry tokeny wystawione do podmiotów połączonej usługi. Identyfikatorem EmployeeID jest emitowany jako nazwa typ oświadczenia w tokeny SAML i tokenów Jwt. TenantCountry jest emitowany jako typ oświadczenia country zarówno w tokeny SAML, jak i tokenów Jwt. W tym przykładzie firma Microsoft nadal obejmują podstawowe oświadczenia w tokeny.
 

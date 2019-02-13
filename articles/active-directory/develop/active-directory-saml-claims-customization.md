@@ -17,12 +17,13 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: luleon, jeedes
 ms.custom: aaddev
-ms.openlocfilehash: affdad71c9c97f13c015b35f1c67ee79f2473442
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a9396fbc470f25e3cf6fad883ab525af1f96e96a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075214"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188753"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Instrukcje: Dostosowywanie oświadczeń wystawionych w tokenie SAML dla aplikacji dla przedsiębiorstw
 
@@ -61,7 +62,7 @@ Wybierz żądane źródło `NameIdentifier` (lub NameID) oświadczenia. Możesz 
 | Name (Nazwa) | Opis |
 |------|-------------|
 | Email | Adres e-mail użytkownika |
-| userprincipalName | Główna nazwa użytkownika (UPN) użytkownika |
+| userprincipalName | Główna nazwa użytkownika (UPN) |
 | onpremisessamaccount | Nazwa konta SAM, który jest synchronizowany ze środowiska lokalnego usługi Azure AD |
 | Identyfikator obiektu | Identyfikator obiektu użytkownika w usłudze Azure AD |
 | employeeID | EmployeeID użytkownika |

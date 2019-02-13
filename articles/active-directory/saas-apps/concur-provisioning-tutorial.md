@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f3ee9b2ce11dea1e0490521cf72f509ef2e0db8d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 441aa9805f2a453e22f207238315125d2a281838
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151536"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205685"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Concur dla automatycznej aprowizacji użytkowników
 

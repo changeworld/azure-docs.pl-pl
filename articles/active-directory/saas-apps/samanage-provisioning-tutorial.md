@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2018
 ms.author: v-wingf-msft
-ms.openlocfilehash: d3442710e1e1327dcafc1b4ed6617aeb7ff1bf0f
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d620701bc8590bee746be35f69b0da890c359601
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53322434"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205362"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie Samanage dla automatycznej aprowizacji użytkowników
 
@@ -39,7 +40,7 @@ Scenariusz opisany w tym samouczku przyjęto założenie, że masz już następu
 > [!NOTE]
 > Inicjowanie obsługi administracyjnej integracji usługi Azure AD opiera się na [interfejsu API Rest Samanage](https://www.samanage.com/api/), który jest dostępny dla deweloperów Samanage dla kont z profesjonalnych pakietu.
 
-## <a name="adding-samanage-from-the-gallery"></a>Dodawanie Samanage z galerii
+## <a name="adding-samanage-from-the-gallery"></a>Dodawanie usługi Samanage z galerii
 Przed skonfigurowaniem Samanage dla użytkownika automatyczne Inicjowanie obsługi administracyjnej z usługą Azure AD, musisz dodać Samanage z galerii aplikacji usługi Azure AD z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Samanage z galerii aplikacji usługi Azure AD, wykonaj następujące czynności:**
@@ -160,7 +161,7 @@ Aby uzyskać więcej informacji na temat sposobu odczytywania aprowizacji dzienn
 
 * Jeśli **Synchronizuj wszystkich użytkowników i grup** opcja jest zaznaczona, a wartość domyślna jest skonfigurowana dla Samanage **role** atrybut, upewnij się, że żądaną wartość w obszarze **wartość domyślna, jeśli ma wartość null (to opcjonalnie)** pole danych jest wyrażona w następującym formacie **{"displayName": "rolę"}** gdzie roli jest wartością domyślną.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Zarządzanie aprowizacją konta użytkownika dla aplikacji przedsiębiorstwa](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)

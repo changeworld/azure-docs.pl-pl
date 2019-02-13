@@ -16,12 +16,13 @@ ms.date: 11/28/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6df19f8d20853b569a2bc357e6c1115976a7de2c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 716f48a5db437ef1dc865aca66fbac1c1d51aec3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097975"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207436"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-resource-owner-password-credential"></a>Azure Active Directory w wersji 2.0 i poświadczeń hasła właściciela zasobów OAuth 2.0
 
@@ -58,10 +59,10 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | Parametr | Warunek | Opis |
 | --- | --- | --- |
-| `tenant` | Wymagany | Chcesz się zalogować użytkownika do dzierżawy katalogu. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID. Nie można ustawić ten parametr `common` lub `consumers`, ale może być ustawiona na `organizations`. |
-| `grant_type` | Wymagany | Musi być równa `password`. |
-| `username` | Wymagany | Adres e-mail użytkownika. |
-| `password` | Wymagany | Hasło użytkownika. |
+| `tenant` | Wymagane | Chcesz się zalogować użytkownika do dzierżawy katalogu. Może to być w formacie przyjaznej nazwy lub identyfikatora GUID. Nie można ustawić ten parametr `common` lub `consumers`, ale może być ustawiona na `organizations`. |
+| `grant_type` | Wymagane | Musi być równa `password`. |
+| `username` | Wymagane | Adres e-mail użytkownika. |
+| `password` | Wymagane | Hasło użytkownika. |
 | `scope` | Zalecane | Listę rozdzielonych spacjami [zakresy](v2-permissions-and-consent.md), lub uprawnienia, których wymaga aplikacja. Te zakresy muszą wyrażono zgodę wcześniej przez administratora lub przez użytkownika w przepływie interaktywne. |
 
 ### <a name="successful-authentication-response"></a>Pomyślne uwierzytelnienie odpowiedzi
@@ -81,7 +82,7 @@ Poniżej przedstawiono przykład pomyślnej odpowiedzi tokenu:
 
 | Parametr | Format | Opis |
 | --------- | ------ | ----------- |
-| `token_type` | Ciąg | Zawsze ustawiony na wartość `Bearer`. |
+| `token_type` | String | Zawsze ustawiony na wartość `Bearer`. |
 | `scope` | Ciągi oddzielone spacjami | Jeśli został zwrócony token dostępu, a ten parametr zawiera listę zakresów, który token dostępu jest prawidłowy dla. |
 | `expires_in`| int | Liczba sekund, które token dostępu dołączony jest nieprawidłowa dla. |
 | `access_token`| Nieprzezroczysty ciąg | Wystawiony dla [zakresy](v2-permissions-and-consent.md) którego zażądano. |

@@ -16,12 +16,13 @@ ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 2f1b6cec49507c5106434bf42743aadd1b3230aa
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8254766568c54748ee3646dd627a102ffc86e743
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894976"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191354"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Zainstaluj program Azure AD Connect przy użyciu istniejącej bazy danych ADSync
 Program Azure AD Connect wymaga bazy danych programu SQL Server do przechowywania danych. Możesz korzystać z domyślnego programu SQL Server 2012 Express LocalDB zainstalowane za pomocą usługi Azure AD Connect lub użyć pełnej wersji programu SQL Server. Wcześniej Jeśli zainstalowano program Azure AD Connect, nową bazę danych o nazwie ADSync zawsze został utworzony. Za pomocą usługi Azure AD Connect w wersji 1.1.613.0 (lub po) masz możliwość zainstalowania Azure AD Connect, wskazując je do istniejącej bazy danych ADSync.

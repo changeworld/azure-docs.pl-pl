@@ -6,17 +6,17 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 13525fffb7e6720fe81759876ffd0fe71559279c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252323"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182854"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Usługa Azure Stack Integracja z centrum danych — DNS
 Aby móc uzyskiwać dostęp punktów końcowych usługi Azure Stack (**portal**, **adminportal**, **zarządzania**, **adminmanagement**itp.)  z zewnętrznej usługi Azure Stack konieczna Integracja usługi Azure Stack DNS przy użyciu serwerów DNS, które hostuje stref DNS, którego chcesz użyć w usłudze Azure Stack.
@@ -114,9 +114,9 @@ Serwery przy użyciu przykładowych wartości nazw FQDN DNS to:
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-Te informacje również jest tworzony na końcu wszystkich wdrożeń usługi Azure Stack w pliku o nazwie `AzureStackStampDeploymentInfo.json`. Ten plik znajduje się w `C:\CloudDeployment\logs` folderu wdrożenia maszyny wirtualnej. Jeśli nie masz pewności, jakie wartości zostały użyte do wdrożenia usługi Azure Stack, w tym miejscu można pobrać wartości.
+Te informacje również jest tworzony na końcu wszystkich wdrożeń usługi Azure Stack w pliku o nazwie `AzureStackStampInformation.json`. Ten plik znajduje się w `C:\CloudDeployment\logs` folderu wdrożenia maszyny wirtualnej. Jeśli nie masz pewności, jakie wartości zostały użyte do wdrożenia usługi Azure Stack, w tym miejscu można pobrać wartości.
 
-Jeśli wdrożenie maszyny wirtualnej nie jest już dostępny lub jest niedostępny, można uzyskać wartości nawiązywania połączenia z uprzywilejowanym punktu końcowego, a następnie uruchamiając `Get-AzureStackInfo` polecenia cmdlet programu PowerShell. Aby uzyskać więcej informacji, zobacz [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md).
+Jeśli wdrożenie maszyny wirtualnej nie jest już dostępny lub jest niedostępny, można uzyskać wartości nawiązywania połączenia z uprzywilejowanym punktu końcowego, a następnie uruchamiając `Get-AzureStackStampInformation` polecenia cmdlet programu PowerShell. Aby uzyskać więcej informacji, zobacz [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md).
 
 ## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Konfigurowanie warunkowego przesyłania dalej do usługi Azure Stack
 

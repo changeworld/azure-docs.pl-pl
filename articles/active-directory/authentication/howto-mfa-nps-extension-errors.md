@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: eb8bce76321bf596f7c51c3437dd2497c827e83f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: bf2e1b97d228de47634e570a407ec03d7a13e540
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076914"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199650"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Komunikatami o błędach z rozszerzenia serwera NPS dla usługi Azure Multi-Factor Authentication
 
@@ -112,7 +113,7 @@ Aby zbierać dzienniki debugowania dla diagnostyki pomocy technicznej, należy u
    logman update trace "NPSExtension" -p {EC2E6D3A-C958-4C76-8EA4-0262520886FF} 0xffffffffffffffff 0xff -ets
    ```
 
-3. Odtworzenia problemu
+3. Odtwórz problem
 
 4. Zatrzymaj śledzenie przy użyciu następujących poleceń:
 

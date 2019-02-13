@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: luleon
-ms.openlocfilehash: 6238ffa75cc664e153025b76a5f70d9e4a4c4c43
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0dd3bd1f3f9f175ba7bf841b1fce45bb7938c02b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964861"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209510"
 ---
 # <a name="assign-a-user-or-group-to-an-enterprise-app-in-azure-active-directory"></a>Przypisywanie użytkownika lub grupy do aplikacji przedsiębiorstwa w usłudze Azure Active Directory
 Aby przypisać użytkownika lub grupy do aplikacji przedsiębiorstwa, musi mieć odpowiednie uprawnienia do zarządzania aplikacji przedsiębiorstwa, a musi być administratorem globalnym katalogu.

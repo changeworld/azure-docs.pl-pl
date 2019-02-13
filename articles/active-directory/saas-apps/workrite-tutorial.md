@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: jeedes
-ms.openlocfilehash: 1e593d66e7f293a5e84200eff0980b1cdf6d55dd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2d3b3702ca2daad002bde1b4e64bf9d43a03028d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203134"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180440"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Workrite
 
@@ -113,7 +114,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://app.workrite.co.uk/securelogin/samlgateway.aspx?id=<uniqueid>`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Workrite](mailto:support@workrite.co.uk) aby zyskać tę wartość.
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Workrite](mailto:support@workrite.co.uk) aby zyskać tę wartość.
 
 1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 

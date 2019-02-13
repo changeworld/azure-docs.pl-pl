@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: b7d76158f0398d701b3bd2d1a3a01c48e1552c02
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8a2ec578fcc51519cb6794ea87f8e4236d6b1d96
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983461"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198086"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plany wdrażania usługi Azure Active Directory
 Szukasz kompleksowych wskazówek dotyczących wdrażania niektórych funkcji usługi Azure Active Directory (Azure AD)? W następujących planach wdrażania przedstawiono wartość biznesową, zagadnienia dotyczące planowania, projektowanie i procedury operacyjne potrzebne do pomyślnego wdrożenia niektórych z najpopularniejszych funkcji usługi Azure AD. 

@@ -10,22 +10,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 82a691c0e0b6280a168605d56ee628d81f10823f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: eca66bc2e737b0f9a9954cad21a446e82d753f84
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245654"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203815"
 ---
 # <a name="validate-azure-stack-system-state"></a>Sprawdzanie poprawności stanu systemu w usłudze Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-Jako operatorów usługi Azure Stack niezbędne jest posiadanie możliwości poinformowania, kondycję i stan systemu na żądanie. Narzędzie sprawdzania poprawności w usłudze Azure Stack (**AzureStack testu**) jest polecenia cmdlet programu PowerShell, która umożliwia uruchamianie szereg testów w systemie, aby zidentyfikować błędy, jeśli jest obecny. Zazwyczaj uzyskasz do uruchomienia tego narzędzia, za pośrednictwem [uprzywilejowanych punktu końcowego (program ten)](azure-stack-privileged-endpoint.md) po możesz skontaktuj się z działem pomocy technicznej usługi firmy Microsoft (CSS) problemu. Kondycji całego systemu i stan odpowiednie informacje CSS można zbierać i analizować szczegółowe dzienniki, skupić się na obszar, w którym wystąpił błąd i współpraca z Tobą w celu rozwiązania problemu.
+Jako operatorów usługi Azure Stack jest możliwe ustalenie kondycji i stanu systemu na żądanie jest niezbędne. Narzędzie sprawdzania poprawności w usłudze Azure Stack (**AzureStack testu**) jest polecenia cmdlet programu PowerShell, która umożliwia uruchamianie szereg testów w systemie, aby zidentyfikować błędy, jeśli jest obecny. Zazwyczaj uzyskasz do uruchomienia tego narzędzia, za pośrednictwem [uprzywilejowanych punktu końcowego (program ten)](azure-stack-privileged-endpoint.md) po możesz skontaktuj się z działem pomocy technicznej usługi firmy Microsoft (CSS) problemu. Kondycji całego systemu i stan odpowiednie informacje CSS można zbierać i analizować szczegółowe dzienniki, skupić się na obszar, w którym wystąpił błąd i współpraca z Tobą w celu rozwiązania problemu.
 
 ## <a name="running-the-validation-tool-and-accessing-results"></a>Uruchamianie narzędzia sprawdzającego poprawność i uzyskiwania dostępu do wyników
 
@@ -93,7 +93,6 @@ Te testy mały wpływ pracować na poziomie infrastruktury i uzyskać informacje
 
 Oprócz powyższych testów infrastruktury również mieć możliwość uruchamiania testów scenariusz chmury, aby sprawdzić funkcjonalność składnikami infrastruktury. Poświadczenia administratora chmury są wymagane do uruchamiania tych testów, ponieważ wymagają one wdrażania zasobów. 
     > [!NOTE]
-    >
     > Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
 
 W poniższych scenariuszach chmury są testowane przez narzędzie sprawdzania poprawności:

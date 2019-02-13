@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: f0f0e32ccbb8fdac934f81e2f90132f63a91f069
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 714a78c436b7071717e2df12c2a65999920f8c63
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892120"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192136"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Dodawanie kont innych niż Microsoft
 Dodaj konta firmy Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication. Aplikacja Microsoft Authenticator współpracuje z dowolnej aplikacji, która używa weryfikacji two-Factor Authentication i konto, które obsługuje standardy oparte na czasie hasła jednorazowego (TOTP).

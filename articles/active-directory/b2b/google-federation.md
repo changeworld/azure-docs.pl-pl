@@ -10,12 +10,13 @@ ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: mal
-ms.openlocfilehash: a12ae074d82fda329c30b367e4ef76285d92e0a1
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3d565d2215ac84d42b6682f4c4a52dd87278a70a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983478"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206841"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B
 

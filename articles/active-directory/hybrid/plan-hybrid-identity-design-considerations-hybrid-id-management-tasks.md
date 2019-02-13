@@ -16,12 +16,13 @@ ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: f6e5ca57eaa4a4a1975c0295933fc91e5726ae4c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6d69ddbd38798d0667ce69fb7696597a972b5098
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487935"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167001"
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>Planowanie cyklu życia tożsamości hybrydowej
 Tożsamość jest jedną z podstaw enterprise mobility i aplikacji strategii dostępu. Czy logujesz się Twoje urządzenie przenośne lub aplikacji SaaS, swoją tożsamość jest kluczem do uzyskania dostępu do wszystkich. Na najwyższym poziomie rozwiązanie do zarządzania tożsamościami obejmuje, ujednolicając naukę i synchronizacja między repozytoriami tożsamości w tym automatyzacji i centralizowanie proces aprowizacji zasobów. Rozwiązanie tożsamości powinien być scentralizowane tożsamości lokalnych i w chmurze i również użyć jakiegoś Federację tożsamości do utrzymywania scentralizowanego uwierzytelniania i bezpiecznego udostępniania i współpracować z zewnętrznych użytkowników i firm. Zasoby do zakresu od systemów operacyjnych i aplikacji do osób w lub powiązane z organizacji. Może się zmienić strukturę organizacyjną aby pomieścić inicjowania obsługi zasad i procedur.

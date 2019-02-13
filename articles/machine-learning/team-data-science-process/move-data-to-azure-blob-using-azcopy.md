@@ -1,6 +1,6 @@
 ---
-title: Przenoszenie danych do magazynu obiektów Blob za pomocą narzędzia AzCopy - zespołu danych dla celów naukowych
-description: Przenoszenie danych do oraz z usługi Azure Blob Storage za pomocą usługi AzCopy
+title: Kopiowanie danych do magazynu obiektów Blob za pomocą narzędzia AzCopy - zespołu danych dla celów naukowych
+description: Kopiowanie danych do i z usługi Azure Blob Storage przy użyciu narzędzia AzCopy
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,14 +11,14 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3165aad326ad476eb5064f0b99acd8c3f5a036d8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6c0951eb6ad3b7651da97e1a49c5edf5ab55a199
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474704"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209578"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-azcopy"></a>Przenoszenie danych do i z usługi Azure Blob Storage przy użyciu narzędzia AzCopy
+# <a name="copy-data-to-and-from-azure-blob-storage-using-azcopy"></a>Kopiowanie danych do i z usługi Azure Blob Storage przy użyciu narzędzia AzCopy
 AzCopy to narzędzie wiersza polecenia, zaprojektowana pod kątem przekazywanie, pobieranie i kopiowanie danych do i z obiektów blob, plików i usługi table storage Microsoft Azure.
 
 Aby uzyskać instrukcje na temat instalowania narzędzia AzCopy oraz dodatkowe informacje na temat używania go z platformą Azure, zobacz [rozpoczęcie korzystania z wiersza polecenia Azcopy](../../storage/common/storage-use-azcopy.md).
@@ -65,10 +65,10 @@ Aby pobrać plik z obiektu blob platformy Azure, użyj następującego polecenia
     AzCopy /Source:https://<your_account_name>.blob.core.windows.net/<your_container_name>/<your_sub_directory_at_blob>  /Dest:<your_local_directory> /SourceKey:<your_account_key> /Pattern:<file_pattern> /S
 
 
-## <a name="transfer-blobs-between-azure-containers"></a>Przenoszenie obiektów blob między kontenerów platformy Azure
-Aby przenieść obiekty BLOB między kontenerów platformy Azure, użyj następującego polecenia:
+## <a name="copy-blobs-between-azure-containers"></a>Kopiowanie obiektów blob między kontenerów platformy Azure
+Aby skopiować obiektów blob między kontenerów platformy Azure, użyj następującego polecenia:
 
-    # Transferring blobs between Azure containers
+    # Copying blobs between Azure containers
     AzCopy /Source:https://<your_account_name1>.blob.core.windows.net/<your_container_name1>/<your_sub_directory_at_blob1> /Dest:https://<your_account_name2>.blob.core.windows.net/<your_container_name2>/<your_sub_directory_at_blob2> /SourceKey:<your_account_key1> /DestKey:<your_account_key2> /Pattern:<file_pattern> /S
 
     <your_account_name>: your storage account name
@@ -76,7 +76,7 @@ Aby przenieść obiekty BLOB między kontenerów platformy Azure, użyj następu
     <your_container_name>: your container name
     <your_sub_directory_at_blob>: the sub directory in the container
     <your_local_directory>: directory of local file system where files to be uploaded from or the directory of local file system files to be downloaded to
-    <file_pattern>: pattern of file names to be transferred. The standard wildcards are supported
+    <file_pattern>: pattern of file names to be copied. The standard wildcards are supported
 
 
 ## <a name="tips-for-using-azcopy"></a>Porady dotyczące korzystania z narzędzia AzCopy

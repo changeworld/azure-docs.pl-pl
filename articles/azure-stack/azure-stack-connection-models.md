@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: d55cebf380c4ca5183e8ff15fd193e254b66c30b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246589"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182021"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Modele połączeń systemy zintegrowane usługi Azure Stack
-Jeśli interesuje Cię to system zintegrowany z usługi Azure Stack, musisz zrozumieć [kilka zagadnień integracji datacenter](azure-stack-datacenter-integration.md) dla wdrożenia usługi Azure Stack określić, jak system zmieści się w centrum danych. Ponadto należy zdecydować, dokładnie tak jak będzie integracji usługi Azure Stack w środowisku chmury hybrydowej. W tym artykule omówiono następujące główne decyzje, takich jak połączenie platformy Azure, Magazyn tożsamości i rozliczeń decyzji modelu.
+Jeśli interesuje Cię zakupu to system zintegrowany z usługi Azure Stack, musisz zrozumieć [kilka zagadnień integracji datacenter](azure-stack-datacenter-integration.md) dla wdrożenia usługi Azure Stack określić, jak system zmieści się w centrum danych. Ponadto należy zdecydować, jak będzie Zintegruj usługę Azure Stack w środowisku chmury hybrydowej. W tym artykule omówiono następujące główne decyzje, takich jak połączenie platformy Azure, Magazyn tożsamości i rozliczeń decyzji modelu.
 
 Jeśli zdecydujesz się kupić system zintegrowany z dostawcą sprzętu producenta sprzętu (OEM) pomaga przeprowadzą Cię przez proces znaczną część procesu planowania, które bardziej szczegółowo. Będą one również wykonać rzeczywiste wdrożenie.
 

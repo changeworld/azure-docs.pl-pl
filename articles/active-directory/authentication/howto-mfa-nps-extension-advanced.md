@@ -10,12 +10,13 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
-ms.openlocfilehash: 5d7b14825b8b34c2ab742febe463ea518209a82f
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b236cc799a4ff84c3833f181ebec6305f1ec6942
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55075622"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171321"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Zaawansowane opcje konfiguracji dla rozszerzenia serwera NPS do uwierzytelniania wieloskładnikowego
 
@@ -29,7 +30,7 @@ W ramach rozszerzenia serwera NPS należy wyznaczyć atrybut usługi Active Dire
 
 Aby skonfigurować alternatywnych identyfikatorów logowania, przejdź do `HKLM\SOFTWARE\Microsoft\AzureMfa` i edytować następujące wartości rejestru:
 
-| Name (Nazwa) | Typ | Wartość domyślna | Opis |
+| Name (Nazwa) | Type | Wartość domyślna | Opis |
 | ---- | ---- | ------------- | ----------- |
 | LDAP_ALTERNATE_LOGINID_ATTRIBUTE | ciąg | Pusty | Należy określić nazwę atrybut usługi Active Directory, który chcesz użyć zamiast nazwy UPN. Ten atrybut jest używany jako atrybut AlternateLoginId. Jeśli ta wartość rejestru jest równa [nieprawidłowy atrybut usługi Active Directory](https://msdn.microsoft.com/library/ms675090.aspx) (na przykład wiadomości e-mail lub nazwa wyświetlana), następnie wartość atrybutu jest używany zamiast nazwy UPN użytkownika dla uwierzytelniania. Jeśli ta wartość rejestru jest pusty lub nie skonfigurowano, następnie AlternateLoginId jest wyłączona i nazwa UPN użytkownika jest używany do uwierzytelniania. |
 | LDAP_FORCE_GLOBAL_CATALOG | wartość logiczna | False | Aby wymusić użytek wyszukiwania LDAP wykazu globalnego, podczas wyszukiwania AlternateLoginId, należy użyć tej flagi. Konfigurowanie kontrolera domeny jako wykazu globalnego, Dodaj atrybut AlternateLoginId do wykazu globalnego i włączysz tę flagę. <br><br> Jeśli LDAP_LOOKUP_FORESTS skonfigurowano (Niepuste), **ta flaga jest wymuszana jako PRAWDA**, niezależnie od wartości tego ustawienia rejestru. W tym przypadku rozszerzenia serwera NPS wymaga wykazu globalnego, należy skonfigurować za pomocą atrybutu AlternateLoginId dla każdego lasu. |
@@ -43,7 +44,7 @@ Jeśli potrzebujesz do monitorowania dostępności serwera, np. Jeśli usługi r
 
 Aby skonfigurować listę dozwolonych adresów IP, przejdź do `HKLM\SOFTWARE\Microsoft\AzureMfa` i skonfiguruj następujące wartości rejestru: 
 
-| Name (Nazwa) | Typ | Wartość domyślna | Opis |
+| Name (Nazwa) | Type | Wartość domyślna | Opis |
 | ---- | ---- | ------------- | ----------- |
 | IP_WHITELIST | ciąg | Pusty | Podaj Rozdzielana średnikami lista adresów IP. Zawierać adresy IP maszyn, których pochodzą żądania usług, takich jak serwer NAS/sieci VPN. Zakresy adresów IP są podsieci nie są obsługiwane. <br><br> Na przykład *10.0.0.1;10.0.0.2;10.0.0.3*.
 

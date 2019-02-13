@@ -11,12 +11,13 @@ ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
-ms.openlocfilehash: 801082164a0110178034c5fbe050ebe8e02b2772
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474136"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192578"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Czynniki wpływające na wydajność programu Azure AD Connect
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e9b805786346abd6dfe830c9ce6ae4cc341c9e7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1346ce0526a6b45b6bca0f15c2b5e71afc4ae381
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194274"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą określają Data3Sixty Infogix
 

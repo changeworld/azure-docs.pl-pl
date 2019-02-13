@@ -12,30 +12,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 023201d221ee5d7ec884c6a760407e8da8340d3f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246445"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207142"
 ---
 # <a name="azure-stack-firewall-integration"></a>Integracja z zaporą Azure Stack
-Zaleca się używać urządzenia zapory w celu bezpiecznej usługi Azure Stack. Mimo że zapory może ułatwić elementów, takich jak rozproszonej typu "odmowa usługi" (DDOS) ataki, Wykrywanie nieautoryzowanego dostępu i inspekcji zawartości, może również zostać przepływności wąskiego gardła dla usług Azure storage, takie jak obiekty BLOB, tabel i kolejek.
+Zaleca się używać urządzenia zapory w celu bezpiecznej usługi Azure Stack. Zapory może pomóc chronić przed atakami rozproszonej odmowy usługi (DDOS), Wykrywanie nieautoryzowanego dostępu i inspekcji zawartości. Jednak ich może również stać się wąskim gardłem przepływności dla usług Azure storage, takie jak obiekty BLOB, tabel i kolejek.
 
-Oparte na modelu tożsamości usługi Azure Active Directory (Azure AD) lub Windows Server Active Directory Federation Services (AD FS), może być konieczne do publikowania punktu końcowego usług AD FS. Jeśli używany jest tryb wdrożenia o odłączony, należy opublikować punktu końcowego usług AD FS. Aby uzyskać więcej informacji, zobacz [datacenter integracja tożsamości artykułu](azure-stack-integrate-identity.md).
+ Jeśli używany jest tryb wdrożenia o odłączony, należy opublikować punktu końcowego usług AD FS. Aby uzyskać więcej informacji, zobacz [datacenter integracja tożsamości artykułu](azure-stack-integrate-identity.md).
 
-Usługi Azure Resource Manager (administrator), portal administratora i punkty końcowe usługi Key Vault (administrator) niekoniecznie zewnętrznych publikowania. Na przykład jako dostawca usług możesz chcieć ograniczyć obszar narażony na ataki i tylko administrowanie Azure Stack z wewnątrz sieci, a nie z Internetu.
+Usługi Azure Resource Manager (administrator), portal administratora i punkty końcowe usługi Key Vault (administrator) niekoniecznie zewnętrznych publikowania. Na przykład jako dostawca usług, można ograniczyć obszar narażony na ataki, tylko administrowanie usługą Azure Stack z wewnątrz sieci, a nie z Internetu.
 
-Przedsiębiorstwa to organizacje zewnętrznej sieci mogą być istniejącej sieci firmowej. W takiej sytuacji należy opublikować te punkty końcowe do działania usługi Azure Stack z sieci firmowej.
+Przedsiębiorstwa to organizacje zewnętrznej sieci mogą być istniejącej sieci firmowej. W tym scenariuszu należy opublikować punkty końcowe do działania usługi Azure Stack z sieci firmowej.
 
 ### <a name="network-address-translation"></a>Translator adresów sieciowych
-Translacji adresów sieciowych (NAT) jest zalecane, aby zezwolić na wdrożenie maszyny wirtualnej (Menedżer DVM), dostęp do zasobów zewnętrznych i Internetu podczas wdrażania, a także maszyn wirtualnych z konsoli odzyskiwania awaryjnego (ERCS) lub uprzywilejowanego punktu końcowego (program ten) podczas Rejestracja i rozwiązywania problemów.
+Translacji adresów sieciowych (NAT) jest zalecane, aby zezwolić na wdrożenie maszyny wirtualnej (Menedżer DVM), aby uzyskać dostęp do zasobów zewnętrznych i Internetu podczas wdrażania, a także maszyn wirtualnych z konsoli odzyskiwania awaryjnego (ERCS) lub uprzywilejowanego punktu końcowego (program ten) podczas Rejestracja i rozwiązywania problemów.
 
-Translator adresów Sieciowych można także alternatywę dla publicznych adresów IP w sieci zewnętrznej lub publicznych adresów VIP. Jednak nie zaleca się zrobić, ponieważ ogranicza środowisko użytkownika dzierżawy i zwiększa złożonością. Dwie opcje będą NAT 1:1, która nadal wymaga jeden publiczny adres IP na adres IP użytkownika, w puli lub wiele: 1 translatora adresów Sieciowych wymaga reguły translatora adresów Sieciowych dla każdego użytkownika adresu VIP, zawierający skojarzenia do wszystkich portów użytkownik może użyć.
+Translator adresów Sieciowych można także alternatywę dla publicznych adresów IP w sieci zewnętrznej lub publicznych adresów VIP. Jednak nie zaleca się zrobić, ponieważ ogranicza środowisko użytkownika dzierżawy i zwiększa złożonością. Jedną z opcji będzie NAT jeden-do-jednego, który nadal wymaga jeden publiczny adres IP na adres IP użytkownika, w puli. Innym rozwiązaniem jest wiele do jednego translatora adresów Sieciowych wymaga reguły translatora adresów Sieciowych dla użytkowników VIP dla wszystkich portów, które użytkownik może użyć.
 
 Oto niektóre z wad korzystania z translatora adresów Sieciowych dla publicznych adresów VIP są:
 - Translator adresów Sieciowych dodaje obciążenie związane z zarządzaniem reguły zapory, ponieważ użytkownicy kontrolować swoje własne punkty końcowe i własne reguły publikowania w stosie programowalnej sieci (komputerowej SDN). Użytkownicy powinni skontaktować się ze operatora infrastruktury Azure Stack, aby uzyskać ich adresy VIP opublikowane i można zaktualizować listy portów.
@@ -48,7 +48,7 @@ Zalecane jest obecnie wyłączone odszyfrowywania protokołu SSL na cały ruch d
 ## <a name="edge-firewall-scenario"></a>Scenariusz zapory na krawędzi
 We wdrożeniu programu edge usługi Azure Stack jest wdrażany bezpośrednio pod routera brzegowego lub zapory. W tych scenariuszach jest obsługiwane w przypadku zaporę aby być nad obramowanie (scenariusz 1), w których obsługuje zarówno konfiguracji aktywne aktywne i aktywny / pasywny zapory lub działając jako urządzenie obramowania (scenariusz z 2), gdzie obsługuje on tylko aktywne aktywne zapory Konfiguracja jednostki uzależnionej na równy koszt wiele ścieżek (ECMP) za pomocą protokołu BGP lub routingu statycznego dla trybu failover.
 
-Zazwyczaj publiczne adresy IP routingowi określono pulę publicznych adresów VIP w sieci zewnętrznej w czasie wdrażania. W scenariuszu edge nie zaleca używania publicznych adresów IP z obsługą routingu w innych sieci ze względów bezpieczeństwa. W tym scenariuszu umożliwia użytkownikowi środowisko środowisko pełni opartej na chmurze własnym kontrolowanego, tak jak w chmurze publicznej, takich jak platforma Azure.  
+Publiczne adresy IP routingowi określono pulę publicznych adresów VIP w sieci zewnętrznej w czasie wdrażania. W scenariuszu edge nie zaleca używania publicznych adresów IP z obsługą routingu w innych sieci ze względów bezpieczeństwa. W tym scenariuszu umożliwia użytkownikowi środowisko środowisko pełni opartej na chmurze własnym kontrolowanego, tak jak w chmurze publicznej, takich jak platforma Azure.  
 
 ![Przykład zapory na krawędzi w usłudze Azure Stack](./media/azure-stack-firewall/firewallScenarios.png)
 

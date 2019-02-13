@@ -1,129 +1,85 @@
 ---
 title: Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
-description: Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
+description: Dowiedz się, jak uaktualnić klaster Azure Kubernetes Service (AKS)
 services: container-service
-author: gabrtv
-manager: jeconnoc
+author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 07/18/2018
-ms.author: gamonroy
-ms.custom: mvc
-ms.openlocfilehash: 4ff2b56afc4496b6344735b4e3c813b06cee17e3
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.date: 02/12/2019
+ms.author: iainfou
+ms.openlocfilehash: 59d52db8c3f5f8968eae1a544abe1e5c6bbaacca
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42058209"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186004"
 ---
 # <a name="upgrade-an-azure-kubernetes-service-aks-cluster"></a>Uaktualnianie klastra usługi Azure Kubernetes Service (AKS)
 
-Usługa Azure Kubernetes Service (AKS) ułatwia wykonywanie typowych zadań zarządzania, w tym uaktualniania klastrów Kubernetes.
+W ramach cyklu życia klastra AKS często konieczne uaktualnienie do najnowszej wersji platformy Kubernetes. Należy zastosować najnowszych wersji platformy Kubernetes w zabezpieczeń lub Uaktualnij do wersji uzyskać najnowsze funkcje. W tym artykule przedstawiono sposób uaktualniania istniejącego klastra usługi AKS.
 
-## <a name="upgrade-an-aks-cluster"></a>Uaktualnianie klastra AKS
+## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Przed uaktualnieniem klastra użyj polecenia `az aks get-upgrades`, aby sprawdzić, która wersja rozwiązania Kubernetes jest dostępna do uaktualnienia.
+Ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.56 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
+
+## <a name="check-for-available-aks-cluster-upgrades"></a>Sprawdź, czy są dostępne Uaktualnianie klastra AKS
+
+Aby sprawdzić, które wersje rozwiązania Kubernetes są dostępne dla klastra, użyj [az aks get uaktualnienia] [ az-aks-get-upgrades] polecenia. Poniższy przykład sprawdza dostępne aktualizacje do klastra o nazwie *myAKSCluster* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli-interactive
-az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
+az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Dane wyjściowe:
+> [!NOTE]
+> Podczas uaktualniania klastra usługi AKS nie pominięto pomocniczej wersji rozwiązania Kubernetes. Na przykład uaktualnienie między *1.10.x* -> *1.11.x* lub *1.11.x* -> *1.12.x* mogą jednak *1.10.x* -> *1.12.x* nie jest.
+>
+> Aby przeprowadzić uaktualnienie, z *1.10.x* -> *1.12.x*najpierw uaktualnienie *1.10.x* -> *1.11.x*, następnie uaktualnić z *1.11.x* -> *1.12.x*.
+
+Następujące przykładowe dane wyjściowe pokazuje, że klaster można uaktualnić do wersji *1.11.5* lub *1.11.6*:
 
 ```console
 Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
--------  ---------------  ---------------  -----------------  -------------------
-default  mytestaks007     1.8.10           1.8.10             1.9.1, 1.9.2, 1.9.6
+-------  ---------------  ---------------  -----------------  --------------
+default  myResourceGroup  1.10.12          1.10.12            1.11.5, 1.11.6
 ```
 
-Mamy trzy wersje dostępne do uaktualnienia: 1.9.1, 1.9.2 i pytanie 1.9.6. Możemy użyć polecenia `az aks upgrade` w celu przeprowadzenia uaktualnienia do najnowszej dostępnej wersji.  Podczas procesu uaktualniania AKS spowoduje dodanie nowego węzła do klastra, następnie dokładnie [odizolowywanie i opróżnianie] [ kubernetes-drain] jeden węzeł w czasie, aby zminimalizować zakłócenia dla działających aplikacji.
+## <a name="upgrade-an-aks-cluster"></a>Uaktualnianie klastra AKS
 
-> [!NOTE]
-> Podczas uaktualniania klastra usługi AKS, nie pominięto pomocniczej wersji rozwiązania Kubernetes. Na przykład uaktualnienia między 1.8.x -> 1.9.x lub 1.9.x -> 1.10.x są dozwolone, jest jednak 1.8 -> 1.10. Aby przeprowadzić uaktualnienie, z 1.8 -> 1.10, należy najpierw uaktualnić z 1.8 -> 1.9, a następnie inny innego wykonaj uaktualnienie z 1.9 -> 1.10
+Z listy dostępnych wersji dla klastra usługi AKS, użyj [uaktualnienia az aks] [ az-aks-upgrade] polecenie, aby uaktualnić. Podczas procesu uaktualniania AKS dodaje nowy węzeł do klastra, następnie dokładnie [cordon i opróżniania] [ kubernetes-drain] jeden węzeł w czasie, aby zminimalizować zakłócenia dla działających aplikacji. Poniższy przykład uaktualniania klastra do wersji *1.11.6*:
 
 ```azurecli-interactive
-az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.9.6
+az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version 1.11.6
 ```
 
-Dane wyjściowe:
+Trwa kilka minut, aby uaktualnić klaster, w zależności od liczby węzłów masz.
 
-```json
-{
-  "id": "/subscriptions/<Subscription ID>/resourcegroups/myResourceGroup/providers/Microsoft.ContainerService/managedClusters/myAKSCluster",
-  "location": "eastus",
-  "name": "myAKSCluster",
-  "properties": {
-    "accessProfiles": {
-      "clusterAdmin": {
-        "kubeConfig": "..."
-      },
-      "clusterUser": {
-        "kubeConfig": "..."
-      }
-    },
-    "agentPoolProfiles": [
-      {
-        "count": 1,
-        "dnsPrefix": null,
-        "fqdn": null,
-        "name": "myAKSCluster",
-        "osDiskSizeGb": null,
-        "osType": "Linux",
-        "ports": null,
-        "storageProfile": "ManagedDisks",
-        "vmSize": "Standard_D2_v2",
-        "vnetSubnetId": null
-      }
-    ],
-    "dnsPrefix": "myK8sClust-myResourceGroup-4f48ee",
-    "fqdn": "myk8sclust-myresourcegroup-4f48ee-406cc140.hcp.eastus.azmk8s.io",
-    "kubernetesVersion": "1.9.6",
-    "linuxProfile": {
-      "adminUsername": "azureuser",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "..."
-          }
-        ]
-      }
-    },
-    "provisioningState": "Succeeded",
-    "servicePrincipalProfile": {
-      "clientId": "e70c1c1c-0ca4-4e0a-be5e-aea5225af017",
-      "keyVaultSecretRef": null,
-      "secret": null
-    }
-  },
-  "resourceGroup": "myResourceGroup",
-  "tags": null,
-  "type": "Microsoft.ContainerService/ManagedClusters"
-}
-```
-
-Potwierdź, że uaktualnienie powiodło się, używając polecenia `az aks show`.
+Aby upewnić się, że uaktualnienie zakończyło się pomyślnie, należy użyć [az aks show] [ az-aks-show] polecenia:
 
 ```azurecli-interactive
-az aks show --name myAKSCluster --resource-group myResourceGroup --output table
+az aks show --resource-group myResourceGroup --name myAKSCluster --output table
 ```
 
-Dane wyjściowe:
+Następujące przykładowe dane wyjściowe pokazuje, że teraz uruchamiane w klastrze *1.11.6*:
 
 ```json
 Name          Location    ResourceGroup    KubernetesVersion    ProvisioningState    Fqdn
-------------  ----------  ---------------  -------------------  -------------------  ----------------------------------------------------------------
-myAKSCluster  eastus     myResourceGroup  1.9.6                 Succeeded            myk8sclust-myresourcegroup-3762d8-2f6ca801.hcp.eastus.azmk8s.io
+------------  ----------  ---------------  -------------------  -------------------  ---------------------------------------------------------------
+myAKSCluster  eastus      myResourceGroup  1.11.6               Succeeded            myaksclust-myresourcegroup-19da35-90efab95.hcp.eastus.azmk8s.io
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat wdrażania usługi AKS i zarządzania nią z samouczków usługi AKS.
+W tym artykule pokazano sposób uaktualniania istniejącego klastra usługi AKS. Aby dowiedzieć się więcej na temat wdrażania i zarządzania klastrami usługi AKS, zobacz zestawie samouczków.
 
 > [!div class="nextstepaction"]
-> [Samouczek usługi AKS][aks-tutorial-prepare-app]
+> [Samouczki usługi AKS][aks-tutorial-prepare-app]
 
 <!-- LINKS - external -->
 [kubernetes-drain]: https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/
 
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
+[azure-cli-install]: /cli/azure/install-azure-cli
+[az-aks-get-upgrades]: /cli/azure/aks#az-aks-get-upgrades
+[az-aks-upgrade]: /cli/azure/aks#az-aks-upgrade
+[az-aks-show]: /cli/azure/aks#az-aks-show

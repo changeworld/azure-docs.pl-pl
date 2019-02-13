@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: e2ec1b7ad6d1489836937d30b89d0f0f681a9bfa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819590"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193394"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Usługa Azure Container Registry role i uprawnienia
 
 Usługa Azure Container Registry obsługuje zestaw ról platformy Azure, które zapewnia różne poziomy uprawnień do usługi Azure container registry. Korzystanie z systemu Azure [kontroli dostępu opartej na rolach](../role-based-access-control/index.yml) (RBAC), aby przypisać uprawnienia do użytkowników lub usług podmiotów zabezpieczeń, które muszą wchodzić w interakcje z rejestru.
 
-| Uprawnienia roli /       | Dostęp do Menedżera zasobów| Tworzenie/usuwanie rejestru | [Wypychanie obrazu](#push-image) | [Ściągnij obraz](#pull-image) | Zmiany zasad |   [Obrazy logowania](#sign-images)  |
+| Uprawnienia roli /       | [Dostęp do Menedżera zasobów](#access-resource-manager)| [Tworzenie/usuwanie rejestru](#create-and-delete-registry) | [Wypychanie obrazu](#push-image) | [Ściągnij obraz](#pull-image) | [Zmiany zasad](#change-policies) |   [Obrazy logowania](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- |
 | Właściciel | X | X | X | X | X |  |  
 | Współautor | X | X | X | X | X |  |  
@@ -45,19 +45,19 @@ Dla narzędzi, takich jak Visual Studio Code [rozszerzenia platformy Docker](htt
 
 ## <a name="access-resource-manager"></a>Dostęp do Menedżera zasobów
 
-Dostęp usługi Azure Resource Manager jest wymagany do witryny Azure portal i [wiersza polecenia platformy Azure](/cli/azure/). Na przykład, aby uzyskać listę rejestrów przy użyciu `az acr list` polecenia, musisz mieć uprawnienie tego zestawu. 
+Dostęp usługi Azure Resource Manager jest wymagany dla platformy Azure management portal i rejestru za pomocą [wiersza polecenia platformy Azure](/cli/azure/). Na przykład, aby uzyskać listę rejestrów przy użyciu `az acr list` polecenia, musisz mieć uprawnienie tego zestawu. 
 
-## <a name="createdelete-registry"></a>Tworzenie/usuwanie rejestru
+## <a name="create-and-delete-registry"></a>Tworzenie i usuwanie rejestru
 
 Możliwość tworzenia i usuwania rejestry kontenerów platformy Azure.
 
 ## <a name="push-image"></a>Wypychanie obrazu
 
-Możliwość `docker push` obrazu, lub wypchnąć innego artefaktu obsługiwanych, do rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) za pomocą rejestru przy użyciu tożsamości autoryzowanych. 
+Możliwość `docker push` obrazu, lub wypchnąć innego [obsługiwane artefaktu](container-registry-image-formats.md) takie jak wykres Helm do rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) za pomocą rejestru przy użyciu tożsamości autoryzowanych. 
 
 ## <a name="pull-image"></a>Ściągnij obraz
 
-Możliwość `docker pull` innych niż-poddane kwarantannie obrazu lub innego artefaktu obsługiwanych, Ściągaj je z rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) za pomocą rejestru przy użyciu tożsamości autoryzowanych.
+Możliwość `docker pull` innych niż-poddane kwarantannie obrazu lub Ściągaj je innym [obsługiwane artefaktu](container-registry-image-formats.md) takie jak wykres Helm z rejestru. Wymaga [uwierzytelniania](container-registry-authentication.md) za pomocą rejestru przy użyciu tożsamości autoryzowanych.
 
 ## <a name="change-policies"></a>Zmiany zasad
 

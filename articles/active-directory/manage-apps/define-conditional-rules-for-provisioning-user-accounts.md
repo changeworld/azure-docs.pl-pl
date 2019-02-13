@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b4cdd9d9a1d5215b8e79d1412544be2b66fa02c
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6ebc6c1e8a264c5570f3100885c4fca7d0d0d90d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961333"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208383"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Aprowizacja aplikacji opartych na atrybutach z filtrami zakresu
 Celem tego artykułu jest wyjaśnienie, jak używać filtrów określania zakresu do zdefiniowania reguł opartych na atrybutach, określające, którzy użytkownicy są udostępnione do aplikacji.

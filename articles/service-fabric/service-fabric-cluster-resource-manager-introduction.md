@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096912"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203203"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Wprowadzenie do Menedżer zasobów klastra usługi Service Fabric
 Tradycyjnie Zarządzanie systemów informatycznych lub usługi online polegało na dedykowanym określonych fizycznych lub maszyn wirtualnych do tych określonych usług lub systemów. Usługi zostały zaprojektowana jako warstwy. Może to być warstwy "Internet" i "dane" lub "Magazyn" warstwy. Aplikacje będą mieć warstwa obsługi komunikatów, gdzie żądania przepływ wewnątrz i na zewnątrz, a także zestaw maszyn dedykowanego dla usługi pamięć podręczna. Każdą warstwę lub typu obciążenia ma określonych maszyn do niego w wersji dedykowanej: kilka maszyn w wersji dedykowanej, serwery sieci web w kilka stało się bazy danych. Określonego typu obciążenie spowodowane maszyn, które było do uruchomić zbyt gorąca, a następnie dodać więcej maszyn w tej samej konfiguracji dla tej warstwy. Jednak nie wszystkie obciążenia może być skalowana w poziomie tak łatwe — szczególnie z warstwą danych zazwyczaj spowodowałoby zastąpienie maszyn z większych maszyn. Łatwe. Maszyna nie powiodło się, część cała aplikacja był uruchamiany niższe osiągnięto maksymalną dopóki komputer może zostać przywrócona. Nadal dość proste (o ile nie zawsze przyjemne).
@@ -43,10 +43,6 @@ Menedżer zasobów klastra jest składnikiem systemu, który zajmuje się organi
 1. Wymuszanie reguł
 2. Optymalizowanie środowiska
 3. Pomoc w jak najlepszym z innymi procesami
-
-Aby zobaczyć, jak działa Menedżer zasobów klastra, obejrzyj poniższy film wideo Microsoft Virtual Academy: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
-<img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="what-it-isnt"></a>Co to jest
 W tradycyjnych N warstwy aplikacji ma zawsze [modułu równoważenia obciążenia](https://en.wikipedia.org/wiki/Load_balancing_(computing)). Zazwyczaj jest to moduł równoważenia obciążenia sieciowego (NLB) lub aplikacji obciążenia równoważenia (ALB) w zależności od tego, gdzie Sob w stosu sieciowego. Niektóre moduły równoważenia obciążenia sprzętowej jak firmy F5 BigIP oferty, inne są programowej takich jak Microsoft przez równoważenie obciążenia Sieciowego. W innych środowiskach można napotkać coś takich jak HAProxy, nginx, Istio lub usługa Envoy w tej roli. W tych architektur zadania równoważenia obciążenia jest upewnij się, że bezstanowe (około) otrzymywać tej samej ilości pracy. Strategie dotyczące równoważenia obciążenia zróżnicowane. Niektóre moduły równoważenia wysyłane każde wywołanie innego na innym serwerze. Inne podany przypinanie/lepkości sesji. Bardziej zaawansowane równoważenia umożliwia szacowania rzeczywistego obciążenia lub raportowania kierowanie wywołań, na podstawie jego oczekiwane koszty i bieżące obciążenie maszyny.

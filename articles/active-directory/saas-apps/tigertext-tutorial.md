@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
-ms.openlocfilehash: a3d03690107ca28ce961383c53e7e80468005de1
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 20bb003fbb8c6e7c1592618a8742f9b88882e358
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152913"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184146"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tigertext-secure-messenger"></a>Samouczek: Integracja usługi Azure Active Directory programu TigerText Secure Messenger
 
@@ -113,7 +114,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://saml-lb.tigertext.me/v1/organization/<instance Id>`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. Skontaktuj się z pomocą [zespołem pomocy technicznej w kliencie Secure TigerText](mailTo:prosupport@tigertext.com) aby zyskać tę wartość. 
+    > Ta wartość nie jest prawdziwa. Zaktualizuj tę wartość za pomocą rzeczywistego identyfikatora. Skontaktuj się z pomocą [zespołem pomocy technicznej w kliencie Secure TigerText](mailTo:prosupport@tigertext.com) aby zyskać tę wartość. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 

@@ -14,12 +14,13 @@ ms.topic: conceptual
 ms.date: 09/09/2018
 ms.author: celested
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 179bd519500d95755ef56331e26ff83d379e4c75
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c1926849c8ec63b4240d951e46b1341f31f7c5bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964887"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170350"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Dostosowywanie użytkownika aprowizacji mapowań atrybutów dla aplikacji SaaS w usłudze Azure Active Directory
 Microsoft Azure AD zapewnia obsługę aprowizacji użytkowników do aplikacji SaaS innych firm, takich jak Salesforce, Google Apps i innych. Jeśli aprowizacja użytkowników dla aplikacji SaaS innych firm, włączone, witryny Azure portal steruje jego wartości atrybutów w formie mapowania atrybutów.

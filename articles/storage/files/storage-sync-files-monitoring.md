@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 032b39846d19e34f2eb87c1311feeb4bb890cb24
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a14b0f2b01a0566a47cbcb02ee4315adcba9a90f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467462"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200806"
 ---
 # <a name="monitor-azure-file-sync"></a>Monitorowanie usługi Azure File Sync
 
@@ -29,7 +29,7 @@ W witrynie Azure portal można wyświetlić kondycji zarejestrowanego serwera, k
 
 ### <a name="storage-sync-service"></a>Usługa synchronizacji magazynu
 
-Aby wyświetlić zarejestrowanego serwera i kondycja punktu końcowego serwera, przejdź do usługi synchronizacji magazynu w witrynie Azure portal. Kondycja serwera zarejestrowane jest widoczne w bloku serwery zarejestrowane. Kondycja punktu końcowego serwera jest widoczne w bloku grupy synchronizacji.
+Aby wyświetlić kondycję zarejestrowanego serwera, kondycja punktu końcowego serwera i metryki, przejdź do usługi synchronizacji magazynu w witrynie Azure portal. Kondycja serwera zarejestrowane jest widoczne w bloku serwery zarejestrowane. Kondycja punktu końcowego serwera jest widoczne w bloku grupy synchronizacji.
 
 Kondycji zarejestrowanego serwera
 - Stan serwera zarejestrowanej jest Online, serwer jest pomyślnie komunikowania się z usługą.
@@ -38,6 +38,23 @@ Kondycji zarejestrowanego serwera
 Kondycja punktu końcowego serwera
 - Kondycja punktu końcowego serwera w portalu jest oparty na Synchronizuj zdarzenia, które są rejestrowane w dzienniku zdarzeń Telemetrii na serwerze (identyfikator 9102 i: 9302; lista). Jeśli sesję synchronizacji kończy się niepowodzeniem ze względu na błąd przejściowy (na przykład błąd anulowane), synchronizacja może nadal widoczne dobrej kondycji w witrynie portal tak długo, jak w bieżącej sesji synchronizacji jest postępy (identyfikator zdarzenia w: 9302; lista służy do określenia, jeśli pliki są stosowane). Zobacz następujące dokumentację, aby uzyskać więcej informacji: [Synchronizuj kondycji](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [synchronizacji postępu](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 - Jeśli w portalu jest wyświetlany błąd synchronizacji zaplanowanej synchronizacji nie wprowadzania postępu, sprawdź [dokumentacja dotycząca rozwiązywania problemów](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors) wskazówki.
+
+Metryki
+- Następujące metryki są wyświetlane w portalu usługi synchronizacji magazynu:
+
+  | Nazwa metryki | Opis | Blade(s) portalu | 
+  |-|-|-|
+  | Bajty synchronizowane | Rozmiar danych transferowanych (przekazywania i pobierania) | Grupy synchronizacji, punkt końcowy serwera |
+  | Wycofanie obsługi warstw w chmurze | Rozmiar danych przypomnieć | Zarejestrowane serwery |
+  | Pliki nie są synchronizowane | Liczba plików, które kończą się niepowodzeniem do synchronizacji | Punkt końcowy serwera |
+  | Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania) | Grupy synchronizacji, punkt końcowy serwera |
+  | Puls serwera | Liczba pulsów otrzymany z serwera | Zarejestrowane serwery |
+
+- Aby dowiedzieć się więcej, zobacz [usługi Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor) sekcji. 
+
+  > [!Note]  
+  > Wykresy w portalu usługi synchronizacji magazynu ma okresie 24 godzin. Aby wyświetlić zakresów w innym czasie lub wymiarów, należy użyć usługi Azure Monitor.
+
 
 ### <a name="azure-monitor"></a>Azure Monitor
 
@@ -52,7 +69,7 @@ Następujące metryki dla usługi Azure File Sync są dostępne w usłudze Azure
 | Bajty synchronizowane | Rozmiar danych transferowanych (przekazywania i pobierania).<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 | Wycofanie obsługi warstw w chmurze | Rozmiar danych odwołać.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa serwera |
 | Pliki nie są synchronizowane | Liczba plików, które kończą się niepowodzeniem do synchronizacji.<br><br>Jednostka: Licznik<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
-| Pliki synchronizowane | Liczba plików przekazane oraz pobrane.<br><br>Jednostka: Licznik<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
+| Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania).<br><br>Jednostka: Licznik<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 | Puls serwera | Liczba pulsów otrzymany z serwera.<br><br>Jednostka: Licznik<br>Typ agregacji: Maksimum<br>Wymiar dotyczy: Nazwa serwera |
 | Wynik sesji synchronizacji | Synchronizuj wynik sesji (1 = pomyślna synchronizacja sesji; 0 = sesję synchronizacji nie powiodło się)<br><br>Jednostka: Licznik<br>Typy agregacji: Maksimum<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 

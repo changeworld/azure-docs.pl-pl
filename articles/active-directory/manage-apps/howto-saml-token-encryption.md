@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: celested
 ms.reviewer: paulgarn
-ms.openlocfilehash: 21bd83511f09c3049c396e13161e02dead6e3459
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d3a2c79fd46b9c14f1bbb2794581746f6ff45cd6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100010"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179624"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Instrukcje: Konfigurowanie szyfrowania tokenu języka SAML programu Azure AD (wersja zapoznawcza)
 

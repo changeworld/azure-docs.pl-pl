@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą połączenia protokołu SAML środowiska wirtualnego ON24 | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą połączenia ON24 wirtualnego środowiska języka SAML | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i połączenia ON24 wirtualnego środowiska języka SAML.
 services: active-directory
 documentationCenter: na
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 1ec18f0013a7fa640395a8b8bedd9df8b0924c3a
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0827895d58b0b7633ee4543495014c62b5394312
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071242"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą połączenia ON24 wirtualnego środowiska języka SAML
 
@@ -29,7 +30,7 @@ Integrowanie ON24 wirtualnego środowiska języka SAML połączenia z usługą A
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do połączenia ON24 wirtualnego środowiska języka SAML.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do ON24 wirtualnego środowiska języka SAML połączenia (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -43,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD przy użyciu połączenia ON24 w
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -67,7 +68,7 @@ Aby skonfigurować integrację ON24 wirtualnego środowiska języka SAML połąc
 
     ![image](./media/on24-tutorial/a_select_app.png)
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![image](./media/on24-tutorial/a_new_app.png)
 
@@ -75,7 +76,7 @@ Aby skonfigurować integrację ON24 wirtualnego środowiska języka SAML połąc
 
      ![image](./media/on24-tutorial/tutorial_on24_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą ON24 wirtualnego środowiska języka SAML połączenia na podstawie użytkownika testu o nazwie "Britta Simon".
 
@@ -83,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego przy użyciu połączenia ON24 wirtualnego środowiska języka SAML, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 3. **[Tworzenie użytkownika testowego połączenia SAML środowiska wirtualnego ON24](#create-an-on24-virtual-environment-saml-connection-test-user)**  — aby odpowiednikiem Britta Simon w ON24 wirtualnego SAML połączenia ze środowiskiem połączonym z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji połączenia ON24 wirtualnego środowiska języka SAML.
 
@@ -107,7 +108,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![image](./media/on24-tutorial/b1_b2_saml_sso.png)
 
-4. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
     ![image](./media/on24-tutorial/b1-domains_and_urlsedit.png)
 
@@ -155,7 +156,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
      
     `https://qafederation.on24.com/sp/eyJ2c2lkIjoiU0FNTFFBLUVsaXRlQXVkaWVuY2Uub24yNC5jb20ifQ/ACS.saml2` 
 
-    c. Kliknij przycisk **Ustaw dodatkowe adresy URL**. 
+    c. Kliknij pozycję **Ustaw dodatkowe adresy URL**. 
 
     d. W **tan przekaźnika** pole tekstowe, wpisz adres URL: `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
 
@@ -165,27 +166,27 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![image](./media/on24-tutorial/tutorial_on24_certificate.png) 
 
-7. Aby skonfigurować logowanie jednokrotne na **ON24 wirtualnego środowiska języka SAML połączenia** stronie, musisz wysłać certyfikatu/metadanych, który został pobrany z witryny Azure portal do [ON24 wirtualnego środowiska języka SAML połączenia zespołu pomocy technicznej](https://www.on24.com/about-us/support/). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+7. Aby skonfigurować logowanie jednokrotne na **ON24 wirtualnego środowiska języka SAML połączenia** stronie, musisz wysłać certyfikatu/metadanych, który został pobrany z witryny Azure portal do [ON24 wirtualnego środowiska języka SAML połączenia zespołu pomocy technicznej](https://www.on24.com/about-us/support/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
     ![image](./media/on24-tutorial/d_users_and_groups.png)
 
-2. Wybierz **nowego użytkownika** w górnej części ekranu.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![image](./media/on24-tutorial/d_adduser.png)
 
-3. We właściwościach użytkownika wykonaj następujące czynności.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
     ![image](./media/on24-tutorial/d_userproperties.png)
 
-    a. W **nazwa** pola wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -194,7 +195,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-an-on24-virtual-environment-saml-connection-test-user"></a>Tworzenie użytkownika testowego połączenia ON24 wirtualnego środowiska języka SAML
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon ON24 wirtualnego środowiska języka SAML połączenia. Praca z [zespołem pomocy technicznej ON24 wirtualnego środowiska języka SAML połączenia](https://www.on24.com/about-us/support/) Aby dodać użytkowników na platformie ON24 wirtualnego środowiska języka SAML połączenia. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon ON24 wirtualnego środowiska języka SAML połączenia. Praca z [zespołem pomocy technicznej ON24 wirtualnego środowiska języka SAML połączenia](https://www.on24.com/about-us/support/) Aby dodać użytkowników na platformie ON24 wirtualnego środowiska języka SAML połączenia. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -208,7 +209,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![image](./media/on24-tutorial/tutorial_on24_app.png)
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
     ![image](./media/on24-tutorial/d_leftpaneusers.png)
 
@@ -216,9 +217,9 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![image](./media/on24-tutorial/d_assign_user.png)
 
-4. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+4. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
+5. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

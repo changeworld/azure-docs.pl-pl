@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
-ms.openlocfilehash: c1847d268d7776fba2892257bf0992d0e17a727f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 64edf2aa47211c1d2a598417a7b2edc00f260075
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152063"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56208575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>Samouczek: Integracja usługi Azure Active Directory z usługą ScaleX Enterprise
 
@@ -123,7 +124,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W **adres URL logowania** polu tekstowym wpisz wartość, przy użyciu następującego wzorca: `https://platform.rescale.com/saml2/<company id>/sso/`
      
     > [!NOTE] 
-    > Nie są to rzeczywiste wartości. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi lub adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej ScaleX Enterprise Client](https://info.rescale.com/contact_sales) do uzyskania tych wartości. 
+    > To nie są rzeczywiste wartości. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi lub adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej ScaleX Enterprise Client](https://info.rescale.com/contact_sales) do uzyskania tych wartości. 
 
 1. Aplikacja ScaleX oczekuje twierdzenia SAML w określonym formacie, który wymaga zmodyfikowania mapowania atrybutów niestandardowych, konfiguracji atrybuty tokenu języka SAML. Kliknij przycisk **Wyświetl i Edytuj wszystkie inne atrybuty użytkownika** pole wyboru umożliwiające otwarcie niestandardowe atrybuty ustawienia.
 

@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752096"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194241"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -70,7 +70,7 @@ Reset-StorageSyncServer
 Ten problem występuje, gdy **zwiększonych zabezpieczeń programu Internet Explorer** zasady są włączone podczas rejestracji serwera. Aby uzyskać więcej informacji na temat sposobu wyłączania poprawnie **zwiększonych zabezpieczeń programu Internet Explorer** zasad, zobacz [przygotowanie systemu Windows Server za pomocą usługi Azure File Sync](storage-sync-files-deployment-guide.md#prepare-windows-server-to-use-with-azure-file-sync) i [sposób wdrażania usługi Azure File Synchronizacja](storage-sync-files-deployment-guide.md).
 
 ## <a name="sync-group-management"></a>Zarządzanie grupami synchronizacji
-<a id="cloud-endpoint-using-share"></a>**Tworzenie punktu końcowego w chmurze zakończy się niepowodzeniem z powodu następującego błędu: "Określony udział plików platformy Azure jest już używany przez inny CloudEndpoint"**  
+<a id="cloud-endpoint-using-share"></a>**Tworzenie punktu końcowego w chmurze zakończy się niepowodzeniem z powodu następującego błędu: „Określony udział plików platformy Azure jest już używany przez inny punkt końcowy w chmurze”**  
 Ten problem występuje, gdy udział plików platformy Azure jest już używany przez inny punkt końcowy w chmurze. 
 
 Jeśli widzisz ten komunikat i udziału plików platformy Azure nie jest obecnie używany przez punkt końcowy w chmurze, wykonaj następujące kroki, aby wyczyścić metadanych usługi Azure File Sync w udziale plików platformy Azure:
@@ -145,7 +145,7 @@ Kondycja punktu końcowego serwera działania"nie" oznacza, że punkt końcowy s
 
 Punkt końcowy serwera nie mogą rejestrować działanie synchronizacji z następujących powodów:
 
-- Serwer ma aktywną sesję synchronizacji usługi VSS (SnapshotSync). Podczas sesji synchronizacji usługi VSS jest aktywny dla punktu końcowego serwera, inne punkty końcowe serwera, w tym samym woluminie nie można uruchomić sesji synchronizacji start zakończenie sesji synchronizacji Usługa VSS.
+- Wersja agenta 4.3.0.0 lub starsze jest zainstalowany, a serwer ma aktywną sesję synchronizacji usługi VSS (SnapshotSync). Podczas sesji synchronizacji usługi VSS jest aktywny dla punktu końcowego serwera, inne punkty końcowe serwera, w tym samym woluminie nie można uruchomić sesji synchronizacji start zakończenie sesji synchronizacji Usługa VSS. Aby rozwiązać ten problem, zainstaluj wersję agenta 5.0.2.0 lub nowszej obsługującą wielu punkty końcowe serwera synchronizacji na woluminie podczas VSS synchronizacji sesji jest aktywna.
 
     Aby sprawdzić bieżące działanie synchronizacji na serwerze, zobacz [jak monitorować postęp bieżącej sesji synchronizacji?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
@@ -538,7 +538,7 @@ Ten błąd występuje, ponieważ nie wprowadzono zmian w udziale plików platfor
 | **Ciąg błędu** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Wymagana korekta** | Yes |
 
-W przypadku których istnieje wiele na błędy synchronizacji plików, sesje synchronizacji może zacząć się nie powieść. Aby rozwiązać ten stan, zobacz [rozwiązywania problemów na błędy synchronizacji pliku lub katalogu]().
+W przypadku których istnieje wiele na błędy synchronizacji plików, sesje synchronizacji może zacząć się nie powieść. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
 > [!NOTE]
 > Usługa Azure File Sync tworzy migawkę usługi VSS tymczasowe raz dziennie na serwerze, aby synchronizować pliki, które mają otwarte dojścia.

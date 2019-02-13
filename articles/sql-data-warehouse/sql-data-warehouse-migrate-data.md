@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 11d41f9839456020ab65f11661c21f1e679cd76f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 77e4500b20be844dfad31db284a9c77ad7ec6bb7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770656"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118126"
 ---
 # <a name="migrate-your-data"></a>Migrowanie danych
 Dane mogą zostać przeniesione z różnych źródeł do usługi SQL Data Warehouse za pomocą różnych narzędzi.  Kopiuj ADF, SSIS i bcp wszystkie można na osiągnięcie tego celu. Jak ilość danych zwiększa należy myśleć o potężne proces migracji danych do kroków. Zapewnia możliwość optymalizacji każdego kroku na wydajność i odporność upewnić się, migrację danych smooth.
@@ -29,7 +29,7 @@ Jeśli danych jest uruchamiany w pliki proste, a następnie należy najpierw prz
 
 Program PolyBase jest także to rozwiązanie o wysokiej wydajności dla ładowania danych. Oznacza jednak, że za pomocą dwóch narzędzi, zamiast jednego. Jeśli potrzebujesz uzyskać najlepszą wydajność, przy użyciu technologii PolyBase. Jeśli chcesz, aby w środowisku jednego narzędzia (i dane nie są ogromne) usługi ADF jest odpowiedź.
 
-Postępuj zgodnie z [w tym samouczku]( /articles/data-factory/load-azure-sql-data-warehouse.md) dowiesz się, jak załadować dane do magazynu danych za pomocą usługi ADF.
+Postępuj zgodnie z [w tym samouczku](../data-factory/load-azure-sql-data-warehouse.md) dowiesz się, jak załadować dane do magazynu danych za pomocą usługi ADF.
 
 ## <a name="integration-services"></a>Usługi integracji
 Integration Services (SSIS) jest wydajny i elastyczny wyodrębniania, przekształcania i ładowania (ETL) narzędzie, które obsługuje złożone przepływy pracy, przekształcania danych i kilka opcji podczas ładowania danych. Po prostu przesyłanie danych, na platformie Azure lub w ramach szerszej migracji za pomocą usług SSIS.

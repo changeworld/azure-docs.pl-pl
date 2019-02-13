@@ -12,24 +12,24 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 787c10ab75a3534a73e04f1bd60462ea02fcf42a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 921dfc12a7353725d3f9e05d7aa3245ec8ba6084
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191721"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186010"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybierz rozmiar maszyny Wirtualnej dla węzłów obliczeniowych w puli usługi Azure Batch
 
-Po wybraniu węzła rozmiaru puli usługi Azure Batch, można wybrać spośród prawie wszystkich dostępnych rozmiarów maszyn wirtualnych na platformie Azure. Platforma Azure oferuje szeroką gamę rozmiarów dla systemów Linux i Windows maszyn wirtualnych w ramach różnych obciążeń. 
+Po wybraniu węzła rozmiaru puli usługi Azure Batch, można wybrać spośród prawie wszystkich dostępnych rozmiarów maszyn wirtualnych na platformie Azure. Platforma Azure oferuje szeroką gamę rozmiarów dla systemów Linux i Windows maszyn wirtualnych w ramach różnych obciążeń.
 
 Istnieje kilka wyjątków i ograniczenia, wybierając rozmiar maszyny Wirtualnej:
+
 * Niektóre rodzin maszyn wirtualnych lub rozmiarów maszyn wirtualnych nie są obsługiwane w usłudze Batch. 
 * Przykładowe rozmiary maszyn wirtualnych są ograniczone i muszą być włączone specjalnie, aby można je przypisać.
-
 
 ## <a name="supported-vm-families-and-sizes"></a>Obsługiwanych rodzin i rozmiarów maszyn
 
@@ -42,16 +42,16 @@ Pule usługi Batch w konfiguracji maszyny wirtualnej obsługuje wszystkie rozmia
 | Podstawowa — seria A | Basic_A0 (A0) |
 | Seria A | Standardowa_A0 |
 | Seria B | Wszyscy |
-| Seria DC | Wszyscy | 
+| Seria DC | Wszyscy |
 | Extreme zoptymalizowanych pod kątem pamięci | Wszyscy |
-| Seria HB<sup>1</sup> | Wszyscy | 
+| Seria HB<sup>1</sup> | Wszyscy |
 | Seria HC<sup>1</sup> | Wszyscy |
 | Seria Lsv2 | Wszyscy |
 | Seria NDv2<sup>1</sup> | Wszyscy |
-| Seria NVv2<sup>1</sup> | Wszyscy |
+| Seria NVv2 | Wszyscy |
 | SAP HANA | Wszyscy |
 
-<sup>1</sup> nie są obecnie obsługiwane, ale będą obsługiwane w przyszłości.
+<sup>1</sup> mogą być używane przez konta usługi Batch, w trybie subskrypcji użytkownika; w trybie subskrypcji użytkownika konta usługi Batch musi mieć ustawiony limit przydziału rdzeni. Zobacz [konfiguracji dla trybu subskrypcji użytkownika](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) Aby uzyskać więcej informacji.
 
 Następujących rozmiarów maszyn wirtualnych są obsługiwane tylko dla węzłów o niskim priorytecie:
 
@@ -74,6 +74,7 @@ Pule usługi Batch w konfiguracji usługi w chmurze obsługują wszystkie [rozmi
 ## <a name="restricted-vm-families"></a>Ograniczone rodzin maszyn wirtualnych
 
 Następujące rodzin maszyn wirtualnych może zostać alokowany w pule usługi Batch, ale należy zażądać zwiększenia limitu przydziału określone (zobacz [w tym artykule](batch-quota-limit.md#increase-a-quota)):
+
 * Seria NCv2
 * Seria NCv3
 * Seria ND
@@ -82,7 +83,7 @@ Te rozmiary należy używać tylko w pulach w konfiguracji maszyny wirtualnej.
 
 ## <a name="size-considerations"></a>Ograniczenia dotyczące rozmiaru
 
-* **Wymagania dotyczące aplikacji** — należy wziąć pod uwagę charakterystyki i wymagania aplikacji będą uruchamiane w węzłach. Takie czynniki jak to, czy aplikacja jest wielowątkowa oraz ile pamięci zużywa, mogą pomóc w wyborze najbardziej odpowiedniego i ekonomicznego rozmiar węzła. Dla wielu wystąpień [obciążeń MPI](batch-mpi.md) lub aplikacje CUDA, należy wziąć pod uwagę wyspecjalizowane [HPC](../virtual-machines/linux/sizes-hpc.md) lub [włączonymi procesorami GPU](../virtual-machines/linux/sizes-gpu.md) maszyny Wirtualne o rozmiarach, odpowiednio. (Zobacz [Użyj obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch](batch-pool-compute-intensive-sizes.md).) 
+* **Wymagania dotyczące aplikacji** — należy wziąć pod uwagę charakterystyki i wymagania aplikacji będą uruchamiane w węzłach. Takie czynniki jak to, czy aplikacja jest wielowątkowa oraz ile pamięci zużywa, mogą pomóc w wyborze najbardziej odpowiedniego i ekonomicznego rozmiar węzła. Dla wielu wystąpień [obciążeń MPI](batch-mpi.md) lub aplikacje CUDA, należy wziąć pod uwagę wyspecjalizowane [HPC](../virtual-machines/linux/sizes-hpc.md) lub [włączonymi procesorami GPU](../virtual-machines/linux/sizes-gpu.md) maszyny Wirtualne o rozmiarach, odpowiednio. (Zobacz [Użyj obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch](batch-pool-compute-intensive-sizes.md).)
 
 * **Zadań na węzeł** — jest zazwyczaj wybierz węzeł rozmiar zakładając, że jedno zadanie jest uruchamiane w węźle naraz. Jednak może być korzystne ma wiele zadań (i w związku z tym wiele wystąpień aplikacji) [równolegle](batch-parallel-node-tasks.md) w węzłach obliczeniowych podczas wykonywania zadania. W tym przypadku jest wspólnego, aby wybrać rozmiar węzła wyspecjalizowanymi w celu sprostania zwiększonemu zapotrzebowaniu na równoległe wykonywanie zadań podrzędnych.
 
@@ -97,6 +98,4 @@ Te rozmiary należy używać tylko w pulach w konfiguracji maszyny wirtualnej.
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby uzyskać szczegółowe omówienie usługi Batch, zobacz [tworzenie rozbudowanych rozwiązań przetwarzania równoległego przy użyciu usługi Batch](batch-api-basics.md).
-* Aby dowiedzieć się, jak za pomocą rozmiarów maszyn wirtualnych intensywnie korzystających z obliczeń, zobacz [Użyj obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch](batch-pool-compute-intensive-sizes.md). 
-
-
+* Aby dowiedzieć się, jak za pomocą rozmiarów maszyn wirtualnych intensywnie korzystających z obliczeń, zobacz [Użyj obsługą dostępu RDMA lub włączonymi procesorami GPU wystąpień w pulach usługi Batch](batch-pool-compute-intensive-sizes.md).

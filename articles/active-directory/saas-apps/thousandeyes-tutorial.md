@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
-ms.openlocfilehash: 06de55fd2bd1064e93e38fe0ff0cfb13fdc1463a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 43aa43d37099d69441a5dde47327e784d67fa9ac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175438"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189450"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thousandeyes"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą ThousandEyes
 
@@ -128,7 +129,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W oknie przeglądarki internetowej innej, zaloguj się na swoje **ThousandEyes** witryny firmy jako administrator.
 
-1. W menu u góry kliknij **ustawienia**.
+1. W menu u góry kliknij pozycję **Settings** (Ustawienia).
 
     ![Ustawienia](./media/thousandeyes-tutorial/ic790066.png "Ustawienia")
 
@@ -199,7 +200,7 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Thousa
 
     ![Ustawienia](./media/thousandeyes-tutorial/IC790066.png "Ustawienia")
 
-1. Kliknij przycisk **konta**.
+1. Kliknij pozycję **Account** (Konto).
 
     ![Konto](./media/thousandeyes-tutorial/IC790067.png "konta")
 

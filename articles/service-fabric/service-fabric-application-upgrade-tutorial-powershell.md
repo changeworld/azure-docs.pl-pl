@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 0f134bdb4f77034dd124027fc960d172d25db721
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: e11ac55afe41231fcbc3aabb3ef54b46108eb49c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515322"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185859"
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>Uaktualnianie aplikacji usługi Service Fabric przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -34,9 +34,7 @@ Najczęściej używane i uaktualnienia zaleca monitorowanych uaktualnienia stopn
 
 Uaktualnienie monitorowanej aplikacji mogą być wykonywane przy użyciu zarządzane lub natywne interfejsy API, PowerShell, interfejsu wiersza polecenia platformy Azure, Java lub REST. Aby uzyskać instrukcje dotyczące wykonywania uaktualnienia przy użyciu programu Visual Studio, zobacz [uaktualnianie aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md).
 
-Za pomocą usługi Service Fabric monitorowane stopniowe administrator aplikacji można skonfigurować zasady oceny kondycji, korzystającą z usługi Service Fabric w celu ustalenia, czy aplikacja jest w dobrej kondycji. Ponadto administrator może skonfigurować akcję do wykonania, kiedy nie powiedzie się Ocena kondycji (na przykład podczas automatycznego wycofywania.) W tej sekcji przedstawiono uaktualniania monitorowanych przy użyciu jednego z przykładowych zestawach SDK, które używa programu PowerShell. Następujące Microsoft Virtual Academy wideo przeprowadzi Cię również uaktualnienie aplikacji: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=OrHJH66yC_6406218965">
-<img src="./media/service-fabric-application-upgrade-tutorial-powershell/AppLifecycleVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
+Za pomocą usługi Service Fabric monitorowane stopniowe administrator aplikacji można skonfigurować zasady oceny kondycji, korzystającą z usługi Service Fabric w celu ustalenia, czy aplikacja jest w dobrej kondycji. Ponadto administrator może skonfigurować akcję do wykonania, kiedy nie powiedzie się Ocena kondycji (na przykład podczas automatycznego wycofywania.) W tej sekcji przedstawiono uaktualniania monitorowanych przy użyciu jednego z przykładowych zestawach SDK, które używa programu PowerShell. 
 
 ## <a name="step-1-build-and-deploy-the-visual-objects-sample"></a>Krok 1: Tworzenie i wdrażanie przykładu obiektów wizualnych
 Tworzenie i publikowanie aplikacji, klikając prawym przyciskiem myszy projekt aplikacji **VisualObjectsApplication,** i wybierając polecenie **Publikuj** polecenia.  Aby uzyskać więcej informacji, zobacz [samouczek dotyczący uaktualniania aplikacji usługi Service Fabric](service-fabric-application-upgrade-tutorial.md).  Alternatywnie można użyć programu PowerShell do wdrażania aplikacji.
@@ -76,7 +74,7 @@ Teraz *ApplicationManifest.xml* pliku (znajdującym się **VisualObjects** proje
 
 Teraz, skompiluj projekt, wybierając tylko **ActorService** projektu, a następnie kliknij prawym przyciskiem myszy i wybierając **kompilacji** w programie Visual Studio. Jeśli wybierzesz **ponowna kompilacja**, należy zaktualizować wersje dla wszystkich projektów, ponieważ kod może zostać zmieniona. Następnie możemy pakietu zaktualizowaną aplikację, klikając prawym przyciskiem myszy ***VisualObjectsApplication***, wybierając z Menu usługi Service Fabric i wybierając **pakietu**. Ta akcja powoduje utworzenie pakietu aplikacji, które można wdrożyć.  Zaktualizowano aplikacja jest gotowa do wdrożenia.
 
-## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Krok 3: Wybierz zasady dotyczące kondycji i parametry uaktualniania
+## <a name="step-3--decide-on-health-policies-and-upgrade-parameters"></a>Krok 3:  Podejmij decyzję zasady dotyczące kondycji i parametry uaktualniania
 Zapoznaj się z [parametry uaktualniania aplikacji](service-fabric-application-upgrade-parameters.md) i [procesu uaktualniania](service-fabric-application-upgrade.md) uzyskać dobre zrozumienie różnych parametry uaktualniania, limity czasu i kondycji kryterium stosowane. W tym przewodniku kryterium oceny kondycji usługi jest wartość domyślną (i zalecana) wartości, które oznacza, że wszystkie usługi i wystąpień powinna być *dobrej kondycji* po uaktualnieniu.  
 
 Jednak umożliwia zwiększenie *HealthCheckStableDuration* do 180 sekund (tak, aby te usługi są w dobrej kondycji przez co najmniej 120 sekund przed uaktualnienia przechodzi do następnej domeny aktualizacji).  Załóżmy również ustawić *UpgradeDomainTimeout* jako 1200 sekund i *UpgradeTimeout* do 3000 sekund.
@@ -116,7 +114,7 @@ Zalecane jest, usuń pakiet aplikacji, po pomyślnym zarejestrowaniu aplikacji. 
 Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore "VisualObjects\_V2" -ImageStoreConnectionString fabric:ImageStore
 ```
 
-## <a name="step-5-start-the-application-upgrade"></a>Krok 5: Uruchom operację uaktualniania aplikacji
+## <a name="step-5-start-the-application-upgrade"></a>Krok 5. Uruchom operację uaktualniania aplikacji
 Teraz jesteśmy gotowi do rozpoczęcia uaktualnienia aplikacji za pomocą [Start ServiceFabricApplicationUpgrade](/powershell/module/servicefabric/start-servicefabricapplicationupgrade?view=azureservicefabricps) polecenia:
 
 ```powershell

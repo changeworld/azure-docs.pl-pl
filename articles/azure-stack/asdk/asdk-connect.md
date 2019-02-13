@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 44f12c72716e98e2f28796359467685e0af579dd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42b67ae9b715670f1a0c6e0fed004487a52817d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238251"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206484"
 ---
 # <a name="connect-to-the-asdk"></a>Nawiązać połączenie z ASDK
 
 Aby zarządzać zasobami, musisz najpierw połączyć do usługi Azure Stack Development Kit (ASDK). W tym artykule opisano kroki, które należy wykonać w celu nawiązywanie ASDK przy użyciu następujących opcji połączenia:
 
 * [Podłączanie pulpitu zdalnego (RDP)](#connect-with-rdp). Po nawiązaniu połączenia za pomocą połączenia pulpitu zdalnego, pojedynczego użytkownika może szybko nawiązać połączenie deweloperski.
-* [Wirtualna sieć prywatna (VPN)](#connect-with-vpn). Po nawiązaniu połączenia za pośrednictwem sieci VPN, wielu użytkowników jednocześnie połączyć z klientom spoza infrastruktury Azure Stack. Połączenie sieci VPN wymaga konfiguracji.
+* [Wirtualna sieć prywatna (VPN)](#connect-with-vpn). Po nawiązaniu połączenia za pośrednictwem sieci VPN, wielu użytkowników może jednocześnie nawiązać portali usługi Azure Stack od klientów poza infrastruktury Azure Stack. Połączenie sieci VPN wymaga konfiguracji.
 
 <a name="connect-with-rdp"></a>
 ## <a name="connect-to-azure-stack-using-rdp"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu protokołu RDP

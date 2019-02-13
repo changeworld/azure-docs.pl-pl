@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/26/2018
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: c0a1d2bf1d7a103ad473cadb1528bd9b9a4c90de
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: fab8ec5a6ca94d2f30ec47da390885339adf8b43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488020"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192221"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.
@@ -46,7 +46,7 @@ Usługa Azure File Sync będą działać przez wszystkie środki, dzięki czemu 
 ## <a name="proxy"></a>Serwer proxy
 Usługa Azure File Sync wspiera ustawienia serwera proxy dla aplikacji i komputera.
 
-**Ustawienia specyficzne dla aplikacji serwera proxy** zezwala na konfigurację serwera proxy dla usługi Azure File Sync ruchu. Ustawienia proxy specyficzny dla aplikacji są obsługiwane w wersji agenta 4.0.1.0 lub nowszej, a także można skonfigurować podczas instalacji agenta lub za pomocą polecenia cmdlet programu PowerShell Set-StorageSyncProxyConfiguration.
+**Ustawienia specyficzne dla aplikacji serwera proxy** zezwala na konfigurację serwera proxy dla usługi Azure File Sync ruchu. Ustawienia specyficzne dla aplikacji serwera proxy są obsługiwane w wersji agenta 4.0.1.0 lub nowszej, a także można skonfigurować podczas instalacji agenta lub za pomocą polecenia cmdlet programu PowerShell Set-StorageSyncProxyConfiguration.
 
 Polecenia programu PowerShell, aby skonfigurować ustawienia specyficzne dla aplikacji serwera proxy:
 ```PowerShell
@@ -100,7 +100,7 @@ W poniższej tabeli opisano domen wymagana dla komunikacji:
 | **Azure Active Directory** | https://graph.windows.net/ | W ramach wdrażania usługi Azure File Sync nazwy głównej usługi dla subskrypcji usługi Azure Active Directory zostanie utworzona. Ten adres URL jest używany w tym. Ta jednostka służy delegowania minimalny zestaw praw do usługi Azure File Sync. Użytkownik wykonujący początkowej konfiguracji usługi Azure File Sync musi być uwierzytelniony użytkownik z uprawnieniami właściciela subskrypcji. |
 | **Azure Storage** | &ast;.core.windows.net | Gdy serwer pobiera plik, następnie serwera wykonuje tego przepływu danych bardziej wydajnie w przypadku bezpośrednio do udziału plików platformy Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu Współdzielonego, który zezwala tylko na dostęp do udziału plików docelowych. |
 | **Azure File Sync** | &ast;.one.microsoft.com | Po zarejestrowaniu serwera początkowego serwer odebrał regionalnego adresu URL dla wystąpienia usługi Azure File Sync, w tym regionie. Serwer może komunikować się bezpośrednio i efektywnie z wystąpieniem, Obsługa synchronizację za pomocą adresu URL. |
-| **Microsoft PKI** | http://ocsp.msocsp.com | Po zainstalowaniu agenta usługi Azure File Sync adres URL infrastruktury kluczy publicznych jest używany do pobrania certyfikatów pośrednich wymagany do komunikowania się z usługą Azure File Sync i udziału plików platformy Azure. Adres URL protokołu OCSP służy do sprawdzania stanu certyfikatu. |
+| **Microsoft PKI** | https://www.microsoft.com/pki/mscorp<br>http://ocsp.msocsp.com | Po zainstalowaniu agenta usługi Azure File Sync adres URL infrastruktury kluczy publicznych jest używany do pobrania certyfikatów pośrednich wymagany do komunikowania się z usługą Azure File Sync i udziału plików platformy Azure. Adres URL protokołu OCSP służy do sprawdzania stanu certyfikatu. |
 
 > [!Important]
 > Gdy zezwala na ruch do &ast;. one.microsoft.com, ruch do więcej niż tylko usługa synchronizacji jest możliwe z serwera. Istnieje wiele więcej usług firmy Microsoft są dostępne w obszarze domen podrzędnych.

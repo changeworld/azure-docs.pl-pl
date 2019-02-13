@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: jeedes
-ms.openlocfilehash: deb7cf8368c5830bd575c617adf857448cfe2e48
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f10e2bb6e6c3e3521d9a2f1257dae401fae674ee
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166497"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą mindWireless
 
@@ -137,7 +138,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
 
-    d. W **Namespace** polu tekstowym wpisz wartość przestrzeni nazw wyświetlanego dla tego wiersza.
+    d. W polu tekstowym **Przestrzeń nazw** wpisz wartość przestrzeni nazw pokazaną dla tego wiersza.
     
     e. Kliknij przycisk **OK**.
     

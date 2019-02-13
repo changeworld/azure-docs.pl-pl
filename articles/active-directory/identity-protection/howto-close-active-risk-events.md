@@ -16,14 +16,15 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 222f17541de902ee2180b66563857ccd2193ba54
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 50448cc5d4fe6714aa0cd29216209506eccf7a7c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178311"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201622"
 ---
-# <a name="how-to-close-active-risk-events"></a>Jak: Zamykanie aktywnych zdarzeń o podwyższonym ryzyku
+# <a name="how-to-close-active-risk-events"></a>Instrukcje: Zamykanie aktywnych zdarzeń o podwyższonym ryzyku
 
 Za pomocą [zdarzeń o podwyższonym ryzyku](../reports-monitoring/concept-risk-events.md), Azure Active Directory wykrywa wskaźniki dla kont użytkowników mogą mieć złamane zabezpieczenia. Jako administrator chcesz pobrać wszystkie zdarzenia o podwyższonym ryzyku zamknięte, tak aby narażeni użytkownicy nie są już na ryzyko.
 

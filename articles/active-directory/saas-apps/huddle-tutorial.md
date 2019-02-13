@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 3ec78c7dc3ac3ce9747a09218e1e35068c60b894
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 73beb4ba039db65c20886566f887db39fd233164
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187729"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą zbijają się
 
@@ -150,7 +151,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | |
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwa. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta zbijają się](https://huddle.zendesk.com) aby zyskać tę wartość.
+    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta zbijają się](https://huddle.zendesk.com) aby zyskać tę wartość.
 
 6. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** strony w **certyfikat podpisywania SAML** , kliknij przycisk **Pobierz** można pobrać odpowiedni certyfikat zgodnie z wymagania i zapisz go na komputerze.
 
@@ -212,7 +213,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do zbijają się, m
 
     b. Typ **adres E-mail** prawidłowe platformy Azure konto usługi AD, w którym chcesz udostępnić w celu **wprowadź adres e-mail osoby, które chcesz zaprosić** pola tekstowego.
 
-    c. Kliknij przycisk **zaprosić**.
+    c. Kliknij pozycję **Invite** (Zaproś).
 
     >[!NOTE]
     > Właściciel konta usługi Azure AD zostanie wysłana wiadomość e-mail, w tym link do potwierdzenia konta, zanim stanie się aktywny.

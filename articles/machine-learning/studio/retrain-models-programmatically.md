@@ -10,20 +10,17 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: fe7825922d9333d058d9a33d5643850c368d3457
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 474355088a339741b8dd1917fb354d55df4990f6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511398"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189195"
 ---
 # <a name="retrain-azure-machine-learning-studio-models-programmatically"></a>Programowe ponowne trenowanie modeli usługi Azure Machine Learning Studio
 W tym instruktażu będą nauczysz się programowe ponowne trenowanie korzystając usługi sieci web Azure Machine Learning Studio C# i usługa Machine Learning Batch Execution.
 
-Po mają retrained modelu, poniższe przewodniki pokazują, jak zaktualizować model w swojej predykcyjną usługę sieci web:
-
-* Jeśli wdrożono klasycznej usługi sieci web w portalu usług sieci Web Machine Learning, zobacz [Ponowne szkolenie klasycznej usługi sieci web](retrain-a-classic-web-service.md). 
-* Jeśli wdrożono nowej usługi sieci web, zobacz [Ponowne szkolenie nowej usługi sieci web przy użyciu poleceń cmdlet zarządzania w usłudze Machine Learning](retrain-new-web-service-using-powershell.md).
+Po mają retrained modelu, zapoznaj się z [Ponowne szkolenie nowej usługi sieci web przy użyciu poleceń cmdlet zarządzania w usłudze Machine Learning](retrain-new-web-service-using-powershell.md) aby zobaczyć, jak można zaktualizować modelu w swojej predykcyjną usługę sieci web:
 
 Omówienie ponownego trenowania procesu, zobacz [Ponowne szkolenie modelu uczenia maszynowego](retrain-machine-learning-model.md).
 
@@ -165,9 +162,8 @@ Sprawdź wyniki, aby ustalić, czy nowo uczonego modelu wykonuje wystarczająco 
 Kopiuj *BaseLocation*, *RelativeLocation*, i *SasBlobToken* z wyników danych wyjściowych, użyjesz ich w procesie ponownego trenowania.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Jeśli wdrożono predykcyjną usługę sieci web, klikając **wdrażanie usługi sieci Web [klasyczny]**, zobacz [Ponowne szkolenie klasycznej usługi sieci web](retrain-a-classic-web-service.md).
 
-Jeśli wdrożono predykcyjną usługę sieci web, klikając **wdrażanie usługi sieci Web [New]**, zobacz [Ponowne szkolenie nowej usługi sieci web przy użyciu poleceń cmdlet zarządzania w usłudze Machine Learning](retrain-new-web-service-using-powershell.md).
+ [Ponowne szkolenie nowej usługi sieci web przy użyciu poleceń cmdlet zarządzania w usłudze Machine Learning](retrain-new-web-service-using-powershell.md).
 
 <!-- Retrain a New web service using the Machine Learning Management REST API -->
 

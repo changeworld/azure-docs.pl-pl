@@ -2,17 +2,17 @@
 title: Usługa Azure Key Vault — jak używać usuwania nietrwałego za pomocą interfejsu wiersza polecenia
 description: Wielkość przykłady usuwania nietrwałego za pomocą wycinki kodu interfejsu wiersza polecenia
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: bryanla
-ms.openlocfilehash: 242398eb0bb4d4ddd2764bd66c99a7f9603ea1b9
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f0c1db2274eea6281bd4a350909b79d048ad21c4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663948"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116727"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia
 
@@ -226,5 +226,5 @@ Wyświetlanie listy obiektów usuniętych usługi key vault pokazuje również, 
 ## <a name="other-resources"></a>Inne zasoby
 
 - Aby uzyskać omówienie funkcji usuwania nietrwałego w usłudze Key Vault, zobacz [omówienie usuwania nietrwałego w usłudze Azure Key Vault](key-vault-ovw-soft-delete.md).
-- Aby uzyskać ogólne omówienie użycia usługi Azure Key Vault, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md).
+- Aby uzyskać ogólne omówienie użycia usługi Azure Key Vault, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md).
 

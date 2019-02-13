@@ -14,21 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87081398e844f1e2b085a7e12c2b7aafce330ec9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194291"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193768"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Wprowadzenie do monitorowania kondycji usługi Service Fabric
 Usługa Azure Service Fabric wprowadza modelu kondycji, który umożliwia ocenę kondycji funkcjonalnej, elastyczny i rozszerzalny i raportowania. Model umożliwia monitorowanie stanu klastra i usługi działające w niej niemal w czasie rzeczywistym. Można łatwo uzyskać informacje o kondycji i rozwiązać potencjalne problemy zanim będą oni kaskadowo i spowodować ogromne awarii. W typowym modelu services wysłać raporty oparte na ich lokalnych widokach i że informacje mają charakter zapewnienie ogólną klastra na poziomie widoku.
 
 Składniki usługi Service Fabric umożliwia ten model kondycji sformatowanego raportu wraz z bieżącym stanem. Umożliwia ten sam mechanizm kondycji raportu z poziomu aplikacji. Użytkownik inwestujący w raportowania stanu wysokiej jakości, która przechwytuje swoje warunki niestandardowe, można wykryć i znacznie łatwiejsze Rozwiązywanie problemów dla uruchomionej aplikacji.
-
-Poniższy klip wideo Microsoft Virtual Academy również w tym artykule opisano model kondycji usługi Service Fabric i sposobie ich użycia: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 > [!NOTE]
 > Rozpoczęliśmy podsystemu kondycji spełnić potrzeby monitorowanych uaktualnień. Usługa Service Fabric udostępnia monitorowanych uaktualnień aplikacji i klastra, które zapewniają pełną dostępność, bez przestojów i minimalnym nie interwencji użytkownika. Aby osiągnąć te cele, uaktualnienie sprawdza, czy kondycji na podstawie skonfigurowanych zasad uaktualniania. Można kontynuować uaktualniania, tylko wtedy, gdy kondycja szanuje odpowiednie progi. W przeciwnym razie uaktualnienie jest automatycznie wycofane lub wstrzymana umożliwiają administratorom szansy do rozwiązywania problemów. Aby dowiedzieć się więcej na temat uaktualniania aplikacji, zobacz [w tym artykule](service-fabric-application-upgrade.md).
