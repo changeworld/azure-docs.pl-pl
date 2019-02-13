@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 56d637fd1aec05089e4f20c9205f648934594cc6
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4875464d7e7a7f49c1532871a69f4d2224b271a6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981251"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108249"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Szyfrowanie dysków wirtualnych w maszyny Wirtualnej z systemem Windows
 Rozszerzone maszynę wirtualną (VM), zabezpieczeń i zgodności mogą być szyfrowane dyski wirtualne na platformie Azure. Dyski są szyfrowane przy użyciu kluczy kryptograficznych, które są zabezpieczone w usłudze Azure Key Vault. Możesz kontrolować klucze kryptograficzne i przeprowadzać ich inspekcje ich użycie. W tym artykule opisano sposób szyfrowania dysków wirtualnych w maszyny Wirtualnej z systemem Windows przy użyciu programu Azure PowerShell. Możesz również [szyfrowania maszyny Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure](../linux/encrypt-disks.md).
@@ -87,7 +87,7 @@ New-AzKeyVault -Location $location `
 
 Można przechowywać klucze kryptograficzne przy użyciu oprogramowania lub ochrona sprzętu modelu zabezpieczeń (HSM).  Standardowa usługi Key Vault przechowuje tylko klucze chronione programowo. Korzystanie z modułu HSM wymaga premium usługi Key Vault bez dodatkowych kosztów. Aby utworzyć premium usługi Key Vault, w poprzednim kroku należy dodać *- jednostki Sku "Premium"* parametru. W poniższym przykładzie użyto kluczy chronionych programowo, ponieważ utworzyliśmy standardowe usługi Key Vault. 
 
-Oba modele ochrony platformy Azure musi otrzymać dostęp do zażądać kluczy kryptograficznych w przypadku, gdy maszyna wirtualna zostanie do odszyfrowania dysków wirtualnych. Utwórz klucz kryptograficzny w usłudze Key Vault przy użyciu [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azurekeyvaultkey). Poniższy przykład tworzy klucz o nazwie *klucze*:
+Oba modele ochrony platformy Azure musi otrzymać dostęp do zażądać kluczy kryptograficznych w przypadku, gdy maszyna wirtualna zostanie do odszyfrowania dysków wirtualnych. Utwórz klucz kryptograficzny w usłudze Key Vault przy użyciu [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey). Poniższy przykład tworzy klucz o nazwie *klucze*:
 
 ```azurepowershell-interactive
 Add-AzureKeyVaultKey -VaultName $keyVaultName `

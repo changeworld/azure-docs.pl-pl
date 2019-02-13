@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: jeedes
-ms.openlocfilehash: 283f8c935556006a21812578d0638b72adb6eed0
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5b367befb90ec28ece963d67b479749e1c8ad363
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908231"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175323"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-securew2-joinnow-connector"></a>Samouczek: Integracja usługi Azure Active Directory z łącznikiem JoinNow SecureW2
 
@@ -29,7 +30,7 @@ Integrowanie SecureW2 JoinNow łącznika z usługą Azure AD zapewnia następuj�
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do gniazda JoinNow SecureW2.
 - Użytkowników, aby automatycznie uzyskać zalogowanych do łącznika JoinNow SecureW2 (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -37,15 +38,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą łącznika JoinNow SecureW2, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Łącznik JoinNow SecureW2 logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -59,7 +60,7 @@ Aby skonfigurować integrację SecureW2 JoinNow łącznika do usługi Azure AD, 
 
 **Aby dodać SecureW2 JoinNow łącznika z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -67,15 +68,15 @@ Aby skonfigurować integrację SecureW2 JoinNow łącznika do usługi Azure AD, 
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **SecureW2 JoinNow łącznika**, wybierz opcję **SecureW2 JoinNow łącznika** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Łącznik JoinNow SecureW2 na liście wyników](./media/securejoinnow-tutorial/tutorial_securejoinnow_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą łącznika JoinNow SecureW2 oparte na użytkownika testu o nazwie "Britta Simon".
 
@@ -83,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą łącznika JoinNow SecureW2, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 3. **[Tworzenie użytkownika testowego łącznika JoinNow SecureW2](#create-a-securew2-joinnow-connector-test-user)**  — aby odpowiednikiem Britta Simon w SecureW2 JoinNow łącznik, który jest połączony z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji SecureW2 JoinNow łącznika.
 
@@ -97,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **łącznika JoinNow SecureW2** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -107,12 +108,12 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![SecureW2 JoinNow łącznika domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/securejoinnow-tutorial/tutorial_securejoinnow_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<organization-identifier>-auth.securew2.com/auth/saml/SSO`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<organization-identifier>-auth.securew2.com/auth/saml/SSO`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<organization-identifier>-auth.securew2.com/auth/saml`
+    b. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<organization-identifier>-auth.securew2.com/auth/saml`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta łącznika JoinNow SecureW2](mailto:support@securew2.com) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL i identyfikatora logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta łącznika JoinNow SecureW2](mailto:support@securew2.com) do uzyskania tych wartości. 
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -120,9 +121,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/securejoinnow-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/securejoinnow-tutorial/tutorial_general_400.png)
 
-6. Aby skonfigurować logowanie jednokrotne na **SecureW2 JoinNow łącznika** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej SecureW2 JoinNow łącznika](mailto:support@securew2.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+6. Aby skonfigurować logowanie jednokrotne na **SecureW2 JoinNow łącznika** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej SecureW2 JoinNow łącznika](mailto:support@securew2.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -154,11 +155,11 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
  
 ### <a name="create-a-securew2-joinnow-connector-test-user"></a>Tworzenie użytkownika testowego SecureW2 JoinNow łącznika
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w łączniku JoinNow SecureW2. Praca z [zespołem pomocy technicznej klienta łącznika JoinNow SecureW2](mailto:support@securew2.com) Aby dodać użytkowników na platformie SecureW2 JoinNow łącznika. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w łączniku JoinNow SecureW2. Praca z [zespołem pomocy technicznej klienta łącznika JoinNow SecureW2](mailto:support@securew2.com) Aby dodać użytkowników na platformie SecureW2 JoinNow łącznika. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -200,10 +201,10 @@ b. Powinna zostać otwarta w domyślnej przeglądarce i powinna być skierowana 
 
 c. Na pomyślne uwierzytelnienie powinien zwrócić powrót do strony początkowej docelowej SecureW2 JoinNow łącznika.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

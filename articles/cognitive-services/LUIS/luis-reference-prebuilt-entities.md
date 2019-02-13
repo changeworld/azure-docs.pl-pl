@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: 60acd381015a513873c4c414d6f1d9f3adc54b84
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 880c825ab8923dbdf17277a51378b6f4b624e091
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870320"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179900"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Jednostki na kulturę w modelu usługi LUIS
 
@@ -34,6 +34,7 @@ Language Understanding (LUIS) oferuje wstępnie utworzonych jednostek. W przypad
 |Koreański|[ko-KR](#korean-entity-support)|
 |Portugalski|[pt-BR (Brazylia)](#portuguese-brazil-entity-support)|
 |Hiszpański|[es-ES (Hiszpania)](#spanish-spain-entity-support), [es-MX (Meksyk)](#spanish-mexico-entity-support)|
+|Turecki|[Turecki](#turkish-entity-support)|
 
 ## <a name="chinese-entity-support"></a>Obsługa chińskich jednostki
 
@@ -51,7 +52,7 @@ Są obsługiwane w następujących elementach:
 [Liczba](luis-reference-prebuilt-number.md)   |    ✔   |  
 [Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    ✔   |  
 [Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    ✔   | 
-[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    ✔   | 
 [Numer telefonu](luis-reference-prebuilt-phonenumber.md)   |    ✔   | 
 [Temperatura](luis-reference-prebuilt-temperature.md):<br>f<br>kelvin<br>Rankina<br>delisle<br>c   |    ✔   | 
 [Adres URL](luis-reference-prebuilt-url.md)   |    ✔   |
@@ -169,7 +170,7 @@ Są obsługiwane w następujących elementach:
 ------|:------:|
 [Wiek](luis-reference-prebuilt-age.md):<br>rok<br>miesiąc<br>tydzień<br>dzień   |    ✔   |
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -190,7 +191,7 @@ Są obsługiwane w następujących elementach:
 ------|:------:|
 [Wiek](luis-reference-prebuilt-age.md):<br>rok<br>miesiąc<br>tydzień<br>dzień   |    ✔   |
 [Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    ✔   |
-[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    ✔   | 
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   | 
 [Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    ✔   | 
 [Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    ✔   | 
 [GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
@@ -290,6 +291,32 @@ Są obsługiwane w następujących elementach:
 Zobacz uwagi na [przestarzałe ze wstępnie utworzonych jednostek](luis-reference-prebuilt-deprecated.md)
 
 KeyPhrase nie jest dostępny w wszystkich podhodowli z portugalski (Brazylia) — ```pt-BR```.
+
+## <a name="turkish-entity-support"></a>Obsługa jednostki turecki
+
+Są obsługiwane w następujących elementach:
+
+|Wstępnie utworzone jednostki|```tr-tr``` |
+------|:------:|
+[Wiek](luis-reference-prebuilt-age.md):<br>rok<br>miesiąc<br>tydzień<br>dzień   |    -   |
+[Waluty (pieniędzy)](luis-reference-prebuilt-currency.md):<br>Dolar<br>ułamkowe jednostki (np: penny)  |    -   |
+[DatetimeV2](luis-reference-prebuilt-datetimev2.md):<br>date<br>DateRange<br>time<br>timerange   |    -   | 
+[Wymiar](luis-reference-prebuilt-dimension.md):<br>wolumin<br>Obszar<br>Waga<br>informacje o (np: bitowy/bajtów)<br>długość (np: miernika)<br>szybkość (np: mil na godzinę)  |    -   | 
+[Wiadomość e-mail](luis-reference-prebuilt-email.md)   |    -   | 
+[GeographyV2](luis-reference-prebuilt-geographyV2.md)   |    -   | 
+[KeyPhrase](luis-reference-prebuilt-keyphrase.md)   |    -   | 
+[Liczba](luis-reference-prebuilt-number.md)   |    -   |  
+[Liczba porządkowa](luis-reference-prebuilt-ordinal.md)   |    -   |  
+[Wartość procentowa](luis-reference-prebuilt-percentage.md)   |    -   | 
+[PersonName](luis-reference-prebuilt-person.md)   |    -   | 
+[Numer telefonu](luis-reference-prebuilt-phonenumber.md)   |    -   | 
+[Temperatura](luis-reference-prebuilt-temperature.md):<br>f<br>kelvin<br>Rankina<br>delisle<br>c   |    -   | 
+[Adres URL](luis-reference-prebuilt-url.md)   |    -   |
+
+Zobacz uwagi na [przestarzałe ze wstępnie utworzonych jednostek](luis-reference-prebuilt-deprecated.md)
+
+KeyPhrase nie jest dostępna.
+
 
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>Współtworzenie kultur wstępnie utworzone jednostki
 Wstępnie utworzone jednostki są opracowywane w projekcie typu open-source aparatów rozpoznawania tekstu. [Współtworzenie](https://github.com/Microsoft/Recognizers-Text) do projektu. Ten projekt zawiera przykłady waluty dla kultury. 

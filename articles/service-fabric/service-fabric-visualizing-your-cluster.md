@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2019
 ms.author: mikhegn
-ms.openlocfilehash: 8a2a1b70290f48b3189bfae2f67dd19c5ef4c9f2
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b97f2d3a015ebfd5f9c8771d3fc3edc1c074c839
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093261"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203713"
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Wizualizowanie klastra przy użyciu narzędzia Service Fabric Explorer
 
@@ -62,17 +62,6 @@ Aby połączyć się z klastrem usługi Service Fabric, należy punkt końcowy z
 Możesz kontrolować dostęp klienta do klastra usługi Service Fabric przy użyciu certyfikatów lub przy użyciu usługi Azure Active Directory (AAD).
 
 Jeśli spróbujesz nawiązać połączenie z zabezpieczonym klastrem, następnie w zależności od konfiguracji klastra możesz będą musieli przedstawić certyfikat klienta lub zaloguj się przy użyciu usługi AAD.
-
-## <a name="video-tutorial"></a>Samouczek wideo
-
-Aby dowiedzieć się, jak używać narzędzia Service Fabric Explorer, obejrzyj poniższy film wideo Microsoft Virtual Academy:
-
-> [!NOTE]
-> Ten film pokazuje, że narzędzie Service Fabric Explorer hostowanych w klastrze usługi Service Fabric, a nie wersji do pulpitu.
->
->
-
-[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>Omówienie układu narzędzia Service Fabric Explorer
 Możesz przejść za pomocą narzędzia Service Fabric Explorer za pomocą drzewa po lewej stronie. W katalogu głównym drzewa pulpit nawigacyjny klastra zawiera omówienie klastra, w tym podsumowanie kondycji węzła i aplikacji.

@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
-ms.openlocfilehash: 668d69921fd2001cd52bc864e5ee272d179a7bbc
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a7cd67a9a7027e8567e470acab006fd09748de54
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770473"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181715"
 ---
 # <a name="potential-reasons-for-the-you-cant-get-there-from-here-error-message"></a>Potencjalne przyczyny komunikat o błędzie "Nie można dostać się tam z tego miejsca"
 Podczas uzyskiwania dostępu do wewnętrznej sieci web aplikacji lub usług w organizacji, może uzyskać komunikat o błędzie informujący, że, **nie możesz tam przejść stąd**. Ten komunikat oznacza, że Twoja organizacja opracowała zasady, co uniemożliwia urządzeniu dostęp do zasobów organizacji. Gdy użytkownik może pozostać konieczności kontaktowania się z pomocą techniczną, aby rozwiązać ten problem, Oto kilka rzeczy, które możesz najpierw wypróbować.

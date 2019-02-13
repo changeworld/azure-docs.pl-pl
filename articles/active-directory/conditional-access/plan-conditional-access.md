@@ -12,14 +12,15 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: martincoetzer
-ms.openlocfilehash: ca0dfcd9b776b6aea052e2569f9a5aec3ae50eca
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1d43c7943eedcfdf839303a6a55d7727a8483441
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081028"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175816"
 ---
-# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Jak: Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory
+# <a name="how-to-plan-your-conditional-access-deployment-in-azure-active-directory"></a>Instrukcje: Planowanie wdrożenia dostępu warunkowego w usłudze Azure Active Directory
 
 Planowanie wdrożenia dostępu warunkowego jest niezwykle upewnij się, że strategia wymagany dostęp do aplikacji i zasobów są dostępne w Twojej organizacji. Powinni spędzać większość czasu na etapie planowania wdrożenia i projektowanie różnych zasad, wymagają, aby udzielić lub zablokować dostęp dla użytkowników, zgodnie z warunkami, które wybierzesz. W tym dokumencie opisano kroki, które należy podjąć w celu zaimplementowania zasad dostępu warunkowego w bezpieczne i skuteczne. Przed rozpoczęciem upewnij się, należy zrozumieć jak [dostępu warunkowego](overview.md) działa i kiedy należy go używać.
 

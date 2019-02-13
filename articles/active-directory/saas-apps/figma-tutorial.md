@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Figma | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Figma | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Figma.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/22/2018
 ms.author: jeedes
-ms.openlocfilehash: b57fdb3f039a9395133854f8b4d4f2095e3a4f9b
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3885f579e4543f25c409010c0aae970c26d2b9c4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095249"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183982"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-figma"></a>Samouczek: Integracja usługi Azure Active Directory z Figma
+# <a name="tutorial-azure-active-directory-integration-with-figma"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Figma
 
 W tym samouczku dowiesz się, jak zintegrować Figma w usłudze Azure Active Directory (Azure AD).
 
@@ -29,7 +30,7 @@ Integrowanie Figma z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Figma.
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Figma (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
 
@@ -43,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Figma, potrzebne są 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego. Nowych klientów i aktywni subskrybenci Figma Professional zespół może kontaktować się z Figma do [uaktualnić swoją subskrypcję](https://www.figma.com/pricing/) Figma warstwę organizacji.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -69,7 +70,7 @@ Aby skonfigurować integrację Figma w usłudze Azure AD, należy dodać Figma z
 
     ![Aplikacje][2]
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![Aplikacje][3]
 
@@ -77,7 +78,7 @@ Aby skonfigurować integrację Figma w usłudze Azure AD, należy dodać Figma z
 
     ![Figma na liście wyników](./media/figma-tutorial/tutorial_figma_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Figma w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -112,30 +113,30 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/figma-tutorial/tutorial_general_302.png)
 
-5. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+5. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
 
     ![Figma domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/figma-tutorial/tutorial_figma_url1.png)
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/consume`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/consume`
 
-6. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+6. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
     ![Figma domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/figma-tutorial/tutorial_figma_url2.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/start`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://www.figma.com/saml/<ORG_SAML_CONFIG_ID>/start`
 
     > [!NOTE]
-    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej Figma](mailto:support@figma.com?subject=SAML+Config) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Figma](mailto:support@figma.com?subject=SAML+Config) do uzyskania tych wartości.
 
-7. Aplikacja Figma oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **atrybutów użytkownika** okna dialogowego.
+7. Aplikacja Figma oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
     ![Sekcja atrybutu](./media/figma-tutorial/edit_attribute.png)
 
-8. W **oświadczenia użytkownika** sekcji na **atrybutów użytkownika** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
+8. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej, i wykonaj następujące czynności:
 
-    | Name (Nazwa) | Atrybut źródłowy|
+    | Nazwa | Atrybut źródłowy|
     | ---------------| --------- |
     | `externalId` | `user.mailnickname` |
     | `displayName` | `user.displayname` |
@@ -145,35 +146,35 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `givenName` | `givenName` |
     | `userName` | `user.userprincipalname` |
 
-    a. Kliknij przycisk **Dodaj nowe oświadczenie** otworzyć **Zarządzanie oświadczenia użytkownika** okna dialogowego.
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
     ![Nowy atrybut](./media/figma-tutorial/new_save_attribute.png)
 
     ![Dodaj atrybut](./media/figma-tutorial/new_attribute_details.png)
 
-    b. W **nazwa** polu tekstowym wpisz nazwę atrybutu, wyświetlanego dla tego wiersza.
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    c. Pozostaw **Namespace** puste.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
-    d. Wybierz źródło jako **atrybutu**.
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-    e. Z **atrybut źródłowy** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-    f. Kliknij przycisk **Ok**
+    f. Kliknij przycisk **OK**.
 
     g. Kliknij pozycję **Zapisz**.
 
-9. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** strony w **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i zapisz go na użytkownika komputer.
+9. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](./media/figma-tutorial/tutorial_figma_certificate.png)
+    ![Link do pobierania certyfikatu](./media/figma-tutorial/tutorial_figma_certificate.png)
 
 10. Aby skonfigurować logowanie jednokrotne na stronie Figma, Wypełnij ten formularz: [ https://goo.gl/forms/XkRB1z5ed4eVUzXn2 ](https://goo.gl/forms/XkRB1z5ed4eVUzXn2). Akceptował swoje **adres Url metadanych Federacji aplikacji** z kroku nr 9.
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
     ![Utwórz użytkownika usługi Azure AD][100]
 
@@ -185,9 +186,9 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/figma-tutorial/create_aaduser_02.png)
 
-    a. W **nazwa** wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -196,7 +197,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 ### <a name="creating-a-figma-test-user"></a>Tworzenie użytkownika testowego Figma
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Figma. Figma obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Figma, jeśli go jeszcze nie istnieje.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Figma. Figma obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu Figma, jeśli go jeszcze nie istnieje.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

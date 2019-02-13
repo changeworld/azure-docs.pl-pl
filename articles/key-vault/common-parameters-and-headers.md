@@ -4,7 +4,7 @@ description: Parametry i nagłówki wspólne dla wszystkich operacji, które mo�
 services: key-vault
 documentationcenter: ''
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: a715d13ca9-d6e8-4e54-ac5e-0ed9400fb15b15d13ca9-d6e8-4e54-ac5e-0ed9400fb15b
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: de9243a0a95c14a048be124976b07853a48a9a08
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 3fb11ad74e3d1628cbf3f00e2aae648be3eea437
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075230"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107688"
 ---
 # <a name="common-parameters-and-headers"></a>Typowe parametry i nagłówki
 
@@ -41,7 +41,7 @@ Kody stanu HTTP będzie używane przez usługę do wskazania powodzenia lub niep
      }  
    }  
 
-|Nazwa elementu | Typ | Opis |
+|Nazwa elementu | Type | Opis |
 |---|---|---|
 | kod | ciąg | Typ błędu, który wystąpił.|
 | message | ciąg | Opis co było przyczyną błędu. |

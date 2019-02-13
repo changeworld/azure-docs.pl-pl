@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 9dc023eedf0ddca4e760d9d066b019b75597fb69
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3fd91ef17415e2c6ebb735fdedb098f8aa319d8c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246487"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207419"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Odzyskiwanie z utratą danych w wyniku katastrofy
 
 *Dotyczy: Zintegrowane systemy usługi Azure Stack.*
 
-Usługa Azure Stack jest uruchamiany usług platformy Azure w centrum danych. Usługa Azure Stack można uruchamiać w środowiskach tak małej, jak czterech węzłów zainstalowane w jednym stojaku. Z kolei platforma Azure działa w ponad 40 regionach w wielu centrach danych i wielu stref w każdym regionie. Zasoby użytkownika może obejmować wiele serwerów, stojaki, centrach danych i regionach. Dzięki usłudze Azure Stack aktualnie masz możliwość wdrażania całej chmury na jednym stojaku. To udostępnia Twoja chmura istnieje wtedy ryzyko katastrofą w centrum danych lub w błędy z powodu błędów produktu. W przypadku awarii, wystąpienie usługi Azure Stack przejdzie do trybu offline. Wszystkie dane jest potencjalnie nieodwracalny.
+Usługa Azure Stack uruchamia usług platformy Azure w centrum danych i można uruchamiać w środowiskach tak małej, jak czterech węzłów zainstalowane w jednym stojaku. Z kolei platforma Azure działa w ponad 40 regionach w wielu centrach danych i wielu stref w każdym regionie. Zasoby użytkownika może obejmować wiele serwerów, stojaki, centrach danych i regionach. Dzięki usłudze Azure Stack aktualnie masz możliwość wdrażania całej chmury na jednym stojaku. To udostępnia Twoja chmura istnieje wtedy ryzyko katastrofą w centrum danych lub w błędy z powodu błędów produktu. W przypadku awarii, wystąpienie usługi Azure Stack przejdzie do trybu offline. Wszystkie dane jest potencjalnie nieodwracalny.
 
 W zależności od przyczyny utraty danych może być konieczne napraw usługę jednolita infrastruktura lub Przywróć całe wystąpienie usługi Azure Stack. Może być konieczne nawet Przywróć na inny komputer w tej samej lokalizacji lub w innej lokalizacji.
 

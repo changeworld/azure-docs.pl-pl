@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b7a48aab139e573d829016ac7f4985668268b4fc
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7054946a15ca27f4b5a36d3d2ac712cba2fd68d8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55091949"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185132"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 

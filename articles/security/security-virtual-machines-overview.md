@@ -4,7 +4,7 @@ description: Ten artykuł zawiera omówienie podstawowych funkcji zabezpieczeń 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 15ac70891f23d95709d1998bca1ce29ad735cb87
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969689"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109082"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Omówienie zabezpieczeń usługi Azure Virtual Machines
 
@@ -47,16 +47,16 @@ Microsoft Antimalware dla platformy Azure to rozwiązanie jednego agenta dla apl
 
 W przypadku wdrażania i Włącz Microsoft Antimalware dla platformy Azure dostępne są następujące podstawowe funkcje:
 
-* **Ochrona w czasie rzeczywistym**: monitoruje aktywność w usługach w chmurze i na maszynach wirtualnych, aby wykrywać i blokować wykonywanie złośliwego oprogramowania.
-* **Zaplanowane skanowanie**: okresowo wykonuje skanowanie docelowych do wykrywania złośliwego oprogramowania, w tym aktywnie uruchomione programy.
-* **Korygowaniem złośliwego oprogramowania**: automatycznie wykonuje akcję na wykryte złośliwe oprogramowanie, takie jak usuwanie lub poddawania kwarantannie złośliwych plików i czyszczenie wpisy rejestru złośliwe.
-* **Sygnatury aktualizacji**: automatycznie instaluje najnowszą podpisy ochrony (definicje wirusów), aby upewnić się, że ochrony są aktualne na ustalonej częstotliwości.
-* **Aktualizacje aparatu ochrony przed złośliwym oprogramowaniem**: automatycznie aktualizuje Microsoft Antimalware dla aparatu platformy Azure.
-* **Aktualizacje platformy ochrony przed złośliwym oprogramowaniem**: automatycznie aktualizuje Microsoft Antimalware dla platformy Azure.
-* **Aktywnej ochrony**: raporty telemetrii metadanych do platformy Azure o wykryte zagrożenia i podejrzane zasobów, aby zapewnić szybką odpowiedź. Umożliwia dostarczanie w czasie rzeczywistym podpisu synchronicznego przy użyciu Microsoft Active Protection systemu (MAPS).
-* **Przykłady raportowania**: zapewnia i raporty próbkach Microsoft Antimalware dla usług platformy Azure do pomocy usługi analizy i umożliwiają rozwiązywanie problemów.
-* **Wykluczenia**: umożliwia aplikacji i administratorów usług, aby skonfigurować niektóre pliki, procesów i dyskach, aby je wykluczyć z ochrony i skanowanie pod kątem wydajności i innych powodów.
-* **Zbieranie zdarzeń ochrony przed złośliwym oprogramowaniem**: rejestruje kondycję usługi ochrony przed złośliwym oprogramowaniem, podejrzanych działań i działania korygujące w dzienniku zdarzeń systemu operacyjnego i zbiera ich na swoim koncie usługi Azure storage.
+* **Ochrona w czasie rzeczywistym**: Monitoruje aktywność w usługach w chmurze i na maszynach wirtualnych, aby wykrywać i blokować wykonywanie złośliwego oprogramowania.
+* **Zaplanowane skanowanie**: Okresowo wykonuje skanowanie docelowych do wykrywania złośliwego oprogramowania, w tym aktywnie uruchomione programy.
+* **Korygowaniem złośliwego oprogramowania**: Automatycznie pobiera wykryte złośliwe oprogramowanie, takie jak usuwanie lub poddawania kwarantannie złośliwych plików i czyszczenie wpisy rejestru złośliwe działania.
+* **Sygnatury aktualizacji**: Automatycznie instaluje najnowszą podpisy ochrony (definicje wirusów), aby upewnić się, że ochrony są aktualne na ustalonej częstotliwości.
+* **Aktualizacje aparatu ochrony przed złośliwym oprogramowaniem**: Automatycznie aktualizuje Microsoft Antimalware dla aparatu platformy Azure.
+* **Aktualizacje platformy ochrony przed złośliwym oprogramowaniem**: Automatycznie aktualizuje Microsoft Antimalware dla platformy Azure.
+* **Aktywnej ochrony**: Raporty telemetrii metadanych do platformy Azure o wykryte zagrożenia i podejrzane zasobów, aby zapewnić szybką odpowiedź. Umożliwia dostarczanie w czasie rzeczywistym podpisu synchronicznego przy użyciu Microsoft Active Protection systemu (MAPS).
+* **Przykłady raportowania**: Zapewnia i raporty próbkach Microsoft Antimalware dla usług platformy Azure do pomocy usługi analizy i umożliwiają rozwiązywanie problemów.
+* **Wykluczenia**: Umożliwia aplikacji i administratorów usługi, aby skonfigurować określone pliki, procesy i dyski je wykluczyć z ochrony i skanowanie pod kątem wydajności i innych powodów.
+* **Zbieranie zdarzeń ochrony przed złośliwym oprogramowaniem**: Rejestruje kondycję usługi ochrony przed złośliwym oprogramowaniem, podejrzanych działań i działania korygujące w dzienniku zdarzeń systemu operacyjnego i zbiera ich na swoim koncie usługi Azure storage.
 
 Dowiedz się więcej na temat ochrony przed złośliwym oprogramowaniem, aby pomóc w ochronie maszyn wirtualnych:
 
@@ -90,8 +90,7 @@ Usługa Key Vault oferuje możliwość przechowywania kluczy w sprzętowych modu
 
 Więcej informacji:
 
-* [Co to jest usługa Azure Key Vault?](../key-vault/key-vault-whatis.md)
-* [Rozpoczynanie pracy z usługą Azure Key Vault](../key-vault/key-vault-get-started.md)
+* [Co to jest usługa Azure Key Vault?](../key-vault/key-vault-overview.md)
 * [Blog usługi Azure Key Vault](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Szyfrowanie dysku maszyny wirtualnej
@@ -103,7 +102,7 @@ Rozwiązanie jest zintegrowana z usługą Azure Key Vault ułatwia kontrolowanie
 Więcej informacji:
 
 * [Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS](../security/azure-security-disk-encryption-overview.md)
-* [Szybki Start: Szyfrowanie maszyny Wirtualnej IaaS Windows przy użyciu programu Azure PowerShell](../security/quick-encrypt-vm-powershell.md)
+* [Szybki start: Szyfrowanie maszyny Wirtualnej IaaS Windows przy użyciu programu Azure PowerShell](../security/quick-encrypt-vm-powershell.md)
 
 ## <a name="virtual-machine-backup"></a>Kopia zapasowa maszyny wirtualnej
 
@@ -121,10 +120,10 @@ Ważnym elementem strategii BCDR organizacji jest ustalenie, jak zapewnić obci�
 Usługa Site Recovery:
 
 * **Upraszcza strategii bcdr można wykorzystać**: Usługa Site Recovery ułatwia obsługę replikacji, trybu failover i odzyskiwania wielu firmowych obciążeń i aplikacji z jednej lokalizacji. Usługa Site Recovery organizuje replikację i tryb failover, ale nie przechwytuje danych aplikacji lub mieć żadnych informacji ich dotyczących.
-* **Oferuje elastyczny replikację**: przy użyciu usługi Site Recovery, można replikować obciążenia uruchomione na maszynach wirtualnych funkcji Hyper-V, maszyn wirtualnych VMware i serwerów fizycznych z systemem Windows/Linux.
+* **Oferuje elastyczny replikację**: Przy użyciu usługi Site Recovery, można replikować obciążenia uruchomione na maszynach wirtualnych funkcji Hyper-V, maszyn wirtualnych VMware i serwerów fizycznych z systemem Windows/Linux.
 * **Obsługuje tryb failover i odzyskiwanie**: Usługa Site Recovery zapewnia testowych trybów Failover odzyskiwania po awarii bez wpływu na środowiska produkcyjne. Możesz również uruchomić planowane tryby failover (brak utraty danych) w przypadku przewidywanych przerw w działaniu lub nieplanowane tryby failover (minimalna utrata danych, zależna od częstotliwości replikacji) w przypadku nieoczekiwanych awarii. Po przejściu w tryb failover można powrotu po awarii do lokacji głównych. Usługa Site Recovery zapewnia plany odzyskiwania, które mogą uwzględniać skrypty i skoroszyty automatyzacji platformy Azure. Dzięki nim możesz dostosować tryb failover i odzyskiwanie dla aplikacji wielowarstwowych.
-* **Tworzenie dodatkowych centrów danych eliminuje**: można replikować do lokacji dodatkowej w środowisku lokalnym lub na platformie Azure. Korzystanie z platformy Azure jako miejsca docelowego dla odzyskiwania po awarii eliminuje koszty i złożoność obsługi dodatkowej witryny. Replikowane dane są przechowywane w usłudze Azure Storage.
-* **Integruje się z istniejącymi technologiami BCDR**: Usługa Site Recovery w ramach której partnerzy z funkcjami BCDR innych aplikacji. Na przykład można użyć Usługa Site Recovery w celu ochrony zaplecza programu SQL Server obciążeń firmowych. Obejmuje to Natywna obsługa programu SQL Server Always On zarządzać trybem failover grup dostępności.
+* **Tworzenie dodatkowych centrów danych eliminuje**: Można replikować do lokacji dodatkowej w środowisku lokalnym lub na platformie Azure. Korzystanie z platformy Azure jako miejsca docelowego dla odzyskiwania po awarii eliminuje koszty i złożoność obsługi dodatkowej witryny. Replikowane dane są przechowywane w usłudze Azure Storage.
+* **Integruje się z istniejącymi technologiami BCDR**: Usługa Site Recovery współpracuje z funkcjami BCDR innych aplikacji. Na przykład można użyć Usługa Site Recovery w celu ochrony zaplecza programu SQL Server obciążeń firmowych. Obejmuje to Natywna obsługa programu SQL Server Always On zarządzać trybem failover grup dostępności.
 
 Więcej informacji:
 
@@ -165,8 +164,8 @@ Usługa Azure Virtual Machines jest certyfikowany dla FISMA, FedRAMP, HIPAA, PCI
 
 Więcej informacji:
 
-* [Centrum zaufania firmy Microsoft: zgodności](https://www.microsoft.com/en-us/trustcenter/compliance)
-* [Zaufana chmura: Zabezpieczenia platformy Microsoft Azure, prywatności i zgodności](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
+* [Centrum zaufania firmy Microsoft: zgodność](https://www.microsoft.com/en-us/trustcenter/compliance)
+* [Zaufana chmura: Bezpieczeństwo platformy Microsoft Azure, ochrony prywatności i zgodności](https://download.microsoft.com/download/1/6/0/160216AA-8445-480B-B60F-5C8EC8067FCA/WindowsAzure-SecurityPrivacyCompliance.pdf)
 
 ## <a name="confidential-computing"></a>Obliczenia poufnego
 

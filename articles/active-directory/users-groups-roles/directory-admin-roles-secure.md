@@ -13,12 +13,13 @@ ms.workload: identity
 ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
-ms.openlocfilehash: 327ea929b5825abb448cb13b1bd0cbfa5681521c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d2d58ea2a7b25648dbecfefb882f71137096bff7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512503"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170010"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Zabezpieczanie uprzywilejowanego dostępu dla wdrożeń hybrydowych i w chmurze w usłudze Azure AD
 

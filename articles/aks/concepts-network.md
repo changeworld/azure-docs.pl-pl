@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: b2fc4b518ee0857014c59b84b89a0102b86f687a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6affa19c61ff4a824e390c42b7fd97554a30c9bb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820134"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176241"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -102,9 +102,17 @@ Kolejną funkcją typowych danych przychodzących jest kończenia żądań SSL/T
 
 ## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 
-Zabezpieczenia grupy Filtr ruchu sieciowego dla maszyn wirtualnych, takich jak węzłów AKS. Podczas tworzenia usług, takich jak usługi równoważenia obciążenia, platforma Azure automatycznie skonfiguruje wszystkie reguły sieciowej grupy zabezpieczeń, które są potrzebne. Nie należy ręcznie konfigurować reguły sieciowej grupy zabezpieczeń do filtrowania ruchu do zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazywanie jako część Twojego manifestów usługi Kubernetes i pozwolić platformie Azure, Utwórz lub zaktualizuj odpowiednie zasady.
+Sieciowa grupa zabezpieczeń służy do przefiltrowania ruchu dla maszyn wirtualnych, takich jak węzłów AKS. Podczas tworzenia usług, takich jak usługi równoważenia obciążenia, platforma Azure automatycznie skonfiguruje wszystkie reguły sieciowej grupy zabezpieczeń, które są potrzebne. Nie należy ręcznie konfigurować reguły sieciowej grupy zabezpieczeń do filtrowania ruchu do zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazywanie jako część Twojego manifestów usługi Kubernetes i pozwolić platformie Azure, Utwórz lub zaktualizuj odpowiednie zasady. Umożliwia także zasady sieciowe zgodnie z opisem w następnej sekcji, automatyczne stosowanie reguły filtrowania ruchu do zasobników.
 
 Domyślną sieciową grupę zabezpieczeń, które istnieją reguły dla ruchu, takich jak SSH. Te reguły domyślne mają zastosowanie do zarządzania klastrem i rozwiązywaniu problemów z dostępem. Usunięcie tych reguł domyślnych może spowodować problemy z zarządzaniem AKS i przerywa cel poziomu usług (SLO).
+
+## <a name="network-policies"></a>Zasady sieciowe
+
+Domyślnie wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu bez ograniczeń. Aby zwiększyć bezpieczeństwo można zdefiniować reguły, które kontrolują przepływu ruchu. Aplikacji zaplecza są dostępne często tylko wymagane frontonu usług lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
+
+Zasady sieci jest funkcją Kubernetes, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Sieciowe grupy zabezpieczeń są więcej węzłów AKS, nie zasobników. Użycie zasad sieciowych jest bardziej odpowiedni i natywnych dla chmury sposób kontrolowania przepływu ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane.
+
+Aby uzyskać więcej informacji, zobacz [bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)][use-network-policies].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -139,3 +147,4 @@ Dodatkowe informacje na temat podstawowej platformy Kubernetes oraz pojęcia zos
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[use-network-policies]: use-network-policies.md

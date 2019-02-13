@@ -1,5 +1,5 @@
 ---
-title: Punkty końcowe usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse | Dokumentacja firmy Microsoft
+title: Sieć wirtualna punktów końcowych i reguł dla pojedynczych i puli baz danych w usłudze Azure SQL | Dokumentacja firmy Microsoft
 description: Oznacz podsieci jako punkt końcowy usługi sieci wirtualnej. Następnie punkt końcowy jako regułę sieci wirtualnej do listy ACL w usłudze Azure SQL Database. Użytkownik bazy danych SQL następnie akceptuje komunikację z wszystkich maszyn wirtualnych i innych węzłów w tej podsieci.
 services: sql-database
 ms.service: sql-database
@@ -11,20 +11,20 @@ author: oslake
 ms.author: moslake
 ms.reviewer: vanto, genemi
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ccc97adadef43390d2b82e206adb60962d6e1fb2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/11/2019
+ms.openlocfilehash: 6fdcf0b5baf28aee931307b28e1f161fddaa4d8e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453931"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118381"
 ---
-# <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure SQL
+# <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Punkty końcowe usługi sieci wirtualnej i reguł na użytek serwerów baz danych
 
-*Reguły sieci wirtualnej* są jednym zapory funkcja zabezpieczeń, która określa, czy subskrypcji platformy Azure [bazy danych SQL](sql-database-technical-overview.md) lub [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) serwer zaakceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym rozwiązaniem dla bezpiecznego zezwolenie na komunikację do usługi Azure SQL Database i SQL Data Warehouse.
+*Reguł sieci wirtualnej* są jednym zapory funkcja zabezpieczeń, która określa, czy serwer bazy danych dla pojedynczych baz danych i pul elastycznych w systemie Azure [bazy danych SQL](sql-database-technical-overview.md) lub baz danych w [danych serwera SQL Magazyn](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) akceptuje łączności, które są wysyłane z określonej podsieci w sieciach wirtualnych. W tym artykule opisano, dlaczego funkcja reguły sieci wirtualnej jest czasami najlepszym rozwiązaniem dla bezpiecznego zezwolenie na komunikację do usługi Azure SQL Database i SQL Data Warehouse.
 
 > [!IMPORTANT]
-> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. W tym artykule jest *nie* dotyczą **wystąpienia zarządzanego Azure SQL Database**.
+> Ten artykuł dotyczy serwera Azure SQL i bazy danych SQL Database i SQL Data Warehouse baz danych, które są tworzone na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database. W tym artykule jest *nie* dotyczą **wystąpienia zarządzanego** wdrożenia w usłudze Azure SQL Database, ponieważ nie ma punktu końcowego usługi skojarzono.
 
 Aby utworzyć regułę sieci wirtualnej musi najpierw mieć [punkt końcowy usługi sieci wirtualnej] [ vm-virtual-network-service-endpoints-overview-649d] dla tej reguły odwołać.
 

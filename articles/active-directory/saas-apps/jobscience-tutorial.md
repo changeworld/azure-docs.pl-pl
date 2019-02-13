@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 4df4338cddaf7c80f6fc1ad817773778bcee2087
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8199f106c234e216a0982dc9e51413ccf30ae93a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194087"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199531"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jobscience"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Jobscience
 
@@ -115,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca:  `http://<company name>.my.salesforce.com`
     
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Uzyskać tę wartość [zespołem pomocy technicznej klienta Jobscience](https://www.jobscience.com/support) lub z logowania jednokrotnego profilu zostanie utworzona, co jest opisane w dalszej części tego samouczka. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Uzyskać tę wartość [zespołem pomocy technicznej klienta Jobscience](https://www.jobscience.com/support) lub z logowania jednokrotnego profilu zostanie utworzona, co jest opisane w dalszej części tego samouczka. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
@@ -159,7 +160,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     
     ![SAML pojedynczego logowania jednokrotnego ustawienia](./media/jobscience-tutorial/ic784365.png "SAML pojedynczego logowania jednokrotnego ustawienia")
     
-    a. W **nazwa** polu tekstowym wpisz nazwę dla danej konfiguracji.
+    a. W polu tekstowym **Name** (Nazwa) wpisz nazwę konfiguracji.
 
     b. W **wystawcy** pola tekstowego, Wklej wartość **identyfikator jednostki SAML**, który skopiowano z witryny Azure portal.
 

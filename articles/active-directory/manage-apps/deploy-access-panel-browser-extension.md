@@ -15,12 +15,13 @@ ms.date: 11/08/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 238698be50a5a6eb696aeb0cd8d5aeff58296ad5
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c7dfdd46714d367b61248d9376ce3e8888bb1ef7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961367"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176972"
 ---
 # <a name="how-to-deploy-the-access-panel-extension-for-internet-explorer-using-group-policy"></a>Jak wdrożyć rozszerzenia Panelu dostępu do programu Internet Explorer przy użyciu zasad grupy
 W tym samouczku pokazano, jak za pomocą zasad grupy do zdalnej instalacji rozszerzenia Panelu dostępu dla programu Internet Explorer na komputerach użytkowników. To rozszerzenie jest wymagane dla programu Internet Explorer, użytkownicy muszą logować się do aplikacji, które są skonfigurowane przy użyciu [opartego na hasłach logowania jednokrotnego](what-is-single-sign-on.md#password-based-sso).

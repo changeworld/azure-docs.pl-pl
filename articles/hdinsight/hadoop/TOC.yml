@@ -90,8 +90,6 @@ items:
         href: apache-hadoop-use-mapreduce-curl.md
       - name: Korzystanie z programu Azure PowerShell
         href: apache-hadoop-use-mapreduce-powershell.md
-      - name: Korzystanie z pulpitu zdalnego
-        href: apache-hadoop-use-mapreduce-remote-desktop.md
       - name: Korzystanie z zestawu SDK dla platformy .NET
         href: apache-hadoop-use-mapreduce-dotnet-sdk.md
       - name: Uruchamianie przykładów technologii MapReduce
@@ -107,8 +105,6 @@ items:
         href: apache-hadoop-use-pig-dotnet-sdk.md
       - name: Korzystanie z programu cURL
         href: apache-hadoop-use-pig-curl.md
-      - name: Korzystanie z pulpitu zdalnego
-        href: apache-hadoop-use-pig-remote-desktop.md
     - name: Korzystanie z bibliotek Apache DataFu z technologią Apache Pig
       href: apache-hadoop-use-pig-datafu-udf.md
     - name: Przesyłanie zadań usługi Apache Hadoop
@@ -518,9 +514,6 @@ items:
     - name: Konstruowanie aplikacji Java za pomocą narzędzia Apache Maven
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: Debugowanie zadań Tez przy użyciu interfejsu użytkownika Apache Tez
-      href: ../hdinsight-debug-tez-ui.md
-      maintainContext: true
     - name: Dostosowywanie za pomocą akcji skryptu
       href: ../hdinsight-hadoop-customize-cluster.md
       maintainContext: true
@@ -567,9 +560,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 4a28b9cbac923bdd718521e26545cad5a5a185a1
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 2646a89812733f114f21e616f09e913adf1ae6e3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893939"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56178077"

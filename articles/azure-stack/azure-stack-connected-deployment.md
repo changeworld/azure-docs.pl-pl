@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 491bdf121729d690784324051ff701f3ed2d2b7a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a39ab2eb6d08f478ed68aed2bc753e5225185fe3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243185"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175391"
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Wdrożenie za pomocą połączonej usługi Azure planowanie decyzji dla usługi Azure Stack zintegrowane systemy
-Po podjęciu [zostanie sposób Zintegruj usługę Azure Stack w środowisku chmury hybrydowej](azure-stack-connection-models.md), następnie można zakończyć swoje decyzje dotyczące wdrożenia usługi Azure Stack.
+Po podjęciu [zostanie sposób Zintegruj usługę Azure Stack w środowisku chmury hybrydowej](azure-stack-connection-models.md), może zakończyć swoje decyzje dotyczące wdrożenia usługi Azure Stack.
 
 Wdrażanie usługi Azure Stack połączony z platformą Azure oznacza, że dla magazynu tożsamości może mieć usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS). Możesz również korzystać z obu model rozliczeń: płatność za użycie lub oparty na pojemności. Połączone wdrożenia to opcja domyślna, ponieważ umożliwia klientom uzyskać optymalne wykorzystanie usługi Azure Stack, szczególnie w przypadku scenariuszy chmury hybrydowych obejmujących platformy Azure i usługi Azure Stack. 
 

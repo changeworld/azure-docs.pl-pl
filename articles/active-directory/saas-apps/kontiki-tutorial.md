@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.openlocfilehash: dadecb44c1606ce845583c8c16f58ca25279e57e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d5e14af5b70b60969be85f1cde321410ab6032f7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186676"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202883"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kontiki"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Kontiki
 
@@ -115,7 +116,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
      W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.mc.eval.kontiki.com`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html) można uzyskać wartość. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Kontiki](https://customersupport.kontiki.com/enterprise/contactsupport.html) można uzyskać wartość. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 

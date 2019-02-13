@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
-ms.openlocfilehash: d7be7251f6d881719fdd1f99759d01ff0fdb44ad
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 21056663252ac5a41a529c3d8443efa888fbde9d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163827"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188481"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-innotas"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Innotas
 
@@ -117,7 +118,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<tenant-name>.Innotas.com`
 
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Innotas](https://www.innotas.com/contact) aby zyskać tę wartość. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Innotas](https://www.innotas.com/contact) aby zyskać tę wartość. 
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 

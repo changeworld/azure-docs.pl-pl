@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/29/2018
 ms.author: priyamo
-ms.openlocfilehash: 8c406dda1d6ce0fe7b73f400444d7bcd8a9e8400
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5bf6687adc367ef32550c4cb70a667050e54298c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185962"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200755"
 ---
 # <a name="view-the-service-principal-of-a-managed-identity-using-powershell"></a>Wyświetl jednostki usługi z tożsamości zarządzanej przy użyciu programu PowerShell
 
@@ -34,7 +35,7 @@ W tym artykule dowiesz się, jak wyświetlić jednostki usługi z tożsamości z
 - Jeśli jesteś zaznajomiony z zarządzanych tożsamości dla zasobów platformy Azure, zapoznaj się z [sekcji Przegląd](overview.md).
 - Jeśli nie masz jeszcze konta platformy Azure, [Załóż bezpłatne konto](https://azure.microsoft.com/free/).
 - Włącz [tożsamości przypisanej w systemie na maszynie wirtualnej](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) lub [aplikacji](/azure/app-service/overview-managed-identity#adding-a-system-assigned-identity).
-- Zainstaluj najnowszą wersję [programu Azure PowerShell](/powershell/azure/install-az-ps)
+- Zainstalowanie najnowszej wersji programu [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="view-the-service-principal"></a>Wyświetl nazwy głównej usługi
 

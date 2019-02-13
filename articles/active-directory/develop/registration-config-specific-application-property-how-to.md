@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
-ms.openlocfilehash: 90b7638acf6df721a16bdcca6ceebb6f9d65ca2c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1e4362e45ff8eee13b9203b9103266c60b4833a9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096827"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173202"
 ---
 # <a name="how-to-fill-out-specific-fields-for-a-custom-developed-application"></a>Sposobu wypełniania określonych pól dla aplikacji niestandardowej
 
@@ -40,7 +41,7 @@ Ten artykuł zawiera krótki opis dostępnych pól w formularzu rejestracji apli
 
 | Pole            | Opis                                                                              |
 |------------------|------------------------------------------------------------------------------------------|
-| Name             | Nazwa aplikacji. Powinien mieć co najmniej cztery znaki.                |
+| Name (Nazwa)             | Nazwa aplikacji. Powinien mieć co najmniej cztery znaki.                |
 | Typ aplikacji | **Sieci Web aplikacji/internetowy interfejs API**: Aplikację reprezentującą aplikację sieci web, internetowy interfejs API lub oba 
 | |**Natywne**: Aplikację, którą można zainstalować na urządzeniu lub komputerze użytkownika           |
 | Adres URL logowania      | Adres URL, w którym użytkownicy mogą logować się do korzystania z aplikacji                                  |

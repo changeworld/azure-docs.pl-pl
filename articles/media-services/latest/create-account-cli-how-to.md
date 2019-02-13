@@ -10,21 +10,21 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: b01958dc320ff6c81bb27c85ff4a5e508eabb01b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ce022e22cc98dd218dff4840f686464233f99c72
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209948"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176354"
 ---
 # <a name="create-an-azure-media-services-account"></a>Tworzenie konta usługi Azure Media Services
 
 Aby rozpocząć, szyfrowanie, kodowanie, analizowanie, zarządzanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services. W czasie tworzenia konta usługi Media Services, można również utworzyć skojarzony magazyn konta (lub użyć istniejącego).  
 
 > [!NOTE]
-> Konto usługi Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Zalecane jest korzystanie z kont magazynu w tej samej lokalizacji co konto usługi Media Services.
+> Konto usług Media Services i wszystkie skojarzone konta magazynu muszą być w tej samej subskrypcji platformy Azure. Zdecydowanie zaleca się używanie kont magazynu w tej samej lokalizacji co konto usługi Media Services, aby uniknąć dodatkowych kosztów ruch wychodzący opóźnienia i danych.
 
 W tym artykule opisano kroki tworzenia nowego konta usługi Azure Media Services przy użyciu wiersza polecenia platformy Azure.  
 

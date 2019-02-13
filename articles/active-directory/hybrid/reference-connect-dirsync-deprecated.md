@@ -16,12 +16,13 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b95fa5b5336db62bdf64ebd0dc254160d1a9282d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 803fcc0161f2a092006e60db5a98f5bf18dce1c1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490604"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191796"
 ---
 # <a name="upgrade-windows-azure-active-directory-sync-and-azure-active-directory-sync"></a>Uaktualnianie systemu Windows Azure Active Directory Sync i Azure Active Directory Sync
 Użycie programu Azure AD Connect to najlepszy sposób na połączenie katalogu lokalnego z usługami Azure AD i Office 365. Jest to doskonały moment na uaktualnienie do programu Azure AD Connect, z Windows Azure Active Directory Sync (DirSync) lub Azure AD Sync, te narzędzia są one przestarzałe i nie są już obsługiwane 13 kwietnia 2017 r.

@@ -13,12 +13,13 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: 9fd7a3c03c72a63f4163f85ac41248e200397206
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0749e1acba9f13f9e0e95dfc66f9cf818c752cff
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770724"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165624"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej
 Weryfikacja dwuetapowa była kroku dodatkowe zabezpieczenia, która pomaga chronić Twoje konto, co utrudnia innym osobom włamanie się. Jeśli czytasz ten artykuł, prawdopodobnie masz wiadomość e-mail od firmowego lub szkolnego administratora o usłudze uwierzytelnianie wieloskładnikowe. Lub może być zalogowania się i stało się komunikat z prośbą do skonfigurowania dodatkowej weryfikacji zabezpieczeń. Jeśli tak jest rzeczywiście, **nie możesz zalogować przed ukończeniem procesu automatycznej rejestracji**.

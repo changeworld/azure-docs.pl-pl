@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider
-ms.openlocfilehash: 37f956606075cb21075d6f50bb53e04075936997
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: bc4e4c9137003dad9cfd96772b7ebe231cd6eace
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999037"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171727"
 ---
 # <a name="reliable-services-overview"></a>Omówienie usług Reliable Services
 Usługa Azure Service Fabric upraszcza zapisywanie i zarządzanie nimi bezstanowych i stanowych usług Reliable Services. W tym temacie omówiono:
@@ -45,12 +45,6 @@ Usług Reliable Services zapewnia prosty, zaawansowany, najwyższego poziomu mod
 * Prostym modelem uruchamianie własnego kodu, który wygląda jak modeli, które są używane do programowania. Twój kod ma punktu wejścia dobrze zdefiniowany i łatwe w zarządzaniu cyklem życia.
 * Model podłączanych komunikacji. Użyj transportu wybranych przez użytkownika, takich jak HTTP za pomocą [interfejsu API sieci Web](service-fabric-reliable-services-communication-webapi.md), funkcja WebSockets, protokoły TCP niestandardowe lub cokolwiek innego. Usług Reliable Services zapewniają kilka wspaniałych poza pole opcji można użyć lub możesz podać własne.
 * Dla usług stanowych modelu programowania usług Reliable Services umożliwia spójne i niezawodne przechowywanie stanu użytkownika bezpośrednio w usłudze przy użyciu [elementów Reliable Collections](service-fabric-reliable-services-reliable-collections.md). Niezawodne kolekcje to prosty zestaw wysoce dostępnych i niezawodnych klas kolekcji, które nie będą niczym nowym dla każdego, kto został użyty C# kolekcji. Tradycyjnie usługi potrzebne systemy zewnętrzne dla zarządzania stanem niezawodne. Z elementami Reliable Collections można przechowywać swój stan obok zasobów obliczeniowych, przy użyciu tego samego wysoka dostępność i niezawodność, których jesteś w dobrym można oczekiwać od o wysokiej dostępności, zewnętrzne magazyny. Ten model również zwiększa opóźnienia, ponieważ kolokowania moc obliczeniową i stanu, musi ona działać.
-
-Obejrzyj to wideo Microsoft Virtual Academy, aby uzyskać omówienie usług Reliable services: <center>
-<a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=HhD9566yC_4106218965">
-<img src="./media/service-fabric-reliable-services-introduction/ReliableServicesVid.png" WIDTH="360" HEIGHT="244" />
-</a>
-</center>
 
 ## <a name="what-makes-reliable-services-different"></a>Czym różni się usług Reliable Services?
 Usług Reliable Services w usłudze Service Fabric różnią się od usług, które zostały napisane przed. Usługa Service Fabric udostępnia niezawodności, dostępności, spójności i skalowalności.

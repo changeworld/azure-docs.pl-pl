@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie przestrzenią pliku w usłudze Azure bazy danych SQL Database | Dokumentacja firmy Microsoft
-description: Ta strona zawiera opis sposobu zarządzania przestrzenią plików za pomocą usługi Azure SQL Database i zawiera przykłady kodu dotyczące sposobu określenia, czy można zmniejszyć bazy danych również, jak przeprowadzić operację zmniejszania bazy danych.
+title: Zarządzanie miejsce plików bazy danych SQL pojedynczego/puli baz danych platformy Azure | Dokumentacja firmy Microsoft
+description: Ta strona zawiera opis sposobu zarządzania przestrzenią plików z jednego i puli baz danych w usłudze Azure SQL Database i zawiera przykłady kodu dotyczące sposobu określenia, czy możesz zmniejszyć jednego środowiska lub do bazy danych w puli także, jak przeprowadzić operację zmniejszania bazy danych.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,21 +11,24 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: cf73708682a8434ffabaff101d6d6928671af4b6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/11/2019
+ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003724"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110153"
 ---
-# <a name="manage-file-space-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku w usłudze Azure SQL Database
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku dla pojedynczych i puli baz danych w usłudze Azure SQL Database
 
-W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure SQL Database i czynności, które mogą być wykonywane, gdy przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
+W tym artykule opisano różne rodzaje miejsca w magazynie dla pojedynczego i puli baz danych w usłudze Azure SQL Database i czynności, które można podjąć w przypadku przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
+
+> [!NOTE]
+> W tym artykule nie ma zastosowania do opcji wdrożenia wystąpienia zarządzanego usługi Azure SQL Database.
 
 ## <a name="overview"></a>Przegląd
 
-W usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Ten stan może wystąpić, gdy ilość używanego miejsca zwiększy się, a następnie dane zostaną usunięte. Przyczyną jest, ponieważ plik miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
+Z jednej puli baz danych i w usłudze Azure SQL Database są wzorce obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron. Ten stan może wystąpić, gdy ilość używanego miejsca zwiększy się, a następnie dane zostaną usunięte. Przyczyną jest, ponieważ plik miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.
 
 Monitorowanie użycia miejsca na pliki i zmniejszania plików danych może być konieczne w następujących scenariuszach:
 
@@ -47,7 +50,7 @@ Jednak następujące interfejsy API pomiaru rozmiar ilość miejsca przydzielone
 
 ### <a name="shrinking-data-files"></a>Zmniejszanie rozmiaru plików danych
 
-Usługa SQL DB nie zmniejsza automatycznie plików danych, aby odzyskać nieużywane miejsce przydzielone z powodu potencjalnego wpływu na wydajność bazy danych.  Jednak klientów może spowodować zmniejszenie pliki danych za pomocą samoobsługowej w momencie ich wyboru, wykonując kroki opisane w [odzyskać nieużywane miejsca przydzielonego](#reclaim-unused-allocated-space). 
+Usługa SQL Database nie zmniejsza automatycznie plików danych, aby odzyskać nieużywane miejsce przydzielone z powodu potencjalnego wpływu na wydajność bazy danych.  Jednak klientów może spowodować zmniejszenie pliki danych za pomocą samoobsługowej w momencie ich wyboru, wykonując kroki opisane w [odzyskać nieużywane miejsce przydzielone](#reclaim-unused-allocated-space).
 
 > [!NOTE]
 > W przeciwieństwie do plików danych usługa SQL Database automatycznie zmniejsza pliki dziennika, ponieważ tej operacji nie ma wpływu na wydajność bazy danych. 
@@ -68,9 +71,9 @@ Na poniższym diagramie przedstawiono relację między różnymi typami miejsca 
 
 ![relacje i typy miejsce magazynowania](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-database-for-storage-space-information"></a>Zapytanie dotyczące bazy danych informacji miejsce magazynowania
+## <a name="query-a-single-database-for-storage-space-information"></a>Zapytanie dotyczące pojedynczej bazy danych informacji miejsce magazynowania
 
-Następujące zapytania może służyć do określenia ilości miejsca magazynu dla bazy danych.  
+Następujące zapytania może służyć do określenia ilości miejsca magazynu dla pojedynczej bazy danych.  
 
 ### <a name="database-data-space-used"></a>Używane miejsce danych w bazie danych
 
@@ -144,7 +147,7 @@ Zmodyfikuj następujący skrypt programu PowerShell, aby zwrócić tabelę z lis
 
 Wyniki zapytania do określania ilość miejsca przydzielonego dla każdej bazy danych w puli można dodać razem do określenia łączne miejsce przydzielone dla puli elastycznej. Przydzielone miejsce puli elastycznej nie może przekraczać maksymalny rozmiar puli elastycznej.  
 
-Skrypt programu PowerShell wymaga modułu programu PowerShell programu SQL Server — zobacz [modułu PowerShell Pobierz](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module?view=sql-server-2017) do zainstalowania.
+Skrypt programu PowerShell wymaga modułu programu PowerShell programu SQL Server — zobacz [modułu PowerShell Pobierz](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) do zainstalowania.
 
 ```powershell
 # Resource group name
@@ -225,7 +228,7 @@ Aby uzyskać więcej informacji na temat tego polecenia, zobacz [SHRINKDATABASE]
 
 ### <a name="auto-shrink"></a>Automatycznego zmniejszania
 
-Alternatywnie można włączyć automatycznego zmniejszania dla bazy danych.  Automatycznego zmniejszania zmniejsza złożoność zarządzania pliku i jest mniej wpływie na wydajność bazy danych niż SHRINKDATABASE lub SHRINKFILE.  Automatycznego zmniejszania może być szczególnie przydatne w przypadku Zarządzanie elastycznymi pulami za pomocą wielu baz danych.  Jednak automatycznego zmniejszania może być mniej skuteczny w odzyskiwaniu miejsca niż SHRINKDATABASE i SHRINKFILE.
+Alternatywnie można włączyć automatycznego zmniejszania dla bazy danych.  Automatycznego zmniejszania zmniejsza złożoność zarządzania pliku i jest mniej wpływie na wydajność bazy danych niż `SHRINKDATABASE` lub `SHRINKFILE`.  Automatycznego zmniejszania może być szczególnie przydatne w przypadku Zarządzanie elastycznymi pulami za pomocą wielu baz danych.  Jednak automatycznego zmniejszania może być mniej skuteczny w odzyskiwaniu miejsca niż `SHRINKDATABASE` i `SHRINKFILE`.
 Aby włączyć automatyczne zmniejszanie, należy zmodyfikować nazwę bazy danych w poniższym poleceniu.
 
 

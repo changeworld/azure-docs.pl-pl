@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 676adb05178097c1802c0ff5b3a5da1bbb7b188c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 94482666d0db3157b0c18c0b47f9937457172521
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978378"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116001"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizuj typ magazynu dysków zarządzanych
 
@@ -33,7 +33,7 @@ Usługa Azure Managed Disks oferuje trzy opcje typu magazynu: [Premium SSD](../w
 
 * Ponieważ konwersja wymaga ponownego uruchomienia maszyny wirtualnej (VM), należy zaplanować migrację magazynu dysków podczas istniejącego okna obsługi. 
 * Jeśli używasz dysku niezarządzanego, najpierw [przekonwertować go na dysk zarządzany](convert-unmanaged-to-managed-disks.md) aby możliwe było przełączać typów magazynów. 
-* Przykłady w niniejszym artykule wymagają programu Azure PowerShell w module w wersji 6.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-az-ps). Uruchom [Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) do utworzenia połączenia z platformą Azure.
+* Przykłady w niniejszym artykule wymagają programu Azure PowerShell w module w wersji 6.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Uruchom [Connect AzAccount](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount) do utworzenia połączenia z platformą Azure.
 
 
 ## <a name="convert-all-the-managed-disks-of-a-vm-from-standard-to-premium"></a>Konwertuj dyski zarządzane maszyny wirtualnej z warstwy standardowa do warstwy premium

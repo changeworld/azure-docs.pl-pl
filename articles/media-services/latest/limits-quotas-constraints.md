@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 285f4f4aad18943399511cbcac711933f23f7cb2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9f5cf0e8be0529ce59edc9aa4cd33d470415c8a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004798"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190963"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Limity przydziału i ograniczenia dotyczące usługi Azure Media Services v3
 
@@ -37,7 +37,7 @@ W tym artykule opisano przydziały i ograniczenia dotyczące usługi Azure Media
 | Konta usługi Media Services w ramach jednej subskrypcji | 25 (stały) |
 | Dane wyjściowe na żywo w stanie działania na element LiveEvent |3|
 | Konta magazynu | 100<sup>(4)</sup> (stałe) |
-| Punkty końcowe przesyłania strumieniowego w stanie działania na konto usługi Media Services|2|
+| Punkty końcowe przesyłania strumieniowego (zatrzymana lub uruchomiona) na konto usługi Media Services|2|
 | Zasady przesyłania strumieniowego | 100 <sup>(3)</sup> |
 | Przekształcenia na konto usługi Media Services | 100 (stałe)|
 | Unikatowe Lokalizatory przesyłania strumieniowego, w tym samym czasie skojarzony z elementem zawartości | 100<sup>(5)</sup> (stałe) |

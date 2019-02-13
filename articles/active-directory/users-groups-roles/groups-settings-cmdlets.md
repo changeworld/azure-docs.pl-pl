@@ -14,12 +14,13 @@ ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: e838af0ac8e9cfd1d42b768fa68ec7d9f46386c6
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 456a094ed961b24e3db3944fe4ae2b9ff661d896
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512231"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190878"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy
 Ten artykuł zawiera instrukcje dotyczące korzystania z poleceń cmdlet programu PowerShell usługi Azure Active Directory (Azure AD) do tworzenia i aktualizowania grup. Ta zawartość dotyczy tylko do grup usługi Office 365 (czasami nazywany grupy ujednolicone). 

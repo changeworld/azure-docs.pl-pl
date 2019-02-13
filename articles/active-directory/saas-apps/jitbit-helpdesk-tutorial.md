@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.openlocfilehash: e240efe98e04195947829b1821e0f6b6d92c2be6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7cb752a6b598c9fe7f146cd6ce96182405fc0dc6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173449"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167681"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Samouczek: Integracja usługi Azure Active Directory z Jitbit działu pomocy technicznej
 
@@ -120,7 +121,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | |
     
     > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pomoc techniczna Jitbit](https://www.jitbit.com/support/) aby zyskać tę wartość. 
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta pomoc techniczna Jitbit](https://www.jitbit.com/support/) aby zyskać tę wartość. 
     
     b.  W **identyfikator** pole tekstowe, wpisz adres URL, jako pokazano poniżej: `https://www.jitbit.com/web-helpdesk/`
 

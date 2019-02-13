@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: priyamo
-ms.openlocfilehash: 5f6c995cee823347cfecb64bc34377153299a6d3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dfeec56de5507694a08c1e3b80cd394906022473
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188426"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169177"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-by-using-the-azure-portal"></a>Przypisać z tożsamości zarządzanej dostępu do tego zasobu za pomocą witryny Azure portal
 

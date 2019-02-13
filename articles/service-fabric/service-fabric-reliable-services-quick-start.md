@@ -1,6 +1,6 @@
 ---
-title: Tworzenie pierwszej aplikacji platformy Service Fabric w języku C# | Dokumentacja firmy Microsoft
-description: Wprowadzenie do tworzenia aplikacji usługi sieć szkieletowa usług Microsoft Azure z usług bezstanowych i stanowych.
+title: Tworzenie pierwszej aplikacji usługi Service Fabric w C# | Dokumentacja firmy Microsoft
+description: Wprowadzenie do tworzenia aplikacji usługi Microsoft Azure Service Fabric za pomocą usługi stanowe i bezstanowe.
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: 6977fa0a62767cebbd1000335c6c3a33a5991c2c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: eb0fd7e4feb28d60173b638a15dbce598f78e6bf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34208169"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182956"
 ---
 # <a name="get-started-with-reliable-services"></a>Wprowadzenie do usług Reliable Services
 > [!div class="op_single_selector"]
@@ -28,38 +28,36 @@ ms.locfileid: "34208169"
 > 
 > 
 
-Aplikację usługi Azure Service Fabric zawiera jeden lub więcej usług, które uruchomić kod. W tym przewodniku przedstawiono sposób tworzenia aplikacji platformy Service Fabric zarówno bezstanowe i stanowe z [niezawodne usługi](service-fabric-reliable-services-introduction.md).  Microsoft Virtual Academy wideo przedstawiono również sposób tworzenia bezstanowej niezawodnej usługi: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=s39AO76yC_7206218965">  
-<img src="./media/service-fabric-reliable-services-quick-start/ReliableServicesVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
+Aplikacja usługi Azure Service Fabric zawiera jeden lub więcej usług, które uruchomienia kodu. Ten przewodnik pokazuje sposób tworzenia stanowe i bezstanowe aplikacji usługi Service Fabric za pomocą [usług Reliable Services](service-fabric-reliable-services-introduction.md).  
 
 ## <a name="basic-concepts"></a>Podstawowe pojęcia
-Aby rozpocząć pracę z usługami Reliable Services, tylko musisz poznać kilka podstawowych pojęć:
+Aby rozpocząć pracę z usługami Reliable Services, należy tylko poznać kilka podstawowych pojęć:
 
-* **Typ usługi**: jest to implementacji usługi. Jest on zdefiniowany przez klasę pisania, rozszerzający `StatelessService` i innego kodu lub zależności używany, oraz nazwę i numer wersji.
-* **Nazwane wystąpienie usługi**: Aby uruchomić usługę, tworzenia nazwanego wystąpienia danego typu usługi znacznie tak, jak utworzyć wystąpienia obiektu typu klasy. Wystąpienie usługi ma nazwę w postaci przy użyciu identyfikatora URI "fabric: /" schemat, takich jak "sieci szkieletowej: / MyApp/Moja_usługa".
-* **Host usługi**: wystąpień usługi o nazwie, należy utworzyć niezbędne do uruchomienia wewnątrz procesu hosta. Host usługi jest właśnie procesu, których można uruchomić wystąpienia usługi.
-* **Usługa rejestracji**: rejestracji, połączono wszystko. Typ usługi musi być zarejestrowana ze środowiskiem uruchomieniowym usługi sieć szkieletowa w umożliwia sieci szkieletowej usług do tworzenia wystąpień usługi hosta do uruchomienia.  
+* **Typ usługi**: Jest to Twoja implementacja usługi. Jest definicją klasy pisania, która rozszerza `StatelessService` i innego kodu lub zależności razem z nim, nazwę i numer wersji.
+* **Nazwane wystąpienie usługi**: Aby uruchomić usługę, należy utworzyć nazwanych wystąpień danego typu usługi znacznie jak tworzenia wystąpienia obiektu typu klasy. Wystąpienie usługi o nazwie w formie identyfikatora URI za pomocą "Service fabric: /" schemat, takie jak "fabric: / MyApp/Moja_usługa".
+* **Host usługi**: Utworzonych wystąpień usługi o nazwie konieczne uruchamiane wewnątrz procesu hosta. Host usługi jest po prostu procesu, gdzie można uruchomić wystąpienia usługi.
+* **Usługa rejestracji**: Rejestracja łączy wszystkie elementy. Typ usługi musi być zarejestrowany ze środowiskiem uruchomieniowym usługi Service Fabric na hoście usługi, aby umożliwić usługi Service Fabric utworzyć jego wystąpienia do uruchomienia.  
 
 ## <a name="create-a-stateless-service"></a>Tworzenie usługi bezstanowej
-Usługi bezstanowej jest typem usługi, która jest obecnie normą w aplikacji w chmurze. Uznano bezstanowych, ponieważ sama usługa nie zawiera danych, który musi być niezawodnie przechowywane lub zyskuje dużą dostępność. Jeśli wystąpienie usługi bezstanowej zostanie wyłączony, wszystkie jego stanu wewnętrznego zostaną utracone. W tym typie usługi stanu musi zostać utrwalony na zewnętrznym sklepie, takie jak tabele Azure lub bazy danych SQL, na jego się wysoką dostępność i niezawodne.
+Usługa bezstanowa jest typem usługi, która jest obecnie normy w aplikacjach w chmurze. Uznano bezstanowych, ponieważ sama usługa nie zawiera danych, który ma być przechowywane w niezawodny sposób będą ani o wysokiej dostępności. Jeśli wystąpienie usługi bezstanowej zamknięcie, wszystkie jego stanu wewnętrznego zostaną utracone. W tym typie usługi stanu musi zostać utrwalona, do magazynu zewnętrznego, takie jak tabele platformy Azure lub bazę danych SQL, a dla niego ma zostać wykonane, wysoko dostępne i niezawodne.
 
-Uruchom program Visual Studio 2015 lub Visual Studio 2017 jako administrator, a następnie utwórz nowy projekt aplikacji sieci szkieletowej usług o nazwie *HelloWorld*:
+Uruchom program Visual Studio 2015 lub Visual Studio 2017 jako administrator i Utwórz nowy projekt aplikacji usługi Service Fabric o nazwie *HelloWorld*:
 
-![Użyj okna dialogowego Nowy projekt do tworzenia nowej aplikacji sieci szkieletowej usług](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
+![Użyj okna dialogowego Nowy projekt do tworzenia nowej aplikacji usługi Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject.png)
 
 Następnie utwórz projekt usługi bezstanowej za pomocą **.Net Core 2.0** o nazwie *HelloWorldStateless*:
 
-![W oknie dialogowym drugi utworzyć projekt usługi bezstanowej](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
+![W drugim oknie dialogowym Tworzenie projektu usługi bezstanowej](media/service-fabric-reliable-services-quick-start/hello-stateless-NewProject2.png)
 
 Rozwiązanie zawiera teraz dwa projekty:
 
-* *HelloWorld*. Jest to *aplikacji* projekt, który zawiera Twoje *usług*. Zawiera ona także manifest aplikacji, który opisuje aplikacji, a także wiele skryptów programu PowerShell, które ułatwiają wdrażanie aplikacji.
-* *HelloWorldStateless*. Jest to projekt usługi. Zawiera ona wdrożenia usługi bezstanowej.
+* *HelloWorld*. Jest to *aplikacji* projektu, który zawiera Twoje *usług*. Zawiera ona także manifest aplikacji, który opisuje aplikację, a także szereg skryptów programu PowerShell, które ułatwiają wdrażanie aplikacji.
+* *HelloWorldStateless*. Jest to projekt usługi. Zawiera ona wdrożenia o bezstanowa usługa.
 
-## <a name="implement-the-service"></a>Wdrożenie usługi
-Otwórz **HelloWorldStateless.cs** plik w projekcie usługi. W sieci szkieletowej usług usługi można uruchomić wszelka logika biznesowa. Interfejs API usługi zawiera dwa punkty wejścia kodu:
+## <a name="implement-the-service"></a>Implementuje usługi
+Otwórz **HelloWorldStateless.cs** pliku w projekcie usługi. W usłudze Service Fabric usługa może działać wszelka logika biznesowa. Interfejs API usługi zawiera dwa punkty wejścia w kodzie:
 
-* Metoda punktu wejścia otwarty, nazywany *RunAsync*, w którym można rozpocząć wykonywania dowolnych zadań, w tym obciążeń obliczeniowych długotrwałe.
+* Metody punktu wejścia nieograniczony, o nazwie *RunAsync*, w którym możesz rozpocząć wykonywanie obciążeń, w tym obciążeń obliczeniowych długoterminowych.
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -68,7 +66,7 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-* Punkt wejścia komunikacji, gdzie można podłączyć stosu komunikacji wyboru, takich jak ASP.NET Core. Jest to, gdzie można uruchomić odbieranie żądań od użytkowników i innych usług.
+* Punkt wejścia komunikacji, gdzie możesz podłączyć stosu komunikacji wyboru, takich jak ASP.NET Core. Jest to, gdzie można uruchomić odbieranie żądań od użytkowników i innych usług.
 
 ```csharp
 protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
@@ -77,11 +75,11 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 }
 ```
 
-W tym samouczku, firma Microsoft będzie skupić się na `RunAsync()` metoda punktu wejścia. Jest to, gdzie natychmiast można rozpocząć uruchamianie kodu.
-Szablon projektu zawiera implementację próbki `RunAsync()` który zwiększa liczbę stopniowe.
+W tym samouczku skupimy się na `RunAsync()` metody punktu wejścia. Jest to, gdzie można natychmiast rozpocząć wykonywanie Twojego kodu.
+Szablon projektu zawiera przykład implementacji `RunAsync()` , zwiększa się liczba stopniowe.
 
 > [!NOTE]
-> Aby uzyskać szczegółowe informacje dotyczące pracy z stosu komunikacji, zobacz [usług interfejsu API sieci Web sieci szkieletowej usług za pomocą hostingu samodzielnego OWIN](service-fabric-reliable-services-communication-webapi.md)
+> Aby uzyskać szczegółowe informacje na temat pracy z stos komunikacji, zobacz [usług internetowy interfejs API usługi Service Fabric przy użyciu własnym hostingu OWIN](service-fabric-reliable-services-communication-webapi.md)
 > 
 > 
 
@@ -105,39 +103,39 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 }
 ```
 
-Platforma wywołuje tę metodę, gdy wystąpienie usługi jest umieszczony i gotowa do wykonania. Dla usługi bezstanowej po prostu oznacza to, gdy wystąpienie usługi jest otwarty. Token anulowania został dostarczony do koordynowania, gdy wystąpienie usługi musi zostać zamknięty. W sieci szkieletowej usług ten cykl otwarcie i zamknięcie wystąpienia usługi może wystąpić wiele razy w okresie istnienia usługi jako całość. Może się to zdarzyć z różnych powodów, w tym:
+Platforma wywołuje tę metodę, gdy wystąpienie usługi jest umieszczony i gotowe do wykonania. Usługi bezstanowej po prostu oznacza to, gdy wystąpienie usługi jest otwarty. Token anulowania jest udostępniane na koordynowanie czasu wystąpienia usługi musi zostać zamknięty. W usłudze Service Fabric ten cykl otwarcie i zamknięcie wystąpienia usługi może wystąpić wiele razy w okresie istnienia usługi jako całości. Może się to zdarzyć różnych powodów, takich jak:
 
-* System przeniesie swoich wystąpień usługi dla równoważenia zasobów.
+* System przenosi wystąpień usługi dla równoważenia zasobów.
 * Błędy występują w kodzie.
-* Uaktualnianie aplikacji lub systemu.
-* Sprzętu źródłowego ulegnie awarii.
+* Uaktualnieniu aplikacji lub systemu.
+* Używany sprzęt, wystąpi awaria.
 
-Aranżacja jest zarządzany przez system do zachowania usługi wysokiej dostępności i nieprawidłowo zrównoważone.
+Takie ograniczenia jest zarządzany przez system w celu zachowania usługi o wysokiej dostępności i prawidłowo o zrównoważonym obciążeniu.
 
-`RunAsync()` nie zablokować synchronicznie. Implementacji RunAsync powinna zwracać zadanie lub oczekiwania na żadnych operacji długotrwałe lub blokowania, aby umożliwić środowiska wykonawczego kontynuować. Należy zwrócić uwagę w `while(true)` pętli w poprzednim przykładzie, umożliwiające zwracanie zadań `await Task.Delay()` jest używany. Jeśli obciążenie może zablokować synchronicznie, należy zaplanować nowe zadanie z `Task.Run()` w Twojej `RunAsync` implementacji.
+`RunAsync()` należy nie blokuje synchronicznie. Implementacja RunAsync powinna zwracać zadanie lub poczekać na żadnych operacji długotrwałych lub blokowania, aby umożliwić środowiska uruchomieniowego kontynuować. Zwróć uwagę, w `while(true)` pętli w poprzednim przykładzie, zwracając zadanie `await Task.Delay()` jest używany. Jeśli obciążenie należy zablokować synchronicznie, należy zaplanować nowe zadanie z `Task.Run()` w swojej `RunAsync` implementacji.
 
-Anulowanie obciążenie jest współpraca wysiłku, zorkiestrowana przez token anulowania podanego. System będzie oczekiwał na zadania zakończenia (przez pomyślne zakończenie anulowania lub fault), zanim przesyłane w. Ważne jest, aby uwzględnić token anulowania, Zakończ pracę i zamknąć `RunAsync()` tak szybko jak to możliwe, gdy system żąda anulowania.
+Anulowanie obciążenia jest wspólnego nakładu pracy, zorganizowanych według podanego tokenu anulowania. System będzie czekać na zadanie zakończenia (za pomyślne wykonanie, anulowania lub błędu), zanim przemieszczał się. Jest ważne uwzględnić token anulowania, Zakończ wszelkie prace i zamknąć `RunAsync()` tak szybko, jak to możliwe, gdy system zażąda anulowania.
 
-W tym przykładzie usługi bezstanowej licznika są przechowywane w zmiennej lokalnej. Ale jest usługi bezstanowej, dlatego wartość przechowywana istnieje tylko dla bieżącego cyklu życia jego wystąpienia usługi. Gdy usługa przenosi lub ponownego uruchomienia, wartość jest utracone.
+W tym przykładzie Usługa bezstanowa liczby są przechowywane w zmiennej lokalnej. Ale ponieważ usługę bezstanową, wartość, która jest przechowywana istnieje tylko dla bieżącego cyklu życia wystąpienia usługi. Gdy usługa przejdzie lub ponowne uruchomienie, wartość jest utracone.
 
-## <a name="create-a-stateful-service"></a>Tworzenie usługi stanowej
-Sieć szkieletowa usług wprowadzono nowy rodzaj usługi, który jest obiektem stanowym. Usługa stanowa można zachować stanie niezawodnie w ramach usługi, wspólnie z kodem, który go używa. Stan dokonuje wysokiej dostępności sieci szkieletowej usług bez konieczności utrwalić stanu do magazynu zewnętrznego.
+## <a name="create-a-stateful-service"></a>Tworzenie stanowej usługi
+Usługa Service Fabric wprowadza nowy rodzaj usługi stanowej. Usługa stanowa może zachowywać stan, niezawodne w ramach usługi, wspólnie z kodem, który jest używany. Stan dokonuje wysokiej dostępności usługi Service Fabric bez konieczności utrwalanie stanu do magazynu zewnętrznego.
 
-Aby przekonwertować wartość licznika z bezstanowej wysokiej dostępności i trwałe, nawet wtedy, gdy usługi są przenoszone lub ponownego uruchomienia, należy usługi stanowej.
+Aby przekonwertować wartość licznika z bezstanową wysoko dostępnych i trwałych, nawet wtedy, gdy usługa przejdzie lub ponowne uruchomienie, potrzebujesz usługi stanowej.
 
-W tym samym *HelloWorld* aplikacji, można dodać nową usługę prawym przyciskiem myszy w ramach usług odwołań w projekcie aplikacji i wybierając **Nowa usługa sieci szkieletowej usług -> Dodaj**.
+W tym samym *HelloWorld* aplikacji, można dodać nową usługę, kliknij prawym przyciskiem myszy usług odwołań w projekcie aplikacji i wybierając **Dodaj -> Nowa usługa Service Fabric**.
 
-![Dodawanie usługi do aplikacji sieci szkieletowej usług](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
+![Dodać usługę do aplikacji usługi Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-Wybierz **.Net Core 2.0 -> Usługa Stateful** i nadaj mu nazwę *HelloWorldStateful*. Kliknij przycisk **OK**.
+Wybierz **.Net Core 2.0 -> Usługa stanowa** i nadaj mu nazwę *HelloWorldStateful*. Kliknij przycisk **OK**.
 
-![Użyj okna dialogowego Nowy projekt do utworzenia nowej usługi stanowej sieci szkieletowej usług](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
+![Użyj okna dialogowego Nowy projekt do utworzenia nowej usługi stanowej usługi Service Fabric](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
-Aplikacja powinna mieć teraz dwie usługi: usługi bezstanowej *HelloWorldStateless* i usługi stanowej *HelloWorldStateful*.
+Twoja aplikacja powinna mieć teraz dwie usługi: usługi bezstanowej *HelloWorldStateless* i usługi stanowej *HelloWorldStateful*.
 
-Usługa stanowa ma tego samego punkty wejścia jako usługę bezstanową. Główna różnica polega na dostępność *dostawcy stanu* który niezawodne przechowywanie stanu. Sieć szkieletowa usług jest dostarczany z implementacja dostawcy stanu o nazwie [niezawodnej kolekcje](service-fabric-reliable-services-reliable-collections.md), która umożliwia tworzenie replikowane struktury danych za pośrednictwem niezawodnych menedżera stanu. Domyślnie usługa stanowa niezawodnej używa tego dostawcy stanu.
+Usługa stanowa ma ten sam punkty wejścia jako bezstanowej usługi. Główna różnica polega na dostępność *dostawca stanu* , niezawodnego przechowywania stanu. Usługa Service Fabric jest dostarczany z implementacja dostawcy stanu o nazwie [elementów Reliable Collections](service-fabric-reliable-services-reliable-collections.md), która umożliwia tworzenie replikowane struktur danych za pośrednictwem Reliable State Manager. Domyślnie stanowej usługi Reliable Service używa tego dostawcy stanu.
 
-Otwórz **HelloWorldStateful.cs** w *HelloWorldStateful*, który zawiera następujące metodzie RunAsync:
+Otwórz **HelloWorldStateful.cs** w *HelloWorldStateful*, który zawiera następujące metody RunAsync:
 
 ```csharp
 protected override async Task RunAsync(CancellationToken cancellationToken)
@@ -170,23 +168,23 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()` działa podobnie, w usługach stanowe i bezstanowe. Jednak w usługi stanowej, platforma wykonuje dodatkowych działań w Twoim imieniu przed rozpoczęciem wykonywania `RunAsync()`. Te działania mogą obejmować zapewnienie, że Menedżer niezawodnej stanu i niezawodne kolekcji są gotowe do użycia.
+`RunAsync()` działa podobnie w usługi stanowe i bezstanowe. Jednak w stanowej usłudze platformy wykonuje dodatkowej pracy w Twoim imieniu przed rozpoczęciem wykonywania `RunAsync()`. Ta praca może obejmować zapewnienie, że Reliable State Manager i elementów Reliable Collections są gotowe do użycia.
 
-### <a name="reliable-collections-and-the-reliable-state-manager"></a>Kolekcje niezawodnych i niezawodne Menedżer stanu
+### <a name="reliable-collections-and-the-reliable-state-manager"></a>Niezawodne kolekcje i niezawodne Menedżer stanu
 ```csharp
 var myDictionary = await this.StateManager.GetOrAddAsync<IReliableDictionary<string, long>>("myDictionary");
 ```
 
-[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) jest implementacji słownik, który umożliwia niezawodne przechowywanie stanu usługi. Z sieci szkieletowej usług i niezawodne kolekcji można przechowywać danych bezpośrednio w usłudze bez konieczności zewnętrznych magazynu trwałego. Niezawodne kolekcje danych wysokiej dostępności. Sieć szkieletowa usług rozwiązanie to tworzenie i zarządzanie wieloma *replik* usługi dla Ciebie. Udostępnia również interfejs API, który abstracts optymalizacji złożoności Zarządzanie tych replik, a ich przejścia stanu.
+[IReliableDictionary](https://msdn.microsoft.com/library/dn971511.aspx) stanowi implementację słownika, która służy do niezawodnego przechowywania stanu usługi. Usługa Service Fabric i elementów Reliable Collections dane można przechowywać bezpośrednio w usłudze bez konieczności dla zewnętrznego magazynu trwałego. Elementy Reliable Collections danych wysokiej dostępności. Usługa Service Fabric to w ramach przez tworzenie i zarządzanie wieloma *replik* usługi dla Ciebie. Udostępnia również interfejs API, który pozwala zmniejszyć wagę komplikacje związane z zarządzaniem tych replik oraz ich stanami.
 
-Kolekcje niezawodnej może przechowywać żadnych typ architektury .NET, łącznie z niestandardowych typów, za pomocą paru ostrzeżenia:
+Elementy Reliable Collections może przechowywać dowolnego typu .NET, w tym usługi typów niestandardowych przy użyciu kilku ostrzeżenia:
 
-* Usługa sieci szkieletowej udostępnia swój stan wysokiej przez *replikowanie* stanu między węzły i niezawodne kolekcje przechowywania danych na dysku lokalnym na każdej repliki. To oznacza, że wszystkie zasoby, które są przechowywane w niezawodnej kolekcje muszą zostać *serializacji*. Domyślnie używają niezawodnej kolekcje [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) serializacji, dlatego ważne jest, aby upewnić się, że Twoje typy są [obsługiwane przez serializator kontraktu danych](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) używając domyślnego elementu serializującego.
-* Obiekty są replikowane wysokiej dostępności po zatwierdzeniu transakcji na niezawodne kolekcji. Obiekty przechowywane w niezawodnej kolekcje są przechowywane w lokalnej pamięci w usłudze. Oznacza to, że masz lokalnego odwołania do obiektu.
+* Usługa Service Fabric zapewnia wysoce dostępny stan programu *replikowanie* stanu między węzłami oraz elementów Reliable Collections przechowywania danych na dysku lokalnym na każdej repliki. Oznacza to, że wszystko, co znajduje się w elementach Reliable Collections musi być *serializacji*. Domyślnie używają elementów Reliable Collections [DataContract](https://msdn.microsoft.com/library/system.runtime.serialization.datacontractattribute%28v=vs.110%29.aspx) serializacji, dlatego ważne jest upewnić się, że Twoje typy są [obsługiwane przez serializator kontraktu danych](https://msdn.microsoft.com/library/ms731923%28v=vs.110%29.aspx) kiedy używać domyślnego elementu serializującego.
+* Obiekty są replikowane w celu zapewnienia wysokiej dostępności, podczas zatwierdzania transakcji dla elementów Reliable Collections. Obiekty przechowywane w elementach Reliable Collections są przechowywane w pamięci lokalnej w usłudze. Oznacza to, że masz lokalnego odwołania do obiektu.
   
-   Należy pamiętać, że nie zmodyfikować lokalnych wystąpień tych obiektów, bez wykonywania operacji update na niezawodne kolekcji w transakcji. Jest to spowodowane zmiany do lokalnego wystąpienia obiektów, nie będą automatycznie replikowane. Musisz ponownie wstawić obiekt do słownika lub użyj jednej z *aktualizacji* metody w słowniku.
+   Należy pamiętać, że mutuje lokalnych wystąpień tych obiektów bez przeprowadzania operacji aktualizacji w niezawodnej kolekcji w ramach transakcji. Jest to spowodowane zmian do lokalnego wystąpienia obiektów, nie będą automatycznie replikowane. Należy ponownie włóż obiekt do słownika lub użyj jednego z *aktualizacji* metod w słowniku.
 
-Menedżer niezawodnej stanu zarządza niezawodnej kolekcji. Po prostu poproś niezawodnej Menedżer stanu niezawodnej kolekcji o nazwie w dowolnym momencie i w dowolnym miejscu w usłudze. Niezawodne Menedżer stanu zapewnia ponownie uzyskać odwołanie. Nie zaleca się zapisywania odwołań do kolekcji niezawodnej instancji w elemencie członkowskim klasy zmiennych lub właściwości. Szczególną uwagę należy upewnić się, że odwołanie jest ustawione na wystąpienie przez cały czas w cyklu życia usługi. Niezawodne Menedżer stanu obsługuje tę pracę za Ciebie i jest zoptymalizowany do powtarzania wizytach.
+Reliable State Manager zarządza elementów Reliable Collections. Możesz po prostu poprosić Reliable State Manager for reliable collection według nazwy w dowolnym czasie i w dowolnym miejscu w usłudze. Reliable State Manager zapewnia ponownie uzyskać odwołanie. Nie zaleca się zapisać odwołania do wystąpienia niezawodnej kolekcji w składowej klasy, zmienne lub właściwości. Specjalne należy uważać, aby upewnić się, że odwołanie jest ustawione na wystąpienie przez cały czas w cyklu życia usług. Reliable State Manager obsługuje tę pracę za Ciebie, i jest zoptymalizowany do powtarzania wizyty.
 
 ### <a name="transactional-and-asynchronous-operations"></a>Operacje transakcyjne i asynchroniczne
 ```csharp
@@ -200,32 +198,32 @@ using (ITransaction tx = this.StateManager.CreateTransaction())
 }
 ```
 
-Kolekcje niezawodnej mają wiele operacji, która ich `System.Collections.Generic` i `System.Collections.Concurrent` odpowiednikami z wyjątkiem LINQ. Operacje na niezawodne kolekcje są asynchroniczne. Jest to spowodowane operacji zapisu z kolekcjami niezawodne wykonywanie operacji We/Wy do replikacji i utrwalić danych na dysku.
+Elementy Reliable Collections mają wiele z tych samych operacji, ich `System.Collections.Generic` i `System.Collections.Concurrent` odpowiedniki z wyjątkiem LINQ. Operacje na elementów Reliable Collections są asynchroniczne. Jest to spowodowane operacji zapisu z elementami Reliable Collections wykonywać operacje We/Wy do replikacji i utrwalić dane na dysku.
 
-Są niezawodne operacje kolekcji *transakcyjnych*, dzięki czemu można zachować stanu spójne w wielu kolekcjach niezawodnej i operacji. Może na przykład usuwania z kolejki elementu roboczego z kolejką niezawodne, wykonaj operację i zapisać wynik w słowniku niezawodne, wszystkie w ramach pojedynczej transakcji. Jest ona traktowana jako operacją niepodzielną i gwarantuje, że cała operacja zostanie wykonana pomyślnie lub całej operacji cofnie. Jeśli błąd wystąpi po dequeue elementu, ale przed zapisaniem wynik, cała transakcja zostanie wycofana i element pozostaje w kolejce do przetworzenia.
+Niezawodne operacje kolekcji są *transakcyjnych*, dzięki czemu można zachować stanu zgodny w wielu elementów Reliable Collections i operacji. Może na przykład usuwania z kolejki elementu roboczego z kolejką niezawodne, wykonaj operację i zapisać wynik w niezawodnym słowniku, wszystkie w ramach jednej transakcji. Jest ona traktowana jako operację niepodzielną i gwarantuje, że cała operacja powiedzie się lub cała operacja spowoduje przywrócenie. Jeśli błąd wystąpi po usuwania z kolejki elementu, ale przed zapisaniem wynik, cała transakcja zostanie wycofana, a element pozostaje w kolejce do przetworzenia.
 
 ## <a name="run-the-application"></a>Uruchamianie aplikacji
-Teraz zwróconych do *HelloWorld* aplikacji. Teraz możesz skompilować i wdrażanie usług. Po naciśnięciu **F5**, aplikacja zostanie utworzony i wdrożyć w klastrze lokalnym.
+Firma Microsoft teraz wróć do *HelloWorld* aplikacji. Teraz można tworzyć i wdrażać usługi. Po naciśnięciu klawisza **F5**, aplikacji zostanie utworzone i wdrożone w klastrze lokalnym.
 
-Po usługi uruchomione, można przejrzeć wygenerowane zdarzenia funkcji Śledzenie zdarzeń systemu Windows () w **zdarzeń diagnostycznych** okna. Należy pamiętać, że są wyświetlone zdarzenia z usługi bezstanowej i usługi stanowej w aplikacji. W przypadku wstrzymania strumienia, klikając **wstrzymać** przycisku. Następnie można sprawdzić szczegóły komunikatu rozwijając tej wiadomości.
+Po usługi uruchomione, można wyświetlić wygenerowanych zdarzeń śledzenie zdarzeń dla Windows (ETW) w **zdarzenia diagnostyczne** okna. Pamiętaj, że zdarzenia wyświetlane są zarówno usługę bezstanową, jak i usługi stanowej w aplikacji. Możesz wstrzymać strumienia, klikając **wstrzymać** przycisku. Następnie można sprawdzić szczegółowe informacje o wiadomości, rozwijając ten komunikat.
 
 > [!NOTE]
-> Przed uruchomieniem aplikacji upewnij się, że masz lokalne działania projektowe klastra z systemem. Zapoznaj się z [Wprowadzenie — przewodnik](service-fabric-get-started.md) informacji na temat konfigurowania środowiska lokalnego.
+> Przed uruchomieniem aplikacji upewnij się, że klaster lokalny rozwój. Zapoznaj się z [przewodnik wprowadzenie](service-fabric-get-started.md) informacji na temat konfigurowania środowiska lokalnego.
 > 
 > 
 
-![Wyświetl zdarzenia diagnostycznego w programie Visual Studio](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
+![Wyświetlanie zdarzeń diagnostycznych w programie Visual Studio](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Debugowanie aplikacji sieci szkieletowej usług w programie Visual Studio](service-fabric-debugging-your-application.md)
+[Debugowanie aplikacji usługi Service Fabric w programie Visual Studio](service-fabric-debugging-your-application.md)
 
-[Wprowadzenie: usług interfejsu API sieci Web sieci szkieletowej usług za pomocą hostingu samodzielnego OWIN](service-fabric-reliable-services-communication-webapi.md)
+[Rozpocznij pracę: Usługi internetowego interfejsu API usługi Service Fabric z własnym hostingu OWIN](service-fabric-reliable-services-communication-webapi.md)
 
-[Dowiedz się więcej o niezawodnej kolekcje](service-fabric-reliable-services-reliable-collections.md)
+[Dowiedz się więcej na temat elementów Reliable Collections](service-fabric-reliable-services-reliable-collections.md)
 
 [Wdrażanie aplikacji](service-fabric-deploy-remove-applications.md)
 
 [Uaktualnienie aplikacji](service-fabric-application-upgrade.md)
 
-[Dokumentacja dla deweloperów dla niezawodne usługi](https://msdn.microsoft.com/library/azure/dn706529.aspx)
+[Dokumentacja dla deweloperów dla usług Reliable Services](https://msdn.microsoft.com/library/azure/dn706529.aspx)
 

@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 07/19/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 517288f257dcd4e397db5cc432d0168b136fe265
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 59cd52dbdf6c13900cde592aeb52d8bf9abf850f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488679"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56174031"
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Techniczne
 W tym artykule przedstawiono omówienie, jak działa uwierzytelniania przekazywanego usługi Azure Active directory (Azure AD). Głębokie techniczne i informacje o zabezpieczeniach, zobacz [zagłębia zabezpieczeń](how-to-connect-pta-security-deep-dive.md) artykułu.

@@ -14,12 +14,13 @@ ms.topic: reference
 ms.date: 11/02/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f15556596063a09f68f024346e9fbe08663436c9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 594fb736b8ec4b49cf1525047ff8a7ce5e5dc959
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497812"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194975"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
@@ -155,7 +156,7 @@ Aby sprawdzić, która wersja programu Azure AD Connect jest zainstalowany na se
 ![Wersja usługi Azure AD Connect w Panelu sterowania](./media/reference-connect-faq/faq1.png)
 
 **Pyt.: Jak uaktualnić do najnowszej wersji programu Azure AD Connect?**  
-Aby dowiedzieć się, jak uaktualnić do najnowszej wersji, zobacz [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej wersji](how-to-upgrade-previous-version.md). 
+Aby dowiedzieć się, jak uaktualnić do najnowszej wersji, zobacz [program Azure AD Connect: Uaktualnianie z poprzedniej wersji do najnowszej](how-to-upgrade-previous-version.md). 
 
 **Pyt.: Firma Microsoft już uaktualniony do najnowszej wersji programu Azure AD Connect ostatniego roku. Potrzebujemy próbę uaktualnienia?**  
 Zespół usługi Azure AD Connect sprawia, że częste aktualizacje do usługi. Korzystać z poprawek i aktualizacji zabezpieczeń, a także nowe funkcje, jest aktualne serwer do najnowszej wersji. Jeśli zostanie włączone automatyczne uaktualnianie, jest automatycznie aktualizowany używanej wersji oprogramowania. Historia wersji programu Azure AD Connect, możesz znaleźć [program Azure AD Connect: Historia wersji](reference-connect-version-history.md).

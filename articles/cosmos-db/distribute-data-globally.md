@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/26/2018
-ms.openlocfilehash: 28c945223d225d7e91df1041bcbe02ee87b93c6a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 75940f9c3c8022c5445eb998b133a156dacde9b5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475061"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106872"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db---overview"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB — omówienie
 
@@ -22,6 +22,8 @@ Usługa Azure Cosmos DB to usługa globalnie rozproszonej bazy danych, która zo
 Można skonfigurować bazy danych jako globalnie rozproszone i dostępny we wszystkich regionach platformy Azure. Aby zmniejszyć czas oczekiwania, umieść dane bliżej gdzie są Twoi użytkownicy. Wybór wymaganych regionach zależy od globalny zasięg Twojej aplikacji i gdzie są Twoi użytkownicy. Usługa Azure Cosmos DB w sposób przezroczysty replikuje dane w ramach Twojego konta do wszystkich regionów skojarzonych z Twoim kontem. Zapewnia pojedynczy obraz systemu globalnie rozproszonej bazy danych Azure Cosmos i kontenerów, które aplikacja może odczytywać i zapisywać lokalnie. 
 
 Za pomocą usługi Azure Cosmos DB można dodać lub usunąć regiony skojarzony z Twoim kontem w dowolnym momencie. Aplikacja nie musi być wstrzymane lub ponownego wdrażania, aby dodać lub usunąć region. Kontynuuje zapewniające wysoką dostępność przez cały czas ze względu na możliwości funkcji wieloadresowości, które zapewnia usługa.
+
+![Topologia wdrożenia o wysokiej dostępności](./media/distribute-data-globally/deployment-topology.png)
 
 ## <a name="key-benefits-of-global-distribution"></a>Do najważniejszych korzyści zapewnianych dystrybucja globalna
 
@@ -50,6 +52,7 @@ Wiele aplikacji korzystają z ulepszeniami wydajności, które pochodzą z możl
 Dowiedz się więcej o globalnej dystrybucji w następujących artykułach:
 
 * [Dystrybucja globalna - kulisy](global-dist-under-the-hood.md)
+* [Jak skonfigurować Multi-Master w swoich aplikacjach](how-to-multi-master.md)
 * [Konfigurowanie klientów w ramach wieloadresowości](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [Dodać lub usunąć regiony z Twojego konta usługi Azure Cosmos DB](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [Tworzenie zasad rozwiązania konfliktu niestandardowe dla konta interfejsu API SQL](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

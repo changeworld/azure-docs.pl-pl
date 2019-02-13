@@ -4,7 +4,7 @@ description: Ten artykuł zawiera ogólny opis sieci platformy Azure środowiska
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 710792c890c3e48fc54507f93eeaee529ca839f8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114032"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116936"
 ---
 # <a name="the-azure-production-network"></a>Sieć platformy Azure środowiska produkcyjnego
 Użytkownicy sieci platformy Azure środowiska produkcyjnego obejmują zarówno zewnętrznych klientów, którzy dostęp do własnych aplikacji platformy Azure i personelu wewnętrznej pomocy technicznej platformy Azure, którzy zarządzają produkcyjnego środowiska sieciowego. W tym artykule omówiono metody dostępu zabezpieczeń i mechanizmy ochrony w celu nawiązania połączenia z siecią platformy Azure środowiska produkcyjnego.
@@ -59,13 +59,13 @@ Azure implementuje zapory oprogramowania opartych na hoście w sieci produkcyjne
 Dwie kategorie reguł są w tym miejscu programowane:
 
 - **Reguły konfiguracji lub infrastruktury usługi Machine**: Domyślnie cała komunikacja jest blokowana. Istnieją wyjątki, które Zezwalaj na maszynę Wirtualną w celu wysyłania i odbierania wiadomości protokołu dynamicznej konfiguracji hosta (DHCP, Dynamic Host Configuration Protocol) i informacje dotyczące systemu DNS i wysyłania ruchu do "publicznej" sieci internet, ruch wychodzący do innych maszyn wirtualnych w klastrze FC oraz do serwera aktywacji systemu operacyjnego. Ponieważ maszyn wirtualnych dozwolony wychodzącego liście miejsc docelowych nie obejmuje podsieci routera platformy Azure i innych obszarów firmy Microsoft, reguły działają jako warstwę ochrony dla nich.
-- **Reguły pliku konfiguracji roli**: definiuje listy ACL ruchu przychodzącego oparciu o model usług dzierżawców. Na przykład jeśli dzierżawca ma fronton sieci web na porcie 80 określonej maszyny wirtualnej, port 80 jest otwarty dla wszystkich adresów IP. Jeśli maszyna wirtualna ma uruchomione roli proces roboczy, roli procesu roboczego zostanie otwarty tylko dla maszyn wirtualnych w ramach tej samej dzierżawy.
+- **Reguły pliku konfiguracji roli**: Definiuje listy ACL ruchu przychodzącego oparciu o model usług dzierżawców. Na przykład jeśli dzierżawca ma fronton sieci web na porcie 80 określonej maszyny wirtualnej, port 80 jest otwarty dla wszystkich adresów IP. Jeśli maszyna wirtualna ma uruchomione roli proces roboczy, roli procesu roboczego zostanie otwarty tylko dla maszyn wirtualnych w ramach tej samej dzierżawy.
 
-**Zapora hosta macierzystego**: Azure Service Fabric i usługi Azure Storage, uruchom w macierzystym OS ma nie funkcji hypervisor, i w związku z tym, Zapora Windows jest skonfigurowana z poprzednich dwóch zestawów reguł.
+**Zapora hosta macierzystego**: Usługa Azure Service Fabric i usługi Azure Storage, uruchom w macierzystym OS ma nie funkcji hypervisor i w związku z tym, Zapora Windows jest skonfigurowana z poprzednich dwóch zestawów reguł.
 
 **Zapora hosta**: Zapora hosta zapewnia ochronę z partycją hosta, w którym jest uruchomiona funkcja hypervisor. Aby zezwolić tylko FC i przejdź do pola, aby komunikować się z partycją hosta na określonym porcie programowane reguły. Pozostałe wyjątki znajdują, aby zezwolić na odpowiedzi serwerów DHCP i DNS. Platforma Azure używa pliku konfiguracji komputera, który zawiera szablon reguł zapory dla partycji hosta. Wyjątek zapory hostów istnieje, która umożliwia maszynom wirtualnym komunikowanie się hostowane będą składniki o komunikacji sieciowej serwera i serwera metadanych, przy użyciu określonych portów.
 
-**Zapora gościa**: element zapory Windows gościa systemu operacyjnego, który można skonfigurować przez klientów na maszynach wirtualnych klientów i magazynu.
+**Zapora gościa**: Zapora Windows fragment gościa systemu operacyjnego, który jest konfigurowalne przez klientów na maszynach wirtualnych klientów i magazynu.
 
 Dodatkowe funkcje zabezpieczeń, które są wbudowane w funkcji platformy Azure obejmują:
 

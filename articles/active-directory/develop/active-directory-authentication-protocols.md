@@ -17,12 +17,13 @@ ms.date: 04/27/2017
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 6a053d8c94dc2174d67c477e49ee1d7b3bb3ad82
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 937aa5d5874ff2915bfb51d289bfb1aac44a0530
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080484"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207827"
 ---
 # <a name="azure-active-directory-authentication-protocols"></a>Protokoły uwierzytelniania w usłudze Azure Active Directory
 Azure Active Directory (Azure AD) obsługuje niektóre z najczęściej używanych protokołów uwierzytelniania i autoryzacji. Tematy w tej sekcji opisano obsługiwane protokoły i ich wdrażania w usłudze Azure AD. Tematy zawarte recenzję obsługiwane typy oświadczeń, wprowadzenie do korzystania z metadanych Federacji, szczegółowe OAuth 2.0. i dokumentację referencyjną protokołu SAML 2.0 i sekcją dotycząca rozwiązywania problemów.

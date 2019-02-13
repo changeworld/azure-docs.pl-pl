@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.openlocfilehash: 26bf83630e9d0b44216c0572f911fb553806908e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c0f3ab1e9091038edcf7b893bdee1972489772ef
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178376"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191456"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-simplenexus"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą SimpleNexus
 

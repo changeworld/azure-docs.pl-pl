@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Insight4GRC | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Insight4GRC | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Insight4GRC.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 256550dc6aaa832599747f6fe39c2ca77ed3f8d7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 08913fc2e12026d70976ea8e2169c190378f4054
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441585"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193734"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Samouczek: Integracja usługi Azure Active Directory z Insight4GRC
+# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Insight4GRC
 
 W tym samouczku dowiesz się, jak zintegrować Insight4GRC w usłudze Azure Active Directory (Azure AD).
 
@@ -29,7 +30,7 @@ Integrowanie Insight4GRC z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Insight4GRC.
 - Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Insight4GRC (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -37,15 +38,15 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Insight4GRC, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Insight4GRC logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -59,7 +60,7 @@ Aby skonfigurować integrację Insight4GRC w usłudze Azure AD, należy dodać I
 
 **Aby dodać Insight4GRC z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Przycisk usługi Azure Active Directory][1]
 
@@ -67,15 +68,15 @@ Aby skonfigurować integrację Insight4GRC w usłudze Azure AD, należy dodać I
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 1. W polu wyszukiwania wpisz **Insight4GRC**, wybierz opcję **Insight4GRC** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Insight4GRC na liście wyników](./media/insight4grc-tutorial/tutorial_insight_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Insight4GRC w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -83,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Insight4GRC, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 1. **[Tworzenie użytkownika testowego Insight4GRC](#create-an-insight4grc-test-user)**  — aby odpowiednikiem Britta Simon w Insight4GRC połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Insight4GRC.
 
@@ -97,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Insight4GRC** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -107,28 +108,28 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Insight4GRC domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/insight4grc-tutorial/tutorial_insight_url.png)
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.Insight4GRC.com/SAML`
+    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.Insight4GRC.com/SAML`
 
-    b. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
+    b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
 
 1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
 
     ![Insight4GRC domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/insight4grc-tutorial/tutorial_insight_url1.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<subdomain>.Insight4GRC.com/Public/Login.aspx`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<subdomain>.Insight4GRC.com/Public/Login.aspx`
      
     > [!NOTE] 
-    > Te wartości są prawdziwe. Rzeczywisty identyfikator, adres URL odpowiedzi i adres URL logowania, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Insight4GRC](mailto:support.ss@rsmuk.com) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Insight4GRC](mailto:support.ss@rsmuk.com) do uzyskania tych wartości. 
 
 1. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
 
-    ![Link pobierania certyfikatu](./media/insight4grc-tutorial/tutorial_insight_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/insight4grc-tutorial/tutorial_insight_certificate.png) 
 
 1. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/insight4grc-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/insight4grc-tutorial/tutorial_general_400.png)
     
-1. Aby skonfigurować logowanie jednokrotne na **Insight4GRC** stronie, musisz wysłać skopiowany **adres Url metadanych Federacji aplikacji** do [Insight4GRC zespołem pomocy technicznej](mailto:support.ss@rsmuk.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+1. Aby skonfigurować logowanie jednokrotne na **Insight4GRC** stronie, musisz wysłać skopiowany **adres Url metadanych Federacji aplikacji** do [Insight4GRC zespołem pomocy technicznej](mailto:support.ss@rsmuk.com). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -164,10 +165,10 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-an-insight4grc-test-user"></a>Tworzenie użytkownika testowego Insight4GRC
 
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Insight4GRC. Insight4GRC obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Insight4GRC, jeśli go jeszcze nie istnieje.
+Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Insight4GRC. Insight4GRC obsługę just-in-time, który jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Nowy użytkownik jest tworzony podczas próby dostępu Insight4GRC, jeśli go jeszcze nie istnieje.
 
 >[!Note]
->Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej klienta Insight4GRC](mailto:support.ss@rsmuk.com).
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej klienta Insight4GRC](mailto:support.ss@rsmuk.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

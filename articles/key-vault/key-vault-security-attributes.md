@@ -4,17 +4,17 @@ description: Lista kontrolna typowych atrybutów zabezpieczeń do oceny usługi 
 services: key-vault
 documentationcenter: ''
 author: msmbaldwin
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8c527a016f4cab2865e84b5849fb7ffbc404abac
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1df710b256715cab9650e6d141a3dd187be41cfd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513449"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109526"
 ---
 # <a name="security-attributes-for-azure-key-vault"></a>Atrybuty zabezpieczeń dla usługi Azure Key Vault
 

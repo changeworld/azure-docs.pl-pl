@@ -12,24 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: a9bf2240e6e60a3d2d80bf4829d74f1043024d7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2c4a95bddea85d298ff9343bfd813d0b79b24b51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239676"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164026"
 ---
 # <a name="azure-stack-administration-basics"></a>Podstawy administracji w usłudze Azure Stack
-Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack administracji. Niniejsze wskazówki zawiera omówienie Twojej roli jako operatorów usługi Azure Stack i co jest potrzebne do Poinformuj użytkowników dla nich, aby szybko stać się produktywności.
+Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack administracji. Ten artykuł zawiera omówienie Twojej roli jako operatorów usługi Azure Stack i co jest potrzebne do Poinformuj użytkowników dla nich, aby szybko stać się produktywności.
 
 ## <a name="understand-the-builds"></a>Zrozumienie kompilacji
 
 ### <a name="integrated-systems"></a>Systemy zintegrowane
 
-Jeśli używasz to system zintegrowany z usługi Azure Stack zaktualizowanych wersji usługi Azure Stack są dystrybuowane za pośrednictwem pakietów aktualizacji. Można zaimportować te pakiety i zastosować je za pomocą kafelka aktualizacje w portalu administratora.
+Jeśli używasz to system zintegrowany z usługi Azure Stack zaktualizowanych wersji usługi Azure Stack są dystrybuowane za pośrednictwem pakietów aktualizacji. Można zaimportować te pakiety i zastosować je za pomocą kafelka aktualizacje w portalu administratora. ASDK instalacjami aktualizacji nie jest obsługiwana. 
  
 ### <a name="development-kit"></a>Zestaw Development kit
 

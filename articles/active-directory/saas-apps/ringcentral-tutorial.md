@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z RingCentral | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą RingCentral | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i RingCentral.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 35033e52fb54177428f8869ebcc462bd9465ad4c
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e01b06b2031da20ee9349588bd4a7ee757fbc22c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48871629"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173304"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Samouczek: Integracja usługi Azure Active Directory z RingCentral
+# <a name="tutorial-azure-active-directory-integration-with-ringcentral"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą RingCentral
 
 W tym samouczku dowiesz się, jak zintegrować RingCentral w usłudze Azure Active Directory (Azure AD).
 
@@ -29,7 +30,7 @@ Integrowanie RingCentral z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do RingCentral.
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do RingCentral (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -43,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą RingCentral, potrzebn
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -67,7 +68,7 @@ Aby skonfigurować integrację RingCentral w usłudze Azure AD, należy dodać R
 
     ![image](./media/ringcentral-tutorial/a_select_app.png)
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
     ![image](./media/ringcentral-tutorial/a_new_app.png)
 
@@ -75,7 +76,7 @@ Aby skonfigurować integrację RingCentral w usłudze Azure AD, należy dodać R
 
      ![image](./media/ringcentral-tutorial/a_add_app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą RingCentral w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -83,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą RingCentral, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 3. **[Tworzenie użytkownika testowego RingCentral](#create-a-ringcentral-test-user)**  — aby odpowiednikiem Britta Simon w RingCentral połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji RingCentral.
 
@@ -107,17 +108,17 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![image](./media/ringcentral-tutorial/b1_b2_saml_sso.png)
 
-4. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
     ![image](./media/ringcentral-tutorial/b1-domains_and_urlsedit.png)
 
-5. Na **podstawową konfigurację protokołu SAML** sekcji, jeśli masz **plik metadanych usługodawcy**, wykonaj następujące czynności:
+5. W sekcji **Podstawowa konfiguracja protokołu SAML**, jeśli masz **plik metadanych dostawcy usługi**, wykonaj następujące kroki:
 
-    a. Kliknij przycisk **przekazywania pliku metadanych**.
+    a. Kliknij pozycję **Przekaż plik metadanych**.
 
     ![image](./media/ringcentral-tutorial/b9_saml.png)
 
-    b. Kliknij pozycję **logo folderu** wybierz plik metadanych, a następnie kliknij przycisk **przekazywanie**.
+    b. Kliknij **logo folderu**, aby wybrać plik metadanych, a następnie kliknij pozycję **Przekaż**.
 
     ![image](./media/ringcentral-tutorial/b9(1)_saml.png)
 
@@ -152,7 +153,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     |  `https://sso.ringcentral.com` |
     | `https://ssoeuro.ringcentral.com` |
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL:
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL:
     | |
     |--|
     | `https://sso.ringcentral.com/sp/ACS.saml2` |
@@ -206,23 +207,23 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
     ![image](./media/ringcentral-tutorial/d_users_and_groups.png)
 
-2. Wybierz **nowego użytkownika** w górnej części ekranu.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
     ![image](./media/ringcentral-tutorial/d_adduser.png)
 
-3. We właściwościach użytkownika wykonaj następujące czynności.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
     ![image](./media/ringcentral-tutorial/d_userproperties.png)
 
-    a. W **nazwa** pola wprowadź **BrittaSimon**.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
   
-    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
     Na przykład: BrittaSimon@contoso.com
 
     c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
@@ -231,7 +232,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-ringcentral-test-user"></a>Tworzenie użytkownika testowego RingCentral
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w RingCentral. Praca z [zespołem pomocy technicznej klienta RingCentral](https://success.ringcentral.com/RCContactSupp) Aby dodać użytkowników na platformie RingCentral. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w RingCentral. Praca z [zespołem pomocy technicznej klienta RingCentral](https://success.ringcentral.com/RCContactSupp) Aby dodać użytkowników na platformie RingCentral. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
@@ -245,7 +246,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![image](./media/ringcentral-tutorial/d_all_proapplications.png)
 
-3. W menu po lewej stronie wybierz **użytkowników i grup**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
     ![image](./media/ringcentral-tutorial/d_leftpaneusers.png)
 
@@ -253,9 +254,9 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 
     ![image](./media/ringcentral-tutorial/d_assign_user.png)
 
-4. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
+4. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
+5. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

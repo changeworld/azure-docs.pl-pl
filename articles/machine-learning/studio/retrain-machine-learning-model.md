@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 4fec32ac2d613486ee65416ccdfac70575ea9543
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: e691913daabb832b2a3b51dac5d4a5b0e1f53871
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509579"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165082"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Ponowne szkolenie modelu usługi Azure Machine Learning Studio
 W ramach procesu operacjonalizacji modeli uczenia maszynowego w usłudze Azure Machine Learning model jest uczony i zapisany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne. 
@@ -63,8 +63,6 @@ Jeśli wdrożono klasycznej usługi sieci Web:
 * Utwórz nowy punkt końcowy na predykcyjną usługę sieci Web
 * Stosowanie poprawek do adresu URL i kodu
 * Użyj adresu URL poprawki, aby wskazywały nowy punkt końcowy retrained modelu 
-
-Aby uzyskać wskazówki poprzednich kroków, zobacz [Ponowne szkolenie klasyczna usługa sieci Web](retrain-a-classic-web-service.md).
 
 Jeśli napotkasz problemy, ponownego trenowania klasyczna usługa sieci Web, zobacz [Rozwiązywanie problemów z ponownym szkoleniem usługi Azure Machine Learning klasyczna usługa sieci Web](troubleshooting-retraining-models.md).
 

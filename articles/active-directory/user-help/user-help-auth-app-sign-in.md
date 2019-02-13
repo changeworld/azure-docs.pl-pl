@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 70e568923bd43783f1674fca17f0f62dd8d7b040
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 120e0f3c7e6af22210ba04565b86b8098851b26d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817944"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186900"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do konta przy użyciu aplikacji Microsoft Authenticator
 Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.

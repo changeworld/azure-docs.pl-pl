@@ -12,23 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: d35d3bb32f9afabb0e2b02f0d93fc60e0121e9ce
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4c9c4bce0b63bd6d45522e2e069d1ae884916e09
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247650"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172403"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Dodaj węzły jednostki rozbudowywać w usłudze Azure Stack
 
-Operatorzy usługi Azure Stack może zwiększyć ogólną wydajność istniejącej jednostki skalowania przez dodanie dodatkowych komputera fizycznego. Komputer fizyczny również nazywa się węzeł jednostki skalowania. Każdy nowy węzeł jednostki skalowania, dodawanych musi być jednorodnego w typ procesora CPU, pamięci oraz numer dysku i rozmiar węzłów, które już znajdują się w jednostce skalowania.
-
-> [!NOTE]  
-Należy uruchomić rozbudowywać Azure Stack 1807 lub nowszej, aby dodać węzły jednostki.
+Operatorzy usługi Azure Stack może zwiększyć ogólną wydajność istniejącej jednostki skalowania przez dodanie dodatkowych komputera fizycznego. Komputer fizyczny również nazywa się węzeł jednostki skalowania. Każdy nowy węzeł jednostki skalowania, dodawanych musi być jednolite w typ procesora CPU, pamięci, a numer dysku i rozmiar węzłów, które już znajdują się w jednostce skalowania.
 
 Aby dodać węzeł jednostki skalowania, działają w usłudze Azure Stack i uruchomienie narzędzia z producentem sprzętu sprzętu (OEM). Narzędzia OEM działa na hoście cyklu życia sprzętu (HLH) i upewnij się, że w tym samym poziomie oprogramowania układowego, co istniejące węzły pasuje do nowego komputera fizycznego.
 

@@ -4,7 +4,7 @@ description: Użyj tego samouczka, aby rozpocząć pracę z funkcją rejestrowan
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 43f96a2b-3af8-4adc-9344-bc6041fface8
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: barclayn
-ms.openlocfilehash: d1b270a5b572707ba94be8584c0e6a80ef4a5f09
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 95c7e5b58bcd79cbe4893561ec8f2a0ed1f9bf77
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002338"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110238"
 ---
 # <a name="azure-key-vault-logging"></a>Funkcja rejestrowania usługi Azure Key Vault
 
@@ -38,7 +38,7 @@ Dostęp do informacji rejestrowania będzie możliwy maksymalnie po 10 minutach 
 Ten samouczek ułatwi rozpoczęcie pracy z funkcją rejestrowania usługi Azure Key Vault. Pomoże utworzyć konto magazynu, włączyć funkcję rejestrowania i zinterpretować zebrane informacje rejestrowania.  
 
 > [!NOTE]
-> Ten samouczek nie zawiera instrukcji dotyczących sposobu tworzenia magazynów kluczy, kluczy ani kluczy tajnych. Te informacje można znaleźć w temacie [Rozpoczynanie pracy z usługą Azure Key Vault](key-vault-get-started.md). Instrukcje dotyczące wieloplatformowego interfejsu wiersza polecenia znajdują się w [tym równoważnym samouczku](key-vault-manage-with-cli2.md).
+> Ten samouczek nie zawiera instrukcji dotyczących sposobu tworzenia magazynów kluczy, kluczy ani kluczy tajnych. Aby uzyskać te informacje, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Instrukcje dotyczące wieloplatformowego interfejsu wiersza polecenia znajdują się w [tym równoważnym samouczku](key-vault-manage-with-cli2.md).
 >
 > Ten artykuł zawiera instrukcje programu Azure PowerShell w celu zaktualizowania rejestrowania diagnostycznego. Jednak takie same włączona przy użyciu usługi Azure Monitor w witrynie Azure portal w **dzienniki diagnostyczne** sekcji. 
 >
@@ -87,7 +87,7 @@ Aby uzyskać więcej informacji na temat konfigurowania programu Azure PowerShel
 
 Chociaż można użyć istniejącego konta magazynu dla dzienników, utworzymy nowe konto magazynu, które będzie przeznaczone dla dzienników usługi Key Vault. Aby później można było wygodnie określić wszystkie szczegóły, będą one przechowywane w zmiennej o nazwie **sa**.
 
-W celu ułatwienia zarządzania użyjemy tej grupy zasobów, która zawiera nasz magazyn kluczy. Tak samo jak w [samouczku wprowadzającym](key-vault-get-started.md) ta grupa zasobów ma nazwę **ContosoResourceGroup**. W dalszym ciągu będziemy też używać lokalizacji Azja Wschodnia. Zastąp te wartości własnymi, w razie potrzeby:
+W celu ułatwienia zarządzania użyjemy tej grupy zasobów, która zawiera nasz magazyn kluczy. Tak samo jak w [samouczku wprowadzającym](key-vault-overview.md) ta grupa zasobów ma nazwę **ContosoResourceGroup**. W dalszym ciągu będziemy też używać lokalizacji Azja Wschodnia. Zastąp te wartości własnymi, w razie potrzeby:
 
 ```PowerShell
  $sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup -Name contosokeyvaultlogs -Type Standard_LRS -Location 'East Asia'
@@ -316,10 +316,10 @@ Za pomocą rozwiązania Azure Key Vault możesz w usłudze Log Analytics przegl�
 
 ## <a id="next"></a>Następne kroki
 
-Aby zapoznać się z samouczkiem, w którym użyto usługi Azure Key Vault w aplikacji internetowej, zobacz [Use Azure Key Vault from a Web Application](key-vault-use-from-web-application.md) (Używanie usługi Azure Key Vault za pośrednictwem aplikacji internetowej).
+Aby uzyskać samouczek, który używa usługi Azure Key Vault w aplikacji sieci web platformy .NET, zobacz [użycia usługi Azure Key Vault z aplikacji sieci Web](tutorial-net-create-vault-azure-web-app.md).
 
 Odwołania dotyczące programowania znajdują się w [przewodniku dewelopera usługi Azure Key Vault](key-vault-developers-guide.md).
 
-Aby zapoznać się z listą poleceń cmdlet usługi Azure PowerShell 1.0 dla usługi Azure Key Vault, zobacz artykuł [Azure Key Vault Cmdlets](/powershell/module/azurerm.keyvault/#key_vault) (Polecenia cmdlet w usłudze Azure Key Vault).
+Aby zapoznać się z listą poleceń cmdlet usługi Azure PowerShell 1.0 dla usługi Azure Key Vault, zobacz artykuł [Azure Key Vault Cmdlets](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault) (Polecenia cmdlet w usłudze Azure Key Vault).
 
 Aby znaleźć samouczek dotyczący rotacji kluczy i inspekcji dzienników w usłudze Azure Key Vault, zobacz [Jak skonfigurować usługę Key Vault na potrzeby rotacji i inspekcji typu end-to-end](key-vault-key-rotation-log-monitoring.md).

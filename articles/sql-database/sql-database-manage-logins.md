@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 436dbccfe8d5b732bc64b58ff79dc772ac8b2bce
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 34c7d431815ae7a9452bb0703cde18050d38bdb7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964189"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164621"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych SQL Database i SQL Data Warehouse
 
@@ -87,7 +87,7 @@ Oprócz ról administracyjnych na poziomie serwera omówionych wcześniej usług
 Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli mogą tworzyć nowe bazy danych. Aby użyć tej roli, należy utworzyć użytkownika w bazie danych `master` i dodać go do roli bazy danych **dbmanager**. Aby utworzyć bazę danych, użytkownik musi być użytkownikiem bazującym na identyfikatorze logowania do serwera SQL Server w bazie danych master lub użytkownikiem zawartej bazy danych bazującym na użytkowniku usługi Azure Active Directory.
 
 1. Połącz się z bazą danych master przy użyciu konta administratora.
-2. Krok opcjonalny: Utwórz identyfikator logowania uwierzytelniania programu SQL Server przy użyciu [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) instrukcji. Przykładowa instrukcja:
+2. Utwórz identyfikator logowania uwierzytelniania programu SQL Server przy użyciu [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) instrukcji. Przykładowa instrukcja:
 
    ```sql
    CREATE LOGIN Mary WITH PASSWORD = '<strong_password>';

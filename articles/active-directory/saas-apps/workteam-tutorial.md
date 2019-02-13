@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Workteam | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Workteam | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Workteam.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d6ca6395e4f5e1aca361c56e21afc4e6bd1fc0c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a1022ce74fd5514b274f498a4d4f764393e6428
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132829"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185778"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Samouczek: Integracja usługi Azure Active Directory z Workteam
+# <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Workteam
 
 W tym samouczku dowiesz się, jak zintegrować Workteam w usłudze Azure Active Directory (Azure AD).
 
@@ -29,7 +30,7 @@ Integrowanie Workteam z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Workteam.
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Workteam (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -43,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Workteam, potrzebne s
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -67,15 +68,15 @@ Aby skonfigurować integrację Workteam w usłudze Azure AD, należy dodać Work
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Workteam**, wybierz opcję **Workteam** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Workteam na liście wyników](./media/workteam-tutorial/tutorial_workteam_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Workteam w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -83,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Workteam, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 3. **[Tworzenie użytkownika testowego Workteam](#create-a-workteam-test-user)**  — aby odpowiednikiem Britta Simon w Workteam połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Workteam.
 
@@ -97,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Workteam** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -111,15 +112,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Workteam domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/workteam-tutorial/tutorial_workteam_url1.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://app.workte.am`
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://app.workte.am`
      
 5. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
-    ![Link pobierania certyfikatu](./media/workteam-tutorial/tutorial_workteam_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/workteam-tutorial/tutorial_workteam_certificate.png) 
 
 6. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/workteam-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/workteam-tutorial/tutorial_general_400.png)
     
 7. Na **konfiguracji Workteam** , kliknij przycisk **skonfigurować Workteam** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
 
@@ -145,7 +146,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     c. W **identyfikator jednostki SAML** pola tekstowego, Wklej wartość **identyfikator jednostki SAML**, skopiowanej w witrynie Azure portal.
 
-    d. Otwórz w Notatniku **certyfikat szyfrowany algorytmem base-64** pobranego z witryny Azure portal, skopiuj jego zawartość, a następnie wklej go do **certyfikat podpisywania SAML (kodowanie Base64)** pole.
+    d. Otwórz w Notatniku **certyfikat szyfrowany algorytmem base-64** pobranego z witryny Azure portal, skopiuj jego zawartość, a następnie wklej go do **certyfikat podpisywania SAML (kodowanie Base64)** pole.
 
     e. Kliknij przycisk **OK**.
 
@@ -185,7 +186,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 Aby umożliwić użytkownikom usługi Azure AD zalogować się do Workteam, musi być przygotowana do Workteam. W Workteam Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do Workteam jako Administrator zabezpieczeń.
 

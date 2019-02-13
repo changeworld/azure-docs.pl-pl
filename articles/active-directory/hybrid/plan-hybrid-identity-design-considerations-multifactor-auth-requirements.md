@@ -16,12 +16,13 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 90df9926ca15666b94a72a7ff9f6f306f1193e14
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3dabb381c16aa107e41c1d556e61e020b8c6a6c3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492695"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170240"
 ---
 # <a name="determine-multi-factor-authentication-requirements-for-your-hybrid-identity-solution"></a>Określić wymagania dotyczące uwierzytelniania wieloskładnikowego dla rozwiązania tożsamości hybrydowej
 W tym świecie mobilności użytkownikom uzyskiwanie dostępu do danych i aplikacji w chmurze, jak i z dowolnego urządzenia i zabezpieczanie te informacje mają ogromne znaczenie.  Codziennie jest nowy nagłówek o naruszenia zabezpieczeń.  Mimo że nie ma żadnej gwarancji, przed naruszeniami takie, uwierzytelnianie wieloskładnikowe zapewnia dodatkową warstwę zabezpieczeń, aby uniknąć tych naruszeń.

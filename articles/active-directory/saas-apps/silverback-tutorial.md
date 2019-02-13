@@ -1,5 +1,5 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Silverback | Dokumentacja firmy Microsoft'
+title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Silverback | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Silverback.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e7cb3049f680f81026e09388066001413922600a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b5614c061586c39e44f04f3542285e55e07f14d9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123859"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172720"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Samouczek: Integracja usługi Azure Active Directory z Silverback
+# <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Silverback
 
 W tym samouczku dowiesz się, jak zintegrować Silverback w usłudze Azure Active Directory (Azure AD).
 
@@ -29,7 +30,7 @@ Integrowanie Silverback z usługą Azure AD zapewnia następujące korzyści:
 
 - Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Silverback.
 - Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Silverback (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
+- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
@@ -43,9 +44,9 @@ Aby skonfigurować integrację usługi Azure AD za pomocą Silverback, potrzebne
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
 
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
+Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
 
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
+- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
@@ -67,15 +68,15 @@ Aby skonfigurować integrację Silverback w usłudze Azure AD, należy dodać Si
 
     ![W bloku aplikacji przedsiębiorstwa][2]
     
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja][3]
 
 4. W polu wyszukiwania wpisz **Silverback**, wybierz opcję **Silverback** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
     ![Silverback na liście wyników](./media/silverback-tutorial/tutorial_silverback_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Silverback w oparciu o użytkownika testu o nazwie "Britta Simon".
 
@@ -83,13 +84,13 @@ Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika od
 
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Silverback, należy wykonać poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 3. **[Tworzenie użytkownika testowego Silverback](#create-a-silverback-test-user)**  — aby odpowiednikiem Britta Simon w Silverback połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Silverback.
 
@@ -97,7 +98,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 1. W witrynie Azure portal na **Silverback** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![Link do konfigurowania logowania jednokrotnego][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
  
@@ -107,22 +108,22 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Silverback domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/silverback-tutorial/tutorial_silverback_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOURSILVERBACKURL>.com/ssp`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<YOURSILVERBACKURL>.com/ssp`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `<YOURSILVERBACKURL>.com`
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Silverback](mailto:helpdesk@matrix42.com) do uzyskania tych wartości. 
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Silverback](mailto:helpdesk@matrix42.com) do uzyskania tych wartości. 
 
 4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
 
-    ![Link pobierania certyfikatu](./media/silverback-tutorial/tutorial_silverback_certificate.png) 
+    ![Link do pobierania certyfikatu](./media/silverback-tutorial/tutorial_silverback_certificate.png) 
 
 5. Kliknij przycisk **Zapisz** przycisku.
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/silverback-tutorial/tutorial_general_400.png)
+    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/silverback-tutorial/tutorial_general_400.png)
 
 6.  Zaloguj się do serwera Silverback z uprawnieniami administratora i wykonaj następujące czynności:
 
@@ -186,7 +187,7 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
 Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Silverback, musi być obsługiwana w Silverback. W Silverback Inicjowanie obsługi administracyjnej jest zadanie ręczne.
 
-**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+**Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
 1. Zaloguj się do serwera Silverback jako Administrator.
 
@@ -198,7 +199,7 @@ Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Silverback, musi
 
     a. W **Username** tekstu wprowadź nazwę użytkownika, takich jak **Britta**.
 
-    b. W **imię** tekstu Wprowadź imię użytkownika, takich jak **Britta**.
+    b. W polu tekstowym **First Name** (Imię) wprowadź imię użytkownika, na przykład **Britta**.
 
     c. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak **Simon**.
 

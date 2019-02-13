@@ -4,7 +4,7 @@ description: W tym dokumencie przedstawiono kontrolować dostęp do maszyny Wirt
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 5c42c0d5597e1e14bbb7814ad635abcd086db804
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 94364a54a5a0994cc3de3a2fe014b556d438b2c2
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339046"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114913"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu just-in-time
 
@@ -86,7 +86,7 @@ Aby wybrać maszyny wirtualne, które chcesz włączyć:
 3. Wybierz **Włącz dostęp JIT na maszynach wirtualnych**.
   1. Ten blok zawiera porty domyślne zalecane przez usługę Azure Security Center:
      - 22 - PROTOKOŁU SSH
-     - 3389 - PROTOKOŁU RDP
+     - 3389 - RDP
      - 5985 - Usługa WinRM 
      - 5986 - Usługa WinRM
   2. Można również skonfigurować porty niestandardowe. Aby to zrobić, wybierz **Dodaj**. 
@@ -193,7 +193,7 @@ Przypisać te *akcje* dla roli:
 
 Należy ustawić te uprawnienia, aby użytkownik mógł pomyślnie żądanie dostępu JIT do maszyny Wirtualnej: Przypisać te *akcje* dla użytkownika:
 -   W zakresie subskrypcji lub grupy zasobów, jest skojarzona z maszyną Wirtualną:
-   - Zainicjuj Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies//Akcja
+   - Microsoft.Security/locations/{the_location_of_the_VM}/jitNetworkAccessPolicies/ initiate/action
 -    W zakresie subskrypcji lub grupy zasobów lub maszyny Wirtualnej:
    - Microsoft.Compute/virtualMachines/read
 

@@ -13,14 +13,16 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 37f6ad26fd0ad4a1ac6c3fd6c6707b5b9aaef331
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fbf94d0430685ea5791aaaa83669a730986e665c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770218"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111309"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Wyświetlanie operacji wdrażania przy użyciu usługi Azure Resource Manager
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Można wyświetlić operacje wdrażania w witrynie Azure portal. Może być najbardziej interesujące oglądania operacje, które otrzymał wystąpił błąd podczas wdrażania, w tym artykule koncentruje się na wyświetlanie działań, które nie powiodły. Portal udostępnia interfejs, który pozwala na łatwe znajdowanie błędów i określić potencjalne rozwiązania.
 
@@ -68,13 +70,13 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
   Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-1. Aby uzyskać identyfikator korelacji, należy użyć:
+2. Aby uzyskać identyfikator korelacji, należy użyć:
 
   ```powershell
   (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
   ```
 
-1. Każde wdrożenie obejmuje wiele operacji. Każda operacja stanowi krok w procesie wdrażania. Aby dowiedzieć się, czym jest problem z wdrożeniem, zazwyczaj chcesz zobaczyć szczegółowe informacje o operacji wdrażania. Można wyświetlić stan operacji przy użyciu **Get AzResourceGroupDeploymentOperation**.
+3. Każde wdrożenie obejmuje wiele operacji. Każda operacja stanowi krok w procesie wdrażania. Aby dowiedzieć się, czym jest problem z wdrożeniem, zazwyczaj chcesz zobaczyć szczegółowe informacje o operacji wdrażania. Można wyświetlić stan operacji przy użyciu **Get AzResourceGroupDeploymentOperation**.
 
   ```powershell 
   Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
@@ -92,7 +94,7 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-1. Aby uzyskać więcej informacji na temat operacji nie powiodło się, można pobrać właściwości dla operacji o **stanu**.
+4. Aby uzyskać więcej informacji na temat operacji nie powiodło się, można pobrać właściwości dla operacji o **stanu**.
 
   ```powershell
   (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
@@ -115,7 +117,7 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
   ```
 
     Należy pamiętać, serviceRequestId i trackingId dla tej operacji. ServiceRequestId mogą być pomocne podczas pracy z usługą pomocy technicznej, aby Rozwiązywanie problemów z wdrażaniem. Identyfikator śledzenia w następnym kroku użyje skoncentrować się na określonej operacji.
-1. Aby uzyskać komunikat o stanie określonej operacji nie powiodło się, użyj następującego polecenia:
+5. Aby uzyskać komunikat o stanie określonej operacji nie powiodło się, użyj następującego polecenia:
 
   ```powershell
   ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -128,7 +130,7 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-1. Każda operacja wdrażania na platformie Azure obejmuje zawartości żądania i odpowiedzi. Zawartość żądania jest, co zostanie wysłane na platformie Azure podczas wdrażania (na przykład można utworzyć Maszynę wirtualną, dysk systemu operacyjnego i innych zasobów). Zawartość odpowiedzi jest Azure odsyłane spod żądania wdrożenia. Podczas wdrażania, można użyć **DeploymentDebugLogLevel** parametru do określenia, czy żądania i/lub odpowiedzi są przechowywane w dzienniku. 
+6. Każda operacja wdrażania na platformie Azure obejmuje zawartości żądania i odpowiedzi. Zawartość żądania jest, co zostanie wysłane na platformie Azure podczas wdrażania (na przykład można utworzyć Maszynę wirtualną, dysk systemu operacyjnego i innych zasobów). Zawartość odpowiedzi jest Azure odsyłane spod żądania wdrożenia. Podczas wdrażania, można użyć **DeploymentDebugLogLevel** parametru do określenia, czy żądania i/lub odpowiedzi są przechowywane w dzienniku. 
 
   Pobieranie informacji z dziennika, a następnie zapisz go lokalnie, używając następujących poleceń programu PowerShell:
 
@@ -146,13 +148,13 @@ Aby wyświetlić operacje wdrażania, użyj następujących kroków:
   az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-1. Jedna z wartości zwracane jest **correlationId**. Ta wartość służy do śledzenia powiązane zdarzenia i może być przydatne podczas pracy z pomocy technicznej, aby Rozwiązywanie problemów z wdrażaniem.
+2. Jedna z wartości zwracane jest **correlationId**. Ta wartość służy do śledzenia powiązane zdarzenia i może być przydatne podczas pracy z pomocy technicznej, aby Rozwiązywanie problemów z wdrażaniem.
 
   ```azurecli
   az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-1. Aby wyświetlić operacje dotyczące wdrożenia, należy użyć:
+3. Aby wyświetlić operacje dotyczące wdrożenia, należy użyć:
 
   ```azurecli
   az group deployment operation list -g ExampleGroup -n ExampleDeployment

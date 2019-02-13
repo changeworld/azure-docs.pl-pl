@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 2111fe6a70f45559faeb3e0f8096548dcc7b48bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 40394409dfafa3ad6b3d6685f5c944fc78df813f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238945"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172220"
 ---
 # <a name="microsoft-azure-stack-development-kit-asdk-troubleshooting"></a>Rozwiązywanie problemów z systemu Microsoft Azure Stack Development Kit (ASDK)
-Ten dokument zawiera informacje dotyczące ASDK typowych rozwiązywania problemów. Jeśli występuje problem, który nie jest udokumentowany, upewnij się sprawdzić [Forum MSDN usługi Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) dalszą pomoc i informacje.  
+Ten artykuł zawiera informacje dotyczące ASDK typowych rozwiązywania problemów. Jeśli występuje problem, który nie jest udokumentowany, upewnij się sprawdzić [Forum MSDN usługi Azure Stack](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack) dalszą pomoc i informacje.  
 
 > [!IMPORTANT]
 > Ponieważ ASDK jest środowisko wersji ewaluacyjnej, nie jest oficjalnym obsługiwane oferowane za pośrednictwem usług obsługi klienta firmy Microsoft (CSS).

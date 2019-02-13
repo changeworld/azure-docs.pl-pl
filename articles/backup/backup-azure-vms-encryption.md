@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
 ms.author: geetha
-ms.openlocfilehash: 676c6a45f4a3930d350bbcbdcbb1a0fb47880407
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 004d35290d7bfa365d2e1d0ea605c14b03ffb4a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810001"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114760"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Tworzenie kopii zapasowej i przywracanie zaszyfrowanych maszyn wirtualnych za pomocą usługi Azure Backup
 Ten artykuł zawiera informacje o kroki tworzenia kopii zapasowej i przywracanie maszyn wirtualnych (VM) przy użyciu usługi Azure Backup. Zapewnia także szczegółowe informacje o obsługiwanych scenariuszach, wymagania wstępne i kroki rozwiązywania problemów w przypadku wystąpienia błędów.
@@ -138,6 +138,6 @@ Przywrócić zaszyfrowaną maszynę Wirtualną, najpierw Przywróć dyski wykonu
 | Operacja | Szczegóły błędu | Rozwiązanie |
 | --- | --- | --- |
 |Backup | Kod błędu: UserErrorKeyVaultPermissionsNotConfigured<br><br>Komunikat o błędzie: Usługa Azure Backup nie ma wystarczających uprawnień do usługi Key Vault dla kopii zapasowej zaszyfrowanych maszyn wirtualnych. | Kopii zapasowej należy podać te uprawnienia, postępując [kroki opisane w poprzedniej sekcji](#provide-permissions-to-azure-backup). Możesz też wykonać kroki programu PowerShell w sekcji "Włącz ochronę" tego artykułu [Użyj programu PowerShell, tworzenia kopii zapasowej i przywracanie maszyn wirtualnych](backup-azure-vms-automation.md#enable-protection). |  
-| Przywracanie | Nie można przywrócić tej zaszyfrowanej maszyny Wirtualnej, ponieważ nie istnieje magazyn kluczy skojarzone z tą maszyną Wirtualną. |Tworzenie magazynu kluczy przy użyciu [Rozpoczynanie pracy z usługą Azure Key Vault](../key-vault/key-vault-get-started.md). Zobacz [przywrócić klucz usługi key vault i klucz tajny przy użyciu usługi Azure Backup](backup-azure-restore-key-secret.md) można przywrócić klucza i wpisu tajnego, jeśli nie są obecne. |
+| Przywracanie | Nie można przywrócić tej zaszyfrowanej maszyny Wirtualnej, ponieważ nie istnieje magazyn kluczy skojarzone z tą maszyną Wirtualną. |Tworzenie magazynu kluczy przy użyciu [co to jest usługa Azure Key Vault?](../key-vault/key-vault-overview.md). Zobacz [przywrócić klucz usługi key vault i klucz tajny przy użyciu usługi Azure Backup](backup-azure-restore-key-secret.md) można przywrócić klucza i wpisu tajnego, jeśli nie są obecne. |
 | Przywracanie | Kod błędu: UserErrorKeyVaultKeyDoesNotExist<br><br> Komunikat o błędzie: Nie możesz przywrócić tej zaszyfrowanej maszyny Wirtualnej, ponieważ klucz skojarzony z tą maszyną Wirtualną nie istnieje. |Zobacz [przywrócić klucz usługi key vault i klucz tajny przy użyciu usługi Azure Backup](backup-azure-restore-key-secret.md) można przywrócić klucza i wpisu tajnego, jeśli nie są obecne. |
 | Przywracanie | Kod błędu: ProviderAuthorizationFailed/UserErrorProviderAuthorizationFailed<br><br>Komunikat o błędzie: Usługa Kopia zapasowa nie ma autoryzacji umożliwiającej dostęp do zasobów w Twojej subskrypcji. |Jak wspomniano wcześniej, Przywróć dyski najpierw wykonując kroki opisane w sekcji "Przywracanie dysków kopii zapasowej" [wybierz konfigurację przywracania maszyny Wirtualnej](backup-azure-arm-restore-vms.md#choose-a-vm-restore-configuration). Po tym, za pomocą programu PowerShell do [tworzenie maszyny Wirtualnej z przywróconych dysków](backup-azure-vms-automation.md#create-a-vm-from-restored-disks). |

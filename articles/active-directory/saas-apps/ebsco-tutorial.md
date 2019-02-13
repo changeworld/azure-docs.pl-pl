@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 984c5ceab0115d464633094d20deb35761eb80f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: c0973001cda4a817ab464f825ad50deb52019f65
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178651"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180661"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ebsco"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą EBSCO
 
@@ -117,7 +118,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `http://search.ebscohost.com/login.aspx?authtype=sso&custid=<unique EBSCO customer ID>&profile=<profile ID>`
      
     > [!NOTE] 
-    > Wartość adresu URL logowania nie jest prawdziwa. Zaktualizuj wartość za pomocą adresu URL logowania rzeczywistych. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta EBSCO](mailto:sso@ebsco.com) można uzyskać wartość. 
+    > Wartość adresu URL logowania nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta EBSCO](mailto:sso@ebsco.com) można uzyskać wartość. 
 
     o **unikatowych elementów:**  
 

@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: jeedes
-ms.openlocfilehash: 027f5a9f02a0580fce61091e8be9ece9069fb34f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5353cc921d4fc07770737bb70d02361fa0e5f438
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156185"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198443"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bamboo-by-resolution-gmbh"></a>Samouczek: Usługa Azure integracji usługi Active Directory za pomocą logowania jednokrotnego SAML dla Bambus przez rozwiązania GmbH
 
@@ -141,19 +142,19 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Samlsingle](./media/bamboo-tutorial/tutorial_bamboo_samlsingle.png)
 
-1. Na **strony Konfiguracja wtyczki SIngleSignOn SAML**, kliknij przycisk **Dodawanie dostawcy tożsamości**. 
+1. Na stronie **konfiguracji wtyczki SIngleSignOn języka SAML** kliknij pozycję **Dodaj dostawcę tożsamości**. 
 
     ![Dodawanie dostawcy tożsamości](./media/bamboo-tutorial/tutorial_bamboo_addidp.png)
 
-1. Na **wybierz dostawcy tożsamości SAML** strony, wykonaj następujące czynności:
+1. Na stronie **wybierania dostawcy tożsamości języka SAML** wykonaj następujące kroki:
 
-    ![Dostawcy tożsamości](./media/bamboo-tutorial/tutorial_bamboo_identityprovider.png)
+    ![Dostawca tożsamości](./media/bamboo-tutorial/tutorial_bamboo_identityprovider.png)
 
-    a. Wybierz **typ dostawcy tożsamości** jako **usługi AZURE AD**.
+    a. W obszarze **Typ dostawcy tożsamości** ustaw wartość **AZURE AD**.
 
-    b. W **nazwa** polu tekstowym wpisz nazwę.
+    b. W polu tekstowym **Nazwa** wpisz nazwę.
 
-    c. W **opis** polu tekstowym wpisz opis.
+    c. W polu tekstowym **Opis** wpisz opis.
 
     d. Kliknij przycisk **Dalej**.
 
@@ -167,9 +168,9 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
 1. Kliknij przycisk **Dalej**.
 
-1. Kliknij przycisk **Zapisz ustawienia**.
+1. Kliknij pozycję **Zapisz ustawienia**.
 
-    ![Zapisz](./media/bamboo-tutorial/tutorial_bamboo_save.png)
+    ![Zapisywanie](./media/bamboo-tutorial/tutorial_bamboo_save.png)
     
 > [!TIP]
 > Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)

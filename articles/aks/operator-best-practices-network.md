@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 15b389e2158cb3a2070cc09b20f79f4274fde5d9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699129"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175459"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące łączności sieciowej i zabezpieczeń w usłudze Azure Kubernetes Service (AKS)
 
@@ -120,6 +120,34 @@ Zapora aplikacji sieci web (WAF) zapewnia dodatkową warstwę zabezpieczeń, fil
 
 Zasobów obciążenia równoważenia lub ruch przychodzący w dalszym ciągu uruchamiać w klastrze usługi AKS w taki sposób, aby uściślić Dystrybucja ruchu. App Gateway mogą centralnie zarządzane jako kontroler danych przychodzących, podając definicję zasobu. Aby rozpocząć pracę, [utworzyć kontroler danych przychodzących z bram aplikacji][app-gateway-ingress].
 
+## <a name="control-traffic-flow-with-network-policies"></a>Sterowanie przepływem ruchu za pomocą zasad sieciowych
+
+**Najważniejsze wskazówki** — zasady sieciowe umożliwiają blokują lub zezwalają na ruch do zasobników. Domyślnie cały ruch jest dozwolony między zasobników w ramach klastra. Aby zwiększyć bezpieczeństwo należy zdefiniować reguły, które ograniczają komunikację pod.
+
+Zasady sieci jest funkcją Kubernetes, która umożliwia sterowanie przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Użycie zasad sieciowych umożliwia natywnych dla chmury sterowanie przepływem ruchu. Zgodnie z zasobników są tworzone dynamicznie w klastrze AKS, zasady wymagane sieciowe mogą być automatycznie stosowane. Nie należy używać kontroli ruchu pod do zasobników, należy użyć zasad sieciowych grup zabezpieczeń sieci platformy Azure.
+
+Aby użyć zasad sieciowych, można włączyć tę funkcję podczas tworzenia klastra usługi AKS. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS. Planuj z wyprzedzeniem upewnij się, możesz włączyć zasad sieciowych w klastrach i można ich używać, zgodnie z potrzebami.
+
+Zasady sieci jest tworzona jako zasób usługi Kubernetes za pomocą YAML manifest. Zasady są stosowane do zasobników zdefiniowane, a następnie transferu danych przychodzących lub wychodzących reguły określają, jak ruch może przepływać. Poniższy przykład dotyczy zasobników za pomocą zasad sieciowych *aplikacji: zaplecza* etykietę stosowaną do nich. Reguła ruchu przychodzącego następnie tylko zezwala na ruch z zasobników z *aplikacji: frontonu* etykiety:
+
+```yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+```
+
+Aby rozpocząć korzystanie z zasad, zobacz [bezpieczny ruch między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)][use-network-policies].
+
 ## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>Bezpiecznie łącz się z węzłami przez host bastionu
 
 **Najważniejsze wskazówki** — nie zezwalaj na połączenie zdalne do węzłów AKS. Utwórz host bastionu lub szybkiego dostępu w sieci wirtualnej zarządzania w oknie. Umożliwia bezpieczne kierować ruch do klastra usługi AKS w taki sposób, aby zadań zarządzania zdalnego hostem bastionu.
@@ -155,5 +183,6 @@ Ten artykuł koncentruje się na łączności sieciowej i zabezpieczeń. Aby uzy
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
+[use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md

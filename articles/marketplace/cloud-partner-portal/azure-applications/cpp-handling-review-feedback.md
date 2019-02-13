@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 0d3102a269d41fded112b0704c28ca2cf5df71a6
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 98ab9b25c59af194a1a81c600c373b2180272e10
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101202"
+ms.locfileid: "56106969"
 ---
 # <a name="handling-review-feedback"></a>Obsługa opinii
 
@@ -71,7 +71,7 @@ Użyj poniższej procedury, przejrzeć zagadnienia, opisane w żądaniu ściągn
 4. Kliknij pozycję w każdym węźle komentarza, w drzewie po lewej stronie, aby przejść do komentarzy w kontekście otaczającym kodem.  Napraw kod źródłowy w projekcie zespołu, aby rozwiązać ten problem opisany przez komentarz.
 
 > [!Note]
-> Nie można edytować zasoby techniczne swojej oferty w ramach przeglądu zespołu DevOps platformy Azure środowiska.  Dla wydawców jest to środowisko tylko do odczytu dla kodu źródłowego zawarte.  Można jednak pozostawić odpowiadanie na komentarze na rzecz przeglądu zespołu firmy Microsoft.
+> Nie można edytować zasoby techniczne swoją ofertę w środowisku DevOps platformy Azure zespołu przeglądu.  Dla wydawców jest to środowisko tylko do odczytu dla kodu źródłowego zawarte.  Można jednak pozostawić odpowiadanie na komentarze na rzecz przeglądu zespołu firmy Microsoft.
 
    W poniższym przykładzie wydawcy ma przeglądowi poprawione i odpowiedź do pierwszego wydania.
 

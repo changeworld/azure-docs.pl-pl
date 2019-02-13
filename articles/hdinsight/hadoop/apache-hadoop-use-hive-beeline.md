@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 3470caec801c5be54f04fc09a5da734a973f0c82
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 23fa146b7bdaef0451984d0fbc638c57691cf259
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962166"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201724"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Apache Hive za pomocą klienta programu Apache z usługi Beeline
 
@@ -280,10 +280,7 @@ Aby uzyskać więcej informacji na temat innych sposobów, że możesz pracować
 * [Use Apache Pig z platformą Apache Hadoop w HDInsight](hdinsight-use-pig.md)
 * [Korzystanie z technologii MapReduce z platformą Apache Hadoop w HDInsight](hdinsight-use-mapreduce.md)
 
-Jeśli używasz aplikacji Tez przy użyciu technologii Hive, zobacz następujące dokumenty:
-
-* [Użyj interfejsu użytkownika Tez Apache na HDInsight z systemem Windows](../hdinsight-debug-tez-ui.md)
-* [Użyj widoku Apache Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md)
+Jeśli używasz aplikacji Tez przy użyciu technologii Hive, zobacz następujący dokument: [Użyj widoku Apache Ambari Tez w HDInsight opartych na systemie Linux](../hdinsight-debug-ambari-tez-view.md).
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
