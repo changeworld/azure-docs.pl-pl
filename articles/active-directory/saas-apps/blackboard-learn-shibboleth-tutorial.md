@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 981ff2b51ea5244db657f81c7035788d5be23123
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4ece314cd5d24e62d2b7ba631227bb6072506c29
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100809"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204478"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem Blackboard Learn — Shibboleth
 
