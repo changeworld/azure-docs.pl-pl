@@ -2,24 +2,20 @@
 title: Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Usługa Azure Monitor dla maszyn wirtualnych to rozwiązanie na platformie Azure, która łączy kondycji i wydajności monitorowania systemu operacyjnego maszyny Wirtualnej platformy Azure, a także automatycznie odnajdywania składników aplikacji i zależności z innymi zasobami oraz mapuje komunikację między je. Ten artykuł zawiera odpowiedzi na często zadawane pytania.
 services: azure-monitor
-documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
-ms.assetid: ''
 ms.service: azure-monitor
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: f553a938c6329e21388ca68dea480b008e4e1363
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191568"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243777"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>Usługa Azure Monitor dla maszyn wirtualnych (wersja zapoznawcza) — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Azure Monitor dla maszyn wirtualnych. Jeśli masz dodatkowe pytania dotyczące rozwiązania, przejdź do strony [forum dyskusyjne](https://feedback.azure.com/forums/34192--general-feedback) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 2e8b2753a441b0d7f27745fdf622b26dcee7784a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572525"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56247061"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 
@@ -51,7 +51,7 @@ Poniżej przedstawiono niektóre funkcje usługi Premium Storage:
 
 * **Dysków magazynu Premium storage**
 
-    Usługa Premium Storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne. Usługa Premium Storage obsługuje szeroką gamę maszyn wirtualnych platformy Azure. Masz do wyboru osiem rozmiary dysków GA: P4 (32 GiB) P6 (64 GiB) P10 (128 GiB) P15 (256 GiB), P20 (512 GiB) P30 (1024 GiB) P40 (2048 GiB) P50 (4095 GiB). Także w trzech rozmiarach dysków w wersji zapoznawczej: P60 8192 GiB (8 TiB) P70 16,348 GiB (16 TiB) P80 32 767 GiB (32 TiB). Rozmiary dysków P4, P6, P15 P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej. Opisujemy specyfikacje bardziej szczegółowo w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#scalability-and-performance-targets).
+    Usługa Premium Storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne. Usługa Premium Storage obsługuje szeroką gamę maszyn wirtualnych platformy Azure. Masz do wyboru, rozmiarów dysków osiem GA:  P4 (32 GiB), P6 (64 GiB), P10 (128 GiB), P15 (256 GiB), P20 (512 GiB), P30 (1,024 GiB), P40 (2,048 GiB), P50 (4,095 GiB). A także trzech rozmiarach dysków (wersja zapoznawcza): P60 8192 GiB (8 TiB) P70 16,348 GiB (16 TiB) P80 32 767 GiB (32 TiB). Rozmiary dysków P4, P6, P15 P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej. Opisujemy specyfikacje bardziej szczegółowo w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#scalability-and-performance-targets).
 
 * **Stronicowe obiekty BLOB w warstwie Premium**
 
@@ -67,7 +67,7 @@ Poniżej przedstawiono niektóre funkcje usługi Premium Storage:
     - [Wiersza polecenia platformy Azure dla usługi Azure Storage](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
     - [Usługa Azure Storage REST interfejsu API dostawcy zasobów](https://docs.microsoft.com/rest/api/storagerp) (w przypadku wdrożeń usługi Azure Resource Manager) lub jeden z biblioteki klienta dostawcy zasobów usługi Azure Storage
 
-    Aby dowiedzieć się więcej na temat limitów konta magazynu premium, zobacz [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#premium-storage-scalability-and-performance-targets).
+    Aby dowiedzieć się więcej na temat limitów konta magazynu premium, zobacz temat cele dotyczące skalowalności i wydajności Usługa Premium Storage.
 
 * **Magazyn lokalnie nadmiarowy w warstwie Premium**
 
@@ -101,7 +101,7 @@ Poniżej przedstawiono niektóre z funkcji obsługiwanych w warstwie premium mag
     >
     > 
 
-* **Cache**
+* **Pamięć podręczna**
 
     Virtual Machines (VMs) obsługujące usługę Premium Storage ma unikatową możliwość buforowania wyższego poziomu przepływności oraz zmniejszenie opóźnienia. Ich możliwości buforowania przekracza bazowego wydajność dysku usługi premium storage. Nie wszystkie maszyny wirtualne obsługę buforowania, więc zapoznaj się z tematem specyfikacje maszyny Wirtualnej rozmiarów maszyn wirtualnych interesuje Cię Aby uzyskać więcej informacji.  Maszyny wirtualne, które obsługują pamięć podręczna będzie to zasygnalizować w ich spec z pomiarem "Maksymalna przepływność magazynu buforowanego i tymczasowego".  Są one również określane bezpośrednio pod tytułem maszyny Wirtualnej.
     
@@ -149,18 +149,18 @@ Aby uzyskać więcej informacji, zobacz [cele dotyczące skalowalności i wydajn
 Jeśli używasz kont usługi premium storage dla dysków niezarządzanych aplikacji przekracza cele skalowalności z jednego konta magazynu, można migrować do usługi managed disks. Jeśli nie chcesz przeprowadzić migrację do usługi managed disks, tworzenie aplikacji na używanie wielu kont magazynu. Następnie podzielić dane na tych kontach magazynu. Na przykład jeśli chcesz dołączyć dyski 51 – TB na wielu maszynach wirtualnych, rozkładają się je na dwa konta magazynu. 35 TB jest limit dla konta magazynu premium jednego. Upewnij się, że konto magazynu premium pojedynczego nigdy nie ma więcej niż 35 TB aprowizowanego dysku.
 
 ### <a name="premium-storage-disk-limits"></a>Limity dysku usługi Premium Storage
-Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje osiem typów usług ogólnie dostępnych dysków magazynu premium storage: P4 (zarządzane tylko dysków), poziom P6 odpowiada P10 (Managed Disks tylko), P15 (zarządzane tylko dysków), P20, P30, P40 i P50. Także w trzech rozmiarach dysków w wersji zapoznawczej: P60 P70 i P80. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
+Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje osiem typów usług ogólnie dostępnych dysków magazynu premium storage: P4 (tylko zarządzane dyski), P6 (tylko zarządzane dyski), P10, P15 (tylko zarządzany dysków), P20, P30, P40 i P50. A także trzech rozmiarach dysków (wersja zapoznawcza): P60 P70 i P80. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
 
 Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
 
 | Typ magazynu dysków Premium  | P4    | P6    | P10    | P15    | P20    | P30              | P40             | P50             | P60 *            | P70 *               | P80 *               |
 |---------------------|-------|-------|--------|--------|--------|------------------|-----------------|-----------------|-----------------|--------------------|--------------------|
-| Rozmiar dysku           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 giB (1 TiB) | 2048 giB (2 TiB)| 4095 giB (4 TiB)| 8192 giB (8 TiB)| 16 384 giB (16 TiB)| 32 767 giB (32 TiB)|
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
+| Rozmiar dysku           | 32 GiB| 64 GiB| 128 GiB| 256 GiB| 512 GiB| 1024 GiB (1 TiB) | 2048 GiB (2 TiB)| 4095 GiB (4 TiB)| 8192 GiB (8 TiB)| 16,384 GiB (16 TiB)| 32 767 giB (32 TiB)|
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500    | 1100   | 2300   | 5000             | 7500            | 7500            | 12 500          | 15 000             | 20,000             |
 | Przepływność na dysk | 25 MB na sekundę | 50 MB na sekundę | 100 MB na sekundę | 125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 480 MB na sekundę | 750 MB na sekundę | 750 MB na sekundę |
 
 > [!NOTE]
-> Upewnij się, że wystarczającą przepustowość jest dostępna na maszynie Wirtualnej, aby ruch dyskowy dysku, zgodnie z opisem w [Usługa Premium Storage jest obsługiwana na maszynach wirtualnych](#premium-storage-supported-vms). W przeciwnym razie swoje przepływność dysku i operacje We/Wy jest ograniczony do niższych wartości. Maksymalna przepływność i operacje We/Wy są oparte na limity maszyn wirtualnych, nie na limity dysku, opisano w powyższej tabeli.  
+> Upewnij się, że wystarczającą przepustowość jest dostępna na maszynie Wirtualnej, aby ruch dyskowy dysku, zgodnie z opisem w [Usługa Premium Storage jest obsługiwana na maszynach wirtualnych](). W przeciwnym razie swoje przepływność dysku i operacje We/Wy jest ograniczony do niższych wartości. Maksymalna przepływność i operacje We/Wy są oparte na limity maszyn wirtualnych, nie na limity dysku, opisano w powyższej tabeli.  
 > Azure został zaprojektowany tak platformy usługi Premium Storage jako równoległe na wielką skalę. Projektowanie aplikacji wielowątkowych pomogą osiągnąć wartości docelowej o wysokiej wydajności, oferowany w większych rozmiarów dysków.
 
 Poniżej przedstawiono niektóre ważne kwestie, aby dowiedzieć się o cele dotyczące skalowalności i wydajności Usługa Premium Storage:
@@ -267,7 +267,7 @@ Poniższe dystrybucje systemu Linux zostały zweryfikowane dla usługi Azure Pre
 | Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
 | Debian | 7.x, 8.x | 3.16.7-ckt4-1+ | &nbsp; |
 | SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE — w systemie sles-12-v20150213 |
-| SUSE | SLES 11 Z DODATKIEM SP4 | 3.0.101-0.63.1+ | &nbsp; |
+| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
 | CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
 | CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 wymagane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
 | CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 zalecane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
@@ -294,7 +294,7 @@ Korzystając z usługi Premium Storage, zastosuj następujące zagadnienia dotyc
 
 * **Rozmiar magazynu Premium disk i obiektów blob**
 
-    Rozliczenia dla dysku magazynu premium lub obiekt blob jest zależna od aprowizowany rozmiar dysku lub obiektu blob. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysku magazynu premium. Aby uzyskać szczegółowe informacje, zobacz tabelę w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#premium-storage-scalability-and-performance-targets). Każdy dysk mapowany rozmiar dysku obsługiwane i w związku z tym jest naliczana opłata. Rozliczenia dla dowolnego dysku jest proporcjonalnie do liczby godzin przy użyciu miesięczna oferta usługi Premium Storage. Na przykład jeśli zainicjowano obsługę administracyjną dysku P10, a następnie usunięte 20 godzin, stosowana jest stawka dla oferty P10 jest naliczany proporcjonalnie do 20 godzin. Jest to niezależnie od ilości rzeczywiste dane zapisane na dysku lub operacji We/Wy i przepływność używana.
+    Rozliczenia dla dysku magazynu premium lub obiekt blob jest zależna od aprowizowany rozmiar dysku lub obiektu blob. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysku magazynu premium. Aby uzyskać szczegółowe informacje, zobacz tabelę w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](). Każdy dysk mapowany rozmiar dysku obsługiwane i w związku z tym jest naliczana opłata. Rozliczenia dla dowolnego dysku jest proporcjonalnie do liczby godzin przy użyciu miesięczna oferta usługi Premium Storage. Na przykład jeśli zainicjowano obsługę administracyjną dysku P10, a następnie usunięte 20 godzin, stosowana jest stawka dla oferty P10 jest naliczany proporcjonalnie do 20 godzin. Jest to niezależnie od ilości rzeczywiste dane zapisane na dysku lub operacji We/Wy i przepływność używana.
 
 * **Usługa unmanaged disks w warstwie Premium migawek**
 

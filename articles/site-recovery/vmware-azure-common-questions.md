@@ -5,15 +5,15 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 2/7/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: fb4add1194f7fe6d10859f76f244f027b35ad92d
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960585"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235228"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Często zadawane pytania — program VMware do platformy Azure replikacji
 
@@ -31,8 +31,6 @@ Podczas replikacji dane są replikowane do usługi Azure storage, a nie płacić
 - **Odzyskiwanie po awarii**: Możesz skonfigurować odzyskiwanie po awarii w pełnej. W tym scenariuszu można replikować maszyny wirtualne VMware w środowisku lokalnym, do usługi Azure storage. Następnie, jeśli z infrastruktury lokalnej jest niedostępna, może zostać przeniesiony, do platformy Azure. Po przełączeniu w tryb failover maszyn wirtualnych platformy Azure są tworzone przy użyciu replikowanych danych. Dostępne aplikacje i obciążenia na maszynach wirtualnych platformy Azure, dopóki w lokalnym centrum danych stanie się ponownie dostępny. Następnie można powrotu po awarii z platformy Azure do lokacji lokalnej.
 - **Migracja**: Usługa Site Recovery umożliwia migrowanie lokalnych maszyn wirtualnych z programu VMware na platformę Azure. W tym scenariuszu można replikować maszyny wirtualne VMware w środowisku lokalnym, do usługi Azure storage. Następnie możesz Failover ze środowiska lokalnego do platformy Azure. Po przejściu w tryb failover swoje aplikacje i obciążenia są dostępne i działają na maszynach wirtualnych platformy Azure.
 
-
-
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Czego potrzebujesz na platformie Azure?
 Potrzebujesz subskrypcji platformy Azure, magazyn usługi Recovery Services, konta magazynu i sieci wirtualnej. Magazyn, konto magazynu i sieci musi być w tym samym regionie.
@@ -44,7 +42,33 @@ Wymagane jest konto magazynu LRS lub GRS. Zalecamy użycie konta GRS, dzięki cz
 Jeśli jesteś administratorem subskrypcji, masz uprawnienia do replikacji, które są potrzebne. Jeśli nie masz, potrzebujesz uprawnień, aby utworzyć Maszynę wirtualną platformy Azure w grupie zasobów i sieci wirtualnej można określić podczas konfigurowania Site Recovery i uprawnienia do zapisu do wybranego konta magazynu. [Dowiedz się więcej](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines).
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Czy można używać licencji serwera systemu operacyjnego gościa, na platformie Azure?
-Tak, klienci Microsoft Software Assurance mogą używać korzyści użycia hybrydowego platformy Azure do skracają koszty licencjonowania **maszyn z systemem Windows Server** , migracji na platformę Azure lub korzystanie z systemu Azure w celu odzyskiwania po awarii.
+Tak, Microsoft Software Assurance klienci mogą używać [korzyść użycia hybrydowego platformy Azure](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) oszczędności na koszty licencjonowania **maszyn z systemem Windows Server** , migracji na platformę Azure lub korzystanie z systemu Azure w celu odzyskiwania po awarii.
+
+## <a name="pricing"></a>Cennik
+
+### <a name="how-are-licensing-charges-handled-during-replication-after-failover"></a>Jak opłaty licencyjne są obsługiwane podczas replikacji po włączeniu trybu failover
+
+Zob. często zadawanych Pytaniach dotyczących licencji [tutaj](https://aka.ms/asr_pricing_FAQ) Aby uzyskać więcej informacji.
+
+### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Jak obliczyć przybliżoną opłaty za podczas stosowania Site Recovery
+
+Możesz użyć [Kalkulator cen](https://aka.ms/asr_pricing_calculator) do szacowania kosztów podczas korzystania z usługi Azure Site Recovery. Aby uzyskać szczegółową prognozę kosztów, uruchom narzędzie planista wdrażania (https://aka.ms/siterecovery_deployment_planner) i analizuje [raport szacowania kosztów](https://aka.ms/asr_DP_costreport).
+
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Jestem użytkownikiem usługi Azure Site Recovery od ponad miesiąca. Czy nadal uzyskam pierwsze 31 bezpłatnych dni dla każdego chronionego wystąpienia?
+
+Tak, nie ma znaczenia, jak długo używasz usługi Azure Site Recovery. Przez pierwsze 31 dni opłaty usługi Azure Site Recovery dla każdego chronionego wystąpienia nie są naliczane. Jeśli na przykład 10 wystąpień podlegało ochronie przez ostatnie 6 miesięcy, a 11 wystąpienie zostało połączone z usługą Azure Site Recovery, opłaty usługi Azure Site Recovery za to wystąpienie nie będą naliczane przez pierwsze 31 dni. Opłaty usługi Azure Site Recovery za pierwsze 10 wystąpień będą nadal naliczane, ponieważ były one chronione przez dłużej niż 31 dni.
+
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Czy podczas pierwszych 31 dni będą naliczane inne opłaty usługi Azure?
+
+Tak. Nawet jeśli usługa Azure Site Recovery będzie bezpłatna przez pierwsze 31 dni dla chronionego wystąpienia, mogą zostać naliczone opłaty za usługę Azure Storage, transakcje magazynowe i transfer danych. Opłaty za zasoby obliczeniowe platformy Azure mogą zostać również naliczone dla odzyskanej maszyny wirtualnej.
+
+### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>Jakie opłaty są naliczane podczas korzystania z usługi Azure Site Recovery?
+
+Odnoszą się do naszych [często zadawane pytania dotyczące kosztów poniesionych](https://aka.ms/asr_pricing_FAQ) Aby uzyskać szczegółowe informacje.
+
+### <a name="is-there-a-cost-associated-to-perform-dr-drillstest-failover"></a>Wiążą się do testowania odzyskiwania po awarii i testowania w tryb failover?
+
+Istnieje nie oddzielnych koszt testowania odzyskiwania po awarii. Nastąpi opłaty za zasoby obliczeniowe, po utworzeniu wpisu testowy tryb failover maszyny wirtualnej.
 
 ## <a name="azure-site-recovery-components-upgrade"></a>Uaktualnij składniki usługi Azure Site Recovery
 
@@ -87,8 +111,12 @@ Dane są replikowane do usługi Azure storage. Po uruchomieniu trybu failover Us
 
 ## <a name="replication"></a>Replikacja
 
-### <a name="what-apps-can-i-replicate"></a>Jakie aplikacje można replikować?
+### <a name="what-applications-can-i-replicate"></a>Jakie aplikacje można replikować?
 Można replikować dowolną aplikację lub obciążenia uruchomione na maszynie Wirtualnej VMware, który jest zgodny z [wymagania dotyczące replikacji](vmware-physical-azure-support-matrix.md##replicated-machines). Usługa Site Recovery obsługuje replikację z uwzględnieniem aplikacji, dzięki czemu aplikacje mogą przełączone w tryb failover i do inteligentnego stanu. Usługa Site Recovery integruje się z aplikacjami firmy Microsoft, takich jak SharePoint, Exchange, Dynamics, SQL Server i usługi Active Directory i ściśle współpracuje z wiodącymi dostawcami oprogramowania, w tym Oracle, SAP, IBM i Red Hat. [Dowiedz się więcej](site-recovery-workload.md) o ochronie obciążeń.
+
+### <a name="can-i-protect-a-virtual-machine-that-has-docker-disk-configuration"></a>Czy mogę chronić maszyny wirtualnej, która ma konfigurację dysku platformy Docker
+
+Nie, jest to nieobsługiwany scenariusz.
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>Można replikować na platformę Azure za pomocą połączenia VPN lokacja lokacja?
 Usługa Site Recovery replikuje dane ze środowiska lokalnego do usługi Azure storage za pośrednictwem publicznego punktu końcowego lub przy użyciu usługi ExpressRoute publicznej komunikacji równorzędnej. Replikacja za pośrednictwem sieci VPN typu lokacja lokacja nie jest obsługiwana.
@@ -96,11 +124,13 @@ Usługa Site Recovery replikuje dane ze środowiska lokalnego do usługi Azure s
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Można replikować na platformę Azure przy użyciu usługi ExpressRoute?
 Tak, usługa ExpressRoute może służyć do replikowania maszyn wirtualnych na platformie Azure. Usługa Site Recovery replikuje dane na koncie usługi Azure Storage za pośrednictwem publicznego punktu końcowego. Należy skonfigurować [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#publicpeering) lub [komunikacji równorzędnej firmy Microsoft](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) za pomocą usługi ExpressRoute dla replikacji usługi Site Recovery. Komunikacja równorzędna firmy Microsoft jest zalecanym domen routingu replikacji. Upewnij się, że [wymagania sieciowe](vmware-azure-configuration-server-requirements.md#network-requirements) spełnione są również do replikacji. Po maszyny wirtualne nie za pośrednictwem sieci wirtualnej platformy Azure, można z nich korzystać przy użyciu [prywatnej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#privatepeering).
 
+### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Jak mogę zmienić konta magazynu, po włączeniu ochrony maszyny?
+
+Konto magazynu można uaktualnić tylko do wersji premium. Jeśli chcesz użyć innego konta magazynu, należy wyłączyć replikację maszyny źródłowej i ponownie włącz ochronę przy użyciu nowego konta magazynu. Niezależnie od tego, nie ma innych możliwości zmiany na koncie magazynu po włączeniu ochrony.
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Dlaczego nie można replikować za pośrednictwem sieci VPN?
 
 Podczas replikacji do platformy Azure, ruch związany z replikacją osiągnie publiczne punkty końcowe konta usługi Azure Storage, dlatego tylko można replikować za pośrednictwem publicznej sieci internet przy użyciu usługi ExpressRoute (publicznej komunikacji równorzędnej) i sieci VPN nie działa.
-
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Co to są replikowane wymagań dotyczących maszyn wirtualnych?
 

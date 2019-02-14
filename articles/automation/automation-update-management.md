@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/28/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 94171da3c60de3efc4e2a234494816899c3d2f05
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0afb8a09fa9780755bcfeef678b76e176f11b348
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511857"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246038"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -600,6 +600,13 @@ Jednak zarządzania aktualizacjami, nadal może raportować tej maszyny, co jest
 
 Wdrażanie aktualizacji według klasyfikacji aktualizacji nie działa w przypadku CentOS gotowe. Aby prawidłowo wdrożyć aktualizacje, centos, wybierz wszystkie klasyfikacje, aby upewnić się, że aktualizacje są stosowane. Dla SUSE wybierając *tylko* inne aktualizacje klasyfikacji może spowodować pewne zabezpieczenia aktualizuje również zainstalowania aktualizacji zabezpieczeń związane z zypper (Menedżera pakietów) oraz jego zależności wymagane najpierw. To zachowanie jest ograniczenie zypper. W niektórych przypadkach może wymagać ponownego uruchomienia wdrożenia aktualizacji. Aby sprawdzić, przejrzyj dziennik aktualizacji.
 
+## <a name="remove-a-vm-for-update-management"></a>Usuwanie maszyny Wirtualnej do zarządzania aktualizacjami
+
+Aby usunąć Maszynę wirtualną z rozwiązania Update Management:
+
+* W obszarze roboczym usługi Log Analytics, należy usunąć maszynę Wirtualną z zapisanego wyszukiwania dla konfiguracji zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć w obszarze **ogólne** w obszarze roboczym.
+* Usuń [Microsoft Monitoring agent](../azure-monitor/learn/quick-collect-windows-computer.md#clean-up-resources) lub [agenta usługi Log Analytics dla systemu Linux](../azure-monitor/learn/quick-collect-linux-computer.md#clean-up-resources).
+  
 ## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
 Aby dowiedzieć się, jak rozwiązywać problemy z Twojego rozwiązania Update Management, zobacz [Rozwiązywanie problemów z rozwiązania Update Management](troubleshoot/update-management.md)

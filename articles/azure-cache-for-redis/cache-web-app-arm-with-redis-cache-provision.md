@@ -4,7 +4,7 @@ description: Szablon usługi Azure Resource Manager umożliwia wdrażanie aplika
 services: app-service
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 6e99c71f-ef8e-4570-a307-e4c059e60c35
 ms.service: app-service
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: yegu
-ms.openlocfilehash: 65279e8391108a009b29fc447b20897c446b8e95
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 52c5fb8a6da7e3f12d621406542f0e31f7ece1de
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112533"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233289"
 ---
 # <a name="create-a-web-app-plus-azure-cache-for-redis-using-a-template"></a>Tworzenie aplikacji internetowej oraz pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu szablonu
 

@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: a66f5ca9501d09f2ef89f421191f617c177e10eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886226"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56247048"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Utrwalanie plików w usłudze Azure Cloud Shell
 Usługa cloud Shell korzysta z usługi Azure File storage, aby utrwalać pliki między sesjami. W menu start początkowej usługi Cloud Shell monituje o skojarzyć udział plików nowej lub istniejącej utrwalanie plików między sesjami.
@@ -40,7 +40,7 @@ Za pomocą zaawansowanych opcji, należy skojarzyć istniejących zasobów. Podc
 Gdy zostanie wyświetlony monit o konfiguracji magazynu, wybierz pozycję **Pokaż zaawansowane ustawienia** Aby wyświetlić dodatkowe opcje. Filtr opcje wypełnione magazynu dla magazynu lokalnie nadmiarowego (LRS), Magazyn geograficznie nadmiarowy (GRS) i konta magazynu strefowo nadmiarowego (ZRS). 
 
 > [!NOTE]
-> Za pomocą GRS lub ZRS kont magazynu są zalecane w przypadku dodatkową odporność zapasowy udziału plików. Jakiego typu nadmiarowości zależy od tego, cele i preferencji ceny. [Dowiedz się więcej na temat opcji replikacji dla kont usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy#choosing-a-replication-option).
+> Za pomocą GRS lub ZRS kont magazynu są zalecane w przypadku dodatkową odporność zapasowy udziału plików. Jakiego typu nadmiarowości zależy od tego, cele i preferencji ceny. [Dowiedz się więcej na temat opcji replikacji dla kont usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
 
 ![Ustawienie Grupa zasobów](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 

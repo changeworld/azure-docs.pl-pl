@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 918cfb36c3afb9fc5c9a3f2c25b7c14b04354db1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d2bf55129465a607fdc3bce3bd1735642c64e428
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002219"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237930"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Wyślij dane dziennika do usługi Azure Monitor za pomocą interfejsu API modułu zbierającego dane HTTP (publiczna wersja zapoznawcza)
 W tym artykule pokazano, jak używać interfejsu API modułu zbierającego dane HTTP do wysyłania dzienników danych do usługi Azure Monitor z klienta interfejsu API REST.  Przedstawiono sposób formatowania danych zbieranych przez skrypt lub aplikację, uwzględnić go w żądaniu i ma to żądanie autoryzacji usługi Azure Monitor.  Przykłady są udostępniane dla programu PowerShell, C# i Python.
@@ -173,6 +173,8 @@ Istnieją pewne ograniczenia wokół danych opublikowane w usłudze Azure Monito
 * Maksymalnie 30 MB na wpis do interfejsu API modułu zbierającego dane usługi Azure Monitor. Jest to limit rozmiaru dla pojedynczego wpisu. Jeśli wpis danych z jednej, która przekracza 30 MB, należy podzielić dane maksymalnie mniejszych fragmentach o rozmiarze i wysyłać je jednocześnie.
 * Maksymalny limit 32 KB dla wartości pól. Jeśli wartość pola jest większa niż 32 KB, dane zostaną obcięte.
 * Zalecana maksymalna liczba pól dla danego typu jest 50. Jest to praktyczne ograniczenie z użytecznością i perspektywy środowisko wyszukiwania.  
+* Tabela, w obszarze roboczym usługi Log Analytics obsługuje tylko kolumny do 500 (określane jako pole w tym artykule). 
+* Maksymalna liczba znaków w nazwie kolumny to 500.
 
 ## <a name="return-codes"></a>Kody powrotne
 Kod stanu HTTP 200 oznacza, że żądanie zostało odebrane do przetworzenia. Oznacza to, że operacja została ukończona pomyślnie.

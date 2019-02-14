@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 14c5a9a5d9e3bd71ca1fdaf3545af3e74b3973c2
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100651"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237421"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -94,7 +94,7 @@ Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz param
 
 Parametr ma następujące właściwości, które są używane w definicji zasad:
 
-- **Nazwa**: Nazwa parametru. Używane przez `parameters` funkcji wdrażania w ramach reguły zasad. Aby uzyskać więcej informacji, zobacz [przy użyciu wartości parametru](#using-a-parameter-value).
+- **name**: Nazwa parametru. Używane przez `parameters` funkcji wdrażania w ramach reguły zasad. Aby uzyskać więcej informacji, zobacz [przy użyciu wartości parametru](#using-a-parameter-value).
 - `type`: Określa, czy parametr **ciąg** lub **tablicy**.
 - `metadata`: Definiuje właściwości podrzędnych głównie używana przez witryny Azure portal, aby wyświetlić informacje o przyjazny dla użytkownika:
   - `description`: Opis dotyczący przeznaczenia parametru. Może służyć do zapewnienia przykładowe dopuszczalne wartości.
@@ -208,7 +208,7 @@ Można zagnieżdżać operatorów logicznych. W poniższym przykładzie przedsta
 
 ### <a name="conditions"></a>Warunki
 
-Wynikiem warunku jest czy **pola** spełnia określone kryteria. Obsługiwane warunki to:
+Wynikiem warunku jest czy **pola** lub **wartość** akcesor spełnia określone kryteria. Obsługiwane warunki to:
 
 - `"equals": "value"`
 - `"notEquals": "value"`
@@ -252,7 +252,53 @@ Obsługiwane są następujące pola:
   - Ta składnia nawiasu obsługuje nazwy tagów, które mają okres.
   - Gdzie **\<tagName\>** jest nazwa tagu do sprawdzania warunku.
   - Przykład: `tags[Acct.CostCenter]` gdzie **Acct.CostCenter** jest nazwa tagu.
+
 - Aliasy właściwości — Aby uzyskać listę, zobacz [aliasy](#aliases).
+
+### <a name="value"></a>Wartość
+
+Warunki można również tworzone za pomocą **wartość**. **wartość** sprawdza warunki względem [parametry](#parameters), [obsługiwane funkcje szablonu](#policy-functions), albo literały.
+**wartość** jest powiązany z żadną obsługiwane [warunek](#conditions).
+
+#### <a name="value-examples"></a>Przykładowe wartości
+
+W tym przykładzie reguły zasad użyto **wartość** do porównania z wynikiem `resourceGroup()` funkcji i zwrócony **nazwa** właściwości **takich jak** warunek `*netrg`. Reguła nie zezwala na dowolny zasób nie jest `Microsoft.Network/*` **typu** w dowolnej grupie zasobów, których nazwa kończy się na `*netrg`.
+
+```json
+{
+    "if": {
+        "allOf": [{
+                "value": "[resourceGroup().name]",
+                "like": "*netrg"
+            },
+            {
+                "field": "type",
+                "notLike": "Microsoft.Network/*"
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+W tym przykładzie reguły zasad użyto **wartość** do sprawdzenia, jeśli wynikiem wielu zagnieżdżone funkcje **jest równa** `true`. Reguła nie zezwala na dowolnym zasobem, który nie ma co najmniej trzy znaczniki.
+
+```json
+{
+    "mode": "indexed",
+    "policyRule": {
+        "if": {
+            "value": "[less(length(field('tags')), 3)]",
+            "equals": true
+        },
+        "then": {
+            "effect": "deny"
+        }
+    }
+}
+```
 
 ### <a name="effect"></a>Efekt
 
@@ -295,12 +341,15 @@ Aby uzyskać szczegółowe informacje dotyczące każdego skutku, kolejność oc
 
 ### <a name="policy-functions"></a>Funkcje zasad
 
-Kilka [funkcje szablonu usługi Resource Manager](../../../azure-resource-manager/resource-group-template-functions.md) są dostępne do użycia w ramach reguły zasad. Są obecnie obsługiwane funkcje:
+Z wyjątkiem następujących wdrożenia i funkcje zasobu wszystkie [funkcje szablonu usługi Resource Manager](../../../azure-resource-manager/resource-group-template-functions.md) są dostępne do użycia w ramach reguły zasad:
 
-- [parameters](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
-- [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
-- [resourceGroup](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
-- [Subskrypcja](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+- copyIndex()
+- Deployment()
+- Lista *
+- Providers()
+- Reference()
+- resourceId()
+- variables()
 
 Ponadto `field` funkcja jest dostępna z regułami zasad. `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pola odniesienia dla zasobu, które są oceniane. Przykładem użycia tego można zobaczyć w [przykład DeployIfNotExists](effects.md#deployifnotexists-example).
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 88cb9f18002f15ea926fe5ded3a5ac9af7a99cbe
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: 80bf9247bbb07fa61b7153e321b1991b82a9d616
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51716243"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56247055"
 ---
 <!-- N.B. no header, language-agnostic -->
 
@@ -28,4 +28,4 @@ Microsoft Cognitive Services [zestaw SDK rozpoznawania mowy](~/articles/cognitiv
 Zobacz poniższe fragmenty kodu w przypadku scenariuszy rozpoznawanie intencji, które zestaw SDK rozpoznawania mowy. Zastąp wartości w próbce własny klucz subskrypcji usługi LUIS (klucza punktu końcowego) [region subskrypcji](~/articles/cognitive-services/speech-service/regions.md#intent-recognition)i **AppId** intencji modelu.
 
 > [!NOTE]
-> W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK rozpoznawania mowy funkcja rozpoznawania celu wymaga klucza subskrypcji określonego (klucza punktu końcowego usługi LUIS). Aby uzyskać informacji na temat technologii rozpoznawanie intencji, zobacz [witryny sieci Web usługi LUIS](https://www.luis.ai). Aby uzyskać informacje na temat sposobu uzyskania **klucza punktu końcowego**, zobacz [tworzenia klucza punktu końcowego usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-azure-subscription#create-luis-endpoint-key).
+> W przeciwieństwie do innych usług obsługiwanych przez zestaw SDK rozpoznawania mowy funkcja rozpoznawania celu wymaga klucza subskrypcji określonego (klucza punktu końcowego usługi LUIS). Aby uzyskać informacji na temat technologii rozpoznawanie intencji, zobacz [witryny sieci Web usługi LUIS](https://www.luis.ai). Aby uzyskać informacje na temat sposobu uzyskania **klucza punktu końcowego**, zobacz [tworzenia klucza punktu końcowego usługi LUIS](https://docs.microsoft.com/azure/cognitive-services/LUIS/luis-how-to-azure-subscription).

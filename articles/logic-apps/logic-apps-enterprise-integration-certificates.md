@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: fa2ae313ab18d6e474f1dd0953a3b0a0d094c7c3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111819"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244933"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Zabezpieczanie komunikatów B2B przy użyciu certyfikatów
 
@@ -30,6 +30,8 @@ W ramach aplikacji integracji przedsiębiorstwa, można użyć tych certyfikató
 * [Certyfikaty publiczne](https://en.wikipedia.org/wiki/Public_key_certificate), którego należy to zrobić z publicznej sieci internet [certyfikatu urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority) , ale nie wymagają żadnych kluczy. 
 
 * Certyfikaty prywatne lub [ *certyfikaty z podpisem własnym*](https://en.wikipedia.org/wiki/Self-signed_certificate), które można utworzyć i wystawić samodzielnie, ale wymagają również klucze prywatne. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upload-a-public-certificate"></a>Przekazywanie certyfikatu publicznego
 
@@ -60,18 +62,18 @@ Aby użyć *certyfikatu publicznego* w usłudze logic apps, które mają możliw
 
 ## <a name="upload-a-private-certificate"></a>Przekaż certyfikat prywatny
 
-Aby użyć *certyfikatu prywatnego* w usłudze logic apps, które mają możliwości B2B usługi, należy najpierw przekazać certyfikat na koncie integracji. Musisz również mieć klucz prywatny, należy najpierw dodać do [usługi Azure Key Vault](../key-vault/key-vault-overview.md). 
+Aby użyć *certyfikatu prywatnego* w usłudze logic apps, które mają możliwości B2B usługi, należy najpierw przekazać certyfikat na koncie integracji. Musisz również mieć klucz prywatny, należy najpierw dodać do [usługi Azure Key Vault](../key-vault/key-vault-get-started.md). 
 
 Po zdefiniowaniu właściwości w [umów](logic-apps-enterprise-integration-agreements.md) , tworzenia, certyfikat jest dostępny zabezpieczyć swoje komunikatów B2B.
 
 > [!NOTE]
 > W przypadku certyfikatów prywatnych, upewnij się, dodawania odpowiedniego certyfikatu publicznego, który pojawia się w [umowy AS2](logic-apps-enterprise-integration-as2.md) **wysyłania i odbierania** ustawień podpisywania i szyfrowania wiadomości.
 
-1. [Dodaj klucz prywatny do usługi Azure Key Vault](../key-vault/quick-create-cli.md#add-a-secret-to-key-vault) i podaj **klucz o nazwie**.
+1. [Dodaj klucz prywatny do usługi Azure Key Vault](../key-vault/certificate-scenarios.md#import-a-certificate) i podaj **klucz o nazwie**.
    
-2. Zezwól aplikacji logiki platformy Azure do wykonywania operacji w usłudze Azure Key Vault. Aby udzielić dostępu do jednostki usługi Logic Apps, należy użyć polecenia programu PowerShell [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy), na przykład:
+2. Zezwól aplikacji logiki platformy Azure do wykonywania operacji w usłudze Azure Key Vault. Aby udzielić dostępu do jednostki usługi Logic Apps, należy użyć polecenia programu PowerShell [AzKeyVaultAccessPolicy zestaw](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy), na przykład:
 
-   `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
+   `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
 3. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). W głównym menu platformy Azure, wybierz **wszystkie zasoby**. W polu wyszukiwania wprowadź nazwę konta integracji, a następnie wybierz żądane konto integracji.

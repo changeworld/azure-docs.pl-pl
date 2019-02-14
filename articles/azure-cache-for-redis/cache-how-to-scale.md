@@ -1,25 +1,25 @@
 ---
 title: Jak skalować pamięć podręczna systemu Azure dla usługi Redis | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skalować pamięć podręczną Azure dla wystąpienia usługi Redis
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 350db214-3b7c-4877-bd43-fef6df2db96c
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 1b6239f1d9c9d6563fda1b72391461595abd6318
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5f448c1c66520a5941ad867eaf3c89c22693cc45
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113621"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235576"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Jak skalować pamięć podręczna systemu Azure dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze funkcji i rozmiar pamięci podręcznej. Po utworzeniu pamięci podręcznej możesz skalować rozmiar i warstwę cenową w pamięci podręcznej, jeśli zmienią się wymagania dotyczące aplikacji. W tym artykule pokazano, jak skalować pamięć podręczną przy użyciu witryny Azure portal i narzędzi, takich jak Azure PowerShell i wiersza polecenia platformy Azure.

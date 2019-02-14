@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: 4a8ab770eef1c8d95ea2fb6340480089ded0218b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863146"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235890"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -44,7 +44,7 @@ Wymagania w zakresie rozmiaru serwera konfiguracji zależą od potencjalnych wsp
 
 Jeśli replikujesz więcej niż jednej maszyny Wirtualnej VMware, zapoznaj się z [zagadnienia dotyczące planowania pojemności](site-recovery-plan-capacity-vmware.md). Uruchom [narzędzie planista wdrażania](site-recovery-deployment-planner.md) potrzeby replikacji oprogramowania VMWare.
 
-## <a name="download-the-template"></a>Pobierz szablon
+## <a name="download-the-template"></a>Pobieranie szablonu
 
 1. W magazynie przejdź do pozycji **Przygotowanie infrastruktury** > **Źródłowa**.
 2. W obszarze **Przygotowywanie źródła** wybierz pozycję **+Serwer konfiguracji**.
@@ -130,38 +130,42 @@ Aby uniknąć przerw w działaniu w trwającej replikacji, upewnij się, że adr
 
 ## <a name="faq"></a>Często zadawane pytania
 
-1. Czy można używać maszyny Wirtualnej, w którym zainstalowano serwer konfiguracji do różnych celów?
+1. Jak długo trwa, czy licencja na serwerze konfiguracji wdrożonymi za pośrednictwem pakietu OVF jest prawidłowy? Co się stanie, jeśli mam nie Uaktywniaj ponownie licencji?
+
+    Licencja dostarczane z szablonem OVA jest pozwolenia oceny prawidłowe przez 180 dni. Przed wygaśnięciem musisz aktywować licencję. W przeciwnym wypadku to powodować częste zamykania serwera konfiguracji i powoduje hinderance do działań replikacji.
+
+2. Czy można używać maszyny Wirtualnej, w którym zainstalowano serwer konfiguracji do różnych celów?
 
     **Nie**, firma Microsoft zaleca na potrzeby maszyny Wirtualnej wyłącznie do celów serwera konfiguracji. Należy przestrzegać wszystkich specyfikacji wymienionej w [wymagania wstępne](#prerequisites) efektywne zarządzanie odzyskiwania po awarii.
-2. Można przełączyć magazyn już jest zarejestrowany na serwerze konfiguracji przy użyciu nowo utworzonego magazynu?
+3. Można przełączyć magazyn już jest zarejestrowany na serwerze konfiguracji przy użyciu nowo utworzonego magazynu?
 
     **Nie**, po zarejestrowaniu magazynu z serwera konfiguracji nie można zmienić.
-3. Czy można użyć tego samego serwera konfiguracji w celu ochrony komputerów fizycznych i maszyn wirtualnych?
+4. Czy można użyć tego samego serwera konfiguracji w celu ochrony komputerów fizycznych i maszyn wirtualnych?
 
     **Tak**, tego samego serwera konfiguracji może służyć do replikowania maszyn fizycznych i wirtualnych. Jednak można maszyny fizycznej kopii tylko do maszyny Wirtualnej VMware.
-4. Jakie jest przeznaczenie serwera konfiguracji i gdzie jest używany?
+5. Jakie jest przeznaczenie serwera konfiguracji i gdzie jest używany?
 
     Zapoznaj się [architektura Azure replikacji VMware –](vmware-azure-architecture.md) Aby dowiedzieć się więcej na temat serwera konfiguracji i jego funkcje.
-5. Gdzie można znaleźć najnowszą wersję serwera konfiguracji?
+6. Gdzie można znaleźć najnowszą wersję serwera konfiguracji?
 
     Aby uzyskać instrukcje dotyczące uaktualniania serwera konfiguracji za pośrednictwem portalu, zobacz [uaktualnić serwer konfiguracji](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Aby uzyskać szczegółowe instrukcje na temat uaktualniania wszystkie składniki usługi Site Recovery można znaleźć [tutaj](https://aka.ms/asr_how_to_upgrade).
-6. Gdzie można pobrać hasła dla serwera konfiguracji?
+7. Gdzie można pobrać hasła dla serwera konfiguracji?
 
     Zapoznaj się [w tym artykule](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase) można pobrać hasło.
-7. Czy można zmienić hasło?
+8. Czy można zmienić hasło?
 
     **Nie**, jesteś **zdecydowanie zaleca się nie zmieniać hasło** serwera konfiguracji. Zmiana hasła przerywa replikację chronionych maszyn i prowadzi do krytycznego stanu kondycji.
-8. Gdzie można pobrać klucze rejestracyjne magazynu?
+9. Gdzie można pobrać klucze rejestracyjne magazynu?
 
     W **magazyn usług Recovery Services**, **zarządzanie** > **infrastruktura usługi Site Recovery** > **serwery konfiguracji**. Na serwerach, wybierz **Pobierz klucz rejestracji** można pobrać pliku poświadczeń magazynu.
-9. Można sklonować istniejący serwer konfiguracji i używać go do organizowania replikacji?
+10. Można sklonować istniejący serwer konfiguracji i używać go do organizowania replikacji?
 
     **Nie**, użycie sklonowany składnik serwera konfiguracji nie jest obsługiwane.
 
-10. Czy mogę zmienić adres IP serwera konfiguracji
+11. Czy mogę zmienić adres IP serwera konfiguracji
 
     **Nie**, zdecydowanie zaleca się nie zmieniać adresu IP serwera konfiguracji. Upewnij się, wszystkie adresy IP przypisane do serwera konfiguracji STATYCZNYCH adresów IP i nie adresy IP protokołu DHCP.
-11. Można skonfigurować serwer konfiguracji na platformie Azure?
+12. Można skonfigurować serwer konfiguracji na platformie Azure?
 
     Zalecane jest, aby skonfigurować serwer konfiguracji w środowisku lokalnym za pomocą bezpośredniego wiersza linii wzroku z Vcenter i zminimalizować opóźnienia transferu danych. Można wykonać zaplanowane kopie zapasowe serwera konfiguracji na potrzeby [potrzeby powrotu po awarii](vmware-azure-manage-configuration-server.md#failback-requirements).
 

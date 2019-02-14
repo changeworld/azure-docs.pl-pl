@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: 9ff75cbd0a4915cdf7045be9a45d11075dda15bd
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: eca1379c4f721a0201b01f149b581859c49c6540
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402323"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234377"
 ---
 # <a name="u-sql-programmability-guide"></a>Podręcznik programowania U-SQL
 
@@ -946,7 +946,7 @@ public abstract class IAggregate<T1, T2, TResult> : IAggregate
 ```
 
 * T1: Pierwszy parametr do
-* T2: Pierwszy parametr do
+* T2: Drugi parametr do
 * TResult: Zwracany typ zakończenia
 
 Na przykład:

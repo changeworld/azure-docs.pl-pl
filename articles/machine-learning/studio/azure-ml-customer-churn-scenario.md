@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 47d267a2c4c122d8acbb2d3bf40e6858b4d6b77c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dd65988146d3738d8540ddf4e54ed57813e10c16
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244185"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243549"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analizowanie zmienności klientów za pomocą usługi Azure Machine Learning Studio
 ## <a name="overview"></a>Przegląd
@@ -25,7 +25,7 @@ Ten artykuł przedstawia informacje o referencyjnej implementacji projektu anali
 Ten eksperyment został opracowany i przetestowane przez Serge Berger, badacz danych jednostki w firmie Microsoft i Rogera Barga, wcześniej menedżerem produktu Microsoft Azure Machine Learning. Zespół dokumentacji platformy Azure gratefully potwierdza swoją wiedzę i Dziękujemy udostępnianie ten oficjalny dokument.
 
 > [!NOTE]
-> Dane używane w tym eksperymencie nie jest publicznie dostępna. Aby uzyskać przykład sposobu tworzenia modelu uczenia maszynowego, analizy zmienności zobacz: [Postęp dokonany w sprzedaży detalicznej szablon modelu](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com/)
+> Dane używane w tym eksperymencie nie jest publicznie dostępna. Aby uzyskać przykład sposobu tworzenia modelu uczenia maszynowego, analizy zmienności zobacz: [Postęp dokonany w sprzedaży detalicznej szablon modelu](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.azure.ai/)
 > 
 > 
 
@@ -106,7 +106,7 @@ Następujące diagramy przedstawiają dane, które zostało użyte.
  
 
 > Należy pamiętać, że te dane są prywatne, jak i w związku z tym nie może być współużytkowana modelu i danych.
-> Jednak dla podobnych modelu przy użyciu publicznie dostępnych danych, zobacz w tym przykładzie przeprowadzanie eksperymentów [galerii Azure AI](http://gallery.cortanaintelligence.com/): [Odpływ klientów firmy Telco](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Jednak dla podobnych modelu przy użyciu publicznie dostępnych danych, zobacz w tym przykładzie przeprowadzanie eksperymentów [galerii Azure AI](http://gallery.azure.ai/): [Odpływ klientów firmy Telco](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Aby dowiedzieć się więcej na temat sposobu implementacji modelu analizy zmienności, przy użyciu pakietu Cortana Intelligence, zalecamy również [ten film wideo](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) przez Tok Hyong Wee starszy Menedżer programu. 
 > 
@@ -219,7 +219,7 @@ W tym dokumencie opisano rozsądne podejście na co dzień do czynienia powszech
 
 [4] [Big Data Marketing: Bardziej efektywne angażować swoich klientów i Zwiększaj wartość](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Telco postęp dokonany w szablonie model](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.cortanaintelligence.com/) 
+[5] [Telco postęp dokonany w szablonie model](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) w [Galeria sztucznej Inteligencji platformy Azure](http://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Dodatek

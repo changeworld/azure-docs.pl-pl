@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402340"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237131"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Omówienie usługi Event Hubs w wersji dedykowanej
 

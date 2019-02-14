@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766016"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237675"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Ujednolicenie wiele zasobów usługi Azure Monitor Application Insights 
 W tym artykule opisano, jak wykonywać zapytania i wyświetlić wszystkie usługi Application Insights dziennika danych aplikacji w jednym miejscu, nawet wtedy, gdy są one w różnych subskrypcjach platformy Azure, jako zamiennika amortyzacja łącznik usługi Application Insights. Liczba zasobów zasoby usługi Application Insights, uwzględnionych w ramach pojedynczego zapytania jest ograniczona do 100.  
@@ -32,7 +32,7 @@ ApplicationInsights
 | summarize by ApplicationName
 ```
 
-Tworzenie funkcji przy użyciu operatora union, z listy aplikacji, a następnie Zapisz zapytanie jako funkcję z aliasu *applicationsScoping*.  
+Tworzenie funkcji przy użyciu operatora union, z listy aplikacji, a następnie Zapisz zapytanie w obszarze roboczym jako funkcję z aliasu *applicationsScoping*.  
 
 ```
 union withsource=SourceApp 
@@ -45,7 +45,7 @@ app('Contoso-app5').requests
 ```
 
 >[!NOTE]
->Uwzględnione na liście aplikacji można zmodyfikować w dowolnym momencie, przechodząc do obszaru Eksploratora zapytań w dziennikach portalu i edytowanie funkcji lub przy użyciu `SavedSearch` polecenia cmdlet programu PowerShell. `withsource= SourceApp` Polecenie dodaje kolumnę do wyników, opisująca aplikacji wysyłane dziennika. 
+>Uwzględnione na liście aplikacji można modyfikować w dowolnym momencie w portalu, przejdź do Eksploratora zapytań w obszarze roboczym i wybierając funkcja edytowania i zapisanie lub korzystania z `SavedSearch` polecenia cmdlet programu PowerShell. `withsource= SourceApp` Polecenie dodaje kolumnę do wyników, opisująca aplikacji wysyłane dziennika. 
 >
 >Zapytanie używa schematu usługi Application Insights, mimo że zapytanie jest wykonywane w obszarze roboczym, ponieważ funkcja applicationsScoping zwraca strukturę danych usługi Application Insights. 
 >

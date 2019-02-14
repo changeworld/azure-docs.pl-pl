@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f2c7111373ac880d27298deb4fc919d797713f3e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 61fb8380bcad7a30d822ab610f52e8515477d683
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53995750"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56247042"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Architektura zabezpieczeń Internetu rzeczy (IoT)
 
@@ -100,7 +100,7 @@ Strefy są szerokie sposób podzielić rozwiązania; Każda strefa często ma w�
 
 Każda strefa jest rozdzielone przez granicę zaufania, który jest rejestrowany jako kropkowana czerwona linia na poniższym diagramie. Reprezentuje przejście/informacje o danych z jednego źródła do innego. Podczas tego przejścia/informacje o danych może podlegać Spoofing, Tampering, Repudiation, ujawnienie informacji, "odmowa usługi" i podniesienia uprawnień (krok).
 
-![Strefy zabezpieczeń IoT](media/iot-security-architecture/iot-security-architecture-fig1.png) 
+![IoT Security Zones](media/iot-security-architecture/iot-security-architecture-fig1.png) 
 
 KROK, włączenie pełnego 360 poddawane są również składniki przedstawiony w ramach każdego widoku rozwiązanie do modelowania zagrożeń. Poniższe sekcje rozwinięcia poszczególne składniki i określonych bezpieczeństwem oraz rozwiązań, które należy wprowadzić w miejscu.
 
@@ -225,7 +225,7 @@ Zagrożenia wokół ścieżka komunikacji między urządzeniami, urządzeń i br
 | **Składnik** | **Przed zagrożeniami** | **Środki zaradcze** | **Ryzyko** | **Implementacja** |
 | --- | --- | --- | --- | --- |
 | Urządzenia IoT Hub |IDENTYFIKATORA TID |(D) TLS (PSK/RSA) do szyfrowania ruchu sieciowego |Podsłuchiwaniu lub zakłóca komunikacji między urządzeniem i bramą |Zabezpieczenia na poziomie protokołu. Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. W większości przypadków komunikacja odbywa się z urządzenia do Centrum IoT Hub (urządzenie inicjuje połączenie). |
-| Urządzenia |IDENTYFIKATORA TID |(D) (PSK/RSA) do szyfrowania ruchu TLS. |Odczytywanie danych przesyłanych między urządzeniami. Manipulowanie danymi. Przeciążanie urządzenia przy użyciu nowych połączeń |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP. Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. Ograniczania ryzyka dla zagrożeń DoS ma nawiązać komunikację równorzędną między urządzeniami za pośrednictwem bramy chmury lub pola i je tylko act jako klientów do sieci. Komunikacja równorzędna może spowodować bezpośrednie połączenie między komputerami równorzędnymi po o zostały obsługiwanych przez brokera przez bramę |
+| Urządzenie do urządzenia |IDENTYFIKATORA TID |(D) (PSK/RSA) do szyfrowania ruchu TLS. |Odczytywanie danych przesyłanych między urządzeniami. Manipulowanie danymi. Przeciążanie urządzenia przy użyciu nowych połączeń |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP. Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. Ograniczania ryzyka dla zagrożeń DoS ma nawiązać komunikację równorzędną między urządzeniami za pośrednictwem bramy chmury lub pola i je tylko act jako klientów do sieci. Komunikacja równorzędna może spowodować bezpośrednie połączenie między komputerami równorzędnymi po o zostały obsługiwanych przez brokera przez bramę |
 | Urządzenie zewnętrznej jednostki |IDENTYFIKATORA TID |Silne parowania z zewnętrznej jednostki do urządzenia |Podsłuchiwaniu połączenia z urządzeniem. Zakłóca komunikacji z urządzeniem |Bezpiecznie parowanie zewnętrznej jednostki na urządzeniu NFC/Bluetooth LE. Kontrolowanie panelu operacyjnej urządzenia (fizyczny) |
 | Bramy w terenie bramy chmury |IDENTYFIKATORA TID |(PSK/RSA) do szyfrowania ruchu TLS. |Podsłuchiwaniu lub zakłóca komunikacji między urządzeniem i bramą |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP). Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. |
 | Urządzenie bramy w chmurze |IDENTYFIKATORA TID |(PSK/RSA) do szyfrowania ruchu TLS. |Podsłuchiwaniu lub zakłóca komunikacji między urządzeniem i bramą |Zabezpieczenia na poziomie protokołu (MQTT/AMQP/HTTP/CoAP). Dzięki protokoły niestandardowe musisz dowiedzieć się, jak można je chronić. |

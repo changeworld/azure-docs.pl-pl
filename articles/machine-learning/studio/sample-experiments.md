@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: 653b9aa0d6083436a394cf886f8c7d8d1ed2e2ab
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e62e5a1df2b5ad3099d2ef7e5dc33b0d11683988
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465524"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245936"
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Tworzenie eksperymentów w usłudze Azure Machine Learning Studio na podstawie działających przykładów w galerii Azure AI
 
-Naucz się, jak zacząć od przykładowych eksperymentów z witryny [Galeria sztucznej inteligencji platformy Azure](https://gallery.cortanaintelligence.com/), zamiast tworzyć eksperymenty uczenia maszynowego od zera. Używając przykładów, możesz zbudować własne rozwiązanie uczenia maszynowego.
+Naucz się, jak zacząć od przykładowych eksperymentów z witryny [Galeria sztucznej inteligencji platformy Azure](https://gallery.azure.ai/), zamiast tworzyć eksperymenty uczenia maszynowego od zera. Używając przykładów, możesz zbudować własne rozwiązanie uczenia maszynowego.
 
 W galerii znajdują się przykładowe eksperymenty zespołu Microsoft Azure Machine Learning, a także przykłady udostępnione przez społeczność usługi Machine Learning. Można również zadawać pytania i publikować komentarze dotyczące eksperymentów.
 
@@ -28,7 +28,7 @@ Aby poznać sposób korzystania z galerii, obejrzyj 3-minutowy klip wideo [Kopio
 
 
 ## <a name="find-an-experiment-to-copy-in-azure-ai-gallery"></a>Znajdź eksperyment do skopiowania do galerii sztucznej inteligencji platformy Azure
-Aby zobaczyć, jakie eksperymenty są dostępne, przejdź do [galerii](https://gallery.cortanaintelligence.com/) i kliknij pozycję **Experiments** (Eksperymenty) w górnej części strony.
+Aby zobaczyć, jakie eksperymenty są dostępne, przejdź do [galerii](https://gallery.azure.ai/) i kliknij pozycję **Experiments** (Eksperymenty) w górnej części strony.
 
 ### <a name="find-the-newest-or-most-popular-experiments"></a>Znajdowanie najnowszych lub najpopularniejszych eksperymentów
 Na tej stronie możesz zobaczyć eksperymenty z kategorii **Recently added** (Ostatnio dodane) lub przewinąć do kategorii **What's popular** (Popularne) oraz **Popular Microsoft experiments** (Popularne eksperymenty firmy Microsoft).

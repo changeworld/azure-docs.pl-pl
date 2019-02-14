@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: ab8905a53ac1e8511750bc9624a698f7890e8fcf
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: cb441aeab8f6f2cfbaa099ee17a3af9e767fc218
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100843"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235703"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących HTTPS w usłudze Azure Kubernetes Service (AKS)
 
@@ -91,6 +91,8 @@ Kontroler danych przychodzących NGINX obsługuje kończenie żądań protokołu
 Aby zainstalować kontroler Menedżera certyfikatów w klastrze z włączoną funkcją RBAC, należy użyć następującego `helm install` polecenia:
 
 ```console
+kubectl label namespace kube-system certmanager.k8s.io/disable-validation=true
+
 kubectl apply \
     -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml
     
@@ -104,6 +106,8 @@ helm install stable/cert-manager \
 Jeśli klaster nie jest włączone RBAC, zamiast tego użyj następującego polecenia:
 
 ```console
+kubectl label namespace kube-system certmanager.k8s.io/disable-validation=true
+
 kubectl apply \
     -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.6/deploy/manifests/00-crds.yaml
     

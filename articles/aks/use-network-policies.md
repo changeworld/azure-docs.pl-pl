@@ -5,14 +5,14 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: 4a456661bf77fd537822c6cf9053a9b1f7f279f9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ade5a39273aa807f6c69f76342a0f715c7a96309
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56213422"
+ms.locfileid: "56232178"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu sieciowego między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -25,7 +25,7 @@ W tym artykule pokazano, jak sterować przepływem ruchu między zasobników w u
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.55 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
+Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.56 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="overview-of-network-policy"></a>Omówienie zasad sieciowych
 

@@ -10,14 +10,14 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: d37d5cb2b89b82bd9741dee0946b3a77d456b22a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405756"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243114"
 ---
-# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Omówienie: Scenariuszy integracji przedsiębiorstwa B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Omówienie: Scenariusze integracji przedsiębiorstw B2B w usłudze Azure Logic Apps z pakietem integracyjnym dla przedsiębiorstw
 
 Dla przepływów pracy business-to-business (B2B) i bezproblemową komunikację z usługą Azure Logic Apps aby umożliwić scenariuszy integracji przedsiębiorstwa, rozwiązanie firmy Microsoft oparte na chmurze pakiet integracyjny dla przedsiębiorstw. Organizacje mogą wymieniać komunikaty elektronicznie, nawet jeśli używają różnych protokołów i formatów. Ten pakiet przekształca różnych formatach w formacie, który może być interpretowane i przetwarzane przez systemy w organizacji. Organizacje mogą wymieniać komunikaty za pośrednictwem standardowych protokołów, w tym [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md), i [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md). Można również Zabezpieczanie komunikatów za pomocą szyfrowania i podpisów cyfrowych.
 
@@ -33,7 +33,7 @@ Po architektonicznie pakiet integracyjny dla przedsiębiorstw opiera się na "ko
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Jak rozpocząć pracę z usługą enterprise integration?
 
-Można tworzyć i zarządzać nimi aplikacje B2B z pakietem integracyjnym dla przedsiębiorstw przy użyciu projektanta aplikacji logiki w **witryny Azure portal**. Można również zarządzać aplikacjami logiki w programie [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "Logic apps PowerShell").
+Można tworzyć i zarządzać nimi aplikacje B2B z pakietem integracyjnym dla przedsiębiorstw przy użyciu projektanta aplikacji logiki w **witryny Azure portal**. Można również zarządzać aplikacjami logiki w programie [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp).
 
 Poniżej przedstawiono ogólne kroki, które należy wykonać przed utworzeniem aplikacji w witrynie Azure portal:
 

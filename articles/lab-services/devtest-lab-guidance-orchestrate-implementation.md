@@ -3,23 +3,22 @@ title: Organizowanie wdrażania usługi Azure DevTest Labs
 description: Ten artykuł zawiera wskazówki dotyczące organizowanie wdrożenia usługi Azure DevTest Labs w Twojej organizacji.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: christianreddington
+author: spelluru
 manager: femila
-editor: spelluru
 ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/11/2019
-ms.author: chredd
-ms.reviewer: anthdela,juselph
-ms.openlocfilehash: 1e657260eeb36dc813f856ab172882a396324450
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.author: spelluru
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: e0ac09a68bda539fe7abd05fce1739d1a58a3c99
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004438"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242995"
 ---
 # <a name="orchestrate-the-implementation-of-azure-devtest-labs"></a>Organizowanie wdrażania usługi Azure DevTest Labs
 Ten artykuł zawiera zalecane podejście do szybkiego wdrażania i stosowania usługi Azure DevTest Labs. Poniższa ilustracja kładzie nacisk całego procesu jako wskazówki podczas obserwowania elastyczność do obsługi różnych wymagania branżowe i scenariuszy.

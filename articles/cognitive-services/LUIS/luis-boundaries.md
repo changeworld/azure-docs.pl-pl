@@ -8,21 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 5285e6d0aa6fe320ded729ad3b00389b27e0b9d9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: df69cb5cc2e369a5e1f372d49a821616bf624db9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859270"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237556"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>Granice dla modelu usługi LUIS i klucze
 Usługa LUIS ma kilka obszarów granic. Pierwsza to [granic modelu](#model-boundaries), która kontroluje intencji, jednostek i funkcji usługi LUIS. Drugi ma [limitów przydziału](#key-limits) na podstawie typu klucza. Trzecie pole granice wynosi [klawiatury kombinacji](#keyboard-controls) do kontrolowania witryny sieci Web usługi LUIS. Czwarty obszar jest [mapowanie regionów świata](luis-reference-regions.md) między LUIS tworzenia witryny sieci Web i LUIS [punktu końcowego](luis-glossary.md#endpoint) interfejsów API. 
 
 
 ## <a name="model-boundaries"></a>Granice modelu
+
+Jeśli aplikacja przekracza limity modelu usługi LUIS i granice, należy wziąć pod uwagę przy użyciu [wysyłania usługi LUIS](luis-concept-enterprise.md#dispatch-tool-and-model) aplikacji lub za pomocą [kontenera usługi LUIS](luis-container-howto.md). 
 
 |Obszar|Limit|
 |--|:--|--|

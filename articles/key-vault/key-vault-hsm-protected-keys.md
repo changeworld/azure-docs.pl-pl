@@ -11,14 +11,14 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 76943c89cd4c0a283dc36a2a0d28c907cef0ad28
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cc7d9a8e0d2689be4a8beb5d42c43b9e18157472
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114692"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238117"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Jak Generowanie i przenoszenie chronionego przez moduł HSM kluczy dla usługi Azure Key Vault
 
@@ -246,7 +246,6 @@ Skopiuj pakiet zestawu narzędzi BYOK z dysku USB lub innego przenośnego urząd
 
 To trzeci krok wykonaj następujące procedury na rozłączonej stacji roboczej. Aby ukończyć ten krok modułu HSM musi być w trybie inicjowania. 
 
-
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>Krok 3.1. Zmień tryb sprzętowego modułu zabezpieczeń na wartość "I"
 
 Jeśli używasz nShield firmy Thales Edge, aby zmienić tryb: 1. Użyj przycisku tryb, aby wyróżnić wymagane trybu. 2. W ciągu kilku sekund naciśnij i przytrzymaj przycisk Wyczyść przez kilka sekund. Zmiana trybu LED nowy tryb zatrzymuje migające i świeci. LED stanu może być nieregularnie flash w kilka sekund i następnie miga regularnie, gdy urządzenie jest gotowe. W przeciwnym razie urządzenia pozostaje w bieżącym trybie, za pomocą odpowiedni tryb LED świeci.
@@ -256,13 +255,13 @@ Jeśli używasz nShield firmy Thales Edge, aby zmienić tryb: 1. Użyj przycisku
 Uruchom wiersz polecenia, a następnie uruchom program nowym świecie firmy Thales.
 
    ```cmd
-    new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
+    new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
 Ten program tworzy **środowiska zabezpieczeń Security World** plik w lokalizacji % NFAST_KMDATA%\local\world, co odnosi się do folderu C:\ProgramData\nCipher\Key Management Data\local. Można użyć różnych wartości dla kworum, ale w tym przykładzie zostanie wyświetlony monit wpisz trzech pustych kart oraz kodów PIN dla każdego z nich. Następnie dowolne dwie spośród kart nadania praw pełnego dostępu do środowiska zabezpieczeń security world. Te karty stają się **zestaw kart administratora** dla nowego środowiska zabezpieczeń security world.
 
 > [!NOTE]
-> Jeśli modułu HSM obsługuje nowszych DLf3072s256mRijndael pakietu szyfrowania, możesz zastąpić — mechanizmów szyfrowania = DLf1024s160mRijndael with--mechanizmów szyfrowania = DLf3072s256mRijndael
+> Jeśli modułu HSM nie obsługuje nowszych DLf3072s256mRijndael pakietu szyfrowania, możesz zastąpić — mechanizmów szyfrowania = DLf3072s256mRijndael with--mechanizmów szyfrowania = DLf1024s160mRijndael
 
 Następnie wykonaj poniższe czynności:
 

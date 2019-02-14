@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: e0e0c0654905245502fa4cf6647ee3a93d2e4833
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4ee36aaaeeda02025da6b01f4dd6c84afd72970f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002211"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233357"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje i narzędzia dla usługi Azure Cloud Shell
 
@@ -60,7 +60,7 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 |Kategoria   |Name (Nazwa)   |
 |---|---|
 |Narzędzia systemu Linux            |Bash<br> zsh<br> SH<br> tmux<br> Postaraj się<br>               |
-|Narzędzia platformy Azure            |[Interfejs wiersza polecenia Azure](https://github.com/Azure/azure-cli) i [klasycznego wiersza polecenia platformy Azure](https://github.com/Azure/azure-xplat-cli)<br> [Narzędzie AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Interfejs wiersza polecenia usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Usługa Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Narzędzia platformy Azure            |[Interfejs wiersza polecenia Azure](https://github.com/Azure/azure-cli) i [klasycznego wiersza polecenia platformy Azure](https://github.com/Azure/azure-xplat-cli)<br> [Narzędzie AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Interfejs wiersza polecenia usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Usługa Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |Edytory tekstu           |Kod (Edytor usługi Cloud Shell)<br> vim<br> nano<br> emacs:    |
 |Kontrola źródła         |git                    |
 |Narzędzia do kompilacji            |Wprowadź<br> Narzędzia maven<br> npm<br> Narzędzie PIP         |

@@ -1,270 +1,240 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Evernote | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Evernote.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Evernote | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Evernote.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 28acce3e-22a0-4a37-8b66-6e518d777350
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/20/2017
+ms.topic: tutorial
+ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 4ad45757aaa64652c0f9ad06c785b2749a4620a5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: 7cff5eaf49bb9b5af79e4673549ab6ee70394c0a
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171545"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100418"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Evernote
+# <a name="tutorial-azure-active-directory-integration-with-evernote"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Evernote
 
-W tym samouczku dowiesz się, jak zintegrować Evernote w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak można zintegrować aplikację Evernote z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Evernote z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Evernote z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować za pomocą usługi Azure AD, kto ma dostęp do aplikacji Evernote.
+* Umożliwianie użytkownikom automatycznego logowania się do aplikacji Evernote (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do połączenia z usługą Evernote.
-- Aby umożliwić użytkownikom automatycznie pobrać podpisane w przypadku połączenia z usługą Evernote (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Evernote, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Evernote, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Evernote logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Evernote z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Evernote z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-evernote-from-the-gallery"></a>Dodawanie Evernote z galerii
-Aby skonfigurować integrację Evernote w usłudze Azure AD, należy dodać Evernote z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Evernote obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług** oraz **dostawcę tożsamości**
 
-**Aby dodać Evernote z galerii, wykonaj następujące czynności:**
+## <a name="adding-evernote-from-the-gallery"></a>Dodawanie aplikacji Evernote z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Evernote z usługą Azure AD, należy dodać aplikację Evernote z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Przycisk usługi Azure Active Directory][1]
+**Aby dodać aplikację Evernote z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Przycisk Nowa aplikacja][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **Evernote**, wybierz opcję **Evernote** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Evernote na liście wyników](./media/evernote-tutorial/tutorial_evernote_addfromgallery.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+
+4. W polu wyszukiwania wpisz **Evernote**, w panelu wyników wybierz pozycję **Evernote**, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+
+     ![Pozycja Evernote na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Evernote w oparciu o użytkownika testu o nazwie "Britta Simon".
+W tej sekcji skonfigurujesz i przetestujesz funkcję logowania jednokrotnego usługi Azure AD z aplikacją Evernote, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Evernote.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Evernote do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Evernote musi można ustanowić.
-
-W Evernote, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Evernote, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować funkcję logowania jednokrotnego usługi Azure AD z aplikacją Evernote, należy utworzyć następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-1. **[Tworzenie użytkownika testowego Evernote](#create-an-evernote-test-user)**  — aby odpowiednikiem Britta Simon w Evernote połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Evernote](#configure-evernote-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Evernote](#create-evernote-test-user)** — aby w aplikacji Evernote znajdował się odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Evernote.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Evernote, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Evernote, wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **Evernote** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Evernote** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/evernote-tutorial/tutorial_evernote_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **Evernote domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w trybie zainicjował dostawcy tożsamości należy wykonać następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Evernote domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/evernote-tutorial/tutorial_evernote_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    W **identyfikator** pole tekstowe, wpisz adres URL: `https://www.evernote.com/saml2`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następującą czynność:
 
-    ![Evernote domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/evernote-tutorial/tutorial_evernote_url1.png)
+    ![Informacje o domenie i adresach URL aplikacji Evernote na potrzeby logowania jednokrotnego](common/idp-identifier.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://www.evernote.com/Login.action`   
+    W polu tekstowym **Identyfikator** wpisz adres URL: `https://www.evernote.com/saml2`
 
-1. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Link do pobierania certyfikatu](./media/evernote-tutorial/tutorial_evernote_certificate.png) 
+    ![image](common/both-preintegrated-signon.png)
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://www.evernote.com/Login.action`
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/evernote-tutorial/tutorial_general_400.png)
+6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1. Na **konfiguracji Evernote** , kliknij przycisk **skonfigurować Evernote** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-    ![Konfiguracja Evernote](./media/evernote-tutorial/tutorial_evernote_configure.png) 
+7. W sekcji **Konfigurowanie aplikacji Evernote** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy Evernote, jako administrator.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Przejdź do **"Konsola administracyjna"**
+    a. Adres URL logowania
+
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-evernote-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Evernote
+
+1. W innym oknie przeglądarki internetowej zaloguj się do swojej firmowej witryny aplikacji Evernote jako administrator.
+
+2. Przejdź do pozycji **Admin Console** (Konsola administracyjna)
 
     ![Konsola administracyjna](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
 
-1. Z **"Konsola administracyjna"**, przejdź do **"Zabezpieczenia"** i wybierz **"Logowanie jednokrotne"**
+3. Z obszaru **Admin Console** (Konsola administracyjna) przejdź do pozycji **Security** (Zabezpieczenia) i wybierz pozycję **Single Sign-On** (Logowanie jednokrotne)
 
     ![Ustawienia logowania jednokrotnego](./media/evernote-tutorial/tutorial_evernote_sso.png)
 
-1. Skonfiguruj następujące wartości:
+4. Skonfiguruj następujące wartości:
 
     ![Ustawienia certyfikatu](./media/evernote-tutorial/tutorial_evernote_certx.png)
     
-    a.  **Włączanie logowania jednokrotnego:** Usługa rejestracji Jednokrotnej jest domyślnie włączona (kliknij **Wyłącz logowanie jednokrotne** Aby usunąć wymaganie logowania jednokrotnego)
+    a.  **Włącz logowanie jednokrotne:** Logowanie jednokrotne jest domyślnie włączone (kliknij pozycję **Disable Single Sign-on** (Wyłącz logowanie jednokrotne), aby usunąć wymaganie logowania jednokrotnego)
 
-    b. Wklej **SAML logowania jednokrotnego adres URL usługi** wartości, które zostały skopiowane z witryny Azure portal do **adresu URL żądania HTTP SAML** pola tekstowego.
+    b. W polu tekstowym **SAML HTTP Request URL** (Adres URL żądań HTTP SAML) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
 
-    c. Otwórz certyfikat pobrany z usługi Azure AD w programie Notatnik i skopiuj zawartość, w tym "BEGIN CERTIFICATE" a "END CERTIFICATE" i wklej go w **certyfikat X.509** pola tekstowego. 
+    d. Otwórz w Notatniku certyfikat pobrany z usługi Azure AD, skopiuj zawartość włącznie z pozycjami „BEGIN CERTIFICATE” i „END CERTIFICATE”, a następnie wklej ją w polu tekstowym **X.509 Certificate** (Certyfikat X.509). 
 
-    d.Click **Zapisz zmiany**
+    d. Kliknij pozycję **Save Changes** (Zapisz zmiany)
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-    ![Przycisk usługi Azure Active Directory](./media/evernote-tutorial/create_aaduser_01.png)
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/evernote-tutorial/create_aaduser_02.png)
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
-
-    ![Przycisk Dodaj](./media/evernote-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/evernote-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-an-evernote-test-user"></a>Tworzenie użytkownika testowego Evernote
-
-Aby umożliwić użytkownikom usługi Azure AD zalogować się do Evernote, musi być obsługiwana w Evernote.  
-W przypadku Evernote Inicjowanie obsługi administracyjnej jest zadanie ręczne.
-
-**Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
-
-1. Zaloguj się do witryny firmy Evernote jako administrator.
-
-1. Kliknij przycisk **"Konsola administracyjna"**.
-
-    ![Konsola administracyjna](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
-
-1. Z **"Konsola administracyjna"**, przejdź do **"Dodawanie użytkowników"**.
-
-    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0001.png)
-
-1. **Dodawanie członków zespołu** w **E-mail** polu tekstowym wpisz adres e-mail konta użytkownika i kliknij przycisk **zaprosić.**
-
-    ![Add-testUser](./media/evernote-tutorial/create_aaduser_0002.png)
-    
-1. Po wysłaniu zaproszenia, właściciel konta usługi Azure Active Directory zostanie wysłana wiadomość e-mail o zaakceptowanie zaproszenia.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu z usługą Evernote.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Evernote.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Evernote**.
 
-**Aby przypisać Britta Simon Evernote, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Evernote**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link do aplikacji Evernote na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **Evernote**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link Evernote na liście aplikacji](./media/evernote-tutorial/tutorial_evernote_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-evernote-test-user"></a>Tworzenie użytkownika testowego aplikacji Evernote
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+Aby umożliwić użytkownikom usługi Azure AD logowanie się do aplikacji Evernote, należy ich aprowizować w aplikacji Evernote.  
+W aplikacji Evernote aprowizowanie jest zadaniem ręcznym.
+
+**Aby aprowizować konta użytkowników, wykonaj następujące kroki:**
+
+1. Zaloguj się do swojej firmowej witryny aplikacji Evernote jako administrator.
+
+2. Kliknij pozycję **Admin Console** (Konsola administracyjna).
+
+    ![Konsola administracyjna](./media/evernote-tutorial/tutorial_evernote_adminconsole.png)
+
+3. Z obszaru **Admin Console** (Konsola administracyjna) przejdź do pozycji **Add users** (Dodaj użytkowników).
+
+    ![Dodawanie użytkownika testowego](./media/evernote-tutorial/create_aaduser_0001.png)
+
+4. W obszarze **Add team members** (Dodaj członków zespołu) w polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail konta użytkownika i kliknij pozycję **Invite** (Zaproś).
+
+    ![Dodawanie użytkownika testowego](./media/evernote-tutorial/create_aaduser_0002.png)
     
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+5. Po wysłaniu zaproszenia właściciel konta usługi Azure Active Directory otrzyma wiadomość e-mail z prośbą o zaakceptowanie zaproszenia.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-Po kliknięciu kafelka Evernote w panelu dostępu, użytkownik powinien uzyskać zalogowanych do aplikacji Evernote. Można będzie można logować się jako organizacji konta jednak trzeba zalogować się przy użyciu konta osobistego. 
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka Evernote na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Evernote, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/evernote-tutorial/tutorial_general_01.png
-[2]: ./media/evernote-tutorial/tutorial_general_02.png
-[3]: ./media/evernote-tutorial/tutorial_general_03.png
-[4]: ./media/evernote-tutorial/tutorial_general_04.png
-
-[100]: ./media/evernote-tutorial/tutorial_general_100.png
-
-[200]: ./media/evernote-tutorial/tutorial_general_200.png
-[201]: ./media/evernote-tutorial/tutorial_general_201.png
-[202]: ./media/evernote-tutorial/tutorial_general_202.png
-[203]: ./media/evernote-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

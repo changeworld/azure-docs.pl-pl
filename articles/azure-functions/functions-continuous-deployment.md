@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: a0d697438c1265b8c4e6802dc2dad62a33f51855
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 8d99a52b500377e02af339588fe7155e26cf588c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548599"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233393"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Ciągłe wdrażanie dla usługi Azure Functions
 Usługa Azure Functions sprawia, że można łatwo wdrożyć aplikację funkcji przy użyciu ciągłej integracji usługi App Service. Functions można integrować z usług BitBucket, Dropbox, GitHub i DevOps platformy Azure. Dzięki temu przepływu pracy gdzie kod funkcji aktualizacje wprowadzone przy użyciu jednej z tych wdrażanie wyzwalaczy zintegrowanych usług na platformie Azure. Jeśli jesteś nowym użytkownikiem usługi Azure Functions, skorzystaj z [Azure Functions — omówienie](functions-overview.md).
@@ -28,8 +28,8 @@ Ciągłe wdrażanie to doskonałe rozwiązanie dla projektów, w których ma mie
 * Repozytorium zewnętrzne (Git lub Mercurial)
 * [Lokalne repozytorium Git](../app-service/deploy-local-git.md)
 * [GitHub](https://github.com)
-* [Usługi OneDrive](https://onedrive.live.com/)
-* [Usługom DevOps platformy Azure](https://www.visualstudio.com/team-services/)
+* [OneDrive](https://onedrive.live.com/)
+* [Usługa Azure DevOps](https://azure.microsoft.com/services/devops/)
 
 Wdrożenia są konfigurowane dla poszczególnych funkcji aplikacji. Po włączeniu ciągłego wdrażania, dostęp do kodu funkcji w portalu jest ustawiona na *tylko do odczytu*.
 
@@ -93,9 +93,9 @@ Jeśli masz istniejące funkcje, które zostały utworzone i obsługiwane w port
 > [!NOTE]
 > Po skonfigurowaniu ciągłej integracji, nie będzie można edytować plików źródłowych w portalu usługi Functions.
 
-- [Jak: Skonfiguruj poświadczenia wdrożenia](#credentials)
-- [Jak: Pobieranie plików przy użyciu protokołu FTP](#downftp)
-- [Jak: Pobieranie plików przy użyciu lokalnego repozytorium Git](#downgit)
+- [Instrukcje: Skonfiguruj poświadczenia wdrożenia](#credentials)
+- [Instrukcje: Pobieranie plików przy użyciu protokołu FTP](#downftp)
+- [Instrukcje: Pobieranie plików przy użyciu lokalnego repozytorium Git](#downgit)
 
 <a name="credentials"></a>
 #### <a name="how-to-configure-deployment-credentials"></a>Instrukcje: Skonfiguruj poświadczenia wdrożenia

@@ -2,28 +2,27 @@
 title: Usługa Azure SQL Data Warehouse — informacje o wersji | Dokumentacja firmy Microsoft
 description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
-manager: craigg
+author: mlee3gsd
+ms.author: anumjs
+ms.reviewer: jrasnick
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/11/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 7a131429d8f70255e47efaac0c4b5fa99a6df7d6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/09/2019
+ms.openlocfilehash: 2ac60287c9d92ab6230e1dd6777504036e54492d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460815"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244678"
 ---
-# <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
+# <a name="azure-sql-data-warehouse-release-notes-and-documentation-updates"></a>Informacje o wersji usługi Azure SQL Data Warehouse i aktualizacje dokumentacji
 
 Usługa Azure SQL Data Warehouse (SQL data Warehouse) jest oparta na chmurze Enterprise magazynu danych, który wykorzystuje wysoce równoległe przetwarzanie (MPP) do szybkiego uruchamiania złożonych zapytań obejmujących petabajty danych. Użyj usługi SQL Data Warehouse jako głównego składnika rozwiązania danych big data. Zaimportuj dane big data do usługi SQL Data Warehouse za pomocą prostych zapytań PolyBase T-SQL, a następnie użyj zaawansowanych funkcji architektury MPP do uruchomienia analityki wysokiej wydajności. Podczas integracji i analizy hurtownia danych stanie się pojedynczym źródłem danych, na którym Twoja firma może polegać przy szukaniu szczegółowych informacji.
 
 Kliknij poniższe łącza, aby dowiedzieć się więcej na temat nowych funkcji i ulepszeń, które można oczekiwać, że w najnowszej wersji usługi Azure SQL Data Warehouse. Można oczekiwać, że do odbierania aktualizacji tej usługi podczas harmonogramu konserwacji zidentyfikowane.
 
-- [SQL DW Version 10.0.10106.0](./release-notes-10-0-10106-0.md)
+- [Wersja magazynu danych SQL 10.0.10106.0 (styczeń)](./release-notes-10-0-10106-0.md)
 - [Grudnia 2018 r.](./release-notes-december-2018.md)
 - [Października 2018 r.](./release-notes-october-2018.md)
 - [Września 2018 r.](./release-notes-september-2018.md)

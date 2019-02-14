@@ -4,17 +4,19 @@ description: Pokazuje, jakie typy zasobów platformy Azure obsługuje tagi. Zawi
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 1/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: add222c024b5adde1ce81d6ed7f725d0a691c232
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509919"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246055"
 ---
 # <a name="tag-support-for-azure-resources"></a>Obsługa tagów dla zasobów platformy Azure
 W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-tags.md).
+
+Aby uzyskać te same dane w formacie wartości rozdzielanych przecinkami, Pobierz [tag support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv).
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | Typ zasobu | Obsługa tagów |
@@ -1123,13 +1125,14 @@ W tym artykule opisano, czy typ zasobu obsługuje [tagi](resource-group-using-ta
 | serwery/communicationLinks | Nie | 
 | serwery/baz danych | Tak (zobacz uwaga poniżej) | 
 | servers/encryptionProtector | Nie | 
+| serwery/firewallRules | Nie | 
 | serwery/kluczy | Nie | 
 | servers/restorableDroppedDatabases | Nie | 
 | serwery/serviceobjectives | Nie | 
 | serwery/tdeCertificates | Nie | 
 
 > [!NOTE]
-> Wzorzec bazy danych nie obsługuje tagi, ale innych baz danych obsługuje tagi.
+> Wzorzec bazy danych nie obsługuje tagi, ale innych baz danych, w tym w przypadku baz danych magazynu danych obsługuje tagi.
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine

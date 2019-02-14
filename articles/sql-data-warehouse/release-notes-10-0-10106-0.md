@@ -1,52 +1,50 @@
 ---
-title: Usługa Azure SQL Data Warehouse — informacje o wersji grudnia 2018 r | Dokumentacja firmy Microsoft
+title: Usługa Azure SQL Data Warehouse — informacje o wersji | Dokumentacja firmy Microsoft
 description: Informacje o wersji dla usługi Azure SQL Data Warehouse.
 services: sql-data-warehouse
-author: twounder
-manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 12/12/2018
-ms.author: mausher
-ms.reviewer: twounder
-ms.openlocfilehash: 8e82e352ebea4634b1b99864245adcf606352657
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/09/2019
+author: mlee3gsd
+ms.author: anumjs
+ms.reviewer: jrasnick
+manager: craigg
+ms.openlocfilehash: 51932ebf7d5bdc6830098ce7136a3eee7255ffe1
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469344"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245511"
 ---
-# <a name="whats-new-in-azure-sql-data-warehouse-version---100101060"></a>What's new in Azure SQL Data Warehouse wersja - 10.0.10106.0?
-Usługa Azure SQL Data Warehouse (usługi SQL DW) nieustannie ulepsza. W tym artykule opisano nowe funkcje i zmiany, które zostały wprowadzone w magazyn danych SQL w wersji 10.0.10106.0.
+# <a name="azure-sql-data-warehouse-release-notes"></a>Informacje o wersji usługi Azure SQL Data Warehouse
+Ten artykuł zawiera podsumowanie nowych funkcji i ulepszeń w najnowszych wersjach [programu SQL Server na maszynach wirtualnych Azure](sql-data-warehouse-overview-what-is.md). Artykuł zawiera także listę istotnych aktualizacje zawartości, które nie są direclty powiązane z wersji, ale opublikowane w tym samym przedziale czasu. Ulepszenia do innych usług platformy Azure, można zobaczyć [usługi aktualizacji](https://azure.microsoft.com/updates)
 
-## <a name="query-restartability---ctas-and-insertselect"></a>Zapytanie Restartability - CTAS i wstawianie/wybrać
-W rzadkich sytuacjach (czyli sporadyczne problemy z połączeniem sieciowym, awarie węzłów), zapytania wykonywane w usłudze Azure SQL data Warehouse może zakończyć się niepowodzeniem. Jest już uruchomione instrukcji, takie jak [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) i operacje INSERT SELECT bardziej są widoczne dla tego problemu. W tej wersji usługi Azure SQL data Warehouse implementuje logikę ponawiania próby dla instrukcji CTAS i wybierz OPCJĘ Wstaw instrukcji (jako uzupełnienie instrukcji "SELECT" ogłoszonych wcześniej), Zezwalanie systemowi na przezroczyste obsługiwać te problemy przejściowe co uniemożliwia zapytania niepowodzenie. Liczba ponownych prób i listę błędów przejściowych, obsługiwane są skonfigurowany system.
+## <a name="sql-data-warehouse-version-100101060-january"></a>Wersja magazynu danych SQL 10.0.10106.0 (styczeń)
 
-## <a name="return-order-by-optimization"></a>Zwróć Order By optymalizacji
-WYBIERZ... Zapytania w klauzuli ORDER BY uzyskać zwiększeniu wydajności w tej wersji.  Wcześniej aparat wykonywania zapytania może zamówić łączność obejmującą wyniki na każdym węźle obliczeniowym i przesyłać je strumieniowo do węzła kontrolnego, która będzie następnie scal wyniki. Za pomocą to ulepszenie wszystkich obliczeń węzłów zamiast tego wysłać ich wyników do pojedynczego obliczeniowe węzła, który następnie scala je i zwraca wyniki posortowane użytkownikowi za pośrednictwem węzła obliczeniowego.  Zapewnia to znaczące są bardziej wydajne, gdy zestawu wyników zapytania zawiera dużą liczbę wierszy.
+### <a name="service-improvements"></a>Udoskonalenia usługi
 
-## <a name="data-movement-enhancements-for-partitionmove-and-broadcastmove"></a>Ulepszenia przepływu danych PartitionMove i BroadcastMove
-W usługi Azure SQL Data Warehouse Gen2 czynności przenoszenia danych typu ShuffleMove korzystać z danych błyskawiczne przenoszenia technik przedstawionych w [ulepszenia blog poświęcony wydajności tutaj](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/).  W tej wersji PartitionMove i BroadcastMove typy przenoszenia danych teraz są również obsługiwane przez te same techniki błyskawiczne danych w ruchu.  Zapytania użytkowników, które wykorzystują te typy czynności przenoszenia danych zostaną wyświetlone w zwiększeniu wydajności.  Żadne zmiany kodu musi korzystać z zalet tych wzrost wydajności.
+| Udoskonalenia usługi | Szczegóły |
+| --- | --- |
+| **Zapytanie Restartability - CTAS i wstawianie/wybrać** | W rzadkich sytuacjach (oznacza to, problemy z połączeniem sieciowym sporadycznie, awarie węzłów) wykonywania kwerend w usłudze Azure SQL data Warehouse może zakończyć się niepowodzeniem. Jest już uruchomione instrukcji, takie jak [CREATE TABLE AS SELECT (CTAS)](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-ctas) i operacje INSERT SELECT bardziej są widoczne dla tego problemu. W tej wersji usługi Azure SQL data Warehouse implementuje logikę ponawiania prób instrukcji CTAS i wybierz OPCJĘ Wstaw, oprócz instrukcji "SELECT" ogłoszono wcześniej. Zmianom usługa niewidocznie obsługi przejściowe problemy i zapobiec zapytania po niepowodzeniu. Liczba ponownych prób i listę błędów przejściowych, obsługiwane są skonfigurowany system.|
+|**Zwróć Order By optymalizacji**|WYBIERZ... Zapytania w klauzuli ORDER BY uzyskać zwiększeniu wydajności w tej wersji.   Teraz wszystkie obliczenia węzły wysyłają ich wyników do pojedynczego obliczeniowe węzła, który scala i sortuje wyniki, które są zwracane do użytkownika za pośrednictwem węzła obliczeniowego.  Scalanie za pośrednictwem wyników obliczeń pojedynczego węzła zyskania istotnie poprawiającą wydajność, gdy zestawu wyników zapytania zawiera dużą liczbę wierszy. Wcześniej aparat wykonywania zapytania może zamówić łączność obejmującą wyniki na każdym węźle obliczeniowym i przesyłać je strumieniowo do węzła kontrolnego, która będzie następnie scal wyniki.|
+|**Ulepszenia przepływu danych PartitionMove i BroadcastMove**|W Gen2 magazynu danych Azure SQL, czynności przenoszenia danych typu ShuffleMove, należy użyć danych błyskawiczne przenoszenia technik przedstawionych w [blog poświęcony ulepszenia wydajności](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/). W tej wersji PartitionMove i BroadcastMove typy przenoszenia danych teraz są również obsługiwane przez te same techniki błyskawiczne danych w ruchu. Lepsza wydajność kwerend użytkowników, które wykorzystują te typy czynności przenoszenia danych zostaną uruchomione. Żadne zmiany kodu musi korzystać z zalet usprawnienia dotyczące wydajności.|
+
+### <a name="documentation-improvements"></a>Udoskonalenia dokumentacji
+
+| Udoskonalenia dokumentacji | Szczegóły |
+| --- | --- |
+|brak | |
+| | |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po użytkownik podstawową wiedzę na temat usługi SQL Data Warehouse, Dowiedz się, jak szybko [utworzyć SQL Data Warehouse][create a SQL Data Warehouse]. Jeśli jesteś nowym użytkownikiem platformy Azure, może się okazać [słownik platformy Azure] [ Azure glossary] przydatne, kiedy zdobędziesz doświadczenie nową terminologią. Możesz też zwrócić uwagę na inne zasoby dotyczące usługi SQL Data Warehouse.  
+[Tworzenie bazy danych w usłudze SQL Data Warehouse](./create-data-warehouse-portal.md)
 
-* [Historie sukcesu klientów]
-* [Blogi]
-* [Żądania funkcji]
-* [Filmy wideo]
-* [Blogi zespołu doradczego klientów]
-* [Forum Stack Overflow]
-* [Twitter]
-
-
-[Blogi]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Blogi zespołu doradczego klientów]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Historie sukcesu klientów]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
-[Żądania funkcji]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[Forum Stack Overflow]: http://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Filmy wideo]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[create a SQL Data Warehouse]: ./create-data-warehouse-portal.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
+## <a name="more-information"></a>Więcej informacji
+- [Blog — Azure SQL Data Warehouse](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+- [Blogi zespołu doradczego klientów](https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/)
+- [Historie sukcesu klientów](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+- [Forum Stack Overflow](http://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Twitter](https://twitter.com/hashtag/SQLDW)
+- [Filmy wideo](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+- [słownik platformy Azure](../azure-glossary-cloud-terminology.md)

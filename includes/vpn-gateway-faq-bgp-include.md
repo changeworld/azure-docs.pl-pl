@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/14/2019
+ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 894724b08876e96119bf72ce65e22c6ae884d8da
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306883"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56247041"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Czy protokół BGP jest obsługiwany na wszystkich jednostkach SKU bramy sieci VPN platformy Azure?
 Nie. Protokół BGP jest obsługiwany na bramach sieci VPN **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** i **HighPerformance** na platformie Azure. **Podstawowa** jednostka SKU nie jest obsługiwana.
@@ -49,6 +49,9 @@ Brama sieci VPN będzie anonsować następujące trasy na urządzeniach lokalnyc
 * Prefiksy adresów sieci wirtualnej użytkownika
 * Prefiksy adresów dla każdej bramy sieci lokalnej podłączonej do bramy sieci VPN platformy Azure
 * Trasy zostały uzyskane na podstawie innych sesji równorzędnych protokołu BGP podłączonych do bramy sieci VPN platformy Azure **z wyjątkiem trasy domyślnej lub tras nakładających się dla dowolnego prefiksu sieci wirtualnej**.
+
+### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>Jak wiele prefiksy można anonsować do bramy sieci VPN platformy Azure?
+Firma Microsoft obsługuje do 4000 prefiksów. Sesja protokołu BGP zostanie przerwana, jeśli liczba prefiksów przekroczy limit.
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Czy można anonsować trasę domyślną (0.0.0.0/0) do bram sieci VPN platformy Azure?
 Tak.

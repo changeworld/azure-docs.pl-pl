@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 43d16c291391a3ffd94f404755e644dac0daf3a9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492831"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244302"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Tworzenie modeli Studio i punkty końcowe usługi sieci web na podstawie jednego eksperymentu przy użyciu programu PowerShell
 
@@ -35,7 +35,7 @@ Na szczęście, można to zrobić za pomocą [usługi Azure Machine Learning w p
 > 
 
 ## <a name="set-up-the-training-experiment"></a>Konfigurowanie eksperymentu szkolenia
-Skorzystaj z przykładu [eksperymentu szkolenia](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1) w [Cortana Intelligence Gallery](http://gallery.cortanaintelligence.com). Otwórz ten eksperyment w swojej [Azure Machine Learning Studio](https://studio.azureml.net) obszaru roboczego.
+Skorzystaj z przykładu [eksperymentu szkolenia](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1) w [Cortana Intelligence Gallery](http://gallery.azure.ai). Otwórz ten eksperyment w swojej [Azure Machine Learning Studio](https://studio.azureml.net) obszaru roboczego.
 
 > [!NOTE]
 > Aby można było skorzystać z tego przykładu, można użyć standardowego obszaru roboczego zamiast obszaru roboczego warstwy bezpłatna. Utwórz jeden punkt końcowy dla każdego klienta — w sumie 10 punktów końcowych — i wymaga obszaru roboczego warstwy standardowa, ponieważ obszaru roboczego warstwy bezpłatna jest ograniczona do 3 punktów końcowych. Jeśli masz tylko bezpłatny obszar roboczy, można zmienić skrypty w sposób umożliwiający tylko Ty lokalizacje.
@@ -63,7 +63,7 @@ Teraz zajdzie potrzeba wdrożenia usługi internetowej przyznawania ocen.
 Aby to zrobić, kliknij przycisk **ustawić usługę sieci Web** poniżej obszaru roboczego, a następnie wybierz pozycję **predykcyjne usługi sieci Web**. Spowoduje to utworzenie oceniania eksperymentu.
 Należy wprowadzić kilka zmian pomocnicza, dzięki którym działa jako usługa sieci web. Usuń kolumnę etykietę "cnt" w danych wejściowych i ogranicza dane wyjściowe z identyfikatorem wystąpienia i odpowiednie przewidzianej wartości.
 
-Aby zapisać sobie pracę, możesz otworzyć [eksperyment predykcyjny](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) w galerii, które zostało już przygotowane.
+Aby zapisać sobie pracę, możesz otworzyć [eksperyment predykcyjny](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) w galerii, które zostało już przygotowane.
 
 Aby wdrożyć usługę sieci web, uruchom eksperyment predykcyjny, a następnie kliknij przycisk **wdrażanie usługi sieci Web** znajdujący się poniżej obszaru roboczego. Nazwa usługi internetowej przyznawania ocen "Oceniania wypożyczeń rowerów".
 

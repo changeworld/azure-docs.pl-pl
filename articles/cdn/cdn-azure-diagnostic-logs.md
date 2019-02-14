@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 6fca764c191c801cbca86c573339b397e61ead07
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2b73deb18b518f257e1de6125ef6d4e35eb0e7b7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700234"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236282"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -141,24 +141,26 @@ Aby uzyskać więcej informacji na temat opóźnienia danych dziennika zobacz [d
 
 Poniższy przykład pokazuje, jak włączyć dzienniki diagnostyczne za pośrednictwem poleceń cmdlet programu Azure PowerShell.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>Włączanie diagnostyki dzienniki na koncie magazynu
 
 1. Zaloguj się i wybierz subskrypcję:
 
-    Connect-AzureRmAccount 
+    Połącz AzAccount 
 
     Select-AzureSubscription -SubscriptionId 
 
 2. Aby włączyć dzienniki diagnostyczne na koncie magazynu, wpisz to polecenie:
 
     ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
+    Set-AzDiagnosticSetting -ResourceId "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}" -StorageAccountId "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ClassicStorage/storageAccounts/{storageAccountName}" -Enabled $true -Categories CoreAnalytics
     ```
 
 3. Aby włączyć dzienniki diagnostyczne, w obszarze roboczym usługi Log Analytics, wprowadź to polecenie:
 
     ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
+    Set-AzDiagnosticSetting -ResourceId "/subscriptions/`{subscriptionId}<subscriptionId>
     .<subscriptionName>" -WorkspaceId "/subscriptions/<workspaceId>.<workspaceName>" -Enabled $true -Categories CoreAnalytics 
     ```
 

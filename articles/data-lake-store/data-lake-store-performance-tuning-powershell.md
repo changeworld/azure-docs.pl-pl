@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: fff26406b036edeb48371b89f7e585160ddc58e0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 318f2b550e19f4b7f56a7b8cc592d34644dca644
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123321"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235606"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące przy użyciu programu PowerShell przy użyciu usługi Azure Data Lake Storage Gen1 dostrajania wydajności
 
 W tym artykule wymieniono właściwości, które mogą być dostosowane do uzyskać lepszą wydajność podczas pracy z usługi Azure Data Lake Storage Gen1 przy użyciu programu PowerShell:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="performance-related-properties"></a>Właściwości związane z wydajnością
 
@@ -33,13 +35,13 @@ W tym artykule wymieniono właściwości, które mogą być dostosowane do uzysk
 
 To polecenie pobiera pliki z Data Lake Storage Gen1 dysk lokalny użytkownika przy użyciu 20 wątków na plik i 100 plików współbieżnych.
 
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
+    Export-AzDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
 ## <a name="how-do-i-determine-the-value-for-these-properties"></a>Jak określić wartości tych właściwości?
 
 Następne pytanie, może być to sposób określania, jaka wartość do zapewnienia właściwości związane z wydajnością. Oto kilka użytecznych wskazówek.
 
-* **Krok 1. Określanie łącznej liczby wątków** — należy rozpocząć od obliczenia łącznej liczby wątków do użycia. Ogólną wytyczną należy używać 6 wątków na każdy rdzeń fizyczny.
+* **Krok 1. Określenia łącznej liczby wątków** — należy rozpocząć od obliczenia łącznej liczby wątków do użycia. Ogólną wytyczną należy używać 6 wątków na każdy rdzeń fizyczny.
 
         Total thread count = total physical cores * 6
 
@@ -50,7 +52,7 @@ Następne pytanie, może być to sposób określania, jaka wartość do zapewnie
         Total thread count = 16 cores * 6 = 96 threads
 
 
-* **Krok 2. Obliczanie wartości parametru PerFileThreadCount** — wartość parametru PerFileThreadCount obliczamy na podstawie rozmiaru plików. W przypadku plików mniejszych niż 2,5 GB nie ma potrzeby zmiany tego parametru, ponieważ domyślna wartość wynosząca 10 jest wystarczająca. W przypadku plików większych niż 2,5 GB należy użyć 10 wątków jako podstawy dla pierwszych 2,5 GB i dodać 1 wątek na każde dodatkowe zwiększenie 256 MB rozmiaru pliku. Podczas kopiowania folderu zawierającego pliki o szerokim zakresie rozmiarów warto podzielić je na grupy złożone z plików o podobnym rozmiarze. Różne rozmiary plików mogą spowodować utratę optymalnej wydajności. Jeśli pogrupowanie plików o podobnym rozmiarze jest niemożliwe, wartość parametru PerFileThreadCount należy ustawić na podstawie największego rozmiaru pliku.
+* **Krok 2. Obliczanie wartości parametru PerFileThreadCount** -perfilethreadcount obliczamy na podstawie rozmiaru plików. W przypadku plików mniejszych niż 2,5 GB nie ma potrzeby zmiany tego parametru, ponieważ domyślna wartość wynosząca 10 jest wystarczająca. W przypadku plików większych niż 2,5 GB należy użyć 10 wątków jako podstawy dla pierwszych 2,5 GB i dodać 1 wątek na każde dodatkowe zwiększenie 256 MB rozmiaru pliku. Podczas kopiowania folderu zawierającego pliki o szerokim zakresie rozmiarów warto podzielić je na grupy złożone z plików o podobnym rozmiarze. Różne rozmiary plików mogą spowodować utratę optymalnej wydajności. Jeśli pogrupowanie plików o podobnym rozmiarze jest niemożliwe, wartość parametru PerFileThreadCount należy ustawić na podstawie największego rozmiaru pliku.
 
         PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size
 
@@ -60,7 +62,7 @@ Następne pytanie, może być to sposób określania, jaka wartość do zapewnie
 
         PerFileThreadCount = 10 + ((10 GB - 2.5 GB) / 256 MB) = 40 threads
 
-* **Krok 3: Obliczanie wartości parametru ConcurrentFilecount** — użyć łącznej liczby wątków i wartości parametru PerFileThreadCount na obliczanie wartości parametru ConcurrentFileCount oparte na poniższego równania:
+* **Krok 3. Obliczanie wartości parametru ConcurrentFilecount** — użyć łącznej liczby wątków i wartości parametru PerFileThreadCount na obliczanie wartości parametru ConcurrentFileCount oparte na poniższego równania:
 
         Total thread count = PerFileThreadCount * ConcurrentFileCount
 
@@ -84,13 +86,13 @@ Te ustawienia można jeszcze bardziej dostosować, zwiększając lub zmniejszaj�
 
 ### <a name="limitation"></a>Ograniczenia
 
-* **Liczba plików jest mniejsza niż wartość parametru ConcurrentFileCount**: jeśli liczba przekazywanych plików jest mniejsza niż obliczona wartość parametru **ConcurrentFileCount**, należy zmniejszyć wartość parametru **ConcurrentFileCount** tak, aby była równa liczbie plików. Przy użyciu pozostałych wątków można zwiększyć wartość parametru **PerFileThreadCount**.
+* **Liczba plików jest mniejsza niż ConcurrentFileCount**: Jeśli liczba przekazywanych plików jest mniejszy niż **ConcurrentFileCount** obliczane, a następnie należy zmniejszyć **ConcurrentFileCount** być równa liczbie plików. Przy użyciu pozostałych wątków można zwiększyć wartość parametru **PerFileThreadCount**.
 
-* **Zbyt wiele wątków**: jeśli liczba wątków zostanie nadmiernie zwiększona bez zwiększenia rozmiaru klastra, istnieje ryzyko obniżonej wydajności. Podczas przełączania kontekstu na procesorze mogą wystąpić problemy z rywalizacją o zasoby.
+* **Zbyt wiele wątków**: Jeśli zwiększysz liczbę wątków zbyt dużo bez zwiększenia rozmiaru klastra, istnieje ryzyko obniżonej wydajności. Podczas przełączania kontekstu na procesorze mogą wystąpić problemy z rywalizacją o zasoby.
 
-* **Niewystarczająca współbieżność**: jeśli współbieżność nie jest wystarczająca, to klaster może być za mały. Możesz zwiększyć liczbę węzłów w klastrze, co pozwala uzyskać większą współbieżność.
+* **Niewystarczająca współbieżność**: Jeśli współbieżność nie jest wystarczająca, klaster może być za mały. Możesz zwiększyć liczbę węzłów w klastrze, co pozwala uzyskać większą współbieżność.
 
-* **Błędy ograniczania przepływności**: błędy ograniczania przepływności mogą wystąpić wówczas, gdy współbieżność jest zbyt wysoka. W przypadku błędów ograniczania przepływności należy albo zmniejszyć współbieżność, albo skontaktować się z nami.
+* **Błędy ograniczania przepływności**: Mogą pojawić się błędy ograniczania przepływności, gdy współbieżność jest zbyt duży. W przypadku błędów ograniczania przepływności należy albo zmniejszyć współbieżność, albo skontaktować się z nami.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Użyj usługi Azure Data Lake Storage Gen1 dla wymagających danych big Data](data-lake-store-data-scenarios.md) 

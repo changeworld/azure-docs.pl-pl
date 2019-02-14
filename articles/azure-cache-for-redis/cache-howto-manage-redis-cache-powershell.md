@@ -1,25 +1,25 @@
 ---
 title: Zarządzanie pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak wykonywać zadania administracyjne dla usługi Azure Cache dla pamięci podręcznej Redis przy użyciu programu Azure PowerShell.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 1136efe5-1e33-4d91-bb49-c8e2a6dca475
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: d4ed374f12b14d70dce6bfa77dd3b8185b912ba6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f7f4f9ae6a80052e06b2cafa68cb5c11dfa1333a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118160"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233850"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Zarządzanie pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu programu Azure PowerShell
 > [!div class="op_single_selector"]

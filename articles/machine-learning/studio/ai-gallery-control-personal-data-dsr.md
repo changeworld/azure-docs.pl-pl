@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 85d7286c1fd075da7034a2a43d46a158550d2fe9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: efdadd29c6fba4ed0a0f7f7df8d7956713d113ec
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247718"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245477"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Wyświetlanie i usunąć dane użytkownika w produkcie z galerii sztucznej Inteligencji platformy Azure
 
@@ -45,7 +45,7 @@ Identyfikator Autor opiera się na adres e-mail używany w przypadku publikowani
 
 1.  Zaloguj się do [Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai/).
 2.  Kliknij obraz profilu w prawym górnym rogu, a następnie nazwę konta, aby załadować stronę profilu.
-3.  Adres URL w pasku adresu Wyświetla alfanumeryczne następujący identyfikator `authorId=`. Na przykład adres URL: `https://gallery.cortanaintelligence.com/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+3.  Adres URL w pasku adresu Wyświetla alfanumeryczne następujący identyfikator `authorId=`. Na przykład adres URL: `https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     Identyfikator Autor: `99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 

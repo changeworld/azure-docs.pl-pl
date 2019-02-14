@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e2af866dcea3bd8ece29811b2cc8ccd4318ee54
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817626"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242816"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Usługa Azure Media Services v3 — informacje o wersji
 
@@ -34,6 +34,10 @@ Aby uzyskać najnowsze informacje o najnowszych zmianach, w tym artykule przedst
 
 Aby uzyskać więcej informacji, zobacz [wskazówek dotyczących migracji do przenoszenia z usługi Media Services v2 do v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="february-2019"></a>Lutego 2019 r
+
+Usługa Media Services w wersji 3 jest teraz upported w chmurach narodowych platformy Azure. Nie wszystkie funkcje są jeszcze dostępne we wszystkich chmurach. Aby uzyskać więcej informacji, zobacz [chmur i regionów, w których usługa Azure Media Services v3 istnieje](azure-clouds-regions.md).
+
 ## <a name="january-2019"></a>2019 stycznia
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Pliki usługi Media Encoder Standard i MPI 
@@ -46,7 +50,7 @@ Nie należy modyfikować lub usuń plik MPI lub wykonać żadnych zależności u
 
 Aktualizacji z wersji ogólnie dostępnej wersji 3 interfejsu API:
        
-* **PresentationTimeRange** właściwości nie są już wymagane, aby **AssetFilters** i **AccountFilters**. 
+* **PresentationTimeRange** właściwości nie są już wymagane, aby **filtry zasobów** i **filtrów kont**. 
 * $Top i $skip zapytań opcje **zadania** i **przekształca** został usunięty i dodano $orderby. Podczas dodawania nowych funkcji szeregowania wykryto, że opcje $top i $skip przypadkowo miał została udostępniona wcześniej nawet, jeśli nie są zaimplementowane.
 * Ponownie włączono rozszerzalności wyliczenia. Ta funkcja została włączona w wersjach preview SDK i przypadkowo została wyłączona w wersji Ogólnodostępnej.
 * Zmieniono dwa wstępnie zdefiniowane zasady przesyłania strumieniowego. **SecureStreaming** jest teraz **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** jest teraz **Predefined_MultiDrmStreaming**.
@@ -67,7 +71,7 @@ Moduł interfejsu wiersza polecenia 2.0 jest teraz dostępna dla [usług ogólni
 - [AZ ams na żywo dane wyjściowe](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [usługi ams az account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) — pozwala na zarządzanie jednostek zarezerwowanych multimediów
+- [usługi ams az account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) — pozwala na zarządzanie jednostek zarezerwowanych multimediów. Aby uzyskać więcej informacji, zobacz [jednostek zarezerwowanych multimediów skalowania](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Nowe funkcje i zmiany powodujące niezgodność
 
@@ -141,7 +145,7 @@ Wprowadzono następujące aktualizacje kodowania na żywo:
 - Ulepszona obsługa protokołu RTMP (Zwiększona stabilność i więcej obsługę kodera źródłowego).
 - Pozyskuj RTMPS bezpieczne.
 
-    Gdy utworzysz element LiveEvent, możesz teraz pobieranie 4 adresów URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS. 
+    Po utworzeniu zdarzenia na żywo, możesz teraz pobieranie 4 adresów URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS. 
 - Obsługa transkodowanie 24-godzinnym. 
 - Ulepszona obsługa sygnalizowanie ad w RTMP za pośrednictwem SCTE35.
 
@@ -149,7 +153,7 @@ Wprowadzono następujące aktualizacje kodowania na żywo:
 
 Możesz zobaczyć następujące usługi Event Grid obsługuje ulepszenia:
 
-- Integracja usługi Azure EventGrid ułatwia tworzenie aplikacji przy użyciu aplikacji logiki i Azure Functions. 
+- Integracja usługi Azure Event Grid dla łatwiejsze tworzenie aplikacji przy użyciu aplikacji logiki i Azure Functions. 
 - Subskrybowanie zdarzeń na kodowanie, kanały na żywo i nie tylko.
 
 ### <a name="cmaf-support"></a>Obsługa CMAF
@@ -174,16 +178,16 @@ Jeśli podczas tworzenia zasobów lub filtrów kont od 09/28 i 10/12 przy użyci
 
 ## <a name="may-2018---preview"></a>Maja 2018 r. — wersja zapoznawcza
 
-### <a name="net-sdk"></a>Zestaw SDK platformy .net
+### <a name="net-sdk"></a>Zestaw SDK platformy .NET
 
 Następujące funkcje są obecne w zestawu .net SDK:
 
 * **Przekształca** i **zadań** do kodowania i analizowanie zawartości multimedialnej. Aby uzyskać przykłady, zobacz [Stream pliki](stream-files-tutorial-with-api.md) i [analizy](analyze-videos-tutorial-with-api.md).
-* **StreamingLocators** do publikowania i przesyłanie strumieniowe zawartości na urządzeniach użytkowników końcowych
-* **StreamingPolicies** i **ContentKeyPolicies** skonfigurować dostarczania kluczy i ochrona zawartości (DRM), podczas dostarczania zawartości.
-* **LiveEvents** i **LiveOutputs** skonfigurować pozyskiwania i zarchiwizowanie mających zawartości transmisji strumieniowej na żywo.
+* **Lokalizatory przesyłania strumieniowego** publikowania i przesyłanie strumieniowe zawartości na urządzeniach użytkowników końcowych
+* **Przesyłanie strumieniowe zasady** i **zasady kluczy zawartości** skonfigurować dostarczania kluczy i ochrona zawartości (DRM), podczas dostarczania zawartości.
+* **Wydarzeń na żywo** i **na żywo dane wyjściowe** skonfigurować pozyskiwania i zarchiwizowanie mających zawartości transmisji strumieniowej na żywo.
 * **Zasoby** do przechowywania i publikowanie zawartości multimedialnej w usłudze Azure Storage. 
-* **Punkty** konfigurować i skalować funkcję dynamicznego tworzenia pakietów, szyfrowania i przesyłania strumieniowego dla zawartości multimedialnej na żywo i na żądanie.
+* **Punkty końcowe przesyłania strumieniowego** konfigurować i skalować funkcję dynamicznego tworzenia pakietów, szyfrowania i przesyłania strumieniowego dla zawartości multimedialnej na żywo i na żądanie.
 
 ### <a name="known-issues"></a>Znane problemy
 

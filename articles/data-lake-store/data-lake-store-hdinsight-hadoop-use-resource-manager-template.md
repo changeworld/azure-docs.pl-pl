@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 5b98513625a6179585601320d45996396fca7207
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: e08e7ae0a97b206a692dd47e91c4c94847cb9833
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54035907"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235176"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>Tworzenie klastra usługi HDInsight przy użyciu usługi Azure Data Lake Storage Gen1 przy użyciu szablonu usługi Azure Resource Manager
 > [!div class="op_single_selector"]
@@ -43,11 +43,14 @@ Poniżej przedstawiono kilka istotnych kwestii dotyczących HDInsight przy użyc
 W tym artykule będziemy Zainicjuj obsługę klastra Hadoop, za pomocą programu Data Lake Storage Gen1 jako dodatkowego magazynu. Aby uzyskać instrukcje, jak utworzyć klaster usługi Hadoop za pomocą Data Lake Storage Gen1 jako magazynem domyślnym, zobacz [tworzenia klastra usługi HDInsight przy użyciu Data Lake Storage Gen1 przy użyciu witryny Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dysponować następującymi elementami:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Program Azure PowerShell 1.0 lub nowszy**. Zobacz artykuł [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
-* **Jednostki usługi katalogu w usłudze Azure Active**. Kroki opisane w tym samouczku zawierają instrukcje dotyczące sposobu tworzenia jednostki usługi w usłudze Azure AD. Jednakże musi być administratorem usługi Azure AD, aby można było utworzyć nazwę główną usługi. Jeśli jesteś administratorem usługi Azure AD, można pominąć to wymaganie wstępne, a następnie przejść do samouczka.
+* **Azure Active Directory Service Principal**. Kroki opisane w tym samouczku zawierają instrukcje dotyczące sposobu tworzenia jednostki usługi w usłudze Azure AD. Jednakże musi być administratorem usługi Azure AD, aby można było utworzyć nazwę główną usługi. Jeśli jesteś administratorem usługi Azure AD, można pominąć to wymaganie wstępne, a następnie przejść do samouczka.
 
     **Jeśli nie jesteś administratorem usługi Azure AD**, nie będziesz w stanie wykonać kroki wymagane do utworzenia jednostki usługi. W takim przypadku administrator usługi Azure AD należy najpierw utworzyć nazwę główną usługi można było utworzyć klaster usługi HDInsight za pomocą programu Data Lake Storage Gen1. Także nazwy głównej usługi muszą zostać utworzone za pomocą certyfikatu, zgodnie z opisem w [utworzyć nazwę główną usługi za pomocą certyfikatu](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
 
@@ -58,13 +61,13 @@ Zgodnie z instrukcjami na link wymienionych powyżej wymagają programu PowerShe
 
 ```
 # Log in to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 
 # List all the subscriptions associated to your account
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Select a subscription
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 Szablon umożliwia wdrożenie tych typów zasobów:

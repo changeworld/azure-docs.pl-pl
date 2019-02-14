@@ -3,19 +3,19 @@ title: Wywoływanie interfejsu API usługi Text Analytics
 titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak wywołać interfejs API REST analizy tekstu.
 services: cognitive-services
-author: ashmaka
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 60aa51e4dac796e034b7b0506be0e205951226de
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 52c5cb640bfb861fb2da52ee711fe3955a169bcf
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870779"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244032"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Jak wywołać interfejs API REST analizy tekstu
 
@@ -30,9 +30,7 @@ Odwołaj, analizy tekstu jest bezstanowy, więc żadne zasoby danych do zarządz
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsem API analizy tekstu**. 
-
-Konieczne jest posiadanie [punktu końcowego i klucza dostępu](text-analytics-how-to-access-key.md) , zostanie wygenerowany po utworzeniu konta usług Cognitive Services. 
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) przy użyciu interfejsu API analizy tekstu i [punktu końcowego i klucza dostępu](text-analytics-how-to-access-key.md) , zostanie wygenerowany po utworzeniu konta usług Cognitive Services. 
 
 <a name="json-schema"></a>
 

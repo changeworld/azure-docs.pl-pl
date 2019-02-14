@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 8/13/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: db7ac84b5ce1f3ee2558bbc5ce14332aecd578c7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860647"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232896"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web  
 
@@ -42,7 +42,7 @@ Zazwyczaj wyszukiwania w Internecie Bing zwraca podzbiór odpowiedzi. Na przykł
 
 ## <a name="webpages-answer"></a>Odpowiedzi stron sieci Web
 
-[Stron sieci Web](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) odpowiedzi zawiera listę linków do stron sieci Web, który określany wyszukiwania w Internecie Bing, odpowiednich do kwerendy. Każdy [strony sieci web](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) w lista zawiera adres URL wyświetlana nazwa, adres url, strony, krótki opis zawartości i Data Bing znaleźć zawartość.
+[Stron sieci Web](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webanswer) odpowiedzi zawiera listę linków do stron sieci Web, który określany wyszukiwania w Internecie Bing, odpowiednich do kwerendy. Każdy [strony sieci web](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#webpage) na liście będzie zawierać: Nazwa strony, adres url, Wyświetl adres URL, jest krótki opis zawartości i Data Bing znaleźć zawartość.
 
 ```json
 {
@@ -91,7 +91,7 @@ The following shows an example of how you might display the webpage in a search 
 }, ...
 ```
 
-W zależności od urządzenia użytkownika będą zwykle wyświetlić podzbiór miniatury z opcją dla użytkownika wyświetlić pozostałe obrazów.
+W zależności od urządzenia użytkownika będą zwykle wyświetlić podzbiór miniatury, z opcją użytkownikowi [stronie za pośrednictwem](paging-webpages.md) pozostałych obrazów.
 
 <!-- Remove until this can be replaced with a sanitized version.
 ![List of thumbnail images](./media/cognitive-services-bing-web-api/bing-web-image-thumbnails.PNG)
@@ -314,7 +314,7 @@ Wyrażenie matematyczne może zawierać następujące funkcje:
 
 |Symbol|Opis|
 |------------|-----------------|
-|Sqrt|Pierwiastek kwadratowy|
+|Sortuj|Pierwiastek kwadratowy|
 |SIN [x], Cos [x], Tan [x]<br />CSC [x] s [x] Cot [x]|Funkcje trygonometryczne (z argumentami w radianach)|
 |ArcSin[x], ArcCos[x], ArcTan[x]<br />ArcCsc[x], ArcSec[x], ArcCot[x]|Odwrotny funkcje trygonometryczne (w radianach, dzięki czemu wyników)|
 |EXP [x] E ^ x|Funkcja wykładnicza|
@@ -428,6 +428,48 @@ Jeśli Bing okaże się, że użytkownik może mieć przeznaczone do Wyszukaj co
     }]
 }, ...
 ```
+
+Poniżej przedstawiono, jak korzysta z sugestii sprawdzania pisowni Bing.
+
+![Przykład sugestii sprawdzania pisowni Bing](./media/cognitive-services-bing-web-api/bing-web-spellingsuggestion.GIF)  
+
+## <a name="response-headers"></a>Nagłówki odpowiedzi
+
+Odpowiedzi z interfejsu API wyszukiwania w sieci Web Bing może zawierać następujące nagłówki:
+
+|||
+|-|-|
+|`X-MSEdge-ClientID`|Unikatowy identyfikator, który Bing został przypisany do użytkownika|
+|`BingAPIs-Market`|Na rynku, który został użyty do spełnienia żądania|
+|`BingAPIs-TraceId`|Wpis dziennika na serwerze interfejsu API Bing dla tego żądania (w przypadku pomocy technicznej)|
+
+Jest to szczególnie ważne utrwalić identyfikator klienta i przywrócić go z kolejnymi żądaniami. Gdy to zrobisz, wyszukiwania korzystania z wcześniejszych kontekście Klasyfikacja wyników wyszukiwania, a także zapewnić spójne środowisko użytkownika.
+
+Jednak gdy wywołujesz API wyszukiwania w Internecie Bing poziomu języka JavaScript w przeglądarce wbudowane funkcje zabezpieczeń (między źródłami CORS) może uniemożliwić dostęp do wartości tych nagłówków.
+
+Aby uzyskać dostęp do nagłówków, może wykonać żądania interfejsu API wyszukiwania Bing w sieci Web za pośrednictwem serwera proxy mechanizmu CORS. Odpowiedź z tego serwera proxy zawiera nagłówek `Access-Control-Expose-Headers`, który zezwala na nagłówki odpowiedzi i udostępnia je dla języka JavaScript.
+
+To proste zainstalować serwer proxy CORS, aby zezwolić na naszych [samouczek aplikacji](tutorial-bing-web-search-single-page-app.md) nagłówki opcjonalne klienta dostępu do. Najpierw [zainstaluj platformę Node.js](https://nodejs.org/en/download/), jeśli jeszcze jej nie masz. Następnie wprowadź następujące polecenie w wierszu polecenia.
+
+    npm install -g cors-proxy-server
+
+Następnie Zmień punkt końcowy interfejsu API wyszukiwania Bing w sieci Web w pliku HTML, aby:
+
+    http://localhost:9090/https://api.cognitive.microsoft.com/bing/v7.0/search
+
+Na koniec uruchom serwer proxy CORS za pomocą następującego polecenia:
+
+    cors-proxy-server
+
+Podczas korzystania z aplikacji samouczka pozostaw okno polecenia otwarte, ponieważ jego zamknięcie spowoduje zatrzymanie serwera proxy. W rozwijanej sekcji nagłówków HTML poniżej wyników wyszukiwania można teraz zobaczyć nagłówek `X-MSEdge-ClientID` (pomiędzy innymi) i sprawdzić, czy jest on taki sam dla każdego żądania.
+
+## <a name="response-headers-in-production"></a>Nagłówki odpowiedzi w środowisku produkcyjnym
+
+Podejście proxy CORS, które są opisane w poprzedniej odpowiedzi jest odpowiednia dla rozwoju, testowania i nauki.
+
+W środowisku produkcyjnym należy obsługiwać skryptu po stronie serwera w tej samej domenie co strony sieci Web, który używa API wyszukiwania w Internecie Bing. Ten skrypt powinien wykonywać wywołania interfejsów API na żądanie z JavaScript strony sieci Web i przekazać wszystkie wyniki, włącznie z nagłówkami, z powrotem do klienta. Ponieważ dwóch zasobów (strony i skryptów) udostępnić punkt początkowy, mechanizm CORS nie jest używany i specjalnych nagłówków są dostępne dla JavaScript na stronie sieci Web.
+
+Takie podejście chroni także klucz interfejsu API przed narażenia na wartość publiczne, ponieważ tylko skrypt po stronie serwera, należy go. Skrypt można użyć innej metody, aby upewnić się, że żądanie jest autoryzowane.
 
 Poniżej przedstawiono, jak korzysta z sugestii sprawdzania pisowni Bing.
 

@@ -8,18 +8,18 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
-ms.openlocfilehash: e93c51365adfc867082e180d8e4db804d02003ca
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 945d8690ccb61916455ba4137f59c67c9a3d9f76
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297732"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237692"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 W tym artykule przedstawiono kroki, aby wykonać, aby skonfigurować raporty usługi Azure Backup przy użyciu magazynu usługi Recovery Services. Pokazano również, jak dostęp do raportów przy użyciu usługi Power BI. Po wykonaniu tych czynności, możesz przejść bezpośrednio do usługi Power BI, aby wyświetlić, dostosowywanie i tworzenie raportów.
 
 > [!IMPORTANT]
-> Od 1 listopada 2018 r niektórzy klienci mogą zobaczyć problemy podczas ładowania danych w usłudze Azure App kopii zapasowej w usłudze Power BI, informujący o tym, "znaleziono dodatkowe znaki na końcu danych wejściowych JSON. Wyjątek został zgłoszony przez interfejs IDataReader”.
+> od 1 listopada 2018 r. niektórzy klienci mogą doświadczyć problemów podczas ładowania danych w aplikacji usługi Azure Backup w usłudze Power BI. Może pojawić się komunikat z następującą informacją: „Znaleźliśmy dodatkowe znaki na końcu danych wejściowych JSON. Wyjątek został zgłoszony przez interfejs IDataReader”.
 Przyczyną tego jest zmiana formatu, w którym dane są ładowane do konta magazynu.
 Pobierz najnowszą wersję aplikacji (wersja 1.8) aby uniknąć tego problemu.
 >
@@ -38,6 +38,7 @@ Pobierz najnowszą wersję aplikacji (wersja 1.8) aby uniknąć tego problemu.
 
 ## <a name="configure-storage-account-for-reports"></a>Konfigurowanie konta magazynu dla raportów
 Wykonaj następujące kroki, aby skonfigurować konto magazynu dla magazynu usługi Recovery Services przy użyciu witryny Azure portal. Jest to jednorazowa konfiguracja. Po skonfigurowaniu konta magazynu, możesz przejść bezpośrednio do usługi Power BI, aby wyświetlić pakiet zawartości i korzystanie z raportów.
+
 1. Jeśli masz już magazyn usługi Recovery Services, Otwórz, przejdź do następnego kroku. Jeśli nie masz magazyn usługi Recovery Services, Otwórz w witrynie Azure portal wybierz **wszystkich usług**.
 
    * Na liście zasobów wpisz **usługi Recovery Services**.
@@ -54,7 +55,7 @@ Wykonaj następujące kroki, aby skonfigurować konto magazynu dla magazynu usł
 3. Na **raporty kopii zapasowych** bloku wybierz **ustawień diagnostycznych** łącza. To łącze powoduje otwarcie **ustawień diagnostycznych** interfejsu użytkownika, który jest używany do wypychania danych do konta magazynu klienta.
 
       ![Włącz diagnostykę, krok 3](./media/backup-azure-configure-reports/backup-azure-configure-reports.png)
-4. Wybierz **Włącz diagnostykę** otworzyć Interfejs użytkownika służące do konfigurowania konta magazynu. 
+4. Wybierz **Włącz diagnostykę** otworzyć Interfejs użytkownika służące do konfigurowania konta magazynu.
 
       ![Włącz diagnostykę w kroku 4](./media/backup-azure-configure-reports/enable-diagnostics.png)
 5. W **nazwa** wprowadź nazwę ustawienia. Wybierz **Zarchiwizuj na koncie magazynu** pole wyboru, dzięki czemu raportowanie danych można uruchomić przepływać do konta magazynu.
@@ -73,11 +74,11 @@ Wykonaj następujące kroki, aby skonfigurować konto magazynu dla magazynu usł
       ![Wyświetl ustawienia diagnostyczne w kroku 9](./media/backup-azure-configure-reports/diagnostic-setting-row.png)
 
 > [!NOTE]
-> Po skonfigurowaniu raportów, zapisując konta magazynu *Poczekaj 24 godziny* do wypychania danych początkowych zakończyć. Importowanie aplikacji kopii zapasowej platformy Azure w usłudze Power BI dopiero po tym czasie. Aby uzyskać więcej informacji, zobacz [sekcji często zadawane pytania](#frequently-asked-questions). 
+> Po skonfigurowaniu raportów, zapisując konta magazynu *Poczekaj 24 godziny* do wypychania danych początkowych zakończyć. Importowanie aplikacji kopii zapasowej platformy Azure w usłudze Power BI dopiero po tym czasie. Aby uzyskać więcej informacji, zobacz [sekcji często zadawane pytania](#frequently-asked-questions).
 >
 >
 
-## <a name="view-reports-in-power-bi"></a>Wyświetlanie raportów w usłudze Power BI 
+## <a name="view-reports-in-power-bi"></a>Wyświetlanie raportów w usłudze Power BI
 Po skonfigurowaniu konta magazynu dla raportów przy użyciu magazynu usługi Recovery Services może potrwać około 24 godzin raportowania dane zaczną być przepływają w. Po 24 godzinach od skonfigurowania konta magazynu wykonaj następujące kroki, aby wyświetlić raporty w usłudze Power BI.
 Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykonaj następujące czynności
 
@@ -90,20 +91,20 @@ Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykona
 4. Wprowadź nazwę konta magazynu, który został skonfigurowany w poprzednim kroku 5, a następnie wybierz pozycję **dalej**.
 
     ![Podaj nazwę konta magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Przy użyciu metody uwierzytelniania "Key", wprowadź klucz konta magazynu dla tego konta magazynu. Aby [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys), przejdź do swojego konta magazynu w witrynie Azure portal. 
+5. Przy użyciu metody uwierzytelniania "Key", wprowadź klucz konta magazynu dla tego konta magazynu. Aby [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys), przejdź do swojego konta magazynu w witrynie Azure portal.
 
      ![Wprowadź konto magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
-     
+
 6. Wybierz **Zaloguj**. Po logowania zakończy się pomyślnie, zobaczysz powiadomienie importowania danych.
 
     ![Importowanie pakietu zawartości](./media/backup-azure-configure-reports/content-pack-importing-data.png) <br/>
-    
+
     Po zakończeniu importowania zostanie wyświetlony **Powodzenie** powiadomień. W przypadku dużych ilości danych w ramach konta magazynu może zająć nieco dłużej, aby zaimportować pakiet zawartości.
-    
+
     ![Importowanie pakietu zawartości sukces](./media/backup-azure-configure-reports/content-pack-import-success.png) <br/>
-    
+
 7. Po danych pomyślnie, importowany **kopia zapasowa Azure** pakiet zawartości jest widoczna w **aplikacje** w okienku nawigacji. W obszarze **pulpity nawigacyjne**, **raporty**, i **zestawów danych**, lista zawiera teraz usługi Azure Backup.
-     
+
 8. W obszarze **pulpity nawigacyjne**, wybierz opcję **kopia zapasowa Azure**, który zawiera zestaw przypięte klucza raportów.
 
       ![Pulpit nawigacyjny usługi Azure Backup](./media/backup-azure-configure-reports/azure-backup-dashboard.png) <br/>
@@ -117,38 +118,32 @@ Jeśli chcesz dostosować i udostępnić raport, Utwórz obszar roboczy i wykona
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Jak sprawdzić, czy dane raportowania zostało przepływać do konta magazynu?**
-    
-   Przejdź do konta magazynu, które zostały skonfigurowane i wybierz kontenery. Jeśli kontener zawiera wpis dla azurebackupreport — dzienniki — szczegółowe informacje, oznacza to, dane raportowania uruchomienia przepływu.
+### <a name="how-do-i-check-if-reporting-data-has-started-flowing-into-a-storage-account"></a>Jak sprawdzić, czy dane raportowania zostało przepływać do konta magazynu?
+Przejdź do konta magazynu, które zostały skonfigurowane i wybierz kontenery. Jeśli kontener zawiera wpis dla azurebackupreport — dzienniki — szczegółowe informacje, oznacza to, dane raportowania uruchomienia przepływu.
 
-**Co to jest częstotliwość wypychanie danych do konta magazynu i pakietowi zawartości usługi Azure Backup w usłudze Power BI?**
+### <a name="what-is-the-frequency-of-data-push-to-a-storage-account-and-the-azure-backup-content-pack-in-power-bi"></a>Co to jest częstotliwość wypychanie danych do konta magazynu i pakietowi zawartości usługi Azure Backup w usłudze Power BI?
+  Dla użytkowników w dniu 0 trwa około 24 godzinach wypychanie danych do konta magazynu. Po zakończeniu tej początkowej wypychane dane są odświeżane z częstotliwością pokazano na poniższej ilustracji.
 
-   Dla użytkowników w dniu 0 trwa około 24 godzinach wypychanie danych do konta magazynu. Po zakończeniu tej początkowej wypychane dane są odświeżane z częstotliwością pokazano na poniższej ilustracji. 
-      
-* Dane powiązane z **zadania**, **alerty**, **elementy kopii zapasowej**, **magazynów**, **serwerów chronionych**i  **Zasady** zostanie przypisany do konta magazynu klienta, jak i po jego zalogowaniu.
-      
-* Dane powiązane z **magazynu** zostanie przypisany do konta magazynu klienta co 24 godziny.
-   
-   ![Częstotliwość wypychania danych w usłudze Azure raporty kopii zapasowych](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
+  * Dane powiązane z **zadania**, **alerty**, **elementy kopii zapasowej**, **magazynów**, **serwerów chronionych**i  **Zasady** zostanie przypisany do konta magazynu klienta, jak i po jego zalogowaniu.
 
-* Usługa Power BI ma [zaplanowanego odświeżania raz dziennie](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Można przeprowadzić ręczne odświeżanie danych w usłudze Power BI dla pakietu zawartości.
+  * Dane powiązane z **magazynu** zostanie przypisany do konta magazynu klienta co 24 godziny.
 
-**Jak długo można zachować raportów**
+       ![Częstotliwość wypychania danych w usłudze Azure raporty kopii zapasowych](./media/backup-azure-configure-reports/reports-data-refresh-cycle.png)
 
-   Po skonfigurowaniu konta magazynu, można wybrać okres przechowywania danych raportu na koncie magazynu. Wykonaj krok 6. w poprzedniej sekcji "Konfigurowanie konta magazynu dla raportów". Możesz również [analizowanie raportów w programie Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) i zapisać je na dłuższy okres przechowywania, zgodnie z potrzebami.
+  * Usługa Power BI ma [zaplanowanego odświeżania raz dziennie](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/#what-can-be-refreshed). Można przeprowadzić ręczne odświeżanie danych w usłudze Power BI dla pakietu zawartości.
 
-**Moje dane w raportach będą widoczne po skonfigurować konto magazynu?**
+### <a name="how-long-can-i-retain-reports"></a>Jak długo można zachować raportów
+Po skonfigurowaniu konta magazynu, można wybrać okres przechowywania danych raportu na koncie magazynu. Postępuj zgodnie z kroku 6 [Konfigurowanie konta magazynu dla raportów](backup-azure-configure-reports.md#configure-storage-account-for-reports) sekcji. Możesz również [analizowanie raportów w programie Excel](https://powerbi.microsoft.com/documentation/powerbi-service-analyze-in-excel/) i zapisać je na dłuższy okres przechowywania, zgodnie z potrzebami.
 
-   Wszystkie dane, które są generowane po skonfigurowaniu konta magazynu zostanie przypisany do konta magazynu i jest dostępna w raportach. W toku zadania nie są wypychane do raportowania. Gdy zadanie zakończy się lub kończy się niepowodzeniem, jest wysyłana do raportów.
+### <a name="will-i-see-all-my-data-in-reports-after-i-configure-the-storage-account"></a>Moje dane w raportach będą widoczne po skonfigurować konto magazynu?
+ Wszystkie dane, które są generowane po skonfigurowaniu konta magazynu zostanie przypisany do konta magazynu i jest dostępna w raportach. W toku zadania nie są wypychane do raportowania. Gdy zadanie zakończy się lub kończy się niepowodzeniem, jest wysyłana do raportów.
 
-**Jeśli mam już skonfigurowane konto magazynu, aby wyświetlić raporty, można zmienić konfigurację, aby użyć innego konta magazynu?**
+### <a name="if-i-already-configured-the-storage-account-to-view-reports-can-i-change-the-configuration-to-use-another-storage-account"></a>Jeśli mam już skonfigurowane konto magazynu, aby wyświetlić raporty, można zmienić konfigurację, aby użyć innego konta magazynu?
+Tak, można zmienić konfiguracji, aby wskazywał innego konta magazynu. Podczas łączenia z pakietem zawartości usługi Azure Backup, należy użyć nowo skonfigurowanego konta magazynu. Ponadto po skonfigurowaniu konta magazynu innego nowego przepływu danych na tym koncie magazynu. Starsze dane (przed zmianą konfiguracji) nadal pozostaje w starszych konta magazynu.
 
-   Tak, można zmienić konfiguracji, aby wskazywał innego konta magazynu. Podczas łączenia z pakietem zawartości usługi Azure Backup, należy użyć nowo skonfigurowanego konta magazynu. Ponadto po skonfigurowaniu konta magazynu innego nowego przepływu danych na tym koncie magazynu. Starsze dane (przed zmianą konfiguracji) nadal pozostaje w starszych konta magazynu.
+### <a name="can-i-view-reports-across-vaults-and-subscriptions"></a>W subskrypcji i magazynów mogą wyświetlać raporty?
+Tak, można skonfigurować tego samego konta magazynu w różnych magazynów, aby wyświetlić raporty dla wielu magazynu. Ponadto można skonfigurować tego samego konta magazynu dla magazynów w subskrypcjach. Następnie przy użyciu tego konta magazynu, gdy połączysz się z pakietem zawartości usługi Azure Backup w usłudze Power BI do wyświetlania raportów. Wybrane konto magazynu musi być w tym samym regionie co magazyn usługi Recovery Services.
 
-**W subskrypcji i magazynów mogą wyświetlać raporty?**
-
-   Tak, można skonfigurować tego samego konta magazynu w różnych magazynów, aby wyświetlić raporty dla wielu magazynu. Ponadto można skonfigurować tego samego konta magazynu dla magazynów w subskrypcjach. Następnie przy użyciu tego konta magazynu, gdy połączysz się z pakietem zawartości usługi Azure Backup w usłudze Power BI do wyświetlania raportów. Wybrane konto magazynu musi być w tym samym regionie co magazyn usługi Recovery Services.
-   
 ## <a name="troubleshooting-errors"></a>Rozwiązywanie problemów z błędami
 | Szczegóły błędu | Rozwiązanie |
 | --- | --- |
@@ -161,4 +156,3 @@ Po skonfigurowaniu konta magazynu i zaimportować pakiet zawartości usługi Azu
 * [Użycie usługi Azure Backup w modelu danych raportowania](backup-azure-reports-data-model.md)
 * [Filtr raportów usługi Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
 * [Tworzenie raportów w usłudze Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)
-

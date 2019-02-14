@@ -9,20 +9,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: ba7ac806a74cd0b378c39eb3873e7d64435bcf4f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f3ca140fd8606f60a07b71db32cf2d3987ed7860
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105658"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233603"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Tryby wdrażania usługi Azure Resource Manager
 
 Podczas wdrażania zasobów, należy określić, że wdrożenie jest aktualizację przyrostową lub ukończenia aktualizacji.  Główną różnicą między tymi dwoma trybami jest sposób obsługiwania przez istniejące zasoby w grupie zasobów, które nie są w szablonie usługi Resource Manager. Domyślny tryb jest przyrostowy.
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+Tylko szablony z katalogu głównego obsługują tryb całego procesu wdrażania. Aby uzyskać [połączonych lub zagnieżdżonych szablonów](resource-group-linked-templates.md), należy użyć trybu przyrostowego. 
 
 ## <a name="incremental-and-complete-deployments"></a>Przyrostowe i kompletne wdrożeń
 
@@ -63,8 +63,6 @@ Po wdrożeniu w **pełną** trybie C zasób zostanie usunięty. Grupa zasobów z
 
 ## <a name="set-deployment-mode"></a>Ustaw tryb wdrożenia
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Aby ustawić tryb wdrożenia, w przypadku wdrażania przy użyciu programu PowerShell, użyj `Mode` parametru.
 
 ```azurepowershell-interactive
@@ -86,7 +84,7 @@ az group deployment create \
   --parameters storageAccountType=Standard_GRS
 ```
 
-Korzystając z [połączonych lub zagnieżdżonych szablonów](resource-group-linked-templates.md), należy ustawić `mode` właściwość `Incremental`. Tylko szablony z katalogu głównego obsługują tryb całego procesu wdrażania.
+Poniższy przykład przedstawia połączony szablon ustawiony tryb wdrożenie przyrostowe:
 
 ```json
 "resources": [

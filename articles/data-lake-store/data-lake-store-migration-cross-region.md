@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 0d27ae79ab2c14cc5fd5ca81b8b7f089e7fa294e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126228"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233052"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Migrowanie z usługi Azure Data Lake Storage Gen1 między regionami
 
@@ -46,7 +46,7 @@ Inne ważne szczegóły, które należy uwzględnić podczas planowania migracji
 
 * **Opłaty za przepustowość**. [Opłaty za przepustowość](https://azure.microsoft.com/pricing/details/bandwidth/) zastosować, ponieważ dane są przesyłane poza region platformy Azure.
 
-* **Listy kontroli dostępu na podstawie posiadanych danych**. Zabezpieczanie danych w nowym regionie, stosując listy kontroli dostępu do plików i folderów. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake magazynu Gen1](data-lake-store-secure-data.md). Zalecamy użycie migracji do aktualizacji i dostosować swoje listy kontroli dostępu. Można użyć ustawień podobny do bieżących ustawień. Można wyświetlić listy kontroli dostępu, które są stosowane do dowolnego pliku przy użyciu witryny Azure portal [poleceń cmdlet programu PowerShell](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission), lub zestawów SDK.  
+* **Listy kontroli dostępu na podstawie posiadanych danych**. Zabezpieczanie danych w nowym regionie, stosując listy kontroli dostępu do plików i folderów. Aby uzyskać więcej informacji, zobacz [Zabezpieczanie danych przechowywanych w usłudze Azure Data Lake magazynu Gen1](data-lake-store-secure-data.md). Zalecamy użycie migracji do aktualizacji i dostosować swoje listy kontroli dostępu. Można użyć ustawień podobny do bieżących ustawień. Można wyświetlić listy kontroli dostępu, które są stosowane do dowolnego pliku przy użyciu witryny Azure portal [poleceń cmdlet programu PowerShell](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission), lub zestawów SDK.  
 
 * **Lokalizacja usługi analizy**. Aby uzyskać najlepszą wydajność usługi analityczne, takie jak Azure Data Lake Analytics lub Azure HDInsight, należy w tym samym regionie, w którym znajdują się dane.  
 

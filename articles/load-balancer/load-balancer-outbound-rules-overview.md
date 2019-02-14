@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439106"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243607"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -34,7 +34,7 @@ Reguły ruchu wychodzącego umożliwiają kontrolowanie:
 - maszyn wirtualnych powinny być przekonwertowana na której publiczne adresy IP. 
 - jak [portów SNAT wychodzących](load-balancer-outbound-connections.md#snat) powinna zostać przydzielona.
 - zapewnienie wychodzącego Translacja protokołów.
-- jakie czas trwania dla limitu czasu bezczynności połączeń wychodzących.
+- jakie czas trwania dla limitu czasu bezczynności połączenia wychodzące (4-120 minut).
 - Określa, czy wysłać TCP Reset przy użyciu limitu czasu bezczynności (w publicznej wersji zapoznawczej). 
 
 Rozwiń węzeł reguł dla ruchu wychodzącego [Scenariusz 2](load-balancer-outbound-connections.md#lb) w opisanych w [połączeń wychodzących](load-balancer-outbound-connections.md) artykułu i pierwszeństwo scenariusz pozostaje jako — jest.
@@ -90,7 +90,7 @@ Można powrócić do [automatyczna alokacja portu SNAT oparte na rozmiar puli za
 
 ### <a name="idletimeout"></a> Limit czasu bezczynności przepływu wychodzącego kontroli
 
-Reguły ruchu wychodzącego zapewniają parametru konfiguracji do kontrolowania limitu czasu bezczynności przepływu wychodzącego i dopasować go do potrzeb aplikacji.  Domyślnie wychodzącego przekroczeń limitu czasu bezczynności 4 minuty.  Parametr przyjmuje wartość od 4 do 66 do określonych minutach limitu czasu bezczynności dla przepływów pasujące do tej określonej reguły.
+Reguły ruchu wychodzącego zapewniają parametru konfiguracji do kontrolowania limitu czasu bezczynności przepływu wychodzącego i dopasować go do potrzeb aplikacji.  Domyślnie wychodzącego przekroczeń limitu czasu bezczynności 4 minuty.  Parametr przyjmuje wartość od 4 do 120 do określonych minutach limitu czasu bezczynności dla przepływów pasujące do tej określonej reguły.
 
 Aby ustawić limit czasu bezczynności ruchu wychodzącego do 1 godziny, należy użyć następującego parametru:
 
@@ -205,7 +205,7 @@ Korzystając z wewnętrznego standardowego modułu równoważenia obciążenia, 
 ## <a name="limitations"></a>Ograniczenia
 
 - Maksymalna liczba można używać portów tymczasowych dla adresu IP frontonu jest 51,200.
-- Zakres konfigurowalnych limitu czasu bezczynności ruchu wychodzącego jest 4-66 minut (240 do 4000 w sekundach).
+- Zakres konfigurowalnych limitu czasu bezczynności ruchu wychodzącego jest 4 do 120 minut (240 do 7200 sekund).
 - Moduł równoważenia obciążenia nie obsługuje protokołu ICMP dla wychodzących reguł NAT.
 - Portal nie można skonfigurować lub wyświetlać reguły dla ruchu wychodzącego.  Zamiast tego użyj szablonów, interfejs API REST, Az interfejsu wiersza polecenia w wersji 2.0 lub programu PowerShell.
 - Reguły ruchu wychodzącego jest stosowane tylko do podstawowej karty Sieciowej i podstawowa konfiguracja adresu IP.

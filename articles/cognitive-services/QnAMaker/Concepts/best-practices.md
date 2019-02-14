@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/18/2018
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 7fb1712ee67ef6acfb7d8a059f9db8b88ce9ccac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 9ea62d731cf0c16c17f3c2e4f3e1954661289934
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863334"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245545"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Najlepsze rozwiązania wiedzy usługi QnA Maker
 [Cykl życia projektowania bazy wiedzy knowledge base](../Concepts/development-lifecycle-knowledge-base.md) przeprowadzi Cię o tym, jak zarządzać wiedzy od początku do końca. Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy i zapewniają lepsze wyniki użytkownikom końcowym bota aplikacji/rozmowy.
@@ -74,7 +74,7 @@ Współczynnik ufności domyślny, który jest używany jako próg wynosi 50, je
 [Metadane](../How-To/edit-knowledge-base.md) dodaje możliwość zawężać wyniki zapytania użytkownika, na podstawie tagów metadanych. Odpowiedź bazy wiedzy knowledge base może się różnić w zależności w tagu metadanych nawet, jeśli zapytanie jest taka sama. Na przykład *"gdzie jest umieszczony parkowania"* mogą mieć różne odpowiedzi, jeśli różni się lokalizacja gałęzi, restauracji — metadanych jest *lokalizacji: Seattle* a *lokalizacji: Redmond*.
 
 ### <a name="use-synonyms"></a>Używać synonimów
-Choć niektóre Obsługa synonimów w języku angielskim, użyj [word zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) można dodać synonimy do słów kluczowych, które przyjmują różne formularza. Synonimy, należy dodać na poziomie usługi QnA Maker i współużytkowane przez wszystkie bazy wiedzy w usłudze.
+Choć niektóre Obsługa synonimów w języku angielskim, użyj bez uwzględniania wielkości liter [word zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) można dodać synonimy do słów kluczowych, które przyjmują różne formularza. Synonimy, należy dodać na poziomie usługi QnA Maker i współużytkowane przez wszystkie bazy wiedzy w usłudze.
 
 |Oryginalny programu word|Synonimy|
 |--|--|

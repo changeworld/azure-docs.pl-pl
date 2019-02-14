@@ -1,5 +1,5 @@
 ---
-title: Algorytmami
+title: Przykłady algorytmów
 titleSuffix: Azure Machine Learning Studio
 description: Omówienie łatwych do zrozumienia podstawy uczenia maszyny zawiera przykłady algorytmu. Do pobrania grafikę informacyjną obejmuje większość usługi machine learning pytania.
 services: machine-learning
@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 12af8cd2fb46bf61324ddfb8e9a396e53e308a6d
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978616"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242904"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Grafika informacyjna do pobrania: Podstawy wraz z przykładami Algorytm uczenia maszynowego
 
@@ -23,7 +23,7 @@ Pobierz to omówienie informacyjna łatwych do zrozumienia podstawy uczenia masz
 
 ## <a name="popular-algorithms-in-machine-learning-studio"></a>Popularne algorytmy w usłudze Machine Learning Studio
 
-[Usługa Azure Machine Learning Studio](https://studio.azureml.net/) jest dostarczany z dużej biblioteki algorytmów analizy predykcyjnej. Grafikę informacyjną identyfikuje czterech popularnych rodzin algorytmów — regresji, wykrywanie anomalii, klastrowania i klasyfikacji — i zawiera łącza do działających przykładów w [galerii Azure AI](https://gallery.cortanaintelligence.com/). Galeria zawiera przykładowych eksperymentów i samouczków, które pokazują, jak te algorytmy mogą być stosowane w przypadku wielu rozwiązań w rzeczywistych warunkach.
+[Usługa Azure Machine Learning Studio](https://studio.azureml.net/) jest dostarczany z dużej biblioteki algorytmów analizy predykcyjnej. Grafikę informacyjną identyfikuje czterech popularnych rodzin algorytmów — regresji, wykrywanie anomalii, klastrowania i klasyfikacji — i zawiera łącza do działających przykładów w [galerii Azure AI](https://gallery.azure.ai/). Galeria zawiera przykładowych eksperymentów i samouczków, które pokazują, jak te algorytmy mogą być stosowane w przypadku wielu rozwiązań w rzeczywistych warunkach.
 
 ## <a name="download-the-infographic-with-algorithm-examples"></a>Pobierz grafikę informacyjną z algorytmami
 

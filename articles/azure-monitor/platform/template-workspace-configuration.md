@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: 30d9de5653db385760155d533ad747c3cf6d2400
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: e948842a49e87df156eb59a7e25634772550d933
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960355"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235499"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Zarządzanie usługą Log Analytics przy użyciu szablonów usługi Azure Resource Manager
 Możesz użyć [szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) do tworzenia i konfigurowania obszarów roboczych usługi Log Analytics. Przykłady zadań, które można wykonać za pomocą szablonów:
@@ -56,7 +56,7 @@ Następujące parametry ustawiona wartość domyślna:
 
 > [!NOTE]
 >W przypadku tworzenia lub konfigurowania obszaru roboczego usługi Log Analytics w ramach subskrypcji, który występował w nowych z kwietnia 2018 r modelu cen, jest prawidłowa tylko usługi Log Analytics warstwy cenowej **PerGB2018**.  
->Jeśli niektóre subskrypcje mogą mieć w (modelu cen pre kwietnia 2018 r.) [https://docs.microsoft.com/en-us/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model], można określić **autonomiczny** warstwa cenowa i to powiedzie się dla obu subskrypcji w modelu cenowym sprzed kwietnia 2018 r. i dla Subskrypcje w nowym cenniku. W przypadku obszarów roboczych w ramach subskrypcji, które przyjęły nowy model proicing, warstwa cenowa zostanie ustawiony **PerGB2018**. 
+>Jeśli niektóre subskrypcje mogą mieć w (modelu cen pre kwietnia 2018 r.) [https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model], można określić **autonomiczny** warstwa cenowa i to powiedzie się dla obu subskrypcji w modelu cenowym sprzed kwietnia 2018 r. i dla Subskrypcje w nowym cenniku. W przypadku obszarów roboczych w ramach subskrypcji, które przyjęły nowy model proicing, warstwa cenowa zostanie ustawiony **PerGB2018**. 
 
 ### <a name="create-and-deploy-template"></a>Tworzenie i wdrażanie szablonu
 

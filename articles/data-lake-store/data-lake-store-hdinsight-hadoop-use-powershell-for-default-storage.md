@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6100a77d3c0bd1ac5e012651f1e7d359c4c67443
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84bed7031307316545cc8e468196c6b12cde7bb7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954457"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237065"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Tworzenie klastrów HDInsight za pomocą usługi Azure Data Lake Storage Gen1 jako magazynem domyślnym przy użyciu programu PowerShell
 
@@ -39,12 +39,14 @@ Aby skonfigurować HDInsight do pracy z Data Lake Storage Gen1 przy użyciu prog
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Przed rozpoczęciem tego samouczka, upewnij się, że spełniasz następujące wymagania:
 
 * **Subskrypcja platformy Azure**: Przejdź do [uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Program Azure PowerShell 1.0 lub nowszy**: zobacz [jak zainstalować i skonfigurować program PowerShell](/powershell/azure/overview).
+* **Program Azure PowerShell 1.0 lub nowszy**: Zobacz [jak zainstalować i skonfigurować program PowerShell](/powershell/azure/overview).
 * **Windows Software Development Kit (SDK)**: Aby zainstalować zestaw Windows SDK, przejdź do [pliki do pobrania i narzędzia dla systemu Windows 10](https://dev.windows.com/downloads). Zestaw SDK jest używany do utworzenia certyfikatu zabezpieczeń.
-* **Jednostki usługi w usłudze Azure Active Directory**: w tym samouczku opisano, jak utworzyć nazwę główną usługi w usłudze Azure Active Directory (Azure AD). Jednak aby utworzyć nazwę główną usługi, musi być administratorem usługi Azure AD. Jeśli jesteś administratorem, możesz pominąć to wymaganie wstępne i kontynuować z tego samouczka.
+* **Jednostki usługi w usłudze Azure Active Directory**: W tym samouczku opisano tworzenie usługi podmiotu zabezpieczeń w usłudze Azure Active Directory (Azure AD). Jednak aby utworzyć nazwę główną usługi, musi być administratorem usługi Azure AD. Jeśli jesteś administratorem, możesz pominąć to wymaganie wstępne i kontynuować z tego samouczka.
 
     >[!NOTE]
     >Usługi można utworzyć jednostki, tylko wtedy, gdy jesteś administratorem usługi Azure AD. Administrator usługi Azure AD należy utworzyć jednostkę usługi można było utworzyć klaster usługi HDInsight za pomocą programu Data Lake Storage Gen1. Musi być utworzona nazwa główna usługi za pomocą certyfikatu, zgodnie z opisem w [utworzyć nazwę główną usługi za pomocą certyfikatu](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
@@ -57,25 +59,25 @@ Tworzenie konta Data Lake Storage Gen1, wykonaj następujące czynności:
 1. Na pulpicie otwórz okno programu PowerShell, a następnie wprowadź poniższe fragmenty kodu. Po wyświetleniu monitu zaloguj się, zaloguj się jako jeden z administratorów subskrypcji lub właścicieli. 
 
         # Sign in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Jeśli rejestrowanie dostawcy zasobów Data Lake Storage Gen1 i komunikat o błędzie podobny do `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, Twoja subskrypcja może nie być na liście dozwolonych elementów dla programu Data Lake Storage Gen1. Aby włączyć Twojej subskrypcji platformy Azure Data Lake Storage Gen1, postępuj zgodnie z instrukcjami [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure portal](data-lake-store-get-started-portal.md).
+    > Jeśli rejestrowanie dostawcy zasobów Data Lake Storage Gen1 i komunikat o błędzie podobny do `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid`, Twoja subskrypcja może nie być na liście dozwolonych elementów dla programu Data Lake Storage Gen1. Aby włączyć Twojej subskrypcji platformy Azure Data Lake Storage Gen1, postępuj zgodnie z instrukcjami [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure portal](data-lake-store-get-started-portal.md).
     >
 
 2. Konta Data Lake Storage Gen1 jest skojarzona z grupą zasobów platformy Azure. Rozpocznij od utworzenia grupy zasobów.
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     Powinny pojawić się dane wyjściowe podobne do tego:
 
@@ -88,7 +90,7 @@ Tworzenie konta Data Lake Storage Gen1, wykonaj następujące czynności:
 3. Tworzenie konta Data Lake Storage Gen1. Nazwa konta, które określisz musi zawierać tylko małe litery i cyfry.
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     Powinny pojawić się dane wyjściowe podobne do następujących:
 
@@ -110,7 +112,7 @@ Tworzenie konta Data Lake Storage Gen1, wykonaj następujące czynności:
 4. Za pomocą programu Data Lake Storage Gen1 jako magazynem domyślnym wymaga określenia ścieżka katalogu głównego, do którego pliki dotyczące klastra są kopiowane podczas tworzenia klastra. Aby utworzyć ścieżka katalogu głównego, który jest **/klastrów/hdiadlcluster** we fragmencie, użyj następujących poleceń cmdlet:
 
         $myrootdir = "/"
-        New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
+        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Konfigurowanie uwierzytelniania opartego na rolach dostęp do programu Data Lake Storage Gen1
@@ -152,7 +154,7 @@ W tej sekcji utworzyć jednostkę usługi dla aplikacji usługi Azure AD, przypi
 
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzureRmADApplication `
+        $application = New-AzADApplication `
             -DisplayName "HDIADL" `
             -HomePage "https://contoso.com" `
             -IdentifierUris "https://mycontoso.com" `
@@ -163,14 +165,14 @@ W tej sekcji utworzyć jednostkę usługi dla aplikacji usługi Azure AD, przypi
         $applicationId = $application.ApplicationId
 2. Tworzenie jednostki usługi przy użyciu identyfikatora aplikacji.
 
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
 3. Udzielanie dostępu do jednostki usługi Data Lake Storage Gen1 głównego i wszystkich folderów w ścieżce katalogu głównego, określony wcześniej. Użyj następujących poleceń cmdlet:
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-the-default-storage"></a>Utwórz klaster usługi HDInsight w systemie Linux za pomocą Data Lake Storage Gen1 jako magazyn domyślny
 
@@ -178,7 +180,7 @@ W tej sekcji utworzysz klaster usługi HDInsight Hadoop Linux z Data Lake Storag
 
 1. Pobieranie Identyfikatora dzierżawy subskrypcji i zapisz go do późniejszego użycia.
 
-        $tenantID = (Get-AzureRmContext).Tenant.TenantId
+        $tenantID = (Get-AzContext).Tenant.TenantId
 
 2. Tworzenie klastra HDInsight za pomocą następujących poleceń cmdlet:
 
@@ -192,7 +194,7 @@ W tej sekcji utworzysz klaster usługi HDInsight Hadoop Linux z Data Lake Storag
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster `
+        New-AzHDInsightCluster `
                -ClusterType Hadoop `
                -OSType Linux `
                -ClusterSizeInNodes $clusterNodes `

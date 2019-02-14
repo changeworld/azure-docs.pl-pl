@@ -8,15 +8,15 @@ manager: pchoudh
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 35d447fb7024b8be0bd427305b9e43fa60b1a90d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223191"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245138"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Współczynnik ufności z bazy wiedzy usługi QnA Maker
 Jeśli kwerenda użytkownika są dopasowywane do wiedzy, narzędzie QnA Maker zwraca odpowiednich odpowiedzi, wraz z współczynnik ufności. Ten wynik wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika. 
@@ -58,7 +58,7 @@ Wybierając próg, należy pamiętać, równowagę między dokładności i pokry
 > Nowsze wersje usługi QnA Maker obejmują udoskonalenia w zakresie logiki oceniania i mogą mieć wpływ na próg. Ilekroć, zaktualizuj usługę, upewnij się, testowanie i dostosować wartość progową, jeśli to konieczne. Wersję pytań i odpowiedzi usługi można sprawdzić [tutaj](https://www.qnamaker.ai/UserSettings)i zobacz, jak uzyskać najnowsze aktualizacje [tutaj](../How-To/troubleshooting-runtime.md).
 
 ## <a name="improve-confidence-scores"></a>Poprawić wyniki ufności
-Aby poprawić współczynnik ufności z określonej odpowiedzi na zapytanie użytkownika, można dodać zapytania użytkownika do bazy wiedzy knowledge base, jako alternatywnej pytanie na odpowiedź. Można również użyć [word zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) można dodać synonimy do słów kluczowych w wiedzy.
+Aby poprawić współczynnik ufności z określonej odpowiedzi na zapytanie użytkownika, można dodać zapytania użytkownika do bazy wiedzy knowledge base, jako alternatywnej pytanie na odpowiedź. Możesz również użyć bez uwzględniania wielkości liter [word zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) można dodać synonimy do słów kluczowych w wiedzy.
 
 
 ## <a name="similar-confidence-scores"></a>Podobne wyniki ufności
@@ -66,8 +66,9 @@ Wiele odpowiedzi mają podobne współczynnik ufności, jest prawdopodobne, że 
 
 
 ## <a name="confidence-score-differences"></a>Różnice ocena ufności
-Współczynnik ufności odpowiedzi mogą ulec zmianie w nieznaczny między testu i opublikowanej wersji w bazie wiedzy knowledge base, nawet jeśli zawartość jest taka sama. Jest to spowodowane zawartości testu i opublikowane wiedzy znajdują się w różnych indeksów usługi Azure Search.
-Zobacz tutaj sposób, w jaki [publikowania](../How-To/publish-knowledge-base.md) działanie.
+Współczynnik ufności odpowiedzi mogą ulec zmianie w nieznaczny między testu i opublikowanej wersji w bazie wiedzy knowledge base, nawet jeśli zawartość jest taka sama. Jest to spowodowane zawartości testu i opublikowane wiedzy znajdują się w różnych indeksów usługi Azure Search. Podczas publikowania bazy wiedzy pytań i odpowiedzi zawartość bazy wiedzy przenosi się z Indeks testu do produkcji indeksu w usłudze Azure search. Zobacz jak [publikowania](../How-To/publish-knowledge-base.md) działanie.
+
+Jeśli masz wiedzy w różnych regionach, każdy region używa własnego indeksu wyszukiwania platformy Azure. Ponieważ różne indeksy są używane, wyniki nie będą dokładnie takie same. 
 
 
 ## <a name="no-match-found"></a>Nie znaleziono dopasowań

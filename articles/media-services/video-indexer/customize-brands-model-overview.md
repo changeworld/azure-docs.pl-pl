@@ -9,18 +9,18 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: b01de55003f620363ed27b95a2bd27bc39fdee3a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 48255614291086fe85666bec407ea62f7a365410
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991215"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237369"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Dostosowywanie modelu marek w indeksatora wideo
 
 Usługa Video Indexer obsługuje wykrywanie marki mowy i tekstu podczas indeksowania i indeksowanie zawartości audio i wideo. Funkcja wykrywania marki identyfikuje wzmianek o produktach, usługach i firm zaproponowana przez Bing marek w bazie danych. Na przykład Microsoft jest wymieniony w zawartości wideo lub audio lub zostanie ona wyświetlona w tekście visual w filmach wideo, Video Indexer wykrywa ją jako marki w zawartości. Marek są rozróżniane od innych postanowień przy użyciu kontekstu.
 
-Wykrywanie na marki przydaje się w wielu różnych scenariuszy biznesowych, takich jak zawartość archiwum i odnajdywania, kontekstowe reklamy, analiza mediów społecznościowych, detaliczna konkurować analizy i wiele innych. Funkcję wykrywania marki indeksator wideo umożliwia wzmianki marki indeksu w mowy i tekstu, za pomocą usługi Bing przez marek w bazie danych, a także z dostosowywaniem, tworząc niestandardowy model marki dla każdego konta Video Indexer. Funkcja niestandardowej modelu marek umożliwia wybranie, czy Video Indexer wykryje marek bazy danych marek Bing i wykluczyć pewne marek miałyby wykryto (zasadniczo tworzy czarnej listy marek) i zawierać znaki firmowe, które powinny być częścią usługi model, który może nie być w bazie danych marek Bing (zasadniczo tworzy białą listę marek).
+Wykrywanie na marki przydaje się w wielu różnych scenariuszy biznesowych, takich jak zawartość archiwum i odnajdywania, kontekstowe reklamy, analiza mediów społecznościowych, detaliczna konkurować analizy i wiele innych. Funkcję wykrywania marki indeksator wideo umożliwia wzmianki marki indeksu w mowy i tekstu, za pomocą usługi Bing przez marek w bazie danych, a także z dostosowywaniem, tworząc niestandardowy model marki dla każdego konta Video Indexer. Funkcja niestandardowej modelu marek umożliwia wybranie, czy Video Indexer wykryje marek bazy danych marek Bing i wykluczyć pewne marek miałyby wykryto (zasadniczo tworzy czarnej listy marek) i zawierać znaki firmowe, które powinny być częścią usługi model, który może nie być w bazie danych marek Bing (zasadniczo tworzy białą listę marek). Niestandardowy model marek, którą tworzysz tylko będą dostępne w ramach konta, w którym został utworzony model.
 
 ## <a name="out-of-the-box-detection-example"></a>Poza przykład wykrywania pola
 
