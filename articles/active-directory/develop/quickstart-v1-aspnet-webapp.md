@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: d23110f341cdc76306c5cc4c78ab5d6afb5dd2b3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816275"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185320"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Szybki start: dodawanie logowania przy użyciu konta Microsoft do aplikacji internetowej ASP.NET
 
@@ -229,7 +230,7 @@ Ta opcja to typowy scenariusz w przypadku aplikacji biznesowych.
 Jeśli chcesz, aby Twoja aplikacja akceptowała logowania tylko z kont należących do określonego wystąpienia usługi Azure AD (w tym *kont gości* tego wystąpienia), wykonaj następujące kroki:
 
 1. Zastąp parametr `Tenant` w pliku *web.config* z obszaru `Common` nazwą dzierżawy organizacji, na przykład *contoso.onmicrosoft.com*.
-1. Zmień argument `ValidateIssuer` w [*klasie początkowej OWIN*](#configure-the-authentication-pipeline) na `true`.
+1. Zmień argument `ValidateIssuer` w [*klasie początkowej OWIN*](#step-4-configure-the-authentication-pipeline) na `true`.
 
 Aby zezwalać tylko na dostęp użytkowników z listy określonych organizacji, wykonaj następujące kroki:
 

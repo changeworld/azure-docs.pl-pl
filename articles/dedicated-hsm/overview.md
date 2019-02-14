@@ -3,7 +3,7 @@ title: Co to jest dedykowany moduł HSM? — Dedykowany moduł HSM platformy Azu
 description: Omówienie dedykowanego modułu HSM platformy Azure udostępniającego funkcje magazynu kluczy na platformie Azure, który spełnia wymogi certyfikatu FIPS 140-2 poziom 3
 services: dedicated-hsm
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.service: key-vault
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 503c6d124d6a67c39d9a88100e5ad35dc787fb7b
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 447518d2189a3b2723edc7c7db74ccc8435b71b7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975597"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110374"
 ---
 # <a name="what-is-azure-dedicated-hsm"></a>Co to jest dedykowany moduł HSM platformy Azure?
 

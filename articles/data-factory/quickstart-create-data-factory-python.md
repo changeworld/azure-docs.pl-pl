@@ -13,14 +13,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 49a2e16d198130d1c72d36377be1d914cbe3351b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745252"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001872"
 ---
-# <a name="create-a-data-factory-and-pipeline-using-python"></a>Tworzenie fabryki danych i potoku przy użyciu języka Python
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Szybki start: Tworzenie fabryki danych i potoku przy użyciu języka Python
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-python.md)
@@ -47,6 +48,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 2.  Użyj narzędzi, takich jak [Eksplorator usługi Azure Storage](http://storageexplorer.com/), aby utworzyć kontener **adfv2tutorial** i folder **input** w kontenerze. Następnie przekaż plik **input.txt** do folderu **input**.
 
 ## <a name="install-the-python-package"></a>Instalacja pakietu języka Python
+
 1. Otwórz terminal lub wiersz polecenia z uprawnieniami administratora. 
 2. Najpierw zainstaluj pakiet języka Python dla zasobów zarządzania platformy Azure:
 
@@ -104,7 +106,6 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
             print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
-
     ```
 3. Dodaj do metody **Main** poniższy kod, który tworzy wystąpienie klasy DataFactoryManagementClient. Ten obiekt jest używany do tworzenia fabryki danych, połączonej usługi, zestawów danych i potoku. Umożliwia on również monitorowanie szczegółów uruchomienia potoku. Ustaw zmienną **subscription_id** na identyfikator swojej subskrypcji platformy Azure. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
@@ -165,9 +166,11 @@ Połączone usługi tworzy się w fabryce danych w celu połączenia magazynów 
     print_item(ls)
 ```
 ## <a name="create-datasets"></a>Tworzenie zestawów danych
+
 W tej sekcji utworzysz zestaw danych źródła i ujścia.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Tworzenie zestawu danych źródłowego obiektu blob platformy Azure
+
 Dodaj do metody Main poniższy kod, który tworzy zestaw danych obiektu blob platformy Azure. Aby uzyskać informacje o właściwościach zestawu danych obiektu blob platformy Azure, zobacz artykuł dotyczący [łącznika obiektu blob platformy Azure](connector-azure-blob-storage.md#dataset-properties).
 
 Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie blob platformy Azure. Ten zestaw danych obiektu blob odwołuje się do połączonej usługi Azure Storage utworzonej w poprzednim kroku.
@@ -184,6 +187,7 @@ Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie b
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-blob"></a>Tworzenie zestawu danych obiektu blob platformy Azure ujścia
+
 Dodaj do metody Main poniższy kod, który tworzy zestaw danych obiektu blob platformy Azure. Aby uzyskać informacje o właściwościach zestawu danych obiektu blob platformy Azure, zobacz artykuł dotyczący [łącznika obiektu blob platformy Azure](connector-azure-blob-storage.md#dataset-properties).
 
 Należy zdefiniować zestaw danych reprezentujący źródło danych w obiekcie blob platformy Azure. Ten zestaw danych obiektu blob odwołuje się do połączonej usługi Azure Storage utworzonej w poprzednim kroku.
@@ -218,7 +222,6 @@ Dodaj do metody **Main** poniższy kod, który tworzy **potok z działaniem kopi
     print_item(p)
 ```
 
-
 ## <a name="create-a-pipeline-run"></a>Tworzenie uruchomienia potoku
 
 Dodaj do metody **Main** poniższy kod, który **wyzwala uruchomienie potoku**.
@@ -232,6 +235,7 @@ Dodaj do metody **Main** poniższy kod, który **wyzwala uruchomienie potoku**.
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Monitorowanie uruchomienia potoku
+
 Aby monitorować uruchomienie potoku, dodaj do metody **Main** następujący kod:
 
 ```python
@@ -251,6 +255,7 @@ main()
 ```
 
 ## <a name="full-script"></a>Pełny skrypt
+
 Oto pełny kod języka Python:
 
 ```python
@@ -381,6 +386,7 @@ main()
 ```
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
+
 Skompiluj i uruchom aplikację, a następnie zweryfikuj wykonywanie potoku.
 
 Konsola wypisuje postęp tworzenia fabryki danych, połączonej usługi, zestawów danych, potoku i uruchomienia potoku. Poczekaj na wyświetlenie szczegółów uruchomienia działania kopiowania z rozmiarem odczytanych/zapisanych danych. Następnie sprawdź przy użyciu narzędzi, takich jak [eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/), czy obiekty blob zostały skopiowane do lokalizacji „outputBlobPath” z lokalizacji „inputBlobPath”, jak określono w zmiennych.
@@ -417,8 +423,8 @@ Number of bytes written: 18
 Copy duration: 4
 ```
 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
 Aby usunąć fabrykę danych, dodaj następujący kod do programu:
 
 ```python
@@ -426,4 +432,5 @@ adf_client.factories.delete(rg_name,df_name)
 ```
 
 ## <a name="next-steps"></a>Następne kroki
+
 Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-dot-net.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach.

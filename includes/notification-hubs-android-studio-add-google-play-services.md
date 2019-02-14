@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: bc920493b32d500602a5b683c098d23aff855150
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fb27386881e89cd9056d0efccb7d3c301867bd83
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55823302"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965991"
 ---
 1. W programie **Android Studio**, wybierz z menu pozycję **Tools** (Narzędzia) i wybierz pozycję **SDK Manager** (Menedżer zestawów SDK). 
 2. Wybierz wersję docelową zestawu Android SDK, który jest używany w projekcie, a następnie wybierz pozycję **Show Package Details** (Pokaż szczegóły pakietu). 
@@ -29,7 +29,7 @@ ms.locfileid: "55823302"
 4. Wybierz przycisk **OK**, aby zamknąć okno dialogowe **Settings for New Projects** (Ustawienia nowego projektu).  
 5. Otwórz plik `build.gradle` w katalogu **app** i dodaj następujący wiersz w sekcji `dependencies`. 
 
-    ```text
+    ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
     ```
 5. Wybierz ikonę **Sync Now** (Synchronizuj teraz) na pasku narzędzi.

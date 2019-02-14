@@ -11,6 +11,7 @@
 ## [Migrowanie programu SQL Server do usługi Azure SQL DB w trybie online](tutorial-sql-server-azure-sql-online.md)
 ## [Migrowanie programu SQL Server do zarządzanego wystąpienia usługi SQL DB w trybie offline](tutorial-sql-server-to-managed-instance.md)
 ## [Migrowanie programu SQL Server do zarządzanego wystąpienia usługi Azure SQL DB w trybie online](tutorial-sql-server-managed-instance-online.md)
+## [Migrowanie programu SQL Server z usługi RDS do usługi Azure SQL DB lub wystąpienia zarządzanego usługi Azure SQL DB w trybie online](tutorial-rds-sql-server-azure-sql-and-managed-instance-online.md)
 ## [Migrowanie bazy danych MySQL do usługi Azure DB dla MySQL w trybie online](tutorial-mysql-azure-mysql-online.md)
 ## [Migrowanie bazy danych PostgreSQL do usługi Azure DB dla MySQL w trybie online](tutorial-postgresql-azure-postgresql-online.md)
 ## [Migrowanie bazy danych MongoDB do interfejsu API Mongo usługi Azure Cosmos DB w trybie offline](tutorial-mongodb-cosmos-db.md)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a3807dc792c2e56c3e7c1b74f7d3e8f73ac0f4b0
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: 7fb382c6c57972484eff80c0d7355319a1f9178a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51705093"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893555"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>Znajdowanie trasy do punktu orientacyjnego przy użyciu usługi Azure Maps
 
@@ -202,7 +202,7 @@ W tej sekcji pokazano, jak używać interfejsu API usługi Route Service w usłu
         endPoint.geometry.coordinates[0];
     ```
 
-3. Aby uzyskać trasę, dodaj następujący blok kodu do skryptu. Wysyła on zapytania do usługi trasowania Azure Maps za pośrednictwem metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest#getroutedirections), a następnie analizuje odpowiedź w formacie GeoJSON przy użyciu metody [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest#getgeojsonroutes). Następnie dodaje linię trasy w odpowiedzi na źródło danych, co powoduje automatyczne wyświetlenie jej na mapie.
+3. Aby uzyskać trasę, dodaj następujący blok kodu do skryptu. Wysyła on zapytania do usługi trasowania Azure Maps za pośrednictwem metody [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest), a następnie analizuje odpowiedź w formacie GeoJSON przy użyciu metody [getGeoJsonRoutes](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest). Następnie dodaje linię trasy w odpowiedzi na źródło danych, co powoduje automatyczne wyświetlenie jej na mapie.
 
     ```JavaScript
     //Execute the car route query then add the route to the map once a response is received.

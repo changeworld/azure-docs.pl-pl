@@ -17,12 +17,13 @@ ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: cfc1ba6250a2d246c2dcf9a0128097b64896732d
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 94d0e469614204a7507ba666ac04e59774eebde7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098514"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204422"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 2.0
 
@@ -58,13 +59,13 @@ OAuth w wersji 2.0 tego rodzaju uprawnienia są nazywane *zakresy*. One równie�
 * Zapisać przy użyciu kalendarza użytkownika `Calendars.ReadWrite`
 * Wysyłaj pocztę jako użytkownika za pomocą przez `Mail.Send`
 
-Aplikacja najczęściej żądania punktu końcowego autoryzacji tych uprawnień, określając zakresy w żądaniach wysyłanych do wersji 2.0. Jednak pewne uprawnienia na wysokim poziomie uprawnień można udzielać tylko za pośrednictwem zgody administratora i ogólnie żądane/udzielone za pomocą [punktu końcowego zgody administratora](v2-permissions-and-consent.md#admin-restricted-scopes). Czytaj dalej, aby dowiedzieć się więcej.
+Aplikacja najczęściej żądania punktu końcowego autoryzacji tych uprawnień, określając zakresy w żądaniach wysyłanych do wersji 2.0. Jednak pewne uprawnienia na wysokim poziomie uprawnień można udzielać tylko za pośrednictwem zgody administratora i ogólnie żądane/udzielone za pomocą [punktu końcowego zgody administratora](v2-permissions-and-consent.md#admin-restricted-permissions). Czytaj dalej, aby dowiedzieć się więcej.
 
 ## <a name="permission-types"></a>Typy uprawnień
 
 Platforma tożsamości firmy Microsoft obsługuje dwa typy uprawnień: **delegowane uprawnienia** i **uprawnienia aplikacji**.
 
-* **Delegowane uprawnienia** są używane przez aplikacje, które mają zalogowanego użytkownika istnieje. Dla tych aplikacji użytkownik lub administrator wyraża zgodę na uprawnienia żądań aplikacji i aplikacji to uprawnienia delegowane do działania jako zalogowanego użytkownika, gdy wykonywanie wywołań do zasobu docelowego. Niektóre uprawnienia delegowane mogą wyrażono zgodę przez użytkowników innych niż administracyjne, ale niektóre uprawnienia wyższych uprawnieniach wymagają [zgody administratora](v2-permissions-and-consent.md#admin-restricted-scopes). Aby dowiedzieć się, który administrator ról mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
+* **Delegowane uprawnienia** są używane przez aplikacje, które mają zalogowanego użytkownika istnieje. Dla tych aplikacji użytkownik lub administrator wyraża zgodę na uprawnienia żądań aplikacji i aplikacji to uprawnienia delegowane do działania jako zalogowanego użytkownika, gdy wykonywanie wywołań do zasobu docelowego. Niektóre uprawnienia delegowane mogą wyrażono zgodę przez użytkowników innych niż administracyjne, ale niektóre uprawnienia wyższych uprawnieniach wymagają [zgody administratora](v2-permissions-and-consent.md#admin-restricted-permissions). Aby dowiedzieć się, który administrator ról mogą wyrazić zgodę na delegowane uprawnienia, zobacz [uprawnienia roli administratora w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md).
 
 * **Uprawnienia aplikacji** są używane przez aplikacje z systemem bez zalogowanego użytkownika istnieje; na przykład aplikacji, Uruchom jako usługi w tle lub demonów.  Uprawnienia aplikacji może składać się wyłącznie [wyraził zgodę administrator](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant).
 

@@ -3,19 +3,19 @@ title: 'Szybki start: Rozpoznawanie emocji na twarzach na obrazie — interfejs 
 description: Uzyskaj informacje i przykładowy kod, które pomogą Ci szybko rozpocząć korzystanie z interfejsu API rozpoznawania emocji w języku Java dla systemu Android.
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: a3250771c51495890c54060dc46b8bd88a8f54af
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9755507aa858289daff7f297c4013b27f8258b61
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228682"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233527"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Szybki start: Tworzenie aplikacji do rozpoznawania emocji na twarzach na obrazie.
 

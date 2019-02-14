@@ -3,7 +3,7 @@ title: Szablony usługi Azure Resource Manager dla usługi SQL Database | Micros
 description: Używaj szablonów usługi Azure Resource Manager do tworzenia i konfigurowania usługi Azure SQL Database.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: overview-samples
 ms.devlang: ''
 ms.topic: sample
@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 71bdfb28a251a815775dc77c55986a10ea550ef7
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 58513b77315badc52acbc0c5116343461b44fa08
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770252"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232966"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Szablony usługi Azure Resource Manager dla usługi Azure SQL Database
 

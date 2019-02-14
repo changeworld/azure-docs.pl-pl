@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 7ed8b96a528d56b28262936c4b200762b3e93b8e
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 09eaf9465ec3912dea6e1f3ee1693f6bfed50abc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302248"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985481"
 ---
 ## <a name="push-image-to-registry"></a>Wypychanie obrazu do rejestru
 
 Aby wypchnąć obraz do usługi Azure Container Registry, najpierw musisz go mieć. Jeśli nie masz jeszcze żadnych lokalnych obrazów kontenerów, uruchom następujące polecenie [docker pull][docker-pull], aby ściągnąć istniejący obraz z usługi Docker Hub. W tym przykładzie ściągnij obraz `hello-world`.
 
-```Docker
+```
 docker pull hello-world
 ```
 
@@ -27,19 +27,19 @@ Zanim będzie można wypchnąć obraz do rejestru, musisz go otagować w pełni 
 
 Aby dodać tag do obrazu, użyj polecenia [docker tag][docker-tag]. Zastąp element `<acrLoginServer>` nazwą serwera logowania wystąpienia usługi ACR.
 
-```Docker
+```
 docker tag hello-world <acrLoginServer>/hello-world:v1
 ```
 
 Na koniec użyj polecenia [docker push][docker-push], aby wypchnąć obraz do wystąpienia usługi ACR. Zastąp element `<acrLoginServer>` nazwą serwera logowania wystąpienia usługi ACR. W tym przykładzie jest tworzone repozytorium **hello-world** zawierające obraz `hello-world:v1`.
 
-```Docker
+```
 docker push <acrLoginServer>/hello-world:v1
 ```
 
 Po wypchnięciu obrazu do rejestru kontenerów usuń obraz `hello-world:v1` ze środowiska lokalnego platformy Docker. (Zwróć uwagę, że to polecenie [docker rmi][docker-rmi] nie powoduje usunięcia obrazu z repozytorium **hello-world** w rejestrze kontenerów platformy Azure).
 
-```Docker
+```
 docker rmi <acrLoginServer>/hello-world:v1
 ```
 
