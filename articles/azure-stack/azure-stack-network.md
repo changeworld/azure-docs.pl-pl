@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: 56884f2299df35c1565804a92fc404b6ed9e2f9a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 97fcfa20e474edb8108474ef02c6542688d627ff
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185013"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243491"
 ---
 # <a name="network-connectivity"></a>Połączenie sieciowe
 Ten artykuł zawiera informacje infrastruktury sieci usługi Azure Stack, aby ułatwić podjęcie decyzji o sposobie najlepiej Zintegruj usługę Azure Stack z istniejącym środowiskiem sieci. 
@@ -67,9 +67,6 @@ Ta prefiksie/24 (254 hostów adresy IP) sieci jest prywatna w regionie usługi A
 
 ### <a name="azure-stack-infrastructure-network"></a>Sieci infrastruktury w usłudze Azure Stack
 To/24 sieć jest przeznaczona do obsługi wewnętrznych składników usługi Azure Stack, tak aby komunikować się i wymieniać dane między sobą. Ta podsieć wymaga rutowalne adresy IP, ale pozostaje kluczem prywatnym do rozwiązania przy użyciu list kontroli dostępu (ACL). Nie powinien być kierowany poza przełączników obramowanie, z wyjątkiem niewielki zakres równoważne rozmiar/27 sieci wykorzystywane przez niektóre z tych usług, gdy potrzebują dostępu do zasobów zewnętrznych i/lub Internetu. 
-
-### <a name="public-infrastructure-network"></a>Sieć publicznych infrastruktury
-To/27 sieci jest niewielki zakres z podsieci infrastruktury Azure Stack wspomniano wcześniej, nie wymaga publiczne adresy IP, ale konieczny jest dostęp do Internetu za pośrednictwem translatora adresów Sieciowych lub przezroczystym serwerem Proxy. Ta sieć zostanie przydzielony do systemu konsoli odzyskiwania awaryjnego (ERCS), ERCS maszyna wirtualna wymaga dostępu do Internetu, podczas rejestracji na platformie Azure i infrastruktury kopii zapasowych. Maszyna wirtualna ERCS powinny obsługiwać routing do sieci zarządzania na potrzeby rozwiązywania problemów.
 
 ### <a name="public-vip-network"></a>Sieci publicznych adresów VIP
 Sieci publicznych adresów VIP jest przypisany do kontrolera sieci w usłudze Azure Stack. Nie jest sieć logiczną na przełączniku. SLB korzysta z puli adresów i przypisuje/32 sieci dla obciążenia dzierżaw. W tabeli routingu przełącznika tych 32 adresów IP są anonsowane jako trasę w protokole dostępne za pośrednictwem protokołu BGP. Ta sieć zawiera adresy IP dostępne zewnętrznego lub publicznej. Infrastruktury Azure Stack rezerwuje pierwszych 31 adresów z tej sieci publicznych adresów VIP, podczas gdy reszta jest używany przez dzierżawione maszyny wirtualne. Rozmiar sieci w tej podsieci może wynosić od co najmniej /26 (64 hostów), maksymalnie /22 (1022 hostów), zaleca się planowanie prefiksie/24 sieci.

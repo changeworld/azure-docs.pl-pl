@@ -17,24 +17,24 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de9db7abe17fc41907582ec32d3e916d0536e543
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c92472d276b3f03e5a3855587de4ca8a045bfec2
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175107"
+ms.locfileid: "56234429"
 ---
 # <a name="id-tokens"></a>Tokeny identyfikatorów
 
-`id_tokens` są wysyłane do aplikacji klienckiej jako część [OpenID Connect](v1-protocols-openid-connect-code.md) przepływu. Mogą być wysyłane wzdłuż krawędzi lub zamiast token dostępu i są używane przez klienta do uwierzytelnienia użytkownika. 
+`id_tokens` są wysyłane do aplikacji klienckiej jako część [OpenID Connect](v1-protocols-openid-connect-code.md) przepływu. Mogą być wysyłane wzdłuż krawędzi lub zamiast token dostępu i są używane przez klienta do uwierzytelnienia użytkownika.
 
 ## <a name="using-the-idtoken"></a>Za pomocą id_token
 
-Tokeny identyfikator powinien być używany do weryfikacji, czy jest użytkownik, który podaje się i Uzyskaj przydatne informacje dodatkowe o nich — nie należy jej używać do autoryzacji zamiast [token dostępu](access-tokens.md). Oświadczenia, które zapewnia może służyć do środowiska użytkownika w aplikacji, obsługi kluczy bazy danych i zapewniania dostępu do aplikacji klienckiej. 
+Tokeny identyfikator powinien być używany do weryfikacji, czy jest użytkownik, który podaje się i Uzyskaj przydatne informacje dodatkowe o nich — nie należy jej używać do autoryzacji zamiast [token dostępu](access-tokens.md). Oświadczenia, które zapewnia może służyć do środowiska użytkownika w aplikacji, obsługi kluczy bazy danych i zapewniania dostępu do aplikacji klienckiej.
 
 ## <a name="claims-in-an-idtoken"></a>Oświadczenia w id_token
 
-`id_tokens` dla programu Microsoft identity są [tokenów Jwt](https://tools.ietf.org/html/rfc7519), co oznacza składają się z części nagłówka, ładunek i podpis. Aby zweryfikować autentyczności token, a ładunek zawiera informacje o użytkowniku żądany przez klienta, można użyć nagłówka i ładunku. Jeśli nie zaznaczono inaczej wszystkie oświadczenia wymienione w tym miejscu są wyświetlane w tokenów w wersji 1.0 i 2.0.
+`id_tokens` dla programu Microsoft identity są [tokenów Jwt](https://tools.ietf.org/html/rfc7519), co oznacza składają się z części nagłówka, ładunek i podpis. Nagłówek i podpis służy do zweryfikowania autentyczności token, a ładunek zawiera informacje o użytkowniku żądany przez klienta. Jeśli nie zaznaczono inaczej wszystkie oświadczenia wymienione w tym miejscu są wyświetlane w tokenów w wersji 1.0 i 2.0.
 
 ### <a name="v10"></a>Wersja 1.0
 

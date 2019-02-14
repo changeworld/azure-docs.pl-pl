@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: af5246c452478dddaaa33b9575fc5a065121a343
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 51bec37f6b052d51d6cc8f5a8667789bec9e6881
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001038"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235969"
 documentType: LandingData
 title: 'Azure SQL Database: Monitorowanie i dostrajanie'
 metadata:
@@ -12,6 +12,7 @@ metadata:
   title: Usługa Azure SQL Database — monitorowanie i dostrajanie
   meta.description: Learn how to monitor and tune your Azure SQL database.
   services: sql-database
+  ms.subservice: performance
   author: jovanpop-msft
   manager: craigg
   ms.service: sql-database

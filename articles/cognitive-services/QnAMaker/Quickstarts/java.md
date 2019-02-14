@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: db3723fe4a17559b6b2583cfe4d85f8d9824030c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0e91aefb800eba42b715cb70d42ce09ad134fabb
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866886"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243808"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>Jak używać usługi QnA Maker interfejsu API REST przy użyciu języka Java 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA
 - [Usuwanie bazy wiedzy.](#Delete)
 - [Uzyskiwanie bieżących kluczy punktu końcowego.](#GetKeys)
 - [Ponowne generowanie bieżących kluczy punktu końcowego.](#PutKeys)
-- [Uzyskiwanie bieżącego zestawu zmian słów.](#GetAlterations)
-- [Zastępowanie bieżącego zestawu zmian słów.](#PutAlterations)
+- [Uzyskaj bieżący zestaw zmian word bez uwzględniania wielkości liter.](#GetAlterations)
+- [Zastąp bieżący zestaw zmian word bez uwzględniania wielkości liter.](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

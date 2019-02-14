@@ -1,231 +1,201 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z tablica Dowiedz się,-Shibboleth | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Tablica Dowiedz się,-sieci Shibboleth.
+title: 'Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem Blackboard Learn — Shibboleth | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i rozwiązaniem Blackboard Learn — Shibboleth.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: e435cbb4-c0f0-400e-943c-5c923fa8ddf2
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/05/2017
+ms.topic: tutorial
+ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: c285bac1c975aa502705761a12972ddaa54f1484
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: 981ff2b51ea5244db657f81c7035788d5be23123
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157028"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100809"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>Samouczek: Integracja usługi Azure Active Directory z tablica Dowiedz się więcej — sieci Shibboleth
+# <a name="tutorial-azure-active-directory-integration-with-blackboard-learn---shibboleth"></a>Samouczek: Integracja usługi Azure Active Directory z rozwiązaniem Blackboard Learn — Shibboleth
 
-W tym samouczku dowiesz się, jak zintegrować tablica Dowiedz się więcej — sieci Shibboleth, za pomocą usługi Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować rozwiązanie Blackboard Learn — Shibboleth z usługą Azure Active Directory (Azure AD).
+Integracja rozwiązania Blackboard Learn — Shibboleth z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie tablica Dowiedz się więcej — sieci Shibboleth z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować za pomocą usługi Azure AD, kto ma dostęp do rozwiązania Blackboard Learn — Shibboleth.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do rozwiązania Blackboard Learn — Shibboleth (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do informacji tablica — sieci Shibboleth
-- Umożliwia użytkownikom automatyczne pobieranie zalogowane się tablica - Shibboleth (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD z tablica Dowiedz się więcej — sieci Shibboleth, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z rozwiązaniem Blackboard Learn — Shibboleth, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Dowiedz się tablica - logowania jednokrotnego sieci Shibboleth włączonych subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja rozwiązania Blackboard Learn — Shibboleth z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie więcej tablica - Shibboleth z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-blackboard-learn---shibboleth-from-the-gallery"></a>Dodawanie więcej tablica - Shibboleth z galerii
-Aby skonfigurować integrację tablica Dowiedz się,-Shibboleth w usłudze Azure AD, należy dodać tablica Dowiedz się więcej — sieci Shibboleth z galerii z listą zarządzanych aplikacji SaaS.
+* Rozwiązanie Blackboard Learn — Shibboleth obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-**Aby dodać informacje tablica - Shibboleth z galerii, wykonaj następujące czynności:**
+## <a name="adding-blackboard-learn---shibboleth-from-the-gallery"></a>Dodawanie rozwiązania Blackboard Learn — Shibboleth z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację rozwiązania Blackboard Learn — Shibboleth z usługą Azure AD, należy dodać rozwiązanie Blackboard Learn — Shibboleth z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać rozwiązanie Blackboard Learn — Shibboleth z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Aplikacje][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **tablica Dowiedz się,-Shibboleth**.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_search.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W panelu wyników wybierz **tablica Dowiedz się,-Shibboleth**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_addfromgallery.png)
+4. W polu wyszukiwania wpisz **Blackboard Learn — Shibboleth**, wybierz pozycję **Blackboard Learn — Shibboleth** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą Dowiedz się, tablica — sieci Shibboleth na podstawie użytkownika testu o nazwie "Britta Simon."
+    ![Pozycja Blackboard Learn — Shibboleth na liście wyników](common/search-new-app.png)
 
-Logowanie jednokrotne do pracy usługi Azure AD musi wiedzieć, jakie użytkownik odpowiednika w tablica Dowiedz się więcej — Shibboleth to dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w tablica Dowiedz się więcej — sieci Shibboleth musi można ustanowić.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Tablica Dowiedz się więcej — sieci Shibboleth, przypisywanie wartości **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w rozwiązaniu Blackboard Learn — Shibboleth, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem rozwiązania Blackboard Learn — Shibboleth.
 
-Do konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą tablica Dowiedz się więcej — sieci Shibboleth, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z rozwiązaniem Blackboard Learn — Shibboleth, należy utworzyć poniższe bloki konstrukcyjne:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie, tablica Dowiedz się,-użytkownika testowego sieci Shibboleth](#creating-a-blackboard-learn---shibboleth-test-user)**  — aby odpowiednikiem Britta Simon w tablica Dowiedz się więcej — sieci Shibboleth, połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w rozwiązaniu Blackboard Learn — Shibboleth](#configure-blackboard-learn---shibboleth-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego rozwiązania Blackboard Learn — Shibboleth](#create-blackboard-learn---shibboleth-test-user)** — aby mieć w rozwiązaniu Blackboard Learn — Shibboleth odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i skonfigurować logowanie jednokrotne w Twojej tablica Dowiedz się,-aplikacja sieci Shibboleth.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD w logowanie jednokrotne za pomocą tablica Dowiedz się więcej — sieci Shibboleth, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w rozwiązaniu Blackboard Learn — Shibboleth, wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **tablica Dowiedz się,-Shibboleth** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Blackboard Learn — Shibboleth** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **tablica Dowiedz się więcej — sieci Shibboleth, domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Informacje o domenie i adresach URL rozwiązania Blackboard Learn — Shibboleth na potrzeby logowania jednokrotnego](common/sp-identifier-reply.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/Login`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<yourblackoardlearnserver>.blackboardlearn.com/shibboleth-sp`
+    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<yourblackoardlearnserver>.blackboardlearn.com/shibboleth-sp`
 
-    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST`
- 
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami identyfikatora, adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [tablica Dowiedz się,-zespół obsługi klienta sieci Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx) do uzyskania tych wartości. 
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<yourblackoardlearnserver>.blackboardlearn.com/Shibboleth.sso/SAML2/POST`
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, skontaktuj się z [zespołem pomocy technicznej klienta rozwiązania Blackboard Learn — Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_certificate.png) 
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1. Kliknij przycisk **Save** (Zapisz).
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-shibboleth-tutorial/tutorial_general_400.png)
-    
-1. Na **tablica Dowiedz się więcej — konfiguracja sieci Shibboleth** , kliknij przycisk **skonfigurować tablica Dowiedz się więcej — sieci Shibboleth** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+6. W sekcji **Skonfiguruj rozwiązanie Blackboard Learn — Shibboleth** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_configure.png) 
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **tablica Dowiedz się więcej — sieci Shibboleth** stronie, musisz wysłać pobrany **XML metadanych** i **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL**  do [tablica Dowiedz się,-zespołem pomocy technicznej Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx).
+    a. Adres URL logowania
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    b. Identyfikator usługi Azure AD
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    d. Adres URL wylogowywania
+
+### <a name="configure-blackboard-learn---shibboleth-single-sign-on"></a>Konfigurowanie logowania jednokrotnego rozwiązania Blackboard Learn — Shibboleth
+
+Aby skonfigurować logowanie jednokrotne po stronie rozwiązania **Blackboard Learn — Shibboleth**, musisz wysłać pobrany **kod XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej rozwiązania Blackboard Learn — Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-shibboleth-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-shibboleth-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-shibboleth-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/blackboard-learn-shibboleth-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-blackboard-learn---shibboleth-test-user"></a>Tworzenie, tablica Dowiedz się więcej — sieci Shibboleth użytkownika testowego
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w tablica Dowiedz się więcej — sieci Shibboleth. Praca z Twojej [tablica Dowiedz się,-zespołem pomocy technicznej sieci Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx) Aby dodać użytkowników w tablica Dowiedz się więcej — platforma sieci Shibboleth.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do rozwiązania Blackboard Learn — Shibboleth.
 
-W tej sekcji możesz włączyć Britta Simon do użycia platformy Azure logowania jednokrotnego przez udzielenie dostępu się tablica — sieci Shibboleth.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Blackboard Learn — Shibboleth**.
 
-![Przypisz użytkownika][200] 
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-**Aby przypisać Britta Simon się tablica — sieci Shibboleth, wykonaj następujące czynności:**
+2. Na liście aplikacji wybierz pozycję **Blackboard Learn — Shibboleth**.
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+    ![Link do rozwiązania Blackboard Learn — Shibboleth na liście aplikacji](common/all-applications.png)
 
-    ![Przypisz użytkownika][201] 
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-1. Na liście aplikacji wybierz **tablica Dowiedz się,-Shibboleth**.
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/blackboard-learn-shibboleth-tutorial/tutorial_blackboardlearn-shibboleth_app.png) 
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-    ![Przypisz użytkownika][202] 
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Przypisz użytkownika][203]
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+### <a name="create-blackboard-learn---shibboleth-test-user"></a>Tworzenie użytkownika testowego rozwiązania Blackboard Learn — Shibboleth
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+W tej sekcji utworzysz użytkownika Britta Simon w rozwiązaniu Blackboard Learn — Shibboleth. Współpracując z  [zespołem pomocy technicznej rozwiązania Blackboard Learn — Shibboleth](https://www.blackboard.com/forms/contact-us_form.aspx), dodaj użytkowników w rozwiązaniu Blackboard Learn — Shibboleth. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu tablica Dowiedz się więcej — Kafelek sieci Shibboleth, w panelu dostępu, możesz powinien pobrać automatycznie zalogowanych do Twojej tablica Dowiedz się,-aplikacja sieci Shibboleth.
+Po kliknięciu kafelka Blackboard Learn — Shibboleth w panelu dostępu powinno nastąpić automatyczne zalogowanie do rozwiązania Blackboard Learn — Shibboleth, dla którego skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_01.png
-[2]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_02.png
-[3]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_03.png
-[4]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_04.png
-
-[100]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_100.png
-
-[200]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_200.png
-[201]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_201.png
-[202]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_202.png
-[203]: ./media/blackboard-learn-shibboleth-tutorial/tutorial_general_203.png
-
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

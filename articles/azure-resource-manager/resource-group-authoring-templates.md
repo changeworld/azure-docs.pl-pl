@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: cdc48cf278fdd68bacf74c2d6d762c8d731949e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 509c9cbe3a4c2f930c9fdfda186d78118dbe4b80
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111575"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237852"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Omówienie struktury i składni szablonów usługi Azure Resource Manager
 
@@ -46,7 +46,7 @@ W swojej najprostszej strukturze szablon zawiera następujące elementy:
 | parameters |Nie |Wartości, które znajdują się po wykonaniu wdrożenia do dostosowywania wdrażania zasobów. |
 | Zmienne |Nie |Wartości, które są używane jako fragmenty JSON w szablonie, aby uprościć wyrażeń języka szablonu. |
 | functions |Nie |Funkcje zdefiniowane przez użytkownika, które są dostępne w ramach szablonu. |
-| zasoby |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów. |
+| zasoby |Yes |Typy zasobów, które są wdrożone lub zaktualizowane w grupie zasobów lub subskrypcji. |
 | wyjścia |Nie |Wartości, które są zwracane po wdrożeniu. |
 
 Każdy element ma właściwości, które można ustawić. Poniższy przykład przedstawia pełną składnię dla szablonu:

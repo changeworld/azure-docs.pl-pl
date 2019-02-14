@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: 8a5832433d1d8c81c22c828ec4659c10951f680a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103636"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234071"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Punkty końcowe usługi sieci wirtualnej za pomocą usługi Azure Service Bus
 
@@ -29,7 +29,7 @@ Wynik jest prywatne i izolowany relacji między obciążeniami usług związanyc
 >[!WARNING]
 > Implementowanie integracji sieci wirtualnych może uniemożliwić innym usługom platformy Azure interakcję z usługą Service Bus.
 >
-> Zaufany Microsoft usługi nie są obsługiwane, gdy sieci wirtualne są wdrażane i zostanie udostępniona wkrótce.
+> Zaufane usługi nie są obsługiwane, gdy sieci wirtualne są implementowane firmy Microsoft.
 >
 > Typowe scenariusze platformy Azure, która nie działa z sieciami wirtualnymi (należy pamiętać, że lista jest **nie** wyczerpująca) —
 > - Azure Monitor

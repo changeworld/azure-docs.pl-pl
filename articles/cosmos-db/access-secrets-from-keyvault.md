@@ -1,20 +1,20 @@
 ---
 title: Przechowywanie i dostęp do kluczy usługi Azure Cosmos DB za pomocą usługi Key Vault
 description: Użyj usługi Azure Key Vault do przechowywania i dostępu do usługi Azure Cosmos DB parametry połączenia, kluczy i punktów końcowych.
-author: rafats
+author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: rafats
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 770e1e543a16bb54acc216aa550c44be26ab7a1a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 36b0a2f18cf2917251a87405456980811af1bc3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858455"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242196"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Zabezpieczanie kluczy Azure Cosmos przy użyciu usługi Azure Key Vault 
 

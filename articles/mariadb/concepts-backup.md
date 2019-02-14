@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c9a9b6f0127bba4efda6e691a2b7126935d81c0d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d6141c3184c8915c36f22d010db39aef2460dd1c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817703"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233544"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Kopia zapasowa i przywracanie w usłudze Azure Database dla serwera MariaDB
 
@@ -52,7 +52,7 @@ Dostępne są dwa rodzaje przywracania:
 Szacowany czas odzyskiwania zależy od kilku czynników, w tym rozmiary baz danych, rozmiaru dziennika transakcji, przepustowości sieci i łączna liczba baz danych odzyskiwania w tym samym regionie, w tym samym czasie. Czas odzyskiwania jest zazwyczaj mniej niż 12 godzin.
 
 > [!IMPORTANT]
-> Usunięto serwerów **nie** można przywrócić. Jeśli usuniesz serwera, wszystkie bazy danych, które należą do serwera również zostaną usunięte i nie można odzyskać. Aby chronić zasoby serwera, po wdrożeniu, z przypadkowego usunięcia lub nieoczekiwanych zmian, Administratorzy mogą korzystać [zarządcze](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources).
+> Usunięto serwerów **nie** można przywrócić. Jeśli usuniesz serwera, wszystkie bazy danych, które należą do serwera również zostaną usunięte i nie można odzyskać. Aby chronić zasoby serwera, po wdrożeniu, z przypadkowego usunięcia lub nieoczekiwanych zmian, Administratorzy mogą korzystać [zarządcze](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
 ### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 

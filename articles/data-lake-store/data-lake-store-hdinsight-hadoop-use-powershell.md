@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 3de675adf7364e8281a03a46c5eeeaa1b74249b5
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 4187557ef9a38f55465547f83d7bc4c3bcad9ba7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969288"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236940"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>Tworzenie klastra usługi HDInsight przy użyciu usługi Azure Data Lake Storage Gen1 (jako magazyn dodatkowy) za pomocą programu Azure PowerShell
 
@@ -50,12 +50,15 @@ Konfigurowanie HDInsight do pracy z Data Lake Storage Gen1 przy użyciu programu
 * Uruchom zadanie testowe w klastrze
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dysponować następującymi elementami:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 * **Program Azure PowerShell 1.0 lub nowszy**. Zobacz artykuł [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
 * **Windows SDK**. Możesz je zainstalować, klikając [tutaj](https://dev.windows.com/en-us/downloads). Możesz użyć tego można utworzyć certyfikatu zabezpieczeń.
-* **Jednostki usługi katalogu w usłudze Azure Active**. Kroki opisane w tym samouczku zawierają instrukcje dotyczące sposobu tworzenia jednostki usługi w usłudze Azure AD. Jednakże musi być administratorem usługi Azure AD, aby można było utworzyć nazwę główną usługi. Jeśli jesteś administratorem usługi Azure AD, można pominąć to wymaganie wstępne, a następnie przejść do samouczka.
+* **Azure Active Directory Service Principal**. Kroki opisane w tym samouczku zawierają instrukcje dotyczące sposobu tworzenia jednostki usługi w usłudze Azure AD. Jednakże musi być administratorem usługi Azure AD, aby można było utworzyć nazwę główną usługi. Jeśli jesteś administratorem usługi Azure AD, można pominąć to wymaganie wstępne, a następnie przejść do samouczka.
 
     **Jeśli nie jesteś administratorem usługi Azure AD**, nie będziesz w stanie wykonać kroki wymagane do utworzenia jednostki usługi. W takim przypadku administrator usługi Azure AD należy najpierw utworzyć nazwę główną usługi można było utworzyć klaster usługi HDInsight za pomocą programu Data Lake Storage Gen1. Także nazwy głównej usługi muszą zostać utworzone za pomocą certyfikatu, zgodnie z opisem w [utworzyć nazwę główną usługi za pomocą certyfikatu](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority).
 
@@ -65,25 +68,25 @@ Wykonaj następujące kroki, aby utworzyć konto Data Lake Storage Gen1.
 1. Na pulpicie otwórz nowe okno programu Azure PowerShell, a następnie wprowadź poniższy fragment kodu. Po wyświetleniu monitu, aby zalogować się, upewnij się, że logujesz się jako jeden z administratora/właściciela subskrypcji:
 
         # Log in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
    > [!NOTE]
-   > Jeśli otrzymasz komunikat o błędzie podobny do `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` podczas rejestrowania dostawcy zasobów Data Lake Storage Gen1, jest możliwe, że Twoja subskrypcja nie jest na liście dozwolonych elementów dla programu Data Lake Storage Gen1. Upewnij się, Włącz Twojej subskrypcji platformy Azure Data Lake Storage Gen1 wykonując te [instrukcje](data-lake-store-get-started-portal.md).
+   > Jeśli otrzymasz komunikat o błędzie podobny do `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` podczas rejestrowania dostawcy zasobów Data Lake Storage Gen1, jest możliwe, że Twoja subskrypcja nie jest na liście dozwolonych elementów dla programu Data Lake Storage Gen1. Upewnij się, Włącz Twojej subskrypcji platformy Azure Data Lake Storage Gen1 wykonując te [instrukcje](data-lake-store-get-started-portal.md).
    >
    >
 2. Konta Data Lake Storage Gen1 jest skojarzona z grupą zasobów platformy Azure. Rozpocznij od utworzenia grupy zasobów platformy Azure.
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     Powinny pojawić się dane wyjściowe podobne do tego:
 
@@ -96,7 +99,7 @@ Wykonaj następujące kroki, aby utworzyć konto Data Lake Storage Gen1.
 3. Tworzenie konta Data Lake Storage Gen1. Nazwa konta, które określisz musi zawierać tylko małe litery i cyfry.
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     Powinny pojawić się dane wyjściowe podobne do następujących:
 
@@ -118,7 +121,7 @@ Wykonaj następujące kroki, aby utworzyć konto Data Lake Storage Gen1.
 5. Przekaż przykładowe dane do programu Data Lake Storage Gen1. Użyjemy w dalszej części tego artykułu, aby sprawdzić, czy dane są dostępne z klastra usługi HDInsight. Jeśli szukasz przykładowych danych do przekazania, możesz pobrać folder **Ambulance Data** z [repozytorium Git usługi Azure Data Lake](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData).
 
         $myrootdir = "/"
-        Import-AzureRmDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
+        Import-AzDataLakeStoreItem -AccountName $dataLakeStorageGen1Name -Path "C:\<path to data>\vehicle1_09142014.csv" -Destination $myrootdir\vehicle1_09142014.csv
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Konfigurowanie uwierzytelniania opartego na rolach dostęp do programu Data Lake Storage Gen1
@@ -164,7 +167,7 @@ W tej sekcji należy wykonać kroki, aby utworzyć jednostkę usługi Azure Acti
 
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzureRmADApplication `
+        $application = New-AzADApplication `
             -DisplayName "HDIADL" `
             -HomePage "https://contoso.com" `
             -IdentifierUris "https://mycontoso.com" `
@@ -175,13 +178,13 @@ W tej sekcji należy wykonać kroki, aby utworzyć jednostkę usługi Azure Acti
         $applicationId = $application.ApplicationId
 2. Tworzenie jednostki usługi przy użyciu identyfikatora aplikacji.
 
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
 3. Udzielanie dostępu do jednostki usługi Data Lake Storage Gen1 folderu i pliku, który będzie miał dostęp z klastra HDInsight. Poniższy fragment kodu umożliwia dostęp do głównego konta Data Lake Storage Gen1 (której skopiowany przykładowy plik danych) i sam plik.
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /vehicle1_09142014.csv -AceType User -Id $objectId -Permissions All
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>Utwórz klaster usługi HDInsight w systemie Linux za pomocą programu Data Lake Storage Gen1 jako dodatkowego miejsca do magazynowania
 
@@ -189,20 +192,20 @@ W tej sekcji utworzymy klastra usługi HDInsight Hadoop Linux za pomocą program
 
 1. Zaczynać się podczas pobierania identyfikatora subskrypcji dzierżawcy. Który będzie potrzebny później.
 
-        $tenantID = (Get-AzureRmContext).Tenant.TenantId
+        $tenantID = (Get-AzContext).Tenant.TenantId
 2. W tej wersji w przypadku klastra Hadoop Data Lake Storage Gen1 należy używać tylko jako dodatkowy magazyn dla klastra. Domyślny magazyn będą nadal podlegać obiektów blob usługi Azure storage (WASB). Dlatego najpierw utworzymy konto magazynu i kontenery magazynu wymaganych dla klastra.
 
         # Create an Azure storage account
         $location = "East US 2"
         $storageAccountName = "<StorageAccountName>"   # Provide a Storage account name
 
-        New-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
+        New-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName -Location $location -Type Standard_GRS
 
         # Create an Azure Blob Storage container
         $containerName = "<ContainerName>"              # Provide a container name
-        $storageAccountKey = (Get-AzureRmStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
-        $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
-        New-AzureStorageContainer -Name $containerName -Context $destContext
+        $storageAccountKey = (Get-AzStorageAccountKey -Name $storageAccountName -ResourceGroupName $resourceGroupName)[0].Value
+        $destContext = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
+        New-AzStorageContainer -Name $containerName -Context $destContext
 3. Tworzenie klastra HDInsight. Użyj następujących poleceń cmdlet.
 
         # Set these variables
@@ -211,7 +214,7 @@ W tej sekcji utworzymy klastra usługi HDInsight Hadoop Linux za pomocą program
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
+        New-AzHDInsightCluster -ClusterName $clusterName -ResourceGroupName $resourceGroupName -HttpCredential $httpCredentials -Location $location -DefaultStorageAccountName "$storageAccountName.blob.core.windows.net" -DefaultStorageAccountKey $storageAccountKey -DefaultStorageContainer $containerName  -ClusterSizeInNodes $clusterNodes -ClusterType Hadoop -Version "3.4" -OSType Linux -SshCredential $sshCredentials -ObjectID $objectId -AadTenantId $tenantID -CertificateFilePath $certificateFilePath -CertificatePassword $password
 
     Po pomyślnym ukończeniu polecenia cmdlet powinny pojawić się dane wyjściowe, wyświetlanie szczegółów klastra.
 

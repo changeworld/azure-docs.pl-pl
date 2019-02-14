@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6d47f22b4c7b29457de18593e38548aa818205a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205634"
+ms.locfileid: "56237879"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Problem podczas dodawania aplikacji galerii usługi Azure AD
 
@@ -28,13 +28,13 @@ Ten artykuł zawiera omówienie typowych twarzy osób problemów podczas dodawan
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Po kliknięciu przycisku "Dodaj" i zajęło dużo czasu na pojawiają się w mojej aplikacji
 
-W pewnych okolicznościach może potrwać 1 – 2 minutach (i czasami dłużej) do pojawiają się po dodaniu go do katalogu aplikacji. Chociaż nie jest to normalne oczekiwanej wydajności widać, dodanie aplikacji jest w toku, klikając **powiadomienia** ikonę (dzwonek) w prawym górnym rogu [witryny Azure portal](https://portal.azure.com/) i wyszukiwanie dla **w toku** lub **Ukończono** powiadomień etykietą **tworzenia aplikacji.**
+W pewnych okolicznościach może potrwać 1 – 2 minutach (i czasami dłużej) do pojawiają się po dodaniu go do katalogu aplikacji. Chociaż nie jest to normalne oczekiwanej wydajności widać, dodanie aplikacji jest w toku, klikając **powiadomienia** ikonę (dzwonek) w prawym górnym rogu [witryny Azure portal](https://portal.azure.com/) i wyszukiwanie dla **w toku** lub **Ukończono** powiadomień etykietą **dodawania aplikacji.**
 
 Aplikacja nigdy nie zostanie dodany, czy w przypadku wystąpienia błędu podczas klikania **Dodaj** przycisk, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz więcej szczegółów o błędzie, aby dowiedzieć się więcej na temat lub udostępnienia innym specjalistą pomocy technicznej, widać więcej informacji na temat błędu, wykonując kroki opisane w [sposobu wyświetlania szczegółów powiadomienia portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Po kliknięciu przycisku "Dodaj" i pojawił się w mojej aplikacji
 
-Czasami ze względu na problemy przejściowe problemy z siecią lub usterkę, dodawanie awarii aplikacji. Można stwierdzić, dzieje się po kliknięciu **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal i wyświetlana jest ikona red (!) obok swojej **tworzenie aplikacji** powiadomień. Oznacza to, że wystąpił błąd podczas tworzenia aplikacji.
+Czasami ze względu na problemy przejściowe problemy z siecią lub usterkę, dodawania aplikacji nie powiedzie się. Można stwierdzić, dzieje się po kliknięciu **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure portal i wyświetlana jest ikona red (!) obok swojej **Dodawanie aplikacji** powiadomień. Oznacza to, że wystąpił błąd podczas tworzenia aplikacji.
 
 Jeśli wystąpi błąd, podczas klikania **Dodaj** przycisk, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz więcej szczegółów o błędzie, aby dowiedzieć się więcej na temat lub udostępnienia innym specjalistą pomocy technicznej, widać więcej informacji na temat błędu, wykonując kroki opisane w [sposobu wyświetlania szczegółów powiadomienia portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
 
@@ -42,13 +42,13 @@ Jeśli wystąpi błąd, podczas klikania **Dodaj** przycisk, zobaczysz **powiado
 
 Jeśli potrzebujesz pomocy, informacje o aplikacji, [listę samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) artykuł jest dobrym miejscem do rozpoczęcia.
 
-Oprócz tego [biblioteki dokumentów aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) pomoc, aby dowiedzieć się więcej na temat logowania jednokrotnego z usługą Azure AD i jak to działa.
+Oprócz tego [biblioteki dokumentów aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-apps-index) pomoże Ci dowiedzieć się więcej o logowanie jednokrotne z usługą Azure AD i jak działa.
 
 ## <a name="how-to-see-the-details-of-a-portal-notification"></a>Jak wyświetlić szczegóły powiadomieniu portalu
 
 Możesz zobaczyć szczegółowe informacje o wszystkich powiadomień portalu, wykonując poniższe kroki:
 
-1.  Kliknij przycisk **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure Portal
+1.  Wybierz **powiadomienia** ikonę (dzwonek) w prawym górnym rogu witryny Azure Portal
 
 2.  Wybierz powiadomienia w **błąd** stanu (te z czerwonym (!) obok nich).
 
@@ -61,7 +61,7 @@ Możesz zobaczyć szczegółowe informacje o wszystkich powiadomień portalu, wy
 
 5.  Jeśli nadal potrzebujesz pomocy, możesz również udostępniać tych informacji, inżynier pomocy technicznej lub grupę produktu, aby uzyskać pomoc dotyczącą danego problemu.
 
-6.  Kliknij przycisk **kopiowania** **ikonę** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie pomocy technicznej lub produktu inżynier grupy w polu tekstowym
+6.  Kliknij przycisk **kopiowania** **ikonę** po prawej stronie **błąd kopiowania** skopiuj wszystkie szczegóły powiadomienia na udostępnianie pomocy technicznej lub produktu inżynier grupy w polu tekstowym.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Jak uzyskać pomoc, wysyłając powiadomienia, szczegółowe informacje ze specjalistą pomocy technicznej
 

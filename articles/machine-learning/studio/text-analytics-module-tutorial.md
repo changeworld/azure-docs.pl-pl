@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 431aa2d379639b8daea2519ed643c9949102e117
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 79882fc895262f0fb607ec048e7912ae5f2efdd7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511364"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242672"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Tworzenie modelu analizy tonacji w usłudze Azure Machine Learning Studio
 
@@ -33,9 +33,9 @@ W tym samouczku dowiesz się, te kroki jako części omówimy model analiza tona
 
 Można znaleźć eksperymenty omówione w tym samouczku w galerii sztucznej Inteligencji platformy Azure:
 
-[Przewidywanie przeglądy książki](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
+[Przewidywanie przeglądy książki](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 
-[Przewidywanie przeglądy książki — eksperyment predykcyjny](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[Przewidywanie przeglądy książki — eksperyment predykcyjny](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## <a name="step-1-clean-and-preprocess-text-dataset"></a>Krok 1: Czyszczenie i wstępne przetwarzanie tekstu zestawu danych
 Zaczniemy eksperymentu, dzieląc wyniki przeglądu na kategorii niski i wysoki zasobników, aby sformułować problem dwuklasowych klasyfikacji. Używamy [edytować metadane](https://msdn.microsoft.com/library/azure/dn905986.aspx) i [wartości podzielonych na kategorie grupy](https://msdn.microsoft.com/library/azure/dn906014.aspx) modułów.

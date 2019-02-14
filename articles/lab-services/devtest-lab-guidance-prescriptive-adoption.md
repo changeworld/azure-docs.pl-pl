@@ -3,8 +3,7 @@ title: Wdrażanie usługi Azure DevTest Labs w firmie.
 description: Ten artykuł zawiera wskazówki dotyczące wdrażania usługi Azure DevTest Labs w przedsiębiorstwie.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: christianreddington
-editor: spelluru
+author: spelluru
 manager: femila
 ms.service: lab-services
 ms.workload: na
@@ -12,14 +11,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/11/2019
-ms.author: chredd
-ms.reviewer: anthdela,juselph
-ms.openlocfilehash: b237162e2371888ed38ffbf5bd8b9e987cf60ed5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.author: spelluru
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: f16bdb8b89c2ce72c2a31a320d2dedbc4df09c81
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993320"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242791"
 ---
 # <a name="set-up-azure-devtest-labs-infrastructure-in-your-enterprise"></a>Konfigurowanie infrastruktury usługi Azure DevTest Labs w przedsiębiorstwie
 Przedsiębiorstwom adaptują chmurę szybko z powodu jego korzyści z elastyczności, elastyczności i oszczędnościami, jakie daje perspektywy. Zwykle pierwszym krokiem do chmury to migrację obciążeń tworzenia i testowania. Brak wspólnego zestawu problemy podczas migracji tych obciążeń, takich jak poniższych: 

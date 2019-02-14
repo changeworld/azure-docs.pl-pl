@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 69dd9374f32dbea7ab6f11beec0204ac26e299bc
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 92e5fb782eed3344a55178d6ba74dfd6d7b8cafd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104452"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235918"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure
 
@@ -31,7 +31,9 @@ Korzystając z połączonymi szablonami, można utworzyć głównego szablonu, k
 
 Aby zapoznać się z samouczkiem, zobacz [samouczek: Tworzenie szablonów usługi połączonej usługi Azure Resource Manager](./resource-manager-tutorial-create-linked-templates.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!NOTE]
+> Dla połączonych lub zagnieżdżonych szablonów, można użyć tylko [przyrostowe](deployment-modes.md) tryb wdrożenia.
+>
 
 ## <a name="link-or-nest-a-template"></a>Połącz lub zagnieżdżanie szablonu
 
@@ -52,8 +54,6 @@ Aby utworzyć link do innego szablonu, należy dodać **wdrożeń** zasobów do 
 ```
 
 Właściwości, które zapewniają zasobu wdrożenia różnią się zależnie od one łączenie z szablonem zewnętrznych czy zagnieżdżania szablonem wbudowanego w głównym szablonu.
-
-Dla obu połączone i zagnieżdżone szablony, można użyć tylko [przyrostowe](deployment-modes.md) tryb wdrożenia.
 
 ### <a name="nested-template"></a>Zagnieżdżony szablon
 

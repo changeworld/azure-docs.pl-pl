@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 12/24/2018
+ms.date: 02/11/2019
 ms.author: juliako
-ms.openlocfilehash: c5332cd2613bc64e3dda143381f37d27b54aa922
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f9748d61b1aa336c5300dd414d53388f48a41368
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789233"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243989"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Usługa Azure schematów usługi Event Grid na potrzeby zdarzeń usługi Media Services
 
@@ -24,15 +24,13 @@ Ten artykuł zawiera schematy i właściwości dla zdarzeń usługi Media Servic
 
 Aby uzyskać listę przykładowych skryptów i samouczków, zobacz [źródła zdarzeń usługi Media Services](../../event-grid/event-sources.md#azure-subscriptions).
 
-## <a name="available-event-types"></a>Zdarzenie dostępne typy
-
-### <a name="job-related-event-types"></a>Zadania pokrewne typy zdarzeń
+## <a name="job-related-event-types"></a>Zadania pokrewne typy zdarzeń
 
 Media Services emitowały **zadania** powiązane typy zdarzeń, które opisano poniżej. Istnieją dwie kategorie dla **zadania** zdarzenia dotyczące: "Zmienia się stan zadania monitorowania" i "Monitorowania stan dane wyjściowe zadania zmieni się". 
 
 Jeśli zasubskrybujesz zdarzenia JobStateChange można zarejestrować dla wszystkich zdarzeń. Lub może być subskrybowana tylko pod kątem określonych zdarzeń (na przykład końcowego stany JobErrored, JobFinished i JobCanceled). 
 
-#### <a name="monitoring-job-state-changes"></a>Zmienia się stan zadania monitorowania
+### <a name="monitoring-job-state-changes"></a>Monitorowanie zmian stanu zadania
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
@@ -44,7 +42,9 @@ Jeśli zasubskrybujesz zdarzenia JobStateChange można zarejestrować dla wszyst
 | Microsoft.Media.JobCanceled| Pobierz zdarzenie, gdy zadanie przechodzi do stanu Anulowano. Jest to stan końcowy, który zawiera dane wyjściowe zadania.|
 | Microsoft.Media.JobErrored| Pobierz zdarzenie, gdy zadanie przechodzi do stanu błędu. Jest to stan końcowy, który zawiera dane wyjściowe zadania.|
 
-#### <a name="monitoring-job-output-state-changes"></a>Zmienia monitorowania stan dane wyjściowe zadania
+[Przykłady schematu](#event-schema-examples) należy wykonać.
+
+### <a name="monitoring-job-output-state-changes"></a>Zmiany stanu generowania danych wyjściowych zadania monitorowania
 
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
@@ -56,11 +56,13 @@ Jeśli zasubskrybujesz zdarzenia JobStateChange można zarejestrować dla wszyst
 | Microsoft.Media.JobOutputCanceled| Pobierz zdarzenie, kiedy przejść dane wyjściowe zadania zostało anulowane stanu.|
 | Microsoft.Media.JobOutputErrored| Pobierz zdarzenie, kiedy przechodzi do stanu błędu generowania danych wyjściowych zadania.|
 
-### <a name="live-event-types"></a>Typy zdarzeń na żywo
+[Przykłady schematu](#event-schema-examples) należy wykonać.
+
+## <a name="live-event-types"></a>Typy zdarzeń na żywo
 
 Usługa Media Services również emituje **Live** typy zdarzeń, które opisano poniżej. Istnieją dwie kategorie dla **Live** zdarzeń: zdarzenia na poziomie usługi stream i poziom śledzenia zdarzeń. 
 
-#### <a name="stream-level-events"></a>Zdarzenia na poziomie Stream
+### <a name="stream-level-events"></a>Zdarzenia na poziomie Stream
 
 Stream poziom zdarzenia są wywoływane na połączenia lub strumienia. Każde zdarzenie ma `StreamId` parametr, który identyfikuje połączenia lub strumienia. Każdego strumienia lub połączenie ma jednej lub więcej ścieżek o różnych typach. Na przykład jedno połączenie z kodera może mieć cztery ścieżki wideo i jedną ścieżkę audio. Dostępne są następujące typy zdarzeń strumienia:
 
@@ -70,7 +72,9 @@ Stream poziom zdarzenia są wywoływane na połączenia lub strumienia. Każde z
 | Microsoft.Media.LiveEventEncoderConnected | Koder ustanawia połączenie z wydarzenia na żywo. |
 | Microsoft.Media.LiveEventEncoderDisconnected | Odłącza kodera. |
 
-#### <a name="track-level-events"></a>Poziom śledzenia zdarzeń
+[Przykłady schematu](#event-schema-examples) należy wykonać.
+
+### <a name="track-level-events"></a>Poziom śledzenia zdarzeń
 
 Poziom śledzenia zdarzenia są wywoływane na ścieżkę. Dostępne są następujące typy zdarzeń śledzenia:
 
@@ -83,7 +87,9 @@ Poziom śledzenia zdarzenia są wywoływane na ścieżkę. Dostępne są następ
 | Microsoft.Media.LiveEventIngestHeartbeat | Publikowany co 20 sekund dla każdej ścieżki, w przypadku zdarzenia na żywo jest uruchomiona. Zapewnia obsługę podsumowanie kondycji. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Serwer multimediów wykrywa przerwa w ścieżce przychodzącej. |
 
-## <a name="event-schemas-and-properties"></a>Schematy zdarzeń i właściwości
+[Przykłady schematu](#event-schema-examples) należy wykonać.
+
+## <a name="event-schema-examples"></a>Przykłady schematu zdarzeń
 
 ### <a name="jobstatechange"></a>JobStateChange
 
@@ -274,10 +280,10 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| StreamId | ciąg | Identyfikator strumienia lub połączenia. Koder klienta odpowiada lub można dodać tego Identyfikatora w adresie URL pozyskiwania. |  
-| IngestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |  
-| EncoderIp | ciąg | Adres IP kodera. |
-| EncoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
+| streamId | ciąg | Identyfikator strumienia lub połączenia. Koder klienta odpowiada lub można dodać tego Identyfikatora w adresie URL pozyskiwania. |  
+| ingestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |  
+| encoderIp | ciąg | Adres IP kodera. |
+| encoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
 | resultCode | ciąg | Przyczyna połączenie zostało odrzucone. Kody wyników są wymienione w poniższej tabeli. |
 
 Kody wyników są:
@@ -321,10 +327,10 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| StreamId | ciąg | Identyfikator strumienia lub połączenia. Koder lub klienta jest udostępnienie tego Identyfikatora w adresie URL pozyskiwania. |
-| IngestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |
-| EncoderIp | ciąg | Adres IP kodera. |
-| EncoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
+| streamId | ciąg | Identyfikator strumienia lub połączenia. Koder lub klienta jest udostępnienie tego Identyfikatora w adresie URL pozyskiwania. |
+| ingestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |
+| encoderIp | ciąg | Adres IP kodera. |
+| encoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
 
 ### <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 
@@ -355,10 +361,10 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| StreamId | ciąg | Identyfikator strumienia lub połączenia. Koder klienta odpowiada lub można dodać tego Identyfikatora w adresie URL pozyskiwania. |  
-| IngestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |  
-| EncoderIp | ciąg | Adres IP kodera. |
-| EncoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
+| streamId | ciąg | Identyfikator strumienia lub połączenia. Koder klienta odpowiada lub można dodać tego Identyfikatora w adresie URL pozyskiwania. |  
+| ingestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |  
+| encoderIp | ciąg | Adres IP kodera. |
+| encoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
 | resultCode | ciąg | Przyczyna kodera odłączanie. Może to być łagodne rozłączenia lub z błędem. Kody wyników są wymienione w poniższej tabeli. |
 
 Kody wyników błąd to:
@@ -412,8 +418,8 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| TrackType | ciąg | Typ ścieżki (Audio / wideo). |
-| TrackName | ciąg | Nazwa ścieżki. |
+| trackType | ciąg | Typ ścieżki (Audio / wideo). |
+| trackName | ciąg | Nazwa ścieżki. |
 | Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
 | sygnatura czasowa | ciąg | Sygnatura czasowa fragmentu danych porzucony. |
 | Skala czasu | ciąg | Skala czasu znacznika czasu. |
@@ -452,12 +458,12 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| TrackType | ciąg | Typ ścieżki (Audio / wideo). |
-| TrackName | ciąg | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
+| trackType | ciąg | Typ ścieżki (Audio / wideo). |
+| trackName | ciąg | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
 | Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
-| IngestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |
-| EncoderIp | ciąg  | Adres IP kodera. |
-| EncoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
+| ingestUrl | ciąg | Pozyskanie adresu URL podanego przez zdarzenie na żywo. |
+| encoderIp | ciąg  | Adres IP kodera. |
+| encoderPort | ciąg | Port kodera, z której pochodzi ten strumień. |
 | sygnatura czasowa | ciąg | Pierwszy znacznik czasu fragmentu danych odebranych. |
 | Skala czasu | ciąg | Skala czasu, w którym jest reprezentowana sygnatury czasowej. |
 
@@ -491,12 +497,12 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| MinLastTimestamp | ciąg | Co najmniej ostatniego sygnatury czasowe między wszystkie ścieżki (audio lub wideo). |
-| TypeOfTrackWithMinLastTimestamp | ciąg | Typ ścieżki (audio lub wideo) przy użyciu minimalnej sygnatury czasowej ostatniego. |
-| MaxLastTimestamp | ciąg | Maksymalna liczba wszystkie sygnatury czasowe między wszystkie ścieżki (audio lub wideo). |
-| TypeOfTrackWithMaxLastTimestamp | ciąg | Typ ścieżki (audio lub wideo) z maksymalną sygnatury czasowej ostatniego. |
-| TimescaleOfMinLastTimestamp| ciąg | Pobiera skali czasu, w którym jest reprezentowana "MinLastTimestamp".|
-| TimescaleOfMaxLastTimestamp| ciąg | Pobiera skali czasu, w którym jest reprezentowana "MaxLastTimestamp".|
+| minLastTimestamp | ciąg | Co najmniej ostatniego sygnatury czasowe między wszystkie ścieżki (audio lub wideo). |
+| typeOfTrackWithMinLastTimestamp | ciąg | Typ ścieżki (audio lub wideo) przy użyciu minimalnej sygnatury czasowej ostatniego. |
+| maxLastTimestamp | ciąg | Maksymalna liczba wszystkie sygnatury czasowe między wszystkie ścieżki (audio lub wideo). |
+| typeOfTrackWithMaxLastTimestamp | ciąg | Typ ścieżki (audio lub wideo) z maksymalną sygnatury czasowej ostatniego. |
+| timescaleOfMinLastTimestamp| ciąg | Pobiera skali czasu, w którym jest reprezentowana "MinLastTimestamp".|
+| timescaleOfMaxLastTimestamp| ciąg | Pobiera skali czasu, w którym jest reprezentowana "MaxLastTimestamp".|
 
 ### <a name="liveeventincomingvideostreamsoutofsync"></a>LiveEventIncomingVideoStreamsOutOfSync
 
@@ -527,9 +533,9 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| FirstTimestamp | ciąg | Odebrano jeden z poziomów śledzi/jakości wideo typu sygnatura czasowa. |
+| firstTimestamp | ciąg | Odebrano jeden z poziomów śledzi/jakości wideo typu sygnatura czasowa. |
 | FirstDuration | ciąg | Czas trwania fragmentu danych za pomocą pierwszy znacznik czasu. |
-| SecondTimestamp | ciąg  | Odebrano dla pewnego poziomu śledzenia/jakości wideo typu sygnatura czasowa. |
+| secondTimestamp | ciąg  | Odebrano dla pewnego poziomu śledzenia/jakości wideo typu sygnatura czasowa. |
 | SecondDuration | ciąg | Czas trwania fragmentu danych z sygnaturą czasową drugie. |
 | Skala czasu | ciąg | Skala czasu sygnatury czasowe i czas trwania.|
 
@@ -569,16 +575,16 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| TrackType | ciąg | Typ ścieżki (Audio / wideo). |
-| TrackName | ciąg | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
+| trackType | ciąg | Typ ścieżki (Audio / wideo). |
+| trackName | ciąg | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
 | Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
 | IncomingBitrate | liczba całkowita | Obliczony transmisji bitów, oparte na fragmenty danych pochodzących z kodera. |
-| LastTimestamp | ciąg | Sygnatura czasowa najnowsze odebrane dla ścieżki w ciągu ostatnich 20 sekund. |
+| lastTimestamp | ciąg | Sygnatura czasowa najnowsze odebrane dla ścieżki w ciągu ostatnich 20 sekund. |
 | Skala czasu | ciąg | Skala czasu, w którym są wyrażane sygnatur czasowych. |
-| OverlapCount | liczba całkowita | Liczba fragmentów danych miały nakładających się sygnatur czasowych w ciągu ostatnich 20 sekund. |
-| DiscontinuityCount | liczba całkowita | Liczba przerw zaobserwowane w ciągu ostatnich 20 sekund. |
-| NonIncreasingCount | liczba całkowita | Liczba fragmentów danych z sygnaturami czasowymi w przeszłości zostały odebrane w ciągu ostatnich 20 sekund. |
-| UnexpectedBitrate | wartość logiczna | Jeśli szybkości transmisji z oczekiwanymi i rzeczywistymi różnią się przez więcej niż dozwolony limit w ciągu ostatnich 20 sekund. To wartość true, wtedy i tylko wtedy, gdy, incomingBitrate > = 2 * szybkości transmisji bitów lub incomingBitrate < = szybkości transmisji bitów/2 lub IncomingBitrate = 0. |
+| overlapCount | liczba całkowita | Liczba fragmentów danych miały nakładających się sygnatur czasowych w ciągu ostatnich 20 sekund. |
+| discontinuityCount | liczba całkowita | Liczba przerw zaobserwowane w ciągu ostatnich 20 sekund. |
+| nonIncreasingCount | liczba całkowita | Liczba fragmentów danych z sygnaturami czasowymi w przeszłości zostały odebrane w ciągu ostatnich 20 sekund. |
+| unexpectedBitrate | wartość logiczna | Jeśli szybkości transmisji z oczekiwanymi i rzeczywistymi różnią się przez więcej niż dozwolony limit w ciągu ostatnich 20 sekund. To wartość true, wtedy i tylko wtedy, gdy, incomingBitrate > = 2 * szybkości transmisji bitów lub incomingBitrate < = szybkości transmisji bitów/2 lub IncomingBitrate = 0. |
 | state | ciąg | Stan zdarzenia na żywo. |
 | w dobrej kondycji | wartość logiczna | Wskazuje, czy pozyskiwania jest w dobrej kondycji na podstawie liczby i flagi. Dobra kondycja ma wartość true Jeśli overlapCount = 0 & & discontinuityCount = 0 & & nonIncreasingCount = 0 & & unexpectedBitrate = false. |
 
@@ -613,12 +619,12 @@ Obiekt danych ma następujące właściwości:
 
 | Właściwość | Typ | Opis |
 | -------- | ---- | ----------- |
-| TrackType | ciąg | Typ ścieżki (Audio / wideo). |
-| TrackName | ciąg | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
+| trackType | ciąg | Typ ścieżki (Audio / wideo). |
+| trackName | ciąg | Nazwy ścieżki (albo, dostarczone przez koder lub, w przypadku protokołu RTMP, serwer generuje w *TrackType_Bitrate* formatu). |
 | Szybkość transmisji bitów | liczba całkowita | Szybkość transmisji bitów toru. |
 | PreviousTimestamp | ciąg | Sygnatura czasowa poprzedniego fragmentu. |
-| NewTimestamp | ciąg | Sygnatura czasowa bieżącego fragmentu. |
-| DiscontinuityGap | ciąg | Przerwa między powyżej dwóch sygnatur czasowych. |
+| newTimestamp | ciąg | Sygnatura czasowa bieżącego fragmentu. |
+| discontinuityGap | ciąg | Przerwa między powyżej dwóch sygnatur czasowych. |
 | Skala czasu | ciąg | Są reprezentowane w skali czasu, w której sygnatura czasowa i ciągłości przerwy. |
 
 ### <a name="common-event-properties"></a>Wspólne właściwości zdarzenia
@@ -629,7 +635,7 @@ Zdarzenie zawiera następujące dane najwyższego poziomu:
 | -------- | ---- | ----------- |
 | temat | ciąg | Temat EventGrid. Ta właściwość ma identyfikator zasobu dla konta usługi Media Services. |
 | temat | ciąg | Ścieżka zasobu dla kanału usługi Media Services w ramach konta usługi Media Services. Łączenie zapewniają tematu oraz temat, możesz zasobu, identyfikator zadania. |
-| Typ zdarzenia | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. Na przykład "Microsoft.Media.JobStateChange". |
+| eventType | ciąg | Jeden z typów zdarzeń zarejestrowane dla tego źródła zdarzeń. Na przykład "Microsoft.Media.JobStateChange". |
 | eventTime | ciąg | Czas, którego zdarzenie jest generowane na podstawie czasu UTC dostawcy. |
 | id | ciąg | Unikatowy identyfikator zdarzenia. |
 | dane | obiekt | Dane zdarzenia usługi Media Services. |

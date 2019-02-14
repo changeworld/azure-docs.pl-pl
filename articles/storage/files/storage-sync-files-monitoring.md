@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a14b0f2b01a0566a47cbcb02ee4315adcba9a90f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5a0d02768b0fbd23e33d13c5e5c3fe84a41cdc52
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200806"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243658"
 ---
 # <a name="monitor-azure-file-sync"></a>Monitorowanie usługi Azure File Sync
 
@@ -48,7 +48,7 @@ Metryki
   | Wycofanie obsługi warstw w chmurze | Rozmiar danych przypomnieć | Zarejestrowane serwery |
   | Pliki nie są synchronizowane | Liczba plików, które kończą się niepowodzeniem do synchronizacji | Punkt końcowy serwera |
   | Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania) | Grupy synchronizacji, punkt końcowy serwera |
-  | Puls serwera | Liczba pulsów otrzymany z serwera | Zarejestrowane serwery |
+  | Stan online Server | Liczba pulsów otrzymany z serwera | Zarejestrowane serwery |
 
 - Aby dowiedzieć się więcej, zobacz [usługi Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor) sekcji. 
 
@@ -70,7 +70,7 @@ Następujące metryki dla usługi Azure File Sync są dostępne w usłudze Azure
 | Wycofanie obsługi warstw w chmurze | Rozmiar danych odwołać.<br><br>Jednostka: Bajty<br>Typ agregacji: Suma<br>Wymiar dotyczy: Nazwa serwera |
 | Pliki nie są synchronizowane | Liczba plików, które kończą się niepowodzeniem do synchronizacji.<br><br>Jednostka: Licznik<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 | Pliki synchronizowane | Liczba plików przesłanych (przekazywania i pobierania).<br><br>Jednostka: Licznik<br>Typ agregacji: Suma<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
-| Puls serwera | Liczba pulsów otrzymany z serwera.<br><br>Jednostka: Licznik<br>Typ agregacji: Maksimum<br>Wymiar dotyczy: Nazwa serwera |
+| Stan online Server | Liczba pulsów otrzymany z serwera.<br><br>Jednostka: Licznik<br>Typ agregacji: Maksimum<br>Wymiar dotyczy: Nazwa serwera |
 | Wynik sesji synchronizacji | Synchronizuj wynik sesji (1 = pomyślna synchronizacja sesji; 0 = sesję synchronizacji nie powiodło się)<br><br>Jednostka: Licznik<br>Typy agregacji: Maksimum<br>Wymiary stosowane: Serwer punktu końcowego nazwy, synchronizacja kierunku, nazwa grupy synchronizacji |
 
 ## <a name="windows-server"></a>Windows Server

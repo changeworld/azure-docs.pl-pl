@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: ed6c21762fed331e2f11378ec9b6d91cba9bec11
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: 781a897c99a28fbd1b695876f477b140521068e3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251084"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244883"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Skalowanie infrastruktury usługi Azure DevTest Labs
 Przed ich wprowadzeniem DevTest Labs na skalę przedsiębiorstwa, istnieje kilka punktów kluczowe decyzje. Zrozumienie tych decyzje na wysokim poziomie pomaga organizacji decyzji projektowych w przyszłości. Jednak te punkty powinna nie pozostałe organizacji uruchamianie weryfikacji koncepcji. Dostępne są następujące obszary trzy pierwsze, planowanie początkowej skalowanie w górę:
@@ -66,4 +67,4 @@ DevTest Labs weryfikacji koncepcji ma trzech głównych ról z określonymi obow
 - **Użytkownik usługi DevTest Labs** — użytkownik usługi DevTest Labs mogą tworzyć i wykorzystywać maszyn wirtualnych w środowisku laboratoryjnym. Osoby te mają niektóre minimalne możliwości administracyjnych na maszynach wirtualnych, które tworzą (start/stop/delete/Konfigurowanie maszyn wirtualnych). Użytkownicy nie mogą zarządzać maszynami wirtualnymi w innych użytkowników.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Następny artykuł w tej serii: [organizować wdrożenia usługi Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)
+Zobacz następny artykuł w tej serii: [Organizowanie wdrażania usługi Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)

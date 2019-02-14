@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 01/31/2019
-ms.openlocfilehash: adc303e9b375aaa6f37e9e79ea5434675c75523d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824139"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237488"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Podstawowe różnice między usługami Machine Learning w usłudze Azure SQL Database i programu SQL Server
 
@@ -25,7 +25,7 @@ Funkcje usług Machine Learning Services (z językiem R) w usłudze Azure SQL Da
 
 ## <a name="language-support"></a>Obsługa języków
 
-Program SQL Server zapewnia obsługę języków R i Python przy użyciu [strukturę rozszerzalności](https://docs.microsoft.com/en-us/sql/advanced-analytics/concepts/extensibility-framework). SQL Database nie obsługuje obu językach. Podstawowe różnice są następujące:
+Program SQL Server zapewnia obsługę języków R i Python przy użyciu [strukturę rozszerzalności](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework). SQL Database nie obsługuje obu językach. Podstawowe różnice są następujące:
 
 - R jest jedynym obsługiwanym językiem w bazie danych SQL. W tej chwili język Python nie jest obsługiwany.
 - Wersja języka R jest 3.4.4.

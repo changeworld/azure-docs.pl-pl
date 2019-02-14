@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 69d3e02ca8d3f020a50b81785c58a3f5a42ce4b0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 194f92b84b17fc2f2c9bc8f3aca6f6ad05f65d30
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493001"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56241448"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopiowanie pracy innych osób w celu przeprowadzenia analizy danych
 ## <a name="video-5-data-science-for-beginners-series"></a>Wideo 5: Analiza danych dla początkujących serii
@@ -52,7 +52,7 @@ Jedną z tajemnice handlowe do nauki o danych otrzymuje inni użytkownicy będą
 
 Firma Microsoft zapewnia oparte na chmurze usługi o nazwie [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/) już Zapraszamy do bezpłatnego wypróbowania. Zapewnia ona obszar roboczy w przypadku, gdy możesz eksperymentować z algorytmów uczenia maszynowego różnych oraz, jeśli masz określone rozwiązania, możesz uruchomić go jako usługę sieci web.
 
-Ta usługa jest to coś o nazwie  **[galerii Azure AI](https://gallery.cortanaintelligence.com/)**. Zawiera zasoby, w tym zestaw eksperymentów w usłudze Azure Machine Learning i modeli, które osoby mają wbudowane i przyczyniały się innym użytkownikom. Te doświadczenia to doskonały sposób myślenia i trudną pracę innych osób, aby rozpocząć pracę na własnych rozwiązań. Wszyscy jest Zapraszamy do przeglądania przez nią.
+Ta usługa jest to coś o nazwie  **[galerii Azure AI](https://gallery.azure.ai/)**. Zawiera zasoby, w tym zestaw eksperymentów w usłudze Azure Machine Learning i modeli, które osoby mają wbudowane i przyczyniały się innym użytkownikom. Te doświadczenia to doskonały sposób myślenia i trudną pracę innych osób, aby rozpocząć pracę na własnych rozwiązań. Wszyscy jest Zapraszamy do przeglądania przez nią.
 
 ![Galeria sztucznej inteligencji platformy Azure](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -82,11 +82,11 @@ Mogę kliknąć, i potrzebny mnie za prawo do usunięcia **Azure Machine Learnin
 I już punkt początkowy. Mogę wymienić ich własne dane i czy moje własne Dostosowywanie modelu. Dzięki temu mnie rozpoczęcia pracy i pozwala tworzyć na pracy osób, które rzeczywiście wiesz, co robią.
 
 ## <a name="find-experiments-that-demonstrate-machine-learning-techniques"></a>Znaleźć eksperymenty, które pokazują techniki uczenia maszyny
-Istnieją inne eksperymenty w [galerii Azure AI](https://gallery.cortanaintelligence.com) , zostały zamieszczone specjalnie w celu zapewnienia przykłady porad dla osób, które są nowe, zaawansowane dane naukowe. Na przykład istnieje eksperymentu w galerii, który demonstruje sposób obsługi brakujące wartości ([metody obsługi brakujące wartości](https://gallery.cortanaintelligence.com/Experiment/Methods-for-handling-missing-values-1)). Prowadzi użytkownika przez 15 różne sposoby podstawiając wartości puste i zawiera informacje o korzyści każda metoda i kiedy go używać.
+Istnieją inne eksperymenty w [galerii Azure AI](https://gallery.azure.ai) , zostały zamieszczone specjalnie w celu zapewnienia przykłady porad dla osób, które są nowe, zaawansowane dane naukowe. Na przykład istnieje eksperymentu w galerii, który demonstruje sposób obsługi brakujące wartości ([metody obsługi brakujące wartości](https://gallery.azure.ai/Experiment/Methods-for-handling-missing-values-1)). Prowadzi użytkownika przez 15 różne sposoby podstawiając wartości puste i zawiera informacje o korzyści każda metoda i kiedy go używać.
 
 ![Eksperymenty w galerii, Otwórz w usłudze Machine Learning Studio — metody dla brakujących wartości](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/experiment-methods-for-handling-missing-values.png)
 
-[Galeria sztucznej Inteligencji platformy Azure](https://gallery.cortanaintelligence.com) jest miejscem, aby znaleźć eksperymenty pracy, w których można użyć jako punktu wyjścia dla własnych rozwiązań.
+[Galeria sztucznej Inteligencji platformy Azure](https://gallery.azure.ai) jest miejscem, aby znaleźć eksperymenty pracy, w których można użyć jako punktu wyjścia dla własnych rozwiązań.
 
 Pamiętaj sprawdzić inne filmy wideo "Data Science dla początkujących" z usługi Microsoft Azure Machine Learning.
 

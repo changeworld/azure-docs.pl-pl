@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 88618e5b9de9cb8ac46b9b167e6fa6dbccd73687
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732315"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234752"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Stosowanie poprawek systemu operacyjnego Windows w klastrze usługi Service Fabric
 
@@ -133,7 +133,7 @@ Aby włączyć usługę Menedżer naprawy:
 
 3. Zaktualizuj manifeście klastra przy użyciu tych zmian w manifeście klastra zaktualizowane [Utwórz nowy klaster](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) lub [Uaktualnij konfigurację klastra](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). Gdy klaster działa z manifestem zaktualizowane klastra, możesz teraz wyświetlić usługę systemu Menedżera naprawy działającym w klastrze, które jest wywoływane `fabric:/System/RepairManagerService`w obszarze sekcji narzędzia Service Fabric explorer usług systemowych.
 
-### <a name="disable-automatic-windows-update-on-all-nodes"></a>Wyłącz automatyczną aktualizację Windows na wszystkich węzłach
+### <a name="configure-windows-updates-for-all-nodes"></a>Konfigurowanie aktualizacji Windows dla wszystkich węzłów
 
 Aktualizacje automatyczne Windows może prowadzić do utraty dostępności, ponieważ wiele węzłów klastra można uruchomić ponownie w tym samym czasie. Poprawka aplikacji aranżacji, domyślnie podejmie próbę wyłączenia automatycznej aktualizacji Windows w każdym węźle klastra. Jednakże jeśli ustawienia są zarządzane przez administratora lub zasad grupy, zalecamy ustawienie zasady Windows Update "Powiadom przed Download" jawnie.
 

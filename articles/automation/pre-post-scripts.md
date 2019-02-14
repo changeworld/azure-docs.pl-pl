@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428243"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236009"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Zarządzanie skryptami przed i po (wersja zapoznawcza)
 
@@ -26,7 +26,7 @@ Element runbook ma być używany jako skrypt przed lub po elementu runbook musi 
 
 ## <a name="using-a-prepost-script"></a>Za pomocą skryptu pre lub używanego po nim
 
-Aby użyć skryptu przed i/lub wpis we wdrożeniu aktualizacji, po prostu Rozpocznij od utworzenia wdrożenia aktualizacji. Wybierz **skryptu poprzedzającego + skrypty Post (wersja zapoznawcza)**. Spowoduje to otwarcie **wybierz skryptu poprzedzającego i skryptu używanego po utworzeniu** strony.  
+Aby użyć pre i lub post skryptu we wdrożeniu aktualizacji, Rozpocznij od utworzenia wdrożenia aktualizacji. Wybierz **skryptu poprzedzającego + skrypty Post (wersja zapoznawcza)**. Ta akcja powoduje otwarcie **wybierz skryptu poprzedzającego i skryptu używanego po utworzeniu** strony.  
 
 ![Wybierz skryptów](./media/pre-post-scripts/select-scripts.png)
 
@@ -42,17 +42,19 @@ Powtórz ten proces dla **UpdateManagement TurnOffVms** skryptu. Jednak przy wyb
 
 Zakończ konfigurowanie wdrożenia aktualizacji.
 
-Po zakończeniu wdrożenia aktualizacji, możesz przejść do **wdrożenia aktualizacji** , aby wyświetlić wyniki. Jak widać stanu wstępnego skryptów są podane.
+Po zakończeniu wdrożenia aktualizacji, możesz przejść do **wdrożenia aktualizacji** , aby wyświetlić wyniki. Jak widać, znajdują się stan skryptu poprzedzającego i skryptu używanego po utworzeniu.
 
 ![Aktualizowanie wyników](./media/pre-post-scripts/update-results.png)
 
-Klikając do wdrożenia aktualizacji, możesz uruchomić znajdują się dodatkowe szczegóły, aby skrypty przed i po. Znajduje się link do źródła skryptu w czasie uruchomienia.
+Klikając do wdrożenia aktualizacji, uruchom teraz podać dodatkowe szczegóły, aby skrypty przed i po. Znajduje się link do źródła skryptu w czasie uruchomienia.
 
 ![Wyniki przebiegu wdrożenia](./media/pre-post-scripts/deployment-run.png)
 
 ## <a name="passing-parameters"></a>Przekazywanie parametrów
 
-Po skonfigurowaniu takich jak skrypty przed i po, które można przekazać parametry tylko Planowanie elementu runbook. Parametry są definiowane w czasie tworzenia wdrożenia aktualizacji. Oprócz parametry elementu runbook standardowa dodatkowy parametr jest dostępna. Ten parametr jest **SoftwareUpdateConfigurationRunContext**. Ten parametr jest ciąg JSON, a Jeśli zdefiniujesz parametru w skrypcie pre lub wpis, automatycznie jest przekazywana w przez wdrożenie aktualizacji. Parametr zawiera informacje dotyczące wdrażania aktualizacji, która jest podzbiorem informacje zwrócone przez [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) poniższej tabeli przedstawiono właściwości, które znajdują się w zmiennej:
+Po skonfigurowaniu pre i post skryptów, możesz przekazać parametry, podobnie jak planowanie elementu runbook. Parametry są definiowane w czasie tworzenia wdrożenia aktualizacji. Skrypty przed i po wymagają parametry będą typu `String`. Jeśli potrzebujesz innego typu obiektu, można rzutować go do innego typu przy użyciu `[System.Convert]` lub go obsłużyć za pomocą własnej logiki.
+
+Oprócz parametry elementu runbook standardowe dodatkowy parametr jest dostępna. Ten parametr jest **SoftwareUpdateConfigurationRunContext**. Ten parametr jest ciąg JSON, a Jeśli zdefiniujesz parametru w skrypcie pre lub wpis, automatycznie jest przekazywana w przez wdrożenie aktualizacji. Parametr zawiera informacje dotyczące wdrażania aktualizacji, która jest podzbiorem informacje zwrócone przez [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) poniższej tabeli przedstawiono właściwości, które znajdują się w zmiennej:
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>Właściwości SoftwareUpdateConfigurationRunContext
 
@@ -70,7 +72,7 @@ Po skonfigurowaniu takich jak skrypty przed i po, które można przekazać param
 |azureVirtualMachines     | Lista identyfikatory zasobów dla maszyn wirtualnych platformy Azure objętych wdrażaniem aktualizacji        |
 |nonAzureComputerNames|Lista komputerów spoza platformy Azure nazw FQDN objętych wdrażaniem aktualizacji|
 
-Oto przykład przekazany do ciągu JSON **SoftwareUpdateConfigurationRunContext** parametru:
+Poniższy przykład jest przekazany do ciągu JSON **SoftwareUpdateConfigurationRunContext** parametru:
 
 ```json
 "SoftwareUpdateConfigurationRunContext":{
@@ -119,7 +121,7 @@ Lub możesz wyszukać je według nazwy skryptu jak pokazano na poniższej liści
 > [!IMPORTANT]
 > Po zaimportowaniu elementów runbook, należy najpierw **Publikuj** je, zanim będzie można ich użyć. Czy, znaleźć elementu runbook na Twoim koncie usługi Automation wybierz **Edytuj**i kliknij przycisk **Publikuj**.
 
-Przykłady są oparte na podstawowy szablon, który jest zdefiniowany w poniższym przykładzie. Ten szablon może służyć do tworzenia własnego elementu runbook za pomocą skryptów przed i po. Niezbędne logikę uwierzytelniania za pomocą platformy Azure, a także obsługę `SoftwareUpdateConfigurationRunContext` dołączono parametr.
+Przykłady są oparte na podstawowy szablon, który jest zdefiniowany w poniższym przykładzie. Ten szablon może służyć do tworzenia własnego elementu runbook za pomocą skryptów przed i po. Potrzebną logikę do uwierzytelniania za pomocą platformy Azure i obsługa `SoftwareUpdateConfigurationRunContext` dołączono parametr.
 
 ```powershell
 <# 
@@ -174,14 +176,14 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-non-azure-machines"></a>Interakcja z maszyn spoza platformy Azure
 
-Przed i po zadania są wykonywane w kontekście platformy Azure i nie mają dostępu do komputerów spoza platformy Azure. Aby można było korzystać z maszyn spoza platformy Azure musi mieć następujące czynności:
+Przed i po zadania są wykonywane w kontekście platformy Azure i nie mają dostępu do maszyny spoza platformy Azure. Do interakcji z maszyn spoza platformy Azure, należy dysponować następującymi elementami:
 
 * Konto Uruchom jako
 * Hybrydowego procesu roboczego Runbook zainstalowane na komputerze
 * Element runbook, który ma być uruchomiony lokalnie
 * Nadrzędny element runbook
 
-Do interakcji z maszyn spoza platformy Azure, który jest nadrzędny element runbook został uruchomiony w kontekście platformy Azure. Ten element runbook wywołuje podrzędnego elementu runbook za pomocą [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) polecenia cmdlet. Należy określić `-RunOn` parametru i podaj nazwę hybrydowego procesu roboczego Runbook skrypt do uruchomienia na.
+Do interakcji z maszyn spoza platformy Azure, nadrzędny element runbook jest uruchamiane w kontekście platformy Azure. Ten element runbook wywołuje podrzędnego elementu runbook za pomocą [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) polecenia cmdlet. Należy określić `-RunOn` parametru i podaj nazwę hybrydowego procesu roboczego Runbook skrypt do uruchomienia na.
 
 ```powershell
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'

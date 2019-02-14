@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 5eecd750642610737d346c5c270349e285106e95
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820440"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236978"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Rozwiązywanie problemów z awarii usługi Azure Backup Problemy związane z rozszerzenia lub agenta
 
@@ -253,3 +253,6 @@ Ręcznie wyczyścić przywracania wskazuje kolekcji, które nie są usuwane z po
 
 5. Kliknij przycisk **Usuń**, aby wyczyścić kolekcję punktów przywracania.
 6. Ponów operację tworzenia kopii zapasowej.
+
+> [!NOTE]
+ >Jeśli zasób (RP kolekcji) ma duże liczba punktów przywracania, usuwanie takie same w portalu może limitu czasu i zakończyć się niepowodzeniem. Jest to znany problem CRP, gdzie wszystkie punkty przywracania nie są usuwane w określonym czasie, i kończą się operacji; Jednak operacja usuwania powiedzie się zwykle 2 lub 3 ponowne próby.

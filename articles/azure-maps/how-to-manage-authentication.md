@@ -3,21 +3,21 @@ title: Zarządzaj uwierzytelnianiem w usługi Azure Maps | Dokumentacja firmy Mi
 description: Można użyć witryny Azure portal, aby zarządzać uwierzytelnianiem w usługi Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/09/2018
+ms.date: 02/14/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: db0450ab8b765ec158201c6db149a7de7d135b98
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 68c3c8ac39f5803e01ee1038ec85ddb96ac80b30
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56143847"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242689"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Zarządzaj uwierzytelnianiem w usługi Azure Maps
 
-Po utworzeniu konta usługi Azure Maps, trzy identyfikatory GUID są tworzone do obsługi usługi Azure Active Directory (Azure AD) lub uwierzytelniania klucza wspólnego.
+Po utworzeniu konta usługi Azure Maps, identyfikator klienta i klucze są tworzone do obsługi usługi Azure Active Directory (Azure AD) lub uwierzytelniania klucza wspólnego.
 
 Informacje dotyczące uwierzytelniania można znaleźć, przechodząc do **uwierzytelniania** strony w obszarze **ustawienia** w witrynie Azure portal. Przejdź do swojego konta. Następnie wybierz pozycję **uwierzytelniania** z menu.
 
@@ -35,7 +35,7 @@ Aby wyświetlić informacje dotyczące uwierzytelniania, przejdź do **uwierzyte
 
 Po utworzeniu konta usługi Azure Map połączenia między dzierżawą usługi Azure AD i zasobów platformy Azure mapy platformy Azure jest wymagana. 
 
-1. Przejdź do bloku usługi AAD i Utwórz rejestrację aplikacji z nazwą i znak w adresie URL jako strony głównej aplikacji internetowej / interfejsu API, takie jak "https://localhost/". Jeśli masz już zarejestrowana aplikacja, przejdź do kroku 2.
+1. Przejdź do bloku usługi Azure AD i Utwórz rejestrację aplikacji z nazwą i znak w adresie URL jako strony głównej aplikacji internetowej / interfejsu API, takie jak "https://localhost/". Jeśli masz już zarejestrowana aplikacja, przejdź do kroku 2.
 
     ![Rejestracja aplikacji](./media/how-to-manage-authentication/app-registration.png)
 
@@ -51,11 +51,11 @@ Po utworzeniu konta usługi Azure Map połączenia między dzierżawą usługi A
 
 4. Wykonaj krok lub b, w zależności od implementacji uwierzytelniania.
 
-    1. Jeśli aplikacja jest pomyślny przebieg operacji tokenu uwierzytelniania użytkowników za pomocą naszego zestawu SDK sieci Web mapy usługi Azure, musisz włączyć `oauthEnableImplicitFlow` ustawiając dla niej wartość true w sekcji manifestu strony szczegółów rejestracji aplikacji. 
+    1. Jeśli aplikacja jest pomyślny przebieg operacji tokenu uwierzytelniania użytkowników za pomocą naszego zestawu SDK sieci Web mapy platformy Azure, musisz włączyć `oauthEnableImplicitFlow` ustawiając dla niej wartość true w sekcji manifestu strony szczegółów rejestracji aplikacji.
     
        ![Manifest aplikacji](./media/how-to-manage-authentication/app-manifest.png)
 
-    2. Jeśli Twoja aplikacja korzysta z uwierzytelniania serwera i aplikacji, przejdź do **klucze** bloku w rejestracji aplikacji, a następnie utwórz hasło lub przekazywanie certyfikatu klucza publicznego do rejestracji aplikacji. Jeśli tworzysz hasła, po **Zapisz**, skopiuj hasło do późniejszego i zapisz go w bezpiecznym miejscu, zostanie ona użyta do uzyskania tokenów z usługi AAD. 
+    2. Jeśli Twoja aplikacja korzysta z uwierzytelniania serwera i aplikacji, przejdź do **klucze** bloku w obrębie rejestracji aplikacji, a następnie utwórz hasło lub przekazywanie certyfikatu klucza publicznego do rejestracji aplikacji. Jeśli tworzysz hasła, po **Zapisz**, skopiuj hasło do późniejszego i zapisz go w bezpiecznym miejscu, zostanie ona użyta do uzyskania tokenów z usługi Azure AD.
 
        ![Klucze aplikacji](./media/how-to-manage-authentication/app-keys.png)
 
@@ -94,8 +94,7 @@ Gdy Twoja aplikacja jest zarejestrowana i skojarzone z usługi Azure Maps, teraz
 
 * Jeśli aplikacja jest pomyślny przebieg operacji tokenu uwierzytelniania użytkowników za pomocą naszej usługi Azure Maps zestawu SDK sieci Web (Internet), należy skonfigurować stronę html z Identyfikatorem klienta mapy platformy Azure i identyfikatora usługi Azure AD aplikacji.
 
-
-* Dla aplikacji przy użyciu uwierzytelniania serwera i aplikacji, żądania tokenu z punktu końcowego logowania usługi Azure AD https://login.microsoftonline.com przy użyciu Identyfikatora klienta usługi Azure Maps, identyfikator aplikacji w usłudze Azure AD i aplikacji usługi Azure AD hasło rejestracji lub certyfikat.
+* Dla aplikacji przy użyciu uwierzytelniania serwera i aplikacji, żądania tokenu z punktu końcowego logowania usługi Azure AD `https://login.microsoftonline.com` o identyfikatorze zasobu usługi Azure AD `https://atlas.microsoft.com/`, identyfikator klienta usługi Azure Maps, identyfikator aplikacji w usłudze Azure AD i aplikacji usługi Azure AD hasło rejestracji lub certyfikat.
 
 Aby uzyskać więcej informacji na temat żądania tokenów dostępu z usługi Azure AD dla użytkowników i nazwy główne usług, zobacz [scenariusze uwierzytelniania dla usługi Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios).
 

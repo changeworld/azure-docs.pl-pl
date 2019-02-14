@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159659"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234004"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Zrozumienie wydajności klastra AKS przy użyciu usługi Azure Monitor dla kontenerów 
 Dzięki usłudze Azure Monitor dla kontenerów umożliwia wykresy wydajności oraz stan kondycji monitorowania obciążenia klastry usługi Azure Kubernetes Service (AKS) z dwóch perspektyw bezpośrednio z klastra usługi AKS lub we wszystkich klastrach usługi AKS w ramach subskrypcji platformy Azure Monitor. Wyświetlanie usługi Azure Container Instances (ACI) możliwe jest również w przypadku monitorowania określonych klastra AKS.
@@ -275,5 +275,5 @@ Często jest to przydatne do tworzenia zapytań, które zaczynać się przykład
 | **Wybierz opcję wyświetlania wykresu liniowego**:<br> Perf<br> &#124;Gdzie ObjectName == "K8SContainer" i CounterName == "cpuUsageNanoCores" &#124; Podsumuj AvgCPUUsageNanoCores avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Procesora CPU kontenera | 
 | **Wybierz opcję wyświetlania wykresu liniowego**:<br> Perf<br> &#124;Gdzie ObjectName == "K8SContainer" i CounterName == "memoryRssBytes" &#124; Podsumuj AvgUsedRssMemoryBytes avg(CounterValue) przez bin (TimeGenerated, 30 min), InstanceName = | Pamięci kontenera |
 
-## <a name="alerting"></a>Generowanie alertów
-Usługa Azure Monitor dla kontenerów nie ma wstępnie zdefiniowany zestaw alertów, które można skopiować i zmodyfikować zgodnie z usługi pomocnicze procesów i procedur. W międzyczasie, zapoznaj się z [Tworzenie alertów dziennika z usługą Azure Monitor](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json) i Dowiedz się, jak utworzyć własny zestaw alertów.  
+## <a name="next-steps"></a>Kolejne kroki
+Usługa Azure Monitor dla kontenerów nie ma wstępnie zdefiniowany zestaw alerty, aby skopiować i zmodyfikować zgodnie z usługi pomocnicze procesów i procedur. Przegląd [Tworzenie alertów wydajności dzięki usłudze Azure Monitor dla kontenerów](container-insights-alerts.md) dowiesz się, jak utworzyć zalecane alerty dla wysokie wykorzystanie procesora CPU i pamięci.  

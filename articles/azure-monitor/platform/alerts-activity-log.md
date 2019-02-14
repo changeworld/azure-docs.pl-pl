@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 17a7b0e0ee76490ef43fb869260dceef83cbd124
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: c88fe7051519440056fe85e7ff9172ae0239bd41
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984498"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234241"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -224,7 +224,7 @@ Aby utworzyć nową regułę alertu dziennika aktywności, należy użyć w nast
 
 Do pobrania jednego działania reguły alertu zasób dziennika, polecenia wiersza polecenia platformy Azure [Pokaż alertu dziennika aktywności monitora az](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-show
 ) mogą być używane. W przypadku wyświetlania wszystkich zasobów reguły alertu dziennika aktywności w grupie zasobów, użyj [Lista alertów dziennika aktywności az monitor](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-list).
-Zasoby reguły alertu dziennika aktywności można usunąć za pomocą polecenia interfejsu wiersza polecenia Azure [Usuwanie alertu dziennika aktywności az monitor](https://docs.microsoft.com/en-us/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
+Zasoby reguły alertu dziennika aktywności można usunąć za pomocą polecenia interfejsu wiersza polecenia Azure [Usuwanie alertu dziennika aktywności az monitor](https://docs.microsoft.com/cli/azure/monitor/activity-log/alert#az-monitor-activity-log-alert-delete).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

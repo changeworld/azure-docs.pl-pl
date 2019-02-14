@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 31220002f8529fd31407470e7650a4c97b62f2b4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ee4bd5d2acf1a029486f83ee721b9e1f72347958
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535278"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238151"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Pobieranie parametrów połączenia usługi Event Hubs
 
@@ -51,13 +51,16 @@ Można dodawać nowe zasady sygnatury dostępu Współdzielonego i pobieranie pa
 ![Usługa Event Hubs pobieranie parametrów połączenia](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Pobieranie parametrów połączenia z programem Azure PowerShell
-Get-AzureRmEventHubNamespaceKey umożliwia pobieranie parametrów połączenia dla nazwy zasady/reguły, jak pokazano poniżej:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Get-AzEventHubNamespaceKey umożliwia pobieranie parametrów połączenia dla nazwy zasady/reguły, jak pokazano poniżej:
 
 ```azurepowershell-interactive
-Get-AzureRmEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
+Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
 
-Zapoznaj się [modułu Azure PowerShell centra zdarzeń](https://docs.microsoft.com/powershell/module/azurerm.eventhub/get-azurermeventhubkey) Aby uzyskać więcej informacji.
+Zapoznaj się [modułu Azure PowerShell centra zdarzeń](https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey) Aby uzyskać więcej informacji.
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Pobieranie parametrów połączenia przy użyciu wiersza polecenia platformy Azure
 Pobieranie parametrów połączenia dla przestrzeni nazw umożliwia następujące czynności:

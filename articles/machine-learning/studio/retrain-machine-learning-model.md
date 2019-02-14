@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: e691913daabb832b2a3b51dac5d4a5b0e1f53871
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f7558876391d25d2f6f3dd1fede4cb0d13d72bf0
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165082"
+ms.locfileid: "56236264"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Ponowne szkolenie modelu usługi Azure Machine Learning Studio
 W ramach procesu operacjonalizacji modeli uczenia maszynowego w usłudze Azure Machine Learning model jest uczony i zapisany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne. 
@@ -53,8 +53,6 @@ Ponowne szkolenie usługi sieci Web:
 * Wdrażanie ponownego trenowania usługi sieci web
 * Ponowne szkolenie modelu przy użyciu kodu usługę wykonywania wsadowego
 
-Aby uzyskać wskazówki poprzednich kroków, zobacz [Retrain Machine Learning models programowo](retrain-models-programmatically.md).
-
 > [!NOTE] 
 > Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md). 
 
@@ -74,8 +72,6 @@ Jeśli wdrożono usługę sieci Web nowy:
 * Aktualizuj odwołanie do `ilearner` obiektów blob w formacie JSON
 * Importuj dane JSON w definicji usługi sieci Web
 * Aktualizacja usługi sieci Web za pomocą nowych definicji usługi sieci Web
-
-Aby uzyskać wskazówki poprzednich kroków, zobacz [Ponowne szkolenie przy użyciu poleceń cmdlet programu PowerShell usługi Machine Learning zarządzania usługi nowej sieci Web](retrain-new-web-service-using-powershell.md).
 
 Proces konfigurowania szkoleniem klasyczna usługa sieci Web obejmuje następujące czynności:
 

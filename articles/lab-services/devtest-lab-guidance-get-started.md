@@ -3,23 +3,22 @@ title: Rozpoczynanie pracy z usługą za pomocą usługi Azure DevTest Labs
 description: Ten artykuł zawiera podstawowe scnearios przy użyciu usługi Azure DevTest Labs i dwie ścieżki głównej, aby rozpocząć korzystanie z usługi w Twojej organizacji.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
-author: christianreddington
+author: spelluru
 manager: femila
-editor: spelluru
 ms.service: lab-services
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/11/2019
-ms.author: chredd
-ms.reviewer: anthdela,juselph
-ms.openlocfilehash: dfb73778a9d30ba50e69bff6414381235ad8b1d1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.author: spelluru
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: 21837265a963829539f12cf7911191a61be43fbc
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005237"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243058"
 ---
 # <a name="get-started-with-using-azure-devtest-labs"></a>Rozpoczynanie pracy z usługą za pomocą usługi Azure DevTest Labs
 Po podjęciu decyzji zapoznać się z usługi DevTest Labs, istnieją dwie ścieżki ogólnego do przodu — vs weryfikacji koncepcji wdrożenia skalowany. 

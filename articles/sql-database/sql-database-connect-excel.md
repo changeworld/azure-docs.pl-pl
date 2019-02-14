@@ -1,6 +1,6 @@
 ---
-title: Łączenie programu Excel z bazą danych SQL Database | Microsoft Docs
-description: Dowiedz się, jak połączyć program Microsoft Excel z bazą danych Azure SQL w chmurze. Importowanie danych do programu Excel, raportowanie i eksploracja danych.
+title: Łączenie programu Excel z pojedynczej bazy danych w usłudze Azure SQL Database | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak połączyć program Microsoft Excel z pojedynczej bazy danych w bazie danych Azure SQL. Importowanie danych do programu Excel, raportowanie i eksploracja danych.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,21 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 552293b402c697073587e887522d2daa3e33cdb6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/12/2019
+ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754586"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237025"
 ---
-# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Łączenie programu Excel z bazą danych Azure SQL database i utworzenie raportu
+# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Łączenie programu Excel z pojedynczej bazy danych w bazie danych Azure SQL i utworzenie raportu
 
-Łączenie programu Excel do usługi SQL database w chmurze i importowanie danych i tworzenie tabel i wykresów na podstawie wartości w bazie danych. W tym samouczku skonfigurujesz połączenie między programem Excel i tabelą bazy danych, zapiszesz plik przechowujący dane oraz informacje o połączeniu dla programu Excel, a następnie utworzysz wykres przestawny z wartościami bazy danych.
+Łączenie programu Excel z pojedynczej bazy danych w usłudze Azure SQL Database i importowanie danych i tworzenie tabel i wykresów na podstawie wartości w bazie danych. W tym samouczku skonfigurujesz połączenie między programem Excel i tabelą bazy danych, zapiszesz plik przechowujący dane oraz informacje o połączeniu dla programu Excel, a następnie utworzysz wykres przestawny z wartościami bazy danych.
 
-Przed rozpoczęciem pracy będziesz potrzebować bazy danych SQL na platformie Azure. Jeśli jej nie masz, zobacz artykuł [Create your first SQL database](sql-database-single-database-get-started.md) (Tworzenie pierwszej bazy danych SQL), aby w ciągu kilku minut uzyskać gotową do pracy bazę danych z przykładowymi danymi. W tym artykule szybko importować przykładowe dane do programu Excel z tego artykułu, ale można wykonać podobne kroki z użyciem własnych danych.
+Przed rozpoczęciem pracy należy pojedynczej bazy danych. Jeśli nie masz, zobacz [tworzenie pojedynczej bazy danych](sql-database-single-database-get-started.md) i [utworzyć zaporę na poziomie serwera IP](sql-database-server-level-firewall-rule.md) można pobrać pojedynczej bazy danych z przykładowymi danymi w ciągu kilku minut.
+
+W tym artykule szybko importować przykładowe dane do programu Excel z tego artykułu, ale można wykonać podobne kroki z użyciem własnych danych.
 
 Potrzebna będzie również kopia programu Excel. W tym artykule wykorzystano program [Microsoft Excel 2016](https://products.office.com/).
 

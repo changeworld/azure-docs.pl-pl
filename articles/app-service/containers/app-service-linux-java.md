@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: d6e8d943d14cfddc260ba502e724543c6dc9cf4f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0d24fbe075316e492b638a2877439af270250d70
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110340"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234635"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -28,12 +28,12 @@ Ten przewodnik zawiera podstawowe pojęcia i instrukcje dla deweloperów języka
 
 ## <a name="deploying-your-app"></a>Wdrażanie aplikacji
 
-Aby wdrożyć pliki JAR i WAR, można użyć wtyczki Maven. Zobacz [tej dokumentacji](https://docs.microsoft.com/en-us/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) więcej informacji na temat wtyczki Maven. 
+Aby wdrożyć pliki JAR i WAR, można użyć wtyczki Maven. Zobacz [tej dokumentacji](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable) więcej informacji na temat wtyczki Maven. 
 
 Jeśli nie używasz narzędzia Maven, metody wdrażania będzie zależeć od typu archiwum:
 
-- Aby wdrożyć pliki WAR Tomcat, użyj `/api/wardeploy/` punktu końcowego można OPUBLIKOWAĆ pliku archiwum. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tej dokumentacji](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip#deploy-war-file).
-- Aby wdrożyć pliki JAR w obrazach Java SE, użyj `/api/zipdeploy/` witryny Kudu punktu końcowego. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tej dokumentacji](https://docs.microsoft.com/en-us/azure/app-service/deploy-zip#rest).
+- Aby wdrożyć pliki WAR Tomcat, użyj `/api/wardeploy/` punktu końcowego można OPUBLIKOWAĆ pliku archiwum. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tej dokumentacji](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file).
+- Aby wdrożyć pliki JAR w obrazach Java SE, użyj `/api/zipdeploy/` witryny Kudu punktu końcowego. Aby uzyskać więcej informacji na temat tego interfejsu API, zobacz [tej dokumentacji](https://docs.microsoft.com/azure/app-service/deploy-zip#rest).
 
 Nie należy wdrażać swoje WAR lub JAR przy użyciu protokołu FTP. Narzędzie FTP jest przeznaczony do przekazania skrypty uruchamiania, zależności lub innych plików środowiska uruchomieniowego. Nie jest optymalnym wyborem do wdrażania aplikacji sieci web.
 

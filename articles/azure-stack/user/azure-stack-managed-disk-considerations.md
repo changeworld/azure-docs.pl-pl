@@ -16,12 +16,12 @@ ms.date: 01/31/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: acd92c711f432cf103b9309247704ff348287ff6
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 60f633049d6fdbb59744c8003e742ff649d48ea7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964070"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243397"
 ---
 # <a name="azure-stack-managed-disks-differences-and-considerations"></a>Usługi Azure Managed Disks stosu: różnice i zagadnienia dotyczące
 
@@ -64,6 +64,7 @@ Istnieją różnice za pomocą metryk usługi storage:
 Usługa Azure Stack Managed Disks obsługuje następujące wersje interfejsu API:
 
 - 2017-03-30
+- 2017-12-01
 
 ## <a name="managed-images"></a>Zarządzane obrazów
 

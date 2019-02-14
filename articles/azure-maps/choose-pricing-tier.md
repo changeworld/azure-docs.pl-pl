@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 56f9226f1bee630895725eb0b3806e294e9a5b51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56218146"
+ms.locfileid: "56234683"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Wybrać właściwą warstwę cenową w usługi Azure Maps
 
@@ -30,17 +30,21 @@ Warstwy cenowe S0 i S1 obsługiwać różne ilości przepływność danych. Prze
 | Możliwości                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
 | Wyszukiwanie                                  |        ✓           |     ✓    |
-| Routing                                 |        ✓           |     ✓    |
-| Renderowanie                                  |        ✓           |     ✓    |
-| Ruch                                 |        ✓           |     ✓    |
-| Strefy czasowe                              |        ✓           |     ✓    |
-| Zdjęcia i obrazach hybrydowych    |            |     ✓    |
-| Zakres z trasy                    |                   |     ✓    |
-| Lokalizacja adresu IP 2 (wersja zapoznawcza)                |        ✓           |     ✓    |
-| Wielokąty z wyszukiwania          |                   |     ✓    |
 | Geokodowanie usługi Batch (wersja zapoznawcza)              |                   |     ✓    |
+| Wielokąty z wyszukiwania          |                   |     ✓    |
+| Routing                                 |        ✓           |     ✓    |
+| Zakres z trasy                    |                   |     ✓    |
 | Batch routingu (wersja zapoznawcza)                |                   |     ✓    |
 | Tabela routingu (wersja zapoznawcza)               |                   |     ✓    |
+| Renderowanie                                  |        ✓           |     ✓    |
+| Zdjęcia i obrazach hybrydowych    |            |     ✓    |
+| Ruch                                 |        ✓           |     ✓    |
+| Strefy czasowe                              |        ✓           |     ✓    |
+| Używanie funkcji Geolokalizacji (wersja zapoznawcza)                |        ✓           |     ✓    |
+| Dane (wersja zapoznawcza)               |                   |     ✓    |
+| Przestrzenne (wersja zapoznawcza)               |                   |     ✓    |
+| Geofencing (wersja zapoznawcza)               |                   |     ✓    |
+
 
 
 Warto wspomnieć biorąc pod uwagę te dodatkowych punktów danych:

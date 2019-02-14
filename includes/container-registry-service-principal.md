@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 908d42bbecccf4a7c68a6cfde0c8cd960299df89
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fe0a4c51c4f762d866d572e0cdbd84d9e1c626b7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213140"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56247049"
 ---
 ## <a name="create-a-service-principal"></a>Tworzenie nazwy głównej usługi
 
@@ -38,4 +38,4 @@ Poniższy skrypt używa polecenia [az przypisania roli create][/cli/azure/role/a
 
 <!-- LINKS - Internal -->
 [az-ad-sp-create-for-rbac]: /cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac
-[az-role-assignment-create]: /cli/azure/role/assignment#az_role_assignment_create
+[az-role-assignment-create]: /cli/azure/role/assignment

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 9f4bfc0f61aeda1a4bcfce67b1501f9d297e3bce
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ba4af5d3b6612614dee54db7fdb1287ff7136321
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874625"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245766"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Jak używać usługi QnA Maker interfejsu API REST przy użyciu środowiska Node.js 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA
 - [Usuwanie bazy wiedzy.](#Delete)
 - [Uzyskiwanie bieżących kluczy punktu końcowego.](#GetKeys)
 - [Ponowne generowanie bieżących kluczy punktu końcowego.](#PutKeys)
-- [Uzyskiwanie bieżącego zestawu zmian słów.](#GetAlterations)
-- [Zastępowanie bieżącego zestawu zmian słów.](#PutAlterations)
+- [Uzyskaj bieżący zestaw zmian word bez uwzględniania wielkości liter.](#GetAlterations)
+- [Zastąp bieżący zestaw zmian word bez uwzględniania wielkości liter.](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 

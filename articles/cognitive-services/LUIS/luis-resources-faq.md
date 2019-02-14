@@ -9,14 +9,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 02/12/2019
 ms.author: diberry
-ms.openlocfilehash: 1f13c5220eee19b6cf8b56e4b55922acc1b2c6b1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6b8bcdc57996e04b613a2196cb505c3f59edb953
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865033"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237284"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -59,6 +59,15 @@ Dodaj różne odmiany wypowiedzi przykład z intencją albo Dodaj wzorzec wypowi
 
 Cortana, który wstępnie skompilowanych aplikacji zostały zaniechane w 2017 r. Nie są obsługiwane.
 
+### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak przenieść własność aplikacją usługi LUIS?
+Aby przetransferować aplikacją usługi LUIS do innej subskrypcji platformy Azure, Eksportuj aplikacji LUIS, a następnie importować go za pomocą nowego konta. Zaktualizuj identyfikator aplikacji usługi LUIS w aplikacji klienta, który ją wywołuje. Nowa aplikacja może zwrócić LUIS nieco inne wyniki z oryginalnej aplikacji.
+
+## <a name="luis-collaborating"></a>Usługa LUIS współpracę
+
+### <a name="how-do-i-give-collaborators-access-to-luis-with-azure-active-directory-azure-ad-or-role-based-access-control-rbac"></a>Jak przekazać współpracowników dostępu usługi LUIS za pomocą usługi Azure Active Directory (Azure AD) lub kontroli dostępu opartej na rolach (RBAC)?
+
+Zobacz [zasobów usługi Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-resources) i [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) dowiesz się, jak udzielić dostępu do współpracowników. 
+
 ## <a name="luis-endpoint"></a>Punkt końcowy usługi LUIS
 
 ### <a name="my-endpoint-query-returned-unexpected-results-what-should-i-do"></a>Moje zapytanie punkt końcowy zwracany nieoczekiwane wyniki. Co mam zrobić?
@@ -67,7 +76,7 @@ Wyniki przewidywań nieoczekiwane zapytanie są oparte na stanie opublikowanego 
 
 Poprawianie modelu zaczyna się od [aktywne uczenie](luis-how-to-review-endoint-utt.md).
 
-Możesz usunąć szkolenia deterministyczna, aktualizując [aplikacji interfejsu API z ustawień wersji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aby można było używać wszystkich danych szkoleniowych. 
+Możesz usunąć szkolenia deterministyczna, aktualizując [aplikacji interfejsu API z ustawień wersji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) aby można było używać wszystkich danych szkoleniowych.
 
 Przegląd [najlepsze praktyki](luis-concept-best-practices.md) inne porady. 
 
@@ -152,10 +161,23 @@ Każda aplikacja usługi LUIS ma klucz tworzenia starter liście punktów końco
 
 Jeśli aplikacja istniały przed LUIS jest ogólnie dostępna (GA), klucze punktu końcowego usługi LUIS w ramach subskrypcji są przypisywane automatycznie. Stało się ułatwić migrację wersji ogólnie dostępnej. Nowych kluczy punktu końcowego usługi LUIS w witrynie Azure portal są _nie_ automatycznie przypisywana do usługi LUIS.
 
-## <a name="app-management"></a>Zarządzanie aplikacjami
+## <a name="key-management"></a>Zarządzanie kluczami
 
-### <a name="how-do-i-transfer-ownership-of-a-luis-app"></a>Jak przenieść własność aplikacją usługi LUIS?
-Aby przetransferować aplikacją usługi LUIS do innej subskrypcji platformy Azure, Eksportuj aplikacji LUIS, a następnie importować go za pomocą nowego konta. Zaktualizuj identyfikator aplikacji usługi LUIS w aplikacji klienta, który ją wywołuje. Nowa aplikacja może zwrócić LUIS nieco inne wyniki z oryginalnej aplikacji.
+### <a name="how-do-i-know-what-key-i-need-where-i-get-it-and-what-i-do-with-it"></a>Skąd mam wiedzieć, jakie klucz potrzebuję, gdzie znaleźć go, i co zrobić z nim? 
+
+Zobacz [tworzenie zapytań prognozowania punktu końcowego kluczy i w LUIS](luis-concept-keys.md) Aby dowiedzieć się więcej o różnicach między [tworzenia klucza](luis-how-to-account-settings.md) i [endpoint prognoz klucz](luis-how-to-azure-subscription.md). 
+
+### <a name="i-got-an-error-about-being-out-of-quota-how-do-i-fix-it"></a>Otrzymuję błąd dotyczący brak limitu przydziału. Jak go naprawić? 
+
+Zobacz, [sposób naprawić błędy "limit przydziału", gdy klucz przekracza użycie warstwy cenowej](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) Aby dowiedzieć się więcej.
+
+### <a name="i-need-to-handle-more-endpoint-queries-how-do-i-do-that"></a>Potrzebuję więcej obsługują punktu końcowego. Jak to zrobić? 
+
+Zobacz, [sposób naprawić błędy "limit przydziału", gdy klucz przekracza użycie warstwy cenowej](luis-how-to-azure-subscription.md##how-to-fix-out-of-quota-errors-when-the-key-exceeds-pricing-tier-usage) Aby dowiedzieć się więcej.
+
+
+
+## <a name="app-management"></a>Zarządzanie aplikacjami
 
 ### <a name="how-do-i-download-a-log-of-user-utterances"></a>Jak pobrać dziennik wypowiedzi użytkowników?
 Domyślnie aplikacją usługi LUIS rejestruje wypowiedzi użytkowników. Aby pobrać dziennik wypowiedzi użytkowników, wysyłać aplikacją usługi LUIS, przejdź do **Moje aplikacje**i wybierz aplikację. Na pasku narzędzi kontekstowych, wybierz **Eksportuj dzienniki punktu końcowego**. Dziennik jest formatowana jako plik wartości rozdzielanych przecinkami (CSV).

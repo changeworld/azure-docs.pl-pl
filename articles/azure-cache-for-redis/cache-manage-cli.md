@@ -1,25 +1,25 @@
 ---
 title: Zarządzanie pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu klasycznego wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zainstalować klasyczne wiersza polecenia platformy Azure na dowolnej platformie, jak z niej korzystać, aby nawiązać połączenie z kontem platformy Azure i jak tworzyć i zarządzać pamięć podręczna systemu Azure dla usługi Redis z klasyczny interfejs wiersza polecenia.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
 author: yegu-ms
-manager: cfowler
+manager: jhubbard
 editor: ''
 ms.assetid: 964ff245-859d-4bc1-bccf-62e4b3c1169f
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: yegu
-ms.openlocfilehash: 7ad60291b0e16b658856b47c013a3f5b207832da
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 99148332a8310428cb73287d861ef71c35d59a26
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109406"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233204"
 ---
 # <a name="how-to-create-and-manage-azure-cache-for-redis-using-the-azure-classic-cli"></a>Jak utworzyć i zarządzać pamięć podręczna systemu Azure dla pamięci podręcznej Redis przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
 > [!div class="op_single_selector"]

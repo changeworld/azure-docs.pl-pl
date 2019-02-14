@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 56d79ce236dac4659bd863b645cc6780752091da
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e91f41633bf6cf6581c237e7634150a5b92746a7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865364"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245919"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrowanie bazy wiedzy przy użyciu eksportu / importu
 
@@ -56,7 +56,7 @@ Migrowanie bazy wiedzy wymaga eksportowanie z jednej bazy wiedzy knowledge base,
     W tym momencie całą wiedzy zawartość — pytania i odpowiedzi metadanych, wraz z nazwy plików źródłowych oraz w adresach URL, zostaną zaimportowane do nowej bazy wiedzy. 
 
 ## <a name="chat-logs-and-alterations"></a>Dzienniki czatu i zmiany
-Zmiany (synonimy) nie są importowane automatycznie. Użyj [interfejsów API w wersji 2](https://aka.ms/qnamaker-v2-apis) Eksportowanie zmiany ze starego wiedzy i [interfejsów API w wersji 4](https://aka.ms/qnamaker-v4-apis) Aby przenieść zmiany w nowej bazie wiedzy knowledge base.
+Zmiany bez uwzględniania wielkości liter (synonimy) nie są importowane automatycznie. Użyj [interfejsów API w wersji 2](https://aka.ms/qnamaker-v2-apis) Eksportowanie zmiany ze starego wiedzy i [interfejsów API w wersji 4](https://aka.ms/qnamaker-v4-apis) Aby przenieść zmiany w nowej bazie wiedzy knowledge base.
 
 Nie ma możliwości migracji dzienniki czatu, ponieważ nowe bazy wiedzy przy użyciu usługi Application Insights dzienniki czatu. 
 

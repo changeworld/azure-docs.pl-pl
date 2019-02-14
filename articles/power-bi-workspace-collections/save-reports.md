@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 277667bb3b4e39acbb935285e984660a3b44993d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a66584aa1cd3f335111774ef1df37cddc630f69d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047960"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233374"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Zapisywanie raportów w kolekcji obszarów roboczych usługi Power BI
 
@@ -34,9 +34,9 @@ Aby zapisać raport, najpierw musisz utworzyć token dla określonego raportu z 
 
 Odpowiednio w celu umożliwienia po prawej stronie save/Zapisywanie jako przyciski w menu Plik, konieczne będzie podanie odpowiednich uprawnień w konfiguracji osadzania po osadzeniu raportu:
 
-* modele. Permissions.ReadWrite
+* models.Permissions.ReadWrite
 * modele. Permissions.Copy
-* modele. Permissions.All
+* models.Permissions.All
 
 > [!NOTE]
 > Token dostępu wymaga także odpowiednich zakresach. Aby uzyskać więcej informacji, zobacz [zakresy](app-token-flow.md#scopes).
@@ -47,9 +47,10 @@ Załóżmy, że chcesz osadzić raport w trybie edycji w aplikacji, więc po pro
 
 Na przykład w języku JavaScript:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -75,6 +76,7 @@ Na przykład w języku JavaScript:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 Teraz raport zostanie osadzony w aplikacji w trybie edycji.
@@ -83,7 +85,7 @@ Teraz raport zostanie osadzony w aplikacji w trybie edycji.
 
 Po osadzanie raportu w trybie edycji, za pomocą prawidłowy token i uprawnienia, można zapisać raport, w menu Plik lub z poziomu języka javascript:
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
 
@@ -93,7 +95,7 @@ Po osadzanie raportu w trybie edycji, za pomocą prawidłowy token i uprawnienia
 
 ## <a name="save-as"></a>Zapisz jako
 
-```
+```javascript
 // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -110,9 +112,9 @@ Po osadzanie raportu w trybie edycji, za pomocą prawidłowy token i uprawnienia
 
 Następnie należy załadować nowy raport po *Zapisz jako*. Trwa ładowanie nowego raportu jest podobny do osadzania każdego raportu.
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -124,6 +126,7 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="see-also"></a>Zobacz także

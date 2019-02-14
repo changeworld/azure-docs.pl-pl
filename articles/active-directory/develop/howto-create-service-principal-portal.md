@@ -15,12 +15,12 @@ ms.date: 10/24/2018
 ms.author: celested
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 427c8b35f66b9b17d3da917b632d41cba5ddc99f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4a8311e359b5afa84020227de309e8b153a7ccda
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171523"
+ms.locfileid: "56238066"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Instrukcje: Aby utworzyć aplikację usługi Azure AD i jednostkę usługi, które mogą uzyskiwać dostęp do zasobów, użyj portalu
 
@@ -137,7 +137,7 @@ Musisz mieć wystarczające uprawnienia do rejestrowania aplikacji w dzierżawie
 
    ![Wyświetl rejestracje aplikacji](./media/howto-create-service-principal-portal/view-app-registrations.png)
 
-Jeśli wartością ustawienia rejestracji aplikacji jest równa **nie**, tylko [Administratorzy globalni](../users-groups-roles/directory-assign-admin-roles.md) mogą rejestrować aplikacje. Jeśli Twoje konto jest przypisany do roli użytkownika, ale ustawienia rejestracji aplikacji jest ograniczona do użytkowników administratora, poproś administratora o jedną przypisanie do roli administratora globalnego lub umożliwić użytkownikom rejestrowanie aplikacji.
+Jeśli wartością ustawienia rejestracji aplikacji jest równa **nie**, tylko użytkownicy z rolą administratora mogą rejestrować aplikacje tego typu. Zobacz [dostępnych ról](../users-groups-roles/directory-assign-admin-roles.md#available-roles) i [uprawnienia roli](../users-groups-roles/directory-assign-admin-roles.md#role-permissions) Aby dowiedzieć się więcej o rolach administratora dostępne i określone uprawnienia w usłudze Azure AD, które są określone dla każdej roli. Jeśli Twoje konto jest przypisany do roli użytkownika, ale ustawienia rejestracji aplikacji jest ograniczona do użytkowników administratora, poproś administratora w celu przypisania do jednej z ról administratora, które można tworzyć i zarządzać wszystkie aspekty rejestracji aplikacji lub umożliwić użytkownikom Rejestrowanie aplikacji.
 
 ### <a name="check-azure-subscription-permissions"></a>Sprawdź uprawnienia subskrypcji platformy Azure
 

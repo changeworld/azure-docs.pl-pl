@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 752be8270f3eb0bcc018cfcb7f87f30f5afbc60a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 5f3d884720bce5777a358a27dc477eabd5263d0c
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753099"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245188"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -178,7 +178,7 @@ Ta tabela zawiera podsumowanie obsługę dysku, dysk z danymi i tymczasowy dysk 
 **Składnik** | **Pomoc techniczna** | **Szczegóły**
 --- | --- | ---
 Maksymalny rozmiar dysku systemu operacyjnego | 2048 GB | [Dowiedz się więcej](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms) dotyczące dysków maszyn wirtualnych.
-Dysk tymczasowy | Nieobsługiwane | Dysk tymczasowy zawsze jest wykluczony z replikacji.<br/><br/> Nie wszystkie trwałych danych na dysku tymczasowym. [Dowiedz się więcej](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk).
+Dysk tymczasowy | Nieobsługiwane | Dysk tymczasowy zawsze jest wykluczony z replikacji.<br/><br/> Nie należy przechowywać żadnych trwałych danych na dysku tymczasowym. [Dowiedz się więcej](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk).
 Maksymalny rozmiar dysku danych | 4095 GB |
 Maksymalna liczba dysków danych | Maksymalnie 64 zgodnie z pomocy technicznej dla określonego rozmiaru maszyny Wirtualnej platformy Azure | [Dowiedz się więcej](../virtual-machines/windows/sizes.md) o rozmiarach maszyn wirtualnych.
 Częstotliwość zmian dysku danych | Maksymalnie 10 MB/s na dysk usługi premium storage. Maksymalnie 2 MB/s na dysk dla magazynu w warstwie standardowa. | Jeśli średni współczynnik zmian na dysku jest stale wyższa niż wartość maksymalna, replikacji nie będzie zapoznać się z nimi.<br/><br/>  Jednak maksymalny po przekroczeniu sporadycznie, replikację można zapoznać się z nimi, ale może zostać wyświetlony punktów odzyskiwania nieco opóźnione.

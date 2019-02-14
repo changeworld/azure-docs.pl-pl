@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a1a6b31c1500c51dbbc32683d9e0e911b60dcae4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440477"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56247050"
 ---
 Organizacje mają potrzebami obliczeniowymi na dużą skalę. Tych obciążeń funkcji dużych obliczeń obejmują projektowaniem inżynierskim i analizy, obliczeniami w zakresie ryzyka finansowego, renderowaniem obrazu, złożonym modelowaniem, Symulacje Monte Carlo i inne. 
 
@@ -25,12 +25,12 @@ Wydajne działanie obciążeń systemu Linux i Windows intensywnych obliczeń z 
     * Konfigurowanie własnego środowiska klastra na maszynach wirtualnych platformy Azure lub [zestawy skalowania maszyn wirtualnych](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md). 
     * Przenoszenie i shift lokalny klaster lub wdrożenie nowego klastra na platformie Azure za dodatkową pojemność. 
     * Szablony usługi Azure Resource Manager umożliwiają wdrażanie wiodących [obciążenie menedżerów](#workload-managers), infrastruktury i [aplikacji](#hpc-applications). 
-    * Wybierz [rozmiary HPC i maszyn wirtualnych GPU](#hpc-and-gpu-sizes) zawierające wyspecjalizowanego sprzętu i połączenia sieciowe dla obciążeń MPI lub procesora GPU. 
+    * Wybierz [rozmiary HPC i maszyn wirtualnych GPU](#hpc-and-gpu-vm-sizes) zawierające wyspecjalizowanego sprzętu i połączenia sieciowe dla obciążeń MPI lub procesora GPU. 
     * Dodaj [magazyn o wysokiej wydajności](#hpc-storage) dla wyjścia — dużych obciążeń wejścia /.
 * **Hybrydowe rozwiązania**
     * Rozszerzanie rozwiązania w środowisku lokalnym w celu odciążenia obciążeń maksymalnych ("serii") do infrastruktury platformy Azure
-    * Za pomocą usług chmury obliczeniowej na żądanie istniejącą [Menedżera obciążenia](#workload-manager).
-    * Skorzystaj z zalet [rozmiary HPC i maszyn wirtualnych GPU](#hpc-and-gpu-sizes) dla obciążeń MPI lub procesora GPU.
+    * Za pomocą usług chmury obliczeniowej na żądanie istniejącą [Menedżera obciążenia](#workload-managers).
+    * Skorzystaj z zalet [rozmiary HPC i maszyn wirtualnych GPU](#hpc-and-gpu-vm-sizes) dla obciążeń MPI lub procesora GPU.
 * **Dużych rozwiązań obliczeniowych jako usługa**
     * Twórz niestandardowe rozwiązania dużych wystąpień obliczeniowych i przepływów pracy za pomocą [Azure CycleCloud](#azure-cyclecloud), [usługi Azure Batch](#azure-batch)i pokrewnych [usług platformy Azure](#related-azure-services).
     * Uruchamianie z obsługą usługi Azure inżynierii i symulacje inżynierskie rozwiązań od dostawców, w tym [Altair](http://www.altair.com/), [ponowne skalowanie](https://www.rescale.com/azure/), i [Cycle Computing](https://cyclecomputing.com/) (teraz [sprzężony z Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 38be6d0212f4676add76abacf9f18f0a73eb44be
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 78834f1f12d2c748cb885e437496f2acf11b69ee
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170423"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232787"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Tworzenie nowego raportu z zestawu danych w kolekcji obszarów roboczych usługi Power BI
 
@@ -40,13 +40,13 @@ W tym przykładzie mamy nasz identyfikator zestawu danych, które chcemy utworzy
 
 **Instalacja pakietu NuGet**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.Core
 ```
 
 **Kod C#**
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -65,15 +65,16 @@ Aby utworzyć nowy raport, należy podać Utwórz konfigurację. Powinno to obej
 
 **Instalacja pakietu NuGet**
 
-```
+```powershell
 Install-Package Microsoft.PowerBI.JavaScript
 ```
 
 **Kod JavaScript**
 
-```
+```html
 <div id="reportContainer"></div>
-  
+
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -85,6 +86,7 @@ var embedCreateConfiguration = {
 
     // Create report
     var report = powerbi.createReport(reportContainer, embedCreateConfiguration);
+</script>
 ```
 
 Wywoływanie *powerbi.createReport()* sprawia, że pojawiają się w pustej kanwy w trybie edycji *div* elementu.
@@ -95,7 +97,7 @@ Wywoływanie *powerbi.createReport()* sprawia, że pojawiają się w pustej kanw
 
 Raport nie zostanie utworzony, dopóki nie zostanie wywołana **Zapisz jako** operacji. Można to zrobić z menu Plik lub JavaScript.
 
-```
+```javascript
  // Get a reference to the embedded report.
     report = powerbi.get(reportContainer);
     
@@ -116,9 +118,9 @@ Raport nie zostanie utworzony, dopóki nie zostanie wywołana **Zapisz jako** op
 
 W celu interakcji z nowy raport, który należy ją osadzić w taki sam sposób, w aplikacji osadza zwykłego raportu, co oznacza, nowego tokenu musi zostać wystawiony dla nowego raportu, a następnie wywołaj metodę osadzania.
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MJ',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -130,13 +132,14 @@ var embedConfiguration = {
 
     // Embed report
     var report = powerbi.embed(reportContainer, embedConfiguration);
+</script>
 ```
 
 ## <a name="automate-save-and-load-of-a-new-report-using-the-saved-event"></a>Nie można załadować nowy raport za pomocą "zapisane" zdarzenia i zautomatyzować Zapisz
 
 Aby zautomatyzować proces "Zapisz jako" i następnie ładowania nowy raport, można skorzystać "zapisane" zdarzenia. To zdarzenie jest wywoływane podczas zapisywania operacja została zakończona i zwraca obiektem Json zawierającym nowe reportId, nazwę raportu, stare reportId (jeśli jest to była jedna) i jeśli operacja zakończyła się zapisywanie jako lub zapisać.
 
-```
+```json
 {
   "reportObjectId": "5dac7a4a-4452-46b3-99f6-a25915e0fe54",
   "reportName": "newReport",
@@ -147,9 +150,9 @@ Aby zautomatyzować proces "Zapisz jako" i następnie ładowania nowy raport, mo
 
 Aby zautomatyzować proces może nasłuchiwać zdarzeń "zapisane", podjąć nowe reportId, Utwórz nowy token i osadzić nowy raport z nim.
 
-```
+```html
 <div id="reportContainer"></div>
-  
+<script>
 var embedCreateConfiguration = {
         accessToken: 'eyJ0eXAiO...Qron7qYpY9MI',
         embedUrl: 'https://embedded.powerbi.com/appTokenReportEmbed',
@@ -192,6 +195,7 @@ var embedCreateConfiguration = {
    // report.off removes a given event handler if it exists.
    report.off("saved");
     });
+</script>
 ```
 
 ## <a name="see-also"></a>Zobacz także

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: a4e115194d7e903edae4b4713c4f65eef9895cbf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9009e898b00212dba4dec9bf38af2bfa057b8ea
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467122"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244610"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Transferowanie danych za pomocą AzCopy v10 (wersja zapoznawcza)
 
@@ -54,8 +54,11 @@ Narzędzie AzCopy v10 nie wymaga instalacji. Otwórz preferowaną aplikacji wier
 ## <a name="authentication-options"></a>Opcje uwierzytelniania
 
 V10 narzędzia AzCopy można użyć następujących opcji uwierzytelniania w usłudze Azure Storage:
-- **Usługa Azure Active Directory [obsługiwane na obiekt Blob i Azure Data Lake Store Gen2]**. Użyj ```.\azcopy login``` logować się za pomocą usługi Azure Active Directory.  Użytkownik powinien mieć [przypisaną rolę "Współautor danych obiektu Blob magazynu"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) można zapisać do magazynu obiektów Blob przy użyciu uwierzytelniania usługi Azure Active Directory.
-- **Sygnatury dostępu Współdzielonego tokeny [obsługiwane w usłudze obiektów Blob i plików]**. Dołącz token sygnatury dostępu Współdzielonego do ścieżka obiektu blob w wierszu polecenia z niego korzystać. Można wygenerować tokenu sygnatury dostępu Współdzielonego przy użyciu witryny Azure Portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **Usługa Azure Active Directory [obsługiwane usługi obiektów Blob i Azure Data Lake Store Gen2]**. Użyj ```.\azcopy login``` logować się za pomocą usługi Azure Active Directory.  Użytkownik powinien mieć [przypisaną rolę "Współautor danych obiektu Blob magazynu"](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) można zapisać do magazynu obiektów Blob przy użyciu uwierzytelniania usługi Azure Active Directory.
+- **Sygnatury dostępu Współdzielonego tokeny [obsługiwane usługi obiektów Blob i plików]**. Dołącz token sygnatury dostępu Współdzielonego do ścieżka obiektu blob w wierszu polecenia z niego korzystać. Można wygenerować tokenu sygnatury dostępu Współdzielonego przy użyciu witryny Azure Portal [Eksploratora usługi Storage](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken), lub innych wybranych przez siebie narzędzi. Aby uzyskać więcej informacji, zobacz [przykłady](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+
+> [!IMPORTANT]
+> Podczas przesyłania żądania pomocy technicznej Microsoft Support (lub tego problemu, obejmujące trzecich 3), udział, które zostały zredagowane wersję polecenie, które próbujesz wykonać, aby upewnić się, sygnatury dostępu Współdzielonego jest przypadkowo nieudostępniany nikomu. Możesz znaleźć zostały zredagowane wersji na początku pliku dziennika. Zapoznaj się z sekcją rozwiązywanie problemów w dalszej części tego artykułu, aby uzyskać więcej informacji.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
@@ -206,11 +209,33 @@ set AZCOPY_CONCURRENCY_VALUE=<value>
 export AZCOPY_CONCURRENCY_VALUE=<value>
 # For MacOS
 export AZCOPY_CONCURRENCY_VALUE=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
 ```
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Narzędzie AzCopy v10 tworzy pliki dziennika i plan dla wszystkich zadań. Dzienniki można użyć, aby zbadać i rozwiązać wszelkie potencjalne problemy. Dzienniki będą zawierać stanu błędu (UPLOADFAILED COPYFAILED i DOWNLOADFAILED), pełną ścieżkę i przyczynę błędu. Plan plików i dzienników zadań znajdują się w folderze % USERPROFILE\\.azcopy folderu.
+Narzędzie AzCopy v10 tworzy pliki dziennika i plan dla wszystkich zadań. Dzienniki można użyć, aby zbadać i rozwiązać wszelkie potencjalne problemy. Dzienniki będą zawierać stanu błędu (UPLOADFAILED COPYFAILED i DOWNLOADFAILED), pełną ścieżkę i przyczynę błędu. Plan plików i dzienników zadań znajdują się w folderze % USERPROFILE\\.azcopy folder Windows lub $HOME\\.azcopy folderu na komputerach Mac i Linux.
+
+> [!IMPORTANT]
+> Podczas przesyłania żądania pomocy technicznej Microsoft Support (lub tego problemu, obejmujące trzecich 3), udział, które zostały zredagowane wersję polecenie, które próbujesz wykonać, aby upewnić się, sygnatury dostępu Współdzielonego jest przypadkowo nieudostępniany nikomu. Możesz znaleźć zostały zredagowane wersji na początku pliku dziennika.
+
+### <a name="change-the-location-of-the-log-files"></a>Zmień lokalizację plików dziennika
+
+Możesz zmienić lokalizację plików dziennika, jeśli to konieczne, lub aby zapobiec przepełnieniu dysku systemu operacyjnego.
+
+```cmd
+# For Windows:
+set AZCOPY_LOG_LOCATION=<value>
+# For Linux:
+export AZCOPY_LOG_LOCATION=<value>
+# For MacOS
+export AZCOPY_LOG_LOCATION=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
+```
 
 ### <a name="review-the-logs-for-errors"></a>Przejrzyj dzienniki błędów
 

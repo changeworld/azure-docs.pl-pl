@@ -1,116 +1,108 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą zarządzania zdarzeniami EthicsPoint (EPIM) | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i zarządzanie zdarzeniami EthicsPoint (EPIM).
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją EthicsPoint Incident Management (EPIM) | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją EthicsPoint Incident Management (EPIM).
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 8cb31a4c-9309-469b-93ac-daf0d3c7a3e6
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/05/2017
+ms.topic: tutorial
+ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 352af25d90e674d1dbe960932e3aeb97055f875b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.openlocfilehash: 3386b5be67c5f40def4aa54c4334c12f375af5dd
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184499"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098447"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą zarządzania zdarzeniami EthicsPoint (EPIM)
+# <a name="tutorial-azure-active-directory-integration-with-ethicspoint-incident-management-epim"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją EthicsPoint Incident Management (EPIM)
 
-W tym samouczku dowiesz się, jak zintegrować Zarządzanie zdarzeniami EthicsPoint (EPIM) z usługą Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację EthicsPoint Incident Management (EPIM) z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji EthicsPoint Incident Management (EPIM) z usługą Azure AD oferuje następujące korzyści:
 
-Integracja zarządzania zdarzeniami EthicsPoint (EPIM) z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji EthicsPoint Incident Management (EPIM).
+* Możesz zezwolić użytkownikom na automatyczne logowanie się do aplikacji EthicsPoint Incident Management (EPIM) (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do zarządzania zdarzeniami EthicsPoint (EPIM)
-- Użytkowników, aby automatycznie uzyskać zalogowanych do zarządzania zdarzeniami EthicsPoint (EPIM) (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą zarządzania zdarzeniami EthicsPoint (EPIM), potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją EthicsPoint Incident Management (EPIM) potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Zarządzanie zdarzeniami EthicsPoint (EPIM) logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji EthicsPoint Incident Management (EPIM) z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie EthicsPoint zdarzenia zarządzania (EPIM) z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-ethicspoint-incident-management-epim-from-the-gallery"></a>Dodawanie EthicsPoint zdarzenia zarządzania (EPIM) z galerii
-Aby skonfigurować integrację z zarządzania zdarzeniami EthicsPoint (EPIM) w usłudze Azure AD, należy dodać EthicsPoint zarządzania zdarzeniami (EPIM) z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja EthicsPoint Incident Management (EPIM) obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-**Aby dodać EthicsPoint zarządzania zdarzeniami (EPIM) z galerii, wykonaj następujące czynności:**
+## <a name="adding-ethicspoint-incident-management-epim-from-the-gallery"></a>Dodawanie aplikacji EthicsPoint Incident Management (EPIM) z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji EthicsPoint Incident Management (EPIM) z usługą Azure AD, należy dodać aplikację EthicsPoint Incident Management (EPIM) z galerii do listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać aplikację EthicsPoint Incident Management (EPIM) z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Aplikacje][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **EthicsPoint zarządzania zdarzeniami (EPIM)**.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/ethicspoint-incident-management-tutorial/tutorial_ethicspoint_search.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W panelu wyników wybierz **EthicsPoint zarządzania zdarzeniami (EPIM)**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/ethicspoint-incident-management-tutorial/tutorial_ethicspoint_addfromgallery.png)
+4. W polu wyszukiwania wpisz **EthicsPoint Incident Management (EPIM)**, wybierz pozycję **EthicsPoint Incident Management (EPIM)** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą EthicsPoint zdarzenia zarządzania (EPIM) oparte na użytkownika testu o nazwie "Britta Simon."
+     ![Aplikacja EthicsPoint Incident Management (EPIM) na liście wyników](common/search-new-app.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w EthicsPoint zarządzania zdarzeniami (EPIM) dla użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w EthicsPoint zarządzania zdarzeniami (EPIM) musi zostać ustanowione.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W EthicsPoint zarządzania zdarzeniami (EPIM) przypisze się wartość **nazwy użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją EthicsPoint Incident Management (EPIM), korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji EthicsPoint Incident Management (EPIM).
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą zarządzania zdarzeniami EthicsPoint (EPIM), należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w aplikacji EthicsPoint Incident Management (EPIM), należy wykonać kroki opisane w poniższych blokach konstrukcyjnych:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego zarządzania zdarzeniami EthicsPoint (EPIM)](#creating-a-ethicspoint-incident-management-epim-test-user)**  — aby odpowiednikiem Britta Simon w EthicsPoint zarządzania zdarzeniami (EPIM), połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji EthicsPoint Incident Management (EPIM)](#configure-ethicspoint-incident-management-epim-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji EthicsPoint Incident Management (EPIM)](#create-ethicspoint-incident-management-epim-test-user)** — aby Britta Simon miała swojego odpowiednika w aplikacji EthicsPoint Incident Management (EPIM) połączonego z reprezentacją użytkownika usługi Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji zarządzania zdarzeniami EthicsPoint (EPIM).
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługi Azure AD logowanie jednokrotne za pomocą zarządzania zdarzeniami EthicsPoint (EPIM), wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji EthicsPoint Incident Management (EPIM), wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **EthicsPoint zarządzania zdarzeniami (EPIM)** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **EthicsPoint Incident Management (EPIM)** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/ethicspoint-incident-management-tutorial/tutorial_ethicspoint_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **EthicsPoint zarządzania zdarzeniami (EPIM), domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/ethicspoint-incident-management-tutorial/tutorial_ethicspoint_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Informacje dotyczące domeny i adresów URL logowania jednokrotnego w aplikacji EthicsPoint Incident Management (EPIM)](common/sp-identifier-reply.png)
 
     a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca:
     | |
@@ -118,113 +110,97 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     | `https://<companyname>.navexglobal.com`|
     | `https://<companyname>.ethicspointvp.com`|
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.navexglobal.com/adfs/services/trust`
+    b. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://<companyname>.navexglobal.com/adfs/services/trust`
 
-    c. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<servername>.navexglobal.com/adfs/ls/`
+    d. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://<servername>.navexglobal.com/adfs/ls/`
 
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL odpowiedzi, identyfikator i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta zarządzania zdarzeniami EthicsPoint (EPIM)](https://www.navexglobal.com/company/contact-us) do uzyskania tych wartości. 
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp je rzeczywistymi wartościami adresu URL logowania, identyfikatora i adresu URL odpowiedzi. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/ethicspoint-incident-management-tutorial/tutorial_ethicspoint_certificate.png) 
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-1. Kliknij przycisk **Save** (Zapisz).
+6. W sekcji **Konfigurowanie aplikacji EthicsPoint Incident Management (EPIM)** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/ethicspoint-incident-management-tutorial/tutorial_general_400.png)
-    
-1. Aby skonfigurować logowanie jednokrotne na **EthicsPoint zarządzania zdarzeniami (EPIM)** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej EthicsPoint zarządzania zdarzeniami (EPIM) ](https://www.navexglobal.com/company/contact-us).
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Adres URL logowania
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-ethicspoint-incident-management-epim-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji EthicsPoint Incident Management (EPIM)
+
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **EthicsPoint Incident Management (EPIM)**, należy wysłać pobrany **plik XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal do [zespołu pomocy technicznej aplikacji EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/ethicspoint-incident-management-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/ethicspoint-incident-management-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/ethicspoint-incident-management-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/ethicspoint-incident-management-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-ethicspoint-incident-management-epim-test-user"></a>Tworzenie użytkownika testowego zarządzania zdarzeniami EthicsPoint (EPIM)
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w EthicsPoint zarządzania zdarzeniami (EPIM). Skontaktuj się z [zespołem pomocy technicznej EthicsPoint zarządzania zdarzeniami (EPIM)](https://www.navexglobal.com/company/contact-us) Aby dodać użytkowników do platformy zarządzania zdarzeniami EthicsPoint (EPIM).
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji EthicsPoint Incident Management (EPIM).
 
-W tej sekcji możesz włączyć Britta Simon korzystać z platformy Azure logowania jednokrotnego przez udzielenie dostępu do zarządzania zdarzeniami EthicsPoint (EPIM).
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **EthicsPoint Incident Management (EPIM)**.
 
-![Przypisz użytkownika][200] 
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-**Aby przypisać Britta Simon do zarządzania zdarzeniami EthicsPoint (EPIM), wykonaj następujące czynności:**
+2. Na liście aplikacji wybierz pozycję **EthicsPoint Incident Management (EPIM)**.
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+    ![Link do aplikacji EthicsPoint Incident Management (EPIM) na liście aplikacji](common/all-applications.png)
 
-    ![Przypisz użytkownika][201] 
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-1. Na liście aplikacji wybierz **EthicsPoint zarządzania zdarzeniami (EPIM)**.
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/ethicspoint-incident-management-tutorial/tutorial_ethicspoint_app.png) 
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-    ![Przypisz użytkownika][202] 
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Przypisz użytkownika][203]
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+### <a name="create-ethicspoint-incident-management-epim-test-user"></a>Tworzenie użytkownika testowego aplikacji EthicsPoint Incident Management (EPIM)
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji EthicsPoint Incident Management (EPIM). Skontaktuj się z  [zespołem pomocy technicznej aplikacji EthicsPoint Incident Management (EPIM)](https://www.navexglobal.com/company/contact-us) w celu dodania użytkowników na platformie EthicsPoint Incident Management (EPIM). Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-Po kliknięciu kafelka EthicsPoint zarządzania zdarzeniami (EPIM) w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji zarządzania zdarzeniami EthicsPoint (EPIM).
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
+
+Po kliknięciu kafelka EthicsPoint Incident Management (EPIM) w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji EthicsPoint Incident Management (EPIM), dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_01.png
-[2]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_02.png
-[3]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_03.png
-[4]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_04.png
-
-[100]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_100.png
-
-[200]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_200.png
-[201]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_201.png
-[202]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_202.png
-[203]: ./media/ethicspoint-incident-management-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

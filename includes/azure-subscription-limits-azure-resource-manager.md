@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/19/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: ef670c2dc701f888be3c7bb9a546c8a8a46f993a
-ms.sourcegitcommit: 668b486f3d07562b614de91451e50296be3c2e1f
+ms.openlocfilehash: 4cc115d068736f61f9edb4ec609ac592607e7fa0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49458873"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56247058"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -35,7 +35,7 @@ ms.locfileid: "49458873"
 
 <sup>2</sup>Obejmuje konta magazynu warstwy Standardowa i Premium. Jeśli potrzebujesz więcej niż 200 kont magazynu, wyślij żądanie za pośrednictwem [Pomocy technicznej platformy Azure](https://azure.microsoft.com/support/faq/). Zespół usługi Azure Storage przejrzy Twój przypadek biznesowy i może zatwierdzić do 250 kont magazynu.
 
-<sup>3</sup>Liczba tagów, które można zastosować na subskrypcję, nie jest ograniczona. Liczba tagów na zasób lub grupę zasobów jest ograniczona do 15. Usługa Resource Manager zwraca [listę unikatowych nazw i wartości tagów](/rest/api/resources/tags#Tags_List) w subskrypcji tylko wtedy, gdy liczba tagów wynosi 10 000 lub mniej. Nadal jednak można odnaleźć zasób na podstawie tagu, gdy ich liczba przekracza 10 000.  
+<sup>3</sup>Liczba tagów, które można zastosować na subskrypcję, nie jest ograniczona. Liczba tagów na zasób lub grupę zasobów jest ograniczona do 15. Usługa Resource Manager zwraca [listę unikatowych nazw i wartości tagów](/rest/api/resources/tags) w subskrypcji tylko wtedy, gdy liczba tagów wynosi 10 000 lub mniej. Nadal jednak można odnaleźć zasób na podstawie tagu, gdy ich liczba przekracza 10 000.  
 
 <sup>4</sup>Te funkcje nie są już wymagane w przypadku grup zasobów platformy Azure i usługi Azure Resource Manager.
 

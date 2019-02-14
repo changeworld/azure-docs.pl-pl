@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 49277fc260743d0179c40374241edeece0a0e1e2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b4086497375bb651f4c88411e3237b27740dfd07
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814337"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236757"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Kopia zapasowa i przywracanie w usłudze Azure Database for PostgreSQL
 
@@ -50,7 +50,7 @@ Dostępne są dwa rodzaje przywracania:
 Szacowany czas odzyskiwania zależy od kilku czynników, w tym rozmiary baz danych, rozmiaru dziennika transakcji, przepustowości sieci i łączna liczba baz danych odzyskiwania w tym samym regionie, w tym samym czasie. Czas odzyskiwania jest zazwyczaj mniej niż 12 godzin.
 
 > [!IMPORTANT]
-> Usunięto serwerów **nie** można przywrócić. Jeśli usuniesz serwera, wszystkie bazy danych, które należą do serwera również zostaną usunięte i nie można odzyskać. Aby chronić zasoby serwera, po wdrożeniu, z przypadkowego usunięcia lub nieoczekiwanych zmian, Administratorzy mogą korzystać [zarządcze](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources).
+> Usunięto serwerów **nie** można przywrócić. Jeśli usuniesz serwera, wszystkie bazy danych, które należą do serwera również zostaną usunięte i nie można odzyskać. Aby chronić zasoby serwera, po wdrożeniu, z przypadkowego usunięcia lub nieoczekiwanych zmian, Administratorzy mogą korzystać [zarządcze](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
 ### <a name="point-in-time-restore"></a>Przywracanie do określonego momentu
 
