@@ -14,14 +14,16 @@ ms.date: 01/25/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 0e73177ca49a9a100b45712833b1310d54852680
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 979867e7630c21b0bd724967dbc79c5f8155ca5e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498016"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237182"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Samouczek: Integracja z usługą Azure Key Vault podczas wdrażania szablonu usługi Resource Manager
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Dowiedz się, jak pobrać wpisy tajne z usługi Azure Key Vault i przekazać te wpisy jako parametry podczas wdrażania usługi Resource Manager. Wartość nigdy nie jest uwidoczniana, ponieważ używane jest tylko odwołanie do jej identyfikatora magazynu kluczy. Aby uzyskać więcej informacji, zobacz [Use Azure Key Vault to pass secure parameter value during deployment (Bezpieczne przekazywanie wartości parametru za pomocą usługi Azure Key Vault podczas wdrażania)](./resource-manager-keyvault-parameter.md)
 
@@ -166,6 +168,7 @@ Nie musisz wprowadzać żadnych zmian w pliku szablonu.
         }
     },
     ```
+
     Zastąp wartość **id** identyfikatorem zasobu magazynu kluczy utworzonym w poprzedniej procedurze.  
 
     ![Integracja usługi Key Vault podczas wdrażania maszyny wirtualnej z szablonu usługi Resource Manager — plik parametrów](./media/resource-manager-tutorial-use-key-vault/resource-manager-tutorial-create-vm-parameters-file.png)
@@ -180,12 +183,11 @@ Nie musisz wprowadzać żadnych zmian w pliku szablonu.
 Postępuj zgodnie z instrukcjami przedstawionymi w sekcji [Wdrożenie szablonu](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template), aby wdrożyć szablon. Przekaż pliki **azuredeploy.json** i **azuredeploy.parameters.json** do usługi Cloud Shell, a następnie wdróż szablon za pomocą następującego skryptu programu PowerShell:
 
 ```azurepowershell
-$deploymentName = Read-Host -Prompt "Enter the name for this deployment"
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 
 New-AzResourceGroup -Name $resourceGroupName -Location $location
-New-AzResourceGroupDeployment -Name $deploymentName `
+New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json

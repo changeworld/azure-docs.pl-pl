@@ -1,5 +1,5 @@
 ---
-title: Przykład programu PowerShell — grupa trybu failover replikacji geograficznej — autonomiczna usługa Azure SQL Database | Microsoft Docs
+title: Przykład programu PowerShell — grupa trybu failover — pojedyncza baza danych Azure SQL Database | Microsoft Docs
 description: Przykładowy skrypt programu Azure PowerShell do konfigurowania grupy trybu failover aktywnej replikacji geograficznej dla pojedynczej bazy danych w usłudze Azure SQL Database i przełączania jej w tryb failover.
 services: sql-database
 ms.service: sql-database
@@ -11,13 +11,13 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 31027e266f29ae0308ed70abfea5dbec3736f824
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 8b3d92829fa3209565435df458fc8d501b338f4e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469298"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992844"
 ---
 # <a name="use-powershell-to-configure-an-active-geo-replication-failover-group-for-a-single-database-in-azure-sql-database"></a>Konfigurowanie grupy trybu failover aktywnej replikacji geograficznej dla pojedynczej bazy danych w usłudze Azure SQL Database przy użyciu programu PowerShell
 

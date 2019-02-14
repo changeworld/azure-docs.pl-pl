@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Korzystając z tego przewodnika, możesz utworzyć aplikację konsolową zamieniającą mowę na tekst przy użyciu zestawu Speech SDK dla środowiska Node.js. Następnie za pomocą mikrofonu komputera będzie możliwa transkrypcja mowy na tekst w czasie rzeczywistym.
 services: cognitive-services
 author: fmegen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 1/16/2019
 ms.author: fmegen
-ms.openlocfilehash: 99938f8b64339556c0ee4b9caa9124c609159af6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5fa0b6d2a361fdbf372ba73fed9d8e2c48cb3630
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747284"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871221"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-nodejs"></a>Szybki start: rozpoznawanie mowy przy użyciu zestawu SDK usługi Mowa dla środowiska Node.js
 

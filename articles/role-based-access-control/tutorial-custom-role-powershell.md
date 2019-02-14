@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7ea9ce47b82dd4ad31caf935fd10e04daa07faba
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9dddef43e1ac5f3bcedcc08b313eea300436ea61
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700012"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106432"
 ---
 # <a name="tutorial-create-a-custom-role-using-azure-powershell"></a>Samouczek: tworzenie roli niestandardowej przy użyciu programu Azure PowerShell
 
@@ -95,7 +95,7 @@ Najprostszym sposobem na utworzenie roli niestandardowej jest rozpoczęcie od wb
     
 1. Edytuj plik JSON, aby dodać operację `"Microsoft.Support/*"` do właściwości `Actions`. Pamiętaj o dodaniu przecinka po operacji odczytu. Ta akcja umożliwia użytkownikowi tworzenie biletów pomocy technicznej.
 
-1. Pobierz identyfikator subskrypcji za pomocą polecenia [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
+1. Pobierz identyfikator subskrypcji za pomocą polecenia [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
     ```azurepowershell
     Get-AzSubscription

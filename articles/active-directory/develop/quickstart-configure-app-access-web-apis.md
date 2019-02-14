@@ -16,12 +16,13 @@ ms.date: 10/25/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: a2f0d97d6b7040f874fc03ffe19f247cdc742c77
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 08ad61070fd3bfb8472cffb51fd0b1bb4bcf169b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103653"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169381"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Szybki start: Konfigurowanie aplikacji klienckiej na potrzeby uzyskiwania dostępu do internetowych interfejsów API (wersja zapoznawcza)
 

@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Interfejs Web Language Model API w usługach Microsoft Cognitive Services udostępnia najnowocześniejsze narzędzia do przetwarzania języka naturalnego.
 services: cognitive-services
 author: piyushbehre
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: web-language-model
 ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: a4dfe5bb9651e3c5ff9706de829389a1b9df1305
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4228692d707f0cff8be0d76bc70794f48d944143
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464929"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878769"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Czym jest interfejs Web Language Model API? (Wersja zapoznawcza)
 

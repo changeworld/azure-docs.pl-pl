@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: f85d404df37d34f7363114fbbf34ceec3bbe7c0f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4a8c3a1291faad6b952b5fddacde1ded1f4be7ca
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042805"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098072"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Szybki start: przekazywanie, pobieranie i wyświetlanie obiektów blob za pomocą programu Azure PowerShell
 
@@ -33,30 +33,30 @@ Dla tego przewodnika Szybki start wymagany jest moduł Az Azure PowerShell w wer
 
 Obiekty blob są zawsze przesyłane do kontenera. Możesz organizować grupy obiektów blob, tak jak organizujesz pliki w folderach na komputerze.
 
-Określ nazwę kontenera, a następnie utwórz kontener przy użyciu polecenia [New-AzureStorageContainer](/powershell/module/azure.storage/new-azurestoragecontainer). Ustaw uprawnienia na `blob`, aby zezwolić na publiczny dostęp do plików. W tym przykładzie nazwą kontenera jest *quickstartblobs*.
+Określ nazwę kontenera, a następnie utwórz kontener przy użyciu polecenia [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer). Ustaw uprawnienia na `blob`, aby zezwolić na publiczny dostęp do plików. W tym przykładzie nazwą kontenera jest *quickstartblobs*.
 
 ```powershell
 $containerName = "quickstartblobs"
-new-azurestoragecontainer -Name $containerName -Context $ctx -Permission blob
+new-AzStoragecontainer -Name $containerName -Context $ctx -Permission blob
 ```
 
 ## <a name="upload-blobs-to-the-container"></a>Przekazywanie obiektów blob do kontenera
 
 Usługa Blob Storage obsługuje blokowe, uzupełnialne i stronicowe obiekty blob. Pliki VHD, które służą do tworzenia obsługi maszyn wirtualnych usługi IaaS, to stronicowe obiekty blob. Uzupełnialne obiekty blob mogą służyć do rejestrowania, na przykład w sytuacji, w której konieczny jest zapis do pliku, a następnie dodawanie kolejnych informacji. Większość plików przechowywanych w usłudze Blob Storage to blokowe obiekty blob. 
 
-Aby przekazać plik do blokowego obiektu blob, pobierz odwołanie do kontenera i uzyskaj odwołanie do blokowego obiektu blob w tym kontenerze. Po uzyskaniu odwołania do obiektu blob możesz przekazać do niego dane przy użyciu polecenia [set-azurestorageblobcontent](/powershell/module/azure.storage/set-azurestorageblobcontent). Ta operacja tworzy obiekt blob, jeśli nie istnieje, lub zastępuje obiekt blob, jeśli istnieje.
+Aby przekazać plik do blokowego obiektu blob, pobierz odwołanie do kontenera i uzyskaj odwołanie do blokowego obiektu blob w tym kontenerze. Po uzyskaniu odwołania do obiektu blob możesz przekazać do niego dane przy użyciu polecenia [Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent). Ta operacja tworzy obiekt blob, jeśli nie istnieje, lub zastępuje obiekt blob, jeśli istnieje.
 
 Poniższe przykłady umożliwiają przekazanie plików *Image001.jpg* i *Image002.png* z folderu *D:\\_TestImages* na dysku lokalnym do utworzonego kontenera.
 
 ```powershell
 # upload a file
-set-azurestorageblobcontent -File "D:\_TestImages\Image001.jpg" `
+set-AzStorageblobcontent -File "D:\_TestImages\Image001.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
 # upload another file
-set-azurestorageblobcontent -File "D:\_TestImages\Image002.png" `
+set-AzStorageblobcontent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
@@ -66,27 +66,27 @@ Przed kontynuowaniem można przesłać dowolną liczbę plików.
 
 ## <a name="list-the-blobs-in-a-container"></a>Wyświetlanie listy obiektów blob w kontenerze
 
-Pobierz listę obiektów blob w kontenerze za pomocą polecenia [get-azurestorageblob](/powershell/module/azure.storage/get-azurestorageblob). W tym przykładzie przedstawiono tylko nazwy przekazanych obiektów blob.
+Pobierz listę obiektów blob w kontenerze za pomocą polecenia [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob). W tym przykładzie przedstawiono tylko nazwy przekazanych obiektów blob.
 
 ```powershell
-get-azurestorageblob -Container $ContainerName -Context $ctx | select Name
+Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 ```
 
 ## <a name="download-blobs"></a>Pobieranie obiektów blob
 
-Pobierz obiekty blob na swój dysk twardy. Dla każdego obiektu blob, który chcesz pobrać, określ nazwę i wywołaj polecenie [get-azurestorageblobcontent](/powershell/module/azure.storage/get-azurestorageblobcontent), aby pobrać obiekt blob.
+Pobierz obiekty blob na swój dysk twardy. Dla każdego obiektu blob, który chcesz pobrać, określ nazwę i wywołaj polecenie [Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent), aby pobrać obiekt blob.
 
 W tym przykładzie obiekty blob są pobierane do folderu *D:\\_TestImages\Downloads* na dysku lokalnym. 
 
 ```powershell
 # download first blob
-get-azurestorageblobcontent -Blob "Image001.jpg" `
+Get-AzStorageblobcontent -Blob "Image001.jpg" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx 
 
 # download another blob
-get-azurestorageblobcontent -Blob "Image002.png" `
+Get-AzStorageblobcontent -Blob "Image002.png" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx
@@ -111,7 +111,7 @@ Oto przykładowe polecenie AzCopy umożliwiające przesłanie pliku o nazwie *my
 Usuń wszystkie utworzone zasoby. Najprostszym sposobem usunięcia elementów zawartości jest usunięcie grupy zasobów. Usunięcie grupy zasobów spowoduje także usunięcie wszystkich zasobów uwzględnionych w tej grupie. W poniższym przykładzie usunięcie grupy zasobów powoduje usunięcie konta magazynu i samej grupy zasobów.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Następne kroki

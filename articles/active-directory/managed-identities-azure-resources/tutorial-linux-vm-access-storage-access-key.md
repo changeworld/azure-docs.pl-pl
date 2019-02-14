@@ -14,12 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: priyamo
-ms.openlocfilehash: 2b27553e16225a7bc0d9ca74c7ec013a231d64e6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 36d4bb8adace344d5f60f3dfb530a65e0a228b4b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755479"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56196166"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage-via-access-key"></a>Samouczek: uzyskiwanie dostępu do usługi Azure Storage za pośrednictwem klucza dostępu przy użyciu przypisanej przez system tożsamości zarządzanej maszyny wirtualnej z systemem Linux
 

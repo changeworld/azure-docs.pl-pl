@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: def9d44c31ed50a859bf42aa148fb7e6a36764fd
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e377cf749119c23d37bb4db8ab78abb1ce8c82ae
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751093"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199752"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Samouczek: Integracja usługi Azure Active Directory z usługami Amazon Web Services (AWS)
 
@@ -447,7 +448,7 @@ Po kliknięciu kafelka Amazon Web Services (AWS) na panelu dostępu powinno nast
 
  * W sekcji **Aprowizacja** w podsekcji **Mapowania** będzie wyświetlany komunikat „Trwa ładowanie...” i nigdy nie będą wyświetlane mapowania atrybutów. Jedyny obsługiwany obecnie przepływ pracy aprowizacji to importowanie ról z usług AWS do usługi Azure AD w celu wyboru podczas przypisywania użytkownika/grupy. Mapowania atrybutów na te potrzeby są wstępnie zdefiniowane i nie można ich konfigurować.
  
- * Sekcja **Aprowizacja** obsługuje wprowadzanie tylko jednego zestawu poświadczeń jednocześnie dla jednej dzierżawy usług AWS. Wszystkie zaimportowane role są zapisywane w ramach właściwości appRoles [obiektu servicePrincipal](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) usługi Azure AD dla dzierżawy usług AWS. Z poziomu galerii do usługi Azure AD można dodać wiele dzierżaw usług AWS (reprezentowanych przez obiekty servicePrincipal) służących do aprowizacji, jednak istnieje znany problem związany z brakiem możliwości automatycznego zapisywania wszystkich zaimportowanych ról z wielu obiektów servicePrincipal usług AWS używanych do aprowizacji do pojedynczego obiektu servicePrincipal używanego do logowania jednokrotnego. Jako obejście można użyć [interfejsu API programu Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) do wyodrębnienia wszystkich zaimportowanych ról aplikacji do poszczególnych obiektów servicePrincipal usług AWS, dla których skonfigurowano aprowizację. Te ciągi ról można następnie dodawać do obiektu servicePrincipal usług AWS, dla którego skonfigurowano logowanie jednokrotne.
+ * Sekcja **Aprowizacja** obsługuje wprowadzanie tylko jednego zestawu poświadczeń jednocześnie dla jednej dzierżawy usług AWS. Wszystkie zaimportowane role są zapisywane w ramach właściwości appRoles [obiektu servicePrincipal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) usługi Azure AD dla dzierżawy usług AWS. Z poziomu galerii do usługi Azure AD można dodać wiele dzierżaw usług AWS (reprezentowanych przez obiekty servicePrincipal) służących do aprowizacji, jednak istnieje znany problem związany z brakiem możliwości automatycznego zapisywania wszystkich zaimportowanych ról z wielu obiektów servicePrincipal usług AWS używanych do aprowizacji do pojedynczego obiektu servicePrincipal używanego do logowania jednokrotnego. Jako obejście można użyć [interfejsu API programu Microsoft Graph](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) do wyodrębnienia wszystkich zaimportowanych ról aplikacji do poszczególnych obiektów servicePrincipal usług AWS, dla których skonfigurowano aprowizację. Te ciągi ról można następnie dodawać do obiektu servicePrincipal usług AWS, dla którego skonfigurowano logowanie jednokrotne.
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

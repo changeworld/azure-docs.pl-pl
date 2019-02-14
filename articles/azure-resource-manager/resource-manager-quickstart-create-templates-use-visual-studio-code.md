@@ -13,14 +13,16 @@ ms.devlang: na
 ms.date: 01/11/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: 1a815158e1d215fdb0427f7a263ac0bea43a3e3c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: c2684c7373d9ee4536b248650c7012c261166b81
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497863"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235397"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Szybki start: tworzenie szablonów usługi Azure Resource Manager przy użyciu programu Visual Studio Code
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Dowiedz się, jak używać kodu programu Visual Studio i rozszerzenia narzędzi usługi Azure Resource Manager do tworzenia i edytowania szablonów usługi Azure Resource Manager. Szablony usługi Resource Manager można tworzyć w programie Visual Studio Code bez korzystania z rozszerzenia, ale rozszerzenie udostępnia opcje autouzupełniania, które upraszczają proces tworzenia szablonu. Aby zrozumieć pojęcia związane z wdrażaniem rozwiązań platformy Azure i zarządzaniem nimi, zobacz [Usługa Azure Resource Manager — omówienie](resource-group-overview.md).
 
@@ -128,23 +130,20 @@ Istnieje wiele metod wdrażania szablonów.  W tym przewodniku Szybki start uży
     ```azurecli
     echo "Enter the Resource Group name:" &&
     read resourceGroupName &&
-    echo "Enter the name for this deployment:" &&
-    read deploymentName &&
     echo "Enter the location (i.e. centralus):" &&
     read location &&
     az group create --name $resourceGroupName --location $location &&
-    az group deployment create --name $deploymentName --resource-group $resourceGroupName --template-file "azuredeploy.json"
+    az group deployment create --resource-group $resourceGroupName --template-file "azuredeploy.json"
     ```
    
     # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/PowerShell)
     
     ```azurepowershell
     $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
-    $deploymentName = Read-Host -Prompt "Enter the name for this deployment"
     $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
     
     New-AzResourceGroup -Name $resourceGroupName -Location $location
-    New-AzResourceGroupDeployment -Name $deploymentName -ResourceGroupName $resourceGroupName -TemplateFile "azuredeploy.json"
+    New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateFile "azuredeploy.json"
     ```
     
     ---

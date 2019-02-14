@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start wyodrębnisz z obrazu tekst drukowany przy użyciu interfejsu API przetwarzania obrazów i języka PHP.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6d945cc651aade3f751c1fa57e7c2397e39d705b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2d15b134502ec7d13f6cbebc99fdfa17bcd61474
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207942"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878735"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-rest-api-and-php-in-computer-vision"></a>Szybki start: wyodrębnianie tekstu drukowanego (OCR) w funkcji przetwarzania obrazów przy użyciu interfejsu API REST i języka PHP
 

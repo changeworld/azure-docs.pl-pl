@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Nawiązuj połączenia z interfejsem API przetwarzania obrazów z poziomu aplikacji internetowej ASP.NET Core za pomocą funkcji usługi połączonej programu Visual Studio.
 services: cognitive-services
 author: ghogen
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: Tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 8f8f668e9e603eee74aed1f3d99014f9827133fa
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a67b4b7eee30d4bdcabee4fdcfe2e4a37ed6c718
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213136"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876117"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>Nawiązywanie połączenia z interfejsem API przetwarzania obrazów za pomocą usług połączonych w programie Visual Studio
 

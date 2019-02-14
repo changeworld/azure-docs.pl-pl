@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 43305efc146151d131152e712869e283af65f0b2
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: ddf36c97a8aebd3cd7446dca07e77c7f743afcb9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359769"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982951"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co to jest program SQL Server na maszynach wirtualnych platformy Azure? (Windows)
 
@@ -86,7 +86,7 @@ Aby dostarczyć własną licencję, możesz przekonwertować istniejącą maszyn
 Jest możliwe wdrożenie starszego obrazu programu SQL Server, który nie jest dostępny w witrynie Azure Portal przy użyciu programu PowerShell. Aby wyświetlić wszystkie dostępne obrazy przy użyciu programu Powershell, użyj następującego polecenia:
 
   ```PowerShell
-  Get-AzureRmVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
+  Get-AzVMImageOffer -Location $Location -Publisher 'MicrosoftSQLServer'
   ```
 
 Aby uzyskać więcej informacji o wdrażaniu maszyn wirtualnych programu SQL Server przy użyciu programu PowerShell, zobacz [How to provision SQL Server virtual machines with Azure PowerShell (Jak aprowizować maszyny wirtualne programu SQL Server przy użyciu programu Azure PowerShell)](virtual-machines-windows-ps-sql-create.md).

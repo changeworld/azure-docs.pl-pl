@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4ba25da1f356f6164137dead467bd8bc948ce3d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037841"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116171"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrowanie maszyn lokalnych do platformy Azure
 
@@ -135,7 +135,7 @@ Niektóre czynności można zautomatyzować w ramach procesu migracji przy użyc
 - Po zakończeniu migracji wykonaj wszystkie potrzebne czynności konfiguracyjne, takie jak aktualizacja parametrów połączenia bazy danych i serwera sieci Web. 
 - Wykonaj dla zmigrowanej aplikacji uruchomionej na platformie Azure testy końcowe aplikacji i akceptacji migracji.
 - [Agent maszyny wirtualnej platformy Azure](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) umożliwia zarządzanie interakcją maszyny wirtualnej z usługą Azure Fabric Controller. Jest to wymagane w przypadku niektórych usług platformy Azure, takich jak Azure Backup, Site Recovery i Azure Security.
-    - Podczas migrowania maszyn VMware i serwerów fizycznych razem z usługą mobilności na maszynach z systemem Windows jest instalowany dostępny agent maszyny wirtualnej platformy Azure. Na maszynach wirtualnych z systemem Linux zaleca się zainstalowanie agenta po włączeniu trybu failover. a
+    - Podczas migrowania maszyn VMware i serwerów fizycznych razem z usługą mobilności na maszynach z systemem Windows jest instalowany dostępny agent maszyny wirtualnej platformy Azure. Na maszynach wirtualnych z systemem Linux zaleca się zainstalowanie agenta po włączeniu trybu failover.
     - Podczas migrowania maszyn wirtualnych platformy Azure do regionu pomocniczego agenta maszyny Wirtualnej platformy Azure należy ustanowić na maszynie wirtualnej przed migracją.
     - Podczas migrowania maszyn wirtualnych funkcji Hyper-V do platformy Azure agenta maszyny wirtualnej platformy Azure na maszynie wirtualnej platformy Azure instaluje się po zakończeniu migracji.
 - Usuń ręcznie z maszyny wirtualnej wszelkie programy typu dostawca/agent usługi Site Recovery. Podczas migrowania maszyn wirtualnych VMware lub serwerów fizycznych [odinstaluj usługę mobilności][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer] z maszyny wirtualnej.

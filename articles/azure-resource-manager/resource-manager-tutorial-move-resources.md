@@ -13,14 +13,16 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3aadeb92fccc2baa445bce73e3d3111168aeecf6
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 99d4f3b6cf42ee21c34809b5604c4603da784e7b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490280"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107824"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>Samouczek: przenoszenie zasobów platformy Azure do innej grupy zasobów lub subskrypcji
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Dowiedz się, jak przenieść zasoby platformy Azure z jednej grupy zasobów do innej. Możesz także przenieść zasoby platformy Azure z jednej subskrypcji platformy Azure do innej. W tym samouczku użyto szablonu usługi Resource Manager do wdrożenia dwóch grup zasobów i jednego konta magazynu. Następnie przeniesiono konto magazynu z jednej grupy zasobów do innej.
 

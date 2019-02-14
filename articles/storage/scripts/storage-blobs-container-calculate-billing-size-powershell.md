@@ -15,18 +15,18 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: 5e1505794097ac6d67997841cade46013686377f
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53627763"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245409"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Obliczanie łącznego rozmiaru kontenera obiektów blob
 
 Ten skrypt oblicza rozmiar kontenera w usłudze Azure Blob Storage na potrzeby szacowania kosztów rozliczeń. Skrypt sumuje rozmiar obiektów blob w kontenerze.
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

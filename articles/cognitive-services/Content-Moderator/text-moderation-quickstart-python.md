@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Opis sposobu analizowania zawartości tekstowej pod kątem różnych rodzajów niepożądanego materiału przy użyciu zestawu SDK pakietu Content Moderator dla języka Python
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 7952ea9a83e6a2a7689bfdf34e39c7862a6daf73
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 20920a04c5b85c9eede7d7b249dd6e0548308240
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217921"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883410"
 ---
 # <a name="quickstart-analyze-text-content-for-objectionable-material-in-python"></a>Szybki start: Analizowanie zawartości tekstowej pod kątem niepożądanego materiału za pomocą języka Python
 

@@ -1,26 +1,26 @@
 ---
 title: 'Szybki start: jak korzystać z usługi Azure Cache for Redis przy użyciu aplikacji platformy .NET Core | Microsoft Docs'
 description: Z tego przewodnika Szybki start dowiesz się, jak uzyskiwać dostęp do usługi Azure Cache for Redis w aplikacjach platformy .NET Core
-services: azure-cache-for-redis,app-service
+services: cache,app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/18/2018
-ms.author: wesmc
+ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: a253b1d34b134700778152b7ef0b0571190b2511
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ef3dcba51ffda83b4b6643b3490e8929e5d42b4d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53554847"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236332"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-a-net-core-app"></a>Szybki start: Korzystanie z usługi Azure Cache for Redis przy użyciu aplikacji platformy .NET Core
 

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: tutorial
 ms.date: 02/01/2019
-ms.openlocfilehash: d87248f778c6c39cc64b1cc4725cd61d029ce040
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: e1a0dda4c13baf7fc2e5ba65d599db8c74591adb
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55664745"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893242"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Samouczek: Konfigurowanie zasad platformy Apache HBase w usłudze HDInsight przy użyciu pakietu Enterprise Security (wersja zapoznawcza)
 
@@ -45,7 +45,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 ## <a name="create-domain-users"></a>Tworzenie użytkowników domeny
 
-Zapoznaj się z sekcją dotyczącą [tworzenia klastra usługi HDInsight przy użyciu pakietu Enterprise Security](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds#create-a-domain-joined-hdinsight-cluster), aby dowiedzieć się, jak utworzyć użytkowników domeny **sales_user1** i **marketing_user1**. W scenariuszu produkcyjnym użytkownicy domeny pochodzą z dzierżawy usługi Active Directory.
+Zapoznaj się z sekcją dotyczącą [tworzenia klastra usługi HDInsight przy użyciu pakietu Enterprise Security](https://docs.microsoft.com/azure/hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds), aby dowiedzieć się, jak utworzyć użytkowników domeny **sales_user1** i **marketing_user1**. W scenariuszu produkcyjnym użytkownicy domeny pochodzą z dzierżawy usługi Active Directory.
 
 ## <a name="create-hbase-tables-and-import-sample-data"></a>Tworzenie tabel bazy danych HBase i importowanie przykładowych danych
 

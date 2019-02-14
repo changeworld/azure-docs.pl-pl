@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819097"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191739"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Szybki start: aktualizowanie aplikacji w usłudze Azure Active Directory
 
@@ -144,7 +145,7 @@ Aby uzyskać więcej informacji o ogólnych pojęciach dotyczących manifestu ap
 
 Jak wspomniano wcześniej, oprócz uwidoczniania/uzyskiwania dostępu do interfejsów API na potrzeby własnych aplikacji, można zarejestrować aplikację kliencką na potrzeby dostępu do interfejsów API uwidocznionych przez zasoby firmy Microsoft. Interfejs API programu Microsoft Graph, określany jako „Microsoft Graph” na liście zasobów/interfejsów API portalu, jest dostępny dla wszystkich aplikacji, które są zarejestrowane w usłudze Azure AD. W przypadku rejestracji aplikacji klienckiej w dzierżawie zawierającej konta, które zostały zarejestrowane w celu uzyskania subskrypcji usługi Office 365, można także uzyskać dostęp do zakresów uwidocznianych przez różne zasoby usługi Office 365.
 
-Wyczerpujące omówienie zakresów uwidocznianych przez interfejs API programu Microsoft Graph można znaleźć w artykule [Microsoft Graph permissions reference](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference) (Dokumentacja uprawnień programu Microsoft Graph).
+Wyczerpujące omówienie zakresów uwidocznianych przez interfejs API programu Microsoft Graph można znaleźć w artykule [Microsoft Graph permissions reference](https://docs.microsoft.com/graph/permissions-reference) (Dokumentacja uprawnień programu Microsoft Graph).
 
 > [!NOTE]
 > Ze względu na aktualne ograniczenie natywne aplikacje klienckie mogą wywoływać interfejs API programu Graph usługi Azure AD tylko wtedy, gdy korzystają z uprawnienia „Dostęp do katalogu organizacji”. To ograniczenie nie dotyczy aplikacji internetowych.

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Użyj interfejsu API wyszukiwanie jednostek Bing, aby wyodrębniać i wyszukiwać jednostki oraz miejsca z poziomu zapytań wyszukiwania.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b1d46d125d390f8612c5708e1964e0626acde343
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e78cc86a91e229b5d4d4aead5709da2f694ecac1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757794"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895367"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Wyszukiwanie jednostek za pomocą interfejsu API jednostek Bing
 
@@ -174,7 +174,7 @@ W przypadku wyświetlania informacji dotyczących jednostki (nazwy, opisu i obra
 
 ## <a name="find-places"></a>Znajdowanie miejsc
 
-Pole `places` to obiekt [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#localentityanswer) zawierający listę obiektów [Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place). Zobacz [Entity Types](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types) (Typy jednostek), aby uzyskać więcej informacji. Lista zawiera co najmniej jedną lokalną jednostkę spełniającą kryteria żądania.
+Pole `places` to obiekt [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference) zawierający listę obiektów [Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place). Zobacz [Entity Types](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types) (Typy jednostek), aby uzyskać więcej informacji. Lista zawiera co najmniej jedną lokalną jednostkę spełniającą kryteria żądania.
 
 Miejsca to między innymi restauracje, hotele, czy lokalne firmy. Pole [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) zawiera wskazówki określające typ jednostki lokalnej. Lista zawiera listę wskazówek, takich jak Place (miejsce), LocalBusiness (lokalna firma), czy Restaurant (restauracja). Każda kolejne wskazówka w tablicy powoduje zawężenie typu jednostki. Aby zapoznać się z listą możliwych typów, zobacz [Entity types (Typy jednostek)](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)
 

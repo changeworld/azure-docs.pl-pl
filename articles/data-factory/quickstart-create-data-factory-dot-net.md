@@ -13,19 +13,20 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 25a1913fba3e66e65b3c785eb6ce1738c5f00a26
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9846422405df491124a101a7898f356a1d9fb1d8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247929"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998675"
 ---
-# <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>Tworzenie fabryki danych i potoku przy użyciu zestawu SDK .NET
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-net-sdk"></a>Szybki start: Tworzenie fabryki danych i potoku przy użyciu zestawu SDK .NET
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-dot-net.md)
 
-Ten samouczek Szybki start opisuje sposób używania zestawu SDK .NET w celu utworzenia usługi Azure Data Factory. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych za pomocą usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark (Samouczek: Przekształcanie danych przy użyciu usługi Spark)](transform-data-using-spark.md). 
+Ten samouczek Szybki start opisuje sposób używania zestawu SDK .NET w celu utworzenia usługi Azure Data Factory. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark](transform-data-using-spark.md) (Samouczek: przekształcanie danych przy użyciu platformy Spark). 
 
 > [!NOTE]
 > Ten artykuł nie zawiera szczegółowego wprowadzenia do usługi Data Factory. Aby zapoznać się z wprowadzeniem do usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
@@ -67,7 +68,6 @@ Za pomocą programu Visual Studio 2013/2015/2017 utwórz aplikację konsolową .
     Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
     Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
-
     ```
 
 ## <a name="create-a-data-factory-client"></a>Tworzenie klienta fabryki danych
@@ -85,7 +85,7 @@ Za pomocą programu Visual Studio 2013/2015/2017 utwórz aplikację konsolową .
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     ```
 
-2. Dodaj do metody **Main** następujący kod, który określa zmienne. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Produkty dostępne według regionu](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
+2. Dodaj do metody **Main** następujący kod, który określa zmienne. Zastąp symbole zastępcze własnymi wartościami. Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
     ```csharp
     // Set variables
@@ -299,7 +299,8 @@ Skompiluj i uruchom aplikację, a następnie zweryfikuj wykonywanie potoku.
 
 Konsola wypisuje postęp tworzenia fabryki danych, połączonej usługi, zestawów danych, potoku i uruchomienia potoku. Następnie sprawdza stan uruchomienia potoku. Poczekaj na wyświetlenie szczegółów uruchomienia działania kopiowania z rozmiarem odczytanych/zapisanych danych. Następnie sprawdź przy użyciu narzędzi, takich jak [eksplorator usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/), czy obiekty blob zostały skopiowane do lokalizacji „outputBlobPath” z lokalizacji „inputBlobPath”, jak określono w zmiennych.
 
-### <a name="sample-output"></a>Przykładowe dane wyjściowe: 
+### <a name="sample-output"></a>Przykładowe dane wyjściowe
+
 ```json
 Creating data factory SPv2Factory0907...
 {

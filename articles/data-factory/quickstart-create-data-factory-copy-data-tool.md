@@ -11,15 +11,16 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
 ms.author: jingwang
-ms.openlocfilehash: a4e41408a3af2e6bb68c14f2e34bf1141bf349c1
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 6ff264c079ef5ee18258c3cd136cf441dc33e299
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48017811"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992759"
 ---
-# <a name="use-the-copy-data-tool-to-copy-data"></a>Kopiowanie danych przy użyciu narzędzia do kopiowania danych 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+# <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Szybki start: Kopiowanie danych przy użyciu narzędzia do kopiowania danych
+
+> [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-copy-data-tool.md)
 

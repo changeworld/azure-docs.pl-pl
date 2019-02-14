@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 93d7a6e884cf02fa41838d4a07644c122a43823b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e2831191905da1b9e0ad55131be9eaa7aa13950e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823831"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894364"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Samouczek: śledzenie użycia laboratorium w usłudze Azure Lab Service
 W tym samouczku zostanie pokazane, w jaki sposób twórca/właściciel laboratorium może śledzić użycie laboratorium.
@@ -55,6 +55,9 @@ Po umieszczeniu wskaźnika myszy nad wierszem na liście maszyn wirtualnych zost
 - Uruchamianie maszyny wirtualnej
 - Zatrzymywanie maszyny wirtualnej
 - Usuwanie maszyny wirtualnej
+
+
+![Funkcje sterowania maszyny wirtualnej](../media/tutorial-track-usage/vm-controls.png)
 
 Za pomocą przycisków paska narzędzi możesz również uruchomić, zatrzymać lub usunąć maszynę wirtualną. 
 

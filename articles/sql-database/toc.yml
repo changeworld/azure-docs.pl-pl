@@ -1,5 +1,5 @@
 items:
-- name: Dokumentacja usługi SQL DB
+- name: Dokumentacja usługi SQL Database
   href: index.yml
 - name: Usługa SQL Database
   items:
@@ -67,23 +67,23 @@ items:
   expanded: true
 - name: Samouczki
   items:
-  - name: Projektowanie w usłudze Azure SQL Database
+  - name: Projektowanie bazy danych w usłudze SQL Database
     items:
     - name: Projektowanie bazy danych przy użyciu programu SSMS
       href: sql-database-design-first-database.md
     - name: Projektowanie bazy danych przy użyciu platformy .NET
       href: sql-database-design-first-database-csharp.md
-  - name: Migrowanie do usługi Azure SQL Database
+  - name: Migracja do bazy danych SQL
     items:
     - name: Migrowanie do pojedynczej bazy danych lub bazy danych w puli przy użyciu usługi DMS
       href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/sql-database/toc.json
     - name: Migrowanie do wystąpienia zarządzanego przy użyciu usługi DMS
       href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/sql-database/toc.json
-  - name: Zabezpieczenia w usłudze Azure SQL Database
+  - name: Zabezpieczenia w usłudze SQL Database
     items:
-    - name: Zabezpieczenia pojedynczej bazy danych
+    - name: Zabezpieczenia pojedynczej bazy danych i bazy danych w puli
       href: sql-database-security-tutorial.md
-    - name: Zabezpieczenia wystąpienia zarządzanego korzystające z identyfikatorów logowania usługi Azure AD
+    - name: Zabezpieczenia wystąpienia zarządzanego
       href: sql-database-managed-instance-aad-security-tutorial.md
   - name: Implementowanie rozproszonej geograficznie bazy danych
     href: sql-database-implement-geo-distributed-database.md
@@ -104,10 +104,10 @@ items:
   - name: Zakup modeli
     items:
     - name: Omówienie
-      href: sql-database-service-tiers.md
+      href: sql-database-purchase-models.md
     - name: Model oparty na rdzeniach wirtualnych
       href: sql-database-service-tiers-vcore.md
-    - name: Model jednostki DTU
+    - name: Warstwy usług z jednostkami DTU
       href: sql-database-service-tiers-dtu.md
     - name: Opłacanie wydajności rezerwowej z góry
       href: sql-database-reserved-capacity.md
@@ -351,8 +351,8 @@ items:
     items:
     - name: Omówienie
       href: sql-database-howto-single-database.md
-    - name: Migracja do bazy danych SQL
-      href: sql-database-cloud-migrate.md
+    - name: Migrowanie do pojedynczej bazy danych lub bazy danych w puli
+      href: sql-database-single-database-migrate.md
     - name: Zarządzanie bazą danych SQL po migracji
       href: sql-database-manage-after-migration.md
     - name: Konfigurowanie replikacji
@@ -421,7 +421,7 @@ items:
         href: sql-database-elastic-query-horizontal-partitioning.md
       - name: Wykonywanie zapytań względem tabel z różnymi schematami
         href: sql-database-elastic-query-vertical-partitioning.md
-    - name: Zadania Elastic Database
+    - name: Zadania elastyczne
       items:
       - name: Tworzenie i zarządzanie (PowerShell)
         href: elastic-jobs-powershell.md
@@ -459,7 +459,7 @@ items:
       href: sql-database-managed-instance-connect-app.md
   - name: Ładowanie i przenoszenie danych
     items:
-    - name: Kopiowanie bazy danych na platformie Azure
+    - name: Kopiowanie bazy danych w obrębie platformy Azure
       href: sql-database-copy.md
     - name: Importowanie bazy danych z pliku BACPAC
       href: sql-database-import.md
@@ -605,9 +605,9 @@ items:
             href: saas-tenancy-cross-tenant-reporting.md
           - name: Analiza dzierżawy
             items:
-            - name: Przy użyciu bazy danych SQL
+            - name: Przy użyciu usługi SQL Database
               href: saas-tenancy-tenant-analytics.md
-            - name: Przy użyciu magazynu danych SQL
+            - name: Przy użyciu usługi SQL Data Warehouse
               href: saas-tenancy-tenant-analytics-adf.md
         - name: Odzyskiwanie po awarii przy użyciu przywracania geograficznego
           href: saas-dbpertenant-dr-geo-restore.md
@@ -714,9 +714,9 @@ items:
       href: sql-database-elastic-jobs-getting-started.md
     - name: Odinstalowywanie zadania elastycznego (przestarzałe)
       href: sql-database-elastic-jobs-uninstall.md
-ms.openlocfilehash: 9b11a1bd8cc68aabc8881636d5fcdfe5cbaec034
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: bf8a32ede6ce782bc0ff5ac58cd12ba70283289e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55960551"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100044"

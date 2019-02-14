@@ -9,12 +9,13 @@ ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 251161fbb5213c765463835e4537f1b443699670
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: be8b443dc2d25558343fb8cad3fd5e9734a672e1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491743"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56187393"
 ---
 # <a name="what-is-azure-active-directory"></a>Co to jest usługa Azure Active Directory? 
 Azure Active Directory (Azure AD) to chmurowa usługa firmy Microsoft do zarządzania tożsamościami i dostępem. Usługa Azure AD ułatwia pracownikom logowanie się i dostęp do następujących zasobów:

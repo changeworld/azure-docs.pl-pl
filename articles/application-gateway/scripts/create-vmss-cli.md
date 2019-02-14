@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b2485b65c54bdd5dcd523226e17c180bf1eb86a6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 99d0939b30d04fbd5c0eb7a287105bb4cf27e9f4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734202"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116766"
 ---
 # <a name="manage-web-traffic-using-the-azure-cli"></a>Zarządzanie ruchem internetowym przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -47,12 +47,12 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 
 | Polecenie | Uwagi |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
+| [az group create](https://docs.microsoft.com/cli/azure/group) | Tworzy grupę zasobów, w której są przechowywane wszystkie zasoby. |
 | [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet) | Tworzy sieć wirtualną. |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnetwork) | Tworzy podsieć w sieci wirtualnej. |
+| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Tworzy podsieć w sieci wirtualnej. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | Tworzy publiczny adres IP dla bramy aplikacji. |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | Tworzy bramę aplikacji. |
-| [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) | Tworzy zestaw skalowania maszyn wirtualnych. |
+| [az vmss create](https://docs.microsoft.com/cli/azure/vmss) | Tworzy zestaw skalowania maszyn wirtualnych. |
 | [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip) | Pobiera publiczny adres IP bramy aplikacji. |
 
 ## <a name="next-steps"></a>Następne kroki

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Skorzystaj z tego przewodnika Szybki start, aby wysyłać żądania wyszukiwania wideo za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Java.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: 95112a4161c6a0c21b7e4a834658e5e7f130a8c3
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ff214a545023364b09a0e757462a1b3f3d963d44
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569170"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55885025"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-java"></a>Szybki start: Wyszukiwanie wideo za pomocą zestawu SDK wyszukiwania wideo Bing dla języka Java
 

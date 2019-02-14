@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: f43c3072660ce4b9ca68c2bc58d1c752ce474e28
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 222ac0b5dede45b9ae2b6fe9ba464e738ea48b94
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821911"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194261"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Cisco Umbrella
 
