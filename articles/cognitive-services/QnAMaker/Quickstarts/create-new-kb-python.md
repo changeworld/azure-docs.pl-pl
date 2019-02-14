@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Ten oparty na protokole REST przewodnik Szybki start dla języka Python zawiera omówienie programowego tworzenia przykładowej bazy wiedzy usługi QnA Maker, która będzie wyświetlana na pulpicie nawigacyjnym platformy Azure w ramach konta interfejsu API usługi Cognitive Services.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: f69b85617a5d75f9f9cbf73a57280cd20847bbb6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 766fe32736ae0d8ea23805ea017d93b32119636a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208826"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873125"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-python"></a>Szybki start: tworzenie bazy wiedzy w usłudze QnA Maker przy użyciu języka Python
 

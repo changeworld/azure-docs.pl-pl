@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/09/2018
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 7a25686ffa80b831e5d459a8795595a00f869fda
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997596"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234802"
 ---
 # <a name="custom-logs-in-azure-monitor"></a>Dzienniki niestandardowe w usłudze Azure Monitor
 Źródło danych dzienników niestandardowych w usłudze Azure Monitor umożliwia zbieranie zdarzeń z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog. Po zebraniu możesz analizować dane na poszczególne pola w zapytaniach lub wyodrębniania danych podczas zbierania do poszczególnych pól.
@@ -43,7 +43,11 @@ Pliki dziennika mają być zbierane musi spełniać następujące kryteria.
 >
 
 >[!NOTE]
-> Można utworzyć maksymalnie 500 dziennikami niestandardowymi na obszar roboczy usługi Log Analytics. 
+> Obszar roboczy usługi Log Analytics obsługuje następujące limity:
+> 
+> * Można utworzyć tylko 500 dziennikami niestandardowymi.
+> * Tabela obsługuje tylko kolumny do 500. 
+> * Maksymalna liczba znaków w nazwie kolumny to 500. 
 >
 
 ## <a name="defining-a-custom-log"></a>Definiowanie dziennika niestandardowego
