@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Interfejs API sprawdzania pisowni Bing wykorzystuje uczenie maszynowe oraz statystyczne tłumaczenie maszynowe do kontekstowego sprawdzania pisowni.
 services: cognitive-services
 author: noellelacharite
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: overview
 ms.date: 05/03/2018
 ms.author: nolachar
-ms.openlocfilehash: c15af0dcebdfcbe984d47b5c06f213e516ae3914
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4a8f5e029966f074add34a7017f42158070b872d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149775"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864013"
 ---
 # <a name="what-is-bing-spell-check-api"></a>Czym jest interfejs API sprawdzania pisowni Bing?
 

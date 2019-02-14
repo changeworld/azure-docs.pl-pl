@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API tłumaczenia mowy w usłudze Translator.
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: quickstart
 ms.date: 3/5/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 8f2adf743760c85b8c2a75c0f398bc5b61fd1061
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a76d3c3ed54b3b4d9d79cd778c75719dd12507d5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754239"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874026"
 ---
 # <a name="quickstart-translator-speech-api-with-nodejs"></a>Szybki start: Interfejs API tłumaczenia mowy w usłudze Translator dla oprogramowania Node.js 
 <a name="HOLTop"></a>

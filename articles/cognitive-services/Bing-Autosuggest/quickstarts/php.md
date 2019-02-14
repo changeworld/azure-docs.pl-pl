@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Uzyskaj informacje oraz przykłady kodu w celu szybkiego rozpoczęcia korzystania z interfejsu API automatycznego sugerowania Bing.
 services: cognitive-services
 author: v-jaswel
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-autosuggest
 ms.topic: quickstart
 ms.date: 09/14/2017
 ms.author: v-jaswel
-ms.openlocfilehash: 31a4c2cb0548af0c8ab3c3f6284ef1d61922b97c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 139c7149173285283041f5f4b30d2002e40810c2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187764"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55872921"
 ---
 # <a name="quickstart-for-bing-autosuggest-api-with-php"></a>Przewodnik Szybki start dotyczący interfejsu API automatycznego sugerowania Bing w języku PHP
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start dowiesz się, jak można znaleźć alternatywne tłumaczenia i przykłady użycia dla określonego tekstu przy użyciu języka Python i interfejsu API REST tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: 4ca07416c615984b4eb6c7799ff17d9fbe43fa3b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a97b958e241b216440a470e5eca86ebdf02adbe2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691474"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857315"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-python"></a>Szybki start: wyszukiwanie wyrazów w słowniku dwujęzycznym za pomocą języka Python
 

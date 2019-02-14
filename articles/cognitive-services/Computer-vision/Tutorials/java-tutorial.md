@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Zapoznaj się z podstawową aplikacją biblioteki Swing języka Java, która korzysta z interfejsu API przetwarzania obrazów w usłudze Azure Cognitive Services. Wykonaj optyczne rozpoznawanie znaków (OCR), twórz miniatury i korzystaj z funkcji wizualnych na obrazie.
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
 ms.author: kefre
 ms.custom: seodec18
 ms.date: 09/21/2017
-ms.openlocfilehash: 2c306a5447f2e5d9c7072bd2bed8dd8f1d4078d0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 4f6af31ba6b04ddbecb7cb42cebe345b6af720ac
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225401"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868093"
 ---
 # <a name="tutorial-computer-vision-api-java"></a>Samouczek: interfejs API przetwarzania obrazów języka Java
 

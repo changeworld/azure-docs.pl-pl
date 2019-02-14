@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: W tym samouczku Szybki start opartym na protokole REST i środowisku Node.js opisano sposób programowego uzyskiwania odpowiedzi z bazy wiedzy.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: 720d249321d20161b6a1ef19bb522ec6c2fc665e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fd6f6cd9b0078533541c9d846281c48a446f9c4a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216684"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883104"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Uzyskiwanie odpowiedzi na pytanie z bazy wiedzy przy użyciu środowiska Node.js
 

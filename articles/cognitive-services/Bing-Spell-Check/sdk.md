@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Przykłady dotyczące kontekstowego sprawdzania pisowni i gramatyki za pomocą zestawów SDK sprawdzania pisowni Bing.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-spell-check
 ms.topic: sample
 ms.date: 1/24/2018
 ms.author: v-gedod
-ms.openlocfilehash: c6afe8de6ef8c20527e4557fcd9458f0eb699b59
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a50dd9f0fce47c7633444a467710df0c60df8a5d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180062"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863371"
 ---
 # <a name="bing-spell-check-sdk-samples"></a>Przykłady dotyczące zestawów SDK sprawdzania pisowni Bing
 Przykłady dotyczące sprawdzania pisowni Bing obejmują następujące scenariusze:

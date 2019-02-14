@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Dowiedz się, jak wysyłać żądania wyszukiwania do interfejsu API wyszukiwania wideo Bing.
 services: cognitive-services
 author: aahi
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahill
-ms.openlocfilehash: bbe9f19e11cda4a6f0df16a66ed72fe34db61d63
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: e9df2f9cf7a8ecabdce9b5bc877fdc82fd61d1f5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569212"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865934"
 ---
 # <a name="sending-search-requests-to-the-bing-video-search-api"></a>Wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania wideo Bing
 

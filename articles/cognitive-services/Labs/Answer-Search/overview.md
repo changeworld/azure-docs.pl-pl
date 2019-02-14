@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Wprowadzenie do laboratorium Project Answer Search.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: answer-search
 ms.topic: overview
 ms.date: 04/13/2018
 ms.author: rosh
-ms.openlocfilehash: cb02c9067e4d672b0aace4caf13e4c8f0d718afb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1898a4576b86d7abb302e325aef827bab6b9d7dd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220199"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877426"
 ---
 # <a name="what-is-project-answer-search"></a>Czym jest projekt wyszukiwania odpowiedzi?
 Interfejs API laboratorium Project Answer Search korzysta z punktu końcowego Bing w wersji 7, aby uzyskać odpowiedzi na zapytania w formie pytań. Pytanie „What is the circumference of the earth?”(Jaki jest obwód ziemi?) zwraca odpowiedź, która zawiera fakty.  Zapytanie dotyczące osoby, miejsca lub przedmiotu zwraca informacje dotyczące jednostki określonej przez zapytanie. Te scenariusze mogą być przydatne w aplikacjach, takich jak na przykład boty konwersacyjne, aplikacje do obsługi wiadomości lub czytniki.  
