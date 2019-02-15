@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f45fad91c94b35de512c0c995ef4e3a6311a25ad
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 684e6a798c690c65f70c2f6224ac8f11256ce6eb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767422"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270134"
 documentType: LandingData
 title: Dokumentacja usługi Azure Maps
 metadata:
@@ -16,7 +16,7 @@ metadata:
   ms.service: azure-maps
   services: azure-maps
   ms.topic: landing-page
-  ms.date: 02/04/2019
+  ms.date: 02/14/2019
   ms.author: philmea
 abstract:
   description: Usługa Azure Maps udostępnia deweloperom ze wszystkich branż zaawansowane funkcje geoprzestrzenne wraz z najświeższymi dostępnymi danymi map w celu zapewniania kontekstu geograficznego aplikacjom internetowym i mobilnym. Usługa Azure Maps jest zestawem interfejsów API zgodnych z interfejsem Azure One API do pracy z mapami, wyszukiwaniem, routingiem, ruchem, strefami czasowymi, geolokalizacją, geofencingiem, danymi map i operacjami przestrzennymi, którym towarzyszą zestawy SDK dla Internetu i systemu Android ułatwiające i uelastyczniające proces programowania oraz umożliwiające jego przenoszenie między platformami.
@@ -35,13 +35,15 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: Utwórz aplikację internetową z funkcjami geoprzestrzennymi, aby szukać punktów orientacyjnych i wyznaczać trasy do miejsc za pomocą usług Azure Maps.
+    text: Utwórz aplikację internetową z funkcjami geoprzestrzennymi, aby szukać punktów orientacyjnych, wyznaczać trasy do miejsc i śledzić urządzenia za pomocą geofencingu w usłudze Azure Maps.
   - type: list
     style: ordered
     items:
     - html: <a href="/azure/azure-maps/tutorial-search-location">Wyszukiwanie punktów orientacyjnych</a>
     - html: <a href="/azure/azure-maps/tutorial-route-location">Wyznaczanie trasy do punktu orientacyjnego</a>
     - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">Trasy zależne od środka transportu</a>
+    - html: <a href="/azure/azure-maps/tutorial-create-store-locator">Tworzenie lokalizatora magazynu</a>
+    - html: <a href="/azure/azure-maps/tutorial-geofence">Konfigurowanie geofencingu</a>
 - title: Dokumentacja
   items:
   - type: list
@@ -51,4 +53,4 @@ sections:
     - title: JavaScript
       html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">Kontrolka mapy</a></p>
     - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Timezone Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps-management/">Zarządzanie kontami usługi Maps</a></p>
+      html: <p><a href="https://docs.microsoft.com/rest/api/maps/data">Usługa danych</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">Usługa geolokalizacji</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">Render Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">Route Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">Search Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">Usługa danych przestrzennych</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">Timezone Service</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">Traffic Service</a></p>

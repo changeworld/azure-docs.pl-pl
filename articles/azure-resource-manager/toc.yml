@@ -142,9 +142,6 @@ items:
       href: cli-azure-resource-manager.md
     - name: Przenoszenie zasobów
       href: resource-group-move-resources.md
-      items:
-      - name: Obsługa przenoszenia z podziałem na typ zasobu
-        href: move-support-resources.md
     - name: Organizowanie zasobów przy użyciu tagów
       href: resource-group-using-tags.md
     - name: Blokowanie zasobów
@@ -218,8 +215,12 @@ items:
       href: resource-group-template-functions-resource.md
     - name: Funkcje ciągów
       href: resource-group-template-functions-string.md
-  - name: Pomoc techniczna dla tagów
-    href: tag-support.md
+  - name: Możliwości dotyczące zasobów
+    items:
+    - name: Obsługa przenoszenia
+      href: move-support-resources.md
+    - name: Pomoc techniczna dla tagów
+      href: tag-support.md
   - name: REST — Resource Manager
     href: /rest/api/resources/
   - name: REST — Deployment Manager
@@ -248,9 +249,9 @@ items:
     href: resource-manager-personal-data.md
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=azure-resource-manager
-ms.openlocfilehash: 0256bc1bf00680a36d1a8f4286757e56243e54f5
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 3f42a8db14c953aa97f9cd7990ac7602d1d6b719
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329159"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235805"

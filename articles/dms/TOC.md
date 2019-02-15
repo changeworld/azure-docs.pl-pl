@@ -15,6 +15,7 @@
 ## [Migrowanie bazy danych MySQL do usługi Azure DB dla MySQL w trybie online](tutorial-mysql-azure-mysql-online.md)
 ## [Migrowanie bazy danych PostgreSQL do usługi Azure DB dla MySQL w trybie online](tutorial-postgresql-azure-postgresql-online.md)
 ## [Migrowanie bazy danych MongoDB do interfejsu API Mongo usługi Azure Cosmos DB w trybie offline](tutorial-mongodb-cosmos-db.md)
+## [Migrowanie bazy danych MongoDB do interfejsu API Mongo usługi Azure Cosmos DB w trybie online](tutorial-mongodb-cosmos-db-online.md)
 
 # Przewodniki z instrukcjami
 ## [Używanie programu PowerShell do migrowania programu SQL Server do usługi Azure SQL DB](howto-sql-server-to-azure-sql-powershell.md)

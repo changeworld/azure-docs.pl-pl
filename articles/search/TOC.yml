@@ -118,11 +118,11 @@ items:
       href: search-create-index-portal.md
     - name: Analizatory
       items:
-      - name: Dodawanie analizatorów tekstu
+      - name: Dodawanie analizatorów
         href: search-analyzers.md
-      - name: Dodawanie analizatorów języków
+      - name: Dodawanie analizatora języka
         href: index-add-language-analyzers.md
-      - name: Dodawanie analizatorów niestandardowych
+      - name: Dodawanie niestandardowego analizatora
         href: index-add-custom-analyzers.md
     - name: Dodawanie funkcji automatycznego sugerowania
       href: index-add-suggesters.md
@@ -196,17 +196,17 @@ items:
       href: search-query-overview.md
     - name: Eksplorator wyszukiwania (portal)
       href: search-explorer.md
-    - name: Przykłady prostej składni
+    - name: Prosta składnia zapytań
+      href: query-simple-syntax.md
+    - name: Pełna składnia zapytań Lucene
+      href: query-lucene-syntax.md
+    - name: Przykłady zapytań (prosta składnia)
       href: search-query-simple-examples.md
-    - name: Przykłady składni Lucene
+    - name: Przykłady zapytań (pełna składnia Lucene)
       href: search-query-lucene-examples.md
-    - name: Składnia zapytań
-      items:
-      - name: Prosta składnia zapytań
-        href: query-simple-syntax.md
-      - name: Składnia zapytań Lucene
-        href: query-lucene-syntax.md
-    - name: Stronicowanie wyników
+  - name: Obsługa wyników
+    items:
+    - name: Funkcje związane ze stronami
       href: search-pagination-page-layout.md
   - name: Filtrowanie i sortowanie danych
     items:
@@ -307,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Filmy wideo
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: eeac3c7bf976bf1a3ccc44c30127420e00c7a776
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a38dd0b739b5f34826798370b4ffa4ad84cc525d
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099058"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299483"
