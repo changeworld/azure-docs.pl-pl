@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 31ff0435487592577915e526abcb97197f591449
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 864e9586082ed95bf17135414ec4b879e3034ace
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000851"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267346"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Agregacje w zapytaniach dzienników usługi Azure Monitor
 
@@ -147,7 +147,7 @@ Perf
 | summarize stdev(CounterValue), percentiles(CounterValue, 50) by Computer
 ```
 
-Zobacz inne lekcje dotyczące korzystania z [język zapytań w Eksploratorze danych](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
+Zobacz inne lekcje dotyczące korzystania z [język zapytania Kusto](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
 
 - [Operacje na ciągach](string-operations.md)
 - [Operacje daty i godziny](datetime-operations.md)

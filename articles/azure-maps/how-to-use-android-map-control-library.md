@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3f7579324e1218cc2e2c3594889db776da6e529
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c1258ab619b165553c55481ad67d663be65ac832
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56143794"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269607"
 ---
 # <a name="how-to-use-azure-maps-android-sdk"></a>Jak używać usługi Azure Maps Android SDK
 
@@ -45,7 +45,7 @@ Zobacz [dokumentacji programu Android Studio](https://developer.android.com/stud
 
 ## <a name="set-up-a-virtual-device"></a>Konfigurowanie urządzenia wirtualnego
 
-Program android Studio umożliwia skonfigurowanie urządzenia wirtualnego systemu Android na tym komputerze. Co może pomóc w testowania aplikacji, podczas tworzenia. Konfigurowanie urządzenia wirtualnego kliknij ikonę dla systemu Android Virtual Device (AVD) Manager u góry prawej strony ekranu projektu. Następnie kliknij przycisk **tworzenie urządzenia wirtualnego** przycisku. Można również uzyskać z menedżerem przy użyciu narzędzi > Android > Menedżera AVD, na pasku narzędzi. Z **telefony** kategorii, wybierz opcję **Nexus 5 X** i kliknij przycisk **dalej**.
+Program android Studio umożliwia skonfigurowanie urządzenia wirtualnego systemu Android na tym komputerze. Co może pomóc w testowania aplikacji, podczas tworzenia. Do skonfigurowania urządzenia wirtualnego kliknij ikonę Android Virtual Device (AVD) Manager w górnym rogu ekranu projektu. Następnie kliknij przycisk **tworzenie urządzenia wirtualnego** przycisku. Można również uzyskać z menedżerem za pośrednictwem **Narzędzia > Android > Menedżera AVD** na pasku narzędzi. Z **telefony** kategorii, wybierz opcję **Nexus 5 X** i kliknij przycisk **dalej**.
 
 Dowiedz się więcej o konfigurowaniu AVD w [dokumentacji programu Android Studio](https://developer.android.com/studio/run/managing-avds).
 
@@ -55,7 +55,7 @@ Dowiedz się więcej o konfigurowaniu AVD w [dokumentacji programu Android Studi
 
 Przed przejściem do przodu do tworzenia aplikacji, wykonaj poniższe kroki, aby zainstalować zestaw SDK systemu Android mapy platformy Azure. 
 
-1. Dodaj następujące polecenie, aby **allprojects**, bloku repozytoriów usługi **build.gradle** pliku.
+1. Dodaj następujące polecenie, aby **wszystkie projekty**, bloku repozytoriów usługi **build.gradle** pliku.
 
     ```
     maven {
@@ -79,7 +79,7 @@ Przed przejściem do przodu do tworzenia aplikacji, wykonaj poniższe kroki, aby
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. Skonfiguruj uprawnienia, dodając następujące polecenie, aby "Pliku androidmanifest.XML dla elementu"
+3. Skonfiguruj uprawnienia, dodając następujące polecenie, aby Twoje **pliku AndroidManifest.xml**
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -90,7 +90,7 @@ Przed przejściem do przodu do tworzenia aplikacji, wykonaj poniższe kroki, aby
     </manifest>
     ```
 
-4. Edytuj **res > Układ > activity_main.xml**, więc to wyglądać poniżej XML, takie jak:
+4. Edytuj **res > Układ > activity_main.xml**, więc wygląda jak poniższy kod XML:
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -187,7 +187,7 @@ Przed przejściem do przodu do tworzenia aplikacji, wykonaj poniższe kroki, aby
 
 ## <a name="import-classes"></a>Importowanie klas
 
-Po wykonaniu powyższych czynności, najprawdopodobniej wystąpi ostrzeżenia z systemem Android Studio na fragment tekstu w kodzie. Do obsługi tego trzeba będzie zaimportować niektórych klas, które są odwołuje się `MainActivity.java`.
+Po wykonaniu powyższych czynności, najprawdopodobniej wystąpi ostrzeżenia z systemem Android Studio na fragment tekstu w kodzie. Aby usunąć te ostrzeżenia, należy zaimportować klasy, do którego odwołuje się `MainActivity.java`.
 
 Te klasy mógł automatycznie zaimportować, naciskając klawisz `Alt` + `Enter`(`Option` + `Return` na komputerze Mac). 
 
@@ -288,6 +288,6 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-Ponownie uruchom aplikację i powinien zostać wyświetlony znacznik na mapie, tak jak poniżej.
+Ponowne uruchomienie aplikacji i powinien zostać wyświetlony znacznik na mapie, tak jak poniżej.
 
 ![Przypnij mapę dla systemu android](./media/how-to-use-android-map-control-library/android-map-pin.png)

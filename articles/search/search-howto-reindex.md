@@ -6,21 +6,21 @@ author: HeidiSteen
 manager: cgronlun
 ms.service: search
 ms.topic: conceptual
-ms.date: 12/20/2018
+ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 55de72b2a82dea3dfe763d786966565beb229042
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 1d9dffe9d311674aeb043fcc4c35110775f420af
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745095"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300809"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Jak odbudować indeksu usługi Azure Search
 
 W tym artykule wyjaśniono, jak odbudować indeksu usługi Azure Search, okoliczności, w których są wymagane ponowne kompilowanie i zalecenia dotyczące eliminacji wpływ ponowne kompilowanie dla żądań zapytań trwających.
 
-A *odbudować* odnosi się do porzucania i ponownego tworzenia struktury danych fizycznych skojarzonych z indeksu, w tym wszystkie pola na podstawie odwróconą indeksy. W usłudze Azure Search nie można porzucić i ponownie utwórz określonych pól. Do ponownego utworzenia indeksu, należy usunąć wszystkie magazyny pola, ponownie utworzony na podstawie istniejących lub poprawionego schematu indeksu, a następnie wypełniona przy użyciu przeniesiony do indeksu i pobierane z zewnętrznych źródeł danych. Często służąca do reorganizacji indeksów w czasie projektowania, ale również może być konieczne odbudowanie indeksu poziomie produkcyjnym w celu uwzględnienia zmian strukturalnych, takie jak dodanie typów złożonych.
+A *odbudować* odnosi się do porzucania i ponownego tworzenia struktury danych fizycznych skojarzonych z indeksu, w tym wszystkie pola na podstawie odwróconą indeksy. W usłudze Azure Search nie można porzucić i ponownie utwórz poszczególne pola. Do ponownego utworzenia indeksu, należy usunąć wszystkie magazyny pola, ponownie utworzony na podstawie istniejących lub poprawionego schematu indeksu, a następnie wypełniona przy użyciu przeniesiony do indeksu i pobierane z zewnętrznych źródeł danych. Często służąca do reorganizacji indeksów w czasie projektowania, ale również może być konieczne odbudowanie indeksu poziomie produkcyjnym w celu uwzględnienia zmian strukturalnych, takich jak dodawanie typów złożonych lub Dodawanie pola do sugestory.
 
 W przeciwieństwie do ponowne kompilowanie przyjmujące indeksu w trybie offline *odświeżania danych* działa jako zadanie w tle. Możesz dodawać, Usuń i Zamień dokumenty przy minimalnym zakłóceniu obciążeń związanych z zapytaniami, mimo że wykonywanie zapytań zwykle trwa dłużej. Aby uzyskać więcej informacji na temat aktualizowania indeksowanie zawartości, zobacz [Add, Update lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
@@ -28,7 +28,9 @@ W przeciwieństwie do ponowne kompilowanie przyjmujące indeksu w trybie offline
 
 | Warunek | Opis |
 |-----------|-------------|
-| Zmiana definicji pola | Zmiana nazwy, typ danych lub określonych [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) (wyszukiwanie, filtrowanie, sortowanie, tworzenie aspektów) wymaga ponownej pełnej kompilacji. |
+| Zmiana definicji pola | Zmiana nazwy pola, typ danych lub określonych [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) (wyszukiwanie, filtrowanie, sortowanie, tworzenie aspektów) wymaga ponownej pełnej kompilacji. |
+| Dodanie analizatora do pola | [Analizatory](search-analyzers.md) są zdefiniowane w indeksie, a następnie przypisywane do pól. W dowolnym momencie można dodać analizator do indeksu, ale możesz przypisać tylko analizator po utworzeniu pola. Dotyczy to zarówno **analizatora** i **indexAnalyzer** właściwości. **SearchAnalyzer** właściwość jest wyjątek.
+| Dodawanie pola do sugestora | Jeśli pole już istnieje i chcesz dodać ją do [Sugestory](index-add-suggesters.md) konstruowania, należy odbudować indeksu. |
 | Usuwanie pola | Aby fizycznie Usuń wszystkie ślady pola, musisz odbudować indeksu. Po bezpośrednim ponowna kompilacja nie jest rozwiązaniem, większość programistów go modyfikować kodu aplikacji, aby wyłączyć dostęp do pola "usunięta". Fizycznie definicję pola i zawartość pozostają w indeksie aż do następnego ponowną kompilację, przy użyciu schematu, które pomija pola w danym. |
 | Przełączanie warstwy | Jeśli potrzebujesz większej pojemności, nie istnieje żadne uaktualnienia w miejscu. Nowa usługa jest tworzony w nowym punkcie pojemności, a indeksy muszą zostać skompilowane od podstaw w nowej wersji usługi. |
 
@@ -36,10 +38,10 @@ Inne zmiany można wprowadzić bez wpływu na istniejących struktur fizycznych.
 
 + Dodawanie nowego pola
 + Ustaw **możliwość pobierania** atrybutu istniejącego pola
-+ Nastavit analizator istniejącego pola
++ Ustaw **searchAnalyzer** na istniejącego pola
++ Dodawanie, aktualizowanie lub usuwanie konstrukcja analyzer w ramach indeksu
 + Dodawanie, aktualizowanie lub usuwanie profile oceniania
 + Dodawanie, aktualizowanie lub usuwanie ustawień specyfikacji CORS
-+ Dodawanie, aktualizowanie lub usuwanie sugestory
 + Dodawanie, aktualizowanie lub usuwanie synonymMaps
 
 Po dodaniu nowego pola, istniejących dokumentów indeksowanych podano wartość null dla nowego pola. Podczas odświeżania danych w przyszłości wartości z zewnętrznego źródła danych, Zastąp wartości null, dodawane przez usługę Azure Search.
@@ -76,7 +78,7 @@ Uprawnienia odczytu i zapisu na poziomie usługi są wymagane do aktualizacji in
 
 5. [Ładowanie indeksu z dokumentami](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ze źródła zewnętrznego. Można również użyć tego interfejsu API, jeśli odświeżasz istniejące, niezmienione schemat indeksu przy użyciu zaktualizowanych dokumentów.
 
-Podczas tworzenia indeksu magazynu fizycznego jest przydzielany dla każdego pola w schemacie indeksu z odwróconą Indeks utworzony dla każdego pola, którą można przeszukiwać. Pola są, który może nie można wyszukiwać można używać w filtry lub wyrażeń, ale nie mają odwrócony indeksy i pełnego tekstu nie są można wyszukiwać. Na odbudowywanie indeksu usunąć i ponownie utworzyć te indeksy odwróconą na podstawie schematu indeksu, należy podać.
+Podczas tworzenia indeksu magazynu fizycznego jest przydzielany dla każdego pola w schemacie indeksu z odwróconą Indeks utworzony dla każdego pola, którą można przeszukiwać. Pola, które nie znajdują się wyszukiwanie mogą być używane w filtry lub wyrażeń, ale nie mają odwrócona, indeksy i czy nie pełnotekstowego lub rozmyte przeszukiwania. Na odbudowywanie indeksu usunąć i ponownie utworzyć te indeksy odwróconą na podstawie schematu indeksu, należy podać.
 
 Podczas ładowania indeks każdego pola odwróconą indeks został wypełniony wszystkie wyrazy unikatowy, tokenami z poszczególnych dokumentów, map do dokumentu odpowiednich identyfikatorów. Na przykład podczas indeksowania zestawu danych hotele, odwrócony Indeks utworzony dla pola miejscowości może zawierać warunki dla Seattle, Portland i tak dalej. Dokumenty, które zawierają Seattle lub Portland w polu Miasto musi ich identyfikator dokumentu, na liście obok termin. W przypadku dowolnego [Dodawanie, aktualizowanie lub usuwanie](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) operacji i Lista identyfikatorów dokumentów są odpowiednio aktualizowane.
 

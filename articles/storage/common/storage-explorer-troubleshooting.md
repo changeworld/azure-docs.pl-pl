@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 180780c3a3a644a8da0fa544c37bc8cd252c982f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 32c47233946dacf4e80a9ff3ba25388e1231d7c9
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469502"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301064"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z Eksploratora usługi Storage platformy Azure
 
@@ -28,7 +28,7 @@ Błędy certyfikatów są spowodowane przez jedną z następujących dwóch sytu
 1. Aplikacja jest połączona za pośrednictwem "przezroczystym serwerem proxy", co oznacza przechwytuje ruch HTTPS, odszyfrowuje go i następnie szyfruje za pomocą certyfikatu z podpisem własnym serwera (np. serwera firmy).
 2. Uruchomiono aplikację, która wprowadza certyfikat protokołu SSL z podpisem własnym do wiadomości protokołu HTTPS, które otrzymujesz. Przykłady aplikacji, które wstrzyknąć certyfikaty obejmuje oprogramowanie do kontroli ruchu oprogramowanie antywirusowe i sieci.
 
-Kiedy Eksplorator usługi Storage widzi podpisem własnym lub niezaufany certyfikat, go nie będzie już wiedział, czy odebrano komunikat HTTPS został zmieniony. Jeśli masz kopię certyfikatu z podpisem własnym, możesz wydać polecenie Eksploratora usługi Storage zaufania temu certyfikatowi, wykonując następujące czynności:
+Gdy Eksplorator usługi Storage widzi podpisem własnym lub niezaufany certyfikat, go nie będzie już wiedział, czy odebrano komunikat HTTPS został zmieniony. Jeśli masz kopię certyfikatu z podpisem własnym, możesz wydać polecenie Eksploratora usługi Storage zaufania temu certyfikatowi, wykonując następujące czynności:
 
 1. Uzyskaj kopia certyfikatu X.509 (.cer) z kodowaniem Base-64
 2. Kliknij przycisk **Edytuj** > **certyfikaty SSL** > **Importuj certyfikaty**, a następnie za pomocą selektora plików Znajdź, wybierz i Otwórz plik cer
@@ -53,6 +53,18 @@ Jeśli wiesz skąd pochodzą certyfikatu, możesz wypróbować następujące kro
 Jeśli nie można odnaleźć żadnych certyfikatów z podpisem własnym za pomocą powyższych kroków, skontaktuj się z nami za pośrednictwem narzędzia opinii, aby uzyskać dalszą pomoc. Alternatywnie można wybrać, czy można uruchomić Eksploratora usługi Storage z poziomu wiersza polecenia przy użyciu `--ignore-certificate-errors` flagi. Gdy uruchomiony przy użyciu tej flagi, Eksploratora usługi Storage będzie ignorować błędy certyfikatów.
 
 ## <a name="sign-in-issues"></a>Problemy dotyczące logowania
+
+### <a name="blank-sign-in-dialog"></a>Puste okno dialogowe logowania do
+Pusty znak w oknach dialogowych są najczęściej powodowane przez usługi AD FS pytaniem Eksploratora usługi Storage do wykonania przekierowania, który jest nieobsługiwany przez elektronów. Aby obejść ten problem, można spróbować użyć przepływu kodu urządzenia podczas logowania. W tym celu wykonaj następujące kroki:
+1. "Przejdź do celów doświadczalnych" -> "Użyj logowania kodu urządzenia".
+2. Otwórz okno dialogowe Łączenie (za pośrednictwem ikony plug pionowy pasek po lewej stronie, lub "Dodawanie konta" na panelu konta).
+3. Wybierz środowisko, które chcesz zalogować się do.
+4. Kliknij przycisk "Zaloguj".
+5. Postępuj zgodnie z instrukcjami w następnej panelu.
+
+Jeśli okaże się, że problemy, logując się do konta chcesz użyć, ponieważ domyślna przeglądarka już zalogowali się do innego konta, możesz:
+1. Ręcznie skopiować link i kod do prywatnego sesji przeglądarki.
+2. Ręcznie skopiować link i kodu w innej przeglądarce.
 
 ### <a name="reauthentication-loop-or-upn-change"></a>Ponowne uwierzytelnianie pętli lub zmień nazwę UPN
 Jeśli w pętli ponownego lub zostały zmienione nazwy UPN jednego z kont, spróbuj wykonać następujące czynności:
@@ -90,7 +102,7 @@ Jeśli żadna z tych metod działa [Otwórz problem w serwisie GitHub](https://g
 Jeśli nie można pobrać subskrypcji po pomyślnym zalogowaniu, wypróbuj poniższe metody rozwiązywania problemów:
 
 * Sprawdź, czy Twoje konto ma dostęp do subskrypcji, których oczekujesz. Aby sprawdzić, czy masz dostęp, logując się do portalu dla środowiska platformy Azure, którą próbujesz użyć.
-* Upewnij się, że jesteś użytkownikiem zarejestrowanym w przy użyciu Azure poprawne środowiska (Azure, chińska wersja platformy Azure, Azure (Niemcy), dla administracji USA lub środowisko niestandardowe).
+* Upewnij się, że jesteś użytkownikiem zarejestrowanym w przy użyciu Azure poprawne środowiska (Azure, Azure China 21Vianet, Azure (Niemcy), dla administracji USA lub środowisko niestandardowe).
 * Jeśli używasz serwera proxy, upewnij się, poprawnie skonfigurowany serwer proxy Eksploratora usługi Storage.
 * Spróbuj usunąć i ponownie dodać konto.
 * Jeśli łącze "Informacje dodatkowe", przejrzyj i zobacz, jakie komunikaty o błędach są zgłaszane w przypadku dzierżaw, które kończą się niepowodzeniem. Jeśli nie masz pewności co należy zrobić komunikaty o błędach można znaleźć, a następnie możesz [Otwórz problem w serwisie GitHub](https://github.com/Microsoft/AzureStorageExplorer/issues).
@@ -116,7 +128,7 @@ Najpierw upewnij się, że następujące wprowadzone informacje są poprawne:
 * Adres URL serwera proxy i numer portu
 * Nazwa użytkownika i hasło, jeśli jest to wymagane przez serwer proxy
 
-Należy pamiętać, że Eksplorator usługi Storage nie obsługuje plik PAC do konfigurowania ustawień serwera proxy.
+Należy pamiętać, że Eksplorator usługi Storage nie obsługuje plików automatyczna konfiguracja serwera proxy do konfigurowania ustawień serwera proxy.
 
 ### <a name="common-solutions"></a>Typowe rozwiązania
 

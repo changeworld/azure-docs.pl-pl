@@ -12,21 +12,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
-ms.openlocfilehash: 9aff955a2ae0f40785036c2fee22804785e6526a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c428372868e3d3fac58bc851de8c59ad01d1d8f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002290"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269964"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>Analizuj dane dzienników w usłudze Azure Monitor
 
-Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w obszarze roboczym usługi Log Analytics, która jest oparta na [Eksploratora danych usługi Azure](/azure/data-explorer). Gromadzi dane telemetryczne z różnych źródeł i używa [języka w Eksploratorze danych zapytań](/azure/kusto/query) do pobierania i analizowania danych.
+Dane dzienników zbieranych przez usługi Azure Monitor są przechowywane w obszarze roboczym usługi Log Analytics, która jest oparta na [Eksploratora danych usługi Azure](/azure/data-explorer). Gromadzi dane telemetryczne z różnych źródeł i używa [język zapytania Kusto](/azure/kusto/query) wykorzystywane przez Eksploratora danych do pobierania i analizowania danych.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 
-## <a name="log-queries"></a>Dziennik zapytań
+## <a name="log-queries"></a>Rejestrowanie zapytań
 
 Wymagane jest zapytanie dziennika, aby pobrać wszystkie dane dzienników z usługi Azure Monitor.  Czy jesteś [analizowanie danych w portalu](portals.md), [konfigurowania reguły alertu](../platform/alerts-metric.md) Aby otrzymywać powiadomienia o określony warunek, lub podczas pobierania danych przy użyciu [interfejsu API usługi Azure Monitor dzienniki](https://dev.loganalytics.io/) , użyjesz zapytania, aby określić dane, które mają.  Ten artykuł zawiera opis używania kwerend dzienników w usłudze Azure Monitor i oferuje pojęcia, które należy zrozumieć przed utworzeniem jeden.
 
@@ -47,7 +47,7 @@ Różne sposoby, że używany jest program zapytań dzienników w usłudze Azure
 ![Wyszukiwanie w Dzienniku](media/log-query-overview/queries-overview.png)
 
 ## <a name="write-a-query"></a>Napisz zapytanie
-Usługa Azure Monitor korzysta z [wersję języka zapytań Eksploratora danych](get-started-queries.md) do pobierania i analizowania danych dziennika w na różne sposoby.  Będzie zazwyczaj rozpocząć podstawowe zapytania, a następnie postęp, aby użyć bardziej zaawansowane funkcje, jakie wymagania są coraz bardziej złożone.
+Usługa Azure Monitor korzysta z [wersji języka zapytania Kusto](get-started-queries.md) do pobierania i analizowania danych dziennika w na różne sposoby.  Będzie zazwyczaj rozpocząć podstawowe zapytania, a następnie postęp, aby użyć bardziej zaawansowane funkcje, jakie wymagania są coraz bardziej złożone.
 
 Podstawowa struktura zapytania jest tabela źródłowa następuje szereg operatory oddzielony znakiem kreski pionowej `|`.  Można połączyć w łańcuch ze sobą wiele operatorów, aby dostosować dane i wykonywać zaawansowane funkcje.
 

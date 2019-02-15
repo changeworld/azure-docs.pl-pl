@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: d6065420b9081333fc257501ace868f64220ca63
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dafafa8ff5d721034b3b10bdeb1a2fc09cd32835
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005254"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267584"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Splunk do wykonywania zapytań w usłudze Azure Monitor dziennika
 
-W tym artykule jest przeznaczona do pomagają użytkownikom, którzy są zaznajomieni z Splunk, aby dowiedzieć się, język zapytań Eksploratora danych, do pisania zapytań dzienników w usłudze Azure Monitor. Bezpośrednie porównania są nawiązywane między dwa, aby zrozumieć podstawowe różnice, a także podobieństwa, gdzie można wykorzystać wiedzę na temat istniejących.
+W tym artykule jest przeznaczona do pomagają użytkownikom, którzy są zaznajomieni z Splunk do uczenia się języka zapytania Kusto pisania zapytań dzienników w usłudze Azure Monitor. Bezpośrednie porównania są nawiązywane między dwa, aby zrozumieć podstawowe różnice, a także podobieństwa, gdzie można wykorzystać wiedzę na temat istniejących.
 
 ## <a name="structure-and-concepts"></a>Struktura i pojęcia
 

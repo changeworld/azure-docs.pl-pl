@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 83ee548befdc7ef0a4e7ed2d4b4e61b42a217f12
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112fff011ebfedc1abf6981661da5fd4d97fc3d0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247072"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267153"
 ---
 # <a name="troubleshooting-azure-machine-learning-service-aks-and-aci-deployments"></a>Rozwiązywanie problemów z wdrożeniami usługi AKS i ACI usługi Azure Machine Learning
 
@@ -196,12 +196,15 @@ $ docker run -p 8000:5001 <image_id>
 Często w `init()` funkcji w skrypt oceniania `Model.get_model_path()` funkcja jest wywoływana, aby zlokalizować plik modelu lub folder z plikami modelu w kontenerze. Jest to często źródło błędu, jeśli nie można odnaleźć modelu pliku lub folderu. Najprostszym sposobem, aby debugować ten błąd jest uruchomienie poniższego kodu języka Python w powłoce kontenera:
 
 ```python
+import logging
+logging.basicConfig(level=logging.DEBUG)
 from azureml.core.model import Model
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
 Wypisuje to ścieżka lokalna (względem `/var/azureml-app`) w kontenerze, gdzie skrypt oceniania oczekuje, aby znaleźć model pliku lub folderu. Następnie można sprawdzić, czy plik lub folder jest w rzeczywistości których oczekuje się, można.
 
+Ustawienie poziomu rejestrowania debugowania może zapewnia Przyczyna dodatkowe informacje mają być rejestrowane, które mogą okazać się przydatna podczas identyfikacji awarii.
 
 ## <a name="function-fails-runinputdata"></a>Funkcja kończy się niepowodzeniem: run(input_data)
 Jeśli usługa została pomyślnie wdrożona, ale jej ulega awarii, gdy opublikujesz danych do punktu końcowego oceniania, można dodać błąd Przechwytywanie instrukcji w swojej `run(input_data)` funkcji tak, aby zamiast tego zwraca szczegółowy komunikat o błędzie. Na przykład:

@@ -12,16 +12,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: faeba611dfc55307f8f855ee45a1a8d37603f2f5
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 0c7f248023a97bdad09c2c51e9e9a28073def086
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117388"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300129"
 ---
 # <a name="deep-diagnostics-for-web-apps-and-services-with-application-insights"></a>Szczegółowa diagnostyka dla aplikacji internetowych i usług dzięki usłudze Application Insights
 ## <a name="why-do-i-need-application-insights"></a>Dlaczego muszę usługi Application Insights?
-Usługa Application Insights monitoruje uruchomionej aplikacji sieci web. Informuje o awarii i problemów z wydajnością i pomaga analizować, jak klienci korzystają z Twojej aplikacji. Dla aplikacji działających na wielu platformach (ASP.NET, J2EE, Node.js,...) i lepiej jest hostowana w chmurze lub lokalnie. 
+Usługa Application Insights monitoruje uruchomionej aplikacji sieci web. Informuje o awarii i problemów z wydajnością i pomaga analizować, jak klienci korzystają z Twojej aplikacji. Dla aplikacji działających na wielu platformach (ASP.NET, Java EE Node.js,...) i lepiej jest hostowana w chmurze lub lokalnie. 
 
 ![Aspekty złożoności opracowywania aplikacji sieci web](./media/devops/010.png)
 
@@ -118,7 +118,7 @@ Mapa aplikacji automatycznie odnajduje topologię aplikacji, rozmieszczania info
 
 ![Mapa aplikacji](./media/devops/0050.png)
 
-## <a name="application-insights-analytics"></a>Analiza usługi Application Insights
+## <a name="application-insights-analytics"></a>Application Insights Analytics
 Za pomocą [Analytics](../../azure-monitor/app/analytics.md), możesz pisać zapytania dowolnego w zaawansowanym językiem podobnego do SQL.  Diagnozowanie w stosie całej aplikacji staje się proste zgodnie z różnych perspektyw nawiązywanie połączeń i można zadać odpowiednie pytania do skorelowania wydajność usługi za pomocą metryki biznesowe i środowiskiem pracy klienta. 
 
 Można tworzyć zapytania, wszystkie wystąpienia dane telemetryczne i metryki nieprzetworzonych danych przechowywanych w portalu. Język zawiera filtr sprzężenia, agregacji i innych operacji. Można obliczyć pola i przeprowadzania analizy statystycznej. Ma graficznego i tabelaryczne wizualizacje.

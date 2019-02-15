@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: bdd512972f1a684a3b76ae0323bbadd87bf0d659
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9ea9cc116a13aac2dca9edf8ba86c933310b5198
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238321"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269641"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 
-Usługa Azure Stream Analytics oferuje wbudowaną usługi machine learning funkcje wykrywania anomalii zależności, które mogą służyć do monitorowania dwóch anomalie najczęściej występujące: tymczasowe i trwałe. Za pomocą **AnomalyDetection_SpikeAndDip** i **AnomalyDetection_ChangePoint** funkcje, możesz przeprowadzać wykrywanie anomalii bezpośrednio w ramach zadania usługi Stream Analytics.
+Dostępne w chmurze i usługi Azure IoT Edge, Azure Stream Analytics oferuje wbudowane usługi machine learning funkcje wykrywania anomalii zależności, które mogą służyć do monitorowania dwóch anomalie najczęściej występujące: tymczasowe i trwałe. Za pomocą **AnomalyDetection_SpikeAndDip** i **AnomalyDetection_ChangePoint** funkcje, możesz przeprowadzać wykrywanie anomalii bezpośrednio w ramach zadania usługi Stream Analytics.
 
 Modele uczenia maszynowego założono szeregów czasowych równomiernie próbkowane. Jeśli Szeregi czasowe nie jest jednolite, może wstawić etap agregacji za pomocą okna wirowania przed wywołaniem wykrywania anomalii.
 
@@ -36,13 +36,14 @@ Luki w szeregu czasowym może być to wynikiem modelu nie odbiera zdarzenia w ok
 
 ## <a name="spike-and-dip"></a>Kolekcji i dip
 
-Tymczasowe anomalie w strumieniu zdarzeń serie czasu są znane jako gwałtowne wzrosty i spadki. Wzrostów i spadków można monitorować za pomocą operatora usługi Machine Learning na podstawie **AnomalyDetection_SpikeAndDip**.
+Tymczasowe anomalie w strumieniu zdarzeń serie czasu są znane jako gwałtowne wzrosty i spadki. Wzrostów i spadków można monitorować za pomocą operatora usługi Machine Learning na podstawie [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+).
 
 ![Przykład kolekcji i dip anomalii](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
 W tym samym metodzie przesuwanego okna, jeśli drugi kolekcji jest mniejszy niż pierwszy z nich, obliczanych wyników dla mniejszych kolekcji prawdopodobnie nie ma znaczenia wystarczająco dużo, w porównaniu do wyników dla pierwszej kolekcji w ramach poziom ufności określony. Możesz wypróbować, zmniejszając modelu ustawienie poziomu zaufania do przechwytywania takiego anomalii. Jednak w przypadku uruchomienia uzyskać zbyt wiele alertów, można użyć nowszej interwał ufności.
 
-Poniższe przykładowe zapytanie zakłada jednolitego wejściowych wysokości 1 zdarzeń na sekundę w ciągu 2 minut przesuwanego okna z historię zdarzeń na 120. Końcowe instrukcji SELECT wyodrębnia i wyświetla wynik i anomalii stanu z poziomu ufności 95%.
+Poniższe przykładowe zapytanie zakłada jednolitą stawkę wejściowych jedno zdarzenie na sekundę w 2-minutowy przesuwającego się okna z historią 120 zdarzeń. Końcowe instrukcji SELECT wyodrębnia i wyświetla wynik i anomalii stanu z poziomu ufności 95%.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -67,9 +68,9 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Zmień punkt
 
-Trwałe anomalie w strumieniu zdarzeń serii czasu są zmiany w rozkładu wartości w strumieniu zdarzeń, takich jak zmiany poziomu i trendów. W usłudze Stream Analytics, takie anomalie są wykrywane przy użyciu uczenia maszynowego na podstawie **AnomalyDetection_ChangePoint** operatora.
+Trwałe anomalie w strumieniu zdarzeń serii czasu są zmiany w rozkładu wartości w strumieniu zdarzeń, takich jak zmiany poziomu i trendów. W usłudze Stream Analytics, takie anomalie są wykrywane przy użyciu uczenia maszynowego na podstawie [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics) operatora.
 
-Trwałe zmiany trwać znacznie dłużej, niż gwałtowne wzrosty i spadki i wskazywać, że zdarzenia krytycznego. Trwałe zmiany nie są zwykle łatwo widoczna gołym okiem, ale może zostać wykryte za pomocą **AnomalyDetection_ChangePoint** operatora.
+Trwałe zmiany trwać znacznie dłużej, niż gwałtowne wzrosty i spadki i wskazywać, że zdarzenia krytycznego. Trwałe zmiany nie są zwykle widoczne gołym okiem, ale może zostać wykryte za pomocą **AnomalyDetection_ChangePoint** operatora.
 
 Poniższy rysunek jest przykładem zmiany poziomu:
 
@@ -79,7 +80,7 @@ Poniższej ilustracji przedstawiono przykładowy zmiany trendów:
 
 ![Przykład trend zmiany anomalii](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-Poniższe przykładowe zapytanie zakłada jednolitego wejściowych wysokości 1 zdarzeń na sekundę w 20 minut, w oknie z rozmiarem historii zdarzeń 1200 kroczącym. Końcowe instrukcji SELECT wyodrębnia i wyświetla wynik i anomalii stanu z poziomu ufności 80%.
+Poniższe przykładowe zapytanie zakłada jednolitą stawkę wejściowych jedno zdarzenie na sekundę w przesuwającego się okna 20 minut z rozmiarem historii zdarzeń 1200. Końcowe instrukcji SELECT wyodrębnia i wyświetla wynik i anomalii stanu z poziomu ufności 80%.
 
 ```SQL
 WITH AnomalyDetectionStep AS

@@ -5,21 +5,21 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 07/11/2018
+ms.date: 02/14/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: ccfc91e85196cbc8295bce71e512d9cf856a23c8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e2c770625cf92e0db269d14d2f63dc0c896cbe9c
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453386"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267516"
 ---
 # <a name="what-is-azure-importexport-service"></a>Co to jest usługa Azure Import/Export?
 
 Usługa Azure Import/Export umożliwia bezpieczne importowania dużych ilości danych do usługi Azure Blob storage i plików platformy Azure przez wysyłanie dysków do centrum danych platformy Azure. Ta usługa może również przenoszenia danych z usługi Azure Blob storage do stacji dysków do wysłania do lokacji lokalnej. Można zaimportować dane z jednego lub więcej dysków do usługi Azure Blob storage lub Azure Files. 
 
-Dostarczyć własnej stacji dysków i transfer danych za pomocą usługi Azure Import/Export. Można również użyć dysków dostarczonych przez firmę Microsoft. 
+Podaj stacje dysków, a transfer danych za pomocą usługi Azure Import/Export. Można również użyć dysków dostarczonych przez firmę Microsoft. 
 
 Jeśli chcesz przesyłać dane przy użyciu dysków twardych, dostarczone przez firmę Microsoft, możesz użyć [dysku Azure Data Box](../../databox/data-box-disk-overview.md) do importowania danych do platformy Azure. Microsoft jest dostarczany do 5 zaszyfrowanego dysku dysków półprzewodnikowych (SSD) z całkowitej pojemności 40 TB — według kolejności, w centrum danych za pomocą operatora regionalne. Można szybko skonfigurować stacje dysków, skopiować dane do stacji dysków przy użyciu połączenia USB 3.0 i dostarczanie z stacje dysków, wróć do platformy Azure. Aby uzyskać więcej informacji, przejdź do [dysku Azure Data Box — omówienie](../../databox/data-box-disk-overview.md).
 

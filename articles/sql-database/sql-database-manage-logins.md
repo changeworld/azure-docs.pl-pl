@@ -13,12 +13,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 34c7d431815ae7a9452bb0703cde18050d38bdb7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b12fdcec32aca65b0c66f6a3fb14595453d36fdb
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164621"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301761"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>Kontrolowanie i udzielanie dostępu do bazy danych SQL Database i SQL Data Warehouse
 
@@ -84,9 +84,9 @@ Oprócz ról administracyjnych na poziomie serwera omówionych wcześniej usług
 
 ### <a name="database-creators"></a>Kreatory bazy danych
 
-Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli mogą tworzyć nowe bazy danych. Aby użyć tej roli, należy utworzyć użytkownika w bazie danych `master` i dodać go do roli bazy danych **dbmanager**. Aby utworzyć bazę danych, użytkownik musi być użytkownikiem bazującym na identyfikatorze logowania do serwera SQL Server w bazie danych master lub użytkownikiem zawartej bazy danych bazującym na użytkowniku usługi Azure Active Directory.
+Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli mogą tworzyć nowe bazy danych. Aby użyć tej roli, należy utworzyć użytkownika w bazie danych `master` i dodać go do roli bazy danych **dbmanager**. Aby utworzyć bazę danych, użytkownik musi być użytkownikiem opartym na identyfikatorze logowania programu SQL Server, w `master` bazy danych lub użytkownika zawartej bazy danych na podstawie usługi Azure Active Directory użytkownika.
 
-1. Połącz się z bazą danych master przy użyciu konta administratora.
+1. Przy użyciu konta administratora, połączyć się z `master` bazy danych.
 2. Utwórz identyfikator logowania uwierzytelniania programu SQL Server przy użyciu [CREATE LOGIN](https://msdn.microsoft.com/library/ms189751.aspx) instrukcji. Przykładowa instrukcja:
 
    ```sql
@@ -98,7 +98,7 @@ Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli 
 
    W celu poprawy wydajności nazwy logowania (nazwy główne na poziomie serwera) są tymczasowo przechowywane w pamięci podręcznej na poziomie bazy danych. Aby odświeżyć pamięć podręczną uwierzytelniania, zobacz artykuł [DBCC FLUSHAUTHCACHE](https://msdn.microsoft.com/library/mt627793.aspx).
 
-3. W bazie danych master utwórz użytkownika za pomocą instrukcji [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx). Użytkownik może być użytkownikiem uwierzytelnienia zawartej bazy danych usługi Azure Active Directory (jeśli skonfigurowano środowisko dla uwierzytelniania usługi Azure AD), użytkownikiem uwierzytelnienia zawartej bazy danych programu SQL Server lub użytkownikiem uwierzytelniania programu SQL Server w oparciu o nazwę logowania uwierzytelniania programu SQL Server (utworzonym w poprzednim kroku). Przykładowe instrukcje:
+3. W `master` bazy danych, Utwórz użytkownika za pomocą [CREATE USER](https://msdn.microsoft.com/library/ms173463.aspx) instrukcji. Użytkownik może być użytkownikiem uwierzytelnienia zawartej bazy danych usługi Azure Active Directory (jeśli skonfigurowano środowisko dla uwierzytelniania usługi Azure AD), użytkownikiem uwierzytelnienia zawartej bazy danych programu SQL Server lub użytkownikiem uwierzytelniania programu SQL Server w oparciu o nazwę logowania uwierzytelniania programu SQL Server (utworzonym w poprzednim kroku). Przykładowe instrukcje:
 
    ```sql
    CREATE USER [mike@contoso.com] FROM EXTERNAL PROVIDER; -- To create a user with Azure Active Directory
@@ -106,7 +106,7 @@ Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli 
    CREATE USER Mary FROM LOGIN Mary;  -- To create a SQL Server user based on a SQL Server authentication login
    ```
 
-4. Dodaj nowego użytkownika do roli bazy danych **dbmanager** przy użyciu instrukcji [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx). Przykładowe instrukcje:
+4. Dodawanie nowego użytkownika do **dbmanager** roli bazy danych w `master` przy użyciu [ALTER ROLE](https://msdn.microsoft.com/library/ms189775.aspx) instrukcji. Przykładowe instrukcje:
 
    ```sql
    ALTER ROLE dbmanager ADD MEMBER Mary; 
@@ -118,7 +118,7 @@ Jedna z tych ról administracyjnych to rola **dbmanager**. Członkowie tej roli 
 
 5. W razie potrzeby skonfiguruj regułę zapory, aby umożliwić połączenie się nowemu użytkownikowi. (Nowy użytkownik może być objęty istniejącą regułą zapory).
 
-Teraz użytkownik może łączyć się z bazą danych master i tworzyć nowe bazy danych. Konto tworzące bazę danych staje się właścicielem bazy danych.
+Teraz użytkownik może łączyć się `master` bazy danych i może tworzyć nowe bazy danych. Konto tworzące bazę danych staje się właścicielem bazy danych.
 
 ### <a name="login-managers"></a>Menedżerowie logowania
 
@@ -141,11 +141,19 @@ Początkowo tylko jeden z administratorów lub jeden z właścicieli bazy danych
 GRANT ALTER ANY USER TO Mary;
 ```
 
-Aby przydzielić dodatkowym użytkownikom pełną kontrolę nad bazą danych, należy uczynić ich członkami ustalonej roli bazy danych **db_owner** za pomocą instrukcji `ALTER ROLE`.
+Aby przydzielić dodatkowym użytkownikom pełną kontrolę nad bazy danych, należy wprowadzić je jako członka **db_owner** stałej roli bazy danych.
+
+W przypadku użycia usługi Azure SQL Database `ALTER ROLE` instrukcji.
 
 ```sql
-ALTER ROLE db_owner ADD MEMBER Mary; 
+ALTER ROLE db_owner ADD MEMBER Mary;
 ```
+
+Azure SQL Data Warehouse używany [EXEC sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql).
+```sql
+EXEC sp_addrolemember 'db_owner', 'Mary';
+```
+
 
 > [!NOTE]
 > Jest jednym z typowych powodów Utwórz użytkownika bazy danych, w oparciu o identyfikator logowania do bazy danych programu SQL server dla użytkowników, którzy muszą mieć dostęp do wielu baz danych. Ponieważ zawartych użytkowników bazy danych są poszczególnymi jednostkami, każda baza danych przechowuje własny użytkownika i własne hasło. Może to powodować obciążenie, użytkownik musi następnie pamiętam każdego dla każdej bazy danych i może stać się trudną w przypadku konieczności zmiany wiele haseł dla wielu baz danych. Jednak gdy przy użyciu nazwy logowania programu SQL Server i wysokiej dostępności (aktywna replikacja geograficzna i grupy trybu failover), dane logowania programu SQL Server musi mieć wartość ręcznie na każdym serwerze. W przeciwnym razie użytkownika bazy danych będzie już można zamapować na nazwy logowania serwera, po przejściu w tryb failover występuje i nie będą mogli korzystać z trybu failover wpis w bazie danych. Aby uzyskać więcej informacji na temat konfigurowania logowania dla replikacji geograficznej, zobacz [Konfigurowanie i zarządzanie zabezpieczeniami usługi Azure SQL Database, przywracanie geograficzne lub pracy awaryjnej](sql-database-geo-replication-security-config.md).

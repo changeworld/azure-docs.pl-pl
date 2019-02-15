@@ -1,6 +1,6 @@
 ---
 title: Rejestrowanie usługi - Azure Machine Learning Studio w sieci Web | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak włączyć rejestrowanie dla usługi sieci web Machine Learning. Rejestrowanie udostępnia dodatkowe informacje ułatwiające rozwiązywanie problemów z interfejsów API.
+description: Dowiedz się, jak włączyć rejestrowanie dla usług sieci web Machine Learning Studio. Rejestrowanie udostępnia dodatkowe informacje ułatwiające rozwiązywanie problemów z interfejsów API.
 services: machine-learning
 documentationcenter: ''
 author: ericlicoding
@@ -15,21 +15,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 80a5ec64a2afd2367acaedd6e44ffe1a21e9c622
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 53eedd4d00b212879389d29541c4ca55ea1bfde6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474392"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270105"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Włączanie rejestrowania usług sieci web Azure Machine Learning Studio
-Ten dokument zawiera informacje dotyczące możliwości rejestrowania usług sieci web Machine Learning. Rejestrowanie udostępnia dodatkowe informacje, poza po prostu liczbą błędów i komunikatów, które mogą ułatwić rozwiązywanie problemów z wywołaniami interfejsy API usługi Machine Learning.  
+Ten dokument zawiera informacje dotyczące możliwości rejestrowania usług sieci web Machine Learning Studio. Rejestrowanie udostępnia dodatkowe informacje, poza po prostu liczbą błędów i komunikatów, które mogą ułatwić rozwiązywanie problemów z wywołaniami interfejsy API usługi Machine Learning Studio.  
 
 ## <a name="how-to-enable-logging-for-a-web-service"></a>Jak włączyć rejestrowanie dla usługi sieci Web
 
-Włączanie rejestrowania z [usług sieci Web Azure Machine Learning](https://services.azureml.net) portalu. 
+Włączanie rejestrowania z [usług sieci Web programu Azure Machine Learning Studio](https://services.azureml.net) portalu. 
 
-1. Zaloguj się do portalu usług sieci Web Azure Machine Learning na stronie [ https://services.azureml.net ](https://services.azureml.net). Dla klasycznej usługi sieci web, można także uzyskać do portalu, klikając **nowego środowiska usług sieci Web** na stronie usługi sieci Web Machine Learning w usłudze Machine Learning Studio.
+1. Zaloguj się do portalu usług sieci Web programu Azure Machine Learning Studio na stronie [ https://services.azureml.net ](https://services.azureml.net). Dla klasycznej usługi sieci web, można także uzyskać do portalu, klikając **nowego środowiska usług sieci Web** na stronie usługi sieci Web programu Machine Learning Studio w usłudze Machine Learning Studio.
 
    ![Nowe łącze środowisko usług sieci Web](./media/web-services-logging/new-web-services-experience-link.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure Site Recovery Rozwiązywanie problemów z błędów i problemów z replikacją Azure – Azure | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z błędów i problemów podczas replikowania maszyn wirtualnych platformy Azure w celu odzyskiwania po awarii
+title: Usługa Azure Site Recovery dotyczące rozwiązywania problemów w trwające problemy z replikacją Azure – Azure | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów i błędów podczas replikowania maszyn wirtualnych platformy Azure w celu odzyskiwania po awarii
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,46 +8,41 @@ ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 4a18e009f7defc8d41846b867f9b7a65d2b853dd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 9ff756270c368d39b7ef78d7c1046f7c91169668
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993335"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299603"
 ---
-# <a name="troubleshoot-azure-to-azure-vm-ongoing-replication-issues"></a>Rozwiązywanie problemów trwającej replikacji maszyny Wirtualnej platformy Azure do platformy Azure
+# <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Trwającą Rozwiązywanie problemów z w replikacji maszyn wirtualnych platformy Azure do platformy Azure
 
-W tym artykule opisano, jakie są najczęstsze problemy w usłudze Azure Site Recovery podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego regionu i wyjaśniono, jak rozwiązywać problemy z nimi. Aby uzyskać więcej informacji o obsługiwanych konfiguracjach, zobacz [macierz obsługi do replikowania maszyn wirtualnych platformy Azure](site-recovery-support-matrix-azure-to-azure.md).
+W tym artykule opisano typowe problemy w usłudze Azure Site Recovery podczas replikacji i odzyskiwania maszyn wirtualnych platformy Azure z jednego regionu do innego regionu. Wyjaśniono również sposób rozwiązać ten problem. Aby uzyskać więcej informacji o obsługiwanych konfiguracjach, zobacz [macierz obsługi do replikowania maszyn wirtualnych platformy Azure](site-recovery-support-matrix-azure-to-azure.md).
 
+Usługa Azure Site Recovery stale replikuje dane w regionie źródłowym w regionie odzyskiwania po awarii i tworzy punkt odzyskiwania spójnego na poziomie awarii, co 5 minut. Jeśli usługa Site Recovery nie może utworzyć punktów odzyskiwania na 60 minut, ostrzega użytkownika z tymi informacjami:
 
-## <a name="recovery-points-not-getting-generated"></a>Punkty odzyskiwania nie generowanych
+Komunikat o błędzie: "Brak awarii spójne dostępnego punktu odzyskiwania dla maszyny Wirtualnej w ciągu ostatnich 60 minut."</br>
+Identyfikator błędu: 153007 </br>
 
-KOMUNIKAT O BŁĘDZIE: Brak awarii spójne dostępnego punktu odzyskiwania dla maszyny Wirtualnej w ciągu ostatnich 60 minut.</br>
-IDENTYFIKATOR BŁĘDU: 153007 </br>
+W poniższych sekcjach opisano przyczyny i potencjalne rozwiązania.
 
-Usługa Azure Site Recovery stale replikuje dane w regionie źródłowym w regionie odzyskiwania po awarii i tworzy punktu spójnego na poziomie awarii, co 5 minut. Jeśli usługa Site Recovery nie może utworzyć punktów odzyskiwania na 60 minut, następnie powiadamia użytkownika. Poniżej przedstawiono przyczyny, które może spowodować błąd:
-
-**Przyczyny 1: [Współczynnik zmian danych na źródłowej maszynie wirtualnej](#high-data-change-rate-on-the-source-virtal-machine)**    
-**Przyczyny 2: [Problem z łącznością sieciową ](#Network-connectivity-issue)**
-
-## <a name="causes-and-solutions"></a>Przyczyny i potencjalne rozwiązania
-
-### <a name="high-data-change-rate-on-the-source-virtal-machine"></a>Dużej ilości danych, zmień stawki dla źródłowej maszyny wirtualnej
-Usługa Azure Site Recovery uruchamia zdarzenie, jeśli współczynnik zmian danych na źródłowej maszynie wirtualnej jest większy niż obsługiwany limit. Aby sprawdzić, czy problem dotyczy ze względu na dużą liczbą zmian, przejdź do elementów zreplikowany > maszynę Wirtualną > kliknij pozycję "zdarzenia — ostatnie 72 godziny".
-Zdarzenie "Zmiana danych częstotliwość wykracza poza obsługiwane limity" powinien zostać wyświetlony, jak pokazano na poniższym zrzucie ekranu
+## <a name="high-data-change-rate-on-the-source-virtal-machine"></a>Współczynnik zmian danych na źródłowej maszynie wirtualnej
+Usługa Azure Site Recovery uruchamia zdarzenie, jeśli współczynnik zmian danych na źródłowej maszynie wirtualnej jest większy niż obsługiwany limit. Aby sprawdzić, czy problem jest spowodowane dużą liczbą zmian, przejdź do **zreplikowane elementy** > **maszyny Wirtualnej** > **zdarzenia — ostatnie 72 godziny**.
+Zdarzenia powinny zostać wyświetlone "Współczynnik wykracza poza obsługiwane limity zmian danych":
 
 ![data_change_rate_high](./media/site-recovery-azure-to-azure-troubleshoot/data_change_event.png)
 
-Po kliknięciu zdarzenia powinien zostać wyświetlony informacje o dysku dokładne jak pokazano na poniższym zrzucie ekranu
+Jeśli wybierzesz zdarzenia, powinny zostać wyświetlone informacje o dysku:
 
 ![data_change_rate_event](./media/site-recovery-azure-to-azure-troubleshoot/data_change_event2.png)
 
 
-#### <a name="azure-site-recovery-limits"></a>Limity usługi Azure Site Recovery
-W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. Limity te są oparte na naszych testach, ale nie obejmują wszystkich możliwych kombinacji operacji we/wy aplikacji. Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji. Firma Microsoft należy należy również zauważyć, że istnieją dwa ograniczenia należy wziąć pod uwagę na dysk danych na dane maszyny wirtualnej postępów i współczynnika zmian.
-Na przykład, jeśli spojrzymy na dysk Premium P20 w poniższej tabeli, Site Recovery może obsługiwać 5 MB/s współczynniku dysku na maksymalnie pięciu tych dysków na maszynę Wirtualną z powodu limitu 25 MB/s łącznym dziennym współczynniku maszyny Wirtualnej.
+### <a name="azure-site-recovery-limits"></a>Limity usługi Azure Site Recovery
+W poniższej tabeli przedstawiono limity usługi Azure Site Recovery. Limity te są oparte na naszych testach, ale nie obejmują wszystkich możliwych operacji We/Wy kombinacji aplikacji. Rzeczywiste wyniki mogą różnić w zależności od kombinacji operacji we/wy aplikacji. 
 
-**Cel magazynu replikacji** | **Średni rozmiar źródłowych operacji we/wy na dysku** |**Średni źródłowy współczynnik zmian danych na dysku** | **Łączny współczynnik zmian danych na dysku dziennie**
+Istnieją dwa ograniczenia należy wziąć pod uwagę, współczynnik zmian danych na dysku i współczynnik zmian danych maszyny wirtualnej. Na przykład Przyjrzyjmy się dysk Premium P20 w poniższej tabeli. Usługa Site Recovery może obsługiwać 5 MB/s o współczynniku dysku z maksymalnie pięć tych dysków na maszynę Wirtualną, ze względu na limit wynoszący 25 MB/s z łącznym dziennym współczynniku maszyny Wirtualnej.
+
+**Cel magazynu replikacji** | **Średniego rozmiaru operacji We/Wy na dysk źródłowy** |**Średni współczynnik zmian danych dla dysku źródłowego** | **Łączna ilość danych, współczynnika zmian dziennie w przypadku dysk danych źródłowych**
 ---|---|---|---
 Standard Storage | 8 KB | 2 MB/s | 168 GB na dysk
 Dysk w warstwie Premium P10 lub P15 | 8 KB  | 2 MB/s | 168 GB na dysk
@@ -57,29 +52,27 @@ Dysk w warstwie Premium P20, P30, P40 lub P50 | 8 KB    | 5 MB/s | 421 GB na dys
 Dysk w warstwie Premium P20, P30, P40 lub P50 | 16 KB lub większy |10 MB/s | 842 GB na dysk
 
 ### <a name="solution"></a>Rozwiązanie
-Należy rozumiemy, że usługi Azure Site Recovery ma zmienić limitów szybkości na podstawie typu dysku danych. Aby dowiedzieć się, czy ten problem ma charakter cykliczny chwilowo, ważne jest, aby znaleźć wzorzec stawka dotyczy maszyny wirtualnej zmian danych.
-Stawka dotyczy maszyny wirtualnej można znaleźć zmian danych. Przejdź do źródłowej maszyny wirtualnej > metryki w obszarze monitorowanie i Dodaj metryki, jak pokazano poniżej.
+Usługa Azure Site Recovery ma ograniczenia częstotliwości zmian danych, w zależności od typu dysku. Aby dowiedzieć się, jeśli ten problem dotyczy przechwytują lub cykliczne, znaleźć je zmienić częstotliwość dotyczy maszyny wirtualnej. Przejdź do źródłowej maszyny wirtualnej i metryki w obszarze **monitorowanie**i Dodaj metryki, jak pokazano w tym zrzucie ekranu:
 
-![high_data_change_rate](./media/site-recovery-azure-to-azure-troubleshoot/churn.png)
+![Trzy kroki proces służące do znajdowania współczynnik zmian danych](./media/site-recovery-azure-to-azure-troubleshoot/churn.png)
 
-1. Kliknij przycisk "Dodaj metryki" i Dodaj "Dysk systemu operacyjnego zapisane bajty/s" i "Dysku danych zapisane bajty/s".
+1. Wybierz **Dodaj metrykę**i Dodaj **systemu operacyjnego zapisu Bajty dysku/s** i **danych zapisu Bajty dysku/s**.
 2. Monitoruj kolekcji, jak pokazano na zrzucie ekranu.
-3. Widoczna będzie, że suma zapisuje działania wykonywane przez dysk systemu operacyjnego i wszystkie dyski z danymi w połączeniu. Teraz te metryki nie mogą informować na informacje o poziomie dysku, ale to dobry wskaźnik wzorzec zmian łączna ilość danych.
+3. Widok Suma zapisu operacje wykonywane przez dyski systemu operacyjnego i połączyć wszystkie dyski z danymi. Te metryki może nie dać użytkownikowi informacje na poziomie na dysku, ale wskazują wzorzec łączny współczynnik zmian danych.
 
-W takich przypadkach powyżej, jeśli jest serii danych sporadyczne i współczynnik zmian danych jest większa niż 10 MB/s (dla warstwy Premium) oraz 2 MB/s (dla warstwy standardowa) przez pewien czas i sprowadza się, Replikacja zostanie nadążyć. Jednak jeśli zmian jest również przekracza obsługiwany limit w większości przypadków, następnie należy rozważyć jedną z poniższych opcji, jeśli jest to możliwe:
+W przypadku kolekcji jest ze sporadycznymi danych serii i danych zmiany stawka jest większa niż 10 MB/s (dla warstwy Premium) oraz 2 MB/s (dla warstwy standardowa) dla niektórych czasu i sprowadza się, zostanie nadrób zaległości replikacji. Ale jeśli zmian poza obsługiwane ograniczenie w większości przypadków, należy wziąć pod uwagę jedną z tych opcji, jeśli jest to możliwe:
 
-**Opcja 1:** Wykluczanie dysku, co powoduje, że współczynnik zmian danych: </br>
-Obecnie można wykluczyć dysk, przy użyciu [odzyskiwania lokacji w programie Powershell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine)
+* **Wykluczanie dysku, który powoduje współczynnik zmian danych o wysokiej**: Dysk można wykluczyć za pomocą [PowerShell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine).
+* **Zmień warstwę dysk magazynujący odzyskiwania po awarii**: Ta opcja jest możliwe tylko w przypadku zmian danych na dysku jest mniejsza niż 10 MB/s. Załóżmy, że Maszynę wirtualną z dyskiem P10 ma wartość współczynnika zmian danych przekracza 8 MB/s, ale mniej niż 10 MB/s. Jeśli odbiorca może używać dysk P30 dla magazynu docelowego podczas ochrony, problem może zostać rozwiązany.
 
-**Opcja 2:** Zmiana warstwy dysku magazynu odzyskiwania po awarii: </br>
-Ta opcja jest możliwe tylko wtedy, jeśli zmian danych na dysku jest mniejsza niż 10 MB/s. Pozwól, że maszyna wirtualna o P10 dysku ma wartość współczynnika zmian danych przekracza 8 MB/s, ale mniej niż 10 MB/s. Jeśli klienta można użyć P30 dysku dla magazynu docelowego podczas ochrony, ten problem można rozwiązać.
+## <a name="Network-connectivity-problem"></a>Problemy z łącznością sieciową
 
-### <a name="Network-connectivity-issue"></a>Problem z łącznością sieciową
+### <a name="network-latency-to-a-cache-storage-account"></a>Opóźnienie sieci z kontem magazynu pamięci podręcznej
+Usługa Site Recovery wysyła dane replikowane do konta magazynu pamięci podręcznej. Może pojawić się opóźnienie sieci, w przypadku przekazywania danych z maszyny wirtualnej na koncie magazynu pamięci podręcznej jest mniejsza niż 4 MB w 3 sekundy. 
 
-#### <a name="network-latency-to-cache-storage-account-"></a>Opóźnienie sieci do konta magazynu pamięci podręcznej:
- Usługa Site Recovery wysyła replikowane dane na koncie magazynu pamięci podręcznej, a ten problem może się zdarzyć, jeśli przekazywanie danych z maszyny wirtualnej na koncie magazynu pamięci podręcznej jest mniejsza tego 4 MB 3 sekund. Aby sprawdzić, czy występuje problem z dowolnego związane z opóźnieniem, użyj [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) do przekazania danych z maszyny wirtualnej na koncie magazynu pamięci podręcznej.<br>
-Jeśli opóźnienie jest wysoka, sprawdź, jeśli używasz wirtualnych urządzeń sieciowych do kontrolowania wychodzącego ruchu sieciowego z maszynami wirtualnymi. Urządzenie może być ograniczona w przypadku wszystkich ruch związany z replikacją przechodzi przez urządzenia WUS. Zaleca się utworzenie punktu końcowego usługi sieci w sieci wirtualnej na "Magazyn", aby ruch związany z replikacją nie przechodzi do urządzenia WUS. Zapoznaj się [konfiguracji urządzenia wirtualnego sieci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration)
+Aby sprawdzić, czy problem związany z opóźnieniem, użyj [azcopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) do przekazania danych z maszyny wirtualnej na koncie magazynu pamięci podręcznej. Opóźnienie jest wysoka, sprawdź, w przypadku korzystania z wirtualnego urządzenia sieciowego (WUS) do kontrolowania wychodzącego ruchu sieciowego z maszynami wirtualnymi. Urządzenie może być ograniczona w przypadku wszystkich ruch związany z replikacją przechodzi przez urządzenia WUS. 
 
-#### <a name="network-connectivity"></a>Połączenie sieciowe
-W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca z określonych adresów URL lub IP zakresów jest wymagane z maszyny Wirtualnej. Jeśli maszyna wirtualna znajduje się za zaporą lub używa reguł Sieciowej grupy zabezpieczeń sieci do sterowania ruchem wychodzącym, może być jedną z tych problemów twarzy.</br>
-Zapoznaj się [połączenia ruchu wychodzącego dla adresów URL Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) aby upewnić się, wszystkie adresy URL są połączone. 
+Zaleca się utworzenie punktu końcowego usługi sieci w sieci wirtualnej na "Magazyn", aby ruch związany z replikacją nie prowadzi do urządzenia WUS. Aby uzyskać więcej informacji, zobacz [konfiguracji urządzenia wirtualnego sieci](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#network-virtual-appliance-configuration).
+
+### <a name="network-connectivity"></a>Połączenie sieciowe
+W przypadku replikacji usługi Site Recovery do pracy, łączność wychodząca z określonych adresów URL lub IP zakresów jest wymagane z maszyny Wirtualnej. Jeśli maszyna wirtualna znajduje się za zaporą lub używa reguł Sieciowej grupy zabezpieczeń sieci do sterowania ruchem wychodzącym, może być jedną z tych problemów twarzy. Aby upewnić się, wszystkie adresy URL są połączone, zobacz [połączenia ruchu wychodzącego dla adresów URL Site Recovery](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges). 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 381e8361d31660d90eaee3f7a500139af1ef2a82
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 07d0866bd697587da170a00e8077a57035989d32
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992999"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269420"
 ---
 # <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Tworzenie wykresów i diagramów z usługi Azure Monitor dziennika zapytań
 
@@ -93,7 +93,7 @@ Możesz przełączać się między, wybierając listę rozwijaną z nazwą kolum
 ![Wykres słupkowy dla konta](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dotyczące korzystania z [język zapytań w Eksploratorze danych](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
+Zobacz inne lekcje dotyczące korzystania z [język zapytania Kusto](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
 
 - [Operacje na ciągach](string-operations.md)
 - [Operacje daty i godziny](datetime-operations.md)

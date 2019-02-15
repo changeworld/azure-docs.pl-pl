@@ -1,30 +1,31 @@
 ---
-title: Jak stronicować elementów na stronie wyników wyszukiwania — usługa Azure Search
-description: Podział na strony w usłudze Azure Search, Usługa wyszukiwania w hostowanej chmurze Microsoft Azure.
+title: Jak pracować z wyników wyszukiwania — usługa Azure Search
+description: Struktury i sortowanie wyników wyszukiwania, Pobierz liczbę dokumentów i Dodaj nawigowania po zawartości do wyników wyszukiwania w usłudze Azure Search.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
-ms.devlang: rest-api
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/29/2016
+ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f36dbb72e2518f7e3a27ef3aadec85312d751c2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8cf65f0ed3ecd5c9a86d6adcdd5defd930522f85
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309346"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301557"
 ---
-# <a name="how-to-page-search-results-in-azure-search"></a>Jak stronicować wyniki wyszukiwania w usłudze Azure Search
-Ten artykuł zawiera wskazówki dotyczące sposobu używania interfejsu API REST usługi Azure Search Service do zaimplementowania standardowe elementy strony wyników wyszukiwania, takie jak całkowitej liczby, pobierania dokumentu, porządek sortowania i nawigacji.
+# <a name="how-to-work-with-search-results-in-azure-search"></a>Jak pracować z usługą wyszukiwania wyników w usłudze Azure Search
+Ten artykuł zawiera wskazówki dotyczące implementowania standardowe elementy strony wyników wyszukiwania, takie jak całkowitej liczby, pobierania dokumentu, porządek sortowania i nawigacji. Określono opcje związanych ze stronami, które przyczyniają się do danych lub informacji do wyników wyszukiwania za pomocą [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) żądań wysyłanych do usługi Azure Search. 
 
-W każdym przypadku wymienionych poniżej podano związanych ze stronami opcje, które przyczyniają się do danych i informacji na stronie wyników wyszukiwania za pomocą [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) żądań wysyłanych do usługi Azure Search. Żądania obejmują polecenie GET, parametry zapytania, które informują usługę, co jest wymagana i ścieżki oraz jak sformułować odpowiedzi.
+W interfejsie API REST żądania obejmują polecenie GET, parametry zapytania, które informują usługę, co jest wymagana i ścieżki oraz jak sformułować odpowiedzi. W zestawie SDK platformy .NET jest równoważnego API [klasy DocumentSearchResult](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet).
+
+Kilka przykładów kodu obejmują interfejs frontonu sieci web, który można znaleźć tutaj: [Aplikacja demonstracyjna, z nowego Jorku zadania](http://azjobsdemo.azurewebsites.net/) i [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Prawidłowemu żądaniu obejmuje pewną liczbę elementów, takich jak adres URL usługi i ścieżkę, czasownik HTTP `api-version`i tak dalej. Celu skrócenia programu firma Microsoft spacje przykłady, aby wyróżnić składnię która jest odpowiednia do dzielenia na strony. Zobacz [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice) dokumentacji, aby uzyskać szczegółowe informacje o składni żądania.
-> 
+> Prawidłowemu żądaniu obejmuje pewną liczbę elementów, takich jak adres URL usługi i ścieżkę, czasownik HTTP `api-version`i tak dalej. Celu skrócenia programu firma Microsoft spacje przykłady, aby wyróżnić składnię która jest odpowiednia do dzielenia na strony. Aby uzyskać więcej informacji na temat składni żądania, zobacz [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice). > 
 > 
 
 ## <a name="total-hits-and-page-counts"></a>Łączna liczba trafień i liczby stron
@@ -32,7 +33,7 @@ Wyświetlanie całkowita liczba wyników zwróconych w wyniku zapytania, a nast�
 
 ![][1]
 
-W usłudze Azure Search, możesz użyć `$count`, `$top`, i `$skip` parametry, aby zwracać następujące wartości. W poniższym przykładzie przedstawiono przykładowe żądanie dla łączna liczba trafień, zwracane jako `@OData.count`:
+W usłudze Azure Search, możesz użyć `$count`, `$top`, i `$skip` parametry, aby zwracać następujące wartości. W poniższym przykładzie pokazano przykładowe żądanie dla łączna liczba trafień dla indeksu o nazwie "onlineCatalog", zwracane jako `@OData.count`:
 
         GET /indexes/onlineCatalog/docs?$count=true
 
@@ -48,7 +49,7 @@ Podział na strony wyników wymaga zarówno `$top` i `$skip`, gdzie `$top` Okre�
 
         GET /indexes/onlineCatalog/docs?search=*$top=15&$skip=30&$count=true
 
-## <a name="layout"></a>Układ
+## <a name="layout"></a>Layout
 Na stronie wyników wyszukiwania możesz chcieć wyświetlić obraz miniatury, podzestaw pól i link do strony pełnej wersji produktu.
 
  ![][2]
@@ -70,7 +71,7 @@ Sortuj porządkuje często domyślnie istotności, ale często jest utworzenie a
 
  ![][3]
 
-W usłudze Azure Search sortowanie opiera się na `$orderby` wyrażenia dla wszystkich pól, które są indeksowane jako `"Sortable": true.`
+W usłudze Azure Search sortowanie opiera się na `$orderby` wyrażenia dla wszystkich pól, które są indeksowane jako `"Sortable": true.` `$orderby` klauzula jest wyrażenia OData. Aby uzyskać informacje dotyczące składni, zobacz [składnia wyrażenia OData, filtry i klauzule w klauzuli order by](query-odata-filter-orderby-syntax.md).
 
 Wg istotności jest zdecydowanie skojarzony z profile oceniania. Umożliwia domyślne oceniania opiera się na Analiza tekstu i statystyki rank kolejności wszystkie wyniki z wyższym wyniki przejściem do dokumentów za pomocą więcej lub silniejsze dopasowania terminu wyszukiwania.
 
@@ -83,7 +84,7 @@ Należy utworzyć metodę, która akceptuje opcję sortowania jako dane wejścio
  ![][5]
 
 > [!NOTE]
-> Podczas oceniania domyślny jest wystarczające w wielu scenariuszach, firma Microsoft zaleca, zamiast tego tworzony istotności na niestandardowy profil oceniania. Niestandardowy profil oceniania umożliwia elementów zwiększenie wydajności, które są bardziej korzystne dla Twojej firmy. Zobacz [Dodaj profil oceniania](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) Aby uzyskać więcej informacji. 
+> Podczas oceniania domyślny jest wystarczające w wielu scenariuszach, firma Microsoft zaleca, zamiast tego tworzony istotności na niestandardowy profil oceniania. Niestandardowy profil oceniania umożliwia elementów zwiększenie wydajności, które są bardziej korzystne dla Twojej firmy. Zobacz [dodać profile oceniania](index-add-scoring-profiles.md) Aby uzyskać więcej informacji. 
 > 
 > 
 
@@ -91,7 +92,7 @@ Należy utworzyć metodę, która akceptuje opcję sortowania jako dane wejścio
 Nawigacja po wyszukiwaniu jest powszechne na stronę wyników, często znajduje się na stronie lub u góry strony. W usłudze Azure Search nawigacji aspektowej umożliwia wyszukiwanie kierunkowane samodzielnie przez użytkowników, oparte na wstępnie zdefiniowanych filtrów. Zobacz [nawigację Aspektową w usłudze Azure Search](search-faceted-navigation.md) Aby uzyskać szczegółowe informacje.
 
 ## <a name="filters-at-the-page-level"></a>Filtry na poziomie strony
-Projektowanego rozwiązania zawiera strony wyszukiwania dedykowane dla określonych typów zawartości (na przykład aplikacja handlu detalicznego w trybie online, która ma działów, wyświetlonym u góry strony), można wstawić wyrażenie filtru, wraz z **onClick**zdarzenie, aby otworzyć stronę w stanie wstępnie przefiltrowanej. 
+Jeśli projektowanego rozwiązania zawiera strony wyszukiwania dedykowane dla określonych typów zawartości (na przykład aplikacja handlu detalicznego w trybie online, która ma działów, wyświetlonym u góry strony), można wstawić [wyrażenie filtru](search-filters.md) obok **onClick** zdarzenie, aby otworzyć stronę w stanie wstępnie przefiltrowanej. 
 
 Możesz wysłać z lub bez wyrażenia filtru. Na przykład następujące żądanie będzie filtru marką zwracanie tylko tych dokumentów, które odpowiadają go.
 

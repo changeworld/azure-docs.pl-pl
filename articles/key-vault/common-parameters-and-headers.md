@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 3fb11ad74e3d1628cbf3f00e2aae648be3eea437
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1ac0f54aa4dfdc9db4724629c4dbfe7a4982838f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107688"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301234"
 ---
 # <a name="common-parameters-and-headers"></a>Typowe parametry i nagłówki
 
@@ -34,12 +34,14 @@ Wspólne dla wszystkich operacji, które może wykonywać związane z zasobami u
 ## <a name="common-error-response"></a>Odpowiedzi na typowe błąd
 Kody stanu HTTP będzie używane przez usługę do wskazania powodzenia lub niepowodzenia. Ponadto błędy zawierają odpowiedzi w następującym formacie:
 
+```
    {  
      "error": {  
-     "code": "Element BadRequest",  
-     "message": "Jednostka sku magazynu kluczy jest nieprawidłowy."  
+     "code": "BadRequest",  
+     "message": "The key vault sku is invalid."  
      }  
    }  
+```
 
 |Nazwa elementu | Type | Opis |
 |---|---|---|

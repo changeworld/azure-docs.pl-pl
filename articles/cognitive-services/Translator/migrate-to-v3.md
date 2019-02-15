@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 98d2d3a54ff2f0c4ef326f8aae26e5ba8845d603
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 04d7bfcf0527b490bc18f6d85977d899823d5e69
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882356"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301880"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>W usłudze Translator tekstu interfejsu API w wersji 2 do migracji V3
 
@@ -41,19 +41,19 @@ Poniższa lista metod V2 i V3 zawiera metody V3 i interfejsów API, które zapew
 
 | W wersji 2 Metoda interfejsu API   | W wersji 3 Zgodnością z interfejsem API |
 |:----------- |:-------------|
-| Translate     | [Przetłumacz](reference/v3-0-translate.md)          |
-| TranslateArray      | [Przetłumacz](reference/v3-0-translate.md)        |
-| GetLanguageNames      | [Języki](reference/v3-0-languages.md)         |
-| GetLanguagesForTranslate     | [Języki](reference/v3-0-languages.md)       |
-| GetLanguagesForSpeak      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
-| Speak     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
-| Detect     | [Wykrywanie](reference/v3-0-detect.md)         |
-| DetectArray     | [Wykrywanie](reference/v3-0-detect.md)         |
-| AddTranslation     | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
-| AddTranslationArray    | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
-| BreakSentences      | [BreakSentence](reference/v3-0-break-sentence.md)       |
-| GetTranslations      | Funkcja nie jest już obsługiwana         |
-| GetTranslationsArray      | Funkcja nie jest już obsługiwana         |
+| `Translate`     | [Przetłumacz](reference/v3-0-translate.md)          |
+| `TranslateArray`      | [Przetłumacz](reference/v3-0-translate.md)        |
+| `GetLanguageNames`      | [Języki](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [Języki](reference/v3-0-languages.md)       |
+| `GetLanguagesForSpeak`      | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
+| `Speak`     | [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
+| `Detect`     | [Wykrywanie](reference/v3-0-detect.md)         |
+| `DetectArray`     | [Wykrywanie](reference/v3-0-detect.md)         |
+| `AddTranslation`     | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)         |
+| `AddTranslationArray`    | [Centrum usługi Microsoft Translator interfejsu API](https://hub.microsofttranslator.com/Help/Download/Microsoft%20Translator%20Hub%20API%20Guide.pdf)          |
+| `BreakSentences`      | [BreakSentence](reference/v3-0-break-sentence.md)       |
+| `GetTranslations`      | Funkcja nie jest już obsługiwana         |
+| `GetTranslationsArray`      | Funkcja nie jest już obsługiwana         |
 
 ## <a name="move-to-json-format"></a>Przenieś do formatu JSON
 
@@ -75,12 +75,12 @@ Microsoft Translator w wersji 3 jest rozliczana w taki sam sposób, który zosta
 
 | Metoda v3   | Znaki uwzględniany w rozliczeniach |
 |:----------- |:-------------|
-| Languages     | Nie przesłano żadnych znaków, brak zliczane, bez opłat.          |
-| Translate     | Liczba zależy od liczby znaków są przesyłane do tłumaczenia i jak wiele języków znaki są tłumaczone na. przesłany 50 znaków i 5 języków, wymagane będzie 50 x 5.           |
-| Transliterate     | Liczba znaków, które przesłano transliterację są uwzględniane.         |
-| Dictionary lookup &amp; example     | Liczba znaków przesłane do słownika lookup i examples są uwzględniane.         |
-| BreakSentence     | Dostępny bezpłatnie.       |
-| Detect     | Dostępny bezpłatnie.      |
+| `Languages`     | Nie przesłano żadnych znaków, brak zliczane, bez opłat.          |
+| `Translate`     | Liczba zależy od liczby znaków są przesyłane do tłumaczenia i jak wiele języków znaki są tłumaczone na. przesłany 50 znaków i 5 języków, wymagane będzie 50 x 5.           |
+| `Transliterate`     | Liczba znaków, które przesłano transliterację są uwzględniane.         |
+| `Dictionary lookup & example`     | Liczba znaków przesłane do słownika lookup i examples są uwzględniane.         |
+| `BreakSentence`     | Dostępny bezpłatnie.       |
+| `Detect`     | Dostępny bezpłatnie.      |
 
 ## <a name="v3-end-points"></a>V3 punkty końcowe
 
@@ -88,22 +88,21 @@ Globalny
 
 * api.cognitive.microsofttranslator.com
 
-
 ## <a name="v3-api-text-translations-methods"></a>Metody tłumaczenia tekstu w wersji 3 interfejsu API
 
-[Języki](reference/v3-0-languages.md)
+[`Languages`](reference/v3-0-languages.md)
 
-[Przetłumacz](reference/v3-0-translate.md)
+[`Translate`](reference/v3-0-translate.md)
 
-[Transliteracja](reference/v3-0-transliterate.md)
+[`Transliterate`](reference/v3-0-transliterate.md)
 
-[BreakSentence](reference/v3-0-break-sentence.md)
+[`BreakSentence`](reference/v3-0-break-sentence.md)
 
-[Wykrywanie](reference/v3-0-detect.md)
+[`Detect`](reference/v3-0-detect.md)
 
-[Słownik/wyszukiwania](reference/v3-0-dictionary-lookup.md)
+[`Dictionary/lookup`](reference/v3-0-dictionary-lookup.md)
 
-[Słownik/przykład](reference/v3-0-dictionary-examples.md)
+[`Dictionary/example`](reference/v3-0-dictionary-examples.md)
 
 ## <a name="compatibility-and-customization"></a>Zgodność i dostosowywania
 
@@ -132,7 +131,6 @@ Używasz wersji 3 interfejsu API Rozpoznawania tekstu usługi Translator, korzys
 * Używasz wersji 2 API tekstu usługi Translator, korzystając z punktu końcowego api.microsofttranslator.com.
 
 Brak wersji interfejsu API usługi Translator tworzy rekord tłumaczenia. Tłumaczenia nigdy nie są udostępniane nikomu. Więcej informacji na temat [bez śledzenia w usłudze Translator](http://www.aka.ms/NoTrace) strony sieci Web.
-
 
 ## <a name="links"></a>Linki
 

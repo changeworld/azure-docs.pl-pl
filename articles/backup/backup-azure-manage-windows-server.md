@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261506"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268876"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorowanie magazynów usługi Recovery Services i zarządzanie nimi
 
@@ -40,7 +40,7 @@ Monitorowanie alertów lub przeglądać dane zarządzania dotyczące magazynu us
 
     ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. Z listy magazynów, kliknij pozycję Magazyn, aby otworzyć jego **Przegląd** pulpitu nawigacyjnego. 
+4. Z listy magazynów, kliknij pozycję Magazyn, aby otworzyć jego **Przegląd** pulpitu nawigacyjnego.
 
     ![pulpitu nawigacyjnego magazynu usług odzyskiwania](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -75,7 +75,7 @@ Aby uzyskać dostęp do menu alerty kopii zapasowej, w menu magazynu usługi Rec
 
 ![Alerty kopii zapasowej](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-Raport o alertach kopii zapasowej wyświetla alerty dla magazynu. 
+Raport o alertach kopii zapasowej wyświetla alerty dla magazynu.
 
 ![Alerty kopii zapasowej](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
@@ -124,7 +124,7 @@ Domyślnie wszystkie szczegółowe informacje, z wyjątkiem **godzina ostatniego
 
 ### <a name="change-the-filter-in-alerts-report"></a>Zmień filtr w raporcie alertów
 
-Użyj **filtru** menu, aby zmienić ważność, stan, czas rozpoczęcia i czas zakończenia dla alertów. 
+Użyj **filtru** menu, aby zmienić ważność, stan, czas rozpoczęcia i czas zakończenia dla alertów.
 
 > [!NOTE]
 > Alerty kopii zapasowej do edycji filtru nie zmienia się krytyczne lub ostrzegawcze alerty w magazynie pulpit nawigacyjny przeglądu.
@@ -184,7 +184,7 @@ Aby wyświetlić dodatkowe szczegóły dotyczące zadania, kliknij **w toku** lu
 
 **Zadania tworzenia kopii zapasowej** menu przedstawia informacje na temat elementu typu, działania, stan, czas rozpoczęcia i czas trwania.  
 
-Aby otworzyć menu zadania tworzenia kopii zapasowej dla magazynu głównego menu, kliknij **zadania tworzenia kopii zapasowej**. 
+Aby otworzyć menu zadania tworzenia kopii zapasowej dla magazynu głównego menu, kliknij **zadania tworzenia kopii zapasowej**.
 
 ![Elementy kopii zapasowej z ustawień](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -263,17 +263,14 @@ Magazyn kopii zapasowych kafelka na pulpicie nawigacyjnym będą wyświetlane ma
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Q1. Jak długo trwa aż stan zadania agenta usługi Azure backup to odzwierciedlone w portalu?**
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Jak długo trwa aż stan zadania agenta usługi Azure backup to odzwierciedlone w portalu?
+Witryny Azure portal może potrwać do 15 minut podsumowująca stan zadania agenta usługi Azure backup.
 
-Odpowiedź 1. Witryny Azure portal może potrwać do 15 minut podsumowująca stan zadania agenta usługi Azure backup.
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Gdy zadanie tworzenia kopii zapasowej nie powiedzie się, jak długo trwa wywołania alertu?
+W ciągu 20 minutach niepowodzenia wykonywania kopii zapasowej platformy Azure zostanie zgłoszony alert.
 
-**Q2. Gdy zadanie tworzenia kopii zapasowej nie powiedzie się, jak długo trwa wywołania alertu?**
-
-Odpowiedź 2. W ciągu 20 minutach niepowodzenia wykonywania kopii zapasowej platformy Azure zostanie zgłoszony alert.
-
-**Q3. Jest przypadek, w których nie będzie wysyłana wiadomość e-mail że powiadomienia zostały skonfigurowane?**
-
-Odpowiedź 3. Tak. W następujących sytuacjach nie są wysyłane powiadomienia.
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Jest przypadek, w których nie będzie wysyłana wiadomość e-mail że powiadomienia zostały skonfigurowane?
+Tak. W następujących sytuacjach nie są wysyłane powiadomienia.
 
 * Jeśli powiadomienia zostały skonfigurowane co godzinę, a alert jest wyświetlany i rozwiązywany w ciągu godziny
 * Kiedy zadanie zostanie anulowane

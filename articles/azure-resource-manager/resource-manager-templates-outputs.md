@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/04/2019
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: aadc92c232d32d827644caa52b3c362d9c8d4c9b
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92e5dd5190a76bd09e33ea4c40a5b5cc2d66bc7b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691035"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301141"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Sekcję danych wyjściowych w szablonach usługi Azure Resource Manager
 
-W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Na przykład można zwrócić identyfikator URI do dostępu do wdrożonych zasobów.
+W sekcji danych wyjściowych należy określić wartości, które są zwracane z wdrożenia. Na przykład można zwrócić identyfikator URI do dostępu do wdrożonych zasobów. Użyj opcjonalnego `condition` właściwości w celu określenia, czy zostanie zwrócona wartość danych wyjściowych.
 
 ## <a name="define-and-use-output-values"></a>Definiowanie i korzystanie z wartości danych wyjściowych
 
@@ -31,6 +31,18 @@ Poniższy przykład pokazuje, jak zwraca identyfikator zasobu dla publicznego ad
 ```json
 "outputs": {
   "resourceID": {
+    "type": "string",
+    "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
+  }
+}
+```
+
+W kolejnym przykładzie pokazano sposób zwracania warunkowo, czy jest to nowy, jeden został wdrożony na podstawie Identyfikatora zasobu, opłata za publiczny adres IP:
+
+```json
+"outputs": {
+  "resourceID": {
+    "condition": "[equals(parameters('publicIpNewOrExisting'), 'new')]",
     "type": "string",
     "value": "[resourceId('Microsoft.Network/publicIPAddresses', parameters('publicIPAddresses_name'))]"
   }
@@ -70,6 +82,7 @@ Poniższy przykład pokazuje strukturę definicję danych wyjściowych:
 ```json
 "outputs": {
     "<outputName>" : {
+        "condition": "<boolean-value-whether-to-output-value>",
         "type" : "<type-of-output-value>",
         "value": "<output-value-expression>"
     }
@@ -79,6 +92,7 @@ Poniższy przykład pokazuje strukturę definicję danych wyjściowych:
 | Nazwa elementu | Wymagane | Opis |
 |:--- |:--- |:--- |
 | outputName |Yes |Nazwa wartości danych wyjściowych. Musi być prawidłowym identyfikatorem języka JavaScript. |
+| warunek |Nie | Wartość logiczna wskazująca, czy to danych wyjściowych wartość jest zwracana. Gdy `true`, wartość jest uwzględniona w danych wyjściowych dla wdrożenia. Gdy `false`, wartość wyjściowa jest pomijana dla tego wdrożenia. Jeśli nie zostanie określony, wartością domyślną jest `true`. |
 | type |Yes |Typ wartości danych wyjściowych. Wartości wyjściowe obsługują te same typy jako parametrów wejściowych szablonu. |
 | wartość |Yes |Wyrażenie języka szablonu, który jest obliczany i zwracany, jako wartość danych wyjściowych. |
 

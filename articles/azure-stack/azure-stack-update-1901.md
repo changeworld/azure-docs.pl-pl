@@ -16,12 +16,12 @@ ms.date: 02/11/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 94c7b5c81785c3d6fba31396f5812a1308817e33
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115712"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301115"
 ---
 # <a name="azure-stack-1901-update"></a>Aktualizacja usługi Azure Stack 1901
 
@@ -199,7 +199,9 @@ Aby przejrzeć odwołania do zaktualizowanych modułów, zobacz [odwołania do u
            "autoUpgradeMinorVersion": "true"
    ```
 
-- Dostępne jest nowe dokładne Planowanie pojemności usługi Azure Stack. Firma Microsoft ma ustawić limity łączna liczba maszyn wirtualnych, które mogą być wdrażane w ramach usługi Azure Stack, aby upewnić się, że wszystkie nasze usługi wewnętrznej spełniają skali, w którym klienci uruchamiać. Limit wynosi 60 maszyn wirtualnych na każdym hoście, maksymalnie 700 dla całego sygnatury (jeśli jest to 60 na hoście limit zostanie osiągnięty). Aby uzyskać więcej informacji, zobacz [nowa wersja planisty wydajności](http://aka.ms/azstackcapacityplanner).
+- Dostępne jest nowe dokładne Planowanie pojemności usługi Azure Stack. Dzięki aktualizacji 1901 jest teraz limit łącznej liczby maszyn wirtualnych, które mogą być tworzone.  To ograniczenie jest przeznaczone do zastosowania tymczasowego, aby zapobiec niestabilności rozwiązania. Skierowana jest źródłem problemu stabilności w większej liczby maszyn wirtualnych, ale nie ma jeszcze nieustalona określonej osi czasu korygowania. Dzięki aktualizacji 1901 jest teraz na limit serwera 60 maszyn wirtualnych przy ograniczeniu kompleksowe rozwiązania 700.  Na przykład limit maszyny Wirtualnej platformy Azure Stack 8 serwerów będzie 480 (8 * 60).  Dla serwera 12 do 16 rozwiązania usługi Azure Stack limit byłoby 700. Ten limit został utworzony, pamiętając o wszystkie zasoby obliczeniowe zagadnienia dotyczące wydajności takich jak rezerwy odporności i Procesora wirtualnego na fizycznej współczynnika, który operator chcesz zachować na sygnatury. Aby uzyskać więcej informacji zobacz nowa wersja planisty wydajności.  
+W przypadku, gdy został osiągnięty limit skalowania maszyn wirtualnych, następujące kody błędów do zwrócenia w wyniku: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded. 
+ 
 
 - Wersja obliczeniowych interfejsu API został zwiększony do 2017-12-01.
 

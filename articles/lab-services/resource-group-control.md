@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: spelluru
-ms.openlocfilehash: ddda9ef2b9bb716f7cdd33aa8fe9233f6c7d8e82
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 2903228a3257abe9c454c6e0720a1e228b905290
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749004"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300044"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Określ grupę zasobów dla maszyn wirtualnych laboratorium Azure DevTest Labs
 Jako właściciel laboratorium możesz skonfigurować maszyny wirtualne laboratorium ma być utworzony w określonej grupie zasobów. Użyj tej funkcji, tak aby nie przekroczysz zasobów limity grupy w ramach subskrypcji platformy Azure. Ta funkcja umożliwia także konsolidację wszystkich zasobów laboratorium w ramach pojedynczej grupy zasobów. Ułatwia także śledzenie tych zasobów i stosowanie [zasady](../governance/policy/overview.md) do zarządzania nimi na poziomie grupy zasobów.
@@ -32,7 +32,7 @@ Teraz przejdźmy opcje się jako właściciel laboratorium, podczas korzystania 
 - Możesz wprowadzić **nową grupę zasobów** nazwy wszystkich maszyn wirtualnych.
 - Można kontynuować istniejącego zachowania, oznacza to, grupa zasobów jest tworzona dla każdej maszyny Wirtualnej w laboratorium.
  
-To ustawienie dotyczy nowe maszyny wirtualne utworzone w środowisku laboratoryjnym. Starsze maszyny wirtualne w laboratorium, które zostały utworzone w ich własnych grupach zasobów w dalszym ciągu pozostaną niezmienione. Jednak można migrować tych maszyn wirtualnych z ich grup pojedynczego zasobu do wspólnej grupy zasobów, aby wszystkie maszyny wirtualne laboratorium znajdują się w jednej wspólnej grupy zasobów. Aby uzyskać więcej informacji, zobacz [przenoszenie zasobów do nowej grupy zasobów](../azure-resource-manager/resource-group-move-resources.md). Środowisk utworzonych w środowisku laboratoryjnym nadal pozostać w ich własnych grupach zasobów.
+To ustawienie dotyczy nowe maszyny wirtualne utworzone w środowisku laboratoryjnym. Starsze maszyny wirtualne w laboratorium, które zostały utworzone w ich własnych grupach zasobów w dalszym ciągu pozostaną niezmienione. Środowisk utworzonych w środowisku laboratoryjnym nadal pozostać w ich własnych grupach zasobów.
 
 ### <a name="how-to-use-this-api"></a>Jak używać tego interfejsu API:
 - Użyj wersji interfejsu API **2018_10_15_preview** podczas korzystania z tego interfejsu API. 

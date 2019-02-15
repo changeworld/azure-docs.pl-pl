@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 4671287d78dafce9b662a167ba99a680d2fa70d2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7bf31c11c705dbdfe8a326aad99ee8d373db8f3e
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734079"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301098"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -101,6 +101,8 @@ Można odinstalować udziału plików platformy Azure, który jest zainstalowany
 ![Running Dismount-CloudDrive](media/persisting-shell-storage-powershell/Dismount-Clouddrive.png)
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
+
+Uwaga: Jeśli musisz zdefiniować funkcję w pliku, a następnie wywołaj ją z poleceń cmdlet programu PowerShell, operator kropki musi zostać dołączony. Na przykład:. .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Powłoka bash w przewodniku Szybki Start Cloud Shell](quickstart.md) <br>

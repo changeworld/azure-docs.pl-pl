@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 832c7b0b2aab3cbf09b7ea5e099fcf8be7cd1906
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 04a82d1ed8735954072f9549f3b2676df0935449
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118041"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269301"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Usługa Resource Manager zapewnia następujące funkcje do pracy z ciągami:
 

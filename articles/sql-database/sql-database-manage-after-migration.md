@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie po migracji — usługi Azure SQL Database | Dokumentacja firmy Microsoft
+title: Zarządzanie bazami danych z pojedynczych i puli po migracji — usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zarządzanie bazą danych po migracji do usługi Azure SQL Database.
 services: sql-database
 ms.service: sql-database
@@ -11,28 +11,31 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 02/13/2019
+ms.openlocfilehash: 8c0c4ac6ce09ce92851b532b226dadfd8b9f7e18
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099738"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270440"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzanie pojedynczymi i puli baz danych w usłudze Azure SQL Database
 
-Przenoszenie z tradycyjnych zarządza własnym, własnym kontrolowanym środowisku w środowisku PaaS może wydawać się nieco trudne na początku. Jako Deweloper aplikacji lub administratorem baz danych należy zawsze znasz podstawowe możliwości platformy, które może pomóc w prace nad aplikacją, które są dostępne, wydajne, bezpieczne i odporne na błędy —. Ten artykuł ma na celu dokładnie. Artykuł krótkiej formie organizuje zasoby i zawiera wskazówki dotyczące jak najlepiej wykorzystać kluczowe funkcje usługi SQL Database do zarządzania i prace nad aplikacją, wydajne działanie i uzyskania optymalnych wyników w chmurze. Typowe odbiorców, w tym artykule byłoby tych, którzy:
+Przenoszenie z tradycyjnych zarządza własnym, własnym kontrolowanym środowisku w środowisku PaaS może wydawać się nieco trudne na początku. Jako Deweloper aplikacji lub administratorem baz danych należy zawsze znasz podstawowe możliwości platformy, które może pomóc w prace nad aplikacją, które są dostępne, wydajne, bezpieczne i odporne na błędy —. Ten artykuł ma na celu dokładnie. Artykuł krótkiej formie organizuje zasoby i zawiera wskazówki dotyczące jak najlepiej wykorzystać kluczowe funkcje usługi SQL Database za pomocą jednego i puli baz danych do zarządzania i prace nad aplikacją, wydajne działanie i uzyskania optymalnych wyników w chmurze. Typowe odbiorców, w tym artykule byłoby tych, którzy:
 
-- Ocenia migrację swoich aplikacjach, do bazy danych SQL Azure — Modernizujesz swoje aplikacje.
+- Ocenia migrację swoich aplikacjach, do usługi Azure SQL Database — Modernizujesz swoje aplikacje.
 - Trwa migrowanie swoich aplikacjach — scenariusz migracji w toku.
 - Niedawno ukończone migracji do usługi Azure SQL DB — nowe DBA w chmurze.
 
-W tym artykule omówiono niektóre z podstawowych cech bazy danych SQL Azure jako platformy, który można łatwo wykorzystać. Są to następujące czynności:
+W tym artykule omówiono niektóre z podstawowych cech usługi Azure SQL Database jako platformy, które mogą oni podczas pracy z pojedynczymi bazami danych i baz danych w puli w elastycznej puli. Są to następujące czynności:
 
 - Business ciągłości działania i odzyskiwania po awarii (BCDR)
 - Zabezpieczenia i zgodność z przepisami
 - Inteligentna baza danych monitorowania i konserwacji
 - Przenoszenie danych
+
+> [!NOTE]
+> Ten artykuł dotyczy następujących opcji wdrażania w usłudze Azure SQL Database: pojedyncze bazy danych i pul elastycznych. Nie ma zastosowania do opcji wdrożenia wystąpienia zarządzanego w bazie danych SQL.
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR)
 

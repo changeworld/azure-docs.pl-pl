@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: TomSh
-ms.openlocfilehash: 51376661530d5de67e0efeacbcfd0d3a56078511
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 492beba1040cef3d5a910cc9db3fe16b41c33cd6
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117956"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301591"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -246,7 +246,7 @@ Oprócz możliwości rejestrowania wymienionych wcześniej usługi Network Watch
 
 Usługa Application Insights jest przeznaczony do pomagają w ciągłym udoskonalaniu wydajności i użyteczności.
 
-Działa ona aplikacje na różnych platformach, w tym .NET, Node.js i J2EE, czy są one hostowane w środowisku lokalnym lub w chmurze. Ona integruje się z procesem DevOps i ma punkty połączenia z różnymi narzędziami programistycznymi.
+Działa ona aplikacje na różnych platformach, w tym .NET, Node.js i Java EE, czy są one hostowane w środowisku lokalnym lub w chmurze. Ona integruje się z procesem DevOps i ma punkty połączenia z różnymi narzędziami programistycznymi.
 
 ![Application Insights diagramu](./media/azure-log-audit/azure-log-audit-fig6.png)
 

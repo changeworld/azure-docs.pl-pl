@@ -1,5 +1,5 @@
 ---
-title: Implementowanie ciągłej integracji/ciągłego wdrażania dla usługi Azure Stream Analytics przy użyciu interfejsów API REST
+title: Implementowanie ciągłej integracji/ciągłego wdrażania dla usługi Azure Stream Analytics w usłudze IoT Edge przy użyciu interfejsów API REST
 description: Dowiedz się, jak wdrożyć ciągłą integrację i wdrażanie potoku usługi Azure Stream Analytics przy użyciu interfejsów API REST.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: f22a4c4d0159efa2ac42d15ff6afdadc2d6755d0
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 40beb620e037061b189762a51e3c29d0fd251b27
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215052"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268503"
 ---
-# <a name="implement-cicd-for-stream-analytics-using-apis"></a>Implementowanie ciągłej integracji/ciągłego wdrażania dla usługi Stream Analytics przy użyciu interfejsów API
+# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementowanie ciągłej integracji/ciągłego wdrażania dla usługi Stream Analytics na urządzeniach brzegowych IoT przy użyciu interfejsów API
 
 Aby umożliwić ciągłej integracji i ciągłego wdrażania dla zadań usługi Azure Stream Analytics przy użyciu interfejsów API REST. Ten artykuł zawiera przykłady, w których interfejsy API i sposobu ich używania. Interfejsy API REST nie są obsługiwane w usłudze Azure Cloud Shell.
 

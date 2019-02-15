@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: c9392d910098e8a2dfadc4842dfcfe185f01fafc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004523"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268604"
 ---
 # <a name="analytics-in-application-insights"></a>Analiza w usłudze Application Insights
 Analytics to zaawansowane narzędzie wyszukiwania i zapytanie o [usługi Application Insights](app-insights-overview.md). Analytics to narzędzia sieci web, aby konfiguracja nie jest wymagana.
@@ -31,7 +31,7 @@ Można również użyć [Plac zabaw dla analizy](https://go.microsoft.com/fwlink
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>Relacja do dzienników usługi Azure Monitor
-Analiza usługi Application Insights opiera się na [Eksploratora danych usługi Azure](/azure/data-explorer) takich jak dzienniki usługi Azure Monitor, a także wykorzystuje [język zapytań w Eksploratorze danych](/azure/kusto/query). Używa ona taka sama [portal analizy dzienników](../log-query/get-started-portal.md) jako dzienniki usługi Azure Monitor, chociaż jego dane są przechowywane w oddzielnej partycji.
+Analiza usługi Application Insights opiera się na [Eksploratora danych usługi Azure](/azure/data-explorer) takich jak dzienniki usługi Azure Monitor, a także wykorzystuje [język zapytania Kusto](/azure/kusto/query). Używa ona taka sama [portal analizy dzienników](../log-query/get-started-portal.md) jako dzienniki usługi Azure Monitor, chociaż jego dane są przechowywane w oddzielnej partycji.
 
 Nie można bezpośrednio dostęp do danych w obszarze roboczym usługi Log Analytics, z usługi Application Insights analytics ani uzyskać bezpośrednio dostęp do danych aplikacji z usługą log analytics. Aby można było zbadać oba zestawy danych ze sobą, należy napisać [zapytania w usłudze log analytics](../log-query/log-query-overview.md) i wykorzystywania [wyrażenie metodzie app()](../log-query/app-expression.md) do dostępu do danych aplikacji.
 

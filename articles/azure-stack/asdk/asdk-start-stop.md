@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 0073427028d20ab969b8d0135b1c831d7fdf8c73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b821c5cfa0dd9ea605d0d0a73e0b98a64a7502b7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191973"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268655"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Uruchamianie i zatrzymywanie usługi Azure Stack Development Kit (ASDK)
 Wystarczy ponownie uruchomić komputer-host ASDK jest niezalecane. Zamiast tego należy wykonać procedury opisane w tym artykule, aby poprawnie zamknąć i ponownie uruchomić usługi ASDK. 
@@ -29,7 +29,7 @@ Wystarczy ponownie uruchomić komputer-host ASDK jest niezalecane. Zamiast tego 
 ## <a name="stop-azure-stack"></a>Zatrzymaj usługę Azure Stack 
 Aby prawidłowo zamknięta i komputer-host ASDK usługi Azure Stack, użyj następujących poleceń programu PowerShell:
 
-1. Zaloguj się jako AzureStack\CloudAdmin na komputerze-hoście ASDK.
+1. Zaloguj się jako AzureStack\AzureStackAdmin na komputerze-hoście ASDK.
 2. Otwórz program PowerShell jako administrator (nie PowerShell ISE).
 3. Uruchom następujące polecenia, aby ustanowić sesję uprzywilejowanych punktu końcowego (program ten): 
 
@@ -49,7 +49,7 @@ Usługi ASDK powinna być uruchamiana automatycznie podczas uruchamiania kompute
 Niezależnie od tego, jak ASDK został zamknięty powinny wykonaj następujące kroki, aby zweryfikować, że wszystkie usługi Azure Stack są uruchomione i w pełni funkcjonalne po komputer-host jest włączony: 
 
 1. Zasilania na komputerze-hoście ASDK. 
-2. Zaloguj się jako AzureStack\CloudAdmin na komputerze-hoście ASDK.
+2. Zaloguj się jako AzureStack\AzureStackAdmin na komputerze-hoście ASDK.
 3. Otwórz program PowerShell jako administrator (nie PowerShell ISE).
 4. Uruchom następujące polecenia, aby ustanowić sesję uprzywilejowanych punktu końcowego (program ten):
 
@@ -68,7 +68,7 @@ Aby dowiedzieć się więcej na temat procedury zalecane poprawnie zamknąć i p
 ## <a name="troubleshoot-startup-and-shutdown"></a>Rozwiązywanie problemów z uruchamiania i zamykania 
 Jeśli usługi Azure Stack nie uruchamia się pomyślnie w ciągu dwóch godzin od zasilania na komputerze hosta ASDK, wykonaj następujące kroki:
 
-1. Zaloguj się jako AzureStack\CloudAdmin na komputerze-hoście ASDK.
+1. Zaloguj się jako AzureStack\AzureStackAdmin na komputerze-hoście ASDK.
 2. Otwórz program PowerShell jako administrator (nie PowerShell ISE).
 3. Uruchom następujące polecenia, aby ustanowić sesję uprzywilejowanych punktu końcowego (program ten):
 

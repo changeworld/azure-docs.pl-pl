@@ -9,17 +9,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.author: saurse
-ms.openlocfilehash: a28e3fb18f2c0b65557034e388d08918c622b8f4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 14de0f632584ff5fb1a6b4395298e9cecfe455e6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255868"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268727"
 ---
 # <a name="back-up-windows-system-state-in-resource-manager-deployment"></a>Tworzenie kopii zapasowej stanu systemu Windows podczas wdrażania usługi Resource Manager
 W tym artykule opisano sposób tworzenia kopii zapasowej stanu systemu Windows Server na platformie Azure. Ten samouczek zawiera podstawowe informacje.
 
-Jeśli chcesz dowiedzieć się więcej o usłudze Azure Backup, przeczytaj to [omówienie](backup-introduction-to-azure-backup.md).
+Jeśli chcesz dowiedzieć się więcej o usłudze Azure Backup, przeczytaj to [omówienie](backup-overview.md).
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/) umożliwiające dostęp do dowolnej usługi Azure.
 
@@ -131,7 +131,7 @@ Teraz, po utworzeniu magazynu, należy go skonfigurować do tworzenia kopii zapa
 
     ![Zakończenie pobierania poświadczeń magazynu](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 > [!NOTE]
-> Poświadczenia magazynu musi zostać zapisany tylko do lokalizacji, która jest lokalny dla systemu Windows Server, na którym zamierzasz korzystać z agenta. 
+> Poświadczenia magazynu musi zostać zapisany tylko do lokalizacji, która jest lokalny dla systemu Windows Server, na którym zamierzasz korzystać z agenta.
 >
 
 [!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
@@ -163,7 +163,7 @@ Teraz, po utworzeniu magazynu, należy go skonfigurować do tworzenia kopii zapa
 
 Agent jest teraz zainstalowany, a maszyna zarejestrowana w magazynie. Wszystko jest gotowe do skonfigurowania kopii zapasowej i zaplanowania jej tworzenia.
 
-## <a name="back-up-windows-server-system-state"></a>Tworzenie kopii zapasowej stanu systemu Windows Server 
+## <a name="back-up-windows-server-system-state"></a>Tworzenie kopii zapasowej stanu systemu Windows Server
 Początkowa kopia zapasowa obejmuje dwa zadania:
 
 * Planowanie tworzenia kopii zapasowej
@@ -194,7 +194,7 @@ Aby utworzyć początkową kopię zapasową, użyj agenta usługi Microsoft Azur
 
 6. Kliknij przycisk **Dalej**.
 
-7. Wybierz wymagane częstotliwość wykonywania kopii zapasowych i zasady przechowywania dla kopii zapasowych stanu systemu na kolejnych stronach. 
+7. Wybierz wymagane częstotliwość wykonywania kopii zapasowych i zasady przechowywania dla kopii zapasowych stanu systemu na kolejnych stronach.
 
 8. Przejrzyj informacje na stronie Potwierdzenie, a następnie kliknij przycisk **Zakończ**.
 

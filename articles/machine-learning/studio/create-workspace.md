@@ -1,5 +1,5 @@
 ---
-title: Tworzenie obszaru roboczego
+title: Tworzenie obszaru roboczego usługi Machine Learning Studio
 titleSuffix: Azure Machine Learning Studio
 description: Aby korzystać z usługi Azure Machine Learning Studio, musisz mieć obszar roboczy usługi Machine Learning Studio. Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.
 services: machine-learning
@@ -10,24 +10,23 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: 16c67c217c8ef33a360fd479a45317d6c42af494
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486321"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270112"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Utwórz i Udostępnij obszar roboczy usługi Azure Machine Learning Studio
 
 Aby korzystać z usługi Azure Machine Learning Studio, musisz mieć obszar roboczy usługi Machine Learning Studio. Ten obszar roboczy zawiera narzędzia potrzebne do tworzenia i publikowania eksperymentów oraz zarządzania nimi.
 
+## <a name="create-a-studio-workspace"></a>Utwórz obszar roboczy Studio
 
-
-### <a name="to-create-a-workspace"></a>Aby utworzyć obszar roboczy
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
 
     > [!NOTE]
-    > Zaloguj się i Utwórz obszar roboczy, musisz być administratorem subskrypcji platformy Azure. 
+    > Zaloguj się i Utwórz obszar roboczy Studio, musisz być administratorem subskrypcji platformy Azure. 
     >
     > 
 
@@ -40,9 +39,13 @@ Aby korzystać z usługi Azure Machine Learning Studio, musisz mieć obszar robo
     - *Nazwa obszaru roboczego* może być maksymalnie 260 znaków, nie kończy się spacją. Nazwa nie może zawierać następujących znaków: `< > * % & : \ ? + /`
     - *Planu usługi sieci web* możesz wybrać (lub Utwórz), wraz ze skojarzonego *warstwy cenowej* wybrać, jest używany w przypadku wdrożenia usługi sieci web z obszaru roboczego.
 
-    ![Utwórz nowy obszar roboczy](./media/create-workspace/create-new-workspace.png)
+    ![Utwórz nowy obszar roboczy Studio](./media/create-workspace/create-new-workspace.png)
 
 5. Kliknij pozycję **Utwórz**.
+
+> [!NOTE]
+> Usługa Machine Learning Studio opiera się na konto magazynu platformy Azure, który możesz udostępnić zapisywane są dane pośrednie podczas wykonywania przepływu pracy. Po utworzeniu obszaru roboczego, jeśli konto magazynu zostało usunięte lub klucze dostępu zostaną zmienione, obszar roboczy przestanie działać, a wszystkie eksperymenty w tym obszarze roboczym zakończą się niepowodzeniem.
+Jeśli przypadkowo usuniesz konto magazynu, ponownie utwórz konto magazynu o tej samej nazwie w tym samym regionie co usunięte konto magazynu, a następnie ponownie zsynchronizować klucz dostępu. Jeśli doszło do zmiany kluczy dostępu do konta magazynu, należy ponownie zsynchronizować klucze dostępu w obszarze roboczym, korzystając z witryny Azure Portal.
 
 Po wdrożeniu obszaru roboczego, możesz go otworzyć w usłudze Machine Learning Studio.
 
@@ -56,12 +59,12 @@ Po wdrożeniu obszaru roboczego, możesz go otworzyć w usłudze Machine Learnin
 
     ![Otwórz eksperymentów](./media/create-workspace/my-experiments.png)
 
-Aby dowiedzieć się, jak zarządzanie obszarem roboczym, zobacz [Zarządzanie obszarem roboczym usługi Azure Machine Learning](manage-workspace.md).
-Jeśli wystąpi problem podczas tworzenia obszaru roboczego, zobacz [przewodnik rozwiązywania problemów: Tworzenie i łączenie z obszaru roboczego usługi Machine Learning](troubleshooting-creating-ml-workspace.md).
+Aby uzyskać informacji o zarządzaniu obszaru roboczego usługi Studio, zobacz [Zarządzanie obszarem roboczym usługi Azure Machine Learning Studio](manage-workspace.md).
+Jeśli wystąpi problem podczas tworzenia obszaru roboczego, zobacz [przewodnik rozwiązywania problemów: Tworzenie i łączenie z obszaru roboczego usługi Machine Learning Studio](troubleshooting-creating-ml-workspace.md).
 
 
-## <a name="sharing-an-azure-machine-learning-workspace"></a>Udostępnianie obszaru roboczego usługi Azure Machine Learning
-Po utworzeniu obszaru roboczego uczenia maszynowego, można zaprosić użytkowników do swojego obszaru roboczego, aby udostępnić uprawnienia dostępu do obszaru roboczego i wszystkich jego eksperymentów, zestawów danych, notesy itp. Wystarczy dodać użytkowników, w jedną z dwóch ról:
+## <a name="share-an-azure-machine-learning-studio-workspace"></a>Udostępnij obszar roboczy usługi Azure Machine Learning Studio
+Raz usługi Machine Learning Studio obszar roboczy jest tworzony, możesz zaprosić użytkowników do swojego obszaru roboczego, aby udostępnić uprawnienia dostępu do obszaru roboczego i wszystkich jego eksperymentów, zestawów danych, notesy itp. Wystarczy dodać użytkowników, w jedną z dwóch ról:
 
 * **Użytkownik** — użytkownik obszar roboczy można utworzyć, Otwórz, modyfikowanie i usuwanie eksperymenty, zestawy danych itp., w obszarze roboczym.
 * **Właściciel** — właściciel może zapraszać i usuwanie użytkowników w obszarze roboczym, oprócz co można zrobić.
@@ -71,7 +74,7 @@ Po utworzeniu obszaru roboczego uczenia maszynowego, można zaprosić użytkowni
 > 
 > 
 
-### <a name="to-share-a-workspace"></a>Aby udostępnić obszar roboczy
+### <a name="to-share-a-studio-workspace"></a>Aby udostępnić obszar roboczy Studio
 
 1. Zaloguj się do usługi Machine Learning Studio na [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 

@@ -12,12 +12,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 4/16/2018
 ms.author: victorh
-ms.openlocfilehash: 15a86410e8ca853c2ca2431cb9a62de628972703
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b45e782984f637f1b084ec757000dde9dd3a5777
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320105"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302044"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Oferowana listę grup reguł CRS zapory aplikacji sieci web i reguł
 
@@ -27,6 +27,11 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 
 ## <a name="owasp30"></a> OWASP_3.0
 
+### <a name="General"></a> <p x-ms-format-detection="none">Ogólne</p>
+
+|Identyfikator reguły|Opis|
+|---|---|
+|200004|Możliwe wieloczęściowego niedopasowane granic.|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">ŻĄDANIE 911 — METODA WYMUSZANIA</p>
 
@@ -43,7 +48,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |911018|Reguła 911018|
 
 
-### <a name="crs913"></a> <p x-ms-format-detection="none">ŻĄDANIE 913-SKANERA — WYKRYWANIE</p>
+### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
@@ -61,7 +66,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |913017|Reguła 913017|
 |913018|Reguła 913018|
 
-### <a name="crs920"></a> <p x-ms-format-detection="none">ŻĄDANIE 920-PROTOCOL-WYMUSZANIA</p>
+### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
@@ -115,7 +120,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |920274|Nieprawidłowy znak w nagłówkach żądania (poza bardzo rygorystyczny set)|
 |920460|Reguła 920460|
 
-### <a name="crs921"></a> <p x-ms-format-detection="none">ŻĄDANIE 921-PROTOCOL-ATAKÓW</p>
+### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
@@ -138,7 +143,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |921017|Reguła 921017|
 |921018|Reguła 921018|
 
-### <a name="crs930"></a> <p x-ms-format-detection="none">ŻĄDANIA — 930-APLIKACJI ATAKU — LFI</p>
+### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
@@ -155,7 +160,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |930017|Reguła 930017|
 |930018|Reguła 930018|
 
-### <a name="crs931"></a> <p x-ms-format-detection="none">ŻĄDANIA — 931-APLIKACJI ATAKU — RFI</p>
+### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
@@ -172,7 +177,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |931017|Reguła 931017|
 |931018|Reguła 931018|
 
-### <a name="crs932"></a> <p x-ms-format-detection="none">ŻĄDANIA — 932-APLIKACJI ATAKU — RÓDŁOWY</p>
+### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
@@ -191,7 +196,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |932017|Reguła 932017|
 |932018|Reguła 932018|
 
-### <a name="crs933"></a> <p x-ms-format-detection="none">ŻĄDANIA — 933-APLIKACJI ATAKU — PHP</p>
+### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
@@ -215,7 +220,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |933017|Reguła 933017|
 |933018|Reguła 933018|
 
-### <a name="crs941"></a> <p x-ms-format-detection="none">ŻĄDANIA — 941-APLIKACJI ATAKU — XSS</p>
+### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
@@ -239,8 +244,10 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |941290|Filtry XSS programu Internet Explorer — wykryto atak.|
 |941300|Filtry XSS programu Internet Explorer — wykryto atak.|
 |941310|US ASCII źle sformułowane kodowania Filtr XSS - atak.|
+|941330|Filtry XSS programu Internet Explorer — wykryto atak.|
+|941340|Filtry XSS programu Internet Explorer — wykryto atak.|
 |941350|UTF-7 kodowania IE XSS - atak.|
-|941013|Reguła 941013|
+|941013|Rule 941013|
 |941014|Reguła 941014|
 |941320|Wykryto ataku XSS możliwe - procedurę obsługi tagów HTML|
 |941015|Reguła 941015|
@@ -248,25 +255,36 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |941017|Reguła 941017|
 |941018|Reguła 941018|
 
-### <a name="crs942"></a> <p x-ms-format-detection="none">ŻĄDANIA — 942-APLIKACJI ATAKU — SQLI</p>
+### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
 |Identyfikator reguły|Opis|
 |---|---|
 |942011|Reguła 942011|
 |942012|Reguła 942012|
 |942100|Wykryto atak w programie SQL iniekcji za pośrednictwem libinjection|
+|942110|Ataku polegającego na iniekcji SQL: Iniekcja wspólne testowanie wykryte|
+|942130|Ataku polegającego na iniekcji SQL: Wykryto Tautology SQL.|
 |942140|Ataku polegającego na iniekcji SQL = wykryto nazw pospolitych bazy danych|
 |942160|Wykrywa ukryta sqli testów przy użyciu sleep() lub benchmark().|
 |942170|Wykrywa prób iniekcji SQL testu wydajności i uśpienia, takich jak zapytania warunkowego|
+|942190|Wykrywa próby zbierania informacji i wykonywanie kodu MSSQL|
+|942200|Wykrywa MySQL komentarz- / zaciemniony miejsce w plikach wstrzyknięć kodu i kończenie działania początkowych|
 |942230|Wykrywa warunkowego prób iniekcji kodu SQL|
+|942260|Wykrywa, że podstawowe pomijania uwierzytelniania SQL próbuje 2/3|
 |942270|Szukasz wstrzyknięcie podstawowego kodu sql. Wspólne parametry ataku dla mysql, oracle i innych.|
 |942290|Znajduje podstawowe SQL bazy danych MongoDB prób iniekcji kodu|
+|942300|Wykrywa MySQL komentarze, warunki i iniekcji ch r ()|
 |942320|Wykrywa, MySQL i PostgreSQL wstrzyknięć kodu funkcji/procedury przechowywane|
+|942330|Wykrywa klasycznego probings iniekcji SQL 1/2|
+|942340|Wykrywa, że podstawowe pomijania uwierzytelniania SQL próbuje 3/3|
 |942350|Wykrywa iniekcji MySQL funkcji zdefiniowanej przez użytkownika i inne struktury danych/manipulowanie prób|
+|942360|Wykrywa połączonych podstawowe wstrzyknięcie kodu SQL i prób SQLLFI|
+|942370|Wykrywa klasycznego probings iniekcji SQL 2/2|
 |942013|Reguła 942013|
 |942014|Reguła 942014|
 |942150|Ataku polegającego na iniekcji SQL|
 |942410|Ataku polegającego na iniekcji SQL|
+|942430|Wykrywanie anomalii znak SQL (argumenty) z ograniczeniami: liczba znaków specjalnych przekracza (12)|
 |942440|Wykryto sekwencja Komentarz SQL.|
 |942450|SQL szesnastkowy kodowanie określone|
 |942015|Reguła 942015|
@@ -285,7 +303,7 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 |943100|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = ustawienie wartości plików Cookie w formacie HTML|
 |943110|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = Nazwa parametru identyfikatora sesji z odwołania Wyłącz domeny|
 |943120|Atak użyciem spreparowanych stałych identyfikatorów sesji możliwe = Nazwa parametru identyfikatora sesji z nie odwołania|
-|943013|Reguła 943013|
+|943013|Rule 943013|
 |943014|Reguła 943014|
 |943015|Reguła 943015|
 |943016|Reguła 943016|
@@ -550,6 +568,6 @@ Poniższe tabele są grup reguł i reguł, które są dostępne podczas korzysta
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak wyłączyć reguły zapory aplikacji sieci Web, odwiedzając: [reguł zapory aplikacji sieci Web Dostosowywanie](application-gateway-customize-waf-rules-portal.md)
+Dowiedz się, jak wyłączyć reguły zapory aplikacji sieci Web, odwiedzając: [Dostosowywanie reguł zapory aplikacji sieci Web](application-gateway-customize-waf-rules-portal.md)
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png

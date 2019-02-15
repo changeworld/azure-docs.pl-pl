@@ -1,7 +1,7 @@
 ---
 title: Dodaj niestandardowe analizatory — usługa Azure Search
 description: Zmodyfikuj tokenizatory tekstu i znaku filtry, używane w zapytaniach wyszukiwania pełnotekstowego w usłudze Azure Search.
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,22 +19,24 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 150510ec09744b1350a93bde4e2a4dcb141867c0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 957c8033efc386d8e8cb13cbed921c597af4f11b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008286"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302084"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Dodaj niestandardowe analizatory do indeksu usługi Azure Search
 
-A *analizatora niestandardowego* jest określone przez użytkownika kombinacją tokenizatora i opcjonalne filtry używane do dostosowywania przetwarzania w aparacie wyszukiwania tekstu. Na przykład można utworzyć analizatora niestandardowego za pomocą *filtr char* przed tekstowe dane wejściowe są stokenizowana, Usuń kod znaczników HTML.
+A *analizatora niestandardowego* jest określonego typu [analizatora tekstu](search-analyzers.md) składający się z kombinacji zdefiniowanych przez użytkownika istniejących tokenizatora i opcjonalne filtry. Łącząc tokenizatory i filtry na nowe sposoby, można dostosować tekst przetwarzania w aparacie wyszukiwania do osiągnięcia określonych wyników. Na przykład można utworzyć analizatora niestandardowego za pomocą *filtr char* przed tekstowe dane wejściowe są stokenizowana, Usuń kod znaczników HTML.
+
+ Można zdefiniować wiele analizatory niestandardowe, będzie się różnić w kombinacji filtrów, ale każde pole do indeksowania, analizy i jeden dla analizy wyszukiwania można używać tylko jednego analizatora. Ilustracja wygląda analizatora klienta znajduje się [przykład analizatora niestandardowego](search-analyzers.md#Example1).
 
 ## <a name="overview"></a>Przegląd
 
- Rola [aparat wyszukiwania pełnotekstowego](search-lucene-query-architecture.md), mówiąc najprościej, jest do przetwarzania i przechowywania dokumentów w sposób, który umożliwia wydajne wykonywanie zapytań i pobierania. Na wysokim poziomie wszystkie sprowadza się do wyodrębniania słów ważne dokumenty, umieszczenie ich w indeksie i następnie przy użyciu indeksu do wyszukiwania dokumentów, które odpowiadają słów danego zapytania. Proces wyodrębniania wyrazy w dokumentach i zapytaniach wyszukiwania jest wywoływana, aby poddawać analizie leksykalnej. Składniki, które wykonują poddawać analizie leksykalnej, są nazywane analizatorów.
+ Rola [aparat wyszukiwania pełnotekstowego](search-lucene-query-architecture.md), mówiąc najprościej, jest do przetwarzania i przechowywania dokumentów w sposób, który umożliwia wydajne wykonywanie zapytań i pobierania. Na wysokim poziomie wszystkie sprowadza się do wyodrębniania słów ważne dokumenty, umieszczenie ich w indeksie i następnie przy użyciu indeksu do wyszukiwania dokumentów, które odpowiadają słów danego zapytania. Proces wyodrębniania wyrazy w dokumentach i zapytaniach wyszukiwania jest nazywany *poddawać analizie leksykalnej*. Składniki, które wykonują poddawać analizie leksykalnej są nazywane *analizatory*.
 
- W usłudze Azure Search, możesz korzystać z zestawu analizatory niezależny od języka wstępnie zdefiniowanych w [analizatory](#AnalyzerTable) tabeli i język analizatory określonych na liście [analizatory języka &#40;interfejsu API REST usługi Search Azure&#41;](index-add-language-analyzers.md). Istnieje również możliwość definiowania własnych analizatory niestandardowe.  
+ W usłudze Azure Search, możesz korzystać z zestawu wstępnie zdefiniowanych analizatory niezależny od języka w [analizatory](#AnalyzerTable) tabeli lub analizatory specyficzny dla języka na liście [analizatory języka &#40;interfejsu API REST usługi Search Azure&#41;](index-add-language-analyzers.md). Istnieje również możliwość definiowania własnych analizatory niestandardowe.  
 
  Analizator niestandardowy umożliwia przejąć kontrolę nad procesem konwertowania tekstu na tokeny można indeksować i którą można przeszukiwać. To składający się z pojedynczego tokenizatora wstępnie zdefiniowane, co najmniej jeden filtr tokenu i co najmniej jeden filtr char Konfiguracja zdefiniowana przez użytkownika. Tokenizator jest odpowiedzialny za istotne tekstu do tokenów i tokenów filtrów do modyfikowania tokenów wyemitowane przez tokenizatora. CHAR filtry są stosowane do przygotować tekst wejściowy przetworzenia przez tokenizatora. Na przykład filtr char można zastąpić niektórych znaków lub symboli.
 
@@ -50,22 +52,13 @@ A *analizatora niestandardowego* jest określone przez użytkownika kombinacją 
 
 -   Łamanie ASCII. Dodawanie standardowych ASCII składanie filtru do normalizacji znaków diakrytycznych, takich jak strumień świetlny lub ê w warunkach wyszukiwania.  
 
- Można zdefiniować wiele analizatory niestandardowe, będzie się różnić w kombinacji filtrów, ale każde pole do indeksowania, analizy i jeden dla analizy wyszukiwania można używać tylko jednego analizatora.  
-
- Ta strona zawiera listę obsługiwanych analizatorów, tokenizatory, filtry tokenu i filtry char. Można również znaleźć opis zmian do definicji indeksu za pomocą przykład użycia. Aby uzyskać więcej ogólnych informacji o podstawową używaną technologią wykorzystywane w implementacji usługi Azure Search, zobacz [podsumowania pakiet analizy (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html). Przykłady konfiguracji analizatora, zobacz [analizatory w usłudze Azure Search > przykłady](https://docs.microsoft.com/azure/search/search-analyzers#examples).
-
-
-## <a name="default-analyzer"></a>Analizator domyślne  
-
-Domyślnie pola z możliwością wyszukiwania w usłudze Azure Search są analizowane za pomocą [analizatora Apache Lucene Standard (standardowe lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) który dzieli tekst na elementy następujące ["Segmentacji tekst Unicode"](https://unicode.org/reports/tr29/) reguły. Ponadto standardowy analizator konwertuje wszystkie znaki do postaci małymi literami. Indeksowane dokumenty i terminy wyszukiwania przechodzą przez analizę, podczas indeksowania i przetwarzanie zapytań.  
-
- Służy on automatycznie w każdym polu możliwym do przeszukania, chyba że jawnie przesłonić za pomocą innego analizatora w ramach definicji pola. Alternatywne analizatory mogą być analizatorów niestandardowych lub inny analizator wstępnie zdefiniowanych, z listy dostępnych [analizatory](#AnalyzerTable) poniżej.
+ Ta strona zawiera listę obsługiwanych analizatorów, tokenizatory, filtry tokenu i filtry char. Można również znaleźć opis zmian do definicji indeksu za pomocą przykład użycia. Aby uzyskać więcej ogólnych informacji o podstawową używaną technologią wykorzystywane w implementacji usługi Azure Search, zobacz [podsumowania pakiet analizy (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html). Przykłady konfiguracji analizatora, zobacz [dodać analizatory w usłudze Azure Search](search-analyzers.md#examples).
 
 ## <a name="validation-rules"></a>Reguły walidacji  
  Nazwy analizatorów, tokenizatory, filtry tokenu i filtry znak muszą być unikatowe i nie może być taka sama jak analizatory wstępnie zdefiniowanych tokenizatory, filtry tokenu lub char filtrów. Zobacz [odwołania do właściwości](#PropertyReference) nazw już w użyciu.
 
-## <a name="create-a-custom-analyzer"></a>Tworzenie niestandardowego analizatora
- Można zdefiniować niestandardowe analizatory w czasie tworzenia indeksu. W tej sekcji opisano składnia określająca analizatora niestandardowego. Możesz można także zapoznać się ze składnią, przeglądając przykładowe definicje w [analizatory w usłudze Azure Search](https://docs.microsoft.com/azure/search/search-analyzers#examples).  
+## <a name="create-custom-analyzers"></a>Utwórz niestandardowe analizatory
+ Można zdefiniować niestandardowe analizatory w czasie tworzenia indeksu. W tej sekcji opisano składnia określająca analizatora niestandardowego. Możesz można także zapoznać się ze składnią, przeglądając przykładowe definicje w [dodać analizatory w usłudze Azure Search](search-analyzers.md#examples).  
 
  Definicja analizatora obejmuje nazwę typu, co najmniej jeden filtr char, maksymalnie jeden tokenizatora i co najmniej jeden filtr tokenu przetwarzanie tokenizacji po. CHAR filtrach są stosowane przed tokenizacji. Filtry tokenu i char filtry są stosowane od lewej do prawej.
 
@@ -148,12 +141,13 @@ Definicja Analizator jest częścią większego indeksu. Zobacz [interfejsu API 
 Definicje filtrów char, tokenizatory i filtry tokenu zostaną dodane do indeksu, tylko wtedy, gdy ustawiasz opcje niestandardowe. Aby użyć istniejącego filtru lub tokenizatora jako — jest, podaj je według nazwy w definicji analizatora.
 
 <a name="Testing custom analyzers"></a>
-## <a name="test-a-custom-analyzer"></a>Testowanie analizatora niestandardowego
+
+## <a name="test-custom-analyzers"></a>Testowanie analizatory niestandardowe
 
 Możesz użyć **operacji analizatora testu** w [interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) aby zobaczyć, jak analizator dzieli danego tekstu na tokeny.
 
 **Żądanie**
-~~~~
+```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
     api-key: [admin key]
@@ -162,9 +156,9 @@ Możesz użyć **operacji analizatora testu** w [interfejsu API REST](https://do
      "analyzer":"my_analyzer",
      "text": "Vis-à-vis means Opposite"
   }
-~~~~
+```
 **Odpowiedź**
-~~~~
+```
   {
     "tokens": [
       {
@@ -193,21 +187,21 @@ Możesz użyć **operacji analizatora testu** w [interfejsu API REST](https://do
       }
     ]
   }
- ~~~~
+```
 
- ## <a name="update-a-custom-analyzer"></a>Zaktualizować analizatora niestandardowego
+ ## <a name="update-custom-analyzers"></a>Niestandardowe analizatory aktualizacji
 
 Po zdefiniowaniu analizator, tokenizator, token filtru lub filtr char, nie można modyfikować. Nowe można dodać do istniejącego indeksu tylko wtedy, gdy `allowIndexDowntime` flaga jest ustawiona na wartość true w żądaniu aktualizacji indeksu:
 
-~~~~
+```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
-~~~~
+```
 
 Ta operacja pobiera indeksu w trybie offline dla co najmniej kilka sekund, co powoduje swoje żądania indeksowania i zapytanie nie powiedzie się. Wydajność i zapisu dostępność indeks może być osłabiona przez kilka minut po indeks jest zaktualizowane lub dłużej dla bardzo dużych indeksów, ale te skutki są tymczasowe i po pewnym czasie rozwiązać samodzielnie.
 
  <a name="ReferenceIndexAttributes"></a>
 
-## <a name="index-attribute-reference"></a>Odwołanie do atrybutu indeksu
+## <a name="analyzer-reference"></a>Odwołania do analizatora
 
 W poniższych tabelach listę właściwości konfiguracji dla analizatorów, tokenizatory, filtry tokenu i char sekcja filtru definicji indeksu. Struktura analizatora, tokenizatora lub filtr w indeksie składa się z tych atrybutów. Wartość przydziału informacji, zobacz [odwołania do właściwości](#PropertyReference).
 
@@ -390,5 +384,5 @@ W poniższej tabeli tokenu filtry, które są implementowane przy użyciu Apache
 
 ## <a name="see-also"></a>Zobacz także  
  [REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/)   
- [Analizatory w usłudze Azure Search > przykłady](https://docs.microsoft.com/azure/search/search-analyzers#examples)    
+ [Analizatory w usłudze Azure Search > przykłady](search-analyzers.md#examples)    
  [Tworzenie indeksu &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/01/2019
-ms.openlocfilehash: 2f401290a4a9150d27685c06c2d4cd9dc2f06f0d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: bbae6d4b727f3e3dc51bd57e8badbc6e87814a51
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730292"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267890"
 ---
 # <a name="import-your-training-data-into-azure-machine-learning-studio-from-various-data-sources"></a>Importowanie danych szkoleniowych do usługi Azure Machine Learning Studio z różnych źródeł danych
 
@@ -77,6 +77,29 @@ Wszelkie moduł, który akceptuje formatach niż tabela danych dyskretnie przeko
 
 Jeśli to konieczne, możesz przekonwertować format tabeli danych do pliku CSV, TSV, ARFF SVMLight format lub przy użyciu innych modułów konwersji.
 Szukaj w **konwersje formatu danych** części palety modułów dla modułów, które wykonują te funkcje.
+
+## <a name="data-capacities"></a>Pojemności danych.
+
+W typowych przypadkach użycia moduły w usłudze Machine Learning Studio obsługują zestawy danych o rozmiarze maksymalnie 10 GB, zawierające gęsto upakowane dane liczbowe. Jeśli moduł przyjmuje więcej niż jedną operację wprowadzania danych wejściowych, wówczas 10 GB to łączny rozmiar wszystkich danych wejściowych. Próbkowanie większych zestawów danych, korzystając z zapytań programu Hive lub usługi Azure SQL Database, możesz też uczenia przez liczenie przetwarzania wstępnego, przed zaimportowaniem danych.  
+
+Podczas normalizacji funkcji następujące typy danych mogą ulegać rozszerzaniu do większych zestawów danych. Takie dane muszą być mniejsze niż 10 GB:
+
+* Rozrzedzone
+* Podzielone na kategorie
+* Ciągi
+* Dane binarne
+
+W przypadku następujących modułów obowiązuje ograniczenie do zestawów danych mniejszych niż 10 GB:
+
+* Moduły polecania
+* Moduł Synthetic Minority Oversampling Technique (SMOTE)
+* Moduły skryptów: R, Python, SQL
+* Moduły, w których rozmiar danych wyjściowych może być większy niż rozmiar danych wejściowych, na przykład Przyłączenie lub Tworzenie skrótu funkcji
+* Krzyżowa weryfikacja, Hiperparametry modelu strojenia, Regresja porządkowa oraz Multiklasa Jedna kontra wszystkie, gdy liczba iteracji jest bardzo duża
+
+W przypadku zestawów danych o rozmiarach większych niż kilka GB przekazać dane do usługi Azure Storage lub Azure SQL Database lub użyć usługi Azure HDInsight, zamiast przekazywać dane bezpośrednio z pliku lokalnego.
+
+Można znaleźć informacje o danych obrazu w [Import obrazów](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/import-images#bkmk_Notes) odwołania do modułu.
 
 ## <a name="import-from-a-local-file"></a>Importuj z pliku lokalnego
 

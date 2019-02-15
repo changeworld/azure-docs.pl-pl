@@ -1,7 +1,7 @@
 ---
 title: Dodać analizatory języka — usługa Azure Search
 description: Analiza wielojęzycznej tekstu leksykalne zapytań innych niż angielski i indeksów w usłudze Azure Search.
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b5c562994c169a8c5d51ee31a9606c5c40162603
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: bb7fbdeea9c19b8a6fabe06687261296110b4064
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008335"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301812"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Dodać analizatory języka do indeksu usługi Azure Search
 
-A *analizatora języków* jest określony składnik [aparat wyszukiwania pełnotekstowego](https://docs.microsoft.com/azure/search/search-lucene-query-architecture) wykonująca analizie leksykalnej, używając reguł językowej języka docelowego. Każde pole wyszukiwania ma `analyzer` właściwości. Jeśli indeks zawiera przetłumaczone ciągi, takie jak oddzielnymi polami dla angielskiego i chińskiego tekstu, można określić dla każdego pola, aby dostęp do zaawansowanych funkcji językowej te analizatory analizatory języka.  
+A *analizatora języków* jest określonego typu [analizatora tekstu](search-analyzers.md) wykonująca analizie leksykalnej, używając reguł językowej języka docelowego. Każde pole wyszukiwania ma **analizatora** właściwości. Jeśli indeks zawiera przetłumaczone ciągi, takie jak oddzielnymi polami dla angielskiego i chińskiego tekstu, można określić dla każdego pola, aby dostęp do zaawansowanych funkcji językowej te analizatory analizatory języka.  
 
 Usługa Azure Search obsługuje 35 analizatory objęta Lucene, 50 analizatory i wspierane przez własności firmy Microsoft przetwarzanie języka naturalnego w technologii używanej do pakietu Office i Bing.
 
-## <a name="compare-language-analyzer-types"></a>Porównywanie typów analizatora języka 
+## <a name="comparing-analyzers"></a>Porównywanie analizatorów
 
 Niektórzy deweloperzy preferować lepiej, proste, typu open-source rozwiązania Lucene. Analizatory języków Lucene są szybsze, ale analizatory firmy Microsoft mają zaawansowane funkcje, takie jak Lematyzacja, word decompounding (w języku, takim jak niemiecki, duński, holenderski, szwedzki, norweski, estoński, zakończenia, węgierski, słowacki) i jednostki rozpoznawanie (adresy URL, wiadomości e-mail, dat, liczb). Jeśli to możliwe należy uruchomić porównania zarówno firmy Microsoft, jak i Lucene analizatory do określania, który z nich jest lepszym rozwiązaniem. 
 
@@ -49,15 +49,17 @@ Analizator domyślny jest Lucene Standard, co sprawdza się dobrze sprawdza się
  > [!Tip]
  > [Wersja demonstracyjna analizatora wyszukiwania](https://alice.unearth.ai/) zapewnia porównania side-by-side wyników generowanych przez standardowy analizator Lucene, Lucene w języku angielskim analizator i procesora angielskiej języka naturalnego firmy Microsoft. Dla każdego dane wejściowe zostaną podane, wyniki z każdego analizatora są wyświetlane w sąsiadujących okienka.
 
-## <a name="analyzer-configuration"></a>Analyzer configuration
+## <a name="configuring-analyzers"></a>Konfigurowanie analizatorów
 
-Dla każdego pola w definicji indeksu, można ustawić `analyzer` Właściwość Nazwa analizatora, określający które języka i dostawcy. Ten sam analizator zostaną zastosowane podczas indeksowania i wyszukiwania dla tego pola. Na przykład można mieć oddzielnymi polami w języku angielskim, francuskim i hiszpańskim opisy hotelu znajdujące się obok siebie w tym samym indeksie.  
+Analizatory języków są używane jako-to. Dla każdego pola w definicji indeksu, można ustawić **analizatora** Właściwość Nazwa analizatora, określający które języka i dostawcy. Ten sam analizator zostaną zastosowane podczas indeksowania i wyszukiwania dla tego pola. Na przykład można mieć oddzielnymi polami w języku angielskim, francuskim i hiszpańskim opisy hotelu znajdujące się obok siebie w tym samym indeksie.  
 
 Użyj **searchFields** zapytania parametru, aby określić które pole specyficzne dla języka, aby przeprowadzać wyszukiwanie w zapytaniach. Możesz przejrzeć przykłady zapytań, które będą zawierać właściwości analizator w dokumentach wyszukiwania. 
 
 Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Create Index &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Aby uzyskać więcej informacji na temat analizy w usłudze Azure Search, zobacz [analizatory w usłudze Azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
 
-## <a name="analyzer-list"></a>Lista analizatora  
+<a name="language-analyzer-list"></a>
+
+## <a name="language-analyzer-list"></a>Lista analizatora języków 
  Poniżej przedstawiono listę obsługiwanych języków wraz z nazwami analizator Lucene i firmy Microsoft.  
 
 |Język|Nazwa analizatora firmy Microsoft|Nazwa analizator Lucene|  

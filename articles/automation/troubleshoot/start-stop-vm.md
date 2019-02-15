@@ -6,17 +6,66 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/30/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ef2a782a19dd319de346f14d6189759d0a26686c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d8ef70088d904720a81ac558206a3140d7bbecd6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55666758"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270002"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>Rozwiązywanie problemów z uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania
+
+## <a name="deployment-failure"></a>Scenariusz: Rozwiązanie uruchamianie/zatrzymywanie maszyny Wirtualnej nie powiedzie się prawidłowo wdrażania
+
+### <a name="issue"></a>Problem
+
+W przypadku wdrażania [uruchamianie/zatrzymywanie maszyn wirtualnych poza godziny rozwiązania](../automation-solution-vm-management.md), zostanie wyświetlony jeden z następujących błędów:
+
+```
+Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
+```
+
+```
+Resource 'StartStop_VM_Notification' was disallowed by policy. Policy identifiers: '[{\\\"policyAssignment\\\":{\\\"name\\\":\\\"[MyPolicyName]”.
+```
+
+```
+The subscription is not registered to use namespace 'Microsoft.OperationsManagement'.
+```
+
+```
+The subscription is not registered to use namespace 'Microsoft.Insights'.
+```
+
+```
+The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
+```
+
+### <a name="cause"></a>Przyczyna
+
+Wdrażanie może zakończyć się niepowodzeniem z jednego z następujących powodów:
+
+1. Istnieje już konto usługi Automation o tej samej nazwie w wybranego regionu.
+2. Zasady zostaną w miejscu, które nie zezwalają na wdrożenie rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych.
+3. `Microsoft.OperationsManagement`, `Microsoft.Insights`, Lub `Microsoft.Automation` typów zasobów nie są zarejestrowane.
+4. Obszar roboczy usługi Log Analytics jest zablokowany.
+
+### <a name="resolution"></a>Rozwiązanie
+
+Przejrzyj następującą listę potencjalne rozwiązania problemów lub miejsca do przeszukania:
+
+1. Konta usługi Automation muszą być unikatowe w obrębie regionu Azure, nawet jeśli leżą one w różnych grupach zasobów. Sprawdź istniejące konta usługi Automation, w regionie docelowym.
+2. Istniejące zasady zapobiega zasobów, która jest wymagana dla rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych do wdrożenia. Przejdź do przypisania zasad w witrynie Azure portal i sprawdź, czy masz przypisanie zasad, które nie zezwalają na wdrożenie tego zasobu. Aby dowiedzieć się więcej na ten temat, zobacz [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
+3. W celu wdrożenia rozwiązania uruchamianie/zatrzymywanie maszyn wirtualnych, Twoja subskrypcja musi zostać zarejestrowany do następujących przestrzeni nazw zasobów platformy Azure:
+    * `Microsoft.OperationsManagement`
+    * `Microsoft.Insights`
+    * `Microsoft.Automation`
+
+   Zobacz, [rozwiązać błędy rejestracji dostawcy zasobów](../../azure-resource-manager/resource-manager-register-provider-errors.md) Aby dowiedzieć się więcej na temat błędów podczas rejestrowania dostawców.
+4. Jeśli masz blokadę w obszarze roboczym usługi Log Analytics, przejdź do obszaru roboczego w witrynie Azure portal i Usuń wszystkie blokady dla zasobu.
 
 ## <a name="all-vms-fail-to-startstop"></a>Scenariusz: Nie powiodło się uruchomienie/zatrzymanie wszystkich maszyn wirtualnych
 

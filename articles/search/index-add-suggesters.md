@@ -1,7 +1,7 @@
 ---
 title: Dodaj sugestory do indeksu usługi Azure Search
 description: Umożliwia pól dla zapytania z podpowiedziami pojawiającymi działań, gdzie sugerowane zapytania składają się z tekstem z pól w indeksie usługi Azure Search.
-ms.date: 01/31/2019
+ms.date: 02/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 35025d69865aa6890e1cd921e31ac6c26c015789
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008412"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269930"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>Dodaj sugestory do indeksu usługi Azure Search
 
@@ -34,9 +34,12 @@ Mimo że **sugestora** ma kilka właściwości, jest głównie to zbiór pól, d
 
 Może mieć tylko jeden **sugestora** zasobów dla każdego indeksu (w szczególności jeden **sugestora** w **sugestory** kolekcji).
 
-Możesz utworzyć **sugestora** w dowolnym momencie, ale wpływ na indeks w zależności pól. Nowe pola dodane do sugestora w ramach tej samej aktualizacji są najmniej atrakcyjnych, w tym odbudowywanie indeksu, nie jest wymagane. Jednak dodanie istniejących pól, zmianę definicji pola, wymagających pełnej odbudowania tego indeksu.
+## <a name="creating-a-suggester"></a>Tworzenie sugestora 
 
-## <a name="usage"></a>Sposób użycia  
+Możesz utworzyć **sugestora** w dowolnym momencie, ale wpływ na indeks w zależności pól. 
+
++ Nowe pola dodane do sugestora w ramach tej samej aktualizacji są najmniej atrakcyjnych, w tym odbudowywanie indeksu, nie jest wymagane.
++ Istniejące pola dodane do sugestora, jednak zmienia definicję pola, wymagających pełnej rekompilacji indeksu.
 
  **Sugestory** działają najlepiej, gdy jest używana do sugerowania określonych dokumentów, a nie utracić wprowadzone terminów ani fraz. Najważniejsze pola Release candidate są tytułów, nazwy i innych względnie krótkich fraz, które można zidentyfikować element. Mniej skuteczne powtarzających się pola, takie jak kategorie i tagi, lub są bardzo długie pola, takie jak pola opisów i komentarzy.  
 

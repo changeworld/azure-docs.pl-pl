@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
-ms.openlocfilehash: f0c9c06e953df16199acda5f821fdac35b86f07f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bbd73035993d3a981744eb5377fe0bf2c9d55b63
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477560"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268859"
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Aprowizowanie maszyny wirtualnej do nauki o danych dla systemu Linux (Ubuntu)
 
@@ -31,7 +31,7 @@ Maszyna wirtualna do nauki o danych dla systemu Linux jest obraz maszyny wirtual
   * [Caffe2](https://github.com/caffe2/caffe2): Dla wielu platform wersję Caffe
   * [Microsoft Cognitive Toolkit](https://github.com/Microsoft/CNTK): Zestaw narzędzi do oprogramowania przez firmę Microsoft Research do uczenia głębokiego
   * [H2O](https://www.h2o.ai/): Platformę danych big data typu open-source oraz graficznego interfejsu użytkownika
-  * [Biblioteki Keras](https://keras.io/): Ogólne sieci neuronowych interfejsu API języka Python dla Theano i TensorFlow
+  * [Biblioteki Keras](https://keras.io/): Ogólne sieci neuronowej interfejsu API w języku Python, TensorFlow, Cognitive Toolkit firmy Microsoft i Theano
   * [MXNet](http://mxnet.io/): Biblioteka elastyczne i wydajne uczenia głębokiego, wiele powiązań języka
   * [PROCESORY GPU NVIDIA CYFR](https://developer.nvidia.com/digits): Graficzny system, który upraszcza typowe zadania uczenia głębokiego
   * [PyTorch](http://pytorch.org/): Bibliotekę języka Python wysokiego poziomu o obsługę dynamicznej sieci
@@ -177,7 +177,7 @@ Notesy niektóre przykładowe są dostępne w JupyterHub.
 H2O to uczenie maszynowe szybkie w pamięci, rozproszonego i analizy predykcyjnej platformy. Pakiet języka Python jest zainstalowany w środowiskach Anaconda głównego i py35. Pakiet języka R jest również instalowany. Aby uruchomić H2O z wiersza polecenia, uruchom `java -jar /dsvm/tools/h2o/current/h2o.jar`; istnieją różne [opcje wiersza polecenia](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , który chcesz skonfigurować. Interfejs użytkownika sieci Web Flow jest możliwy, przechodząc do http://localhost:54321 na rozpoczęcie pracy. Notesy próbki są również dostępne w JupyterHub.
 
 #### <a name="keras"></a>Biblioteki Keras
-Biblioteki Keras jest ogólny sieci neuronowej interfejsu API w języku Python, który jest w stanie uruchomienia na górze TensorFlow i Theano. Jest ona dostępna w środowiskach Python głównego i py35. 
+Biblioteki Keras jest ogólny sieci neuronowej interfejsu API w języku Python, który można uruchomić na górze, TensorFlow, Cognitive Toolkit firmy Microsoft lub Theano. Jest ona dostępna w środowiskach Python głównego i py35. 
 
 #### <a name="mxnet"></a>MXNet
 MXNet to platforma uczenia głębokiego, przeznaczony dla środowisk wydajność i elastyczność. Ma ona powiązania języków R i Python dołączonym maszyny DSVM. Notesy próbki są objęte JupyterHub i przykładowy kod jest dostępny w /dsvm/samples/mxnet.

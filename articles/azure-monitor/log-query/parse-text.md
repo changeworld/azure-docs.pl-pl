@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002228"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268196"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Analizowanie danych tekstowych w dziennikach w usłudze Azure Monitor
 Niektóre dane dzienników zbieranych przez usługi Azure Monitor będzie zawierać kilka rodzajów informacji w pojedynczej właściwości. Analizowanie tych danych na wiele właściwości atrybutu ułatwić używane w kwerendach. Typowym przykładem jest [dziennik niestandardowy](../../log-analytics/log-analytics-data-sources-custom-logs.md) , umożliwia zbieranie informacji o wpisu dziennika całego z wieloma wartościami w jednej właściwości. Tworząc osobne właściwości dla różnych wartości, można wyszukiwać i agregacji w każdego.
@@ -63,7 +63,7 @@ Następujące wady tej metody:
 Zobacz [Tworzenie pól niestandardowych w usłudze Azure Monitor](../platform/custom-fields.md) szczegółowe informacje na temat analizy danych, ponieważ ich zebraniu. Spowoduje to utworzenie właściwości niestandardowe w tabeli, które mogą być używane w zapytaniach, podobnie jak inne właściwości.
 
 ## <a name="parse-data-in-query-using-patterns"></a>Analizowanie danych w zapytaniu przy użyciu wzorców
-Gdy dane chcesz przeanalizować może zostać zidentyfikowany przez wzorzec powtarzane na rekordy, można użyć różnych operatorów w [język zapytań w Eksploratorze danych](/azure/kusto/query/) można wyodrębnić określone dane w jedną lub więcej nowych właściwości.
+Gdy dane chcesz przeanalizować może zostać zidentyfikowany przez wzorzec powtarzane na rekordy, można użyć różnych operatorów w [język zapytania Kusto](/azure/kusto/query/) można wyodrębnić określone dane w jedną lub więcej nowych właściwości.
 
 ### <a name="simple-text-patterns"></a>Wzorce zwykłego tekstu
 
@@ -139,7 +139,7 @@ MyCustomCSVLog_CL
 ```
 
 ## <a name="parse-predefined-structures-in-a-query"></a>Analizowanie struktury wstępnie zdefiniowanych w zapytaniu
-Jeśli dane są sformatowane w strukturze znane, można użyć jednej z funkcji w [język zapytań w Eksploratorze danych](/azure/kusto/query/) do analizowania struktury wstępnie zdefiniowane:
+Jeśli dane są sformatowane w strukturze znane, można użyć jednej z funkcji w [język zapytania Kusto](/azure/kusto/query/) do analizowania struktury wstępnie zdefiniowane:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)

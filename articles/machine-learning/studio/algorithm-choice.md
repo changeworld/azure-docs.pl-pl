@@ -10,16 +10,20 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 222891df5b54a8f2c3464fc3bddf9f6b32c28d36
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6442facf680c934d976e7fa8008f2f3c3551045f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244797"
+ms.locfileid: "56268100"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
 
 Odpowiedź na pytanie "Jaki algorytmu uczenia maszynowego należy użyć?" jest zawsze "To zależy." To zależy od rozmiaru, jakości i charakter danych. To zależy od co chcesz zrobić z odpowiedzią. To zależy od sposobu matematyczne algorytmu zostało przetłumaczone na instrukcje dla komputera, którego używasz. I to zależy na czas, jaki masz. Nawet najbardziej doświadczonych analityków danych nie wiadomo, który algorytm będzie wykonywać najlepiej przed podjęciem próby ich.
+
+Usługa Machine Learning Studio udostępnia najnowocześniejsze algorytmy, takie jak skalowalne wzmocnione drzewa decyzyjne, bayesowskie systemy rekomendacji, głębokie sieci neuronowe i dżungle decyzyjne opracowywane w dziale badań firmy Microsoft. Dostępne są również skalowalne pakiety uczenia maszynowego typu open source, takie jak Vowpal Wabbit. Usługa Machine Learning Studio obsługuje algorytmy uczenia maszynowego na potrzeby binarnej i wieloklasowej klasyfikacji i regresji oraz klastrowania. Zobacz pełną listę [modułów usługi Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index).
+W dokumentacji udostępniono pewne informacje o poszczególnych algorytmów i jak można dostrajanie parametrów w celu optymalizacji algorytmu do użycia.  
+
 
 ## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Algorytm uczenia maszynowego Ściągawka
 

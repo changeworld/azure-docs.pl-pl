@@ -11,24 +11,34 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: f3ca140fd8606f60a07b71db32cf2d3987ed7860
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: bc28349e1bfc935ac8298f991575c1e0cb42d38c
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233603"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299235"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Tryby wdrażania usługi Azure Resource Manager
 
 Podczas wdrażania zasobów, należy określić, że wdrożenie jest aktualizację przyrostową lub ukończenia aktualizacji.  Główną różnicą między tymi dwoma trybami jest sposób obsługiwania przez istniejące zasoby w grupie zasobów, które nie są w szablonie usługi Resource Manager. Domyślny tryb jest przyrostowy.
 
-Tylko szablony z katalogu głównego obsługują tryb całego procesu wdrażania. Aby uzyskać [połączonych lub zagnieżdżonych szablonów](resource-group-linked-templates.md), należy użyć trybu przyrostowego. 
-
-## <a name="incremental-and-complete-deployments"></a>Przyrostowe i kompletne wdrożeń
-
 Dla obu trybów usługi Resource Manager spróbuje utworzyć wszystkie zasoby, które określono w szablonie. Jeśli zasób już istnieje w grupie zasobów i jego ustawienia są bez zmian, żadna operacja nie zostanie podjęte dla tego zasobu. Po zmianie wartości właściwości zasobu, zasób jest aktualizowana o te nowe wartości. Jeśli próbujesz zaktualizować lokalizację i typ istniejącego zasobu, wdrożenie zakończy się niepowodzeniem z powodu błędu. Zamiast tego należy wdrożyć nowy zasób z lokalizacją lub typu, należy.
 
+## <a name="complete-mode"></a>W trybie
+
 W trybie, Menedżer zasobów **usuwa** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Zasoby, które są określone w szablonie, ale nie wdrożona, ponieważ [warunek](resource-manager-templates-resources.md#condition) zwróci wartość false, nie są usuwane.
+
+Istnieją pewne różnice w sposób typów zasobów sposób usuwania w trybie. Nadrzędny zasoby są automatycznie usuwane, gdy nie znajduje się w szablonie, które jest wdrożone w trybie. Niektóre zasoby podrzędne nie są automatycznie usuwane po nie w szablonie. Jednak te zasobu podrzędnego są usuwane po usunięciu zasobu nadrzędnego. 
+
+Na przykład jeśli dana grupa zasobów zawiera strefę DNS (typ zasobu Microsoft.Network/dnsZones) i rekord CNAME (typ zasobu Microsoft.Network/dnsZones/CNAME), strefa DNS jest zasobem nadrzędnym dla rekordu CNAME. Jeśli wdrażanie przy użyciu tryb pełny i nie uwzględniają stref DNS w szablonie, rekordu CNAME i strefy DNS są zarówno usuwane. Jeśli obejmują strefę DNS w szablonie, ale nie zawierają rekord CNAME, rekord CNAME nie jest usuwany. 
+
+Aby uzyskać listę sposób typów zasobów obsługi usuwania, zobacz [zasobów usunięcia platformy Azure w przypadku wdrożeń w trybie](complete-mode-deletion.md).
+
+> [!NOTE]
+> Tylko szablony z katalogu głównego obsługują tryb całego procesu wdrażania. Aby uzyskać [połączonych lub zagnieżdżonych szablonów](resource-group-linked-templates.md), należy użyć trybu przyrostowego. 
+>
+
+## <a name="incremental-mode"></a>Tryb przyrostowy
 
 W trybie przyrostowym, Menedżer zasobów **pozostawia niezmienione** zasoby, które istnieją w grupie zasobów, ale nie są określone w szablonie. Podczas ponownego wdrażania zasobów w trybie przyrostowym, należy określić wszystkie wartości właściwości dla zasobu, a nie tylko te, które aktualizujesz. Jeśli nie określisz niektórych właściwości usługi Resource Manager interpretuje update jako zastąpienie tych wartości.
 

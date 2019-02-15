@@ -11,14 +11,14 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 012/13/2019
 ms.author: jowargo
-ms.openlocfilehash: d0d181afd9bb8f1d387ce8e33f50a78dae3a11ec
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 6fc44e432b9614eb6270b6ef4862cc0240df8206
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961435"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266938"
 ---
 # <a name="token-based-http2-authentication-for-apns"></a>Uwierzytelnianie oparte na tokenach (HTTP/2) dla usługi APNS
 
@@ -68,7 +68,7 @@ Identyfikator aplikacji jest dostępna za pośrednictwem strony szczegółów w 
 
 ### <a name="authentication-token"></a>Token uwierzytelniania
 
-Po wygenerowaniu tokenu dla aplikacji, można pobrać tokenu uwierzytelniania. Aby uzyskać szczegółowe informacje na temat generowania tego tokenu, zapoznaj się [dokumentacji dla deweloperów firmy Apple](http://help.apple.com/xcode/mac/current/#/dev11b059073?sub=dev1eb5dfe65).
+Po wygenerowaniu tokenu dla aplikacji, można pobrać tokenu uwierzytelniania. Aby uzyskać szczegółowe informacje na temat generowania tego tokenu, zapoznaj się [dokumentacji dla deweloperów firmy Apple](https://help.apple.com/xcode/mac/current/#/devdfd3d04a1).
 
 ## <a name="configuring-your-notification-hub-to-use-token-based-authentication"></a>Konfigurowanie Centrum powiadomień do korzystania z uwierzytelniania opartego na tokenach
 

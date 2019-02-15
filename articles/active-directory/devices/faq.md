@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9517ccac4006edec473e25c5e6524ce62d4e1259
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31e380379b5237f6b1a72b3427eb857f64d55c2e
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210106"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269063"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -157,7 +157,11 @@ Usunięte lub wyłączone użytkowników, którzy nie został wcześniej Zaloguj
 
 **ODP.:** Użytkownik może dołączyć lub zarejestrować urządzenia z usługą Azure AD przy użyciu usługi Multi-Factor Authentication. Samo urządzenie staje się drugi składnik zaufany dla tego użytkownika. Zawsze, gdy ten sam użytkownik loguje się do urządzenia i uzyskuje dostęp do aplikacji, usługi Azure AD uwzględnia urządzenia jako drugiego składnika. Umożliwia użytkownikowi uzyskiwanie dostępu do aplikacji bez dodatkowych monitów uwierzytelniania Multi-Factor Authentication. 
 
-To zachowanie nie ma zastosowania do żadnego innego użytkownika, który loguje się do tego urządzenia. Dlatego wszystkich innych użytkowników, którzy uzyskują dostęp tego urządzenia Uzyskaj wezwanie do uwierzytelnienia Multi-Factor Authentication. Następnie one dostęp do aplikacji, które wymagają uwierzytelniania wieloskładnikowego.
+To zachowanie:
+
+- Jest dołączony mające zastosowanie do usługi Azure AD i urządzeń — zarejestrowanych w usłudze Azure AD, ale nie dla hybrydowych urządzeń do usługi Azure AD.
+
+- Nie ma zastosowania do żadnego innego użytkownika, który loguje się do tego urządzenia. Dlatego wszystkich innych użytkowników, którzy uzyskują dostęp tego urządzenia Uzyskaj wezwanie do uwierzytelnienia Multi-Factor Authentication. Następnie one dostęp do aplikacji, które wymagają uwierzytelniania wieloskładnikowego.
 
 ---
 

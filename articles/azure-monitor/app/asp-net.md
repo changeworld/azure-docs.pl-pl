@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4a1ea364180d389ffdbfc7cedd740a0e493070b3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6b849ad72554af163d8ac3d5ff1248023dc71052
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998998"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268530"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>Konfigurowanie usługi Application Insights dla witryny sieci Web ASP.NET.
 
@@ -104,7 +104,7 @@ W portalu kliknij dowolny kafelek lub wykres, aby wyświetlić więcej szczegó�
 ## <a name="step-4-publish-your-app"></a>Krok 4: Publikowanie aplikacji
 Opublikuj aplikacje na serwerze IIS lub na platformie Azure. Obejrzyj [transmisję strumieniową metryk na żywo](../../azure-monitor/app/metrics-explorer.md#live-metrics-stream), aby upewnić się, że wszystko działa bez problemów.
 
-Dane telemetryczne są gromadzone w portalu Application Insights, w którym można monitorować metryki, przeszukiwać telemetrię i konfigurować [pulpity nawigacyjne](../../azure-monitor/app/app-insights-dashboards.md). Można także użyć zaawansowanego [język zapytań w Eksploratorze danych](https://aka.ms/LogAnalyticsLanguage) do przeanalizowania użycia i wydajności lub znalezienia określonych zdarzeń.
+Dane telemetryczne są gromadzone w portalu Application Insights, w którym można monitorować metryki, przeszukiwać telemetrię i konfigurować [pulpity nawigacyjne](../../azure-monitor/app/app-insights-dashboards.md). Można także użyć zaawansowanego [język zapytania Kusto](/azure/kusto/query/) do przeanalizowania użycia i wydajności lub znalezienia określonych zdarzeń.
 
 Można również analizować telemetrię w programie [Visual Studio](../../azure-monitor/app/visual-studio.md) za pomocą narzędzi, takich jak wyszukiwanie diagnostyczne i [trendy](../../azure-monitor/app/visual-studio-trends.md).
 

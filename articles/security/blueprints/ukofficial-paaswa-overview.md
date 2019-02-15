@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700982"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301801"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Zabezpieczenia platformy Azure i zgodności planu: Hosting w przypadku obciążeń oficjalne UK aplikacji sieci Web PaaS
 
@@ -29,7 +29,7 @@ Ten plan został przejrzany, Zjednoczone Królestwo National Cybernetycznymi zab
 
 Architektura korzysta z platformy Azure [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) składniki, aby dostarczać środowisko, które pozwala uniknąć kosztownego i skomplikowanego kupowania licencji na oprogramowanie, zarządzanie podstawowej infrastruktury aplikacji i oprogramowania pośredniczącego lub narzędzi deweloperskich i innych zasobów. Klienci zarządzać aplikacjami i usługami, które opracowują, skupiając się na dostarczaniu wartości biznesowej, podczas gdy Microsoft Azure zarządza innych zasobów platformy Azure, takie jak maszyny wirtualne, Magazyn i sieć, umieszczając jedną z [dzielenia odpowiedzialność za](https://docs.microsoft.com/azure/security/security-paas-deployments#division-of-responsibility) dla zarządzanie infrastrukturą na platformie Azure. [Usługi Azure App Services](https://azure.microsoft.com/services/app-service/) oferuje automatyczne skalowanie, wysoka dostępność, obsługuje Windows i Linux oraz umożliwia używanie wdrożeń zautomatyzowanych z usługi GitHub, DevOps platformy Azure lub dowolnego repozytorium Git jako usług domyślnych. Za pomocą usług aplikacji, deweloperów może skupić się na dostarczaniu wartości biznesowej bez konieczności zarządzania infrastrukturą. Można tworzyć nowe aplikacje sieci web Java, PHP, Node.js, Python, HTML lub C# od podstaw lub migrację istniejącej chmurze lub lokalnych aplikacji sieci web do usług Azure App Services (mimo że dokładnego aby upewnić się, wydajność jest wymagany w należytą starannością i testowania).
 
-Ten plan koncentruje się na aprowizacji od bezpiecznej podstawy [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) interfejs internetowy dla użytkowników usługi office również Wstecz i publicznych. Takiego scenariusza projektowego planu uważa, że korzystanie z platformy Azure, obsługiwana usług sieci web gdzie publiczny użytkownika mogą bezpiecznie przesyłać, wyświetlić oraz zarządzać poufnych danych; również czy wsteczny operator pakietu office lub dla instytucji rządowych bezpiecznie może przetwarzać dane poufne, które zostało przesłane przez użytkownika publicznego. Przypadki użycia, w tym scenariuszu mogą obejmować:
+Ten plan koncentruje się na aprowizacji od bezpiecznej podstawy [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) interfejs internetowy dla publicznego, a także użytkownikom zaplecza. Takiego scenariusza projektowego planu uważa, że korzystanie z platformy Azure, obsługiwana usług sieci web gdzie publiczny użytkownika mogą bezpiecznie przesyłać, wyświetlić oraz zarządzać poufnych danych; również czy wsteczny operator pakietu office lub dla instytucji rządowych bezpiecznie może przetwarzać dane poufne, które zostało przesłane przez użytkownika publicznego. Przypadki użycia, w tym scenariuszu mogą obejmować:
 
 - Przesyłanie zwracania podatku, za pomocą operatora dla instytucji rządowych, przetwarzanie przesłanych informacji, użytkownik
 - Użytkownika żądającego usługi za pośrednictwem aplikacji opartych na sieci web, z użytkownikiem zaplecza sprawdzania poprawności, a potem dostarczając usługi; lub
@@ -182,7 +182,7 @@ Szczegółowe informacje dotyczące zabezpieczania usługi Azure Storage można 
 
 #### <a name="application-insights"></a>Application Insights
 
-[Usługa Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) to rozszerzalna Usługa zarządzania wydajnością aplikacji (APM) dla deweloperów sieci web na wielu platformach. Używane do monitorowania aplikacji sieci web go będzie automatycznie wykrywać anomalie wydajności, analizy wydajności, diagnozowanie problemów i aby zrozumieć sposób korzystania przez użytkowników z aplikacją. Usługa Application Insights można wdrożyć na platformach, łącznie z platformą .NET, Node.js i J2EE, hostowanych lokalnie lub w chmurze. Integruje się ona z procesem DevOps i ma punkty połączenia z szeroką gamą narzędzi programistycznych.
+[Usługa Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) to rozszerzalna Usługa zarządzania wydajnością aplikacji (APM) dla deweloperów sieci web na wielu platformach. Używane do monitorowania aplikacji sieci web go będzie automatycznie wykrywać anomalie wydajności, analizy wydajności, diagnozowanie problemów i aby zrozumieć sposób korzystania przez użytkowników z aplikacją. Usługa Application Insights można wdrożyć na platformach, łącznie z platformą .NET, Node.js i Java EE hostowanych lokalnie lub w chmurze. Integruje się ona z procesem DevOps i ma punkty połączenia z szeroką gamą narzędzi programistycznych.
 
 #### <a name="application-insights-in-this-blueprint"></a>Usługa Application Insights, w tym planie
 
@@ -232,7 +232,7 @@ Trzy metody zostały przewidziane w wdrożenia; Proste "express" [2 interfejsu w
 1.  Klonuj lub Pobierz [to](https://aka.ms/ukofficial-paaswa-repo) repozytorium GitHub na lokalnej stacji roboczej.
 2.  Przegląd [metoda 1: Azure CLI 2 (wersja Express)](https://aka.ms/ukofficial-paaswa-repo/#method-1-azure-cli-2-express-version) i wykonaj polecenia podane.
 3.  Przegląd [metoda 1a: Usługa Azure 2 interfejsu wiersza polecenia (Konfigurowanie wdrożenia za pośrednictwem argumenty skryptu)](https://aka.ms/ukofficial-paaswa-repo/#method-1a-azure-cli-2-configuring-the-deployment-via-script-arguments) i wykonaj polecenia podane
-4.  Przegląd [metoda 2: Proces wdrażania w usłudze Azure Portal](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) i wykonywania listy poleceń
+4.  Przegląd [metoda 2: Proces wdrażania w portalu Azure](https://aka.ms/ukofficial-paaswa-repo/#method-2-azure-portal-deployment-process) i wykonywania listy poleceń
 
 ## <a name="guidance-and-recommendations"></a>Wskazówki i zalecenia
 
@@ -242,7 +242,7 @@ Trzy metody zostały przewidziane w wdrożenia; Proste "express" [2 interfejsu w
 
 ### <a name="azure-b2c"></a>Azure B2C
 
-[Usługa Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) mogą być wdrożone jako formant, aby umożliwić użytkownikom rejestrowanie, utworzenie tożsamości i włączyć autoryzacji i kontroli aplikacji sieci web publicznego dostępu.
+[Usługa Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) można zaimplementować jako formant, aby umożliwić użytkownikom rejestrowanie, Utwórz tożsamość i Włącz autoryzację i kontrolę dostępu dla aplikacji sieci web publicznych.
 
 ## <a name="disclaimer"></a>Zrzeczenie odpowiedzialności
 

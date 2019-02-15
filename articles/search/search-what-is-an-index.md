@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 77f4b597ad4b87db7e720dd57191c6b192a4c93b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fd5f58a03ffd054e79f1ff4ea6d61c33c06b6e7c
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000954"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268553"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie podstawowego indeksu w usłudze Azure Search
 
@@ -23,6 +23,12 @@ W usłudze Azure Search *indeksu* jest trwałym magazynem *dokumentów* i innych
 Podczas dodawania lub przekazać indeksu usługi Azure Search tworzy struktury fizyczne, na podstawie schematu, których udzielasz. Na przykład jeśli pola w indeksie jest oznaczony jako wyszukiwanie, odwrócony tworzony jest indeks dla tego pola. Później podczas dodawania lub przekazywać dokumenty lub przesyłania zapytań wyszukiwań do usługi Azure Search są wysyłane żądania do konkretnego indeksu w usłudze wyszukiwania. Ładowanie pola z wartościami dokumentu jest nazywany *indeksowania* i przetwarzanie danych.
 
 Można utworzyć indeksu w portalu [interfejsu API REST](search-create-index-rest-api.md), lub [zestawu .NET SDK](search-create-index-dotnet.md).
+
+## <a name="recommended-workflow"></a>Zalecanym przepływie pracy
+
+Ponieważ struktury fizyczne są tworzone podczas indeksowania, konieczne będzie [Porzuć i ponownie utworzyć indeksy](search-howto-reindex.md) zawsze, gdy wprowadzeniu istotnych zmian do istniejącej definicji pola. Oznacza to, że podczas tworzenia aplikacji, należy zaplanować na częste ponowne kompilowanie. Warto rozważyć pracy przy użyciu podzestawu danych, aby wprowadzić odbudowuje go szybciej. 
+
+Zaleca się również kod zamiast portalu indeksowania. Jeśli użytkownik korzysta w portalu do definicji indeksu, trzeba będzie Wypełnij definicję indeksu na każdym ponownej kompilacji. Alternatywnie za pomocą narzędzia, takiego jak [interfejsu API REST i narzędzia Postman](search-fiddler.md) są przydatne do testowania weryfikacji koncepcji, w przypadku projektów programistycznych w wczesnych faz. Umożliwia zmiany przyrostowe definicji indeksu w treści żądania, wysyłając żądanie do usługi Usługa umożliwiająca ponowne utworzenie indeksu za pomocą zaktualizowanego schematu.
 
 ## <a name="components-of-an-index"></a>Składniki indeksu
 
@@ -133,8 +139,20 @@ Dowiedz się więcej na temat [typów danych obsługiwanych przez usługę Azure
 
 Dowiedz się więcej na temat [atrybutów indeksów usługi Azure Search w tym miejscu](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
+## <a name="storage-implications-of-index-attributes"></a>Implikacje magazynu atrybutów indeksu
+
+Atrybuty, które możesz wybrać mają wpływ na magazyn. Poniższy zrzut ekranu przedstawia ilustrację wzorców magazynu indeksu wynikające z różnych kombinacji atrybutów. Indeks jest oparty na [przykładowe wbudowane realestate](search-get-started-portal.md) źródła danych, co umożliwia indeksowanie i zapytania w portalu.
+
+Filtrowanie i sortowanie zapytanie operacje na dokładne dopasowania, dzięki czemu dokumenty zapisywane są opublikowane. Pola z możliwością wyszukiwania włączyć wyszukiwanie pełnotekstowe i rozmytego. Odwrócony indeksy są tworzone dla pola z możliwością wyszukiwania i wypełniane przy użyciu warunków tokenami. Oznaczanie pól jako możliwe do pobierania nie ma znacznego wpływu na rozmiar indeksu.
+
+![Indeks rozmiaru na podstawie wyboru atrybutu](./media/search-what-is-an-index/realestate-index-size.png "indeksu rozmiaru na podstawie wybranych atrybutów")
+
+Wdrażanie magazynu jest uznawany za szczegółowo opisuje implementacja usługi Azure Search i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, bieżące zachowanie utrwali w przyszłości.
+
 ## <a name="suggesters"></a>Funkcje sugestii
-Sugestora to sekcja schemat, który definiuje pola w indeksie, które są używane do obsługi automatycznego uzupełniania wpisywaniu lub Autouzupełnianie zapytań wyszukiwania. Zazwyczaj ciągi częściowe są wysyłane do sugestie (Azure Search interfejs API REST usługi), podczas zapytania wyszukiwania wpisywany przez użytkownika, a interfejs API zwraca zbiór proponowanych fraz. Sugestora, który definiuje w indeksie określa pola, które są używane do tworzenia wpisywania z wyprzedzeniem wyszukiwane terminy. Aby uzyskać więcej informacji, zobacz [Dodaj sugestory](index-add-suggesters.md) szczegółowe informacje dotyczące konfiguracji.
+Sugestora to sekcja schemat, który definiuje pola w indeksie, które są używane do obsługi automatycznego uzupełniania wpisywaniu lub Autouzupełnianie zapytań wyszukiwania. Zazwyczaj ciągi częściowe są wysyłane do sugestie (Azure Search interfejs API REST usługi), podczas zapytania wyszukiwania wpisywany przez użytkownika, a interfejs API zwraca zbiór proponowanych fraz. 
+
+Sugestora, który definiuje w indeksie określa pola, które są używane do tworzenia wpisywania z wyprzedzeniem wyszukiwane terminy. Aby uzyskać więcej informacji, zobacz [Dodaj sugestory](index-add-suggesters.md) szczegółowe informacje dotyczące konfiguracji.
 
 ## <a name="scoring-profiles"></a>Profile oceniania
 

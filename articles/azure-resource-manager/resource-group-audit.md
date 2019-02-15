@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0bc53edb00ea13fdfcab3cfc398e122e6ecd7632
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106328"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268298"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Wyświetlanie dzienników aktywności, aby przeprowadzić inspekcję działań na zasoby
 
@@ -34,9 +34,6 @@ Dziennik aktywności zawiera wszystkie operacje zapisu (PUT, POST, DELETE) wykon
 Dzienniki aktywności są przechowywane przez 90 dni. Można wyszukać dowolny zakres dat, tak długo, jak Data początkowa nie więcej niż 90 dni w przeszłość.
 
 Można pobrać informacji z dzienników aktywności w portalu, programu PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST usługi Insights lub [Insights — Biblioteka .NET](https://www.nuget.org/packages/Microsoft.Azure.Insights/).
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="the-azure-portal"></a>Witryna Azure Portal
 

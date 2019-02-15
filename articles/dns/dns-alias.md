@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 52b42e964e7abe207064aff49f7f8f27f8476ef4
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 52653252df3efd3e12fa974ed82cd2557eee93d0
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50092846"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301251"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Usługa Azure alias DNS rekordów — omówienie
 
@@ -52,11 +52,11 @@ Rekordów aliasów Usuń złożoność skojarzonych z tym scenariuszem. Pomagaj�
 
 ### <a name="update-dns-zones-automatically-when-application-ips-change"></a>Automatyczne aktualizowanie strefy DNS, gdy zmienią się aplikacji adresy IP
 
-Ten scenariusz jest podobny do poprzedniego. Być może aplikacja zostanie przeniesiona lub ponownym uruchomieniu maszyny wirtualnej stanowiącej podstawę. Rekord aliasu następnie automatycznie aktualizuje zmiany adresu IP podstawowego publicznego zasobu adresu IP. Aby uniknąć zagrożenia bezpieczeństwa, należy przekierować użytkowników do innej aplikacji, która ma stary adres IP.
+Ten scenariusz jest podobny do poprzedniego. Być może aplikacja zostanie przeniesiona lub ponownym uruchomieniu maszyny wirtualnej stanowiącej podstawę. Rekord aliasu następnie automatycznie aktualizuje zmiany adresu IP podstawowego publicznego zasobu adresu IP. Umożliwia to uniknięcie potencjalnych zagrożeń bezpieczeństwa kierowanie użytkowników do innej aplikacji, która ma stary adres IP.
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Hostowanie aplikacji ze zrównoważonym obciążeniem w wierzchołku strefy
 
-Protokół DNS zapobiega przypisanie coś innego niż rekord A lub AAAA w wierzchołku strefy. Przykładem jest contoso.com. Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równoważenia obciążenia aplikacji za zaporą usługi Traffic Manager. Nie jest możliwe wskazywała na profil usługi Traffic Manager z rekordu wierzchołku strefy. W wyniku właścicieli aplikacji należy użyć, aby uzyskać obejście tego problemu. Przekierowanie w warstwie aplikacji musi przekierowywać domenę w wierzchołku strefy do innej domeny. Przykładem jest przekierowanie z contoso.com www.contoso.com. To rozwiązanie przedstawia informacje o pojedynczym punktem awarii dla funkcji przekierowania.
+Protokół DNS zapobiega przypisanie coś innego niż rekord A lub AAAA w wierzchołku strefy. Przykładowa domena to contoso.com. Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równoważenia obciążenia aplikacji za zaporą usługi Traffic Manager. Nie jest możliwe wskazywała na profil usługi Traffic Manager z rekordu wierzchołku strefy. W wyniku właścicieli aplikacji należy użyć, aby uzyskać obejście tego problemu. Przekierowanie w warstwie aplikacji musi przekierowywać domenę w wierzchołku strefy do innej domeny. Przykładem jest przekierowanie z contoso.com www.contoso.com. To rozwiązanie przedstawia informacje o pojedynczym punktem awarii dla funkcji przekierowania.
 
 Przy użyciu rekordów aliasów ten problem już nie istnieje. Teraz właścicieli aplikacji można wskazać ich rekordów w wierzchołku strefy profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe. Właściciele aplikacji może wskazywać tego samego profilu usługi Traffic Manager, używanego do innej domeny w swojej strefie DNS. Na przykład contoso.com i www.contoso.com może wskazywać tego samego profilu usługi Traffic Manager. Jest to możliwe tak długo, jak profil usługi Traffic Manager ma tylko zewnętrzne punkty końcowe skonfigurowane.
 

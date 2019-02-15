@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 02/14/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2b26261fdbae07bf3eea793efe6ff0755ca3f577
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1383c59ca88400868f83d30d04d9b0e5f5401282
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895996"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268961"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -400,7 +400,7 @@ Jednak zalecanym sposobem wysyłają dane telemetryczne żądania jest, gdzie ż
 
 ## <a name="operation-context"></a>Kontekst operacji
 
-Elementy danych telemetrycznych można skorelować ze sobą przez skojarzenie ich z kontekstu operacji. Standardowy moduł śledzenia żądań robi to wyjątki i inne zdarzenia, które są wysyłane podczas przetwarzania żądania HTTP. W [wyszukiwania](../../azure-monitor/app/diagnostic-search.md) i [Analytics](analytics.md), możesz łatwo odnaleźć żadnych zdarzeń skojarzony z tym żądaniem, za pomocą jego identyfikatora działania
+Elementy danych telemetrycznych można skorelować ze sobą przez skojarzenie ich z kontekstu operacji. Standardowy moduł śledzenia żądań robi to wyjątki i inne zdarzenia, które są wysyłane podczas przetwarzania żądania HTTP. W [wyszukiwania](../../azure-monitor/app/diagnostic-search.md) i [Analytics](analytics.md), możesz łatwo odnaleźć żadnych zdarzeń skojarzony z tym żądaniem, za pomocą jego identyfikatora operacji.
 
 Zobacz [korelacja Telemetrii w usłudze Application Insights](../../azure-monitor/app/correlation.md) więcej informacji na temat korelacji.
 
@@ -508,7 +508,7 @@ catch (ex)
 Zestawy SDK automatycznie, efektywnej wiele wyjątków, dzięki czemu zawsze nie trzeba jawnie wywołana metoda TrackException.
 
 * ASP.NET: [Napisać kod, aby przechwytywać wyjątki](../../azure-monitor/app/asp-net-exceptions.md).
-* J2EE: [Wyjątki są przechwytywane automatycznie](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
+* Java EE: [Wyjątki są przechwytywane automatycznie](../../azure-monitor/app/java-get-started.md#exceptions-and-request-failures).
 * JavaScript: Wyjątki są przechwytywane automatycznie. Jeśli chcesz wyłączyć automatyczne zbieranie, należy dodać wiersz do fragmentu kodu, które zostanie wstawiona strony sieci Web:
 
 ```javascript
@@ -732,7 +732,7 @@ Thread.sleep(5000);
 telemetry.flush();
 ```
 
-Należy pamiętać, że funkcja asynchroniczne dla [kanału dane telemetryczne serwera](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
+Funkcja jest asynchroniczne dla [kanału dane telemetryczne serwera](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel/).
 
 W idealnym przypadku flush() metoda powinna służyć w działaniu zamknięcia aplikacji.
 
@@ -1141,10 +1141,10 @@ Jeśli ustawisz dowolne z tych wartości samodzielnie, rozważ usunięcie odpowi
 
 * **Składnik**: Aplikacja i jej wersji.
 * **Urządzenie**: Dane o urządzeniu, w którym aplikacja jest uruchomiona. (W aplikacji sieci web, to jest serwer lub urządzenie klienckie, które dane telemetryczne są wysyłane z).
-* **InstrumentationKey**: Zasób usługi Application Insights na platformie Azure, w którym są wyświetlane dane telemetryczne. Zostanie ona zazwyczaj podjęta w pliku ApplicationInsights.config.
+* **InstrumentationKey**: Zasób usługi Application Insights na platformie Azure, w którym pojawia się dane telemetryczne. Zostanie ona zazwyczaj podjęta w pliku ApplicationInsights.config.
 * **Lokalizacja**: Lokalizacja geograficzna urządzenia.
 * **Operacja**: W aplikacji sieci web, bieżącego żądania HTTP. W innych typów aplikacji możesz ustawić Aby pogrupować zdarzenia ze sobą.
-  * **Identyfikator**: Wygenerowaną wartość odpowiadająca różnych zdarzeń inspekcji dowolnego zdarzenia w wyszukiwaniu diagnostycznym powiązane elementy mogły zostać odnalezione.
+  * **ID**: Wygenerowaną wartość odpowiadająca różnych zdarzeń inspekcji dowolnego zdarzenia w wyszukiwaniu diagnostycznym powiązane elementy mogły zostać odnalezione.
   * **Nazwa**: Identyfikator, zwykle adres URL żądania HTTP.
   * **SyntheticSource**: W przeciwnym razie wartość null lub pusty ciąg, który wskazuje, że źródła żądania została zidentyfikowana jako test sieci web lub robota. Domyślnie jest ona wykluczana z obliczeń w Eksploratorze metryk.
 * **Właściwości**: Właściwości, które są wysyłane z wszystkie dane telemetryczne. Może zostać zastąpiona w poszczególne wywołania śledzenia *.

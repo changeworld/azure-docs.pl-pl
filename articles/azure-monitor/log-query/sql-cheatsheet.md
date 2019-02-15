@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 121f9ff602907e64bba0c98342e38477109e9294
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76c9e143a4127807bfffa879103fca42d2d27e71
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993671"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268332"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL do ściągawka dotycząca usługi Azure Monitor dziennika zapytań 
 
-W poniższej tabeli ułatwiają użytkownikom, którzy są zaznajomieni z językiem SQL, aby dowiedzieć się, język zapytań Eksploratora danych, do pisania zapytań dzienników w usłudze Azure Monitor. Ma wygląd w wierszu polecenia języka T-SQL w rozwiązywaniu typowych scenariuszy i odpowiedniej wartości wyrażonej w zapytanie dziennika usługi Azure Monitor.
+W poniższej tabeli ułatwiają użytkownikom, którzy są zaznajomieni z językiem SQL, aby dowiedzieć się, język zapytania Kusto pisania zapytań dzienników w usłudze Azure Monitor. Ma wygląd w wierszu polecenia języka T-SQL w rozwiązywaniu typowych scenariuszy i odpowiedniej wartości wyrażonej w zapytanie dziennika usługi Azure Monitor.
 
 ## <a name="sql-to-azure-monitor"></a>SQL do usługi Azure Monitor
 

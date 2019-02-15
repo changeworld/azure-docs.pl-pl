@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 52a441d5d8f3f44b35253e02786a033da5439597
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994891"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269860"
 ---
 # <a name="get-started-with-azure-monitor-log-queries"></a>Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań
 
@@ -43,7 +43,7 @@ W tym samouczku dowiesz się pisać zapytania dziennika LMonitor platformy Azure
 Zapytania można zacząć od jednej nazwy tabeli lub *wyszukiwania* polecenia. Należy rozpocząć z nazwą tabeli, ponieważ definiuje wyczyść zakres zapytania i zwiększa wydajność zapytań i znaczenie wyników.
 
 > [!NOTE]
-> Język zapytań Eksploratora danych, które są używane przez usługi Azure Monitor jest rozróżniana wielkość liter. Słowa kluczowe języka są zwykle zapisywane w małe. Korzystając z nazwy tabel lub kolumn w zapytaniu, pamiętaj mieć poprawną wielkość, jak pokazano w okienku schematu.
+> Język zapytania Kusto, używany przez usługi Azure Monitor jest uwzględniana wielkość liter. Słowa kluczowe języka są zwykle zapisywane w małe. Korzystając z nazwy tabel lub kolumn w zapytaniu, pamiętaj mieć poprawną wielkość, jak pokazano w okienku schematu.
 
 ### <a name="table-based-queries"></a>Zapytania w oparciu o tabeli
 Usługa Azure Monitor organizuje dane dziennika w tabelach, każdy składa się z wielu kolumn. Wszystkie tabele i kolumny są wyświetlane w okienku schematu w usłudze Log Analytics w portalu usługi analiza. Określ tabelę interesują, a następnie zapoznaj się z bitu danych:

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 9ea62d731cf0c16c17f3c2e4f3e1954661289934
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 038d41ae299076754a2f778ec67aac04e630d476
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245545"
+ms.locfileid: "56270185"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Najlepsze rozwiązania wiedzy usługi QnA Maker
 [Cykl życia projektowania bazy wiedzy knowledge base](../Concepts/development-lifecycle-knowledge-base.md) przeprowadzi Cię o tym, jak zarządzać wiedzy od początku do końca. Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy i zapewniają lepsze wyniki użytkownikom końcowym bota aplikacji/rozmowy.
@@ -25,6 +25,18 @@ ms.locfileid: "56245545"
 Usługa QnA Maker jest ulepszasz algorytmy, które znacznie wyodrębniania zawartości i rozwijając listę obsługiwanych plików i formatów HTML. Postępuj zgodnie z [wytycznych](../Concepts/data-sources-supported.md) do wyodrębnienia danych na podstawie Twojego typu dokumentu. 
 
 Ogólnie rzecz biorąc często zadawane pytania dotyczące strony powinna być autonomiczne i nie są połączone z innymi informacjami. Podręczniki powinny mieć, usuń zaznaczenie pozycji, a najlepiej strony indeksu. 
+
+## <a name="creating-good-questions-and-answers"></a>Tworzenie dobrej pytań i odpowiedzi
+
+### <a name="good-questions"></a>Dobre pytania
+
+Najlepsze pytania są proste. Należy wziąć pod uwagę słowo kluczowe lub frazy dla każdego zapytania, a następnie utworzyć proste pytanie dla tego słowa kluczowego lub frazy. 
+
+Dodaj dowolną liczbę pytań alternatywne potrzebujesz, ale proste zmiany. Dodanie więcej wyrazy lub frazy, które nie są częścią głównym celem pytanie nie przyczynić się do usługi QnA Maker znaleźć dopasowania. 
+
+### <a name="good-answers"></a>Dobre odpowiedzi
+
+Najlepsze odpowiedzi są odpowiedzi, proste, ale nie zbyt proste, takie jak tak, jak i nie odpowiedzi. Jeśli odpowiedź powinna połączyć inne źródła lub zapewniają bogate środowisko przy użyciu nośnika i łącza, użyj [znakowanie](../how-to/metadata-generateanswer-usage.md) rozróżnienie, jakiego typu odpowiedzi oczekujesz, a następnie Prześlij ten znacznik z zapytaniem, które można pobrać wersji poprawną odpowiedź.
 
 ## <a name="chit-chat"></a>Chit rozmowy
 Dodaj chit czatu do bota się bota konwersacji i bardziej angażujące, za pomocą mały nakład pracy. Możesz łatwo dodać zestawy danych chit rozmowy dla 3 osobowości wstępnie zdefiniowanych podczas tworzenia wiedzy i je zmienić w dowolnym momencie. Dowiedz się, jak [Dodaj chit czatu do wiedzy](../How-To/chit-chat-knowledge-base.md). 
@@ -58,7 +70,6 @@ Upewnij się, że wykonujesz optymalnie wykorzystać funkcje klasyfikacji, któr
 ### <a name="choosing-a-threshold"></a>Wybranie wartości progowej
 Współczynnik ufności domyślny, który jest używany jako próg wynosi 50, jednak można ją zmienić na wiedzy na podstawie własnych potrzeb. Ponieważ każdy KB jest inny, możesz przetestować i wybierz wartość progową, która najlepiej dopasowane do wiedzy. Przeczytaj więcej na temat [współczynnik ufności](../Concepts/confidence-score.md). 
 
-
 ### <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
 [Alternatywny pytania](../How-To/edit-knowledge-base.md) zwiększyć prawdopodobieństwo pasują do zapytania użytkownika. Alternatywne pytania są przydatne, gdy istnieje wiele sposobów, w którym może zostać wyświetlony monit tego samego zapytania. Może to obejmować zmiany zdania struktury i style programu word.
 
@@ -81,17 +92,16 @@ Choć niektóre Obsługa synonimów w języku angielskim, użyj bez uwzględnian
 |Kup|kup<br>netbanking<br>Bankowość netto|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Użyj unikatowych słów, aby odróżnić pytania
-Algorytmy dopasowania i rangi usługi QnA Maker, które odpowiadają zapytanie użytkownika z zapytania w bazie wiedzy knowledge base, działają najlepiej, jeśli każde pytanie dotyczy różne potrzeby. Powtórzenie tego samego wyrazu ustawiony między pytania zmniejsza prawdopodobieństwo, że wybrano prawidłowej odpowiedzi dla danego użytkownika zapytania za pomocą tych słów. 
+Algorytm klasyfikacji usługi QnA Maker zgodną zapytanie użytkownika z zapytania w bazie wiedzy knowledge base działa najlepiej, jeśli każde pytanie dotyczy różne potrzeby. Powtórzenie tego samego wyrazu ustawiony między pytania zmniejsza prawdopodobieństwo, że wybrano prawidłowej odpowiedzi dla danego użytkownika zapytania za pomocą tych słów. 
 
 Na przykład może mieć dwa oddzielne znacznie następujące pytania:
 
 |Znacznie|
 |--|
 |gdzie jest parkowania *lokalizacji*|
-|gdzie jest atm *lokalizacji*|
+|gdzie jest ATM *lokalizacji*|
 
-Ponieważ te dwa znacznie są ma inną pisownię słów bardzo podobne, to podobieństwa może spowodować, że bardzo podobne wyniki dla wielu zapytań użytkownika, które są ma inną pisownię, takich jak *"gdzie jest `<x>` lokalizację"*. Zamiast tego należy starać się wyraźnie odróżnić za pomocą kwerend, takich jak *"gdzie jest dużo parkowania"* i *"gdzie jest atm"*, unikając wyrazy, takie jak "Lokalizacja", może być wiele pytań w wiedzy. 
-
+Ponieważ te dwa znacznie są ma inną pisownię słów bardzo podobne, to podobieństwa może spowodować, że bardzo podobne wyniki dla wielu zapytań użytkownika, które są ma inną pisownię, takich jak *"gdzie jest `<x>` lokalizację"*. Zamiast tego należy starać się wyraźnie odróżnić za pomocą kwerend, takich jak *"gdzie jest dużo parkowania"* i *"gdzie jest ATM"*, unikając wyrazy, takie jak "Lokalizacja", może być wiele pytań w wiedzy. 
 
 ## <a name="collaborate"></a>Współpraca
 Usługa QnA Maker umożliwia użytkownikom [współpracy](../How-to/collaborate-knowledge-base.md) na wiedzy. Użytkownicy muszą mieć dostęp do grupy zasobów platformy Azure usługa QnA Maker w celu uzyskania dostępu do bazy wiedzy. W niektórych organizacjach może być oddelegowanie edytowanie wiedzy i konserwacji i nadal mieć możliwość ochrony dostępu do swoich zasobów platformy Azure. Ten model osoba zatwierdzająca edytora odbywa się przez skonfigurowanie dwóch identycznych [usługi QnA Maker](../How-to/set-up-qnamaker-service-azure.md) w różnych subskrypcjach i wybranie jednego cyklu testowania edycji. Po zakończeniu testowania zawartości bazy wiedzy są przesyłane przy użyciu [import-export](../Tutorials/migrate-knowledge-base.md) procesu usługi QnA Maker osoby zatwierdzającej, która zostanie ostatecznie publikowanie bazy wiedzy knowledge base i aktualizowanie punktu końcowego.

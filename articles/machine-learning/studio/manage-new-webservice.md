@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: c682bca1f3d4f0e2659ed107a2b15e4e4e28b0d9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 0ffa917aa6bcfb642cd672d0a51a70b13f041635
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492491"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267567"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Zarządzanie usługą sieci web przy użyciu portalu usług sieci Web programu Azure Machine Learning Studio
 Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
@@ -28,7 +28,8 @@ W portalu usług sieci Web Machine Learning możesz wykonywać następujące czy
 * Tworzenie, delete lub update rozliczenia plany (tylko nowe).
 * Dodawanie i usuwanie punktów końcowych (tylko wersja klasyczna)
 
-
+>[!NOTE]
+>Możesz również określić klasycznych usług sieci web w [usługi Machine Learning Studio](http://studio.azureml.net) na **usług sieci Web** kartę.
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Uprawnienia do zarządzania nowego Menedżera zasobów na podstawie usług sieci web
 

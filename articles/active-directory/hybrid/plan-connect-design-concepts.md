@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57c4f0595fdea3d266a56d125d6d86cba8b4f651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 01cc85f7eba2aefd08192c4e3f4e5151e7645238
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195536"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269114"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Program Azure AD Connect: Zagadnienia dotyczące projektowania
 Ten dokument ma na celu opisania obszary, które należy uważać za pośrednictwem podczas projektu implementacji programu Azure AD Connect. Ten dokument jest uzyskać szczegółowe informacje dotyczące określonych obszarów i te pojęcia krótko opisano w innych dokumentów.
@@ -171,7 +171,7 @@ Jeśli zarządzasz usług AD FS poza programem Azure AD Connect lub używasz ser
 ![Konfiguracja Federacji innej firmy](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Dodawanie nowych katalogów do istniejącego wdrożenia
-Załóżmy, że wdrożono program Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać innego katalogu do wdrożenia. Podczas próby dodania katalogu, Kreator Azure AD Connect sprawdza stan atrybutu ms-DS-ConsistencyGuid w katalogu. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że ten atrybut nie jest używane przez istniejące aplikacje, należy się z pomocą techniczną, aby uzyskać informacje dotyczące pomijania błędu.
+Załóżmy, że wdrożono program Azure AD Connect z włączoną funkcją ConsistencyGuid, a teraz chcesz dodać innego katalogu do wdrożenia. Podczas próby dodania katalogu, Kreator Azure AD Connect sprawdza stan atrybutu ms-DS-ConsistencyGuid w katalogu. Jeśli ten atrybut jest skonfigurowana na jeden lub więcej obiektów w katalogu, Kreator stwierdza, ten atrybut jest używany przez inne aplikacje i zwraca błąd, jak pokazano na poniższym diagramie. Jeśli masz pewność, że ten atrybut nie jest używane przez istniejące aplikacje, można pominąć ten błąd, uruchamiając ponownie kreatora Azure AD Connect przy użyciu **/SkipLdapSearchcontact** określony w opisany powyżej lub musisz skontaktować się z Obsługa, aby uzyskać więcej informacji.
 
 ![Dodawanie nowych katalogów do istniejącego wdrożenia](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

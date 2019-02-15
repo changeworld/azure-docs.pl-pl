@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f1f4cb036f4df226d651f8f4d0f5c7492f453a0a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874191"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269744"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Przy użyciu interfejsu wiersza polecenia systemu plików HDFS z Gen2 Lake magazynu danych
 
@@ -26,17 +26,37 @@ Usługa HDInsight zapewnia dostęp do rozproszonego systemu plików, który jest
 >[!IMPORTANT]
 >Klaster HDInsight rozliczeń rozpoczyna się po utworzeniu klastra i zatrzymuje, gdy klaster jest usuwany. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. Aby dowiedzieć się, jak usunąć klaster, zobacz nasze [artykuł na temat](../../hdinsight/hdinsight-delete-cluster.md). Jednak dane przechowywane na koncie magazynu w usłudze Data Lake magazynu Gen2 — włączone będzie nadal występował mimo klastra usługi HDInsight zostanie usunięty.
 
+### <a name="create-a-file-system"></a>Tworzenie systemu plików
+
+    hdfs dfs -D "fs.azure.createRemoteFileSystemDuringInitialization=true" -ls abfs://<file-system-name>@<storage-account-name>.dfs.core.windows.net/
+
+* Zastąp `<file-system-name>` symbol zastępczy nazwą, której chcesz nadać systemu plików.
+
+* Zastąp symbol zastępczy `<storage-account-name>` nazwą konta magazynu.
+
 ### <a name="get-a-list-of-files-or-directories"></a>Pobierz listę plików lub katalogów
 
-    hdfs dfs -ls <args>
+    hdfs dfs -ls <path>
+
+Zastąp `<path>` zastępczego identyfikatorów URI systemu plików lub folderu systemu plików.
+
+Na przykład: `hdfs dfs -ls abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name`
 
 ### <a name="create-a-directory"></a>Tworzenie katalogu
 
-    hdfs dfs -mkdir [-p] <paths>
+    hdfs dfs -mkdir [-p] <path>
 
-### <a name="delete-a-file-or-a-directory"></a>Usuwanie pliku lub katalogu
+Zastąp `<path>` symbol zastępczy przy użyciu głównej nazwy systemu plików lub folder w systemie plików.
 
-    hdfs dfs -rm [-skipTrash] URI [URI ...]
+Na przykład: `hdfs dfs -mkdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/`
+
+### <a name="delete-a-file-or-directory"></a>Usuwanie pliku lub katalogu
+
+    hdfs dfs -rm <path>
+
+Zastąp `<path>` symbolu zastępczego z identyfikatorem URI pliku lub folderu, który chcesz usunąć.
+
+Na przykład: `hdfs dfs -rmdir abfs://my-file-system@mystorageaccount.dfs.core.windows.net/my-directory-name/my-file-name`
 
 ### <a name="use-the-hdfs-cli-with-an-hdinsight-hadoop-cluster-on-linux"></a>Należy użyć interfejsu wiersza polecenia systemu plików HDFS z klastra usługi HDInsight Hadoop w systemie Linux
 
@@ -52,11 +72,15 @@ hdfs dfs -mkdir /samplefolder
 ```
 Parametry połączenia znajduje się w temacie "klastra i protokołu SSH logowania" części bloku klastra HDInsight w witrynie Azure portal. Poświadczenia protokołu SSH zostały określone podczas tworzenia klastra.
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia systemu plików HDFS, zobacz [oficjalnej dokumentacji](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) i [Przewodnik po uprawnieniach systemu plików HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html). Aby dowiedzieć się więcej na temat list ACL w usłudze Databricks, zobacz [wpisów tajnych interfejsu wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli). 
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia systemu plików HDFS, zobacz [oficjalnej dokumentacji](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) i [Przewodnik po uprawnieniach systemu plików HDFS](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html). Aby dowiedzieć się więcej na temat list ACL w usłudze Databricks, zobacz [wpisów tajnych interfejsu wiersza polecenia](https://docs.azuredatabricks.net/user-guide/dev-tools/databricks-cli.html#secrets-cli).
 
 ## <a name="hdfs-cli-with-azure-databricks"></a>System plików HDFS interfejsu wiersza polecenia za pomocą usługi Azure Databricks
 
 Databricks zapewnia łatwy w użyciu interfejsu wiersza polecenia platformy korzystających z interfejsu API REST usługi Databricks. Projekt typu open-source znajduje się na [GitHub](https://github.com/databricks/databricks-cli). Poniżej przedstawiono często używanych poleceń.
+
+### <a name="create-a-file-system"></a>Tworzenie systemu plików
+
+Wprowadź tutaj wytycznych.
 
 ### <a name="get-a-list-of-files-or-directories"></a>Pobierz listę plików lub katalogów
 

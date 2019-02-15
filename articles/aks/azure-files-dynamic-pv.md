@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 841c65fd8420fdfe681cb99ee7054cb4edd5fcd3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2cf9a98a2f27c9088266a976118acdb56f8a65d7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968996"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300826"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamiczne tworzenie i trwały wolumin za pomocą usługi Azure Files w usłudze Azure Kubernetes Service (AKS)
 
@@ -26,32 +26,20 @@ W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potr
 
 Musisz również mieć zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure w wersji 2.0.46 lub nowszej. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
+## <a name="create-a-storage-class"></a>Utwórz klasę magazynu
 
-Gdy dynamiczne tworzenie udziału plików platformy Azure jako wolumin Kubernetes, wszystkich kont magazynu można tak długo, jak znajduje się w usłudze AKS **węzła** grupy zasobów. Ta grupa jest jednym z *MC_* prefiks, który został utworzony przez Inicjowanie obsługi administracyjnej zasobów klastra usługi AKS. Pobierz nazwę grupy zasobów przy użyciu [az aks show] [ az-aks-show] polecenia.
+Klasa magazynu jest używane do definiowania sposobu tworzenia udziału plików platformy Azure. Konto magazynu jest automatycznie tworzony w *_MC* grupy zasobów do użycia z klasą magazynu do przechowywania udziałów plików platformy Azure. Wybierz z następujących [nadmiarowości usługi Azure storage] [ storage-skus] dla *skuName*:
 
-```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-Użyj [Tworzenie konta magazynu az] [ az-storage-account-create] polecenie, aby utworzyć konto magazynu.
-
-Aktualizacja `--resource-group` nazwą grupy zasobów zebranych w ostatnim kroku i `--name` nazwę ulubionego. Podaj własny unikatowej nazwy konta magazynu:
-
-```azurecli
-az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --sku Standard_LRS
-```
+* *Standard_LRS* -standardowy magazyn lokalnie nadmiarowy (LRS)
+* *Standard_GRS* -standardowy magazyn geograficznie nadmiarowy (GRS)
+* *Standard_RAGRS* — dostęp do odczytu magazynu geograficznie nadmiarowego magazynu w warstwie standardowa (RA-GRS)
 
 > [!NOTE]
 > W usłudze pliki Azure obecnie tylko pracę z magazynu w warstwie standardowa. Jeśli używasz usługi Premium storage, woluminu nie powiodło się aprowizacji.
 
-## <a name="create-a-storage-class"></a>Utwórz klasę magazynu
+Aby uzyskać więcej informacji na temat klasy magazynu w usłudze Kubernetes dla usługi Azure Files, zobacz [klasy magazynu w usłudze Kubernetes][kubernetes-storage-classes].
 
-Klasa magazynu jest używane do definiowania sposobu tworzenia udziału plików platformy Azure. Konto magazynu można określić w klasie. Jeśli nie określono konta magazynu, *skuName* i *lokalizacji* muszą być określone, i wszystkich kont magazynu w skojarzonej grupy zasobów są oceniane pod kątem dopasowania. Aby uzyskać więcej informacji na temat klasy magazynu w usłudze Kubernetes dla usługi Azure Files, zobacz [klasy magazynu w usłudze Kubernetes][kubernetes-storage-classes].
-
-Utwórz plik o nazwie `azure-file-sc.yaml` i skopiuj następujące manifest przykładu. Aktualizacja *storageAccount* wartość z nazwą konta magazynu utworzonego w poprzednim kroku. Aby uzyskać więcej informacji na temat *mountOptions*, zobacz [opcje instalacji] [ mount-options] sekcji.
+Utwórz plik o nazwie `azure-file-sc.yaml` i skopiuj następujące manifest przykładu. Aby uzyskać więcej informacji na temat *mountOptions*, zobacz [opcje instalacji] [ mount-options] sekcji.
 
 ```yaml
 kind: StorageClass
@@ -66,7 +54,6 @@ mountOptions:
   - gid=1000
 parameters:
   skuName: Standard_LRS
-  storageAccount: mystorageaccount
 ```
 
 Utwórz klasę magazynu za pomocą [zastosować kubectl] [ kubectl-apply] polecenia:
@@ -295,3 +282,4 @@ Dowiedz się więcej o woluminy trwałe Kubernetes za pomocą usługi Azure File
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[storage-skus]: ../storage/common/storage-redundancy.md

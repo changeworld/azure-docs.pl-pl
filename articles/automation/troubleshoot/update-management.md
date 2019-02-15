@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 01f72b8d41c1a973c7d187f519a43ce62929a23e
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 0b92d36287646038d9195f7ba39352d8ced9a3b6
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359361"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270270"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Rozwiązywanie problemów z zarządzaniem aktualizacjami
 
@@ -43,7 +43,11 @@ Ten błąd może być spowodowany przez następujących przyczyn:
 #### <a name="resolution"></a>Rozwiązanie
 
 1. Odwiedź stronę, [Planowanie sieci](../automation-hybrid-runbook-worker.md#network-planning) Aby dowiedzieć się więcej o tym, jakie adresy i porty muszą być dozwolone do zarządzania aktualizacjami do pracy.
-2. Jeśli przy użyciu klonowanego obrazu, program sysprep obrazu najpierw, a następnie zainstaluj agenta MMA po fakcie.
+2. Jeśli przy użyciu sklonowanego obrazu:
+   1. W obszarze roboczym usługi Log Analytics, należy usunąć maszynę Wirtualną z zapisanego wyszukiwania dla konfiguracji zakresu `MicrosoftDefaultScopeConfig-Updates`. Zapisane wyszukiwania można znaleźć w obszarze **ogólne** w obszarze roboczym.
+   2. Uruchom polecenie `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
+   3. Uruchom `Restart-Service HealthService` ponownego uruchomienia `HealthService`. Spowoduje to ponowne utworzenie klucza i generowanie nowego identyfikatora UUID.
+   4. Jeśli to nie rozwiąże problemu, obraz sysprep pierwszy i zainstalować agenta MMA po fakcie.
 
 ### <a name="multi-tenant"></a>Scenariusz: Otrzymujesz błąd połączonej subskrypcji podczas tworzenia wdrożenia aktualizacji dla maszyn w innej dzierżawie platformy Azure.
 

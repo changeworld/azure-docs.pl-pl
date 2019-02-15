@@ -2,21 +2,21 @@
 title: Tworzenie strony błędów niestandardowych usługi Azure Application Gateway
 description: W tym artykule pokazano, jak utworzyć bramę aplikacji strony błędów niestandardowych.
 services: application-gateway
-author: amitsriva
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 2/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2f76347105743538e9fc1d7588ecb949f2675696
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071225"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301608"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Tworzenie bramy Application Gateway strony błędów niestandardowych
 
-Usługa Application Gateway umożliwia tworzenie strony błędów niestandardowych zamiast domyślnej strony błędów. Można użyć własnymi znakowania i układu za pomocą niestandardowej strony błędu.
+Usługa Application Gateway umożliwia tworzenie niestandardowych stron błędów wyświetlanych zamiast domyślnych strony błędów. W przypadku niestandardowych stron błędów możesz użyć własnych oznakowań i układu.
 
 Na przykład można zdefiniować własną stronę konserwacji, jeśli aplikacja sieci web nie jest dostępny. Lub możesz utworzyć stronę przed nieautoryzowanym dostępem, jeśli złośliwe żądanie jest wysyłane do aplikacji sieci web.
 
@@ -34,6 +34,7 @@ Strony błędów niestandardowych można zdefiniować na poziomie globalnym i po
 - **Zarówno** — strona błędu niestandardowego, zdefiniowany na poziomie odbiornika zastępuje jednego zestawu na poziomie globalnym.
 
 Aby utworzyć stronę błędu niestandardowego, musisz mieć:
+
 - Kod stanu odpowiedzi HTTP.
 - odpowiedniej lokalizacji strony błędu. 
 - obiektu blob magazynu Azure ogólnie dostępny dla lokalizacji.
@@ -47,7 +48,7 @@ Po określeniu stronę błędu, bramy aplikacji powoduje jego pobranie z lokaliz
 
 1. Przejdź do usługi Application Gateway w portalu i wybierz bramę aplikacji.
 
-    ![Grupa dostępności — omówienie](media/custom-error/ag-overview.png)
+    ![ag-overview](media/custom-error/ag-overview.png)
 2. Kliknij przycisk **odbiorników** i przejdź do określonego odbiornika, które chcesz określić stronę błędu.
 
     ![Odbiorniki bramy aplikacji](media/custom-error/ag-listener.png)
@@ -59,5 +60,19 @@ Po określeniu stronę błędu, bramy aplikacji powoduje jego pobranie z lokaliz
 4. Określ adres URL dostępny publicznie obiektu blob dla kodu stanu danego błędu, a następnie kliknij przycisk **Zapisz**. Application Gateway jest skonfigurowany za pomocą niestandardowej strony błędu.
 
    ![Kody błędów bramy aplikacji](media/custom-error/ag-error-codes.png)
+
+## <a name="azure-powershell-configuration"></a>Konfiguracja programu Azure PowerShell
+
+Można użyć programu Azure PowerShell, aby skonfigurować stronę błędu niestandardowego. Na przykład globalnej niestandardowej strony błędu:
+
+`$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+Lub błąd na poziomie strony odbiornika:
+
+`$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+Aby uzyskać więcej informacji, zobacz [AzApplicationGatewayCustomError Dodaj](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) i [AzApplicationGatewayHttpListenerCustomError Dodaj](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
+
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aby uzyskać informacji na temat diagnostyki usługi Application Gateway, zobacz [kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway](application-gateway-diagnostics.md).

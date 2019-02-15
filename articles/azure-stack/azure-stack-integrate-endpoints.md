@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: fee5db2cde4e4056a8cb1fca80e09511d0ca0b53
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c3b27291fc413310393cd0270ec750de14a4985b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117279"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270066"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -34,6 +34,9 @@ Nie są wyświetlane wewnętrznej infrastruktury adresów VIP, ponieważ nie są
 
 > [!Note]  
 > Użytkownik VIP są dynamiczne, zdefiniowane przez samych użytkowników z żadnej kontroli przez operatora infrastruktury Azure Stack.
+
+> [!Note]
+> Począwszy od aktualizacji 1811 porty w zakresie 12495 30015 są już nie muszą być otwarte ze względu na dodanie [Host rozszerzenia](azure-stack-extension-host-prepare.md).
 
 |Punkt końcowy (VIP)|Rekord hosta DNS|Protokół|Porty|
 |---------|---------|---------|---------|

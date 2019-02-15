@@ -1,7 +1,7 @@
 ---
 title: Zarządzanie obszarem roboczym usługi Machine Learning Studio
 titleSuffix: Azure Machine Learning Studio
-description: Zarządzanie dostępem do obszarów roboczych usługi Azure Machine Learning, wdrażanie i zarządzanie usługami sieci web interfejsu API uczenia Maszynowego
+description: Zarządzanie dostępem do obszarów roboczych usługi Azure Machine Learning Studio, wdrażanie i zarządzanie usługami sieci web interfejsu API usługi Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: f1904552b6c43cadd611659ed544b9f4bafcb465
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f792c2b23c8d36225b4c05cf7a334721bd08272a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487283"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269029"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Zarządzanie obszarem roboczym usługi Azure Machine Learning Studio
 
@@ -24,16 +24,16 @@ ms.locfileid: "55487283"
 > 
 > 
 
-Możesz zarządzać obszarami roboczymi usługi Machine Learning, w witrynie Azure portal.
+Możesz zarządzać obszarami roboczymi usługi Machine Learning Studio, w witrynie Azure portal.
 
 
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Aby zarządzanie obszarem roboczym w witrynie Azure portal:
+Aby zarządzać obszar roboczy Studio w witrynie Azure portal:
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora subskrypcji platformy Azure.
-2. W polu wyszukiwania w górnej części strony, wprowadź "maszyna obszarów roboczych uczenia", a następnie wybierz pozycję **Machine Learning w obszarach roboczych**.
+2. W polu wyszukiwania w górnej części strony, wprowadź "usługi machine learning Studio obszary robocze", a następnie wybierz pozycję **obszary robocze usługi Machine Learning Studio**.
 3. Kliknij obszar roboczy, który chcesz zarządzać.
 
 Oprócz informacji o zarządzaniu standardowych zasobów i dostępnych opcji możesz wykonywać następujące czynności:
@@ -41,10 +41,10 @@ Oprócz informacji o zarządzaniu standardowych zasobów i dostępnych opcji mo�
 - Widok **właściwości** — ta strona wyświetla informacje o obszarze roboczym i zasobów, i możesz zmienić subskrypcję i grupę zasobów, ten obszar roboczy jest połączony z.
 - **Ponownie Synchronizuj klucze magazynu** — obszar roboczy przechowuje klucze do konta magazynu. Jeśli zmieni się na koncie magazynu kluczy, a następnie kliknięcie **ponowna synchronizacja kluczy** do zsynchronizowania kluczy z obszaru roboczego.
 
-Aby zarządzać usługami sieci web skojarzony z tym obszarem roboczym, użyj portalu usług sieci Web Machine Learning. Zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md) pełne informacje.
+Aby zarządzać usługami sieci web skojarzony z tym obszarem roboczym Studio, użyj portalu usług sieci Web Machine Learning. Zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md) pełne informacje.
 
 > [!NOTE]
-> Do wdrażania i zarządzania nią nowych usług sieci web musi mieć przypisaną rolę współautorem lub administratorem subskrypcji, w której wdrażana jest usługa sieci web. Jeśli użytkownik Zaproś innego użytkownika do obszaru roboczego usługi machine learning, należy przypisać je do roli administratora lub współautora w subskrypcji, przed wdrożeniem lub zarządzać usługami sieci web. 
+> Do wdrażania i zarządzania nią nowych usług sieci web musi mieć przypisaną rolę współautorem lub administratorem subskrypcji, w której wdrażana jest usługa sieci web. Jeśli użytkownik Zaproś innego użytkownika do usługi machine learning Studio w obszarze roboczym, należy je przypisać do roli administratora lub współautora w subskrypcji przed wdrożeniem lub zarządzać usługami sieci web. 
 > 
 >Aby uzyskać więcej informacji o ustawianiu uprawnień dostępu, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
 

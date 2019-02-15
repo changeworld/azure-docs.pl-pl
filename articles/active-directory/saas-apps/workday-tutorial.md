@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e3f60c3b0578647e68109a21ba7d57b083bea11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae93cce7a26666383b609ac898a25fb84caee517
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184537"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Workday
 
@@ -113,7 +113,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![WORKDAY domena i adresy URL pojedynczy informacje logowania jednokrotnego](./media/workday-tutorial/tutorial_workday_url.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://impl.workday.com/<tenant>/login-saml2.htmld`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://impl.workday.com/<tenant>/login-saml2.flex`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL: `https://www.workday.com`
 
@@ -166,7 +166,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     >[!NOTE]
     > Wartość atrybutu środowisko jest powiązana wartość adres URL dzierżawy:  
-    >-Czy nazwa domeny adres URL dzierżawy produktu Workday rozpoczyna się od impl na przykład: *https://impl.workday.com/\<tenant\>/login-saml2.htmld*), **środowiska** atrybut należy skonfigurować do implementacji.  
+    >-Czy nazwa domeny adres URL dzierżawy produktu Workday rozpoczyna się od impl na przykład: *https://impl.workday.com/\<tenant\>/login-saml2.flex*), **środowiska** atrybut należy skonfigurować do implementacji.  
     >— Jeśli nazwa domeny rozpoczyna się czymś innym, musisz skontaktować się z [zespołem pomocy technicznej klienta Workday](https://www.workday.com/en-us/partners-services/services/support.html) można pobrać dopasowywania **środowiska** wartość.
 
 12. W **konfiguracji SAML** sekcji, wykonaj następujące czynności:

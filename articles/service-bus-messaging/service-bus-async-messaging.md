@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0ff2fbf8ddfdd191c72cfdb36a9462076f8dec5b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 50778ae742c1ec66857a6c2fa6250dc3d67e5601
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657301"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301574"
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>Wzorce asynchronicznej obsługi komunikatów i wysoka dostępność
 
@@ -62,77 +62,10 @@ Inne składniki w ramach platformy Azure od czasu do czasu może mieć problemy 
 ### <a name="service-bus-failure-on-a-single-subsystem"></a>Błąd usługi Service Bus w jednym podsystemie
 Z każdą aplikacją okolicznościach może powodować wewnętrznego składnikiem usługi Service Bus, aby stać się niespójna. Gdy Usługa Service Bus wykryje to, zbiera dane z aplikacji, aby pomóc w zdiagnozowaniu, co się stało. Po zebraniu danych ponownym uruchomieniu aplikacji w celu podjęcia próby przywrócić go do stanu spójności. Ten proces odbywa się dość szybko, a wyniki w jednostce, które pojawiają się jako niedostępny dla maksymalnie kilka minut, chociaż jest to typowy szczegółów czasu są znacznie krótszy.
 
-W takich przypadkach aplikacja kliencka generuje [System.TimeoutException] [ System.TimeoutException] lub [MessagingException] [ MessagingException] wyjątku. Usługa Service Bus zawiera ograniczenia tego problemu w formie klienta automatycznego Logika ponawiania. Po wyczerpaniu okres ponowień i komunikat nie zostanie dostarczony, można eksplorować przy użyciu innych funkcji, takich jak [sparowane przestrzenie nazw][paired namespaces]. Sparowane przestrzenie nazw mają inne ostrzeżenia, które zostały omówione w tym artykule.
-
-### <a name="failure-of-service-bus-within-an-azure-datacenter"></a>Błąd usługi Service Bus w obrębie centrum danych platformy Azure
-Najbardziej prawdopodobna przyczyna niepowodzenia w centrum danych platformy Azure to wdrożenie nie powiodło się uaktualnienie usługi Service Bus lub systemy zależne. Jak dojrzewania platformy, prawdopodobieństwo tego typu Błąd został zmniejszony. Awaria centrum danych może też być powodów, które obejmują następujące czynności:
-
-* Awaria elektrycznych (źródło zasilania i generowanie power zniknąć).
-* Łączność (internet podziału między Twoimi klientami a Azure).
-
-W obu przypadkach awarii fizycznych lub włókna przyczyny problemu. Aby obejść ten problem i upewnij się, że nadal może wysyłać komunikaty, możesz użyć [sparowane przestrzenie nazw] [ paired namespaces] komunikatów do wysłania w innej lokalizacji, podczas gdy lokalizacji głównej jest dobra ponownie włączyć. Aby uzyskać więcej informacji, zobacz [najlepsze rozwiązania dotyczące izolacji aplikacji w ramach usługi Service Bus wyłączeń i awarii][Best practices for insulating applications against Service Bus outages and disasters].
-
-## <a name="paired-namespaces"></a>Sparowane przestrzenie nazw
-[Sparowane przestrzenie nazw] [ paired namespaces] funkcja obsługuje scenariusze, w którym jednostki usługi Service Bus lub wdrażanie w ramach centrum danych staną się niedostępne. Gdy to zdarzenie występuje rzadko, systemami rozproszonymi nadal musi być przygotowana do obsługi najgorszego przypadku. Zwykle to zdarzenie występuje, ponieważ pewien element, od których zależy usługa Service Bus występuje problem z krótkoterminowej. W celu zapewnienia dostępności aplikacji podczas przestoju, użytkownicy usługi Service Bus umożliwia dwa oddzielne przestrzenie nazw, najlepiej w odrębnych danych centra, hostowanie ich jednostek obsługi komunikatów. Dalszej części tej sekcji korzysta z następującą terminologią:
-
-* Podstawowa przestrzeń nazw: Przestrzeń nazw za pomocą którego aplikacja wchodzi w interakcję do wysyłania i operacji odbioru.
-* Pomocnicza przestrzeń nazw: Przestrzeń nazw, który działa jako kopii zapasowej podstawowej przestrzeni nazw. Aplikacja logiki nie wchodzi w interakcję z tą przestrzenią nazw.
-* Interwał trybu failover: Ilość czasu, aby zaakceptować normalne błędy, zanim aplikacja zostanie przełączona z podstawowej przestrzeni nazw do pomocniczej przestrzeni nazw.
-
-Sparowane przestrzenie nazw obsługują *Wyślij dostępności*. Wyślij dostępności pozwala zachować możliwość wysyłania wiadomości. Aby użyć dostępności wysyłania, aplikacji musi spełniać następujące wymagania:
-
-1. Komunikaty tylko są odbierane z podstawowej przestrzeni nazw.
-2. Komunikaty wysyłane do danej kolejki lub tematu, może pojawić się poza kolejnością.
-3. Komunikaty w ramach sesji może pojawić się poza kolejnością. Jest to podziału z normalnej funkcjonalności sesji. Oznacza to, że aplikacja używa sesji logiczne grupowanie wiadomości.
-4. Stan sesji jest utrzymywany tylko względem podstawowej przestrzeni nazw.
-5. Kolejki głównej można przejść w tryb online i zacznij akceptować komunikaty zanim kolejki dodatkowej dostarcza komunikaty do kolejki głównej.
-
-W poniższych sekcjach omówiono interfejsów API, jak zostały zaimplementowane interfejsy API i przykładowy kod pokazuje, że używa funkcji. Należy zauważyć, że ma skutki rozliczeń skojarzone z tą funkcją.
-
-### <a name="the-messagingfactorypairnamespaceasync-api"></a>MessagingFactory.PairNamespaceAsync interfejsu API
-Funkcja sparowane przestrzenie nazw obejmuje [PairNamespaceAsync] [ PairNamespaceAsync] metody [Microsoft.ServiceBus.Messaging.MessagingFactory] [ Microsoft.ServiceBus.Messaging.MessagingFactory] klasy:
-
-```csharp
-public Task PairNamespaceAsync(PairedNamespaceOptions options);
-```
-
-Po zakończeniu zadania, parowania przestrzeni nazw jest również gotowy do wykonania działania w przypadku dowolnego [MessageReceiver][MessageReceiver], [QueueClient] [ QueueClient] , lub [TopicClient] [ TopicClient] utworzone za pomocą [MessagingFactory] [ MessagingFactory] wystąpienia. [Microsoft.ServiceBus.Messaging.PairedNamespaceOptions] [ Microsoft.ServiceBus.Messaging.PairedNamespaceOptions] jest klasą bazową dla różnych rodzajów parowania, które są dostępne za pomocą [MessagingFactory] [ MessagingFactory] obiektu. Obecnie tylko klasy pochodnej jest jeden o nazwie [SendAvailabilityPairedNamespaceOptions][SendAvailabilityPairedNamespaceOptions], który implementuje wymaganiami w zakresie dostępności wysyłania. [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] zawiera zbiór konstruktorów, które są kompilowane na siebie nawzajem. Patrząc konstruktora z parametrami większość, należy zrozumieć zachowanie innych konstruktorów.
-
-```csharp
-public SendAvailabilityPairedNamespaceOptions(
-    NamespaceManager secondaryNamespaceManager,
-    MessagingFactory messagingFactory,
-    int backlogQueueCount,
-    TimeSpan failoverInterval,
-    bool enableSyphon)
-```
-
-Parametry te mają następujące znaczenie:
-
-* *secondaryNamespaceManager*: Zainicjowana klasa [NamespaceManager] [ NamespaceManager] wystąpienia dla pomocniczej przestrzeni nazw, [PairNamespaceAsync] [ PairNamespaceAsync] metody można ustawić za pomocą się pomocniczej przestrzeni nazw. Menedżer przestrzeni nazw jest używana, aby uzyskać listę kolejek w przestrzeni nazw i upewnij się, czy istnieją wymagane zaległości kolejki. Jeśli te kolejki nie istnieją, są one tworzone. [NamespaceManager] [ NamespaceManager] wymaga możliwości Utwórz token za pomocą **Zarządzaj** oświadczenia.
-* *messagingFactory*: [MessagingFactory] [ MessagingFactory] wystąpienia dla pomocniczej przestrzeni nazw. [MessagingFactory] [ MessagingFactory] obiekt jest używany do wysyłania i, jeśli [EnableSyphon] [ EnableSyphon] właściwość jest ustawiona na **true**, odbiera komunikaty z kolejki zaległości.
-* *backlogQueueCount*: Liczba kolejek zaległości do utworzenia. Ta wartość musi wynosić co najmniej 1. Podczas wysyłania komunikatów do listy prac, jeden z tych kolejkach jest wybierany losowo. Jeśli wartość jest ustawiona na 1, następnie tylko jedna kolejka może być nigdy nie użył. Gdy tak się stanie, a kolejki jednej zaległości generuje błędy, klient nie jest w stanie wypróbować inną zaległości kolejki i może zakończyć się niepowodzeniem do wysłania wiadomości. Firma Microsoft zaleca ustawienie tej wartości na niektórych większych wartości i domyślne wartości do 10. Można to zmienić, aby wyższą lub niższą wartością w zależności od ilości danych, Twoja aplikacja przesyła dziennie. Każdej zaległości kolejki może zawierać maksymalnie 5 GB wiadomości.
-* *failoverInterval*: Ilość czasu, w którym będzie akceptować błędów w podstawowej przestrzeni nazw przed przełączeniem wszelkie pojedynczej jednostki za pośrednictwem do pomocniczej przestrzeni nazw. Przejścia w tryb failover odbywa się na zasadzie jednostki przez jednostki. Jednostki w jednej przestrzeni nazw często znajdują się w różnych węzłach w ramach usługi Service Bus. Błąd w jednej jednostce nie oznacza niepowodzenie w innym. Ta wartość zostanie ustawiona na [System.TimeSpan.Zero] [ System.TimeSpan.Zero] do trybu failover do regionu pomocniczego, natychmiast po usługi po pierwsze, nieprzejściowy błąd. Błędy wyzwalające czasomierza trybu failover są [MessagingException] [ MessagingException] w którym [IsTransient] [ IsTransient] właściwość ma wartość false lub [ System.TimeoutException][System.TimeoutException]. Innych wyjątków takich jak [unauthorizedaccessexception —] [ UnauthorizedAccessException] nie powodują przejścia w tryb failover, ponieważ wskazują, że klient jest nieprawidłowo skonfigurowany. A [ServerBusyException] [ ServerBusyException] jest nie Przyczyna trybu failover ponieważ prawidłowy wzorzec polega na poczekaj 10 sekund, Wyślij wiadomość ponownie.
-* *enableSyphon*: Wskazuje, że określonego parowanie powinien również syphon wiadomości z pomocniczą przestrzeń nazw do podstawowej przestrzeni nazw. Ogólnie rzecz biorąc, ustaw tę wartość aplikacji, które wysyłają komunikaty **false**; aplikacje, które odbierają komunikaty należy ustawić tę wartość na **true**. Przyczyna to zakłada, że często mniejszej liczby odbiorców wiadomości od nadawcy wiadomości. W zależności od liczby odbiorców można obsługiwać obowiązków syphon wystąpienie pojedynczej aplikacji. Za pomocą wielu odbiorców ma wpływ rozliczeń dla każdej kolejki zaległości.
-
-Aby użyć kodu, należy utworzyć podstawowy [MessagingFactory] [ MessagingFactory] wystąpienia pomocniczy [MessagingFactory] [ MessagingFactory] wystąpienia pomocniczy [ NamespaceManager] [ NamespaceManager] wystąpienia, a [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] wystąpienia. Wywołanie może być tak proste, jak poniżej:
-
-```csharp
-SendAvailabilityPairedNamespaceOptions sendAvailabilityOptions = new SendAvailabilityPairedNamespaceOptions(secondaryNamespaceManager, secondary);
-primary.PairNamespaceAsync(sendAvailabilityOptions).Wait();
-```
-
-Gdy zadanie zwracane przez [PairNamespaceAsync] [ PairNamespaceAsync] zakończeniu działania metody wszystko zostało skonfigurowane i gotowe do użycia. Przed zwróceniem zadania może nie zostały wykonane wszystkie niezbędne do parowanie działają prawidłowo pracy tła. W rezultacie nie należy zacząć wysyłania wiadomości, dopóki zadanie nie zwróci. W przypadku wystąpienia błędów, takich jak nieprawidłowych poświadczeń lub nie można utworzyć kolejki zaległości, tych wyjątków zostanie zgłoszony, po zakończeniu zadania. Po powrocie z zadania Sprawdź, czy kolejki zostały znalezione lub utworzone przez badanie [BacklogQueueCount] [ BacklogQueueCount] właściwość swoje [SendAvailabilityPairedNamespaceOptions] [ SendAvailabilityPairedNamespaceOptions] wystąpienia. Poprzedzający kod tej operacji wygląda następująco:
-
-```csharp
-if (sendAvailabilityOptions.BacklogQueueCount < 1)
-{
-    // Handle case where no queues were created.
-}
-```
+W takich przypadkach aplikacja kliencka generuje [System.TimeoutException] [ System.TimeoutException] lub [MessagingException] [ MessagingException] wyjątku. Usługa Service Bus zawiera ograniczenia tego problemu w formie klienta automatycznego Logika ponawiania. Po wyczerpaniu okres ponowień i komunikat nie zostanie dostarczony, możesz zapoznać się z innych wymienionych w artykule [Obsługa wyłączeń i awarii][handling outages and disasters].
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, kiedy znasz już podstawy asynchronicznej obsługi komunikatów w usłudze Service Bus, przeczytaj więcej szczegółowych informacji na temat [sparowane przestrzenie nazw][paired namespaces].
+Teraz, kiedy znasz już podstawy asynchronicznej obsługi komunikatów w usłudze Service Bus, przeczytaj więcej szczegółowych informacji na temat [Obsługa wyłączeń i awarii][handling outages and disasters].
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception
 [System.TimeoutException]: https://msdn.microsoft.com/library/system.timeoutexception.aspx
@@ -152,4 +85,4 @@ Teraz, kiedy znasz już podstawy asynchronicznej obsługi komunikatów w usłudz
 [IsTransient]: /dotnet/api/microsoft.servicebus.messaging.messagingexception
 [UnauthorizedAccessException]: https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx
 [BacklogQueueCount]: /dotnet/api/microsoft.servicebus.messaging.sendavailabilitypairednamespaceoptions?redirectedfrom=MSDN
-[paired namespaces]: service-bus-paired-namespaces.md
+[handling outages and disasters]: service-bus-outages-disasters.md

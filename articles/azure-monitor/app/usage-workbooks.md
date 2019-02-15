@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: f7133ed74c9862a7e3d496a9093faaf3959e0d78
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: bcd4ae5b7092aafc452c5af3d17fd22c263b5d35
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993422"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270151"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Tworzenie interaktywnych raportów, skoroszytów w usłudze Azure Monitor
 
@@ -77,7 +77,7 @@ Sekcje zapytania są bardzo elastyczne i może służyć do odpowiedzi na pytani
 
 * Jak wiele wyjątków throw witryny w przedziale czasu jako spadek użycia?
 * Jaki był Rozkład czasów ładowania strony użytkownikom, którzy wyświetlają niektóre strony?
-* Ilu użytkowników wyświetlane niektóre zbiór stron w witrynie, ale nie inny zestaw stron? Może to być przydatne do zrozumienia, jeśli masz klastrów użytkowników, którzy korzystają z różnych podzbiory funkcji witryny sieci (Użyj `join` operator `kind=leftanti` modyfikator w języku kwerend Eksploratora danych).
+* Ilu użytkowników wyświetlane niektóre zbiór stron w witrynie, ale nie inny zestaw stron? Może to być przydatne do zrozumienia, jeśli masz klastrów użytkowników, którzy korzystają z różnych podzbiory funkcji witryny sieci (Użyj `join` operator `kind=leftanti` modyfikator w [język zapytania Kusto](/azure/kusto/query/)).
 
 Możesz również nie są tylko ograniczone do wykonywania zapytań w kontekście aplikacji uruchomiony ten skoroszyt z. Wiele aplikacji usługi Application Insights monitorowane, jak i obszarów roboczych usługi Log Analytics można badać, tak długo, jak długo mają uprawnienia dostępu do tych zasobów.
 

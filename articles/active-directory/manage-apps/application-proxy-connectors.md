@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c48bbffd6a6312588d071841000b9211266285e3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 907511b7f20311479e7b11a30f3d5719daea3f87
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163040"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301472"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Omówienie łączników serwera Proxy aplikacji usługi Azure AD
 
@@ -25,13 +25,13 @@ ms.locfileid: "56163040"
 
 ## <a name="what-is-an-application-proxy-connector"></a>Co to jest łącznik serwera Proxy aplikacji?
 
-Łączniki są uproszczone agentów, które znajdują się w środowisku lokalnym i ułatwienia połączenie wychodzące do usługi serwera Proxy aplikacji. Łączniki, musi być zainstalowany w systemie Windows Server, który ma dostęp do aplikacji zaplecza. Łączników można organizować w grupy łączników, z każdą grupą obsługi ruchu do określonych aplikacji. Równoważenie obciążenia łączniki automatycznie i może przyczynić się do zoptymalizowania struktury sieci. 
+Łączniki są uproszczone agentów, które znajdują się w środowisku lokalnym i ułatwienia połączenie wychodzące do usługi serwera Proxy aplikacji. Łączniki, musi być zainstalowany w systemie Windows Server, który ma dostęp do aplikacji zaplecza. Łączników można organizować w grupy łączników, z każdą grupą obsługi ruchu do określonych aplikacji.
 
 ## <a name="requirements-and-deployment"></a>Wymagania i wdrożenia
 
-Aby pomyślnie wdrożyć serwer Proxy aplikacji, co najmniej jeden łącznik jest wymagany, ale zaleca się co najmniej dwóch pod kątem większej odporności. Łącznik można zainstalować na maszynie 2016 lub Windows Server 2012 R2. Łącznik musi mieć możliwość komunikacji z usługi Serwer Proxy aplikacji, a także aplikacji lokalnych, które można opublikować. 
+Aby pomyślnie wdrożyć serwer Proxy aplikacji, co najmniej jeden łącznik jest wymagany, ale zaleca się co najmniej dwóch pod kątem większej odporności. Łącznik można zainstalować na maszynie 2016 lub Windows Server 2012 R2. Łącznik musi komunikować się z usługą serwera Proxy aplikacji usługi i aplikacji lokalnych, które można opublikować. 
 
-### <a name="windows-server"></a>Windows server
+### <a name="windows-server"></a>Server systemu Windows
 Wymagany serwer z systemem Windows Server 2012 R2 lub nowszym na której można zainstalować łącznik serwera Proxy aplikacji. Serwer musi łączyć się z usługi serwera Proxy aplikacji na platformie Azure i aplikacji lokalnych, które publikujesz.
 
 Systemu windows server musi mieć protokół TLS 1.2, włączone, przed zainstalowaniem łącznika serwera Proxy aplikacji. Istniejące łączniki z wersjami starszymi niż 1.5.612.0 będą w dalszym ciągu działać we wcześniejszych wersjach TLS do odwołania. Aby włączyć protokół TLS 1.2:
@@ -67,12 +67,12 @@ Nie trzeba ręcznie usunąć łączniki, które nie są używane. Łącznik jest
 
 Usługa Azure AD zapewnia automatyczne otrzymywanie aktualizacji dla wszystkich łączników, które można wdrożyć. Tak długo, jak usługa aktualizator łącznika serwera Proxy aplikacji jest uruchomiona, łączników są aktualizowane automatycznie. Jeśli nie widzisz usługi aktualizator łącznika na serwerze, należy [ponownej instalacji usługi łącznika](application-proxy-add-on-premises-application.md) na pobranie aktualizacji. 
 
-Jeśli nie chcesz czekać na automatycznych aktualizacji na osiągnięcie łącznika, można wykonać Ręczne uaktualnianie. Przejdź do [strony pobierania łącznika](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) na serwerze, gdzie Twój łącznik jest zlokalizowany i wybierz pozycję **Pobierz**. Ten proces dotyczącego uaktualnienie lokalnego łącznika. 
+Jeśli nie chcesz czekać na automatycznych aktualizacji na osiągnięcie łącznika, możesz zrobić ręcznego uaktualnienia. Przejdź do [strony pobierania łącznika](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download) na serwerze, gdzie Twój łącznik jest zlokalizowany i wybierz pozycję **Pobierz**. Ten proces dotyczącego uaktualnienie lokalnego łącznika. 
 
 Dla dzierżawców dzięki wielu łącznikom aktualizacje automatyczne docelowe jeden łącznik w czasie w każdej grupie, aby uniknąć przestojów w danym środowisku. 
 
 Może wystąpić Przestój, po zaktualizowaniu łącznika, jeśli:  
-- Masz tylko jeden łącznik. Aby uniknąć tej awarii i poprawić wysoką dostępność, zaleca się zainstalować drugi łącznik i [Tworzenie grupy łączników](application-proxy-connector-groups.md).  
+- Masz tylko jeden łącznik zaleca się instalowania drugi łącznik i [Tworzenie grupy łączników](application-proxy-connector-groups.md). Spowoduje to uniknąć przestoju i zapewnić wyższą dostępność.  
 - Łącznik został środku transakcji, podczas rozpoczęcia aktualizacji. Mimo że początkowej transakcja zostanie utracony, przeglądarka automatycznie spróbuj ponownie wykonać operację lub możesz odświeżyć stronę. Gdy żądanie jest wysyłane ponownie, ruch jest kierowany do tworzenia kopii zapasowej łącznika.
 
 ## <a name="creating-connector-groups"></a>Tworzenie grupy łączników
@@ -85,7 +85,7 @@ Aby dowiedzieć się więcej na temat grupy łączników, zobacz [Publikuj aplik
 
 ## <a name="capacity-planning"></a>Planowanie pojemności 
 
-Chociaż łączników zostaną automatycznie równoważyć obciążenie spowodowane w obrębie grupy łączników, jest również należy się upewnić, że zaplanowano wystarczająca ilość miejsca między łączników, aby obsłużyć oczekiwanego natężenia ruchu. Ogólnie rzecz biorąc, większej liczby użytkowników, których użytkownik ma większe maszyny, które będą potrzebne. Poniżej znajduje się że tabeli, dając konspektu woluminu różnych komputerów może obsłużyć. Należy pamiętać, wszystkie opiera się na oczekiwanych transakcji na drugim (TPS), a nie przez użytkownika, ponieważ użycie wzorce różnią się i nie można używać do prognozowania obciążenia.  Należy również zauważyć, że będzie istnieć pewne różnice w oparciu o rozmiar odpowiedzi i czas odpowiedzi aplikacji wewnętrznej bazy danych — niższy TPS Max spowoduje większe rozmiary odpowiedzi i mniejsza czasów odpowiedzi.
+Należy się upewnić, że zaplanowano wystarczająca ilość miejsca między łączników, aby obsłużyć oczekiwanego natężenia ruchu. W ogólne, większej liczby użytkowników, do których masz większe maszynie należy. Poniżej znajduje się że tabeli, dając konspektu woluminu różnych komputerów może obsłużyć. Należy pamiętać, wszystkie opiera się na oczekiwanych transakcji na drugim (TPS), a nie przez użytkownika, ponieważ użycie wzorce różnią się i nie można używać do prognozowania obciążenia. Będzie również istnieć pewne różnice w oparciu o rozmiar odpowiedzi i czas odpowiedzi aplikacji wewnętrznej bazy danych — niższy TPS Max spowoduje większe rozmiary odpowiedzi i mniejsza czasów odpowiedzi. Zaleca się o dodatkowych maszyn, tak aby rozłożonego obciążenia między maszynami jest o 50%. Dodatkowa pojemność zapewni, że wysokiej dostępności i odporności.
 
 |Rdzenie|Pamięć RAM|Oczekiwany czas oczekiwania (MS) — poziomie P99|Max TPS|
 | ----- | ----- | ----- | ----- |
@@ -102,28 +102,26 @@ Chociaż łączników zostaną automatycznie równoważyć obciążenie spowodow
 
 Łączników można zainstalować w dowolnym miejscu w sieci, która pozwala im wysyłać żądania do usługi serwera Proxy aplikacji. Co to jest ważne jest, czy komputer z uruchomioną łącznik również ma dostęp do aplikacji. Wewnątrz sieci firmowej lub na maszynie wirtualnej, która działa w chmurze, można zainstalować łączniki. Łączniki mogą być uruchamiane w sieci obwodowej, ale nie jest konieczne, ponieważ cały ruch jest wychodzący, dlatego sieci pozostają bezpieczne.
 
-Łączniki tylko wysyłać żądania wychodzącego. Ruch wychodzący są wysyłane do usługi serwera Proxy aplikacji i do opublikowanych aplikacji. Nie trzeba otworzyć porty dla ruchu przychodzącego, ponieważ ruch odbywa się dwukierunkowo po ustanowieniu sesji. Nie trzeba skonfigurować Równoważenie obciążenia między łączników lub skonfigurować dla ruchu przychodzącego dostęp za pośrednictwem zapór. 
+Łączniki tylko wysyłać żądania wychodzącego. Ruch wychodzący są wysyłane do usługi serwera Proxy aplikacji i do opublikowanych aplikacji. Nie trzeba otworzyć porty dla ruchu przychodzącego, ponieważ ruch odbywa się dwukierunkowo po ustanowieniu sesji. Ponadto nie należy skonfigurować dla ruchu przychodzącego dostęp za pośrednictwem zapory. 
 
 Aby uzyskać więcej informacji o konfigurowaniu reguł zapory dla ruchu wychodzącego, zobacz [pracy przy użyciu istniejących serwerów proxy lokalnych](application-proxy-configure-connectors-with-proxy-servers.md).
 
 
 ## <a name="performance-and-scalability"></a>Wydajność i skalowalność
 
-Skalowanie usługi Serwer Proxy aplikacji jest przejrzysta, jednak skala jest współczynnik dla łączników. Musisz mieć wystarczającej liczby łączników w celu obsługi szczytowego natężenia ruchu. Nie trzeba jednak skonfigurować Równoważenie obciążenia, ponieważ wszystkie łączniki w obrębie grupy łączników automatycznie równoważyć obciążenie.
-
-Łączniki są bezstanowe, nie jest narażony według liczby użytkowników lub sesji. Zamiast tego mogą odpowiadać na liczbę żądań i ich rozmiar ładunku. Za pomocą ruch internetowy standard średnia maszyna może obsługiwać kilka tysięcy żądań na sekundę. Określonej pojemności, zależy od właściwości dokładnie maszyny. 
+Skalowanie usługi Serwer Proxy aplikacji jest przejrzysta, jednak skala jest współczynnik dla łączników. Musisz mieć wystarczającej liczby łączników w celu obsługi szczytowego natężenia ruchu. Łączniki są bezstanowe, nie ma wpływu według liczby użytkowników lub sesji. Zamiast tego mogą odpowiadać na liczbę żądań i ich rozmiar ładunku. Za pomocą ruch internetowy standard średnia maszyna może obsługiwać kilka tysięcy żądań na sekundę. Określonej pojemności, zależy od właściwości dokładnie maszyny. 
 
 Wydajność łącznika jest związana z procesora CPU i sieci. Wydajność procesora CPU jest potrzebny do protokołu SSL szyfrowania i odszyfrowywania, gdy sieć jest ważne, aby uzyskać szybkie łączności do aplikacji i usług online na platformie Azure.
 
 Z kolei jest pamięci nie stanowi takiego problemu dla łączników. Usługi online zajmuje się znacznie przetwarzania danych, a także cały ruch nieuwierzytelnionych. Wszystko, co można zrobić w chmurze jest wykonywane w chmurze. 
 
-Równoważenie obciążenia między odbywa się łączników grupy danego łącznika. Robimy odmianą działanie okrężne w celu ustalenia, które łącznika w grupie służy poszczególnych żądań. Jeśli z jakiegokolwiek powodu, że łącznik lub maszyny staną się niedostępne, ruch zostanie uruchomione, przechodząc do innego łącznika w grupie. Ta elastyczność jest również, dlaczego firma Microsoft zaleca posiadanie wielu łączników.
+Jeśli z jakiegokolwiek powodu, że łącznik lub maszyny staną się niedostępne, ruch zostanie uruchomione, przechodząc do innego łącznika w grupie. Ta elastyczność jest również, dlaczego firma Microsoft zaleca posiadanie wielu łączników.
 
 Innym czynnikiem, który wpływa na wydajność jest jakość siecią między łączniki, w tym: 
 
 * **Usługi online**: Wolne lub długim czasie oczekiwania połączenia z usługą serwera Proxy aplikacji na platformie Azure mają wpływ na wydajność łącznika. Aby uzyskać najlepszą wydajność należy połączyć Twojej organizacji na platformie Azure z usługą Express Route. W przeciwnym razie ma Twój zespół sieci, upewnij się, jak najbardziej wydajny obsługiwania połączenia z platformą Azure. 
 * **Aplikacji zaplecza**: W niektórych przypadkach istnieją dodatkowe serwery proxy między łącznika i aplikacji zaplecza, które mogą spowalniać lub uniemożliwić połączenia. Aby rozwiązać ten scenariusz, otwórz przeglądarkę z serwerem łącznika i spróbuj uzyskać dostęp do aplikacji. Jeśli łączniki działające na platformie Azure, ale aplikacje są w środowisku lokalnym, proces może nie być oczekiwaniami użytkowników.
-* **Kontrolery domeny**: Łączniki wykonać logowanie Jednokrotne przy użyciu ograniczonego delegowania protokołu Kerberos, mogą skontaktować się z kontrolerów domeny przed wysłaniem żądania do zaplecza. Łączniki mają pamięci podręcznej bilety protokołu Kerberos, ale w środowisku zajęty szybkość reakcji kontrolerów domeny może wpłynąć na wydajność. Ten problem jest częściej łączników, które działają na platformie Azure, jednak komunikować się z kontrolerów domeny, które są w środowisku lokalnym. 
+* **Kontrolery domeny**: Łączniki wykonać logowanie jednokrotne (SSO) przy użyciu ograniczonego delegowania protokołu Kerberos, mogą skontaktować się z kontrolerów domeny przed wysłaniem żądania do zaplecza. Łączniki mają pamięci podręcznej bilety protokołu Kerberos, ale w środowisku zajęty szybkość reakcji kontrolerów domeny może wpłynąć na wydajność. Ten problem jest częściej łączników, które działają na platformie Azure, jednak komunikować się z kontrolerów domeny, które są w środowisku lokalnym. 
 
 Aby uzyskać więcej informacji o optymalizacji sieci, zobacz [zagadnienia dotyczące topologii sieci, korzystając z serwera Proxy usługi Azure Active Directory Application](application-proxy-network-topology.md).
 

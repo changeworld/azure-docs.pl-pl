@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 50f6f114a4d90f48218f751e1649e8694e664491
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.date: 02/13/2019
+ms.openlocfilehash: 748a9f4d7c2ec47a2ed9470789a4443bffdc0eba
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295750"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301744"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Zarządzanie przeprowadzania uaktualnienia równoległych aplikacji w chmurze przy użyciu aktywnej replikacji geograficznej bazy danych SQL
 
@@ -47,7 +47,7 @@ Po wykonaniu kroków przygotowania, aplikacja jest gotowa do rzeczywistego uaktu
 
 1. Ustaw podstawowej bazy danych do trybu tylko do odczytu (3). W tym trybie gwarantuje, że miejscem produkcyjnym aplikacji sieci web (wersja 1) pozostanie tylko do odczytu podczas uaktualniania, aby zapobiec wystąpieniu rozbieżności danych między wystąpieniami bazy danych w wersji 1 i 2.  
 2. Odłącz pomocniczej bazy danych przy użyciu trybu planowane zakończenie (4). Zostanie utworzony w pełni zsynchronizowane kopię niezależnie od podstawowej bazy danych. Ta baza danych zostanie uaktualniony.
-3. Włącz podstawowej bazy danych w trybie odczytu i zapisu, a następnie uruchom skrypt uaktualnienia (5).
+3. Włącz pomocniczej bazy danych w trybie odczytu i zapisu, a następnie uruchom skrypt uaktualnienia (5).
 
 ![Konfiguracja replikacji geograficznej bazy danych SQL. Odzyskiwanie po awarii w chmurze.](media/sql-database-manage-application-rolling-upgrade/option1-2.png)
 

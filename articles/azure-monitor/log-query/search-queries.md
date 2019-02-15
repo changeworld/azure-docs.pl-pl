@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: cda66b91a0e829ec3bc84a82c190b9d856827ad3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2df4cf994e118fef9048504daf40fabc1625c375
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004455"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267687"
 ---
 # <a name="search-queries-in-azure-monitor-logs"></a>Zapytania wyszukiwania w dziennikach w usłudze Azure Monitor
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz więcej samouczków w [lokacji języka zapytań Eksploratora danych](/azure/kusto/query/).
+- Zobacz więcej samouczków w [lokacji język zapytania Kusto](/azure/kusto/query/).

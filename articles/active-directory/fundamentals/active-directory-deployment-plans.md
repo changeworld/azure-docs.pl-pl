@@ -12,12 +12,12 @@ ms.date: 02/08/2019
 ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2ec578fcc51519cb6794ea87f8e4236d6b1d96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ca8d75b4a8c0e7586b25cbfd53cd9eaa134d0ad3
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198086"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299585"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Plany wdrażania usługi Azure Active Directory
 Szukasz kompleksowych wskazówek dotyczących wdrażania niektórych funkcji usługi Azure Active Directory (Azure AD)? W następujących planach wdrażania przedstawiono wartość biznesową, zagadnienia dotyczące planowania, projektowanie i procedury operacyjne potrzebne do pomyślnego wdrożenia niektórych z najpopularniejszych funkcji usługi Azure AD. 
@@ -29,7 +29,7 @@ Chętnie poznamy Twoją opinię o tych dokumentach. Weź udział w tej krótkiej
 |Scenariusz |Opis |
 |-|-|
 |[Multi-Factor Authentication](https://aka.ms/MFADPDownload)|Azure Multi-Factor Authentication (MFA) to rozwiązanie firmy Microsoft służące do przeprowadzania weryfikacji dwuetapowej. Przy użyciu zatwierdzonych przez administratora metod uwierzytelniania usługa Azure MFA pomaga w zabezpieczaniu dostępu do danych i aplikacji, jednocześnie spełniając wymagania dotyczące prostoty procesu logowania.|
-|[Dostęp warunkowy](https://aka.ms/CADPDownload)|W ramach dostępu warunkowego można implementować automatyczne decyzje kontroli dostępu, które określają na podstawie warunków, kto ma dostęp do aplikacji w chmurze.|
+|Dostęp warunkowy [plan do pobrania](https://aka.ms/CADPDownload) lub [online — plan](https://aka.ms/caonlineplan)|W ramach dostępu warunkowego można implementować automatyczne decyzje kontroli dostępu, które określają na podstawie warunków, kto ma dostęp do aplikacji w chmurze.|
 |[Samoobsługowe resetowanie haseł](https://aka.ms/SSPRDPDownload)|Samoobsługowe resetowanie haseł ułatwia użytkownikom resetowanie ich haseł bez udziału administratora w dowolnym miejscu i czasie.|
 |[Privileged Identity Management](../privileged-identity-management/pim-deployment-plan.md)|Usługa Azure AD Privileged Identity Management (PIM) pomaga w zarządzaniu uprzywilejowanych ról administracyjnych w usłudze Azure AD i innych Microsoft Online Services zasobów platformy Azure. PIM udostępnia rozwiązań, takich jak dostęp just in time, przepływy pracy zatwierdzania żądania i w pełni zintegrowane dostępu, przeglądy, dzięki czemu można zidentyfikować odkryć i zapobiec złośliwej aktywności ról uprzywilejowanych w czasie rzeczywistym.|
 |[Logowanie jednokrotne](https://aka.ms/SSODPDownload)|Logowanie jednokrotne ułatwia dostęp do wszystkich aplikacji i zasobów potrzebnych do prowadzenia działalności, przy czym można logować się tylko raz, za pomocą jednego konta użytkownika. Po zalogowaniu się można przechodzić z pakietu Microsoft Office do usługi SalesForce lub Box bez konieczności ponownego uwierzytelniania się (na przykład przez wpisanie hasła).|

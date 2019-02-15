@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: b31bdacbaf1ab81223d2a99472233cd5024edced
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c52a10aa806962ee54fe6058f236ea9bd86414b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300735"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268349"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -31,7 +31,7 @@ Można zarejestrować maksymalnie 1000 maszyn wirtualnych platformy Azure na mag
 Dane serwera, który chcesz odzyskać razem należy używać tego samego hasła podczas konfigurowania kopii zapasowej. Jeśli chcesz izolować odzyskiwania do określonego serwera lub serwerów, należy użyć hasła dla tego serwera lub tylko serwery. Na przykład serwery zarządzania zasobami ludzkimi mogą korzystać z jednego hasła szyfrowania, serwery księgowości z drugiego, a serwery pamięci masowej z trzeciego.
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Czy mogę przenieść mój magazynu między subskrypcjami?
-Nie. Magazyn jest tworzone na poziomie subskrypcji i nie może zostać przypisany do innej subskrypcji.
+Tak. Aby przenieść magazyn usługi Recovery Services można znaleźć to [artykułu](backup-azure-move-recovery-services-vault.md)
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Czy można przenieść dane kopii zapasowej w innym magazynie?
 Nie. Nie można przenieść dane kopii zapasowej, przechowywane w magazynie w innym magazynie.
@@ -148,7 +148,6 @@ Nie. Wszystkie dane przesłane do magazynu przed momentem anulowania zadania utw
 Jeśli anulujesz zadanie kopii zapasowej dla maszyny wirtualnej platformy Azure, wszelkie przesłane dane zostaną zignorowane. Następne zadanie kopii zapasowej przesyła przyrostowe dane z ostatniego wykonanego zadania kopii zapasowej.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Dlaczego rozmiar danych przesyłanych do magazynu usługi Recovery Services mniejszy niż wybranych do utworzenia kopii zapasowej danych?
-
  Dane kopii zapasowej z agenta usługi Azure Backup, program DPM, a serwer usługi Azure Backup jest kompresowane i szyfrowane przed przesłaniem. Dzięki kompresji i szyfrowania jest stosowany, dane w magazynie jest 30 – 40% mniejsze.
 
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>Czy mogę usunąć pojedyncze pliki z punktu odzyskiwania w magazynie
@@ -156,8 +155,8 @@ Nie, usługa Azure Backup nie obsługuje usuwania lub czyszczenia poszczególne 
 
 
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Czy w przypadku anulowania zadania tworzenia kopii zapasowej po jego uruchomieniu, zostanie usunięty przeniesione dane kopii zapasowej?
-
 Nie. Wszystkie dane, które zostało przesłane do magazynu, zanim zadanie tworzenia kopii zapasowej zostało anulowane pozostaje w magazynie.
+
 - Usługa Azure Backup używa mechanizmu, który podczas tworzenia kopii zapasowej co pewien czas dodaje punkty kontrolne do danych kopii zapasowej.
 - Ponieważ w danych kopii zapasowej umieszczone są punkty kontrolne, następny proces kopii zapasowej może sprawdzić integralność plików.
 - Następnym zadaniem kopii zapasowej będzie przyrostowa kopia zapasowa tworzona w oparciu o wcześniej utworzoną kopię zapasową danych. Przyrostowe kopie zapasowe przesyłają tylko nowe lub zmienione dane, dzięki czemu zapewnia się lepsze wykorzystanie przepustowości.
@@ -177,7 +176,7 @@ Nie. Zasady przechowywania mogą być stosowane wyłącznie w punktach kopii zap
 
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point-br"></a>Jeśli kopia zapasowa jest przechowywana przez długi czas, zajmuje więcej czasu na odzyskiwanie z wcześniejszego punktu danych? <br/>
-Nie — czas odzyskania najstarszego i najnowszego punktu jest taki sam. Każdy punkt odzyskiwania zachowuje się jak pełny punkt.
+Nie. Czas odzyskania najstarszego i najnowszego punktu jest taki sam. Każdy punkt odzyskiwania zachowuje się jak pełny punkt.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Skoro każdy punkt odzyskiwania jest traktowany jak pełny punkt, czy ma to wpływ na całkowitą fakturowaną przestrzeń dyskową dla kopii zapasowych?
 Typowe produkty punktów długoterminowego przechowywania przechowują dane kopii zapasowych jako pełne punkty.
@@ -203,7 +202,7 @@ Nie. Odzyskiwanie jest dostępny bezpłatnie i nie są pobierane za ruch wychodz
 Po zastosowaniu nowych zasad, harmonogram i okres przechowywania nowych zasad jest zakończony.
 
 - Jeśli okres przechowywania zostanie przedłużony, istniejące punkty odzyskiwania zostaną oznaczone, aby przechowywać je zgodnie z nowymi zasadami.
-- - W przypadku skrócenia okresu przechowywania zostaną one oznaczone do oczyszczenia w ramach następnego zadania oczyszczania, a następnie usunięte.
+- W przypadku skrócenia okresu przechowywania zostaną one oznaczone do oczyszczenia w ramach następnego zadania oczyszczania, a następnie usunięte.
 
 ## <a name="encryption"></a>Szyfrowanie
 

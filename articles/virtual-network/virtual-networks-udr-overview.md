@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: f5c8880535d5b4b89ec3f13caa20051ae1709925
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 86e4720f001f05534bc9af703f0f98d7ca5d95e4
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812790"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268842"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing ruchu w sieci wirtualnej
 
@@ -121,7 +121,7 @@ Brama sieci lokalnej może wymieniać trasy z bramą sieci wirtualnej platformy 
 
 W przypadku, gdy wymieniasz trasy z platformą Azure przy użyciu protokołu BGP, oddzielna trasa jest dodawana do tabeli tras wszystkich podsieci w sieci wirtualnej dla każdego anonsowanego prefiksu. Trasa jest dodawana z *bramą sieci wirtualnej* wymienioną jako element źródłowy i typ następnego przeskoku. 
 
-Propagację trasy protokołu BGP można wyłączyć w podsieci za pomocą właściwości w tabeli tras. W przypadku wymiany tras z platformą Azure przy użyciu protokołu BGP trasy są dodawane do tabeli tras wszystkich podsieci z włączoną propagacją protokołu BGP. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes), których typ następnego przeskoku to *brama sieci wirtualnej*. Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację tras protokołu BGP](manage-route-table.md#create-a-route-table).
+ER i propagację trasy bramy sieci VPN można wyłączyć w podsieci za pomocą właściwości w tabeli tras. W przypadku wymiany tras z platformą Azure przy użyciu protokołu BGP trasy są dodawane do tabeli tras wszystkich podsieci z włączoną propagacją protokołu BGP. Łączność z połączeniami sieci VPN jest uzyskiwana przy użyciu [tras niestandardowych](#custom-routes), których typ następnego przeskoku to *brama sieci wirtualnej*. Aby uzyskać szczegółowe informacje, zobacz [Jak wyłączyć propagację tras protokołu BGP](manage-route-table.md#create-a-route-table).
 
 ## <a name="how-azure-selects-a-route"></a>Jak platforma Azure wybiera trasę
 

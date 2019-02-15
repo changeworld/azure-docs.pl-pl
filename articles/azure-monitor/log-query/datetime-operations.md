@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 2465fdcc3bf7128d4813fa5f682ffda8f504f2b6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8350524e51d8ced45586d085fe1b49274aa6db9d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999253"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269982"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Praca z wartości daty / godziny w zapytaniach dzienników usługi Azure Monitor
 
@@ -31,7 +31,7 @@ W tym artykule opisano sposób pracy z danych daty i godziny w zapytaniach dzien
 
 
 ## <a name="date-time-basics"></a>Podstawowe informacje dotyczące daty czasu
-Język zapytań Eksploratora danych zawiera dwie główne skojarzone z datami i godzinami: datetime i timespan. Wszystkie daty są wyrażone w formacie UTC. Chociaż wiele formatów daty/godziny są obsługiwane, w formacie ISO8601 jest preferowana. 
+Język zapytania Kusto zawiera dwie główne skojarzone z datami i godzinami: datetime i timespan. Wszystkie daty są wyrażone w formacie UTC. Chociaż wiele formatów daty/godziny są obsługiwane, w formacie ISO8601 jest preferowana. 
 
 Timespans są wyrażane jako ułamek dziesiętny jednostkę czasu:
 
@@ -45,7 +45,7 @@ Timespans są wyrażane jako ułamek dziesiętny jednostkę czasu:
 |mikrosekund | mikrosekund  |
 |znaczników        | nanosekundowych   |
 
-Data/Godzina mogą być tworzone przez rzutowanie na ciąg za pośrednictwem `todatetime` operatora. Na przykład, aby przejrzeć pulsów maszynie Wirtualnej wysyłane w określonym przedziale czasu, aby włączyć korzystanie z [między operator](/azure/kusto/query/betweenoperator) co jest wygodne określić zakres czasu...
+Data/Godzina mogą być tworzone przez rzutowanie na ciąg za pośrednictwem `todatetime` operatora. Na przykład, aby przejrzeć pulsów maszynie Wirtualnej wysyłane w określonym przedziale czasu, należy użyć `between` operatora, aby określić zakres czasu.
 
 ```Kusto
 Heartbeat
@@ -82,7 +82,7 @@ Heartbeat
 ```
 
 ## <a name="converting-time-units"></a>Konwertowanie jednostek czasu
-Może być przydatne do express daty/godziny i przedział czasu w jednostka czasu innej niż domyślna. Na przykład załóżmy, że przeglądasz zdarzeń błędów z ostatnich 30 minut, a następnie muszą kolumnę obliczeniową, która pokazuje, jak dawno temu wystąpiło zdarzenie:
+Możesz chcieć express datetime i timespan w jednostkach czasu, inną niż domyślna. Na przykład jeśli recenzowania zdarzeń błędów z ostatnich 30 minut i potrzebujesz kolumny obliczeniowej pokazujący czas przed jakim wystąpiło zdarzenie:
 
 ```Kusto
 Event
@@ -91,7 +91,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-Możesz zobaczyć _timeAgo_ kolumna zawiera wartości takie jak: "00:09:31.5118992", co oznacza, że są one formatowane jako hh:mm:ss.fffffff. Jeśli chcesz sformatować tych wartości, aby _numver_ minut od czasu rozpoczęcia, po prostu dzielnikiem tę wartość "1 minuta":
+`timeAgo` Kolumna zawiera wartości takie jak: "00:09:31.5118992", co oznacza, że są one formatowane jako hh:mm:ss.fffffff. Jeśli chcesz sformatować tych wartości, aby `numver` minut od czasu rozpoczęcia dzielnikiem tę wartość "1 minuta":
 
 ```Kusto
 Event
@@ -103,7 +103,7 @@ Event
 
 
 ## <a name="aggregations-and-bucketing-by-time-intervals"></a>Agregacje i obsługą zasobników przez przedziały czasu
-Inny scenariusz bardzo często jest konieczne uzyskanie statystyk w danym okresie czasu w ziarno czasu określonego. W tym celu `bin` operator może służyć jako część klauzuli summarize.
+Innym typowym scenariuszem jest konieczne uzyskanie statystyk w danym okresie czasu w ziarno czasu określonego. W tym scenariuszu `bin` operator może służyć jako część klauzuli summarize.
 
 Użyj następującego zapytania, aby uzyskać numer zdarzenia, które wystąpiły co 5 minut, podczas ostatniej pół godziny:
 
@@ -113,7 +113,7 @@ Event
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
 ```
 
-To daje poniższej tabeli:  
+To zapytanie tworzy poniższej tabeli:  
 |TimeGenerated(UTC)|events_count|
 |--|--|
 |2018-08-01T09:30:00.000|54|
@@ -131,7 +131,7 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-To daje następujące wyniki:
+To zapytanie tworzy następujące wyniki:
 
 |sygnatura czasowa|count_|
 |--|--|
@@ -139,11 +139,11 @@ To daje następujące wyniki:
 |2018-07-29T00:00:00.000|12,315|
 |2018-07-30T00:00:00.000|16,847|
 |2018-07-31T00:00:00.000|12,616|
-|2018-08-01T00:00:00.000|5,416  |
+|2018-08-01T00:00:00.000|5,416|
 
 
 ## <a name="time-zones"></a>Strefy czasowe
-Ponieważ wszystkie wartości daty/godziny są wyrażone w formacie UTC, często jest przydatne przekonwertować je na lokalną strefę czasową. Na przykład można użyć tych obliczeń do konwersji czasu UTC na czas PST:
+Ponieważ wszystkie wartości daty/godziny są wyrażone w formacie UTC, często jest przydatne przekonwertować te wartości do lokalnej strefy czasowej. Na przykład można użyć tych obliczeń do konwersji czasu UTC na czas PST:
 
 ```Kusto
 Event
@@ -158,10 +158,10 @@ Event
 | Zaokrągla wartość rozmiar pojemnika | [pojemnika](/azure/kusto/query/binfunction) |
 | Pobieranie określonej daty lub godziny | [temu](/azure/kusto/query/agofunction) [teraz](/azure/kusto/query/nowfunction)   |
 | Pobierz część wartości | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| Pobierz wartość typu date względem wartości  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
+| Pobieranie wartości dat względnych  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Zobacz inne lekcje dotyczące korzystania z [język zapytań w Eksploratorze danych](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
+Zobacz inne lekcje dotyczące korzystania z [język zapytania Kusto](/azure/kusto/query/) z usługą Azure Monitor możesz rejestrować dane:
 
 - [Operacje na ciągach](string-operations.md)
 - [Funkcje agregacji](aggregations.md)

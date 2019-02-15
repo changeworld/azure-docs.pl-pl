@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 565e33748d3a39c61c75313188980c51d5bea5b9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6c4a7239110e0d3e712c97007ecc858f104811cc
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203900"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301693"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalowanie agenta programu Azure AD Connect Health
 W tym dokumencie opisano instalowanie i konfigurowanie agentów programu Azure AD Connect Health. Agentów możesz pobrać [tutaj](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
@@ -36,7 +36,7 @@ Poniższa tabela zawiera listę wymagań dotyczących używania programu Azure A
 | Łączność wychodząca z punktami końcowymi usług Azure | Podczas instalowania i w czasie pracy agent wymaga łączności z punktami końcowymi usługi Azure AD Connect Health. Jeśli łączność wychodząca jest blokowana przy użyciu zapór, nie zapomnij dodać następujących punktów końcowych do listy lokalizacji dozwolonych. Zobacz sekcję dotyczącą [punktów końcowych łączności wychodzącej](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) |
 |Łączność wychodząca na podstawie adresów IP | W przypadku filtrowania zapory opartego na adresach IP zapoznaj się z [zakresem adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).|
 | Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona | Rejestracja agenta lub operacje przekazywania danych mogą zakończyć się niepowodzeniem, jeśli w warstwie sieciowej jest aktywny proces zakończenia lub inspekcji połączenia SSL dla ruchu wychodzącego. Dowiedz się więcej na temat [sposobu konfigurowania inspekcji połączenia SSL](https://technet.microsoft.com/library/ee796230.aspx) |
-| Porty zapory na serwerze, na którym jest uruchomiony agent |Agent wymaga, aby poniższe porty zapory były otwarte w celu komunikacji z punktami końcowymi usług programu Azure AD Connect Health.<br /><br /><li>Port TCP 443</li><li>Port TCP 5671</li> <br />Dowiedz się więcej na temat [włączania portów zapory](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
+| Porty zapory na serwerze, na którym jest uruchomiony agent |Agent wymaga, aby poniższe porty zapory były otwarte w celu komunikacji z punktami końcowymi usług programu Azure AD Connect Health.<br /><br /><li>Port TCP 443</li><li>Port TCP 5671</li> <br />Należy zauważyć, że port 5671 nie jest już wymagane, aby uzyskać najnowszą wersję agenta. Uaktualnij do najnowszej wersji, więc tylko port 443 jest wymagany. Dowiedz się więcej na temat [włączania portów zapory](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 | Zezwalaj na następujące witryny sieci web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer |Jeśli zwiększone zabezpieczenia programu Internet Explorer są włączone na serwerze, na którym ma zostać zainstalowany agent, musisz zezwolić na otwieranie poniższych witryn sieci Web.<br /><br /><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com</li><li>https:\//login.windows.net</li><li>Serwer federacyjny Twojej organizacji zaufany przez usługę Azure Active Directory. Na przykład: https:\//sts.contoso.com</li> Dowiedz się więcej na temat [sposobu konfigurowania programu Internet Explorer](https://support.microsoft.com/help/815141/internet-explorer-enhanced-security-configuration-changes-the-browsing) |
 | Upewnij się, że zainstalowano program PowerShell w wersji 4.0 lub nowszej | <li>System Windows Server 2008 R2 jest dostarczany z programem PowerShell w wersji 2.0, która jest niewystarczająca dla agenta. Zaktualizuj program PowerShell zgodnie z opisem w poniższej sekcji dotyczącej [instalacji agenta na serwerach z systemem Windows Server 2008 R2](#agent-installation-on-windows-server-2008-r2-servers).</li><li>System Windows Server 2012 jest dostarczany z programem PowerShell w wersji 3.0, która jest niewystarczająca dla agenta.  [Zaktualizuj](https://www.microsoft.com/download/details.aspx?id=40855) platformę Windows Management Framework.</li><li>System Windows Server 2012 R2 i jego nowsze wersje są dostarczane z wystarczająco nową wersją programu PowerShell.</li>|
 |Wyłącz standard FIPS|Standard FIPS nie jest obsługiwany przez agentów programu Azure AD Connect Health.|

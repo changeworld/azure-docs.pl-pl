@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005050"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300879"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Jak tworzyć zapytania w usłudze Azure Search
 
@@ -22,14 +22,14 @@ W usłudze Azure Search zapytania jest pełną specyfikację obustronne operacji
 
 Żądanie zapytania jest zaawansowanych konstrukcji, określając pola, które są w zakresie, jak wyszukiwać, które pola, aby powrócić do sortowania lub filtrowania i tak dalej. Nie określono tego parametru, uruchomieniu zapytania względem wszystkie pola z możliwością wyszukiwania jako operacji wyszukiwania pełnotekstowego, zwracając wynik nie została ona oceniona zestawu w dowolnej kolejności.
 
-### <a name="apis-and-tools-for-testing"></a>Interfejsy API i narzędzia do testowania
+## <a name="apis-and-tools-for-testing"></a>Interfejsy API i narzędzia do testowania
 
 W poniższej tabeli wymieniono interfejsów API i oparte na narzędziu podejścia do przesyłania kwerend.
 
 | Metodologia | Opis |
 |-------------|-------------|
 | [Eksplorator wyszukiwania (portal)](search-explorer.md) | Zawiera pasek wyszukiwania i opcje dla opcji indeksu i interfejsu api-version. Wyniki są zwracane jako dokumenty JSON. <br/>[Dowiedz się więcej.](search-get-started-portal.md#query-index) | 
-| [Postman lub innego narzędzia do testowania HTTP](search-fiddler.md) | Wyjaśnia, jak skonfigurować nagłówek żądania HTTP i treści do wysyłania zapytań do usługi Azure Search.  |
+| [Postman lub Fiddler](search-fiddler.md) | Narzędzia do testowania sieci Web są doskonałym wyborem dla opracowywania wywołania REST. Interfejs API REST obsługuje każda operacja możliwe w usłudze Azure Search. W tym artykule Dowiedz się, jak skonfigurować nagłówek żądania HTTP i treści wysyłania żądań do usługi Azure Search.  |
 | [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Klient, który może służyć do tworzenie zapytań względem indeksu usługi Azure Search.  <br/>[Dowiedz się więcej.](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Wyszukiwanie dokumentów (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) | GET lub POST metod w indeksie, za pomocą parametrów zapytania, aby uzyskać dodatkowe dane wejściowe.  |
 
@@ -76,7 +76,7 @@ Atrybuty indeksu w polu Określ dozwolone operacje —, czy pole jest *wyszukiwa
 Powyższym zrzucie ekranu jest częściowa lista atrybuty indeksu dla przykładu nieruchomości. Schemat indeksu całego można wyświetlić w portalu. Aby uzyskać więcej informacji na temat atrybutów indeksu zobacz [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index).
 
 > [!Note]
-> Niektóre funkcje zapytania włączono całego indeksu, a nie na poszczególnych pól. Te funkcje obejmują: [mapy synonimów](https://docs.microsoft.com/rest/api/searchservice/synonym-map-operations), [niestandardowe analizatory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), [konstrukcji sugestora (dla automatycznego uzupełniania i automatycznego sugerowania)](https://docs.microsoft.com/rest/api/searchservice/suggesters), [oceniania logikę Klasyfikacja wyników](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index).
+> Niektóre funkcje zapytania włączono całego indeksu, a nie na poszczególnych pól. Te funkcje obejmują: [mapy synonimów](search-synonyms.md), [niestandardowe analizatory](index-add-custom-analyzers.md), [konstrukcji sugestora (dla automatycznego uzupełniania i automatycznego sugerowania)](index-add-suggesters.md), [oceniania logikę Klasyfikacja wyników](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>Elementy żądania zapytania
 
@@ -94,9 +94,9 @@ Wszystkie inne parametry wyszukiwania są opcjonalne. Aby uzyskać pełną list�
 
 ## <a name="choose-a-parser-simple--full"></a>Wybierz analizator: prosty | Pełna
 
-Usługa Azure Search znajduje się na górze Apache Lucene i zapewnia wybór między dwa parsery zapytania dotyczące obsługi typowych, wyspecjalizowana zapytania. Żądania przy użyciu prostego analizatora są formułować za pomocą [prosta składnia zapytań](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search), wybrane jako domyślne dla szybkości i skuteczności w dowolnej postaci tekstu zapytania. Ta składnia obsługuje szereg typowych operatorów wyszukiwania, na przykład AND, OR, NOT, frazy, sufiks i pierwszeństwo operatorów.
+Usługa Azure Search znajduje się na górze Apache Lucene i zapewnia wybór między dwa parsery zapytania dotyczące obsługi typowych, wyspecjalizowana zapytania. Żądania przy użyciu prostego analizatora są formułować za pomocą [prosta składnia zapytań](query-simple-syntax.md), wybrane jako domyślne dla szybkości i skuteczności w dowolnej postaci tekstu zapytania. Ta składnia obsługuje szereg typowych operatorów wyszukiwania, na przykład AND, OR, NOT, frazy, sufiks i pierwszeństwo operatorów.
 
-[Pełnej składni zapytań Lucene](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_syntax), włączone po dodaniu `queryType=full` na żądanie udostępnia powszechnie przyjętym i ekspresyjny język zapytań opracowany jako część [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Pełna składnia rozszerza prostą składnię. Każde zapytanie, które piszesz prostą składnię działa pełna analizator Lucene. 
+[Pełnej składni zapytań Lucene](query-Lucene-syntax.md#bkmk_syntax), włączone po dodaniu `queryType=full` na żądanie udostępnia powszechnie przyjętym i ekspresyjny język zapytań opracowany jako część [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html). Pełna składnia rozszerza prostą składnię. Każde zapytanie, które piszesz prostą składnię działa pełna analizator Lucene. 
 
 Poniższe przykłady ilustrują punkt: sam zapytania, ale przy użyciu ustawień inny znak uzyskanie różne wyniki. W pierwszym zapytaniu `^3` jest traktowany jako część termin wyszukiwania.
 
@@ -118,16 +118,16 @@ Usługa Azure Search obsługuje szeroką gamę typów zapytań.
 
 | Typ zapytania | Sposób użycia | Więcej informacji i przykłady |
 |------------|--------|-------------------------------|
-| Wyszukiwanie tekstowe w dowolnej postaci | Parametr wyszukiwania i albo analizatora| Wyszukiwanie pełnotekstowe skanowania pod kątem jednego lub większej liczby terminów, we wszystkich *wyszukiwanie* pola w indeksie i działa w sposób, jakiego oczekuje się aparat wyszukiwania, takich jak Google czy Bing. Przykładu we wprowadzeniu jest wyszukiwanie pełnotekstowe.<br/><br/>Wyszukiwanie pełnotekstowe ulega Analiza tekstu przy użyciu standardowy analizator Lucene (domyślnie) na małe, wszystkie warunki, Usuń słowa ignorowane, takich jak "". Można zastąpić domyślną z [analizatory innej niż angielska](https://docs.microsoft.com/rest/api/searchservice/language-support#analyzer-list) lub [wyspecjalizowane analizatory](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) , które modyfikują Analiza tekstu. Na przykład [— słowo kluczowe](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) całą zawartość pola, które traktuje jako pojedynczy token. Jest to przydatne w przypadku danych, takich jak kodów pocztowych, identyfikatory i nazwy niektórych produktów. | 
-| Wyszukiwanie filtrowane | [Wyrażenie filtru OData](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) i albo analizatora | Zapytania filtru oceny wyrażenia logicznego wszystkich *filtrowanie* pól w indeksie. W przeciwieństwie do wyszukiwania zapytanie filtru dopasowuje dokładnie zawartość pola, w tym uwzględnianie wielkości liter w polach ciągu. Inna różnica polega na tym, że filtr zapytania są wyrażone w składnia OData. <br/>[Przykładowe wyrażenie filtru](search-query-simple-examples.md#example-3-filter-queries) |
+| Wyszukiwanie tekstowe w dowolnej postaci | Parametr wyszukiwania i albo analizatora| Wyszukiwanie pełnotekstowe skanowania pod kątem jednego lub większej liczby terminów, we wszystkich *wyszukiwanie* pola w indeksie i działa w sposób, jakiego oczekuje się aparat wyszukiwania, takich jak Google czy Bing. Przykładu we wprowadzeniu jest wyszukiwanie pełnotekstowe.<br/><br/>Wyszukiwanie pełnotekstowe ulega Analiza tekstu przy użyciu standardowy analizator Lucene (domyślnie) na małe, wszystkie warunki, Usuń słowa ignorowane, takich jak "". Można zastąpić domyślną z [analizatory innej niż angielska](index-add-language-analyzers.md#language-analyzer-list) lub [wyspecjalizowane analizatory niezależny od języka](index-add-custom-analyzers.md#AnalyzerTable) , które modyfikują Analiza tekstu. Na przykład [— słowo kluczowe](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html) całą zawartość pola, które traktuje jako pojedynczy token. Jest to przydatne w przypadku danych, takich jak kodów pocztowych, identyfikatory i nazwy niektórych produktów. | 
+| Wyszukiwanie filtrowane | [Wyrażenie filtru OData](query-odata-filter-orderby-syntax.md) i albo analizatora | Zapytania filtru oceny wyrażenia logicznego wszystkich *filtrowanie* pól w indeksie. W przeciwieństwie do wyszukiwania zapytanie filtru dopasowuje dokładnie zawartość pola, w tym uwzględnianie wielkości liter w polach ciągu. Inna różnica polega na tym, że filtr zapytania są wyrażone w składnia OData. <br/>[Przykładowe wyrażenie filtru](search-query-simple-examples.md#example-3-filter-queries) |
 | Wyszukiwanie geograficzne | [Typ Edm.GeographyPoint](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) na pole, wyrażenie filtru i albo analizatora | Współrzędne przechowywane w polu o Edm.GeographyPoint są używane do "Znajdź w pobliżu" lub opartą na mapie Wyszukaj kontrolki. <br/>[Wyszukiwanie geograficzne przykład](search-query-simple-examples.md#example-5-geo-search)|
 | Zakres wyszukiwania | Wyrażenie filtru i prosty analizator składni | W usłudze Azure Search zapytania są tworzone za pomocą parametru filtru. <br/>[Przykład filtru zakresu](search-query-simple-examples.md#example-4-range-filters) | 
-| [Filtrowanie w obrębie pola](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fields) | Parametr wyszukiwania i pełnego analizatora | Zbuduj wyrażenie złożonego zapytania, przeznaczone dla jednego pola. <br/>[Wewnątrz pola filtrowanie przykład](search-query-lucene-examples.md#example-2-intra-field-filtering) |
-| [Wyszukiwanie rozmyte](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fuzzy) | Parametr wyszukiwania i pełnego analizatora | Dopasowań na warunkach o podobnych konstrukcja lub pisowni. <br/>[Przykład wyszukiwania rozmytego](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [Wyszukiwanie w sąsiedztwie](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_proximity) | Parametr wyszukiwania i pełnego analizatora | Warunki znajduje znajdujące się blisko siebie nawzajem w dokumencie. <br/>[Przykładowe wyszukiwanie w sąsiedztwie](search-query-lucene-examples.md#example-4-proximity-search) |
-| [promowanie](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_termboost) | Parametr wyszukiwania i pełnego analizatora | Szereguje wyższe dokumentu, jeśli zawiera on wzmocnione termin względem innych użytkowników, które nie. <br/>[Przykład zwiększenie termin](search-query-lucene-examples.md#example-5-term-boosting) |
-| [wyszukiwanie wyrażenia regularnego](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_regex) | Parametr wyszukiwania i pełnego analizatora | Dopasowania na podstawie zawartości wyrażenia regularnego. <br/>[Przykładowe wyrażenie regularne](search-query-lucene-examples.md#example-6-regex) |
-|  [symbol wieloznaczny; Prefiks może też wyszukiwania](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_wildcard) | Parametr wyszukiwania i pełnego analizatora | Dopasowania na podstawie prefiksu i tyldy (`~`) lub pojedynczy znak (`?`). <br/>[Przykład wyszukiwania symboli wieloznacznych](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Filtrowanie w obrębie pola](query-lucene-syntax.md#bkmk_fields) | Parametr wyszukiwania i pełnego analizatora | Zbuduj wyrażenie złożonego zapytania, przeznaczone dla jednego pola. <br/>[Wewnątrz pola filtrowanie przykład](search-query-lucene-examples.md#example-2-intra-field-filtering) |
+| [Wyszukiwanie rozmyte](query-lucene-syntax.md#bkmk_fuzzy) | Parametr wyszukiwania i pełnego analizatora | Dopasowań na warunkach o podobnych konstrukcja lub pisowni. <br/>[Przykład wyszukiwania rozmytego](search-query-lucene-examples.md#example-3-fuzzy-search) |
+| [Wyszukiwanie w sąsiedztwie](query-lucene-syntax.md#bkmk_proximity) | Parametr wyszukiwania i pełnego analizatora | Warunki znajduje znajdujące się blisko siebie nawzajem w dokumencie. <br/>[Przykładowe wyszukiwanie w sąsiedztwie](search-query-lucene-examples.md#example-4-proximity-search) |
+| [promowanie](query-lucene-syntax.md#bkmk_termboost) | Parametr wyszukiwania i pełnego analizatora | Szereguje wyższe dokumentu, jeśli zawiera on wzmocnione termin względem innych użytkowników, które nie. <br/>[Przykład zwiększenie termin](search-query-lucene-examples.md#example-5-term-boosting) |
+| [wyszukiwanie wyrażenia regularnego](query-lucene-syntax.md#bkmk_regex) | Parametr wyszukiwania i pełnego analizatora | Dopasowania na podstawie zawartości wyrażenia regularnego. <br/>[Przykładowe wyrażenie regularne](search-query-lucene-examples.md#example-6-regex) |
+|  [symbol wieloznaczny; Prefiks może też wyszukiwania](query-lucene-syntax.md#bkmk_wildcard) | Parametr wyszukiwania i pełnego analizatora | Dopasowania na podstawie prefiksu i tyldy (`~`) lub pojedynczy znak (`?`). <br/>[Przykład wyszukiwania symboli wieloznacznych](search-query-lucene-examples.md#example-7-wildcard-search) |
 
 ## <a name="manage-search-results"></a>Zarządzanie wynikami wyszukiwania 
 
@@ -156,7 +156,7 @@ Więcej informacji o stronicowaniu wyników wyszukiwania można znaleźć w arty
 ### <a name="ordering-results"></a>Porządkowanie wyników
 Usługa Azure Search udostępnia możliwość przekazania wyników zapytania wyszukiwania uporządkowanych według wartości w określonym polu. Domyślnie usługa Azure Search porządkuje wyniki w oparciu o rangę wyniku wyszukiwania poszczególnych dokumentów, który jest określany na podstawie wagi [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
-Jeśli chcesz, aby usługa Azure Search zwracała wyniki uporządkowane według wartości innej niż wynik wyszukiwania, możesz użyć **`orderby`** parametru wyszukiwania. Można określić wartość **`orderby`** parametr dołączając nazwy pól i wywołania [  **`geo.distance()` funkcja** ](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) przypadku wartości geoprzestrzennych. Każde wyrażenie może następować `asc` do wskazania, że wyniki są żądane w kolejności rosnącej, a **`desc`** do wskazania, że wyniki są sortowane w kolejności malejącej. Domyślnie jest stosowana kolejność rosnąca.
+Jeśli chcesz, aby usługa Azure Search zwracała wyniki uporządkowane według wartości innej niż wynik wyszukiwania, możesz użyć **`orderby`** parametru wyszukiwania. Można określić wartość **`orderby`** parametr dołączając nazwy pól i wywołania [  **`geo.distance()` funkcja** ](query-odata-filter-orderby-syntax.md) przypadku wartości geoprzestrzennych. Każde wyrażenie może następować `asc` do wskazania, że wyniki są żądane w kolejności rosnącej, a **`desc`** do wskazania, że wyniki są sortowane w kolejności malejącej. Domyślnie jest stosowana kolejność rosnąca.
 
 
 ### <a name="hit-highlighting"></a>Wyróżnianie trafień

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/25/2016
 ms.author: glenga
-ms.openlocfilehash: 8d99a52b500377e02af339588fe7155e26cf588c
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: fd8fa690c508b8bf748490668c1e9aaa811ac247
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233393"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300283"
 ---
 # <a name="continuous-deployment-for-azure-functions"></a>Ciągłe wdrażanie dla usługi Azure Functions
 Usługa Azure Functions sprawia, że można łatwo wdrożyć aplikację funkcji przy użyciu ciągłej integracji usługi App Service. Functions można integrować z usług BitBucket, Dropbox, GitHub i DevOps platformy Azure. Dzięki temu przepływu pracy gdzie kod funkcji aktualizacje wprowadzone przy użyciu jednej z tych wdrażanie wyzwalaczy zintegrowanych usług na platformie Azure. Jeśli jesteś nowym użytkownikiem usługi Azure Functions, skorzystaj z [Azure Functions — omówienie](functions-overview.md).

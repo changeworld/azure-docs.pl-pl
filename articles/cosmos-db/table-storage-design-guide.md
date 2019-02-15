@@ -8,12 +8,12 @@ ms.date: 12/07/2018
 author: wmengmsft
 ms.author: wmeng
 ms.custom: seodec18
-ms.openlocfilehash: 433f99d72feb7dc697050049817478a8c8b679e6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6495a4e4da9330cba562c7fd6530369c09d180da
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820967"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302067"
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Przewodnik po projektowaniu tabel usługi Azure Storage: Projektowanie skalowalnych i wydajnych tabel
 
@@ -721,6 +721,9 @@ Podczas implementowania tego wzorca mogą być istotne następujące wzorce i ws
 
 ### <a name="log-tail-pattern"></a>Wzorzec ogona dziennika
 Pobieranie *n* ostatnio dodany do partycji przy użyciu jednostek **RowKey** wartość, która sortuje w odwrotnej daty i porządku czasowym.  
+
+> [!NOTE]
+> Wyniki zapytania, zwracana przez interfejs API tabeli platformy Azure w usłudze Azure DB Cosmso nie są sortowane według klucza partycji i klucza wiersza. W związku z tym ten wzorzec jest odpowiednia dla usługi Azure Table Storage, a nie usługi Azure Cosmos DB. Aby uzyskać szczegółową listę różnic między funkcjami, zobacz [różnice interfejsu API tabel w usłudze Azure Cosmos DB i Azure Table Storage](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior).
 
 #### <a name="context-and-problem"></a>Kontekst i problem
 Typowym wymogiem jest będzie można go pobrać ostatnio utworzone jednostki, na przykład dziesięć ostatnich wydatków oświadczenia złożone przez pracownika. Tabela zapytania pomocy technicznej **$top** operację, aby powrócić do pierwszego zapytania *n* jednostki z zestawu: istnieje żadna operacja równoważne zapytania do zwrócenia ostatnie n jednostki w zestawie.  

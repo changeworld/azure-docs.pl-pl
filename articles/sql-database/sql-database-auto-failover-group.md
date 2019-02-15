@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004251"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301931"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Używanie grup automatyczny tryb failover do włączenia przejrzyste i skoordynowany trybu failover wielu baz danych
 
@@ -60,14 +60,18 @@ Aby osiągnąć rzeczywistych ciągłości działania, dodawanie nadmiarowość 
 
   Serwer usługi SQL Database lub wystąpienia zarządzanego, który jest hostem pomocniczych baz danych w grupie trybu failover. Pomocniczy nie może należeć do tego samego regionu podstawowego.
 
-- **Dodawanie baz danych do grupy trybu failover na serwerze bazy danych SQL**
+- **Dodawanie pojedynczych baz danych do grupy trybu failover**
 
-  Można umieścić kilka pojedynczych baz danych lub bazy danych w puli elastycznej na tym samym serwerze bazy danych SQL w tej samej grupy trybu failover. Jeśli dodasz pojedynczej bazy danych do grupy trybu failover, automatycznie tworzy pomocniczą bazę danych przy użyciu tego samego rozmiaru edition i mocy obliczeniowej. Jeśli podstawowa baza danych znajduje się w puli elastycznej, pomocnicza jest automatycznie tworzony w elastycznej puli o takiej samej nazwie. Po dodaniu bazy danych, która ma już pomocniczej bazy danych serwera pomocniczego, że replikacja geograficzna jest dziedziczona przez grupę. Po dodaniu bazy danych, która ma już pomocniczej bazy danych na serwerze, który nie jest częścią grupy pracy awaryjnej, nowym serwerem pomocniczym jest tworzony w serwerze pomocniczym.
+  Można umieścić kilka pojedynczych baz danych na tym samym serwerze bazy danych SQL, w tej samej grupy trybu failover. Jeśli dodasz pojedynczej bazy danych do grupy trybu failover, automatycznie tworzy pomocniczą bazę danych przy użyciu tego samego rozmiaru edition i mocy obliczeniowej na serwerze pomocniczym.  Ten serwer jest określona, podczas tworzenia grupy trybu failover. Po dodaniu bazy danych, która ma już pomocniczej bazy danych serwera pomocniczego, ten link replikacji geograficznej jest dziedziczona przez grupę. Po dodaniu bazy danych, która ma już pomocniczej bazy danych na serwerze, który nie jest częścią grupy pracy awaryjnej, nowym serwerem pomocniczym jest tworzony w serwerze pomocniczym.
   
 > [!IMPORTANT]
   > W wystąpieniu zarządzanym replikacja wszystkich baz danych użytkownika. Nie można wybrać podzbiór baz danych użytkownika na potrzeby replikacji w grupie trybu failover.
 
-- **Odbiornik odczytu i zapisu grupy trybu failover**
+- **Dodawanie baz danych w elastycznej puli do grupy trybu failover**
+
+  W tej samej grupy trybu failover, można umieścić wszystkie lub niektóre bazy danych w puli elastycznej. Jeśli podstawowa baza danych znajduje się w puli elastycznej, pomocnicza jest automatycznie tworzony w elastycznej puli o takiej samej nazwie (Pula dodatkowej). Należy się upewnić, że serwer pomocniczy zawiera pula elastyczna o takiej samej nazwie dokładnie i wystarczającą ilość wolnego zdolność do obsługi dodatkowych baz danych, utworzonych przez grupę trybu failover. Po dodaniu bazy danych w puli, która ma już pomocniczej bazy danych w puli dodatkowej ten link replikacji geograficznej jest dziedziczona przez grupę. Po dodaniu bazy danych, która ma już pomocniczej bazy danych na serwerze, który nie jest częścią grupy pracy awaryjnej, nowym serwerem pomocniczym jest tworzony w dodatkowej puli.
+  
+  - **Odbiornik odczytu i zapisu grupy trybu failover**
 
   Rekord CNAME w systemie DNS sformułowany wskazujący na bieżący podstawowy adres URL. Umożliwia aplikacji SQL odczytu i zapisu przezroczyste ponownie nawiązać połączenie z podstawowej bazy danych podstawowego zmianie po włączeniu trybu failover.
 

@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/10/2018
-ms.openlocfilehash: 45eadf5e049d56c8f558596eb197eb010b1fbb14
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eff27e296800f78303d085f471e4fda188b487ce
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196998"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301863"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Instalacja ASDK zadania po konfiguracji
 
@@ -46,7 +46,18 @@ Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połącze
 
 - **Połączenie z Internetem** z komputera hosta ASDK. Uruchom poniższy skrypt programu PowerShell, aby zainstalować te moduły w rozwoju instalacji zestawu:
 
-  - Usługa Azure Stack 1811 lub nowszej:
+- Usługa Azure Stack 1901 lub nowszej:
+
+    ```PowerShell
+    # Install and import the API Version Profile required by Azure Stack into the current PowerShell session.
+    Install-Module AzureRM -RequiredVersion 2.4.0
+    Install-Module -Name AzureStack -RequiredVersion 1.7.0
+    ```
+
+    > [!Note]  
+    > Wersja modułu usługi Azure Stack 1.7.0 jest zmianą przerywającą. Migrowanie z usługi Azure Stack 1.6.0 można znaleźć w temacie [Przewodnik po migracji](https://aka.ms/azspshmigration170).
+
+  - Azure Stack 1811:
 
     ``` PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 
@@ -59,7 +70,7 @@ Najnowszy moduł Azure Stack PowerShell można zainstalować z lub bez połącze
     Install-Module -Name AzureStack -RequiredVersion 1.6.0
     ```
 
-  - Usługa Azure Stack 1808 lub nowszej:
+  - Usługa Azure Stack 1810 lub starszy:
 
     ``` PowerShell
     # Install the AzureRM.Bootstrapper module. Select Yes when prompted to install NuGet. 

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: 1874473b3ad091ce1da0a48367548cd4432737a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9918dd55181eb82257f23f8974159ed5e762fedd
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016498"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268098"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Przekształcanie danych przez uruchamianie skryptów U-SQL w usłudze Azure Data Lake Analytics 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-usql-activity.md)
 > * [Bieżąca wersja](transform-data-using-data-lake-analytics.md)
 
@@ -38,8 +38,8 @@ Poniższa tabela zawiera opisy ogólne właściwości używane w definicji JSON.
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
 | **type**                 | Właściwość type powinna być równa: **AzureDataLakeAnalytics**. | Yes                                      |
 | **accountName**          | Nazwa konta usługi Azure Data Lake Analytics.  | Yes                                      |
-| **dataLakeAnalyticsUri** | Usługa Azure Data Lake Analytics z identyfikatora URI.           | Nie                                       |
-| **Identyfikator subskrypcji**       | Identyfikator subskrypcji platformy Azure                    | Nie                                       |
+| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI.           | Nie                                       |
+| **subscriptionId**       | Identyfikator subskrypcji platformy Azure                    | Nie                                       |
 | **resourceGroupName**    | Nazwa grupy zasobów platformy Azure                | Nie                                       |
 
 ### <a name="service-principal-authentication"></a>Uwierzytelnianie jednostki usługi
@@ -129,9 +129,9 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | priority            | Określa, które spośród wszystkich, które są umieszczane w kolejce zadań, należy wybrać do uruchomienia jako pierwsza. Im mniejsza liczba, tym wyższy priorytet. | Nie       |
 | parameters          | Parametry do przekazania do skryptu U-SQL.    | Nie       |
 | runtimeVersion      | Wersja środowiska uruchomieniowego aparat języka U-SQL do użycia. | Nie       |
-| CompilationMode     | <p>Tryb kompilacji języka U-SQL. Musi być jedną z następujących wartości: **Semantyczne:** Wykonywać tylko semantycznego testy i wykonuje niezbędne testów, **pełna:** Wykonania pełnej kompilacji, w tym sprawdzanie składni, optymalizacja, generowanie kodu itp., **SingleBox:** Wykonywanie pełnej kompilacji, za pomocą ustawienia TargetType SingleBox. Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb optymalne kompilacji. | Nie |
+| compilationMode     | <p>Tryb kompilacji języka U-SQL. Musi być jedną z następujących wartości: **Semantyczne:** Wykonywać tylko semantycznego testy i wykonuje niezbędne testów, **pełna:** Wykonania pełnej kompilacji, w tym sprawdzanie składni, optymalizacja, generowanie kodu itp., **SingleBox:** Wykonywanie pełnej kompilacji, za pomocą ustawienia TargetType SingleBox. Jeśli nie określisz wartości dla tej właściwości, serwer określa tryb optymalne kompilacji. | Nie |
 
-Data Factory przesyła zobacz [definicji skryptu SearchLogProcessing.txt](#sample-u-sql-script) definicji skryptu. 
+Zobacz [SearchLogProcessing.txt](#sample-u-sql-script) definicji skryptu. 
 
 ## <a name="sample-u-sql-script"></a>Przykładowy skrypt U-SQL
 

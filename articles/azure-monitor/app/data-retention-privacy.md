@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/10/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 511937fde859f47af2b7bc273daaab88bb8809c3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 1de12f2dd2e31c3f5413424793f3bf78fdc8ff27
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55094533"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300265"
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Zbieranie, przechowywanie i magazynowanie danych w usłudze Application Insights
 
@@ -41,7 +41,7 @@ Usługa Application Insights są przechowywane i analizuje dane telemetryczne. A
 
 Może mieć danych wyeksportowanych z usługi Application Insights, na przykład do bazy danych lub do zewnętrznego narzędzia. Każde narzędzie zapewnia specjalny klucz, który można uzyskać z usługi. Mogą być odwoływane klucz, jeśli to konieczne. 
 
-Zestawy SDK usługi Application Insights są dostępne dla zakresu typów aplikacji: sieci web usług hostowanych w Twoich własnych serwerach J2EE i ASP.NET lub w środowisku Azure. sieci Web klientów — oznacza to, że kod uruchomiony na stronie sieci web; aplikacje komputerowe i usług. aplikacje urządzenia, takie jak Windows Phone, iOS i Android. Wszystkie one wysyłają dane telemetryczne do tej samej usługi.
+Zestawy SDK usługi Application Insights są dostępne dla zakresu typów aplikacji: sieci web usług hostowanych w Twoich własnych serwerach Java EE lub ASP.NET lub w środowisku Azure. sieci Web klientów — oznacza to, że kod uruchomiony na stronie sieci web; aplikacje komputerowe i usług. aplikacje urządzenia, takie jak Windows Phone, iOS i Android. Wszystkie one wysyłają dane telemetryczne do tej samej usługi.
 
 ## <a name="what-data-does-it-collect"></a>Jakie dane są jej zbierane?
 ### <a name="how-is-the-data-is-collected"></a>Jak to dane są zbierane?
@@ -51,7 +51,7 @@ Istnieją trzy źródła danych:
   
   * Każdy zestaw SDK zawiera szereg [modułów](../../azure-monitor/app/configuration-with-applicationinsights-config.md), które używają różnych technik zbierać różne rodzaje danych telemetrycznych.
   * Po zainstalowaniu zestawu SDK w rozwoju, można użyć jej interfejsu API do wysyłania własnej telemetrii, oprócz standardowych modułów. Tej niestandardowej telemetrii może zawierać żadnych danych, które mają zostać wysłane.
-* Na niektórych serwerach sieci web są również agentów razem aplikacji, które wysyłają dane telemetryczne dotyczące procesora CPU, pamięci i rozszerzenia sieci. Na przykład maszyny wirtualne platformy Azure, hostów platformy Docker i [serwerów J2EE](../../azure-monitor/app/java-agent.md) mogą mieć takich agentów.
+* Na niektórych serwerach sieci web są również agentów razem aplikacji, które wysyłają dane telemetryczne dotyczące procesora CPU, pamięci i rozszerzenia sieci. Na przykład maszyny wirtualne platformy Azure, hostów platformy Docker i [serwery Java EE](../../azure-monitor/app/java-agent.md) mogą mieć takich agentów.
 * [Testy dostępności](../../azure-monitor/app/monitor-web-app-availability.md) są uruchamiane procesy, przez firmę Microsoft, które wysyłają żądania do aplikacji sieci web w regularnych odstępach czasu. Wyniki są wysyłane do usługi Application Insights.
 
 ### <a name="what-kinds-of-data-are-collected"></a>Jakiego rodzaju dane są zbierane?

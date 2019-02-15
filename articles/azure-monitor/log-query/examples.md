@@ -1,6 +1,6 @@
 ---
-title: Przykłady zapytań dzienników w usłudze Azure Monitor usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Przykłady zapytań dzienników w usłudze Azure Monitor przy użyciu języka zapytań Eksploratora danych.
+title: Przykłady zapytań dzienników w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+description: Przykłady zapytań dzienników w usłudze Azure Monitor, za pomocą języka zapytania Kusto.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c161a2fd8d1be670435d2b1a749749cea7d82bcf
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993201"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268451"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Przykłady zapytań dzienników w usłudze Azure Monitor
-W tym artykule przedstawiono różne przykłady [zapytania](log-query-overview.md) przy użyciu [język zapytań w Eksploratorze danych](https://docs.microsoft.com/azure/kusto/query/) pobrać różnego rodzaju dane dzienników z usługi Azure Monitor. Różne metody są używane do konsolidacji i analizowania danych, aby można było używać tych przykładów, aby zidentyfikować różne strategie, których można użyć do własnych wymagań.  
+W tym artykule przedstawiono różne przykłady [zapytania](log-query-overview.md) przy użyciu [język zapytania Kusto](/azure/kusto/query/) pobrać różnego rodzaju dane dzienników z usługi Azure Monitor. Różne metody są używane do konsolidacji i analizowania danych, aby można było używać tych przykładów, aby zidentyfikować różne strategie, których można użyć do własnych wymagań.  
 
 Zobacz [Skorowidz języka Kusto](https://docs.microsoft.com/azure/kusto/query/) szczegółowe informacje dotyczące innych słów kluczowych, używane w tych przykładów. Zapoznaj się z artykułem [lekcji na temat tworzenia zapytań](get-started-queries.md) Jeśli jesteś nowym użytkownikiem usługi Azure Monitor.
 
