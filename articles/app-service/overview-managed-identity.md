@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 68f640f6962802c45ca369786c4e5d0d4f785fa6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3f064769728d5d081c4a110e6c981c4b36aad384
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105081"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300588"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać zarządzanych tożsamości dla usługi App Service i Azure Functions
 
@@ -280,8 +280,8 @@ Aby dowiedzieć się więcej na temat Microsoft.Azure.Services.AppAuthentication
 
 Aplikacji za pomocą tożsamości zarządzanej ma dwie zmienne środowiskowe zdefiniowane:
 
-- MSI_ENDPOINT
-- MSI_SECRET
+- MSI_ENDPOINT — adres URL lokalnej usługi tokenu.
+- MSI_SECRET — nagłówek, przydatna do zmniejszenia ataków (SSRF) sfałszowaniem żądania po stronie serwera. Wartość jest obracana przez platformę.
 
 **MSI_ENDPOINT** jest lokalny adres URL, z którego aplikacja może żądać tokenów. Aby uzyskać token dla zasobu, należy żądanie HTTP GET do tego punktu końcowego, łącznie z następującymi parametrami:
 
@@ -289,7 +289,7 @@ Aplikacji za pomocą tożsamości zarządzanej ma dwie zmienne środowiskowe zde
 > |-----|-----|-----|
 > |zasób|Zapytanie|Zasób usługi AAD identyfikator URI zasobu, dla którego mają być uzyskiwane tokenu. Może to być jeden z [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication) lub innych zasobów identyfikator URI.|
 > |wersja interfejsu API|Zapytanie|Wersja token interfejsu API do użycia. "2017-09-01" jest obecnie jedyna obsługiwana wersja.|
-> |wpis tajny|Nagłówek|Wartość zmiennej środowiskowej MSI_SECRET.|
+> |wpis tajny|Nagłówek|Wartość zmiennej środowiskowej MSI_SECRET. Tego pliku nagłówkowego jest używana w celu ograniczenia zagrożenia atakami sfałszowaniem (SSRF) żądania po stronie serwera.|
 > |ClientID|Zapytanie|(Opcjonalnie) Identyfikator tożsamości przypisanych przez użytkownika ma być używany. W przypadku pominięcia jest używana tożsamości przypisanych przez system.|
 
 Pomyślne odpowiedź 200 OK zawiera treść JSON z następującymi właściwościami:
