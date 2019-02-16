@@ -2,16 +2,17 @@
 author: alkohli
 ms.service: databox
 ms.topic: include
-ms.date: 11/08/2018
+ms.date: 02/14/2019
 ms.author: alkohli
-ms.openlocfilehash: 4ab9da996226b3f26fd30db1cd012c80253a85a5
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 69f77bf969c5d9adfb084682fbbc9eb9e762c8b4
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51333778"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56306847"
 ---
-Poniższe wymagania dotyczą minimalnej przepustowości Internetu wymagany dla urządzeń.
+Urządzenia są przeznaczone do nadal działać, gdy połączenie internetowe działa wolno lub zostanie przerwane. W normalnych warunkach zaleca się, że używasz: 
 
-- Urządzenie ma dedykowany 20 MB/s przepustowości Internetu (lub więcej) dostępnych przez cały czas. Przepustowość nie powinny być udostępniane innym żadne inne aplikacje.
-- Urządzenie ma dedykowany 64 MB/s przepustowości Internetu (lub więcej) przy użyciu ograniczanie przepustowości sieci.
+- Co najmniej 10 MB/s Pobierz przepustowość tak, aby upewnić się, że urządzenie jest w pełni zaktualizowany.
+- Co najmniej 20 MB/s dedykowanych przekazywanie i pobieranie przepustowości do transferu plików.
+

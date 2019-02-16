@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 946b5a568d98367daec0244968b962618f22ae76
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057538"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326930"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>Macierz magazynowa serii StorSimple 8000: hybrydowe rozwiązanie magazynu w chmurze
 ## <a name="overview"></a>Przegląd
@@ -92,7 +92,7 @@ Urządzenie w chmurze ma następujące cechy:
 * Można tworzyć nieograniczoną liczbę urządzeń w chmurze w chmurze i przekształca je włączać i wyłączać zgodnie z potrzebami.
 * Może pomóc w symulacji dla środowisk lokalnych w odzyskiwania po awarii, programowania i scenariuszy testowania i może pomóc w poziomie elementu pobierania z kopii zapasowych.
 
-Urządzenie StorSimple w chmurze jest dostępna w dwóch modeli: urządzenie 8010 (wcześniej znane jako 1100 model), a urządzenie 8020. Urządzenie 8010 ma maksymalną pojemność wynoszącą 30 TB. Urządzenie 8020 korzysta z usługi Azure premium storage, ma maksymalną pojemność wynoszącą 64 TB. (W warstwach lokalnych, usługi Azure premium storage przechowuje dane na dyskach SSD natomiast magazynu standard storage przechowuje dane na dyski twarde.) Należy pamiętać, że musi mieć konto magazynu platformy Azure — wersja premium do użycia magazynu w warstwie premium. Aby uzyskać więcej informacji o usłudze premium storage, przejdź do [usługi Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../virtual-machines/windows/premium-storage.md).
+Urządzenie StorSimple w chmurze jest dostępna w dwóch modeli: urządzenie 8010 (wcześniej znane jako 1100 model), a urządzenie 8020. Urządzenie 8010 ma maksymalną pojemność wynoszącą 30 TB. Urządzenie 8020 korzysta z usługi Azure premium storage, ma maksymalną pojemność wynoszącą 64 TB. (W warstwach lokalnych, usługi Azure premium storage przechowuje dane na dyskach SSD natomiast magazynu standard storage przechowuje dane na dyski twarde.) Należy pamiętać, że musi mieć konto magazynu platformy Azure — wersja premium do użycia magazynu w warstwie premium.
 
 Aby uzyskać więcej informacji dotyczących urządzenia StorSimple w chmurze, przejdź do [wdrażanie i zarządzanie nimi Storsimple w chmurze na platformie Azure](storsimple-8000-cloud-appliance-u2.md).
 
@@ -248,7 +248,7 @@ Poniżej przedstawiono listę innego oprogramowania, które służą do tworzeni
 | --- | --- | --- | --- |
 | Docelowa kopia zapasowa |Veeam |V Veeam 9 lub nowszy |[Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą Veaam](storsimple-configure-backup-target-veeam.md)|
 | Docelowa kopia zapasowa |Oprogramowaniem Veritas Backup Exec |Backup Exec 16 lub nowszy |[Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą Backup Exec](storsimple-configure-backup-target-using-backup-exec.md)|
-| Docelowa kopia zapasowa |VERITAS NetBackup |NetBackup 7.7.x lub nowszy  |[Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą NetBackup](storsimple-configure-backuptarget-netbackup.md)|
+| Docelowa kopia zapasowa |Veritas NetBackup |NetBackup 7.7.x lub nowszy  |[Usługa StorSimple jako miejsce docelowe kopii zapasowej za pomocą NetBackup](storsimple-configure-backuptarget-netbackup.md)|
 | Udostępnianie plików globalne <br></br> Współpraca |Talon  |[Usługa StorSimple z Talon](https://www.talonstorage.com/products/archive/fast-deployment-azure-storsimple) | |
 
 ## <a name="storsimple-terminology"></a>Terminologia dotycząca usługi StorSimple
@@ -273,7 +273,7 @@ Przed wdrożeniem rozwiązania Microsoft Azure StorSimple, firma Microsoft zalec
 | klucz szyfrowania magazynu w chmurze |Hasło lub klucz używany przez urządzenia StorSimple do dostępu do zaszyfrowanych danych, które są wysyłane przez urządzenie do chmury. |
 | Aktualizacja typu cluster-aware |Zarządzanie aktualizacje oprogramowania na serwerach w klastrze trybu failover, aby aktualizacje zostały minimalny lub nie wpływa na dostępność usług. |
 | ścieżki danych |Kolekcja jednostki organizacyjne, które wykonują operacje wzajemnie połączonych przetwarzania danych. |
-| Dezaktywuj |Stałe akcji, która spowoduje przerwanie połączenia między urządzeniem StorSimple i usługą skojarzonej chmurze. Migawki urządzenia w chmurze pozostają po zakończeniu tego procesu i można sklonować lub używanej na potrzeby odzyskiwania po awarii. |
+| dezaktywuj |Stałe akcji, która spowoduje przerwanie połączenia między urządzeniem StorSimple i usługą skojarzonej chmurze. Migawki urządzenia w chmurze pozostają po zakończeniu tego procesu i można sklonować lub używanej na potrzeby odzyskiwania po awarii. |
 | dublowanie dysków |Replikację woluminów dysku logicznego do osobnych twardych dysków w czasie rzeczywistym, aby zapewnić ciągłą dostępność. |
 | dublowanie dysk dynamiczny |Replikacja woluminów dysku logicznego w przypadku dysków dynamicznych. |
 | dyski dynamiczne |Format woluminu dysku, który używa Menedżera dysków logicznych (LDM) do przechowywania danych i zarządzanie nimi na wielu dyskach fizycznych. Dyski dynamiczne można uruchomić zapewniają więcej wolnego miejsca. |
@@ -302,7 +302,7 @@ Przed wdrożeniem rozwiązania Microsoft Azure StorSimple, firma Microsoft zalec
 | Usługa menedżera urządzeń StorSimple |Rozszerzenie portalu Azure, która pozwala na zarządzanie Azure StorSimple w środowisku lokalnym i urządzeń wirtualnych. |
 | StorSimple Snapshot Manager |Program Microsoft Management Console (MMC) przystawki do zarządzania i przywracania kopii zapasowych operacje w Microsoft Azure StorSimple. |
 | Wykonaj kopię zapasową |Funkcja, która umożliwia użytkownikowi przejęcie interakcyjnego wykonywania kopii zapasowej woluminu. To alternatywny sposób podejmowania ręcznego tworzenia kopii zapasowej woluminu zamiast wykonywania automatycznej obsługi kopii zapasowych przy użyciu zdefiniowanych zasad. |
-| alokowanie elastyczne |Metoda optymalizowania wydajności za pomocą którego dostępne miejsce jest używana w systemach magazynowania. W alokowanie elastyczne, Magazyn jest przydzielany przez wielu użytkowników, w oparciu o minimalna ilość miejsca, wymagane przez każdego użytkownika w dowolnym momencie. Zobacz też *fat aprowizacji*. |
+| Alokowanie elastyczne |Metoda optymalizowania wydajności za pomocą którego dostępne miejsce jest używana w systemach magazynowania. W alokowanie elastyczne, Magazyn jest przydzielany przez wielu użytkowników, w oparciu o minimalna ilość miejsca, wymagane przez każdego użytkownika w dowolnym momencie. Zobacz też *fat aprowizacji*. |
 | Obsługa warstw |Organizowanie danych w logiczne grupy w oparciu o bieżące użycie, wiek i relacji z innymi danymi. Usługa StorSimple automatycznie rozmieszcza dane w warstwach. |
 | wolumin |Obszary magazynu logicznego prezentowane w postaci dysków. Woluminy StorSimple odpowiadać woluminów zainstalowanych w wyniku hosta, łącznie z tymi odnalezione za pomocą interfejsu iSCSI i urządzeń StorSimple. |
 | kontener woluminów |Grupowanie woluminów i ustawienia, które ich dotyczą. Wszystkie woluminy w urządzeniu StorSimple są grupowane w kontenerach woluminów. Ustawienia kontenera woluminów obejmują kont magazynu, ustawienia szyfrowania dla danych przesyłanych do chmury przy użyciu kluczy szyfrowania skojarzonego i użytej przepustowości na potrzeby operacji dotyczących chmury. |

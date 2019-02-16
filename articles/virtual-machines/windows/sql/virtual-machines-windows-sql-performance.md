@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ce7b73afa150ef5fef58c5baf861da92c5203548
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6493da0cfc86560fac8e69f4329804c628942806
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980504"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328722"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Wytyczne dotyczące wydajności dla programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -41,8 +41,8 @@ Poniżej znajduje się lista szybkie sprawdzenie w celu uzyskania optymalnej wyd
 | Obszar | Optymalizacje |
 | --- | --- |
 | [Rozmiar maszyny wirtualnej](#vm-size-guidance) | - [DS3_v2](../sizes-general.md) lub nowsze dla programu SQL Enterprise edition.<br/><br/> - [DS2_v2](../sizes-general.md) lub nowszej wersji programu SQL Standard i sieci Web. |
-| [Storage](#storage-guidance) | -Użyj [usługi Premium Storage](../premium-storage.md). Magazynu w warstwie standardowa jest zalecane tylko na potrzeby tworzenia i testowania.<br/><br/> -Zachować [konta magazynu](../../../storage/common/storage-create-storage-account.md) i maszyn wirtualnych serwera SQL, w tym samym regionie.<br/><br/> * Wyłączenie Azure [magazyn geograficznie nadmiarowy](../../../storage/common/storage-redundancy.md) (replikacja geograficzna) na koncie magazynu. |
-| [Dyski](#disks-guidance) | -Użyj co najmniej 2 [dyski P30](../premium-storage.md#scalability-and-performance-targets) (1 dla plików dziennika i 1 dla plików danych, w tym bazy danych TempDB). Obciążenia wymagające ~ 50 000 operacji We/Wy Rozważ użycie Ultra dyski SSD. <br/><br/> -Należy unikać systemu operacyjnego oraz dyski tymczasowe do przechowywania bazy danych lub rejestrowania.<br/><br/> -Włącz odczytu, buforowanie na dyskach hostowania plików danych i plików danych bazy danych TempDB.<br/><br/> -Nie włącza buforowanie na dyskach hostingu w pliku dziennika.  **Ważne**: Zatrzymaj usługi programu SQL Server, gdy zmiana ustawień pamięci podręcznej dysku maszyny Wirtualnej platformy Azure.<br/><br/> -Stripe wielu dysków z danymi platformy Azure można pobrać zwiększać przepustowość operacji We/Wy.<br/><br/> — Format z udokumentowane rozmiarów alokacji. <br/><br/> -Miejsce bazy danych TempDB na lokalny dysk SSD dla obciążeń o znaczeniu krytycznym programu SQL Server (po wybraniu właściwego rozmiaru maszyny Wirtualnej). |
+| [Storage](#storage-guidance) | -Użyj [premium SSD](../disks-types.md). Magazynu w warstwie standardowa jest zalecane tylko na potrzeby tworzenia i testowania.<br/><br/> -Zachować [konta magazynu](../../../storage/common/storage-create-storage-account.md) i maszyn wirtualnych serwera SQL, w tym samym regionie.<br/><br/> * Wyłączenie Azure [magazyn geograficznie nadmiarowy](../../../storage/common/storage-redundancy.md) (replikacja geograficzna) na koncie magazynu. |
+| [Dyski](#disks-guidance) | -Użyj co najmniej 2 [dyski P30](../disks-types.md#premium-ssd) (1 dla plików dziennika i 1 dla plików danych, w tym bazy danych TempDB). Obciążenia wymagające ~ 50 000 operacji We/Wy Rozważ użycie Ultra dyski SSD. <br/><br/> -Należy unikać systemu operacyjnego oraz dyski tymczasowe do przechowywania bazy danych lub rejestrowania.<br/><br/> -Włącz odczytu, buforowanie na dyskach hostowania plików danych i plików danych bazy danych TempDB.<br/><br/> -Nie włącza buforowanie na dyskach hostingu w pliku dziennika.  **Ważne**: Zatrzymaj usługi programu SQL Server, gdy zmiana ustawień pamięci podręcznej dysku maszyny Wirtualnej platformy Azure.<br/><br/> -Stripe wielu dysków z danymi platformy Azure można pobrać zwiększać przepustowość operacji We/Wy.<br/><br/> — Format z udokumentowane rozmiarów alokacji. <br/><br/> -Miejsce bazy danych TempDB na lokalny dysk SSD dla obciążeń o znaczeniu krytycznym programu SQL Server (po wybraniu właściwego rozmiaru maszyny Wirtualnej). |
 | [OPERACJE WE/WY](#io-guidance) |-Włącz kompresji strony bazy danych.<br/><br/> -Włącz inicjowanie błyskawiczne plików dla danych plików.<br/><br/> — Ograniczenia wzrostu bazy danych.<br/><br/> -Wyłącz zmniejszania bazy danych.<br/><br/> -Przenieść wszystkie bazy danych na dyskach danych, tym systemowych baz danych.<br/><br/> -Przenieś programu SQL Server błąd dziennika śledzenia pliku katalogów i dysków z danymi.<br/><br/> — Skonfiguruj domyślne lokalizacje plików bazy danych i kopii zapasowych.<br/><br/> -Włącz zablokowanych stron.<br/><br/> -Zastosowania poprawki wydajności programu SQL Server. |
 | [Specyficzne dla funkcji](#feature-specific-guidance) | — Wykonaj kopię zapasową, bezpośrednio do magazynu obiektów blob. |
 
@@ -59,10 +59,10 @@ W przypadku aplikacji poufnych wydajności zalecane jest, należy używać nast�
 
 ## <a name="storage-guidance"></a>Wskazówki dotyczące magazynu
 
-Obsługa maszyn wirtualnych z serii DS (wraz z serii DSv2 i GS-) [usługi Premium Storage](../premium-storage.md). Usługa Premium Storage jest zalecana dla wszystkich obciążeń produkcyjnych.
+Obsługa maszyn wirtualnych z serii DS (wraz z serii DSv2 i GS-) [premium SSD](../disks-types.md). Dyski SSD w warstwie Premium są zalecane w przypadku wszystkich obciążeń produkcyjnych.
 
 > [!WARNING]
-> Magazynu w warstwie standardowa ma różne wartości opóźnienia i przepustowości i jest zalecane tylko na potrzeby obciążeń deweloperskich/testowych. Dotyczy to również nowy magazyn SSD w warstwie standardowa. Obciążeń produkcyjnych należy używać magazynu w warstwie Premium.
+> Standardowa HDD i SSD mają różne wartości opóźnienia i przepustowości i są zalecane tylko na potrzeby obciążeń deweloperskich/testowych. Obciążeń produkcyjnych należy używać dysków SSD w warstwie premium.
 
 Ponadto firma Microsoft zaleca tworzenie konta usługi Azure storage w tym samym centrum danych jako maszyn wirtualnych programu SQL Server w celu zmniejszenia opóźnień transferu. Podczas tworzenia konta magazynu, należy wyłączyć replikację geograficzną, ponieważ nie jest gwarantowana kolejność zapisu spójne na wielu dyskach. Zamiast tego należy wziąć pod uwagę konfigurowania technologii odzyskiwania po awarii programu SQL Server między centrami danych platformy Azure dwa. Aby uzyskać więcej informacji, zobacz [wysokiej dostępności i odzyskiwania po awarii dla programu SQL Server w usłudze Azure Virtual Machines](virtual-machines-windows-sql-high-availability-dr.md).
 
@@ -88,13 +88,15 @@ Dysk magazynu tymczasowego, oznaczone jako **D**: dysku, nie są utrwalane w mag
 
 Seria D, zalecamy używanie serii Dv2 i maszyny wirtualne z serii G dysku tymczasowego na tych maszynach wirtualnych jest oparty na dyskach SSD. Jeśli obciążenie powoduje, że intensywne użycie bazy danych TempDB (np. obiektów tymczasowych lub złożonych sprzężeń) przechowywania bazy danych TempDB na **D** dysku może spowodować większej przepływności bazy danych TempDB i zmniejszyć czas oczekiwania bazy danych TempDB. Przykładowy scenariusz Zobacz Omówienie bazy danych TempDB w następującym wpisie: [Wskazówki dotyczące konfigurowania magazynu dla programu SQL Server na maszynie Wirtualnej platformy Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm).
 
-Maszyny wirtualne obsługujące usługę Premium Storage (seria DS, seria DSv2 i GS-series) zalecamy przechowywanie bazy danych TempDB na dysku, który obsługuje usługę Premium Storage z buforowaniem odczytu włączone. 
+<<<<<<< HEAD dla maszyn wirtualnych, które obsługują premium dyski SSD (seria DS, DSv2 serii i serii GS), zaleca się przechowywanie bazy danych TempDB na dysku, który obsługuje dyski SSD w warstwie premium z buforowaniem odczytu włączone. Istnieje jeden wyjątek od tej rekomendacji; Jeśli użycie bazy danych TempDB jest intensywnie korzystających z zapisu, można uzyskać lepszą wydajność dzięki przechowywaniu bazy danych TempDB na lokalnym **D** dysk, który jest również, dysk SSD — na podstawie tych rozmiarów maszyn.
+=== Maszyny wirtualne obsługujące usługę Premium Storage (seria DS, seria DSv2 i GS-series), zalecamy przechowywanie bazy danych TempDB na dysku, który obsługuje usługę Premium Storage z buforowaniem odczytu włączone. 
 
 Istnieje jeden wyjątek od tej rekomendacji: _Jeśli użycie bazy danych TempDB jest intensywnie korzystających z zapisu, można uzyskać lepszą wydajność dzięki przechowywaniu bazy danych TempDB na lokalnym **D** dysk, który jest również, dysk SSD — na podstawie tych rozmiarów maszyn._ 
+>>>>>>> 4326ed494fad7ef7be29e2f4ba3301ec496acf76
 
 ### <a name="data-disks"></a>Dyski z danymi
 
-* **Korzystanie z dysków danych dla plików danych i dziennika**: Jeśli nie używasz rozkładanie, użyj dwóch usługi Premium Storage [dyski P30](../premium-storage.md#scalability-and-performance-targets) gdzie jeden dysk zawiera pliki dziennika, a drugi zawiera dane i pliki bazy danych TempDB. Każdego dysku usługi Premium Storage oferuje pewną liczbę operacji We/Wy i przepustowość (MB/s) w zależności od rozmiaru, zgodnie z opisem w artykule [przy użyciu usługi Premium Storage dla dysków](../premium-storage.md). Jeśli używasz technika Rozkładanie dysku, takich jak miejsca do magazynowania, można osiągnąć optymalną wydajność przez dwie pule, jeden dla pliku lub plików dziennika i inne pliki danych. Jednak jeśli użytkownik chce użyć wystąpienia klastra trybu Failover (FCI) programu SQL Server, należy skonfigurować jedną pulę.
+* **Korzystanie z dysków danych dla plików danych i dziennika**: Jeśli nie używasz rozkładanie, należy użyć dwóch dysków SSD P30 premium gdzie jeden dysk zawiera pliki dziennika, a drugi zawiera dane i pliki bazy danych TempDB. Każdego premium SSD oferuje pewną liczbę operacji We/Wy i przepustowość (MB/s) w zależności od rozmiaru, jak pokazano w artykule [wybierz typ dysku](../disks-types.md). Jeśli używasz technika Rozkładanie dysku, takich jak miejsca do magazynowania, można osiągnąć optymalną wydajność przez dwie pule, jeden dla pliku lub plików dziennika i inne pliki danych. Jednak jeśli użytkownik chce użyć wystąpienia klastra trybu Failover (FCI) programu SQL Server, należy skonfigurować jedną pulę.
 
    > [!TIP]
    > - Dla wyników testów w różnych konfiguracjach dysku i obciążenia zobacz następujący wpis w blogu: [Wskazówki dotyczące konfigurowania magazynu dla programu SQL Server na maszynie Wirtualnej platformy Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm/).
@@ -125,7 +127,7 @@ Istnieje jeden wyjątek od tej rekomendacji: _Jeśli użycie bazy danych TempDB 
 
   * Określ liczbę dysków skojarzonych z puli magazynów, w oparciu o Twoim oczekiwaniom obciążenia. Należy pamiętać, że różne rozmiary maszyn wirtualnych pozwalają różne liczby dołączonych dysków z danymi. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-  * Jeśli nie używasz usługi Premium Storage (scenariusze tworzenia i testowania), zalecane jest dodanie maksymalna liczba dysków danych obsługiwanych przez usługi [rozmiar maszyny Wirtualnej](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i użyj Rozkładanie dysku.
+  * Jeśli nie używasz premium SSD (scenariusze tworzenia i testowania), zalecane jest dodanie maksymalna liczba dysków danych obsługiwanych przez usługi [rozmiar maszyny Wirtualnej](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) i użyj Rozkładanie dysku.
 
 * **Zasady buforowania**: Należy zwrócić uwagę na poniższe zalecenia dotyczące zasad, w zależności od konfiguracji magazynu buforowania.
 
@@ -133,7 +135,7 @@ Istnieje jeden wyjątek od tej rekomendacji: _Jeśli użycie bazy danych TempDB 
 
   * Jeśli używasz Rozkładanie dysku w puli magazynu z jednej, większości obciążeń będą mogli korzystać z pamięci podręcznej odczytu. Jeśli masz pule magazynów oddzielnych plików dziennika i danych, Włącz buforowanie odczytu tylko w puli magazynu dla plików danych. W niektórych obciążeń wysokie obciążenia podczas zapisu może osiągnąć lepszą wydajność przy użyciu nie buforowania. To tylko można określić za pomocą testowania.
 
-  * Powyższe zalecenia dotyczą dysków usługi Premium Storage. Jeśli nie używasz usługi Premium Storage, nie należy włączać wszelkie buforowanie na wszelkich dysków z danymi.
+  * Powyższe zalecenia dotyczą dysków SSD w warstwie premium. Jeśli nie używasz dysków SSD w warstwie premium, nie należy włączać wszelkie buforowanie na wszelkich dysków z danymi.
 
   * Aby uzyskać instrukcje na temat konfigurowania buforowania dysku zobacz następujące artykuły. Klasyczny (ASM) można znaleźć modelu wdrażania przy użyciu: [Zestaw AzureOSDisk](https://msdn.microsoft.com/library/azure/jj152847) i [AzureDataDisk zestaw](https://msdn.microsoft.com/library/azure/jj152851.aspx). Wdrożenia usługi Azure Resource Manager zawiera temat modelu: [Zestaw AzOSDisk](https://docs.microsoft.com/powershell/module/az.compute/set-azvmosdisk?view=azurermps-4.4.1) i [AzVMDataDisk zestaw](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdatadisk?view=azurermps-4.4.1).
 
@@ -150,7 +152,7 @@ Istnieje jeden wyjątek od tej rekomendacji: _Jeśli użycie bazy danych TempDB 
 
 ## <a name="io-guidance"></a>Wskazówki dotyczące operacji We/Wy
 
-* Najlepsze wyniki, dzięki usłudze Premium Storage są wykonywane podczas zrównoleglić żądań i aplikacji. Usługa Premium Storage jest przeznaczona dla scenariuszy, w których głębokość kolejki operacji We/Wy jest większa niż 1, więc zobaczysz niewielkiego lub żadnego wzrost wydajności w jednowątkowym serial żądania (nawet jeśli są one o znacznym wykorzystaniu pamięci masowej). Na przykład to może mieć wpływ na wyniki badań jednowątkowe narzędzi do analizy wydajności, takich jak SQLIO.
+* Najlepsze wyniki z dyskami SSD w warstwie premium są się uzyskuje, gdy zrównoleglić żądań i aplikacji. Dyski SSD w warstwie Premium są przeznaczone dla scenariuszy, w których głębokość kolejki operacji We/Wy jest większa niż 1, więc zobaczysz niewielkiego lub żadnego wzrost wydajności w jednowątkowym serial żądania (nawet jeśli są one o znacznym wykorzystaniu pamięci masowej). Na przykład to może mieć wpływ na wyniki badań jednowątkowe narzędzi do analizy wydajności, takich jak SQLIO.
 
 * Należy rozważyć użycie [bazy danych kompresji strony](https://msdn.microsoft.com/library/cc280449.aspx) ponieważ może to pomóc zwiększyć wydajność obciążeń z intensywnym wykorzystaniem we/wy. Kompresja danych może jednak zwiększyć użycie procesora CPU na serwerze bazy danych.
 

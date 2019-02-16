@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: e33ec52a2546100a043a78f66c2232c3c1ad264e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4f50cc46244a4fb205e0ccf60665ba892d3aa8fc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821370"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310044"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>Analizowanie danych w usługi Data Lake Storage przy użyciu klastra platformy HDInsight Spark
 
@@ -81,7 +81,7 @@ Jeśli utworzono klaster usługi HDInsight przy użyciu usługi Data Lake Storag
 
 5. Ładowanie przykładowych danych do tabeli tymczasowej, w którym używana jest **HVAC.csv** plik został skopiowany do konta usługi Data Lake Storage. Możesz uzyskać dostęp do danych w ramach konta usługi Data Lake Storage przy użyciu następującego wzorca adresu URL.
 
-    * W przypadku usługi Data Lake Storage jako magazynu domyślnego HVAC.csv będą się w ścieżce podobny do następującego adresu URL:
+    * W przypadku Data Lake Storage Gen1 jako magazynem domyślnym HVAC.csv będą się w ścieżce podobny do następującego adresu URL:
 
             adl://<data_lake_store_name>.azuredatalakestore.net/<cluster_root>/HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv
 

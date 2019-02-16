@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 2f52b3d1a5aa5b934954da09d114dce1efb8ef32
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 64008a91033b1fdd9cb318e76db2b1958f2337e9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508372"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309323"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Ochrona serwera plików za pomocą usługi Azure Site Recovery 
 
@@ -58,7 +58,7 @@ Poniższy diagram ułatwia określenie, jakiej strategii użyć w swoim środowi
 |---------|---------|---------|
 |Środowisko serwera plików z replikacją DFSR lub bez niej|   [Używanie usługi Site Recovery do replikacji](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Usługa Site Recovery nie obsługuje klastrów z udostępnianym dyskiem ani urządzeniem magazynującym dołączonym do sieci (NAS). Jeśli środowisko korzysta z tych konfiguracji, użyj dowolnego innego podejścia zgodnie z potrzebami. <br> Usługa Site Recovery nie obsługuje protokołu SMB 3.0. Zreplikowana maszyna wirtualna zawiera zmiany tylko wtedy, gdy zmiany wprowadzone w plikach są aktualizowane w oryginalnej lokalizacji plików.
 |Środowisko serwera plików z replikacją DFSR     |  [Rozszerzenie replikacji DFSR na maszynie wirtualnej usługi IaaS platformy Azure](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      Replikacja DFSR działa dobrze w środowiskach z bardzo podzieloną przepustowością. Takie podejście wymaga, aby maszyna wirtualna platformy Azure działała przez cały czas. Należy uwzględnić w planach koszt maszyny wirtualnej.         |
-|Maszyna wirtualna usługi IaaS platformy Azure     |     [Usługa File Sync](#use-azure-file-sync-service-to-replicate-your-files)   |     Jeśli używasz usługi File Sync w scenariuszu odzyskiwania po awarii, w trybie failover musisz wykonać działania ręcznie, aby upewnić się, że udziały plików są dostępne na komputerze klienckim w sposób przezroczysty. Usługa File Sync wymaga, aby port 445 został otwarty z maszyny klienckiej.     |
+|Maszyna wirtualna usługi IaaS platformy Azure     |     File Sync    |     Jeśli używasz usługi File Sync w scenariuszu odzyskiwania po awarii, w trybie failover musisz wykonać działania ręcznie, aby upewnić się, że udziały plików są dostępne na komputerze klienckim w sposób przezroczysty. Usługa File Sync wymaga, aby port 445 został otwarty z maszyny klienckiej.     |
 
 
 ### <a name="site-recovery-support"></a>Obsługa usługi Site Recovery

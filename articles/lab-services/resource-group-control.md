@@ -10,21 +10,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: 2903228a3257abe9c454c6e0720a1e228b905290
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 94e5f5b29e93409df2373cf6c56e8185dc5373a2
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300044"
+ms.locfileid: "56312978"
 ---
 # <a name="specify-a-resource-group-for-lab-virtual-machines-in-azure-devtest-labs"></a>Określ grupę zasobów dla maszyn wirtualnych laboratorium Azure DevTest Labs
-Jako właściciel laboratorium możesz skonfigurować maszyny wirtualne laboratorium ma być utworzony w określonej grupie zasobów. Użyj tej funkcji, tak aby nie przekroczysz zasobów limity grupy w ramach subskrypcji platformy Azure. Ta funkcja umożliwia także konsolidację wszystkich zasobów laboratorium w ramach pojedynczej grupy zasobów. Ułatwia także śledzenie tych zasobów i stosowanie [zasady](../governance/policy/overview.md) do zarządzania nimi na poziomie grupy zasobów.
+Jako właściciel laboratorium możesz skonfigurować maszyny wirtualne laboratorium ma być utworzony w określonej grupie zasobów. Ta funkcja pomaga w następujących scenariuszach: 
+
+- Ma mniejszą liczbę grup zasobów utworzonych przez laboratoria w ramach subskrypcji.
+- Masz laboratoriów działania w ramach ustalony zestaw elementów grup zasobów, skonfigurowane przez użytkownika
+- Obejścia ograniczeń i zatwierdzeń wymagane do utworzenia grupy zasobów w ramach subskrypcji platformy Azure.
+- Konsolidacja wszystkich zasobów laboratorium w ramach pojedynczej grupy zasobów ułatwiają śledzenie tych zasobów i stosowanie [zasady](../governance/policy/overview.md) do zarządzania nimi na poziomie grupy zasobów.
 
 Dzięki tej funkcji można użyć skryptu, aby określić nową lub istniejącą grupę zasobów w ramach subskrypcji platformy Azure dla wszystkich laboratorium, maszyny wirtualne. Obecnie usługa DevTest Labs obsługuje tę funkcję za pomocą interfejsu API. 
 
-## <a name="api-to-configure-a-resource-group-for-labs-vms"></a>Interfejs API, aby skonfigurować grupę zasobów dla maszyn wirtualnych laboratoriów
+## <a name="api-to-configure-a-resource-group-for-lab-virtual-machines"></a>Interfejs API, aby skonfigurować grupę zasobów dla maszyn wirtualnych laboratorium
 Teraz przejdźmy opcje się jako właściciel laboratorium, podczas korzystania z tego interfejsu API: 
 
 - Możesz wybrać **grupy zasobów laboratorium** dla wszystkich maszyn wirtualnych.
@@ -86,7 +91,7 @@ Jeśli używasz szablonu usługi Azure Resource Manager, aby utworzyć laborator
                 "labStorageType": "Premium",
                 "premiumDataDisks": "Disabled",
                 "provisioningState": "Succeeded",
-                "uniqueIdentifier": "6e6f668f-992b-435c-bac3-d328b745cd25"
+                "uniqueIdentifier": "000000000f-0000-0000-0000-00000000000000"
             },
             "dependsOn": []
         },

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 77c4377afaff20e77e76c0a7389c79dfdce703ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509137"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327014"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Kiedy używać obiektów blob platformy Azure, Azure Files lub Azure Disks
 Microsoft Azure oferuje kilka funkcji w usłudze Azure Storage do przechowywania i uzyskiwania dostępu do danych w chmurze. Ten artykuł dotyczy usługi Azure Files, obiekty BLOB i dyski i zaprojektowano, aby ułatwić wybór między tymi funkcjami.
@@ -67,4 +67,4 @@ Podczas podejmowania decyzji dotyczących jak Twoje dane są przechowywane i udo
   
 Niektóre funkcje protokołu SMB nie mają zastosowania do chmury. Aby uzyskać więcej informacji, zobacz [funkcji nie są obsługiwane przez usługę Azure File](/rest/api/storageservices/features-not-supported-by-the-azure-file-service).
   
-Aby uzyskać więcej informacji o dyskach, zobacz [Zarządzanie dyskami i obrazami](../../virtual-machines/windows/about-disks-and-vhds.md) i [jak dołączyć dysk danych do maszyny wirtualnej Windows](../../virtual-machines/windows/attach-managed-disk-portal.md).
+Aby uzyskać więcej informacji o dyskach, zobacz nasze [wprowadzenie do usługi managed disks](../../virtual-machines/windows/managed-disks-overview.md) i [jak dołączyć dysk danych do maszyny wirtualnej Windows](../../virtual-machines/windows/attach-managed-disk-portal.md).

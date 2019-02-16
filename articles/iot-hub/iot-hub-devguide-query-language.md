@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: 65de1279c47f5992dd82e9f4634b3de52925769c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0cb3bc63f9c3d63c68edba0b4162970e18fca76d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568383"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312705"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
@@ -361,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** odwołuje się do żadnej właściwości dokumentu JSON w kolekcji FROM. Kilka przykładów klauzule SELECT można znaleźć w [wprowadzenie do zapytań bliźniaczych reprezentacji urządzeń](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries) sekcji.
+**Attribute_name** odwołuje się do żadnej właściwości dokumentu JSON w kolekcji FROM. Kilka przykładów klauzule SELECT można znaleźć w Rozpoczynanie pracy z usługą sekcja zapytań bliźniaczych reprezentacji urządzeń.
 
 Obecnie wybór klauzule różni się od **wybierz*** są obsługiwane tylko w agregacji zapytań dotyczących bliźniaczych reprezentacji urządzeń.
 

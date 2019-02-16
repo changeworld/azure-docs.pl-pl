@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 54511ac4dfdc05ec1880695b1ae2360f0b5e8162
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246878"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328371"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Zagadnienia dotyczące wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -61,7 +61,7 @@ W dokumencie używane są następujące terminy:
 * IaaS: Infrastruktura jako usługa.
 * PaaS: Platforma jako usługa.
 * SaaS: Oprogramowanie jako usługa.
-* Składnik SAP: Pojedynczą aplikację SAP ECC, BW, Menedżer rozwiązania lub EP. Składniki SAP mogą być oparte na tradycyjnych technologii ABAP i Java lub aplikacji innych niż NetWeaver na podstawie takich jak obiekty biznesowych.
+* SAP Component: Pojedynczą aplikację SAP ECC, BW, Menedżer rozwiązania lub EP. Składniki SAP mogą być oparte na tradycyjnych technologii ABAP i Java lub aplikacji innych niż NetWeaver na podstawie takich jak obiekty biznesowych.
 * Środowisko SAP: co najmniej jednego składnika SAP logicznie pogrupowane do wykonywania funkcji biznesowych, takich jak rozwój, QAS, szkolenia, odzyskiwania po awarii lub produkcji.
 * Środowisko SAP: Określenie to odnosi się do całego zasoby SAP klientów pozioma IT. Środowisko SAP obejmuje wszystkie produkcji i środowisk nieprodukcyjnych.
 * SAP System: Kombinacja warstwy system DBMS i warstwy aplikacji, na przykład SAP ERP i przeniesieniu jej rozwoju systemu SAP BW system testowy, system produkcyjny SAP CRM, itp. W przypadku wdrożeń platformy Azure go nie jest obsługiwane do dzielenia tych dwóch warstw między lokalną i platformą Azure. W związku z systemem SAP jest wdrożone w środowisku lokalnym lub jest wdrażana na platformie Azure. Można jednak wdrożyć różnych systemów środowisko SAP na platformie Azure lub lokalnie. Na przykład możesz wdrożyć rozwoju SAP CRM i systemy testowe platformie Azure, ale SAP CRM produkcji systemu lokalnego.
@@ -79,7 +79,7 @@ Są wydawane różne artykuły dotyczące obciążeń SAP na platformie Azure. Z
 
 Poniższe uwagi SAP odnoszą się do SAP na platformie Azure dotyczące obszaru omówione w tym dokumencie:
 
-| Numer | Stanowisko |
+| Numer | Tytuł |
 | --- | --- |
 | [1928533] |Aplikacje środowiska SAP na platformie Azure: Obsługiwane produkty i typy maszyn wirtualnych platformy Azure |
 | [2015553] |SAP na platformie Microsoft Azure: Wymagania wstępne dotyczące obsługi |
@@ -106,12 +106,12 @@ Chociaż Omawiając IaaS, ogólnie rzecz biorąc Windows, Linux i DBMS instalacj
 
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Struktury magazynu maszyny wirtualnej w przypadku wdrożeń RDBMS
-Aby można było wykonać instrukcje opisane w tym rozdziale, jest to konieczne zrozumieć, co zostało przedstawione [to] [ deployment-guide-3] rozdziału [przewodnik wdrażania][deployment-guide]. Wiedzę na temat różnych serię maszyn wirtualnych oraz różnice i różnic Standard platformy Azure i [usługi Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) powinien rozumieć i znane przed odczytaniem w tym rozdziale.
+Aby można było wykonać instrukcje opisane w tym rozdziale, jest to konieczne zrozumieć, co zostało przedstawione [to] [ deployment-guide-3] rozdziału [przewodnik wdrażania][deployment-guide]. Wiedzę na temat różnych serię maszyn wirtualnych oraz różnice i różnic magazynu w warstwie standardowa i premium storage należy rozumieć i znane przed odczytaniem w tym rozdziale. Dla
 
 Pod względem usługi Azure Storage dla maszyn wirtualnych platformy Azure należy się zapoznać z artykułami:
 
-- [Magazyn dysków dla maszyn wirtualnych Windows Azure — informacje](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds)
-- [Magazyn dysków dla maszyn wirtualnych systemu Linux platformy Azure — informacje](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds)
+- [Wprowadzenie do usługi managed disks dla maszyn wirtualnych Windows Azure](../../windows/managed-disks-overview.md)
+- [Wprowadzenie do usługi managed disks dla maszyn wirtualnych systemu Linux platformy Azure](../../linux/managed-disks-overview.md)
 
 W konfiguracji podstawowej zaleca się zwykle strukturę wdrażania, w którym system operacyjny, system DBMS i ostateczną SAP pliki binarne są niezależne od plików bazy danych. Dlatego zaleca się systemów SAP uruchomionym w usłudze Azure Virtual Machines wirtualnego dysku twardego podstawowy (lub dysku) zainstalowane z systemem operacyjnym, pliki wykonywalne systemu zarządzania bazy danych i plików wykonywalnych SAP. System DBMS plików danych i dziennika są przechowywane w usłudze Azure Storage (wersja standardowa lub Premium Storage) w oddzielnych dyskach i dołączone jako dyski logiczne w systemie do oryginalnego obrazu systemu operacyjnego platformy Azure maszyna wirtualna. Szczególnie w przypadku wdrożeń systemu Linux może być różne zalecenia udokumentowane. Zwłaszcza w części dotyczącej platformy SAP HANA.
 
@@ -134,10 +134,8 @@ Azure wymusza przydziału operacji We/Wy na dysk z danymi. Te przydziały dotycz
 > [!NOTE]
 > Aby można było korzystać z platformy Azure przez unikatowy [pojedynczy umowę SLA maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) wszystkie dyski dołączone muszą być typu usługi Azure Premium Storage, w tym podstawowy dysk VHD.
 
-
 > [!NOTE]
 > Nie jest obsługiwane do hosta głównego plików bazy danych (dane i pliki dziennika) baz danych SAP na sprzęcie pamięci masowej, który znajduje się w centrach danych w tej samej lokalizacji innej przylegające do centrów danych platformy Azure. SAP obciążenia tylko magazynu jest reprezentowany jako natywnego platformy Azure, usługa jest obsługiwana dla plików dziennika transakcji i danych baz danych SAP.
-> 
 
 Umieszczanie plików bazy danych i plików dziennika/ponownego wykonywania i typ magazynu platformy Azure, powinien być zdefiniowany przez wymagania dotyczące operacji We/Wy, opóźnienia i przepływności. Aby mogła mieć wystarczającej liczby operacji We/Wy, może być zmuszony do korzystać z wielu dysków lub użyj większy dysk usługi Premium Storage. W przypadku używania wielu dysków, czy tworzysz stripe oprogramowania na dyskach, które zawierają pliki danych lub plików dziennika/Ponów. W takiej sytuacji operacje We/Wy i przepływność dysków umowy SLA podstawowych dysków usługi Premium Storage lub Maksymalna osiągalna dysków operacje We/Wy z usługi Azure Standard Storage są kumulacyjne wynikowego zestawu usługi stripe.
 

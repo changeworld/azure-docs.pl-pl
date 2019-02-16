@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb3c2a9cfc1bccf4656be83c6babbe9c7ec139fb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: f0e96b87e46872bebe7563e08f0eb7a33b11015f
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745354"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329852"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business jeden na maszynach wirtualnych platformy Azure
 Ten dokument zawiera wskazówki dotyczące wdrażania SAP Business One na maszynach wirtualnych platformy Azure. Dokumentacja nie jest zamiennikiem dokumentacji instalacji działalności jeden dla rozwiązania SAP. Dokumentacja obejmuje podstawowe wskazówki dotyczące planowania i wdrażania infrastruktury platformy Azure do uruchamiania aplikacji Business One na.
@@ -119,7 +119,7 @@ Te dokumenty powinny ułatwić podjęcie decyzji o wyborze typów magazynów i k
 
 W zasadzie następujące czynności:
 
-- Użyj [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) za pośrednictwem [magazynu platformy Azure w warstwie standardowa](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
+- Użyj dysków SSD w warstwie Premium za pośrednictwem standardowych dysków twardych. Aby dowiedzieć się więcej na temat typów dostępnego miejsca na dysku, zobacz nasze artykuł [wybierz typ dysku](../../windows/disks-types.md)
 - Użyj usługi Azure Managed disks za pośrednictwem dysków niezarządzanych
 - Upewnij się, że masz wystarczającą przepustowość operacje We/Wy i operacje We/Wy skonfigurowane za pomocą konfiguracji dysku
 - Łączenie/hana/dane i /hana/log woluminu, aby mogła mieć konfigurację magazynu wydajne kosztów
@@ -138,7 +138,6 @@ Oszacowania nierównej rozmiaru strony bazami danych programu SQL Server są:
 | maksymalnie 150 | 32 | 128 GB | D32s_v3, E32s_v3 |
 
 Ustalanie rozmiaru wymienionych powyżej powinien zapewnić pomysł, gdzie zacząć. Być może potrzebujesz mniejszej lub większej liczby zasobów, w którym to przypadku dostosowania na platformie azure jest łatwe. Zmiana między typami maszyny Wirtualnej jest możliwe dzięki właśnie ponownego uruchomienia maszyny wirtualnej.
-
 
 #### <a name="sap-hana-as-dbms"></a>SAP HANA jako systemu DBMS
 Zagadnienia dotyczące dokumentu przy użyciu oprogramowania SAP HANA DBMS następujące sekcje należy powinien być zgodny [platformy SAP HANA w podręczniku obsługi platformy Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations).

@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 1/29/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 85c5947fa32751bd8381d6a1d59e91ba2026f5f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822786"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329954"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Włącz replikację na platformę Azure dla maszyn wirtualnych VMware
 
@@ -88,7 +88,7 @@ Następnie możesz sprawdzić właściwości maszyny źródłowej. Należy pami�
 2. W obszarze **Właściwości** możesz wyświetlić informacje dotyczące replikacji i trybu failover dla danej maszyny wirtualnej.
 3. W **obliczenia i sieć** > **właściwości obliczania**, można zmienić wiele propoerties maszyny Wirtualnej:
 * Maszyna wirtualna platformy Azure name - zmodyfikuj nazwę aby spełniać wymagania dotyczące usługi Azure, jeśli to konieczne
-* Rozmiar docelowej maszyny Wirtualnej lub typ — domyślny rozmiar maszyny Wirtualnej zostanie wybrany na podstawie źródła rozmiar maszyny Wirtualnej. Możesz wybrać innego rozmiaru maszyny Wirtualnej, w oparciu o potrzeby dowolnym momencie przed włączeniem trybu failover. Należy pamiętać, że rozmiar dysku maszyny Wirtualnej również zależy od rozmiaru dysku źródłowego i może być tylko zmieniane po pracy awaryjnej. Dowiedz się więcej o [standardowa](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets) i [Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) rozmiarów i operacje We/Wy dysku.
+* Rozmiar docelowej maszyny Wirtualnej lub typ — domyślny rozmiar maszyny Wirtualnej zostanie wybrany na podstawie źródła rozmiar maszyny Wirtualnej. Możesz wybrać innego rozmiaru maszyny Wirtualnej, w oparciu o potrzeby dowolnym momencie przed włączeniem trybu failover. Należy pamiętać, że rozmiar dysku maszyny Wirtualnej również zależy od rozmiaru dysku źródłowego i może być tylko zmieniane po pracy awaryjnej. Dowiedz się więcej na rozmiary dysków i operacje We/Wy w naszym [wartości docelowe skalowalności dysków](../virtual-machines/windows/disk-scalability-targets.md) artykułu.
 
     ![Właściwości sieci i obliczeń](./media/vmware-azure-enable-replication/vmproperties.png)
 

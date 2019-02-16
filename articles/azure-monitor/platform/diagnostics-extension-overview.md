@@ -1,23 +1,21 @@
 ---
 title: Omówienie rozszerzenia diagnostyki Azure
 description: Korzystanie z platformy Azure diagnostyki do debugowania, mierzenia wydajności, monitorowania, analizy ruchu w usługach w chmurze, maszyny wirtualne i usługi Service fabric
-services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 5e3b42b1e1f72ccc4d1127f2926ee53c51d66291
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6c59b97a8deec78149775a147d6476e67f405d3f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470515"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310461"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
-Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](../../azure-monitor/overview.md).
+Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, maszyna wirtualna skalowanie zestawów i usługi Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](../../azure-monitor/overview.md).
 
 ## <a name="linux-agent"></a>Agent systemu Linux
 A [wersji systemu Linux rozszerzenie](../../virtual-machines/extensions/diagnostics-linux.md) dostępnej dla maszyn wirtualnych z systemem Linux. Dane statystyczne zebrane i zachowanie różnią się od wersji Windows.
@@ -27,37 +25,38 @@ Rozszerzenie diagnostyki platformy Azure można zebrać następujące typy danyc
 
 | Źródło danych | Opis |
 | --- | --- |
-| Liczniki wydajności |System operacyjny i niestandardowych liczników wydajności |
+| Metryki licznika wydajności |System operacyjny i niestandardowych liczników wydajności |
 | Dzienniki aplikacji |Komunikaty śledzenia zapisywane przez aplikację |
 | Dzienniki zdarzeń systemu Windows |Informacje wysyłane do systemu Windows rejestrowania zdarzeń |
-| Źródło zdarzeń .NET |Kod zapisywania zdarzeń za pomocą programu .NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) klasy |
+| Rejestruje Element EventSource platformy .NET |Kod zapisywania zdarzeń za pomocą programu .NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) klasy |
 | Dzienniki usług IIS |Informacji na temat witryny sieci web usług IIS |
-| Śledzenie zdarzeń systemu Windows w oparciu o manifest |Zdarzenia śledzenia dla Windows zdarzenia generowane przez żaden proces. (1) |
-| Zrzuty awaryjne |Informacje o stanie procesu w przypadku awarii aplikacji |
+| [Manifest na podstawie dzienników zdarzeń systemu Windows](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Zdarzenia śledzenia dla Windows zdarzenia generowane przez żaden proces. (1) |
+| Zrzuty awaryjne (Dzienniki) |Informacje o stanie procesu, jeśli wystąpiła awaria aplikacji |
 | Dzienniki błędów niestandardowych |Dzienniki utworzone przez aplikację lub usługę |
-| Dzienniki infrastruktury diagnostyki platformy Azure |Informacje o diagnostyce sam |
+| Dzienniki infrastruktury diagnostyki platformy Azure |Informacji na temat usługi Azure Diagnostics, sama |
 
 (1) Aby uzyskać listę dostawców ETW, uruchom `c:\Windows\System32\logman.exe query providers` w oknie konsoli, na komputerze, na które chcesz zebrać informacje z.
 
 ## <a name="data-storage"></a>Magazyn danych
 Rozszerzenie zapisuje dane w [konta usługi Azure Storage](diagnostics-extension-to-storage.md) określonym przez użytkownika.
 
-Można również wysłać go do [usługi Application Insights](../../azure-monitor/app/cloudservices.md). Innym rozwiązaniem jest przesyłanie strumieniowe do [Centrum zdarzeń](../../event-hubs/event-hubs-about.md), który następnie pozwala wysyłać je do usługi montoring spoza platformy Azure.
+Można również wysłać go do [usługi Application Insights](../../azure-monitor/app/cloudservices.md). 
 
-### <a name="azure-monitor"></a>Azure Monitor
-Istnieje również możliwość wysyłania danych do usługi Azure Monitor. W tej chwili zlew ma zastosowanie tylko do liczników wydajności. Umożliwia wysyłanie liczniki wydajności zebrane na maszynie Wirtualnej, zestawu skalowania maszyn wirtualnych, lub w chmurze Usługa do usługi Azure Monitor jako metryki niestandardowe. Obsługuje ujścia usługi Azure Monitor:
+Innym rozwiązaniem jest przesyłanie strumieniowe do [Centrum zdarzeń](../../event-hubs/event-hubs-about.md), który następnie pozwala wysyłać je do usługi monitorowania spoza platformy Azure.
+
+Istnieje również możliwość wysyłania danych do bazy danych szeregów czasowych metryk usługi Azure Monitor. W tej chwili zlew ma zastosowanie tylko do liczników wydajności. Umożliwia on wysyłanie liczników wydajności w jako metryki niestandardowe. Ta funkcja jest dostępna w wersji zapoznawczej. Obsługuje ujścia usługi Azure Monitor:
 * Pobieranie wszystkich liczników wydajności wysyłane do usługi Azure Monitor za pośrednictwem [metryk usługi Azure Monitor interfejsów API.](https://docs.microsoft.com/rest/api/monitor/)
-* Alertów dla wszystkich liczników wydajności wysyłane do usługi Azure Monitor w nowej witrynie [ujednolicone środowisko alertów](../../azure-monitor/platform/alerts-overview.md) w usłudze Azure Monitor
-* Traktowanie operator symbolu wieloznacznego w liczniki wydajności jako wymiar "Wystąpienie" w swoje metryki.  Na przykład, gdy zostały zebrane "dysk logiczny (\*) / DiskWrites na sekundę" licznik będzie mieć możliwość filtrowania i podział wymiaru "Wystąpienie" do kreślenia lub alertu na zapisy dysku/s dla każdego dysku logicznego na maszynie Wirtualnej (C: D:, itp.)
+* Alertów dla wszystkich liczników wydajności wysyłane do usługi Azure Monitor za pośrednictwem [alertów dotyczących metryk](../../azure-monitor/platform/alerts-overview.md) w usłudze Azure Monitor
+* Traktowanie operator symbolu wieloznacznego w liczniki wydajności jako wymiar "Wystąpienie" w swoje metryki.  Na przykład, gdy zostały zebrane "dysk logiczny (\*) / DiskWrites na sekundę" licznik będzie mieć możliwość filtrowania i podział wymiaru "Wystąpienie" do kreślenia lub alertu na zapisy dysku/s dla każdego dysku logicznego na maszynie Wirtualnej (na przykład C:)
 
-Aby dowiedzieć się więcej na temat konfigurowania tego obiektu sink, zapoznaj się [dokumentacji schemat usługi Diagnostyka Azure.](diagnostics-extension-schema-1dot3.md)
+Aby dowiedzieć się więcej na temat konfigurowania tego ujścia, zobacz [dokumentacji schemat usługi Diagnostyka Azure.](diagnostics-extension-schema-1dot3.md)
 
 ## <a name="versioning-and-configuration-schema"></a>Schemat przechowywania wersji i konfiguracji
 Zobacz [schemat i Historia wersji usługi Diagnostyka Azure](diagnostics-extension-schema.md).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Wybierz usługę, której chcesz się zbieranie danych diagnostycznych na i skorzystaj z następujących artykułów, aby rozpocząć pracę. Użyj linków ogólne diagnostyki platformy Azure dla odwołania do wykonywania określonych zadań.
+Wybierz usługę, której próbujesz się zbieranie danych diagnostycznych na i skorzystaj z następujących artykułów, aby rozpocząć pracę. Użyj linków ogólne diagnostyki platformy Azure dla odwołania do wykonywania określonych zadań.
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Usługi w chmurze przy użyciu diagnostyki Azure
 * Jeśli używasz programu Visual Studio, zobacz [za pomocą Visual Studio śledzenia aplikacji usługi w chmurze](/visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines) na rozpoczęcie pracy. W przeciwnym razie zobacz

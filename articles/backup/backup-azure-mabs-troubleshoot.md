@@ -8,24 +8,24 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/24/2017
 ms.author: kasinh
-ms.openlocfilehash: 830bf8603a495d1f2708f73cf090695f1b7a7c48
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f90650cc058697e4bf9e4a0710ada213fe3d9a1f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493936"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310835"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Rozwiązywanie problemów ze składnikiem Azure Backup Server
 
 Rozwiązywanie problemów, które występują podczas korzystania z usługi Azure Backup Server, skorzystaj z informacji w poniższych tabelach.
 
-## <a name="invalid-vault-credentials-provided"></a>Podano nieprawidłowe poświadczenia magazynu 
+## <a name="invalid-vault-credentials-provided"></a>Podano nieprawidłowe poświadczenia magazynu
 
 Aby rozwiązać ten problem, wykonaj [te kroki rozwiązywania problemów](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues).
 
-## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operacja agenta nie powiodła się z powodu błędu komunikacji z usługą koordynatora agenta programu DPM na serwerze 
+## <a name="the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-the-server"></a>Operacja agenta nie powiodła się z powodu błędu komunikacji z usługą koordynatora agenta programu DPM na serwerze
 
-Aby rozwiązać ten problem, wykonaj [te kroki rozwiązywania problemów](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues). 
+Aby rozwiązać ten problem, wykonaj [te kroki rozwiązywania problemów](https://docs.microsoft.com/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues).
 
 ## <a name="setup-could-not-update-registry-metadata"></a>Instalator nie może zaktualizować metadanych rejestru
 
@@ -56,7 +56,7 @@ Aby rozwiązać ten problem, wykonaj [te kroki rozwiązywania problemów](https:
 | Konfigurowanie grup ochrony | Program DPM nie mógł wyliczyć składnika aplikacji na chronionym komputerze (nazwa komputera chronionego). | Wybierz **Odśwież** na ekranie konfiguracji ochrony grupy interfejsu użytkownika na odpowiednim poziomie źródła danych/składnika. |
 | Konfigurowanie grup ochrony | Nie można skonfigurować ochrony | Jeśli serwer chroniony jest programu SQL server, sprawdź, czy uprawnienia roli sysadmin zostały nadane następującym użytkownikom konto systemowe (Zarządzanie Nt\system) na komputerze chronionym zgodnie z opisem w [w tym artykule](https://technet.microsoft.com/library/hh757977(v=sc.12).aspx).
 | Konfigurowanie grup ochrony | Ma za mało wolnego miejsca w puli magazynów dla tej grupy ochrony. | Dyski, które są dodawane do puli magazynów [partycji nie powinna zawierać](https://technet.microsoft.com/library/hh758075(v=sc.12).aspx). Usuń wszystkie woluminy istniejące na dyskach. Następnie dodaj je do puli magazynów.|
-| Zmiany zasad |Nie można modyfikować zasad tworzenia kopii zapasowej. Błąd: Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x29834]. Spróbuj ponownie wykonać operację po jakimś czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft. |**Przyczyna:**<br/>Ten błąd występuje w obszarze trzech warunków: po włączeniu ustawienia zabezpieczeń, gdy użytkownik próbuje zmniejszyć zakres przechowywania poniżej określonej wcześniej wartości minimalne i korzystasz z nieobsługiwanej wersji. (Nieobsługiwane wersje są te poniżej Microsoft Azure Backup Server w wersji 2.0.9052 i serwera usługi Azure Backup, aktualizacja 1). <br/>**Zalecana akcja:**<br/> Aby kontynuować zaktualizował związane z zasadami, należy ustawić okres przechowywania powyżej co najmniej określonego okresu. (Minimalny okres przechowywania jest siedem dni, codziennie, czterech tygodni, przez co tydzień, trzy tygodnie dla co miesiąc lub rok do roku). <br><br>Opcjonalnie inny preferowane podejście jest aktualizacja agenta usługi Kopia zapasowa i serwer usługi Azure Backup, które umożliwia wykorzystywanie wszystkie aktualizacje zabezpieczeń. |
+| Zmiany zasad |Nie można modyfikować zasad tworzenia kopii zapasowej. Błąd: Bieżąca operacja nie powiodła się z powodu wewnętrznego błędu usługi [0x29834]. Spróbuj ponownie wykonać operację po jakimś czasie. Jeśli problem będzie się powtarzać, skontaktuj się z pomocą techniczną firmy Microsoft. | **Przyczyna:**<br/>Ten błąd występuje w obszarze trzech warunków: po włączeniu ustawienia zabezpieczeń, gdy użytkownik próbuje zmniejszyć zakres przechowywania poniżej określonej wcześniej wartości minimalne i korzystasz z nieobsługiwanej wersji. (Nieobsługiwane wersje są te poniżej Microsoft Azure Backup Server w wersji 2.0.9052 i serwera usługi Azure Backup, aktualizacja 1). <br/>**Zalecana akcja:**<br/> Aby kontynuować zaktualizował związane z zasadami, należy ustawić okres przechowywania powyżej co najmniej określonego okresu. (Minimalny okres przechowywania jest siedem dni, codziennie, czterech tygodni, przez co tydzień, trzy tygodnie dla co miesiąc lub rok do roku). <br><br>Opcjonalnie inny preferowane podejście jest aktualizacja agenta usługi Kopia zapasowa i serwer usługi Azure Backup, które umożliwia wykorzystywanie wszystkie aktualizacje zabezpieczeń. |
 
 ## <a name="backup"></a>Backup
 | Operacja | Szczegóły błędu | Obejście |
@@ -71,6 +71,11 @@ Aby rozwiązać ten problem, wykonaj [te kroki rozwiązywania problemów](https:
 | Backup | Możliwość ponownego włączenia ochrony maszyny Wirtualnej VMware na nowym serwerze kopia zapasowa Microsoft Azure nie są wyświetlane jako dostępne do dodania. | Właściwości programu VMware są wskazany w starej, wycofane wystąpienia serwera usługi Microsoft Azure Backup. Aby rozwiązać ten problem:<br><ol><li>W programie VCenter (SC-VMM odpowiednik), przejdź do **Podsumowanie** kartę, a następnie **atrybuty niestandardowe**.</li>  <li>Usuń starą nazwę serwera usługi Microsoft Azure Backup z **DPMServer** wartości.</li>  <li>Wróć do nowego serwera kopia zapasowa Microsoft Azure i modyfikować strony  Po wybraniu **Odśwież** , maszyna wirtualna zostanie wyświetlony przycisk z polem wyboru jako dostępny, aby dodać do ochrony.</li></ol> |
 | Backup | Wystąpił błąd podczas uzyskiwania dostępu do folderów udostępnionych/plików | Spróbuj zmodyfikować ustawień programu antywirusowego zgodnie z sugestią podaną w artykule TechNet [uruchamianie oprogramowania antywirusowego na serwerze programu DPM](https://technet.microsoft.com/library/hh757911.aspx).|
 | Backup | Niepowodzenie zadania tworzenia punktu odzyskiwania w trybie online dla maszyny Wirtualnej VMware. Program DPM napotkał błąd z serwera VMware podczas próby pobrania informacji śledzenia zmian. Kod błędu - FileFaultFault (identyfikator 33621) |  <ol><li> Resetuj CTK w oprogramowaniu firmy VMware dla maszyn wirtualnych, których to dotyczy.</li> <li>Sprawdź, czy niezależnie od dysku nie jest w miejscu w oprogramowaniu firmy VMware.</li> <li>Zatrzymaj ochronę dla maszyn wirtualnych, których dotyczy problem i ponownie włączyć ochronę za pomocą **Odśwież** przycisku. </li><li>Uruchom DW dla maszyn wirtualnych, których to dotyczy.</li></ol>|
+
+## <a name="restore"></a>Przywracanie
+| Operacja | Szczegóły błędu | Obejście |
+| --- | --- | --- |
+| Przywracanie | **Kod błędu:**: CBPServerRegisteredVaultDontMatchWithCurrent/Vault Credentials Error: 100110 <br/> <br/>**Komunikat o błędzie**: Podane poświadczenia magazynu różnią się od magazynu, który serwer jest zarejestrowany | **Przyczyna**: Ten problem występuje, gdy próbujesz przywrócić pliki na inny serwer z oryginalnego serwera przy użyciu opcji odzyskiwania zewnętrzny program DPM, a serwer, który jest odzyskiwany i oryginalnego serwera, z którym dane są kopie zapasowe nie są skojarzone z tym samym Magazyn usługi odzyskiwania.<br/> <br/>**Obejście** Aby rozwiązać ten problem, upewnij się, zarówno oryginalnego i alternatywny serwer, które są zarejestrowane w tym samym magazynie.|
 
 
 ## <a name="change-passphrase"></a>Zmień hasło

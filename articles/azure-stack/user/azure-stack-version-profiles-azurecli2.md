@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: b27dd1b9aec89f259649b313d3ba7f944ea647f1
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6d82410e07e725b13385f6ff2b57218c1146a80a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765725"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329300"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -114,7 +114,12 @@ Przed utworzeniem maszyn wirtualnych przy użyciu interfejsu wiersza polecenia, 
 
 Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
 
-1. Zarejestruj środowiskiem usługi Azure Stack, uruchamiając `az cloud register` polecenia.
+1. Zarejestruj środowiskiem usługi Azure Stack, uruchamiając `az cloud register` polecenia. W niektórych scenariuszach bezpośrednie połączenie z Internetem wychodzącego odbywa się za pośrednictwem serwera proxy lub zapory, która wymusza przejmowanie protokołu SSL. W takich przypadkach `az cloud register` polecenia może zakończyć się niepowodzeniem z powodu błędu, takie jak "Nie można pobrać punkty końcowe w chmurze." Aby obejść ten błąd, można ustawić następujące zmienne środowiskowe:
+
+   ```shell
+   set AZURE_CLI_DISABLE_CONNECTION_VERIFICATION=1 
+   set ADAL_PYTHON_SSL_NO_VERIFY=1
+   ```
    
     a. Aby zarejestrować *chmury administracyjne* środowiska, użyj:
 

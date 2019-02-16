@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982849"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330872"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Wypchnij swój pierwszy obraz do prywatnego rejestru kontenerów platformy Docker za pomocą interfejsu wiersza polecenia platformy Docker
 
@@ -116,10 +116,10 @@ Jeśli nie potrzebujesz już obraz Nginx, możesz usunąć ją lokalnie za pomoc
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Aby usunąć obrazy z usługi Azure container registry, można użyć polecenia wiersza polecenia platformy Azure [az acr repozytorium delete](/cli/azure/acr/repository#az-acr-repository-delete). Na przykład następujące polecenie usuwa manifest odwołuje się tag, wszelkie dane skojarzone warstwy i wszystkie inne tagi odwołujące się do manifestu.
+Aby usunąć obrazy z usługi Azure container registry, można użyć polecenia wiersza polecenia platformy Azure [az acr repozytorium delete](/cli/azure/acr/repository#az-acr-repository-delete). Na przykład następujące polecenie usuwa manifest odwołuje się `samples/nginx:latest` tag, wszystkie dane unikatowy warstwy i wszystkie inne tagi odwołujące się do manifestu.
 
 ```azurecli
-az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
+az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

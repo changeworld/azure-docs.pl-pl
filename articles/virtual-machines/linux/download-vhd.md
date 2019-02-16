@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
-ms.openlocfilehash: 6d827e1142fa17b29633c98c062fd204f7a49e36
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f72d49a3ab204ce64eb89d0f05630b640c138e0a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729741"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329255"
 ---
 # <a name="download-a-linux-vhd-from-azure"></a>Pobieranie wirtualnego dysku twardego systemu Linux na platformie Azure
 
-W tym artykule dowiesz się, jak pobrać [Linux wirtualnego dysku twardego (VHD)](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) plików z platformy Azure przy użyciu wiersza polecenia platformy Azure i witryny Azure portal. 
+W tym artykule dowiesz się, jak pobrać pliku wirtualnego dysku twardego (VHD) systemu Linux na platformie Azure przy użyciu wiersza polecenia platformy Azure i witryny Azure portal. 
 
 Jeśli jeszcze tego nie zrobiono, zainstaluj [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
@@ -72,7 +72,7 @@ Aby pobrać plik wirtualnego dysku twardego, należy wygenerować [sygnatury dos
 2.  Wybierz dysk systemu operacyjnego dla maszyny Wirtualnej, a następnie kliknij przycisk **wyeksportować**.
 3.  Kliknij przycisk **generowania adresu URL**.
 
-    ![Generowanie adresu URL](./media/download-vhd/export-generate.png)
+    ![Generuj adres URL](./media/download-vhd/export-generate.png)
 
 ## <a name="download-vhd"></a>Pobieranie wirtualnego dysku twardego
 

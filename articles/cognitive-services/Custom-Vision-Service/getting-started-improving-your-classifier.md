@@ -8,98 +8,98 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 07/05/2018
+ms.date: 02/08/2019
 ms.author: pafarley
-ms.openlocfilehash: ae8a96c07467a4c8617b8e7983e8dd7ad6e70be4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 54faf8b37afa953aac7d411df2f539188dc5b451
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883462"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310224"
 ---
 # <a name="how-to-improve-your-classifier"></a>Jak poprawianie klasyfikatora
 
-Dowiedz się, jak poprawić jakość usługi Custom Vision Service klasyfikatora. Jakość klasyfikatora jest zależna od kwoty, jakości i różnych danych etykietami, które zapewnia do niej zestaw danych jak o zrównoważonym obciążeniu jest. Dobre klasyfikatora zwykle ma zestaw danych szkoleniowych o zrównoważonym obciążeniu, który odzwierciedla co zostaną przesłane do klasyfikatora. Proces tworzenia takiego klasyfikatora jest często iteracyjne. Są często do wykonania kilku rund szkoleń do osiągnięcia oczekiwanych rezultatów.
+W tym przewodniku dowiesz się, jak poprawić jakość usługi Custom Vision Service klasyfikatora. Jakość klasyfikatora zależy od ilości, jakości i różnych danych oznaczonych, podane jest i jak o zrównoważonym obciążeniu jest ogólny zestaw danych. Dobre klasyfikatora ma zestaw danych szkoleniowych o zrównoważonym obciążeniu, który odzwierciedla co zostaną przesłane do klasyfikatora. Proces tworzenia takiego klasyfikatora jest iteracyjne; są często do wykonania kilku rund szkoleń do osiągnięcia oczekiwanych rezultatów.
 
-Poniżej przedstawiono typowe kroki podjęte w celu poprawy klasyfikatora. Te kroki nie są reguły trudny i szybko, ale Algorytm heurystyczny, który pomoże Ci tworzyć lepsze klasyfikatora.
+Poniżej przedstawiono ogólny schemat ułatwiające tworzenie dokładniejszych klasyfikatora:
 
 1. Pierwsze działanie szkolenia
-1. Dodaj więcej obrazów i zrównoważenia danych
-1. Ponowne próbkowanie
-1. Dodawanie obrazów z różnymi tła, oświetlenia, rozmiar obiektu, kąt kamery i stylu
-1. Ponowne szkolenie i źródła danych obrazu w celu prognozowania
-1. Sprawdź wyniki przewidywań
-1. Modyfikowanie istniejących danych treningowych
+1. Dodaj więcej obrazów i danych; Ponowne szkolenie
+1. Dodawanie obrazów z różnymi tła, oświetlenia, rozmiar obiektu, kąt kamery i styl; Ponowne szkolenie
+1. Użyj nowych obrazów, aby przetestować prognoz
+1. Modyfikowanie istniejących danych szkoleniowych według wyników przewidywań
 
-## <a name="data-quantity-and-data-balance"></a>Saldo danych i ilości danych
+## <a name="overfitting"></a>Overfitting
 
-Najważniejsze jest przekazywanie wystarczająca ilość obrazów do szkolenia klasyfikatora. Co najmniej 50 obrazów na etykietę do zestawu szkoleniowego są zalecane jako punktu wyjścia. Przy użyciu mniejszej liczby obrazów jest silne ryzyko, że masz overfitting. Gdy numery wydajności może sugerować dobrej jakości, mogą wystąpić problemy rzeczywistych danych. Szkolenie klasyfikatora przy użyciu więcej obrazów ogólnie zwiększyć dokładność wyników przewidywań.
-
-Kolejna kwestia jest związana, upewnij się, że Twoje dane jest równoważone. Na przykład 500 obrazy dla jednej etykiety i 50 obrazów inną etykietę dadzą imbalanced szkolenia zestawu danych powoduje modelu, który ma być bardziej precyzyjne w przewidywaniu jednej etykiety od innych. Jesteś prawdopodobne zobaczyć w poszukiwaniu lepszych wyników, jeśli to Ty masz co najmniej 1:2 stosunek między używanymi etykiety z najmniejszą liczbą obrazami i etykiety z większość obrazów. Na przykład jeśli etykiety z największą liczbą obrazów ma 500 obrazów, etykiety z co najmniej obrazami musi mieć co najmniej 250 obrazów do szkolenia.
-
-## <a name="train-more-diverse-images"></a>Szkolenie bardziej zróżnicowane obrazów
-
-Podaj obrazy, które reprezentują co będzie można przesłać do klasyfikatora podczas normalnego użytkowania. Na przykład jeśli uczony klasyfikatora "apple", klasyfikatora może okazać możliwie dokładny tylko szkolenie zdjęcia jabłek talerzy, ale upewnij prognozy na zdjęciach jabłek w drzewach. Łącznie z wielu różnych obrazów będzie upewnij się, że klasyfikatora nie jest obciążona i również uogólnić. Poniżej ustawiono bardziej zróżnicowane kilka metod, których można dokonać szkolenia:
-
-__Tło:__ Podaj obrazów obiektu przed różnych kolorów tła (czyli owoce na tablicy, a owoców w zbiorze artykułów spożywczych). Zdjęcia w kontekście są lepsze niż zdjęcia przed neutralne tła, ponieważ zapewniają dodatkowe informacje dotyczące klasyfikatora.
-
-![Obraz tła próbek](./media/getting-started-improving-your-classifier/background.png)
-
-__Oświetlenie:__ Udostępnianie obrazów zróżnicowane oświetlenia (oznacza to, przekierowanie z usługą flash, wysoka, itp.), zwłaszcza w przypadku, gdy obrazy używane w celu prognozowania mają różne oświetlenia. Warto również uwzględnić obrazów przy użyciu różnorodnych nasycenie, hue i jasności.
-
-![Obraz przedstawiający przykłady oświetlenia](./media/getting-started-improving-your-classifier/lighting.png)
-
-__Object Size:__ Podaj obrazów, w których obiekty są zależeć od rozmiaru przechwytywania różnych części obiektu. Na przykład zdjęcie kiście banany i zbliżenie banany jednego. Różne zmiany rozmiaru pomaga klasyfikatora generalize lepiej.
-
-![Obraz przedstawiający rozmiar próbki](./media/getting-started-improving-your-classifier/size.png)
-
-__Kąt aparatu:__ Podaj obrazów z opcją kątów kamery różne. Jeśli wszystkie zdjęcia są pobierane z zestawem kamer stałych (np. kamer nadzoru), upewnij się, że przypisać inną etykietę do każdej kamery, nawet wtedy, gdy przechwyceniem te same obiekty, aby uniknąć overfitting — modelowanie niepowiązanych obiektów (takich jak lampposts) jako klucza funkcji.
-
-![Obraz przedstawiający przykłady kąt](./media/getting-started-improving-your-classifier/angle.png)
-
-__Styl:__ Podaj obrazy różnych stylów w tej samej klasy (czyli różne rodzaje cytrusów). Jednak w przypadku obrazów obiektów znacząco różne style (czyli Mickey myszy a rat rzeczywistych), zalecane jest oznaczenie ich jako osobne klasy, aby lepiej reprezentują ich różne funkcje.
-
-![Obraz przedstawiający próbki stylu](./media/getting-started-improving-your-classifier/style.png)
-
-## <a name="use-images-submitted-for-prediction"></a>Korzystanie z obrazów przesłane do prognozowania
-
-Custom Vision Service są przechowywane obrazy przesłane do endpoint prognoz. Aby poprawić klasyfikatora, należy używać tych obrazów, użyj następujące czynności:
-
-1. Aby wyświetlić obrazy przesyłany do usługi klasyfikatora, otwórz [strony sieci web Custom Vision](https://customvision.ai), przejdź do swojego projektu i wybierz __prognozy__ kartę. Widok domyślny pokazuje obrazów z bieżącą iterację. Możesz użyć __iteracji__ rozwijane pole, aby wyświetlić obrazy przesłane podczas poprzednich iteracji.
-
-    ![Obraz karty prognozy](./media/getting-started-improving-your-classifier/predictions.png)
-
-2. Umieść kursor nad obrazu, aby wyświetlić tagi, które zostały przewidywane według klasyfikatora. Obrazy są oceniane tak, aby obrazy, które może przynieść większość zysków klasyfikatora znajdowały się u góry. Aby wybrać inny sortowanie, użyj __sortowania__ sekcji. Aby dodać obraz do istniejących danych szkoleniowych, wybierz obraz, wybierz poprawny tag i kliknij __Zapisz i Zamknij__. Obraz zostanie usunięty z __prognozy__ i dodane do uczone obrazy. Można je wyświetlić, wybierając __Uczone obrazy__ kartę.
-
-    ![Obraz strony znakowania](./media/getting-started-improving-your-classifier/tag.png)
-
-3. Użyj __Train__ przycisk doskonalenie klasyfikatora.
-
-## <a name="visually-inspect-predictions"></a>Wizualnie badać prognozy
-
-Aby przeprowadzić inspekcję prognozy obrazu, wybierz __Uczone obrazy__ , a następnie wybierz pozycję __historii iteracji__. Obrazy z czerwoną otoczkę zostały nieprawidłowo przewidzieć.
-
-![Obraz przedstawiający historii iteracji](./media/getting-started-improving-your-classifier/iteration.png)
-
-Czasami kontroli można zidentyfikować wzorce, które następnie można usunąć, dodając dodatkowe szkolenie danych lub modyfikując istniejące dane szkoleniowe. Na przykład klasyfikatora dla firmy apple, a wapna może niepoprawnie etykietą wszystkich jabłek zielony wapna. Dzięki temu można rozwiązać ten problem, dodając i dostarcza dane szkoleniowe, zawierający obrazy oznakowane jabłek zielony.
-
-## <a name="unexpected-classification"></a>Nieoczekiwany klasyfikacji
-
-Czasami klasyfikatora niepoprawnie uzyskuje informacje o właściwości, które są wspólne dla obrazów. Na przykład jeśli tworzysz klasyfikatora jabłek a cytrusów i są podane obrazy jabłka w ręce i citrus w białe talerzy klasyfikatora może szkolenie dla ręce a białe talerzy zamiast jabłek a cytrusów.
+Czasami klasyfikatora dowiesz się w celu prognozowania na podstawie dowolnego charakterystyki, które są wspólne dla obrazów. Na przykład jeżeli tworzysz klasyfikatora jabłek a cytrusów oraz obrazów jabłka w ręce i citrus była używana na tablicach białe klasyfikatora umożliwia nadmiernego znaczenie w ręce a talerzy zamiast jabłek a cytrusów.
 
 ![Obraz przedstawiający nieoczekiwany klasyfikacji](./media/getting-started-improving-your-classifier/unexpected.png)
 
-Aby rozwiązać ten problem, użyj powyższe wskazówki dotyczące szkolenia z bardziej zróżnicowane obrazów: Podaj obrazów z różnymi kątami, tła, rozmiar obiektu, grup i innych wariantów.
+Aby rozwiązać ten problem, użyj poniższych wskazówek na szkolenie z bardziej zróżnicowane obrazów: Podaj obrazów z różnymi kątami, tła, rozmiar obiektu, grup i innych zmian.
 
-## <a name="negative-image-handling"></a>Obsługa ujemna obrazu
+## <a name="data-quantity"></a>Ilość danych
 
-Custom Vision Service obsługuje niektóre obsługi automatycznego obrazów ujemna. W przypadku której tworzysz gronowego a banany klasyfikatora, a następnie przesłać obraz butów w celu prognozowania klasyfikatora powinny ocena tego obrazu jako 0% zarówno gronowego i banany.
+Liczba uczone obrazy jest najważniejszym czynnikiem. Firma Microsoft recomment przy użyciu co najmniej 50 obrazów na etykietę, jako punktu wyjścia. Przy użyciu mniejszej liczby obrazów istnieje większe ryzyko overfitting, a gdy numery wydajności może sugerować dobrej jakości, model może poradzić sobie z brakami rzeczywistych danych. 
 
-Z drugiej strony w przypadku obrazów ujemna odmianą obrazy używane w szkolenia, prawdopodobnie modelu będzie klasyfikowania obrazów ujemna jako klasę etykietami z powodu podobieństwa doskonałe. Na przykład jeśli masz pomarańczowy, a grejpfrutów klasyfikatora, a kanał w obrazie clementine, jego może wynik clementine pomarańczowa. Może to nastąpić, ponieważ wiele funkcji clementine (kolor, kształt, Tekstura, naturalnych habitat itp.) w przypadku Pomarańcze podobne.  W przypadku obrazów ujemna tego rodzaju, zalecane jest tworzenie jednej lub więcej rozdzielić znaczniki ("Other") i etykiety ujemna obrazy z tym znacznikiem podczas szkolenia zezwolić na model, który ma lepsze rozróżnienie tych klas.
+## <a name="data-balance"></a>Saldo danych
+
+Należy również wziąć pod uwagę odpowiednich ilości danych szkoleniowych. Na przykład przy użyciu obrazów 500 jednej etykiety i 50 obrazów na inną etykietę sprawia, że w przypadku zestawu imbalanced szkolenia. Spowoduje to model, który ma być bardziej precyzyjne w przewidywaniu jednej etykiety od innych. Jesteś prawdopodobne zobaczyć w poszukiwaniu lepszych wyników, jeśli to Ty masz co najmniej 1:2 stosunek między używanymi etykiety z najmniejszą liczbą obrazami i etykiety z większość obrazów. Na przykład w etykiecie o większość obrazów zawiera 500 obrazów, etykiety z obrazami co najmniej powinien mieć co najmniej 250 obrazów do szkolenia.
+
+## <a name="data-variety"></a>Różnych danych
+
+Pamiętaj używać obrazów, które reprezentują co będzie można przesłać do klasyfikatora podczas normalnego użytkowania. W przeciwnym razie klasyfikatora może dowiedzieć się, jak tworzyć prognozy na podstawie dowolnego charakterystyki, które są wspólne dla obrazów. Na przykład jeżeli tworzysz klasyfikatora jabłek a cytrusów oraz obrazów jabłka w ręce i citrus była używana na tablicach białe klasyfikatora umożliwia nadmiernego znaczenie w ręce a talerzy zamiast jabłek a cytrusów.
+
+![Obraz przedstawiający nieoczekiwany klasyfikacji](./media/getting-started-improving-your-classifier/unexpected.png)
+
+Aby rozwiązać ten problem, obejmują szereg obrazów, aby upewnić się, również uogólnić klasyfikatora. Poniżej ustawiono bardziej zróżnicowane kilka metod, których można dokonać szkolenia:
+
+* __Tło:__ Podaj obrazów przed różnych kolorów tła obiektu. Zdjęcia w kontekstach fizyczne są lepsze niż zdjęcia przed neutralne tła, ponieważ zapewniają dodatkowe informacje dotyczące klasyfikatora.
+
+    ![Obraz tła próbek](./media/getting-started-improving-your-classifier/background.png)
+
+* __Oświetlenie:__ Udostępnianie obrazów zróżnicowane oświetlenia (który pochodzi z usługą flash, wysoka) i tak dalej, zwłaszcza w przypadku, gdy obrazy używane w celu prognozowania mają różne oświetlenia. Warto także używać obrazów z różnymi nasycenie, hue i jasności.
+
+    ![Obraz przedstawiający przykłady oświetlenia](./media/getting-started-improving-your-classifier/lighting.png)
+
+* __Object Size:__ Podaj obrazów, w których obiekty różnią się pod względem rozmiaru i liczby (na przykład zdjęcie kiście banany i zbliżenie banany pojedynczy). Różne zmiany rozmiaru pomaga klasyfikatora generalize lepiej.
+
+    ![Obraz przedstawiający rozmiar próbki](./media/getting-started-improving-your-classifier/size.png)
+
+* __Kąt aparatu:__ Podaj obrazów z opcją kątów kamery różne. Alternatywnie, jeśli wszystkie zdjęcia musi być stosowana z kamer stałych (np. kamer nadzoru), upewnij się, można przypisać inną etykietę do każdego obiektu występujące regularnie, aby uniknąć overfitting&mdash;interpretowanie niepowiązanych obiektów (takich jak lampposts) jako kluczową funkcją.
+
+    ![Obraz przedstawiający przykłady kąt](./media/getting-started-improving-your-classifier/angle.png)
+
+* __Styl:__ Podaj obrazy różnych stylów tej samej klasie (na przykład różnych odmian tej samej). Jednak w przypadku obiektów znacząco różne style (na przykład Mickey myszy, a myszy rzeczywistych) zalecamy ich etykiety jak osobnych klas w celu lepszego ich różne funkcje.
+
+    ![Obraz przedstawiający próbki stylu](./media/getting-started-improving-your-classifier/style.png)
+
+## <a name="use-prediction-images-for-further-training"></a>Korzystanie z obrazów prognoz do dalszego szkoleniowych
+
+Jeśli używasz lub test klasyfikatora obraz po przesłaniu obrazów do endpoint prognoz usługi Custom Vision przechowuje te obrazy. Następnie można użyć w celu ulepszenia modelu.
+
+1. Aby wyświetlić obrazy przesyłany do usługi klasyfikatora, otwórz [strony sieci web Custom Vision](https://customvision.ai), przejdź do swojego projektu i wybierz __prognozy__ kartę. Widok domyślny pokazuje obrazów z bieżącą iterację. Możesz użyć __iteracji__ rozwijane menu, aby wyświetlić obrazy przesłane podczas poprzednich iteracji.
+
+    ![Zrzut ekranu przedstawiający prognozy są tym karcie przy użyciu obrazów w widoku](./media/getting-started-improving-your-classifier/predictions.png)
+
+2. Umieść kursor nad obrazu, aby wyświetlić tagi, które zostały przewidywane według klasyfikatora. Obrazy są sortowane, tak, aby te, które może przynieść najbardziej ulepszenia klasyfikatora są wyświetlane u góry. Aby użyć innej metody sortowania, wybierz odpowiednią pozycję w __sortowania__ sekcji. 
+
+    Aby dodać obraz do istniejących danych szkoleniowych, wybierz obraz, ustaw prawidłowe tagi i kliknij przycisk __Zapisz i Zamknij__. Obraz zostanie usunięty z __prognozy__ i dodać do zbioru uczone obrazy. Można je wyświetlić, wybierając __Uczone obrazy__ kartę.
+
+    ![Obraz strony znakowania](./media/getting-started-improving-your-classifier/tag.png)
+
+3. Następnie użyj __Train__ przycisk doskonalenie klasyfikatora.
+
+## <a name="visually-inspect-predictions"></a>Wizualnie badać prognozy
+
+Aby przeprowadzić inspekcję prognozy obrazu, przejdź do __Uczone obrazy__ , a następnie wybierz swoje poprzedniej iteracji szkolenia w **iteracji** menu rozwijane i zaznacz jeden lub więcej tagów w obszarze **tagi** sekcji. Widok powinien być teraz ustawiony czerwoną otoczkę wokół pozycji wszystkich obrazów, dla których modelu nie można poprawnie przewidzieć danym znacznikiem.
+
+![Obraz przedstawiający historii iteracji](./media/getting-started-improving-your-classifier/iteration.png)
+
+Czasami kontroli można zidentyfikować wzorce, które następnie można usunąć, dodając więcej danych szkoleniowych lub modyfikując istniejące dane szkoleniowe. Na przykład klasyfikatora jabłek a wapna może niepoprawnie etykietą wszystkich jabłek zielony wapna. Następnie można rozwiązać ten problem, przez dodanie i dostarcza dane szkoleniowe, zawierający obrazy oznakowane jabłek zielony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak można przetestować obrazy programowo, przesyłając je do interfejsu API prognoz.
+W tym przewodniku przedstawiono kilka technik, które umożliwiają bardziej precyzyjne obraz niestandardowy model klasyfikacji. Dowiedz się, jak przetestować obrazy programowo, przesyłając je do interfejsu API prognoz.
 
 > [!div class="nextstepaction"]
 [Użyj interfejsu API prognoz.](use-prediction-api.md)

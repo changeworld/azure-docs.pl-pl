@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: ea83d061f7160db04c847be66e79da60da78634d
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d325cfd679c2a8b878ae9a7b483431aba32b2a5a
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662911"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313283"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>Dostosowywanie klastrów HDInsight opartych na systemie Linux przy użyciu akcji skryptu
 
@@ -55,7 +55,7 @@ Akcja skryptu jest skrypt powłoki Bash, działającego w węzłach w klastrze u
 
     * Konto usługi Azure Data Lake Storage, który jest dostępny dla klastra HDInsight. Aby uzyskać informacji dotyczących korzystania z usługi Azure Data Lake Storage z usługą HDInsight, zobacz [Szybki Start: Konfigurowanie klastrów w usłudze HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md).
 
-        Format identyfikatora URI skryptów przechowywanych w usługi Data Lake Storage jest `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
+        Format identyfikatora URI dla skryptów przechowywanych w Data Lake Storage Gen1 `adl://DATALAKESTOREACCOUNTNAME.azuredatalakestore.net/path_to_file`.
 
         > [!NOTE]  
         > Nazwa główna usługi HDInsight używane do dostępu do usługi Data Lake Storage przez musi mieć dostęp do odczytu do skryptu.

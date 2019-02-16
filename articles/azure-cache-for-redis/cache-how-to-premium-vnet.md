@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: dafa9f09b6aed1f61facf3737c7e03c81b2a0e7d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238253"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313096"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Jak skonfigurować Obsługa sieci wirtualnej dla usługi Azure Cache w warstwie Premium dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze rozmiar pamięci podręcznej i funkcji, takich jak funkcje warstwy Premium, takich jak klastrowanie, trwałość i obsługę sieci wirtualnej. Sieć wirtualna jest prywatna sieć w chmurze. Po skonfigurowaniu usługi Azure Cache dla wystąpienia pamięci podręcznej Redis przy użyciu sieci wirtualnej nie jest adresowany publicznie i może zostać oceniony jedynie z maszyn wirtualnych i aplikacji w ramach sieci wirtualnej. W tym artykule opisano sposób konfigurowania obsługi sieci wirtualnej dla warstwy premium usługi Azure Cache dla wystąpienia usługi Redis.
@@ -85,7 +85,7 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usług
 
 * Jakie są niektóre typowe problemy z błędną konfiguracją z pamięcią podręczną Azure Redis i sieci wirtualne?
 * [Jak sprawdzić, czy przepełnieniu pamięci podręcznej działa w sieci Wirtualnej?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
-* [Podczas próby nawiązania przepełnieniu pamięci podręcznej Azure, aby uzyskać Redis w sieci Wirtualnej, Dlaczego otrzymuję komunikat o błędzie informujący, że certyfikat zdalny jest nieprawidłowy?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
+* Podczas próby nawiązania przepełnieniu pamięci podręcznej Azure, aby uzyskać Redis w sieci Wirtualnej, Dlaczego otrzymuję komunikat o błędzie informujący, że certyfikat zdalny jest nieprawidłowy?
 * [Czy można używać sieci wirtualne, z pamięcią podręczną standard lub basic?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * Dlaczego Tworzenie pamięci podręcznej Azure dla usługi Redis nie powiodło się w niektórych podsieci, a nie innych?
 * [Jakie są wymagania dotyczące miejsca na adres podsieci?](#what-are-the-subnet-address-space-requirements)

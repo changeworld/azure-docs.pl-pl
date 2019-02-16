@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/18/2017
 ms.author: saurse
-ms.openlocfilehash: 0b880d77004013d3b3eb1999b7e9344577b9fb4f
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: ab307548853a545c4aa8ee5a573ca5b1ca67c91d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266488"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310261"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Przywracanie stanu systemu do systemu Windows Server
 
@@ -65,7 +65,7 @@ Poniższe kroki wyjaśniają, jak można wycofać konfiguracji systemu Windows S
 
 9. Kopiuj *WindowsImageBackup* katalogu w miejscu docelowym odzyskiwania do zastosowania niekrytyczne woluminu serwera. Zwykle wolumin systemu operacyjnego Windows jest wolumin krytyczny.
 
-10. Gdy odzyskiwanie zakończy się pomyślnie, wykonaj kroki opisane w sekcji [Zastosuj przywrócić pliki stanu systemu do systemu Windows Server](backup-azure-restore-system-state.md#apply-restored-system-state-files-to-the-windows-server), aby zakończyć proces odzyskiwania stanu systemu.
+10. Gdy odzyskiwanie zakończy się pomyślnie, wykonaj kroki opisane w sekcji [Zastosuj przywrócić pliki stanu systemu do systemu Windows Server](backup-azure-restore-system-state.md), aby zakończyć proces odzyskiwania stanu systemu.
 
 ## <a name="recover-system-state-files-to-an-alternate-server"></a>Odzyskać pliki stanu systemu na alternatywnym serwerze
 

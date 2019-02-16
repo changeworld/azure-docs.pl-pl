@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 9c5f998470d3bf2a66d7de43bd54d5da4db57608
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a6be2fbbf946f13213f95b8876cfdddfa2ffbe67
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221756"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329221"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Konfigurowanie odzyskiwania po awarii na platformie Azure dla lokalnych serwerów fizycznych
 
@@ -78,9 +78,6 @@ Konfigurowanie [konta usługi Azure storage](../storage/common/storage-quickstar
 
 - Usługa Site Recovery replikuje maszyn lokalnych do usługi Azure storage. Maszyny wirtualne platformy Azure są tworzone na podstawie magazynu po przejściu do trybu failover.
 - Konto magazynu musi znajdować się w tym samym regionie, co magazyn usługi Recovery Services.
-- Konto magazynu może być standardowy lub [premium](../virtual-machines/windows/premium-storage.md).
-- Po skonfigurowaniu konta w warstwie premium należy również dodatkowe konto standardowa za dane dziennika.
-
 
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Przygotowywanie konta do instalacji usługi Mobility

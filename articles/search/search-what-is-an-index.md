@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: fd5f58a03ffd054e79f1ff4ea6d61c33c06b6e7c
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9cd43172fc57443cc89f238e1d4ffaae45301936
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268553"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330566"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie podstawowego indeksu w usłudze Azure Search
 
@@ -110,7 +110,10 @@ Schematycznie indeksu usługi Azure Search składa się z następujących elemen
 }
 ```
 
-## <a name="fields-collection-and-attribution"></a>Kolekcja pól i uznanie autorstwa
+<a name="fields-collection"></a>
+
+## <a name="fields-collection-and-field-attributes"></a>Atrybuty pól kolekcji i pola
+
 W trakcie definiowania schematu musisz określić nazwę, typ i atrybuty każdego pola w indeksie. Typ pola klasyfikuje dane, które są w nim przechowywane. Atrybuty są ustawiane dla poszczególnych pól, aby określić sposób użycia pola. W poniższych tabelach zostały wyszczególnione typy i atrybuty, które możesz określić.
 
 ### <a name="data-types"></a>Typy danych
@@ -139,7 +142,7 @@ Dowiedz się więcej na temat [typów danych obsługiwanych przez usługę Azure
 
 Dowiedz się więcej na temat [atrybutów indeksów usługi Azure Search w tym miejscu](https://docs.microsoft.com/rest/api/searchservice/Create-Index).
 
-## <a name="storage-implications-of-index-attributes"></a>Implikacje magazynu atrybutów indeksu
+## <a name="storage-implications"></a>Implikacje magazynu
 
 Atrybuty, które możesz wybrać mają wpływ na magazyn. Poniższy zrzut ekranu przedstawia ilustrację wzorców magazynu indeksu wynikające z różnych kombinacji atrybutów. Indeks jest oparty na [przykładowe wbudowane realestate](search-get-started-portal.md) źródła danych, co umożliwia indeksowanie i zapytania w portalu.
 
@@ -147,7 +150,9 @@ Filtrowanie i sortowanie zapytanie operacje na dokładne dopasowania, dzięki cz
 
 ![Indeks rozmiaru na podstawie wyboru atrybutu](./media/search-what-is-an-index/realestate-index-size.png "indeksu rozmiaru na podstawie wybranych atrybutów")
 
-Wdrażanie magazynu jest uznawany za szczegółowo opisuje implementacja usługi Azure Search i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, bieżące zachowanie utrwali w przyszłości.
+Niektóre z tych kombinacji są sztuczny, przydatne w przypadku oświetlenia punkt, ale nie powodują indeksu możliwego do użycia. W praktyce nigdy nie będzie dodać każdego pojedynczego pola do sugestora lub Utwórz indeks, którą można przeszukiwać, ale nie pobieranie.
+
+Architektura magazynu jest uznawany za szczegółowo opisuje implementacja usługi Azure Search i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, bieżące zachowanie utrwali w przyszłości.
 
 ## <a name="suggesters"></a>Funkcje sugestii
 Sugestora to sekcja schemat, który definiuje pola w indeksie, które są używane do obsługi automatycznego uzupełniania wpisywaniu lub Autouzupełnianie zapytań wyszukiwania. Zazwyczaj ciągi częściowe są wysyłane do sugestie (Azure Search interfejs API REST usługi), podczas zapytania wyszukiwania wpisywany przez użytkownika, a interfejs API zwraca zbiór proponowanych fraz. 

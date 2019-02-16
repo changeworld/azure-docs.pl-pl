@@ -4,15 +4,15 @@ description: W tym artykule opisano, jak usługa Azure Cosmos DB zapewnia wysok�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b5e99b421e66f087a1793f5301736e192ef75c08
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109762"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311243"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Wysoka dostępność dzięki usłudze Azure Cosmos DB
 
@@ -64,19 +64,7 @@ Regionalnej awarii nie są niczym niezwykłym, a usługi Azure Cosmos DB zapewni
 
 - Nawet w przypadku Twojego konta usługi Cosmos o wysokiej dostępności, aplikacja może nie być poprawnie zaprojektowana pozostaje o wysokiej dostępności. Aby przetestować end-to-end wysokiej dostępności dla aplikacji, okresowo wywoływać [ręcznej pracy awaryjnej przy użyciu wiersza polecenia platformy Azure lub w witrynie Azure portal](how-to-manage-database-account.md#manual-failover), jako część testowania aplikacji lub odzyskiwania po awarii (DR) awarii.
 
-
-Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO).
-
-W poniższej tabeli przedstawiono cel punktu odzyskiwania i cel czasu odzyskiwania dla najbardziej typowych scenariuszy.
-
-|Liczba regiony |Konfigurowanie |Poziom spójności|Cel punktu odzyskiwania |CEL CZASU ODZYSKIWANIA |
-|---------|---------|---------|-------|-------|
-|1    | *    |*   | < 240 minut | < 1 tydzień |
-|>1     | Replikacja pojedynczego elementu głównego | Sesja, spójny prefiks i ostateczna | < 15 minut | < 15 minut |
-|>1     | Replikacja pojedynczego elementu głównego | Powiązana nieaktualność | K & T | < 15 minut |
-|>1     | Replikacji wielu wzorców | Sesja, spójny prefiks i ostateczna | < 15 minut | 0 |
-|>1     | Replikacji wielu wzorców | Powiązana nieaktualność | K & T | 0 |
-|>1     | * | Silna | 0 | < 15 minut |
+- W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO). Aby wyświetlić cel punktu odzyskiwania i cel czasu odzyskiwania dla usługi Azure Cosmos DB, zobacz [spójności poziomy i danych trwałości](consistency-levels-tradeoffs.md#rto)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

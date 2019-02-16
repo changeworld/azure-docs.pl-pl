@@ -3,8 +3,8 @@ title: Migrowanie z usług AWS i innych platform do usługi Managed Disks na pla
 description: Tworzenie maszyn wirtualnych na platformie Azure przy użyciu wirtualnych dysków twardych przekazany z innych chmur, takich jak usługi AWS lub innych platform wirtualizacji i korzystać z zalet usługi Azure Managed Disks.
 services: virtual-machines-windows
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
 ms.date: 10/07/2017
-ms.author: cynthn
+ms.author: rogarana
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83e69cd488ab7e8b69895a25716350c8025c6c48
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 05e687ab31b6c19193076033e1350952549d26e0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074907"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330753"
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>Migrowanie z usług Amazon Web Services (AWS) i innych platform do usługi Managed Disks na platformie Azure
 
@@ -46,11 +46,8 @@ Możesz przekazać uogólniony, wyspecjalizowana wirtualnych dysków twardych.
 
 ## <a name="overview-of-managed-disks"></a>Omówienie dysków zarządzanych
 
-Usługa Azure Managed Disks upraszcza zarządzanie maszyną Wirtualną, usuwając konieczność zarządzania kontami magazynu. Usługa Managed Disks również korzyści z większą niezawodność, maszyn wirtualnych w zestawie dostępności. Zapewnia, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco odizolowane od siebie, aby uniknąć pojedynczego punktu awarii. Automatycznie przełącza dyski różnych maszyn wirtualnych w zestawie dostępności w różnych jednostkach skalowania magazynu (sygnatury) co ogranicza wpływ błędy jednostki skali magazynu w jednym spowodowany sprzętu i oprogramowania błędów. Na podstawie własnych potrzeb, możesz wybrać spośród dwóch rodzajów opcje magazynu: 
- 
-- [Premium Managed Disks](premium-storage.md) są nośnika magazynowania, która zapewnia wysoką wydajność i obsługę przez dyski o małych opóźnieniach dla maszyn wirtualnych z systemem wyjścia — dużych obciążeń wejścia/opartego na pełny stan dysku (SSD). Przy użyciu funkcji migracji do usługi Premium Managed Disks może korzystać z szybkości i wydajności tych dysków.  
-
-- [Dyski zarządzane w warstwie standardowa](standard-storage.md) Użyj dysku twardym (HDD) na podstawie nośnikach magazynowania i są dopasowane do tworzenia i testowania oraz innych nieregularnych obciążeń, które są mniej podatne na zmiany wydajności.  
+Usługa Azure Managed Disks upraszcza zarządzanie maszyną Wirtualną, usuwając konieczność zarządzania kontami magazynu. Usługa Managed Disks również korzyści z większą niezawodność, maszyn wirtualnych w zestawie dostępności. Zapewnia, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco odizolowane od siebie, aby uniknąć pojedynczego punktu awarii. Automatycznie przełącza dyski różnych maszyn wirtualnych w zestawie dostępności w różnych jednostkach skalowania magazynu (sygnatury) co ogranicza wpływ błędy jednostki skali magazynu w jednym spowodowany sprzętu i oprogramowania błędów.
+Zgodnie z potrzebami, można wybierać spośród czterech typy opcji magazynu. Informacje na temat typów dostępnego miejsca na dysku znajdują się w artykule naszych [wybierz typ dysku](disks-types.md).
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Planowanie migracji do usługi Managed Disks
 

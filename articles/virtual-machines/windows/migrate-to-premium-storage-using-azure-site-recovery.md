@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 6db263dcfc3195c9b2ab3afe7587845a4632fd1b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7c422d560341e51fad582439117533b7d9cd4c8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456531"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327667"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrowanie do usługi Premium Storage przy użyciu usługi Azure Site Recovery
 
-[Usługa Azure Premium Storage](premium-storage.md) zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych (VM), które są uruchomione I O dużych obciążeń wejścia /. Ten przewodnik ułatwi Ci migracji dysków maszyn wirtualnych z konta magazynu w warstwie standardowa do konta magazynu premium storage za pomocą [usługi Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
+[Usługa Azure premium SSD](disks-types.md) dostarczać obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych (VM), które są uruchomione I O dużych obciążeń wejścia /. Ten przewodnik ułatwi Ci migracji dysków maszyn wirtualnych z konta magazynu w warstwie standardowa do konta magazynu premium storage za pomocą [usługi Azure Site Recovery](../../site-recovery/site-recovery-overview.md).
 
 Usługa Site Recovery jest usługą platformy Azure, którzy przyczyniają się do strategii dotyczącej ciągłości biznesowej i odzyskiwania po awarii poprzez organizowanie replikacji lokalnych serwerów fizycznych i maszyn wirtualnych do chmury (Azure) lub do dodatkowego centrum danych. W przypadku wystąpienia awarii w lokalizacji podstawowej, przełączysz się lokalizacji dodatkowej, aby aplikacje i obciążenia, które są dostępne. Powrotu po awarii do lokalizacji głównej gdy powraca do normalnego działania. 
 
@@ -222,7 +222,6 @@ Zobacz też następujące zasoby, aby dowiedzieć się więcej na temat usługi 
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](premium-storage.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

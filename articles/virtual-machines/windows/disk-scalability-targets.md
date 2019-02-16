@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines
 ms.tgt_pltfrm: windows
 ms.subservice: disks
-ms.openlocfilehash: 726652a9faa2c22e3bee69e288c755a1e372120a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c469de9135f47ded623d709050c6414b91e6dfac
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477264"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329886"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-windows"></a>Cele dotyczące skalowalności i wydajności dla dysków maszyn wirtualnych w Windows
 

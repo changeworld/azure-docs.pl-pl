@@ -4,17 +4,17 @@ ms.service: virtual-machines-linux
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
-ms.openlocfilehash: 7c9c52c5cda258908ac8463dd06044e244c75ee2
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 94f662cea5f20485659a7b93549b758fdd7770f6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55735900"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327926"
 ---
 Gdy już nie potrzebujesz dysku danych dołączonego do maszyny wirtualnej, możesz go łatwo odłączyć. Po odłączeniu dysku od maszyny wirtualnej nie zostanie on usunięty z magazynu. Jeśli chcesz ponownie użyć danych znajdujących się na dysku, możesz dołączyć go ponownie do tej samej lub innej maszyny wirtualnej.  
 
 > [!NOTE]
-> Maszyna wirtualna na platformie Azure używa różnych typów dysku — dysku systemu operacyjnego, lokalnego dysku tymczasowego i opcjonalnych dysków danych. Szczegółowe informacje zawiera artykuł [About Disks and VHDs for Virtual Machines](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Informacje o dyskach i dyskach VHD maszyn wirtualnych). Nie możesz odłączyć dysku systemu operacyjnego, chyba że usuwasz także maszynę wirtualną.
+> Maszyna wirtualna na platformie Azure używa różnych typów dysku — dysku systemu operacyjnego, lokalnego dysku tymczasowego i opcjonalnych dysków danych. Szczegółowe informacje zawiera artykuł [About Disks and VHDs for Virtual Machines](../articles/virtual-machines/linux/managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Informacje o dyskach i dyskach VHD maszyn wirtualnych). Nie możesz odłączyć dysku systemu operacyjnego, chyba że usuwasz także maszynę wirtualną.
 
 ## <a name="find-the-disk"></a>Wyszukiwanie dysku
 Przed odłączeniem dysku od maszyny wirtualnej należy określić numer LUN, który jest identyfikatorem dysku do odłączenia. W tym celu wykonaj następujące kroki:

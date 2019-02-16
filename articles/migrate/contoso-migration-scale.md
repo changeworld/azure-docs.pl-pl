@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: c36572230387ffc33a46913dbcc1259ea65f84f5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bd1761ecf16bbfb0d3fdc354ab1b9fa1f42f9c17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104237"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328583"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso — skalowanie migracji na platformę Azure
 
@@ -147,10 +147,10 @@ Dług techniczny | Brak/niektóre/poważny | Jest element spisu uruchomiona lub 
 Implikacje zapory | T/N | Aplikacji komunikację z Internetem/poza ruchu?  Można je zintegrować z zaporą?
 Problemy z zabezpieczeniami | T/N | Są znane problemy dotyczące zabezpieczeń przy użyciu aplikacji?  Aplikacja używa niezaszyfrowanych danych lub nieaktualne platform?
 Strategia migracji | Rehost/Zrefaktoryzuj/ustalenie/Rebuild | Jakiego rodzaju migracji jest wymagana dla aplikacji? Jak aplikacji będzie można wdrożyć na platformie Azure? [Dowiedz się więcej](contoso-migration-overview.md#migration-strategies).
-Złożoność Technical Preview | od 1 do 5 | Jak złożona jest migracji? Ta wartość powinna być zdefiniowana przez DevOps firmy Contoso i odpowiednich partnerów.
-Poziom zagrożenia w procesie biznesowych | od 1 do 5 | Jak ważne jest aplikacją firmy? Na przykład aplikacji małej grupy roboczej może zostać przypisana wynik, gdy aplikacji krytycznych, używane w całej organizacji, mogą zostać przypisani wynik do 5. Ten wynik będzie miało wpływ na poziom priorytetu migracji.
+Złożoność Technical Preview | 1-5 | Jak złożona jest migracji? Ta wartość powinna być zdefiniowana przez DevOps firmy Contoso i odpowiednich partnerów.
+Poziom zagrożenia w procesie biznesowych | 1-5 | Jak ważne jest aplikacją firmy? Na przykład aplikacji małej grupy roboczej może zostać przypisana wynik, gdy aplikacji krytycznych, używane w całej organizacji, mogą zostać przypisani wynik do 5. Ten wynik będzie miało wpływ na poziom priorytetu migracji.
 Priorytet migracji | 1/2/3 | Jakie migracji priorytet dla aplikacji?
-Migracja o podwyższonym ryzyku  | od 1 do 5 | Co to jest poziom ryzyka dla migracji aplikacji? Ta wartość powinna uzgodnione przez DevOps firmy Contoso i odpowiednich partnerów.
+Migracja o podwyższonym ryzyku  | 1-5 | Co to jest poziom ryzyka dla migracji aplikacji? Ta wartość powinna uzgodnione przez DevOps firmy Contoso i odpowiednich partnerów.
 
 
 
@@ -281,7 +281,7 @@ Oprócz replikowane maszyny wirtualne Usługa Site Recovery wymaga wiele składn
 --- | ---
 **Serwer konfiguracji** | Zazwyczaj maszyny Wirtualnej VMware konfigurowane przy użyciu szablonu OVF.<br/><br/> Składnik serwera konfiguracji służy do koordynowania komunikacji między środowiskiem lokalnym i platformą Azure oraz do zarządzania replikacją danych.
 **Serwer przetwarzania** | Domyślnie instalowany na serwerze konfiguracji.<br/><br/> Składnik serwera przetwarzania odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure storage.<br/><br/> Serwer przetwarzania instaluje także usługę mobilności usługi Azure Site Recovery na maszynach wirtualnych, którą chcesz replikować, i przeprowadza automatyczne odnajdywanie maszyn lokalnych.<br/><br/> Dodatkowe, potrzeba wdrożenia skalowanego autonomicznych serwerów przetwarzania do obsługi dużych ilości ruchu związanego z replikacją.
-**Usługa mobilności** | Agent usługi mobilności jest instalowany na każdej maszynie Wirtualnej VMware, zostaną zmigrowane z usługą Site Recovery.  
+**Mobility Service** | Agent usługi mobilności jest instalowany na każdej maszynie Wirtualnej VMware, zostaną zmigrowane z usługą Site Recovery.  
 
 Firma Contoso potrzebuje ustalenie sposobu wdrażania tych składników, w oparciu o zagadnienia dotyczące wydajności.
 
@@ -292,11 +292,10 @@ Firma Contoso potrzebuje ustalenie sposobu wdrażania tych składników, w oparc
 **Serwer konfiguracji** | Na podstawie szacunku firmy Contoso replikacji 100 = 200 maszyn wirtualnych razem i [określania rozmiaru wymagania dotyczące serwera konfiguracji](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server), Contoso szacowaną potrzeb maszyny serwera konfiguracji w następujący sposób:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięć: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Oprócz wymagania dotyczące rozmiaru Contoso należy upewnij się, że serwer konfiguracji znajduje się optymalnie, w tej samej sieci i segment sieci LAN jako maszyny wirtualne, które będą migrowane.
 **Serwer przetwarzania** | Contoso wdroży autonomiczny serwer dedykowanego procesu o możliwość replikowania maszyn wirtualnych 100 – 200:<br/><br/> Procesor CPU: 16 procesorów wirtualnych Vcpu (2 sockets * 8 rdzeni @ 2,5 GHz)<br/><br/> Pamięć: 32 GB<br/><br/> Dysk pamięci podręcznej: 1 TB<br/><br/> Współczynnik zmian danych: 1 TB do 2 TB.<br/><br/> Serwer przetwarzania będzie ciężko i jako takie powinien znajdować się na hoście ESXi, która może obsłużyć We/Wy dysku, ruch sieciowy i procesora CPU wymagane dla replikacji. Firma Contoso będzie wziąć pod uwagę dedykowanego hosta, w tym celu. 
 **Sieć** | Firmy Contoso ma przeglądowi bieżącej infrastruktury sieci VPN typu lokacja lokacja i decyzję o implementacji usługi Azure ExpressRoute. Implementacja znaczenie krytyczne, ponieważ wówczas zmniejszyć czas oczekiwania i zwiększyć przepustowość do regionu wschodnie stany USA 2 Azure podstawowego firmy Contoso.<br/><br/> **Monitorowanie**: Firma Contoso będzie musiał uważnie monitorować danych napływających z serwera przetwarzania. Jeśli dane przeciążenia przepustowość sieci, firma Contoso będzie należy wziąć pod uwagę [ograniczanie przepustowości serwera przetwarzania](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
-**Magazyn platformy Azure** | W przypadku migracji Contoso musi zidentyfikować właściwego typu i liczbę kont usługi Azure storage.  Usługa Site Recovery replikuje dane maszyny Wirtualnej do usługi Azure storage.<br/><br/> Usługa Site Recovery można replikować na standardowy lub premium (SSD) konta usługi storage.<br/><br/> Aby zdecydować, magazynu, należy przejrzeć Contoso [limity przestrzeni dyskowej](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)i wziąć pod uwagę przewidywanego wzrostu i zwiększone użycie wraz z upływem czasu. Biorąc pod uwagę szybkość i priorytetów migracji, Contoso zdecydował się na użycie kont usługi premium storage.<br/><br/> One utworzysz i ponowne użycie wielu kont magazynu w trakcie migracji.
-Firma Contoso dokonała decyzję, aby korzystać z dysków zarządzanych dla wszystkich maszyn wirtualnych, które są wdrażane na platformie Azure.  Operacje We/Wy wymagane określi, jeśli dyski będzie standardowa (HDD) lub Premium (SSD).<br/>.<br/>
+**Magazyn platformy Azure** | W przypadku migracji Contoso musi zidentyfikować właściwego typu i liczbę kont usługi Azure storage.  Usługa Site Recovery replikuje dane maszyny Wirtualnej do usługi Azure storage.<br/><br/> Usługa Site Recovery można replikować na standardowy lub premium (SSD) konta usługi storage.<br/><br/> Aby zdecydować, magazynu, należy przejrzeć Contoso [limity przestrzeni dyskowej](../virtual-machines/windows/disks-types.md)i wziąć pod uwagę przewidywanego wzrostu i zwiększone użycie wraz z upływem czasu. Biorąc pod uwagę szybkość i priorytetów migracji, Contoso scrumowy zdecydował się korzystać z dysków SSD w warstwie premium<br/><br/>
+Firma Contoso dokonała decyzję, aby korzystać z dysków zarządzanych dla wszystkich maszyn wirtualnych, które są wdrażane na platformie Azure.  Operacje We/Wy wymagane określi, jeśli dyski będzie standardowych dysków Twardych, SSD w warstwie standardowa lub Premium (SSD).<br/><br/>
 
-
-#### <a name="data-migration-service"></a>Data Migration Service 
+#### <a name="data-migration-service"></a>Data Migration Service
 
 Azure Database Migration Service (DMS) jest w pełni zarządzana usługa, która umożliwia bezproblemową migrację z wielu źródłowych baz danych na danych na platformie Azure, przy minimalnych przestojach.
 

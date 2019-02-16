@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d15e3773a9b6e3dceb0799d206070730675c211d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492287"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310970"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Usuwanie magazynu usługi Recovery Services
 
@@ -31,7 +31,7 @@ Jeśli masz już magazyn usługi Recovery Services, Otwórz, przejdź do kroku d
 
    ![Tworzenie magazynu usługi Recovery Services — krok 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
-   Zostanie wyświetlona lista magazynów usługi Recovery Services. 
+   Zostanie wyświetlona lista magazynów usługi Recovery Services.
 
    ![Wybierz magazyn z listy](./media/backup-azure-delete-vault/choose-vault-to-delete-.png)
 
@@ -50,7 +50,7 @@ Jeśli masz już magazyn usługi Recovery Services, Otwórz, przejdź do kroku d
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>Usuwanie magazynu usługi Recovery Services przy wymuszonego
 
-Aby usunąć magazyn usługi Recovery Services, przy wymuszonego, można użyć programu PowerShell. Przy wymuszonego oznacza, że magazyn usługi Recovery Services, a wszystkie skojarzone dane kopii zapasowej, zostaną trwale usunięte. 
+Aby usunąć magazyn usługi Recovery Services, przy wymuszonego, można użyć programu PowerShell. Przy wymuszonego oznacza, że magazyn usługi Recovery Services, a wszystkie skojarzone dane kopii zapasowej, zostaną trwale usunięte.
 
 > [!Warning]
 > Jeśli przy użyciu programu PowerShell, aby usunąć magazyn usługi Recovery Services, należy się upewnić, że chcesz trwale usunąć wszystkie dane kopii zapasowej w magazynie.
@@ -95,7 +95,7 @@ Aby usunąć magazyn usługi Recovery Services:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
-   
+
 1. Zaloguj się do Twojej subskrypcji w witrynie Azure portal i sprawdź, czy magazyn zostanie usunięty.
 
 
@@ -106,7 +106,6 @@ Aby ręcznie usunąć zależności magazynu, należy usunąć konfigurację mię
 * Kopii zapasowych usługi Azure Storage (Azure Files)
 * SQL Server podczas tworzenia kopii zapasowych maszyn wirtualnych platformy Azure
 * Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure
-* Kopie zapasowe agenta usług odzyskiwania Microsoft Azure
 
 Użyj **infrastruktura zapasowa** menu (zobacz obraz) dla:
 
@@ -125,7 +124,7 @@ Użyj **infrastruktura zapasowa** menu (zobacz obraz) dla:
 
 1. Dla wszystkich elementów na liście, kliknij prawym przyciskiem myszy element i wybierz z menu kontekstowego **Zatrzymaj kopię zapasową**.
 
-    ![Wybierz typ kopii zapasowej](./media/backup-azure-delete-vault/stop-backup-item.png) 
+    ![Wybierz typ kopii zapasowej](./media/backup-azure-delete-vault/stop-backup-item.png)
 
     Zostanie otwarte menu Zatrzymaj kopię zapasową.
 
@@ -154,9 +153,9 @@ Użyj **infrastruktura zapasowa** menu (zobacz obraz) dla:
 
 ## <a name="removing-azure-backup-server-or-dpm"></a>Usuwanie usługi Azure Backup Server lub programu DPM
 
-1. W menu pulpitu nawigacyjnego magazynu, przewiń w dół do sekcji Zarządzanie, a następnie kliknij przycisk **infrastruktura zapasowa**. 
+1. W menu pulpitu nawigacyjnego magazynu, przewiń w dół do sekcji Zarządzanie, a następnie kliknij przycisk **infrastruktura zapasowa**.
 
-1. W podmenu, kliknij przycisk **serwery zarządzania kopiami zapasowymi** Aby wyświetlić serwer serwerom kopia zapasowa Azure i programu System Center DPM. można zatrzymać i usunąć serwery plików platformy Azure, programów SQL Server na maszynie Wirtualnej platformy Azure i maszyn wirtualnych platformy Azure. 
+1. W podmenu, kliknij przycisk **serwery zarządzania kopiami zapasowymi** Aby wyświetlić serwer serwerom kopia zapasowa Azure i programu System Center DPM. można zatrzymać i usunąć serwery plików platformy Azure, programów SQL Server na maszynie Wirtualnej platformy Azure i maszyn wirtualnych platformy Azure.
 
     ![Wybierz swój magazyn, aby otworzyć jego pulpit nawigacyjny](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 

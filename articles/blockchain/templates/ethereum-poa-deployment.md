@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 47f9dfea24dc3134e6a2f476affaaff7e60efe8c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260384"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313572"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Konsorcjum dowód uwierzytelniania Ethereum
 
@@ -148,7 +148,7 @@ Aby wykonać dowolnego rodzaju transakcji za pośrednictwem DApp nadzoru, należ
 Po zainstalowaniu MetaMask, przejdź do DApp nadzoru w przeglądarce.  Adres URL można znaleźć w wiadomości e-mail z potwierdzeniem wdrażania lub za pośrednictwem witryny Azure portal w danych wyjściowych wdrożenia.  Jeśli nie masz portfela w przeglądarce, zainstalowane nie można wykonać żadnych innych akcji; jednak użytkownik nadal będzie można odczytać stanu administratora.  
 
 #### <a name="becoming-an-admin"></a>Staje się administratorem
-Jeśli jesteś pierwszego elementu członkowskiego, który jest wdrożony w sieci, następnie automatycznie zostaniesz administratorem i węzły parzystości będzie wyświetlana jako moduły weryfikacji.  Czy dołączenie do sieci, należy pobrać pod głosowanie jako administrator większością (większe niż 50%) z istniejącego zestawu administracyjnego.  Jeśli nie chcesz stać się z administratorem, aby węzły będą nadal synchronizacji i sprawdzania poprawności łańcucha bloków; Jednakże nie będą używane w bloku procesu tworzenia. Aby rozpocząć proces głosu, aby zostać administratorem, kliknij przycisk __Nominate__ i wprowadź swój adres Ethereum i alias.
+Jeśli jesteś pierwszego elementu członkowskiego, który jest wdrożony w sieci, następnie automatycznie zostaniesz administratorem i węzły parzystości będzie wyświetlana jako moduły weryfikacji.  Jeśli są przyłączanie się do sieci, konieczne będzie uzyskiwanie oceniane jako administrator większością (większe niż 50%) z istniejącego zestawu administracyjnego.  Jeśli nie chcesz stać się z administratorem, aby węzły będą nadal synchronizacji i sprawdzania poprawności łańcucha bloków; Jednakże nie będą używane w bloku procesu tworzenia. Aby rozpocząć proces głosu, aby zostać administratorem, kliknij przycisk __Nominate__ i wprowadź swój adres Ethereum i alias.
 
 ![Nominowanie](./media/ethereum-poa-deployment/governance-dapp-nominate.png)
 
@@ -258,9 +258,9 @@ Należy zauważyć, że maszyna wirtualna i warstwa magazynowania wpłynie na wy
 
   Numer SKU maszyny wirtualnej|Warstwy magazynowania|Cena|Przepływność|Opóźnienie
   ---|---|---|---|---
-  F1|Standardowa, SSD|Niska|Niska|Wysoka
+  F1|Standardowa, SSD|niska|niska|Wysoka
   D2_v3|Standardowa, SSD|średnie|średnie|średnie
-  F16s|Premium, SSD|Wysoka|Wysoka|Niska
+  F16s|Premium, SSD|Wysoka|Wysoka|niska
 
 Poniżej przedstawiono przykładowe wdrożenie: ![rozmiaru i wydajności sieci](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
@@ -359,7 +359,7 @@ Przy użyciu wdrożenia na podstawie publicznego adresu IP to pierwszym krokiem 
 
     -  Wybierz taką samą liczbę węzłów modułu sprawdzania poprawności, jak w pozostałych elementów członkowskich w sieci, do zapewnienia właściwej reprezentacji
 
-    -  Użyj tego samego adresu Ethereum, który został podany w [poprzedniego kroku](#step-1-add-the-new-admin)
+    -  Użyj tego samego adresu Ethereum, który został podany w poprzednim kroku
 
     -  Przekaż w określonych *adresu Url danych konsorcjum* na *ustawienia Ethereum* kartę
 

@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7919a84ffe948c9b6a8f68fc1372f1976c09bc79
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864285"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312195"
 ---
 # <a name="describe-images-with-human-readable-language"></a>Opisz obrazów za pomocą języka czytelny dla człowieka
 
-Algorytmy przetwarzania obrazów analizowanie zawartości obrazu. Ta analiza stanowi podstawę „opisu” wyświetlanego jako język zrozumiały dla użytkownika w formie pełnych zdań. Opis zawiera podsumowanie zawartości obrazu. Algorytmy przetwarzania obrazów Generowanie opisy różnych oparte na funkcji visual zidentyfikowane na obrazie. Każdy opis jest szacowana, a współczynnik ufności wygenerowany. Następnie zwracana jest lista uporządkowana od najwyższego do najniższego współczynnika ufności.
+Przetwarzanie obrazów można analizować obrazu i wygenerować zdania zrozumiałą dla użytkownika, który opisuje jego zawartość. Algorytm faktycznie retruns kilka opisy na podstawie różnych funkcji visual i każdy opis otrzymuje współczynnik ufności. Końcowych danych wyjściowych znajduje się lista Opisy uporządkowane od najwyższego do najniższego zaufania.
 
 ## <a name="image-description-example"></a>Przykład opis obrazu
 

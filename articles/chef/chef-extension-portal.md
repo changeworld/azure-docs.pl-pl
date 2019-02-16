@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 336ac6b81a56797ad1c1254322dbeec3e36914f3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358154"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327552"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Zainstaluj klienta programu Chef w witrynie Azure portal
 Można dodać rozszerzenia klienta Chef bezpośrednio do komputera z systemem Linux lub Windows w witrynie Azure portal. W tym artykule przedstawiono proces, korzystając z nowej maszyny wirtualnej systemu Linux.
@@ -53,14 +53,14 @@ W tej sekcji najpierw użyjesz witryny Azure portal do utworzenia maszyny z syst
 1. Na **podstawy** karcie, określ następujące wartości, a następnie wybierz **OK**.
 
     - **Nazwa** — wprowadź nazwę dla nowej maszyny wirtualnej.
-    - **Typ dysku maszyny Wirtualnej** -określ **SSD** lub **HDD** dla typu dysku magazynu. Aby uzyskać więcej informacji na temat typów dysków maszyny wirtualnej na platformie Azure, zobacz artykuł [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](/azure/virtual-machines/windows/premium-storage).
+    - **Typ dysku maszyny Wirtualnej** -określ **SSD** lub **HDD** dla typu dysku magazynu. Aby uzyskać więcej informacji na temat typów dysków maszyny wirtualnej na platformie Azure, zobacz artykuł [wybierz typ dysku](../virtual-machines/windows/disks-types.md).
     - **Nazwa użytkownika** — wprowadź nazwę użytkownika, któremu przyznano uprawnienia administratora na maszynie wirtualnej.
     - **Typ uwierzytelniania** — wybierz tę opcję **hasło**. Możesz również wybrać **klucz publiczny SSH**i podaj wartość klucza publicznego SSH. Dla celów tej wersji demonstracyjnej (i na zrzutach ekranu) **hasło** jest zaznaczone.
     - **Hasło** i **Potwierdź hasło** -wprowadź hasło dla użytkownika.
     - **Zaloguj się przy użyciu usługi Azure Active Directory** — wybierz tę opcję **wyłączone**.
     - **Subskrypcja** — wybierz odpowiednią subskrypcję platformy Azure, jeśli masz więcej niż jeden.
     - **Grupa zasobów** — wprowadź nazwę grupy zasobów.
-    - **Lokalizacja** — wybierz tę opcję **wschodnie stany USA**.
+    - **Location** (Lokalizacja) — Wybierz pozycję **East US** (Wschodnie stany USA).
 
     ![Podstawowe informacje o karcie podczas tworzenia maszyny wirtualnej](./media/chef-extension-portal/add-vm-basics.png)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506791"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330787"
 ---
 # <a name="azure-storage-redundancy"></a>Nadmiarowość magazynu platformy Azure
 
@@ -48,7 +48,7 @@ Aby uzyskać informacje dla każdej opcji nadmiarowości, zobacz [cennik usługi
 Aby uzyskać informacje o usłudze Azure Storage gwarantuje potrzeby trwałości i dostępności, zobacz [umowę SLA usługi Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Usługa Premium Storage obsługuje tylko lokalnie nadmiarowym (LRS). Aby uzyskać informacje o usłudze Premium Storage, zobacz [usługi Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../../virtual-machines/windows/premium-storage.md) (Magazyn Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure).
+> Usługa Premium Storage obsługuje tylko lokalnie nadmiarowym (LRS).
 
 ## <a name="changing-replication-strategy"></a>Zmiana strategię replikacji
 Firma Microsoft zezwala na zmianę strategii replikacji konta magazynu przy użyciu [witryny Azure portal](https://portal.azure.com/), [programu Azure Powershell](storage-powershell-guide-full.md), [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), lub jeden z wielu [ Biblioteki klienckie systemu Azure](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools). Zmiana typu replikacji konta magazynu nie skutkuje czas przestoju.

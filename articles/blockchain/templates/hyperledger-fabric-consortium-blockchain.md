@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: 884f6a81796341e274027095691585212d5a3749
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54830298"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328031"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Sieci konsorcjum Hyperledger Fabric
 
@@ -113,7 +113,7 @@ W **konfiguracja sieci szkieletowej**, skonfiguruj network Activity block size i
 | Nazwa parametru | Opis | Dozwolone wartości |
 |---|---|---|
 **Typ skalowania**|Typ wdrożenia pojedynczej maszyny wirtualnej z wieloma kontenerami lub wielu maszyn wirtualnych w modelu skalowalnego w poziomie.|Jednej maszyny Wirtualnej lub wielu maszyn wirtualnych |
-**Typ dysku maszyny Wirtualnej**|Typ magazynu kopii każdego wdrożonego węzła. <br/> Aby dowiedzieć się więcej na temat magazynu, odwiedź stronę [wprowadzenie do usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-introduction) i [usługi Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).|Standardowa, SSD <br/> Premium, SSD |
+**Typ dysku maszyny Wirtualnej**|Typ magazynu kopii każdego wdrożonego węzła. <br/> Aby dowiedzieć się więcej na temat typów dostępnego miejsca na dysku, odwiedź stronę [wybierz typ dysku](../../virtual-machines/windows/disks-types.md).|Standardowa, SSD <br/> Premium, SSD |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Wdrażanie wielu maszyn wirtualnych (dodatkowe ustawienia)
 

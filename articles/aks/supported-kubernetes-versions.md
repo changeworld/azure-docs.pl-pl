@@ -5,14 +5,14 @@ services: container-service
 author: sauryadas
 ms.service: container-service
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 02/15/2018
 ms.author: saudas
-ms.openlocfilehash: 3e8342a719bf9ae7174195f88b97972d7f13193c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 37a9712749a1575f81086d28ad461a665bef36d9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54465789"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313453"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Obsługiwane wersje rozwiązania Kubernetes w usłudze Azure Kubernetes Service (AKS)
 
@@ -27,11 +27,11 @@ Usługa AKS obsługuje cztery wersje pomocnicze platformy Kubernetes:
 - Bieżąca wersja pomocnicza, która jest ogólnie nadrzędnego (n)
 - Trzy poprzednie wersje pomocnicze. Każda obsługiwana wersja pomocnicza obsługuje także dwie stabilne poprawki.
 
-Na przykład, jeśli wprowadzono AKS *1.11.x* obecnie Pomoc techniczna jest świadczona również dla *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*, *1.8.e* + *1.8F* (gdzie wersji własną literą poprawki są dwie kompilacje najnowszy stabilny).
+Na przykład, jeśli wprowadzono AKS *1.12.x* obecnie Pomoc techniczna jest świadczona również dla *1.11.a* + *1.11.b*, *1.10.c*  +  *1,10 d*, *1.9.e* + *1.9f* (gdzie wersji własną literą poprawki są dwie kompilacje najnowszy stabilny).
 
-Po wprowadzeniu nowej wersji pomocniczej obsługa najstarszej wersji pomocniczej i wydań poprawek jest wycofywana. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji anons jest nawiązywane za pomocą [kanałów aktualizacji usługi Azure][azure-update-channel]. W przykładzie powyżej gdzie *1.11.x* jest zwolniony, wycofane wersje są *1.7.g* + *1.7.h*.
+Po wprowadzeniu nowej wersji pomocniczej obsługa najstarszej wersji pomocniczej i wydań poprawek jest wycofywana. 15 dni przed wprowadzeniem nowych wersji pomocniczej i wycofanie mającej się ukazać wersji anons jest nawiązywane za pomocą [kanałów aktualizacji usługi Azure][azure-update-channel]. W przykładzie powyżej gdzie *1.12.x* jest zwolniony, wycofane wersje są *1.8.g* + *1.8.h*.
 
-Podczas wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany na wersję pomocniczą n-1 i najnowszą poprawkę. Na przykład, jeśli obsługuje AKS *1.11.x*, *1.10.a* + *1.10.b*, *1.9.c* + *1.9 d* , *1.8.e* + *1.8F*, jest wersja domyślna dla nowych klastrów *1.10.b*.
+Podczas wdrażania klastra AKS w portalu lub za pomocą interfejsu wiersza polecenia platformy Azure klaster jest zawsze ustawiany na wersję pomocniczą n-1 i najnowszą poprawkę. Na przykład, jeśli obsługuje AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +   *1,10 d*, *1.9.e* + *1.9f*, jest wersja domyślna dla nowych klastrów *1.10.b*.
 
 ## <a name="list-currently-supported-versions"></a>Lista aktualnie obsługiwane wersje
 
@@ -41,20 +41,19 @@ Aby dowiedzieć się, jakie wersje są obecnie dostępne dla Twojej subskrypcji 
 az aks get-versions --location eastus --output table
 ```
 
-Dane wyjściowe są podobne do poniższego przykładu, który pokazuje tę wersję rozwiązania Kubernetes *1.12.4* jest dostępny do najnowszej wersji:
+Dane wyjściowe są podobne do poniższego przykładu, który pokazuje tę wersję rozwiązania Kubernetes *1.12.5* jest dostępny do najnowszej wersji:
 
 ```
 KubernetesVersion    Upgrades
 -------------------  -----------------------
-1.12.4               None available
-1.11.6               1.12.4
-1.11.5               1.11.6, 1.12.4
-1.10.12              1.11.5, 1.11.6
-1.10.9               1.10.12, 1.11.5, 1.11.6
+1.12.5               None available
+1.12.4               1.12.5
+1.11.7               1.12.4, 1.12.5
+1.11.6               1.11.7, 1.12.4, 1.12.5
+1.10.12              1.11.6, 1.11.7
+1.10.9               1.10.12, 1.11.6, 1.11.7
 1.9.11               1.10.9, 1.10.12
 1.9.10               1.9.11, 1.10.9, 1.10.12
-1.8.15               1.9.10, 1.9.11
-1.8.14               1.8.15, 1.9.10, 1.9.11
 ```
 
 ## <a name="faq"></a>Często zadawane pytania
@@ -63,8 +62,8 @@ KubernetesVersion    Upgrades
 
 Jeśli użytkownik pracuje na *n-4* wersji, są z poziomu usługi. Jeśli uaktualnienie z wersji n-4 do n-3 zakończy się powodzeniem, jesteś w poziomu usługi. Na przykład:
 
-- W przypadku obsługiwanych wersji usługi AKS *1.10.a* + *1.10.b*, *1.9.c* + *1.9d*,  *1.8.e* + *1.8F* i znajdują się na *1.7.g* lub *1.7.h*, znajdą się poza poziomu usługi.
-- Jeśli uaktualnienie z *1.7.g* lub *1.7.h* do *1.8.e* lub *1.8.f* zakończy się powodzeniem, się ponownie w celu poziomu usługi.
+- W przypadku obsługiwanych wersji usługi AKS *1.12.x*, *1.11.a* + *1.11.b*, *1.10.c*  +  *1,10 d*, i *1.9.e* + *1.9f* i znajdują się na *1.8.g* lub *1.8.h*, znajdą się poza poziomu usługi.
+- Jeśli uaktualnienie z *1.8.g* lub *1.8.h* do *1.9.e* lub *1.9.f* zakończy się powodzeniem, się ponownie w celu poziomu usługi.
 
 Uaktualnienia do wersji starszej niż *n-4* nie są obsługiwane. W takich przypadkach firma Microsoft zaleca klientom tworzenie nowych klastrów usługi AKS i ponownie wdrożyć swoje obciążenia.
 

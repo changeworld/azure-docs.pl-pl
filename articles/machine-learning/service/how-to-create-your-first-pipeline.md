@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4698268d8e7798d0664d9eb6c33862d9641ff9fc
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: f5d453fbacb44105c491c9e69085a219099943fa
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895588"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326912"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>Tworzenie i uruchamianie potoku uczenia maszynowego przy użyciu zestawu SDK usługi Azure Machine Learning
 
@@ -339,7 +339,7 @@ Możesz opublikować potoku, aby uruchomić go później przy użyciu różnych 
 
 Wszystkie opublikowane potoki zawierają punktu końcowego REST. Ten punkt końcowy wywołuje uruchomienia potoku z systemów zewnętrznych, takich jak klienci-Python. Ten punkt końcowy umożliwia "zarządzanych powtarzalności" w zadaniu wsadowym, oceniania i ponownego trenowania scenariuszy.
 
-Aby wywołać przebieg potoku poprzedniego, potrzebujesz nagłówka token uwierzytelniania usługi Azure Active Directory zgodnie z opisem w [klasy AzureCliAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py).
+Aby wywołać przebieg potoku poprzedniego, potrzebujesz nagłówka token uwierzytelniania usługi Azure Active Directory zgodnie z opisem w [klasy AzureCliAuthentication](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.azurecliauthentication?view=azure-ml-py) lub Dowiedz się więcej o [uwierzytelniania w usłudze Azure Machine Nauka](https://aka.ms/pl-restep-auth) notesu.
 
 ```python
 response = requests.post(published_pipeline1.endpoint, 

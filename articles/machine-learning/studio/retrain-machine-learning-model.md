@@ -1,7 +1,7 @@
 ---
-title: Ponowne szkolenie modelu usługi Machine Learning Studio
+title: Ponowne szkolenie i wdrażanie usługi sieci web
 titleSuffix: Azure Machine Learning Studio
-description: Dowiedz się, jak ponowne szkolenie modelu i zaktualizować usługę sieci Web, aby używać nowo uczonego modelu w usłudze Azure Machine Learning.
+description: Dowiedz się, jak zaktualizować usługę sieci web do używania nowo uczony model, w usłudze Azure Machine Learning Studio uczenia maszynowego.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,84 +9,186 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
-ms.date: 04/19/2017
-ms.openlocfilehash: f7558876391d25d2f6f3dd1fede4cb0d13d72bf0
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/14/2019
+ms.openlocfilehash: b57dd40c8610953563a3d5b8861e144d775b4eb7
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236264"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330515"
 ---
-# <a name="retrain-an-azure-machine-learning-studio-model"></a>Ponowne szkolenie modelu usługi Azure Machine Learning Studio
-W ramach procesu operacjonalizacji modeli uczenia maszynowego w usłudze Azure Machine Learning model jest uczony i zapisany. Możesz następnie użyć go do utworzenia predykcyjne usługi sieci Web. Usługi sieci Web mogą być następnie używane w witrynach sieci web, pulpity nawigacyjne i aplikacje mobilne. 
+# <a name="retrain-and-deploy-a-machine-learning-model"></a>Ponowne szkolenie i wdrożyć model uczenia maszynowego
 
-Modele utworzone za pomocą usługi Machine Learning zwykle nie są statyczne. Nowe dane staje się dostępny, lub gdy konsumenta interfejsu API ma swoje własne dane modelu musi być retrained. 
+Ponowne szkolenie jest jednym ze sposobów, aby upewnić się, że modele uczenia maszynowego pozostają dokładne i oparte na dostępnych danych najbardziej odpowiednie. W tym artykule pokazano, jak ponowne szkolenie i wdrożyć usługi machine learning model jako nowej usługi sieci web w programie Studio. Jeśli szukasz doskonalenie klasyczna usługa sieci web, [wyświetlić w tym artykule.](retrain-classic-web-service.md)
 
-Ponowne szkolenie może często występować. Dzięki funkcji programowe ponowne Trenowanie interfejsu API możesz programowo Ponowne szkolenie modelu przy użyciu interfejsów API do ponownego trenowania i zaktualizować usługę sieci Web przy użyciu nowo trenowanego modelu. 
+W tym artykule przyjęto założenie, że masz już predykcyjna usługa internetowa wdrożona. Jeśli nie masz jeszcze predykcyjna usługa internetowa, [Dowiedz się, jak wdrożyć usługę sieci web Studio w tym miejscu.](publish-a-machine-learning-web-service.md)
 
-W tym dokumencie opisano proces ponownego trenowania i dowiesz się, jak używać interfejsów API do ponownego trenowania.
+Wykonamy następujące kroki, aby ponowne szkolenie i wdrażanie usługi machine learning nowej usługi sieci web:
 
-## <a name="why-retrain-defining-the-problem"></a>Dlaczego Ponowne szkolenie: Definiowanie problemu
-W ramach uczenia procesu uczenia maszynowego model jest uczony przy użyciu zestawu danych. Modele utworzone za pomocą usługi Machine Learning zwykle nie są statyczne. Nowe dane staje się dostępny, lub gdy konsumenta interfejsu API ma swoje własne dane modelu musi być retrained.
+1. Wdrażanie **ponownego trenowania usługi sieci web**
+1. Szkolenie, nowy model przy użyciu usługi **ponownego trenowania usługi sieci web**
+1. Aktualizuj istniejącą **eksperyment predykcyjny** do użycia w nowym modelu
 
-W tych scenariuszach programowego interfejsu API zapewnia wygodny sposób lub konsumenta interfejsów API można utworzyć klienta, które mogą na podstawie jednorazowe lub regularne Ponowne szkolenie modelu przy użyciu własnych danych. Są następnie oceniać wyniki ponownego trenowania i zaktualizuj interfejs API usługi sieci Web do korzystania z nowo uczonego modelu.
+## <a name="deploy-the-retraining-web-service"></a>Wdrażanie ponownego trenowania usługi sieci web
 
-> [!NOTE]
-> Jeśli masz istniejące eksperymentu szkolenia i usługi sieci Web nowej można wyewidencjonować ponownego próbkowania istniejącej usługi internetowej predykcyjne zamiast wykonać czynności opisane w przewodniku wymienione w poniższej sekcji.
-> 
-> 
+Usługi sieci web ponownego trenowania umożliwia ponowne szkolenie modelu za pomocą nowego zestawu parametrów, takich jak nowe dane i zapisz go na później. Po nawiązaniu połączenia **danych wyjściowych usługi sieci Web** do **Train Model**, eksperymentu szkolenia wyświetla nowy model do użycia.
 
-## <a name="end-to-end-workflow"></a>Kompletny przepływ pracy
-Proces obejmuje następujące składniki: Opublikowane eksperymentu szkolenia i eksperyment predykcyjny jako usługę sieci Web. Aby włączyć ponownym szkoleniem trenowanego modelu, eksperymentu szkolenia muszą być publikowane jako usługi sieci Web z danymi wyjściowymi uczonego modelu. Dzięki temu dostęp do interfejsu API do modelu do ponownego trenowania. 
+Aby wdrożyć ponownego trenowania usługę sieci web, wykonaj następujące kroki:
 
-Poniższe kroki dotyczą zarówno nowe oraz klasyczne usługi sieci Web:
+1. Połącz **danych wejściowych usługi internetowej** moduł do usługi danych wejściowych. Zazwyczaj należy upewnić się, że dane wejściowe są przetwarzane w taki sam sposób jak oryginalne dane szkoleniowe.
+1. Połącz **danych wyjściowych usługi sieci Web** modułu z danymi wyjściowymi swoje **Train Model**.
+1. Jeśli masz **Evaluate Model** modułu, można połączyć z **danych wyjściowych usługi sieci Web** modułu w danych wyjściowych wyników oceny
+1. Uruchom eksperyment.
 
-Tworzenie początkowej predykcyjną usługę sieci Web:
+    Po uruchomieniu eksperymentu, wynikowy przepływu pracy powinna być podobna do poniższej ilustracji:
 
-* Tworzenie eksperymentu szkolenia
-* Tworzenie eksperymentu predykcyjnego sieci web
-* Wdrażanie predykcyjna usługa internetowa
+    ![Wynikowy przepływu pracy](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
-Ponowne szkolenie usługi sieci Web:
+    Teraz możesz wdrożyć eksperymentu szkolenia jako ponownego trenowania usługę sieci web, która generuje uczonego modelu i wyniki oceny modelu.
 
-* Aktualizuj eksperymentu szkolenia, aby umożliwić ponowne trenowanie
-* Wdrażanie ponownego trenowania usługi sieci web
-* Ponowne szkolenie modelu przy użyciu kodu usługę wykonywania wsadowego
+1. W dolnej części obszaru roboczego eksperymentu, kliknij przycisk **ustawić usługę sieci Web**
+1. Wybierz **wdrażanie usługi sieci Web [New]**. W portalu usług sieci Web Azure Machine Learning zostanie otwarty na **wdrażanie usługi sieci Web** strony.
+1. Wpisz nazwę usługi sieci web, a następnie wybierz plan płatności.
+1. Wybierz pozycję **Wdróż**.
 
-> [!NOTE] 
-> Aby wdrożyć nową usługę sieci web musi masz wystarczające uprawnienia w ramach subskrypcji, do której możesz wdrażanie usługi sieci web. Aby uzyskać więcej informacji, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md). 
+## <a name="retrain-the-model"></a>Ponowne szkolenie modelu
 
-Jeśli wdrożono klasycznej usługi sieci Web:
+W tym przykładzie używamy C# do tworzenia aplikacji ponownego trenowania. Umożliwia także przykładowy kod języka Python lub R, aby wykonać to zadanie.
 
-* Utwórz nowy punkt końcowy na predykcyjną usługę sieci Web
-* Stosowanie poprawek do adresu URL i kodu
-* Użyj adresu URL poprawki, aby wskazywały nowy punkt końcowy retrained modelu 
+Do wywoływania interfejsów API do ponownego trenowania, wykonaj następujące kroki:
 
-Jeśli napotkasz problemy, ponownego trenowania klasyczna usługa sieci Web, zobacz [Rozwiązywanie problemów z ponownym szkoleniem usługi Azure Machine Learning klasyczna usługa sieci Web](troubleshooting-retraining-models.md).
+1. Tworzenie C# konsoli aplikacji w programie Visual Studio: **Nowe** > **projektu** > **Visual C#**   >  **Windows Classic Desktop**  >   **Aplikacja konsoli (.NET Framework)**.
+1. Zaloguj się do portalu usług sieci Web Machine Learning.
+1. Kliknij usługę sieci web, którą pracujesz z.
+1. Kliknij przycisk **używanie**.
+1. W dolnej części **zużywania** strony w **przykładowy kod** kliknij **partii**.
+1. Skopiuj przykładowy kod C# dla wykonywania wsadowego i wkleić go do pliku Program.cs. Upewnij się, że przestrzeń nazw pozostaną niezmienione.
 
-Jeśli wdrożono usługę sieci Web nowy:
+Dodaj pakiet NuGet Microsoft.AspNet.WebApi.Client, jak określono w komentarzach. Aby dodać odwołanie do Microsoft.WindowsAzure.Storage.dll, użytkownik może być konieczne zainstalowanie [biblioteki klienta usługi Azure Storage](https://www.nuget.org/packages/WindowsAzure.Storage).
 
-* Zaloguj się do swojego konta usługi Azure Resource Manager
-* Pobierz definicję usługi sieci Web
-* Eksportowanie definicji usługi sieci Web jako dane JSON
-* Aktualizuj odwołanie do `ilearner` obiektów blob w formacie JSON
-* Importuj dane JSON w definicji usługi sieci Web
-* Aktualizacja usługi sieci Web za pomocą nowych definicji usługi sieci Web
+Poniższy zrzut ekranu przedstawia **zużywania** strony w portalu usług sieci Web Azure Machine Learning.
 
-Proces konfigurowania szkoleniem klasyczna usługa sieci Web obejmuje następujące czynności:
+![Używanie stron](media/retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png)
 
-![Ponowne szkolenie Przegląd procesu][1]
+### <a name="update-the-apikey-declaration"></a>Aktualizacja deklaracji apikey
 
-Proces konfigurowania szkoleniem usługi sieci Web nowej obejmuje następujące czynności:
+Znajdź **apikey** deklaracji:
 
-![Ponowne szkolenie Przegląd procesu][7]
+    const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-## <a name="other-resources"></a>Inne zasoby
-* [Ponowne szkolenie i aktualizowania usługi Azure Machine Learning modeli przy użyciu usługi Azure Data Factory](https://azure.microsoft.com/blog/retraining-and-updating-azure-machine-learning-models-with-azure-data-factory/)
-* [Tworzenie wielu modeli usługi Machine Learning i sieci web punktów końcowych usługi podstawie jednego eksperymentu przy użyciu programu PowerShell](create-models-and-endpoints-with-powershell.md)
-* [AML ponowne Trenowanie modeli przy użyciu interfejsów API](https://www.youtube.com/watch?v=wwjglA8xllg) wideo pokazano, jak ponowne trenowanie modeli uczenia maszynowego utworzonych w usłudze Azure Machine Learning za pomocą ponownego trenowania interfejsów API i programu PowerShell.
+W **informacje podstawowe użycie** części **zużywania** stronie Znajdź klucz podstawowy i skopiuj go do **apikey** deklaracji.
 
-<!--image links-->
-[1]: ./media/retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE01.png
-[7]: ./media/retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE07.png
+### <a name="update-the-azure-storage-information"></a>Zaktualizuj informacje o usłudze Azure Storage
 
+Przykładowy kod BES służy do przekazywania pliku z dysku lokalnego (na przykład "C:\temp\CensusInput.csv") do usługi Azure Storage, przetwarza je i zapisuje wyniki z powrotem do usługi Azure Storage.
+
+1. Logowanie do witryny Azure Portal
+1. W kolumnie nawigacji po lewej stronie kliknij **więcej usług**, wyszukaj **kont magazynu**, a następnie wybierz ją.
+1. Z listy kont magazynu wybierz jeden do przechowywania retrained modelu.
+1. W kolumnie nawigacji po lewej stronie kliknij **klucze dostępu**.
+1. Skopiuj i Zapisz **podstawowy klucz dostępu**.
+1. W kolumnie nawigacji po lewej stronie kliknij **kontenery**.
+1. Wybierz istniejący kontener, lub Utwórz nową i Zapisz nazwę.
+
+Znajdź *StorageAccountName*, *StorageAccountKey*, i *StorageContainerName* deklaracji i zaktualizuj wartości, które zostały zapisane w portalu.
+
+    const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
+    const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
+    const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage container name
+
+Możesz także sprawdzić plik wejściowy jest dostępny w lokalizacji, który określisz w kodzie.
+
+### <a name="specify-the-output-location"></a>Określanie lokalizacji wyjściowej
+
+Po określeniu lokalizacji danych wyjściowych w ładunku żądania rozszerzenie pliku, który jest określony w *RelativeLocation* muszą być określone jako `ilearner`.
+
+    Outputs = new Dictionary<string, AzureBlobDataReference>() {
+        {
+            "output1",
+            new AzureBlobDataReference()
+            {
+                ConnectionString = storageConnectionString,
+                RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with the location you want to use for your output file and a valid file extension (usually .csv for scoring results or .ilearner for trained models)*/
+            }
+        },
+
+Oto przykład danych wyjściowych ponownego trenowania:
+
+![Ponowne szkolenie danych wyjściowych](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE06.png)
+
+### <a name="evaluate-the-retraining-results"></a>Ocena ponownego trenowania wyników
+
+Po uruchomieniu aplikacji, dane wyjściowe obejmują adres URL i token sygnatury dostępu współdzielonego, które są niezbędne uzyskiwać dostęp do wyników oceny.
+
+Wyniki wydajności retrained modelu można wyświetlić, łącząc *BaseLocation*, *RelativeLocation*, i *SasBlobToken* z wyników danych wyjściowych dla *output2* i wklejając pełny adres URL w pasku adresu przeglądarki.
+
+Sprawdź wyniki, aby ustalić, jeśli nowo uczony model działa lepiej, niż istniejący.
+
+Zapisz *BaseLocation*, *RelativeLocation*, i *SasBlobToken* z danych wyjściowych wyników.
+
+## <a name="update-the-predictive-experiment"></a>Aktualizacja eksperyment predykcyjny
+
+### <a name="sign-in-to-azure-resource-manager"></a>Zaloguj się do usługi Azure Resource Manager
+
+Najpierw zaloguj się do konta platformy Azure w środowisku programu PowerShell przy użyciu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) polecenia cmdlet.
+
+### <a name="get-the-web-service-definition-object"></a>Pobierz obiekt definicji usługi sieci Web
+
+Następnie Pobierz obiekt definicji usługi sieci Web, wywołując [Get AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservice) polecenia cmdlet.
+
+    $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+
+Aby określić nazwę grupy zasobów istniejącej usługi sieci web, należy uruchomić polecenie cmdlet Get-AzureRmMlWebService bez żadnych parametrów, aby wyświetlić usługi sieci web w ramach subskrypcji. Znajdź usługę sieci web, a następnie Przyjrzyj się jego identyfikatora usługi internetowej. Nazwa grupy zasobów jest czwarty element w identyfikatorze, zaraz po *resourceGroups* elementu. W poniższym przykładzie nazwa grupy zasobów jest domyślna-MachineLearning-SouthCentralUS.
+
+    Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
+    Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+    Name : RetrainSamplePre.2016.8.17.0.3.51.237
+    Location : South Central US
+    Type : Microsoft.MachineLearning/webServices
+    Tags : {}
+
+Alternatywnie aby określić nazwę grupy zasobów istniejącej usługi sieci web, zaloguj się do portalu usług sieci Web Azure Machine Learning. Wybierz usługę sieci web. Nazwa grupy zasobów jest piąty element adresu URL usługi sieci web, tuż po *resourceGroups* elementu. W poniższym przykładzie nazwa grupy zasobów jest domyślna-MachineLearning-SouthCentralUS.
+
+    https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+
+### <a name="export-the-web-service-definition-object-as-json"></a>Eksport obiektu definicji usługi sieci Web w formacie JSON
+
+Aby zmodyfikować definicję nauczonemu modelowi w celu korzystania z nowo trenowanego modelu, należy najpierw użyć [AzureRmMlWebService eksportu](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) polecenia cmdlet, aby wyeksportować je do pliku formatu JSON.
+
+    Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+
+### <a name="update-the-reference-to-the-ilearner-blob"></a>Aktualizuj odwołanie do obiektu blob ilearner
+
+W zasoby, zlokalizuj [uczony model], zaktualizuj *uri* wartość w *locationInfo* węzła o identyfikatorze URI obiektu ilearner blob. Identyfikator URI jest generowany przez łączenie *BaseLocation* i *RelativeLocation* z danych wyjściowych usługi BES ponownego trenowania wywołania.
+
+     "asset3": {
+        "name": "Retrain Sample [trained model]",
+        "type": "Resource",
+        "locationInfo": {
+          "uri": "https://mltestaccount.blob.core.windows.net/azuremlassetscontainer/baca7bca650f46218633552c0bcbba0e.ilearner"
+        },
+        "outputPorts": {
+          "Results dataset": {
+            "type": "Dataset"
+          }
+        }
+      },
+
+### <a name="import-the-json-into-a-web-service-definition-object"></a>Importuj dane JSON na obiekt definicji usługi sieci Web
+
+Użyj [AzureRmMlWebService importu](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/import-azurermmlwebservice) polecenia cmdlet, aby przekonwertować zmodyfikowany plik JSON do obiektu definicji usługi sieci Web, który umożliwia zaktualizowanie predicative eksperymentu.
+
+    $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
+
+### <a name="update-the-web-service"></a>Aktualizacja usługi sieci web
+
+Na koniec użyj [AzureRmMlWebService aktualizacji](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/update-azurermmlwebservice) polecenia cmdlet, aby zaktualizować eksperyment predykcyjny.
+
+    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Aby dowiedzieć się więcej na temat zarządzania usługami sieci web lub śledzić wiele przebiegów eksperymentów, zobacz następujące artykuły:
+
+* [Zapoznaj się z portalu usług sieci Web](manage-new-webservice.md)
+* [Zarządzanie iteracjami eksperymentów](manage-experiment-iterations.md)

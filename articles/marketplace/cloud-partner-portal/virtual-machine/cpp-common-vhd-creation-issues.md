@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: hascipio; v-divte; v-miclar
-ms.openlocfilehash: 535a947f7a4b9c750d585ce854a14be80c4a135c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 381f88c4641417bceca0f988d4b1a187aedaa642
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639971"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327310"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Typowe problemy występujące podczas tworzenia wirtualnego dysku twardego (często zadawane pytania)
 
@@ -27,7 +27,7 @@ Poniższe często zadawane pytania (FAQ) cover typowych problemów napotkanych p
 
 ## <a name="how-do-you-create-a-vm-from-the-azure-portal-using-the-vhd-that-is-uploaded-to-premium-storage"></a>Jak utworzyć Maszynę wirtualną w witrynie Azure portal przy użyciu wirtualnego dysku twardego, który zostanie przekazany do magazynu w warstwie premium
 
-Portal Azure Marketplace obecnie nie obsługuje tworzenia oferty maszyny Wirtualnej z obrazów znajdujących się na magazynu zarządzanego lub z usługi Azure Premium Storage.  Aby uzyskać więcej informacji na temat tych opcji magazynu, zobacz [Omówienie usługi Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) i [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).
+Portal Azure Marketplace obecnie nie obsługuje tworzenia oferty maszyny Wirtualnej z obrazów znajdujących się na magazynu zarządzanego lub z usługi Azure Premium Storage.  Aby uzyskać więcej informacji na temat tych opcji magazynu, zobacz [Omówienie usługi Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 
 ## <a name="can-you-use-generation-2-vms-for-offers"></a>Maszyny wirtualne generacji 2 można użyć w przypadku ofert?
@@ -73,7 +73,7 @@ Tak, jeśli hostowanej na platformie Azure.  Platforma Azure przypisuje unikatow
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>Na maszynie wirtualnej jak możesz zarządzać niestandardowego rozszerzenia skryptu w zadaniu uruchamiania?
 
-Poniższy artykuł szczegółowo opisuje sposób korzystania z rozszerzenia niestandardowego skryptu przy użyciu modułu Azure PowerShell, szablony usługi Azure Resource Manager i szczegółowe informacje, rozwiązywanie problemów w systemach Windows: [niestandardowe rozszerzenie skryptu dla Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
+Następujący artykuł szczegółowo opisuje sposób użycia rozszerzenia niestandardowego skryptu przy użyciu modułu Azure PowerShell, szablony usługi Azure Resource Manager i rozwiązywanie problemów w systemach Windows szczegółowe informacje: [Rozszerzenie niestandardowego skryptu dla Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Czy 32-bitowych aplikacji i usług obsługiwanych w witrynie Azure Marketplace?
@@ -83,7 +83,7 @@ Rzecz biorąc — nie.  Obsługiwane systemy operacyjne i usług w warstwie stan
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 - [Uruchamianie aplikacji 32-bitowy](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)
 - [Obsługa 32-bitowych systemach operacyjnych w maszynach wirtualnych platformy Azure](https://support.microsoft.com/help/4021388/support-for-32-bit-operating-systems-in-azure-virtual-machines)
-- [Microsoft server pomoc techniczna dla oprogramowania dla maszyn wirtualnych Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
+- [Pomoc techniczna dotycząca oprogramowania serwerowego firmy Microsoft dla maszyn wirtualnych platformy Microsoft Azure](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines)
 
 
 ## <a name="every-time-i-try-to-create-an-image-from-my-vhds-i-get-the-error-vhd-is-already-registered-with-image-repository-as-the-resource-in-powershell-i-did-not-create-any-image-before-nor-did-i-find-any-image-with-this-name-in-azure-how-do-i-resolve-this-issue"></a>Za każdym razem, gdy próbuję Tworzenie obrazu na podstawie moich wirtualne dyski twarde, zgłaszany jest błąd `.VHD is already registered with image repository as the resource` w programie PowerShell. Nie utworzył obrazów przed ani I znalazł dowolnego obrazu o tej nazwie na platformie Azure. Jak rozwiązać ten problem?

@@ -8,53 +8,132 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: df7e61bb9d064c4530c0212cc02fbdd849017612
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 66137f01672820584f97273ddca26a66ada781ba
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872003"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312549"
 ---
-# <a name="detecting-domain-specific-content"></a>Wykrywanie zawartości specyficznej dla domeny
+# <a name="detect-domain-specific-content"></a>Wykrywanie zawartości specyficznego dla domeny
 
-Ponadto do znakowania i najwyższego poziomu o kategoryzacji, przetwarzanie obrazów obsługuje również informacje specjalistyczne (lub specyficznego dla domeny). Informacje specjalistyczne można wdrażać jako metodę autonomiczną lub na wysokim poziomie kategoryzacji. Funkcjonują one jako sposób dalszego uściślenia taksonomii obejmującej 86 kategorii przez dodanie modeli specyficznych dla domeny.
+Ponadto do znakowania i wysokiego poziomu kategoryzacji, przetwarzanie obrazów obsługuje również dalszej analizy specyficznego dla domeny przy użyciu modeli, które są przeszkoleni wyspecjalizowane danych. 
 
-Istnieją dwie opcje używania modeli specyficznych dla domeny:
+Istnieją dwa sposoby użycia modeli specyficznych dla domeny: samodzielnie (analiza o określonym zakresie) lub jako rozszerzenie funkcji kategoryzacji.
 
-* Analizy o określonym zakresie  
-  Analizuj wybrany model przez wywołanie metody POST protokołu HTTP. Jeśli znasz model, który chcesz użyć, należy określić nazwę modelu. Możesz pobrać wyłącznie informacje istotne dla modelu. Możesz na przykład użyć tej opcji tylko do wyszukiwania rozpoznawania celebrytów. Odpowiedź zawiera listę potencjalnych pasujących celebrytów wraz ze współczynnikami ufności.
-* Rozszerzone analizy  
-  Analiza dostarczająca dodatkowe szczegóły związane z kategoriami z taksonomii zawierającej 86 kategorii. Ta opcja jest dostępna w aplikacjach, w których użytkownicy chcą uzyskać analizę ogólną obrazu oprócz szczegółów z co najmniej jednego modelu specyficznego dla domeny. Po wywołaniu tej metody klasyfikator taksonomii zawierający 86 kategorii zostanie wywołany jako pierwszy. Jeśli dowolnej kategorii pasuje do znanego lub zgodnych modeli, drugi — dostęp próbny wywołania klasyfikatora jest zgodna. Na przykład jeśli `details` parametru wywołanie metody POST protokołu HTTP albo jest ustawiona na "wszystkie" lub "osobistości" obejmuje, metody wywołania klasyfikatora osobistości, po klasyfikatora 86 kategorii jest wywoływana. Jeśli obraz zostanie sklasyfikowany jako `people_` lub podkategorii w kategorii, a następnie klasyfikatora osobistości jest wywoływana.
+### <a name="scoped-analysis"></a>Analizy o określonym zakresie
 
-## <a name="listing-domain-specific-models"></a>Wyświetlanie listy modeli specyficznych dla domeny
+Możesz analizować obrazu przy użyciu tylko wybranym modelu specyficznego dla domeny, wywołując [modeli /\<modelu\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) interfejsu API. 
 
-Możesz wyświetlić listę modeli specyficznych dla domeny, obsługiwanych przez przetwarzania obrazów. Obecnie Usługa przetwarzania obrazów obsługuje następujące modele specyficzne dla domeny do wykrywania specyficznego dla domeny zawartości:
+Poniżej przedstawiono przykładowe JSON odpowiedź zwrócona przez **modeli/osobistości/analizowanie** interfejsu API dla danego obrazu:
+
+![Satya Nadella stałego](./images/satya.jpeg)
+
+```json
+{
+  "result": {
+    "celebrities": [{
+      "faceRectangle": {
+        "top": 391,
+        "left": 318,
+        "width": 184,
+        "height": 184
+      },
+      "name": "Satya Nadella",
+      "confidence": 0.99999856948852539
+    }]
+  },
+  "requestId": "8217262a-1a90-4498-a242-68376a4b956b",
+  "metadata": {
+    "width": 800,
+    "height": 1200,
+    "format": "Jpeg"
+  }
+}
+```
+
+### <a name="enhanced-categorization-analysis"></a>Rozszerzone kategoryzacji analizy  
+
+Aby uzupełnić analizy obrazów Ogólne umożliwia także modeli specyficznych dla domeny. Można to zrobić w ramach [wysokiego poziomu kategoryzacji](concept-categorizing-images.md) , określając modeli specyficznych dla domeny w *szczegóły* parametru [analizy](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) wywołania interfejsu API. 
+
+W tym przypadku klasyfikatora Taksonomia kategorii 86 nazywa się najpierw. Jeśli którykolwiek z kategorii wykryte dopasowania modelu specyficznego dla domeny, obraz, który jest przekazywane również model i wyniki są dodawane. 
+
+Następującą odpowiedź JSON pokazuje, jak specyficznego dla domeny analiza może być uwzględniany jako `detail` węzła w szerszym analizy kategoryzacji.
+
+```json
+"categories":[  
+  {  
+    "name":"abstract_",
+    "score":0.00390625
+  },
+  {  
+    "name":"people_",
+    "score":0.83984375,
+    "detail":{  
+      "celebrities":[  
+        {  
+          "name":"Satya Nadella",
+          "faceRectangle":{  
+            "left":597,
+            "top":162,
+            "width":248,
+            "height":248
+          },
+          "confidence":0.999028444
+        }
+      ],
+      "landmarks":[  
+        {  
+          "name":"Forbidden City",
+          "confidence":0.9978346
+        }
+      ]
+    }
+  }
+]
+```
+
+## <a name="list-the-domain-specific-models"></a>Lista modeli specyficznych dla domeny
+
+Obecnie Usługa przetwarzania obrazów obsługuje następujące modele specyficzne dla domeny:
 
 | Name (Nazwa) | Opis |
 |------|-------------|
 | osobistości | Rozpoznawanie osobistości, obsługiwane w przypadku obrazów sklasyfikować w obszarze `people_` kategorii |
 | Charakterystycznych elementów krajobrazu | Rozpoznawania charakterystycznych elementów krajobrazu, obsługiwane w przypadku obrazów sklasyfikować w obszarze `outdoor_` lub `building_` kategorii |
 
-### <a name="domain-model-list-example"></a>Przykład listy modelu domeny
-
-Następującą odpowiedź JSON zawiera listę modeli specyficznych dla domeny, obsługiwanych przez przetwarzania obrazów.
+Wywoływanie [modeli](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) interfejs API zwróci te informacje wraz z kategorii, do których każdy model można zastosować:
 
 ```json
-{
-    "models": [
-        {
-            "name": "celebrities",
-            "categories": ["people_", "人_", "pessoas_", "gente_"]
-        },
-        {
-            "name": "landmarks",
-            "categories": ["outdoor_", "户外_", "屋外_", "aoarlivre_", "alairelibre_",
-                "building_", "建筑_", "建物_", "edifício_"]
-        }
-    ]
+{  
+  "models":[  
+    {  
+      "name":"celebrities",
+      "categories":[  
+        "people_",
+        "人_",
+        "pessoas_",
+        "gente_"
+      ]
+    },
+    {  
+      "name":"landmarks",
+      "categories":[  
+        "outdoor_",
+        "户外_",
+        "屋外_",
+        "aoarlivre_",
+        "alairelibre_",
+        "building_",
+        "建筑_",
+        "建物_",
+        "edifício_"
+      ]
+    }
+  ]
 }
 ```
 

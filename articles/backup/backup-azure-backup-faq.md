@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 0c52a10aa806962ee54fe6058f236ea9bd86414b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: e780a78bb2cc341ef6b2f682cd51fedad3f08494
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268349"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310859"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -25,7 +25,6 @@ Tak. Możesz utworzyć maksymalnie 500 magazynów usługi Recovery Services na o
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Czy istnieją ograniczenia dotyczące liczby serwerów/maszyn, które można zarejestrować w każdym magazynie?
 Można zarejestrować maksymalnie 1000 maszyn wirtualnych platformy Azure na magazyn. Jeśli używasz agenta usługi Microsoft Azure Backup należy zarejestrować maksymalnie 50 agentów MAB w jednym magazynie. I można zarejestrować 50 MAB serwerów/serwerów programu DPM w magazynie.
-
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Jeśli organizacja ma jeden magazyn, w jaki sposób można odizolować dane z różnych serwerów w magazynie podczas przywracania danych?
 Dane serwera, który chcesz odzyskać razem należy używać tego samego hasła podczas konfigurowania kopii zapasowej. Jeśli chcesz izolować odzyskiwania do określonego serwera lub serwerów, należy użyć hasła dla tego serwera lub tylko serwery. Na przykład serwery zarządzania zasobami ludzkimi mogą korzystać z jednego hasła szyfrowania, serwery księgowości z drugiego, a serwery pamięci masowej z trzeciego.
@@ -76,10 +75,8 @@ Nie. Serwer programu DPM lub usługi Azure Backup można zarejestrować tylko w 
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Czy można używać programu Azure Backup Server do tworzenia kopii zapasowej z odzyskiwaniem systemu od zera (BMR) serwera fizycznego? <br/>
 Tak.
 
-
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Czy można użyć programu DPM, aby utworzyć kopię zapasową aplikacji w usłudze Azure Stack?
 Nie. Usługa Azure Backup umożliwia ochronę usługi Azure Stack, usługa Azure Backup nie obsługuje przy użyciu programu DPM, aby utworzyć kopię zapasową aplikacji w usłudze Azure Stack.
-
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Jeśli został zainstalowany agent usługi Azure Backup, aby chronić pliki i foldery, można zainstalować programu System Center DPM do tworzenia kopii zapasowych obciążeń lokalnych do platformy Azure?
 Tak. Jednak należy najpierw skonfigurować program DPM, a następnie zainstaluj agenta usługi Azure Backup.  Instalowanie składników w tej kolejności zapewnia, że usługi Azure Backup agent działa przy użyciu programu DPM. Instalowanie agenta przed instalacją programu DPM nie jest zalecana lub jest obsługiwana.
@@ -138,14 +135,8 @@ Sharepoint | Suma zawartości i konfiguracji bazy danych w farmie programu Share
 Exchange |Suma wszystkich baz danych programu Exchange w serwerze programu Exchange, w których powstaje kopia zapasowa.
 Stan systemu/BMR |Każda pojedyncza kopia BMR lub stanu systemu komputera, w których powstaje kopia zapasowa.
 
-
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Czy istnieje ograniczenie na ilość danych kopii zapasowej przy użyciu magazynu usługi Recovery Services?
 Nie ma żadnego limitu ilości danych, które można utworzyć kopię zapasową przy użyciu magazynu usługi Recovery Services.
-
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Czy w przypadku anulowania uruchomionego zadania tworzenia kopii zapasowej przesyłane dane zostaną usunięte?
-Nie. Wszystkie dane przesłane do magazynu przed momentem anulowania zadania utworzenia kopii zapasowej pozostaną w magazynie. Usługa Azure Backup używa mechanizmu, który podczas tworzenia kopii zapasowej co pewien czas dodaje punkty kontrolne do danych kopii zapasowej. Ponieważ w danych kopii zapasowej umieszczone są punkty kontrolne, następny proces kopii zapasowej może sprawdzić integralność plików. Następnym zadaniem kopii zapasowej będzie przyrostowa kopia zapasowa tworzona w oparciu o wcześniej utworzoną kopię zapasową danych. Przyrostowe kopie zapasowe przesyłają tylko nowe lub zmienione dane, dzięki czemu zapewnia się lepsze wykorzystanie przepustowości.
-
-Jeśli anulujesz zadanie kopii zapasowej dla maszyny wirtualnej platformy Azure, wszelkie przesłane dane zostaną zignorowane. Następne zadanie kopii zapasowej przesyła przyrostowe dane z ostatniego wykonanego zadania kopii zapasowej.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Dlaczego rozmiar danych przesyłanych do magazynu usługi Recovery Services mniejszy niż wybranych do utworzenia kopii zapasowej danych?
  Dane kopii zapasowej z agenta usługi Azure Backup, program DPM, a serwer usługi Azure Backup jest kompresowane i szyfrowane przed przesłaniem. Dzięki kompresji i szyfrowania jest stosowany, dane w magazynie jest 30 – 40% mniejsze.
@@ -153,13 +144,14 @@ Jeśli anulujesz zadanie kopii zapasowej dla maszyny wirtualnej platformy Azure,
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>Czy mogę usunąć pojedyncze pliki z punktu odzyskiwania w magazynie
 Nie, usługa Azure Backup nie obsługuje usuwania lub czyszczenia poszczególne elementy z kopii zapasowych przechowywanych.
 
-
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Czy w przypadku anulowania zadania tworzenia kopii zapasowej po jego uruchomieniu, zostanie usunięty przeniesione dane kopii zapasowej?
 Nie. Wszystkie dane, które zostało przesłane do magazynu, zanim zadanie tworzenia kopii zapasowej zostało anulowane pozostaje w magazynie.
 
 - Usługa Azure Backup używa mechanizmu, który podczas tworzenia kopii zapasowej co pewien czas dodaje punkty kontrolne do danych kopii zapasowej.
 - Ponieważ w danych kopii zapasowej umieszczone są punkty kontrolne, następny proces kopii zapasowej może sprawdzić integralność plików.
 - Następnym zadaniem kopii zapasowej będzie przyrostowa kopia zapasowa tworzona w oparciu o wcześniej utworzoną kopię zapasową danych. Przyrostowe kopie zapasowe przesyłają tylko nowe lub zmienione dane, dzięki czemu zapewnia się lepsze wykorzystanie przepustowości.
+
+Jeśli anulujesz zadanie kopii zapasowej dla maszyny wirtualnej platformy Azure, wszelkie przesłane dane zostaną zignorowane. Następne zadanie kopii zapasowej przesyła przyrostowe dane z ostatniego wykonanego zadania kopii zapasowej.
 
 ## <a name="retention-and-recovery"></a>Przechowywanie i odzyskiwanie
 
@@ -207,7 +199,7 @@ Po zastosowaniu nowych zasad, harmonogram i okres przechowywania nowych zasad je
 ## <a name="encryption"></a>Szyfrowanie
 
 ### <a name="is-the-data-sent-to-azure-encrypted"></a>Czy dane wysyłane do platformy Azure są szyfrowane?
-Tak. Dane są szyfrowane na maszynie lokalnej przy użyciu AES256. Dane są przesyłane za pośrednictwem bezpiecznego linku HTTPS. Dane są przesyłane w chmurze chronionej przez łącza HTTPS tylko między magazynu i przywracania usługi. Protokół iSCSI zabezpiecza dane przesyłane między maszyny odzyskiwania usługi i użytkownika. Bezpiecznego tunelowania jest używany do ochrony kanału iSCSI.
+Tak. Dane są szyfrowane na maszynie lokalnej przy użyciu AES256. Dane są przesyłane za pośrednictwem bezpiecznego linku HTTPS. Dane przesyłane w chmurze jest chroniony przez łącza HTTPS tylko między magazynu i przywracania usługi. Protokół iSCSI zabezpiecza dane przesyłane między maszyny odzyskiwania usługi i użytkownika. Bezpiecznego tunelowania jest używany do ochrony kanału iSCSI.
 
 ### <a name="is-the-backup-data-on-azure-encrypted-as-well"></a>Czy dane kopii zapasowej na platformie Azure są również szyfrowane?
 Tak. Dane na platformie Azure są szyfrowane w spoczynku.

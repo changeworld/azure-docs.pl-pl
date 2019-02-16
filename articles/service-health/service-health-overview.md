@@ -9,12 +9,12 @@ ms.service: service-health
 ms.topic: article
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.openlocfilehash: b771e36344ff26c9a817a0314e0f223b6e809a17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 465e8751d02692648234a7a90b84b68f41522cb2
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871706"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328269"
 ---
 # <a name="service-health"></a>Service Health
 Service Health zapewnia można dostosować pulpit nawigacyjny, który śledzi kondycji usług platformy Azure w regionach, gdzie można ich użyć. Na tym pulpicie nawigacyjnym możesz śledzić aktywne wydarzenia, takich jak problemy z usługą bieżące, zbliżającej się planowanej konserwacji lub porady dotyczące kondycji odpowiednimi. Zdarzenia stają się nieaktywne, są umieszczone w historii kondycji przez 90 dni. Na koniec można użyć pulpitu nawigacyjnego kondycji usługi do tworzenia i obsługi alertów dotyczących kondycji usługi, których aktywnie informujące o problemach z usługą mają wpływ na możesz.
@@ -24,6 +24,9 @@ Kondycja usługi śledzi trzy rodzaje zdarzenia dotyczące kondycji, które mog�
 1. **Usługa problemów** — problemy z usługami platformy Azure, wpływających teraz. 
 2. **Planowana konserwacja** -nadchodzącej konserwacji, które mogą mieć wpływ na dostępność usług w przyszłości.  
 3. **Porady dotyczące kondycji** -zmiany w usługach platformy Azure, które wymagają Twojej uwagi. Przykładami są przestarzałe funkcje systemu Azure lub przekraczają limit przydziału użycia.
+
+> [!NOTE]
+> Aby wyświetlić zdarzenia usługi Service Health, użytkownicy muszą mieć rolę Czytelnik w ramach subskrypcji.
 
 ## <a name="get-started-with-service-health"></a>Rozpoczynanie pracy z usługą Service Health
 Aby uruchomić Pulpit nawigacyjny kondycji usługi, wybierz Kafelek kondycja usługi na pulpicie nawigacyjnym portalu. Jeśli została wcześniej usunięta Kafelek lub korzystania z niestandardowego pulpitu nawigacyjnego, wyszukiwania dla usługi Service Health w "Więcej usług" (dołu z lewej na pulpicie nawigacyjnym).

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: troubleshooting
 ms.date: 01/11/2019
 ms.author: annayak
-ms.openlocfilehash: 72493c6bba556314c3652be5251463d1d1e005bd
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 5d4d74d4c3b5ec6779458e84da07c03033c37935
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54383444"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330617"
 ---
 # <a name="troubleshoot-classic-storage-resource-deletion-errors"></a>Rozwiązywanie problemów z błędami usuwania zasobów magazynu klasycznego
 Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, gdy wystąpi jedno z następujących błędów, w trakcie usuwania Azure klasycznego konta magazynu, kontenera lub pliku obiektów blob strony *.vhd. 
@@ -21,10 +21,10 @@ Ten artykuł zawiera wskazówki dotyczące rozwiązywania problemów, gdy wystą
 
 W tym artykule opisano tylko problemy związane z klasycznych zasobów magazynu. Jeśli użytkownik usunie klasycznej maszyny wirtualnej przy użyciu witryny Azure portal, programu PowerShell lub interfejsu wiersza polecenia, a następnie dyski nie są automatycznie usuwane. Użytkownik pobiera opcję można usunąć zasobu "Dysk". W przypadku, gdy opcja nie jest zaznaczona, zasób "Dysk" uniemożliwi usunięcie konta magazynu, kontenerów i *.vhd rzeczywistego pliku obiektu blob strony.
 
-Można znaleźć więcej informacji na temat usługi Azure disks [tutaj](../../virtual-machines/windows/about-disks-and-vhds.md). Azure uniemożliwia usunięcie dysku, który jest dołączony do maszyny Wirtualnej w celu uniknięcia uszkodzenia. Uniemożliwia ona usunięcie kontenerów i kont magazynu, które mają stronicowych obiektów blob, który jest dołączony do maszyny Wirtualnej. 
+Można znaleźć więcej informacji na temat usługi Azure disks [tutaj](../../virtual-machines/windows/managed-disks-overview.md). Azure uniemożliwia usunięcie dysku, który jest dołączony do maszyny Wirtualnej w celu uniknięcia uszkodzenia. Uniemożliwia ona usunięcie kontenerów i kont magazynu, które mają stronicowych obiektów blob, który jest dołączony do maszyny Wirtualnej. 
 
 ## <a name="what-is-a-disk"></a>Co to jest "Dysk"?
-Zasób "Dysk" jest używany do instalacji pliku obiektu blob strony *.vhd na maszynę wirtualną jako dysk systemu operacyjnego lub dysku z danymi. Dysk systemu operacyjnego lub zasób dysku danych, aż do usunięcia, będą nadal posiada dzierżawy w pliku *.vhd. Nie można usunąć dowolny zasób magazynu w ścieżce powyżej obrazu, jeśli wskazuje zasobu "Dysk".
+Zasób "Dysk" jest używany do instalacji pliku obiektu blob strony *.vhd na maszynę wirtualną jako dysk systemu operacyjnego lub dysku z danymi. Dysk systemu operacyjnego lub zasób dysku danych, aż do usunięcia, będą nadal posiada dzierżawy w pliku *.vhd. Nie można usunąć dowolny zasób magazynu w ścieżce poniżej obrazu, jeśli wskazuje zasobu "Dysk".
 
 ![Otwórz zrzut ekranu przedstawiający portal, za pomocą okienka "Property" dysk (klasyczny)](./media/storage-classic-cannot-delete-storage-account-container-vhd/Disk_Lease_Illustration.jpg) 
 

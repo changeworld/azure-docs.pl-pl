@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: abf0c88c356ba695e2f9905f77bf5fd193821712
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a55839550b57da2ae346e66f4908da39e78b76f3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461852"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328297"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozwiń wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure
 
@@ -64,7 +64,7 @@ W następujących przykładach Zastąp przykładowe nazwy parametru takich jak *
     ```
 
     > [!NOTE]
-    > Po rozwinięciu dysku zarządzanego, zaktualizowano rozmiar jest zaokrąglana w górę do najbliższej rozmiaru dysku zarządzanego. Dla tabeli warstwy i rozmiary dostępnych dysków zarządzanych, zobacz [Azure Omówienie usługi Managed Disks — cennik i rozliczenia](../windows/managed-disks-overview.md#pricing-and-billing).
+    > Po rozwinięciu dysku zarządzanego, zaktualizowano rozmiar jest zaokrąglana w górę do najbliższej rozmiaru dysku zarządzanego. Dla tabeli warstwy i rozmiary dostępnych dysków zarządzanych, zobacz [Azure Omówienie usługi Managed Disks — cennik i rozliczenia](../windows/managed-disks-overview.md).
 
 1. Uruchom maszynę Wirtualną za pomocą [az vm start](/cli/azure/vm#az-vm-start). Poniższy przykład uruchamia maszynę Wirtualną o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9917901146eb0a050531a66ab24fbd88c91c02c9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756822"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311209"
 ---
 # <a name="get-started-with-storage-explorer"></a>Wprowadzenie do Eksploratora usługi Storage
 
@@ -221,7 +221,7 @@ Aby zilustrować ten scenariusz, załóżmy, że Użytkownik_A jest administrato
 
 3. Użytkownik_b korzysta z Eksploratora usługi Storage można dołączyć do konta należącego do Użytkownika_a przy użyciu dostarczonej sygnatury dostępu Współdzielonego.
 
-### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>Generowanie parametrów połączenia sygnatury dostępu Współdzielonego dla konta, które chcesz udostępnić
+### <a name="generate-a-sas-query-string-for-the-account-you-want-to-share"></a>Generowanie ciągu zapytania sygnatury dostępu Współdzielonego dla konta, które chcesz udostępnić
 
 1. W Eksploratorze usługi Storage, kliknij prawym przyciskiem myszy konto magazynu, które chcesz udostępnić, a następnie wybierz **Uzyskaj sygnaturę dostępu współdzielonego...** .
 
@@ -231,7 +231,7 @@ Aby zilustrować ten scenariusz, załóżmy, że Użytkownik_A jest administrato
 
     ![Uzyskiwanie sygnatury dostępu Współdzielonego, okno dialogowe][15]
 
-3. Obok pozycji **parametry połączenia** pola tekstowego, wybierz opcję **kopiowania** skopiuj go do Schowka, a następnie kliknij przycisk **Zamknij**.
+3. Obok pozycji **ciągu zapytania** pola tekstowego, wybierz opcję **kopiowania** skopiuj go do Schowka, a następnie kliknij przycisk **Zamknij**.
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>Aby dołączyć do konta magazynu przy użyciu parametrów połączenia sygnatury dostępu Współdzielonego
 

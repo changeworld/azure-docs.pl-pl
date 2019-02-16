@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3cb868da60d56728e5d0c450ab362d6f381b90ea
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6ef8498ae1aa9be0322f508b3723778311e2cdd5
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756567"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327786"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure w przypadku obciążeń SAP
 
@@ -249,7 +249,7 @@ ms.locfileid: "55756567"
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/disks-types.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -357,7 +357,7 @@ Aby określić odpowiednią ilość miejsca na tempfiles, możesz sprawdzić roz
 ### <a name="storage-configuration"></a>Konfiguracja usługi Storage
 Tylko jednego wystąpienia bazy danych Oracle przy użyciu systemu plików NTFS sformatowane dysków jest obsługiwana. Wszystkie pliki bazy danych muszą być przechowywane w systemie plików NTFS na dyskach zarządzanych (zalecane) lub na wirtualnych dyskach twardych. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na [magazynu obiektów blob platformy Azure strony](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) lub [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
 
-Zdecydowanie zalecamy używanie [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Ponadto zdecydowanie zalecamy używanie [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) wdrożeń bazy danych Oracle.
+Zdecydowanie zalecamy używanie [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Ponadto zdecydowanie zalecamy używanie [premium SSD](../../windows/disks-types.md) wdrożeń bazy danych Oracle.
 
 Dyski sieciowe lub udziałach zdalnych, takich jak usługi plików platformy Azure nie są obsługiwane dla plików bazy danych Oracle. Aby uzyskać więcej informacji, zobacz:
 
@@ -444,11 +444,11 @@ W takim przypadku firma Microsoft zaleca instalowanie/lokalizowanie głównej ba
 
 ### <a name="storage-configuration"></a>Konfiguracja usługi Storage
 
-Systemy plików ext4, xfs lub Oracle ASM są obsługiwane dla plików bazy danych Oracle na platformie Azure. Wszystkie pliki bazy danych muszą być przechowywane na tych systemów plików, na podstawie wirtualnych dysków twardych lub dysków Managed Disks. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na [magazynu obiektów blob platformy Azure strony](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Systemy plików ext4, xfs lub Oracle ASM są obsługiwane dla plików bazy danych Oracle na platformie Azure. Wszystkie pliki bazy danych muszą być przechowywane na tych systemów plików, na podstawie wirtualnych dysków twardych lub dysków Managed Disks. Te dyski są zainstalowane na maszynie Wirtualnej platformy Azure, a także są oparte na [magazynu obiektów blob platformy Azure strony](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) lub [usługi Azure Managed Disks](../../windows/managed-disks-overview.md).
 
-Dla bazy danych Oracle Linux UEK jądra, co najmniej UEK w wersji 4 jest wymagany do obsługi [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms).
+Dla bazy danych Oracle Linux UEK jądra, co najmniej UEK w wersji 4 jest wymagany do obsługi [Azure — wersja premium SSD](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#disk-caching).
 
-Zdecydowanie zalecamy używanie [usługi Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Ponadto zdecydowanie zalecamy używanie [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) wdrożeń bazy danych Oracle.
+Zaleca się używać [usługi Azure managed disks](../../windows/managed-disks-overview.md). Również zdecydowanie zaleca się przy użyciu [Azure — wersja premium SSD](../../windows/disks-types.md) wdrożeń bazy danych Oracle.
 
 Dyski sieciowe lub udziałach zdalnych, takich jak usługi plików platformy Azure nie są obsługiwane dla plików bazy danych Oracle. Aby uzyskać więcej informacji zobacz następujące tematy: 
 

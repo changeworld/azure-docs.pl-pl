@@ -8,23 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0793f572e043248af409e65cca4fd854f1371900
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6b25da9b2569b0185d41684c45a22a3eb3377511
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880888"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313079"
 ---
 # <a name="detect-color-schemes-in-images"></a>Wykrywanie schematy kolorów na obrazach
 
-Przetwarzania obrazów wyodrębnia kolory z obrazu. Kolory są następnie analizowane w trzech różnych kontekstach: dominujący kolor, kolor tła dominujący i kolory dominujące obrazu jako całości. Są one podzielone na 12 dominujących kolorów akcentu. Kolory wiodące to: czarny, niebieski, brązowy, szary, zielony, pomarańczowy, różowy, fioletowy, czerwony, zielonomodry, biały i żółty. Przetwarzania obrazów analizuje kolory wyodrębnione z obrazu do zwrócenia reprezentujące najbardziej aktywnej kolorów dla obrazu do przeglądarki przy użyciu kombinacji kolory dominujące i nasycenie kolorem akcentu. W zależności od kolorów na obrazie zwykły czarny lub biały bądź kolory wiodące mogą być zwracane w szesnastkowych kodach kolorów. Przetwarzania obrazów zwraca również wartość logiczną, wskazującą, czy obraz jest czarno- & białe.
+Przetwarzania obrazów analizuje kolory na obrazie, aby zapewnić trzech różnych atrybutów: dominujący kolor, kolor tła dominujący i zestaw kolory dominujące obrazu jako całości. Zwrócone, kolory, należy do zestawu: czarny, niebieski, brown, szary, zielony, orange, różowy, fioletowy, czerwony, zielonomodrym, biały i żółty. 
+
+Przetwarzania obrazów wyodrębnia również kolor akcentu, który reprezentuje kolor najbardziej aktywny na obrazie, oparte na kombinacji kolory dominujące Nasycenie. Kolor akcentu jest zwracana jako kod szesnastkowy koloru HTML. 
+
+Przetwarzania obrazów zwraca również wartość logiczną wskazującą, czy obraz jest czarno biały.
 
 ## <a name="color-scheme-detection-examples"></a>Przykłady wykrywania schemat kolorów
 
-Poniższy przykład ilustruje odpowiedź JSON zwróciło przetwarzania obrazów podczas wykrywania schemat kolorów na przykładowym obrazie. W takim przypadku przykładowy obraz jest czarno-biały obrazu jednak dominujący kolory pierwszego planu i tła są czarne oraz kolory dominujące obrazu jako całość czarno-biały.
+Poniższy przykład ilustruje odpowiedź JSON zwróciło przetwarzania obrazów podczas wykrywania schemat kolorów na przykładowym obrazie. W takim przypadku przykładowy obraz jest czarno-biały obrazu, jednak dominujący pierwszego planu i tła kolorów są czarne oraz kolory dominujące obrazu jako całość czarno-biały.
 
 ![Na zewnątrz w górach](./Images/mountain_vista.png)
 
@@ -48,7 +52,7 @@ Poniższy przykład ilustruje odpowiedź JSON zwróciło przetwarzania obrazów 
 
 ### <a name="dominant-color-examples"></a>Dominujący kolor przykłady
 
-W poniższej tabeli opisano dominujący pierwszego planu, tła i kolory z obrazu dla każdego obrazu przykład zwrócone przez przetwarzania obrazów.
+W poniższej tabeli przedstawiono zwrócone pierwszego planu, tła i kolory z obrazu dla każdego obrazu próbki.
 
 | Image (Obraz) | Kolory dominujące |
 |-------|-----------------|
@@ -57,7 +61,7 @@ W poniższej tabeli opisano dominujący pierwszego planu, tła i kolory z obrazu
 
 ### <a name="accent-color-examples"></a>Przykłady kolor akcentu
 
- W poniższej tabeli opisano kolor akcentu jako wartość szesnastkową kolor HTML, dla każdego obrazu przykład zwrócone przez przetwarzania obrazów.
+ W poniższej tabeli przedstawiono kolor akcentu zwracane jako wartość szesnastkową kolor HTML, dla każdego obrazu przykładu.
 
 | Image (Obraz) | Kolor wiodący |
 |-------|--------------|
@@ -67,7 +71,7 @@ W poniższej tabeli opisano dominujący pierwszego planu, tła i kolory z obrazu
 
 ### <a name="black--white-detection-examples"></a>Przykłady wykrywania czarno-biały
 
-Poniższa tabela wskazuje, czy każdy przykładowy obraz jest czarny & biały, zwrócone przez przetwarzania obrazów.
+W poniższej tabeli przedstawiono oceny czarno-biały przetwarzania obrazów w przykładowe obrazy.
 
 | Image (Obraz) | Czarno -biały? |
 |-------|----------------|

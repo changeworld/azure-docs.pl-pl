@@ -1,21 +1,19 @@
 ---
-title: Urządzenie raspberry Pi w chmurze (C) - łączenie urządzenia Raspberry Pi dla usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować i połączyć urządzenia Raspberry Pi do usługi Azure IoT Hub dla urządzenia Raspberry Pi w celu wysyłania danych do platformy w chmurze w ramach tego samouczka.
+title: Łączenie urządzenia Raspberry Pi dla usługi Azure IoT Hub przy użyciu języka C | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować i połączyć z urządzeniem Raspberry Pi do usługi Azure IoT Hub dla urządzenia Raspberry Pi w celu wysyłania danych do platformy w chmurze
 author: rangv
-manager: ''
-keywords: Usługa Azure iot urządzenia raspberry pi, usługi iot hub dla urządzenia raspberry pi, urządzenia raspberry pi wysyłania danych do chmury, urządzenia raspberry pi w chmurze
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
-ms.date: 04/11/2018
+ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: c8b254656dcd94fd846336e9c9de3ca823691904
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053504"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327253"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Łączenie urządzenia Raspberry Pi do IoT Hub (C) platformy Azure
 
@@ -27,7 +25,7 @@ Nie masz jeszcze zestawu? Spróbuj [symulatora w trybie online urządzenia Raspb
 
 ## <a name="what-you-do"></a>Co należy zrobić
 
-* Tworzenie Centrum IoT.
+* Utwórz centrum IoT.
 * Zarejestruj urządzenie Pi w usłudze IoT hub.
 * Konfiguracja urządzenia Raspberry Pi.
 * Uruchom przykładową aplikację na Pi do wysyłania danych czujnika do usługi IoT hub.
@@ -153,7 +151,7 @@ Włącz Pi przy użyciu micro kabla USB i zasilacz. Użyj kabla Ethernet do łą
    1. Pobierz i zainstaluj [PuTTY](http://www.putty.org/) for Windows. 
    1. Skopiuj adres IP w sekcji Pi do nazwy hosta (lub adres IP), a następnie wybierz typ połączenia SSH.
    
-   ![Programu puTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
    
    **Mac i użytkownicy systemu Ubuntu**
    

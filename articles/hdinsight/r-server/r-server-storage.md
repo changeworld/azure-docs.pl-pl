@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910270"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309121"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Rozwiązania magazynu platformy Azure dla usługi ML w usłudze Azure HDInsight
 
@@ -119,9 +119,9 @@ Po nadaj nazwę jednostki usługi i Utwórz hasło dla niego, kliknij przycisk *
 
 Istnieje również możliwość dodawania klastrowi dostęp do co najmniej jedno konto usługi Data Lake Storage, po utworzeniu klastra. Otwórz pozycji Azure portal dla usługi Data Lake Storage, przejdź do **Eksplorator danych > dostępu > Dodaj**. 
 
-### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>Jak uzyskać dostęp do usługi Data Lake Storage z usługi uczenie Maszynowe na HDInsight
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>Jak uzyskać dostęp do programu Data Lake Storage Gen1 z usługi uczenie Maszynowe na HDInsight
 
-Po którym został przyznany dostęp do usługi Data Lake Storage, używając magazynu w klastrze usługi ML w HDInsight sposób, w jaki na koncie magazynu pomocniczego platformy Azure. Jedyną różnicą jest to, że prefiks **wasb: / /** zmieni się na **adl: / /** w następujący sposób:
+Po został przez Ciebie udzielony dostęp do programu Data Lake Storage Gen1, używając magazynu w klastrze usługi ML w HDInsight sposób, w jaki na koncie magazynu pomocniczego platformy Azure. Jedyną różnicą jest to, że prefiks **wasb: / /** zmieni się na **adl: / /** w następujący sposób:
 
 
     # Point to the ADL Storage (e.g. ADLtest)
@@ -143,7 +143,7 @@ Po którym został przyznany dostęp do usługi Data Lake Storage, używając ma
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-Następujące polecenia służą do konfigurowania konta usługi Data Lake Storage z katalogiem RevoShare i Dodaj przykładowy plik CSV z poprzedniego przykładu:
+Następujące polecenia służą do konfigurowania konta Data Lake Storage Gen1 z katalogiem RevoShare i Dodaj przykładowy plik CSV z poprzedniego przykładu:
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user
@@ -172,4 +172,4 @@ Główną zaletą usługi Azure Files jest udziałów plików mogą być instalo
 * [Omówienie usługi ML klastra w systemie HDInsight](r-server-overview.md)
 * [Rozpoczynanie pracy z klastrem usługi uczenie Maszynowe na platformie Apache Hadoop](r-server-get-started.md)
 * [Compute context options for ML Services cluster on HDInsight (Opcje kontekstu obliczeniowego dla klastra usług ML w usłudze HDInsight)](r-server-compute-contexts.md)
-* [Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Korzystanie z usługi Azure Data Lake Storage Gen2 w połączeniu z klastrami usługi Azure HDInsight](../hdinsight-hadoop-use-data-lake-storage-gen2.md)

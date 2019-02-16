@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: danlep
-ms.openlocfilehash: 73c61c62a84642b93ed96cdd80e258a1128fef6a
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 79ba32f85c608d98b29b235bf1417e74f7e2a4d4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077475"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313487"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Wdrażanie wystąpień kontenerów w sieci wirtualnej platformy Azure
 
@@ -35,6 +35,7 @@ Niektóre ograniczenia mają zastosowanie w przypadku wdrażania grup konteneró
 
 * Aby wdrożyć grup kontenerów do podsieci, podsieci nie może zawierać innych typów zasobów. Usuń wszystkie istniejące zasoby z istniejącej podsieci przed wdrożeniem grup kontenerów do niej, lub Utwórz nową podsieć.
 * Grupy kontenerów wdrożonych w sieci wirtualnej nie obsługują obecnie publiczne adresy IP i etykiety nazwy DNS.
+* Nie można użyć [tożsamości zarządzanej](container-instances-managed-identity.md) w grupie kontenerów wdrożonych w sieci wirtualnej.
 * Ze względu na dodatkowe zaangażowanych zasobów sieciowych wdrożenie grupy kontenera z siecią wirtualną jest zazwyczaj trwa nieco dłużej niż wdrażanie wystąpienia standard kontenera.
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej

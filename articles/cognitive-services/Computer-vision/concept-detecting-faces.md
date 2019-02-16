@@ -8,23 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 81e846c6ffc0361b7154c962dbc047b9e5ae55e7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1056b8be113d56342aea8f83d5325737f7ecb93b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872989"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308455"
 ---
 # <a name="face-detection-with-computer-vision"></a>Wykrywanie twarzy przy użyciu przetwarzania obrazów
 
-Przetwarzanie obrazów wykrywa twarze osób na zdjęciu i generuje wiek, płeć i prostokąt dla każdej twarzy wykryte. Przetwarzanie obrazów zawiera podzestaw funkcji, które można znaleźć w usłudze [rozpoznawania twarzy](/azure/cognitive-services/face/), a usługa rozpoznawania twarzy umożliwia bardziej szczegółową analizę, np. identyfikację twarzy i wykrywanie póz.  
+Przetwarzanie obrazów można wykrywanie ludzkich twarzy na obrazie i wygenerować wiek, płeć i prostokąt dla każdej twarzy wykryte. 
+
+> [!NOTE]
+> Ta funkcja jest również oferowana przez Azure [twarzy](/azure/cognitive-services/face/) usługi. Zobacz tej alternatywy dla bardziej szczegółowe analizy, włącznie z rozpoznawania twarzy twarzy i stanowić wykrywania. 
 
 ## <a name="face-detection-examples"></a>Przykłady wykrywania twarzy
 
-Pierwszy przykład przedstawia odpowiedź JSON zwrócony przez wizualizacji komputerowej dla obrazu zawierającego pojedynczego ludzkich twarzy.
+W poniższym przykładzie pokazano odpowiedź JSON zwrócony przez wizualizacji komputerowej dla obrazu zawierającego pojedynczego ludzkich twarzy.
 
 ![Analiza obrazu — kobieta, dach, twarz](./Images/woman_roof_face.png)
 
@@ -51,7 +54,7 @@ Pierwszy przykład przedstawia odpowiedź JSON zwrócony przez wizualizacji komp
 }
 ```
 
-Drugi przykład przedstawia odpowiedź JSON zwracany w przypadku obrazu zawierającego wiele twarze.
+Następny przykład pokazuje odpowiedź JSON zwracany w przypadku obrazu zawierającego wiele twarze.
 
 ![Wizja analizowanie rodziny fotografii twarzy](./Images/family_photo_face.png)
 
@@ -110,4 +113,4 @@ Drugi przykład przedstawia odpowiedź JSON zwracany w przypadku obrazu zawieraj
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pojęcia dotyczące [wykrywanie specyficznego dla domeny zawartości](concept-detecting-domain-content.md).
+Zobacz [analizowanie obrazu](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) dokumentacji, aby dowiedzieć się więcej o tym, jak używać funkcji wykrywania twarzy.

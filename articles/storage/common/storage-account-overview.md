@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 880ae672409704ddcd5597ae758f8c786c3c0720
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244491"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327854"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -78,7 +78,7 @@ Podczas określania nazwy konta magazynu należy pamiętać o następujących re
 Kont magazynu ogólnego przeznaczenia można skonfigurować dla jednej z następujących warstw wydajności:
 
 * Warstwa wydajności warstwy standardowa do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyny wirtualnej platformy Azure.
-* Warstwa wydajności premium do przechowywania tylko dysków maszyny wirtualnej platformy Azure. Zobacz [usługi Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../../virtual-machines/windows/premium-storage.md) szczegółowe omówienie usługi Premium storage.
+* Warstwa wydajności premium do przechowywania tylko dysków niezarządzanych maszyn wirtualnych.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Warstwy dostępu dla bloku danych obiektu blob
 

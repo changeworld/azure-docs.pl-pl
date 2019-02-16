@@ -1,19 +1,28 @@
 ---
-title: Azure — wersja Premium i standardowa zarządzana Przegląd dysków maszyn wirtualnych systemu Linux | Dokumentacja firmy Microsoft
-description: Omówienie usługi Azure Managed Disks, która obsługuje konta magazynu dla Ciebie, korzystając z maszyn wirtualnych systemu Linux platformy Azure
+title: Usługa Azure Disk Storage managed dyskami — omówienie maszyn wirtualnych systemu Linux | Dokumentacja firmy Microsoft
+description: Omówienie usługi Azure managed disks, w której obsługuje konta magazynu dla Ciebie podczas korzystania z maszyn wirtualnych systemu Linux
 services: virtual-machines-linux,storage
 author: roygara
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 06/15/2017
+ms.date: 02/11/2019
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 9247596744b9363a71ba266a2cf39a9ebe4e42a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d8394121019338b53c87f7229d0ccf52fbdf8f21
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468244"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327031"
 ---
+# <a name="introduction-to-azure-managed-disks"></a>Wprowadzenie do usługi Azure managed disks
+
+Zarządzane przez platformę Azure dysk jest wirtualny dysk twardy (VHD). Można traktować je jak dysk fizyczny na serwerze w środowisku lokalnym, ale zwirtualizowanych. Usługi Azure managed disks są przechowywane jako stronicowe obiekty BLOB, które są losowych operacji We/Wy obiektu magazynu na platformie Azure. Nazywamy dysku zarządzanego "zarządzana", ponieważ jest klasą abstrakcyjną za pośrednictwem stronicowe obiekty BLOB i kontenery obiektów blob oraz konta usługi Azure storage. W przypadku dysków zarządzanych wszystko, co należy zrobić to aprowizowanie dysku, a platforma Azure zajmie się resztą.
+
+Po wybraniu za pomocą platformy Azure usługi managed disks przy użyciu obciążeń, platforma Azure utworzy i zarządza dysku. Dostępne typy dysków są bardzo dysków (wersja zapoznawcza) — wersja premium dyskach półprzewodnikowych (SSD), SSD w warstwie standardowa i standardowe dyski twarde (HDD). Aby uzyskać więcej informacji o każdym typie poszczególnych dysków, zobacz [wybierz typ dysku dla maszyn wirtualnych IaaS](disks-types.md).
+
 [!INCLUDE [virtual-machines-managed-disks-overview.md](../../../includes/virtual-machines-managed-disks-overview.md)]
+
+> [!div class="nextstepaction"]
+> [Wybierz typ dysku dla maszyn wirtualnych IaaS](disks-types.md)

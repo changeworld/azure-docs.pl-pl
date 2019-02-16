@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7049a4b5159687ab928cda7ddc6b1a35959529ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1db56ad31991b85ffad415818c7c67f0ee30808d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972111"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328082"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>SAP HANA wysoką dostępność dla maszyn wirtualnych platformy Azure
 
@@ -45,9 +45,9 @@ Te artykuły zawierają omówienie przy użyciu oprogramowania SAP HANA na platf
 Jest również dobrym pomysłem jest należy zapoznać się z tych artykułów na temat oprogramowania SAP HANA:
 
 - [Wysoka dostępność dla oprogramowania SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/6d252db7cdd044d19ad85b46e6c294a4.html)
-- [— Często zadawane pytania: Wysoka dostępność oprogramowania SAP HANA](https://archive.sap.com/documents/docs/DOC-66702)
+- [Często zadawane pytania: Wysoka dostępność dla oprogramowania SAP HANA](https://archive.sap.com/documents/docs/DOC-66702)
 - [Przeprowadzenia replikacji systemu SAP HANA](https://archive.sap.com/documents/docs/DOC-47702)
-- [SAP HANA w wersji 2.0 SPS 01 co firmy nowe: wysokiej dostępności](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/)
+- [SAP HANA w wersji 2.0 SPS 01 co firmy nowe: Wysoka dostępność](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/)
 - [Zalecenia dotyczące sieci dla replikacji systemu SAP HANA](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html)
 - [Replikacja systemu SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
 - [SAP HANA usługi automatycznego uruchamiania ponownego dla zaplanowanych](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html)
@@ -61,7 +61,7 @@ Platforma Azure oferuje różne umów SLA dotyczących dostępności dla różny
 
 [Umowa SLA dla maszyn wirtualnych](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) opisano dwie różne umowy SLA dla dwóch różnych konfiguracji:
 
-- Pojedyncza maszyna wirtualna, która używa [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) dla dysku systemu operacyjnego i wszystkie dyski z danymi. Ta opcja zapewnia miesięcznego czasu działania gwarantującą dostępność na poziomie 99,9%.
+- Pojedyncza maszyna wirtualna, która używa [Azure — wersja premium SSD](../../windows/disks-types.md) dla dysku systemu operacyjnego i wszystkie dyski z danymi. Ta opcja zapewnia miesięcznego czasu działania gwarantującą dostępność na poziomie 99,9%.
 - Wiele (co najmniej dwa) maszyn wirtualnych, które są zorganizowane w [zestawu dostępności platformy Azure](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets). Ta opcja zapewnia miesięcznego czasu dostępności wynoszącej 99,95 procent.
 
 Zmierz swoje wymagania dostępności względem umów SLA, które udostępniają składniki platformy Azure. Następnie wybierz scenariuszy dla oprogramowania SAP HANA osiągnąć swoje wymagany poziom dostępności.

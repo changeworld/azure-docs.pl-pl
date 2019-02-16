@@ -9,11 +9,11 @@ ms.date: 01/08/2019
 ms.author: yuemlu
 ms.custom: include file
 ms.openlocfilehash: ad57d373422e0fc310e51ac31f2a2e76999abf22
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54193439"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331226"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Ekonomicznego magazynu w warstwie standardowa oraz zarządzane i niezarządzane dyski maszyny Wirtualnej platformy Azure
 
@@ -27,7 +27,7 @@ Istnieją dwa sposoby tworzenia dysków w warstwie standardowa dla maszyn wirtua
 
 **Niezarządzane dyski**: Ten typ dysku jest oryginalnej metody, w których zarządzasz konta magazynu używany do przechowywania plików wirtualnego dysku twardego, które odpowiadają na dyskach maszyny Wirtualnej. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu. Usługa Unmanaged disks można dołączyć do dowolnego rozmiaru maszyny Wirtualnej platformy Azure, w tym o maszynach wirtualnych, które przede wszystkim używasz usługi Premium Storage, takich jak seria DSv2 i GS. Maszyny wirtualne platformy Azure obsługują dołączanie kilka dyski w warstwie standardowa, dzięki czemu do 256 TiB pamięci na maszynę Wirtualną. Jeśli używasz rozmiary dysków (wersja zapoznawcza), możesz mieć maksymalnie około 2 PiB magazynu na maszynę Wirtualną.
 
-[**Usługa Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Ta funkcja umożliwia zarządzanie kont magazynu dla dysków maszyn wirtualnych dla Ciebie. Określ typ (w warstwie Premium SSD, SSD w warstwie standardowa lub standardowych dysków Twardych) i rozmiar dysku należy i platforma Azure utworzy i zarządza dysku. Nie trzeba martwić się o umieszczenie dysków na wielu kontach magazynu w celu zapewnienia przekroczysz limity skalowalności konta magazynu — Azure sobie z nimi poradzi dla Ciebie.
+[**Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Ta funkcja umożliwia zarządzanie kont magazynu dla dysków maszyn wirtualnych dla Ciebie. Określ typ (w warstwie Premium SSD, SSD w warstwie standardowa lub standardowych dysków Twardych) i rozmiar dysku należy i platforma Azure utworzy i zarządza dysku. Nie trzeba martwić się o umieszczenie dysków na wielu kontach magazynu w celu zapewnienia przekroczysz limity skalowalności konta magazynu — Azure sobie z nimi poradzi dla Ciebie.
 
 Mimo że oba typy dysków są dostępne, zaleca się przy użyciu dysków zarządzanych z zalet ich wiele funkcji.
 
@@ -73,7 +73,7 @@ Aby uzyskać więcej informacji, zobacz [usługi Azure Storage dotyczące skalow
 
 Wymagania aplikacji przekroczy cele skalowalności konta magazynu w jednym, tworzenie aplikacji na używanie wielu kont magazynu i partycjonuj dane na tych kontach magazynu. Alternatywnie możesz usługi Azure Managed Disks, a platforma Azure zarządza partycjonowania i umieszczenia danych dla Ciebie.
 
-### <a name="standard-disks-limits"></a>Limity dyski w warstwie standardowa
+### <a name="standard-disks-limits"></a>Standard Disks Limits
 
 W przeciwieństwie do dysków w warstwie Premium nie są udostępnione operacji wejścia/wyjścia na sekundę (IOPS) i przepływność (przepustowość) dysków w warstwie standardowa. Wydajność dysków w warstwie standardowa zależy od rozmiaru maszyny Wirtualnej, do której jest dołączony dysk i rozmiar dysku.
 
@@ -117,7 +117,7 @@ Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
 
 | **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60*** | **S70*** | **S80*** |
 |------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
-| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16,385 giB (16 TiB) | 32 767 giB (32 TiB) |
+| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 GiB (1 TiB) | 2048 GiB (2 TiB) | 4095 GiB (4 TiB) | 8192 GiB (8 TiB) | 16,385 GiB (16 TiB) | 32 767 giB (32 TiB) |
 
 
 **Migawki**: Migawki dysków w warstwie standardowa są naliczane za dodatkową pojemność posługują się migawki. Aby uzyskać informacji na temat migawek, zobacz [Tworzenie migawki obiektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).

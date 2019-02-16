@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: b75a2faa2030fc343cbabb17eb37b63c9ea34f70
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: d36f2851f9c4f30725c8f8057d61970b6560009e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232385"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313215"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Administrowanie pamięć podręczna systemu Azure dla usługi Redis
 W tym temacie opisano sposób wykonywania zadań administracyjnych, takich jak [ponowny rozruch](#reboot) i [Planowanie aktualizacji](#schedule-updates) dla pamięci podręcznej Azure dla wystąpienia usługi Redis.
@@ -94,7 +94,7 @@ Ponowny rozruch jest dostępny dla wszystkich warstw cenowych.
 
 Aby określić okna obsługi, sprawdź odpowiednią dni i określ godzina rozpoczęcia okna konserwacji za każdy dzień i kliknij **OK**. Należy pamiętać, że czas okna obsługi jest w formacie UTC. 
 
-Domyślny i minimum, okno konserwacji dla aktualizacji jest pięć godzin. Ta wartość nie jest można skonfigurować w witrynie Azure portal, ale można ją skonfigurować przy użyciu programu PowerShell `MaintenanceWindow` parametru [New AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) polecenia cmdlet. Aby uzyskać więcej informacji, zobacz [zaplanowanych aktualizacji przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania można zarządzać?](#can-i-manage-scheduled-updates-using-powershell-cli-or-other-management-tools)
+Domyślny i minimum, okno konserwacji dla aktualizacji jest pięć godzin. Ta wartość nie jest można skonfigurować w witrynie Azure portal, ale można ją skonfigurować przy użyciu programu PowerShell `MaintenanceWindow` parametru [New AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry) polecenia cmdlet. Aby uzyskać więcej informacji zobacz zaplanowanych aktualizacji przy użyciu programu PowerShell, interfejsu wiersza polecenia lub innych narzędzi do zarządzania można zarządzać?
 
 
 ## <a name="schedule-updates-faq"></a>Zaplanuj aktualizacje — często zadawane pytania

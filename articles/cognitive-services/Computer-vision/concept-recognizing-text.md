@@ -11,18 +11,21 @@ ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7908c29f3a48821588ea93ebe33ffb6b8de77520
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 48ce15a11c3e3282535420f3e1bb1915276d70f5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881179"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313181"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 
 Przetwarzanie obrazów, można wykryć i wyodrębnianie tekstu drukowanych lub pisma odręcznego z obrazów różne obiekty na różnych powierzchniach i tłach, takich jak przychody, plakaty, wizytówki, litery i tablic.
 
-Rozpoznawanie tekstu oszczędza czas i nakład pracy. Można zwiększyć produktywność biorąc obrazu, tekstu zamiast jego przepisywania. Rozpoznawanie tekstu pozwala na przekształcanie notatek do. Taka cyfryzacja pozwala na wdrożenie szybkiego i łatwego wyszukiwania. Zmniejsza ona również nieład związany z dużą ilością papieru.
+Funkcja rozpoznawania tekstu jest bardzo podobny do [optyczne rozpoznawanie znaków (OCR)](concept-extracting-text-ocr.md), ale w przeciwieństwie do optyczne rozpoznawanie znaków wykonuje asynchronicznie i używa aktualizacji modeli rozpoznawania.
+
+> [!NOTE]
+> Ta technologia jest obecnie dostępna w wersji zapoznawczej i jest dostępna tylko dla tekstu w języku angielskim.
 
 ## <a name="text-recognition-requirements"></a>Wymagania dotyczące rozpoznawania tekstu
 
@@ -32,9 +35,6 @@ Przetwarzanie obrazów może rozpoznać tekstu drukowanego i pisma odręcznego w
 - Rozmiar pliku obrazu musi być mniejszy niż 4 megabajty (MB)
 - Wymiary obrazu musi należeć do zakresu od 50 x 50 i 4200 x 4200 pikseli
 
-> [!NOTE]
-> Ta technologia jest obecnie dostępna w wersji zapoznawczej i jest dostępna tylko dla tekstu w języku angielskim.
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pojęcia dotyczące [możliwości wyodrębniania tekstu za pomocą oprogramowania OCR](concept-extracting-text-ocr.md).
+Zobacz [rozpoznawanie tekstu, dokumentów referencyjnych](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/587f2c6a154055056008f200) Aby dowiedzieć się więcej.

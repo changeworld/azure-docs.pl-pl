@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 434971e707cdca62c76ede9f295e7af20aa4cc3f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387050"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313538"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Użyj rozszerzenia diagnostycznego systemu Linux do monitorowania metryk i dzienników
 
@@ -272,7 +272,7 @@ sampleRateInSeconds | (opcjonalnie) Domyślny interwał między kolekcję pierwo
 Element | Wartość
 ------- | -----
 resourceId | Identyfikator zasobu usługi Azure Resource Manager, maszyn wirtualnych lub skalowania maszyn wirtualnych zestawu, do której należy maszyna wirtualna. To ustawienie musi być także określona, jeśli dowolnego ujścia JsonBlob jest używany w konfiguracji.
-okres zaplanowanego transferu | Częstotliwość, z jaką metryki agregacji są obliczane i przekazywane do metryk usługi Azure, wyrażone jako przedział czasu jest 8601. Najmniejszy czas transferu jest 60 sekund, czyli PT1M. Należy określić co najmniej jeden okres zaplanowanego transferu.
+scheduledTransferPeriod | Częstotliwość, z jaką metryki agregacji są obliczane i przekazywane do metryk usługi Azure, wyrażone jako przedział czasu jest 8601. Najmniejszy czas transferu jest 60 sekund, czyli PT1M. Należy określić co najmniej jeden okres zaplanowanego transferu.
 
 Przykłady metryki określone w sekcji liczniki wydajności są zbierane, co 15 sekund lub na przykład ocenić jawnie zdefiniowany dla licznika. Jeśli wiele częstotliwości okres zaplanowanego transferu na liście (tak jak w przykładzie), każda agregacji jest obliczana niezależnie.
 
@@ -316,7 +316,7 @@ type | Określa dostawcę rzeczywiste metryki.
 klasa | Wraz z "counter" identyfikuje określone metryki w przestrzeni nazw dostawcy.
 counter | Wraz z "class" identyfikuje określone metryki w przestrzeni nazw dostawcy.
 counterSpecifier | Identyfikuje określone metryki w obszarze nazw metryk usługi Azure.
-warunek | (opcjonalnie) Wybiera konkretne wystąpienie obiektu do którego stosuje metrykę, lub wybiera agregacji ze wszystkich wystąpień tego obiektu. Aby uzyskać więcej informacji, zobacz [ `builtin` definicje metryk](#metrics-supported-by-builtin).
+warunek | (opcjonalnie) Wybiera konkretne wystąpienie obiektu do którego stosuje metrykę, lub wybiera agregacji ze wszystkich wystąpień tego obiektu. Aby uzyskać więcej informacji, zobacz `builtin` definicje metryk.
 sampleRate | JEST interwałem 8601, który ustawia szybkość jaką pierwotne próbki dla tej metryki są pobierane. Jeśli nie został ustawiony, interwał zbierania jest ustawiony przez wartość [sampleRateInSeconds](#ladcfg). Najkrótszy częstotliwość próbkowania obsługiwanych wynosi 15 sekund (PT15S).
 jednostka | Powinna być jedną z tych ciągów: "Liczba", "B", "S", "Procent", "CountPerSecond", "BytesPerSecond", "Milisekund". Definiuje jednostkę metryki. Osoby korzystające z danych zebranych oczekiwać, że wartości zebranych danych do potrzeb tej jednostki. LAD ignoruje tego pola.
 displayName | Etykieta (w języku określonym przez ustawienie regionalne skojarzone) do podłączenia do tych danych w metryk usługi Azure. LAD ignoruje tego pola.
@@ -433,7 +433,7 @@ Klasa procesora, metryk udostępnia informacje na temat użycia procesora na mas
 counter | Znaczenie
 ------- | -------
 PercentIdleTime | Wartość procentowa czasu przedziale agregacji, że procesorów zostały wykonywania pętli bezczynności jądra
-percentProcessorTime | Wartość procentowa czasu wykonania wątku czynnego
+PercentProcessorTime | Wartość procentowa czasu wykonania wątku czynnego
 PercentIOWaitTime | Wartość procentowa czasu oczekiwania na zakończenie operacji We/Wy
 PercentInterruptTime | Wartość procentowa czasu wykonywania, sprzętu i oprogramowania przerwań i wywołań DPC (opóźnione wywołania procedur)
 PercentUserTime | Czynnego czasu przedziale agregacji procent czasu spędzony w użytkownika bardziej przy normalnym priorytecie
@@ -694,7 +694,7 @@ Dane wysyłane do ujścia JsonBlob są przechowywane w obiektach blob na koncie 
 
 Ponadto można użyć tych narzędzi interfejsu użytkownika, dostęp do danych w usłudze Azure Storage:
 
-* Eksplorator serwera programu Visual Studio.
+* Visual Studio Server Explorer.
 * [Microsoft Azure Storage Explorer](https://azurestorageexplorer.codeplex.com/ "Eksplorator usługi Azure Storage").
 
 Ta migawka sesji programu Microsoft Azure Storage Explorer pokazuje wygenerowanego tabele usługi Azure Storage i kontenery z rozszerzeniem LAD 3.0 poprawnie skonfigurowana na testowej maszynie Wirtualnej. Obraz, który nie jest zgodna z [Przykładowa konfiguracja LAD 3.0](#an-example-lad-30-configuration).

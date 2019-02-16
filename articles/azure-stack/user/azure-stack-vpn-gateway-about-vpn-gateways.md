@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/04/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 62a0e763913ea1ca27edf88d7560c9400043bf27
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7bf7034d30a8aac187fb2eeae6569f2f495e4439
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251371"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327255"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>O usłudze VPN gateway dla usługi Azure Stack
 
@@ -74,11 +74,11 @@ Diagramy i opisy w poniższych sekcjach ułatwią topologii połączenia dostoso
 
 ### <a name="site-to-site"></a>Lokacja-lokacja
 
-A *site-to-site* (S2S) połączenia bramy sieci VPN to połączenie nawiązywane za pośrednictwem tunelu VPN IPsec/IKE (IKEv1 lub IKEv2). Ten typ połączenia wymaga urządzenia sieci VPN jest zlokalizowany w środowisku lokalnym, który jest przypisany publiczny adres IP. To urządzenie nie może znajdować się za translatorem adresów sieciowych. Z połączeń typu lokacja-lokacja (S2S) można korzystać w ramach konfiguracji hybrydowych i obejmujących wiele lokalizacji.
+A *site-to-site* (S2S) połączenia bramy sieci VPN to połączenie nawiązywane za pośrednictwem tunelu VPN IPsec/IKE (IKEv2). Ten typ połączenia wymaga urządzenia sieci VPN jest zlokalizowany w środowisku lokalnym, który jest przypisany publiczny adres IP. To urządzenie nie może znajdować się za translatorem adresów sieciowych. Z połączeń typu lokacja-lokacja (S2S) można korzystać w ramach konfiguracji hybrydowych i obejmujących wiele lokalizacji.
 
 ![Przykład konfiguracji połączenia sieci VPN typu lokacja lokacja](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 
-### <a name="multi-site"></a>Połączenia obejmujące wiele lokacji
+### <a name="multi-site"></a>Wiele lokacji
 
 A *obejmujące wiele lokacji* połączenia jest odmianą połączenia lokacja lokacja. W tym przypadku tworzysz więcej niż jedno połączenie VPN z bramy sieci wirtualnej — zwykle do nawiązywania połączenia z wieloma lokacjami lokalnymi. Pracując z wieloma połączeniami należy użyć typu sieci VPN opartej na trasach (znanych jako bramy o dynamicznym podczas pracy z klasycznymi sieciami wirtualnymi). Ze względu na to, że każda sieć wirtualna może mieć tylko jedną bramę sieci VPN, wszystkie połączenia za pośrednictwem bramy współużytkują dostępną przepustowość.
 

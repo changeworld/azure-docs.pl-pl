@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: f05935f73f385b076741d2e856af8316a74e9d2f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 68378342769618c2b0e1096fbf5a2d28d0cb4b0e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042499"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309900"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
@@ -30,7 +30,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
 1. **Zasady połączenia: Użyj trybu bezpośredniego połączenia**
 
-    Jak klient nawiąże połączenie do usługi Azure Cosmos DB ma istotny wpływ na wydajność, szczególnie w zakresie odczytaną opóźnienie po stronie klienta. Istnieją dwa ustawienia konfiguracji klucza dla konfiguracji klienta zasad połączenia — połączenie *tryb* i [połączenia *protokołu*](#connection-protocol).  Są dostępne dwa tryby:
+    Jak klient nawiąże połączenie do usługi Azure Cosmos DB ma istotny wpływ na wydajność, szczególnie w zakresie odczytaną opóźnienie po stronie klienta. Istnieją dwa ustawienia konfiguracji klucza dla konfiguracji klienta zasad połączenia — połączenie *tryb* i połączenia *protokołu*.  Są dostępne dwa tryby:
 
    * Tryb bramy (ustawienie domyślne)
       
@@ -47,9 +47,9 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
     |Tryb połączenia  |Obsługiwany protokół  |Obsługiwanych zestawów SDK  |Port usługi/interfejsu API  |
     |---------|---------|---------|---------|
-    |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo (10250 10255, 10256), Table(443), Cassandra(443) Graph(443)    |
+    |Brama  |   HTTPS    |  Wszystkie zestawy SDK    |   SQL(443), Mongo(10250, 10255, 10256), Table(443), Cassandra(443), Graph(443)    |
     |Bezpośrednie    |    HTTPS     |  Zestaw SDK platformy .net i Java    |    SQL(443)   |
-    |Bezpośrednie    |     TCP    |  Zestaw SDK platformy .net    | Porty w zakresie 20 000 10 000 operacji |
+    |Bezpośrednie    |     TCP    |  Zestaw SDK platformy .NET    | Porty w zakresie 20 000 10 000 operacji |
 
     Usługa Azure Cosmos DB oferuje proste i Otwórz model programowania RESTful przy użyciu protokołu HTTPS. Ponadto oferuje wydajne protokołu TCP, który jest również zgodne ze specyfikacją REST swój model komunikacji i jest dostępny za pośrednictwem zestawu SDK klienta platformy .NET. Zarówno w przypadku bezpośredniego połączenia TCP, jak i protokołu HTTPS na użytek SSL początkowego uwierzytelniania i szyfrowania ruchu. Aby uzyskać najlepszą wydajność należy użyć protokołu TCP, gdy jest to możliwe.
 

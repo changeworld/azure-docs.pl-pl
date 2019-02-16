@@ -1,6 +1,6 @@
 ---
-title: Największa SSD dysków zarządzanych dla maszyn wirtualnych Windows | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o Ultra SSD dysków zarządzanych dla maszyn wirtualnych platformy Azure
+title: Największa dysków dla maszyn wirtualnych Windows - usługi Azure Managed Disks | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o najwyższej dysków maszyn wirtualnych platformy Azure
 services: virtual-machines-windows
 author: roygara
 ms.service: virtual-machines-windows
@@ -12,11 +12,11 @@ ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: seodec18
 ms.subservice: disks
-ms.openlocfilehash: 7766d4af86cfb5cb3caa02632d2b2c0dbd2e2355
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 00f98322fc79709becbfca5993b45f6f727ed3f6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467156"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326446"
 ---
 [!INCLUDE [virtual-machines-disks-ultra-ssd](../../../includes/virtual-machines-disks-getting-started-ultra-ssd.md)]

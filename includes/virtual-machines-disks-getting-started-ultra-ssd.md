@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e55058d6b1f76b4afcb847b946df85d5ab69971b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 0369a7792f0d9c97aa3d943708dfcc07228effa2
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985472"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330936"
 ---
-# <a name="enabling-azure-ultra-ssds"></a>Włączanie platformy Azure, najwyższej dysków SSD
+# <a name="enabling-azure-ultra-disks"></a>Włączanie usługi Azure disks ultra
 
-Azure Ultra SSD zapewnia wysoką przepływność, wysokiej operacje We/Wy i magazynu dyskowego niskie opóźnienia maszyn wirtualnych IaaS platformy Azure. Ta nowa oferta zapewnia początku wydajności wiersza w poziomach dostępności jako ofert istniejących dysków. Dodatkowe korzyści Ultra SSD obejmują możliwość dynamicznie zmieniać wydajność dysku wraz z obciążeń, bez konieczności ponownego uruchamiania maszyn wirtualnych. Największa dysków SSD jest odpowiedni dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, najwyższej warstwy bazy danych i transakcji duże obciążenia.
+Usługi Azure disks ultra dostarczać wysokiej przepływności, wysoka operacje We/Wy i magazynu dyskowego niskie opóźnienia dla maszyn wirtualnych IaaS platformy Azure. Ta nowa oferta zapewnia początku wydajności wiersza w poziomach dostępności jako ofert istniejących dysków. Dodatkowe korzyści ultra dyski obejmują możliwość dynamicznie zmieniać wydajność dysku wraz z obciążeń, bez konieczności ponownego uruchamiania maszyn wirtualnych. Największa dyski są odpowiednie dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, najwyższej warstwy bazy danych i transakcji duże obciążenia.
 
-Obecnie najwyższej dyski SSD są w wersji zapoznawczej, więc użytkownik musi [rejestrowanie](https://aka.ms/UltraSSDPreviewSignUp) w wersji zapoznawczej, aby można było uzyskiwać do nich dostęp.
+Obecnie najwyższej dyski są w wersji zapoznawczej, więc użytkownik musi [rejestrowanie](https://aka.ms/UltraSSDPreviewSignUp) w wersji zapoznawczej, aby można było uzyskiwać do nich dostęp.
 
-Po zatwierdzeniu Uruchom jedno z poniższych poleceń, aby określić, która strefa w regionie wschodnie stany USA 2 do wdrożenia usługi najwyższej SSD do:
+Po zatwierdzeniu Uruchom jedno z poniższych poleceń, aby określić, która strefa w regionie wschodnie stany USA 2 ultra dysku, aby wdrożyć:
 
 PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
 
@@ -31,20 +31,20 @@ Odpowiedź będzie miała podobny do poniższego, formularza, gdzie X jest stref
 
 |ResourceType  |Name (Nazwa)  |Lokalizacja  |Strefy  |Ograniczenie  |Możliwości  |Wartość  |
 |---------|---------|---------|---------|---------|---------|---------|
-|Dyski     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|dyski     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 Jeśli nie ma odpowiedzi w poleceniu, oznacza to rejestrację, aby ta funkcja jest nadal oczekujące na zatwierdzenie lub niezatwierdzone jeszcze.
 
-Skoro już wiesz, które strefy do wdrożenia, postępuj zgodnie z instrukcjami wdrażania, w tym artykule, aby uzyskać pierwszy maszyny wirtualne wdrażane z dyskami Ultra SSD.
+Skoro już wiesz, które strefy do wdrożenia, postępuj zgodnie z instrukcjami wdrażania, w tym artykule, aby uzyskać pierwszy maszyny wirtualne wdrażane z dyskami ultra.
 
-## <a name="deploying-an-ultra-ssd"></a>Wdrażanie Ultra dyski SSD
+## <a name="deploying-an-ultra-disk"></a>Wdrażanie ultra dysku
 
 Najpierw Ustal, rozmiar maszyny Wirtualnej do wdrożenia. W ramach tej wersji zapoznawczej obsługiwane są tylko rodziny DsV3 i EsV3 maszyn wirtualnych. Znajduje się w drugiej tabeli, w tym [blogu](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/) Aby uzyskać szczegółowe informacje o tych rozmiarach maszyn wirtualnych.
-Także odwoływać się do przykładu [Utwórz Maszynę wirtualną z wieloma dyskami Ultra SSD](https://aka.ms/UltraSSDTemplate), który pokazuje, jak utworzyć maszynę Wirtualną z wieloma dyskami SSD największa.
+Także odwoływać się do przykładu [Utwórz Maszynę wirtualną z wieloma dyskami ultra](https://aka.ms/UltraSSDTemplate), który pokazuje, jak utworzyć maszynę Wirtualną z wieloma dyskami największa.
 
 Poniżej opisano zmiany nowych/zmodyfikowanych szablonu usługi Resource Manager: **apiVersion** dla `Microsoft.Compute/virtualMachines` i `Microsoft.Compute/Disks` musi być ustawiona jako `2018-06-01` (lub nowsza).
 
-Określ dysku jednostka Sku UltraSSD_LRS, pojemności dysku, operacje We/Wy i przepustowości w MB/s, aby utworzyć dysk SSD największa. Oto przykład, który tworzy dysk z 1024 GiB (GiB = 2 ^ 30 bajtów), 80 000 operacji We/Wy i 1200 MB/s (MB/s = 10 ^ 6 bajtów na sekundę):
+Określ dysku jednostka Sku UltraSSD_LRS, pojemności dysku, operacje We/Wy i przepustowości w MB/s, aby utworzyć dysk największa. Oto przykład, który tworzy dysk z 1024 GiB (GiB = 2 ^ 30 bajtów), 80 000 operacji We/Wy i 1200 MB/s (MB/s = 10 ^ 6 bajtów na sekundę):
 
 ```json
 "properties": {  
@@ -57,7 +57,7 @@ Określ dysku jednostka Sku UltraSSD_LRS, pojemności dysku, operacje We/Wy i pr
 }
 ```
 
-Dodaj dodatkowe możliwości we właściwościach maszyny Wirtualnej, aby wskazać jej włączone Ultra SSD (odnoszą się do [przykładowe](https://aka.ms/UltraSSDTemplate) pełny szablon usługi Resource Manager):
+Dodaj dodatkowe możliwości we właściwościach maszyny Wirtualnej, aby wskazać jej ultra włączone (dotyczą [przykładowe](https://aka.ms/UltraSSDTemplate) pełny szablon usługi Resource Manager):
 
 ```json
 {
@@ -77,11 +77,11 @@ Dodaj dodatkowe możliwości we właściwościach maszyny Wirtualnej, aby wskaza
 
 Po zaaprowizowaniu maszyny Wirtualnej można podzielić na partycje i sformatować dyski z danymi i skonfigurować je dla obciążeń.
 
-## <a name="additional-ultra-ssd-scenarios"></a>Dodatkowe scenariusze Ultra SSD
+## <a name="additional-ultra-disk-scenarios"></a>Dodatkowy dysk ultra scenariuszy
 
-- Podczas tworzenia maszyny Wirtualnej Ultra SSD niejawnie tworzone są również. Jednak te dyski zostaną odebrane wartości domyślnej (500) na SEKUNDĘ i przepływność (8 MiB/s).
-- Dodatkowe SSD Ultra można dołączyć do najwyższej SSD zgodnych maszyn wirtualnych.
-- Największa SSD obsługuje dopasowywanie atrybuty wydajności dysku (operacje We/Wy i przepływność) w czasie wykonywania bez odłączeniem dysku od maszyny wirtualnej. Po wystawieniu wydajności operacji zmiany rozmiaru dysku na dysku może potrwać do godziny rzeczywiście zostały wprowadzone zmiany.
+- Podczas tworzenia maszyny Wirtualnej dyski ultra niejawnie tworzone są również. Jednak te dyski zostaną odebrane wartości domyślnej (500) na SEKUNDĘ i przepływność (8 MiB/s).
+- Dodatkowe dyski ultra można dołączyć do zgodnych maszyn wirtualnych.
+- Największa dyski obsługują dopasowywanie atrybuty wydajności dysku (operacje We/Wy i przepływność) w czasie wykonywania bez odłączeniem dysku od maszyny wirtualnej. Po wystawieniu wydajności operacji zmiany rozmiaru dysku na dysku może potrwać do godziny rzeczywiście zostały wprowadzone zmiany.
 - Pojemność dysku rośnie wymagają cofnięcie przydziału maszyny wirtualnej.
 
 ## <a name="next-steps"></a>Kolejne kroki

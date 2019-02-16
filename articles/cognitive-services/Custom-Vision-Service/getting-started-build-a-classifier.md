@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: 6b39d01266cdde0316d1a660429d5ccab546dac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cd6f533bcd32a307facc781c3b2207a337fc8a34
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873635"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309169"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>Jak tworzyć klasyfikatora z Custom Vision
 
@@ -95,6 +95,11 @@ W tej sekcji możesz przekazać i ręcznie tagować obrazy w celu nauczenia klas
     ![Pasek postępu pokazuje wszystkie zadania zostały zakończone.](./media/getting-started-build-a-classifier/add-images04.png)
 
 Aby przekazać inny zestaw obrazów, powrót do początku tej sekcji, a następnie powtórz kroki. W pewnym momencie w projekcie, użytkownik może być konieczne dodanie _ujemne przykłady_ dzięki bardziej precyzyjne klasyfikatora. Ujemna próbki są tymi, które pasuje do żadnego innymi tagów. Podczas przekazywania tych obrazów stosowanie specjalnych **ujemna** etykiety do nich.
+
+> [!NOTE]
+> Custom Vision Service obsługuje niektóre obsługi automatycznego obrazów ujemna. Na przykład jeśli tworzysz gronowego a banany klasyfikatora, przesyłanie obrazu butów w celu prognozowania klasyfikatora powinien wynik tego obrazu jako 0% gronowego i banany.
+
+> Z drugiej strony w przypadku obrazów ujemna odmianą obrazy używane w szkolenia, prawdopodobnie modelu będzie klasyfikowania obrazów ujemna jako klasę etykietami z powodu podobieństwa doskonałe. Na przykład jeśli masz pomarańczowy, a grejpfrutów klasyfikatora, a kanał w obrazie clementine, jego może wynik clementine pomarańczowa ponieważ wiele funkcji clementine przypominają Pomarańcze. W przypadku obrazów ujemna tego rodzaju, zaleca się utworzenie co najmniej jeden dodatkowe znaczniki (takie jak **innych**) i oznaczanie ujemna obrazy z tym znacznikiem podczas szkolenia zezwolić na model, który ma lepsze rozróżnienie tych klas .
 
 ## <a name="train-the-classifier"></a>Szkolenie klasyfikatora
 

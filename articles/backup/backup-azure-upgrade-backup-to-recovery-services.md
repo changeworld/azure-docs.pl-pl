@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880050"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313364"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Uaktualnienie magazynu usługi Backup do magazynu usługi Recovery Services
 
@@ -39,7 +39,7 @@ Sprawdź następujące problemy przed rozpoczęciem uaktualnienia magazynów kop
 
 - **Minimalna wersja agenta**: Aby przeprowadzić uaktualnienie magazynu, upewnij się, agent usługi Microsoft Azure Recovery Services (MARS) jest co najmniej wersji 2.0.9083.0. Jeśli agenta usług MARS jest starsza niż 2.0.9083.0, zaktualizuj agenta przed rozpoczęciem procesu uaktualniania.
 - **Model rozliczeń oparty na wystąpienie**: Magazyny usług odzyskiwania obsługują tylko model rozliczeń oparty na wystąpienie. Jeśli masz magazyn kopii zapasowych, który używa starszego modelu rozliczeń na podstawie magazynu, należy przekonwertować model rozliczeń podczas uaktualniania.
-- **Żadne operacje konfiguracji kopii zapasowej w toku**: podczas uaktualniania, jest ograniczony dostęp do płaszczyzny zarządzania. Wykonaj wszystkie operacje płaszczyzny zarządzania, a następnie uruchom uaktualnianie.
+- **Żadne operacje konfiguracji kopii zapasowej w toku**: Podczas uaktualniania dostęp do płaszczyzny zarządzania jest ograniczony. Wykonaj wszystkie operacje płaszczyzny zarządzania, a następnie uruchom uaktualnianie.
 
 ## <a name="using-powershell-scripts-to-upgrade-your-vaults"></a>Za pomocą skryptów programu PowerShell do uaktualnienia Twoich magazynów
 
@@ -53,7 +53,7 @@ Skrypty programu PowerShell służy do uaktualnienia magazynów kopii zapasowych
 
 Użyj następującego skryptu, aby uaktualnić Twoich magazynów. Poniższy przykładowy skrypt ma objaśnienia dotyczące parametrów.
 
-RecoveryServicesVaultUpgrade 1.0.2.ps1 **- SubscriptionID** `<subscriptionID>` **- VaultName** `<vaultname>` **— lokalizacja** `<location>` **- ResourceType** `BackupVault` **- TargetResourceGroupName** `<rgname>`
+RecoveryServicesVaultUpgrade-1.0.2.ps1 **-SubscriptionID** `<subscriptionID>` **-VaultName** `<vaultname>` **-Location** `<location>` **-ResourceType** `BackupVault` **-TargetResourceGroupName** `<rgname>`
 
 **SubscriptionID** — numer Identyfikatora subskrypcji, magazynu, który jest uaktualniany.<br/>
 **VaultName** — nazwę magazynu kopii zapasowych, który jest uaktualniany.<br/>
@@ -81,8 +81,8 @@ Skrypt programu PowerShell wyświetli monit o podanie poświadczeń. Wprowadź s
 Po wprowadzeniu poświadczeń platformy Azure, Azure sprawdza, czy dane środowisko spełnia następujące wymagania wstępne:
 
 - **Minimalna wersja agenta** — uaktualnienie magazynów kopii zapasowych do magazynów usługi Recovery Services wymaga agenta usług MARS na co najmniej wersji 2.0.9083.0. W przypadku elementów zarejestrowanych w magazynie kopii zapasowych z agentem starszych niż 2.0.9083.0 sprawdzania wymagań wstępnych kończy się niepowodzeniem. Jeśli sprawdzanie wymagań wstępnych nie powiedzie się, zaktualizuj agenta, a następnie ponowić próbę uaktualnienia magazynu. Możesz pobrać najnowszą wersję agenta z [ http://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe ](https://download.microsoft.com/download/F/4/B/F4B06356-150F-4DB0-8AD8-95B4DB4BBF7C/MARSAgentInstaller.exe).
-- **Zadania konfiguracji i nieustanne**: ktoś służy do konfigurowania zadania dla magazynu kopii zapasowych, ustaw do uaktualnienia, czy rejestrowanie elementu, niepowodzenia sprawdzania wymagań wstępnych. Zakończ konfigurację, lub Zakończ rejestrowanie elementu, a następnie uruchom proces uaktualniania magazynu.
-- **Model rozliczeń oparty na magazyn**: magazynów usługi Recovery Services obsługują model rozliczeń oparty na wystąpienie. Jeśli uruchamiasz Uaktualnienie magazynu na magazyn kopii zapasowych, która wykorzystuje model rozliczeń oparty na magazyn, pojawia się monit o uaktualnienie modelu rozliczeń wraz z magazynem. W przeciwnym razie można zaktualizować modelu rozliczeń, a następnie uruchom Uaktualnianie magazynu.
+- **Zadania konfiguracji i nieustanne**: Gdy osoba niepowołana jest równa Konfigurowanie zadania dla magazynu kopii zapasowych można uaktualnić, czy rejestrowanie elementu, niepowodzenia sprawdzania wymagań wstępnych. Zakończ konfigurację, lub Zakończ rejestrowanie elementu, a następnie uruchom proces uaktualniania magazynu.
+- **Model rozliczeń oparty na magazyn**: Magazyny usługi Recovery Services obsługują model rozliczeń oparty na wystąpienie. Jeśli uruchamiasz Uaktualnienie magazynu na magazyn kopii zapasowych, która wykorzystuje model rozliczeń oparty na magazyn, pojawia się monit o uaktualnienie modelu rozliczeń wraz z magazynem. W przeciwnym razie można zaktualizować modelu rozliczeń, a następnie uruchom Uaktualnianie magazynu.
 - Określ grupę zasobów dla magazynu usługi Recovery Services. Aby móc korzystać z funkcji wdrażania usługi Resource Manager, należy przełączyć magazyn usługi Recovery Services w grupie zasobów. Jeśli nie wiesz, które grupy zasobów, aby użyć, podaj nazwę i procesu uaktualniania zostanie utworzona grupa zasobów dla Ciebie. Proces uaktualniania powoduje również skojarzenie magazynie z nową grupę zasobów.
 
 Po zakończeniu procesu uaktualniania Sprawdzanie wymagań wstępnych w proces zostanie wyświetlony monit z rozpoczęciem uaktualniania magazynu. Po upewnieniu się, proces uaktualniania zwykle trwa około 15 – 20 minut, w zależności od rozmiaru magazynu. Jeśli masz duży magazynu, uaktualnienie może potrwać do 90 minut.
@@ -98,13 +98,13 @@ Drugi ekran przedstawia pomocy łącza, które ułatwiają rozpoczęcie korzysta
 ![linki pomocy w bloku Szybki Start](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>Czynności po uaktualnieniu
-Magazyn usługi Recovery Services obsługuje określanie informacji o strefie czasowej w zasadach kopii zapasowych. Po pomyślnym uaktualnieniu magazynu przejdź do pozycji zasady tworzenia kopii zapasowych z menu Ustawienia magazynu i zaktualizuj informacje o strefie czasowej dla każdej zasady skonfigurowane w magazynie. Ten ekran pokazuje już czas harmonogram tworzenia kopii zapasowych określony dla lokalnej strefy czasowej używane podczas tworzenia zasad. 
+Magazyn usługi Recovery Services obsługuje określanie informacji o strefie czasowej w zasadach kopii zapasowych. Po pomyślnym uaktualnieniu magazynu przejdź do pozycji zasady tworzenia kopii zapasowych z menu Ustawienia magazynu i zaktualizuj informacje o strefie czasowej dla każdej zasady skonfigurowane w magazynie. Ten ekran pokazuje już czas harmonogram tworzenia kopii zapasowych określony dla lokalnej strefy czasowej używane podczas tworzenia zasad.
 
-## <a name="enhanced-security"></a>Większe bezpieczeństwo
+## <a name="enhanced-security"></a>Ulepszone zabezpieczenia
 
-Po uaktualnieniu magazynu usługi Backup do magazynu usługi Recovery Services, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Gdy ustawienia zabezpieczeń znajdują się w niektórych operacji, takich jak usuwanie kopii zapasowych lub zmiana hasła wymagać [usługi Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) numeru PIN. Aby uzyskać więcej informacji o zwiększonych zabezpieczeń, zobacz artykuł [funkcje zabezpieczeń, aby chronić hybrydowych kopii zapasowych](backup-azure-security-feature.md). 
+Po uaktualnieniu magazynu usługi Backup do magazynu usługi Recovery Services, ustawienia zabezpieczeń dla tego magazynu są automatycznie włączone. Gdy ustawienia zabezpieczeń znajdują się w niektórych operacji, takich jak usuwanie kopii zapasowych lub zmiana hasła wymagać [usługi Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md) numeru PIN. Aby uzyskać więcej informacji o zwiększonych zabezpieczeń, zobacz artykuł [funkcje zabezpieczeń, aby chronić hybrydowych kopii zapasowych](backup-azure-security-feature.md).
 
-Zwiększonych zabezpieczeń jest włączone, dane są przechowywane się 14 dni, po usunięciu informacji punktu odzyskiwania z magazynu. Klienci są obciążani za magazynowanie tych danych zabezpieczeń. Przechowywanie danych zabezpieczeń mają zastosowanie do punktów odzyskiwania dla agenta usługi Kopia zapasowa Azure, usługi Azure Backup Server i System Center Data Protection Manager. 
+Zwiększonych zabezpieczeń jest włączone, dane są przechowywane się 14 dni, po usunięciu informacji punktu odzyskiwania z magazynu. Klienci są obciążani za magazynowanie tych danych zabezpieczeń. Przechowywanie danych zabezpieczeń mają zastosowanie do punktów odzyskiwania dla agenta usługi Kopia zapasowa Azure, usługi Azure Backup Server i System Center Data Protection Manager.
 
 ## <a name="gather-data-on-your-vault"></a>Zbieranie danych dotyczących magazynu
 
@@ -112,38 +112,38 @@ Po uaktualnieniu do magazynu usługi Recovery Services, skonfigurować raporty u
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-**Uaktualnij plan wpływa na Moje bieżące kopie zapasowe?**</br>
+### <a name="does-the-upgrade-plan-affect-my-ongoing-backups"></a>Uaktualnij plan wpływa na Moje bieżące kopie zapasowe?
 Nie. Trwającą kopii zapasowych bezproblemowo kontynuują podczas i po uaktualnieniu.
 
-**Jeśli nie planuję wkrótce uaktualniania, co się dzieje Moje magazynów?**</br>
+### <a name="if-i-dont-plan-on-upgrading-soon-what-happens-to-my-vaults"></a>Jeśli nie planuję wkrótce uaktualniania, co się dzieje Moje magazynów?
 Ponieważ wszystkie nowe funkcje są stosowane tylko do magazynów usługi Recovery Services, zalecamy przeczytanie tematu do uaktualnienia Twoich magazynów. Od 1 września 2017 r. Firma Microsoft rozpocznie uaktualnianie automatycznie magazynów kopii zapasowych do magazynów usługi Recovery Services. Od listopada 30,2017, możesz już tworzyć magazynów kopii zapasowych przy użyciu programu PowerShell. Magazyn może zostać automatycznie uaktualniony ilekroć pomiędzy. Microsoft zaleca, aby jak najszybciej uaktualniania magazynu.
 
-**Ile kosztuje to oznacza, że uaktualnienie dla moich istniejących narzędzi?**</br>
-Aktualizacja narzędzi do modelu wdrażania usługi Resource Manager. Użyj zostały utworzone dla dla magazynów usługi Recovery Services w modelu wdrażania usługi Resource Manager. Planowanie modelu wdrażania usługi Resource Manager i ewidencjonowanie aktywności na różnicę w Twoich magazynów jest ważne. 
+### <a name="what-does-this-upgrade-mean-for-my-existing-tooling"></a>Ile kosztuje to oznacza, że uaktualnienie dla moich istniejących narzędzi?
+Aktualizacja narzędzi do modelu wdrażania usługi Resource Manager. Użyj zostały utworzone dla dla magazynów usługi Recovery Services w modelu wdrażania usługi Resource Manager. Planowanie modelu wdrażania usługi Resource Manager i ewidencjonowanie aktywności na różnicę w Twoich magazynów jest ważne.
 
-**Podczas uaktualniania jest długi Przestój?**</br>
+### <a name="during-the-upgrade-is-there-much-downtime"></a>Podczas uaktualniania jest długi Przestój?
 To zależy od liczby zasobów, które uaktualniania. W przypadku mniejszych wdrożeń (kilkadziesiąt chronionych wystąpień) całe uaktualnienie powinno zająć mniej niż 20 minut. W przypadku większych wdrożeń powinno zająć maksymalnie godzinę.
 
-**Czy mogę wycofać po uaktualnieniu?**</br>
+### <a name="can-i-roll-back-after-upgrading"></a>Czy mogę wycofać po uaktualnieniu?
 Nie. Wycofanie nie jest obsługiwane po pomyślnym uaktualnieniu zasobów.
 
-**Można sprawdzić poprawność moją subskrypcję lub Moje zasoby, aby sprawdzić, jeśli są one zdolne do uaktualnienia?**</br>
+### <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-upgrade"></a>Można sprawdzić poprawność moją subskrypcję lub Moje zasoby, aby sprawdzić, jeśli są one zdolne do uaktualnienia?
 Tak. Pierwszym krokiem podczas uaktualnienia weryfikuje, czy zasoby są zdolne do uaktualnienia. W przypadku, gdy weryfikacja wymagania wstępne nie powiedzie się, zostaną zgłoszone komunikaty dla wszystkich przyczyn, dla których nie można ukończyć uaktualnianie.
 
-**Czy mogę zmienić mój opartej na dostawcy usług Kryptograficznych magazynu kopii zapasowych**</br>
+### <a name="can-i-upgrade-my-csp-based-backup-vault"></a>Czy mogę zmienić mój opartej na dostawcy usług Kryptograficznych magazynu kopii zapasowych
 Nie. Obecnie nie można uaktualnić magazynów kopii zapasowych opartych na dostawcy usług Kryptograficznych. Dodamy obsługę uaktualnienia magazynów kopii zapasowej bazującej na dostawcy usług Kryptograficznych w następnej wersji.
 
-**Mogę wyświetlić mojej klasycznego magazynu po uaktualnieniu**</br>
+### <a name="can-i-view-my-classic-vault-post-upgrade"></a>Mogę wyświetlić mojej klasycznego magazynu po uaktualnieniu
 Nie. Nie można wyświetlić ani zarządzania magazynem klasycznego po uaktualnieniu. Tylko można użyć nowej witryny Azure portal dla wszystkich akcji zarządzania w magazynie.
 
-**Moje uaktualnienie nie powiodło się, ale komputer, na którym przechowywane agenta wymagające aktualizacji i już nie istnieje. Co zrobić w takiej sytuacji?**</br>
+### <a name="my-upgrade-failed-but-the-machine-that-held-the-agent-requiring-updating-doesnt-exist-anymore-what-do-i-do-in-such-a-case"></a>Moje uaktualnienie nie powiodło się, ale komputer, na którym przechowywane agenta wymagające aktualizacji i już nie istnieje. Co zrobić w takiej sytuacji?
 Jeśli potrzebujesz używał magazynu, kopii zapasowych tego komputera w celu długoterminowego przechowywania, możesz nie będzie można uaktualnić magazynu. W przyszłych wydaniach dodamy obsługę dla Uaktualnienie magazynu usługi.
 Jeśli nie musisz już przechowywać kopie zapasowe tego komputera, następnie sprawdź wyrejestrowanie tego komputera w magazynie i ponownie przeprowadź uaktualnienie.
 
-**Dlaczego nie widzę informacji zadania dla moich zasobów po uaktualnieniu?**</br>
+### <a name="why-cant-i-see-the-jobs-information-for-my-resources-after-upgrade"></a>Dlaczego nie widzę informacji zadania dla moich zasobów po uaktualnieniu?
 Monitorowanie kopii zapasowych (IaaS i agenta MARS) to nowa funkcja, która pojawia się po uaktualnieniu magazynu usługi Backup do magazynu usługi Recovery Services. Informacje monitorowania trwa maksymalnie 12 godzin do synchronizacji z usługą.
 
-**Jak zgłosić problem?**</br>
+### <a name="how-do-i-report-an-issue"></a>Jak mogę zgłosić problem?
 W przypadku niepowodzenia jakiejkolwiek jego części Uaktualnienie magazynu należy pamiętać, że identyfikatorowi OperationId na liście błędów. Microsoft Support aktywnie będzie działać w celu rozwiązania problemu. Można Dotrzyj do działu pomocy technicznej lub Wyślij wiadomość e-mail rsvaultupgrade@service.microsoft.com z Identyfikatora subskrypcji, nazwę magazynu i OperationId. Firma Microsoft podejmie możliwie jak najszybciej rozwiązać problem. Nie należy wykonywać ponowień operacji, chyba że jawnie zgodnie z instrukcjami otrzymywanymi Aby to zrobić przez firmę Microsoft.
 
 

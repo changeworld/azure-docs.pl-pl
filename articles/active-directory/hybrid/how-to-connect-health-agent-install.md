@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6c4a7239110e0d3e712c97007ecc858f104811cc
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 53f1e8edc4286c2afbdf3b6909499a2e3fccfa5d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301693"
+ms.locfileid: "56313266"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalowanie agenta programu Azure AD Connect Health
 W tym dokumencie opisano instalowanie i konfigurowanie agentów programu Azure AD Connect Health. Agentów możesz pobrać [tutaj](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
@@ -42,7 +42,7 @@ Poniższa tabela zawiera listę wymagań dotyczących używania programu Azure A
 |Wyłącz standard FIPS|Standard FIPS nie jest obsługiwany przez agentów programu Azure AD Connect Health.|
 
 ### <a name="outbound-connectivity-to-the-azure-service-endpoints"></a>Łączność wychodząca z punktami końcowymi usług Azure
- Podczas instalowania i w czasie pracy agent wymaga łączności z punktami końcowymi usługi Azure AD Connect Health. Jeśli łączność wychodząca jest blokowana przy użyciu zapór, nie zapomnij dodać następujących punktów końcowych do listy lokalizacji dozwolonych. Dowiedz się więcej na temat [sprawdzania łączności wychodzącej](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
+ Podczas instalowania i w czasie pracy agent wymaga łączności z punktami końcowymi usługi Azure AD Connect Health. Jeśli łączność wychodząca jest blokowana przy użyciu zapór, upewnij się, czy następujące adresy URL nie są zablokowane domyślnie. Nie można wyłączyć monitorowanie zabezpieczeń i kontroli tych adresów URL, ale zezwolić im, jak w przypadku innych ruch internetowy. Mogą zezwalać na komunikację z punktami końcowymi usługi Azure AD Connect Health. Dowiedz się więcej na temat [sprawdzania łączności wychodzącej](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections)
 
 | Środowisko domeny | Wymagane punkty końcowe usług platformy Azure |
 | --- | --- |

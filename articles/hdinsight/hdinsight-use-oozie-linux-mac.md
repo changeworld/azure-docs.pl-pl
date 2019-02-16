@@ -9,12 +9,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 06/26/2018
-ms.openlocfilehash: 11c5d44d44bf66bc7f50dac13c1c7cf0ae7acfff
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: aca64ce3d965d03ecc6fe6da0f372f355a48bed5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994389"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311872"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Za pomocą programu Apache Oozie Apache Hadoop do definiowania i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight
 
@@ -301,7 +301,7 @@ Definicja zadania opisano, gdzie można znaleźć workflow.xml. Gdzie można zna
     ```
 
     > [!NOTE]  
-    > Jeśli klaster HDInsight używa usługi Azure Storage jako magazynu domyślnego `<value>` zawartość elementu zaczynają się od `wasb://`. Jeśli usługi Azure Data Lake Storage jest używana zamiast tego, rozpoczyna się od `adl://`.
+    > Jeśli klaster HDInsight używa usługi Azure Storage jako magazynu domyślnego `<value>` zawartość elementu zaczynają się od `wasb://`. Jeśli usługi Azure Data Lake Storage Gen1 jest używana zamiast tego, rozpoczyna się od `adl://`.
 
     Zapisywanie zawartości `<value>` elementu, ponieważ jest używany w następnych krokach.
 
@@ -508,7 +508,7 @@ Za pomocą interfejsu API REST programu Oozie możesz tworzyć własne narzędzi
 
 Aby uzyskać więcej informacji na temat korzystania z interfejsu API REST programu Oozie, zobacz [API usług sieci Web programu Apache Oozie](https://oozie.apache.org/docs/4.1.0/WebServicesAPI.html).
 
-## <a name="oozie-web-ui"></a>Interfejs użytkownika sieci web programu Oozie
+## <a name="oozie-web-ui"></a>Oozie web UI
 
 Interfejs użytkownika sieci web programu Oozie zapewnia widok stanu zadań Oozie opartych na sieci web w klastrze. Za pomocą interfejsu użytkownika sieci web można wyświetlić następujące informacje:
 
@@ -685,7 +685,7 @@ Poniżej przedstawiono określonych błędów, które mogą wystąpić i ich roz
 
 **Przyczyna**: Adresy magazynu obiektów Blob platformy Azure, które są używane w **job.xml** plik nie zawiera kontenera magazynu lub nazwa konta magazynu. Format adresu magazynu obiektów Blob musi być `wasb://containername@storageaccountname.blob.core.windows.net`.
 
-**Rozpoznawanie**: Zmień adresy magazynu obiektów Blob, które korzysta z zadania.
+**Rozwiązanie**: Zmień adresy magazynu obiektów Blob, które korzysta z zadania.
 
 ### <a name="ja002-oozie-is-not-allowed-to-impersonate-ltuser"></a>JA002: Oozie nie może spersonifikować &lt;użytkownika >
 
@@ -695,7 +695,7 @@ Poniżej przedstawiono określonych błędów, które mogą wystąpić i ich roz
 
 **Przyczyna**: Bieżące ustawienia uprawnień nie zezwalaj na Oozie personifikować określonego konta użytkownika.
 
-**Rozpoznawanie**: Oozie mogą personifikować użytkowników w **użytkowników** grupy. Użyj `groups USERNAME` wyświetlić konto użytkownika jest członkiem grupy. Jeśli użytkownik nie jest członkiem **użytkowników** grupy, użyj następującego polecenia, aby dodać użytkownika do grupy:
+**Rozwiązanie**: Oozie mogą personifikować użytkowników w **użytkowników** grupy. Użyj `groups USERNAME` wyświetlić konto użytkownika jest członkiem grupy. Jeśli użytkownik nie jest członkiem **użytkowników** grupy, użyj następującego polecenia, aby dodać użytkownika do grupy:
 
     sudo adduser USERNAME users
 
@@ -710,7 +710,7 @@ Poniżej przedstawiono określonych błędów, które mogą wystąpić i ich roz
 
 **Przyczyna**: Nie można załadować sterownik bazy danych wymagane do dostępu do bazy danych jest Sqoop.
 
-**Rozpoznawanie**: Podczas korzystania z narzędzia Sqoop z zadania usługi Oozie, musi zawierać ten sterownik bazy danych z innych zasobów, takich jak workflow.xml, używa zadania. Ponadto odwoływać się do archiwum, zawierającą sterownik bazy danych z `<sqoop>...</sqoop>` sekcji workflow.xml.
+**Rozwiązanie**: Podczas korzystania z narzędzia Sqoop z zadania usługi Oozie, musi zawierać ten sterownik bazy danych z innych zasobów, takich jak workflow.xml, używa zadania. Ponadto odwoływać się do archiwum, zawierającą sterownik bazy danych z `<sqoop>...</sqoop>` sekcji workflow.xml.
 
 Na przykład dla zadania w tym dokumencie, możesz użyć następujące czynności:
 

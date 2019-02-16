@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 61cad318dbbe55ef5ecf1b8167b6594ab6e57553
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 901afc8f28b617eb5bada2a0f58761ddb9f67607
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247541"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327416"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale na platformie Azure
 
@@ -89,7 +89,7 @@ Ta architektura działa warstwy aplikacji, magazynu i danych na maszynach wirtua
 
 ### <a name="storage-considerations"></a>Zagadnienia dotyczące magazynu
 
-Podobnie jak RAC Oracle DB2 pureScale jest blok o wysokiej wydajności we/wy, skalowalnego w poziomie bazy danych. Firma Microsoft zaleca korzystanie w największym [usługi Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) opcji, który odpowiada Twoim potrzebom. Mniejsze opcje magazynu może być odpowiedni dla środowisk deweloperskich i testowych, podczas gdy środowisk produkcyjnych często muszą większa pojemność magazynu. Architektura przykład używa [P30](https://azure.microsoft.com/pricing/details/managed-disks/) ze względu na pierwotny współczynnik operacji We/Wy, wielkości i ceny. Bez względu na rozmiar Użyj usługi Premium Storage, aby uzyskać najlepszą wydajność.
+Podobnie jak RAC Oracle DB2 pureScale jest blok o wysokiej wydajności we/wy, skalowalnego w poziomie bazy danych. Firma Microsoft zaleca korzystanie w największym [platformy Azure w warstwie premium SSD](disks-types.md) opcji, który odpowiada Twoim potrzebom. Mniejsze opcje magazynu może być odpowiedni dla środowisk deweloperskich i testowych, podczas gdy środowisk produkcyjnych często muszą większa pojemność magazynu. Architektura przykład używa [P30](https://azure.microsoft.com/pricing/details/managed-disks/) ze względu na pierwotny współczynnik operacji We/Wy, wielkości i ceny. Bez względu na rozmiar Użyj usługi Premium Storage, aby uzyskać najlepszą wydajność.
 
 Bazy danych DB2 pureScale używa udostępnionego — wszystko, czego architektury, w którym wszystkie dane są dostępne ze wszystkich węzłów klastra. Usługa Premium storage muszą zostać udostępnione w wystąpieniach, czy na żądanie lub na dedykowanych wystąpieniach.
 

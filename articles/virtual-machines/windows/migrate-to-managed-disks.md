@@ -16,21 +16,17 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 4aefc8c033383125a803eb0c8a38e2f3de119540
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e9c3e10f9b48bfe2efa5396c9e64d3d87be3d826
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467921"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330651"
 ---
 # <a name="migrate-azure-vms-to-managed-disks-in-azure"></a>Migrowanie maszyn wirtualnych platformy Azure do usługi Managed Disks na platformie Azure
 
 Usługa Azure Managed Disks upraszcza zarządzanie magazynu, usuwając konieczność oddzielnie Zarządzanie kontami magazynu.  Możesz również migrować istniejące maszyny wirtualne platformy Azure do usługi Managed Disks, aby korzystać z większą niezawodność, maszyn wirtualnych w zestawie dostępności. Zapewnia, że dyski różnych maszyn wirtualnych w zestawie dostępności są wystarczająco odizolowane od siebie, aby uniknąć pojedynczego punktu awarii. Automatycznie przełącza dyski różnych maszyn wirtualnych w zestawie dostępności w różnych jednostkach skalowania magazynu (sygnatury) co ogranicza wpływ błędy jednostki skali magazynu w jednym spowodowany sprzętu i oprogramowania błędów.
-Na podstawie własnych potrzeb, możesz wybrać spośród dwóch rodzajów opcje magazynu:
-
-- [Premium Managed Disks](premium-storage.md) są nośnika magazynowania, która zapewnia wysoką wydajność i obsługę przez dyski o małych opóźnieniach dla maszyn wirtualnych z systemem wyjścia — dużych obciążeń wejścia/opartego na pełny stan dysku (SSD). Przy użyciu funkcji migracji do usługi Premium Managed Disks może korzystać z szybkości i wydajności tych dysków.
-
-- [Dyski zarządzane w warstwie standardowa](standard-storage.md) Użyj dysku twardym (HDD) na podstawie nośnikach magazynowania i są dopasowane do tworzenia i testowania oraz innych nieregularnych obciążeń, które są mniej podatne na zmiany wydajności.
+Zgodnie z potrzebami, można wybierać spośród czterech typy opcji magazynu. Informacje na temat typów dostępnego miejsca na dysku znajdują się w artykule naszych [wybierz typ dysku](disks-types.md)
 
 Można migrować do usługi Managed Disks w następujących scenariuszach:
 

@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 023f0e560900aa582be1f28e553358adb0c87b1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118476"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309254"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Zasoby, role i kontrola dostępu w usłudze Application Insights
 
@@ -113,6 +113,32 @@ Jeśli użytkownik, który ma nie znajduje się w katalogu, możesz zaprosić ka
 ## <a name="related-content"></a>Powiązana zawartość
 
 * [Oparta na rolach kontrola dostępu na platformie Azure](../../role-based-access-control/role-assignments-portal.md)
+
+## <a name="powershell-query-to-determine-role-membership"></a>Zapytania programu PowerShell w celu ustalenia członkostwa w roli
+
+Ponieważ niektóre role mogą być połączone z powiadomienia i wiadomości e-mail alertów może być przydatne można było wygenerować listę użytkowników, którzy należą do danej roli. Pomocne w generowaniu tych typów list, firma Microsoft oferuje następujące przykładowe zapytania, które można dostosować do określonych potrzeb:
+
+### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Zapytanie całej subskrypcji dla ról administratora + rolą Współautor
+
+```powershell
+(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Właściciele i współautorzy kwerendy w kontekście określonego zasobu usługi Application Insights
+
+```powershell
+$resourceGroup = “RGNAME”
+$resourceName = “AppInsightsName”
+$resourceType = “microsoft.insights/components”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Zapytania w kontekście konkretnej grupy zasobów dla właściciele i współautorzy
+
+```powershell
+$resourceGroup = “RGNAME”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
 
 <!--Link references-->
 

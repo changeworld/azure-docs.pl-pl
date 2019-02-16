@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: fba109e04369c05f98e863b7dd0fa3d51f40d0ad
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810245"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310295"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Optymalizuj zbiorcze operacje wstawiania i używać danych przejściowych w usłudze Azure Database dla serwera PostgreSQL 
 W tym artykule opisano, jak zoptymalizować operacji wstawiania zbiorczego i używać danych przejściowych w usłudze Azure Database dla serwera PostgreSQL.
@@ -25,9 +25,9 @@ Wstawianie do tabeli niezarejestrowanych oznacza że PostgreSQL wstawia bez pisa
 
 Aby utworzyć tabelę niezarejestrowanych, należy użyć następujących opcji:
 - Utwórz nową tabelę niezarejestrowanych przy użyciu składni `CREATE UNLOGGED TABLE <tableName>`.
-- Konwertuj istniejącą rejestrowane tabeli niezarejestrowanych tabeli przy użyciu składni `ALTER <tableName> SET UNLOGGED`.  
+- Konwertuj istniejącą rejestrowane tabeli niezarejestrowanych tabeli przy użyciu składni `ALTER TABLE <tableName> SET UNLOGGED`.  
 
-Aby cofnąć ten proces, należy użyć składni `ALTER <tableName> SET LOGGED`.
+Aby cofnąć ten proces, należy użyć składni `ALTER TABLE <tableName> SET LOGGED`.
 
 ## <a name="unlogged-table-tradeoff"></a>Kosztem niezarejestrowanych tabeli
 Niezarejestrowanych tabele nie są bezpieczne pod względem awarii. Tabela niezarejestrowanych automatycznie został obcięty po awarii lub zastrzeżeniem nieczyste zamknięcie. Zawartość niezarejestrowanych tabeli nie są replikowane serwery w stanie wstrzymania. Żadnych indeksów utworzona na niezarejestrowanych tabeli są także automatycznie niezarejestrowanych. Insert — po zakończeniu operacji, przekonwertuj tabelę rejestrowane tak, aby insert jest trwały.

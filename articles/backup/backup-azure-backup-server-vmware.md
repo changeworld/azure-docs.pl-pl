@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: ee7ebb151653b611c652c072b8cb4c07754d9b68
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5e5a6f32eeac674a6527d333b981bbdac20a9958
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269706"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309765"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Tworzenie kopii zapasowych maszyn wirtualnych VMware za pomocą usługi Azure Backup Server
 
@@ -39,7 +39,7 @@ Domyślnie usługi Azure Backup Server komunikuje się z serwerami VMware przy u
 
 ### <a name="before-you-start"></a>Przed rozpoczęciem
 
-- Jeśli nie chcesz używać protokołu HTTPS można [wyłączyć domyślne ustawienie](backup-azure-backup-server-vmware.md#disable-secure-communication-protocol).
+- Jeśli nie chcesz używać protokołu HTTPS można [wyłączyć domyślne ustawienie](backup-azure-backup-server-vmware.md).
 - Zazwyczaj połączyć się za pomocą przeglądarki na komputerze serwera usługi Azure Backup na serwerze vCenter/ESXi, przy użyciu kliencie internetowym vSphere. Po raz pierwszy w tym połączenia nie jest bezpieczne i będzie można zobaczyć następujące informacje.
 - Należy zrozumieć, jak serwer usługi Azure Backup obsługuje tworzenie kopii zapasowych.
     - Pierwszym krokiem serwera usługi Azure Backup tworzy kopię zapasową danych na magazyn na dysku lokalnym. Usługa Azure Backup Server korzysta z puli magazynów, zestaw dysków i woluminów, na których serwer usługi Azure Backup przechowuje punkty odzyskiwania na dysku dla chronionych danych. Pula magazynu może być bezpośrednio dołączonym magazynem (DAS), urządzenia magazynującego fiber channel SAN lub interfejsu iSCSI lub sieci SAN. Koniecznie upewnij się, że wystarczającej ilości miejsca do lokalnego tworzenia kopii danych maszyny Wirtualnej VMware.
@@ -52,7 +52,7 @@ Konfigurowanie bezpiecznego kanału w następujący sposób:
 
 1. W przeglądarce usługi Azure Backup Server wprowadź vSphere adres URL klienta sieci Web. Jeśli nie pojawia się na stronie logowania, sprawdź ustawienia serwera proxy połączenia i przeglądarki.
 
-    ![Kliencie internetowym vSphere](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
+    ![vSphere Web Client](./media/backup-azure-backup-server-vmware/vsphere-web-client.png)
 
 2. Na stronie logowania w sieci Web klienta vSphere kliknij **pobierania zaufane certyfikaty głównego urzędu certyfikacji**. 
 
@@ -245,7 +245,7 @@ Dodawanie serwera vCenter do serwera usługi Azure Backup.
 
      ![Kreator dodawania serwerów produkcyjnych](./media/backup-azure-backup-server-vmware/production-server-add-wizard.png)
 
-3. W **wybierz komputery****nazwa/adres IP serwera**, określ nazwę FQDN lub adres IP serwera VMware.   Jeśli wszystkie serwery ESXi są zarządzane przez ten sam program vCenter, należy określić nazwę vCenter. W przeciwnym razie Dodaj hosta ESXi.
+3. W **wybierz komputery****nazwa/adres IP serwera**, określ nazwę FQDN lub adres IP serwera VMware. Jeśli wszystkie serwery ESXi są zarządzane przez ten sam program vCenter, należy określić nazwę vCenter. W przeciwnym razie Dodaj hosta ESXi.
 
     ![Określ serwer VMware](./media/backup-azure-backup-server-vmware/add-vmware-server-provide-server-name.png)
 

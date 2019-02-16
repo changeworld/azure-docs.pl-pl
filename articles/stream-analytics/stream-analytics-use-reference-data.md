@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f065a7c428f191e37449145e946b26c3133ede05
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700039"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329817"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Przy użyciu danych referencyjnych dla wyszukiwania w usłudze Stream Analytics
 Dane referencyjne (znany także jako tabela odnośnika) jest ograniczone zestaw danych, który jest statyczny lub wolno zmieniający się charakter, używane do wyszukiwania lub do skorelowania ze strumienia danych. Można na przykład w scenariuszu IoT są przechowywane metadane dotyczące czujniki, (które nie zmieniają się często) w danych referencyjnych i przyłączyć go ze strumieniami danych IoT w czasie rzeczywistym. Usługa Azure Stream Analytics ładuje dane referencyjne w pamięci w celu uzyskania małych opóźnień przetwarzania strumienia. Aby korzystać z danych referencyjnych w ramach zadania usługi Azure Stream Analytics, będzie na ogół służy [Dołącz dane odwołanie](https://msdn.microsoft.com/library/azure/dn949258.aspx) w zapytaniu. 
@@ -74,7 +74,7 @@ Usługa Azure Stream Analytics automatycznie skanuje w poszukiwaniu obiekty BLOB
 
 ## <a name="azure-sql-database-preview"></a>Usługa Azure SQL Database (wersja zapoznawcza)
 
-Danych odwołania w usłudze Azure SQL Database są pobierane przez zadanie usługi Stream Analytics i są przechowywane jako migawka w pamięci dla przetwarzania. Migawki danych odwołania także są przechowywane w kontenerze na koncie magazynu, który określisz w ustawieniach konfiguracji. Kontener jest utworzony automatycznie podczas uruchamiania zadania i automatycznie zostaje usunięty po zniszczeniu zatrzymania zadania.
+Danych odwołania w usłudze Azure SQL Database są pobierane przez zadanie usługi Stream Analytics i są przechowywane jako migawka w pamięci dla przetwarzania. Migawki danych odwołania także są przechowywane w kontenerze na koncie magazynu, który określisz w ustawieniach konfiguracji. Kontener jest utworzony automatycznie podczas uruchamiania zadania. Jeśli zadanie jest zatrzymana lub przechodzi do stanu nie powiodło się, kontenery utworzone automatycznie są usuwane po ponownym uruchomieniu zadania.  
 
 Dane odwołanie jest wolno zmieniający zestawu danych, należy okresowo odświeżane migawkę, która jest używana w ramach zadania. Stream Analytics umożliwia ustawić częstotliwość odświeżania, podczas konfigurowania połączenia danych wejściowych usługi Azure SQL Database. Środowisko uruchomieniowe usługi Stream Analytics będzie zapytania usługi Azure SQL Database z interwałem określonym przez częstotliwość odświeżania. To najszybszy obsługiwana częstotliwość odświeżania raz na minutę. W przypadku każdego odświeżania usługi Stream Analytics zapisuje nową migawkę w podane konto magazynu.
 

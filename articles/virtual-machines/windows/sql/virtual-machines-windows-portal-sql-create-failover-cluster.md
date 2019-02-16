@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a882ad2bbb700c7d1a1c812d7a05aa14b8038f9a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 62b0f7adf0eb1dd3e3fd7493096c2261a1c1076d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359939"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328556"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurowanie wystąpienia klastra trybu Failover programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -180,7 +180,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
    | Oprogramowanie SQL Server | 1433 | Normalne port dla domyślnego wystąpienia programu SQL Server. Jeśli używasz obrazu z galerii, ten port jest automatycznie otwierany.
    | Sonda kondycji | 59999 | Dowolny Otwórz TCP port. Na późniejszym etapie, konfigurowanie równoważenia obciążenia [sondy kondycji](#probe) i klaster pod kątem używania tego portu.  
 
-1. Dodaj magazyn do maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [dodać magazyn](../premium-storage.md).
+1. Dodaj magazyn do maszyny wirtualnej. Aby uzyskać szczegółowe informacje, zobacz [dodać magazyn](../disks-types.md).
 
    Obie maszyny wirtualne należy co najmniej dwa dyski danych.
 
@@ -188,7 +188,7 @@ Te warunki wstępne są spełnione możesz kontynuować tworzenie klastra trybu 
       >[!NOTE]
       >Jeśli dołączysz dyski sformatowane przy użyciu systemu plików NTFS, S2D można włączyć tylko przy użyciu sprawdzania uprawnień do nie dysków.  
 
-   Do każdej maszyny Wirtualnej, należy dołączyć co najmniej dwóch magazynu w warstwie Premium (SSD dyski). Zalecamy co najmniej P30 dysków (1 TB).
+   Do każdej maszyny Wirtualnej, należy dołączyć co najmniej dwóch dysków SSD w warstwie premium. Zalecamy co najmniej P30 dysków (1 TB).
 
    Host zestaw z pamięci podręcznej w celu **tylko do odczytu**.
 

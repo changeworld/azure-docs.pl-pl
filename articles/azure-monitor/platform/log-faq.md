@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 0edb3441083a6eb6f95b3ca3ade2bf0b1582858d
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 5e3ef7782f805e07e24783a987f2753e4e889946
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564956"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313037"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics — często zadawane pytania
 Ta FAQ firmy Microsoft znajduje się lista często zadawane pytania dotyczące usługi Log Analytics na platformie Microsoft Azure. Jeśli masz dodatkowe pytania dotyczące usługi Log Analytics, przejdź do strony [forum dyskusyjne](https://social.msdn.microsoft.com/Forums/azure/home?forum=opinsights) i Publikuj swoje pytania. Gdy zadawane pytanie dodajemy go do tego artykułu tak, aby możliwe było szybkie i łatwe.
@@ -51,7 +51,7 @@ Odp.: Widok listy nie jest dostępna w nowe dzienniki. Strzałka w lewo każdy r
 
 ### <a name="q-after-running-a-query-a-list-of-suggested-filters-are-available-how-can-i-see-filters"></a>PYTANIE: Po uruchomieniu kwerendy, listę sugerowanych filtrów są dostępne. Jak można sprawdzić filtry? 
 
-Odp.: Kliknij "Filtrów" po lewej stronie pan Aby wyświetlić podgląd nowego wdrożenia filtrów. Teraz jest oparta na wynik Twojego pełnego ustawić zamiast jest ograniczona przez limit 10 000 rekordów interfejsu użytkownika. Obecnie jest lista najpopularniejszych filtry i 10 najczęściej dla każdego filtru. 
+Odp.: W okienku po lewej stronie, aby wyświetlić podgląd nowego wdrożenia filtrów, kliknij przycisk "Filtry". Teraz jest oparta na wynik Twojego pełnego ustawić zamiast jest ograniczona przez limit 10 000 rekordów interfejsu użytkownika. Obecnie jest lista najpopularniejszych filtry i 10 najczęściej dla każdego filtru. 
 
 ### <a name="q-why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-in-logs-after-drilling-in-from-vm"></a>PYTANIE: Dlaczego otrzymuję błąd: "Zarejestruj dostawcę zasobów"Microsoft.Insights"dla tej subskrypcji. Aby włączyć to zapytanie" w dziennikach, po przechodzenia do szczegółów z maszyny Wirtualnej? 
 

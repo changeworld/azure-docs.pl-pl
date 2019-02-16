@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813164"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312858"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Udzielić aplikacji dostępu do zasobów usługi Azure Stack, tworząc jednostki usługi
 
@@ -50,7 +50,7 @@ Sposób, w usłudze Active Directory jest skonfigurowany dla usługi Azure Stack
 * Tworzenie usługi podmiotu zabezpieczeń dla [usługi Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad).
 * Tworzenie usługi podmiotu zabezpieczeń dla [Active Directory Federation Services (AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs).
 
-Kroki przypisywanie nazwy głównej usługi do roli takie same dla usługi Azure AD i AD FS. Po utworzeniu nazwy głównej usługi, możesz [delegować uprawnienia](azure-stack-create-service-principals.md#assign-role-to-service-principal) , przypisując go do roli.
+Kroki przypisywanie nazwy głównej usługi do roli takie same dla usługi Azure AD i AD FS. Po utworzeniu nazwy głównej usługi, możesz [delegować uprawnienia](azure-stack-create-service-principals.md) , przypisując go do roli.
 
 ## <a name="create-service-principal-for-azure-ad"></a>Tworzenie jednostki usługi dla usługi Azure AD
 
@@ -85,7 +85,7 @@ Po zapisaniu klucza, klucz **wartość** jest wyświetlana. Zanotuj tę wartoś�
 
 ![Ostrzeżenie wartości klucza dla klucza zapisane.](./media/azure-stack-create-service-principal/image15.png)
 
-Ostatnim krokiem jest [przypisanie roli aplikacji](azure-stack-create-service-principals.md#assign-role-to-service-principal).
+Ostatnim krokiem jest [przypisanie roli aplikacji](azure-stack-create-service-principals.md).
 
 ## <a name="create-service-principal-for-ad-fs"></a>Tworzenie jednostki usługi dla usług AD FS
 

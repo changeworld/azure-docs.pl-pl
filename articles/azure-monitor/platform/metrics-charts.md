@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991331"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310947"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
 
@@ -100,20 +100,6 @@ Podziel metryki według wymiaru, aby zwizualizować segmentów jak różne metry
    > [!NOTE]
    > Aby ukryć segmentów, które są nieodpowiednie dla danego scenariusza i była łatwiejsza do odczytania wykresy, należy użyć filtrowanie i rozdzielenie tego samego wymiaru.
 
-### <a name="new-alert-rule"></a>Nowa reguła alertu
-
-Możesz również użyć kryteriów, ustawionych w celu wizualizacji metryk, jako podstawy dla podstawowej logiki metryki na podstawie reguły alertu. 
-
-Jeśli klikniesz **reguły nowy Alert**
-
-![Nowy przycisk reguły alertu wyróżniony czerwonym kolorem](./media/metrics-charts/015.png)
-
-Możesz zostaną pobrane do okienka tworzenia reguły alertu z bazowego wymiarami metryk z wykresu wstępnie wypełniane, aby ułatwić Generowanie niestandardowych reguł alertów.
-
-![Utwórz regułę alertu](./media/metrics-charts/016.png)
-
-Zapoznaj się z tą [artykułu](alerts-metric.md) Aby dowiedzieć się więcej o konfigurowaniu alertów dotyczących metryk.
-
 ## <a name="lock-boundaries-of-chart-y-axis"></a>Granice blokady osi y wykresu
 
 Blokowanie zakres osi y staje się ważne, gdy na wykresie widać mniejszych wahania większe wartości. 
@@ -138,6 +124,20 @@ Aby przypiąć wykres skonfigurowanego do pulpitu nawigacyjnego:
 Po skonfigurowaniu wykresu, wybierz polecenie **akcje wykresu** menu w prawym rogu wykresu top, a następnie kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
 
 ![metryki obrazu](./media/metrics-charts/00013.png)
+
+## <a name="create-alert-rules"></a>Tworzenie reguł alertów
+
+Możesz użyć kryteriów, ustawionych w celu wizualizacji metryk, jako podstawę metryki na podstawie reguły alertu. Nowa reguła alertu będzie zawierać Twojego zasobu docelowego, metryki, dzielenie i wymiary filtru z wykresu. Będzie można zmodyfikować te ustawienia później na panelu Tworzenie reguły alertu.
+
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Aby utworzyć nową regułę alertu, kliknij przycisk **reguły nowy Alert**
+
+![Nowy przycisk reguły alertu wyróżniony czerwonym kolorem](./media/metrics-charts/015.png)
+
+Możesz zostaną pobrane do okienka tworzenia reguły alertu z bazowego wymiarami metryk z wykresu wstępnie wypełniane, aby ułatwić Generowanie niestandardowych reguł alertów.
+
+![Utwórz regułę alertu](./media/metrics-charts/016.png)
+
+Zapoznaj się z tą [artykułu](alerts-metric.md) Aby dowiedzieć się więcej o konfigurowaniu alertów dotyczących metryk.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

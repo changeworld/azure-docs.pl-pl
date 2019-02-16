@@ -7,16 +7,16 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 02ecb3cdec9ddb07bf48dfe77d1ed5fbf07975e0
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.lastreviewed: 02/15/2019
+ms.openlocfilehash: 6fdec992b19a5615a35955a46fd90102890cde16
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55965328"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329357"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Weryfikacja kopii zapasowej usługi Azure Stack za pomocą ASDK
 Po wdrażanie usługi Azure Stack i Inicjowanie obsługi administracyjnej zasobów użytkownika, takich jak oferty, plany, limity przydziału i subskrypcji, wykonaj następujące czynności [włączenia kopii zapasowej infrastruktury usługi Azure Stack](../azure-stack-backup-enable-backup-console.md). Planowanie i uruchamianie infrastruktury regularnego tworzenia kopii zapasowych zapewni, że danych związanych z zarządzaniem infrastrukturą nie zostaną utracone w przypadku poważnej sprzętu lub awaria usługi.
@@ -52,11 +52,11 @@ Przed rozpoczęciem wdrożenie w chmurze odzyskiwania ASDK, upewnij się, że ma
 
 |Wymagania wstępne|Opis|
 |-----|-----|
-|Ścieżka udziału kopii zapasowej.|Ścieżka udziału plików UNC najnowszej kopii zapasowej usługi Azure Stack, która będzie służyć do odzyskiwania informacji o infrastrukturze Azure Stack. Tego udziału lokalnego zostaną utworzone w procesie wdrażania odzyskiwania chmury.|
-|Kopię zapasową klucza szyfrowania.|Klucz szyfrowania, który został użyty do zaplanować tworzenie kopii zapasowych do uruchamiania przy użyciu portalu administracyjnego usługi Azure Stack.|
-|Identyfikator kopii zapasowej do przywrócenia.|Identyfikator kopii zapasowych w formie alfanumeryczne "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", który identyfikuje kopii zapasowej można przywrócić podczas odzyskiwania w chmurze.|
-|Time server IP.|Adres IP do serwera z prawidłową godzinę, takich jak 132.163.97.2, jest wymagane do wdrożenia usługi Azure Stack.|
-|Hasło certyfikatu zewnętrznego.|Hasło dla certyfikatu zewnętrznego, używane przez usługę Azure Stack. Kopii zapasowej urzędu certyfikacji zawiera certyfikaty zewnętrzne, które mają być przywracane przy użyciu tego hasła.|
+|Ścieżka udziału kopii zapasowej|Ścieżka udziału plików UNC najnowszej kopii zapasowej usługi Azure Stack, która będzie służyć do odzyskiwania informacji o infrastrukturze Azure Stack. Tego udziału lokalnego zostaną utworzone w procesie wdrażania odzyskiwania chmury.|
+|Kopię zapasową klucza szyfrowania|Opcjonalny. Wymagany tylko, jeśli uaktualniono do wersji usługi Azure Stack, 1901 lub nowszej z poprzedniej wersji usługi Azure Stack z włączoną kopią zapasową.|
+|Identyfikator kopii zapasowej do przywrócenia|Identyfikator kopii zapasowych w formie alfanumeryczne "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", który identyfikuje kopii zapasowej można przywrócić podczas odzyskiwania w chmurze.|
+|Adres IP serwera czasu|Adres IP do serwera z prawidłową godzinę, takich jak 132.163.97.2, jest wymagane do wdrożenia usługi Azure Stack.|
+|Hasło certyfikatu zewnętrznego|Hasło klucza prywatnego jest podpisany certyfikat (pfx), który został użyty do zabezpieczenia kopii zapasowej.|
 |     |     | 
 
 ## <a name="prepare-the-host-computer"></a>Przygotuj komputer-host 
@@ -133,11 +133,12 @@ $certPass = Read-Host -AsSecureString
 ## <a name="restore-infrastructure-data-from-backup"></a>Przywracanie infrastruktury danych z kopii zapasowej
 Po wdrożeniu pomyślne chmury odzyskiwania, należy wykonać przy użyciu przywracania **AzureStack przywracania** polecenia cmdlet. 
 
-Po zalogowaniu się jako operatora infrastruktury Azure Stack [instalacji programu Azure Stack PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) i następnie, podstawiając identyfikator kopii zapasowej dla `Name` parametru, uruchom następujące polecenie:
+Po zalogowaniu się jako operatora infrastruktury Azure Stack [instalacji programu Azure Stack PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) i uruchom następujące polecenia, aby określić certyfikat i hasło do użycia podczas przywracania z kopii zapasowej:
 
 ```powershell
 Restore-AzsBackup -Name "<BackupID>"
 ```
+
 Oczekiwania 60 minut po wywoływania tego polecenia cmdlet można uruchomić weryfikacji kopii zapasowej danych w chmurze odzyskaniu ASDK.
 
 ## <a name="next-steps"></a>Kolejne kroki

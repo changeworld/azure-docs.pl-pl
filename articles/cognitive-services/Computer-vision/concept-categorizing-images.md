@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1967ba60088cae2b946cfcfe1467c2de5aebccdf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a85fb65ad971bfc70bdab0689e99921e616b56ac
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879955"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308863"
 ---
-# <a name="image-categorization-with-computer-vision"></a>Kategoryzacja obrazu za pomocą wizualizacji komputerowej
+# <a name="categorize-images"></a>Kategoryzowanie obrazów
 
-Oprócz opisy i tagowania przetwarzania obrazów zwraca kategorie na podstawie taksonomii zdefiniowane w poprzednich wersjach. Te kategorie są uporządkowane w formie taksonomii z użyciem dziedziczonych hierarchii obiektów nadrzędnych i podrzędnych. Wszystkie kategorie są w języku angielskim. Mogą one używane autonomicznie lub dzięki naszej nowej znakowanie modeli.
+Oprócz tagów i opis przetwarzania obrazów zwraca kategorie na podstawie taksonomii wykryte na obrazie. W przeciwieństwie do tagów kategorie są zorganizowane w hierarchii dziedzicznym nadrzędne/podrzędne, wiąże się z ich (w przeciwieństwie do tysięcy tagi 86). Wszystkie nazwy kategorii są w języku angielskim. Kategoryzacja może odbywać się oddzielnie lub razem nowy model tagów.
 
 ## <a name="the-86-category-concept"></a>Koncepcja 86 kategorii
 
-Na podstawie listy koncepcji 86 pokazano na poniższym diagramie, obrazu można sklasyfikować od szerokiej określone. Aby uzyskać informacje dotyczące pełnej taksonomii w formacie tekstowym, zobacz temat [Taksonomia kategorii](category-taxonomy.md).
+Przetwarzanie obrazów umożliwia klasyfikowanie obrazu szeroko lub ściślej mówiąc, przy użyciu listy 86 categroies na poniższym diagramie. Aby uzyskać informacje dotyczące pełnej taksonomii w formacie tekstowym, zobacz temat [Taksonomia kategorii](category-taxonomy.md).
 
 ![zgrupowane listy wszystkie kategorie Taksonomia kategorii](./Images/analyze_categories-v2.png)
 

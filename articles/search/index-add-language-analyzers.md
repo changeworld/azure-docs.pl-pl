@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: bb7fbdeea9c19b8a6fabe06687261296110b4064
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301812"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328301"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Dodać analizatory języka do indeksu usługi Azure Search
 
@@ -51,9 +51,9 @@ Analizator domyślny jest Lucene Standard, co sprawdza się dobrze sprawdza się
 
 ## <a name="configuring-analyzers"></a>Konfigurowanie analizatorów
 
-Analizatory języków są używane jako-to. Dla każdego pola w definicji indeksu, można ustawić **analizatora** Właściwość Nazwa analizatora, określający które języka i dostawcy. Ten sam analizator zostaną zastosowane podczas indeksowania i wyszukiwania dla tego pola. Na przykład można mieć oddzielnymi polami w języku angielskim, francuskim i hiszpańskim opisy hotelu znajdujące się obok siebie w tym samym indeksie.  
+Analizatory języków są używane jako-to. Dla każdego pola w definicji indeksu, można ustawić **analizatora** Właściwość Nazwa analizatora, określający stos języka i odpowiednie (Microsoft lub Lucene). Ten sam analizator zostaną zastosowane podczas indeksowania i wyszukiwania dla tego pola. Na przykład można mieć oddzielnymi polami w języku angielskim, francuskim i hiszpańskim opisy hotelu znajdujące się obok siebie w tym samym indeksie. Alternatywnie zamiast z **analizatora**, możesz użyć **indexAnalyzer** i **searchAnalyzer** mieć reguły analizy różnych na indeksowanie czas i czas wykonywania zapytania. 
 
-Użyj **searchFields** zapytania parametru, aby określić które pole specyficzne dla języka, aby przeprowadzać wyszukiwanie w zapytaniach. Możesz przejrzeć przykłady zapytań, które będą zawierać właściwości analizator w dokumentach wyszukiwania. 
+Użyj **searchFields** zapytania parametru, aby określić które pole specyficzne dla języka, aby przeprowadzać wyszukiwanie w zapytaniach. Możesz przejrzeć przykłady zapytania, które będą zawierać właściwości analizator w [wyszukiwania dokumentów](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
 Aby uzyskać więcej informacji na temat właściwości indeksu, zobacz [Create Index &#40;interfejsu API REST usługi Azure Search&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Aby uzyskać więcej informacji na temat analizy w usłudze Azure Search, zobacz [analizatory w usłudze Azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
 

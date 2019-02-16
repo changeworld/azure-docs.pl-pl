@@ -16,25 +16,25 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 791322c71b4d1b49e1367fb0f179e7b0513a1e94
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6788568510a0aa10a859236aebc3f3edb2de7527
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975657"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329618"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Dołączanie dysku danych do maszyny Wirtualnej z systemem Windows przy użyciu programu PowerShell
 
 W tym artykule pokazano, jak dołączyć istniejących i nowych dysków na maszynę wirtualną Windows przy użyciu programu PowerShell. 
 
 Po pierwsze Przejrzyj poniższe wskazówki:
+
 * Liczba dysków z danymi można dołączać jest kontrolowana przez rozmiar maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [rozmiary maszyn wirtualnych](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Używanie usługi Premium storage, należy włączyć usługę Premium Storage typu maszyny Wirtualnej serii DS lub maszyny wirtualnej serii GS. Aby uzyskać więcej informacji, zobacz [usługi Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Magazyn Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure).
+* Aby korzystać z dysków SSD w warstwie premium, musisz mieć [typu maszyny Wirtualnej z obsługą magazynu premium](sizes-memory.md), takich jak serii DS lub maszyny wirtualnej serii GS.
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Dodawanie pustego dysku danych do maszyny wirtualnej
 
@@ -61,11 +61,12 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Używanie dysków zarządzanych w strefie dostępności
 Aby utworzyć dysk w strefie dostępności, należy użyć [New AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) z `-Zone` parametru. Poniższy przykład tworzy dysk w strefie *1*.
 
+Aby utworzyć dysk w strefie dostępności, należy użyć [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) z `-Zone` parametru. Poniższy przykład tworzy dysk w strefie *1*.
 
 ```powershell
 $rgName = 'myResourceGroup'
 $vmName = 'myVM'
-$location = 'East US 2' 
+$location = 'East US 2'
 $storageType = 'Premium_LRS'
 $dataDiskName = $vmName + '_datadisk1'
 
@@ -78,10 +79,9 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Managed
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-
 ### <a name="initialize-the-disk"></a>Zainicjuj dysk
 
-Po dodaniu pusty dysk, musisz go zainicjować. Aby zainicjować dysk, możesz zalogować się do maszyny Wirtualnej i użyj przystawki Zarządzanie dyskami. Jeśli włączono [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) i certyfikatu na maszynie Wirtualnej, podczas jego tworzenia, można użyć zdalnego programu PowerShell do Zainicjuj dysk. Można również użyć rozszerzenia niestandardowego skryptu: 
+Po dodaniu pusty dysk, musisz go zainicjować. Aby zainicjować dysk, możesz zalogować się do maszyny Wirtualnej i użyj przystawki Zarządzanie dyskami. Jeśli włączono [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) i certyfikatu na maszynie Wirtualnej, podczas jego tworzenia, można użyć zdalnego programu PowerShell do Zainicjuj dysk. Można również użyć rozszerzenia niestandardowego skryptu:
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -89,7 +89,7 @@ Po dodaniu pusty dysk, musisz go zainicjować. Aby zainicjować dysk, możesz za
     $fileName = "script-file-name"
     Set-AzVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
-        
+
 Plik skryptu może zawierać kod, aby zainicjować dyski, na przykład:
 
 ```azurepowershell-interactive
@@ -109,10 +109,9 @@ Plik skryptu może zawierać kod, aby zainicjować dyski, na przykład:
     }
 ```
 
-
 ## <a name="attach-an-existing-data-disk-to-a-vm"></a>Dołącz istniejący dysk danych do maszyny Wirtualnej
 
-Można dołączyć istniejącego dysku zarządzanego do maszyny Wirtualnej jako dysk z danymi. 
+Można dołączyć istniejącego dysku zarządzanego do maszyny Wirtualnej jako dysk z danymi.
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"

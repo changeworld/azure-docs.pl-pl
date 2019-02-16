@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: d7be248e49baf4e7fd10d6b37df1473e92ccfce7
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 0ed317abc9d4b7d8d1c6f8b878ffe69f7a0bdbf6
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651728"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310247"
 ---
 # <a name="set-up-backup-and-replication-for-apache-hbase-and-apache-phoenix-on-hdinsight"></a>Konfigurowanie kopii zapasowej i replikacji dla bazy danych Apache HBase i Apache Phoenix w HDInsight
 
@@ -75,7 +75,7 @@ Określ ścieżkę pełną eksportu do domyślnego magazynu lub jedną z opcji d
 
     wasbs://<containername>@<accountname>.blob.core.windows.net/<path>
 
-W usłudze Azure Data Lake Storage składnia jest następująca:
+W usłudze Azure Data Lake magazynu Gen1 składnia jest następująca:
 
     adl://<accountName>.azuredatalakestore.net:443/<path>
 

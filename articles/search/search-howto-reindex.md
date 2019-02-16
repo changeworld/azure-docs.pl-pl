@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 1d9dffe9d311674aeb043fcc4c35110775f420af
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 907ab5cd3272a3d3f64dcfd7c9628a609f4db2f4
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300809"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327650"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Jak odbudować indeksu usługi Azure Search
 
@@ -29,22 +29,23 @@ W przeciwieństwie do ponowne kompilowanie przyjmujące indeksu w trybie offline
 | Warunek | Opis |
 |-----------|-------------|
 | Zmiana definicji pola | Zmiana nazwy pola, typ danych lub określonych [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) (wyszukiwanie, filtrowanie, sortowanie, tworzenie aspektów) wymaga ponownej pełnej kompilacji. |
-| Dodanie analizatora do pola | [Analizatory](search-analyzers.md) są zdefiniowane w indeksie, a następnie przypisywane do pól. W dowolnym momencie można dodać analizator do indeksu, ale możesz przypisać tylko analizator po utworzeniu pola. Dotyczy to zarówno **analizatora** i **indexAnalyzer** właściwości. **SearchAnalyzer** właściwość jest wyjątek.
+| Dodanie analizatora do pola | [Analizatory](search-analyzers.md) są zdefiniowane w indeksie, a następnie przypisywane do pól. W dowolnym momencie można dodać nowego analizatora do indeksu, ale można je tylko *przypisać* analizator po utworzeniu pola. Dotyczy to zarówno **analizatora** i **indexAnalyzer** właściwości. **SearchAnalyzer** właściwość jest wyjątek. |
+| Aktualizowanie i usuwanie konstrukcja analizatora | Nie można usunąć ani zmienić istniejących składników analizy (analizator, tokenizatora, filtr tokenu lub filtr char), chyba, że odbudować całego indeksu. |
 | Dodawanie pola do sugestora | Jeśli pole już istnieje i chcesz dodać ją do [Sugestory](index-add-suggesters.md) konstruowania, należy odbudować indeksu. |
-| Usuwanie pola | Aby fizycznie Usuń wszystkie ślady pola, musisz odbudować indeksu. Po bezpośrednim ponowna kompilacja nie jest rozwiązaniem, większość programistów go modyfikować kodu aplikacji, aby wyłączyć dostęp do pola "usunięta". Fizycznie definicję pola i zawartość pozostają w indeksie aż do następnego ponowną kompilację, przy użyciu schematu, które pomija pola w danym. |
+| Usuwanie pola | Aby fizycznie Usuń wszystkie ślady pola, musisz odbudować indeksu. Po bezpośrednim ponowna kompilacja nie jest możliwe, można modyfikować kodu aplikacji, aby wyłączyć dostęp do pola "usunięta". Fizycznie definicję pola i zawartość pozostają w indeksie aż do następnego ponowną kompilację, przy użyciu schematu, które pomija pola w danym. |
 | Przełączanie warstwy | Jeśli potrzebujesz większej pojemności, nie istnieje żadne uaktualnienia w miejscu. Nowa usługa jest tworzony w nowym punkcie pojemności, a indeksy muszą zostać skompilowane od podstaw w nowej wersji usługi. |
 
-Inne zmiany można wprowadzić bez wpływu na istniejących struktur fizycznych. Ściślej mówiąc, wykonaj następujące zmiany *nie* wskazują odbudowywanie indeksu:
+Inne zmiany można wprowadzić bez wpływu na istniejących struktur fizycznych. Ściślej mówiąc, wykonaj następujące zmiany *nie* wymagają odbudowywanie indeksu:
 
 + Dodawanie nowego pola
-+ Ustaw **możliwość pobierania** atrybutu istniejącego pola
++ Ustaw **pobieranie** atrybutu istniejącego pola
 + Ustaw **searchAnalyzer** na istniejącego pola
-+ Dodawanie, aktualizowanie lub usuwanie konstrukcja analyzer w ramach indeksu
++ Dodaj nową konstrukcję analyzer w ramach indeksu
 + Dodawanie, aktualizowanie lub usuwanie profile oceniania
 + Dodawanie, aktualizowanie lub usuwanie ustawień specyfikacji CORS
 + Dodawanie, aktualizowanie lub usuwanie synonymMaps
 
-Po dodaniu nowego pola, istniejących dokumentów indeksowanych podano wartość null dla nowego pola. Podczas odświeżania danych w przyszłości wartości z zewnętrznego źródła danych, Zastąp wartości null, dodawane przez usługę Azure Search.
+Po dodaniu nowego pola, istniejących dokumentów indeksowanych podano wartość null dla nowego pola. Podczas odświeżania danych w przyszłości wartości z zewnętrznego źródła danych, Zastąp wartości null, dodawane przez usługę Azure Search. Aby uzyskać więcej informacji na temat aktualizowania indeksowanie zawartości, zobacz [Add, Update lub usuwanie dokumentów](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).
 
 ## <a name="partial-or-incremental-indexing"></a>Indeksowanie częściowego lub przyrostowe
 

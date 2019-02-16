@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/07/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8fc2c487a374a34cd9a7642a45fd59c04061b398
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6d21a5bceab2d5dada79ec4c694cdf12f0acac48
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817822"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329647"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>Tworzenie i instalowanie plików konfiguracji klienta sieci VPN, uwierzytelnianie usługi RADIUS P2S
 
@@ -260,7 +260,7 @@ Poniższe kroki umożliwiają konfigurowanie natywnego klienta sieci VPN na komp
 
 Aby użyć innego typu uwierzytelniania (na przykład OTP) lub użyć innego protokołu uwierzytelniania (np. PEAP-MS-CHAPv2 zamiast protokołu EAP-MSCHAPv2), należy utworzyć własny profil konfiguracji klienta sieci VPN. Aby utworzyć profil, potrzebne informacje, takie jak adres IP bramy sieci wirtualnej, Typ tunelu i trasy tunelowania podzielonego. Aby uzyskać te informacje, wykonując następujące czynności:
 
-1. Użyj `Get-AzureRmVpnClientConfiguration` polecenia cmdlet w celu wygenerowania konfiguracji klienta sieci VPN dla EAP Mschapv2. Aby uzyskać instrukcje Zobacz tej części tego artykułu.
+1. Użyj `Get-AzureRmVpnClientConfiguration` polecenia cmdlet w celu wygenerowania konfiguracji klienta sieci VPN dla EAP Mschapv2.
 
 2. Rozpakuj plik VpnClientConfiguration.zip i poszukaj **GenericDevice** folderu. Ignoruj foldery zawierające pliki instalacyjne dla architektury 64-bitowe i 32-bitowe programów Windows.
  

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f4be58d702b5d97722a3f9f1ee2df6b519ba4fab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: da0e393dc2ae0d93ecc49745a42ffac4669ed74b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731754"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326310"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Jak używać maszyny platformy Docker do tworzenia hostów na platformie Azure
 Ten artykuł szczegółowo opisuje sposób używania [maszyny platformy Docker](https://docs.docker.com/machine/) tworzenia hostów na platformie Azure. `docker-machine` Polecenie tworzy maszynę wirtualną systemu Linux (VM) na platformie Azure, a następnie zainstalowanie platformy Docker. Następnie można zarządzać hostów platformy Docker na platformie Azure przy użyciu tych samych narzędzi lokalnych i przepływów pracy. Aby używać maszyny platformy docker w systemie Windows 10, należy użyć powłoki bash w systemie Linux.
@@ -137,4 +137,4 @@ Aby zobaczyć kontenerów w akcji, otwórz przeglądarkę internetową i wpisz p
 ![Działający kontener ngnix](./media/docker-machine/nginx.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-Można również utworzyć hosty z [rozszerzenie maszyny Wirtualnej Docker](dockerextension.md). Przykłady dotyczące używania narzędzia Docker Compose, zobacz [wprowadzenie do platformy Docker i Compose na platformie Azure](docker-compose-quickstart.md).
+Przykłady dotyczące używania narzędzia Docker Compose, zobacz [wprowadzenie do platformy Docker i Compose na platformie Azure](docker-compose-quickstart.md).

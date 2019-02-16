@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 50f2c174f21243a70c830c1c30127e0629c81972
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c32dcbac8ebab5fb71839a4525163c0e6cf028ed
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110255"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310744"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>File Integrity Monitoring w usłudze Azure Security Center
 Dowiedz się, jak skonfigurować plik Integrity Monitoring (FIM) w usłudze Azure Security Center za pomocą tego przewodnika.
@@ -88,7 +88,7 @@ Aby włączyć usługi FIM w obszarze roboczym:
 4. Wybierz **zastosować usługa file integrity monitoring** umożliwiające programu FIM.
 
 > [!NOTE]
-> Ustawienia można zmienić w dowolnym momencie. Zobacz [Edytuj monitorowane jednostek](security-center-file-integrity-monitoring.md#edit-monitored-items) poniżej, aby dowiedzieć się więcej.
+> Ustawienia można zmienić w dowolnym momencie. Zobacz Edytuj monitorowane jednostek poniżej, aby dowiedzieć się więcej.
 >
 >
 

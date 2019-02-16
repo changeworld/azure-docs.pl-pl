@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cynthn
-ms.openlocfilehash: 6821c2000efa4a03f803871d9b33272175f1265c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d234e7f8a6005722a33a797f2b8ae6a1e1f4b98b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113247"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327769"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie usługi Azure Resource Manager
 
@@ -290,7 +290,7 @@ Niektóre elementy profilu są używane podczas definiowania zasobu maszyny wirt
 
 ## <a name="disks-and-images"></a>Dyski i obrazy
    
-Na platformie Azure, pliki wirtualnego dysku twardego może reprezentować [dysków lub obrazów](about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). System operacyjny w pliku wirtualnego dysku twardego jest przeznaczone do określonej maszyny Wirtualnej, jest określany na dysk. Plik wirtualnego dysku twardego systemu operacyjnego jest uogólniony, aby służyć do tworzenia wielu maszyn wirtualnych, jest określany na jako obraz.   
+Na platformie Azure, pliki wirtualnego dysku twardego może reprezentować [dysków lub obrazów](managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). System operacyjny w pliku wirtualnego dysku twardego jest przeznaczone do określonej maszyny Wirtualnej, jest określany na dysk. Plik wirtualnego dysku twardego systemu operacyjnego jest uogólniony, aby służyć do tworzenia wielu maszyn wirtualnych, jest określany na jako obraz.   
     
 ### <a name="create-new-virtual-machines-and-new-disks-from-a-platform-image"></a>Tworzenie nowych maszyn wirtualnych i nowych dysków na podstawie obrazu platformy
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 12/05/2017
+ms.date: 12/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: baf49856f8f7480ece10e065b3ac002297f06617
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.openlocfilehash: ae1d6ddfb96d65a730fd1008f44c663d3b447b17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "30918085"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326123"
 ---
 # <a name="azure-compute-unit-acu"></a>Jednostka obliczeniowa platformy Azure (ACU)
 
@@ -28,7 +28,7 @@ ms.locfileid: "30918085"
 
 
 Oto linki do szczegółowych informacji o różnych rozmiarach:
-- [Ogólnego przeznaczenia](sizes-general.md)
+- [General-purpose](sizes-general.md)
 - [Optymalizacja pod kątem pamięci](../virtual-machines-windows-sizes-memory.md)
 - [Optymalizacja pod kątem obliczeń](sizes-compute.md)
 - [Optymalizacja pod kątem procesora GPU](sizes-gpu.md)

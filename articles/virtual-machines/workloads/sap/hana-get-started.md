@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: c1d9047de814b7a80210fe2502d219921f5829a4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976906"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328725"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Szybki start: Ręczna instalacja jednego wystąpienia oprogramowania SAP HANA na maszynach wirtualnych platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -75,14 +75,14 @@ Aby uzyskać dodatkowej dokumentacji SAP o platformy SAP HANA i różnych system
 * [Obsługa uwagę #1984787 — SUSE Linux Enterprise Server 12:  Uwagi dotyczące instalacji](https://launchpad.support.sap.com/#/notes/1984787)
 * [Uwaga pomocy technicznej SAP 1391070 # — Linux UUID rozwiązania](https://launchpad.support.sap.com/#/notes/1391070)
 * [SAP Uwaga pomocy technicznej 2009879 # — SAP HANA wytyczne dotyczące systemu operacyjnego systemu Red Hat Enterprise Linux (RHEL)](https://launchpad.support.sap.com/#/notes/2009879)
-* [2292690 — BAZY DANYCH SAP HANA: Zalecane ustawienia systemu operacyjnego RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E)
+* [2292690 - SAP HANA DB: Zalecane ustawienia systemu operacyjnego RHEL 7](https://launchpad.support.sap.com/#/notes/2292690/E)
 
 ### <a name="sap-monitoring-in-azure"></a>SAP monitorowanie na platformie Azure
 Aby uzyskać informacji na temat SAP monitorowanie na platformie Azure zobacz:
 
-* [Uwaga SAP 2191498](https://launchpad.support.sap.com/#/notes/2191498/E). Ta uwaga w tym artykule omówiono SAP "rozszerzonego monitorowania" przy użyciu maszyn wirtualnych systemu Linux na platformie Azure. 
+* [SAP Note 2191498](https://launchpad.support.sap.com/#/notes/2191498/E). Ta uwaga w tym artykule omówiono SAP "rozszerzonego monitorowania" przy użyciu maszyn wirtualnych systemu Linux na platformie Azure. 
 * [Uwaga SAP 1102124](https://launchpad.support.sap.com/#/notes/1102124/E). Ta uwaga omówiono SAPOSCOL w systemie Linux. 
-* [Uwaga SAP 2178632](https://launchpad.support.sap.com/#/notes/2178632/E). Ta uwaga w tym artykule omówiono kluczowe metryki monitorowania dla rozwiązania SAP na Microsoft Azure.
+* [SAP Note 2178632](https://launchpad.support.sap.com/#/notes/2178632/E). Ta uwaga w tym artykule omówiono kluczowe metryki monitorowania dla rozwiązania SAP na Microsoft Azure.
 
 ### <a name="azure-vm-types"></a>Typy maszyn wirtualnych platformy Azure
 Typy maszyn wirtualnych platformy Azure i scenariusze SAP, obsługiwane obciążenie używane z platformą SAP HANA są udokumentowane w artykule [platform IaaS certyfikat SAP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html). 
@@ -191,11 +191,11 @@ Główny system plików na maszynie Wirtualnej z systemem Linux na platformie Az
 
 Na podstawie [SAP HANA TDI dyskowej](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html), zalecane jest następująca konfiguracja usługi Azure Premium Storage: 
 
-| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM |  / hana/danych i dziennika/hana / <br /> Rozłożona z LVM lub MDADM | / hana/udostępnione | wolumin/root | / usr/sap |
+| JEDNOSTKA SKU MASZYNY WIRTUALNEJ | Pamięć RAM |  / hana/danych i dziennika/hana / <br /> Rozłożona z LVM lub MDADM | / hana/udostępnione | wolumin/root | /usr/sap |
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-W konfiguracji dysku sugerowane ilości danych HANA i wolumin dziennika są umieszczane w ten sam zestaw dysków magazynu Azure premium storage, które są rozkładane LVM lub MDADM. Nie jest konieczne jest określenie dowolny poziom nadmiarowości RAID, ponieważ usługi Azure Premium Storage zapewnia trzy obrazy dysków w celu zapewnienia nadmiarowości. Aby upewnić się, że skonfigurować wystarczająco dużego magazynu, zapoznaj się z [SAP HANA TDI dyskowej](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) i [przewodnika po aktualizacji i instalacji serwera SAP HANA](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Należy również rozważyć woluminy przepływności inny wirtualny dysk twardy (VHD) z dysków magazynu innej usługi Azure premium zgodnie z opisem w [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](https://docs.microsoft.com/azure/storage/storage-premium-storage). 
+W konfiguracji dysku sugerowane ilości danych HANA i wolumin dziennika są umieszczane w ten sam zestaw dysków magazynu Azure premium storage, które są rozkładane LVM lub MDADM. Nie jest konieczne jest określenie dowolny poziom nadmiarowości RAID, ponieważ usługi Azure Premium Storage zapewnia trzy obrazy dysków w celu zapewnienia nadmiarowości. Aby upewnić się, że skonfigurować wystarczająco dużego magazynu, zapoznaj się z [SAP HANA TDI dyskowej](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) i [przewodnika po aktualizacji i instalacji serwera SAP HANA](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm). Należy również rozważyć woluminy przepływności inny wirtualny dysk twardy (VHD) z dysków magazynu innej usługi Azure premium zgodnie z opisem w [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](../../windows/disks-types.md). 
 
 Możesz dodać więcej dysków magazynu premium storage do platformy HANA DBMS maszyn wirtualnych do przechowywania kopii zapasowych dziennika bazy danych lub transakcji.
 
@@ -206,9 +206,7 @@ Więcej informacji na temat dwa główne narzędzia używane do konfigurowania r
 
 Aby uzyskać więcej informacji na temat dołączania dysków do maszyn wirtualnych platformy Azure z systemem Linux jako system operacyjny gościa, zobacz [dodać dysk do maszyny Wirtualnej z systemem Linux](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Usługa Azure Premium Storage umożliwia definiowanie tryby buforowania dysku. Dla zestawu rozłożone /hana/data i /hana/log powinno być wyłączone buforowanie dysku. Dla innych woluminów (dyski), powinna być równa buforowania tryb **tylko do odczytu**.
-
-Aby uzyskać więcej informacji, zobacz [usługi Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyny wirtualnej platformy Azure](../../windows/premium-storage.md).
+Usługa Azure premium SSD umożliwia definiowanie tryby buforowania dysku. Dla zestawu rozłożone /hana/data i /hana/log powinno być wyłączone buforowanie dysku. Dla innych woluminów (dyski), powinna być równa buforowania tryb **tylko do odczytu**.
 
 Aby znaleźć przykładowe szablony JSON do tworzenia maszyn wirtualnych, przejdź do [szablony szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates).
 Szablon maszyny wirtualnej — prosty — sles jest podstawowy szablon. Zawiera on sekcję magazynu przy użyciu dysku dodatkowe 100 GB danych. Ten szablon może służyć jako podstawa. Można dostosować szablon do określonej konfiguracji.

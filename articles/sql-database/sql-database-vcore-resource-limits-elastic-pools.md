@@ -11,13 +11,13 @@ author: oslake
 ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/072019
-ms.openlocfilehash: 1040c2018e7e18ed2d2bb401dd0052c6851fa544
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.date: 02/15/2019
+ms.openlocfilehash: b0bd5c0ba8641bd287951168485be715a0b46224
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270474"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328677"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>Limity zasobów dla pul elastycznych za pomocą ograniczeń oparty na rdzeniach wirtualnych model zakupu
 
@@ -59,7 +59,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
-\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+\* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generacja 4 (część 2)
 
@@ -85,7 +85,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
-\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+\* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generowania 5 (część 1)
 
@@ -111,7 +111,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
-\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+\* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Warstwy usług ogólnego przeznaczenia: Platforma obliczeniowa generowania 5 (część 2)
 
@@ -136,7 +136,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
-\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+\* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
 
 ## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>Warstwy usług krytycznych biznesowe: Magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
@@ -164,7 +164,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
-\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+\* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generacja 4 (część 2)
 
@@ -190,7 +190,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
-\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+\* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
 
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generowania 5 (część 1)
 
@@ -216,7 +216,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
-\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+\* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
 
 #### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Warstwy usług krytycznych biznesowe: Platforma obliczeniowa generowania 5 (część 2)
 
@@ -242,7 +242,7 @@ Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwot
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 
-\* Aby uzyskać maksymalną bieżącego procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md)
+\* Aby uzyskać maksymalną współbieżnych procesów roboczych (żądań) dla dowolnej poszczególne bazy danych, zobacz [pojedynczy limity zasobów bazy danych](sql-database-vcore-resource-limits-single-databases.md). Na przykład jeśli 5. generacji i jego max (rdzeń wirtualny) na bazę danych korzysta z puli elastycznej jest 2, maksymalna współbieżnych procesów roboczych to 200.  Jeśli maksymalny (rdzeń wirtualny) na bazę danych wynosi 0,5, następnie max współbieżnych procesów roboczych jest 50, ponieważ na 5. generacji są maksymalnie 100 współbieżnych procesów roboczych na rdzeniach wirtualnych.  Inne ustawienia max (rdzeń wirtualny) na bazę danych, które są mniej 1 rdzeń wirtualny lub mniejszą liczbę maksymalną współbieżnych procesów roboczych jest podobnie przeskalowywany w ten sposób.
 
 Jeśli wszystkie rdzenie wirtualne w puli elastycznej są zajęte, każda baza danych w puli otrzymuje taką samą ilość zasobów obliczeniowych do przetwarzania zapytań. Usługa SQL Database zapewnia sprawiedliwe udostępnianie zasobów między bazami danych przez zapewnienie równych okresów czasu obliczeń. Sprawiedliwe udostępnianie zasobów puli elastycznej jest Oprócz zapewniania dowolnej ilości zasobów, w przeciwnym razie gwarantowanej dla każdej bazy danych, gdy minimalna liczba rdzeni wirtualnych na bazę danych jest ustawiona na wartość inną niż zero.
 

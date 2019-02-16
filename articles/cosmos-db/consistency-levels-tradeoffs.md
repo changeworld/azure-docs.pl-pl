@@ -4,15 +4,15 @@ description: Dostępność i wydajność kompromisy dla różnych poziomów spó
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/20/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ee0dc1bec39bf95cbf4f3bf7ecea92b877a78b88
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 99b981e6b5c9bc56c10b0491474c0c8773291b7e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113757"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309204"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisy w zakresie spójności, dostępności i wydajności 
 
@@ -44,22 +44,23 @@ Dokładny czas oczekiwania RTT jest funkcja odległości szybkość świateł i 
 
 - Dla danego typu operacji zapisu, takich jak insert, replace, upsert i usuwania przepływność zapisu dla jednostek żądania jest taka sama dla wszystkich poziomów spójności.
 
-## <a name="consistency-levels-and-data-durability"></a>Spójność poziomy i danych trwałości
+## <a id="rto"></a>Spójność poziomy i danych trwałości
 
-W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Tabela definiuje relację między relacji między trwałości danych i modelu spójności obecności awarii szerokiego regionu. Należy pamiętać, że w rozproszonym systemie wysoki poziom spójności, nawet w przypadku jest niemożliwe rozproszoną bazę danych z i RPO i RTO zero z powodu kolejnego elementu teorii CAP. Aby dowiedzieć się więcej o tym, dlaczego, zobacz [poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md).
+W środowisku globalnie rozproszona baza danych ma bezpośrednią relację między trwałości danych i na spójność obecności awarii całego regionu. Podczas opracowywania planem ciągłości biznesowej, należy zrozumieć maksymalnego dopuszczalnego czasu oczekiwania na pełne odzyskanie aplikacji po wystąpieniu zdarzenia powodującego zakłócenia. Czas wymagany do przeprowadzenia pełnego odzyskania aplikacji jest znany jako cel czasu odzyskiwania (RTO). Należy również zrozumieć maksymalny okres najnowszych aktualizacji danych, aplikacja może tolerować utraty podczas odzyskiwania po wystąpieniu zdarzenia powodującego zakłócenia. Okres aktualizacji, które mogą umożliwić utratę jest określany jako cel punktu odzyskiwania (RPO).
+
+Tabela definiuje relację między relacji między trwałości danych i modelu spójności obecności awarii szerokiego regionu. Należy pamiętać, że w rozproszonym systemie wysoki poziom spójności, nawet w przypadku jest niemożliwe do rozproszonej bazy danych za pomocą RPO i RTO zero z powodu kolejnego elementu teorii CAP. Aby dowiedzieć się więcej o tym, dlaczego, zobacz [poziomy spójności w usłudze Azure Cosmos DB](consistency-levels.md).
 
 |**Regiony**|**Tryb replikacji**|**Poziom spójności**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Jednego lub wielu wzorców|Dowolny poziom spójności|< 240 minut|< 1 tydzień|
 |>1|Wzorca pojedynczej|Sesja, spójny prefiks i ostateczna|< 15 minut|< 15 minut|
-|>1|Wzorca pojedynczej|Powiązana nieaktualność|K & T*|< 15 minut|
+|>1|Wzorca pojedynczej|Powiązana nieaktualność|K & T|< 15 minut|
 |>1|Multi-Master|Sesja, spójny prefiks i ostateczna|< 15 minut|0|
-|>1|Multi-Master|Powiązana nieaktualność|K & T*|0|
+|>1|Multi-Master|Powiązana nieaktualność|K & T|0|
 |>1|Jednego lub wielu wzorców|Silna|0|< 15 minut|
 
-* K & T = liczba "K" wersji (aktualizacje) elementu. Or "T" time interval.
-
-
+K = liczba "K" wersji (aktualizacje) elementu.
+T = "T" Godzina przedział czasu od momentu ostatniej aktualizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

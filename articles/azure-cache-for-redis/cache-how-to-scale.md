@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 5f448c1c66520a5941ad867eaf3c89c22693cc45
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235576"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313436"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Jak skalować pamięć podręczna systemu Azure dla usługi Redis
 Pamięć podręczna systemu Azure dla usługi Redis zawiera pamięci podręcznej różnych ofert, które zapewniają elastyczność przy wyborze funkcji i rozmiar pamięci podręcznej. Po utworzeniu pamięci podręcznej możesz skalować rozmiar i warstwę cenową w pamięci podręcznej, jeśli zmienią się wymagania dotyczące aplikacji. W tym artykule pokazano, jak skalować pamięć podręczną przy użyciu witryny Azure portal i narzędzi, takich jak Azure PowerShell i wiersza polecenia platformy Azure.
@@ -115,7 +115,7 @@ Poniższa lista zawiera odpowiedzi na często zadawane pytania dotyczące usług
 * [Spowoduje utratę danych z przepełnieniu pamięci podręcznej podczas skalowania?](#will-i-lose-data-from-my-cache-during-scaling)
 * [Moje niestandardowe bazy danych ustawia dotyczy podczas skalowania?](#is-my-custom-databases-setting-affected-during-scaling)
 * [Przepełnieniu pamięci podręcznej będą dostępne podczas skalowania?](#will-my-cache-be-available-during-scaling)
-* [Dzięki replikacji geograficznej, skonfigurowany, dlaczego nie mogę skalować przepełnieniu pamięci podręcznej lub zmienić fragmentów w klastrze?](#scaling-limitations-with-geo-relication)
+* Dzięki replikacji geograficznej, skonfigurowany, dlaczego nie mogę skalować przepełnieniu pamięci podręcznej lub zmienić fragmentów w klastrze?
 * [Operacje, które nie są obsługiwane](#operations-that-are-not-supported)
 * [Jak skalowanie długo?](#how-long-does-scaling-take)
 * [Jak rozpoznać, kiedy jest ukończone skalowania?](#how-can-i-tell-when-scaling-is-complete)

@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c85d405502890253bcdb80c652ed53f58546de9c
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 32c326ff7bef98f9d8f4f20664889109d291a6ea
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747054"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328847"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfiguracje infrastruktury SAP HANA i operacji na platformie Azure
 Ten dokument zawiera wskazówki dotyczące konfigurowania infrastruktury platformy Azure i obsługi systemów SAP HANA, które zostały wdrożone na natywnych maszynach wirtualnych platformy Azure (maszyny wirtualne). Dokument zawiera również informacje o konfiguracji dla oprogramowania SAP HANA skalowalnego w poziomie dla jednostki SKU maszyny Wirtualnej M128s. Ten dokument nie jest przeznaczona do zastąpienia dokumentacji SAP standardowa obejmuje następującą zawartością:
@@ -68,10 +68,10 @@ Wdrażanie maszyn wirtualnych na platformie Azure przy użyciu:
 Możesz również wdrożyć pełną zainstalowanej platformy SAP HANA w usługach maszyny Wirtualnej platformy Azure za pośrednictwem [platforma usług w chmurze SAP](https://cal.sap.com/). Proces instalacji został opisany w [wdrażanie rozwiązania SAP S/4HANA lub BW/4HANA na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) lub za pomocą usługi automation wydane [tutaj](https://github.com/AzureCAT-GSI/SAP-HANA-ARM).
 
 ### <a name="choose-azure-storage-type"></a>Wybierz typ usługi Azure Storage
-Platforma Azure udostępnia dwa typy magazynów, które są odpowiednie na potrzeby maszyn wirtualnych platformy Azure, które są uruchomione oprogramowanie SAP HANA:
+Platforma Azure udostępnia dwa typy magazynów, które są odpowiednie na potrzeby maszyn wirtualnych platformy Azure, które są uruchomione oprogramowanie SAP HANA: Standardowych dysków twardych (HDD) i premium dyski półprzewodnikowe (SSD). Aby dowiedzieć się więcej na temat tych typów dysków, zobacz nasze artykuł [wybierz typ dysku](../../windows/disks-types.md)
 
-- [Azure Standard Storage](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
-- [Azure Premium Storage](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Standardowych dysków twardych (HDD)
+- Premium dyski półprzewodnikowe (SSD)
 
 Platforma Azure oferuje dwie metody wdrażania dla wirtualnych dysków twardych na Azure Standard i Premium Storage. Pozwala na ogólną scenariusz, korzystać z zalet [dysk zarządzany platformy Azure](https://azure.microsoft.com/services/managed-disks/) wdrożeń.
 
@@ -408,7 +408,7 @@ Zgodnie z DT 2.0 najlepszych rozwiązań przepływność operacji We/Wy dysku po
 
 Konieczne jest dołączenie wielu dysków platformy Azure do maszyny Wirtualnej w wersji 2.0 DT i Utwórz raid oprogramowania (rozkładanie) na poziomie systemu operacyjnego w celu osiągnięcia maksymalnego limitu przepustowości dysku na maszynie Wirtualnej. Pojedynczy dysk platformy Azure nie może dostarczyć przepływności do osiągnięcia maksymalnego limitu maszyn wirtualnych w tym zakresie. Usługa Azure Premium storage jest obowiązkowe, aby uruchomić DT w wersji 2.0. 
 
-- Szczegółowe informacje o typach dostępnych dysków platformy Azure można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- Szczegółowe informacje o typach dostępnych dysków platformy Azure można znaleźć [tutaj](../../windows/disks-types.md)
 - Można znaleźć szczegółowe informacje o tworzeniu raid oprogramowania za pośrednictwem mdadm [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid)
 - Szczegółowe informacje o konfigurowaniu LVM do utworzenia woluminu rozłożonego dla maksymalna przepływność można znaleźć [tutaj](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm)
 

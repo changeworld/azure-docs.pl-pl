@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: bf807a4d24b72c948707ade28f06c4eb2a54c0a0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657029"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311567"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Jak używać zarządzanych tożsamości z usługi Azure Container Instances
 
@@ -27,6 +27,9 @@ W tym artykule dowiesz się więcej na temat zarządzanych tożsamości w usłud
 > * Umożliwia dostęp do usługi Key Vault z uruchomionego kontenera tożsamości zarządzanej
 
 Dostosuj przykłady do włączenia i używania tożsamości w usłudze Azure Container Instances, aby uzyskać dostęp do innych usług platformy Azure. Te przykłady są interaktywne. Jednak w praktyce obrazów kontenerów może uruchomić kod, aby uzyskać dostęp do usług platformy Azure.
+
+> [!NOTE]
+> Obecnie nie można użyć tożsamość zarządzaną w grupie kontenerów wdrożonych w sieci wirtualnej.
 
 ## <a name="why-use-a-managed-identity"></a>Dlaczego warto korzystać z tożsamości zarządzanej?
 

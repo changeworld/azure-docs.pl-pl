@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: aa740cfb203f50dc97a06359774dae367a20252b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55148072"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331237"
 ---
 ## <a name="about-vhds"></a>Informacje o wirtualnych dyskach twardych
 

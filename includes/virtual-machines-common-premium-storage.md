@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 9f0dbc549600ef2b931ee99a36c60cae57cc7a67
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56247061"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331391"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 
@@ -98,8 +98,6 @@ Poniżej przedstawiono niektóre z funkcji obsługiwanych w warstwie premium mag
 
     > [!NOTE]
     > Jeśli stripe dysków magazynu premium storage danych przy użyciu [miejsca do magazynowania](https://technet.microsoft.com/library/hh831739.aspx), skonfigurować pod kątem funkcji miejsca do magazynowania z 1 kolumnę dla każdego dysku, którego używasz. W przeciwnym razie ogólną wydajność rozłożone wolumin może być krótszy niż oczekiwano z powodu nierówna Dystrybucja ruchu między dyskami. Domyślnie w Menedżerze serwera można skonfigurować kolumny dla maksymalnie 8 dysków. Jeśli masz więcej niż 8 dysków, należy utworzyć wolumin za pomocą programu PowerShell. Ręcznie określ liczbę kolumn. W przeciwnym razie interfejsu użytkownika Menedżera serwera w dalszym ciągu używać 8 kolumn, nawet jeśli masz więcej dysków. Na przykład jeśli masz 32 dysków w zestawie pojedynczej usługi stripe, należy określić 32 kolumn. Aby określić liczbę kolumn w dysk wirtualny wykorzystuje [New-VirtualDisk](https://technet.microsoft.com/library/hh848643.aspx) polecenia cmdlet programu PowerShell, użyj *NumberOfColumns* parametru. Aby uzyskać więcej informacji, zobacz [miejsca do magazynowania — omówienie](https://technet.microsoft.com/library/hh831739.aspx) i [— często zadawane pytania dla miejsca do magazynowania magazynu](https://social.technet.microsoft.com/wiki/contents/articles/11382.storage-spaces-frequently-asked-questions-faq.aspx).
-    >
-    > 
 
 * **Pamięć podręczna**
 

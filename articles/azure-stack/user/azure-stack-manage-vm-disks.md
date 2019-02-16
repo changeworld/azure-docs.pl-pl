@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 5719d5c49d3061acd167f51f74aac109dc22ec49
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: e38612e0d4e0707525b313c79143018c74c4c77b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961406"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326514"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Tworzenie magazynu danych na dysku maszyny wirtualnej w usłudze Azure Stack
 
@@ -32,9 +32,9 @@ W tym artykule opisano sposób tworzenia magazynu dyskowego maszyny wirtualnej z
 
 Począwszy od wersji 1808, usługa Azure Stack obsługuje korzystanie z dysków zarządzanych i niezarządzanych dysków na maszynach wirtualnych, zarówno jako systemu operacyjnego (OS) i dysk z danymi. Przed wersją 1808 obsługiwane są tylko dyski niezarządzane. 
 
-**[Usługa Managed disks](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)**  upraszcza zarządzanie dyskami maszyn wirtualnych IaaS platformy Azure dzięki zarządzaniu kontami magazynu skojarzone z dyskami maszyn wirtualnych. Wystarczy określić rozmiar dysku należy i usługi Azure Stack, tworzy i zarządza dysku.
+**[Usługa Managed disks](../../virtual-machines/windows/managed-disks-overview.md)**  upraszcza zarządzanie dyskami maszyn wirtualnych IaaS platformy Azure dzięki zarządzaniu kontami magazynu skojarzone z dyskami maszyn wirtualnych. Wystarczy określić rozmiar dysku należy i usługi Azure Stack, tworzy i zarządza dysku.
 
-**[Niezarządzane dyski](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)**, wymaga utworzenia [konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) do przechowywania dysków. Dyski które tworzysz są określane jako dyski maszyny Wirtualnej i są przechowywane w kontenerach na koncie magazynu.
+Dysków niezarządzanych, wymagają, aby utworzyć konto magazynu do przechowywania dysków. Dyski które tworzysz są określane jako dyski maszyny Wirtualnej i są przechowywane w kontenerach na koncie magazynu.
 
 ### <a name="best-practice-guidelines"></a>Najlepsze rozwiązania przyjęte
 
@@ -97,7 +97,7 @@ Każdy dysk niezarządzany, jakie dodasz, należy umieścić w oddzielny kontene
 
     -  Wybierz **typ źródła**.
 
-       Tworzenie dysku na podstawie migawki innego dysku, obiektu blob na koncie magazynu lub utworzyć pusty dysk.
+       Utwórz dysk na podstawie migawki innego dysku lub obiektu blob na koncie magazynu. Możesz też utworzyć pusty dysk.
 
         **migawki**  
         Wybierz migawkę, jeśli jest ona dostępna. Migawki muszą znajdować się w dostępnych w subskrypcji i lokalizacji maszyny Wirtualnej.

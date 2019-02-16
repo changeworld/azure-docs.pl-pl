@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0fe4bef436576bec90d1d770d262c2c22d280a3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694588"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310554"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure storage
 
@@ -56,7 +56,7 @@ Druga metoda używa także rekordy CNAME. Aby uniknąć przestoju, natomiast naj
 
 Mapowanie domeny niestandardowej na punkt końcowy obiektu blob może spowodować krótki przestój w przypadku rejestrowania domeny w [witryny Azure portal](https://portal.azure.com). Jeśli domena obsługuje obecnie aplikacji za pomocą umowy poziomu usług (SLA) wymaga przestojów, skorzystaj z Kalkulatora *asverify* poddomeny jako etap pośredni rejestracji. Ten krok zapewnia, że użytkownicy mają dostęp do domeny, podczas mapowania DNS.
 
-Metoda pośrednie są omówione w [zarejestrować niestandardową domenę przy użyciu *asverify* poddomeny](#register-a-custom-domain-using-the-asverify-subdomain).
+Metoda pośrednie zostało omówione w domenie niestandardowej należy zarejestrować przy użyciu *asverify* poddomeny.
 
 ## <a name="register-a-custom-domain"></a>Zarejestruj domenę niestandardową
 Zarejestruj domeny za pomocą procedury w tej sekcji, jeśli następujące instrukcje zastosowania:
@@ -65,7 +65,7 @@ Zarejestruj domeny za pomocą procedury w tej sekcji, jeśli następujące instr
 
 Aby skonfigurować niestandardową nazwę DNS dla magazynu obiektów Blob platformy Azure, można użyć usługi Azure DNS. Aby uzyskać więcej informacji, zobacz [Use Azure DNS to provide custom domain settings for an Azure service](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage) (Korzystanie z usługi Azure DNS w celu udostępnienia niestandardowych ustawień domeny dla usługi platformy Azure).
 
-Jeśli domena niestandardowa obecnie obsługuje aplikację, która nie może mieć żadnych przestojów, użyj procedury [zarejestrować niestandardową domenę przy użyciu *asverify* poddomeny](#register-a-custom-domain-using-the-asverify-subdomain).
+Jeśli domenę niestandardową obecnie obsługuje aplikację, która nie może mieć żadnych przestojów, użyj procedury w rejestrze domenę niestandardową przy użyciu *asverify* poddomeny.
 
 Aby skonfigurować niestandardową nazwę domeny, należy utworzyć nowy rekord CNAME w systemie DNS. Rekord CNAME określa alias dla nazwy domeny. W naszym przykładzie jest on mapowany adres domenę niestandardową do punktu końcowego konta magazynu Blob storage.
 

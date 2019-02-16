@@ -1,5 +1,5 @@
 ---
-title: Możliwości wyodrębniania tekstu za pomocą oprogramowania OCR - przetwarzania obrazów
+title: Trwa wyodrębnianie tekstu za pomocą optycznego rozpoznawania znaków (OCR) - przetwarzania obrazów
 titleSuffix: Azure Cognitive Services
 description: Pojęcia związane z możliwości wyodrębniania tekstu za pomocą optycznego rozpoznawania znaków (OCR) przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
@@ -8,39 +8,37 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 0f43724218994818908e87834ed1b70f4bca330b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: deb73eb9fdd6879a5fbe1fed820bf92b2d627b65
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873806"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310444"
 ---
-# <a name="extracting-text-with-optical-character-recognition"></a>Trwa wyodrębnianie tekstu za pomocą funkcji optycznego rozpoznawania znaków
+# <a name="extract-text-with-optical-character-recognition"></a>Wyodrębnij tekst za pomocą funkcji optycznego rozpoznawania znaków
 
-Technologia optycznego rozpoznawania znaków (OCR) w wizualizacji komputerowej wykrywa zawartość tekstową na obrazie i wyodrębnia zidentyfikowany tekst do strumienia znaków czytelnych. Wynik służy do wyszukiwania oraz wielu innych celów, ma np. zastosowanie w przypadku dokumentacji medycznej, branży ochrony i bankowości. Umożliwia automatyczne wykrywanie języka. Optyczne rozpoznawanie znaków oszczędza czas i jest wygodne dla użytkowników, którzy mogą wykonywać zdjęcia tekstu zamiast go przepisywać.
+Przetwarzanie obrazów, funkcja optycznego rozpoznawania znaków (OCR) wykrywa zawartość tekstową na obrazie i konwertuje zidentyfikowany tekst do strumienia znaków czytelnych. Wynik może być użyty do wielu celów, takich jak wyszukiwanie, dokumentacji medycznej, zabezpieczeń i bankowością. 
 
-OCR obsługuje 25 języków. Te języki to: arabski, chiński uproszczony, chiński tradycyjny, czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański, norweski, polski, portugalski, rumuński, rosyjski, serbski (cyrylica i alfabet łaciński), słowacki, hiszpański, szwedzki i turecki.
+Optyczne rozpoznawanie znaków obsługuje 25 językach: arabski, chiński uproszczony, chiński tradycyjny, czeski, duński, holenderski, angielski, fiński, francuski, niemiecki, grecki, węgierski, włoski, japoński, koreański, norweski, polski, portugalski, rumuński, rosyjski, serbski (cyrylica i alfabet łaciński), słowacki, hiszpański, szwedzki i turecki. Optyczne rozpoznawanie znaków automatycznie wykrywa język tekstu wykryte.
 
-Jeśli to konieczne, OCR poprawia kąt obrotu (w stopniach) rozpoznanego tekstu wokół poziomej osi obrazu. Optyczne rozpoznawanie znaków zawiera współrzędne ramki wystąpień poszczególnych wyrazów, jak pokazano na poniższej ilustracji.
+Jeśli to konieczne, optyczne rozpoznawanie znaków poprawia obrót rozpoznany, zwracając obrotowych przesunięcie w stopniach osi obraz w poziomie. Optyczne rozpoznawanie znaków są także współrzędne ramki wystąpień poszczególnych wyrazów, jak pokazano na poniższej ilustracji.
 
 ![Diagram przedstawiający za obrazu oraz jego tekstu, odczytu, a umieszczony](./Images/vision-overview-ocr.png)
 
-## <a name="ocr-requirements"></a>Wymagania dotyczące optyczne rozpoznawanie znaków
+## <a name="image-requirements"></a>Wymagania obrazu
 
 Przetwarzanie obrazów można wyodrębnić tekst za pomocą optycznego rozpoznawania znaków z obrazów, które spełniają następujące wymagania:
 
 * Obraz musi być w formacie JPEG, PNG, GIF lub BMP
 * Rozmiar obrazu wejściowego musi należeć do zakresu od 50 x 50 i 4200 x 4200 pikseli
-
-
-Obrazu wejściowego można obracać o dowolnym wielu 90 stopni oraz małych kąt maksymalnie 40 stopni.
+* Tekst w obrazie można obracać o dowolnym wielu 90 stopni oraz małych kąt maksymalnie 40 stopni.
 
 ## <a name="improving-ocr-accuracy"></a>Poprawianie dokładności optyczne rozpoznawanie znaków
 
-Dokładność rozpoznawania tekstu zależy od jakości obrazu. Przyczyny nieprawidłowego odczytu mogą być następujące:
+Dokładność rozpoznawania tekstu zależy od jakości obrazu. Odczyt nieprawidłowych może być spowodowane przez następujące czynności:
 
 * Rozmyte obrazy.
 * Tekst odręczny lub napisany kursywą.
@@ -52,8 +50,8 @@ Dokładność rozpoznawania tekstu zależy od jakości obrazu. Przyczyny niepraw
 
 ### <a name="ocr-limitations"></a>Ograniczenia optyczne rozpoznawanie znaków
 
-Na fotografii, gdzie jest tekst liczby wyników fałszywie dodatnich mogą pochodzić z częściowo rozpoznane słowa. W niektórych fotografii, szczególnie zdjęcia bez dowolny tekst dokładności mogą się różnić w znacznie w zależności od typu obraz.
+W obrazach, których tekst jest dominującym wyników fałszywie dodatnich mogą pochodzić z częściowo rozpoznane słowa. W niektórych obrazów, szczególnie zdjęcia bez dowolny tekst dokładności mogą się różnić w znacznie w zależności od typu obraz.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Pojęcia dotyczące [rozpoznawanie tekstu drukowanego i pisma odręcznego](concept-recognizing-text.md).
+Zobacz [dokumentację referencyjną optyczne rozpoznawanie znaków](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) Aby dowiedzieć się więcej.

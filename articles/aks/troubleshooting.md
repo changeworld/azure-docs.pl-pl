@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 17f6971cfa2dcd8c8988edc063c89859abec5367
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468839"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327565"
 ---
 # <a name="aks-troubleshooting"></a>Rozwiązywanie problemów z usługi AKS
 
@@ -34,7 +34,11 @@ Ustawienie maksymalne zasobników każdego węzła jest 110 domyślnie, jeśli m
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Otrzymuję błąd insufficientSubnetSize podczas wdrażania klastra usługi AKS z zaawansowany siecią. Co mam zrobić?
 
-W przypadku niestandardowych usługi Azure Virtual Network opcji dla sieci podczas tworzenia usługi AKS wtyczki Azure Container sieci interfejsu (CNI) jest używany dla zarządzania adresami IP (IPAM). Liczba węzłów w klastrze AKS może być dowolnym miejscu od 1 do 100. Oparte na poprzedniej sekcji, rozmiar podsieci powinien być większy niż iloczyn liczby węzłów i maksymalna zasobników w każdym węźle. Relacje mogą być wyrażone w ten sposób: rozmiar podsieci > Liczba węzłów w klastrze * maksymalna zasobników w każdym węźle.
+Użycie wtyczki Azure CNI (zaawansowany siecią) AKS preallocates adresów IP oparty na "max zasobników" na węzeł skonfigurowane. Liczba węzłów w klastrze AKS może być dowolnym między 1 a 110. Na podstawie skonfigurowanego zasobników max na węzeł, rozmiar podsieci powinien być większy niż "product liczbę węzłów i maksymalna pod każdym węźle". Następujące podstawowe równanie przedstawia to:
+
+Rozmiar podsieci > Liczba węzłów w klastrze (biorąc pod uwagę przyszłych wymagań skalowania) * max zasobniki w każdym węźle.
+
+Aby uzyskać więcej informacji, zobacz [adresowania IP planowanie na potrzeby klastra](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Moje zasobnika została zablokowana w trybie CrashLoopBackOff. Co mam zrobić?
 
