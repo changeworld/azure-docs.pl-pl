@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: aff3f47624fe21e1d0f020e8e5732e60b4b53657
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 42b6dde708e2a1dbda225fd95e3db964267ae48a
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54084059"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56334046"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>Omówienie ponownych rozruchów maszyn wirtualnych — konserwacja a przestój
 Istnieją trzy scenariusze, które mogą prowadzić do maszyny wirtualnej platformy Azure: nieplanowana konserwacja sprzętu, nieoczekiwany Przestój i planowana konserwacja.
@@ -41,7 +41,7 @@ Aby zmniejszyć wpływ przestoju spowodowanego co najmniej jednym z tych zdarze�
 Aby zapewnić nadmiarowość aplikacji, zalecamy grupowanie co najmniej dwóch maszyn wirtualnych w zestawie dostępności. Tę konfigurację w centrum danych gwarantuje, że podczas każdej planowanego lub nieplanowanego zdarzenia konserwacji, co najmniej jedna maszyna wirtualna jest dostępna i spełnia 99,95% umowy SLA platformy Azure. Aby uzyskać więcej informacji, zobacz [Virtual Machines — umowa SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/).
 
 > [!IMPORTANT]
-> Unikaj pozostawiania pojedynczego wystąpienia maszyny wirtualnej w zestawie dostępności. Maszyny wirtualne w tej konfiguracji nie są objęte gwarancją umowy SLA. Podczas zdarzeń planowanej konserwacji platformy Azure może wystąpić przestój, z wyjątkiem sytuacji, gdy pojedyncza maszyna wirtualna korzystania z usługi [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md). W przypadku pojedynczych maszyn wirtualnych używających magazynu w wersji Premium obowiązuje umowa SLA platformy Azure.
+> Unikaj pozostawiania pojedynczego wystąpienia maszyny wirtualnej w zestawie dostępności. Maszyny wirtualne w tej konfiguracji zakwalifikować się do gwarancji umowy SLA i nie może wystąpić przestój podczas zdarzeń planowana konserwacja platformy Azure, z wyjątkiem sytuacji, gdy pojedyncza maszyna wirtualna jest przy użyciu [Azure — wersja premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd). Dla pojedynczych maszyn wirtualnych przy użyciu dysków SSD w warstwie premium ma zastosowanie umowa SLA platformy Azure.
 
 Każda maszyna wirtualna w zestawie dostępności ma przypisaną **domenę aktualizacji** i **domenę błędów** z odpowiedniej platformy Azure. Dany zestaw dostępności ma pięć domyślnie przypisanych domen aktualizacji, których użytkownik nie może konfigurować (następnie można zwiększyć liczbę wystąpień usługi Resource Manager, aby oferowała do 20 domen aktualizacji). Umożliwia to wskazanie grup maszyn wirtualnych i odpowiedniego sprzętu fizycznego, które mogą być uruchamiane równocześnie. Jeśli w pojedynczym zestawie dostępności skonfigurowano więcej niż pięć maszyn wirtualnych, szósta maszyna wirtualna jest umieszczana w tej samej domenie aktualizacji, co pierwsza maszyna wirtualna, siódma — w tej samej domenie aktualizacji co druga maszyna wirtualna itd. Podczas planowanej konserwacji domeny aktualizacji mogą nie być ponownie uruchamiane kolejno, ale w danym momencie tylko jedna domena aktualizacji jest uruchamiana ponownie. Domena aktualizacji po ponownym rozruchu otrzymuje 30 minut na odzyskanie sprawności zanim konserwacja zostanie zainicjowana w innej domenie aktualizacji.
 
@@ -60,7 +60,7 @@ Jeśli obecnie korzystasz z maszyn wirtualnych z dyskami niezarządzanymi, zdecy
 
 [!INCLUDE [managed-disks-common-fault-domain-region-list](managed-disks-common-fault-domain-region-list.md)]
 
-Jeśli planujesz używać maszyn wirtualnych z [dyskami niezarządzanymi](../articles/virtual-machines/windows/about-disks-and-vhds.md#types-of-disks), postępuj zgodnie z najlepszymi rozwiązaniami dla kont magazynu, gdzie wirtualne dyski twarde maszyn wirtualnych są przechowywane jako [stronicowe obiekty blob](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
+Jeśli planujesz używanie maszyn wirtualnych z dyskami niezarządzanymi, postępuj zgodnie z najlepszymi rozwiązaniami dla kont magazynu, gdzie wirtualne dyski twarde (VHD) maszyn wirtualnych są przechowywane jako [stronicowe obiekty BLOB](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs).
 
 1. **Obsługuj wszystkie dyski (systemu operacyjnego i danych) skojarzone z maszyną wirtualną na tym samym koncie magazynu.**
 2. Przed dodaniem kolejnych wirtualnych dysków twardych do konta magazynu **przejrzyj [limity](../articles/storage/common/storage-scalability-targets.md) dotyczące liczby niezarządzanych dysków na koncie magazynu**.

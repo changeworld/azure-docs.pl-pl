@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e2dc82ee49b240fe562f02b38c4991c644c010d3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56213135"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333823"
 ---
-# <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności
+# <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure premium storage: Projektowanie pod kątem wysokiej wydajności
 
 Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji o wysokiej wydajności przy użyciu usługi Azure Premium Storage. Można użyć w instrukcjach podanych w tym dokumencie, w połączeniu z najlepsze rozwiązania w zakresie wydajności mające zastosowanie do technologii wykorzystywanych przez aplikację. Aby zilustrować wytycznych, użyliśmy SQL Server uruchomiony na usługę Premium Storage, na przykład w tym dokumencie.
 
@@ -35,7 +35,7 @@ Te wytyczne zostały zamieszczone specjalnie dla usługi Premium Storage, poniew
 > Czasami prawdopodobnie problem z wydajnością dysku jest faktycznie wąskich gardeł. W takich sytuacjach należy zoptymalizować swoje [wydajność sieci](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md).
 > Jeśli maszyna wirtualna obsługuje przyspieszonej łączności sieciowej, należy się upewnić, że jest ono włączone. Jeśli nie jest włączone, możesz je włączyć na już wdrożone maszyny wirtualne zarówno [Windows](../articles/virtual-network/create-vm-accelerated-networking-powershell.md#enable-accelerated-networking-on-existing-vms) i [Linux](../articles/virtual-network/create-vm-accelerated-networking-cli.md#enable-accelerated-networking-on-existing-vms).
 
-Przed przystąpieniem do wykonywania, jeśli jesteś nowym użytkownikiem magazynu w warstwie Premium, najpierw przeczytać artykuł [usługi Premium Storage: Magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md) i [usługi Azure Storage dotyczące skalowalności i cele wydajności](../articles/storage/common/storage-scalability-targets.md) artykułów.
+Przed przystąpieniem do wykonywania, jeśli jesteś nowym użytkownikiem magazynu w warstwie Premium, najpierw przeczytać artykuł [wybierz typ dysku platformy Azure dla maszyn wirtualnych IaaS](../articles/virtual-machines/windows/disks-types.md) i [usługi Azure Storage dotyczące skalowalności i cele wydajności](../articles/storage/common/storage-scalability-targets.md) artykułów.
 
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
 
@@ -45,7 +45,7 @@ W tej sekcji omówiono typowe wskaźniki wydajności w ramach usługi Premium St
 
 ## <a name="iops"></a>Operacje wejścia/wyjścia
 
-Operacje We/Wy jest daną liczbą żądań, które aplikacja wysyła do dysków w magazynie w ciągu jednej sekundy. Operacji We/Wy może odczytać lub zapisu sekwencyjnego lub losowych. Przetwarzanie OLTP danych aplikacji, takich jak witryny sieci Web detalicznego handlu online należy natychmiast przetwarza wiele równoczesnych żądań użytkowników. Żądania użytkowników są insert i zaktualizuj transakcji bazy danych, które aplikacja musi przetworzyć szybko. W związku z tym aplikacje OLTP wymagają bardzo wysokiej operacje We/Wy. Takie aplikacje obsługiwać miliony żądań We/Wy małe i losowe. Jeśli masz taką aplikację, należy zaprojektować infrastruktury aplikacji, aby zoptymalizować operacje We/Wy. W dalszej części *Optymalizowanie wydajności aplikacji*, omówimy szczegółowo wszystkich czynników, które należy wziąć pod uwagę uzyskać wysoki operacje We/Wy.
+Operacje We/Wy lub we/wy operacji na sekundę, to liczba żądań, które aplikacja wysyła do dysków w magazynie w ciągu jednej sekundy. Operacji We/Wy może odczytać lub zapisu sekwencyjnego lub losowych. Online aplikacji przetwarzania transakcji (OLTP), takich jak witryny sieci Web detalicznego handlu online należy natychmiast przetwarza wiele równoczesnych żądań użytkowników. Żądania użytkowników są insert i zaktualizuj transakcji bazy danych, które aplikacja musi przetworzyć szybko. W związku z tym aplikacje OLTP wymagają bardzo wysokiej operacje We/Wy. Takie aplikacje obsługiwać miliony żądań We/Wy małe i losowe. Jeśli masz taką aplikację, należy zaprojektować infrastruktury aplikacji, aby zoptymalizować operacje We/Wy. W dalszej części *Optymalizowanie wydajności aplikacji*, omówimy szczegółowo wszystkich czynników, które należy wziąć pod uwagę uzyskać wysoki operacje We/Wy.
 
 Po dołączeniu dysku magazynu premium do Twojej dużej skali maszyny Wirtualnej, zapisów systemu Azure dla Ciebie gwarantowane liczba operacji We/Wy zgodnie ze specyfikacją dysku. Na przykład dysk P50 aprowizuje 7500 operacji We/Wy. Każdy dużej skali, rozmiar maszyny Wirtualnej ma również określony limit operacji We/Wy, która może kontynuować działanie. Na przykład standardowa maszyna wirtualna GS5 ma 80 000 operacji We/Wy Ogranicz.
 
@@ -53,13 +53,13 @@ Po dołączeniu dysku magazynu premium do Twojej dużej skali maszyny Wirtualnej
 
 Przepływność lub przepustowości jest ilość danych, który aplikacja wysyła na dyski magazynu w określonym przedziale czasu. Jeśli aplikacja działa operacji wejścia/wyjścia o dużych rozmiarach jednostki we/wy, wymaga wysokiej przepływności. Zwykle aplikacji do magazynu danych do wysyłania skanowania intensywnie wykorzystujących operacje dostępu dużej części danych w czasie i często wykonywały operacje zbiorcze. Innymi słowy takich aplikacji wymaga większej przepływności. Jeśli masz taką aplikację, należy zaprojektować swoją infrastrukturę, aby zoptymalizować przepływność. W następnej sekcji omówiono szczegółowo czynników należy dostosować do osiągnięcia tego.
 
-Po dołączeniu dysku magazynu premium na dużą skalę maszyny Wirtualnej, przepływność zapisów systemu Azure zgodnie z specyfikacją tego dysku. Na przykład dysk P50 aprowizuje 250 MB na drugi dysk przepływności. Każdy dużej skali, rozmiar maszyny Wirtualnej ma również jako określony limit przepustowości, który może kontynuować działanie. Na przykład standardowa maszyna wirtualna GS5 zawiera maksymalnie 2000 MB na sekundę. 
+Po dołączeniu dysku magazynu premium do dużej skali maszyny Wirtualnej, przepływność zapisów systemu Azure zgodnie z specyfikacją tego dysku. Na przykład dysk P50 aprowizuje 250 MB na drugim przepływność dysku. Każdy dużej skali, rozmiar maszyny Wirtualnej ma również jako limit przepływności określonych, który może kontynuować działanie. Na przykład standardowa maszyna wirtualna GS5 zawiera maksymalnie 2000 MB na sekundę.
 
 Brak relacji między przepływność i operacje We/Wy, jak pokazano na poniższej formuły.
 
-![](media/premium-storage-performance/image1.png)
+![Relacja operacje We/Wy i przepływności](../articles/virtual-machines/linux/media/premium-storage-performance/image1.png)
 
-W związku z tym jest ważne jest określenie optymalnej wartości przepustowości i operacji We/Wy, wymagane przez aplikację. Przy próbie optymalizacji, jeden, druga pobiera dotyczy także. W dalszej części tego tematu *Optymalizowanie wydajności aplikacji*, omówimy bardziej szczegółowo o optymalizacji operacji We/Wy i przepływność.
+W związku z tym jest ważne jest określenie optymalnej przepływności i wartości operacje We/Wy, których wymaga aplikacja. Przy próbie optymalizacji, jeden, druga pobiera dotyczy także. W dalszej części tego tematu *Optymalizowanie wydajności aplikacji*, omówimy bardziej szczegółowo o optymalizacji operacji We/Wy i przepływność.
 
 ## <a name="latency"></a>Opóźnienie
 
@@ -67,23 +67,15 @@ Opóźnienie to czas potrzebny aplikacji do odbierania pojedynczego żądania, w
 
 Podczas optymalizacji aplikacji w taki sposób, aby uzyskać wyższą operacje We/Wy i przepływność ma wpływ na opóźnienia w aplikacji. Po dostrajanie wydajności aplikacji, zawsze należy przeprowadzić ocenę opóźnienie aplikacji, aby uniknąć zachowania nieoczekiwany duże opóźnienie.
 
-Następujące operacje warstwy kontroli na dyskach zarządzanych może obejmować przenoszenie dysków z jednej lokalizacji magazynu do innego. Jest to zorganizowanych za pośrednictwem tła kopię danych, co może zająć kilka godzin, zależnie od ilości danych na dyskach zazwyczaj mniej niż 24 godziny. W tym czasie aplikacji mogą występować wyższe niż zwykle opóźnienia odczytu niektórych odczyty mogą uzyskać przekierowane do oryginalnej lokalizacji i może potrwać dłużej. Nie ma to wpływu na opóźnienie zapisu w tym okresie.  
+# <a name="performance-application-checklist-for-disks"></a>Lista kontrolna dotycząca wydajności aplikacji dla dysków
 
-1.  [Aktualizuj typ magazynu](../articles/virtual-machines/windows/convert-disk-storage.md)
-2.  [Odłącz i dołączanie dysku z jednej maszyny Wirtualnej do innego](../articles/virtual-machines/windows/attach-disk-ps.md)
-3.  [Tworzenie dysku zarządzanego na podstawie dysku VHD](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md)
-4.  [Tworzenie dysku zarządzanego na podstawie migawki](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-managed-disk-from-snapshot.md)
-5.  [Konwertowanie z dysków niezarządzanych do usługi Managed Disks](../articles/virtual-machines/windows/convert-unmanaged-to-managed-disks.md)
+Pierwszym etapem projektowanie wysoko wydajnych aplikacji uruchomionych na platformie Azure Premium Storage jest zrozumienie, wymagania dotyczące wydajności aplikacji. Po zgromadzeniu wymagań dotyczących wydajności, można zoptymalizować aplikację, aby uzyskać najbardziej optymalną wydajność.
 
-## <a name="gather-application-performance-requirements"></a>Zebranie wymagań w zakresie wydajności aplikacji
+W poprzedniej sekcji firma Microsoft opisano typowe wskaźniki wydajności, operacje We/Wy, przepustowości i opóźnień. Należy określić, które te wskaźniki wydajności są kluczowe znaczenie dla aplikacji w taki sposób, aby zapewnić obsługę odpowiedniego użytkownika. Na przykład wysoką operacje We/Wy dla Ciebie ważne aplikacje OLTP przetwarzanie milionów transakcji na sekundę. Wysoka przepływność jest krytyczne dla magazynu danych aplikacji, przetwarzania dużych ilości danych na sekundę. Bardzo małe opóźnienia jest kluczowa dla aplikacji w czasie rzeczywistym, takich jak wideo na żywo, przesyłanie strumieniowe witryn sieci Web.
 
-Pierwszym krokiem w projektowaniu aplikacji o wysokiej wydajności, w systemie Azure Premium Storage jest, aby zrozumieć wymagania dotyczące wydajności aplikacji. Po zebraniu wymagań dotyczących wydajności, można zoptymalizować aplikację, aby uzyskać najbardziej optymalną wydajność.
+Następnie zmierz wymagania maksymalną wydajność aplikacji w taki sposób, w okresie swojego istnienia. Użyj poniższej listy kontrolnej przykładowe jako rozpoczęcia. Zapisz wymagania dotyczące maksymalnej wydajności podczas normalnego, szczytowe i okresów obciążenia poza godzinami szczytu. Identyfikując wymagania dla wszystkich poziomów obciążeń, można określić ogólne wymagania dotyczące działania aplikacji. Na przykład zwykłe obciążenie pracą w witrynie sieci Web handlu elektronicznego będzie transakcje, które służy ona większość dni w roku. Szczytowego obciążenia w witrynie sieci Web będzie transakcje, które służy ona podczas navaneetha krishnan lub specjalne sprzedaży zdarzenia. Szczytowego obciążenia jest zazwyczaj doświadczonym przez ograniczony okres, ale mogą wymagać od aplikacji do skalowania dwa lub więcej razy, jego normalnego działania. Dowiedz się, 50. percentyl, 90. percentyl i wymagania 99. percentylu. Dzięki temu odfiltrować jakiekolwiek elementy odstające w wymagania dotyczące wydajności i możesz skoncentrować się na dotyczące optymalizacji dla prawej wartości.
 
-W poprzedniej sekcji firma Microsoft opisano typowe wskaźniki wydajności operacji We/Wy, przepustowości i opóźnień. Należy określić, które te wskaźniki wydajności są kluczowe znaczenie dla aplikacji w taki sposób, aby zapewnić obsługę odpowiedniego użytkownika. Na przykład wysoką operacje We/Wy dla Ciebie ważne aplikacje OLTP przetwarzanie milionów transakcji na sekundę. Wysoka przepływność jest krytyczne dla magazynu danych aplikacji, przetwarzania dużych ilości danych na sekundę. Bardzo małe opóźnienia jest kluczowa dla aplikacji w czasie rzeczywistym, takich jak wideo na żywo, przesyłanie strumieniowe witryn sieci Web.
-
-Następnie zmierz wymagania maksymalną wydajność aplikacji w taki sposób, w okresie swojego istnienia. Użyj poniższej listy kontrolnej przykładowe jako rozpoczęcia. Zarejestruj wymogi maksymalną wydajność podczas normalnego, szczycie i poza godzinami szczytu okresów obciążenia. Identyfikując wymagania dla wszystkich poziomów obciążeń, można określić ogólne wymagania dotyczące działania aplikacji. Na przykład zwykłe obciążenie pracą w witrynie sieci Web handlu elektronicznego będzie transakcje, które służy ona większość dni w roku. Szczytowego obciążenia w witrynie sieci Web będzie transakcje, które służy ona podczas navaneetha krishnan lub specjalne sprzedaży zdarzenia. Szczytowego obciążenia jest zazwyczaj doświadczonym przez ograniczony okres, ale mogą wymagać od aplikacji do skalowania dwa lub więcej razy, jego normalnego działania. Dowiedz się, 50. percentyl, 90. percentyl i wymagania 99. percentylu. Dzięki temu odfiltrować jakiekolwiek elementy odstające w wymagania dotyczące wydajności i możesz skoncentrować się na dotyczące optymalizacji dla prawej wartości.
-
-### <a name="application-performance-requirements-checklist"></a>Lista kontrolna wymagania dotyczące wydajności aplikacji
+## <a name="application-performance-requirements-checklist"></a>Lista kontrolna wymagania dotyczące wydajności aplikacji
 
 | **Wymagania dotyczące wydajności** | **50. percentyl** | **90 Percentile** | **99  Percentile** |
 | --- | --- | --- | --- |
@@ -106,9 +98,7 @@ Następnie zmierz wymagania maksymalną wydajność aplikacji w taki sposób, w 
 > [!NOTE]
 > Należy rozważyć skalowanie te liczby, oparte na oczekiwany przyszłego rozwoju aplikacji. Jest dobrze się Planowanie wzrostu wyprzedzeniem, ponieważ może on być trudniejsze do zmiany infrastruktura dla poprawy wydajności później.
 
-Jeśli masz istniejącą aplikację i chcesz przenieść do usługi Premium Storage, należy najpierw utworzyć z listy kontrolnej zawierającej ponad istniejących aplikacji. Następnie tworzenie prototypów aplikacji w magazynie Premium Storage i projektowania aplikacji, w oparciu o wytycznymi opisany w *Optymalizowanie wydajności aplikacji* w dalszej części tego dokumentu. W następnej sekcji opisano narzędzia, których można użyć w celu zbierania miar wydajności.
-
-Utwórz listę kontrolną podobne do istniejących aplikacji prototypu. Za pomocą narzędzi Benchmarking można symulować obciążenia i mierzenie wydajności aplikacji prototypu. Zobacz sekcję dotyczącą [Benchmarking](#benchmarking) Aby dowiedzieć się więcej. Wykonując, dzięki czemu można określić, czy Usługa Premium Storage można dopasować lub pozwoliło wymagań dotyczących wydajności aplikacji. Następnie można zaimplementować te same wytyczne dla aplikacji produkcyjnych.
+Jeśli masz istniejącą aplikację i chcesz przenieść do usługi Premium Storage, należy najpierw utworzyć z listy kontrolnej zawierającej ponad istniejących aplikacji. Następnie tworzenie prototypów aplikacji w magazynie Premium Storage i projektowania aplikacji, w oparciu o wytycznymi opisany w *Optymalizowanie wydajności aplikacji* w dalszej części tego dokumentu. W następnym artykule opisano narzędzia, których można użyć w celu zbierania miar wydajności.
 
 ### <a name="counters-to-measure-application-performance-requirements"></a>Licznik do pomiaru wymagań dotyczących wydajności aplikacji
 
@@ -129,13 +119,15 @@ Liczniki Monitora wydajności są dostępne dla procesora, pamięci, a każdy dy
 
 Dowiedz się więcej o [iostat](https://linux.die.net/man/1/iostat) i [monitora wydajności](https://msdn.microsoft.com/library/aa645516.aspx).
 
-## <a name="optimizing-application-performance"></a>Optymalizacja wydajności aplikacji
+
+
+## <a name="optimize-application-performance"></a>Optymalizowanie wydajności aplikacji
 
 Główne czynniki wpływające na wydajność aplikacji uruchomionych na magazyn w warstwie Premium są charakter z operacji We/Wy żądania, rozmiar maszyny Wirtualnej, rozmiaru dysku, liczby dysków, dysk pamięci podręcznej, wielowątkowość i głębokość kolejki. Za pomocą pokrętła podał systemu, można kontrolować niektóre z tych czynników. Większość aplikacji może nie zapewniają możliwość bezpośrednio zmieniać rozmiar operacji We/Wy i głębokość kolejki. Na przykład jeśli używasz programu SQL Server, nie możesz wybrać głębokość rozmiar i kolejki we/wy. SQL Server wybiera optymalną we/wy rozmiar i kolejki głębokość wartości w celu uzyskania większość wydajności. Ważne jest zrozumienie wpływu oba rodzaje czynniki na wydajność aplikacji, aby aprowizować odpowiednich zasobów w celu spełnienia wymagań dotyczących wydajności.
 
 W tej sekcji dotyczą Lista kontrolna wymagań aplikacji, który został utworzony, aby zidentyfikować, ile należy zoptymalizować wydajność aplikacji. Oparte na tym, będzie możliwe ustalenie, jakie czynniki w tej sekcji należy dostosować. Aby Monitor wpływ każdy czynnik na wydajność aplikacji, należy uruchomić narzędzi porównawczych w ustawieniach aplikacji. Zapoznaj się [Benchmarking](#Benchmarking) sekcji na końcu tego artykułu kroków wspólnych narzędzi porównawczych systemem Windows i maszyn wirtualnych systemu Linux.
 
-### <a name="optimizing-iops-throughput-and-latency-at-a-glance"></a>Optymalizacja operacji We/Wy, przepustowości i opóźnień w skrócie
+### <a name="optimize-iops-throughput-and-latency-at-a-glance"></a>Optymalizacja operacji We/Wy, przepustowości i opóźnień w skrócie
 
 W poniższej tabeli podsumowano czynnikami wydajnościowymi i kroki niezbędne do optymalizacji operacji We/Wy, przepustowości i opóźnień. W sekcjach poniżej to podsumowanie opisano każdy czynnikiem jest znacznie bardziej szczegółowe informacje.
 
@@ -298,6 +290,46 @@ Na przykład można zastosować następujących wytycznych programu SQL Server u
 1. Konfigurowanie pamięci podręcznej "None" w przypadku dysków magazynu premium zawierających pliki dziennika.  
    a.  Pliki dziennika mają głównie operacje zapisu obciążenie. W związku z tym że nie korzystają z pamięci podręcznej tylko do odczytu.
 
+### <a name="optimize-performance-on-linux-vms"></a>Optymalizuj wydajność na maszynach wirtualnych z systemem Linux
+
+Dla wszystkich dysków SSD w warstwie premium lub ultra dysków z pamięcią podręczną równa **tylko do odczytu** lub **Brak**, należy wyłączyć "bariery", podczas instalacji systemu plików. Nie potrzebujesz barier w tym scenariuszu, ponieważ operacje zapisu do dysków magazynu premium storage są trwałe dla tych ustawień pamięci podręcznej Podczas żądania zapisu zakończy się pomyślnie, dane został zapisany w magazynie trwałym. Aby wyłączyć "bariery", użyj jednej z następujących metod. Wybierz jeden dla systemu plików:
+  
+* Aby uzyskać **reiserFS**, aby wyłączyć bariery, użyj `barrier=none` opcji instalacji. (Aby włączyć bariery, użyj `barrier=flush`.)
+* Aby uzyskać **ext3/ext4**, aby wyłączyć bariery, użyj `barrier=0` opcji instalacji. (Aby włączyć bariery, użyj `barrier=1`.)
+* Aby uzyskać **XFS**, aby wyłączyć bariery, użyj `nobarrier` opcji instalacji. (Aby włączyć bariery, użyj `barrier`.)
+* Dla usługi premium storage dysków z pamięcią podręczną równa **ReadWrite**, Włącz barier w celu zapewnienia trwałości zapisu.
+* Dla etykiety woluminu utrwalić po ponownym uruchomieniu maszyny Wirtualnej należy zaktualizować/etc/fstab z odwołaniami powszechnie Unikatowy identyfikator (UUID) na dyskach. Aby uzyskać więcej informacji, zobacz [Dodawanie dysku zarządzanego do maszyny Wirtualnej z systemem Linux](../articles/virtual-machines/linux/add-disk.md).
+
+Poniższe dystrybucje systemu Linux zostały zweryfikowane dla dysków SSD w warstwie premium. Gwarantujące wysoką wydajność i stabilność przy użyciu dysków SSD w warstwie premium zalecamy uaktualnienie maszyn wirtualnych, aby te wersje lub nowsze. 
+
+Najnowsze usługi LIS (Linux Integration), wersja 4.0, niektóre wersje wymagają dla platformy Azure. Aby pobrać i zainstalować dystrybucji, postępuj zgodnie z łączy wymienionych w poniższej tabeli. Obrazy możemy dodać do listy, podczas wykonywania sprawdzania poprawności. Nasze walidacji pokazują, że wydajność zmienia się dla każdego obrazu. Wydajność zależy od charakterystyki i ustawienia obrazu. Obrazy różnych dostosowanych do różnych rodzajów obciążeń.
+
+| Dystrybucja | Wersja | Obsługiwane jądra | Szczegóły |
+| --- | --- | --- | --- |
+| Ubuntu | 12.04 | 3.2.0-75.110+ | Ubuntu-12_04_5-LTS-amd64-server-20150119-en-us-30GB |
+| Ubuntu | 14.04 | 3.13.0-44.73+ | Ubuntu-14_04_1-LTS-amd64-server-20150123-en-us-30GB |
+| Debian | 7.x, 8.x | 3.16.7-ckt4-1+ | &nbsp; |
+| SUSE | SLES 12| 3.12.36-38.1+| suse-sles-12-priority-v20150213 <br> SUSE — w systemie sles-12-v20150213 |
+| SUSE | SLES 11 SP4 | 3.0.101-0.63.1+ | &nbsp; |
+| CoreOS | 584.0.0+| 3.18.4+ | CoreOS 584.0.0 |
+| CentOS | 6.5, 6.6, 6.7, 7.0 | &nbsp; | [LIS4 wymagane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
+| CentOS | 7.1+ | 3.10.0-229.1.2.el7+ | [LIS4 zalecane](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) <br> *Zobacz uwagi w następnej sekcji* |
+| Red Hat Enterprise Linux (RHEL) | 6.8+, 7.2+ | &nbsp; | &nbsp; |
+| Oracle | 6.0+, 7.2+ | &nbsp; | UEK4 lub RHCK |
+| Oracle | 7.0-7.1 | &nbsp; | UEK4 lub RHCK z[LIS 4.1 lub nowszym](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+| Oracle | 6.4-6.7 | &nbsp; | UEK4 lub RHCK z[LIS 4.1 lub nowszym](https://go.microsoft.com/fwlink/?LinkID=403033&clcid=0x409) |
+
+## <a name="lis-drivers-for-openlogic-centos"></a>Sterowników LIS systemie OpenLogic CentOS
+
+Jeśli korzystasz z maszyn wirtualnych z OpenLogic CentOS, uruchom następujące polecenie, aby zainstalować najnowsze sterowniki:
+
+```
+sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
+sudo yum install microsoft-hyper-v
+```
+
+Aby aktywować nowe sterowniki, uruchom ponownie maszynę Wirtualną.
+
 ## <a name="disk-striping"></a>Rozkładanie
 
 Przy dużej skali, które maszyna wirtualna jest połączona z kilku stałych dysków magazynu premium storage, dyski można paski ze sobą, aby agregować ich operacje We/Wy, przepustowości i pojemność magazynu.
@@ -363,249 +395,11 @@ Dla woluminu rozłożonego Obsługa głębokości kolejki wystarczająco wysoka,
 
 Zapisów systemu Azure Premium Storage określona liczba operacji We/Wy i Przepływność w zależności od rozmiarów maszyn wirtualnych i rozmiarach dysków, które wybierzesz. W dowolnym momencie Twoja aplikacja próbuje dysku na SEKUNDĘ lub przepływności powyżej tych limitów co maszyna wirtualna lub dysk może obsługiwać, będzie ograniczać usługi Premium Storage. To sytuacji, w postaci pogorszenie wydajności w aplikacji. To oznacza wyższe opóźnienie, obniżyć przepływności lub obniżyć operacje We/Wy. Jeśli Usługa Premium Storage nie ograniczać, aplikacji całkowicie może się nie powieść przekroczenia, co jej zasoby są w stanie osiągnięcia. Tak aby uniknąć problemów z wydajnością z powodu dławienia, zawsze aprowizować wystarczających zasobów dla aplikacji. Uwzględnia Omówiliśmy w sekcjach rozmiary dysków powyżej i rozmiarów maszyn wirtualnych. Analiza porównawcza to najlepszy sposób, aby zorientować się, jakie zasoby potrzebne do hostowania aplikacji.
 
-## <a name="benchmarking"></a>Benchmarking
+## <a name="next-steps"></a>Kolejne kroki
 
-Analiza porównawcza jest proces symulowanie różnych obciążeń w swojej aplikacji i pomiaru wydajności aplikacji dla poszczególnych obciążeń. Kroki opisane w wcześniejszej sekcji zostały zebrane wymagań dotyczących wydajności aplikacji. Uruchamiając narzędzi porównawczych dla maszyn wirtualnych hostujących aplikację, należy określić poziomów wydajności, które aplikacja może osiągnąć dzięki usłudze Premium Storage. W tej sekcji udostępniamy przykłady testów porównawczych standardowa DS14 maszyny Wirtualnej z systemem aprowizowane przy użyciu dysków usługi Premium Storage dla platformy Azure.
+Dowiedz się więcej na temat typów dostępnego miejsca na dysku:
 
-Odpowiednio użyliśmy typowych narzędzi porównawczych Iometer i FIO, Windows i Linux. Te narzędzia zduplikować wiele wątków, symulując produkcji, takich jak obciążenia, a zadaniem jest mierzenie wydajności systemu. Za pomocą narzędzi można również skonfigurować parametry, takie jak głębokość bloku rozmiaru i kolejki, które normalnie nie można zmienić dla aplikacji. Zapewnia większą elastyczność w przypadku dysków maksymalnej wydajności na dużą skalę maszyny Wirtualnej obsługiwane za pomocą dysków w warstwie premium dla różnego rodzaju obciążeń aplikacji. Aby dowiedzieć się więcej na temat każdego z narzędzi porównawczych odwiedź [Iometer](http://www.iometer.org/) i [FIO](http://freecode.com/projects/fio).
-
-Aby skorzystać z poniższych przykładów, Utwórz Maszynę wirtualną standardowa DS14 i Dołącz 11 dysków usługi Premium Storage do maszyny Wirtualnej. 11 dysków skonfiguruj 10 dysków z hostem pamięci podręcznej jako "None" i stripe ich na wolumin o nazwie NoCacheWrites. Skonfiguruj buforowanie jako "Tylko do odczytu" na pozostałe dysku hosta i Utwórz wolumin o nazwie CacheReads z tego dysku. Przy użyciu tej konfiguracji, można wyświetlić maksymalną wydajność odczytu i zapisu z standardowa DS14 maszyny Wirtualnej. Aby uzyskać szczegółowe instrukcje dotyczące tworzenia maszyny Wirtualnej DS14 z dysków w warstwie premium, przejdź do [tworzenie i korzystanie z usługi Premium Storage account dysku danych maszyny wirtualnej](../articles/virtual-machines/windows/premium-storage.md).
-
-*Trwa rozgrzewanie pamięci podręcznej*  
-Dysk z buforowania hosta tylko do odczytu będzie mógł przekazać wyższym operacje We/Wy niż limit na dysku. Aby uzyskać ten maksymalną wydajność odczytu z pamięci podręcznej hosta, najpierw należy musi przećwiczeniu podstawowych zadań pamięci podręcznej tego dysku. Daje to gwarancję, że odczytu z systemem IOs, narzędzie porównawczych, które będą miały na woluminie CacheReads faktycznie trafienia pamięci podręcznej i nie dysku bezpośrednio. Wynik trafień w pamięci podręcznej w dodatkowe operacje We/Wy z jednym pamięci podręcznej włączone dysku.
-
-> **Ważne:**  
-> Przed uruchomieniem testów porównawczych, za każdym razem, gdy maszyna wirtualna jest uruchamiana ponownie, musisz rozgrzewki pamięci podręcznej.
-
-#### <a name="iometer"></a>Iometer
-
-[Pobierz narzędzie Iometer](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na maszynie Wirtualnej.
-
-*Plik testu*  
-Iometer używa pliku testu, który znajduje się na woluminie, na którym będzie uruchomiona testów porównawczych. On dyski operacji odczytu i zapisu tego pliku testu, aby zmierzyć dysku, operacje We/Wy i przepływność. Iometer tworzy tego pliku testu, jeśli nie podano jeden. Utwórz plik testu 200GB o nazwie iobw.tst na woluminach CacheReads i NoCacheWrites.
-
-*Specyfikacja dostępu*  
-Rozmiar operacji We/Wy, % odczytu/zapisu żądania specyfikacje, % losowe/sekwencyjne są konfigurowane na karcie "Dostęp do specyfikacji" w Iometer. Utwórz specyfikację dostępu dla poszczególnych scenariuszy opisanych poniżej. Utwórz specyfikacje dostępu i "Zapisz" na preferowany nadaj nazwę takich jak — RandomWrites\_8 kilobajtów RandomReads\_8 kilobajtów. Wybierz odpowiedni specyfikację, podczas uruchamiania scenariusza testu.
-
-Poniżej przedstawiono przykład specyfikacji dostępu dla maksymalnej scenariusza operacje We/Wy zapisu  
-    ![](media/premium-storage-performance/image8.png)
-
-*Maksymalna liczba IOPS testu specyfikacji*  
-Aby zademonstrować maksymalna liczba IOPs, należy użyć mniejszego rozmiaru żądania. Rozmiar żądania 8K i Utwórz specyfikacje dotyczące losowego zapisu i odczytu.
-
-| Specyfikacja dostępu | Rozmiar żądania | % Losowe | % Odczytu |
-| --- | --- | --- | --- |
-| RandomWrites\_8K |8K |100 |0 |
-| RandomReads\_8 kilobajtów |8K |100 |100 |
-
-*Maksymalna przepływność testu specyfikacji*  
-Aby zademonstrować maksymalną przepływność, należy użyć większy rozmiar żądania. Użyj 64 KB, rozmiar żądań i Utwórz specyfikacje dotyczące losowego zapisu i odczytu.
-
-| Specyfikacja dostępu | Rozmiar żądania | % Losowe | % Odczytu |
-| --- | --- | --- | --- |
-| RandomWrites\_64K |64K |100 |0 |
-| RandomReads\_64 K |64K |100 |100 |
-
-*Uruchamianie testu Iometer*  
-Wykonaj poniższe kroki, aby rozgrzewki pamięci podręcznej
-
-1. Tworzenie dwóch specyfikacje dostępu przy użyciu wartości podanych poniżej,
-
-   | Name (Nazwa) | Rozmiar żądania | % Losowe | % Odczytu |
-   | --- | --- | --- | --- |
-   | RandomWrites\_1 MB |1MB |100 |0 |
-   | RandomReads\_1 MB |1MB |100 |100 |
-1. Uruchom test Iometer zainicjować dysk pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki wynoszącej 128. Ustaw czas trwania testu "Czas wykonywania" 2hrs na karcie "Setup testów".
-
-   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Czas trwania |
-   | --- | --- | --- | --- |
-   | Zainicjuj dysk pamięci podręcznej |CacheReads |RandomWrites\_1 MB |2hrs |
-1. Uruchom test Iometer rozgrzewania dysk pamięci podręcznej z następującymi parametrami. Użyj trzech wątków roboczych dla woluminu docelowego i głębokości kolejki wynoszącej 128. Ustaw czas trwania testu "Czas wykonywania" 2hrs na karcie "Setup testów".
-
-   | Scenariusz | Wolumin docelowy | Name (Nazwa) | Czas trwania |
-   | --- | --- | --- | --- |
-   | Rozgrzewanie dysk pamięci podręcznej |CacheReads |RandomReads\_1 MB |2hrs |
-
-Po dysk pamięci podręcznej jest przygotowaniu, Kontynuuj przy użyciu scenariuszy testowania wymienionych poniżej. Aby uruchomić Iometer test, należy użyć co najmniej trzech wątków roboczych dla **każdego** docelowy wolumin. Dla każdego wątku roboczego wybierz wolumin docelowy, Ustawia głębokość kolejki, a następnie wybierz jedną z specyfikacją zapisane badania, jak pokazano w poniższej tabeli, aby uruchomić odpowiedni scenariusz testów. W tabeli przedstawiono również oczekiwanych wyników na SEKUNDĘ i przepływność podczas uruchamiania tych testów. W przypadku wszystkich scenariuszy używany jest mały rozmiar operacji We/Wy o rozmiarze 8KB i wysoką głębokości 128.
-
-| Scenariusz testów | Wolumin docelowy | Name (Nazwa) | Wynik |
-| --- | --- | --- | --- |
-| Maksymalnie z Operacje odczytu We/Wy |CacheReads |RandomWrites\_8K |50 000 OPERACJI WE/WY |
-| Maksymalnie z Operacje We/Wy zapisu |NoCacheWrites |RandomReads\_8 kilobajtów |64 000 OPERACJI WE/WY |
-| Maksymalnie z Łączna liczba IOPS |CacheReads |RandomWrites\_8K |100 000 OPERACJI WE/WY |
-| NoCacheWrites |RandomReads\_8 kilobajtów | &nbsp; | &nbsp; |
-| Maksymalnie z Odczyt MB/s |CacheReads |RandomWrites\_64K |524 MB/s |
-| Maksymalnie z Zapis MB/s |NoCacheWrites |RandomReads\_64 K |524 MB/s |
-| Połączone MB/s |CacheReads |RandomWrites\_64K |1000 MB/s |
-| NoCacheWrites |RandomReads\_64 K | &nbsp; | &nbsp; |
-
-Poniżej przedstawiono zrzuty ekranu przedstawiające Iometer wyniki testu dla połączonych scenariuszach operacje We/Wy i przepływność.
-
-*Połączone odczyty i zapisy maksymalna liczba IOPS*  
-![](media/premium-storage-performance/image9.png)
-
-*Maksymalna przepływność połączone odczyty i zapisy*  
-![](media/premium-storage-performance/image10.png)
-
-### <a name="fio"></a>FIO
-
-FIO to popularne narzędzie do magazynu testów porównawczych na maszynach wirtualnych z systemem Linux. Ma wybrać różne rozmiary we/wy, sekwencyjnych lub losowych operacji odczytu i zapisu. Jej spowoduje utworzenie wątków roboczych i realizowania innych procesów do wykonywania określonej operacji We/Wy. Można określić typ operacji We/Wy każdego wątku roboczego należy wykonać przy użyciu plików zadania. Utworzyliśmy jeden plik zadania na scenariusz pokazano w poniższych przykładach. Możesz zmienić specyfikacji w tych plikach zadania przeprowadzenie testu porównawczego różnych obciążeń uruchomionych na usługę Premium Storage. W przykładach użyto standardowego DS 14 w maszyny Wirtualnej z systemem **Ubuntu**. Użyj tej samej konfiguracji opisanych na początku [testów porównawczych sekcji](#Benchmarking) i rozgrzewanie pamięci podręcznej przed uruchomieniem testów porównawczych.
-
-Przed przystąpieniem do wykonywania [Pobierz FIO](https://github.com/axboe/fio) i zainstaluj go na maszynie wirtualnej.
-
-Uruchom następujące polecenie na systemie Ubuntu
-
-```
-apt-get install fio
-```
-
-Będziemy używać cztery wątki robocze do obsługi operacji zapisu i cztery wątki robocze do jazdy operacji odczytu na dyskach. Procesy robocze zapisu będzie kierowania ruchu na wolumin "właściwość nocache", który zawiera dyski 10 z pamięcią podręczną równa "None". Procesy robocze odczytu będzie kierowania ruchu na wolumin "readcache", który zawiera dysk 1 z pamięci podręcznej ustawioną na "ReadOnly".
-
-*Maksymalna liczba zapisu na sekundę*  
-Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną zapisu operacji We/Wy. Nadaj mu nazwę "fiowrite.ini".
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=256
-ioengine=libaio
-bs=8k
-
-[writer1]
-rw=randwrite
-directory=/mnt/nocache
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-[writer4]
-rw=randwrite
-directory=/mnt/nocache
-```
-
-Należy pamiętać, postępuj zgodnie z rzeczy, które są tworzone są zalecenia dotyczące projektowania omówione w poprzednich sekcjach. W tych specyfikacjach są istotne dla maksymalnej operacje We/Wy dysku  
-
-* Głębokość kolejki o wysokiej 256.  
-* Małych blokach o rozmiarze 8 KB.  
-* Losowe zapisy wykonywanie wielu wątków.
-
-Uruchom następujące polecenie, aby uruchamiał testu FIO przez 30 sekund  
-
-```
-sudo fio --runtime 30 fiowrite.ini
-```
-
-Podczas wykonywania testu, będzie można zobaczyć liczbę zapisu na SEKUNDĘ maszyny Wirtualnej i dyski w warstwie Premium są dostarczane. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 jest dostarczanie jego zapisu maksymalny limit operacji We/Wy 50 000 operacji We/Wy.  
-    ![](media/premium-storage-performance/image11.png)
-
-*Maksymalny odczyt operacji We/Wy*  
-Utwórz plik zadania z następującymi specyfikacjami, aby uzyskać maksymalną operacje odczytu We/Wy. Nadaj mu nazwę "fioread.ini".
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=256
-ioengine=libaio
-bs=8k
-
-[reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
-```
-
-Należy pamiętać, postępuj zgodnie z rzeczy, które są tworzone są zalecenia dotyczące projektowania omówione w poprzednich sekcjach. W tych specyfikacjach są istotne dla maksymalnej operacje We/Wy dysku
-
-* Głębokość kolejki o wysokiej 256.  
-* Małych blokach o rozmiarze 8 KB.  
-* Losowe zapisy wykonywanie wielu wątków.
-
-Uruchom następujące polecenie, aby uruchamiał testu FIO przez 30 sekund
-
-```
-sudo fio --runtime 30 fioread.ini
-```
-
-Podczas wykonywania testu, będzie można zobaczyć liczba odczytanych na SEKUNDĘ maszyny Wirtualnej i dyski w warstwie Premium są dostarczane. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 świadczy ponad 64 000 operacji odczytu We/Wy. Jest to kombinacja dysku i wydajność pamięci podręcznej.  
-    ![](media/premium-storage-performance/image12.png)
-
-*Maksymalny Odczyt i zapis operacji We/Wy*  
-Utwórz plik zadania z następujących specyfikacji, aby uzyskać maksymalną połączone odczytu i zapisu na SEKUNDĘ. Nadaj mu nazwę "fioreadwrite.ini".
-
-```ini
-[global]
-size=30g
-direct=1
-iodepth=128
-ioengine=libaio
-bs=4k
-
-[reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
-
-[writer1]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer4]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-```
-
-Należy pamiętać, postępuj zgodnie z rzeczy, które są tworzone są zalecenia dotyczące projektowania omówione w poprzednich sekcjach. W tych specyfikacjach są istotne dla maksymalnej operacje We/Wy dysku
-
-* Głębokość kolejki o wysokiej 128.  
-* Małych blokach o rozmiarze 4 KB.  
-* Wiele wątków, wykonując losowych operacji odczytu i zapisu.
-
-Uruchom następujące polecenie, aby uruchamiał testu FIO przez 30 sekund
-
-```
-sudo fio --runtime 30 fioreadwrite.ini
-```
-
-Podczas wykonywania testu, będzie można zobaczyć liczbę połączonych odczytu i zapisu na SEKUNDĘ maszyny Wirtualnej, a dyski w warstwie Premium są dostarczane. Jak pokazano w poniższym przykładzie, maszyna wirtualna DS14 świadczy ponad 100 000 połączone odczytu i zapisu na SEKUNDĘ. Jest to kombinacja dysku i wydajność pamięci podręcznej.  
-    ![](media/premium-storage-performance/image13.png)
-
-*Maksymalny łączny przepływności*  
-Aby uzyskać maksymalną połączone odczytu i zapisu przepływności, większy rozmiar bloku i dużych głębokości za pomocą wielu wątków, wykonywanie operacji odczytu i zapisu. Można użyć blok o rozmiarze 64 KB i głębokości kolejki wynoszącej 128.
-
-## <a name="next-steps"></a>Następne kroki
-
-Dowiedz się więcej na temat usługi Azure Premium Storage:
-
-* [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads (Usługa Storage w wersji Premium: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure)](../articles/virtual-machines/windows/premium-storage.md)  
+* [Wybierz typ dysku](../articles/virtual-machines/windows/disks-types.md)  
 
 Dla użytkowników programu SQL Server zapoznaj się z artykułami na najlepsze rozwiązania w zakresie wydajności dla programu SQL Server:
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: zarhoads
 ms.custom: include file
-ms.openlocfilehash: 231dcee1a9b330b2f8721283c39c71002a75fcac
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: fb296236fb73823690175b12f4e07c05b60cdbcf
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49476297"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56333955"
 ---
 # <a name="regions-and-availability-for-virtual-machines-in-azure"></a>Regiony i dostępność maszyn wirtualnych na platformie Azure
 Platforma Azure działa w wielu centrach danych na całym świecie. Te centra danych są grupowane w regiony geograficzne, dzięki czemu można elastycznie wybierać miejsca do kompilowania aplikacji. Ważne jest, aby zrozumieć, jak i gdzie maszyny wirtualne działają na platformie Azure, a także poznać opcje maksymalizowania wydajności, dostępności i nadmiarowości. Ten artykuł zawiera omówienie funkcji dostępności i nadmiarowości platformy Azure.
@@ -92,7 +92,7 @@ Ceny różnią się w zależności od wybranego typu magazynu i dostępności.
 Zobacz [Cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/), aby uzyskać informacje na temat różnych typów magazynów i opcji dostępności.
 
 ## <a name="availability-sets"></a>Zestawy dostępności
-Zestaw dostępności to logiczne grupowanie maszyn wirtualnych w obrębie centrum danych, który umożliwia platformie Azure zrozumienie sposobu kompilacji aplikacji w celu zapewnienia nadmiarowości i dostępności. Zaleca się, że co najmniej dwie maszyny wirtualne są tworzone w zestawie w celu zapewnienia wysokiej dostępności aplikacji i w celu spełnienia dostępności [99,95% umowy SLA platformy Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Nie ma żadnych kosztów dla zestawu dostępności się, zapłacisz tylko za każdym wystąpieniu maszyny Wirtualnej, którą tworzysz. Jeśli pojedyncza maszyna wirtualna korzysta z usługi [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md), w przypadku zdarzeń nieplanowanej konserwacji obowiązuje umowa SLA platformy Azure. 
+Zestaw dostępności to logiczne grupowanie maszyn wirtualnych w obrębie centrum danych, który umożliwia platformie Azure zrozumienie sposobu kompilacji aplikacji w celu zapewnienia nadmiarowości i dostępności. Zaleca się, że co najmniej dwie maszyny wirtualne są tworzone w zestawie w celu zapewnienia wysokiej dostępności aplikacji i w celu spełnienia dostępności [99,95% umowy SLA platformy Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/). Nie ma żadnych kosztów dla zestawu dostępności się, zapłacisz tylko za każdym wystąpieniu maszyny Wirtualnej, którą tworzysz. Gdy używa pojedynczej maszyny Wirtualnej [Azure — wersja premium SSD](../articles/virtual-machines/windows/disks-types.md#premium-ssd), umowy SLA platformy Azure mają zastosowanie w przypadku zdarzeń nieplanowanej konserwacji.
 
 Zestaw dostępności składa się z dwa dodatkowe grupowania, które chronią przed awariami sprzętu i zezwala na aktualizacje, które można bezpiecznie stosowane — błędów domenach i Aktualizacja domeny. Zapoznaj się z dodatkowymi informacjami na temat zarządzania dostępnością [maszyn wirtualnych z systemem Linux](../articles/virtual-machines/linux/manage-availability.md) lub [maszyn wirtualnych z systemem Windows](../articles/virtual-machines/windows/manage-availability.md).
 
