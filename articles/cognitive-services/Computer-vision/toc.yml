@@ -98,12 +98,12 @@ items:
       href: quickstarts-sdk/csharp-thumb-sdk.md
     - name: Wyodrębnij tekst
       href: quickstarts-sdk/csharp-hand-text-sdk.md
+  - name: Używanie zestawu Python SDK
+    href: quickstarts-sdk/python-sdk.md
 - name: Samouczki
   items:
   - name: Pobieranie metadanych dla obrazów platformy Azure
     href: Tutorials/storage-lab-tutorial.md
-  - name: Tworzenie aplikacji do przetwarzania obrazów
-    href: Tutorials/CSharpTutorial.md
 - name: Pojęcia
   items:
   - name: Tagowanie obrazów
@@ -183,7 +183,11 @@ items:
 - name: Zasoby
   items:
   - name: Przykłady
-    href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
+    items:
+    - name: Zapoznanie z aplikacją do przetwarzania obrazów
+      href: Tutorials/CSharpTutorial.md
+    - name: Inne przykłady przetwarzania obrazów
+      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision
   - name: Często zadawane pytania
     href: FAQ.md
   - name: Ceny i limity
@@ -198,9 +202,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=cognitive-services
   - name: Dostępność regionalna
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 700b14c16f1016a403fdf15972cc52021135c64a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 30b8a6937bafc469c4135a899af56277b4f3a9eb
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562355"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310722"

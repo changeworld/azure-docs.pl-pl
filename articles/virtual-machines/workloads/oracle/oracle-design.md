@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: d4c0bbdfb1afcef33727ba4b5b432c5de79168d4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495224"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327514"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Projektowanie i implementacja bazy danych Oracle na platformie Azure
 
@@ -46,7 +46,7 @@ Poniższa lista zawiera niektóre różnice między implementację w środowisku
 > 
 > |  | **Wdrożenia w środowisku lokalnym** | **Wdrożenia platformy Azure** |
 > | --- | --- | --- |
-> | **Sieć** |SIECI LAN/WAN  |SDN (Sdn)|
+> | **Sieć** |LAN/WAN  |SDN (Sdn)|
 > | **Grupy zabezpieczeń** |Narzędzia ograniczenia adresu IP i portu |[Sieciowa grupa zabezpieczeń (NSG)](https://azure.microsoft.com/blog/network-security-groups) |
 > | **Odporność na błędy** |MTBF (średniego czasu między awariami) |MTTR (średniego czasu odzyskiwania)|
 > | **Planowana konserwacja** |Stosowanie poprawek bądź uaktualnień|[Zestawy dostępności](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines) (poprawki bądź uaktualnień zarządzane przez platformę Azure) |
@@ -131,7 +131,7 @@ Na poniższym diagramie przedstawiono relację między przepływność i operacj
 ![Zrzut ekranu przedstawiający przepływność](./media/oracle-design/throughput.png)
 
 Przepływność sieci całkowita jest szacowany na podstawie następujących informacji:
-- SQL * Net ruchu
+- SQL*Net traffic
 - MB/s x liczba serwerów (wychodzące strumień takich jak środowiska Oracle Data Guard)
 - Inne czynniki, takie jak replikacji aplikacji
 
@@ -146,19 +146,17 @@ Oparte na Twoje wymagania dotyczące przepustowości sieci, istnieją różne ty
 
 ### <a name="disk-types-and-configurations"></a>Typy dysków i konfiguracji
 
-- *Domyślne dyski systemu operacyjnego*: następujące typy dysków oferują trwałych danych i buforowania. Są zoptymalizowane pod kątem dostępu systemu operacyjnego podczas uruchamiania i nie są przeznaczone dla jednej transakcji lub magazynu danych obciążenia (analityczne).
+- *Domyślne dyski systemu operacyjnego*: Te typy dysków oferują trwałych danych i buforowania. Są zoptymalizowane pod kątem dostępu systemu operacyjnego podczas uruchamiania i nie są przeznaczone dla jednej transakcji lub magazynu danych obciążenia (analityczne).
 
-- *Niezarządzane dyski*: za pomocą te typy dysków zarządzanych kont magazynu, które przechowują pliki wirtualnego dysku twardego (VHD), które odpowiadają dysków maszyn wirtualnych. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu Azure.
+- *Niezarządzane dyski*: W przypadku tych typów dysku możesz zarządzać kont magazynu, które przechowują pliki wirtualnego dysku twardego (VHD), które odpowiadają dysków maszyn wirtualnych. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu Azure.
 
-- *Usługa Managed disks*: platforma Azure zarządza kont magazynu, których używasz dla dysków maszyny Wirtualnej. Należy określić typ dysku (premium lub standardowa) i rozmiar dysku, które są potrzebne. Platforma Azure tworzy i zarządza dysku.
+- *Usługa Managed disks*: Platforma Azure zarządza kont magazynu, których używasz dla dysków maszyny Wirtualnej. Należy określić typ dysku (premium lub standardowa) i rozmiar dysku, które są potrzebne. Platforma Azure tworzy i zarządza dysku.
 
-- *Dysków magazynu Premium storage*: następujące typy dysków są najbardziej odpowiednie dla obciążeń produkcyjnych. Usługa Premium storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne z serii, takie jak maszyny wirtualne z serii DS, DSv2, GS i F. Dysku w warstwie premium jest dostarczany z różnych rozmiarów i możesz wybrać między dyskami w zakresie od 32 GB do 4096 GB. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej.
+- *Dysków magazynu Premium storage*: Te typy dysków są najbardziej odpowiednie dla obciążeń produkcyjnych. Usługa Premium storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne z serii, takie jak maszyny wirtualne z serii DS, DSv2, GS i F. Dysku w warstwie premium jest dostarczany z różnych rozmiarów i możesz wybrać między dyskami w zakresie od 32 GB do 4096 GB. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej.
 
 Po utworzeniu nowego dysku zarządzanego z poziomu portalu można wybrać **typ konta** dla typu dysku, którego chcesz użyć. Należy pamiętać, że nie wszystkie dostępne dyski są wyświetlane w menu rozwijanym. Po wybraniu określonego rozmiaru maszyny Wirtualnej, w menu pojawia się tylko magazyn premium dostępne jednostki SKU, które są oparte na tego rozmiaru maszyny Wirtualnej.
 
 ![Zrzut ekranu przedstawiający stronę dysku zarządzanego](./media/oracle-design/premium_disk01.png)
-
-Aby uzyskać więcej informacji, zobacz [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](https://docs.microsoft.com/azure/storage/storage-premium-storage).
 
 Po skonfigurowaniu magazynu na maszynie Wirtualnej, można załadować testu z dysków przed utworzeniem bazy danych. Znajomość szybkości operacji We/Wy pod kątem opóźnienia i przepływności może pomóc ustalić, czy maszyny wirtualne obsługuje oczekiwanej przepływności o wartości docelowe opóźnienia.
 
@@ -190,17 +188,15 @@ Po utworzeniu jasny obraz wymagań dotyczących operacji We/Wy, możesz wybrać 
 
 Istnieją trzy opcje buforowania hosta:
 
-- *Tylko do odczytu*: wszystkie żądania są buforowane dla przyszłych operacji odczytu. Wszystkie operacje zapisu są zachowywane bezpośrednio do usługi Azure Blob storage.
+- *Tylko do odczytu*: Wszystkie żądania są buforowane dla przyszłych operacji odczytu. Wszystkie operacje zapisu są zachowywane bezpośrednio do usługi Azure Blob storage.
 
-- *Odczyt zapis*: jest to algorytmów "odczytu z wyprzedzeniem". Odczyty i zapisy są buforowane dla przyszłych operacji odczytu. Non-write-through zapisy są zachowywane najpierw do lokalnej pamięci podręcznej. Dla programu SQL Server zapisy są zachowywane do usługi Azure Storage, ponieważ używa ona write-through. Umożliwia także najmniejszego opóźnienia dysku dla niewielkich obciążeń.
+- *Odczyt zapis*: Jest to algorytmów "odczytu z wyprzedzeniem". Odczyty i zapisy są buforowane dla przyszłych operacji odczytu. Non-write-through zapisy są zachowywane najpierw do lokalnej pamięci podręcznej. Dla programu SQL Server zapisy są zachowywane do usługi Azure Storage, ponieważ używa ona write-through. Umożliwia także najmniejszego opóźnienia dysku dla niewielkich obciążeń.
 
-- *Brak* (wyłączone): za pomocą tej opcji, można pominąć pamięci podręcznej. Wszystkie dane są przesyłane na dysku i utrwalone w usłudze Azure Storage. Ta metoda zapewnia najwyższej szybkości operacji We/Wy dla obciążeń intensywnie korzystających z operacji We/Wy. Należy również wziąć pod uwagę "Koszt transakcji".
+- *Brak* (wyłączone): Za pomocą tej opcji, można pominąć pamięci podręcznej. Wszystkie dane są przesyłane na dysku i utrwalone w usłudze Azure Storage. Ta metoda zapewnia najwyższej szybkości operacji We/Wy dla obciążeń intensywnie korzystających z operacji We/Wy. Należy również wziąć pod uwagę "Koszt transakcji".
 
 **Zalecenia**
 
 Aby zmaksymalizować przepływność, zalecamy rozpoczęcie od **Brak** dla buforowania hosta. Dla usługi Premium Storage, należy pamiętać o tym, czy należy wyłączyć "bariery" podczas instalacji systemu plików za pomocą **tylko do odczytu** lub **Brak** opcje. O identyfikatorze UUID na dyskach, należy zaktualizować plik/etc/fstab.
-
-Aby uzyskać więcej informacji, zobacz [Usługa Premium Storage dla maszyn wirtualnych systemu Linux](https://docs.microsoft.com/azure/storage/storage-premium-storage#premium-storage-for-linux-vms).
 
 ![Zrzut ekranu przedstawiający stronę dysku zarządzanego](./media/oracle-design/premium_disk02.png)
 
@@ -215,14 +211,14 @@ Po zapisaniu ustawień dysku danych nie można zmienić ustawienie pamięci podr
 
 Po skonfigurowaniu i skonfigurować środowisko platformy Azure, następnym krokiem jest, aby zabezpieczyć swoją sieć. Poniżej przedstawiono kilka zaleceń:
 
-- *Zasady sieciowej grupy zabezpieczeń*: sieciowej grupy zabezpieczeń mogą zostać zdefiniowane przez podsieci lub karty sieciowej. Jest łatwiejsze w celu kontroli dostępu na poziomie podsieci, zarówno dla zabezpieczeń i wymuszanie routingu dla elementów, takich jak zapory aplikacji.
+- *Zasady sieciowej grupy zabezpieczeń*: Sieciowa grupa zabezpieczeń, można zdefiniować, podsieci lub karty sieciowej. Jest łatwiejsze w celu kontroli dostępu na poziomie podsieci, zarówno dla zabezpieczeń i wymuszanie routingu dla elementów, takich jak zapory aplikacji.
 
-- *Serwer Przesiadkowy*: bardziej bezpiecznego dostępu, Administratorzy nie należy bezpośrednio łączyć usługi aplikacji lub bazy danych. Serwer przesiadkowy jest używany jako nośniki między komputerem administratora i zasobów platformy Azure.
+- *Serwer Przesiadkowy*: Na potrzeby bardziej bezpiecznego dostępu administratorów nie należy bezpośrednio łączyć do aplikacji usługi lub bazy danych. Serwer przesiadkowy jest używany jako nośniki między komputerem administratora i zasobów platformy Azure.
 ![Zrzut ekranu przedstawiający stronę topologia serwera Przesiadkowego](./media/oracle-design/jumpbox.png)
 
     Adresów IP z ograniczeniami dostępu do serwera przesiadkowego tylko powinno oferować się w komputerze administratora. Serwer przesiadkowy powinien mieć dostęp do aplikacji i baz danych.
 
-- *Sieć prywatna* (podsieci): zaleca się, że masz usługi aplikacji i bazy danych w różnych podsieciach, więc lepszą kontrolę, można ustawić przez zasady sieciowej grupy zabezpieczeń.
+- *Sieć prywatna* (podsieci): Zaleca się, że masz usługi aplikacji i bazy danych w różnych podsieciach, więc lepszą kontrolę, można ustawić przez zasady sieciowej grupy zabezpieczeń.
 
 
 ## <a name="additional-reading"></a>Materiały uzupełniające

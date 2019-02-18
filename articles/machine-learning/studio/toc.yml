@@ -109,7 +109,7 @@ items:
   - name: Wdrażanie modeli
     items:
     - name: Wdrażanie usługi internetowej
-      displayName: publish
+      displayName: publish, multiple regions
       href: publish-a-machine-learning-web-service.md
     - name: Jak to działa
       href: model-progression-experiment-to-web-service.md
@@ -118,9 +118,6 @@ items:
     - name: Korzystanie z danych zewnętrznych
       displayName: import, export
       href: web-services-that-use-import-export-modules.md
-    - name: Wdrażanie w wielu regionach
-      displayName: multiple regions
-      href: how-to-deploy-to-multiple-regions.md
     - name: Korzystanie z parametrów usług internetowych
       href: web-service-parameters.md
     - name: Włącz rejestrowanie
@@ -133,17 +130,14 @@ items:
       displayName: endpoint, endpoints
       href: manage-web-service-endpoints-using-api-management.md
     - name: Tworzenie punktów końcowych
+      displayName: scale, scaling
       href: create-endpoint.md
-    - name: Skalowanie
-      href: scaling-webservice.md
   - name: Ponowne szkolenie modeli
     items:
-    - name: Omówienie
+    - name: Ponowne trenowanie i wdrażanie nowej usługi internetowej
       href: retrain-machine-learning-model.md
-    - name: Ponowne szkolenie istniejącej usługi internetowej
-      href: retrain-existing-resource-manager-based-web-service.md
-    - name: Rozwiązywanie problemów
-      href: troubleshooting-retraining-models.md
+    - name: Ponowne trenowanie i wdrażanie klasycznej usługi internetowej
+      href: retrain-classic-web-service.md
   - name: Korzystanie z modeli
     items:
     - name: Omówienie
@@ -194,9 +188,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Niestandardowe sieci neuronowe (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: c9bbcd35f74e113c33ef0a8b449d806734501324
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c6d072a6e032fb4059b422d0778eb78b01d3706e
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56266871"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327684"

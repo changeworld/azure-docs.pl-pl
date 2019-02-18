@@ -99,20 +99,13 @@ items:
   - name: Konserwacja i aktualizacje
     href: maintenance-and-updates.md
   - name: Przechowywanie na dysku
-    href: about-disks-and-vhds.md
     items:
-    - name: Managed Disks
+    - name: Wprowadzenie do dysków zarządzanych
       href: managed-disks-overview.md
-    - name: Dyski SSD w warstwie Premium
-      href: premium-storage.md
-    - name: Dyski SSD w warstwie Standardowa
-      href: disks-standard-ssd.md
-    - name: Dyski Ultra SSD
-      href: disks-ultra-ssd.md
-    - name: Wydajność usługi Premium Storage
+    - name: Wybieranie typu dysku dla maszyn wirtualnych IaaS
+      href: disks-types.md
+    - name: Projektowanie pod kątem wysokiej wydajności
       href: premium-storage-performance.md
-    - name: Standard Storage
-      href: standard-storage.md
     - name: Wartości docelowe skalowalności dysków
       href: disk-scalability-targets.md
     - name: Kopia zapasowa i odzyskiwanie po awarii dla dysków
@@ -426,6 +419,8 @@ items:
         href: add-disk.md
       - name: Azure Portal
         href: attach-disk-portal.md
+    - name: Test porównawczy dysku
+      href: disks-benchmarks.md
     - name: Odłączanie dysku
       href: detach-disk.md
     - name: Zmienianie rozmiaru dysku
@@ -450,7 +445,7 @@ items:
       href: using-managed-disks-template-deployments.md
     - name: Używanie akceleratora zapisu
       href: how-to-enable-write-accelerator.md
-    - name: Włączanie dysków Ultra SSD
+    - name: Włączanie dysków ultra
       href: disks-enable-ultra-ssd.md
     - name: Optymalizowanie wydajności
       href: optimization.md
@@ -562,9 +557,9 @@ items:
     href: faq.md
 - name: Rozwiązywanie problemów
   href: ../troubleshooting/index.md
-ms.openlocfilehash: 5a154ba0022a73b8acf9ded071ccfb13e62b7509
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 3c7ef0b41167e396828063950a63574ad5b3a7c9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299150"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330804"

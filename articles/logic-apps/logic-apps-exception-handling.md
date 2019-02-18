@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686266"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308727"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Obsługa błędów i wyjątków w usłudze Azure Logic Apps
 
@@ -29,12 +29,12 @@ Najbardziej podstawowa wyjątku oraz obsługi błędów, można użyć *zasady p
 
 Poniżej przedstawiono typy zasad ponawiania prób: 
 
-| Typ | Opis | 
+| Type | Opis | 
 |------|-------------| 
-| [**Domyślne**](#default-retry) | Ta zasada wysyła do czterech ponownych prób na [ *wykładniczo zwiększa* ](#exponential-retry) interwałów, które możesz zmieniać skalę, 7.5 sekund, ale są ograniczone do zakresu od 5 do 45 sekund. | 
-| [**Interwał wykładniczy**](#exponential-retry)  | Ta zasada czeka losowo wybranym interwałem wybrane z wykładniczo rosnącym zakresu przed wysłaniem następnego żądania. | 
-| [**Stały interwał**](#fixed-retry)  | Ta zasada czeka przez określony przed wysłaniem następnego żądania. | 
-| [**Brak**](#no-retry)  | Nie ponownie wysłać żądanie. | 
+| **Domyślne** | Ta zasada wysyła do czterech ponownych prób na *wykładniczo zwiększa* interwałów, które możesz zmieniać skalę, 7.5 sekund, ale są ograniczone do zakresu od 5 do 45 sekund. | 
+| **Interwał wykładniczy**  | Ta zasada czeka losowo wybranym interwałem wybrane z wykładniczo rosnącym zakresu przed wysłaniem następnego żądania. | 
+| **Stały interwał**  | Ta zasada czeka przez określony przed wysłaniem następnego żądania. | 
+| **Brak**  | Nie ponownie wysłać żądanie. | 
 ||| 
 
 Aby uzyskać informacji dotyczących ograniczeń zasad ponawiania, zobacz [Logic Apps, limity i Konfiguracja](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -71,19 +71,19 @@ Lub można ręcznie określić zasady ponawiania w `inputs` sekcji akcję lub wy
 
 *Wymagane*
 
-| Wartość | Typ | Opis |
+| Wartość | Type | Opis |
 |-------|------|-------------|
-| <*Typ zasad ponawiania*> | Ciąg | Typ zasad ponawiania, którego chcesz użyć: `default`, `none`, `fixed`, lub `exponential` | 
-| <*Interwał ponawiania prób*> | Ciąg | Interwał ponawiania, w którym należy użyć wartości [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimalna odbywa się domyślnie `PT5S` i maksymalny interwał `PT1D`. Gdy używasz zasady o interwale wykładniczym, można określić różne wartości minimalne i maksymalne. | 
-| <*ponownych prób*> | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
+| <*retry-policy-type*> | String | Typ zasad ponawiania, którego chcesz użyć: `default`, `none`, `fixed`, lub `exponential` | 
+| <*retry-interval*> | String | Interwał ponawiania, w którym należy użyć wartości [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). Minimalna odbywa się domyślnie `PT5S` i maksymalny interwał `PT1D`. Gdy używasz zasady o interwale wykładniczym, można określić różne wartości minimalne i maksymalne. | 
+| <*retry-attempts*> | Liczba całkowita | Liczba ponownych prób, które musi należeć do zakresu od 1 do 90 | 
 ||||
 
 *Opcjonalne*
 
-| Wartość | Typ | Opis |
+| Wartość | Type | Opis |
 |-------|------|-------------|
-| <*minimalny interwał*> | Ciąg | Dla zasady o interwale wykładniczym, najmniejszy interwał losowo wybranych interwału w [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
-| <*Maksymalny interwał*> | Ciąg | Dla zasady o interwale wykładniczym, największy interwał losowo wybranych interwał w [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*minimum-interval*> | String | Dla zasady o interwale wykładniczym, najmniejszy interwał losowo wybranych interwału w [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
+| <*maximum-interval*> | String | Dla zasady o interwale wykładniczym, największy interwał losowo wybranych interwał w [formatu ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) | 
 |||| 
 
 Poniżej przedstawiono więcej informacji na temat typów inne zasady.

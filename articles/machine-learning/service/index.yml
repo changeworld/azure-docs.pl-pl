@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4b66f79e415be8f9598a0e6f5c875d8a2597514
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 46457711c1611e614f89a813b1856687beb27ac7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300027"
+ms.locfileid: "56311457"
 documentType: LandingData
 title: Dokumentacja usługi Azure Machine Learning
 metadata:
@@ -17,26 +17,26 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 1/30/2019
+  ms.date: 2/15/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do szybkiego tworzenia, trenowania i wdrażania modeli uczenia maszynowego. Zautomatyzowane uczenie maszynowe pozwala szybciej identyfikować algorytmy i dostrajać hiperparametry. Używaj usługi Azure DevOps na potrzeby uczenia maszynowego oraz środowiska obliczeniowego z automatycznym skalowaniem w celu zwiększenia produktywności. Korzystaj z tych możliwości ze środowiska języka Python za pośrednictwem platform typu open source, takich jak PyTorch, TensorFlow i scikit-learn, oraz zestawów SDK. Dowiedz się, jak to robić, korzystając z naszych przewodników Szybki start i samouczków.
+  description: Usługa Azure Machine Learning Service zapewnia środowisko w chmurze, które służy do szybkiego przygotowywania danych oraz trenowania i wdrażania modeli uczenia maszynowego. Zautomatyzowane uczenie maszynowe pozwala szybciej identyfikować algorytmy i dostrajać hiperparametry. Podnieś produktywność, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn, oraz zestawów SDK usługi. Rozpocznij pracę dzięki przewodnikom Szybki start i samouczkom.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: 'Aby używać tej usługi, potrzebujesz obszaru roboczego i skojarzonych zasobów.  Wprowadzenie:'
+    text: 'Aby używać tej usługi, potrzebujesz obszaru roboczego i skojarzonych zasobów.  Rozpocznij pracę, korzystając z następujących zasobów:'
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-get-started">Użyj samouczka Szybki start na temat witryny Azure Portal</a>, aby uzyskać obszar roboczy i uruchomić eksperyment bez instalowania czegokolwiek.
-    - html: <a href="quickstart-create-workspace-with-python">Użyj przewodnika Szybki start dotyczącego języka Python</a>, aby zainstalować główny zestaw SDK, utworzyć obszar roboczy i uruchomić eksperyment na lokalnym serwerze notesów.
+    - html: '<a href="quickstart-get-started">Przewodnik Szybki start na temat witryny Azure Portal</a>: uzyskaj obszar roboczy i uruchamiaj eksperymenty bez instalowania czegokolwiek.'
+    - html: '<a href="quickstart-create-workspace-with-python">Przewodnik Szybki start dotyczący języka Python</a>: zainstaluj główny zestaw SDK, utwórz obszar roboczy i eksperymentuj na lokalnym serwerze notesów.'
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: 'Dowiedz się, jak przygotować dane, skonfigurować eksperymenty i operacjonalizować modele uczenia maszynowego:'
+    text: 'Dowiedz się, jak przygotować dane, skonfigurować eksperymenty oraz trenować i operacjonalizować modele uczenia maszynowego:'
   - type: list
     style: unordered
     items:

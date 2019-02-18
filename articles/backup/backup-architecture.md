@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: raynew
-ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4f26c805c42f027409127232fcfef9840939e8d9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812569"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329187"
 ---
 # <a name="azure-backup-architecture"></a>Architektura usługi Azure Backup
 
@@ -175,8 +175,8 @@ Wykonywanie kopii zapasowych deduplikowanych dysków | | | ![Częściowo][yellow
 
 Dowiedz się więcej:
 
-- Dowiedz się więcej na temat magazynu dyskowego dla [Windows](../virtual-machines/windows/about-disks-and-vhds.md) i [Linux](../virtual-machines/linux/about-disks-and-vhds.md) maszyn wirtualnych.
-- Dowiedz się więcej o [standardowa](../virtual-machines/windows/standard-storage.md) i [premium](../virtual-machines/windows/premium-storage.md) magazynu.
+- Dowiedz się więcej na temat magazynu dyskowego dla [Windows](../virtual-machines/windows/managed-disks-overview.md) i [Linux](../virtual-machines/linux/managed-disks-overview.md) maszyn wirtualnych.
+- Dowiedz się więcej o dostępnych [typów dysków](../virtual-machines/windows/disks-types.md) np. standard i premium.
 
 
 ### <a name="backing-up-and-restoring-azure-vms-with-premium-storage"></a>Tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy Azure dzięki usłudze premium storage 
@@ -184,9 +184,9 @@ Dowiedz się więcej:
 Można utworzyć kopię zapasową maszyn wirtualnych platformy Azure z usługą Azure Backup przy użyciu usługi premium storage:
 
 - Podczas wykonywania kopii zapasowych maszyn wirtualnych dzięki usłudze premium storage, usługa Backup tworzy tymczasową lokalizację, o nazwie "AzureBackup-" na koncie magazynu. Rozmiar lokalizacji przejściowej jest równy rozmiarowi migawki punktu odzyskiwania.
-- Upewnij się, że konta usługi premium storage ma odpowiednią ilością wolnego miejsca do obsługi tymczasowej lokalizacji przejściowej. [Dowiedz się więcej](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets). Nie należy modyfikować lokalizacji tymczasowej.
+- Upewnij się, że konta usługi premium storage ma odpowiednią ilością wolnego miejsca do obsługi tymczasowej lokalizacji przejściowej. [Dowiedz się więcej](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits). Nie należy modyfikować lokalizacji tymczasowej.
 - Po zakończeniu zadania tworzenia kopii zapasowej Lokalizacja tymczasowa zostanie usunięta.
-- Cena przestrzeni dyskowej użytej do lokalizacji tymczasowej jest zgodna z [cennikiem usługi premium storage](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
+- Cena przestrzeni dyskowej użytej do lokalizacji tymczasowej jest zgodna z [cennikiem usługi premium storage](../virtual-machines/windows/disks-types.md#billing).
 
 Po przywróceniu maszyn wirtualnych platformy Azure przy użyciu usługi premium storage można przywrócić je do wersji premium lub magazynu w warstwie standardowa. Zwykle będzie przywrócić do warstwy premium, ale może być opłacalne można przywrócić do warstwy standardowa, jeśli potrzebujesz tylko podzbiór plików z maszyny Wirtualnej.
 

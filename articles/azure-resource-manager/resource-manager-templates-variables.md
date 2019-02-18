@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 50feca90d375d6afd3b04afe019ad9f9025f19dc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712750"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308584"
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Sekcję zmiennych szablonów usługi Azure Resource Manager
 W sekcji zmiennych konstruujesz wartości, których można użyć w szablonie. Nie trzeba zdefiniować zmienne, ale często upraszczają działania do szablonu, zmniejszając złożonych wyrażeń.
@@ -58,9 +58,7 @@ Poprzedni przykład pokazano sposób definiowania zmiennej. Można użyć dowoln
             {
                 "name": "<name-of-array-property>",
                 "count": <number-of-iterations>,
-                "input": {
-                    <properties-to-repeat>
-                }
+                "input": <object-or-value-to-repeat>
             }
         ]
     },
@@ -68,9 +66,7 @@ Poprzedni przykład pokazano sposób definiowania zmiennej. Można użyć dowoln
         {
             "name": "<variable-array-name>",
             "count": <number-of-iterations>,
-            "input": {
-                <properties-to-repeat>
-            }
+            "input": <object-or-value-to-repeat>
         }
     ]
 }
@@ -117,38 +113,45 @@ Możesz pobrać bieżące ustawienia za pomocą:
 
 ## <a name="use-copy-element-in-variable-definition"></a>Użyj elementu kopii w definicji zmiennej
 
-Możesz użyć **kopiowania** składni, aby utworzyć zmienną z tablicą z kilku elementów. Wynik jest przewidzieć liczbę elementów. Każdy element zawiera właściwości w ramach **wejściowych** obiektu. Można użyć kopii w zmiennej, lub aby utworzyć zmienną. Podczas definiowania zmiennej i stosowania **kopiowania** w ramach tej zmiennej, należy utworzyć obiekt, który ma właściwości tablicy. Kiedy używasz **kopiowania** na najwyższym poziomie i zdefiniować jedną lub więcej zmiennych w nim, można utworzyć co najmniej jeden tablic. W poniższym przykładzie przedstawiono oba podejścia:
+Aby utworzyć wiele wystąpień w zmiennej, użyj `copy` właściwości w sekcji zmiennych. Utwórz tablicę elementów skonstruowany na podstawie wartości w `input` właściwości. Możesz użyć `copy` właściwości w ramach zmiennej lub na najwyższym poziomie w sekcji zmiennych. Korzystając z `copyIndex` wewnątrz zmiennej iteracji, należy podać nazwę iteracji.
+
+Poniższy przykład pokazuje, jak użyć kopii:
 
 ```json
 "variables": {
-    "disk-array-on-object": {
-        "copy": [
-            {
-                "name": "disks",
-                "count": 3,
-                "input": {
-                    "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('disks')]"
-                }
-            }
-        ]
-    },
+  "disk-array-on-object": {
     "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
+      {
+        "name": "disks",
+        "count": 3,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks')]"
         }
+      }
     ]
+  },
+  "copy": [
+    {
+      "name": "disks-top-level-array",
+      "count": 3,
+      "input": {
+        "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+        "diskSizeGB": "1",
+        "diskIndex": "[copyIndex('disks-top-level-array')]"
+      }
+    },
+    {
+      "name": "top-level-string-array",
+      "count": 5,
+      "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+    }
+  ]
 },
 ```
 
-Zmienna **dysku tablicy na obiekcie** zawiera następujący obiekt z tablicy o nazwie **dysków**:
+Po wyrażeniu kopiowania poddane ocenie, zmienna **dysku tablicy na obiekcie** zawiera następujący obiekt z tablicy o nazwie **dysków**:
 
 ```json
 {
@@ -194,34 +197,19 @@ Zmienna **dysków top poziom tablicy** zawiera następującą tablicę:
 ]
 ```
 
-W przypadku używania kopii do tworzenia zmiennych, można również określić więcej niż jeden obiekt. W poniższym przykładzie zdefiniowano dwie tablice jako zmienne. Jeden o nazwie **dysków top poziom tablicy** i zawiera pięć elementów. Druga o nazwie **w różnych tablicy** i ma trzy elementy.
+Zmienna **top-poziomu-ciągu tablica** zawiera następującą tablicę:
 
 ```json
-"variables": {
-    "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 5,
-            "input": {
-                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
-        },
-        {
-            "name": "a-different-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('a-different-array')]"
-            }
-        }
-    ]
-},
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
-Ta metoda działa dobrze w przypadku, gdy trzeba pobrać wartości parametrów i upewnij się, że są one w poprawnym formacie dla wartości szablonu. Poniższy przykład formatuje wartości parametrów do użycia podczas definiowania reguły zabezpieczeń:
+Przy użyciu kopii działa dobrze w przypadku, gdy trzeba wykonać wartości parametrów i zamapować je na wartości zasobu. Poniższy przykład formatuje wartości parametrów do użycia podczas definiowania reguły zabezpieczeń:
 
 ```json
 {
