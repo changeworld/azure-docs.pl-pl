@@ -59,7 +59,11 @@ items:
 - name: Przewodniki z instrukcjami
   items:
   - name: Zarządzanie obszarami roboczymi
-    href: how-to-manage-workspace.md
+    items:
+    - name: Używanie portalu dla obszarów roboczych
+      href: how-to-manage-workspace.md
+    - name: Używanie szablonu usługi Resource Manager
+      href: how-to-create-workspace-template.md
   - name: Konfigurowanie środowiska deweloperskiego 
     items:
     - name: Konfigurowanie środowisk deweloperskich
@@ -119,8 +123,6 @@ items:
       href: how-to-deploy-fpga-web-service.md
     - name: Rozwiązywanie problemów
       href: how-to-troubleshoot-deployment.md
-    - name: Zabezpieczanie usług internetowych przy użyciu protokołu SSL
-      href: how-to-secure-web-service.md
   - name: Korzystaj z usług sieci Web
     items:
     - name: Korzystanie w czasie rzeczywistym
@@ -136,25 +138,27 @@ items:
       href: how-to-enable-data-collection.md
     - name: Monitorowanie za pomocą usługi Application Insights
       href: how-to-enable-app-insights.md
+  - name: Bezpieczeństwo
+    items:
+    - name: Używanie sieci wirtualnych
+      displayName: vnet
+      href: how-to-enable-virtual-network.md
+    - name: Zabezpieczanie usług internetowych przy użyciu protokołu SSL
+      href: how-to-secure-web-service.md
   - name: Tworzenie pierwszego potoku
     href: how-to-create-your-first-pipeline.md
+  - name: Włącz rejestrowanie
+    displayName: logging
+    href: how-to-enable-logging.md
   - name: Zarządzanie przydziałami zasobów
     displayName: limits
     href: how-to-manage-quotas.md
-  - name: Zabezpieczanie za pomocą sieci wirtualnych
-    displayName: vnet
-    href: how-to-enable-virtual-network.md
   - name: Używanie interfejsu wiersza polecenia uczenia maszynowego
     displayName: cli extension command line command-line az ci/cd automate automated
     href: reference-azure-machine-learning-cli.md
   - name: Eksportowanie i usuwanie danych
     displayName: gdpr
     href: how-to-export-delete-data.md
-  - name: Używanie szablonu usługi Resource Manager
-    href: how-to-create-workspace-template.md
-  - name: Włącz rejestrowanie
-    displayName: logging
-    href: how-to-enable-logging.md
 - name: Dokumentacja
   items:
   - name: Zestaw SDK uczenia maszynowego
@@ -166,8 +170,6 @@ items:
   - name: Zestaw SDK do monitorowania
     displayName: api package python monitor
     href: https://aka.ms/aml-monitoring-sdk
-  - name: Szablon usługi Resource Manager
-    href: /azure/templates/microsoft.machinelearningservices/allversions
 - name: Zasoby
   items:
   - name: Harmonogram działania dla platformy Azure
@@ -183,9 +185,9 @@ items:
     href: support-for-aml-services.md
   - name: Porównanie naszych produktów do uczenia maszynowego
     href: overview-more-machine-learning.md
-ms.openlocfilehash: eb803b44bbe72b80f4414a4de66bce519591dea7
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 041a4b0f3ebecdaedb041ceb25f426a6e1825292
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268825"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338097"

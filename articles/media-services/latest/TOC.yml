@@ -15,12 +15,15 @@ items:
 - name: Samouczki
   items:
   - name: Kodowanie pliku zdalnego i strumieniowe przesyłanie wideo — REST
+    displayName: encoding, job, transform
     href: stream-files-tutorial-with-rest.md
   - name: Kodowanie przekazanego pliku i strumieniowe przesyłanie wideo — .NET
+    displayName: encode, encoding, job, transform
     href: stream-files-tutorial-with-api.md
   - name: Przesyłanie strumieniowe na żywo — .NET
     href: stream-live-tutorial-with-api.md
   - name: Analizowanie wideo — .NET
+    displayName: job, transform
     href: analyze-videos-tutorial-with-api.md
   expanded: true
 - name: Przykłady
@@ -31,33 +34,55 @@ items:
     href: cli-samples.md
 - name: Pojęcia
   items:
-  - name: Pozyskiwanie
+  - name: Przekazywanie do chmury i magazynowanie w niej
+    href: storage-account-concept.md
     items:
     - name: Elementy zawartości
       href: assets-concept.md
   - name: Kodowanie
-    href: encoding-concept.md
     items:
+    - name: Omówienie
+      displayName: Presets
+      href: encoding-concept.md
     - name: Przekształcenia i zadania
       href: transforms-jobs-concept.md
     - name: Formaty usługi Media Encoder Standard
       href: media-encoder-standard-formats.md
     - name: Automatyczne generowanie adaptacyjnej drabiny szybkości transmisji bitów
       href: autogen-bitrate-ladder.md
-  - name: Analiza
-    href: analyzing-video-audio-files-concept.md
+  - name: Analiza multimediów
     items:
+    - name: Omówienie
+      displayName: Presets
+      href: analyzing-video-audio-files-concept.md
     - name: Przekształcenia i zadania
       href: transforms-jobs-concept.md
-  - name: Strumień
+  - name: Tworzenie pakietów, dostarczanie, ochrona
     items:
+    - name: Tworzenie pakietów
+      items:
+      - name: Dynamiczne tworzenie pakietów
+        href: dynamic-packaging-overview.md
+      - name: Filtry
+        href: filters-concept.md
+      - name: Manifesty dynamiczne
+        href: filters-dynamic-manifest-overview.md
+    - name: Ochrona zawartości
+      href: content-protection-overview.md
+      items:
+      - name: System z wieloma mechanizmami DRM i kontrolą dostępu
+        href: design-multi-drm-system-with-access-control.md
     - name: Punkty końcowe przesyłania strumieniowego
+      displayName: Origins
       href: streaming-endpoint-concept.md
     - name: Lokalizatory przesyłania strumieniowego
+      displayName: URLs
       href: streaming-locators-concept.md
     - name: Zasady przesyłania strumieniowego
       href: streaming-policy-concept.md
-  - name: Przesyłanie strumieniowe na żywo
+    - name: Zasady kluczy zawartości
+      href: content-key-policy-concept.md
+  - name: Transmisja strumieniowa na żywo
     href: live-streaming-overview.md
     items:
     - name: Wydarzenia i dane wyjściowe na żywo
@@ -72,36 +97,19 @@ items:
       href: live-event-states-billing.md
     - name: Opóźnienie
       href: live-event-latency.md
-  - name: Dostarczanie
-    items:
-    - name: Filtry i manifest dynamiczny
-      href: filters-dynamic-manifest-overview.md
   - name: Monitorowanie
     items:
-    - name: Event Grid
+    - name: Zdarzenia z usługą Event Grid
       href: reacting-to-media-services-events.md
-  - name: Ochrona
-    href: content-protection-overview.md
+  - name: Odtwarzacze klienckie
     items:
-    - name: Zasady kluczy zawartości
-      href: content-key-policy-concept.md
-    - name: Zasady przesyłania strumieniowego
-      href: streaming-policy-concept.md
-    - name: Lokalizatory przesyłania strumieniowego
-      href: streaming-locators-concept.md
-    - name: System z wieloma mechanizmami DRM i kontrolą dostępu
-      href: design-multi-drm-system-with-access-control.md
-  - name: Odtwarzanie
-    href: use-azure-media-player.md
-  - name: Konta
+    - name: Azure Media Player
+      href: use-azure-media-player.md
+  - name: Jednostki usługi Media Services
     items:
-    - name: Limity przydziału i ograniczenia
-      href: limits-quotas-constraints.md
-    - name: Konta magazynu
-      href: storage-account-concept.md
-  - name: Filtrowanie, określanie kolejności, jednostki stron
-    href: entities-overview.md
-  - name: Migracja z wersji 2 do wersji 3
+    - name: Sortowanie, filtrowanie, stronicowanie jednostek
+      href: entities-overview.md
+  - name: Wskazówki dotyczące migracji z wersji 2 do wersji 3
     href: migrate-from-v2-to-v3.md
 - name: Przewodniki z instrukcjami
   items:
@@ -113,19 +121,34 @@ items:
       href: access-api-cli-how-to.md
     - name: Skalowanie jednostek zarezerwowanych multimediów — interfejs wiersza polecenia
       href: media-reserved-units-cli-how-to.md
-  - name: Konfigurowanie programu Postman
-    href: media-rest-apis-with-postman.md
+    - name: Rozpoczynanie programowania
+      href: developers-guide.md
+    - name: Konfigurowanie programu Postman
+      href: media-rest-apis-with-postman.md
   - name: Przekazywanie zawartości
     items:
-    - name: Z protokołu HTTP(s) — .NET
+    - name: Z adresu HTTPS — .NET
+      displayName: upload
       href: job-input-from-http-how-to.md
     - name: Z pliku lokalnego — .NET
+      displayName: upload
       href: job-input-from-local-file-how-to.md
     - name: Z pliku lokalnego — REST
+      displayName: upload
       href: upload-files-rest-how-to.md
   - name: Kodowanie zawartości
     items:
-    - name: Dostosowywanie wstępnych ustawień przekształcania — .NET
+    - name: Adres HTTPS jako dane wejściowe zadania — .NET
+      displayName: encode, encoding
+      href: job-input-from-http-how-to.md
+    - name: Plik lokalny jako dane wejściowe zadania — .NET
+      displayName: encode, encoding
+      href: job-input-from-local-file-how-to.md
+    - name: Plik lokalny jako dane wejściowe zadania — REST
+      displayName: encode
+      href: upload-files-rest-how-to.md
+    - name: Korzystanie z niestandardowych przekształceń — .NET
+      displayName: encode, encoding, tranform
       href: customize-encoder-presets-how-to.md
   - name: Używanie usługi Event Grid
     items:
@@ -215,13 +238,15 @@ items:
     href: https://github.com/Azure/Azure-Media-Services-Explorer
   - name: Informacje o wersji
     href: release-notes.md
+  - name: Limity przydziału i ograniczenia
+    href: limits-quotas-constraints.md
   - name: Często zadawane pytania
     href: frequently-asked-questions.md
   - name: Chmury i regiony platformy Azure
     href: azure-clouds-regions.md
-ms.openlocfilehash: 0ca98ea27a77418ee5a111a67bd013ab6ad40e55
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 05b20d905a5848cfcfd0f9c6d20e4addb5c776fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330022"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340437"

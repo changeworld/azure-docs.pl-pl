@@ -1,5 +1,5 @@
 items:
-- name: Dokumentacja kontroli dostępu opartej na rolach
+- name: Dokumentacja kontroli dostępu opartej na rolach dla zasobów platformy Azure
   href: index.yml
 - name: Omówienie
   items:
@@ -9,7 +9,7 @@ items:
     href: rbac-and-directory-admin-roles.md
 - name: Przewodniki Szybki start
   items:
-  - name: Wyświetlanie ról użytkownika
+  - name: Wyświetlanie dostępu dla użytkownika
     href: check-access.md
 - name: Samouczki
   items:
@@ -29,7 +29,7 @@ items:
     href: role-definitions.md
   - name: Opis przypisań odmowy
     href: deny-assignments.md
-  - name: Usługa Privileged Identity Management (PIM) dla Kontroli dostępu opartej na rolach
+  - name: Usługa PIM dla zasobów platformy Azure
     href: pim-azure-resource.md
   - name: Dostęp warunkowy do zarządzania platformy Azure
     href: conditional-access-azure-management.md
@@ -96,9 +96,9 @@ items:
   items:
   - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
     href: /learn/browse/?products=azure-active-directory
-ms.openlocfilehash: 46ff0e024e2c7dc466120054b4a8e69fa47c14cd
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 20500ad90e710b2c0e4359832a24a352c14ea0b2
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099211"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408769"
