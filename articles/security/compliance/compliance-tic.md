@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751926"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341725"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Zaufany wskazówki połączeń internetowych
 
@@ -198,7 +198,7 @@ System Azure oferuje narzędzia natywnych dla chmury, aby mieć pewność, że m
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Usługa Azure Policy](https://azure.microsoft.com/services/azure-policy/) jest usługą platformy Azure, która zapewnia lepsze możliwości inspekcji i wymuszania zgodności Twojej organizacji. Usługa Azure Policy jest obecnie dostępna w publicznej wersji zapoznawczej z usługami platformy Azure, które są dostępne na rynku. Usługa Azure Policy nie jest jeszcze dostępna na platformie Azure Government. Klientów można zaplanować i przetestować ich reguł usługi Azure Policy do zapewnienia przyszłych zgodności tablica. 
+[Usługa Azure Policy](../../governance/policy/overview.md) jest usługą platformy Azure, która zapewnia lepsze możliwości inspekcji i wymuszania zgodności Twojej organizacji. Klientów można zaplanować i przetestować ich reguł usługi Azure Policy do zapewnienia przyszłych zgodności tablica.
 
 Usługa Azure Policy jest przeznaczona na poziomie subskrypcji. Usługa zapewnia scentralizowane interfejs, gdzie można wykonać zadania zgodności, w tym:
 - Zarządzanie inicjatywy
@@ -213,13 +213,13 @@ Poniższy przykład zasad może służyć do scenariuszy zgodności tablica:
 
 |Zasady  |Przykładowy scenariusz  |Szablon  |
 |---------|---------|---------|
-|Wymuszanie tabeli tras zdefiniowanych przez użytkownika. | Upewnij się, że trasa domyślna na wszystkie sieci wirtualne wskazuje bramą zatwierdzonych sieci wirtualnej dla routingu do serwera lokalnego.    | Rozpoczynanie pracy z tym [szablonu](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table). |
-|Przeprowadzaj inspekcję usługi Network Watcher nie jest włączona dla regionu.  | Upewnij się, że usługi Network Watcher jest włączona dla wszystkich używanych regionów.  | Rozpoczynanie pracy z tym [szablonu](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled). |
-|Sieciowa grupa zabezpieczeń x w każdej podsieci.  | Upewnij się, że sieciowa grupa zabezpieczeń (lub zestaw zatwierdzonych sieciowych grup zabezpieczeń) przy użyciu zablokowany ruch z Internetu, jest stosowane do wszystkich podsieci w każdej sieci wirtualnej. | Rozpoczynanie pracy z tym [szablonu](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet). |
-|Sieciowa grupa zabezpieczeń x na każdej karcie sieciowej. | Upewnij się, że sieciowa grupa zabezpieczeń z Zablokowany ruch z Internetu jest stosowany do wszystkich kart sieciowych na wszystkich maszynach wirtualnych. | Rozpoczynanie pracy z tym [szablonu](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic). |
-|Zatwierdzone sieci wirtualnej na użytek interfejsy sieciowe maszyny wirtualnej.  | Upewnij się, że wszystkie karty sieciowe w sieci wirtualnej zatwierdzone. | Rozpoczynanie pracy z tym [szablonu](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics). |
-|Dozwolone lokalizacje. | Upewnij się, że wszystkie zasoby są wdrażane w regionach z sieciami wirtualnymi zgodne i konfiguracji usługi Network Watcher.  | Rozpoczynanie pracy z tym [szablonu](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs). |
-|Niedozwolone typy zasobów, takich jak **publicznymi**. | Stanów Zjednoczonych zabraniają wdrożenia typów zasobów, które nie mają planu zgodności. Aby uniemożliwić wdrażanie zasobów publicznych adresów IP, należy użyć tych zasad. Reguły sieciowej grupy zabezpieczeń można zastosować, aby skutecznie zablokować ruch przychodzący z Internetu, pozwalają na korzystanie z publicznych adresów IP dalsze zmniejsza obszar narażony na ataki.   | Rozpoczynanie pracy z tym [szablonu](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type).  |
+|Wymuszanie tabeli tras zdefiniowanych przez użytkownika. | Upewnij się, że trasa domyślna na wszystkie sieci wirtualne wskazuje bramą zatwierdzonych sieci wirtualnej dla routingu do serwera lokalnego.    | Rozpoczynanie pracy z tym [szablonu](../../governance/policy/samples/no-user-defined-route-table.md). |
+|Przeprowadzaj inspekcję usługi Network Watcher nie jest włączona dla regionu.  | Upewnij się, że usługi Network Watcher jest włączona dla wszystkich używanych regionów.  | Rozpoczynanie pracy z tym [szablonu](../../governance/policy/samples/network-watcher-not-enabled.md). |
+|Sieciowa grupa zabezpieczeń x w każdej podsieci.  | Upewnij się, że sieciowa grupa zabezpieczeń (lub zestaw zatwierdzonych sieciowych grup zabezpieczeń) przy użyciu zablokowany ruch z Internetu, jest stosowane do wszystkich podsieci w każdej sieci wirtualnej. | Rozpoczynanie pracy z tym [szablonu](../../governance/policy/samples/nsg-on-subnet.md). |
+|Sieciowa grupa zabezpieczeń x na każdej karcie sieciowej. | Upewnij się, że sieciowa grupa zabezpieczeń z Zablokowany ruch z Internetu jest stosowany do wszystkich kart sieciowych na wszystkich maszynach wirtualnych. | Rozpoczynanie pracy z tym [szablonu](../../governance/policy/samples/nsg-on-nic.md). |
+|Zatwierdzone sieci wirtualnej na użytek interfejsy sieciowe maszyny wirtualnej.  | Upewnij się, że wszystkie karty sieciowe w sieci wirtualnej zatwierdzone. | Rozpoczynanie pracy z tym [szablonu](../../governance/policy/samples/use-approved-vnet-vm-nics.md). |
+|Dozwolone lokalizacje. | Upewnij się, że wszystkie zasoby są wdrażane w regionach z sieciami wirtualnymi zgodne i konfiguracji usługi Network Watcher.  | Rozpoczynanie pracy z tym [szablonu](../../governance/policy/samples/allowed-locations.md). |
+|Niedozwolone typy zasobów, takich jak **publicznymi**. | Stanów Zjednoczonych zabraniają wdrożenia typów zasobów, które nie mają planu zgodności. Aby uniemożliwić wdrażanie zasobów publicznych adresów IP, należy użyć tych zasad. Reguły sieciowej grupy zabezpieczeń można zastosować, aby skutecznie zablokować ruch przychodzący z Internetu, pozwalają na korzystanie z publicznych adresów IP dalsze zmniejsza obszar narażony na ataki.   | Rozpoczynanie pracy z tym [szablonu](../../governance/policy/samples/not-allowed-resource-types.md).  |
 
 ### <a name="network-watcher-traffic-analytics"></a>Network Watcher analizy ruchu
 

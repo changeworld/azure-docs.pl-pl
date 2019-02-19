@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770588"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341968"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Ograniczanie instalacji rozszerzeń na maszynach wirtualnych z systemem Linux za pomocą usługi Azure Policy
 
@@ -28,7 +28,7 @@ W tym samouczku korzysta z interfejsu wiersza polecenia w ramach usługi Azure C
 
 ## <a name="create-a-rules-file"></a>Utwórz plik reguł
 
-Aby można było ograniczyć, jakie rozszerzenia można zainstalować, musisz mieć [reguły](/azure/azure-policy/policy-definition#policy-rule) zapewnienie logiki, aby zidentyfikować rozszerzenia.
+Aby można było ograniczyć, jakie rozszerzenia można zainstalować, musisz mieć [reguły](../../governance/policy/concepts/definition-structure.md#policy-rule) zapewnienie logiki, aby zidentyfikować rozszerzenia.
 
 W tym przykładzie pokazano, jak odmowa, instalowanie rozszerzenia publikowane przez "Microsoft.OSTCExtensions" przez utworzenie pliku reguły w usłudze Azure Cloud Shell, ale jeśli pracujesz w interfejsie wiersza polecenia lokalnie, możesz również utworzyć lokalnego pliku i Zamień na ścieżkę do ścieżki (~/clouddrive) Plik lokalny na komputerze.
 
@@ -69,7 +69,7 @@ Gdy wszystko będzie gotowe, trafienia **Esc** klucza, a następnie wpisz **: wq
 
 ## <a name="create-a-parameters-file"></a>Utwórz plik parametrów
 
-Należy również [parametry](/azure/azure-policy/policy-definition#parameters) pliku, który tworzy strukturę do użycia do przekazania na liście rozszerzeń, aby zablokować. 
+Należy również [parametry](../../governance/policy/concepts/definition-structure.md#parameters) pliku, który tworzy strukturę do użycia do przekazania na liście rozszerzeń, aby zablokować. 
 
 W tym przykładzie pokazano, jak utworzyć plik parametrów dla maszyn wirtualnych systemu Linux w usłudze Cloud Shell, ale jeśli pracujesz w interfejsie wiersza polecenia lokalnie, możesz również utworzyć lokalnego pliku i ścieżka (~/clouddrive) należy zastąpić ścieżkę do pliku lokalnego na komputerze.
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji, zobacz [usługi Azure Policy](../../azure-policy/azure-policy-introduction.md).
+
+Aby uzyskać więcej informacji, zobacz [usługi Azure Policy](../../governance/policy/overview.md).

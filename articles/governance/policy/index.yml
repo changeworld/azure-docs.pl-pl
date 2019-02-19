@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: db83cf4310cb4d74dcbbd290f650e4dcfc00c0c8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343710"
 documentType: LandingData
 title: Dokumentacja usługi Azure Policy
 metadata:
   title: Dokumentacja usługi Azure Policy — samouczki i dokumentacja interfejsu API
-  description: 'Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i efekty dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.'
+  description: Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i efekty dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług.
   services: azure-policy
   author: DCtheGeek
   manager: carmonm
@@ -12,53 +18,56 @@ metadata:
   ms.date: 01/23/2019
   ms.author: dacoulte
 abstract:
-  description: 'Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i efekty dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług. Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi, korzystając z naszych przewodników Szybki start, samouczków i przykładów.'
+  description: Usługa Azure Policy pomaga zarządzać problemami z zasobami IT i zapobiegać im dzięki definicjom zasad wymuszającym reguły i efekty dotyczące zasobów. Gdy używasz usługi Azure Policy, zasoby pozostają zgodne ze standardami firmy i umowami dotyczącymi poziomu usług.
 sections:
-  - title: 5-minutowe przewodniki Szybki start
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/portal.svg
-            text: Azure Portal
-            href: ./assign-policy-portal
-          - image:
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: ./assign-policy-powershell
-          - image:
-              src: ./media/cli.svg
-            text: Interfejs wiersza polecenia platformy Azure
-            href: ./assign-policy-azurecli
-  - title: Samouczki krok po kroku
+    - image:
+        alt: Azure Portal
+        src: ./media/portal.svg
+      text: Azure Portal
+      href: ./assign-policy-portal
+    - image:
+        alt: Azure PowerShell
+        src: ./media/powershell.svg
+      text: Azure PowerShell
+      href: ./assign-policy-powershell
+    - image:
+        alt: Interfejs wiersza polecenia platformy Azure
+        src: ./media/cli.svg
+      text: Interfejs wiersza polecenia platformy Azure
+      href: ./assign-policy-azurecli
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: 'Dowiedz się, jak tworzyć i przypisywać definicje zasad oraz zarządzać nimi na platformie Azure.'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Tworzenie zasad platformy Azure i zarządzanie nimi</a>
-  - title: Przykłady
+    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Tworzenie zasad platformy Azure i zarządzanie nimi</a>
+- title: Przykłady
+  items:
+  - type: paragraph
+    text: Poniższe przykłady kodu JSON pomogą w tworzeniu definicji zasad na platformie Azure.
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: Poniższe przykłady kodu JSON pomogą w tworzeniu definicji zasad na platformie Azure.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
-  - title: Dokumentacja
+    - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Wiersz polecenia
-            html: <p><a href="/cli/azure/policy">Interfejs wiersza polecenia platformy Azure</a></p>
-          - title: PowerShell
-            html: '<p><a href="/powershell/module/az.resources/#policies">Azure PowerShell</a></p>'
-          - title: Interfejs API REST
-            html: <p><a href="/rest/api/policy-insights/policyevents">Zdarzenia</a></p><p><a href="/rest/api/policy-insights/policystates">Stany</a></p><p><a href="/rest/api/resources/policyassignments">Przypisania</a></p><p><a href="/rest/api/resources/policydefinitions">Definicje zasad</a></p><p><a href="/rest/api/resources/policysetdefinitions">Definicje inicjatyw</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Zasoby śledzone przez zasady</a></p><p><a href="/rest/api/policy-insights/remediations">Korygowania</a></p>
+    - title: Wiersz polecenia
+      html: <p><a href="/cli/azure/policy">Interfejs wiersza polecenia platformy Azure</a></p>
+    - title: PowerShell
+      html: <p><a href="/powershell/module/az.resources/#policies">Azure PowerShell</a></p>
+    - title: Interfejs API REST
+      html: <p><a href="/rest/api/policy-insights/policyevents">Zdarzenia</a></p><p><a href="/rest/api/policy-insights/policystates">Stany</a></p><p><a href="/rest/api/resources/policyassignments">Przypisania</a></p><p><a href="/rest/api/resources/policydefinitions">Definicje zasad</a></p><p><a href="/rest/api/resources/policysetdefinitions">Definicje inicjatyw</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Zasoby śledzone przez zasady</a></p><p><a href="/rest/api/policy-insights/remediations">Korygowania</a></p>

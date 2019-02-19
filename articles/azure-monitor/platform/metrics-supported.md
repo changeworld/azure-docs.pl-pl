@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: be2274b5d7a0e39733440379ce9678ab012d7d27
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 8ee900554371644f374e4aeed51f1eeb0c18569e
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473830"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408871"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -652,14 +652,52 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.DocumentDB/databaseAccounts
 
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
-|---|---|---|---|---|---|
-|MetadataRequests|Żądania metadanych|Licznik|Licznik|Liczba żądań metadanych. Usługa cosmos DB obsługuje kolekcji metadanych systemowych dla każdego konta, które pozwala wyliczyć kolekcje, bazami danych itp i ich konfiguracji bezpłatnie.|DatabaseName, StatusCode CollectionName, Region,|
-|MongoRequestCharge|Opłata za żądanie MONGO|Licznik|Łącznie|Wykorzystane jednostki żądania MONGO|DatabaseName CollectionName, Region, CommandName, kod błędu|
-|MongoRequests|Żądania MONGO|Licznik|Licznik|Liczba żądań Mongo|DatabaseName CollectionName, Region, CommandName, kod błędu|
-|TotalRequestUnits|Jednostki łączna liczba żądań|Licznik|Łącznie|Używane jednostki żądania|DatabaseName, StatusCode CollectionName, Region,|
-|TotalRequests|Łączna liczba żądań|Licznik|Licznik|Liczba żądań|DatabaseName, StatusCode CollectionName, Region,|
+### <a name="request-metrics"></a>Metryki żądania
 
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
+|---|---|---|---|---|---| ---| ---| ---|
+| TotalRequests |   Łączna liczba żądań| Licznik   | Licznik | Liczba żądań|  DatabaseName, StatusCode CollectionName, Region,|   Wszyscy |   TotalRequests, Http 2xx, 3xx Http, Http 400, Http 401, wewnętrzny błąd serwera, Usługa niedostępna, ograniczenia żądań, żądań na sekundę |    Używana do monitorowania żądań na został zwrócony kod stanu kolekcji na minutę stopień szczegółowości. Aby uzyskać średnia liczba żądań na sekundę, użycia agregacji liczba na minutę, a następnie podzielić przez 60. |
+| MetadataRequests |    Żądania metadanych   |Licznik| Licznik   | Liczba żądań metadanych. Usługa Azure Cosmos DB obsługuje kolekcji metadanych systemowych dla każdego konta, które pozwala wyliczyć kolekcje, bazami danych itp i ich konfiguracji bezpłatnie.    | DatabaseName, StatusCode CollectionName, Region,| Wszyscy|  |Używana do monitorowania ograniczenia ze względu na żądania metadanych.|
+| MongoRequests |   Żądania MONGO| Licznik | Licznik|  Liczba żądań Mongo   | DatabaseName CollectionName, Region, CommandName, kod błędu| Wszyscy |Liczba żądań zapytanie MONGO, Mongo aktualizacji żądania wskaźnik, Mongo usunąć liczba żądań, Mongo Wstaw liczba żądań Mongo liczby żądań zakończonych|   Umożliwia monitorowanie błędów żądania Mongo, użycia dla polecenia należy wpisać. |
+
+
+### <a name="request-unit-metrics"></a>Metryki jednostki żądania
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
+|---|---|---|---|---|---| ---| ---| ---|
+| MongoRequestCharge|   Opłata za żądanie MONGO |  Licznik   |Łącznie  |Wykorzystane jednostki żądania MONGO|  DatabaseName CollectionName, Region, CommandName, kod błędu|   Wszyscy |Opłata za żądanie wyrażana MONGO zapytania, Mongo aktualizacji żądanie — opłata, Mongo usunąć opłata za żądanie wyrażana, Mongo Wstaw opłata za żądanie wyrażana, liczba Mongo żądania opłata| Używana do monitorowania zasobów Mongo (RUS) w ciągu minuty.|
+| TotalRequestUnits |Jednostki łączna liczba żądań|   Licznik|  Łącznie|  Używane jednostki żądania| DatabaseName, StatusCode CollectionName, Region,    |Wszyscy|   TotalRequestUnits|  Umożliwia monitorowanie użycia łączna liczba jednostek RU na minutę stopień szczegółowości. Aby uzyskać RU średnie użycie na sekundę, użycia agregacji łączna liczba na minutę i podzielić przez 60.|
+| ProvisionedThroughput |Aprowizowana przepływność|    Licznik|  Maksimum |Przepływność aprowizowana w kolekcji stopień szczegółowości|  DatabaseName, CollectionName|   5 MIN| |   Używana do monitorowania aprowizowanej przepływności na kolekcję.|
+
+### <a name="storage-metrics"></a>Metryki magazynu
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
+|---|---|---|---|---|---| ---| ---| ---|
+| AvailableStorage| Dostępna pamięć   |Bajty| Łącznie|  Całkowita ilość miejsca dostępna zgłoszone w 5 minut szczegółowości na region|   DatabaseName, CollectionName, Region|   5 MIN| Dostępna pamięć|   Służy do monitorowania dostępny magazyn szczegółowości minimalnej pojemności (dotyczy tylko w przypadku magazynu stałej kolekcji) powinien wynosić 5 minut.| 
+| DataUsage |Użycie danych |Bajty| Łącznie   |Łączna ilość danych użycia zgłoszonych w 5 minut szczegółowości na region|    DatabaseName, CollectionName, Region|   5 MIN  |Rozmiar danych  | Umożliwia monitorowanie użycia łączna ilość danych, kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut.|
+| IndexUsage|   Użycie indeksu|    Bajty|  Łącznie   |Łączne użycie indeksu zgłoszone w 5 minut szczegółowości na region|    DatabaseName, CollectionName, Region|   5 MIN| Rozmiar indeksu| Umożliwia monitorowanie użycia łączna ilość danych, kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut. |
+| DocumentQuota|    Limit przydziału dokumentu| Bajty|  Łącznie|  Przydział pamięci masowej zgłoszone w 5 minut szczegółowości na region. Dotyczy f| DatabaseName, CollectionName, Region|   5 MIN  |Pojemność magazynu|  Umożliwia monitorowanie łącznego limitu przydziału na poziomie kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut.|
+| DocumentCount|    Liczba dokumentów| Licznik   |Łącznie  |Liczba Totaldocument zgłoszone w 5 minut szczegółowości na region|  DatabaseName, CollectionName, Region|   5 MIN  |Liczba dokumentów|Używane do monitorowania liczby dokumentów w kolekcji i region, minimalna szczegółowość powinien wynosić 5 minut.|
+
+### <a name="latency-metrics"></a>Opóźnienie metryki
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Sposób użycia |
+|---|---|---|---|---|---| ---| ---| ---|
+| ReplicationLatency    | Opóźnienie replikacji|  MilliSeconds|   Minimalna, maksymalna, średnia | Poziomie P99 opóźnienie replikacji między regionami źródłowych i docelowych dla konta włączono geograficznie| SourceRegion, TargetRegion| Wszyscy | Używana do monitorowania na poziomie P99 opóźnienie replikacji między dwoma regionami oddalonymi dowolnego konta z replikacją geograficzną. |
+
+### <a name="availability-metrics"></a>Metryki dostępności
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Starsze mapowania metryki | Sposób użycia |
+|---|---|---|---|---|---| ---| ---| ---|
+| ServiceAvailability   | Dostępność usługi| Procent |Minimalna i maksymalna|   Dostępność żądania konta na jedną godzinę stopień szczegółowości|  |   1H  | Dostępność usługi  | Jest to procent całkowitej żądań sukces. Żądanie uznaje się niepowodzeniem z powodu błędu systemu, jeśli 410, jest kod stanu 500 lub 503 służy do monitorowania dostępności kont na godzinę stopień szczegółowości. |
+
+### <a name="cassandra-api-metrics"></a>Metryki interfejsu API rozwiązania Cassandra
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary| Stopniach szczegółowości czasu| Sposób użycia |
+|---|---|---|---|---|---| ---| ---| ---|
+| CassandraRequests | Żądania bazy danych Cassandra |  Licznik|  Licznik|  Liczba żądań interfejsu API rozwiązania Cassandra|  DatabaseName, CollectionName, ErrorCode, Region, OperationType, ResourceType|   Wszyscy| Umożliwia monitorowanie bazy danych Cassandra żądań na minutę stopień szczegółowości. Aby uzyskać średnia liczba żądań na sekundę, użycia agregacji liczba na minutę, a następnie podzielić przez 60.|
+| CassandraRequestCharges|  Opłaty za żądania bazy danych Cassandra| Licznik|   Sum, Min, Max, Avg| Jednostki używane przez żądania interfejsu API rozwiązania Cassandra żądania|   DatabaseName, CollectionName, Region, OperationType, ResourceType|  Wszyscy| Używana do monitorowania jednostek ru na minutę posługują się konta interfejsu API rozwiązania Cassandra.|
+| CassandraConnectionClosures   | Zamknięć połączenia bazy danych Cassandra |Licznik| Licznik   |Liczba połączeń bazy danych Cassandra z zamknięty|    ClosureReason, Region|  Wszyscy | Używane do monitorowania łączności między klientami i interfejsu API rozwiązania Cassandra usługi Azure Cosmos DB.|
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 

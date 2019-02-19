@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4dc68127f2d19426c372be027634bb2563dbfa6c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980877"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341661"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Ograniczanie instalacji rozszerzeń na maszynach wirtualnych Windows za pomocą usługi Azure Policy
 
@@ -30,7 +30,7 @@ Ten samouczek używa programu Azure PowerShell w usłudze Cloud Shell, które s�
 
 ## <a name="create-a-rules-file"></a>Utwórz plik reguł
 
-Aby można było ograniczyć, jakie rozszerzenia można zainstalować, musisz mieć [reguły](/azure/azure-policy/policy-definition#policy-rule) zapewnienie logiki, aby zidentyfikować rozszerzenia.
+Aby można było ograniczyć, jakie rozszerzenia można zainstalować, musisz mieć [reguły](../../governance/policy/concepts/definition-structure.md#policy-rule) zapewnienie logiki, aby zidentyfikować rozszerzenia.
 
 W tym przykładzie pokazano, jak odmowa rozszerzenia publikowane przez "Microsoft.Compute" przez utworzenie pliku reguły w usłudze Azure Cloud Shell, ale jeśli pracujesz w programie PowerShell lokalnie, możesz również utworzyć lokalny plik i zastąpić ścieżkę ($home/clouddrive) przy użyciu ścieżki do Plik lokalny na komputerze.
 
@@ -70,7 +70,7 @@ Gdy wszystko będzie gotowe, trafienia **Ctrl + O** i następnie **Enter** możn
 
 ## <a name="create-a-parameters-file"></a>Utwórz plik parametrów
 
-Należy również [parametry](/azure/azure-policy/policy-definition#parameters) pliku, który tworzy strukturę do użycia do przekazania na liście rozszerzeń, aby zablokować. 
+Należy również [parametry](../../governance/policy/concepts/definition-structure.md#parameters) pliku, który tworzy strukturę do użycia do przekazania na liście rozszerzeń, aby zablokować. 
 
 W tym przykładzie pokazano, jak utworzyć plik parametrów dla maszyn wirtualnych w usłudze Cloud Shell, ale jeśli pracujesz w programie PowerShell lokalnie, możesz również utworzyć lokalny plik i zastąpić ścieżkę ($home/clouddrive) ze ścieżką do pliku lokalnego na komputerze.
 
@@ -166,4 +166,4 @@ Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji, zobacz [usługi Azure Policy](../../azure-policy/azure-policy-introduction.md).
+Aby uzyskać więcej informacji, zobacz [usługi Azure Policy](../../governance/policy/overview.md).

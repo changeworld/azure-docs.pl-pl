@@ -8,12 +8,12 @@ ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 78e78bc019ab5f8be1cfd3448220b97b89cde6a5
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ac11b1a2b625d1fc7b62130580d1f188ead21051
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228784"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342732"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>Rozwiązywanie problemów z błędami podczas dołączania do rozwiązania
 
@@ -73,7 +73,7 @@ Aby pomyślnie wdrożyć to rozwiązanie, należy wziąć pod uwagę zmianę wsk
   * Ponownie celem zasad do określonego zasobu (np. na określonym koncie usługi Automation).
   * Zmiana zestawu zasobów tej zasady został skonfigurowany do odmowy.
 
-Sprawdź powiadomienia w prawym górnym rogu witryny Azure Portal lub przejdź do grupy zasobów, który zawiera Twoje konto usługi automation i wybierz **wdrożeń** w obszarze **ustawienia** wyświetlić nieudane wdrożenie. Aby dowiedzieć się więcej o zasadach usługi Azure, odwiedź stronę: [Omówienie usługi Azure Policy](../../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json).
+Sprawdź powiadomienia w prawym górnym rogu witryny Azure Portal lub przejdź do grupy zasobów, który zawiera Twoje konto usługi automation i wybierz **wdrożeń** w obszarze **ustawienia** wyświetlić nieudane wdrożenie. Aby dowiedzieć się więcej o zasadach usługi Azure, odwiedź stronę: [Omówienie usługi Azure Policy](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ## <a name="mma-extension-failures"></a>Błędy rozszerzenia programu MMA
 

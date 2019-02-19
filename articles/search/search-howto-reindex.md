@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 907ab5cd3272a3d3f64dcfd7c9628a609f4db2f4
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 2595912732389c8a415d1854a84a7b9c182e4dc7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327650"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341644"
 ---
 # <a name="how-to-rebuild-an-azure-search-index"></a>Jak odbudować indeksu usługi Azure Search
 
@@ -29,18 +29,18 @@ W przeciwieństwie do ponowne kompilowanie przyjmujące indeksu w trybie offline
 | Warunek | Opis |
 |-----------|-------------|
 | Zmiana definicji pola | Zmiana nazwy pola, typ danych lub określonych [atrybutami indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index) (wyszukiwanie, filtrowanie, sortowanie, tworzenie aspektów) wymaga ponownej pełnej kompilacji. |
-| Dodanie analizatora do pola | [Analizatory](search-analyzers.md) są zdefiniowane w indeksie, a następnie przypisywane do pól. W dowolnym momencie można dodać nowego analizatora do indeksu, ale można je tylko *przypisać* analizator po utworzeniu pola. Dotyczy to zarówno **analizatora** i **indexAnalyzer** właściwości. **SearchAnalyzer** właściwość jest wyjątek. |
-| Aktualizowanie i usuwanie konstrukcja analizatora | Nie można usunąć ani zmienić istniejących składników analizy (analizator, tokenizatora, filtr tokenu lub filtr char), chyba, że odbudować całego indeksu. |
-| Dodawanie pola do sugestora | Jeśli pole już istnieje i chcesz dodać ją do [Sugestory](index-add-suggesters.md) konstruowania, należy odbudować indeksu. |
-| Usuwanie pola | Aby fizycznie Usuń wszystkie ślady pola, musisz odbudować indeksu. Po bezpośrednim ponowna kompilacja nie jest możliwe, można modyfikować kodu aplikacji, aby wyłączyć dostęp do pola "usunięta". Fizycznie definicję pola i zawartość pozostają w indeksie aż do następnego ponowną kompilację, przy użyciu schematu, które pomija pola w danym. |
-| Przełączanie warstwy | Jeśli potrzebujesz większej pojemności, nie istnieje żadne uaktualnienia w miejscu. Nowa usługa jest tworzony w nowym punkcie pojemności, a indeksy muszą zostać skompilowane od podstaw w nowej wersji usługi. |
+| Przypisz Analizator do pola | [Analizatory](search-analyzers.md) są zdefiniowane w indeksie, a następnie przypisywane do pól. W dowolnym momencie można dodać nową definicję analizatora do indeksu, ale można je tylko *przypisać* analizator po utworzeniu pola. Dotyczy to zarówno **analizatora** i **indexAnalyzer** właściwości. **SearchAnalyzer** właściwość jest wyjątek (można przypisać tę właściwość do istniejącego pola). |
+| Aktualizowanie lub usuwanie definicji analyzer w ramach indeksu | Nie można usunąć ani zmieniać istniejącej analizator konfiguracji (analizator, tokenizatora, filtr tokenu lub char filtr) w indeksie, chyba, że odbudować całego indeksu. |
+| Dodaj pole do sugestora | Jeśli pole już istnieje i chcesz dodać ją do [Sugestory](index-add-suggesters.md) konstruowania, należy odbudować indeksu. |
+| Usuń pole | Aby fizycznie Usuń wszystkie ślady pola, musisz odbudować indeksu. Po bezpośrednim ponowna kompilacja nie jest możliwe, można modyfikować kodu aplikacji, aby wyłączyć dostęp do pola "usunięta". Fizycznie definicję pola i zawartość pozostają w indeksie aż do następnego ponowną kompilację, po zastosowaniu schematu, które pomija pola w danym. |
+| Przełącznik warstwy | Jeśli potrzebujesz większej pojemności, nie istnieje żadne uaktualnienia w miejscu. Nowa usługa jest tworzony w nowym punkcie pojemności, a indeksy muszą zostać skompilowane od podstaw w nowej wersji usługi. |
 
 Inne zmiany można wprowadzić bez wpływu na istniejących struktur fizycznych. Ściślej mówiąc, wykonaj następujące zmiany *nie* wymagają odbudowywanie indeksu:
 
 + Dodawanie nowego pola
 + Ustaw **pobieranie** atrybutu istniejącego pola
 + Ustaw **searchAnalyzer** na istniejącego pola
-+ Dodaj nową konstrukcję analyzer w ramach indeksu
++ Dodaj nową definicję analyzer w ramach indeksu
 + Dodawanie, aktualizowanie lub usuwanie profile oceniania
 + Dodawanie, aktualizowanie lub usuwanie ustawień specyfikacji CORS
 + Dodawanie, aktualizowanie lub usuwanie synonymMaps
@@ -65,23 +65,30 @@ Aby uzyskać więcej informacji na temat indeksatorów, zobacz [omówienie indek
 
 Plan w pełni częste, ponownie kompiluje podczas tworzenia active, gdy indeks schematy są w stanie strumienia. W przypadku aplikacji już w środowisku produkcyjnym zaleca się utworzenie nowego indeksu równolegle działającą istniejący indeks, aby uniknąć przestoju zapytania.
 
-Jeśli rygorystyczne wymagania umowy SLA, można rozważyć aprowizacji nową usługę w szczególności dla tej pracy, programować za i indeksowania, pojawiają się w pełną izolację od indeksu produkcji. Osobna usługa działa na swój własny sprzęt, eliminując możliwości rywalizacji o zasoby. Po zakończeniu tworzenia będzie albo pozostanie nowego indeksu w miejscu, przekierowywanie zapytań do nowego punktu końcowego i indeks lub należy uruchomić kod zakończenia publikowania poprawione indeksu w usłudze Azure Search, oryginalnym. Nie istnieje obecnie mechanizm przenoszenia indeksu gotowych do użycia do innej usługi.
+Uprawnienia odczytu i zapisu na poziomie usługi są wymagane do aktualizacji indeksu. 
 
-Uprawnienia odczytu i zapisu na poziomie usługi są wymagane do aktualizacji indeksu. Programowo, można wywołać [aktualizacji indeksu — interfejs API REST](https://docs.microsoft.com/rest/api/searchservice/update-index) lub interfejsów API platformy .NET dla pełnej rekompilacji. Żądanie jest taka sama jak [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index), ale ma inny kontekst.
+Nie można odbudować indeksu w portalu. Programowo, można wywołać [aktualizacji indeksu — interfejs API REST](https://docs.microsoft.com/rest/api/searchservice/update-index) lub [równoważnych interfejsów API platformy .NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.iindexesoperations.createorupdatewithhttpmessagesasync?view=azure-dotnet) dla pełnej rekompilacji. Żądanie aktualizacji indeksu jest taka sama jak [utworzyć indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/create-index), ale ma inny kontekst.
 
-1. W przypadku ponownego użycia nazwy indeksu [Usuń istniejący indeks](https://docs.microsoft.com/rest/api/searchservice/delete-index). Wszelkie zapytania dla tego indeksu, od razu są opuszczane. Usuwanie indeksu jest nieodwracalne niszczenie magazynu fizycznego dla kolekcji pól i innych konstrukcji. Upewnij się, że jesteś wyczyść na temat skutków usuwania indeksu, zanim ją upuścisz. 
+Poniższy przepływ pracy jest ukierunkowane pod kątem interfejsu API REST, ale informacje dotyczą zestawu SDK platformy .NET.
 
-2. Udostępnij schematu indeksu na definicje pól zmienione lub zmodyfikowane. Wymagania dotyczące schematu są udokumentowane w artykule [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+1. Podczas ponownego wykorzystania, nazwę indeksu [Usuń istniejący indeks](https://docs.microsoft.com/rest/api/searchservice/delete-index). 
 
-3. Podaj [klucz administratora](https://docs.microsoft.com/azure/search/search-security-api-keys) na żądanie.
+   Wszelkie zapytania dla tego indeksu, od razu są opuszczane. Usuwanie indeksu jest nieodwracalne niszczenie magazynu fizycznego dla kolekcji pól i innych konstrukcji. Upewnij się, że jesteś wyczyść na temat skutków usuwania indeksu, zanim ją upuścisz. 
 
-4. Wyślij [Aktualizowanie indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index) polecenie, aby odbudować fizycznych wyrażenie indeksu w usłudze Azure Search. Treść żądania zawiera schemat indeksu, a także tworzy do oceniania, profile, analizatory, sugestory i opcje CORS.
+2. Formułowanie [Aktualizowanie indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index) żądanie do punktu końcowego usługi, klucz interfejsu API i [klucz administratora](https://docs.microsoft.com/azure/search/search-security-api-keys). Klucz administratora jest wymagana dla operacji zapisu.
 
-5. [Ładowanie indeksu z dokumentami](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ze źródła zewnętrznego. Można również użyć tego interfejsu API, jeśli odświeżasz istniejące, niezmienione schemat indeksu przy użyciu zaktualizowanych dokumentów.
+3. W treści żądania Udostępnij schematu indeksu na definicje pól zmienione lub zmodyfikowane. Treść żądania zawiera schemat indeksu, a także tworzy do oceniania, profile, analizatory, sugestory i opcje CORS. Wymagania dotyczące schematu są udokumentowane w artykule [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index).
+
+4. Wyślij [Aktualizowanie indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index) żądania odbudować fizycznych wyrażenie indeksu w usłudze Azure Search. 
+
+5. [Ładowanie indeksu z dokumentami](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) ze źródła zewnętrznego.
 
 Podczas tworzenia indeksu magazynu fizycznego jest przydzielany dla każdego pola w schemacie indeksu z odwróconą Indeks utworzony dla każdego pola, którą można przeszukiwać. Pola, które nie znajdują się wyszukiwanie mogą być używane w filtry lub wyrażeń, ale nie mają odwrócona, indeksy i czy nie pełnotekstowego lub rozmyte przeszukiwania. Na odbudowywanie indeksu usunąć i ponownie utworzyć te indeksy odwróconą na podstawie schematu indeksu, należy podać.
 
 Podczas ładowania indeks każdego pola odwróconą indeks został wypełniony wszystkie wyrazy unikatowy, tokenami z poszczególnych dokumentów, map do dokumentu odpowiednich identyfikatorów. Na przykład podczas indeksowania zestawu danych hotele, odwrócony Indeks utworzony dla pola miejscowości może zawierać warunki dla Seattle, Portland i tak dalej. Dokumenty, które zawierają Seattle lub Portland w polu Miasto musi ich identyfikator dokumentu, na liście obok termin. W przypadku dowolnego [Dodawanie, aktualizowanie lub usuwanie](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) operacji i Lista identyfikatorów dokumentów są odpowiednio aktualizowane.
+
+> [!NOTE]
+> Jeśli rygorystyczne wymagania umowy SLA, można rozważyć aprowizacji nową usługę w szczególności dla tej pracy, programować za i indeksowania, pojawiają się w pełną izolację od indeksu produkcji. Osobna usługa działa na swój własny sprzęt, eliminując możliwości rywalizacji o zasoby. Po zakończeniu tworzenia będzie albo pozostanie nowego indeksu w miejscu, przekierowywanie zapytań do nowego punktu końcowego i indeks lub należy uruchomić kod zakończenia publikowania poprawione indeksu w usłudze Azure Search, oryginalnym. Nie istnieje obecnie mechanizm przenoszenia indeksu gotowych do użycia do innej usługi.
 
 ## <a name="view-updates"></a>Wyświetl aktualizacje
 

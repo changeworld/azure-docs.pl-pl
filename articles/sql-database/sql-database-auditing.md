@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: vainolo
-ms.author: vainolo
+ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: d092b4e8096b311ba9ca9d3fbceea8fb57bf4aa9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 08c71ac1aba659a2e0fbb6655b6ee0a21576bf5d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234666"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339791"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 
@@ -43,8 +43,11 @@ Można użyć inspekcji usługi SQL database do:
 > [!IMPORTANT]
 > Dzienniki inspekcji są zapisywane w **obiekty BLOB dołączania** w usłudze Azure Blob storage w ramach subskrypcji platformy Azure.
 >
-> - **Usługa Premium storage** jest obecnie **nieobsługiwane** przez obiekty BLOB dołączania.
+> - Wszelkiego rodzaju magazynu (v1, v2, obiektów blob) są obsługiwane.
+> - Obsługiwane są wszystkie konfiguracje replikacji magazynu.
+> - **Usługa Premium storage** jest obecnie **nieobsługiwane**.
 > - **Magazyn w sieci wirtualnej** jest obecnie **nieobsługiwane**.
+> - **Magazyn za zaporą** jest obecnie **nieobsługiwane**
 
 ## <a id="subheading-8"></a>Zdefiniuj poziom serwera, a zasady inspekcji na poziomie bazy danych
 

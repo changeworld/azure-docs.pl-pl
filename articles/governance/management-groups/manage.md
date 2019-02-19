@@ -1,6 +1,6 @@
 ---
-title: Jak zmienić, usunąć lub zarządzać grupami zarządzania na platformie Azure
-description: Dowiedz się, jak utrzymanie i aktualizowanie hierarchia grup zarządzania.
+title: Jak zmienić, usunąć lub zarządzać grupami zarządzania na platformie Azure — Azure rządów
+description: Dowiedz się, jak wyświetlać, obsługi, aktualizacji i usuwania hierarchia grup zarządzania.
 author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: dbfb6ecb9f29a82a8871922982a64dbefc338969
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582421"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342597"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Zarządzanie zasobami przy użyciu grup zarządzania
 
@@ -39,11 +39,11 @@ Możesz zmienić nazwę grupy zarządzania przy użyciu portalu, programu PowerS
 
 1. Wybierz **Zmień nazwę grupy** opcji w górnej części strony.
 
-   ![Zmień nazwę grupy](./media/detail_action_small.png)
+   ![Opcja zmiany nazwy grupy](./media/detail_action_small.png)
 
 1. Po otwarciu menu, wprowadź nową nazwę, które Twoim zdaniem, które zostaną wyświetlone.
 
-   ![Zmień nazwę grupy](./media/rename_context.png)
+   ![W okienku Zmień nazwę grupy](./media/rename_context.png)
 
 1. Wybierz pozycję **Zapisz**.
 
@@ -87,11 +87,11 @@ Aby usunąć grupę zarządzania, muszą być spełnione następujące wymagania
 
    - Jeśli ikona jest wyłączona, kursor nad swoje selektor myszy na ikonie dowiesz się, powód.
 
-   ![Usuń grupę](./media/delete.png)
+   ![Usuń opcję grupy](./media/delete.png)
 
 1. Brak okno które otwiera potwierdzenie, że chcesz usunąć grupę zarządzania.
 
-   ![Usuń grupę](./media/delete_confirm.png)
+   ![Usuwanie grupy oknie potwierdzenia](./media/delete_confirm.png)
 
 1. Wybierz **tak**.
 
@@ -195,13 +195,13 @@ Aby zobaczyć, jakie uprawnienia ma, wybierz grupę zarządzania a następnie wy
 
 1. Na liście, który chcesz przenieść, wybierz Wielokropek na końcu wiersza dla subskrypcji.
 
-   ![Move](./media/move_small.png)
+   ![Opcja Przenieś](./media/move_small.png)
 
 1. Wybierz **przenieść**.
 
 1. W wyświetlonym menu wybierz **nadrzędna grupa zarządzania**.
 
-   ![Move](./media/move_small_context.png)
+   ![Przesuń okienko](./media/move_small_context.png)
 
 1. Wybierz pozycję **Zapisz**.
 
@@ -272,19 +272,19 @@ Użyj polecenia aktualizacji, aby przenieść grupy do zarządzania przy użyciu
 az account management-group update --name 'Contoso' --parent 'Contoso Tenant'
 ```
 
-## <a name="audit-management-groups-using-activity-logs"></a>Grupy zarządzania inspekcji przy użyciu dzienników aktywności
+## <a name="audit-management-groups-using-activity-logs"></a>Inspekcja grup zarządzania przy użyciu dzienników aktywności
 
-Aby śledzić grup zarządzania za pośrednictwem tego interfejsu API, należy użyć [interfejs API dziennika aktywności dzierżawcy](/rest/api/monitor/tenantactivitylogs). Obecnie nie jest możliwe użycie programu PowerShell, interfejsu wiersza polecenia lub witryny Azure portal do śledzenia działań związanych z zarządzaniem grupami.
+Aby śledzić aktywność grup zarządzania za pośrednictwem tego interfejsu API, skorzystaj z [interfejsu API dziennika aktywności w dzierżawie](/rest/api/monitor/tenantactivitylogs). Obecnie nie można śledzić aktywności grup zarządzania za pomocą programu PowerShell, interfejsu wiersza polecenia, ani witryny Azure Portal.
 
-1. Jako Administrator dzierżawy z dzierżawy usługi Azure AD [podniesienie poziomu dostępu](../../role-based-access-control/elevate-access-global-admin.md) przypisywane roli Czytelnik użytkownikowi inspekcji w zakresie `/providers/microsoft.insights/eventtypes/management`.
-1. Jako użytkownik inspekcji, należy wywołać [interfejs API dziennika aktywności dzierżawcy](/rest/api/monitor/tenantactivitylogs) Aby wyświetlić działania grupy zarządzania. Można filtrować według dostawcy zasobów **Microsoft.Management** dla wszystkich działań grupy zarządzania.  Przykład:
+1. Jako administrator dzierżawy usługi Azure Active Directory [podnieś poziom dostępu](../../role-based-access-control/elevate-access-global-admin.md), a następnie przypisz rolę Czytelnika dla zakresu `/providers/microsoft.insights/eventtypes/management` do użytkownika wykonującego inspekcję.
+1. Jako użytkownik wykonujący inspekcję wywołaj [interfejs API dziennika aktywności w dzierżawie](/rest/api/monitor/tenantactivitylogs), aby zobaczyć aktywność grup zarządzania. Aby zobaczyć aktywność wszystkich grup zarządzania, włącz filtrowanie według dostawcy zasobów **Microsoft.Management**.  Przykład:
 
 ```xml
 GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
 ```
 
 > [!NOTE]
-> Aby wygodnie wywołać ten interfejs API z poziomu wiersza polecenia, wypróbuj [ARMClient](https://github.com/projectkudu/ARMClient).
+> Aby wygodnie wywołać ten interfejs API z poziomu wiersza polecenia, wypróbuj narzędzie [ARMClient](https://github.com/projectkudu/ARMClient).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -292,6 +292,6 @@ Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
 - [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
-- [Przejrzyj grupy zarządzania w Module zasoby programu Azure PowerShell](https://aka.ms/mgPSdocs)
-- [Przejrzyj grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
-- [Przegląd grup zarządzania w wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)
+- [Grupy zarządzania w module zasobów programu Azure PowerShell](https://aka.ms/mgPSdocs)
+- [Grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
+- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)

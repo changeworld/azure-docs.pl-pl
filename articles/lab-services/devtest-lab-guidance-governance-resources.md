@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: aff57e58ffd247bcc697908f2f25cbf17ff9b91a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244134"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338465"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Zarządzanie infrastrukturą usługi Azure DevTest Labs — zasoby
 W tym artykule opisano, wyrównanie i zarządzanie zasobami dla laboratorium w Twojej organizacji. 
@@ -56,7 +56,7 @@ Jak zachować konwencję nazewnictwa w całej mojego środowiska DevTest Labs?
 ### <a name="answer"></a>Odpowiedź
 Możesz chcieć rozszerzanie bieżących konwencjach nazewnictwa przedsiębiorstwa do operacji na platformie Azure, dzięki czemu będą zgodne w środowisku laboratorium.
 
-Podczas wdrażania usługi DevTest Labs, zaleca się, że masz określone zasady począwszy od. Możesz wdrożyć te zasady przez centralną skryptów i szablonów JSON, aby wymusić spójność. Nadawanie zasadom nazw może być implementowany przez zasady usługi Azure stosowane na poziomie subskrypcji. Aby uzyskać przykłady kodu JSON usługi Azure Policy, zobacz [przykładów usługi Azure Policy](../azure-policy/json-samples.md).
+Podczas wdrażania usługi DevTest Labs, zaleca się, że masz określone zasady począwszy od. Możesz wdrożyć te zasady przez centralną skryptów i szablonów JSON, aby wymusić spójność. Nadawanie zasadom nazw może być implementowany przez zasady usługi Azure stosowane na poziomie subskrypcji. Aby uzyskać przykłady kodu JSON usługi Azure Policy, zobacz [przykładów usługi Azure Policy](../governance/policy/samples/index.md).
 
 ## <a name="number-of-users-per-lab-and-labs-per-organization"></a>Liczba użytkowników na laboratorium i laboratoriów w ramach organizacji
 

@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z RBAC na platformie Azure | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów przy użyciu kontroli dostępu opartej na rolach na platformie Azure (RBAC).
+title: Rozwiązywanie problemów z funkcji RBAC dla zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: Rozwiązywanie problemów przy użyciu kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411241"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342477"
 ---
-# <a name="troubleshoot-rbac-in-azure"></a>Rozwiązywanie problemów z RBAC na platformie Azure
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Rozwiązywanie problemów z funkcji RBAC dla zasobów platformy Azure
 
-W tym artykule odpowiedzi na często zadawane pytania dotyczące kontroli dostępu opartej na rolach (RBAC), dzięki czemu będzie wiadomo, czego można oczekiwać, gdy przy użyciu ról w witrynie Azure portal i możesz rozwiązać problemy z dostępem do.
+W tym artykule odpowiedzi na często zadawane pytania dotyczące kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure, dzięki czemu będzie wiadomo, czego można oczekiwać, gdy przy użyciu ról w witrynie Azure portal i możesz rozwiązać problemy z dostępem do.
 
 ## <a name="problems-with-rbac-role-assignments"></a>Problemy z przypisaniami ról kontroli dostępu opartej na rolach
 
@@ -105,7 +105,7 @@ Te elementy wymagają **zapisu** dostęp do **maszyny wirtualnej**:
 Wymagają one **zapisu** dostęp do obu **maszyny wirtualnej**i **grupy zasobów** (wraz z nazwą domeny) aby znajdował się w:  
 
 * Zestaw dostępności  
-* Zestawu o zrównoważonym obciążeniu  
+* Zestaw o zrównoważonym obciążeniu  
 * Reguły alertów  
 
 Jeśli nie masz dostępu do żadnego z tych kafelków, poproś administratora dostępu współautora do grupy zasobów.
@@ -119,6 +119,6 @@ Niektóre funkcje [usługi Azure Functions](../azure-functions/functions-overvie
 Czytelnik mogą kliknąć **funkcje platformy** kartę, a następnie kliknij przycisk **wszystkie ustawienia** Aby wyświetlić niektóre ustawienia związane z aplikacją funkcji (podobne do aplikacji sieci web), ale nie mogą modyfikować dowolne z tych ustawień.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Manage access using RBAC and the Azure portal (Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal)](role-assignments-portal.md)
-* [Wyświetlanie dzienników aktywności dla zmian RBAC](change-history-report.md)
+* [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal](role-assignments-portal.md)
+* [Wyświetlanie dzienników aktywności dla zmian RBAC do zasobów platformy Azure](change-history-report.md)
 

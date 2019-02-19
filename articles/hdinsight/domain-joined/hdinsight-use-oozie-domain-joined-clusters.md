@@ -8,13 +8,13 @@ ms.author: omidm
 ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 0ab225d3579ed6a56c753f0c581709408c65f358
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.date: 02/15/2019
+ms.openlocfilehash: b0ec8bf52b0b41aef4ea4cc2bfb6ed8fdcd170ec
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436283"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343293"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamiaj Apache Oozie w usłudze HDInsight Hadoop klastry z pakietem Enterprise Security
 
@@ -217,11 +217,12 @@ nano workflow.xml
        hiveOutputDirectory1=${nameNode}/user/${user.name}/hiveresult1
        hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
-  
-   a. Zastąp `domainuser` ze swoją nazwą użytkownika w domenie.  
-   b. Zastąp `ClusterShortName` nazwą krótkim dla klastra. Na przykład, jeśli nazwa klastra jest https:// *[przykład link]* sechadoopcontoso.azurehdisnight.net, `clustershortname` pierwszych sześciu znaków klastra: **sechad**.  
-   c. Zastąp `jdbcurlvalue` za pomocą adresu URL JDBC z konfiguracji programu Hive. Przykładem jest jdbc:hive2: / / headnodehost:10001 /; transportMode = http.      
-   d. Aby zapisać plik, wybierz klawisze Ctrl + X, należy wprowadzić `Y`, a następnie wybierz pozycję **Enter**.
+
+   * Użyj `adl://home` identyfikator URI dla `nameNode` właściwość, jeśli masz usługi Azure Data Lake Storage Gen1 jako magazynu klastra podstawowego. Jeśli używasz usługi Azure Blob Storage to zmienić tutaj, aby `wasb://home`. Jeśli używasz usługi Azure Data Lake Storage Gen2 to zmienić tutaj, aby `abfs://home`.
+   * Zastąp `domainuser` ze swoją nazwą użytkownika w domenie.  
+   * Zastąp `ClusterShortName` nazwą krótkim dla klastra. Na przykład, jeśli nazwa klastra jest https:// *[przykład link]* sechadoopcontoso.azurehdisnight.net, `clustershortname` pierwszych sześciu znaków klastra: **sechad**.  
+   * Zastąp `jdbcurlvalue` za pomocą adresu URL JDBC z konfiguracji programu Hive. Przykładem jest jdbc:hive2: / / headnodehost:10001 /; transportMode = http.      
+   * Aby zapisać plik, wybierz klawisze Ctrl + X, należy wprowadzić `Y`, a następnie wybierz pozycję **Enter**.
 
    Ten plik właściwości musi znajdować się lokalnie, podczas uruchamiania zadań programu Oozie.
 

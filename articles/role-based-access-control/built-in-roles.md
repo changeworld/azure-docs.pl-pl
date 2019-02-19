@@ -15,20 +15,22 @@ ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c49e521e9bf7e04eeda47c6b27c0b63cca653006
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699267"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340856"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
-[Kontrola dostępu oparta na rolach (RBAC)](overview.md) ma kilka definicji wbudowanej roli, które można przypisać do użytkowników, grup i nazwy główne usług. Przypisania roli są sposób kontrolowania dostępu do zasobów na platformie Azure. Jeśli role wbudowane nie spełniają potrzeb Twojej organizacji, możesz tworzyć własne [role niestandardowe](custom-roles.md).
 
-Wbudowane role zawsze wciąż ewoluuje. Aby uzyskać najnowsze definicje ról, użyj [Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) lub [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list).
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) zawiera kilka wbudowanych ról dla zasobów platformy Azure, które można przypisać do użytkowników, grup, nazw głównych usług i zarządzanych tożsamości. Przypisania roli są sposób kontrolowania dostępu do zasobów platformy Azure. Jeśli wbudowane role nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne [ról niestandardowych dla zasobów platformy Azure](custom-roles.md).
+
+Ten artykuł zawiera listę wbudowanych ról dla zasobów platformy Azure, które zawsze są obecnie przekształcane. Aby uzyskać najnowsze ról, użyj [Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) lub [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list). Jeśli szukasz dla ról administratora usługi Azure Active Directory, zobacz [uprawnienia roli administratora w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="built-in-role-descriptions"></a>Opisy ról wbudowanych
-Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, aby wyświetlić listę `Actions`, `NotActions`, `DataActions`, i `NotDataActions` dla każdej roli.
+
+Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę roli, aby wyświetlić listę `Actions`, `NotActions`, `DataActions`, i `NotDataActions` dla każdej roli. Aby uzyskać informacji o znaczenie tych akcji i sposobów ich zastosowania płaszczyzny zarządzania i danych, zobacz [poznać definicje ról na potrzeby zasobów platformy Azure](role-definitions.md).
 
 
 | Wbudowana rola | Opis |
@@ -139,6 +141,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **Akcje** |  |
 > | * | Tworzenie i zarządzanie zasobami wszystkich typów |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="contributor"></a>Współautor
 > [!div class="mx-tableFixed"]
@@ -154,6 +162,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Authorization/elevateAccess/Action | Przyznaje osobie wywołującej uprawnienia administratora dostępu użytkowników w zakresie dzierżawy |
 > | Microsoft.Blueprint/blueprintAssignments/write | Utwórz lub zaktualizuj wszelkie artefakty strategii |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Usuń wszelkie artefakty strategii |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="reader"></a>Czytelnik
 > [!div class="mx-tableFixed"]
@@ -163,6 +175,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Akcje** |  |
 > | */read | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="acrimagesigner"></a>AcrImageSigner
 > [!div class="mx-tableFixed"]
@@ -172,6 +190,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Akcje** |  |
 > | Microsoft.ContainerRegistry/registries/sign/write | / Wypychania zawartości zaufania metadanych dla rejestru kontenerów. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="acrpull"></a>AcrPull
 > [!div class="mx-tableFixed"]
@@ -181,6 +205,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
 > | **Akcje** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | Ściągnij lub pobieranie obrazów z rejestru kontenerów. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="acrpush"></a>AcrPush
 > [!div class="mx-tableFixed"]
@@ -191,6 +221,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | Ściągnij lub pobieranie obrazów z rejestru kontenerów. |
 > | Microsoft.ContainerRegistry/registries/push/write | Wypychanie lub zapisanie obrazów do rejestru kontenerów. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -200,6 +236,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Akcje** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | Ściąganie lub uzyskać poddane kwarantannie obrazów z rejestru kontenerów |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
@@ -210,6 +252,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | Ściąganie lub uzyskać poddane kwarantannie obrazów z rejestru kontenerów |
 > | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Zapisu/modyfikowania stan kwarantanny obrazów poddane kwarantannie |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="api-management-service-contributor"></a>Współautor usługi API Management
 > [!div class="mx-tableFixed"]
@@ -225,6 +273,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="api-management-service-operator-role"></a>Rola Operator usługi API Management
 > [!div class="mx-tableFixed"]
@@ -250,6 +304,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | Pobierz listę kluczy użytkowników |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="api-management-service-reader-role"></a>Rola Czytnik usługi API Management
 > [!div class="mx-tableFixed"]
@@ -268,6 +326,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | Pobierz listę kluczy użytkowników |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="application-insights-component-contributor"></a>Współautor składników usługi Application Insights
 > [!div class="mx-tableFixed"]
@@ -284,6 +346,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 > [!div class="mx-tableFixed"]
@@ -298,6 +366,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="automation-job-operator"></a>Operator zadań usługi Automation
 > [!div class="mx-tableFixed"]
@@ -319,6 +393,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="automation-operator"></a>Operator usługi
 > [!div class="mx-tableFixed"]
@@ -348,6 +428,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Automation/automationAccounts/jobs/output/read | Pobiera dane wyjściowe zadania |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="automation-runbook-operator"></a>Operator elementów runbook usługi Automation
 > [!div class="mx-tableFixed"]
@@ -362,6 +448,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Rola administratora klastra usługi Azure Kubernetes Service
 > [!div class="mx-tableFixed"]
@@ -371,6 +463,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Akcje** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Wyświetl listę poświadczeń administratora clusterAdmin klastra zarządzanego |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="azure-kubernetes-service-cluster-user-role"></a>Rola użytkownika klastra usługi Azure Kubernetes Service
 > [!div class="mx-tableFixed"]
@@ -380,6 +478,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **Akcje** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Wyświetl listę poświadczeń użytkownika clusterUser klastra zarządzanego |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="azure-stack-registration-owner"></a>Właściciel rejestracji w usłudze Azure Stack
 > [!div class="mx-tableFixed"]
@@ -391,6 +495,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.AzureStack/registrations/products/listDetails/action | Pobiera rozszerzone szczegóły produktu usługi Azure Stack w portalu Marketplace |
 > | Microsoft.AzureStack/registrations/products/read | Pobiera właściwości produktu usługi Azure Stack w portalu Marketplace |
 > | Microsoft.AzureStack/registrations/read | Pobiera właściwości rejestracji w usłudze Azure Stack |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="backup-contributor"></a>Współautor kopii zapasowych
 > [!div class="mx-tableFixed"]
@@ -442,6 +552,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Pobiera stan operacji dla danej operacji |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listę wszystkich kopii zapasowych opcjami ochrony |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="backup-operator"></a>Operator kopii zapasowych
 > [!div class="mx-tableFixed"]
@@ -508,6 +624,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Pobiera stan operacji dla danej operacji |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listę wszystkich kopii zapasowych opcjami ochrony |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="backup-reader"></a>Czytelnik kopii zapasowych
 > [!div class="mx-tableFixed"]
@@ -555,6 +677,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Pobiera stan operacji dla danej operacji |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listę wszystkich kopii zapasowych opcjami ochrony |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Zwraca szczegóły użycia magazynu usług Recovery Services. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="billing-reader"></a>Czytelnik rozliczeń
 > [!div class="mx-tableFixed"]
@@ -570,6 +698,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Management/managementGroups/read | Wyświetlanie listy grup zarządzania dla tego uwierzytelnionego użytkownika. |
 > | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="biztalk-contributor"></a>Współautor usługi BizTalk
 > [!div class="mx-tableFixed"]
@@ -585,6 +719,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cdn-endpoint-contributor"></a>Współautor punktu końcowego usługi CDN
 > [!div class="mx-tableFixed"]
@@ -601,6 +741,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cdn-endpoint-reader"></a>Czytelnik punktu końcowego usługi CDN
 > [!div class="mx-tableFixed"]
@@ -617,6 +763,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cdn-profile-contributor"></a>Współautor profilu CDN
 > [!div class="mx-tableFixed"]
@@ -633,6 +785,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cdn-profile-reader"></a>Czytelnik profilu usługi CDN
 > [!div class="mx-tableFixed"]
@@ -649,6 +807,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="classic-network-contributor"></a>Współautor klasycznej sieci
 > [!div class="mx-tableFixed"]
@@ -664,6 +828,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="classic-storage-account-contributor"></a>Współautor klasycznego konta magazynu
 > [!div class="mx-tableFixed"]
@@ -679,6 +849,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="classic-storage-account-key-operator-service-role"></a>Rola usługi Operator kluczy klasycznych kont magazynu
 > [!div class="mx-tableFixed"]
@@ -689,6 +865,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | Microsoft.ClassicStorage/storageAccounts/listkeys/action | Wyświetla klucze dostępu dla kont magazynu. |
 > | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Generuje ponownie istniejące klucze dostępu dla konta magazynu. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="classic-virtual-machine-contributor"></a>Współautor klasycznej maszyny wirtualnej
 > [!div class="mx-tableFixed"]
@@ -714,6 +896,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cognitive-services-contributor"></a>Cognitive Services — współautor
 > [!div class="mx-tableFixed"]
@@ -739,6 +927,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cognitive-services-user"></a>Cognitive Services — użytkownik
 > [!div class="mx-tableFixed"]
@@ -760,6 +954,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/read | Pobiera listę subskrypcji. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cosmos-db-account-reader-role"></a>Rola czytelnika konta usługi Cosmos DB
 > [!div class="mx-tableFixed"]
@@ -775,6 +975,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Insights/Metrics/read | Odczytaj metryki |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cosmosbackupoperator"></a>CosmosBackupOperator
 > [!div class="mx-tableFixed"]
@@ -785,6 +991,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | Microsoft.DocumentDB/databaseAccounts/backup/action | Prześlij żądanie do skonfigurowania kopii zapasowej |
 > | Microsoft.DocumentDB/databaseAccounts/restore/action | Przesyłanie żądania przywracania |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cost-management-contributor"></a>Cost Management — współautor
 > [!div class="mx-tableFixed"]
@@ -799,6 +1011,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/read | Pobiera listę subskrypcji. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="cost-management-reader"></a>Cost Management — czytelnik
 > [!div class="mx-tableFixed"]
@@ -813,6 +1031,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/read | Pobiera listę subskrypcji. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="data-box-contributor"></a>Data Box — współautor
 > [!div class="mx-tableFixed"]
@@ -827,6 +1051,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.Databox/* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="data-box-reader"></a>Data Box — czytelnik
 > [!div class="mx-tableFixed"]
@@ -842,6 +1072,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Databox/locations/availableSkus/action | Ta metoda zwraca listę dostępnych jednostek SKU. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="data-factory-contributor"></a>Współautor Data Factory
 > [!div class="mx-tableFixed"]
@@ -858,6 +1094,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="data-lake-analytics-developer"></a>Deweloper usługi Data Lake Analytics
 > [!div class="mx-tableFixed"]
@@ -889,6 +1131,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.DataLakeAnalytics/accounts/firewallRules/Delete | Usuwanie reguły zapory. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Write | Utwórz lub zaktualizuj zasady obliczeń. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Delete | Usuwanie zasad obliczeń. |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="data-purger"></a>Oczyszczacz danych
 > [!div class="mx-tableFixed"]
@@ -901,6 +1147,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Insights/components/purge/action | Czyszczenie danych z usługi Application Insights |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | Usuń określone dane z obszaru roboczego |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="devtest-labs-user"></a>Użytkownik usługi DevTest Labs
 > [!div class="mx-tableFixed"]
@@ -941,6 +1193,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Storage/storageAccounts/listKeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | **notActions** |  |
 > | Microsoft.Compute/virtualMachines/vmSizes/read | Wyświetla dostępne rozmiary, do których można zaktualizować maszynę wirtualną |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="dns-zone-contributor"></a>Współautor strefy DNS
 > [!div class="mx-tableFixed"]
@@ -956,6 +1212,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="documentdb-account-contributor"></a>Współautor konta bazy danych DocumentDB
 > [!div class="mx-tableFixed"]
@@ -971,6 +1233,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="eventgrid-eventsubscription-contributor"></a>Współautor EventSubscription EventGrid
 > [!div class="mx-tableFixed"]
@@ -988,6 +1256,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="eventgrid-eventsubscription-reader"></a>Czytnik EventSubscription EventGrid
 > [!div class="mx-tableFixed"]
@@ -1002,6 +1276,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.EventGrid/locations/eventSubscriptions/read | Subskrypcje zdarzeń regionalnych listy |
 > | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | Wyświetl subskrypcje zdarzeń regionalnych przez topictype |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="hdinsight-domain-services-contributor"></a>HDInsight Domain Services — współautor
 > [!div class="mx-tableFixed"]
@@ -1013,6 +1293,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.AAD/*/read |  |
 > | Microsoft.AAD/domainServices/*/read |  |
 > | Microsoft.AAD/domainServices/oucontainer/* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="intelligent-systems-account-contributor"></a>Współautor konta usługi Systemy inteligentne
 > [!div class="mx-tableFixed"]
@@ -1028,6 +1314,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="key-vault-contributor"></a>Współautor magazynu kluczy
 > [!div class="mx-tableFixed"]
@@ -1045,6 +1337,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **notActions** |  |
 > | Microsoft.KeyVault/locations/deletedVaults/purge/action | Przeczyść usunięty nietrwale magazyn kluczy |
 > | Microsoft.KeyVault/hsmPools/* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="lab-creator"></a>Twórca laboratorium
 > [!div class="mx-tableFixed"]
@@ -1060,6 +1356,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | Uzyskaj informacje o dostępności regionalnej dla każdej kategorii rozmiar skonfigurowany w ramach konta laboratorium |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="log-analytics-contributor"></a>Współautor usługi Log Analytics
 > [!div class="mx-tableFixed"]
@@ -1081,6 +1383,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="log-analytics-reader"></a>Czytelnik usługi Log Analytics
 > [!div class="mx-tableFixed"]
@@ -1095,6 +1403,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | **notActions** |  |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | Pobiera klucze wspólne dla obszaru roboczego. Te klucze są używane do łączenia agentów usługi Microsoft Operational Insights z obszarem roboczym. |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="logic-app-contributor"></a>Współautor aplikacji logiki
 > [!div class="mx-tableFixed"]
@@ -1123,6 +1435,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Pobiera właściwości planu usługi App Service |
 > | Microsoft.Web/sites/functions/listSecrets/action | Listy kluczy tajnych funkcji aplikacji sieci Web. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="logic-app-operator"></a>Operator aplikacji logiki
 > [!div class="mx-tableFixed"]
@@ -1147,6 +1465,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Web/connections/*/read | Przeczytaj połączeń. |
 > | Microsoft.Web/customApis/*/read | Przeczytaj niestandardowego interfejsu API. |
 > | Microsoft.Web/serverFarms/read | Pobiera właściwości planu usługi App Service |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="managed-application-operator-role"></a>Aplikacja zarządzana — rola operatora
 > [!div class="mx-tableFixed"]
@@ -1157,6 +1481,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | */read | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.Solutions/applications/read | Pobiera listę aplikacji. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="managed-applications-reader"></a>Aplikacje zarządzane — czytelnik
 > [!div class="mx-tableFixed"]
@@ -1168,6 +1498,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | */read | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Solutions/jitRequests/* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="managed-identity-contributor"></a>Współautor tożsamości zarządzanych
 > [!div class="mx-tableFixed"]
@@ -1184,6 +1520,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="managed-identity-operator"></a>Operator tożsamości zarządzanych
 > [!div class="mx-tableFixed"]
@@ -1199,6 +1541,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="management-group-contributor"></a>Współautor grupy zarządzania
 > [!div class="mx-tableFixed"]
@@ -1212,6 +1560,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Management/managementGroups/subscriptions/delete | Kojarzy anulować subskrypcję z grupy zarządzania. |
 > | Microsoft.Management/managementGroups/subscriptions/write | Kojarzy istniejącej subskrypcji z grupą zarządzania. |
 > | Microsoft.Management/managementGroups/write | Utwórz lub zaktualizuj grupę zarządzania. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="management-group-reader"></a>Czytelnik grupy zarządzania
 > [!div class="mx-tableFixed"]
@@ -1221,6 +1575,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | ac63b705-f282-497d-ac71-919bf39d939d |
 > | **Akcje** |  |
 > | Microsoft.Management/managementGroups/read | Wyświetlanie listy grup zarządzania dla tego uwierzytelnionego użytkownika. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="monitoring-contributor"></a>Współautor monitorowania
 > [!div class="mx-tableFixed"]
@@ -1253,6 +1613,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>Wydawca metryk monitorowania
 > [!div class="mx-tableFixed"]
@@ -1264,8 +1630,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Insights/Register/Action | Zarejestruj dostawcę usługi Microsoft Insights |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | Microsoft.Insights/Metrics/Write | Metryki zapisu |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="monitoring-reader"></a>Czytelnik monitorowania
 > [!div class="mx-tableFixed"]
@@ -1277,6 +1647,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | */read | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.OperationalInsights/workspaces/search/action | Wykonuje zapytanie wyszukiwania |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="network-contributor"></a>Współautor sieci
 > [!div class="mx-tableFixed"]
@@ -1292,6 +1668,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="new-relic-apm-account-contributor"></a>Współautor konta usługi New Relic APM
 > [!div class="mx-tableFixed"]
@@ -1307,6 +1689,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | NewRelic.APM/accounts/* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="reader-and-data-access"></a>Czytnik i dostęp do danych
 > [!div class="mx-tableFixed"]
@@ -1317,6 +1705,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Microsoft.Storage/storageAccounts/read | Zwraca listę kont magazynu bądź pobiera właściwości dla podanego konta magazynu. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="redis-cache-contributor"></a>Współautor pamięci podręcznej Redis
 > [!div class="mx-tableFixed"]
@@ -1332,6 +1726,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="resource-policy-contributor-preview"></a>Współautor zasad zasobów (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
@@ -1346,6 +1746,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Authorization/policysetdefinitions/* | Tworzenie i zarządzanie nimi zestawów zasad |
 > | Microsoft.PolicyInsights/* |  |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="scheduler-job-collections-contributor"></a>Współautor kolekcji zadań usługi Harmonogram
 > [!div class="mx-tableFixed"]
@@ -1361,6 +1767,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Scheduler/jobcollections/* | Tworzenie i zarządzanie nimi kolekcji zadań |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="search-service-contributor"></a>Współautor usługi wyszukiwania
 > [!div class="mx-tableFixed"]
@@ -1376,6 +1788,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Search/searchServices/* | Tworzenie i zarządzanie nimi usługi wyszukiwania |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="security-admin"></a>Administrator zabezpieczeń
 > [!div class="mx-tableFixed"]
@@ -1405,6 +1823,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Security/securityContacts/write | Aktualizacje zabezpieczeń skontaktuj się z |
 > | Microsoft.Security/InformationProtectionPolicies/write | Aktualizacje z zasadami ochrony informacji dla zasobu |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="security-manager-legacy"></a>Menedżer zabezpieczeń (starsza wersja)
 > [!div class="mx-tableFixed"]
@@ -1423,6 +1847,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Security/* | Tworzenie i zarządzanie nimi składniki zabezpieczeń i zasad |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="security-reader"></a>Odczytywanie zabezpieczeń
 > [!div class="mx-tableFixed"]
@@ -1439,6 +1869,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Security/*/read | Składniki zabezpieczeń Odczytaj i zasady |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.Management/managementGroups/read | Wyświetlanie listy grup zarządzania dla tego uwierzytelnionego użytkownika. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="site-recovery-contributor"></a>Współautor usługi Site Recovery
 > [!div class="mx-tableFixed"]
@@ -1474,6 +1910,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Storage/storageAccounts/read | Zwraca listę kont magazynu bądź pobiera właściwości dla podanego konta magazynu. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="site-recovery-operator"></a>Operator usługi Site Recovery
 > [!div class="mx-tableFixed"]
@@ -1539,6 +1981,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Storage/storageAccounts/read | Zwraca listę kont magazynu bądź pobiera właściwości dla podanego konta magazynu. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="site-recovery-reader"></a>Czytelnik usługi Site Recovery
 > [!div class="mx-tableFixed"]
@@ -1578,6 +2026,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.RecoveryServices/Vaults/usages/read | Zwraca szczegóły użycia magazynu usług Recovery Services. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Operacja Token magazynu umożliwia pobieranie tokenu magazynu dla operacji zaplecza na poziomie magazynu. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="sql-db-contributor"></a>Współautor bazy danych SQL
 > [!div class="mx-tableFixed"]
@@ -1614,6 +2068,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="sql-security-manager"></a>Menedżer zabezpieczeń SQL
 > [!div class="mx-tableFixed"]
@@ -1655,6 +2113,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Tworzenie i zarządzanie zasadami alertów zabezpieczeń serwera SQL |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="sql-server-contributor"></a>Współautor serwera SQL Server
 > [!div class="mx-tableFixed"]
@@ -1694,6 +2158,10 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Edytuj zasady alertu zabezpieczeń serwera SQL |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="storage-account-contributor"></a>Współautor konta magazynu
 > [!div class="mx-tableFixed"]
@@ -1711,6 +2179,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Storage/storageAccounts/* | Tworzenie i zarządzanie kontami magazynu |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="storage-account-key-operator-service-role"></a>Rola usługi Operator kluczy kont magazynu
 > [!div class="mx-tableFixed"]
@@ -1721,6 +2195,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | Generuje ponownie klucze dostępu dla podanego konta magazynu. |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="storage-blob-data-contributor-preview"></a>Współautor danych obiektu blob magazynu (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
@@ -1732,10 +2212,14 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Zwraca wynik usunięcia kontenera |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca listę kontenerów |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | Zwraca wynik umieszczania obiektu blob kontenera |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Zwraca wynik usunięcia obiektu blob |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Zwraca wynik zapisania obiektu blob |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="storage-blob-data-owner-preview"></a>Właściciel danych obiektu blob magazynu (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
@@ -1745,8 +2229,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/* |  |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="storage-blob-data-reader-preview"></a>Czytnik danych obiektu blob magazynu (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
@@ -1756,8 +2244,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca listę kontenerów |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Zwraca obiekt blob lub listę obiektów blob |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="storage-queue-data-contributor-preview"></a>Współautor danych kolejki magazynu (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
@@ -1769,10 +2261,14 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Zwraca wynik usunięcia kolejki |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/write | Zwraca wynik zapisania kolejki |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Zwraca wynik usunięcia komunikatu |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Zwraca wynik zapisania komunikatu |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="storage-queue-data-reader-preview"></a>Czytnik danych kolejki magazynu (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
@@ -1782,8 +2278,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | **Identyfikator** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Akcje** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Zwraca kolejkę lub listę kolejek. |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="support-request-contributor"></a>Współautor żądania pomocy technicznej
 > [!div class="mx-tableFixed"]
@@ -1795,6 +2295,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Authorization/*/read | Przeczytaj autoryzacji |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="traffic-manager-contributor"></a>Współautor usługi Traffic Manager
 > [!div class="mx-tableFixed"]
@@ -1810,6 +2316,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="user-access-administrator"></a>Administrator dostępu użytkowników
 > [!div class="mx-tableFixed"]
@@ -1821,6 +2333,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | */read | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.Authorization/* | Zarządzanie autoryzacji |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="virtual-machine-administrator-login"></a>Logowanie administratora maszyny wirtualnej
 > [!div class="mx-tableFixed"]
@@ -1834,9 +2352,13 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Network/loadBalancers/read | Pobiera definicji modułu równoważenia obciążenia |
 > | Microsoft.Network/networkInterfaces/read | Pobiera definicja interfejsu sieciowego.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | Zaloguj się do maszyny wirtualnej jako zwykły użytkownik |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Zaloguj się do maszyny wirtualnej z uprawnieniami administratora systemu Windows lub użytkownika root systemu Linux |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="virtual-machine-contributor"></a>Współautor maszyny wirtualnej
 > [!div class="mx-tableFixed"]
@@ -1883,6 +2405,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Storage/storageAccounts/listKeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Microsoft.Storage/storageAccounts/read | Zwraca listę kont magazynu bądź pobiera właściwości dla podanego konta magazynu. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="virtual-machine-user-login"></a>Logowanie użytkownika maszyny wirtualnej
 > [!div class="mx-tableFixed"]
@@ -1896,8 +2424,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Network/loadBalancers/read | Pobiera definicji modułu równoważenia obciążenia |
 > | Microsoft.Network/networkInterfaces/read | Pobiera definicja interfejsu sieciowego.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **notActions** |  |
+> | *Brak* |  |
 > | **Elementy DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | Zaloguj się do maszyny wirtualnej jako zwykły użytkownik |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="web-plan-contributor"></a>Współautor planów sieci Web
 > [!div class="mx-tableFixed"]
@@ -1913,6 +2445,12 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
 > | Microsoft.Support/* | Tworzenie i zarządzanie biletami pomocy technicznej |
 > | Microsoft.Web/serverFarms/* | Tworzenie i zarządzanie nimi farmy serwerów |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="website-contributor"></a>Współautor witryny sieci Web
 > [!div class="mx-tableFixed"]
@@ -1933,9 +2471,15 @@ Poniższa tabela zawiera krótkie opisy ról wbudowanych. Kliknij nazwę roli, a
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Pobiera właściwości planu usługi App Service |
 > | Microsoft.Web/sites/* | Tworzenie i zarządzanie witrynami sieci Web (Tworzenie witryn wymaga także uprawnienia do zapisu do skojarzonego planu usługi App Service) |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | *Brak* |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Role niestandardowe](custom-roles.md)
-- [Zarządzanie przypisaniami ról przy użyciu witryny Azure portal](role-assignments-portal.md)
+- [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
+- [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal](role-assignments-portal.md)
 - [Uprawnienia w usłudze Azure Security Center](../security-center/security-center-permissions.md)

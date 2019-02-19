@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 02/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 55558f1483a576e7ac3b9ce027588eceabd5db70
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311715"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342426"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Zachowania zabezpieczeń i danych w usłudze Azure Search
 
@@ -26,13 +26,13 @@ Architektura zabezpieczeń usługi Azure Search zakresów zabezpieczeń fizyczny
 
 Usługa Azure Search jest certyfikowany do pracy następujące standardy jako [ogłoszone w czerwcu 2018](https://azure.microsoft.com/blog/azure-search-is-now-certified-for-several-levels-of-compliance/):
 
-+ [ISO 27001: 2013](https://www.iso.org/isoiec-27001-information-security.html) 
++ [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [Audyt SOC 2 typu 2 zgodności](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) pełny raport, przejdź do [platformy Azure — i platformy Azure dla instytucji rządowych SOC 2 typu II raportu](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports). 
 + [Health Insurance Portability and Accountability Act (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
 + [GxP (21 CFR Part 11)](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
-+ [PCI DSS poziom 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [Australia IRAP Nieutajnionych DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
++ [PCI DSS Level 1](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
++ [Australia IRAP Unclassified DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 Zgodność ze standardami dotyczy funkcji jest ogólnie dostępna. Funkcje w wersji zapoznawczej są certyfikowane podczas przejścia, które są ogólnie dostępne i nie mogą być używane w rozwiązaniach o wymagania rygorystyczne standardy. Certyfikacja zgodności jest udokumentowany w [zgodności omówienie platformy Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) i [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter). 
 
@@ -60,14 +60,16 @@ Wszystkich usług platformy Azure obsługuje kontroli dostępu opartej na rolach
 
 ## <a name="service-access-and-authentication"></a>Dostęp do usługi i uwierzytelniania
 
-Gdy usługa Azure Search dziedziczy zabezpieczenia zabezpieczeń platformy Azure, zapewnia również swój własny uwierzytelniania opartego na kluczu. Klucz interfejsu api to ciąg składający się z liter i cyfr generowany losowo. Typ klucza (admin lub zapytanie) określa poziom dostępu. Przesyłanie prawidłowy klucz jest traktowany jako będący dowód żądanie pochodzi z zaufanego jednostki. Dwa typy kluczy są używane do uzyskania dostępu do usługi wyszukiwania:
+Gdy usługa Azure Search dziedziczy zabezpieczenia zabezpieczeń platformy Azure, zapewnia również swój własny uwierzytelniania opartego na kluczu. Klucz interfejsu api to ciąg składający się z liter i cyfr generowany losowo. Typ klucza (admin lub zapytanie) określa poziom dostępu. Przesyłanie prawidłowy klucz jest traktowany jako będący dowód żądanie pochodzi z zaufanego jednostki. 
 
-* Administrator (prawidłowe w kontekście operacji odczytu i zapisu względem usługi)
-* Zapytania (ważny dla operacji tylko do odczytu, takich jak zapytania względem indeksu)
+Istnieją dwa poziomy dostępu do usługi wyszukiwania włączane przez dwa typy kluczy:
 
-Klucze administratora są tworzone, gdy usługa jest aprowizowana. Dostępne są dwa klucze administratora, wyznaczony jako *podstawowego* i *dodatkowej* je bezpośrednio, ale w rzeczywistości są one wymienne. Każda usługa ma dwa klucze administratora, dzięki czemu można je przerzucić jeden bez utraty dostępu do usługi. Można ponownie wygenerować klucza albo administratora, ale nie można dodać do klucza liczby całkowitej administratora. Istnieje więcej niż dwa klucze administratora dla usługi wyszukiwania.
+* Dostęp administratora (prawidłowe w kontekście operacji odczytu i zapisu względem usługi)
+* Dostęp zapytań (ważny dla operacji tylko do odczytu, takich jak zapytania względem indeksu)
 
-Klucze zapytania są tworzone w miarę potrzeb i są przeznaczone dla aplikacji klienckich, które bezpośrednio wywoływać wyszukiwania. Możesz utworzyć maksymalnie 50 klucze zapytania. W kodzie aplikacji należy określić adres URL wyszukiwania i klucz interfejsu api zapytań, aby zezwolić na dostęp tylko do odczytu do usługi. Kod aplikacji określa również indeksu używanych przez aplikację. Punkt końcowy, klucz interfejsu api, aby uzyskać dostęp tylko do odczytu i indeksu docelowego określa poziom zakresu i dostęp do połączenia z aplikacji klienckiej.
+*Klucze administratora* są tworzone, gdy usługa jest aprowizowana. Dostępne są dwa klucze administratora, wyznaczony jako *podstawowego* i *dodatkowej* je bezpośrednio, ale w rzeczywistości są one wymienne. Każda usługa ma dwa klucze administratora, dzięki czemu można je przerzucić jeden bez utraty dostępu do usługi. Można ponownie wygenerować klucza albo administratora, ale nie można dodać do klucza liczby całkowitej administratora. Istnieje więcej niż dwa klucze administratora dla usługi wyszukiwania.
+
+*Kluczami zapytań* są tworzone w miarę potrzeb i są przeznaczone dla aplikacji klienckich, które bezpośrednio wywoływać wyszukiwania. Możesz utworzyć maksymalnie 50 klucze zapytania. W kodzie aplikacji należy określić adres URL wyszukiwania i klucz interfejsu api zapytań, aby zezwolić na dostęp tylko do odczytu do usługi. Kod aplikacji określa również indeksu używanych przez aplikację. Punkt końcowy, klucz interfejsu api, aby uzyskać dostęp tylko do odczytu i indeksu docelowego określa poziom zakresu i dostęp do połączenia z aplikacji klienckiej.
 
 Wymagane jest uwierzytelnienie na każde żądanie, w którym każde żądanie składa się z kluczem obowiązkowe, operacji i obiektu. Gdy połączonych ze sobą, dwóch poziomach uprawnień (pełny lub tylko do odczytu), a także kontekst (na przykład dla operacji zapytania względem indeksu) są wystarczające dla zapewniających bezpieczeństwo szerokim w operacji usługi. Aby uzyskać więcej informacji na temat kluczy, zobacz [tworzenie i zarządzanie kluczami interfejsu api](search-security-api-keys.md).
 
@@ -93,7 +95,9 @@ Aby uzyskać informacji dotyczących tworzenia struktury żądania w usłudze Az
 
 ## <a name="user-access-to-index-content"></a>Dostęp użytkownika do indeksowanie zawartości
 
-Dostęp użytkownika do zawartości indeksu jest implementowane za pomocą filtrów zabezpieczeń dotyczących zapytań, zwracając dokumenty skojarzone z tożsamością zabezpieczeń. Zamiast wstępnie zdefiniowanych ról i przypisań ról kontrola dostępu oparta na tożsamości jest implementowany jako filtr, TRIM wyszukiwanie wyników dokumentów i zawartości, w oparciu o tożsamości. W poniższej tabeli opisano dwa podejścia do wyników wyszukiwania przycinania zawartości nieautoryzowanym.
+Domyślnie dostęp użytkowników do indeksu jest określany przez klucz dostępu dla żądania zapytania. Większość deweloperów, tworzenie i przypisywanie [ *kluczami zapytań* ](search-security-api-keys.md) na żądanie wyszukiwania po stronie klienta. Klucz zapytania przyznaje dostęp do odczytu do całej zawartości w indeksie.
+
+Jeśli potrzebujesz szczegółowego, na użytkownika na kontrolę zawartości, możesz utworzyć filtrów zabezpieczeń na zapytania, zwracając dokumenty skojarzone z tożsamością zabezpieczeń. Zamiast wstępnie zdefiniowanych ról i przypisań ról, kontrola dostępu oparta na tożsamości jest implementowany jako *filtru* czy TRIM wyszukiwanie wyników dokumentów i zawartości oparte na tożsamości. W poniższej tabeli opisano dwa podejścia do wyników wyszukiwania przycinania zawartości nieautoryzowanym.
 
 | Podejście | Opis |
 |----------|-------------|

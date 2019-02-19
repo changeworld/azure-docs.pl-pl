@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: ashishth
-ms.openlocfilehash: 04a923a8bc022aefb667489702c0e74493df94a8
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 5faea45a55d69cece56137d70862d80dfe335971
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652765"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342460"
 ---
 # <a name="bulk-load-data-into-apache-phoenix-using-psql"></a>Zbiorcze ładowanie danych do oprogramowania Apache Phoenix za pomocą programu psql
 
@@ -115,7 +115,7 @@ Do załadowania większą przepływność rozłożone w klastrze, należy użyć
     org.apache.phoenix.mapreduce.CsvBulkLoadTool --table Customers --input /inputFolderBulkLoad/customers.csv –zookeeper ZookeeperQuorum:2181:/hbase-unsecure
     ```
 
-8. Aby używać MapReduce z usługą Azure Data Lake Store, zlokalizuj katalogu głównego usługi ADLS, czyli `hbase.rootdir` wartość w `hbase-site.xml`. W poniższym poleceniu jest katalog główny usługi ADLS `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. W tym poleceniu Określ dane wejściowe usługi ADLS i danych wyjściowych, foldery jako parametry:
+8. Aby używanie technologii MapReduce z usługi Azure Data Lake Storage, zlokalizuj katalog główny usługi Data Lake Storage, która jest `hbase.rootdir` wartość w `hbase-site.xml`. W poniższym poleceniu w katalogu głównym usługi Data Lake Storage jest `adl://hdinsightconf1.azuredatalakestore.net:443/hbase1`. W tym poleceniu Określ dane wejściowe usługi Data Lake Storage i danych wyjściowych, foldery jako parametry:
 
     ```bash
     cd /usr/hdp/current/phoenix-client
@@ -127,7 +127,7 @@ Do załadowania większą przepływność rozłożone w klastrze, należy użyć
 
 ## <a name="recommendations"></a>Zalecenia
 
-* Użyj tego samego nośnika magazynowania dla folderów wejściowe i wyjściowe, WASB lub ADLS. Aby przesyłanie danych z WASB do usługi ADLS, można użyć `distcp` polecenia:
+* Dla folderów wejściowe i wyjściowe, Azure Storage (WASB) lub Azure Data Lake Storage (ADL), należy użyć tego samego nośnika magazynowania. Aby przesyłanie danych z usługi Azure Storage do usługi Data Lake Storage, możesz użyć `distcp` polecenia:
 
     ```bash
     hadoop distcp wasb://@.blob.core.windows.net/example/data/gutenberg adl://.azuredatalakestore.net:443/myfolder

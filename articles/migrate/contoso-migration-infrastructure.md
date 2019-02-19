@@ -8,12 +8,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/1/2018
 ms.author: raynew
-ms.openlocfilehash: 32a489ee6266018ef1160a0870fe236cc6a72d36
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 17ec8eb779dec560cfc5350fecc0fb819e89195a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52726988"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340131"
 ---
 # <a name="contoso---deploy-a-migration-infrastructure"></a>Contoso — wdrażanie infrastruktury migracji
 
@@ -27,7 +27,7 @@ Ten artykuł jest częścią serii artykułów, które dokumentują sposób fikc
 
 **Artykuł** | **Szczegóły** | **Stan**
 --- | --- | ---
-[Artykuł 1: omówienie](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
+[Artykuł 1: Przegląd](contoso-migration-overview.md) | Omówienie serię artykułów, strategia migracji do firmy Contoso i przykładowe aplikacje, które są używane w tej serii. | Dostępne
 Artykuł 2: Wdrażanie infrastruktury platformy Azure | Contoso przygotowuje swoją infrastrukturę lokalną i jej infrastruktury platformy Azure do migracji. Tej samej infrastruktury jest używany dla wszystkich artykułów migracji w serii. | W tym artykule
 [Artykuł 3: Ocena zasobów lokalnych do migracji na platformę Azure](contoso-migration-assessment.md)  | SContoso uruchamia oceny aplikacji rozwiązania SmartHotel360 jej w środowisku lokalnym, działające w programie VMware. Contoso ocenia aplikacji maszyn wirtualnych przy użyciu usługi Azure Migrate bazy danych oraz aplikacji programu SQL Server przy użyciu Data Migration Assistant. | Dostępne
 [Artykuł 4: Ponowne hostowanie aplikacji na maszynie Wirtualnej platformy Azure oraz wystąpienie zarządzane usługi SQL Database](contoso-migration-rehost-vm-sql-managed-instance.md) | Firmy Contoso jest uruchamiana lift-and-shift migracja na platformę Azure dla swoich aplikacji rozwiązania SmartHotel360 w środowisku lokalnym. Firma Contoso jest migrowana aplikację frontonu maszyn wirtualnych za pomocą [usługi Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview). Contoso bazy danych aplikacji jest migrowana do wystąpienia zarządzanego Azure SQL Database przy użyciu [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview). | Dostępne   
@@ -35,11 +35,11 @@ Artykuł 2: Wdrażanie infrastruktury platformy Azure | Contoso przygotowuje swo
 [Artykuł 6: Ponowne hostowanie aplikacji na maszynach wirtualnych platformy Azure i w grupie dostępności AlwaysOn programu SQL Server](contoso-migration-rehost-vm-sql-ag.md) | Contoso przeprowadza migrację aplikacji przy użyciu Site Recovery do migracji maszyn wirtualnych aplikacji i Database Migration Service migrację bazy danych aplikacji do klastra programu SQL Server, który jest chroniony przez grupy dostępności AlwaysOn. | Dostępne
 [Artykuł 7: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure](contoso-migration-rehost-linux-vm.md) | Contoso zostanie ukończona lift-and-shift migrację swoich aplikacji osTicket systemu Linux na maszynach wirtualnych platformy Azure przy użyciu usługi Site Recovery. | Dostępne
 [Artykuł 8: Ponowne hostowanie aplikacji systemu Linux na maszynach wirtualnych platformy Azure i usługa Azure Database for MySQL](contoso-migration-rehost-linux-vm-mysql.md) | Contoso swoją aplikację osTicket systemu Linux jest migrowana do maszyn wirtualnych platformy Azure przy użyciu usługi Site Recovery. Jej zmigrowaniu bazy danych aplikacji do usługi Azure Database for MySQL za pomocą aplikacji MySQL Workbench. | Dostępne
-[Artykuł 9: Refaktoryzacja aplikacji w aplikacji internetowej platformy Azure i usługi Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso wykonuje migrację swoich aplikacji rozwiązania SmartHotel360 na aplikację internetową platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych. | Dostępne    
-[Artykuł 10: Refaktoryzacja aplikacji systemu Linux w aplikacji internetowej platformy Azure i usługi Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso przeprowadza migrację swoich aplikacji osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu lokacjach. Aplikacja sieci web jest zintegrowana z usługą GitHub ciągłego dostarczania. Baza danych aplikacji jest migrowana do usługi Azure Database for MySQL — wystąpienia. | Dostępne
-[Artykuł 11: Refaktoryzacja Team Foundation Server w usługach Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
-[Artykuł 12: Przekształcanie aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazy danych aplikacji przy użyciu usługi Azure SQL Database. | Dostępne    
-[Artykuł 13: Ponownie skompilować aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne
+[Artykuł 9: Refaktoryzuj aplikacji w aplikacji internetowej platformy Azure i usługi Azure SQL Database](contoso-migration-refactor-web-app-sql.md) | Contoso wykonuje migrację swoich aplikacji rozwiązania SmartHotel360 na aplikację internetową platformy Azure i wykonuje migrację bazy danych aplikacji na wystąpienie serwera SQL Azure przy użyciu Asystenta migracji bazy danych. | Dostępne    
+[Artykuł 10: Refaktoryzuj aplikacji systemu Linux w aplikacji internetowej platformy Azure i usługi Azure Database for MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | Contoso przeprowadza migrację swoich aplikacji osTicket systemu Linux do aplikacji sieci web platformy Azure w wielu lokacjach. Aplikacja sieci web jest zintegrowana z usługą GitHub ciągłego dostarczania. Baza danych aplikacji jest migrowana do usługi Azure Database for MySQL — wystąpienia. | Dostępne
+[Artykuł 11: Refaktoryzuj Team Foundation Server w usługach Azure DevOps](contoso-migration-tfs-vsts.md) | Contoso migruje jego lokalnego wdrożenia Team Foundation Server do usługi Azure DevOps Services na platformie Azure. | Dostępne
+[Artykuł 12: Ponowne Ustalanie architektury aplikacji kontenerów platformy Azure i usługi Azure SQL Database](contoso-migration-rearchitect-container-sql.md) | Contoso migruje jego SmartHotel aplikacji na platformie Azure. Następnie rearchitects warstwy sieci web aplikacji jako kontener Windows w usłudze Azure Service Fabric i bazy danych aplikacji przy użyciu usługi Azure SQL Database. | Dostępne    
+[Artykuł 13: Ponownie skompiluj aplikację na platformie Azure](contoso-migration-rebuild.md) | Contoso odbudowuje swojej aplikacji SmartHotel, korzystając z możliwości platformy Azure i usług, w tym usługi Azure App Service, Azure Kubernetes Service (AKS), usługi Azure Functions, Azure Cognitive Services i Azure Cosmos DB. | Dostępne
 [Artykuł 14: Skalowanie migracji na platformę Azure](contoso-migration-scale.md) | Po wypróbowanie kombinacje migracji, Contoso przygotowuje aby możliwe było skalowanie pełną migrację na platformę Azure. | Dostępne 
 
 W tym artykule, który Contoso skonfiguruje wszystkie elementy infrastruktury potrzebny do ukończenia wszystkich scenariuszy migracji. 
@@ -49,12 +49,12 @@ W tym artykule, który Contoso skonfiguruje wszystkie elementy infrastruktury po
 
 Contoso było migrować na platformę Azure, ważne jest przygotowanie infrastruktury platformy Azure.  Ogólnie rzecz biorąc istnieje pięć szerokiego obszary, które firma Contoso potrzebuje wziąć pod uwagę:
 
-**Krok 1: Subskrypcji platformy Azure**: jak będzie Contoso zakupu platformy Azure i korzystać z platformy Azure i usług?  
-**Krok 2: Tożsamość hybrydowa**: jak będzie zarządzanie i kontrolowanie dostępu do lokalnych i zasobów platformy Azure po zakończeniu migracji? Jak Contoso rozszerzyć lub Przenieś Zarządzanie tożsamościami do chmury?  
-**Krok 3: Odzyskiwanie po awarii i odporności**: jak będzie Contoso upewnij się, że jego aplikacji i infrastruktury odporne na błędy ewentualnych wyłączeń i awarii?  
-**Krok 4: Sieć**: jak Contoso projektowania infrastruktury sieci oraz poprawnie ustanowić połączenia między jej w lokalnym centrum danych a platformą Azure?  
-**Krok 5: Zabezpieczeń**: sposób ich bezpieczne wdrożenie hybrydowe/Azure?  
-**Krok 6: Nadzoru**: Contoso zostanie zachowana jak wdrożenia, dostosowane do wymagań dotyczących zabezpieczeń i zarządzania?
+**Krok 1. Subskrypcje platformy Azure**: Jak będzie Contoso zakupu platformy Azure i korzystać z platformy Azure i usług?  
+**Krok 2. Tożsamość hybrydowa**: Jak będzie go zarządzanie i kontrolowanie dostępu do lokalnych i zasobów platformy Azure po migracji? Jak Contoso rozszerzyć lub Przenieś Zarządzanie tożsamościami do chmury?  
+**Krok 3. Odzyskiwanie po awarii i odporności**: Jak będzie Contoso upewnij się, że jego aplikacji i infrastruktury odporne na błędy ewentualnych wyłączeń i awarii?  
+**Krok 4. Sieć**: Jak Contoso projektowania infrastruktury sieci oraz poprawnie ustanowić połączenia między jej w lokalnym centrum danych a platformą Azure?  
+**Krok 5. Zabezpieczenia**: Jak będzie jego bezpiecznego wdrażania hybrydowego/platformy Azure?  
+**Krok 6: Zarządzanie**: Jak Contoso zostanie zachowana wdrożenia dostosowane do wymagań dotyczących zabezpieczeń i zarządzanie
 
 ## <a name="before-you-start"></a>Przed rozpoczęciem
 
@@ -81,7 +81,7 @@ Poniżej przedstawiono diagram przedstawiający bieżącej infrastruktury lokaln
 - Kontrolery domeny w centrum danych, uruchom na maszynach wirtualnych VMware. Kontrolery domeny w lokalnej gałęzi, uruchom na serwerach fizycznych.
 
 
-## <a name="step-1-buy-and-subscribe-to-azure"></a>Krok 1: Kup i subskrypcję systemu Azure
+## <a name="step-1-buy-and-subscribe-to-azure"></a>Krok 1: Kup i subskrypcję platformy Azure
 
 Firma Contoso potrzebuje zorientować się, jak kupić platformę Azure, jak zaprojektować subskrypcje i sposobu licencjonowania usług i zasobów.
 
@@ -132,7 +132,7 @@ Przewidywalnymi obciążeniami są zawsze muszą być dostępne z uruchomionych 
 W zamian za przy użyciu wystąpienia zarezerwowane dla określonej maszyny Wirtualnej wystąpienia muszą być utrzymywane dla dużych czasów trwania czasu konsoli można uzyskać rabat i priorytety możliwościom obliczeniowym. Za pomocą [Azure Reserved Instances](https://azure.microsoft.com/pricing/reserved-vm-instances/), wraz z korzyści użycia hybrydowego, Contoso pozwalają zaoszczędzić do 82% zniżki na regularne płatność za rzeczywiste użycie ceny (kwiecień 2018 r.).
 
 
-## <a name="step-2-manage-hybrid-identity"></a>Krok 2. Zarządzanie tożsamości hybrydowej
+## <a name="step-2-manage-hybrid-identity"></a>Krok 2: Zarządzanie tożsamości hybrydowej
 
 Zapewniając i kontrolować dostęp użytkowników do zasobów platformy Azure za pomocą funkcji zarządzania tożsamościami i dostępem (IAM) jest ważnym krokiem połączenie ze sobą infrastruktury platformy Azure.  
 
@@ -302,7 +302,7 @@ Contoso wdroży dostępność strefy jako aplikacje wymagają skalowalność, wy
 
 W projekcie regionalne w miejscu Contoso jest gotowy do należy wziąć pod uwagę strategii sieci. Musi ona zastanów się, jak w lokalnym centrum danych i platformą Azure, łączenie i komunikują się ze sobą oraz sposobu projektowania infrastruktury sieci na platformie Azure. W szczególności firma Contoso potrzebuje:
 
-- **Planowanie hybrydowych łączności sieciowej**: zorientować się, jak ma to łączenie sieci lokalnych i platformy Azure.
+- **Planowanie hybrydowych łączności sieciowej**: Zorientować się, jak ma to łączenie sieci lokalnych i platformy Azure.
 - **Projektowanie infrastruktury sieci platformy Azure**: Zdecyduj, jak ją wdrożyć sieci za pośrednictwem regionów. Sposobu komunikacji między sieciami w tym samym regionie, a w regionach?
 - **Projektowanie i konfigurowanie sieci platformy Azure**: Skonfiguruj sieci platformy Azure i podsieci i zdecyduj, jakie będą znajdować się w nich.
 
@@ -399,10 +399,10 @@ Sieć i topologię routingu w miejscu Contoso jest gotowe do skonfigurowania sie
 
 Wschodnie stany USA 2 jest regionu podstawowego, który firma Contoso będzie używany do wdrażania zasobów i usług. Poniżej przedstawiono, jak firma Contoso będzie architektury sieci:
 
-- **Centrum**: Centrum sieci wirtualnej w regionie wschodnie stany USA 2 to centralny punkt podstawowej łączności z lokalnym centrum danych.
-- **Sieci wirtualne**: typu gwiazda z sieciami wirtualnymi w regionie wschodnie stany USA 2 może służyć do izolowania obciążeń, jeśli jest to wymagane. Oprócz piastą firma Contoso będzie miał szprychy dwie sieci wirtualne w regionie wschodnie stany USA 2:
-    - **SIEĆ WIRTUALNA DEV-EUS2**. Ta sieć wirtualna zapewni opracowywania i testowania zespołu za pomocą w pełni funkcjonalnej sieci dla projektów deweloperskich. Będzie działał jako obszaru pilotażowego produkcji i będzie zależny od infrastruktury produkcji do funkcji.
-    - **Sieć wirtualna-PROD-EUS2**: składniki produkcji IaaS platformy Azure będą znajdować się w tej sieci. 
+- **Centrum**: Piastą w regionie wschodnie stany USA 2 to centralny punkt podstawowej łączności z lokalnym centrum danych.
+- **Sieci wirtualne**: Sieci wirtualne będące szprychami, w regionie wschodnie stany USA 2 może służyć do izolowania obciążeń, jeśli jest to wymagane. Oprócz piastą firma Contoso będzie miał szprychy dwie sieci wirtualne w regionie wschodnie stany USA 2:
+    - **VNET-DEV-EUS2**. Ta sieć wirtualna zapewni opracowywania i testowania zespołu za pomocą w pełni funkcjonalnej sieci dla projektów deweloperskich. Będzie działał jako obszaru pilotażowego produkcji i będzie zależny od infrastruktury produkcji do funkcji.
+    - **SIEĆ WIRTUALNA PROD-EUS2**: Składniki IaaS platformy Azure w środowisku produkcyjnym będzie znajdować się w tej sieci. 
     -  Każda sieć wirtualna ma swój własny unikatowy przestrzeń adresowa, bez nakładania się. Firma Contoso zamierza Konfigurowanie routingu bez translatora adresów sieciowych.
 - **Podsieci**:
     - Nastąpi podsieci w każdej sieci dla każdej warstwy aplikacji
@@ -413,9 +413,9 @@ Sieci wirtualne w regionie wschodnie stany USA 2 są podsumowane w poniższej ta
 
 **Sieć wirtualna** | **Range** | **Elementu równorzędnego**
 --- | --- | ---
-**SIEĆ WIRTUALNA HUB-EUS2** | 10.240.0.0/20 | SIEĆ WIRTUALNA HUB-CUS2, EUS2-DEV-SIEĆ WIRTUALNA, SIEĆ WIRTUALNA PROD-EUS2
-**SIEĆ WIRTUALNA DEV-EUS2** | 10.245.16.0/20 | SIEĆ WIRTUALNA HUB-EUS2
-**SIEĆ WIRTUALNA PROD-EUS2** | 10.245.32.0/20 | SIEĆ WIRTUALNA HUB-EUS2, SIEĆ WIRTUALNA PROD-JEDNOSTEK POJEMNOŚCI
+**VNET-HUB-EUS2** | 10.240.0.0/20 | SIEĆ WIRTUALNA HUB-CUS2, EUS2-DEV-SIEĆ WIRTUALNA, SIEĆ WIRTUALNA PROD-EUS2
+**VNET-DEV-EUS2** | 10.245.16.0/20 | VNET-HUB-EUS2
+**VNET-PROD-EUS2** | 10.245.32.0/20 | VNET-HUB-EUS2, VNET-PROD-CUS
 
 ![Gwiazda w regionie podstawowym](./media/contoso-migration-infrastructure/primary-hub-peer.png) 
 
@@ -424,8 +424,8 @@ Sieci wirtualne w regionie wschodnie stany USA 2 są podsumowane w poniższej ta
 
 **Podsieć/strefy** | **CIDR** | ** Można używać adresów IP
 --- | --- | ---
-**IB UntrustZone** | 10.240.0.0/24 | 251
-**IB TrustZone** | 10.240.1.0/24 | 251
+**IB-UntrustZone** | 10.240.0.0/24 | 251
+**IB-TrustZone** | 10.240.1.0/24 | 251
 **OB-UntrustZone** | 10.240.2.0/24 | 251
 **OB-TrustZone** | 10.240.3.0/24 | 251
 **GatewaySubnets** | 10.240.10.0/24 | 251
@@ -438,7 +438,7 @@ Tworzenie sieci wirtualnej jest używany przez zespół projektowy jako obszar p
 **Podsieć** | **CIDR** | **Adresy** | **W podsieci**
 --- | --- | --- | ---
 **DEV-FE-EUS2** | 10.245.16.0/22 | 1019 | Maszyn wirtualnych warstwy internetowej/frontonów
-**DEV-APLIKACJI EUS2** | 10.245.20.0/22 | 1019 | Maszyny wirtualne warstwy aplikacji
+**DEV-APP-EUS2** | 10.245.20.0/22 | 1019 | Maszyny wirtualne warstwy aplikacji
 **DEV-DB-EUS2** | 10.245.24.0/23 | 507 | Maszyny wirtualne z bazy danych
 
 
@@ -449,9 +449,9 @@ Składniki modelu IaaS platformy Azure znajdują się w sieci produkcyjnej. Każ
 **Podsieć** | **CIDR** | **Adresy** | **W podsieci**
 --- | --- | --- | ---
 **FE-PROD-EUS2** | 10.245.32.0/22 | 1019 | Maszyn wirtualnych warstwy internetowej/frontonów
-**EUS2-PROD-APP** | 10.245.36.0/22 | 1019 | Maszyny wirtualne warstwy aplikacji
-**DB-PROD-EUS2** | 10.245.40.0/23 | 507 | Maszyny wirtualne z bazy danych
-**EUS2-PROD-DC** | 10.245.42.0/23 | 251 | Maszyny wirtualne kontrolerów domeny
+**PROD-APP-EUS2** | 10.245.36.0/22 | 1019 | Maszyny wirtualne warstwy aplikacji
+**PROD-DB-EUS2** | 10.245.40.0/23 | 507 | Maszyny wirtualne z bazy danych
+**PROD-DC-EUS2** | 10.245.42.0/23 | 251 | Maszyny wirtualne kontrolerów domeny
 
 
 ![Centrum architektury sieci](./media/contoso-migration-infrastructure/azure-networks-eus2.png)
@@ -461,20 +461,20 @@ Składniki modelu IaaS platformy Azure znajdują się w sieci produkcyjnej. Każ
 
 Środkowe stany USA jest firmy Contoso w regionie pomocniczym. Poniżej przedstawiono, jak firma Contoso będzie architektury sieci:
 
-- **Centrum**: Centrum sieci wirtualnej w regionie wschodnie stany USA 2 to centralny punkt łączności do lokalnego centrum danych i szprychy, sieciami wirtualnymi w regionie wschodnie stany USA 2 może służyć do izolowania obciążeń w razie potrzeby zarządzana oddzielnie od innych szprych.
-- **Sieci wirtualne**: Contoso będzie mieć dwie sieci wirtualne w środkowych stanach USA:
+- **Centrum**: Koncentrator, sieć wirtualną w regionie wschodnie stany USA 2, to centralny punkt łączności z lokalnym centrum danych i szprychy, sieciami wirtualnymi w regionie wschodnie stany USA 2, może być używane do izolowania obciążeń w razie potrzeby zarządzana oddzielnie od innych szprych.
+- **Sieci wirtualne**: Firma Contoso będzie mieć dwie sieci wirtualne w środkowych stanach USA:
     - SIEĆ WIRTUALNA PROD-JEDNOSTKI POJEMNOŚCI. Ta sieć wirtualna jest sieci produkcyjnej, podobnie jak PROD_EUS2 sieci Wirtualnej. 
-    - SIEĆ WIRTUALNA — ASR-JEDNOSTKI POJEMNOŚCI. Ta sieć wirtualna będzie działać jako lokalizacja, w której maszyny wirtualne są tworzone po włączeniu trybu failover ze środowiska lokalnego lub jako lokalizację dla maszyn wirtualnych platformy Azure, które są przełączone w tryb failover z serwera podstawowego regionu pomocniczego. Ta sieć jest podobne do sieci w środowisku produkcyjnym, ale nie wszystkich kontrolerów domeny na nim.
+    - VNET-ASR-CUS. Ta sieć wirtualna będzie działać jako lokalizacja, w której maszyny wirtualne są tworzone po włączeniu trybu failover ze środowiska lokalnego lub jako lokalizację dla maszyn wirtualnych platformy Azure, które są przełączone w tryb failover z serwera podstawowego regionu pomocniczego. Ta sieć jest podobne do sieci w środowisku produkcyjnym, ale nie wszystkich kontrolerów domeny na nim.
     -  Każda sieć wirtualna, w regionie będzie własnej przestrzeni adresowej, bez nakładania się. Contoso skonfiguruje routing bez translatora adresów sieciowych.
-- **Podsieci**: podsieci, będzie architekturę w podobny sposób jak te w regionie wschodnie stany USA 2. Wyjątkiem jest, że Contoso nie podsieć jest wymagana dla kontrolerów domeny.
+- **Podsieci**: Podsieci zostanie zaprojektowana w podobny sposób jak te w regionie wschodnie stany USA 2. Wyjątkiem jest, że Contoso nie podsieć jest wymagana dla kontrolerów domeny.
 
 Sieci wirtualne w środkowych stanach USA są podsumowane w poniższej tabeli.
 
 **Sieć wirtualna** | **Range** | **Elementu równorzędnego**
 --- | --- | ---
-**SIEĆ WIRTUALNA HUB-JEDNOSTEK POJEMNOŚCI** | 10.250.0.0/20 | SIEĆ WIRTUALNA HUB-EUS2, CUS — ASR-SIEĆ WIRTUALNA, SIEĆ WIRTUALNA PROD-JEDNOSTEK POJEMNOŚCI
-**SIEĆ WIRTUALNA — ASR-JEDNOSTEK POJEMNOŚCI** | 10.255.16.0/20 | SIEĆ WIRTUALNA HUB-JEDNOSTEK POJEMNOŚCI, SIEĆ WIRTUALNA PROD-JEDNOSTEK POJEMNOŚCI
-**SIEĆ WIRTUALNA PROD-JEDNOSTEK POJEMNOŚCI** | 10.255.32.0/20 | SIEĆ WIRTUALNA HUB-JEDNOSTEK POJEMNOŚCI, CUS — ASR-SIEĆ WIRTUALNA, SIEĆ WIRTUALNA PROD-EUS2  
+**SIEĆ WIRTUALNA HUB-JEDNOSTEK POJEMNOŚCI** | 10.250.0.0/20 | VNET-HUB-EUS2, VNET-ASR-CUS, VNET-PROD-CUS
+**VNET-ASR-CUS** | 10.255.16.0/20 | SIEĆ WIRTUALNA HUB-JEDNOSTEK POJEMNOŚCI, SIEĆ WIRTUALNA PROD-JEDNOSTEK POJEMNOŚCI
+**SIEĆ WIRTUALNA PROD-JEDNOSTEK POJEMNOŚCI** | 10.255.32.0/20 | VNET-HUB-CUS, VNET-ASR-CUS, VNET-PROD-EUS2  
 
 
 ![Gwiazda w sparowanym regionie](./media/contoso-migration-infrastructure/paired-hub-peer.png)
@@ -484,8 +484,8 @@ Sieci wirtualne w środkowych stanach USA są podsumowane w poniższej tabeli.
 
 **Podsieć** | **CIDR** | **Można używać adresów IP**
 --- | --- | ---
-**IB UntrustZone** | 10.250.0.0/24 | 251
-**IB TrustZone** | 10.250.1.0/24 | 251
+**IB-UntrustZone** | 10.250.0.0/24 | 251
+**IB-TrustZone** | 10.250.1.0/24 | 251
 **OB-UntrustZone** | 10.250.2.0/24 | 251
 **OB-TrustZone** | 10.250.3.0/24 | 251
 **GatewaySubnet** | 10.250.2.0/24 | 251
@@ -511,7 +511,7 @@ Sieć wirtualna — ASR-CUS jest podstawowa tej samej podsieci sieci wirtualnej 
 **Podsieć** | **CIDR** | **Adresy** | **W podsieci**
 --- | --- | --- | ---
 **USŁUGA ASR-FE-JEDNOSTEK POJEMNOŚCI** | 10.255.16.0/22 | 1019 | Maszyn wirtualnych warstwy internetowej/frontonów
-**USŁUGA ASR-APLIKACJI-JEDNOSTEK POJEMNOŚCI** | 10.255.20.0/22 | 1019 | Maszyny wirtualne warstwy aplikacji
+**ASR-APP-CUS** | 10.255.20.0/22 | 1019 | Maszyny wirtualne warstwy aplikacji
 **USŁUGA ASR-DB-JEDNOSTEK POJEMNOŚCI** | 10.255.24.0/23 | 507 | Maszyny wirtualne z bazy danych
 
 ![Centrum architektury sieci](./media/contoso-migration-infrastructure/azure-networks-cus.png)
@@ -564,10 +564,10 @@ Administratorzy firmy Contoso zdecydował, że usługa Azure DNS nie jest dobrym
 
 Oprócz kontrolerów domeny w środowisku lokalnym firma Contoso zamierza cztery dodatkowe do obsługi sieci platformy Azure, dwóch dla każdego regionu wdrożenia. Oto, co Contoso zostanie wdrożona na platformie Azure.
 
-**Region** | **KONTROLER DOMENY** | **Sieć wirtualna** | **Podsieć** | **Adres IP**
+**Region** | **DC** | **Sieć wirtualna** | **Podsieć** | **Adres IP**
 --- | --- | --- | --- | ---
-EUS2 | CONTOSODC3 | SIEĆ WIRTUALNA PROD-EUS2 | EUS2-PROD-DC | 10.245.42.4
-EUS2 | CONTOSODC4 | SIEĆ WIRTUALNA PROD-EUS2 | EUS2-PROD-DC | 10.245.42.5
+EUS2 | CONTOSODC3 | VNET-PROD-EUS2 | PROD-DC-EUS2 | 10.245.42.4
+EUS2 | CONTOSODC4 | VNET-PROD-EUS2 | PROD-DC-EUS2 | 10.245.42.5
 JEDNOSTKI POJEMNOŚCI | CONTOSODC5 | SIEĆ WIRTUALNA PROD-JEDNOSTEK POJEMNOŚCI | CUS-PROD-DC | 10.255.42.4
 JEDNOSTKI POJEMNOŚCI | CONTOSODC6 | SIEĆ WIRTUALNA PROD-JEDNOSTEK POJEMNOŚCI | CUS-PROD-DC | 10.255.42.4
 
@@ -584,10 +584,10 @@ Po zaktualizowaniu ustawień sieci, Administratorzy firmy Contoso jest gotowe do
     - Upewnij się, że usługa Azure Service fabric oddziela maszyn wirtualnych do różnych infrastruktur w regionie platformy Azure. 
     -  Umożliwia Contoso kwalifikował się do umowy SLA 99,95% czasu dostępności dla maszyn wirtualnych na platformie Azure.  [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets).
 
-    ![Grupy dostępności](./media/contoso-migration-infrastructure/availability-group.png) 
+    ![Grupa dostępności](./media/contoso-migration-infrastructure/availability-group.png) 
 3. Po wdrożeniu maszyny Wirtualnej otwarciu interfejsu sieciowego dla maszyny Wirtualnej. Ustaw jako prywatny adres IP na statyczne i podaj prawidłowy adres.
 
-    ![KARTY SIECIOWEJ MASZYNY WIRTUALNEJ](./media/contoso-migration-infrastructure/vm-nic.png)
+    ![VM NIC](./media/contoso-migration-infrastructure/vm-nic.png)
 
 4. Teraz mogą dołączyć nowy dysk danych do maszyny Wirtualnej. Ten dysk zawiera bazy danych usługi Active Directory i udziału sysvol. 
     - Rozmiar dysku określi liczbę operacji We/Wy, która go obsługuje.
@@ -607,7 +607,7 @@ Po zaktualizowaniu ustawień sieci, Administratorzy firmy Contoso jest gotowe do
 
 9. Po maszyny Wirtualnej jest skonfigurowany jako kontroler domeny i ponownie uruchomiony, otwórz Menedżera DNS i skonfigurować program rozpoznawania nazw DNS platformy Azure jako usługi przesyłania dalej.  Dzięki temu kontrolera domeny do przesyłania zapytań DNS, których nie można rozpoznać w usłudze Azure DNS.
 
-    ![Usługa przesyłania dalej DNS](./media/contoso-migration-infrastructure/dns-forwarder.png)
+    ![DNS forwarder](./media/contoso-migration-infrastructure/dns-forwarder.png)
 
 10. Teraz zaktualizowanie niestandardowych ustawień DNS dla poszczególnych sieci wirtualnych za pomocą odpowiedni kontroler domeny w regionie sieci wirtualnej. Obejmują one kontrolerów domeny w środowisku lokalnym, na liście.
 
@@ -632,21 +632,21 @@ Usługi AD jest krytyczne usługi w zakresie sieci i muszą być prawidłowo sko
 
     ![Centrum administracyjne usługi AD](./media/contoso-migration-infrastructure/ad-center.png)
 
-## <a name="step-5-plan-for-governance"></a>Krok 5: Planowanie nadzoru
+## <a name="step-5-plan-for-governance"></a>Krok 5. Planowanie zarządzania
 
 System Azure oferuje szeroką gamę elementów sterujących nadzoru, usług i platformą Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/security/governance-in-azure) uzyskać podstawową wiedzę na temat opcji.
 
 Konfigurowanie tożsamości i kontroli dostępu, Contoso ma już Państwo zacząć opracowywać wprowadzone pewne aspekty zarządzania i zabezpieczeń. Ogólnie rzecz biorąc istnieją trzy obszary, które należy wziąć pod uwagę:
 
-- **Zasady**: zasady na platformie Azure ma zastosowanie i wymusza zasady i wpływ dotyczące zasobów, tak, aby zasoby pozostają zgodne z wymaganiami firmy i umów SLA.
-- **Blokuje**: Azure pozwala na blokowanie subskrypcji, grupy zasobów i inne zasoby, tak, aby ich mogą być modyfikowane tylko przez osoby z urzędem, aby to zrobić.
-- **Tagi**: zasobów może być kontrolowany, inspekcji i zarządzania nimi przy użyciu tagów. Tagi dołączyć metadanych do zasobów, przekazywania informacji na temat zasobów lub właścicieli.
+- **Zasady**: Zasady na platformie Azure ma zastosowanie i wymusza zasady i wpływ dotyczące zasobów, tak, aby zasoby pozostają zgodne z wymaganiami firmy i umów SLA.
+- **Blokuje**: Platforma Azure zezwoli Ci do blokady subskrypcji, grupy zasobów i innych zasobów, tak, aby ich mogą być modyfikowane tylko przez osoby z urzędem, aby to zrobić.
+- **Tagi**: Zasoby można kontrolowany, inspekcji i zarządzane przy użyciu tagów. Tagi dołączyć metadanych do zasobów, przekazywania informacji na temat zasobów lub właścicieli.
 
 ### <a name="set-up-policies"></a>Konfigurowanie zasad
 
 Usługa Azure Policy oblicza zasobami skanowania dla osób, które nie są zgodne z definicjami zasad, które zostały spełnione. Na przykład Niewykluczone, że zasady, które tylko niektóre rodzaje maszyn wirtualnych umożliwia lub wymaga zasobów, które mają konkretny tag. 
 
-Zasady usługi Azure, określ definicję zasad i przypisania zasad określa zakres, w którym można zastosować zasady. Zakres może wynosić od grupy zarządzania w grupie zasobów. [Dowiedz się,](https://docs.microsoft.com/azure/azure-policy/create-manage-policy) dotyczące tworzenia zasad i zarządzanie nimi.
+Zasady usługi Azure, określ definicję zasad i przypisania zasad określa zakres, w którym można zastosować zasady. Zakres może wynosić od grupy zarządzania w grupie zasobów. [Dowiedz się,](../governance/policy/tutorials/create-and-manage.md) dotyczące tworzenia zasad i zarządzanie nimi.
 
 Contoso chce zacząć korzystać z kilku zasad:
 
@@ -707,13 +707,13 @@ Firma Contoso potrzebuje w celu wizualizacji swoich zasobów platformy Azure w s
 
 **Nazwa tagu** | **Wartość**
 --- | ---
-Centrum kosztów | 12345: musi to być centrum kosztów prawidłowe od firmy SAP.
+Centrum kosztów | 12345: Musi to być centrum kosztów prawidłowe od firmy SAP.
 Jednostką biznesową | Nazwa jednostki biznesowej (od firmy SAP). CostCenter dopasowań.
 ApplicationTeam | Alias adresu e-mail zespołu, który jest właścicielem pomocy technicznej dla aplikacji.
-Element CatalogName | Nazwa aplikacji lub ShareServices, na katalog usług obsługującego zasobu.
+CatalogName | Nazwa aplikacji lub ShareServices, na katalog usług obsługującego zasobu.
 Programu Service Manager | Alias e-mail Menedżera usług ITIL dla zasobu.
 COBPriority | Priorytet ustawiony przez firmę w przypadku BCDR. Wartości od 1 do 5.
-ŚRODOWISKO | Możliwe wartości są Deweloperskie, STG, produkcyjne. Reprezentujący tworzenie środowisk przejściowych i produkcyjnych.
+ENV | Możliwe wartości są Deweloperskie, STG, produkcyjne. Reprezentujący tworzenie środowisk przejściowych i produkcyjnych.
 
 Na przykład: 
 
@@ -728,8 +728,8 @@ Zabezpieczenia są niezwykle istotne w chmurze, a system Azure oferuje szeroką 
 
 Istnieje kilka aspektów Contoso wziąć pod uwagę:
 
-- **Usługa Azure Security Center**: Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami w obciążeniach chmury hybrydowej. Usługa Security Center umożliwia stosowanie zasad zabezpieczeń do różnych obciążeń, ograniczanie podatności na zagrożenia i wykrywanie ataków oraz reagowanie na nie.  [Dowiedz się więcej](https://docs.microsoft.com/azure/security-center/security-center-intro).
-- **Sieciowe grupy zabezpieczeń (NSG)**: sieciowa grupa zabezpieczeń jest filtr (zapora), który zawiera listę zabezpieczeń reguły, po zastosowaniu blokują lub zezwalają na ruch sieciowy do zasobów połączonych z sieciami wirtualnymi platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-network/security-overview).
+- **Usługa Azure Security Center**: Usługa Azure Security Center zapewnia ujednolicone zarządzanie zabezpieczeniami i zaawansowaną ochronę przed zagrożeniami na potrzeby różnych obciążeń chmury hybrydowej. Usługa Security Center umożliwia stosowanie zasad zabezpieczeń do różnych obciążeń, ograniczanie podatności na zagrożenia i wykrywanie ataków oraz reagowanie na nie.  [Dowiedz się więcej](https://docs.microsoft.com/azure/security-center/security-center-intro).
+- **Sieciowe grupy zabezpieczeń (NSG)**: Sieciowa grupa zabezpieczeń jest filtr (zapora), który zawiera listę zabezpieczeń reguły, po zastosowaniu blokują lub zezwalają na ruch sieciowy do zasobów połączonych z sieciami wirtualnymi platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-network/security-overview).
 - **Szyfrowanie danych**: Usługa Azure Disk Encryption jest możliwość ułatwiające szyfrowanie dysków maszyn wirtualnych IaaS systemu Linux i Windows. [Dowiedz się więcej](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest).
 
 ### <a name="work-with-the-azure-security-center"></a>Praca z usługą Azure Security Center
@@ -783,9 +783,9 @@ Sieciowe grupy zabezpieczeń skojarzone z grupy zabezpieczeń aplikacji zostanie
 
 **Akcja** | **Nazwa** | **Element źródłowy** | **Docelowy** | **Port**
 --- | --- | --- | --- | --- 
-Zezwalaj | AllowiInternetToFE | Sieć wirtualna HUB-EUS1/IB-TrustZone | APP1-FE 80, 443
-Zezwalaj | AllowWebToApp | FE KOMPUTERA APP1 | BAZY DANYCH NA KOMPUTERZE APP1 | 1433
-Zezwalaj | AllowAppToDB | APLIKACJA KOMPUTERA APP1 | Dowolne | Dowolne
+Zezwalaj | AllowiInternetToFE | VNET-HUB-EUS1/IB-TrustZone | APP1-FE 80, 443
+Zezwalaj | AllowWebToApp | FE KOMPUTERA APP1 | APP1-DB | 1433
+Zezwalaj | AllowAppToDB | APP1-APP | Dowolne | Dowolne
 Zablokuj | DenyAllInbound | Dowolne | Dowolne | Dowolne
 
 ### <a name="encrypt-data"></a>Szyfrowanie danych

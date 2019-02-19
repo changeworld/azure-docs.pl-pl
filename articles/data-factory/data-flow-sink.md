@@ -7,20 +7,20 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/03/2019
-ms.openlocfilehash: 795b8072bbd9b248f982d061d699f490b1b63b17
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 381dc2f9f6d3a074af00ba047472719c086f5811
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56272116"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408412"
 ---
-# <a name="azure-data-factory-mapping-data-flow-sink-transformation"></a>Mapowanie przekształcenie obiektu Sink przepływu danych w usłudze Azure Data Factory
+# <a name="mapping-data-flow-sink-transformation"></a>Mapowanie przekształcenie obiektu Sink przepływu danych
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 ![Opcje ujścia](media/data-flow/windows1.png "ujścia 1")
 
-Po ukończeniu swojej Przekształcanie przepływu danych można ujścia przekształconych danych do docelowego zestawu danych. Podczas przekształcania ujścia możesz wybrać definicji zestawu danych, które mają być używane miejsce docelowe danych wyjściowych.
+Po ukończeniu swojej Przekształcanie przepływu danych można ujścia przekształconych danych do docelowego zestawu danych. Podczas przekształcania ujścia możesz wybrać definicji zestawu danych, które mają być używane miejsce docelowe danych wyjściowych. Możesz mieć dowolną liczbę przekształcania ujścia jako przepływ danych wymaga.
 
 Powszechną praktyką konta dla zmieniających się danych przychodzących i uwzględnić dryfu schematu jest ujście danych wyjściowych do folderu bez zdefiniowanego schematu w wyjściowy zestaw danych. Można również uwzględnione wszystkie zmiany kolumny w źródłach, wybierając pozycję "Zezwalaj na schemat odejściem od tego stanu" w źródłowej, a następnie automatycznego wszystkie pola w ujściu.
 
@@ -35,24 +35,7 @@ W przypadku typów ujścia usługi Azure Storage Blob lub Data Lake zwróci prze
 
 ![Opcje ujścia](media/data-flow/opt001.png "ujścia opcje")
 
-## <a name="blob-storage-folder"></a>Folder magazynu obiektów blob
-Podczas wychwytywania przekształceń danych do obiektu Blob Store, wybierz obiekt blob *folderu* jako ścieżki folderu docelowego, nie jest plik. Przepływ danych ADF wygeneruje pliki wyjściowe dla Ciebie w tym folderze.
-
-![Ścieżka folderu](media/data-flow/folderpath.png "ścieżka folderu")
-
-## <a name="optional-azure-sql-data-warehouse-sink"></a>Ujścia magazynu danych opcjonalne usługi Azure SQL
-
-Udostępniamy wczesne beta zestaw danych będący ujściem ADW dla przepływu danych. Pozwoli to powiązana przekształcone dane bezpośrednio do usługi Azure SQL data Warehouse w ramach przepływu danych bez konieczności dodawania działania kopiowania w potoku.
-
-Rozpocznij od utworzenia zestawu danych ADW, tak jak w przypadku wszelkich innych potoku usługi ADF, za pomocą połączonej usługi, która obejmuje poświadczenia ADW i wybierz bazę danych, którą chcesz nawiązać połączenie. Nazwa tabeli wybierz istniejącą tabelę lub wpisz nazwę tabeli, czy chcesz się przepływ ma automatycznie utworzyć z przychodzącego pól danych.
-
-![Opcje ujścia](media/data-flow/adw3.png "ujścia 3")
-
-Po powrocie na przekształcenia ujścia (ADW jest obecnie obsługiwane tylko jako obiekt Sink) należy wybrać zestaw danych ADW, który został utworzony, a także konta magazynu, które chcesz używać do przemieszczania danych dla programu Polybase ładowania ADW. W polu Ścieżka ma format: "containername/foldername".
-
-![Opcje ujścia](media/data-flow/adw1.png "ujścia 4")
-
-### <a name="save-policy"></a>Zapisz zasady
+### <a name="output-settings"></a>Ustawienia danych wyjściowych
 
 Zastępowanie spowoduje obciąć tabeli, jeśli istnieje, a następnie ponownie go utworzyć i załadować dane. Dołącz będzie wstawianie nowych wierszy. Jeśli tabeli na podstawie nazwy tabeli zestawu danych nie istnieje na wszystkich docelowych ADW, przepływ danych będzie utworzyć tabelę, a następnie załadowanie danych.
 
@@ -60,8 +43,46 @@ Jeśli wyłączysz "Map automatycznie", można mapować pól do tabeli docelowej
 
 ![Obiekt sink opcje ADW](media/data-flow/adw2.png "adw ujścia")
 
-### <a name="max-concurrent-connections"></a>Maksymalna liczba równoczesnych połączeń
+#### <a name="field-mapping"></a>Mapowanie pól
 
-Maksymalna liczba równoczesnych połączeń można ustawić w transformacji ujścia, podczas zapisywania danych do połączenia z bazą danych Azure.
+Na karcie mapowania swoją transformację ujścia można mapować kolumny przychodzące (lewa strona), do miejsca docelowego (prawa strona). Gdy przepływ danych jest zlew do plików, ADF zawsze zapisać nowe pliki w folderze. Podczas mapowania do zestawu danych bazy danych, można wybrać wygenerować nową tabelę przy użyciu tego schematu (wartość zapisać zasady "Zastąp") lub Wstaw nowe wiersze do istniejącej tabeli i mapowania pól do istniejącego schematu.
 
-![Opcje połączenia](media/data-flow/maxcon.png "połączeń")
+Możliwość wielokrotnego wyboru tabeli mapowania umożliwia łączenie wielu kolumn za pomocą jednego kliknięcia, odłącz wiele kolumn lub mapowanie wiele wierszy do tej samej nazwy kolumny.
+
+![Mapowania pól](media/data-flow/multi1.png "wiele opcji")
+
+Jeśli chcesz zresetować mapowania kolumn, naciśnij przycisk "Ponownie zamapować", aby zresetować mapowań.
+
+![Połączenia](media/data-flow/maxcon.png "Połączenia")
+
+### <a name="updates-to-sink-transformation-for-adf-v2-ga-version"></a>Aktualizacje do ujścia przekształcania dla wersji Ogólnodostępnej usługi ADF w wersji 2
+
+![Opcje ujścia](media/data-flow/sink1.png "ujścia jeden")
+
+![Opcje ujścia](media/data-flow/sink2.png "wychwytywanie")
+
+* Zezwalaj na opcje schematu odejściem od tego stanu i sprawdzanie poprawności schematu są teraz dostępne w ujściu. Pozwoli to nakazać usługi ADF, aby w pełni zaakceptować elastycznego schematu definicji (schemat dryfu) lub się nie powieść ujścia, jeśli schemat zmienia się (Sprawdzanie poprawności schematu).
+
+* Usuń Folder. ADF obetnie ujścia zawartość folderu przed napisaniem pliki docelowe, w tym folderze docelowym.
+
+* Opcje nazwy pliku
+
+   * Domyślne: Zezwalaj na platformy Spark do nazwy plików na podstawie ustawień domyślnych część
+   * Wzorzec: Wprowadź nazwę dla plików danych wyjściowych
+   * Dla każdej partycji: Wprowadź nazwę pliku na partycję
+   * Jako dane w kolumnie: Ustaw plik wyjściowy do wartości kolumny
+
+> [!NOTE]
+> Operacje na plikach będą wykonywane tylko wtedy, gdy uruchamiasz działania wykonania przepływu danych, a nie w trybie debugowania przepływu danych
+
+W przypadku typów ujścia SQL można ustawić:
+
+* Obcinanie tabeli
+* Utwórz tabelę (sprawdza listy/tworzenia)
+* Rozmiar wsadu dla dużej ilości danych. Wprowadź liczbę do zasobnika zapisy na fragmenty.
+
+![Mapowanie pól](media/data-flow/sql001.png "opcje SQL")
+
+## <a name="next-steps"></a>Kolejne kroki
+
+Teraz, po utworzeniu przepływu danych, Dodaj [wykonania przepływu danych działania potoku](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-overview).

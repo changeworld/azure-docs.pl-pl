@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/10/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: e87ff83470ac8d375b4eee3b69f8793e3e11c0f5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497421"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341406"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Rozwiązywanie błędów dla rejestracji dostawcy zasobów
 
@@ -45,13 +45,21 @@ Message: The subscription is not registered to use namespace {resource-provider-
 
 Komunikat o błędzie powinien zapewnić sugestie dotyczące obsługiwane lokalizacje i wersje interfejsów API. Możesz zmienić szablon do jednego z sugerowanych wartości. Większość dostawców są zarejestrowane automatycznie w witrynie Azure portal lub interfejsu wiersza polecenia, którego używasz, ale nie wszystkich. Jeśli nie znasz dostawcy określonego zasobu, zanim może być konieczne zarejestrować tego dostawcę.
 
+Lub, wyłączając automatyczne zamykanie dla maszyn wirtualnych może zostać wyświetlony komunikat o błędzie podobny do:
+
+```
+Code: AuthorizationFailed
+Message: The client '<identifier>' with object id '<identifier>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope ...
+```
+
 ## <a name="cause"></a>Przyczyna
 
-Te błędy są jednego z trzech powodów:
+Te błędy dla jednego z następujących powodów:
 
-* Dostawca zasobów nie został zarejestrowany dla Twojej subskrypcji
+* Dostawca wymagany zasób nie został zarejestrowany dla Twojej subskrypcji
 * Wersja interfejsu API, które nie są obsługiwane dla typu zasobu
 * Lokalizacja nie jest obsługiwana dla typu zasobu
+* Automatycznego zamykania maszyn wirtualnych należy zarejestrować dostawcę zasobów Microsoft.DevTestLab.
 
 ## <a name="solution-1---powershell"></a>Rozwiązanie 1 — PowerShell
 

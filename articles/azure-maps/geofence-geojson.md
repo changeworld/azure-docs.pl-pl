@@ -3,21 +3,21 @@ title: Format danych GeoJSON wirtualnego ogrodzenia w usługi Azure Maps | Dokum
 description: Dowiedz się więcej o GeoJSON wirtualnego ogrodzenia format danych w usługi Azure Maps
 author: walsehgal
 ms.author: v-musehg
-ms.date: 02/08/2018
+ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: aa39661c8ecc4b594478def7d0cc9be3006294c4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5a654b7fdae341da62d94499830a5e1202dff921
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008251"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339638"
 ---
 # <a name="geofencing-geojson-data"></a>Geofencing GeoJSON danych
 
-Usługi Azure Maps [UZYSKAĆ wirtualnego ogrodzenia](https://docs.microsoft.com/rest/api/map/spatial/getgeofencepreview) i [WPIS w wirtualnym ogrodzeniu](https://docs.microsoft.com/rest/api/map/spatial/postgeofencepreview) interfejsy API umożliwiają pobieranie odległości współrzędnych względem podanego wirtualnego ogrodzenia lub zbiór ogrodzenia. Ten artykuł szczegółowo opisuje sposób przygotowania danych wirtualnego ogrodzenia, którego można UZYSKAĆ mapy platformy Azure i interfejsu API wpisu.
+Usługi Azure Maps [UZYSKAĆ wirtualnego ogrodzenia](https://docs.microsoft.com/rest/api/maps/spatial/getgeofencepreview) i [WPIS w wirtualnym ogrodzeniu](https://docs.microsoft.com/rest/api/maps/spatial/postgeofencepreview) interfejsy API umożliwiają pobieranie odległości współrzędnych względem podanego wirtualnego ogrodzenia lub zbiór ogrodzenia. Ten artykuł szczegółowo opisuje sposób przygotowania danych wirtualnego ogrodzenia, którego można UZYSKAĆ mapy platformy Azure i interfejsu API wpisu.
 
 Dane dla wirtualnego ogrodzenia lub zestawu wirtualne ogrodzenia są reprezentowane przez `Feature` obiektu i `FeatureCollection` obiektu `GeoJSON` formatu, który jest zdefiniowany w [rfc7946](https://tools.ietf.org/html/rfc7946). Oprócz to:
 

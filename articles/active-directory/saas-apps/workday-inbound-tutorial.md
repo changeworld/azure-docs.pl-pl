@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5ac06200766f37c64252599ec8a4dddb6846ea7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e209fe0486b72c14912fd0af1b29c878e4b4545
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175408"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340114"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie produktu Workday do automatycznej aprowizacji użytkowników
 
@@ -261,7 +261,7 @@ W tym kroku zostanie Utwórz grupę zabezpieczeń systemu integracji z użyciem 
     * **Nieograniczone:** Wszyscy członkowie grupy zabezpieczeń można uzyskać dostęp do wszystkich wystąpień dane chronione przez grupę zabezpieczeń.
     * **Ograniczone:** Wszyscy członkowie grupy zabezpieczeń mają kontekstowych dostęp do podzbioru wystąpień danych (wierszy), które mogą uzyskiwać dostęp do grupy zabezpieczeń.
   * Sprawdź, czy razem ze swoim partnerem integracji produktu Workday wybierz typ grupy zabezpieczeń odpowiednich do integracji.
-  * Jeśli znasz już typ grupy, wybierz **integracji systemowa grupa zabezpieczeń (nieograniczony)** lub **integracji systemowa grupa zabezpieczeń (nieograniczony)** z **typu zabezpieczeń gośćmi Grupa** listy rozwijanej.
+  * Jeśli znasz już typ grupy, wybierz **integracji systemowa grupa zabezpieczeń (nieograniczony)** lub **integracji systemowa grupa zabezpieczeń (ograniczony)** z **typu grupy zabezpieczeń gośćmi**  listy rozwijanej.
 
     ![Grupa CreateSecurity](./media/workday-inbound-tutorial/wd_isu_04.png "CreateSecurity grupy")
 

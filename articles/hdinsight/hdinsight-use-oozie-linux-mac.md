@@ -8,13 +8,13 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: aca64ce3d965d03ecc6fe6da0f372f355a48bed5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 02/15/2019
+ms.openlocfilehash: b77f87ef922d2f759fd8d72505effa3d8e96c403
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311872"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339433"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Za pomocą programu Apache Oozie Apache Hadoop do definiowania i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight
 
@@ -301,7 +301,7 @@ Definicja zadania opisano, gdzie można znaleźć workflow.xml. Gdzie można zna
     ```
 
     > [!NOTE]  
-    > Jeśli klaster HDInsight używa usługi Azure Storage jako magazynu domyślnego `<value>` zawartość elementu zaczynają się od `wasb://`. Jeśli usługi Azure Data Lake Storage Gen1 jest używana zamiast tego, rozpoczyna się od `adl://`.
+    > Jeśli klaster HDInsight używa usługi Azure Storage jako magazynu domyślnego `<value>` zawartość elementu zaczynają się od `wasb://`. Jeśli usługi Azure Data Lake Storage Gen1 jest używana zamiast tego, rozpoczyna się od `adl://`. Użycie usługi Azure Data Lake Storage Gen2 zaczyna się od `abfs://`.
 
     Zapisywanie zawartości `<value>` elementu, ponieważ jest używany w następnych krokach.
 

@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 1/14/2019
-ms.openlocfilehash: 8d5fc1c579fd09f1a71d63dce4d1673ef5a8652b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 2/18/2019
+ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354624"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340182"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Pozyskiwanie danych w usłudze Azure Eksplorator danych
 
@@ -39,15 +39,21 @@ Usługa zarządzania danych Eksploratora danych usługi Azure, która jest odpow
 
 Eksplorator danych usługi Azure obsługuje kilka metod wprowadzania, każdy z własną target scenariuszy, zalety i wady. Eksplorator danych usługi Azure oferuje potoków i łączników, aby typowe usługi, wprowadzanie programowe przy użyciu zestawów SDK i bezpośredni dostęp do aparatu do celów eksploracji.
 
-### <a name="ingestion-using-pipelines"></a>Za pomocą potoków pozyskiwania
+### <a name="ingestion-using-pipelines-connectors-and-plugins"></a>Wprowadzanie za pomocą potoków, łączników i wtyczek
 
-Eksplorator danych usługi Azure obsługuje obecnie potoku Centrum zdarzeń, które mogą być zarządzane za pomocą Kreatora zarządzania w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Pozyskiwanie danych z Centrum zdarzeń do Eksploratora danych usługi Azure](ingest-data-event-hub.md).
+Eksplorator danych usługi Azure obecnie obsługuje:
 
-### <a name="ingestion-using-connectors-and-plugins"></a>Wprowadzanie za pomocą łączników i wtyczek
+* Potoku siatki zdarzeń, które mogą być zarządzane za pomocą Kreatora zarządzania w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [pozyskiwania obiektów blob platformy Azure do Eksploratora danych usługi Azure](ingest-data-event-grid.md).
 
-* Eksplorator danych usługi Azure obsługuje także wtyczkę Logstash. Aby uzyskać więcej informacji, zobacz [Logstash wtyczka danych wyjściowych dla Eksploratora danych usługi Azure](https://github.com/Azure/logstash-output-kusto/blob/master/README.md).
+* Potoku Centrum zdarzeń, które mogą być zarządzane za pomocą Kreatora zarządzania w witrynie Azure portal. Aby uzyskać więcej informacji, zobacz [pozyskiwać dane z Centrum zdarzeń do Eksploratora danych usługi Azure](ingest-data-event-hub.md).
 
-* Eksplorator danych usługi Azure obsługuje łącznika platformy Kafka. Aby uzyskać więcej informacji, zobacz temat [Szybki start: Pozyskiwanie danych z usługi Kafka do Eksploratora danych usługi Azure](ingest-data-kafka.md)
+* Dodatek Logstash, zobacz [pozyskiwać dane z programu Logstash do Eksploratora danych usługi Azure](ingest-data-logstash.md).
+
+* Łącznik platformy Kafka, zobacz [pozyskiwać dane z usługi Kafka do Eksploratora danych usługi Azure](ingest-data-kafka.md).
+
+### <a name="ingestion-using-integration-services"></a>Wprowadzanie za pomocą usług integration services
+
+* Usługa Azure Data Factory (ADF), to usługa integracji w pełni zarządzane dane dla obciążeń wynikających z analizy na platformie Azure, aby skopiować dane do i z Eksploratora danych usługi Azure. Aby uzyskać więcej informacji, zobacz [kopiowanie danych do lub z Eksploratora danych Azure przy użyciu usługi Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
 
 ### <a name="programmatic-ingestion"></a>Wprowadzanie programowe
 
@@ -131,21 +137,27 @@ Dla wszystkich pozyskiwania metod innych niż pozyskiwać z zapytania, formatu d
 Mapowanie schematu pozwala powiązać pola danych źródła kolumny tabeli docelowej.
 
 * [Mapowanie CSV](/azure/kusto/management/mappings?branch=master#csv-mapping) (opcjonalnie) współpracuje z wszystkie formaty oparte na numer. Mogą być wykonywane za pomocą parametru polecenia pozyskiwania lub [wstępnie utworzone w tabeli](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) i do którego istnieje odwołanie parametru polecenia pozyskiwania.
-* [Mapowanie JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (obowiązkowe) i [mapowania Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (obowiązkowe) mogą być wykonywane za pomocą parametru polecenia pozyskiwania lub [wstępnie utworzone w tabeli](/azure/kusto/management/tables#create-ingestion-mapping) i polecenia pozyskiwania parametr.
+* [Mapowanie JSON](/azure/kusto/management/mappings?branch=master#json-mapping) (obowiązkowe) i [mapowania Avro](/azure/kusto/management/mappings?branch=master#avro-mapping) (obowiązkowe) mogą być wykonywane za pomocą parametru polecenia odbierania. Można je również [wstępnie utworzone w tabeli](/azure/kusto/management/tables#create-ingestion-mapping) i do którego istnieje odwołanie parametru polecenia pozyskiwania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Szybki start: Pozyskiwanie danych z Centrum zdarzeń do Eksploratora danych usługi Azure](ingest-data-event-hub.md)
+> [Pozyskiwanie danych z Centrum zdarzeń do Eksploratora danych usługi Azure](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [Szybki start: Pozyskiwanie danych z usługi Kafka do Eksploratora danych usługi Azure](ingest-data-kafka.md)
+> [Pozyskiwanie danych przy użyciu subskrypcji usługi Event Grid do Eksploratora danych platformy Azure](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
-> [Szybki start: pozyskiwanie danych przy użyciu biblioteki języka Python w usłudze Azure Data Explorer](python-ingest-data.md)
+> [Pozyskiwanie danych z usługi Kafka do Eksploratora danych usługi Azure](ingest-data-kafka.md)
 
 > [!div class="nextstepaction"]
-> [Szybki start: Pozyskiwanie danych przy użyciu biblioteki węzeł Eksploratora danych platformy Azure](node-ingest-data.md)
+> [Pozyskiwanie danych przy użyciu biblioteki języka Python w Eksploratorze danych Azure](python-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [Szybki start: Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)](net-standard-ingest-data.md)
+> [Pozyskiwanie danych przy użyciu biblioteki węzeł Eksploratora danych platformy Azure](node-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Pozyskiwanie danych przy użyciu usługi Azure Data Explorer zestaw .NET Standard SDK (wersja zapoznawcza)](net-standard-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Pozyskiwanie danych z programu Logstash do Eksploratora danych platformy Azure](ingest-data-logstash.md)

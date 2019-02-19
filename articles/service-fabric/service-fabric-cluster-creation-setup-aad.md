@@ -12,44 +12,52 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/15/2018
+ms.date: 02/15/2019
 ms.author: aljo
-ms.openlocfilehash: 691995d0aa426766caed2f5e2458399b32332c9d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 15561969e27512c4882eccc10f75aa932bcf23df
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903506"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338992"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Konfigurowanie usługi Azure Active Directory do uwierzytelniania klientów
 
-W przypadku klastrów działających na platformie Azure Azure Active Directory (Azure AD) zaleca się zabezpieczenie dostępu do punktów końcowych zarządzania.  W tym artykule opisano sposób konfiguracji usługi Azure AD do uwierzytelniania klientów dla klastra usługi Service Fabric, które należy wykonać przed [tworzenia klastra](service-fabric-cluster-creation-via-arm.md).  Usługi Azure AD umożliwia zarządzanie dostępem użytkowników do aplikacji organizacji (znanych jako dzierżaw). Aplikacje są podzielone na tych z opartą na sieci web, interfejs użytkownika logowania i te w środowisku klienta natywnego. W tym artykule przyjęto założenie, że utworzono już dzierżawę. Jeśli nie masz, zapoznanie się z tematem [jak uzyskać dzierżawę usługi Azure Active Directory][active-directory-howto-tenant].
+W przypadku klastrów działających na platformie Azure Azure Active Directory (Azure AD) zaleca się zabezpieczenie dostępu do punktów końcowych zarządzania.  W tym artykule opisano sposób konfiguracji usługi Azure AD do uwierzytelniania klientów dla klastra usługi Service Fabric, które należy wykonać przed [tworzenia klastra](service-fabric-cluster-creation-via-arm.md).  Usługi Azure AD umożliwia zarządzanie dostępem użytkowników do aplikacji organizacji (znanych jako dzierżaw). Aplikacje są podzielone na tych z opartą na sieci web, interfejs użytkownika logowania i te w środowisku klienta natywnego. 
 
-## <a name="create-azure-ad-applications"></a>Tworzenie aplikacji usługi Azure AD
 Klaster usługi Service Fabric udostępnia kilka punktów wejścia do jego funkcje zarządzania, w tym, oparta na sieci web [narzędzia Service Fabric Explorer] [ service-fabric-visualizing-your-cluster] i [programu Visual Studio] [ service-fabric-manage-application-in-visual-studio]. W rezultacie, utworzysz dwie aplikacje usługi Azure AD, aby kontrolować dostęp do klastra: jednej aplikacji sieci web i po jednej aplikacji natywnej.  Po utworzeniu aplikacji, przypisywanie użytkowników do tylko do odczytu i ról administratora.
-
-Aby uprościć niektóre etapy konfigurowania usługi Azure AD z klastrem usługi Service Fabric, utworzyliśmy zestaw skryptów programu Windows PowerShell.
 
 > [!NOTE]
 > Przed utworzeniem klastra, wykonaj następujące kroki. Ponieważ skrypty oczekuje nazwy klastra i punktów końcowych, wartości powinny być planowane i nie wartości, że masz już utworzoną.
 
+## <a name="prerequisites"></a>Wymagania wstępne
+W tym artykule przyjęto założenie, że utworzono już dzierżawę. Jeśli nie masz, zapoznanie się z tematem [jak uzyskać dzierżawę usługi Azure Active Directory][active-directory-howto-tenant].
+
+Aby uprościć niektóre etapy konfigurowania usługi Azure AD z klastrem usługi Service Fabric, utworzyliśmy zestaw skryptów programu Windows PowerShell.
+
 1. [Pobierz skrypty](https://github.com/robotechredmond/Azure-PowerShell-Snippets/tree/master/MicrosoftAzureServiceFabric-AADHelpers/AADTool) do komputera.
 2. Kliknij prawym przyciskiem myszy plik zip, wybierz **właściwości**, wybierz opcję **odblokowanie** pole wyboru, a następnie kliknij przycisk **Zastosuj**.
 3. Wyodrębnij plik ZIP.
-4. Uruchom `SetupApplications.ps1`i podaj identyfikator dzierżawy, ClusterName i WebApplicationReplyUrl jako parametry. Na przykład:
+
+## <a name="create-azure-ad-applications-and-asssign-users-to-roles"></a>Tworzenie aplikacji usługi Azure AD i asssign użytkowników do ról
+Utworzone dwie aplikacje usługi Azure AD w celu kontrolowania dostępu do klastra: jednej aplikacji sieci web i po jednej aplikacji natywnej. Po utworzeniu aplikacji ma reprezentować klaster, należy przypisać użytkownikom [role obsługiwane przez usługę Service Fabric](service-fabric-cluster-security-roles.md): tylko do odczytu i administratora.
+
+Uruchom `SetupApplications.ps1`i podaj identyfikator, nazwę klastra i adres URL odpowiedzi aplikacji sieci web dzierżawy jako parametry.  Również określić nazwy użytkowników i hasła dla użytkowników.  Na przykład:
 
 ```PowerShell
-.\SetupApplications.ps1 -TenantId '690ec069-8200-4068-9d01-5aaf188e557a' -ClusterName 'mycluster' -WebApplicationReplyUrl 'https://mycluster.westus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+$Configobj = .\SetupApplications.ps1 -TenantId '0e3d2646-78b3-4711-b8be-74a381d9890c' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
+.\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin
 ```
 
 > [!NOTE]
-> Chmur krajowych (Azure Government, Azure (Chiny) platformy Azure w Niemczech), należy także określić `-Location` parametru.
+> Chmur krajowych (na przykład Azure dla instytucji rządowych, chińska wersja platformy Azure, Azure [Niemcy]), należy także określić `-Location` parametru.
 
-Wykonując polecenie programu PowerShell można znaleźć identyfikator TenantId `Get-AzureSubscription`. Wykonywanie to polecenie wyświetla identyfikator TenantId dla każdej subskrypcji.
+Możesz znaleźć swojej *TenantId* , wykonując polecenie programu PowerShell `Get-AzureSubscription`. Wykonywanie to polecenie wyświetla identyfikator TenantId dla każdej subskrypcji.
 
-ClusterName służy jako prefiks aplikacji usługi Azure AD, które są tworzone przez skrypt. Nie musi dokładnie odpowiadać rzeczywista nazwa klastra. Jest ona przeznaczona tylko po to, aby ułatwić mapowania klastra usługi Service Fabric, który jest używany z artefaktów w usłudze Azure AD.
+*ClusterName* służy jako prefiks aplikacji usługi Azure AD, które są tworzone przez skrypt. Nie musi dokładnie odpowiadać rzeczywista nazwa klastra. Jest ona przeznaczona tylko po to, aby ułatwić mapowania klastra usługi Service Fabric, który jest używany z artefaktów w usłudze Azure AD.
 
-WebApplicationReplyUrl jest domyślny punkt końcowy zwracające usługi Azure AD dla użytkowników po ich zakończeniu logowania. Ustaw ten punkt końcowy jako punkt końcowy narzędzia Service Fabric Explorer dla klastra, która domyślnie jest:
+*WebApplicationReplyUrl* jest domyślny punkt końcowy zwracające usługi Azure AD dla użytkowników po ich zakończeniu logowania. Ustaw ten punkt końcowy jako punkt końcowy narzędzia Service Fabric Explorer dla klastra, która domyślnie jest:
 
 https://&lt;cluster_domain&gt;:19080/Explorer
 
@@ -58,7 +66,7 @@ Monit logować się do konta z uprawnieniami administratora dla dzierżawy usłu
    * *ClusterName*\_klastra
    * *ClusterName*\_klienta
 
-Skrypt wyświetla plik JSON wymagany przez szablon usługi Azure Resource Manager podczas tworzenia klastra w następnej sekcji, więc to dobry pomysł, aby nie zamykaj okna programu PowerShell.
+Skrypt wyświetla plik JSON wymagany przez szablon usługi Azure Resource Manager po użytkownik [utworzenie klastra było możliwe](service-fabric-cluster-creation-create-template.md#add-azure-ad-configuration-to-use-azure-ad-for-client-access), więc to dobry pomysł, aby nie zamykaj okna programu PowerShell.
 
 ```json
 "azureActiveDirectory": {
@@ -67,31 +75,6 @@ Skrypt wyświetla plik JSON wymagany przez szablon usługi Azure Resource Manage
   "clientApplication":"<guid>"
 },
 ```
-
-<a name="assign-roles"></a>
-
-## <a name="assign-users-to-roles"></a>Przypisywanie użytkowników do ról
-Po utworzeniu aplikacji ma reprezentować klaster przypisać użytkowników do ról obsługiwanych przez usługę Service Fabric: tylko do odczytu i administratora. Role można przypisać za pomocą [witryny Azure portal][azure-portal].
-
-1. W witrynie Azure portal wybierz dzierżawy w prawym górnym rogu.
-
-    ![Wybierz przycisk dzierżawy][select-tenant-button]
-2. Wybierz **usługi Azure Active Directory** na karcie po lewej stronie, a następnie wybierz opcję "aplikacje dla przedsiębiorstw".
-3. Wybierz pozycję "Wszystkie aplikacje", a następnie znajdź i wybierz aplikację sieci web, która ma nazwę takich jak `myTestCluster_Cluster`.
-4. Kliknij przycisk **użytkowników i grup** kartę.
-
-    ![Karcie Użytkownicy i grupy][users-and-groups-tab]
-5. Kliknij przycisk **Dodaj użytkownika** znajdujący się na nowej stronie, wybierz użytkownika i rolę do przypisania, a następnie kliknij przycisk **wybierz** znajdujący się u dołu strony.
-
-    ![Przypisywanie użytkowników do ról strony][assign-users-to-roles-page]
-6. Kliknij przycisk **przypisać** znajdujący się u dołu strony.
-
-    ![Dodaj Potwierdzenie przypisania][assign-users-to-roles-confirm]
-
-> [!NOTE]
-> Aby uzyskać więcej informacji o rolach w usłudze Service Fabric, zobacz [kontroli dostępu opartej na rolach dla klientów usługi Service Fabric](service-fabric-cluster-security-roles.md).
->
->
 
 ## <a name="troubleshooting-help-in-setting-up-azure-active-directory"></a>Rozwiązywanie problemów z pomocy w konfigurowaniu usługi Azure Active Directory
 Konfigurowanie usługi Azure AD i korzystania z niego może stanowić wyzwanie, poniżej przedstawiono niektóre wskaźników, co można zrobić, aby debugować ten problem.
@@ -159,10 +142,6 @@ Po skonfigurowaniu usługi Azure Active Directory, aplikacje i ustawienia ról d
 [x509-certificates-and-service-fabric]: service-fabric-cluster-security.md#x509-certificates-and-service-fabric
 
 <!-- Images -->
-[select-tenant-button]: ./media/service-fabric-cluster-creation-setup-aad/select-tenant-button.png
-[users-and-groups-tab]: ./media/service-fabric-cluster-creation-setup-aad/users-and-groups-tab.png
-[assign-users-to-roles-page]: ./media/service-fabric-cluster-creation-setup-aad/assign-users-to-roles-page.png
-[assign-users-to-roles-confirm]: ./media/service-fabric-cluster-creation-setup-aad/assign-users-to-roles-confirm.png
 [sfx-select-certificate-dialog]: ./media/service-fabric-cluster-creation-setup-aad/sfx-select-certificate-dialog.png
 [sfx-reply-address-not-match]: ./media/service-fabric-cluster-creation-setup-aad/sfx-reply-address-not-match.png
 [web-application-reply-url]: ./media/service-fabric-cluster-creation-setup-aad/web-application-reply-url.png

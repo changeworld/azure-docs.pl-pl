@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005526"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342987"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Zrozumienie, jak metryki, alerty pracy w usłudze Azure Monitor
 
-Alerty metryk w usłudze Azure Monitor działać na podstawie metryk wielowymiarowych. Metryki te mogą być metryk platformy [metryki niestandardowe](../../azure-monitor/platform/metrics-custom-overview.md), [popularnych dzienników z usługi Azure Monitor przekonwertowane na metryki](../../azure-monitor/platform/alerts-metric-logs.md), standardowych metryk usługi Application Insights. Alerty metryki oceny w regularnych odstępach czasu, aby sprawdzić, czy warunki na co najmniej jeden metryki szeregów czasowych są spełnione i otrzymywać powiadomienia, gdy są spełnione ocen. Alerty metryki są stanowe, czyli one tylko wysyłacie powiadomienia po zmianie stanu.
+Alerty metryk w usłudze Azure Monitor działać na podstawie metryk wielowymiarowych. Metryki te mogą być [metryk platformy](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [metryki niestandardowe](../../azure-monitor/platform/metrics-custom-overview.md), [popularnych dzienników z usługi Azure Monitor przekonwertowane na metryki](../../azure-monitor/platform/alerts-metric-logs.md) i metryk usługi Application Insights. Alerty metryki oceny w regularnych odstępach czasu, aby sprawdzić, czy warunki na co najmniej jeden metryki szeregów czasowych są spełnione i otrzymywać powiadomienia, gdy są spełnione ocen. Alerty metryki są stanowe, czyli one tylko wysyłacie powiadomienia po zmianie stanu.
 
 ## <a name="how-do-metric-alerts-work"></a>Jak działają alerty metryki
 
@@ -65,8 +65,6 @@ Załóżmy, że użycie na "myVM" nadal jest powyżej wartości progowej przez w
 Po pewnym czasie wykorzystanie na "myVM" wróci do normalnego oznacza to, nie spadnie poniżej wartości progowej. Reguła alertu monitoruje warunku dwa razy, aby Wyślij powiadomienie o usunięciu. Reguły alertu wysyła komunikat o usunięciu dezaktywowane podczas warunek alertu nie został spełniony dla trzech następujących po sobie kropek redukcji szumu w przypadku niestabilny warunków.
 
 Jak rozpoznać powiadomienie jest wysyłane za pomocą elementów web hook lub wiadomości e-mail, stan wystąpienia alertu (nazywane stan monitora) w witrynie Azure portal jest również ustawiona na rozwiązany.
-
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą alertów dotyczących metryk w usłudze Azure Monitor
 
 ### <a name="using-dimensions"></a>Przy użyciu wymiarów
 
@@ -123,9 +121,9 @@ Ta reguła umożliwia monitorowanie Jeśli średniego użycia procesora CPU dla 
 
 Zwiększenie okresy ponownie spojrzenie i liczbę naruszeń można również zezwolić filtrowanie alertów tylko alert na danej definicji odchylenie znaczące. [Dowiedz się więcej o dynamicznymi progami zaawansowane opcje](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean).
 
-### <a name="monitoring-multiple-resources-using-metric-alerts"></a>Monitorowanie wielu zasobów przy użyciu alertów dotyczących metryk
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Monitorowanie na dużą skalę za pomocą alertów dotyczących metryk w usłudze Azure Monitor
 
-Ponieważ jak już wspomniano w poprzedniej sekcji, istnieje możliwość mają jedną regułę alertu metryki monitorującego każda kombinacja poszczególnych wymiaru (tj.) Seria metryki czasu). Jednak wcześniej było nadal ograniczona do zrobienia tego jednego zasobu naraz. Usługa Azure Monitor obsługuje także monitorowanie wielu zasobów przy użyciu jednej reguły alertu metryki. Ta funkcja jest obecnie w wersji zapoznawczej i obsługiwana tylko dla maszyn wirtualnych. Ponadto pojedynczy alert dotyczący metryki można monitorować zasoby w jednym regionie platformy Azure.
+Do tej pory wiesz, jak pojedynczy alert dotyczący metryki może służyć do monitorowania jednej lub wielu metryk Szeregi czasowe związane z jednego zasobu platformy Azure. Wiele razy możesz zechcieć tę samą regułę alertu stosowane do wielu zasobów. Usługa Azure Monitor obsługuje także monitorowanie wielu zasobów przy użyciu jednej reguły alertu metryki. Ta funkcja jest obecnie obsługiwana tylko na maszynach wirtualnych. Ponadto pojedynczy alert dotyczący metryki można monitorować zasoby w jednym regionie platformy Azure.
 
 Można określić zakres monitorowania, pojedynczy alert dotyczący metryki w jednym z trzech sposobów:
 
@@ -133,7 +131,7 @@ Można określić zakres monitorowania, pojedynczy alert dotyczący metryki w je
 - Wszystkie maszyny wirtualne (w jednym regionie platformy Azure) w co najmniej jedną grupę zasobów w ramach subskrypcji
 - Wszystkie maszyny wirtualne (w jednym regionie platformy Azure) w jednej subskrypcji
 
-Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów nie jest obecnie obsługiwane za pośrednictwem witryny Azure portal. Możesz utworzyć te reguły za pomocą [szablonów usługi Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Otrzymasz poszczególnych powiadomień dla każdej maszyny wirtualnej.
+Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów przypomina [tworzenie innych alertu metryki](alerts-metric.md) monitorująca pojedynczy zasób. Tylko różnica polega na tym, że będzie wybierz wszystkie zasoby, które chcesz monitorować. Możesz również utworzyć tych reguł za pomocą [szablonów usługi Azure Resource Manager](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources). Otrzymasz poszczególnych powiadomień dla każdej maszyny wirtualnej.
 
 ## <a name="typical-latency"></a>Typowy czas oczekiwania
 
@@ -149,7 +147,7 @@ Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i ch
 |-------------------------------------------------|----------------------------|
 | Microsoft.ApiManagement/service | Yes |
 | Microsoft.Batch/batchAccounts| Yes|
-|Microsoft.Cache/redis| Yes
+|Microsoft.Cache/redis| Yes |
 |Microsoft.ClassicCompute/virtualMachines | Nie |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nie|
 |Microsoft.CognitiveServices/accounts | Nie |
@@ -160,7 +158,7 @@ Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i ch
 |Microsoft.DBforMySQL/servers| Yes|
 |Microsoft.DBforPostgreSQL/servers| Yes|
 |Microsoft.Devices/IotHubs | Nie|
-|Microsoft.DocumentDB/databaseAccounts| Nie|
+|Microsoft.DocumentDB/databaseAccounts| Yes|
 |Microsoft.EventHub/namespaces | Yes|
 |Microsoft.Logic/workflows | Yes|
 |Microsoft.Network/loadBalancers |Yes|
@@ -168,16 +166,16 @@ Jeśli są już dzisiaj za pomocą klasycznego alertów dotyczących metryk i ch
 |Microsoft.Network/applicationGateways| Yes|
 |Microsoft.Network/expressRouteCircuits| Yes|
 |Microsoft.Network/trafficManagerProfiles | Yes|
-|Microsoft.Search/searchServices | Nie|
-|Microsoft.ServiceBus/namespaces| Nie|
+|Microsoft.Search/searchServices | Yes|
+|Microsoft.ServiceBus/namespaces| Yes |
 |Microsoft.Storage/storageAccounts | Yes|
 |Microsoft.StreamAnalytics/streamingjobs| Yes|
 |Microsoft.TimeSeriesInsights/environments | Yes|
 |Microsoft W sieci Web/farm serwerów | Yes |
 |Microsoft / Witryn (z wyjątkiem funkcji) | Yes|
 |Microsoft HostingEnvironments/Web/multiRolePools | Nie|
-|Microsoft HostingEnvironments/Web/workerPools| Nie
-|Microsoft.SQL/Servers | Nie|
+|Microsoft HostingEnvironments/Web/workerPools| Nie |
+|Microsoft.SQL/Servers | Nie |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

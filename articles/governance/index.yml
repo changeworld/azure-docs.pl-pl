@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d99fcc9a8bb69926da7538edc06ae2b7533c86be
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 985f620caaa329b48b00d6ce586e7dcefbf5869d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507430"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341237"
 documentType: LandingData
 title: Zarządzanie platformą Azure — ład
 metadata:
@@ -39,21 +39,25 @@ sections:
     - href: ./management-groups/overview
       html: <p>Dowiedz się, jak grupować i organizować subskrypcje w logicznej hierarchii obsługującej wdrażanie innych usług ładu w sposób ustrukturyzowany.<br /></p>
       image:
+        alt: Grupy zarządzania
         src: ./media/management-groups-illustration.svg
       title: Grupy zarządzania
     - href: ./resource-graph/
       html: <p>Szybko twórz zapytania sprawdzające złożone informacje szczegółowe dotyczące zasobów platformy Azure za pomocą zaawansowanego narzędzia wiersza polecenia (z obsługą interfejsu wiersza polecenia platformy Azure i modułu Azure PowerShell). Znajduj i ujawniaj informacje, których odnajdowanie na dużą skalę wymagało wcześniej złożonych i iteracyjnych skryptów.</p>
       image:
+        alt: Wykres zasobów
         src: ./media/resource-graph-illustration.svg
       title: Wykres zasobów
     - href: ./policy/
       html: <p>Definiuj i stosuj standardy do zasobów w swoim środowisku. Zapobiegaj tworzeniu niepożądanych zasobów, rozszerzaj nowe zasoby za pomocą dodatkowych elementów, a także poddawaj inspekcji i korygowaniu zasoby już istniejące w Twoim środowisku.</p>
       image:
+        alt: Zasady
         src: ./media/policy-illustration.svg
       title: Zasady
     - href: ./blueprints/
       html: <p>Utwórz zawierający <i>artefakty</i> (m.in. grupy zasobów, zasady, przypisania ról i szablony usługi Resource Manager) pakiet natywny platformy Azure, który można dynamicznie wdrażać w subskrypcjach, aby tworzyć spójne, powtarzalne środowiska.</p>
       image:
+        alt: Strategie
         src: ./media/blueprints-illustration.svg
       title: Strategie
 - title: Implementacje

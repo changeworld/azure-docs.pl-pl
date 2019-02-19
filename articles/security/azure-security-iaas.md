@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 45fb1cbf57f54f040f9dfbc522c22a2e0884d6db
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116508"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341220"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Najlepsze rozwiązania dotyczące obciążeń IaaS na platformie Azure
 
@@ -39,7 +39,7 @@ Najlepsze rozwiązania są oparte na konsensus opinii i pracować z aktualnymi m
 Pierwszym środkiem ochrony maszyn wirtualnych jest, aby upewnić się, że tylko autoryzowani użytkownicy mogą skonfigurować nowych maszyn wirtualnych i dostęp do maszyn wirtualnych.
 
 **Najlepsze rozwiązanie**: Kontrolowanie dostępu do maszyny Wirtualnej.   
-**Szczegóły**: Użyj [zasady usługi Azure](../azure-policy/azure-policy-introduction.md) konwencje dla zasobów w Twojej organizacji i tworzenie zasad niestandardowych. Stosowanie tych zasad do zasobów, takich jak [grup zasobów](../azure-resource-manager/resource-group-overview.md). Maszyny wirtualne, które należą do grupy zasobów dziedziczy jej zasady.
+**Szczegóły**: Użyj [zasady usługi Azure](../governance/policy/overview.md) konwencje dla zasobów w Twojej organizacji i tworzenie zasad niestandardowych. Stosowanie tych zasad do zasobów, takich jak [grup zasobów](../azure-resource-manager/resource-group-overview.md). Maszyny wirtualne, które należą do grupy zasobów dziedziczy jej zasady.
 
 Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposób wydajne zarządzanie dostępem, zasad i zgodności dla tych subskrypcji. [Grupy zarządzania systemu Azure](../azure-resource-manager/management-groups-overview.md) zapewniają poziom zakresu powyżej subskrypcji. Organizowanie subskrypcji do grup zarządzania (kontenery) i Zastosuj warunkach nadzoru do tych grup. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą warunki stosowane do grupy. Grupy zarządzania umożliwiają zarządzanie klasy korporacyjnej na dużą skalę niezależnie od typu subskrypcji.
 

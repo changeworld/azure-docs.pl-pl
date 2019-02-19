@@ -1,6 +1,6 @@
 ---
-title: Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure
-description: Dowiedz się, jak tworzyć grupy zarządzania platformy Azure do zarządzania wieloma zasobami.
+title: Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure — Azure rządów
+description: Dowiedz się, jak tworzyć grupy zarządzania platformy Azure do zarządzania wieloma zasobami przy użyciu portalu, programu Azure PowerShell i wiersza polecenia platformy Azure.
 author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 699a9b7a371a004213419567d0672f56b5365598
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 01bfd10b2f37a7990ab9a1badfcb09422baa391a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620118"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342205"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Tworzenie grupy zarządzania do organizacji zasobów i zarządzania
 
@@ -78,6 +78,6 @@ Aby dowiedzieć się więcej na temat grup zarządzania, zobacz:
 
 - [Tworzenie grup zarządzania w celu organizowania zasobów platformy Azure](create.md)
 - [Jak zmienić lub usunąć grupy zarządzania oraz zarządzać nimi](manage.md)
-- [Przejrzyj grupy zarządzania w Module zasoby programu Azure PowerShell](https://aka.ms/mgPSdocs)
-- [Przejrzyj grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
-- [Przegląd grup zarządzania w wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)
+- [Grupy zarządzania w module zasobów programu Azure PowerShell](https://aka.ms/mgPSdocs)
+- [Grupy zarządzania w interfejsie API REST](https://aka.ms/mgAPIdocs)
+- [Grupy zarządzania w interfejsie wiersza polecenia platformy Azure](https://aka.ms/mgclidoc)

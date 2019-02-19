@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 40e0c8c91c44e67c2c409d2efb1e917fdbe0bf33
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ff3fdec2f427e095c748e4a47079d783fa83802d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562100"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341338"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planowanie migracji zasobów IaaS z wersji klasycznej do usługi Azure Resource Manager
 Gdy usługi Azure Resource Manager oferuje wiele funkcji wspaniałe, ważne jest zaplanowanie podróż migracyjną Postaramy się bezproblemowym przejściu. Poświęcania czasu na temat planowania będą upewnij się, czy nie występują problemy podczas wykonywania działania migracji. 
@@ -45,7 +45,7 @@ W zależności od wymagań technicznych, rozmiar, lokalizacje geograficzne i pra
 5. Twoje zespoły operacyjne obsługuje obecnie aplikacji lub maszyny wirtualne zarówno klasyczny, jak i usługi Azure Resource Manager?
 6. Jak (Jeśli w ogóle) usługi Azure Resource Manager zmienia się wdrożenie maszyny Wirtualnej, zarządzania, monitorowania i raportowania procesów?  Skrypty wdrażania muszą zostać zaktualizowane?
 7. Co to jest komunikacji planuje uczestników (użytkownicy końcowi, właścicieli aplikacji i właścicieli infrastruktury)?
-8. W zależności od złożoności środowiska powinien istnieć okres konserwacji gdzie aplikacja jest niedostępna, aby użytkownicy końcowi i właścicieli aplikacji?  Jeśli tak, jak długo?
+8. W zależności od złożoności środowiska powinien istnieć okres konserwacji gdzie aplikacja jest niedostępna, aby użytkownicy końcowi i właścicieli aplikacji?  Jeśli tak, przez jak długi czas?
 9. Co to jest plan szkolenia, aby upewnić się, że zainteresowane strony wiedzą i biegły w usłudze Azure Resource Manager?
 10. Co to jest zarządzanie programem lub planu zarządzania projektu migracji?
 11. Co to są osie czasu dla migracji usługi Azure Resource Manager i inne powiązane map drogowych technologii?  Są one optymalnie wyrównana?
@@ -196,7 +196,7 @@ Być znaczącej usług, które chcesz włączyć usługi Azure Resource Manager.
 - [Szablony usługi Azure Resource Manager dla wdrożenia łatwiejsze i bardziej kontrolowanego](../../azure-resource-manager/resource-group-overview.md#template-deployment).
 - [Tagi](../../azure-resource-manager/resource-group-using-tags.md).
 - [Działania sterowania](../../azure-resource-manager/resource-group-audit.md)
-- [Zasady usługi Azure](../../azure-policy/azure-policy-introduction.md)
+- [Zasady usługi Azure](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>Pułapki, których należy unikać
 

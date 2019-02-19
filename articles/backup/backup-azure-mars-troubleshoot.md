@@ -3,17 +3,17 @@ title: Rozwiązywanie problemów ze składnikiem Azure Backup Agent
 description: Rozwiązywanie problemów z instalowaniem i rejestrowaniem agenta usługi Azure Backup
 services: backup
 author: saurabhsensharma
-manager: shreeshd
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: 65eb6ef088c9baae67d65607ede771f3c9d11a41
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9180604b18224adace040c9eee5181b4cd4d8b92
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114148"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339009"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Rozwiązywanie problemów z Agent usług Microsoft Azure Recovery Services (MARS)
 
@@ -24,8 +24,13 @@ Poniżej przedstawiono sposób naprawić błędy, które można napotkać podcza
 | ---     | ---     | ---    |
 | **Error** </br> *Podano nieprawidłowe poświadczenia magazynu. Plik jest uszkodzony lub jest nie ma najnowszych poświadczeń skojarzonych z usługą odzyskiwania. (ID: 34513)* | <ul><li> Poświadczenia magazynu są nieprawidłowe (oznacza to, że zostały pobrane przed upływem terminu rejestracji więcej niż 48 godzin).<li>Agenta usług MARS nie może pobrać pliki do katalogu Windows Temp. <li>Poświadczenia magazynu znajdują się w lokalizacji sieciowej. <li>Protokół TLS 1.0 jest wyłączony.<li> Skonfigurowany serwer proxy blokuje połączenia. <br> |  <ul><li>Pobierz nowe poświadczenia magazynu. (**Uwaga**: Jeśli wiele plików poświadczenia magazynu zostaną pobrane wcześniej, tylko najnowsze pobrany plik jest prawidłowy w ciągu 48 godzin). <li>Uruchom **IE** > **ustawienie** > **Opcje internetowe** > **zabezpieczeń**  >  **Internet**. Następnie wybierz pozycję **Poziom niestandardowy**i przewijanie, aż zostanie wyświetlony plik, Pobierz sekcji. Następnie wybierz pozycję **Włącz**.<li>Może być również konieczne dodanie tych witryn w programie Internet Explorer [Zaufane witryny](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins#network-and-connectivity-requirements).<li>Zmień ustawienia, aby używać serwera proxy. Następnie szczegółowo Serwer proxy serwera. <li> Zgodna daty i godziny z komputera.<li>Jeśli otrzymasz komunikat o błędzie informujący, pobierania plików nie są dozwolone, jest prawdopodobne, że istnieją dużej liczby plików w katalogu C:/Windows/Temp.<li>Przejdź do C:/Windows/Temp, a następnie sprawdź, czy istnieją więcej niż 60 000 lub 65 000 pliki z rozszerzeniem .tmp. Jeśli istnieją, należy usunąć te pliki.<li>Upewnij się, że masz zainstalowane środowisko .NET framework 4.6.2. <li>Jeśli protokół TLS 1.0 zostało wyłączone z powodu zgodności ze standardami PCI, zapoznaj się z tym [strona rozwiązywania problemów](https://support.microsoft.com/help/4022913). <li>Jeśli masz oprogramowanie antywirusowe zainstalowane na serwerze, należy wyłączyć następujące pliki ze skanowania antywirusowego: <ul><li>CBengine.exe<li>CSC.exe, który jest powiązany z .NET Framework. Brak CSC.exe dla każdej wersji platformy .NET, który jest zainstalowany na serwerze. Wyklucz pliki CSC.exe, które są powiązane z wszystkich wersji programu .NET Framework na tym serwerze. <li>Lokalizacja folderu lub pamięci podręcznej plików tymczasowych. <br>*Domyślna lokalizacja dla tymczasowy folder lub ścieżka lokalizacji pamięci podręcznej to C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch*.<br><li>Folder bin C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
+## <a name="unable-to-download-vault-credential-file"></a>Nie można pobrać pliku poświadczeń magazynu
 
-## <a name="the-mars-agent-was-unable-to-connect-to-azure-backup"></a>Agenta usług MARS nie był w stanie połączyć się z usługi Azure Backup
+| Szczegóły błędu | Zalecane akcje |
+| ---     | ---    |
+|Nie można pobrać pliku poświadczeń magazynu. (ID: 403) | <ul><li> Spróbuj pobrać poświadczenia magazynu przy użyciu innej przeglądarki lub wykonaj następujące czynności: <ul><li> Uruchamianie programu Internet Explorer, naciśnij klawisz F12. </li><li> Przejdź do **sieci** kartę, aby wyczyścić pamięć podręczną programu IE i pliki cookie </li> <li> Odśwież stronę<br>(OR)</li></ul> <li> Sprawdź, czy subskrypcja jest wyłączona/wygasły<br>(OR)</li> <li> Sprawdź, czy wszystkie reguły zapory blokuje pobieranie pliku poświadczeń magazynu <br>(OR)</li> <li> Upewnij się, że możesz mieć nie został on wyczerpany limit magazynu (50 maszyn magazynu)<br>(OR)</li>  <li> Upewnij się, użytkownik posiada wymagane uprawnienia usługi Azure Backup do pobierania poświadczeń magazynu i Zarejestruj serwer w magazynie, zobacz [artykułu](backup-rbac-rs-vault.md)</li></ul> | 
+
+## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Agent usługi Microsoft Azure Recovery Service nie mógł połączyć się z usługą Microsoft Azure Backup
 
 | Szczegóły błędu | Możliwe przyczyny | Zalecane akcje |
 | ---     | ---     | ---    |
@@ -54,6 +59,8 @@ Poniżej przedstawiono sposób naprawić błędy, które można napotkać podcza
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Tworzenie kopii zapasowych nie działają zgodnie z harmonogramem
 Jeśli zaplanowane kopie zapasowe nie wyzwalane automatycznie, podczas ręcznego tworzenia kopii zapasowych działać bez problemów, spróbuj wykonać następujące czynności:
 
+- Przejdź do **Panel sterowania** > **narzędzia administracyjne** > **harmonogram zadań**. Rozwiń **Microsoft**i wybierz **kopii zapasowej Online**. Kliknij dwukrotnie **Microsoft OnlineBackup**, a następnie przejdź do **wyzwalaczy** kartę. Upewnij się, że stan jest ustawiony na **włączone**. Jeśli nie, wybierz **Edytuj**i wybierz **włączone** pole wyboru. Na **ogólne** karty, wróć do **opcje zabezpieczeń**. Upewnij się, że konto użytkownika, wybrany do uruchomienia tego zadania jest **systemu** lub **grupy administratorów lokalnych** na serwerze.
+
 - Zobacz, jeśli program PowerShell 3.0 lub nowszej jest zainstalowane na serwerze. Aby sprawdzić wersję programu PowerShell, uruchom następujące polecenie i upewnij się, że *głównych* numer wersji jest równy lub większy niż 3.
 
   `$PSVersionTable.PSVersion`
@@ -67,9 +74,6 @@ Jeśli zaplanowane kopie zapasowe nie wyzwalane automatycznie, podczas ręcznego
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
-
-- Przejdź do **Panel sterowania** > **narzędzia administracyjne** > **harmonogram zadań**. Rozwiń **Microsoft**i wybierz **kopii zapasowej Online**. Kliknij dwukrotnie **Microsoft OnlineBackup**, a następnie przejdź do **wyzwalaczy** kartę. Upewnij się, że stan jest ustawiony na **włączone**. Jeśli nie, wybierz **Edytuj**i wybierz **włączone** pole wyboru. Na **ogólne** karty, wróć do **opcje zabezpieczeń**. Upewnij się, że konto użytkownika, wybrany do uruchomienia tego zadania jest **systemu** lub **grupy administratorów lokalnych** na serwerze.
-
 
 > [!TIP]
 > Aby upewnić się, że zmiany są stosowane spójnie, uruchom ponownie serwer po wykonaniu powyższych kroków.
@@ -99,7 +103,7 @@ Usługa Azure Backup nie może pomyślnie zainstalować woluminu odzyskiwania, n
 
 8.  Uruchom ponownie usługę inicjatora iSCSI firmy Microsoft. Aby to zrobić, kliknij prawym przyciskiem myszy usługę, wybierz opcję **zatrzymać**, a następnie ponownie kliknij prawym przyciskiem myszy i wybierz **Start**.
 
-9.  Ponów próbę operacji odzyskiwania przy użyciu **natychmiastowe Przywracanie**.
+9.  Ponów próbę operacji odzyskiwania przy użyciu [ **natychmiastowe Przywracanie**](backup-instant-restore-capability.md).
 
 Jeśli odzyskiwanie nadal kończy się niepowodzeniem, należy ponownie uruchomić serwer lub klienta. Jeśli nie chcesz wykonać ponowny rozruch lub odzyskiwania nadal kończy się niepowodzeniem nawet po zakończeniu ponownego uruchomienia serwera, należy spróbować odzyskiwania z alternatywnej maszyny. Postępuj zgodnie z instrukcjami w [w tym artykule](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine).
 

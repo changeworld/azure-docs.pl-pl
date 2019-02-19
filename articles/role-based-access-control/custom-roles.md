@@ -1,6 +1,6 @@
 ---
-title: Role niestandardowe na platformie Azure | Dokumentacja firmy Microsoft
-description: Poznaj sposoby definiowania ról niestandardowych przy użyciu kontroli dostępu opartej na rolach na platformie Azure (RBAC) dla dostępu do zarządzania zasobami na platformie Azure.
+title: Role niestandardowe dla zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak tworzenie ról niestandardowych przy użyciu kontroli dostępu opartej na rolach (RBAC) dla dostępu do zarządzania zasobami platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6307c57f32700c0c2dd2e5da15b98a2a54dbe9c4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697137"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339332"
 ---
-# <a name="custom-roles-in-azure"></a>Role niestandardowe na platformie Azure
+# <a name="custom-roles-for-azure-resources"></a>Role niestandardowe dla zasobów platformy Azure
 
-Jeśli [role wbudowane](built-in-roles.md) nie spełniają specyficznych potrzeb Twojej organizacji, możesz utworzyć własne role niestandardowe. Podobnie jak wbudowane role można przypisać role niestandardowe do użytkowników, grup i nazwy główne usług w subskrypcji, grupy zasobów i zakresy zasobów. Role niestandardowe są przechowywane w katalogu usługi Azure Active Directory (Azure AD) i mogą być współużytkowane w różnych subskrypcjach. Każdy katalog może mieć maksymalnie 2000 ról niestandardowych. Role niestandardowe można tworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
+Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne niestandardowe role. Podobnie jak wbudowane role można przypisać role niestandardowe do użytkowników, grup i nazwy główne usług w subskrypcji, grupy zasobów i zakresy zasobów. Role niestandardowe są przechowywane w katalogu usługi Azure Active Directory (Azure AD) i mogą być współużytkowane w różnych subskrypcjach. Każdy katalog może mieć maksymalnie 2000 ról niestandardowych. Role niestandardowe można tworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
 
 ## <a name="custom-role-example"></a>Przykład rolę niestandardową
 
@@ -107,7 +107,7 @@ Podobnie jak w przypadku wbudowanych ról `AssignableScopes` właściwość okre
 | Wyświetl rolę niestandardową | `Microsoft.Authorization/ roleDefinition/read` | Użytkownicy, którzy otrzymują tej operacji w zakresie można wyświetlić role niestandardowe, które są dostępne do przypisania w tym zakresie. Wszystkie wbudowane role umożliwiają ról niestandardowych, które mają być dostępne do przypisania. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-- [Tworzenie ról niestandardowych przy użyciu programu Azure PowerShell](custom-roles-powershell.md)
-- [Tworzenie ról niestandardowych przy użyciu wiersza polecenia platformy Azure](custom-roles-cli.md)
-- [Zrozumienie definicje ról](role-definitions.md)
-- [Rozwiązywanie problemów z RBAC na platformie Azure](troubleshooting.md)
+- [Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu programu Azure PowerShell](custom-roles-powershell.md)
+- [Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure](custom-roles-cli.md)
+- [Zrozumienie definicje ról na potrzeby zasobów platformy Azure](role-definitions.md)
+- [Rozwiązywanie problemów z funkcji RBAC dla zasobów platformy Azure](troubleshooting.md)

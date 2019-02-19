@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: fca4b7cc59bf191094400892a37addf1023e2f85
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2e17ab5cfe51f3772148cc730c982671d602a79a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472953"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340488"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Analiza zespołu na podstawie maszyny wirtualnej do nauki o danych i sztucznej Inteligencji środowiska 
 [Maszyny wirtualnej do nauki o danych](overview.md) (DSVM) zapewnia bogate środowisko na platformie Azure przy użyciu wbudowanych oprogramowania sztucznej inteligencji (AI) i analizy danych. 
@@ -47,7 +47,7 @@ Ta seria artykułów zawiera wskazówki i wskaźniki dla każdej z wymienionych 
 * [Monitorowanie](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) i [zarządzania](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Rejestrowanie i przeprowadzanie inspekcji](https://docs.microsoft.com/azure/security/azure-log-audit)
 * [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview)
-* [Ustawienia zasad i wymuszania](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)
+* [Ustawienia zasad i wymuszania](../../governance/policy/overview.md)
 * [Oprogramowanie chroniące przed złośliwym kodem](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 * [Szyfrowanie](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Odnajdywanie danych i zarządzanie](https://docs.microsoft.com/azure/data-catalog/)

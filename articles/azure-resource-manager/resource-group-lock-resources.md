@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 209a5a9c213a48920452230b1d684fdf0738e87d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6d2ae1d1846506424aa14cca0f597c8888eb903d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496911"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341032"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Blokowanie zasobów w celu uniemożliwienia nieoczekiwanych zmian 
 
@@ -220,6 +220,6 @@ W żądaniu zawierać obiekt JSON, który określa właściwości blokady.
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej na temat logicznie organizowania zasobów, zobacz [organizowanie zasobów za pomocą tagów](resource-group-using-tags.md)
 * Aby zmienić zasób, który znajduje się w grupę zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów](resource-group-move-resources.md)
-* W ramach subskrypcji za pomocą zasad niestandardowych, można zastosować ograniczenia i Konwencji. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Azure Policy?](../azure-policy/azure-policy-introduction.md).
+* W ramach subskrypcji za pomocą zasad niestandardowych, można zastosować ograniczenia i Konwencji. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Azure Policy?](../governance/policy/overview.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 92bbcf1285449ac21cd038e1a6d27d2e3d43430b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 55a9e373893f6f46e6c109dde947b25a36ee93ed
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54259737"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343004"
 ---
 # <a name="configuring-network-security-group-flow-logs-with-powershell"></a>Konfigurowanie dzienników przepływu grupy zabezpieczeń w sieci przy użyciu programu PowerShell
 
@@ -30,9 +30,6 @@ ms.locfileid: "54259737"
 > - [Interfejs API REST](network-watcher-nsg-flow-logging-rest.md)
 
 Dzienniki przepływu sieciowej grupy zabezpieczeń są funkcją usługi Network Watcher, który służy do wyświetlania informacji na temat przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń. Te dzienniki przepływu są zapisywane w formacie json i Pokaż przepływy wychodzące i przychodzące na podstawie reguły w poszczególnych kart Sieciowych, przepływ, który ma zastosowanie do 5-elementowych informacji o przepływie (źródłowy/docelowy adres IP, Port źródłowy i docelowy, Protocol), a jeśli zezwolenie lub odrzucenie ruchu sieciowego.
-
-> [!NOTE] 
-> Dzienniki przepływu w wersji 2 są dostępne tylko w regionie Zachodnio-środkowe stany USA. Włączanie w wersji 2 dzienniki w nieobsługiwany region może spowodować dzienników w wersji 1, zwrócone do swojego konta magazynu.
 
 ## <a name="register-insights-provider"></a>Rejestrowanie dostawcy usługi Insights
 

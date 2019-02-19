@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem przy użyciu szablonów RBAC i usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) i szablonów usługi Azure Resource Manager.
+title: Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i usługi Azure Resource Manager | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) i szablonów usługi Azure Resource Manager.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 537ee35e96a41cd02605319e244d39c6567c3bf1
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696901"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337207"
 ---
-# <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>Zarządzanie dostępem przy użyciu szablonów RBAC i usługi Azure Resource Manager
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-resource-manager-templates"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu szablonów RBAC i usługi Azure Resource Manager
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. Oprócz używania programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz zarządzać dostępem do zasobów platformy Azure przy użyciu funkcji RBAC i [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli zajdzie potrzeba wdrożenia zasobów spójnego i wielokrotnego. W tym artykule opisano, jak możesz zarządzać dostępem przy użyciu RBAC i szablony.
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) sposób zarządzania dostępem do zasobów platformy Azure. Oprócz używania programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure, możesz zarządzać dostępem do zasobów platformy Azure przy użyciu funkcji RBAC i [szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md). Szablony mogą być przydatne, jeśli zajdzie potrzeba wdrożenia zasobów spójnego i wielokrotnego. W tym artykule opisano, jak możesz zarządzać dostępem przy użyciu RBAC i szablony.
 
 ## <a name="example-template-to-create-a-role-assignment"></a>Przykładowy szablon, można utworzyć przypisania roli
 
@@ -251,6 +251,6 @@ Aby wdrożyć poprzedni szablon przy użyciu wiersza polecenia platformy Azure, 
     
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Tworzenie i wdrażanie pierwszego szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-manager-create-first-template.md)
+- [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
 - [Omówienie struktury i składni szablonów usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md)
 - [Szablony Szybkiego startu platformy Azure](https://azure.microsoft.com/resources/templates/?term=rbac)

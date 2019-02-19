@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3010f4ec86b25c51fae2ce8f64238ec8815adca8
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236009"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408684"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Zarządzanie skryptami przed i po (wersja zapoznawcza)
 
@@ -52,7 +52,19 @@ Klikając do wdrożenia aktualizacji, uruchom teraz podać dodatkowe szczegóły
 
 ## <a name="passing-parameters"></a>Przekazywanie parametrów
 
-Po skonfigurowaniu pre i post skryptów, możesz przekazać parametry, podobnie jak planowanie elementu runbook. Parametry są definiowane w czasie tworzenia wdrożenia aktualizacji. Skrypty przed i po wymagają parametry będą typu `String`. Jeśli potrzebujesz innego typu obiektu, można rzutować go do innego typu przy użyciu `[System.Convert]` lub go obsłużyć za pomocą własnej logiki.
+Po skonfigurowaniu pre i post skryptów, możesz przekazać parametry, podobnie jak planowanie elementu runbook. Parametry są definiowane w czasie tworzenia wdrożenia aktualizacji. Skrypty przed i po obsługuje następujących typów:
+
+* [char]
+* [bajt]
+* [int]
+* [długie]
+* [dziesiętna]
+* [pojedynczego]
+* [double]
+* [Data i godzina]
+* [string]
+
+Jeśli potrzebujesz innego typu obiektu, można go rzutować na inny typ, z własną logiką w elemencie runbook.
 
 Oprócz parametry elementu runbook standardowe dodatkowy parametr jest dostępna. Ten parametr jest **SoftwareUpdateConfigurationRunContext**. Ten parametr jest ciąg JSON, a Jeśli zdefiniujesz parametru w skrypcie pre lub wpis, automatycznie jest przekazywana w przez wdrożenie aktualizacji. Parametr zawiera informacje dotyczące wdrażania aktualizacji, która jest podzbiorem informacje zwrócone przez [SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) poniższej tabeli przedstawiono właściwości, które znajdują się w zmiennej:
 

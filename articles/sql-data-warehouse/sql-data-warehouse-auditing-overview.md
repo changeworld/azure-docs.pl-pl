@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ef791bdfafbbd49cacad1a75c7171b9a030df2a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456225"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342308"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Przeprowadzanie inspekcji w usłudze Azure SQL Data Warehouse
 
@@ -74,10 +74,13 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
     ![Okienko nawigacji][8]
 
     > [!IMPORTANT]
-    > Dzienniki inspekcji na poziomie serwera są zapisywane w **obiekty BLOB dołączania** w usłudze Azure Blob storage w ramach subskrypcji platformy Azure.
+    > Dzienniki inspekcji są zapisywane w **obiekty BLOB dołączania** w usłudze Azure Blob storage w ramach subskrypcji platformy Azure.
     >
-    > * **Usługa Premium Storage** jest obecnie **nieobsługiwane** przez obiekty BLOB dołączania.
-    > * **Magazyn w sieci wirtualnej** jest obecnie **nieobsługiwane**.
+    > - Wszelkiego rodzaju magazynu (v1, v2, obiektów blob) są obsługiwane.
+    > - Obsługiwane są wszystkie konfiguracje replikacji magazynu.
+    > - **Usługa Premium storage** jest obecnie **nieobsługiwane**.
+    > - **Magazyn w sieci wirtualnej** jest obecnie **nieobsługiwane**.
+    > - **Magazyn za zaporą** jest obecnie **nieobsługiwane**
 
 8. Kliknij pozycję **Zapisz**.
 

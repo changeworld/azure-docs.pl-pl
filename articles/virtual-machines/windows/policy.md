@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 42b62c819fd3d26c6ea944f968e0d5956a7f055e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 654c23474ebc96a6873f82f51f969da5c7d2d20c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987462"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343259"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Stosowanie zasad do maszyn wirtualnych Windows za pomocą usługi Azure Resource Manager
 Za pomocą zasad, organizacja może wymusić różnych konwencji i reguł w całym przedsiębiorstwie. Wymuszanie żądane zachowanie może pomóc w zmniejszeniu ryzyka, przyczyniając się do sukcesu organizacji. W tym artykule opisano sposób można użyć zasad usługi Azure Resource Manager do definiowania żądane zachowanie w przypadku maszyn wirtualnych w organizacji.
 
-Wprowadzenie do zasad, zobacz [co to jest usługa Azure Policy?](../../azure-policy/azure-policy-introduction.md).
+Wprowadzenie do zasad, zobacz [co to jest usługa Azure Policy?](../../governance/policy/overview.md).
 
 ## <a name="permitted-virtual-machines"></a>Dozwolone maszyn wirtualnych
 Aby upewnić się, że maszyny wirtualne na potrzeby Twojej organizacji są zgodne z aplikacji, można ograniczyć dozwolone systemów operacyjnych. W poniższym przykładzie zasad Zezwalaj na tylko systemu Windows Server 2012 R2 Datacenter maszyn wirtualnych ma zostać utworzony:
@@ -251,6 +251,6 @@ Jeśli masz licencję w środowisku lokalnym, można zapisać opłata za licencj
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Po zdefiniowaniu regułę zasad (jak pokazano w poprzednich przykładach), musisz utworzyć definicję zasad i przypisać je do zakresu. Zakres może być subskrypcji, grupy zasobów lub zasobu. Aby przypisać zasady, zobacz [użycia Azure portal, aby przypisać i zarządzaniu zasadami zasobów](../../azure-policy/assign-policy-definition.md), [Użyj programu PowerShell, aby przypisać zasady](../../azure-policy/assign-policy-definition-ps.md), lub [interfejsu wiersza polecenia użyj Azure, aby przypisać zasady](../../azure-policy/assign-policy-definition-cli.md).
-* Wprowadzenie do zasad zasobów, zobacz [co to jest usługa Azure Policy?](../../azure-policy/azure-policy-introduction.md).
+* Po zdefiniowaniu regułę zasad (jak pokazano w poprzednich przykładach), musisz utworzyć definicję zasad i przypisać je do zakresu. Zakres może być subskrypcji, grupy zasobów lub zasobu. Aby przypisać zasady, zobacz [użycia Azure portal, aby przypisać i zarządzaniu zasadami zasobów](../../governance/policy/assign-policy-portal.md), [Użyj programu PowerShell, aby przypisać zasady](../../governance/policy/assign-policy-powershell.md), lub [interfejsu wiersza polecenia użyj Azure, aby przypisać zasady](../../governance/policy/assign-policy-azurecli.md).
+* Wprowadzenie do zasad zasobów, zobacz [co to jest usługa Azure Policy?](../../governance/policy/overview.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).

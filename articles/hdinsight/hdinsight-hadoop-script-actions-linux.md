@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9711e9bf94619b8cd003972d74f3bca4c45894bf
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 6702bfabd27b56ce473fe8eb14aadc9dc6e8e7c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312090"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338873"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Opracowywanie akcji skryptu za pomocą HDInsight
 
@@ -142,7 +142,7 @@ W przypadku większości operacji jest konieczne określanie systemu plików. Na
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-W tym przykładzie `hdfs` polecenia w sposób niewidoczny dla użytkownika używa domyślnego magazynu klastra. W przypadku niektórych operacji może być konieczne Określ identyfikator URI. Na przykład `adl:///example/jars` for Data Lake Storage Gen1 lub `wasb:///example/jars` dla usługi Azure Storage.
+W tym przykładzie `hdfs` polecenia w sposób niewidoczny dla użytkownika używa domyślnego magazynu klastra. W przypadku niektórych operacji może być konieczne Określ identyfikator URI. Na przykład `adl:///example/jars` dla usługi Azure Data Lake Storage Gen1 `abfs:///example/jars` for Data Lake Storage Gen2 lub `wasb:///example/jars` dla usługi Azure Storage.
 
 ### <a name="bPS7"></a>Zapisywanie informacji o STDOUT i STDERR
 

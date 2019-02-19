@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal | Microsoft Docs
-description: Dowiedz się, jak zarządzać dostępem użytkowników, grup, nazw głównych usług i zarządzanych tożsamości, przy użyciu kontroli dostępu opartej na rolach (RBAC) i witryny Azure portal. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
+title: Zarządzanie dostępem do resoruces platformy Azure przy użyciu RBAC i witryny Azure portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup, nazw głównych usług i zarządzanych tożsamości przy użyciu kontroli dostępu opartej na rolach (RBAC) i witryny Azure portal. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 1e3057108ef179af2f4692c061091fbdf59f0af2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412312"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342341"
 ---
-# <a name="manage-access-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup, nazw głównych usług i zarządzanych tożsamości przy użyciu RBAC i witryny Azure portal.
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) sposób zarządzania dostępem do zasobów platformy Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup, nazw głównych usług i zarządzanych tożsamości przy użyciu RBAC i witryny Azure portal.
 
 ## <a name="open-access-control-iam"></a>Otwórz z kontroli dostępu (IAM)
 
@@ -41,7 +41,7 @@ ms.locfileid: "54412312"
 
 ## <a name="view-roles-and-permissions"></a>Wyświetlanie ról i uprawnień
 
-Definicja roli jest kolekcją uprawnień służącą do przypisywania ról. Platforma Azure oferuje ponad 70 [wbudowane role](built-in-roles.md). Wykonaj następujące kroki, aby wyświetlić role i uprawnienia, które mogą być wykonywane w klastrach zarządzania i płaszczyzny danych.
+Definicja roli jest kolekcją uprawnień służącą do przypisywania ról. Platforma Azure oferuje ponad 70 [wbudowane role zasobów platformy Azure](built-in-roles.md). Wykonaj następujące kroki, aby wyświetlić role i uprawnienia, które mogą być wykonywane w klastrach zarządzania i płaszczyzny danych.
 
 1. Otwórz **kontrola dostępu (IAM)** w zakresie, takich jak grupy zarządzania, subskrypcji, grupy zasobów lub zasobu, które chcesz wyświetlać role i uprawnienia.
 
@@ -165,7 +165,7 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Samouczek: Udzielanie dostępu dla użytkownika przy użyciu RBAC i witryny Azure portal](quickstart-assign-role-user-portal.md)
-* [Samouczek: Udzielanie dostępu dla użytkownika za pomocą funkcji RBAC i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md)
-* [Rozwiązywanie problemów z RBAC na platformie Azure](troubleshooting.md)
-* [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../azure-resource-manager/management-groups-overview.md)
+* [Samouczek: Daj użytkownikowi dostęp do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal](quickstart-assign-role-user-portal.md)
+* [Samouczek: Daj użytkownikowi dostęp do zasobów platformy Azure przy użyciu RBAC i programu Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+* [Rozwiązywanie problemów z funkcji RBAC dla zasobów platformy Azure](troubleshooting.md)
+* [Organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../governance/management-groups/index.md)

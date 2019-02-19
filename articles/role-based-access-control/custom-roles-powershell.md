@@ -1,6 +1,6 @@
 ---
-title: Tworzenie ról niestandardowych przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzenie ról niestandardowych dla kontroli dostępu opartej na rolach (RBAC) przy użyciu programu Azure PowerShell. W tym jak listy, tworzenia, aktualizacji i usuwania ról niestandardowych.
+title: Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć niestandardowe role przy użyciu kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure przy użyciu programu Azure PowerShell. W tym jak listy, tworzenia, aktualizacji i usuwania ról niestandardowych.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 26e5b33504ff543e8442108e4368ce3b04f25df4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92c061a7f854b46ab5aee07aa5e648ace8f9ae52
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696765"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343846"
 ---
-# <a name="create-custom-roles-using-azure-powershell"></a>Tworzenie ról niestandardowych przy użyciu programu Azure PowerShell
+# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu programu Azure PowerShell
 
-Jeśli [role wbudowane](built-in-roles.md) nie spełniają specyficznych potrzeb Twojej organizacji, możesz utworzyć własne role niestandardowe. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu programu Azure PowerShell ról niestandardowych.
+Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne niestandardowe role. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu programu Azure PowerShell ról niestandardowych.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -296,6 +296,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Utworzyć rolę niestandardową przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Role niestandardowe na platformie Azure](custom-roles.md)
+- [Samouczek: Tworzenie roli niestandardowej na potrzeby zasobów platformy Azure przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
 - [Operacje dostawcy zasobów w usłudze Azure Resource Manager](resource-provider-operations.md)

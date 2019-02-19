@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 79bc9310eb3f7c8dd2b295405cea70c514d343d3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6eb759928d504bf1a3ccac4bc1aa983bb6a47979
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820875"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339369"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Zarządzanie klastrami HDInsight przy użyciu interfejsu API Apache Ambari REST
 
@@ -255,7 +255,9 @@ Wartość zwracana jest podobny do jednego z poniższych przykładów:
 
 * `wasb://CONTAINER@ACCOUNTNAME.blob.core.windows.net` — Ta wartość wskazuje, że klaster używa konta usługi Azure Storage do magazynu domyślnego. `ACCOUNTNAME` Wartością jest nazwa konta magazynu. `CONTAINER` Fragment to nazwa kontenera obiektów blob na koncie magazynu. Kontener jest katalog główny systemu plików HDFS zgodną z magazynem klastra.
 
-* `adl://home` — Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Storage do magazynu domyślnego.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` — Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Storage Gen2 do magazynu domyślnego. `ACCOUNTNAME` i `CONTAINER` wartości mają takie same znaczenia, jak wspomniano wcześniej w usłudze Azure Storage.
+
+* `adl://home` — Ta wartość wskazuje, że klaster używa usługi Azure Data Lake Storage Gen1 do magazynu domyślnego.
 
     Aby znaleźć nazwę konta usługi Data Lake Storage, należy użyć poniższych przykładach:
 

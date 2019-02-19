@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: 95d8825b8359b0ba8649c4c4e145ef488a486b21
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: c6763580a6693020c497c500342ff3ae4dc840d4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001927"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339232"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -126,7 +126,15 @@ Korzystając z __usługi Azure Storage__, użyj jednej z następujących schemat
 
 * `wasb://<container-name>@<account-name>.blob.core.windows.net/`: Używany podczas komunikacji z kontem magazynu innego niż domyślny. Na przykład, jeśli masz dodatkowe konto magazynu lub podczas uzyskiwania dostępu do danych przechowywanych na koncie magazynu dostępny publicznie.
 
-Korzystając z __usługi Data Lake Storage__, użyj jednej z następujących schematów identyfikator URI:
+Korzystając z __usługi Azure Data Lake Storage Gen2__, użyj jednej z następujących schematów identyfikator URI:
+
+* `abfs:///`: Domyślny magazyn przy użyciu nieszyfrowanego komunikacji.
+
+* `abfss:///`: Dostęp do magazynu domyślnego za pomocą komunikacji szyfrowanej.  Schemat abfss jest obsługiwany tylko z HDInsight w wersji 3.6 lub nowszym.
+
+* `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Używany podczas komunikacji z kontem magazynu innego niż domyślny. Na przykład, jeśli masz dodatkowe konto magazynu lub podczas uzyskiwania dostępu do danych przechowywanych na koncie magazynu dostępny publicznie.
+
+Korzystając z __usługi Azure Data Lake Storage Gen1__, użyj jednej z następujących schematów identyfikator URI:
 
 * `adl:///`: Dostęp do domyślnej usługi Data Lake Storage dla klastra.
 
@@ -176,7 +184,7 @@ Istnieją różne sposoby dostępu do danych poza klastrem HDInsight. Poniżej p
 
 Jeśli przy użyciu __usługi Azure Storage__, zobacz poniższe linki, aby sposób, że mogą uzyskiwać dostęp do danych:
 
-* [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-az-cli2): Polecenia interfejsu wiersza polecenia do pracy z platformą Azure. Po zainstalowaniu należy użyć `az storage` polecenie, aby uzyskać pomoc na temat korzystania z magazynu lub `az storage blob` poleceń specyficznych dla obiektów blob.
+* [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-az-cli2): Polecenia interfejsu wiersza polecenia do pracy z platformą Azure. Po zainstalowaniu należy użyć `az storage` polecenie, aby uzyskać pomoc na temat korzystania z magazynu lub `az storage blob` poleceń specyficznych dla obiektów blob.
 * [blobxfer.PY](https://github.com/Azure/blobxfer): Skrypt języka python do pracy z obiektami BLOB w usłudze Azure Storage.
 * Różnych zestawów SDK:
 
@@ -206,7 +214,7 @@ Skalowanie funkcji klastra umożliwia dynamiczną zmianę liczby węzłów danyc
 Różne typy klastrów ma wpływ skalowania w następujący sposób:
 
 * **Hadoop**: Podczas skalowania w dół liczbę węzłów w klastrze zostaną ponownie uruchomione niektóre z tych usług w klastrze. Operacje skalowania może spowodować zadania pracy lub w stanie oczekiwania na zakończenie operacji skalowania. Po zakończeniu operacji, można ponownie przesłać zadania.
-* **Baza danych HBase**: Serwery regionalne automatycznie są równoważone w ciągu kilku minut, po zakończeniu operacji skalowania. Ręcznie równoważyć serwerów regionalnych, wykonaj następujące kroki:
+* **HBase**: Serwery regionalne automatycznie są równoważone w ciągu kilku minut, po zakończeniu operacji skalowania. Ręcznie równoważyć serwerów regionalnych, wykonaj następujące kroki:
 
     1. Łączenie z klastrem HDInsight przy użyciu protokołu SSH. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
 

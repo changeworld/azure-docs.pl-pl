@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/16/2018
 ms.author: jdial
-ms.openlocfilehash: ef293b39d0e82cdd26e0c41af5d63d0459064017
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: acd7a88acb31b9d3bd3ba714387561e91b3524a6
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820797"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339520"
 ---
 # <a name="plan-virtual-networks"></a>Planowanie sieci wirtualnej
 
@@ -113,7 +113,7 @@ Korzysta z usługi Azure [kontrola dostępu oparta na rolach](../role-based-acce
 
 Usługa Azure Policy umożliwia tworzenie i przypisywanie oraz Zarządzanie definicjami zasad. Definicje zasad wymuszają różne reguły dotyczące zasobów, dzięki czemu zasoby pozostają zgodne ze standardami organizacji i umowy dotyczące poziomu usług. Usługa Azure Policy przeprowadza ocenę zasobów, skanowanie w poszukiwaniu zasobów, które nie są zgodne z definicjami zasad, do których masz. Na przykład można zdefiniować i zastosuj zasadę, która umożliwia tworzenie sieci wirtualnych w określonej grupie zasobów lub regionie. Inne zasady mogą wymagać, że każdej podsieci ma sieciową grupę zabezpieczeń skojarzoną do niego. Zasady są następnie oceniane podczas tworzenia i aktualizowania zasobów.
 
-Zasady zostaną zastosowane do następującej hierarchii: Subskrypcją, grupą zarządzania a grupą zasobów. Dowiedz się więcej o [usługa Azure policy](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub wdrożyć niektóre sieć wirtualną [szablonu zasad](policy-samples.md) przykładów.
+Zasady zostaną zastosowane do następującej hierarchii: Subskrypcją, grupą zarządzania a grupą zasobów. Dowiedz się więcej o [usługa Azure policy](../governance/policy/overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub wdrożyć niektóre sieć wirtualną [szablonu zasad](policy-samples.md) przykładów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

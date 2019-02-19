@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: a3f782cdd34f2a45c58e6a98d013f949767589cb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328014"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343276"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analizatory do przetwarzania w usłudze Azure Search tekstu
 
@@ -69,7 +69,7 @@ Najlepszy moment na dodawanie i przypisywanie analizatory jest podczas tworzenia
 
 Jak ekstrakt definicji indeksu, można dołączyć nowego konstrukcje analizy do indeksu, ale musisz przekazać **allowIndexDowntime** flaga [Aktualizowanie indeksu](https://docs.microsoft.com/rest/api/searchservice/update-index) Jeśli chcesz uniknąć tego błędu:
 
-*Indeks aktualizacji niedozwolone, ponieważ mogłoby to spowodować Przestój. Aby dodać nowe analizatory, tokenizatory, filtry tokenu lub znak filtry do istniejącego indeksu, należy ustawić parametr zapytania "allowIndexDowntime" na "true" w żądaniu aktualizacji indeksu. Należy pamiętać, że ta operacja umieści indeksu w trybie offline dla co najmniej kilka sekund, co powoduje usługi indeksowania i żądań zapytań nie powiedzie się. Wydajność i zapisu dostępność indeks może być osłabiona przez kilka minut, po zaktualizowaniu indeksu lub dłużej dla bardzo dużych indeksów.*
+*"Index aktualizacji niedozwolone, ponieważ mogłoby to spowodować Przestój. Aby dodać nowe analizatory, tokenizatory, filtry tokenu lub znak filtry do istniejącego indeksu, należy ustawić parametr zapytania "allowIndexDowntime" na "true" w żądaniu aktualizacji indeksu. Należy pamiętać, że ta operacja umieści indeksu w trybie offline dla co najmniej kilka sekund, co powoduje usługi indeksowania i żądań zapytań nie powiedzie się. Wydajność i zapisu dostępność indeks może być osłabiona przez kilka minut, po zaktualizowaniu indeksu lub dłużej dla bardzo dużych indeksów."*
 
 To samo dotyczy podczas przypisywania Analizator do pola. Analizator jest integralną częścią definicji pola, dzięki czemu możesz tylko dodawać go po utworzeniu pola. Jeśli chcesz dodać analizatory do istniejących pól, musisz [Porzuć i ponownie skompiluj](search-howto-reindex.md) indeksu, lub Dodaj nowe pole za pomocą analizatora ma.
 

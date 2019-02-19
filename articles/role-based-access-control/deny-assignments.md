@@ -1,5 +1,5 @@
 ---
-title: Zrozumienie Odmów przydziały w RBAC platformy Azure | Dokumentacja firmy Microsoft
+title: Zrozumienie Odmów przydziały dla zasobów platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o Odmów przypisania kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure.
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: fa1a979c01999bd79c45d24e4c7771edaf346dd8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 53716fa343df25026dcc668ed8483673d934d1ad
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632419"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339128"
 ---
-# <a name="understand-deny-assignments"></a>Opis przypisań odmowy
+# <a name="understand-deny-assignments-for-azure-resources"></a>Zrozumienie Odmów przydziały dla zasobów platformy Azure
 
-Podobnie jak w przypadku przypisania roli *Odmów przypisania* dołącza zbiór akcje odmowy zawsze do użytkownika, grupy lub jednostki usługi w określonym zakresie na potrzeby odmowa dostępu. Odmowa przypisania Zablokuj użytkownikom możliwość wykonywania określonych czynności, nawet wtedy, gdy przypisanie roli przyznaje im dostępu. Niektórych zasobów, które obejmują teraz dostawców na platformie Azure odmówić przypisania. Obecnie przypisania odmowy są **tylko do odczytu** i mogą zostać ustawione wyłącznie przez platformę Azure.
+Podobnie jak w przypadku przypisania roli *Odmów przypisania* dołącza zbiór akcje odmowy zawsze do użytkownika, grupy lub jednostki usługi w określonym zakresie na potrzeby odmowa dostępu. Odmowa przypisania Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. Niektórych zasobów, które obejmują teraz dostawców na platformie Azure odmówić przypisania. Obecnie Odmów przypisania **tylko do odczytu** i może zostać ustawiona tylko przez firmę Microsoft.
 
 Pod pewnymi względami Odmów przypisania są inne niż przypisań ról. Odmowa przypisania można wykluczyć podmiotów zabezpieczeń i zapobiegać dziedziczeniu na zakresy podrzędne. Odmów dotyczą również przypisania [klasyczny administrator subskrypcji](rbac-and-directory-admin-roles.md) przypisania.
 
@@ -37,13 +37,13 @@ W tym artykule opisano sposób Odmów przypisania są zdefiniowane.
 > [!div class="mx-tableFixed"]
 > | Właściwość | Wymagane | Typ | Opis |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | Yes | Ciąg | Nazwa wyświetlana przypisania Odmów. Nazwy muszą być unikatowe dla danego zakresu. |
-> | `Description` | Nie | Ciąg | Opis przypisania Odmów. |
+> | `DenyAssignmentName` | Yes | String | Nazwa wyświetlana przypisania Odmów. Nazwy muszą być unikatowe dla danego zakresu. |
+> | `Description` | Nie | String | Opis przypisania Odmów. |
 > | `Permissions.Actions` | Co najmniej jednej akcji lub jednego elementy DataActions | Ciąg] | Tablica ciągów, które określają operacje zarządzania, do których przypisanie Odmów blokuje dostęp. |
 > | `Permissions.NotActions` | Nie | Ciąg] | Tablica ciągów, które określają operacje zarządzania, aby wykluczyć z przypisania Odmów. |
 > | `Permissions.DataActions` | Co najmniej jednej akcji lub jednego elementy DataActions | Ciąg] | Tablica ciągów, które określają operacje danych, do których przypisanie Odmów blokuje dostęp. |
 > | `Permissions.NotDataActions` | Nie | Ciąg] | Tablica ciągów, które określają operacje na danych, aby wykluczyć z przypisania Odmów. |
-> | `Scope` | Nie | Ciąg | Ciąg, który określa zakres, który dotyczy przypisania Odmów. |
+> | `Scope` | Nie | String | Ciąg, który określa zakres, który dotyczy przypisania Odmów. |
 > | `DoNotApplyToChildScopes` | Nie | Wartość logiczna | Określa, czy przypisanie odmowy mają zastosowanie do zakresy podrzędne. Wartość domyślna to false. |
 > | `Principals[i].Id` | Yes | Ciąg] | Tablica obiektów nazwy głównej usługi Azure AD identyfikatorów (użytkownika, grupy, jednostkę usługi lub tożsamość zarządzana), do których zostanie zastosowana przypisania Odmów. Ustaw na pustym identyfikatorem GUID `00000000-0000-0000-0000-000000000000` do reprezentowania wszystkich podmiotów zabezpieczeń. |
 > | `Principals[i].Type` | Nie | Ciąg] | Tablica typów obiektów, reprezentowane przez jednostki [i] .id. Ustaw `SystemDefined` do reprezentowania wszystkich podmiotów zabezpieczeń. |
@@ -60,5 +60,5 @@ Do obsługi odmowy przypisania, **System-Defined jednostki** zostały wprowadzon
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Lista Odmów przypisania przy użyciu RBAC i interfejsu API REST](deny-assignments-rest.md)
-* [Zrozumienie definicje ról](role-definitions.md)
+* [Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST](deny-assignments-rest.md)
+* [Zrozumienie definicje ról na potrzeby zasobów platformy Azure](role-definitions.md)

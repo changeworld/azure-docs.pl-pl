@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5049a5a829ce8e94b62409c9d3b1439e8431fb1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 3274d753d33c759efa06b899a5511daf53aa9ec9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101201"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338652"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Administratorzy subskrypcji klasycznej platformy Azure
 
-Firma Microsoft zaleca zarządzanie dostępem do zasobów za pomocą kontroli dostępu opartej na rolach (RBAC). Jednak jeśli nadal używasz klasycznego modelu wdrażania, należy użyć roli administrator klasyczni: Administrator usługi i administratora współpracującego. Aby uzyskać więcej informacji, zobacz [usługi Azure Resource Manager, a wdrożeniem klasycznym](../azure-resource-manager/resource-manager-deployment-model.md).
+Firma Microsoft zaleca zarządzanie dostępem do zasobów platformy Azure za pomocą kontroli dostępu opartej na rolach (RBAC). Jednak jeśli nadal używasz klasycznego modelu wdrażania, należy użyć roli administrator klasyczni: Administrator usługi i administratora współpracującego. Aby uzyskać więcej informacji, zobacz [usługi Azure Resource Manager, a wdrożeniem klasycznym](../azure-resource-manager/resource-manager-deployment-model.md).
 
 W tym artykule opisano, jak dodać lub zmienić role administratora współpracującego i Administrator usługi i sposób wyświetlania administratora konta.
 
@@ -155,4 +155,4 @@ Wykonaj następujące kroki, aby wyświetlić administratora konta.
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Understand the different roles in Azure (Omówienie ról na platformie Azure)](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Manage access using RBAC and the Azure portal (Zarządzanie dostępem przy użyciu kontroli dostępu opartej na rolach i witryny Azure Portal)](../role-based-access-control/role-assignments-portal.md)
+* [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal](../role-based-access-control/role-assignments-portal.md)

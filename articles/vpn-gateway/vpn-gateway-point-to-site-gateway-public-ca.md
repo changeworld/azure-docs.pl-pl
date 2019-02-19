@@ -5,20 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: ac1ae4125418a9c0b3e9587cd03a44e752ac8f82
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: b89ba054040229d9925b9dbbc64d27eed171613e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236961"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339876"
 ---
 # <a name="transition-from-self-signed-to-public-ca-certificates-for-p2s-gateways"></a>Przejście z podpisem własnym do publicznych certyfikatów urzędu certyfikacji dla bram P2S
 
-Usługa Azure VPN Gateway nie jest już wystawia certyfikaty z podpisem własnym do bram dla połączeń P2S. Wystawione certyfikaty są teraz podpisany przez publiczny urząd certyfikacji (CA). Jednak starsze bramy mogą nadal korzystać z certyfikatów z podpisem własnym. Te certyfikaty z podpisem własnym są prawie daty ważności i musi przejść do publicznych certyfikatów urzędu certyfikacji.
+Usługa Azure VPN Gateway nie jest już wystawia certyfikaty z podpisem własnym poziomie platformy Azure do jego bram dla połączeń P2S. Wystawione certyfikaty są teraz podpisany przez publiczny urząd certyfikacji (CA). Jednak niektóre starsze bramy mogą nadal korzystać z certyfikatów z podpisem własnym. Te certyfikaty z podpisem własnym są prawie daty ważności i musi przejść do publicznych certyfikatów urzędu certyfikacji.
 
-Wcześniej certyfikat z podpisem własnym dla bramy trzeba aktualizować co 18 miesięcy. Pliki konfiguracji klienta sieci VPN trzeba było wygenerowanie konfiguracji węzłów i został przeniesiony na wszystkich klientach P2S. Przenoszenie do publicznych certyfikatów urzędu certyfikacji, który eliminuje to ograniczenie. Oprócz przejścia dla certyfikatów zmiana ta udostępnia również ulepszenia, lepsze metryki i ulepszona stabilność.
+Certyfikaty, w tym kontekście są dodatkowy certyfikat poziomie platformy Azure. Nie są one łańcuchów certyfikatów, używane podczas generowania własnych certyfikatów głównych z podpisem własnym i certyfikatów klienta do uwierzytelniania. Te certyfikaty pozostaną niezmienione i wygaśnie w dniu dat wygenerowany ich nie skonfigurują.
+
+Wcześniej certyfikat z podpisem własnym dla bramy (wystawiony przez platformę Azure w tle) nie trzeba aktualizować co 18 miesięcy. Pliki konfiguracji klienta sieci VPN trzeba było wygenerowanie konfiguracji węzłów i został przeniesiony na wszystkich klientach P2S. Przenoszenie do publicznych certyfikatów urzędu certyfikacji, który eliminuje to ograniczenie. Oprócz przejścia dla certyfikatów zmiana ta udostępnia również ulepszenia, lepsze metryki i ulepszona stabilność.
 
 Ta zmiana dotyczy tylko starsze bramy. Jeśli certyfikatu bramy musi miesięcznego okresu nastąpi przejście, otrzymasz komunikat lub wyskakującego powiadomienia w witrynie Azure portal. Można sprawdzić, brama ma wpływ wykonując kroki opisane w tym artykule.
 

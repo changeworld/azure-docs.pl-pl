@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 9cd43172fc57443cc89f238e1d4ffaae45301936
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: addc1a0d7356cf1ba536c7ab47e376a48621e2d9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330566"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342494"
 ---
 # <a name="create-a-basic-index-in-azure-search"></a>Tworzenie podstawowego indeksu w usłudze Azure Search
 
@@ -26,9 +26,29 @@ Można utworzyć indeksu w portalu [interfejsu API REST](search-create-index-res
 
 ## <a name="recommended-workflow"></a>Zalecanym przepływie pracy
 
-Ponieważ struktury fizyczne są tworzone podczas indeksowania, konieczne będzie [Porzuć i ponownie utworzyć indeksy](search-howto-reindex.md) zawsze, gdy wprowadzeniu istotnych zmian do istniejącej definicji pola. Oznacza to, że podczas tworzenia aplikacji, należy zaplanować na częste ponowne kompilowanie. Warto rozważyć pracy przy użyciu podzestawu danych, aby wprowadzić odbudowuje go szybciej. 
+Otrzymywanych projekt prawo indeksu zwykle odbywa się za pośrednictwem wiele iteracji. Przy użyciu kombinacji narzędzia i interfejsy API mogą pomóc szybko Dokończ projektowanie.
 
-Zaleca się również kod zamiast portalu indeksowania. Jeśli użytkownik korzysta w portalu do definicji indeksu, trzeba będzie Wypełnij definicję indeksu na każdym ponownej kompilacji. Alternatywnie za pomocą narzędzia, takiego jak [interfejsu API REST i narzędzia Postman](search-fiddler.md) są przydatne do testowania weryfikacji koncepcji, w przypadku projektów programistycznych w wczesnych faz. Umożliwia zmiany przyrostowe definicji indeksu w treści żądania, wysyłając żądanie do usługi Usługa umożliwiająca ponowne utworzenie indeksu za pomocą zaktualizowanego schematu.
+1. Określ, czy można użyć [indeksatora](search-indexer-overview.md#supported-data-sources). Jeśli dane zewnętrzne jest jednym z obsługiwanych źródeł danych, możesz to zrobić prototypu i załadować indeks za pomocą [ **importowania danych** ](search-import-data-portal.md) kreatora.
+
+2. Jeśli nie możesz użyć **importowania danych**, nadal możesz [Tworzenie początkowego indeksu w portalu](search-create-index-portal.md), dodając pola i typy danych i przypisanie atrybutów, za pomocą formantów na **Add Index** Strona. W portalu wyświetlany atrybutów, które są dostępne dla różnych typów danych. Jeśli jesteś nowym użytkownikiem projekt indeksu, jest to przydatne.
+
+   ![Dodaj stronę indeksu przedstawiający atrybuty w zależności od typu danych](media/search-create-index-portal/field-attributes.png "strony indeksu Dodaj przedstawiający atrybuty w zależności od typu danych")
+  
+   Po kliknięciu **Utwórz**, wszystkie struktury fizyczne obsługi indeksu są tworzone w usłudze wyszukiwania.
+
+3. Pobieranie przy użyciu schematu indeksu [uzyskać indeks interfejsu API REST](https://docs.microsoft.com/rest/api/searchservice/get-index) i narzędzia, takiego jak testowanie sieci web [Postman](search-fiddler.md). Masz teraz reprezentacja JSON indeks, który został utworzony w portalu. 
+
+   Przejściu na podejście oparte na kodzie w tym momencie. Portal nie jest odpowiednie dla iteracji, ponieważ nie można edytować indeksu, który jest już utworzony. Jednak narzędzie Postman i REST, można użyć dla pozostałych zadań.
+
+4. [Ładowanie indeksu z danymi](search-what-is-data-import.md). Usługa Azure Search akceptuje dokumentów JSON. Aby załadować dane programowo, umożliwia Postman dokumenty JSON w ładunku żądania. Jeśli dane nie jest łatwo wyrażone jako dane JSON, ten krok będzie najczęściej pracy o znacznym wykorzystaniu.
+
+5. Tworzenie zapytań względem indeksu usługi, sprawdź wyniki i dalsze powtarzanie czynności w schemat indeksu, dopóki nie zaczniesz zobaczyć wyniki, których oczekujesz. Możesz użyć [ **Eksploratora wyszukiwania** ](search-explorer.md) lub Postman do zapytania w indeksie.
+
+6. Kontynuuj używanie kodu do wykonywania iteracji projektu.  
+
+Ponieważ struktury fizyczne są tworzone w usłudze [porzucenie i ponowne tworzenie indeksów](search-howto-reindex.md) zachodzi po każdym wprowadzeniu znaczących zmian do ab istniejącej definicji pola. Oznacza to, że podczas tworzenia aplikacji, należy zaplanować na częste ponowne kompilowanie. Warto rozważyć pracy przy użyciu podzestawu danych, aby wprowadzić odbudowuje go szybciej. 
+
+Kod, a nie podejście portalu, jest zalecane w przypadku iteracyjne projektowania. Jeśli użytkownik korzysta w portalu do definicji indeksu, trzeba będzie Wypełnij definicję indeksu na każdym ponownej kompilacji. Jako alternatywę, narzędzi, takich jak [interfejsu API REST i narzędzia Postman](search-fiddler.md) są przydatne do testowania weryfikacji koncepcji, w przypadku projektów programistycznych w wczesnych faz. Można dokonać zmiany przyrostowe definicji indeksu w treści żądania, a następnie wyślij żądanie do usługi Usługa umożliwiająca ponowne utworzenie indeksu za pomocą zaktualizowanego schematu.
 
 ## <a name="components-of-an-index"></a>Składniki indeksu
 
@@ -119,13 +139,13 @@ W trakcie definiowania schematu musisz określić nazwę, typ i atrybuty każdeg
 ### <a name="data-types"></a>Typy danych
 | Type | Opis |
 | --- | --- |
-| *Edm.String* |Tekst, który opcjonalnie można podzielić na tokeny na potrzeby wyszukiwania pełnotekstowego (dzielenie wyrazów, analiza słowotwórcza itp.). |
+| *Edm.String* |Tekst, który opcjonalnie można podzielić na tokeny dla wyszukiwania pełnotekstowego (dzielenie wyrazów, analiza słowotwórcza i tak dalej). |
 | *Collection(Edm.String)* |Lista ciągów, które opcjonalnie można podzielić na tokeny na potrzeby wyszukiwania pełnotekstowego. Nie ma teoretycznej górnej granicy liczby elementów w kolekcji, ale rozmiar ładunku w kolekcjach jest ograniczony do 16 MB. |
 | *Edm.Boolean* |Zawiera wartości prawda/fałsz. |
 | *Edm.Int32* |32-bitowe wartości całkowite. |
 | *Edm.Int64* |64-bitowe wartości całkowite. |
 | *Edm.Double* |Dane liczbowe o podwójnej precyzji. |
-| *Edm.DateTimeOffset* |Wartości daty i godziny przedstawione w formacie OData 4 (np. w formacie `yyyy-MM-ddTHH:mm:ss.fffZ` lub `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
+| *Edm.DateTimeOffset* |Wartości daty i godziny reprezentowane w formacie protokołu OData V4 (na przykład `yyyy-MM-ddTHH:mm:ss.fffZ` lub `yyyy-MM-ddTHH:mm:ss.fff[+/-]HH:mm`). |
 | *Edm.GeographyPoint* |Punkt przedstawiający lokalizację geograficzną na świecie. |
 
 Dowiedz się więcej na temat [typów danych obsługiwanych przez usługę Azure Search w tym miejscu](https://docs.microsoft.com/rest/api/searchservice/Supported-data-types).
@@ -133,7 +153,7 @@ Dowiedz się więcej na temat [typów danych obsługiwanych przez usługę Azure
 ### <a name="index-attributes"></a>Atrybuty indeksu
 | Atrybut | Opis |
 | --- | --- |
-| *Klucz* |Ciąg udostępniający unikatowy identyfikator każdego dokumentu, używany do wyszukiwania dokumentu. Każdy indeks musi mieć jeden klucz. Tylko jedno pole może być kluczem i musi ono mieć typ Edm.String. |
+| *Klucz* |Ciąg udostępniający unikatowy identyfikator każdego dokumentu, który jest używany do wyszukiwania dokumentu. Każdy indeks musi mieć jeden klucz. Tylko jedno pole może być kluczem i musi ono mieć typ Edm.String. |
 | *Pobieranie* |Określa, czy pole może być zwracane w wynikach wyszukiwania. |
 | *Filtrowanie* |Umożliwia używanie pola w zapytaniach filtrów. |
 | *Sortowanie* |Umożliwia zapytaniom sortowanie wyników wyszukiwania za pomocą tego pola. |
@@ -144,32 +164,33 @@ Dowiedz się więcej na temat [atrybutów indeksów usługi Azure Search w tym m
 
 ## <a name="storage-implications"></a>Implikacje magazynu
 
-Atrybuty, które możesz wybrać mają wpływ na magazyn. Poniższy zrzut ekranu przedstawia ilustrację wzorców magazynu indeksu wynikające z różnych kombinacji atrybutów. Indeks jest oparty na [przykładowe wbudowane realestate](search-get-started-portal.md) źródła danych, co umożliwia indeksowanie i zapytania w portalu.
+Atrybuty, które możesz wybrać mają wpływ na magazyn. Poniższy zrzut ekranu przedstawia wzorców magazynu indeksu wynikające z różnych kombinacji atrybutów.
 
-Filtrowanie i sortowanie zapytanie operacje na dokładne dopasowania, dzięki czemu dokumenty zapisywane są opublikowane. Pola z możliwością wyszukiwania włączyć wyszukiwanie pełnotekstowe i rozmytego. Odwrócony indeksy są tworzone dla pola z możliwością wyszukiwania i wypełniane przy użyciu warunków tokenami. Oznaczanie pól jako możliwe do pobierania nie ma znacznego wpływu na rozmiar indeksu.
+Indeks jest oparty na [przykładowe wbudowane realestate](search-get-started-portal.md) źródła danych, co umożliwia indeksowanie i zapytania w portalu. Mimo że schematy indeksu nie są wyświetlane, można wywnioskować atrybutów, w oparciu o nazwę indeksu. Na przykład *realestate wyszukiwanie* indeks ma **wyszukiwanie** atrybut i nic, *pobieranie realestate* indeks ma  **pobieranie** atrybut i nic innego i tak dalej.
 
 ![Indeks rozmiaru na podstawie wyboru atrybutu](./media/search-what-is-an-index/realestate-index-size.png "indeksu rozmiaru na podstawie wybranych atrybutów")
 
-Niektóre z tych kombinacji są sztuczny, przydatne w przypadku oświetlenia punkt, ale nie powodują indeksu możliwego do użycia. W praktyce nigdy nie będzie dodać każdego pojedynczego pola do sugestora lub Utwórz indeks, którą można przeszukiwać, ale nie pobieranie.
+Mimo że te wariantów indeksu są sztuczny, firma Microsoft może odwoływać się do nich szerokiego porównania wpływu magazynu atrybutów. Jest ustawienie **pobieranie** zwiększyć rozmiar indeksu? Nie. Dodawanie pól do ma **Sugestora** zwiększyć rozmiar indeksu? Tak.
 
-Architektura magazynu jest uznawany za szczegółowo opisuje implementacja usługi Azure Search i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, bieżące zachowanie utrwali w przyszłości.
+Proporcjonalnie większe niż indeksy, które obsługują wyszukiwanie pełnotekstowe po prostu są indeksy, które obsługuje filtrowanie i sortowanie. Przyczyną jest to zapytanie filtrowania i sortowania na dokładne dopasowania, dzięki czemu dokumenty zapisywane są opublikowane. Z kolei pola z możliwością wyszukiwania pełnotekstowe i rozmyte pomocniczych Użyj odwrócony indeksy wyszukiwania, które są wypełniane przy użyciu tokenami terminów, które zużywają mniej miejsca niż całego dokumentów.
+
+> [!Note]
+> Architektura magazynu jest uznawany za szczegółowo opisuje implementacja usługi Azure Search i może ulec zmianie bez powiadomienia. Nie ma żadnej gwarancji, bieżące zachowanie utrwali w przyszłości.
 
 ## <a name="suggesters"></a>Funkcje sugestii
-Sugestora to sekcja schemat, który definiuje pola w indeksie, które są używane do obsługi automatycznego uzupełniania wpisywaniu lub Autouzupełnianie zapytań wyszukiwania. Zazwyczaj ciągi częściowe są wysyłane do sugestie (Azure Search interfejs API REST usługi), podczas zapytania wyszukiwania wpisywany przez użytkownika, a interfejs API zwraca zbiór proponowanych fraz. 
+Sugestora to sekcja schemat, który definiuje pola w indeksie, które są używane do obsługi automatycznego uzupełniania wpisywaniu lub Autouzupełnianie zapytań wyszukiwania. Zazwyczaj ciągi częściowe są wysyłane do [sugestie (interfejs API REST)](https://docs.microsoft.com/rest/api/searchservice/suggestions) podczas zapytania wyszukiwania wpisywany przez użytkownika, a interfejs API zwraca zbiór proponowanych fraz. 
 
-Sugestora, który definiuje w indeksie określa pola, które są używane do tworzenia wpisywania z wyprzedzeniem wyszukiwane terminy. Aby uzyskać więcej informacji, zobacz [Dodaj sugestory](index-add-suggesters.md) szczegółowe informacje dotyczące konfiguracji.
+Pola dodane do sugestora są używane do tworzenia wpisywania z wyprzedzeniem wyszukiwane terminy. Wszystkie terminy wyszukiwania są tworzone podczas indeksowania i przechowywane w innej lokalizacji. Aby uzyskać więcej informacji na temat tworzenia struktury sugestora zobacz [Dodaj sugestory](index-add-suggesters.md).
 
 ## <a name="scoring-profiles"></a>Profile oceniania
 
-Profil oceniania to sekcja schemat, który definiuje oceniania zachowań niestandardowych, które umożliwiają mają wpływ na elementy, które są wyświetlane w wynikach wyszukiwania. Profile oceniania składają się wag pól i funkcji. Z nich korzystać, należy wskazać profil według nazwy w ciągu zapytania.
+A [profil oceniania](index-add-scoring-profiles.md) jest części schemat, który definiuje niestandardowe oceniania zachowania umożliwiające wpływają na elementy, które są wyświetlane w wynikach wyszukiwania. Profile oceniania składają się wag pól i funkcji. Z nich korzystać, należy wskazać profil według nazwy w ciągu zapytania.
 
-Domyślny profil oceniania działa w tle, można obliczyć wyniku wyszukiwania dla każdego elementu w zestawie wyników. Możesz użyć wewnętrznego, bez nazwy profilu oceniania. Alternatywnie można ustawić defaultScoringProfile do użycia niestandardowego profilu jako domyślnego, wywoływana zawsze wtedy, gdy nie określono profilu niestandardowego w ciągu zapytania.
-
-Aby uzyskać więcej informacji, zobacz [dodać profile oceniania](index-add-scoring-profiles.md).
+Domyślny profil oceniania działa w tle, można obliczyć wyniku wyszukiwania dla każdego elementu w zestawie wyników. Możesz użyć wewnętrznego, bez nazwy profilu oceniania. Alternatywnie, ustawić **defaultScoringProfile** do użycia niestandardowego profilu jako domyślnego, wywoływana zawsze wtedy, gdy nie określono profilu niestandardowego w ciągu zapytania.
 
 ## <a name="analyzers"></a>Analizatory
 
-Element analizatory ustawia nazwę analizatora języków dla pola. Aby uzyskać zestaw dozwolonych wartości, zobacz [analizatory języka w usłudze Azure Search](index-add-language-analyzers.md). Tej opcji można używać tylko w przypadku pola z możliwością wyszukiwania i nie można ustawić razem z wartościami **searchAnalyzer** lub **indexAnalyzer**. Po wybraniu Analizator nie można zmienić dla pola.
+Element analizatory ustawia nazwę analizatora języków dla pola. Aby uzyskać więcej informacji na temat zakresu analizatory dostępne zobacz [Dodawanie analizatory do indeksu usługi Azure Search](search-analyzers.md). Analizatory należy używać tylko z pola z możliwością wyszukiwania. Po Analizator jest przypisany do pola, nie można zmienić, chyba że odbudowanie indeksu.
 
 ## <a name="cors"></a>CORS
 

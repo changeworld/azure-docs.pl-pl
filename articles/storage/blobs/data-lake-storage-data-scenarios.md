@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: normesta
-ms.openlocfilehash: 2e39aaae7b873174db032c5e1dda516c9a998d31
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 66d7a2ce5833729d601ae896f0903a17a40fc8a3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301914"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339503"
 ---
 # <a name="using-azure-data-lake-storage-gen2-for-big-data-requirements"></a>Za pomocą usługi Azure Data Lake Storage Gen2 dla wymagających danych big Data
 
@@ -73,7 +73,7 @@ Ta tabela pokazuje, jak udzielić dostępu dla każdej usługi platformy Azure l
 |Apache DistCp | Przypisywanie roli do zarządzanych tożsamości przypisanych przez użytkownika | [Tworzenie klastra usługi HDInsight za pomocą Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2) |
 |Azure Data Factory| Przypisywanie roli do tożsamości przypisanych — zarządzane przez użytkownika<br>**lub**<br> Przypisz rolę wymaganą do nazwy głównej usługi<br>**lub**<br> Użyj klucza konta magazynu | [Właściwości usługi połączonej](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#linked-service-properties) |
 |Azure HDInsight| Przypisywanie roli do zarządzanych tożsamości przypisanych przez użytkownika | [Tworzenie klastra usługi HDInsight za pomocą Data Lake Storage Gen2](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2#creating-an-hdinsight-cluster-with-data-lake-storage-gen2)|
-|Azure Databricks| Przypisywanie roli do jednostki usługi | [Tworzenie jednostki usługi](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-quickstart-create-databricks-account?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-a-service-principal)|
+|Azure Databricks| Przypisywanie roli do jednostki usługi | [Instrukcje: Aby utworzyć aplikację usługi Azure AD i jednostkę usługi, które mogą uzyskiwać dostęp do zasobów, użyj portalu](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)|
 
 Aby udzielić dostępu do określonych plików i folderów, zobacz następujące artykuły.
 

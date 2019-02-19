@@ -1,7 +1,7 @@
 ---
 title: Wypróbuj bezpłatnie usługi mowy
 titleSuffix: Azure Cognitive Services
-description: Wprowadzenie do usługi rozpoznawania mowy jest proste i niedrogie. 30-dniowej bezpłatnej wersji próbnej umożliwia odnajdywanie usługi wykonaj co zdecydować, czy jest on odpowiedni dla twojej aplikacji potrzebom.
+description: Wprowadzenie do usług przetwarzania mowy jest proste i niedrogie. 30-dniowej bezpłatnej wersji próbnej umożliwia odnajdywanie usługi wykonaj co zdecydować, czy jest on odpowiedni dla twojej aplikacji potrzebom.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 203cb07c9450a590b45caa66092fe0199d985058
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d48ad97d50c413c4530e54f2538fda9cd0e31b8f
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978157"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342681"
 ---
-# <a name="try-the-speech-service-for-free"></a>Wypróbuj bezpłatnie usługę rozpoznawania mowy
+# <a name="try-speech-services-for-free"></a>Wypróbuj bezpłatnie usługi mowy
 
-Wprowadzenie do usługi rozpoznawania mowy jest proste i niedrogie. 30-dniowej bezpłatnej wersji próbnej umożliwia odnajdywanie usługi wykonaj co zdecydować, czy jest on odpowiedni dla twojej aplikacji potrzebom.
+Wprowadzenie do usług przetwarzania mowy jest proste i niedrogie. 30-dniowej bezpłatnej wersji próbnej umożliwia odnajdywanie usługi wykonaj co zdecydować, czy jest on odpowiedni dla twojej aplikacji potrzebom.
 
-Jeśli potrzebujesz więcej czasu, załóż konto Microsoft Azure — pochodzi ona z 200 USD środków usługi, które można zastosować do płatnej subskrypcji usługi mowy przez maksymalnie 30 dni.
+Jeśli potrzebujesz więcej czasu, załóż konto Microsoft Azure — pochodzi ona z 200 USD środków usługi, które można zastosować do płatnej subskrypcji usług przetwarzania mowy przez maksymalnie 30 dni.
 
-Na koniec usługa mowy oferuje bezpłatne, niskim warstwy, która jest odpowiednia do tworzenia aplikacji. Możesz zachować tej bezpłatnej subskrypcji, nawet po wygaśnięciu środków usługi.
+Na koniec usług przetwarzania mowy oferuje bezpłatne, niskim warstwy, która jest odpowiednia do tworzenia aplikacji. Możesz zachować tej bezpłatnej subskrypcji, nawet po wygaśnięciu środków usługi.
 
 ## <a name="free-trial"></a>Bezpłatna wersja próbna
 
@@ -57,17 +57,17 @@ Po zalogowaniu się do usług Cognitive Services spróbuj zaczyna się Twoja bez
 
 ## <a name="new-azure-account"></a>Nowe konto platformy Azure
 
-Nowe konta usługi Azure otrzymywać 200 USD środków usługa, która jest dostępna przez maksymalnie 30 dni. Wartość tego kredytu można użyć, aby bliżej zapoznać się z usługą mowy lub rozpoczęcie tworzenia aplikacji.
+Nowe konta usługi Azure otrzymywać 200 USD środków usługa, która jest dostępna przez maksymalnie 30 dni. Wartość tego kredytu można użyć, aby dokładniej zbadać usług przetwarzania mowy lub rozpocząć opracowywanie aplikacji.
 
 Aby utworzyć nowe konto platformy Azure, przejdź do [strona tworzenia konta usługi Azure](https://azure.microsoft.com/free/ai/), kliknij przycisk **Rozpocznij za darmo,** i Utwórz nowe konto platformy Azure przy użyciu konta Microsoft.
 
 Możesz zasubskrybować bezpłatnego konta Microsoft na [portalu konta usługi Microsoft](https://account.microsoft.com/account). Aby rozpocząć, kliknij pozycję **Zaloguj się przy użyciu Microsoft** , a następnie po wyświetleniu monitu, aby zalogować się, kliknij **utwórz je.** Wykonaj kroki, aby utworzyć i zweryfikować nowego konta Microsoft.
 
-Po utworzeniu konta platformy Azure, wykonaj kroki opisane w następnej sekcji, aby rozpocząć subskrypcję usługi mowy.
+Po utworzeniu konta platformy Azure, wykonaj kroki opisane w następnej sekcji, aby rozpocząć subskrypcję do usług przetwarzania mowy.
 
 ## <a name="create-a-speech-resource-in-azure"></a>Utwórz zasób mowy na platformie Azure
 
-Aby dodać zasób usługi mowy (w warstwie bezpłatna lub płatna) do konta platformy Azure:
+Można dodać zasobu usługi mowy (w warstwie bezpłatna lub płatna) do konta platformy Azure:
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta Microsoft.
 
@@ -89,7 +89,7 @@ Aby dodać zasób usługi mowy (w warstwie bezpłatna lub płatna) do konta plat
 
     * Nazwa dla nowego zasobu. Nazwa służy do rozróżnienia wielu subskrypcji tej samej usługi.
     * Wybierz subskrypcję platformy Azure, nowy zasób z którym skojarzony jest ustalenie, jak są naliczane opłaty.
-    * Wybierz region, w którym zasób będzie używany. Obecnie usługa rozpoznawania mowy jest dostępna w regionach zachodnie stany USA, Azja Wschodnia i Europa Północna.
+    * Wybierz region, w którym zasób będzie używany. Obecnie usług przetwarzania mowy jest dostępna w regionach zachodnie stany USA, Azja Wschodnia i Europa Północna.
     * Wybierz opcję bezpłatnej i płatnej warstwy cenowej. Kliknij przycisk **Wyświetl pełne szczegóły ceny** pełne informacje dotyczące cen i użycie przydziały dla każdej warstwy.
     * Utwórz nową grupę zasobów dla tej subskrypcji mowy lub Przypisz subskrypcję przechodząc do istniejącej grupy zasobów. Pomoc, której możesz przechowywać różne subskrypcje platformy Azure uporządkowane grupy zasobów.
     * Wygodny dostęp do Twojej subskrypcji w przyszłości, wybierz **Przypnij do pulpitu nawigacyjnego** pole wyboru.
@@ -114,7 +114,7 @@ Aby przełączyć się z jednej subskrypcji, na przykład kiedy Twoja bezpłatna
 > Bezpłatna wersja próbna klucze są tworzone w regionie zachodnie stany USA (`westus`) regionie. Z subskrypcji utworzonej za pomocą pulpitu nawigacyjnego platformy Azure może być w niektórych innym regionie, wybranie opcji Tak.
 
 * Jeśli aplikacja używa [zestaw SDK rozpoznawania mowy](speech-sdk.md), takich jak Podaj kod regionu `westus`, podczas tworzenia konfiguracji mowy.
-* Jeśli aplikacja używa jednej z usług mowy [interfejsów API REST](rest-apis.md), region jest częścią punktu końcowego identyfikatora URI, można użyć podczas wysyłania żądań.
+* Jeśli aplikacja używa usług rozpoznawania mowy [interfejsów API REST](rest-apis.md), region jest częścią punktu końcowego identyfikatora URI, można użyć podczas wysyłania żądań.
 
 Kluczy utworzonych dla regionu są prawidłowe tylko w tym regionie. Podjęto próbę użycia je z innymi regionami będą powodować błędy uwierzytelniania.
 

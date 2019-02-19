@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem dla użytkowników zewnętrznych, korzystając z modelu RBAC na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem użytkowników spoza organizacji za pomocą kontroli dostępu opartej na rolach (RBAC) na platformie Azure.
+title: Zarządzanie dostępem do zasobów platformy Azure dla użytkowników zewnętrznych, korzystając z modelu RBAC | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników spoza organizacji za pomocą kontroli dostępu opartej na rolach (RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284527"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343864"
 ---
-# <a name="manage-access-for-external-users-using-rbac"></a>Zarządzanie dostępem dla użytkowników zewnętrznych, korzystając z modelu RBAC
+# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Zarządzanie dostępem do zasobów platformy Azure dla użytkowników zewnętrznych, korzystając z modelu RBAC
 
 Kontrola dostępu oparta na rolach (RBAC) umożliwia lepsze zarządzanie zabezpieczeniami dla dużych organizacji i dla małych i średnich firmach praca z zewnętrznych współpracowników, dostawców lub freelancers, którzy potrzebują dostępu do określonych zasobów w danym środowisku, ale niekoniecznie do całego infrastruktury ani żadnych zakresów związanych z rozliczeniami. RBAC umożliwia elastyczną będącej właścicielem jedną subskrypcję platformy Azure zarządza konta administratora (roli administratora usługi na poziomie subskrypcji) i zaprosili wielu użytkowników do pracy w ramach tej samej subskrypcji, ale bez żadnych praw administracyjnych dla niego .
 
 > [!NOTE]
-> Subskrypcje usługi Office 365 lub licencji usługi Azure Active Directory (na przykład: dostęp do usługi Azure Active Directory) z administracyjnego usługi Office 365 Centrum nie spełniam jej wymagań przy użyciu funkcji RBAC.
+> Subskrypcje usługi Office 365 lub licencji usługi Azure Active Directory (na przykład: Dostęp do usługi Azure Active Directory) udostępnioną za pomocą pakietu Office 365 Admin center nie spełniam jej wymagań przy użyciu funkcji RBAC.
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Przypisz role RBAC w zakresie subskrypcji
 
@@ -55,7 +55,7 @@ Po wybraniu subskrypcji, należy kliknąć przycisk administratora **kontrola do
 
 ![Dodawanie nowego użytkownika w funkcji zarządzania tożsamościami i Dostępem kontroli dostępu w witrynie Azure portal](./media/role-assignments-external-users/2.png)
 
-Następnym krokiem jest wybierz rolę do przypisania i użytkownik, któremu zostanie przypisana rola RBAC do. W **roli** menu rozwijane administratora widzi tylko wbudowane role kontroli RBAC, które są dostępne na platformie Azure. Aby uzyskać bardziej szczegółowe objaśnienia dotyczące poszczególnych ról i ich zakresy możliwe do przypisania, zobacz [wbudowane role](built-in-roles.md).
+Następnym krokiem jest wybierz rolę do przypisania i użytkownik, któremu zostanie przypisana rola RBAC do. W **roli** menu rozwijane administratora widzi tylko wbudowane role kontroli RBAC, które są dostępne na platformie Azure. Aby uzyskać bardziej szczegółowe objaśnienia dotyczące poszczególnych ról i ich zakresy możliwe do przypisania, zobacz [wbudowane role zasobów platformy Azure](built-in-roles.md).
 
 Użytkownika administratora musi dodać adres e-mail użytkownika zewnętrznego. To oczekiwane zachowanie dla użytkownika zewnętrznego, które nie są wyświetlani w istniejącej dzierżawy. Po użytkownik zewnętrzny zostali zaproszeni, on będą widoczne w obszarze **subskrypcje > Kontrola dostępu (IAM)** przy użyciu wszystkich bieżących użytkowników, które są obecnie przypisane rolę RBAC w zakresie subskrypcji.
 

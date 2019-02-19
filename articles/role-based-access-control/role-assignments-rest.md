@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem przy użyciu RBAC i interfejsu API REST — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) oraz interfejsu API REST. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
+title: Zarządzanie dostępem do resoruces platformy Azure przy użyciu RBAC i interfejsu API REST — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) oraz interfejsu API REST. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 859a410a4ff9204e8e52fbd2cc3b38823f4bb830
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: c2ef9b0070cc9ac190b773f023ffc18d1b251a41
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435222"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338414"
 ---
-# <a name="manage-access-using-rbac-and-the-rest-api"></a>Zarządzanie dostępem przy użyciu RBAC i interfejsu API REST
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu API REST
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC i interfejsu API REST.
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) sposób zarządzania dostępem do zasobów platformy Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC i interfejsu API REST.
 
 ## <a name="list-access"></a>Tworzenie listy dostępu
 
-RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę przypisań ról, użyj jednej z [przypisania ról — lista](/rest/api/authorization/roleassignments/list) interfejsów API REST. Aby uzyskać dokładniejsze wyniki, należy określić zakres i opcjonalny filtr. Aby wywołać interfejs API, musisz mieć dostęp do `Microsoft.Authorization/roleAssignments/read` operacji w podanym zakresie. Kilka [wbudowane role](built-in-roles.md) uzyskują dostęp do tej operacji.
+RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę przypisań ról, użyj jednej z [przypisania ról — lista](/rest/api/authorization/roleassignments/list) interfejsów API REST. Aby uzyskać dokładniejsze wyniki, należy określić zakres i opcjonalny filtr. Aby wywołać interfejs API, musisz mieć dostęp do `Microsoft.Authorization/roleAssignments/read` operacji w podanym zakresie. Kilka [wbudowane role zasobów platformy Azure](built-in-roles.md) uzyskują dostęp do tej operacji.
 
 1. Uruchom przy użyciu następującego żądania:
 
@@ -38,7 +38,7 @@ RBAC dostęp do listy, możesz liście przypisań ról. Aby wyświetlić listę 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę przypisań ról.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -77,7 +77,7 @@ Aby udzielić dostępu za pomocą kontroli dostępu opartej na rolach, tworzy si
     
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem przypisania roli.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -105,7 +105,7 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* w zakresie usuwania przypisania roli.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -117,4 +117,4 @@ Aby usunąć dostęp za pomocą kontroli dostępu opartej na rolach, usuwa się 
 
 - [Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)](../azure-resource-manager/resource-group-template-deploy-rest.md)
 - [Dokumentacja interfejsu API REST platformy Azure](/rest/api/azure/)
-- [Tworzenie ról niestandardowych przy użyciu interfejsu API REST](custom-roles-rest.md)
+- [Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu interfejsu API REST](custom-roles-rest.md)

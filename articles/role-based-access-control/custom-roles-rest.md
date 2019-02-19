@@ -1,6 +1,6 @@
 ---
-title: Tworzenie ról niestandardowych przy użyciu interfejsu API REST — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak tworzenie ról niestandardowych dla kontroli dostępu opartej na rolach (RBAC) przy użyciu interfejsu API REST. W tym jak listy, tworzenia, aktualizacji i usuwania ról niestandardowych.
+title: Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu interfejsu API REST — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć niestandardowe role przy użyciu kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure przy użyciu interfejsu API REST. W tym jak listy, tworzenia, aktualizacji i usuwania ról niestandardowych.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8a1bbe8217e2d4a9846f56124e248e19cbe70b19
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: cfcb7ef2a4fc02932f9d03c277b105c4b1e0ff3a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436066"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338771"
 ---
-# <a name="create-custom-roles-using-the-rest-api"></a>Tworzenie ról niestandardowych przy użyciu interfejsu API REST
+# <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu interfejsu API REST
 
-Jeśli [role wbudowane](built-in-roles.md) nie spełniają specyficznych potrzeb Twojej organizacji, możesz utworzyć własne role niestandardowe. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu interfejsu API REST ról niestandardowych.
+Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne niestandardowe role. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu interfejsu API REST ról niestandardowych.
 
 ## <a name="list-roles"></a>Tworzenie listy ról
 
@@ -38,7 +38,7 @@ Aby wyświetlić listę wszystkich ról lub uzyskać informacje na temat pojedyn
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -67,7 +67,7 @@ Aby uzyskać informacje o pojedynczej roli przy użyciu jego nazwę wyświetlan�
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę ról.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -115,7 +115,7 @@ Aby utworzyć rolę niestandardową, należy użyć [definicje ról — Utwórz 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z pierwszym `assignableScopes` roli niestandardowej.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -179,7 +179,7 @@ Aby zaktualizować rolę niestandardową, użyj [definicje ról — Tworzenie lu
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z pierwszym `assignableScopes` roli niestandardowej.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -262,7 +262,7 @@ Aby usunąć niestandardową rolę, użyj [Usuń definicje ról —](/rest/api/a
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, który chcesz usunąć rolę niestandardową.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -272,6 +272,6 @@ Aby usunąć niestandardową rolę, użyj [Usuń definicje ról —](/rest/api/a
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Role niestandardowe na platformie Azure](custom-roles.md)
-- [Zarządzanie dostępem przy użyciu RBAC i interfejsu API REST](role-assignments-rest.md)
+- [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
+- [Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i interfejsu API REST](role-assignments-rest.md)
 - [Dokumentacja interfejsu API REST platformy Azure](/rest/api/azure/)

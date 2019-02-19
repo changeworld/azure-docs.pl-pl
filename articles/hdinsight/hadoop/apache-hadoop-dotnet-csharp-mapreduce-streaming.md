@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 130ca849b39336637f53b32043874b5d037a8f0d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435314"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342927"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Użyj C# o MapReduce, przesyłanie strumieniowe na technologii Apache Hadoop w HDInsight
 
@@ -175,7 +175,13 @@ Po utworzeniu aplikacji, skompiluj go, aby wygenerować `/bin/Debug/reducer.exe`
 
 2. Aby uruchomić zadanie MapReduce, użyj jednej z następujących poleceń:
 
-    * Jeśli przy użyciu __usługi Data Lake Storage__ jako magazynem domyślnym:
+    * Jeśli przy użyciu __Data Lake Storage Gen2__ jako magazynem domyślnym:
+
+        ```bash
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+        ```
+
+    * Jeśli przy użyciu __Data Lake Storage Gen1__ jako magazynem domyślnym:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -190,7 +196,7 @@ Po utworzeniu aplikacji, skompiluj go, aby wygenerować `/bin/Debug/reducer.exe`
     Na poniższej liście opisano, jak działa każdy parametr:
 
     * `hadoop-streaming.jar`: Plik jar, który zawiera funkcje MapReduce przesyłania strumieniowego.
-    * `-files`: Dodaje `mapper.exe` i `reducer.exe` pliki do tego zadania. `adl:///` Lub `wasb:///` przed każdego pliku jest ścieżką do katalogu głównego domyślnego magazynu klastra.
+    * `-files`: Dodaje `mapper.exe` i `reducer.exe` pliki do tego zadania. `abfs:///`,`adl:///` Lub `wasb:///` przed każdego pliku jest ścieżką do katalogu głównego domyślnego magazynu klastra.
     * `-mapper`: Określa plik, który implementuje usługę mapowania.
     * `-reducer`: Określa plik, który implementuje reduktor.
     * `-input`: Dane wejściowe.

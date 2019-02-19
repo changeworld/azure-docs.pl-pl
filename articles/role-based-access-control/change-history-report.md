@@ -1,6 +1,6 @@
 ---
-title: Wyświetlanie dzienników aktywności zmiany RBAC na platformie Azure | Dokumentacja firmy Microsoft
-description: Wyświetl dzienniki aktywności dla kontroli dostępu opartej na rolach (RBAC) zmiany w ciągu ostatnich 90 dni.
+title: Wyświetlanie dzienników aktywności dla RBAC zmieni się z zasobami platformy Azure | Dokumentacja firmy Microsoft
+description: Wyświetl dzienniki aktywności dla kontroli dostępu opartej na rolach (RBAC) zmiany do zasobów platformy Azure w ciągu ostatnich 90 dni.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117652"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338818"
 ---
-# <a name="view-activity-logs-for-rbac-changes"></a>Wyświetlanie dzienników aktywności dla zmian RBAC
+# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Wyświetlanie dzienników aktywności dla zmian RBAC do zasobów platformy Azure
 
-Czasami potrzebujesz informacji na temat zmian kontroli dostępu opartej na rolach, takich jak inspekcji lub rozwiązywania problemów. Ilekroć ktoś zmienia przypisania ról lub definicje ról w ramach subskrypcji, rejestrowane są zmiany [dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md). Możesz wyświetlić dzienniki aktywności, aby wyświetlić wszystkie zmiany funkcji RBAC w ciągu ostatnich 90 dni.
+Czasami potrzebujesz informacji na temat zmian kontroli dostępu opartej na rolach do zasobów platformy Azure, takich jak inspekcji lub rozwiązywania problemów. Ilekroć ktoś zmienia przypisania ról lub definicje ról w ramach subskrypcji, rejestrowane są zmiany [dziennika aktywności platformy Azure](../azure-monitor/platform/activity-logs-overview.md). Możesz wyświetlić dzienniki aktywności, aby wyświetlić wszystkie zmiany funkcji RBAC w ciągu ostatnich 90 dni.
 
 ## <a name="operations-that-are-logged"></a>Operacje, które są rejestrowane
 

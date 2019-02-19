@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ff3c1e51bcf0b7d730019fad66ed8b0c3fe17a20
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: d9d87e0e6427c0a0d4b16947fd0427e1c79d8f0c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097652"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341049"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Wprowadzenie do rejestrowanie przepływu dla sieciowych grup zabezpieczeń
 
@@ -72,8 +72,6 @@ Dzienniki przepływów obejmują następujące właściwości:
                     * **Liczba wysłanych bajtów - docelowe źródło — tylko w wersji 2** całkowita liczba bajtów pakiet TCP i UDP, wysyłane z docelowym źródłem od czasu ostatniej aktualizacji. Liczba bajtów pakietu obejmuje nagłówek i ładunek pakietu.
 
 ## <a name="nsg-flow-logs-version-2"></a>W wersji 2 dzienników przepływów sieciowych grup zabezpieczeń
-> [!NOTE] 
-> Dzienniki przepływu w wersji 2 są dostępne tylko w regionie Zachodnio-środkowe stany USA. Włączenie dzienników w wersji 2 w nieobsługiwanym regionie spowoduje zwrócenie na koncie magazynu dzienników w wersji 1.
 
 Dzienniki w wersji 2 wprowadzono stan przepływu. Można skonfigurować, która wersja dzienników przepływu pojawi się. Aby dowiedzieć się, jak włączyć dzienniki przepływu, zobacz [rejestrowanie przepływu sieciowej grupy zabezpieczeń z włączeniem](network-watcher-nsg-flow-logging-portal.md).
 

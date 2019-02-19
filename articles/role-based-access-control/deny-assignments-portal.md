@@ -1,6 +1,6 @@
 ---
-title: Widok Odmów przydziałów za pomocą witryny Azure portal | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlić użytkowników, grup, nazw głównych usług i zarządzanych tożsamości, na których nastąpiła odmowa dostępu do określonej akcji w zakresie określonym w witrynie Azure portal.
+title: Wyświetl Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyświetlić użytkowników, grup, nazw głównych usług i zarządzanych tożsamości, na których nastąpiła odmowa dostępu do akcji określony zasób platformy Azure w zakresie określonym w witrynie Azure portal.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5870ddbbb8be0ebbeae7656485521a327b86d5b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52642809"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343242"
 ---
-# <a name="view-deny-assignments-using-the-azure-portal"></a>Wyświetl Odmów przydziałów za pomocą witryny Azure portal
+# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Wyświetl Odmów przydziały dla zasobów platformy Azure przy użyciu witryny Azure portal
 
-[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania określonych czynności, nawet wtedy, gdy przypisanie roli przyznaje im dostępu. Mimo że nie można utworzyć własne Odmów przypisania, musisz mieć możliwość wyświetlania Odmów przypisania, ponieważ może mieć wpływ na ogólną uprawnień. Aby uzyskać informacje na temat przypisania odmowy, musisz mieć uprawnienie `Microsoft.Authorization/denyAssignments/read`, które jest uwzględnione w większości [wbudowanych ról](built-in-roles.md).
+[Odmów przypisania](deny-assignments.md) Zablokuj użytkownikom możliwość wykonywania akcji na określony zasób platformy Azure, nawet wtedy, gdy przypisanie roli przyznaje im dostęp. Mimo że nie można utworzyć własne Odmów przypisania, musisz mieć możliwość wyświetlania Odmów przypisania, ponieważ może mieć wpływ na ogólną uprawnień. Aby uzyskać informacje o przypisaniu Odmów, konieczne jest posiadanie `Microsoft.Authorization/denyAssignments/read` uprawnień, który jest dostępny w większości [wbudowane role zasobów platformy Azure](built-in-roles.md).
 
 W tym artykule opisano sposób użycia witryny Azure portal do wyświetlania Odmów przypisania.
 
@@ -38,11 +38,11 @@ Wykonaj poniższe kroki, aby wyświetlić odmówić przypisania w zakresie grupy
 
 1. Kliknij grupę zarządzania lub subskrypcji, którą chcesz wyświetlić.
 
-1. Kliknij przycisk **kontrola dostępu (IAM)**.
+1. Kliknij pozycję **Kontrola dostępu (IAM)**.
 
 1. Kliknij przycisk **Odmów przypisania** karty (lub kliknij przycisk **widoku** przycisk w widoku Odmów kafelka przypisania).
 
-    W przypadku dowolnego Odmów przypisania w tym zakresie lub dziedziczone do tego zakresu, zostaną one wyświetlone.
+    Jeśli istnieją przypisania odmowy występujące w tym zakresie lub dziedziczone przez ten zakres, zostaną wyświetlone.
 
     ![Kontrola dostępu — odmowa karta przypisania](./media/deny-assignments-portal/access-control-deny-assignments.png)
 
@@ -105,5 +105,5 @@ Wykonaj następujące kroki, aby wyświetlić dodatkowe szczegóły dotyczące p
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zrozumienie Odmów przypisania](deny-assignments.md)
-* [Lista Odmów przypisania przy użyciu RBAC i interfejsu API REST](deny-assignments-rest.md)
+* [Zrozumienie Odmów przydziały dla zasobów platformy Azure](deny-assignments.md)
+* [Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST](deny-assignments-rest.md)

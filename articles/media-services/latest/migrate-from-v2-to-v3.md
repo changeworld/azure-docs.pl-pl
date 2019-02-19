@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 02/04/2019
 ms.author: juliako
-ms.openlocfilehash: b05c174bf96e78efd66f2c673e46ab43700c09f9
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744176"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340352"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Wskazówki dotyczące migracji do przenoszenia z usługi Media Services v2 do v3
 
@@ -45,11 +45,11 @@ Jeśli masz już dziś opracowanych w górnej części usługi wideo [starszej w
 
 * Przetwarzanie zadania oparte na plikach można użyć adresu URL HTTP (S) jako dane wejściowe.<br/>Nie musisz mieć zawartości już przechowywane na platformie Azure i nie potrzebujesz do tworzenia zasobów.
 * Pojęcia związane z [przekształca](transforms-jobs-concept.md) dla przetwarzanie zadań opartych na plikach. Przekształcenie może służyć do tworzenia konfiguracji wielokrotnego użytku, do tworzenia szablonów usługi Azure Resource Manager i izolowania przetwarzania ustawień między wieloma klientami lub dzierżawcy.
-* Element zawartości może mieć wiele [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md) każdego z różnymi ustawieniami funkcji dynamicznego tworzenia pakietów i szyfrowania dynamicznego.
+* Element zawartości może mieć wiele [Lokalizatory przesyłania strumieniowego](streaming-locators-concept.md) każdego z różnymi [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) i ustawienia szyfrowania dynamicznego.
 * [Content protection](content-key-policy-concept.md) obsługuje wiele kluczowych funkcji.
 * Zdarzenia na żywo, które są do 24 godzin długo po za pomocą usługi Media Services w celu przetranskodowania jej wkład pojedyncza szybkość transmisji bitów źródła danych do strumienia wyjściowego, który ma wielokrotnych można przesyłać strumieniowo.
 * Nowe niskie opóźnienia obsługę przesyłania strumieniowego na żywo na zdarzenia na żywo. Aby uzyskać więcej informacji, zobacz [opóźnienie](live-event-latency.md).
-* Podgląd zdarzeń na żywo obsługuje funkcję dynamicznego tworzenia pakietów i szyfrowania dynamicznego. Dzięki temu ochrony zawartości w wersji zapoznawczej, a także DASH i HLS pakowania.
+* Obsługuje zdarzenie (wersja zapoznawcza) na żywo [funkcję dynamicznego tworzenia pakietów](dynamic-packaging-overview.md) i szyfrowania dynamicznego. Dzięki temu ochrony zawartości w wersji zapoznawczej, a także DASH i HLS pakowania.
 * Dane wyjściowe na żywo jest łatwiejszy w obsłudze niż jednostka Program w interfejsach API w wersji 2. 
 * Ulepszona obsługa protokołu RTMP (Zwiększona stabilność i więcej obsługę kodera źródłowego).
 * Pozyskuj RTMPS bezpieczne.<br/>Po utworzeniu zdarzenia na żywo, uzyskasz 4 adresy URL pozyskiwania. Pozyskiwanie 4 adresy URL są niemal identyczne, mają ten sam token przesyłania strumieniowego (AppId), tylko część numer portu jest inny. Są dwa adresy URL podstawowego i zapasowego dla RTMPS.   

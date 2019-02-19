@@ -7,22 +7,24 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: ccf4273489d739bb9b0d802b79944efefcd02ff4
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 36ca5e07adf79de77ac4ab4149ff8e96a1dece8d
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331225"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408752"
 ---
 # <a name="mapping-data-flow-datasets"></a>Mapowanie przepływu danych w zestawach danych
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
-Zestawy danych są konstrukcję usługi Data Factory, który definiuje kształt danych, którą pracujesz w potoku. W przepływie danych wierszy i kolumn danych na poziomie wymaga znacznie bardziej precyzyjnie szczegółowej definicji, niż jest to wymagane przez zestawy danych w przepływie sterowania potoku.
+Zestawy danych są konstrukcję usługi Data Factory, który definiuje kształt danych, którą pracujesz w potoku. Przepływ danych wierszy i kolumn danych na poziomie wymagane precyzyjnie szczegółowej definicji zestawu danych. Zestawów danych używanych w potoków przepływów sterowania nie wymagają tę samą głębokość interpretacji danych.
 
-Użyj zestawów danych w źródle przepływu danych i przekształcenia ujścia, aby zdefiniować schemat danych podstawowych. Jeśli nie masz schematu w Twoich danych, można ustawiać dryfu schematu dla źródła i ujścia. Schemat zdefiniowany z zestawu danych trzeba będzie typy danych powiązane, formatów danych, lokalizacja pliku i informacji o połączeniu ze skojarzonej połączonej usługi.
+Zestawy danych w źródle przepływu danych i przekształcenia ujścia są używane do definiowania schematu danych podstawowych. Jeśli nie masz schematu w Twoich danych, można ustawiać dryfu schematu dla źródła i ujścia. Schemat zdefiniowany z zestawu danych trzeba będzie typy danych powiązane, formatów danych, lokalizacja pliku i informacji o połączeniu ze skojarzonej połączonej usługi.
 
-Obecnie przepływ danych zawiera cztery zestawy danych:
+## <a name="dataset-types"></a>Typy zestawów danych
+
+Obecnie przepływ danych zawiera cztery typy zestawów danych:
 
 * Azure SQL DB
 * Magazyn danych SQL Azure
@@ -33,9 +35,11 @@ Przepływ danych w zestawach danych oddzielić źródła *typu* z połączonej u
 
 ![Opcje przekształcania źródła](media/data-flow/dataset1.png "źródeł")
 
+## <a name="data-flow-compatible-datasets"></a>Zgodne zestawów danych przepływu danych
+
 Tworząc nowy zestaw danych jest pole wyboru "Data Flow zgodny" w prawym górnym rogu panelu. Kliknięcie tego przycisku spowoduje odfiltrowanie tylko zestawy danych, które mogą być używane z przepływu danych. 
 
-Importuj schematy
+## <a name="import-schemas"></a>Importuj schematy
 
-Podczas importowania schematu przepływ danych zestawów danych, zostanie wyświetlony przycisk Importuj schemat. Kliknięcie tego przycisku spowoduje wyświetlenie dwóch opcji: Importuj ze źródła lub Importuj z pliku lokalnego. W większości przypadków będzie zaimportować schemat bezpośrednio ze źródła. Jeśli jednak masz istniejący plik schematu, możesz wskazać ten plik lokalny i Data Factory określi schematu, w zależności od tego pliku schematu.
+Podczas importowania schematu przepływ danych zestawów danych, zostanie wyświetlony przycisk Importuj schemat. Kliknięcie tego przycisku spowoduje wyświetlenie dwóch opcji: Importuj ze źródła lub Importuj z pliku lokalnego. W większości przypadków będzie zaimportować schemat bezpośrednio ze źródła. Jednak jeśli masz istniejący plik schematu (pliku Parquet lub CSV z nagłówkami), możesz wskazać czy lokalnego pliku i Data Factory definiowania schematu, w zależności od tego pliku schematu.
 

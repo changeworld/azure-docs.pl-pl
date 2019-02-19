@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać dostępem użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) oraz wiersza polecenia platformy Azure. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
+title: Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup i aplikacji przy użyciu kontroli dostępu opartej na rolach (RBAC) oraz wiersza polecenia platformy Azure. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6d1e64c7630f3fd35124e6671476174ddfc16bb6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 751f582e2cfc39b62194ec55efa5cd8580c001e3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437103"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341723"
 ---
-# <a name="manage-access-using-rbac-and-azure-cli"></a>Zarządzanie dostępem przy użyciu RBAC i wiersza polecenia platformy Azure
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i wiersza polecenia platformy Azure
 
-[Kontrola dostępu oparta na rolach (RBAC, Role Based Access Control)](overview.md) to sposób zarządzania dostępem do zasobów na platformie Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC i wiersza polecenia platformy Azure.
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) sposób zarządzania dostępem do zasobów platformy Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup i aplikacji przy użyciu RBAC i wiersza polecenia platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -311,5 +311,5 @@ az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Samouczek: Tworzenie roli niestandardowej przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md)
-- [Używanie wiersza polecenia platformy Azure do zarządzania zasobami i grupami zasobów platformy Azure](../azure-resource-manager/xplat-cli-azure-resource-manager.md)
+- [Samouczek: Tworzenie roli niestandardowej na potrzeby zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md)
+- [Używanie wiersza polecenia platformy Azure do zarządzania zasobami i grupami zasobów platformy Azure](../azure-resource-manager/cli-azure-resource-manager.md)

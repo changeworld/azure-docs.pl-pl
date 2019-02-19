@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/16/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 600b79ec0b34d6b79b1b56719dd800bbe8ec803a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a5c08536614476de38c7bfde524a12163162bed4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487153"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339267"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -36,7 +36,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure i
 | AccountPropertyCannotBeSet | Sprawdź właściwości konta dostępnego magazynu. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | Klaster lub regionie nie ma dostępu do zasobów lub nie obsługuje żądanego rozmiaru maszyny Wirtualnej. Ponów żądanie w późniejszym czasie, lub żądania innego rozmiaru maszyny Wirtualnej. | [Problemy z aprowizacji i alokacji dla systemu Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problemy z aprowizacji i alokacji w Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) i [Rozwiązywanie problemów z błędami alokacji](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Poczekaj na zakończenie operacji jednoczesnych. | |
-| AuthorizationFailed | Twoje konto lub jednostki usługi nie ma wystarczające uprawnienia dostępu do ukończenia wdrażania. Sprawdź, Twoje konto należy do roli, a jego dostęp dla zakresu wdrożenia. | [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md) |
+| AuthorizationFailed | Twoje konto lub jednostki usługi nie ma wystarczające uprawnienia dostępu do ukończenia wdrażania. Sprawdź, Twoje konto należy do roli, a jego dostęp dla zakresu wdrożenia.<br><br>Ten błąd może występować, gdy dostawca wymagany zasób nie jest zarejestrowany. | [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Rozwiąż rejestracji](resource-manager-register-provider-errors.md) |
 | BadRequest | Wysłano wartości wdrożenia, które nie jest inna niż oczekiwana przez usługę Resource Manager. Sprawdź komunikat o stanie wewnętrzny, aby uzyskać pomoc dotyczącą rozwiązywania problemów. | [Dokumentacja dotycząca szablonów](/azure/templates/) i [obsługiwane lokalizacje](resource-manager-templates-resources.md#location) |
 | Konflikt | W przypadku żądania operacji, która nie jest dozwolona w bieżącym stanie zasobu. Na przykład zmiana rozmiaru dysku jest dozwolona tylko w przypadku tworzenia maszyny Wirtualnej lub po cofnięciu przydziału maszyny Wirtualnej. | |
 | DeploymentActive | Poczekaj, aż współbieżnych wdrożenie do tej grupy zasobów, aby zakończyć. | |

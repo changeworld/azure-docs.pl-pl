@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 44712f364b434d123abe17b043f7c2309871bd12
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e5fb263819a5bb96175f636f53a16c28649a3f39
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198953"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339553"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Tworzenie strategii zarządzania kontroli dostępu odporne na błędy przy użyciu usługi Azure Active Directory
 
@@ -78,7 +78,7 @@ Ten przykładowy zestaw zasad spowoduje przyznanie wybranych użytkowników w **
 **Ustaw zasady ograniczania ryzyka dostępu Warunkowego:**
 
 * Zasady 1: Blokuj dostęp do osób spoza grupy docelowe
-  * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz AppAccess CoreAdmins i EmergencyAccess
+  * Użytkownicy i grupy: Dotyczy wszystkich użytkowników. Wyklucz AppUsers CoreAdmins i EmergencyAccess
   * Aplikacje w chmurze: Obejmują wszystkie aplikacje
   * Warunki: (brak)
   * Grant Control: Blokuj

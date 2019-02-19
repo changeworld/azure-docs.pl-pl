@@ -1,6 +1,6 @@
 ---
-title: Lista Odmów przypisania przy użyciu RBAC i interfejsu API REST — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wyświetlić listę Odmów przydziały dla użytkowników, grup i aplikacji, przy użyciu kontroli dostępu opartej na rolach (RBAC) oraz interfejsu API REST.
+title: Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyświetlić listę Odmów przydziały dla użytkowników, grup i aplikacji, za pomocą kontroli dostępu opartej na rolach (RBAC) dla zasobów platformy Azure oraz interfejsu API REST.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44c1d3b18bb9bdc63247379fe3f277cb6542f2da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 29b8e0953109238b724cc8df9f456706f71a041e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975590"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341627"
 ---
-# <a name="list-deny-assignments-using-rbac-and-the-rest-api"></a>Lista Odmów przypisania przy użyciu RBAC i interfejsu API REST
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST
 
-Obecnie Odmów przypisania **tylko do odczytu** i może zostać ustawiona tylko przez platformę Azure. Mimo że nie można utworzyć własne Odmów przypisania, można wyświetlić listę Odmów przypisania, ponieważ może mieć wpływ na Twoje czynnych uprawnień. W tym artykule opisano, jak na liście odmowy przypisania przy użyciu RBAC i interfejsu API REST.
+Obecnie przypisania odmowy są **tylko do odczytu** i mogą zostać ustawione wyłącznie przez platformę Azure. Nawet jeśli nie możesz utworzyć własnych przypisań odmowy, możesz wyświetlić listę przypisań odmowy, ponieważ mogą one mieć wpływ na Twoje uprawnienia. W tym artykule opisano, jak na liście odmowy przypisania przy użyciu RBAC i interfejsu API REST.
 
 ## <a name="list-a-single-deny-assignment"></a>Lista jednej Odmów przypisania
 
@@ -36,7 +36,7 @@ Obecnie Odmów przypisania **tylko do odczytu** i może zostać ustawiona tylko 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę przypisań Odmów.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -60,7 +60,7 @@ Obecnie Odmów przypisania **tylko do odczytu** i może zostać ustawiona tylko 
 
 1. W identyfikatorze URI, Zastąp *{zakresu}* z zakresem, dla którego chcesz wyświetlić listę przypisań Odmów.
 
-    | Zakres | Typ |
+    | Zakres | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Subskrypcja |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Grupa zasobów |
@@ -95,6 +95,6 @@ Obecnie Odmów przypisania **tylko do odczytu** i może zostać ustawiona tylko 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Zrozumienie Odmów przypisania](deny-assignments.md)
-- [Podniesienie poziomu dostępu administratora globalnego usługi Azure Active Directory](elevate-access-global-admin.md)
+- [Zrozumienie Odmów przydziały dla zasobów platformy Azure](deny-assignments.md)
+- [Podnoszenie poziomu dostępu administratora globalnego w usłudze Azure Active Directory](elevate-access-global-admin.md)
 - [Dokumentacja interfejsu API REST platformy Azure](/rest/api/azure/)

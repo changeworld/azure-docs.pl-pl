@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie definicje ról RBAC platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje na temat definicji ról kontroli dostępu opartej na rolach (RBAC) dla dostępu do zarządzania zasobami na platformie Azure.
+title: Zrozumienie definicji ról w funkcji RBAC dla zasobów platformy Azure | Dokumentacja firmy Microsoft
+description: Informacje na temat definicji ról kontroli dostępu opartej na rolach (RBAC) dla dostępu do zarządzania zasobami platformy Azure.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991365"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342783"
 ---
-# <a name="understand-role-definitions"></a>Omówienie definicji ról
+# <a name="understand-role-definitions-for-azure-resources"></a>Zrozumienie definicje ról na potrzeby zasobów platformy Azure
 
-Jeśli chcesz zrozumieć, jak działa rola lub jeśli tworzysz własny [roli niestandardowej](custom-roles.md), warto zrozumieć sposób definiowania ról. W tym artykule opisano szczegóły definicje ról oraz przedstawiono kilka przykładów.
+Jeśli chcesz zrozumieć, jak działa rola lub jeśli tworzysz własny [roli niestandardowej na potrzeby zasobów platformy Azure](custom-roles.md), warto zrozumieć sposób definiowania ról. W tym artykule opisano szczegóły definicje ról oraz przedstawiono kilka przykładów.
 
 ## <a name="role-definition-structure"></a>Struktura definicji roli
 
@@ -151,6 +151,8 @@ Ponieważ Alicja zawiera symbol wieloznaczny (`*`) działania w zakresie subskry
 
 Uprawnienia przez Boba są ograniczone do właśnie `Actions` i `DataActions` określonych w [Współautor danych obiektu Blob Storage (wersja zapoznawcza)](built-in-roles.md#storage-blob-data-contributor-preview) roli. W zależności od roli Bob można wykonywać operacje na danych i zarządzania. Na przykład Bob może odczytu, zapisu i usuwania kontenerów na koncie magazynu określonym i użytkownik może również odczytu, zapisu i usuwania obiektów blob.
 
+Aby uzyskać więcej informacji na temat zarządzania i bezpieczeństwo płaszczyzny danych dla magazynu, zobacz [Przewodnik po zabezpieczeniach usługi Azure Storage](../storage/common/storage-security-guide.md).
+
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>Jakie narzędzia obsługują, przy użyciu funkcji RBAC dla operacji na danych?
 
 Aby przeglądać i pracować z operacji na danych, konieczne jest posiadanie poprawne wersje narzędzia i zestawy SDK:
@@ -225,10 +227,10 @@ Role wbudowane mają `AssignableScopes` Ustaw zakres głównego (`"/"`). Zakres 
 | Rola jest dostępne do przypisania tylko w grupie zasobów sieciowych | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | Rola jest dostępne do przypisania we wszystkich zakresach | `"/"` |
 
-Aby uzyskać informacje o `AssignableScopes` dla ról niestandardowych, zobacz [niestandardowych ról](custom-roles.md).
+Aby uzyskać informacje o `AssignableScopes` dla ról niestandardowych, zobacz [niestandardowych ról dla zasobów platformy Azure](custom-roles.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Role wbudowane](built-in-roles.md)
-* [Role niestandardowe](custom-roles.md)
+* [Wbudowane role dla zasobów platformy Azure](built-in-roles.md)
+* [Role niestandardowe dla zasobów platformy Azure](custom-roles.md)
 * [Operacje dostawcy zasobów w usłudze Azure Resource Manager](resource-provider-operations.md)
