@@ -1,6 +1,6 @@
 ---
-title: Projektowanie pierwszej bazy danych SQL na platformie Azure — C# | Microsoft Docs
-description: Dowiedz się, jak zaprojektować swoją pierwszą bazę danych SQL na platformie Azure i połączyć się z nią za pomocą programu w języku C# i narzędzia ADO.NET.
+title: Projektowanie pierwszej relacyjnej bazy danych — C# — Azure SQL Database | Microsoft Docs
+description: Dowiedz się, jak zaprojektować swoją pierwszą relacyjną bazę danych jako pojedynczą bazę danych w usłudze Azure SQL Database w języku C# i za pomocą platformy ADO.NET.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,41 +9,103 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 manager: craigg-msft
-ms.date: 12/10/2018
-ms.openlocfilehash: cf180f6e2970ac4435602f1cceeb98a4dd9e8724
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.date: 02/08/2019
+ms.openlocfilehash: ce46a6b8d4e2bc57625f9202349718dfbaedc660
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727169"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995693"
 ---
-# <a name="tutorial-design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>Samouczek: Projektowanie bazy danych SQL na platformie Azure i nawiązywanie połączenia za pomocą języka C&#x23; i narzędzia ADO.NET
+# <a name="tutorial-design-a-relational-database-in-a-single-database-within-azure-sql-database-cx23-and-adonet"></a>Samouczek: Projektowanie relacyjnej bazy danych jako pojedynczej bazy danych w usłudze Azure SQL Database w języku C&#x23 i za pomocą platformy ADO.NET
 
 Usługa Azure SQL Database to relacyjna baza danych oferowana jako usługa (DBaaS, database-as-a service) na platformie Microsoft Cloud (Azure). Z tego samouczka dowiesz się, jak przy użyciu witryny Azure Portal i narzędzia ADO.NET w programie Visual Studio wykonać następujące czynności:
 
 > [!div class="checklist"]
-> * Tworzenie bazy danych w witrynie Azure Portal
-> * Skonfigurowanie reguły zapory na poziomie serwera w witrynie Azure Portal
+> * Tworzenie pojedynczej bazy danych za pomocą witryny Azure Portal*
+> * Konfigurowanie reguły zapory protokołu IP na poziomie serwera za pomocą witryny Azure Portal
 > * Nawiązywanie połączenia z bazą danych przy użyciu narzędzia ADO.NET i programu Visual Studio
 > * Tworzenie tabel za pomocą narzędzia ADO.NET
 > * Wstawianie, aktualizowanie i usuwanie danych za pomocą narzędzia ADO.NET
 > * Wykonywanie zapytań względem danych za pomocą narzędzia ADO.NET
 
-Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
+* Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Instalacja [programu Visual Studio 2017](https://www.visualstudio.com/downloads/)
 
-<!-- The following included .md, sql-database-tutorial-portal-create-firewall-connection-1.md, is long.
-And it starts with a ## H2.
--->
+## <a name="create-a-blank-single-database"></a>Tworzenie pustej pojedynczej bazy danych
 
-[!INCLUDE [sql-database-tutorial-portal-create-firewall-connection-1](../../includes/sql-database-tutorial-portal-create-firewall-connection-1.md)]
+Pojedyncza baza danych usługi Azure SQL Database jest tworzona ze zdefiniowanym zestawem zasobów obliczeniowych i magazynu. Baza danych jest tworzona w [grupie zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) i jest zarządzana za pomocą [serwera baz danych](sql-database-servers.md).
 
-<!-- The following included .md, sql-database-csharp-adonet-create-query-2.md, is long.
-And it starts with a ## H2.
--->
+Wykonaj poniższe kroki, aby utworzyć pustą pojedynczą bazę danych.
+
+1. W lewym górnym rogu witryny Azure Portal kliknij przycisk **Utwórz zasób**.
+2. Na stronie **Nowy** wybierz pozycję **Bazy danych** w sekcji Azure Marketplace, a następnie kliknij pozycję **Baza danych SQL** w sekcji **Polecane**.
+
+   ![tworzenie pustej bazy danych](./media/sql-database-design-first-database/create-empty-database.png)
+
+3. Wypełnij formularz **Baza danych SQL** w sposób pokazany na wcześniejszej ilustracji, używając następujących informacji:
+
+    | Ustawienie       | Sugerowana wartość | Opis |
+    | ------------ | ------------------ | ------------------------------------------------- |
+    | **Nazwa bazy danych** | *yourDatabase* | Prawidłowe nazwy baz danych opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). |
+    | **Subskrypcja** | *yourSubscription*  | Aby uzyskać szczegółowe informacje o subskrypcjach, zobacz [Subskrypcje](https://account.windowsazure.com/Subscriptions). |
+    | **Grupa zasobów** | *yourResourceGroup* | Prawidłowe nazwy grup zasobów opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
+    | **Wybierz źródło** | Pusta baza danych | Określa, że ma zostać utworzona pusta baza danych. |
+
+4. Kliknij pozycję **Serwer**, aby użyć istniejącego serwera baz danych lub utworzyć i skonfigurować nowy serwer baz danych. Wybierz istniejący serwer lub kliknij pozycję **Utwórz nowy serwer** i wypełnij formularz **Nowy serwer** przy użyciu następujących informacji:
+
+    | Ustawienie       | Sugerowana wartość | Opis |
+    | ------------ | ------------------ | ------------------------------------------------- |
+    | **Nazwa serwera** | Dowolna nazwa unikatowa w skali globalnej | Prawidłowe nazwy serwera opisano w artykule [Naming rules and restrictions](/azure/architecture/best-practices/naming-conventions) (Reguły i ograniczenia nazewnictwa). |
+    | **Identyfikator logowania administratora serwera** | Dowolna prawidłowa nazwa | Prawidłowe nazwy identyfikatorów logowania opisano w artykule [Database Identifiers](/sql/relational-databases/databases/database-identifiers) (Identyfikatory baz danych). |
+    | **Hasło** | Dowolne prawidłowe hasło | Hasło musi mieć co najmniej osiem znaków i musi zawierać znaki z trzech z następujących kategorii: wielkie litery, małe litery, cyfry i znaki inne niż alfanumeryczne. |
+    | **Lokalizacja** | Dowolna prawidłowa lokalizacja | Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/). |
+
+    ![tworzenie serwera bazy danych](./media/sql-database-design-first-database/create-database-server.png)
+
+5. Kliknij pozycję **Wybierz**.
+6. Kliknij pozycję **Warstwa cenowa**, aby określić warstwę usługi, liczbę jednostek DTU lub rdzeni wirtualnych i ilość miejsca do magazynowania. Możesz przejrzeć opcje liczby jednostek DTU/rdzeni wirtualnych i miejsca do magazynowania dostępne dla poszczególnych warstw usługi.
+
+    Po wybraniu warstwy usługi, liczby jednostek DTU lub rdzeni wirtualnych i ilości miejsca do magazynowania kliknij pozycję **Zastosuj**.
+
+7. Wprowadź **sortowanie** dla pustej bazy danych (na potrzeby tego samouczka użyj wartości domyślnej). Aby uzyskać więcej informacji na temat sortowań, zobacz [Sortowania](/sql/t-sql/statements/collations)
+
+8. Teraz, po wypełnieniu formularza usługi **SQL Database**, kliknij pozycję **Utwórz**, aby aprowizować pojedynczą bazę danych. Może to potrwać kilka minut.
+
+9. Na pasku narzędzi kliknij pozycję **Powiadomienia**, aby monitorować proces wdrażania.
+
+   ![powiadomienie](./media/sql-database-design-first-database/notification.png)
+
+## <a name="create-a-server-level-ip-firewall-rule"></a>Tworzenie reguły zapory IP na poziomie serwera
+
+Usługa SQL Database tworzy zaporę IP na poziomie serwera. Ta zapora uniemożliwia zewnętrznym aplikacjom i narzędziom łączenie się z serwerem i wszelkimi bazami danych na tym serwerze, chyba że reguła zapory zezwala na przechodzenie ruchu z ich adresów IP przez zaporę. Aby umożliwić zewnętrzną łączność z pojedynczą bazą danych, najpierw dodaj regułę zapory IP dla używanego adresu IP (lub zakresu adresów IP). Wykonaj następujące kroki, aby utworzyć [regułę zapory IP na poziomie serwera usługi SQL Database](sql-database-firewall-configure.md).
+
+> [!IMPORTANT]
+> Usługa SQL Database komunikuje się przez port 1433. Jeśli próbujesz nawiązać połączenie z tą usługą z sieci firmowej, ruch wychodzący na porcie 1433 może być blokowany przez zaporę sieciową. W takim przypadku nie będzie można nawiązać połączenia z pojedynczą bazą danych, chyba że administrator otworzy port 1433.
+
+1. Po ukończeniu wdrażania kliknij pozycję **Bazy danych SQL** w menu po lewej stronie i kliknij bazę danych *yourDatabase* na stronie **Bazy danych SQL**. Zostanie otwarta strona przeglądu bazy danych zawierająca w pełni kwalifikowaną **nazwę serwera** (na przykład *yourserver.database.windows.net*) i opcje dalszej konfiguracji.
+
+2. Skopiuj tę w pełni kwalifikowaną nazwę serwera w celu nawiązania połączenia z serwerem i bazami danych w programie SQL Server Management Studio.
+
+   ![nazwa serwera](./media/sql-database-design-first-database/server-name.png)
+
+3. Kliknij pozycję **Ustaw zaporę serwera** na pasku narzędzi. Zostanie otwarta strona **Ustawienia zapory** dla serwera SQL Database.
+
+   ![reguła zapory IP na poziomie serwera](./media/sql-database-design-first-database/server-firewall-rule.png)
+
+4. Kliknij pozycję **Dodaj adres IP klienta** na pasku narzędzi, aby dodać bieżący adres IP do nowej reguły zapory IP. Reguła zapory IP może otworzyć port 1433 dla pojedynczego adresu IP lub zakresu adresów IP.
+
+5. Kliknij pozycję **Zapisz**. Dla bieżącego adresu IP zostanie utworzona reguła zapory IP na poziomie serwera otwierająca port 1433 na serwerze usługi SQL Database.
+
+6. Kliknij przycisk **OK**, a następnie zamknij stronę **Ustawienia zapory**.
+
+Adres IP może teraz być przekazywany przez zaporę IP. Możesz teraz połączyć się z pojedynczą bazą danych przy użyciu programu SQL Server Management Studio lub innego wybranego narzędzia. Używaj wcześniej utworzonego konta administratora serwera.
+
+> [!IMPORTANT]
+> Domyślnie dostęp przez zaporę IP usługi SQL Database jest włączony dla wszystkich usług platformy Azure. Kliknij przycisk **WYŁ.** na tej stronie, aby wyłączyć tę opcję dla wszystkich usług platformy Azure.
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../includes/sql-database-csharp-adonet-create-query-2.md)]
 

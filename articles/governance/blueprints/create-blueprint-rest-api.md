@@ -4,17 +4,17 @@ description: Usługa Azure Blueprints umożliwia tworzenie, definiowanie i wdra�
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 78ce7c1063623e0c002bb6084d8c18139b3f889f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d7b2e6848c88d9c3ac61f2eaf059e0836dc19903
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566978"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989970"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definiowanie i przypisywanie strategii platformy Azure przy użyciu interfejsu API REST
 
@@ -329,6 +329,12 @@ Wartość zmiennej `{BlueprintVersion}` jest ciągiem liter, cyfr i łączników
 
 Po opublikowaniu strategii przy użyciu interfejsu API REST można przypisać ją do subskrypcji. Przypisz utworzoną przez siebie strategię do jednej z subskrypcji w Twojej hierarchii grup zarządzania. Jeśli strategia została zapisana w subskrypcji, można ją przypisać tylko do tej subskrypcji. **Treść żądania** określa strategię, która ma zostać przypisana, dostarcza nazwę i lokalizację do wszystkich grup zasobów w definicji strategii oraz podaje wszystkie parametry zdefiniowane w strategii i używane przez co najmniej jeden dołączony artefakt.
 
+Każdy identyfikator URI interfejsu API REST zawiera używane zmienne, które musisz zastąpić własnymi wartościami:
+
+- `{tenantId}` — zastąp identyfikatorem swojej dzierżawy
+- `{YourMG}` — zastąp identyfikatorem swojej grupy zarządzania
+- `{subscriptionId}` — zastąp swoim identyfikatorem subskrypcji
+
 1. Podaj jednostce usługi Azure Blueprint rolę **Właściciel** w subskrypcji docelowej. Identyfikator aplikacji jest statyczny (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), ale identyfikator jednostki usługi różni się w zależności od dzierżawy. Szczegółowych informacji na temat dzierżawy można żądać, używając poniższego interfejsu API REST. Korzysta on z [interfejsu API programu Graph usługi Azure Active Directory](../../active-directory/develop/active-directory-graph-api.md), który ma inną autoryzację.
 
    - Identyfikator URI interfejsu API REST
@@ -387,6 +393,25 @@ Po opublikowaniu strategii przy użyciu interfejsu API REST można przypisać j�
          "location": "westus"
      }
      ```
+
+   - Tożsamość zarządzana przypisana przez użytkownika
+
+     W przypisaniu strategii można również użyć [tożsamości zarządzanej przypisanej przez użytkownika](../../active-directory/managed-identities-azure-resources/overview.md). W tym przypadku część dotycząca **tożsamości** w treści żądania zmienia się w poniższy sposób.  Zastąp elementy `{yourRG}` i `{userIdentity}` odpowiednio nazwą grupy zasobów i nazwą tożsamości zarządzanej przypisanej przez użytkownika.
+
+     ```json
+     "identity": {
+         "type": "userAssigned",
+         "tenantId": "{tenantId}",
+         "userAssignedIdentities": {
+             "/subscriptions/{subscriptionId}/resourceGroups/{yourRG}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userIdentity}": {}
+         }
+     },
+     ```
+
+     **Tożsamość zarządzana przypisana przez użytkownika** może należeć do dowolnej subskrypcji i grupy zasobów, do której użytkownik przypisujący strategię ma uprawnienia.
+
+     > [!IMPORTANT]
+     > Strategie nie zarządzają tożsamością przypisaną przez użytkownika. Użytkownicy są odpowiedzialni za przypisywanie wystarczających ról i uprawnień — w przeciwnym razie przypisanie strategii kończy się niepowodzeniem.
 
 ## <a name="unassign-a-blueprint"></a>Cofanie przypisania strategii
 

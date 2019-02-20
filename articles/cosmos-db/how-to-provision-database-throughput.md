@@ -6,38 +6,38 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: c648522e689c64de8e7e09b85ca3b6eb26b6945b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 759adf95604e66209cf3ec5083246d16e952114a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477203"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884192"
 ---
-# <a name="provision-throughput-on-an-azure-cosmos-database"></a>Aprowizowanie przepływności dla bazy danych usługi Azure Cosmos DB
+# <a name="provision-throughput-for-a-database-in-azure-cosmos-db"></a>Aprowizowanie przepływności dla bazy danych w usłudze Azure Cosmos DB
 
-W tym artykule wyjaśniono, jak aprowizować przepływność dla bazy danych w usłudze Azure Cosmos DB. Przepływność możesz aprowizować dla jednego [kontenera](how-to-provision-container-throughput.md) lub dla bazy danych i udostępniać ją dla kontenerów w tej bazie danych. Przepływność na poziomie bazy danych możesz aprowizować za pomocą witryny Azure Portal lub zestawów SDK usługi Cosmos DB.
+W tym artykule wyjaśniono, jak aprowizować przepływność dla bazy danych w usłudze Azure Cosmos DB. Przepływność możesz aprowizować dla jednego [kontenera](how-to-provision-container-throughput.md) lub dla bazy danych i udostępniać ją dla kontenerów w tej bazie danych. Przepływność na poziomie bazy danych możesz aprowizować za pomocą witryny Azure Portal lub zestawów SDK usługi Azure Cosmos DB.
 
-## <a name="provision-throughput-using-azure-portal"></a>Aprowizowanie przepływności przy użyciu witryny Azure Portal
+## <a name="provision-throughput-by-using-azure-portal"></a>Aprowizowanie przepływności przy użyciu witryny Azure Portal
 
 ### <a id="portal-sql"></a>Interfejs API SQL (podstawowy)
 
-1. Zaloguj się w [portalu Azure](https://portal.azure.com/).
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
-1. [Utwórz nowe konto usługi Cosmos DB](create-sql-api-dotnet.md#create-a-database-account) lub wybierz istniejące.
+1. [Utwórz nowe konto usługi Azure Cosmos DB](create-sql-api-dotnet.md#create-a-database-account) lub wybierz istniejące konto.
 
-1. Otwórz okienko **Eksplorator danych** i wybierz pozycję **Nowa baza danych**. Następnie wypełnij formularz przy użyciu następujących informacji:
+1. Otwórz okienko **Data Explorer** i wybierz pozycję **Nowa baza danych**. Podaj następujące szczegóły:
 
    * Wprowadź identyfikator bazy danych. 
-   * Wybierz pozycję Zaaprowizuj przepływność.
-   * Wprowadź przepływność, na przykład 1000 jednostek RU.
+   * Wybierz pozycję **Zaaprowizuj przepływność**.
+   * Wprowadź przepływność (na przykład 1000 jednostek RU).
    * Kliknij przycisk **OK**.
 
-![Aprowizowanie przepływności bazy danych za pomocą interfejsu API SQL](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
+![Zrzut ekranu okna dialogowego Nowa baza danych](./media/how-to-provision-database-throughput/provision-database-throughput-portal-all-api.png)
 
-## <a name="provision-throughput-using-net-sdk"></a>Aprowizowanie przepływności przy użyciu zestawu .NET SDK
+## <a name="provision-throughput-by-using-net-sdk"></a>Aprowizowanie przepływności przy użyciu zestawu .NET SDK
 
 > [!Note]
-> Użyj interfejsu API SQL, aby aprowizować przepływność dla wszystkich interfejsów API. Poniższego przykładu możesz też opcjonalnie użyć w przypadku interfejsu API rozwiązania Cassandra.
+> Użyj interfejsu API SQL, aby aprowizować przepływność dla wszystkich interfejsów API. Poniższego przykładu możesz też opcjonalnie użyć w przypadku interfejsu API Cassandra.
 
 ### <a id="dotnet-all"></a>Wszystkie interfejsy API
 
@@ -63,7 +63,7 @@ session.Execute(CREATE KEYSPACE IF NOT EXISTS myKeySpace WITH cosmosdb_provision
 
 ## <a name="next-steps"></a>Następne kroki
 
-Zobacz następujące artykuły, aby dowiedzieć się więcej na temat aprowizowania przepływności w usłudze Cosmos DB:
+Zobacz następujące artykuły, aby dowiedzieć się więcej na temat aprowizowania przepływności w usłudze Azure Cosmos DB:
 
 * [How to provision throughput for a container (Jak aprowizować przepływność dla kontenera)](how-to-provision-container-throughput.md)
 * [Jednostki żądania i przepływności w usłudze Azure Cosmos DB](request-units.md)

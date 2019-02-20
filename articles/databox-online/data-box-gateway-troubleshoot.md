@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b542ca2876149b9a60e5c5b9e3fa17284477864f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241604"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106988"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Rozwiązywanie problemów związanych z usługą Azure Data Box Gateway 
 
@@ -103,6 +103,7 @@ Wszelkie błędy występujące podczas procesów przekazywania i odświeżania s
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    Nie można przekazać danych do konta, ponieważ konto lub udział jest wyłączony.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Nie można nawiązać połączenia z kontenerem, ponieważ uprawnienia konta są nieprawidłowe lub nieaktualne. Sprawdź dostęp.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Nie można dodać nowych danych, ponieważ kontener jest pełny. Sprawdź specyfikacje dotyczące platformy Azure pod kątem obsługiwanych rozmiarów kontenerów na podstawie ich typu. Na przykład maksymalny rozmiar dla plików platformy Azure wynosi 5 TB.                                     |
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    Wystąpił nieoczekiwany błąd. Jest to błąd przejściowy, który zostanie naprawiony automatycznie.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Wystąpił nieoczekiwany błąd. Ten błąd może zostać rozwiązany automatycznie, ale jeśli utrzymuje się przez więcej niż 24 godziny, należy skontaktować się z pomocą techniczną firmy Microsoft.                                                                                                     |
     |    16000           |    RefreshException                                        |    Nie można pobrać tego pliku.                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    Nie można pobrać tego pliku, ponieważ już istnieje w systemie lokalnym.                                                                                                                                                         |

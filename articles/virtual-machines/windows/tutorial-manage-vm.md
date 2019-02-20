@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b725713777eb6ca25c829d327f91921b28cd4203
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a2e056baa2dd27ca0bf054d0dacf15d35e0ef384
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035972"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977930"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Samouczek: Tworzenie maszyn wirtualnych z systemem Windows i zarządzanie nimi za pomocą programu Azure PowerShell
 
@@ -42,12 +42,12 @@ Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym gór
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów na pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup).
+Utwórz grupę zasobów za pomocą polecenia [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup).
 
 Grupa zasobów platformy Azure to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. Grupę zasobów należy utworzyć przed maszyną wirtualną. W poniższym przykładzie grupa zasobów o nazwie *myResourceGroupVM* zostanie utworzona w regionie *EastUS*:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
    -ResourceGroupName "myResourceGroupVM" `
    -Location "EastUS"
 ```
@@ -64,10 +64,10 @@ Ustaw nazwę użytkownika i hasło potrzebne dla konta administratora na maszyni
 $cred = Get-Credential
 ```
 
-Utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Utwórz maszynę wirtualną za pomocą polecenia [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
     -Location "EastUS" `
@@ -85,7 +85,7 @@ Po zakończeniu wdrożenia utwórz połączenie pulpitu zdalnego z maszyną wirt
 Uruchom następujące polecenia, aby zwrócić publiczny adres IP maszyny wirtualnej. Zapisz ten adres IP, aby połączyć się z nim w przeglądarce w celu przetestowania połączenia z siecią Web w przyszłym kroku.
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
    -ResourceGroupName "myResourceGroupVM"  | Select IpAddress
 ```
 
@@ -101,16 +101,18 @@ W oknie **Zabezpieczenia systemu Windows** wybierz pozycję **Więcej opcji**, a
 
 Witryna Azure Marketplace zawiera wiele obrazów, za pomocą których można utworzyć nową maszynę wirtualną. W poprzednich krokach utworzono maszynę wirtualną przy użyciu obrazu systemu Windows Server 2016 Datacenter. W tym kroku moduł PowerShell jest używany do wyszukiwania w witrynie Marketplace innych obrazów systemu Windows, które mogą być również używane jako podstawa nowych maszyn wirtualnych. Proces ten składa się z wyszukiwania wydawcy, oferty, jednostki SKU i opcjonalnie numeru wersji w celu [zidentyfikowania](cli-ps-findimage.md#terminology) obrazu.
 
-Użyj polecenia [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher), aby uzyskać listę wydawców obrazów:
+Użyj polecenia [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher), aby uzyskać listę wydawców obrazów:
 
 ```azurepowershell-interactive
-Get-AzureRmVMImagePublisher -Location "EastUS"
+Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Użyj polecenia [Get-AzureRmVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer), aby uzyskać listę ofert obrazów. To polecenie umożliwia filtrowanie zwracanej listy według określonego wydawcy o nazwie `MicrosoftWindowsServer`:
+Użyj polecenia [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer), aby uzyskać listę ofert obrazów. To polecenie umożliwia filtrowanie zwracanej listy według określonego wydawcy o nazwie `MicrosoftWindowsServer`:
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageOffer -Location "EastUS" -PublisherName "MicrosoftWindowsServer"
+Get-AzVMImageOffer `
+   -Location "EastUS" `
+   -PublisherName "MicrosoftWindowsServer"
 ```
 
 Wyniki będą wyglądać podobnie do następującego przykładu: 
@@ -123,10 +125,13 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-Polecenie [Get-AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) spowoduje następnie odfiltrowanie według nazwy wydawcy i oferty w celu uzyskania listy nazw obrazów.
+Polecenie [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) spowoduje następnie odfiltrowanie według nazwy wydawcy i oferty w celu uzyskania listy nazw obrazów.
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
+Get-AzVMImageSku `
+   -Location "EastUS" `
+   -PublisherName "MicrosoftWindowsServer" `
+   -Offer "WindowsServer"
 ```
 
 Wyniki będą wyglądać podobnie do następującego przykładu: 
@@ -153,7 +158,7 @@ Skus                                      Offer         PublisherName          L
 Te informacje mogą być używane na potrzeby wdrażania maszyny wirtualnej za pomocą określonego obrazu. W tym przykładzie wdrażasz maszynę wirtualną przy użyciu obrazu systemu Windows Server 2016 z kontenerami.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM2" `
     -Location "EastUS" `
@@ -186,69 +191,71 @@ W poniższej tabeli przedstawiono kategorie rozmiarów podzielone według przypa
 
 ### <a name="find-available-vm-sizes"></a>Wyszukiwanie dostępnych rozmiarów maszyn wirtualnych
 
-Aby wyświetlić listę dostępnych rozmiarów maszyn wirtualnych w danym regionie, użyj polecenia [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize).
+Aby wyświetlić listę dostępnych rozmiarów maszyn wirtualnych w danym regionie, użyj polecenia [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize).
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -Location "EastUS"
+Get-AzVMSize -Location "EastUS"
 ```
 
 ## <a name="resize-a-vm"></a>Zmienianie rozmiaru maszyny wirtualnej
 
 Po wdrożeniu maszyny wirtualnej można zmienić jej rozmiar w celu zwiększenia lub zmniejszenia alokacji zasobów.
 
-Przed zmianą rozmiaru maszyny wirtualnej sprawdź, czy żądany rozmiar jest dostępny w bieżącym klastrze maszyny wirtualnej. Polecenie [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) zwraca listę rozmiarów.
+Przed zmianą rozmiaru maszyny wirtualnej sprawdź, czy wybrany rozmiar jest dostępny w bieżącym klastrze maszyny wirtualnej. Polecenie [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) zwraca listę rozmiarów.
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
+Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
 ```
 
-Jeśli żądany rozmiar maszyny wirtualnej jest dostępny, można go zmienić dla włączonej maszyny, ale zostanie ona ponownie uruchomiona w trakcie tej operacji.
+Jeśli rozmiar jest dostępny, można go zmienić dla włączonej maszyny wirtualnej, ale zostanie ona ponownie uruchomiona w trakcie tej operacji.
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupVM"  -VMName "myVM"
+$vm = Get-AzVM `
+   -ResourceGroupName "myResourceGroupVM"  `
+   -VMName "myVM"
 $vm.HardwareProfile.VmSize = "Standard_DS3_v2"
-Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroupVM"
+Update-AzVM `
+   -VM $vm `
+   -ResourceGroupName "myResourceGroupVM"
 ```
 
 Jeśli wybrany rozmiar jest niedostępny w bieżącym klastrze, przed rozpoczęciem operacji zmiany rozmiaru należy cofnąć przydział maszyny wirtualnej. Cofnięcie przydziału maszyny wirtualnej spowoduje usunięcie wszystkich danych na dysku tymczasowym, a publiczny adres IP zmieni się, chyba że jest używany statyczny adres IP.
 
 ```azurepowershell-interactive
-Stop-AzureRmVM `
+Stop-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM" -Force
-$vm = Get-AzureRmVM `
+$vm = Get-AzVM `
    -ResourceGroupName "myResourceGroupVM"  `
    -VMName "myVM"
 $vm.HardwareProfile.VmSize = "Standard_E2s_v3"
-Update-AzureRmVM -VM $vm `
+Update-AzVM -VM $vm `
    -ResourceGroupName "myResourceGroupVM"
-Start-AzureRmVM `
+Start-AzVM `
    -ResourceGroupName "myResourceGroupVM"  `
    -Name $vm.name
 ```
 
 ## <a name="vm-power-states"></a>Stany zasilania maszyny wirtualnej
 
-Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów zasilania. Ten stan reprezentuje bieżący stan maszyny wirtualnej z punktu widzenia funkcji hypervisor.
+Maszyna wirtualna platformy Azure może znajdować się w jednym z wielu stanów zasilania. 
 
-### <a name="power-states"></a>Stany zasilania
 
 | Stan zasilania | Opis
 |----|----|
-| Uruchamianie | Wskazuje, że maszyna wirtualna jest uruchamiana. |
-| Działanie | Wskazuje, że maszyna wirtualna działa. |
-| Zatrzymywanie | Wskazuje, że maszyna wirtualna jest zatrzymywana. |
-| Zatrzymano | Wskazuje, że maszyna wirtualna została zatrzymana. Opłaty za operacje obliczeniowe są także naliczane w przypadku maszyn wirtualnych w stanie Zatrzymano.  |
-| Cofanie przydziału | Wskazuje, że przydział maszyny wirtualnej jest cofany. |
+| Uruchamianie | Maszyna wirtualna jest uruchamiana. |
+| Działanie | Maszyna wirtualna została uruchomiona. |
+| Zatrzymywanie | Maszyna wirtualna jest zatrzymywana. |
+| Zatrzymano | Maszyna wirtualna została zatrzymana. Opłaty za operacje obliczeniowe są także naliczane w przypadku maszyn wirtualnych w stanie Zatrzymano.  |
+| Cofanie przydziału | Przydział maszyny wirtualnej jest cofany. |
 | Cofnięto przydział | Wskazuje, że maszyna wirtualna została usunięta z funkcji hypervisor, ale jest nadal dostępna na płaszczyźnie kontroli. Opłaty za operacje obliczeniowe nie są naliczane w przypadku maszyn wirtualnych w stanie `Deallocated`. |
-| - | Wskazuje, że stan zasilania maszyny wirtualnej jest nieznany. |
+| - | Stan zasilania maszyny wirtualnej jest nieznany. |
 
-### <a name="find-power-state"></a>Znajdowanie stanu zasilania
 
-Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów.
+Aby pobrać stan określonej maszyny wirtualnej, użyj polecenia [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Pamiętaj, aby określić prawidłową nazwę maszyny wirtualnej i grupy zasobów.
 
 ```azurepowershell-interactive
-Get-AzureRmVM `
+Get-AzVM `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
     -Status | Select @{n="Status"; e={$_.Statuses[1].Code}}
@@ -268,10 +275,10 @@ W trakcie cyklu życia maszyny wirtualnej można uruchamiać zadania zarządzani
 
 ### <a name="stop-a-vm"></a>Zatrzymywanie maszyny wirtualnej
 
-Do zatrzymywania maszyny wirtualnej i cofania jej przydziału służy polecenie [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm):
+Do zatrzymywania maszyny wirtualnej i cofania jej przydziału służy polecenie [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm):
 
 ```azurepowershell-interactive
-Stop-AzureRmVM `
+Stop-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM" -Force
 ```
@@ -281,17 +288,17 @@ Jeśli maszyna wirtualna ma zachować stan Aprowizowano, użyj parametru -StayPr
 ### <a name="start-a-vm"></a>Uruchamianie maszyny wirtualnej
 
 ```azurepowershell-interactive
-Start-AzureRmVM `
+Start-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM"
 ```
 
 ### <a name="delete-resource-group"></a>Usuwanie grupy zasobów
 
-Usunięcie grupy zasobów spowoduje również usunięcie wszystkich znajdujących się w niej zasobów.
+Wszystkie elementy znajdujące się wewnątrz grupy zasobów zostaną usunięte podczas usuwania tej grupy.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
    -Name "myResourceGroupVM" `
    -Force
 ```

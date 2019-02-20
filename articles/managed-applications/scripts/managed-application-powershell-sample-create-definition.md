@@ -1,6 +1,6 @@
 ---
-title: Skrypt programu PowerShell Azure przykładowe — Tworzenie definicji aplikacji zarządzanej | Dokumentacja firmy Microsoft
-description: Skrypt programu PowerShell Azure przykładowe — Tworzenie definicji aplikacji zarządzanej
+title: Przykładowy skrypt programu Azure PowerShell — tworzenie definicji aplikacji zarządzanej | Microsoft Docs
+description: Przykładowy skrypt programu Azure PowerShell — tworzenie definicji aplikacji zarządzanej
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -12,34 +12,36 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2017
 ms.author: tomfitz
-ms.openlocfilehash: ee721b7c68924f5e05fbdc4bc4b919837d4cc05b
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 35f1b805323da03f1622e5c355d6ffa6d960b275
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2017
-ms.locfileid: "23940956"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106923"
 ---
-# <a name="create-a-managed-application-definition-with-powershell"></a>Utwórz definicję aplikacji zarządzanej przy użyciu programu PowerShell
+# <a name="create-a-managed-application-definition-with-powershell"></a>Tworzenie definicji aplikacji zarządzanej za pomocą programu PowerShell
 
-Ten skrypt publikuje definicję aplikacji zarządzanych do katalogu usług.
+Ten skrypt publikuje definicję aplikacji zarządzanej w katalogu usług.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="sample-script"></a>Przykładowy skrypt
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!code-powershell[main](../../../powershell_scripts/managed-applications/create-definition/create-definition.ps1 "Create definition")]
 
 
-## <a name="script-explanation"></a>Wyjaśnienie skryptu
+## <a name="script-explanation"></a>Objaśnienia dla skryptu
 
-Ten skrypt używa następującego polecenia do tworzenia definicji zarządzanej aplikacji. Każde polecenie w tabeli łącza do dokumentacji specyficzne dla polecenia.
+Ten skrypt używa następującego polecenia do utworzenia definicji aplikacji zarządzanej. Każde polecenie w tabeli stanowi link do dokumentacji polecenia.
 
 | Polecenie | Uwagi |
 |---|---|
-| [Nowe AzureRmManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermmanagedapplicationdefinition) | Utwórz definicję zarządzanej aplikacji. Podaj pakiet, który zawiera pliki wymagane. |
+| [New-AzManagedApplicationDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azmanagedapplicationdefinition) | Tworzy definicję aplikacji zarządzanej. Należy podać pakiet, który zawiera wymagane pliki. |
 
 
 ## <a name="next-steps"></a>Następne kroki
 
-* Aby obejrzeć wprowadzenie do aplikacji zarządzanych, zobacz [zarządzanej aplikacji Azure — omówienie](../overview.md).
-* Aby uzyskać więcej informacji dotyczących środowiska PowerShell, zobacz [dokumentacji programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
+* Aby zapoznać się z wprowadzeniem do aplikacji zarządzanych, zobacz [Azure Managed Application overview](../overview.md) (Omówienie aplikacji zarządzanych platformy Azure).
+* Aby uzyskać więcej informacji na temat programu PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).

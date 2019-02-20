@@ -4,31 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 11/26/2018
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: e638375c9c8316c00ee8da000ca5223330072985
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ae7408ac635b2825ab17f40786c3fd60b76d78ac
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215575"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892460"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-c"></a>Szybki start: Uzyskiwanie listy obsługiwanych języków za pomocą interfejsu API tłumaczenia tekstu w usłudze Translator przy użyciu języka C#
 
 W tym przewodniku Szybki start uzyskasz listę języków obsługiwanych na potrzeby tłumaczenia, transliteracji i wyszukiwania w słowniku przy użyciu interfejsu API tłumaczenia tekstu w usłudze Translator.
-
-Ten przewodnik Szybki start wymaga [konta usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z zasobem tłumaczenia tekstu w usłudze Translator. Jeśli nie masz konta, możesz użyć [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/), aby uzyskać klucz subskrypcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Zestaw SDK platformy .NET](https://www.microsoft.com/net/learn/dotnet/hello-world-tutorial)
 * [Pakiet NuGet platformy Json.NET](https://www.nuget.org/packages/Newtonsoft.Json/)
 * Program [Visual Studio](https://visualstudio.microsoft.com/downloads/), [Visual Studio Code](https://code.visualstudio.com/download) lub ulubiony edytor tekstów
-* Klucz subskrypcji platformy Azure na potrzeby tłumaczenia tekstu w usłudze Translator
 
 ## <a name="create-a-net-core-project"></a>Tworzenie projektu platformy .NET Core
 
@@ -72,14 +69,13 @@ static void GetLanguages()
 }
 ```
 
-## <a name="set-the-subscription-key-host-name-and-path"></a>Ustawianie klucza subskrypcji, nazwy hosta i ścieżki
+## <a name="set-the-host-name-and-path"></a>Ustawianie nazwy hosta i ścieżki
 
 Dodaj następujące wiersze do funkcji `GetLanguages`.
 
 ```csharp
 string host = "https://api.cognitive.microsofttranslator.com";
 string route = "/languages?api-version=3.0";
-string subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 ```
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>Tworzenie wystąpienia klienta i wysyłanie żądania
@@ -109,17 +105,11 @@ Dodaj następujący kod do elementu `HttpRequestMessage`:
 ```csharp
 // Set the method to GET
 request.Method = HttpMethod.Get;
-
 // Construct the full URI
 request.RequestUri = new Uri(host + route);
-
-// Add the authorization header
-request.Headers.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-
 // Send request, get response
 var response = client.SendAsync(request).Result;
 var jsonResponse = response.Content.ReadAsStringAsync().Result;
-
 // Print the response
 Console.WriteLine(jsonResponse);
 Console.WriteLine("Press any key to continue.");

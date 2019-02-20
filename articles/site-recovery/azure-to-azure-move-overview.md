@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 5d844692b6199d93fa835da1021c9753311e17de
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824611"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112550"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Przenoszenie maszyn wirtualnych platformy Azure do innego regionu
 
@@ -33,7 +33,7 @@ W tym dokumencie przedstawiono różne scenariusze, w których warto przenieść
 Klienci przenoszą maszyny wirtualne z następujących powodów:
 
 - Jeśli wykonano już wdrożenie w jednym regionie i została dodana obsługa nowego regionu, który znajduje się bliżej użytkowników końcowych aplikacji lub usługi, warto **przenieść maszyny wirtualne bez zmian do nowego regionu** w celu zmniejszenia opóźnienia. To samo podejście jest stosowane w celu konsolidacji subskrypcji lub konieczności przeniesienia ze względu na reguły ładu/organizacji. 
-- Jeśli maszyna wirtualna została wdrożona jako pojedyncze wystąpienie maszyny wirtualnej lub jako część zestawu dostępności i chcesz zwiększyć dostępność w ramach umów SLA, możesz **przenieść maszyny wirtualne do zestawu dostępności**. 
+- Jeśli maszyna wirtualna została wdrożona jako pojedyncze wystąpienie maszyny wirtualnej lub jako część zestawu dostępności i chcesz zwiększyć dostępność w ramach umów SLA, możesz **przenieść maszyny wirtualne do strefy dostępności**. 
 
 ## <a name="how-to-move-azure-vms"></a>Jak przenieść maszyny wirtualne platformy Azure
 Aby przenieść maszyny wirtualne, należy wykonać następujące kroki:
@@ -97,7 +97,7 @@ Oto jak będą wyglądać wdrożenia po przeniesieniu bez zmian do regionu docel
 
 2. **Maszyny wirtualne w poszczególnych warstwach wdrożone w zestawie dostępności** — włączając replikację maszyny wirtualnej przy użyciu usługi Azure Site Recovery, możesz umieścić maszyny wirtualne w zestawie dostępności w oddzielnych strefach dostępności. Po ukończeniu operacji przenoszenia umowa SLA będzie obejmować dostępność na poziomie 99,9%.
 
-      ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
+     ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
 
 
 ## <a name="next-steps"></a>Następne kroki

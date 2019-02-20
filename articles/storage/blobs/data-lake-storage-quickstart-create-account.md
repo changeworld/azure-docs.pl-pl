@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: b49c69a488402e593573e7f9e4fda81057519149
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732451"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884464"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Szybki start: Tworzenie konta usługi Azure Data Lake Storage 2. generacji
 
@@ -93,7 +93,7 @@ Aby utworzyć konto magazynu ogólnego przeznaczenia w wersji 2 w witrynie Azure
 6. Wybierz subskrypcję, w ramach której chcesz utworzyć konto magazynu.
 7. Wybierz pozycję **Dalej: Zaawansowane >**
 8. Pozostaw wartości domyślne w polach **ZABEZPIECZENIA** i **SIECI WIRTUALNE**.
-9. W sekcji **Data Lake Storage 2. generacji (wersja zapoznawcza)** ustaw pole na **Hierarchiczna przestrzeń nazw** na **Włączono**.
+9. W sekcji **Data Lake Storage Gen2** ustaw pole **Hierarchiczna przestrzeń nazw** na **Włączono**.
 10. Kliknij pozycję **Przeglądanie + tworzenie**, aby utworzyć konto magazynu.
 
     ![Zrzut ekranu przedstawiający proces tworzenia konta magazynu w witrynie Azure Portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)

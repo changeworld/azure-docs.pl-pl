@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 46ea73e0a0c2dd14dcafcaa332c7feb1c70445df
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602651"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098889"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Szybki start: testowanie rozwiązania opartego na chmurze do zarządzania przemysłowymi urządzeniami IoT
 
@@ -42,7 +42,7 @@ Na stronie **Tworzenie rozwiązania połączonej fabryki** w polu **Nazwa rozwi�
 
 W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. W tym przewodniku Szybki start używamy subskrypcji **Visual Studio Enterprise** i regionu **Wschodnie stany USA**. Musisz być [użytkownikiem lub administratorem globalnym](iot-accelerators-permissions.md) w ramach subskrypcji.
 
-Kliknij pozycję **Utwórz rozwiązanie**, aby rozpocząć wdrażanie. Ten proces trwa co najmniej pięć minut:
+Kliknij pozycję **Utwórz**, aby rozpocząć wdrażanie. Ten proces trwa co najmniej pięć minut:
 
 ![Szczegóły rozwiązania połączonej fabryki](./media/quickstart-connected-factory-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Na stronie **Aprowizowane rozwiązania** kliknij nowy akcelerator rozwiązań po
 
 ![Wybieranie nowego rozwiązania](./media/quickstart-connected-factory-deploy/choosenew.png)
 
-Na wyświetlonym panelu możesz przejrzeć informacje o akceleratorze rozwiązań połączonej fabryki. Wybierz pozycję **Pulpit nawigacyjny rozwiązania**, aby wyświetlić akcelerator rozwiązań połączonej fabryki:
+Na wyświetlonej stronie możesz przejrzeć informacje o akceleratorze rozwiązań połączonej fabryki. Wybierz pozycję **Przejdź do własnego akceleratora rozwiązań**, aby wyświetlić akcelerator rozwiązań połączonej fabryki:
 
 ![Panel rozwiązania](./media/quickstart-connected-factory-deploy/solutionpanel.png)
 

@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 09/18/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6581c389cb7b1aa9c6ce6b9e84b56017264822f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 7ef7216b2d3adf99b0c1fd9ace84991169106529
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232957"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976269"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Rozpoczynanie korzystania z zestawu SDK klienta Java dla usług Azure Media Services
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services-legacy"></a>Rozpoczynanie korzystania z zestawu SDK klienta Java dla usługi Azure Media Services (starsza wersja)
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 W tym samouczku przedstawiono kolejne kroki wdrażania podstawowej usługi dostarczania zawartości wideo za pomocą usług Azure Media Services przy użyciu zestawu SDK klienta Java.
@@ -34,7 +35,7 @@ Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 * Konto usługi Media Services. Aby utworzyć konto usługi Media Services, zobacz temat [Jak utworzyć konto usługi Media Services](media-services-portal-create-account.md).
 * Bieżący [zestaw SDK Java usług Azure Media Services](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
-## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Instrukcje: importowanie pakietu zestawu SDK Java usług Azure Media Services
+## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Instrukcje: Importowanie pakietu zestawu SDK Java usługi Azure Media Services
 
 Aby rozpocząć korzystanie z zestawu SDK usług Media Services dla języka Java, dodaj odwołanie do bieżącej wersji (0.9.8) pakietu `azure-media` z [zestawu SDK Java usług Azure Media Services](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest).
 
@@ -48,7 +49,7 @@ Jeśli na przykład Twoim narzędziem kompilacji jest narzędzie `gradle`, dodaj
 >[!NOTE]
 >Kod źródłowy zestawu SDK Java usług Azure Media Services znajdziesz w naszym [repozytorium GitHub](https://github.com/Azure/azure-sdk-for-java/tree/0.9/services/azure-media). Pamiętaj, aby przejść do gałęzi 0.9, a nie gałęzi głównej. 
 
-## <a name="how-to-use-azure-media-services-with-java"></a>Instrukcje: korzystanie z usług Azure Media Services z językiem Java
+## <a name="how-to-use-azure-media-services-with-java"></a>Instrukcje: Korzystanie z usługi Azure Media Services z językiem Java
 
 >[!NOTE]
 >Po utworzeniu konta usług Media Services do Twojego konta dodawany jest **domyślny** punkt końcowy przesyłania strumieniowego w stanie **Zatrzymany**. Aby rozpocząć przesyłanie strumieniowe zawartości oraz korzystać z dynamicznego tworzenia pakietów i szyfrowania dynamicznego, punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać zawartość, musi mieć stan **Uruchomiony**.
@@ -61,7 +62,7 @@ Kod umożliwia nawiązanie połączenia z interfejsem API usług Azure Media Ser
 * `tenant`: domena dzierżawy usługi Azure AD, w której znajduje się aplikacja usługi Azure AD
 * `clientId`: identyfikator klienta aplikacji usługi Azure AD
 * `clientKey`: klucz klienta aplikacji usługi Azure AD
-* `restApiEndpoint`: punkt końcowy interfejsu API REST konta usług Azure Media Services
+* `restApiEndpoint`: punkt końcowy interfejsu API REST konta usługi Azure Media Services
 
 Możesz utworzyć aplikację usługi Azure AD i uzyskać powyższe wartości konfiguracji z witryny Azure Portal. Aby uzyskać więcej informacji, zobacz sekcję **Uwierzytelnianie jednostki usługi** w artykule [Wprowadzenie do uwierzytelniania w usłudze Azure AD przy użyciu witryny Azure Portal](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 

@@ -1,22 +1,22 @@
 ---
-title: Porady dotyczące wyodrębniania kluczowych fraz w interfejsie API REST analizy tekstu (Microsoft Cognitive Services na platformie Azure) | Microsoft Docs
-description: Sposób wyodrębniania kluczowych fraz przy użyciu interfejsu API REST analizy tekstu w usługach Microsoft Cognitive Services na platformie Azure w tym samouczku z przewodnikiem.
+title: Wyodrębnianie kluczowych fraz przy użyciu interfejsu API REST analizy tekstu | Microsoft Docs
+description: Sposób wyodrębniania kluczowych fraz za pomocą interfejsu API REST analizy tekstu z usług Azure Cognitive Services.
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: bbca745da1fe657c1316d9e4e5fbeeeabfa5e1ef
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: bbf72847dd9d9a29bf1f2fa0574b83194d07a5c6
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216748"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245613"
 ---
-# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Przykład: Jak wyodrębniać kluczowe frazy w analizie tekstu
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Przykład: Sposób wyodrębniania kluczowych fraz przy użyciu analizy tekstu
 
 [Interfejs API wyodrębniania kluczowych fraz](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) ocenia tekst bez struktury i dla każdego dokumentu JSON zwraca listę kluczowych fraz. 
 
@@ -29,13 +29,13 @@ Aktualnie wyodrębnianie kluczowych fraz obsługuje angielski, niemiecki, hiszpa
 
 ## <a name="preparation"></a>Przygotowanie
 
-Wyodrębnianie kluczowych fraz działa najlepiej na większych fragmentach tekstu. Jest to przeciwieństwo analizy tonacji, która działa lepiej na mniejszych blokach tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
+Wyodrębnianie kluczowych fraz działa najlepiej na większej ilości tekstu. Jest to przeciwieństwo analizy tonacji, która działa lepiej na mniejszej ilości tekstu. Aby uzyskać najlepsze wyniki dla obu operacji, rozważ odpowiednią zmianę struktury danych wejściowych.
 
 Dokumenty JSON muszą mieć następujący format: identyfikator, tekst, język
 
 Dokument musi mieć mniej niż 5000 znaków, a kolekcja może zawierać maksymalnie 1000 elementów (identyfikatorów). Kolekcja jest przesyłana w treści żądania. Poniższy przykład przedstawia zawartość, którą możesz przesłać w celu wyodrębnienia kluczowych fraz.
 
-```
+```json
     {
         "documents": [
             {
@@ -94,9 +94,9 @@ Wszystkie żądania POST zwracają odpowiedź w formacie JSON z identyfikatorami
 
 Dane wyjściowe są zwracane natychmiast. Wyniki można przesłać strumieniowo do aplikacji, która akceptuje kod JSON, lub zapisać do pliku w systemie lokalnym, a następnie zaimportować do aplikacji, która umożliwia sortowanie i wyszukiwanie danych oraz manipulowanie nimi.
 
-Przykład danych wyjściowych dla wyodrębniania kluczowych fraz:
+W tym miejscu pokazano przykład danych wyjściowych dla wyodrębniania kluczowych fraz:
 
-```
+```json
     "documents": [
         {
             "keyPhrases": [

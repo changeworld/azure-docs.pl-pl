@@ -5,27 +5,25 @@ description: Skorzystaj z tego przewodnika Szybki Start, aby wysyłać żądania
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 8/20/2018
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 31a0d092340ed161b8d8c7e7e23740c1fbf9318b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e7ff8fc10e8f714acac2dd77f8d8628f3a3ebf9e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155276"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238201"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-nodejs"></a>Szybki start: wyszukiwanie obrazów za pomocą interfejsu API wyszukiwania obrazów Bing i platformy Node.js
 
-Ten przewodnik Szybki start umożliwia tworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbieranie odpowiedzi w formacie JSON. Ta prosta aplikacja JavaScript wysyła zapytanie wyszukiwania do interfejsu API i wyświetla nieprzetworzone wyniki.
+Użyj tego przewodnika Szybki start, aby rozpocząć wysyłanie żądań wyszukiwania do interfejsu API wyszukiwania obrazów Bing. Ta aplikacja języka JavaScript wysyła zapytanie dotyczące wyszukiwania do interfejsu API i wyświetla adres URL pierwszego obrazu w wynikach. Aplikacja jest napisana w języku JavaScript, natomiast interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
 
-Ta aplikacja jest napisana w języku JavaScript i uruchamiana w środowisku Node.js, a interfejs API jest usługą internetową zgodną z wzorcem REST i większością języków programowania.
-
-Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) wraz z dodatkową obsługą błędów i adnotacjami kodu.
+Kod źródłowy dla tego przykładu jest dostępny w usłudze [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingImageSearchv7Quickstart.js) wraz z dodatkową obsługą błędów i adnotacjami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -55,7 +53,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
 
 ## <a name="construct-the-search-request-and-query"></a>Konstruowanie żądania wyszukiwania i zapytania
 
-1. Użyj zmiennych utworzonych w ostatnim kroku, aby sformatować adres URL wyszukiwania dla żądania interfejsu API. Należy pamiętać, że termin wyszukiwania musi być zakodowany w adresie URL przed wysłaniem go do interfejsu API.
+1. Użyj zmiennych utworzonych w ostatnim kroku, aby sformatować adres URL wyszukiwania dla żądania interfejsu API. Termin wyszukiwania musi zostać zakodowany w adresie URL przed wysłaniem go do interfejsu API.
 
     ```javascript
     let request_params = {
@@ -76,7 +74,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
 
 ## <a name="handle-and-parse-the-response"></a>Obsługa i analizowanie odpowiedzi
 
-1. Zdefiniuj funkcję o nazwie `response_handler`, która przyjmuje wywołanie HTTP `response`, jako parametr. W ramach tej funkcji wykonaj następujące czynności:
+1. Zdefiniuj funkcję o nazwie `response_handler`, która przyjmuje wywołanie HTTP `response`, jako parametr. Wykonaj następujące czynności w ramach tej funkcji:
 
     1. Definiowanie zmiennej, by zawierała treść odpowiedzi JSON.  
         ```javascript
@@ -92,7 +90,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
         });
         ```
 
-    3. Gdy zgłaszana jest flaga **end**, plik JSON może zostać przetworzony, a adres URL obrazu może zostać wydrukowany wraz z łączną liczbą zwróconych obrazów.
+    3. Po zasygnalizowaniu flagi **end** uzyskanie pierwszego wyniku z odpowiedzi w formacie JSON. Zostanie wyświetlony adres URL pierwszego obrazu i łączna liczba zwróconych obrazów.
 
         ```javascript
         response.on('end', function () {
@@ -103,7 +101,7 @@ Zobacz też [Cennik usług Cognitive Services — interfejs API wyszukiwania Bin
          });
         ```
 
-## <a name="json-response"></a>Odpowiedź w formacie JSON
+## <a name="example-json-response"></a>Przykładowa odpowiedź JSON
 
 Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta w celu pokazania pojedynczego wyniku.
 
@@ -147,19 +145,20 @@ Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie J
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania obrazów Bing](../tutorial-bing-image-search-single-page-app.md)
+> [Utwórz aplikację jednostronicową](../tutorial-bing-image-search-single-page-app.md)
 
 ## <a name="see-also"></a>Zobacz też
 
 * [Czym jest funkcja wyszukiwania obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Wypróbuj interaktywny pokaz online](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* [Szczegóły cennika](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) interfejsów API wyszukiwania Bing. 
 * [Pobieranie bezpłatnego klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Dokumentacja usług Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

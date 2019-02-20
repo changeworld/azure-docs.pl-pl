@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/04/2017
+ms.date: 12/05/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1bee08800eb5b480024001f742e8965cbd609a73
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2e7e67236a2f9709bafc0a0383f6ac12b26ca57e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428889"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984192"
 ---
 # <a name="tutorial-monitor-and-update-a-windows-virtual-machine-in-azure"></a>Samouczek: monitorowanie i aktualizowanie maszyny wirtualnej z systemem Windows na platformie Azure
 
@@ -40,7 +40,11 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Monitorowanie zmian i spisu
 > * Konfigurowanie zaawansowanego monitorowania
 
-Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
+
+Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. 
+
+Aby otworzyć usługę Cloud Shell, wybierz pozycję **Wypróbuj** w prawym górnym rogu bloku kodu. Możesz również uruchomić usługę Cloud Shell w oddzielnej karcie przeglądarki, przechodząc do strony [https://shell.azure.com/powershell](https://shell.azure.com/powershell). Wybierz przycisk **Kopiuj**, aby skopiować bloki kodu, wklej je do usługi Cloud Shell, a następnie naciśnij klawisz Enter, aby je uruchomić.
 
 ## <a name="create-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
@@ -50,10 +54,10 @@ Aby w tym samouczku móc skonfigurować monitorowanie i zarządzanie aktualizacj
 $cred = Get-Credential
 ```
 
-Następnie utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM* w lokalizacji *EastUS*. Grupa zasobów *myResourceGroupMonitorMonitor* i pomocnicze zasoby sieciowe zostaną utworzone, jeśli jeszcze nie istnieją:
+Następnie utwórz maszynę wirtualną za pomocą polecenia [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). W poniższym przykładzie zostanie utworzona maszyna wirtualna o nazwie *myVM* w lokalizacji *EastUS*. Grupa zasobów *myResourceGroupMonitorMonitor* i pomocnicze zasoby sieciowe zostaną utworzone, jeśli jeszcze nie istnieją:
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupMonitor" `
     -Name "myVM" `
     -Location "East US" `
@@ -66,10 +70,10 @@ Utworzenie maszyny wirtualnej i zasobów może potrwać kilka minut.
 
 Podczas rozruchu maszyn wirtualnych z systemem Windows agent diagnostyki rozruchu przechwytuje dane wyjściowe z ekranu, których można używać do rozwiązywania problemów. Ta funkcja jest domyślnie włączona. Przechwycone zrzuty ekranu są przechowywane w koncie magazynu platformy Azure, które również jest tworzone domyślnie.
 
-Dane diagnostyczne rozruchu można pobrać za pomocą polecenia [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmbootdiagnosticsdata). W poniższym przykładzie dane diagnostyki rozruchu są pobierane do katalogu głównego na dysku *c:\*.
+Dane diagnostyczne rozruchu można pobrać za pomocą polecenia [Get-AzureRmVMBootDiagnosticsData](https://docs.microsoft.com/powershell/module/az.compute/get-azvmbootdiagnosticsdata). W poniższym przykładzie dane diagnostyki rozruchu są pobierane do katalogu głównego na dysku *c:\*.
 
 ```powershell
-Get-AzureRmVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
+Get-AzVMBootDiagnosticsData -ResourceGroupName "myResourceGroupMonitor" -Name "myVM" -Windows -LocalPath "c:\"
 ```
 
 ## <a name="view-host-metrics"></a>Wyświetlanie metryki hosta
@@ -259,13 +263,13 @@ Wykres pokazuje zmiany, które wystąpiły w czasie. Po dodaniu połączenia dzi
 
 Aby przeprowadzać bardziej zaawansowane monitorowanie maszyny wirtualnej, można korzystać z rozwiązań oferowanych przez usługę [Azure Automation](../../automation/automation-intro.md), takich jak Update Management i Change and Inventory.
 
-Jeśli masz dostęp do obszaru roboczego usługi Log Analytics, możesz znaleźć klucz i identyfikator obszaru roboczego, wybierając pozycję **Ustawienia zaawansowane** w obszarze **USTAWIENIA**. Użyj polecenia [Set-AzureRmVMExtension](/powershell/module/azurerm.compute/set-azurermvmextension), aby dodać rozszerzenie Microsoft Monitoring Agent do maszyny wirtualnej. Zaktualizuj wartości zmiennych w poniższym przykładzie, aby odzwierciedlały Twój klucz i identyfikator obszaru roboczego usługi Log Analytics.
+Jeśli masz dostęp do obszaru roboczego usługi Log Analytics, możesz znaleźć klucz i identyfikator obszaru roboczego, wybierając pozycję **Ustawienia zaawansowane** w obszarze **USTAWIENIA**. Użyj polecenia [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension), aby dodać rozszerzenie Microsoft Monitoring Agent do maszyny wirtualnej. Zaktualizuj wartości zmiennych w poniższym przykładzie, aby odzwierciedlały Twój klucz i identyfikator obszaru roboczego usługi Log Analytics.
 
 ```powershell
 $workspaceId = "<Replace with your workspace Id>"
 $key = "<Replace with your primary key>"
 
-Set-AzureRmVMExtension -ResourceGroupName "myResourceGroupMonitor" `
+Set-AzVMExtension -ResourceGroupName "myResourceGroupMonitor" `
   -ExtensionName "Microsoft.EnterpriseCloud.Monitoring" `
   -VMName "myVM" `
   -Publisher "Microsoft.EnterpriseCloud.Monitoring" `

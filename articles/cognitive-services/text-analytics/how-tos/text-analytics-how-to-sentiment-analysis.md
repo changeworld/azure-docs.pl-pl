@@ -1,22 +1,22 @@
 ---
-title: Porady dotyczące analizy tonacji w interfejsie API REST analizy tekstu (Microsoft Cognitive Services na platformie Azure) | Microsoft Docs
-description: Sposób wykrywania tonacji przy użyciu interfejsu API REST analizy tekstu w usługach Microsoft Cognitive Services na platformie Azure w tym samouczku z przewodnikiem.
+title: Analiza tonacji za pomocą analizy tekstu usług Azure Cognitive Services | Microsoft Docs
+description: Dowiedz się, jak wykrywać opinię przy użyciu interfejsu API REST analizy tekstu.
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: e5ceb6208229baf3e07e4030992d5de85309789c
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: add284a3a001d5bc2e756f9ad4a2a3b9550b212c
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212498"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242139"
 ---
-# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Przykład: Jak wykrywać opinię przy użyciu analizy tekstu
+# <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Przykład: Jak wykryć tonację przy użyciu analizy tekstu
 
 [Interfejs API analizy tonacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) ocenia tekst wejściowy i zwraca wynik opinii dla każdego dokumentu z zakresu od 0 (negatywna) do 1 (pozytywna).
 

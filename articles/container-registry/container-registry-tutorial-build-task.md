@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: dd99a6b49894b3489d1cc01f1fcbc56d29247b41
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 763ff0d5f619d2808fb06c05d5b266160b3a7069
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756363"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868569"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Samouczek: Automatyzowanie kompilacji obrazu kontenera w chmurze po zatwierdzeniu kodu źródłowego
 
@@ -51,6 +51,8 @@ Usługa ACR Tasks obsługuje obecnie następujące wyzwalacze:
 
 * Zatwierdzenie do repozytorium Git
 * Aktualizacja obrazów podstawowych
+
+W tym samouczku zadanie usługi ACR tworzy i wypycha pojedynczy obraz kontenera określony w pliku Dockerfile. Zadania usługi ACR mogą także uruchamiać [zadania wieloetapowe](container-registry-tasks-multi-step.md) (obecnie dostępne w wersji zapoznawczej), używając pliku YAML do zdefiniowania kroków tworzenia, wypychania i, opcjonalnie, testowania wielu kontenerów.
 
 ## <a name="create-a-build-task"></a>Tworzenie zadania kompilacji
 
@@ -99,7 +101,7 @@ az acr task create \
 > [!IMPORTANT]
 > Jeśli wcześniej utworzono zadania za pomocą wersji zapoznawczej przy użyciu polecenia `az acr build-task`, trzeba je utworzyć ponownie przy użyciu polecenia [az acr task][az-acr-task].
 
-To zadanie określa, że za każdym razem, gdy kod jest zatwierdzany do *głównej* gałęzi w repozytorium określonym przez element `--context`, usługa ACR Tasks skompiluje obraz kontenera z kodu w tej gałęzi. Używany jest plik Dockerfile określony przez parametr `--file` z katalogu głównego repozytorium. Argument `--image` określa wartość sparametryzowaną elementu `{{.Run.ID}}` dla części wersji tagu obrazu, zapewniając, że skompilowany obraz jest powiązany z określoną kompilacją i jest jednoznacznie oznakowany.
+To zadanie określa, że za każdym razem, gdy kod jest zatwierdzany do *głównej* gałęzi w repozytorium określonym przez element `--context`, usługa ACR Tasks skompiluje obraz kontenera z kodu w tej gałęzi. Do kompilowania obrazu jest używany plik Dockerfile określony przez parametr `--file` z katalogu głównego repozytorium. Argument `--image` określa wartość sparametryzowaną elementu `{{.Run.ID}}` dla części wersji tagu obrazu, zapewniając, że skompilowany obraz jest powiązany z określoną kompilacją i jest jednoznacznie oznakowany.
 
 Dane wyjściowe z pomyślnie wykonanego polecenia [az acr task create][az-acr-task-create] przypominają następujące dane:
 

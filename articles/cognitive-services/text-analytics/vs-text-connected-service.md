@@ -1,23 +1,23 @@
 ---
-title: 'Samouczek: analiza tekstu w języku C#'
+title: 'Samouczek: Łączenie z usługą analizy tekstu za pomocą usług połączonych w programie Visual Studio'
 titleSuffix: Azure Cognitive Services
-description: Nawiąż połączenie z analizą tekstu z aplikacji internetowej platformy ASP.NET Core.
+description: Dowiedz się, jak nawiązywać połączenie z analizą tekstu z poziomu aplikacji internetowej platformy ASP.NET Core.
 services: cognitive-services
-author: ghogen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: tutorial
-ms.date: 09/12/2018
-ms.author: ghogen
-ms.openlocfilehash: 6527e053f685fd7947e123d15c0d33399d07e61f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: a37ea5fdad941e1559e470ccb22303a8e3c7ca3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227254"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243896"
 ---
-# <a name="tutorial-connect-to-the-text-analytics-cognitive-service-by-using-connected-services-in-visual-studio"></a>Samouczek: łączenie z analizą tekstu usługi Cognitive Services za pomocą usług połączonych w programie Visual Studio
+# <a name="tutorial-connect-to-the-text-analytics-service-with-connected-services-in-visual-studio"></a>Samouczek: Łączenie z usługą analizy tekstu za pomocą usług połączonych w programie Visual Studio
 
 Za pomocą usługi Text Analytics możesz wyodrębniać rozbudowane informacje w celu kategoryzowania i przetwarzania danych wizualnych oraz przeprowadzać wspomagane maszynowo moderowanie obrazów, aby ułatwić nadzorowanie usług.
 

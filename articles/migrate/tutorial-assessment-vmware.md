@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730768"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235839"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Odnajdowanie i ocenianie lokalnych maszyn wirtualnych VMware pod kątem migracji na platformę Azure
 
@@ -30,7 +30,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- **VMware**: do zarządzania maszynami wirtualnymi, które mają być poddane migracji, musi być używany program vCenter Server w wersji 5.5, 6.0 lub 6.5. Ponadto wymagany jest jeden host ESXi z wersją 5.5 lub nowszą w celu wdrożenia maszyny wirtualnej modułu zbierającego.
+- **VMware**: do zarządzania maszynami wirtualnymi, które mają być poddane migracji, musi być używany program vCenter Server w wersji 5.5, 6.0, 6.5 lub 6.7. Ponadto wymagany jest jeden host ESXi z wersją 5.5 lub nowszą w celu wdrożenia maszyny wirtualnej modułu zbierającego.
 - **Konto serwera vCenter Server**: wymagane jest konto tylko do odczytu w celu uzyskania dostępu do serwera vCenter Server. To konto jest używane w usłudze Azure Migrate do odnajdowania lokalnych maszyn wirtualnych.
 - **Uprawnienia**: na serwerze vCenter Server są wymagane uprawnienia do tworzenia maszyn wirtualnych przez zaimportowanie pliku w formacie OVA.
 
@@ -182,7 +182,7 @@ Zaimportuj pobrany plik na serwer vCenter.
     - Wybierz chmurę platformy Azure, do której planujesz przeprowadzić migrację (Azure Global lub Azure Government).
     - Zaakceptuj postanowienia licencyjne i przeczytaj informacje innych firm.
     - Moduł zbierający sprawdzi, czy maszyna wirtualna ma dostęp do Internetu.
-    - Jeśli maszyna wirtualna uzyskuje dostęp do Internetu za pośrednictwem serwera proxy, kliknij pozycję **Proxy settings** (Ustawienia serwera proxy) i wprowadź adres serwera proxy oraz port nasłuchujący. Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) na temat wymagań dotyczących łączności z Internetem i [listy adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls), do których moduł zbierający uzyskuje dostęp.
+    - Jeśli maszyna wirtualna uzyskuje dostęp do Internetu za pośrednictwem serwera proxy, kliknij pozycję **Proxy settings** (Ustawienia serwera proxy) i wprowadź adres serwera proxy oraz port nasłuchujący. Jeśli serwer proxy wymaga uwierzytelnienia, wprowadź poświadczenia. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) na temat wymagań dotyczących łączności z Internetem i [listy adresów URL](https://docs.microsoft.com/azure/migrate/concepts-collector), do których moduł zbierający uzyskuje dostęp.
 
       > [!NOTE]
       > Adres serwera proxy musi zostać wprowadzony w postaci http://ProxyIPAddress lub http://ProxyFQDN. Obsługiwane są tylko serwery proxy HTTP. Jeśli masz przechwytujący serwer proxy, nawiązanie połączenia internetowego może początkowo się nie udać, jeśli nie zaimportowano certyfikatu serwera proxy; [dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-collector) na temat rozwiązywania tego problemu przez zaimportowanie certyfikatu serwera proxy jako zaufanego certyfikatu na maszynie wirtualnej modułu zbierającego.

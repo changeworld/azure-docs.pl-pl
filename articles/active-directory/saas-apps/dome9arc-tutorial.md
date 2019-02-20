@@ -1,237 +1,257 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Dome9 łuk | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Dome9 łuku.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Dome9 Arc | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Dome9 Arc.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 4c12875f-de71-40cb-b9ac-216a805334e5
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/22/2018
+ms.topic: tutorial
+ms.date: 01/31/2019
 ms.author: jeedes
-ms.openlocfilehash: a313acecf0660e527508f28e1ea86485996cc4f9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91ef20398bc3e15b1ee47c6e7c28795f4d9bc08c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191401"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190946"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Dome9 łuk
+# <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Dome9 Arc
 
-W tym samouczku dowiesz się, jak zintegrować Dome9 łuku z usługą Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Dome9 Arc z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Dome9 Arc z usługą Azure AD oferuje następujące korzyści:
 
-Integrowanie Dome9 łuku z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji Dome9 Arc.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Dome9 Arc (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Dome9 łuku.
-- Użytkowników, aby automatycznie uzyskać zalogowanych na łuk Dome9 (logowanie jednokrotne) można włączyć za pomocą kont usługi Azure AD.
-- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do konfigurowania integracji z usługą Azure AD z łuk Dome9, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Dome9 Arc, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Łuk Dome9 logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Dome9 Arc z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
-Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-1. Dodawanie Dome9 łuku z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+* Aplikacja Dome9 Arc obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług** oraz **dostawcę tożsamości**
 
-## <a name="adding-dome9-arc-from-the-gallery"></a>Dodawanie Dome9 łuku z galerii
+## <a name="adding-dome9-arc-from-the-gallery"></a>Dodawanie aplikacji Dome9 Arc z galerii
 
-Aby skonfigurować integrację łuk Dome9 w usłudze Azure AD, należy dodać Dome9 łuku z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację aplikacji Dome9 Arc z usługą Azure AD, musisz dodać aplikację Dome9 Arc z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać Dome9 łuku z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację Dome9 Arc z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Przycisk Nowa aplikacja][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **łuk Dome9**, wybierz opcję **łuk Dome9** z panelu wynik następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Dome9 Arc**, wybierz pozycję **Dome9 Arc** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-    ![Dome9 łuk na liście wyników](./media/dome9arc-tutorial/tutorial_dome9arc_addfromgallery.png)
+     ![Aplikacja Dome9 Arc na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą łuk Dome9 w oparciu o użytkownika testu o nazwie "Britta Simon".
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Dome9 Arc, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Dome9 Arc.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w łuk Dome9 do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Dome9 łuk musi można ustanowić.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą łuk Dome9, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Dome9 Arc, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-3. **[Tworzenie użytkownika testowego łuk Dome9](#create-a-dome9-arc-test-user)**  — aby odpowiednikiem Britta Simon w łuk Dome9, połączonego z usługi Azure AD reprezentacja użytkownika.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Dome9 Arc](#configure-dome9-arc-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+5. **[Tworzenie użytkownika testowego aplikacji Dome9 Arc](#create-dome9-arc-test-user)** — aby mieć w aplikacji Dome9 Arc odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Dome9 łuku.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z łuk Dome9, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Dome9 Arc, wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **łuk Dome9** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Dome9 Arc** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/dome9arc-tutorial/tutorial_dome9arc_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-3. Na **Dome9 łuk domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Dome9 łuk domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/dome9arc-tutorial/tutorial_dome9arc_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    a. W **identyfikator** pole tekstowe, wpisz adres URL: `https://secure.dome9.com/`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+
+    ![Informacje o domenie i adresach URL aplikacji Dome9 Arc na potrzeby logowania jednokrotnego](common/idp-intiated.png)
+
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://secure.dome9.com/`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://secure.dome9.com/sso/saml/yourcompanyname`
 
     > [!NOTE]
-    > Możesz wybrać wartość nazwy firmy w portalu administracyjnym dome9 zostało wyjaśnione w dalszej części tego samouczka.
+    > Wartość nazwy firmy wybierzesz w portalu administracyjnym aplikacji Dome9, co objaśniono w dalszej części tego samouczka.
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Dome9 łuk domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/dome9arc-tutorial/tutorial_dome9arc_url1.png)
+    ![Informacje o domenie i adresach URL aplikacji Dome9 Arc na potrzeby logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://secure.dome9.com/sso/saml/<yourcompanyname>`
- 
-    > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zaktualizuj je, używając faktycznego adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta łuk Dome9](https://dome9.com/about/contact-us/) do uzyskania tych wartości. 
 
-5. Aplikacja oprogramowania łuk Dome9 oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z "**atrybutów użytkownika**" sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego działania.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Należy je zastąpić rzeczywistymi wartościami adresu URL odpowiedzi i adresu URL logowania. Skontaktuj się z [zespołem obsługi klienta aplikacji Dome9 Arc](mailto:support@dome9.com) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Konfigurowanie logowania jednokrotnego attb](./media/dome9arc-tutorial/tutorial_dome9arc_attribute.png)
+6. Aplikacja Dome9 Arc oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
-6. W **atrybutów użytkownika** sekcji na **logowanie jednokrotne** okno dialogowe, skonfiguruj atrybut tokenu SAML, jak pokazano na ilustracji powyżej i wykonaj następujące czynności:
-    
-    | Nazwa atrybutu  | Wartość atrybutu | 
-    | --------------- | --------------- | 
+    ![image](common/edit-attribute.png)
+
+7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności: 
+
+    | Name (Nazwa) |  Atrybut źródłowy|
+    | ---------------| --------------- |
     | memberof | user.assignedroles |
-    
-    a. Kliknij przycisk **Dodaj atrybut** otworzyć **Dodawanie atrybutu** okna dialogowego.
 
-    ![Konfigurowanie logowania jednokrotnego Dodaj attb](./media/dome9arc-tutorial/tutorial_dome9_04.png)
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    ![Konfigurowanie logowania jednokrotnego attb edycji](./media/dome9arc-tutorial/tutorial_attribute_05.png)
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
 
     b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-    c. Z **wartość** wpisz wartość atrybutu wyświetlanego dla tego wiersza.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
-    d. Kliknij przycisk **OK**.
-    
-    > [!NOTE]
-    > Skontaktuj się z tym [łącze](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) na temat sposobu konfigurowania i konfigurowanie ról dla aplikacji.
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-7. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-    ![Link do pobierania certyfikatu](./media/dome9arc-tutorial/tutorial_dome9arc_certificate.png) 
+    f. Kliknij przycisk **OK**.
 
-8. Kliknij przycisk **Zapisz** przycisku.
+    g. Kliknij pozycję **Zapisz**.
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/dome9arc-tutorial/tutorial_general_400.png)
+8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-9. Na **konfiguracji łuk Dome9** , kliknij przycisk **skonfigurować łuk Dome9** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-    ![Konfiguracja łuk Dome9](./media/dome9arc-tutorial/tutorial_dome9arc_configure.png) 
+9. W sekcji **Konfigurowanie aplikacji Dome9 Arc** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-10. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy łuk Dome9, jako administrator.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-11. Kliknij pozycję **ustawienia profilu** w prawym górnym rogu, a następnie kliknij przycisk **ustawienia konta**. 
+    a. Adres URL logowania
 
-    ![Konfiguracja łuk Dome9](./media/dome9arc-tutorial/configure1.png)
+    b. Identyfikator usługi Azure AD
 
-12. Przejdź do **logowania jednokrotnego** a następnie kliknij przycisk **Włącz**.
+    d. Adres URL wylogowywania
 
-    ![Konfiguracja łuk Dome9](./media/dome9arc-tutorial/configure2.png)
+### <a name="configure-dome9-arc-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Dome9 Arc
 
-13. W sekcji konfiguracji logowania jednokrotnego wykonaj następujące czynności:
+1. W innym oknie przeglądarki internetowej zaloguj się do swojej firmowej witryny aplikacji Dome9 Arc jako administrator.
 
-    ![Konfiguracja łuk Dome9](./media/dome9arc-tutorial/configure3.png)
+2. Kliknij pozycję **Profile Settings** (Ustawienia profilu) w prawym górnym rogu, a następnie kliknij przycisk **Account Settings** (Ustawienia konta). 
 
-    a. Wprowadź nazwę firmy w **Accountid** pola tekstowego. Ta wartość jest do użycia w odpowiedzi na adres url wymienione w sekcji Azure adres URL portalu.
+    ![Konfiguracja aplikacji Dome9 Arc](./media/dome9arc-tutorial/configure1.png)
 
-    b. W **wystawcy** pola tekstowego, Wklej wartość **identyfikator jednostki SAML**, które zostały skopiowane witryny Azure Portal.
+3. Przejdź na kartę **SSO** (Logowanie jednokrotne), a następnie kliknij przycisk **ENABLE** (WŁĄCZ).
 
-    c. W **adresu url punktu końcowego protokołu Idp** pola tekstowego, Wklej wartość **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, które zostały skopiowane witryny Azure Portal.
+    ![Konfiguracja aplikacji Dome9 Arc](./media/dome9arc-tutorial/configure2.png)
 
-    d. Otwórz pobrany certyfikat zakodowany w formacie Base64 w programie Notatnik, skopiuj jego zawartość do Schowka, a następnie wklej go do **certyfikat X.509** pola tekstowego.
+4. W sekcji SSO Configuration (Konfiguracja logowania jednokrotnego) wykonaj następujące czynności:
+
+    ![Konfiguracja aplikacji Dome9 Arc](./media/dome9arc-tutorial/configure3.png)
+
+    a. Wprowadź nazwę firmy w polu tekstowym **Account ID** (Identyfikator konta). Ta wartość jest używana w adresie URL odpowiedzi, o którym wspomniano w sekcji Adres URL witryny Azure Portal.
+
+    b. W polu tekstowym **Issuer** (Wystawca) wklej wartość **identyfikatora usługi Azure AD** skopiowaną z witryny Azure Portal.
+
+    d. W polu tekstowym **Idp endpoint url** (Adres URL punktu końcowego dostawcy tożsamości) wklej wartość **adresu URL logowania** skopiowaną z witryny Azure Portal.
+
+    d. Otwórz w Notatniku pobrany certyfikat zakodowany w formacie Base64, skopiuj zawartość do schowka, a następnie wklej ją w polu tekstowym **SAML X.509 certificate** (Certyfikat X.509 SAML).
 
     e. Kliknij pozycję **Zapisz**.
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/dome9arc-tutorial/create_aaduser_01.png)
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/dome9arc-tutorial/create_aaduser_02.png)
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/dome9arc-tutorial/create_aaduser_03.png)
-
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/dome9arc-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
-### <a name="create-a-dome9-arc-test-user"></a>Tworzenie użytkownika testowego Dome9 łuk
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-Aby umożliwić użytkownikom usługi Azure AD zalogować się na łuk Dome9, musi być obsługiwana w aplikacji. Łuk Dome9 obsługę just-in-time, ale w tym działało poprawnie, użytkownik musi wybrać określonego **roli** i Przypisz te same użytkownikowi.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Dome9 Arc.
+
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **Dome9 Arc**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz pozycję **Dome9 Arc**.
+
+    ![Link aplikacji Dome9 Arc na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-dome9-arc-test-user"></a>Tworzenie użytkownika testowego aplikacji Dome9 Arc
+
+Aby umożliwić użytkownikom usługi Azure AD logowanie do aplikacji Dome9 Arc, należy aprowizować ich w aplikacji Dome9 Arc. Aplikacja Dome9 Arc obsługuje aprowizowanie typu just-in-time, ale aby działało ono poprawnie, użytkownik musi wybrać określoną **rolę** i przypisać tę samą użytkownikowi.
 
    >[!Note]
-   >Dla **roli** tworzenia i inne szczegóły kontaktu [zespołem pomocy technicznej klienta łuk Dome9](https://dome9.com/about/contact-us/).
+   >W celu utworzenia **roli** i uzyskania szczegółowych informacji skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Dome9 Arc](https://dome9.com/about/contact-us/).
 
-**Aby ręcznie zainicjować obsługę konto użytkownika, wykonaj następujące czynności:**
+**Aby ręcznie aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do witryny firmy łuk Dome9 jako administrator.
+1. Zaloguj się do swojej firmowej witryny aplikacji Dome9 Arc jako administrator.
 
-2. Kliknij pozycję **użytkownicy i role** a następnie kliknij przycisk **użytkowników**.
+2. Kliknij pozycję **Users & Roles** (Użytkownicy i role), a następnie kliknij pozycję **Users** (Użytkownicy).
 
     ![Dodawanie pracownika](./media/dome9arc-tutorial/user1.png)
 
@@ -239,73 +259,31 @@ Aby umożliwić użytkownikom usługi Azure AD zalogować się na łuk Dome9, mu
 
     ![Dodawanie pracownika](./media/dome9arc-tutorial/user2.png)
 
-4. W **Create User** sekcji, wykonaj następujące czynności:
+4. W sekcji **Create User** (Tworzenie użytkownika) wykonaj następujące kroki:
 
     ![Dodawanie pracownika](./media/dome9arc-tutorial/user3.png)
 
-    a. W **E-mail** polu tekstowym wpisz adres e-mail użytkownika, takie jak Brittasimon@contoso.com.
+    a. W polu tekstowym **Email** (Adres e-mail) wpisz adres e-mail użytkownika, na przykład Brittasimon@contoso.com.
 
-    b. W **imię** polu tekstowym wpisz imię użytkownika, takich jak Britta.
+    b. W polu tekstowym **First Name** (Imię) wpisz imię użytkownika, takie jak Britta.
 
-    c. W **nazwisko** pole tekstowe, wpisz nazwisko użytkownika, takich jak Simon.
+    d. W polu tekstowym **Last Name** (Nazwisko) wpisz nazwisko użytkownika, takie jak Simon.
 
-    d. Wprowadź **użytkownika logowania jednokrotnego** jako **na**.
+    d. W polu **SSO User** (Użytkownik logowania jednokrotnego) wybierz ustawienie **On** (Włączone).
 
     e. Kliknij przycisk **UTWÓRZ**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do Dome9 łuku.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-![Przypisanie roli użytkownika][200] 
+Po kliknięciu kafelka aplikacji Dome9 Arc w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Dome9 Arc, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-**Aby przypisać Britta Simon łuk Dome9, wykonaj następujące czynności:**
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-    ![Przypisz użytkownika][201] 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-2. Na liście aplikacji wybierz **łuk Dome9**.
-
-    ![Link Dome9 łuk na liście aplikacji](./media/dome9arc-tutorial/tutorial_dome9arc_app.png)  
-
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Link "Użytkownicy i grupy"][202]
-
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Okienko Dodawanie przypisania][203]
-
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-
-Po kliknięciu kafelka łuk Dome9 w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji Dome9 łuku.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
-
-## <a name="additional-resources"></a>Zasoby dodatkowe
-
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-<!--Image references-->
-
-[1]: ./media/dome9arc-tutorial/tutorial_general_01.png
-[2]: ./media/dome9arc-tutorial/tutorial_general_02.png
-[3]: ./media/dome9arc-tutorial/tutorial_general_03.png
-[4]: ./media/dome9arc-tutorial/tutorial_general_04.png
-
-[100]: ./media/dome9arc-tutorial/tutorial_general_100.png
-
-[200]: ./media/dome9arc-tutorial/tutorial_general_200.png
-[201]: ./media/dome9arc-tutorial/tutorial_general_201.png
-[202]: ./media/dome9arc-tutorial/tutorial_general_202.png
-[203]: ./media/dome9arc-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

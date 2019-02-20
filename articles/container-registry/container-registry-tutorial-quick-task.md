@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 9d3b1c14ce872cd02fc8d4a8c2596d7d1e270895
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 901c844ecbfbbe68163c70b12cc061eae0f75d5a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754377"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860477"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>Samouczek: Kompilowanie obrazów kontenera w chmurze przy użyciu usługi Azure Container Registry Tasks
 
@@ -21,7 +21,7 @@ Usługa **ACR Tasks** to pakiet funkcji usługi Azure Container Registry, który
 
 Cykl tworzenia oprogramowania „pętli wewnętrznej” to iteracyjny proces pisania kodu, kompilowania i testowania aplikacji przed zaewidencjonowaniem w kontroli źródła. Szybkie zadanie rozszerza pętlę wewnętrzną na chmurę, udostępniając funkcję walidacji powodzenia kompilacji i automatyczne wypychanie pomyślnie skompilowanych obrazów do rejestru kontenerów. Obrazy są wbudowane natywnie w chmurze, blisko rejestru, co umożliwia szybsze wdrażanie.
 
-Całe środowisko pracy z plikami Dockerfile jest przenoszone bezpośrednio do usługi ACR Tasks. Nie trzeba zmieniać plików Dockerfile w celu przeprowadzania kompilacji w chmurze przy użyciu usługi ACR Tasks, wystarczy zmienić uruchamiane polecenie.
+Całe środowisko pracy z plikami Dockerfile jest przenoszone bezpośrednio do usługi ACR Tasks. Nie trzeba zmieniać plików Dockerfile w celu przeprowadzania kompilacji w chmurze przy użyciu usługi ACR Tasks, wystarczy zmienić uruchamiane polecenie. 
 
 W tym samouczku, będącym pierwszą częścią serii, zostaną wykonane następujące czynności:
 
@@ -30,7 +30,7 @@ W tym samouczku, będącym pierwszą częścią serii, zostaną wykonane następ
 > * Kompilowanie obrazu kontenera na platformie Azure
 > * Wdrażanie kontenera w usłudze Azure Container Instances
 
-Z kolejnych samouczków dowiesz się, jak używać zadań usługi ACR Tasks na potrzeby automatycznych kompilacji obrazu kontenera podczas zatwierdzania kodu i aktualizacji obrazu podstawowego.
+Z kolejnych samouczków dowiesz się, jak używać zadań usługi ACR Tasks na potrzeby automatycznych kompilacji obrazu kontenera podczas zatwierdzania kodu i aktualizacji obrazu podstawowego. Zadania usługi ACR mogą także uruchamiać [zadania wieloetapowe](container-registry-tasks-multi-step.md) (obecnie dostępne w wersji zapoznawczej), używając pliku YAML do zdefiniowania kroków tworzenia, wypychania i, opcjonalnie, testowania wielu kontenerów.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

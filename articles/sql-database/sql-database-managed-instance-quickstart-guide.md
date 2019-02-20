@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: a70e83737c6b56aee3279375ec653f12810b13b4
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 3940c2f239a4354cfb44a499f7375f4ba34f8aa8
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749818"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892031"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Wprowadzenie do wystąpienia zarządzanego usługi Azure SQL Database
 
@@ -27,7 +27,7 @@ Opcja wdrożenia [wystąpienia zarządzanego](sql-database-managed-instance-inde
 
 Następujące przewodniki Szybki start umożliwiają szybkie utworzenie wystąpienia zarządzanego, skonfigurowanie maszyny wirtualnej lub połączenia sieci VPN typu punkt-lokacja dla aplikacji klienckiej oraz przywrócenie bazy danych w nowym wystąpieniu zarządzanym przy użyciu pliku `.bak`:
 
-- [Tworzenie wystąpienia zarządzanego przy użyciu witryny Azure Portal](sql-database-managed-instance-get-started.md). W witrynie Azure Portal skonfigurujesz wymagane parametry (nazwa użytkownika, hasło, liczba rdzeni, maksymalny rozmiar magazynu) i automatycznie utworzysz środowisko sieciowe platformy Azure bez znajomości szczegółów sieci i wymagań dotyczących infrastruktury. Musisz jedynie upewnić się, że używany [typ subskrypcji](sql-database-managed-instance-resource-limits.md#supported-subscription-types) zapewnia możliwość utworzenia wystąpienia zarządzanego. Jeśli chcesz użyć własnej sieci lub dostosować sieć, zobacz instrukcje [konfigurowania środowiska sieciowego](#configure-network-environment) na potrzeby wystąpienia zarządzanego.
+- [Tworzenie wystąpienia zarządzanego przy użyciu witryny Azure Portal](sql-database-managed-instance-get-started.md). W witrynie Azure Portal skonfigurujesz wymagane parametry (nazwa użytkownika, hasło, liczba rdzeni, maksymalny rozmiar magazynu) i automatycznie utworzysz środowisko sieciowe platformy Azure bez znajomości szczegółów sieci i wymagań dotyczących infrastruktury. Musisz jedynie upewnić się, że używany [typ subskrypcji](sql-database-managed-instance-resource-limits.md#supported-subscription-types) zapewnia możliwość utworzenia wystąpienia zarządzanego. Jeśli chcesz użyć własnej sieci lub dostosować sieć, zobacz instrukcje dotyczące konfigurowania środowiska sieciowego na potrzeby wystąpienia zarządzanego.
 - Wystąpienie zarządzane jest tworzone we własnej sieci wirtualnej bez publicznego punktu końcowego. Na potrzeby dostępu aplikacji klienckiej możesz utworzyć maszynę wirtualną w tej samej sieci wirtualnej (w innej podsieci) lub połączenie sieci VPN typu punkt-lokacja z tą siecią wirtualną z komputera klienckiego przy użyciu jednego z tych przewodników Szybki start.
   - Utwórz [maszynę wirtualną platformy Azure w sieci wirtualnej wystąpienia zarządzanego](sql-database-managed-instance-configure-vm.md) na potrzeby łączności aplikacji klienckiej, w tym programu SQL Server Management Studio.
   - Skonfiguruj [połączenie sieci VPN typu punkt-lokacja z wystąpieniem zarządzanym](sql-database-managed-instance-configure-p2s.md) na komputerze klienckim, na którym używasz programu SQL Server Management Studio i innych aplikacji łączności klienta. Jest to druga z dwóch opcji łączności z wystąpieniem zarządzanym i jego siecią wirtualną.
@@ -40,11 +40,11 @@ Po utworzeniu wystąpienia zarządzanego i skonfigurowaniu dostępu możesz rozp
 Po upewnieniu się, że można migrować bazę danych do wystąpienia zarządzanego, możesz za pomocą natywnych możliwości przywracania programu SQL Server przywrócić bazę danych w wystąpieniu zarządzanym z pliku `.bak`. Aby szybko rozpocząć pracę, zobacz [Restore from backup to a managed instance](sql-database-managed-instance-get-started-restore.md) (Przywracanie z kopii zapasowej w wystąpieniu zarządzanym). W tym przewodniku Szybki start wykonasz przywracanie z pliku `.bak` przechowywanego w usłudze Azure Blob Storage przy użyciu polecenia języka Transact-SQL `RESTORE`. 
 
 > [!TIP]
-> Aby utworzyć kopię zapasową bazy danych w usłudze Azure Blob Storage za pomocą polecenia języka Transact-SQL `BACKUP`, zobacz [SQL Server backup to URL](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url) (Kopia zapasowa bazy danych SQL Server pod adresem URL).
+> Aby utworzyć kopię zapasową bazy danych w usłudze Azure Blob Storage za pomocą polecenia języka Transact-SQL `BACKUP`, zobacz [SQL Server backup to URL (Tworzenie kopii zapasowej programu SQL Server pod określonym adresem URL)](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
 
 Te przewodniki Szybki start umożliwiają szybkie utworzenie, skonfigurowanie i przywrócenie kopii zapasowej bazy danych w wystąpieniu zarządzanym. W przypadku niektórych scenariuszy należy dostosować lub zautomatyzować wdrożenie wystąpienia zarządzanego i wymaganego środowiska sieciowego. Te scenariusze są opisane poniżej.
 
-## <a name="customizing-network-environment"></a>Dostosowywanie środowiska sieciowego
+## <a name="customize-network-environment"></a>Dostosowywanie środowiska sieciowego
 
 Mimo że sieć wirtualną i podsieć można automatycznie skonfigurować podczas tworzenia wystąpienia przy użyciu witryny Azure Portal, przydatne może być utworzenie ich przed rozpoczęciem tworzenia wystąpień zarządzanych, ponieważ można wtedy skonfigurować parametry sieci wirtualnej i podsieci. Najprostszym sposobem utworzenia i skonfigurowania środowiska sieciowego jest użycie szablonu [wdrażania zasobów platformy Azure](sql-database-managed-instance-create-vnet-subnet.md), który utworzy oraz skonfiguruje sieć i podsieć dla wystąpienia zarządzanego. Wystarczy nacisnąć przycisk wdrażania usługi Azure Resource Manager i podać parametry w formularzu. 
 

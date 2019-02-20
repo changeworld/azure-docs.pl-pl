@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/16/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095757"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998522"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Samouczek: Konfigurowanie laboratorium na potrzeby zajęć 
 W tym samouczku skonfigurujesz laboratorium na potrzeby zajęć z maszynami wirtualnymi używanymi przez uczniów podczas zajęć.  
@@ -28,7 +28,7 @@ W tym samouczku wykonasz następujące czynności:
 
 > [!div class="checklist"]
 > * Tworzenie laboratorium na potrzeby zajęć
-> * Konfigurowanie laboratorium na potrzeby zajęć
+> * Dodawanie użytkowników do laboratorium
 > * Wysyłanie linków rejestracyjnych do uczniów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -43,13 +43,12 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 2. Wybierz pozycję **Zaloguj się** i wprowadź swoje poświadczenia. Usługa Azure Lab Services obsługuje konta organizacji i konta Microsoft. 
 3. W oknie **Nowe laboratorium** wykonaj następujące czynności: 
     1. Określ **nazwę** dla swojego laboratorium. 
-    2. Określ maksymalną dozwoloną **liczbę użytkowników** w laboratorium. 
+    2. Określ maksymalną **liczbę maszyn wirtualnych** w laboratorium. Liczbę maszyn wirtualnych można zmniejszyć lub zwiększyć po utworzeniu laboratorium lub w istniejącym laboratorium. Aby uzyskać więcej informacji, zobacz [Update number of VMs in a lab (Aktualizowanie liczby maszyn wirtualnych w laboratorium)](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab)
     6. Wybierz pozycję **Zapisz**.
 
         ![Tworzenie laboratorium na potrzeby zajęć](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Na stronie **Wybór specyfikacji maszyny wirtualnej** wykonaj następujące czynności:
     1. Wybierz **rozmiar** maszyn wirtualnych tworzonych w laboratorium. 
-    2. Wybierz **region**, w którym mają być tworzone maszyny wirtualne. 
     3. Wybierz **obraz maszyny wirtualnej**, którego chcesz używać do tworzenia maszyn wirtualnych w laboratorium. 
     4. Wybierz opcję **Dalej**.
 
@@ -69,17 +68,15 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 7. Po zakończeniu konfiguracji szablonu zostanie wyświetlona następująca strona: 
 
     ![Strona Konfigurowanie szablonu po zakończeniu konfiguracji](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. Poniższe kroki są opcjonalne w tym samouczku: 
+8. Na stronie **Konfigurowanie szablonu** wykonaj następujące kroki: Te kroki samouczka są **opcjonalne**.
     1. Uruchom maszynę wirtualną szablonu, wybierając pozycję **Uruchom**.
     2. Nawiąż połączenie z maszyną wirtualną szablonu, wybierając pozycję **Połącz**. 
     3. Zainstaluj i skonfiguruj oprogramowania na maszynie wirtualnej szablonu. 
     4. **Zatrzymaj** maszynę wirtualną.  
     5. Wprowadź **opis** szablonu.
-
-        ![Przycisk Dalej na stronie Konfigurowanie szablonu](../media/tutorial-setup-classroom-lab/configure-template-next.png)
 9. Wybierz przycisk **Dalej** na stronie szablonu. 
 10. Na stronie **Publikowanie szablonu** wykonaj następujące czynności. 
-    1. Aby natychmiast opublikować szablon, zaznacz pole wyboru *Rozumiem, że po opublikowaniu szablonu nie można go modyfikować. Ten proces można wykonać tylko raz i może on potrwać do godziny* i wybierz polecenie **Publikuj**.  
+    1. Aby opublikować szablon natychmiast, wybierz pozycję **Publikuj**.  
 
         > [!WARNING]
         > Nie można cofnąć publikowania szablonu. 
@@ -103,7 +100,9 @@ Właściciel laboratorium może dodawać innych użytkowników do roli **Twórca
 
 1. W menu po lewej stronie wybierz pozycję **Użytkownicy**. Domyślnie włączona jest opcja **Ogranicz dostęp**. Gdy to ustawienie jest włączone, a użytkownik nie znajduje się na liście użytkowników, nie może zarejestrować się w laboratorium nawet przy użyciu linku rejestracji. Tylko użytkownicy na liście mogą zarejestrować się w laboratorium przy użyciu przesłanego linku rejestracji. Podczas tej procedury dodasz użytkowników do listy. Możesz też wyłączyć opcję **Ogranicz dostęp**, co umożliwi użytkownikom zarejestrowanie się w laboratorium, pod warunkiem, że mają link rejestracji. 
 2. Na pasku narzędzi wybierz pozycję **Dodaj użytkowników**. 
-3. Na stronie **Dodawanie użytkowników** wpisz adresy e-mail użytkowników w osobnych wierszach lub w jednym wierszu, rozdzielając je średnikami. 
+
+    ![Przycisk Dodaj użytkowników](../media/how-to-configure-student-usage/add-users-button.png)
+1. Na stronie **Dodawanie użytkowników** wpisz adresy e-mail użytkowników w osobnych wierszach lub w jednym wierszu, rozdzielając je średnikami. 
 
     ![Dodawanie adresów e-mail użytkowników](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Wybierz pozycję **Zapisz**. Na liście zostaną wyświetlone adresy e-mail użytkowników oraz ich stan rejestracji. 

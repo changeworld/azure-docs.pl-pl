@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81cdde409841ad3f5952147a7d3ab2b1adbcbd59
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a68deb2cb6de90c577f2d828e24a1747662c7e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474194"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162207"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Aha!
 
 W tym samouczku dowiesz się, jak zintegrować aplikację Aha!  z usługą Azure Active Directory (Azure AD).
-Integracja aplikacji Aha!  z usługą Azure AD daje następujące korzyści:
+Integracja aplikacji Aha!  z usługą Azure AD zapewnia następujące korzyści:
 
 * Możliwość kontrolowania dostępu do aplikacji Aha! za pomocą usługi Azure AD.
-* Możliwość skonfigurowania dla użytkowników automatycznego logowania do aplikacji Aha!  (logowania jednokrotnego) przy użyciu kont usługi Azure AD.
+* Możliwość skonfigurowania dla użytkowników automatycznego logowania do aplikacji Aha! (logowania jednokrotnego) przy użyciu kont usługi Azure AD.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -45,7 +46,7 @@ Do skonfigurowania integracji usługi Azure AD z aplikacją Aha! są potrzebne n
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
 * Aplikacja Aha!  obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
-* Aplikacja Aha!  obsługuje aprowizowanie użytkowników typu **just in time**
+* Aplikacja Aha!  obsługuje aprowizowanie użytkowników typu **Just In Time**
 
 ## <a name="adding-aha-from-the-gallery"></a>Dodawanie aplikacji Aha!  z galerii
 
@@ -211,7 +212,7 @@ W tej sekcji włączysz możliwość korzystania z logowania jednokrotnego platf
 
 ### <a name="create-aha-test-user"></a>Tworzenie użytkownika testowego  aplikacji Aha!
 
-W tej sekcji w aplikacji Aha! jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Aha!  obsługuje aprowizację użytkowników typu just in time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Aha!, zostanie on utworzony po uwierzytelnieniu.
+W tej sekcji w aplikacji Aha! jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Aha!  obsługuje aprowizację użytkowników typu just-in-time, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Aha!, zostanie on utworzony po uwierzytelnieniu.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

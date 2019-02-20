@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczanie autonomicznej bazy danych lub bazy danych w puli w usłudze Azure SQL Database | Microsoft Docs
-description: Dowiedz się więcej o technikach i funkcjach umożliwiających zabezpieczenie autonomicznej bazy danych lub bazy danych w puli w usłudze Azure SQL Database.
+title: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli w usłudze Azure SQL Database | Microsoft Docs
+description: Dowiedz się więcej o technikach i funkcjach umożliwiających zabezpieczenie pojedynczej bazy danych lub bazy danych w puli w usłudze Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 2ea87b36d8b489abf59ac4550121369a2ddf540f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: b9141fcef8bda181cd7b679f58d22d4ba2895b14
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752521"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004601"
 ---
-# <a name="tutorial-secure-a-standalone-or-pooled-database"></a>Samouczek: Zabezpieczanie autonomicznej bazy danych lub bazy danych w puli
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>Samouczek: Zabezpieczanie pojedynczej bazy danych lub bazy danych w puli
 
-Usługa Azure SQL Database zabezpiecza dane w autonomicznej bazie danych lub w bazie danych w puli, umożliwiając:
+Usługa Azure SQL Database zabezpiecza dane w pojedynczej bazie danych lub w bazie danych w puli, umożliwiając:
 
 - Ograniczanie dostępu przy użyciu reguł zapory.
 - Korzystanie z mechanizmów uwierzytelniania wymagających od użytkowników potwierdzenia tożsamości.

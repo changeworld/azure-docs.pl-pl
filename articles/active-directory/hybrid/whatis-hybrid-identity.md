@@ -12,12 +12,13 @@ ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc18353ff89f8613847c977066e51620fb3e834f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494668"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190470"
 ---
 # <a name="what-is-hybrid-identity"></a>Co to jest tożsamość hybrydowa? 
 
@@ -48,7 +49,7 @@ Poniżej przedstawiono kilka typowych scenariuszy związanych z tożsamościami 
 |Zagwarantowanie, że żadne skróty haseł nie będą przechowywane w chmurze.| |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
 |Umożliwienie działania rozwiązań obsługujących uwierzytelnianie wieloskładnikowe w chmurze.| |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)|![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
 |Umożliwienie działania rozwiązań obsługujących lokalne uwierzytelnianie wieloskładnikowe.| | |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
-|Obsługa uwierzytelniania użytkowników za pomocą kart inteligentnych<sup>4</sup>| | |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
+|Obsługa uwierzytelniania użytkowników za pomocą kart inteligentnych.<sup>4</sup>| | |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
 |Wyświetlanie powiadomień dotyczących wygasania haseł w portalu pakietu Office i na pulpicie systemu Windows 10.| | |![Zalecane](./media/whatis-hybrid-identity/ic195031.png)| 
 
 > <sup>1</sup> Synchronizacja skrótów haseł za pomocą logowania jednokrotnego. 

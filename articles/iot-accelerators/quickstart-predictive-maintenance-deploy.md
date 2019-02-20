@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fdb481961680d5f84170a25c7a76bffa8423e0cc
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604341"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097171"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Szybki start: wypróbowywanie opartego na chmurze rozwiązania pod kątem przeprowadzania analizy konserwacji predykcyjnej na połączonych urządzeniach
 
@@ -42,7 +42,7 @@ Na stronie **Tworzenie rozwiązania Konserwacja predykcyjna** wprowadź unikatow
 
 W polach **Subskrypcja** i **Region** wybierz wartości, których chcesz użyć do wdrożenia akceleratora rozwiązania. Zwykle jest wybierany region znajdujący się najbliżej. W tym przewodniku Szybki start używamy subskrypcji **Visual Studio Enterprise** i regionu **Wschodnie stany USA**. Musisz być [użytkownikiem lub administratorem globalnym](iot-accelerators-permissions.md) w ramach subskrypcji.
 
-Kliknij pozycję **Utwórz rozwiązanie** aby rozpocząć wdrażanie. Ten proces trwa co najmniej pięć minut:
+Kliknij pozycję **Utwórz** aby rozpocząć wdrażanie. Ten proces trwa co najmniej pięć minut:
 
 ![Szczegóły rozwiązania do konserwacji predykcyjnej](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -50,9 +50,13 @@ Kliknij pozycję **Utwórz rozwiązanie** aby rozpocząć wdrażanie. Ten proces
 
 Po zakończeniu wdrożenia w Twojej subskrypcji platformy Azure na kafelku rozwiązania zostanie wyświetlony zielony znacznik wyboru i tekst **Gotowe**. Teraz możesz zalogować się do pulpitu nawigacyjnego akceleratora rozwiązań do konserwacji predykcyjnej.
 
-Na stronie **Aprowizowane rozwiązania** kliknij nowy akcelerator rozwiązań do konserwacji predykcyjnej. W wyświetlonym panelu możesz przejrzeć informacje o akceleratorze rozwiązań. Wybierz pozycję **Pulpit nawigacyjny rozwiązania**, aby wyświetlić akcelerator rozwiązań do konserwacji predykcyjnej:
+Na stronie **Aprowizowane rozwiązania** kliknij nowy akcelerator rozwiązań do konserwacji predykcyjnej.
 
-![Panel rozwiązania](./media/quickstart-predictive-maintenance-deploy/solutionpanel.png)
+![Panel rozwiązania](./media/quickstart-predictive-maintenance-deploy/solution.png)
+
+ Na wyświetlonej stronie możesz przejrzeć informacje o akceleratorze rozwiązań. Wybierz pozycję **Przejdź do własnego akceleratora rozwiązań**, aby wyświetlić swój akcelerator rozwiązań konserwacji predykcyjnej:
+
+![Panel rozwiązania](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
 Kliknij pozycję **Zaakceptuj**, aby zaakceptować żądanie uprawnień. W przeglądarce zostanie wyświetlony pulpit nawigacyjny rozwiązania do konserwacji predykcyjnej:
 

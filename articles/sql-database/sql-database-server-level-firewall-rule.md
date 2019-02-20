@@ -1,6 +1,6 @@
 ---
 title: Tworzenie reguły zapory na poziomie serwera — usługa Azure SQL Database | Microsoft Docs
-description: Tworzenie reguły zapory na poziomie serwera SQL Database dla pojedynczej bazy danych lub bazy danych w puli
+description: Tworzenie reguły zapory na poziomie serwera usługi SQL Database dla pojedynczych baz danych i baz danych w puli
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,17 +11,17 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 2374707d3fdf4d389a7c96c18767d3c52a9efb2f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/11/2019
+ms.openlocfilehash: f708e5a3cd5bc0f11f8b0cfe79a791347c7a7a2b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757232"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108963"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-in-azure-sql-database-using-the-azure-portal"></a>Szybki start: Tworzenie reguły zapory na poziomie serwera w usłudze Azure SQL Database za pomocą witryny Azure Portal
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>Szybki start: Tworzenie reguły zapory na poziomie serwera dla pojedynczych baz danych i baz danych w puli za pomocą witryny Azure Portal
 
-Ten przewodnik Szybki start przeprowadzi Cię przez sposób tworzenia reguły zapory na poziomie serwera w usłudze Azure SQL Database za pomocą witryny Azure Portal tak, aby umożliwić łączenie z nią z zasobu lokalnego.
+Ten przewodnik Szybki start przedstawia tworzenie [reguły zapory na poziomie serwera](sql-database-firewall-configure.md) dla pojedynczych baz danych i baz danych w puli w usłudze Azure SQL Database przy użyciu witryny Azure Portal. Ma to na celu umożliwienie nawiązywania połączeń z serwerami baz danych, pojedynczymi bazami danych oraz elastycznymi pulami i ich bazami danych. Reguła zapory jest wymagana do nawiązania połączenia z innymi zasobami platformy Azure i z zasobami lokalnymi.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

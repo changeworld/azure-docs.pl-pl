@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: e7c58978c7d6542887854c5a1996b15252fdb025
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902169"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982407"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Samouczek: Podłączanie kabli do urządzenia Azure Data Box i nawiązywanie z nim połączenia
 
@@ -40,7 +40,7 @@ Przed rozpoczęciem upewnij się, że:
     - Połączenie z siecią o dużej szybkości. Zdecydowanie zaleca się posiadanie co najmniej jednego połączenia 10 GbE. Jeśli połączenie 10 GbE nie jest dostępne, można użyć połączenia danych 1 GbE, ale będzie miało to wpływ na szybkość kopiowania. 
 6. Należy mieć dostęp do płaskiej powierzchni, na której można umieścić urządzenie Data Box. Jeśli chcesz umieścić urządzenie na standardowej półce na stojaku, na stojaku centrum danych potrzebne jest gniazdo 7U. Urządzenie możesz umieścić na stojaku płasko lub pionowo.
 7. Należy zapewnić następujące kable w celu podłączenia urządzenia Data Box do komputera hosta.
-    - Dwa kable miedziane SFP+ Twinax 10 GbE (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład do testowania użyto kabla CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M.
+    - Co najmniej jeden kabel miedziany SFP+ Twinax 10 GbE lub kable światłowodowe SFP+ (do użytku z interfejsami sieciowymi DATA 1 i DATA 2). Urządzenie Data Box jest wyposażone w karty Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T z interfejsem sieciowym PCI Express 3.0, więc kable, które są zgodne z tym interfejsem, powinny działać. Na przykład do testowania użyto kabla CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M.
     - Jeden kabel sieciowy RJ-45 CAT 6 (do użytku z interfejsem sieciowym MGMT)
     - Jeden kabel sieciowy RJ-45 CAT 6A lub RJ-45 CAT 6 (do użytku z interfejsem sieciowym DATA 3 skonfigurowanym odpowiednio dla przepływności 10 GB/s lub 1 GB/s)
 
@@ -57,7 +57,7 @@ Wykonaj poniższe kroki, aby podłączyć kable do urządzenia.
     1. Podłącz kabel zasilający do oznaczonego wejścia zasilania. Drugi koniec kabla zasilającego powinien był podłączony do źródła zasilania.
     2. Użyj kabla RJ-45 CAT 6 do podłączenia portu MGMT z komputerem przenośnym.            
     3. Użyj kabla RJ-45 CAT 6A do podłączenia z jednej strony portu DATA 3. Port DATA 3 jest skonfigurowany jako port 10 GbE w przypadku podłączania za pośrednictwem kabla RJ-45 CAT 6A lub jako port 1 GbE w przypadku podłączania za pośrednictwem kabla RJ-45 CAT 6.
-    4. Użyj kabli miedzianych SFP+ Twinax 10 GbE, aby podłączyć odpowiednio porty DATA 1 i 2. 
+    4. W zależności od interfejsów sieciowych, z którymi chcesz się połączyć w celu przeprowadzenia transferu danych, musisz użyć maksymalnie dwóch kabli miedzianych SFP+ Twinax 10 GbE lub kabli światłowodowych SFP+, aby odpowiednio połączyć porty DATA 1 i DATA 2. 
     5. Drugi koniec kabli z portów danych jest podłączony do komputera hosta za pośrednictwem przełącznika 10 GbE.
 
 4. Znajdź przycisk zasilania na przednim panelu operacyjnym urządzenia. Włącz urządzenie.

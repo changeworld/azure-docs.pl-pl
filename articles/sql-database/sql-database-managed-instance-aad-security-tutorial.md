@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 402e10d9b99dbf0eeba8aac27071e4d78fdf0f01
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732774"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984515"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>Samouczek: Zabezpieczanie wystąpienia zarządzanego usługi Azure SQL Database przy użyciu identyfikatorów logowania usługi Azure AD
 
@@ -32,7 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > - Tworzenie identyfikatora logowania usługi Azure Active Directory (AD) dla wystąpień zarządzanych
 > - Przyznawanie uprawnień do identyfikatorów logowania usługi Azure AD w wystąpieniach zarządzanych
 > - Tworzenie użytkowników usługi Azure AD na podstawie identyfikatorów logowania usługi Azure AD
-> - Przypisywanie uprawnień do użytkowników usługi Azure AD i zabezpieczenia zarządzanej bazy danych
+> - Przypisywanie uprawnień do użytkowników usługi Azure AD i zarządzanie zabezpieczeniami bazy danych
 > - Korzystanie z personifikacji użytkowników usługi Azure AD
 > - Korzystanie z zapytań w wielu bazach danych dotyczących użytkowników usługi Azure AD
 > - Informacje na temat funkcji zabezpieczeń takich jak ochrona przed zagrożeniami, inspekcja, maskowanie danych i szyfrowanie

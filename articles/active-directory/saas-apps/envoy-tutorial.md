@@ -1,254 +1,230 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą usługa Envoy | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i usługa Envoy.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Envoy | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Envoy.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 71f7afcc-1033-4098-9b7e-4f9f2b26f734
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/08/2017
+ms.topic: tutorial
+ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: ecc17e6836c7da1193e164cf48a737de82b60039
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 431fa7c1fefbdaf05e2a0be7228a6365f18ccd1a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181354"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180615"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-envoy"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługa Envoy
+# <a name="tutorial-azure-active-directory-integration-with-envoy"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Envoy
 
-W tym samouczku dowiesz się, jak zintegrować usługa Envoy w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Envoy z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji Envoy z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie usługa Envoy z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować za pomocą usługi Azure AD, kto ma dostęp do aplikacji Envoy.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Envoy (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do usługa Envoy.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do usługa Envoy (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą usługa Envoy, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Envoy, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Usługa Envoy logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Envoy z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie usługa Envoy z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-envoy-from-the-gallery"></a>Dodawanie usługa Envoy z galerii
-Aby skonfigurować integrację z usługa Envoy w usłudze Azure AD, należy dodać usługa Envoy z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Envoy obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-**Aby dodać usługa Envoy z galerii, wykonaj następujące czynności:**
+* Aplikacja Envoy obsługuje aprowizację użytkowników **Just In Time**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+## <a name="adding-envoy-from-the-gallery"></a>Dodawanie aplikacji Envoy z galerii
 
-    ![Przycisk usługi Azure Active Directory][1]
+Aby skonfigurować integrację aplikacji Envoy z usługą Azure AD, należy dodać aplikację Envoy z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+**Aby dodać aplikację Envoy z galerii, wykonaj następujące kroki:**
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Przycisk Nowa aplikacja][3]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-1. W polu wyszukiwania wpisz **usługa Envoy**, wybierz opcję **usługa Envoy** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Usługa envoy na liście wyników](./media/envoy-tutorial/tutorial_envoy_addfromgallery.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
+
+4. W polu wyszukiwania wpisz **Envoy**, wybierz pozycję **Envoy** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+
+     ![Aplikacja Envoy na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługa Envoy w oparciu o użytkownika testu o nazwie "Britta Simon".
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Envoy, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Envoy.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w usługa Envoy do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w usługa Envoy musi zostać ustanowione.
-
-Usługa Envoy, przypisywanie wartości **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
-
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługa Envoy, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Envoy, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
-1. **[Tworzenie użytkownika testowego usługa Envoy](#create-an-envoy-test-user)**  — aby odpowiednikiem Britta Simon w usługa Envoy połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Envoy](#configure-envoy-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Envoy](#create-envoy-test-user)** — aby mieć w aplikacji Envoy odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji usługa Envoy.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z usługa Envoy, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Envoy, wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **usługa Envoy** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Envoy** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Link do konfigurowania logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/envoy-tutorial/tutorial_envoy_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **usługa Envoy domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Usługa envoy domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/envoy-tutorial/tutorial_envoy_url.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
+
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
+
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Envoy](common/sp-signonurl.png)
 
     W polu tekstowym **Adres URL logowania** wpisz adres URL, korzystając z następującego wzorca: `https://app.envoy.com/a/saml/auth/<company-ID-from-Envoy>`
-    
-    > [!NOTE] 
-    > Ta wartość nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta usługa Envoy](https://envoy.com/contact/) aby zyskać tę wartość.
 
-1. Na **certyfikat podpisywania SAML** sekcji, skopiuj **odcisk PALCA** wartość certyfikatu...
+    > [!NOTE]
+    > Ta wartość nie jest prawdziwa. Zastąp tę wartość rzeczywistym adresem URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Envoy](https://envoy.com/contact/), aby uzyskać tę wartość. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Link do pobierania certyfikatu](./media/envoy-tutorial/tutorial_envoy_certificate.png) 
+5. W sekcji **Certyfikat podpisywania SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Certyfikat podpisywania SAML**.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    ![Edytowanie certyfikatu podpisywania SAML](common/edit-certificate.png)
 
-    ![Konfigurowanie przycisku Zapisz logowania jednokrotnego](./media/envoy-tutorial/tutorial_general_400.png)
+6. W sekcji **Certyfikat podpisywania SAML** skopiuj wartość **Odcisk palca** i zapisz go na komputerze.
 
-1. Na **konfiguracji usługa Envoy** kliknij **skonfigurować usługa Envoy** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    ![Kopiowanie wartości Odcisk palca](common/copy-thumbprint.png)
 
-    ![Usługa envoy konfiguracji](./media/envoy-tutorial/tutorial_envoy_configure.png)
+7. W sekcji **Konfigurowanie aplikacji Envoy** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy usługa Envoy, jako administrator.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-1. Na pasku narzędzi u góry kliknij **ustawienia**.
+    a. Adres URL logowania
 
-    ![Usługa envoy](./media/envoy-tutorial/ic776782.png "usługa Envoy")
+    b. Identyfikator usługi Azure AD
 
-1. Kliknij przycisk **firmy**.
+    d. Adres URL wylogowywania
 
-    ![Firma](./media/envoy-tutorial/ic776783.png "firmy")
+### <a name="configure-envoy-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze Envoy
 
-1. Kliknij przycisk **SAML**.
+1. W innym oknie przeglądarki internetowej zaloguj się jako administrator do witryny firmowej aplikacji Envoy.
+
+2. Na pasku narzędzi u góry kliknij pozycję **Settings** (Ustawienia).
+
+    ![Envoy](./media/envoy-tutorial/ic776782.png "Envoy")
+
+3. Kliknij pozycję **Company** (Firma).
+
+    ![Firma](./media/envoy-tutorial/ic776783.png "Firma")
+
+4. Kliknij pozycję **SAML**.
 
     ![SAML](./media/envoy-tutorial/ic776784.png "SAML")
 
-1. W **uwierzytelnianie SAML** konfiguracji sekcji, wykonaj następujące czynności:
+5. W sekcji konfiguracyjnej **SAML Authentication** (Uwierzytelnianie SAML) wykonaj następujące kroki:
 
-    ![Uwierzytelnianie SAML](./media/envoy-tutorial/ic776785.png "uwierzytelnianie SAML")
+    ![Uwierzytelnianie SAML](./media/envoy-tutorial/ic776785.png "Uwierzytelnianie SAML")
     
     >[!NOTE]
-    >Wartość dla Identyfikatora lokalizacji Centrali jest automatycznie generowane przez aplikację.
+    >Wartość dla identyfikatora lokalizacji centrali jest automatycznie generowana przez aplikację.
     
-    a. W **odcisku palca** pola tekstowego, Wklej **odcisk palca** wartość certyfikatu, który skopiowano z witryny Azure portal.
+    a. W polu tekstowym **Fingerprint** (Odcisk palca) wklej wartość pola **Odcisk palca** certyfikatu skopiowaną z witryny Azure Portal.
     
-    b. Wklej **SAML pojedynczego logowania jednokrotnego usługi adresu URL** wartości, które zostały skopiowane tworzą witryny Azure portal do **URL SAML dostawcy tożsamości w HTTP** pola tekstowego.
+    b. W polu tekstowym **IDENTITY PROVIDER HTTP SAML URL** (ADRES URL SAML HTTP DOSTAWCY TOŻSAMOŚCI) wklej wartość pola **Adres URL logowania** skopiowaną z witryny Azure Portal.
     
-    c. Kliknij przycisk **Zapisz zmiany**.
+    d. Kliknij pozycję **Save changes** (Zapisz zmiany).
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-    ![Przycisk usługi Azure Active Directory](./media/envoy-tutorial/create_aaduser_01.png)
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/envoy-tutorial/create_aaduser_02.png)
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
-
-    ![Przycisk Dodaj](./media/envoy-tutorial/create_aaduser_03.png)
-
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/envoy-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-an-envoy-test-user"></a>Tworzenie użytkownika testowego usługa Envoy
-
-Brak elementu działania umożliwiające skonfigurowanie aprowizacji usługa Envoy użytkowników. Gdy przypisany użytkownik próbuje zalogować się przy użyciu panelu dostępu usługa Envoy, usługa Envoy sprawdza, czy użytkownik istnieje. Jeśli nie ma użytkownika konta dostępne jeszcze, są tworzone przez usługa Envoy.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielenie dostępu usługa Envoy.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Envoy.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **Envoy**.
 
-**Aby przypisać Britta Simon usługa Envoy, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Envoy**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link do aplikacji Envoy na liście aplikacji](common/all-applications.png)
 
-1. Na liście aplikacji wybierz **usługa Envoy**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Usługa Envoy łącze na liście aplikacji](./media/envoy-tutorial/tutorial_envoy_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-envoy-test-user"></a>Tworzenie użytkownika testowego aplikacji Envoy
 
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+Nie istnieje element akcji na potrzeby konfigurowania aprowizacji użytkowników w aplikacji Envoy. Gdy przypisany użytkownik próbuje zalogować się do aplikacji Envoy przy użyciu panelu dostępu, aplikacja Envoy sprawdza, czy użytkownik istnieje. Jeśli konto użytkownika nie jest jeszcze dostępne, jest ono automatycznie tworzone za pomocą aplikacji Envoy.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-Po kliknięciu kafelka usługa Envoy w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji usługa Envoy.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+Po kliknięciu kafelka Envoy w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Envoy, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-<!--Image references-->
-
-[1]: ./media/envoy-tutorial/tutorial_general_01.png
-[2]: ./media/envoy-tutorial/tutorial_general_02.png
-[3]: ./media/envoy-tutorial/tutorial_general_03.png
-[4]: ./media/envoy-tutorial/tutorial_general_04.png
-
-[100]: ./media/envoy-tutorial/tutorial_general_100.png
-
-[200]: ./media/envoy-tutorial/tutorial_general_200.png
-[201]: ./media/envoy-tutorial/tutorial_general_201.png
-[202]: ./media/envoy-tutorial/tutorial_general_202.png
-[203]: ./media/envoy-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

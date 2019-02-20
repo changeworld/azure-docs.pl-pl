@@ -10,16 +10,21 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: a0b4301177fa1307244a784031ec890b9a20f01a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099112"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997170"
 ---
-# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Samouczek: Dodawanie autouzupełniania do pola wyszukiwania przy użyciu usługi Azure Search
+# <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>Samouczek: Dodawanie autouzupełniania do pola wyszukiwania przy użyciu usługi Azure Search
 
-Ten samouczek przedstawia sposób użycia [sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions), [funkcji autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) oraz [aspektów](search-faceted-navigation.md) dostępnych za pomocą [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/) i [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) do utworzenia pola wyszukiwania o zaawansowanych możliwościach. *Sugestie* udostępniają rekomendowane rzeczywiste wyniki na podstawie tekstu wpisanego przez użytkownika w danym momencie. *Autouzupełnianie*, [nowa funkcja dostępna w wersji zapoznawczej](search-api-preview.md) w usłudze Azure Search, udostępnia terminy z indeksu na potrzeby uzupełniania tekstu aktualnie wpisywanego przez użytkownika. Porównamy wiele technik mających na celu zwiększenie efektywności użytkowników oraz umożliwienie szybkiego i łatwego znajdowania wyszukiwanych treści przez udostępnienie użytkownikowi bogatych możliwości wyszukiwania bezpośrednio podczas wpisywania.
+Ten samouczek przedstawia sposób użycia [sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions), [funkcji autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) oraz [aspektów](search-faceted-navigation.md) dostępnych za pomocą [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/) i [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) do utworzenia pola wyszukiwania o zaawansowanych możliwościach. 
+
++ *Sugestie* udostępniają rekomendowane rzeczywiste wyniki na podstawie tekstu wpisanego przez użytkownika w danym momencie. 
++ *Autouzupełnianie*, [nowa funkcja dostępna w wersji zapoznawczej](search-api-preview.md) w usłudze Azure Search, udostępnia terminy z indeksu na potrzeby uzupełniania tekstu aktualnie wpisywanego przez użytkownika. 
+
+Porównamy wiele technik mających na celu zwiększenie efektywności użytkowników przez udostępnienie użytkownikowi bogatych możliwości wyszukiwania bezpośrednio podczas wpisywania.
 
 Ten samouczek przeprowadzi Cię przez aplikację opartą na platformie ASP.NET MVC, która używa języka C# do wywoływania [bibliotek klienta .NET usługi Azure Search](https://aka.ms/search-sdk) oraz języka JavaScript do bezpośredniego wywoływania interfejsu API REST usługi Azure Search. Aplikacja w tym samouczku posługuje się indeksem wypełnionym za pomocą danych przykładu [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). Istnieje możliwość użycia indeksu w wersji już skonfigurowanej na potrzeby pokazu NYC Jobs lub wypełnienia własnego indeksu za pomocą modułu ładującego dane w przykładowym rozwiązaniu NYCJobs. W przykładzie użyto bibliotek JavaScript [jQuery UI](https://jqueryui.com/autocomplete/) i [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) do utworzenia pola wyszukiwania obsługującego autouzupełnianie. Używając tych składników i usługi Azure Search, zapoznasz się z wieloma przykładami obsługi autouzupełniania z uzupełnianiem przy wpisywaniu w polu wyszukiwania.
 
@@ -164,7 +169,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 Funkcja Suggest przyjmuje dwa parametry, które określają, czy są zwracane wyróżnienia trafień oraz czy oprócz wprowadzonego terminu wyszukiwania jest stosowane dopasowywanie rozmyte.  Metoda tworzy obiekt SuggestParameters, który jest następnie przekazywany do interfejsu API funkcji Suggest. Wynik jest następnie konwertowany na format JSON, dzięki czemu można go wyświetlić w kliencie.
 (Opcjonalnie) Dodaj punkt przerwania na początku funkcji Suggest i przejdź krokami przez kod.  Zwróć uwagę na odpowiedź zwróconą przez zestaw SDK i sposób jej konwertowania na wynik zwracany z metody.
 
-Inne przykłady na stronie korzystają z tego samego wzorca na potrzeby dodania wyróżniania trafień, uzupełniania przy wpisywaniu dla rekomendacji autouzupełniania i aspektów obsługujących buforowanie po stronie klienta wyników autouzupełniania.  Przejrzyj każdy z nich, aby zrozumieć, jak działają i jak można je wykorzystać w środowisku wyszukiwania.
+Inne przykłady na stronie korzystają z tego samego wzorca na potrzeby dodania wyróżniania trafień, uzupełniania przy wpisywaniu dla rekomendacji autouzupełniania i aspektów obsługujących buforowanie wyników autouzupełniania po stronie klienta.  Przejrzyj każdy z nich, aby zrozumieć, jak działają i jak można je wykorzystać w środowisku wyszukiwania.
 
 ### <a name="javascript-language-example"></a>Przykład dla języka JavaScript
 

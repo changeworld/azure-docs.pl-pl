@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: jdial
-ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e145642a12db941d52c55081032e247b6d65d38b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488098"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997333"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Typy adresów IP i metody alokacji na platformie Azure
 
@@ -71,7 +71,7 @@ Wszystkie publiczne adresy IP utworzone przed wprowadzeniem jednostek SKU są pu
 Standardowe publiczne adresy IP jednostek SKU:
 
 - Zawsze używają metody alokacji statycznej.
-- Ich dostosowywalny limit czasu bezczynności dla przepływu opartego na ruchu przychodzącym i wychodzącym wynosi od 4 do 66 minut przy domyślnej wartości 4 minut.
+- Ich dostosowywalny limit czasu bezczynności dla przepływu opartego na ruchu przychodzącym i wychodzącym wynosi od 4 do 30 minut przy domyślnej wartości 4 minut.
 - Domyślnie są zabezpieczone i zamknięte dla przychodzącego ruchu sieciowego. Dozwolony przychodzący ruch sieciowy należy jawnie umieścić na liście dozwolonych z użyciem [sieciowej grupy zabezpieczeń](security-overview.md#network-security-groups).
 - Są przypisywane do interfejsów sieciowych, publicznych usług Load Balancer w warstwie Standardowa, bram Application Gateway lub bram VPN Gateway. Aby uzyskać więcej informacji na temat usługi Load Balancer w warstwie Standardowa, zobacz [Usługa Azure Load Balancer w warstwie Standardowa](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Domyślnie strefowo nadmiarowe i opcjonalnie strefowe (mogą zostać utworzone jako strefowe i gwarantowane w określonej strefie dostępności). Aby dowiedzieć się więcej o strefach dostępności, zobacz [Availability zones overview](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) (Omówienie stref dostępności) oraz [Usługa Load Balancer w warstwie Standardowa i strefy dostępności](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

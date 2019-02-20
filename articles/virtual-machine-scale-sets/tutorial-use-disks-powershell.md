@@ -16,14 +16,15 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9abfd410e9137a897753fcf04ee113bd04749a7a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f3b49efa5e28eab2168c9a85d17e39ca7f0fce4a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881685"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984787"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Samouczek: tworzenie dysków i używanie ich z zestawem skalowania maszyn wirtualnych za pośrednictwem programu Azure PowerShell
+
 Zestawy skalowania maszyn wirtualnych przechowują aplikacje, dane oraz systemy operacyjne wystąpień maszyn wirtualnych na dyskach. Ważne jest, aby podczas tworzenia zestawu skalowania i zarządzania nim wybrać taki rozmiar dysku i konfigurację, które odpowiadają oczekiwanemu obciążeniu. W tym samouczku omówiono tworzenie dysków maszyn wirtualnych i zarządzanie nimi. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
@@ -35,9 +36,9 @@ Zestawy skalowania maszyn wirtualnych przechowują aplikacje, dane oraz systemy 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek będzie wymagał modułu programu Azure PowerShell w wersji 6.0.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 
 ## <a name="default-azure-disks"></a>Domyślne dyski platformy Azure
@@ -95,12 +96,12 @@ W powyższej tabeli podano maksymalną liczbę operacji wejścia/wyjścia na sek
 Dyski można tworzyć i dołączać podczas tworzenia zestawu skalowania lub w ramach modyfikacji istniejącego zestawu skalowania.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Dołączanie dysków podczas tworzenia zestawu skalowania
-Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss). Po wyświetleniu monitu podaj nazwę użytkownika i hasło dla wystąpień maszyn wirtualnych. Musisz również utworzyć moduł równoważenia obciążenia, który umożliwia kierowanie ruchu do poszczególnych wystąpień maszyn wirtualnych. Moduł równoważenia obciążenia zawiera reguły, które pozwalają kierować ruchem na porcie TCP 80 oraz korzystać z ruchu pulpitu zdalnego na porcie TCP 3389 i komunikacji zdalnej programu PowerShell na porcie TCP 5985.
+Utwórz zestaw skalowania maszyn wirtualnych przy użyciu polecenia [New-AzVmss](/powershell/module/az.compute/new-azvmss). Po wyświetleniu monitu podaj nazwę użytkownika i hasło dla wystąpień maszyn wirtualnych. Musisz również utworzyć moduł równoważenia obciążenia, który umożliwia kierowanie ruchu do poszczególnych wystąpień maszyn wirtualnych. Moduł równoważenia obciążenia zawiera reguły, które pozwalają kierować ruchem na porcie TCP 80 oraz korzystać z ruchu pulpitu zdalnego na porcie TCP 3389 i komunikacji zdalnej programu PowerShell na porcie TCP 5985.
 
 Dwa dyski są tworzone za pomocą parametru `-DataDiskSizeGb`. Pierwszy dysk ma rozmiar *64* GB, a drugi — *128* GB. Po wyświetleniu monitu podaj własne odpowiednie poświadczenia administracyjne dla wystąpień maszyn wirtualnych w zestawie skalowania:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet" `
@@ -115,23 +116,23 @@ New-AzureRmVmss `
 Utworzenie i skonfigurowanie wszystkich zasobów zestawu skalowania oraz wystąpień maszyn wirtualnych trwa kilka minut.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Dołączanie dysku do istniejącego zestawu skalowania
-Dyski można także dołączać do istniejącego zestawu skalowania. Za pomocą polecenia [Add-AzureRmVmssDataDisk](/powershell/module/azurerm.compute/add-azurermvmssdatadisk) dodaj kolejny dysk do zestawu skalowania utworzonego w poprzednim kroku. W poniższym przykładzie do istniejącego zestawu skalowania jest dołączany dodatkowy dysk o rozmiarze *128* GB:
+Dyski można także dołączać do istniejącego zestawu skalowania. Za pomocą polecenia [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk) dodaj kolejny dysk do zestawu skalowania utworzonego w poprzednim kroku. W poniższym przykładzie do istniejącego zestawu skalowania jest dołączany dodatkowy dysk o rozmiarze *128* GB:
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
 # Attach a 128 GB data disk to LUN 2
-Add-AzureRmVmssDataDisk `
+Add-AzVmssDataDisk `
   -VirtualMachineScaleSet $vmss `
   -CreateOption Empty `
   -Lun 2 `
   -DiskSizeGB 128
 
 # Update the scale set to apply the change
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -143,11 +144,13 @@ Utworzone dyski, które zostały dołączone do wystąpień maszyn wirtualnych w
 
 Aby zautomatyzować ten proces w wielu wystąpieniach maszyn wirtualnych w zestawie skalowania, możesz użyć rozszerzenia niestandardowego skryptu platformy Azure. To rozszerzenie może wykonywać skrypty lokalnie na poszczególnych wystąpieniach maszyn wirtualnych, na przykład w celu przygotowania dołączonych dysków z danymi. Aby uzyskać więcej informacji, zobacz [Omówienie niestandardowego rozszerzenia skryptu](../virtual-machines/windows/extensions-customscript.md).
 
-W poniższym przykładzie za pomocą polecenia [Add-AzureRmVmssExtension](/powershell/module/AzureRM.Compute/Add-AzureRmVmssExtension) na każdym wystąpieniu maszyny wirtualnej jest wykonywany skrypt z przykładowego repozytorium GitHub, który przygotowuje wszystkie dołączone, niesformatowane dyski z danymi:
+
+W poniższym przykładzie za pomocą polecenia [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) na każdym wystąpieniu maszyny wirtualnej jest wykonywany skrypt z przykładowego repozytorium GitHub, który przygotowuje wszystkie dołączone, niesformatowane dyski z danymi:
+
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
@@ -158,7 +161,7 @@ $publicSettings = @{
 }
 
 # Use Custom Script Extension to prepare the attached data disks
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
   -Name "customScript" `
   -Publisher "Microsoft.Compute" `
   -Type "CustomScriptExtension" `
@@ -166,7 +169,7 @@ Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
   -Setting $publicSettings
 
 # Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -174,17 +177,18 @@ Update-AzureRmVmss `
 
 Aby upewnić się, że dyski zostały przygotowane poprawnie, połącz się przez protokół RDP z jednym wystąpieniem maszyny wirtualnej. 
 
-Najpierw pobierz obiekt modułu równoważenia obciążenia za pomocą polecenia [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer). Następnie wyświetl reguły NAT dla ruchu przychodzącego za pomocą polecenia [Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig). Reguły NAT zawierają listę elementów *FrontendPort* dla poszczególnych wystąpień maszyn wirtualnych, na których nasłuchuje protokół RDP. Na koniec uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [Get-AzureRmPublicIpAddress](/powershell/module/AzureRM.Network/Get-AzureRmPublicIpAddress):
+Najpierw pobierz obiekt modułu równoważenia obciążenia za pomocą polecenia [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Następnie wyświetl reguły NAT dla ruchu przychodzącego za pomocą polecenia [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig). Reguły NAT zawierają listę elementów *FrontendPort* dla poszczególnych wystąpień maszyn wirtualnych, na których nasłuchuje protokół RDP. Na koniec uzyskaj publiczny adres IP modułu równoważenia obciążenia za pomocą polecenia [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
+
 
 ```azurepowershell-interactive
 # Get the load balancer object
-$lb = Get-AzureRmLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoadBalancer"
+$lb = Get-AzLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoadBalancer"
 
 # View the list of inbound NAT rules
-Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
+Get-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
 
 # View the public IP address of the load balancer
-Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" -Name myPublicIPAddress | Select IpAddress
+Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" -Name myPublicIPAddress | Select IpAddress
 ```
 
 Aby nawiązać połączenie z maszyną wirtualną, podaj swój publiczny adres IP i numer portu wymaganego wystąpienia maszyny wirtualnej, jak pokazano w poprzednich poleceniach. Po wyświetleniu monitu wprowadź poświadczenia użyte podczas tworzenia zestawu skalowania. Jeśli korzystasz z usługi Azure Cloud Shell, wykonaj ten krok przy użyciu wiersza polecenia lokalnego programu PowerShell lub klienta pulpitu zdalnego. W poniższym przykładzie nawiązano połączenie z wystąpieniem maszyny wirtualnej *1*:
@@ -245,10 +249,10 @@ Zamknij sesję połączenia pulpitu zdalnego z wystąpieniem maszyny wirtualnej.
 
 
 ## <a name="list-attached-disks"></a>Wyświetlanie listy dołączonych dysków
-Aby wyświetlić informacje o dyskach dołączonych do zestawu skalowania, użyj polecenia [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss):
+Aby wyświetlić informacje o dyskach dołączonych do zestawu skalowania, użyj polecenia [Get-AzVmss](/powershell/module/az.compute/get-azvmss):
 
 ```azurepowershell-interactive
-Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
+Get-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
 ```
 
 Właściwość *VirtualMachineProfile.StorageProfile* zawiera listę *dysków z danymi*. Wyświetlane informacje obejmują rozmiar dysku, warstwę magazynowania i numer LUN (numer jednostki logicznej). Poniższe przykładowe dane wyjściowe zawierają szczegóły trzech dysków z danymi podłączonych do zestawu skalowania:
@@ -279,21 +283,21 @@ DataDisks[2]                            :
 
 
 ## <a name="detach-a-disk"></a>Odłączanie dysku
-Jeśli dany dysk nie jest już potrzebny, można go odłączyć od zestawu skalowania. Dysk jest usuwany ze wszystkich wystąpień maszyn wirtualnych w zestawie skalowania. Aby odłączyć dysk od zestawu skalowania, użyj polecenia [Remove-AzureRmVmssDataDisk](/powershell/module/azurerm.compute/remove-azurermvmssdatadisk) i podaj numer LUN dysku. Numery LUN są widoczne w danych wyjściowych polecenia [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) w poprzedniej sekcji. W poniższym przykładzie przedstawiono odłączanie dysku o numerze LUN *3* od zestawu skalowania:
+Jeśli dany dysk nie jest już potrzebny, można go odłączyć od zestawu skalowania. Dysk jest usuwany ze wszystkich wystąpień maszyn wirtualnych w zestawie skalowania. Aby odłączyć dysk od zestawu skalowania, użyj polecenia [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) i podaj numer LUN dysku. Numery LUN są widoczne w danych wyjściowych polecenia [Get-AzVmss](/powershell/module/az.compute/get-azvmss) w poprzedniej sekcji. W poniższym przykładzie przedstawiono odłączanie dysku o numerze LUN *3* od zestawu skalowania:
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
 # Detach a disk from the scale set
-Remove-AzureRmVmssDataDisk `
+Remove-AzVmssDataDisk `
   -VirtualMachineScaleSet $vmss `
   -Lun 2
 
 # Update the scale set and detach the disk from the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -301,10 +305,10 @@ Update-AzureRmVmss `
 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Aby pozbyć się zestawu skalowania i dysków, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Parametr `-Force` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu. Parametr `-AsJob` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji.
+Aby pozbyć się zestawu skalowania i dysków, usuń grupę zasobów wraz z całą zawartością za pomocą polecenia [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). Parametr `-Force` potwierdza, że chcesz usunąć zasoby bez wyświetlania dodatkowego monitu. Parametr `-AsJob` zwraca kontrolę do wiersza polecenia bez oczekiwania na zakończenie operacji.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
+Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 

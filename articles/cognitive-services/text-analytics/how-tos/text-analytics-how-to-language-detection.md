@@ -1,22 +1,22 @@
 ---
-title: Porady dotyczące wykrywania języka w interfejsie API REST analizy tekstu (Microsoft Cognitive Services na platformie Azure) | Microsoft Docs
-description: Sposób wykrywania języka przy użyciu interfejsu API REST analizy tekstu w usługach Microsoft Cognitive Services na platformie Azure w tym samouczku z przewodnikiem.
+title: Wykrywanie języka przy użyciu interfejsu API REST analizy tekstu | Microsoft Docs
+description: Sposób wykrywania języka za pomocą interfejsu API REST analizy tekstu z usług Azure Cognitive Services.
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: e613652511a18f2234c82cce47f0beeb2d3bbdd6
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 549ef0d073a740edf700c54d02a0d9ef247db0b7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211954"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245092"
 ---
-# <a name="example-how-to-detect-language-in-text-analytics"></a>Przykład: Jak wykrywać język przy użyciu analizy tekstu
+# <a name="example-how-to-detect-language-with-text-analytics"></a>Przykład: Sposób wykrywania języka przy użyciu analizy tekstu
 
 [Interfejs API wykrywania języka](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) ocenia wejściowy tekst i dla każdego dokumentu zwraca identyfikatory języka z wynikiem wskazującym siłę analizy. Analiza tekstu rozpoznaje maksymalnie 120 języków.
 

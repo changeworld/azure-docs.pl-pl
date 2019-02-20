@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 02/04/2019
 ms.author: alkohli
-ms.openlocfilehash: fa31397e0ecffbd245557a824bdd770724bbc91c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0ceff87cd3075d517ee1c0027e19dbf423e44f5c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51249884"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108759"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>Samouczek: transfer danych za pomocą usługi Azure Data Box Gateway (wersja zapoznawcza)
+# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>Samouczek: Transfer danych za pomocą usługi Azure Data Box Gateway (wersja zapoznawcza)
 
 
 ## <a name="introduction"></a>Wprowadzenie
@@ -121,13 +121,13 @@ Wykonaj poniższe kroki na kliencie systemu Linux połączonym z urządzeniem us
 
 2. Po zainstalowaniu klienta NFS użyj następującego polecenia, aby zainstalować utworzony przez Ciebie udział NFS na urządzeniu usługi Data Box Gateway:
 
-   `sudo mount <device IP>:/<NFS share on device> /home/username/<Folder on local Linux computer>`
+   `sudo mount -t nfs -o sec=sys,resvport <device IP>:/<NFS shares on device> /home/username/<Folder on local Linux computer>`
 
     Przed skonfigurowaniem instalacji upewnij się, że katalogi, które będą pełnić rolę punktów instalacji na komputerze lokalnym, zostały już utworzone i że nie zawierają żadnych plików ani podfolderów.
 
     Poniższy przykład pokazuje, jak nawiązać połączenie z udziałem na urządzeniu usługi Gateway za pośrednictwem systemu plików NFS. Adres IP urządzenia wirtualnego: `10.10.10.60`. Udział `mylinuxshare2` jest instalowany na maszynie wirtualnej ubuntuVM. Punkt instalacji: `/home/databoxubuntuhost/gateway`.
 
-    `sudo mount -t nfs 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
+    `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
 > Do wersji zapoznawczej mają zastosowanie następujące zastrzeżenia:

@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 604f135cc3dffdb9ac6533826eff6926ad5467df
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099162"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117752"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Samouczek: aprowizowanie usługi Azure Data Box Gateway w programie VMware (wersja zapoznawcza)
 
@@ -66,7 +66,7 @@ Przed wdrożeniem urządzenia wirtualnego upewnij się, że są spełnione nast�
 
 Przed rozpoczęciem:
 
-- Zapoznaj się z wymaganiami dotyczącymi przygotowania sieci pod kątem wdrożenia usługi Data Box Gateway i skonfiguruj sieć w centrum danych zgodnie z tymi wymaganiami. Aby uzyskać więcej informacji, zobacz [Data Box Gateway networking requirements (Wymagania dotyczące sieci dla usługi Data Box Gateway)](data-box-gateway-system-requirements.md#networking-requirements).
+- Zapoznaj się z wymaganiami dotyczącymi przygotowania sieci pod kątem wdrożenia usługi Data Box Gateway i skonfiguruj sieć w centrum danych zgodnie z tymi wymaganiami. Aby uzyskać więcej informacji, zobacz [Data Box Gateway networking requirements (Wymagania dotyczące sieci dla usługi Data Box Gateway)](data-box-gateway-system-requirements.md#networking-port-requirements).
 - Aby umożliwić optymalne działanie urządzenia, przepustowość połączenia internetowego musi wynosić co najmniej 20 Mb/s.
 
 ## <a name="check-the-host-system"></a>Sprawdzanie systemu hosta
@@ -77,7 +77,7 @@ Do utworzenia urządzenia wirtualnego potrzebne są następujące elementy:
  
   * Co najmniej 4 rdzenie.
   * Co najmniej 8 GB pamięci RAM. 
-  * Jeden interfejs sieciowy połączony z siecią umożliwiającą kierowanie ruchu do Internetu. 
+  * Jeden interfejs sieciowy połączony z siecią umożliwiającą kierowanie ruchu do Internetu.
   * Dysk systemu operacyjnego o rozmiarze 250 GB.
   * Dysk wirtualny o rozmiarze 2 TB do przechowywania danych.
 * Klient VMware vSphere w systemie na potrzeby zarządzania hostem ESXi.
@@ -89,7 +89,7 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 
 1. Skopiuj obraz urządzenia wirtualnego do swojego systemu. Ten obraz urządzenia wirtualnego (dwa pliki) został pobrany za pośrednictwem witryny Azure Portal. Zanotuj lokalizację, do której został skopiowany obraz, ponieważ będzie on używany w dalszej części tej procedury.
 
-2. Zaloguj się na serwerze ESXi przy użyciu klienta internetowego vSphere. Musisz mieć uprawnienia administratora, aby utworzyć maszynę wirtualną.
+2. Zaloguj się na serwer ESXi za pomocą przeglądarki pod tym adresem URL: `https://<IP address of the ESXi server>`. Musisz mieć uprawnienia administratora, aby utworzyć maszynę wirtualną.
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -149,20 +149,24 @@ Wykonaj następujące czynności, aby aprowizować urządzenie wirtualne w funkc
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    Przewiń w dół, aż zobaczysz **nowy dysk twardy** i rozwiń go, aby wyświetlić ustawienia. Ustaw opcję **Virtual Device Node** (Węzeł urządzenia wirtualnego) na wartość **IDE controller 0** (Kontroler IDE 0). Kliknij przycisk **Dalej**.
+    Przewiń w dół, aż zobaczysz **nowy dysk twardy** i rozwiń go, aby wyświetlić ustawienia. Ustaw opcję **Virtual Device Node** (Węzeł urządzenia wirtualnego) na wartość **IDE controller 0** (Kontroler IDE 0).
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-27. Na stronie **Ready to Complete** (Gotowe do ukończenia) przejrzyj wszystkie ustawienia skojarzone z nową maszyną wirtualną. Sprawdź, czy ustawienie procesora CPU ma wartość 4, pamięci — 8192 MB, a interfejsu sieciowego — 1 oraz czy dysk twardy 2 ma wybrany kontroler IDE 0. Kliknij przycisk **Zakończ**. 
+17. (Opcjonalnie) *Wykonaj ten krok tylko wtedy, jeśli korzystasz z oprogramowania VMware ESXi Server 6.7*. Na stronie **Customize settings** (Dostosowywanie ustawień) kliknij pozycję **VM options** (Opcje maszyny wirtualnej). Wybierz pozycję **Boot options > Firmware** (Opcje rozruchu > Oprogramowanie układowe) i zmień wartość dla tej opcji na **BIOS**. Domyślnie ustawiona wartość to EFI. Kliknij przycisk **Dalej**.
+
+    ![](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+
+18. Na stronie **Ready to Complete** (Gotowe do ukończenia) przejrzyj wszystkie ustawienia skojarzone z nową maszyną wirtualną. Sprawdź, czy ustawienie procesora CPU ma wartość 4, pamięci — 8192 MB, a interfejsu sieciowego — 1 oraz czy dysk twardy 2 ma wybrany kontroler IDE 0. Kliknij przycisk **Zakończ**.
    
     ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
     ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-Maszyna wirtualna jest teraz aprowizowana. Zostanie wyświetlone odpowiednie powiadomienie, a nowa maszyna wirtualna zostanie dodana do listy maszyn wirtualnych. 
+Maszyna wirtualna jest teraz aprowizowana. Zostanie wyświetlone odpowiednie powiadomienie, a nowa maszyna wirtualna zostanie dodana do listy maszyn wirtualnych.
 
 ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-Następnym krokiem jest uruchomienie tej maszyny i uzyskanie adresu IP.
+Następnym krokiem jest włączenie tej maszyny wirtualnej i uzyskanie adresu IP.
 
 > [!NOTE]
 > Nie zalecamy instalowania narzędzi VMware na urządzeniu wirtualnym (aprowizowanym zgodnie z powyższymi informacjami). Zainstalowanie narzędzi VMware spowoduje powstanie nieobsługiwanej konfiguracji.

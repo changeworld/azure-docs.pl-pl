@@ -4,19 +4,19 @@ description: Ten przewodnik Szybki start umożliwia wyszukanie pierwszego obrazu
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a7603895d623bba9d5023379643b5ea9752344a7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dd2bf11781a6dd013f033fc535b068d449dd04d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195609"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238134"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Szybki start: wyszukiwanie obrazów za pomocą zestawu SDK wyszukiwania obrazów Bing dla języka Java
 
@@ -63,9 +63,10 @@ Zainstaluj zależności zestawu SDK wyszukiwania obrazów Bing przy użyciu opro
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Wysyłanie żądania wyszukiwania do interfejsu API wyszukiwania obrazów Bing
+## <a name="send-a-search-request-to-the-api"></a>Wysyłanie żądania wyszukiwania do interfejsu API
 
 1. Za pomocą metody `bingImages().search()` wyślij żądanie HTTP zawierające zapytanie wyszukiwania. Zapisz odpowiedź jako `ImagesModel`.
+
    ```java
     ImagesModel imageResults = client.bingImages().search()
                 .withQuery(searchTerm)

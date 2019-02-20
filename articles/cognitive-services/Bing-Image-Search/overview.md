@@ -4,31 +4,28 @@ titleSuffix: Azure Cognitive Services
 description: Interfejs API wyszukiwania obrazów Bing umożliwia używanie poznawczego wyszukiwania obrazów Bing w Twojej aplikacji. Wysyłając zapytania wyszukiwania użytkownika za pomocą interfejsu API, możesz pobierać i wyświetlać odpowiednie obrazy wysokiej jakości podobne do obrazów Bing.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.assetid: 1446AD8B-A685-4F5F-B4AA-74C8E9A40BE9
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: overview
-ms.date: 10/11/2017
+ms.date: 02/06/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 4ae9c0c1fb6cd341e812f9e8b35eaff789637561
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fa1e2e6ac6e85c431a759d8eb1c22923e86e40d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765650"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237318"
 ---
 # <a name="what-is-the-bing-image-search-api"></a>Co to jest interfejs API wyszukiwania obrazów Bing?
 
-Interfejs API wyszukiwania obrazów Bing umożliwia używanie poznawczego wyszukiwania obrazów Bing w Twojej aplikacji. Wysyłając zapytania wyszukiwania użytkownika za pomocą interfejsu API, możesz pobrać i wyświetlać odpowiednie obrazy wysokiej jakości podobne do [obrazów Bing](https://www.bing.com/images).
+Interfejs API wyszukiwania obrazów Bing umożliwia używanie możliwości wyszukiwania obrazów Bing w aplikacji. Wysyłając zapytania wyszukiwania użytkownika za pomocą interfejsu API, możesz pobierać obrazy wysokiej jakości, podobnie jak w witrynie [bing.com/images](https://www.bing.com/images).
 
-Należy pamiętać, że interfejs API wyszukiwania obrazów Bing udostępnia tylko wyniki wyszukiwania obrazów. Użyj [interfejsu API wyszukiwania w Internecie Bing](../bing-web-search/search-the-web.md), [interfejsu API wyszukiwania wideo](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search) i [interfejsu API wyszukiwania wiadomości](https://review.docs.microsoft.com/azure/cognitive-services/bing-news-search) do innych typów zawartości internetowej.
+Interfejs API wyszukiwania obrazów Bing oferuje wyniki wyszukiwania tylko w postaci obrazów, ale możesz połączyć go z innymi [interfejsami API wyszukiwania Bing](../bing-web-search/bing-api-comparison.md) lub używać ich w celu znalezienia wielu typów zawartości w Internecie.
 
 ## <a name="bing-image-search-features"></a>Funkcje wyszukiwania obrazów Bing
-
-Chociaż wyszukiwanie obrazów Bing przede wszystkim znajduje i zwraca odpowiednie obrazy z zapytania wyszukiwania, usługa udostępnia również kilka dodatkowych funkcji do inteligentnego i ukierunkowanego pobierania obrazów w Internecie.
-
 
 | Cecha                                                                                                                                                                                 | Opis                                                                                                                                                            |
 |-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -60,10 +57,12 @@ Aby szybko rozpocząć pracę z pierwszym żądaniem interfejsu API, możesz nau
 
 ## <a name="see-also"></a>Zobacz też
 
-* Sekcja dokumentacji [interfejsu API wyszukiwania obrazów Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) zawiera definicje i informacje na temat punktów końcowych, nagłówków, odpowiedzi interfejsu API i parametrów zapytania, których możesz użyć do żądania wyników wyszukiwania na podstawie obrazu.
+* [Szczegóły cennika](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) interfejsów API wyszukiwania Bing. 
+
+* Sekcja dokumentacji dotyczącej [interfejsu API wyszukiwania obrazów Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference) zawiera informacje na temat punktów końcowych interfejsu API, nagłówków, odpowiedzi interfejsu API i parametrów zapytania.
 
 * [Wymagania dotyczące użycia i wyświetlania Bing](./useanddisplayrequirements.md) określają dopuszczalne zastosowania zawartości i informacji uzyskanych za pośrednictwem interfejsów API wyszukiwania Bing.
 
-* Temat [Pobieranie obrazów z Internetu za pomocą interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images) opisuje sposób wyszukiwania i pobierania obrazów z Internetu.
+* Artykuł [Pobieranie obrazów z Internetu za pomocą interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images) opisuje sposób wyszukiwania i pobierania obrazów z Internetu.
 
-* W temacie [Wysyłanie i praca z zapytaniami wyszukiwania](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) opisano sposób tworzenia, dostosowywania i przestawiania zapytań wyszukiwania.
+* Artykuł [Wysyłanie i praca z zapytaniami wyszukiwania](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/concepts/bing-image-search-sending-queries) opisuje sposób tworzenia, dostosowywania i przestawiania zapytań wyszukiwania.

@@ -5,15 +5,15 @@ services: load balancer
 author: KumudD
 ms.service: load-balancer
 ms.topic: include
-ms.date: 01/09/2018
+ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: c4989016d31880e1c1990c0eb46091c8f50018bc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54211884"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56078600"
 ---
 | | Standardowy SKU | Podstawowy SKU |
 | --- | --- | --- |
@@ -26,7 +26,7 @@ ms.locfileid: "54211884"
 | Porty wysokiej dostępności | Wewnętrzny moduł równoważenia obciążenia | Niedostępne. |
 | Zabezpieczenie domyślne | Publiczny adres IP, publiczne punkty końcowe usługi Load Balancer i wewnętrzne punkty końcowe usługi Load Balancer są zamknięte dla przepływów przychodzących, chyba że zostaną dodane do listy dozwolonych przez sieciową grupę zabezpieczeń. | Domyślnie otwarte, opcjonalnie sieciowa grupa zabezpieczeń. |
 | [Połączenia wychodzące](../articles/load-balancer/load-balancer-outbound-connections.md) | Można jawnie zdefiniować oparty na puli translator adresów sieciowych ruchu wychodzącego za pomocą [reguł ruchu wychodzącego](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Można użyć wielu frontonów z regułą rezygnacji na moduł równoważenia obciążenia. Scenariusz ruchu wychodzącego _musi_ być utworzony jawnie, aby maszyna wirtualna, zestaw dostępności lub zestaw skalowania maszyn wirtualnych mógł używać łączności wychodzącej.  Dostęp do punktów końcowych usługi Virtual Network Service można uzyskać bez definiowania łączności wychodzącej i nie wlicza się on w przetworzone dane.  Dostęp do wszystkich publicznych adresów IP, łącznie z usługami PaaS platformy Azure, które nie są dostępne jako punkty końcowe usługi sieci wirtualnej, musi być uzyskiwany za pośrednictwem łączności wychodzącej i wlicza się w przetworzone dane. Kiedy maszyna wirtualna, zestaw dostępności lub zestaw skalowania maszyn wirtualnych jest obsługiwana tylko przez wewnętrzną usługę Load Balancer, połączenia wychodzące przy użyciu domyślnej translacji adresów sieciowych źródła (SNAT) nie są dostępne; w zamian należy użyć [reguł dla ruchu wychodzącego](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Programowanie SNAT dla ruchu wychodzącego jest specyficzne dla protokołu transportu na podstawie protokołu reguły równoważenia obciążenia ruchu przychodzącego. | Pojedynczy fronton wybrany losowo, jeśli obecnych jest wiele frontonów.  Kiedy maszyna wirtualna, zestaw dostępności lub zestaw skalowania maszyn wirtualnych jest obsługiwany tylko przez wewnętrzną usługę Load Balancer, używana jest domyślna translacja adresów sieciowych źródła. |
-| [Reguły ruchu wychodzącego](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklaratywna konfiguracja translatora adresów sieciowych ruchu wychodzącego przy użyciu publicznych adresów IP lub prefiksów publicznych adresów IP lub jednych i drugich, konfigurowalny limit czasu bezczynności ruchu wychodzącego, niestandardowa alokacja portów SNAT | Niedostępne. |
+| [Reguły ruchu wychodzącego](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklaratywna konfiguracja translatora adresów sieciowych ruchu wychodzącego przy użyciu publicznych adresów IP i/lub prefiksów publicznych adresów IP, konfigurowalny limit czasu bezczynności ruchu wychodzącego (4–120 minut), niestandardowa alokacja portów SNAT | Niedostępne. |
 |  [Resetowanie protokołu TCP w wyniku bezczynności](../articles/load-balancer/load-balancer-tcp-reset.md) | Włączanie resetowania protokołu TCP (TCP RST) w wyniku upływu limitu czasu bezczynności dla dowolnej reguły | Niedostępne |
 | [Wiele frontonów](../articles/load-balancer/load-balancer-multivip-overview.md) | Ruch przychodzący i [wychodzący](../articles/load-balancer/load-balancer-outbound-connections.md) | Tylko ruch przychodzący |
 | Operacje zarządzania | Większość operacji < 30 sekund | Na ogół 60–90 sekund lub więcej. |

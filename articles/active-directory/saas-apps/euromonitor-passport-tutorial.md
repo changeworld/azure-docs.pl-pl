@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bdc3b88109a8d8c46f0a6a09297b0ca197165
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ab9439cbf46fd77a24aa07cab1884e4e50720e43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478988"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Euromonitor Passport
 
@@ -66,7 +67,7 @@ Aby skonfigurować integrację aplikacji Euromonitor Passport z usługą Azure A
 
 4. W polu wyszukiwania wpisz nazwę **Euromonitor Passport**, wybierz pozycję **Euromonitor Passport** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![Aplikacja Euromonitor Passport na liście wyników](common/search-new-app.png)
+    ![Aplikacja Euromonitor Passport na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
@@ -104,17 +105,17 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Euromonito
 
     ![Domena i adresy URL aplikacji Euromonitor Passport — informacje dotyczące logowania jednokrotnego](common/preintegrated.png)
 
-5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+5. Jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**, musisz uzyskać adres URL logowania od [zespołu pomocy technicznej usługi Euromonitor Passport](mailto:passport.support@euromonitor.com). Po uzyskaniu adresu URL logowania od zespołu pomocy technicznej usługi Euromonitor Passport kliknij pozycję **Ustaw dodatkowe adresy URL** i wykonaj następujące czynności:
 
     ![Domena i adresy URL aplikacji Euromonitor Passport — informacje dotyczące logowania jednokrotnego](common/metadata-upload-additional-signon.png)
 
-    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://portal.euromonitor.com`
+    Wklej wartość adresu URL logowania uzyskaną od zespołu pomocy technicznej aplikacji Euromonitor Passport w polu tekstowym Adres URL logowania.
 
 6. Aplikacja Euromonitor Passport oczekuje potwierdzeń SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
     ![image](./media/euromonitor-passport-tutorial/attribute1.png)
 
-7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności: 
+7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności:
 
     | Name (Nazwa) | Atrybut źródłowy|
     | ---------------| --------- |

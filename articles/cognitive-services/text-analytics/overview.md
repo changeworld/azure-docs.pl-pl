@@ -3,25 +3,25 @@ title: Co to jest analiza tekstu?
 titleSuffix: Azure Cognitive Services
 description: Analiza tekstu w usłudze Azure Cognitive Services na potrzeby analizy tonacji, wyodrębniania kluczowych fraz, wykrywania języka oraz łączenia jednostek.
 services: cognitive-services
-author: ashmaka
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 73505064bf5cde4e97cd210698e21883cc9f5e38
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227883"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242943"
 ---
 # <a name="what-is-text-analytics"></a>Co to jest analiza tekstu?
 
 Interfejs API analizy tekstu to oparta na chmurze usługa udostępniająca zaawansowane przetwarzanie języka naturalnego z zastosowaniem tekstu nieprzetworzonego. Obejmuje ona cztery główne funkcje: analizę tonacji, wyodrębnianie kluczowych fraz, wykrywanie języka oraz łączenie jednostek.
 
-Interfejs API jest wspierany przez zasoby w usługach [Microsoft Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), tj. zbioru algorytmów uczenia maszynowego i sztucznej inteligencji w chmurze, który można łatwo wykorzystać w swoich projektach programistycznych.
+Interfejs API jest częścią usług [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), które są zbiorem algorytmów uczenia maszynowego i sztucznej inteligencji w chmurze do wykorzystania w Twoich projektach programistycznych.
 
 ## <a name="capabilities-in-text-analytics"></a>Możliwości analizy tekstu
 

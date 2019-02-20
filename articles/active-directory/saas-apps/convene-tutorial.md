@@ -1,235 +1,238 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z Convene | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Convene.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Convene | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją Convene.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 2540ac46-1aea-496b-a8c5-575a2690f7db
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/13/2018
+ms.topic: tutorial
+ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 6ff502f46cfd96b767191d11e3fcc53eb1be81d2
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
-ms.translationtype: MT
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7b6462083265c7fa93dd0fc496830fff21f80928
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45608074"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161342"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-convene"></a>Samouczek: Integracja usługi Azure Active Directory z Convene
+# <a name="tutorial-azure-active-directory-integration-with-convene"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Convene
 
-W tym samouczku dowiesz się, jak zintegrować Convene w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Convene z usługą Azure Active Directory (Azure AD).
+Zintegrowanie aplikacji Convene z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Convene z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Convene.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Convene (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do Convene.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do Convene (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Convene, potrzebne są następujące elementy:
+Do skonfigurowania integracji usługi Azure AD z aplikacją Convene potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Convene logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Convene z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Convene z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-convene-from-the-gallery"></a>Dodawanie Convene z galerii
-Aby skonfigurować integrację Convene w usłudze Azure AD, należy dodać Convene z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Convene obsługuje logowanie jednokrotne inicjowane przez **dostawcę usługi**
 
-**Aby dodać Convene z galerii, wykonaj następujące czynności:**
+* Aplikacja Convene obsługuje aprowizowanie użytkowników typu **Just In Time**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+## <a name="adding-convene-from-the-gallery"></a>Dodawanie aplikacji Convene z galerii
 
-    ![Przycisk usługi Azure Active Directory][1]
+Aby skonfigurować integrację aplikacji Convene z usługą Azure AD, musisz dodać aplikację Convene z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+**Aby dodać aplikację Convene z galerii, wykonaj następujące czynności:**
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
-    
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-4. W polu wyszukiwania wpisz **Convene**, wybierz opcję **Convene** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![Zwołać na liście wyników](./media/convene-tutorial/tutorial_convene_addfromgallery.png)
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą Convene w oparciu o użytkownika testu o nazwie "Britta Simon".
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Convene do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Convene musi można ustanowić.
+4. W polu wyszukiwania wpisz **Convene**, wybierz pozycję **Convene** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Convene, należy wykonać poniższe bloki konstrukcyjne:
+     ![Aplikacja Convene na liście wyników](common/search-new-app.png)
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego Convene](#create-a-convene-test-user)**  — aby odpowiednikiem Britta Simon w Convene połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Convene, korzystając z danych testowego użytkownika **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji Convene.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Convene.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją Convene, należy utworzyć poniższe bloki konstrukcyjne:
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Convene, wykonaj następujące czynności:**
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Convene](#configure-convene-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji Convene](#create-convene-test-user)** — aby mieć w aplikacji Convene odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-1. W witrynie Azure portal na **Convene** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/convene-tutorial/tutorial_convene_samlbase.png)
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji Convene, wykonaj następujące kroki:
 
-3. Na **zwołać domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Convene** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Zwołać domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/convene-tutorial/tutorial_convene_url.png)
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://portal.convene.me.uk/saml/acs/<UID>`
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Zwołać domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/convene-tutorial/tutorial_convene_url1.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL: `https://portal.convene.me.uk/login`
-     
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następującą czynność:
+
+    ![Domena i adresy URL aplikacji Convene — informacje dotyczące logowania jednokrotnego](common/both-replyurl.png)
+
+    W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://portal.convene.me.uk/saml/acs/<UID>`
+
+5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
+
+    ![Domena i adresy URL aplikacji Convene — informacje dotyczące logowania jednokrotnego](common/both-signonurl.png)
+
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://portal.convene.me.uk/login`
+
     > [!NOTE] 
-    > Wartość adresu URL odpowiedzi nie jest prawdziwe. Zaktualizuj wartość za pomocą rzeczywisty adres URL odpowiedzi. Skontaktuj się z pomocą [klienta zwołać zespół pomocy technicznej](mailto:support@convene.me.uk) można uzyskać wartość.
+    > Wartość adresu URL odpowiedzi nie jest prawdziwa. Zaktualizuj ją, stosując rzeczywisty adres URL odpowiedzi. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji Convene](mailto:support@convene.me.uk) w celu uzyskania wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-5. Zwołać aplikacja oczekuje twierdzenia SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Możesz zarządzać wartości te atrybuty z **atrybutów użytkownika** sekcji na stronie integracji aplikacji. Poniższy zrzut ekranu przedstawia przykład tego.
-    
-    ![Konfigurowanie logowania jednokrotnego attb](./media/convene-tutorial/tutorial_convene_attribute.png)
+6. Aplikacja Convene oczekuje asercji SAML w określonym formacie. Skonfiguruj następujące oświadczenia dla tej aplikacji. Wartościami tych atrybutów możesz zarządzać w sekcji **Atrybuty użytkownika** na stronie integracji aplikacji. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Atrybuty użytkownika**.
 
-6. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+    ![image](common/edit-attribute.png)
 
-    ![Link pobierania certyfikatu](./media/convene-tutorial/tutorial_convene_certificate.png) 
+7. W sekcji **Oświadczenia użytkownika** w oknie dialogowym **Atrybuty użytkownika** edytuj oświadczenia, korzystając z **ikony edycji**, lub dodaj je za pomocą opcji **Dodaj nowe oświadczenie**, aby skonfigurować atrybut tokenu języka SAML, jak pokazano na ilustracji powyżej, a następnie wykonaj następujące czynności: 
 
-7. Kliknij przycisk **Zapisz** przycisku.
+    | Name (Nazwa) | Atrybut źródłowy|
+    | ---------------| --------------- |
+    | nameidentifier | user.mail |
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/convene-tutorial/tutorial_general_400.png)
-    
-8. Na **zwołać konfiguracji** kliknij **skonfigurować zwołać** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL** z **krótki przewodnik po sekcji.**
+    a. Kliknij przycisk **Dodaj nowe oświadczenie**, aby otworzyć okno dialogowe **Zarządzanie oświadczeniami użytkownika**.
 
-    ![Zwołać konfiguracji](./media/convene-tutorial/tutorial_convene_configure.png) 
+    ![image](common/new-save-attribute.png)
 
-9. Aby skonfigurować logowanie jednokrotne na **Convene** stronie, musisz wysłać pobrany **certyfikat (Base64)**, **adres URL wylogowania, identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego usługi adresu URL**do [zespołem pomocy technicznej Convene](mailto:support@convene.me.uk). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+    ![image](common/new-attribute-details.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    b. W polu tekstowym **Nazwa** wpisz nazwę atrybutu pokazaną dla tego wiersza.
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+    d. Pozostaw pole **Przestrzeń nazw** puste.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+    d. Dla opcji Źródło wybierz wartość **Atrybut**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    e. Na liście **Atrybut źródłowy** wpisz wartość atrybutu pokazaną dla tego wiersza.
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+    f. Kliknij przycisk **OK**.
 
-    ![Przycisk usługi Azure Active Directory](./media/convene-tutorial/create_aaduser_01.png)
+    g. Kliknij pozycję **Zapisz**.
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+8. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **certyfikat (Base64)** z podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/convene-tutorial/create_aaduser_02.png)
+    ![Link do pobierania certyfikatu](common/certificatebase64.png)
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+9. W sekcji **Konfigurowanie aplikacji Convene** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
 
-    ![Przycisk Dodaj](./media/convene-tutorial/create_aaduser_03.png)
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+    a. Adres URL logowania
 
-    ![Okno dialogowe użytkownika](./media/convene-tutorial/create_aaduser_04.png)
+    b. Identyfikator usługi Azure AD
 
-    a. W **nazwa** wpisz **BrittaSimon**.
+    d. Adres URL wylogowywania
 
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
+### <a name="configure-convene-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji Convene
 
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Convene**, musisz wysłać pobrany **certyfikat (Base64)** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Convene](mailto:support@convene.me.uk). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
+
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
+
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
+
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
+
+    ![Przycisk Nowy użytkownik](common/new-user.png)
+
+3. We właściwościach użytkownika wykonaj następujące kroki.
+
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
+
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
+
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-convene-test-user"></a>Tworzenie użytkownika testowego Convene
-
-Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Convene. Zwołać obsługuje just-in-time inicjowania obsługi, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu Convene, jeśli go jeszcze nie istnieje.
-
->[!Note]
->Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej Convene](mailto:support@convene.me.uk).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Convene.
+W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Convene.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, wybierz pozycję **Wszystkie aplikacje**, a następnie wybierz pozycję **Convene**.
 
-**Aby przypisać Britta Simon Convene, wykonaj następujące czynności:**
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz pozycję **Convene**.
 
-    ![Przypisz użytkownika][201] 
+    ![Link do aplikacji Convene na liście aplikacji](common/all-applications.png)
 
-2. Na liście aplikacji wybierz **Convene**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link Convene na liście aplikacji](./media/convene-tutorial/tutorial_convene_app.png)  
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+### <a name="create-convene-test-user"></a>Tworzenie użytkownika testowego aplikacji Convene
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+W tej sekcji w aplikacji Convene jest tworzony użytkownik o nazwie Britta Simon. Aplikacja Convene obsługuje **aprowizację użytkowników typu just-in-time**, która jest domyślnie włączona. W tej sekcji nie musisz niczego robić. Jeśli użytkownik jeszcze nie istnieje w aplikacji Convene, zostanie utworzony po uwierzytelnieniu.
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+>[!Note]
+>Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej aplikacji Convene](mailto:support@convene.me.uk).
 
-Po kliknięciu kafelka Convene w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Convene.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../active-directory-saas-access-panel-introduction.md). 
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+Po kliknięciu kafelka Convene w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Convene, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/convene-tutorial/tutorial_general_01.png
-[2]: ./media/convene-tutorial/tutorial_general_02.png
-[3]: ./media/convene-tutorial/tutorial_general_03.png
-[4]: ./media/convene-tutorial/tutorial_general_04.png
-
-[100]: ./media/convene-tutorial/tutorial_general_100.png
-
-[200]: ./media/convene-tutorial/tutorial_general_200.png
-[201]: ./media/convene-tutorial/tutorial_general_201.png
-[202]: ./media/convene-tutorial/tutorial_general_202.png
-[203]: ./media/convene-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
