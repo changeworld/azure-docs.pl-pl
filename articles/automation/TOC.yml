@@ -81,28 +81,49 @@ items:
     - name: Zarządzanie kontrolą dostępu opartą na rolach
       displayName: RBAC
       href: automation-role-based-access-control.md
-  - name: Tworzenie elementów Runbook
+  - name: Elementy Runbook
     items:
+    - name: Zarządzanie elementami runbook
+      href: manage-runbooks.md
     - name: Typy elementów Runbook
       displayName: graphical, python, powershell, powershell workflow
       href: automation-runbook-types.md
-    - name: Tworzenie i importowanie elementów Runbook
-      href: automation-creating-importing-runbook.md
-    - name: Tworzenie graficznego elementu runbook
-      href: automation-first-runbook-graphical.md
-    - name: Tworzenie elementu runbook programu PowerShell
-      href: automation-first-runbook-textual-powershell.md
-    - name: Tworzenie elementu runbook przepływu pracy programu PowerShell
-      href: automation-first-runbook-textual.md
-    - name: Tworzenie elementu runbook języka Python
-      href: automation-first-runbook-textual-python2.md
-    - name: Edytowanie tekstowych elementów Runbook
-      displayName: powershell
-      href: automation-edit-textual-runbook.md
-    - name: Edytowanie graficznych elementów Runbook
-      href: automation-graphical-authoring-intro.md
-    - name: Testowanie elementu Runbook
-      href: automation-testing-runbook.md
+    - name: Tworzenie elementów Runbook
+      items:
+      - name: Graficzne elementy runbook
+        href: automation-first-runbook-graphical.md
+      - name: Element runbook programu PowerShell
+        href: automation-first-runbook-textual-powershell.md
+      - name: Element runbook przepływu pracy programu PowerShell
+        href: automation-first-runbook-textual.md
+      - name: Element runbook języka Python
+        href: automation-first-runbook-textual-python2.md
+      - name: Tworzenie elementów runbook za pomocą graficznego zestawu SDK elementów runbook
+        href: graphical-runbook-sdk.md
+    - name: Edytowanie elementów runbook
+      items:
+      - name: Edytowanie tekstowych elementów Runbook
+        displayName: powershell
+        href: automation-edit-textual-runbook.md
+      - name: Edytowanie graficznych elementów Runbook
+        href: automation-graphical-authoring-intro.md
+    - name: Uruchamianie elementu Runbook
+      href: start-runbooks.md
+    - name: Uruchamianie elementu runbook z poziomu elementu webhook
+      href: automation-webhooks.md
+    - name: Parametry wejściowe elementu Runbook
+      displayName: input,json
+      href: runbook-input-parameters.md
+    - name: Obsługa błędów w graficznych elementach runbook
+      href: automation-runbook-graphical-error-handling.md
+    - name: Śledzenie zadania elementu Runbook
+      displayName: fair share, activity log
+      href: automation-runbook-execution.md
+    - name: Zarządzanie danymi usługi Azure Automation
+      displayName: backup
+      href: automation-managing-data.md
+    - name: Zarządzanie pakietami języka Python 2
+      href: python-packages.md
     - name: Uczenie się przepływu pracy programu PowerShell
       href: automation-powershell-workflow.md
     - name: Podrzędne elementy Runbook
@@ -116,28 +137,6 @@ items:
     - name: Integracja kontroli źródła — starsza wersja
       href: automation-source-control-integration-legacy.md
       displayname: github
-    - name: Tworzenie elementów runbook za pomocą graficznego zestawu SDK elementów runbook
-      href: graphical-runbook-sdk.md
-  - name: Automatyzacja
-    items:
-    - name: Uruchamianie elementu Runbook
-      href: automation-starting-a-runbook.md
-    - name: Uruchamianie elementu runbook z poziomu elementu webhook
-      href: automation-webhooks.md
-    - name: Konfigurowanie parametrów wejściowych elementu runbook
-      href: automation-runbook-input-parameters.md
-    - name: Obsługa błędów w graficznych elementach runbook
-      href: automation-runbook-graphical-error-handling.md
-    - name: Śledzenie zadania elementu Runbook
-      displayName: fair share, activity log
-      href: automation-runbook-execution.md
-    - name: Zarządzanie danymi usługi Azure Automation
-      displayName: backup
-      href: automation-managing-data.md
-    - name: Przekazywanie obiektu JSON do elementu runbook usługi Azure Automation
-      href: automation-pass-json-string.md
-    - name: Zarządzanie pakietami języka Python 2
-      href: python-packages.md
   - name: Hybrydowy proces roboczy elementu Runbook
     items:
     - name: Omówienie hybrydowych procesów roboczych elementów Runbook
@@ -205,12 +204,6 @@ items:
       href: automation-create-alert-triggered-runbook.md
     - name: Tworzenie maszyny wirtualnej usługi Amazon Web Service
       href: automation-scenario-aws-deployment.md
-    - name: Integracja kontroli źródła z usługą GitHub Enterprise
-      displayName: CI, runbooks
-      href: automation-scenario-source-control-integration-with-github-ent.md
-    - name: Integracja kontroli źródła z usługą Azure DevOps
-      displayName: VSTS, CI, runbooks
-      href: automation-scenario-source-control-integration-with-VSTS.md
     - name: Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
       href: automation-deploy-template-runbook.md
     - name: Integracja usługi Azure Automation z usługami Event Grid i Microsoft Teams
@@ -292,9 +285,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-automation
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: a5886c5af9db6945fe33efd8198b5527f580d297
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e35c51bb1d82f2c5eda708ab8bce71c2bf5b69b7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004590"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417027"
