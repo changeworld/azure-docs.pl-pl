@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: f724bba5acdda20d31d067b850634178a0650cf7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859749"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429472"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Uwierzytelnianie żądań usług Azure Cognitive Services
 
@@ -58,7 +58,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-Poniższy klip wideo pokazuje, za pomocą klucza usługi Cognitive Services. 
+Poniższy klip wideo pokazuje, za pomocą klucza usługi Cognitive Services.
 
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Uwierzytelnianie za pomocą klucz subskrypcji z wieloma usługami
 
@@ -127,16 +127,15 @@ Tokeny uwierzytelniania są uwzględnione w żądaniu jako `Authorization` nagł
 
 ### <a name="sample-requests"></a>Prośby o przykłady
 
-Użyj tego adresu URL, aby wymienić klucz subskrypcji jednousługowa dla tokenu uwierzytelniania: `https://api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+Użyj tego adresu URL, aby wymienić klucz subskrypcji dla tokenu uwierzytelniania: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 ```cURL
 curl -v -X POST \
-"https://api.cognitive.microsoft.com/sts/v1.0/issueToken" \
+"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
 -H "Content-type: application/x-www-form-urlencoded" \
+-H "Content-length: 0" \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
-
-Korzystając z kluczem subskrypcji wielu usług, należy użyć określonego regionu punktu końcowego dla tokenu programu exchange. Użyj tego adresu URL, aby wymienić klucz subskrypcji wielu usług dla tokenu uwierzytelniania: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 Te regiony wielu usług obsługi wymiany tokenu:
 
@@ -147,13 +146,6 @@ Te regiony wielu usług obsługi wymiany tokenu:
 | `japaneast` | `northeurope` | `southcentralus` |
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
-
-```cURL
-curl -v -X POST \
-"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
--H "Content-type: application/x-www-form-urlencoded" \
--H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
-```
 
 Po uzyskaniu tokenu uwierzytelniania, musisz przekazać go do wszystkich żądań jako `Authorization` nagłówka. Oto przykładowe wywołanie interfejsu API tłumaczenia tekstu:
 

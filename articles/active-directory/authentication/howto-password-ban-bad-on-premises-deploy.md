@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4a4b760652ce38e27e12e9eb73fbe7692eddbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8d39b614c373c63cf1405c5db0f64581c481d1f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204376"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417211"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Wersja zapoznawcza: Wdrażanie ochrony haseł usługi Azure AD
 
@@ -53,15 +53,18 @@ Najlepiej jest to realizowane poprzez wdrażanie poprawek w pełni maszyny za po
     |`https://login.microsoftonline.com`|Żądania uwierzytelniania|
     |`https://enterpriseregistration.windows.net`|Funkcjonalność ochrony hasłem usługi AD platformy Azure|
 
+* Wszystkie maszyny, obsługujący usługę Proxy ochrony haseł usługi Azure AD należy skonfigurować w taki sposób, aby umożliwić wychodzący ruch protokołu TLS 1.2 HTTP.
 * Konta administratora globalnego, aby zarejestrować usługę serwera Proxy ochrony haseł usługi Azure AD i lasu w usłudze Azure AD.
 * Konta z uprawnieniami administratora domeny usługi Active Directory w domenie głównej lasu, aby zarejestrować lasu usługi Active Directory systemu Windows Server z usługą Azure AD.
 * Dowolnej domeny usługi Active Directory, uruchamianie kontrolera domeny oprogramowanie usługi agenta należy użyć DFSR do replikacji folderu sysvol.
 
 ## <a name="single-forest-deployment"></a>Wdrożenie pojedynczego lasu
 
-Na poniższym diagramie przedstawiono, jak podstawowe składniki ochrony haseł usługi Azure AD współpracują ze sobą w środowisku usługi Active Directory w środowisku lokalnym.  
+Na poniższym diagramie przedstawiono, jak podstawowe składniki ochrony haseł usługi Azure AD współpracują ze sobą w środowisku usługi Active Directory w środowisku lokalnym.
 
 ![Sposób ochrony haseł usługi Azure AD składniki współpracują ze sobą](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
+
+Przed wdrożeniem jest dobry pomysł, aby sprawdzić, jak działa oprogramowania; zobacz [ochrona za pomocą hasła usługi Azure AD z koncepcyjnym omówieniem](concept-password-ban-bad-on-premises.md).
 
 ### <a name="download-the-software"></a>Pobierz oprogramowanie
 

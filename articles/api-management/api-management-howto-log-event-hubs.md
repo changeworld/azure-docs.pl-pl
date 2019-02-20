@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 77ada606412506e3d3d23189d8a5267e1f58a8f7
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 028b36cc442ccef8af4aa401846cbacdaaab35bf
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733080"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428486"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Jak rejestrowanie zdarzeń w usłudze Azure Event Hubs w usłudze Azure API Management
 Azure Event Hubs to wysoce skalowalna usługa transferu danych przychodzących, która może obsługiwać miliony zdarzeń na sekundę, dzięki czemu możliwe jest przetwarzanie i analizowanie olbrzymich ilości danych wytworzonych przez podłączone urządzenia i aplikacje. Usługa Event Hubs działa jako "drzwi wejściowe" dla potoku zdarzeń i zebrane dane do Centrum zdarzeń mogą zostać przekształcone i zmagazynowane przy użyciu dowolnego dostawcy analiz w czasie rzeczywistym lub adapterów przetwarzania wsadowego/magazynowania. Usługa Event Hubs oddziela wytwarzanie strumienia zdarzeń od użycia tych zdarzeń, dzięki czemu odbiorcy zdarzeń mogą uzyskiwać dostęp do zdarzeń zgodnie z własnym harmonogramem.
@@ -119,7 +119,7 @@ Kliknij przycisk **Zapisz** można zapisać konfiguracji zaktualizowane zasady. 
 * Dowiedz się więcej na temat integracji usługi API Management i centrów zdarzeń
   * [Odwołanie do jednostki rejestratora](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
   * [informacje o zasadach dziennika do Centrum zdarzeń](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
-  * [Monitorowanie za pomocą usługi Azure API Management, Event Hubs i Runscope interfejsów API](api-management-log-to-eventhub-sample.md)  
+  * [Monitorowanie za pomocą usługi Azure API Management, Event Hubs i Moesif interfejsów API](api-management-log-to-eventhub-sample.md)  
 * Dowiedz się więcej o [integracji z usługą Azure Application Insights](api-management-howto-app-insights.md)
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png

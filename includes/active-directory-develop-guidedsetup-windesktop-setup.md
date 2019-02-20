@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 022017015808d72f661f6764e8fa10fdc49e9f61
-ms.sourcegitcommit: 6f59cdc679924e7bfa53c25f820d33be242cea28
+ms.openlocfilehash: 29b7893bbe813ece7cece9d1591dd574158f4482
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48843056"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56409681"
 ---
-## <a name="set-up-your-project"></a>Konfigurowanie projektu
+## <a name="set-up-your-project"></a>konfigurowanie projektu
 
 W tej sekcji utworzysz nowy projekt w celu zademonstrowania sposobu integrowania aplikacji Windows Desktop .NET (XAML) z *Zaloguj się przy użyciu Microsoft* tak, aby aplikację można wykonać zapytanie interfejsów API sieci Web, które wymagają tokenu.
 
@@ -33,17 +33,17 @@ Aplikacji, utworzonej za pomocą tego przewodnika przedstawia przycisk, który s
 
 Aby utworzyć aplikację, wykonaj następujące czynności:
 
-1. W programie Visual Studio, wybierz **pliku** > **New** > **projektu**.
+1. W programie Visual Studio wybierz pozycje **Plik** > **Nowy** > **Projekt**.
 2. W obszarze **szablony**, wybierz opcję **Visual C#**.
 3. Wybierz **aplikacja WPF (.NET Framework)**, w zależności od wersji programu Visual Studio w wersji korzystasz.
 
 ## <a name="add-msal-to-your-project"></a>Dodawanie biblioteki MSAL do projektu
 
-1. W programie Visual Studio, wybierz **narzędzia** > **Menedżera pakietów NuGet**> **Konsola Menedżera pakietów**.
+1. W programie Visual Studio wybierz pozycję **Narzędzia** > **Menedżer pakietów NuGet**> **Konsola menedżera pakietów**.
 2. W oknie Konsola Menedżera pakietów Wklej następujące polecenia programu Azure PowerShell:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre
+    Install-Package Microsoft.Identity.Client
     ```
 
     > [!NOTE] 

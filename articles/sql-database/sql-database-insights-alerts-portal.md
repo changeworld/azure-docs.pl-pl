@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e53d77c4faea5b9461395a0098261866bdf6252f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156906"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430436"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Tworzenie alertów dla usługi Azure SQL Database i Data Warehouse przy użyciu witryny Azure portal
 
@@ -90,7 +90,7 @@ Po utworzeniu alertu możesz wybrać go oraz:
 | Baza danych SQL | xtp_storage_percent | Percent(Preview) magazynu OLTP w pamięci | Średnia | 5 minut |
 | Baza danych SQL | workers_percent | Procent pracowników | Średnia | 5 minut |
 | Baza danych SQL | sessions_percent | Procent sesji | Średnia | 5 minut |
-| Baza danych SQL | dtu_limit | Limit liczby jednostek DTU | Średnia | 5 minut |
+| Baza danych SQL | dtu_limit | DTU limit | Średnia | 5 minut |
 | Baza danych SQL | dtu_used | Używane jednostki DTU | Średnia | 5 minut |
 ||||||
 | Pula elastyczna | cpu_percent | Procent użycia procesora CPU | Średnia | 10 minut |
@@ -99,14 +99,13 @@ Po utworzeniu alertu możesz wybrać go oraz:
 | Pula elastyczna | dtu_consumption_percent | Procent użycia jednostek DTU | Średnia | 10 minut |
 | Pula elastyczna | storage_percent | Procent użycia magazynu | Średnia | 10 minut |
 | Pula elastyczna | workers_percent | Procent pracowników | Średnia | 10 minut |
-| Pula elastyczna | eDTU_limit | limit liczby jednostek eDTU | Średnia | 10 minut |
+| Pula elastyczna | eDTU_limit | eDTU limit | Średnia | 10 minut |
 | Pula elastyczna | storage_limit | Limit magazynu | Średnia | 10 minut |
 | Pula elastyczna | eDTU_used | używane jednostki eDTU | Średnia | 10 minut |
 | Pula elastyczna | storage_used | Użyty magazyn | Średnia | 10 minut |
 ||||||               
 | magazyn danych SQL | cpu_percent | Procent użycia procesora CPU | Średnia | 10 minut |
 | magazyn danych SQL | physical_data_read_percent | Procent użycia operacji we/wy na danych | Średnia | 10 minut |
-| magazyn danych SQL | magazyn | Łączny rozmiar bazy danych | Maksimum | 10 minut |
 | magazyn danych SQL | connection_successful | Pomyślnie nawiązane połączenia | Łącznie | 10 minut |
 | magazyn danych SQL | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
 | magazyn danych SQL | blocked_by_firewall | Blokowane przez zaporę | Łącznie | 10 minut |

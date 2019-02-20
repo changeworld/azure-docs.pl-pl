@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b7515a5c22b98fb14499e07057ff52311fc6e67
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: acdd2f5cb345ca5c5462394ae5c6135ad43b2143
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744828"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415714"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariusze obciążeń SAP
 
-Dzięki systemowi Microsoft Azure, możesz się niezawodne uruchamianie scenariuszy i obciążeń o znaczeniu krytycznym SAP na platformie skalowalne, zgodne i sprawdzonym działaniu w przedsiębiorstwach.  Korzystaj ze skalowalności, elastyczności i oszczędności platformy Azure. Dzięki rozszerzonemu partnerstwu między firmami Microsoft i SAP umożliwia uruchamianie aplikacji SAP w środowiskach deweloperskich lub testowych oraz produkcyjnych na platformie Azure — i być w pełni obsługiwane. Od oprogramowania SAP NetWeaver SAP S4/HANA, SAP BI, systemu Linux Windows, SQL oprogramowania SAP HANA mamy potrzebne.
+Dzięki systemowi Microsoft Azure, możesz się niezawodne uruchamianie scenariuszy i obciążeń o znaczeniu krytycznym SAP na platformie skalowalne, zgodne i sprawdzonym działaniu w przedsiębiorstwach.  Korzystaj ze skalowalności, elastyczności i oszczędności platformy Azure. Dzięki rozszerzonemu partnerstwu między firmami Microsoft i SAP umożliwia uruchamianie aplikacji SAP w środowiskach deweloperskich lub testowych oraz produkcyjnych na platformie Azure — i być w pełni obsługiwane. Od oprogramowania SAP NetWeaver SAP S/4HANA, SAP BI Linux do Windows, platformy SAP HANA, SQL, mamy potrzebne.
 
 Oprócz hostowania oprogramowania SAP NetWeaver scenariuszy obejmujących różne systemy DBMS na platformie Azure, możesz hostować różne inne scenariusze obciążeń SAP, takich jak SAP BI na platformie Azure. 
 

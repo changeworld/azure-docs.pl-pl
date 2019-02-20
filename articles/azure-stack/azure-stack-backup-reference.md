@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: ac52e3b824efdbd5277982a7f1939e8aa0deeeb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7930ea86f7972a6e4abb939fb148d519ca924e9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201792"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416721"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Odwołanie do usługi Kopia zapasowa infrastruktury
 
@@ -108,6 +108,23 @@ Infrastruktura kopii zapasowej kontrolera będzie kopię zapasową danych na ż�
 > [!Note]  
 > Nie porty wejściowe muszą być otwarte.
 
+### <a name="encryption-requirements"></a>Wymagania dotyczące szyfrowania
+
+Począwszy od 1901 infrastruktury usługi kopii zapasowej będą używać certyfikatu z kluczem publicznym (. CER) do szyfrowania danych kopii zapasowej i certyfikatu z kluczem prywatnym (. Plik PFX) można odszyfrować danych kopii zapasowej podczas odzyskiwania w chmurze.   
+ - Certyfikat służy do transportu kluczy i nie jest używana do nawiązywania bezpiecznej komunikacji uwierzytelniony. Z tego powodu certyfikat może być certyfikat z podpisem własnym. Usługa Azure Stack nie musimy zweryfikować głównego lub relacji zaufania dla tego certyfikatu, dzięki czemu dostęp do Internetu nie jest wymagana.
+ 
+Certyfikat z podpisem własnym jest oferowana w dwóch części: jeden z kluczem publicznym i jeden przy użyciu klucza prywatnego:
+ - Szyfruj dane kopii zapasowej: Certyfikatu z kluczem publicznym (wyeksportowane do. Plik CER) jest używany do szyfrowania danych kopii zapasowej
+ - Odszyfrowywanie danych kopii zapasowej: Certyfikatu z kluczem prywatnym (wyeksportowane do. Plik PFX) jest używany do odszyfrowywania danych kopii zapasowej
+
+Certyfikat z kluczem publicznym (. CER) nie jest zarządzana przez wewnętrzny obrotu wpisu tajnego. Aby obrócić certyfikatu, należy utworzyć nowy certyfikat z podpisem własnym i zaktualizować ustawienia kopii zapasowej za pomocą nowego pliku (. CER).  
+ - Wszystkie istniejące kopie zapasowe pozostaną zaszyfrowane, przy użyciu poprzedniego klucza publicznego. Nowych kopii zapasowych będzie używać nowego klucza publicznego. 
+ 
+Certyfikat używany podczas odzyskiwania w chmurze przy użyciu klucza prywatnego (. Ze względów bezpieczeństwa PFX) nie jest trwały przez usługę Azure Stack. Ten plik będzie musiał jawnie podana podczas odzyskiwania w chmurze.  
+
+**Wstecz w trybie zgodności** począwszy od 1901 Obsługa kluczy szyfrowania jest przestarzały i zostanie usunięta w przyszłej wersji. Jeśli zaktualizowane z 1811 przy użyciu kopii zapasowej jest już włączony, za pomocą klucza szyfrowania usługi Azure Stack będą w dalszym używać klucza szyfrowania. Wstecz w trybie zgodności będą obsługiwane w wersji co najmniej 3. Po tym czasie będzie wymagany certyfikat. 
+ * Aktualizacji z klucza szyfrowania do certyfikatów jest jednym ze sposobów operacji.  
+ * Wszystkie istniejące kopie zapasowe pozostaną zaszyfrowane, za pomocą klucza szyfrowania. Nowe kopie zapasowe będą posługiwać się certyfikatem. 
 
 ## <a name="infrastructure-backup-limits"></a>Limity kopii zapasowej infrastruktury
 

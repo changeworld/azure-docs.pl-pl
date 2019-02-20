@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 02/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c27c32f19dac4e5394ca5e2f3e3722eccffb49b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a282ef88a5112593d4d8b9e304ec6ad03f44787c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165114"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415871"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Uwierzytelnianie przekazywane usługi Azure Active Directory: Szybki start
 
@@ -54,7 +54,7 @@ Upewnij się, że następujące wymagania wstępne zostały spełnione.
 3. Identyfikowanie jeden lub więcej dodatkowych serwerów (systemem Windows Server 2012 R2 lub nowszym, z protokołem TLS 1.2, włączone) gdzie można uruchomić agentów uwierzytelniania autonomicznego. Te dodatkowe serwery są wymagane, aby zapewnić wysoką dostępność, żądań, aby zalogować się. Dodaj serwery do tego samego lasu usługi Active Directory jako użytkownicy, których hasła, należy dokonać weryfikacji.
 
     >[!IMPORTANT]
-    >W środowiskach produkcyjnych zalecamy czy masz co najmniej 3 agentów uwierzytelniania uruchamiania w dzierżawie. Istnieje limit systemowy wynoszący 12 agentów uwierzytelniania dla dzierżawy. I najlepszych praktyk warto traktować wszystkie serwery uruchomionych agentów uwierzytelniania, w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+    >W środowiskach produkcyjnych zalecamy czy masz co najmniej 3 agentów uwierzytelniania uruchamiania w dzierżawie. Istnieje limit systemowy wynoszący 40 agentów uwierzytelniania dla dzierżawy. I najlepszych praktyk warto traktować wszystkie serwery uruchomionych agentów uwierzytelniania, w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 4. W przypadku zapory między serwerami i usługi Azure AD, skonfiguruj następujące elementy:
    - Upewnij się, że agentów uwierzytelniania mogą przesłać *wychodzącego* żądań do usługi Azure AD za pośrednictwem następujących portów:
@@ -109,7 +109,7 @@ Na tym etapie użytkownicy, z domen zarządzanych w Twojej dzierżawie mogą si�
 Jeśli planujesz wdrożyć uwierzytelnianie przekazywane w środowisku produkcyjnym, należy zainstalować agentów uwierzytelniania dodatkowe autonomiczne. Zainstalowanie tych agentów uwierzytelniania na serwery _innych_ niż jeden uruchomiony program Azure AD Connect. Ta konfiguracja zapewnia wysoką dostępność dla żądań logowania użytkownika.
 
 >[!IMPORTANT]
->W środowiskach produkcyjnych zalecamy czy masz co najmniej 3 agentów uwierzytelniania uruchamiania w dzierżawie. Istnieje limit systemowy wynoszący 12 agentów uwierzytelniania dla dzierżawy. I najlepszych praktyk warto traktować wszystkie serwery uruchomionych agentów uwierzytelniania, w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+>W środowiskach produkcyjnych zalecamy czy masz co najmniej 3 agentów uwierzytelniania uruchamiania w dzierżawie. Istnieje limit systemowy wynoszący 40 agentów uwierzytelniania dla dzierżawy. I najlepszych praktyk warto traktować wszystkie serwery uruchomionych agentów uwierzytelniania, w jak warstwy 0 systemów (zobacz [odwołania](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Wykonaj te instrukcje, aby pobrać oprogramowanie agenta uwierzytelniania:
 

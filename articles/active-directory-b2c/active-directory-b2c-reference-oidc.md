@@ -1,5 +1,5 @@
 ---
-title: Zaloguj się przy użyciu protokołu OpenID Connect w usłudze Azure Active Directory B2C w sieci Web | Dokumentacja firmy Microsoft
+title: Zaloguj się przy użyciu protokołu OpenID Connect — Azure Active Directory B2C w sieci Web | Dokumentacja firmy Microsoft
 description: Tworzenie aplikacji sieci web za pomocą usługi Azure Active Directory implementacji protokołu uwierzytelniania OpenID Connect.
 services: active-directory-b2c
 author: davidmu1
@@ -7,24 +7,25 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c27be7da2aceea8581fd4a5baef96103faa0c1d4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bd7ecf273d4e842909d88eeaa3683203d8d9e841
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107314"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429169"
 ---
-# <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: Logowanie w sieci Web za pomocą protokołu OpenID Connect
-OpenID Connect to protokół uwierzytelniania, korzystających z protokołu OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników do aplikacji sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) wdrażania protokołu OpenID Connect, można zlecają obsługę tworzenia nowych kont i logowania oraz skuteczniejszego innych zarządzania tożsamościami w aplikacjach sieci web w usłudze Azure Active Directory (Azure AD). Ten przewodnik pokazuje, jak to zrobić w sposób niezależny od języka. Przedstawiono sposób wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek skorzystać z bibliotek typu open source.
+# <a name="web-sign-in-with-openid-connect-in-azure-active-directory-b2c"></a>Logowanie w sieci Web z OpenID Connect w usłudze Azure Active Directory B2C
 
-[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu. Dzięki temu można wykonać logowanie jednokrotne przy użyciu protokołu OAuth. Wprowadza pojęcia *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika i uzyskania podstawowych informacji o profilu użytkownika.
+[OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) to protokół uwierzytelniania korzystających z protokołu OAuth 2.0, który może służyć do bezpiecznego logowania użytkowników do aplikacji sieci web. Za pomocą usługi Azure Active Directory B2C (Azure AD B2C) wdrażania protokołu OpenID Connect, można zlecają obsługę tworzenia nowych kont i logowania oraz skuteczniejszego innych zarządzania tożsamościami w aplikacjach sieci web w usłudze Azure Active Directory (Azure AD). Ten przewodnik pokazuje, jak to zrobić w sposób niezależny od języka. Przedstawiono sposób wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek skorzystać z bibliotek typu open source.
 
-Ponieważ stanowi rozszerzenie protokołu OAuth 2.0, umożliwia ona także aplikacje, które można bezpiecznie uzyskać *tokeny dostępu*. Możesz użyć access_tokens dostępu do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md#the-basics). Zalecamy OpenID Connect, jeśli tworzysz aplikację internetową, która jest przechowywana na serwerze i dostępne za pośrednictwem przeglądarki. Jeśli chcesz dodać zarządzania tożsamościami do aplikacji mobilnych i klasycznych za pomocą usługi Azure AD B2C, należy użyć [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) zamiast protokołu OpenID Connect.
+OpenID Connect rozszerza OAuth 2.0 *autoryzacji* protokół do użycia jako *uwierzytelniania* protokołu. Dzięki temu można wykonać logowanie jednokrotne przy użyciu protokołu OAuth. Wprowadza pojęcia *tokenu Identyfikacyjnego*, który jest token zabezpieczający, który umożliwia klientowi do zweryfikowania tożsamości danego użytkownika i uzyskania podstawowych informacji o profilu użytkownika.
 
-Usługa Azure AD B2C rozszerza ze standardowego protokołu OpenID Connect, aby zrobić więcej niż proste uwierzytelnianie i autoryzacja. Wprowadza [parametr przepływ użytkownika](active-directory-b2c-reference-policies.md), który pozwala dodać środowisk użytkowników — takich jak za pomocą protokołu OpenID Connect rejestracji, logowania i zarządzania profilami — do swojej aplikacji. W tym miejscu pokazujemy, jak zaimplementuj każdą z tych środowisk w aplikacji sieci web za pomocą protokołu OpenID Connect i użytkownika przepływów. Ponadto pokażemy sposób uzyskiwania tokenów dostępu do uzyskiwania dostępu do interfejsów API sieci web.
+Ponieważ stanowi rozszerzenie protokołu OAuth 2.0, umożliwia ona także aplikacje, które można bezpiecznie uzyskać *tokeny dostępu*. Tokeny dostępu umożliwia dostęp do zasobów, które są zabezpieczone przez [serwera autoryzacji](active-directory-b2c-reference-protocols.md#the-basics). Zalecamy OpenID Connect, jeśli tworzysz aplikację internetową, która jest przechowywana na serwerze i dostępne za pośrednictwem przeglądarki. Jeśli chcesz dodać zarządzania tożsamościami do aplikacji mobilnych i klasycznych za pomocą usługi Azure AD B2C, należy użyć [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) zamiast protokołu OpenID Connect.
+
+Usługa Azure AD B2C rozszerza ze standardowego protokołu OpenID Connect, aby zrobić więcej niż proste uwierzytelnianie i autoryzacja. Wprowadza [parametr przepływ użytkownika](active-directory-b2c-reference-policies.md), co umożliwia Dodaj doświadczeń użytkowników, takie jak za pomocą protokołu OpenID Connect rejestracji, logowania i zarządzania profilami do swojej aplikacji. Dostawcy tożsamości, które używają protokołu OpenID Connect obejmują [konta Microsoft](active-directory-b2c-setup-msa-app.md) i innych [dostawcy OpenID Connect](active-directory-b2c-setup-oidc-idp.md).
 
 Żądania przykład HTTP w następnej sekcji przy użyciu naszej przykładowej katalogu B2C, fabrikamb2c.onmicrosoft.com, a także naszą przykładową aplikacją https://aadb2cplayground.azurewebsites.neti przepływy użytkownika. Możesz wypróbować żądania samodzielnie za pomocą tych wartości, lub można je zastąpić własnymi.
 Dowiedz się, jak [uzyskać własne przepływy dzierżawy, aplikacji i użytkownika B2C](#use-your-own-b2c-tenant).

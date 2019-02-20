@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dbb94e0dbcb1dccf8ecbc60bca47b2cc3533297c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169976"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429744"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -220,8 +220,6 @@ Ruch sieciowy w sieciach wirtualnych platformy Azure mogą być kontrolowane za 
 * **Sieciowych urządzeń wirtualnych** replikować z działaniem urządzeń, takich jak routery i zapory. Aby uzyskać więcej informacji, zobacz [urządzenia sieciowe](https://azure.microsoft.com/solutions/network-appliances) dokumentu.
 
 Jako usługa zarządzana HDInsight wymaga nieograniczony dostęp do kondycji usługi HDinsight i usług zarządzania, zarówno dla ruchu przychodzącego i wychodzącego z sieci Wirtualnej. Przy użyciu sieciowych grup zabezpieczeń i tras zdefiniowanych przez użytkownika, należy się upewnić, że te usługi nadal może komunikować się z klastrem HDInsight.
-
-HDInsight udostępnia usługi na kilku portów. W przypadku używania innej zapory urządzenie wirtualne, muszą zezwalać na ruch na portach używanych na potrzeby tych usług. Aby uzyskać więcej informacji zobacz sekcję [wymagane porty].
 
 ### <a id="hdinsight-ip"></a> HDInsight przy użyciu sieciowych grup zabezpieczeń i trasy zdefiniowane przez użytkownika
 

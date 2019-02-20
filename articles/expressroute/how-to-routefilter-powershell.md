@@ -1,5 +1,5 @@
 ---
-title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft — usługi ExpressRoute: programu PowerShell: Azure | Dokumentacja firmy Microsoft'
+title: 'Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft — ExpressRoute: Program PowerShell: Azure | Microsoft Docs'
 description: W tym artykule opisano sposób konfigurowania filtrów tras dla Peering firmy Microsoft przy użyciu programu PowerShell
 documentationcenter: na
 services: expressroute
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fc2cfcce57ad15d2bbad3242351492e184e7fd33
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096300"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415300"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurowanie filtrów tras dla komunikacji równorzędnej firmy Microsoft: PowerShell
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "53096300"
 
 Filtry tras to sposób na korzystanie z podzestawu obsługiwanych usług przy użyciu komunikacji równorzędnej firmy Microsoft. Kroki, które w tym artykule ułatwiają konfigurowanie i zarządzanie nimi filtrów tras dla obwodów usługi ExpressRoute.
 
-Usługi Dynamics 365 i usługami Office 365, takich jak Exchange Online, SharePoint Online i Skype dla firm i usługi publiczne platformy Azure, takie jak storage i bazy danych SQL są dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft. Usługi publiczne platformy Azure można wybrać na podstawie poszczególnych regionów i nie może być zdefiniowana dla usługi publicznej. 
+Usługi Dynamics 365 i usługami Office 365, takich jak Exchange Online, SharePoint Online i Skype dla firm i usługi publiczne platformy Azure, takie jak storage i bazy danych SQL są dostępne za pośrednictwem komunikacji równorzędnej firmy Microsoft. Usługi publiczne platformy Azure można wybrać na podstawie poszczególnych regionów i nie może być zdefiniowana dla usługi publicznej.
 
 Podczas komunikacji równorzędnej firmy Microsoft jest skonfigurowany na obwód usługi ExpressRoute, a następnie filtr tras jest dołączona, wszystkie prefiksy, które są wybrane dla tych usług są anonsowane za pośrednictwem sesji protokołu BGP, które są ustanowione. Wartość atrybutu Community protokołu BGP jest dołączana do każdego prefiksu w celu zidentyfikowania usługi oferowanej za pośrednictwem prefiksu. Aby uzyskać listę wartości społeczności BGP i usług mapowania ich na zobacz [społeczności BGP](expressroute-routing.md#bgp).
 
@@ -99,7 +99,7 @@ Wskaż subskrypcję, której chcesz użyć.
 Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
-## <a name="prefixes"></a>Krok 1: Pobierz listę prefiksów i wartości społeczności BGP
+## <a name="prefixes"></a>Krok 1. Pobierz listę prefiksów i wartości społeczności BGP
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1. Pobierz listę wartości społeczności BGP
 
@@ -112,7 +112,7 @@ Get-AzureRmBgpServiceCommunity
 
 Tworzenie listy wartości społeczności BGP, którego chcesz użyć do filtru trasy. Na przykład wartość społeczności BGP dla usługi Dynamics 365 jest 12076:5040.
 
-## <a name="filter"></a>Krok 2: Tworzenie filtru tras i regułę filtru
+## <a name="filter"></a>Krok 2. Tworzenie filtru tras i regułę filtru
 
 Filtr trasy może mieć tylko jedną regułę, a reguła musi być typu "Zezwalaj". Ta zasada może mieć listę wartości społeczności BGP skojarzonych z nim.
 
@@ -142,7 +142,7 @@ $routefilter.Rules.Add($rule)
 Set-AzureRmRouteFilter -RouteFilter $routefilter
 ```
 
-## <a name="attach"></a>Krok 3: Dołącz filtru tras do obwodu usługi ExpressRoute
+## <a name="attach"></a>Krok 3. Dołącz filtru tras do obwodu usługi ExpressRoute
 
 Uruchom następujące polecenie, aby dołączyć filtru tras do obwodu usługi ExpressRoute, przy założeniu, że tylko komunikacji równorzędnej firmy Microsoft:
 

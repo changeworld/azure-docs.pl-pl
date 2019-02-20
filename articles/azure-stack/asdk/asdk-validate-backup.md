@@ -11,12 +11,12 @@ ms.date: 02/15/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 02/15/2019
-ms.openlocfilehash: 6fdec992b19a5615a35955a46fd90102890cde16
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 31c5d068c8fcd0b6edea7cff63098131d848a14e
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329357"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416382"
 ---
 # <a name="use-the-asdk-to-validate-an-azure-stack-backup"></a>Weryfikacja kopii zapasowej usługi Azure Stack za pomocą ASDK
 Po wdrażanie usługi Azure Stack i Inicjowanie obsługi administracyjnej zasobów użytkownika, takich jak oferty, plany, limity przydziału i subskrypcji, wykonaj następujące czynności [włączenia kopii zapasowej infrastruktury usługi Azure Stack](../azure-stack-backup-enable-backup-console.md). Planowanie i uruchamianie infrastruktury regularnego tworzenia kopii zapasowych zapewni, że danych związanych z zarządzaniem infrastrukturą nie zostaną utracone w przypadku poważnej sprzętu lub awaria usługi.
@@ -45,18 +45,35 @@ Poniższy scenariusz **nie** obsługiwana podczas tworzenia kopii zapasowej na A
 ## <a name="cloud-recovery-deployment"></a>Wdrażanie odzyskiwania w chmurze
 Wykonując wdrożenie w chmurze odzyskiwania ASDK można zweryfikować infrastrukturę tworzenia kopii zapasowych z wdrożenia systemów zintegrowanych. W tym typie wdrożenia określonej usługi danych został przywrócony z kopii zapasowej po ASDK została zainstalowana na komputerze-hoście.
 
-
-
 ### <a name="prereqs"></a>Wymagania wstępne dotyczące chmury odzyskiwania
 Przed rozpoczęciem wdrożenie w chmurze odzyskiwania ASDK, upewnij się, że masz następujące informacje:
+
+**Wymagania dotyczące Instalatora interfejsu użytkownika**
+
+*Bieżący Instalator interfejsu użytkownika obsługuje tylko klucz szyfrowania*
 
 |Wymagania wstępne|Opis|
 |-----|-----|
 |Ścieżka udziału kopii zapasowej|Ścieżka udziału plików UNC najnowszej kopii zapasowej usługi Azure Stack, która będzie służyć do odzyskiwania informacji o infrastrukturze Azure Stack. Tego udziału lokalnego zostaną utworzone w procesie wdrażania odzyskiwania chmury.|
-|Kopię zapasową klucza szyfrowania|Opcjonalny. Wymagany tylko, jeśli uaktualniono do wersji usługi Azure Stack, 1901 lub nowszej z poprzedniej wersji usługi Azure Stack z włączoną kopią zapasową.|
 |Identyfikator kopii zapasowej do przywrócenia|Identyfikator kopii zapasowych w formie alfanumeryczne "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", który identyfikuje kopii zapasowej można przywrócić podczas odzyskiwania w chmurze.|
 |Adres IP serwera czasu|Adres IP do serwera z prawidłową godzinę, takich jak 132.163.97.2, jest wymagane do wdrożenia usługi Azure Stack.|
-|Hasło certyfikatu zewnętrznego|Hasło klucza prywatnego jest podpisany certyfikat (pfx), który został użyty do zabezpieczenia kopii zapasowej.|
+|Hasło certyfikatu zewnętrznego|Hasło dla certyfikatu zewnętrznego, używane przez usługę Azure Stack. Kopii zapasowej urzędu certyfikacji zawiera certyfikaty zewnętrzne, które mają być przywracane przy użyciu tego hasła.|
+|Kopię zapasową klucza szyfrowania|Wymagane, jeśli przeprowadzono uaktualnienie do wersji usługi Azure Stack 1901 lub nowszej i wykonywania kopii zapasowych ustawienia nadal są skonfigurowane przy użyciu klucza szyfrowania. Klucz szyfrowania jest przestarzały, począwszy od 1901. Instalator będzie obsługiwać klucz szyfrowania w Wstecz w trybie zgodności w co najmniej 3 wersjach. Po zaktualizowaniu ustawień kopii zapasowej do używania certyfikatu można znaleźć w następnej tabeli wymaganych informacji.|
+
+|     |     | 
+
+**Wymagania dotyczące Instalatora programu PowerShell**
+
+*Bieżący Instalatora programu PowerShell obsługuje szyfrowanie klucza lub odszyfrowywania certyfikatów*
+
+|Wymagania wstępne|Opis|
+|-----|-----|
+|Ścieżka udziału kopii zapasowej|Ścieżka udziału plików UNC najnowszej kopii zapasowej usługi Azure Stack, która będzie służyć do odzyskiwania informacji o infrastrukturze Azure Stack. Tego udziału lokalnego zostaną utworzone w procesie wdrażania odzyskiwania chmury.|
+|Identyfikator kopii zapasowej do przywrócenia|Identyfikator kopii zapasowych w formie alfanumeryczne "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx", który identyfikuje kopii zapasowej można przywrócić podczas odzyskiwania w chmurze.|
+|Adres IP serwera czasu|Adres IP do serwera z prawidłową godzinę, takich jak 132.163.97.2, jest wymagane do wdrożenia usługi Azure Stack.|
+|Hasło certyfikatu zewnętrznego|Hasło dla certyfikatu zewnętrznego, używane przez usługę Azure Stack. Kopii zapasowej urzędu certyfikacji zawiera certyfikaty zewnętrzne, które mają być przywracane przy użyciu tego hasła.|
+|Hasło certyfikacji odszyfrowywania|Opcjonalny. Wymagane tylko w przypadku tworzenia kopii zapasowej są szyfrowane przy użyciu certyfikatu. Hasło jest podpisem certyfikatu (pfx), który zawiera klucz prywatny, która jest wymagany do odszyfrowania danych kopii zapasowej.|
+|Kopię zapasową klucza szyfrowania|Opcjonalny. Wymagane, jeśli przeprowadzono uaktualnienie do wersji usługi Azure Stack 1901 lub nowszej i wykonywania kopii zapasowych ustawienia nadal są skonfigurowane przy użyciu klucza szyfrowania. Instalator będzie obsługiwać klucz szyfrowania w Wstecz w trybie zgodności w co najmniej 3 wersjach. Po zaktualizowaniu ustawień kopii zapasowej do używania certyfikatu musi Podaj hasło dla certyfikatu odszyfrowywania.|
 |     |     | 
 
 ## <a name="prepare-the-host-computer"></a>Przygotuj komputer-host 
@@ -74,17 +91,23 @@ New-SmbShare -Path $azsbackupshare.FullName -FullAccess ($env:computername + "\A
 
 Następnie skopiuj najnowsze pliki kopii zapasowej usługi Azure Stack do nowo utworzonego udziału. Powinien być strukturę folderów w ramach udziału: `\\<ComputerName>\AzSBackups\MASBackup\<BackupID>\`.
 
+Na koniec skopiuj odszyfrowywania certyfikatu (pfx) do katalogu certyfikatu: `C:\CloudDeployment\Setup\Certificates\` i zmień jego nazwę na `BackupDecryptionCert.pfx`.
+
 ## <a name="deploy-the-asdk-in-cloud-recovery-mode"></a>Wdrażanie ASDK w trybie odzyskiwania w chmurze
-**InstallAzureStackPOC.ps1** skryptu jest używany do inicjowania odzyskiwania w chmurze. 
 
 > [!IMPORTANT]
-> Instalacja ASDK obsługuje dokładnie jeden karta interfejsu sieciowego (NIC) dla sieci. Jeśli masz wiele kart sieciowych, upewnij się, że włączone jest tylko jeden (i wszystkie inne są wyłączone) przed uruchomieniem skryptu wdrażania.
+> 1. Interfejs użytkownika Instalatora bieżącego obsługuje tylko klucz szyfrowania. Może tylko sprawdzić kopii zapasowych z systemów, które nadal używać klucza szyfrowania. Jeśli kopia zapasowa została zaszyfrowana na zintegrowany system lub ASDK przy użyciu certyfikatu, musisz użyć Instalatora programu PowerShell (**InstallAzureStackPOC.ps1**). 
+> 2. Instalator programu PowerShell (**InstallAzureStackPOC.ps1**) obsługuje szyfrowanie klucza lub certyfikat.
+> 3. Instalacja ASDK obsługuje dokładnie jeden karta interfejsu sieciowego (NIC) dla sieci. Jeśli masz wiele kart sieciowych, upewnij się, że włączone jest tylko jeden (i wszystkie inne są wyłączone) przed uruchomieniem skryptu wdrażania.
 
-### <a name="use-the-installer-to-deploy-the-asdk-in-recovery-mode"></a>Wdrażanie ASDK w trybie odzyskiwania przy użyciu Instalatora
+### <a name="use-the-installer-ui-to-deploy-the-asdk-in-recovery-mode"></a>Wdrażanie ASDK w trybie odzyskiwania przy użyciu interfejsu użytkownika Instalatora
 Kroki opisane w tej sekcji pokazano, jak wdrożyć ASDK przy użyciu graficznego interfejsu użytkownika (GUI) dostarczonych przez pobranie i uruchomienie **asdk installer.ps1** skrypt programu PowerShell.
 
 > [!NOTE]
 > Interfejs użytkownika Instalatora programu Azure Stack Development Kit jest skrypt open source, na podstawie usługi WCF i programu PowerShell.
+
+> [!IMPORTANT]
+> Interfejs użytkownika Instalatora bieżącego obsługuje tylko klucz szyfrowania.
 
 1. Po uruchomieniu pomyślnie komputera hosta do obrazu CloudBuilder.vhdx, określony zalogować się przy użyciu poświadczeń administratora, gdy użytkownik [przygotowanym komputerze-hoście development kit](asdk-prepare-host.md) ASDK instalacji. Powinna to być taka sama jak poświadczenia administratora lokalnego development kit hosta.
 2. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i uruchom  **&lt;litera dysku > \AzureStack_Installer\asdk-installer.ps1** skrypt programu PowerShell. Skrypt mogą być teraz na innym dysku niż C:\ na obrazie CloudBuilder.vhdx. Kliknij przycisk **odzyskać**.
@@ -117,26 +140,64 @@ Kroki opisane w tej sekcji pokazano, jak wdrożyć ASDK przy użyciu graficznego
 
 
 ### <a name="use-powershell-to-deploy-the-asdk-in-recovery-mode"></a>Aby wdrożyć ASDK w trybie odzyskiwania przy użyciu programu PowerShell
+
 Zmodyfikuj następujące polecenia programu PowerShell dla danego środowiska, a następnie uruchom je wdrożyć ASDK w trybie odzyskiwania w chmurze:
+
+**Użyj skryptu InstallAzureStackPOC.ps1 do inicjowania odzyskiwania w chmurze przy użyciu klucza szyfrowania.**
 
 ```powershell
 cd C:\CloudDeployment\Setup     
-$adminPass = Get-Credential Administrator
-$key = ConvertTo-SecureString "<Your backup encryption key>" -AsPlainText -Force ` 
-$certPass = Read-Host -AsSecureString  
+$adminpass = Read-Host -AsSecureString -Prompt "Local Administrator password"
+$certPass = Read-Host -AsSecureString -Prompt "Password for the external certificate"
+$backupstorecredential = Read-Host -AsSecureString -Prompt "Credential for backup share"
+$key = Read-Host -AsSecureString -Prompt "Your backup encryption key"
 
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -BackupStorePath ("\\" + $env:COMPUTERNAME + "\AzSBackups") `
--BackupEncryptionKeyBase64 $key -BackupStoreCredential $adminPass -BackupId "<Backup ID to restore>" `
--TimeServer "<Valid time server IP>" -ExternalCertPassword $certPass
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass `
+ -BackupStorePath ("\\" + $env:COMPUTERNAME + "\AzSBackups") `
+ -BackupEncryptionKeyBase64 $key `
+ -BackupStoreCredential $backupstorecredential `
+ -BackupId "<Backup ID to restore>" `
+ -TimeServer "<Valid time server IP>" -ExternalCertPassword $certPass
 ```
 
-## <a name="restore-infrastructure-data-from-backup"></a>Przywracanie infrastruktury danych z kopii zapasowej
+**Użyj skryptu InstallAzureStackPOC.ps1 do inicjowania odzyskiwania w chmurze przy użyciu certyfikatu odszyfrowywania.**
+
+```powershell
+cd C:\CloudDeployment\Setup     
+$adminpass = Read-Host -AsSecureString -Prompt "Local Administrator password"
+$certPass = Read-Host -AsSecureString -Prompt "Password for the external certificate"
+$backupstorecredential = Read-Host -AsSecureString -Prompt "Credential for backup share"
+$decryptioncertpassword  = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
+
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass `
+ -BackupStorePath ("\\" + $env:COMPUTERNAME + "\AzSBackups") `
+ -BackupDecryptionCertPassword $decryptioncertpassword `
+ -BackupStoreCredential $backupstorecredential `
+ -BackupId "<Backup ID to restore>" `
+ -TimeServer "<Valid time server IP>" -ExternalCertPassword $certPass
+```
+
+## <a name="complete-cloud-recovery"></a>Odzyskiwania kompletnego cloud 
 Po wdrożeniu pomyślne chmury odzyskiwania, należy wykonać przy użyciu przywracania **AzureStack przywracania** polecenia cmdlet. 
 
 Po zalogowaniu się jako operatora infrastruktury Azure Stack [instalacji programu Azure Stack PowerShell](asdk-post-deploy.md#install-azure-stack-powershell) i uruchom następujące polecenia, aby określić certyfikat i hasło do użycia podczas przywracania z kopii zapasowej:
 
+**Tryb odzyskiwania przy użyciu pliku certyfikatu**
+
+> [!NOTE] 
+> Wdrożenie usługi Azure Stack zostały usunięte podczas instalacji certyfikatu odszyfrowywania ze względów bezpieczeństwa. Musisz podać certyfikat odszyfrowywania i skojarzone hasło ponownie.
+
 ```powershell
-Restore-AzsBackup -Name "<BackupID>"
+$decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
+Restore-AzsBackup -ResourceId "<BackupID>" `
+ -DecryptionCertPath "<path to decryption certificate with file name (.pfx)>" `
+ -DecryptionCertPassword $decryptioncertpassword
+```
+
+**Tryb odzyskiwania przy użyciu klucza szyfrowania**
+```powershell
+$decryptioncertpassword = Read-Host -AsSecureString -Prompt "Password for the decryption certificate"
+Restore-AzsBackup -ResourceId "<BackupID>"
 ```
 
 Oczekiwania 60 minut po wywoływania tego polecenia cmdlet można uruchomić weryfikacji kopii zapasowej danych w chmurze odzyskaniu ASDK.

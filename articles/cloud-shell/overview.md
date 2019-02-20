@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 1ad85a57762ae4fba30e1699b38eaa52d45ab26e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4195016bb029d2cf8f5042a853fa591609bd486e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447211"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428537"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie usługi Azure Cloud Shell
 Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure.
@@ -53,7 +53,7 @@ Usługa cloud Shell jest zarządzany przez firmę Microsoft, więc pochodzi ona 
 Wyświetlić pełne [listę narzędzia zainstalowane w usłudze Cloud Shell.](features.md#tools)
 
 ### <a name="integrated-cloud-shell-editor"></a>Zintegrowane edytora usługi Cloud Shell
-Usługa cloud Shell oferuje zintegrowane graficzny Edytor oparty na edytorze Monaco typu open source. Po prostu Utwórz i edytuj pliki konfiguracji, uruchamiając `code .` zapewnia bezproblemowe wdrożenie za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub programu Azure PowerShell.
+Usługa cloud Shell oferuje zintegrowane graficzny Edytor oparty na edytorze Monaco typu open source. Po prostu Utwórz i edytuj pliki konfiguracji, uruchamiając `code .` zapewnia bezproblemowe wdrożenie za pomocą wiersza polecenia platformy Azure lub programu Azure PowerShell.
 
 [Dowiedz się więcej na temat edytora usługi Cloud Shell](using-cloud-shell-editor.md).
 
@@ -68,7 +68,7 @@ Usługa cloud Shell jest elastyczne narzędzie, które mogą być używane:
 * [Dokumentacja interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure)
 * [Dokumentacja usługi Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview)
 * [Aplikacja mobilna platformy Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
-* [Rozszerzenie kodu Azure Account programu VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
+* [Visual Studio rozszerzenie Azure Account Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Połącz magazyn plików pakietu Microsoft Azure
 Cloud Shell maszyn są tymczasowe i wymagają nowego lub istniejącego udziału plików platformy Azure ma zostać zainstalowany jako `clouddrive` do utrwalania plików.

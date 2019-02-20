@@ -15,12 +15,12 @@ ms.date: 01/16/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 5daf60669d6e647fc1060bb5ac172b777c9559c5
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 23adf2903a50727d920e4a20b8a325313fa39e2a
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512299"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428011"
 ---
 # <a name="azure-stack-registration"></a>Rejestracja w usłudze Azure Stack
 Instalacja usługi Azure Stack Development Kit (ASDK) można zarejestrować za pomocą platformy Azure, aby pobieranie elementów portalu marketplace z platformy Azure i Ustaw dane handlu odsyłanie do firmy Microsoft. Rejestracja jest wymagany do obsługi pełnego funkcje usługi Azure Stack, w tym portalu marketplace syndykacji. Aby umożliwić testowanie ważnych funkcji usługi Azure Stack, takich jak syndykacji portalu marketplace i raportowanie użycia, wymagana jest rejestracja. Po zarejestrowaniu usługi Azure Stack, użycie jest zgłaszany do handlu platformy Azure. Można to sprawdzić w ramach subskrypcji, których użyto podczas rejestracji. Jednak użytkownicy ASDK nie są naliczane za dotychczasowe użycie raportowane.
@@ -48,7 +48,7 @@ Wykonaj następujące kroki, aby zarejestrować ASDK z platformą Azure.
 
 1. Otwórz konsolę programu PowerShell jako administrator.  
 
-2. Uruchom następujące polecenia programu PowerShell w celu rejestrowania instalacji ASDK na platformie Azure. Musisz zalogować się do subskrypcji platformy Azure i lokalnej instalacji ASDK. Jeśli nie masz subskrypcji platformy Azure, ale możesz [Utwórz w tym miejscu Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?b=17.06). Rejestrowanie usługi Azure Stack jest naliczana opłata bez kosztów związanych z subskrypcją platformy Azure.<br><br>Ustawić unikatową nazwę dla rejestracji po uruchomieniu **AzsRegistration zestaw** polecenia cmdlet. **RegistrationName** parametr ma wartość domyślną **AzureStackRegistration**. Jednak jeśli używasz tej samej nazwie w więcej niż jedno wystąpienie usługi Azure Stack, skrypt zakończy się niepowodzeniem.
+2. Uruchom następujące polecenia programu PowerShell w celu rejestrowania instalacji ASDK na platformie Azure. Musisz zalogować się do zarówno identyfikator subskrypcji Azure, jak i lokalnej instalacji ASDK. Jeśli nie masz rozliczeń identyfikator subskrypcji platformy Azure, ale możesz [Utwórz w tym miejscu Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?b=17.06). Rejestrowanie usługi Azure Stack jest naliczana opłata bez kosztów związanych z subskrypcją platformy Azure.<br><br>Ustawić unikatową nazwę dla rejestracji po uruchomieniu **AzsRegistration zestaw** polecenia cmdlet. **RegistrationName** parametr ma wartość domyślną **AzureStackRegistration**. Jednak jeśli używasz tej samej nazwie w więcej niż jedno wystąpienie usługi Azure Stack, skrypt zakończy się niepowodzeniem.
 
     ```PowerShell  
     # Add the Azure cloud subscription environment name. 

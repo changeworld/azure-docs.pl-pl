@@ -14,12 +14,12 @@ ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 6d82410e07e725b13385f6ff2b57218c1146a80a
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 40973fbdd1965eb84776fc9365718c65fa0149a7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329300"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416993"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
@@ -205,7 +205,7 @@ Do łączenia z usługą Azure Stack, należy użyć następujących czynności:
       ```
 
       > [!NOTE]
-      > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login command` bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
+      > Jeśli Twoje konto użytkownika ma włączonego uwierzytelniania wieloskładnikowego, możesz użyć `az login` polecenia bez podawania `-u` parametru. Uruchomienie tego polecenia zapewnia adresu URL i kodu, które muszą użyć do uwierzytelniania.
    
       * Zaloguj się jako *nazwy głównej usługi*: Przed zalogowaniem, [utworzyć nazwę główną usługi za pośrednictwem witryny Azure portal](azure-stack-create-service-principals.md) lub interfejsu wiersza polecenia i przypisz mu roli. Teraz Zaloguj się przy użyciu następującego polecenia:
 

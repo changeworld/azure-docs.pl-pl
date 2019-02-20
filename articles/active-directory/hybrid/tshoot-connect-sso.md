@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9eebd695cbbc1e29ea7d2647b5955bcc2e3cfe4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a86ce8c061450fd66b31a81ec00e51f98a39646
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175918"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415650"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -82,8 +82,8 @@ Poniższa lista kontrolna umożliwia rozwiązywanie problemów bezproblemowe log
 - Upewnij się, że konto użytkownika zostało z lasu usługi Active Directory, w którym bezproblemowe logowanie Jednokrotne zostało skonfigurowane.
 - Upewnij się, że urządzenie jest połączone z siecią firmową.
 - Upewnij się, że urządzenia czas jest zsynchronizowany z czasem w usługi Active Directory i kontrolery domeny i że są one w ciągu pięciu minut od siebie.
-- Upewnij się, że `AZUREADSSOACCT` konto komputera jest obecny i włączona w każdym lesie usługi AD, która ma włączone bezproblemowe logowanie Jednokrotne. Jeśli konto komputera został usunięty lub nie istnieje, możesz użyć [poleceń cmdlet programu PowerShell](#manual-reset-of-the-feature) ich ponownego utworzenia.
-- Listy istniejące bilety Kerberos na urządzeniu za pomocą `klist` polecenie w wierszu polecenia. Upewnij się, że bilety wystawione dla `AZUREADSSOACCT` istnieją konta komputera. Bilety Kerberos konta użytkowników są zwykle prawidłowe przez 10 godzin. W usłudze Active Directory, może mieć różne ustawienia.
+- Upewnij się, że `AZUREADSSOACC` konto komputera jest obecny i włączona w każdym lesie usługi AD, która ma włączone bezproblemowe logowanie Jednokrotne. Jeśli konto komputera został usunięty lub nie istnieje, możesz użyć [poleceń cmdlet programu PowerShell](#manual-reset-of-the-feature) ich ponownego utworzenia.
+- Listy istniejące bilety Kerberos na urządzeniu za pomocą `klist` polecenie w wierszu polecenia. Upewnij się, że bilety wystawione dla `AZUREADSSOACC` istnieją konta komputera. Bilety Kerberos konta użytkowników są zwykle prawidłowe przez 10 godzin. W usłudze Active Directory, może mieć różne ustawienia.
 - Jeśli wyłączona, a następnie ponownie włączyć bezproblemowe logowanie Jednokrotne w dzierżawie, użytkownicy nie otrzymywali funkcji logowania jednokrotnego do momentu ich w pamięci podręcznej bilety protokołu Kerberos mogły wygasnąć.
 - Wyczyść istniejące bilety Kerberos z urządzenia przy użyciu `klist purge` polecenia, a następnie spróbuj ponownie.
 - Aby ustalić, czy istnieją problemy dotyczące języka JavaScript, przejrzyj dzienniki konsoli z przeglądarki (w obszarze **narzędzi deweloperskich**).
@@ -123,7 +123,7 @@ Jeśli rozwiązywania problemów nie pomogły, możesz ręcznie zresetować tę 
     >[!NOTE]
     >Używamy nazwy użytkownika administratora domeny, podany w użytkownika głównej nazwy (UPN) (johndoe@contoso.com) format lub kwalifikowana konta sam formacie nazwy domeny (contoso\johndoe lub contoso.com\johndoe), można znaleźć zamierzony lasu usługi AD. Jeśli używasz nazwy kwalifikowanej konta sam domeny, używamy część domeny nazwa użytkownika do [zlokalizować kontrolera domeny z administratora domeny przy użyciu systemu DNS](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Jeśli zamiast tego należy użyć nazwy UPN możemy [przekształca ją do nazwy kwalifikowanej konta sam domeny](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa) przed lokalizowanie odpowiedniego kontrolera domeny.
 
-2. Wywołaj `Disable-AzureADSSOForest -OnPremCredentials $creds`. To polecenie usuwa `AZUREADSSOACCT` konto komputera z lokalnego kontrolera domeny dla tego określonego lasu usługi Active Directory.
+2. Wywołaj `Disable-AzureADSSOForest -OnPremCredentials $creds`. To polecenie usuwa `AZUREADSSOACC` konto komputera z lokalnego kontrolera domeny dla tego określonego lasu usługi Active Directory.
 3. Powtórz te czynności dla każdego lasu usługi Active Directory, w którym po skonfigurowaniu funkcji.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Krok 4: Włącz bezproblemowe logowanie Jednokrotne dla każdego lasu usługi Active Directory

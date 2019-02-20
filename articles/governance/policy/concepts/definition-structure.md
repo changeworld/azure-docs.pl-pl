@@ -4,17 +4,17 @@ description: W tym artykule opisano, jak zasobu definicji zasad jest używany pr
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/11/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5a16edcb702db21b357c437b920e870a65fb155a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 9dc6407a222adb06f4139d9973c168911e0faca8
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270168"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429676"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -80,7 +80,7 @@ Wszystkie przykłady usługi Azure Policy znajdują się na [Przykłady zasad](.
 
 Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadków. Wszystkie definicje zasad, została utworzona za pośrednictwem portalu użycia `all` trybu. Jeśli używasz programu PowerShell lub wiersza polecenia platformy Azure, możesz określić **tryb** parametru ręcznie. Jeśli nie zawiera definicji zasad **tryb** wartości, jego wartość domyślna to `all` w programie Azure PowerShell i do `null` w interfejsie wiersza polecenia platformy Azure. A `null` tryb jest taki sam, jak przy użyciu `indexed` do zapewnienia obsługi zgodności.
 
-`indexed` należy używać podczas tworzenia zasad, które wymuszają tagów lub lokalizacji. Chociaż nie jest to wymagane, zapobiega zasoby, które nie obsługują tagów i lokalizacji wyświetlane jako niezgodne w wyniki sprawdzania zgodności. Wyjątek stanowi **grup zasobów**. Należy ustawić zasady, które wymuszają lokalizacji lub tagów w grupie zasobów **tryb** do `all` i docelowy specjalnie `Microsoft.Resources/subscriptions/resourceGroup` typu. Aby uzyskać przykład, zobacz [wymusić tagi z grupy zasobów](../samples/enforce-tag-rg.md).
+`indexed` należy używać podczas tworzenia zasad, które wymuszają tagów lub lokalizacji. Chociaż nie jest to wymagane, zapobiega zasoby, które nie obsługują tagów i lokalizacji wyświetlane jako niezgodne w wyniki sprawdzania zgodności. Wyjątek stanowi **grup zasobów**. Należy ustawić zasady, które wymuszają lokalizacji lub tagów w grupie zasobów **tryb** do `all` i docelowy specjalnie `Microsoft.Resources/subscriptions/resourceGroups` typu. Aby uzyskać przykład, zobacz [wymusić tagi z grupy zasobów](../samples/enforce-tag-rg.md).
 
 ## <a name="parameters"></a>Parametry
 
@@ -245,15 +245,41 @@ Obsługiwane są następujące pola:
 - `identity.type`
   - Zwraca typ [tożsamości zarządzanej](../../../active-directory/managed-identities-azure-resources/overview.md) włączona w zasobie.
 - `tags`
-- `tags.<tagName>`
+- `tags['<tagName>']`
+  - Ta składnia nawiasu obsługuje nazwy tagów, zawierających znaki interpunkcyjne, takie jak łącznik, kropką ani spacją.
   - Gdzie **\<tagName\>** jest nazwa tagu do sprawdzania warunku.
-  - Przykład: `tags.CostCenter` gdzie **CostCenter** jest nazwa tagu.
-- `tags[<tagName>]`
-  - Ta składnia nawiasu obsługuje nazwy tagów, które mają okres.
-  - Gdzie **\<tagName\>** jest nazwa tagu do sprawdzania warunku.
-  - Przykład: `tags[Acct.CostCenter]` gdzie **Acct.CostCenter** jest nazwa tagu.
-
+  - Przykłady: `tags['Acct.CostCenter']` gdzie **Acct.CostCenter** jest nazwa tagu.
+- `tags['''<tagName>''']`
+  - Ta składnia nawiasu obsługuje nazwy tagu, które mają apostrofy w nim z podwójnym apostrofy.
+  - Gdzie **"\<tagName\>"** jest nazwa tagu do sprawdzania warunku.
+  - Przykład: `tags['''My.Apostrophe.Tag''']` gdzie **"\<tagName\>"** jest nazwa tagu.
 - Aliasy właściwości — Aby uzyskać listę, zobacz [aliasy](#aliases).
+
+> [!NOTE]
+> `tags.<tagName>`, `tags[tagName]`, i `tags[tag.with.dots]` nadal dopuszczalne sposoby deklarowania pól tagów.
+> Jednak preferowaną wyrażenia są wymienione powyżej.
+
+#### <a name="use-tags-with-parameters"></a>Za pomocą tagów z parametrami
+
+Wartość parametru może być przekazywany do pola tag. Przekazywanie parametru do pola tag zwiększa elastyczność definicji zasad podczas przypisywania zasad.
+
+W poniższym przykładzie `concat` służy do tworzenia wyszukiwanie tag o nazwie wartość pola tagi **tagName** parametru. Jeśli ten znacznik nie istnieje, **Dołącz** efekt służy do dodawania tagów przy użyciu wartości tego samego tagu o nazwie ustawić w grupie zasobów, nadrzędny inspekcji zasobów przy użyciu `resourcegroup()` funkcji wyszukiwania.
+
+```json
+{
+    "if": {
+        "field": "[concat('tags[', parameters('tagName'), ']')]",
+        "exists": "false"
+    },
+    "then": {
+        "effect": "append",
+        "details": [{
+            "field": "[concat('tags[', parameters('tagName'), ']')]",
+            "value": "[resourcegroup().tags[parameters('tagName')]]"
+        }]
+    }
+}
+```
 
 ### <a name="value"></a>Wartość
 
@@ -353,7 +379,7 @@ Wszystkie [funkcje szablonu usługi Resource Manager](../../../azure-resource-ma
 
 Ponadto `field` funkcja jest dostępna z regułami zasad. `field` jest używany głównie z **AuditIfNotExists** i **DeployIfNotExists** do pola odniesienia dla zasobu, które są oceniane. Przykładem użycia tego można zobaczyć w [przykład DeployIfNotExists](effects.md#deployifnotexists-example).
 
-#### <a name="policy-function-examples"></a>Przykłady operacji dotyczących zasad — funkcja
+#### <a name="policy-function-example"></a>Przykład funkcji zasad
 
 Używa w tym przykładzie reguły zasad `resourceGroup` funkcję zasobów w celu uzyskania **nazwa** właściwość w połączeniu z `concat` tablicy i obiektu funkcji do tworzenia `like` warunek, który wymusza Nazwa zasobu, aby rozpocząć nazwą grupy zasobów.
 
@@ -367,24 +393,6 @@ Używa w tym przykładzie reguły zasad `resourceGroup` funkcję zasobów w celu
     },
     "then": {
         "effect": "deny"
-    }
-}
-```
-
-W tym przykładzie reguły zasad użyto `resourceGroup` funkcję zasobów w celu uzyskania **tagi** wartości właściwości tablicy **CostCenter** tagów w grupie zasobów, a następnie dołącza je do **CostCenter**  tagiem na nowy zasób.
-
-```json
-{
-    "if": {
-        "field": "tags.CostCenter",
-        "exists": "false"
-    },
-    "then": {
-        "effect": "append",
-        "details": [{
-            "field": "tags.CostCenter",
-            "value": "[resourceGroup().tags.CostCenter]"
-        }]
     }
 }
 ```

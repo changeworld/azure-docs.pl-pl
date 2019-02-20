@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3bf3dd325af48f99e109f651628883d8f946fdc8
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 24b08bb843b4f1a0eb9f2471cb17b81f2c8ac4d0
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512486"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417537"
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>Informacje o ustawieniach konfiguracji bramy sieci VPN
 
@@ -20,13 +20,15 @@ Tworzenie bramy sieci VPN jest typem bramy sieci wirtualnej, który wysyła zasz
 
 Połączenie bramy sieci VPN zależy od konfiguracji wielu zasobów, z których każdy zawiera konfigurowalnych ustawień. Sekcje w tym artykule omówiono, zasoby i ustawienia, które odnoszą się do bramy sieci VPN dla sieci wirtualnej utworzonej w modelu wdrażania usługi Resource Manager. Możesz znaleźć opisy i diagramy topologii dla każdego rozwiązania połączenia w [VPN Gateway — informacje](vpn-gateway-about-vpngateways.md) artykułu.
 
->[!NOTE]
-> Wartości w tym artykule mają zastosowanie bram sieci VPN (bramy sieci wirtualnej, które używają zmienna-GatewayType Vpn). Ten artykuł nie obejmuje wszystkie typy bram lub bram strefowo nadmiarowe.
->
->* Aby uzyskać wartości, które są stosowane do klasy-GatewayType "ExpressRoute", zobacz [bramy sieci wirtualnej dla usługi ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
->* Strefowo nadmiarowe bram, zobacz [o bramach strefowo nadmiarowe](about-zone-redundant-vnet-gateways.md).
->* Dla wirtualnej sieci WAN, zobacz [o wirtualne sieci WAN](../virtual-wan/virtual-wan-about.md). 
->
+Wartości w tym artykule mają zastosowanie bram sieci VPN (bramy sieci wirtualnej, które używają zmienna-GatewayType Vpn). Ten artykuł nie obejmuje wszystkie typy bram lub bram strefowo nadmiarowe.
+
+* Aby uzyskać wartości, które są stosowane do klasy-GatewayType "ExpressRoute", zobacz [bramy sieci wirtualnej dla usługi ExpressRoute](../expressroute/expressroute-about-virtual-network-gateways.md).
+
+* Strefowo nadmiarowe bram, zobacz [o bramach strefowo nadmiarowe](about-zone-redundant-vnet-gateways.md).
+
+* Dla wirtualnej sieci WAN, zobacz [o wirtualne sieci WAN](../virtual-wan/virtual-wan-about.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="gwtype"></a>Typy bram
 
@@ -42,7 +44,7 @@ Brama sieci VPN wymaga `-GatewayType` *Vpn*.
 Przykład:
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased
 ```
@@ -62,7 +64,7 @@ Jeśli używasz witryny Azure portal do tworzenia bramy sieci wirtualnej usługi
 W poniższym przykładzie programu PowerShell `-GatewaySku` jako VpnGw1. Podczas tworzenia bramy przy użyciu programu PowerShell, musisz najpierw Utwórz konfigurację adresów IP, a następnie użyć zmiennej do odwoływania się do niego. W tym przykładzie zmienna konfiguracyjna jest $gwipconfig.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
+New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'US East' -IpConfigurations $gwipconfig -GatewaySku VpnGw1 `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -101,7 +103,7 @@ W modelu wdrażania usługi Resource Manager każda konfiguracja wymaga typu po�
 W poniższym przykładzie programu PowerShell, możemy utworzyć połączenie S2S, które wymaga typu połączenia *IPsec*.
 
 ```powershell
-New-AzureRmVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
+New-AzVirtualNetworkGatewayConnection -Name localtovon -ResourceGroupName testrg `
 -Location 'West US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
 -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
 ```
@@ -119,7 +121,7 @@ Po utworzeniu bramy sieci wirtualnej nie można zmienić typu sieci VPN. Musisz 
 W poniższym przykładzie programu PowerShell `-VpnType` jako *RouteBased*. Podczas tworzenia bramy musisz upewnić się, że typ -VpnType jest prawidłowy dla danej konfiguracji.
 
 ```powershell
-New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
+New-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -Location 'West US' -IpConfigurations $gwipconfig `
 -GatewayType Vpn -VpnType RouteBased
 ```
@@ -141,21 +143,21 @@ Podczas tworzenia podsieci bramy należy określić liczbę zawartych w niej adr
 W poniższym przykładzie programu PowerShell usługi Resource Manager zawiera podsieć bramy o nazwie GatewaySubnet. Widać, że notacja CIDR Określa rozmiar/27, który daje wystarczającą liczbę adresów IP w przypadku większości konfiguracji, które obecnie istnieją.
 
 ```powershell
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.0.3.0/27
 ```
 
 [!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="lng"></a>Bramy sieci lokalnej
 
-Podczas tworzenia konfiguracji bramy sieci VPN, Brama sieci lokalnej reprezentuje często Twojej lokalizacji lokalnej. W klasycznym modelu wdrażania brama sieci była określana jako lokacja lokalna. 
+ Brama sieci lokalnej różni się od bramą sieci wirtualnej. Podczas tworzenia konfiguracji bramy sieci VPN, Brama sieci lokalnej zazwyczaj reprezentuje Twojej lokalizacji lokalnej. W klasycznym modelu wdrażania brama sieci była określana jako lokacja lokalna.
 
 Nazwij bramy sieci lokalnej, publiczny adres IP lokalnego urządzenia sieci VPN i określić prefiksy adresów, które znajdują się w lokalizacji lokalnej. Azure porównaniem z prefiksy adresów docelowych dla ruchu sieciowego, konsultacje dotyczące konfiguracji, określony dla bramy sieci lokalnej i w związku z tym kieruje pakiety. Należy również określić bramy sieci lokalnej w przypadku konfiguracji sieci wirtualnej między sieciami wirtualnymi, korzystających z połączenia bramy sieci VPN.
 
 W poniższym przykładzie programu PowerShell tworzy nową bramę sieci lokalnej:
 
 ```powershell
-New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
+New-AzLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 
@@ -167,7 +169,7 @@ Aby uzyskać dodatkowe zasoby techniczne i wymagań określonej składni, korzys
 
 | **Wdrożenie klasyczne** | **Resource Manager** |
 | --- | --- |
-| [Program PowerShell](/powershell/module/azurerm.network/#networking) |[Program PowerShell](/powershell/module/azurerm.network#vpn) |
+| [Program PowerShell](/powershell/module/azurerm.network/#networking) |[Program PowerShell](/powershell/module/az.network#vpn) |
 | [Interfejs API REST](https://msdn.microsoft.com/library/jj154113) |[Interfejs API REST](/rest/api/network/virtualnetworkgateways) |
 | Nieobsługiwane | [Interfejs wiersza polecenia platformy Azure](/cli/azure/network/vnet-gateway)|
 

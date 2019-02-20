@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące uaktualnień dla urządzenia w usłud
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 02/19/2019
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: 88077ac965b2abb69be145f29cbadca2ff1128d6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f29556c8f2a5aa727ce80632eaccf5e1ed6d7c1a
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836648"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415548"
 ---
 # <a name="collector-update-release-history"></a>Historia wersji aktualizacji modułu zbierającego
 
@@ -20,14 +20,14 @@ Ten artykuł zawiera podsumowanie uaktualnienia informacji dla urządzenia modu�
 
 Azure Migrate Collector to urządzenie uproszczone, które służy do odnajdywania w lokalnym środowisku vCenter do celów oceny przed migracją na platformę Azure. [Dowiedz się więcej](concepts-collector.md).
 
-## <a name="continuous-discovery-upgrade-versions"></a>Ciągłe odnajdywania: uaktualnienie wersji
+## <a name="continuous-discovery-upgrade-versions"></a>Ciągłe odnajdywania: Uaktualnienie wersji
 
 Uaktualnienie nie jest dla urządzenia ciągłe odnajdywania jest jeszcze dostępne.
 
-## <a name="one-time-discovery-deprecated-now-previous-upgrade-versions"></a>Jednorazowe odnajdywania (przestarzałe teraz): poprzednie wersje uaktualnienia
+## <a name="one-time-discovery-deprecated-now-previous-upgrade-versions"></a>Jednorazowe odnajdywania (przestarzałe teraz): Poprzednie wersje uaktualnienia
 
 > [!NOTE]
-> Urządzenie jednorazowe odnajdywania jest już przestarzały, ta metoda polegać vCenter w ustawieniach statystyk serwera dostępność punktu danych wydajności i zebrane liczniki wydajności średni, które spowodowało niepełną rozmiarów maszyn wirtualnych do migracji na platformę Azure.
+> Urządzenie jednorazowego odnajdywania jest już przestarzałe, ponieważ ta metoda opierała się na ustawieniach statystyk programu vCenter Server w zakresie dostępności punktów danych wydajności i zbierała średnią liczników wydajności, co powodowało określanie zbyt małego rozmiaru maszyn wirtualnych na potrzeby migracji na platformę Azure.
 
 ### <a name="version-10916-released-on-10292018"></a>Wersja 1.0.9.16 (wydane 2018-10/29)
 
@@ -71,7 +71,7 @@ Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania OVA p
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-    Przykład: **C:\>CertUtil - HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)**
+    Przykład: **C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.14.zip SHA256)**
 3. Skopiuj plik zip do urządzenia modułu zbierającego maszyny Wirtualnej.
 4. Kliknij prawym przyciskiem myszy plik zip > **Wyodrębnij wszystkie**.
 5. Kliknij prawym przyciskiem myszy **Setup.ps1** > **Uruchom przy użyciu programu PowerShell**i postępuj zgodnie z instrukcjami instalacji.

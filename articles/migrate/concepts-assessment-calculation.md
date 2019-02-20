@@ -4,14 +4,14 @@ description: Zawiera omówienie obliczenia dotyczące oceny usługi Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: ab4af59b71dada84fd99df0299aeccfd5662d474
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 62683aaf7dda048b5828e9494ba8cafe6c8b8f9f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849177"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417943"
 ---
 # <a name="assessment-calculations"></a>Obliczenia dotyczące oceny
 
@@ -38,7 +38,7 @@ Usługa Azure Migrate monitoruje następujące właściwości lokalnej maszyny W
 **Właściwość** | **Szczegóły** | **Stan gotowości na platformę Azure**
 --- | --- | ---
 **Typ rozruchu** | Platforma Azure obsługuje maszyny wirtualne z typem rozruchu systemu BIOS i UEFI nie. | Warunkowo gotowa, jeśli typ rozruchu to UEFI.
-**Liczba rdzeni** | Liczby rdzeni na komputerach musi być równa lub mniejsza niż maksymalna liczba rdzeni (128) obsługiwanych na Maszynie wirtualnej platformy Azure.<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia rdzenie wykorzystywanych do porównania. Jeśli współczynnik komfortu jest określony w ustawieniach oceny, liczby rdzeni wykorzystywanych jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnych historii wydajności, usługę Azure migrate przydzielone rdzenie, bez stosowania współczynnik komfortu. | Gotowe, jeśli są mniejsze niż lub równe limitów.
+**Cores** | Liczby rdzeni na komputerach musi być równa lub mniejsza niż maksymalna liczba rdzeni (128) obsługiwanych na Maszynie wirtualnej platformy Azure.<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia rdzenie wykorzystywanych do porównania. Jeśli współczynnik komfortu jest określony w ustawieniach oceny, liczby rdzeni wykorzystywanych jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma żadnych historii wydajności, usługę Azure migrate przydzielone rdzenie, bez stosowania współczynnik komfortu. | Gotowe, jeśli są mniejsze niż lub równe limitów.
 **Pamięć** | Rozmiar pamięci maszyny musi być równa lub mniejsza niż maksymalna ilość pamięci (3892 GB dla serii Azure M Standard_M128m&nbsp;<sup>2</sup>) dozwolone na Maszynie wirtualnej platformy Azure. [Dowiedz się więcej](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Jeśli Historia wydajności jest dostępny, usługa Azure Migrate uwzględnia pamięci wykorzystywanych do porównania. Jeśli zostanie określona współczynnik komfortu, wykorzystywanych pamięci jest mnożony przez współczynnik komfortu.<br/><br/> Jeśli nie ma historii ilość przydzielonej pamięci jest używany bez stosowania współczynnik komfortu.<br/><br/> | Gotowe, jeśli komputer znajduje się w granicach.
 **Dysk magazynu** | Przydzielony rozmiar dysku musi być 4 TB (4096 GB) lub mniej.<br/><br/> Liczba dysków dołączonych do maszyny musi być 65 lub mniej, łącznie z dysku systemu operacyjnego. | Gotowe, jeśli komputer znajduje się w granicach.
 **Sieć** | Maszyna musi być 32 lub najwyżej dwie karty sieciowe podłączone do niego. | Gotowe, jeśli komputer znajduje się w granicach.
@@ -68,7 +68,7 @@ Inne systemy operacyjne<br/><br/> np. Oracle Solaris, itp. system operacyjny Mac
 System operacyjny określony jako **innych** w programie vCenter Server | Usługa Azure Migrate nie może zidentyfikować w takim przypadku system operacyjny. | Nieznana gotowość. Upewnij się, że system operacyjny działający na maszynie Wirtualnej jest obsługiwana na platformie Azure.
 32-bitowych systemach operacyjnych | Maszynę można uruchomić na platformie Azure, ale Azure mogą nie zapewnić pełną pomoc techniczną. | Warunkowo gotowa na platformę Azure, Rozważ uaktualnienie systemu operacyjnego maszyny z 32-bitowego systemu operacyjnego do 64-bitowego systemu operacyjnego przed migracją na platformę Azure.
 
-## <a name="sizing"></a>Zmiana rozmiaru
+## <a name="sizing"></a>Ustalanie rozmiaru
 
 Po maszyny jest oznaczony jako gotowa na platformę Azure, usługa Azure Migrate rozmiarów maszyny Wirtualnej i jej dysków na platformie Azure. Jeśli kryterium ustalania rozmiaru określone we właściwościach oceny do ustalenia rozmiaru na podstawie wydajności Usługa Azure Migrate uwzględnia historii wydajności maszyn do identyfikowania typu dysk i rozmiar maszyny Wirtualnej na platformie Azure. Ta metoda jest przydatne w scenariuszach, gdzie ma nadmierną alokację maszyny Wirtualnej w środowisku lokalnym, ale wykorzystanie jest niskie, i chcesz odpowiedni rozmiar maszyn wirtualnych na platformie Azure koszty.
 
@@ -94,7 +94,7 @@ W przypadku ustalania rozmiaru na podstawie wydajności, usługi Azure Migrate r
     - Wraz z wydajność sieci, uwzględniane są również obowiązujące Jeśli maszyna wirtualna platformy Azure może obsługiwać wymagane liczba kart sieciowych.
     - Jeśli sieci wydajności są dostępne żadne dane, liczba kart sieciowych jest traktowany jako w przypadku ustalania rozmiaru maszyny Wirtualnej.
 
-- **Obliczenia**: po obliczane są wymagania dotyczące magazynu i sieci, usługa Azure Migrate uwzględnia wymagania procesora CPU i pamięci można znaleźć odpowiedniego rozmiaru maszyny Wirtualnej na platformie Azure.
+- **Obliczenia**: Po obliczeniu są wymagania dotyczące magazynu i sieci, usługa Azure Migrate uwzględnia wymagania procesora CPU i pamięci można znaleźć odpowiedniego rozmiaru maszyny Wirtualnej na platformie Azure.
     - Usługa Azure Migrate analizuje wykorzystywanych rdzeni i pamięci, a także obowiązują współczynnik komfortu, aby pobrać efektywne rdzeni i pamięci. Na podstawie tego numeru, próbuje odnaleźć odpowiedniego rozmiaru maszyny Wirtualnej na platformie Azure.
     - Jeśli zostanie znaleziony żaden odpowiedni rozmiar, maszyny jest oznaczony jako nieodpowiedni dla platformy Azure.
     - Jeśli zostanie znaleziony odpowiedni rozmiar, usługa Azure Migrate dotyczy obliczeń magazynu i sieci. Następnie stosuje lokalizacji i ustawień warstwy cenowej, dla końcowego zalecenie dotyczące rozmiaru maszyny Wirtualnej.
@@ -131,8 +131,8 @@ W przypadku ustalania rozmiaru na podstawie wydajności usługa Azure Migrate po
 
 Po zakończeniu zalecenia wymiarowania efektywnego usługi Azure Migrate oblicza koszty zasobów obliczeniowych i magazynu po migracji.
 
-- **Koszt zasobów obliczeniowych**: przy użyciu zalecanego rozmiaru maszyny Wirtualnej platformy Azure, usługę Azure migrate interfejs API rozliczeń można obliczyć koszt miesięczny dla maszyny Wirtualnej. Obliczenie ma systemu operacyjnego, programu software assurance, zarezerwowane wystąpienia, maszyny Wirtualnej przestojów, lokalizacji i ustawienia waluty pod uwagę. Koszty są agregowane dla wszystkich maszyn, aby obliczyć całkowity miesięczny koszt obliczeń.
-- **Koszt usługi Storage**: Magazyn miesięczny koszt maszyny jest obliczana przez zsumowanie miesięczny koszt wszystkich dysków dołączonych do maszyny. Usługa Azure Migrate oblicza całkowity koszt miesięczny magazynu przez agregowanie koszty magazynowania wszystkich maszyn. Obecnie obliczenie nie przyjmuje oferty określone w ustawieniach ocenę pod uwagę.
+- **Koszt zasobów obliczeniowych**: Przy użyciu zalecanego rozmiaru maszyny Wirtualnej platformy Azure, usługa Azure Migrate używa interfejsu API rozliczeń do obliczania miesięczny koszt dla maszyny Wirtualnej. Obliczenie ma systemu operacyjnego, programu software assurance, zarezerwowane wystąpienia, maszyny Wirtualnej przestojów, lokalizacji i ustawienia waluty pod uwagę. Koszty są agregowane dla wszystkich maszyn, aby obliczyć całkowity miesięczny koszt obliczeń.
+- **Koszt usługi Storage**: Miesięczny koszt magazynu dla maszyny jest obliczana przez zsumowanie miesięczny koszt wszystkich dysków dołączonych do maszyny. Usługa Azure Migrate oblicza całkowity koszt miesięczny magazynu przez agregowanie koszty magazynowania wszystkich maszyn. Obecnie obliczenie nie przyjmuje oferty określone w ustawieniach ocenę pod uwagę.
 
 Koszty są wyświetlane w walucie określonej w ustawieniach oceny.
 

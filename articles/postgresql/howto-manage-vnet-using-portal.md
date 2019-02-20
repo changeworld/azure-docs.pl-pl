@@ -6,18 +6,19 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: 6f16428b6e5eacedd32712c6ccb212c376e244e8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3f57f37ce8c0406e45eff68031bd084e5b22063a
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537243"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414587"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Tworzenie i zarządzanie nimi — Azure Database dla punktów końcowych usługi postgresql w warstwie sieci wirtualnej i reguł sieci wirtualnej przy użyciu witryny Azure portal
 Punkty końcowe usługi sieci wirtualnej i reguł rozszerzyć prywatnej przestrzeni adresowej sieci wirtualnej do usługi Azure Database for postgresql w warstwie serwera. Omówienie usługi Azure Database dla punktów końcowych usługi postgresql w warstwie sieci wirtualnej, w tym informacje o ograniczeniach, zobacz [— Azure Database for punkty końcowe usługi sieci wirtualnej serwera PostgreSQL](concepts-data-access-and-security-vnet.md). Punkty końcowe usługi sieci wirtualnej są dostępne we wszystkich obsługiwanych regionów dla usługi Azure Database for PostgreSQL.
 
 > [!NOTE]
 > Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+> W przypadku komunikacji równorzędnej sieci wirtualnych, jeśli ruch przepływają przez ze wspólnej bramy sieci wirtualnej z punktami końcowymi usługi i powinna przepływać do elementu równorzędnego, Utwórz regułę listy ACL/sieci wirtualnej, aby umożliwić maszynom wirtualnym platformy Azure w sieci wirtualnej bramy usługi Azure Database for postgresql w warstwie serwera dostępu do.
 
 ## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Utwórz regułę sieci wirtualnej i włączyć punkty końcowe usługi w witrynie Azure portal
 

@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/07/2018
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: 63d22aaa402c77b55591a15745b258cdd6f0ef0a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bfbafea13f49ada59dae88e0336f926a8ad89d36
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244355"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430254"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i w usłudze Azure Stack
 
@@ -281,7 +281,7 @@ Możesz wykonać instrukcje w [tworzenia połączenia z usługą Azure Resource 
 
 Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 
-| Name | Przykład | Opis |
+| Name (Nazwa) | Przykład | Opis |
 | --- | --- | --- |
 | Nazwa połączenia | Usługa Azure Stack w usłudze Azure AD | Nazwa połączenia. |
 | Środowisko | AzureStack | Nazwa środowiska. |
@@ -306,7 +306,7 @@ Najnowsza aktualizacja DevOps platformy Azure umożliwia tworzenie za pomocą je
 
 Można utworzyć połączenia usługi przy użyciu następującego mapowania:
 
-| Name | Przykład | Opis |
+| Name (Nazwa) | Przykład | Opis |
 | --- | --- | --- |
 | Nazwa połączenia | Azure Stack ADFS | Nazwa połączenia. |
 | Środowisko | AzureStack | Nazwa środowiska. |

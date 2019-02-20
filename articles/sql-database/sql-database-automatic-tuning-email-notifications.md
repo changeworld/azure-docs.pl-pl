@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 1b58401a6697cdc80acc9badaf018923c5a9a980
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: cdd709fa446ffe769c8c57aeb44fe592b12e92d4
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660293"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416120"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail dotyczące automatycznego dostrajania
 
@@ -73,7 +73,7 @@ Następnym krokiem jest utworzenie elementu Runbook w usłudze Azure Automation,
 Wykonaj następujące kroki, aby utworzyć nowy element runbook usługi Azure Automation:
 
 - Dostęp do konta usługi Azure Automation, utworzonej w poprzednim kroku
-- Jeden raz w okienku konta automatyzacji kliknij pozycję "**elementów Runbook**" z menu po lewej stronie, aby utworzyć nowy element runbook usługi Azure Automation za pomocą skryptu programu PowerShell. Aby dowiedzieć się więcej na temat tworzenia elementów runbook usługi automation, zobacz [Tworzenie nowego elementu runbook](../automation/automation-creating-importing-runbook.md).
+- Jeden raz w okienku konta automatyzacji kliknij pozycję "**elementów Runbook**" z menu po lewej stronie, aby utworzyć nowy element runbook usługi Azure Automation za pomocą skryptu programu PowerShell. Aby dowiedzieć się więcej na temat tworzenia elementów runbook usługi automation, zobacz [Tworzenie nowego elementu runbook](../automation/manage-runbooks.md#create-a-runbook).
 - Aby dodać nowy element runbook, kliknij "**+ Dodaj element runbook**" opcję menu, a następnie kliknij pozycję "**szybkie tworzenie — Utwórz nowy element runbook**".
 - W okienku elementu Runbook, wpisz nazwę elementu runbook (na potrzeby tego przykładu "**AutomaticTuningEmailAutomation**" jest używany), wybierz typ elementu runbook jako **PowerShell** i podaj opis Ten element runbook do opisania jej przeznaczenie.
 - Kliknij pozycję **Utwórz** przycisk, aby zakończyć tworzenie nowego elementu runbook

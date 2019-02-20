@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.date: 01/17/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 485837d6235f4868665df2907c01fa1bd26db357
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6fa316452b5b9f56c33de00b96c2cf57c40edfcc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766371"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429659"
 ---
 # <a name="ocr-cognitive-skill"></a>Optyczne rozpoznawanie znaków umiejętności cognitive
 
@@ -53,7 +53,7 @@ Parametrów jest rozróżniana wielkość liter.
 
 | Wprowadź nazwę      | Opis                                          |
 |---------------|------------------------------------------------------|
-| image         | Typ złożony. Obecnie działa z polem "/ dokumentu/normalized_images" utworzony przez indeksatora obiektów Blob platformy Azure po ```imageAction``` ustawiono ```generateNormalizedImages```. Zobacz [przykładowe](#sample-output) Aby uzyskać więcej informacji.|
+| image         | Typ złożony. Obecnie działa z polem "/ dokumentu/normalized_images" utworzony przez indeksatora obiektów Blob platformy Azure po ```imageAction``` jest równa wartości innych niż ```none```. Zobacz [przykładowe](#sample-output) Aby uzyskać więcej informacji.|
 
 
 ## <a name="skill-outputs"></a>Dane wyjściowe umiejętności

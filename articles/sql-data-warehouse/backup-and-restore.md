@@ -10,15 +10,15 @@ ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c9435ba10d69130a634e56992179f11399604fae
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 254d1faf0d846cc6a0e165b68db11ac0314eab33
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747496"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430577"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Kopia zapasowa i przywracanie usługi Azure SQL Data Warehouse
-Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj danych magazynu migawek do odzyskiwania lub skopiuj magazynu danych do poprzedniego punktu przywracania w regionie podstawowym. Użyj danych, Magazyn geograficznie nadmiarowych kopii zapasowych do przywrócenia w innym regionie geograficznym. 
+Dowiedz się, jak działa i przywracania kopii zapasowych w usłudze Azure SQL Data Warehouse. Użyj punktów przywracania magazynu danych do odzyskania lub kopiowania usługi data warehouse do poprzedniego stanu w regionie podstawowym. Użyj danych, Magazyn geograficznie nadmiarowych kopii zapasowych do przywrócenia w innym regionie geograficznym. 
 
 ## <a name="what-is-a-data-warehouse-snapshot"></a>Co to jest migawki magazynu danych?
 A *migawki magazynu danych* tworzy punkt przywracania, można wykorzystać, aby odzyskać lub kopii Hurtownia danych do poprzedniego stanu.  Ponieważ usługa SQL Data Warehouse to Rozproszony system, migawek magazynu danych składa się z wielu plików, które znajdują się w usłudze Azure storage. Migawki przechwytują przyrostowe zmiany w danych przechowywanych w magazynie danych.

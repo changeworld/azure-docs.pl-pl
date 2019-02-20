@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f21f835ea50563497b73fb6e4505f60411029406
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: cd24d4ad026af7d8bce70902376c3a31d659a203
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883002"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427875"
 ---
 # <a name="pass-an-access-token-through-a-custom-policy-to-your-application-in-azure-active-directory-b2c"></a>Przekaż token dostępu za pomocą zasad niestandardowych dla aplikacji w usłudze Azure Active Directory B2C
 
@@ -24,11 +24,11 @@ ms.locfileid: "55883002"
 
 A [zasad niestandardowych](active-directory-b2c-get-started-custom.md) w usłudze Azure Active Directory (Azure AD) B2C umożliwia użytkownikom aplikacji Zarejestruj się lub zaloguj się przy użyciu dostawcy tożsamości. W takiej sytuacji usługa Azure AD B2C odbiera [token dostępu](active-directory-b2c-reference-tokens.md) od dostawcy tożsamości. Usługa Azure AD B2C używa tego tokenu, można pobrać informacji o użytkowniku. Możesz dodać typ oświadczenia i dane wyjściowe oświadczenia do niestandardowych zasad do przekazania tokenu za pośrednictwem aplikacji, które należy zarejestrować w usłudze Azure AD B2C. 
 
-Usługa Azure AD B2C aktualnie obsługuje tylko przekazywanie tokenu dostępu [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) dostawców tożsamości, które obejmują usługi Facebook i [Google](active-directory-b2c-custom-setup-goog-idp.md). W przypadku innych dostawców tożsamości oświadczenie zwracany jest pusty.
+Usługa Azure AD B2C obsługuje przekazywanie tokenu dostępu [OAuth 2.0](active-directory-b2c-reference-oauth-code.md) i [OpenID Connect](active-directory-b2c-reference-oidc.md) dostawców tożsamości. W przypadku innych dostawców tożsamości oświadczenie zwracany jest pusty.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Niestandardowe zasady jest skonfigurowany z dostawcą tożsamości OAuth 2.0.
+- Niestandardowe zasady jest skonfigurowany za pomocą protokołu OAuth 2.0 lub OpenID Connect dostawcy tożsamości.
 
 ## <a name="add-the-claim-elements"></a>Dodawanie elementów oświadczeń 
 
@@ -87,8 +87,8 @@ Podczas testowania aplikacji w usłudze Azure AD B2C, może być przydatne do ma
 ### <a name="upload-the-files"></a>Przekaż pliki
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **struktura środowiska tożsamości**.
 5. Na stronie zasad niestandardowych kliknij **zasady przekazywania**.
 6. Wybierz **Zastąp zasady Jeśli istnieje**, a następnie wyszukaj i wybierz pozycję *TrustframeworkExtensions.xml* pliku.

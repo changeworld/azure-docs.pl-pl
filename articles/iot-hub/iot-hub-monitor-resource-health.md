@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 3b56097f8805b4c6d95256ae1753daf5ded266fb
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8c575c6d34543cbd8f692c64b43cf738b4c22617
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888400"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415633"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów
 
@@ -302,12 +302,118 @@ Kategoria metod bezpośrednich śledzi interakcje odpowiedź na żądanie wysła
             "category": "DirectMethods",
             "level": "Information",
             "durationMs": "1",
-            "properties": "{\"deviceId\":\"<deviceId>\", \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
+            "properties": "{\"deviceId\":<messageSize>, \"RequestSize\": 1, \"ResponseSize\": 1, \"sdkVersion\": \"2017-07-11\"}", 
             "location": "Resource location"
         }
     ]
 }
 ```
+
+#### <a name="distributed-tracing-preview"></a>Rozproszone śledzenie (wersja zapoznawcza)
+
+Kategoria rozproszonego śledzenia śledzi identyfikatorów korelacji dla wiadomości, wykonujących nagłówka kontekstu śledzenia. Aby w pełni włączyć te dzienniki, należy zaktualizować kod po stronie klienta, postępując zgodnie z [analizy i diagnozowania IoT aplikacje end-to-end z rozproszonego śledzenia usługi IoT Hub (wersja zapoznawcza)](iot-hub-distributed-tracing.md).
+
+Należy pamiętać, że `correlationId` i jest zgodny z [kontekst śledzenia W3C](https://github.com/w3c/trace-context) propozycji, gdy zawiera `trace-id` , a także `span-id`. 
+
+##### <a name="iot-hub-d2c-device-to-cloud-logs"></a>Dzienniki (z urządzenia do chmury) D2C Centrum IoT
+
+Usługa IoT Hub rejestruje tego dziennika po umieszczeniu komunikatu zawierającego właściwości prawidłowe śledzenia w usłudze IoT Hub. 
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubD2C",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-0144d2590aacd909-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Receive message success",
+            "durationMs": "",
+            "properties": "{\"messageSize\": 1, \"deviceId\":\"<deviceId>\", \"callerLocalTimeUtc\": : \"2017-02-22T03:27:28.633Z\", \"calleeLocalTimeUtc\": \"2017-02-22T03:27:28.687Z\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+W tym miejscu `durationMs` nie jest obliczana jako zegara usługi IoT Hub może nie być zsynchronizowany z zegara urządzenia, a więc czas trwania obliczeń może być mylące. Firma Microsoft zaleca, pisanie logiki przy użyciu sygnatury czasowe w `properties` sekcji, aby przechwycić wzrostów opóźnienia urządzenia do chmury.
+
+| Właściwość | Typ | Opis |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **messageSize** | Liczba całkowita | Rozmiar komunikatu urządzenia do chmury, w bajtach |
+| **deviceId** | Ciąg znaków alfanumerycznych ASCII 7-bitowego | Tożsamość urządzenia |
+| **callerLocalTimeUtc** | Sygnatura czasowa UTC | Godzina utworzenia komunikatu zgłoszonej zegara lokalnego urządzenia |
+| **calleeLocalTimeUtc** | Sygnatura czasowa UTC | Godzina nadejścia wiadomości w usłudze IoT Hub gateway zgłoszonej przez zegar po stronie usługi IoT Hub |
+
+##### <a name="iot-hub-ingress-logs"></a>Dzienniki transferu danych przychodzących usługi IoT Hub
+
+Usługi IoT Hub rejestruje tego dziennika, gdy komunikat zawierający właściwości śledzenia prawidłowe zapisuje do Centrum zdarzeń w wewnętrznych lub wbudowane.
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubIngress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-349810a9bbd28730-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Ingress message success",
+            "durationMs": "10",
+            "properties": "{\"isRoutingEnabled\": \"true\", \"parentSpanId\":\"0144d2590aacd909\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+W `properties` sekcja, ten dziennik zawiera dodatkowe informacje na temat wiadomości przychodzących
+
+| Właściwość | Typ | Opis |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **isRoutingEnabled** | String | Wartość true lub false, wskazuje, czy routing komunikatów jest włączona w usłudze IoT Hub |
+| **parentSpanId** | String | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) wiadomości nadrzędnego, który w tym przypadku będzie śledzenia komunikatu D2C |
+
+##### <a name="iot-hub-egress-logs"></a>Dzienniki ruchu wychodzącego usługi IoT Hub
+
+Rekordy Centrum IoT, to podczas logowania [routingu](iot-hub-devguide-messages-d2c.md) jest włączony i jest zapisywany komunikat [punktu końcowego](iot-hub-devguide-endpoints.md). Jeśli routingu nie jest włączona, Centrum IoT Hub nie zapisuje ten dziennik.
+
+```json
+{
+    "records": 
+    [
+        {
+            "time": "UTC timestamp",
+            "resourceId": "Resource Id",
+            "operationName": "DiagnosticIoTHubEgress",
+            "category": "DistributedTracing",
+            "correlationId": "00-8cd869a412459a25f5b4f31311223344-98ac3578922acd26-01",
+            "level": "Information",
+            "resultType": "Success",
+            "resultDescription":"Egress message success",
+            "durationMs": "10",
+            "properties": "{\"endpointType\": \"EventHub\", \"endpointName\": \"myEventHub\", \"parentSpanId\":\"349810a9bbd28730\"}", 
+            "location": "Resource location"
+        }
+    ]
+}
+```
+
+W `properties` sekcja, ten dziennik zawiera dodatkowe informacje na temat wiadomości przychodzących
+
+| Właściwość | Typ | Opis |
+|--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
+| **endpointName** | String | Nazwa punktu końcowego routingu |
+| **endpointType** | String | Typ routingu punkt końcowy |
+| **parentSpanId** | String | [Identyfikator zakresu](https://w3c.github.io/trace-context/#parent-id) wiadomości nadrzędnego, który w tym przypadku będzie śledzenie komunikatów przychodzących Centrum IoT Hub |
+
 
 ### <a name="read-logs-from-azure-event-hubs"></a>Czytelne dzienniki z usługi Azure Event Hubs
 

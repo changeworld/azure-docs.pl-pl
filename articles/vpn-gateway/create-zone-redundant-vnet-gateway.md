@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: a0a06ff79d1a48e8fbbc13a8e2410817c020d9a9
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: af72b0255c8e01398048f075134efb452f28b81e
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510038"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417571"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Tworzenie bramy sieci wirtualnej strefowo nadmiarowy w strefy dostępności platformy Azure
 
@@ -21,19 +21,21 @@ Można wdrożyć bramy sieci VPN i ExpressRoute w strefach dostępności platfor
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Możesz użyć programu PowerShell zainstalowane lokalnie na komputerze lub w usłudze Azure Cloud Shell. Jeśli zdecydujesz się zainstalować i korzystać z programu PowerShell lokalnie, ta funkcja wymaga najnowszej wersji modułu programu PowerShell.
 
 [!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ### <a name="to-use-powershell-locally"></a>Przy użyciu programu PowerShell lokalnie
 
-Jeśli używasz programu PowerShell lokalnie na komputerze, a nie przy użyciu usługi Cloud Shell, musisz zainstalować moduł PowerShell 6.1.1 lub nowszej. Aby sprawdzić wersję programu PowerShell, który został zainstalowany, użyj następującego polecenia:
+Jeśli używasz programu PowerShell lokalnie na komputerze, a nie przy użyciu usługi Cloud Shell, musisz zainstalować moduł PowerShell 1.0.0 lub nowszym. Aby sprawdzić wersję programu PowerShell, który został zainstalowany, użyj następującego polecenia:
 
 ```azurepowershell
-Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
+Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
 ```
 
-Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps).
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
@@ -62,15 +64,15 @@ $GwIPConf1   = "gwipconf1"
 Utwórz grupę zasobów.
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName $RG1 -Location $Location1
+New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 ```
 
 Utwórz sieć wirtualną.
 
 ```azurepowershell-interactive
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
-$besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
-$vnet = New-AzureRmVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
+$fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
+$besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
+$vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
 ## <a name="gwsub"></a>3. Dodaj podsieć bramy
@@ -80,14 +82,14 @@ Podsieć bramy zawiera zastrzeżone adresy IP, z których korzystają usługi br
 Dodaj podsieć bramy.
 
 ```azurepowershell-interactive
-$getvnet = Get-AzureRmVirtualNetwork -ResourceGroupName $RG1 -Name VNet1
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $getvnet
+$getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name VNet1
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $getvnet
 ```
 
 Ustaw konfigurację podsieci bramy dla sieci wirtualnej.
 
 ```azurepowershell-interactive
-$getvnet | Set-AzureRmVirtualNetwork
+$getvnet | Set-AzVirtualNetwork
 ```
 ## <a name="publicip"></a>4. Przesłanie żądania dotyczącego publicznego adresu IP
  
@@ -98,7 +100,7 @@ W tym kroku wybierz instrukcje, które są stosowane do bramy, która ma zostać
 Żądanie publicznego adresu IP za pomocą **standardowa** jednostki SKU publicznego adresu IP, a nie określać żadnej strefy. W tym przypadku standardowego publicznego adresu IP utworzonego będzie strefowo nadmiarowy publiczny adres IP.   
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
 ### <a name="ipzonalgw"></a>Strefowy bram
@@ -106,7 +108,7 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 Żądanie publicznego adresu IP za pomocą **standardowa** jednostki SKU publicznego adresu IP. Określenie strefy (1, 2 lub 3). Wszystkie wystąpienia bramy zostanie wdrożony w tej strefie.
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
 ### <a name="ipregionalgw"></a>Regionalne bram
@@ -114,14 +116,14 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 Żądanie publicznego adresu IP za pomocą **podstawowe** jednostki SKU publicznego adresu IP. W takich przypadkach brama jest wdrażana jako brama regionalnych i nie ma żadnych strefy nadmiarowości wbudowanej w bramie. Bramy są tworzone wystąpienia w żadnych stref odpowiednio.
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
 ## <a name="gwipconfig"></a>5. Utwórz konfigurację adresów IP
 
 ```azurepowershell-interactive
-$getvnet = Get-AzureRmVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $getvnet
-$gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
+$getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $getvnet
+$gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
 ## <a name="gwconfig"></a>6. Tworzenie bramy
@@ -131,13 +133,13 @@ Tworzenie bramy sieci wirtualnej.
 ### <a name="for-expressroute"></a>For ExpressRoute
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
 ```
 
 ### <a name="for-vpn-gateway"></a>For VPN Gateway
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
 ```
 
 ## <a name="faq"></a>Często zadawane pytania

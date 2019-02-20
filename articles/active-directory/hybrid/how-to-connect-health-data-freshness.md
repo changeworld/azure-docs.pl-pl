@@ -4,7 +4,7 @@ description: W tym dokumencie opisano przyczyny alertu "dane usługi kondycji ni
 services: active-directory
 documentationcenter: ''
 author: zhiweiwangmsft
-manager: maheshu
+manager: SamuelD
 editor: ''
 ms.service: active-directory
 ms.workload: identity
@@ -14,34 +14,41 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35586de180b1193e9886677ce4112eaa051395ae
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0ad829b976d8b712ee8027c89fb618c6c07de1bc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196760"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429023"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>Dane usługi kondycji nie są na bieżąco alert
 
 ## <a name="overview"></a>Przegląd
-<li>Program Azure AD Connect Health umożliwia wygenerowanie alertu świeże danych podczas nie otrzyma wszystkich punktów danych z serwera przez dwie godziny. Tytuł alertu jest **dane usługi kondycji nie są na bieżąco**. </li>
-<li>**Ostrzeżenie** stan alertu w przypadku programu Connect Health nie otrzyma elementy częściowe dane wysyłane z serwera przez dwie godziny. Alert stanu ostrzeżenia, nie będzie wyzwalać powiadomienia e-mail do administratora dzierżawy. </li>
-<li>**Błąd** stan alertu w przypadku programu Connect Health nie otrzyma żadnych elementów dane wysyłane z serwera przez dwie godziny. Błąd stanu alertu wywołuje powiadomienia e-mail, aby administratora dzierżawy. </li>
+Agenci na maszynach w środowisku lokalnym program Azure AD Connect Health monitoruje okresowego przekazywania danych do usługi Azure AD Connect Health. Jeśli usługa nie odbiera danych z agenta, informacje znajdujące się w portalu będą nieaktualne. Aby wyróżnić ten problem, usługa zostanie podniesiony **dane usługi kondycji nie są na bieżąco** alertu. To jest generowany, gdy usługa nie otrzymał danych w ciągu ostatnich dwóch godzin.  
 
->[!IMPORTANT] 
-> Ten alert jest zgodna Connect Health [zasady przechowywania danych](reference-connect-health-user-privacy.md#data-retention-policy)
+* **Ostrzeżenie** stan alertu w przypadku programu Connect Health nie otrzyma elementy częściowe dane wysyłane z serwera przez dwie godziny. Alert stanu ostrzeżenia, nie będzie wyzwalać powiadomienia e-mail do administratora dzierżawy.
+* **Błąd** stan alertu w przypadku programu Connect Health nie otrzyma żadnych elementów dane wysyłane z serwera przez dwie godziny. Błąd stanu alertu wywołuje powiadomienia e-mail, aby administratora dzierżawy.
+
 
 ## <a name="troubleshooting-steps"></a>Kroki rozwiązywania problemów 
+
+> [!IMPORTANT] 
+> Ten alert jest zgodna Connect Health [zasady przechowywania danych](reference-connect-health-user-privacy.md#data-retention-policy)
+
+* Upewnij się, że usługi agentów programu Azure AD Connect Health są uruchomione na maszynie. Na przykład programu Connect Health dla usług AD FS mają trzy usługi.  
+  ![Weryfikowanie programu Azure AD Connect Health](./media/how-to-connect-health-agent-install/install5.png)
+
 * Upewnij się, że omijają i spełniać [sekcji wymagania dotyczące](how-to-connect-health-agent-install.md#requirements).
 * Użyj [narzędzia łączności test](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) do wykrywania problemów z łącznością.
-* Jeśli masz serwer HTTP Proxy, wykonaj [kroków konfiguracji, w tym miejscu](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
+* Jeśli masz serwer HTTP Proxy, postępuj zgodnie z tymi [czynności konfiguracyjnych](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). 
 
+W bloku szczegóły alertu wyświetla się brakujące dane elementy z serwera. Poniższa tabela pomoże Zawęź z problemem. 
 ### <a name="connect-health-for-sync"></a>Connect Health do celów synchronizacji
 
 | Elementy danych | Kroki rozwiązywania problemów |
 | --- | --- | 
-| Funkcja kończąca | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zezwalaj na wyznaczonym witryn sieci Web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
-| AadSyncService SynchronizationRules, <br /> AadSyncService łączników <br /> AadSyncService-GlobalConfigurations, <br /> AadSyncService-RunProfileResults, <br /> AadSyncService-ServiceConfigurations, <br /> AadSyncService-ServiceStatus | -Wychodzącym na podstawie adresów IP można znaleźć [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) <br /> - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
+| Funkcja kończąca | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona](https://technet.microsoft.com/library/ee796230.aspx) <br /> - [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
+| AadSyncService SynchronizationRules, <br /> AadSyncService łączników <br /> AadSyncService-GlobalConfigurations, <br /> AadSyncService-RunProfileResults, <br /> AadSyncService-ServiceConfigurations, <br /> AadSyncService-ServiceStatus | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) | 
 
 ### <a name="connect-health-for-adfs"></a>Program Connect Health dla usług AD FS
 
@@ -49,14 +56,14 @@ Dodatkowe kroki, aby zweryfikować dla usług AD FS i postępuj zgodnie z przep�
 
 | Elementy danych | Kroki rozwiązywania problemów |
 | --- | --- | 
-| PerfCounter, TestResult | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zezwalaj na wyznaczonym witryn sieci Web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer](https://technet.microsoft.com/windows/ms537180(v=vs.60)) |
+| PerfCounter, TestResult | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br />- [Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 |  Adfs-UsageMetrics | Łączność wychodząca na podstawie adresów IP można znaleźć [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653) | 
 
 ### <a name="connect-health-for-adds"></a>Program Connect Health dla usług AD DS
 
 | Elementy danych | Kroki rozwiązywania problemów |
 | --- | --- | 
-| PerfCounter, Adds-TopologyInfo-Json, Common-TestData-Json | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> - [Inspekcja połączenia SSL dla ruchu wychodzącego jest filtrowana lub wyłączona](https://technet.microsoft.com/library/ee796230.aspx) <br />-  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) <br /> - [Zezwalaj na wyznaczonym witryn sieci Web, jeśli są włączone zwiększone zabezpieczenia programu Internet Explorer](https://technet.microsoft.com/windows/ms537180(v=vs.60)) <br />  -Wychodzącym na podstawie adresów IP można znaleźć [zakresów adresów IP platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653)  |
+| PerfCounter, Adds-TopologyInfo-Json, Common-TestData-Json | - [Łączność wychodząca z punktem końcowym usługi platformy Azure](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) <br /> -  [Porty zapory na serwerze, na którym jest uruchomiony agent](https://technet.microsoft.com/library/ms345310(v=sql.100).aspx) |
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 6493da0cfc86560fac8e69f4329804c628942806
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: bb9b90ca239ff03f44b76a7ee5754eb7872caa31
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328722"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415905"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Wytyczne dotyczące wydajności dla programu SQL Server na maszynach wirtualnych platformy Azure
 
@@ -88,11 +88,9 @@ Dysk magazynu tymczasowego, oznaczone jako **D**: dysku, nie są utrwalane w mag
 
 Seria D, zalecamy używanie serii Dv2 i maszyny wirtualne z serii G dysku tymczasowego na tych maszynach wirtualnych jest oparty na dyskach SSD. Jeśli obciążenie powoduje, że intensywne użycie bazy danych TempDB (np. obiektów tymczasowych lub złożonych sprzężeń) przechowywania bazy danych TempDB na **D** dysku może spowodować większej przepływności bazy danych TempDB i zmniejszyć czas oczekiwania bazy danych TempDB. Przykładowy scenariusz Zobacz Omówienie bazy danych TempDB w następującym wpisie: [Wskazówki dotyczące konfigurowania magazynu dla programu SQL Server na maszynie Wirtualnej platformy Azure](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/09/25/storage-configuration-guidelines-for-sql-server-on-azure-vm).
 
-<<<<<<< HEAD dla maszyn wirtualnych, które obsługują premium dyski SSD (seria DS, DSv2 serii i serii GS), zaleca się przechowywanie bazy danych TempDB na dysku, który obsługuje dyski SSD w warstwie premium z buforowaniem odczytu włączone. Istnieje jeden wyjątek od tej rekomendacji; Jeśli użycie bazy danych TempDB jest intensywnie korzystających z zapisu, można uzyskać lepszą wydajność dzięki przechowywaniu bazy danych TempDB na lokalnym **D** dysk, który jest również, dysk SSD — na podstawie tych rozmiarów maszyn.
-=== Maszyny wirtualne obsługujące usługę Premium Storage (seria DS, seria DSv2 i GS-series), zalecamy przechowywanie bazy danych TempDB na dysku, który obsługuje usługę Premium Storage z buforowaniem odczytu włączone. 
+W przypadku maszyn wirtualnych, które obsługują dyski premium SSD (seria DS, seria DSv2 i GS-series), zaleca się przechowywanie bazy danych TempDB na dysku, który obsługuje dyski SSD w warstwie premium z buforowaniem odczytu włączone.
 
-Istnieje jeden wyjątek od tej rekomendacji: _Jeśli użycie bazy danych TempDB jest intensywnie korzystających z zapisu, można uzyskać lepszą wydajność dzięki przechowywaniu bazy danych TempDB na lokalnym **D** dysk, który jest również, dysk SSD — na podstawie tych rozmiarów maszyn._ 
->>>>>>> 4326ed494fad7ef7be29e2f4ba3301ec496acf76
+Istnieje jeden wyjątek od tej rekomendacji: _Jeśli użycie bazy danych TempDB jest intensywnie korzystających z zapisu, można uzyskać lepszą wydajność dzięki przechowywaniu bazy danych TempDB na lokalnym **D** dysk, który jest również, dysk SSD — na podstawie tych rozmiarów maszyn._
 
 ### <a name="data-disks"></a>Dyski z danymi
 

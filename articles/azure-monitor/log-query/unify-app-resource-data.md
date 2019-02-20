@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237675"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429520"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Ujednolicenie wiele zasobów usługi Azure Monitor Application Insights 
 W tym artykule opisano, jak wykonywać zapytania i wyświetlić wszystkie usługi Application Insights dziennika danych aplikacji w jednym miejscu, nawet wtedy, gdy są one w różnych subskrypcjach platformy Azure, jako zamiennika amortyzacja łącznik usługi Application Insights. Liczba zasobów zasoby usługi Application Insights, uwzględnionych w ramach pojedynczego zapytania jest ograniczona do 100.  
@@ -68,6 +68,9 @@ Alias funkcji zwraca złożenie żądania z określonych aplikacji. Zapytanie, a
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Wykonywanie zapytań dotyczących zasobów usługi Application Insights i obszar roboczy danych 
 Po zatrzymaniu łącznika i potrzeb dotyczących wykonywania zapytań w zakresie czasu, który został przycięty za przechowywanie danych usługi Application Insights (90 dni), należy wykonać [zapytania obejmujące wiele zasobów](../../azure-monitor/log-query/cross-workspace-query.md) na obszar roboczy i usługi Application Insights zasoby dla pośredniego. Jest to, aż danych aplikacji gromadzi na nowe przechowywanie danych usługi Application Insights wymienionych powyżej. Zapytanie wymaga niektóre operacje, ponieważ różnią się schematów w usłudze Application Insights i obszaru roboczego. Zobacz tabelę w dalszej części tej sekcji szczególnym uwzględnieniem różnic schematu. 
+
+>[!NOTE]
+>[Zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) w dzienniku alertów jest obsługiwana w nowym [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Domyślnie używa usługi Azure Monitor [interfejsu API starszych Log Analytics alertu](../platform/api-alerts.md) do tworzenia reguł alertów nowy dziennik z witryny Azure portal, jeśli nie możesz przejść z wersji [starszej wersji interfejsu API z alertów dziennika](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po przełączniku nowy interfejs API staje się domyślnie na nowe reguły alertów w witrynie Azure portal i umożliwia tworzenie dziennika alertów reguły zapytania obejmujące wiele zasobów. Można utworzyć [zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) rejestrowanie reguł alertów bez wprowadzania przełącznik przy użyciu [szablon ARM scheduledQueryRules interfejsu API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) — ale tę regułę alertu jest łatwe w zarządzaniu jednak [ Interfejs API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , a nie z witryny Azure portal.
 
 Na przykład zatrzymanie łącznik działa na 2018-11-01, podczas wysyłania zapytania dzienniki danych zasobów i aplikacji usługi Application Insights w obszarze roboczym, zapytanie będzie zbudowane tak jak w poniższym przykładzie:
 

@@ -1,7 +1,7 @@
 ---
 title: Wdrażanie i korzystanie
 titleSuffix: Azure Machine Learning Studio
-description: Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym.
+description: Azure Machine Learning Studio można użyć do wdrożenia, machine learning w przepływy pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,41 +10,44 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: e2add42e56f939dbfeb33ac2774d404411b1fefb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a1ddf6aae9fdd661e30719fafb6000fb6559df20
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997255"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429033"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Usługi Azure Machine Learning Studio, usług sieci Web: Wdrażanie i korzystanie
-Usługi Azure Machine Learning umożliwia wdrażanie machine learning w przepływach pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez Internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. Ponieważ usługi sieci web są zgodne ze specyfikacją REST, można je wywoływać z różnych języków programowania i platform, takich jak .NET, Java i z aplikacji, takich jak program Excel.
+
+Azure Machine Learning Studio można użyć do wdrożenia, machine learning w przepływy pracy i modeli jako usług sieci web. Usługi sieci web można następnie wywołać maszyny uczenia modeli z aplikacji przez Internet w celu wykonania prognoz w czasie rzeczywistym lub w trybie wsadowym. Ponieważ usługi sieci web są zgodne ze specyfikacją REST, można je wywoływać z różnych języków programowania i platform, takich jak .NET, Java i z aplikacji, takich jak program Excel.
 
 W kolejnych sekcjach zawierają łącza do przewodników, kod i dokumentację ułatwiającą rozpoczęcie pracy.
 
 ## <a name="deploy-a-web-service"></a>Wdrażanie usługi internetowej
 
 ### <a name="with-azure-machine-learning-studio"></a>Za pomocą usługi Azure Machine Learning Studio
-Usługa Machine Learning Studio i portalu usług sieci Web Microsoft Azure Machine Learning ułatwiające wdrażanie i zarządzanie usługą sieci web bez konieczności pisania kodu.
+
+Portal programu Studio i portalu usług sieci Web Microsoft Azure Machine Learning ułatwiające wdrażanie i zarządzanie usługą sieci web bez konieczności pisania kodu.
 
 Poniższe linki zawierają ogólne informacje o sposobie wdrażania nowej usługi sieci web:
 
 * Aby uzyskać ogólne informacje o sposobie wdrażania nowej usługi sieci web, który jest oparty na usłudze Resource Manager, zobacz [Wdrażanie nowej usługi sieci web](publish-a-machine-learning-web-service.md).
 * Aby uzyskać wskazówki dotyczące wdrażania usługi sieci web, zobacz [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md).
-* Pełny przewodnik o tym, jak utworzyć i wdrożyć usługi sieci web, rozpoczynać się [ samouczek 1: Prognozowanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
+* Pełny przewodnik o tym, jak utworzyć i wdrożyć usługi sieci web, rozpoczynać się [samouczek 1: Prognozowanie ryzyka kredytowego](tutorial-part1-credit-risk.md).
 * Aby uzyskać szczegółowe przykłady, które wdrażanie usługi sieci web zobacz:
 
   * [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md)
   * [Jak wdrożyć usługę sieci web do wielu regionów](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Za pomocą dostawcy zasobów usługi sieci web API (interfejsów API usługi Azure Resource Manager)
-Dostawca zasobów usługi Azure Machine Learning dla usług sieci web umożliwia wdrażanie i zarządzanie usługami sieci web przy użyciu wywołań interfejsu API REST. Aby uzyskać więcej informacji, zobacz [Machine Learning w sieci Web usługi (REST)](/rest/api/machinelearning/index) odwołania.
+
+Dostawca zasobów usługi Azure Machine Learning Studio, usług sieci web umożliwia wdrażanie i zarządzanie usługami sieci web przy użyciu wywołań interfejsu API REST. Aby uzyskać więcej informacji, zobacz [Machine Learning w sieci Web usługi (REST)](/rest/api/machinelearning/index) odwołania.
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
-
 ### <a name="with-powershell-cmdlets"></a>Za pomocą poleceń cmdlet programu PowerShell
-Dostawca zasobów usługi Azure Machine Learning dla usług sieci web umożliwia wdrażanie i zarządzanie usługami sieci web za pomocą poleceń cmdlet programu PowerShell.
+
+Dostawca zasobów usługi Azure Machine Learning Studio, usług sieci web umożliwia wdrażanie i zarządzanie usługami sieci web za pomocą poleceń cmdlet programu PowerShell.
 
 Aby użyć polecenia cmdlet, należy najpierw zalogować do konta platformy Azure w środowisku programu PowerShell przy użyciu [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) polecenia cmdlet. Jeśli znasz sposób wywoływania poleceń programu PowerShell, które są oparte na Menedżera zasobów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md).
 
@@ -75,11 +78,13 @@ Oto przykład:
 
 Zobacz następujące artykuły i przykładowy kod, aby uzyskać więcej informacji:
 
-* [Polecenia cmdlet systemu Azure Learning maszyny](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) odwołania w witrynie MSDN
+* [Polecenia cmdlet usługi Azure Machine Learning Studio](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) odwołania w witrynie MSDN
 * Przykładowe [wskazówki](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) w witrynie GitHub
 
 ## <a name="consume-the-web-services"></a>Korzystanie z usług sieci web
+
 ### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Z usługi sieci Web Azure Machine Learning interfejsu użytkownika (testowanie)
+
 Można testować usługi sieci web z poziomu portalu usług sieci Web Azure Machine Learning. W tym testowanie usługi odpowiedź na żądanie (RRS) i interfejsy usługę wykonywania wsadowego (BES).
 
 * [Wdrażanie nowej usługi sieci Web](publish-a-machine-learning-web-service.md)
@@ -87,10 +92,12 @@ Można testować usługi sieci web z poziomu portalu usług sieci Web Azure Mach
 * [Samouczek 3: Wdrażanie modelu ryzyko kredytowe](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Z poziomu programu Excel
+
 Można pobrać szablonu programu Excel, który wykorzystuje usługę sieci web:
 
 * [Korzystanie z usługi sieci web Azure Machine Learning z poziomu programu Excel](consuming-from-excel.md)
 * [Dodatek programu Excel dla usług sieci Web Azure Machine Learning](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>W kliencie oparty na protokole REST
+
 Usługi sieci Web Azure Machine Learning to interfejsy API REST. Mogą wykorzystywać te interfejsy API z różnych platform, takich jak .NET, Python, R, Java itp. **Zużywania** stronę usługi sieci web na [portalu usług sieci Web Microsoft Azure Machine Learning](https://services.azureml.net) zawiera przykładowy kod, który może pomóc Ci rozpocząć pracę. Aby uzyskać więcej informacji, zobacz [How to consume an Azure Machine Learning Web service](consume-web-services.md) (Jak korzystać z usługi internetowej Azure Machine Learning).

@@ -8,25 +8,25 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/16/2019
 ms.author: lizross
 ms.reviewer: vincesm
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f29331ccdde7db56639ed443e5dca7336f5e9dbd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e1a3204e70fdde162d953c9c2241e9d71877cf78
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181596"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428928"
 ---
 # <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?
-W usłudze Azure Active Directory (Azure AD) wszystkim użytkownikom jest udzielany zestaw uprawnień domyślnych. Dostęp użytkownika, który składa się z typ użytkownika, ich [członkostwa w roli](active-directory-users-assign-role-azure-portal.md)i ich własność poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne oraz zawarto porównanie uprawnień domyślnych członka i użytkownika gościa.
+W usłudze Azure Active Directory (Azure AD) wszystkim użytkownikom jest udzielany zestaw uprawnień domyślnych. Dostęp użytkownika, który składa się z typ użytkownika, ich [przypisań ról](active-directory-users-assign-role-azure-portal.md)i ich własność poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne oraz zawarto porównanie uprawnień domyślnych członka i użytkownika gościa. Domyślne uprawnienia użytkowników można zmienić tylko w ustawieniach użytkownika w usłudze Azure AD.
 
 ## <a name="member-and-guest-users"></a>Użytkownicy będący członkami i gośćmi
 Zestaw domyślnych uprawnień otrzymanych zależy, czy użytkownik jest członkiem natywnych dzierżawy (użytkownika elementu członkowskiego) lub jeśli użytkownik jest kupiony z innego katalogu jako gość współpracy B2B (Gość). Zobacz [czym jest współpraca B2B w usłudze Azure AD?](../b2b/what-is-b2b.md) Aby uzyskać więcej informacji na temat dodawania użytkowników-gości.
 * Użytkownicy będący członkami mogą rejestrować aplikacje, zmieniać swoje zdjęcie profilowe, numer telefonu komórkowego oraz hasło. Mogą też zapraszać gości B2B. Dodatkowo użytkownicy mogą odczytywać wszystkie informacje o katalogach (z kilkoma wyjątkami). 
-* Użytkownicy-goście mają ograniczone uprawnienia katalogu. Goście nie mogą na przykład przeglądać informacji o dzierżawie wykraczających poza informacje z własnego profilu. Jednak użytkownik gość może pobierać informacje o innym użytkowniku po podaniu głównej nazwy użytkownika lub identyfikatora objectId. Użytkownik-Gość mogą odczytać właściwości grup, które należą do użytkownika, w tym członkostwa, niezależnie od wartości **uprawnienia użytkowników-gości są ograniczone** ustawienie. Gość nie można wyświetlić informacje o innych obiektów w dzierżawie.
+* Użytkownicy-goście mają ograniczone uprawnienia katalogu. Goście nie mogą na przykład przeglądać informacji o dzierżawie wykraczających poza informacje z własnego profilu. Jednak użytkownik gość może pobierać informacje o innym użytkowniku po podaniu głównej nazwy użytkownika lub identyfikatora objectId. Użytkownik-Gość mogą odczytać właściwości grup, które należą do, w tym członkostwa w grupie, bez względu na to **uprawnienia użytkowników-gości są ograniczone** ustawienie. Gość nie można wyświetlić informacje o innych obiektów w dzierżawie.
 
 Uprawnienia domyślne dla gości są restrykcyjne. Gości można dodawać do ról administratora, dzięki czemu uzyskają oni pełne uprawnienia do odczytu i zapisu zawarte w roli. Dla gości jest dostępne jeszcze jedno ograniczenie — możliwość zapraszania innych gości. Ustawienie opcji **Goście mogą zapraszać gości** na wartość **Nie** uniemożliwia gościom zapraszanie innych gości. Aby dowiedzieć się, jak ustawiać tę opcję, zobacz [Delegate invitations for B2B collaboration](../b2b/delegate-invitations.md) (Delegowanie zaproszeń na potrzeby współpracy B2B). Aby domyślnie użytkownikom gościom były przyznawane takie same uprawnienia jak użytkownikom będącym członkami, ustaw opcję **Uprawnienia użytkowników-gości są ograniczone** na wartość **Nie**. To ustawienie domyślnie przyznaje gościom wszystkie uprawnienia użytkowników będących członkami, a także umożliwia dodawanie gości do ról administracyjnych.
 
@@ -35,7 +35,7 @@ Uprawnienia domyślne dla gości są restrykcyjne. Gości można dodawać do ró
 **Obszar** | **Uprawnienia użytkownika będącego członkiem** | **Uprawnienia użytkownika gościa**
 ------------ | --------- | ----------
 Użytkownicy i kontakty | Odczytywanie wszystkich publicznych właściwości użytkowników i kontaktów<br>Zapraszanie gości<br>Zmiana własnego hasła<br>Zarządzanie własnym numerem telefonu komórkowego<br>Zarządzanie własnym zdjęciem<br>Unieważnianie własnych tokenów odświeżania | Odczytywanie własnych właściwości<br>Odczytywanie nazwy wyświetlanej, adresu e-mail, nazwy logowania, zdjęcia, głównej nazwy użytkownika i właściwości typu użytkownika innych użytkowników i kontaktów<br>Zmiana własnego hasła
-Grupy | Tworzenie grup zabezpieczeń<br>Tworzenie grup usługi Office 365<br>Odczytywanie wszystkich właściwości grup<br>Odczytywanie nieukrytych członkostw w grupach<br>Odczytywanie ukrytych członkostw w grupach usługi Office 365 dla dołączonej grupy<br>Zarządzanie właściwościami, własnością i członkostwem w posiadanych grupach<br>Dodawanie gości do posiadanych grup<br>Zarządzanie dynamicznymi ustawieniami członkostwa<br>Usuwanie posiadanych grup<br>Przywracanie posiadanych grup usługi Office 365 | Odczytywanie wszystkich właściwości grup<br>Odczytywanie nieukrytych członkostw w grupach<br>Odczytywanie ukrytych członkostw w grupach usługi Office 365 dla dołączonych grup<br>Zarządzanie posiadanymi grupami<br>Dodawanie gości do posiadanych grup (jeśli jest to dozwolone)<br>Usuwanie posiadanych grup<br>Przywracanie posiadanych grup usługi Office 365<br>Odczyt właściwości grup, do których należą, w tym członkostwa.
+Grupy | Tworzenie grup zabezpieczeń<br>Tworzenie grup usługi Office 365<br>Odczytywanie wszystkich właściwości grup<br>Odczytywanie nieukrytych członkostw w grupach<br>Odczytywanie ukrytych członkostw w grupach usługi Office 365 dla dołączonej grupy<br>Zarządzanie właściwościami, własności i członkostwa w grupach, które należą do użytkownika<br>Dodawanie gości do posiadanych grup<br>Zarządzanie dynamicznymi ustawieniami członkostwa<br>Usuwanie posiadanych grup<br>Przywracanie posiadanych grup usługi Office 365 | Odczytywanie wszystkich właściwości grup<br>Odczytywanie nieukrytych członkostw w grupach<br>Odczytywanie ukrytych członkostw w grupach usługi Office 365 dla dołączonych grup<br>Zarządzanie posiadanymi grupami<br>Dodawanie gości do posiadanych grup (jeśli jest to dozwolone)<br>Usuwanie posiadanych grup<br>Przywracanie posiadanych grup usługi Office 365<br>Odczyt właściwości grup, do których należą, w tym członkostwa.
 Aplikacje | Rejestrowanie (tworzenie) nowej aplikacji<br>Odczytywanie właściwości zarejestrowanych aplikacji i aplikacji dla przedsiębiorstw<br>Zarządzanie właściwościami, przydziałami i poświadczeniami posiadanych aplikacji<br>Tworzenie i usuwanie hasła aplikacji dla użytkownika<br>Usuwanie posiadanych aplikacji<br>Przywracanie posiadanych aplikacji | Odczytywanie właściwości zarejestrowanych aplikacji i aplikacji dla przedsiębiorstw<br>Zarządzanie właściwościami, przydziałami i poświadczeniami posiadanych aplikacji<br>Usuwanie posiadanych aplikacji<br>Przywracanie posiadanych aplikacji
 Urządzenia | Odczytywanie wszystkich właściwości urządzenia<br>Zarządzanie wszystkimi właściwościami posiadanych urządzeń<br> | Brak uprawnień<br>Usuwanie posiadanych urządzeń<br>
 Katalog | Odczytywanie wszystkich informacji o firmie<br>Odczytywanie wszystkich domen<br>Odczytywanie wszystkich kontraktów partnera | Odczytywanie nazwy wyświetlanej i zweryfikowanych domen
@@ -65,7 +65,7 @@ When a user adds a new enterprise application, they are automatically added as a
 
 ### <a name="group-owner-permissions"></a>Uprawnienia właściciela grupy
 
-Gdy użytkownik tworzy grupę, jest automatycznie dodawany jako właściciel tej grupy. Właściciel może zarządzać właściwościami grupy, takimi jak nazwa, a także zarządzać członkostwem. Właściciel może również dodawać i usuwać innych właścicieli. W odróżnieniu od administratorów globalnych i administratorów kont użytkowników właściciele mogą zarządzać tylko posiadanymi przez siebie grupami. Aby dowiedzieć się, jak przypisać właściciela grupy, zobacz [Managing owners for a group](active-directory-accessmanagement-managing-group-owners.md) (Zarządzanie właścicielami grupy).
+Gdy użytkownik tworzy grupę, jest automatycznie dodawany jako właściciel tej grupy. Jako właściciel one mogą zarządzać właściwościami grupy, takie jak nazwa, a także zarządzanie członkostwem w grupie. Właściciel może również dodawać i usuwać innych właścicieli. W odróżnieniu od administratorów globalnych i administratorów kont użytkowników właściciele mogą zarządzać tylko posiadanymi przez siebie grupami. Aby dowiedzieć się, jak przypisać właściciela grupy, zobacz [Managing owners for a group](active-directory-accessmanagement-managing-group-owners.md) (Zarządzanie właścicielami grupy).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

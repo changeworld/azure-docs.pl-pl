@@ -1,18 +1,18 @@
 ---
-title: 'Łączenie sieci lokalnej z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: Program PowerShell | Dokumentacja firmy Microsoft'
+title: 'Połącz sieć lokalną z siecią wirtualną platformy Azure: Sieć VPN lokacja lokacja: Program PowerShell | Dokumentacja firmy Microsoft'
 description: Kroki tworzenia połączenia IPsec z sieci lokalnej do sieci wirtualnej platformy Azure za pośrednictwem publicznego Internetu. Ta procedura jest pomocna podczas tworzenia połączenia usługi VPN Gateway typu lokacja-lokacja obejmującego wiele lokalizacji za pomocą programu PowerShell.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 10/22/2018
+ms.date: 02/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 4c29c4666a6cf492055d7937a117da8b5f291442
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: f0a0a17fa14272b78be5f431213c37d33619ff2f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696919"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415004"
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>Tworzenie sieci wirtualnej za pomocą połączenia sieci VPN typu lokacja-lokacja przy użyciu programu PowerShell
 
@@ -32,6 +32,8 @@ Połączenie bramy sieci VPN typu lokacja-lokacja umożliwia łączenie sieci lo
 
 ## <a name="before"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryteria:
 
 * Upewnij się, że masz zgodne urządzenie sieci VPN i dostępna jest osoba, która umie je skonfigurować. Aby uzyskać więcej informacji o zgodnych urządzeniach sieci VPN i konfiguracji urządzeń, zobacz artykuł [Informacje o urządzeniach sieci VPN](vpn-gateway-about-vpn-devices.md).
@@ -44,8 +46,8 @@ Przed rozpoczęciem konfiguracji sprawdź, czy są spełnione następujące kryt
 
 Jeśli zdecydujesz się na zainstalowanie i korzystanie z programu PowerShell lokalnie, konieczne jest zainstalowanie najnowszej wersji poleceń cmdlet programu PowerShell usługi Azure Resource Manager. Polecenia cmdlet programu PowerShell są często aktualizowane. Ich zaktualizowanie jest zazwyczaj konieczne w celu uzyskania najnowszych wersji funkcji. Jeśli nie zaktualizujesz poleceń cmdlet programu PowerShell, mogą wystąpić błędy określonych wartości. 
 
-Aby określić używaną wersję, uruchom polecenie „Get-Module -ListAvailable AzureRM”. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
-Jeśli używasz programu PowerShell lokalnie, należy również uruchomić polecenie „Connect-AzureRmAccount”, aby utworzyć połączenie z platformą Azure.
+Aby znaleźć wersję, którego używasz, uruchom "Get-Module - ListAvailable Az". Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu programu Azure PowerShell](/powershell/azure/install-az-ps). Aby uzyskać więcej informacji, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview).
+Jeśli używasz programu PowerShell lokalnie, należy uruchomić "Connect-AzAccount", aby utworzyć połączenie z platformą Azure.
 
 
 ### <a name="example"></a>Przykładowe wartości
@@ -89,14 +91,14 @@ Jeśli nie masz jeszcze sieci wirtualnej, utwórz ją. Podczas tworzenia sieci w
 
 [!INCLUDE [No NSG warning](../../includes/vpn-gateway-no-nsg-include.md)]
 
-### <a name="vnet"></a>Aby utworzyć sieć wirtualną i podsieć bramy
+### <a name="vnet"></a>Utwórz sieć wirtualną i podsieć bramy
 
 Ten przykład tworzy sieć wirtualną i podsieć bramy. Jeśli masz już sieć wirtualną, do której potrzebujesz dodać podsieć bramy, zobacz [Aby dodać podsieć bramy do utworzonej wcześniej sieci wirtualnej](#gatewaysubnet).
 
 Utwórz grupę zasobów:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name TestRG1 -Location 'East US'
+New-AzResourceGroup -Name TestRG1 -Location 'East US'
 ```
 
 Utwórz swoją sieć wirtualną.
@@ -104,13 +106,13 @@ Utwórz swoją sieć wirtualną.
 1. Ustaw zmienne.
 
   ```azurepowershell-interactive
-  $subnet1 = New-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27
-  $subnet2 = New-AzureRmVirtualNetworkSubnetConfig -Name 'Frontend' -AddressPrefix 10.1.0.0/24
+  $subnet1 = New-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27
+  $subnet2 = New-AzVirtualNetworkSubnetConfig -Name 'Frontend' -AddressPrefix 10.1.0.0/24
   ```
 2. Utwórz sieć wirtualną.
 
   ```azurepowershell-interactive
-  New-AzureRmVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1 `
+  New-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1 `
   -Location 'East US' -AddressPrefix 10.1.0.0/16 -Subnet $subnet1, $subnet2
   ```
 
@@ -121,22 +123,22 @@ Wykonaj kroki znajdujące się w tej sekcji, jeśli masz już sieć wirtualną, 
 1. Ustaw zmienne.
 
   ```azurepowershell-interactive
-  $vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
+  $vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name TestVet1
   ```
 2. Utwórz podsieć bramy.
 
   ```azurepowershell-interactive
-  Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
+  Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
   ```
 3. Ustaw konfigurację.
 
   ```azurepowershell-interactive
-  Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+  Set-AzVirtualNetwork -VirtualNetwork $vnet
   ```
 
 ## 2. <a name="localnet"></a>Tworzenie bramy sieci lokalnej
 
-Brama sieci lokalnej zazwyczaj odwołuje się do lokalizacji lokalnej. Nadaj lokacji nazwę, za pomocą której platforma Azure może odwołać się do niej, a następnie określ adres IP lokalnego urządzenia sieci VPN, z którym będzie tworzone połączenie. Określ również prefiksy adresów IP, które będą kierowane za pośrednictwem bramy sieci VPN do urządzenia sieci VPN. Określone prefiksy adresów są prefiksami znajdującymi się w Twojej sieci lokalnej. W przypadku zmian w sieci lokalnej prefiksy można łatwo zaktualizować.
+(LNG) bramy sieci lokalnej zazwyczaj odwołuje się do lokalizacji lokalnej. Nie jest taka sama jak bramy sieci wirtualnej. Nadaj lokacji nazwę, za pomocą której platforma Azure może odwołać się do niej, a następnie określ adres IP lokalnego urządzenia sieci VPN, z którym będzie tworzone połączenie. Określ również prefiksy adresów IP, które będą kierowane za pośrednictwem bramy sieci VPN do urządzenia sieci VPN. Określone prefiksy adresów są prefiksami znajdującymi się w Twojej sieci lokalnej. W przypadku zmian w sieci lokalnej prefiksy można łatwo zaktualizować.
 
 Wprowadź następujące wartości:
 
@@ -146,38 +148,41 @@ Wprowadź następujące wartości:
 Aby dodać bramę sieci lokalnej z pojedynczym prefiksem adresu:
 
   ```azurepowershell-interactive
-  New-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
+  New-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
   -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.101.0.0/24'
   ```
 
 Aby dodać bramę sieci lokalnej z wieloma prefiksami adresów:
 
   ```azurepowershell-interactive
-  New-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
+  New-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
   -Location 'East US' -GatewayIpAddress '23.99.221.164' -AddressPrefix @('10.101.0.0/24','10.101.1.0/24')
   ```
 
-Aby zmodyfikować prefiksy adresów IP bramy sieci lokalnej:<br>
+Aby zmodyfikować prefiksy adresów IP bramy sieci lokalnej:
+
 Zdarza się, że prefiksy bramy sieci lokalnej są zmieniane. Kroki, które należy wykonać w celu zmodyfikowania prefiksów adresów IP, zależą od tego, czy utworzono połączenie bramy sieci VPN. Zapoznaj się z sekcją [Modyfikowanie prefiksów adresów IP bramy sieci lokalnej](#modify) tego artykułu.
 
 ## <a name="PublicIP"></a>3. Żądanie publicznego adresu IP
 
-Brama sieci VPN musi mieć publiczny adres IP. Najpierw żąda się zasobu adresu IP, a następnie odwołuje do niego podczas tworzenia bramy sieci wirtualnej. Adres IP jest dynamicznie przypisywany do zasobu podczas tworzenia bramy sieci VPN. Brama sieci VPN aktualnie obsługuje tylko *dynamiczne* przypisywanie publicznych adresów IP. Nie można zażądać przypisania statycznego publicznego adresu IP. Nie oznacza to jednak, że adres IP zmienia się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
+Brama sieci VPN musi mieć publiczny adres IP. Najpierw żąda się zasobu adresu IP, a następnie odwołuje do niego podczas tworzenia bramy sieci wirtualnej. Adres IP jest dynamicznie przypisywany do zasobu podczas tworzenia bramy sieci VPN. 
+
+Brama sieci VPN aktualnie obsługuje tylko *dynamiczne* przypisywanie publicznych adresów IP. Nie można zażądać przypisania statycznego publicznego adresu IP. Jednak oznacza to, że adres IP zmieni się po przypisaniu go do bramy sieci VPN. Jedyną sytuacją, w której ma miejsce zmiana publicznego adresu IP, jest usunięcie bramy i jej ponowne utworzenie. Nie zmienia się on w przypadku zmiany rozmiaru, zresetowania ani przeprowadzania innych wewnętrznych czynności konserwacyjnych bądź uaktualnień bramy sieci VPN.
 
 Prześlij żądanie przydzielenia publicznego adresu IP, który zostanie przypisany do Twojej bramy sieci VPN sieci wirtualnej.
 
 ```azurepowershell-interactive
-$gwpip= New-AzureRmPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
+$gwpip= New-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
 ## <a name="GatewayIPConfig"></a>4. Tworzenie konfiguracji adresowania IP bramy
 
-W ramach konfiguracji bramy zostaje zdefiniowana podsieć i publiczny adres IP do użycia. Poniższy przykład umożliwia utworzenie własnej konfiguracji bramy:
+Konfiguracja bramy definiuje podsieć ("GatewaySubnet") i publiczny adres IP do użycia. Poniższy przykład umożliwia utworzenie własnej konfiguracji bramy:
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
+$vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+$gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
 
 ## <a name="CreateGateway"></a>5. Tworzenie bramy sieci VPN
@@ -191,7 +196,7 @@ Wprowadź następujące wartości:
 * Wybierz jednostkę SKU bramy, która ma być używana. Dla niektórych jednostek SKU istnieją ograniczenia konfiguracji. Aby uzyskać więcej informacji, zobacz [Gateway SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku) (Jednostki SKU bramy). Jeśli podczas tworzenia bramy sieci VPN wystąpi błąd dotyczący opcji -GatewaySku, sprawdź, czy zainstalowano najnowszą wersję poleceń cmdlet programu PowerShell.
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
+New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'East US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
@@ -200,13 +205,13 @@ Po uruchomieniu tego polecenia konfigurowanie bramy może potrwać do 45 minut.
 
 ## <a name="ConfigureVPNDevice"></a>6. Konfiguracja urządzenia sieci VPN
 
-Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci VPN. W tym kroku konfigurowane jest urządzenie sieci VPN. Podczas konfigurowania urządzenia sieci VPN potrzebne będą:
+Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci VPN. W tym kroku konfigurowane jest urządzenie sieci VPN. Podczas konfigurowania urządzenia sieci VPN, potrzebne są następujące elementy:
 
 - Klucz współużytkowany. To ten sam klucz współużytkowany, który jest określany podczas tworzenia połączenia sieci VPN typu lokacja-lokacja. W naszych przykładach używamy podstawowego klucza współużytkowanego. Zalecamy, aby do użycia wygenerować bardziej złożony klucz.
-- Publiczny adres IP bramy sieci wirtualnej. Publiczny adres IP można wyświetlić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia. Aby znaleźć publiczny adres IP bramy sieci wirtualnej przy użyciu programu PowerShell, skorzystaj z poniższego przykładu:
+- Publiczny adres IP bramy sieci wirtualnej. Publiczny adres IP można wyświetlić za pomocą witryny Azure Portal, programu PowerShell lub interfejsu wiersza polecenia. Aby znaleźć publiczny adres IP bramy sieci wirtualnej przy użyciu programu PowerShell, skorzystaj z następującego przykładu. W tym przykładzie VNet1GWPIP jest nazwą zasobu publicznego adresu IP, który został utworzony w poprzednim kroku.
 
   ```azurepowershell-interactive
-  Get-AzureRmPublicIpAddress -Name GW1PublicIP -ResourceGroupName TestRG1
+  Get-AzPublicIpAddress -Name VNet1GWPIP -ResourceGroupName TestRG1
   ```
 
 [!INCLUDE [Configure VPN device](../../includes/vpn-gateway-configure-vpn-device-rm-include.md)]
@@ -214,17 +219,17 @@ Połączenia typu lokacja-lokacja z siecią lokalną wymagają urządzenia sieci
 
 ## <a name="CreateConnection"></a>7. Tworzenie połączenia sieci VPN
 
-Następnie należy utworzyć połączenie sieci VPN typu lokacja-lokacja między bramą sieci wirtualnej i urządzeniem sieci VPN. Przedstawione wartości należy zastąpić własnymi. Klucz współużytkowany musi odpowiadać wartości użytej podczas konfiguracji urządzenia sieci VPN. Należy pamiętać, że dla połączenia typu lokacja-lokacja wartość parametru „-ConnectionType” to *IPsec*.
+Następnie należy utworzyć połączenie sieci VPN typu lokacja-lokacja między bramą sieci wirtualnej i urządzeniem sieci VPN. Przedstawione wartości należy zastąpić własnymi. Klucz współużytkowany musi odpowiadać wartości użytej podczas konfiguracji urządzenia sieci VPN. Należy pamiętać, że dla połączenia typu lokacja-lokacja wartość parametru „-ConnectionType” to **IPsec**.
 
 1. Ustaw zmienne.
   ```azurepowershell-interactive
-  $gateway1 = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
-  $local = Get-AzureRmLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
+  $gateway1 = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
+  $local = Get-AzLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1
   ```
 
 2. Utwórz połączenie.
   ```azurepowershell-interactive
-  New-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1 `
+  New-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1 `
   -Location 'East US' -VirtualNetworkGateway1 $gateway1 -LocalNetworkGateway2 $local `
   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'
   ```
@@ -244,7 +249,7 @@ Istnieje kilka różnych sposobów sprawdzenia połączenia sieci VPN.
 
 ## <a name="modify"></a>Aby zmodyfikować prefiksy adresów IP bramy sieci lokalnej
 
-Jeśli prefiksy adresów IP, które mają być kierowane do lokalizacji lokalnej, ulegną zmianie, można zmodyfikować bramę sieci lokalnej. Poniżej przedstawiono dwa zestawy instrukcji. Należy wybrać odpowiednie instrukcje w zależności od tego, czy utworzono już połączenie bramy sieci VPN.
+Jeśli prefiksy adresów IP, które mają być kierowane do lokalizacji lokalnej, ulegną zmianie, można zmodyfikować bramę sieci lokalnej. Poniżej przedstawiono dwa zestawy instrukcji. Należy wybrać odpowiednie instrukcje w zależności od tego, czy utworzono już połączenie bramy sieci VPN. Korzystając z tych przykładów, zmodyfikuj wartości pod kątem danego środowiska.
 
 [!INCLUDE [Modify prefixes](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 

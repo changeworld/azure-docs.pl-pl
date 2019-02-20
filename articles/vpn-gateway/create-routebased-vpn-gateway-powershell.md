@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/18/2018
+ms.date: 02/11/2019
 ms.author: cherylmc
-ms.openlocfilehash: 9460f184e3da6769048b30ca743169c5a6044bd0
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 8622de88b1edc7b0f5eb2571a55415837ad28dc7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55505533"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416908"
 ---
 # <a name="create-a-route-based-vpn-gateway-using-powershell"></a>Tworzenie bramy sieci VPN opartej na trasach przy użyciu programu PowerShell
 
@@ -20,44 +20,44 @@ Ten artykuł ułatwia szybkie tworzenie bramy sieci VPN platformy Azure opartej 
 
 Kroki opisane w tym artykule spowoduje utworzenie sieci wirtualnej, podsieci, podsieć bramy i bramy sieci VPN opartej na trasach (Brama sieci wirtualnej). Po zakończeniu tworzenia bramy będzie można utworzyć połączenia. Te kroki wymagają subskrypcji platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten samouczek wymaga modułu Azure PowerShell w wersji 5.3.0 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
-Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
+Utwórz grupę zasobów platformy Azure za pomocą polecenia [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Grupa zasobów to logiczny kontener przeznaczony do wdrażania zasobów platformy Azure i zarządzania nimi. 
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name TestRG1 -Location EastUS
+New-AzResourceGroup -Name TestRG1 -Location EastUS
 ```
 
 ## <a name="vnet"></a>Tworzenie sieci wirtualnej
 
-Utwórz sieć wirtualną przy użyciu polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie **VNet1** w **EastUS** lokalizacji:
+Tworzenie sieci wirtualnej za pomocą [New AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie **VNet1** w **EastUS** lokalizacji:
 
 ```azurepowershell-interactive
-$virtualNetwork = New-AzureRmVirtualNetwork `
+$virtualNetwork = New-AzVirtualNetwork `
   -ResourceGroupName TestRG1 `
   -Location EastUS `
   -Name VNet1 `
   -AddressPrefix 10.1.0.0/16
 ```
 
-Utwórz konfigurację podsieci przy użyciu [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) polecenia cmdlet.
+Utwórz konfigurację podsieci przy użyciu [New AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig) polecenia cmdlet.
 
 ```azurepowershell-interactive
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -Name Frontend `
   -AddressPrefix 10.1.0.0/24 `
   -VirtualNetwork $virtualNetwork
 ```
 
-Ustaw konfigurację podsieci dla sieci wirtualnych za pomocą funkcji [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) polecenia cmdlet.
+Ustaw konfigurację podsieci dla sieci wirtualnych za pomocą funkcji [AzVirtualNetwork zestaw](/powershell/module/az.network/Set-azVirtualNetwork) polecenia cmdlet.
 
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="gwsubnet"></a>Dodawanie podsieci bramy
@@ -67,19 +67,19 @@ Podsieć bramy zawiera zastrzeżone adresy IP, z których korzystają usługi br
 Ustaw zmienną dla sieci wirtualnej.
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
+$vnet = Get-AzVirtualNetwork -ResourceGroupName TestRG1 -Name VNet1
 ```
 
-Tworzenie podsieci bramy przy użyciu [Add-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/Add-AzureRmVirtualNetworkSubnetConfig) polecenia cmdlet.
+Tworzenie podsieci bramy przy użyciu [AzVirtualNetworkSubnetConfig Dodaj](/powershell/module/az.network/Add-azVirtualNetworkSubnetConfig) polecenia cmdlet.
 
 ```azurepowershell-interactive
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $vnet
 ```
 
-Ustaw konfigurację podsieci dla sieci wirtualnych za pomocą funkcji [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) polecenia cmdlet.
+Ustaw konfigurację podsieci dla sieci wirtualnych za pomocą funkcji [AzVirtualNetwork zestaw](/powershell/module/az.network/Set-azVirtualNetwork) polecenia cmdlet.
 
 ```azurepowershell-interactive
-$virtualNetwork | Set-AzureRmVirtualNetwork
+$virtualNetwork | Set-AzVirtualNetwork
 ```
 
 ## <a name="PublicIP"></a>Żądanie publicznego adresu IP
@@ -87,7 +87,7 @@ $virtualNetwork | Set-AzureRmVirtualNetwork
 Brama sieci VPN musi mieć dynamicznie przydzielanego publicznego adresu IP. Podczas tworzenia połączenia bramy sieci VPN jest to adres IP, który określisz. Żądanie publicznego adresu IP, skorzystaj z następującego przykładu:
 
 ```azurepowershell-interactive
-$gwpip= New-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
+$gwpip= New-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -Location 'East US' -AllocationMethod Dynamic
 ```
 
 ## <a name="GatewayIPConfig"></a>Utwórz konfigurację adresu IP bramy
@@ -95,26 +95,26 @@ $gwpip= New-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1 -L
 W ramach konfiguracji bramy zostaje zdefiniowana podsieć i publiczny adres IP do użycia. Poniższy przykład umożliwia utworzenie własnej konfiguracji bramy:
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
-$gwipconfig = New-AzureRmVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
+$vnet = Get-AzVirtualNetwork -Name VNet1 -ResourceGroupName TestRG1
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
+$gwipconfig = New-AzVirtualNetworkGatewayIpConfig -Name gwipconfig1 -SubnetId $subnet.Id -PublicIpAddressId $gwpip.Id
 ```
 ## <a name="CreateGateway"></a>Tworzenie bramy sieci VPN
 
-Tworzenie bramy sieci VPN może potrwać 45 minut lub dłużej. Po zakończeniu bramy można utworzyć połączenie między siecią wirtualną a inną siecią wirtualną. Lub Utwórz połączenie między siecią wirtualną a lokalizacją lokalną. Utwórz bramę sieci VPN za pomocą polecenia cmdlet [New-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/New-AzureRmVirtualNetworkGateway).
+Tworzenie bramy sieci VPN może potrwać 45 minut lub dłużej. Po zakończeniu bramy można utworzyć połączenie między siecią wirtualną a inną siecią wirtualną. Lub Utwórz połączenie między siecią wirtualną a lokalizacją lokalną. Tworzenie bramy sieci VPN przy użyciu [New AzVirtualNetworkGateway](/powershell/module/az.network/New-azVirtualNetworkGateway) polecenia cmdlet.
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
+New-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1 `
 -Location 'East US' -IpConfigurations $gwipconfig -GatewayType Vpn `
 -VpnType RouteBased -GatewaySku VpnGw1
 ```
 
 ## <a name="viewgw"></a>Wyświetl bramy sieci VPN
 
-Można wyświetlić przy użyciu bramy sieci VPN [Get-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.network/Get-AzureRmVirtualNetworkGateway) polecenia cmdlet.
+Można wyświetlić przy użyciu bramy sieci VPN [Get AzVirtualNetworkGateway](/powershell/module/az.network/Get-azVirtualNetworkGateway) polecenia cmdlet.
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkGateway -Name Vnet1GW -ResourceGroup TestRG1
+Get-AzVirtualNetworkGateway -Name Vnet1GW -ResourceGroup TestRG1
 ```
 
 Dane wyjściowe będą wyglądać podobnie do tego przykładu:
@@ -164,10 +164,10 @@ BgpSettings            : {
 
 ## <a name="viewgwpip"></a>Wyświetl publiczny adres IP
 
-Aby wyświetlić publiczny adres IP dla bramy sieci VPN, należy użyć [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/Get-AzureRmPublicIpAddress) polecenia cmdlet.
+Aby wyświetlić publiczny adres IP dla bramy sieci VPN, należy użyć [Get AzPublicIpAddress](/powershell/module/az.network/Get-azPublicIpAddress) polecenia cmdlet.
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1
+Get-AzPublicIpAddress -Name VNet1GWIP -ResourceGroupName TestRG1
 ```
 
 W odpowiedzi na przykład wartość adres IP jest publiczny adres IP.
@@ -201,10 +201,10 @@ IpTags                   : {}
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy utworzone zasoby nie będą już potrzebne, można je usunąć za pomocą polecenia [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup). Spowoduje to usunięcie grupy zasobów i wszystkich znajdujących się w niej zasobów.
+Jeśli nie potrzebujesz już zasobów utworzonych, użyj [AzResourceGroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) polecenie, aby usunąć grupę zasobów. Spowoduje to usunięcie grupy zasobów i wszystkich znajdujących się w niej zasobów.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name TestRG1
+Remove-AzResourceGroup -Name TestRG1
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

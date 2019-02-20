@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 6f0d51ad26dcea3f96a249165a324b5e0796ee03
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 820a6a4da9f5c466e694f247d09393474d8464ee
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444275"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418290"
 ---
 Z maszyną wirtualną, która jest wdrażana w sieci wirtualnej, można się połączyć, tworząc połączenie pulpitu zdalnego z tą maszyną. Najlepszym sposobem na zweryfikowanie, czy można połączyć się z maszyną wirtualną, jest połączenie się z nią za pomocą jej prywatnego adresu IP, a nie nazwy komputera. W ten sposób można przetestować możliwość połączenia się, a nie poprawność skonfigurowania rozpoznawania nazw.
 
@@ -24,8 +24,8 @@ Z maszyną wirtualną, która jest wdrażana w sieci wirtualnej, można się po�
    - Program PowerShell — skorzystaj z przykładu, aby wyświetlić listę maszyn wirtualnych i prywatnych adresów IP z grup zasobów. Przed użyciem tego przykładu nie trzeba go modyfikować.
 
      ```azurepowershell-interactive
-     $VMs = Get-AzureRmVM
-     $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
+     $VMs = Get-AzVM
+     $Nics = Get-AzNetworkInterface | Where VirtualMachine -ne $null
 
      foreach($Nic in $Nics)
      {

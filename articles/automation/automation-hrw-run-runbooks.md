@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f1700e124d1f572d0bf0ca76ea7c465f1ecf96c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657420"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430288"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook
 
 Nie ma różnic w strukturze elementów runbook, które są uruchamiane w usłudze Azure Automation i elementów runbook, które są uruchamiane hybrydowy proces roboczy elementu Runbook. Elementy Runbook, które można używać z poszczególnymi najprawdopodobniej różni się znacznie. Różnica ta ma, ponieważ elementy runbook, których platformą docelową hybrydowy proces roboczy elementu Runbook, zwykle zarządzać zasobami na komputerze lokalnym lub w odniesieniu do zasobów w środowisku lokalnym, na którym jest wdrażany. Elementy Runbook w usłudze Azure Automation zwykle zarządzają zasobami w chmurze platformy Azure.
 
-Podczas tworzenia elementów runbook do uruchamiania w hybrydowym procesie roboczym elementu Runbook, należy edytować i testowania elementów runbook na maszynie, który jest hostem hybrydowy proces roboczy. Komputer hosta ma wszystkie moduły programu PowerShell i dostępu do sieci, które musisz zarządzać i uzyskiwać dostęp do zasobów lokalnych. Gdy element runbook jest testowany na maszynie hybrydowego procesu roboczego, można przesłać go do środowiska usługi Azure Automation, gdy są one dostępne do działania w hybrydowym procesie roboczym. Ważne jest, aby wiedzieć, że zadania z programem na koncie systemu lokalnego dla Windows lub specjalne konto użytkownika **nxautomation** w systemie Linux. To zachowanie można wprowadzać niewielkie różnice, podczas tworzenia elementów runbook dla hybrydowego procesu roboczego elementu Runbook. Zmiany te powinny być weryfikowane podczas pisania elementów runbook.
+Podczas tworzenia elementów runbook do uruchamiania w hybrydowym procesie roboczym elementu Runbook, należy edytować i testowania elementów runbook na maszynie, który jest hostem hybrydowy proces roboczy. Komputer hosta ma wszystkie moduły programu PowerShell i dostępu do sieci, które musisz zarządzać i uzyskiwać dostęp do zasobów lokalnych. Gdy element runbook jest testowany na maszynie hybrydowego procesu roboczego, można przesłać go do środowiska usługi Azure Automation, gdy są one dostępne do działania w hybrydowym procesie roboczym. Ważne jest, aby wiedzieć, że zadania z programem na koncie systemu lokalnego dla Windows lub specjalne konto użytkownika `nxautomation` w systemie Linux. To zachowanie można wprowadzać niewielkie różnice, podczas tworzenia elementów runbook dla hybrydowego procesu roboczego elementu Runbook. Zmiany te powinny być weryfikowane podczas pisania elementów runbook.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Uruchamianie elementu runbook w hybrydowym procesie roboczym z elementu Runbook
 
@@ -44,7 +44,7 @@ Elementy Runbook uruchomione w hybrydowym procesie roboczym elementu Runbook nie
 
 ### <a name="runbook-authentication"></a>Uwierzytelnianie elementu Runbook
 
-Domyślnie, elementy runbook działają w kontekście konta systemu lokalnego dla Windows i specjalne konto użytkownika **nxautomation** dla systemu Linux na komputerze lokalnym, więc muszą zapewnić własny mechanizm uwierzytelniania do zasobów, które będą uzyskiwać dostęp do .
+Domyślnie, elementy runbook działają w kontekście konta systemu lokalnego dla Windows i specjalne konto użytkownika `nxautomation` dla systemu Linux na komputerze lokalnym, więc muszą zapewnić własny mechanizm uwierzytelniania do zasobów, z których korzystają.
 
 Możesz użyć [poświadczeń](automation-credentials.md) i [certyfikatu](automation-certificates.md) zasobów w elemencie runbook za pomocą poleceń cmdlet, które pozwalają określić poświadczenia, więc istnieje możliwość uwierzytelnienia się różnymi zasobami. Poniższy przykład pokazuje części elementu runbook, który powoduje ponowne uruchomienie komputera. Jej pobiera poświadczenia z zasób poświadczeń i nazwę komputera z zasobem zmiennej, a następnie używa tych wartości w poleceniu cmdlet Restart-Computer.
 
@@ -59,7 +59,7 @@ Można również użyć [InlineScript](automation-powershell-workflow.md#inlines
 
 ### <a name="runas-account"></a>Konto Uruchom jako
 
-Domyślnie hybrydowego procesu roboczego Runbook korzysta z systemu lokalnego dla Windows i specjalne konto użytkownika **nxautomation** dla systemu Linux do wykonywania elementów runbook. Zamiast elementów runbook, Podaj własny mechanizm uwierzytelniania do zasobów lokalnych, można określić **RunAs** konto do grupy hybrydowych procesów roboczych. Należy określić [zasób poświadczeń](automation-credentials.md) , ma dostęp do zasobów lokalnych, a wszystkie działania elementów runbook tych poświadczeń podczas uruchamiania na hybrydowy proces roboczy elementu Runbook w grupie.
+Domyślnie hybrydowego procesu roboczego Runbook korzysta z systemu lokalnego dla Windows i specjalne konto użytkownika `nxautomation` dla systemu Linux do wykonywania elementów runbook. Zamiast elementów runbook, Podaj własny mechanizm uwierzytelniania do zasobów lokalnych, można określić **RunAs** konto do grupy hybrydowych procesów roboczych. Należy określić [zasób poświadczeń](automation-credentials.md) , ma dostęp do zasobów lokalnych, a wszystkie działania elementów runbook tych poświadczeń podczas uruchamiania na hybrydowy proces roboczy elementu Runbook w grupie.
 
 Nazwa użytkownika dla poświadczenia musi być w jednym z następujących formatów:
 
@@ -247,7 +247,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-Gdy element runbook został podpisany, należy zaimportować do konta usługi Automation i opublikowana z użyciem blok podpisu. Aby dowiedzieć się, jak zaimportować elementy runbook, zobacz [importowanie elementu runbook z pliku do usługi Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+Gdy element runbook został podpisany, należy zaimportować do konta usługi Automation i opublikowana z użyciem blok podpisu. Aby dowiedzieć się, jak zaimportować elementy runbook, zobacz [importowanie elementu runbook z pliku do usługi Azure Automation](manage-runbooks.md#import-a-runbook).
 
 ### <a name="linux-hybrid-runbook-worker"></a>Linux hybrydowego procesu roboczego Runbook
 
@@ -257,7 +257,7 @@ Aby utworzyć elementy runbook na procesu roboczego elementu Runbook dla hybrydo
 
 Aby utworzyć zestaw kluczy i kluczy, musisz użyć konta hybrydowego procesu roboczego Runbook `nxautomation`.
 
-Użyj `sudo` logować się jako `nxautomation` konta.
+Użyj `sudo` zalogowania się jako `nxautomation` konta.
 
 ```bash
 sudo su – nxautomation
@@ -271,7 +271,7 @@ sudo gpg --generate-key
 
 GPG przeprowadzi Cię przez kroki, aby utworzyć prze. Należy podać nazwę, adres e-mail, czas wygaśnięcia, hasło i zaczekaj, aż wystarczającej entropii na tym komputerze dla klucza do wygenerowania.
 
-Ponieważ katalog GPG został wygenerowany przy użyciu programu sudo, należy zmienić jego właściciela do nxautomation. 
+Ponieważ katalog GPG został wygenerowany przy użyciu programu sudo, musisz zmienić jej właściciela `nxautomation`. 
 
 Uruchom następujące polecenie, aby zmienić właściciela.
 
@@ -289,7 +289,7 @@ gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 
 #### <a name="verify-signature-validation-is-on"></a>Sprawdź, czy Weryfikacja podpisu znajduje się na
 
-Weryfikacja podpisu została wyłączona na komputerze, należy włączyć tę funkcję. Uruchom następujące polecenie, aby włączyć weryfikację podpisu. Zastępowanie `<LogAnalyticsworkspaceId>` za pomocą identyfikatora obszaru roboczego
+Weryfikacja podpisu została wyłączona na komputerze, należy włączyć tę funkcję. Uruchom następujące polecenie, aby włączyć weryfikację podpisu. Zastępowanie `<LogAnalyticsworkspaceId>` przy użyciu swojego identyfikatora obszaru roboczego.
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
@@ -300,7 +300,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 Po skonfigurowaniu Weryfikacja podpisu służy następujące polecenie do podpisania elementu runbook:
 
 ```bash
-gpg –clear-sign <runbook name>
+gpg –-clear-sign <runbook name>
 ```
 
 Podpisany element runbook będzie mieć taką nazwę `<runbook name>.asc`.

@@ -5,19 +5,19 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/13/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 3c6485406c67bf84b9e0fdfb9f4683abe5062d6c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: afd4836229c60ebef1536d4fa1ca4206a492e56d
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444278"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418113"
 ---
 Po utworzeniu certyfikatu głównego z podpisem własnym, należy wyeksportować plik cer klucza publicznego certyfikatu głównego (nie klucz prywatny). Ten plik zostanie później przekazany na platformę Azure. Poniższe kroki pomogą Ci wyeksportować plik cer dla certyfikatu głównego z podpisem własnym:
 
-1. Aby uzyskać plik cer z certyfikatu, otwórz okno **Zarządzaj certyfikatami użytkowników**. Zlokalizuj certyfikat główny z podpisem własnym — zwykle znajduje się w katalogu „Certyfikaty - bieżący użytkownik\Osobisty\Certyfikat” — a następnie kliknij go prawym przyciskiem myszy. Kliknij pozycję **Wszystkie zadania**, a następnie kliknij pozycję **Eksportuj**. Spowoduje to otwarcie **Kreatora eksportu certyfikatów**. Jeśli nie możesz znaleźć certyfikat w obszarze bieżący użytkownik\osobisty\certyfikat może być otwarty Menedżer certyfikatów w przypadku certyfikatów komputera lokalnego (tytuł będzie "Certyfikatów — lokalny komputer" jako przeciwieństwie do "Certyfikaty — bieżący użytkownik"). Aby otworzyć Menedżera certyfikatów w bieżącej zakres użytkownika uruchomić go za pomocą tego samego programu PowerShell, których certyfikaty zostały utworzone, wpisując ```certmgr```.
+1. Aby uzyskać plik cer z certyfikatu, otwórz okno **Zarządzaj certyfikatami użytkowników**. Zlokalizuj certyfikat główny z podpisem własnym — zwykle znajduje się w katalogu „Certyfikaty - bieżący użytkownik\Osobisty\Certyfikat” — a następnie kliknij go prawym przyciskiem myszy. Kliknij pozycję **Wszystkie zadania**, a następnie kliknij pozycję **Eksportuj**. Spowoduje to otwarcie **Kreatora eksportu certyfikatów**. Jeśli nie możesz znaleźć certyfikat w obszarze bieżący użytkownik\osobisty\certyfikat, być może przypadkowo otwarto "Certyfikatów — lokalny komputer", a nie "Certyfikaty — bieżący użytkownik"). Jeśli chcesz otworzyć Menedżera certyfikatów w bieżącym zakresie użytkownika przy użyciu programu PowerShell, możesz wpisać *certmgr* w oknie konsoli.
 
    ![Eksportowanie](./media/vpn-gateway-certificates-export-public-key-include/export.png)
 2. W Kreatorze kliknij pozycję **Dalej**.

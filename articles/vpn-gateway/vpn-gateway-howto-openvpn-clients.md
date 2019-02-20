@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: cd84948b5895a628fc94cc2946156d9fa2284369
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 73f8b1323f6cd22ef215fba4ec45714f099032f6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508678"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415837"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>Konfigurowanie klientów OpenVPN dla bramy sieci VPN platformy Azure (wersja zapoznawcza)
 
@@ -24,12 +24,14 @@ Ten artykuł pomoże Ci skonfigurować OpenVPN klientów.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Sprawdź, że zostały wykonane kroki konfigurowania OpenVPN dla bramy sieci VPN. Aby uzyskać więcej informacji, zobacz [skonfigurować OpenVPN dla bramy sieci VPN Azure](vpn-gateway-howto-openvpn.md).
 
 ## <a name="windows"></a>Klienci Windows
 
 1. Pobieranie i instalowanie klienta OpenVPN z oficjalnego [OpenVPN witryny sieci Web](https://openvpn.net/index.php/open-source/downloads.html).
-2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w witrynie Azure portal lub "New-AzureRmVpnClientConfiguration" w programie PowerShell.
+2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w witrynie Azure portal lub "New-AzVpnClientConfiguration" w programie PowerShell.
 3. Rozpakuj profil. Następnie otwórz *vpnconfig.ovpn* pliku konfiguracji z folderu OpenVPN za pomocą Notatnika.
 4. [Eksportuj](vpn-gateway-certificates-point-to-site.md#clientexport) certyfikatu klienta P2S, utworzony i przekazany do konfiguracji P2S w bramie.
 5. Wyodrębnij klucz prywatny i odcisk palca base64 z *PFX*. Istnieje wiele sposobów, aby to zrobić. Przy użyciu biblioteki OpenSSL na maszynie jest jednym ze sposobów. *Profileinfo.txt* plik zawiera klucz prywatny i odcisk palca urzędu certyfikacji i certyfikatu klienta. Pamiętaj użyć odcisk palca certyfikatu klienta.
@@ -64,7 +66,7 @@ Sprawdź, że zostały wykonane kroki konfigurowania OpenVPN dla bramy sieci VPN
 ## <a name="mac"></a>Klienci na komputery Mac
 
 1. Pobieranie i instalowanie klienta OpenVPN, takich jak [TunnelBlik](https://tunnelblick.net/downloads.html). 
-2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w witrynie Azure portal lub za pomocą "New-AzureRmVpnClientConfiguration" w programie PowerShell.
+2. Pobierz profil sieci VPN dla bramy. Można to zrobić na karcie Konfiguracja punktu do lokacji w witrynie Azure portal lub za pomocą "New-AzVpnClientConfiguration" w programie PowerShell.
 3. Rozpakuj profil. Otwórz plik konfiguracji vpnconfig.ovpn z folderu OpenVPN w Notatniku.
 4. W sekcji certyfikatu klienta P2S wprowadź klucz publiczny certyfikatu klienta P2S w formacie base64. W przypadku certyfikatu w formacie PEM można po prostu otworzyć plik cer i skopiować klucz w formacie base64 znajdujący się pomiędzy nagłówkami certyfikatów. Zobacz [wyeksportować klucz publiczny](vpn-gateway-certificates-point-to-site.md#cer) informacji o sposobie eksportowania certyfikatu można pobrać zakodowanego klucza publicznego.
 5. W sekcji klucza prywatnego wprowadź klucz prywatny certyfikatu klienta P2S w formacie base64. Zobacz [Eksportuj klucz prywatny](https://openvpn.net/community-resources/how-to/#pki) informacji o tym, jak można wyodrębnić klucza prywatnego.

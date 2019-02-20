@@ -8,12 +8,12 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: a47800274184eb38d3f0161615c239d515febdf5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5c0364e2629bbf466e97d473fbd261444317de55
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538858"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427994"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-using-azure-cli"></a>Tworzenie i zarządzanie nimi — Azure Database dla punktów końcowych usługi sieci wirtualnej MySQL przy użyciu wiersza polecenia platformy Azure
 Punkty końcowe usługi sieci wirtualnej i reguł rozszerzyć prywatnej przestrzeni adresowej sieci wirtualnej do usługi Azure Database for MySQL server. Za pomocą wygodne poleceń interfejsu wiersza polecenia platformy Azure (CLI) można utworzyć, aktualizowanie, usuwanie, listy i Pokaż punkty końcowe usługi sieci wirtualnej i zasad do zarządzania serwerem. Omówienie usługi Azure Database dla punktów końcowych usługi sieci wirtualnej MySQL, łącznie z ograniczeniami, zobacz [— Azure Database for punkty końcowe usługi sieci wirtualnej serwera MySQL](concepts-data-access-and-security-vnet.md). Punkty końcowe usługi sieci wirtualnej są dostępne we wszystkich obsługiwanych regionów dla usługi Azure Database for MySQL.
@@ -25,6 +25,7 @@ Do wykonania kroków w tym przewodniku, potrzebne są:
 
 > [!NOTE]
 > Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+> W przypadku komunikacji równorzędnej sieci wirtualnych, jeśli ruch przepływają przez ze wspólnej bramy sieci wirtualnej z punktami końcowymi usługi i powinna przepływać do elementu równorzędnego, Utwórz regułę listy ACL/sieć wirtualna, aby umożliwić maszynom wirtualnym platformy Azure w sieci wirtualnej bramy do dostępu do serwera Azure Database for MySQL —.
 
 ## <a name="configure-vnet-service-endpoints-for-azure-database-for-mysql"></a>Konfigurowanie punktów końcowych usługi sieci wirtualnej dla usługi Azure Database for MySQL
 [Az sieci vnet](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest) polecenia są używane do konfigurowania sieci wirtualnych.

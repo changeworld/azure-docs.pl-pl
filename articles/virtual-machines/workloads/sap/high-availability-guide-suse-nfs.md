@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 799a40d759dc5614bd43234638982d5275d9d325
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634748"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429200"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -43,6 +43,7 @@ ms.locfileid: "45634748"
 
 [sles-hae-guides]:https://www.suse.com/documentation/sle-ha-12/
 [sles-for-sap-bp]:https://www.suse.com/documentation/sles-for-sap-12/
+[suse-ha-12sp3-relnotes]:https://www.suse.com/releasenotes/x86_64/SLE-HA/12-SP3/
 
 [template-multisid-xscs]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-xscs-md%2Fazuredeploy.json
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
@@ -76,6 +77,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty
 * [SUSE Linux Enterprise wysoką dostępność rozszerzenia 12 z dodatkiem SP3 najlepsze praktyki prowadnic][sles-hae-guides]
   * Magazyn NFS o wysokiej dostępności przy użyciu DRBD i program Pacemaker
 * [SUSE Linux Enterprise Server dla SAP aplikacji 12 z dodatkiem SP3 najlepsze praktyki prowadnic][sles-for-sap-bp]
+* [Rozszerzenie o wysokiej dostępności SUSE 12 z dodatkiem SP3 — informacje o wersji][suse-ha-12sp3-relnotes]
 
 ## <a name="overview"></a>Przegląd
 
@@ -112,7 +114,7 @@ Można użyć jednego z szablonów szybkiego startu w usłudze GitHub do wdraża
 1. Wprowadź następujące parametry
    1. Prefiks zasobów  
       Wprowadź prefiks, którego chcesz użyć. Wartość jest używana jako prefiks dla zasobów, które są wdrażane.
-   2. Liczba systemów SAP  
+   2. SAP System Count  
       Wprowadź liczbę systemów SAP, korzystających z tego serwera plików. Spowoduje to wdrożenie wymaganą ilość konfiguracji frontonu, reguły równoważenia obciążenia i sondę porty, dyski itp.
    3. Typ systemu operacyjnego  
       Wybierz jeden z dystrybucje systemu Linux. W tym przykładzie wybierz systemu SLES 12.
@@ -126,7 +128,7 @@ Można użyć jednego z szablonów szybkiego startu w usłudze GitHub do wdraża
 Najpierw należy utworzyć maszyny wirtualne, dla tego klastra systemu plików NFS. Następnie utwórz moduł równoważenia obciążenia i używanie maszyn wirtualnych w puli zaplecza.
 
 1. Tworzenie grupy zasobów
-1. Tworzenie sieci wirtualnej
+1. Create a Virtual Network
 1. Tworzenie zestawu dostępności  
    Domena aktualizacji Maksymalny zestaw
 1. Tworzenie maszyny wirtualnej 1 Użyj co najmniej SLES4SAP 12 z dodatkiem SP3, w tym przykładzie SLES4SAP 12 SP3 BYOS obrazów SLES For SAP aplikacji 12 z dodatkiem SP3 (BYOS) jest używany  

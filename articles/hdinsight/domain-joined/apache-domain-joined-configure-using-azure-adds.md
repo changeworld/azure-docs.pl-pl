@@ -9,12 +9,12 @@ ms.reviewer: hrasheed
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.custom: seodec18
-ms.openlocfilehash: b6cc65d10fc8924686d01c02177a9cb76f7a9571
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 722a40dca0a64407a407ecad6d990d1651b0e998
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660922"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415735"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra usługi HDInsight z pakietem Enterprise Security przy użyciu usług Azure Active Directory Domain Services
 
@@ -95,6 +95,10 @@ Upewnij się, że wszystkie [wymagane porty](https://docs.microsoft.com/previous
 ## <a name="create-a-hdinsight-cluster-with-esp"></a>Tworzenie klastra HDInsight z ESP
 
 Po skonfigurowaniu poprawnie w poprzednich krokach, następnym krokiem jest tworzenie klastra HDInsight z usługą ESP włączone. Podczas tworzenia klastra usługi HDInsight, możesz włączyć pakiet Enterprise Security w **niestandardowe** kartę. Jeśli wolisz skorzystać z szablonu usługi Azure Resource Manager dla wdrożenia, użyj środowisko pracy w portalu po i Pobierz szablon wstępnie wypełnione na ostatniej stronie "Podsumowanie" w celu wykorzystania w przyszłości.
+
+> [!NOTE]  
+> Pierwsze sześć znaków nazwy klastrów ESP musi być unikatowa w danym środowisku. Na przykład jeśli masz wiele klastrów ESP w różnych sieciach wirtualnych, należy wybrać convension nazewnictwa, która gwarantuje, że pierwsze sześć znaków na nazwy klastra są unikatowe.
+
 
 ![Weryfikacja domeny pakietu zabezpieczeń Azure HDInsight Enterprise](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-create-cluster-esp-domain-validate.png)
 

@@ -16,12 +16,12 @@ ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4714a4ee5f90194a3be47b1e5878dfa8e230f42b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4d239d372a514b24a4e022f62ceec2dfee94d187
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173491"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430407"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Monitorowanie usług AD FS za pomocą programu Azure AD Connect Health
 Poniższa dokumentacja dotyczy monitorowania infrastruktury usług AD FS przy użyciu programu Azure AD Connect Health. Aby uzyskać informacje na temat monitorowania programu Azure AD Connect (synchronizacja) za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health w celu synchronizacji](how-to-connect-health-sync.md). Ponadto, aby uzyskać informacje na temat monitorowania Usług domenowych Active Directory za pomocą programu Azure AD Connect Health, zobacz [Używanie programu Azure AD Connect Health z usługami AD DS](how-to-connect-health-adds.md).
@@ -199,7 +199,7 @@ Prywatne adresy IP (<i>10.x.x.x, 172.x.x.x & 192.168.x.x</i>) i adresy IP progra
 Jeśli adresy IP modułu równoważenia obciążenia są widoczne, prawdopodobnie zewnętrzny moduł równoważenia obciążenia nie wysyła adresu IP klienta podczas przekazywania żądania do serwera proxy aplikacji internetowych. Skonfiguruj prawidłowo moduł równoważenia obciążenia, aby przekazać adres IP klienta na potrzeby przekazywania dalej. 
 
 3. Co zrobić, aby zablokować adres IP?  <br />
-Złośliwy adres IP należy dodać do zapory lub blokady w programie Exchange.   <br />
+Złośliwy adres IP należy dodać do zapory lub blokady w programie Exchange. Dla usług AD FS 2016 można zablokować adres IP bezpośrednio z zablokowanej właściwości adresu IP. [Dowiedz się więcej](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection#banned-ip-addresses)   <br />
 
 4. Dlaczego raport nie zawiera żadnych elementów? <br />
    - Nieudane działania związane z logowaniem nie przekraczają ustawień progowych. 

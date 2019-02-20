@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: a35bde6e89290fd2282ba6ec829f46cb4c6fc225
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5242f31ff35e367211d48157fd4953751d1bb148
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103319"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416296"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurowanie połączeń usługi ExpressRoute i lokacja-lokacja współistniejących przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -81,9 +81,9 @@ Istnieją dwa różne zestawy procedur do wyboru. Wybór procedury konfiguracji 
 ## <a name="new"></a>Aby utworzyć nową sieć wirtualną i współistniejące połączenia
 Ta procedura zawiera instrukcje tworzenia sieci wirtualnej i połączeń typu lokacja-lokacja oraz usługi ExpressRoute, które będą współistnieć.
 
-1. Zainstaluj najnowszą wersję poleceń cmdlet programu Azure PowerShell. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet, zobacz [How to install and configure Azure PowerShell](/powershell/azure/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). Polecenia cmdlet, których użyjesz do tej konfiguracji, mogą trochę różnić się od tych, które znasz. Koniecznie użyj poleceń cmdlet podanych w tych instrukcjach.
+1. Zainstaluj najnowszą wersję poleceń cmdlet programu Azure PowerShell. Aby uzyskać więcej informacji na temat instalowania poleceń cmdlet, zobacz [How to install and configure Azure PowerShell](/powershell/azure/azurerm/overview) (Instalowanie i konfigurowanie programu Azure PowerShell). Polecenia cmdlet, których użyjesz do tej konfiguracji, mogą trochę różnić się od tych, które znasz. Koniecznie użyj poleceń cmdlet podanych w tych instrukcjach.
 
-2. Zaloguj się do swojego konta i konfigurowanie środowiska.
+1. Zaloguj się do swojego konta i konfigurowanie środowiska.
 
   ```powershell
   Connect-AzureRmAccount

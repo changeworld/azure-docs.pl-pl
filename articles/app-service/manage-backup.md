@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 6a43edc6e8bf0afe28f27f4be53315c5e807dc8d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 18fc86e8d9b9622f11faad0f11dc57a83124a857
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338584"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417518"
 ---
 # <a name="back-up-your-app-in-azure"></a>Tworzenie kopii zapasowej aplikacji na platformie Azure
 Funkcja tworzenia kopii zapasowych i przywracania w [usługi Azure App Service](overview.md) umożliwia łatwe tworzenie kopii zapasowych aplikacji ręcznie lub zgodnie z harmonogramem. Aplikację można przywrócić do migawki poprzedniego stanu przez zastąpienie istniejącej aplikacji lub przywrócenie do innej aplikacji. 
@@ -52,7 +52,7 @@ Następujące rozwiązania bazy danych są obsługiwane za pomocą funkcji Kopia
 ## <a name="requirements-and-restrictions"></a>Wymagania i ograniczenia
 * Funkcja Kopia zapasowa i przywracanie wymaga planu usługi App Service w **standardowa** warstwy lub **Premium** warstwy. Aby uzyskać więcej informacji na temat skalowania planu usługi App Service, aby korzystać z wyższej warstwy, zobacz [skalowanie aplikacji na platformie Azure](web-sites-scale.md).  
   **Premium** warstwy umożliwia większą liczbę dziennych kopii ups niż **standardowa** warstwy.
-* Potrzebujesz konta usługi Azure storage i kontenera w tej samej subskrypcji co aplikacja, którą chcesz utworzyć kopię zapasową. Aby uzyskać więcej informacji na temat konta usługi Azure storage, zobacz [Przegląd konta usługi Azure storage](https://docs.microsoft.com/en-us/azure/storage/common/storage-account-overview).
+* Potrzebujesz konta usługi Azure storage i kontenera w tej samej subskrypcji co aplikacja, którą chcesz utworzyć kopię zapasową. Aby uzyskać więcej informacji na temat konta usługi Azure storage, zobacz [Przegląd konta usługi Azure storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 * Kopie zapasowe mogą być 10 GB zawartości aplikacji i bazy danych. Jeśli rozmiar kopii zapasowej przekracza ten limit, wystąpi błąd.
 * Kopie zapasowe protokołu SSL, włączone — Azure Database dla MySQL nie jest obsługiwana. Jeśli skonfigurowano kopię zapasową, zostanie wyświetlony wykonywania kopii zapasowej.
 * Kopie zapasowe SSL włączone — Azure Database dla PostgreSQL nie jest obsługiwana. Jeśli skonfigurowano kopię zapasową, zostanie wyświetlony wykonywania kopii zapasowej.

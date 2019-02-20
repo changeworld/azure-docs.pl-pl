@@ -1,26 +1,19 @@
 ---
-title: Usługa Azure Backup przewodnik rozwiązywania problemów dla maszyn wirtualnych programu SQL Server | Dokumentacja firmy Microsoft
-description: Informacje dotyczące rozwiązywania problemów do wykonywania kopii zapasowych maszyn wirtualnych programu SQL Server na platformie Azure.
+title: Rozwiązywanie problemów z kopii zapasowej bazy danych programu SQL Server w usłudze Azure Backup | Dokumentacja firmy Microsoft
+description: Informacje dotyczące rozwiązywania problemów do wykonywania kopii zapasowych baz danych SQL Server uruchomiony na maszynach wirtualnych Azure z usługą Azure Backup.
 services: backup
-documentationcenter: ''
-author: rayne-wiselman
-manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
+author: anuragm
+manager: shivamg
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 02/19/2019
 ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296125"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428623"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Rozwiązywanie problemów z kopii zapasowych programu SQL Server na platformie Azure
 
@@ -28,11 +21,11 @@ Ten artykuł zawiera informacje dotyczące rozwiązywania problemów w celu ochr
 
 ## <a name="public-preview-limitations"></a>Ograniczenia publicznej wersji zapoznawczej
 
-Aby wyświetlić ograniczenia publicznej wersji zapoznawczej, zapoznaj się z artykułem [Utwórz kopię zapasową bazy danych programu SQL Server na platformie Azure](backup-azure-sql-database.md#public-preview-limitations).
+Aby wyświetlić ograniczenia publicznej wersji zapoznawczej, zapoznaj się z artykułem [Utwórz kopię zapasową bazy danych programu SQL Server na platformie Azure](backup-azure-sql-database.md#preview-limitations).
 
 ## <a name="sql-server-permissions"></a>Uprawnienia programu SQL Server
 
-Można skonfigurować ochrony dla bazy danych programu SQL Server na maszynie wirtualnej **AzureBackupWindowsWorkload** rozszerzenia musi być zainstalowany na tej maszynie wirtualnej. Jeśli wystąpi błąd, **UserErrorSQLNoSysadminMembership**, oznacza to wystąpienie programu SQL nie ma wymaganych uprawnień do tworzenia kopii zapasowej. Aby naprawić ten błąd, wykonaj kroki opisane w [ustawić uprawnienia dla maszyn wirtualnych SQL spoza witryny marketplace](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms).
+Można skonfigurować ochrony dla bazy danych programu SQL Server na maszynie wirtualnej **AzureBackupWindowsWorkload** rozszerzenia musi być zainstalowany na tej maszynie wirtualnej. Jeśli wystąpi błąd, **UserErrorSQLNoSysadminMembership**, oznacza to wystąpienie programu SQL nie ma wymaganych uprawnień do tworzenia kopii zapasowej. Aby naprawić ten błąd, wykonaj kroki opisane w [ustawić uprawnienia dla maszyn wirtualnych SQL spoza witryny marketplace](backup-azure-sql-database.md#fix-sql-sysadmin-permissions).
 
 ## <a name="troubleshooting-errors"></a>Rozwiązywanie problemów z błędami
 
@@ -56,13 +49,13 @@ Poniższe tabele są uporządkowane według kodu błędu.
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
 | Ta baza danych SQL nie obsługuje żądanego typu kopii zapasowej. | Występuje, gdy model odzyskiwania bazy danych nie zezwalaj na kopie zapasowe żądanego typu. Ten błąd może się zdarzyć w następujących sytuacjach: <br/><ul><li>Bazę danych przy użyciu modelu odzyskiwania prostego nie zezwala na tworzenie kopii zapasowej dziennika.</li><li>Dziennika i różnicowe kopie zapasowe nie są dozwolone dla głównego bazy danych.</li></ul>Aby uzyskać więcej informacji, zobacz [modeli odzyskiwania SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server) dokumentacji. | Jeśli kopia zapasowa dziennika bazy danych w modelu odzyskiwania prostego nie powiedzie się, spróbuj wykonać jedną z następujących opcji:<ul><li>Jeśli baza danych jest w trybie odzyskiwania prostego, należy wyłączyć kopie zapasowe dziennika.</li><li>Użyj [dokumentacji programu SQL](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server) zmiany modelu odzyskiwania bazy danych na wartość Full lub dziennikiem. </li><li> Jeśli nie chcesz zmienić model odzyskiwania, a masz standardowych zasad, aby utworzyć kopię zapasową wielu baz danych, których nie można zmienić, zignoruj ten błąd. Pełnych i różnicowych kopii zapasowych będą działać na harmonogram. Kopie zapasowe dziennika zostanie pominięty, której oczekuje się, w tym przypadku.</li></ul>Jeśli wzorzec bazy danych i skonfigurowano różnicowej lub dziennika kopii zapasowej, użyj dowolnej z następujących czynności:<ul><li>Użyj portalu Aby zmienić harmonogram zasad tworzenia kopii zapasowej dla serwera głównego bazy danych, pełne.</li><li>W przypadku standardowych zasad, aby utworzyć kopię zapasową wielu baz danych, których nie można zmienić, zignoruj ten błąd. Pełnej kopii zapasowej będzie działać na harmonogram. Różnicowa lub dziennika kopii zapasowych nie wystąpi, której oczekuje się, w tym przypadku.</li></ul> |
-| Operacja anulowana, ponieważ operacja powodująca konflikt była już uruchomiona na tej samej bazy danych. | Zobacz [wpis w blogu o kopii zapasowej i przywracanie ograniczenia](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , działające równocześnie.| [Aby monitorować zadania tworzenia kopii zapasowej, należy użyć programu SQL Server Management Studio (SSMS).](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms) Gdy operacja powodująca konflikt nie powiedzie się, uruchom ponownie operację.|
+| Operacja anulowana, ponieważ operacja powodująca konflikt była już uruchomiona na tej samej bazy danych. | Zobacz [wpis w blogu o kopii zapasowej i przywracanie ograniczenia](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database) , działające równocześnie.| [Aby monitorować zadania tworzenia kopii zapasowej, należy użyć programu SQL Server Management Studio (SSMS).](manage-monitor-sql-database-backup.md) Gdy operacja powodująca konflikt nie powiedzie się, uruchom ponownie operację.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
 | Komunikat o błędzie | Możliwe przyczyny | Zalecana akcja |
 |---|---|---|
-| Baza danych SQL nie istnieje. | Baza danych, został usunięty lub zmieniono jego nazwę. | <ul><li>Sprawdź, jeśli baza danych została przypadkowo usunięty lub zmieniono ich nazwy.</li><li>Jeśli przypadkowo usunięto bazy danych, aby kontynuować tworzenie kopii zapasowych, należy przywrócić bazę danych do oryginalnej lokalizacji.</li><li>Jeśli usunięte bazy danych i nie potrzebujesz przyszłych kopie zapasowe, a następnie w magazynie usługi Recovery Services klikaj [zatrzymywanie tworzenia kopii zapasowych "Usuń/Zachowaj dane"](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms).</li>|
+| Baza danych SQL nie istnieje. | Baza danych, został usunięty lub zmieniono jego nazwę. | Sprawdź, jeśli baza danych została przypadkowo usunięty lub zmieniono ich nazwy.<br/><br/> Jeśli przypadkowo usunięto bazy danych, aby kontynuować tworzenie kopii zapasowych, należy przywrócić bazę danych do oryginalnej lokalizacji.<br/><br/> Jeśli usunięte bazy danych i nie potrzebujesz przyszłych kopie zapasowe, a następnie w magazynie usługi Recovery Services klikaj [zatrzymywanie tworzenia kopii zapasowych "Usuń/Zachowaj dane"](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 

@@ -8,12 +8,12 @@ ms.service: data-explorer
 services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 9d265ec7f0ce2030874f38b99b07343f1d4a3f4d
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.openlocfilehash: bc3f97c798f5e040908e8103c00d3f015f8c824d
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408650"
+ms.locfileid: "56415338"
 ---
 # <a name="manage-cluster-scale-up-to-accommodate-changing-demand"></a>Zarządzaj klastra skalowanie w górę do uwzględnienia zmiennym obciążeniem
 
@@ -30,10 +30,7 @@ Odpowiednio rozmiaru klastra ma kluczowe znaczenie dla wydajności Eksploratora 
 1. Aby zmienić jednostki SKU, wybierz jednostkę SKU, a następnie naciśnij **wybierz** przycisku.
 
 > [!NOTE]
-> Skalowanie w górę proces może potrwać kilka minut. W tym czasie klastra usługi zostaną zawieszone.
->
-> Skalowanie w dół może negatywnie wpłynąć na wydajność klastra.
->
+> Skala, proces może potrwać kilka minut, a w tym czasie zostanie zawieszony klastra. Należy pamiętać, że skalowanie w dół może negatywnie wpłynąć na wydajność klastra.
 
 Już teraz wykonywać operację skalowania w górę lub w dół dla klastra Eksploratora danych usługi Azure. Można również wykonać [klastra skalowalnego w poziomie](manage-cluster-scale-out.md), znanego również jako automatyczne skalowanie w celu skalowania dynamicznie w oparciu metryki, które określisz.
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: raynew
 ms.openlocfilehash: b589c88e5b5c5991db43a9f3c10003e17094b2e1
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54057405"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430871"
 ---
 ## <a name="defining-a-backup-policy"></a>Określanie zasad tworzenia kopii zapasowych
 Zasady tworzenia kopii zapasowych określają macierz z informacjami, kiedy są pobierane migawki danych i jak długo są przechowywane. W przypadku określania zasad tworzenia kopii zapasowych maszyny wirtualnej można wyzwolić zadanie tworzenia kopii zapasowej *raz dziennie*. W przypadku tworzenia nowych zasad zostają one zastosowane do magazynu. Interfejs zasad tworzenia kopii zapasowych wygląda następująco:

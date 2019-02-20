@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: e518263fc7f427ade4943f91fdc840b62a235205
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 150b800bfa6bfa20f10dbba7e8d55981ecb9df34
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550027"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56422869"
 ---
 ### <a name="enable-logging-with-diagnostics-settings"></a>Włącz logowanie za pomocą ustawień diagnostycznych
 
@@ -46,6 +46,7 @@ ms.locfileid: "53550027"
    * Operacje bliźniaczych reprezentacji
    * Operacje zadania
    * Metody bezpośrednie  
+   * Rozproszonego śledzenia (wersja zapoznawcza)
 
 6. Zapisz nowe ustawienia. 
 

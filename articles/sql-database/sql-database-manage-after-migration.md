@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 8c0c4ac6ce09ce92851b532b226dadfd8b9f7e18
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 148dff16d56755755f71e24e658e29c116ac5df1
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270440"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417639"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzanie pojedynczymi i puli baz danych w usłudze Azure SQL Database
 
@@ -302,11 +302,11 @@ SQL Database przy użyciu kilka technik inteligentne, które zezwolić na obsłu
 
 - **Eksportuj**: Usługi Azure SQL database można wyeksportować jako plik BACPAC w witrynie Azure portal
 
-   ![Eksportowanie bazy danych](./media/sql-database-export/database-export.png)
+   ![Eksportowanie bazy danych](./media/sql-database-export/database-export1.png)
 
 - **Importuj**: Możesz zaimportować dane jako plik BACPAC do bazy danych przy użyciu witryny Azure portal.
 
-   ![Importowanie bazy danych](./media/sql-database-import/import.png)
+   ![Importowanie bazy danych](./media/sql-database-import/import1.png)
 
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Jak zsynchronizować dane między bazą danych SQL i programu SQL Server
 

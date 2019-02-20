@@ -4,14 +4,14 @@ description: Dowiedz się, jak zmienić delegowanie domeny i korzystać z serwer
 services: dns
 author: vhorne
 ms.service: dns
-ms.date: 1/22/2019
+ms.date: 2/19/2019
 ms.author: victorh
-ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 85f7318ac584e324f58d2ad470dc896e79e416d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461036"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417892"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegowanie stref DNS za pomocą usługi Azure DNS
 
@@ -27,7 +27,7 @@ System nazw domen (DNS, Domain Name System) jest hierarchią domen. Hierarchia r
 
 **Rejestrator domen** — Rejestrator domen to firma, która może udostępniać nazwy domen internetowych. Weryfikuje ona, czy domena internetowa, której chcesz używać, jest dostępna, i umożliwi jej zakupienie. Po zarejestrowaniu nazwy domeny jesteś jej prawnym właścicielem. Jeśli masz już domenę internetową, będziesz korzystać z bieżącego rejestratora domeny do delegowania jej do usługi Azure DNS.
 
-Aby dowiedzieć się, kto jest właścicielem danej nazwy domeny lub uzyskać informacje o tym, jak kupić domenę, zobacz [Zarządzanie domenami internetowymi w usłudze Azure AD](https://msdn.microsoft.com/library/azure/hh969248.aspx).
+Aby uzyskać więcej informacji na temat domen akredytowanych zobacz [rejestratorów ICANN-Accredited](https://www.icann.org/registrar-reports/accredited-list.html).
 
 ### <a name="resolution-and-delegation"></a>Rozpoznawanie i delegowanie
 

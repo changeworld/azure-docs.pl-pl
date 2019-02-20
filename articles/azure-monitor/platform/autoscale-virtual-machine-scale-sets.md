@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 074f090d295ef5eafad48e57f68dad019bf7eab9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 23618b545814e89a7343d2db4664405855051c1b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470039"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415446"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguracja zaawansowane automatyczne skalowanie usługi VM Scale Sets za pomocą szablonów usługi Resource Manager
 Możesz skalować i skalowalnego w poziomie w zestawach skalowania maszyn wirtualnych na podstawie dotyczące progów metryk wydajności, według powtarzającego się harmonogramu lub według określonej daty. Można również skonfigurować powiadomienia e-mail i elementy webhook dla akcji skalowania. W tym instruktażu przedstawiono przykład konfigurowania tych obiektów w zestawie skalowania maszyn wirtualnych przy użyciu szablonu usługi Resource Manager.
@@ -48,9 +48,9 @@ W tym przewodniku używamy [Eksploratora zasobów Azure](https://resources.azure
 4. Poniżej przedstawiono hipotetyczny scenariusza skalowania, których będziemy używać na potrzeby tego przewodnika.
 
     * **Obciążenia na podstawie** — Chcę skalowanie w poziomie lub w oparciu o obciążenie w mojej aplikacji hostowanych na Moje set.* skalowania
-    * **Rozmiar kolejki wiadomości** — czy mogę użyć kolejki usługi Service Bus dla komunikatów przychodzących do mojej aplikacji. Liczba komunikatów w kolejce i procent użycia procesora CPU i Konfigurowanie profilu domyślnego do wyzwalania akcji skalowania, jeśli liczba komunikatów lub procesor CPU osiągnie threshold.*
-    * **Czas tydzień i dzień** — Chcę, aby co tydzień cyklicznego "godziny dnia", na podstawie profil o nazwie "Dzień roboczy rano Hours". Na podstawie danych historycznych, wiadomo, że warto mieć określonej liczby wystąpień maszyn wirtualnych do obsługi obciążenia mojej aplikacji podczas ta godzina
-    * **Wybranych dat** — po dodaniu profilu produktu Uruchom dnia. Czy mogę Planuj z wyprzedzeniem określone daty tak Moja aplikacja jest gotowa do obsługi obciążenia powodu marketingu anonsów i testujemy nowego produktu w application.*
+    * **Rozmiar kolejki wiadomości** — czy mogę użyć kolejki usługi Service Bus dla komunikatów przychodzących do mojej aplikacji. Liczba komunikatów w kolejce i procent użycia procesora CPU i Konfigurowanie profilu domyślnego do wyzwalania akcji skalowania, jeśli liczba komunikatów lub Procesora osiąga wartość progową.\*
+    * **Czas tydzień i dzień** — Chcę, aby co tydzień cyklicznego "godziny dnia", na podstawie profil o nazwie "Dzień roboczy rano Hours". Na podstawie danych historycznych, wiem, że warto mieć określonej liczby wystąpień maszyn wirtualnych do obsługi obciążenia mojej aplikacji, w tym czasie.\*
+    * **Wybranych dat** — po dodaniu profilu produktu Uruchom dnia. Czy mogę Planuj z wyprzedzeniem dla określonej daty, Moja aplikacja jest gotowa do obsługi obciążenia powodu marketingu anonsów i testujemy nowego produktu w aplikacji.\*
     * *Ostatnie dwa profile mogą mieć również inne metryki na podstawie reguły wydajności w nich. W takim przypadku postanowiła, czy nie masz, i zamiast polegać na metryki wydajności domyślnej reguły na podstawie. Reguły są opcjonalne dla profilów cyklicznych i na podstawie daty.*
 
     Aparat skalowania automatycznego priorytetyzacji profile i reguł, również są przechwytywane w [najlepsze rozwiązania skalowania automatycznego](autoscale-best-practices.md) artykułu.

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243420"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428911"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Najlepsze rozwiązania dotyczące tworzenia aplikacji interpretacji języka, dzięki usługom Cognitive Services
 Użyj procesu tworzenia aplikacji do tworzenia aplikacji usługi LUIS. 
@@ -77,23 +77,32 @@ Więcej informacji:
 * Pojęcia: [Cykl tworzenia aplikacji usługi LUIS](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Dodawanie listy frazy i wzorców w późniejszej iteracji
-[Frazę list](luis-concept-feature.md) umożliwiają definiowanie słowników wyrazy związane z domeny aplikacji. Inicjator frazy Twojej listy za pomocą kilku słowach, a następnie korzystać z funkcji sugerowanej, więc LUIS obsługującemu więcej słów w określonych słownictwa aplikacji. Nie dodawaj każdy wyraz słownictwa, ponieważ lista wyrażenie nie jest dokładne dopasowanie. 
+
+Najlepszym rozwiązaniem jest nie chcesz stosować te rozwiązania przed aplikacja została przetestowana. Należy zrozumieć sposób działania aplikacji przed dodaniem list frazy i wzorce. Po zapoznaniu się, jak aplikacja zachowuje się bez nich, należy dodać każdą z tych funkcji odnoszących się do aplikacji. Nie trzeba dodawać te funkcje z każdym [iteracji](luis-concept-app-iteration.md) lub zmieniać funkcje z każdą wersją. 
+
+Nie powoduje żadnych problemów, dodając je na początku projektu modelu, ale znacznie łatwiej zobaczyć każdej funkcji zmiany wyników po wypowiedzi została przetestowana dla modelu. 
+
+Najlepszym rozwiązaniem jest przetestowanie za pośrednictwem [punktu końcowego](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance) tak, aby uzyskać jednocześnie ma dodatkową zaletę [aktywne uczenie](luis-concept-review-endpoint-utterances.md). [Interaktywne okienko testowania](luis-interactive-test.md) jest również metodologii prawidłowej testów. 
+ 
+
+### <a name="phrase-lists"></a>Listy fraz
+
+[Frazę list](luis-concept-feature.md) umożliwiają definiowanie słowników wyrazy związane z domeny aplikacji. Inicjator frazy Twojej listy za pomocą kilku słowach, a następnie korzystać z funkcji sugerowanej, więc LUIS obsługującemu więcej słów w określonych słownictwa aplikacji. Lista fraz zwiększa intencji wykrywania i klasyfikacji jednostki, ulepszanie sygnał skojarzony z słów i fraz, które są istotne dla twojej aplikacji. 
+
+Nie dodawaj każdy wyraz słownictwa, ponieważ lista wyrażenie nie jest dokładne dopasowanie. 
+
+Więcej informacji:
+* Pojęcia: [Wyrażenie funkcji listy aplikacją usługi LUIS](luis-concept-feature.md)
+* Porady: [Użyj frazy Wyświetla sygnału boost listy programu word](luis-how-to-add-features.md)
+
+### <a name="patterns"></a>Wzorce
 
 Wypowiedzi użytkowników z punktu końcowego, bardzo podobne do siebie nawzajem, może spowodować ujawnienie wzorców wybór programu word i umieszczania. [Wzorzec](luis-concept-patterns.md) funkcja przyjmuje ten wybór programu word i umieszczania wraz z wyrażeń regularnych w celu zwiększenia dokładności prognozy. We wzorcu wyrażenia regularnego umożliwia słów i znaki interpunkcyjne, które zamierzasz Ignoruj podczas nadal pasujących do wzorca. 
 
 Użyj wzorca [opcjonalnych składni](luis-concept-patterns.md) znaki interpunkcyjne, dzięki czemu można zignorować znaki interpunkcyjne. Użyj [jawną listę](luis-concept-patterns.md#explicit-lists) celu kompensacji pattern.any składni problemów. 
 
-Nie należy stosować te rozwiązania, zanim aplikacja otrzymała żądania punktu końcowego. Należy zrozumieć sposób działania aplikacji przed dodaniem list frazy i wzorce. Po zapoznaniu się, jak aplikacja zachowuje się bez nich, należy dodać każdą z tych funkcji odnoszących się do aplikacji. 
-
-Nie powoduje żadnych problemów, dodając je na początku projektu modelu, ale jest łatwiej zobaczyć, jak każdej funkcji zmienia wyniki, jeśli dodasz je po zakończeniu korzystania z aplikacji przy użyciu rzeczywistego ruchu. 
-
-Nie należy dodawać tych funkcji, z każdą iteracją, lub zmieniać funkcje z każdą wersją. 
-
 Więcej informacji:
-* Pojęcia: [Cykl tworzenia aplikacji usługi LUIS](luis-concept-app-iteration.md)
-* Pojęcia: [Wyrażenie funkcji listy aplikacją usługi LUIS](luis-concept-feature.md)
 * Pojęcia: [Wzorce zwiększenia dokładności prognozy](luis-concept-patterns.md)
-* Porady: [Użyj frazy Wyświetla sygnału boost listy programu word](luis-how-to-add-features.md)
 * Porady: [Jak dodać wzorców w celu zwiększenia dokładności prognozy](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>Saldo swoje wypowiedzi we wszystkich intencji

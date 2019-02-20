@@ -2,25 +2,16 @@
 title: 'Usuwanie bramy sieci wirtualnej: Program PowerShell: Azure Resource Manager | Microsoft Docs'
 description: Usuwanie bramy sieci wirtualnej przy użyciu programu PowerShell w modelu wdrażania usługi Resource Manager.
 services: vpn-gateway
-documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
-ms.topic: ''
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 02/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: a0fc21c469658da637f15c820c105ec3ff31a04e
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 922aa739a42eddbe8cd7e3cabe46681c0c2c6d46
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507930"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417078"
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>Usuwanie bramy sieci wirtualnej przy użyciu programu PowerShell
 > [!div class="op_single_selector"]
@@ -38,6 +29,8 @@ Istnieje kilka różnych metod, które można podjąć usunąć bramę sieci wir
 
 ## <a name="before-beginning"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ### <a name="1-download-the-latest-azure-resource-manager-powershell-cmdlets"></a>1. Pobierz najnowsze polecenia cmdlet programu PowerShell usługi Resource Manager platformy Azure.
 
 Pobierz i zainstaluj najnowszą wersję poleceń cmdlet programu Azure PowerShell Resource Manager. Aby uzyskać więcej informacji na temat pobierania i instalowania poleceń cmdlet programu PowerShell, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
@@ -47,19 +40,19 @@ Pobierz i zainstaluj najnowszą wersję poleceń cmdlet programu Azure PowerShel
 Otwórz konsolę programu PowerShell i połącz się ze swoim kontem. Użyj poniższego przykładu w celu łatwiejszego nawiązania połączenia:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Sprawdź subskrypcje dostępne na koncie.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Jeśli masz więcej niż jedną subskrypcję, określ subskrypcję, dla której chcesz użyć.
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
 ```
 
 ## <a name="S2S"></a>Usuwanie bramy sieci VPN typu lokacja-lokacja
@@ -75,14 +68,14 @@ Poniższe kroki mają zastosowanie do modelu wdrażania usługi Resource Manager
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Pobierz bramę sieci wirtualnej, który chcesz usunąć.
 
 ```powershell
-$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Sprawdź, czy brama sieci wirtualnej nie ma żadnych połączeń.
 
 ```powershell
-get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
-$Conns=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
+get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
+$Conns=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
 
 ### <a name="3-delete-all-connections"></a>3. Usuń wszystkie połączenia.
@@ -90,7 +83,7 @@ $Conns=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | whe
 Może zostać wyświetlony monit o potwierdzenie usunięcia każdego połączenia.
 
 ```powershell
-$Conns | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
+$Conns | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 ```
 
 ### <a name="4-delete-the-virtual-network-gateway"></a>4. Usuwanie bramy sieci wirtualnej.
@@ -99,7 +92,7 @@ Może zostać wyświetlony monit o potwierdzenie usunięcia bramy. Jeśli masz k
 
 
 ```powershell
-Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
+Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 W tym momencie bramy sieci wirtualnej została usunięta. Następne kroki można użyć, aby usunąć wszystkie zasoby, które są już używane.
@@ -109,13 +102,13 @@ W tym momencie bramy sieci wirtualnej została usunięta. Następne kroki można
 Pobierz listę odpowiednich bram sieci lokalnej.
 
 ```powershell
-$LNG=Get-AzureRmLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
+$LNG=Get-AzLocalNetworkGateway -ResourceGroupName "RG1" | where-object {$_.Id -In $Conns.LocalNetworkGateway2.Id}
 ```
 
 Usuwanie bramy sieci lokalnej. Może zostać wyświetlony monit o potwierdzenie usunięcia każdej bramy sieci lokalnej.
 
 ```powershell
-$LNG | ForEach-Object {Remove-AzureRmLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
+$LNG | ForEach-Object {Remove-AzLocalNetworkGateway -Name $_.Name -ResourceGroupName $_.ResourceGroupName}
 ```
 
 ### <a name="6-delete-the-public-ip-address-resources"></a>6. Usuń zasoby adres publiczny adres IP.
@@ -129,20 +122,20 @@ $GWIpConfigs = $Gateway.IpConfigurations
 Pobierz listę zasobów adres publiczny adres IP używany dla tej bramy sieci wirtualnej. Jeśli brama sieci wirtualnej było aktywne aktywne, zobaczysz dwa publiczne adresy IP.
 
 ```powershell
-$PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
+$PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
 Usuń zasoby publicznego adresu IP.
 
 ```powershell
-$PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
+$PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "RG1"}
 ```
 
 ### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Usuń podsieć bramy, a następnie ustaw konfigurację.
 
 ```powershell
-$GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
-Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
+$GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
+Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
 ## <a name="v2v"></a>Usuwanie bramy sieci VPN typu sieć wirtualna-sieć wirtualna
@@ -158,19 +151,19 @@ Poniższe kroki mają zastosowanie do modelu wdrażania usługi Resource Manager
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Pobierz bramę sieci wirtualnej, który chcesz usunąć.
 
 ```powershell
-$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2. Sprawdź, czy brama sieci wirtualnej nie ma żadnych połączeń.
 
 ```powershell
-get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
+get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
 Mogą istnieć inne połączenia bramy sieci wirtualnej, należących do innej grupy zasobów. Sprawdź, czy dodatkowe połączenia z każdej grupy dodatkowych zasobów. W tym przykładzie sprawdzamy dla połączeń z RG2. Uruchom to dla każdej grupy zasobów ma, które mogą mieć połączenie z bramą sieci wirtualnej.
 
 ```powershell
-get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
+get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
 ```
 
 ### <a name="3-get-the-list-of-connections-in-both-directions"></a>3. Pobierz listę połączeń w obu kierunkach.
@@ -178,13 +171,13 @@ get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-obje
 Jest to konfiguracja sieci wirtualnej między sieciami wirtualnymi, niezbędna, ponieważ lista połączeń w obu kierunkach.
 
 ```powershell
-$ConnsL=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
+$ConnsL=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
  
 W tym przykładzie sprawdzamy dla połączeń z RG2. Uruchom to dla każdej grupy zasobów ma, które mogą mieć połączenie z bramą sieci wirtualnej.
 
 ```powershell
- $ConnsR=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "<NameOfResourceGroup2>" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
+ $ConnsR=get-Azvirtualnetworkgatewayconnection -ResourceGroupName "<NameOfResourceGroup2>" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
  ```
 
 ### <a name="4-delete-all-connections"></a>4. Usuń wszystkie połączenia.
@@ -192,8 +185,8 @@ W tym przykładzie sprawdzamy dla połączeń z RG2. Uruchom to dla każdej grup
 Może zostać wyświetlony monit o potwierdzenie usunięcia każdego połączenia.
 
 ```powershell
-$ConnsL | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
-$ConnsR | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
+$ConnsL | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
+$ConnsR | ForEach-Object {Remove-AzVirtualNetworkGatewayConnection -Name $_.name -ResourceGroupName $_.ResourceGroupName}
 ```
 
 ### <a name="5-delete-the-virtual-network-gateway"></a>5. Usuwanie bramy sieci wirtualnej.
@@ -201,7 +194,7 @@ $ConnsR | ForEach-Object {Remove-AzureRmVirtualNetworkGatewayConnection -Name $_
 Może zostać wyświetlony monit o potwierdzenie usunięcia bramy sieci wirtualnej. Jeśli masz konfiguracje P2S w Twoich sieciach wirtualnych oprócz konfigurację V2V usuwanie bramy sieci wirtualnej automatycznie spowoduje odłączenie wszystkich klientów P2S bez ostrzeżenia.
 
 ```powershell
-Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
+Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 W tym momencie bramy sieci wirtualnej została usunięta. Następne kroki można użyć, aby usunąć wszystkie zasoby, które są już używane.
@@ -217,20 +210,20 @@ $GWIpConfigs = $Gateway.IpConfigurations
 Pobierz listę zasobów adres publiczny adres IP używany dla tej bramy sieci wirtualnej. Jeśli brama sieci wirtualnej było aktywne aktywne, zobaczysz dwa publiczne adresy IP.
 
 ```powershell
-$PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
+$PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
 Usuń zasoby publicznego adresu IP. Może zostać wyświetlony monit o potwierdzenie usunięcia z publicznym adresem IP.
 
 ```powershell
-$PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
+$PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
 ### <a name="7-delete-the-gateway-subnet-and-set-the-configuration"></a>7. Usuń podsieć bramy, a następnie ustaw konfigurację.
 
 ```powershell
-$GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
-Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
+$GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
+Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
 ## <a name="deletep2s"></a>Usuwanie bramy sieci VPN typu punkt-lokacja
@@ -252,7 +245,7 @@ Poniższe kroki mają zastosowanie do modelu wdrażania usługi Resource Manager
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1. Pobierz bramę sieci wirtualnej, który chcesz usunąć.
 
 ```powershell
-$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-Azvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-delete-the-virtual-network-gateway"></a>2. Usuwanie bramy sieci wirtualnej.
@@ -260,7 +253,7 @@ $GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 Może zostać wyświetlony monit o potwierdzenie usunięcia bramy sieci wirtualnej.
 
 ```powershell
-Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
+Remove-AzVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 W tym momencie bramy sieci wirtualnej została usunięta. Następne kroki można użyć, aby usunąć wszystkie zasoby, które są już używane.
@@ -276,20 +269,20 @@ $GWIpConfigs = $Gateway.IpConfigurations
 Pobierz listę publiczne adresy IP używane dla tej bramy sieci wirtualnej. Jeśli brama sieci wirtualnej było aktywne aktywne, zobaczysz dwa publiczne adresy IP.
 
 ```powershell
-$PubIP=Get-AzureRmPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
+$PubIP=Get-AzPublicIpAddress | where-object {$_.Id -In $GWIpConfigs.PublicIpAddress.Id}
 ```
 
 Usuń publicznych adresów IP. Może zostać wyświetlony monit o potwierdzenie usunięcia z publicznym adresem IP.
 
 ```powershell
-$PubIP | foreach-object {remove-azurermpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
+$PubIP | foreach-object {remove-AzpublicIpAddress -Name $_.Name -ResourceGroupName "<NameOfResourceGroup1>"}
 ```
 
 ### <a name="4-delete-the-gateway-subnet-and-set-the-configuration"></a>4. Usuń podsieć bramy, a następnie ustaw konfigurację.
 
 ```powershell
-$GWSub = Get-AzureRmVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzureRmVirtualNetworkSubnetConfig -Name "GatewaySubnet"
-Set-AzureRmVirtualNetwork -VirtualNetwork $GWSub
+$GWSub = Get-AzVirtualNetwork -ResourceGroupName "RG1" -Name "VNet1" | Remove-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet"
+Set-AzVirtualNetwork -VirtualNetwork $GWSub
 ```
 
 ## <a name="delete"></a>Usuwanie bramy sieci VPN, usuwając grupę zasobów
@@ -299,7 +292,7 @@ Jeśli nie jesteś zajmującym się przechowywanie wszystkich zasobów w grupie 
 ### <a name="1-get-a-list-of-all-the-resource-groups-in-your-subscription"></a>1. Zostanie wyświetlona lista wszystkich grup zasobów w ramach subskrypcji.
 
 ```powershell
-Get-AzureRmResourceGroup
+Get-AzResourceGroup
 ```
 
 ### <a name="2-locate-the-resource-group-that-you-want-to-delete"></a>2. Znajdź grupę zasobów, które chcesz usunąć.
@@ -307,7 +300,7 @@ Get-AzureRmResourceGroup
 Znajdź grupę zasobów, które chcesz usunąć i wyświetlić listę zasobów w danej grupie zasobów. W tym przykładzie nazwa grupy zasobów jest RG1. Zmodyfikuj przykład tak, aby pobrać listę wszystkich zasobów.
 
 ```powershell
-Find-AzureRmResource -ResourceGroupNameContains RG1
+Find-AzResource -ResourceGroupNameContains RG1
 ```
 
 ### <a name="3-verify-the-resources-in-the-list"></a>3. Sprawdź zasoby na liście.
@@ -319,7 +312,7 @@ Gdy lista jest zwracany, przejrzyj go w celu zweryfikowania, że chcesz usunąć
 Aby usunąć grupę zasobów i wszystkich zasobów znajdujących się w grupie zasobów, zmodyfikuj przykład i uruchom.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name RG1
+Remove-AzResourceGroup -Name RG1
 ```
 
 ### <a name="5-check-the-status"></a>5. Sprawdź stan.
@@ -327,7 +320,7 @@ Remove-AzureRmResourceGroup -Name RG1
 Dopiero po pewnym czasie dla platformy Azure usunąć wszystkie zasoby. Stan grupy zasobów można sprawdzić za pomocą tego polecenia cmdlet.
 
 ```powershell
-Get-AzureRmResourceGroup -ResourceGroupName RG1
+Get-AzResourceGroup -ResourceGroupName RG1
 ```
 
 Wynik zwracany pokazuje "Powodzenie".

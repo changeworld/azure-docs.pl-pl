@@ -6,16 +6,16 @@ ms.service: automation
 ms.subservice: change-inventory-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/29/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487238"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429268"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -181,6 +181,8 @@ W poniższej tabeli przedstawiono limity elementu śledzonych dla poszczególnyc
 |Usługi|250||
 |Demon|250||
 
+Średnia użycie danych usługi Log Analytics przy użyciu śledzenia zmian i spisu maszyny jest około 40MB miesięcznie. Ta wartość jest tylko przybliżeniem i może ulec zmianie w zależności od używanego środowiska. Zaleca się, że monitorować swoje środowisko, aby sprawdzić użycie dokładnie, czy masz.
+
 ### <a name="windows-service-tracking"></a>Śledzenie usługi Windows
 
 Domyślna częstotliwość zbierania dla usług Windows to 30 minut. Aby skonfigurować częstotliwość, przejdź do **Change Tracking**. W obszarze **edytowanie ustawień** na **usług Windows** karcie znajduje się suwak, który pozwala zmienić częstotliwość zbierania dla usług Windows z tak szybko, jak 10 sekund na tak długo, jak 30 minut. Przesuń suwak częstotliwości, który ma i go automatycznie zapisuje.
@@ -257,7 +259,7 @@ Kliknięcie zmiany lub zdarzenie, wyświetlenie szczegółowych informacji na te
 
 ![Obraz przedstawiający Szczegóły śledzenia zmian](./media/automation-change-tracking/change-tracking-details.png)
 
-## <a name="search-logs"></a>Dzienniki wyszukiwania
+## <a name="search-logs"></a>Przeszukiwanie dzienników
 
 Oprócz szczegółów, które znajdują się w portalu wyszukiwania można wykonać względem dzienników. Za pomocą **Change Tracking** otwarty, kliknij **usługi Log Analytics**, spowoduje to otwarcie **wyszukiwanie w dzienniku** strony.
 

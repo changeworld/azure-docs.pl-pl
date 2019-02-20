@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 37cf44e2c9d28b1aac8f2ab80ba29d126fb8651f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f52c9731b0289563037cbf065f3e22d652b40e74
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422972"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417435"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Podrzędne elementy runbook w usłudze Azure Automation
 
@@ -28,7 +28,7 @@ Gdy użytkownik śródwierszowo wywołać element runbook, jest ono wykonywane w
 
 Po opublikowaniu elementu runbook należy opublikować już wszelkimi podrzędnymi elementami runbook, który ją wywołuje. Jest to spowodowane usługi Azure Automation tworzy skojarzenie z wszelkimi podrzędnymi elementami runbook, gdy element runbook został skompilowany. Jeśli nie, nadrzędny element runbook wydaje się opublikowany prawidłowo, ale wygeneruje wyjątek, gdy jest ona uruchamiana. W takim przypadku można ponownie opublikować nadrzędny element runbook, aby prawidłowo utworzyć odwołanie do podrzędnych elementów runbook. Nie trzeba ponownie opublikować nadrzędny element runbook, jeśli dowolny podrzędne elementy runbook są zmieniane, ponieważ skojarzenie zostało już utworzone.
 
-Parametry podrzędnego elementu runbook wywoływanego śródwierszowo może być dowolnego typu danych, włącznie z obiektami złożonymi. Istnieje nie [serializacji JSON](automation-starting-a-runbook.md#runbook-parameters) się po uruchomieniu elementu runbook za pomocą witryny Azure portal lub za pomocą polecenia cmdlet Start-AzureRmAutomationRunbook.
+Parametry podrzędnego elementu runbook wywoływanego śródwierszowo może być dowolnego typu danych, włącznie z obiektami złożonymi. Istnieje nie [serializacji JSON](start-runbooks.md#runbook-parameters) się po uruchomieniu elementu runbook za pomocą witryny Azure portal lub za pomocą polecenia cmdlet Start-AzureRmAutomationRunbook.
 
 ### <a name="runbook-types"></a>Typy elementów Runbook
 
@@ -65,7 +65,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 > [!IMPORTANT]
 > Jeśli są wywoływania podrzędnego elementu runbook za pomocą `Start-AzureRmAutomationRunbook` polecenia cmdlet z `-Wait` przełącznika i wyniki podrzędnego elementu runbook jest obiektem, mogą wystąpić błędy. Aby obejść ten błąd, zobacz [podrzędnych elementów runbook z danymi wyjściowymi obiektu](troubleshoot/runbooks.md#child-runbook-object) dowiesz się, jak można zaimplementować logikę do sondowania pod kątem wyników i używanie [Get AzureRmAutomationJobOutputRecord](/powershell/module/azurerm.automation/get-azurermautomationjoboutputrecord)
 
-Możesz użyć [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) polecenia cmdlet, aby uruchomić element runbook, zgodnie z opisem w [do uruchamiania elementu runbook za pomocą programu Windows PowerShell](automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell). Istnieją dwa tryby użytkowania dla tego polecenia cmdlet.  W trybie jednego polecenia cmdlet zwraca identyfikator zadania, gdy zadanie podrzędne jest tworzone dla podrzędnego elementu runbook.  W inny tryb, które umożliwiają określenie **— oczekiwania** parametru polecenia cmdlet czeka, aż zadanie podrzędne zostanie zakończone i zwraca dane wyjściowe z podrzędnego elementu runbook.
+Możesz użyć [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) polecenia cmdlet, aby uruchomić element runbook, zgodnie z opisem w [do uruchamiania elementu runbook za pomocą programu Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell). Istnieją dwa tryby użytkowania dla tego polecenia cmdlet.  W trybie jednego polecenia cmdlet zwraca identyfikator zadania, gdy zadanie podrzędne jest tworzone dla podrzędnego elementu runbook.  W inny tryb, które umożliwiają określenie **— oczekiwania** parametru polecenia cmdlet czeka, aż zadanie podrzędne zostanie zakończone i zwraca dane wyjściowe z podrzędnego elementu runbook.
 
 Zadania podrzędnego elementu runbook, pracę za pośrednictwem polecenia cmdlet jest uruchamiane jako osobne zadanie z nadrzędnego elementu runbook. To zachowanie większą liczbę zadań niż początkowa w tekście elementu runbook i utrudnia ich w celu śledzenia. Element nadrzędny można uruchomić więcej niż jeden podrzędny element runbook asynchronicznie bez oczekiwania na każdym do ukończenia. Dla tego samego rodzaju równoległego wywoływania podrzędnych elementów runbook wbudowanej nadrzędny element runbook musiałby użyć [słowa kluczowego parallel](automation-powershell-workflow.md#parallel-processing).
 
@@ -73,7 +73,7 @@ Dane wyjściowe podrzędne elementy runbook nie są zwracane do nadrzędnego ele
 
 Jeśli nie chcesz, nadrzędny element runbook do zablokowania w okresie oczekiwania, można uruchomić modułu podrzędnego elementu runbook za pomocą polecenia `Start-AzureRmAutomationRunbook` polecenia cmdlet bez `-Wait` przełącznika. Następnie konieczne będzie używać `Get-AzureRmAutomationJob` czekać na zakończenie zadania i `Get-AzureRmAutomationJobOutput` i `Get-AzureRmAutomationJobOutputRecord` do pobierania wyników.
 
-Parametry dla podrzędnego elementu runbook, pracę za pośrednictwem polecenia cmdlet są przekazywane jako tablica skrótów, zgodnie z opisem w [parametry elementu Runbook](automation-starting-a-runbook.md#runbook-parameters). Mogą być używane tylko proste typy danych. Jeśli element runbook ma parametr o złożonym typie danych, następnie go musi być wywoływany śródwierszowo.
+Parametry dla podrzędnego elementu runbook, pracę za pośrednictwem polecenia cmdlet są przekazywane jako tablica skrótów, zgodnie z opisem w [parametry elementu Runbook](start-runbooks.md#runbook-parameters). Mogą być używane tylko proste typy danych. Jeśli element runbook ma parametr o złożonym typie danych, następnie go musi być wywoływany śródwierszowo.
 
 Kontekstu subskrypcji mogą zostać utracone podczas uruchamiania podrzędnych elementów runbook jako osobne zadania. Aby dla podrzędnego elementu runbook do wykonania cmdlet usługi Azure RM dla określonej subskrypcji platformy Azure podrzędnego elementu runbook musi uwierzytelnić się do tej subskrypcji, niezależnie od nadrzędnego elementu runbook.
 
@@ -120,6 +120,6 @@ Poniższa tabela zawiera podsumowanie różnic między obiema metodami wywoływa
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Uruchamianie elementu runbook w usłudze Azure Automation](automation-starting-a-runbook.md)
+* [Uruchamianie elementu runbook w usłudze Azure Automation](start-runbooks.md)
 * [Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation](automation-runbook-output-and-messages.md)
 

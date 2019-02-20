@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbfffa94c76de2c7c4e9f4f2e67c9744e52f22c7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 39659df99951850ced07be14f81348ae9c1c1be5
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194193"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428606"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Jak, które wymuszają weryfikację dwuetapową dla użytkownika
 
@@ -96,7 +96,7 @@ Zainstaluj moduł najpierw, przy użyciu:
 > Nie należy zapominać, połączyć się najpierw, przy użyciu **Connect-MsolService**
 
 
-Przy użyciu programu PowerShell jest dobrym rozwiązaniem, gdy trzeba zbiorcze Włączanie użytkowników. Utwórz skrypt programu PowerShell, do listy użytkowników w pętli, która umożliwia im:
+ Ten przykładowy skrypt programu PowerShell umożliwia uwierzytelnianie wieloskładnikowe dla poszczególnych użytkowników:
 
         Import-Module MSOnline
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -105,7 +105,7 @@ Przy użyciu programu PowerShell jest dobrym rozwiązaniem, gdy trzeba zbiorcze 
         $sta = @($st)
         Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 
-Poniższy skrypt znajduje się przykład:
+Przy użyciu programu PowerShell jest dobrym rozwiązaniem, gdy trzeba zbiorcze Włączanie użytkowników. Na przykład poniższy skrypt w pętli do listy użytkowników i umożliwia uwierzytelnianie wieloskładnikowe na swoich kontach:
 
     $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
     foreach ($user in $users)
@@ -117,11 +117,11 @@ Poniższy skrypt znajduje się przykład:
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
     }
     
-Aby wyłączone uwierzytelnianie wieloskładnikowe należy użyć tego skryptu:
+Aby wyłączyć uwierzytelnianie wieloskładnikowe, użyj tego skryptu:
 
     Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
     
-lub może być również skracać:
+które, można również skrócony do:
 
     Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 

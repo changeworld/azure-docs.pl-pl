@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/19/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 79e031226f11d45121827795c34b0103235d8d79
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9a07a829aac9659ac7ab8d04b64a1ea1a9a2de78
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248167"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428061"
 ---
 # <a name="asdk-administration-basics"></a>Podstawy administracji ASDK 
 Istnieje kilka kwestii, o których należy wiedzieć, jeśli jesteś nowym użytkownikiem usługi Azure Stack Development Kit (ASDK) Administracja. Niniejsze wskazówki zawiera omówienie Twojej roli jako operatorów usługi Azure Stack w środowisku oceny i jak zapewnić użytkownikom testów może stać się produktywność szybko.
@@ -37,7 +37,7 @@ Istnieje kilka istotnych kwestii konta, których należy wiedzieć podczas zarz�
 |-----|-----|-----|
 |Administrator lokalny (. \Administrator)|Administrator hosta ASDK|Administrator hosta ASDK|
 |AzureStack\AzureStackAdmin|Administrator hosta ASDK<br><br>Może służyć do logowania do portalu administracyjnego usługi Azure Stack<br><br>Dostęp do wyświetlania i administrować pierścieni usługi Service Fabric|Administrator hosta ASDK<br><br>Brak dostępu do portalu administracyjnego usługi Azure Stack<br><br>Dostęp do wyświetlania i administrować pierścieni usługi Service Fabric<br><br>Nie jest już właściciela z subskrypcji domyślny dostawca (DPS)|
-|AzureStack\CloudAdmin|Można uzyskać dostęp, a następnie uruchom polecenia dozwolonych w uprzywilejowanych punktu końcowego|Można uzyskać dostęp, a następnie uruchom polecenia dozwolonych w uprzywilejowanych punktu końcowego<br><br>Nie można zalogować się w hoście ASDK<br><br>Właściciel subskrypcji dostawcy domyślnego (DPS)|
+|AzureStack\CloudAdmin|Można uzyskać dostęp, a następnie uruchom polecenia dozwolonych w uprzywilejowanych punktu końcowego|Można uzyskać dostęp, a następnie uruchom polecenia dozwolonych w uprzywilejowanych punktu końcowego<br><br>Nie można zalogować hosta ASDK<br><br>Właściciel subskrypcji dostawcy domyślnego (DPS)|
 |Administrator globalny usługi Azure AD|Używany podczas instalacji<br><br>Właściciel subskrypcji dostawcy domyślnego (DPS)|Nie dotyczy|
 |
 

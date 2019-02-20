@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53f1e8edc4286c2afbdf3b6909499a2e3fccfa5d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: a52b78b62395f571e448a73b8c34847ef16b2613
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313266"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429540"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Instalowanie agenta programu Azure AD Connect Health
 W tym dokumencie opisano instalowanie i konfigurowanie agentów programu Azure AD Connect Health. Agentów możesz pobrać [tutaj](how-to-connect-install-roadmap.md#download-and-install-azure-ad-connect-health-agent).
@@ -119,7 +119,7 @@ Aby funkcja Analiza użycia mogła zbierać i analizować dane, agent programu A
 1. Kliknij przycisk **Start**, wskaż pozycję **Programy**, wskaż pozycję **Narzędzia administracyjne**, a następnie kliknij pozycję **Zasady zabezpieczeń lokalnych**.
 2. Przejdź do folderu **Ustawienia zabezpieczeń\Zasady lokalne\Przypisywanie praw użytkownika**, a następnie kliknij dwukrotnie pozycję **Generuj inspekcje zabezpieczeń**.
 3. Na karcie **Ustawianie zabezpieczeń lokalnych** sprawdź, czy jest wymienione konto usługi AD FS 2.0. Jeśli go nie ma, kliknij pozycję **Dodaj użytkownika lub grupę** i dodaj je do listy, a następnie kliknij przycisk **OK**.
-4. Aby włączyć inspekcję, otwórz wiersz polecenia z podwyższonym poziomem uprawnień i uruchom następujące polecenie: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
+4. Aby włączyć inspekcję, otwórz wiersz polecenia z podwyższonym poziomem uprawnień i uruchom następujące polecenie: <code>auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable</code>
 5. Zamknij okno **Zasady zabezpieczeń lokalnych**.
 <br />   -- **Poniższe kroki są wymagane wyłącznie w przypadku podstawowych serwerów usług AD FS.** -- <br />
 6. Otwórz przystawkę **Zarządzanie usługami AD FS**. Aby otworzyć przystawkę Zarządzanie usługami AD FS, kliknij przycisk **Start**, wskaż pozycję **Programy**, wskaż pozycję **Narzędzia administracyjne**, a następnie kliknij pozycję **Zarządzanie usługami AD FS 2.0**.
@@ -132,7 +132,7 @@ Aby funkcja Analiza użycia mogła zbierać i analizować dane, agent programu A
 1. Otwórz okno **Zasady zabezpieczeń lokalnych**, klikając pozycję **Menedżer serwera** na ekranie startowym lub pasku zadań na pulpicie, a następnie kliknij pozycję **Narzędzia/Zasady zabezpieczeń lokalnych**.
 2. Przejdź do folderu **Ustawienia zabezpieczeń\Zasady lokalne\Przypisywanie praw użytkownika**, a następnie kliknij dwukrotnie pozycję **Generuj inspekcje zabezpieczeń**.
 3. Na karcie **Ustawianie zabezpieczeń lokalnych** sprawdź, czy jest wymienione konto usługi AD FS. Jeśli go nie ma, kliknij pozycję **Dodaj użytkownika lub grupę** i dodaj je do listy, a następnie kliknij przycisk **OK**.
-4. Aby włączyć inspekcję, otwórz wiersz polecenia z podwyższonym poziomem uprawnień i uruchom następujące polecenie: ```auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable```.
+4. Aby włączyć inspekcję, otwórz wiersz polecenia z podwyższonym poziomem uprawnień i uruchom następujące polecenie: ```auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable```.
 5. Zamknij okno **Zasady zabezpieczeń lokalnych**.
 <br />   -- **Poniższe kroki są wymagane wyłącznie w przypadku podstawowych serwerów usług AD FS.** -- <br />
 6. Otwórz przystawkę **Zarządzanie usługami AD FS** (w Menedżerze serwera kliknij pozycję Narzędzia, a następnie wybierz pozycję Zarządzanie usługami AD FS).
@@ -144,7 +144,7 @@ Aby funkcja Analiza użycia mogła zbierać i analizować dane, agent programu A
 1. Otwórz okno **Zasady zabezpieczeń lokalnych**, klikając pozycję **Menedżer serwera** na ekranie startowym lub pasku zadań na pulpicie, a następnie kliknij pozycję **Narzędzia/Zasady zabezpieczeń lokalnych**.
 2. Przejdź do folderu **Ustawienia zabezpieczeń\Zasady lokalne\Przypisywanie praw użytkownika**, a następnie kliknij dwukrotnie pozycję **Generuj inspekcje zabezpieczeń**.
 3. Na karcie **Ustawianie zabezpieczeń lokalnych** sprawdź, czy jest wymienione konto usługi AD FS. Jeśli go nie ma, kliknij pozycję **Dodaj użytkownika lub grupę** i dodaj konto usług AD FS do listy, a następnie kliknij przycisk **OK**.
-4. Aby włączyć inspekcję, otwórz wiersz polecenia z podwyższonym poziomem uprawnień i uruchom następujące polecenie: <code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
+4. Aby włączyć inspekcję, otwórz wiersz polecenia z podwyższonym poziomem uprawnień i uruchom następujące polecenie: <code>auditpol.exe /set /subcategory:"0CCE9222-69AE-11D9-BED3-505054503030" /failure:enable /success:enable.</code>
 5. Zamknij okno **Zasady zabezpieczeń lokalnych**.
 <br />   -- **Poniższe kroki są wymagane wyłącznie w przypadku podstawowych serwerów usług AD FS.** -- <br />
 6. Otwórz przystawkę **Zarządzanie usługami AD FS** (w Menedżerze serwera kliknij pozycję Narzędzia, a następnie wybierz pozycję Zarządzanie usługami AD FS).

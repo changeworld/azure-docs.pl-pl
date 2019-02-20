@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 20f50e286e30e32f066fe3d214bfc4c1a155776e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 69ba0a882c0e52e7c0d063b8f77e7a0fe22526a1
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083924"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428781"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu witryny Azure portal
 
@@ -53,19 +53,20 @@ Istnieje pięć kroków, aby utworzyć wdrożenie. Poniższe sekcje przeprowadz�
 ### <a name="step-1-name-and-label"></a>Krok 1: Nazwa i etykieta
 
 1. Nadaj wdrożenia unikatową nazwę, która jest maksymalnie 128 małe litery. Należy unikać miejsca do magazynowania i następujące nieprawidłowe znaki: `& ^ [ ] { } \ | " < > /`.
-1. Dodaj etykiety służące do śledzenia wdrożenia. Etykiety są **nazwa**, **wartość** pary, które opisują wdrożenia. Na przykład `HostPlatform, Linux` lub `Version, 3.0.1`.
+1. Można dodawać etykiety jako pary klucz wartość, aby śledzić wdrożenia. Na przykład **HostPlatform** i **Linux**, lub **wersji** i **3.0.1**.
 1. Wybierz **dalej** aby przejść do kroku 2. 
 
-### <a name="step-2-add-modules-optional"></a>Krok 2: Dodawanie modułów (opcjonalnie)
+### <a name="step-2-add-modules-optional"></a>Krok 2: Dodaj moduły (opcjonalnie)
 
-Istnieją dwa typy modułów, które można dodać do wdrożenia. Pierwsza to modułu na podstawie usługi platformy Azure, takich jak konto magazynu lub usługi Stream Analytics. Drugim jest modułu na podstawie własnego kodu. Do wdrożenia, można dodać wiele modułów dowolnego typu. 
+Istnieją dwa typy modułów, które można dodać do wdrożenia. Pierwszy jest modułem oparte na usługi platformy Azure, takich jak konto magazynu lub usługi Stream Analytics. Druga to moduł przy użyciu własnego kodu. Do wdrożenia, można dodać wiele modułów dowolnego typu. 
 
 Jeśli tworzysz wdrożenia bez modułów usuwa wszystkie bieżące moduły z urządzeń. 
 
 >[!NOTE]
->Usługa Azure Machine Learning i Azure Functions nie obsługują jeszcze wdrożenie zautomatyzowane usługi platformy Azure. Aby ręcznie dodać tych usług dla danego wdrożenia, należy użyć wdrażania niestandardowego modułu. 
+>Usługa Azure Functions nie obsługuje jeszcze wdrożenie zautomatyzowane usługi platformy Azure. Aby ręcznie dodać usługi do wdrożenia, należy użyć wdrażania niestandardowego modułu. 
 
 Aby dodać moduł z usługi Azure Stream Analytics, wykonaj następujące kroki:
+
 1. W **moduły wdrożeń** części strony, kliknij przycisk **Dodaj**.
 1. Wybierz **modułu usługi Azure Stream Analytics**.
 1. Wybierz swoje **subskrypcji** z menu rozwijanego.
@@ -73,7 +74,8 @@ Aby dodać moduł z usługi Azure Stream Analytics, wykonaj następujące kroki:
 1. Wybierz **Zapisz** można dodać modułu do wdrożenia. 
 
 Aby dodać niestandardowy kod jako moduł lub ręcznie Dodaj moduł usługi Azure, wykonaj następujące kroki:
-1. W **ustawień rejestru** części strony, podaj nazwy i poświadczenia dla rejestrów dowolnego kontenera prywatnych, zawierających obrazy modułu dla tego wdrożenia. Agent usługi Edge będzie zgłaszać błąd 500, nie można znaleźć kontener usługi poświadczenia rejestru dla obrazu platformy docker.
+
+1. W **ustawienia usługi Container Registry** części strony, podaj nazwy i poświadczenia dla rejestrów dowolnego kontenera prywatnych, zawierających obrazy modułu dla tego wdrożenia. Agent usługi Edge będzie zgłaszać błąd 500, nie można znaleźć poświadczenia rejestru kontenera obrazu platformy Docker.
 1. W **moduły wdrożeń** części strony, kliknij przycisk **Dodaj**.
 1. Wybierz **moduł usługi IoT Edge**.
 1. Nadaj modułu **nazwa**.
@@ -87,7 +89,7 @@ Aby dodać niestandardowy kod jako moduł lub ręcznie Dodaj moduł usługi Azur
 1. Użyj menu rozwijanego, aby wybrać **żądanego stanu** dla modułu. Wybierz spośród następujących opcji:
    * **Uruchamianie** — jest to opcja domyślna. Moduł zostanie uruchomione natychmiast po wdrożeniu.
    * **Zatrzymano** — po wdrożeniu moduł może pozostawać bezczynny, dopóki nie jest wymagane do uruchomienia przez Ciebie lub innego modułu.
-1. Wybierz **Włącz** Jeśli chcesz dodać znaczniki lub żądane właściwości do bliźniaczej reprezentacji modułu. 
+1. Wybierz **żądane właściwości zestawu modułu bliźniaczej reprezentacji** Jeśli chcesz dodać do bliźniaczej reprezentacji modułu tagi lub inne właściwości.
 1. Wprowadź **zmienne środowiskowe** dla tego modułu. Zmienne środowiskowe zawierają informacje o dodatku do modułu, w ułatwienia procesu konfiguracji.
 1. Wybierz **Zapisz** można dodać modułu do wdrożenia. 
 
@@ -99,8 +101,22 @@ Trasy definiują, jak moduły komunikują się ze sobą w ramach danego wdrożen
 
 Dodawanie lub aktualizowanie tras przy użyciu informacji z [zadeklarować trasy](module-composition.md#declare-routes), a następnie wybierz **dalej** można przejść do sekcji przeglądu.
 
+### <a name="step-4-specify-metrics-optional"></a>Krok 4: Określ metryki (opcjonalnie)
 
-### <a name="step-4-target-devices"></a>Krok 4: Urządzenia docelowe
+Metryki zawierają podsumowanie liczby różnych stanów, które urządzenie może zgłosić wyniku stosowania zawartość konfiguracji.
+
+1. Wprowadź nazwę dla **Nazwa metryki**.
+
+1. Wprowadź zapytanie dotyczące **kryteria metryki**. Zapytanie jest oparty na bliźniaczą reprezentację modułu Centrum IoT Edge [zgłaszanych właściwości](module-edgeagent-edgehub.md#edgehub-reported-properties). Metryka reprezentuje liczbę wierszy zwróconych przez zapytanie.
+
+Na przykład:
+
+```sql
+SELECT deviceId FROM devices
+  WHERE properties.reported.lastDesiredStatus.code = 200
+```
+
+### <a name="step-5-target-devices"></a>Krok 5. Urządzenia docelowe
 
 Użyj właściwości tagi z urządzeniami pod kątem konkretnych urządzeń, które powinny otrzymać tego wdrożenia. 
 
@@ -110,9 +126,32 @@ Ponieważ wielu wdrożeń będących częścią mogą odnosić się do tego same
 1. Wprowadź **warunek docelowy** do określenia urządzeń, które zostaną objęte tego wdrożenia. Warunek opiera się na tagów bliźniaczych reprezentacji urządzeń lub zgłoszonych właściwości bliźniaczej reprezentacji urządzenia, a powinien być zgodny z formatem wyrażenia. Na przykład `tags.environment='test'` lub `properties.reported.devicemodel='4000x'`. 
 1. Wybierz **dalej** można przenieść do ostatniego kroku.
 
-### <a name="step-5-review-template"></a>Krok 5: Przegląd szablonu
+### <a name="step-6-review-deployment"></a>Krok 6: Przejrzyj wdrożenie
 
 Przejrzyj informacje o wdrożeniu, a następnie wybierz **przesyłania**.
+
+## <a name="deploy-modules-from-azure-marketplace"></a>Wdrażać moduły z witryny Azure Marketplace
+
+Witryna Azure Marketplace to rynek online aplikacji i usług, którego można przeglądać przy użyciu szerokiej gamy aplikacji i rozwiązań, które są certyfikowane i optymalizowane pod kątem działania na platformie Azure, w tym [moduły usługi IoT Edge](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules). Portal Azure Marketplace można także uzyskać dostęp za pośrednictwem witryny Azure portal w obszarze **Utwórz zasób**.
+
+Moduł usługi IoT Edge można zainstalować z witryny Azure Marketplace lub witryny Azure portal:
+
+1. Znajdź moduł i rozpocząć proces wdrażania.
+
+   * Azure Portal: Znajdź moduł i zaznacz **Utwórz**.
+
+   * Azure Marketplace:
+
+     1. Znajdź moduł i zaznacz **Pobierz teraz**.
+     1. Potwierdzenie dostawcy warunki użycia i zasady zachowania poufności, wybierając **Kontynuuj**.
+
+1. Wybierz subskrypcję i usługi IoT Hub, do której jest dołączona na urządzeniu docelowym.
+
+1. Wybierz **wdrażanie w skali**.
+
+1. Wybierz, czy dodanie modułu do nowe wdrożenie lub Sklonowanie istniejącego wdrożenia; Jeśli klonowanie, wybierz istniejące wdrożenie z listy.
+
+1. Wybierz **Utwórz** aby kontynuować proces tworzenia wdrożenia na dużą skalę. Będzie można określić szczegóły tego samego, podobnie jak w przypadku każdego wdrożenia.
 
 ## <a name="monitor-a-deployment"></a>Monitorowanie wdrożenia
 
@@ -130,15 +169,17 @@ Aby wyświetlić szczegóły wdrożenia i monitorowania urządzeń, w których j
    * **Priorytet** — numer priorytetu, przypisanych do wdrożenia.
    * **Metryki systemu** - **docelowych** określa liczbę bliźniaczych reprezentacji urządzeń w usłudze IoT Hub, który odpowiada warunkowi określania wartości docelowej i **zastosowano** określa liczbę urządzeń, które mają Gdyby zawartości wdrożenia są stosowane do ich bliźniaczych reprezentacjach modułów usługi IoT Hub. 
    * **Metryki urządzenia** — liczba urządzeń brzegowych we wdrożeniu raportowania sukcesów lub błędów środowiska uruchomieniowego klienta usługi IoT Edge.
+   * **Metryki niestandardowe** — liczba urządzeń brzegowych we wdrożeniu, zgłoszenie danych dla dowolnego metryk, która jest zdefiniowana dla tego wdrożenia.
    * **Godzina utworzenia** -sygnaturę czasową od utworzenia wdrożenia. Sygnatura czasowa jest używany na przerwanie ties, gdy dwa wdrożenia mają ten sam priorytet. 
-2. Wybierz wdrożenie, które chcesz monitorować.  
-3. Sprawdź szczegóły wdrożenia. Można użyć karty, aby poznać szczegóły wdrożenia.
+1. Wybierz wdrożenie, które chcesz monitorować.  
+1. Sprawdź szczegóły wdrożenia. Można użyć karty, aby poznać szczegóły wdrożenia.
 
 ## <a name="modify-a-deployment"></a>Zmodyfikuj wdrożenie
 
 Podczas modyfikowania wdrożenia zmiany są natychmiast replikowane do wszystkie objęte nimi urządzenia. 
 
 Jeśli zaktualizujesz warunek docelowy, zachodzą następujące aktualizacje:
+
 * Jeśli urządzenie nie spełnia warunek docelowy stare, ale nowy warunek docelowy spełnia, to wdrożenie ma najwyższy priorytet dla tego urządzenia to wdrożenie jest zastosowany na urządzeniu. 
 * Jeśli urządzenie uruchomione tego wdrożenia nie jest już spełnia warunek docelowy, odinstalowuje tego wdrożenia i Trwa dalej wdrożenia najwyższy priorytet. 
 * Jeśli urządzenie uruchomione tego wdrożenia nie jest już spełnia warunek docelowy, a nie spełnia warunek docelowy wszystkich innych wdrożeń, żadna zmiana występuje na urządzeniu. Urządzenie będzie nadal działać jego bieżący modułów w ich bieżący stan, ale nie jest zarządzany w ramach tego wdrożenia już. Gdy spełnia warunek docelowy wszystkich innych wdrożeń, odinstalowuje tego wdrożenia i przejście na nowy. 
@@ -153,9 +194,10 @@ Aby zmodyfikować wdrożenie, użyj następujących kroków:
 
 1. Wybierz wdrożenie, które chcesz zmodyfikować. 
 1. Aktualizowanie następujące pola: 
-   * Warunek docelowy 
-   * Etykiety 
-   * Priorytet 
+   * Warunek docelowy
+   * Metryki — można modyfikować ani usuwać metryki został zdefiniowany, lub dodać nowe.
+   * Etykiety
+   * Priorytet
 1. Wybierz pozycję **Zapisz**.
 1. Postępuj zgodnie z instrukcjami w [monitorowania wdrożeń](#monitor-a-deployment) obejrzeć zmiany wprowadzane. 
 

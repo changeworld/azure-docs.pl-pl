@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: Program PowerShell, elementów runbook, json, usługa azure automation
-ms.openlocfilehash: d13f21da88ae3fb9dfa67b11285e0c3e984d5e5b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ef97d4e2fd0951e30a725e8f2f9603a73c61f1ca
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421815"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416126"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Wdrażanie szablonu usługi Azure Resource Manager w elemencie runbook programu PowerShell usługi Azure Automation
 
@@ -23,11 +23,11 @@ Można napisać [elementu runbook usługi Azure Automation PowerShell](automatio
 
 Dzięki temu można zautomatyzować wdrażanie zasobów platformy Azure. Można zachować szablonów usługi Resource Manager w lokalizacji centralnej i bezpieczną takich jak Azure Storage.
 
-W tym temacie, możemy utworzyć element runbook programu PowerShell, który używa szablonu usługi Resource Manager przechowywane w [usługi Azure Storage](../storage/common/storage-introduction.md) do wdrożenia nowego konta usługi Azure Storage.
+W tym artykule, możemy utworzyć element runbook programu PowerShell, który używa szablonu usługi Resource Manager, przechowywane w [usługi Azure Storage](../storage/common/storage-introduction.md) do wdrożenia nowego konta usługi Azure Storage.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Do wykonania kroków tego samouczka niezbędne są następujące elementy:
+Do ukończenia tego samouczka, potrzebne są następujące elementy:
 
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze, możesz to zrobić [aktywować korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub [Załóż bezpłatne konto](https://azure.microsoft.com/free/).
 * [Konto usługi Automation](automation-sec-configure-azure-runas-account.md) do przechowywania elementu Runbook i uwierzytelniania w zasobach platformy Azure.  To konto musi mieć uprawnienia do uruchamiania i zatrzymywania maszyny wirtualnej.
@@ -176,7 +176,7 @@ Zapisz plik lokalnie jako `DeployTemplate.ps1`.
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Importowanie i publikowanie elementu runbook na Twoim koncie usługi Azure Automation
 
 Teraz możemy zaimportować elementu runbook do konta usługi Azure Automation za pomocą programu PowerShell, a następnie opublikować element runbook.
-Aby uzyskać informacje o tym, jak zaimportować i opublikować element runbook w witrynie Azure portal, zobacz [Tworzenie lub importowanie elementu runbook w usłudze Azure Automation](automation-creating-importing-runbook.md).
+Aby uzyskać informacje o tym, jak zaimportować i opublikować element runbook w witrynie Azure portal, zobacz [Zarządzanie elementami runbook w usłudze Azure Automation](manage-runbooks.md).
 
 Aby zaimportować `DeployTemplate.ps1` do konta usługi Automation, jako elementu runbook programu PowerShell, uruchom następujące polecenia programu PowerShell:
 

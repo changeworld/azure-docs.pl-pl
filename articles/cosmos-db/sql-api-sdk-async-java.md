@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 2/8/2019
 ms.author: moderakh
-ms.openlocfilehash: 88fcfec903dac9d939d658e5d06a51ab8ff1aba9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979177"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416279"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Java (asynchroniczny) usługi Azure Cosmos DB zestawu SDK dla interfejsu API SQL: Informacje o wersji i zasoby
 > [!div class="op_single_selector"]
@@ -45,13 +45,12 @@ Zestaw SDK Java Async interfejsu API SQL różni się od zestawu SDK Java dla in
 ## <a name="release-notes"></a>Informacje o wersji
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
-* Bezpośrednie GA.
+* Łączność w trybie bezpośredniego jest teraz ogólnie Available(GA). Dla przykładu, który korzysta z połączenia w trybie bezpośrednim, zobacz [azure-cosmosdb-java](https://github.com/Azure/azure-cosmosdb-java) repozytorium GitHub.
 * Dodano obsługę QueryMetrics.
-* Zmienione interfejsy API, akceptując java.util.Collection, dla której kolejność jest ważna zaakceptować java.util.List zamiast tego.
-  ConnectionPolicy#getPreferredLocations() JsonSerialization i PartitionKey(.) akceptują teraz listy.
+* Zmienione interfejsy API, akceptując java.util.Collection, dla której kolejność jest ważna zaakceptować java.util.List zamiast tego. ConnectionPolicy#getPreferredLocations() JsonSerialization i PartitionKey(.) akceptują teraz listy.
 
 ### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
-* Dodano obsługę bezpośrednich.
+* Dodano obsługę trybu bezpośredniego połączenia.
 * Zmienione interfejsy API, akceptując java.util.Collection, dla której kolejność jest ważna zaakceptować java.util.List zamiast tego.
   ConnectionPolicy#getPreferredLocations() JsonSerialization i PartitionKey(.) akceptują teraz listy.
 * Usunięto usterkę sesji dla dokumentu zapytania w trybie bramy.

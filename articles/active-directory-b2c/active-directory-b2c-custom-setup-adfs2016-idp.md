@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7435a1879963b90bb05b6f1a617e9d1bc3de27a5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9a1bd45b9724c2533cfefd1e4b5d89f314177ba8
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203712"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417622"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>Dodawanie usług AD FS jako dostawcy tożsamości SAML, za pomocą zasad niestandardowych w usłudze Azure Active Directory B2C
 
@@ -33,8 +33,8 @@ W tym artykule pokazano, jak włączyć logowanie dla konta użytkownika usługi
 Potrzebujesz przechować certyfikat w dzierżawie usługi Azure AD B2C.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
+2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Na stronie Przegląd wybierz **struktura środowiska tożsamości — wersja ZAPOZNAWCZA**.
 5. Wybierz **klucze zasad** , a następnie wybierz **Dodaj**.
 6. Aby uzyskać **opcje**, wybierz `Upload`.
@@ -169,7 +169,7 @@ Otwórz przeglądarkę i przejdź do adresu URL. Upewnij się, wpisz poprawny ad
 
     | LDAP attrubute | Typ oświadczenia wychodzącego |
     | -------------- | ------------------- |
-    | User-Principal-Name | userPricipalName |
+    | User-Principal-Name | userPrincipalName |
     | Nazwisko | family_name |
     | Given-Name | given_name |
     | E-Mail-Address | email |
@@ -184,9 +184,9 @@ Otwórz przeglądarkę i przejdź do adresu URL. Upewnij się, wpisz poprawny ad
 Za pomocą usługi Azure AD B2c odbywa się przy użyciu aplikacji utworzonej w dzierżawie. W tej sekcji przedstawiono kroki opcjonalne, które możesz wykonać, aby utworzyć aplikację testu, jeśli jeszcze tego nie zrobiłeś.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.
-3. Wybierz **wszystkich usług** w lewym górnym rogu witryny Azure portal, a następnie wyszukaj i wybierz **usługi Azure AD B2C**.
-4. Wybierz **aplikacje**, a następnie wybierz pozycję **Dodaj**.
+2. Upewnij się, że używasz katalogu zawierającego Twoją dzierżawę usługi Azure AD B2C, klikając pozycję **Filtr katalogu i subskrypcji** w górnym menu i wybierając katalog zawierający Twoją dzierżawę.
+3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
+4. Wybierz pozycję **Aplikacje**, a następnie wybierz polecenie **Dodaj**.
 5. Wprowadź nazwę aplikacji, na przykład *testapp1*.
 6. Dla **aplikacji sieci Web / interfejs API sieci Web**, wybierz opcję `Yes`, a następnie wprowadź `https://jwt.ms` dla **adres URL odpowiedzi**.
 7. Kliknij pozycję **Utwórz**.

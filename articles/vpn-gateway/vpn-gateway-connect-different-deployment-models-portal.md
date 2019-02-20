@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508338"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417977"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Łączenie sieci wirtualnych z różnych modeli wdrażania za pomocą portalu
 
@@ -30,6 +30,8 @@ W tym artykule przedstawiono sposób nawiązywania połączeń z sieciami wirtua
 Jeśli nie masz jeszcze bramy sieci wirtualnej, a nie chcesz utworzyć, warto zamiast tego warto rozważyć połączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych. W przypadku komunikacji równorzędnej sieci wirtualnych nie jest używana brama sieci VPN. Aby uzyskać więcej informacji, zobacz temat [Komunikacja równorzędna sieci wirtualnych](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="before"></a>Przed rozpoczęciem
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Te czynności zakładają, że obie sieci wirtualne zostały już utworzone. Jeśli używasz w tym artykule w charakterze ćwiczenia, nie ma sieci wirtualne istnieją połączenia w krokach, które ułatwią Ci je utworzyć.
 * Sprawdź, czy zakresy adresów dla sieci wirtualnych nie pokrywają się ze sobą lub pokrywać się z żadnym z zakresów dla innych połączeń, które mogą być połączone bramy z.
@@ -226,19 +228,19 @@ W ramach tej procedury skonfigurujesz połączenie z klasyczną siecią wirtualn
 Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i zaloguj się do konta platformy Azure. Po zalogowaniu się w ustawieniach konta zostaną pobrane tak, aby były dostępne dla programu Azure PowerShell. Następujące polecenie cmdlet wyświetli monit o podanie poświadczeń logowania do konta platformy Azure dla modelu wdrażania usługi Resource Manager:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Pobierz listę subskrypcji platformy Azure.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Jeśli masz więcej niż jedną subskrypcję, określ subskrypcję, dla której chcesz użyć.
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+Select-AzSubscription -SubscriptionName "Name of subscription"
 ```
 
 Następnie zaloguj się za pomocą klasycznego poleceń cmdlet programu PowerShell (Zarządzanie usługami). Aby dodać swoje konto platformy Azure dla klasycznego modelu wdrażania, użyj następującego polecenia:

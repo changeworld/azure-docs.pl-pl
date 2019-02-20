@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: efce8379ecafe6e8e044b654a3c5b392ca8e9cea
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506366"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417316"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Praca z bramy sieci wirtualnej jednostki SKU (starszych jednostek SKU)
 
@@ -40,6 +40,8 @@ Ten artykuł zawiera informacje o starszych bramy sieci wirtualnej (stare) jedno
 
 ## <a name="resize"></a>Zmień rozmiar bramy
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Można zmienić rozmiar bramy do jednostki SKU bramy w ramach tej samej rodziny jednostki SKU. Na przykład jeśli masz standardowej jednostki SKU, możesz zmienić rozmiar do wartości jednostki SKU. Nie można jednak zmienić rozmiar bramy sieci VPN między starych jednostek SKU i nowych rodzin SKU. Nie można na przykład, przejdź od standardowej jednostki SKU, do jednostki SKU VpnGw2 lub podstawowej jednostki SKU do VpnGw1.
 
 Aby zmienić rozmiar bramy dla klasycznego modelu wdrażania, użyj następującego polecenia:
@@ -51,8 +53,8 @@ Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerfor
 Aby zmienić rozmiar bramy dla modelu wdrażania usługi Resource Manager przy użyciu programu PowerShell, użyj następującego polecenia:
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+$gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 Można również zmienić rozmiar bramy w witrynie Azure portal.
 

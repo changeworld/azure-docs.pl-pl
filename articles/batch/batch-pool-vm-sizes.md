@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 921dfc12a7353725d3f9e05d7aa3245ec8ba6084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186010"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417146"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybierz rozmiar maszyny Wirtualnej dla węzłów obliczeniowych w puli usługi Azure Batch
 
@@ -44,14 +44,16 @@ Pule usługi Batch w konfiguracji maszyny wirtualnej obsługuje wszystkie rozmia
 | Seria B | Wszyscy |
 | Seria DC | Wszyscy |
 | Extreme zoptymalizowanych pod kątem pamięci | Wszyscy |
-| Seria HB<sup>1</sup> | Wszyscy |
-| Seria HC<sup>1</sup> | Wszyscy |
+| Seria HB<sup>1,2</sup> | Wszyscy |
+| Seria HC<sup>1,2</sup> | Wszyscy |
 | Seria Lsv2 | Wszyscy |
-| Seria NDv2<sup>1</sup> | Wszyscy |
-| Seria NVv2 | Wszyscy |
+| Seria NDv2<sup>1,2</sup> | Wszyscy |
+| Seria NVv2<sup>1</sup> | Wszyscy |
 | SAP HANA | Wszyscy |
 
-<sup>1</sup> mogą być używane przez konta usługi Batch, w trybie subskrypcji użytkownika; w trybie subskrypcji użytkownika konta usługi Batch musi mieć ustawiony limit przydziału rdzeni. Zobacz [konfiguracji dla trybu subskrypcji użytkownika](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) Aby uzyskać więcej informacji.
+
+<sup>1</sup> zaplanowane dla pomocy technicznej.  
+<sup>2</sup> mogą być używane przez konta usługi Batch, w trybie subskrypcji użytkownika; w trybie subskrypcji użytkownika konta usługi Batch musi mieć ustawiony limit przydziału rdzeni. Zobacz [konfiguracji dla trybu subskrypcji użytkownika](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) Aby uzyskać więcej informacji.
 
 Następujących rozmiarów maszyn wirtualnych są obsługiwane tylko dla węzłów o niskim priorytecie:
 

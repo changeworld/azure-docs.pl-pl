@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie rejestracji i logowania za pomocą konta Facebook, za pomocą usługi Azure Active Directory B2C | Dokumentacja firmy Microsoft
+title: Konfigurowanie rejestracji i logowania za pomocą konta Facebook — Azure Active Directory B2C | Dokumentacja firmy Microsoft
 description: Klientom rejestracji i logowania za pomocą kont usługi Facebook w aplikacjach przy użyciu usługi Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ea1afb83c3e381c33b1c29c224d1ce0cc1d3d080
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 56534589c89fefb38f206f1c57da7996ae43e81d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163045"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428503"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Facebook, za pomocą usługi Azure Active Directory B2C
 
 ## <a name="create-a-facebook-application"></a>Tworzenie aplikacji usługi Facebook
 
-Aby użyć konta w serwisie Facebook jako dostawcy tożsamości w usłudze Azure Active Directory (Azure AD) B2C, musisz utworzyć aplikację w dzierżawie, który go reprezentuje. Jeśli nie masz jeszcze konta w serwisie Facebook, możesz pobrać na stronie [ https://www.facebook.com/ ](https://www.facebook.com/).
+Aby użyć konta usługi Facebook jako [dostawcy tożsamości](active-directory-b2c-reference-oauth-code.md) w usłudze Azure Active Directory (Azure AD) B2C, musisz utworzyć aplikację w dzierżawie, który go reprezentuje. Jeśli nie masz jeszcze konta w serwisie Facebook, możesz pobrać na stronie [ https://www.facebook.com/ ](https://www.facebook.com/).
 
 1. Zaloguj się do [serwisu Facebook dla deweloperów](https://developers.facebook.com/) przy użyciu poświadczeń konta serwisu Facebook.
 2. Jeśli jeszcze tego nie zrobiono, należy zarejestrować się jako deweloper usługi Facebook. Aby to zrobić, wybierz **zarejestrować** w prawym górnym rogu strony, Zaakceptuj zasady w serwisie Facebook, a kroki rejestracji.
@@ -32,7 +32,7 @@ Aby użyć konta w serwisie Facebook jako dostawcy tożsamości w usłudze Azure
 7. Wybierz **kategorii**, na przykład `Business and Pages`. Ta wartość jest wymagana przez usługi Facebook, ale nie są używane dla usługi Azure AD B2C.
 8. W dolnej części strony wybierz **Dodaj platformy**, a następnie wybierz pozycję **witryny sieci Web**.
 9. W **adres URL witryny**, wprowadź `https://your-tenant-name.b2clogin.com/` zastępowanie `your-tenant-name` nazwą Twojej dzierżawy. Wprowadź adres URL dla **adres URL zasad zachowania poufności**, na przykład `http://www.contoso.com`. Adres URL zasad jest stroną, których obsługa zapewniające informacje o ochronie prywatności dla aplikacji.
-10. Wybierz **Zapisz zmiany**.
+10. Wybierz pozycję **Zapisz zmiany**.
 11. W górnej części strony, skopiuj wartość **Identyfikatora aplikacji**. 
 12. Kliknij przycisk **Pokaż** i skopiuj wartość **klucz tajny aplikacji**. Obie z nich służy do konfigurowania usługi Facebook jako dostawcy tożsamości w dzierżawie. **Klucz tajny aplikacji** jest ważnym poświadczeniem zabezpieczeń.
 13. Wybierz **produktów**, a następnie wybierz pozycję **Konfigurowanie** w obszarze **logowania do usługi Facebook**.

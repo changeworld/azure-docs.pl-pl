@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/15/2019
+ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: fa64d24d74a71981e3273fbdf5fa96b386a34685
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 4127b6b2b2601b640a6fda4ccb60960d1762ee81
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342443"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414748"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksowanie plików wideo  
 
@@ -29,10 +29,10 @@ W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wide
 Po przekazaniu filmu wideo usługa Video Indexer opcjonalnie koduje wideo (omówionych w artykule). Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. W przypadku opcji płatnej utworzone zostaje konto usługi Video Indexer [połączone z subskrypcją platformy Azure i kontem usługi Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
 
 ## <a name="uploading-considerations"></a>Zagadnienia dotyczące przekazywania
-    
+
 - W przypadku przekazywania pliku wideo na podstawie adresu URL (opcja preferowana) punkt końcowy musi być zabezpieczony za pomocą protokołu TLS 1.2 (lub nowszej wersji)
 - Rozmiar przekazywanych za pomocą opcji adres URL jest ograniczona do 25GB
-- Rozmiar przekazywanych z opcją tablicy bajtów jest ograniczona do 2GB 
+- Rozmiar przekazywanych z opcją tablicy bajtów jest ograniczona do 2GB
 - Opcja tablicy bajtów upłynie limit czasu po 30 min
 - Adres URL podany w parametrze `videoURL` musi być zakodowany
 

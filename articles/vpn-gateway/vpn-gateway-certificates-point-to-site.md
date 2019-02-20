@@ -1,5 +1,5 @@
 ---
-title: 'Generowanie i eksportowanie certyfikatów dla punkt-lokacja: PowerShell: Azure | Dokumentacja firmy Microsoft'
+title: 'Generowanie i eksportowanie certyfikatów for Point-to-Site: Program PowerShell: Azure | Microsoft Docs'
 description: Utworzyć certyfikat główny z podpisem własnym, a następnie wyeksportować klucz publiczny i wygenerować certyfikaty klienta przy użyciu programu PowerShell w systemie Windows 10 lub Windows Server 2016.
 services: vpn-gateway
 documentationcenter: na
@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e574759ff8af172841db9fc94ee860a19dd14200
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850962"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415369"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generowanie i eksportowanie certyfikatów dla punkt-lokacja przy użyciu programu PowerShell
 
@@ -47,7 +47,7 @@ W przykładach użyto polecenia cmdlet New-SelfSignedCertificate, aby wygenerowa
 
 ### <a name="example-1"></a>Przykład 1
 
-W tym przykładzie używa zadeklarowanej zmiennej "$cert" w poprzedniej sekcji. Jeśli zamknąć konsolę programu PowerShell po utworzeniu certyfikatu głównego z podpisem własnym lub tworzenia dodatkowych klientów certyfikatów w nowej sesji konsoli programu PowerShell, użyj kroków w [przykład 2](#ex2).
+W tym przykładzie należy użyć, jeśli konsola programu PowerShell nie został zamknięty po utworzeniu certyfikatu głównego z podpisem własnym. W tym przykładzie jest kontynuowane od poprzedniej sekcji i używa zadeklarowanej zmiennej "$cert". Jeśli zamknąć konsolę programu PowerShell po utworzeniu certyfikatu głównego z podpisem własnym lub tworzenia dodatkowych klientów certyfikatów w nowej sesji konsoli programu PowerShell, użyj kroków w [przykład 2](#ex2).
 
 Zmodyfikuj i uruchomić przykład, aby wygenerować certyfikat klienta. Jeśli uruchomisz poniższy przykład bez modyfikowania go, wynik jest certyfikat klienta o nazwie "P2SChildCert".  Jeśli chcesz nazwać certyfikatu podrzędnego, coś innego, zmodyfikuj wartości nazwy Pospolitej. Nie zmieniaj TextExtension podczas uruchamiania tego przykładu. Możesz wygenerować certyfikat klienta jest automatycznie instalowany w katalogu "Certyfikaty - bieżący użytkownik\osobisty\certyfikat" na komputerze.
 

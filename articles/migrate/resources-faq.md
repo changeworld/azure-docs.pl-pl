@@ -4,14 +4,14 @@ description: Często zadawane pytania dotyczące usługi Azure Migrate adresów
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746323"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416194"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Usługa Azure Migrate — często zadawane pytania (FAQ)
 
@@ -118,6 +118,10 @@ Dane zebrane przez urządzenie modułu zbierającego znajduje się w lokalizacji
 
 Dla wizualizacji zależności po zainstalowaniu agentów na maszynach wirtualnych, dane zbierane przez agentów zależności są przechowywane w Stanach Zjednoczonych, w obszarze roboczym usługi Log Analytics utworzonych w subskrypcji użytkownika. Usuwanie danych odbywa się podczas usuwania obszaru roboczego usługi Log Analytics w ramach subskrypcji. [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization).
 
+### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>Co to jest ilość danych, który jest przekazywany przez usługę Azure Migrate w przypadku ciągłego profilowania?
+
+Ilość danych, które są przesyłane do usługi Azure Migrate może zależeć od kilku parametrów. Aby dać liczbą orientacyjny, projektów, mające dziesięć maszyn, (każdy dysk i jedną kartą Sieciową), prześle około 50 MB dziennie. To jest przybliżona wartość i zmienić na podstawie liczby punktów danych dla kart sieciowych i dyskach (dane wysyłane jest inny niż liniowy Jeśli zwiększyć liczbę maszyn, kart sieciowych lub dysków). 
+
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Czy dane są szyfrowane podczas przechowywania i przesyłanych?
 
 Tak, zebrane dane są szyfrowane zarówno magazynowanych i przesyłanych. Metadane zbierane przez urządzenie są bezpiecznie wysyłane do usługi Azure Migrate za pośrednictwem sieci internet za pośrednictwem protokołu https. Zebrane metadane są przechowywane w [Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/database-encryption-at-rest) i [usługi Azure blob storage](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) w ramach subskrypcji firmy Microsoft i jest szyfrowane, gdy.
@@ -130,7 +134,7 @@ Urządzenie modułu zbierającego łączy z programem vCenter Server (port 443) 
 
 ### <a name="can-i-connect-the-same-collector-appliance-to-multiple-vcenter-servers"></a>Czy można połączyć tego samego urządzenia modułu zbierającego, aby wiele serwerów vCenter?
 
-Tak, urządzenie jeden moduł zbierający może służyć do wykrywania vCenter wielu serwerów, ale nie jednocześnie. Musisz uruchomić odnajdywania, jeden po drugim.
+Tak, urządzenie jeden moduł zbierający może służyć do wykrywania vCenter wielu serwerów, ale nie jednocześnie. Musisz uruchomić odnajdywanie, jeden po drugim.
 
 ### <a name="is-the-ova-template-used-by-site-recovery-integrated-with-the-ova-used-by-azure-migrate"></a>Czy szablon OVA używany przez usługę Site Recovery jest zintegrowana z usługą OVA używane przez usługę Azure Migrate?
 

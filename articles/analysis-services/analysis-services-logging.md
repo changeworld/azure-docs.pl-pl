@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 4d5c7c592bae32586922531781803db6622e6515
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9f9a6511d63e57c6cbfa5ee2453f8038bb259047
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310750"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428996"
 ---
 # <a name="setup-diagnostic-logging"></a>Konfigurowanie rejestrowania diagnostycznego
 
@@ -158,7 +158,7 @@ Aby wyświetlić dane diagnostyczne w obszarze roboczym usługi Log Analytics, o
 
 ![Opcje wyszukiwania dzienników w witrynie Azure portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-W Konstruktorze zapytań rozwiń **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zawiera zdarzenia silnika i usług. Należy zauważyć, że zapytanie jest tworzony na bieżąco. EventClass\_s pole zawiera nazwy systemu xEvent, które mogą wygląda znajomo, jeśli wcześniej używano systemu xEvents dla lokalnego rejestrowania. Kliknij przycisk **EventClass\_s** lub jedną z nazw zdarzeń i Log Analytics jest kontynuowane konstruowanie zapytania. Pamiętaj zapisać zapytania do późniejszego.
+W Konstruktorze zapytań rozwiń **LogManagement** > **AzureDiagnostics**. AzureDiagnostics zawiera zdarzenia silnika i usług. Należy zauważyć, że zapytanie jest tworzony na bieżąco. EventClass\_s pole zawiera nazwy systemu xEvent, które mogą wygląda znajomo, jeśli wcześniej używano systemu xEvents dla lokalnego rejestrowania. Kliknij przycisk **EventClass\_s** lub jedną z nazw zdarzeń i obszar roboczy usługi Log Analytics jest kontynuowane konstruowanie zapytania. Pamiętaj zapisać zapytania do późniejszego.
 
 ### <a name="example-query"></a>Przykładowe zapytanie
 To zapytanie oblicza i zwraca procesora CPU dla każdego zdarzenia zakończenia zakończenia/odświeżania zapytań dla bazy danych modelu i serwera:

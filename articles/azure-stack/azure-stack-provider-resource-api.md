@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 9568ac58e646be03d367fe466ae972955f23488c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 47ba057091f0660bf1449f062edfacde710d2f1a
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252238"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428181"
 ---
 # <a name="provider-resource-usage-api"></a>Interfejs API użycia zasobów dostawcy
 Termin *dostawcy* stosuje się do administratora usługi i żadnych delegowanych dostawców. Operatorzy usługi Azure Stack i delegowanych dostawców służy interfejs API użycia dostawcy do wyświetlania użycia bezpośrednich dzierżawcom. Na przykład jak pokazano na diagramie, P0 można wywołać interfejsu API, aby uzyskać informacje dotyczące firmy P1 zastosowania dostawcy i jego P2 bezpośredniego użycia i P1 może wywołać dotyczące użycia jednostek P3 i P4.

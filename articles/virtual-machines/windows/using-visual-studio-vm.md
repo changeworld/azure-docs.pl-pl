@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.prod: vs-devops-alm
-ms.date: 09/12/2018
+ms.date: 02/19/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 1582cc7e48adcf895dc7c07e7ab485790650ac14
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 7530545c3577a662ac0075b83b3eb7e4a8a40f89
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911915"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428571"
 ---
 # <a name="visual-studio-images-on-azure"></a>Obrazów programu Visual Studio w systemie Azure
-Przy użyciu programu Visual Studio w wstępnie skonfigurowanych maszyn wirtualnych (VM) to szybki i łatwy sposób skalują się od pozycji środowisko projektowe w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1).
+Przy użyciu programu Visual Studio w wstępnie skonfigurowanych maszyn wirtualnych (VM) to szybki i łatwy sposób skalują się od pozycji środowisko projektowe w górę i uruchomiona. Obrazy systemu z różnymi konfiguracjami programu Visual Studio są dostępne w [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1).
 
 Jesteś nowym użytkownikiem platformy Azure? [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free).
 
@@ -34,8 +34,8 @@ Obrazy do najnowszej wersji głównych, Visual Studio 2017 i Visual Studio 2015 
 
 | Wersja                                              | Wersje                     |     Wersja produktu      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|    Visual Studio 2019: (Wersja zapoznawcza 2) w wersji zapoznawczej                   |           Enterprise         | Wersji 16.0.0 Preview 2 |
-| Visual Studio 2017: Najnowsze (w wersji 15.9)                    |    Enterprise, Community     |      Wersja 15.9.4      |
+|    Visual Studio 2019: (Wersja zapoznawcza 3) w wersji zapoznawczej                   |           Enterprise         | Wersja 16.0.0 w wersji zapoznawczej 3 |
+| Visual Studio 2017: Najnowsze (w wersji 15.9)                    |    Enterprise, Community     |      Wersja 15.9.7      |
 |         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Wersja 15.0.20     |
 |   Visual Studio 2015: Najnowsze (Aktualizacja 3)                      |    Enterprise, Community     |  Wersja 14.0.25431.01   |
 |         Visual Studio 2015: RTW                              |             Brak             | (Wygasłe obsługi)  |

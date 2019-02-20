@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 4885be7547d404505b50c563036f260166cbc2cc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6b980ae7539642e67609be802b2e31b287d09f72
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833826"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415275"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Sieciowe grupy zabezpieczeń usługi Azure Site Recovery
 
@@ -45,7 +45,7 @@ Możesz czasami nie wiedzieć, że grupy zabezpieczeń sieci są stosowane do in
 
 Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii i migracji na platformę Azure dla lokalnych [maszyn wirtualnych funkcji Hyper-V](hyper-v-azure-architecture.md), [maszyn wirtualnych VMware](vmware-azure-architecture.md), i [serwerów fizycznych](physical-azure-architecture.md). Dla całego środowiska lokalnego do platformy Azure scenariuszy dane replikacji są wysyłane do i przechowywane na koncie usługi Azure Storage. Podczas replikacji nie płać opłatami związanymi z maszyny wirtualnej. Po uruchomieniu trybu failover na platformie Azure Site Recovery automatycznie tworzy maszyny wirtualne IaaS platformy Azure.
 
-Po utworzeniu maszyn wirtualnych po przejściu w tryb failover Azure sieciowych grup zabezpieczeń może służyć do ograniczania ruchu sieciowego do sieci wirtualnej i maszynach wirtualnych. Usługa Site Recovery nie tworzy sieciowe grupy zabezpieczeń w ramach operacji trybu failover. Zaleca się utworzenie wymaganych NGSs platformy Azure, przed rozpoczęciem pracy awaryjnej. Następnie można skojarzyć sieciowych grup zabezpieczeń do przełączone w tryb failover maszyny wirtualne automatycznie podczas pracy w trybie failover przy użyciu zaawansowanych skryptów automatyzacji za pomocą usługi Site Recovery [planów odzyskiwania](site-recovery-create-recovery-plans.md).
+Po utworzeniu maszyn wirtualnych po przejściu w tryb failover Azure sieciowych grup zabezpieczeń może służyć do ograniczania ruchu sieciowego do sieci wirtualnej i maszynach wirtualnych. Usługa Site Recovery nie tworzy sieciowe grupy zabezpieczeń w ramach operacji trybu failover. Zaleca się utworzenie wymaganych sieciowych grup zabezpieczeń platformy Azure, przed rozpoczęciem pracy awaryjnej. Następnie można skojarzyć sieciowych grup zabezpieczeń do przełączone w tryb failover maszyny wirtualne automatycznie podczas pracy w trybie failover przy użyciu zaawansowanych skryptów automatyzacji za pomocą usługi Site Recovery [planów odzyskiwania](site-recovery-create-recovery-plans.md).
 
 Na przykład, jeśli konfiguracja maszyny Wirtualnej po przejściu do trybu failover jest podobny do [przykładowy scenariusz](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) powyższym opisem:
 -   Możesz utworzyć **sieci wirtualnej firmy Contoso** i **podsieci Contoso** w ramach planowania dla elementu docelowego regionu świadczenia usługi Azure odzyskiwania po awarii.
@@ -61,7 +61,7 @@ Usługa Azure Site Recovery umożliwia odzyskiwanie po awarii [maszyn wirtualnyc
 
 Replikacja maszyny Wirtualnej platformy Azure, upewnij się, że reguły sieciowej grupy zabezpieczeń na region platformy Azure "source" Zezwalaj na [łączności wychodzącej](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) dla ruchu związanego z replikacją. Można też testować i weryfikować tych reguł wymagany przez to [przykładowej konfiguracji sieciowej grupy zabezpieczeń](azure-to-azure-about-networking.md#example-nsg-configuration).
 
-Usługa Site Recovery nie tworzy ani nie Replikuj sieciowych grup zabezpieczeń w ramach operacji trybu failover. Zaleca się utworzenie NGSs wymagany dla elementu docelowego regionu świadczenia usługi Azure, przed rozpoczęciem pracy awaryjnej. Następnie można skojarzyć sieciowych grup zabezpieczeń do przełączone w tryb failover maszyny wirtualne automatycznie podczas pracy w trybie failover przy użyciu zaawansowanych skryptów automatyzacji za pomocą usługi Site Recovery [planów odzyskiwania](site-recovery-create-recovery-plans.md).
+Usługa Site Recovery nie tworzy ani nie Replikuj sieciowych grup zabezpieczeń w ramach operacji trybu failover. Zaleca się utworzenie wymaganych grup zabezpieczeń sieci w miejscu docelowym regionem świadczenia usługi Azure, przed rozpoczęciem pracy awaryjnej. Następnie można skojarzyć sieciowych grup zabezpieczeń do przełączone w tryb failover maszyny wirtualne automatycznie podczas pracy w trybie failover przy użyciu zaawansowanych skryptów automatyzacji za pomocą usługi Site Recovery [planów odzyskiwania](site-recovery-create-recovery-plans.md).
 
 Biorąc pod uwagę [przykładowy scenariusz](concepts-network-security-group-with-site-recovery.md#using-network-security-groups) opisanej wcześniej:
 -   Usługa Site Recovery można utworzyć repliki **sieci wirtualnej firmy Contoso** i **podsieci Contoso** dla elementu docelowego regionu platformy Azure po włączeniu replikacji dla maszyny Wirtualnej.

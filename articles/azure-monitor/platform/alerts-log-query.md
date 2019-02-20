@@ -5,15 +5,15 @@ author: yossi-y
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 36be305e60806ba2cdea260fc46bc329c43284cb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: c50c1a111f037b74176b5ca2cf8af518b2d3ffa0
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429790"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429387"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Jeśli kwerendy alertów dzienników w usłudze Azure Monitor
 [Reguły na podstawie dzienników usługi Azure Monitor alertów](alerts-unified-log.md) uruchamiane w regularnych odstępach czasu, dlatego należy upewnić się, że są one zapisywane zminimalizować koszty i opóźnienia. Ten artykuł zawiera zalecenia dotyczące pisania wydajne zapytania dotyczące alertów dzienników i procesu konwersji istniejących zapytań. 
@@ -55,7 +55,9 @@ app('Contoso-app1').requests,
 app('Contoso-app2').requests, 
 workspace('Contoso-workspace1').Perf 
 ```
- 
+
+>[!NOTE]
+>[Zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) w dzienniku alertów jest obsługiwana w nowym [scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Domyślnie używa usługi Azure Monitor [interfejsu API starszych Log Analytics alertu](api-alerts.md) do tworzenia reguł alertów nowy dziennik z witryny Azure portal, jeśli nie możesz przejść z wersji [starszej wersji interfejsu API z alertów dziennika](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api). Po przełączniku nowy interfejs API staje się domyślnie na nowe reguły alertów w witrynie Azure portal i umożliwia tworzenie dziennika alertów reguły zapytania obejmujące wiele zasobów. Można utworzyć [zapytania obejmujące wiele zasobów](../log-query/cross-workspace-query.md) rejestrowanie reguł alertów bez wprowadzania przełącznik przy użyciu [szablon ARM scheduledQueryRules interfejsu API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) — ale tę regułę alertu jest łatwe w zarządzaniu jednak [ Interfejs API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) , a nie z witryny Azure portal.
 
 ## <a name="examples"></a>Przykłady
 Poniższe przykłady zapytań log, które używają `search` i `union` i zawierają opis etapów, można użyć, aby zmodyfikować te zapytania do użycia z reguł alertów.

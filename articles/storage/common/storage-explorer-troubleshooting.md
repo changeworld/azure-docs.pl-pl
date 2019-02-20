@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 32c47233946dacf4e80a9ff3ba25388e1231d7c9
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301064"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415514"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Przewodnik rozwiązywania problemów z Eksploratora usługi Storage platformy Azure
 
@@ -61,6 +61,8 @@ Pusty znak w oknach dialogowych są najczęściej powodowane przez usługi AD FS
 3. Wybierz środowisko, które chcesz zalogować się do.
 4. Kliknij przycisk "Zaloguj".
 5. Postępuj zgodnie z instrukcjami w następnej panelu.
+
+Uwaga: Ta funkcja jest obecnie dostępna tylko w 1.7.0 (wersja zapoznawcza).
 
 Jeśli okaże się, że problemy, logując się do konta chcesz użyć, ponieważ domyślna przeglądarka już zalogowali się do innego konta, możesz:
 1. Ręcznie skopiować link i kod do prywatnego sesji przeglądarki.

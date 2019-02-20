@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8cc253f751b209332ee890c0ebc9b6846d4feab5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f93d9eaefe18dd012a639cd26636b56b9eb09249
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749852"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427640"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę przy użyciu wiersza polecenia platformy Azure
 
@@ -113,7 +113,6 @@ Poniżej przedstawiono manifestu podstawowego wdrożenia za pomocą jednego modu
    }
    ```
 
-
 ## <a name="identify-devices-using-tags"></a>Identyfikowanie urządzeń za pomocą tagów
 
 Przed utworzeniem wdrożenia, musisz mieć możliwość określenia urządzeń, które mają wpływ na. Usługa Azure IoT Edge identyfikuje urządzenia przy użyciu **tagi** w bliźniaczej reprezentacji urządzenia. Każde urządzenie może mieć wiele tagów i można je zdefiniować sposób, który ma sens dla Twojego rozwiązania. Na przykład jeśli zarządzasz campus budynki, możesz dodać następujące znaczniki na urządzeniu:
@@ -155,10 +154,12 @@ Użyj następującego polecenia, aby wyświetlić zawartość wdrożenia:
    ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
    ```
+
 * **— Identyfikator wdrożenia** — Nazwa wdrożenia, który istnieje w usłudze IoT hub.
 * **— Nazwa centrum** — nazwy Centrum IoT, w której istnieje wdrożenie. Centrum musi znajdować się w bieżącej subskrypcji. Przełącz się do odpowiedniej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
 
 Sprawdź, czy wdrożenie w oknie wiersza polecenia. **Metryki** listy właściwości — liczba, dla każdego metryki, które jest obliczane przez każdego Centrum:
+
 * **targetedCount** — metryki systemu, która określa liczbę bliźniaczych reprezentacji urządzeń w usłudze IoT Hub odpowiada warunkowi określania wartości docelowej.
 * **appliedCount** — metryki systemu określa liczbę urządzeń, które były zawartości wdrożenia dotyczą ich bliźniaczych reprezentacjach modułów usługi IoT Hub.
 * **reportedSuccessfulCount** — metryki urządzenia, która określa liczbę urządzeń brzegowych we wdrożeniu zgłaszanie powodzenia ze środowiska wykonawczego klienta usługi IoT Edge.
@@ -179,6 +180,7 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 Podczas modyfikowania wdrożenia zmiany są natychmiast replikowane do wszystkie objęte nimi urządzenia. 
 
 Jeśli zaktualizujesz warunek docelowy, zachodzą następujące aktualizacje:
+
 * Jeśli urządzenie nie spełnia warunek docelowy stare, ale nowy warunek docelowy spełnia, to wdrożenie ma najwyższy priorytet dla tego urządzenia to wdrożenie jest zastosowany na urządzeniu. 
 * Jeśli urządzenie uruchomione tego wdrożenia nie jest już spełnia warunek docelowy, odinstalowuje tego wdrożenia i Trwa dalej wdrożenia najwyższy priorytet. 
 * Jeśli urządzenie uruchomione tego wdrożenia nie jest już spełnia warunek docelowy, a nie spełnia warunek docelowy wszystkich innych wdrożeń, żadna zmiana występuje na urządzeniu. Urządzenie będzie nadal działać jego bieżący modułów w ich bieżący stan, ale nie jest zarządzany w ramach tego wdrożenia już. Gdy spełnia warunek docelowy wszystkich innych wdrożeń, odinstalowuje tego wdrożenia i przejście na nowy. 
@@ -188,12 +190,13 @@ Użyj następującego polecenia do zaktualizowania wdrożenia:
    ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
    ```
+
 * **— Identyfikator wdrożenia** — Nazwa wdrożenia, który istnieje w usłudze IoT hub.
 * **— Nazwa centrum** — nazwy Centrum IoT, w której istnieje wdrożenie. Centrum musi znajdować się w bieżącej subskrypcji. Przełącz się do odpowiedniej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
 * **— Ustaw** — tak zaktualizować odnośną właściwość we wdrożeniu. Można aktualizować następujące właściwości:
-    * targetCondition — przykład `targetCondition=tags.location.state='Oregon'`
-    * etykiety 
-    * priority
+  * targetCondition — przykład `targetCondition=tags.location.state='Oregon'`
+  * etykiety 
+  * priority
 
 
 ## <a name="delete-a-deployment"></a>Usuwanie wdrożenia
@@ -205,6 +208,7 @@ Aby usunąć wdrożenie, użyj następującego polecenia:
    ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
    ```
+
 * **— Identyfikator wdrożenia** — Nazwa wdrożenia, który istnieje w usłudze IoT hub.
 * **— Nazwa centrum** — nazwy Centrum IoT, w której istnieje wdrożenie. Centrum musi znajdować się w bieżącej subskrypcji. Przełącz się do odpowiedniej subskrypcji za pomocą polecenia `az account set -s [subscription name]`
 

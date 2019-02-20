@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 1/18/2019
+ms.date: 2/19/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: dce158e600d3bf5dbcc552aff82959208d7b47f8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0319445f946a53ace5718dce1ad593d0a8225ecc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249065"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428520"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*
 
-W usłudze Azure Stack można udostępnić obrazy maszyn wirtualnych dla użytkowników. Obrazy te mogą być przywoływane przez Szablony usługi Azure Resource Manager lub dodać je do interfejsu użytkownika usługi Azure Marketplace jako elementu portalu Marketplace. Można użyć dowolnego obrazu formularza globalnym rynku platformy Azure lub dodać swój własny obraz niestandardowy. Możesz dodać Maszynę wirtualną za pomocą portalu lub programu Windows PowerShell.
+W usłudze Azure Stack można udostępnić obrazy maszyn wirtualnych dla użytkowników. Te obrazy może służyć przez Szablony usługi Azure Resource Manager. Można również dodać je do interfejsu użytkownika usługi Azure Marketplace jako elementu portalu Marketplace. Użyj formularza obraz globalnym rynku platformy Azure lub swój własny obraz niestandardowy. Obraz, który można dodać za pomocą portalu lub programu Windows PowerShell.
 
 ## <a name="add-a-vm-image-through-the-portal"></a>Dodaj obraz maszyny Wirtualnej za pośrednictwem portalu
 

@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 10/17/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 267234cb9ecea1dc097f13739bf98ee11206ad06
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 49f48c2d0bf865cf8c8fde831e7a597f8701d213
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444268"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418028"
 ---
-Możesz również sprawdzić, czy połączenie zostało pomyślnie nawiązane, używając polecenia cmdlet „Get-AzureRmVirtualNetworkGatewayConnection” z opcją „-Debug” lub bez niej. 
+Możesz sprawdzić, czy połączenie powiodło się z lub bez, używając polecenia cmdlet "Get-AzVirtualNetworkGatewayConnection" "-Debug". 
 
 1. Można skorzystać z następującego przykładu użycia polecenia cmdlet, dopasowując wartości do własnych potrzeb. Po wyświetleniu monitu wybierz „A”, aby uruchomić wszystko. W podanym przykładzie opcja „-Name” odnosi się do nazwy połączenia, które ma zostać przetestowane.
 
    ```azurepowershell-interactive
-   Get-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
+   Get-AzVirtualNetworkGatewayConnection -Name VNet1toSite1 -ResourceGroupName TestRG1
    ```
 2. Po zakończeniu działania polecenia cmdlet sprawdź wartości. W poniższym przykładzie stan połączenia jest wyświetlany jako „Połączone” i można zobaczyć bajty przychodzące i wychodzące.
    

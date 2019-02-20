@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 6bcf096bd51990cf280784deceac19eea05d32b4
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4dac40e9fad8361c0e6c8a8758028743f2506f56
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977133"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428095"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Konfigurowanie środowiska projektowego w systemie Mac OS X
 > [!div class="op_single_selector"]
@@ -53,14 +53,14 @@ Aby skonfigurować lokalny kontener platformy Docker i uruchomić w nim klaster 
         "fixed-cidr-v6": "fd00::/64"
     }
     ```
-    Możesz zaktualizować te ustawienia bezpośrednio w pliku daemon.json w ścieżce instalacji platformy Docker.
+    Możesz zaktualizować te ustawienia bezpośrednio w pliku daemon.json w ścieżce instalacji platformy Docker. Można bezpośrednio modyfikować ustawień konfiguracji demona na platformie Docker. Wybierz **ikonę platformy Docker**, a następnie wybierz pozycje **Preferencje**  >  **Demon**  >  **Zaawansowane**.
     
     >[!NOTE]
     >
-    >Lokalizacja pliku daemon.json może różnić się w zależności od maszyny. Przykład: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >Modyfikowanie demona bezpośrednio na platformie Docker jest zalecana, ponieważ lokalizacja pliku daemon.json może różnić się od maszyny. Przykład: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
-    >Zaleca się bezpośrednie modyfikowanie ustawień konfiguracji demona na platformie Docker. Wybierz **ikonę platformy Docker**, a następnie wybierz pozycje **Preferencje**  >  **Demon**  >  **Zaawansowane**.
-    >
+
+    >[!TIP]
     >Zalecamy zwiększenie zasobów przydzielonych do platformy Docker podczas testowania dużych aplikacji. W tym celu można wybrać **ikonę platformy Docker**, a następnie wybrać pozycję **Zaawansowane**, aby dostosować liczbę rdzeni i ilość pamięci.
 
 2. W nowym katalogu utwórz plik o nazwie `Dockerfile` w celu skompilowania obrazu usługi Service Fabric:
@@ -110,7 +110,7 @@ Aby skonfigurować lokalny kontener platformy Docker i uruchomić w nim klaster 
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-5. Klaster zostanie uruchomiony po krótkim czasie. Możesz wyświetlić dzienniki przy użyciu poniższego polecenia lub przejść do pulpitu nawigacyjnego, aby wyświetlić kondycję klastrów [http://localhost:19080](http://localhost:19080):
+5. Klastra potrwa kilka minut, aby rozpocząć. Gdy jest uruchomiona, możesz wyświetlić dzienniki przy użyciu następującego polecenia lub przejść do pulpitu nawigacyjnego, aby wyświetlić kondycję klastrów [ http://localhost:19080 ](http://localhost:19080):
 
     ```bash 
     docker logs sftestcluster
@@ -118,7 +118,7 @@ Aby skonfigurować lokalny kontener platformy Docker i uruchomić w nim klaster 
 
 
 
-6. Gdy wszystko będzie gotowe, zatrzymać i oczyścić kontener za pomocą następującego polecenia:
+6. Aby zatrzymać i oczyścić kontener Użyj następującego polecenia. Jednak firma Microsoft będzie używać tego kontenera w następnym kroku.
 
     ```bash 
     docker rm -f sftestcluster
@@ -173,6 +173,9 @@ Usługa Service Fabric udostępnia narzędzia do tworzenia szkieletów, które u
     brew cask install java
     brew install gradle
     ```
+
+    >[!TIP]
+    > Pamiętaj sprawdzić, czy użytkownik ma poprawną wersję zestawu JDK zainstalowany. 
 
 ## <a name="deploy-your-application-on-your-mac-from-the-terminal"></a>Wdrażanie aplikacji na komputerze Mac z poziomu terminalu
 

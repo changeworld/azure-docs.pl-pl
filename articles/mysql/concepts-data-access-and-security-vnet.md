@@ -7,12 +7,12 @@ manager: jhubbard
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/20/2018
-ms.openlocfilehash: af067cabf312ec3c2556b84dc4d739e41ec0aacc
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: aef55660d07c8923a82baf7f8b6320abf3ccdd1d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535288"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430220"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Użyj reguł i punktów końcowych usługi sieci wirtualnej dla usługi Azure Database for MySQL
 
@@ -24,6 +24,7 @@ Aby utworzyć regułę sieci wirtualnej musi najpierw mieć [sieci wirtualnej] [
 
 > [!NOTE]
 > Ta funkcja jest dostępna we wszystkich regionach platformy Azure — Azure Database for MySQL jest wdrożonym dla serwerów z ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
+> W przypadku komunikacji równorzędnej sieci wirtualnych, jeśli ruch przepływają przez ze wspólnej bramy sieci wirtualnej z punktami końcowymi usługi i powinna przepływać do elementu równorzędnego, Utwórz regułę listy ACL/sieć wirtualna, aby umożliwić maszynom wirtualnym platformy Azure w sieci wirtualnej bramy do dostępu do serwera Azure Database for MySQL —.
 
 <a name="anch-terminology-and-description-82f" />
 

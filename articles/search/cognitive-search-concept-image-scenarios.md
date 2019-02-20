@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312616"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430271"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Jak przetwarzanie i wyodrębnianie informacji z obrazów w scenariuszach wyszukiwania kognitywnego
 
@@ -34,7 +34,7 @@ Nie można wyłączyć normalizacji obrazu. Umiejętności, które przechodzą p
 
 | Parametr konfiguracji | Opis |
 |--------------------|-------------|
-| imageAction   | Jeśli nie działania powinny zostać podjęte, gdy wystąpią obrazy osadzone lub pliki obrazów, należy ustawić na "none". <br/>Ustawienie "generateNormalizedImages" powoduje generowanie tablicę znormalizowane obrazów jako część łamania dokumentów. Obrazy te zostaną ujawnione w *normalized_images* pola. <br/>Wartość domyślna to "none". Ta konfiguracja jest tylko odpowiednie do obiektu blob źródła danych, gdy "dataToExtract" ma wartość "contentAndMetadata." |
+| imageAction   | Jeśli nie działania powinny zostać podjęte, gdy wystąpią obrazy osadzone lub pliki obrazów, należy ustawić na "none". <br/>Ustawienie "generateNormalizedImages" powoduje generowanie tablicę znormalizowane obrazów jako część łamania dokumentów.<br/>Ustawienie "generateNormalizedImagePerPage" Generowanie tablicę znormalizowane obrazów gdzie dla plików PDF w źródle danych, każda strona jest renderowany do jednego obrazu danych wyjściowych.  Funkcjonalność jest taka sama jak "generateNormalizedImages" dla typów plików innych niż PDF.<br/>Dla każdej opcji, która nie jest "none", obrazy będą widoczne w *normalized_images* pola. <br/>Wartość domyślna to "none". Ta konfiguracja jest tylko odpowiednie do obiektu blob źródła danych, gdy "dataToExtract" ma wartość "contentAndMetadata." |
 |  normalizedImageMaxWidth | Maksymalna szerokość (w pikselach) dla obrazów znormalizowane wygenerowanych. Wartość domyślna to 2000.|
 |  normalizedImageMaxHeight | Maksymalna wysokość (w pikselach) dla obrazów znormalizowane wygenerowanych. Wartość domyślna to 2000.|
 
@@ -62,7 +62,7 @@ Określ imageAction w swojej [definicja indeksatora](https://docs.microsoft.com/
 }
 ```
 
-Gdy *imageAction* jest ustawiona na "generateNormalizedImages" nowy *normalized_images* pole będzie zawierać tablicę obrazów. Każdy obraz jest typ złożony, który ma następujące składowe:
+Gdy *imageAction* jest ustawiona na wartość innych następnie "none", nowy *normalized_images* pole będzie zawierać tablicę obrazów. Każdy obraz jest typ złożony, który ma następujące składowe:
 
 | Element członkowski obrazu       | Opis                             |
 |--------------------|-----------------------------------------|

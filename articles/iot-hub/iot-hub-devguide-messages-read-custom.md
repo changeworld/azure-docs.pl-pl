@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: bbd5058be502839f83db484136d1c97bac4a3d79
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 1b0e99998aaf29c366cce1926f930174686cfee6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585955"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414902"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Użyj trasy wiadomość i niestandardowe punkty końcowe dla komunikatów z urządzenia do chmury
 
@@ -34,7 +34,7 @@ Pojedynczy komunikat może odpowiadać warunku w wielu zapytań routingu, w któ
 
 Centrum IoT hub jest powiązana wartość domyślna [wbudowany punkt końcowy](iot-hub-devguide-messages-read-builtin.md). Możesz utworzyć niestandardowe punkty końcowe do wyznaczania tras, łącząc innych usług w Twojej subskrypcji do Centrum. Usługa IoT Hub obsługuje obecnie kontenery usługi Azure Storage, usługa Event Hubs, kolejki usługi Service Bus i tematów usługi Service Bus jako niestandardowe punkty końcowe.
 
-Gdy używasz routingu, jak i niestandardowe punkty końcowe, wiadomości tylko są dostarczane do wbudowany punkt końcowy, jeśli nie są zgodne dowolnego zapytania. Aby dostarcza komunikaty do wbudowanego punktu końcowego również do niestandardowego punktu końcowego, należy dodać trasę, która wysyła komunikaty do **zdarzenia** punktu końcowego.
+Gdy używasz routingu, jak i niestandardowe punkty końcowe, wiadomości tylko są dostarczane do wbudowany punkt końcowy, jeśli nie są zgodne dowolnego zapytania. Aby dostarcza komunikaty do wbudowanego punktu końcowego również do niestandardowego punktu końcowego, należy dodać trasę, która wysyła komunikaty do wbudowanej **zdarzenia** punktu końcowego.
 
 > [!NOTE]
 > * Usługa IoT Hub obsługuje tylko zapisywanie danych w kontenerach usługi Azure Storage jako obiekty BLOB.

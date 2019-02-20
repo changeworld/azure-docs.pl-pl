@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 301de81fc9b8bdb8b295700de33065d988379334
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819165"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428798"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Zapisu Apache Hadoop HDFS z systemu Storm Apache na HDInsight
 
@@ -50,15 +50,18 @@ Po zainstalowaniu środowiska Java i zestawu JDK na deweloperskiej stacji robocz
 HdfsBolt wykorzystuje schemat pliku, zapewniające zrozumienie, jak można zapisać do systemu plików HDFS. Za pomocą HDInsight wykonaj jedną z następujących systemów:
 
 * `wasb://`: Używane z konta usługi Azure Storage.
-* `adl://`: Używane, za pomocą usługi Azure Data Lake Storage.
+* `abfs://`: Używane, za pomocą usługi Azure Data Lake Storage Gen2.
+* `adl://`: Używane, za pomocą usługi Azure Data Lake Storage Gen1.
 
 Poniższa tabela zawiera przykłady użycia systemu plików w różnych scenariuszach:
 
 | Schemat | Uwagi |
 | ----- | ----- |
 | `wasb:///` | Domyślne konto magazynu jest kontener obiektów blob na koncie usługi Azure Storage |
-| `adl:///` | Domyślne konto magazynu jest katalogiem w usłudze Azure Data Lake Storage. Podczas tworzenia klastra należy określić katalog, w usługi Data Lake Storage, który jest elementem głównym systemu HDFS z klastra. Na przykład `/clusters/myclustername/` katalogu. |
+| `abfs:///` | Domyślne konto magazynu jest katalogiem na koncie usługi Azure Data Lake Storage Gen2 |
+| `adl:///` | Domyślne konto magazynu jest katalogiem w usługi Azure Data Lake Storage Gen1. Podczas tworzenia klastra należy określić katalog, w usługi Data Lake Storage, który jest elementem głównym systemu HDFS z klastra. Na przykład `/clusters/myclustername/` katalogu. |
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Konto inne niż domyślne, (dodatkowe) usługi Azure storage skojarzonym z klastrem. |
+| `abfs://CONTAINER@ACCOUNT.dfs.core.windows.net/` | Konto inne niż domyślne, (dodatkowe) usługi Azure storage skojarzonym z klastrem. |
 | `adl://STORENAME/` | Katalog główny usługi Data Lake Storage używane przez klaster. Ten schemat umożliwia dostęp do danych znajdujących się poza katalogiem, który zawiera klastra systemu plików. |
 
 Aby uzyskać więcej informacji, zobacz [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html) odwołania w serwisie Apache.org.
@@ -180,7 +183,7 @@ Aby uzyskać informacje przy użyciu tego skryptu z klastrem, zobacz [HDInsight 
         hdfs.url: wasb:///
 
     > [!IMPORTANT]  
-    > W tym przykładzie przyjęto założenie, że klaster używa konta usługi Azure Storage jako magazynu domyślnego. Jeśli klaster używa usługi Azure Data Lake Storage, użyj `hdfs.url: adl:///` zamiast tego.
+    > W tym przykładzie przyjęto założenie, że klaster używa konta usługi Azure Storage jako magazynu domyślnego. Jeśli klaster używa usługi Azure Data Lake Storage Gen2, użyj `hdfs.url: abfs:///` zamiast tego. Jeśli klaster używa usługi Azure Data Lake Storage Gen1, użyj `hdfs.url: adl:///` zamiast tego.
     
     Aby zapisać plik, użyj __Ctrl + X__, następnie __Y__, a na koniec __Enter__. Wartości w tym pliku Ustaw adres URL magazynu jeziora danych i nazwę katalogu, który dane są zapisywane.
 

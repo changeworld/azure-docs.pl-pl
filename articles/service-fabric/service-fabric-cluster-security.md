@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109321"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428641"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra usługi Service Fabric
 Klaster usługi Azure Service Fabric jest zasobem, którego jesteś właścicielem. Jest odpowiedzialny za Zabezpieczanie klastrów zapobiega nieautoryzowanym użytkownikom nawiązywanie połączeń z nich. Zabezpieczonego klastra jest szczególnie ważne w przypadku obciążeń produkcyjnych są uruchomione w klastrze. Chociaż można utworzyć z niezabezpieczonym klastrem, jeśli klaster udostępnia punktów końcowych zarządzania do publicznej sieci internet, użytkowników anonimowych można się z nim. Niezabezpieczonych klastrów nie są obsługiwane w przypadku obciążeń produkcyjnych. 
@@ -73,7 +73,12 @@ Klaster usługi Service Fabric udostępnia kilka punktów wejścia do jego funkc
 W przypadku klastrów działających na platformie Azure można zabezpieczyć dostęp do punktów końcowych zarządzania przy użyciu usługi Azure Active Directory (Azure AD). Aby dowiedzieć się, jak utworzyć wymaganych artefaktów w usłudze Azure AD i wypełnić je podczas tworzenia klastra, zobacz [Konfigurowanie usługi Azure AD do uwierzytelniania klientów](service-fabric-cluster-creation-setup-aad.md).
 
 ## <a name="security-recommendations"></a>Zalecenia dotyczące zabezpieczeń
-W przypadku klastrów Azure zabezpieczeń między węzłami zaleca się używać zabezpieczeń usługi Azure AD do uwierzytelniania klientów i certyfikatów.
+W przypadku klastrów usługi Service Fabric wdrożone w sieci publicznych, hostowanych na platformie Azure do wzajemnego uwierzytelniania klient węzeł zaleca:
+*   Usługa Azure Active Directory dla tożsamości klienta
+*   Certyfikat tożsamości serwera oraz szyfrowania SSL dla komunikacji http
+
+Dla klastrów usługi Service Fabric jest wdrażany w sieci publicznych, hostowanych na platformie Azure zalecenie dotyczące zabezpieczeń między węzłami jest użycie certyfikatu klastra do uwierzytelniania węzłów. 
+
 
 W przypadku autonomicznych klastrów systemu Windows Server w przypadku systemu Windows Server 2012 R2 i Windows Active Directory, zaleca się używać zabezpieczeń Windows za pomocą kont usługi zarządzanych przez grupę. W przeciwnym razie za pomocą Windows zabezpieczenia konta Windows.
 

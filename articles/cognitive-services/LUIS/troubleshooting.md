@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: diberry
-ms.openlocfilehash: e1bf51697425cca5074b5801c2286c7449132a17
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 71fb289f03467147acb2ef254ab87a2c753bc75c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330917"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416551"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -248,7 +248,7 @@ Jeśli używasz usługi Azure Bot Service i problemu jest to, że **testu w czat
 
 #### <a name="resolve-issue-while-debugging-on-local-machine-with-bot-framework"></a>Podczas debugowania na komputerze lokalnym przy użyciu platformy Bot Framework, należy rozwiązać problem. 
 
-Aby dowiedzieć się więcej na temat debugowania lokalnego robota, zobacz [debugowania robota](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
+Aby dowiedzieć się więcej na temat debugowania lokalnego robota, zobacz [debugowania robota](https://docs.microsoft.com/azure/bot-service/bot-service-debug-bot?view=azure-bot-service-4.0).
 
 ## <a name="integrating-luis"></a>Integrowanie usługi LUIS
 

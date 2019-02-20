@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: c161a2fd8d1be670435d2b1a749749cea7d82bcf
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 2c35bc4026c81cbc8b95225e688a3922bc320554
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268451"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416653"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Przykłady zapytań dzienników w usłudze Azure Monitor
 W tym artykule przedstawiono różne przykłady [zapytania](log-query-overview.md) przy użyciu [język zapytania Kusto](/azure/kusto/query/) pobrać różnego rodzaju dane dzienników z usługi Azure Monitor. Różne metody są używane do konsolidacji i analizowania danych, aby można było używać tych przykładów, aby zidentyfikować różne strategie, których można użyć do własnych wymagań.  
@@ -38,7 +38,7 @@ Event
 ```
 
 ### <a name="search-events-related-to-unmarshaling"></a>Wyszukaj zdarzenia związane z unmarshaling
-Wyszukaj tabele **zdarzeń** i **SecurityEvents** dla rekordów tego wzmiankę _unmashaling_.
+Wyszukaj tabele **zdarzeń** i **SecurityEvents** dla rekordów tego wzmiankę _unmarshaling_.
 
 ```Kusto
 search in (Event, SecurityEvent) "unmarshaling"
