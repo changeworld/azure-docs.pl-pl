@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7ae3886db6391836cd8d281e44c95c5253cc8dd5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323799"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985478"
 ---
 Każdy komputer kliencki, który połączysz z siecią wirtualną przy użyciu połączenia punkt-lokacja, musi mieć zainstalowany certyfikat klienta. Należy wygenerować go na podstawie certyfikatu głównego i zainstalować na każdym komputerze klienckim. Jeśli nie zainstalujesz prawidłowego certyfikatu klienta, uwierzytelnianie zakończy się niepowodzeniem, gdy klient spróbuje nawiązać połączenie z siecią wirtualną.
 
@@ -31,4 +31,8 @@ Certyfikaty klienta można wygenerować, posługując się następującymi metod
   * [Instrukcje dotyczące narzędzia MakeCert](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Użyj narzędzia MakeCert, jeśli nie masz dostępu do komputera z systemem Windows 10 w celu wygenerowania certyfikatów. Mimo iż narzędzie MakeCert jest przestarzałe, przy jego użyciu można nadal generować certyfikaty. Możesz zainstalować wygenerowane certyfikaty na dowolnym obsługiwanym kliencie typu punkt-lokacja.
   * [Instrukcje dotyczące systemu Linux](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  Gdy certyfikat klienta jest generowany na podstawie certyfikatu głównego z podpisem własnym, jest on automatycznie instalowany na komputerze użytym do jego wygenerowania. Aby zainstalować certyfikat klienta na innym komputerze klienckim, wyeksportuj go jako plik pfx razem z całym łańcuchem certyfikatów. Spowoduje to utworzenie pliku pfx zawierającego informacje o certyfikacie głównym, który jest wymagany do uwierzytelnienia klienta. Aby uzyskać instrukcje dotyczące eksportowania certyfikatu, zobacz [Generowanie i eksportowanie certyfikatów dla połączeń punkt-lokacja przy użyciu programu PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).
+  Gdy certyfikat klienta jest generowany na podstawie certyfikatu głównego z podpisem własnym, jest on automatycznie instalowany na komputerze użytym do jego wygenerowania. Aby zainstalować certyfikat klienta na innym komputerze klienckim, wyeksportuj go jako plik pfx razem z całym łańcuchem certyfikatów. Spowoduje to utworzenie pliku pfx zawierającego informacje o certyfikacie głównym, który jest wymagany do uwierzytelnienia klienta. 
+
+**Aby wyeksportować certyfikat**
+
+Aby uzyskać instrukcje dotyczące eksportowania certyfikatu, zobacz [Generowanie i eksportowanie certyfikatów dla połączeń punkt-lokacja przy użyciu programu PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).

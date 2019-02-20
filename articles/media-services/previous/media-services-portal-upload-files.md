@@ -4,7 +4,7 @@ description: Ten samouczek przeprowadzi Cię przez kroki przekazywania plików n
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3ad3dcea-95be-4711-9aae-a455a32434f6
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/07/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 36e1f797263e367a73fde140d979243f96e83948
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7730d15b0d3be9c0ffc7c7fbafe40fece713afbd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33780555"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976796"
 ---
-# <a name="upload-files-to-a-media-services-account-in-the-azure-portal"></a>Przekazywanie plików na konto usługi Media Services w witrynie Azure Portal
+# <a name="upload-files-to-a-media-services-account-in-the-azure-portal-legacy"></a>Przekazywanie plików na konto usługi Media Services w witrynie Azure Portal (starsza wersja)
+
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-upload-files.md)
 > * [.NET](media-services-dotnet-upload-files.md)
@@ -63,6 +64,6 @@ Po zakończeniu przekazywania nowy element zawartości będzie widoczny w okienk
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się, jak [zakodować przekazane elementy zawartości](media-services-portal-encode.md).
 
-* Możesz także używać usługi Azure Functions do wyzwalania zadania kodowania, gdy plik trafi do skonfigurowanego kontenera. Aby uzyskać więcej informacji, zobacz przykład w temacie [Media Services: Integrating Azure Media Services with Azure Functions and Logic Apps](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/) (Media Services: Integrowanie usługi Azure Media Services z usługami Azure Functions i Logic Apps).
+* Możesz także używać usługi Azure Functions do wyzwalania zadania kodowania, gdy plik trafi do skonfigurowanego kontenera. Aby uzyskać więcej informacji, zobacz przykład w temacie [Media Services: Integrating Azure Media Services with Azure Functions and Logic Apps (Media Services: Integrowanie usługi Azure Media Services z usługami Azure Functions i Logic Apps)](https://azure.microsoft.com/resources/samples/media-services-dotnet-functions-integration/).
 
 

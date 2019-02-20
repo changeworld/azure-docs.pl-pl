@@ -1,34 +1,34 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją CS Stars | Microsoft Docs'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją CS Stars.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją SmartFile | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją SmartFile.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: 5704d151-afb8-40a4-b286-8bacd4f279ee
+ms.assetid: 25610bd7-8943-4e04-8cbb-5e90ff3c054d
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6433a5c814f2d32fe0d40b7f28e6c8da474456
+ms.openlocfilehash: f3a68a651ec62305f396dff07526d071bae82cc0
 ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186118"
+ms.locfileid: "56170243"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją CS Stars
+# <a name="tutorial-azure-active-directory-integration-with-smartfile"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją SmartFile
 
-Z tego samouczka dowiesz się, jak zintegrować aplikację CS Stars z usługą Azure Active Directory (Azure AD).
-Integracja aplikacji CS Stars z usługą Azure AD zapewnia następujące korzyści:
+Z tego samouczka dowiesz się, jak zintegrować aplikację SmartFile z usługą Azure Active Directory (Azure AD).
+Integrowanie aplikacji SmartFile z usługą Azure AD zapewnia następujące korzyści:
 
-* Możesz kontrolować za pomocą usługi Azure AD, kto ma dostęp do aplikacji CS Stars.
-* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji CS Stars (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji SmartFile.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie się do aplikacji SmartFile (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
 * Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
 Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,22 +36,22 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD z aplikacją CS Stars, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją SmartFile, potrzebne są następujące elementy:
 
 * Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
-* Subskrypcja aplikacji CS Stars z obsługą logowania jednokrotnego
+* Subskrypcja aplikacji SmartFile z włączoną obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
 W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-* Aplikacja CS Stars obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
+* Aplikacja SmartFile obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-## <a name="adding-cs-stars-from-the-gallery"></a>Dodawanie aplikacji CS Stars z galerii
+## <a name="adding-smartfile-from-the-gallery"></a>Dodawanie aplikacji SmartFile z galerii
 
-Aby skonfigurować integrację aplikacji CS Stars z usługą Azure AD, należy dodać aplikację CS Stars z galerii do swojej listy zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację aplikacji SmartFile z usługą Azure AD, musisz dodać aplikację SmartFile z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać aplikację CS Stars z galerii, wykonaj następujące kroki:**
+**Aby dodać aplikację SmartFile z galerii, wykonaj następujące kroki:**
 
 1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
@@ -65,31 +65,31 @@ Aby skonfigurować integrację aplikacji CS Stars z usługą Azure AD, należy d
 
     ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **CS Stars**, wybierz pozycję **CS Stars** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **SmartFile**, wybierz pozycję **SmartFile** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-     ![Aplikacja CS Stars na liście wyników](common/search-new-app.png)
+     ![Aplikacja SmartFile na liście wyników](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją CS Stars, korzystając z danych użytkownika testowego **Britta Simon**.
-Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji CS Stars.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją SmartFile, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem aplikacji SmartFile.
 
-Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją CS Stars, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją SmartFile, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w aplikacji CS Stars](#configure-cs-stars-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji SmartFile](#configure-smartfile-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
-5. **[Tworzenie użytkownika testowego aplikacji CS Stars](#create-cs-stars-test-user)** — aby mieć w aplikacji CS Stars odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji SmartFile](#create-smartfile-test-user)** — aby udostępnić w aplikacji SmartFile odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
 W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji CS Stars, wykonaj następujące kroki:
+Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją SmartFile, wykonaj następujące kroki:
 
-1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **CS Stars** wybierz pozycję **Logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **SmartFile** wybierz pozycję **Logowanie jednokrotne**.
 
     ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
@@ -103,20 +103,20 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji CS Stars, 
 
 4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji CS Stars](common/sp-identifier.png)
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji SmartFile](common/sp-identifier.png)
 
-    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.csstars.com/enterprise/default.cmdx?ssoclient=<uniqueid>`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://<SUBDOMAIN>.smartfile.com/ftp/login`
 
-    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `https://<subdomain>.csstars.com/enterprise/`
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `<SUBDOMAIN>.smartfile.com`
 
     > [!NOTE]
-    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. W celu uzyskania tych wartości skontaktuj się z [zespołem pomocy technicznej klienta aplikacji CS Stars](https://www.marshclearsight.com/support/). Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji SmartFile](https://support.lumanox.com/hc/sections/360003453152-SAML-Authentication), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
+5. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
     ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-6. W sekcji **Konfigurowanie aplikacji CS Stars** skopiuj odpowiednie adresy URL zgodnie z wymaganiami.
+6. W sekcji **Konfigurowanie aplikacji SmartFile** skopiuj odpowiednie adresy URL zgodnie ze swoimi wymaganiami.
 
     ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
@@ -126,9 +126,9 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji CS Stars, 
 
     d. Adres URL wylogowywania
 
-### <a name="configure-cs-stars-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w usłudze CS Stars
+### <a name="configure-smartfile-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji SmartFile
 
-Aby skonfigurować logowanie jednokrotne po stronie aplikacji **CS Stars**, należy wysłać **adres URL metadanych federacyjnych aplikacji** do [zespołu pomocy technicznej aplikacji CS Stars](https://www.marshclearsight.com/support/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **SmartFile**, musisz wysłać pobrany **kod XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji SmartFile](https://support.lumanox.com/hc/sections/360003453152-SAML-Authentication). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
@@ -157,15 +157,15 @@ W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie B
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji CS Stars.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji SmartFile.
 
-1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **CS Stars**.
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **SmartFile**.
 
     ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-2. Na liście aplikacji wybierz pozycję **CS Stars**.
+2. Na liście aplikacji wybierz pozycję **SmartFile**.
 
-    ![Link do aplikacji CS Stars na liście aplikacji](common/all-applications.png)
+    ![Link do aplikacji SmartFile na liście aplikacji](common/all-applications.png)
 
 3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
@@ -181,15 +181,15 @@ W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z
 
 7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="create-cs-stars-test-user"></a>Tworzenie użytkownika testowego aplikacji CS Stars
+### <a name="create-smartfile-test-user"></a>Tworzenie użytkownika testowego aplikacji SmartFile
 
-W tej sekcji utworzysz użytkownika Britta Simon w aplikacji CS Stars. Współpracuj z  [zespołem pomocy technicznej aplikacji CS Stars](https://www.marshclearsight.com/support/), aby dodać użytkowników na platformie CS Stars. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
+W tej sekcji utworzysz w aplikacji SmartFile użytkownika o nazwie Britta Simon. We współpracy z [zespołem pomocy technicznej aplikacji SmartFile](https://support.lumanox.com/hc/sections/360003453152-SAML-Authentication) możesz dodać użytkowników do platformy aplikacji SmartFile. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
 W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-Po kliknięciu kafelka CS Stars w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji CS Stars, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
+Po kliknięciu kafelka SmartFile na panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji SmartFile, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 

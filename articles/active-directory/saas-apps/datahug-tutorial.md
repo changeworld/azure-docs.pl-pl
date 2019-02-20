@@ -1,265 +1,240 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory za pomocą Datahug | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i Datahug.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją Datahug | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory a aplikacją Datahug.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 5c0dc1ea-7ff4-4554-b60b-0f2fa9f5abaa
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 04/18/2017
+ms.topic: tutorial
+ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 6f1ba5ed3da451200c944145376a0f8a3b550e71
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: MT
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 41f625846a53d4e1833820e9c2021da58a139701
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162875"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56170273"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Datahug
+# <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją Datahug
 
-W tym samouczku dowiesz się, jak zintegrować Datahug w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację Datahug z usługą Azure Active Directory (Azure AD).
+Integrowanie aplikacji Datahug z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie Datahug z usługą Azure AD zapewnia następujące korzyści:
+* W usłudze Azure AD możesz kontrolować, kto ma dostęp do aplikacji Datahug.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji Datahug (logowanie jednokrotne) przy użyciu ich kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować w usłudze Azure AD, kto ma dostęp do Datahug
-- Umożliwia użytkownikom automatyczne pobieranie zalogowanych do Datahug (logowanie jednokrotne) przy użyciu konta usługi Azure AD
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz. [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą Datahug, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją Datahug, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- Datahug logowania jednokrotnego włączonych subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować czynności opisane w tym samouczku, należy postępować zgodnie z następującymi zaleceniami:
-
-- Nie używaj środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowiska próbnego usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji Datahug z włączoną obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
-1. Dodawanie Datahug z galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-## <a name="adding-datahug-from-the-gallery"></a>Dodawanie Datahug z galerii
-Aby skonfigurować integrację Datahug w usłudze Azure AD, należy dodać Datahug z galerii z listą zarządzanych aplikacji SaaS.
+* Aplikacja Datahug obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług** i **dostawcę tożsamości**
 
-**Aby dodać Datahug z galerii, wykonaj następujące czynności:**
+## <a name="adding-datahug-from-the-gallery"></a>Dodawanie aplikacji Datahug z galerii
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+Aby skonfigurować integrację aplikacji Datahug z usługą Azure AD, musisz dodać tę aplikację z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-    ![Usługa Active Directory][1]
+**Aby dodać aplikację Datahug z galerii, wykonaj następujące kroki:**
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Aplikacje][2]
-    
-1. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-    ![Aplikacje][3]
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-1. W polu wyszukiwania wpisz **Datahug**.
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/datahug-tutorial/tutorial_datahug_search.png)
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-1. W panelu wyników wybierz **Datahug**, a następnie kliknij przycisk **Dodaj** przycisk, aby dodać aplikację.
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/datahug-tutorial/tutorial_datahug_addfromgallery.png)
+4. W polu wyszukiwania wpisz **Datahug**, wybierz pozycję **Datahug** z panelu wyników, a następnie kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
-W tej sekcji Konfigurowanie i testowanie usługi Azure AD logowanie jednokrotne za pomocą Datahug w oparciu o użytkownika testu o nazwie "Britta Simon."
+     ![Aplikacja Datahug na liście wyników](common/search-new-app.png)
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w Datahug do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w Datahug musi można ustanowić.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w Datahug.
+W tej sekcji skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD z aplikacją Datahug, korzystając z danych użytkownika testowego o nazwie **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD a powiązanym użytkownikiem aplikacji Datahug.
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą Datahug, należy wykonać poniższe bloki konstrukcyjne:
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w z aplikacją Datahug, należy wykonać czynności opisane w poniższych blokach konstrukcyjnych:
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego Datahug](#creating-a-datahug-test-user)**  — aby odpowiednikiem Britta Simon w Datahug połączonego z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji Datahug](#configure-datahug-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego w aplikacji Datahug](#create-datahug-test-user)** — aby udostępnić w aplikacji Datahug odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji Datahug.
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z Datahug, wykonaj następujące czynności:**
+Aby skonfigurować logowanie jednokrotne usługi Azure AD z aplikacją Datahug, wykonaj następujące kroki:
 
-1. W witrynie Azure portal na **Datahug** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **Datahug** wybierz pozycję **Logowanie jednokrotne**.
 
-    ![Konfigurowanie logowania jednokrotnego][4]
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Konfigurowanie logowania jednokrotnego](./media/datahug-tutorial/tutorial_datahug_samlbase.png)
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-1. Na **Datahug domena i adresy URL** sekcji, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/datahug-tutorial/tutorial_datahug_ur1.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-    a. W polu tekstowym **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://apps.datahug.com/identity/<uniqueID>`
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
+
+4. Jeśli chcesz skonfigurować aplikację w trybie inicjowanym przez **dostawcę tożsamości**, w sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące kroki:
+
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Datahug](common/idp-intiated.png)
+
+    a. W polu **Identyfikator** wpisz adres URL, korzystając z następującego wzorca: `https://apps.datahug.com/identity/<uniqueID>`
 
     b. W polu tekstowym **Adres URL odpowiedzi** wpisz adres URL, korzystając z następującego wzorca: `https://apps.datahug.com/identity/<uniqueID>/acs`
 
-1. Sprawdź **Pokaż zaawansowane ustawienia adresu URL**. Jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
+5. Kliknij przycisk **Ustaw dodatkowe adresy URL** i wykonaj następujący krok, jeśli chcesz skonfigurować aplikację w trybie inicjowania przez **dostawcę usług**:
 
-    ![Konfigurowanie logowania jednokrotnego](./media/datahug-tutorial/tutorial_datahug_url2.png)
+    ![Informacje o domenie i adresach URL logowania jednokrotnego aplikacji Datahug](common/metadata-upload-additional-signon.png)
 
-    W **adres URL logowania** pole tekstowe, wpisz adres URL jako: `https://apps.datahug.com/`
-     
-    > [!NOTE] 
-    > Te wartości nie są rzeczywiste. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. W tym miejscu zalecamy przy użyciu unikatowej wartości ciągu w identyfikatorze i adres URL odpowiedzi. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Datahug](http://datahug.com/about/contact-us/) do uzyskania tych wartości. 
+    W polu tekstowym **Adres URL logowania** wpisz adres URL: `https://apps.datahug.com/`
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    > [!NOTE]
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Skontaktuj się z [zespołem obsługi klienta aplikacji Datahug](http://datahug.com/about/contact-us/), aby uzyskać te wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-    ![Konfigurowanie logowania jednokrotnego](./media/datahug-tutorial/tutorial_datahug_certificate.png) 
+6. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij link **Pobierz**, aby pobrać **kod XML metadanych federacji** na podstawie podanych opcji zgodnie z wymaganiami i zapisać go na komputerze.
 
-1.  Sprawdź **"Pokaż zaawansowane ustawienia podpisywania certyfikatów"** i wykonaj następujące czynności:
+    ![Link do pobierania certyfikatu](common/metadataxml.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/datahug-tutorial/tutorial_datahug_cert.png)
+7. W sekcji **Certyfikat podpisywania SAML** kliknij przycisk **Edytuj**, aby otworzyć okno dialogowe **Certyfikat podpisywania SAML** i wykonać następujące czynności.
 
-    a. W **opcja podpisywania**, wybierz opcję **potwierdzenie SAML logowania**.
+    ![Edytowanie certyfikatu podpisywania SAML](common/edit-certificate.png)
+
+    a. Wybierz pozycję **Podpisz asercję SAML** w obszarze **Opcja podpisywania**.
+
+    b. Wybierz pozycję **SHA-1** w obszarze **Algorytm podpisywania**.
     
-    b. W **algorytmu podpisywania**, wybierz opcję **SHA1**.
- 
-1. Kliknij przycisk **Save** (Zapisz).
+    d. Kliknij pozycję **Zapisz**
 
-    ![Konfigurowanie logowania jednokrotnego](./media/datahug-tutorial/tutorial_general_400.png)
-    
-1. Na **konfiguracji Datahug** , kliknij przycisk **skonfigurować Datahug** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **SAML identyfikator jednostki** i **SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
+    ![Opcja podpisywania Communifire](./media/datahug-tutorial/tutorial_datahug_signingoption.png)
 
-    ![Konfigurowanie logowania jednokrotnego](./media/datahug-tutorial/tutorial_datahug_configure.png) 
+8. W sekcji **Konfigurowanie aplikacji Datahug** skopiuj odpowiednie adresy URL zgodnie ze swoimi wymaganiami.
 
-1. Aby skonfigurować logowanie jednokrotne na **Datahug** stronie, musisz wysłać pobrany **XML metadanych**, **identyfikator jednostki SAML** i **SAML pojedynczego logowania jednokrotnego adres URL usługi**  do [obsługi Datahug](http://datahug.com/about/contact-us/). Mogą skonfigurować tę aplikację do zostały ustawione prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+    ![Kopiowanie adresów URL konfiguracji](common/copy-configuration-urls.png)
 
-> [!TIP]
-> Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Adres URL logowania
 
-### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+    b. Identyfikator usługi Azure AD
+
+    d. Adres URL wylogowywania
+
+### <a name="configure-datahug-single-sign-on"></a>Konfigurowanie logowania jednokrotnego aplikacji Datahug
+
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **Datahug**, musisz wysłać pobrany **kod XML metadanych federacji** i odpowiednie adresy URL skopiowane z witryny Azure Portal [zespołowi pomocy technicznej aplikacji Datahug](http://datahug.com/about/contact-us/). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
+
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
+
 W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-![Utwórz użytkownika usługi Azure AD][100]
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-1. W **witryny Azure portal**, w okienku nawigacji po lewej stronie kliknij **usługi Azure Active Directory** ikony.
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/datahug-tutorial/create_aaduser_01.png) 
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup** i kliknij przycisk **wszyscy użytkownicy**.
-    
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/datahug-tutorial/create_aaduser_02.png) 
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** u góry okna dialogowego.
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/datahug-tutorial/create_aaduser_03.png) 
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-1. Na **użytkownika** okna dialogowego strony, wykonaj następujące czynności:
- 
-    ![Tworzenie użytkownika testowego usługi Azure AD](./media/datahug-tutorial/create_aaduser_04.png) 
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    a. W **nazwa** polu tekstowym wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** polu tekstowym wpisz **adres e-mail** z BrittaSimon.
-
-    c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
- 
-### <a name="creating-a-datahug-test-user"></a>Tworzenie użytkownika testowego Datahug
 
-Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Datahug, musi być obsługiwana w Datahug.  
-Gdy Datahug, inicjowanie obsługi to zadanie ręczne.
+### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji Datahug.
+
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **Datahug**.
+
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
+
+2. Na liście aplikacji wybierz pozycję **Datahug**.
+
+    ![Link aplikacji Datahug na liście aplikacji](common/all-applications.png)
+
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
+
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
+
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
+
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
+
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
+
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
+
+### <a name="create-datahug-test-user"></a>Tworzenie użytkownika testowego aplikacji Datahug
+
+Aby umożliwić użytkownikom usługi Azure AD logowanie się w aplikacji Datahug, należy ich aprowizować w tej aplikacji.  
+W aplikacji Datahug aprowizowanie jest zadaniem ręcznym.
 
 **Aby aprowizować konto użytkownika, wykonaj następujące kroki:**
 
-1. Zaloguj się do witryny firmy Datahug jako administrator.
+1. Zaloguj się do firmowej witryny aplikacji Datahug jako administrator.
 
-1. Umieść kursor nad **koło zębate** w prawym górnym rogu i kliknij **ustawienia**
+2. Umieść kursor nad **kołem zębatym** w prawym górnym rogu i kliknij pozycję **Settings (Ustawienia)**
    
-   ![Dodawanie pracownika](./media/datahug-tutorial/1.png)
+    ![Dodawanie pracownika](./media/datahug-tutorial/1.png)
 
-1. Wybierz **osób** i kliknij przycisk **Add Users** kartę
+3. Wybierz pozycję **People (Osoby)** i kliknij kartę **Add Users (Dodaj użytkowników)**
 
     ![Dodawanie pracownika](./media/datahug-tutorial/2.png)
 
-1. Wpisz adres e-mail osoby, czy chcesz utworzyć konto, a następnie kliknij przycisk **Dodaj**.
+4. Wpisz adres e-mail osoby, dla której chcesz utworzyć konto, a następnie kliknij przycisk **Add (Dodaj)**.
 
     ![Dodawanie pracownika](./media/datahug-tutorial/3.png)
 
     > [!NOTE] 
-    > Możesz wysłać wiadomość e-mail dotycząca rejestracji użytkownika, wybierając **wysyłania powitalnej wiadomości e-mail** pola wyboru.  
-    > W przypadku tworzenia konta usługi Salesforce nie będą wysyłane powitalnej wiadomości e-mail.
+    > Możesz wysłać użytkownikowi wiadomość e-mail dotycząca rejestracji, zaznaczając pole wyboru **Send welcome email (Wyślij powitalną wiadomość e-mail)**.  
+    > Jeśli tworzysz konto usługi Salesforce, nie wysyłaj powitalnej wiadomości e-mail.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Datahug.
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-![Przypisz użytkownika][200] 
-
-**Aby przypisać Britta Simon Datahug, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
-
-1. Na liście aplikacji wybierz **Datahug**.
-
-    ![Konfigurowanie logowania jednokrotnego](./media/datahug-tutorial/tutorial_datahug_app.png) 
-
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
-
-    ![Przypisz użytkownika][202] 
-
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
-
-    ![Przypisz użytkownika][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
-### <a name="testing-single-sign-on"></a>Testowanie logowania jednokrotnego
-
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
-Po kliknięciu kafelka Datahug w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji Datahug. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Po kliknięciu kafelka Datahug w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji Datahug, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
 ## <a name="additional-resources"></a>Dodatkowe zasoby
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/datahug-tutorial/tutorial_general_01.png
-[2]: ./media/datahug-tutorial/tutorial_general_02.png
-[3]: ./media/datahug-tutorial/tutorial_general_03.png
-[4]: ./media/datahug-tutorial/tutorial_general_04.png
-
-[100]: ./media/datahug-tutorial/tutorial_general_100.png
-
-[200]: ./media/datahug-tutorial/tutorial_general_200.png
-[201]: ./media/datahug-tutorial/tutorial_general_201.png
-[202]: ./media/datahug-tutorial/tutorial_general_202.png
-[203]: ./media/datahug-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

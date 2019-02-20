@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 6bb075857d67885d968b495cc8d545af9994eaf0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c91292bff22a76e4c15f031094809e20fdc43031
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169318"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175731"
 ---
 # <a name="virtual-network-peering"></a>Wirtualne sieci równorzędne
 
@@ -78,7 +78,7 @@ Informacje na ten temat zawiera również artykuł [Troubleshooter for virtual n
 ## <a name="requirements-and-constraints"></a>Wymagania i ograniczenia
 
 Sieci wirtualne globalnie połączone za pomocą sieci równorzędnych mają następujące ograniczenia:
-- Sieci wirtualne mogą istnieć w dowolnym regionie chmury publicznej platformy Azure, ale nie w krajowych chmurach platformy Azure.
+- Sieci wirtualne mogą istnieć w dowolnym regionie chmury publicznej platformy Azure i w regionach chmury Azure w Chinach, ale nie w chmurach Azure Government.
 - Zasoby w jednej sieci wirtualnej nie mogą komunikować się z adresem IP frontonu wewnętrznego modułu równoważenia obciążenia platformy Azure w sieci wirtualnej globalnie połączonej za pomocą sieci równorzędnych. Moduł obciążenia równoważenia i zasoby, które się z nim komunikują, muszą być w tym samym regionie.
 - Nie można używać zdalnych bram ani zezwalać na tranzyt bramy. Aby używać zdalnych bram lub zezwalać na tranzyt bramy, równorzędne sieci wirtualne muszą być w tym samym regionie.
 

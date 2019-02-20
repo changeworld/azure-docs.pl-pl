@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 49598eb8579e20dd20ca63d11529ba106a510102
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71ddf1d70953b721911a7315ab6875dd41a9a4db
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55170525"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894177"
 ---
 # <a name="tutorial-stream-live-with-media-services-v3-using-net"></a>Samouczek: Transmisja strumieniowa na żywo z usługi Media Services w wersji 3 przy użyciu platformy .NET
 
@@ -79,7 +79,7 @@ Aby rozpocząć korzystanie z interfejsów API usługi Media Services na platfor
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-core-tutorials/NETCore/Live/MediaV3LiveApp/Program.cs#CreateMediaServicesClient)]
 
-### <a name="create-a-live-event"></a>Tworzenie wydarzenia na żywo
+### <a name="create-a-live-event"></a>Utwórz wydarzenie na żywo
 
 W tej sekcji przedstawiono sposób tworzenia **przekazywanego** typu wydarzenia na żywo (o wartości parametru LiveEventEncodingType ustawionej na None). Jeśli chcesz utworzyć wydarzenie na żywo obsługujące kodowanie na żywo, musisz nadać parametrowi LiveEventEncodingType wartość **Standard**. 
 
@@ -166,7 +166,7 @@ Poniższy kod pokazuje, jak wyczyścić konto ze wszystkich wydarzeń na żywo:
 
 ## <a name="watch-the-event"></a>Oglądanie wydarzenia
 
-Aby oglądać wydarzenie, skopiuj adres URL przesyłania strumieniowego, który uzyskano po uruchomieniu kodu opisanego w sekcji [Tworzenie lokatora przesyłania strumieniowego](#create-a-streaminglocator), i użyj wybranego odtwarzacza. Możesz przetestować strumień za pomocą usługi [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) pod adresem http://ampdemo.azureedge.net. 
+Aby oglądać wydarzenie, skopiuj adres URL przesyłania strumieniowego, który uzyskano po uruchomieniu kodu opisanego w sekcji Tworzenie lokalizatora przesyłania strumieniowego, i użyj wybranego odtwarzacza. Możesz przetestować strumień za pomocą usługi [Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/index.html) pod adresem http://ampdemo.azureedge.net. 
 
 Po zatrzymaniu wydarzenia na żywo wydarzenie jest automatycznie konwertowane na zawartość na żądanie. Nawet po zatrzymaniu i usunięciu wydarzenia użytkownicy będą mogli przesyłać strumieniowo zarchiwizowaną zawartość wideo na żądanie tak długo, jak zasoby nie zostaną usunięte. Nie można usunąć elementu zawartości, jeśli jest on używany przez wydarzenie. Najpierw należy usunąć wydarzenie. 
 

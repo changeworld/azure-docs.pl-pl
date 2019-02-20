@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 15ddb29f090ca8dc14befc93e3377c181038b554
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 627275855f231f5a4336075df3864448325127f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816164"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211873"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Palo Alto Networks Captive Portal
 
@@ -81,7 +82,7 @@ Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z apli
 2. **[Konfigurowanie logowania jednokrotnego w aplikacji Palo Alto Networks Captive Portal](#configure-palo-alto-networks-captive-portal-single-sign-on)**: skonfiguruj ustawienia logowania jednokrotnego w aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**: przetestuj logowanie jednokrotne w usłudze Azure AD przy użyciu użytkownika *Britta Simon*.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**: skonfiguruj użytkownika Britta Simon w celu korzystania z logowania jednokrotnego w usłudze Azure AD.
-5. **[Tworzenie użytkownika testowego aplikacji Palo Alto Networks Captive Portal](#create-palo-alto-networks-captive-portal-test-user)**: utwórz w aplikacji Palo Alto Networks Captive Portal odpowiednik użytkownika *Britta Simon*, który jest połączony z użytkownikiem usługi Azure AD.
+5. **Tworzenie użytkownika testowego w aplikacji Palo Alto Networks Captive Portal**: utwórz w aplikacji Palo Alto Networks Captive Portal odpowiednik użytkownika *Britta Simon*, który jest połączony z użytkownikiem usługi Azure AD.
 6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**: Sprawdź, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD

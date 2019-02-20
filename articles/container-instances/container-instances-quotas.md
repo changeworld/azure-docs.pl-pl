@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 12/17/2018
+ms.date: 02/08/2019
 ms.author: danlep
-ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 35e846aa5954e3714d301c9c75cf42b31961fdfe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075502"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160581"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Limity przydziałów i dostępność regionów dla usługi Azure Container Instances
 
@@ -28,13 +28,13 @@ Usługa Azure Container Instances jest dostępna w następujących regionach z o
 
 | Lokalizacja | System operacyjny | Procesor CPU | Pamięć (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada Środkowa | Linux | 4 | 16 |
+| Kanada Środkowa, Środkowe stany USA, Wschodnie stany USA 2 | Linux | 4 | 16 |
 | Wschodnie stany USA, Europa Północna, Europa Zachodnia, Zachodnie stany USA, Zachodnie stany USA 2 | Linux | 4 | 14 |
 | Japonia Wschodnia | Linux | 2 | 8 |
-| Australia Wschodnia, Wschodnie stany USA 2, Azja Południowo-Wschodnia | Linux | 2 | 7 |
+| Australia Wschodnia, Azja Południowo-Wschodnia | Linux | 2 | 7 |
 | Indie Środkowe, Azja Wschodnia, Północno-środkowe stany USA, Południowo-środkowe stany USA, Indie Południowe | Linux | 2 | 3,5 |
 | Wschodnie stany USA, Europa Zachodnia, Zachodnie stany USA | Windows | 4 | 14 |
-| Australia Wschodnia, Kanada Środkowa, Indie Środkowe, Azja Wschodnia, Wschodnie stany USA 2, Japonia Wschodnia, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Indie Południowe, Azja Południowo-Wschodnia, Zachodnie stany USA 2 | Windows | 2 | 3,5 |
+| Australia Wschodnia, Kanada Środkowa, Indie Środkowe, Środkowe stany USA, Azja Wschodnia, Wschodnie stany USA 2, Japonia Wschodnia, Północno-środkowe stany USA, Europa Północna, Południowo-środkowe stany USA, Indie Południowe, Azja Południowo-Wschodnia, Zachodnie stany USA 2 | Windows | 2 | 3,5 |
 
 Wystąpienia kontenerów utworzone w ramach tych limitów zasobów podlegają dostępności w obrębie regionu wdrożenia. Gdy region jest mocno obciążony, wdrażanie wystąpień może zakończyć się niepowodzeniem. Aby uniknąć niepowodzenia wdrażania, spróbuj wdrożyć wystąpienia z niższymi ustawieniami procesora CPU i pamięci lub spróbuj przeprowadzić wdrożenie w późniejszym terminie.
 

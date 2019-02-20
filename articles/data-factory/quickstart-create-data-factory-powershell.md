@@ -13,74 +13,84 @@ ms.devlang: powershell
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 6c1bc2fc493721d4fe73f14c0cc23de5bbdc25c8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e6db6ad4d2f3dfdf6aa95c0ee2255328de7e4ef
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227288"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996325"
 ---
-# <a name="create-an-azure-data-factory-using-powershell"></a>Tworzenie fabryki danych platformy Azure przy użyciu programu PowerShell 
+# <a name="quickstart-create-an-azure-data-factory-using-powershell"></a>Szybki start: Tworzenie fabryki danych platformy Azure przy użyciu programu PowerShell
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Bieżąca wersja](quickstart-create-data-factory-powershell.md)
 
-Ten samouczek szybki start opisuje sposób używania programu PowerShell w celu utworzenia usługi Azure Data Factory. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark](transform-data-using-spark.md) (Samouczek: przekształcanie danych przy użyciu platformy Spark). 
+Ten samouczek szybki start opisuje sposób używania programu PowerShell w celu utworzenia usługi Azure Data Factory. Potok tworzony w tej fabryce danych **kopiuje** dane z jednego folderu do innego folderu w usłudze Azure Blob Storage. Aby zapoznać się z samouczkiem dotyczącym **przekształcania** danych przy użyciu usługi Azure Data Factory, zobacz [Tutorial: Transform data using Spark](transform-data-using-spark.md) (Samouczek: przekształcanie danych przy użyciu platformy Spark).
 
 > [!NOTE]
 > Ten artykuł nie zawiera szczegółowego wprowadzenia do usługi Data Factory. Aby zapoznać się z wprowadzeniem do usługi Azure Data Factory, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
 
-[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
+[!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)]
 
 ### <a name="azure-powershell"></a>Azure PowerShell
+
 Zainstaluj najnowsze moduły programu Azure PowerShell, wykonując instrukcje podane w temacie [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
 
 #### <a name="log-in-to-powershell"></a>Logowanie do programu PowerShell
 
 1. Uruchom program **PowerShell** na maszynie. Nie zamykaj programu PowerShell aż do końca tego samouczka Szybki start. Jeśli go zamkniesz i otworzysz ponownie, musisz uruchomić te polecenia jeszcze raz.
+
 2. Uruchom poniższe polecenie i wprowadź tę samą nazwę użytkownika platformy Azure oraz hasło, których używasz do logowania się w witrynie Azure Portal:
-       
+
     ```powershell
     Connect-AzureRmAccount
-    ```        
+    ```
+
 3. Uruchom poniższe polecenie, aby wyświetlić wszystkie subskrypcje dla tego konta:
 
     ```powershell
     Get-AzureRmSubscription
     ```
+
 4. Jeśli z kontem jest skojarzonych wiele subskrypcji, uruchom poniższe polecenie, aby wybrać subskrypcję, z którą chcesz pracować. Zastąp parametr **SubscriptionId** identyfikatorem Twojej subskrypcji platformy Azure:
 
     ```powershell
-    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"       
+    Select-AzureRmSubscription -SubscriptionId "<SubscriptionId>"
     ```
 
 ## <a name="create-a-data-factory"></a>Tworzenie fabryki danych
-1. Zdefiniuj zmienną nazwy grupy zasobów, której użyjesz później w poleceniach programu PowerShell. Skopiuj poniższy tekst polecenia do programu PowerShell, podaj nazwę [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w podwójnych cudzysłowach, a następnie uruchom polecenie. Na przykład: `"ADFQuickStartRG"`. 
-   
+
+1. Zdefiniuj zmienną nazwy grupy zasobów, której użyjesz później w poleceniach programu PowerShell. Skopiuj poniższy tekst polecenia do programu PowerShell, podaj nazwę [grupy zasobów platformy Azure](../azure-resource-manager/resource-group-overview.md) w podwójnych cudzysłowach, a następnie uruchom polecenie. Na przykład: `"ADFQuickStartRG"`.
+
      ```powershell
     $resourceGroupName = "ADFQuickStartRG";
     ```
 
     Jeśli grupa zasobów już istnieje, możesz zrezygnować z jej zastąpienia. Przypisz inną wartość do zmiennej `$ResourceGroupName` i ponownie uruchom polecenie.
-2. Aby utworzyć grupę zasobów platformy Azure, uruchom następujące polecenie: 
+
+2. Aby utworzyć grupę zasobów platformy Azure, uruchom następujące polecenie:
 
     ```powershell
     $ResGrp = New-AzureRmResourceGroup $resourceGroupName -location 'East US'
-    ``` 
-    Jeśli grupa zasobów już istnieje, możesz zrezygnować z jej zastąpienia. Przypisz inną wartość do zmiennej `$ResourceGroupName` i ponownie uruchom polecenie. 
+    ```
+
+    Jeśli grupa zasobów już istnieje, możesz zrezygnować z jej zastąpienia. Przypisz inną wartość do zmiennej `$ResourceGroupName` i ponownie uruchom polecenie.
+
 3. Zdefiniuj zmienną nazwy fabryki danych. 
 
     > [!IMPORTANT]
-    >  Zaktualizuj nazwę fabryki danych, aby była unikatowa w skali globalnej, na przykład ADFTutorialFactorySP1127. 
+    >  Zaktualizuj nazwę fabryki danych, aby była unikatowa w skali globalnej, na przykład ADFTutorialFactorySP1127.
 
     ```powershell
     $dataFactoryName = "ADFQuickStartFactory";
     ```
 
-5. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet **Set-AzureRmDataFactoryV2**, używając właściwości Location i ResourceGroupName ze zmiennej $ResGrp: 
-    
-    ```powershell       
-    $DataFactory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName -Location $ResGrp.Location -Name $dataFactoryName 
+4. Aby utworzyć fabrykę danych, uruchom następujące polecenie cmdlet **Set-AzureRmDataFactoryV2**, używając właściwości Location i ResourceGroupName ze zmiennej $ResGrp:
+
+    ```powershell
+    $DataFactory = Set-AzureRmDataFactoryV2 -ResourceGroupName $ResGrp.ResourceGroupName `
+        -Location $ResGrp.Location -Name $dataFactoryName
     ```
 
 Pamiętaj o następujących kwestiach:
@@ -90,14 +100,16 @@ Pamiętaj o następujących kwestiach:
     ```
     The specified Data Factory name 'ADFv2QuickStartDataFactory' is already in use. Data Factory names must be globally unique.
     ```
+
 * Aby utworzyć wystąpienia usługi Data Factory, konto użytkownika używane do logowania się na platformie Azure musi być członkiem roli **współautora** lub **właściciela** albo **administratorem** subskrypcji platformy Azure.
+
 * Aby uzyskać listę regionów platformy Azure, w których obecnie jest dostępna usługa Data Factory, wybierz dane regiony na poniższej stronie, a następnie rozwiń węzeł **Analiza**, aby zlokalizować pozycję **Data Factory**: [Dostępność produktów według regionów](https://azure.microsoft.com/global-infrastructure/services/). Magazyny danych (Azure Storage, Azure SQL Database itp.) i jednostki obliczeniowe (HDInsight itp.) używane przez fabrykę danych mogą mieścić się w innych regionach.
 
 ## <a name="create-a-linked-service"></a>Tworzenie usługi połączonej
 
 Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazynów danych i usług obliczeniowych z fabryką danych. W tym samouczku Szybki start utworzysz połączoną usługę Azure Storage, która będzie używana zarówno jako źródło, jak i ujście magazynu. Połączona usługa ma informacje o połączeniu, których usługa Data Factory używa w środowisku uruchomieniowym do nawiązywania z nią połączenia.
 
-1. W folderze **C:\ADFv2QuickStartPSH** utwórz plik JSON o nazwie **AzureStorageLinkedService.json** z następującą zawartością: (Utwórz folder ADFv2QuickStartPSH, jeśli jeszcze nie istnieje). 
+1. W folderze **C:\ADFv2QuickStartPSH** utwórz plik JSON o nazwie **AzureStorageLinkedService.json** z następującą zawartością: (Utwórz folder ADFv2QuickStartPSH, jeśli jeszcze nie istnieje).
 
     > [!IMPORTANT]
     > Przed zapisaniem pliku zastąp wartości &lt;accountName&gt; i &lt;accountKey&gt; nazwą i kluczem konta usługi Azure Storage.
@@ -116,21 +128,26 @@ Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazyn�
         }
     }
     ```
+
     Jeśli używasz programu Notatnik, wybierz pozycję **Wszystkie pliki** na liście **Zapisz jako typ** w oknie dialogowym **Zapisywanie jako**. W przeciwnym razie do pliku może zostać dodane rozszerzenie `.txt`. Na przykład `AzureStorageLinkedService.json.txt`. W przypadku utworzenia pliku w Eksploratorze plików przed jego otwarciem w programie Notatnik rozszerzenie `.txt` może nie być widoczne, ponieważ opcja **Ukryj rozszerzenia znanych typów plików** jest domyślnie ustawiona. Przed przejściem do następnego kroku usuń rozszerzenie `.txt`.
+
 2. W programie **PowerShell** przejdź do folderu **ADFv2QuickStartPSH**.
 
     ```powershell
     Set-Location 'C:\ADFv2QuickStartPSH'
     ```
-3. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2LinkedService**, aby utworzyć połączoną usługę: **AzureStorageLinkedService**. 
+
+3. Uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2LinkedService**, aby utworzyć połączoną usługę: **AzureStorageLinkedService**.
 
     ```powershell
-    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureStorageLinkedService" -DefinitionFile ".\AzureStorageLinkedService.json"
+    Set-AzureRmDataFactoryV2LinkedService -DataFactoryName $DataFactory.DataFactoryName `
+        -ResourceGroupName $ResGrp.ResourceGroupName -Name "AzureStorageLinkedService" `
+        -DefinitionFile ".\AzureStorageLinkedService.json"
     ```
 
     Oto przykładowe dane wyjściowe:
 
-    ```
+    ```console
     LinkedServiceName : AzureStorageLinkedService
     ResourceGroupName : <resourceGroupName>
     DataFactoryName   : <dataFactoryName>
@@ -138,6 +155,7 @@ Utwórz połączone usługi w fabryce danych w celu połączenia swoich magazyn�
     ```
 
 ## <a name="create-a-dataset"></a>Tworzenie zestawu danych
+
 W tym kroku zdefiniujesz zestaw danych, który reprezentuje dane do skopiowania ze źródła do ujścia. Zestaw danych jest typu **AzureBlob**. Odwołuje się on do **połączonej usługi Azure Storage** utworzonej w poprzednim kroku. Pobiera on parametr w celu skonstruowania właściwości **folderPath**. Dla wejściowego zestawu danych działanie kopiowania w potoku przekazuje ścieżkę wejściową jako wartość tego parametru. Analogicznie dla wyjściowego zestawu danych działanie kopiowania przekazuje ścieżkę wyjściową jako wartość tego parametru. 
 
 1. Utwórz plik JSON o nazwie **BlobDataset.json** w folderze **C:\ADFv2QuickStartPSH** o następującej zawartości:
@@ -166,12 +184,14 @@ W tym kroku zdefiniujesz zestaw danych, który reprezentuje dane do skopiowania 
 2. Aby utworzyć zestaw danych: **BlobDataset**, uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Dataset**.
 
     ```powershell
-    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "BlobDataset" -DefinitionFile ".\BlobDataset.json"
+    Set-AzureRmDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName `
+        -ResourceGroupName $ResGrp.ResourceGroupName -Name "BlobDataset" `
+        -DefinitionFile ".\BlobDataset.json"
     ```
 
     Oto przykładowe dane wyjściowe:
 
-    ```
+    ```console
     DatasetName       : BlobDataset
     ResourceGroupName : <resourceGroupname>
     DataFactoryName   : <dataFactoryName>
@@ -180,8 +200,8 @@ W tym kroku zdefiniujesz zestaw danych, który reprezentuje dane do skopiowania 
     ```
 
 ## <a name="create-a-pipeline"></a>Tworzenie potoku
-  
-W niniejszym przewodniku Szybki start tworzysz potok, który zawiera jedno działanie i pobiera dwa parametry — ścieżkę wejściowego obiektu blob i ścieżkę wyjściowego obiektu blob. Wartości tych parametrów są ustawiane w chwili wyzwolenia/uruchomienia potoku. Działanie kopiowania używa tego samego zestawu danych obiektu blob, który został utworzony w poprzednim kroku jako wejście i wyjście. W przypadku użycia zestawu danych jako zestawu danych wejściowych określana jest ścieżka wejściowa. Natomiast w przypadku użycia zestawu danych jako zestawu danych wyjściowych określana jest ścieżka wyjściowa. 
+
+W niniejszym przewodniku Szybki start tworzysz potok, który zawiera jedno działanie i pobiera dwa parametry — ścieżkę wejściowego obiektu blob i ścieżkę wyjściowego obiektu blob. Wartości tych parametrów są ustawiane w chwili wyzwolenia/uruchomienia potoku. Działanie kopiowania używa tego samego zestawu danych obiektu blob, który został utworzony w poprzednim kroku jako wejście i wyjście. W przypadku użycia zestawu danych jako zestawu danych wejściowych określana jest ścieżka wejściowa. Natomiast w przypadku użycia zestawu danych jako zestawu danych wyjściowych określana jest ścieżka wyjściowa.
 
 1. Utwórz plik JSON o nazwie **Adfv2QuickStartPipeline.json** w folderze **C:\Adfv2QuickStartPSH** o następującej zawartości:
 
@@ -236,12 +256,16 @@ W niniejszym przewodniku Szybki start tworzysz potok, który zawiera jedno dzia�
 2. Aby utworzyć potok: **Adfv2QuickStartPipeline** uruchom polecenie cmdlet **Set-AzureRmDataFactoryV2Pipeline**.
 
     ```powershell
-    $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -Name "Adfv2QuickStartPipeline" -DefinitionFile ".\Adfv2QuickStartPipeline.json"
+    $DFPipeLine = Set-AzureRmDataFactoryV2Pipeline `
+        -DataFactoryName $DataFactory.DataFactoryName `
+        -ResourceGroupName $ResGrp.ResourceGroupName `
+        -Name "Adfv2QuickStartPipeline" `
+        -DefinitionFile ".\Adfv2QuickStartPipeline.json"
     ```
 
 ## <a name="create-a-pipeline-run"></a>Tworzenie uruchomienia potoku
 
-W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath** przy użyciu rzeczywistych wartości ścieżki źródła i ujścia obiektu blob. Następnie utworzysz uruchomienie potoku za pomocą tych argumentów. 
+W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath** przy użyciu rzeczywistych wartości ścieżki źródła i ujścia obiektu blob. Następnie utworzysz uruchomienie potoku za pomocą tych argumentów.
 
 1. Utwórz plik JSON o nazwie **PipelineParameters.json** w folderze **C:\ADFv2QuickStartPSH** o następującej zawartości:
 
@@ -254,16 +278,23 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
 2. Uruchom polecenie cmdlet **Invoke-AzureRmDataFactoryV2Pipeline**, aby utworzyć uruchomienie potoku i przekazać wartości parametrów. Polecenie cmdlet zwraca identyfikator uruchomienia potoku w celu monitorowania w przyszłości.
 
     ```powershell
-    $RunId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $DataFactory.DataFactoryName -ResourceGroupName $ResGrp.ResourceGroupName -PipelineName $DFPipeLine.Name -ParameterFile .\PipelineParameters.json
+    $RunId = Invoke-AzureRmDataFactoryV2Pipeline `
+        -DataFactoryName $DataFactory.DataFactoryName `
+        -ResourceGroupName $ResGrp.ResourceGroupName `
+        -PipelineName $DFPipeLine.Name `
+        -ParameterFile .\PipelineParameters.json
     ```
 
 ## <a name="monitor-the-pipeline-run"></a>Monitorowanie działania potoku
 
-1. Uruchom następujący skrypt programu PowerShell, aby stale sprawdzać stan uruchomienia potoku do momentu zakończenia kopiowania danych. Skopiuj/wklej poniższy skrypt w oknie programu PowerShell i naciśnij klawisz ENTER. 
+1. Uruchom następujący skrypt programu PowerShell, aby stale sprawdzać stan uruchomienia potoku do momentu zakończenia kopiowania danych. Skopiuj/wklej poniższy skrypt w oknie programu PowerShell i naciśnij klawisz ENTER.
 
     ```powershell
     while ($True) {
-        $Run = Get-AzureRmDataFactoryV2PipelineRun -ResourceGroupName $ResGrp.ResourceGroupName -DataFactoryName $DataFactory.DataFactoryName -PipelineRunId $RunId
+        $Run = Get-AzureRmDataFactoryV2PipelineRun `
+            -ResourceGroupName $ResGrp.ResourceGroupName `
+            -DataFactoryName $DataFactory.DataFactoryName `
+            -PipelineRunId $RunId
 
         if ($Run) {
             if ($run.Status -ne 'InProgress') {
@@ -271,16 +302,16 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
                 $Run
                 break
             }
-            Write-Output  "Pipeline is running...status: InProgress"
+            Write-Output "Pipeline is running...status: InProgress"
         }
 
         Start-Sleep -Seconds 10
-    }   
+    }
     ```
 
     Oto przykładowe dane wyjściowe uruchomienia potoku:
 
-    ```
+    ```console
     Pipeline is running...status: InProgress
     Pipeline run finished. The status is:  Succeeded
     
@@ -297,15 +328,18 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
     Message           :
     ```
 
-    Jeśli zostanie wyświetlony błąd:
-    ```
+    Może zostać wyświetlony następujący błąd:
+
+    ```console
     Activity CopyFromBlobToBlob failed: Failed to detect region of linked service 'AzureStorage' : 'AzureStorageLinkedService' with error '[Region Resolver] Azure Storage failed to get address for DNS. Warning: System.Net.Sockets.SocketException (0x80004005): No such host is known
     ```
-    wykonaj następujące kroki: 
-    1. W pliku AzureStorageLinkedService.json upewnij się, że nazwa i klucz konta usługi Azure Storage są poprawne. 
-    2. Sprawdź, czy format parametrów połączenia jest poprawny. Właściwości, na przykład AccountName i AccountKey, są oddzielone średnikami (`;`). 
-    3. Jeśli nazwę konta i klucz konta otaczają nawiasy ostrokątne, usuń te nawiasy. 
-    4. Oto przykładowe parametry połączenia: 
+
+    Jeśli zostanie wyświetlony błąd, wykonaj następujące kroki:
+
+    1. W pliku AzureStorageLinkedService.json upewnij się, że nazwa i klucz konta usługi Azure Storage są poprawne.
+    2. Sprawdź, czy format parametrów połączenia jest poprawny. Właściwości, na przykład AccountName i AccountKey, są oddzielone średnikami (`;`).
+    3. Jeśli nazwę konta i klucz konta otaczają nawiasy ostrokątne, usuń te nawiasy.
+    4. Oto przykładowe parametry połączenia:
 
         ```json
         "connectionString": {
@@ -313,10 +347,12 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
             "type": "SecureString"
         }
         ```
-    5. Ponownie utwórz połączoną usługę, wykonując kroki opisane w sekcji [Tworzenie usługi połączonej](#create-a-linked-service). 
-    6. Następnie ponownie uruchom potok, wykonując kroki opisane w sekcji [Tworzenie uruchomienia potoku](#create-a-pipeline-run). 
-    7. Uruchom ponownie polecenie bieżącego monitorowania, aby monitorować nowe uruchomienie potoku. 
-1. Uruchom następujący skrypt, aby pobrać szczegóły uruchomienia działania kopiowania, na przykład rozmiar odczytanych/zapisanych danych.
+
+    5. Ponownie utwórz połączoną usługę, wykonując kroki opisane w sekcji [Tworzenie usługi połączonej](#create-a-linked-service).
+    6. Następnie ponownie uruchom potok, wykonując kroki opisane w sekcji [Tworzenie uruchomienia potoku](#create-a-pipeline-run).
+    7. Uruchom ponownie polecenie bieżącego monitorowania, aby monitorować nowe uruchomienie potoku.
+
+2. Uruchom następujący skrypt, aby pobrać szczegóły uruchomienia działania kopiowania, na przykład rozmiar odczytanych/zapisanych danych.
 
     ```powershell
     Write-Output "Activity run details:"
@@ -331,7 +367,7 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
     ```
 3. Upewnij się, że wyświetlone dane wyjściowe są podobne do następujących przykładowych danych wyjściowych uruchomienia działania:
 
-    ```json
+    ```console
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : SPTestFactory0928
     ActivityName      : CopyFromBlobToBlob
@@ -357,7 +393,8 @@ W tym kroku ustawisz wartości parametrów potoku: **inputPath** i **outputPath*
     "billedDuration": 14
     ```
 
-[!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)] 
+[!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
 ## <a name="next-steps"></a>Następne kroki
-Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-dot-net.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach. 
+
+Potok w tym przykładzie kopiuje dane z jednej lokalizacji do innej lokalizacji w usłudze Azure Blob Storage. Zapoznaj się z [samouczkami](tutorial-copy-data-dot-net.md), aby dowiedzieć się więcej o korzystaniu z usługi Data Factory w dalszych scenariuszach.

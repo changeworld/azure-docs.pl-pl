@@ -4,7 +4,7 @@ description: Ten przewodnik Szybki start przedstawia sposób dołączania komput
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 48a04bbe77a6fe836c282556709e13bb9cd9a337
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e6d2404e6f509c03d2d3965f34d8229de25df4b7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848195"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114625"
 ---
-# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: dołączanie komputerów z systemem Linux do usługi Azure Security Center
+# <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>Szybki start: Dołączanie komputerów z systemem Linux do usługi Azure Security Center
 Po dołączeniu subskrypcji platformy Azure możesz włączyć usługę Security Center dla zasobów z systemem Linux uruchomionych poza platformą Azure, np. lokalnych lub znajdujących się w innych chmurach, aprowizując agenta systemu Linux.
 
 Ten przewodnik Szybki start przedstawia sposób instalacji agenta systemu Linux na komputerze z systemem Linux.

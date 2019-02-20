@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 70dfc03c37b2e7a93218ff7e710dbd22f622d418
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4e55a50a1a4ae1db995a6054cf9dc13382236b8e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813308"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189484"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Samouczek: integracja usługi Azure Active Directory z usługą Keeper Password Manager & Digital Vault
 
@@ -78,7 +79,7 @@ Aby logowanie jednokrotne działało, należy ustanowić relację połączenia m
 Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD w usłudze Keeper Password Manager & Digital Vault, musisz utworzyć następujące bloki konstrukcyjne:
 
 1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
-2. **[Konfigurowanie logowania jednokrotnego w usłudze Keeper Password Manager & Digital Vault](#configure-keeper-password-manager-&-digital-vault-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+2. **Konfigurowanie logowania jednokrotnego w usłudze Keeper Password Manager & Digital Vault** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
 3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
 5. **[Tworzenie użytkownika testowego usługi Keeper Password Manager & Digital Vault](#create-keeper-password-manager--digital-vault-test-user)** — aby mieć w aplikacji Keeper Password Manager & Digital Vault odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.

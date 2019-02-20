@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b57bea85b76b69b1826a81aa582f5326db588cb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 30c13b511fdc4c348cb7356ccc2fb64c40239fc4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811574"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169857"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Samouczek: integracja usługi Azure Active Directory z aplikacją Blackboard Learn
 
@@ -211,7 +212,7 @@ W tej sekcji włączysz użytkownikowi Britta Simon możliwość korzystania z l
 
 ### <a name="create-blackboard-learn-test-user"></a>Tworzenie użytkownika testowego aplikacji Blackboard Learn
 
-W tej sekcji utworzysz użytkownika Britta Simon w aplikacji Blackboard Learn. Aplikacja Blackboard Learn obsługuje aprowizowanie użytkowników typu „just in time”. Upewnij się, że oświadczenia zostały skonfigurowane zgodnie z opisem w sekcji **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configuring-azure-ad-single-sign-on)**
+W tej sekcji utworzysz użytkownika Britta Simon w aplikacji Blackboard Learn. Aplikacja Blackboard Learn obsługuje aprowizowanie użytkowników typu „just in time”. Upewnij się, że oświadczenia zostały skonfigurowane zgodnie z opisem w sekcji **Konfigurowanie logowania jednokrotnego usługi Azure AD**
 
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 

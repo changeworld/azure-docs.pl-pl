@@ -1,219 +1,191 @@
 ---
-title: 'Samouczek: Integracja usługi Azure Active Directory z eLuminate | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługi Azure Active Directory i eLuminate.
+title: 'Samouczek: Integracja usługi Azure Active Directory z aplikacją eLuminate | Microsoft Docs'
+description: Dowiedz się, jak skonfigurować logowanie jednokrotne między usługą Azure Active Directory i aplikacją eLuminate.
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 94c28db4-dbca-446b-8eef-9b728f18ca9a
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/16/2018
+ms.topic: tutorial
+ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d2798f3638192604d0912f50a8b1c43f4a1939fb
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
-ms.translationtype: MT
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 627427882b06b8d94adcd4a1c1b225abd7a765f4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40225988"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186441"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-eluminate"></a>Samouczek: Integracja usługi Azure Active Directory z eLuminate
+# <a name="tutorial-azure-active-directory-integration-with-eluminate"></a>Samouczek: Integracja usługi Azure Active Directory z aplikacją eLuminate
 
-W tym samouczku dowiesz się, jak zintegrować eLuminate w usłudze Azure Active Directory (Azure AD).
+Z tego samouczka dowiesz się, jak zintegrować aplikację eLuminate z usługą Azure Active Directory (Azure AD).
+Integracja aplikacji eLuminate z usługą Azure AD zapewnia następujące korzyści:
 
-Integrowanie eLuminate z usługą Azure AD zapewnia następujące korzyści:
+* Możesz kontrolować w usłudze Azure AD, kto ma dostęp do aplikacji eLuminate.
+* Możesz zezwolić swoim użytkownikom na automatyczne logowanie do aplikacji eLuminate (logowanie jednokrotne) przy użyciu kont usługi Azure AD.
+* Możesz zarządzać swoimi kontami w jednej centralnej lokalizacji — witrynie Azure Portal.
 
-- Możesz kontrolować, czy w usłudze Azure AD, kto ma dostęp do eLuminate.
-- Aby umożliwić użytkownikom automatyczne pobieranie zalogowanych do eLuminate (logowanie jednokrotne) przy użyciu konta usługi Azure AD.
-- Możesz zarządzać konta w jednej centralnej lokalizacji — witryny Azure portal.
-
-Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory](../manage-apps/what-is-single-sign-on.md)
+Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usługą Azure AD, zobacz [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby skonfigurować integrację usługi Azure AD za pomocą eLuminate, potrzebne są następujące elementy:
+Aby skonfigurować integrację usługi Azure AD z aplikacją eLuminate, potrzebne są następujące elementy:
 
-- Subskrypcji usługi Azure AD
-- ELuminate logowanie jednokrotne włączone subskrypcji
-
-> [!NOTE]
-> Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
-
-Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
-
-- Nie należy używać środowiska produkcyjnego, chyba że jest to konieczne.
-- Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
+* Subskrypcja usługi Azure AD. Jeśli nie masz środowiska usługi Azure AD, możesz skorzystać z miesięcznej wersji próbnej [tutaj](https://azure.microsoft.com/pricing/free-trial/)
+* Subskrypcja aplikacji eLuminate z obsługą logowania jednokrotnego
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+W tym samouczku skonfigurujesz i przetestujesz logowanie jednokrotne usługi Azure AD w środowisku testowym.
 
-1. Dodawanie eLuminate z galerii
-2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+* Aplikacja eLuminate obsługuje logowanie jednokrotne inicjowane przez **dostawcę usług**
 
-## <a name="adding-eluminate-from-the-gallery"></a>Dodawanie eLuminate z galerii
+## <a name="adding-eluminate-from-the-gallery"></a>Dodawanie aplikacji eLuminate z galerii
 
-Aby skonfigurować integrację eLuminate w usłudze Azure AD, należy dodać eLuminate z galerii z listą zarządzanych aplikacji SaaS.
+Aby skonfigurować integrację aplikacji eLuminate z usługą Azure AD, musisz dodać aplikację eLuminate z galerii do swojej listy zarządzanych aplikacji SaaS.
 
-**Aby dodać eLuminate z galerii, wykonaj następujące czynności:**
+**Aby dodać aplikację eLuminate z galerii, wykonaj następujące kroki:**
 
-1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W witrynie **[Azure Portal](https://portal.azure.com)** w panelu nawigacyjnym po lewej stronie kliknij ikonę usługi **Azure Active Directory**.
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![Przycisk Azure Active Directory](common/select-azuread.png)
 
-2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do grupy **Aplikacje dla przedsiębiorstw** i wybierz opcję **Wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
-3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij przycisk **Nowa aplikacja** w górnej części okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![Przycisk Nowa aplikacja](common/add-new-app.png)
 
-4. W polu wyszukiwania wpisz **eLuminate**, wybierz opcję **eLuminate** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **eLuminate**, wybierz pozycję **eLuminate** z panelu wyników i kliknij przycisk **Dodaj**, aby dodać aplikację.
 
-    ![eLuminate na liście wyników](./media/eluminate-tutorial/tutorial_eluminate_addfromgallery.png)
+     ![Aplikacja eLuminate na liście wyników](common/search-new-app.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurowanie i testowanie logowania jednokrotnego usługi Azure AD
 
-W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie jednokrotne za pomocą eLuminate w oparciu o użytkownika testu o nazwie "Britta Simon".
+W tej sekcji skonfigurujesz i przetestujesz funkcję logowania jednokrotnego usługi Azure AD z aplikacją eLuminate, korzystając z danych użytkownika testowego **Britta Simon**.
+Aby logowanie jednokrotne działało, należy ustanowić relację połączenia między użytkownikiem usługi Azure AD i powiązanym użytkownikiem aplikacji eLuminate.
 
-Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w eLuminate do użytkownika w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanego użytkownika w eLuminate musi można ustanowić.
+Aby skonfigurować i przetestować logowanie jednokrotne usługi Azure AD z aplikacją eLuminate, należy wykonać poniższe bloki konstrukcyjne:
 
-Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą eLuminate, należy wykonać poniższe bloki konstrukcyjne:
+1. **[Konfigurowanie logowania jednokrotnego usługi Azure AD](#configure-azure-ad-single-sign-on)** — aby umożliwić użytkownikom korzystanie z tej funkcji.
+2. **[Konfigurowanie logowania jednokrotnego w aplikacji eLuminate](#configure-eluminate-single-sign-on)** — aby skonfigurować ustawienia logowania jednokrotnego po stronie aplikacji.
+3. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)** — aby przetestować logowanie jednokrotne usługi Azure AD z użytkownikiem Britta Simon.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)** — aby umożliwić użytkownikowi Britta Simon korzystanie z logowania jednokrotnego usługi Azure AD.
+5. **[Tworzenie użytkownika testowego aplikacji eLuminate](#create-eluminate-test-user)** — aby mieć w aplikacji eLuminate odpowiednik użytkownika Britta Simon połączony z reprezentacją użytkownika w usłudze Azure AD.
+6. **[Testowanie logowania jednokrotnego](#test-single-sign-on)** — aby sprawdzić, czy konfiguracja działa.
 
-1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-3. **[Tworzenie użytkownika testowego eLuminate](#create-a-eluminate-test-user)**  — aby mają odpowiednika w pozycji Britta simon w eLuminate połączonego z usługi Azure AD reprezentacja użytkownika.
-4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie logowania jednokrotnego usługi Azure AD
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
+W tej sekcji włączysz logowanie jednokrotne usługi Azure AD w witrynie Azure Portal.
 
-W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witrynie Azure portal i konfigurowanie logowania jednokrotnego w aplikacji eLuminate.
+Aby skonfigurować logowanie jednokrotne usługi Azure AD w aplikacji eLuminate, wykonaj następujące kroki:
 
-**Aby skonfigurować usługę Azure AD logowanie jednokrotne z eLuminate, wykonaj następujące czynności:**
+1. W witrynie [Azure Portal](https://portal.azure.com/) na stronie integracji aplikacji **eLuminate** wybierz pozycję **Logowanie jednokrotne**.
 
-1. W witrynie Azure portal na **eLuminate** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+    ![Link do konfigurowania logowania jednokrotnego](common/select-sso.png)
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+2. W oknie dialogowym **Wybieranie metody logowania jednokrotnego** wybierz tryb **SAML/WS-Fed**, aby włączyć logowanie jednokrotne.
 
-2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
+    ![Wybieranie trybu logowania jednokrotnego](common/select-saml-option.png)
 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/eluminate-tutorial/tutorial_eluminate_samlbase.png)
+3. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** kliknij ikonę **Edytuj**, aby otworzyć okno dialogowe **Podstawowa konfiguracja protokołu SAML**.
 
-3. Na **eLuminate domena i adresy URL** sekcji, wykonaj następujące czynności:
+    ![Edycja podstawowej konfiguracji protokołu SAML](common/edit-urls.png)
 
-    ![eLuminate domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/eluminate-tutorial/tutorial_eluminate_url.png)
+4. W sekcji **Podstawowa konfiguracja protokołu SAML** wykonaj następujące czynności:
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://ClientShortName.eluminate.ca/azuresso/account/SignIn`
+    ![Informacje o domenie i adresie URL aplikacji eLuminate na potrzeby logowania jednokrotnego](common/sp-identifier.png)
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `Eluminate/ClientShortName`
+    a. W polu tekstowym **Adres URL logowania** wpisz adres URL, używając następującego wzorca: `https://ClientShortName.eluminate.ca/azuresso/account/SignIn`
+
+    b. W polu tekstowym **Identyfikator (identyfikator jednostki)** wpisz adres URL, używając następującego wzorca: `Eluminate/ClientShortName`
 
     > [!NOTE]
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta eLuminate](mailto:support@intellimedia.ca) do uzyskania tych wartości.
+    > Te wartości nie są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora i adresu URL logowania. Skontaktuj się z [zespołem pomocy technicznej klienta aplikacji eLuminate](mailto:support@intellimedia.ca) w celu uzyskania tych wartości. Przydatne mogą się również okazać wzorce przedstawione w sekcji **Podstawowa konfiguracja protokołu SAML** w witrynie Azure Portal.
 
-4. Na **certyfikat podpisywania SAML** sekcji, kliknij przycisk kopiowania, aby skopiować **adres Url metadanych Federacji aplikacji** i wklej go w Notatniku.
+4. Na stronie **Konfigurowanie logowania jednokrotnego za pomocą protokołu SAML** w sekcji **Certyfikat podpisywania SAML** kliknij przycisk kopiowania, aby skopiować **adres URL metadanych federacji aplikacji** i zapisać go na komputerze.
 
-    ![Link pobierania certyfikatu](./media/eluminate-tutorial/tutorial_eluminate_certificate.png) 
+    ![Link do pobierania certyfikatu](common/copy-metadataurl.png)
 
-5. Kliknij przycisk **Zapisz** przycisku.
+### <a name="configure-eluminate-single-sign-on"></a>Konfigurowanie logowania jednokrotnego w aplikacji eLuminate
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/eluminate-tutorial/tutorial_general_400.png)
+Aby skonfigurować logowanie jednokrotne po stronie aplikacji **eLuminate**, należy wysłać **adres URL metadanych federacyjnych aplikacji** do [zespołu pomocy technicznej aplikacji eLuminate](mailto:support@intellimedia.ca). Ustawią oni to ustawienie tak, aby połączenie logowania jednokrotnego SAML było ustawione właściwie po obu stronach.
 
-6. Aby skonfigurować logowanie jednokrotne na **eLuminate** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej eLuminate](mailto:support@intellimedia.ca). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+W tej sekcji w witrynie Azure Portal utworzysz użytkownika testowego o nazwie Britta Simon.
 
-Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
+1. W witrynie Azure Portal w okienku po lewej stronie wybierz pozycję **Azure Active Directory**, wybierz opcję **Użytkownicy**, a następnie wybierz pozycję **Wszyscy użytkownicy**.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+    ![Linki „Użytkownicy i grupy” i „Wszyscy użytkownicy”](common/users.png)
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+2. Wybierz przycisk **Nowy użytkownik** w górnej części ekranu.
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+    ![Przycisk Nowy użytkownik](common/new-user.png)
 
-    ![Przycisk usługi Azure Active Directory](./media/eluminate-tutorial/create_aaduser_01.png)
+3. We właściwościach użytkownika wykonaj następujące kroki.
 
-2. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+    ![Okno dialogowe Użytkownik](common/user-properties.png)
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/eluminate-tutorial/create_aaduser_02.png)
+    a. W polu **Nazwa** wprowadź **BrittaSimon**.
+  
+    b. W polu **Nazwa użytkownika** wpisz **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-3. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
-
-    ![Przycisk Dodaj](./media/eluminate-tutorial/create_aaduser_03.png)
-
-4. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/eluminate-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
+    d. Zaznacz pole wyboru **Pokaż hasło** i zanotuj wartość wyświetlaną w polu Hasło.
 
     d. Kliknij pozycję **Utwórz**.
 
-### <a name="create-a-eluminate-test-user"></a>Tworzenie użytkownika testowego eLuminate
-
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w eLuminate. Praca z [zespołem pomocy technicznej eLuminate](mailto:support@intellimedia.ca) Aby dodać użytkowników na platformie eLuminate. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
-
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
-W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do eLuminate.
+W tej sekcji włączysz dla użytkownika Britta Simon możliwość korzystania z logowania jednokrotnego platformy Azure, udzielając dostępu do aplikacji eLuminate.
 
-![Przypisanie roli użytkownika][200]
+1. W witrynie Azure Portal wybierz pozycję **Aplikacje dla przedsiębiorstw**, pozycję **Wszystkie aplikacje**, a następnie pozycję **eLuminate**.
 
-**Aby przypisać Britta Simon eLuminate, wykonaj następujące czynności:**
-
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
-
-    ![Przypisz użytkownika][201] 
+    ![Blok Aplikacje dla przedsiębiorstw](common/enterprise-applications.png)
 
 2. Na liście aplikacji wybierz **eLuminate**.
 
-    ![Link eLuminate na liście aplikacji](./media/eluminate-tutorial/tutorial_eluminate_app.png)  
+    ![Link aplikacji eLuminate na liście aplikacji](common/all-applications.png)
 
-3. W menu po lewej stronie kliknij **użytkowników i grup**.
+3. W menu po lewej stronie wybierz pozycję **Użytkownicy i grupy**.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![Link „Użytkownicy i grupy”](common/users-groups-blade.png)
 
-4. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. Kliknij przycisk **Dodaj użytkownika**, a następnie wybierz pozycję **Użytkownicy i grupy** w oknie dialogowym **Dodawanie przypisania**.
 
-    ![Okienko Dodawanie przypisania][203]
+    ![Okienko Dodawanie przypisania](common/add-assign-user.png)
 
-5. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
+5. W oknie dialogowym **Użytkownicy i grupy** wybierz użytkownika **Britta Simon** na liście użytkowników, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
+6. Jeśli oczekujesz wartości roli w asercji SAML, w oknie dialogowym **Wybieranie roli** wybierz z listy odpowiednią rolę dla użytkownika, a następnie kliknij przycisk **Wybierz** u dołu ekranu.
 
-7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+7. W oknie dialogowym **Dodawanie przypisania** kliknij przycisk **Przypisz**.
 
-### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
+### <a name="create-eluminate-test-user"></a>Tworzenie użytkownika testowego aplikacji eLuminate
 
-W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
+W tej sekcji utworzysz użytkownika o nazwie Britta Simon w aplikacji eLuminate. Skontaktuj się z [zespołem pomocy technicznej aplikacji eLuminate](mailto:support@intellimedia.ca), aby dodać użytkowników na platformie eLuminate. Użytkownicy muszą być utworzeni i aktywowani przed rozpoczęciem korzystania z logowania jednokrotnego.
 
-Po kliknięciu kafelka eLuminate w panelu dostępu, użytkownik powinien uzyskać automatycznie zalogowanych do aplikacji eLuminate.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
+### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego 
 
-## <a name="additional-resources"></a>Zasoby dodatkowe
+W tej sekcji przetestujesz konfigurację logowania jednokrotnego usługi Azure AD przy użyciu panelu dostępu.
 
-* [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+Po kliknięciu kafelka eLuminate w panelu dostępu powinno nastąpić automatyczne zalogowanie do aplikacji eLuminate, dla której skonfigurowano logowanie jednokrotne. Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction) (Wprowadzenie do panelu dostępu).
 
-<!--Image references-->
+## <a name="additional-resources"></a>Dodatkowe zasoby
 
-[1]: ./media/eluminate-tutorial/tutorial_general_01.png
-[2]: ./media/eluminate-tutorial/tutorial_general_02.png
-[3]: ./media/eluminate-tutorial/tutorial_general_03.png
-[4]: ./media/eluminate-tutorial/tutorial_general_04.png
+- [ Lista samouczków dotyczących sposobu integrowania aplikacji SaaS z usługą Azure Active Directory ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-[100]: ./media/eluminate-tutorial/tutorial_general_100.png
+- [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[200]: ./media/eluminate-tutorial/tutorial_general_200.png
-[201]: ./media/eluminate-tutorial/tutorial_general_201.png
-[202]: ./media/eluminate-tutorial/tutorial_general_202.png
-[203]: ./media/eluminate-tutorial/tutorial_general_203.png
+- [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
