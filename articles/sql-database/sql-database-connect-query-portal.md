@@ -12,13 +12,13 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/19/2018
-ms.openlocfilehash: d00909eed037e4d2d414ef3121ce11f5ca489736
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: e16d68f8c30b54c24e091d1b0c7317bf74aadeba
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564769"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234581"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Szybki start: używanie edytora zapytań SQL do nawiązywania połączenia i wykonywania zapytań o dane
 
@@ -28,7 +28,15 @@ Edytor zapytań SQL jest narzędziem przeglądarki portalu Azure, które ułatwi
 
 Do ukończenia tego samouczka niezbędne są następujące elementy:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Baza danych Azure SQL. Aby utworzyć, a następnie skonfigurować bazę danych w usłudze Azure SQL Database, można użyć instrukcji z jednego z tych przewodników Szybki start:
+
+  || Pojedyncza baza danych |
+  |:--- |:--- |
+  | Przycisk Utwórz| [Portal](sql-database-single-database-get-started.md) | 
+  || [Interfejs wiersza polecenia](scripts/sql-database-create-and-configure-database-cli.md) | 
+  || [Program PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
+  | Konfigurowanie | [Reguła zapory IP na poziomie serwera](sql-database-server-level-firewall-rule.md)| 
+  |||
 
 > [!NOTE]
 > Upewnij się, że opcja **Zezwalaj na dostęp do usług platformy Azure** w ustawieniach zapory serwera SQL jest ustawiona na **WŁ.**. Ta opcja zapewnia edytorowi zapytań SQL dostęp do Twoich baz danych i magazynów danych.
