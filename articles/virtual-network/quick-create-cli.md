@@ -13,12 +13,12 @@ ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: jdial
-ms.openlocfilehash: 1b3dde1b2d638f6dd6c19ce173c7f9f071868d23
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: affbfdebd91d341a4bc32b4a6bc9827919a48817
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734219"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427803"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-cli"></a>Szybki start: Tworzenie sieci wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure
 
@@ -90,6 +90,7 @@ Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Kiedy platforma 
   "privateIpAddress": "10.0.0.5",
   "publicIpAddress": "40.68.254.142",
   "resourceGroup": "myResourceGroup"
+  "zones": ""
 }
 ```
 

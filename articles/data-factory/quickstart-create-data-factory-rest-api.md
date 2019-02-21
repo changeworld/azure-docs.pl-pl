@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: rest-api
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 45f0cbc25028f3708c2f649287bc7fa8581e001f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 3904a59a3462d7d83f976583bd7e714763af2c69
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005305"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446736"
 ---
 # <a name="quickstart-create-an-azure-data-factory-and-pipeline-by-using-the-rest-api"></a>Szybki start: Tworzenie usługi Azure Data Factory i potoku przy użyciu interfejsu API REST
 
@@ -68,7 +68,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
     $subsId = "<your subscription ID to create the factory>"
     $resourceGroup = "<your resource group to create the factory>"
     $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>"
-    $apiVersion = "2017-09-01-preview"
+    $apiVersion = "2018-06-01"
     ```
 
 ## <a name="authenticate-with-azure-ad"></a>Uwierzytelnianie za pomocą usługi Azure AD
@@ -126,7 +126,7 @@ Oto przykładowa odpowiedź:
         "provisioningState":  "Succeeded",
         "loggingStorageAccountKey":  "**********",
         "createTime":  "2017-09-14T06:22:59.9106216Z",
-        "version":  "2017-09-01-preview"
+        "version":  "2018-06-01"
     },
     "identity":  {
         "type":  "SystemAssigned",

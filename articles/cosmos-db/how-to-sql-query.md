@@ -3,15 +3,15 @@ title: Zapytania SQL w usłudze Azure Cosmos DB
 description: Dowiedz się więcej o składni języka SQL, pojęciach związanych z bazami danych oraz zapytaniach języka SQL dla usługi Azure Cosmos DB. Język SQL może być używany jako język zapytań JSON w usłudze Azure Cosmos DB.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822412"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455963"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>Przykłady zapytania SQL dla usługi Azure Cosmos DB
 
@@ -367,7 +367,7 @@ Następujące operatory binarne są obecnie obsługiwane i mogą być używane w
 |Bitowy    | \|, &, ^, <<, >>, >>> (wypełnienie zerami, przesunięcie w prawo) |
 |Logiczny    | AND, OR, NOT      |
 |Porównanie | =, !=, &lt;, &gt;, &lt;=, &gt;=, <> |
-|Ciąg     |  \|\| (łączenie) |
+|String     |  \|\| (łączenie) |
 
 Przyjrzyjmy się kilku zapytaniom korzystającym z operatorów binarnych.
 
@@ -1369,13 +1369,13 @@ Każda z funkcji matematycznych wykonuje obliczenie na podstawie wartości wejś
 | CEILING (wyrażenie_liczbowe) | Zwraca najmniejszą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub większą. |
 | FLOOR (wyrażenie_liczbowe) | Zwraca największą wartość całkowitą równą określonemu wyrażeniu liczbowemu lub mniejszą. |
 | EXP (wyrażenie_liczbowe) | Zwraca wykładnik określonego wyrażenia liczbowego. |
-| [LOG (wyrażenie_liczbowe [,podstawa])](#bk_log) | Zwraca logarytm naturalny określonego wyrażenia liczbowego lub logarytm o określonej podstawie. |
+| Dziennik (num_expr, podstawowy) | Zwraca logarytm naturalny określonego wyrażenia liczbowego lub logarytm o określonej podstawie. |
 | LOG10 (wyrażenie_liczbowe) | Zwraca wartość logarytmiczną przy podstawie 10 określonego wyrażenia liczbowego. |
 | ROUND (wyrażenie_liczbowe) | Zwraca wartość liczbową zaokrągloną do najbliższej wartości całkowitej. |
 | TRUNC (wyrażenie_liczbowe) | Zwraca wartość liczbową przyciętą do najbliższej wartości całkowitej. |
 | SQRT (wyrażenie_liczbowe) | Zwraca pierwiastek kwadratowy określonego wyrażenia liczbowego. |
 | SQUARE (wyrażenie_liczbowe) | Zwraca kwadrat określonego wyrażenia liczbowego. |
-| [POWER (wyrażenie liczbowe, wyrażenie_liczbowe)](#bk_power) | Zwraca wartość określonego wyrażenia liczbowego podniesioną do podanej potęgi. |
+| ZASILANIA (num_expr, num_expr) | Zwraca wartość określonego wyrażenia liczbowego podniesioną do podanej potęgi. |
 | SIGN (wyrażenie_liczbowe) | Zwraca wartość znaku (-1, 0, 1) określonego wyrażenia liczbowego. |
 | ACOS (wyrażenie_liczbowe) | Zwraca kąt w radianach, którego cosinus jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus cosinus. |
 | ASIN (wyrażenie_liczbowe) | Zwraca kąt w radianach, którego sinus jest określonym wyrażeniem liczbowym. Ta funkcja jest również nazywana arcus sinus. |

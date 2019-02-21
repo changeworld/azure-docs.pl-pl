@@ -7,12 +7,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: e1eced2d00737a950ed441bd83614d9d6d0b9230
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1bfe0026e52107c85bf2c7e66414e937ad27f715
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731278"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267754"
 ---
 # <a name="quickstart-create-a-chat-room-with-signalr-service"></a>Szybki start: tworzenie pokoju rozmów za pomocą usługi SignalR Service
 
@@ -79,7 +79,7 @@ W tej sekcji dodasz narzędzie [Secret Manager](https://docs.microsoft.com/aspne
 
 1. Dodaj odwołanie do pakietu NuGet `Microsoft.Azure.SignalR`, wykonując następujące polecenie:
 
-        dotnet add package Microsoft.Azure.SignalR -v 1.0.0-*
+        dotnet add package Microsoft.Azure.SignalR
 
 2. Uruchom następujące polecenie, aby przywrócić pakiety dla swojego projektu.
 
@@ -92,7 +92,7 @@ W tej sekcji dodasz narzędzie [Secret Manager](https://docs.microsoft.com/aspne
     To polecenie należy wykonać w tym samym katalogu, w którym znajduje się plik *csproj*.
 
     ```
-    dotnet user-secrets set Azure:SignalR:ConnectionString "Endpoint=<Your endpoint>;AccessKey=<Your access key>;"    
+    dotnet user-secrets set Azure:SignalR:ConnectionString "<Your connection string>"    
     ```
 
     Narzędzie Secret Manager będzie służyć do testowania aplikacji internetowej, tylko gdy będzie hostowana lokalnie. W późniejszym samouczku wdrożysz aplikację internetową do rozmów na platformie Azure. Po wdrożeniu aplikacji internetowej na platformie Azure użyjesz ustawienia aplikacji zamiast zapisywania parametrów połączenia za pomocą narzędzia Secret Manager.
