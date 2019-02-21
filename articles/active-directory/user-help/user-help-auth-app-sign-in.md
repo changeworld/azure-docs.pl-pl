@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120e0f3c7e6af22210ba04565b86b8098851b26d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186900"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456031"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Zaloguj się do konta przy użyciu aplikacji Microsoft Authenticator
 Aplikacja Microsoft Authenticator pomaga w logowaniu się do kont, jeśli używana jest weryfikacja dwuskładnikowa. Weryfikacja dwuskładnikowa zapewnia bezpieczniejszy dostęp do kont, szczególnie podczas wyświetlania informacji poufnych. Ponieważ hasła mogą zostać zapomniane, skradzione lub ujawnione, weryfikacja dwuskładnikowa zapewnia dodatkowy poziom zabezpieczeń, który pomaga chronić konto, utrudniając włamanie się na nie innym osobom.
@@ -64,7 +64,7 @@ Po włączeniu logowanie za pomocą telefonu, można zalogować się przy użyci
 
     ![Zatwierdź okno logowania na komputerze](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
-2. Otwórz powiadomienie lub aplikacji Microsoft Authenticator na urządzeniu, a następnie naciśnij pozycję numer odpowiadający numer widoczny na komputerze PC **zatwierdzić logowanie** ekranu.
+2. Otwórz powiadomienie lub aplikacji Microsoft Authenticator na urządzeniu z systemem, a następnie naciśnij pozycję numer odpowiadający numer widoczny na tym komputerze **zatwierdzić logowanie** ekranu.
 
     ![Zatwierdź okno logowania na urządzeniu](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in-numbers.png)
 
@@ -113,7 +113,7 @@ Kroki niezbędne do logowania się na pracy lub szkoły lub konto osobiste przy 
 |**Co zrobić, jeśli utracą Mój telefon lub nie jest ze mną? Jak uzyskać dostęp do mojego konta?**| Zawsze możesz wybrać użycie hasła utworzyć łącze na stronie logowania, aby wrócić do używał Twojego hasła. Jednak jeśli używasz weryfikacji dwuetapowej nadal należy zweryfikować Twoją tożsamość przy użyciu drugiej metody.<br><br>**Ważne**<br>Zdecydowanie zachęcamy do upewnij się, że masz więcej niż jeden, aktualne, metodę weryfikacji skojarzony z Twoim kontem.<br><br>Możesz zarządzać metody weryfikacji konta osobiste z Twojego [ustawienia zabezpieczeń](https://account.live.com/proofs/manage) strony. Dla konta służbowego lub szkolnego, możesz przejść do swojej organizacji [dodatkowej weryfikacji zabezpieczeń](https://aka.ms/MFASetup) strony lub **zabezpieczyć swoje konto** strony, jeśli administrator wyłączył informacji zabezpieczających. Aby uzyskać więcej informacji na temat informacji zabezpieczających, zobacz [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).<br><br>Jeśli nie możesz zarządzać metody weryfikacji, możesz skontaktować się z administratorem.|
 |**Jak uniemożliwić korzystanie z tej funkcji i wrócić do korzystania z hasła?**|Dla osobistych kont, wybierz **zamiast tego użyj hasła** łącze podczas logowania. Wybór najbardziej aktualne jest zapamiętanych i oferowana domyślnie przy następnym logowaniu. Jeśli kiedykolwiek chcesz wrócić do korzystania logowanie telefonem, wybierz **zamiast tego użyj aplikacji** łącze podczas logowania.<br><br>Dla konta służbowego lub szkolnego, należy do strony weryfikacji zabezpieczeń (takich jak https://aka.ms/MFASetup) i Usuń aplikację Microsoft Authenticator.|
 |**Dlaczego nie można użyć więcej niż jedno konto służbowe lub szkolne na logowanie za pomocą telefonu?**| Telefon musi być zarejestrowana do jednego konta firmowego lub szkolnego. Jeśli chcesz włączyć logowanie telefonem dla pracy lub konta służbowego, musisz najpierw wyrejestrować starym urządzeniem za pośrednictwem **ustawienia** strony.|
-|**Czy mogę zalogować się do komputera za pomocą Mój telefon?**| Na komputerze firma Microsoft zaleca, logowanie przy użyciu usługi Windows Hello w systemie Windows 10. Windows Hello pozwala korzystać z rozpoznawania twarzy, odcisk palca lub numeru PIN do logowania.|
+|**Czy mogę zalogować się do komputera, używając Mój telefon?**| Dla komputera firma Microsoft zaleca, logowanie przy użyciu usługi Windows Hello w systemie Windows 10. Windows Hello pozwala korzystać z rozpoznawania twarzy, odcisk palca lub numeru PIN do logowania.|
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Jeśli masz więcej ogólne pytania dotyczące aplikacji, zobacz [Microsoft Authenticator często zadawane pytania](user-help-auth-app-faq.md)

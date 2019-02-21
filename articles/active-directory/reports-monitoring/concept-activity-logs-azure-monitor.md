@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a995fd93fa8d538cd1a686ecc12fa69c718758c
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: cb136391610035911af3614f88f5ea823f86922d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313504"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456333"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Dzienniki aktywności usługi Azure AD w usłudze Azure Monitor (wersja zapoznawcza)
 
@@ -31,13 +31,13 @@ Dzienniki aktywności usługi Azure Active Directory (Azure AD) mogą teraz kier
 * Archiwum usługi Azure AD dzienników aktywności do konta usługi Azure storage, aby zachować dane przez długi czas.
 * Stream usługi Azure AD Dzienniki aktywności do Centrum zdarzeń platformy Azure na potrzeby analizy, za pomocą popularnych narzędzi Security Information and Event Management (SIEM), takie jak Splunk i QRadar.
 * Integrowanie usługi Azure AD dzienników aktywności z własnych rozwiązań dziennika niestandardowego przez przesyłanie strumieniowe je do Centrum zdarzeń.
-* Dzienniki aktywności wysyłania usługi Azure AD do usługi Log Analytics, aby umożliwić rozbudowane wizualizacje, monitorowania i alertów dla połączonych danych.
+* Wyślij usługi Azure AD dzienników aktywności do usługi Azure Monitor dzienniki, aby umożliwić rozbudowane wizualizacje, monitorowania i alertów dla połączonych danych.
 
 > [!VIDEO https://www.youtube.com/embed/syT-9KNfug8]
 
 ## <a name="supported-reports"></a>Obsługiwane raporty
 
-Może kierować usługi Azure AD inspekcji dzienników i dzienników logowania do konta magazynu platformy Azure, Centrum zdarzeń, usługi Log Analytics lub niestandardowe rozwiązania przy użyciu tej funkcji. 
+Może kierować usługi Azure AD inspekcji dzienników i dzienników logowania do konta magazynu platformy Azure, Centrum zdarzeń, dzienniki usługi Azure Monitor lub niestandardowe rozwiązania przy użyciu tej funkcji. 
 
 * **Dzienniki inspekcji**: [Raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań, która jest wykonywana w dzierżawie.
 * **Dzienniki logowania**: Za pomocą [raport aktywności logowania](concept-sign-ins.md), można określić, kto wykonał zadania, które są zgłaszane w dziennikach inspekcji.
@@ -60,7 +60,7 @@ W zależności od tego, gdzie chcesz przekierować dane dziennika inspekcji, bę
 
 * Konto usługi Azure Storage, do którego masz uprawnienia *ListKeys*. Zalecamy używanie konta magazynu ogólnego, a nie konta magazynu obiektów blob. Aby uzyskać informacje o cenach magazynu, zobacz [kalkulator cen usługi Azure Storage](https://azure.microsoft.com/pricing/calculator/?service=storage). 
 * Przestrzeń nazw usługi Azure Event Hubs potrzeby integracji z rozwiązaniami innych firm.
-* Obszar roboczy usługi Azure Log Analytics do wysyłania dzienników do usługi Log Analytics.
+* Obszar roboczy usługi Azure Log Analytics do wysyłania dzienników do dzienników usługi Azure Monitor.
 
 ## <a name="cost-considerations"></a>Kwestie związane z kosztami
 
@@ -94,9 +94,9 @@ Poniższa tabela zawiera szacowany koszt na miesiąc dla podstawowego centrum zd
 | Inspekcja | 1000 | 0.1 | 52 | 104 KB | 1 | 8640 | 10,80 USD |
 | Logowania | 1000 | 178 | 53 400 | 106,8&nbsp;MB | 418 | 3 611 520 | 11,06 USD |  
 
-### <a name="log-analytics-cost-considerations"></a>Usługa log Analytics kwestii związanych z kosztami
+### <a name="azure-monitor-logs-cost-considerations"></a>Usługa Azure Monitor rejestruje zagadnienia dotyczące kosztów
 
-Aby przejrzeć koszty związane z zarządzaniem obszaru roboczego usługi Log Analytics, zobacz [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w usłudze Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
+Aby przejrzeć koszty związane z zarządzaniem dzienniki usługi Azure Monitor, zobacz [Zarządzanie kosztami przez kontrolowanie ilości danych i przechowywania w dziennikach w usłudze Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-cost-storage).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
@@ -177,4 +177,4 @@ Ta sekcja zawiera odpowiedzi na często zadawane pytania i znane problemy z dzie
 
 * [Archiwizowanie dzienników aktywności na koncie magazynu](quickstart-azure-monitor-route-logs-to-storage-account.md)
 * [Kierowanie dzienników aktywności do centrum zdarzeń](quickstart-azure-monitor-stream-logs-to-event-hub.md)
-* [Integrowanie dzienników aktywności z usługą Log Analytics](howto-integrate-activity-logs-with-log-analytics.md)
+* [Integrowanie dzienników aktywności z usługą Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md)

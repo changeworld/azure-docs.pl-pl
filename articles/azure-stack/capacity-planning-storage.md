@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/20/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 29244c20bb4bbad8077788abbc29e6267f701d2e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/20/2019
+ms.openlocfilehash: 32e6e8ff4c37554a0c3fa50e243b241eed2953cf
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176360"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446005"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Planowanie pojemności magazynu stosu platformy Azure
 Pojemność magazynu usługi Azure Stack informacje dotyczące planowania ułatwiających planowanie potrzeb dotyczących magazynowania te rozwiązania można znaleźć w poniższych sekcjach.
@@ -38,7 +38,9 @@ Operatory można wybrać między wszystkie flash lub hybrydowej konfigurację ma
 
 ![Planowanie pojemności usługi Azure storage](media/azure-stack-capacity-planning/storage.png)
 
-W konfiguracji wszystkich flash pamięć podręczna jest NVMe dzięki szerokiemu wyborowi dyski SSD SATA i NVMe pojemności. W konfiguracji hybrydowej pamięć podręczna jest wybór między NVMe i dyski SSD SATA, gdy pojemność jest dysk twardy.
+W konfiguracji wszystkich flash konfiguracja może być dwuwarstwowej lub jednowarstwową konfiguracji.  Jeśli konfiguracja jest jednowarstwowa, wszystkie urządzenia pojemności będą podlegać tego samego typu (np. NVMe lub dyski SSD SATA lub SAS SSD) i urządzenia pamięci podręcznej nie są używane. W wszystkie dwuwarstwowej Konfiguracja flash, typową konfiguracją jest NVMe jako urządzenia buforujące, a następnie albo SATA lub SAS SSD jako urządzenia pojemności.
+
+Hybrydowy konfiguracji dwuwarstwowej pamięci podręcznej jest wybór między NVMe, SATA lub SAS, dysków SSD i pojemność dysku twardego. 
 
 Krótkie podsumowanie bezpośrednimi miejscami do magazynowania i konfiguracja magazynu usługi Azure Stack jest następująca:
 - Jednej puli miejsca do magazynowania na jednostkę skali (wszystkie urządzenia magazynujące są skonfigurowane w ramach pojedynczej puli)

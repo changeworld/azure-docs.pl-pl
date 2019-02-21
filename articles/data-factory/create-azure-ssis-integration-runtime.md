@@ -7,24 +7,24 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 02/20/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 29e32177c899e8f42ee892be12a61c6633b23bdc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a6bd0097bacaa988c9c9f03c2ce827c42769aa99
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567336"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447382"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Tworzenie środowiska Azure-SSIS Integration Runtime w usłudze Azure Data Factory
 W tym artykule przedstawiono kroki do aprowizacji środowiska Azure-SSIS Integration Runtime (IR) w usłudze Azure Data Factory (ADF). Następnie można wdrażać i uruchamiać pakiety usług SQL Server Integration Services (SSIS) na tym środowisku integration runtime w systemie Azure można użyć programu SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS).
 
 [Samouczka: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md) dowiesz się, jak utworzyć środowisko IR Azure-SSIS przy użyciu serwera Azure SQL Database do hosta bazy danych wykazu usług SSIS (SSISDB). Ten artykuł stanowi rozszerzenie samouczka i pokazuje, jak wykonywać następujące czynności:
 
-- Opcjonalnie można użyć serwera Azure SQL Database przy użyciu sieci wirtualnej usługi punktów końcowych/zarządzanego wystąpienia do hostowania bazy SSISDB. Aby uzyskać wskazówki dotyczące wybranie typu serwera bazy danych do hostowania bazy SSISDB, zobacz [porównanie usługi Azure SQL Database pojedynczej bazy danych/elastycznych pul i wystąpienia zarządzanego](create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). Jako warunek wstępny należy dołączyć środowiska Azure-SSIS IR do sieci wirtualnej i konfigurowanie uprawnień/ustawień sieci wirtualnej zgodnie z potrzebami. Zobacz [Join Azure-SSIS IR do sieci wirtualnej](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
+- Opcjonalnie można użyć serwera Azure SQL Database przy użyciu sieci wirtualnej usługi punktów końcowych/zarządzanego wystąpienia do hostowania bazy SSISDB. Aby uzyskać wskazówki dotyczące wyboru typu serwera baz danych do hostowania bazy danych SSISDB, zobacz [Porównanie pojedynczych baz danych/elastycznych pul usługi SQL Database i wystąpienia zarządzanego](create-azure-ssis-integration-runtime.md#compare-sql-database-single-databaseelastic-pool-and-sql-database-managed-instance). Jako warunek wstępny należy dołączyć środowiska Azure-SSIS IR do sieci wirtualnej i konfigurowanie uprawnień/ustawień sieci wirtualnej zgodnie z potrzebami. Zobacz [Join Azure-SSIS IR do sieci wirtualnej](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network).
 
 - Opcjonalnie użyć uwierzytelniania usługi Azure Active Directory (AAD) za pomocą tożsamości zarządzanej dla usługi ADF do łączenia się z serwerem bazy danych. Jako warunek wstępny, musisz dodać tożsamości zarządzanej dla usługi ADF jako użytkownika zawartej bazy danych, pozwalając w usługi Azure SQL Database server/zarządzanego wystąpienia bazy danych SSISDB, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/enable-aad-authentication-azure-ssis-ir).
 
@@ -546,7 +546,7 @@ W tej sekcji możesz szablon usługi Azure Resource Manager do tworzenia środow
         "variables": {},
         "resources": [{
             "name": "<Specify a name for your data factory>",
-            "apiVersion": "2017-09-01-preview",
+            "apiVersion": "2018-06-01",
             "type": "Microsoft.DataFactory/factories",
             "location": "East US",
             "properties": {},
@@ -554,7 +554,7 @@ W tej sekcji możesz szablon usługi Azure Resource Manager do tworzenia środow
                 "type": "integrationruntimes",
                 "name": "<Specify a name for your Azure-SSIS IR>",
                 "dependsOn": [ "<The name of the data factory you specified at the beginning>" ],
-                "apiVersion": "2017-09-01-preview",
+                "apiVersion": "2018-06-01",
                 "properties": {
                     "type": "Managed",
                     "typeProperties": {

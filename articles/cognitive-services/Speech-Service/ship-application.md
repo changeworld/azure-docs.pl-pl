@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 2e35afe996ec80411d2e0e339fd4d49adecd1239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857944"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445121"
 ---
 # <a name="ship-an-application"></a>Dostarczanie aplikacji
 
@@ -47,19 +47,19 @@ W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK
 
 ## <a name="linux"></a>Linux
 
+Zestaw SDK rozpoznawania mowy obsługuje obecnie Ubuntu 16.04 i 18.04 dystrybucji.
 Aplikację natywną, musisz wysłać biblioteki zestawu SDK rozpoznawania mowy, `libMicrosoft.CognitiveServices.Speech.core.so`.
 Upewnij się, że wybrano wersję (x86, x64), która jest zgodna z aplikacji. W zależności od wersji systemu Linux, również może być konieczne obejmują następujące zależności:
 
 * Biblioteki udostępnione biblioteki GNU C (łącznie z biblioteki programowania wątków POSIX `libpthreads`)
 * Biblioteki OpenSSL (`libssl.so.1.0.0`)
-* Biblioteka programu cURL (`libcurl.so.4`)
 * Biblioteki udostępnionej dla aplikacji ALSA (`libasound.so.2`)
 
-Na Ubuntu 16.04 lub 18.04 na przykład bibliotek GNU C powinno być już zainstalowane domyślnie. Trzy ostatnie można zainstalować za pomocą poniższych poleceń:
+W systemie Ubuntu bibliotek GNU C powinno być już zainstalowane domyślnie. Trzy ostatnie można zainstalować za pomocą poniższych poleceń:
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libcurl3 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2 wget
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

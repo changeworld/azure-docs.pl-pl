@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: ddc0f0f8cfd6c7d540d2a1de2f5ecb35cdfd234f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417605"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447178"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Zabezpieczanie ruchu sieciowego między zasobników za pomocą zasad sieciowych w usłudze Azure Kubernetes Service (AKS)
 
@@ -27,21 +27,7 @@ W tym artykule pokazano, jak sterować przepływem ruchu między zasobników w u
 
 Potrzebujesz wiersza polecenia platformy Azure w wersji 2.0.56 lub później zainstalowane i skonfigurowane. Uruchom polecenie  `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie przeprowadzenie instalacji lub uaktualnienia, zobacz  [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
-## <a name="overview-of-network-policy"></a>Omówienie zasad sieciowych
-
-Domyślnie wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu bez ograniczeń. Aby zwiększyć bezpieczeństwo, można zdefiniować reguł, które kontrolują przepływu ruchu. Na przykład aplikacji zaplecza są dostępne często tylko wymagane frontonu usług lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
-
-Zasady sieciowe to zasoby platformy Kubernetes, które pozwalają sterować przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Zasady sieciowe są zdefiniowane zgodnie z manifesty YAML i może być dołączane jako część szersze manifest, który tworzy także wdrożenia lub usługi.
-
-Przyjrzyjmy się zasad sieciowych działa, Utwórz, a następnie rozwiń na zasady, które definiują przepływ ruchu w następujący sposób:
-
-* Odmowa cały ruch do zasobników.
-* Zezwalać na ruch na podstawie etykiet zasobników.
-* Zezwalać na ruch w oparciu o przestrzeni nazw.
-
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Tworzenie klastra AKS i włączyć zasad sieciowych
-
-Zasady sieci można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS. Aby utworzyć AKS za pomocą zasad sieciowych, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *EnableNetworkPolicy* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+Aby utworzyć AKS za pomocą zasad sieciowych, należy najpierw włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *EnableNetworkPolicy* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
 
 ```azurecli-interactive
 az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
@@ -59,7 +45,25 @@ Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* 
 az provider register --namespace Microsoft.ContainerService
 ```
 
-Aby z klastrem usługi AKS przy użyciu zasad sieci, należy użyć [wtyczki wtyczki Azure CNI] [ azure-cni] i zdefiniować własne sieci wirtualnej i podsieci. Aby uzyskać szczegółowe informacje na temat sposobu zaplanować zakresy wymagane podsieci, zobacz [skonfigurować zaawansowane funkcje sieciowe][use-advanced-networking]. Poniższy przykładowy skrypt:
+## <a name="overview-of-network-policy"></a>Omówienie zasad sieciowych
+
+Domyślnie wszystkie zasobników w klastrze AKS umożliwia wysyłanie oraz odbieranie ruchu bez ograniczeń. Aby zwiększyć bezpieczeństwo, można zdefiniować reguł, które kontrolują przepływu ruchu. Na przykład aplikacji zaplecza są dostępne często tylko wymagane frontonu usług lub składników bazy danych dostępnych tylko warstwy aplikacji łączących się z nimi.
+
+Zasady sieciowe to zasoby platformy Kubernetes, które pozwalają sterować przepływem ruchu między zasobników. Istnieje możliwość blokują lub zezwalają na ruch na podstawie ustawień, takich jak przypisać etykiety, przestrzeń nazw lub ruchu sieciowego port. Zasady sieciowe są zdefiniowane zgodnie z manifesty YAML i może być dołączane jako część szersze manifest, który tworzy także wdrożenia lub usługi.
+
+Przyjrzyjmy się zasad sieciowych działa, Utwórz, a następnie rozwiń na zasady, które definiują przepływ ruchu w następujący sposób:
+
+* Odmowa cały ruch do zasobników.
+* Zezwalać na ruch na podstawie etykiet zasobników.
+* Zezwalać na ruch w oparciu o przestrzeni nazw.
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Tworzenie klastra AKS i włączyć zasad sieciowych
+
+Zasady sieci można włączyć tylko podczas tworzenia klastra. Nie można włączyć zasad sieciowych w istniejącym klastrze usługi AKS. 
+
+Aby z klastrem usługi AKS przy użyciu zasad sieci, należy użyć [wtyczki wtyczki Azure CNI] [ azure-cni] i zdefiniować własne sieci wirtualnej i podsieci. Aby uzyskać szczegółowe informacje na temat sposobu zaplanować zakresy wymagane podsieci, zobacz [skonfigurować zaawansowane funkcje sieciowe][use-advanced-networking].
+
+Poniższy przykładowy skrypt:
 
 * Tworzy sieć wirtualną i podsieć.
 * Tworzy jednostkę usługi do użycia usługi Azure Active Directory (AD), z klastrem usługi AKS.
@@ -86,7 +90,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-read SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ea179ff7e4b525e86003faadfb92e090476bd81
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172650"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446379"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>Typy aplikacji, które mogą być używane w Active Directory B2C
 
@@ -91,10 +91,10 @@ Interfejs API sieci Web może następnie użyć tego tokenu do zweryfikowania to
 Interfejs API sieci web może odbierać tokeny od wielu typów klientów, w tym aplikacji sieci web, pulpitu i aplikacje mobilne, aplikacje jednej strony, demonów po stronie serwera i innych interfejsów API sieci web. Oto przykład pełnego przepływu aplikacji sieci web, która wywołuje interfejs API sieci web:
 
 1. Aplikacja sieci web wykonuje zasady, a następnie użytkownik kończy środowisko użytkownika.
-2. Usługa Azure AD B2C zwraca `access_token` i kodu autoryzacji do przeglądarki.
-3. Wpisy przeglądarki `access_token` i Kod autoryzacji do identyfikatora URI przekierowania.
-4. Serwer sieci web sprawdza poprawność `access token` i ustawia plik cookie sesji.
-5. `access_token` Służy do usługi Azure AD B2C z kodem autoryzacji, identyfikator klienta aplikacji, a poświadczenia.
+2. Usługa Azure AD B2C zwraca (OpenID Connect) `id_token` i kodu autoryzacji do przeglądarki.
+3. Wpisy przeglądarki `id_token` i Kod autoryzacji do identyfikatora URI przekierowania.
+4. Serwer sieci web sprawdza poprawność `id_token` i ustawia plik cookie sesji.
+5. Pyta, serwer sieci web usługi Azure AD B2C dla `access_token` dostarczając kod autoryzacji, identyfikator klienta aplikacji i poświadczeń klienta.
 6. `access_token` i `refresh_token` są zwracane do serwera sieci web.
 7. Internetowy interfejs API jest wywoływana z `access_token` w nagłówku autoryzacji.
 8. Interfejs API sieci web sprawdza poprawność tokenu.

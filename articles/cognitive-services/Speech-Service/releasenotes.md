@@ -8,17 +8,70 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 12/18/2018
+ms.date: 2/20/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: a5b8cd7da465bc2dc58c2b89852903669c18bf4b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0f5452e3abbde40c247ef7e000b84fc3eb00c943
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871799"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446838"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="speech-sdk-130-2019-february-release"></a>Zestaw SDK 1.3.0 mowy: Wersji z lutego 2019 r
+
+**Nowe funkcje**
+
+* Zestaw SDK rozpoznawania mowy obsługuje wyboru wejściowego mikrofonu za pośrednictwem klasy AudioConfig. Umożliwia przesyłanie strumieniowe audio danych do usługi rozpoznawania mowy z mikrofonu innych niż domyślne. Aby uzyskać więcej informacji, zobacz temat opisujący dokumentacji [wybór urządzenia wejściowe audio](how-to-select-audio-input-devices.md). To nie jest jeszcze dostępna z poziomu języka JavaScript.
+* Zestaw SDK rozpoznawania mowy obsługuje teraz Unity w wersji beta. Prześlij opinię za pośrednictwem sekcji problem [repozytorium przykładów GitHub](https://aka.ms/csspeech/samples). Ta wersja obsługuje platformy Unity na Windows x86 i x64 (pulpitu lub aplikacji Universal Windows Platform) i Android (ARM32/64 x86). Więcej informacji znajduje się w naszym [Szybki Start Unity](quickstart-csharp-unity.md).
+
+**Przykłady**
+
+Następujące Nowa zawartość jest dostępna w naszym [przykładowego repozytorium](https://aka.ms/csspeech/samples):
+
+* Więcej przykładów dla AudioConfig.FromMicrophoneInput.
+* Dodatkowe przykłady w języku Python rozpoznawanie intencji i tłumaczenia.
+* Dodatkowe przykłady dotyczące używania obiektu połączenia w systemie iOS.
+* Dodatkowe przykłady języka Java do tłumaczenia z danymi wyjściowymi audio.
+* Nowy przykład użytkowania [interfejsu API REST transkrypcji partii](batch-transcription.md).
+
+**Ulepszenia / zmiany**
+
+* Python
+  * Ulepszone parametr weryfikacji i komunikaty o błędach w SpeechConfig.
+  * Dodanie obsługi dla obiektu połączenia.
+  * Obsługa 32-bity, Python (x86) na Windows.
+  * Zestaw SDK rozpoznawania mowy w języku Python jest poza beta.
+* iOS
+  * Zestaw SDK jest obecnie wbudowany względem zestawu SDK w wersji 12.1 dla systemu iOS.
+  * Zestaw SDK obsługuje teraz system iOS w wersji 9.2 lub nowszej.
+  * Poprawić dokumentację referencyjną i naprawić kilka nazw właściwości.
+* JavaScript
+  * Dodanie obsługi dla obiektu połączenia.
+  * Dodaj pliki definicji typów dla wbudowanej języka JavaScript
+  * Początkowej obsługi i implementację wskazówek frazę.
+  * Zwraca kolekcję właściwości z usługą JSON w celu rozpoznawania
+* Biblioteki dll Windows zawierają teraz zasobu wersji.
+
+**Poprawki błędów**
+
+* Proxy puste nazwy użytkownika i hasła serwera proxy nie były obsługiwane poprawnie. W tej wersji Jeśli nazwa użytkownika serwera proxy i hasło serwera proxy jest ustawiona na pustym ciągiem, ich będzie nie można przesłać podczas nawiązywania połączenia z serwerem proxy.
+* Identyfikator sesji użytkownika utworzone przez zestaw SDK nie były zawsze rzeczywiście losowy w przypadku niektórych języków&nbsp;/ środowisk. Dodany generator losowych inicjowania, aby rozwiązać ten problem.
+* Poprawa obsługi token autoryzacji. Jeśli chcesz użyć tokenu autoryzacji, określ w SpeechConfig i pozostaw puste, klucz subskrypcji. Następnie utwórz aparat rozpoznawania w zwykły sposób.
+* W niektórych przypadkach połączenia obiektu nie został wydany poprawnie. Ten problem został rozwiązany.
+* Naprawiono próbki kodu JavaScript do obsługi sygnału audio dla syntezy tłumaczenia również w przeglądarce Safari.
+
+## <a name="speech-sdk-121"></a>Zestaw SDK 1.2.1 mowy
+
+To jest wersja tylko do języka JavaScript. Żadne funkcje nie zostały dodane. Wprowadzono następujące poprawki:
+
+* Wyzwolenie koniec strumienia turn.end, a nie speech.end.
+* Naprawiano błąd w przepompowni audio, harmonogram nie obok wysłał Jeśli bieżące wysyłanie nie powiodło się.
+* Napraw rozpoznawania ciągłe przy użyciu tokenu uwierzytelniania.
+* Naprawienie usterki dla różnych rozpoznawania / punktów końcowych.
+* Udoskonalenia dokumentacji.
 
 ## <a name="speech-sdk-120-2018-december-release"></a>Zestaw SDK 1.2.0 mowy: Wersja grudnia 2018 r.
 

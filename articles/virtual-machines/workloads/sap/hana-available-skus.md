@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 11/20/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a62c30235fdd262f0df5937b6a829382d2b45ef
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: b80f872c82061c0cb87f4f1e2714183e71cf02cd
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52866291"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448130"
 ---
 # <a name="available-skus-for-hli"></a>Jednostki SKU dostępne dla HLI
 
@@ -29,11 +29,11 @@ Oprogramowanie SAP HANA na platformie Azure (duże wystąpienia) usługi jest do
 
 | Rozwiązanie SAP | Procesor CPU | Memory (Pamięć) | Magazyn | Dostępność |
 | --- | --- | --- | --- | --- |
-| Optymalizacja pod kątem OLAP: oprogramowanie SAP BW, BW/4HANA<br /> lub SAP HANA dla ogólnych obciążeń OLAP | Oprogramowanie SAP HANA na platformie Azure S72<br /> — 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 rdzeni procesora CPU i 72 wątki procesora CPU |  768 GB |  3 TB | Dostępne |
+| Optymalizacja pod kątem OLAP: SAP BW, BW/4HANA<br /> lub SAP HANA dla ogólnych obciążeń OLAP | Oprogramowanie SAP HANA na platformie Azure S72<br /> — 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 rdzeni procesora CPU i 72 wątki procesora CPU |  768 GB |  3 TB | Nie jest już dostępna |
 | --- | Oprogramowanie SAP HANA na platformie Azure S144<br /> — 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 rdzeni procesora CPU i 144 wątki procesora CPU |  1,5 TB |  6 TB | Nie jest już dostępna |
 | --- | Oprogramowanie SAP HANA na platformie Azure S192<br /> — 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 rdzeni procesora CPU i 192 wątki procesora CPU |  W WERSJI 2.0 TB |  8 TB | Dostępne |
 | --- | Oprogramowanie SAP HANA na platformie Azure S384<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  4.0 TB |  16 TB | Dostępne |
-| Optymalizacja pod kątem OLTP: oprogramowanie SAP Business Suite<br /> SAP HANA lub S/4HANA (OLTP)<br /> Ogólne OLTP | Oprogramowanie SAP HANA na platformie Azure S72m<br /> — 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 rdzeni procesora CPU i 72 wątki procesora CPU |  1,5 TB |  6 TB | Dostępne |
+| Optymalizacja pod kątem OLTP: SAP Business Suite<br /> SAP HANA lub S/4HANA (OLTP)<br /> Ogólne OLTP | Oprogramowanie SAP HANA na platformie Azure S72m<br /> — 2 x procesor Intel® Xeon® E7-8890 v3<br /> 36 rdzeni procesora CPU i 72 wątki procesora CPU |  1,5 TB |  6 TB | Nie jest już dostępna |
 |---| Oprogramowanie SAP HANA na platformie Azure S144m<br /> — 4 x procesor Intel® Xeon® E7-8890 v3<br /> 72 rdzeni procesora CPU i 144 wątki procesora CPU |  3.0 TB |  12 TB | Nie jest już dostępna |
 |---| Oprogramowanie SAP HANA na platformie Azure S192m<br /> — 4 x procesor Intel® Xeon® E7-8890 v4<br /> 96 rdzeni procesora CPU i 192 wątki procesora CPU  |  4.0 TB |  16 TB | Dostępne |
 |---| Oprogramowanie SAP HANA na platformie Azure S384m<br /> — 8 x procesor Intel® Xeon® E7-8890 v4<br /> 192 rdzeni procesora CPU i 384 wątki procesora CPU |  W WERSJI 6.0 TB |  18 TB | Dostępne |
@@ -76,9 +76,9 @@ Podstawowy dla oferty, z wyjątkiem jednostki dla projektów właściwe dla klie
 
 Pełną sygnaturę dużych wystąpień HANA nie jest przeznaczona wyłącznie przydzielone dla jednego klienta&#39;s użycia. Fakt ten dotyczy regałów zasoby obliczeniowe i magazynowe, które są połączone za pośrednictwem sieci szkieletowej wdrożonych na platformie Azure, jak również. Duże wystąpienie oprogramowania HANA infrastruktury, takich jak Azure, wdraża różnych klientów &quot;dzierżaw&quot; , które są odizolowane od siebie nawzajem w następujących trzech poziomach:
 
-- **Sieć**: izolacji za pośrednictwem sieci wirtualnych w ramach sygnatury dużych wystąpień HANA.
-- **Magazyn**: izolacji przy użyciu maszyn wirtualnych magazynu, które mają woluminy magazynu przypisany i izolowania woluminów magazynu między dzierżawami.
-- **Obliczenia**: dedykowane przypisanie jednostek serwera do pojedynczej dzierżawy. Nie trudne lub nietrwałe partycjonowanie jednostek serwera. Bez udostępniania pojedynczego serwera lub hosta jednostka między dzierżawami. 
+- **Sieć**: Izolacja za pośrednictwem sieci wirtualnych w ramach sygnatury dużych wystąpień HANA.
+- **Magazyn**: Izolacja za pośrednictwem magazynu maszyn wirtualnych, które mają woluminy magazynu przypisana, a izolowania woluminów magazynu między dzierżawami.
+- **Obliczenia**: Dedykowane przypisanie jednostek serwera do pojedynczej dzierżawy. Nie trudne lub nietrwałe partycjonowanie jednostek serwera. Bez udostępniania pojedynczego serwera lub hosta jednostka między dzierżawami. 
 
 Wdrażanie dużych wystąpień HANA jednostek między różnych dzierżawach nie są widoczne ze sobą. Jednostki dużych wystąpień HANA wdrożonych w różnych dzierżawach nie mogą komunikować się bezpośrednio ze sobą na poziomie sygnatury dużych wystąpień HANA. Tylko dużych wystąpień HANA jednostek w ramach jednej dzierżawy mogą komunikować się ze sobą na poziomie sygnatury dużych wystąpień HANA.
 

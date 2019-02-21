@@ -1,6 +1,6 @@
 ---
-title: Analizowanie dzienników aktywności usługi Azure Active Directory przy użyciu usługi Log Analytics (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak analizować Dzienniki aktywności usługi Azure Active Directory przy użyciu usługi Log Analytics (wersja zapoznawcza)
+title: Analizowanie dzienników aktywności usługi Azure Active Directory przy użyciu dzienników usługi Azure Monitor (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak analizować Dzienniki aktywności usługi Azure Active Directory przy użyciu dzienników usługi Azure Monitor (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ea13d08af924427b9e7dc5def72c19d560525b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2e565f5b9bcd9e3e79423c742b2c95c00abd97b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188260"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454762"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Analizowanie usługi Azure AD dzienników aktywności z usługą Log Analytics (wersja zapoznawcza)
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Analizowanie usługi Azure AD dzienników aktywności przy użyciu dzienników usługi Azure Monitor (wersja zapoznawcza)
 
-Po zakończeniu [integracji usługi Azure AD dzienników aktywności z usługą Log Analytics](howto-integrate-activity-logs-with-log-analytics.md), możliwości usługi Log Analytics można użyć, aby uzyskać wgląd w danym środowisku. Można także zainstalować [widoki usługi Log Analytics dla usługi Azure AD działania dzienniki](howto-install-use-log-analytics-views.md) uzyskać dostęp do gotowych raportów dotyczących inspekcji i zdarzeń logowania w danym środowisku.
+Po zakończeniu [integracji usługi Azure AD dzienników aktywności przy użyciu dzienników usługi Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md), możliwości dzienniki usługi Azure Monitor umożliwia wgląd w danym środowisku. Można także zainstalować [dziennika widoków usługi analytics dla działania usługi Azure AD dzienniki](howto-install-use-log-analytics-views.md) uzyskać dostęp do gotowych raportów dotyczących inspekcji i zdarzeń logowania w danym środowisku.
 
 W tym artykule dowiesz się, jak analizować Azure Dzienniki aktywności usługi AD w obszarze roboczym usługi Log Analytics. 
 
@@ -78,10 +78,12 @@ AuditLogs
 
 Można również ustawić alerty na zapytanie. Na przykład aby skonfigurować alert, gdy więcej niż 10 aplikacji były używane w ostatnim tygodniu:
 
-1. W obszarze roboczym wybierz **Ustaw alert** otworzyć **Utwórz regułę** strony. 
+1. W obszarze roboczym wybierz **Ustaw alert** otworzyć **Utwórz regułę** strony.
+
     ![Ustawianie alertu](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
 
-2. Wybierz domyślną **kryteria alertu** utworzone w alertu i Aktualizuj **próg** w metrykę do 10. 
+2. Wybierz domyślną **kryteria alertu** utworzone w alertu i Aktualizuj **próg** w metrykę do 10.
+
     ![Kryteria alertu](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
 3. Wprowadź nazwę i opis alertu, a następnie wybierz poziom ważności. W naszym przykładzie, możemy ustawić ją na **komunikat o charakterze informacyjnym**.
@@ -92,17 +94,17 @@ Można również ustawić alerty na zapytanie. Na przykład aby skonfigurować a
 
 ## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Instalowanie i używanie wbudowanych widoków dla działania usługi Azure AD dzienników
 
-Możesz również pobrać wstępnie skompilowanych widoki usługi Log Analytics dla działania usługi Azure AD dzienniki. Widoki przedstawiają kilka raportów, które dotyczą typowych scenariuszy obejmujących inspekcji i zdarzeń logowania. Użytkownik może również powiadamiać na wszystkich danych zawartych w raportach, korzystając z procedury opisanej w poprzedniej sekcji.
+Widoki analizy dziennika wstępnie utworzonych dla działania usługi Azure AD można również pobrać dzienniki. Widoki przedstawiają kilka raportów, które dotyczą typowych scenariuszy obejmujących inspekcji i zdarzeń logowania. Użytkownik może również powiadamiać na wszystkich danych zawartych w raportach, korzystając z procedury opisanej w poprzedniej sekcji.
 
 * **Konto usługi Azure AD inicjowania obsługi zdarzeń**: W tym widoku wyświetlane raporty związane z inspekcji działania obsługi, takie jak liczba nowych użytkowników zainicjowano obsługę administracyjną i problemy z aprowizowaniem, liczbę użytkowników, aktualizowane i zaktualizuj błędów oraz liczbę cofanie aprowizacji użytkowników i odpowiednie błędów.    
 * **Zdarzenia logowania**: Ten widok przedstawia najbardziej odpowiednie raporty dotyczące monitorowania aktywności logowania, takich jak logowania w aplikacji, użytkowników, urządzeń, a także śledzenia liczby operacji logowania wraz z upływem czasu widok podsumowania.
 * **Użytkownicy wyrażania zgody**: Ten widok przedstawia raportów związanych z zgody użytkownika, takie jak zgody przyznaje przez użytkownika, logowania przez użytkowników, którzy uzyska zatwierdzenie, a także logowania przez aplikację dla wszystkich aplikacji opartych na zgody. 
 
-Dowiedz się, jak [zainstalować widoki usługi Log Analytics dla dzienników aktywności usługi Azure AD i używać ich](howto-install-use-log-analytics-views.md). 
+Dowiedz się, jak [Instalowanie i używanie widoków analizy dzienników dla działania usługi Azure AD dzienniki](howto-install-use-log-analytics-views.md). 
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Wprowadzenie do zapytań w usłudze Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
+* [Rozpoczynanie pracy z zapytaniami w dziennikach w usłudze Azure Monitor](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [Tworzenie i zarządzanie grupami alertów w witrynie Azure portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
-* [Instalowanie i używanie widoki usługi Log Analytics dla usługi Azure Active Directory](howto-install-use-log-analytics-views.md)
+* [Instalowanie i używanie widoków analizy dzienników dla usługi Azure Active Directory](howto-install-use-log-analytics-views.md)

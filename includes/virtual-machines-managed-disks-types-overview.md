@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7f5583bfd6089362aef51285643f5fc920005242
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 8a067474fb172d4ff7a7fdf7eb6d24536bd2d017
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331233"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443366"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Jakie typy dysków są dostępne na platformie Azure?
 
@@ -21,9 +21,9 @@ Usługi Azure managed disks jest obecnie oferuje cztery typy dysków, z których
 
 ## <a name="disk-comparison"></a>Porównanie dysków
 
-W poniższej tabeli przedstawiono porównanie ultra dysków (wersja zapoznawcza) — wersja premium solid-Województwo dyski (SSD), SSD w warstwie standardowa i standardowych dysków twardych (HDD) dla dysków managed disks, aby ułatwić wybór rozwiązania do zastosowania.
+Poniższa tabela zawiera porównanie ultra solid-Województwo dyski (SSD) (wersja zapoznawcza), dysk SSD w warstwie premium, SSD w warstwie standardowa i standardowych dysków twardych (HDD) dla dysków zarządzanych, aby ułatwić wybór rozwiązania do zastosowania.
 
-|   | Największa dysków (wersja zapoznawcza)   | Premium, SSD   | Standardowa, SSD   | Standardowa, dysk twardy   |
+|   | Największa SSD (wersja zapoznawcza)   | Premium, SSD   | Standardowa, SSD   | Standardowa, dysk twardy   |
 |---------|---------|---------|---------|---------|
 |Typ dysku   |SSD   |SSD   |SSD   |HDD   |
 |Scenariusz   |Obciążeń intensywnie korzystających z operacji We/Wy, takich jak SAP HANA, baz danych w warstwie najwyższego (na przykład SQL, Oracle) i innych obciążeń dużej transakcji.   |Obciążenia produkcyjne i wrażliwe na wydajność   |Serwery sieci Web, aplikacje dla przedsiębiorstw używana w niewielkim stopniu i tworzenie i testowanie   |Tworzenie kopii zapasowej, zastosowania niekrytyczne, rzadkie dostępu   |
@@ -31,19 +31,19 @@ W poniższej tabeli przedstawiono porównanie ultra dysków (wersja zapoznawcza)
 |Maksymalna przepływność   |2000 MiB/s (wersja zapoznawcza)   |250 MiB (GA) / s, 750 MiB/s (wersja zapoznawcza)   |60 MiB/s (GA), 500 MiB/s (wersja zapoznawcza)   |60 Mib/s (GA), 500 MiB/s (wersja zapoznawcza)   |
 |Maks. IOPS   |160,000 (wersja zapoznawcza)   |7500 (GA), 20 000 (wersja zapoznawcza)   |500 (GA), 2000 (wersja zapoznawcza)   |500 (GA), 2000 (wersja zapoznawcza)   |
 
-## <a name="ultra-disks-preview"></a>Największa dysków (wersja zapoznawcza)
+## <a name="ultra-ssd-preview"></a>Największa SSD (wersja zapoznawcza)
 
-Największa dyskami platformy Azure (wersja zapoznawcza) dostarczać wysokiej przepływności, wysoka operacje We/Wy i magazynu dyskowego niskie opóźnienia dla maszyn wirtualnych IaaS platformy Azure. Niektóre dodatkowe korzyści ultra dyski obejmują możliwość dynamicznie zmieniać wydajność dysku, wraz z obciążeń, bez konieczności ponownego uruchamiania maszyn wirtualnych. Największa dyski są odpowiednie dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, najwyższej warstwy bazy danych i transakcji duże obciążenia. Największa dyski mogą być używane tylko jako dyski z danymi. Zalecamy używanie dysków premium SSD jako dyski systemu operacyjnego.
+Dyski SSD ultra platformy Azure (wersja zapoznawcza) dostarczać wysokiej przepływności, wysoka operacje We/Wy i magazynu dyskowego niskie opóźnienia dla maszyn wirtualnych IaaS platformy Azure. Niektóre dodatkowe korzyści ultra SSD obejmują możliwość dynamicznie zmieniać wydajność dysku, wraz z obciążeń, bez konieczności ponownego uruchamiania maszyn wirtualnych. Największa dyski SSD są odpowiednie dla obciążeń intensywnie korzystających z danych, takich jak SAP HANA, najwyższej warstwy bazy danych i transakcji duże obciążenia. Największa dysków SSD należy używać tylko jako dyski z danymi. Zalecamy używanie dysków premium SSD jako dyski systemu operacyjnego.
 
 ### <a name="performance"></a>Wydajność
 
-Podczas aprowizowania dysku ultra niezależnie skonfigurować pojemność i wydajność dysku. Największa dyski są dostępne w kilku stałych rozmiarach od 4 GiB maksymalnie 64 TiB i są wyposażone w modelu konfiguracji elastyczna wydajność umożliwiająca można niezależnie konfigurować operacje We/Wy i przepływność.
+Podczas aprowizowania dysku ultra niezależnie skonfigurować pojemność i wydajność dysku. Największa dyski SSD są dostępne w kilku stałych rozmiarach od 4 GiB maksymalnie 64 TiB i są wyposażone w modelu konfiguracji elastyczna wydajność umożliwiająca można niezależnie konfigurować operacje We/Wy i przepływność.
 
-Niektóre kluczowe funkcje Ultra dyski są:
+Niektóre kluczowe funkcje Ultra dyski SSD są:
 
-- Pojemność dysku: Zakresy pojemności dysków Ultra z 4 GiB rozmiarze do 64 TiB.
-- Disk IOPS: Dyski Ultra obsługują operacje We/Wy limitów 300 operacji We/Wy/GiB, maksymalnie 160 KB operacje We/Wy na dysk. Uzyskanie operacje We/Wy, które należy aprowizować, upewnij się, że wybrany dysk operacje We/Wy mniejsza niż na SEKUNDĘ maszyny Wirtualnej. Minimalna dysku operacje We/Wy są 100 operacji We/Wy.
-- Przepływność dysku: Z dyskami najwyższej przepływności pojedynczego dysku wynoszący 256 KiB/s dla każdego aprowizowane operacje We/Wy, maksymalnie 2000 MB/s na dysk (gdzie MB/s = 10 ^ 6 bajtów na sekundę). Przepływność dysku minimalną jest 1 MiB.
+- Pojemność dysku: Największa zakresy pojemność dysków SSD z 4 GiB rozmiarze do 64 TiB.
+- Disk IOPS: Największa SSD obsługuje operacje We/Wy limitów 300 operacji We/Wy/GiB, maksymalnie 160 KB operacje We/Wy na dysk. Uzyskanie operacje We/Wy, które należy aprowizować, upewnij się, że wybrany dysk operacje We/Wy mniejsza niż na SEKUNDĘ maszyny Wirtualnej. Minimalna dysku operacje We/Wy są 100 operacji We/Wy.
+- Przepływność dysku: Przy użyciu najwyższej SSD przepływność pojedynczego dysku wynoszący 256 KiB/s dla każdego aprowizowane operacje We/Wy, maksymalnie 2000 MB/s na dysk (gdzie MB/s = 10 ^ 6 bajtów na sekundę). Przepływność dysku minimalną jest 1 MiB.
 
 ### <a name="disk-size"></a>Rozmiar dysku
 
@@ -61,7 +61,7 @@ Niektóre kluczowe funkcje Ultra dyski są:
 
 ### <a name="preview-scope-and-limitations"></a>Zakres (wersja zapoznawcza) i ograniczenia
 
-W trakcie okresu zapoznawczego ultra dyski:
+W trakcie okresu zapoznawczego ultra SSD:
 
 - Są obsługiwane w regionie wschodnie stany USA 2 w pojedynczej strefie dostępności  
 - Należy używać tylko z użyciem strefy dostępności (zestawy dostępności i jednego wdrożenia maszyn wirtualnych poza strefy będą ma możliwość dołączenia dysku ultra)
@@ -81,7 +81,7 @@ Usługa Azure premium SSD dostarczać obsługę przez dyski o wysokiej wydajnoś
 
 Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
 
-| Rozmiary dysków SSD — wersja Premium  | P4               | P6               | P10             | P15 | P20              | S30              | P40              | P50              | P60*              | P70*              | P80*              |
+| Rozmiary dysków SSD — wersja Premium  | P4               | P6               | P10             | P15 | P20              | P30              | P40              | P50              | P60*              | P70*              | P80*              |
 |---------------------|---------------------|---------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|------------------|
 | Rozmiar dysku w GiB           | 32             | 64             | 128            | 256  | 512            | 1,024    | 2,048     | 4,095    | 8192     | 16,384     | 32,767     |
 | Liczba operacji wejścia/wyjścia na sekundę na dysk       | Do 120 | Maksymalnie 240              | Maks. 500              | Maksymalnie 1100 | Maksymalnie 2300              | Maksymalnie 5000              | Maksymalnie 7500             | Maksymalnie 7500              | Maksymalnie 12 500              | Maksymalnie 15 000              | Maksymalnie 20 000              |

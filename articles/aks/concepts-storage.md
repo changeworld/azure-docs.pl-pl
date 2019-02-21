@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: c3a737bdd9978e6cb02e3e8b7a34407eb1dd8fb6
-ms.sourcegitcommit: 3a7c1688d1f64ff7f1e68ec4bb799ba8a29a04a8
+ms.openlocfilehash: fd301967800f67d95c12f1689981b2dfd8eb2d80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49381100"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452767"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Opcje magazynu dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -29,7 +29,7 @@ W tym artykule przedstawiono podstawowe pojęcia, które zapewniają magazynu do
 
 ## <a name="volumes"></a>Woluminy
 
-Aplikacje często muszą mieć możliwość przechowywania i pobierania danych. Jak Kubernetes zwykle traktuje poszczególnych zasobników jako zasoby tymczasowych, możliwe do rozporządzania, różne podejścia są dostępne do użycia aplikacji i utrwalenia danych zgodnie z potrzebami. A *woluminu* przedstawia sposób przechowywanie, pobieranie i utrwalanie danych zasobników i w całym cyklu życia aplikacji.
+Aplikacje często muszą mieć możliwość przechowywania i pobierania danych. Zgodnie z rozwiązania Kubernetes zwykle traktuje poszczególnych zasobników jako zasoby tymczasowych, możliwe do rozporządzania, różne podejścia są dostępne dla aplikacji do użycia i utrwalić dane zgodnie z potrzebami. A *woluminu* przedstawia sposób przechowywanie, pobieranie i utrwalanie danych zasobników i w całym cyklu życia aplikacji.
 
 Tradycyjne woluminy do przechowywania i pobierania danych są tworzone jako zasoby platformy Kubernetes, wspierane przez usługi Azure Storage. Można ręcznie utworzyć te woluminy można przypisać bezpośrednio do zasobników lub mieć Kubernetes utworzyć je automatycznie. Te woluminy danych przy użyciu usługi Azure Disks lub usługi Azure Files:
 
@@ -44,7 +44,7 @@ W usłudze Kubernetes woluminów może reprezentować dysku tradycyjnych więcej
 
 ## <a name="persistent-volumes"></a>Woluminy trwałe
 
-Woluminy są zdefiniowane i utworzony jako część cyklu życia zasobnika istnieje tylko do momentu usunięcia zasobnik. Zasobników często oczekiwać, że pozostaje jeśli Zasobnik jest ponownie zaplanować na inny host, podczas zdarzenia konserwacji, szczególnie w przypadku StatefulSets ich przechowywania. A *trwały wolumin* (PV) jest tworzony i zarządzany przez interfejs API rozwiązania Kubernetes, który może znajdować się poza okres istnienia poszczególnych zasobnika zasobu magazynu.
+Woluminy, które są zdefiniowane i utworzonego w ramach cyklu życia pod istnieje tylko do momentu usunięcia zasobnik. Zasobników często oczekiwać, że pozostaje jeśli Zasobnik jest ponownie zaplanować na inny host, podczas zdarzenia konserwacji, szczególnie w przypadku StatefulSets ich przechowywania. A *trwały wolumin* (PV) jest tworzony i zarządzany przez interfejs API rozwiązania Kubernetes, który może znajdować się poza okres istnienia poszczególnych zasobnika zasobu magazynu.
 
 Azure Disks lub pliki są używane do zapewnienia PersistentVolume. Jak wspomniano w poprzedniej sekcji na woluminach, wybór dysków lub pliki często jest określany przez potrzebę równoczesnego dostępu do danych lub warstwy wydajności.
 

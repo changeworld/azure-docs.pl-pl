@@ -10,12 +10,12 @@ ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
-ms.openlocfilehash: a7753280c0b84b21f44e52c303b96f11cd4cd8af
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a71362f4d6a69f2eaed36dd549437bb5857d555f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765794"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457000"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -73,7 +73,7 @@ Wymagane jako dane wejściowe dla parametrów automatyzacji są następujące in
 
 Posiadanie wielu lokacjach wdrożenia usługi Active Directory można skonfigurować w najbliższej lokacji usługi Active Directory do wdrożenia usługi Azure Stack. Konfiguracja pozwala na uniknięcie zdefiniowanie rozwiązywania kwerend, przy użyciu serwera wykazu globalnego z lokacją zdalną przez usługę Azure Stack Graph.
 
-Dodawanie usługi Azure Stack [sieci publicznych adresów VIP](azure-stack-network.md#public-vip-network) podsieci do lokacji usługi AD Azure najbardziej zbliżony do usługi Azure Stack. Na przykład jeśli usługi Active Directory ma dwie lokacje Seattle i Redmond z usługą Azure Stack wdrożone w lokacji Seattle, należy dodać podsieci sieci publicznych adresów VIP usługi Azure Stack w witrynie usługi Azure AD dla Seattle.
+Dodawanie usługi Azure Stack [sieci publicznych adresów VIP](azure-stack-network.md#public-vip-network) podsieci do lokacji usługi Active Directory najbardziej zbliżony do usługi Azure Stack. Na przykład jeśli usługi Active Directory ma dwie lokacje Seattle i Redmond z usługą Azure Stack wdrożone w lokacji Seattle, należy dodać podsieci sieci publicznych adresów VIP usługi Azure Stack do lokacji usługi Active Directory dla Seattle.
 
 Aby uzyskać więcej informacji na temat Lokacje usługi Active Directory zobacz [Projektowanie topologii lokacji](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 77d99c90e65647a1f4a4efb07ff5520596fa54cf
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: ca8066caf77852c3ec1a8bd7cb534e8d74704bf2
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295172"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447280"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
@@ -22,6 +22,8 @@ Oprócz przeprowadzania inspekcji i [korygowanie](../how-to/remediate-resources.
 
 > [!IMPORTANT]
 > Obecnie tylko **wbudowanych** zasady są obsługiwane przy użyciu konfiguracji gościa.
+
+[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
 
 ## <a name="extension-and-client"></a>Rozszerzenie i klienta
 

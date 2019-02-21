@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: 0f522897f3d3b3261045f1c14387af53ebf4ad9d
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: e782afb971f95a654119d9817edeef02642bee9e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429591"
+ms.locfileid: "56447569"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
 
@@ -108,7 +108,7 @@ Jeśli nie masz konta serwera proxy systemu skonfigurowane w następujący spos�
 1. Pobierz [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
 
 2. Uruchom **PsExec.exe -i -s cmd.exe** do uruchamiania wiersza polecenia przy użyciu konta system.
-3. Uruchom przeglądarkę w kontekście systemowym. Na przykład: **ProgramFiles%\Internet Explorer\iexplore.exe** programu Internet Explorer.  
+3. Uruchom przeglądarkę w kontekście systemowym. Na przykład: **%PROGRAMFILES%\Internet Explorer\iexplore.exe** programu Internet Explorer.  
 4. Zdefiniuj ustawienia serwera proxy.
     - Na maszynach z systemem Linux:
         - Dodaj następujący wiersz do **/etc/środowisko** pliku:
@@ -117,7 +117,7 @@ Jeśli nie masz konta serwera proxy systemu skonfigurowane w następujący spos�
             - **Adres IP HttpProxy.Host=proxy**
             - **HttpProxy.Port=proxy port**
     - Na komputerach Windows, w ustawieniach przeglądarki należy określić, że powinien być używany serwer proxy. Jeśli obecnie używasz serwera proxy na koncie użytkownika, umożliwia ten skrypt należy zastosować na poziomie konta system.
-        ```
+        ```powershell
        $obj = Get-ItemProperty -Path Registry::”HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
        Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
        Set-ItemProperty -Path Registry::”HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
@@ -145,7 +145,7 @@ W sieciowej grupie zabezpieczeń **blokady NF**, zezwalają na ruch z dowolnego 
 - Poniższy skrypt programu PowerShell zawiera przykładowy zezwolenia na ruch.
 - Zamiast zezwalać na ruch wychodzący do wszystkich publicznych adresów internetowych, można określić zakres adresów IP (-DestinationPortRange), lub użyj storage.region tag usługi.   
 
-    ```
+    ```powershell
     Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
     Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
     ```
@@ -237,7 +237,7 @@ Odnajdywanie maszyn wirtualnych w ramach subskrypcji i skonfiguruj kopię zapaso
 
 Po włączeniu kopii zapasowej:
 
-- Tworzenie początkowej kopii zapasowej kopii zapasowej jest uruchamiane zgodnie z harmonogramem kopii zapasowej.
+- Tworzenie początkowej kopii zapasowej jest uruchamiane zgodnie z harmonogramem kopii zapasowej.
 - Usługa Backup instaluje rozszerzenie kopii zapasowej, czy maszyna wirtualna jest uruchomiona.
     - Uruchomiona maszyna wirtualna zapewnia największe prawdopodobieństwo uzyskania punktu odzyskiwania spójnego z aplikacją.
     -  Jednak maszyna wirtualna jest kopii zapasowej, nawet jeśli jest ona wyłączona i nie można zainstalować rozszerzenia. Jest to nazywane *maszyny Wirtualnej w trybie offline*. W takim przypadku punkt odzyskiwania będzie *awaryjnie spójny*.

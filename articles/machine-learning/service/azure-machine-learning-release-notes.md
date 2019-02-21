@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f02a44f41eba8cc4298b9fc730354799ca0aad0c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100180"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446770"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Informacje o wersji usługi Azure Machine Learning
 
@@ -29,7 +29,7 @@ Ten artykuł zawiera informacje o wersji usługi Azure Machine Learning.  Aby uz
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Usługi Azure Machine Learning zestawu SDK dla języka Python v1.0.15
 
 + **Nowe funkcje**
-  + Azure potoków uczenia maszynowego dodano AzureBatchStep ([notesu](https://aka.ms/pl-azbatch)), HyperDriveStep ([notesu](https://aka.ms/pl-hyperdrive)) i na podstawie czasu planowania fuctionality ([notesu](https://aka.ms/pl-schedule)).
+  + Azure potoków uczenia maszynowego dodano AzureBatchStep ([notesu](https://aka.ms/pl-azbatch)), HyperDriveStep ([notesu](https://aka.ms/pl-hyperdrive)) i na podstawie czasu planowania funkcji ([notesu](https://aka.ms/pl-schedule)).
   +  DataTranferStep zaktualizowane do pracy z serwera SQL Azure i usługa Azure database for PostgreSQL ([notesu](https://aka.ms/pl-data-trans)).
 
 + **Changes**

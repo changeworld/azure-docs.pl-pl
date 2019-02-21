@@ -1,5 +1,5 @@
 ---
-title: Wewnętrzny błąd występuje, gdy tworzone jest połączenie RDP na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
+title: Występuje błąd wewnętrzny podczas tworzenia połączenia RDP na maszynach wirtualnych platformy Azure | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rozwiązywać problemy z błędami wewnętrzny protokołu RDP w systemie Microsoft Azure. | Dokumentacja firmy Microsoft
 services: virtual-machines-windows
 documentationCenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: dd75d5a3186bbb6ba82e2deb83a7e8429e32a3f2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134526"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445785"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Występuje błąd wewnętrzny podczas próby połączenia z Maszyną wirtualną platformy Azure za pośrednictwem pulpitu zdalnego
 
 W tym artykule opisano błędem, które mogą wystąpić podczas próby nawiązania połączenia z maszyną wirtualną (VM) w systemie Microsoft Azure.
 > [!NOTE]
-> Platforma Azure ma dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager, w którym firma Microsoft zaleca używanie w przypadku nowych wdrożeń zamiast klasycznego modelu wdrażania.
 
 ## <a name="symptoms"></a>Objawy
 
@@ -55,7 +55,7 @@ Aby rozwiązać ten problem, należy użyć konsoli szeregowej lub [napraw maszy
 Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShell](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
 ). Jeśli na maszynie Wirtualnej nie włączono konsoli szeregowej, przejdź do strony [napraw maszynę Wirtualną w tryb offline](#repair-the-vm-offline) sekcji.
 
-#### <a name="step-1-check-the-rdp-port"></a>Krok 1. sprawdzenie portu RDP
+#### <a name="step-1-check-the-rdp-port"></a>Krok: 1 Sprawdź portów protokołu RDP
 
 1. W wystąpieniu programu PowerShell, użyj [NETSTAT](https://docs.microsoft.com/windows-server/administration/windows-commands/netstat
 ) do sprawdzenia, czy port 8080 jest używany przez inne aplikacje:
@@ -65,31 +65,39 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
 
     1. Zatrzymaj usługę dla aplikacji, która używa usługi 3389:
 
-        Stop-Service - Name <ServiceName>
+            Stop-Service -Name <ServiceName> -Force
 
     2. Uruchom usługę terminalu:
 
-        Start-Service - nazwa Termservice
+            Start-Service -Name Termservice
 
 2. Jeśli nie można zatrzymać aplikacji lub jeśli ta metoda nie ma zastosowania do użytkownika, należy zmienić port dla protokołu RDP:
 
     1. Zmień numer portu:
 
-        Set-zmieniona właściwość elementu — ścieżki "Tcp Server\WinStations\RDP HKLM\SYSTEM\CurrentControlSet\Control\Terminal" — numer_portu nazwa-wartość <Hexportnumber>
+            Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
 
-        Stop-Service - nazwa Termservice Start-Service-nazwa Termservice
+            Stop-Service -Name Termservice -Force
+            
+            Start-Service -Name Termservice 
 
     2. Ustaw zaporę dla nowego portu:
 
-        Set-NetFirewallRule-Name "Pulpit zdalny-przekierowywania-w-TCP" - LocalPort < nowy PORT (dziesiętna) >
+            Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
 
     3. [Aktualizowanie sieciowej grupy zabezpieczeń dla nowego portu](../../virtual-network/security-overview.md) w portalu Azure portem RDP.
 
-#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Uprawnienia są poprawne certyfikatu z podpisem własnym protokołu RDP
+#### <a name="step-2-set-correct-permissions-on-the-rdp-self-signed-certificate"></a>Krok 2: Ustaw uprawnienia poprawny certyfikat z podpisem własnym protokołu RDP
 
 1.  W wystąpieniu programu PowerShell uruchom następujące polecenia pojedynczo, aby odnowić certyfikat z podpisem własnym protokołu RDP:
 
-        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint
+        Import-Module PKI 
+    
+        Set-Location Cert:\LocalMachine 
+        
+        $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) 
+        
+        Remove-Item -Path $RdpCertThumbprint
 
         Stop-Service -Name "SessionEnv"
 
@@ -112,7 +120,9 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
 
         md c:\temp
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt 
+        
+        takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
 
@@ -120,7 +130,9 @@ Połączyć się z [konsoli szeregowej i otwórz wystąpienie programu PowerShel
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt Restart-Service TermService -Force
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt 
+        
+        Restart-Service TermService -Force
 
 4. Uruchom ponownie maszynę Wirtualną, a następnie spróbuj Start Podłączanie pulpitu zdalnego z maszyną wirtualną. Jeśli błąd będzie nadal występował, przejdź do następnego kroku.
 
@@ -161,7 +173,7 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
 
     W tym skrypcie przyjęto założenie, że litery dysku, która jest przypisana do dołączonym dysku systemu operacyjnego jest F. Zastąp tę literę dysku z odpowiednią wartością dla maszyny Wirtualnej.
 
-    ```powershell
+    ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
     REM Enable Serial Console
@@ -191,6 +203,7 @@ Aby włączyć dziennik zrzutu i konsoli szeregowej, uruchom następujący skryp
         Md F:\temp
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt
+        
         takeown /f "F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"

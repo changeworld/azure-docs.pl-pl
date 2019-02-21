@@ -12,15 +12,15 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 714a78c436b7071717e2df12c2a65999920f8c63
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192136"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453651"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Dodawanie kont innych niż Microsoft
-Dodaj konta firmy Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication. Aplikacja Microsoft Authenticator współpracuje z dowolnej aplikacji, która używa weryfikacji two-Factor Authentication i konto, które obsługuje standardy oparte na czasie hasła jednorazowego (TOTP).
+Dodaj konta firmy Microsoft, takich jak Google, Facebook lub GitHub do aplikacji Microsoft Authenticator, aby Weryfikacja two-Factor Authentication. Aplikacja Microsoft Authenticator współdziała z dowolną aplikacją używającą weryfikacji dwuetapowej i dowolnym kontem obsługującym standardy TOTP (Time-based One-time Password).
 
 >[!Important]
 >Przed dodaniem konta należy pobrać i zainstalować aplikację Microsoft Authenticator. Jeśli użytkownik jeszcze nie, wykonaj kroki opisane w [pobrać i zainstalować aplikację](user-help-auth-app-download-install.md) artykułu.
@@ -45,7 +45,7 @@ Dodaj swoje konto Google przez włączenie weryfikacji two-Factor Authentication
 
 ### <a name="add-your-google-account-to-the-app"></a>Dodaj swoje konto Google do aplikacji
 
-1. Na stronie usługi Google na komputerze PC, przejdź do **Konfigurowanie alternatywnych drugi etap** wybierz pozycję **Konfigurowanie** z **aplikacji Authenticator** sekcji.
+1. Na stronie usługi Google na komputerze, przejdź do **Konfigurowanie alternatywnych drugi etap** wybierz pozycję **Konfigurowanie** z **aplikacji Authenticator** sekcji.
 
 2. Na **uzyskiwać kody z aplikacji wystawcy uwierzytelnienia** stronie, wybierz opcję **Android** lub **iPhone** zależnie od typu telefonu, a następnie wybierz **dalej**.
 
@@ -53,7 +53,7 @@ Dodaj swoje konto Google przez włączenie weryfikacji two-Factor Authentication
 
 3. Otwórz aplikację Microsoft Authenticator, wybierz opcję **Dodaj konto** z **dostosowywanie i sterowania** ikonę w prawym górnym, prawo, a następnie wybierz **inne konto (Google, Facebook itd.)** .
 
-4. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **Konfigurowanie uwierzytelniania** strony na komputerze.
+4. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **Konfigurowanie uwierzytelniania** strony na tym komputerze.
 
     >[!Note]
     >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
@@ -86,13 +86,13 @@ Przez włączenie weryfikacji two-Factor Authentication, a następnie dodanie ko
 
 ### <a name="add-your-facebook-account-to-the-app"></a>Dodawanie konta w serwisie Facebook do aplikacji
 
-1. Na stronie usługi Facebook na komputerze PC, przejdź do **Dodaj kopii zapasowej** sekcji, a następnie wybierz **instalacji** z **aplikacji Authentication** obszaru.
+1. Na stronie usługi Facebook na komputerze przejdź do **Dodaj kopii zapasowej** sekcji, a następnie wybierz **instalacji** z **aplikacji Authentication** obszaru.
 
     Otrzymuje kod QR, który służy do automatycznego skojarzyć swoje konto z aplikacji Microsoft Authenticator. Nie zamykaj tego okna.
 
 2. Otwórz aplikację Microsoft Authenticator, wybierz opcję **Dodaj konto** z **dostosowywanie i sterowania** ikonę w prawym górnym, prawo, a następnie wybierz **inne konto (Google, Facebook itd.)** .
 
-3. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **uwierzytelniania dwuskładnikowego** strony na komputerze.
+3. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **uwierzytelniania dwuskładnikowego** strony na tym komputerze.
 
     >[!Note]
     >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
@@ -137,7 +137,7 @@ Dodaj swoje konto usługi GitHub przez włączenie weryfikacji two-Factor Authen
 
 5. Wprowadź **nazwa konta** (na przykład GitHub) i wpisz **klucz tajny** z kroku 4, a następnie wybierz **Zakończ**.
 
-4. Na **uwierzytelniania dwuskładnikowego** strony na komputerze z systemem, wpisz 6 cyfrowy kod weryfikacyjny w aplikacji przewidziane Twojego konta usługi GitHub, a następnie wybierz pozycję **Włącz**.
+4. Na **uwierzytelniania dwuskładnikowego** strony na komputerze, wpisz 6 cyfrowy kod weryfikacyjny w aplikacji przewidziane Twojego konta usługi GitHub, a następnie wybierz pozycję **Włącz**.
 
     **Kont** strona aplikacji zawiera nazwę konta i 6 cyfrowy kod weryfikacyjny. Dla dodatkowego bezpieczeństwa kod weryfikacyjny zmienia co 30 sekund, uniemożliwiając ktoś przy użyciu kodu wiele razy.
 
@@ -149,7 +149,7 @@ Dodaj swoje konto Amazon przez włączenie weryfikacji two-Factor Authentication
 
 ### <a name="turn-on-two-factor-verification"></a>Włącz weryfikację two-Factor Authentication
 
-1. Na komputerze, otwórz Amazon, wybierz opcję **konta & listy** menu rozwijanego, a następnie wybierz **konta**.
+1. Na komputerze otwórz Amazon, wybierz **konta & listy** menu rozwijanego, a następnie wybierz **konta**.
 
 2. Wybierz **logowania i bezpieczeństwo**, zaloguj się do swojego konta Amazon, a następnie wybierz **Edytuj** w **Zaawansowane ustawienia zabezpieczeń** obszaru.
 
@@ -163,7 +163,7 @@ Dodaj swoje konto Amazon przez włączenie weryfikacji two-Factor Authentication
 
 5. Otwórz aplikację Microsoft Authenticator, wybierz opcję **Dodaj konto** z **dostosowywanie i sterowania** ikonę w prawym górnym, prawo, a następnie wybierz **inne konto (Google, Facebook itd.)** .
 
-6. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **wybierz, jak otrzymasz kodów** strony na komputerze.
+6. Umożliwia skanowanie kodu QR za pomocą aparatu urządzenia **wybierz, jak otrzymasz kodów** strony na tym komputerze.
 
     >[!Note]
     >Jeśli aparat fotograficzny nie działa prawidłowo, można wprowadzić kod QR i adres URL ręcznie.
@@ -178,7 +178,7 @@ Dodaj swoje konto Amazon przez włączenie weryfikacji two-Factor Authentication
 
 8. Na **Dodaj metodę weryfikacji kopii zapasowej** strony na komputerze, wpisz 6 cyfrowy kod weryfikacyjny dostarczone przez metodę weryfikacji kopii zapasowej dla swojego konta Amazon, a następnie wybierz **Sprawdź kod i Kontynuuj**.
 
-9. Almost strony, zdecyduj, czy należy komputer PC z zaufanego urządzenia, a następnie wybierz **rozumiem. Włącz weryfikację dwuetapową**.
+9. Almost strony, zdecyduj, czy komputer stał się zaufanego urządzenia, a następnie wybierz **rozumiem. Włącz weryfikację dwuetapową**.
 
     **Zaawansowane ustawienia zabezpieczeń** zostanie wyświetlona strona, wyświetlanie szczegółów dotyczących zaktualizowane weryfikacji two-Factor Authentication.
 

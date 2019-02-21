@@ -9,20 +9,18 @@ ms.subservice: design
 ms.date: 12/03/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 22993395d60df23533b67ec48d0ea7f979d73e22
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: bd0ec4d334b581d86451e5e534e80c1fde1e33ac
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692466"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445244"
 ---
 # <a name="azure-sql-data-warehouse-gen2-support-for-lower-compute-tiers"></a>Pomoc techniczna platformy Azure SQL Data Warehouse Gen2 dla dolnej warstwy wystąpień obliczeniowych
 
 Firma Microsoft pomaga zwiększania klasy podstawowej koszt uruchamiania obsługi najbardziej wymagających zapytania, dodając dolnej warstwy wystąpień obliczeniowych dla niezwykle szybkie usługi Azure SQL Data magazynu Gen2 magazynu danych. Klienci mogą środowisko usługi Azure SQL Data Warehouse wydajność, elastyczność i bezpieczeństwo funkcjom począwszy od 100 cDWU (jednostek magazynu danych) i skalowanie do ponad 30 000 cDWU w ciągu kilku minut. Klienci mogą korzystać z Gen2 wydajność i elastyczność dzięki niższym warstwy wystąpień obliczeniowych. 
 
 Upuszczając punkt wejścia dla magazynowania danych następnej generacji, Microsoft otwiera drzwi oparte na wartości klientom, którzy chcesz ocenić wszystkie zalety hurtowni danych bezpieczne i o wysokiej wydajności, bez zgadywania, które środowisko w wersji próbnej jest najlepsze dla nich.  Klienci będą można uruchomić możliwie jak 100 cDWU w dół od bieżącego punktu wejścia 500 cDWU.  Gen2 magazynu danych SQL w dalszym ciągu obsługują wstrzymywanie i wznawianie operacji i zbliża się poza po prostu elastyczność obliczeń.  Gen2 obsługuje również magazynu kolumn nieograniczoną pojemność magazynu oraz 2,5 raza więcej pamięci na zapytanie, nawet 128 zapytań jednoczesnych i buforowanie adaptacyjne w funkcji środowiska udostępnianiem średnio 5 razy większej wydajności w porównaniu do tej samej jednostki magazynu danych na Gen1 w tej samej cenie.  Geograficznie nadmiarowe kopie zapasowe są standardem Gen2 z ochroną danych gwarantowana wbudowane. Gen2 magazynu danych w usłudze Azure SQL jest gotowa do skalowania podczas pracy.
-
-Obecnie portal nie obsługuje wdrażania lub skalowania do dolnej warstwy wystąpień Gen2. Firma Microsoft dokłada wszelkich starań, aby włączyć tę funkcję, w międzyczasie, proszę [Prześlij bilet](sql-data-warehouse-get-started-create-support-ticket.md) Jeśli chcesz korzystać z zalet tej nowej warstwy.
 
 ## <a name="getting-started-with-azure-sql-data-warehouse-gen2"></a>Wprowadzenie do usługi Azure SQL Data Warehouse Gen2 
 
@@ -34,22 +32,7 @@ Uaktualnij [usługi Azure SQL Data magazynu obliczenia zoptymalizowane pod kąte
 
 ## <a name="supported-regions-for-lower-compute-tiers"></a>Obsługiwane regiony dla dolnej warstwy wystąpień obliczeniowych
 
-- US1 wschodnie 
-- Wschodnie stany USA 2
-- Europa Zachodnia
-- Europa Północna
-- Zachodnie stany USA 2
-- Azja Południowo-Wschodnia
-- Southcentral Stanów Zjednoczonych
-- Środkowe stany USA 
-- Azja Wschodnia
-- Japonia Wschodnia
-- Indie Środkowe
-- Australia Wschodnia
-- Australia Południowo-Wschodnia
-- Kanada Środkowa
-- Japonia Zachodnia 
-- Kanada Środkowa
+[W tabeli Dostępność obsługiwany region](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

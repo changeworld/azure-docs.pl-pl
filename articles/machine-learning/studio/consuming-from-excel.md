@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1e8bb6deeb66b506e1342fceb725b1563b822dff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989427"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453124"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Korzystanie z usługi sieci Web Azure Machine Learning Studio z poziomu programu Excel
 
@@ -34,7 +34,7 @@ Po utworzeniu usługi sieci web, kliknij pozycję **usług sieci WEB** sekcji po
 
 1. Na **pulpit NAWIGACYJNY** kartę dla usługi sieci web jest wiersz **ŻĄDAŃ/odpowiedzi** usługi. Jeśli ta usługa pojedynczego wyjścia, powinien zostać wyświetlony **pobrać skoroszyt programu Excel** łącza w tym wierszu.
    
-    ![][1]
+    ![](./media/consuming-from-excel/excellink.png)
 2. Kliknij pozycję **pobrać skoroszyt programu Excel**.
 
 **Nowa usługa sieci Web**
@@ -47,13 +47,13 @@ Po utworzeniu usługi sieci web, kliknij pozycję **usług sieci WEB** sekcji po
 1. Otwórz skoroszyt.
 2. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach; Kliknij pozycję **Włącz edytowanie** przycisku.
    
-    ![][2]
+    ![](./media/consuming-from-excel/enableeditting.png)
 3. Zostanie wyświetlone ostrzeżenie o zabezpieczeniach. Kliknij pozycję **Włącz zawartość** przycisk, aby uruchomić makra w arkuszu kalkulacyjnym.
    
-    ![][3]
+    ![](./media/consuming-from-excel/enablecontent.png)
 4. Po włączeniu makra, generowany jest tabelą. Kolumny w niebieskim są wymagane jako dane wejściowe do usługi sieci web RRS, lub **parametry**. Należy pamiętać, danych wyjściowych usługi RRS **przewidywane wartości** w kolorze zielonym. Gdy wszystkie kolumny dla danego wiersza są wypełnione, skoroszyt automatycznie wywołuje interfejs API oceniania i wyświetla wyniki ocenami.
    
-    ![][4]
+    ![](./media/consuming-from-excel/sampletable.png)
 5. Zdobycie więcej niż jeden wiersz, wypełnienie drugi wiersz z danymi i przewidywane wartości są tworzone. Jednocześnie można wkleić nawet kilka wierszy.
 
 Umożliwia dowolnej funkcji programu Excel (wykresy, power map, formatowanie warunkowe itp.) z przewidywane wartości pomagają wizualizować dane.    
@@ -66,8 +66,3 @@ Wykonano wywołanie rekordy zasobów w tych dwóch sytuacji:
 
 1. Po raz pierwszy wiersz ma zawartość we wszystkich jej **parametrów**
 2. Ilekroć dowolny z **parametry** zmian w wierszu, który miał wszystkie jego **parametry** wprowadzony.
-
-[1]: ./media/consuming-from-excel/excellink.png
-[2]: ./media/consuming-from-excel/enableeditting.png
-[3]: ./media/consuming-from-excel/enablecontent.png
-[4]: ./media/consuming-from-excel/sampletable.png

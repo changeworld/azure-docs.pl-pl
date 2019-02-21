@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0d46fc8a152c4426832669ce22d4aa78ac640e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e82e8f6caafb38b758f552913def234a92a0d83
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173946"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454654"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Ręcznie dodaj konto do aplikacji
 Jeśli aparat fotograficzny nie może przechwytywać kod QR, można ręcznie dodawać informacje o Twoim koncie do aplikacji Microsoft Authenticator podczas weryfikacji two-Factor Authentication. Działa to w przypadku pracy lub kont służbowych i kont innych niż Microsoft.
@@ -70,7 +70,7 @@ Kody podane dla konta nie są uwzględniana wielkość liter i nie wymagają mie
 
 3. Wprowadź **nazwa konta** (np. Facebook) i wpisz **klucz tajny** z kroku 1, a następnie wybierz **Zakończ**.
 
-4. Na **uwierzytelniania dwuskładnikowego** strony na komputerze z systemem, wpisz 6 cyfrowy kod weryfikacyjny w aplikacji przewidziane Twojego konta serwisu Facebook, a następnie wybierz pozycję **Sprawdź**.
+4. Na **uwierzytelniania dwuskładnikowego** strony na komputerze, wpisz 6 cyfrowy kod weryfikacyjny w aplikacji przewidziane Twojego konta serwisu Facebook, a następnie wybierz pozycję **Sprawdź**.
 
     **Kont** ekranu aplikacji dowiesz się, nazwę konta i 6 cyfrowy kod weryfikacyjny. Dla dodatkowego bezpieczeństwa kod weryfikacyjny zmienia co 30 sekund, uniemożliwiając ktoś przy użyciu kodu wiele razy.
 
@@ -92,7 +92,7 @@ Przez włączenie weryfikacji two-Factor Authentication, a następnie dodanie ko
 
 5. Na **Dodaj metodę weryfikacji kopii zapasowej** strony na komputerze, wpisz 6 cyfrowy kod weryfikacyjny dostarczone przez metodę weryfikacji kopii zapasowej dla swojego konta Amazon, a następnie wybierz **Sprawdź kod i Kontynuuj**.
 
-6. Almost strony, zdecyduj, czy należy komputer PC z zaufanego urządzenia, a następnie wybierz **rozumiem. Włącz weryfikację dwuetapową**.
+6. Almost strony, zdecyduj, czy komputer stał się zaufanego urządzenia, a następnie wybierz **rozumiem. Włącz weryfikację dwuetapową**.
 
     **Zaawansowane ustawienia zabezpieczeń** zostanie wyświetlona strona, wyświetlanie szczegółów dotyczących zaktualizowane weryfikacji two-Factor Authentication.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: c50c1a111f037b74176b5ca2cf8af518b2d3ffa0
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429387"
+ms.locfileid: "56447218"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Jeśli kwerendy alertów dzienników w usłudze Azure Monitor
 [Reguły na podstawie dzienników usługi Azure Monitor alertów](alerts-unified-log.md) uruchamiane w regularnych odstępach czasu, dlatego należy upewnić się, że są one zapisywane zminimalizować koszty i opóźnienia. Ten artykuł zawiera zalecenia dotyczące pisania wydajne zapytania dotyczące alertów dzienników i procesu konwersji istniejących zapytań. 
@@ -31,16 +31,11 @@ Zapytania, które zaczyna się `search` lub `union` umożliwiają wyszukiwanie w
 
 ```Kusto
 search "Memory"
-
 search * | where == "Memory"
-
 search ObjectName: "Memory"
-
 search ObjectName == "Memory"
-
 union * | where ObjectName == "Memory"
 ```
- 
 
 Mimo że `search` i `union` są przydatne podczas eksploracji danych, wyszukiwanie warunków w modelu danych są mniej wydajne niż przy użyciu tabeli, ponieważ wymaga ich skanowania dla wielu tabel. Ponieważ zapytania w reguł alertów są uruchamiane w regularnych odstępach czasu, może to spowodować nadmierne obciążenie, dodając opóźnienie do alertu. Ze względu na to obciążenie zapytania dotyczące reguł alertów dzienników na platformie Azure zawsze należy zaczynać tabeli, aby zdefiniować zakres Wyczyść, co zwiększa wydajność zapytań i znaczenie wyników.
 

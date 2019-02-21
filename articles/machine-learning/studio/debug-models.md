@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: a6708a1c414277cd4ee9b90851e19a94ea86c55b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2810a059bebc3fa89aef8f75b27250328d81e678
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491675"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455283"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Debugowanie modelu w usłudze Azure Machine Learning Studio
 
@@ -33,7 +33,7 @@ W tym artykule opisano potencjalne przyczyny tych błędów.
 
 [Train Model] [ train-model] modułu oczekiwane dwie wartości wejściowe:
 
-1. Typ modelu uczenia maszynowego z kolekcji modeli udostępniane przez usługi Azure Machine Learning.
+1. Typ modelu uczenia maszynowego z kolekcji modeli udostępniane przez usługi Azure Machine Learning Studio.
 2. Dane szkoleniowe z określonej kolumny etykiety, która określa zmienną do prognozowania (inne kolumny są zakłada się, że funkcje).
 
 Ten moduł może powodować błąd w następujących przypadkach:

@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c9d8b875d7e5a831af52eae8abc642632cb5f635
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 287e4d63ca60200340a88dd45d6b8912a62b74cd
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238389"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454701"
 documentType: LandingData
 title: Wystąpienie zarządzane usługi Azure SQL Database
 metadata:
@@ -75,7 +75,7 @@ sections:
     style: unordered
     items:
     - html: <a href="sql-database-managed-instance#business-critical-service-tier">Warstwy usług krytycznych firm</a> znajduje się teraz w <a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">ogólna dostępność (GA)</a>.
-    - html: (Wersja zapoznawcza) Tworzenie <a href="https://aka.ms/managed-instance-aadlogins">na poziomie wystąpienia logowania do usługi Azure AD</a> przy użyciu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">utworzyć z zewnętrznego dostawcy logowania</a> .
+    - html: (Wersja zapoznawcza) Tworzenie <a href="https://aka.ms/managed-instance-aadlogins">na poziomie wystąpienia podmiotów zabezpieczeń serwera usługi Azure AD (logowania)</a> przy użyciu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">utworzyć z zewnętrznego dostawcy logowania</a> .
     - html: (Wersja zapoznawcza) Tworzenie wystąpień przy użyciu <a href="https://aka.ms/managed-instance-collation">sortowanie na poziomie serwera wybranego</a>.
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurowanie przechowywania kopii zapasowych w górę do 35 dni</a> do punktu w czasie przywracania. Należy pamiętać, że długoterminowego przechowywania kopii zapasowych (do 10 lat) nadal nie jest włączone, można użyć <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">kopie zapasowe tylko do kopiowania</a> alternatywą.
     - html: (Wersja zapoznawcza) Użyj <a href="https://aka.ms/managed-instance-failover-groups">grupy trybu failover z rozproszone geograficznie</a> przechowywać kopię wystąpienia w innym regionie i upewnij się, że Twoje dane będą dostępne, nawet w przypadku scenariusza regionalnej awarii.

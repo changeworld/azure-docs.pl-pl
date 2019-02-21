@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001701"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455113"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio
 
@@ -50,11 +50,11 @@ Po uruchomieniu eksperymentu (kliknij **Uruchom** w dolnej części obszaru robo
 
 Na przykład poniższego eksperymentu szkolenie modeli modelu drzewa decyzyjnego dwuklasowych przy użyciu przykładowych danych spisu:
 
-![Eksperymentu szkolenia][figure1]
+![Eksperymentu szkolenia](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
 Moduły w tym eksperymencie wykonywać zasadniczo cztery różne funkcje:
 
-![Funkcje modułu][figure2]
+![Funkcje modułu](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
 Podczas konwertowania tego eksperymentu szkolenia eksperyment predykcyjny niektóre moduły te nie są już potrzebne, lub teraz obsługiwać w innym celu:
 
@@ -70,7 +70,7 @@ Podczas konwertowania tego eksperymentu szkolenia eksperyment predykcyjny niekt�
 
 Oto jak wygląda nasz przykład po kliknięciu przycisku **ustawić usługę sieci Web**:
 
-![Przekonwertowana eksperyment predykcyjny][figure3]
+![Przekonwertowana eksperyment predykcyjny](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
 Pracy wykonanej przez **ustawić usługę sieci Web** może być wystarczające, aby przygotować eksperymentu, który można wdrożyć jako usługę sieci web. Można jednak wykonania dodatkowych czynności dodatkowej specyficzne dla swojego eksperymentu.
 
@@ -79,7 +79,7 @@ W eksperymentu szkolenia używany zestaw danych szkoleniowych, a następnie zost
 
 Na przykład domyślnie **ustawić usługę sieci Web** umieszcza **sieci Web dane wejściowe usługi** modułu w górnej części przepływu danych, jak pokazano na rysunku powyżej. Ale możemy ręcznie pozycji **sieci Web dane wejściowe usługi** ostatnie modułów danych przetwarzania:
 
-![Przenoszenie danych wejściowych usługi internetowej][figure4]
+![Przenoszenie danych wejściowych usługi internetowej](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
 Dane wejściowe, dostępne za pośrednictwem usługi sieci web będzie teraz przekazać bezpośrednio do modułu Score Model bez żadnych przetwarzania wstępnego.
 
@@ -88,14 +88,14 @@ Jednakże, jeśli chcesz użyć zwrócić coś innego, następnie można dodać 
 
 Na przykład, aby zwrócić tylko oceniania wyników, a nie całej wektor dane wejściowe, należy dodać [Select Columns in Dataset] [ select-columns] modułu, aby wykluczyć wszystkie kolumny z wyjątkiem oceniania wyników. Następnie przenieś **sieci Web usługi danych wyjściowych** modułu z danymi wyjściowymi [Select Columns in Dataset] [ select-columns] modułu. Eksperyment wygląda następująco:
 
-![Przenoszenie danych wyjściowych usługi sieci web][figure5]
+![Przenoszenie danych wyjściowych usługi sieci web](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
 ### <a name="add-or-remove-additional-data-processing-modules"></a>Dodawanie lub usuwanie modułów dodatkowego przetwarzania danych
 Jeśli istnieje więcej modułów w eksperymencie, że wiesz, że nie będą potrzebne podczas oceniania, można usunąć je. Na przykład ponieważ przeszliśmy **sieci Web dane wejściowe usługi** modułu do punktu po modułów przetwarzania danych, możemy usunąć [Clean Missing Data] [ clean-missing-data] modułu na podstawie eksperyment predykcyjny.
 
 Nasz eksperyment predykcyjny wygląda teraz następująco:
 
-![Usuwanie dodatkowych modułów][figure6]
+![Usuwanie dodatkowych modułów](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
 ### <a name="add-optional-web-service-parameters"></a>Dodaj opcjonalne parametry usługi sieci Web
@@ -116,16 +116,6 @@ Teraz, gdy został odpowiednio przygotowany eksperyment predykcyjny, możesz go 
 Aby uzyskać więcej informacji na temat procesu całego procesu wdrażania, zobacz [wdrażanie usługi sieci web Azure Machine Learning][deploy]
 
 [deploy]: publish-a-machine-learning-web-service.md
-
-
-<!-- Images -->
-[figure1]:./media/convert-training-experiment-to-scoring-experiment/figure1.png
-[figure2]:./media/convert-training-experiment-to-scoring-experiment/figure2.png
-[figure3]:./media/convert-training-experiment-to-scoring-experiment/figure3.png
-[figure4]:./media/convert-training-experiment-to-scoring-experiment/figure4.png
-[figure5]:./media/convert-training-experiment-to-scoring-experiment/figure5.png
-[figure6]:./media/convert-training-experiment-to-scoring-experiment/figure6.png
-
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

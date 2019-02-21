@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj informacje zabezpieczające do użycia w wiadomości SMS - usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Skonfiguruj swoje informacje zabezpieczające, aby zweryfikować swoją tożsamość za pomocą wiadomości tekstowej (SMS).
+title: Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) do użycia w wiadomości SMS - usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Jak skonfigurować swoje informacje zabezpieczające, aby zweryfikować swoją tożsamość za pomocą wiadomości SMS i urządzenia przenośnego.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,65 +9,104 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9556c99e7e9655054ee5b834db36ba6e22e9e807
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a130113c7e6052befdc61927589c1151a062bdb9
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182660"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456099"
 ---
-# <a name="set-up-security-info-to-use-text-messaging-preview"></a>Skonfiguruj informacje zabezpieczające do używania tekstu wiadomości (wersja zapoznawcza)
+# <a name="set-up-security-info-preview-to-use-text-messaging"></a>Skonfiguruj informacje o zabezpieczeniach (wersja zapoznawcza) do użycia w wiadomości SMS
+Możesz wykonać następujące kroki, aby dodać weryfikację two-Factor Authentication i metod resetowania hasła. Po skonfigurowaniu to po raz pierwszy, można powrócić do **zabezpieczające** strony Dodawanie, aktualizowanie lub usuwanie informacji zabezpieczających.
+
+Po wyświetleniu monitu o skonfigurowanie tego numeru, natychmiast, po zalogowaniu się do swojego konta firmowego lub szkolnego, zobacz szczegółowe instrukcje zostały podane w [skonfigurować swoje informacje zabezpieczające z wiersza na stronie rejestracji](security-info-setup-signin.md) artykułu.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-Definiowanie swoich informacji zabezpieczających wymaga Zaloguj się do swojego konta firmowego lub szkolnego, a następnie ukończ proces rejestracji. Jeśli użytkownik nigdy nie skonfigurowano swoje informacje zabezpieczające, użytkownik zostanie zapytany to zrobić teraz.
+>[!Note]
+>Jeśli nie widzisz opcji dla telefonu, istnieje możliwość, że Twoja organizacja nie zezwala na numer telefonu służy do identyfikacji. W takim przypadku należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
 
-## <a name="set-up-text-messaging"></a>Konfigurowanie wiadomości SMS
+## <a name="set-up-text-messages-from-the-security-info-page"></a>Konfigurowanie wiadomości SMS z stronę informacji zabezpieczających
+W zależności od ustawień organizacji można użyć jednej z metod informacje użytkownika zabezpieczeń komunikatów tekstu. Opcji tekst komunikatu jest częścią opcji dla telefonu, więc będzie wszystko, co w taki sam sposób, jak ustawić o Twój numer telefonu, ale zamiast Microsoft Zadzwonimy do Ciebie, będzie zdecydujesz się używać wiadomości SMS.
 
-W zależności od ustawień organizacji może być monitu o dodanie tekst wiadomości do swoich informacji zabezpieczających, po zalogowaniu. W przeciwnym razie, aby rozpocząć konfigurowanie tekst wiadomości zabezpieczających, postępuj zgodnie z instrukcjami w [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md).
+>[!Note]
+>Jeśli chcesz odbierać połączenie telefoniczne zamiast wiadomość SMS, wykonaj kroki opisane w [ustawiane informacje zabezpieczające, aby używać połączeń telefonicznych](security-info-setup-phone-number.md) artykułu.
 
-Opcji tekst komunikatu jest częścią opcji dla telefonu, więc będzie wszystko, co w taki sam sposób, jak ustawić o Twój numer telefonu, ale zamiast Microsoft Zadzwonimy do Ciebie, będzie zdecydujesz się używać wiadomości SMS. Jeśli nie widzisz opcji dla telefonu, istnieje możliwość, że Twoja organizacja nie zezwala na numer telefonu służy do identyfikacji. Jeśli jest to możliwe, należy wybrać inną metodę, lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
+### <a name="to-set-up-text-messages"></a>Aby skonfigurować wiadomości tekstowe
 
-### <a name="to-use-a-text-message"></a>Aby używać wiadomości SMS
+1. Zaloguj się do swojego konta firmowego lub szkolnego, a następnie przejdź do swojej https://myprofile.microsoft.com/ strony.
 
-1. Wybierz **Phone** opcji.
+    ![Strona Moje profilu, pokazujący wyróżnione łączy informacje zabezpieczeń](media/security-info/securityinfo-myprofile.png)
 
-    **Skonfiguruj telefon** pojawi się Kreator.
+2. Wybierz **zabezpieczające** z lewego okienka nawigacji lub linku w **zabezpieczające** zablokować, a następnie wybierz **Dodaj metodę** z **informacje zabezpieczające**  strony.
 
-    ![Konfigurowanie usługi kraj lub region, kod i numer telefonu](media/security-info/security-info-keep-secure-setup-text.png)
+    ![Strona informacji zabezpieczających przy użyciu opcji Dodaj wyróżnione w — metoda](media/security-info/securityinfo-myprofile-addmethod.png)
 
-2. Wybierz swoje **kraj lub Region** w polu listy rozwijanej, wpisz numer telefonu (w tym numer kierunkowy, jeśli ma to zastosowanie) w **numer telefonu** wybierz opcję **tekstu do mnie kod** opcji, a następnie wybierz **dalej**.
+3. Na **Dodaj metodę** wybierz opcję **Phone** z listy rozwijanej, a następnie wybierz **Dodaj**.
 
-    Otrzymasz wiadomość SMS z kodem, musisz wprowadzić do strony weryfikacji.
+    ![Dodaj pole Metoda, za pomocą telefonu wybrane](media/security-info/securityinfo-myprofile-addphonetext.png)
 
-    ![Weryfikacja strony, aby wprowadzić wiadomość SMS z kodem](media/security-info/security-info-keep-secure-verify-text-msg.png)
+4. Na **Phone** strony, wpisz numer telefonu dla urządzeń przenośnych, wybierz **tekstu do mnie kod**, a następnie wybierz pozycję **dalej**.
 
-    Twoje informacje zabezpieczające zostaną zaktualizowane na wysyłanie wiadomości SMS, aby zweryfikować swoją tożsamość, używając dwuetapowej weryfikacji lub samoobsługowego resetowania haseł.
+    ![Dodaj numer telefonu, a następnie wybierz wiadomości SMS](media/security-info/securityinfo-myprofile-phonetext-addnumber.png)
 
-    >[!Note]
-    >Jeśli chcesz odbierać połączenie telefoniczne zamiast wiadomość SMS, wykonaj kroki opisane w [ustawiane informacje zabezpieczające, aby używać połączeń telefonicznych](security-info-setup-phone-number.md) artykułu.
+5. Wprowadź kod wysłany do użytkownika za pośrednictwem wiadomości SMS do Twojego urządzenia przenośnego, a następnie wybierz **dalej**.
 
-## <a name="additional-security-info-options"></a>Dodatkowe informacje o opcje zabezpieczeń
+    ![Dodaj numer telefonu, a następnie wybierz wiadomości SMS](media/security-info/securityinfo-myprofile-phonetext-entercode.png)
 
-Dostępne opcje jak kontakty organizacji możesz zweryfikować swoją tożsamość, oparte na tym, co możesz próby wykonania. Dostępne są następujące opcje:
+    Zmiany strony do wyświetlenia sukcesu.
+
+    ![Powiadomienie o powodzeniu, połączenie telefonu numer, odebranie messags tekstu, a Twoje konto](media/security-info/securityinfo-myprofile-phonetext-success.png)
+
+    Twoje informacje zabezpieczające są aktualizowane i można użyć tekstu wiadomości, aby zweryfikować swoją tożsamość w przypadku korzystania z resetowania dwuetapowej weryfikacji lub hasło. Jeśli chcesz wprowadzić tekst wiadomości metodą domyślną, zobacz [domyślną metodę informacje zabezpieczeń](#change-your-default-security-info-method) dalszej części tego artykułu.
+
+## <a name="delete-text-messaging-from-your-security-info-methods"></a>Usuń tekst wiadomości z metody informacje zabezpieczeń
+Jeśli chcesz już używać wiadomości SMS jako metoda informacje zabezpieczeń, możesz usunąć go z **zabezpieczające** strony.
+
+>[!Important]
+>Jeśli usuniesz przez pomyłkę wiadomości tekstowych, nie ma możliwości jej cofnąć. Musisz ponownie, Dodaj metodę czynności opisane w [skonfigurować wiadomości tekstowe](#set-up-text-messages-from-the-security-info-page) dalszej części tego artykułu.
+
+### <a name="to-delete-text-messaging"></a>Aby usunąć wiadomości SMS
+
+1. Na **zabezpieczające** wybierz opcję **Usuń** łącze obok **Phone** opcji.
+
+    ![Łącze, aby usunąć telefonu i metody z zabezpieczające wiadomości tekstowych](media/security-info/securityinfo-myprofile-phonetext-delete.png)
+
+2. Wybierz **tak** z okno dialogowe potwierdzenia, aby usunąć **Phone** numer. Po numer telefonu został usunięty, zostanie on usunięty z informacjom zabezpieczającym i znika ono z **zabezpieczające** strony. Jeśli **Phone** jest metodą domyślną, wartość domyślna zmieni się na innej metody dostępne.
+
+## <a name="change-your-default-security-info-method"></a>Domyślną metodę informacje zabezpieczeń
+Jeśli chcesz, aby tekst wiadomości jako domyślną metodę używaną podczas logowania do konta firmowego lub szkolnego, przy użyciu weryfikacji two-Factor Authentication, lub dla żądań resetowania hasła, można ustawić go z **zabezpieczające** strony.
+
+### <a name="to-change-your-default-security-info-method"></a>Aby zmienić metodę informacje zabezpieczeń domyślne
+
+1. Na **zabezpieczające** wybierz opcję **zmiany** łącze obok **domyślna metoda logowania** informacji.
+
+    ![Łącze Zmień domyślną metodę logowania](media/security-info/securityinfo-myprofile-phonetext-defaultchange.png)
+
+2. Wybierz **Phone — tekst (*_your_phone_number_*)** z listy rozwijanej dostępnych metod, a następnie wybierz **Potwierdź**.
+
+    ![Wybierz metodę logowania domyślne](media/security-info/securityinfo-myprofile-phonetext-changeddefault.png)
+
+    Domyślną metodą używane do logowania zmiany **Phone — tekst (*_your_phone_number_*)**.
+
+## <a name="additional-security-info-methods"></a>Dodatkowe informacje o metody zabezpieczeń
+Masz dodatkowe opcje jak kontakty organizacji możesz zweryfikować swoją tożsamość, oparte na tym, co możesz próby wykonania. Dostępne są następujące opcje:
 
 - **Aplikacja Authenticator.** Pobierz i użyj aplikacji authenticator, aby uzyskać powiadomienie o zatwierdzeniu lub kod generowany losowo zatwierdzenia do resetowania dwuetapowej weryfikacji lub hasło. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania i używania aplikacji Microsoft Authenticator, zobacz [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](security-info-setup-auth-app.md).
 
 - **Rozmowy telefoniczne pracy lub urządzenia przenośnego.** Wprowadź numer urządzenia przenośnego, a następnie uzyskać połączenie telefoniczne resetowania dwuetapowej weryfikacji lub hasło. Aby uzyskać szczegółowe instrukcje na temat zweryfikować swoją tożsamość za pomocą numeru telefonu, zobacz [ustawiane informacje zabezpieczające, aby używać połączeń telefonicznych](security-info-setup-phone-number.md).
 
 - **Adres e-mail.** Wprowadź swój firmowy lub szkolny adres e-mail, aby otrzymywać wiadomość e-mail do resetowania hasła. Ta opcja jest dostępna na potrzeby weryfikacji dwuetapowej. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania swój adres e-mail, zobacz [ustawić informacje zabezpieczające, aby użyć adresu e-mail](security-info-setup-email.md).
-   
+
+- **Pytania zabezpieczające.** Odpowiedz na pytania zabezpieczeń, niektóre utworzone przez administratora w Twojej organizacji. Ta opcja jest dostępna tylko do resetowania hasła, a nie na potrzeby weryfikacji dwuetapowej. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania pytań zabezpieczających, zobacz [ustawić informacje zabezpieczające, aby użycie tych pytań zabezpieczających](security-info-setup-questions.md) artykułu.
+    
     >[!Note]
     >Jeśli brakuje niektórych z tych opcji, prawdopodobnie najbardziej Twoja organizacja nie zezwala na jednej z tych metod. Jeśli jest to możliwe, należy wybrać metodę dostępne lub skontaktuj się z administratorem, aby uzyskać dalszą pomoc.
 
-- **Pytania zabezpieczające.** Odpowiedz na pytania zabezpieczeń, niektóre utworzone przez administratora w Twojej organizacji. Ta opcja jest dostępna tylko do resetowania hasła, a nie na potrzeby weryfikacji dwuetapowej. Aby uzyskać szczegółowe instrukcje dotyczące sposobu konfigurowania pytań zabezpieczających, zobacz [ustawić informacje zabezpieczające, aby użycie tych pytań zabezpieczających](security-info-setup-questions.md) artykułu.
-
 ## <a name="next-steps"></a>Kolejne kroki
-
-- Jeśli musisz zaktualizować swoje informacje zabezpieczające, postępuj zgodnie z instrukcjami [Zarządzanie informacjom zabezpieczającym](security-info-manage-settings.md) artykułu.
 
 - Resetowanie hasła, jeśli został zgubienia lub zapomnienia, z [portal resetowania haseł](https://passwordreset.microsoftonline.com/) lub postępuj zgodnie z instrukcjami w [Resetowanie hasła służbowego lub szkolnego](user-help-reset-password.md) artykułu.
 

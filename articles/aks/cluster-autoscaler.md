@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
-ms.openlocfilehash: bfdea1d5380750ec23964cd8564db9b3a9539f15
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f8804a157c21f3c90c667646689eec0968bc9027
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754649"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453005"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatycznie Skaluj klaster w celu spełnienia wymagań aplikacji na platformie Azure Kubernetes Service (AKS)
 
@@ -27,7 +27,9 @@ W tym artykule pokazano, jak włączyć i zarządzać nimi skalowanie klastra w 
 
 Ten artykuł wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.55 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][azure-cli-install].
 
-Klastry AKS, które obsługują skalowanie klastra należy użyć zestawów skalowania maszyn wirtualnych i uruchamianie wersję rozwiązania Kubernetes *1.12.4* lub nowszej. Ta obsługa zestawu skalowania jest w wersji zapoznawczej. Aby zgodzić się i tworzenie klastrów, które używają zestawów skalowania, należy zainstalować *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az] [ az-extension-add] polecenia, jak pokazano w poniższym przykładzie:
+### <a name="install-aks-preview-cli-extension"></a>Zainstaluj rozszerzenie interfejsu wiersza polecenia w wersji zapoznawczej usługi aks
+
+Klastry AKS, które obsługują skalowanie klastra należy użyć zestawów skalowania maszyn wirtualnych i uruchamianie wersję rozwiązania Kubernetes *1.12.4* lub nowszej. Ta obsługa zestawu skalowania jest w wersji zapoznawczej. Aby włączyć i tworzenie klastrów, które używają zestawów skalowania, należy najpierw zainstalować *podglądu usługi aks* rozszerzenie interfejsu wiersza polecenia platformy Azure przy użyciu polecenia [Dodaj rozszerzenie az] [ az-extension-add] polecenia, jak pokazano w następującym przykład:
 
 ```azurecli-interactive
 az extension add --name aks-preview
@@ -35,6 +37,26 @@ az extension add --name aks-preview
 
 > [!NOTE]
 > Po zainstalowaniu *podglądu usługi aks* rozszerzenie, każdy klaster AKS możesz utworzyć używa modelu wdrażania (wersja zapoznawcza) zestawu skalowania. Aby zrezygnować z udziału i regularne, utworzyć klastry z w pełni obsługiwana, usuń rozszerzenie przy użyciu polecenia `az extension remove --name aks-preview`.
+
+### <a name="register-scale-set-feature-provider"></a>Zarejestruj dostawcę funkcji zestawu skalowania
+
+Aby utworzyć usługi AKS, który używa skalowania zestawów, należy również włączyć flagi funkcji w ramach Twojej subskrypcji. Aby zarejestrować *VMSSPreview* flagę funkcji, należy użyć [az feature register] [ az-feature-register] polecenia, jak pokazano w poniższym przykładzie:
+
+```azurecli-interactive
+az feature register --name VMSSPreview --namespace Microsoft.ContainerService
+```
+
+Zajmuje kilka minut, zanim stan wyświetlany *zarejestrowanej*. Można sprawdzić stan rejestracji przy użyciu [lista funkcji az] [ az-feature-list] polecenia:
+
+```azurecli-interactive
+az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/VMSSPreview')].{Name:name,State:properties.state}"
+```
+
+Gdy wszystko będzie gotowe, Odśwież rejestracji *Microsoft.ContainerService* dostawcę zasobów przy użyciu [az provider register] [ az-provider-register] polecenia:
+
+```azurecli-interactive
+az provider register --namespace Microsoft.ContainerService
+```
 
 ## <a name="about-the-cluster-autoscaler"></a>Skalowanie klastra — informacje
 
@@ -149,6 +171,9 @@ W tym artykule pokazano, jak automatycznie skalować liczbę węzłów AKS. Aby 
 [aks-scale-apps]: tutorial-kubernetes-scale.md
 [az-aks-create]: /cli/azure/aks#az-aks-create
 [az-aks-scale]: /cli/azure/aks#az-aks-scale
+[az-feature-register]: /cli/azure/feature#az-feature-register
+[az-feature-list]: /cli/azure/feature#az-feature-list
+[az-provider-register]: /cli/azure/provider#az-provider-register
 
 <!-- LINKS - external -->
 [az-aks-update]: https://github.com/Azure/azure-cli-extensions/tree/master/src/aks-preview

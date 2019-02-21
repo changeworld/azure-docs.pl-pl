@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 12c82d440613078e9f0593ddb9fb6c7fe7b8c362
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488360"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453306"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrowanie analytics z programu Excel do usługi Azure Machine Learning Studio
 
@@ -102,11 +102,11 @@ Nasze rozwiązanie polegało na operacjonalizować model regresji naszej usługi
 
 *Pulpicie nawigacyjnym usługi sieci Web* znajdują się w skoroszycie programu Excel do pobrania. Skoroszyt zawiera wstępnie sformatowane informacje interfejsu API i schematu usługi sieci web osadzone. Po kliknięciu *pobrać skoroszyt programu Excel*, zostanie otwarty skoroszyt i zapisz go na komputerze lokalnym. 
 
-![][1]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 Z otwartego skoroszytu skopiuj wstępnie zdefiniowane parametry do niebieski sekcji parametrów, jak pokazano poniżej. Wprowadzone parametry wywołuje programu Excel do usługi sieci web Machine Learning i przewidywane ocenami etykiety będą wyświetlane w sekcji zielony przewidywanych wartości. Skoroszyt, będą w dalszym ciągu Tworzenie prognoz dotyczących parametrów na podstawie uczonego modelu dla wszystkich elementów wiersza wprowadzone w obszarze parametrów. Aby uzyskać więcej informacji na temat korzystania z tej funkcji, zobacz [korzystanie z usługi sieci Web Azure Machine Learning z poziomu programu Excel](consuming-from-excel.md). 
 
-![][2]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optymalizacja i dalszych eksperymentów
 Teraz, mieliśmy punktu odniesienia z nasz model programu Excel, przenieśliśmy wyprzedzeniem zoptymalizować nasz Model uczenia maszynowego liniowej regresji. Użyliśmy moduł [na podstawie filtru funkcji wyboru cech] [ filter-based-feature-selection] do poprawy naszych wyboru danych początkowych elementów i pomogło nam to osiągnąć lepszą wydajność, 4.6% oznacza bezwzględny błąd. W przyszłych projektach użyjemy tej funkcji, który może zapisać nam tygodnie w iteracji atrybutów danych, aby znaleźć właściwy zestaw funkcji służących do modelowania. 

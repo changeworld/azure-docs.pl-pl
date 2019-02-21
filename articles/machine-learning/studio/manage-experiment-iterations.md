@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 503a93064b81e0db35c0477a11f2ee525680c854
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e41a669e3dcd14952077cbd21e7387184546de80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488448"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454307"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Zarządzanie iteracjami eksperymentów w usłudze Azure Machine Learning Studio
 Tworzenie modelu analizy predykcyjnej jest procesem iteracyjnym - miarę modyfikowania różnych funkcji i parametrów eksperymentu, wyniki zbiegają się do momentu, aż czy masz wyuczonego, skutecznego modelu. Klucz do tego procesu służy do śledzenia różne iteracje eksperymentu, parametry i konfiguracji.
@@ -48,7 +48,7 @@ Załóżmy na przykład, utworzyć eksperyment za pomocą [regresji liniowej] [ 
 
 Jeśli klikniesz **widok HISTORII URUCHAMIANIA**, możesz wyświetlić listę wszystkich tych przebiegów:
 
-![Przykład historii uruchamiania][runhistory]
+![Przykład historii uruchamiania](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
 Kliknij dowolny z tych przebiegów, aby wyświetlić migawkę eksperymentu w momencie uruchomienia. Konfiguracja, wartości parametrów, komentarze i wyniki są zachowywane zapewnienie pełnego rekordu z programem eksperymentu.
 
@@ -73,10 +73,6 @@ Na przykład załóżmy, że masz eksperymentu pokazano w poprzedniej sekcji his
 5. Kliknij przycisk **Uruchom**.
 
 Możesz nadal do zmodyfikowania, a następnie uruchom tę wersję eksperymentu, tworzenie nowych historii przebiegów, aby zarejestrować swoją pracę.
-
-<!-- Images -->
-[runhistory]:./media/manage-experiment-iterations/viewrunhistory.jpg
-
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

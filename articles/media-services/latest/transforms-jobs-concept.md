@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/17/2019
+ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: fd93b84c251a0b2346550c79bcb8796161cb9116
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d621afd682e6040179777f4cd6d991ff31acb5a3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417875"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445495"
 ---
 # <a name="transforms-and-jobs"></a>Przekształcenia i zadania
  
@@ -61,6 +61,13 @@ Zobacz [kody błędów](https://docs.microsoft.com/rest/api/media/jobs/get#jober
 
 Zobacz [filtrowanie, porządkowanie, stronicowanie jednostek usługi Media Services](entities-overview.md).
 
+## <a name="configure-media-reserved-units"></a>Konfigurowanie jednostki zarezerwowane multimediów
+
+Analiza Audio i wideo zadania analizy, które są wyzwalane przez usługi Media Services v3 lub Video Indexer, aby uzyskać zaleca aprowizację swojego konta za pomocą 10 jednostek zarezerwowanych multimediów S3 (lokalizacje MRU). Jeśli potrzebujesz więcej niż 10 S3 lokalizacje MRU, otwórz bilet pomocy technicznej przy użyciu [witryny Azure portal](https://portal.azure.com/).
+
+Aby uzyskać więcej informacji, zobacz [skalowanie przetwarzania multimediów z użyciem interfejsu wiersza polecenia](media-reserved-units-cli-how-to.md).
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Przekazywanie, kodowanie i przesyłanie strumieniowe plików wideo](stream-files-tutorial-with-api.md)
+- [Samouczek: Przekazywanie, kodowanie i przesyłanie strumieniowe filmów wideo przy użyciu platformy .NET](stream-files-tutorial-with-api.md)
+- [Samouczek: Analizowanie klipów wideo za pomocą usługi Media Services v3 przy użyciu platformy .NET](analyze-videos-tutorial-with-api.md)

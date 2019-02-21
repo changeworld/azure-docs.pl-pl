@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: f57f6bf93fce2526bdc478558551616ba1fa3c4c
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 4f474fd6ac2fa6a4f44aacf0eacb85a92fdf1de9
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496027"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456473"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Czy Twoje dane są gotowe na analizę danych?
 ## <a name="video-2-data-science-for-beginners-series"></a>Wideo 2: Analiza danych dla początkujących serii
@@ -100,7 +100,7 @@ W miarę dodawania większej ilości danych obraz staje się bardziej zrozumiał
 
 Z danymi, które są istotne, połączone, dokładne i wystarczająco, możesz mieć wszystkie składniki wymagane do wykonania niektórych nauki o danych wysokiej jakości.
 
-Należy zapoznać się z czterech wideo w *przetwarzanie danych dla początkujących* z usługi Microsoft Azure Machine Learning.
+Należy zapoznać się z czterech wideo w *przetwarzanie danych dla początkujących* z usługi Microsoft Azure Machine Learning Studio.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Spróbuj pierwszy eksperyment dotyczący przetwarzania danych, za pomocą usługi Machine Learning Studio](create-experiment.md)

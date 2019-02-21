@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 8fb7ea1841d788c1d8e7809a0641140228fd2ea5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/20/2019
+ms.openlocfilehash: bfceb8feacdad428a6e4c23272fd9092a356f107
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233160"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453328"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
@@ -33,7 +33,7 @@ SQL Server uruchomiony na maszynie wirtualnej platformy Azure, również można 
 
 ## <a name="service-managed-transparent-data-encryption"></a>Zarządzane przez usługę przezroczyste szyfrowanie danych
 
-Na platformie Azure domyślne ustawienie dla technologii transparent data encryption jest, że klucz szyfrowania bazy danych jest chroniony za pomocą wbudowanego serwera certyfikatu. Certyfikat wbudowanego serwera jest unikatowy dla każdego serwera. Jeśli baza danych jest w relacji replikacji geograficznej, zarówno podstawowej i pomocniczej geograficznej bazy danych są chronione przez klucz serwera nadrzędnego podstawowej bazy danych. Jeśli połączenie dwóch baz danych na tym samym serwerze, również udostępnić ten sam certyfikat wbudowanych. Microsoft automatycznie przełącza tych certyfikatów, co 90 dni.
+Na platformie Azure domyślne ustawienie dla technologii transparent data encryption jest, że klucz szyfrowania bazy danych jest chroniony za pomocą wbudowanego serwera certyfikatu. Certyfikat wbudowanego serwera jest unikatowy dla każdego serwera. Jeśli baza danych jest w relacji replikacji geograficznej, zarówno podstawowej i pomocniczej geograficznej bazy danych są chronione przez klucz serwera nadrzędnego podstawowej bazy danych. Jeśli połączenie dwóch baz danych na tym samym serwerze, również udostępnić ten sam certyfikat wbudowanych. Microsoft automatycznie przełącza te certyfikaty niezgodne z zasadami bezpieczeństwa wewnętrznego i klucz główny jest chroniony przez Microsoft wewnętrznego magazynu wpisów tajnych.
 
 Firma Microsoft również bezproblemowo przenosi i zarządza kluczami, zgodnie z potrzebami dla replikacji geograficznej i przywraca.
 
@@ -42,7 +42,7 @@ Firma Microsoft również bezproblemowo przenosi i zarządza kluczami, zgodnie z
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Zarządzane przez klienta niewidoczne szyfrowanie danych — własnego klucza
 
-[Funkcja TDE za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) umożliwia szyfrowania klucza szyfrowania bazy danych (DEK) przy użyciu zarządzanych przez klienta klucza asymetrycznego wywoływana funkcja ochrony TDE.  Funkcja ochrony TDE jest przechowywany w należącej do klienta i zarządzane [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), platformy Azure opartej na chmurze zewnętrznego kluczy systemu zarządzania. Funkcja TDE klucza szyfrowania danych, który jest przechowywany na stronę rozruchu bazy danych, zostaje zaszyfrowany i odszyfrowany przez funkcji ochrony TDE, która jest przechowywana w usłudze Azure Key Vault i nigdy nie opuszcza magazynu kluczy.  Baza danych SQL musi mieć przyznane uprawnienia do należącej do klienta magazynu kluczy do odszyfrowywania i szyfrowania klucza szyfrowania danych. Jeśli uprawnienia serwera logicznego SQL do magazynu kluczy zostaną odwołane, bazy danych staną się niedostępne, a wszystkie dane są szyfrowane. Usługi Azure SQL Database funkcji ochrony TDE jest ustawiona na poziomie serwera logicznego SQL i jest dziedziczona przez wszystkie bazy danych skojarzonych z tym serwerem. Dla [wystąpienia zarządzanego Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)ochrony TDE jest ustawiona na poziomie wystąpienia oraz jest dziedziczona przez wszystkie *zaszyfrowanych* baz danych w tym wystąpieniu. Termin *serwera* odnosi się zarówno do serwera i wystąpienia, w tym dokumencie, o ile nie wskazano inaczej.
+[Funkcja TDE za pomocą kluczy zarządzanych przez klienta w usłudze Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) umożliwia szyfrowania klucza szyfrowania bazy danych (DEK) przy użyciu zarządzanych przez klienta klucza asymetrycznego wywoływana funkcja ochrony TDE.  Jest to również powszechnie określane jako Bring Your Own Key (BYOK), obsługa funkcji Transparent Data Encryption. W tym scenariuszu BYOK ochrony TDE jest przechowywany w należącej do klienta i zarządzane [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), platformy Azure opartej na chmurze zewnętrznego kluczy systemu zarządzania. Może być ochrony TDE [generowanych przez usługi key vault lub przenoszone do magazynu kluczy](https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys) lokalnego modułu HSM z urządzenia z systemem. Funkcja TDE klucza szyfrowania danych, który jest przechowywany na stronę rozruchu bazy danych, zostaje zaszyfrowany i odszyfrowany przez funkcji ochrony TDE, która jest przechowywana w usłudze Azure Key Vault i nigdy nie opuszcza magazynu kluczy.  Baza danych SQL musi mieć przyznane uprawnienia do należącej do klienta magazynu kluczy do odszyfrowywania i szyfrowania klucza szyfrowania danych. Jeśli uprawnienia serwera logicznego SQL do magazynu kluczy zostaną odwołane, bazy danych staną się niedostępne, a wszystkie dane są szyfrowane. Usługi Azure SQL Database funkcji ochrony TDE jest ustawiona na poziomie serwera logicznego SQL i jest dziedziczona przez wszystkie bazy danych skojarzonych z tym serwerem. Dla [wystąpienia zarządzanego Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance)ochrony TDE jest ustawiona na poziomie wystąpienia oraz jest dziedziczona przez wszystkie *zaszyfrowanych* baz danych w tym wystąpieniu. Termin *serwera* odnosi się zarówno do serwera i wystąpienia, w tym dokumencie, o ile nie wskazano inaczej.
 
 Za pomocą funkcji TDE dzięki integracji usługi Azure Key Vault użytkownicy można kontrolować zadania zarządzania kluczami, w tym wymiany kluczy, uprawnień usługi key vault, kopie zapasowe kluczy i Włącz inspekcję/raportowanie na wszystkie funkcje ochrony TDE, za pomocą funkcji usługi Azure Key Vault. Usługa Key Vault umożliwia centralne zarządzanie kluczami, wykorzystuje ściśle monitorowanych sprzętowych modułach zabezpieczeń (HSM) i umożliwia rozdzielenie obowiązków między danych i zarządzanie kluczami w celu zapewnienia zgodności z zasadami zabezpieczeń.
 Aby dowiedzieć się więcej na temat technologii transparent data encryption dzięki integracji usługi Azure Key Vault (Obsługa Bring Your Own Key) dla usługi Azure SQL Database, wystąpienia zarządzanego SQL i magazynu danych, zobacz [przezroczyste szyfrowanie danych za pomocą usługi Azure Key Vault integration](transparent-data-encryption-byok-azure-sql.md).

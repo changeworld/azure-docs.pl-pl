@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 81a84e1ff4a9ed974a69762ce35075780e8d1f96
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 040aeda10410cc164c3f68b6615ebfb12d45541e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991535"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453498"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -346,7 +346,7 @@ Można użyć polecenia cmdlet programu PowerShell `Get-AzureRmApplicationGatewa
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Jakie są zasady przechowywania dzienników diagnostycznych?
 
-Dzienniki diagnostyczne usługi flow do konta magazynu klientów i klienci mogą ustawić zasady przechowywania na podstawie jego preferencji. Dzienniki diagnostyczne mogą być również wysyłane do usługi Log Analytics lub Centrum zdarzeń. Zobacz [diagnostyki bramy aplikacji](application-gateway-diagnostics.md) Aby uzyskać więcej informacji.
+Dzienniki diagnostyczne usługi flow do konta magazynu klientów i klienci mogą ustawić zasady przechowywania na podstawie jego preferencji. Dzienniki diagnostyczne mogą być również wysyłane do Centrum zdarzeń lub usługi Azure Monitor dzienniki. Zobacz [diagnostyki bramy aplikacji](application-gateway-diagnostics.md) Aby uzyskać więcej informacji.
 
 ### <a name="how-do-i-get-audit-logs-for-application-gateway"></a>Jak uzyskać dzienniki inspekcji w usłudze Application Gateway?
 
@@ -358,7 +358,7 @@ Tak, usługa Application Gateway obsługuje alerty. Alerty są konfigurowane na 
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Jak analizować statystyki ruchu w usłudze Application Gateway?
 
-Można wyświetlać i analizować Dzienniki dostępu przy użyciu kilku mechanizmów, takich jak Azure Log Analytics, Excel, Power BI itp.
+Można wyświetlać i analizować Dzienniki dostępu przy użyciu kilku mechanizmów, takich jak dzienniki usługi Azure Monitor, Excel, Power BI itp.
 
 Opublikowane dotychczas również szablon usługi Resource Manager, która jest instalowana i uruchamiana popularnej [GoAccess](https://goaccess.io/) dziennik analizatora, aby uzyskać dostęp do dzienników usługi Application Gateway. GoAccess udostępnia cenne statystyki ruch HTTP, takie jak unikatowych osób odwiedzających, żądane pliki, hosty, systemy operacyjne, przeglądarki, kody stanu HTTP i nie tylko. Aby uzyskać więcej informacji, zobacz [pliku Readme w folderu szablonu usługi Resource Manager w usłudze GitHub](https://aka.ms/appgwgoaccessreadme).
 

@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 83a8a7f927e78f3524128338d874334ebf0b3df1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 77cd485b7ca7f9965a8baf9026b68060067d6ebe
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884005"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453940"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Machine learning ściągawka dotycząca algorytmów dla usługi Azure Machine Learning Studio
 
-**Da się oszukać arkuszu Azure maszyny uczenie algorytmu** pomaga w wyborze prawo algorytmu dla modelu analizy predykcyjnej.
+**Azure Machine Learning Studio algorytm da się oszukać arkusza** pomaga w wyborze prawo algorytmu dla modelu analizy predykcyjnej.
 
 [Usługa Azure Machine Learning Studio](https://studio.azureml.net/) ma dużej biblioteki algorytmów z ***regresji***, ***klasyfikacji***, ***klastrowania***, i  ***wykrywanie anomalii*** rodziny. Każdy jest przeznaczony do adresu innego typu maszyny nauczanym problemem.
 
@@ -27,14 +27,12 @@ ms.locfileid: "55884005"
 
 **Pobierz ściągawka tutaj: [W usłudze Machine Learning Algorithm Cheat-Sheet (11 x 17 cali)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![Usługi Machine learning algorithm cheat-sheet: Dowiedz się, jak wybrać algorytm uczenia maszynowego.][cheat-sheet]
-
-[cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
+![Usługi Machine learning algorithm cheat-sheet: Dowiedz się, jak wybrać algorytm uczenia maszynowego.](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png)
 
 Pobrać i wydrukować Machine Learning Studio algorytm da się oszukać arkusza w rozmiarze tabloidu Utrzymaj wygodny, i uzyskać pomoc, wybieranie algorytmu.
 
 > [!NOTE]
-> Aby uzyskać pomoc przy użyciu ta ściągawka dotyczące wybierania prawo algorytm, a także bardziej dyskusję na temat różnych rodzajów algorytmów uczenia maszynowego i sposoby ich używania, zobacz [jak wybór algorytmów dla usługi Microsoft Azure Machine Learning](algorithm-choice.md).
+> Aby uzyskać pomoc przy użyciu ta ściągawka dotyczące wybierania prawo algorytm, a także bardziej dyskusję na temat różnych rodzajów algorytmów uczenia maszynowego i sposoby ich używania, zobacz [jak wybór algorytmów dla usługi Microsoft Azure Machine Learning Studio](algorithm-choice.md).
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Uwagi i definicji dla algorytmu usługi Machine Learning Studio ściągawka
 
@@ -44,7 +42,7 @@ Pobrać i wydrukować Machine Learning Studio algorytm da się oszukać arkusza 
 
 * Istnieją trzy główne kategorie usługi machine learning: **uczenia nadzorowanego**, **uczenie nienadzorowane**, i **uczenia przez wzmacnianie**.
 
-  * W **uczenia nadzorowanego**, każdego punktu danych jest oznaczone lub skojarzone z kategorii lub wartość zainteresowania.  Przykład etykiety kategorii jest przypisywanie obrazu jako dog lub cat.  Przykład etykiety wartość to cena sprzedaży, skojarzone z używanych samochodów. Celem uczenia nadzorowanego jest zbadanie wiele przykładów etykietą, takie jak te, a następnie, aby można było tworzyć prognozy dotyczące punktów danych w przyszłości. Na przykład identyfikuje nowe zdjęcia z poprawną zwierzę lub przypisywanie sprzedaży dokładne ceny do innych używanych samochodów. Jest to typ popularnych i przydatne uczenia maszynowego. Wszystkie moduły w usłudze Azure Machine Learning są uczenia nadzorowanego algorytmów, z wyjątkiem [klastrowania K-średnich][k-means-clustering].
+  * W **uczenia nadzorowanego**, każdego punktu danych jest oznaczone lub skojarzone z kategorii lub wartość zainteresowania.  Przykład etykiety kategorii jest przypisywanie obrazu jako dog lub cat.  Przykład etykiety wartość to cena sprzedaży, skojarzone z używanych samochodów. Celem uczenia nadzorowanego jest zbadanie wiele przykładów etykietą, takie jak te, a następnie, aby można było tworzyć prognozy dotyczące punktów danych w przyszłości. Na przykład identyfikuje nowe zdjęcia z poprawną zwierzę lub przypisywanie sprzedaży dokładne ceny do innych używanych samochodów. Jest to typ popularnych i przydatne uczenia maszynowego. Wszystkie moduły w usłudze Azure Machine Learning Studio są uczenia nadzorowanego algorytmów, z wyjątkiem [klastrowania K-średnich][k-means-clustering].
 
   * W **uczenie nienadzorowane**, punkty danych mają bez etykiet skojarzonych z nimi. Zamiast tego celem algorytmu uczenia nienadzorowanych jest do organizowania danych, które w jakiś sposób, lub do opisania jego struktury. Oznacza to grupowanie w klastrach, tak jak K-średnich lub znajdowania różne sposoby spojrzenie na złożonych danych, tak aby była wyświetlana prostsze.
 

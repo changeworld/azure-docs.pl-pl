@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66d4dc7e6fc1545e1de1e3b50887585c4156b4c0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1923a34c5c49f16b32ed5b5d0913a65ce0b1ea21
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208790"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453379"
 ---
 # <a name="converged-registration-for-self-service-password-reset-and-azure-multi-factor-authentication-public-preview"></a>Osiągnięcia zbieżności rejestracji samoobsługowego resetowania hasła i usługi Azure Multi-Factor Authentication (publiczna wersja zapoznawcza)
 
@@ -78,7 +78,7 @@ Dzienniki inspekcji dla tego nowego środowiska istnieje w kategorii metod uwier
 
 **Po użytkownik rejestruje telefonie za pomocą wiadomości SMS, domyślną metodą uwierzytelniania Wieloskładnikowego jest ustawiony na połączenie telefoniczne**
 
-   * Niektórzy użytkownicy zauważyć, że ich domyślną metodą uwierzytelniania Wieloskładnikowego jest ustawiona na połączenie telefoniczne, po ich zarejestrowania numeru telefonu za pomocą wiadomości SMS. Użytkownicy mogą rozwiązać ten problem, zmieniając ich domyślną metodę zgodnie z instrukcjami w artykule [Zarządzanie zabezpieczających (wersja zapoznawcza)](../user-help/security-info-manage-settings.md#change-your-info).
+   * Niektórzy użytkownicy zauważyć, że ich domyślną metodą uwierzytelniania Wieloskładnikowego jest ustawiona na połączenie telefoniczne, po ich zarejestrowania numeru telefonu za pomocą wiadomości SMS. Użytkownicy mogą rozwiązać ten problem, zmieniając ich domyślną metodę zgodnie z instrukcjami w artykułach odwołuje się [Przegląd o zmienianiu zabezpieczających (wersja zapoznawcza)](../user-help/security-info-add-update-methods-overview.md).
 
 **Użytkownik nie może korzystać nowe środowisko rejestracji, po administrator wyłączy ich domyślną metodę**
 

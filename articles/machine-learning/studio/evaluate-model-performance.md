@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b663177a07446b888bc7bf9e919bf180458d36bc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e5c85451ca48aab8f980b89de41ebf40f1f97ff3
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487012"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453961"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Ocenianie wydajności modelu w usłudze Azure Machine Learning Studio
 
@@ -29,7 +29,7 @@ Ten artykuł pokazuje, jak ocena wydajności modelu w usłudze Azure Machine Lea
 
 Ocena wydajności modelu jest jednym z podstawowych etapów w procesie nauki o danych. Oznacza to, jak pomyślnie oceniania (prognozy) zestaw został przez uczonego modelu. 
 
-Usługę Azure Machine Learning obsługuje oceny modelu dwie jego główne maszyny uczenia modułów: [Ocena modelu] [ evaluate-model] i [krzyżowa Weryfikacja modelu][cross-validate-model]. Zezwalaj na te moduły, można zobaczyć, jak model działa pod względem liczby metryk, które są często używane podczas uczenia maszynowego i statystyki.
+Usługa Azure Machine Learning Studio obsługuje oceny modelu dwie jego główne maszyny uczenia modułów: [Ocena modelu] [ evaluate-model] i [krzyżowa Weryfikacja modelu][cross-validate-model]. Zezwalaj na te moduły, można zobaczyć, jak model działa pod względem liczby metryk, które są często używane podczas uczenia maszynowego i statystyki.
 
 ## <a name="evaluation-vs-cross-validation"></a>Ocena programu vs. Krzyżowe sprawdzanie poprawności
 Ocena i krzyżowego sprawdzania poprawności są standardowe metody zadaniem jest mierzenie wydajności modelu. Zarówno generują metryki oceny, które można sprawdzić lub porównać te z innymi modelami.
@@ -48,7 +48,7 @@ Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning 
 
 * Cen samochodów, data (Raw)
 * [Regresja liniowa][linear-regression]
-* [Trenowanie modelu][train-model]
+* [Train Model (Trenuj model)][train-model]
 * [Score Model][score-model]
 * [Ocena modelu][evaluate-model]
 
@@ -83,14 +83,14 @@ Po uruchomieniu eksperymentu, można sprawdzić wyniki oceny, kliknij port wyjś
 Rysunek 4. Wyników krzyżowego sprawdzania poprawności modelu regresji.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Ocena Model klasyfikacji binarnej
-W przypadku klasyfikacji binarnej Zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {FAŁSZ, PRAWDA}, {dodatnie, ujemne}. Przyjęto założenie, otrzymują zestaw treści dla dorosłych pracowników z niektórymi demograficznych i zatrudnienia zmienne i zostanie wyświetlony monit do prognozowania poziomu dochodu binarne zmiennej o wartości {"< = 50 K", "> 50 K"}. Innymi słowy ujemna klasa reprezentuje pracowników, którzy tworzą mniejsza lub równa 50 K rocznie i dodatnią klasa reprezentuje innym pracownikom. Tak jak w scenariuszu regresji firma Microsoft będzie wytrenuj model, oceniać niektóre dane i ocena wyników. Główną różnicą jest wybór metryk, które oblicza usługi Azure Machine Learning i danych wyjściowych. Aby zilustrować scenariusza prognozowania poziomu przychodów, użyjemy [treści dla dorosłych](http://archive.ics.uci.edu/ml/datasets/Adult) zestawu danych do tworzenia eksperymentu usługi Azure Machine Learning i ocena wydajności modelu regresji logistycznej dwuklasowych, często używane dane binarne Klasyfikator.
+W przypadku klasyfikacji binarnej Zmienna docelowa ma tylko dwa możliwe wyniki, na przykład: {0, 1} lub {FAŁSZ, PRAWDA}, {dodatnie, ujemne}. Przyjęto założenie, otrzymują zestaw treści dla dorosłych pracowników z niektórymi demograficznych i zatrudnienia zmienne i zostanie wyświetlony monit do prognozowania poziomu dochodu binarne zmiennej o wartości {"< = 50 K", "> 50 K"}. Innymi słowy ujemna klasa reprezentuje pracowników, którzy tworzą mniejsza lub równa 50 K rocznie i dodatnią klasa reprezentuje innym pracownikom. Tak jak w scenariuszu regresji firma Microsoft będzie wytrenuj model, oceniać niektóre dane i ocena wyników. Główną różnicą jest wybór metryk, które oblicza Azure Machine Learning Studio i danych wyjściowych. Aby zilustrować scenariusza prognozowania poziomu przychodów, użyjemy [treści dla dorosłych](http://archive.ics.uci.edu/ml/datasets/Adult) zestawu danych, aby utworzyć eksperyment Studio i ocena wydajności modelu regresji logistycznej dwuklasowych, powszechnie używane Klasyfikator binarny.
 
 ### <a name="creating-the-experiment"></a>Tworzenie eksperymentu
 Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning Studio:
 
 * Treści dla dorosłych klasyfikacji binarnej dochodu spisu zestawu danych.
 * [Regresja logistyczna Two-Class][two-class-logistic-regression]
-* [Trenowanie modelu][train-model]
+* [Train Model (Trenuj model)][train-model]
 * [Score Model][score-model]
 * [Ocena modelu][evaluate-model]
 
@@ -103,9 +103,9 @@ Rysunek 5. Ocena Model klasyfikacji binarnej.
 ### <a name="inspecting-the-evaluation-results"></a>Sprawdzanie wyników oceny
 Po uruchomieniu eksperymentu, kliknij port wyjściowy [Evaluate Model] [ evaluate-model] modułu, a następnie wybierz pozycję *Visualize* aby zobaczyć wyniki oceny (rysunek 7). Są dostępne dla modeli klasyfikacji binarnej metryki oceny: *Dokładność*, *dokładności*, *Odwołaj*, *wynik F1*, i *AUC*. Ponadto moduł generuje macierz pomyłek, w którym wyświetlana jest liczba prawdziwie dodatnie, fałszywych wyników negatywnych, liczbę wyników fałszywie dodatnich i negatywów wartość true, a także *ROC*, *dokładności/odwołania*, i  *Przenoszenie* krzywych.
 
-Dokładność jest po prostu część wystąpień poprawnie sklasyfikowane. Zazwyczaj jest pierwszym metrykę, które przyjrzymy się podczas oceny klasyfikatora. Jednakże, gdy dane testowe jest niezrównoważone (gdzie większość wystąpień należą do jednej z klas) lub interesuje Cię bardziej w czasie wykonywania w jednej z klas, dokładność naprawdę nie odzwierciedla skuteczność klasyfikatora. W scenariuszu poziomu Klasyfikacja dochodu przyjęto założenie, że testujesz niektórych danych, gdzie 99% wystąpień reprezentują osób, które kwota zobowiązania, tym mniejsza lub równa 50 K rocznie. Jest możliwe uzyskanie 0.99 dokładności, przewidując klasy "< = 50K" dla wszystkich wystąpień. Klasyfikator w tym przypadku wydaje się być wysoki poziom ogólną, ale w rzeczywistości nie jest on sklasyfikować dowolny high-income (1%) dla użytkowników indywidualnych poprawnie.
+Dokładność jest po prostu część wystąpień poprawnie sklasyfikowane. Zazwyczaj jest pierwszym metrykę, które przyjrzymy się podczas oceny klasyfikatora. Jednakże, gdy dane testowe jest niezrównoważone (gdzie większość wystąpień należą do jednej z klas) lub interesuje Cię bardziej w czasie wykonywania w jednej z klas, dokładność naprawdę nie odzwierciedla skuteczność klasyfikatora. W scenariuszu poziomu Klasyfikacja dochodu przyjęto założenie, że testujesz niektórych danych, gdzie 99% wystąpień reprezentują osób, które kwota zobowiązania, tym mniejsza lub równa 50 K rocznie. Jest możliwe uzyskanie 0.99 dokładności, przewidując klasy "< = 50K" dla wszystkich wystąpień. Klasyfikator w tym przypadku wydaje się być wysoki poziom ogólną, ale w rzeczywistości nie jest on klasyfikowania dowolnego osobom high-income (1%) poprawnie.
 
-Z tego powodu warto obliczenia dodatkowe metryki, które przechwycić bardziej konkretnych aspektów oceny. Przed przejściem do szczegółów tych metryk, ważne jest zrozumienie macierz pomyłek oceny klasyfikacji binarnej. Etykiety klasy w zestawie szkolenia można wykonać na tylko 2 możliwych wartości, które zazwyczaj nazywamy, jak dodatnie lub ujemne. Dodatnie i ujemne wystąpień, które klasyfikatora przewiduje poprawnie są nazywane odpowiednio prawdziwie dodatnie (TP) i PRAWDA negatywów (TN). Podobnie niepoprawnie niejawnych wystąpienia są nazywane wyników fałszywie dodatnich (FP) i fałszywych wyników negatywnych (FN). Macierz pomyłek jest po prostu tabelę przedstawiającą liczbę wystąpień, które są objęte każdej z tych kategorii 4. Usługa Azure Machine Learning automatycznie decyduje, dwóch klas w zestawie danych jest klasa dodatnią. W przypadku wartości logicznych lub liczby całkowite etykiety klasy wystąpienia etykietą "prawda" lub "1" są przypisywane dodatnią klasy. Jeśli etykiety są ciągami, tak jak w przypadku zestawu danych dochodu etykiety są sortowane alfabetycznie, a pierwszy poziom jest wybierany jako ujemny klasy, podczas gdy drugi poziom jest dodatnia klasy.
+Z tego powodu warto obliczenia dodatkowe metryki, które przechwycić bardziej konkretnych aspektów oceny. Przed przejściem do szczegółów tych metryk, ważne jest zrozumienie macierz pomyłek oceny klasyfikacji binarnej. Etykiety klasy w zestawie szkolenia można wykonać na tylko 2 możliwych wartości, które zazwyczaj nazywamy, jak dodatnie lub ujemne. Dodatnie i ujemne wystąpień, które klasyfikatora przewiduje poprawnie są nazywane odpowiednio prawdziwie dodatnie (TP) i PRAWDA negatywów (TN). Podobnie niepoprawnie niejawnych wystąpienia są nazywane wyników fałszywie dodatnich (FP) i fałszywych wyników negatywnych (FN). Macierz pomyłek jest po prostu tabelę przedstawiającą liczbę wystąpień, które są objęte każdej z tych kategorii 4. Usługa Azure Machine Learning Studio automatycznie decyduje, dwóch klas w zestawie danych jest klasa dodatnią. W przypadku wartości logicznych lub liczby całkowite etykiety klasy wystąpienia etykietą "prawda" lub "1" są przypisywane dodatnią klasy. Jeśli etykiety są ciągami, tak jak w przypadku zestawu danych dochodu etykiety są sortowane alfabetycznie, a pierwszy poziom jest wybierany jako ujemny klasy, podczas gdy drugi poziom jest dodatnia klasy.
 
 ![Macierz pomyłek Klasyfikacja binarna](./media/evaluate-model-performance/6a.png)
 
@@ -140,8 +140,8 @@ Dodaj następujące moduły do obszaru roboczego usługi Azure Machine Learning 
 
 * [Importowanie danych][import-data]
 * [Las decyzyjny kontra][multiclass-decision-forest]
-* [Podział danych][split]
-* [Trenowanie modelu][train-model]
+* [Spil Data (Podziel dane)][split]
+* [Train Model (Trenuj model)][train-model]
 * [Score Model][score-model]
 * [Ocena modelu][evaluate-model]
 

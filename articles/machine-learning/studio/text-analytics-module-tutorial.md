@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 79882fc895262f0fb607ec048e7912ae5f2efdd7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e8e50aa49595addeab3369f74b618c31b7cf1625
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242672"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454382"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Tworzenie modelu analizy tonacji w usłudze Azure Machine Learning Studio
 
-Można użyć usługi Azure Machine Learning, aby tworzyć i uruchamiać modele analizy tekstu. Te modele mogą pomóc rozwiązać, na przykład dokument klasyfikację lub tonacji problemy związane z analizą.
+Można użyć usługi Azure Machine Learning Studio, aby tworzyć i uruchamiać modele analizy tekstu. Te modele mogą pomóc rozwiązać, na przykład dokument klasyfikację lub tonacji problemy związane z analizą.
 
 W eksperyment analizy tekstu jak zwykle:
 
@@ -66,7 +66,7 @@ Jako alternatywne podejście do korzystania z funkcji wyodrębnić N-Gram umożl
 ## <a name="step-3-train-classification-or-regression-model"></a>Krok 3: Train model klasyfikacji lub regresji
 Teraz tekst została przekształcona z kolumnami funkcji liczbowych. Zestaw danych nadal zawiera kolumny parametry z poprzednich etapów, dlatego używamy Wybieranie kolumn w zestawie danych, aby je wykluczyć.
 
-Następnie używamy [regresji logistycznej Two-Class](https://msdn.microsoft.com/library/azure/dn905994.aspx) do prognozowania naszym celem: wysokiej lub niskiej przeglądu oceny. W tym momencie problem regularne klasyfikacji została przekształcona problem analizy tekstu. Narzędzia dostępne w usłudze Azure Machine Learning można użyć w celu ulepszenia modelu. Na przykład możesz eksperymentować z różnych klasyfikatorów, aby dowiedzieć się, jak dokładne wyniki, które zapewniają lub użyć hiperparametrycznego strojenia w celu zwiększenia dokładności.
+Następnie używamy [regresji logistycznej Two-Class](https://msdn.microsoft.com/library/azure/dn905994.aspx) do prognozowania naszym celem: wysokiej lub niskiej przeglądu oceny. W tym momencie problem regularne klasyfikacji została przekształcona problem analizy tekstu. Narzędzia dostępne w usłudze Azure Machine Learning Studio można użyć w celu ulepszenia modelu. Na przykład możesz eksperymentować z różnych klasyfikatorów, aby dowiedzieć się, jak dokładne wyniki, które zapewniają lub użyć hiperparametrycznego strojenia w celu zwiększenia dokładności.
 
 ![Szkolenie i ocenianie](./media/text-analytics-module-tutorial/scoring-text.png)
 

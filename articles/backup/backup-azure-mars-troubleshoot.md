@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: 9180604b18224adace040c9eee5181b4cd4d8b92
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ce6293e63e672df9683ab607a304f8c7275911c5
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339009"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446617"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Rozwiązywanie problemów z Agent usług Microsoft Azure Recovery Services (MARS)
 
@@ -59,7 +59,8 @@ Poniżej przedstawiono sposób naprawić błędy, które można napotkać podcza
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Tworzenie kopii zapasowych nie działają zgodnie z harmonogramem
 Jeśli zaplanowane kopie zapasowe nie wyzwalane automatycznie, podczas ręcznego tworzenia kopii zapasowych działać bez problemów, spróbuj wykonać następujące czynności:
 
-- Przejdź do **Panel sterowania** > **narzędzia administracyjne** > **harmonogram zadań**. Rozwiń **Microsoft**i wybierz **kopii zapasowej Online**. Kliknij dwukrotnie **Microsoft OnlineBackup**, a następnie przejdź do **wyzwalaczy** kartę. Upewnij się, że stan jest ustawiony na **włączone**. Jeśli nie, wybierz **Edytuj**i wybierz **włączone** pole wyboru. Na **ogólne** karty, wróć do **opcje zabezpieczeń**. Upewnij się, że konto użytkownika, wybrany do uruchomienia tego zadania jest **systemu** lub **grupy administratorów lokalnych** na serwerze.
+- Upewnij się, że harmonogram tworzenia kopii zapasowych systemu Windows Server nie powoduje konfliktu z platformy Azure, pliki i foldery harmonogram tworzenia kopii zapasowych.
+- Przejdź do **Panel sterowania** > **narzędzia administracyjne** > **harmonogram zadań**. Rozwiń **Microsoft**i wybierz **kopii zapasowej Online**. Kliknij dwukrotnie **Microsoft OnlineBackup**, a następnie przejdź do **wyzwalaczy** kartę. Upewnij się, że stan jest ustawiony na **włączone**. Jeśli nie, wybierz **Edytuj**i wybierz **włączone** pole wyboru i kliknij przycisk **OK**. Na **ogólne** karty, wróć do **opcje zabezpieczeń** i upewnij się, że konto użytkownika, wybrany do uruchomienia tego zadania jest **systemu** lub **lokalne Grupa administratorów** na serwerze.
 
 - Zobacz, jeśli program PowerShell 3.0 lub nowszej jest zainstalowane na serwerze. Aby sprawdzić wersję programu PowerShell, uruchom następujące polecenie i upewnij się, że *głównych* numer wersji jest równy lub większy niż 3.
 

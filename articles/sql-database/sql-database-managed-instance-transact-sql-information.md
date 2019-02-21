@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure SQL Database managed różnice języka T-SQL w wystąpieniu | Dokumentacja firmy Microsoft
+title: Usługa Azure SQL Database Managed różnice języka T-SQL w wystąpieniu | Dokumentacja firmy Microsoft
 description: W tym artykule omówiono różnice języka T-SQL wystąpienia zarządzanego usługi Azure SQL Database i programu SQL Server
 services: sql-database
 ms.service: sql-database
@@ -11,15 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/18/2019
-ms.openlocfilehash: 5791f937128bc09c4e3fccd9593d17acb9f9434e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/20/2019
+ms.openlocfilehash: 942b1423583f663f22ced6ea8399409778b2f6de
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339672"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455131"
 ---
-# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Usługa Azure SQL Database managed różnice wystąpienia języka T-SQL z programu SQL Server
+# <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
 Opcji wdrożenia wystąpienia zarządzanego zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcje aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym.
 
@@ -37,7 +37,7 @@ Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artyku
 
 ### <a name="always-on-availability"></a>Zawsze włączone
 
-[Wysoka dostępność](sql-database-high-availability.md) jest wbudowana w wystąpienia zarządzanego i nie mogą być kontrolowane przez użytkowników. Poniższe instrukcje nie są obsługiwane:
+[Wysoka dostępność](sql-database-high-availability.md) jest wbudowana w wystąpieniu zarządzanym i nie mogą być kontrolowane przez użytkowników. Poniższe instrukcje nie są obsługiwane:
 
 - [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql)
 - [UTWÓRZ GRUPĘ DOSTĘPNOŚCI](https://docs.microsoft.com/sql/t-sql/statements/create-availability-group-transact-sql)
@@ -47,7 +47,7 @@ Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artyku
 
 ### <a name="backup"></a>Backup
 
-Wystąpienia zarządzane mają automatyczne kopie zapasowe i umożliwia użytkownikom tworzenie pełnej bazy danych `COPY_ONLY` kopii zapasowych. Różnicowe kopie zapasowe, log oraz kopii zapasowych migawki pliku nie są obsługiwane.
+Wystąpienia zarządzane automatycznych kopii zapasowych i Zezwól użytkownikom na tworzenie pełnej bazy danych `COPY_ONLY` kopii zapasowych. Różnicowe kopie zapasowe, log oraz kopii zapasowych migawki pliku nie są obsługiwane.
 
 - Za pomocą wystąpienia zarządzanego kopii zapasowych wystąpienia bazy danych tylko do konta usługi Azure Blob Storage:
   - Tylko `BACKUP TO URL` jest obsługiwana
@@ -78,7 +78,7 @@ Podstawowe różnice między inspekcji w bazach danych Azure SQL Database i baz 
 - Korzystając z pojedynczą bazę danych i pul elastycznych opcji wdrażania w usłudze Azure SQL Database inspekcja działa na poziomie bazy danych.
 - W programie SQL Server w środowisku lokalnym / wirtualnej maszyny, inspekcji działa na serwerze poziomu, ale przechowuje zdarzenia w plikach systemu/dzienniki zdarzeń systemu windows.
   
-Wystąpienie zarządzane inspekcji systemu XEvent obsługuje cele usługi Azure Blob storage. Dzienniki plików i systemu windows nie są obsługiwane.
+Inspekcji systemu XEvent, w wystąpieniu zarządzanym obsługuje cele usługi Azure Blob storage. Dzienniki plików i systemu windows nie są obsługiwane.
 
 Klucz różnice w `CREATE AUDIT` składnia dla inspekcji w usłudze Azure Blob storage są:
 
@@ -93,7 +93,7 @@ Aby uzyskać więcej informacji, zobacz:
 
 ### <a name="certificates"></a>Certyfikaty
 
-Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc obowiązują następujące ograniczenia:
+Wystąpienie zarządzane nie może uzyskać dostępu udziałów plików i folderów Windows, więc obowiązują następujące ograniczenia:
 
 - `CREATE FROM`/`BACKUP TO` plik nie jest obsługiwany w przypadku certyfikatów
 - `CREATE`/`BACKUP` certyfikat od `FILE` / `ASSEMBLY` nie jest obsługiwane. Nie można użyć plików kluczy prywatnych.  
@@ -116,7 +116,7 @@ Zobacz [Utwórz POŚWIADCZENIA](https://docs.microsoft.com/sql/t-sql/statements/
 
 ### <a name="cryptographic-providers"></a>Dostawcy usług kryptograficznych
 
-Wystąpienia zarządzanego nie można uzyskać dostęp do plików, więc nie można utworzyć dostawcy usług kryptograficznych:
+Wystąpienie zarządzane nie może uzyskać dostęp do plików, więc nie można utworzyć dostawcy usług kryptograficznych:
 
 - `CREATE CRYPTOGRAPHIC PROVIDER` nie jest obsługiwane. Zobacz [dostawcy usług KRYPTOGRAFICZNYCH Utwórz](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER` nie jest obsługiwane. Zobacz [dostawcy usług KRYPTOGRAFICZNYCH ALTER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
@@ -124,10 +124,45 @@ Wystąpienia zarządzanego nie można uzyskać dostęp do plików, więc nie mo�
 ### <a name="logins--users"></a>Identyfikatory logowania / użytkownicy
 
 - Utworzone nazw logowania SQL `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY`, i `FROM SID` są obsługiwane. Zobacz [logowania Utwórz](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- Usługa Azure Active Directory (AAD) logowania do utworzonych za pomocą [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) składni lub [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) składni są obsługiwane (**publicznej wersji zapoznawczej**).
+- Usługa Azure Active Directory (Azure AD) serwera podmiotów zabezpieczeń (logowania) utworzone za pomocą [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) składni lub [utworzyć z LOGOWANIEM użytkownika [Azure AD Login]](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current) składni są obsługiwane (**publicznej wersji zapoznawczej** ). Są to nazwy logowania jest tworzone na poziomie serwera.
+    - Wystąpienie zarządzane obsługuje podmiotów zabezpieczeń bazy danych usługi Azure AD przy użyciu składni `CREATE USER [AADUser/AAD group] FROM EXTERNAL PROVIDER`. To jest również nazywany usługi Azure AD zawartych użytkowników bazy danych.
 - Logowania Windows utworzonych za pomocą `CREATE LOGIN ... FROM WINDOWS` składni nie są obsługiwane. Za pomocą usługi Azure Active Directory, logowania i użytkowników.
-- Azure użytkownik usługi Active Directory (Azure AD), który utworzył wystąpienie ma [nieograniczone uprawnienia administratora](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Użytkownicy poziomu bazy danych usługi Azure Active Directory (Azure AD) niebędący administratorami można tworzyć przy użyciu `CREATE USER ... FROM EXTERNAL PROVIDER` składni. Zobacz [Utwórz użytkownika... Z ZEWNĘTRZNEGO DOSTAWCY](sql-database-manage-logins.md#non-administrator-users)
+- Użytkownika usługi AD Azure, który utworzył wystąpienie ma [nieograniczone uprawnienia administratora](sql-database-manage-logins.md#unrestricted-administrative-accounts).
+- Użytkownicy poziomu bazy danych usługi Azure Active Directory (Azure AD) niebędący administratorami można tworzyć przy użyciu `CREATE USER ... FROM EXTERNAL PROVIDER` składni. Zobacz [Utwórz użytkownika... Z ZEWNĘTRZNEGO DOSTAWCY](sql-database-manage-logins.md#non-administrator-users).
+- Jednostki serwera w usłudze Azure AD (logowania) obsługują funkcje SQL w ramach tylko wystąpienie jednego wystąpienia Zarządzanego. Funkcje, które wymagają interakcji między wystąpienia, niezależnie od tego, jeśli w tej samej usłudze Azure AD lub inną dzierżawą nie są obsługiwane dla użytkowników usługi Azure AD. Przykłady takich funkcji:
+    - Replikacja transakcyjna programu SQL i
+    - Link Server
+- Ustawienia logowania usługi Azure AD mapowane na grupę usługi Azure AD, jako właściciel bazy danych nie jest obsługiwane.
+- Personifikacja podmiotów zabezpieczeń z poziomu serwera usługi Azure AD, przy użyciu innych podmiotów zabezpieczeń usługi Azure AD jest obsługiwany, takich jak [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql) klauzuli. WYKONAJ jako ograniczenia:
+    - EXECUTE AS USER nie jest obsługiwane dla użytkowników usługi Azure AD, gdy nazwa różni się od nazwy logowania. Na przykład po utworzeniu użytkownika przy użyciu składni CREATE USER [myAadUser] z logowania [john@contoso.com], a próby personifikacji za pośrednictwem EXEC AS USER = _myAadUser_. Podczas tworzenia **użytkownika** z usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania), należy określić nazwa_użytkownika jako ten sam login_name z **logowania**.
+    - Tylko podmioty zabezpieczeń na poziomie programu SQL Server (identyfikatory logowania), które są częścią roli `sysadmin`, mogą wykonać następujące operacje, których celem są podmioty zabezpieczeń usługi Azure AD: 
+        - EXECUTE AS USER
+        - EXECUTE AS LOGIN
+- **Publiczna wersja zapoznawcza** ograniczenia dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania):
+    - Ograniczenia aktywnego katalogu administratora dla wystąpienia zarządzanego:
+        - Administrator usługi Azure AD umożliwia skonfigurowanie wystąpienia zarządzanego nie może służyć do tworzenia usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) w ramach wystąpienia zarządzanego. Należy utworzyć pierwszy usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) za pomocą konta programu SQL Server, który jest `sysadmin`. Jest to tymczasowe ograniczenie, które zostaną usunięte po podmiotów zabezpieczeń serwera usługi Azure AD (logowania) stają się po ogólnym udostępnieniu produktu Jeśli spróbujesz utworzyć identyfikator logowania przy użyciu konta administratora usługi Azure AD zostanie wyświetlony następujący błąd: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+        - Obecnie należy utworzyć pierwszego logowania usługi Azure AD, utworzone w bazie danych master przez standardowe konta programu SQL Server (bez usługi Azure AD) będącego `sysadmin` przy użyciu [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) z zewnętrznego dostawcy. GA wpis to ograniczenie będą usuwane i moduł początkowego logowania usługi Azure AD mogą być tworzone przez administratora usługi Active Directory dla wystąpienia zarządzanego.
+    - DacFx (importu/eksportu), używany przy użyciu programu SQL Server Management Studio (SSMS) lub SqlPackage nie jest obsługiwane w przypadku logowania do usługi Azure AD. To ograniczenie zostanie usunięty po podmiotów zabezpieczeń serwera usługi Azure AD (logowania) stają się po ogólnym udostępnieniu produktu
+    - Przy użyciu jednostek serwera usługi Azure AD (logowania) za pomocą programu SSMS
+        - Obsługa skryptów logowania do usługi Azure AD (przy użyciu dowolnego uwierzytelnionego logowania) nie jest obsługiwane.
+        - Funkcja IntelliSense nie rozpoznaje **utworzyć z zewnętrznego dostawcy logowania** instrukcji i pokażą, czerwoną linią.
+- Tylko główna nazwa logowania na poziomie serwera (utworzonego przez proces tworzenia wystąpienia zarządzanego), członkowie ról serwera (`securityadmin` lub `sysadmin`), lub innych nazw logowania z uprawnieniami ALTER ANY LOGIN na poziomie serwera można utworzyć serwer usługi Azure AD podmioty (logowania) w bazie danych master dla wystąpienia zarządzanego.
+- Jeśli identyfikator logowania to podmiot zabezpieczeń SQL, tylko identyfikatory logowania, które są częścią roli `sysadmin` mogą użyć polecenia create do utworzenia identyfikatorów logowania dla konta usługi Azure AD.
+- Logowanie w usłudze Azure AD, musi należeć do usługi Azure AD, w tym samym katalogu, które są używane do wystąpienia zarządzanego Azure SQL.
+- Jednostki serwera w usłudze Azure AD (logowania) są widoczne w Eksploratorze obiektów rozpoczęcie przeczytania artykułu przy użyciu narzędzia SSMS w wersjach 18.0 w wersji zapoznawczej 5.
+- Nakładające się podmiotów serwera usługi Azure AD (logowania) przy użyciu konta administratora usługi Azure AD jest dozwolone. Jednostki serwera w usłudze Azure AD (logowania) mają pierwszeństwo przed administrator usługi Azure AD podczas rozpoznawania uprawnienia podmiotu zabezpieczeń i mające zastosowanie do wystąpienia zarządzanego.
+- Podczas uwierzytelniania sekwencji po zastosowaniu można rozpoznać jednostki uwierzytelniania:
+    1. Jeśli istnieje konto usługi Azure AD jako mapowane bezpośrednio do usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) (istnieje w sys.server_principals jako typ "E"), należy udzielić dostępu i zastosuj uprawnienia podmiotu zabezpieczeń serwera usługi Azure AD (identyfikator logowania).
+    2. Jeśli konto usługi Azure AD jest członkiem grupy usługi Azure AD, który jest mapowany do usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania) (istnieje w sys.server_principals jako typu "X"), przyznać dostęp i zastosuj uprawnienia logowania grupy usługi Azure AD.
+    3. Jeśli konto usługi Azure AD jest specjalny skonfigurowane w portalu administratora usługi Azure AD dla wystąpienia zarządzanego (nie istnieje w widokach systemu wystąpienie zarządzane), mają zastosowanie specjalnych stałych uprawnień administratora usługi Azure AD dla wystąpienia zarządzanego (starsza wersja trybu).
+    4. Jeśli istnieje konto usługi Azure AD jako bezpośrednio zmapowane do użytkownika usługi Azure AD w bazie danych (w sys.database_principals jako typ "E"), udzielanie dostępu i zastosuj uprawnienia użytkownika bazy danych usługi Azure AD.
+    5. Jeśli konto usługi Azure AD jest członkiem grupy usługi Azure AD, który jest mapowany do użytkownika usługi Azure AD w bazie danych (w sys.database_principals jako typ "X"), przyznać dostęp i zastosuj uprawnienia logowania grupy usługi Azure AD.
+    6. W przypadku logowania usługi Azure AD zamapowanych na konto użytkownika usługi Azure AD lub konta grupy usługi Azure AD, rozpoznawania uwierzytelnia użytkownika, wszystkie uprawnienia z tymi danymi logowania usługi Azure AD zostaną zastosowane.
+
+
+
+
+
 
 ### <a name="service-key-and-service-master-key"></a>Usługa klucza głównego klucza i usługi
 
@@ -182,8 +217,8 @@ Poniżej przedstawiono `CREATE DATABASE` ograniczenia:
    > [!TIP]
    > Jako obejście tego problemu należy użyć `ALTER DATABASE` po `CREATE DATABASE` można ustawić opcji bazy danych, aby dodać pliki lub ustawić zawierania.  
 
-- `FOR ATTACH` opcja nie jest obsługiwana.
-- `AS SNAPSHOT OF` opcja nie jest obsługiwana.
+- `FOR ATTACH` opcja nie jest obsługiwana
+- `AS SNAPSHOT OF` opcja nie jest obsługiwana
 
 Aby uzyskać więcej informacji, zobacz [CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-sql-server-transact-sql).
 
@@ -191,7 +226,7 @@ Aby uzyskać więcej informacji, zobacz [CREATE DATABASE](https://docs.microsoft
 
 Niektóre właściwości pliku nie można ustawić lub zmienić:
 
-- Nie można określić ścieżkę pliku w `ALTER DATABASE ADD FILE (FILENAME='path')` instrukcję języka T-SQL. Usuń `FILENAME` ze skryptu, ponieważ wystąpienie zarządzane automatycznie umieszcza pliki.  
+- Nie można określić ścieżkę pliku w `ALTER DATABASE ADD FILE (FILENAME='path')` instrukcję języka T-SQL. Usuń `FILENAME` ze skryptu, ponieważ Managed wystąpienie automatycznie umieszcza pliki.  
 - Nie można zmienić nazwy pliku, przy użyciu `ALTER DATABASE` instrukcji.
 
 Poniższe opcje są domyślnie i nie można zmienić:
@@ -222,34 +257,34 @@ Nie można zmodyfikować następujące opcje:
 - `SINGLE_USER`
 - `WITNESS`
 
-Modyfikowanie nazwa nie jest obsługiwana.
+Modyfikowanie nazwy nie jest obsługiwane.
 
 Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
 ### <a name="sql-server-agent"></a>Program SQL Server Agent
 
-- Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwany w wystąpieniach zarządzanych.  
+- Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym.  
 - Stanowiska
   - Kroki w zadaniu języka T-SQL są obsługiwane.
   - Obsługiwane są następujące zadania replikacji:
-    - Czytnik dziennika transakcji.  
-    - Migawka.
+    - Czytnik dziennika transakcji
+    - Snapshot
     - Dystrybutor
   - Kroki zadania SSIS są obsługiwane.
-  - Inne typy kroków zadania nie są obecnie obsługiwane, w tym:
-    - Krok zadania replikacji scalającej nie jest obsługiwany.  
-    - Czytnik danych kolejki nie jest obsługiwany.  
+  - Inne rodzaje kroków zadania nie są obecnie obsługiwane, w tym:
+    - Krok zadania replikacji scalającej nie jest obsługiwane.  
+    - Czytnik kolejki nie jest obsługiwane.  
     - Powłoka poleceń nie jest jeszcze obsługiwana.
   - Wystąpienia zarządzanego nie można uzyskać dostępu zewnętrznych zasobów (np. udziały sieciowe za pośrednictwem robocopy).  
   - Program PowerShell nie jest jeszcze obsługiwana.
   - Usługi Analysis Services nie są obsługiwane.
 - Powiadomienia są obsługiwane częściowo.
 - Powiadomienie e-mail jest obsługiwane, wymagane jest skonfigurowanie profil poczty bazy danych. Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile` w publicznej wersji zapoznawczej (tymczasowe ograniczenie).  
-  - Pager nie jest obsługiwany.  
-  - Polecenie NetSend nie jest obsługiwane.
-  - Alerty nie są jeszcze nie obsługiwane.
+  - Pagera nie jest obsługiwane.  
+  - NetSend nie jest obsługiwane.
+  - Alerty nie są jeszcze obsługiwane.
   - Serwery proxy nie są obsługiwane.  
-- Dziennik zdarzeń nie jest obsługiwany.
+- Dziennik zdarzeń nie jest obsługiwane.
 
 Następujące funkcje nie są obecnie obsługiwane, ale zostaną włączone w przyszłości:
 
@@ -262,7 +297,7 @@ Aby uzyskać informacje na temat agenta programu SQL Server, zobacz [SQL Server 
 
 ### <a name="tables"></a>Tabele
 
-Obsługiwane są następujące funkcje nie:
+Nie są obsługiwane następujące czynności:
 
 - `FILESTREAM`
 - `FILETABLE`
@@ -275,17 +310,17 @@ Aby uzyskać informacji na temat tworzenia i modyfikowania tabel, zobacz [CREATE
 
 ### <a name="bulk-insert--openrowset"></a>Wstawianie zbiorcze / openrowset
 
-Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc należy importować pliki z usługi Azure Blob storage:
+Wystąpienie zarządzane nie może uzyskać dostępu udziałów plików i folderów Windows, więc należy importować pliki z usługi Azure Blob storage:
 
 - `DATASOURCE` jest wymagany w `BULK INSERT` polecenia podczas importowania plików z usługi Azure Blob storage. Zobacz [WSTAWIANIA ZBIORCZEGO](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
 - `DATASOURCE` jest wymagany w `OPENROWSET` działają w przypadku odczytać zawartość pliku z usługi Azure Blob storage. Zobacz [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 
 ### <a name="clr"></a>CLR
 
-Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc obowiązują następujące ograniczenia:
+Wystąpienie zarządzane nie może uzyskać dostępu udziałów plików i folderów Windows, więc obowiązują następujące ograniczenia:
 
 - Tylko `CREATE ASSEMBLY FROM BINARY` jest obsługiwana. Zobacz [tworzenia zestawu z danych](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
-- `CREATE ASSEMBLY FROM FILE` nie jest obsługiwane. Zobacz [tworzenie zestawów z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
+- `CREATE ASSEMBLY FROM FILE` is't obsługiwane. Zobacz [tworzenie zestawów z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY` Nie można odwoływać się do plików. Zobacz [zmiana zestawu](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
 
 
@@ -306,7 +341,7 @@ Nieudokumentowany instrukcji DBCC, które są włączone w programie SQL Server 
 Niektóre cele Windows specyficznych dla systemu XEvents nie są obsługiwane:
 
 - `etw_classic_sync target` nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej etw_classic_sync](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
-- `event_file target`nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej event_file](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
+- `event_file target` nie jest obsługiwane. Store `.xel` magazynu obiektów blob plików na platformie Azure. Zobacz [docelowej event_file](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Zewnętrzne biblioteki
 
@@ -314,10 +349,10 @@ W bazie danych języków R i Python w zewnętrznych bibliotekach nie są jeszcze
 
 ### <a name="filestream-and-filetable"></a>FILESTREAM i Filetable
 
-- danych FILESTREAM nie jest obsługiwana.
-- Baza danych nie mogą zawierać grup plików przy użyciu `FILESTREAM` danych
-- `FILETABLE` nie jest obsługiwane
-- Tabele nie mogą mieć `FILESTREAM` typów
+- danych FILESTREAM nie jest obsługiwane.
+- Baza danych nie mogą zawierać grup plików przy użyciu `FILESTREAM` danych.
+- `FILETABLE` nie jest obsługiwane.
+- Tabele nie mogą mieć `FILESTREAM` typów.
 - Następujące funkcje nie są obsługiwane:
   - `GetPathLocator()`
   - `GET_FILESTREAM_TRANSACTION_CONTEXT()`
@@ -366,7 +401,7 @@ Replikacja jest dostępna w publicznej wersji zapoznawczej dla wystąpienia zarz
   - `RESTORE REWINDONLY ONLY`
 - Element źródłowy  
   - `FROM URL` (Magazyn obiektów Blob platformy azure) jest tylko obsługiwaną opcją.
-  - `FROM DISK`/`TAPE`/ urządzenie kopii zapasowej nie jest obsługiwana.
+  - `FROM DISK`/`TAPE`/ urządzenie kopii zapasowej nie jest obsługiwane.
   - Zestawy kopii zapasowych nie są obsługiwane.
 - `WITH` Opcje nie są obsługiwane (Brak `DIFFERENTIAL`, `STATS`itp.)
 - `ASYNC RESTORE` -Restore będzie kontynuowane, nawet w przypadku zerwania połączenia klienta. Jeśli połączenie zostanie porzucone, możesz sprawdzić `sys.dm_operation_status` widok stanu operacji przywracania (a także tworzenie i UPUSZCZANIE bazy danych). Zobacz [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database).  
@@ -377,7 +412,7 @@ Następujące opcje bazy danych są zastąpione/zestawu i nie można zmienić p�
 - `ENABLE_BROKER` (jeśli broker nie jest włączona w pliku z rozszerzeniem bak)  
 - `AUTO_CLOSE=OFF` (jeśli ma bazy danych w pliku bak `AUTO_CLOSE=ON`)  
 - `RECOVERY FULL` (jeśli ma bazy danych w pliku bak `SIMPLE` lub `BULK_LOGGED` tryb odzyskiwania)
-- Grupa plików zoptymalizowana pod kątem pamięci zostaną dodane i wywoływane XTP, jeśli nie znajdowała się w pliku bak źródła  
+- Grupa plików zoptymalizowana pod kątem pamięci zostaną dodane i wywoływane XTP, jeśli to nie było w źródłowym pliku bak  
 - Wszelkie istniejące grupy plików zoptymalizowanej pod kątem pamięci została zmieniona na XTP  
 - `SINGLE_USER` i `RESTRICTED_USER` opcje są konwertowane na `MULTI_USER`
 
@@ -386,15 +421,15 @@ Ograniczenia:
 - `.BAK` Nie można przywrócić pliki zawierające wiele zestawów kopii zapasowych.
 - `.BAK` Nie można przywrócić plików zawierających wiele plików dziennika.
 - Przywracania zakończy się niepowodzeniem, jeśli zawiera .bak `FILESTREAM` danych.
-- Tworzenie kopii zapasowych zawierający bazy danych, które obiekty były aktywne w pamięci obecnie nie można przywrócić.  
-- Tworzenie kopii zapasowych zawierający bazy danych, gdzie w pewnym momencie obiektów w pamięci istniały obecnie nie można przywrócić.
-- Tworzenie kopii zapasowych baz danych w trybie tylko do odczytu zawierające obecnie nie można przywrócić. To ograniczenie zostanie wkrótce usunięty.
+- Nie można przywrócić kopii zapasowych zawierający bazy danych, które aktualnie mają obiekty aktywne w pamięci.  
+- Nie można przywrócić kopii zapasowych zawierający bazy danych, gdzie w pewnym momencie, obiekty w pamięci obecnie istniał.
+- Nie można przywrócić kopii zapasowych zawierający aktualnie baz danych w trybie tylko do odczytu. To ograniczenie zostanie wkrótce usunięty.
 
 Aby uzyskać informacje na temat instrukcji Restore, zobacz [PRZYWRÓCIĆ instrukcji](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql).
 
 ### <a name="service-broker"></a>Usługa Service broker
 
-Broker usług dla wielu wystąpień nie jest obsługiwana:
+Broker usług dla wielu wystąpień nie jest obsługiwane:
 
 - `sys.routes` — Wymagania wstępne: Wybierz adres z sys.routes. Adres musi być lokalny dla każdej ścieżki. Zobacz [sys.routes](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-routes-transact-sql).
 - `CREATE ROUTE` -Nie można użyć `CREATE ROUTE` z `ADDRESS` innych niż `LOCAL`. Zobacz [Utwórz trasy](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
@@ -424,7 +459,7 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 - `@@SERVERNAME` Zwraca pełną "składnika" nazwą DNS, na przykład Moje instance.wcus17662feb9ce98.database.windows.net zarządzane. Zobacz [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
 - `SYS.SERVERS` -Zwraca pełną "składnika" nazwy DNS, takich jak `myinstance.domain.database.windows.net` dla właściwości "name" i "data_source". Zobacz [SYS. SERWERY](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
 - `@@SERVICENAME` Zwraca wartość NULL, ponieważ koncepcję usług, ponieważ nie istnieje dla programu SQL Server nie ma zastosowania do wystąpienia zarządzanego. Zobacz [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
-- `SUSER_ID` jest obsługiwany. Zwraca wartość NULL, jeśli logowanie do usługi AAD nie jest sys.syslogins. Zobacz [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
+- `SUSER_ID` jest obsługiwany. Zwraca wartość NULL, jeśli logowanie do usługi Azure AD nie jest sys.syslogins. Zobacz [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` nie jest obsługiwane. Zwraca nieprawidłowe dane (znany problem tymczasowy). Zobacz [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql).
 - `GETDATE()` i inne funkcje wbudowane daty/godziny zawsze zwraca czas w strefie czasowej UTC. Zobacz [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
 
@@ -432,18 +467,18 @@ Następujące zmienne, funkcje i widoki zwracają różne wyniki:
 
 ### <a name="tempdb-size"></a>Rozmiar bazy danych TEMPDB
 
-`tempdb` zostanie podzielona na 12 plików za pomocą maksymalny rozmiar 14 GB na plik. Nie można zmienić ten maksymalny rozmiar każdego pliku i nie można dodać nowe pliki do `tempdb`. To ograniczenie zostanie wkrótce usunięty. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 168 GB `tempdb`.
+`tempdb` zostanie podzielona na 12 plików za pomocą maksymalny rozmiar 14 GB na plik. Nie można zmienić ten maksymalny rozmiar każdego pliku i nowe pliki, które można dodać do `tempdb`. To ograniczenie zostanie wkrótce usunięty. Niektóre zapytania może zwrócić błąd, gdy potrzebują więcej niż 168 GB `tempdb`.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Przekroczenia miejsca do magazynowania z plikami małej bazy danych
 
 Każde wystąpienie zarządzane musi 35 TB pamięci masowej zarezerwowane dla miejsca na dysku Premium platformy Azure, a każdego pliku bazy danych znajduje się na innym dysku fizycznym. Rozmiary dysków może być 128 GB, 256 GB, 512 GB, 1 TB lub 4 TB. Nieużywane miejsce na dysku nie jest rozliczany, ale suma rozmiarów dysków w warstwie Premium platformy Azure nie może przekraczać 35 TB. W niektórych przypadkach wystąpienia zarządzanego, które nie wymagają 8 TB w sumie może przekraczać 35 TB Azure limit rozmiaru magazynu, z powodu wewnętrznego fragmentacji.
 
-Na przykład, wystąpienia zarządzanego może mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 (każdego 1 GB w rozmiarze), które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
+Na przykład wystąpienie zarządzane mogą mieć jeden plik 1,2 TB, rozmiar, który jest umieszczony na dysku 4 TB i pliki 248 (każdego 1 GB w rozmiarze), które są umieszczone na oddzielnych dyskach 128 GB. W tym przykładzie:
 
 - Rozmiar magazynu całkowitego miejsca na dysku przydzielonego to 1-4 TB + 248 × 128 GB = 35 TB.
 - łączne miejsce zarezerwowane dla baz danych w wystąpieniu jest 1 x 1,2 TB + 248 x 1 GB = 1,4 TB pojemności.
 
-To pokazuje, że w pewnych okolicznościach, ze względu na dystrybucji określonych plików, docierać do 35 TB zarezerwowane dla dołączonego dysku w warstwie Premium platformy Azure, gdy może nie oczekujesz go do wystąpienia zarządzanego.
+To pokazuje, że w pewnych okolicznościach, ze względu na dystrybucji określonych plików, wystąpienie zarządzane mogą docierać do większej 35 TB zarezerwowane dla dołączonego dysku w warstwie Premium usługi Azure, gdy być może nie oczekujesz.
 
 W tym przykładzie istniejących baz danych będą nadal działać i można rozwijać bez żadnych przeszkód, tak długo, jak nowe pliki nie zostaną dodane. Jednak nowe bazy danych może nie można utworzyć ani przywrócić, ponieważ nie ma wystarczającej ilości miejsca dla nowych dysków twardych, nawet wtedy, gdy łączny rozmiar wszystkich baz danych nie osiąga limit rozmiaru wystąpienia. Błąd, który jest zwracany nie jest w takim przypadku usuń zaznaczenie.
 
@@ -456,8 +491,8 @@ Upewnij się, że usuwa wiodące `?` z klucza sygnatury dostępu Współdzielone
 
 SQL Server Management Studio (SSMS) i SQL Server Data Tools (SSDT) może być pewne problemy podczas uzyskiwania dostępu do wystąpienia zarządzanego.
 
-- Za pomocą usługi Azure AD, logowania i użytkowników (**publicznej wersji zapoznawczej**) z narzędziami SSDT nie jest obecnie obsługiwane.
-- Funkcje tworzenia skryptów logowania do usługi Azure AD, aby użytkownicy (**publicznej wersji zapoznawczej**) nie są obsługiwane w programie SSMS.
+- Przy użyciu jednostek serwera usługi Azure AD (logowania) i użytkowników (**publicznej wersji zapoznawczej**) z narzędziami SSDT nie jest obecnie obsługiwane.
+- Obsługa skryptów dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania) i użytkowników (**publicznej wersji zapoznawczej**) nie są obsługiwane w programie SSMS.
 
 ### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Nieprawidłowa baza danych nazw w niektórych widoków, dzienników i komunikatów
 
@@ -469,7 +504,7 @@ Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `
 
 ### <a name="error-logs-are-not-persisted"></a>Dzienniki błędów są utrwalane nie
 
-Dzienniki błędów, które są dostępne w przypadku wystąpienia zarządzanego nie są zachowywane, a ich rozmiar jest niedostępna w limit maksymalnego rozmiaru magazynu. Dzienniki błędów może automatycznie usuwane w przypadku pracy awaryjnej.
+Dzienniki błędów, które są niedostępne w wystąpieniu zarządzanym nie są zachowywane, a ich rozmiar nie jest zawarty w limit maksymalnego rozmiaru magazynu. Dzienniki błędów może automatycznie usuwane w przypadku pracy awaryjnej.
 
 ### <a name="error-logs-are-verbose"></a>Dzienniki błędów są pełne
 
@@ -477,7 +512,7 @@ Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów i w
 
 **Obejście**: Do odczytywania dzienników błędów, które filtru w poziomie niektóre wpisy nie są istotne, należy użyć niestandardowej procedury. Aby uzyskać więcej informacji, zobacz [wystąpienia zarządzanego — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
-### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Zakres transakcji na dwie bazy danych w ramach tego samego wystąpienia nie jest obsługiwana.
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>Zakres transakcji na dwie bazy danych w ramach tego samego wystąpienia nie jest obsługiwane.
 
 `TransactionScope` Klasa na platformie .net nie działa, jeśli dwa zapytania są wysyłane do dwóch baz danych w ramach tego samego wystąpienia w ramach tego samego zakresu transakcji:
 
@@ -508,15 +543,15 @@ Mimo że ten kod działa z danymi w ramach tego samego wystąpienia wymagane us�
 
 **Obejście**: Użyj [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) używać innej bazy danych w kontekście połączenia, zamiast korzystać z dwóch połączeń.
 
-### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>Moduły środowiska CLR i połączone serwery jakiś czas nie mogą odwoływać się lokalny adres IP
+### <a name="clr-modules-and-linked-servers-sometime-cant-reference-local-ip-address"></a>Moduły środowiska CLR i połączone serwery jakiś czas nie mogą odwoływać się lokalny adres IP
 
-Moduły środowiska CLR, znajduje się w wystąpienia zarządzanego i połączonych serwerów/rozproszonych zapytań, które odwołują się do bieżącego wystąpienia jakiś czas, nie można rozpoznać adresu IP lokalnego wystąpienia. Ten błąd jest przejściowy problem.
+Moduły środowiska CLR, znajduje się w wystąpieniu zarządzanym i połączonych serwerów/rozproszonych zapytań, które odwołują się do pewnego czasu bieżącego wystąpienia nie można rozpoznać adresu IP lokalnego wystąpienia. Ten błąd jest przejściowy problem.
 
 **Obejście**: Jeśli to możliwe używać kontekstu połączeń w module środowiska CLR.
 
 ### <a name="tde-encrypted-databases-dont-support-user-initiated-backups"></a>TDE szyfrowane baz danych nie obsługuje kopii zapasowych zainicjowanej przez użytkownika
 
-Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która jest szyfrowany za pomocą przezroczystego szyfrowania danych (TDE). Funkcja TDE wymusza za pomocą wewnętrznej funkcji TDE kluczy szyfrowania kopii zapasowych i nie można wyeksportować klucza, dlatego nie można przywrócić kopię zapasową.
+Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która jest szyfrowany za pomocą przezroczystego szyfrowania danych (TDE). Funkcja TDE wymusza za pomocą wewnętrznej funkcji TDE kluczy szyfrowania kopii zapasowych i nie można wyeksportować klucza, dzięki czemu nie będzie można przywrócić kopię zapasową.
 
 **Obejście**: Użyj automatycznych kopii zapasowych i przywracania w momencie lub wyłącz szyfrowanie dla bazy danych.
 
@@ -524,4 +559,4 @@ Nie można wykonać `BACKUP DATABASE ... WITH COPY_ONLY` w bazie danych, która 
 
 - Aby uzyskać szczegółowe informacje o wystąpieniach zarządzanych, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
 - Dla funkcji i listy porównanie, zobacz [typowe funkcje SQL](sql-database-features.md).
-- Aby uzyskać szybki start omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [tworzenia zarządzanego wystąpienia](sql-database-managed-instance-get-started.md).
+- Aby uzyskać szybki start omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).

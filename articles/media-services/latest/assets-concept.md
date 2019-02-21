@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 72229a723247d6f0d68341771b073d0626ab2edb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746000"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447314"
 ---
 # <a name="assets"></a>Elementy zawartości
 
@@ -48,8 +48,7 @@ Jednym z typowych przepływów pracy usługi Media Services jest przekazywanie, 
 4. Użyj interfejsów API w wersji 3 usługa Media Services, aby utworzyć przekształcenie i zadania przetwarzania "danych wejściowych" element zawartości. Aby uzyskać więcej informacji, zobacz [Przekształcenia i zadania](transform-concept.md).
 5. Stream zawartość z zasobu "Wyjście".
 
-> [!TIP]
-> Aby uzyskać pełny przykład .NET, który pokazuje, jak: tworzenia zasobu, Pobierz adres URL zapisu sygnatury dostępu Współdzielonego do zasobu kontenera w magazynie, przekazać plik do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu Współdzielonego, zobacz [utworzyć dane wejściowe zadania z pliku lokalnego](job-input-from-local-file-how-to.md).
+Aby uzyskać pełny przykład .NET, który pokazuje, jak: tworzenia zasobu, Pobierz adres URL zapisu sygnatury dostępu Współdzielonego do zasobu kontenera w magazynie, przekazać plik do kontenera w magazynie przy użyciu adresu URL sygnatury dostępu Współdzielonego, zobacz [utworzyć dane wejściowe zadania z pliku lokalnego](job-input-from-local-file-how-to.md).
 
 ### <a name="create-a-new-asset"></a>Utwórz nowy zasób
 

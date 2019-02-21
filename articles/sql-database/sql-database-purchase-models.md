@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 80e8f0a627ea33881e21d45c8be0e8d1600e4e48
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0e7f941f9845ed7531f3adf03fbca9fbeb2787d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008433"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456694"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Usługa Azure SQL Database zakupu modeli
 
@@ -50,9 +50,11 @@ Koszt obliczeń odpowiada moc obliczeniową całkowita, które jest obsługiwane
 
 ## <a name="storage-costs"></a>Koszty magazynowania
 
-Różnych typów pamięci masowej są rozliczane w różny sposób. Do przechowywania danych opłaty są naliczane za aprowizowanego magazynu na podstawie maksymalny rozmiar bazy danych lub puli, którą wybierzesz. Koszt nie ulega zmianie, chyba że zmniejszyć lub zwiększyć maksymalną tego. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia i jest przydzielany dynamicznie. Wydłużenie okresu przechowywania kopii zapasowych zwiększa ilość przestrzeni w magazynie kopii zapasowych używanej przez wystąpienie. Magazyn kopii zapasowych jest bezpłatny do poziomu 100 procent łącznie zaprowizowanej pojemności magazynu serwera. Dodatkowe użycie magazynu kopii zapasowych jest rozliczane w GB na miesiąc. Jeśli na przykład magazyn bazy danych ma rozmiar 100 GB, otrzymasz bezpłatnie 100 GB magazynu kopii zapasowych. Ale jeśli kopia zapasowa ma rozmiar 110 GB, płacisz za dodatkowe 10 GB.
+Różnych typów pamięci masowej są rozliczane w różny sposób. Do przechowywania danych opłaty są naliczane za aprowizowanego magazynu na podstawie maksymalny rozmiar bazy danych lub puli, którą wybierzesz. Koszt nie ulega zmianie, chyba że zmniejszyć lub zwiększyć maksymalną tego. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia i jest przydzielany dynamicznie. Wydłużenie okresu przechowywania kopii zapasowych zwiększa ilość przestrzeni w magazynie kopii zapasowych używanej przez wystąpienie. 
 
-W magazynie kopii zapasowej pojedynczej bazy danych opłaty są naliczane proporcjonalnie do magazynowania, która została przydzielona do kopii zapasowych bazy danych o wielkości bazy danych. W przypadku magazynu kopii zapasowych elastycznej puli jest naliczana proporcjonalnie do magazynowania, która została przydzielona do kopii zapasowych bazy danych wszystkich baz danych w puli minus danych maksymalny rozmiar puli elastycznej. Wszelkie wzrost rozmiaru bazy danych lub puli elastycznej lub zwiększenie szybkości transakcji, wymaga więcej pamięci masowej, a zatem zwiększa opłata za magazyn kopii zapasowych.  Wraz ze zwiększeniem rozmiaru maksymalnego danych to nowa kwota jest odejmowany od rozmiar magazynu kopii zapasowych rozliczane.
+Domyślnie automatyczne kopie zapasowe baz danych z 7 dni są kopiowane do magazynu obiektów blob w warstwie RA-GRS Standardowa. Magazyn jest używany przez tygodniowe pełne kopie zapasowe, codzienne różnicowe kopie zapasowe oraz kopie zapasowe dzienników transakcji kopiowane co 5 minut. Rozmiar dziennika transakcji, zależy od szybkości zmian bazy danych. Bez dodatkowych kosztów jest zapewniany minimalny magazyn o rozmiarze wynoszącym 100% rozmiaru bazy danych. Dodatkowe użycie magazynu kopii zapasowych wiąże się z comiesięczną opłatą za ilość używanych GB.
+
+Aby uzyskać więcej informacji na temat cen magazynu, zobacz [ceny](https://azure.microsoft.com/pricing/details/sql-database/single/) strony. 
 
 ## <a name="vcore-based-purchasing-model"></a>Model zakupu bazujący na rdzeniach wirtualnych
 

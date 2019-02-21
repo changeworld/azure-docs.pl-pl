@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: eb344d6da15a8faf8f05720ae9b1fd49bd42db2f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d2086f02cc981ad944c030ad40083d153c520359
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808208"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447331"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Co to jest "cognitive search" w usłudze Azure Search?
 
@@ -96,18 +96,24 @@ Indeksy są generowane na podstawie schematu indeksu, który definiuje pola atry
 
 + Środkowo-zachodnie stany USA
 + Środkowo-południowe stany USA
++ Środkowo-północne stany USA
 + Wschodnie stany USA
 + Wschodnie stany USA 2
 + Zachodnie stany USA
 + Zachodnie stany USA 2
++ Środkowe stany USA
 + Kanada Środkowa
 + Europa Zachodnia
-+ Południowe Zjednoczone Królestwo
 + Europa Północna
++ Południowe Zjednoczone Królestwo
++ Francja Środkowa
 + Brazylia Południowa
 + Azja Wschodnia
 + Azja Południowo-Wschodnia
 + Indie Środkowe
++ Japonia Zachodnia
++ Japonia Wschodnia
++ Korea Środkowa
 + Australia Wschodnia
 
 **Krok 2. Praktyczne doświadczenie w pracy opanuj korzystanie z przepływu pracy**
@@ -122,7 +128,7 @@ Obecnie tylko interfejsy API REST są dostarczane. Użyj `api-version=2017-11-11
 
 | Interfejs API REST | Opis |
 |-----|-------------|
-| [Utwórz źródło danych](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | Identyfikowanie zewnętrzne źródło danych dostarczania źródła danych używany do tworzenia dokumentów wzbogaconego zasób.  |
+| [Create Data Source](https://docs.microsoft.com/rest/api/searchservice/create-data-source) (Tworzenie źródła danych)  | Identyfikowanie zewnętrzne źródło danych dostarczania źródła danych używany do tworzenia dokumentów wzbogaconego zasób.  |
 | [Tworzenie zestawu umiejętności (wersja api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasobu, koordynowania użytkowania [wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md) i [niestandardowe umiejętności poznawcze](cognitive-search-custom-skill-interface.md) używane w wzbogacony potok podczas indeksowania. |
 | [Tworzenie indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index)  | Schemat może przedstawiać indeksu usługi Azure Search. Pola w indeksie mapowania pól w danych źródłowych lub pola wyprodukowany w fazie wzbogacania (na przykład pole nazwy organizacji utworzone przez rozpoznawanie jednostek). |
 | [Tworzenie indeksatora (wersja api-version = 2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | Zasób Definiowanie składniki używane podczas indeksowania: w tym źródłem danych, zestawu umiejętności, skojarzeń pól ze źródła i struktury są dane pośrednie indeksu docelowego i sam indeks. Uruchamianie indeksatora jest wyzwalacz dla pozyskiwania danych i wzbogacanie. Dane wyjściowe są korpus wyszukiwania, na podstawie schematu indeks, wypełniony danych źródłowych, wzbogacone za pośrednictwem zestawu umiejętności.  |

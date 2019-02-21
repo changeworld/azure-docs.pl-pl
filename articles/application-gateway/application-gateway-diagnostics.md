@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/11/2019
 ms.author: amitsriva
-ms.openlocfilehash: 6cd21448742778b0a2a27aea41f7940b1a216cdc
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c93434f060525f2f53f24c511bfa748a31d1fd61
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231108"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453305"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
@@ -90,7 +90,7 @@ Poniższy fragment kodu przedstawia przykład odpowiedzi:
 
 ## <a name="diagnostic-logging"></a>Dzienniki diagnostyczne
 
-Różne typy dzienników platformy Azure umożliwia zarządzanie i rozwiązywanie problemów z bram application Gateway. Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob storage i wyświetlane w różnych narzędzi, takich jak [usługi Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Excel i Power BI. Możesz dowiedzieć się więcej o różnych typach dzienniki z następującej listy:
+Różne typy dzienników platformy Azure umożliwia zarządzanie i rozwiązywanie problemów z bram application Gateway. Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob storage i wyświetlane w różnych narzędzi, takich jak [dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md), Excel i Power BI. Możesz dowiedzieć się więcej o różnych typach dzienniki z następującej listy:
 
 * **Dziennik aktywności**: Możesz użyć [Dzienniki aktywności platformy Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (znanego wcześniej pod nazwą operacyjne dzienniki i dzienników inspekcji) aby wyświetlić wszystkie operacje, które są przesyłane do Twojej subskrypcji platformy Azure i ich stan. Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlać w witrynie Azure Portal.
 * **Dziennik dostępu**: Ten dziennik służy do wyświetlania wzorce dostępu do bramy aplikacji i analizować istotne informacje. Obejmuje to IP obiektu wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod powrotny i bajtów wewnątrz i na zewnątrz. Dziennik dostępu są gromadzone co 300 sekund. Ten dziennik zawiera jeden rekord dla każdego wystąpienia bramy aplikacji. Wystąpienie bramy Application Gateway jest identyfikowany przez właściwość instanceId.
@@ -104,7 +104,7 @@ Masz trzy opcje przechowywania dzienników:
 
 * **Konto magazynu**: Konta magazynu są używane dla dzienników najlepiej, gdy dzienniki są przechowywane przez dłuższy czas i sprawdzone w razie.
 * **Usługa Event hubs**: Usługa Event hubs to doskonałe rozwiązanie umożliwiające integrację z innymi informacjami i zdarzeniami (SEIM) narzędzia do zarządzania zabezpieczeniami, aby otrzymywać alerty dotyczące zasobów.
-* **Log Analytics**: Usługa log Analytics najlepiej nadaje się do ogólnego monitorowania w czasie rzeczywistym, w aplikacji lub przyglądanie się trendom.
+* **Dzienniki platformy Azure Monitor**: Dzienniki platformy Azure Monitor najlepiej nadaje się do ogólnego monitorowania w czasie rzeczywistym, w aplikacji lub przyglądanie się trendom.
 
 ### <a name="enable-logging-through-powershell"></a>Włączanie rejestrowania przy użyciu programu PowerShell
 
@@ -176,7 +176,7 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono w każdym wystąpi
 |ReceivedBytes     | Rozmiar pakietu odebranych w bajtach.        |
 |SentBytes| Rozmiar pakietów wysyłanych w bajtach.|
 |Właściwość timeTaken| Długość czasu (w milisekundach) potrzebny do przetworzenia żądania i odpowiedzi przez punkt końcowy do wysłania. To jest obliczana jako interwału od czasu, gdy usługa Application Gateway odbiera pierwszy bajt żądania HTTP do chwili, gdy odpowiedź wysyłania zakończy operację. Należy zauważyć, że pole Time-Taken zawiera zwykle czas żądania i odpowiedzi pakiety są przesyłane przez sieć. |
-|Włączono| Czy komunikacji z pul zaplecza używany protokół SSL. Prawidłowe wartości to włączać i wyłączać.|
+|sslEnabled| Czy komunikacji z pul zaplecza używany protokół SSL. Prawidłowe wartości to włączać i wyłączać.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -211,7 +211,7 @@ Dziennik wydajności jest generowany tylko wtedy, gdy została włączona w każ
 |instanceId     |  Dla wydajności, które dane są generowane wystąpienia bramy aplikacji. Dla bramy aplikacji z wieloma wystąpieniami ma jeden wiersz dla każdego wystąpienia.        |
 |healthyHostCount     | Liczba hosty o dobrej kondycji w puli zaplecza.        |
 |unHealthyHostCount     | Liczba hostów złej kondycji w puli zaplecza.        |
-|RequestCount     | Liczba żądań, które są obsługiwane.        |
+|requestCount     | Liczba żądań, które są obsługiwane.        |
 |opóźnienie | Średnie opóźnienie (w milisekundach) dla żądań z wystąpienia do zaplecza, która służy do żądania. |
 |failedRequestCount| Liczba żądań zakończonych niepowodzeniem.|
 |Przepływność| Średnia przepływność od czasu ostatniego dziennika, mierzone w bajtach na sekundę.|
@@ -257,8 +257,8 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 |witryna     | Witryna, dla której został wygenerowany dziennik. Obecnie tylko globalne jest wyświetlany, ponieważ reguły są globalne.|
 |szczegóły     | Szczegółowe informacje o zdarzeniu wyzwalającym.        |
 |details.Message     | Opis reguły.        |
-|details.Data     | Odnaleziony w żądaniu, który jest zgodny z reguły określonych danych.         |
-|details.File     | Plik konfiguracji, który zawierał reguły.        |
+|details.data     | Odnaleziony w żądaniu, który jest zgodny z reguły określonych danych.         |
+|details.file     | Plik konfiguracji, który zawierał reguły.        |
 |details.Line     | Numer wiersza w pliku konfiguracji, który wywołał zdarzenie.       |
 
 ```json
@@ -298,7 +298,7 @@ Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowoln
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Wyświetlanie i analizowanie dostępu, wydajność i dzienniki zapory
 
-Azure [usługi Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) może zbierać pliki liczników i dziennik zdarzeń z konta usługi Blob storage. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
+[Dzienniki platformy Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md) może zbierać pliki liczników i dziennik zdarzeń z konta usługi Blob storage. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
 
 Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSON dotyczące dostępu i wydajności. Po pobraniu plików JSON możesz je przekonwertować do formatu CSV i wyświetlać w programie Excel, usłudze Power BI lub innym narzędziu do wizualizacji danych.
 
@@ -374,7 +374,7 @@ Aby dowiedzieć się więcej na temat elementów webhook i jak ich używać z al
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Wizualizuj dzienniki zdarzeń i liczników przy użyciu [usługi Log Analytics](../azure-monitor/insights/azure-networking-analytics.md).
+* Wizualizuj dzienniki zdarzeń i liczników przy użyciu [dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md).
 * [Wizualizuj dziennik aktywności platformy Azure z usługą Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) wpis w blogu.
 * [Wyświetlanie i analizowanie dzienników aktywności platformy Azure w usłudze Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) wpis w blogu.
 

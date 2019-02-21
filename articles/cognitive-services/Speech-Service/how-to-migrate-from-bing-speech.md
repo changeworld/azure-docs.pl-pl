@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 73df93345cf73939f33afedfd655cef847d895dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bd9e9d64849c90d23146b814d2d48a8400d069f0
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863571"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447960"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migracja z rozpoznawania mowy Bing do usługi rozpoznawania mowy
 
@@ -65,7 +65,7 @@ Jeśli Ty lub Twoja organizacja ma aplikacje w rozwoju i produkcji, które korzy
 
 Usługa rozpoznawania mowy [interfejsów API REST](rest-apis.md) są zgodne z interfejsów API rozpoznawania mowy Bing. Jeśli używasz obecnie programu interfejsów API REST dla funkcji rozpoznawania mowy Bing, należy zmienić tylko punkt końcowy REST i przejdź do klucza subskrypcji usługi mowy.
 
-Protokoły WebSockets usług mowy, są również zgodne z tych używanych przez rozpoznawania mowy Bing. Firma Microsoft zaleca w nowych wdrożeniach użycie zestawu SDK usługi rozpoznawania mowy, a nie funkcji WebSockets. To dobry pomysł, aby migrować istniejący kod w zestawie SDK oraz. Jednak jako za pomocą interfejsów API REST istniejący kod, który używa rozpoznawania mowy Bing za pośrednictwem funkcji WebSockets wymaga tylko zmiana punktu końcowego i klucz zaktualizowane.
+Protokoły WebSockets usług mowy, są również zgodne z tych używanych przez rozpoznawania mowy Bing. Firma Microsoft zaleca w nowych wdrożeniach użycie zestawu SDK rozpoznawania mowy, a nie funkcji WebSockets. To dobry pomysł, aby migrować istniejący kod w zestawie SDK oraz. Jednak jako za pomocą interfejsów API REST istniejący kod, który używa rozpoznawania mowy Bing za pośrednictwem funkcji WebSockets wymaga tylko zmiana punktu końcowego i klucz zaktualizowane.
 
 Jeśli używasz biblioteki klienta mowy Bing dla określonego języka programowania, migracja do [zestaw SDK rozpoznawania mowy](speech-sdk.md) wymaga wprowadzenia zmian w aplikacji, ponieważ różni się interfejsu API. Zestaw SDK rozpoznawania mowy, może uczynić kod prostsze, zapewniając również dostęp do nowych funkcji.
 

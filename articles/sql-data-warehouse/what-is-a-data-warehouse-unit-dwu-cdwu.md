@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 76db38a59d2239de79ebcdcfd454ac60a8f514be
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 9ce7a36f796716f48f6575b2391ac563eebf4530
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299898"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447824"
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Jednostki magazynu danych (dwu) i moc obliczeniową jednostek magazynu danych (cDWUs)
 Zalecenia dotyczące wybierania idealne liczbę jednostek magazynu danych (jednostki dwu, cDWUs), aby zoptymalizować cenę i wydajność i jak zmienić liczbę jednostek. 
@@ -37,7 +37,9 @@ Zwiększenie liczby jednostek dwu:
 - Zwiększa maksymalną liczbę równoczesnych zapytań oraz liczby gniazd współbieżności.
 
 ## <a name="service-level-objective"></a>Cel poziomu usługi
-Cel poziomu usług (SLO) jest ustawienie skalowalności, który określa poziom kosztów i wydajności magazynu danych. Poziomy usług dla Gen2 są mierzone w obliczeniowej liczbę jednostek magazynu danych (cDWU), na przykład DW2000c. Poziomy usług Gen1 są mierzone w jednostkach dwu, na przykład DW2000. 
+Cel poziomu usług (SLO) jest ustawienie skalowalności, który określa poziom kosztów i wydajności magazynu danych. Poziomy usług dla Gen2 są mierzone w obliczeniowej liczbę jednostek magazynu danych (cDWU), na przykład DW2000c. Poziomy usług Gen1 są mierzone w jednostkach dwu, na przykład DW2000.
+  > [!NOTE]
+  > Gen2 magazynu danych w usłudze Azure SQL niedawno dodano rozbudowywać możliwości w celu obsługi możliwie jak 100 cDWU warstwy wystąpień obliczeniowych. Obecnie na Gen1 istniejących magazynów danych, wymagające niższym obliczeniowych warstwy teraz przeprowadzić uaktualnienie do Gen2 w regionach, które są obecnie dostępne bez dodatkowych kosztów.  Jeśli w Twoim regionie nie jest jeszcze obsługiwana, nadal można uaktualnić do obsługiwanym regionie. Aby uzyskać więcej informacji, zobacz [uaktualnienie do Gen2](upgrade-to-latest-generation.md).
 
 Języka T-SQL ustawienie SERVICE_OBJECTIVE określa poziom usługi i warstwę wydajności magazynu danych.
 

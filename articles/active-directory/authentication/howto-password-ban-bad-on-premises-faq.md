@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b29e4f6e6e877a3d03ded9edd9e282e0960e177
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414637"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455538"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Wersja zapoznawcza: Azure AD ochrony hasłem lokalnych — często zadawane pytania
 
@@ -43,7 +43,7 @@ Nie — ochrony haseł usługi Azure AD w środowisku lokalnym jest obsługiwana
 
 **Pyt.: Jak zastosować korzyści z ochrony haseł usługi Azure AD do podzbioru użytkowników w środowisku lokalnym?**
 
-Nieobsługiwane. Po wdrożeniu i włączony, ochrony haseł usługi Azure AD nie rozróżniania — wszyscy użytkownicy otrzymują korzyści równy zabezpieczeń.
+Nieobsługiwane. Po wdrożeniu i włączone, nie rozróżniania ochrony haseł usługi Azure AD — wszyscy użytkownicy otrzymują korzyści równy zabezpieczeń.
 
 **Pyt.: Instalowanie ochrony haseł usługi Azure AD równolegle z innymi produktami na podstawie filtru haseł jest obsługiwane?**
 
@@ -69,7 +69,7 @@ Aby uzyskać więcej informacji zobacz następujące artykuły:
 
 **Pyt.: Ilość miejsca na dysku Ta funkcja wymaga udziału sysvol domeny?**
 
-Użycie dokładne miejsca nie można dokładnie określić, ponieważ zależy od czynników, takich jak liczby i długości tokenów zakazanych haseł, na liście globalnej zakazanych haseł firmy Microsoft, a niestandardowe dla dzierżawcy zakazane lista hasła, a także koszty szyfrowania. Zawartość tych list prawdopodobnie może rosnąć w przyszłości. Mając to na uwadze uzasadnione bieżącego zasadą jest, funkcji, należy co najmniej pięciu (5) w megabajtach ilość miejsca na udział sysvol domeny.
+Użycie dokładne miejsca zmienia się, ponieważ zależy od czynników, takich jak liczby i długości zakazanych tokenów w globalnej listy zakazanych firmy Microsoft i listy niestandardowej dla dzierżawcy oraz obciążenie szyfrowania. Zawartość tych list prawdopodobnie może rosnąć w przyszłości. Mając to na uwadze uzasadnione przypuszczenie, zostały jest, że tej funkcji będą potrzebne co najmniej pięciu (5) w megabajtach ilość miejsca na udział sysvol domeny.
 
 **Pyt.: Dlaczego jest wymagane ponowne uruchomienie Zainstaluj lub Uaktualnij oprogramowanie agenta kontrolera domeny?**
 
@@ -77,33 +77,33 @@ To wymaganie jest spowodowany przez podstawowe zachowanie Windows.
 
 **Pyt.: Czy istnieje sposób można skonfigurować agenta kontrolera domeny, aby użyć konkretnego serwera proxy?**
 
-Nie. Należy pamiętać, że ponieważ serwer proxy jest bezstanowy, ważne jest, które konkretnego serwera proxy jest używany.
+Nie. Ponieważ serwer proxy jest bezstanowy, nie jest ważna które konkretnego serwera proxy jest używany.
 
-**Pyt.: Czy jest niezbędna do wdrożenia serwera Proxy ochrony haseł usługi Azure AD usługi side-by-side na komputerze z innymi usługami, takimi jak program Azure AD Connect?**
+**Pyt.: Jest to akceptowalne wdrożyć usługę Proxy ochrony haseł usługi Azure AD równolegle z innymi usługami takimi jak program Azure AD Connect?**
 
 Tak. Usługa serwera Proxy ochrony haseł usługi Azure AD i Azure AD Connect powinno nigdy nie są w konflikcie ze sobą bezpośrednio.
 
 **Pyt.: Czy mogę być dane dotyczące wydajności dla moich kontrolerów domeny z wdrażanie tej funkcji?**
 
-Usługa agenta DC ochronę haseł usługi Azure AD została zaprojektowana jako najbardziej efektywne i nie powinna znacznie wpływu na wydajność kontrolera domeny w istniejącego wdrożenia usługi Active Directory, która jest już odpowiednio planować.
+Usługę agenta ochrony kontrolera domeny haseł usługi Azure AD znacznie nie powinny mieć wpływ na wydajność kontrolera domeny w dobrej kondycji istniejącego wdrożenia usługi Active Directory.
 
-Jest to przydatne do należy zauważyć, że dla większości hasła wdrożeń usługi Active Directory operacji zmian niewielką część całkowitego obciążenia na żadnym kontrolerze danej domeny. Na przykład Wyobraź sobie domeny usługi Active Directory z kontami użytkowników 10000 i zasad MaxPasswordAge ustawiona na 30 dni. Średnio tej domeny zostanie wyświetlony 10000/30 = operacji zmiany hasła ~ 333 każdego dnia, która jest pomocnicza liczby operacji dla nawet jednego kontrolera domeny. Wypychanie z przykładu, aby potencjalnych scenariusz, załóżmy, że te 333 ~ zmiany haseł na jednym kontrolerze domeny zostały wykonane w ciągu jednej godziny (na przykład, w tym scenariuszu może wystąpić w przypadku dużej liczby pracowników wszystkich dostarczane do pracy w poniedziałek rano); nawet w takim przypadku nadal chcemy minut ~333/60 = sześć zmiany haseł na minutę, czyli ponownie nie znaczne obciążenie.
+Dla większości hasła wdrożeń usługi Active Directory operacji zmian są niewielką część całkowitego obciążenia na żadnym kontrolerze danej domeny. Na przykład Wyobraź sobie domeny usługi Active Directory z kontami użytkowników 10000 i zasad MaxPasswordAge ustawiona na 30 dni. Średnio tej domeny zostanie wyświetlony 10000/30 = operacji zmiany hasła ~ 333 każdego dnia, która jest pomocnicza liczby operacji dla nawet jednego kontrolera domeny. Należy wziąć pod uwagę potencjalny scenariusz: Załóżmy, że te 333 ~ zmiany haseł na jednym kontrolerze domeny zostały wykonane w ciągu jednej godziny. Na przykład w tym scenariuszu może wystąpić, gdy wielu pracowników wszystkich dostarczane do pracy w poniedziałek rano. Nawet w tym przypadku, nadal chcemy minut ~333/60 = sześć zmiany haseł na minutę, czyli ponownie nie znaczne obciążenie.
 
-Dzięki temu powiedział Jeśli bieżące kontrolerów domeny zostały już uruchomione na poziomach wydajności limited (na przykład maksymalnego limitu względem procesora CPU, miejsca na dysku, we/wy dysku, itp.), byłoby dobrze jest wdrażanie dodatkowych kontrolerów domeny i/lub rozwiń dostępnego miejsca na dysku Odstęp przed wdrożeniem ochrony haseł usługi Azure AD. Zobacz też pytania powyżej dotyczące powyższych użycie miejsca na dysku folderu sysvol.
+Jednak jeśli bieżące kontrolery domeny są już uruchomione na poziomach wydajności limited (na przykład maksymalnego limitu względem procesora CPU, miejsca na dysku, we/wy dysku, itp.), zaleca się dodawania dodatkowych kontrolerów domeny lub rozszerzeniu dostępnego miejsca na dysku, zanim wdrażanie tej funkcji. Zobacz też pytania powyżej dotyczące powyższych użycie miejsca na dysku folderu sysvol.
 
 **Pyt.: Czy chcesz przetestować ochronę haseł usługi Azure AD na kilka kontrolerów domeny w mojej domeny. Czy jest możliwe do wymuszenia zmiany haseł użytkowników, aby użyć tych określone kontrolery domeny?**
 
-Nie. Jeśli użytkownik zmieni swoje hasło, kontroler domeny, który jest używany jest wybierany przez system operacyjny Windows klienta na podstawie czynników, takich jak przypisania lokacji i podsieci usługi Active Directory, konfiguracji specyficznych dla środowiska sieci itp. Ochrony hasłem w usłudze Azure AD nie wpływa na lub kontrolować te czynniki i w związku z tym nie może mieć wpływ na kontroler domeny został wybrany do zmiany hasła użytkownika.
+Nie. System operacyjny klienta Windows określa, który kontroler domeny jest używany, gdy użytkownik zmieni swoje hasło. Kontroler domeny jest zaznaczony, na podstawie czynników, takich jak przypisania lokacji i podsieci usługi Active Directory, konfiguracji specyficznych dla środowiska sieci itp. Ochrona za pomocą usługi Azure AD hasła nie jest kontrolowane przez te czynniki i nie może mieć wpływ na kontroler domeny został wybrany do zmiany hasła użytkownika.
 
-Dzięki temu powiedział metody, która jest blisko symulowania ten cel jest Wdrażanie ochrony haseł usługi Azure AD na wszystkich kontrolerach domeny w danej lokacji usługi Active Directory. To podejście zapewni rozsądnie wszechobecne pokrycia dla klientów Windows przypisany do tej lokacji i w związku z tym również dla użytkowników, które są logując się do tych klientów i zmienianie swoich haseł.
+Jednym ze sposobów częściowo osiągnąć ten cel jest Wdrażanie ochrony haseł usługi Azure AD na wszystkich kontrolerach domeny w danej lokacji usługi Active Directory. To podejście zapewni uzasadnione pokrycia dla klientów Windows, które są przypisane do tej lokacji i w związku z tym również dla użytkowników, które są logując się do tych klientów i zmienianie swoich haseł.
 
 **Pyt.: Jeśli zainstaluję usługę agenta ochrony kontrolera domeny haseł usługi Azure AD na tylko podstawowego kontrolera domeny (PDC), będą inne kontrolery domeny w domenie również chronione?**
 
-Nie. Po zmianie hasła użytkownika na kontrolerze domeny danego bez PDC hasła w postaci zwykłego tekstu nigdy nie są wysyłane do kontrolera PDC (ten pomysł to typowe wrażenie niewłaściwa). Po zaakceptowaniu nowe hasło na danym kontrolerze domeny kontrolera domeny używa tego hasła w celu utworzenia różne skróty uwierzytelniania protokołu specyficzne dla tego hasła i następnie będzie się powtarzać te skróty w katalogu. Te zaktualizować skróty są następnie replikowane do podstawowego kontrolera domeny — ale ochrony haseł usługi Azure AD nie jest zaangażowana w tym procesie. Hasła użytkowników może w niektórych przypadkach można zmienić bezpośrednio na podstawowym kontrolerze domeny, ponownie w zależności od różnych czynników, takich jak topologii sieci i projektu lokacji usługi Active Directory. (Zobacz poprzedniego pytania).
+Nie. Po zmianie hasła użytkownika na kontrolerze domeny danego bez PDC hasła w postaci zwykłego tekstu nigdy nie są wysyłane do kontrolera PDC (ten pomysł to typowe wrażenie niewłaściwa). Po zaakceptowaniu nowe hasło na danym kontrolerze domeny kontrolera domeny używa tego hasła w celu utworzenia różne skróty uwierzytelniania protokołu specyficzne dla tego hasła, a następnie będzie się powtarzać te skróty w katalogu. Hasło w postaci zwykłego tekstu nie jest trwały. Zaktualizowano skróty są następnie replikowane do podstawowego kontrolera domeny. Hasła użytkowników może w niektórych przypadkach można zmienić bezpośrednio na podstawowym kontrolerze domeny, ponownie w zależności od różnych czynników, takich jak topologii sieci i projektu lokacji usługi Active Directory. (Zobacz poprzedniego pytania).
 
-Podsumowując: wdrożenie usługi hasło ochrony kontrolera domeny agenta programu Azure AD na podstawowym kontrolerze domeny jest wymagany do osiągnięcia 100% pokrycia zabezpieczeń funkcji, ale która sama nie zapewnia korzyści w zakresie zabezpieczeń ochrony haseł usługi Azure AD dla innych kontrolerów domeny w domenie.
+Podsumowanie wdrażania usługi agenta DC ochronę haseł usługi Azure AD na podstawowym kontrolerze domeny jest wymagany do osiągnięcia 100% pokrycia zabezpieczeń funkcji w całej domenie. Wdrażanie funkcji na podstawowym kontrolerze domeny tylko nie zapewnia korzyści w zakresie zabezpieczeń ochrony haseł usługi Azure AD dla innych kontrolerów domeny w domenie.
 
-**Pyt.: Jest pakiet administracyjny programu System Center Operations Manager (SCOM) dla ochrony haseł usługi Azure AD?**
+**Pyt.: Pakiet administracyjny programu System Center Operations Manager jest dostępna dla ochrony haseł usługi Azure AD?**
 
 Nie.
 
@@ -114,6 +114,10 @@ Następujące łącza nie są częścią podstawowej dokumentacji ochrony haseł
 [Wiadomości e-mail przewodnik dotyczący ochrony wyłudzania informacji — część 15: Implementowanie usługi ochrony hasła usługi Microsoft Azure AD (dla lokalnego zbyt!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
 
 [Usługa Azure AD ochrony hasłem i inteligentnej blokady są teraz w publicznej wersji zapoznawczej!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
+
+## <a name="microsoft-premierunified-support-training-available"></a>Szkolenia pomocy technicznej firmy Microsoft Premier\Unified dostępne
+
+Jeśli interesuje Cię Dowiedz się więcej na temat ochrony haseł usługi Azure AD i wdrażania jej w środowisku, możesz korzystać z zalet usługi proaktywne firmy Microsoft dostępnych do klientów korzystających z umowę pomocy technicznej Premier lub Unified. Usługa jest wywoływana w usłudze Azure Active Directory: Ochrona za pomocą hasła. Aby uzyskać więcej informacji, skontaktuj się z menedżerem technicznych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

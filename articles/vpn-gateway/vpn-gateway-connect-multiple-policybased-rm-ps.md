@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: yushwang
-ms.openlocfilehash: 2bf9a5f279c2b936cb7d7b84a00b4609d512f0b8
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 3d8a3297fba43004db817e6b077f7b292fb917cb
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416874"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454348"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Łączenie bramy sieci VPN platformy Azure do wielu lokalnych na podstawie zasad urządzeń sieci VPN przy użyciu programu PowerShell
 
@@ -150,10 +150,10 @@ New-AzLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Loc
 
 Poniższy przykład tworzy zasady protokołu IPsec/IKE za pomocą tych algorytmów i parametrów:
 * IKEv2: AES256, SHA384, DHGroup24
-* IPsec: AES256, SHA256, PFS24, 2048KB & s 3600 okres istnienia skojarzeń zabezpieczeń
+* IPsec: AES256, SHA256, PFS None, sekund 14400 okres istnienia skojarzeń zabezpieczeń i 102400000KB
 
 ```azurepowershell-interactive
-$ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup PFS24 -SALifeTimeSeconds 3600 -SADataSizeKilobytes 2048
+$ipsecpolicy6 = New-AzIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup None -SALifeTimeSeconds 14400 -SADataSizeKilobytes 102400000
 ```
 
 #### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2. Utwórz połączenie sieci VPN S2S z opartych na zasadach selektorów ruchu i zasady protokołu IPsec/IKE

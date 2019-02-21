@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: c12c87524ac1b8d0be5b691d599510f8e4573317
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 7f0485221f0f29d08275f9508ba79e32c3f8924a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267329"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455442"
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-azure-machine-learning-studio-workspace"></a>Podręcznik rozwiązywania problemów: Tworzenie i łączenie z obszaru roboczego usługi Azure Machine Learning Studio
 Ten przewodnik zawiera temat rozwiązania niektórych często spotykanych wyzwania podczas konfigurowania obszary robocze usługi Azure Machine Learning Studio.
@@ -39,31 +39,24 @@ Usługa Machine Learning wymaga konta magazynu do przechowywania danych. Można 
 
 Po utworzeniu nowego obszaru roboczego usługi Machine Learning Studio można zalogowaniu usłudze Machine Learning Studio przy użyciu konta Microsoft, który został użyty do utworzenia obszaru roboczego. Jeśli wystąpi komunikat o błędzie "Obszaru roboczego nie znaleziono" (podobnie jak na poniższym zrzucie ekranu), użyj poniższe kroki można usunąć pliki cookie przeglądarki.
 
-![Nie znaleziono obszaru roboczego][screen3]
+![Nie znaleziono obszaru roboczego](media/troubleshooting-creating-ml-workspace/screen3.png)
 
 **Aby usunąć pliki cookie przeglądarki**
 
 1. Jeśli używasz programu Internet Explorer, kliknij przycisk **narzędzia** przycisk w prawym górnym rogu i wybierz **Opcje internetowe**.  
 
-   ![Opcje internetowe][screen4]
+   ![Opcje internetowe](media/troubleshooting-creating-ml-workspace/screen4.png)
 
 2. W obszarze **ogólne** kliknij pozycję **Usuń...**
 
-   ![Karta Ogólne][screen5]
+   ![Karta Ogólne](media/troubleshooting-creating-ml-workspace/screen5.png)
 
 3. W **usuwanie historii przeglądania** okna dialogowego pole, upewnij się, **pliki cookie i dane witryn internetowych** jest zaznaczone, a następnie kliknij przycisk **Usuń**.
 
-   ![Usuń pliki cookie][screen6]
+   ![Usuń pliki cookie](media/troubleshooting-creating-ml-workspace/screen6.png)
 
-Po usunięciu plików cookie, uruchom ponownie przeglądarkę, a następnie przejdź do [Microsoft Azure Machine Learning](https://studio.azureml.net) strony. Po wyświetleniu monitu o nazwę użytkownika i hasło, wprowadź tego samego konta Microsoft, który został użyty do utworzenia obszaru roboczego.
+Po usunięciu plików cookie, uruchom ponownie przeglądarkę, a następnie przejdź do [Microsoft Azure Machine Learning Studio](https://studio.azureml.net) strony. Po wyświetleniu monitu o nazwę użytkownika i hasło, wprowadź tego samego konta Microsoft, który został użyty do utworzenia obszaru roboczego.
 
 ## <a name="comments"></a>Komentarze
 
 Naszym celem jest zapewnienie środowiska usługi Machine Learning jako Bezproblemowa, jak to możliwe. Opublikuj wszystkie komentarze i problemy w czasie [forum usługi Azure Machine Learning](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=MachineLearning) aby pomóc nam w udzieleniu skuteczniejszej.
-
-[screen1]:media/troubleshooting-creating-ml-workspace/screen1.png
-[screen2]:media/troubleshooting-creating-ml-workspace/screen2.png
-[screen3]:media/troubleshooting-creating-ml-workspace/screen3.png
-[screen4]:media/troubleshooting-creating-ml-workspace/screen4.png
-[screen5]:media/troubleshooting-creating-ml-workspace/screen5.png
-[screen6]:media/troubleshooting-creating-ml-workspace/screen6.png

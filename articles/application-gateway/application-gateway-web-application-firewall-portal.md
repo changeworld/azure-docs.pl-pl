@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7a090a068984a71c917cf5c33761dd78ac1ad2c8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157143"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453260"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Tworzenie bramy aplikacji z zaporą aplikacji sieci web przy użyciu witryny Azure portal
 
@@ -130,7 +130,7 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 
 ## <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-W tym samouczku brama aplikacji używa konta magazynu do przechowywania danych na potrzeby wykrywania i zapobiegania. Do rejestrowania danych można też użyć usługi Log Analytics lub Event Hub.
+W tym samouczku brama aplikacji używa konta magazynu do przechowywania danych na potrzeby wykrywania i zapobiegania. Dzienniki usługi Azure Monitor lub Centrum zdarzeń można również użyć do rejestrowania danych.
 
 1. Kliknij przycisk **New** w lewym górnym rogu witryny Azure portal.
 2. Wybierz pozycję **Magazyn**, a następnie wybierz pozycję **Konto magazynu — obiekt blob, plik, tabela, kolejka**.
@@ -162,7 +162,7 @@ Skonfiguruj diagnostykę do rejestrowania danych w dziennikach ApplicationGatewa
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób:
+W tym artykule zawarto informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
 > * Tworzenie bramy aplikacji z włączoną zaporą aplikacji internetowych

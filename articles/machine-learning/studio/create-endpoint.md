@@ -1,7 +1,7 @@
 ---
 title: Tworzenie punktów końcowych usługi sieci web
 titleSuffix: Azure Machine Learning Studio
-description: Utwórz następującą liczbę punktów końcowych usługi sieci web w usłudze Azure Machine Learning. Każdy punkt końcowy usługi sieci web niezależnie rozwiązane, ograniczenia i zarządzane.
+description: Utwórz następującą liczbę punktów końcowych usługi sieci web w usłudze Azure Machine Learning Studio. Każdy punkt końcowy usługi sieci web niezależnie rozwiązane, ograniczenia i zarządzane.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/15/2019
-ms.openlocfilehash: 6759a94a1d1491532e85d1bd1e1a098b2f92ff9e
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 62505a89be5535f7b8b7b50ad2462e33d44db57a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329306"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454008"
 ---
 # <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Tworzenie punktów końcowych dla wdrożonej usługi sieci web Azure Machine Learning Studio
 

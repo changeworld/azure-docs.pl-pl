@@ -1,7 +1,7 @@
 ---
 title: Wdrażanie obszar roboczy Studio za pomocą usługi Azure Resource Manager
 titleSuffix: Azure Machine Learning Studio
-description: Jak wdrożyć obszaru roboczego dla usługi Azure Machine Learning przy użyciu szablonu usługi Azure Resource Manager
+description: Jak wdrożyć obszaru roboczego usługi Azure Machine Learning Studio przy użyciu szablonu usługi Azure Resource Manager
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,19 +10,19 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: c7f75b2553ada469f4963531fc33f6e5105084b1
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 38cd41fecb98a008bbf5a93eddd0d6a346cf3ef7
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487800"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453974"
 ---
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Wdrażanie usługi Azure Machine Learning Studio obszaru roboczego przy użyciu usługi Azure Resource Manager
 
-Za pomocą usługi Azure Resource Manager Szablon wdrożenia zapisuje czas, oferując skalowalne sposób wdrażania składników połączonych ze sobą za pomocą weryfikacji i mechanizm ponawiania prób. Aby skonfigurować obszarów roboczych uczenia maszynowego Azure, na przykład, należy najpierw skonfigurować konto magazynu platformy Azure, a następnie wdrożyć obszaru roboczego. Wyobraź sobie zrobić to ręcznie setek obszarów roboczych. Alternatywą łatwiej jest używać szablonu usługi Azure Resource Manager do wdrożenia obszaru roboczego usługi Azure Machine Learning i wszystkich jego zależności. Ten artykuł przeprowadzi Cię przez ten proces krok po kroku. Aby uzyskać doskonałe Omówienie usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
+Za pomocą usługi Azure Resource Manager Szablon wdrożenia zapisuje czas, oferując skalowalne sposób wdrażania składników połączonych ze sobą za pomocą weryfikacji i mechanizm ponawiania prób. Aby skonfigurować usługi Azure Machine Learning Studio w obszarach roboczych, na przykład, należy najpierw skonfigurować konto magazynu platformy Azure, a następnie wdrożyć obszaru roboczego. Wyobraź sobie zrobić to ręcznie setek obszarów roboczych. Alternatywą łatwiej jest używać szablonu usługi Azure Resource Manager do wdrażania obszar roboczy Studio i wszystkich jego zależności. Ten artykuł przeprowadzi Cię przez ten proces krok po kroku. Aby uzyskać doskonałe Omówienie usługi Azure Resource Manager, zobacz [Omówienie usługi Azure Resource Manager](../../azure-resource-manager/resource-group-overview.md).
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>Krok po kroku: tworzenie obszaru roboczego uczenia maszynowego
-Firma Microsoft będzie utworzyć grupę zasobów platformy Azure, a następnie wdrożyć nowe konto usługi Azure storage i nowego Azure obszaru roboczego uczenia maszynowego przy użyciu szablonu usługi Resource Manager. Po zakończeniu wdrażania możemy zostanie wydrukowana ważne informacje na temat obszarów roboczych, które zostały utworzone (klucz podstawowy, identyfikator workspaceID i adres URL do obszaru roboczego).
+Firma Microsoft będzie utworzyć grupę zasobów platformy Azure, a następnie wdrożyć nowe konto usługi Azure storage i nowego Azure Studio obszaru roboczego uczenia maszynowego przy użyciu szablonu usługi Resource Manager. Po zakończeniu wdrażania możemy zostanie wydrukowana ważne informacje na temat obszarów roboczych, które zostały utworzone (klucz podstawowy, identyfikator workspaceID i adres URL do obszaru roboczego).
 
 ### <a name="create-an-azure-resource-manager-template"></a>Tworzenie szablonu usługi Azure Resource Manager
 Obszaru roboczego uczenia maszynowego wymaga konta usługi Azure storage do przechowywania zestawu danych, połączone z tym rekordem.
@@ -97,7 +97,7 @@ Connect-AzureRmAccount
 ```
 Ten krok należy powtórzyć dla każdej sesji. Po uwierzytelnieniu powinny być wyświetlane informacje o subskrypcji.
 
-! [Konto platformy azure] [1]
+![Azure Account](./media/deploy-with-resource-manager-template/azuresubscription.png)
 
 Skoro mamy już dostęp do platformy Azure, możemy utworzyć grupę zasobów.
 
@@ -111,7 +111,7 @@ $rg
 Upewnij się, że grupa zasobów jest prawidłowo aprowizowane. **ProvisioningState** powinien być "powiodło się."
 Nazwa grupy zasobów jest używany przez szablon do generowania nazwy konta magazynu. Nazwa konta magazynu musi mieć długość od 3 do 24 znaków długości i użyć tylko cyfry i małe litery.
 
-! [Grupa zasobów] [2]
+![Grupa zasobów](./media/deploy-with-resource-manager-template/resourcegroupprovisioning.png)
 
 * Przy użyciu wdrożenia grupy zasobów, wdrażanie nowego obszaru roboczego uczenia maszynowego.
 
@@ -133,14 +133,12 @@ Innym sposobem pobierania tokenów istniejący obszar roboczy jest korzystania z
 # List the primary and secondary tokens of all workspaces
 Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |% { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
-Po zaaprowizowaniu obszaru roboczego, możesz też zautomatyzować wiele zadań usługi Azure Machine Learning Studio, za pomocą [modułu programu PowerShell dla usługi Azure Machine Learning](https://aka.ms/amlps).
+Po zaaprowizowaniu obszaru roboczego, możesz też zautomatyzować wiele zadań usługi Azure Machine Learning Studio, za pomocą [modułu programu PowerShell dla usługi Azure Machine Learning Studio](https://aka.ms/amlps).
 
 ## <a name="next-steps"></a>Następne kroki
 * Dowiedz się więcej o [tworzenia szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md).
 * Zapoznaj się z [repozytorium szablonów szybkiego startu platformy Azure](https://github.com/Azure/azure-quickstart-templates).
 * Obejrzyj ten film wideo o [usługi Azure Resource Manager](https://channel9.msdn.com/Events/Ignite/2015/C9-39).
-* Zobacz [pomoc odwołanie do szablonu usługi Resource Manager](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions) 
- <!--Image references--> [1]: [2]./media/deploy-with-resource-manager-template/azuresubscription.png: ./media/deploy-with-resource-manager-template/ resourcegroupprovisioning.PNG
-
+* Zobacz [pomoc odwołanie do szablonu usługi Resource Manager](https://docs.microsoft.com/azure/templates/microsoft.machinelearning/allversions)
 
 <!--Link references-->

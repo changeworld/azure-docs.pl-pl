@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 7afdcc402840aede1fe9678bf5f4012213edf9fa
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 1eac1da2d8d9a289cb456fc08d7e7c2bc7784aa6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961350"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454025"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalowanie pojedynczej bazy danych zasobów w usłudze Azure SQL Database
 
@@ -42,7 +42,7 @@ Po początkowym wybraniu liczba rdzeni wirtualnych, należy można pojedynczej b
 
 Zmiana usługi warstwy i/lub obliczyć rozmiar bazy danych powoduje utworzenie repliki oryginalnej bazy danych na nowy rozmiar obliczeń, a następnie przełączenie połączeń do repliki. Podczas tego procesu nie zostaną utracone żadne dane, ale podczas przełączania do repliki połączenia do bazy danych są chwilowo wyłączane, dlatego niektóre bieżące transakcje mogą zostać wycofane. Długość czasu na przejście różni się jednak ogólnie jest mniej niż 30 sekund 99% czasu. W przypadku dużej liczby transakcji w locie w chwili połączenia są wyłączone, długość czasu na przejście może być dłuższy.
 
-Czas trwania całego procesu skalowania w górę zależy zarówno od rozmiaru, jak i warstwy usług bazy danych przed zmianą oraz po niej. Na przykład 250 GB bazy danych, zmiana do z lub w ramach warstwy usług ogólnego przeznaczenia, należy wykonać w ciągu 6 godzin. Dla bazy danych taki sam rozmiar, zmiana rozmiarów wystąpień obliczeniowych w ramach krytyczne dla działania firmy warstwy usługi skalowaniem w górę powinno zakończyć się w ciągu trzech godzin.
+Czas trwania całego procesu skalowania w górę zależy zarówno rozmiar i warstwy usług bazy danych jest ogólnie przed i po zmianie. Na przykład rozmiar bazy danych zmiana rozmiaru obliczeń w ramach ogólnego przeznaczenia w warstwie usługi, należy wykonać w ciągu kilku minut z drugiej strony, opóźnienia, aby zmienić obliczenia rozmiaru w ramach krytyczne dla działania firmy warstwy ogólnie wynosi 90 minut lub mniej za 100 GB.
 
 > [!TIP]
 > Aby monitorować działania w toku, zobacz: [Zarządzanie operacjami za pomocą interfejsu API REST programu SQL](https://docs.microsoft.com/rest/api/sql/operations/list), [zarządzania operacjami usługi przy użyciu interfejsu wiersza polecenia](/cli/azure/sql/db/op), [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i te dwa polecenia programu PowerShell: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) i [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).

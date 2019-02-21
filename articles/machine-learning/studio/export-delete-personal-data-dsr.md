@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 096f310b7c82718ea836d1b2048ca665a1e1e2f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 49f045e8da5094f583c01c514bf92f6bf3fe1c09
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994960"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453369"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Eksportowanie i usunąć dane użytkownika w produkcie z usługi Azure Machine Learning Studio
 
@@ -70,8 +70,8 @@ Użytkownicy mogą również usuwać ich całego obszaru roboczego:
 ![Usuń bezpłatny obszar roboczy w usłudze Machine Learning Studio](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-data-with-powershell"></a>Eksportowanie danych Studio za pomocą programu PowerShell
-Aby wyeksportować wszystkie informacje do formatu przenośnego z usługi Azure Machine Learning Studio za pomocą poleceń za pomocą programu PowerShell. Aby uzyskać informacje, zobacz [modułu programu PowerShell dla usługi Azure Machine Learning](powershell-module.md) artykułu.
+Aby wyeksportować wszystkie informacje do formatu przenośnego z usługi Azure Machine Learning Studio za pomocą poleceń za pomocą programu PowerShell. Aby uzyskać informacje, zobacz [modułu programu PowerShell dla usługi Azure Machine Learning Studio](powershell-module.md) artykułu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dokumentacja usług sieci web i zobowiązania plan rozliczeniowy, w temacie [odwołania API REST usługi Azure Machine Learning](https://docs.microsoft.com/rest/api/machinelearning/). 
+Dokumentacja usług sieci web i zobowiązania plan rozliczeniowy, w temacie [odwołania API REST usługi Azure Machine Learning Studio](https://docs.microsoft.com/rest/api/machinelearning/). 

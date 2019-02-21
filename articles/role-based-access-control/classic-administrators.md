@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2019
+ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3274d753d33c759efa06b899a5511daf53aa9ec9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: f4838f688210f9017d691bd6a463217a75fc90d4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338652"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447518"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Administratorzy subskrypcji klasycznej platformy Azure
 
@@ -30,7 +30,7 @@ W tym artykule opisano, jak dodać lub zmienić role administratora współpracu
 ## <a name="add-a-co-administrator"></a>Dodaj jako Współadministratora
 
 > [!TIP]
-> Wystarczy dodać Współadministratora, jeśli użytkownik chce zarządzać wdrożeń klasycznych na platformie Azure. Firma Microsoft zaleca, korzystając z modelu RBAC do innych celów.
+> Musisz dodać Współadministratora, jeśli użytkownik chce zarządzać wdrożeń klasycznych na platformie Azure przy użyciu [moduł programu PowerShell Azure usługi](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure). Jeśli użytkownik używa tylko witryny Azure portal do zarządzania zasobami klasycznymi, nie musisz dodać klasycznego administratora dla użytkownika.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) jako Administrator usługi.
 

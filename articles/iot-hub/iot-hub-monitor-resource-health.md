@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: kgremban
-ms.openlocfilehash: 8c575c6d34543cbd8f692c64b43cf738b4c22617
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 86e690e5ff437d924b9c548c2d75afb1866b14aa
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415633"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446787"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów
 
@@ -340,7 +340,7 @@ Usługa IoT Hub rejestruje tego dziennika po umieszczeniu komunikatu zawierając
 }
 ```
 
-W tym miejscu `durationMs` nie jest obliczana jako zegara usługi IoT Hub może nie być zsynchronizowany z zegara urządzenia, a więc czas trwania obliczeń może być mylące. Firma Microsoft zaleca, pisanie logiki przy użyciu sygnatury czasowe w `properties` sekcji, aby przechwycić wzrostów opóźnienia urządzenia do chmury.
+W tym miejscu `durationMs` nie jest obliczana jako zegara usługi IoT Hub może nie być zsynchronizowany z zegara urządzenia, a więc czas trwania obliczeń może być mylące. Firma Microsoft zaleca logikę, za pomocą sygnatury czasowe w `properties` sekcji, aby przechwycić wzrostów opóźnienia urządzenia do chmury.
 
 | Właściwość | Typ | Opis |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|

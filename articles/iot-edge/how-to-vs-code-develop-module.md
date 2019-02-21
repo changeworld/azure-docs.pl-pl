@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: philmea
 ms.author: xshi
-ms.date: 01/12/2019
+ms.date: 02/20/2019
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5abc13a39db3f1061e3df76857645d8075feade5
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 1a15600889a3c5a3c0ca587c78499f32be0ab8ed
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245756"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456711"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów dla usługi Azure IoT Edge
 
@@ -262,6 +262,7 @@ Podczas debugowania modułów przy użyciu tej metody, moduły są uruchomione n
       import ptvsd
       ptvsd.enable_attach(('0.0.0.0',  5678))
       ```
+
    - Dodaj następujące jednego wiersza kodu do wywołania zwrotnego, który chcesz debugować:
 
       ```python
@@ -339,7 +340,7 @@ Możesz pominąć tę sekcję Jeśli moduły są uruchomione na tym samym komput
 
    - **Funkcja platformy Azure (C#)**: Dodaj punkt przerwania w pliku `<your module name>.cs`.
    - **C#**: Dodaj punkt przerwania w pliku `Program.cs`.
-   - **Node.js**: Dodaj punkt przerwania w pliku `app.js`.
+   - **Node.JS**: Dodaj punkt przerwania w pliku `app.js`.
    - **Java**: Dodaj punkt przerwania w pliku `App.java`.
    - **Python**: Dodaj punkt przerwania w pliku `main.py`w metody wywołania zwrotnego, do której dodano `ptvsd.break_into_debugger()` wiersza.
    - **C**: Dodaj punkt przerwania w pliku `main.c`.
@@ -350,6 +351,12 @@ Możesz pominąć tę sekcję Jeśli moduły są uruchomione na tym samym komput
 
 > [!NOTE]
 > Poprzedni przykład pokazuje, jak można debugować moduły usługi IoT Edge w kontenerach. Ujawnionych portów on dodany do kontenera usługi modułu `createOptions` ustawienia. Po zakończeniu debugowania moduły, zalecane jest usunięcie tych ujawnionych portów dla modułów usługi IoT Edge gotowe do produkcji.
+
+## <a name="build-and-debug-a-module-remotely"></a>Twórz i Debuguj zdalnie modułu
+
+Z ostatnich zmian w Docker i Moby aparaty do obsługi połączeń SSH, a nowe ustawienie w narzędzia IoT platformy Azure umożliwiająca iniekcji ustawienia środowiska do palety poleceń programu Visual Studio Code i terminali usługi Azure IoT Edge można teraz kompilowanie i debugowanie moduły na zdalnych urządzeniach.
+
+Zobacz ten [wpis w blogu deweloperów IoT](https://devblogs.microsoft.com/iotdev/easily-build-and-debug-iot-edge-modules-on-your-remote-device-with-azure-iot-edge-for-vs-code-1-9-0/) uzyskać więcej informacji oraz instrukcje krok po kroku.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -3,27 +3,27 @@ title: Pobieranie parametrów połączenia — usługa Azure Event Hubs | Dokume
 description: Ten artykuł zawiera instrukcje dotyczące pobierania parametrów połączenia, używanego przez klientów do łączenia z usługą Azure Event Hubs.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: ee4bd5d2acf1a029486f83ee721b9e1f72347958
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/19/2019
+ms.author: spelluru
+ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238151"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445104"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Pobieranie parametrów połączenia usługi Event Hubs
 
-Aby korzystać z usługi Event Hubs, musisz utworzyć obszar nazw usługi Event Hubs. Przestrzeń nazw jest kontenerem określania zakresu, które mogą znajdować się wiele centrów zdarzeń / tematów platformy Kafka. Ta przestrzeń nazw zapewnia unikatową [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Po utworzeniu przestrzeni nazw, można uzyskać parametry połączenia wymagane do komunikacji z usługą Event Hubs.
+Aby korzystać z usługi Event Hubs, musisz utworzyć obszar nazw usługi Event Hubs. Przestrzeń nazw jest kontenerem określania zakresu dla wielu usługi event hubs lub tematów platformy Kafka. Ta przestrzeń nazw zapewnia unikatową [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Po utworzeniu przestrzeni nazw, można uzyskać parametry połączenia wymagane do komunikacji z usługą Event Hubs.
 
 Parametry połączenia dla usługi Azure Event Hubs zawiera następujące składniki, które są osadzone w nim,
 
-* Nazwa FQDN = nazwę FQDN utworzoną przestrzeń nazw EventHubs (dotyczy to EventHubs nazwę przestrzeni nazw, a następnie servicebus.windows.net)
+* Nazwa FQDN = nazwę FQDN utworzoną przestrzeń nazw EventHubs (zawiera nazwę przestrzeni nazw EventHubs następuje servicebus.windows.net)
 * SharedAccessKeyName = nazwa, został wybrany dla kluczy sygnatury dostępu Współdzielonego usługi aplikacji
 * SharedAccessKey = wygenerowaną wartość klucza.
 
@@ -37,30 +37,29 @@ Przykładowe parametry połączenia mogą wyglądać jak `Endpoint=sb://dummynam
 W tym artykule opisano za pośrednictwem różnych sposobów uzyskiwania parametrów połączenia.
 
 ## <a name="get-connection-string-from-the-portal"></a>Pobieranie parametrów połączenia z poziomu portalu
+1. Zaloguj się w [portalu Azure](https://portal.azure.com). 
+2. Wybierz **wszystkich usług** w menu nawigacji po lewej stronie. 
+3. Wybierz **usługi Event Hubs** w **Analytics** sekcji. 
+4. Na liście usługi event hubs wybierz Centrum zdarzeń.
+6. Na **Event Hubs Namespace** wybierz opcję **współużytkowane zasady dostępu** w menu po lewej stronie.
 
-Po utworzeniu przestrzeni nazw usługi Event Hubs, w sekcji Przegląd portalu daje ciąg połączenia jak pokazano poniżej:
+    ![Udostępniony element menu zasad dostępu](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+7. Wybierz **współużytkowane zasady dostępu** w listy zasad. Wartość domyślna jednego nosi nazwę: **RootManageSharedAccessPolicy**. Dodaj zasadę z odpowiednimi uprawnieniami (odczytu, zapisu) i użyć tych zasad. 
 
-![Parametry połączenia centrów zdarzeń](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+    ![Usługa Event Hubs współużytkowane zasady dostępu](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
+8. Wybierz **kopiowania** znajdujący się obok **parametry połączenia — klucz podstawowy** pola. 
 
-Po kliknięciu łącza do parametrów połączenia w sekcji Przegląd Otwiera kartę zasady sygnatury dostępu Współdzielonego, jak pokazano na poniższej ilustracji:
-
-![Zasady usługi Event Hubs sygnatury dostępu Współdzielonego](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-
-Można dodawać nowe zasady sygnatury dostępu Współdzielonego i pobieranie parametrów połączenia lub używać domyślnych zasad, który jest już utworzony. Po otwarciu zasady uzyskuje się parametry połączenia, jak pokazano na poniższych rysunku:
-
-![Usługa Event Hubs pobieranie parametrów połączenia](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
+    ![Event Hubs — pobieranie parametrów połączenia](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Pobieranie parametrów połączenia z programem Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Get-AzEventHubNamespaceKey umożliwia pobieranie parametrów połączenia dla nazwy zasady/reguły, jak pokazano poniżej:
+Możesz użyć [Get AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) można pobrać parametry połączenia dla nazwy określonej reguły, jak pokazano poniżej:
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
-
-Zapoznaj się [modułu Azure PowerShell centra zdarzeń](https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey) Aby uzyskać więcej informacji.
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Pobieranie parametrów połączenia przy użyciu wiersza polecenia platformy Azure
 Pobieranie parametrów połączenia dla przestrzeni nazw umożliwia następujące czynności:
@@ -69,7 +68,7 @@ Pobieranie parametrów połączenia dla przestrzeni nazw umożliwia następując
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
-Zapoznaj się [wiersza polecenia platformy Azure dla usługi Event Hubs](https://docs.microsoft.com/cli/azure/eventhubs) Aby dowiedzieć się więcej.
+Aby uzyskać więcej informacji dotyczących poleceń interfejsu wiersza polecenia platformy Azure dla usługi Event Hubs, zobacz [wiersza polecenia platformy Azure dla usługi Event Hubs](/cli/azure/eventhubs).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

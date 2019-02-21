@@ -3,8 +3,8 @@ title: Przed wdrożeniem usługi App Service w usłudze Azure Stack | Dokumentac
 description: Kroki, aby ukończyć przed wdrożeniem usługi App Service w usłudze Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: apwestgarth
-manager: stefsch
+author: jeffgilb
+manager: femila
 editor: ''
 ms.assetid: ''
 ms.service: azure-stack
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2018
-ms.author: anwestg
+ms.author: jeffgilb
+ms.reviewer: anwestg
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 558fc7280af398f0037c33121f662649ba9c3506
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0be1814fd501824056bc80d4aeb561ff58735125
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251388"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447450"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
@@ -76,8 +77,8 @@ Po uruchomieniu następującego polecenia programu PowerShell, należy przewidzi
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| PrivilegedEndpoint | Wymagany | AzS-ERCS01 | Punkt końcowy uprzywilejowanych |
-| CloudAdminCredential | Wymagany | AzureStack\CloudAdmin | Poświadczenia konta domeny dla administratorów chmury Azure Stack |
+| PrivilegedEndpoint | Wymagane | AzS-ERCS01 | Punkt końcowy uprzywilejowanych |
+| CloudAdminCredential | Wymagane | AzureStack\CloudAdmin | Poświadczenia konta domeny dla administratorów chmury Azure Stack |
 
 ### <a name="certificates-required-for-asdk-deployment-of-azure-app-service"></a>Certyfikaty wymagane do wdrożenia ASDK usługi Azure App Service
 
@@ -101,8 +102,8 @@ Aby utworzyć certyfikaty, wykonaj następujące kroki:
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| pfxPassword | Wymagany | Null | Hasło, które chroni klucz prywatny certyfikatu |
-| DomainName | Wymagany | local.azurestack.external | Azure Stack region i domeny sufiks |
+| pfxPassword | Wymagane | Null | Hasło, które chroni klucz prywatny certyfikatu |
+| DomainName | Wymagane | local.azurestack.external | Azure Stack region i domeny sufiks |
 
 ### <a name="certificates-required-for-azure-stack-production-deployment-of-azure-app-service"></a>Certyfikaty wymagane do wdrożenia produkcyjnego usługi Azure Stack w usłudze Azure App Service
 
@@ -348,12 +349,12 @@ Wykonaj następujące kroki:
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| DirectoryTenantName | Wymagany | Null | Identyfikatora dzierżawy usługi Azure AD Podaj identyfikator GUID lub ciąg. Przykładem jest myazureaaddirectory.onmicrosoft.com. |
-| AdminArmEndpoint | Wymagany | Null | Punkt końcowy administratora usługi Azure Resource Manager. Przykładem jest adminmanagement.local.azurestack.external. |
-| TenantARMEndpoint | Wymagany | Null | Punkt końcowy dzierżawy usługi Azure Resource Manager. Przykładem jest management.local.azurestack.external. |
-| AzureStackAdminCredential | Wymagany | Null | Poświadczenia administratora usługi Azure AD. |
-| CertificateFilePath | Wymagany | Null | **Pełna ścieżka** do wcześniej wygenerowany plik certyfikatu aplikacji tożsamości. |
-| CertificatePassword | Wymagany | Null | Hasło, która pomaga chronić klucz prywatny certyfikatu. |
+| DirectoryTenantName | Wymagane | Null | Identyfikatora dzierżawy usługi Azure AD Podaj identyfikator GUID lub ciąg. Przykładem jest myazureaaddirectory.onmicrosoft.com. |
+| AdminArmEndpoint | Wymagane | Null | Punkt końcowy administratora usługi Azure Resource Manager. Przykładem jest adminmanagement.local.azurestack.external. |
+| TenantARMEndpoint | Wymagane | Null | Punkt końcowy dzierżawy usługi Azure Resource Manager. Przykładem jest management.local.azurestack.external. |
+| AzureStackAdminCredential | Wymagane | Null | Poświadczenia administratora usługi Azure AD. |
+| CertificateFilePath | Wymagane | Null | **Pełna ścieżka** do wcześniej wygenerowany plik certyfikatu aplikacji tożsamości. |
+| CertificatePassword | Wymagane | Null | Hasło, która pomaga chronić klucz prywatny certyfikatu. |
 | Środowisko | Optional (Opcjonalność) | AzureCloud | Nazwa obsługiwane środowiska chmury, w której element docelowy usługi Azure Active Directory Graph jest dostępny.  Dozwolone wartości: 'AzureCloud', 'AzureChinaCloud', 'AzureUSGovernment', 'AzureGermanCloud'.|
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Tworzenie aplikacji usług federacyjnych Active Directory
@@ -384,11 +385,11 @@ Wykonaj następujące kroki:
 
 | Parametr | Wymagane lub opcjonalne | Wartość domyślna | Opis |
 | --- | --- | --- | --- |
-| AdminArmEndpoint | Wymagany | Null | Punkt końcowy administratora usługi Azure Resource Manager. Przykładem jest adminmanagement.local.azurestack.external. |
-| PrivilegedEndpoint | Wymagany | Null | Punkt końcowy uprzywilejowanych. Przykładem jest AzS ERCS01. |
-| CloudAdminCredential | Wymagany | Null | Poświadczenia konta domeny dla administratorów chmury Azure Stack. Przykładem jest Azurestack\CloudAdmin. |
-| CertificateFilePath | Wymagany | Null | **Pełna ścieżka** do pliku PFX certyfikatu aplikacji tożsamości. |
-| CertificatePassword | Wymagany | Null | Hasło, która pomaga chronić klucz prywatny certyfikatu. |
+| AdminArmEndpoint | Wymagane | Null | Punkt końcowy administratora usługi Azure Resource Manager. Przykładem jest adminmanagement.local.azurestack.external. |
+| PrivilegedEndpoint | Wymagane | Null | Punkt końcowy uprzywilejowanych. Przykładem jest AzS ERCS01. |
+| CloudAdminCredential | Wymagane | Null | Poświadczenia konta domeny dla administratorów chmury Azure Stack. Przykładem jest Azurestack\CloudAdmin. |
+| CertificateFilePath | Wymagane | Null | **Pełna ścieżka** do pliku PFX certyfikatu aplikacji tożsamości. |
+| CertificatePassword | Wymagane | Null | Hasło, która pomaga chronić klucz prywatny certyfikatu. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

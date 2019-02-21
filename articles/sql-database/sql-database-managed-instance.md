@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/20/2019
+ms.openlocfilehash: d19dabb4e74e7a108ae769f55cd65ef108019fdc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964155"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454745"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Użyj zaawansowanych zabezpieczeń danych przy użyciu sieci wirtualnych i w prawie 100% zgodności bazy danych SQL
 
@@ -47,7 +47,7 @@ Zarządzane wystąpienia łączy najlepsze funkcje, które są dostępne zarówn
 | --- | --- |
 |Zakupu sprzętu i zarządzania <br>Brak zarządzania w czasie zarządzania podstawową infrastrukturą <br>Szybka aprowizacja i skalowanie usług <br>Automatyczne stosowanie poprawek i wersja uaktualnienia <br>Integracja z innymi usługami danych PaaS |dostępność przez 99,99% umowę SLA  <br>Wbudowane [wysokiej dostępności](sql-database-high-availability.md) <br>Dane są chronione za pomocą [automatyczne kopie zapasowe](sql-database-automated-backups.md) <br>Okres przechowywania kopii zapasowych można skonfigurować klienta <br>Użytkownik zainicjował [kopii zapasowych](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Punkt w czasie przywracania bazy danych](sql-database-recovery-using-backups.md#point-in-time-restore) możliwości |
 |**Zabezpieczenia i zgodność** | **Zarządzanie**|
-|Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Usługa Azure AD logowania</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
+|Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-connectivity-architecture.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Jednostki serwera w usłudze Azure AD (logowania)</a> (**publicznej wersji zapoznawczej**) <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service
 
 Najważniejsze funkcje zarządzanych wystąpień przez przedstawiono w poniższej tabeli:
 
@@ -150,9 +150,9 @@ Migracja zaszyfrowanych bazy danych do wystąpienia zarządzanego jest obsługiw
 
 ## <a name="azure-active-directory-integration"></a>Integracja z usługą Azure Active Directory
 
-Opcji wdrożenia wystąpienia zarządzanego obsługuje tradycyjne logowania aparatu bazy danych programu SQL server i nazwami logowania, zintegrowane za pomocą usługi Azure Active Directory (AAD). Logowania do usługi AAD (**publicznej wersji zapoznawczej**) są wersja chmury platformy Azure w środowisku lokalnym logowania do bazy danych używane w środowisku w środowisku lokalnym. Logowania do usługi AAD pozwala na określenie użytkowników i grup w usłudze Azure Active Directory dzierżawy na wartość true zakresie wystąpienia jednostki, może wykonać żadnych operacji na poziomie wystąpienia, takich jak zapytania wielu baz danych w ramach tego samego wystąpienia zarządzanego.
+Opcji wdrożenia wystąpienia zarządzanego obsługuje tradycyjne logowania aparatu bazy danych programu SQL server i nazwami logowania, zintegrowane za pomocą usługi Azure Active Directory (AAD). Jednostki serwera w usłudze Azure AD (logowania) (**publicznej wersji zapoznawczej**) są wersja chmury platformy Azure w środowisku lokalnym logowania do bazy danych używane w środowisku w środowisku lokalnym. Jednostki serwera w usłudze Azure AD (logowania) pozwala na określenie użytkowników i grup w usłudze Azure Active Directory dzierżawy na wartość true zakresie wystąpienia jednostki, może wykonać żadnych operacji na poziomie wystąpienia, takich jak zapytania wielu baz danych w tym samym wystąpienie zarządzane.
 
-Wprowadzono nową składnię do tworzenia identyfikatorów logowania w usłudze AAD (**publicznej wersji zapoznawczej**), **z zewnętrznego dostawcy**. Aby uzyskać więcej informacji na temat składni, zobacz <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>i przejrzyj [aprowizacji administrator usługi Azure Active Directory dla wystąpienia zarządzanego](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) artykułu.
+Wprowadzono nową składnię do tworzenia podmiotów zabezpieczeń serwera (logowania) usługi Azure AD (**publicznej wersji zapoznawczej**), **z zewnętrznego dostawcy**. Aby uzyskać więcej informacji na temat składni, zobacz <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>i przejrzyj [aprowizacji administrator usługi Azure Active Directory dla wystąpienia zarządzanego](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance) artykułu.
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Integracja usługi Azure Active Directory z uwierzytelnianiem wieloskładnikowym
 

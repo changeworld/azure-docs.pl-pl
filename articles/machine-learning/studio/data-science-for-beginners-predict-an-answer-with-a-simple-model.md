@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: 0d00d57cbeed9024ad2593171abc95c5157829d2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6adcf59053186c961a115164baac1f0af631ff4a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495925"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456848"
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>Prognozowanie odpowiedzi za pomocą prostego modelu
 ## <a name="video-4-data-science-for-beginners-series"></a>Wideo 4: Analiza danych dla początkujących serii
@@ -124,7 +124,7 @@ Ponadto jeśli zamiast tylko niewielki podzbiór diamenty, mieliśmy dwa tysiąc
 
 Obecnie mówiliśmy o tym, jak zrobić regresji liniowej i wprowadziliśmy prognozowania, przy użyciu danych.
 
-Pamiętaj sprawdzić inne filmy wideo "Data Science dla początkujących" z usługi Microsoft Azure Machine Learning.
+Pamiętaj sprawdzić inne filmy wideo "Dane do analizy dla początkujących" z usługi Microsoft Azure Machine Learning Studio.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Spróbuj pierwszy eksperyment dotyczący przetwarzania danych, za pomocą usługi Machine Learning Studio](create-experiment.md)

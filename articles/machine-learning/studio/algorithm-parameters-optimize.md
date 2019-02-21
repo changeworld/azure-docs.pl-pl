@@ -10,20 +10,20 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0f324dec9349b44252a85b2f9334a1b6d847faae
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 870345148b55bc6026202fbd433d8575e421faba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247140"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456014"
 ---
 # <a name="choose-parameters-to-optimize-your-algorithms-in-azure-machine-learning-studio"></a>Wybór parametrów w celu optymalizacji algorytmów w usłudze Azure Machine Learning Studio
 
-W tym temacie opisano, jak wybrać odpowiednie hiperparametrycznego, ustaw dla algorytmu w usłudze Azure Machine Learning. Większość algorytmów uczenia maszynowego parametrów wymaganych do zestawu. Ucząc model, konieczne jest podanie wartości tych parametrów. Skuteczność uczonego modelu zależy od parametrów modelu, które wybierzesz. Proces odnajdywania optymalny zestaw parametrów jest znany jako *modelu zaznaczenia*.
+W tym temacie opisano, jak wybrać odpowiednie hiperparametrycznego, ustaw dla algorytmu w usłudze Azure Machine Learning Studio. Większość algorytmów uczenia maszynowego parametrów wymaganych do zestawu. Ucząc model, konieczne jest podanie wartości tych parametrów. Skuteczność uczonego modelu zależy od parametrów modelu, które wybierzesz. Proces odnajdywania optymalny zestaw parametrów jest znany jako *modelu zaznaczenia*.
 
 
 
-Istnieją różne sposoby modelu zaznaczenia. W usłudze machine learning krzyżowego sprawdzania poprawności jest jedną z najczęściej używanych metod wybór modelu i jest domyślnego mechanizmu wybór modelu w usłudze Azure Machine Learning. Ponieważ usługa Azure Machine Learning obsługuje języków R i Python, zawsze można zaimplementować własne mechanizmy wybór modelu przy użyciu języka R lub Python.
+Istnieją różne sposoby modelu zaznaczenia. W usłudze machine learning krzyżowego sprawdzania poprawności jest jedną z najczęściej używanych metod wybór modelu i jest domyślnego mechanizmu wybór modelu w usłudze Azure Machine Learning Studio. Ponieważ usługi Azure Machine Learning Studio obsługuje języków R i Python, zawsze można zaimplementować własne mechanizmy wybór modelu przy użyciu języka R lub Python.
 
 Istnieją cztery kroki w procesie wyszukiwania najlepszy zestaw parametrów:
 
@@ -32,7 +32,7 @@ Istnieją cztery kroki w procesie wyszukiwania najlepszy zestaw parametrów:
 3. **Zdefiniuj Metryka**: Zdecyduj, jakie metryki używaną do określania najlepszy zestaw parametrów, takich jak dokładność, mean głównego kwadrat błąd, dokładności, odwołań lub wynik f.
 4. **Uczenie, ocenę i porównywanie**: Każda unikatowa kombinacja wartości parametrów krzyżowego sprawdzania poprawności jest przeprowadzane przez i oparte na metryce błąd, jaką zdefiniujesz. Po ocenie i porównanie możesz wybrać sprzedające modelu.
 
-Na poniższym obrazie przedstawiono pokazuje, jak można to osiągnąć w usłudze Azure Machine Learning.
+Na poniższym obrazie przedstawiono pokazuje, jak można to osiągnąć w usłudze Azure Machine Learning Studio.
 
 ![Znajdź najlepsze zestaw parametrów](./media/algorithm-parameters-optimize/fig1.png)
 

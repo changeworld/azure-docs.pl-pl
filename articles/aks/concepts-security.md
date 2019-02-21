@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 2c6569d92913a3cff9ee51529dd381386ed2a792
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818995"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456507"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Pojęcia dotyczące zabezpieczeń dla aplikacji i klastrów w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ W tym artykule przedstawiono podstawowe pojęcia, z których zabezpieczania apli
 - [Węzeł zabezpieczeń](#node-security)
 - [Uaktualnianie klastra](#cluster-upgrades)
 - [Bezpieczeństwo sieci](#network-security)
-- Kubernetes Secrets
+- [Wpisy tajne usługi Kubernetes](#kubernetes-secrets)
 
 ## <a name="master-security"></a>Zabezpieczenia głównego
 
@@ -36,9 +36,9 @@ Domyślnie serwer interfejsu API rozwiązania Kubernetes używa publicznego adre
 
 Węzłów AKS są maszyn wirtualnych platformy Azure, które umożliwia zarządzanie i obsługa. Na węzłach jest uruchamiana zoptymalizowane dystrybucji systemu Ubuntu Linux przy użyciu rozwiązania Docker kontener środowiska uruchomieniowego. Gdy klaster AKS zostanie utworzony lub skalowany w górę, węzły zostają automatycznie wdrożone najnowsze aktualizacje zabezpieczeń systemu operacyjnego i konfiguracjach.
 
-Platforma Azure automatycznie stosuje poprawki zabezpieczeń systemu operacyjnego węzłów w nocy. Jeśli aktualizacja zabezpieczeń systemu operacyjnego wymaga ponownego uruchomienia komputera hosta, że ponowne uruchomienie komputera nie jest wykonywana automatycznie. Ręcznie uruchom ponownie węzły lub typowym podejściem jest użycie [Kured][kured], demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet] [aks daemonset] i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie odbywa się w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu](#cordon-and-drain) jako uaktualniania klastra.
+Platforma Azure automatycznie stosuje poprawki zabezpieczeń systemu operacyjnego węzłów w nocy. Jeśli aktualizacja zabezpieczeń systemu operacyjnego wymaga ponownego uruchomienia komputera hosta, że ponowne uruchomienie komputera nie jest wykonywana automatycznie. Ręcznie uruchom ponownie węzły lub typowym podejściem jest użycie [Kured][kured], demon ponowny rozruch typu open source dla platformy Kubernetes. Kured działa jako [DaemonSet] [ aks-daemonsets] i monitoruje każdy węzeł na obecność pliku wskazujący, że wymagane jest ponowne uruchomienie komputera. Ponowne uruchamianie odbywa się w klastrze, korzystając z tych samych [odizolowywanie i opróżnianie procesu](#cordon-and-drain) jako uaktualniania klastra.
 
-Węzły są wdrażane w podsieci prywatnej sieci wirtualnej przy użyciu nie publiczne adresy IP, które są przypisane. Do celów zarządzania i rozwiązywania problemów protokół SSH jest domyślnie włączona. Ten dostęp SSH jest dostępna tylko przy użyciu wewnętrznego adresu IP. Reguły grupy zabezpieczeń sieci platformy Azure może służyć do bardziej ograniczyć dostęp do zakresu adresów IP dla węzłów AKS. Usunięcie reguły protokołu SSH grupy zabezpieczeń sieci domyślnego i wyłączenie usługi SSH w węzłach uniemożliwia wykonywanie zadań konserwacji platformy Azure.
+Węzły są wdrażane w podsieci prywatnej sieci wirtualnej przy użyciu nie publiczne adresy IP, które są przypisane. Do celów zarządzania i rozwiązywania problemów protokół SSH jest domyślnie włączona. Ten dostęp SSH jest dostępna tylko przy użyciu wewnętrznego adresu IP.
 
 Aby udostępnić magazyn, węzły używają usługi Azure Managed Disks. Dla większości rozmiarów maszyn wirtualnych węzła są obsługiwane przez dyski SSD o wysokiej wydajności dysków w warstwie Premium. Dane przechowywane na dyskach zarządzanych są automatycznie szyfrowane w stanie spoczynku na platformie Azure. W celu zapewnienia nadmiarowości te dyski jednocześnie możliwość bezpiecznego są replikowane w obrębie centrum danych platformy Azure.
 
@@ -46,7 +46,7 @@ Aby udostępnić magazyn, węzły używają usługi Azure Managed Disks. Dla wi�
 
 ## <a name="cluster-upgrades"></a>Uaktualnianie klastra
 
-Zabezpieczenia i zgodność z przepisami lub korzystać z najnowszych funkcji platforma Azure udostępnia narzędzia do organizowania Uaktualnianie klastra usługi AKS i składników. Takie ograniczenia uaktualniania zawiera zarówno Kubernetes głównego i agenta składniki. Możesz wyświetlić listę dostępnych wersji rozwiązania Kubernetes dla klastra usługi AKS. Aby uruchomić proces uaktualniania, należy określić jedną z tych dostępnych wersji. Platforma Azure, a następnie bezpiecznie cordons i opróżnia każdy węzeł usługi AKS i przeprowadza uaktualnienie.
+Zabezpieczenia i zgodność z przepisami lub korzystać z najnowszych funkcji platforma Azure udostępnia narzędzia do organizowania Uaktualnianie klastra usługi AKS i składników. Takie ograniczenia uaktualniania zawiera zarówno Kubernetes głównego i agenta składniki. Możesz wyświetlić [listę dostępnych wersji rozwiązania Kubernetes](supported-kubernetes-versions.md) dla klastra usługi AKS. Aby uruchomić proces uaktualniania, należy określić jedną z tych dostępnych wersji. Platforma Azure, a następnie bezpiecznie cordons i opróżnia każdy węzeł usługi AKS i przeprowadza uaktualnienie.
 
 ### <a name="cordon-and-drain"></a>Cordon i opróżniania
 
@@ -57,7 +57,7 @@ Podczas procesu uaktualniania węzłów AKS są indywidualnie odizolowywane z kl
 - Zasobniki są planowane do uruchomienia na je ponownie.
 - Kolejnego węzła w klastrze jest odizolowywane i opróżniane przy użyciu tego samego procesu, aż wszystkie węzły są pomyślnie uaktualniony.
 
-Aby uzyskać więcej informacji, zobacz [klastra AKS i uaktualniania][aks-upgrade-cluster].
+Aby uzyskać więcej informacji, zobacz [Uaktualnianie klastra usługi AKS][aks-upgrade-cluster].
 
 ## <a name="network-security"></a>Bezpieczeństwo sieci
 

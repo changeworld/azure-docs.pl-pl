@@ -1,25 +1,22 @@
 ---
-title: Tworzenie bramy aplikacji, który hostuje wiele witryn sieci web — witryna Azure portal | Dokumentacja firmy Microsoft
+title: Tworzenie bramy aplikacji, który hostuje wiele witryn sieci web — witryna Azure portal
 description: Dowiedz się, jak utworzyć bramę aplikacji, który hostuje wiele witryn sieci web przy użyciu witryny Azure portal.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/28/2017
+ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: fc418f58b299dcba08fda65000c5356c51f471e6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993310"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454324"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Tworzenie i konfigurowanie bramy aplikacji do hostowania wielu witryn sieci web przy użyciu witryny Azure portal
 
-Można użyć portalu Azure w celu [Konfigurowanie hostingu wielu witryn sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym samouczku zdefiniujesz pule adresów zaplecza przy użyciu maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym samouczku przyjęto założenie, że jesteś właścicielem wielu domen, przykładami których są *www.contoso.com* i *www.fabrikam.com*.
+Można użyć portalu Azure w celu [Konfigurowanie hostingu wielu witryn sieci web](multiple-site-overview.md) po utworzeniu [bramy application gateway](overview.md). W tym artykule należy zdefiniować pule adresów zaplecza przy użyciu maszyn wirtualnych. Następnie, bazując na należących do Ciebie domenach, skonfigurujesz odbiorniki i reguły, aby się upewnić, że ruch internetowy dociera do odpowiednich serwerów w pulach. W tym artykule założono, że posiadasz wiele domen i używa przykłady *www.contoso.com* i *www.fabrikam.com*.
 
 W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -35,7 +32,7 @@ W tym artykule omówiono sposób wykonywania następujących zadań:
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com)
 
@@ -141,6 +138,8 @@ W tym przykładzie utworzysz dwie maszyny wirtualne, które będą używane jako
 3. Kliknij przycisk **OK**.
 4. Utwórz odbiornik drugi przy użyciu nazwy *fabrikamListener* i korzystania z drugiego nazwy domeny. W tym przykładzie *www.fabrikam.com* jest używany.
 
+![odbiorniki iloczyn lokacji](media/create-multiple-sites-portal/be-listeners.png)
+
 ## <a name="create-routing-rules"></a>Tworzenie reguł routingu
 
 Reguły są przetwarzane w kolejności, w jakiej są wymienione, a ruch jest przekierowywany przy użyciu pierwszej zgodnej reguły niezależnie od specyficzności. Na przykład jeśli na tym samym porcie utworzono dwie reguły: jedną przy użyciu odbiornika podstawowego, a drugą przy użyciu odbiornika obejmującego wiele witryn, reguła z odbiornikiem obejmującym wiele witryn musi znajdować się przed regułą z odbiornikiem podstawowym, aby funkcja reguły obejmującej wiele witryn działała zgodnie z oczekiwaniami. 
@@ -180,12 +179,4 @@ Po utworzeniu bramy aplikacji z publicznym adresem IP można pobrać adres DNS i
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule przedstawiono sposób:
-
-> [!div class="checklist"]
-> * Tworzenie bramy aplikacji
-> * Tworzenie maszyn wirtualnych dla serwerów wewnętrznej bazy danych
-> * Utwórz pule zaplecza z serwerami wewnętrznej bazy danych
-> * Tworzenie odbiorników zaplecza
-> * Tworzenie reguł routingu
-> * Tworzenie rekordu CNAME w domenie
+[Konfigurowanie usługi App Service z usługą Application Gateway](create-web-app.md)

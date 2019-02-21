@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4a05b99cf0e40e63c01aee27bd745dd165dc23b8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998108"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452699"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Jak używać usługi sieci web Azure Machine Learning Studio
 
-Po wdrożeniu usługi Azure Machine Learning, model predykcyjny jako usługę sieci Web, można użyć interfejsu API REST, przesyła dane i uzyskiwać prognozy. Możesz wysłać dane w czasie rzeczywistym lub w trybie wsadowym.
+Po wdrożeniu usługi Azure Machine Learning Studio, model predykcyjny jako usługę sieci Web, można użyć interfejsu API REST, przesyła dane i uzyskiwać prognozy. Możesz wysłać dane w czasie rzeczywistym lub w trybie wsadowym.
 
 Można znaleźć więcej informacji o tym, jak utworzyć i wdrożyć usługi Machine Learning w sieci Web przy użyciu usługi Machine Learning Studio, w tym miejscu:
 
@@ -32,14 +32,14 @@ Można znaleźć więcej informacji o tym, jak utworzyć i wdrożyć usługi Mac
 ## <a name="overview"></a>Przegląd
 Za pomocą usługi Azure Machine Learning w sieci Web aplikacji zewnętrznej komunikowanie się z modelem oceniania przepływu pracy usługi Machine Learning w czasie rzeczywistym. Wywołanie usługi Machine Learning w sieci Web zwraca wyniki prognozowania do aplikacji zewnętrznej. Wywołanie usługi Machine Learning w sieci Web polega na przekazaniu klucza interfejsu API, który jest tworzony podczas wdrożenia przewidywanie. Usługa Machine Learning w sieci Web jest oparta na interfejsu REST — popularnej architektury w projektach programistycznych w sieci web.
 
-Usługa Azure Machine Learning udostępnia dwa typy usług:
+Usługa Azure Machine Learning Studio udostępnia dwa typy usług:
 
 * Usługa odpowiedzi na żądanie (RRS) — małe opóźnienia, wysoce skalowalna usługa, która udostępnia interfejs dla bezstanowych modeli utworzonych i wdrożonych z usługi Machine Learning Studio.
 * Usługa wykonywania wsadowego Service (BES) — asynchroniczna Usługa przeznaczona do oceniania partii rekordów danych.
 
 Aby uzyskać więcej informacji na temat usługi Machine Learning w sieci Web, zobacz [wdrażanie usługi Machine Learning w sieci Web](publish-a-machine-learning-web-service.md).
 
-## <a name="get-an-azure-machine-learning-authorization-key"></a>Uzyskiwanie klucza autoryzacji usługi Azure Machine Learning
+## <a name="get-an-azure-machine-learning-studio-authorization-key"></a>Uzyskiwanie klucza autoryzacji usługi Azure Machine Learning Studio
 Podczas wdrażania eksperymentu klucze interfejsu API są generowane przez usługę sieci Web. Klucze można pobrać z kilku lokalizacjach.
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Z poziomu portalu usług sieci Web Microsoft Azure Machine Learning
@@ -103,7 +103,7 @@ Aby nawiązać połączenie z usługą Machine Learning w sieci Web, **Microsoft
 **Aby uruchomić przykładowy kod**
 
 1. Publikowanie "przykładowy 1: Pobierz zestaw danych z UCI: Zawartość dla dorosłych 2 klasy dataset"eksperymentu, część pobieranie próbek uczenia maszynowego.
-2. Przypisz apiKey przy użyciu klucza z usługi sieci Web. Zobacz **uzyskiwanie klucza autoryzacji usługi Azure Machine Learning** powyżej.
+2. Przypisz apiKey przy użyciu klucza z usługi sieci Web. Zobacz **uzyskiwanie klucza autoryzacji usługi Azure Machine Learning Studio** powyżej.
 3. Przypisz serviceUri o identyfikatorze URI żądania.
 
 **Oto, jak będzie wyglądać kompletne żądanie.**
@@ -199,7 +199,7 @@ Aby połączyć się z usługą Machine Learning w sieci Web, użyj **urllib2** 
 **Aby uruchomić przykładowy kod**
 
 1. Wdrażanie "przykładowy 1: Pobierz zestaw danych z UCI: Zawartość dla dorosłych 2 klasy dataset"eksperymentu, część pobieranie próbek uczenia maszynowego.
-2. Przypisz apiKey przy użyciu klucza z usługi sieci Web. Zobacz **uzyskiwanie klucza autoryzacji usługi Azure Machine Learning** sekcji na początku tego artykułu.
+2. Przypisz apiKey przy użyciu klucza z usługi sieci Web. Zobacz **uzyskiwanie klucza autoryzacji usługi Azure Machine Learning Studio** sekcji na początku tego artykułu.
 3. Przypisz serviceUri o identyfikatorze URI żądania.
 
 **Oto, jak będzie wyglądać kompletne żądanie.**

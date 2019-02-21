@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389236"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453855"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Blokowanie środowiska usługi App Service
 
@@ -75,18 +75,18 @@ To zastosowanie usługi Application Gateway jest tylko jeden przykład sposobu k
 
 ## <a name="logging"></a>Rejestrowanie 
 
-Zaporę platformy Azure umożliwia wysyłanie dzienników do usługi Azure Storage, Centrum zdarzeń lub usługi Log Analytics. Aby zintegrować aplikację przy użyciu dowolnej obsługiwanej lokalizacji docelowej, przejdź do portalu Azure zapory > dzienniki diagnostyczne i włączyć dzienniki Aby uzyskać żądany lokalizacji docelowej. Możesz zintegrować z usługą Log Analytics można zobaczyć rejestrowania wszelki ruch wysyłany do zapory usługi Azure. Aby wyświetlić ruchu, który jest pozbawiona, Otwórz portal usługi Log Analytics > Dzienniki i wprowadzić kwerendę, np. 
+Zapora usługi Azure może wysyłać dzienniki do usługi Azure Storage, Centrum zdarzeń lub dzienniki usługi Azure Monitor. Aby zintegrować aplikację przy użyciu dowolnej obsługiwanej lokalizacji docelowej, przejdź do portalu Azure zapory > dzienniki diagnostyczne i włączyć dzienniki Aby uzyskać żądany lokalizacji docelowej. Jeśli możesz zintegrować przy użyciu dzienników usługi Azure Monitor, a następnie możesz zobaczyć rejestrowania wszelki ruch wysyłany do zapory usługi Azure. Aby sprawdzić ruch, który jest pozbawiona, otwórz portalu obszaru roboczego usługi Log Analytics > Dzienniki i wprowadzić kwerendę, np. 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Integrowanie zapory platformy Azure z usługą Log Analytics jest bardzo przydatne w przypadku najpierw pobierania aplikacji działać po użytkownik nie rozpoznają wszystkie zależności aplikacji. Dowiedz się więcej o usłudze Log Analytics z [danych analizy usługi Log Analytics w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+Integrowanie zapory platformy Azure przy użyciu dzienników usługi Azure Monitor jest bardzo przydatne w przypadku najpierw pobierania aplikacji działać po użytkownik nie rozpoznają wszystkie zależności aplikacji. Dowiedz się więcej na temat dzienników usługi Azure Monitor z [Analizuj dane dzienników w usłudze Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
  
 ## <a name="dependencies"></a>Zależności
 
 Następujące informacje są tylko wymagane, jeśli chcesz skonfigurować urządzenie zapory niż Zapora usługi Azure. 
 
 - Punkty końcowe usługi należy skonfigurować usługi zdolne do punktu końcowego usługi.
-- Spełniono adresu IP dla ruchu innego niż do protokołu HTTP/S
+- Spełniono adresu IP dla ruchu innego niż do protokołu HTTP/S (ruch TCP i UDP)
 - Punktów końcowych HTTP/HTTPS nazwy FQDN można umieścić w urządzenia zapory.
 - Symbol wieloznaczny HTTP/HTTPS punkty końcowe są zależności, które mogą się różnić, za pomocą środowiska ASE na podstawie liczby kwalifikatorów. 
 - Zależności systemu Linux są tylko problemem, Jeżeli wdrażasz aplikacje systemu Linux w środowisku ASE. Gdy nie wdrażasz aplikacje systemu Linux w środowisku ASE, te adresy nie muszą zostać dodane do zapory. 

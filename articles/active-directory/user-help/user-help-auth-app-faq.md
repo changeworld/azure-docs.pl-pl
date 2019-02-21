@@ -13,18 +13,18 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a1fd3efb9eac30e70fea9622716a54769369e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78fc7441b109c87f1ab9ff5b56ed8e055c152d10
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184129"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456065"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Aplikacja Microsoft Authenticator — często zadawane pytania
 
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące aplikacji Microsoft Authenticator. Jeśli nie widzisz odpowiedź na Twoje pytanie, przejdź do strony [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp).
 
-Aplikacja Microsoft Authenticator zastępowane aplikacji Azure Authenticator, a jest zalecaną aplikację, korzystając z usługi Azure Multi-Factor Authentication. Aplikacja Microsoft Authenticator jest dostępna dla [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) i [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
+Aplikacja Microsoft Authenticator zastępowane aplikacji Azure Authenticator, a jest zalecaną aplikację, korzystając z usługi Azure Multi-Factor Authentication. Aplikacja Microsoft Authenticator jest dostępna dla systemów [Android](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.azure.authenticator) i [iOS](https://app.adjust.com/e3rxkc_7lfdtm?fallback=https%3A%2F%2Fitunes.apple.com%2Fus%2Fapp%2Fmicrosoft-authenticator%2Fid983156458).
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 |Pytanie|Rozwiązanie|
@@ -49,7 +49,7 @@ Aplikacja Microsoft Authenticator zastępowane aplikacji Azure Authenticator, a 
 |Dlaczego nie jest aplikacja Microsoft Authenticator pomocnika dla Apple Watch synchronizowanie lub pojawia się na Moje Obejrzyj?|Jeśli aplikacja nie jest wyświetlane na zegarku, spróbuj wykonać następujące czynności: <ol><li>Upewnij się, że urządzenia Watch działa systemu watchOS, 4.0 lub nowszy.</li><li>Ponownie Synchronizuj zegarka.</li></ol>|
 |Moja aplikacja pomocnika Apple Watch wystąpiła awaria. Czy mogę wysyłać możesz Moje dzienniki awarii dzięki którym możesz zbadać? |Musisz najpierw upewnij się, że został wybrany, aby udostępnić nam analizy. Jeśli jesteś użytkownikiem usługi TestFlight, już masz konta. W przeciwnym razie możesz przejść do **Ustawienia > Prywatność > Analytics** i zaznacz **udostępnianie urządzenia iPhone i analiza Obejrzyj** i **udziału z deweloperami aplikacji** opcje.<br><br>Po zarejestrowaniu się możesz odtworzyć awarii sieci, więc dzienniki awarii są automatycznie wysyłane do nas podczas analiz. Jednak jeśli nie można odtworzyć awarii sieci, można ręcznie skopiować pliki dzienników i wysyłać je do nas.<ol><li>Otwórz w aplikacji Watch na Twój telefon, przejdź do **Ustawienia > Ogólne**, a następnie kliknij przycisk **Analytics Obejrzyj kopiowania**.</li><li>Znaleźć odpowiedniego awarii w ramach **Ustawienia > Prywatność > Analytics > danych analitycznych**i ręcznie skopiować cały tekst.</li><li>Otwórz aplikację Microsoft Authenticator na telefonie i Wklej, który skopiowany tekst do **udziału z deweloperami aplikacji** pola tekstowego **Wyślij dzienniki** strony.</li></ol>|
 |Co to jest funkcja blokady aplikacji i w jaki sposób pomaga chronić mnie więcej?|Aby zachować bezpieczniejsze jednorazowe kodów dostępu, informacje o aplikacji i ustawień aplikacji, można włączyć funkcję blokady aplikacji w aplikacji Microsoft Authenticator. Włączanie blokady aplikacji z **ustawienia** ekranu aplikacji Microsoft Authenticator oznacza, że użytkownik zostanie zapytany do uwierzytelniania przy użyciu PIN lub biometrycznych, za każdym razem, gdy otworzysz aplikację Microsoft Authenticator. Funkcja ta zapewnia dodatkową ochronę, sposób zatwierdzenie powiadomienia w aplikacji Microsoft Authenticator nie ulegnie zmianie.<br><br>**Uwaga**<br>Po powrocie do aplikacji Microsoft Authenticator, uruchomione na urządzeniu z systemem Android w mniej niż 30 sekund, monit nie uwierzytelnić się ponownie.|
-|Dlaczego otrzymuję powiadomienia o mojej aktywności konta?|Aby zapewnić Ci więcej wiedzieć, co się dzieje z osobistego konta Microsoft, wysyłamy działania powiadomień do aplikacji Microsoft Authenticator. Te powiadomienia są wyświetlane od razu po zmieni się coś, co ułatwia zapewnienie możesz bardziej bezpieczne. Firma Microsoft wcześniej wysyłane te powiadomienia za pośrednictwem poczty e-mail i wiadomości SMS, a teraz zostały rozszerzone, aby uwzględnić w aplikacji. Aby uzyskać więcej informacji na temat tych działań powiadomień zobacz [co się stanie, jeśli występuje nietypowe zachowanie podczas logowania na koncie](https://support.microsoft.com/en-us/help/13967/microsoft-account-unusual-sign-in). Aby zmienić sposób ich otrzymywania powiadomień, zaloguj się do https://account.live.com/SecurityNotifications/Update.|
+|Dlaczego otrzymuję powiadomienia o mojej aktywności konta?|Aby zapewnić Ci więcej wiedzieć, co się dzieje z osobistego konta Microsoft, wysyłamy działania powiadomień do aplikacji Microsoft Authenticator. Te powiadomienia są wyświetlane od razu po zmieni się coś, co ułatwia zapewnienie możesz bardziej bezpieczne. Firma Microsoft wcześniej wysyłane te powiadomienia za pośrednictwem poczty e-mail i wiadomości SMS, a teraz zostały rozszerzone, aby uwzględnić w aplikacji. Aby uzyskać więcej informacji na temat tych działań powiadomień zobacz [co się stanie, jeśli występuje nietypowe zachowanie podczas logowania na koncie](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Aby zmienić sposób ich otrzymywania powiadomień, zaloguj się do https://account.live.com/SecurityNotifications/Update.|
 
 
 ## <a name="next-steps"></a>Kolejne kroki
@@ -58,4 +58,4 @@ Aplikacja Microsoft Authenticator zastępowane aplikacji Azure Authenticator, a 
 
 -   Jeśli chcesz, aby dowiedzieć się więcej o informacje o zabezpieczeniach, zobacz [Zarządzanie swoje informacje zabezpieczające](security-info-manage-settings.md)
 
-- Jeśli Twoje pytanie nie został tutaj odpowiedzi, chcemy poznać Twoją opinię. Przejdź do [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp) Opublikuj swoje pytanie i Uzyskaj pomoc od społeczności, lub pozostaw komentarz na tej stronie.
+- Jeśli Twoje pytanie nie został tutaj odpowiedzi, chcemy poznać Twoją opinię. Przejdź do [forum aplikacji Microsoft Authenticator](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp) Opublikuj swoje pytanie i Uzyskaj pomoc od społeczności, lub pozostaw komentarz na tej stronie.

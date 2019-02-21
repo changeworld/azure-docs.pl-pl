@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244302"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455062"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Tworzenie modeli Studio i punkty końcowe usługi sieci web na podstawie jednego eksperymentu przy użyciu programu PowerShell
 
@@ -25,9 +25,9 @@ Załóżmy na przykład, że jesteś właścicielem firmy udzielają wypożycze�
 
 Można uczenie modelu raz przy użyciu scalonych wersję wszystkich zestawów danych we wszystkich lokalizacjach. Jednak każdy z lokalizacji ma unikatowe środowisko. Dlatego lepszym rozwiązaniem byłoby uczenia modelu regresji osobno dla każdej lokalizacji przy użyciu zestawu danych. W ten sposób każdy uczonego modelu można wziąć pod uwagę rozmiarów różnych magazynu, woluminu, lokalizacji geograficznej, populacji, ruch roweru przyjaznego środowiska i więcej.
 
-Może to być najlepszym rozwiązaniem, ale nie chcesz utworzyć 1000 szkolenia eksperymentów w usłudze Azure Machine Learning za pomocą każdego z nich reprezentuje unikatową lokalizację. Oprócz jest trudne zadanie, wydaje się być także nieefektywne od każdego doświadczenia miałby te same składniki, z wyjątkiem zestaw danych szkoleniowych.
+Może to być najlepszym rozwiązaniem, ale nie chcesz utworzyć 1000 szkolenia eksperymentów w usłudze Azure Machine Learning Studio z każdym z nich reprezentuje unikatową lokalizację. Oprócz jest trudne zadanie, wydaje się być także nieefektywne od każdego doświadczenia miałby te same składniki, z wyjątkiem zestaw danych szkoleniowych.
 
-Na szczęście, można to zrobić za pomocą [usługi Azure Machine Learning w przypadku ponownego trenowania API](retrain-models-programmatically.md) i automatyzacja zadań za pomocą [programu PowerShell usługi Azure Machine Learning](powershell-module.md).
+Na szczęście, można to zrobić za pomocą [ponownego trenowania interfejsu API usługi Azure Machine Learning Studio](retrain-models-programmatically.md) i automatyzacja zadań za pomocą [programu PowerShell usługi Azure Machine Learning Studio](powershell-module.md).
 
 > [!NOTE]
 > Aby wprowadzić swój przykład działają szybciej, Zmniejsz liczbę lokalizacje od 1000 do 10. Jednak te same zasady i procedury dotyczą 1000 lokalizacji. Jednak jeśli chcesz szkolenie z 1000 zestawów danych możesz zechcieć do równoległego uruchamiania następujących skryptów programu PowerShell. Jak to zrobić, wykracza poza zakres tego artykułu, ale możesz odnaleźć przykłady programu PowerShell wielowątkowości w Internecie.  

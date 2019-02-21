@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981761"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447467"
 ---
 # <a name="understand-cost-management-data"></a>Omówienie danych usługi Cost Management
 
@@ -61,6 +61,8 @@ W poniższej tabeli przedstawiono oferty nieobsługiwany.
 | **Plany pomocy technicznej** | Pomoc techniczną Standard platformy Azure dla instytucji rządowych | MS-AZR-USGOV-0041P |
 | **Plany pomocy technicznej** | Pomoc techniczna Pro-Direct platformy Azure dla instytucji rządowych | MS-AZR-USGOV-0042P |
 | **Plany pomocy technicznej** | Pomoc techniczną Developer platformy Azure dla instytucji rządowych | MS-AZR-USGOV-0043P |
+
+W przypadku klientów z kategoriami ofertę płatność za rzeczywiste użycie, MSDN i Visual Studio dane są dostępne w Cost Management, zaczynając od 10 02 2018.
 
 Jeśli nie widzisz danych w ramach subskrypcji i chcesz określić, jeśli Twoja subskrypcja jest objęta obsługiwanych oferty, może sprawdzić, czy Twoja subskrypcja jest obsługiwana. Aby zweryfikować, że subskrypcja platformy Azure jest obsługiwany, zaloguj się do [witryny Azure portal](https://portal.azure.com). Następnie wybierz pozycję **wszystkich usług** w okienku menu po lewej stronie. Na liście usług wybierz **subskrypcje**. W menu listy subskrypcji kliknij subskrypcję, którą chcesz zweryfikować. Twoja subskrypcja jest wyświetlana na karcie Przegląd i będzie widoczny **oferują** i **identyfikatora oferty Offer ID**. Na poniższej ilustracji przedstawiono przykładowy raport.
 

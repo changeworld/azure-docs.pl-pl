@@ -1,5 +1,5 @@
 ---
-title: Ponowne szkolenie i wdrażanie usługi sieci web
+title: Ponowne trenowanie i wdrażanie klasycznej usługi internetowej
 titleSuffix: Azure Machine Learning Studio
 description: Dowiedz się, jak ponowne szkolenie modelu i aktualizowanie klasyczna usługa sieci web do korzystania z nowo uczonego modelu w usłudze Azure Machine Learning Studio.
 services: machine-learning
@@ -10,12 +10,12 @@ author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: e8fd3511eb7b718374bfbc608a35fb84740ed03c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331238"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456558"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Ponowne szkolenie i wdrażania klasycznej usługi sieci web programu Studio
 
@@ -60,7 +60,7 @@ Aby programowo uzyskać poprawny adres URL poprawki, wykonaj następujące kroki
 1. Uruchom [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) przykładowego kodu.
 1. Z danych wyjściowych AddEndpoint znaleźć *HelpLocation* wartości i skopiuj adres URL.
 
-   ![HelpLocation w danych wyjściowych przykładu addEndpoint.][image2]
+   ![HelpLocation w danych wyjściowych przykładu addEndpoint.](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
 1. Wklej adres URL do przeglądarki, aby przejść do strony, który zawiera linki pomocy dla usługi sieci web.
 1. Kliknij przycisk **aktualizacja zasobów** link, aby otworzyć stronę pomocy poprawki.
 
@@ -81,7 +81,7 @@ Wykonaj następujące kroki, aby uzyskać poprawny URL poprawki przy użyciu por
 
 Strona pomocy poprawki zawiera adres URL poprawki, należy użyć i zawiera przykładowy kod, który można użyć w celu wywołania go.
 
-![Adres URL poprawki.][image5]
+![Adres URL poprawki.](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>Zaktualizuj punkt końcowy
 
@@ -149,6 +149,3 @@ Aby dowiedzieć się więcej na temat zarządzania usługami sieci web lub śled
 
 * [Zapoznaj się z portalu usług sieci Web](manage-new-webservice.md)
 * [Zarządzanie iteracjami eksperymentów](manage-experiment-iterations.md)
-
-[image2]: ./media/troubleshooting-retraining-a-model/addEndpoint-output.png
-[image5]: ./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png

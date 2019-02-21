@@ -5,14 +5,14 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 9/25/2018
+ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: 52653252df3efd3e12fa974ed82cd2557eee93d0
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: d751d4898be3fd19f9e6f5d03e9313e9d98e9dd2
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301251"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446099"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Usługa Azure alias DNS rekordów — omówienie
 
@@ -25,40 +25,40 @@ Zestaw rekordów aliasów jest obsługiwana dla następujących typów rekordów
 - CNAME 
 
 > [!NOTE]
-> Rekordów aliasów dla typów rekordów A lub AAAA dla usługi Azure Traffic Manager są obsługiwane tylko dla typów zewnętrznego punktu końcowego. Musisz podać adres IPv4 lub IPv6, zgodnie z potrzebami, w przypadku zewnętrznych punktów końcowych w usłudze Traffic Manager. W idealnym przypadku należy użyć statyczne adresy IP dla adresu.
+> Jeśli zamierzasz użyć rekordu aliasu dla typów rekordów A lub AAAA, aby wskazywał [profilu usługi Azure Traffic Manager](../traffic-manager/quickstart-create-traffic-manager-profile.md) należy się upewnić, że profil usługi Traffic Manager ma tylko [zewnętrzne punkty końcowe](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints). Musisz podać adres IPv4 lub IPv6 dla zewnętrznych punktów końcowych w usłudze Traffic Manager. W idealnym przypadku używania statycznych adresów IP.
 
 ## <a name="capabilities"></a>Możliwości
 
-- **Wskaż publicznego zasobu adresu IP z usługi DNS A/AAAA zestawu rekordów.** Można utworzyć zestawu rekordów A/AAAA i ułatwiają zestawie aliasu rekordu, aby wskazywał publiczny zasób adresu IP.
+- **Wskaż publicznego zasobu adresu IP z usługi DNS A/AAAA zestawu rekordów.** Można utworzyć zestawu rekordów A/AAAA i ułatwiają zestawie aliasu rekordu, aby wskazywał publiczny zasób adresu IP. Zestaw rekordów DNS jest automatycznie, jeśli publiczny adres IP zmieni się lub jest usunięte. Delegujące DNS unika się rekordy, które wskazują na niepoprawne adresy IP.
 
-- **Wskaż profil usługi Traffic Manager z zestawu rekordów DNS A/AAAA/CNAME.** Możesz wskazać CNAME profilu usługi Traffic Manager, z zestawu rekordów CNAME w systemie DNS. Przykładem jest contoso.trafficmanager.net. Teraz możesz też wskazać profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe z rekordu A lub AAAA ustawiana w strefie DNS.
+- **Wskaż profil usługi Traffic Manager z zestawu rekordów DNS A/AAAA/CNAME.** Możesz utworzyć A/AAAA lub rekordu CNAME określić hasło i użyć rekordów aliasów, aby wskazywał profilu usługi Traffic Manager. Może to być szczególnie przydatne, gdy należy kierować ruchem w wierzchołku strefy, jak tradycyjnych rekordy CNAME nie są obsługiwane w wierzchołku strefy. Na przykład załóżmy, że profilu usługi Traffic Manager jest myprofile.trafficmanager.net i strefy DNS firmy to contoso.com. Można utworzyć aliasu rekordu zbiór typu A/AAAA dla domeny contoso.com (wierzchołku strefy) i wskaż myprofile.trafficmanager.net.
 
-   > [!NOTE]
-   > Rekordów aliasów dla typów rekordów A lub AAAA usługi Traffic Manager są obsługiwane tylko dla typów zewnętrznego punktu końcowego. Musisz podać adres IPv4 lub IPv6, zgodnie z potrzebami, w przypadku zewnętrznych punktów końcowych w usłudze Traffic Manager. W idealnym przypadku należy użyć statyczne adresy IP dla adresu.
-   
-- **Wskaż inny zestaw rekordów DNS w ramach tej samej strefie.** Rekordy aliasów mogą odwoływać się do innych zestawów rekordów tego samego typu. Na przykład zestawu rekordów CNAME systemu DNS może być aliasem do innego zestawu rekordów CNAME tego samego typu. To rozwiązanie jest przydatne w przypadku niektórych zestawów rekordów aliasów się i niektórych innych aliasów.
+- **Wskaż inny zestaw rekordów DNS w ramach tej samej strefie.** Rekordy aliasów mogą odwoływać się do innych zestawów rekordów tego samego typu. Na przykład zestawu rekordów CNAME systemu DNS może być aliasem do innego zestawu rekordów CNAME. To rozwiązanie jest przydatne w przypadku niektórych zestawów rekordów aliasów się i niektórych innych aliasów.
 
 ## <a name="scenarios"></a>Scenariusze
+
 Istnieje kilka typowych scenariuszy dla rekordów aliasów.
 
 ### <a name="prevent-dangling-dns-records"></a>Zapobiegaj delegujące rekordów DNS
- W ramach strefy usługi Azure DNS rekordów aliasów może służyć do ściśle śledzenia cyklem życia zasobów platformy Azure. Zasoby obejmują publiczny adres IP lub w profilu usługi Traffic Manager. Powszechny problem z tradycyjnych rekordy DNS jest delegujące rekordów. Ten problem występuje, szczególnie w przypadku A/AAAA lub CNAME typy rekordów. 
 
-Przy użyciu tradycyjnych rekordu strefy DNS jeśli docelowy adres IP lub CNAME już nie istnieje, rekord DNS w strefie nie może ustalić go. W rezultacie rekord muszą być aktualizowane ręcznie. W niektórych organizacjach to ręcznej aktualizacji nie może się zdarzyć w czasie. Również może być problematyczne ze względu na separacji ról i poziomów uprawnień skojarzonych.
+Powszechny problem z tradycyjnych rekordy DNS jest delegujące rekordów. Na przykład rekordy DNS, które nie zostały zaktualizowane w celu odzwierciedlenia zmian do adresów IP. Ten problem występuje, szczególnie w przypadku A/AAAA lub CNAME typy rekordów.
 
-Na przykład rola może mieć uprawnienia do usuwania rekordu CNAME lub adres IP należy do aplikacji. Ale nie ma wystarczających uprawnień do zaktualizowania rekordu DNS, który wskazuje na tych celów. Opóźnienie czasowe odbywa się między, gdy adres IP lub CNAME zostanie usunięty i rekord DNS, który wskazuje na jej zostanie usunięte. To opóźnienie godziny powodować przestoju dla użytkowników.
+Przy użyciu tradycyjnych rekordu strefy DNS jeśli docelowy adres IP lub CNAME już nie istnieje, rekord DNS skojarzone z nią należy je ręcznie zaktualizować. W niektórych organizacjach ręcznej aktualizacji nie może się zdarzyć w czasie z powodu problemów z procesem lub z powodu separacji ról i poziomów uprawnień skojarzonych. Na przykład rola może mieć uprawnienia do usuwania rekordu CNAME lub adres IP należy do aplikacji. Ale nie ma wystarczających uprawnień do zaktualizowania rekordu DNS, który wskazuje na tych celów. Opóźnienie podczas aktualizowania rekordów DNS może powodować przestoju dla użytkowników.
 
-Rekordów aliasów Usuń złożoność skojarzonych z tym scenariuszem. Pomagają zapobiegać delegujące odwołania. Weźmy na przykład rekord DNS, który zakwalifikował jako rekord aliasu, aby wskazywał publiczny adres IP lub w profilu usługi Traffic Manager. Usunięcie tych podstawowych zasobów rekord aliasu DNS zostanie usunięty w tym samym czasie. Ten proces pozwala się upewnić, że użytkownicy nigdy nie będzie występować ulegnie awarii.
+Rekordów aliasów uniemożliwić delegujące przez sprzęganiu cyklu życia rekord DNS przy użyciu zasobów platformy Azure. Rozważmy na przykład rekord DNS, który zakwalifikował jako rekord aliasu, aby wskazywał publiczny adres IP lub w profilu usługi Traffic Manager. Usunięcie tych podstawowych zasobów rekord aliasu DNS zostanie usunięty w tym samym czasie.
 
-### <a name="update-dns-zones-automatically-when-application-ips-change"></a>Automatyczne aktualizowanie strefy DNS, gdy zmienią się aplikacji adresy IP
+### <a name="update-dns-record-set-automatically-when-application-ip-addresses-change"></a>Automatyczna aktualizacja DNS record-set w przypadku zmian adresów IP aplikacji
 
-Ten scenariusz jest podobny do poprzedniego. Być może aplikacja zostanie przeniesiona lub ponownym uruchomieniu maszyny wirtualnej stanowiącej podstawę. Rekord aliasu następnie automatycznie aktualizuje zmiany adresu IP podstawowego publicznego zasobu adresu IP. Umożliwia to uniknięcie potencjalnych zagrożeń bezpieczeństwa kierowanie użytkowników do innej aplikacji, która ma stary adres IP.
+Ten scenariusz jest podobny do poprzedniego. Być może aplikacja zostanie przeniesiona lub ponownym uruchomieniu maszyny wirtualnej stanowiącej podstawę. Rekord aliasu następnie automatycznie aktualizuje zmiany adresu IP podstawowego publicznego zasobu adresu IP. Umożliwia to uniknięcie potencjalnych zagrożeń bezpieczeństwa kierowanie użytkowników do innej aplikacji, która ma przypisane stare publiczny adres IP.
 
 ### <a name="host-load-balanced-applications-at-the-zone-apex"></a>Hostowanie aplikacji ze zrównoważonym obciążeniem w wierzchołku strefy
 
-Protokół DNS zapobiega przypisanie coś innego niż rekord A lub AAAA w wierzchołku strefy. Przykładowa domena to contoso.com. Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równoważenia obciążenia aplikacji za zaporą usługi Traffic Manager. Nie jest możliwe wskazywała na profil usługi Traffic Manager z rekordu wierzchołku strefy. W wyniku właścicieli aplikacji należy użyć, aby uzyskać obejście tego problemu. Przekierowanie w warstwie aplikacji musi przekierowywać domenę w wierzchołku strefy do innej domeny. Przykładem jest przekierowanie z contoso.com www.contoso.com. To rozwiązanie przedstawia informacje o pojedynczym punktem awarii dla funkcji przekierowania.
+Protokół DNS uniemożliwia przypisania rekordów CNAME w wierzchołku strefy. Na przykład jeśli Twoja domena to contoso.com; można utworzyć rekordy CNAME dla somelable.contoso.com; ale nie można utworzyć rekordu CNAME dla domeny contoso.com, sam.
+Ograniczenie to stanowi problem dla właścicieli aplikacji, mających równoważenia obciążenia aplikacji za zaporą [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Ponieważ za pomocą profilu usługi Traffic Manager wymaga utworzenia rekordu CNAME, nie jest możliwe wskazywała na profil usługi Traffic Manager w wierzchołku strefy.
 
-Przy użyciu rekordów aliasów ten problem już nie istnieje. Teraz właścicieli aplikacji można wskazać ich rekordów w wierzchołku strefy profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe. Właściciele aplikacji może wskazywać tego samego profilu usługi Traffic Manager, używanego do innej domeny w swojej strefie DNS. Na przykład contoso.com i www.contoso.com może wskazywać tego samego profilu usługi Traffic Manager. Jest to możliwe tak długo, jak profil usługi Traffic Manager ma tylko zewnętrzne punkty końcowe skonfigurowane.
+Ten problem można rozwiązać przy użyciu rekordów aliasów. W przeciwieństwie do rekordów CNAME można utworzyć aliasu rekordów w wierzchołku strefy i właścicieli aplikacji może użyć go do profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe wskazują ich rekordów w wierzchołku strefy. Właściciele aplikacji może wskazywać tego samego profilu usługi Traffic Manager, używanego do innej domeny w swojej strefie DNS.
+
+Na przykład contoso.com i www.contoso.com może wskazywać tego samego profilu usługi Traffic Manager. Aby dowiedzieć się więcej o korzystaniu z rekordów aliasów z profilami usługi Azure Traffic Manager, zobacz sekcji Następne kroki.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 71990244db859a61885968a502d9849a36d81dce
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425178"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454263"
 ---
 # <a name="web-application-firewall-waf"></a>Zapora aplikacji internetowej
 
@@ -51,11 +51,11 @@ Poniżej przedstawiono główne korzyści wynikające ze stosowania usługi Appl
 
 ## <a name="features"></a>Funkcje
 
-- Ochrona iniekcji SQL
+- SQL injection protection
 - Obejmujące wiele lokacji skryptów ochrony
 - Typowe sieci Web przed atakami ochronę polegającą na polegające na iniekcji poleceń, przemycaniu odpowiedzi HTTP, rozdzielaniu żądań HTTP i ataku dołączenie pliku zdalnego
 - Ochrona przed naruszeniami protokołu HTTP
-- Ochrona przed anomalie protokołu HTTP, takich jak brakujące hosta agenta użytkownika ani nagłówków accept
+- Protection against HTTP protocol anomalies such as missing host user-agent and accept headers
 - Zapobieganie atakom robotów, przeszukiwarek i skanerów
 - Wykrywanie typowych błędów konfiguracji aplikacji (na przykład Apache, usługi IIS i tak dalej)
 
@@ -78,11 +78,11 @@ Usługa Application Gateway obsługuje dwa zestawy reguł: CRS 3.0 i CRS 2.2.9. 
 
 Zapora aplikacji internetowej jest domyślnie wstępnie skonfigurowana przy użyciu zestawu CRS 3.0, ale możesz używać wersji 2.2.9. Zestaw CRS 3.0 oferuje mniejszą liczbę wyników fałszywie dodatnich niż wersja 2.2.9. Umożliwiono [dostosowywanie reguł do określonych wymagań](application-gateway-customize-waf-rules-portal.md). Oto niektóre typowe luki w zabezpieczeniach w Internecie, przed którymi chroni zapora aplikacji internetowej:
 
-- Ochrona iniekcji SQL
+- SQL injection protection
 - Obejmujące wiele lokacji skryptów ochrony
 - Typowe sieci Web przed atakami ochronę polegającą na polegające na iniekcji poleceń, przemycaniu odpowiedzi HTTP, rozdzielaniu żądań HTTP i ataku dołączenie pliku zdalnego
 - Ochrona przed naruszeniami protokołu HTTP
-- Ochrona przed anomalie protokołu HTTP, takich jak brakujące hosta agenta użytkownika ani nagłówków accept
+- Protection against HTTP protocol anomalies such as missing host user-agent and accept headers
 - Zapobieganie atakom robotów, przeszukiwarek i skanerów
 - Wykrywanie typowych błędów konfiguracji aplikacji (na przykład Apache, usługi IIS, itp.)
 
@@ -133,7 +133,7 @@ Zapora aplikacji sieci Web bramy aplikacji może zostać skonfigurowana pod kąt
 
 ### <a name="application-gateway-waf-reports"></a>Monitorowanie zapory aplikacji sieci Web
 
-Monitorowanie kondycji bramy Application Gateway jest ważne. Monitorowanie kondycji zapory aplikacji internetowej i chronionych przez nią aplikacji jest możliwe dzięki rejestrowaniu i integracji z usługami Azure Monitor, Azure Security Center oraz Log Analytics.
+Monitorowanie kondycji bramy Application Gateway jest ważne. Monitorowanie kondycji sieci Web zapory aplikacji i aplikacji, które chroni są dostarczane Dzięki rejestrowaniu i integracji z usługą Azure Monitor, Azure Security Center, i dzienniki usługi Azure Monitor.
 
 ![Diagnostyka](./media/waf-overview/diagnostics.png)
 
@@ -149,7 +149,7 @@ Usługa [Azure Security Center](../security-center/security-center-intro.md) uł
 
 #### <a name="logging"></a>Rejestrowanie
 
-Zapora aplikacji sieci Web w usłudze Application Gateway dostarcza szczegółowe raporty w zakresie każdego wykrytego zagrożenia. Rejestrowanie jest zintegrowane z dziennikami diagnostycznymi platformy Azure, a alerty są zapisywane w formacie json. Te dzienniki można zintegrować z usługą [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md).
+Zapora aplikacji sieci Web w usłudze Application Gateway dostarcza szczegółowe raporty w zakresie każdego wykrytego zagrożenia. Rejestrowanie jest zintegrowane z dziennikami diagnostycznymi platformy Azure, a alerty są zapisywane w formacie json. Te dzienniki można zintegrować z [dzienniki usługi Azure Monitor](../azure-monitor/insights/azure-networking-analytics.md).
 
 ![imageURLroute](./media/waf-overview/waf2.png)
 

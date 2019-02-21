@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dbb94e0dbcb1dccf8ecbc60bca47b2cc3533297c
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429744"
+ms.locfileid: "56447427"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -303,8 +303,6 @@ Jeśli używasz grup zabezpieczeń sieci, muszą zezwalać na ruch z usługi kon
 3. Należy także zezwolić na dostęp z __168.63.129.16__. Ten adres jest Azure cyklicznego programu rozpoznawania nazw. Aby uzyskać więcej informacji, zobacz [rozpoznawanie nazw dla maszyn wirtualnych i ról wystąpień](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) dokumentu.
 
 Aby uzyskać więcej informacji, zobacz [kontrolowanie ruchu sieciowego](#networktraffic) sekcji.
-
-W przypadku wychodzących reguł sieciowej grupy zabezpieczeń zezwalają na ruch z dowolnego źródła w sieci Wirtualnej, aby osiągnąć powyższe adresy jako "Adresy Desitnation IP".
 
 Jeśli używasz routes(UDRs) zdefiniowanych przez użytkownika, możesz określić trasę i zezwolić na ruch wychodzący z sieci Wirtualnej do powyższych adresów IP z następnego przeskoku jest ustawiona na "Internet".
     

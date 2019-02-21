@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: 0bb7c047f6bd03a45aa6c5c6d07b8022ee59bec9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/20/2019
+ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217190"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453141"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Użyj uwierzytelniania usługi Azure Active Directory do uwierzytelniania przy użyciu języka SQL
 
@@ -101,16 +101,16 @@ Aby utworzyć użytkownika zawartej bazy danych w usłudze Azure SQL Database, w
 
 ### <a name="manage-instances"></a>Zarządzanie wystąpieniami
 
-- Usługi Azure AD, logowania i użytkowników, które są obsługiwane jako funkcja w wersji zapoznawczej dla [wystąpienia zarządzane przez usługę](sql-database-managed-instance.md).
-- Ustawienia logowania do usługi Azure AD mapowane na grupę usługi Azure AD, jako właściciel bazy danych nie jest obsługiwana w [wystąpienia zarządzane przez usługę](sql-database-managed-instance.md).
+- Jednostki serwera w usłudze Azure AD (logowania) i użytkowników, które są obsługiwane jako funkcja w wersji zapoznawczej dla [wystąpienia zarządzane przez usługę](sql-database-managed-instance.md).
+- Ustawienie podmiotów zabezpieczeń serwera usługi Azure AD (logowania) mapowane na grupę usługi Azure AD, jako właściciel bazy danych nie jest obsługiwana w [wystąpienia zarządzane przez usługę](sql-database-managed-instance.md).
     - Rozszerzenie tego jest fakt, że grupa jest dodawana jako część `dbcreator` roli serwera, użytkownicy z tej grupy mogą nawiązać połączenie z wystąpieniem zarządzanym i tworzyć nowe bazy danych, ale nie będzie dostępu do bazy danych. Jest to, ponieważ nowy właściciel bazy danych jest SA, a nie użytkownika usługi Azure AD. Ten problem nie manifestu, jeśli indywidualnego użytkownika jest dodawany do `dbcreator` roli serwera.
-- Wykonywanie zadań i zarządzania agenta SQL jest obsługiwane dla logowania do usługi Azure AD.
-- Baza danych kopii zapasowej i przywracanie operacji może być wykonywane przez logowania do usługi Azure AD.
-- Inspekcja wszystkie instrukcje dotyczące logowania do usługi Azure AD i zdarzeń uwierzytelniania jest obsługiwane.
-- Dedykowane połączenie administratora do logowania do usługi Azure AD, które są członkami roli serwera sysadmin jest obsługiwane.
+- Wykonywanie zadań i zarządzania agenta SQL jest obsługiwana dla podmiotów zabezpieczeń serwera usługi Azure AD (logowania).
+- Baza danych kopii zapasowej i przywracanie operacji może być wykonywane przez podmioty serwera usługi Azure AD (logowania).
+- Funkcja inspekcji wszystkich instrukcji odnoszących się do podmiotów zabezpieczeń serwera usługi Azure AD (logowania) i zdarzenia uwierzytelniania jest obsługiwana.
+- Dedykowane połączenie administratora dla jednostek serwera usługi Azure AD (logowania), które są członkami roli serwera sysadmin jest obsługiwane.
     - Obsługiwane za pomocą narzędzia SQLCMD i SQL Server Management Studio.
-- Wyzwalacze logowania są obsługiwane w przypadku zdarzeń logowania pochodzące z logowania do usługi Azure AD.
-- Wiadomości e-mail programu Service Broker i bazą danych może być instalacji przy użyciu identyfikatora logowania usługi Azure AD.
+- Wyzwalacze logowania są obsługiwane w przypadku zdarzeń logowania pochodzące z podmiotów zabezpieczeń serwera usługi Azure AD (logowania).
+- Wiadomości e-mail programu Service Broker i bazą danych może być instalację za pomocą usługi Azure AD podmiot zabezpieczeń serwera (identyfikator logowania).
 
 
 ## <a name="connecting-using-azure-ad-identities"></a>Łączenie za pomocą tożsamości usługi Azure AD
@@ -121,7 +121,7 @@ Uwierzytelnianie usługi Azure Active Directory obsługuje następujące metody 
 - Za pomocą nazwy głównej usługi Azure AD i hasła
 - Przy użyciu tokenu uwierzytelniania aplikacji
 
-Następujące metody uwierzytelniania są obsługiwane w przypadku logowania do usługi Azure AD (**publicznej wersji zapoznawczej**):
+Następujące metody uwierzytelniania są obsługiwane w przypadku podmiotów zabezpieczeń serwera usługi Azure AD (logowania) (**publicznej wersji zapoznawczej**):
 
 - Azure Active Directory Password
 - Usługa Azure Active Directory — zintegrowana
@@ -133,7 +133,7 @@ Następujące metody uwierzytelniania są obsługiwane w przypadku logowania do 
 
 - Aby zwiększyć możliwości zarządzania, zaleca się aprowizowanie dedykowane usłudze Azure AD grupy jako administrator.   
 - Tylko jeden administrator usługi Azure AD (użytkownika lub grupy) można skonfigurować dla serwera Azure SQL Database lub Azure SQL Data Warehouse w dowolnym momencie.
-  - Dodawanie logowania do usługi Azure AD dla wystąpienia zarządzanego (**publicznej wersji zapoznawczej**) umożliwia możliwość tworzenia wielu logowania do usługi Azure AD, które mogą być dodawane do `sysadmin` roli.
+  - Dodanie jednostek serwera usługi Azure AD (logowania) dla wystąpienia zarządzanego (**publicznej wersji zapoznawczej**) umożliwia możliwość tworzenia wielu usługi Azure AD serwera podmiotów zabezpieczeń (logowania), które mogą być dodawane do `sysadmin` roli.
 - Tylko administrator usługi Azure AD dla programu SQL Server początkowo można połączyć się serwerem Azure SQL Database, wystąpienia zarządzanego lub Azure SQL Data Warehouse przy użyciu konta usługi Azure Active Directory. Administrator usługi Active Directory można skonfigurować kolejne usługi Azure AD bazy danych użytkowników.   
 - Firma Microsoft zaleca ustawienie limitu czasu połączenia do 30 sekund.   
 - SQL Server 2016 Management Studio i SQL Server Data Tools dla programu Visual Studio 2015 (wersja 14.0.60311.1April 2016 lub nowszej) obsługuje uwierzytelnianie usługi Azure Active Directory. (Uwierzytelnianie usługi azure AD jest obsługiwany przez **.NET Framework Data Provider Pro SqlServer**; co najmniej wersji .NET Framework 4.6). W związku z tym najnowszych wersji tych narzędzi i aplikacji warstwy danych (DAC i. BACPAC) można użyć uwierzytelniania usługi Azure AD.   
@@ -147,12 +147,12 @@ Następujące metody uwierzytelniania są obsługiwane w przypadku logowania do 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby dowiedzieć się, jak utworzyć i wypełnić usługi Azure AD, a następnie skonfiguruj usługę Azure AD za pomocą usługi Azure SQL Database lub Azure SQL Data Warehouse, zobacz [Konfigurowanie i zarządzanie uwierzytelnianiem usługi Azure Active Directory za pomocą bazy danych SQL Database, wystąpienia zarządzanego lub SQL Data Warehouse ](sql-database-aad-authentication-configure.md).
-- Aby zapoznać się z samouczkiem logowania do usługi Azure AD przy użyciu wystąpienia zarządzane przez usługę, zobacz [logowania usługi Azure AD za pomocą wystąpienia zarządzanego](sql-database-managed-instance-aad-security-tutorial.md)
+- Samouczek korzystania z jednostek serwera usługi Azure AD (logowania) w połączeniu z wystąpienia zarządzane przez usługę, zobacz [podmiotów serwera usługi Azure AD (logowania) za pomocą wystąpienia zarządzanego](sql-database-managed-instance-aad-security-tutorial.md)
 - Dostęp i kontrola w usłudze SQL Database zostały omówione w temacie [Kontrola dostępu w usłudze SQL Database](sql-database-control-access.md).
 - Dane logowania, użytkownicy i role bazy danych w usłudze SQL Database zostały omówione w temacie [Logins, users, and database roles](sql-database-manage-logins.md) (Dane logowania, użytkownicy i role bazy danych).
 - Aby uzyskać więcej informacji na temat podmiotów zabezpieczeń bazy danych, zobacz [Principals](https://msdn.microsoft.com/library/ms181127.aspx) (Podmioty zabezpieczeń).
 - Aby uzyskać więcej informacji na temat ról bazy danych, zobacz [Database roles](https://msdn.microsoft.com/library/ms189121.aspx) (Role bazy danych).
-- Uzyskać składnię tworzenia danych logowania usługi Azure AD dla wystąpień zarządzanych, zobacz [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+- Dla składni na temat tworzenia podmiotów zabezpieczeń serwera (logowania) dla wystąpienia zarządzanego usługi Azure AD, zobacz [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 - Aby uzyskać więcej informacji na temat reguł zapory w usłudze SQL Database, zobacz [Omówienie reguł zapory usługi SQL Database](sql-database-firewall-configure.md).
 
 <!--Image references-->

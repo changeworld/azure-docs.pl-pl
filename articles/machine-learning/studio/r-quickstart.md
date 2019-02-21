@@ -10,21 +10,21 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/06/2017
-ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: d4e267915338e8043138be0ca1a4922ac84d8eab
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822378"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456269"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Samouczek szybkiego startu dotyczący języka programowania R dla usługi Azure Machine Learning Studio
 
 <!-- Stephen F Elston, Ph.D. -->
 
 ## <a name="introduction"></a>Wprowadzenie
-Ten samouczek szybkiego startu pomaga szybko rozpocząć rozszerzanie usługi Azure Machine Learning przy użyciu języka programowania R. Postępuj zgodnie z tym samouczkiem programowania R, aby tworzenie, testowanie i wykonywanie kodu języka R w usłudze Azure Machine Learning. Podczas pracy z samouczkiem utworzysz to kompletne rozwiązanie do prognozowania przy użyciu języka R w usłudze Azure Machine Learning.  
+Ten samouczek szybkiego startu pomaga szybko rozpocząć rozszerzanie usługi Azure Machine Learning Studio, używając języka programowania R. Postępuj zgodnie z tego samouczka programowania R do tworzenia, testowania i wykonywanie kodu języka R w programie Studio. Podczas pracy z samouczkiem utworzysz to kompletne rozwiązanie do prognozowania przy użyciu języka R Studio.  
 
-Microsoft Azure Machine Learning zawiera wiele zaawansowanych machine learning i modułów manipulowania danymi. Zaawansowany język R został opisany jako franca język analizy. Trafem korzysta manipulowania analizy i danych w usłudze Azure Machine Learning można rozszerzyć za pomocą języka R. Ta kombinacja zapewnia skalowalność i łatwość wdrażania usługi Azure Machine Learning z elastyczności i szczegółowe analizy języka r.
+Microsoft Azure Machine Learning Studio zawiera wiele zaawansowanych machine learning i modułów manipulowania danymi. Zaawansowany język R został opisany jako franca język analizy. Trafem korzysta manipulowania analizy i danych w programie Studio można rozszerzyć za pomocą języka R. Ta kombinacja zapewnia skalowalność i łatwość wdrażania Studio elastyczność i szczegółowe analizy języka r.
 
 
 
@@ -38,23 +38,23 @@ W tym przewodniku Szybki Start Zapoznamy się praca z produkcji mleka Kalifornia
 Dane używane w tym artykule, wraz ze skryptów języka R mogą być [pobrana w tym miejscu](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/blob/master/studio-samples/cadairydata.csv). Te dane pierwotnie został przekształcony z informacji dostępnych w uniwersytecie Wisconsin na https://dairymarkets.com.
 
 ### <a name="organization"></a>Organizacja
-Firma Microsoft przyszłego postępu przez kilka kroków, jak omówiono sposób tworzenia, testowania i wykonanie kodu manipulowania R analizy i danych w środowisku usługi Azure Machine Learning.  
+Firma Microsoft przyszłego postępu przez kilka kroków, jak omówiono sposób tworzenia, testowania i wykonanie kodu manipulowania R analizy i danych w środowisku usługi Azure Machine Learning Studio.  
 
 * Najpierw przeanalizujemy podstawy używania języka R w środowisku usługi Azure Machine Learning Studio.
-* Następnie będziemy omawianie różnych aspektów operacji We/Wy danych, kod R i grafiki w środowisku usługi Azure Machine Learning.
+* Następnie będziemy omawianie różnych aspektów operacji We/Wy danych, kod R i grafiki w środowisku usługi Azure Machine Learning Studio.
 * Firma Microsoft będzie konstruowania pierwsza część naszego rozwiązania do prognozowania, tworząc kod czyszczenia i transformacji danych.
 * Z naszych danych przygotowane firma Microsoft będzie wykonywać analizę korelacji między kilka zmiennych w zestawie danych.
 * Na koniec utworzymy model prognozowania szeregów czasowych sezonowych do produkcji mleka.
 
 ## <a id="mlstudio"></a>Interakcja z językiem R w usłudze Machine Learning Studio
-Ta sekcja przeprowadzi Cię przez pewne podstawowe informacje o interakcji z językiem programowania R w środowisku usługi Machine Learning Studio. Język R zapewnia zaawansowane narzędzia do tworzenia dostosowanych analizy i modułów manipulowania danych w środowisku usługi Azure Machine Learning.
+Ta sekcja przeprowadzi Cię przez pewne podstawowe informacje o interakcji z językiem programowania R w środowisku usługi Machine Learning Studio. Język R zapewnia zaawansowane narzędzia do tworzenia dostosowanych analizy i modułów manipulowania danych w środowisku usługi Azure Machine Learning Studio.
 
 Będę używać programu RStudio opracowywanie, testowanie i debugowanie kodu języka R na małą skalę. Ten kod jest następnie Wytnij i Wklej w [wykonanie skryptu języka R] [ execute-r-script] modułu w usłudze Machine Learning Studio gotowe do uruchomienia.  
 
 ### <a name="the-execute-r-script-module"></a>Moduł wykonywania skryptu języka R
 W usłudze Machine Learning Studio, skryptów języka R są uruchamiane w ramach [wykonanie skryptu języka R] [ execute-r-script] modułu. Przykładem [wykonanie skryptu języka R] [ execute-r-script] modułu w usłudze Machine Learning Studio jest pokazany na rysunku 1.
 
- ![Język programowania R: Moduł wykonywania skryptu języka R, wybranego w usłudze Machine Learning Studio][1]
+ ![Język programowania R: Moduł wykonywania skryptu języka R, wybranego w usłudze Machine Learning Studio](./media/r-quickstart/fig1.png)
 
 *Rysunek 1. Środowiska usługi Machine Learning Studio przedstawiający wybrano modułu wykonywania skryptu języka R.*
 
@@ -66,20 +66,20 @@ Odwołujące się na rysunku 1, Spójrzmy na niektóre z kluczowych części w �
 
 Firma Microsoft będzie oczywiście, w niniejszym dokumencie [wykonanie skryptu języka R] [ execute-r-script] bardziej szczegółowo w dalszej części tego dokumentu.
 
-Podczas pracy z złożone funkcje języka R, zalecamy edytowanie, testowanie i debugowanie w programu RStudio. Podobnie jak w przypadku dowolnego Wytwarzanie oprogramowania, stopniowo rozszerzyć swój kod i je przetestować na małych proste przypadki testowe. Następnie wycinanie i wklejanie do okna skryptu języka R [wykonanie skryptu języka R] [ execute-r-script] modułu. To podejście pozwala wykorzystać możliwości usługi Azure Machine Learning i programu RStudio zintegrowanego środowiska programistycznego (IDE).  
+Podczas pracy z złożone funkcje języka R, zalecamy edytowanie, testowanie i debugowanie w programu RStudio. Podobnie jak w przypadku dowolnego Wytwarzanie oprogramowania, stopniowo rozszerzyć swój kod i je przetestować na małych proste przypadki testowe. Następnie wycinanie i wklejanie do okna skryptu języka R [wykonanie skryptu języka R] [ execute-r-script] modułu. To podejście pozwala wykorzystać możliwości usługi Azure Machine Learning Studio i programu RStudio zintegrowanego środowiska programistycznego (IDE).  
 
 #### <a name="execute-r-code"></a>Wykonanie kodu języka R
 Każdy kod R [wykonanie skryptu języka R] [ execute-r-script] moduł zostanie wykonana po uruchomieniu eksperymentu, klikając **Uruchom** przycisku. Po zakończeniu wykonywania znacznik wyboru pojawi się na [wykonanie skryptu języka R] [ execute-r-script] ikony.
 
 #### <a name="defensive-r-coding-for-azure-machine-learning"></a>Obrony R kodowania dla usługi Azure Machine Learning
-Jeśli tworzysz kod R na przykład usługi sieci web za pomocą usługi Azure Machine Learning, należy zdecydowanie zaplanować, jak Twój kod zajmuje się nieoczekiwane dane wejściowe i wyjątków. Aby zachować przejrzystość, I nie została uwzględniona znacznie utrudnień sprawdzania lub obsługi wyjątków w Większość przykładów kodu. Jednak ponieważ będziemy kontynuować I zapewni Ci kilka przykładów funkcji przy użyciu możliwości obsługi wyjątków, R.  
+Jeśli tworzysz kod R na przykład usługi sieci web za pomocą usługi Azure Machine Learning Studio, należy zdecydowanie zaplanować, jak Twój kod zajmuje się nieoczekiwane dane wejściowe i wyjątków. Aby zachować przejrzystość, I nie została uwzględniona znacznie utrudnień sprawdzania lub obsługi wyjątków w Większość przykładów kodu. Jednak ponieważ będziemy kontynuować I zapewni Ci kilka przykładów funkcji przy użyciu możliwości obsługi wyjątków, R.  
 
 Jeśli potrzebujesz bardziej szczegółowy traktowania Obsługa wyjątków języka R, zalecam, przeczytanie odpowiednich części książka autorstwa Wickham na liście [dodatek B — dalsze informacje](#appendixb).
 
 #### <a name="debug-and-test-r-in-machine-learning-studio"></a>Debugowanie i testowanie języka R w usłudze Machine Learning Studio
 Aby przypomnę zalecam, testowanie i debugowanie kodu języka R na małą skalę w programu RStudio. Jednakże istnieją przypadki, w którym konieczne będzie można wykrywać problemy kodu języka R w [wykonanie skryptu języka R] [ execute-r-script] sam. Ponadto jest dobrą praktyką, aby sprawdzić wyniki w usłudze Machine Learning Studio.
 
-Dane wyjściowe wykonywania kodu języka R i na platformie Azure Machine Learning znajduje się głównie w dane_wyjściowe.log. Dodatkowe informacje będą widoczne w error.log.  
+Dane wyjściowe wykonywania kodu języka R i na platformie Azure Machine Learning Studio znajduje się głównie w dane_wyjściowe.log. Dodatkowe informacje będą widoczne w error.log.  
 
 W usłudze Machine Learning Studio wystąpi błąd podczas uruchamiania kodu języka R, powinno być Przyjrzyj się error.log pierwszego przebiegu działań. Ten plik może zawierać komunikaty o błędach przydatne, aby pomóc Ci zrozumieć i poprawić błędu. Aby wyświetlić error.log, kliknij **błędu w dzienniku** na **w okienku właściwości** dla [wykonanie skryptu języka R] [ execute-r-script] zawierające błąd.
 
@@ -90,7 +90,7 @@ Na przykład został uruchomiony poniższy kod języka R z Niezdefiniowana zmien
 
 Ten kod wykonanie nie powiedzie się, co spowoduje wystąpienie błędu. Kliknięcie **błędu w dzienniku** na **w okienku właściwości** generuje wyświetlaną pokazano na rysunku 2.
 
-  ![Komunikat o błędzie wyskakujące okienko][2]
+  ![Komunikat o błędzie wyskakujące okienko](./media/r-quickstart/fig2.png)
 
 *Rysunek 2. Komunikat o błędzie wyskakujących.*
 
@@ -109,12 +109,12 @@ Ten komunikat o błędzie zawiera żadnych niespodzianek i wyraźnie określa pr
 Aby sprawdzić wartość dowolnego obiektu w języku R, można wydrukować te wartości do pliku dane_wyjściowe.log. Badanie wartości obiektu zasady są zasadniczo takie same jak interaktywnych sesji języka R. Na przykład jeśli wpiszesz nazwę zmiennej w wierszu do pliku dane_wyjściowe.log będą wypisywane wartość obiektu.  
 
 #### <a name="packages-in-machine-learning-studio"></a>Pakiety w usłudze Machine Learning Studio
-Usługa Azure Machine Learning jest dostarczany z ponad 350 pakietów języka R wstępnie zainstalowane. Można użyć następującego kodu w [wykonanie skryptu języka R] [ execute-r-script] modułu, aby pobrać listę wstępnie zainstalowane pakiety.
+Studio jest dostarczany z ponad 350 pakietów języka R wstępnie zainstalowane. Można użyć następującego kodu w [wykonanie skryptu języka R] [ execute-r-script] modułu, aby pobrać listę wstępnie zainstalowane pakiety.
 
     data.set <- data.frame(installed.packages())
     maml.mapOutputPort("data.set")
 
-Jeśli w tej chwili nie rozumiesz ostatni wiersz kodu, Czytaj dalej. W pozostałej części tego dokumentu często omówimy przy użyciu języka R w środowisku usługi Azure Machine Learning.
+Jeśli w tej chwili nie rozumiesz ostatni wiersz kodu, Czytaj dalej. W pozostałej części tego dokumentu często omówimy przy użyciu języka R w środowisku Studio.
 
 ### <a name="introduction-to-rstudio"></a>Wprowadzenie do programu RStudio
 RStudio to powszechnie używane środowisko IDE dla języka R. Będę używać programu RStudio edytowanie, testowanie i debugowanie część kodu języka R używanych w tym przewodniku Szybki Start. Gdy kod R jest przetestowany i przygotowany, można po prostu wycinania i wklejania w edytorze programu RStudio do Machine Learning Studio [wykonanie skryptu języka R] [ execute-r-script] modułu.  
@@ -157,14 +157,14 @@ Teraz, gdy niektóre dane w usłudze Machine Learning Studio, musimy utworzyć e
 
 W tym momencie eksperymentu powinien wyglądać jak rysunek 3.
 
-![Analiza Dairy urzędu certyfikacji eksperymentować z zestawu danych i modułu wykonywania skryptu języka R][3]
+![Analiza Dairy urzędu certyfikacji eksperymentować z zestawu danych i modułu wykonywania skryptu języka R](./media/r-quickstart/fig3.png)
 
 *Rysunek 3. Analiza Dairy urzędu certyfikacji eksperymentować z zestawu danych i modułu wykonywania skryptu języka R.*
 
 #### <a name="check-on-the-data"></a>Sprawdzanie danych
 Przyjrzyjmy się przyjrzeć się dane, które możemy zostały załadowane do naszych eksperymentu. Eksperyment, kliknij pozycję dane wyjściowe **cadairydata.csv dataset** i wybierz **wizualizować**. Powinien zostać wyświetlony podobny rysunek 4.  
 
-![Podsumowanie cadairydata.csv zestawu danych][4]
+![Podsumowanie cadairydata.csv zestawu danych](./media/r-quickstart/fig4.png)
 
 *Rysunek 4. Podsumowanie cadairydata.csv zestawu danych.*
 
@@ -200,7 +200,7 @@ Pakiet skryptu wejściowych umożliwia przekazywanie zawartości pliku zip do [w
     load("src/yourData.rdata") # Reads a zipped R data file
 
 > [!NOTE]
-> Usługa Azure Machine Learning traktuje pliki w pliku zip, tak, jakby znajdują się w src / katalog, więc należy jako prefiks nazwy pliku o tej nazwie katalogu. Na przykład, jeśli plik zip zawiera pliki `yourfile.R` i `yourData.rdata` w katalogu głównym pliku zip, czy ich jako rozwiązywania `src/yourfile.R` i `src/yourData.rdata` przy użyciu `source` i `load`.
+> Usługa Azure Machine Learning Studio traktuje pliki w pliku zip, tak, jakby znajdują się w src / katalog, więc należy jako prefiks nazwy pliku o tej nazwie katalogu. Na przykład, jeśli plik zip zawiera pliki `yourfile.R` i `yourData.rdata` w katalogu głównym pliku zip, czy ich jako rozwiązywania `src/yourfile.R` i `src/yourData.rdata` przy użyciu `source` i `load`.
 > 
 > 
 
@@ -227,7 +227,7 @@ Omówiliśmy już zestawów podczas ładowania danych w [podczas ładowania zest
 
 Po zakończeniu tych kroków [wykonanie skryptu języka R] [ execute-r-script] moduł powoduje uruchomienie skryptu języka R w pliku zip, po uruchomieniu eksperymentu. W tym momencie eksperyment powinien wyglądać jak rysunek 5.
 
-![Eksperymentu przy użyciu plików z rozszerzeniem zip skrypt języka R][6]
+![Eksperymentu przy użyciu plików z rozszerzeniem zip skrypt języka R](./media/r-quickstart/fig6.png)
 
 *Rysunek 5. Eksperymentu przy użyciu skryptu języka R zip.*
 
@@ -289,7 +289,7 @@ Można wyprowadzić zawartość ramki danych języka R jako tabelę prostokątny
 
 Po uruchomieniu eksperymentu, kliknij port wyjściowy Dataset1 wyników, a następnie kliknij polecenie **Visualize**. Powinien zostać wyświetlony podobny rysunek 6.
 
-![Wizualizacja danych wyjściowych danych mleka Kalifornia][7]
+![Wizualizacja danych wyjściowych danych mleka Kalifornia](./media/r-quickstart/fig7.png)
 
 *Rysunek 6. Wizualizacja danych wyjściowych danych mleka Kalifornia.*
 
@@ -300,13 +300,13 @@ Dane wyjściowe urządzenia [wykonanie skryptu języka R] [ execute-r-script] mo
 
 Aby wyświetlić dane wyjściowe urządzenia języka R, kliknij port a następnie na **Visualize**. Widzimy wyjście standardowe i błąd standardowy w skrypcie języka R na rysunku 7.
 
-![Wyjście standardowe i błąd standardowy z portu urządzenia R][8]
+![Wyjście standardowe i błąd standardowy z portu urządzenia R](./media/r-quickstart/fig8.png)
 
 *Rysunek 7. Wyjście standardowe i błąd standardowy z portu urządzenia R.*
 
 Przewijając w dół możemy wyświetlić dane wyjściowe grafiki z naszego skryptu języka R na rysunku 8.  
 
-![Graficzne dane wyjściowe port urządzenia R][9]
+![Graficzne dane wyjściowe port urządzenia R](./media/r-quickstart/fig9.png)
 
 *Rysunek 8. Graficzne dane wyjściowe z portu urządzenia R.*  
 
@@ -689,7 +689,7 @@ Przyjrzyjmy się zmiennych w tym zestawie danych. Wykres punktowy macierzy jest 
 
 Uruchom ten kod i zobacz, co się dzieje. Wykres przedstawiony na port urządzenia R powinien wyglądać jak rysunek 16.
 
-![Wykres punktowy macierz wybrane zmienne][17]
+![Wykres punktowy macierz wybrane zmienne](./media/r-quickstart/fig17.png)
 
 *Rysunek 16. Wykres punktowy macierzy wybranych zmiennych.*
 
@@ -753,7 +753,7 @@ Raz `ts.detrend()` zdefiniowano możemy zastosować do zmiennych zainteresowanie
 
 Ostatni wiersz kodu tworzy parowania wykres punktowy. Po uruchomieniu kodu języka R, wyniki wykres punktowy są wyświetlane w rysunek 17.
 
-![Pairwise wykres punktowy z szeregu czasowego cofnąć trend i standardowy][18]
+![Pairwise wykres punktowy z szeregu czasowego cofnąć trend i standardowy](./media/r-quickstart/fig18.png)
 
 *Ilustracja 17. Pairwise wykres punktowy z szeregu czasowego cofnąć trend i standardowy.*
 
@@ -856,7 +856,7 @@ Poniższy kod wyodrębnia wartości lag z listy KKS obiektów, które są także
 
 
     ## WARNING!
-    ## The following line works only in Azure Machine Learning
+    ## The following line works only in Azure Machine Learning Studio
     ## When running in RStudio, this code will result in an error
     #maml.mapOutputPort('outframe')
 
@@ -870,7 +870,7 @@ Należy pamiętać, że wiersz nazwy znajdują się w kolumnie ramki danych. Ten
 
 Uruchamiając kod generuje dane wyjściowe, pokazano na rysunku 19 po I **Visualize** dane wyjściowe w porcie wynik zestawu danych. W pierwszej kolumnie są nazwy wierszy, zgodnie z oczekiwaniami.
 
-![Dane wyjściowe wyniki analizy korelacji][20]
+![Dane wyjściowe wyniki analizy korelacji](./media/r-quickstart/fig20.png)
 
 *Ilustracja 19. Dane wyjściowe z analizy korelacji wyników.*
 
@@ -884,7 +884,7 @@ Kompletny kod R dla tej sekcji znajduje się w pliku zip, który został wcześn
 ### <a name="creating-the-dataframe-for-analysis"></a>Tworzenie elementów dataframe na potrzeby analizy
 Rozpocznij od dodania **nowe** [wykonanie skryptu języka R] [ execute-r-script] modułu do eksperymentu. Połącz **zestaw wyników danych** istniejące dane wyjściowe [wykonanie skryptu języka R] [ execute-r-script] moduł **Dataset1** wprowadzania nowego modułu. Wynik powinien wyglądać jak rysunek 20.
 
-![Doświadczenia z modułem wykonanie skryptu języka R dodane][21]
+![Doświadczenia z modułem wykonanie skryptu języka R dodane](./media/r-quickstart/fig21.png)
 
 *Ilustracja 20. Doświadczenia z modułem wykonanie skryptu języka R dodane.*
 
@@ -954,7 +954,7 @@ Uruchamiając kod tworzy serię serii, które z danych wyjściowych urządzenia 
 ### <a name="a-trend-model"></a>Wzór trendu
 Jeśli utworzono obiekt serii czasu i miała przyjrzeć się danym, Zacznijmy do konstruowania wzór trendu danych produkcji mleka Kalifornia. Możemy to zrobić za pomocą regresji serii czasu. To jasne z wykresu, który firma Microsoft potrzebujesz więcej niż wartość zerowa i przechwytywać dokładniej modelować obserwowanych trendów w danych szkoleniowych.
 
-Biorąc pod uwagę małą skalę, danych, czy będzie Budowanie modelu potrzeby trend RStudio i następnie wyciąć i wkleić modelu wynikowego do usługi Azure Machine Learning. Program RStudio zapewnia interaktywne środowisko dla tego typu tworzenia interaktywnych analiz.
+Biorąc pod uwagę małą skalę, danych, czy będzie Budowanie modelu potrzeby trend RStudio i następnie wyciąć i wkleić modelu wynikowego do usługi Azure Machine Learning Studio. Program RStudio zapewnia interaktywne środowisko dla tego typu tworzenia interaktywnych analiz.
 
 Jako pierwsza próba próbuję wielomianowej regresji przy użyciu uprawnień nie więcej niż 3. Istnieje zagrożenie rzeczywistych nadmiernie dopasowanie tych rodzajów modeli. W związku z tym najlepiej uniknąć warunków najwyższego rzędu. `I()` Funkcja powstrzymuje interpretacji zawartości (interpretuje zawartość "as is") i umożliwia pisanie funkcji interpretowany dosłownie w równaniu regresji.
 
@@ -1014,7 +1014,7 @@ Spowoduje to wygenerowanie poniżej.
 
 To wygląda lepiej. Wszystkie warunki są znaczące. Jednak wartość 2e 16 jest wartość domyślna, a nie powinny być uwzględniane w zbyt poważnie.  
 
-Jako test poprawnością stwórzmy kreślenia serii czasu danych produkcji mleka Kalifornia z krzywej trend pokazano. Po dodaniu następujący kod w usłudze Azure Machine Learning [wykonanie skryptu języka R] [ execute-r-script] modelu (nie RStudio), utworzyć model i wykres. Wynik jest wyświetlany w ilustracja 23.
+Jako test poprawnością stwórzmy kreślenia serii czasu danych produkcji mleka Kalifornia z krzywej trend pokazano. Po dodaniu następujący kod w usłudze Azure Machine Learning Studio [wykonanie skryptu języka R] [ execute-r-script] modelu (nie RStudio), utworzyć model i wykres. Wynik jest wyświetlany w ilustracja 23.
 
     milk.lm <- lm(Milk.Prod ~ Time + I(Month.Count^3), data = cadairytrain)
 
@@ -1071,14 +1071,14 @@ Spowoduje to wygenerowanie poniżej.
 
 Widzimy, że model nie jest już ma termin intercept i ma 12 miesiąca istotne czynniki. Jest to dokładnie, co chcemy wyświetlić.
 
-Upewnijmy się innym kreślenia serii czasu danych produkcji mleka Kalifornia aby zobaczyć, jak dobrze działa sezonowych modelu. Po dodaniu następujący kod w usłudze Azure Machine Learning [wykonanie skryptu języka R] [ execute-r-script] utworzyć model i wykres.
+Upewnijmy się innym kreślenia serii czasu danych produkcji mleka Kalifornia aby zobaczyć, jak dobrze działa sezonowych modelu. Po dodaniu następujący kod w usłudze Azure Machine Learning Studio [wykonanie skryptu języka R] [ execute-r-script] utworzyć model i wykres.
 
     milk.lm2 <- lm(Milk.Prod ~ Time + I(Month.Count^3) + Month - 1, data = cadairytrain)
 
     plot(cadairytrain$Time, cadairytrain$Milk.Prod, xlab = "Time", ylab = "Log CA Milk Production 1000s lb", type = "l")
     lines(cadairytrain$Time, predict(milk.lm2, cadairytrain), lty = 2, col = 2)
 
-Uruchomienie tego kodu w usłudze Azure Machine Learning tworzy wykres pokazano na rysunku 24.
+Uruchomienie tego kodu w usłudze Azure Machine Learning Studio tworzy wykres pokazano na rysunku 24.
 
 ![Kalifornia produkcji mleka przy użyciu modelu, w tym sezonowych wpływ](./media/r-quickstart/unnamed-chunk-20.png)
 
@@ -1198,7 +1198,7 @@ Teraz wyposażony w funkcję do pomiaru błąd usługi RMS, twórz i danych wyj�
 
 Uruchomienie tego kodu tworzy wyświetlanego w rysunek 27 na port wyjściowy zestawu danych w wyniku.
 
-![Porównanie błędów usługi RMS dla modeli][26]
+![Porównanie błędów usługi RMS dla modeli](./media/r-quickstart/fig26.png)
 
 *Ilustracja 27. Porównanie błędów usługi RMS dla modeli.*
 
@@ -1246,31 +1246,6 @@ Kilka przydatnych zasobów Internetu:
 * Szybki samouczek języka R, Kelly Black Clarkson University http://www.cyclismo.org/tutorial/R/
 * Ponad 60 zasobów R opisane w temacie http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html
 
-<!--Image references-->
-[1]: ./media/r-quickstart/fig1.png
-[2]: ./media/r-quickstart/fig2.png
-[3]: ./media/r-quickstart/fig3.png
-[4]: ./media/r-quickstart/fig4.png
-[5]: ./media/r-quickstart/fig5.png
-[6]: ./media/r-quickstart/fig6.png
-[7]: ./media/r-quickstart/fig7.png
-[8]: ./media/r-quickstart/fig8.png
-[9]: ./media/r-quickstart/fig9.png
-[10]: ./media/r-quickstart/fig10.png
-[11]: ./media/r-quickstart/fig11.png
-[12]: ./media/r-quickstart/fig12.png
-[13]: ./media/r-quickstart/fig13.png
-[14]: ./media/r-quickstart/fig14.png
-[15]: ./media/r-quickstart/fig15.png
-[16]: ./media/r-quickstart/fig16.png
-[17]: ./media/r-quickstart/fig17.png
-[18]: ./media/r-quickstart/fig18.png
-[19]: ./media/r-quickstart/fig19.png
-[20]: ./media/r-quickstart/fig20.png
-[21]: ./media/r-quickstart/fig21.png
-[22]: ./media/r-quickstart/fig22.png
-
-[26]: ./media/r-quickstart/fig26.png
 
 <!--links-->
 [appendixa]: #appendixa

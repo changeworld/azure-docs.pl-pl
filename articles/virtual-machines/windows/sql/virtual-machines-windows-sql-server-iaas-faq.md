@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: v-shysun
-ms.openlocfilehash: 53c22222682e2a017f55cbd5af89671edb3eddaf
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 46d51e787a388f0963788c6419a2d9e3af89bc4f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767343"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456660"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Często zadawane pytania dotyczące programu SQL Server uruchomionego na maszynach wirtualnych Windows Azure
 
@@ -88,6 +88,9 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
    Tak. Można łatwo przenosić przenoszenia między dwoma modelami licencji, jeśli pierwotnie uruchomiona z obrazem galerii zgodnie z rzeczywistym użyciem. Jednak nie można przełączyć licencji zgodnie z rzeczywistym użyciem, jeśli początkowo wprowadzenie obrazów BYOL. Aby uzyskać więcej informacji, zobacz [jak zmienić modelu licencjonowania dla maszyny Wirtualnej programu SQL Server](virtual-machines-windows-sql-ahb.md).
 
+   > [!Note]
+   > Obecnie tej funkcji jest dostępna tylko dla klientów w chmurze publicznej.
+
 1. **Do utworzenia nowej maszyny Wirtualnej SQL należy używać obrazów BYOL lub punktu odzyskiwania maszyny Wirtualnej SQL?**
 
    Bring-your-own-license (BYOL) obrazów są dostępne tylko dla klientów z umową EA. Inni klienci posiadający pakiet Software Assurance Użyj dostawcy zasobów maszyny Wirtualnej SQL do tworzenia maszyny Wirtualnej SQL przy użyciu [korzyść użycia hybrydowego platformy Azure (AHB)](https://azure.microsoft.com/pricing/licensing-faq/). 
@@ -142,11 +145,11 @@ Ten artykuł zawiera odpowiedzi na niektóre często zadawane pytania na temat u
 
 1. **Jak uaktualnić do nowej wersji/wydania programu SQL Server w Maszynie wirtualnej platformy Azure?**
 
-   Obecnie nie ma żadnych uaktualnienia w miejscu programu SQL Server uruchomionego na Maszynie wirtualnej platformy Azure. Utwórz nową maszynę wirtualną platformy Azure przy użyciu wersji/wydania żądanego programu SQL Server, a następnie Migruj bazy danych na nowy serwer przy użyciu standardu [technik migracji danych](virtual-machines-windows-migrate-sql.md).
+   obecnie nie są dostępne żadne uaktualnienia w miejscu dla programu SQL Server uruchomionego na maszynie wirtualnej platformy Azure. Utwórz nową maszynę wirtualną platformy Azure przy użyciu wersji/wydania żądanego programu SQL Server, a następnie Migruj bazy danych na nowy serwer przy użyciu standardu [technik migracji danych](virtual-machines-windows-migrate-sql.md).
 
 1. **Sposób aktualizacji i dodatków service pack stosowania na maszynę Wirtualną programu SQL Server?**
 
-   Maszyny wirtualne zapewniają kontrolę nad maszyną hosta, w tym, kiedy i jak należy zastosować aktualizacje. Dla systemu operacyjnego możesz ręcznie zastosować aktualizacje systemu windows, można również włączyć usługę harmonogramu o nazwie [automatyczne stosowanie poprawek](virtual-machines-windows-sql-automated-patching.md). Usługa Automatyczne stosowanie poprawek instaluje wszelkie aktualizacje, które są oznaczone jako ważne, w tym aktualizacje programu SQL Server w tej kategorii. Inne, opcjonalne aktualizacje dla programu SQL Server należy zainstalować ręcznie.
+   maszyny wirtualne zapewniają kontrolę nad maszyną hosta, w tym nad czasem i sposobem stosowania aktualizacji. Dla systemu operacyjnego możesz ręcznie zastosować aktualizacje systemu windows, można również włączyć usługę harmonogramu o nazwie [automatyczne stosowanie poprawek](virtual-machines-windows-sql-automated-patching.md). Usługa Automatyczne stosowanie poprawek instaluje wszelkie aktualizacje, które są oznaczone jako ważne, w tym aktualizacje programu SQL Server w tej kategorii. Inne, opcjonalne aktualizacje dla programu SQL Server należy zainstalować ręcznie.
 
 ## <a name="general"></a>Ogólne
 

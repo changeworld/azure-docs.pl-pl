@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 82bfdfd7481b47c08f76d077585f85763e58b87b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 0d771f03f9f71151ef25140148d4dd4daf3d46ec
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331221"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443344"
 ---
 **Wychodzące transfery danych**: [Wychodzące transfery danych](https://azure.microsoft.com/pricing/details/bandwidth/) (dane wychodzące z centrów danych platformy Azure) Naliczanie opłat za zużycie przepustowości.
 
@@ -25,8 +25,8 @@ Nie ma żadnych kosztów transakcji dla dysku zarządzanego w warstwie premium.
 
 Aby uzyskać szczegółowe informacje na temat cen dla dysków Managed Disks, zobacz [cennika usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks).
 
-### <a name="ultra-disks-vm-reservation-fee"></a>Opłata za rezerwacji maszyny Wirtualnej Ultra dysków
+### <a name="ultra-ssd-vm-reservation-fee"></a>Największa opłata rezerwacji maszyny Wirtualnej z dysków SSD
 
-Maszyny wirtualne platformy Azure ma możliwość wskazania, jeśli są one zgodne z dyskami ultra. Największa dysku zgodnej maszyny Wirtualnej przydziela dedykowaną pojemność przepustowości między wystąpieniem maszyny Wirtualnej obliczeniowe i jednostki skali magazynu bloku, aby zoptymalizować wydajność i zmniejszyć opóźnienie. Dodanie tej funkcji na wynikach maszyn wirtualnych w Twoich rękach rezerwacji, która nakłada się tylko włączenie możliwości ultra dysku na maszynie Wirtualnej bez podłączania ultra dysku do niego. Gdy ultra dysk jest podłączony do ultra dysku zgodnej maszyny Wirtualnej, ta opłata nie zostanie zastosowana. Ta opłata jest na procesor wirtualny vCPU, którego obsługę zainicjowano na maszynie Wirtualnej.
+Maszyny wirtualne platformy Azure mają możliwość do wskazania, jeśli są one zgodne z ultra dysków SSD. Największa dysku zgodnej maszyny Wirtualnej przydziela dedykowaną pojemność przepustowości między wystąpieniem maszyny Wirtualnej obliczeniowe i jednostki skali magazynu bloku, aby zoptymalizować wydajność i zmniejszyć opóźnienie. Dodanie tej funkcji na wynikach maszyn wirtualnych w Twoich rękach rezerwacji, która nakłada się tylko włączenie możliwości ultra dysku na maszynie Wirtualnej bez podłączania ultra dysku do niego. Gdy ultra dysk jest podłączony do ultra dysku zgodnej maszyny Wirtualnej, ta opłata nie zostanie zastosowana. Ta opłata jest na procesor wirtualny vCPU, którego obsługę zainicjowano na maszynie Wirtualnej.
 
 Zapoznaj się [Azure Disks stronę z cennikiem](https://azure.microsoft.com/pricing/details/managed-disks/) ultra dysku w szczegóły cennika dysków.

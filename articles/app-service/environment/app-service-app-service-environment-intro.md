@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 205e61634a902ef052f665c65f2b67a66e6fe598
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 2bb1a9c3922f435b6be78614aacff6e85bf475ff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728231"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454246"
 ---
 # <a name="introduction-to-app-service-environment-v1"></a>Wprowadzenie do aplikacji App Service Environment w wersji 1
 
 > [!NOTE]
 > Ten artykuł dotyczy środowiska App Service Environment w wersji 1.  Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
-> 
 
 ## <a name="overview"></a>Przegląd
+
 Środowisko usługi App Service jest [Premium] [ PremiumTier] opcji planu usługi [usługi Azure App Service](../overview.md) zapewniający pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania Aplikacje platformy Azure App Service w dużej skali, w tym aplikacji Web Apps, Mobile Apps oraz API Apps.  
 
 App Service Environment to idealne rozwiązanie w przypadku obciążeń aplikacji wymagających:
@@ -46,16 +46,17 @@ Aby uzyskać szczegółowe na temat skalowania w poziomie, za pomocą wielu śro
 
 Aby dowiedzieć się, jak skonfigurowano architekturę zabezpieczeń przedstawioną w tym filmie AzureCon Deep Dive, zobacz artykuł we wdrażaniu [warstwie architekturę zabezpieczeń](app-service-app-service-environment-layered-security.md) przy użyciu środowisk usługi App Service.
 
-Aplikacje działające w środowiskach usługi App Service może mieć dostęp uzyskiwany przez nadrzędne urządzenia, takich jak zapory aplikacji sieci web (WAF).  Artykuł dotyczący [Konfigurowanie zapory aplikacji sieci Web dla środowiska usługi App Service](app-service-app-service-environment-web-application-firewall.md) opisano w tym scenariuszu. 
+Aplikacje działające w środowiskach usługi App Service może mieć dostęp uzyskiwany przez nadrzędne urządzenia, takich jak zapory aplikacji sieci web (WAF).  Artykuł dotyczący [Konfigurowanie zapory aplikacji sieci Web dla środowiska usługi App Service](app-service-app-service-environment-web-application-firewall.md) opisano w tym scenariuszu.
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="dedicated-compute-resources"></a>Zasoby obliczeniowe dedykowane
+
 Wszystkie zasoby obliczeniowe w środowisku usługi App Service są przeznaczone wyłącznie dla jednej subskrypcji, a środowisko App Service Environment można skonfigurować maksymalnie 50 (50) zasobów obliczeniowych do wyłącznego użytku przez jedną aplikację.
 
-Środowisko usługi App Service składa się z puli zasobów obliczeniowych frontonu, jak również pule zasobów obliczeniowych procesów roboczych jednego do trzech. 
+Środowisko usługi App Service składa się z puli zasobów obliczeniowych frontonu, jak również pule zasobów obliczeniowych procesów roboczych jednego do trzech.
 
-Pula frontonu zawiera zasoby obliczeniowe są odpowiedzialne za kończenia żądań SSL, jak również automatyczne równoważenie obciążenia żądań aplikacji w środowisku usługi App Service. 
+Pula frontonu zawiera zasoby obliczeniowe są odpowiedzialne za kończenia żądań SSL, jak również automatyczne równoważenie obciążenia żądań aplikacji w środowisku usługi App Service.
 
 Każdej puli procesów roboczych zawiera zasoby obliczeniowe przydzielone do [planów usługi App Service][AppServicePlan], który z kolei zawiera co najmniej jedną aplikację usługi Azure App Service.  Ponieważ w środowisku usługi App Service może być maksymalnie trzy pule innego procesu roboczego, masz swobodę wyboru różnych zasobów obliczeniowych dla każdej puli procesów roboczych.  
 
@@ -66,6 +67,7 @@ Aby uzyskać szczegółowe informacje na temat ilości zasobów obliczeniowych d
 Aby uzyskać więcej informacji na temat rozmiarów zasobów obliczeniowych dostępnych obsługiwane w środowisku usługi App Service, należy się zapoznać [App Service — ceny] [ AppServicePricing] strony, a następnie przejrzyj opcje dostępne dla środowisk usługi App Service w Warstwy cenowej Premium.
 
 ## <a name="virtual-network-support"></a>Obsługa sieci wirtualnej
+
 Środowisko usługi App Service mogą być tworzone w **albo** z siecią wirtualną usługi Azure Resource Manager **lub** sieć wirtualną modelu wdrażania klasycznego ([więcej informacji o sieciach wirtualnych] [MoreInfoOnVirtualNetworks]).  Ponieważ środowisko App Service zawsze istnieje w sieci wirtualnej, a dokładniej w podsieci sieci wirtualnej, mogą korzystać z funkcji zabezpieczeń sieci wirtualnych do sterowania zarówno dla ruchu przychodzącego i wychodzącą komunikacją sieciową.  
 
 Środowisko usługi App Service może być albo połączenie z Internetem za pomocą publicznego adresu IP lub wewnętrznym, połączonego z przy użyciu adresu wewnętrznego modułu równoważenia obciążenia (ILB) platformy Azure.
@@ -77,6 +79,7 @@ Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich 
 Aby uzyskać więcej informacji na temat środowisk usługi App Service z sieciami wirtualnymi i sieciami lokalnymi konsultować się następujące artykuły w [architektury sieci][NetworkArchitectureOverview], [kontrolowanie ruchu przychodzącego Ruch][ControllingInboundTraffic], i [bezpieczne połączenie z Zapleczami][SecurelyConnectingToBackends]. 
 
 ## <a name="getting-started"></a>Wprowadzenie
+
 Aby rozpocząć pracę przy użyciu środowisk usługi App Service, zobacz [jak do utworzyć środowisko App Service Environment][HowToCreateAnAppServiceEnvironment]
 
 Aby uzyskać omówienie architektury sieci środowiska App Service Environment, zobacz [omówienie architektury sieci] [ NetworkArchitectureOverview] artykułu.
@@ -104,5 +107,3 @@ Szczegółowe informacje na temat używania środowiska usługi App Service przy
 [AppServicePricing]: https://azure.microsoft.com/pricing/details/app-service/ 
 
 <!-- IMAGES -->
-
-

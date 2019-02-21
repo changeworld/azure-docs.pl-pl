@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: e780a78bb2cc341ef6b2f682cd51fedad3f08494
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56310859"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446668"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Usługa Azure Backup — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Backup.
@@ -39,7 +39,8 @@ Nie. Nie można przenieść dane kopii zapasowej, przechowywane w magazynie w in
 Nie. Magazyn usługi Recovery Services można zmienić tylko opcje magazynu, zanim wszystkie kopie zapasowe są przechowywane.
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Dla maszyn wirtualnych z kopii zapasowej w magazynie usługi Recovery Services mogą zrobić elementu poziom przywracania (ILR)?
-Nie, ILR nie jest obsługiwane.
+- ILR jest obsługiwana dla maszyn wirtualnych platformy Azure, kopie zapasowe wykonywane kopii zapasowych maszyn wirtualnych platformy Azure. Aby uzyskać więcej informacji, zobacz [artykułu](backup-azure-restore-files-from-vm.md)
+- ILR nie jest obsługiwane dla punktów odzyskiwania online maszyn wirtualnych w środowisku lokalnym, wspierana przez usługę Azure backup Server lub programu System Center DPM.
 
 
 ## <a name="azure-backup-agent"></a>Agent usługi Azure Backup
@@ -90,7 +91,6 @@ Tak.
 - Możesz utworzyć kopię zapasową maszyn wirtualnych platformy Azure raz dziennie.
 
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Jakie systemy operacyjne są obsługiwane dla kopii zapasowej?
-
 Usługa Azure Backup obsługuje następujące systemy operacyjne do wykonywania kopii zapasowych plików i folderów oraz aplikacji chronionych przez usługi Azure Backup Server i programu DPM.
 
 **OS**| **SKU** |**Szczegóły**
@@ -139,7 +139,7 @@ Stan systemu/BMR |Każda pojedyncza kopia BMR lub stanu systemu komputera, w kt�
 Nie ma żadnego limitu ilości danych, które można utworzyć kopię zapasową przy użyciu magazynu usługi Recovery Services.
 
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Dlaczego rozmiar danych przesyłanych do magazynu usługi Recovery Services mniejszy niż wybranych do utworzenia kopii zapasowej danych?
- Dane kopii zapasowej z agenta usługi Azure Backup, program DPM, a serwer usługi Azure Backup jest kompresowane i szyfrowane przed przesłaniem. Dzięki kompresji i szyfrowania jest stosowany, dane w magazynie jest 30 – 40% mniejsze.
+Dane kopii zapasowej z agenta usługi Azure Backup, program DPM, a serwer usługi Azure Backup jest kompresowane i szyfrowane przed przesłaniem. Dzięki kompresji i szyfrowania jest stosowany, dane w magazynie jest 30 – 40% mniejsze.
 
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>Czy mogę usunąć pojedyncze pliki z punktu odzyskiwania w magazynie
 Nie, usługa Azure Backup nie obsługuje usuwania lub czyszczenia poszczególne elementy z kopii zapasowych przechowywanych.

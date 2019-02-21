@@ -10,19 +10,19 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0940cb9e42588990e2109d02fda462f343443876
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997009"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456082"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretacja wyników modelu w usłudze Azure Machine Learning Studio
 W tym temacie wyjaśniono, jak wizualizować i interpretacji wyników przewidywań w usłudze Azure Machine Learning Studio. Po uczony model i gotowe prognozy na nim ("oceniane modelu"), musisz zrozumieć i zinterpretować wyniki prognozy.
 
 
 
-Istnieją cztery główne rodzaje modele uczenia maszynowego w usłudze Azure Machine Learning:
+Istnieją cztery główne rodzaje modele uczenia maszynowego w usłudze Azure Machine Learning Studio:
 
 * Klasyfikacja
 * Klastrowanie
@@ -35,11 +35,11 @@ Moduły używane w celu prognozowania na podstawie tych modeli są:
 * [Przypisz do klastrów] [ assign-to-clusters] modułu dla klastra
 * [Ocena polecania Matchbox] [ score-matchbox-recommender] systemów rekomendacji
 
-W tym dokumencie opisano sposób interpretacji wyników przewidywań dla każdego z tych modułów. Aby uzyskać omówienie tych modułów, zobacz [wybór parametrów w celu optymalizacji algorytmów w usłudze Azure Machine Learning](algorithm-parameters-optimize.md).
+W tym dokumencie opisano sposób interpretacji wyników przewidywań dla każdego z tych modułów. Aby uzyskać omówienie tych modułów, zobacz [wybór parametrów w celu optymalizacji algorytmów w usłudze Azure Machine Learning Studio](algorithm-parameters-optimize.md).
 
-Ten temat dotyczy interpretacji prognoz, ale nie oceny modelu. Aby uzyskać więcej informacji na temat oceny modelu, zobacz [Ocenianie wydajności modelu w usłudze Azure Machine Learning](evaluate-model-performance.md).
+Ten temat dotyczy interpretacji prognoz, ale nie oceny modelu. Aby uzyskać więcej informacji na temat oceny modelu, zobacz [Ocenianie wydajności modelu w usłudze Azure Machine Learning Studio](evaluate-model-performance.md).
 
-Jeśli jesteś nowym użytkownikiem usługi Azure Machine Learning i potrzebujesz pomocy, obejmujący tworzenie prostego eksperymentu, aby rozpocząć pracę, zobacz [Tworzenie prostego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md) w usłudze Azure Machine Learning Studio.
+Jeśli jesteś nowym użytkownikiem usługi Azure Machine Learning Studio i potrzebujesz pomocy, obejmujący tworzenie prostego eksperymentu, aby rozpocząć pracę, zobacz [Tworzenie prostego eksperymentu w usłudze Azure Machine Learning Studio](create-experiment.md) w usłudze Azure Machine Learning Studio.
 
 ## <a name="classification"></a>Klasyfikacja
 Istnieją dwie podkategorie klasyfikacji problemów:
@@ -47,12 +47,12 @@ Istnieją dwie podkategorie klasyfikacji problemów:
 * Problemy z tylko dwoma klasami (Klasyfikacja dwuklasowych lub binarny)
 * Problemy z więcej niż dwóch klas (wieloklasowej klasyfikacji)
 
-Usługa Azure Machine Learning ma różnych modułów, aby poradzić sobie z każdą z tych typów klasyfikacji, ale metody do interpretacji ich wyniki prognozy są podobne.
+Usługa Azure Machine Learning Studio ma różnych modułów, aby poradzić sobie z każdą z tych typów klasyfikacji, ale metody do interpretacji ich wyniki prognozy są podobne.
 
 ### <a name="two-class-classification"></a>Klasyfikacja dwuklasowych
 **Przykładowy eksperyment**
 
-Przykładem problem klasyfikacji dwuklasowych jest klasyfikacji irysów kwiatów. Zadanie jest do klasyfikowania irysów kwiatów na podstawie ich funkcji. Zestaw danych irysów w usłudze Azure Machine Learning jest podzbiorem popularnej [zestawu danych Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) zawierającą wystąpienia tylko dwa kwiaty gatunków (klasy 0 i 1). Istnieją cztery funkcje dla każdego zbioru (długość słupka, szerokość słupka, płatka długość i szerokość płatka).
+Przykładem problem klasyfikacji dwuklasowych jest klasyfikacji irysów kwiatów. Zadanie jest do klasyfikowania irysów kwiatów na podstawie ich funkcji. Zestaw danych irysów w usłudze Azure Machine Learning Studio jest podzbiorem popularnej [zestawu danych Iris](http://en.wikipedia.org/wiki/Iris_flower_data_set) zawierającą wystąpienia tylko dwa kwiaty gatunków (klasy 0 i 1). Istnieją cztery funkcje dla każdego zbioru (długość słupka, szerokość słupka, płatka długość i szerokość płatka).
 
 ![Zrzut ekranu przedstawiający iris eksperymentu](./media/interpret-model-results/1.png)
 
@@ -226,7 +226,7 @@ Systemów polecania można użyć problem zalecenie restauracji, na przykład: z
 * Dane funkcji odbiorcy
 * Dane funkcji restauracji
 
-Kilka rzeczy, które można wykonać [polecania Matchbox Train] [ train-matchbox-recommender] modułu w usłudze Azure Machine Learning:
+Kilka rzeczy, które można wykonać [polecania Matchbox Train] [ train-matchbox-recommender] modułu w usłudze Azure Machine Learning Studio:
 
 * Przewidywanie klasyfikację dla danego użytkownika i elementów
 * Zaleca się elementy do danego użytkownika
@@ -237,7 +237,7 @@ Można wybrać, co chcesz zrobić, wybierając z czterech opcji dostępnych w **
 
 ![Matchbox polecania](./media/interpret-model-results/19_1.png)
 
-Typowe eksperymentu usługi Azure Machine Learning systemu polecania wygląda jak rysunek 20. Aby uzyskać informacje o sposobie używania moduły polecania systemu, zobacz [polecania matchbox Train] [ train-matchbox-recommender] i [polecania matchbox wynik] [ score-matchbox-recommender].
+Typowe eksperymentu usługi Azure Machine Learning Studio dla systemu polecania wygląda jak rysunek 20. Aby uzyskać informacje o sposobie używania moduły polecania systemu, zobacz [polecania matchbox Train] [ train-matchbox-recommender] i [polecania matchbox wynik] [ score-matchbox-recommender].
 
 ![Polecania system eksperymentu](./media/interpret-model-results/20.png)
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9dc6407a222adb06f4139d9973c168911e0faca8
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 1c65ea47f7dd091ea326d9300a8ef09208a03951
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429676"
+ms.locfileid: "56447790"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -215,7 +215,9 @@ Wynikiem warunku jest czy **pola** lub **wartość** akcesor spełnia określone
 - `"like": "value"`
 - `"notLike": "value"`
 - `"match": "value"`
+- `"matchInsensitively": "value"`
 - `"notMatch": "value"`
+- `"notMatchInsensitively": "value"`
 - `"contains": "value"`
 - `"notContains": "value"`
 - `"in": ["value1","value2"]`
@@ -227,7 +229,8 @@ Wynikiem warunku jest czy **pola** lub **wartość** akcesor spełnia określone
 Korzystając z **takich jak** i **notLike** warunki, należy podać symbol wieloznaczny `*` wartości.
 Wartość nie powinna zawierać więcej niż jeden symbol wieloznaczny `*`.
 
-Korzystając z **dopasowania** i **notMatch** warunki `#` do dopasowania cyfrę, `?` literę `.` spełnić wszystkie znaki i innych znaków, aby dopasować rzeczywiste znaku. Aby uzyskać przykłady, zobacz [Zezwalaj na kilka wzorców nazwy](../samples/allow-multiple-name-patterns.md).
+Korzystając z **dopasowania** i **notMatch** warunki `#` do dopasowania cyfrę, `?` literę `.` spełnić wszystkie znaki i innych znaków, aby dopasować rzeczywiste znaku.
+**odpowiada** i **notMatch** jest rozróżniana wielkość liter. Bez uwzględniania wielkości liter alternatywy są dostępne w **matchInsensitively** i **notMatchInsensitively**. Aby uzyskać przykłady, zobacz [Zezwalaj na kilka wzorców nazwy](../samples/allow-multiple-name-patterns.md).
 
 ### <a name="fields"></a>Pola
 

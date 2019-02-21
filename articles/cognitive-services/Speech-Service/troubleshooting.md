@@ -1,7 +1,7 @@
 ---
 title: Rozwiązywanie problemów z mowy SDK — usługi mowy
 titleSuffix: Azure Cognitive Services
-description: Ten artykuł zawiera informacje, aby pomóc w rozwiązywaniu problemów, które można napotkać, korzystając z zestawu SDK usługi mowy.
+description: Ten artykuł zawiera informacje ułatwiają rozwiązywanie problemów, które można napotkać podczas używania zestawu SDK rozpoznawania mowy.
 services: cognitive-services
 author: wolfma61
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: dbcdfd117a39939491914ebddb717f404e07f09c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a3741cb351b11b8cfd7c5d38713bb71232cf010e
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859321"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446532"
 ---
-# <a name="troubleshoot-the-speech-service-sdk"></a>Rozwiązywanie problemów z zestawu SDK usługi mowy
+# <a name="troubleshoot-the-speech-sdk"></a>Rozwiązywanie problemów z zestawem Speech SDK
 
-Ten artykuł zawiera informacje, aby pomóc w rozwiązywaniu problemów, które można napotkać, korzystając z zestawu SDK usługi mowy.
+Ten artykuł zawiera informacje ułatwiają rozwiązywanie problemów, które można napotkać podczas używania zestawu SDK rozpoznawania mowy.
 
 ## <a name="error-websocket-upgrade-failed-with-an-authentication-error-403"></a>Błąd: Uaktualnianie WebSocket nie powiodło się z powodu błędu uwierzytelniania (403)
 

@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: ca0a6569dda89586c629cc46909862de4f27cf04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160915"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446328"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Usługa Azure Stack obliczeń, planowania pojemności
 [Rozmiarów maszyn wirtualnych obsługiwanych w usłudze Azure Stack](./user/azure-stack-vm-sizes.md) są podzbiorem obsługiwane na platformie Azure. Azure nakłada ograniczenia zasobów wzdłuż wektorów wiele, aby uniknąć nadmierne zużycie zasobów (serwera lokalnego i poziomu usług). Bez nakładania pewne ograniczenia użycia dzierżawy, środowisk dzierżawy będzie niekorzystnie wpłynąć na w przypadku pozostałych dzierżaw overconsume zasobów. Dla danych sieciowych wychodzących z maszyny Wirtualnej istnieją limity przepustowości w miejscu w usłudze Azure Stack, które odpowiadają ograniczenia platformy Azure. Dla zasobów magazynu limity operacji We/Wy magazynu zostały wdrożone w usłudze Azure Stack, aby uniknąć podstawowe nadmierne zużycie zasobów przez dzierżawy, aby uzyskać dostęp do magazynu.  
@@ -43,7 +43,7 @@ Jeśli serwer ulegnie awarii, maszyny wirtualne hostowane na serwerze nie powiod
 
 Następujące obliczenia powoduje całkowita, która jest dostępna pamięć, która może służyć do umieszczenia maszyn wirtualnych dzierżawcy. Jest to pojemność pamięci dla całości jednostki skalowania usługi Azure Stack.
 
-  Dostępna pamięć do umieszczenia maszyny Wirtualnej = łączna ilość pamięci serwera — odporność rezerwy — Azure Stack infrastruktury obciążenie <sup>1</sup>
+  Dostępna pamięć do umieszczenia maszyny Wirtualnej = łączna ilość pamięci serwera — odporność rezerwy — użycie pamięci przez uruchamianie maszyn wirtualnych — Azure Stack infrastruktury obciążenie <sup>1</sup>
 
   Rezerwa odporności = H + R * (N-1) + V * (N-2)
 

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: 0ffa917aa6bcfb642cd672d0a51a70b13f041635
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1bf9889f601795c1ba70abdd17f6e8c9a01785f1
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267567"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453872"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Zarządzanie usługą sieci web przy użyciu portalu usług sieci Web programu Azure Machine Learning Studio
 Aby zarządzać swoimi Machine Learning nowych i klasycznych usług sieci Web przy użyciu portalu usług sieci Web Microsoft Azure Machine Learning. Ponieważ klasycznych usług sieci Web i usług sieci Web nowej opierają się na różnych podstawowej technologii, masz możliwości zarządzania nieco inny dla każdego z nich.
@@ -39,7 +39,7 @@ Jeśli użytkownik nie ma odpowiednich uprawnień dostępu do zasobów w portalu
 
 *Wdrażanie usługi sieci Web nie powiodło się. To konto ma wystarczające uprawnienia dostępu do subskrypcji platformy Azure, która zawiera obszar roboczy. Aby wdrożyć usługę sieci Web na platformie Azure, to samo konto musi zostać zaproszone do obszaru roboczego i mieć dostęp do subskrypcji platformy Azure, która zawiera obszar roboczy.*
 
-Aby uzyskać więcej informacji na temat tworzenia obszaru roboczego, zobacz [tworzenie i udostępnianie obszaru roboczego usługi Azure Machine Learning](create-workspace.md).
+Aby uzyskać więcej informacji na temat tworzenia obszaru roboczego, zobacz [tworzenie i udostępnianie obszaru roboczego usługi Azure Machine Learning Studio](create-workspace.md).
 
 Aby uzyskać więcej informacji o ustawianiu uprawnień dostępu, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
@@ -108,7 +108,7 @@ Pulpit nawigacyjny plan zawiera następujące informacje:
 
 ## <a name="manage-classic-web-services"></a>Zarządzanie klasycznych usług sieci Web
 > [!NOTE]
-> Procedury przedstawione w tej sekcji mają zastosowanie do zarządzania klasycznych usług sieci web za pośrednictwem portalu usług sieci Web Azure Machine Learning. Aby uzyskać informacji o zarządzaniu klasycznych usług sieci Web za pomocą usługi Machine Learning Studio i witryny Azure portal, zobacz [Zarządzanie obszarem roboczym usługi Azure Machine Learning](manage-workspace.md).
+> Procedury przedstawione w tej sekcji mają zastosowanie do zarządzania klasycznych usług sieci web za pośrednictwem portalu usług sieci Web Azure Machine Learning. Aby uzyskać informacji o zarządzaniu klasycznych usług sieci Web za pomocą usługi Machine Learning Studio i witryny Azure portal, zobacz [Zarządzanie obszarem roboczym usługi Azure Machine Learning Studio](manage-workspace.md).
 > 
 > 
 

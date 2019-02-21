@@ -1,6 +1,6 @@
 ---
-title: Jak zainstalować i używać widoków usługi Log Analytics dla usługi Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować i używać widoki usługi Log Analytics dla usługi Azure Active Directory (wersja zapoznawcza)
+title: Jak zainstalować i używać widoków analizy dzienników dla usługi Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować i korzystać z widokami analizy dzienników dla usługi Azure Active Directory (wersja zapoznawcza)
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,37 +17,37 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de2aa262dff54f2b8e535aa646e9a8cac7719567
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7220fc6b239d20e9f1fc81e7d18b4d7ca6f0ded5
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165267"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453634"
 ---
-# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalowanie i używanie widoki usługi Log Analytics dla usługi Azure Active Directory
+# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Instalowanie i używanie widoków analizy dzienników dla usługi Azure Active Directory
 
-Widoki usługi Azure Active Directory Log Analytics ułatwia analizowanie i Dzienniki aktywności wyszukiwania usługi Azure AD w dzierżawie usługi Azure AD. Usługi Azure AD activity dzienniki obejmują:
+Azure Active Directory rejestrować pomaga widoków usługi analytics, analizowane i wyszukiwania, które Dzienniki aktywności usługi Azure AD w dzierżawie usługi Azure AD. Usługi Azure AD activity dzienniki obejmują:
 
 * Dzienniki inspekcji: [Raport działań dotyczący dzienników inspekcji](concept-audit-logs.md) zapewnia dostęp do historii wszystkich zadań, która jest wykonywana w dzierżawie.
 * Dzienniki logowania: Za pomocą [raport aktywności logowania](concept-sign-ins.md), można określić, kto wykonał zadania, które są zgłaszane w dziennikach inspekcji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Aby użyć widoki usługi Log Analytics, potrzebne są:
+Aby korzystać z widokami analizy dzienników, potrzebne są:
 
 * Obszar roboczy usługi Log Analytics w ramach subskrypcji platformy Azure. Dowiedz się, jak [Utwórz obszar roboczy usługi Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 * Najpierw wykonaj kroki, aby [dzienników aktywności trasy usługi Azure AD, do obszaru roboczego usługi Log Analytics](howto-integrate-activity-logs-with-log-analytics.md).
 * Pobierz widoków z [repozytorium GitHub](https://aka.ms/AADLogAnalyticsviews) na komputerze lokalnym.
 
-## <a name="install-the-log-analytics-views"></a>Zainstaluj widoki usługi Log Analytics
+## <a name="install-the-log-analytics-views"></a>Zainstaluj widoki analizy dzienników
 
-1. Przejdź do obszaru roboczego usługi Log Analytics. Aby to zrobić, najpierw należy przejść do [witryny Azure portal](https://portal.azure.com) i wybierz **wszystkich usług**. Typ **usługi Log Analytics** w polu tekstowym, a następnie wybierz pozycję **usługi Log Analytics**. Wybierz obszar roboczy kierowane dzienników aktywności, jako część wymagań wstępnych.
+1. Przejdź do obszaru roboczego usługi Log Analytics. Aby to zrobić, najpierw należy przejść do [witryny Azure portal](https://portal.azure.com) i wybierz **wszystkich usług**. Typ **usługi Log Analytics** w polu tekstowym, a następnie wybierz pozycję **obszarów roboczych usługi Log Analytics**. Wybierz obszar roboczy kierowane dzienników aktywności, jako część wymagań wstępnych.
 2. Wybierz **Projektant widoków**, wybierz opcję **zaimportować** , a następnie wybierz **wybierz plik** do zaimportowania widoków z komputera lokalnego.
 3. Wybierz widoki, pobranego z wymagań wstępnych i wybierz **Zapisz** można zapisać importu. Zrób to dla **zdarzenia aprowizacji konta usługi Azure AD** widoku i **zdarzenia logowania** widoku.
 
 ## <a name="use-the-views"></a>Użyj widoków
 
-1. Przejdź do obszaru roboczego usługi Log Analytics. Aby to zrobić, najpierw należy przejść do [witryny Azure portal](https://portal.azure.com) i wybierz **wszystkich usług**. Typ **usługi Log Analytics** w polu tekstowym, a następnie wybierz pozycję **usługi Log Analytics**. Wybierz obszar roboczy kierowane dzienników aktywności, jako część wymagań wstępnych.
+1. Przejdź do obszaru roboczego usługi Log Analytics. Aby to zrobić, najpierw należy przejść do [witryny Azure portal](https://portal.azure.com) i wybierz **wszystkich usług**. Typ **usługi Log Analytics** w polu tekstowym, a następnie wybierz pozycję **obszarów roboczych usługi Log Analytics**. Wybierz obszar roboczy kierowane dzienników aktywności, jako część wymagań wstępnych.
 
 2. Gdy jesteś w obszarze roboczym, wybierz **podsumowanie obszaru roboczego**. Powinny zostać wyświetlone następujące trzy widoki:
 
@@ -73,5 +73,5 @@ Aby użyć widoki usługi Log Analytics, potrzebne są:
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Jak analizować aktywność dzienniki w usłudze Log Analytics](howto-analyze-activity-logs-log-analytics.md)
-* [Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Jak analizować Dzienniki aktywności przy użyciu dzienników usługi Azure Monitor](howto-analyze-activity-logs-log-analytics.md)
+* [Rozpoczynanie pracy z usługą Azure Monitor dzienników w witrynie Azure portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

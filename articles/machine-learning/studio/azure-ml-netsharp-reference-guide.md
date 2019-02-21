@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: be6c04fe31aaa8d4b9081942b054575ff548cf5a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2051a14532f00f24be0c8cb0ca03a7b2b4078a45
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300374"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457017"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Przewodnik po języku specyfikacji sieci neuronowych Net # dla usługi Azure Machine Learning Studio
 
@@ -56,7 +56,7 @@ Ponadto Net # obsługuje cztery rodzaje pakietów zaawansowane połączenie:
 
 ## <a name="supported-customizations"></a>Obsługiwane dostosowania
 
-Architektura modeli sieci neuronowych, które tworzysz w usłudze Azure Machine Learning można często dostosować za pomocą Net #. Możesz:
+Architektura modele sieci neuronowych, które możesz utworzyć w usłudze Azure Machine Learning Studio można dostosować często przy użyciu Net #. Możesz:
 
 + Tworzenie warstwy ukryte i kontrolować liczbę węzłów w każdej warstwie.
 + Określ, jak mają być połączone ze sobą warstwy.

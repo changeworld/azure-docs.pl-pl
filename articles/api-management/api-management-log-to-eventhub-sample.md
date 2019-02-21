@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: 8358eceedbb9214e4adb73f055bcf0db7fecec76
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430390"
+ms.locfileid: "56447756"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>Monitorowanie za pomocą usługi Azure API Management, Event Hubs i Moesif interfejsów API
 [Usługi API Management](api-management-key-concepts.md) udostępnia wiele możliwości przetwarzania żądania HTTP wysyłane do interfejsu API protokołu HTTP. Jednak istnienie żądań i odpowiedzi jest przejściowy. Żądanie jest wysyłane i ich przepływu za pomocą usługi API Management do interfejsu API zaplecza. Interfejs API przetwarza żądania i odpowiedzi są przekazywane za pośrednictwem do konsumenta interfejsu API. Usługa API Management zachowuje niektórych ważnych statystyk dotyczących interfejsów API w celu wyświetlenia w nawigacyjnym witryny Azure portal, w ale nie tylko, że szczegóły znikną.
@@ -293,7 +293,7 @@ public class MoesifHttpMessageProcessor : IHttpMessageProcessor
 }
 ```
 
-`MoesifHttpMessageProcessor` Wykorzystuje [ C# biblioteki interfejsu API dla Moesif](https://www.moesif.com/docs/api?csharp#events) który ułatwia wypychanie HTTP danych zdarzeń do usługi. Aby wysyłać dane HTTP do interfejsu API modułu zbierającego Moesif, konieczne będzie konto i identyfikator aplikacji. Możesz get pobieranie identyfikatora aplikacji Moesif przez utworzenie konta na [witryny sieci Web firmy Moesif](https://www.moesif.com) a następnie przejdź do _Menu po prawej stronie najwyższego_ -> _konfiguracji aplikacji_.
+`MoesifHttpMessageProcessor` Wykorzystuje [ C# biblioteki interfejsu API dla Moesif](https://www.moesif.com/docs/api?csharp#events) który ułatwia wypychanie HTTP danych zdarzeń do usługi. Aby wysyłać dane HTTP do interfejsu API modułu zbierającego Moesif, konieczne będzie konto i identyfikator aplikacji. Pobieranie identyfikatora aplikacji Moesif przez utworzenie konta na [witryny sieci Web firmy Moesif](https://www.moesif.com) a następnie przejdź do _Menu po prawej stronie najwyższego_ -> _konfiguracji aplikacji_.
 
 ## <a name="complete-sample"></a>Pełny przykład
 [Kod źródłowy](https://github.com/dgilling/ApimEventProcessor) i testów na potrzeby przykładu w usłudze GitHub. Potrzebujesz [usługi API Management](get-started-create-service-instance.md), [połączonego Centrum zdarzeń](api-management-howto-log-event-hubs.md), a [konta magazynu](../storage/common/storage-create-storage-account.md) do uruchomienia przykładu dla siebie.   

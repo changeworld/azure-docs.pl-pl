@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e56cc5a893c5a88a5b64466d6feceb20ccd8cdc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167851"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445546"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie systemu Zendesk dla automatycznej aprowizacji użytkowników
 
@@ -118,7 +118,8 @@ Ta sekcja przeprowadzi Cię przez kroki, aby skonfigurować usługi Azure AD ini
     *   W **domeny** pola, wypełnij poddomeny dzierżawy systemu Zendesk.
     Przykład: Dla konta, którego adres URL dzierżawy https://my-tenant.zendesk.com, Twojej domeny podrzędnej byłaby **Moje dzierżawy**.
 
-6. **Klucz tajny tokenu** dla Twojego systemu Zendesk konto znajduje się w **Administrator > Interfejs API > Ustawienia**. 
+6. **Klucz tajny tokenu** dla Twojego systemu Zendesk konto znajduje się w **Administrator > Interfejs API > Ustawienia**.
+   Upewnij się, że **dostęp do tokenu** ustawiono **włączone**.
 
     ![Inicjowanie obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk4.png) ![inicjowania obsługi administracyjnej systemu Zendesk](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 

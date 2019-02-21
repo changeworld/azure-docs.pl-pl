@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 87d15f7b351f2b8b6a8c010651d82faa66b28918
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: f8b0955afa1705dd8e3c01a943cc5e5d885f9c71
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276469"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456966"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Azure niestandardowy skrypt rozszerzenia w wersji 2 za pomocą maszyn wirtualnych systemu Linux
 Rozszerzenie niestandardowego skryptu w wersji 2 pobiera i uruchamia skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrażaniu, instalacja oprogramowania lub innych zadań konfiguracji i zarządzania nimi. Skrypty można pobrać z usługi Azure Storage lub w innej lokalizacji internet dostępny, lub można udostępnić je w czasie wykonywania rozszerzenia. 
 
-Rozszerzenie niestandardowego skryptu można zintegrować z szablonami usługi Azure Resource Manager. Można również uruchomić przy użyciu wiersza polecenia platformy Azure, programu PowerShell, witryny Azure portal lub interfejsu API REST dla maszyn wirtualnych platformy Azure.
+Rozszerzenie niestandardowego skryptu można zintegrować z szablonami usługi Azure Resource Manager. Można również uruchomić przy użyciu wiersza polecenia platformy Azure, programu PowerShell lub interfejsu API REST dla maszyn wirtualnych platformy Azure.
 
 Ten artykuł szczegółowo opisuje sposób korzystania z rozszerzenia niestandardowego skryptu z wiersza polecenia platformy Azure oraz sposobu uruchamiania rozszerzenia za pomocą szablonu usługi Azure Resource Manager. Ten artykuł zawiera również kroki rozwiązywania problemów w systemach Linux.
 
@@ -114,8 +114,8 @@ Tych elementów powinien być traktowane jako poufne dane i określony w konfigu
 | type | CustomScript | ciąg |
 | typeHandlerVersion | 2.0 | int |
 | fileUris (np.) | https://github.com/MyProject/Archive/MyPythonScript.py | tablica |
-| commandToExecute (np.) | Python MyPythonScript.py < Moje param1 > | ciąg |
-| skrypt | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | ciąg |
+| commandToExecute (np.) | python MyPythonScript.py <my-param1> | ciąg |
+| skrypt | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo= | ciąg |
 | skipDos2Unix (np.) | false | wartość logiczna |
 | Sygnatura czasowa (np.) | 123456789 | 32-bitowa liczba całkowita |
 | storageAccountName (np.) | examplestorageacct | ciąg |

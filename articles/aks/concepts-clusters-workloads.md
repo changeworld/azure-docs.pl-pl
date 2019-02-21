@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998088"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456524"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Kubernetes podstawowe pojęcia dotyczące usługi Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ Głównego klastra obejmuje następujące podstawowe składniki usługi Kubernet
 
 AKS zapewnia wzorca pojedynczej dzierżawy klastra, za pomocą dedykowanego serwera interfejsu API usługi Scheduler, itp. Definiują liczbę i rozmiar węzłów, a platforma Azure umożliwia skonfigurowanie bezpiecznej komunikacji między klaster główny i węzły. Interakcja z poziomu głównego klastra odbywa się za pośrednictwem interfejsów API rozwiązania Kubernetes, takie jak `kubectl` lub pulpit nawigacyjny platformy Kubernetes.
 
-Ten wzorzec zarządzanego klastra oznacza, że nie ma potrzeby konfigurowania składników, takich jak o wysokiej dostępności *etcd* magazynu, ale również oznacza, że nie masz dostępu do poziomu głównego klastra bezpośrednio. Uaktualnienia do rozwiązania Kubernetes są zarządzane za pośrednictwem wiersza polecenia platformy Azure lub w witrynie Azure portal i uaktualnia poziomu głównego klastra, a następnie węzły. Aby rozwiązać problemy, możesz przejrzeć dzienniki głównego klastra za pośrednictwem usługi Azure Log Analytics.
+Ten wzorzec zarządzanego klastra oznacza, że nie ma potrzeby konfigurowania składników, takich jak o wysokiej dostępności *etcd* magazynu, ale również oznacza, że nie masz dostępu do poziomu głównego klastra bezpośrednio. Uaktualnienia do rozwiązania Kubernetes są zarządzane za pośrednictwem wiersza polecenia platformy Azure lub w witrynie Azure portal i uaktualnia poziomu głównego klastra, a następnie węzły. Aby rozwiązać problemy, możesz przejrzeć dzienniki głównego klastra za pomocą dzienników usługi Azure Monitor.
 
 Jeśli musisz skonfigurować główny klastra w określony sposób lub potrzebujesz bezpośredni dostęp do nich, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine].
 
@@ -70,13 +70,13 @@ Rozmiar maszyny Wirtualnej platformy Azure dla węzłów definiuje liczbę proce
 
 W usłudze AKS obraz maszyny Wirtualnej dla węzłów w klastrze opiera się obecnie w systemie Ubuntu Linux. Podczas tworzenia klastra usługi AKS, lub skalować liczbę węzłów, platforma Azure tworzy żądana liczba maszyn wirtualnych i konfiguruje je. Brak ręcznej konfiguracji służących do wykonywania.
 
-Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine]. Poprzednie `aks-engine` zwalnia funkcji przed i podać opcje konfiguracji są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz używać kontenerów Windows lub innej niż platformy Docker kontener środowiska uruchomieniowego, można użyć `aks-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
+Jeśli musisz użyć innego hosta, system operacyjny, środowisko uruchomieniowe kontenera, lub Uwzględnij niestandardowe pakiety, możesz wdrożyć własnego klastra Kubernetes za pomocą [aparatu aks][aks-engine]. Poprzednie `aks-engine` wydania funkcji i udostępnia opcje konfiguracji, zanim są oficjalnie obsługiwane w klastrach usługi AKS. Na przykład, jeśli chcesz używać kontenerów Windows lub innej niż platformy Docker kontener środowiska uruchomieniowego, można użyć `aks-engine` pozwalają skonfigurować i wdrożyć klaster usługi Kubernetes, który spełnia Twoje wymagania bieżącej.
 
 ### <a name="resource-reservations"></a>Rezerwacji zasobu
 
 Nie trzeba zarządzać podstawowych składników platformy Kubernetes w każdym węźle, takich jak *agenta kubelet*, *serwera proxy klastra kubernetes w usłudze*, i *klastra kubernetes w usłudze dns*, ale niektóre z dostępnych używają oni zasoby obliczeniowe. Aby zachować węzeł wydajności i funkcjonalności, następujące zasoby obliczeniowe są zarezerwowane w każdym węźle:
 
-- **Procesor CPU** — 60ms
+- **Procesor CPU** — 60 ms
 - **Pamięć** -20% maksymalnie 4 GiB
 
 Te zastrzeżenia oznacza, że ilość dostępnych procesora CPU i pamięci dla aplikacji może pojawić się mniej niż sam węzeł zawiera. W przypadku ograniczeń zasobów z powodu liczby aplikacje, których te zastrzeżenia upewnij się, procesora CPU, a pamięć pozostają dostępne dla podstawowych składników platformy Kubernetes. Nie można zmienić rezerwacji zasobów.
@@ -203,7 +203,7 @@ Podczas tworzenia klastra usługi AKS, dostępne są następujące przestrzenie 
 
 - *domyślne* — ta przestrzeń nazw jest, gdzie zasobników i wdrożenia są tworzone domyślnie w przypadku braku podania. W mniejszych środowiskach bez tworzenia dodatkowego odejścia logiczne można wdrożyć aplikacji bezpośrednio do domyślnej przestrzeni nazw. Podczas interakcji z interfejsem API rozwiązania Kubernetes, takich jak z `kubectl get pods`, domyślny obszar nazw jest używana, gdy nie jest określona.
 - *rozwiązanie kubernetes — system* — ta przestrzeń nazw jest, jeśli istnieją podstawowych zasobów, takich jak funkcje sieciowe, takie jak DNS i serwera proxy lub pulpit nawigacyjny platformy Kubernetes. Zazwyczaj nie są wdrażane aplikacji do tej przestrzeni nazw.
-- *publiczne klastra kubernetes w usłudze* — w tej przestrzeni nazw jest zwykle nie są używane, ale może być używana dla zasobów być widoczne w obrębie całego klastra i mogą być wyświetlane dla wszystkich użytkowników.
+- *publiczne klastra kubernetes w usłudze* — w tej przestrzeni nazw jest zwykle nie są używane, ale może być używana dla zasobów być widoczne w obrębie całego klastra i mogą zostać przejrzane przez dowolnego użytkownika.
 
 Aby uzyskać więcej informacji, zobacz [przestrzeni nazw Kubernetes][kubernetes-namespaces].
 

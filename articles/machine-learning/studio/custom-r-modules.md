@@ -1,7 +1,7 @@
 ---
 title: Definiowanie niestandardowych modułów R
 titleSuffix: Azure Machine Learning Studio
-description: W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich.
+description: W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R w usłudze Azure Machine Learning Studio. Wyjaśniono, czym są niestandardowych modułów R i jakie pliki są używane do definiowania ich.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 0da5456845b940ef88ac40ffed1f53e84fe54080
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 43691988e3f4f253c642702ad19272a5267c14cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488309"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457034"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio"></a>Definiowanie niestandardowych modułów R dla usługi Azure Machine Learning Studio
 
@@ -24,9 +24,9 @@ W tym temacie opisano sposób tworzenia i wdrażania niestandardowego modułu R 
 
 
 ## <a name="what-is-a-custom-r-module"></a>Co to jest niestandardowego modułu R?
-A **niestandardowego modułu** jest modułem zdefiniowanych przez użytkownika, które mogą być przekazane do obszaru roboczego i wykonywane w ramach eksperymentu usługi Azure Machine Learning. A **niestandardowego modułu R** jest niestandardowy moduł, który wykonuje funkcję R zdefiniowanych przez użytkownika. **R** to język programowania do przeprowadzania obliczeń statystycznych i grafiki, która jest powszechnie używana przez Statystyków i analityków danych wykonywania algorytmów. Obecnie języka R jest jedynym obsługiwanym w moduły niestandardowe, ale pomocy technicznej dla dodatkowych języków jest zaplanowana do przyszłych wersji językiem.
+A **niestandardowego modułu** jest modułem zdefiniowanych przez użytkownika, które mogą być przekazane do obszaru roboczego i wykonywane w ramach eksperymentu usługi Azure Machine Learning Studio. A **niestandardowego modułu R** jest niestandardowy moduł, który wykonuje funkcję R zdefiniowanych przez użytkownika. **R** to język programowania do przeprowadzania obliczeń statystycznych i grafiki, która jest powszechnie używana przez Statystyków i analityków danych wykonywania algorytmów. Obecnie języka R jest jedynym obsługiwanym w moduły niestandardowe, ale pomocy technicznej dla dodatkowych języków jest zaplanowana do przyszłych wersji językiem.
 
-Moduły niestandardowe mają **najwyższej jakości stan** w usłudze Azure Machine Learning, w tym sensie, że mogą być używane tak jak każdy inny moduł. Można je wykonać z innymi modułami uwzględnione w opublikowanych eksperymentów, lub w wizualizacjach. Masz kontrolę nad algorytm implementowana przez moduł, dane wejściowe i dane wyjściowe porty mają zostać użyte, parametry modelowania i inne różne zachowanie w czasie wykonywania. Eksperyment, który zawiera niestandardowe moduły można publikować w taki sposób, w galerii sztucznej Inteligencji platformy Azure w celu łatwego udostępniania.
+Moduły niestandardowe mają **najwyższej jakości stan** w usłudze Azure Machine Learning Studio, w tym sensie, że mogą być używane tak jak każdy inny moduł. Można je wykonać z innymi modułami uwzględnione w opublikowanych eksperymentów, lub w wizualizacjach. Masz kontrolę nad algorytm implementowana przez moduł, dane wejściowe i dane wyjściowe porty mają zostać użyte, parametry modelowania i inne różne zachowanie w czasie wykonywania. Eksperyment, który zawiera niestandardowe moduły można publikować w taki sposób, w galerii sztucznej Inteligencji platformy Azure w celu łatwego udostępniania.
 
 ## <a name="files-in-a-custom-r-module"></a>Pliki w niestandardowego modułu R
 Niestandardowego modułu R jest definiowany przez plik zip, który zawiera co najmniej dwa pliki:
@@ -55,7 +55,7 @@ Rozważ przykład **niestandardowe Dodaj wiersze** moduł, który modyfikuje sta
     } 
 
 ### <a name="the-xml-definition-file"></a>Plik definicji XML
-Aby udostępnić to `CustomAddRows` funkcji jako moduł usługi Azure Machine Learning pliku definicji XML musi zostać utworzony do określenia sposób, w jaki **niestandardowe Dodaj wiersze** moduł powinien wyglądały i zachowywały się. 
+Aby udostępnić to `CustomAddRows` funkcji jako moduł usługi Azure Machine Learning Studio pliku definicji XML musi zostać utworzony do określenia sposób, w jaki **niestandardowe Dodaj wiersze** moduł powinien wyglądały i zachowywały się. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -105,7 +105,7 @@ Aby zarejestrować je w obszarze roboczym usługi Machine Learning, przejdź do 
 
 ## <a name="elements-in-the-xml-definition-file"></a>Elementy w pliku definicji XML
 ### <a name="module-elements"></a>Moduł elementów
-**Modułu** element jest używany do definiowania niestandardowego modułu w pliku XML. Wiele modułów można zdefiniować w jednym pliku XML przy użyciu wielu **modułu** elementów. Każdy moduł, w obszarze roboczym musi mieć unikatową nazwę. Rejestrowanie niestandardowego modułu z taką samą nazwę jak istniejący niestandardowy moduł i zastępuje istniejący moduł nowym plikiem. Niestandardowe moduły można jednak zarejestrowane w usłudze taką samą nazwę jak istniejący moduł usługi Azure Machine Learning. Tak, jakby ta pojawiła się w **niestandardowe** kategorii części palety modułów.
+**Modułu** element jest używany do definiowania niestandardowego modułu w pliku XML. Wiele modułów można zdefiniować w jednym pliku XML przy użyciu wielu **modułu** elementów. Każdy moduł, w obszarze roboczym musi mieć unikatową nazwę. Rejestrowanie niestandardowego modułu z taką samą nazwę jak istniejący niestandardowy moduł i zastępuje istniejący moduł nowym plikiem. Niestandardowe moduły można jednak zarejestrowane w usłudze taką samą nazwę jak istniejący moduł usługi Azure Machine Learning Studio. Tak, jakby ta pojawiła się w **niestandardowe** kategorii części palety modułów.
 
     <Module name="Custom Add Rows" isDeterministic="false"> 
         <Owner>Microsoft Corporation</Owner>
@@ -330,7 +330,7 @@ Parametr modułu jest definiowana za pomocą **Arg** element podrzędny elementu
   * **domyślne** — wartość domyślną właściwość musi być zgodna z wartością identyfikatora z jednego z **elementu** elementów.
 
 ### <a name="auxiliary-files"></a>Pliki pomocnicze
-Dowolny plik, który znajduje się w pliku ZIP niestandardowego modułu będzie dostępna do użycia w czasie wykonywania. Wszelkich struktur katalogów obecne są zachowywane. Oznacza to, ten plik, określania źródła działa takie same lokalnie, jak i wykonywania usługi Azure Machine Learning. 
+Dowolny plik, który znajduje się w pliku ZIP niestandardowego modułu będzie dostępna do użycia w czasie wykonywania. Wszelkich struktur katalogów obecne są zachowywane. Oznacza to, ten plik, określania źródła działa takie same lokalnie i w usłudze Azure Machine Learning Studio na wykonanie. 
 
 > [!NOTE]
 > Należy zauważyć, że wszystkie pliki są wyodrębniane do katalogu "src", więc powinny mieć wszystkie ścieżki "src /" prefiks.

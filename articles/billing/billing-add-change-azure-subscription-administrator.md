@@ -13,20 +13,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/10/2019
+ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: d3bdcc267c55434a71c915f7d4e575d47522986b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6cc965f8e775e02e9dec9f610516739a9a2c1936
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110578"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448011"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Dodawanie lub zmienianie Administratorzy subskrypcji platformy Azure
 
 Zarządzanie dostępem do zasobów platformy Azure wymaga odpowiedniej roli administratora. Platforma Azure oferuje system autoryzacji o nazwie kontroli dostępu opartej na rolach (RBAC) z kilku wbudowanych ról, których mogą wybierać. Można przypisać te role w różnych zakresach, takich jak grupy zarządzania, subskrypcji lub grupy zasobów.
 
-Firma Microsoft zaleca zarządzanie dostępem do zasobów przy użyciu funkcji RBAC. Jednak jeśli nadal używasz klasycznego modelu wdrażania, należy użyć klasyczny administrator subskrypcji. Aby uzyskać więcej informacji, zobacz [usługi Azure Resource Manager, a wdrożeniem klasycznym](../azure-resource-manager/resource-manager-deployment-model.md) i [Administratorzy subskrypcji platformy Azure classic](../role-based-access-control/classic-administrators.md).
+Firma Microsoft zaleca zarządzanie dostępem do zasobów przy użyciu funkcji RBAC. Jednak jeśli nadal przy użyciu klasycznego modelu wdrażania i zarządzania klasycznymi zasobami przy użyciu [moduł programu PowerShell Azure usługi](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure), będziesz musiał użyć klasycznego administratora. 
+
+> [!TIP]
+> Jeśli używasz tylko witryny Azure portal do zarządzania zasobami klasycznymi, nie trzeba używać klasycznego administratora.
+
+Aby uzyskać więcej informacji, zobacz [usługi Azure Resource Manager, a wdrożeniem klasycznym](../azure-resource-manager/resource-manager-deployment-model.md) i [Administratorzy subskrypcji platformy Azure classic](../role-based-access-control/classic-administrators.md).
 
 W tym artykule opisano jak dodać lub zmienić roli administratora dla użytkownika przy użyciu funkcji RBAC w zakresie subskrypcji.
 
