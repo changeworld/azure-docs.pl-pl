@@ -3,19 +3,19 @@ title: Przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pom
 description: Tworzenie, przekazywanie i usuwanie obiektów blob oraz kontenerów w środowisku Node.js za pomocą usługi Azure Storage
 services: storage
 author: tamram
-ms.custom: mvc
 ms.service: storage
+ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 11/14/2018
 ms.author: tamram
-ms.openlocfilehash: 431f75143a118d369ac45fa273f8f16d17bf6785
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: f5f6e6dc1e8c0df88d69f9edbbdaf6e3421548df
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695427"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428946"
 ---
-# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript-preview"></a>Szybki start: Przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pomocą zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript (wersja zapoznawcza)
+# <a name="quickstart-upload-download-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascript"></a>Szybki start: Przekazywanie, pobieranie, wyświetlanie i usuwanie obiektów blob za pomocą zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript
 
 W tym przewodniku Szybki start dowiesz się, jak za pomocą [zestawu SDK usługi Azure Storage w wersji 10 dla języka JavaScript](https://github.com/Azure/azure-storage-js) w środowisku Node.js przekazywać, pobierać, wyświetlać i usuwać obiekty blob oraz zarządzać kontenerami.
 

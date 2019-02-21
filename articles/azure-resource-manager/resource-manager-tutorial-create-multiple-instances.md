@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 3bbf2d1d5fab7dec06eda851cfaad0c84365cc88
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 779ae6030c7d36c60dbd0ad00daaf1423a21eb04
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110799"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269046"
 ---
 # <a name="tutorial-create-multiple-resource-instances-with-resource-manager-templates"></a>Samouczek: Tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager
 
@@ -32,8 +32,6 @@ Ten samouczek obejmuje następujące zadania:
 > * Wdrożenie szablonu
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -122,6 +120,8 @@ Aby uzyskać więcej informacji na temat tworzenia wielu wystąpień, zobacz [Wd
 
 Zapoznaj się z sekcją [Wdrażanie szablonu](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#deploy-the-template) przewodnika Szybki Start programu Visual Studio Code, aby uzyskać procedurę wdrażania.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Aby wyświetlić wszystkie trzy konta magazynu, pomiń parametr --name:
 
 # <a name="azure-clitabazure-cli"></a>[Interfejs wiersza polecenia platformy Azure](#tab/azure-cli)
@@ -132,8 +132,6 @@ az storage account list --resource-group $resourceGroupName
 ```
 
 # <a name="powershelltabazure-powershell"></a>[Program PowerShell](#tab/azure-powershell)
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell
 $resourceGroupName = Read-Host -Prompt "Enter the resource group name"

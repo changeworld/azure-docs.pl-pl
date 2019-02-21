@@ -13,16 +13,14 @@ ms.devlang: na
 ms.date: 12/19/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99d4f3b6cf42ee21c34809b5604c4603da784e7b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cf1894a218af35459e0d0dc432c5813169856cca
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107824"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267704"
 ---
 # <a name="tutorial-move-azure-resources-to-another-resource-group-or-subscription"></a>Samouczek: przenoszenie zasobów platformy Azure do innej grupy zasobów lub subskrypcji
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Dowiedz się, jak przenieść zasoby platformy Azure z jednej grupy zasobów do innej. Możesz także przenieść zasoby platformy Azure z jednej subskrypcji platformy Azure do innej. W tym samouczku użyto szablonu usługi Resource Manager do wdrożenia dwóch grup zasobów i jednego konta magazynu. Następnie przeniesiono konto magazynu z jednej grupy zasobów do innej.
 
@@ -37,8 +35,6 @@ Ten samouczek obejmuje następujące zadania:
 > * Oczyszczenie zasobów.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem [utwórz bezpłatne konto](https://azure.microsoft.com/free/).
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prepare-the-resources"></a>Przygotowanie zasobów
 
@@ -98,6 +94,8 @@ Operacja weryfikowania przenoszenia umożliwia testowanie scenariusza przenoszen
 ## <a name="move-the-resource"></a>Przenoszenie zasobu
 
 Konto magazynu znajduje się wewnątrz źródłowej grupy zasobów (rg1). Uruchom następujący skrypt programu PowerShell, aby przenieść zasób do docelowej grupy zasobów (rg2). Pamiętaj, aby użyć tej samej nazwy projektu, której użyto podczas wdrażania zasobów.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ```azurepowershell-interactive
 $projectName = Read-Host -prompt "Enter a project name"

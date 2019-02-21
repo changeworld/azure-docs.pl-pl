@@ -13,16 +13,14 @@ ms.devlang: na
 ms.date: 01/16/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: c674c11f26d236e27852eb52bfc304aab12adcb5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 446c5393b654c7743371e4097517d16ba71da630
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112148"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270304"
 ---
 # <a name="tutorial-create-linked-azure-resource-manager-templates"></a>Samouczek: Tworzenie połączonych szablonów usługi Azure Resource Manager
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Dowiedz się, jak tworzyć połączone szablony usługi Azure Resource Manager. Użycie połączonych szablonów umożliwia wywołanie szablonu przez inny szablon. Jest to idealne narzędzie do podziału szablonów na moduły. W tym samouczku użyjesz tego samego szablonu, który został użyty w artykule [Samouczek: Tworzenie szablonów usługi Azure Resource Manager przy użyciu zasobów zależnych](./resource-manager-tutorial-create-templates-with-dependent-resources.md). Powoduje on utworzenie maszyny wirtualnej, sieci wirtualnej i innych zasobów zależnych, w tym konta magazynu. Tworzenie zasobu konta magazynu jest realizowane przez połączony szablon.
 

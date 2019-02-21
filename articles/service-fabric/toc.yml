@@ -696,10 +696,6 @@ items:
         href: service-fabric-diagnostics-event-aggregation-wad.md
       - name: Diagnostyka klastra systemu Linux
         href: service-fabric-diagnostics-oms-syslog.md
-      - name: Konfigurowanie usługi Log Analytics
-        href: service-fabric-diagnostics-oms-setup.md
-      - name: Monitorowanie za pomocą usługi Log Analytics
-        href: service-fabric-diagnostics-event-analysis-oms.md
     - name: Monitorowanie infrastruktury
       items:
       - name: Zbieranie liczników wydajności za pomocą agenta usługi Log Analytics
@@ -841,9 +837,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: e46baa05ceda2bac38057c59411d8813de7607dd
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: c036435895366ebdb9b07de20cc8f85c39aab3ea
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309885"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454637"
