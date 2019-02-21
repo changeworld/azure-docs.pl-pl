@@ -1,24 +1,19 @@
 ---
 layout: LandingPage
 title: Dokumentacja dotycząca rozliczeń i zarządzania kosztami na platformie Azure | Microsoft Docs
-description: Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować użycie i koszty oraz zarządzać nimi, a także jak zarządzać kontem i subskrypcjami.
+description: 'Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować użycie i koszty oraz zarządzać nimi, a także jak zarządzać kontem i subskrypcjami.'
 services: billing
 author: cwatson-cat
 manager: dougeby
-ms.assetid: ''
+ms.assetid: null
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 05/24/2018
-ms.author: cwatson
-ms.openlocfilehash: ed792b03a79d2dcbb77142a51ae2641c8d0bd3ad
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583334"
+ms.date: 02/19/2019
+ms.author: banders
 ---
+
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentacja dotycząca rozliczeń i zarządzania kosztami na platformie Azure
 
 Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować użycie i koszty, a także jak zarządzać kontem i subskrypcjami.
@@ -50,9 +45,9 @@ Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować u
                         <p>
                         <a href="/azure/billing/billing-getting-started">Zapobieganie powstawaniu nieoczekiwanych kosztów</a><br/>
                         <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Korzystanie z tagów zasobów</a><br/>
-                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">Rozpoczynanie analizowania kosztów — tylko umowa EA </a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">Tworzenie budżetów i zarządzanie nimi — tylko umowa EA</a><br/>
-                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">Optymalizowanie zaleceń — tylko umowa EA</a>
+                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">Rozpoczęcie analizy kosztów</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">Tworzenie budżetów i zarządzanie nimi</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">Rekomendacje dotyczące optymalizacji</a>
                         </p>
                     </div>
                 </div>
@@ -184,5 +179,5 @@ Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować u
             </div>
         </div>
     </li>
-    
+
 </ul>

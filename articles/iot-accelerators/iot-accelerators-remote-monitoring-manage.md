@@ -85,7 +85,7 @@ Aby ułatwić operatorom organizowanie urządzeń i zarządzanie nimi, warto je 
 
 Aby wyświetlić wszystkie urządzenia, przejdź do strony **Urządzenia** i wybierz filtr **Wszystkie urządzenia**:
 
-[Wyświetlanie wszystkich urządzeń![](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
+[![Wyświetlanie wszystkich urządzeń](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
 ### <a name="add-tags"></a>Dodawanie tagów
 

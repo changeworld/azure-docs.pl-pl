@@ -2,16 +2,10 @@
 layout: HubPage
 hide_bc: true
 title: Dokumentacja platformy Microsoft Azure
-description: Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nimi przy użyciu usług w chmurze platformy Microsoft Azure. Pobierz dokumentację, przykładowy kod, samouczki i wiele więcej.
+description: 'Dowiedz się, jak tworzyć zaawansowane aplikacje i zarządzać nimi przy użyciu usług w chmurze platformy Microsoft Azure. Pobierz dokumentację, przykładowy kod, samouczki i wiele więcej.'
 ms.topic: hub-page
 featureFlags:
-- clicktale
-ms.openlocfilehash: 4ae03eedb96ecd1b460b06df3a80a7349c04e099
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330719"
+  - clicktale
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -195,6 +189,7 @@ Go</a>
                                                 <h4>Relacyjne bazy danych</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/sql-database/">SQL Database — baza danych jako usługa</a></li>
+                                                    <li><a class="barLink" href="/azure/virtual-machines/windows/sql/">Program SQL Server na maszynie wirtualnej platformy Azure</a></li>
                                                     <li><a class="barLink" href="/azure/sql-data-warehouse/">SQL Data Warehouse — magazyn danych jako usługa</a></li>
                                                     <li><a class="barLink" href="/azure/postgresql/">PostgreSQL Database — baza danych jako usługa</a></li>
                                                     <li><a class="barLink" href="/azure/mysql/">MySQL Database — baza danych jako usługa</a></li>

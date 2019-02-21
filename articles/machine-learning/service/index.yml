@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 46457711c1611e614f89a813b1856687beb27ac7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 372d3d88c0a160c1f294f07e58c5e11dbf5eac5e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311457"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456609"
 documentType: LandingData
 title: Dokumentacja usługi Azure Machine Learning
 metadata:
   title: Dokumentacja usługi Azure Machine Learning Service — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Usługa Azure Machine Learning zapewnia środowisko oparte na chmurze, które służy do tworzenia, szkolenia, testowania, wdrażania i śledzenia modeli uczenia maszynowego oraz zarządzania nimi. Usługa Azure Machine Learning Service w pełni obsługuje technologie typu open source, takie jak Scikit-learn, Tensorflow, Pytorch oraz wszelkie inne struktury oparte na języku Python. Dowiedz się, jak korzystać z usługi Azure Machine Learning Service na potrzeby przepływów pracy uczenia maszynowego, dzięki naszym przewodnikom Szybki start i samouczkom.
+  description: Usługa Azure Machine Learning Service udostępnia zestawy SDK i usługi, które służą do szybkiego przygotowywania danych oraz trenowania i wdrażania modeli uczenia maszynowego. Podnieś produktywność, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn. Rozpocznij pracę dzięki przewodnikom Szybki start i samouczkom.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -17,12 +17,21 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 2/15/2019
+  ms.date: 2/19/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Usługa Azure Machine Learning Service zapewnia środowisko w chmurze, które służy do szybkiego przygotowywania danych oraz trenowania i wdrażania modeli uczenia maszynowego. Zautomatyzowane uczenie maszynowe pozwala szybciej identyfikować algorytmy i dostrajać hiperparametry. Podnieś produktywność, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn, oraz zestawów SDK usługi. Rozpocznij pracę dzięki przewodnikom Szybki start i samouczkom.
+  description: Usługa Azure Machine Learning Service udostępnia zestawy SDK i usługi, które służą do szybkiego przygotowywania danych oraz trenowania i wdrażania modeli uczenia maszynowego. Podnieś produktywność i zoptymalizuj koszty, korzystając ze środowiska obliczeniowego z automatycznym skalowaniem i potoków. Korzystaj z tych możliwości za pośrednictwem platform typu open source języka Python, takich jak PyTorch, TensorFlow i scikit-learn. Rozpocznij pracę dzięki przewodnikom Szybki start i samouczkom.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: Obejrzyj wideo (9:58)
+    href: https://www.youtube.com/watch?v=GBDSBInvz08
+    width: 250
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
@@ -32,7 +41,7 @@ sections:
     style: unordered
     items:
     - html: '<a href="quickstart-get-started">Przewodnik Szybki start na temat witryny Azure Portal</a>: uzyskaj obszar roboczy i uruchamiaj eksperymenty bez instalowania czegokolwiek.'
-    - html: '<a href="quickstart-create-workspace-with-python">Przewodnik Szybki start dotyczący języka Python</a>: zainstaluj główny zestaw SDK, utwórz obszar roboczy i eksperymentuj na lokalnym serwerze notesów.'
+    - html: '<a href="quickstart-create-workspace-with-python">Przewodnik Szybki start na temat języka Python</a>: zainstaluj główny zestaw SDK, utwórz obszar roboczy i eksperymentuj na lokalnym serwerze notesów.'
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
@@ -51,9 +60,9 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://aka.ms/aml-sdk">Główny zestaw SDK (Python)</a>
-    - html: <a href="https://aka.ms/data-prep-sdk">Zestaw SDK przygotowywania danych (Python)</a>
-    - html: <a href="https://aka.ms/aml-monitoring-sdk">Zestaw SDK monitorowania (Python)</a>
+    - html: '<a href="https://aka.ms/aml-sdk">Główny zestaw SDK języka Python</a>: podstawowe funkcje, zautomatyzowane uczenie maszynowe, potoki i nie tylko'
+    - html: 'Zestaw SDK języka Python do <a href="https://aka.ms/data-prep-sdk">przygotowywania danych</a>: przygotowywanie i przekształcanie danych'
+    - html: 'Zestaw SDK języka Python do <a href="https://aka.ms/aml-monitoring-sdk">monitorowania</a>: zbieranie danych z wdrożonych usług internetowych'
 - title: Inne technologie usługi Azure Machine Learning
   items:
   - type: list
