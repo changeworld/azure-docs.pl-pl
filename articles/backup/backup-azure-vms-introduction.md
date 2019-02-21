@@ -1,5 +1,5 @@
 ---
-title: Dotyczące funkcji Kopia zapasowa maszyny Wirtualnej platformy Azure
+title: Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
 description: Więcej informacji na temat kopii zapasowych maszyn wirtualnych platformy Azure i zanotuj niektóre najlepsze rozwiązania.
 services: backup
 author: rayne-wiselman
@@ -8,14 +8,14 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: c331c3617f421c913abbc3554aa5ba17e86cb978
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: c38c457bbf428d7252cf57168685201a2ca227ba
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429183"
+ms.locfileid: "56446804"
 ---
-# <a name="about-azure-vm-backup"></a>Dotyczące funkcji Kopia zapasowa maszyny Wirtualnej platformy Azure
+# <a name="about-azure-vm-backup"></a>Informacje o kopii zapasowej maszyny wirtualnej platformy Azure
 
 W tym artykule opisano sposób, w jaki [usługi Azure Backup](backup-introduction-to-azure-backup.md) tworzy kopie zapasowe maszyn wirtualnych platformy Azure.
 
@@ -48,7 +48,7 @@ Podczas wykonywania kopii zapasowych maszyn wirtualnych platformy Azure z usług
 
 **Szyfrowanie** | **Szczegóły** | **Pomoc techniczna**
 --- | --- | ---
-**ADE** | Szyfruje ADE maszyn wirtualnych platformy Azure są szyfrowane zarówno systemu operacyjnego i dysków z danymi.<br/><br/> ADE integruje się przy użyciu kluczy szyfrowania funkcją BitLocker (klucz szyfrowania bloków) chronione w magazynie kluczy jako wpisy tajne, lub przy użyciu kluczy szyfrowania klucza usługi Azure Key Vault (KEK). | Usługa Azure Backup obsługuje kopię zapasową zarządzanych i niezarządzanych maszyn wirtualnych platformy Azure zaszyfrowane przy użyciu tylko bloków lub za pomocą klucza szyfrowania bloków wraz z KEK.<br/><br/> Zarówno klucz szyfrowania bloków i kopii zapasowej i szyfrowane.<br/><br/> Ponieważ KEK oraz klucz szyfrowania bloków kopię zapasową, w razie potrzeby użytkownicy z uprawnieniami można przywrócić klucze i wpisy tajne usługi key vault i odzyskać zaszyfrowanych maszyn wirtualnych.<br/><br/> Nie można odczytać zaszyfrowanych kluczy i wpisów tajnych, przez nieautoryzowanych użytkowników lub przez platformę Azure.
+**ADE** | ADE są szyfrowane zarówno systemu operacyjnego i dysków z danymi maszyn wirtualnych platformy Azure.<br/><br/> ADE integruje się przy użyciu kluczy szyfrowania funkcją BitLocker (klucz szyfrowania bloków) chronione w magazynie kluczy jako wpisy tajne, lub przy użyciu kluczy szyfrowania klucza usługi Azure Key Vault (KEK). | Usługa Azure Backup obsługuje kopię zapasową zarządzanych i niezarządzanych maszyn wirtualnych platformy Azure zaszyfrowane przy użyciu tylko bloków lub za pomocą klucza szyfrowania bloków wraz z KEK.<br/><br/> Zarówno klucz szyfrowania bloków i kopie zapasowe i szyfrowane.<br/><br/> Ponieważ KEK oraz klucz szyfrowania bloków kopię zapasową, w razie potrzeby użytkownicy z uprawnieniami można przywrócić klucze i wpisy tajne usługi key vault i odzyskać zaszyfrowanych maszyn wirtualnych.<br/><br/> Nie można odczytać zaszyfrowanych kluczy i wpisów tajnych, przez nieautoryzowanych użytkowników lub przez platformę Azure.
 **SSE** | Za pomocą funkcji SSE usługa Azure storage oferuje szyfrowanie w spoczynku, automatycznie szyfrując dane przed przekazaniem jej i odszyfrowuje je przed pobierania. | Usługa Azure Backup używa SSE dla szyfrowanie rest maszyn wirtualnych platformy Azure.
 
 - Kopia zapasowa maszyny wirtualne szyfrowane przy użyciu funkcji BitLocker szyfrowania Key (klucz szyfrowania bloków) tylko i klucz szyfrowania bloków oraz klucz szyfrowania Key(KEK) jest obsługiwana w zarządzanym i niezarządzanym maszyn wirtualnych platformy Azure.

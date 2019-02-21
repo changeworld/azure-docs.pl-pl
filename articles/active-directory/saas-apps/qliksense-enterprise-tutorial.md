@@ -202,7 +202,7 @@ Aby skonfigurować logowanie jednokrotne usługi Azure AD w usłudze Qlik Sense 
 
     ![QlikSense][qs13]
 
-    Pole Host white list (Biała lista hostów) określa nazwy hostów akceptowane podczas nawiązywania połączenia z serwerem Qlik Sense.  **Podaj nazwę hosta, którą użytkownicy będą określać podczas nawiązywania połączenia z serwerem Qlik Sense.** Nazwa hosta jest taka sama jak identyfikator URI hosta SAML, jednak bez prefiksu https://.
+    Pole Host white list (Lista dozwolonych hostów) określa nazwy hostów akceptowane podczas nawiązywania połączenia z serwerem Qlik Sense.  **Podaj nazwę hosta, którą użytkownicy będą określać podczas nawiązywania połączenia z serwerem Qlik Sense.** Nazwa hosta jest taka sama jak identyfikator URI hosta SAML, jednak bez prefiksu https://.
 
 11. Następnie kliknij przycisk **Apply** (Zastosuj).
 

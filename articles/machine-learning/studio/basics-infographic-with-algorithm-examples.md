@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 78daf4534334d56c962d97e7a9aac8a7910db34c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242904"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453600"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Grafika informacyjna do pobrania: Podstawy wraz z przykładami Algorytm uczenia maszynowego
 
@@ -33,7 +33,7 @@ Pobierz to omówienie informacyjna łatwych do zrozumienia podstawy uczenia masz
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Więcej pomocy przy użyciu algorytmów dla początkujących i zaawansowanych użytkowników
 
-* Lepiej omówienie różnego rodzaju algorytmów uczenia maszynowego, sposób ich używania oraz sposobu wybierania właściwy dla danego rozwiązania, zobacz [jak wybór algorytmów dla usługi Microsoft Azure Machine Learning](algorithm-choice.md).
+* Lepiej omówienie różnego rodzaju algorytmów uczenia maszynowego, sposób ich używania oraz sposobu wybierania właściwy dla danego rozwiązania, zobacz [jak wybór algorytmów dla usługi Microsoft Azure Machine Learning Studio](algorithm-choice.md).
 * Aby uzyskać listę według kategorii wszystkich algorytmów uczenia maszynowego dostępnych w usłudze Machine Learning Studio, zobacz [zainicjować modelu] [ initialize-model] algorytmu Studio uczenia maszynowego i pomóc w Module.
 * Aby uzyskać pełną listę alfabetyczną algorytmów i modułów w usłudze Machine Learning Studio, zobacz [A-Z listy modułów usługi Machine Learning Studio] [ a-z-list] algorytmu Studio uczenia maszynowego i pomóc w Module.
 * Omówienie Galeria sztucznej Inteligencji platformy Azure i wiele generowanych przez społeczność dostępnych zasobów, zobacz [udziału i odnajdywania zasobów w galerii Azure AI](gallery-how-to-use-contribute-publish.md).

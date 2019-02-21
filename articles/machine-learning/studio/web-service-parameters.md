@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 337e7a848b6aa141ecf4f96cd4f8f391be35a619
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b216242b5c1c093c5f508adce04ef7b4bec4d1e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475537"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453192"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Korzystanie z parametrów usług sieci web Azure Machine Learning Studio
 Usługi sieci web Azure Machine Learning jest tworzony przez opublikowanie eksperyment, który zawiera moduły z konfigurowalne parametry. W niektórych przypadkach można zmienić zachowanie modułu, gdy jest uruchomiona usługa sieci web. *Parametry usługi w sieci Web* pozwalają wykonać to zadanie. 
@@ -57,7 +57,7 @@ Na przykład załóżmy, że mamy eksperyment za pomocą [Eksport danych] [ writ
 
 3. Kliknij ikonę, aby po prawej stronie **ścieżki do obiektu blob zaczynający się od parametru kontenera**. Wygląda ono następująco:
    
-   ![Ikona parametr usługi sieci Web][icon]
+   ![Ikona parametr usługi sieci Web](./media/web-service-parameters/icon.png)
    
    Wybierz pozycję "Ustaw jako parametr usługi sieci web".
    
@@ -65,7 +65,7 @@ Na przykład załóżmy, że mamy eksperyment za pomocą [Eksport danych] [ writ
 4. Zmień nazwę parametru usługi sieci Web, kliknij nazwę, wpisz "Ścieżka obiektu Blob" i naciśnij klawisz **Enter** klucza. 
 5. Podaj wartość domyślną dla parametru usługi sieci Web, kliknij ikonę z prawej strony nazwy, wybierz pozycję "Dostarczaj wartości domyślnej", wprowadź wartość (na przykład "container1/output1.csv") i naciśnij klawisz **Enter** klucza.
    
-   ![Parametr usługi sieci Web][parameter]
+   ![Parametr usługi sieci Web](./media/web-service-parameters/parameter.png)
 6. Kliknij pozycję **Run** (Uruchom). 
 7. Kliknij przycisk **wdrażanie usługi sieci Web** i wybierz **wdrażanie usługi sieci Web [klasyczny]** lub **wdrażanie usługi sieci Web [New]** wdrażanie usługi sieci web.
 
@@ -78,11 +78,6 @@ Użytkownik usługi sieci web może teraz określić nowe miejsce docelowe dla [
 Aby uzyskać bardziej szczegółowym przykładem, zobacz [parametry usługi sieci Web](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) wpis [blogu dotyczącym uczenia maszynowego](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
 Aby uzyskać więcej informacji na temat uzyskiwania dostępu do usługi sieci web Machine Learning, zobacz [jak korzystanie z usługi Azure Machine Learning w sieci Web](consume-web-services.md).
-
-<!-- Images -->
-[icon]: ./media/web-service-parameters/icon.png
-[parameter]: ./media/web-service-parameters/parameter.png
-
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

@@ -80,7 +80,7 @@ Jeśli używasz StorSimple 8100 lub 8600 urządzenie fizyczne, urządzenie jest 
 | 9  | Czechy | 24 | Japonia       | 39 | Katar        | 54 | Turcja               |
 | 10 | Dania        | 25 | Kenia       | 40 | Rumunia      | 55 | Ukraina              |
 | 11 | Egipt          | 26 | Kuwejt      | 41 | Rosja       | 56 | Zjednoczone Emiraty Arabskie |
-| 12 | Finlandia        | 27 | Makau       | 42 | Arabia Saudyjska | 57 | Wielka Brytania       |
+| 12 | Finlandia        | 27 | SRA Makau       | 42 | Arabia Saudyjska | 57 | Zjednoczone Królestwo       |
 | 13 | Francja         | 28 | Malezja    | 43 | Singapur    | 58 | Stany Zjednoczone        |
 | 14 | Niemcy        | 29 | Meksyk      | 44 | Słowacja     | 59 | Wietnam              |
 | 15 | Grecja         | 30 | Holandia | 45 | Słowenia     | 60 | Chorwacja              |

@@ -36,15 +36,15 @@ Tabela wynikowa zawiera kolumnę sygnatur czasowych, trzy kolumny kontekstowych 
 |   |   |   |   |   |
 | --- | --- | --- | --- | --- |
 |   | Sygnatura czasowa | BrowserVer | OsVer | Kraj |
-|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Wielka Brytania |
+|   | 2016-08-25 09:12:35.4020000 | Chrome 51.0 | Windows 7 | Zjednoczone Królestwo |
 |   | 2016-08-25 09:12:41.1120000 | Chrome 52.0 | Windows 10 |   |
-|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Wielka Brytania |
-|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | Wielka Brytania |
+|   | 2016-08-25 09:12:46.2300000 | Chrome 52.0 | Windows 7 | Zjednoczone Królestwo |
+|   | 2016-08-25 09:12:46.5100000 | Chrome 52.0 | Windows 10 | Zjednoczone Królestwo |
 |   | 2016-08-25 09:12:46.5570000 | Chrome 52.0 | Windows 10 | Republika Litwa |
 |   | 2016-08-25 09:12:47.0470000 | Chrome 52.0 | Windows 8.1 | Indie |
-|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | Wielka Brytania |
+|   | 2016-08-25 09:12:51.3600000 | Chrome 52.0 | Windows 10 | Zjednoczone Królestwo |
 |   | 2016-08-25 09:12:51.6930000 | Chrome 52.0 | Windows 7 | Holandia |
-|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | Wielka Brytania |
+|   | 2016-08-25 09:12:56.4240000 | Chrome 52.0 | Windows 10 | Zjednoczone Królestwo |
 |   | 2016-08-25 09:13:08.7230000 | Chrome 52.0 | Windows 10 | Indie |
 
 Ponieważ nie istnieją żadne metryki, możemy ją tworzyć tylko zestaw szeregów czasowych, reprezentujący liczbę ruchu, podzielone na partycje według systemu operacyjnego przy użyciu następującej kwerendy:

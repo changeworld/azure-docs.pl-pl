@@ -49,7 +49,7 @@ Wymagania systemowe na krawędzi ramki danych obejmują:
 
 ## <a name="networking-port-requirements"></a>Wymagania dotyczące portów sieciowych
 
-### <a name="port-requirements-for-data-box-edge"></a>Wymagania dotyczące portów dla przeglądarki Edge pole danych
+### <a name="port-requirements-for-data-box-edge"></a>Wymagania dotyczące portów dla przeglądarki Microsoft Edge pole danych
 
 Poniższa tabela zawiera listę portów, które muszą być otwarte w zaporze, aby umożliwić SMB, w chmurze lub ruch związany z zarządzaniem. W tej tabeli *w* lub *dla ruchu przychodzącego* odnosi się do kierunku z które dostępu przychodzących żądań klienta do Twojego urządzenia. *Limit* lub *wychodzącego* Określa kierunek, w którym urządzenie brzegowe pole danych wysyła dane zewnętrznie, poza wdrożenia, na przykład, ruch wychodzący do Internetu.
 
