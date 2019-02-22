@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/21/2019
 ms.author: celested
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6984307dda58aeba840f2b6d08e84fb4f60cacc8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 93d5a08d08a67a14d2e78f414fc40e7391653951
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163074"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593696"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Logowanie jednokrotne do aplikacji w usłudze Azure Active Directory
 Logowanie jednokrotne (SSO) dodaje zabezpieczenia i wygodę gdy użytkownicy logują się do aplikacji w usłudze Azure Active Directory (Azure AD). W tym artykule opisano pojedynczej metody logowania jednokrotnego i pomaga w wyborze najbardziej odpowiedniej metody logowania jednokrotnego, podczas konfigurowania aplikacji.
@@ -69,7 +69,9 @@ Opartej na SAML logowania jednokrotnego jest obsługiwana dla aplikacji, które 
 - SAML 2.0
 - WS-Federation
 
-Aby skonfigurować aplikację do opartej na SAML logowania jednokrotnego, zobacz [opartej na SAML skonfigurować logowanie jednokrotne](configure-single-sign-on-portal.md). Wiele oprogramowanie jako usługa (SaaS) aplikacje są także [specyficzne dla aplikacji, samouczek](../saas-apps/tutorial-list.md) , szczegółowy opis konfiguracji opartej na SAML logowania jednokrotnego. 
+Aby skonfigurować aplikację do opartej na SAML logowania jednokrotnego, zobacz [opartej na SAML skonfigurować logowanie jednokrotne](configure-single-sign-on-portal.md). Wiele oprogramowanie jako usługa (SaaS) aplikacje są także [specyficzne dla aplikacji, samouczek](../saas-apps/tutorial-list.md) , szczegółowy opis konfiguracji opartej na SAML logowania jednokrotnego.
+
+Aby skonfigurować aplikację dla protokołu WS-Federation, wykonaj te same wskazówki, aby skonfigurować aplikację na podstawie protokołu SAML logowania jednokrotnego, zobacz [opartej na SAML skonfigurować logowanie jednokrotne](configure-single-sign-on-portal.md). W kroku, aby skonfigurować aplikację do korzystania z usługi Azure AD, musisz zastąpić adres URL logowania usługi Azure AD dla punktu końcowego protokołu WS-Federation `https://login.microsoftonline.com/<tenant-ID>/wsfed`.
 
 Aby uzyskać więcej informacji na temat protokołu SAML, zobacz [pojedynczego logowania jednokrotnego protokołu SAML](../develop/single-sign-on-saml-protocol.md).
 

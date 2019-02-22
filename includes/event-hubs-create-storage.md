@@ -8,39 +8,39 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: e499a0f7bec47e672c599c729a15cc3e3d04a28a
-ms.sourcegitcommit: 62759a225d8fe1872b60ab0441d1c7ac809f9102
+ms.openlocfilehash: 38ba8ccad63120d33ce06faf39439bb58706e78d
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49471666"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56660284"
 ---
 ## <a name="create-a-storage-account-for-event-processor-host"></a>Tworzenie konta magazynu dla hosta procesora zdarzeń
 Host procesora zdarzeń to inteligentny agent, który upraszcza odbieranie zdarzeń z usługi Event Hubs przez zarządzanie trwałymi punktami kontrolnymi i równoległymi odbiorami. W przypadku obsługi punktów kontrolnych host procesora zdarzeń wymaga konta magazynu. Poniższy przykład pokazuje, jak utworzyć konto magazynu oraz uzyskać jego klucze na potrzeby dostępu:
 
-1. W witrynie Azure portal i wybierz pozycję **Utwórz zasób** w lewym górnym rogu ekranu.
+1. W witrynie Azure Portal wybierz pozycję **Utwórz zasób** w lewym górnym rogu ekranu.
 
 2. Wybierz pozycję **Storage**, a następnie wybierz pozycję **Konto usługi Storage — Blob, File, Table, Queue**.
    
-    ![Wybierz konto magazynu](./media/event-hubs-create-storage/create-storage1.png)
+    ![Wybieranie konta magazynu](./media/event-hubs-create-storage/create-storage1.png)
 
-3. Na **Tworzenie konta magazynu** strony, wykonaj następujące czynności: 
+3. Na stronie **Utwórz konto magazynu** wykonaj następujące kroki: 
 
     1. Wprowadź nazwę konta magazynu. 
-    2. Wybierz subskrypcję platformy Azure, która zawiera Centrum zdarzeń.
-    3. Wybierz grupę zasobów, która ma Centrum zdarzeń.
+    2. Wybierz subskrypcję platformy Azure zawierającą centrum zdarzeń.
+    3. Wybierz grupę zasobów zawierającą centrum zdarzeń.
     4. Wybierz lokalizację, w której chcesz utworzyć zasób. 
-    5. Następnie kliknij przycisk **przeglądu + Utwórz**.
+    5. Następnie kliknij pozycję **Przeglądanie + tworzenie**.
    
-    ![Utwórz konto magazynu — strony](./media/event-hubs-create-storage/create-storage2.png)
+    ![Utwórz konto magazynu — strona](./media/event-hubs-create-storage/create-storage2.png)
 
-4. Na **Przejrzyj + Utwórz** strony, sprawdź wartości i wybierz **Utwórz**. 
+4. Na stronie **Przeglądanie + tworzenie** sprawdź wartości i wybierz pozycję **Utwórz**. 
 
-    ![Przejrzyj ustawienia konta magazynu i Utwórz](./media/event-hubs-create-storage/review-create-storage-account.png)
-5. Po wyświetleniu **wdrożenia zakończone pomyślnie** komunikatu wybierz **stało się do zasobu** w górnej części strony. Na stronie konta magazynu można również uruchomić, wybierając konto magazynu z listy zasobów.  
+    ![Przeglądanie ustawień konta magazynu i tworzenie](./media/event-hubs-create-storage/review-create-storage-account.png)
+5. Po wyświetleniu **wdrożenia zakończone pomyślnie** komunikatu wybierz **przejdź do zasobu** w górnej części strony. Na stronie konta magazynu można również uruchomić, wybierając konto magazynu z listy zasobów.  
 
-    ![Wybierz konto magazynu z wdrożenia](./media/event-hubs-create-storage/select-storage-deployment.png) 
-7. W **Essentials** wybierz **obiektów blob**. 
+    ![Wybieranie konta magazynu z wdrożenia](./media/event-hubs-create-storage/select-storage-deployment.png) 
+7. W oknie **Podstawowe elementy** wybierz pozycję **Obiekty blob**. 
 
     ![Wybierz usługę obiektów blob](./media/event-hubs-create-storage/select-blobs-service.png)
 1. Wybierz **+ kontener** u góry strony, wprowadź **nazwa** dla kontenera, a następnie wybierz **OK**. 

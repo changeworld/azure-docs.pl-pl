@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: apurvajo;cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 29e6215358eaf544f32f585744ed36f30822d134
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b569165153ce713846be5e836a26f48e500be1fc
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446753"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594138"
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-azure-app-service"></a>Kup i skonfiguruj certyfikat SSL dla usługi Azure App Service
 
@@ -54,7 +54,7 @@ Skorzystaj z poniższej tabeli, aby skonfigurować certyfikat. Po zakończeniu k
 | Subskrypcja | Centrum danych, w którym hostowana jest aplikacja internetowa. |
 | Grupa zasobów | Grupa zasobów, który zawiera certyfikat. Można użyć nowej grupy zasobów lub wybrać tej samej grupie zasobów jako aplikacji usługi app Service, na przykład. |
 | Jednostka SKU certyfikatu | Określa typ certyfikatu w celu utworzenia, czy to standardowy certyfikat lub [certyfikat uniwersalny](https://wikipedia.org/wiki/Wildcard_certificate). |
-| Postanowienia prawne | Kliknij, aby upewnić się, że akceptujesz postanowienia prawne. |
+| Postanowienia prawne | Kliknij, aby upewnić się, że akceptujesz postanowienia prawne. Certyfikaty są uzyskiwane od firmy GoDaddy. |
 
 ## <a name="store-in-azure-key-vault"></a>Store w usłudze Azure Key Vault
 

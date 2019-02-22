@@ -14,12 +14,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 602517f13b762f5dd7a13e652a5e8bf5de56e403
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9d358c021f795172e7ced0ba2a2f309a0a0dab6e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245637"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649731"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Usługa Azure Stack certyfikaty podpisywania generowania żądania
 
@@ -27,48 +27,49 @@ Narzędzie sprawdzania gotowości stosu platformy Azure do tworzenia żądania p
 
 Można użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker) do żądania certyfikatów następujące:
 
- - **Standardowe żądania certyfikatów** zgodnie z opisem w [generowanie certyfikatów PKI dla wdrażania usługi Azure Stack](azure-stack-get-pki-certs.md).
- - **Platform-as-a-Service**  
-    Możesz poprosić o platforma jako usługa (PaaS) nazwy certyfikatów, jak to określono w [wymagania certyfikatów infrastruktury kluczy publicznych usługi Azure Stack — opcjonalnie certyfikaty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
+- **Standardowe żądania certyfikatów** zgodnie z opisem w [generowanie certyfikatów PKI dla wdrażania usługi Azure Stack](azure-stack-get-pki-certs.md).
+- **Platforma jako usługa**: Możesz poprosić o platforma jako usługa (PaaS) nazwy certyfikatów, jak to określono w [wymagania certyfikatów infrastruktury kluczy publicznych usługi Azure Stack — opcjonalnie certyfikaty PaaS](azure-stack-pki-certs.md#optional-paas-certificates).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 System powinien spełniać następujące wymagania wstępne, przed wygenerowaniem CSR(s) certyfikatów PKI dla wdrożenia usługi Azure Stack:
 
- - Narzędzie do sprawdzania gotowości platformy Microsoft Azure Stack
- - Atrybuty certyfikatu:
-    - Nazwa regionu
-    - Zewnętrzne w pełni kwalifikowana nazwa domeny (FQDN)
-    - Podmiot
- - Windows 10 lub Windows Server 2016
- 
+- Narzędzie do sprawdzania gotowości platformy Microsoft Azure Stack
+- Atrybuty certyfikatu:
+  - Nazwa regionu
+  - Zewnętrzne w pełni kwalifikowana nazwa domeny (FQDN)
+  - Podmiot
+- Windows 10 lub Windows Server 2016
+
   > [!NOTE]  
   > Po otrzymaniu certyfikatów kopii ze swoim urzędem certyfikacji w krokach w [przygotowywanie usługi Azure Stack certyfikatówpki](azure-stack-prepare-pki-certs.md) będą musieli wykonać na tym samym systemie!
 
 ## <a name="generate-certificate-signing-requests"></a>Generowanie żądania podpisania certyfikatu
 
-Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack: 
+Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack:
 
-1.  Zainstaluj AzsReadinessChecker z wiersz polecenia programu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
+1. Zainstaluj AzsReadinessChecker z wiersz polecenia programu PowerShell (5.1 lub nowszej), uruchamiając następujące polecenie cmdlet:
 
     ```PowerShell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
-2.  Zadeklaruj **podmiotu** jako słownik uporządkowany. Na przykład: 
+2. Zadeklaruj **podmiotu** jako słownik uporządkowany. Na przykład:
 
     ```PowerShell  
-    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"} 
+    $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
     ```
+
     > [!note]  
     > Jeśli zostanie podana nazwa pospolita (CN) to zostanie ono zastąpione przez nazwy DNS pierwszego żądania certyfikatu.
 
-3.  Zadeklaruj katalog wyjściowy, który już istnieje. Na przykład:
+3. Zadeklaruj katalog wyjściowy, który już istnieje. Na przykład:
 
     ```PowerShell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ```
-4.  Zadeklaruj systemu tożsamości
+
+4. Zadeklaruj systemu tożsamości
 
     Usługa Azure Active Directory
 
@@ -107,12 +108,12 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
     ```
 
     Aby uwzględnić usługi PaaS, określ przełącznik ```-IncludePaaS```
-    
+
 8. Przejrzyj dane wyjściowe:
 
     ```PowerShell  
     New-AzsCertificateSigningRequest v1.1809.1005.1 started.
-    
+
     CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont
     oso.com&dns=*.vault.east.azurestack.contoso.com&dns=*.adminvault.east.azurestack.contoso.com&dns=portal.east.azurestack.contoso.com&dns=adminportal.east.azurestack.contoso.com&dns=ma
     nagement.east.azurestack.contoso.com&dns=adminmanagement.east.azurestack.contoso.com*dn2=*.adminhosting.east.azurestack.contoso.com@dns=*.hosting.east.azurestack.contoso.com
@@ -123,7 +124,7 @@ Wykonaj następujące kroki, aby przygotować i sprawdzenia poprawności certyfi
     New-AzsCertificateSigningRequest Completed
     ```
 
-9.  Prześlij **. Liczba ŻĄDAŃ** pliku wygenerowanego do swojego urzędu certyfikacji (wewnętrznego lub publicznego).  Katalog wyjściowy **New AzsCertificateSigningRequest** zawiera CSR(s) niezbędne do przesłania do urzędu certyfikacji.  Katalog zawiera również, dla której można się odwołać, podrzędnych katalogu zawierającego pliki INF używane podczas generowania żądania certyfikatu. Pamiętaj, że urząd certyfikacji generuje certyfikaty przy użyciu wygenerowanego żądania, które spełniają [wymagania dotyczące usługi Azure Stack PKI](azure-stack-pki-certs.md).
+9. Prześlij **. Liczba ŻĄDAŃ** pliku wygenerowanego do swojego urzędu certyfikacji (wewnętrznego lub publicznego).  Katalog wyjściowy **New AzsCertificateSigningRequest** zawiera CSR(s) niezbędne do przesłania do urzędu certyfikacji.  Katalog zawiera również, dla której można się odwołać, podrzędnych katalogu zawierającego pliki INF używane podczas generowania żądania certyfikatu. Pamiętaj, że urząd certyfikacji generuje certyfikaty przy użyciu wygenerowanego żądania, które spełniają [wymagania dotyczące usługi Azure Stack PKI](azure-stack-pki-certs.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

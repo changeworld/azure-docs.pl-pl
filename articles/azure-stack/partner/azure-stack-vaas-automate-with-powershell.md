@@ -10,25 +10,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 01/17/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6287b4f07c99dd45628ed4b9eb1412200cf7cd43
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 99a1b218919380dcdb0c1dba4540d9f8219d2df3
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244610"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593645"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>Automatyzacja sprawdzania poprawności usługi Azure Stack, przy użyciu programu PowerShell
 
 Weryfikacji jako usługa (VaaS) zapewnia możliwość automatyzacji, uruchamiania testów za pomocą **LaunchVaaSTests.ps1** skryptu.
 
-Za pomocą programu PowerShell dla następującego przepływu pracy:
-
-- Przebieg testu
+> [!NOTE]
+> Usługi Automation jest dostępna tylko dla przepływu pracy przebiegu testu. Sprawdzanie poprawności pakietu i sprawdzanie poprawności rozwiązania przepływy pracy są obsługiwane tylko za pośrednictwem portalu VaaS.
 
 W tym samouczku dowiesz się, jak utworzyć skrypt, który:
 

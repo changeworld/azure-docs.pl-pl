@@ -13,14 +13,14 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/4/2019
-ms.author: rkarlin
-ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 2/17/2019
+ms.author: monhaber
+ms.openlocfilehash: 7931caa985bc5dea98ca36bd15e0e634855ab2c5
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343514"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650635"
 ---
 # <a name="working-with-security-policies"></a>Praca z zasadami zabezpieczeń
 
@@ -99,6 +99,20 @@ Można edytować domyślnych zasad zabezpieczeń dla każdej subskrypcji platfor
 Aby uzyskać instrukcje, jak edytować zasady zabezpieczeń, usługa Azure Policy, zobacz i [Tworzenie zasad w celu wymuszania zgodności i zarządzania nimi](../governance/policy/tutorials/create-and-manage.md).
 
 Możesz edytować zasady zabezpieczeń w portalu usługi Azure Policy, za pośrednictwem interfejsu API REST lub przy użyciu programu Windows PowerShell. Poniższy przykład zawiera instrukcje dotyczące edycji przy użyciu interfejsu API REST.
+
+
+## <a name="disable-security-policies"></a>Wyłączanie zasad zabezpieczeń
+Jeśli domyślne zasady zabezpieczeń jest generowany zalecenia, która nie jest odpowiednia dla danego środowiska, można je zatrzymać, wyłączając definicji zasad, która wysyła zalecenia. Jest to realizowane za pośrednictwem portalu usługi Azure Policy (a nie w portalu usługi Security Center), zgodnie z opisem w tym miejscu.
+Aby uzyskać więcej informacji na temat zalecenia, zobacz [Zarządzanie zaleceniami dotyczącymi zabezpieczeń](security-center-recommendations.md). 
+1. Przejdź do usługi Azure Policy, a następnie kliknij przycisk **przypisania**.
+2. W **domyślna ASC** wiersz kliknij trzy kropki, a **wyświetlić definicji**. **Definicja inicjatywy** zostanie otwarta strona.
+   ![Wyświetl definicję](./media/tutorial-security-policy/view-definition.png)
+3. Kliknij przycisk **Edytuj intitiative**. **Edytuj definicję inicjatywy** zostanie otwarta strona.
+   ![Edytuj inicjatywę](./media/tutorial-security-policy/edit-initiative.png)
+4. W **zasady i parametry** sekcji wyszukiwanie zasad który wywołuje rekomendacji, który chcesz wyłączyć, a następnie z listy rozwijanej wybierz **wyłączone**.
+   ![Wyłącz zasady](./media/tutorial-security-policy/disable-policy.png)
+1. Kliknij przycisk **Zapisz** (znajdujący się w dolnej części strony).
+
 
 ### <a name="configure-a-security-policy-using-the-rest-api"></a>Konfigurowanie zasad zabezpieczeń przy użyciu interfejsu API REST
 

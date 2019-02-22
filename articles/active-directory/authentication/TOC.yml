@@ -25,8 +25,8 @@ items:
   items:
   - name: Metody uwierzytelniania
     href: concept-authentication-methods.md
-  - name: Rejestracja zbieżna
-    href: concept-registration-mfa-sspr-converged.md
+  - name: Rejestracja łączona
+    href: concept-registration-mfa-sspr-combined.md
   - name: Resetowanie hasła
     items:
     - name: Jak działa resetowanie hasła
@@ -104,6 +104,12 @@ items:
         href: howto-mfa-nps-extension-rdg.md
       - name: Sieć VPN
         href: howto-mfa-nps-extension-vpn.md
+  - name: Rejestracja łączona
+    items:
+    - name: Włączanie rejestracji łączonej
+      href: howto-registration-mfa-sspr-combined.md
+    - name: Rozwiązywanie problemów z rejestracją łączoną
+      href: howto-registration-mfa-sspr-combined-troubleshoot.md
   - name: Ochrona haseł w usłudze Azure AD
     items:
     - name: Konfigurowanie listy zakazanych haseł
@@ -191,8 +197,6 @@ items:
         href: howto-mfa-nps-extension-errors.md
   - name: Rozwiązywanie problemów
     items:
-    - name: Wyłączanie rejestracji zbieżnej
-      href: howto-registration-mfa-sspr-converged-troubleshoot.md
     - name: Rozwiązywanie problemów z samoobsługowym resetowaniem hasła
       href: active-directory-passwords-troubleshoot.md
     - name: Samoobsługowe resetowanie hasła — często zadawane pytania
@@ -225,9 +229,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: d834bcd12f4f8af44c467233230744571dd9b23c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99d21cd59b7281dbb6a34c2e3cdc9026c9955622
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660055"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585988"

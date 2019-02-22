@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c251a159ec28d7fb03009ebcdc84056da739f937
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860411"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587433"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Często zadawane pytania: Replikacji Azure – Azure
 
@@ -59,7 +59,7 @@ Tak, można [replikowanie maszyn wirtualnych z przypięte w strefie](https://azu
 
 ### <a name="can-i-exclude-disks"></a>Czy można wykluczyć dysków?
 
-Tak, można wykluczyć dyski w czasie ochrony przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące programu PowerShell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine).
+Tak, można wykluczyć dyski w czasie ochrony przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [artykułu](azure-to-azure-exclude-disks.md)
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Jak często można replikować na platformę Azure?
 Replikacja jest ciągłego, Jeśli replikujesz maszyny wirtualne platformy Azure do innego regionu platformy Azure. Aby uzyskać więcej informacji, zobacz [architektura replikacji Azure – Azure](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-architecture#replication-process).

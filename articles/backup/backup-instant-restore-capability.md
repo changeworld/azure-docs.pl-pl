@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 1a25a9c3e0d099349286476f0ae3791efee1642f
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 566faaef4e91237bd0a0f915ea39f4bd389120d8
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56452818"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593084"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -37,11 +37,11 @@ Obecnie zadanie tworzenia kopii zapasowej obejmuje dwa etapy:
 1.  Wykonanie migawki maszyny Wirtualnej.
 2.  Przenoszenie migawki maszyny Wirtualnej do magazynu usługi Azure Recovery Services.
 
-Punkt odzyskiwania jest uważany za utworzony po zakończeniu fazy 1 i 2. W ramach tego uaktualnienia punkt odzyskiwania jest tworzony, natychmiast po zakończeniu migawki i tego punktu odzyskiwania typu Migawka może służyć do przywracania, przy użyciu tego samego przepływu przywracania. Tego punktu odzyskiwania w witrynie Azure portal można zidentyfikować za pomocą "snapshot" jako typ punktu odzyskiwania, a po przekazaniu migawki do magazynu, typ punktu odzyskiwania na "migawka i magazyn."
+Punkt odzyskiwania jest uważany za utworzony po zakończeniu fazy 1 i 2. W ramach tego uaktualnienia punkt odzyskiwania jest tworzony, natychmiast po zakończeniu migawki i tego punktu odzyskiwania typu Migawka może służyć do przywracania, przy użyciu tego samego przepływu przywracania. Tego punktu odzyskiwania w witrynie Azure portal można zidentyfikować za pomocą "snapshot" jako typ punktu odzyskiwania, a po przekazaniu migawki do magazynu typ punktu odzyskiwania zmienia się na "migawka i Magazyn".
 
 ![Zadanie tworzenia kopii zapasowej w maszynę Wirtualną stosu kopii zapasowej modelu Resource Manager deployment — magazynu i Magazyn](./media/backup-azure-vms/instant-rp-flow.png)
 
-Migawki są przechowywane przez 7 dni. Ta funkcja umożliwia operacji przywracania istnieje migawek, skracając czas przywracania w dół. Zmniejsza to czas, który jest wymagany do przekształcania, a następnie skopiować dane z magazynu do konta magazynu użytkownika dla scenariuszy dysk niezarządzany, natomiast w przypadku dysków zarządzanych użytkowników, tworzy dyski zarządzane poza dane kopii zapasowej.
+Domyślnie migawki są przechowywane przez dwa dni. Ta funkcja umożliwia operacji przywracania istnieje migawek, skracając czas przywracania w dół. Zmniejsza to czas, który jest wymagany do przekształcania, a następnie skopiować dane z magazynu do konta magazynu użytkownika dla scenariuszy dysk niezarządzany, natomiast w przypadku dysków zarządzanych użytkowników, tworzy dysków zarządzanych z danych usługi Recovery Services.
 
 ## <a name="feature-considerations"></a>Zagadnienia związane z funkcji
 

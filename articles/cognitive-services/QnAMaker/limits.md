@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 6f36000eb5a17e58d1450a064897dd9caef89bad
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 424aa7038fecba7a11c1ccaa07053cf2e1606835
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859355"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651138"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>Usługa QnA Maker wiedzy limity i granice
 Pełną listę limitów przez narzędzie QnA Maker.
@@ -71,6 +71,6 @@ Te reprezentują limity dla każdej akcji aktualizacji; oznacza to kliknięcie *
 
 Dowiedz się, kiedy i jak zmienić warstwy usługi:
 
-* [Usługa QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): po użytkownik musi mieć więcej pytań i odpowiedzi w wiedzy, poza Twoja bieżąca warstwa Uaktualnij warstwę cenową usługi QnA Maker.
-* [Wyszukiwanie](how-to/upgrade-qnamaker-service.md#upgrade-app-service) — w przypadku bazy wiedzy musi obsługiwać więcej żądań z aplikacji klienckiej, Uaktualnij usługi app service w warstwie cenowej.
-* [Usługa App service](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): po użytkownik chce mieć wiele baz wiedzy, Uaktualnij warstwę cenową usługi Azure Search.
+* [Usługa QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku): Jeśli musisz mieć więcej plików źródłowych lub większe dokumenty w wiedzy, poza bieżącym warstwę, Uaktualnij warstwę cenową usługi QnA Maker.
+* [App Service](how-to/upgrade-qnamaker-service.md#upgrade-app-service): W przypadku bazy wiedzy musi obsługiwać więcej żądań z aplikacji klienckich, należy uaktualnić usługi app service w warstwie cenowej.
+* [Azure Search](how-to/upgrade-qnamaker-service.md#upgrade-azure-search-service): Podczas planowania mają wiele bazy wiedzy, Uaktualnij warstwę cenową usługi Azure Search.

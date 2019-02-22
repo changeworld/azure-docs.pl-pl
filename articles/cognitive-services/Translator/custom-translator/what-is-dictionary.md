@@ -9,18 +9,18 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: bc297fd4cdda8cdb3dc618b73e91d2f4e31e8b6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 87ea4edd9bb548701d6bcf63dd542ed6e35d9f7f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212413"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585557"
 ---
 # <a name="what-is-a-dictionary"></a>Co to jest słownikiem?
 
 Słownik jest wyrównany pary dokumentów określa listę frazy lub zdania i ich odpowiednich tłumaczenia. Słownik w szkolenia, należy użyć Microsoft Translator do tłumaczenia zawsze wszystkie wystąpienia źródła frazy lub zdania, za pomocą tłumaczenia, podane w słowniku. Słowniki są czasami nazywane glosariuszu lub określenie zasad. Słownika można potraktować jako siłowe "Kopiuj i Zamień" do listy wszystkich warunków umowy.
 
-Słowniki działają tylko dla projektów w parach języka, które mają w pełni obsługiwany system neuronowego tłumaczenia maszynowego (NMT) firmy Microsoft za ich. Zobacz http://www.aka.ms/translatorlanguages pełną listę języków.
+Słowniki działają tylko dla projektów w parach języka, które mają w pełni obsługiwany system neuronowego tłumaczenia maszynowego (NMT) firmy Microsoft za ich. [Wyświetl pełną listę języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="phrase-dictionary"></a>Słownik frazy 
 Po dołączeniu słownika frazy szkolenie modelu, dowolny wyraz lub frazę, wyświetlane jest tłumaczony w taki sposób, który określiłeś. Pozostała część zdanie jest tłumaczony w zwykły sposób. Słownik frazy służy do określania fraz, które nie powinien być tłumaczony, podając tę samą frazę nieprzetłumaczonych w pliku źródłowym i docelowym w słowniku.

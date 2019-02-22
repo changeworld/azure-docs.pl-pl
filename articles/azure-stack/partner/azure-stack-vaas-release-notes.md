@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
-ms.openlocfilehash: 5252eed66018cd2028545567dfe62ca7ba17be7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/19/2019
+ms.openlocfilehash: 884c87501a54a582177cba99596fe6f0b4cccf36
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247820"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593339"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>Informacje o wersji dotyczące weryfikacji jako usługa
 
@@ -28,14 +28,13 @@ ms.locfileid: "55247820"
 W tym artykule znajdują się informacje o wersji dla usługi Azure Stack weryfikacji jako usługa.
 
 ## <a name="version-405"></a>Wersja 4.0.5
+
 17 stycznia 2019 r
 
--  Zaktualizowano w celu adres magazynu puli niespójności Test identyfikacji dysku. Wersja: 5.1.14.0  -> 5.1.15.0
--  Azure Stack miesięcznych aktualizacji weryfikacji zaktualizowane w celu rozwiązania zatwierdzone oprogramowanie i zawartość niespójności sprawdzania poprawności. Wersja: 5.1.14.0  -> 5.1.15.0
--  Weryfikacja pakietu rozszerzenia OEM zaktualizowane do wykonania niezbędnych kontroli *przed* kroku aktualizacji usługi Azure Stack. Wersja: 5.1.14.0  -> 5.1.15.0
--  Poprawki błędów wewnętrznych
-
-
+- Zaktualizowano w celu adres magazynu puli niespójności Test identyfikacji dysku. Wersja: 5.1.14.0 -> 5.1.15.0
+- Azure Stack miesięcznych aktualizacji weryfikacji zaktualizowane w celu rozwiązania zatwierdzone oprogramowanie i zawartość niespójności sprawdzania poprawności. Wersja: 5.1.14.0 -> 5.1.17.0
+- Weryfikacja pakietu rozszerzenia OEM zaktualizowany, aby wykonać wymagane kontrole przed wykonaniem kroku aktualizacji usługi Azure Stack. Wersja: 5.1.14.0 -> 5.1.16.0
+- Poprawki błędów wewnętrznych
 
 ## <a name="version-402"></a>W wersji 4.0.2
 
@@ -77,7 +76,7 @@ Jeśli używasz usługi Azure Stack miesięcznych aktualizacji weryfikacji przep
 
 - Wymagania wstępne VaaS i wirtualny dysk twardy z aktualizacjami
 
-    `Install-VaaSPrerequisites` teraz wymaga poświadczeń administratora chmury, aby rozwiązać problem podczas sprawdzania poprawności rozwiązań. Dokumentacja w [pobrać i zainstalować agenta](azure-stack-vaas-local-agent.md#download-and-install-the-agent) został zaktualizowany o następujące czynności:
+    `Install-VaaSPrerequisites` teraz wymaga poświadczeń administratora chmury, aby rozwiązać problem podczas sprawdzania poprawności pakietu. Dokumentacja w [pobrać i zainstalować agenta](azure-stack-vaas-local-agent.md#download-and-install-the-agent) został zaktualizowany o następujące czynności:
 
     ```PowerShell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
@@ -104,7 +103,7 @@ Jeśli używasz usługi Azure Stack miesięcznych aktualizacji weryfikacji przep
 
   - Powiadomienia podpisywania pakietu
 
-    Po przesłaniu pakietu dostosowywania OEM jako część przepływu pracy weryfikacji rozwiązania formatu pakietu zostanie zweryfikowana, aby upewnić się, czy jest zgodna z opublikowanych specyfikacji. Jeśli pakiet nie jest zgodne, działanie zakończy się niepowodzeniem. Powiadomienia e-mail będą wysyłane na adres e-mail zarejestrowany skontaktuj się z usługi Azure Active Directory dla dzierżawy.
+    Po przesłaniu pakietu dostosowywania OEM jako część przepływu pracy weryfikacji pakietu formatu pakietu zostanie zweryfikowana, aby upewnić się, czy jest zgodna z opublikowanych specyfikacji. Jeśli pakiet nie jest zgodne, działanie zakończy się niepowodzeniem. Powiadomienia e-mail będą wysyłane na adres e-mail zarejestrowany skontaktuj się z usługi Azure Active Directory dla dzierżawy.
 
   - Kategoria testu interaktywne
 

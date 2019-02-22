@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6307c57f32700c0c2dd2e5da15b98a2a54dbe9c4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 71d49edc3fa52cce5d128b94d42098150aa5f3a3
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339332"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585087"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Role niestandardowe dla zasobów platformy Azure
 
@@ -43,6 +43,7 @@ Poniżej przedstawiono, jak rolę niestandardową wygląda jak wyświetlane w fo
     "Microsoft.Compute/virtualMachines/start/action",
     "Microsoft.Compute/virtualMachines/restart/action",
     "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Insights/alertRules/*",
     "Microsoft.Insights/diagnosticSettings/*",
@@ -65,16 +66,20 @@ Podczas tworzenia roli niestandardowej pojawia się w witrynie Azure portal za p
 
 ## <a name="steps-to-create-a-custom-role"></a>Kroki, aby utworzyć rolę niestandardową
 
+1. Zdecyduj, jak chcesz utworzyć rolę niestandardową
+
+    Można utworzyć za pomocą ról niestandardowych [programu Azure PowerShell](custom-roles-powershell.md), [wiersza polecenia platformy Azure](custom-roles-cli.md), lub [interfejsu API REST](custom-roles-rest.md).
+
 1. Określ uprawnienia, których potrzebujesz
 
     Podczas tworzenia roli niestandardowej, musisz wiedzieć zasobu operacji dostawcy, które są dostępne do definiowania uprawnień. Aby wyświetlić listę operacji, można użyć [Get AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) lub [lista operacji dostawcy az](/cli/azure/provider/operation#az-provider-operation-list) poleceń.
-    Aby określić uprawnienia dla swojej roli niestandardowej, należy dodać operacje do `Actions` lub `NotActions` właściwości [definicji roli](role-definitions.md). Jeśli masz operacje na danych, należy dodać tych, które mają `DataActions` lub `NotDataActions` właściwości.
+    Należy dodać operacje do `Actions` lub `NotActions` właściwości [definicji roli](role-definitions.md). W przypadku operacji na danych spowoduje dodanie tych, które mają `DataActions` lub `NotDataActions` właściwości.
 
-2. Tworzenie roli niestandardowej
+1. Tworzenie roli niestandardowej
 
-    Aby utworzyć rolę niestandardową, można użyć programu Azure PowerShell lub wiersza polecenia platformy Azure. Zazwyczaj rozpoczynać istniejącą rolę wbudowaną, a następnie zmodyfikuj ją do własnych potrzeb. Następnie możesz użyć [New AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) lub [utworzenia definicji roli az](/cli/azure/role/definition#az-role-definition-create) polecenia, aby utworzyć rolę niestandardową. Aby utworzyć rolę niestandardową, konieczne jest posiadanie `Microsoft.Authorization/roleDefinitions/write` uprawnienia na wszystkich `AssignableScopes`, takich jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
+    Zazwyczaj rozpoczynać istniejącą rolę wbudowaną, a następnie zmodyfikuj ją do własnych potrzeb. Następnie możesz użyć [New AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) lub [utworzenia definicji roli az](/cli/azure/role/definition#az-role-definition-create) polecenia, aby utworzyć rolę niestandardową. Aby utworzyć rolę niestandardową, konieczne jest posiadanie `Microsoft.Authorization/roleDefinitions/write` uprawnienia na wszystkich `AssignableScopes`, takich jak [właściciela](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator).
 
-3. Testowanie roli niestandardowej
+1. Testowanie roli niestandardowej
 
     Po utworzeniu roli użytkownika niestandardowego, należy go przetestować, aby sprawdzić, czy działa zgodnie z oczekiwaniami. Jeśli musisz wprowadzić korekty później, należy zaktualizować roli niestandardowej.
 

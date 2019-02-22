@@ -15,12 +15,12 @@ ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: ac4366a2e90ea239c650e611b7c4e8dddf5d5106
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243644"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649666"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Tworzenie i publikowanie elementu portalu Marketplace
 
@@ -129,28 +129,28 @@ ms.locfileid: "55243644"
 
 ### <a name="identity-information"></a>Informacje o tożsamości
 
-| Name | Wymagany | Type | Ograniczenia | Opis |
+| Name (Nazwa) | Wymagane | Type | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
-| Name |X |Ciąg |[A-Za-z0-9]+ | |
-| Wydawca |X |Ciąg |[A-Za-z0-9]+ | |
-| Wersja |X |Ciąg |[SemVer v2](https://semver.org/) | |
+| Name (Nazwa) |X |String |[A-Za-z0-9]+ | |
+| Wydawca |X |String |[A-Za-z0-9]+ | |
+| Wersja |X |String |[SemVer v2](https://semver.org/) | |
 
 ### <a name="metadata"></a>Metadane
 
-| Name | Wymagany | Type | Ograniczenia | Opis |
+| Name (Nazwa) | Wymagane | Type | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
-| Nazwa wyświetlana |X |Ciąg |Zalecenie wynoszącą 80 znaków |Portalu mogą być wyświetlane nazwy elementu bez problemu zmieniała, jeśli jest więcej niż 80 znaków. |
-| PublisherDisplayName |X |Ciąg |Zalecenie 30 znaków |Portalu mogą być wyświetlane swoją nazwę wydawcy zostanie wyłączone poprawnie, jeśli jest więcej niż 30 znaków. |
-| PublisherLegalName |X |Ciąg |Maksymalnie 256 znaków | |
-| Podsumowanie |X |Ciąg |60 do 100 znaków | |
-| LongSummary |X |Ciąg |140 do 256 znaków |Jeszcze nieobsługiwane w usłudze Azure Stack. |
+| Nazwa wyświetlana |X |String |Zalecenie wynoszącą 80 znaków |Portalu mogą być wyświetlane nazwy elementu bez problemu zmieniała, jeśli jest więcej niż 80 znaków. |
+| PublisherDisplayName |X |String |Zalecenie 30 znaków |Portalu mogą być wyświetlane swoją nazwę wydawcy zostanie wyłączone poprawnie, jeśli jest więcej niż 30 znaków. |
+| PublisherLegalName |X |String |Maksymalnie 256 znaków | |
+| Podsumowanie |X |String |60 do 100 znaków | |
+| LongSummary |X |String |140 do 256 znaków |Jeszcze nieobsługiwane w usłudze Azure Stack. |
 | Opis |X |[HTML](https://auxdocs.azurewebsites.net/en-us/documentation/articles/gallery-metadata#html-sanitization) |500 do 5000 znaków | |
 
 ### <a name="images"></a>Obrazy
 
 Portal Marketplace korzysta z następujących ikon:
 
-| Name | Szerokość | Wysokość | Uwagi |
+| Name (Nazwa) | Szerokość | Wysokość | Uwagi |
 | --- | --- | --- | --- |
 | Szerokie |255 px |115 px |Zawsze wymagane |
 | Large |115 px |115 px |Zawsze wymagane |
@@ -166,19 +166,19 @@ Każdy element portalu Marketplace powinny być oznakowane za pomocą kategorii,
 
 Każdy element portalu Marketplace, mogą obejmować różne linki do dodatkowej zawartości. Linki są określone jako listę wartości nazwy i identyfikatory URI:
 
-| Name | Wymagany | Type | Ograniczenia | Opis |
+| Name (Nazwa) | Wymagane | Type | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
-| Nazwa wyświetlana |X |Ciąg |Co najwyżej 64 znaków. | |
+| Nazwa wyświetlana |X |String |Co najwyżej 64 znaków. | |
 | Identyfikator URI |X |URI | | |
 
 ### <a name="additional-properties"></a>Dodatkowe właściwości
 
 Oprócz poprzedniego metadane autorzy Marketplace można podać niestandardowy klucz/wartość pary danych w następującej postaci:
 
-| Name | Wymagany | Type | Ograniczenia | Opis |
+| Name (Nazwa) | Wymagane | Type | Ograniczenia | Opis |
 | --- | --- | --- | --- | --- |
-| Nazwa wyświetlana |X |Ciąg |Maksymalnie 25 znaków. | |
-| Value |X |Ciąg |Maksymalnie 30 znaków | |
+| Nazwa wyświetlana |X |String |Maksymalnie 25 znaków. | |
+| Wartość |X |String |Maksymalnie 30 znaków | |
 
 ### <a name="html-sanitization"></a>Narzędzie oczyszczania HTML
 
@@ -192,8 +192,8 @@ Ikon i tekstu dla elementów portalu Marketplace w portalu usługi Azure Stack t
 
 ### <a name="create-blade"></a>Blok tworzenia
 
-![Blok tworzenia](media/azure-stack-marketplace-item-ui-reference/image1.png)
+![Blok tworzenia](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>Blok szczegółów elementu portalu Marketplace
 
-![Blok szczegółów elementu portalu Marketplace](media/azure-stack-marketplace-item-ui-reference/image3.png)
+![Blok szczegółów elementu portalu Marketplace](media/azure-stack-create-and-publish-marketplace-item/image3.png)

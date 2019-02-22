@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: d47c560515a13efa8346974e828f14f9a15f0e4a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c2bee4d35fe857d5ad3bf26dc1145b8721c85df4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53731186"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594240"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Kupowanie niestandardowej nazwy domeny dla usługi Azure App Service
 
@@ -126,7 +126,7 @@ Następnie wybierz odpowiednie opcje dla swojej domeny. Zobacz poniższą tabel�
 Kliknij przycisk **postanowienia prawne** Przejrzyj warunki i opłaty, a następnie kliknij pozycję **Kup**.
 
 > [!NOTE]
-> Domeny usługi App Service umożliwia hostowanie domen DNS platformy Azure. Oprócz opłaty rejestracji domeny użycia dla usługi Azure DNS opłaty. Aby uzyskać informacje, zobacz [cennik usługi Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
+> Domeny usługi App Service umożliwia GoDaddy dla domeny rejestracji i system DNS Azure hostowanie domen. Oprócz opłaty rejestracji domeny użycia dla usługi Azure DNS opłaty. Aby uzyskać informacje, zobacz [cennik usługi Azure DNS](https://azure.microsoft.com/pricing/details/dns/).
 >
 >
 
@@ -251,7 +251,7 @@ W witrynie Azure portal w menu po lewej stronie wybierz **wszystkich usług** > 
 
 Wybierz domenę dla Ciebie chcesz anulować lub usunąć. 
 
-### <a name="delete-hostname-bindings"></a>Usuwanie powiązania nazwy hosta
+### <a name="delete-hostname-bindings"></a>Usuń powiązania nazw hostów
 
 W menu po lewej stronie w domenie, wybierz **powiązania nazwy hosta**. Poniżej przedstawiono powiązania nazwy hosta z wszystkich usług platformy Azure.
 

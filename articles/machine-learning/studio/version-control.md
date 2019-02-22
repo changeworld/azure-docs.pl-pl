@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=haining, previous-author=hning86
 ms.date: 10/27/2016
-ms.openlocfilehash: 26e469076e16f57300cf3e385620a723ddf51a4c
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 1b57fefad726f8fb21f23fa9eef9e71643a3f51b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510735"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588402"
 ---
 # <a name="application-lifecycle-management-in-azure-machine-learning-studio"></a>Zarządzanie cyklem życia aplikacji w usłudze Azure Machine Learning Studio
 Usługa Azure Machine Learning Studio to narzędzie do tworzenia eksperymenty usługi machine learning, w których jest przygotowany do działania na platformie chmury platformy Azure. Takich jak środowiska IDE programu Visual Studio i usługi w chmurze skalowalne scalania w pojedynczej platformy. Różne zasoby do wdrożenia i wykonywanie zautomatyzowanych standardowego rozwiązania zarządzania cyklem życia aplikacji (ALM) na podstawie wersji można zastosować w usłudze Azure Machine Learning Studio. W tym artykule omówiono niektóre opcje i metod.
@@ -42,7 +42,7 @@ Migawki historii uruchamiania zachować niezmienne wersję eksperymentu w usłud
 Plik JSON jest tekstową reprezentację wartości wykres eksperymentu, który może zawierać odwołania do zasobów w obszarze roboczym, takich jak zestaw danych lub uczonego modelu. Nie zawiera Zserializowany wersję zasobu. Jeśli użytkownik podejmie próbę ponownego importowania danych dokumentów JSON do obszaru roboczego, zasoby, do którego istnieje odwołanie musi już istnieć z tej samej zawartości identyfikatorów, które są określone w eksperymencie. W przeciwnym razie nie można uzyskać dostępu importowanych eksperymentu.
 
 ## <a name="versioning-trained-model"></a>Przechowywanie wersji uczonego modelu
-Uczonego modelu w usłudze Azure Machine Learning jest serializowany do formatu, znany jako plik iLearner (`.iLearner`) i jest przechowywany na koncie magazynu obiektów Blob platformy Azure, które są skojarzone z obszarem roboczym. Jest jednym ze sposobów, aby pobrać kopię pliku iLearner za pośrednictwem interfejsu API ponownego trenowania. [W tym artykule](retrain-models-programmatically.md) wyjaśniono, jak działa interfejs API ponownego trenowania. Ogólne kroki:
+Uczonego modelu w usłudze Azure Machine Learning Studio jest serializowany do formatu, znany jako plik iLearner (`.iLearner`) i jest przechowywany na koncie magazynu obiektów Blob platformy Azure, które są skojarzone z obszarem roboczym. Jest jednym ze sposobów, aby pobrać kopię pliku iLearner za pośrednictwem interfejsu API ponownego trenowania. [W tym artykule](retrain-models-programmatically.md) wyjaśniono, jak działa interfejs API ponownego trenowania. Ogólne kroki:
 
 1. Skonfiguruj eksperymentu szkolenia.
 2. Dodaj port wyjściowy usługi sieci web do modułu Train Model lub moduł, który tworzy trenowanego modelu, takie jak dostrajanie Hiperparametrycznego Model lub utworzyć Model języka R.
@@ -57,7 +57,7 @@ Po utworzeniu plik iLearner, zawierający trenowanego modelu, można następnie 
 Plik iLearner zapisany, następnie może służyć do oceniania za pośrednictwem wdrożonymi usługami sieci web.
 
 ## <a name="versioning-web-service"></a>Przechowywanie wersji usługi sieci web
-Aby wdrożyć dwa typy usług sieci web z eksperymentu usługi Azure Machine Learning. Klasyczna usługa sieci web jest ściśle powiązany z eksperymentu, a także obszaru roboczego. W ramach usługi Azure Resource Manager korzysta z nowej usługi sieci web, a nie jest już połączone z oryginalnego eksperymentu lub obszar roboczy.
+Możesz wdrożyć dwa typy sieci web usługi Azure Machine Learning Studio eksperymentować. Klasyczna usługa sieci web jest ściśle powiązany z eksperymentu, a także obszaru roboczego. W ramach usługi Azure Resource Manager korzysta z nowej usługi sieci web, a nie jest już połączone z oryginalnego eksperymentu lub obszar roboczy.
 
 ### <a name="classic-web-service"></a>Klasyczna usługa sieci web
 Do wersji klasyczna usługa sieci web możesz korzystać z zalet konstrukcji punktu końcowego usługi sieci web. Oto typowy przepływ:
@@ -79,7 +79,7 @@ Jeśli tworzysz nową usługę sieci web opartych na usłudze Azure Resource Man
 Po utworzeniu wyeksportowany plik WSD i nad nim kontroli wersji, można także wdrożyć WSD jako nowej usługi sieci web w ramach planu usługi sieci web w różnych w innym regionie platformy Azure. Po prostu upewnij się, że użytkownik poda prawidłowego magazynu konfiguracji konta, a także nowy identyfikator planu usługi sieci web. Zastosowania poprawki w plikach różnych iLearner, można zmodyfikować plik WSD i zaktualizuj odwołanie do lokalizacji trenowanego modelu i wdrożyć go jako nowej usługi sieci web.
 
 ## <a name="automate-experiment-execution-and-deployment"></a>Automatyzowanie wykonywania eksperymentów i wdrażania
-Ważnym aspektem ALM jest zautomatyzować proces wdrażania aplikacji i wykonywanie. W usłudze Azure Machine Learning, można to zrobić za pomocą [modułu programu PowerShell](https://aka.ms/amlps). Oto przykład czynności end-to-end, które są istotne dla standardowych ALM zautomatyzować proces wykonywania/ciągłego wdrażania przy użyciu [modułu programu PowerShell usługi Azure Machine Learning Studio](https://aka.ms/amlps). Każdy krok jest połączony z co najmniej jeden polecenia cmdlet środowiska PowerShell służących do wykonywania tego kroku.
+Ważnym aspektem ALM jest zautomatyzować proces wdrażania aplikacji i wykonywanie. W usłudze Azure Machine Learning Studio, można to zrobić za pomocą [modułu programu PowerShell](https://aka.ms/amlps). Oto przykład czynności end-to-end, które są istotne dla standardowych ALM zautomatyzować proces wykonywania/ciągłego wdrażania przy użyciu [modułu programu PowerShell usługi Azure Machine Learning Studio](https://aka.ms/amlps). Każdy krok jest połączony z co najmniej jeden polecenia cmdlet środowiska PowerShell służących do wykonywania tego kroku.
 
 1. [Przekaż zestaw danych](https://github.com/hning86/azuremlps#upload-amldataset).
 2. Skopiuj eksperyment do obszaru roboczego z [obszaru roboczego](https://github.com/hning86/azuremlps#copy-amlexperiment) lub z [galerii](https://github.com/hning86/azuremlps#copy-amlexperimentfromgallery), lub [zaimportować](https://github.com/hning86/azuremlps#import-amlexperimentgraph) [wyeksportowane](https://github.com/hning86/azuremlps#export-amlexperimentgraph) eksperymentów na podstawie danych lokalnych dysk.
