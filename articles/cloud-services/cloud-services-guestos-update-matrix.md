@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/5/2019
+ms.date: 2/20/2019
 ms.author: raiye
-ms.openlocfilehash: 76009115f855a840c81e79d0c864187c8410aa23
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 063834af9b56e9959883c00bb58c70f0d333c455
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751518"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588572"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -77,6 +77,15 @@ Zainstalowane środowisko .NET framework: 3.5, 4.7.2
 > [!NOTE]
 > Zestaw Windows Azure SDK dla platformy .NET — 3.0 można pobrać [tutaj][Windows Azure SDK].
 >
+>Kroki instalacji:
+>1. Odinstaluj wszystkie starsze wersje MicrosoftAzureAuthoringTools*.msi
+>2. Zainstaluj [zestaw Azure SDK dla platformy .NET — 3.0][Windows Azure SDK]
+>3. Uruchom ponownie komputer
+>4. Utwórz nowy projekt usługi w chmurze i Dodaj jedną rolę procesu roboczego
+>5. Zmień rodziny systemów operacyjnych na 6 i utworzyć pakiet
+>6. Wdrażanie pakietu na platformie Azure przy użyciu witryny Azure portal lub programu Visual Studio
+>
+
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |
@@ -92,6 +101,7 @@ Zainstalowane środowisko .NET framework: 3.5, 4.6.2
 > [!NOTE]
 > Hasła protokołu RDP dla rodziny systemów operacyjnych 5 musi być co najmniej 10 znaków.
 >
+
 
 | Ciąg konfiguracji | Data wydania | Wyłącz daty |
 | --- | --- | --- |

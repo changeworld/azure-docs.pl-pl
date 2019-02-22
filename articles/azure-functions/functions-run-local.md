@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 703b8a7a094d0ea6f5b5dedaf02a218b407269d3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a16b9126bb2d5a5daa382417a413c8ceba0cea9a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813810"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649536"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -93,8 +93,8 @@ Następujące kroki użycia [APT](https://wiki.debian.org/Apt) do zainstalowania
 
     | Dystrybucja systemu Linux | Wersja |
     | --------------- | ----------- |
+    | Ubuntu 18.10    | `cosmic`    |
     | Ubuntu 18.04    | `bionic`    |
-    | Ubuntu 17.10    | `artful`    |
     | Ubuntu 17.04    | `zesty`     |
     | Ubuntu 16.04/Linux trudniej zdobyć 18    | `xenial`  |
 

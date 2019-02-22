@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 10/16/2018
 ms.author: aschhab
-ms.openlocfilehash: a5d0f457d06bd4e4e655d8f3ebc712f4d6ee7523
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: c2a6acc1ce48a8671af20df6daa89498a81fdb4c
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849910"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587161"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-nodejs"></a>Sposób użycia usługi Service Bus tematów i subskrypcji przy użyciu środowiska Node.js
 
@@ -36,6 +36,8 @@ Ten przewodnik opisuje sposób używania tematów usługi Service Bus i subskryp
 Aby uzyskać więcej informacji o tematach i subskrypcjach, zobacz [następne kroki](#next-steps) sekcji.
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-nodejs-application"></a>Tworzenie aplikacji w języku Node.js
 Tworzenie pustej aplikacji Node.js. Instrukcje dotyczące tworzenia aplikacji w technologii Node.js, zobacz [Tworzenie i wdrażanie aplikacji w technologii Node.js do witryny sieci Web platformy Azure], [Node.js usługi w chmurze] [ Node.js Cloud Service] przy użyciu Windows Program PowerShell lub witryny sieci Web za pomocą programu WebMatrix.
