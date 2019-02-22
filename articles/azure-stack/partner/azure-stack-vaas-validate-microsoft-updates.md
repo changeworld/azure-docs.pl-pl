@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 01/14/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4e6f5a17544c1419eb6101acdd6590f034ea4aa3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b7fa03cdf52fc3218e9556c9664daafdc60243f3
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241462"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593221"
 ---
 # <a name="validate-software-updates-from-microsoft"></a>Weryfikowanie aktualizacje oprogramowania firmy Microsoft
 
@@ -28,25 +28,35 @@ ms.locfileid: "55241462"
 
 Firma Microsoft udostępni okresowe aktualizacje oprogramowania Azure Stack. Te aktualizacje są dostarczane do usługi Azure Stack coengineering partnerów. Aktualizacje są dostarczane z wyprzedzeniem publicznie dostępnych. Można sprawdzania aktualizacji rozwiązania i przesyłanie opinii do firmy Microsoft.
 
-[!INCLUDE [azure-stack-vaas-workflow-validation-completion](includes/azure-stack-vaas-workflow-validation-completion.md)]
+Aktualizacji oprogramowania firmy Microsoft do usługi Azure Stack zostały oznaczone za pomocą konwencji nazewnictwa, na przykład 1803 wskazujący aktualizacji dla marca 2018 r. Dla informacji na temat zasad aktualizacji usługi Azure Stack, tempo i wersji są dostępne, zobacz [obsługi zasad w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-servicing-policy).
 
-## <a name="apply-monthly-update"></a>Zastosuj comiesięcznej aktualizacji
+## <a name="prerequisites"></a>Wymagania wstępne
 
-[!INCLUDE [azure-stack-vaas-workflow-section_update-azs](includes/azure-stack-vaas-workflow-section_update-azs.md)]
+Przed rozpoczęciem korzystania z miesięcznych procesu aktualizacji w VaaS, należy zapoznać się z następujących elementów:
 
-## <a name="create-a-workflow"></a>Tworzenie przepływu pracy
+- [Sprawdzanie poprawności jako kluczowe pojęcia dotyczące usługi](azure-stack-vaas-key-concepts.md)
+- [Testowanie weryfikacyjne interaktywnych funkcji](azure-stack-vaas-interactive-feature-verification.md)
 
-Liczba ocen aktualizacji korzystania z tego samego przepływu pracy jako **sprawdzania poprawności rozwiązań**.
+## <a name="required-tests"></a>Wymagane testy
 
-## <a name="run-tests"></a>Uruchom testy
+Następujące testy mają zostać wykonane w następującej kolejności miesięczne weryfikacji oprogramowania:
 
-1. Liczba ocen aktualizacji korzystania z tego samego przepływu pracy jako **sprawdzania poprawności rozwiązań**. 
+1. Miesięczne Weryfikacja aktualizacji usługi Azure Stack
+2. Aparat symulacji w chmurze
 
-2. Postępuj zgodnie z instrukcjami w artykule [testy Uruchom weryfikację rozwiązania](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests). Zamiast tego wybierz następujące testy:
-    - Miesięczne Weryfikacja aktualizacji usługi Azure Stack
-    - Aparat symulacji w chmurze
+## <a name="validating-software-updates"></a>Sprawdzanie poprawności aktualizacji oprogramowania
 
-Nie ma potrzeby żądania podpisywania dla ocen aktualizacji pakietu.
+1. Utwórz nową **sprawdzanie poprawności pakietu** przepływu pracy.
+1. Dla wymaganych testów powyżej, postępuj zgodnie z instrukcjami z [Uruchom sprawdzanie poprawności pakietu testów](azure-stack-vaas-validate-oem-package.md#run-package-validation-tests). Zobacz sekcję poniżej, aby uzyskać dodatkowe instrukcje na **miesięczne usługi Azure Stack aktualizacji weryfikacji** testu.
+
+### <a name="apply-the-monthly-update"></a>Zastosuj comiesięcznej aktualizacji
+
+1. Wybierz agenta w celu wykonania testów przed.
+1. Harmonogram **miesięczne Weryfikacja aktualizacji usługi Azure Stack**.
+1. Podaj lokalizację, aby pakiet rozszerzenia OEM, które są aktualnie wdrożonych na sygnatury i lokalizację, aby pakiet rozszerzenia OEM, które mają zostać zastosowane podczas aktualizacji. Aby skonfigurować adresy URL dla tych pakietów, zobacz [zarządzania pakietami w celu weryfikacji](azure-stack-vaas-validate-oem-package.md#managing-packages-for-validation).
+1. Wykonaj kroki w interfejsie użytkownika z wybranego agenta.
+
+Jeśli masz pytania lub wątpliwości skontaktuj się z pomocą [pomocy VaaS](mailto:vaashelp@microsoft.com).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

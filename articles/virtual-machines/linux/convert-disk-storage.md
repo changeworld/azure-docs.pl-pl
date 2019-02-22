@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/12/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 10dc7a2c7e4de44979ec72b1d292c69866e1faae
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 6b78027191d72c10b20c9d09a92c82be4a9e3e05
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326412"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650805"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Konwertuj Azure zarządzane dyski magazynu od planu standard do warstwy premium i odwrotnie
 
@@ -134,17 +134,20 @@ az disk update --sku $sku --name $diskName --resource-group $rgName
 az vm start --ids $vmId 
 ```
 
-## <a name="convert-using-the-azure-portal"></a>Konwertowanie za pomocą witryny Azure portal
+## <a name="convert-managed-disks-between-standard-and-premium-in-azure-portal"></a>Konwertowanie z dysków zarządzanych warstw standardowa i premium w witrynie Azure portal
 
-Można również przeprowadzić konwersję dysków niezarządzanych do dysków zarządzanych przy użyciu witryny Azure portal.
+Możesz również przekonwertować dyski zarządzane warstw standardowa i premium w witrynie Azure portal.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz maszynę Wirtualną z listy maszyn wirtualnych w portalu.
+2. Wybierz maszynę Wirtualną z listy **maszyn wirtualnych** w portalu.
+3. Jeśli maszyna wirtualna nie zostanie zatrzymana, kliknij przycisk **zatrzymać** górnej części bloku omówienia maszyn wirtualnych i zaczekaj, aż maszyny Wirtualnej zatrzymać.
 3. W bloku maszyny wirtualnej, wybierz **dysków** z menu.
-4. W górnej części **dysków** bloku wybierz **migracji do usługi managed disks**.
-5. Jeśli maszyna wirtualna znajduje się w zestawie dostępności, będzie ostrzeżenie na **migracji do usługi managed disks** bloku, który należy przekonwertować najpierw zestawu dostępności. Ostrzeżenie powinien mieć łącze, można kliknąć w celu konwersji zestawu dostępności. Po konwersji zestawu dostępności lub maszyna wirtualna nie znajduje się w zestawie dostępności, kliknij przycisk **migracji** można uruchomić procesu migracji dysków do usługi managed disks. 
+4. Wybierz dysk, który ma zostać przekonwertowany.
+5. Wybierz **konfiguracji** z menu.
+6. Zmiana **typ konta** z **standardowych dysków Twardych** do **dysku Premium SSD**i na odwrót.
+7. Kliknij przycisk **Zapisz** i zamknąć blok dysku.
 
-Maszyny Wirtualnej zostanie zatrzymana i uruchomiona ponownie po zakończeniu migracji.
+Aktualizacja typu dysku jest efektywne natychmiastowe. Możesz ponownie uruchomić maszynę Wirtualną po konwersji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

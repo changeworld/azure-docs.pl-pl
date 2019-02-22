@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: jdial
-ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 98b2c0bc27336e9ee5fe9aaf6332d9854e9af4de
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694061"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650295"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -221,7 +221,7 @@ Tak. Można użyć interfejsów API REST dla sieci wirtualnych w [usługi Azure 
 ### <a name="is-there-tooling-support-for-vnets"></a>Czy istnieje obsługę narzędzi dla sieci wirtualnych?
 Tak. Dowiedz się więcej o korzystaniu z:
 - Witryny Azure portal, aby wdrożyć sieci wirtualnych za pośrednictwem [usługi Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network) i [klasycznego](virtual-networks-create-vnet-classic-pportal.md) modeli wdrażania.
-- Zarządzanie sieciami wirtualnymi wdrożonymi za pośrednictwem programu PowerShell [usługi Resource Manager](/powershell/module/azurerm.network) i [klasycznego](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modeli wdrażania.
+- Zarządzanie sieciami wirtualnymi wdrożonymi za pośrednictwem programu PowerShell [usługi Resource Manager](/powershell/module/az.network) i [klasycznego](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) modeli wdrażania.
 - Interfejsu wiersza polecenia platformy Azure (CLI), wdrażanie i zarządzanie nimi sieci wirtualnych wdrożonych za pośrednictwem [usługi Resource Manager](/cli/azure/network/vnet) i [klasycznego](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) modeli wdrażania.  
 
 ## <a name="vnet-peering"></a>Komunikacja równorzędna sieci wirtualnych

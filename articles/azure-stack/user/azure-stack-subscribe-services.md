@@ -13,25 +13,25 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 66c462dee3a2940a7a090101ffb9cec7e4ff1e7c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 431c31b39103e5ef21cb83b388167cab57e0c129
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981295"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649088"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Samouczek: tworzenie i testowanie subskrypcji
 
-W tym samouczku dowiesz się, jak utworzyć subskrypcję zawierającą oferty i przetestuj. Dla testu Zaloguj się do aplikacji portal użytkowników usługi Azure Stack jako administrator chmury subskrybowaniu oferty, a następnie utwórz maszynę wirtualną.
+W tym samouczku pokazano, jak utworzyć subskrypcję zawierającą oferty i przetestuj. Dla testu Zaloguj się do aplikacji portal użytkowników usługi Azure Stack jako administrator chmury subskrybowaniu oferty, a następnie utwórz maszynę wirtualną.
 
 > [!TIP]
-> Dla bardziej zaawansowanych próbnego, możesz [Utwórz subskrypcję dla danego użytkownika](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) a następnie zaloguj się jako ten użytkownik w aplikacji portal użytkowników. 
+> Dla bardziej zaawansowanych próbnego, możesz [Utwórz subskrypcję dla danego użytkownika](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) a następnie zaloguj się jako ten użytkownik w aplikacji portal użytkowników.
 
-W tym samouczku dowiesz się, jak subskrybować ofertę usługi Azure Stack.
+W tym samouczku pokazano, jak subskrybować ofertę usługi Azure Stack.
 
 Co dowiesz się:
 
@@ -60,10 +60,10 @@ Aby subskrybować ofertę jako użytkownik, logowaniu do portalu użytkowników 
 
 ## <a name="test-the-offer"></a>Testowanie oferty
 
-Gdy zalogowany do portalu użytkowników, możesz przetestować ofertę, obsługi maszyny wirtualnej za pomocą nowych możliwości subskrypcji. 
+Gdy zalogowany do portalu użytkowników, możesz przetestować ofertę, obsługi maszyny wirtualnej za pomocą nowych możliwości subskrypcji.
 
 > [!NOTE]
-> Ten test wymaga, czy maszyny Wirtualnej z systemem Windows Server 2016 Datacenter najpierw został dodany do portalu marketplace usługi Azure Stack. 
+> Ten test wymaga, czy maszyny Wirtualnej z systemem Windows Server 2016 Datacenter najpierw został dodany do portalu marketplace usługi Azure Stack.
 
 1. Zaloguj się do portalu użytkowników.
 
@@ -84,7 +84,6 @@ Gdy zalogowany do portalu użytkowników, możesz przetestować ofertę, obsług
 > [!NOTE]
 > Wdrażanie maszyny wirtualnej trwa kilka minut.
 
-
 ## <a name="next-steps"></a>Kolejne kroki
 
 Przedstawiono w tym samouczku:
@@ -92,7 +91,6 @@ Przedstawiono w tym samouczku:
 > [!div class="checklist"]
 > * Subskrybowanie oferty 
 > * Testowanie oferty
-
 
 > [!div class="nextstepaction"]
 > [Tworzenie maszyny Wirtualnej na podstawie szablonu społeczności](azure-stack-create-vm-template.md)

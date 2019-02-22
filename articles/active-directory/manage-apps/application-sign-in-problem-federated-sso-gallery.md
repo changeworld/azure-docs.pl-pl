@@ -12,26 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 02/18/2019
 ms.author: celested
-ms.reviewer: asteen
+ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45c6c217da21ff0d1b1168f61c7920328295c5d1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3cb2302a8a20a9a5f50b9d11de7ac786ad04853d
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217976"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652267"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji galerii, skonfigurowanej do obsługi federacyjnego logowania jednokrotnego
 
-Aby rozwiązać problem, należy sprawdzić konfigurację aplikacji w usłudze Azure AD następujące czynności:
+Aby rozwiązać problemy dotyczące logowania poniżej, zaleca się, że postępuj zgodnie z tych sugestii, aby uzyskać lepsze diagnostyki i automatyzować czynności rozwiązujących problem:
 
--   Zostały wykonane wszystkie kroki konfiguracji dla aplikacji z galerii usługi Azure AD.
+- Zainstaluj [Moje aplikacje Secure rozszerzenia przeglądarki do obsługi](access-panel-extension-problem-installing.md) ułatwiające usługi Azure Active Directory (Azure AD), aby zapewnić lepszą diagnostykę i rozwiązania, korzystając z testowania środowisko w witrynie Azure portal.
+- Odtwórz błąd przy użyciu środowiska testowania na stronie konfiguracji aplikacji w witrynie Azure portal. Dowiedz się więcej o [SAML debugowania aplikacji opartych na pojedynczego logowania jednokrotnego](../develop/howto-v1-debug-saml-sso-issues.md)
 
--   Identyfikator i adres URL odpowiedzi skonfigurowane w usłudze AAD dopasowania są oczekiwane wartości w aplikacji
-
--   Przypisano użytkowników do aplikacji
 
 ## <a name="application-not-found-in-directory"></a>Nie można odnaleźć w katalogu aplikacji
 
@@ -39,64 +37,59 @@ Aby rozwiązać problem, należy sprawdzić konfigurację aplikacji w usłudze A
 
 **Możliwa przyczyna**
 
-Wystawcę, którego atrybut wysyła z aplikacji do usługi Azure AD w żądaniu języka SAML nie jest zgodna wartość identyfikatora skonfigurowaną w aplikacji usługi Azure AD.
+`Issuer` Atrybut wysyłane z aplikacji do usługi Azure AD w żądaniu języka SAML nie jest zgodna wartość identyfikatora, który jest skonfigurowany dla aplikacji w usłudze Azure AD.
 
 **Rozdzielczość**
 
-Upewnij się, że atrybut wystawcy żądania języka SAML jest zgodny, identyfikator wartości ustawionej w usłudze Azure AD:
+Upewnij się, że `Issuer` pasuje do atrybutu w żądaniu języka SAML wartość identyfikatora skonfigurowaną w usłudze Azure AD. Jeśli używasz [testowania środowisko](../develop/howto-v1-debug-saml-sso-issues.md) w witrynie Azure portal przy użyciu rozszerzenia przeglądarki Moje zabezpieczenia aplikacji, nie trzeba ręcznie, wykonaj następujące kroki.
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **współadministrator**.
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+1.  Otwórz **rozszerzenia usługi Azure Active Directory** , wybierając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+1.  Typ **"Azure Active Directory"** w filtru pole wyszukiwania i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+1.  Wybierz **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+1.  Wybierz **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+    Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje**.
 
-6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne
+1.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
+1.  Po załadowaniu aplikacji, otwórz **plik konfiguracji SAML podstawowe**. Sprawdź, czy wartość w polu tekstowym Identyfikator zgodna wartość identyfikatora wyświetlane w błędzie.
 
-8.  Przejdź do **domena i adresy URL** sekcji. Upewnij się, że wartość w polu tekstowym identyfikatora jest zgodny wartość identyfikatora wyświetlane w błędzie.
 
-Po zaktualizowaniu wartość identyfikatora w usłudze Azure AD i jest on zgodny wysyła wartość przez aplikację w żądaniu języka SAML, należy zalogować się do aplikacji.
 
-## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres, który jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji.
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adres zwrotny jest niezgodny z adresami zwrotnymi skonfigurowanymi dla aplikacji
 
 *Błąd AADSTS50011: Jako adres zwrotny https://contoso.com"jest niezgodny z adresy zwrotne skonfigurowane dla aplikacji*
 
 **Możliwa przyczyna**
 
-Wartość AssertionConsumerServiceURL w żądaniu języka SAML nie jest zgodna wartość adresu URL odpowiedzi lub wzorzec skonfigurowane w usłudze Azure AD. Wartość AssertionConsumerServiceURL w żądaniu języka SAML jest adres URL, zostanie wyświetlony w błędzie.
+`AssertionConsumerServiceURL` Wartość w żądaniu języka SAML nie jest zgodna wartość adresu URL odpowiedzi lub wzorzec skonfigurowane w usłudze Azure AD. `AssertionConsumerServiceURL` Żądania języka SAML wartość adresu URL, zostanie wyświetlony w błędzie.
 
 **Rozdzielczość**
 
-Upewnij się, że wartość AssertionConsumerServiceURL w żądaniu języka SAML jest zgodny, adres URL odpowiedzi wartości ustawionej w usłudze Azure AD.
+Upewnij się, że `AssertionConsumerServiceURL` wartość w żądaniu języka SAML pasuje do wartości adresu URL odpowiedzi, skonfigurowane w usłudze Azure AD. Jeśli używasz [testowania środowisko](../develop/howto-v1-debug-saml-sso-issues.md) w witrynie Azure portal przy użyciu rozszerzenia przeglądarki Moje zabezpieczenia aplikacji, nie trzeba ręcznie, wykonaj następujące kroki.
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **współadministrator**.
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+1.  Otwórz **rozszerzenia usługi Azure Active Directory** , wybierając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+1.  Typ **"Azure Active Directory"** w filtru pole wyszukiwania i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+1.  Wybierz **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+1.  Wybierz **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+    Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje**.
 
-6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne
+1.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
-
-8.  Przejdź do **domena i adresy URL** sekcji. Sprawdź lub zaktualizuj tę wartość w polu tekstowym adres URL odpowiedzi być zgodna z wartością AssertionConsumerServiceURL żądania języka SAML.  
-    * Jeśli w polu tekstowym adres URL odpowiedzi nie jest widoczny, wybierz opcję **Pokaż zaawansowane ustawienia adresu URL** pola wyboru.
-
-Po zaktualizowaniu wartość adresu URL odpowiedzi w usłudze Azure AD i jest on zgodny wysyła wartość przez aplikację w żądaniu języka SAML, należy zalogować się do aplikacji.
+1.  Po załadowaniu aplikacji, otwórz **plik konfiguracji SAML podstawowe**. Sprawdź lub zaktualizuj tę wartość w polu tekstowym adres URL odpowiedzi, aby dopasować `AssertionConsumerServiceURL` wartość w żądaniu języka SAML.    
+    
+Po zaktualizowaniu wartość adresu URL odpowiedzi w usłudze Azure AD i odpowiada wartości wysyłane przez aplikację w żądaniu języka SAML, należy zalogować się do aplikacji.
 
 ## <a name="user-not-assigned-a-role"></a>Nie przypisaną rolę użytkownika
 
@@ -108,124 +101,93 @@ Użytkownikowi nie udzielono dostępu do aplikacji w usłudze Azure AD.
 
 **Rozdzielczość**
 
-Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wykonaj następujące czynności:
+Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wykonaj poniższe kroki. Jeśli używasz [testowania środowisko](../develop/howto-v1-debug-saml-sso-issues.md) w witrynie Azure portal przy użyciu rozszerzenia przeglądarki Moje zabezpieczenia aplikacji, nie trzeba ręcznie, wykonaj następujące kroki.
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego**.
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+1.  Otwórz **rozszerzenia usługi Azure Active Directory** , wybierając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+1.  Typ **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+1.  Wybierz **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+1.  Wybierz **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+    Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje**.
 
-6.  Wybierz aplikację, którą chcesz przypisać do użytkownika z listy.
+1.  Z listy aplikacji wybierz tę, której chcesz przypisać użytkownikowi.
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **użytkowników i grup** menu nawigacji po lewej stronie aplikacji.
+1.  Po załadowaniu aplikacji, wybierz **użytkowników i grup** menu nawigacji po lewej stronie aplikacji.
 
-8.  Kliknij przycisk **Dodaj** przycisk w górnej części **użytkowników i grup** liście, aby otworzyć **Dodaj przydziału** okienka.
+1.  Kliknij przycisk **Dodaj** przycisk w górnej części **użytkowników i grup** liście, aby otworzyć **Dodaj przydziału** okienka.
 
-9.  Kliknij przycisk **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
+1.  Wybierz **użytkowników i grup** selektor z **Dodaj przydziału** okienka.
 
-10. Wpisz **Pełna nazwa** lub **adres e-mail** użytkownika, jesteś zainteresowany przypisywania do **wyszukiwanie według nazwy lub adresu e-mail** pola wyszukiwania.
+1. W **wyszukiwanie według nazwy lub adresu e-mail** polu wyszukiwania wpisz pełną nazwę lub użytkownik, który chcesz dodać adres e-mail.
 
-11. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika, aby lub zdjęcie w profilu użytkownika **wybrane** listy.
+1. Umieść kursor nad **użytkownika** na liście, aby wyświetlić **wyboru**. Kliknij pole wyboru obok logo, aby dodać użytkownika do lub zdjęcie w profilu użytkownika **wybrane** listy.
 
-12. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**, typ w innym **Pełna nazwa** lub **adres e-mail** do **wyszukiwanie według nazwy lub adresu e-mail** pole wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane** listy.
+1. **Opcjonalnie:** Jeśli chcesz **dodać więcej niż jednego użytkownika**wpisz inny pełną nazwę lub adres e-mail w **wyszukiwanie według nazwy lub adresu e-mail** polu wyszukiwania, a następnie kliknij pole wyboru, aby dodać użytkownika do **wybrane**  listy.
 
-13. Gdy to zrobisz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
+1. Gdy skończysz, Wybieranie użytkowników, kliknij przycisk **wybierz** przycisk, aby dodać je do listy użytkowników i grup do przypisania do aplikacji.
 
-14. **Opcjonalnie:** kliknij **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę, aby przypisać użytkownikom wybrania.
+1. **Opcjonalnie:** Kliknij przycisk **wybierz rolę** selektorze **Dodaj przydziału** okienku wybierz rolę, aby przypisać użytkownikom wybrania.
 
-15. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych użytkowników.
+1. Kliknij przycisk **przypisać** przycisk, aby przypisać aplikację do wybranych użytkowników.
 
-Po krótkim czasie użytkowników, dla których wybrano mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania.
+Po krótkim czasie użytkowników, dla których wybrano będą mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania.
 
-## <a name="not-a-valid-saml-request"></a>Nie prawidłowe żądania języka SAML
+## <a name="not-a-valid-saml-request"></a>Nie prawidłowemu żądaniu języka SAML
 
 *Błąd AADSTS75005: Żądanie nie jest prawidłowy komunikat protokołu Saml2.*
 
 **Możliwa przyczyna**
 
-Usługa Azure AD nie obsługuje żądania SAML wysłanego przez aplikację na potrzeby logowania jednokrotnego. Niektóre typowe problemy to:
+Usługa Azure AD nie obsługuje żądania języka SAML wysłanego przez aplikację na potrzeby logowania jednokrotnego. Niektóre typowe problemy to:
 
 -   Brak wymaganych pól w żądaniu języka SAML
-
 -   SAML zakodowana metoda żądania
 
 **Rozdzielczość**
 
-1.  Przechwyć żądanie języka SAML. Postępuj zgodnie z samouczkiem [sposób debugowania opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging) Aby dowiedzieć się, jak przechwytywać żądania języka SAML.
+1.  Przechwyć żądanie języka SAML. Postępuj zgodnie z samouczkiem [sposób debugowania opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure AD](../develop/howto-v1-debug-saml-sso-issues.md) Aby dowiedzieć się, jak przechwytywać żądania języka SAML.
 
-2.  Skontaktuj się z dostawcą aplikacji i udziału:
+1.  Skontaktuj się z dostawcą aplikacji i udostępnianie następujące informacje:
 
    -   Żądanie języka SAML
 
-   -   [Wymagania protokołu usługi Azure AD pojedynczego logowania jednokrotnego SAML](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference)
+   -   [Wymagania protokołu usługi Azure AD pojedynczego logowania jednokrotnego SAML](../develop/single-sign-on-saml-protocol.md)
 
-Należy sprawdzić poprawność ich obsługa wdrożenia usługi Azure AD SAML logowania jednokrotnego.
+Dostawca aplikacji należy zweryfikować, czy obsługują one wdrożenia usługi Azure AD SAML dla logowania jednokrotnego.
 
 ## <a name="no-resource-in-requiredresourceaccess-list"></a>Żaden z zasobów na liście requiredResourceAccess
 
-*Błąd AADSTS65005: aplikacja kliencka zażądała dostępu do zasobu "00000002-0000-0000-c000-000000000000'. To żądanie nie powiodło się, ponieważ klient nie określił ten zasób na liście requiredResourceAccess*.
+*Błąd AADSTS650056: Aplikacja nieprawidłowo skonfigurowane. Może to być spowodowane jedną z następujących przyczyn: Klient nie ma na liście jakichkolwiek uprawnień "AAD Graph" żądanych uprawnień w rejestracji aplikacji klienta. Lub, w dzierżawie nie wyraził zgody administratora. Lub Sprawdź identyfikator aplikacji, aby upewnić się, że pasuje do identyfikatora aplikacji klienta skonfigurowanego w żądaniu. Skontaktuj się z administratorem, aby naprawić konfigurację, lub zgody w imieniu dzierżawy.* .
 
 **Możliwa przyczyna**
 
-Obiekt aplikacji jest uszkodzony.
+`Issuer` Atrybut wysyłane z aplikacji do usługi Azure AD w żądaniu języka SAML nie jest zgodna wartość identyfikatora skonfigurowaną dla aplikacji w usłudze Azure AD.
 
-**Rozwiązywania konfliktów: opcji 1**
+**Rozdzielczość**
 
-Aby rozwiązać ten problem, Dodaj wartość Unikatowy identyfikator w konfiguracji usługi Azure AD. Aby dodać wartości identyfikatora, wykonaj następujące czynności:
+Upewnij się, że `Issuer` pasuje do atrybutu w żądaniu języka SAML wartość identyfikatora skonfigurowaną w usłudze Azure AD. Jeśli używasz [testowania środowisko](../develop/howto-v1-debug-saml-sso-issues.md) w witrynie Azure portal przy użyciu rozszerzenia przeglądarki Moje zabezpieczenia aplikacji, nie trzeba ręcznie, wykonaj następujące kroki:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **współadministrator**.
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+1.  Otwórz **rozszerzenia usługi Azure Active Directory** , wybierając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+1.  Typ **"Azure Active Directory"** w filtru pole wyszukiwania i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+1.  Wybierz **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+1.  Wybierz **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+    Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje**.
 
-6.  Wybierz aplikację, zostały skonfigurowane logowanie jednokrotne.
+1.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
 
-7.  Po załadowaniu aplikacji, kliknij pozycję **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji
+1.  Po załadowaniu aplikacji, otwórz **plik konfiguracji SAML podstawowe**. Sprawdź, czy wartość w polu tekstowym Identyfikator zgodna wartość identyfikatora wyświetlane w błędzie.
 
-8.  W obszarze **domeny i adres URL** sekcji, sprawdź na **Pokaż zaawansowane ustawienia adresu URL**.
-
-9.  w **identyfikator** pola tekstowego wpisz unikatowy identyfikator dla aplikacji.
-
-10. **Zapisz** konfiguracji.
-
-
-**Opcja rozpoznawania 2**
-
-Jeśli opcja 1 powyżej zakończyło się niepowodzeniem dla Ciebie, spróbuj usunięcie aplikacji z katalogu. Następnie należy dodać i zmiany konfiguracji aplikacji, wykonaj następujące czynności:
-
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
-
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
-
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
-
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
-
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
-
-  * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
-
-6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne
-
-7.  Kliknij przycisk **Usuń** w lewym górnym aplikacji **Przegląd** okienka.
-
-8.  Odświeżenie usługi Azure AD, a następnie dodać tę aplikację z galerii usługi Azure AD. Następnie należy skonfigurować aplikację
-
-<span id="_Hlk477190176" class="anchor"></span>Po ponownej konfiguracji aplikacji, można zalogować się do aplikacji.
 
 ## <a name="certificate-or-key-not-configured"></a>Certyfikatu lub klucza nieskonfigurowane
 
@@ -239,29 +201,29 @@ Obiekt aplikacji jest uszkodzony, i usługi Azure AD nie rozpoznaje certyfikatu 
 
 Aby usunąć i utworzyć nowy certyfikat, wykonaj następujące czynności:
 
-1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **Współadministratora.**
+1. Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **współadministrator**.
 
-2.  Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+1. Otwórz **rozszerzenia usługi Azure Active Directory** , klikając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
 
-3.  Wpisz **"Azure Active Directory**" w polu wyszukiwania filtru i wybierz pozycję **usługi Azure Active Directory** elementu.
+1. Typ **"Azure Active Directory"** w filtru pole wyszukiwania i wybierz pozycję **usługi Azure Active Directory** elementu.
 
-4.  Kliknij przycisk **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+1. Wybierz **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
 
-5.  Kliknij przycisk **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+1. Wybierz **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
 
- * Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje.**
+    Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje**.
 
-6.  Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne
+1. Wybierz aplikację, którą chcesz skonfigurować logowanie jednokrotne
 
-7.  Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
+1. Po załadowaniu aplikacji, kliknij przycisk **logowanie jednokrotne** menu nawigacji po lewej stronie aplikacji.
 
-8.  Kliknij przycisk **Utwórz nowy certyfikat** w obszarze **certyfikat podpisywania SAML** sekcji.
+1. Wybierz **Utwórz nowy certyfikat** w obszarze **certyfikat podpisywania SAML** sekcji.
 
-9.  Wybierz datę wygaśnięcia. Następnie kliknij przycisk **Zapisz.**
+1. Wybierz datę wygaśnięcia, a następnie kliknij przycisk **Zapisz**.
 
-10. Sprawdź **Ustaw nowy certyfikat jako aktywny** przesłonić aktywny certyfikat. Następnie kliknij przycisk **Zapisz** u góry okienka i zaakceptuj, aby uaktywnić certyfikat przerzucania.
+1. Sprawdź **Ustaw nowy certyfikat jako aktywny** przesłonić aktywny certyfikat. Następnie kliknij przycisk **Zapisz** u góry okienka i zaakceptuj, aby uaktywnić certyfikat przerzucania.
 
-11. W obszarze **certyfikat podpisywania SAML** kliknij **Usuń** do usunięcia **nieużywane** certyfikatu.
+1. W obszarze **certyfikat podpisywania SAML** kliknij **Usuń** do usunięcia **nieużywane** certyfikatu.
 
 ## <a name="saml-request-not-present-in-the-request"></a>Żądanie języka SAML nie znajduje się w żądaniu
 
@@ -269,16 +231,17 @@ Aby usunąć i utworzyć nowy certyfikat, wykonaj następujące czynności:
 
 **Możliwa przyczyna**
 
-Usługa Azure AD nie był w stanie zidentyfikować żądanie języka SAML, w ramach parametrów adresu URL w żądaniu HTTP. Może to nastąpić, jeśli aplikacja nie używa przekierować powiązanie HTTP do wysłania żądania języka SAML do usługi Azure AD.
+Usługa Azure AD nie był w stanie zidentyfikować żądanie języka SAML, w ramach parametrów adresu URL w żądaniu HTTP. Może to nastąpić, jeśli aplikacja nie używa przekierowania HTTP powiązanie podczas wysyłania żądania SAML do usługi Azure AD.
 
 **Rozdzielczość**
 
-Aplikacja musi wysyłać żądania języka SAML, kodowane do Nagłówek lokalizacji przy użyciu protokołu HTTP, przekierowanie powiązania. Aby dowiedzieć się więcej o sposobie implementacji, zapoznaj się z sekcją przekierować powiązanie HTTP w [dokument specyfikacji protokołu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
+Aplikacja musi wysyłać żądania języka SAML, kodowane do Nagłówek lokalizacji przy użyciu protokołu HTTP przekierowanie powiązania. Aby dowiedzieć się więcej o sposobie implementacji, zapoznaj się z sekcją przekierować powiązanie HTTP w [dokument specyfikacji protokołu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problem podczas dostosowywania oświadczenia języka SAML wysyłane do aplikacji
 
-Aby dowiedzieć się, jak dostosować oświadczeń atrybutów SAML, które są wysyłane do aplikacji, zobacz [Mapowanie oświadczeń w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping) Aby uzyskać więcej informacji.
+Aby dowiedzieć się, jak dostosować oświadczeń atrybutów SAML, które są wysyłane do aplikacji, zobacz [Mapowanie oświadczeń w usłudze Azure Active Directory](../develop/active-directory-claims-mapping.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Jak debugować opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-debugging)
+
+[Jak debugować opartej na SAML logowania jednokrotnego do aplikacji w usłudze Azure AD](../develop/howto-v1-debug-saml-sso-issues.md)

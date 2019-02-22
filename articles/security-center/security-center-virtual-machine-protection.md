@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: monhaber
-ms.openlocfilehash: 8dcaa9b98292e66d81daf3d115159b0c0c1124af
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0b548acc92ab1efedab963e9bd3318e8525ffee4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106732"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649564"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Ochrona maszyn i aplikacji w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek. Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM) i komputerów, aplikacji, networking, SQL i tożsamościami i dostępem.
@@ -159,6 +159,24 @@ Istnieją trzy typy ikon przedstawianych na tej liście:
  -  Wybierz ocenę przekazany z listy opis oceny, lista zasobów w złej kondycji i w dobrej kondycji i listę nieprzeskanowane zasoby. Ma kartę zasoby w złej kondycji, ale ta lista jest zawsze pusta, ponieważ przekazana oceny.
 
     ![Korygowanie usługi App Service](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+
+## <a name="virtual-machine-scale-sets"></a>Zestawy skalowania maszyn wirtualnych
+Usługa Security Center automatycznie wykrywa, czy zestawy skali i zaleca się zainstalowanie programu Microsoft Monitoring Agent na tych zestawach skalowania. 
+
+Aby zainstalować program Microsoft Monitoring Agent: 
+
+1. Wybierz zalecenie **zainstalować agenta monitorowania w zestawie skalowania maszyn wirtualnych**. Możesz uzyskać listę zestawów skalowania niemonitorowane.
+2. Wybierz zestaw skalowania w złej kondycji. Postępuj zgodnie z instrukcjami, aby zainstalować agenta monitorowania przy użyciu istniejącego obszaru roboczego wypełnione lub Utwórz nową. Upewnij się ustawić obszaru roboczego [warstwy cenowej](security-center-pricing.md) Jeśli nie jest ustawiona.
+
+ ![Zainstaluj usługę MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
+
+Jeśli chcesz ustawić nowe zestawy skalowania automatycznej instalacji programu Microsoft Monitoring Agent:
+1. Przejdź do usługi Azure Policy, a następnie kliknij przycisk **definicje**.
+2. Wyszukaj zasady **agenta wdrażania usługi Log Analytics dla zestawów skalowania maszyn wirtualnych Windows** i kliknij go.
+3. Kliknij przycisk **Przypisz**.
+4. Ustaw **zakres** i **obszaru roboczego usługi Log Analytics** i kliknij przycisk **przypisać**.
+
+Jeśli chcesz ustawić wszystkie istniejące zestawy skalowania, aby zainstalować program Microsoft Monitoring Agent, usługa Azure Policy, przejdź do strony **korygowania** i zastosować istniejących zasad do istniejących zestawów skalowania.
 
 
 ## <a name="compute-and-app-recommendations"></a>Zalecenia dotyczące obliczeń i aplikacji

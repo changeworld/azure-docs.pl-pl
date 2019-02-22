@@ -8,15 +8,15 @@ manager: pchoudh
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: f144262f43396ac5d4f37939d35fca2645acc4bd
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245138"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650176"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Współczynnik ufności z bazy wiedzy usługi QnA Maker
 Jeśli kwerenda użytkownika są dopasowywane do wiedzy, narzędzie QnA Maker zwraca odpowiednich odpowiedzi, wraz z współczynnik ufności. Ten wynik wskazuje ufności padnie odpowiednie dopasowania dla zapytania danego użytkownika. 
@@ -72,9 +72,9 @@ Jeśli masz wiedzy w różnych regionach, każdy region używa własnego indeksu
 
 
 ## <a name="no-match-found"></a>Nie znaleziono dopasowań
-Po znalezieniu niezgodności dobre, oceniania współczynnik ufności 0.0, lub "None" jest zwracany, a odpowiedź domyślną jest "Dobrą niezgodności w w bazie wiedzy". Możesz przesłonić to odpowiedź domyślną w kodzie bot lub aplikacji, wywołanie punktu końcowego. Alternatywnie można również ustawić odpowiedzi zastąpienie na platformie Azure i spowoduje to zmianę domyślnego dla wszystkich baz wiedzy wdrożone w określonej usługi QnA Maker.
+Po znalezieniu niezgodności dobre, oceniania współczynnik ufności 0.0, lub "None" jest zwracany, a odpowiedź domyślną jest "Dobrą niezgodności w w bazie wiedzy". Możesz przesłonić to [Domyślna odpowiedź](#change-default-answer) w kodzie bot lub aplikacji, wywołanie punktu końcowego. Alternatywnie można również ustawić odpowiedzi zastąpienie na platformie Azure i spowoduje to zmianę domyślnego dla wszystkich baz wiedzy wdrożone w określonej usługi QnA Maker.
 
-### <a name="change-default-answer"></a>Zmień domyślny odpowiedzi
+## <a name="change-default-answer"></a>Zmień domyślny odpowiedzi
 
 1. Przejdź do [witryny Azure portal](https://portal.azure.com) i przejdź do grupy zasobów, która reprezentuje utworzonej usługi QnA Maker.
 
@@ -94,5 +94,4 @@ Po znalezieniu niezgodności dobre, oceniania współczynnik ufności 0.0, lub "
 ## <a name="next-steps"></a>Kolejne kroki
 > [!div class="nextstepaction"]
 > [Źródła danych obsługiwane](./data-sources-supported.md)
-## <a name="see-also"></a>Zobacz także 
-[Omówienie usługi QnA Maker](../Overview/overview.md)
+

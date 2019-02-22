@@ -3,7 +3,7 @@ title: Usługa Azure Security Center — często zadawane pytania (FAQ) | Dokume
 description: Często zadawane pytania dotyczące usługi Azure Security Center.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: be2ab6d5-72a8-411f-878e-98dac21bc5cb
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2018
-ms.author: rkarlin
-ms.openlocfilehash: 61dac6bea6878630c05339778c717f7818c1c662
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.date: 02/19/2019
+ms.author: monhaber
+ms.openlocfilehash: 6696935cf23fa7286f23ae9b7d0e8a278e31403d
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106651"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652666"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Często zadawane pytania dotyczące usługi Azure Security Center
 Często zadawane pytania dotyczące usługi Azure Security Center, to usługa, która pomaga zapobiegać zagrożeniom, wykrywanie i odpowiadanie na nie dzięki lepszemu wglądowi w i kontroli nad ich zabezpieczeniami zasobami Microsoft Azure.
@@ -274,6 +274,9 @@ Usługa Azure Security Center automatycznie zbiera, analizuje i fuses dane dzien
 * Zaawansowanego złośliwego oprogramowania wykrytego za pomocą usługi raportowania błędów Windows
 * Ataków siłowych wobec maszyn wirtualnych
 * Alerty zabezpieczeń z rozwiązań zabezpieczeń zintegrowanych partnerów, takich jak chroniące przed złośliwym kodem lub zapory aplikacji sieci Web
+
+### <a name="why-did-secure-scores-values-change"></a>Dlaczego secure zmiana wartości wyników?
+Począwszy od lutego 2019 r usługa Security Center dostosowane wynik kilka zaleceń, aby lepiej dopasować się ich ważności. W wyniku tego dostosowania mogą wystąpić zmiany w ogólnej secure wartości wyniku.  Aby uzyskać więcej informacji na temat bezpiecznego wynik zobacz [Secure obliczania wyniku](security-center-secure-score.md).
 
 ### <a name="whats-the-difference-between-threats-detected-and-alerted-on-by-microsoft-security-response-center-versus-azure-security-center"></a>Jaka jest różnica między zagrożenia wykryte i alerty o przez program Microsoft Security Response Center i Azure Security Center?
 Narzędzie Microsoft Security Response Center (MSRC) wykonuje monitorowania zabezpieczeń wybierz sieć platformy Azure i infrastrukturą i odbiera skarg analizy i nadużyć zagrożenia pochodzące od innych firm. Gdy MSRC uświadamia sobie, że dane klienta były używane na przez nieupoważnione lub lub że korzystanie z platformy Azure przez klienta nie jest zgodne z warunkami dopuszczalne użycie, Menedżer zdarzenia zabezpieczeń powiadamia klienta. Powiadomienia są zazwyczaj występuje, wysyłając wiadomość e-mail do kontaktów zabezpieczeń określone w usłudze Azure Security Center lub właściciel subskrypcji platformy Azure, jeśli nie określono kontaktu zabezpieczeń.

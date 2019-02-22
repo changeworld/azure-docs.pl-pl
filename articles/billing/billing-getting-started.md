@@ -15,16 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: banders
-ms.openlocfilehash: 732ac5e1e82c67d2f4a0a3443b85c67712f4f651
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0d1d4358789cce4d393143e8a243ee9a3e06bf36
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55101655"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652403"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
-Po zarejestrowaniu się na platformie Azure, istnieje kilka rzeczy, które można zrobić, aby lepiej zrozumieć wydatki na platformę. [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) może zapewnić oszacowanie kosztów, przed przystąpieniem do tworzenia zasobów platformy Azure. [Witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zapewnia bieżącego podział kosztów i prognozy dla Twojej subskrypcji. Jeśli chcesz grupować i poznanie kosztów dla różnych projektów lub zespołów, przyjrzyj [tagowania zasobów](../azure-resource-manager/resource-group-using-tags.md). Jeśli Twoja organizacja ma system raportowania, którego chcesz użyć, zapoznaj się z [interfejsy API rozliczeń](billing-usage-rate-card-overview.md).
+Po zarejestrowaniu się na platformie Azure, istnieje kilka rzeczy, które można zrobić, aby lepiej zrozumieć, wydatki. [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) może zapewnić oszacowanie kosztów, przed przystąpieniem do tworzenia zasobów platformy Azure. [Witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) zapewnia bieżącego podział kosztów i prognozy dla Twojej subskrypcji. Jeśli chcesz grupować i poznanie kosztów dla różnych projektów lub zespołów, przyjrzyj [tagowania zasobów](../azure-resource-manager/resource-group-using-tags.md). Jeśli Twoja organizacja ma system raportowania, którego chcesz użyć, zapoznaj się z [interfejsy API rozliczeń](billing-usage-rate-card-overview.md).
 
 - Jeśli Twoja subskrypcja jest umowy Enterprise Agreement (EA), dostępna jest publiczną wersję zapoznawczą do zobaczenia koszty w witrynie Azure portal. Jeśli Twoja subskrypcja znajduje się za pośrednictwem dostawcy rozwiązań w chmurze (CSP) lub dostęp sponsorowany Azure, następnie niektóre następujące funkcje mogą nie mieć zastosowania do użytkownika. Zobacz [dodatkowe zasoby dotyczące umowy EA, dostawca usług Kryptograficznych i dostępu Sponsorowanego](#other-offers) Aby uzyskać więcej informacji.
 
@@ -64,23 +64,23 @@ Aby zobaczyć, jeśli możesz już stało się limit wydatków o wartości, prze
 
 Kliknij transparent i postępuj zgodnie z monitami, aby usunąć limit wydatków. Jeśli informacje o karcie kredytowej nie została wprowadzona podczas tworzenia konta, należy wprowadzić, aby usunąć limit wydatków. Aby uzyskać więcej informacji, zobacz [limit wydatków platformy Azure — jak działa i jak włączyć lub usunąć go](https://azure.microsoft.com/pricing/spending-limits/).
 
-Możesz użyć [Cloudyn](https://www.cloudyn.com/) usługi w celu tworzenia alertów, które automatycznie powiadamiają uczestników projektu o anomaliach wydatków i przekraczania ryzyka. Możesz utworzyć alerty korzystanie z raportów, obsługujących alerty oparte na budżecie i progach kosztów. Aby uzyskać więcej informacji na temat korzystania z platformy Cloudyn, zobacz [samouczka: Przeglądanie użycia i kosztów](../cost-management/tutorial-review-usage.md).
+Możesz użyć [Cloudyn](https://www.cloudyn.com/) usługi w celu tworzenia alertów, które automatycznie powiadamiają uczestników projektu o anomaliach wydatków i przekraczania ryzyka. Alerty można tworzyć za pomocą raportów obsługujących alerty oparte na budżecie i progach kosztów. Aby uzyskać więcej informacji na temat korzystania z platformy Cloudyn, zobacz [samouczka: Przeglądanie użycia i kosztów](../cost-management/tutorial-review-usage.md).
 
-W tym przykładzie użyto **rzeczywisty koszt względem czasu** raport, aby wysłać powiadomienie, gdy wydatki na Maszynie wirtualnej platformy Azure zbliżą się do poziomu budżetu całkowitego. W tym scenariuszu ma łączny budżet 20 000 i chcesz otrzymywać powiadomienia, gdy koszty zbliża się połowę budżetu, $ 9 000 i dodatkowego alertu, gdy koszty dotrzeć do 10 000 USD.
+W tym przykładzie skorzystasz z raportu **Actual Cost Over Time** (Koszt rzeczywisty na przestrzeni czasu), aby wysłać powiadomienie, gdy wydatki na maszyny wirtualne platformy Azure zbliżą się do poziomu łącznego budżetu. W tym scenariuszu łączny budżet wynosi 20 000 USD. Chcesz otrzymywać powiadomienie, gdy koszty osiągną poziom 9000 USD, a potem kolejne powiadomienie po osiągnięciu wartości 10 000 USD.
 
-1. W menu w górnej części portalu Cloudyn wybierz **koszty** > **analiza kosztów** > **rzeczywisty koszt względem czasu**. 
+1. W menu w górnej części portalu Cloudyn wybierz pozycję **Costs** > **Cost Analysis** > **Actual Cost Over Time** (Koszty > Analiza kosztów > Koszt rzeczywisty na przestrzeni czasu). 
 2. Ustaw pozycję **Groups** (Grupy) na **Service** (Usługa), a pozycję **Filter on the service** (Filtruj usługę) na **Azure/VM**. 
-3. W prawym górnym rogu raportu, wybierz **akcje** , a następnie wybierz **zaplanować raport**.
-4. Aby wysłać do siebie wiadomość e-mail raport w zaplanowanych odstępach czasu, wybierz **Planowanie** karcie **zapisać lub zaplanować tę** okno raportu. Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie tagi, grupowania i filtrowania użycia znajdują się w raporcie pocztą e-mail. 
-5. Wybierz **próg** , a następnie wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). 
-   1. W **czerwonego alertu** próg wprowadź 10000. 
-   2. W **żółty alert** próg wprowadź 9000. 
-   3. W **liczbę kolejnych alertów** wprowadź liczbę kolejnych alertów do odbierania. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. 
+3. W prawym górnym rogu raportu wybierz pozycję **Actions** (Akcje), a następnie wybierz pozycję **Schedule report** (Zaplanuj raport).
+4. Aby wysyłać do siebie wiadomość e-mail dotyczącą raportu w zaplanowanych odstępach czasu, wybierz kartę **Scheduling** (Planowanie) w oknie dialogowym **Save or Schedule this report** (Zapisz lub zaplanuj ten raport). Należy wybrać opcję **Send via email** (Wyślij w wiadomości e-mail). Wszystkie użyte tagi, grupowania i filtry zostaną uwzględnione w raporcie wysłanym w wiadomości e-mail. 
+5. Wybierz kartę **Threshold** (Próg) i wybierz pozycję **Actual Cost vs. Threshold** (Koszt rzeczywisty a próg). 
+   1. W polu progu **Red alert** (Czerwony alert) wprowadź wartość 10 000. 
+   2. W polu progu **Yellow alert** (Żółty alert) wprowadź wartość 9000. 
+   3. W polu **Number of consecutive alerts** (Liczba kolejnych alertów) wprowadź liczbę alertów, które mają być wysyłane. Po wysłaniu określonej całkowitej liczby alertów dodatkowe alerty nie są już wysyłane. 
 6. Wybierz pozycję **Zapisz**.
 
     ![Przykład pokazujący czerwone i żółte alerty na podstawie progów wydatków](./media/billing-getting-started/schedule-alert01.png)
 
-Można również wybrać **metrykę Cost Percentage vs. Budżet** próg metryki, aby utworzyć alerty. Dzięki temu można określić progi jako wartości procentowe budżet zamiast wartości waluty.
+Możesz również wybrać metrykę **Cost Percentage vs. Budget threshold** (Procent kosztów a próg budżetu), aby utworzyć alerty. Pozwala to określić progi jako wartości procentowe budżetu, a nie jako wartości pieniężne.
 
 ## <a name="ways-to-monitor-your-costs-when-using-azure-services"></a>Sposoby monitorowania koszty, korzystając z usług platformy Azure
 

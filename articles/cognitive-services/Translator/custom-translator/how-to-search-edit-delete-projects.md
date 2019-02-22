@@ -9,12 +9,12 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: 922f64f3e9588b3bfcfeedf7602df781c8ee6172
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f91ac8e8a6a71f2a5eb5c686aa5bc5b83be36545
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226608"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586614"
 ---
 # <a name="search-edit-and-delete-projects"></a>Wyszukiwanie, edytowanie i usuwanie projektów
 
@@ -39,7 +39,7 @@ Narzędzie Filtr umożliwia wyszukiwanie projektów przez inny filtr warunki. Fi
 
 ## <a name="edit-a-project"></a>Edytuj projekt
 
-Niestandardowe w usłudze Translator daje możliwość edytować nazwę i opis projektu. Inne metadane projektu, takich jak kategorii, źródło, języku docelowym nie są dostępne do edycji. Poniższe kroki opisują sposób edycji projektu.
+Niestandardowe w usłudze Translator daje możliwość edytowania nazwy i opisu projektu. Inne metadane projektu, takie jak nie są dostępne dla kategorii, język źródłowy i docelowy język edycji. Poniżej opisano sposób edycji projektu.
 
 1.  Kliknij ikonę ołówka, który jest wyświetlany po umieszczeniu wskaźnika myszy nad projektem.
 

@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 460edc7f092764cce3584c81371db4801fbd69bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c866bb1ff5603f08377ed96ddd81eedf71e243bf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240019"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593238"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Samouczek: Konfigurowanie zasobów do weryfikacji jako usługa
 
@@ -92,7 +92,7 @@ Jako administrator usługi Azure AD należy podać aplikacji VaaS usługi Azure 
 
 ## <a name="create-an-azure-storage-account"></a>Tworzenie konta usługi Azure Storage
 
-Podczas wykonywania testów VaaS danych wyjściowych dzienników diagnostycznych do konta usługi Azure Storage. Oprócz dzienników testu konto magazynu może również pakiety rozszerzeń przekazywania przez producenta OEM dla przepływu pracy weryfikacji rozwiązania.
+Podczas wykonywania testów VaaS danych wyjściowych dzienników diagnostycznych do konta usługi Azure Storage. Oprócz dzienników testu konto magazynu może również pakiety rozszerzeń przekazywania przez producenta OEM dla przepływu pracy weryfikacji pakietu.
 
 Konto usługi Azure Storage jest hostowana w chmurze publicznej Azure, nie w środowisku usługi Azure Stack.
 

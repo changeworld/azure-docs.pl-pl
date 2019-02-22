@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 11/12/2018
-ms.openlocfilehash: 03a6f649f15f6a4905433d6e2ec292a901340929
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b498283ee117935438c55e5162e92acdb0f5ebfe
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249684"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649904"
 ---
 # <a name="windows-server-in-azure-stack-marketplace-faq"></a>System Windows Server w usłudze Azure Stack Portal Marketplace — często zadawane pytania
 
@@ -38,7 +38,7 @@ Następnie, jeśli wszystkie zestawy skalowania maszyn wirtualnych odwołują si
 
 Firma Microsoft oferuje dwie wersje obrazów systemu Windows Server w portalu Azure Marketplace stosu:
 
-- **Płatność proporcjonalna używasz**: Te obrazy Uruchom liczniki Windows pełną cenę. 
+- **Płatność proporcjonalna używasz**: Te obrazy Uruchom liczniki Windows pełną cenę.
    Kto powinien używać: Klienci z umową Enterprise Agreement (EA), którzy korzystają *model rozliczeń za użycie*; Dostawcy usług kryptograficznych, którzy nie chcą korzystanie z licencjonowania w ramach umowy SPLA.
 - **Model dostarczania własnej licencji (BYOL)**: Te obrazy Uruchom liczniki podstawowe.
    Kto powinien używać: Umową EA z licencji systemu Windows Server; Dostawcy usług kryptograficznych, którzy korzystają z licencji w ramach umowy SPLA.
@@ -74,23 +74,23 @@ Aby aktywować maszyny wirtualnej systemu Windows Server w usłudze Azure Stack,
 
 ### <a name="how-can-i-verify-that-my-virtual-machine-is-activated"></a>Jak zweryfikować, że Moja maszyna wirtualna została aktywowana?
 
-Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień: 
+Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień:
 
 ```shell
 slmgr /dlv
-``` 
+```
 
 Jeśli poprawnie włączono, zobaczysz następujący wyraźnie wskazane i nazwę hosta wyświetlane w `slmgr` danych wyjściowych. Nie są zależne od znaków wodnych na ekranie, jak mogą być nieaktualne lub są wyświetlane na innej maszynie wirtualnej za Ciebie.
 
 ### <a name="my-vm-is-not-set-up-to-use-avma-how-can-i-fix-it"></a>Nie ustawiono mojej maszyny Wirtualnej do użycia funkcja AVMA, jak to naprawić?
 
-Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień: 
+Uruchom następujące polecenie w wierszu polecenia z podwyższonym poziomem uprawnień:
 
 ```shell
-slmgr /ipk <AVMA key> 
+slmgr /ipk <AVMA key>
 ```
 
-Zapoznaj się z artykułem [automatyczna aktywacja maszyny wirtualnej](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) kluczy do użycia dla obrazu.
+Zobacz [automatyczna aktywacja maszyny wirtualnej](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn303421(v=ws.11)) artykułu kluczy do użycia dla obrazu.
 
 ### <a name="i-create-my-own-windows-server-images-how-can-i-make-sure-they-use-avma"></a>Czy mogę tworzyć własne obrazy systemu Windows Server, jak można upewnić się, że ich za pomocą funkcji AVMA?
 

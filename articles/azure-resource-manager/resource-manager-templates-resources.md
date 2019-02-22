@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/03/2019
 ms.author: tomfitz
-ms.openlocfilehash: 01aacf8815ce4150eb1c243d4337f52c4e0b03e9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: eb819d19dd7c1eb9cf0b95549adda91a102304a5
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697071"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593900"
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Sekcja Zasoby szablonów usługi Azure Resource Manager
 
@@ -85,7 +85,7 @@ Możesz zdefiniować zasoby o następującej strukturze:
 |:--- |:--- |:--- |
 | warunek | Nie | Wartość logiczna wskazująca, czy zasób zostanie udostępniony podczas tego wdrożenia. Gdy `true`, zasób jest tworzony podczas wdrażania. Gdy `false`, zasób jest pomijana dla tego wdrożenia. |
 | apiVersion |Yes |Wersja interfejsu API REST na potrzeby tworzenia zasobu. |
-| type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). |
+| type |Yes |Typ zasobu. Ta wartość jest kombinacją przestrzeń nazw dostawcy zasobów i typu zasobu (takie jak **magazyn.Microsoft/kontamagazynu**). Aby uzyskać więcej informacji, zobacz [dostawcy zasobów platformy Azure i ich typy](resource-manager-supported-services.md). |
 | name |Yes |Nazwa zasobu. Musi spełniać ograniczenia składnika identyfikatora URI zdefiniowane w RFC3986. Ponadto usługi platformy Azure, które uwidaczniają nazwę zasobu, aby poza strony zweryfikować nazwę aby upewnić się, że nie jest próba podszywały się pod innego tożsamości. |
 | location |Różna |Obsługiwane lokalizacje geograficzne podane zasobu. Można wybrać jedną z dostępnych lokalizacji, ale zazwyczaj warto wybrać taki, który znajduje się w pobliżu użytkowników. Zazwyczaj także warto umieścić zasoby, które współdziałają ze sobą w tym samym regionie. Większość typów zasobów wymaga lokalizacji, ale niektóre typy (takie jak przypisania roli) nie wymagają lokalizacji. |
 | tags |Nie |Tagi, które są skojarzone z zasobem. Stosowanie tagów w celu logicznego uporządkowania zasobów w ramach subskrypcji. |
@@ -93,7 +93,7 @@ Możesz zdefiniować zasoby o następującej strukturze:
 | kopiuj |Nie |Jeśli potrzebna jest więcej niż jedno wystąpienie, liczba zasobów do utworzenia. Domyślnym trybem jest równoległe. Określ tryb serial, gdy nie mają wszystkie lub zasoby w celu wdrożenia w tym samym czasie. Aby uzyskać więcej informacji, zobacz [utworzyć kilka wystąpień zasobów w usłudze Azure Resource Manager](resource-group-create-multiple.md). |
 | dependsOn |Nie |Zasoby, które należy wdrożyć przed wdrożeniem tego zasobu. Menedżer zasobów ocenia zależności między zasobami i ich wdrażania w odpowiedniej kolejności. Gdy zasoby nie są zależne od siebie, są one wdrożone równolegle. Wartość może być zasobem listę rozdzielonych przecinkami nazw lub unikatowych identyfikatorów zasobów. Tylko Wyświetla listę zasobów, które są wdrażane w tym szablonie. Zasoby, które nie są zdefiniowane w tym szablonie musi już istnieć. Należy unikać Dodawanie zależności niepotrzebne, jak długo będą powolne wdrożenie i utworzyć zależności cykliczne. Aby uzyskać wskazówki dotyczące Ustawianie zależności, zobacz [Definiowanie zależności w szablonach usługi Azure Resource Manager](resource-group-define-dependencies.md). |
 | properties |Nie |Ustawienia konfiguracji specyficznych dla zasobów. Wartości właściwości są takie same jak wartość podana w treści żądania dla operacji interfejsu API REST (metodę PUT) w celu utworzenia zasobu. Można również określić tablicy kopiowania, aby utworzyć kilka wystąpień z właściwością. |
-| jednostka SKU | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują jednostki SKU do wdrożenia. Na przykład można określić typu nadmiarowości konta magazynu. |
+| sku | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują jednostki SKU do wdrożenia. Na przykład można określić typu nadmiarowości konta magazynu. |
 | rodzaj | Nie | Niektóre zasoby zezwala na wartość, która definiuje typ zasobu, które można wdrożyć. Na przykład można określić typ usługi Cosmos DB do tworzenia. |
 | Plan | Nie | Niektóre zasoby Zezwalaj na wartości, które definiują plan do wdrożenia. Na przykład można określić obrazu portalu marketplace dla maszyny wirtualnej. | 
 | zasoby |Nie |Zasoby podrzędne, które są zależne od zasobów, w trakcie definiowania. Podaj tylko typy zasobów, które są dozwolone w schemacie zasobu nadrzędnego. W pełni kwalifikowany typ zasobu podrzędnego obejmuje typ zasobu nadrzędnego, takie jak **Microsoft.Web/sites/extensions**. Zależność od zasobu nadrzędnego nie jest implikowane. Musisz jawnie zdefiniować tej zależności. |

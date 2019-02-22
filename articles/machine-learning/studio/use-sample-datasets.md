@@ -10,17 +10,17 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/19/2018
-ms.openlocfilehash: 55cf124baf7614813620602212856cc586b721df
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a4cda4384a4290abe100a2135f266ba4e288e962
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244338"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586991"
 ---
 # <a name="use-the-sample-datasets-in-azure-machine-learning-studio"></a>Korzystanie z przykładowych arkuszy danych w usłudze Azure Machine Learning Studio
 [top]: #machine-learning-sample-datasets
 
-Gdy tworzysz nowy obszar roboczy w usłudze Azure Machine Learning, są domyślnie dołączone szereg przykładowych zestawów danych i doświadczeń. Wiele z tych przykładowych zestawów danych są używane przez Przykładowe modele w [galerii Azure AI](http://gallery.azure.ai/). Inne są dołączone jako przykłady różnych typów danych zwykle używanych w usłudze machine learning.
+Gdy tworzysz nowy obszar roboczy w usłudze Azure Machine Learning Studio, szereg przykładowych zestawów danych i doświadczeń są domyślnie dołączone. Wiele z tych przykładowych zestawów danych są używane przez Przykładowe modele w [galerii Azure AI](http://gallery.azure.ai/). Inne są dołączone jako przykłady różnych typów danych zwykle używanych w usłudze machine learning.
 
 Niektóre z tych zestawów danych są dostępne w usłudze Azure Blob storage. Dla tych zestawów danych Poniższa tabela zawiera bezpośredni link. Te zestawy danych można użyć w eksperymentów, za pomocą [importu danych] [ import-data] modułu.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 5f6a0ce0c9d863b5ab4922e7228a873ed5398600
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: af72eb0214f46c1e001f9e93934d38cb934503e4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033285"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592489"
 ---
 # <a name="creating-a-public-load-balancer-using-a-template"></a>Tworzenie publicznego modułu równoważenia obciążenia przy użyciu szablonu
 
@@ -28,7 +28,7 @@ ms.locfileid: "54033285"
 > * [Interfejs wiersza polecenia platformy Azure](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
 > * [Szablon](../load-balancer/load-balancer-get-started-internet-arm-template.md)
 
-
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
@@ -43,10 +43,10 @@ Przykładowy szablon dostępny w repozytorium publicznym korzysta z pliku parame
 Aby wdrożyć pobrany szablon przy użyciu programu PowerShell, wykonaj poniższe kroki.
 
 1. Jeśli nie znasz programu Azure PowerShell, zapoznaj się z artykułem [Instalowanie i konfigurowanie programu Azure PowerShell](/powershell/azure/overview) i postępuj zgodnie z instrukcjami aż do momentu logowania się w programie Azure i wyboru subskrypcji.
-2. Uruchom polecenie cmdlet **New AzureRmResourceGroupDeployment**, aby utworzyć grupę zasobów za pomocą szablonu.
+2. Uruchom **New AzResourceGroupDeployment** polecenia cmdlet, aby utworzyć grupę zasobów za pomocą tego szablonu.
 
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name TestRG -Location uswest `
+    New-AzResourceGroupDeployment -Name TestRG -Location uswest `
         -TemplateFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.json' `
         -TemplateParameterFile 'https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-2-vms-loadbalancer-lbrules/azuredeploy.parameters.json'
     ```

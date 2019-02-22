@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e9240949c589717303fe00205c5374b5e3a6a791
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c3f46e40dfaf0d1ba2ab393b593cdd479c48c45d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008258"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585066"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Obsługa modułu az w usłudze Azure Automation
 
@@ -31,7 +31,7 @@ Importowanie `Az` modułu na koncie usługi Automation nie automatycznie zaimpor
 * Gdy inny moduł, w zależności od tego, moduł są importowane do sesji programu PowerShell
 
 > [!IMPORTANT]
-> Jest ważne upewnić się, że elementy runbook w ramach konta usługi Automation, albo importować tylko `Az` lub `AzureRM` moduły do sesji programu PowerShell, używane przez elementy runbook, a nie w obu. Jeśli `Az` jest importowany przed `AzureRM` w elemencie runbook, element runbook zostanie ukończone, ale [błąd odwoływaniu się do metody get_SerializationSettings](/troubleshoot/runbooks.md#get-serializationsettings) będzie widoczna w strumieni zadań oraz poleceń cmdlet może nie zostały prawidłowo wykonany. Jeśli importujesz `AzureRM` i następnie `Az` element runbook będzie nadal czynności, ale zostanie wyświetlony błąd informujący, że strumienie zadania zarówno `Az` i `AzureRM` nie mogą być importowane w tej samej sesji ani używane w ten sam element runbook.
+> Jest ważne upewnić się, że elementy runbook w ramach konta usługi Automation, albo importować tylko `Az` lub `AzureRM` moduły do sesji programu PowerShell, używane przez elementy runbook, a nie w obu. Jeśli `Az` jest importowany przed `AzureRM` w elemencie runbook, element runbook zostanie ukończone, ale [błąd odwoływaniu się do metody get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) będzie widoczna w strumieni zadań oraz poleceń cmdlet może nie zostały prawidłowo wykonany. Jeśli importujesz `AzureRM` i następnie `Az` element runbook będzie nadal czynności, ale zostanie wyświetlony błąd informujący, że strumienie zadania zarówno `Az` i `AzureRM` nie mogą być importowane w tej samej sesji ani używane w ten sam element runbook.
 
 ## <a name="migrating-to-az-modules"></a>Migrowanie do modułów Az
 

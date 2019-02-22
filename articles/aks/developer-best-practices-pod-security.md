@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
-ms.openlocfilehash: 412f27c572953b3f44ddca54a99f75895f438f21
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: d48a1a1c9e220690649bbf60e9909a38d575c156
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53559080"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651963"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Najlepsze rozwiązania dotyczące zabezpieczeń zasobnik w usłudze Azure Kubernetes Service (AKS)
 
@@ -70,7 +70,7 @@ Praca z operatora sieci klastra, aby określić, jakie ustawienia kontekstu zabe
 
 Aby ograniczyć ryzyko związane z poświadczeniami ujawniania w kodzie aplikacji, należy unikać stosowania stałej lub udostępnionych poświadczeń. Poświadczeń ani kluczy nie powinny być uwzględniane bezpośrednio w kodzie. Jeśli te poświadczenia są udostępniane, aplikacja musi zostać zaktualizowany i ponownego wdrażania. Lepszym rozwiązaniem jest zapewnienie zasobników własnej tożsamości i sposób uwierzytelnić lub automatycznie pobrać poświadczeń z magazynu cyfrowych.
 
-AKS obejmuje automatyczne uwierzytelnianie zasobników lub żądania poświadczeń i kluczy z magazynu cyfrowych na dwa sposoby:
+Następujące [AKS skojarzona projektów typu open source] [ aks-associated-projects] umożliwiają automatyczne uwierzytelnianie zasobników lub żądania poświadczeń i kluczy z magazynu cyfrowych:
 
 * Zarządzane tożsamości dla zasobów platformy Azure i
 * Sterownik platformy Azure Key Vault FlexVol
@@ -83,7 +83,7 @@ Tożsamość zarządzaną dla zasobów platformy Azure umożliwia zasobnik uwier
 
 Za pomocą tożsamości zarządzanej kod aplikacji nie musi zawierać poświadczenia dostępu do usługi, takie jak Azure Storage. Jak pod każdym uwierzytelnia się za pomocą jego tożsamość, można więc inspekcji i przegląd dostępu wszystkich użytkowników. Jeśli aplikacja łączy się z innymi usługami platformy Azure, użyj usługi managed tożsamości do ponownego używania poświadczeń limit i ryzyko narażenia na zagrożenia.
 
-Aby uzyskać więcej informacji o tożsamościach zasobników, zobacz [Konfigurowanie klastra usługi AKS w celu używania tożsamości zasobnika zarządzane] [ aad-pod-identity] i [przypisywania i używania zasobników zarządzanych tożsamości w kodzie] [ aad-pod-identity].
+Aby uzyskać więcej informacji o tożsamościach zasobników, zobacz [Konfigurowanie klastra usługi AKS w celu używania tożsamości zasobnika zarządzane i ze swoimi aplikacjami][aad-pod-identity]
 
 ### <a name="use-azure-key-vault-with-flexvol"></a>Usługa Azure Key Vault za pomocą FlexVol
 
@@ -107,6 +107,7 @@ Ten artykuł koncentruje się na sposób zabezpieczania zasobników. Aby zaimple
 [aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
+[aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects
 
 <!-- INTERNAL LINKS -->
 [best-practices-cluster-security]: operator-best-practices-cluster-security.md

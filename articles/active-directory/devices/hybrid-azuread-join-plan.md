@@ -17,12 +17,12 @@ ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b7f7fa4889742989a61f8cc076224d46f8eac2
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4d2e3ad4015df74ea3adb98eae4d98e30f2948ce
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234106"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649190"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Instrukcje: Planowanie implementacji hybrydowej usługi Azure Active Directory join
 
@@ -92,7 +92,7 @@ Pierwszym krokiem planowania należy przejrzeć środowiska i ustalić, czy potr
 
 Nie można użyć dołączenie do hybrydowej usługi Azure AD, jeśli środowiska składa się z pojedynczego lasu, który synchronizowania danych tożsamości do więcej niż jednej dzierżawy usługi Azure AD.
 
-Jeśli użytkownik korzysta z narzędzia przygotowywania systemu (Sysprep), upewnij się, że tworzenie obrazów z instalacji systemu Windows, który nie został skonfigurowany na dołączenie do hybrydowej usługi Azure AD.
+Jeśli użytkownik korzysta z narzędzia przygotowywania systemu (Sysprep), upewnij się, że obrazy utworzone na podstawie instalacji systemu Windows 10 w wersji 1803 lub wcześniej nie zostały skonfigurowane na dołączenie do hybrydowej usługi Azure AD.
 
 Jeśli używasz migawkę maszyny wirtualnej (VM), aby utworzyć dodatkowe maszyny wirtualne, upewnij się, że używasz migawki maszyny Wirtualnej, która nie została skonfigurowana dla dołączenie do hybrydowej usługi Azure AD.
 
@@ -116,6 +116,7 @@ Przyłączone do domeny systemu Windows 10 urządzenia są już [usługi Azure A
  - Wszelkie istniejący stan usługi Azure AD zarejestrowany będą automatycznie usuwane, gdy urządzenie jest przyłączone do usługi Azure AD hybrydowej. 
  - Użytkownik może uniemożliwić urządzenia przyłączone do domeny usługi Azure AD zarejestrowany przez dodanie tego klucza rejestru - HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin" = dword: 00000001
 
+Zgodne ze standardem FIPS TPM nie są obsługiwane przez dołączenie do hybrydowej usługi Azure AD. Jeśli urządzenia były zgodne ze standardem FIPS modułów TPM, należy wyłączyć je przed kontynuowaniem dołączenie do hybrydowej usługi Azure AD.
 
 ## <a name="review-how-to-control-the-hybrid-azure-ad-join-of-your-devices"></a>Dowiedz się, jak kontrolować dołączenie do hybrydowej usługi Azure AD urządzeń
 

@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: c280f6ef99678b77edcb251ead685be88265f825
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bb3b262f3bde0599cb6dea009d0fbbeafb1c529a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871017"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649445"
 ---
 # <a name="glossary-for-qna-maker-knowledge-base-and-service"></a>Słownik usługi QnA Maker wiedzy i usługi
 
@@ -42,4 +42,4 @@ Kwerenda użytkownika to kwestia z pytaniem, użytkownikowi końcowemu lub teste
 Odpowiedź jest odpowiedzi, pobierane z bazy wiedzy, w oparciu o najlepsze dopasowanie dla zapytania danego użytkownika.
 
 ## <a name="confidence-score"></a>Współczynnik ufności
-Współczynnik ufności odpowiedzi jest wartością liczbową pomiędzy 0 a 100, 100, które są zgodne dokładnie zapytania zapytanie użytkownika z zapytania w bazie wiedzy, które obsługiwane odpowiedzi jest prawidłowe, odpowiednie odpowiedzi na kwerendę danego użytkownika. Odpowiedzi zwykle są uporządkowane według współczynnik ufności i z wyższym współczynnik ufności jest obsługiwany jako domyślny.
+Współczynnik ufności odpowiedzi jest wartością liczbową pomiędzy 0 a 100, 100, które są zgodne dokładnie zapytania zapytanie użytkownika z zapytania w bazie wiedzy, które obsługiwane odpowiedzi jest prawidłowe, odpowiednie odpowiedzi na kwerendę danego użytkownika. Odpowiedzi zwykle są uporządkowane według współczynnik ufności i z wyższym współczynnik ufności jest podawany jako [Domyślna odpowiedź](concepts/confidence-score.md#change-default-answer).

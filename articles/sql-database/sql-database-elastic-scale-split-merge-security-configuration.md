@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: a3ba80ce7b5abcb2f112880c4fef5ed3f067f691
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 051aa6b6ca8571fe948fa30e1e4a4320bb564a52
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563222"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593322"
 ---
 # <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
 
@@ -121,24 +121,29 @@ Domyślna konfiguracja nie zezwala na dostęp do punktu końcowego HTTP. Jest to
 Domyślna konfiguracja umożliwia dostęp do punktu końcowego HTTPS. To ustawienie może być ograniczony dalej.
 
 ### <a name="changing-the-configuration"></a>Zmienianie konfiguracji
-Grupa reguł kontroli dostępu, które dotyczą i punktu końcowego są konfigurowane w **<EndpointAcls>** sekcji **pliku konfiguracji usługi**.
+Grupa reguł kontroli dostępu, które dotyczą i punktu końcowego są konfigurowane w  **\<EndpointAcls >** sekcji **pliku konfiguracji usługi**.
 
-    <EndpointAcls>
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
-      <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
-    </EndpointAcls>
+```xml
+<EndpointAcls>
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
+    <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
+</EndpointAcls>
+```
 
-Zasady w grupie kontroli dostępu są konfigurowane w <AccessControl name=""> sekcję pliku konfiguracji usługi. 
+Zasady w grupie kontroli dostępu są konfigurowane w \<AccessControl name = "" > sekcji pliku konfiguracji usługi. 
 
 Format opisanej w dokumentacji list kontroli dostępu w sieci.
 Na przykład aby zezwolić tylko adresy IP w zakresie 100.100.0.0 do 100.100.255.255, dostęp do punktu końcowego HTTPS, zasady będzie wyglądać następująco:
 
-    <AccessControl name="Retricted">
-      <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
-      <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
-    </AccessControl>
-    <EndpointAcls>
+```xml
+<AccessControl name="Retricted">
+    <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
+    <Rule action="deny" description="None" order="2" remoteSubnet="0.0.0.0/0" />
+</AccessControl>
+<EndpointAcls>
     <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="Restricted" />
+</EndpointAcls>
+```
 
 ## <a name="denial-of-service-prevention"></a>Odmowa usługi zapobiegania
 Istnieją dwa różne mechanizmy obsługiwane do wykrywania i zapobiegania atakom typu odmowa usługi:
@@ -154,22 +159,29 @@ Są one oparte na funkcji opisano w zabezpieczeń dynamicznych adresów IP w us�
 ## <a name="restricting-number-of-concurrent-accesses"></a>Ograniczenie liczby równoczesnych dostępy do
 Dostępne są następujące ustawienia, które skonfigurowania tego zachowania:
 
-    <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
-    <Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
+<Setting name="DynamicIpRestrictionMaxConcurrentRequests" value="20" />
+```
 
 Zmień DynamicIpRestrictionDenyByConcurrentRequests na wartość true, aby włączyć tę ochronę.
 
 ## <a name="restricting-rate-of-access"></a>Ograniczanie szybkości dostępu
 Dostępne są następujące ustawienia, które skonfigurowania tego zachowania:
 
-    <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
-    <Setting name="DynamicIpRestrictionMaxRequests" value="100" />
-    <Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```xml
+<Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
+<Setting name="DynamicIpRestrictionMaxRequests" value="100" />
+<Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
+```
 
 ## <a name="configuring-the-response-to-a-denied-request"></a>Konfigurowanie odpowiedzi na żądanie odrzuconych
 Następujące ustawienie umożliwia skonfigurowanie odpowiedzi na żądanie odmowy:
 
-    <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```xml
+<Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
+```
+
 Zapoznaj się z dokumentacją dla dynamicznych zabezpieczeń protokołu IP w usługach IIS dla innych obsługiwanych wartości.
 
 ## <a name="operations-for-configuring-service-certificates"></a>Operacje dotyczące konfigurowania usług certyfikatów
@@ -232,12 +244,16 @@ Tylko uwierzytelnianie oparte na certyfikatach klienta jest obsługiwane i wył�
 
 Zmień te ustawienia na wartość false w pliku konfiguracji usługi, aby wyłączyć tę funkcję:
 
-    <Setting name="SetupWebAppForClientCertificates" value="false" />
-    <Setting name="SetupWebserverForClientCertificates" value="false" />
+```xml
+<Setting name="SetupWebAppForClientCertificates" value="false" />
+<Setting name="SetupWebserverForClientCertificates" value="false" />
+```
 
 Następnie skopiuj ten sam odcisk palca jako certyfikat SSL w ustawieniu certyfikatu urzędu certyfikacji:
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="create-a-self-signed-certification-authority"></a>Tworzenie urzędu certyfikacji z podpisem własnym
 Wykonaj poniższe kroki, aby utworzyć certyfikat z podpisem własnym do działania jako urząd certyfikacji:
@@ -280,11 +296,15 @@ Przekazywanie certyfikatu z istniejącym lub wygenerowane. Plik CER przy użyciu
 ## <a name="update-ca-certificate-in-service-configuration-file"></a>Aktualizuj urząd certyfikacji certyfikatu w pliku konfiguracji usługi
 Zaktualizuj wartość odcisku palca, następujące ustawienia w pliku konfiguracji usługi odcisk palca certyfikatu przekazany do usługi w chmurze:
 
-    <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 Z tym samym odciskiem palca, zaktualizuj wartość następujące ustawienia:
 
-    <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```xml
+<Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
+```
 
 ## <a name="issue-client-certificates"></a>Wystawianie certyfikatów klienta
 Poszczególnym uprawnień do uzyskania dostępu do usługi powinny mieć z certyfikatem klienta wystawionym ich do wyłącznego użytku i wybrać własne silne hasło, aby chronić jego klucz prywatny. 
@@ -338,17 +358,23 @@ Każda osoba, dla którego został wystawiony certyfikat klienta, należy wykona
 * W oknie dialogowym certyfikat, który zostanie otwarty wybierz kartę szczegółów
 * Upewnij się, że wyświetla wszystkie Show
 * Wybierz pole o nazwie odcisk palca na liście
-* Skopiuj wartość odcisku palca ** Usuń niewidoczne znaki Unicode przed pierwszą ** Usuń wszystkie spacje
+* Skopiuj wartość odcisku palca
+  * Usuń niewidoczne znaki Unicode przed pierwszą
+  * Usuń wszystkie spacje
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>Konfigurowanie klientów dozwolone w pliku konfiguracji usługi
 Zaktualizuj wartość następujące ustawienia w pliku konfiguracji usługi rozdzielaną przecinkami listę odcisków palców certyfikatów klientów, zezwolenie na dostęp do usługi:
 
-    <Setting name="AllowedClientCertificateThumbprints" value="" />
+```xml
+<Setting name="AllowedClientCertificateThumbprints" value="" />
+```
 
 ## <a name="configure-client-certificate-revocation-check"></a>Konfigurowanie sprawdzanie odwołania certyfikatu klienta
 Ustawienie domyślne nie sprawdza się z urzędem certyfikacji dla stanu odwołania certyfikatu klienta. Aby włączyć sprawdza, czy urząd certyfikacji, który wystawił certyfikaty klienta obsługuje takich kontroli, Zmień następujące ustawienie przy użyciu jednej z wartości zdefiniowanych w wyliczeniu X509RevocationMode:
 
-    <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```xml
+<Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
+```
 
 ## <a name="create-pfx-file-for-self-signed-encryption-certificates"></a>Utwórz plik PFX certyfikatów z podpisem szyfrowania
 Aby uzyskać certyfikat szyfrowania należy wykonać:
@@ -381,7 +407,9 @@ Przekazywanie certyfikatu z istniejącym lub wygenerowane. Plik PFX parą kluczy
 ## <a name="update-encryption-certificate-in-service-configuration-file"></a>Aktualizuj certyfikat szyfrowania w pliku konfiguracji usługi
 Zaktualizuj wartość odcisku palca z następujących ustawień w pliku konfiguracji usługi odcisk palca certyfikatu przekazany do usługi w chmurze:
 
-    <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```xml
+<Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
+```
 
 ## <a name="common-certificate-operations"></a>Typowe operacje dotyczące certyfikatu
 * Konfigurowanie certyfikatu SSL
@@ -452,7 +480,9 @@ W witrynie [Azure Portal](https://portal.azure.com/)
 ## <a name="other-security-considerations"></a>Inne uwagi dotyczące zabezpieczeń
 Ustawienia protokołu SSL, opisane w niniejszym dokumencie szyfrowania komunikacji między usługą i jej klientów, stosowania punktu końcowego HTTPS. Jest to ważne, ponieważ poświadczenia na potrzeby dostępu do bazy danych i inne poufne informacje znajdują się w komunikacie. Należy jednak pamiętać, że usługa będzie się powtarzał wewnętrzny stan, w tym poświadczeń w jego wewnętrznych tabel w bazie Microsoft Azure SQL, które zostały podane dla magazynu metadanych w ramach subskrypcji Microsoft Azure. Tej bazy danych został zdefiniowany jako część następujące ustawienie w pliku konfiguracji usługi (. Plik CSCFG): 
 
-    <Setting name="ElasticScaleMetadata" value="Server=…" />
+```xml
+<Setting name="ElasticScaleMetadata" value="Server=…" />
+```
 
 Poświadczenia przechowywane w tej bazie danych są szyfrowane. Jednak najlepszym rozwiązaniem jest upewnienie się, czy role sieci web i proces roboczy wdrożeń usługi są zawsze aktualne i bezpieczne, jak one mają dostęp do bazy danych metadanych i certyfikat używany do szyfrowania i odszyfrowywania przechowywanych poświadczeń. 
 

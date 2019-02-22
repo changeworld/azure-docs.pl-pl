@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: adbfb0e42bc7057313c7652402fce2b2ede47735
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455538"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592506"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Wersja zapoznawcza: Azure AD ochrony hasłem lokalnych — często zadawane pytania
 
@@ -44,6 +44,14 @@ Nie — ochrony haseł usługi Azure AD w środowisku lokalnym jest obsługiwana
 **Pyt.: Jak zastosować korzyści z ochrony haseł usługi Azure AD do podzbioru użytkowników w środowisku lokalnym?**
 
 Nieobsługiwane. Po wdrożeniu i włączone, nie rozróżniania ochrony haseł usługi Azure AD — wszyscy użytkownicy otrzymują korzyści równy zabezpieczeń.
+
+**Pyt.: Jaka jest różnica między zmiany hasła i ustawianie hasła (lub zresetowanie)?**
+
+Zmiana hasła jest, gdy użytkownik wybierze nowe hasło po potwierdzające, że mają oni wiedzę na temat stare hasło. Na przykład jest to, co się dzieje, gdy użytkownik loguje się do Windows, a następnie zostanie poproszony o wybranie nowego hasła.
+
+Ustawianie hasła (nazywanych dalej "Resetowanie hasła") jest, gdy administrator zastępuje hasło do konta przy użyciu nowego hasła, na przykład za pomocą narzędzia zarządzania użytkownicy usługi Active Directory i komputery. Ta operacja wymaga wysokim poziomem uprawnień (zwykle administrator domeny), a osoba wykonująca operację zwykle nie ma wiedzy na temat stare hasło. Scenariusze pomocy technicznej często to zrobić, na przykład gdy wspomaganie użytkownik zapomniał hasła. Zobaczysz również, że hasło ustawione zdarzenia w przypadku nowego konta użytkownika jest tworzona po raz pierwszy przy użyciu hasła.
+
+Sprawdzanie poprawności hasła zachowuje się takie same, niezależnie od tego, czy zmiany hasła lub zestaw jest wykonywana. Usługę agenta ochrony kontrolera domeny haseł usługi Azure AD rejestrowanie różnych zdarzeń informujące, czy zmiany hasła lub przeprowadzono operacji set.  Zobacz [ochrony haseł usługi Azure AD, monitorowanie i rejestrowanie](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor).
 
 **Pyt.: Instalowanie ochrony haseł usługi Azure AD równolegle z innymi produktami na podstawie filtru haseł jest obsługiwane?**
 

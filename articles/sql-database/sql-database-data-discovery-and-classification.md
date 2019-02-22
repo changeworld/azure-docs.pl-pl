@@ -12,12 +12,12 @@ ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 3c5f087ed44c252737e7f45fde12a4b509637499
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 7f38ef5076472954672cb721874891539802e7f1
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892885"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593271"
 ---
 # <a name="azure-sql-database-data-discovery--classification"></a>Usługa Azure SQL Database odnajdywanie i klasyfikacja danych
 
@@ -144,7 +144,7 @@ Interfejsów API REST można również użyć do programowego zarządzania klasy
 - [Usuń](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete) -usuwa etykietę czułości w danej kolumnie
 - [Pobierz](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get) — pobiera etykieta poufności danej kolumny
 - [Lista bieżącą przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase) — pobiera bieżącej etykiety ważności określonej bazy danych
-- [Lista zalecanych przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) — pobiera bieżącej etykiety ważności określonej bazy danych
+- [Lista zalecanych przez bazę danych](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase) — pobiera etykiety zalecane czułości określonej bazy danych
 
 ## <a id="subheading-5"></a>Następne kroki
 

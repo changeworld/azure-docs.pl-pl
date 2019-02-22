@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 194f43a0005f17a22b3a60d6decd049444e56c20
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 02d3cd3688f3b34c92422168b79cb4da5a93d970
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745780"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587994"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 przy użyciu tożsamości zarządzanej (wersja zapoznawcza)
 
@@ -29,7 +29,7 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
 
    ![Konfigurowanie tożsamości zarządzanej usługi Stream Analytics w wersji zapoznawczej](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. Wybierz **przypisane użycia systemu tożsamości zarządzanej (wersja zapoznawcza)** z okna, który pojawia się po prawej stronie. Kliknij przycisk **Zapisz** do tworzenia nazwy głównej usługi dla tożsamości zadania usługi Stream Analytics w usłudze Azure Active Directory. Cykl życia tożsamości nowo utworzony będą zarządzane przez platformę Azure. Po usunięciu zadania usługi Stream Analytics skojarzone tożsamości (nazwy głównej usługi) jest automatycznie usuwany przez platformę Azure.
+2. Wybierz **przypisane użycia systemu tożsamości zarządzanej (wersja zapoznawcza)** z okna, który pojawia się po prawej stronie. Kliknij przycisk **Zapisz** dla jednostki usługi tożsamości zadania usługi Stream Analytics w usłudze Azure Active Directory. Cykl życia tożsamości nowo utworzony będą zarządzane przez platformę Azure. Po usunięciu zadania usługi Stream Analytics skojarzone tożsamości (nazwy głównej usługi) jest automatycznie usuwany przez platformę Azure.
 
    Podczas zapisywania konfiguracji identyfikator obiektu (OID) nazwy głównej usługi jest wymieniony jako identyfikator podmiotu zabezpieczeń, jak pokazano poniżej:
 
@@ -171,6 +171,14 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
    ```
 
    Aby dowiedzieć się więcej na temat powyższego polecenia programu PowerShell, zapoznaj się [AzureRmDataLakeStoreItemAclEntry zestaw](https://docs.microsoft.com/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry?view=azurermps-6.8.1&viewFallbackFrom=azurermps-4.2.0#optional-parameters) dokumentacji.
+
+## <a name="limitations"></a>Ograniczenia
+Ta funkcja nie obsługuje następujących działań:
+
+1.  **Dostęp do wielu dzierżawców**: Nazwa główna usługi utworzone dla danego zadania usługi Stream Analytics będą znajdować się w dzierżawie usługi Azure Active Directory, na którym utworzono zadanie i nie można używać wobec zasobu, który znajduje się w innej dzierżawie usługi Azure Active Directory. W związku z tym tylko służy MSI na zasobach ADLS generacji 1, które znajdują się w tej samej dzierżawie usługi Azure Active Directory jako zadanie Azure Stream Analytics. 
+
+2.  **[Tożsamość użytkownika z przypisaną](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview#how-does-the-managed-identities-for-azure-resources-worka-namehow-does-it-worka/)**: nie jest obsługiwane. oznacza to, użytkownik nie będzie mógł wprowadzić własne jednostki usługi, który będzie używany przez ich zadania usługi Stream Analytics. Nazwa główna usługi jest generowany przez usługę Azure Stream Analytics. 
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

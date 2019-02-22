@@ -10,12 +10,12 @@ ms.author: robreed
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ca7a1913e94242af46e777be308ef92fc5a5abb3
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a63155e65460f9e2193c121bb49849940104eff1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427070"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649237"
 ---
 # <a name="azure-automation-state-configuration-overview"></a>Omówienie konfiguracji stanu usługi Azure Automation
 
@@ -41,9 +41,41 @@ W witrynie Azure portal lub za pomocą programu PowerShell można zarządzać ws
 
 Węzły, które są zarządzane za pomocą usługi Azure Automation stan konfiguracji Wyślij szczegółowe dane raportowania stanu na serwerze ściągania wbudowanych. Można skonfigurować konfiguracji stan automatyzacji platformy Azure, aby wysyłać te dane do swojego obszaru roboczego usługi Log Analytics. Aby dowiedzieć się, jak wysyłać dane stanu konfiguracji stanu do obszaru roboczego usługi Log Analytics, zobacz [do przodu usługi Azure Automation konfiguracji stanu raportowania danych do usługi Log Analytics](automation-dsc-diagnostics.md).
 
-## <a name="network-planning"></a>Konfigurowanie sieci
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Następujących portów i adresów URL są wymagane dla stanu Configuration (DSC) do komunikacji z usługą Automation:
+Korzystając z usługi Azure Automation stanu Configuration (DSC), rozważ następujące wymagania.
+
+### <a name="operating-system-requirements"></a>Wymagania dotyczące systemu operacyjnego
+
+W przypadku węzłów z systemem Windows obsługiwane są następujące wersje:
+
+- Windows Server 2019
+- Windows Server 2016
+- Windows Server 2012R2
+- Windows Server 2012
+- Windows Server 2008 R2 SP1
+- Windows 10
+- Windows 8.1
+- Windows 7
+
+W przypadku węzłów z systemem Linux obsługiwane są poniższe dystrybucje/wersje:
+
+Rozszerzenie DSC w systemie Linux obsługuje dystrybucje systemu Linux [zatwierdzone na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) z wyjątkiem:
+
+Dystrybucja | Wersja
+-|-
+Debian  | Wszystkie wersje
+Ubuntu  | 18.04
+
+### <a name="dsc-requirements"></a>Wymagania dotyczące DSC
+
+Dla wszystkich węzłów Windows działających na platformie Azure [WMF 5.1](https://docs.microsoft.com/powershell/wmf/5.1/install-configure) zostanie zainstalowany podczas dołączania.  Dla węzłów z systemem Windows Server 2012 i Windows 7 [zostanie włączona usługa WinRM](https://docs.microsoft.com/powershell/dsc/troubleshooting/troubleshooting#winrm-dependency).
+
+Dla wszystkich węzłów systemu Linux działających na platformie Azure [DSC programu PowerShell dla systemu Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) zostanie zainstalowany podczas dołączania.
+
+### <a name="network-planning"></a>Konfigurowanie sieci prywatnej
+
+Jeśli węzły znajdują się w sieci prywatnej, są wymagane dla stanu Configuration (DSC) do komunikacji z usługą Automation następujących portów i adresów URL:
 
 * Port: Tylko TCP 443 jest wymagany dla wychodzącego dostępu do Internetu.
 * Globalny adres URL: *.azure-automation.net
@@ -85,7 +117,7 @@ Wolisz obejrzeć film niż przeczytać artykuł? Poniższy klip wideo z maja 201
 > [!NOTE]
 > Gdy pojęć i cyklu życia omówione w tym filmie są poprawne, Konfiguracja stanu automatyzacji Azure rozwinęła ponieważ zarejestrowano ten film wideo. Ona jest teraz ogólnie dostępna, jest znacznie bardziej rozległe interfejsu użytkownika w witrynie Azure portal i obsługuje wiele dodatkowych możliwości.
 
-[!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
+<iframe src="https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player" width="640" height="320" allowFullScreen="true" frameBorder="0"></iframe>
 
 ## <a name="next-steps"></a>Kolejne kroki
 

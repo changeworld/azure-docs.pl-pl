@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 02/01/2019
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: fd723304e2219c457e982cbe54529d00afe526f4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 02a6cbabaeb7d9c6f764eec5dd86226e37aa6c2b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896013"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593526"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Aplikacji Azure Blockchain Workbench komunikatów integracji
 
@@ -375,7 +375,7 @@ Tematy usługi Service Bus może służyć do powiadamiania użytkowników o zda
 
 ## <a name="notification-message-reference"></a>Dokumentacja komunikatów powiadomień
 
-W zależności od **OperationName**, komunikaty powiadomień mieć jedną z następujących typów komunikatów.
+W zależności od **messageName**, komunikaty powiadomień mieć jedną z następujących typów komunikatów.
 
 ### <a name="block-message"></a>Komunikat dotyczący blokowania
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: rkarlin
-ms.openlocfilehash: a5ca8efd43244825eef412cf3c05c8df20094112
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8535a77c9f44a4dafca34ef24414f90741a9133e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109543"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652734"
 ---
 # <a name="managing-security-recommendations-in-azure-security-center"></a>Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center
 W tym dokumencie przedstawiono sposób korzystania z zaleceń Centrum zabezpieczeń Azure, aby pomóc w ochronie Twoich zasobów platformy Azure.
@@ -53,21 +53,25 @@ Aby wyświetlić szczegóły każde zalecenie, wybierz **Kafelek zalecenia** w o
 
 Można filtrować zalecenia. Aby filtrować zalecenia, wybierz **filtru** na **zalecenia** bloku. **Filtru** zostanie otwarty blok, a następnie wybierz ważność i stan wartości, które chcesz wyświetlić.
 
-Zalecenia są wyświetlane w postaci tabeli, gdzie każdy wiersz reprezentuje jedno zalecenie. Dostępne są następujące kolumny w tej tabeli:
 
-* **OPIS**: Wyjaśnia, zalecenia i co trzeba zrobić, aby rozwiązać problem.
+* **ZALECENIA DOTYCZĄCE**: Zalecenie.
+* **ZABEZPIECZANIE OCENĘ WPŁYWU**:
 * **ZASÓB**: Wyświetla listę zasobów, do których zostanie zastosowana tego zalecenia.
-* **STAN**: W tym artykule opisano bieżący stan zalecenia:
-  * **Otwórz**: Zalecenie nie zostały jeszcze zarejestrowane.
-  * **Trwającą**: Zalecenie jest aktualnie stosowane do zasobów i jest wymagana żadna akcja.
-  * **Rozwiązane**: Zalecenie zostało już ukończone (w tym przypadku wiersza jest wyszarzony).
-* **WAŻNOŚĆ**: Opisuje ważność określonego zalecenia:
-  * **Wysoka**: Luki w zabezpieczeniach istnieje, która dotyczy istotnego zasobu (np. aplikacji, maszyny Wirtualnej lub sieciowej grupy zabezpieczeń) i wymaga uwagi.
-  * **Średnia**: Istnieje luka w zabezpieczeniach i niekrytyczne lub dodatkowe kroki są wymagane, aby wyeliminować go lub do ukończenia procesu.
-  * **Niska**: Istnieje luka w zabezpieczeniach, które powinny być kierowane, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale można filtrować według zalecenia o niskiej ważności, jeśli chcesz je zobaczyć).
+* **PASKI STANU**:  Opisuje ważność określonego zalecenia:
+   * **Wysoki (czerwony)**: Luki w zabezpieczeniach istnieje, która dotyczy istotnego zasobu (np. aplikacji, maszyny Wirtualnej lub sieciowej grupy zabezpieczeń) i wymaga uwagi.
+   * **Średni (kolor pomarańczowy)**: Istnieje luka w zabezpieczeniach i niekrytyczne lub dodatkowe kroki są wymagane, aby wyeliminować go lub do ukończenia procesu.
+   * **Niski (niebieski)**: Istnieje luka w zabezpieczeniach, które powinny być kierowane, ale nie wymaga natychmiastowej uwagi. (Domyślnie zalecenia o niskiej ważności nie są prezentowane, ale można filtrować według zalecenia o niskiej ważności, jeśli chcesz je zobaczyć). 
+   * **Zdrowy (zielony)**:
+   * **Niedostępny (szary)**:
+ <!-- * **DESCRIPTION**: Explains the recommendation and what needs to be done to address it.
+**STATE**: Describes the current state of the recommendation:
+   * **Open**: The recommendation hasn't been addressed yet.
+    * **In Progress**: The recommendation is currently being applied to the resources, and no action is required by you.
+   * **Resolved**: The recommendation has already been completed (in this case, the line is grayed out).
+    -->
 
 Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych zaleceń i każdy z nich działanie w przypadku zastosowania.
-
+<!-- There is no table below -->
 > [!NOTE]
 > Należy zrozumieć [klasycznej sieci wirtualnej i modelem wdrażania usługi Resource Manager](../azure-classic-rm.md) dla zasobów platformy Azure.
 >

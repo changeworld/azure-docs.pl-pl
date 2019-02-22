@@ -1,5 +1,5 @@
 ---
-title: Rozpocznij na żywo | Dokumentacja firmy Microsoft
+title: Go Live | Microsoft Docs
 description: Przejdź na żywo interfejs API inicjuje oferty na żywo, wyświetlanie listy procesów.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7d643f0c7885e64636a107d22ce332b1ba9371c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48810274"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594682"
 ---
 <a name="go-live"></a>Rozpocznij na żywo
 =======
@@ -33,8 +33,8 @@ Ten interfejs API rozpoczyna się proces wypychania aplikacji do środowiska pro
 
 |  **Nazwa**      |   **Opis**                                                           | **Typ danych** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | Identyfikator wydawcy, oferty pobrać, na przykład `contoso`       |  Ciąg       |
-| identyfikatora oferty        | Oferuje identyfikator oferty do pobrania                                   |  Ciąg       |
+| publisherId    | Identyfikator wydawcy, oferty pobrać, na przykład `contoso`       |  String       |
+| offerId        | Oferuje identyfikator oferty do pobrania                                   |  String       |
 | wersja interfejsu API    | Najnowszą wersję interfejsu API                                                   |  Date         |
 |  |  |  |
 
@@ -67,7 +67,7 @@ Ten interfejs API rozpoczyna się proces wypychania aplikacji do środowiska pro
 
 ### <a name="response-status-codes"></a>Kody stanów odpowiedzi
 
-| **Kod** |  ** Opis **                                                                        |
+| **Kod** |  **Opis**                                                                        |
 | -------- |  ----------------                                                                        |
 |  202     | `Accepted` -Pomyślnie zaakceptowano żądanie. Odpowiedź zawiera lokalizację, aby śledzić stan operacji. |
 |  400     | `Bad/Malformed request` -Dodatkowe informacje o błędzie można znaleźć w treści odpowiedzi. |

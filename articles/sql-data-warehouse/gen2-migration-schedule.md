@@ -10,12 +10,12 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: a3ec74d0b22bfafb4353eca400b389b07a58ba39
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8dbe282b919c988d5cb997a66914d81ce1981f88
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246362"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592421"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Uaktualnienie magazynu danych do Gen2
 Firma Microsoft pomaga dysku szczegółów klasy podstawowej koszt uruchamiania wymagających zapytania, dodając dolnej warstwy wystąpień obliczeniowych dla usługi Azure SQL Data Warehouse do obsługi magazynu danych, przeczytaj pełne ogłoszenie [małe obliczeniowych warstwy obsługi Gen2](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Nowa oferta jest już dostępna w regionach wymienionych w poniższej tabeli. Obsługiwane regiony można uaktualnić istniejących magazynów danych Gen1 do Gen2 przy użyciu jednej:
@@ -29,8 +29,6 @@ Poniższa tabela zawiera podsumowanie według regionu, gdy warstwa wystąpień o
 
 | **Region** | **Niższe Gen2 dostępne** | **Rozpocznij automatycznych uaktualnień** |
 |:--- |:--- |:--- |
-| Australia Środkowa 1 |1 marca 2019 r. |15 czerwca 2019 r. |
-| Australia Środkowa 2 |1 marca 2019 r. |15 czerwca 2019 r. |
 | Australia Wschodnia |Dostępne |1 maja 2019 r. |
 | Australia Południowo-Wschodnia |1 marca 2019 r. |15 czerwca 2019 r. |
 | Brazylia Południowa |\* |\* |

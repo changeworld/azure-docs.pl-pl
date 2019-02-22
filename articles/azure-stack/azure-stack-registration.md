@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 62fde78cce05e62489931868da3d21c8b2e16928
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.lastreviewed: 02/14/2019
+ms.openlocfilehash: ebf8066139df93aefe1cfa21f2dc80ab57ca84bb
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430356"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652454"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -53,11 +53,13 @@ Przed zarejestrowaniem usługi Azure Stack przy użyciu platformy Azure, musisz 
 
 - Nazwa użytkownika i hasło dla konta które jest właścicielem subskrypcji.
 
-- Konto użytkownika musi mieć dostęp do subskrypcji platformy Azure i masz uprawnienia do tworzenia aplikacji z obsługą tożsamości i nazwy główne usług w katalogu skojarzonego z posiadaną subskrypcją. Firma Microsoft zaleca rejestrowania usługi Azure Stack z platformą Azure za pomocą najniższych administracji przez [utworzenie konta usługi dla rejestracji](azure-stack-registration-role.md) zamiast przy użyciu poświadczeń administratora globalnego.
+- Konto użytkownika musi mieć dostęp do subskrypcji platformy Azure i masz uprawnienia do tworzenia aplikacji z obsługą tożsamości i nazwy główne usług w katalogu skojarzonego z posiadaną subskrypcją. Firma Microsoft zaleca rejestrowania usługi Azure Stack przy użyciu platformy Azure przy użyciu uprawnień administracyjnych. Aby uzyskać więcej informacji na temat tworzenia definicji roli niestandardowej, która ogranicza dostęp do Twojej subskrypcji do rejestracji, zobacz [utworzyć rolę rejestracji dla usługi Azure Stack](azure-stack-registration-role.md).
 
 - Dostawca zasobów usługi Azure Stack zarejestrowany (zobacz w poniższej sekcji rejestrowanie dostawcy zasobów platformy Azure Stack, aby uzyskać szczegółowe informacje).
 
 Po zarejestrowaniu uprawnienia administratora globalnego usługi Azure Active Directory nie jest wymagana. Jednak niektóre operacje mogą wymagać poświadczenia administratora globalnego. Na przykład skryptu Instalatora dostawcy zasobów lub nową funkcję wymagające uprawnienia przyznawane. Możesz tymczasowo przywrócić uprawnienia administratora globalnego dla konta lub użyj konta oddzielne administratora globalnego, który jest właścicielem *domyślne subskrypcję dostawcy*.
+
+Użytkownik, który rejestruje usługi Azure Stack jest właścicielem usługi nazwy głównej usługi Azure Active Directory. Tylko użytkownik, który jest zarejestrowany w usłudze Azure Stack można zmodyfikować rejestracji w usłudze Azure Stack. Jeśli użytkownik bez uprawnień administratora, który nie jest właścicielem nazwy głównej usługi rejestracji próbuje zarejestrować lub ponownie zarejestrować w usłudze Azure Stack, które mogą oni natrafić odpowiedź 403. Odpowiedź 403 wskazuje, że użytkownik nie ma wystarczających uprawnień do ukończenia tej operacji.
 
 Jeśli nie masz subskrypcji platformy Azure, która spełnia te wymagania, możesz to zrobić [Utwórz w tym miejscu Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?b=17.06). Rejestrowanie usługi Azure Stack jest naliczana opłata bez kosztów związanych z subskrypcją platformy Azure.
 
@@ -479,6 +481,13 @@ Get-AzsRegistrationToken generuje token rejestracji z poziomu parametrów wejśc
 | UsageReportingEnabled | PRAWDA/FAŁSZ | Usługa Azure Stack raporty metryk użycia domyślnie. Operatory o pojemności używa lub obsługa środowiska bez połączenia trzeba wyłączyć raportowanie użycia. Dozwolone wartości tego parametru to: True, False. |
 | AgreementNumber | String |  |
 
+## <a name="registration-failures"></a>Błędy rejestracji
+
+Może zostać wyświetlony jeden z błędów poniżej podczas próby rejestracji usługi Azure Stack:
+1. Nie można pobrać informacji obowiązkowe sprzętu $hostName. Sprawdź fizycznego hosta bramy i łączność, a następnie spróbuj ponownie przeprowadzić rejestrację.
+2. Nie można nawiązać połączenia z $hostName Pobierz informacje dotyczące sprzętu — należy sprawdzić fizycznego hosta bramy i łączność a następnie spróbuj ponownie przeprowadzić rejestrację.
+
+Przyczyna: Jest to zazwyczaj spowodowane możemy spróbować uzyskać szczegóły sprzętu, takich jak identyfikator UUID systemu Bios i procesora CPU z hostów w celu podjęcia próby aktywacji i nie udało się ze względu na brak możliwości połączenia hosta fizycznego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

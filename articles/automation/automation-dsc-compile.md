@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 09/10/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d49ab32ace1ad0900c4867a41aba56900ef2bcaa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f2c6f45081b78d330033570ff322f90cd06e50dd
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54423412"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594274"
 ---
 # <a name="compiling-dsc-configurations-in-azure-automation-state-configuration"></a>Kompilowanie konfiguracji DSC usługi Azure Automation stanu konfiguracji
 
@@ -284,6 +284,14 @@ Start-AzureRmAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -A
 
 > [!NOTE]
 > Po zakończeniu kompilacji może zostać wyświetlony błąd wskazujący: **Nie można zaimportować modułu "Microsoft.PowerShell.Management", ponieważ przystawka "Microsoft.PowerShell.Management" została już zaimportowana.** Można bezpiecznie zignorować to ostrzeżenie.
+
+## <a name="partial-configuration"></a>Częściowe konfiguracji
+
+Konfiguracja stanu usługi Azure Automation obsługuje użycie [konfiguracje częściowe](https://docs.microsoft.com/en-us/powershell/dsc/pull-server/partialconfigs).
+W tym scenariuszu skonfigurowano niezależnie zarządzać wieloma konfiguracjami DSC, a każda z konfiguracji jest retreieved z usługi Azure Automation.
+Jednak tylko jedną konfigurację można przypisać do węzła na konto usługi automation.
+Oznacza to, jeśli używane są dwie konfiguracje dla węzła będzie wymagać dwóch kont usługi automation.
+Aby dowiedzieć się więcej o tym, jak zespoły mogą współdziałać razem wspólnie zarządzać serwerami przy użyciu konfiguracji jako kodu zobacz [DSC opis roli w potoku CI/CD](https://docs.microsoft.com/en-us/powershell/dsc/overview/authoringadvanced).
 
 ## <a name="importing-node-configurations"></a>Importowanie konfiguracji węzła
 

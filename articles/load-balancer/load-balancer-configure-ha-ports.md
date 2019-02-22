@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: d4464f6188efb479f21a23bf936a8222061d9987
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244141"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593407"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Konfigurowanie portów wysokiej dostępności dla wewnętrznego modułu równoważenia obciążenia
 
@@ -38,9 +38,9 @@ Na ilustracji przedstawiono następującą konfigurację przykład wdrożenia op
 
 ![Wdrażanie przykładu portów wysokiej dostępności](./media/load-balancer-configure-ha-ports/haports.png)
 
-
-
 ## <a name="configure-high-availability-ports"></a>Konfigurowanie portów wysokiej dostępności
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Konfigurowanie portów wysokiej dostępności, ułożyć wewnętrznego modułu równoważenia obciążenia przy użyciu urządzeń WUS w puli zaplecza. Konfigurowanie odpowiedniej konfiguracji sondy kondycji modułu równoważenia obciążenia, wykrywanie kondycji urządzenia WUS i reguły modułu równoważenia obciążenia przy użyciu portów wysokiej dostępności. Konfiguracji dotyczące modułu równoważenia obciążenia ogólne są omówione w [wprowadzenie](load-balancer-get-started-ilb-arm-portal.md). W tym artykule przedstawiono konfigurację portów wysokiej dostępności.
 
@@ -51,7 +51,6 @@ Konfiguracja wiąże się ustawienie portu frontonu i wartość portu zaplecza d
 Aby skonfigurować portów wysokiej dostępności przy użyciu witryny Azure portal, wybierz pozycję **porty wysokiej dostępności** pole wyboru. Po wybraniu związanej z nimi konfiguracji portu i protokołu jest wypełniane automatycznie. 
 
 ![Konfiguracja portów wysokiej dostępności za pośrednictwem witryny Azure portal](./media/load-balancer-configure-ha-ports/haports-portal.png)
-
 
 ### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>Konfigurowanie portów wysokiej dostępności reguły równoważenia obciążenia za pomocą szablonu usługi Resource Manager
 
@@ -91,7 +90,7 @@ Za konfigurowanie portów wysokiej dostępności przy użyciu wersji interfejsu 
 Aby utworzyć reguły modułu równoważenia obciążenia portów wysokiej dostępności, podczas tworzenia wewnętrznego modułu równoważenia obciążenia przy użyciu programu PowerShell, użyj następującego polecenia:
 
 ```powershell
-lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
+lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Skonfiguruj reguły modułu równoważenia obciążenia portów wysokiej dostępności przy użyciu wiersza polecenia platformy Azure

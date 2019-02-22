@@ -9,17 +9,24 @@ ms.subservice: custom-translator
 ms.date: 11/13/2018
 ms.author: v-rada
 ms.topic: article
-ms.openlocfilehash: d7f479bbacef7270807d9292e7b91fe835485647
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: aaad6838b47b812833af8960d24e9e15c0067a15
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217377"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586005"
 ---
 # <a name="what-are-parallel-documents"></a>Co to są równoległe dokumenty?
 
 Równoległe dokumenty są pary dokumenty, gdy jest ona tłumaczenia, z drugiej strony. Jeden dokument w parze zawiera zdań w języku źródła i innego dokumentu zawiera te zdania przetłumaczony na język docelowy.
 Nieważne, jaki język jest oznaczony jako "źródło" i język, który jest oznaczony jako "target" — równoległe dokumentu może służyć do szkolić system tłumaczeń w dowolnym kierunku.
+
+## <a name="requirements"></a>Wymagania
+
+Należy co najmniej 10 000 równoległe zdania w celu szkolić system. Najlepszym rozwiązaniem jest stale można dodać większej ilości zawartości równoległe i ponownego próbkowania w celu poprawiania jakości tłumaczenia systemu.
+
+Firma Microsoft wymaga, dokumenty przekazane do niestandardowych w usłudze Translator naruszają właściwości praw autorskich lub własności intelektualnej innych firm. Aby uzyskać więcej informacji, zobacz [warunki użytkowania](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
+Przekazywanie dokumentu za pomocą portalu nie zmienia własności intelektualnej w dokumencie.
 
 ## <a name="use-of-parallel-documents"></a>Korzystanie z dokumentów równoległe
 
@@ -31,16 +38,11 @@ Równoległe dokumentów są używane przez system:
 
 Najlepszym rozwiązaniem upewnij się, to połączenie zdania 1:1 między źródłem i język docelowy wersje dokumentów.
 
-Przekazane dokumenty prywatne do każdego obszaru roboczego i mogą być używane w dowolną liczbę projektów lub szkoleniach, jak chcesz. Zdania wyodrębnione ze swoich dokumentów są przechowywane osobno w repozytorium jako zwykłe pliki tekstowe Unicode i są dostępne do usuwania. Nie należy używać niestandardowego w usłudze Translator jako repozytorium dokumentów, nie można pobrać dokumenty przekazany w formacie został przekazany.
-
-## <a name="recommendations"></a>Zalecenia
-
 Jeśli projekt jest określonych dla domeny (kategoria), dokumenty powinny być zgodne w terminologii w ramach tej kategorii. Jakość wynikowy system tłumaczeń zależy od tego, liczbę zdań w zestawie dokumentów oraz określa jego jakość zdania. Więcej przykładów dokumentów zawierają z różnych wartości użycia wyrazu specyficzne dla kategorii, lepiej sobie radzą systemu można zrobić podczas tłumaczenia.
 
-Należy co najmniej 10 000 równoległe zdania w celu szkolić system. Najlepszym rozwiązaniem jest stale można dodać większej ilości zawartości równoległe i ponownego próbkowania w celu poprawiania jakości tłumaczenia systemu.
+Przekazane dokumenty prywatne do każdego obszaru roboczego i mogą być używane w dowolną liczbę projektów lub szkoleniach, jak chcesz. Zdania wyodrębnione ze swoich dokumentów są przechowywane osobno w repozytorium jako zwykłe pliki tekstowe Unicode i są dostępne do usuwania. Nie należy używać niestandardowego w usłudze Translator jako repozytorium dokumentów, nie można pobrać dokumenty przekazany w formacie został przekazany.
 
-Firma Microsoft wymaga, dokumenty przekazane do niestandardowych w usłudze Translator naruszają właściwości praw autorskich lub własności intelektualnej innych firm. Aby uzyskać więcej informacji, zobacz [warunki użytkowania](https://azure.microsoft.com/support/legal/cognitive-services-terms/).
-Przekazywanie dokumentu za pomocą portalu nie zmienia własności intelektualnej w dokumencie.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

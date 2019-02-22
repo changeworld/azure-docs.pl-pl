@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/14/2018
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: c1a9b526f08f330d62c30dd1d676e95460aee6c2
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: eb4b87a008b9e43de7e7a5f7895449303f1e44a6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712351"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593985"
 ---
 # <a name="using-the-azure-blockchain-workbench-rest-api"></a>Korzystanie z interfejsu API REST usługi Azure Blockchain Workbench
 
@@ -210,7 +210,7 @@ Content-type: application/json
 
 Po użytkownik zdecyduje się na szczegółowe dane w umowę, klient łańcucha bloków następnie wyświetlać dostępne akcje użytkownika danego stanu zamówienia. W tym przykładzie użytkownik przegląda wszystkie dostępne akcje dla nowo utworzonego kontraktu inteligentnego:
 
-* Zmień: umożliwia użytkownikowi zmodyfikowanie opisu i ceny zasobu.
+* Zmień: Zezwala użytkownikowi na modyfikowanie opisu i ceny zasobów.
 * Zakończenie: Umożliwia użytkownikowi zakończenia kontrakt elementu zawartości.
 
 Użyj [interfejsu API pobierania akcji kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionget):
@@ -277,7 +277,7 @@ Content-type: application/json
 
 Użytkownik może następnie zdecydować się na podjęcie działania dla określonego wystąpienia kontraktu inteligentnego. W tym przypadku Rozważmy scenariusz, w których użytkownik chce zmodyfikuj opis i Cena zasobu do następujących akcji:
 
-* Opis: „Mój zaktualizowany samochód”
+* Opis: "Mój zaktualizowane samochód"
 * Cena: 54321
 
 Użyj [interfejsu API tworzenia akcji kontraktu](/rest/api/azure-blockchain-workbench/contractsv2/contractactionpost):

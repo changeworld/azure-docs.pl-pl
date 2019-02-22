@@ -11,19 +11,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/02/2019
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 92c061a7f854b46ab5aee07aa5e648ace8f9ae52
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 49c4b74fa554d31d79c32586e8f94ef5cb7bf311
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343846"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586923"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu programu Azure PowerShell
 
 Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne niestandardowe role. W tym artykule opisano, jak tworzyć i zarządzać nimi przy użyciu programu Azure PowerShell ról niestandardowych.
+
+Aby uzyskać samouczek krok po kroku dotyczące sposobu tworzenia roli niestandardowej, zobacz [samouczka: Tworzenie roli niestandardowej na potrzeby zasobów platformy Azure przy użyciu programu Azure PowerShell](tutorial-custom-role-powershell.md).
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -32,7 +34,7 @@ Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnie
 Aby utworzyć niestandardowe role, potrzebne są:
 
 - Uprawnienia do tworzenia ról niestandardowych, takie jak [Właściciel](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator)
-- Program [Azure PowerShell](/powershell/azure/install-az-ps) zainstalowany lokalnie
+- [Usługi Azure Cloud Shell](../cloud-shell/overview.md) lub [programu Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
@@ -66,6 +68,64 @@ Virtual Machine Operator     True
 ```
 
 Jeśli wybrana subskrypcja nie znajduje się w `AssignableScopes` roli, nie będą wyświetlane roli niestandardowej.
+
+## <a name="list-a-custom-role-definition"></a>Listy niestandardową definicję roli
+
+Aby wyświetlić listę niestandardową definicję roli, należy użyć [Get AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition). Jest to to samo polecenie jak używane do wbudowanej roli.
+
+```azurepowershell
+Get-AzRoleDefinition <role name> | ConvertTo-Json
+```
+
+```Example
+PS C:\> Get-AzRoleDefinition "Virtual Machine Operator" | ConvertTo-Json
+
+{
+  "Name": "Virtual Machine Operator",
+  "Id": "00000000-0000-0000-0000-000000000000",
+  "IsCustom": true,
+  "Description": "Can monitor and restart virtual machines.",
+  "Actions": [
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Compute/*/read",
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/restart/action",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Support/*"
+  ],
+  "NotActions": [],
+  "DataActions": [],
+  "NotDataActions": [],
+  "AssignableScopes": [
+    "/subscriptions/11111111-1111-1111-1111-111111111111"
+  ]
+}
+```
+
+Poniższy przykład wyświetla listę tylko akcje roli:
+
+```azurepowershell
+(Get-AzRoleDefinition <role name>).Actions
+```
+
+```Example
+PS C:\> (Get-AzRoleDefinition "Virtual Machine Operator").Actions
+
+"Microsoft.Storage/*/read",
+"Microsoft.Network/*/read",
+"Microsoft.Compute/*/read",
+"Microsoft.Compute/virtualMachines/start/action",
+"Microsoft.Compute/virtualMachines/restart/action",
+"Microsoft.Authorization/*/read",
+"Microsoft.ResourceHealth/availabilityStatuses/read",
+"Microsoft.Resources/subscriptions/resourceGroups/read",
+"Microsoft.Insights/alertRules/*",
+"Microsoft.Insights/diagnosticSettings/*",
+"Microsoft.Support/*"
+```
 
 ## <a name="create-a-custom-role"></a>Tworzenie roli niestandardowej
 
@@ -111,6 +171,7 @@ $role.Actions.Add("Microsoft.Compute/*/read")
 $role.Actions.Add("Microsoft.Compute/virtualMachines/start/action")
 $role.Actions.Add("Microsoft.Compute/virtualMachines/restart/action")
 $role.Actions.Add("Microsoft.Authorization/*/read")
+$role.Actions.Add("Microsoft.ResourceHealth/availabilityStatuses/read")
 $role.Actions.Add("Microsoft.Resources/subscriptions/resourceGroups/read")
 $role.Actions.Add("Microsoft.Insights/alertRules/*")
 $role.Actions.Add("Microsoft.Support/*")
@@ -129,7 +190,9 @@ $role.Description = 'Can monitor and restart virtual machines.'
 $role.IsCustom = $true
 $perms = 'Microsoft.Storage/*/read','Microsoft.Network/*/read','Microsoft.Compute/*/read'
 $perms += 'Microsoft.Compute/virtualMachines/start/action','Microsoft.Compute/virtualMachines/restart/action'
-$perms += 'Microsoft.Authorization/*/read','Microsoft.Resources/subscriptions/resourceGroups/read'
+$perms += 'Microsoft.Authorization/*/read'
+$perms += 'Microsoft.ResourceHealth/availabilityStatuses/read'
+$perms += 'Microsoft.Resources/subscriptions/resourceGroups/read'
 $perms += 'Microsoft.Insights/alertRules/*','Microsoft.Support/*'
 $role.Actions = $perms
 $role.NotActions = (Get-AzRoleDefinition -Name 'Virtual Machine Contributor').NotActions

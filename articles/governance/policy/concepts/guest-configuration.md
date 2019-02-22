@@ -1,5 +1,5 @@
 ---
-title: Dowiedz się, jak przeprowadzić inspekcji na maszynie wirtualnej
+title: Dowiedz się, jak inspekcji zawartości maszyny wirtualnej
 description: Dowiedz się, jak korzysta z usługi Azure Policy konfiguracji gościa na Przeprowadź inspekcję ustawienia w ramach maszyny wirtualnej platformy Azure.
 services: azure-policy
 author: DCtheGeek
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ca8066caf77852c3ec1a8bd7cb534e8d74704bf2
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 19f55c7d383d64e6c400e22e624b713f6c42dc58
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447280"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649292"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Omówienie usługi Azure Policy gościa konfiguracji
 
-Oprócz przeprowadzania inspekcji i [korygowanie](../how-to/remediate-resources.md) zasobów platformy Azure, usługi Azure Policy jest w stanie inspekcji ustawień na maszynie wirtualnej. Sprawdzanie poprawności jest wykonywane przez rozszerzenie konfiguracji gościa i klienta. Rozszerzenie, za pomocą klienta, sprawdza poprawność ustawień, takich jak konfiguracja systemu operacyjnego, Konfiguracja aplikacji lub obecności i ustawienia środowiska.
+Oprócz przeprowadzania inspekcji i [korygowanie](../how-to/remediate-resources.md) zasobów platformy Azure, usługi Azure Policy można przeprowadzać inspekcję ustawień na maszynie wirtualnej. Sprawdzanie poprawności jest wykonywane przez rozszerzenie konfiguracji gościa i klienta. Rozszerzenie, za pomocą klienta, sprawdza poprawność ustawień, takich jak konfiguracja systemu operacyjnego, Konfiguracja aplikacji lub obecności i ustawienia środowiska.
 
 > [!IMPORTANT]
 > Obecnie tylko **wbudowanych** zasady są obsługiwane przy użyciu konfiguracji gościa.
@@ -31,7 +31,7 @@ Inspekcja ustawień na maszynie wirtualnej [rozszerzenie maszyny wirtualnej](../
 
 ### <a name="register-guest-configuration-resource-provider"></a>Procedura Rejestruj dostawcę zasobów konfiguracji gościa
 
-Zanim użyjesz konfiguracji gościa, należy zarejestrować dostawcę zasobów. Możesz zarejestrować się za pośrednictwem portalu lub za pomocą programu PowerShell.
+Zanim użyjesz konfiguracji gościa, należy zarejestrować dostawcę zasobów. Możesz zarejestrować się za pośrednictwem portalu lub za pomocą programu PowerShell. Dostawca zasobów jest rejestrowane automatycznie, jeśli przypisanie zasad konfiguracji gościa jest wykonywane za pośrednictwem portalu.
 
 #### <a name="registration---portal"></a>Rejestracja — Portal
 
@@ -67,13 +67,7 @@ W poniższej tabeli przedstawiono listę narzędzi lokalnego, używane we wszyst
 
 ### <a name="validation-frequency"></a>Częstotliwość sprawdzania poprawności
 
-Klient Configuration Gość sprawdza nowej zawartości co 5 minut.
-Po otrzymaniu przydziału gościa ustawienia są sprawdzane w 15-minutowych interwałach.
-Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa, zaraz po ukończeniu inspekcji.
-Gdy zasady [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) występuje i stan maszyny są zapisywane na potrzeby dostawcy zasobów gościa konfiguracji.
-To powoduje, że usługi Azure Policy do oceny właściwości usługi Azure Resource Manager.
-Ocena zasad na żądanie pobiera najnowszą wartość z konfiguracji gościa dostawcy zasobów.
-Jednak go nie wyzwala nowy inspekcji konfiguracji maszyny wirtualnej.
+Klient Configuration Gość sprawdza nowej zawartości co 5 minut. Po otrzymaniu przydziału gościa ustawienia są sprawdzane w 15-minutowych interwałach. Wyniki są wysyłane do dostawcy zasobów konfiguracji gościa, zaraz po ukończeniu inspekcji. Gdy zasady [wyzwalacza oceny](../how-to/get-compliance-data.md#evaluation-triggers) występuje i stan maszyny są zapisywane na potrzeby dostawcy zasobów gościa konfiguracji. To zdarzenie powoduje, że usługi Azure Policy do oceny właściwości usługi Azure Resource Manager. Ocena zasad na żądanie pobiera najnowszą wartość z konfiguracji gościa dostawcy zasobów. Jednak go nie wyzwala nowy inspekcji konfiguracji maszyny wirtualnej.
 
 ### <a name="supported-client-types"></a>Typy obsługiwanych klientów
 
@@ -102,7 +96,7 @@ W poniższej tabeli wymieniono systemy operacyjne, które nie są obsługiwane:
 
 ## <a name="guest-configuration-definition-requirements"></a>Wymagania dotyczące definicji konfiguracji gościa
 
-Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjami zasad **DeployIfNotExists** i **inspekcji**. **DeployIfNotExists** służy do przygotowywania maszyny wirtualnej za pomocą agenta gościa, konfiguracji i inne składniki do obsługi [narzędzia do sprawdzania poprawności](#validation-tools).
+Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjami zasad **DeployIfNotExists** definicji i **inspekcji** definicji. **DeployIfNotExists** definicja jest używana do przygotowywanie maszyny wirtualnej za pomocą agenta gościa, konfiguracji i inne składniki do obsługi [narzędzia do sprawdzania poprawności](#validation-tools).
 
 **DeployIfNotExists** definicji zasad sprawdza i naprawia następujące elementy:
 
@@ -111,14 +105,18 @@ Każdy inspekcji uruchamiane przez gościa konfiguracji wymaga dwiema definicjam
   - Instalowanie najnowszej wersji **Microsoft.GuestConfiguration** rozszerzenia
   - Instalowanie [narzędzia do sprawdzania poprawności](#validation-tools) i zależności, jeśli to konieczne
 
-Gdy **DeployIfNotExists** jest zgodne, **inspekcji** definicji zasad używa lokalna Weryfikacja narzędzi w celu ustalenia, czy przypisanie przypisanej konfiguracji zgodne lub niezgodne. Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji gościa. Klient przesyła wyniki z rozszerzeniem gościa i udostępnia je za pośrednictwem dostawcy zasobów gościa konfiguracji.
+Jeśli **DeployIfNotExists** przypisanie jest niezgodne, [zadań korygowania](../how-to/remediate-resources.md#create-a-remediation-task) mogą być używane.
+
+Gdy **DeployIfNotExists** przypisanie jest zgodne, **inspekcji** przypisania zasad używa lokalna Weryfikacja narzędzi w celu ustalenia, czy przypisanie konfiguracji zgodne lub niezgodne.
+Narzędzie sprawdzania poprawności zapewnia wyniki do klienta konfiguracji gościa. Klient przesyła wyniki z rozszerzeniem gościa i udostępnia je za pośrednictwem dostawcy zasobów gościa konfiguracji.
 
 Usługa Azure Policy korzysta z dostawców zasobów gościa konfiguracji **complianceStatus** właściwości raportu zgodności w **zgodności** węzła. Aby uzyskać więcej informacji, zobacz [pobierania danych zgodności](../how-to/getting-compliance-data.md).
 
 > [!NOTE]
 > Dla każdej definicji konfiguracji gościa zarówno **DeployIfNotExists** i **inspekcji** definicje zasad, musi istnieć.
 
-Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane inicjatywę o nazwie *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* zawiera zasady 18. Sześć **DeployIfNotExists** i **inspekcji** pary dla Windows i trzy pary dla systemu Linux. W każdym przypadku logiki wewnątrz definicji sprawdza tylko element docelowy system operacyjny jest obliczana na podstawie [reguła zasad](definition-structure.md#policy-rule) definicji.
+Wszystkie wbudowane zasady konfiguracji gościa znajdują się w inicjatywy do grupy definicje służące do użycia w przypisaniach. Wbudowane *[wersja zapoznawcza]: Przeprowadź inspekcję ustawienia zabezpieczeń hasła wewnątrz maszyn wirtualnych z systemem Linux i Windows* inicjatywy zawiera zasady 18. Sześć **DeployIfNotExists** i **inspekcji** pary definicji zasad dla Windows i trzy pary dla systemu Linux.
+W przypadku każdego **DeployIfNotExists** [reguła definicji zasad](definition-structure.md#policy-rule) ogranicza systemów ocenione.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

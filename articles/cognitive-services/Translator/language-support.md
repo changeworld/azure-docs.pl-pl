@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jansko
-ms.openlocfilehash: d0ab683ac59c17cbae1e0947cd2acd785b0365d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c0e024281782ede67aa3092d7af05a54113b0d68
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884994"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587535"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>Obsługa języka i regionu dla interfejsu API tłumaczenia tekstu
 
@@ -268,7 +268,7 @@ Możesz pobrać listę obsługiwanych języków dla interfejsu API tłumaczenia 
 
 ## <a name="customization"></a>Dostosowywanie
 
-Następujące języki są dostępne do dostosowania przy użyciu [niestandardowe w usłudze Translator](http://aka.ms/CustomTranslator).
+Następujące języki są możliwe do dostosowania do lub z angielskiego przy użyciu [niestandardowe w usłudze Translator](http://aka.ms/CustomTranslator).
 
 | Język    | Kod języka |
 |:----------- |:-------------:|

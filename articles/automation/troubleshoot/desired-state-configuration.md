@@ -9,18 +9,38 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 997f332e14fd1accf32d8cc3f51557fe005acab5
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a34dea7e1eb53531db55dc62df8fbad8541f7a35
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421649"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586804"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Rozwiązywanie problemów z Desired State Configuration (DSC)
 
 Ten artykuł zawiera informacje na temat rozwiązywania problemów z Desired State Configuration (DSC).
 
 ## <a name="common-errors-when-working-with-desired-state-configuration-dsc"></a>Typowe błędy podczas pracy z Desired State Configuration (DSC)
+
+### <a name="unsupported-characters"></a>Scenariusz: Nie można usunąć konfiguracji przy użyciu znaków specjalnych w portalu
+
+#### <a name="issue"></a>Problem
+
+Podczas próby usunięcia konfiguracji DSC w portalu, zostanie wyświetlony następujący błąd:
+
+```
+An error occured while deleteing the DSC configuration '<name>'.  Error-details: The arguement configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Jest to problem tymczasowy, planowane jest rozpoznawana.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+* Użyj polecenia cmdlet "Remove-AzAutomationDscConfiguration" Az, aby usunąć konfigurację.
+* Dokumentacja dla tego polecenia cmdlet nie został jeszcze zaktualizowany.  W międzyczasie można znaleźć w dokumentacji modułu AzureRM.
+  * [Remove-AzureRmAutomationDSCConfiguration](https://docs.microsoft.com/en-us/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration?view=azurermps-6.13.0)
 
 ### <a name="failed-not-found"></a>Scenariusz: Węzeł jest w stanie nie powiodło się z powodu błędu "Nie znaleziono"
 

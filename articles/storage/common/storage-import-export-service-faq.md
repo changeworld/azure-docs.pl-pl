@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: e52d5f3b30490227541e99e067c096a7df6dd911
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 6706da978195cff65a3454e6b2d71dfea3b414c4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566194"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651417"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Usługa Azure Import/Export: często zadawane pytania 
 Poniżej przedstawiono pytania i odpowiedzi, które mogą wystąpić podczas przesyłanie danych do magazynu platformy Azure za pomocą usługi Azure Import/Export. Pytania i odpowiedzi są podzielone na następujące kategorie:
@@ -87,8 +87,18 @@ Możesz przesłać dysków do centrum danych platformy Azure przy użyciu dowoln
 - Liczba kont FedEx w USA i UE, lub
 - Numer konta przez firmę DHL w regionach Azja Wschodnia i Australia.
 
+> [!NOTE]
+> Centra danych w Indiach wymaga litery deklaracji nagłówek listowy (dostarczanie challan) do zwrócenia z stacje. Aby rozmieścić wymaganego wpisu — dostęp próbny, możesz również zarezerwować pobranie za pomocą operatora wybranego i udostępniać szczegółowe informacje z centrum danych.
+
 ### <a name="are-there-any-restrictions-with-shipping-my-drive-internationally"></a>Czy istnieją jakieś ograniczenia przy dostarczaniu stacja w wielu krajach?
 Należy pamiętać, nośnik fizyczny, który jest dostarczany może być konieczne między granicami. Ponosisz odpowiedzialność za zapewnienie, że Twoje dane i nośnik fizyczny są importowane i/lub wyeksportowane zgodnie z obowiązującymi przepisami. Przed wysyłką nośnik fizyczny z Twojej doradców, aby sprawdzić, czy multimediów i danych prawnie mogą być wysyłane do centrum danych zidentyfikowane. Ułatwi to zapewnienie osiągnie firmy Microsoft, w odpowiednim czasie.
+
+### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Czy istnieją jakiekolwiek specjalne wymagania, dostarczania dysków do centrum danych?
+
+Wymagania zależą od ograniczeń określonych centrów danych platformy Azure.
+- Istnieje kilka witryn klasy C (na przykład Frankfurt), które wymagają centrum danych platformy Microsoft numer identyfikacyjny dla ruchu przychodzącego, które ma zostać zapisany na działkę ze względów bezpieczeństwa. Przed dostarczeniem aplikacji z dysków lub dysków do centrum danych, skontaktuj się z działem Azure DataBox operacji (adbops@microsoft.com) w celu rozwiązania tego numeru. Bez tego numeru pakiet zostanie odrzucone.
+- Centra danych w Indiach wymagają informacje osobowe sterownika, takie jak karty identyfikacyjnej dla instytucji rządowych lub nie dowodu. (na przykład, PRZESUWANIE, AADHAR, listy Dystrybucyjnej) nazwę, skontaktuj się z pomocą i samochodu płytką liczbę, aby otrzymać przebiegu wpis bramy. Aby uniknąć opóźnień w dostawie, informuje operatora o tych wymagań.
+
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>Podczas tworzenia zadania, adresu wysyłkowego jest lokalizacji, która różni się od Moje Lokalizacja konta magazynu. Co mam zrobić?
 

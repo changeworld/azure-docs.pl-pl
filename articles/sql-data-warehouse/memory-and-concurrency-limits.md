@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 10/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 802408f6ccd0a1cc0ed4f4d87d54a11760cd70fe
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cc42a0289316116b843696c984f9fc3c2114eb6c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473446"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592897"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i współbieżności dla usługi Azure SQL Data Warehouse
 Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse. Aby uzyskać więcej informacji i Zastosuj te możliwości do planu zarządzania obciążenia, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md). 
@@ -78,7 +78,7 @@ Aby upewnić się, że każde zapytanie ma za mało zasobów do wydajnego wykony
 
 W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz liczby gniazd współbieżności dla każdego [klasy zasobów statycznych](resource-classes-for-workload-management.md).  
 
-| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności | Używane przez staticrc10 gniazd | Używane przez staticrc20 gniazd | Używane przez staticrc30 gniazd | Używane przez staticrc40 gniazd | Używane przez staticrc50 gniazd | Używane przez staticrc60 gniazd | Używane przez staticrc70 gniazd | Używane przez staticrc80 gniazd |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100c        |  4                         |    4                        | 1         | 2          | 4          | 4          | 4         |  4         |  4         |  4         |
 | DW200c        |  8                         |    8                        | 1         | 2          | 4          | 8          |  8         |  8         |  8         |  8        |
@@ -133,7 +133,7 @@ Statycznych klas zasobów
 
 W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz liczby gniazd współbieżności dla każdego [klasy zasobów statycznych](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Gniazd współbieżności maksymalną |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
+| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Gniazd współbieżności maksymalną | Używane przez staticrc10 gniazd | Używane przez staticrc20 gniazd | Używane przez staticrc30 gniazd | Używane przez staticrc40 gniazd | Używane przez staticrc50 gniazd | Używane przez staticrc60 gniazd | Używane przez staticrc70 gniazd | Używane przez staticrc80 gniazd |
 |:-------------:|:--------------------------:|:-------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
 | DW100         | 4                          |   4                       | 1         | 2          | 4          | 4          |  4         |  4         |  4         |   4        |
 | DW200         | 8                          |   8                       | 1         | 2          | 4          | 8          |  8         |  8         |  8         |   8        |
@@ -156,7 +156,7 @@ Zasób dynamiczny klas
 
 W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz liczby gniazd współbieżności dla każdego [dynamicznej klasy zasobów](resource-classes-for-workload-management.md) na **Gen1**.
 
-| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności | smallrc | mediumrc | largerc | xlargerc |
+| Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności | Używane przez smallrc gniazd | Używane przez mediumrc gniazd | Używane przez largerc gniazd | Gniazda posługują się xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:-------:|:--------:|:-------:|:--------:|
 | DW100         |  4                         |   4                         | 1       |  1       |  2      |   4      |
 | DW200         |  8                         |   8                         | 1       |  2       |  4      |   8      |

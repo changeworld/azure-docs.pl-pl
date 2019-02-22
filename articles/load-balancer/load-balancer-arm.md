@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 9d11a34c499029550de12e8a47f7de0b1beac7b6
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 596ac871067886ee3124c0f21beb35cb3b8fe1ae
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51235041"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593815"
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Przy użyciu pomocy technicznej platformy Azure Resource Manager z usługą Azure Load Balancer
 
@@ -30,9 +30,9 @@ Za pomocą Menedżera zasobów usługi Azure Load Balancer zawiera następujące
 
 * Konfiguracja IP frontonu — moduł równoważenia obciążenia może zawierać jeden lub więcej adresów IP frontonu, znanych także jako wirtualne adresy IP (VIP). Te adresy IP są używane podczas transferu danych przychodzących.
 * Pula adresów zaplecza — są to adresy IP skojarzone z maszyny wirtualnej sieci karta sieciowa (NIC) do której jest dystrybuowane obciążenie.
-* Reguły równoważenia obciążenia — właściwości reguły mapowania adresu IP podanego frontonu i kombinację portów na zestaw adresów IP zaplecza i kombinację portów. Moduł równoważenia obciążenia może mieć różne reguły równoważenia obciążenia. Każda reguła stanowi kombinację adresu IP frontonu i portu IP wewnętrznej bazy danych i port skojarzony z maszynami wirtualnymi.
+* Reguły równoważenia obciążenia — właściwości reguły mapowania adresu IP podanego frontonu i kombinację portów na zestaw adresów IP zaplecza i kombinację portów. Moduł równoważenia obciążenia może mieć różne reguły równoważenia obciążenia. Każda reguła stanowi kombinację adresu IP frontonu i portu zaplecza adresów IP i port skojarzony z maszynami wirtualnymi.
 * Sondy — sondy pozwalają na śledzenie kondycji wystąpień maszyn wirtualnych. Jeśli sonda kondycji nie powiedzie się, wystąpienie maszyny Wirtualnej jest wykluczana z rotacji automatycznie.
-* Reguły NAT ruchu przychodzącego — reguły translatora adresów Sieciowych, definiując ruchu przychodzącego przepływu za pośrednictwem adresu IP frontonu i dystrybuowane do adresów IP zaplecza.
+* Reguły NAT dla ruchu przychodzącego — translatora adresów Sieciowych reguły określające ruchu przychodzącego przepływu za pośrednictwem adresu IP frontonu i dystrybuowane do adresu IP zaplecza.
 
 ![](./media/load-balancer-arm/load-balancer-arm.png)
 
@@ -58,7 +58,7 @@ Przykłady szablonów:
 
 Wprowadzenie do poleceń cmdlet, narzędzi wiersza polecenia i interfejsów API REST usługi Azure Resource Manager
 
-* [Polecenia cmdlet systemu Azure Networking](https://docs.microsoft.com/powershell/module/azurerm.network#networking) może służyć do tworzenia modułu równoważenia obciążenia.
+* [Polecenia cmdlet systemu Azure Networking](https://docs.microsoft.com/powershell/module/az.network#networking) może służyć do tworzenia modułu równoważenia obciążenia.
 * [Jak utworzyć moduł równoważenia obciążenia przy użyciu usługi Azure Resource Manager](load-balancer-get-started-ilb-arm-ps.md)
 * [Przy użyciu wiersza polecenia platformy Azure za pomocą usługi Azure Resource Management](../xplat-cli-azure-resource-manager.md)
 * [Interfejsy API REST usługi równoważenia obciążenia](https://msdn.microsoft.com/library/azure/mt163651.aspx)

@@ -1,5 +1,5 @@
 ---
-title: Złożone entity"
+title: Samouczek złożonego jednostki
 titleSuffix: Azure Cognitive Services
 description: Dodaj złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
 services: cognitive-services
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 0d78c365b171ea80d208c447f4746fe80b965ef2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2da007d0e97f55432282fbc52c38ef3f50a2e5f4
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883308"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593577"
 ---
 # <a name="tutorial-group-and-extract-related-data"></a>Samouczek: Grupowanie i wyodrębnianie powiązanych danych
 W tym samouczku należy dodać złożonego jednostki pakietów wyodrębnione dane różnych typów do pojedynczej jednostki zawierającej. Przez tworzenie pakietów danych, aplikacja kliencka może łatwo wyodrębnić powiązane dane w różnych typów danych.
@@ -85,18 +85,19 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 1. Wybierz **TransferEmployeeToDepartment** z listy opcji.
 
-1. W pierwszym wypowiedź, wybierz jednostki personName `John Jackson`, a następnie wybierz **Start zawijania złożonego jednostki** na liście menu podręczne dla następujących wypowiedź:
+1. W polu wypowiedź `place John Jackson in engineering`, wybierz jednostkę personName `John Jackson`, a następnie wybierz **opakować w jednostce złożone** na liście menu podręczne dla następujących wypowiedź. 
 
-    `place John Jackson in engineering`
+    ![Zrzut ekranu przedstawiający wybierając zawijania złożonego w listy rozwijanej w oknie dialogowym](./media/luis-tutorial-composite-entity/hr-create-composite-entity-1.png)
 
 1. Następnie od razu wybierz ostatni obiekt `engineering` w wypowiedź. Zielony pasek jest rysowana w ramach wybranego słowa wskazujący złożonego jednostki. W menu podręcznym wprowadź nazwę złożonego `TransferEmployeeInfo` a następnie wybierz enter. 
 
-1. W **jakiego typu jednostki, czy chcesz utworzyć?**, wszystkie pola wymagane znajdują się na liście: `personName` i `Department`. Wybierz pozycję **Done** (Gotowe). 
+    ![Zrzut ekranu przedstawiający wprowadzanie nazwy w liście rozwijanej okna dialogowego](./media/luis-tutorial-composite-entity/hr-create-composite-entity-2.png)
 
-    Zwróć uwagę, czy wstępnie utworzone jednostki, personName, został dodany do obiektu złożonego. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
+1. W **jakiego typu jednostki, czy chcesz utworzyć?**, wszystkie pola wymagane znajdują się na liście: `personName` i `Department`. Wybierz pozycję **Done** (Gotowe). Zwróć uwagę, czy wstępnie utworzone jednostki, personName, został dodany do obiektu złożonego. Jeśli może mieć wstępnie utworzone jednostki, pojawiają się między początkowe i końcowe tokenów złożonych jednostki, jednostki złożonego musi zawierać tych wstępnie utworzonych jednostek. Nie dołączono ze wstępnie utworzonych jednostek, złożonego jednostki nie jest poprawnie przewidzieć, ale jest każdego pojedynczego elementu.
+
+    ![Zrzut ekranu przedstawiający wprowadzanie nazwy w liście rozwijanej okna dialogowego](./media/luis-tutorial-composite-entity/hr-create-composite-entity-3.png)
 
 ## <a name="label-example-utterances-with-composite-entity"></a>Wypowiedzi przykład etykiety ze złożonego jednostki
-
 
 1. W każdym wypowiedź przykład wybierz jednostki najdalej po lewej stronie, która powinna znajdować się w złożonego. Następnie wybierz pozycję **opakować w jednostce złożone**.
 

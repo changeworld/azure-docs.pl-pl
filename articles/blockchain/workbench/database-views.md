@@ -5,21 +5,21 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 11/12/2018
+ms.date: 02/21/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: mmercuri
 manager: femila
-ms.openlocfilehash: 4d5b98ab001bcb30091590880954c7075701e53b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 06b7fb678bc79203589cfa75e8afb457d6ed344f
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607357"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594325"
 ---
 # <a name="database-views-in-azure-blockchain-workbench"></a>Widoki bazy danych w aplikacji Azure Blockchain Workbench
 
-Azure Blockchain Workbench dostarcza dane z rejestrów rozproszonych do *poza łańcuchem* bazy danych SQL database. Dzięki temu można używać języków SQL i istniejących narzędzi, takich jak [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), interakcję z danymi łańcucha bloków.
+Azure Blockchain Workbench dostarcza dane z rejestrów rozproszonych do *poza łańcuchem* bazy danych SQL database. Bazy danych poza łańcuchem sprawia, że można używać języków SQL i istniejących narzędzi, takich jak [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017), interakcję z danymi łańcucha bloków.
 
 Azure Blockchain Workbench zawiera zestaw widoków bazy danych, które zapewniają dostęp do danych, które będą pomocne podczas wykonywania zapytania. Widoki te są silnie nieznormalizowany, aby ułatwić szybkie rozpoczęcie tworzyć raporty, analizy i w przeciwnym razie korzystanie z rejestrowanych danych łańcucha bloków z istniejącymi narzędziami i bez konieczności Ponowne szkolenie pracowników bazy danych.
 
@@ -33,7 +33,7 @@ Ta sekcja zawiera omówienie widoki bazy danych i danych, które zawierają.
 
 Ten widok zawiera szczegółowe informacje dotyczące **aplikacje** zostały przekazane do aplikacji Azure Blockchain Workbench.
 
-| Name (Nazwa)                             | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                   |
+| Name (Nazwa)                             | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                   |
 |----------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                    | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                  | nvarchar(50)  | Nie          | Nazwa aplikacji |
@@ -42,7 +42,7 @@ Ten widok zawiera szczegółowe informacje dotyczące **aplikacje** zostały prz
 | ApplicationEnabled               | Bitowe           | Nie          | Określa, czy aplikacja jest obecnie włączona.<br /> **Uwaga:** Mimo że aplikacja może uwzględnione jako wyłączone w bazie danych, skojarzonych umów nadal korzystać z łańcucha bloków i dane dotyczące tych umów pozostają w bazie danych. |
 | UploadedDtTm                     | datetime2(7)  | Nie          | Data i godzina, który został przekazany kontraktu |
 | UploadedByUserId                 | int           | Nie          | Identyfikator użytkownika, który przekazywane aplikacji |
-| UploadedByUserExternalId         | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który przekazywane aplikacji. Domyślnie jest to identyfikator dla użytkownika z usługi Azure Active Directory przez konsorcjum.                                                                                                |
+| UploadedByUserExternalId         | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który przekazywane aplikacji. Domyślnie ten identyfikator jest użytkownika z usługi Azure Active Directory przez konsorcjum.                                                                                                |
 | UploadedByUserProvisioningStatus | int           | Nie          | Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych<br />2 — użytkownik jest w pełni zaaprowizowanym                         |
 | UploadedByUserFirstName          | nvarchar(50)  | Yes         | Imię użytkownika, który kontrakt przekazany |
 | UploadedByUserLastName           | nvarchar(50)  | Yes         | Nazwisko użytkownika, który kontrakt przekazany |
@@ -54,7 +54,7 @@ Ten widok zawiera szczegółowe informacje dotyczące ról, które zostały zdef
 
 W *transferu zawartości* aplikacji, na przykład ról, takich jak *kupujący* i *sprzedawcy* ról może być zdefiniowana.
 
-| Name (Nazwa)                   | Typ             | Może mieć wartości Null | Opis                                       |
+| Name (Nazwa)                   | Type             | Może mieć wartości Null | Opis                                       |
 |------------------------|------------------|-------------|---------------------------------------------------|
 | ApplicationId          | int              | Nie          | Unikatowy identyfikator aplikacji           |
 | ApplicationName        | nvarchar(50)     | Nie          | Nazwa aplikacji                       |
@@ -62,7 +62,7 @@ W *transferu zawartości* aplikacji, na przykład ról, takich jak *kupujący* i
 | ApplicationDisplayName | nvarchar(255)    | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika      |
 | RoleId                 | int              | Nie          | Unikatowy identyfikator dla roli w aplikacji |
 | RoleName               | nvarchar50)      | Nie          | Nazwa roli                              |
-| RoleDescription        | Description(255) | Yes         | Opis roli                         |
+| RoleDescription        | description(255) | Yes         | Opis roli                         |
 
 ## <a name="vwapplicationroleuser"></a>vwApplicationRoleUser
 
@@ -70,7 +70,7 @@ Ten widok zawiera szczegółowe informacje dotyczące ról, które zostały zdef
 
 W *transferu zawartości* aplikacji, na przykład *Jan Kowalski* mogą być skojarzone z *kupujący* roli.
 
-| Name (Nazwa)                       | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                           |
+| Name (Nazwa)                       | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                           |
 |----------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId              | int           | Nie          | Unikatowy identyfikator aplikacji                                                                                                                                                                                               |
 | ApplicationName            | nvarchar(50)  | Nie          | Nazwa aplikacji                                                                                                                                                                                                           |
@@ -80,7 +80,7 @@ W *transferu zawartości* aplikacji, na przykład *Jan Kowalski* mogą być skoj
 | ApplicationRoleName        | nvarchar50)   | Nie          | Nazwa roli                                                                                                                                                                                                                  |
 | ApplicationRoleDescription | nvarchar(255) | Yes         | Opis roli                                                                                                                                                                                                             |
 | UserId                     | int           | Nie          | Identyfikator użytkownika skojarzony z rolą |
-| UserExternalId             | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który jest skojarzony z rolą. Domyślnie jest to identyfikator dla użytkownika z usługi Azure Active Directory przez konsorcjum.                                                                     |
+| UserExternalId             | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który jest skojarzony z rolą. Domyślnie ten identyfikator jest użytkownika z usługi Azure Active Directory przez konsorcjum.                                                                     |
 | UserProvisioningStatus     | int           | Nie          | Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych<br />2 — użytkownik jest w pełni zaaprowizowanym |
 | UserFirstName              | nvarchar(50)  | Yes         | Imię użytkownika, który jest skojarzony z rolą |
 | UserLastName               | nvarchar(255) | Yes         | Nazwisko użytkownika, który jest skojarzony z rolą |
@@ -93,16 +93,16 @@ Ten widok zawiera szczegółowe informacje dotyczące połączenia zdefiniowane 
 -   Szczegóły skojarzone księgi
 -   Informacje skojarzone z użytkownikami
 
-| Name (Nazwa)                     | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                           |
+| Name (Nazwa)                     | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                           |
 |--------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Identyfikator połączenia             | int           | Nie          | Unikatowy identyfikator połączenia w aplikacji Azure Blockchain Workbench |
+| ConnectionId             | int           | Nie          | Unikatowy identyfikator połączenia w aplikacji Azure Blockchain Workbench |
 | ConnectionEndpointUrl    | nvarchar(50)  | Nie          | Adres url punktu końcowego połączenia |
 | ConnectionFundingAccount | nvarchar(255) | Yes         | Finansowania konto skojarzone z połączeniem, jeśli ma to zastosowanie |
 | LedgerId                 | int           | Nie          | Unikatowy identyfikator rejestr |
 | LedgerName               | nvarchar(50)  | Nie          | Nazwa rejestru |
 | LedgerDisplayName        | nvarchar(255) | Nie          | Nazwa rejestru do wyświetlenia w interfejsie użytkownika |
 | UserId                   | int           | Nie          | Identyfikator użytkownika skojarzony z tym połączeniem |
-| UserExternalId           | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który jest skojarzony z tym połączeniem. Domyślnie jest to identyfikator dla użytkownika z usługi Azure Active Directory przez konsorcjum. |
+| UserExternalId           | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który jest skojarzony z tym połączeniem. Domyślnie ten identyfikator jest użytkownika z usługi Azure Active Directory przez konsorcjum. |
 | UserProvisioningStatus   | int           | Nie          |Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych<br />2 — użytkownik jest w pełni zaaprowizowanym |
 | UserFirstName            | nvarchar(50)  | Yes         | Imię użytkownika, który jest skojarzony z tym połączeniem |
 | UserLastName             | nvarchar(255) | Yes         | Nazwisko użytkownika, który jest skojarzony z tym połączeniem |
@@ -118,9 +118,9 @@ Ten widok udostępnia szczegółowe informacje o wdrożonych umów. Dla każdej 
 -   Szczegóły dotyczące użytkownika, który zainicjował akcję
 -   Szczegółowe informacje związane z bloku łańcucha bloków i transakcji
 
-| Name (Nazwa)                                     | Typ           | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                   |
+| Name (Nazwa)                                     | Type           | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                   |
 |------------------------------------------|----------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Identyfikator połączenia                             | int            | Nie          | Unikatowy identyfikator połączenia w aplikacji Azure Blockchain Workbench.                                                                                                                                                                                         |
+| ConnectionId                             | int            | Nie          | Unikatowy identyfikator połączenia w aplikacji Azure Blockchain Workbench.                                                                                                                                                                                         |
 | ConnectionEndpointUrl                    | nvarchar(50)   | Nie          | Adres url punktu końcowego połączenia |
 | ConnectionFundingAccount                 | nvarchar(255)  | Yes         | Finansowania konto skojarzone z połączeniem, jeśli ma to zastosowanie |
 | LedgerId                                 | int            | Nie          | Unikatowy identyfikator rejestr |
@@ -140,8 +140,8 @@ Ten widok udostępnia szczegółowe informacje o wdrożonych umów. Dla każdej 
 | ContractId                               | int            | Nie          | Unikatowy identyfikator zamówienia |
 | ContractProvisioningStatus               | int            | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: <br />0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych<br />1 — Umowa została wysłana do rejestru<br />2 — Umowa została pomyślnie wdrożona w księdze<br />3 lub 4 - kontrakt nie udało się wdrożyć w księdze<br />5 — Umowy został pomyślnie wdrożony w księdze <br /><br />Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
 | ContractLedgerIdentifier                 | nvarchar (255) |             | Adres e-mail użytkownika, który jest wdrożony umowy |
-| ContractDeployedByUserId                 | int            | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie jest to identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika.                                                                                                          |
-| ContractDeployedByUserExternalId         | nvarchar(255)  | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie jest to identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika.                                                                                                         |
+| ContractDeployedByUserId                 | int            | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie ten identyfikator jest identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika.                                                                                                          |
+| ContractDeployedByUserExternalId         | nvarchar(255)  | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie ten identyfikator jest identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika.                                                                                                         |
 | ContractDeployedByUserProvisioningStatus | int            | Nie          | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych <br />2 — użytkownik jest w pełni zaaprowizowanym                     |
 | ContractDeployedByUserFirstName          | nvarchar(50)   | Yes         | Imię użytkownika, który jest wdrożony umowy |
 | ContractDeployedByUserLastName           | nvarchar(255)  | Yes         | Nazwisko użytkownika, który jest wdrożony umowy |
@@ -159,7 +159,7 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 -   Szczegóły dotyczące użytkownika, który zainicjował akcję
 -   Szczegółowe informacje związane z bloku łańcucha bloków i transakcji
 
-| Name (Nazwa)                                     | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                                                                    |
+| Name (Nazwa)                                     | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                                                                    |
 |------------------------------------------|---------------|-------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                            | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                          | nvarchar(50)  | Nie          | Nazwa aplikacji |
@@ -176,7 +176,7 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 | ContractDeployedByUserId                 | int           | Nie          | Unikatowy identyfikator użytkownika, który kontrakt wdrożone |
 | ContractDeployedByUserFirstName          | nvarchar(50)  | Yes         | Imię użytkownika, który jest wdrożony umowy |
 | ContractDeployedByUserLastName           | nvarchar(255) | Yes         | Nazwisko użytkownika, który jest wdrożony umowy |
-| ContractDeployedByUserExternalId         | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie jest to identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory.                                                                                                                                                |
+| ContractDeployedByUserExternalId         | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie ten identyfikator jest identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory.                                                                                                                                                |
 | ContractDeployedByUserEmailAddress       | nvarchar(255) | Yes         | Adres e-mail użytkownika, który jest wdrożony umowy |
 | WorkflowFunctionId                       | int           | Nie          | Unikatowy identyfikator dla funkcji przepływu pracy |
 | WorkflowFunctionName                     | nvarchar(50)  | Nie          | Nazwa funkcji |
@@ -188,7 +188,7 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 | ContractActionExecutedByUserId           | int           | Nie          | Unikatowy identyfikator użytkownika, która wykonana akcja kontraktu |
 | ContractActionExecutedByUserFirstName    | int           | Yes         | Imię użytkownika, który wykonał akcję kontraktu |
 | ContractActionExecutedByUserLastName     | nvarchar(50)  | Yes         | Nazwisko użytkownika, który wykonał akcję kontraktu |
-| ContractActionExecutedByUserExternalId   | nvarchar(255) | Yes         | Zewnętrzny identyfikator użytkownika, który wykonał akcję kontraktu. Domyślnie jest to identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory. |
+| ContractActionExecutedByUserExternalId   | nvarchar(255) | Yes         | Zewnętrzny identyfikator użytkownika, który wykonał akcję kontraktu. Domyślnie ten identyfikator jest identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory. |
 | ContractActionExecutedByUserEmailAddress | nvarchar(255) | Yes         | Adres e-mail użytkownika, który wykonał akcję kontraktu |
 | WorkflowFunctionParameterId              | int           | Nie          | Unikatowy identyfikator dla parametru funkcji |
 | WorkflowFunctionParameterName            | nvarchar(50)  | Nie          | Nazwa parametru funkcji |
@@ -199,11 +199,11 @@ Ten widok zaspokajają większość informacji dotyczących działania podjęte 
 | BlockHash                                | nvarchar(255) | Yes         | Wartość skrótu bloku |
 | BlockNumber                              | int           | Yes         | Liczba bloku na rejestr |
 | BlockTimestamp                           | DATETIME(2,7) | Yes         | Sygnatura czasowa bloku |
-| Identyfikator transakcji                            | int           | Nie          | Unikatowy identyfikator dla transakcji |
+| TransactionId                            | int           | Nie          | Unikatowy identyfikator dla transakcji |
 | TransactionFrom                          | nvarchar(255) | Yes         | Strona, która pochodzi transakcji |
 | TransactionTo                            | nvarchar(255) | Yes         | Strona, która została dokonana transakcja z |
 | TransactionHash                          | nvarchar(255) | Yes         | Skrót transakcji |
-| TransactionIsWorkbenchTransaction        | Bitowe           | Yes         | Bit, który określa, czy transakcja jest transakcji aplikacji Azure Blockchain Workbench |
+| TransactionIsWorkbenchTransaction        | Bitowe           | Yes         | Bit, który określa, czy transakcja jest transakcja aplikacji Azure Blockchain Workbench |
 | TransactionProvisioningStatus            | int           | Yes         | Określa bieżący stan procesu inicjowania obsługi administracyjnej dla transakcji. Możliwe wartości: <br />0 – transakcja została utworzona przez interfejs API w bazie danych<br />1 — transakcja została wysłana do rejestru<br />2 — transakcja została pomyślnie wdrożona w księdze                 |
 | TransactionValue                         | decimal(32,2) | Yes         | Wartość transakcji |
 
@@ -218,7 +218,7 @@ Ten widok zaspokajają większość informacje dotyczące właściwości skojarz
 -   Konkretne wystąpienie wartości właściwości
 -   Szczegóły dotyczące właściwości stanu zamówienia
 
-| Name (Nazwa)                               | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                                        |
+| Name (Nazwa)                               | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                    | nvarchar(50)  | Nie          | Nazwa aplikacji |
@@ -235,7 +235,7 @@ Ten widok zaspokajają większość informacje dotyczące właściwości skojarz
 | ContractDeployedByUserId           | int           | Nie          | Unikatowy identyfikator użytkownika, który kontrakt wdrożone |
 | ContractDeployedByUserFirstName    | nvarchar(50)  | Yes         | Imię użytkownika, który jest wdrożony umowy |
 | ContractDeployedByUserLastName     | nvarchar(255) | Yes         | Nazwisko użytkownika, który jest wdrożony umowy |
-| ContractDeployedByUserExternalId   | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie jest to identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory |
+| ContractDeployedByUserExternalId   | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie ten identyfikator jest identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory |
 | ContractDeployedByUserEmailAddress | nvarchar(255) | Yes         | Adres e-mail użytkownika, który jest wdrożony umowy |
 | WorkflowPropertyId                 | int           |             | Unikatowy identyfikator dla właściwości przepływu pracy |
 | WorkflowPropertyDataTypeId         | int           | Nie          | Identyfikator typu danych właściwości |
@@ -244,9 +244,9 @@ Ten widok zaspokajają większość informacje dotyczące właściwości skojarz
 | WorkflowPropertyDisplayName        | nvarchar(255) | Nie          | Nazwa wyświetlana właściwości przepływu pracy |
 | WorkflowPropertyDescription        | nvarchar(255) | Yes         | Opis właściwości |
 | ContractPropertyValue              | nvarchar(255) | Nie          | Wartość właściwości umowy |
-| Element StateName                          | nvarchar(50)  | Yes         | Jeśli ta właściwość zawiera stan zamówienia, jest to nazwa wyświetlana stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
-| StateDisplayName                   | nvarchar(255) | Nie          | Jeśli ta właściwość zawiera stan, jest to nazwa wyświetlana stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
-| StateValue                         | nvarchar(255) | Yes         | Jeśli ta właściwość zawiera stan, jest to wartość stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
+| StateName                          | nvarchar(50)  | Yes         | Jeśli ta właściwość zawiera stan zamówienia, jest nazwa wyświetlana stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
+| StateDisplayName                   | nvarchar(255) | Nie          | Jeśli ta właściwość zawiera stan, jest nazwa wyświetlana stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
+| StateValue                         | nvarchar(255) | Yes         | Jeśli ta właściwość zawiera stan, to wartość stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
 
 ## <a name="vwcontractstate"></a>vwContractState
 
@@ -258,7 +258,7 @@ Ten widok zaspokajają większość informacji dotyczących stanu określonych z
 -   Definicja właściwości skojarzone kontraktu inteligentne
 -   Szczegóły dotyczące właściwości stanu zamówienia
 
-| Name (Nazwa)                               | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                                        |
+| Name (Nazwa)                               | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                                        |
 |------------------------------------|---------------|-------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                      | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                    | nvarchar(50)  | Nie          | Nazwa aplikacji |
@@ -271,10 +271,10 @@ Ten widok zaspokajają większość informacji dotyczących stanu określonych z
 | ContractLedgerImplementationId     | nvarchar(255) | Yes         | Unikatowy identyfikator skojarzony z wdrożoną wersję inteligentne kontraktu dla określonego rejestru rozproszonego. Na przykład, Ethereum. |
 | ContractId                         | int           | Nie          | Unikatowy identyfikator zamówienia |
 | ContractProvisioningStatus         | int           | Nie          |Określa bieżący stan procesu inicjowania obsługi administracyjnej dla kontraktu. Możliwe wartości: <br />0 – kontrakt utworzonych przy użyciu interfejsu API w bazie danych<br />1 — Umowa została wysłana do rejestru<br />2 — Umowa została pomyślnie wdrożona w księdze<br />3 lub 4 - kontrakt nie udało się wdrożyć w księdze<br />5 — Umowy został pomyślnie wdrożony w księdze <br /><br />Począwszy od wersji 1.5, wartości od 0 do 5 są obsługiwane. Dla wstecznej zgodności w bieżącej wersji widoku **vwContractStateV0** jest dostępna, że obsługuje tylko wartości 0 do 2. |
-| Identyfikator połączenia                       | int           | Nie          | Unikatowy identyfikator wystąpienia łańcucha bloków, które jest wdrażana przepływu pracy |
+| ConnectionId                       | int           | Nie          | Unikatowy identyfikator wystąpienia łańcucha bloków, które jest wdrażana przepływu pracy |
 | ContractCodeId                     | int           | Nie          | Unikatowy identyfikator dla implementacji kodu kontraktu |
 | ContractDeployedByUserId           | int           | Nie          | Unikatowy identyfikator użytkownika, który wdrożony umowy |
-| ContractDeployedByUserExternalId   | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie jest to identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory. |
+| ContractDeployedByUserExternalId   | nvarchar(255) | Nie          | Zewnętrzny identyfikator użytkownika, który kontrakt wdrożone. Domyślnie ten identyfikator jest identyfikator guid, który reprezentuje swojej tożsamości w konsorcjum usługi Azure Active Directory. |
 | ContractDeployedByUserFirstName    | nvarchar(50)  | Yes         | Imię użytkownika, który jest wdrożony umowy |
 | ContractDeployedByUserLastName     | nvarchar(255) | Yes         | Nazwisko użytkownika, który jest wdrożony umowy |
 | ContractDeployedByUserEmailAddress | nvarchar(255) | Yes         | Adres e-mail użytkownika, który jest wdrożony umowy |
@@ -285,18 +285,18 @@ Ten widok zaspokajają większość informacji dotyczących stanu określonych z
 | WorkflowPropertyDisplayName        | nvarchar(255) | Nie          | Nazwa wyświetlana właściwości do wyświetlenia w interfejsie użytkownika |
 | WorkflowPropertyDescription        | nvarchar(255) | Yes         | Opis właściwości |
 | ContractPropertyValue              | nvarchar(255) | Nie          | Wartość dla właściwości przechowywanych w kontrakcie |
-| Element StateName                          | nvarchar(50)  | Yes         | Jeśli ta właściwość zawiera stan, jest to nazwa wyświetlana stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
-| StateDisplayName                   | nvarchar(255) | Nie          | Jeśli ta właściwość zawiera stan, jest to nazwa wyświetlana stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
-| StateValue                         | nvarchar(255) | Yes         | Jeśli ta właściwość zawiera stan, jest to wartość stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
+| StateName                          | nvarchar(50)  | Yes         | Jeśli ta właściwość zawiera stan, jego nazwa wyświetlana stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
+| StateDisplayName                   | nvarchar(255) | Nie          | Jeśli ta właściwość zawiera stan, jest nazwa wyświetlana stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
+| StateValue                         | nvarchar(255) | Yes         | Jeśli ta właściwość zawiera stan, to wartość stanu. Jeśli nie jest skojarzony ze stanem, wartość będzie równa null. |
 
 ## <a name="vwuser"></a>vwUser
 
 Ten widok udostępnia szczegółowe informacje na elementach członkowskich konsorcjum, które jest przygotowany do korzystania z aplikacji Azure Blockchain Workbench. Domyślnie dane są wprowadzane przy użyciu początkowego udostępnienia użytkownika.
 
-| Name (Nazwa)               | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                               |
+| Name (Nazwa)               | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                               |
 |--------------------|---------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ID                 | int           | Nie          | Unikatowy identyfikator dla użytkownika |
-| externalID         | nvarchar(255) | Nie          | Zewnętrznego identyfikatora użytkownika. Domyślnie jest to identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika. |
+| externalID         | nvarchar(255) | Nie          | Zewnętrznego identyfikatora użytkownika. Domyślnie ten identyfikator jest identyfikator guid reprezentujący identyfikator Azure Active Directory dla użytkownika. |
 | ProvisioningStatus | int           | Nie          |Określa bieżący stan aprowizacji procesu dla użytkownika. Możliwe wartości: <br />0 – użytkownika została utworzona przez interfejs API<br />1 — klucz został skojarzony z użytkownikiem w bazie danych<br />2 — użytkownik jest w pełni zaaprowizowanym |
 | FirstName          | nvarchar(50)  | Yes         | Imię użytkownika |
 | LastName           | nvarchar(50)  | Yes         | Nazwisko użytkownika |
@@ -304,13 +304,13 @@ Ten widok udostępnia szczegółowe informacje na elementach członkowskich kons
 
 ## <a name="vwworkflow"></a>vwWorkflow
 
-Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także funkcje i parametry przepływu pracy. Zaprojektowana pod kątem raportowania, również zawiera metadane dotyczące aplikacji skojarzonej z przepływem pracy. Ten widok zawiera dane z wielu tabel w celu ułatwienia tworzenia raportów w przepływach pracy. Dla każdego przepływu pracy ten widok zawiera następujące dane:
+Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także funkcje i parametry przepływu pracy. Zaprojektowana pod kątem raportowania, zawiera on również metadane dotyczące aplikacji skojarzonej z przepływem pracy. Ten widok zawiera dane z wielu tabel w celu ułatwienia tworzenia raportów w przepływach pracy. Dla każdego przepływu pracy ten widok zawiera następujące dane:
 
 -   Definicja skojarzonej aplikacji
 -   Definicja przepływu pracy skojarzonego
 -   Skojarzone informacje o stanie uruchamiania przepływu pracy
 
-| Name (Nazwa)                              | Typ          | Może mieć wartości Null | Opis                                                                                                                                |
+| Name (Nazwa)                              | Type          | Może mieć wartości Null | Opis                                                                                                                                |
 |-----------------------------------|---------------|-------------|--------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                     | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                   | nvarchar(50)  | Nie          | Nazwa aplikacji |
@@ -326,18 +326,18 @@ Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także
 | WorkflowStartStateDisplayName     | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika dla stanu |
 | WorkflowStartStateDescription     | nvarchar(255) | Yes         | Opis stanu przepływu pracy |
 | WorkflowStartStateStyle           | nvarchar(50)  | Yes         | Ta wartość Określa procent wykonania, że przepływ pracy jest w tym stanie |
-| WorkflowStartStateValue           | int           | Nie          | Jest to wartość stanu |
+| WorkflowStartStateValue           | int           | Nie          | Wartość stanu |
 | WorkflowStartStatePercentComplete | int           | Nie          | Opis tekstowy, który stanowi wskazówkę dla klientów w sposób renderowania ten stan w interfejsie użytkownika. Obsługiwane stany to *Powodzenie* i *awarii* |
 
 ## <a name="vwworkflowfunction"></a>vwWorkflowFunction
 
-Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także funkcje i parametry przepływu pracy. Zaprojektowana pod kątem raportowania, również zawiera metadane dotyczące aplikacji skojarzonej z przepływem pracy. Ten widok zawiera dane z wielu tabel w celu ułatwienia tworzenia raportów w przepływach pracy. Dla każdej funkcji przepływu pracy ten widok zawiera następujące dane:
+Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także funkcje i parametry przepływu pracy. Zaprojektowana pod kątem raportowania, zawiera on również metadane dotyczące aplikacji skojarzonej z przepływem pracy. Ten widok zawiera dane z wielu tabel w celu ułatwienia tworzenia raportów w przepływach pracy. Dla każdej funkcji przepływu pracy ten widok zawiera następujące dane:
 
 -   Definicja skojarzonej aplikacji
 -   Definicja przepływu pracy skojarzonego
 -   Szczegóły funkcji przepływu pracy
 
-| Name (Nazwa)                                 | Typ          | Może mieć wartości Null | Opis                                                                          |
+| Name (Nazwa)                                 | Type          | Może mieć wartości Null | Opis                                                                          |
 |--------------------------------------|---------------|-------------|--------------------------------------------------------------------------------------|
 | ApplicationId                        | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName                      | nvarchar(50)  | Nie          | Nazwa aplikacji |
@@ -351,7 +351,7 @@ Ten widok przedstawia metadane przepływu pracy podstawowe szczegóły, a także
 | WorkflowFunctionName                 | nvarchar(50)  | Yes         | Nazwa funkcji |
 | WorkflowFunctionDisplayName          | nvarchar(255) | Nie          | Nazwa funkcji ma być wyświetlana w interfejsie użytkownika |
 | WorkflowFunctionDescription          | nvarchar(255) | Yes         | Opis funkcji przepływu pracy |
-| WorkflowFunctionIsConstructor        | Bitowe           | Nie          | To wskazuje, czy funkcja przepływ pracy jest konstruktora dla przepływu pracy |
+| WorkflowFunctionIsConstructor        | Bitowe           | Nie          | Określa, czy funkcja przepływ pracy jest konstruktora dla przepływu pracy |
 | WorkflowFunctionParameterId          | int           | Nie          | Unikatowy identyfikator dla parametru funkcji |
 | WorkflowFunctionParameterName        | nvarchar(50)  | Nie          | Nazwa parametru funkcji |
 | WorkflowFunctionParameterDisplayName | nvarchar(255) | Nie          | Nazwa parametru funkcji ma być wyświetlana w interfejsie użytkownika |
@@ -366,7 +366,7 @@ Ten widok przedstawia właściwości zdefiniowane dla przepływu pracy. Dla każ
 -   Definicja przepływu pracy skojarzonego
 -   Szczegóły właściwości przepływu pracy
 
-| Name (Nazwa)                         | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                   |
+| Name (Nazwa)                         | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName              | nvarchar(50)  | Nie          | Nazwa aplikacji |
@@ -393,7 +393,7 @@ Ten widok przedstawia właściwości skojarzone z przepływem pracy. Dla każdej
 -   Definicja przepływu pracy skojarzonego
 -   Informacje o stanie przepływu pracy
 
-| Name (Nazwa)                         | Typ          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                   |
+| Name (Nazwa)                         | Type          | Może mieć wartości Null | Opis                                                                                                                                                                                                                                                   |
 |------------------------------|---------------|-------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | ApplicationId                | int           | Nie          | Unikatowy identyfikator aplikacji |
 | ApplicationName              | nvarchar(50)  | Nie          | Nazwa aplikacji |
@@ -408,5 +408,5 @@ Ten widok przedstawia właściwości skojarzone z przepływem pracy. Dla każdej
 | WorkflowStateDisplayName     | nvarchar(255) | Nie          | Nazwa będzie wyświetlana w interfejsie użytkownika dla stanu |
 | WorkflowStateDescription     | nvarchar(255) | Yes         | Opis stanu przepływu pracy |
 | WorkflowStatePercentComplete | int           | Nie          | Ta wartość Określa procent wykonania, że przepływ pracy jest w tym stanie |
-| WorkflowStateValue           | nvarchar(50)  | Nie          | Jest to wartość stanu |
+| WorkflowStateValue           | nvarchar(50)  | Nie          | Wartość stanu |
 | WorkflowStateStyle           | nvarchar(50)  | Nie          | Opis tekstowy, który stanowi wskazówkę dla klientów w sposób renderowania ten stan w interfejsie użytkownika. Obsługiwane stany to *Powodzenie* i *awarii* |

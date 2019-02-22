@@ -11,26 +11,28 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/20/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b768f6e240c354369246a6d978ed3e8dd2f58f92
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ebced83346a7b130598e4a5f49a72d51ffd18e4f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338142"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56584900"
 ---
 # <a name="create-custom-roles-for-azure-resources-using-azure-cli"></a>Tworzenie ról niestandardowych dla zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure
 
 Jeśli [wbudowane role zasobów platformy Azure](built-in-roles.md) nie spełnienia specyficznych potrzeb swojej organizacji, możesz utworzyć własne niestandardowe role. W tym artykule opisano, jak tworzyć i zarządzać nimi role niestandardowe przy użyciu wiersza polecenia platformy Azure.
+
+Aby uzyskać samouczek krok po kroku dotyczące sposobu tworzenia roli niestandardowej, zobacz [samouczka: Tworzenie roli niestandardowej na potrzeby zasobów platformy Azure przy użyciu wiersza polecenia platformy Azure](tutorial-custom-role-cli.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Aby utworzyć niestandardowe role, potrzebne są:
 
 - Uprawnienia do tworzenia ról niestandardowych, takie jak [Właściciel](built-in-roles.md#owner) lub [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator)
-- [Interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) zainstalowany lokalnie
+- [Usługi Azure Cloud Shell](../cloud-shell/overview.md) lub [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
 
 ## <a name="list-custom-roles"></a>Wyświetlanie ról niestandardowych
 
@@ -61,6 +63,78 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 ...
 ```
 
+## <a name="list-a-custom-role-definition"></a>Listy niestandardową definicję roli
+
+Aby wyświetlić listę niestandardową definicję roli, należy użyć [Lista definicji roli az](/cli/azure/role/definition#az-role-definition-list). Jest to samo polecenie, które są używane dla wbudowanej roli.
+
+```azurecli
+az role definition list --name <role_name>
+```
+
+Na poniższych listach przykład *Operator maszyny wirtualnej* definicji roli:
+
+```azurecli
+az role definition list --name "Virtual Machine Operator"
+```
+
+```Output
+[
+  {
+    "assignableScopes": [
+      "/subscriptions/11111111-1111-1111-1111-111111111111"
+    ],
+    "description": "Can monitor and restart virtual machines.",
+    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000",
+    "name": "00000000-0000-0000-0000-000000000000",
+    "permissions": [
+      {
+        "actions": [
+          "Microsoft.Storage/*/read",
+          "Microsoft.Network/*/read",
+          "Microsoft.Compute/*/read",
+          "Microsoft.Compute/virtualMachines/start/action",
+          "Microsoft.Compute/virtualMachines/restart/action",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.ResourceHealth/availabilityStatuses/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Insights/alertRules/*",
+          "Microsoft.Insights/diagnosticSettings/*",
+          "Microsoft.Support/*"
+        ],
+        "dataActions": [],
+        "notActions": [],
+        "notDataActions": []
+      }
+    ],
+    "roleName": "Virtual Machine Operator",
+    "roleType": "CustomRole",
+    "type": "Microsoft.Authorization/roleDefinitions"
+  }
+]
+```
+
+Poniższy przykład wyświetla listę tylko akcje *Operator maszyny wirtualnej* roli:
+
+```azurecli
+az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
+```
+
+```Output
+[
+  "Microsoft.Storage/*/read",
+  "Microsoft.Network/*/read",
+  "Microsoft.Compute/*/read",
+  "Microsoft.Compute/virtualMachines/start/action",
+  "Microsoft.Compute/virtualMachines/restart/action",
+  "Microsoft.Authorization/*/read",
+  "Microsoft.ResourceHealth/availabilityStatuses/read",
+  "Microsoft.Resources/subscriptions/resourceGroups/read",
+  "Microsoft.Insights/alertRules/*",
+  "Microsoft.Insights/diagnosticSettings/*",
+  "Microsoft.Support/*"
+]
+```
+
 ## <a name="create-a-custom-role"></a>Tworzenie roli niestandardowej
 
 Aby utworzyć rolę niestandardową, należy użyć [utworzenia definicji roli az](/cli/azure/role/definition#az-role-definition-create). Definicja roli może być opisu JSON lub ścieżkę do pliku zawierającego opis JSON.
@@ -85,6 +159,7 @@ vmoperator.json
     "Microsoft.Compute/virtualMachines/start/action",
     "Microsoft.Compute/virtualMachines/restart/action",
     "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Insights/alertRules/*",
     "Microsoft.Support/*"
@@ -127,6 +202,7 @@ vmoperator.json
     "Microsoft.Compute/virtualMachines/start/action",
     "Microsoft.Compute/virtualMachines/restart/action",
     "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Insights/alertRules/*",
     "Microsoft.Insights/diagnosticSettings/*",

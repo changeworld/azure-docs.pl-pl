@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 942b1423583f663f22ced6ea8399409778b2f6de
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 98ca3478c3a8963c3bf57143354340d6ed14900e
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455131"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594342"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server
 
@@ -257,8 +257,6 @@ Nie można zmodyfikować następujące opcje:
 - `SINGLE_USER`
 - `WITNESS`
 
-Modyfikowanie nazwy nie jest obsługiwane.
-
 Aby uzyskać więcej informacji, zobacz [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
 ### <a name="sql-server-agent"></a>Program SQL Server Agent
@@ -437,7 +435,7 @@ Broker usług dla wielu wystąpień nie jest obsługiwane:
 
 ### <a name="stored-procedures-functions-triggers"></a>Procedury składowane, funkcje, wyzwalaczy
 
-- `NATIVE_COMPILATION` obecnie nie jest obsługiwana.
+- `NATIVE_COMPILATION` nie jest obsługiwana w warstwie przeznaczenie ogólne.
 - Następujące [procedury składowanej sp_configure](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-configure-transact-sql) opcje nie są obsługiwane:
   - `allow polybase export`
   - `allow updates`
@@ -448,7 +446,6 @@ Broker usług dla wielu wystąpień nie jest obsługiwane:
 - `xp_cmdshell` nie jest obsługiwane. Zobacz [procedury xp_cmdshell](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/xp-cmdshell-transact-sql).
 - `Extended stored procedures` nie są obsługiwane, w tym `sp_addextendedproc`  i `sp_dropextendedproc`. Zobacz [rozszerzonych procedur składowanych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/general-extended-stored-procedures-transact-sql)
 - `sp_attach_db`, `sp_attach_single_file_db`, i `sp_detach_db` nie są obsługiwane. Zobacz [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), i [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
-- `sp_renamedb` nie jest obsługiwane. Zobacz [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
 ## <a name="Changes"></a> Zmiany zachowania
 

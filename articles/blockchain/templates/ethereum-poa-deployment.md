@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 42e5fd713f6353a2a939236f34463e9ba4195e29
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313572"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650210"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Konsorcjum dowód uwierzytelniania Ethereum
 
@@ -285,14 +285,14 @@ Poniżej przedstawiono przykładowe wdrożenie: ![ethereum ustawienia](./media/e
 
 #### <a name="monitoring"></a>Monitorowanie
 
-Blok monitorowanie umożliwia konfigurowanie zasobu usługi Log Analytics w Twojej sieci. Agent monitorowania będzie zbierać i powierzchni przydatne metryki i dzienniki z Twojej sieci, umożliwiając szybkie sprawdzenie kondycji sieci lub debugowania problemów.
+Blok monitorowanie umożliwia skonfigurowanie zasobów dzienniki usługi Azure Monitor sieci. Agent monitorowania będzie zbierać i powierzchni przydatne metryki i dzienniki z Twojej sieci, umożliwiając szybkie sprawdzenie kondycji sieci lub debugowania problemów.
 
   Nazwa parametru|Opis|Dozwolone wartości|Wartości domyślne
   ---|---|---|---
 Monitorowanie|Opcja włączania monitorowania|Włączanie lub wyłączanie|Włączanie
-Łączenie do istniejącej usługi Log Analytics|Utwórz nowe wystąpienie usługi Log Analytics lub Dołącz do istniejącego wystąpienia|Tworzenie nowego elementu lub Dołącz istniejące|Tworzenie nowego elementu
-Monitorowanie lokalizacji (Nawiązywanie połączenia z istniejącej usługi Log Analytics = Utwórz nowy)|Region wdrożonym nowe wystąpienie usługi Log Analytics|We wszystkich regionach usługi Log Analytics|Nie dotyczy
-Identyfikator obszaru roboczego analizy dzienników istniejące (Nawiązywanie połączenia z istniejącej usługi Log Analytics = Dołącz istniejące)|Identyfikator obszaru roboczego istniejącego wystąpienia usługi Log Analytics||Nie dotyczy
+Nawiązać połączenie z istniejących dzienników usługi Azure Monitor|Utwórz nowe wystąpienie dzienniki usługi Azure Monitor, lub Dołącz do istniejącego wystąpienia|Tworzenie nowego elementu lub Dołącz istniejące|Tworzenie nowego elementu
+Monitorowanie lokalizacji (Nawiązywanie połączenia z istniejących dzienników usługi Azure Monitor = Utwórz nowy)|Region, w którym nowe usługi Azure Monitor rejestruje wystąpienie zostanie wdrożony.|Wszystkie usługi Azure Monitor rejestruje regionów|Nie dotyczy
+Identyfikator obszaru roboczego analizy dzienników istniejące (Nawiązywanie połączenia z istniejących dzienników usługi Azure Monitor = Dołącz istniejące)|Identyfikator obszaru roboczego z istniejącej usługi Azure Monitor rejestruje wystąpienie||Nie dotyczy
 Klucz podstawowy istniejące Log Analytics (łączenie z istniejącej usługi Log Analytics = Dołącz istniejące)|Klucz podstawowy używany do łączenia z istniejącym wystąpieniem usługi Log Analytics||Nie dotyczy
 
 
@@ -425,7 +425,7 @@ Wybieranie **statystyki sieci** nastąpi bezpośrednie przekierowanie do wyświe
 
 ![statystyki sieci](./media/ethereum-poa-deployment/network-stats.png)
 
-#### <a name="sample-log-analytics-queries"></a>Przykładowe zapytania usługi Log Analytics
+#### <a name="sample-kusto-queries"></a>Przykładowe zapytania Kusto
 
 Za te pulpity nawigacyjne to zbiór odpytywalny nieprzetworzonych dzienników. Dostosuj pulpity nawigacyjne, zbadaj błędy lub Konfigurowanie alertów wartości progowej, można użyć tych nieprzetworzonych dzienników. Poniżej znajdziesz, że zestaw przykładowych zapytań, które mogą być uruchomione w narzędziu wyszukiwanie w dzienniku:
 

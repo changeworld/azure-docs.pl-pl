@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: subsarma
-ms.openlocfilehash: 89984335d40d7f58d39e77736c06a9ff137d7a51
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3825181d14605752e2407d9ffceb01d22c1bb710
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811261"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649343"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Rozpoznawanie nazw dla zasobów w sieciach wirtualnych platformy Azure
 
@@ -26,7 +26,7 @@ W zależności od tego, jak używać platformy Azure do hostowania IaaS, PaaS or
 Jeśli zasoby wdrożone w sieciach wirtualnych muszą rozpoznać nazw domen wewnętrznych adresów IP, można użyć jednej z dwóch metod:
 
 * [Rozpoznawania nazw platformy Azure](#azure-provided-name-resolution)
-* [Nadaj nazwę rozwiązania, który używa własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server) (która może przekazywać kwerendy do serwerów DNS platformy Azure) 
+* [Nadaj nazwę rozwiązania, który używa własnego serwera DNS](#name-resolution-that-uses-your-own-dns-server) (która może przekazywać kwerendy do serwerów DNS platformy Azure)
 
 Rodzaj rozpoznawania nazw, których używasz, zależy od tego, jak zasoby muszą komunikować się ze sobą. W poniższej tabeli przedstawiono scenariusze i odpowiedniego rozwiązania rozpoznawania nazwy:
 
@@ -52,8 +52,8 @@ Wraz z rozwiązania publicznej nazwy DNS platforma Azure oferuje rozpoznawania n
 
 > [!NOTE]
 > Podczas korzystania z chmury usługi ról sieć web i proces roboczy, można także przejść wewnętrznych adresów IP wystąpień roli przy użyciu interfejsu API REST zarządzania usługami platformy Azure. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST zarządzania usługi](https://msdn.microsoft.com/library/azure/ee460799.aspx). Adres jest oparty na roli nazwę i numer wystąpienia. 
-> 
-> 
+>
+>
 
 ### <a name="features"></a>Funkcje
 
@@ -104,8 +104,8 @@ Istnieje szereg różnych buforowanie pakietów (takich jak dnsmasq) DNS. Poniż
 
 > [!NOTE]
 > Pakiet dnsmasq jest tylko jeden z wielu pamięci podręcznych DNS dostępnych dla systemu Linux. Przed jego użyciem, przydatności do określonych potrzeb i sprawdź, czy brak pamięci podręcznej jest zainstalowany.
-> 
-> 
+>
+>
     
 ### <a name="client-side-retries"></a>Ponownych prób po stronie klienta
 
@@ -126,10 +126,10 @@ Plik resolv.conf jest zwykle generowane automatycznie i nie można edytować. Ok
   1. Dodaj *opcje* wiersz do **/etc/resolvconf/resolv.conf.d/tail**.
   2. Uruchom `resolvconf -u` do zaktualizowania.
 * **SUSE** (używa netconf):
-  1. Dodaj *timeout:1 prób: 5* do **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametru w **/etc/sysconfig/network/config**. 
+  1. Dodaj *timeout:1 prób: 5* do **NETCONFIG_DNS_RESOLVER_OPTIONS = ""** parametru w **/etc/sysconfig/network/config**.
   2. Uruchom `netconfig update` do zaktualizowania.
 * **OpenLogic** (używa NetworkManager):
-  1. Dodaj *echo "Opcje timeout:1 prób: 5"* do **/etc/NetworkManager/dispatcher.d/11-dhclient**. 
+  1. Dodaj *echo "Opcje timeout:1 prób: 5"* do **/etc/NetworkManager/dispatcher.d/11-dhclient**.
   2. Aktualizowanie za pomocą `service network restart`.
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Rozpoznawanie nazw, która używa własnego serwera DNS
@@ -145,9 +145,9 @@ Serwery DNS w sieci wirtualnej może przekazywać zapytań DNS do rozpoznawania 
 Również przesyłania dalej DNS umożliwia rozpoznawanie nazw DNS między sieciami wirtualnymi i zezwala na maszynach w środowisku lokalnym do rozpoznawania nazw hostów platformy Azure. Aby można było rozpoznać nazwy hosta maszyny Wirtualnej, maszyna wirtualna musi znajdować się w tej samej sieci wirtualnej i skonfigurować serwer DNS na kwerendy nazwy hosta do przodu na platformie Azure. Ponieważ sufiks DNS różni się w poszczególnych sieciach wirtualnych, można użyć reguły warunkowego przesyłania dalej do wysyłania zapytań DNS do odpowiedniej sieci wirtualnej rozpoznawania. Na poniższej ilustracji przedstawiono dwie sieci wirtualne i sieć lokalną, wykonując rozpoznawania nazw DNS między sieciami wirtualnymi, za pomocą tej metody. Usługi przesyłania dalej DNS przykład jest dostępny w [galerii szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/) i [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder).
 
 > [!NOTE]
-> Wystąpienie roli można wykonać rozpoznawanie nazw maszyn wirtualnych w ramach tej samej sieci wirtualnej. Robi to przy użyciu w pełni kwalifikowaną nazwę domeny, która składa się z nazwy hosta maszyny Wirtualnej i **internal.cloudapp.net** sufiks DNS. Jednak w takim przypadku rozpoznawania nazw jest tylko pomyślne, jeśli wystąpienie roli ma nazwę maszyny Wirtualnej, zdefiniowane w [Role — schemat (pliku cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx). 
->    <Role name="<role-name>" vmName="<vm-name>">
-> 
+> Wystąpienie roli można wykonać rozpoznawanie nazw maszyn wirtualnych w ramach tej samej sieci wirtualnej. Robi to przy użyciu w pełni kwalifikowaną nazwę domeny, która składa się z nazwy hosta maszyny Wirtualnej i **internal.cloudapp.net** sufiks DNS. Jednak w takim przypadku rozpoznawania nazw jest tylko pomyślne, jeśli wystąpienie roli ma nazwę maszyny Wirtualnej, zdefiniowane w [Role — schemat (pliku cscfg)](https://msdn.microsoft.com/library/azure/jj156212.aspx).
+> <Role name="<role-name>" vmName="<vm-name>">
+>
 > Wystąpienia roli, które należy wykonać rozpoznawanie nazw maszyn wirtualnych w innej sieci wirtualnej (nazwa FQDN przy użyciu **internal.cloudapp.net** sufiks) trzeba to zrobić przy użyciu metody opisanej w tej sekcji (niestandardowe serwery DNS przekazywania między dwie sieci wirtualne).
 >
 
@@ -157,7 +157,7 @@ Korzystając z rozpoznawania nazw platformy Azure, Azure Dynamic Host Configurat
 
 Jeśli to konieczne, można określić wewnętrznego sufiks DNS przy użyciu programu PowerShell lub interfejsu API:
 
-* Dla sieci wirtualnych w modelach wdrażania usługi Azure Resource Manager, jest dostępna za pośrednictwem sufiks [interfejsu sieciowego interfejsu API REST](/rest/api/virtualnetwork/networkinterfaces), [Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) polecenia cmdlet programu PowerShell, a [az sieci nic show](/cli/azure/network/nic#az-network-nic-show) polecenia wiersza polecenia platformy Azure.
+* Dla sieci wirtualnych w modelach wdrażania usługi Azure Resource Manager, jest dostępna za pośrednictwem sufiks [interfejsu sieciowego interfejsu API REST](/rest/api/virtualnetwork/networkinterfaces/get), [Get AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) polecenia cmdlet programu PowerShell, a [ Pokaż kartę sieciową sieci az](/cli/azure/network/nic#az-network-nic-show) polecenia wiersza polecenia platformy Azure.
 * W klasycznych modeli wdrażania, jest dostępna za pośrednictwem sufiks [uzyskać interfejsu API wdrożenia](https://msdn.microsoft.com/library/azure/ee460804.aspx) wywołania lub [Get-AzureVM-debugowanie](/powershell/module/servicemanagement/azure/get-azurevm) polecenia cmdlet.
 
 Jeśli przekazywanie zapytań na platformie Azure nie spełnia Twoich potrzeb, należy podać własne rozwiązanie DNS. W rozwiązaniu DNS musi:
@@ -179,34 +179,35 @@ Załóżmy, że trzeba wykonać rozpoznawanie nazw z aplikacji sieci web utworzo
 
     ![Zrzut ekranu przedstawiający rozpoznawania nazw sieci wirtualnej](./media/virtual-networks-name-resolution-for-vms-and-role-instances/webapps-dns.png)
 
-Trzeba wykonać rozpoznawanie nazw z aplikacji sieci web utworzone przy użyciu usługi App Service, połączone z siecią wirtualną, do maszyn wirtualnych w innej sieci wirtualnej, należy użyć niestandardowych serwerów DNS w obu sieciach wirtualnych w następujący sposób: 
+Trzeba wykonać rozpoznawanie nazw z aplikacji sieci web utworzone przy użyciu usługi App Service, połączone z siecią wirtualną, do maszyn wirtualnych w innej sieci wirtualnej, należy użyć niestandardowych serwerów DNS w obu sieciach wirtualnych w następujący sposób:
+
 * Konfigurowanie serwera DNS w sieci wirtualnej docelowy, na maszynie Wirtualnej, która może przesyłają również zapytania cyklicznego programu rozpoznawania nazw na platformie Azure (wirtualny adres IP 168.63.129.16). Usługi przesyłania dalej DNS przykład jest dostępny w [galerii szablonów szybkiego startu platformy Azure](https://azure.microsoft.com/documentation/templates/301-dns-forwarder) i [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder). 
 * Konfigurowanie usługi przesyłania dalej DNS w sieci wirtualnej źródła na maszynie Wirtualnej. Konfigurowanie tej usługi przesyłania dalej DNS do przesyłania zapytań do serwera DNS w docelowej sieci wirtualnej.
 * Skonfiguruj serwer DNS źródło w ustawieniach sieci wirtualnej źródła.
 * Włączanie integracji sieci wirtualnej dla aplikacji sieci web utworzyć łącze do źródła sieci wirtualnej, postępując zgodnie z instrukcjami w [Integrowanie aplikacji z siecią wirtualną](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-* W witrynie Azure portal wybierz hostowanie aplikacji sieci web dla planu usługi App Service **Synchronizuj sieć** w obszarze **sieć**, **Integracja z siecią wirtualną**. 
+* W witrynie Azure portal wybierz hostowanie aplikacji sieci web dla planu usługi App Service **Synchronizuj sieć** w obszarze **sieć**, **Integracja z siecią wirtualną**.
 
 ## <a name="specify-dns-servers"></a>Określ serwer DNS
 Korzystając z własnych serwerów DNS, platforma Azure oferuje możliwość określenia wielu serwerów DNS na sieć wirtualną. Można również określić wiele serwerów DNS dla każdego interfejsu sieciowego (dla usługi Azure Resource Manager) lub dla usługi w chmurze (w przypadku klasycznego modelu wdrażania). Serwery DNS określona dla sieci interfejs lub usługi w chmurze przeprowadzanie pierwszeństwo przy użyciu serwerów DNS określona dla sieci wirtualnej.
 
 > [!NOTE]
-> Nie należy edytować właściwości połączenia sieciowego, takich jak serwer DNS adresy IP, bezpośrednio z poziomu maszyn wirtualnych Windows. Jest to spowodowane może uzyskać wymazane podczas usługi poprawianie po pobiera karty sieci wirtualnej. 
-> 
-> 
+> Nie należy edytować właściwości połączenia sieciowego, takich jak serwer DNS adresy IP, bezpośrednio z poziomu maszyn wirtualnych Windows. Jest to spowodowane może uzyskać wymazane podczas usługi poprawianie po pobiera karty sieci wirtualnej.
+>
+>
 
 Korzystając z modelu wdrażania usługi Azure Resource Manager, można określić serwery DNS dla sieci wirtualnej i interfejsu sieciowego. Aby uzyskać więcej informacji, zobacz [zarządzanie siecią wirtualną](manage-virtual-network.md) i [zarządzania interfejsem sieciowym](virtual-network-network-interface.md).
 
 > [!NOTE]
 > Jeśli postanowisz dla niestandardowego serwera DNS dla sieci wirtualnej, należy określić co najmniej jeden adres IP serwera DNS; w przeciwnym razie sieci wirtualnej zignoruje konfiguracji i zamiast tego użyj DNS platformy Azure.
-> 
-> 
+>
+>
 
 Korzystając z klasycznego modelu wdrażania, można określić serwery DNS dla sieci wirtualnej w witrynie Azure portal lub [plik konfiguracji sieci](https://msdn.microsoft.com/library/azure/jj157100). Dla usług cloud services, należy określić serwery DNS za pośrednictwem [pliku konfiguracji usługi](https://msdn.microsoft.com/library/azure/ee758710) lub za pomocą programu PowerShell, [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
 > Jeśli zmienisz ustawienia DNS dla sieci wirtualnej lub maszyny wirtualnej, która została już wdrożona, musisz ponownie uruchomić każdy dotyczy maszyny Wirtualnej na potrzeby zmiany zaczęły obowiązywać.
-> 
-> 
+>
+>
 
 ## <a name="next-steps"></a>Kolejne kroki
 

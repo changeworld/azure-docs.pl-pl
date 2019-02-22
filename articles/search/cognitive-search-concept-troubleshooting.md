@@ -12,11 +12,11 @@ ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: 5f21fe3c65e37d3fee4043526762a7fafdea5cc4
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316298"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593968"
 ---
 # <a name="troubleshooting-tips-for-cognitive-search"></a>Wskazówki dotyczące rozwiązywania problemów dla wyszukiwania kognitywnego
 
@@ -104,7 +104,7 @@ Dla [równoległe indeksowania](search-howto-large-index.md), umieść dane w wi
 Aby uzyskać więcej informacji, zobacz [indeksowania dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Zobacz także
-+ [Szybki Start: Tworzenie potoku usługa cognitive search w portalu](cognitive-search-quickstart-blob.md)
++ [Szybki start: Tworzenie potoku usługa cognitive search w portalu](cognitive-search-quickstart-blob.md)
 + [Samouczek: Dowiedz się, usługa cognitive search interfejsów API REST](cognitive-search-tutorial-blob.md)
 + [Określanie poświadczeń źródła danych](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
 + [Indeksowanie dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)

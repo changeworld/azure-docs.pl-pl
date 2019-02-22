@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 014353bafa31b1c4e924cba8335dbd30a48c2d11
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454263"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651434"
 ---
 # <a name="web-application-firewall-waf"></a>Zapora aplikacji internetowej
 
@@ -130,6 +130,16 @@ Zapora aplikacji sieci Web bramy aplikacji może zostać skonfigurowana pod kąt
 
 * **Tryb wykrywania** — w przypadku skonfigurowana do działania w trybie wykrywania, monitoruje brama aplikacji zapory aplikacji internetowych i dzienniki, wszelkie ostrzeżenia o zagrożeniach do pliku dziennika. Rejestrowanie danych diagnostycznych usługi Application Gateway musi być włączone w sekcji **Diagnostyka**. Należy również upewnić się, że opcja dziennika zapory aplikacji sieci Web jest zaznaczona i włączona. Podczas pracy w trybie wykrywania zapora aplikacji internetowej nie blokuje żądań przychodzących.
 * **Tryb zapobiegania** — kiedy zapora jest skonfigurowana do działania w tym trybie, usługa Application Gateway aktywnie blokuje próby włamań i ataki wykryte na podstawie reguł. Osoba atakująca odbiera wyjątek 403 odnoszący się do nieautoryzowanego dostępu, a jej połączenie zostaje zakończone. W trybie zapobiegania tego rodzaju ataki są rejestrowane w dziennikach zapory aplikacji sieci Web w sposób ciągły.
+
+### <a name="anomaly-scoring-mode"></a>Tryb oceniania anomalii 
+ 
+OWASP ma dwa tryby decydujące o tym, czy blokowanie ruchu lub nie. Istnieje tryb tradycyjnych i tryb oceniania anomalii. W trybie tradycyjnych niezależnie od tego, czy inne reguły takie samo, jak za jest uważany za reguły dopasowania ruchu. Gdy jest to łatwiejsze do zrozumienia, Brak informacji o ile zasady są wyzwalane przez konkretnego żądania jest jednego ograniczenia, w tym trybie. Dlatego tryb oceniania anomalii został wprowadzony, który stał się domyślnie za pomocą OWASP 3.x. 
+
+W trybie oceniania anomalii fakt, że odpowiada jednej z zasadami opisanymi w poprzedniej sekcji ruchu nie natychmiast oznacza że ruch będzie blokowane, przy założeniu, że Zapora jest w trybie zapobiegania. Reguły mają pewne ważności (krytyczny, błąd, ostrzeżenie i powiadomienia), a następnie w zależności od ważności tego będzie zwiększyć wartość liczbową dla żądania o nazwie wyniku anomalii. Na przykład jeden zgodną regułę ostrzeżenie przyczyni się wartość 3, ale jeden zgodną regułę krytyczne współtworzą wartość 5. 
+
+Brak wartości progowej dla wyniku anomalii, w którym ruch nie zostaje przerwane, progu jest ustawiona na 5. Oznacza to, jednej reguły dopasowania krytyczne jest wystarczająca, dzięki czemu zapora aplikacji sieci Web w usłudze Azure blokuje żądania, w tym trybie (ponieważ reguła krytycznego zwiększa wyniku anomalii, 5, zgodnie z poprzednim akapicie). Jednak jeden zgodny reguły z poziomem ostrzeżenie będzie tylko zwiększyć anomalii wynik przez 3. Ponieważ 3 jest nadal niższa niż próg 5, żaden ruch nie będzie blokowane, nawet jeśli Zapora aplikacji sieci Web jest w trybie zapobiegania. 
+
+Należy zauważyć, że komunikat rejestrowane, gdy ruch dopasowania reguł zapory aplikacji sieci Web będzie zawierać action_s pole jako "Blocked", ale który nie musi oznaczać, że ruch rzeczywiście został zablokowany. Wyniku anomalii 5 lub nowszej jest wymagany do faktycznie zablokować ruch.  
 
 ### <a name="application-gateway-waf-reports"></a>Monitorowanie zapory aplikacji sieci Web
 

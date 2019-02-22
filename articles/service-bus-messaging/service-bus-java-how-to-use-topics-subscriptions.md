@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: aschhab
-ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 1cdd0a3bd7e0d647e2f67d4c92b5a2167d5d21ad
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849961"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585223"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus przy użyciu języka Java
 
@@ -46,46 +46,9 @@ W przeciwieństwie do kolejek usługi Service Bus, w których każdy komunikat j
 
 Subskrypcji i tematów usługi Service Bus umożliwiają skalowanie do przetwarzania dużej liczby komunikatów na dużą liczbę użytkowników i aplikacji.
 
-## <a name="create-a-service-bus-namespace"></a>Tworzenie przestrzeni nazw usługi Service Bus
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Przestrzeń nazw obsługi komunikatów w usłudze Service Bus udostępnia unikatowy kontener zakresu przywoływany przy użyciu jego [w pełni kwalifikowanej nazwy domeny](https://wikipedia.org/wiki/Fully_qualified_domain_name), w którym można utworzyć co najmniej jedną kolejkę, temat i subskrypcję. W poniższym przykładzie jest tworzona przestrzeń nazw obsługi komunikatów w usłudze Service Bus w nowej lub istniejącej [grupie zasobów](/azure/azure-resource-manager/resource-group-portal):
-
-1. W lewym okienku nawigacji portalu kliknij kolejno pozycje **+ Utwórz zasób**, **Integracja w przedsiębiorstwie** i **Service Bus**.
-2. W oknie dialogowym **Tworzenie przestrzeni nazw** wprowadź nazwę przestrzeni nazw. System od razu sprawdza, czy nazwa jest dostępna.
-3. Po upewnieniu się, że nazwa przestrzeni nazw jest dostępna, wybierz warstwę cenową (Standardowa lub Premium).
-4. W polu **Subskrypcja** wybierz subskrypcję platformy Azure, w której ma zostać utworzona przestrzeń nazw.
-5. W **grupy zasobów** pola, wybierz istniejącą grupę zasobów, w którym są przechowywane w przestrzeni nazw lub Utwórz nową.      
-6. W polu **Lokalizacja** wybierz kraj lub region, w którym powinna być hostowana przestrzeń nazw.
-7. Kliknij pozycję **Utwórz**. W systemie zostanie utworzona i włączona przestrzeń nazw. Proces aprowizacji zasobów dla konta w systemie może potrwać kilka minut.
-
-  ![przestrzeń nazw](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>Uzyskiwanie poświadczeń zarządzania
-
-Utworzenie nowej przestrzeni nazw powoduje automatyczne wygenerowanie początkowej reguły sygnatury dostępu współdzielonego ze skojarzoną parą kluczy podstawowego i pomocniczego, która przyznaje pełną kontrolę nad wszystkimi aspektami przestrzeni nazw. Aby skopiować początkową regułę, wykonaj następujące kroki:
-
-1. Kliknij pozycję **Wszystkie zasoby**, a następnie kliknij nowo utworzoną nazwę przestrzeni nazw.
-2. W oknie przestrzeni nazw kliknij pozycję **Zasady dostępu współdzielonego**.
-3. Na ekranie **Zasady dostępu współdzielonego** kliknij pozycję **RootManageSharedAccessKey**.
-4. W oknie **Zasady: RootManageSharedAccessKey** kliknij przycisk **Kopiuj** obok pozycji **Podstawowe parametry połączenia**, aby skopiować parametry połączenia do schowka w celu późniejszego użycia. Wklej tę wartość do Notatnika lub innej tymczasowej lokalizacji.
-
-    ![connection-string](./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png)
-5. Powtórz poprzedni krok, kopiując i wklejając wartość pozycji **Klucz podstawowy** w lokalizacji tymczasowej do późniejszego użycia.
-
-## <a name="create-a-topic"></a>Tworzenie tematu 
-Aby utworzyć temat usługi Service Bus, określ przestrzeń nazw, w ramach której chcesz ją utworzyć. Poniższy przykład pokazuje, jak utworzyć temat w portalu:
-
-1. W lewym okienku nawigacji portalu kliknij pozycję **Service Bus** (jeśli pozycja **Service Bus** nie jest widoczna, kliknij pozycję **Wszystkie usługi**).
-2. Kliknij przestrzeń nazw, w której chcesz utworzyć temat.
-3. W oknie przestrzeni nazw kliknij pozycję **Tematy**, a następnie w oknie **Tematy** kliknij pozycję **+ Tematy**.
-4. Wprowadź **BasicTopic** tematu **nazwa**, a pozostałe wartości Pozostaw domyślne.
-5. W dolnej części okna kliknij pozycję **Utwórz**.
-
-
-## <a name="create-subscriptions-for-the-topic"></a>Tworzenie subskrypcji tematu
-1. Wybierz **tematu** został utworzony.
-2. Kliknij pozycję **+ subskrypcja**, wprowadź nazwę subskrypcji **Subscription1**, a wszystkie pozostałe wartości Pozostaw domyślne.
-3. Powtórz poprzedni krok dwa razy więcej, Tworzenie subskrypcji o nazwie **Subscription2** i **Subscription3**.
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurowanie aplikacji do użycia usługi Service Bus

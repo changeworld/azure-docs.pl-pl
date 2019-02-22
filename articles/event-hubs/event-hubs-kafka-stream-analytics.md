@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 7612e9d6444b61210da5d642530d99423220c0a4
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 753c5312987cc541456b2f7415bb7dc9d4770d05
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076844"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593356"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Przetwarzanie zdarzeń platformy Apache Kafka dla usługi Event Hubs za pomocą usługi Stream Analytics 
 W tym artykule przedstawiono sposób przesyłanie strumieniowe danych do komputerów z obsługą platformy Kafka z usługi Event Hubs i przetworzyć te dane za pomocą usługi Azure Stream Analytics. Przeprowadza użytkownika przez następujące kroki: 
@@ -133,7 +133,7 @@ Zapytanie zadania usługi Stream Analytics przechodzi przez dane bez przeprowadz
 
 ### <a name="configure-job-input"></a>Konfigurowanie danych wejściowych zadania
 
-1. W komunikacie powiadomień wybierz pozycję ** przejdź do zasobu **, aby zobaczyć **zadania usługi Stream Analytics** strony. 
+1. W komunikacie powiadomienia wybierz **przejdź do zasobu** się **zadania usługi Stream Analytics** strony. 
 2. Wybierz **dane wejściowe** w **TOPOLOGIA zadań** sekcji, w menu po lewej stronie.
 3. Wybierz **Dodaj wejście strumienia**, a następnie wybierz pozycję **Centrum zdarzeń**. 
 

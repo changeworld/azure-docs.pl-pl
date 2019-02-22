@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/19/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/19/2018
-ms.openlocfilehash: 291ecd35947c09f2b50cd8710c90d25960166422
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0a5c0204909a3fa6730a5e852fb24b2213e093a1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242607"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650584"
 ---
 # <a name="remediate-common-issues-for-azure-stack-pki-certificates"></a>Rozwiązania typowych problemów dotyczących certyfikatów infrastruktury kluczy publicznych do usługi Azure Stack
 
@@ -29,9 +29,9 @@ Informacje w tym artykule ułatwiają zrozumienie i rozwiązywanie typowych prob
 
 ## <a name="pfx-encryption"></a>Szyfrowanie PFX
 
-**Błąd** -PFX szyfrowania nie jest algorytm SHA1 TripleDES.   
+**Błąd** -PFX szyfrowania nie jest algorytm SHA1 TripleDES.
 
-**Korygowanie** -wyeksportować plik PFX pliki z **TripleDES SHA1** szyfrowania. Jest to flaga domyślna dla wszystkich klientów systemu Windows 10 podczas eksportowania z certyfikatów w przystawce lub przy użyciu `Export-PFXCertificate`. 
+**Korygowanie** -wyeksportować plik PFX pliki z **TripleDES SHA1** szyfrowania. Jest to flaga domyślna dla wszystkich klientów systemu Windows 10 podczas eksportowania z certyfikatów w przystawce lub przy użyciu `Export-PFXCertificate`.
 
 ## <a name="read-pfx"></a>Przeczytaj PFX
 
@@ -45,27 +45,27 @@ Informacje w tym artykule ułatwiają zrozumienie i rozwiązywanie typowych prob
 
 ## <a name="signature-algorithm"></a>Algorytm podpisu
 
-**Błąd** — algorytm podpisu jest algorytm SHA1.   
- 
+**Błąd** — algorytm podpisu jest algorytm SHA1.
+
 **Korygowanie** — wykonaj kroki w usługi Azure Stack certyfikaty podpisywania generowania żądania ponownego generowania certyfikatu podpisywania żądania (CSR) przy użyciu algorytmu podpisu w SHA256. Następnie prześlij plik CSR, urząd certyfikacji do ponownego wystawienia dla certyfikatu.
 
 ## <a name="private-key"></a>Klucz prywatny
 
 **Błąd** -klucz prywatny nie istnieje lub nie zawiera atrybut maszyny lokalnej.  
 
-**Korygowanie** — z komputera, który wygenerował plik CSR, ponownie wyeksportować certyfikat wykonując kroki przygotowania usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia. Te kroki obejmują eksportowanie z magazynu certyfikatów komputera lokalnego.
+**Korygowanie** — z komputera, który wygenerował plik CSR, ponownie wyeksportować certyfikat wykonując kroki w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment). Te kroki obejmują eksportowanie z magazynu certyfikatów komputera lokalnego.
 
 ## <a name="certificate-chain"></a>Łańcuch certyfikatów
 
 **Błąd** — łańcuch certyfikatów nie została ukończona.  
 
-**Korygowanie** — certyfikaty powinny zawierać łańcucha certyfikatów ukończone. Ponownie Eksportuj certyfikat wykonując kroki w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md) i wybierz opcję **, jeśli jest to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji.**
+**Korygowanie** — certyfikaty powinny zawierać łańcucha certyfikatów ukończone. Ponownie Eksportuj certyfikat wykonując kroki w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) i wybierz opcję **, jeśli jest to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji.**
 
 ## <a name="dns-names"></a>Nazwy DNS
 
-**Błąd** -DNSNameList certyfikat nie zawiera nazwę punktu końcowego usługi Azure Stack lub nieprawidłowy symboli wieloznacznych. Symbol wieloznaczny pasuje są prawidłowe tylko dla przestrzeni nazw najdalej po lewej stronie nazwy DNS. Na przykład _*. region.domain.com_ jest prawidłowy tylko dla *portal.region.domain.com*, a nie _*. table.region.domain.com_. 
- 
-**Korygowanie** — wykonaj kroki w usługi Azure Stack certyfikaty podpisywania generowania żądania ponownie wygenerować żądania CSR poprawną nazwą DNS do obsługi punktów końcowych usługi Azure Stack. Prześlij ponownie plik CSR, urząd certyfikacji, a następnie wykonaj kroki opisane w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md) Aby wyeksportować certyfikat z komputera, który wygenerował plik CSR.  
+**Błąd** -DNSNameList certyfikat nie zawiera nazwę punktu końcowego usługi Azure Stack lub nieprawidłowy symboli wieloznacznych. Symbol wieloznaczny pasuje są prawidłowe tylko dla przestrzeni nazw najdalej po lewej stronie nazwy DNS. Na przykład _*. region.domain.com_ jest prawidłowy tylko dla *portal.region.domain.com*, a nie _*. table.region.domain.com_.
+
+**Korygowanie** — wykonaj kroki w usługi Azure Stack certyfikaty podpisywania generowania żądania ponownie wygenerować żądania CSR poprawną nazwą DNS do obsługi punktów końcowych usługi Azure Stack. Prześlij ponownie plik CSR, urząd certyfikacji, a następnie wykonaj kroki opisane w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) Aby wyeksportować certyfikat z komputera, który wygenerował plik CSR.  
 
 ## <a name="key-usage"></a>Użycie klucza
 
@@ -83,51 +83,55 @@ Informacje w tym artykule ułatwiają zrozumienie i rozwiązywanie typowych prob
 
 **Błąd** — kolejność łańcuch certyfikatów jest nieprawidłowy.  
 
-**Korygowanie** -ponownie wyeksportować certyfikat wykonując kroki w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md) i wybierz opcję **, jeśli jest to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji.** Upewnij się, że tylko certyfikat liścia został wybrany do eksportu. 
+**Korygowanie** -ponownie wyeksportować certyfikat wykonując kroki w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment) i wybierz opcję **, jeśli jest to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji.** Upewnij się, że tylko certyfikat liścia został wybrany do eksportu.
 
 ## <a name="other-certificates"></a>Inne certyfikaty
 
 **Błąd** -pakiet PFX zawiera certyfikaty, które nie są certyfikatu liścia lub część łańcucha certyfikatów.  
 
-**Korygowanie** -ponownie wyeksportować certyfikat wykonując kroki w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md)i wybierz opcję **, jeśli jest to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji.** Upewnij się, że tylko certyfikat liścia został wybrany do eksportu.
+**Korygowanie** -ponownie wyeksportować certyfikat wykonując kroki w [przygotowywanie usługi Azure Stack infrastruktury kluczy publicznych certyfikatów dla wdrożenia](azure-stack-prepare-pki-certs.md#prepare-certificates-for-deployment)i wybierz opcję **, jeśli jest to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji.** Upewnij się, że tylko certyfikat liścia został wybrany do eksportu.
 
 ## <a name="fix-common-packaging-issues"></a>Rozwiązywanie typowych problemów dotyczących tworzenia pakietów
 
-**AzsReadinessChecker** zawiera polecenia cmdlet pomocnika o nazwie `Repair-AzsPfxCertificate`, który może importować i następnie eksportu PFX plik Rozwiązywanie typowych problemów dotyczących tworzenia pakietów, w tym: 
- - *Szyfrowanie PFX* nie jest algorytm SHA1 TripleDES
- - *Klucz prywatny* brakuje lokalnego atrybutu maszyny.
- - *Łańcuch certyfikatów* jest niekompletne lub jest on nieprawidłowy. Komputer lokalny musi zawierać łańcucha certyfikatów, jeśli pakiet PFX nie jest.
- - *Inne certyfikaty*.
- 
-`Repair-AzsPfxCertificate` nie będzie mogła pomóc, jeśli potrzebujesz wygenerować nowy plik CSR i ponownego wystawienia certyfikatu. 
+**AzsReadinessChecker** zawiera polecenia cmdlet pomocnika o nazwie `Repair-AzsPfxCertificate`, który może importować i następnie eksportu PFX plik Rozwiązywanie typowych problemów dotyczących tworzenia pakietów, w tym:
+
+- *Szyfrowanie PFX* nie jest algorytm SHA1 TripleDES.
+- *Klucz prywatny* brakuje lokalnego atrybutu maszyny.
+- *Łańcuch certyfikatów* jest niekompletne lub jest on nieprawidłowy. Komputer lokalny musi zawierać łańcucha certyfikatów, jeśli pakiet PFX nie jest.
+- *Inne certyfikaty*
+
+`Repair-AzsPfxCertificate` nie będzie mogła pomóc, jeśli potrzebujesz wygenerować nowy plik CSR i ponownego wystawienia certyfikatu.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Miejsce na komputerze, na którym działa narzędzie musi mieć następujące wymagania wstępne: 
- - System Windows 10 lub Windows Server 2016 z łącznością z Internetem.
- - Program PowerShell 5.1 lub nowszej. Aby sprawdzić swoją wersję, uruchom następujące polecenie cmdlet programu PowerShell, a następnie przejrzyj *głównych* i *pomocnicza* wersji:
+Miejsce na komputerze, na którym działa narzędzie musi mieć następujące wymagania wstępne:
+
+- System Windows 10 lub Windows Server 2016 z łącznością z Internetem.
+- Program PowerShell 5.1 lub nowszej. Aby sprawdzić swoją wersję, uruchom następujące polecenie cmdlet programu PowerShell, a następnie przejrzyj *głównych* i *pomocnicza* wersji:
 
    ```powershell
    $PSVersionTable.PSVersion
    ```
- - Konfigurowanie [programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md). 
- - Pobierz najnowszą wersję [Microsoft Azure Stack gotowości Checker](https://aka.ms/AzsReadinessChecker) narzędzia.
+
+- Konfigurowanie [programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).
+- Pobierz najnowszą wersję [Microsoft Azure Stack gotowości Checker](https://aka.ms/AzsReadinessChecker) narzędzia.
 
 ### <a name="import-and-export-an-existing-pfx-file"></a>Importowanie i eksportowanie istniejącego pliku PFX
 
 1. Na komputerze, który spełnia wymagania wstępne Otwórz administracyjny wiersz polecenia PowerShell, a następnie uruchom następujące polecenie, aby zainstalować AzsReadinessChecker:
-  
+
    ```powershell
    Install-Module Microsoft.AzureStack.ReadinessChecker -Force
    ```
 
-2. W wierszu polecenia programu PowerShell uruchom następujące polecenie cmdlet, aby ustawić hasło PFX. Zastąp *PFXpassword* przy użyciu rzeczywistego hasła:
- 
+2. W wierszu polecenia programu PowerShell uruchom następujące polecenie cmdlet, aby ustawić hasło PFX. Zastąp `PFXpassword` przy użyciu rzeczywistego hasła:
+
    ```powershell
    $password = Read-Host -Prompt PFXpassword -AsSecureString
    ```
 
 3. W wierszu polecenia programu PowerShell uruchom następujące polecenie, aby wyeksportować nowy plik PFX:
+
    - Aby uzyskać `-PfxPath`, określ ścieżkę do pliku PFX, w którym pracujesz. W poniższym przykładzie jest ścieżka `.\certificates\ssl.pfx`.
    - Aby uzyskać `-ExportPFXPath`, określ lokalizację i nazwę pliku PFX do eksportu. W poniższym przykładzie jest ścieżka `.\certificates\ssl_new.pfx`:
 
@@ -136,8 +140,8 @@ Miejsce na komputerze, na którym działa narzędzie musi mieć następujące wy
    ```  
 
 4. Gdy narzędzie ukończy, przejrzyj dane wyjściowe w celu osiągnięcia sukcesu:
- 
-   ```PowerShell
+
+   ```powershell
    Repair-AzsPfxCertificate v1.1809.1005.1 started.
    Starting Azure Stack Certificate Import/Export
    Importing PFX .\certificates\ssl.pfx into Local Machine Store
@@ -150,4 +154,4 @@ Miejsce na komputerze, na którym działa narzędzie musi mieć następujące wy
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dowiedz się więcej na temat zabezpieczeń usługi Azure Stack](azure-stack-rotate-secrets.md)
+- [Kliknij tutaj, aby dowiedzieć się więcej na temat zabezpieczeń usługi Azure Stack](azure-stack-rotate-secrets.md).

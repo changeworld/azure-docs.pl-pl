@@ -10,18 +10,18 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 61feb1365a5007a55d18f0f4366bd5c69148e88d
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 0d7b7ce4d79b078b389ff80727f2b233afe0da5a
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511160"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587297"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-using-an-on-premises-sql-server-database"></a>Przeprowadzanie analiz przy użyciu usługi Azure Machine Learning Studio korzystania z bazy danych programu SQL Server w środowisku lokalnym
 
-Często w przypadku przedsiębiorstw, które działają z danymi lokalnymi chce wykorzystują skali i elastyczności chmury w celu ich usługi machine learning obciążeń. Ale nie chcesz przerwać bieżącego procesów biznesowych i przepływów pracy przez przeniesienie ich danych lokalnych do chmury. Usługa Azure Machine Learning obsługuje teraz odczytywanie danych z bazy danych programu SQL Server w środowisku lokalnym i następnie szkolenia i oceniania modelu przy użyciu tych danych. Nie masz już ręcznie skopiować i synchronizowanie danych między chmurą a serwerem w środowisku lokalnym. Zamiast tego **importu danych** modułu w usłudze Azure Machine Learning Studio może teraz odczytywać bezpośrednio z lokalną bazą danych programu SQL Server do szkolenia i oceniania zadania.
+Często w przypadku przedsiębiorstw, które działają z danymi lokalnymi chce wykorzystują skali i elastyczności chmury w celu ich usługi machine learning obciążeń. Ale nie chcesz przerwać bieżącego procesów biznesowych i przepływów pracy przez przeniesienie ich danych lokalnych do chmury. Usługa Azure Machine Learning Studio obsługuje teraz odczytywanie danych z bazy danych programu SQL Server w środowisku lokalnym i następnie szkolenia i oceniania modelu przy użyciu tych danych. Nie masz już ręcznie skopiować i synchronizowanie danych między chmurą a serwerem w środowisku lokalnym. Zamiast tego **importu danych** modułu w usłudze Azure Machine Learning Studio może teraz odczytywać bezpośrednio z lokalną bazą danych programu SQL Server do szkolenia i oceniania zadania.
 
-Ten artykuł zawiera omówienie sposobu transferu danych przychodzących lokalnych danych programu SQL server do usługi Azure Machine Learning Studio. Zakłada się, kiedy znasz już pojęcia usługi Azure Machine Learning obszarów roboczych, moduły, zestawy danych, eksperymenty *itp.*.
+Ten artykuł zawiera omówienie sposobu transferu danych przychodzących lokalnych danych programu SQL server do usługi Azure Machine Learning Studio. Przyjęto założenie, że znasz Studio koncepcje, takie jak obszary robocze, moduły, zestawy danych, eksperymenty *itp.*.
 
 > [!NOTE]
 > Ta funkcja nie jest dostępna dla bezpłatnych obszarów roboczych. Aby uzyskać więcej informacji na temat cen usługi Machine Learning i warstwy, zobacz [Azure Machine Learning — cennik](https://azure.microsoft.com/pricing/details/machine-learning/).
@@ -33,7 +33,7 @@ Ten artykuł zawiera omówienie sposobu transferu danych przychodzących lokalny
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Zainstaluj Self-Hosted Integration Runtime usługi Data Factory
-Aby uzyskać dostęp do bazy danych lokalnego programu SQL Server w usłudze Azure Machine Learning, musisz pobrać i zainstalować z produktem Integration Runtime usługi Data Factory, znana wcześniej jako brama zarządzania danymi. Po skonfigurowaniu połączenia w usłudze Machine Learning Studio, masz możliwość pobrania i zainstalowania Integration Runtime (IR), za pomocą **pobierania i bramy danych rejestru** okna dialogowego opisanego poniżej.
+Aby uzyskać dostęp do bazy danych lokalnego programu SQL Server w usłudze Azure Machine Learning Studio, musisz pobrać i zainstalować z produktem Integration Runtime usługi Data Factory, znana wcześniej jako brama zarządzania danymi. Po skonfigurowaniu połączenia w usłudze Machine Learning Studio, masz możliwość pobrania i zainstalowania Integration Runtime (IR), za pomocą **pobierania i bramy danych rejestru** okna dialogowego opisanego poniżej.
 
 
 Można też zainstalować środowisko IR wcześniej, pobierając i uruchamiając pakiet Instalatora MSI z [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717). Plik MSI może służyć także do uaktualnienia istniejącego środowiska IR do najnowszej wersji przy użyciu wszystkich ustawień zachowane.
@@ -54,13 +54,13 @@ Rozważ następujące opcje podczas konfigurowania i używania danych fabryki w�
 * Możesz skonfigurować IRs dla tylko jednego obszaru roboczego w danym momencie. Obecnie IRs nie można udostępnić w obszarach roboczych.
 * Można skonfigurować wiele IRs dla jednego obszaru roboczego. Na przykład można użyć środowiska IR, który jest połączony ze źródłami danych testowych podczas rozwoju i produkcji IR, gdy wszystko będzie gotowe do obsługi operacji.
 * Środowisko IR nie musi znajdować się na tym samym komputerze co źródło danych. Jednak dokonywanie aktualizacji na bliżej źródła danych skraca czas dla bramy do połączenia ze źródłem danych. Firma Microsoft zaleca instalowanie środowiska IR na komputerze, który jest inny niż ten, który jest hostem lokalnym źródłem danych, aby bramy i źródła danych nie konkurują o zasoby.
-* Jeśli masz już IR, zainstalowana na danym komputerze obsługująca scenariusze usługi Power BI lub usługi Azure Data Factory, należy zainstalować oddzielne środowiska IR dla usługi Azure Machine Learning na innym komputerze.
+* Jeśli masz już IR, zainstalowana na danym komputerze obsługująca scenariusze usługi Power BI lub usługi Azure Data Factory, należy zainstalować oddzielne środowiska IR Azure Machine Learning Studio na innym komputerze.
 
   > [!NOTE]
   > Nie można uruchomić produktu Integration Runtime usługi Data Factory i Power BI Gateway, w tym samym komputerze.
   >
   >
-* Należy użyć danych fabryki własne środowisko IR dla usługi Azure Machine Learning, nawet wtedy, gdy używasz usługi Azure ExpressRoute dla innych danych. Źródło danych należy traktować jako źródło danych w środowisku lokalnym, (która znajduje się za zaporą) nawet gdy korzystasz z usługi ExpressRoute. Data Factory własne środowisko IR umożliwia nawiązanie łączności między uczenia maszynowego i źródła danych.
+* Należy użyć Data Factory własne środowisko IR Azure Machine Learning Studio, nawet wtedy, gdy używasz usługi Azure ExpressRoute dla innych danych. Źródło danych należy traktować jako źródło danych w środowisku lokalnym, (która znajduje się za zaporą) nawet gdy korzystasz z usługi ExpressRoute. Data Factory własne środowisko IR umożliwia nawiązanie łączności między uczenia maszynowego i źródła danych.
 
 Szczegółowe informacje dotyczące wymagań wstępnych instalacji, kroków instalacji i wskazówki dotyczące rozwiązywania problemów można znaleźć w artykule [środowiska Integration Runtime w usłudze Data Factory](../../data-factory/concepts-integration-runtime.md).
 
@@ -115,17 +115,17 @@ Pierwszym krokiem jest do tworzenia i konfigurowania bramy, dostęp do bazy dany
 
     ![Włącz pełne rejestrowanie](./media/use-data-from-an-on-premises-sql-server/data-gateway-configuration-manager-verbose-logging.png)
 
-Na tym kończy proces instalacji bramy w usłudze Azure Machine Learning.
+Na tym kończy proces instalacji bramy w usłudze Azure Machine Learning Studio.
 Teraz możesz użyć danych w środowisku lokalnym.
 
-Można utworzyć i skonfigurować wiele bram w programie Studio dla każdego obszaru roboczego. Na przykład masz bramy, który chcesz połączyć ze źródłami danych testowych podczas tworzenia i inną bramę dla źródła danych produkcyjnych. Usługa Azure Machine Learning zapewnia elastyczność, aby skonfigurować wiele bram zależności w środowisku firmowym. Obecnie nie można udostępniać bramy między obszarami roboczymi i na jednym komputerze można zainstalować tylko jedną bramę. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzania danymi](../../data-factory/tutorial-hybrid-copy-portal.md).
+Można utworzyć i skonfigurować wiele bram w programie Studio dla każdego obszaru roboczego. Na przykład masz bramy, który chcesz połączyć ze źródłami danych testowych podczas tworzenia i inną bramę dla źródła danych produkcyjnych. Usługa Azure Machine Learning Studio zapewnia elastyczność, aby skonfigurować wiele bram zależności w środowisku firmowym. Obecnie nie można udostępniać bramy między obszarami roboczymi i na jednym komputerze można zainstalować tylko jedną bramę. Aby uzyskać więcej informacji, zobacz [przenoszenie danych między źródłami lokalnymi i chmurą przy użyciu bramy zarządzania danymi](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: Odczytywanie danych z lokalnego źródła danych za pomocą bramy
 Po skonfigurowaniu bramy można dodać **importu danych** modułów na eksperyment, który danych wejściowych w dane z lokalnej bazy danych programu SQL Server.
 
 1. W usłudze Machine Learning Studio, wybierz **EKSPERYMENTÓW** kliknij pozycję **+ nowy** w lewym dolnym rogu i wybierz **pusty eksperyment** (lub wybierz jedną z kilku przykładowych eksperymenty dostępne).
 2. Znajdowanie i przeciąganie **importu danych** modułu do obszaru roboczego eksperymentu.
-3. Kliknij przycisk **Zapisz jako** poniżej obszaru roboczego. Wprowadź "Azure On-Premises SQL Server samouczek dotyczący uczenia maszynowego" Nazwa eksperymentu, wybierz obszar roboczy, a następnie kliknij przycisk **OK** znacznik wyboru.
+3. Kliknij przycisk **Zapisz jako** poniżej obszaru roboczego. Wprowadź "Azure Studio On-Premises SQL Server samouczek dotyczący uczenia maszynowego" Nazwa eksperymentu, wybierz obszar roboczy, a następnie kliknij przycisk **OK** znacznik wyboru.
 
    ![Zapisz eksperymentu z nową nazwą](./media/use-data-from-an-on-premises-sql-server/experiment-save-as.png)
 4. Kliknij przycisk **importu danych** modułu, aby ją zaznaczyć, następnie w **właściwości** w okienku po prawej stronie kanwy, wybierz opcję "On-Premises SQL Database" w **źródła danych** listy rozwijanej.
@@ -137,7 +137,7 @@ Po skonfigurowaniu bramy można dodać **importu danych** modułów na eksperyme
 
    ![Wprowadź poświadczenia bazy danych](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
-   Komunikat "wymagane wartości" zmiany "zestaw wartości" z zielonym znacznikiem wyboru. Wystarczy raz wprowadź poświadczenia, chyba że zmiany informacji o bazie danych lub hasła. Usługa Azure Machine Learning używa certyfikatu, podane podczas instalacji bramy do szyfrowania poświadczeń w chmurze. Azure nigdy nie przechowuje poświadczeń lokalnych bez szyfrowania.
+   Komunikat "wymagane wartości" zmiany "zestaw wartości" z zielonym znacznikiem wyboru. Wystarczy raz wprowadź poświadczenia, chyba że zmiany informacji o bazie danych lub hasła. Usługa Azure Machine Learning Studio, używa certyfikatu, podane podczas instalacji bramy do szyfrowania poświadczeń w chmurze. Azure nigdy nie przechowuje poświadczeń lokalnych bez szyfrowania.
 
    ![Importowanie danych właściwości modułu](./media/use-data-from-an-on-premises-sql-server/import-data-properties-entered.png)
 8. Kliknij przycisk **Uruchom** do uruchamiania eksperymentu.

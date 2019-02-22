@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/30/2019
+ms.date: 02/15/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 855b9db645721c63abae34422ae6461cea3daab2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5622c179b6eb767f4c608e8c36c2ba154aac0906
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189824"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594699"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Instrukcje: Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
@@ -47,6 +47,9 @@ ms.locfileid: "56189824"
 - Hasło logowania jednokrotnego upewnij się, obsługuje uwierzytelnianie przy użyciu formularza w aplikacji, więc haseł może odbywać się uzyskać pracy rejestracji jednokrotnej, zgodnie z oczekiwaniami.
 
 - Automatyczne inicjowanie obsługi użytkowników żądań aplikacji powinny figurować w galerii z funkcją logowania jednokrotnego pojedynczego włączane przy użyciu protokołu SAML 2.0/WS-Fed. Możesz poprosić potrzeby logowania jednokrotnego i Inicjowanie obsługi administracyjnej ze sobą w portalu, jeśli go jeszcze nie znajduje się użytkownik.
+
+>[!NOTE]
+>Będziemy działają z dużą liczbę żądań łącznika Standard SCIM, więc została zatrzymana, biorąc nowe żądania w portalu. Wstrzymaj na żądań do odwołania. Firma Microsoft przeprosinami dla tego opóźnienia i wszelkie ewentualne utrudnienia.
 
 ## <a name="submit-the-request-in-the-portal"></a>Przesyłanie żądania w portalu
 
@@ -108,6 +111,16 @@ Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji Azur
     * Aby usunąć istniejącą aplikację z galerii usługi Azure AD, należy zaznaczyć **usunięcie istniejącej listy aplikacji**.
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
+## <a name="listing-requests-by-customers"></a>Wyświetlanie listy żądań przez klientów
+
+Klienci mogą przesyłać żądania listę aplikacji, klikając **aplikacja żąda przez klientów** -> **Prześlij nowe żądanie**.
+
+![Kafelek żądanej aplikacji klienta](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Poniżej znajduje się przepływ klienta wymagane aplikacje —
+
+![Klient zażądał przepływu aplikacji](./media/howto-app-gallery-listing/customer-request.png)
+
 ## <a name="timelines"></a>Osie czasu
 
 Oś czasu dla procesu wyświetlania listy protokołu SAML 2.0 i WS-Fed aplikacji w galerii jest 7 – 10 dni roboczych.
@@ -117,10 +130,6 @@ Oś czasu dla procesu wyświetlania listy protokołu SAML 2.0 i WS-Fed aplikacji
 Oś czasu dla procesu o ofercie w galerii aplikacji OpenID Connect jest 2 – 5 dni roboczych.
 
    ![Oś czasu wyświetlania listy aplikacji saml w galerii](./media/howto-app-gallery-listing/timeline2.png)
-
-Oś czasu dla procesu wyświetlanie aplikacji w galerii z aprowizacja obsługi użytkowników jest 40-45 dni roboczych.
-
-   ![Oś czasu wyświetlania listy aplikacji saml w galerii](./media/howto-app-gallery-listing/provisioningtimeline.png)
 
 ## <a name="escalations"></a>Eskalacji
 

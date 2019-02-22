@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: c83342e5eb0e6c1f45daa54ea3c4f3c602ff7a39
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7d5bfba10fe68c4d29a66fe39a386aec975b978f
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878616"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651536"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Wdrażaj modele za pomocą usługi Azure Machine Learning
 
@@ -29,10 +29,11 @@ Można wdrażać modele do następujących celów obliczeń:
 
 | Obliczeniowego elementu docelowego | Typ wdrożenia | Opis |
 | ----- | ----- | ----- |
-| [Usługa Azure Container Instances (ACI)](#aci) | Usługa sieci Web | Szybkie wdrażanie. Dobre do tworzenia i testowania. |
-| [Usługa Azure Kubernetes Service (AKS)](#aks) | Usługa sieci Web | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
-| [Azure IoT Edge](#iotedge) | Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
-| [Tablica programowalny bramy (FPGA)](#fpga) | Usługa sieci Web | Bardzo niskimi opóźnieniami dla wnioskowania w czasie rzeczywistym. |
+| [Usługa Azure Kubernetes Service (AKS)](#aks) | Wnioskowanie w czasie rzeczywistym | Dobre dla wdrożeń produkcyjnych w dużej skali. Oferuje automatyczne skalowanie i krótszych czasów reakcji. |
+| [Usługa Azure środowiska obliczeniowego usługi ML](#amlcompute) | Wnioskowanie usługi Batch | Uruchom prognoz usługi batch na bezserwerowe środowisko obliczeniowe. Obsługuje normalne lub niskiego priorytetu maszyn wirtualnych. |
+| [Usługa Azure Container Instances (ACI)](#aci) | Testowanie | Dobre do tworzenia i testowania. **Nie jest ona odpowiednia dla obciążeń produkcyjnych.** |
+| [Azure IoT Edge](#iotedge) | (Wersja zapoznawcza) Moduł IoT | Wdrażaj modele na urządzeniach IoT. Wnioskowania odbywa się na urządzeniu. |
+| [Tablica programowalny bramy (FPGA)](#fpga) | (Wersja zapoznawcza) Usługa sieci Web | Bardzo niskimi opóźnieniami dla wnioskowania w czasie rzeczywistym. |
 
 Proces wdrażania modelu jest podobnych dla wszystkich celów obliczeń:
 
@@ -225,7 +226,7 @@ Gdy pojawi się do wdrożenia, proces jest nieco inne w zależności od wdrażan
 >
 > Przykłady w tym dokumentów użyj `deploy_from_image`.
 
-### <a id="aci"></a> Wdrażanie w usłudze Azure Container Instances
+### <a id="aci"></a> Wdrażanie w usłudze Azure Container Instances (DEVTEST)
 
 Użyj usługi Azure Container Instances dla wdrażając swoje modele jako usługi sieci web, jeśli jeden lub więcej z następujących warunków jest spełniony:
 
@@ -246,7 +247,7 @@ Do wdrożenia usługi Azure Container Instances, wykonaj następujące kroki:
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) i [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py) klasy.
 
-### <a id="aks"></a> Wdrażanie w usłudze Azure Kubernetes Service
+### <a id="aks"></a> Wdrażanie w usłudze Azure Kubernetes Service (produkcja)
 
 Aby wdrożyć modelu w postaci usługi sieci web o dużej skali w środowisku produkcyjnym, należy użyć usługi Azure Kubernetes Service (AKS). Można użyć istniejącego klastra AKS lub utworzyć nowe konto, przy użyciu zestawu SDK usługi Azure Machine Learning, interfejsu wiersza polecenia lub witryny Azure portal.
 
@@ -332,6 +333,13 @@ print(service.state)
 **Szacowany czas**: Około 3 minuty.
 
 Aby uzyskać więcej informacji, zobacz dokumentację referencyjną [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) i [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py) klasy.
+
+### <a id="fpga"></a> Wnioskowanie za pomocą platformy Azure środowiska obliczeniowego usługi ML
+
+Usługa Azure ML obliczeniowych elementów docelowych są tworzone i zarządzane przez usługę Azure Machine Learning. Służy do prognozowania usługi batch z usługi Azure ML potoki.
+
+Aby zapoznać się z przewodnikiem wnioskowania usługi batch za pomocą usługi Azure ML Compute, przeczytaj [sposobu uruchamiania prognoz usługi Batch](how-to-run-batch-predictions.md) dokumentu.
+
 
 ### <a id="fpga"></a> Wdrażanie bramy programowalny tablic (FPGA)
 

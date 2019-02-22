@@ -8,12 +8,12 @@ ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: kasparks
-ms.openlocfilehash: c76c7bdb398184cc297831c9395063e7bf0f6bdc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: cc5c4310d5f9886518bee6612113fba174130bec
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492542"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648720"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>Zmniejsz koszty usługi przy użyciu usługi Azure Advisor
 
@@ -21,7 +21,7 @@ Advisor pomaga zoptymalizować i zmniejszyć ogólną platformy Azure możesz wy
 
 ## <a name="optimize-virtual-machine-spend-by-resizing-or-shutting-down-underutilized-instances"></a>Optymalizowanie maszyny wirtualnej, który możesz wydać przez zmianą rozmiaru lub zamykanie niedostatecznie używanych wystąpień 
 
-Mimo że niektóre scenariusze aplikacji może spowodować niewielkie wykorzystanie zgodnie z projektem, często można oszczędzić pieniądze, zarządzając rozmiaru i liczby maszyn wirtualnych. Klasyfikator monitoruje wykorzystanie maszyn wirtualnych przez 14 dni, a następnie identyfikuje niskiego wykorzystania maszyn wirtualnych. Maszyny wirtualne, których użycie procesora CPU wynosi 5 procent lub mniej i użycie sieci to 7 MB lub mniej przez cztery lub więcej dni są traktowane jako niskie użycie maszyn wirtualnych.
+Mimo że niektóre scenariusze aplikacji może spowodować niewielkie wykorzystanie zgodnie z projektem, często można oszczędzić pieniądze, zarządzając rozmiaru i liczby maszyn wirtualnych. Klasyfikator monitoruje wykorzystanie maszyny wirtualnej przez 7 dni, a następnie identyfikuje niskiego wykorzystania maszyn wirtualnych. Wirtualne wykorzystanie niski, jeśli użycie Procesora wynosi 5% lub mniej, są traktowane jako maszyn i ich wykorzystania sieci jest mniejsza niż % 2, lub jeśli bieżące obciążenie może zostać uwzględniony w obrębie mniejszego rozmiaru maszyny wirtualnej.
 
 Klasyfikator pokazuje szacowany koszt kontynuowani e uruchamiania maszyny wirtualnej, tak, aby można było wybrać zamknij go, lub zmienić jego rozmiar.
 

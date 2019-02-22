@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: bce28a2498793b7a1edb8aa0437a7d7c75a45ae9
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 02c786209c81e755b05cc3875778f98faf8a1ae1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911952"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650941"
 ---
 # <a name="content-protection-overview"></a>Omówienie ochrony zawartości
 
@@ -33,23 +33,36 @@ Na poniższym obrazie przedstawiono przepływ pracy usługi Media Services Ochro
 
 W tym artykule opisano pojęcia i terminologia istotne dla zrozumienia, ochrony zawartości przy użyciu usługi Media Services. Artykuł ma również [— często zadawane pytania](#faq) sekcji i zawiera łącza do artykułów, które pokazują, jak chronić zawartość. 
 
-## <a name="main-components-of-the-content-protection-system"></a>Główne składniki systemu ochrony zawartości
+## <a name="main-components-of-a-content-protection-system"></a>Główne składniki systemu ochrony zawartości
 
 Do pomyślnego ukończenia projektu systemu/aplikacji "content protection", należy całkowicie zrozumieniu zakresu nakładu pracy. Poniższa lista zawiera przegląd trzech części, które trzeba do zaimplementowania. 
 
 1. Kod platformy Azure Media Services
   
-  * Skonfiguruj szablony licencji PlayReady, Widevine i FairPlay. Szablony pozwalają skonfigurować prawa i uprawnienia dla wszystkich używanych protokołów DRM.
-  * Zdefiniuj autoryzacji dostarczania licencji, określając logika sprawdzania autoryzacji na podstawie oświadczeń w token JWT.
-  * Konfigurowanie szyfrowania DRM, określając kluczy zawartości i protokołów, które powinny być używane przesyłania strumieniowego.
+  [DRM](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs) przykładowych pokazano, jak zaimplementować multi-DRM systemu za pomocą usługi Media Services v3 i również użyć usługi dostarczania kluczy/licencji Media Services. Każdy element zawartości można szyfrować przy użyciu wielu typów szyfrowania (AES-128, PlayReady, Widevine, FairPlay). Zobacz [Streaming protocols and encryption types (Protokoły i typy szyfrowania przesyłania strumieniowego)](#streaming-protocols-and-encryption-types), aby sprawdzić, które rozwiązania warto łączyć.
+  
+  W przykładzie pokazano sposób:
 
-  > [!NOTE]
-  > Każdy element zawartości można szyfrować przy użyciu wielu typów szyfrowania (AES-128, PlayReady, Widevine, FairPlay). Zobacz [Streaming protocols and encryption types (Protokoły i typy szyfrowania przesyłania strumieniowego)](#streaming-protocols-and-encryption-types), aby sprawdzić, które rozwiązania warto łączyć.
-  
-  Następujące artykuły pokazują kroki szyfrowanie zawartości przy użyciu standardu AES i/lub DRM: 
-  
-  * [Ochrona przy użyciu szyfrowania AES](protect-with-aes128.md)
-  * [Ochrona za pomocą technologii DRM](protect-with-drm.md)
+  1. Tworzenie i konfigurowanie ContentKeyPolicies.
+
+    * Zdefiniuj autoryzacji dostarczania licencji, określając logika sprawdzania autoryzacji na podstawie oświadczeń w token JWT.
+    * Konfigurowanie szyfrowania DRM, określając klucz zawartości.
+    * Konfigurowanie [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), i [FairPlay](fairplay-license-overview.md) licencji. Szablony pozwalają skonfigurować prawa i uprawnienia dla wszystkich używanych protokołów DRM.
+
+        ```
+        ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
+        ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
+        ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
+        ```
+  2. Utwórz StreamingLocator, który jest skonfigurowany do przesyłania strumieniowego element zawartości zaszyfrowanej. 
+
+    Na przykład można ustawić StreamingLocator.StreamingPolicyName z zasadami "Predefined_MultiDrmCencStreaming". Te zasady wskazują, że chcesz wygenerować dwa klucze zawartości (koperta i CENC) i ustawić je w lokalizatorze. Dlatego stosowane są szyfrowania typu koperta, PlayReady i Widevine (klucz jest dostarczany do klienta odtwarzania w oparciu o skonfigurowane licencje DRM). Jeśli chcesz także zaszyfrować strumień przy użyciu metody CBCS (FairPlay), użyj zasad „Predefined_MultiDrmStreaming”.
+  3. Utwórz token testu.
+
+    **GetTokenAsync** metoda pokazuje, jak utworzyć test tokenu.
+  4. Tworzenie adresu URL przesyłania strumieniowego.
+
+    **GetDASHStreamingUrlAsync** metoda przedstawia sposób tworzenia adresu URL przesyłania strumieniowego. W tym przypadku strumieni adresu URL **DASH** zawartości.
 
 2. Odtwarzacz przy użyciu technologii AES lub technologii DRM klienta. Aplikacja odtwarzacza wideo, oparte na odtwarzaczu zestawu SDK (natywny lub przeglądarki) musi spełniać następujące wymagania:
   * Odtwarzacz zestaw SDK obsługuje wymagane klientów DRM
@@ -128,71 +141,11 @@ Za pomocą tokenu zawartości klucza zasad klucz zawartości jest wysyłane tylk
 
 Po skonfigurowaniu zasadzie ograniczenia tokenu, należy określić podstawowy klucz weryfikacji wystawcy i parametry odbiorców. Podstawowy klucz weryfikacji zawiera klucz, który token został podpisany za pomocą. Wystawca jest usługa bezpiecznych tokenów, który wystawia token. Grupy odbiorców, czasami nazywane zakresu, opisuje przeznaczenie tokenu lub zasób tokenu autoryzuje dostępu do. Usługa dostarczania kluczy Media Services sprawdza, czy te wartości w tokenie pasuje do wartości w szablonie.
 
-## <a name="a-idfaqfrequently-asked-questions"></a><a id="faq"/>Często zadawane pytania
-
-### <a name="question"></a>Pytanie
-
-Jak zaimplementować multi-DRM (PlayReady, Widevine i FairPlay) systemu przy użyciu usługi Azure Media Services (AMS) w wersji 3, a także usługa dostarczania kluczy/licencji usługi AMS użycia?
-
-### <a name="answer"></a>Odpowiedź
-
-Scenariusz end-to-end można znaleźć [poniższy przykład kodu](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs). 
-
-W przykładzie pokazano sposób:
-
-1. Tworzenie i konfigurowanie ContentKeyPolicies.
-
-  Przykład zawiera funkcje, które skonfigurować [PlayReady](playready-license-template-overview.md), [Widevine](widevine-license-template-overview.md), i [FairPlay](fairplay-license-overview.md) licencji.
-
-    ```
-    ContentKeyPolicyPlayReadyConfiguration playReadyConfig = ConfigurePlayReadyLicenseTemplate();
-    ContentKeyPolicyWidevineConfiguration widevineConfig = ConfigureWidevineLicenseTempate();
-    ContentKeyPolicyFairPlayConfiguration fairPlayConfig = ConfigureFairPlayPolicyOptions();
-    ```
-
-2. Utwórz StreamingLocator, który jest skonfigurowany do przesyłania strumieniowego element zawartości zaszyfrowanej. 
-
-  Na przykład można ustawić StreamingLocator.StreamingPolicyName z zasadami "Predefined_MultiDrmCencStreaming". Te zasady wskazują, że chcesz wygenerować dwa klucze zawartości (koperta i CENC) i ustawić je w lokalizatorze. Dlatego stosowane są szyfrowania typu koperta, PlayReady i Widevine (klucz jest dostarczany do klienta odtwarzania w oparciu o skonfigurowane licencje DRM). Jeśli chcesz także zaszyfrować strumień przy użyciu metody CBCS (FairPlay), użyj zasad „Predefined_MultiDrmStreaming”.
-
-3. Utwórz token testu.
-
-  **GetTokenAsync** metoda pokazuje, jak utworzyć test tokenu.
-  
-4. Tworzenie adresu URL przesyłania strumieniowego.
-
-  **GetDASHStreamingUrlAsync** metoda przedstawia sposób tworzenia adresu URL przesyłania strumieniowego. W tym przypadku strumieni adresu URL **DASH** zawartości.
-
-### <a name="question"></a>Pytanie
-
-Jak i gdzie można uzyskać tokenu JWT token przed użyciem w celu żądania licencji lub klucza?
-
-### <a name="answer"></a>Odpowiedź
-
-1. W środowisku produkcyjnym musisz zabezpieczyć tokenu usługi (STS) (usługa sieci web), który wystawia token JWT na żądanie protokołu HTTPS. Dla testu, można użyć kod przedstawiony w **GetTokenAsync** metody zdefiniowanej w [Program.cs](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs).
-2. Odtwarzacz należy wysłać żądanie, po uwierzytelnieniu użytkownika do usługi STS do takich token i przypisz ją jako wartość tokenu. Możesz użyć [interfejsu API usługi Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/).
-
-* Na przykład uruchomienia usługi STS, przy użyciu klucza symetrycznego i asymetrycznym można znaleźć [ http://aka.ms/jwt ](https://aka.ms/jwt). 
-* Na przykład odtwarzacza, w oparciu o usługi Azure Media Player przy użyciu takich tokenu JWT zobacz [ http://aka.ms/amtest ](https://aka.ms/amtest) (expand link "player_settings", aby wyświetlić dane wejściowe tokenu).
-
-### <a name="question"></a>Pytanie
-
-Jak autoryzować żądania strumieniowo pliki wideo przy użyciu szyfrowania AES?
-
-### <a name="answer"></a>Odpowiedź
-
-Właściwe podejście jest korzystanie z usługi STS (Secure Token Service):
-
-W usługi STS w zależności od profilu użytkownika, należy dodać różne oświadczenia (na przykład "Premium User", "Podstawowe użytkownika", "Bezpłatna wersja próbna użytkownika"). Za pomocą różnych oświadczeń w token JWT użytkownik może wyświetlić różną zawartość. Oczywiście dla innej zawartości/zasobu ContentKeyPolicyRestriction mają odpowiednie RequiredClaims.
-
-Użyj Media Services interfejsów API usługi Azure do konfigurowania/klucz licencji dostarczania i szyfrowanie zawartości (jak pokazano na [w tym przykładzie](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithAES/Program.cs).
-
 ## <a name="next-steps"></a>Kolejne kroki
 
-Zapoznaj się z następującymi artykułami:
-
-  * [Ochrona przy użyciu szyfrowania AES](protect-with-aes128.md)
-  * [Ochrona za pomocą technologii DRM](protect-with-drm.md)
-
-Dodatkowe informacje można znaleźć w [projektowania technologii multi-drm systemu ochrony zawartości przy użyciu kontroli dostępu](design-multi-drm-system-with-access-control.md)
+* [Ochrona przy użyciu szyfrowania AES](protect-with-aes128.md)
+* [Ochrona za pomocą technologii DRM](protect-with-drm.md)
+* [Projektowanie technologii multi-drm systemu ochrony zawartości przy użyciu kontroli dostępu](design-multi-drm-system-with-access-control.md)
+* [Często zadawane pytania](frequently-asked-questions.md)
 
 

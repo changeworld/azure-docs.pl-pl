@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 02/13/2019
 ms.author: patricka
 ms.reviewer: rtiberiu
-ms.lastreviewed: 01/10/2019
-ms.openlocfilehash: 80caa470675a78a9c2e3d4c055333719f54fe64a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/13/2019
+ms.openlocfilehash: 4858e33023ff0f94bb9fb879b01846184df2491e
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247888"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652148"
 ---
 # <a name="create-a-registration-role-for-azure-stack"></a>Utwórz rolę rejestracji dla usługi Azure Stack
 
@@ -33,7 +33,7 @@ W przypadku scenariuszy, w których nie chcesz nadać uprawnienia właściciela 
 
 Podczas rejestrowania w usłudze Azure Stack, konto rejestracji wymaga następujących uprawnień usługi Azure Active Directory i uprawnienia subskrypcji platformy Azure:
 
-* **Uprawnienia rejestracji aplikacji w dzierżawie usługi Azure Active Directory:** Administratorzy mają uprawnienia rejestracji aplikacji. Uprawnienia dla użytkowników jest ustawienie globalne dla wszystkich użytkowników w dzierżawie. Aby wyświetlić lub zmienić Zobacz ustawienie [tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
+* **Uprawnienia rejestracji aplikacji w dzierżawie usługi Azure Active Directory:** Administratorzy mają uprawnienia rejestracji aplikacji. Uprawnienia dla użytkowników jest ustawienie globalne dla wszystkich użytkowników w dzierżawie. Aby wyświetlić lub zmienić ustawienia, zobacz [tworzenia aplikacji i usługi jednostki, które mogą uzyskiwać dostęp do zasobów usługi Azure AD](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions).
 
     *Użytkownika mogą rejestrować aplikacje* ustawienie musi być równa **tak** umożliwiające włączanie konta użytkownika można zarejestrować usługi Azure Stack. Jeśli wartością ustawienia rejestracji aplikacji jest równa **nie**, nie można używać konta użytkownika i należy użyć konta administratora globalnego do rejestrowania usługi Azure Stack.
 

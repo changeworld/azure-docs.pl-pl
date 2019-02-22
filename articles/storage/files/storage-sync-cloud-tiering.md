@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: sikoo
 ms.subservice: files
-ms.openlocfilehash: e73a11d7849d6e304be0844a55ddad46e6966f6e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fe363bd6d16d7beea1c8f1e6ec17710975a80924
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470455"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652564"
 ---
 # <a name="cloud-tiering-overview"></a>Omówienie obsługi warstw w chmurze
 Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często używanych plików są buforowane lokalnie na serwerze, podczas gdy inne pliki są organizowane w warstwy do usługi Azure Files na podstawie ustawień zasad. Gdy plik jest warstwowe, filtru systemu plików usługi Azure File Sync (StorageSync.sys) zamienia plik lokalnie wskaźnik lub punkt ponownej analizy. Punkt ponownej analizy reprezentuje adres URL do pliku w usłudze Azure Files. Plik warstwowy zawiera zarówno atrybut "offline", jak i atrybut FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS ustawiony w systemie plików NTFS, dzięki czemu aplikacje innych firm można bezpiecznie zidentyfikować pliki warstwowe.
@@ -21,9 +21,12 @@ Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często 
 Gdy użytkownik otwiera plik warstwowy, usługi Azure File Sync bezproblemowo odwołania do danych plików z usługi Azure Files użytkownik nie musi wiedzieć, że plik rzeczywiście jest przechowywana w usłudze Azure. 
  
  > [!Important]  
-    > Ważne: Chmura obsługi warstw nie jest obsługiwana dla punkty końcowe serwera w woluminach systemu Windows, a tylko pliki większe niż 64 KiB rozmiarze mogą należeć do warstwy do usługi Azure Files.
+ > Chmura obsługi warstw nie jest obsługiwana dla punkty końcowe serwera w woluminach systemu Windows, a tylko pliki większe niż 64 KiB rozmiarze mogą należeć do warstwy do usługi Azure Files.
     
 Usługa Azure File Sync nie obsługuje warstw pliki mniejsze niż 64 KiB, zmniejszenie wydajności warstw i odwoływania takich małych plików może być większe niż oszczędności miejsca.
+
+ > [!Important]  
+ > Przywołanie pliki, które zostały warstwowe, przepustowości sieci należy co najmniej 1 MB/s. Jeśli przepustowość sieci jest mniejszy niż 1 MB/s, plików może zakończyć się niepowodzeniem do odwołania z błędem przekroczenia limitu czasu.
 
 ## <a name="cloud-tiering-faq"></a>Chmury warstw — często zadawane pytania
 

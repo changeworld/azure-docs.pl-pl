@@ -4,14 +4,14 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 9a39abf77a7396302f93e5a423271402b7c3edb3
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: a8979edf94c0dd0271293feb28c18530faeba09c
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54084008"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56660304"
 ---
-Klucz transakcji (maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup>):
+## <a name="key-transactions-max-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klucz transakcji (maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup>):
 
 |Typ klucza|HSM-key<br>Utwórz klucz|HSM-key<br>Wszystkie inne transakcje|Klucz oprogramowania<br>Utwórz klucz|Klucz oprogramowania<br>Wszystkie inne transakcje|
 |:---|---:|---:|---:|---:|
@@ -22,30 +22,20 @@ Klucz transakcji (maksymalna liczba transakcji w ciągu 10 sekund, dozwolone mag
 |P-384 ECC|5|1000|10|2000|
 |ECC P-521|5|1000|10|2000|
 |ECC SECP256K1|5|1000|10|2000|
-|
 
 > [!NOTE]
-> Powyżej wartości progowe są ważona i wymuszania znajduje się w ich suma. Możesz tworzyć 125 operacje RSA - przez moduł HSM — 4k i 0 RSA - przez moduł HSM - 2, lub 124 RSA - przez moduł HSM — 4k i 16 RSA - przez moduł HSM — 2 tys. Później w tym samym interwale 10 sekund innych operacji spowoduje, że wyjątek AKV klienta.
+> W powyższej tabeli widzimy, że szyfrowania RSA 2048-bitowe oprogramowanie-kluczy, firma Microsoft Zezwalaj 2000 transakcji GET na 10 sekund i czy — klucze szyfrowania RSA 2048-bitowych HSM, firma Microsoft Zezwalaj 1000 transakcji GET na 10 sekund.
+>
+> Należy pamiętać, że są ważona wartościach progowych ograniczania przepustowości i wymuszania znajduje się w ich suma. Na przykład w powyższej tabeli widać, że podczas wykonywania operacji GET dla kluczy RSA przez moduł HSM jest 8-krotnością droższe do używania kluczy 4096-bitowe, w porównaniu do 2048-bitowe klucze (od 1000/125 = 8). W związku z tym, w danym interwale 10 sekund, klient AKV zrobić dokładnie jeden z następujących czynności przed zapoznaniem się `429` ograniczania kod stanu HTTP:
+> - 2000 szyfrowania RSA 2048-bitowy klucz oprogramowania GET transakcji **lub**
+> - 1000 transakcji GET klucza HSM szyfrowania RSA 2048-bitowych, **lub**
+> - 125 transakcji GET klucza HSM kluczy RSA 4096-bitowe, **lub**
+> - 124 GET klucza HSM kluczy RSA 4096-bitowe transakcje i 8 szyfrowania RSA 2048-bitowego klucza HSM GET.
 
-> [!NOTE]
-> Jeśli przyjrzymy się w poniższej tabeli, możesz zobaczyć, że dla kluczy opartych na oprogramowanie zezwalamy na 2000 transakcji na 10 sekund, a przez moduł HSM kopii klucze zezwalamy na 1000 transakcji na 10 sekund. Współczynnik kopii oprogramowania następującą liczbę transakcji: klucze 3072 klucze 2048 to 500/2000 lub Update 0.4. Oznacza to, że jeśli klient ma 500 3072 transakcje klucza w ciągu 10 sekund, osiągną swój limit maksymalny wynoszący i nie można wykonać żadnych innych operacji klucza. 
-   
-|Typ klucza  | Klucz programowy |HSM-key  |
-|---------|---------|---------|
-|RSA 2048-bit     |    2000     |   1000    |
-|RSA 3072-bit     |     500    |    250     |
-|RSA 4096-bit     |    125     |    250     |
-|ECC P-256     |    2000     |  1000     |
-|P-384 ECC     |    2000     |  1000     |
-|ECC P-521     |    2000     |  1000     |
-|ECC SECP256K1     |    2000     |  1000     |
-
-
-Wpisy tajne, zarządzanych kluczy konta magazynu i transakcje magazynu:
+## <a name="secrets-managed-storage-account-keys-and-vault-transactions"></a>Wpisy tajne, zarządzanych kluczy konta magazynu i transakcje magazynu:
 | Typ transakcji | Maksymalna liczba transakcji w ciągu 10 sekund, dozwolone magazynu na region<sup>1</sup> |
 | --- | --- |
 | Wszystkie transakcje |2000 |
-|
 
 Zobacz [wskazówki dotyczące ograniczania usługi Azure Key Vault](../articles/key-vault/key-vault-ovw-throttling.md) informacji na temat sposobu obsługi ograniczania, gdy te limity zostaną przekroczone.
 

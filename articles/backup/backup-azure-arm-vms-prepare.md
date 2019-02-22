@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: e782afb971f95a654119d9817edeef02642bee9e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: effb00a4ebde857e06e34e5f83ca01fc5d74017b
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447569"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594189"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Tworzenie kopii zapasowych maszyn wirtualnych platformy Azure w magazynie usługi Recovery Services
 
@@ -63,7 +63,7 @@ Zapasowy numer wewnętrzny, uruchomione na maszynie Wirtualnej musi mieć dostę
 - Brak dostępu do jawnego sieciowego ruchu wychodzącego jest wymagane dla maszyny Wirtualnej platformy Azure do komunikowania się z usługą Azure Backup.
 - Jednak niektóre starsze maszyny wirtualne mogą występować problemy i zakończyć się niepowodzeniem z powodu błędu **ExtensionSnapshotFailedNoNetwork** podczas próby połączenia. W tym przypadku użyj jednej z następujących opcji, aby zapasowy numer wewnętrzny może komunikować się do platformy Azure publicznych adresów IP dla ruchu kopii zapasowej.
 
-   **Opcja** | **Akcja** ** | **Zalety** | **Wady**
+   **Opcja** | **Akcja** | **Zalety** | **Wady**
    --- | --- | --- | ---
    **Skonfiguruj reguły sieciowej grupy zabezpieczeń** | Zezwalaj na [zakresy IP centrów danych platformy Azure](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/>  Można dodać regułę, która zezwala na dostęp do usługi Azure Backup przy użyciu [tag usługi](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure), a nie indywidualnie umożliwiając i zarządzanie nimi każdego zakresu adresów. [Dowiedz się więcej](../virtual-network/security-overview.md#service-tags) o tagi usługi. | Brak dodatkowych kosztów. Łatwo zarządzać za pomocą tagów usługi
    **Wdrażanie serwera proxy** | Wdrażanie serwera proxy HTTP dla routingu ruchu. | Zapewnia dostęp do całej platformy Azure i nie tylko magazyn. Ścisła kontrola nad adresy URL magazynu jest dozwolone.<br/><br/> Pojedynczy punkt internet access dla maszyn wirtualnych.<br/><br/> Dodatkowe koszty dla serwera proxy.<br/><br/> 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.author: iainfou
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 6d2b6ce2804fce35af9c184c4a7c72c0b332f6fb
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 7975516e80576a9d79b35da816d049f47ebc7d3a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701757"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650193"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Użyj wtyczki kubenet sieci przy użyciu własnych zakresów adresów IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -126,7 +126,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Teraz przypisać nazwę główną usługi dla klastra usługi AKS *Współautor* uprawnień w sieci wirtualnej przy użyciu [utworzenia przypisania roli az] [ az-role-assignment-create] polecenia. Podaj własny */ <appId/>* jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć nazwę główną usługi:
+Teraz przypisać nazwę główną usługi dla klastra usługi AKS *Współautor* uprawnień w sieci wirtualnej przy użyciu [utworzenia przypisania roli az] [ az-role-assignment-create] polecenia. Podaj własny  *\<appId >* jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć nazwę główną usługi:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -134,7 +134,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Tworzenie klastra AKS w sieci wirtualnej
 
-Możesz teraz utworzyć sieć wirtualną i podsieć i utworzeniu i przypisane uprawnienia dla jednostki usługi, aby korzystać z tych zasobów sieciowych. Teraz tworzenie klastra AKS w sieci wirtualnej i podsieci przy użyciu [tworzenie az aks] [ az-aks-create] polecenia. Zdefiniuj jednostki usługi */ <appId/>* i */ <password/>*, jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć jednostkę usługi.
+Możesz teraz utworzyć sieć wirtualną i podsieć i utworzeniu i przypisane uprawnienia dla jednostki usługi, aby korzystać z tych zasobów sieciowych. Teraz tworzenie klastra AKS w sieci wirtualnej i podsieci przy użyciu [tworzenie az aks] [ az-aks-create] polecenia. Zdefiniuj jednostki usługi  *\<appId >* i  *\<hasło >*, jak pokazano w danych wyjściowych poprzedniego polecenia, aby utworzyć jednostkę usługi.
 
 Poniższe zakresy adresów IP są również określone jako część klastra tworzenia procesu:
 

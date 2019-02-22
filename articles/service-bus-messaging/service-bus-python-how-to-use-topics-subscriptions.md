@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/20/2018
 ms.author: aschhab
-ms.openlocfilehash: 280901c4b7af9cc65163ebc453a54fb7ec5d5111
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 4726143559a91c1b8b911d8538efa32c6bf19c2e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849400"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587586"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-python"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka Python
 
@@ -31,6 +31,8 @@ W tym artykule opisano sposób używania tematów i subskrypcji usługi Service 
 
 > [!NOTE] 
 > Jeśli potrzebujesz do zainstalowania języka Python lub [pakiet języka Python Azure][Azure Python package], zobacz [Przewodnik instalacji języka Python](../python-how-to-install.md).
+
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-topic"></a>Tworzenie tematu
 

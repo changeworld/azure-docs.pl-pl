@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/21/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: f0b2e1afdc42d8aaa0ab8d3af76f51fb6ded24e0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bacfb5fed4d72a7be2239ba97a68f15766b3ff59
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857770"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650449"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>Cykl życia wiedzy, w usługi QnA Maker
 Usługa QnA Maker uczy się najlepiej w iteracyjny cykl zmiany modelu, przykłady wypowiedź, publikowanie oraz zbieranie danych z punktu końcowego zapytań. 
@@ -27,9 +27,15 @@ Usługa QnA Maker uczy się najlepiej w iteracyjny cykl zmiany modelu, przykład
 Usługa QnA Maker punktu końcowego z bazy wiedzy knowledge base (KB) zapewnia najlepsze dopasowanie odpowiedzi z zapytaniem użytkownika na podstawie zawartości KB. Tworzenie bazy wiedzy jest akcją jednorazową Konfigurowanie repozytorium zawartości pytań, odpowiedzi i skojarzonych metadanych. Baza wiedzy mogą być tworzone przez przeszukiwania zawartości istniejącego takich jak strony — często zadawane pytania, podręczników lub strukturą pary A funkcji pytania i odpowiedzi. Dowiedz się, jak [tworzenie bazy wiedzy](../How-To/create-knowledge-base.md).
 
 ## <a name="testing-and-updating-the-knowledge-base"></a>Testowanie i aktualizowanie bazy wiedzy
-Baza wiedzy jest gotowe do testowania, gdy jest on wypełniany zawartości, przez jej tradycyjne zredagowanie lub za pomocą automatycznego wyodrębniania. Testowanie może odbywać się za pośrednictwem **testu** panelu, wprowadzając typowych zapytań użytkownika i weryfikowanie, czy odpowiedzi, zwracane są zgodne z oczekiwaniami i współczynnik ufności wystarczające. Można dodawać alternatywnego pytania, aby poprawić wyniki niski zaufania. Możesz także dodać nowe odpowiedzi, gdy zapytanie zwróci wartość "nie znaleziono dopasowania w w bazie wiedzy" Domyślna odpowiedź. Tej pętli aktualizacji testu będzie kontynuowane, dopóki nie jesteś zadowolony z wyników. Dowiedz się, jak [test bazy wiedzy](../How-To/test-knowledge-base.md).
 
-Dla dużych artykułów bazy wiedzy testowania można zautomatyzować za pomocą generateAnswer interfejsów API. 
+Baza wiedzy jest gotowe do testowania, gdy jest on wypełniany zawartości, przez jej tradycyjne zredagowanie lub za pomocą automatycznego wyodrębniania. Interaktywne testowania może odbywać się w portalu narzędzia QnA Maker za pośrednictwem **testu** panelu, wprowadzając typowych zapytań użytkownika i weryfikowanie, czy zwrócone odpowiedzi z prawidłową odpowiedź i współczynnik ufności wystarczające. 
+
+* **Aby rozwiązać problem niskiej ufności wyniki**: Dodaj alternatywne pytania. 
+* **Jeśli zapytanie zwraca niepoprawnie [Domyślna odpowiedź](confidence-score.md#change-default-answer)**: Dodaj nowe odpowiedzi na prawidłowe zapytania. 
+
+Tej pętli aktualizacji testu będzie kontynuowane, dopóki nie jesteś zadowolony z wyników. Dowiedz się, jak [test bazy wiedzy](../How-To/test-knowledge-base.md).
+
+Dla dużych artykułów bazy wiedzy, należy korzystać z automatycznych testów z [generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api) i `isTest=true` parametr ciągu zapytania, które zapytania `test` wiedzy zamiast opublikowanych bazy wiedzy knowledge base. 
 
 ## <a name="publish-the-knowledge-base"></a>Publikowanie bazy wiedzy
 Gdy skończysz testowanie bazy wiedzy knowledge base, możesz ją opublikować. Publikowanie wypchnięć najnowszą wersję przetestowane wiedzy do dedykowanych usługi Azure Search index reprezentujący **opublikowane** bazy wiedzy knowledge base. Zostanie również utworzony punkt końcowy, który można wywoływać w aplikacji lub czatbocie.

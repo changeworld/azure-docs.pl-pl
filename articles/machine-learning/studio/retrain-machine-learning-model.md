@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: b57dd40c8610953563a3d5b8861e144d775b4eb7
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9a43a382c1f45f0bf0fb7e93322fcbeef58cb99d
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330515"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651179"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Ponowne szkolenie i wdrożyć model uczenia maszynowego
 
@@ -42,7 +42,7 @@ Aby wdrożyć ponownego trenowania usługę sieci web, wykonaj następujące kro
 
     Po uruchomieniu eksperymentu, wynikowy przepływu pracy powinna być podobna do poniższej ilustracji:
 
-    ![Wynikowy przepływu pracy](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png)
+    ![Wynikowy przepływu pracy](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
     Teraz możesz wdrożyć eksperymentu szkolenia jako ponownego trenowania usługę sieci web, która generuje uczonego modelu i wyniki oceny modelu.
 
@@ -68,7 +68,7 @@ Dodaj pakiet NuGet Microsoft.AspNet.WebApi.Client, jak określono w komentarzach
 
 Poniższy zrzut ekranu przedstawia **zużywania** strony w portalu usług sieci Web Azure Machine Learning.
 
-![Używanie stron](media/retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png)
+![Używanie stron](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
 ### <a name="update-the-apikey-declaration"></a>Aktualizacja deklaracji apikey
 
@@ -114,7 +114,7 @@ Po określeniu lokalizacji danych wyjściowych w ładunku żądania rozszerzenie
 
 Oto przykład danych wyjściowych ponownego trenowania:
 
-![Ponowne szkolenie danych wyjściowych](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![Ponowne szkolenie danych wyjściowych](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>Ocena ponownego trenowania wyników
 

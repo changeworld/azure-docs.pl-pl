@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: aschhab
-ms.openlocfilehash: c320e06881c73feb228b9d5f49243d7e1d321f52
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 996fcbe350f14bb22b8927d9d19f63636b1d7894
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847565"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585513"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>Jak używać kolejek usługi Service Bus za pomocą języka PHP
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -27,6 +27,8 @@ ms.locfileid: "54847565"
 Ten przewodnik pokazuje, jak używać kolejek usługi Service Bus. Przykłady są zapisywane w języku PHP i użyj [zestawu Azure SDK dla języka PHP](../php-download-sdk.md). Omówione scenariusze obejmują **tworzenie kolejek**, **wysyłanie i odbieranie komunikatów**, i **usuwanie kolejek**.
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-php-application"></a>Tworzenie aplikacji języka PHP
 Jedynym wymaganiem do tworzenia aplikacji w języku PHP, który uzyskuje dostęp do usługi obiektów Blob platformy Azure jest odwoływanie się do klas w [zestawu Azure SDK dla języka PHP](../php-download-sdk.md) z w obrębie kodu. Można użyć dowolnego narzędzia programistyczne do tworzenia aplikacji lub Notatnik.

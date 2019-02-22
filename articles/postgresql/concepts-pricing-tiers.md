@@ -6,12 +6,12 @@ ms.author: janeng
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.openlocfilehash: 8cc7d7d93f483289ab7faa3f5a7193fc218b57bc
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0df36f4c939ed9bd7bb6a134a356b37d699abc1d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695031"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586347"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Usługa Azure Database for postgresql w warstwie warstw cenowych
 
@@ -43,6 +43,9 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 
 > [!IMPORTANT]
 > Począwszy od 12 grudnia 2018 r nowi klienci nie będą mogli aprowizować serwery generacja 4 obliczeniowych w regionie Brazylia Południowa, Kanada Środkowa, Kanada Wschodnia, Azja Wschodnia, wschodnie stany USA 2, Indie środkowe, Indie Zachodnie, Japonia, część zachodnia, północno-środkowe stany USA, zachodnie stany USA. Generacja obliczeń, który 4 serwery zostaną zmigrowane do 5, od 1 lutego 2019 w tych regionach Generowanie obliczeń zostały utworzone wcześniej.
+>
+> [!IMPORTANT]
+> Począwszy od 19 lutego 2019 r nowych klientów nie będą mogli aprowizować serwery 4 generacji obliczeń w środkowe stany USA, wschodnie stany USA, Japonia Wschodnia, Europa Północna, południowo-środkowe stany USA, Azja południowo-wschodnia, Europa Zachodnia. Generacja obliczeń, który 4 serwery zostaną zmigrowane do 5, od 1 kwietnia 2019 w tych regionach Generowanie obliczeń zostały utworzone wcześniej.
 
 | **Region platformy Azure** | **4. generacji** | **5. generacji** |
 |:---|:----------:|:--------------------:|

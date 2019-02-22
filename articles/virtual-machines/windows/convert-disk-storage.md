@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/04/2018
 ms.author: ramankum
 ms.subservice: disks
-ms.openlocfilehash: 18258bf8ac9d241fd8a01957d903b1db882c2d36
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 14b6559420fad22cfc2294817cbefd23a6c47a70
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326878"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650108"
 ---
 # <a name="update-the-storage-type-of-a-managed-disk"></a>Aktualizuj typ magazynu dysków zarządzanych
 
@@ -118,6 +118,21 @@ Update-AzDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
 
 Start-AzVM -ResourceGroupName $vm.ResourceGroupName -Name $vm.Name
 ```
+
+## <a name="convert-managed-disks-from-standard-to-premium-in-azure-portal"></a>Konwertuj dysków zarządzanych warstwy standardowej na premium w witrynie Azure portal
+
+Dysku zarządzanego można przekonwertować z warstwy standardowa do warstwy premium w witrynie Azure portal.
+
+1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
+2. Wybierz maszynę Wirtualną z listy **maszyn wirtualnych** w portalu.
+3. Jeśli maszyna wirtualna nie zostanie zatrzymana, kliknij przycisk **zatrzymać** górnej części bloku omówienia maszyn wirtualnych i zaczekaj, aż maszyny Wirtualnej zatrzymać.
+3. W bloku maszyny wirtualnej, wybierz **dysków** z menu.
+4. Wybierz dysk, który ma zostać przekonwertowany.
+5. Wybierz **konfiguracji** z menu.
+6. Zmiana **typ konta** z **standardowych dysków Twardych** do **dysku Premium SSD**.
+7. Kliknij przycisk **Zapisz** i zamknąć blok dysku.
+
+Aktualizacja typu dysku jest efektywne natychmiastowe. Możesz ponownie uruchomić maszynę Wirtualną po konwersji.
 
 ## <a name="convert-a-managed-disk-from-standard-hdd-to-standard-ssd"></a>Konwertuj dysk zarządzany ze standardowych dysków Twardych na SSD w warstwie standardowa
 

@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: bc78c4afd3a85dc4b7b03fb3543632da7586ea31
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a7c1f26d20fe67f9167772c2a1714a27d1b930fa
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53083292"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592863"
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia Azure
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="hash-based-distribution-mode"></a>Tryb dystrybucji skrótów
 
@@ -50,10 +52,10 @@ Inny scenariusz przypadków użycia jest przekazywanie nośników. Przekazywanie
 
 Dla maszyn wirtualnych wdrożonych przy użyciu usługi Resource Manager zmień ustawienia dystrybucji modułu równoważenia obciążenia na istniejące reguły równoważenia obciążenia za pomocą programu PowerShell. Spowoduje to zaktualizowanie trybu dystrybucji: 
 
-```powershell 
-$lb = Get-AzureRmLoadBalancer -Name MyLb -ResourceGroupName MyLbRg 
-$lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp' 
-Set-AzureRmLoadBalancer -LoadBalancer $lb 
+```powershell
+$lb = Get-AzLoadBalancer -Name MyLb -ResourceGroupName MyLbRg
+$lb.LoadBalancingRules[0].LoadDistribution = 'sourceIp'
+Set-AzLoadBalancer -LoadBalancer $lb
 ```
 
 Dla klasycznych maszyn wirtualnych zmieniać ustawienia dystrybucji za pomocą programu Azure PowerShell. Dodawanie punktu końcowego platformy Azure do maszyny wirtualnej i Konfigurowanie trybu dystrybucji modułu równoważenia obciążenia:

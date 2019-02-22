@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 40d0250101e4653cd5ab2a3610473d9c577d8998
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 41c44d1f4054d93c770f80496c8d7a0bddf5eb13
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114114"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650347"
 ---
 # <a name="getting-compliance-data"></a>Pobieranie danych dotyczących zgodności
 
@@ -430,7 +430,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Dzienniki usługi Azure Monitor
 
-Jeśli masz [obszaru roboczego usługi Log Analytics](../../../log-analytics/log-analytics-overview.md) z `AzureActivity` rozwiązania powiązane z subskrypcją, możesz również wyświetlić wyniki niezgodności z cykl oceny za pomocą prostych zapytań Eksploratora danych usługi Azure i `AzureActivity` Tabela. Ze szczegółowymi informacjami w dziennikach w usłudze Azure Monitor Aby obejrzeć w przypadku niezgodności można skonfigurować alerty.
+Jeśli masz [obszaru roboczego usługi Log Analytics](../../../log-analytics/log-analytics-overview.md) z `AzureActivity` z [rozwiązanie Activity Log Analytics](../../../azure-monitor/platform/collect-activity-logs.md) powiązany ze swoją subskrypcją, możesz również wyświetlić wyniki niezgodności przy użyciu cykl oceny proste zapytania Kusto i `AzureActivity` tabeli. Ze szczegółowymi informacjami w dziennikach w usłudze Azure Monitor Aby obejrzeć w przypadku niezgodności można skonfigurować alerty.
 
 ![Zgodność z zasadami przy użyciu dzienników usługi Azure Monitor](../media/getting-compliance-data/compliance-loganalytics.png)
 

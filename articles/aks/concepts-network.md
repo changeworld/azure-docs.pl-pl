@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 6affa19c61ff4a824e390c42b7fd97554a30c9bb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7de97097e9678410537895c3bafc48d67809331e
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176241"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594172"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Koncepcji sieci dla aplikacji w usłudze Azure Kubernetes Service (AKS)
 
@@ -102,7 +102,7 @@ Kolejną funkcją typowych danych przychodzących jest kończenia żądań SSL/T
 
 ## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci
 
-Sieciowa grupa zabezpieczeń służy do przefiltrowania ruchu dla maszyn wirtualnych, takich jak węzłów AKS. Podczas tworzenia usług, takich jak usługi równoważenia obciążenia, platforma Azure automatycznie skonfiguruje wszystkie reguły sieciowej grupy zabezpieczeń, które są potrzebne. Nie należy ręcznie konfigurować reguły sieciowej grupy zabezpieczeń do filtrowania ruchu do zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazywanie jako część Twojego manifestów usługi Kubernetes i pozwolić platformie Azure, Utwórz lub zaktualizuj odpowiednie zasady. Umożliwia także zasady sieciowe zgodnie z opisem w następnej sekcji, automatyczne stosowanie reguły filtrowania ruchu do zasobników.
+Sieciowa grupa zabezpieczeń służy do przefiltrowania ruchu dla maszyn wirtualnych, takich jak węzłów AKS. Podczas tworzenia usług, takich jak usługi równoważenia obciążenia, platforma Azure automatycznie skonfiguruje wszystkie reguły sieciowej grupy zabezpieczeń, które są potrzebne. Nie należy ręcznie konfigurować reguły sieciowej grupy zabezpieczeń do filtrowania ruchu do zasobników w klastrze AKS. Zdefiniuj wszystkie wymagane porty i przekazywanie jako część Twojego manifestów usługi Kubernetes i pozwolić platformie Azure, Utwórz lub zaktualizuj odpowiednie zasady. Umożliwia także zasady sieciowe zgodnie z opisem w następnej sekcji, aby automatycznie zastosować reguły filtrowania ruchu do zasobników.
 
 Domyślną sieciową grupę zabezpieczeń, które istnieją reguły dla ruchu, takich jak SSH. Te reguły domyślne mają zastosowanie do zarządzania klastrem i rozwiązywaniu problemów z dostępem. Usunięcie tych reguł domyślnych może spowodować problemy z zarządzaniem AKS i przerywa cel poziomu usług (SLO).
 

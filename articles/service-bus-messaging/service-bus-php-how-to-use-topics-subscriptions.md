@@ -14,12 +14,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: aschhab
-ms.openlocfilehash: a8d9ea841aee21531ccb0379fbbc9b10ccf25303
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 6ad3b758e0b2a0659308827f387b6e0ee667064e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727317"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586041"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka PHP
 
@@ -28,6 +28,8 @@ ms.locfileid: "55727317"
 W tym artykule pokazano, jak używać tematów usługi Service Bus i subskrypcji. Przykłady są zapisywane w języku PHP i użyj [zestawu Azure SDK dla języka PHP](../php-download-sdk.md). Omówione scenariusze obejmują **tworzenie tematów i subskrypcji**, **tworzenie filtrów subskrypcji**, **wysyłanie komunikatów do tematu**, **odbierania komunikaty z subskrypcji**, i **usuwanie tematów i subskrypcji**.
 
 [!INCLUDE [howto-service-bus-topics](../../includes/howto-service-bus-topics.md)]
+
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
 ## <a name="create-a-php-application"></a>Tworzenie aplikacji języka PHP
 Jedynym wymaganiem dla tworzenia aplikacji w języku PHP, który uzyskuje dostęp do usługi Azure Blob to odwoływać się do klas w [zestawu Azure SDK dla języka PHP](../php-download-sdk.md) z w obrębie kodu. Można użyć dowolnego narzędzia programistyczne do tworzenia aplikacji lub Notatnik.

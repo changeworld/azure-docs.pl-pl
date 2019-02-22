@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: annahar
-ms.openlocfilehash: 18d5bbd6b4b4c48fee2e01c70dfe696a0c10834a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: b06213b253b6a289513d5cc1b8fcf0f2e25897f5
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54201011"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594801"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-powershell"></a>Równoważenie obciążenia na wielu konfiguracji adresu IP przy użyciu programu PowerShell
 
@@ -31,6 +31,8 @@ ms.locfileid: "54201011"
 W tym artykule opisano sposób użycia usługi Azure Load Balancer z wieloma adresami IP na pomocniczego interfejsu sieciowego (NIC). W tym scenariuszu mamy dwóch maszyn wirtualnych z systemem Windows, każdy z podstawowej i pomocniczej karty sieciowej Każda z dodatkową kartą sieciową ma dwie konfiguracje adresów IP. Każda maszyna wirtualna jest hostem witryny sieci Web contoso.com i fabrikam.com. Każda witryna sieci Web jest powiązana z jedną konfiguracją IP pomocniczej karty sieciowej Usługa Azure Load Balancer są używane do udostępnienia dwóch adresów IP frontonu, po jednym dla każdej witryny sieci Web, aby dystrybuować ruch do odpowiednich konfiguracji IP witryny sieci Web. W tym scenariuszu użyto tego samego numeru portu dla zarówno frontonów, jak i adresy IP puli zaplecza.
 
 ![Obraz scenariusz modułu równoważenia obciążenia](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="steps-to-load-balance-on-multiple-ip-configurations"></a>Kroki, aby zrównoważyć obciążenie na wiele konfiguracji adresów IP
 
@@ -49,14 +51,14 @@ Wykonaj poniższe kroki, aby osiągnąć scenariusz opisany w tym artykule:
 3. [Utwórz zestaw dostępności](../virtual-machines/windows/tutorial-availability-sets.md?toc=%2fazure%2fload-balancer%2ftoc.json) zawiera maszyny wirtualne. W tym scenariuszu należy użyć następującego polecenia:
 
     ```powershell
-    New-AzureRmAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
+    New-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset" -Location "West Central US"
     ```
 
 4. Postępuj zgodnie z instrukcjami kroki od 3 do 5 w [tworzenie maszyny Wirtualnej z systemem Windows](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) artykuł, aby przygotować tworzenie maszyny Wirtualnej z jedną kartą sieciową. Wykonać krok 6.1, a zamiast kroku 6.2 należy użyć następującego:
 
     ```powershell
-    $availset = Get-AzureRmAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
-    New-AzureRmVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
+    $availset = Get-AzAvailabilitySet -ResourceGroupName "contosofabrikam" -Name "myAvailset"
+    New-AzVMConfig -VMName "VM1" -VMSize "Standard_DS1_v2" -AvailabilitySetId $availset.Id
     ```
 
     Następnie wykonaj kroki [tworzenie maszyny Wirtualnej z systemem Windows](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json) kroki 6.3 za pośrednictwem 6.8.
@@ -68,7 +70,7 @@ Wykonaj poniższe kroki, aby osiągnąć scenariusz opisany w tym artykule:
     $RgName = "contosofabrikam"
     $NicLocation = "West Central US"
     $IPConfigName4 = "VM1-ipconfig2"
-    $Subnet1 = Get-AzureRmVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $myVnet
+    $Subnet1 = Get-AzVirtualNetworkSubnetConfig -Name "mySubnet" -VirtualNetwork $myVnet
     ```
 
     Nie musisz skojarzyć konfiguracje pomocniczych adresów IP z publicznych adresów IP na potrzeby tego samouczka. Edytować polecenie, aby usunąć część skojarzenie publicznego adresu IP.
@@ -78,63 +80,63 @@ Wykonaj poniższe kroki, aby osiągnąć scenariusz opisany w tym artykule:
 7. Utwórz dwa publiczne adresy IP i przechowywać je w odpowiednich zmiennych, jak pokazano:
 
     ```powershell
-    $publicIP1 = New-AzureRmPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel contoso
-    $publicIP2 = New-AzureRmPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel fabrikam
+    $publicIP1 = New-AzPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel contoso
+    $publicIP2 = New-AzPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam -Location 'West Central US' -AllocationMethod Dynamic -DomainNameLabel fabrikam
 
-    $publicIP1 = Get-AzureRmPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam
-    $publicIP2 = Get-AzureRmPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam
+    $publicIP1 = Get-AzPublicIpAddress -Name PublicIp1 -ResourceGroupName contosofabrikam
+    $publicIP2 = Get-AzPublicIpAddress -Name PublicIp2 -ResourceGroupName contosofabrikam
     ```
 
 8. Utwórz dwie konfiguracje adresu IP frontonu:
 
     ```powershell
-    $frontendIP1 = New-AzureRmLoadBalancerFrontendIpConfig -Name contosofe -PublicIpAddress $publicIP1
-    $frontendIP2 = New-AzureRmLoadBalancerFrontendIpConfig -Name fabrikamfe -PublicIpAddress $publicIP2
+    $frontendIP1 = New-AzLoadBalancerFrontendIpConfig -Name contosofe -PublicIpAddress $publicIP1
+    $frontendIP2 = New-AzLoadBalancerFrontendIpConfig -Name fabrikamfe -PublicIpAddress $publicIP2
     ```
 
 9. Tworzenie puli adresów zaplecza, sondy oraz reguły równoważenia obciążenia:
 
     ```powershell
-    $beaddresspool1 = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name contosopool
-    $beaddresspool2 = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name fabrikampool
+    $beaddresspool1 = New-AzLoadBalancerBackendAddressPoolConfig -Name contosopool
+    $beaddresspool2 = New-AzLoadBalancerBackendAddressPoolConfig -Name fabrikampool
 
-    $healthProbe = New-AzureRmLoadBalancerProbeConfig -Name HTTP -RequestPath 'index.html' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+    $healthProbe = New-AzLoadBalancerProbeConfig -Name HTTP -RequestPath 'index.html' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 
-    $lbrule1 = New-AzureRmLoadBalancerRuleConfig -Name HTTPc -FrontendIpConfiguration $frontendIP1 -BackendAddressPool $beaddresspool1 -Probe $healthprobe -Protocol Tcp -FrontendPort 80 -BackendPort 80
-    $lbrule2 = New-AzureRmLoadBalancerRuleConfig -Name HTTPf -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthprobe -Protocol Tcp -FrontendPort 80 -BackendPort 80
+    $lbrule1 = New-AzLoadBalancerRuleConfig -Name HTTPc -FrontendIpConfiguration $frontendIP1 -BackendAddressPool $beaddresspool1 -Probe $healthprobe -Protocol Tcp -FrontendPort 80 -BackendPort 80
+    $lbrule2 = New-AzLoadBalancerRuleConfig -Name HTTPf -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthprobe -Protocol Tcp -FrontendPort 80 -BackendPort 80
     ```
 
 10. Gdy masz utworzone następujące zasoby, należy utworzyć moduł równoważenia obciążenia:
 
     ```powershell
-    $mylb = New-AzureRmLoadBalancer -ResourceGroupName contosofabrikam -Name mylb -Location 'West Central US' -FrontendIpConfiguration $frontendIP1 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
+    $mylb = New-AzLoadBalancer -ResourceGroupName contosofabrikam -Name mylb -Location 'West Central US' -FrontendIpConfiguration $frontendIP1 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
     ```
 
 11. Dodaj drugi adres puli i frontonu IP konfigurację zaplecza do swoje nowo utworzony moduł równoważenia obciążenia:
 
     ```powershell
-    $mylb = Get-AzureRmLoadBalancer -Name "mylb" -ResourceGroupName $myResourceGroup | Add-AzureRmLoadBalancerBackendAddressPoolConfig -Name fabrikampool | Set-AzureRmLoadBalancer
+    $mylb = Get-AzLoadBalancer -Name "mylb" -ResourceGroupName $myResourceGroup | Add-AzLoadBalancerBackendAddressPoolConfig -Name fabrikampool | Set-AzLoadBalancer
 
-    $mylb | Add-AzureRmLoadBalancerFrontendIpConfig -Name fabrikamfe -PublicIpAddress $publicIP2 | Set-AzureRmLoadBalancer
+    $mylb | Add-AzLoadBalancerFrontendIpConfig -Name fabrikamfe -PublicIpAddress $publicIP2 | Set-AzLoadBalancer
     
-    Add-AzureRmLoadBalancerRuleConfig -Name HTTP -LoadBalancer $mylb -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80 | Set-AzureRmLoadBalancer
+    Add-AzLoadBalancerRuleConfig -Name HTTP -LoadBalancer $mylb -FrontendIpConfiguration $frontendIP2 -BackendAddressPool $beaddresspool2 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80 | Set-AzLoadBalancer
     ```
 
 12. Poniższe polecenia Pobierz kart sieciowych, a następnie dodaj obie konfiguracje protokołu IP w każdej pomocniczej karty Sieciowej do puli adresów zaplecza modułu równoważenia obciążenia:
 
     ```powershell
-    $nic1 = Get-AzureRmNetworkInterface -Name "VM1-NIC2" -ResourceGroupName "MyResourcegroup";
-    $nic2 = Get-AzureRmNetworkInterface -Name "VM2-NIC2" -ResourceGroupName "MyResourcegroup";
+    $nic1 = Get-AzNetworkInterface -Name "VM1-NIC2" -ResourceGroupName "MyResourcegroup";
+    $nic2 = Get-AzNetworkInterface -Name "VM2-NIC2" -ResourceGroupName "MyResourcegroup";
 
     $nic1.IpConfigurations[0].LoadBalancerBackendAddressPools.Add($mylb.BackendAddressPools[0]);
     $nic1.IpConfigurations[1].LoadBalancerBackendAddressPools.Add($mylb.BackendAddressPools[1]);
     $nic2.IpConfigurations[0].LoadBalancerBackendAddressPools.Add($mylb.BackendAddressPools[0]);
     $nic2.IpConfigurations[1].LoadBalancerBackendAddressPools.Add($mylb.BackendAddressPools[1]);
 
-    $mylb = $mylb | Set-AzureRmLoadBalancer
+    $mylb = $mylb | Set-AzLoadBalancer
 
-    $nic1 | Set-AzureRmNetworkInterface
-    $nic2 | Set-AzureRmNetworkInterface
+    $nic1 | Set-AzNetworkInterface
+    $nic2 | Set-AzNetworkInterface
     ```
 
 13. Na koniec należy skonfigurować rekordy zasobów DNS, aby wskazywał adresu IP odpowiedniego frontonu modułu równoważenia obciążenia. Może być hostowanie domen w usłudze Azure DNS. Aby uzyskać więcej informacji o korzystaniu z usługi Azure DNS przy użyciu modułu równoważenia obciążenia, zobacz [przy użyciu usługi Azure DNS z innymi usługami Azure](../dns/dns-for-azure-services.md).

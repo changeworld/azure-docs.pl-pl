@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: raynew
-ms.openlocfilehash: 8115065afcbd81da1527e09c07ca89ce89100d7d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c932df528c63853cb52f54954afe202867743dd7
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236995"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594019"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Macierz obsługi dla odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure
 
@@ -245,7 +245,7 @@ Przenieś magazyn, sieci, maszyn wirtualnych platformy Azure między grupami zas
 --- | --- | --- | --- | ---
 Serwer konfiguracji | Służy do koordynowania komunikacji między serwerami VMware w środowisku lokalnym i platformą Azure <br/><br/> Zainstalowana na lokalnych serwerów VMware | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-deploy-configuration-server.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server).
 Serwer przetwarzania|Domyślnie instalowany na serwerze konfiguracji. Odbiera dane replikacji; optymalizuje je przy użyciu pamięci podręcznej, kompresji i szyfrowania; i wysyła je do usługi Azure Storage. Wraz z rozwojem wdrożenia, możesz dodać dodatkowe, oddzielny proces serwerów w celu obsługi większych ilości ruchu związanego z replikacją.| W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-set-up-process-server-scale.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-azure-manage-process-server.md#upgrade-a-process-server).
-Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-install-mobility-service.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-physical-mobility-service-overview.md#update-the-mobility-service).
+Usługa mobilności | Koordynuje replikację między lokalną VMware serwery/serwery fizyczne i witryną Azure/pomocniczy<br/><br/> Zainstalowana na maszynie Wirtualnej VMware lub serwery fizyczne, które mają być replikowane | W przypadku nowej instalacji, kliknij [tutaj](vmware-azure-install-mobility-service.md). W przypadku uaktualniania istniejącego składnika do najnowszej wersji, kliknij [tutaj](vmware-physical-mobility-service-overview.md##update-mobility-service-from-azure-portal).
 
 Aby poznać najnowsze funkcje i poprawki, kliknij przycisk [tutaj](https://aka.ms/ASR_latest_release_notes).
 

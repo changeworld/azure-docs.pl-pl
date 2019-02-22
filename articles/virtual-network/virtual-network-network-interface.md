@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: deca97b0749ceab9f2dfaf3c3940ac6b02b9c104
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0de886e69f595d30332bdda2a71ae24891fdac00
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822191"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649496"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -27,11 +27,13 @@ Jeśli potrzebujesz dodać, zmienić, lub usunąć adresy IP dla interfejsu siec
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać następujące zadania:
 
 - Jeśli nie masz jeszcze konta platformy Azure, należy zasubskrybować [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
-- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell module w wersji 5.4.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
+- Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell w wersji modułu 1.0.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 - Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` do utworzenia połączenia z platformą Azure.
 
 Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być przypisane do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania, które są wymienione w [uprawnień ](#permissions).
@@ -68,8 +70,8 @@ Portal nie udostępnia opcję, aby przypisać interfejs sieciowy do grup zabezpi
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[az network nic create](/cli/azure/network/nic)|
-|PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface)|
+|Interfejs wiersza polecenia|[az network nic create](/cli/azure/network/nic#az_network_nic_create)|
+|PowerShell|[New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface)|
 
 ## <a name="view-network-interface-settings"></a>Wyświetl ustawienia interfejsu sieciowego
 
@@ -78,14 +80,16 @@ Można wyświetlić i zmienić większość ustawień dla interfejsu sieciowego 
 1. W polu zawierającym tekst *Wyszukaj zasoby* w górnej części witryny Azure portal, wpisz polecenie *interfejsy sieciowe*. Gdy **interfejsy sieciowe** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz interfejs sieciowy, który chcesz wyświetlić lub zmienić ustawienia z listy.
 3. Następujące elementy są wyświetlane dla interfejsu sieciowego, wybrane:
-    - **Omówienie:** Zawiera informacje dotyczące interfejsu sieciowego, takie jak adresy IP przypisane do jego sieci wirtualnej/podsieci interfejsu sieciowego jest przypisany do i maszyny wirtualnej, do której jest dołączona interfejsu sieciowego (jeśli jest on dołączony do jednego). Na poniższej ilustracji przedstawiono omówienie ustawienia karty sieciowej o nazwie **mywebserver256**: ![Omówienie interfejsu sieciowego](./media/virtual-network-network-interface/nic-overview.png) interfejsu sieciowego można przenieść do innej grupy zasobów lub subskrypcji, wybierając (**zmienić**) obok pozycji **grupy zasobów** lub  **Nazwa subskrypcji**. Jeśli przenosisz interfejsu sieciowego, należy przenieść wszystkie zasoby związane z interfejsem sieciowym z nim. Jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej, na przykład, należy również przenieść maszynę wirtualną i inne zasoby związane z maszyny wirtualnej. Aby przenieść interfejsu sieciowego, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal). Artykuł zawiera listę wymagań wstępnych i sposobu przenoszenia zasobów przy użyciu witryny Azure portal, programu PowerShell i wiersza polecenia platformy Azure.
-    - **Konfiguracje adresów IP:** Poniżej przedstawiono prywatnych i publicznych adresów IPv4 i IPv6 przypisane do konfiguracji adresu IP. Jeśli adres IPv6 jest przypisany do konfiguracji adresu IP, adres nie jest wyświetlana. Aby dowiedzieć się więcej na temat konfiguracji adresów IP i jak dodawać i usuwać adresy IP, zobacz [adresy IP, konfigurowanie dla interfejsu sieci platformy Azure](virtual-network-network-interface-addresses.md). Przekazywanie dalej adresu IP i przypisanie podsieci również są skonfigurowane w tej sekcji. Aby dowiedzieć się więcej o tych ustawieniach, zobacz [włączać lub wyłączać przesyłanie dalej IP](#enable-or-disable-ip-forwarding) i [zmienić przypisanie podsieci](#change-subnet-assignment).
-    - **Serwery DNS:** Można określić, który serwer DNS interfejsu sieciowego jest przypisany przez serwery DHCP platformy Azure. Interfejs sieciowy można dziedziczyć ustawienia z sieci wirtualnej, które interfejs sieciowy jest przypisany do lub mieć ustawienia niestandardowego, który zastępuje ustawienie dla sieci wirtualnej, który jest przypisany do. Aby zmodyfikować, co jest wyświetlane, zobacz [serwerów DNS zmiany](#change-dns-servers).
-    - **Sieciowa grupa zabezpieczeń (NSG):** Wyświetla, co sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym (jeśli istnieje). Sieciowa grupa zabezpieczeń zawiera reguły ruchu przychodzącego i wychodzącego do filtrowania ruchu sieciowego dla interfejsu sieciowego. Jeśli sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym, jest wyświetlana nazwa skojarzonej sieciowej grupy zabezpieczeń. Aby zmodyfikować, co jest wyświetlane, zobacz [skojarzyć lub usunąć skojarzenie sieciowej grupy zabezpieczeń](#associate-or-dissociate-a-network-security-group).
-    - **Właściwości:** Wyświetla ustawienia klucza o interfejsu sieciowego, łącznie z jej adres MAC (puste, jeśli interfejs sieciowy nie jest dołączony do maszyny wirtualnej), a subskrypcja istnieje on w.
-    - **Efektywne reguły zabezpieczeń:**  Reguły zabezpieczeń są wyświetlane, jeśli interfejs sieciowy jest podłączony do uruchomionej maszyny wirtualnej i sieciowa grupa zabezpieczeń jest skojarzona z interfejsu sieciowego i/lub podsieci, w której jest przypisany do. Aby dowiedzieć się, co jest wyświetlane, zobacz [wyświetlanie obowiązujących reguł zabezpieczeń](#view-effective-security-rules). Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [sieciowe grupy zabezpieczeń](security-overview.md).
-    - **Skuteczne trasy:** Trasy są wyświetlane, jeśli interfejs sieciowy jest podłączony do uruchomionej maszyny wirtualnej. Trasy są kombinacją trasy domyślne systemu Azure, wszystkie trasy zdefiniowane przez użytkownika i wszystkie trasy protokołu BGP, które mogą istnieć dla podsieci, w której interfejs sieciowy jest przypisany do. Aby dowiedzieć się, co jest wyświetlane, zobacz [wyświetlić obowiązujące trasy](#view-effective-routes). Aby dowiedzieć się więcej na temat domyślnych tras i trasy zdefiniowane przez użytkownika, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
-    - **Typowe ustawienia usługi Azure Resource Manager:**  Aby dowiedzieć się więcej na temat typowych ustawień usługi Azure Resource Manager, zobacz [dziennika aktywności](../azure-monitor/platform/activity-logs-overview.md), [kontrola dostępu (IAM)](../role-based-access-control/overview.md), [tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [blokuje](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)i [ Skrypt automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
+   - **Omówienie:** Zawiera informacje dotyczące interfejsu sieciowego, takie jak adresy IP przypisane do jego sieci wirtualnej/podsieci interfejsu sieciowego jest przypisany do i maszyny wirtualnej, do której jest dołączona interfejsu sieciowego (jeśli jest on dołączony do jednego). Na poniższej ilustracji przedstawiono omówienie ustawienia karty sieciowej o nazwie **mywebserver256**: ![Omówienie interfejsu sieciowego](./media/virtual-network-network-interface/nic-overview.png)
+
+     Interfejs sieciowy można przenieść do innej grupy zasobów lub subskrypcji, wybierając (**zmienić**) obok pozycji **grupy zasobów** lub **Nazwa subskrypcji**. Jeśli przenosisz interfejsu sieciowego, należy przenieść wszystkie zasoby związane z interfejsem sieciowym z nim. Jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej, na przykład, należy również przenieść maszynę wirtualną i inne zasoby związane z maszyny wirtualnej. Aby przenieść interfejsu sieciowego, zobacz [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json#use-portal). Artykuł zawiera listę wymagań wstępnych i sposobu przenoszenia zasobów przy użyciu witryny Azure portal, programu PowerShell i wiersza polecenia platformy Azure.
+   - **Konfiguracje adresów IP:** Poniżej przedstawiono prywatnych i publicznych adresów IPv4 i IPv6 przypisane do konfiguracji adresu IP. Jeśli adres IPv6 jest przypisany do konfiguracji adresu IP, adres nie jest wyświetlana. Aby dowiedzieć się więcej na temat konfiguracji adresów IP i jak dodawać i usuwać adresy IP, zobacz [adresy IP, konfigurowanie dla interfejsu sieci platformy Azure](virtual-network-network-interface-addresses.md). Przekazywanie dalej adresu IP i przypisanie podsieci również są skonfigurowane w tej sekcji. Aby dowiedzieć się więcej o tych ustawieniach, zobacz [włączać lub wyłączać przesyłanie dalej IP](#enable-or-disable-ip-forwarding) i [zmienić przypisanie podsieci](#change-subnet-assignment).
+   - **Serwery DNS:** Można określić, który serwer DNS interfejsu sieciowego jest przypisany przez serwery DHCP platformy Azure. Interfejs sieciowy można dziedziczyć ustawienia z sieci wirtualnej, które interfejs sieciowy jest przypisany do lub mieć ustawienia niestandardowego, który zastępuje ustawienie dla sieci wirtualnej, który jest przypisany do. Aby zmodyfikować, co jest wyświetlane, zobacz [serwerów DNS zmiany](#change-dns-servers).
+   - **Sieciowa grupa zabezpieczeń (NSG):** Wyświetla, co sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym (jeśli istnieje). Sieciowa grupa zabezpieczeń zawiera reguły ruchu przychodzącego i wychodzącego do filtrowania ruchu sieciowego dla interfejsu sieciowego. Jeśli sieciowa grupa zabezpieczeń jest skojarzona z interfejsem sieciowym, jest wyświetlana nazwa skojarzonej sieciowej grupy zabezpieczeń. Aby zmodyfikować, co jest wyświetlane, zobacz [skojarzyć lub usunąć skojarzenie sieciowej grupy zabezpieczeń](#associate-or-dissociate-a-network-security-group).
+   - **Właściwości:** Wyświetla ustawienia klucza o interfejsu sieciowego, łącznie z jej adres MAC (puste, jeśli interfejs sieciowy nie jest dołączony do maszyny wirtualnej), a subskrypcja istnieje on w.
+   - **Efektywne reguły zabezpieczeń:**  Reguły zabezpieczeń są wyświetlane, jeśli interfejs sieciowy jest podłączony do uruchomionej maszyny wirtualnej i sieciowa grupa zabezpieczeń jest skojarzona z interfejsu sieciowego i/lub podsieci, w której jest przypisany do. Aby dowiedzieć się, co jest wyświetlane, zobacz [wyświetlanie obowiązujących reguł zabezpieczeń](#view-effective-security-rules). Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [sieciowe grupy zabezpieczeń](security-overview.md).
+   - **Skuteczne trasy:** Trasy są wyświetlane, jeśli interfejs sieciowy jest podłączony do uruchomionej maszyny wirtualnej. Trasy są kombinacją trasy domyślne systemu Azure, wszystkie trasy zdefiniowane przez użytkownika i wszystkie trasy protokołu BGP, które mogą istnieć dla podsieci, w której interfejs sieciowy jest przypisany do. Aby dowiedzieć się, co jest wyświetlane, zobacz [wyświetlić obowiązujące trasy](#view-effective-routes). Aby dowiedzieć się więcej na temat domyślnych tras i trasy zdefiniowane przez użytkownika, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
+   - **Typowe ustawienia usługi Azure Resource Manager:**  Aby dowiedzieć się więcej na temat typowych ustawień usługi Azure Resource Manager, zobacz [dziennika aktywności](../azure-monitor/platform/activity-logs-overview.md), [kontrola dostępu (IAM)](../role-based-access-control/overview.md), [tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [blokuje](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)i [ Skrypt automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Polecenia**
 
@@ -93,8 +97,8 @@ Jeśli adres IPv6 jest przypisany do interfejsu sieciowego, dane wyjściowe prog
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[Lista kart sieciowych sieci az](/cli/azure/network/nic) wyświetlić interfejsy sieciowe w ramach subskrypcji; [az sieci nic show](/cli/azure/network/nic) Aby wyświetlić ustawienia interfejsu sieciowego|
-|PowerShell|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface) do wyświetlania interfejsów sieciowych w ustawieniach subskrypcji lub widoku dla interfejsu sieciowego|
+|Interfejs wiersza polecenia|[Lista kart sieciowych sieci az](/cli/azure/network/nic#az_network_nic_list) wyświetlić interfejsy sieciowe w ramach subskrypcji; [az sieci nic show](/cli/azure/network/nic#az_network_nic_show) Aby wyświetlić ustawienia interfejsu sieciowego|
+|PowerShell|[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) do wyświetlania interfejsów sieciowych w ustawieniach subskrypcji lub widoku dla interfejsu sieciowego|
 
 ## <a name="change-dns-servers"></a>Zmień serwerów DNS
 
@@ -104,8 +108,8 @@ Serwer DNS jest przypisany przez serwer DHCP platformy Azure z interfejsem sieci
 2. Wybierz interfejs sieciowy, który ma zostać zmieniony na serwerze DNS z listy.
 3. Wybierz **serwerów DNS** w obszarze **ustawienia**.
 4. Wybierz opcję:
-    - **Dziedzicz z sieci wirtualnej**: Wybierz tę opcję, aby dziedziczyć ustawienia serwera DNS, które są zdefiniowane dla sieci wirtualnej, przypisanej do interfejsu sieciowego. Na poziomie sieci wirtualnej niestandardowego serwera DNS lub serwer DNS platformy Azure jest zdefiniowana. Serwer DNS platformy Azure może rozpoznać nazwy hostów dla zasobów przydzielonych do tej samej sieci wirtualnej. Nazwy FQDN musi być używana do rozpoznawania dla zasobów przydzielonych do różnych sieci wirtualnych.
-    - **Niestandardowy**: Można skonfigurować własnego serwera DNS do rozpoznawania nazw między wieloma sieciami wirtualnymi. Wprowadź adres IP serwera, który ma być używany jako serwer DNS. Adres serwera DNS, które określisz są przypisane tylko do tego interfejsu sieciowego i zastępuje wszelkie ustawienia DNS dla sieci wirtualnej, przypisanej do interfejsu sieciowego.
+   - **Dziedzicz z sieci wirtualnej**: Wybierz tę opcję, aby dziedziczyć ustawienia serwera DNS, które są zdefiniowane dla sieci wirtualnej, przypisanej do interfejsu sieciowego. Na poziomie sieci wirtualnej niestandardowego serwera DNS lub serwer DNS platformy Azure jest zdefiniowana. Serwer DNS platformy Azure może rozpoznać nazwy hostów dla zasobów przydzielonych do tej samej sieci wirtualnej. Nazwy FQDN musi być używana do rozpoznawania dla zasobów przydzielonych do różnych sieci wirtualnych.
+   - **Niestandardowy**: Można skonfigurować własnego serwera DNS do rozpoznawania nazw między wieloma sieciami wirtualnymi. Wprowadź adres IP serwera, który ma być używany jako serwer DNS. Adres serwera DNS, które określisz są przypisane tylko do tego interfejsu sieciowego i zastępuje wszelkie ustawienia DNS dla sieci wirtualnej, przypisanej do interfejsu sieciowego.
 5. Wybierz pozycję **Zapisz**.
 
 **Polecenia**
@@ -113,7 +117,7 @@ Serwer DNS jest przypisany przez serwer DHCP platformy Azure z interfejsem sieci
 |Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
-|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+|PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>Włączać lub wyłączać przesyłanie dalej IP
 
@@ -134,7 +138,7 @@ Ustawienie musi być włączona dla każdego interfejsu sieciowego, który jest 
 |Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
-|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+|PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="change-subnet-assignment"></a>Zmień przypisanie podsieci
 
@@ -143,9 +147,9 @@ Można zmienić podsieci, ale nie sieci wirtualnej, przypisana do karty sieciowe
 1. W polu zawierającym tekst *Wyszukaj zasoby* w górnej części witryny Azure portal, wpisz polecenie *interfejsy sieciowe*. Gdy **interfejsy sieciowe** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz interfejs sieciowy, który chcesz zmienić przypisania podsieci.
 3. Wybierz **konfiguracje adresów IP** w obszarze **ustawienia**. Jeśli na liście żadnych prywatnych adresów IP dla konfiguracji IP **(statyczne)** obok nich, należy zmienić metodę przypisywania adresów IP na dynamiczne, wykonując poniższe kroki. Wszystkie prywatne adresy IP, należy przypisać przy użyciu metody dynamiczne przydzielanie zmienić przypisanie podsieci dla interfejsu sieciowego. Jeśli adresy są przydzielane przy użyciu metody dynamiczne, przejdź do kroku 5. Jeśli żadnych adresów IPv4 przypisanych przy użyciu metody statyczne przypisania, wykonaj następujące kroki, aby zmienić metodę przypisywania do dynamicznego:
-    - Wybierz konfigurację adresu IP, aby zmienić metodę przypisywania adresów IPv4 dla z listy konfiguracji adresu IP.
-    - Wybierz **dynamiczne** prywatnego adresu IP **przypisania** metody. Nie można przypisać adresu IPv6 przy użyciu metody przypisania statycznego.
-    - Wybierz pozycję **Zapisz**.
+   - Wybierz konfigurację adresu IP, aby zmienić metodę przypisywania adresów IPv4 dla z listy konfiguracji adresu IP.
+   - Wybierz **dynamiczne** prywatnego adresu IP **przypisania** metody. Nie można przypisać adresu IPv6 przy użyciu metody przypisania statycznego.
+   - Wybierz pozycję **Zapisz**.
 4. Wybierz podsieć, którą chcesz przenieść do interfejsu sieciowego, od **podsieci** listy rozwijanej.
 5. Wybierz pozycję **Zapisz**. Nowe adresy dynamiczne są przypisywane z zakresu adresów podsieci dla nowej podsieci. Po przypisaniu interfejsu sieciowego do nowej podsieci, można przypisać statyczny adres IPv4 w nowy zakres adresów podsieci, jeśli wybierzesz. Aby dowiedzieć się więcej o dodawanie, zmienianie i usuwanie adresów IP dla interfejsu sieciowego, zobacz [adresy IP zarządzania](virtual-network-network-interface-addresses.md).
 
@@ -153,8 +157,8 @@ Można zmienić podsieci, ale nie sieci wirtualnej, przypisana do karty sieciowe
 
 |Narzędzie|Polecenie|
 |---|---|
-|Interfejs wiersza polecenia|[AZ sieci nic ip-config update](/cli/azure/network/nic/ip-config)|
-|PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig)|
+|Interfejs wiersza polecenia|[AZ sieci nic ip-config update](/cli/azure/network/nic/ip-config#az_network_nic_ip_config_update)|
+|PowerShell|[Set-AzNetworkInterfaceIpConfig](/powershell/module/az.network/set-aznetworkinterfaceipconfig)|
 
 ## <a name="add-to-or-remove-from-application-security-groups"></a>Dodawanie do lub usuwanie z grup zabezpieczeń aplikacji
 
@@ -168,7 +172,7 @@ Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej gru
 |Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Aktualizacja interfejsu sieciowego sieci az](/cli/azure/network/nic)|
-|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)|
+|PowerShell|[Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)|
 
 ## <a name="associate-or-dissociate-a-network-security-group"></a>Skojarzyć lub usunąć skojarzenie sieciowej grupy zabezpieczeń
 
@@ -182,7 +186,7 @@ Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej gru
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az sieci nic update](/cli/azure/network/nic#az-network-nic-update)
-- Program PowerShell: [Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface)
+- Program PowerShell: [Set-AzNetworkInterface](/powershell/module/az.network/set-aznetworkinterface)
 
 ## <a name="delete-a-network-interface"></a>Usuwanie interfejsu sieciowego
 
@@ -200,7 +204,7 @@ Podczas usuwania interfejsu sieciowego, wszystkie adresy MAC lub adres IP przypi
 |Narzędzie|Polecenie|
 |---|---|
 |Interfejs wiersza polecenia|[Usuń kartę sieciową sieci az](/cli/azure/network/nic)|
-|PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface)|
+|PowerShell|[Remove-AzNetworkInterface](/powershell/module/az.network/remove-aznetworkinterface)|
 
 ## <a name="resolve-connectivity-issues"></a>Rozwiązywanie problemów z łącznością
 
@@ -221,7 +225,7 @@ Przepływ IP Sprawdź, czy funkcja usługi Azure Network Watcher ułatwiają tak
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az network nic list — zacznie obowiązywać od — sieciowej grupy zabezpieczeń](/cli/azure/network/nic#az-network-nic-list-effective-nsg)
-- Program PowerShell: [Get-AzureRmEffectiveNetworkSecurityGroup](/powershell/module/azurerm.network/get-azurermeffectivenetworksecuritygroup) 
+- Program PowerShell: [Get-AzEffectiveNetworkSecurityGroup](/powershell/module/az.network/get-azeffectivenetworksecuritygroup)
 
 ### <a name="view-effective-routes"></a>Wyświetlanie obowiązujących tras
 
@@ -238,7 +242,7 @@ Funkcja następnego przeskoku usługi Azure Network Watcher może również pom�
 **Polecenia**
 
 - Interfejs wiersza polecenia platformy Azure: [az network nic show obowiązywać route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)
-- Program PowerShell: [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable)
+- Program PowerShell: [Get-AzEffectiveRouteTable](/powershell/module/az.network/get-azeffectiveroutetable)
 
 ## <a name="permissions"></a>Uprawnienia
 

@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/21/2019
 ms.author: patricka
 ms.reviewer: unknown
-ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 7ecffacee03650adc709a055ba942ef182da5fb8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/21/2019
+ms.openlocfilehash: 1b47739200c79317273ea0c788f21a7ee4a3b818
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239991"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648510"
 ---
 # <a name="add-azure-stack-users-in-ad-fs"></a>Dodaj użytkowników usługi Azure Stack w usługach AD FS
 Możesz użyć **użytkownicy usługi Active Directory i komputery** przystawki można dodać użytkowników do środowiska usługi Azure Stack, korzystając z usług AD FS jako dostawcy tożsamości.
@@ -29,12 +29,13 @@ Możesz użyć **użytkownicy usługi Active Directory i komputery** przystawki 
 > [!TIP]
 > W tym przykładzie używa domyślnego azurestack.local ASDK usługi active directory. 
 
-1.  Zaloguj się do komputera przy użyciu konta, zapewniając dostęp do narzędzi administracyjnych Windows i Otwórz nowe Microsoft Management Console (MMC).
-2.  Kliknij przycisk **Plik > Dodaj lub Usuń przystawkę**.
-3.  Wybierz **użytkowników usługi Active Directory i komputery** > **AzureStack.local** > **użytkowników**.
-4.  Kliknij przycisk **akcji** > **nowe** > **użytkownika**.
-5.  W nowy obiekt — użytkownik okna, podaj i Potwierdź hasło
-6.  Kliknij przycisk **dalej** finalize wartości, a następnie kliknij przycisk Zakończ, aby utworzyć użytkownika.
+1. Zaloguj się do komputera przy użyciu konta, zapewniając dostęp do narzędzi administracyjnych Windows i Otwórz nowe Microsoft Management Console (MMC).
+2. Wybierz **Plik > Dodaj lub Usuń przystawkę**.
+3. Wybierz **użytkowników usługi Active Directory i komputery** > **AzureStack.local** > **użytkowników**.
+4. Wybierz **akcji** > **nowe** > **użytkownika**.
+5. W nowy obiekt — użytkownik, zapewniają szczegółowe informacje o użytkowniku. Wybierz opcję **Dalej**.
+6. Podaj i Potwierdź hasło.
+7. Wybierz **dalej** Aby sfinalizować wartości. Wybierz **Zakończ** do utworzenia użytkownika.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

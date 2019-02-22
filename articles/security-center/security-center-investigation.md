@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2018
 ms.author: rkarlin
-ms.openlocfilehash: 7763807fdb5fcff7e93d54bf5a851cd4443427d3
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 8b2e42759ba2bffef28e1bf74e07bc149027ab7a
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107195"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651773"
 ---
 # <a name="investigate-incidents-and-alerts-in-azure-security-center-preview"></a>Badanie zdarzeń i alertów w usłudze Azure Security Center (wersja zapoznawcza)
 Ten dokument ułatwia korzystanie z funkcji badania zdarzeń zabezpieczeń i alertów w usłudze Azure Security Center.
@@ -29,8 +29,10 @@ Funkcja Badanie w usłudze Security Center umożliwia klasyfikowanie, określani
 
 Celem jest ułatwienie procesu badania dzięki połączeniu wszystkich jednostek ([alertów zabezpieczeń](https://docs.microsoft.com/azure/security-center/security-center-alerts-type), użytkowników, komputerów i zdarzeń) biorących udział w badanym zdarzeniu.  Usługa Security Center umożliwia skorelowanie odpowiednich danych ze wszystkimi zaangażowanymi jednostkami oraz udostępnienie tej korelacji za pomocą dynamicznego wykresu, który ułatwia nawigowanie po obiektach i wizualizowanie istotnych informacji.
 
+
 > [!NOTE]
-> [Niestandardowe alerty](security-center-custom-alert.md) nie są obsługiwane w funkcji badania Centrum zabezpieczeń.
+    > * [Niestandardowe alerty](security-center-custom-alert.md) nie są obsługiwane w funkcji badania Centrum zabezpieczeń.
+    > * Badanie jest obsługiwana tylko dla alertów na podstawie danych zebranych z serwerów Windows.
 >
 >
 

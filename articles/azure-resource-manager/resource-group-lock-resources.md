@@ -12,14 +12,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 02/21/2019
 ms.author: tomfitz
-ms.openlocfilehash: 6d2ae1d1846506424aa14cca0f597c8888eb903d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 83518825c91cdd727b3d4fb9ecc86d51dea8fc26
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341032"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649173"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Blokowanie zasobów w celu uniemożliwienia nieoczekiwanych zmian 
 
@@ -36,7 +36,7 @@ Po zastosowaniu blokady w zakresie nadrzędnej wszystkie zasoby w tym zakresie d
 
 W przeciwieństwie do kontroli dostępu opartej na rolach umożliwia zarządcze stosowania ograniczeń dla wszystkich użytkowników i ról. Aby dowiedzieć się więcej o ustawianiu uprawnień dla użytkowników i ról, zobacz [kontroli dostępu opartej na roli Azure](../role-based-access-control/role-assignments-portal.md).
 
-Blokad usługi Resource Manager mają zastosowanie tylko do operacji, które odbywa się w płaszczyzny zarządzania, który składa się z operacji wysyłane do `https://management.azure.com`. Blokady nie ograniczają, jak zasoby wykonać swoje własne funkcje. Zmiany zasobu są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokadę tylko do odczytu na bazę danych SQL uniemożliwia usunięcie lub zmodyfikowanie bazy danych, ale go nie uniemożliwiają tworzenie, aktualizowanie lub usuwanie danych w bazie danych. Transakcje są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
+Blokad usługi Resource Manager mają zastosowanie tylko do operacji, które odbywa się w płaszczyzny zarządzania, który składa się z operacji wysyłane do `https://management.azure.com`. Blokady nie Ograniczaj, jak zasoby wykonać swoje własne funkcje. Zmiany zasobu są ograniczone, ale operacje zasobów nie są ograniczone. Na przykład blokadę tylko do odczytu na bazę danych SQL uniemożliwia usunięcie lub zmodyfikowanie bazy danych, ale go nie uniemożliwiają tworzenie, aktualizowanie lub usuwanie danych w bazie danych. Transakcje są dozwolone, ponieważ te operacje nie są wysyłane do `https://management.azure.com`.
 
 Stosowanie **tylko do odczytu** może prowadzić do nieoczekiwanych wyników, ponieważ niektóre operacje, które promieniowe wydają się być odczytana operacje rzeczywiście wymagają dodatkowych akcji. Na przykład umieszczenie **tylko do odczytu** blokadę konta magazynu uniemożliwia wszystkim użytkownikom wyświetlanie listy kluczy. Na liście, którą zwrócone klucze nie są dostępne dla operacji klucze odbywa się za pomocą żądania POST operacji zapisu. Inny przykład umieszczając **tylko do odczytu** blokady zasobu usługi App Service uniemożliwia wyświetlanie plików dla zasobu, ponieważ interakcji wymaga dostępu do zapisu Eksploratora serwera w usłudze Visual Studio.
 
@@ -47,6 +47,19 @@ Aby utworzyć lub usunąć blokady zarządzania, musi mieć dostęp do `Microsof
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>Szablon
+
+Za pomocą szablonu usługi Resource Manager wdrażać blokadę, używasz różnych wartości dla nazwy i typu w zależności od zakresu blokady.
+
+Podczas stosowania blokady w celu **zasobów**, użyj następujących formatów:
+
+* Nazwa — `{resourceName}/Microsoft.Authorization/{lockName}`
+* Typ — `{resourceProviderNamespace}/{resourceType}/providers/locks`
+
+Podczas stosowania blokady w celu **grupy zasobów** lub **subskrypcji**, użyj następujących formatów:
+
+* Nazwa — `{lockName}`
+* Typ — `Microsoft.Authorization/locks`
+
 Poniższy przykład przedstawia szablon, który tworzy plan usługi app service, witryny sieci web i blokady w witrynie sieci web. Typ zasobu blokowania jest typ zasobu zasobu do zablokowania i **/dostawców/blokad**. Nazwa blokady jest tworzona przez dołączenie nazwy zasobu z **/Microsoft.Authorization/** i nazwę blokady.
 
 ```json
@@ -104,19 +117,7 @@ Poniższy przykład przedstawia szablon, który tworzy plan usługi app service,
 }
 ```
 
-Aby wdrożyć ten przykładowy szablon przy użyciu programu PowerShell, należy użyć:
-
-```azurepowershell-interactive
-New-AzResourceGroup -Name sitegroup -Location southcentralus
-New-AzResourceGroupDeployment -ResourceGroupName sitegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json -hostingPlanName plan0103
-```
-
-Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
-
-```azurecli
-az group create --name sitegroup --location southcentralus
-az group deployment create --resource-group sitegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/lock.json --parameters hostingPlanName=plan0103
-```
+Na przykład ustawienie blokady dla grupy zasobów, zobacz [Utwórz grupę zasobów i blokowanie](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment).
 
 ## <a name="powershell"></a>PowerShell
 Blokady możesz wdrożyć zasoby przy użyciu programu Azure PowerShell przy użyciu [New AzResourceLock](/powershell/module/az.resources/new-azresourcelock) polecenia.
@@ -206,7 +207,7 @@ Aby utworzyć blokadę, uruchom polecenie:
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-Zakres może być subskrypcji, grupy zasobów lub zasobu. Nazwa blokady jest, niezależnie od rodzaju, który chcesz wybrać blokady. W przypadku wersji interfejsu api, użyj **2015-01-01**.
+Zakres może być subskrypcji, grupy zasobów lub zasobu. Nazwa blokady jest, niezależnie od rodzaju, który chcesz wybrać blokady. W przypadku wersji interfejsu api, użyj **2016-09-01**.
 
 W żądaniu zawierać obiekt JSON, który określa właściwości blokady.
 
@@ -219,7 +220,6 @@ W żądaniu zawierać obiekt JSON, który określa właściwości blokady.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej na temat logicznie organizowania zasobów, zobacz [organizowanie zasobów za pomocą tagów](resource-group-using-tags.md)
-* Aby zmienić zasób, który znajduje się w grupę zasobów, zobacz [przenoszenie zasobów do nowej grupy zasobów](resource-group-move-resources.md)
 * W ramach subskrypcji za pomocą zasad niestandardowych, można zastosować ograniczenia i Konwencji. Aby uzyskać więcej informacji, zobacz artykuł [Co to jest usługa Azure Policy?](../governance/policy/overview.md).
 * Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
 

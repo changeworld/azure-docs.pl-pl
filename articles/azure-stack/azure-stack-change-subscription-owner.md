@@ -12,53 +12,53 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 10/19/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: shnatara
 ms.lastreviewed: 10/19/2018
-ms.openlocfilehash: c9288d47dc9df8604c7eb676ba5d93f91a6b0063
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: de5c20cf2113bcd6ce902a05d4613376145a4da3
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245688"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649411"
 ---
 # <a name="change-the-owner-for-an-azure-stack-user-subscription"></a>Zmień właściciela subskrypcji użytkownika usługi Azure Stack
 
-Operatorzy usługi Azure Stack można zmienić właściciela rozliczeń subskrypcji użytkownika za pomocą programu PowerShell. Jednym z powodów zmiany właściciela, na przykład, jest zastąpienie użytkownik opuszcza organizację.   
+Operatorzy usługi Azure Stack można zmienić właściciela rozliczeń subskrypcji użytkownika za pomocą programu PowerShell. Jednym z powodów zmiany właściciela, na przykład, jest zastąpienie użytkownik opuszcza organizację.
 
 Istnieją dwa rodzaje *właścicieli* są przypisane do subskrypcji:
 
-- **Właściciel rozliczeń**: Domyślnie właściciel rozliczeń jest konto użytkownika, który pobiera subskrypcji z oferty, a następnie należy relacja rozliczeń dla tej subskrypcji. To konto jest również administratorem subskrypcji. Tylko jedno konto użytkownika może mieć oznaczenie to w ramach subskrypcji. Właściciel rozliczeń jest często organizacji lub zespołu potencjalnego klienta. 
+- **Właściciel rozliczeń**: Domyślnie właściciel rozliczeń jest konto użytkownika, który pobiera subskrypcji z oferty, a następnie należy relacja rozliczeń dla tej subskrypcji. To konto jest również administratorem subskrypcji. Tylko jedno konto użytkownika może mieć oznaczenie to w ramach subskrypcji. Właściciel rozliczeń jest często organizacji lub zespołu potencjalnego klienta.
 
-  Możesz użyć polecenia cmdlet programu PowerShell [AzsUserSubscription zestaw](/powershell/module/azs.subscriptions.admin/set-azsusersubscription) można zmienić właściciela rozliczeń.  
+  Można użyć polecenia cmdlet programu PowerShell [AzsUserSubscription zestaw](/powershell/module/azs.subscriptions.admin/set-azsusersubscription) można zmienić właściciela rozliczeń.  
 
-- **Właściciele dodane za pośrednictwem ról RBAC** — dodatkowym użytkownikom można udzielić **właściciela** przy użyciu roli [kontroli dostępu opartej na rolach](azure-stack-manage-permissions.md) systemu (RBAC). Dowolna liczba dodatkowych kont użytkowników można dodawać jako właścicieli do uzupełniania rozliczeń właściciela. Dodatkowych właścicieli są Administratorzy subskrypcji i mają wszystkie uprawnienia dla subskrypcji, z wyjątkiem uprawnienia do usunięcia właściciela rozliczeń. 
+- **Właściciele dodane za pośrednictwem ról RBAC** — dodatkowym użytkownikom można udzielić **właściciela** przy użyciu roli [kontroli dostępu opartej na rolach](azure-stack-manage-permissions.md) systemu (RBAC). Dowolna liczba dodatkowych kont użytkowników można dodawać jako właścicieli do uzupełniania rozliczeń właściciela. Dodatkowych właścicieli są Administratorzy subskrypcji i mają wszystkie uprawnienia dla subskrypcji, z wyjątkiem uprawnienia do usunięcia właściciela rozliczeń.
 
-  Można użyć programu PowerShell, zarządzenie właścicielami dodatkowych, zobacz [programu Azure PowerShell do zarządzania kontrolą dostępu opartą na rolach](/azure/role-based-access-control/role-assignments-powershell).
+  Za pomocą programu PowerShell do zarządzania dodatkowych właścicieli. Więcej informacji znajduje się w [tym artykule](/azure/role-based-access-control/role-assignments-powershell).
 
 ## <a name="change-the-billing-owner"></a>Zmień właściciela rozliczeń
 
-Uruchom następujący skrypt, aby zmienić właściciela rozliczeń subskrypcji użytkownika. Komputera, którego używasz do uruchamiania skryptu musi nawiązać połączenie z usługi Azure Stack i uruchom moduł usługi Azure Stack PowerShell 1.3.0 lub nowszej. Aby uzyskać więcej informacji, zobacz [Instalowanie programu Azure Stack PowerShell](azure-stack-powershell-install.md). 
+Uruchom następujący skrypt, aby zmienić właściciela rozliczeń subskrypcji użytkownika. Komputera, którego używasz do uruchamiania skryptu musi nawiązać połączenie z usługi Azure Stack i uruchom moduł usługi Azure Stack PowerShell 1.3.0 lub nowszej. Aby uzyskać więcej informacji, zobacz [Instalowanie programu Azure Stack PowerShell](azure-stack-powershell-install.md).
 
-> [!Note]
->  W wielu dzierżawy usługi Azure Stack nowy właściciel musi być w tym samym katalogu co istniejące właściciela. Przed zapewnieniem własności subskrypcji do użytkownika, który znajduje się w innym katalogu, należy najpierw [zaprosić użytkownika jako gościa do katalogu](../active-directory/b2b/add-users-administrator.md). 
+>[!NOTE]
+>W wielu dzierżawy usługi Azure Stack nowy właściciel musi być w tym samym katalogu co istniejące właściciela. Przed zapewnieniem własności subskrypcji do użytkownika, który znajduje się w innym katalogu, należy najpierw [zaprosić użytkownika jako gościa do katalogu](../active-directory/b2b/add-users-administrator.md).
 
-Zastąp następujące wartości w skrypcie, zanim zostanie ona uruchomiona: 
- 
-- **$ArmEndpoint**: Określ punkt końcowy usługi Resource Manager dla danego środowiska.  
-- **$TenantId**: Określanie identyfikatora dzierżawy. 
-- **$SubscriptionId**: Określ identyfikator subskrypcji.
-- **$OwnerUpn**: Określ konto jako **user@example.com** do dodania jako nowy właściciel rozliczeń.  
+Zastąp następujące wartości w skrypcie, zanim zostanie ona uruchomiona:
 
-```PowerShell   
+- **$ArmEndpoint**: Punkt końcowy usługi Resource Manager dla danego środowiska.
+- **$TenantId**: Twoim identyfikatorem dzierżawy.
+- **$SubscriptionId**: Identyfikator subskrypcji.
+- **$OwnerUpn**: Konto, na przykład **user@example.com**, aby dodać jako nowy właściciel rozliczeń.
+
+```powershell
 # Set up Azure Stack admin environment
 Add-AzureRmEnvironment -ARMEndpoint $ArmEndpoint -Name AzureStack-admin
 Add-AzureRmAccount -Environment AzureStack-admin -TenantId $TenantId
 
 # Select admin subscription
 $providerSubscriptionId = (Get-AzureRmSubscription -SubscriptionName "Default Provider Subscription").Id
-Write-Output "Setting context to the Default Provider Subscription: $providerSubscriptionId" 
+Write-Output "Setting context to the Default Provider Subscription: $providerSubscriptionId"
 Set-AzureRmContext -Subscription $providerSubscriptionId
 
 # Change user subscription owner
@@ -69,4 +69,4 @@ Set-AzsUserSubscription -InputObject $subscription
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Zarządzanie kontrolą dostępu opartej na rolach](azure-stack-manage-permissions.md)
+- [Zarządzanie kontrolą dostępu opartej na rolach](azure-stack-manage-permissions.md)

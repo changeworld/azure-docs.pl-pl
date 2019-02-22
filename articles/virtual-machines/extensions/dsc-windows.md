@@ -14,12 +14,12 @@ ms.tgt_pltfrm: windows
 ms.workload: ''
 ms.date: 03/26/2018
 ms.author: robreed
-ms.openlocfilehash: 1d65238115ca57a3fcc8047a27c8161aaa144ce4
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: 26b083069380d7bf107cd3be54cb2e4786789e11
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49407711"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593867"
 ---
 # <a name="powershell-dsc-extension"></a>Rozszerzenie DSC programu PowerShell
 
@@ -33,11 +33,11 @@ Rozszerzenie DSC programu PowerShell dla Windows publikowana i obsługiwane prze
 
 Rozszerzenie DSC obsługuje następujące systemu operacyjnego
 
-System Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z dodatkiem SP1, klienta Windows 7/8.1
+System Windows Server 2019 r, system Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 z dodatkiem SP1, klienta Windows 7/8.1/10
 
 ### <a name="internet-connectivity"></a>Łączność z Internetem
 
-Rozszerzenie DSC dla Windows wymaga, że docelowej maszyny wirtualnej jest połączony z Internetem. 
+Rozszerzenie DSC dla Windows wymaga, że docelowej maszyny wirtualnej jest w stanie komunikować się z platformą Azure i lokalizacja pakietu konfiguracji (plik zip), jeśli jest on przechowywany w lokalizacji poza platformą Azure. 
 
 ## <a name="extension-schema"></a>Schemat rozszerzenia
 
@@ -47,12 +47,12 @@ Następujący kod JSON zawiera schemat dla ustawień część rozszerzenia DSC w
 {
   "type": "Microsoft.Compute/virtualMachines/extensions",
   "name": "Microsoft.Powershell.DSC",
-  "apiVersion": "2015-06-15",
+  "apiVersion": "2018-10-01",
   "location": "<location>",
   "properties": {
     "publisher": "Microsoft.Powershell",
     "type": "DSC",
-    "typeHandlerVersion": "2.73",
+    "typeHandlerVersion": "2.77",
     "autoUpgradeMinorVersion": true,
     "settings": {
         "wmfVersion": "latest",
@@ -100,10 +100,10 @@ Następujący kod JSON zawiera schemat dla ustawień część rozszerzenia DSC w
 
 | Name (Nazwa) | Wartość / przykład | Typ danych |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | date |
+| apiVersion | 2018-10-01 | date |
 | Wydawcy | Microsoft.Powershell.DSC | ciąg |
 | type | DSC | ciąg |
-| typeHandlerVersion | 2,73 | int |
+| typeHandlerVersion | 2.77 | int |
 
 ### <a name="settings-property-values"></a>Wartości właściwości ustawień
 
@@ -116,7 +116,7 @@ Następujący kod JSON zawiera schemat dla ustawień część rozszerzenia DSC w
 | settings.configurationArguments | Collection | Określa wszelkie parametry, które chcesz przekazać do konfiguracji DSC. Ta właściwość nie będą szyfrowane.
 | settings.configurationData.url | ciąg | Określa adres URL do pobrania pliku (.pds1) danych konfiguracji do użycia jako dane wejściowe dla danej konfiguracji DSC. Adres URL podany wymaga tokenu sygnatury dostępu Współdzielonego dla dostępu, należy ustawić właściwość protectedSettings.configurationDataUrlSasToken na wartość tokenu sygnatury dostępu Współdzielonego.
 | settings.privacy.dataEnabled | ciąg | Włącza lub wyłącza zbieranie danych telemetrycznych. Tylko to możliwe wartości dla tej właściwości to "Włącz", "Disable", ", lub $null. Pozostawienie tej właściwości, puste ani mieć wartości null spowoduje włączenie telemetrii
-| settings.advancedOptions.forcePullAndApply | wartość logiczna | Włącza rozszerzenia DSC do aktualizacji i wprowadź w życie konfiguracje DSC przy włączonym trybie odświeżania ściągnięcia.
+| settings.advancedOptions.forcePullAndApply | Bool | Włącza rozszerzenia DSC do aktualizacji i wprowadź w życie konfiguracje DSC przy włączonym trybie odświeżania ściągnięcia.
 | settings.advancedOptions.downloadMappings | Collection | Określa alternatywne lokalizacje, aby pobrać zależności, np. programu WMF i .NET
 
 ### <a name="protected-settings-property-values"></a>Chronione wartości ustawienia właściwości
@@ -130,26 +130,9 @@ Następujący kod JSON zawiera schemat dla ustawień część rozszerzenia DSC w
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager. Szablony są idealnym rozwiązaniem w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji po wdrożeniu. Przykładowy szablon usługi Resource Manager zawierającego agenta usługi Log Analytics rozszerzenia maszyny Wirtualnej można znaleźć na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/tree/052db5feeba11f85d57f170d8202123511f72044/dsc-extension-iis-server-windows-vm). 
-
-Konfiguracji JSON dla rozszerzenia maszyny wirtualnej mogą być zagnieżdżone wewnątrz zasobu maszyny wirtualnej lub umieszczone w katalogu głównego lub najwyższego poziomu szablon JSON usługi Resource Manager. Położenie konfiguracji JSON ma wpływ na wartości nazwy i typu zasobu. 
-
-Zagnieżdżanie rozszerzenia zasobu, za pomocą pliku JSON jest umieszczany w `"resources": []` obiektu maszyny wirtualnej. Podczas umieszczania rozszerzenia JSON w katalogu głównym szablonu, nazwa zasobu zawiera odwołanie do nadrzędnej maszyny wirtualnej, a typ odzwierciedla zagnieżdżonych.  
-
-
-## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
-
-Interfejs wiersza polecenia platformy Azure może służyć do wdrażania agenta usługi Log Analytics rozszerzenia maszyny Wirtualnej na istniejącej maszyny wirtualnej. Zamień na klucz usługi Log Analytics i Log Analytics identyfikator te z obszaru roboczego usługi Log Analytics. 
-
-```azurecli
-az vm extension set \
-  --resource-group myResourceGroup \
-  --vm-name myVM \
-  --name Microsoft.Powershell.DSC \
-  --publisher Microsoft.Powershell \
-  --version 2.73 --protected-settings '{}' \
-  --settings '{}'
-```
+Rozszerzenia maszyn wirtualnych platformy Azure można wdrażać przy użyciu szablonów usługi Azure Resource Manager.
+Szablony są idealnym rozwiązaniem w przypadku wdrażania maszyn wirtualnych, które wymagają konfiguracji po wdrożeniu.
+Przykładowy szablon usługi Resource Manager, zawierającego rozszerzenia DSC programu Windows można znaleźć na [w galerii platformy Azure Szybki Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-automation-configuration/nested/provisionServer.json#L91).
 
 ## <a name="troubleshoot-and-support"></a>Rozwiązywanie problemów i pomocy technicznej
 

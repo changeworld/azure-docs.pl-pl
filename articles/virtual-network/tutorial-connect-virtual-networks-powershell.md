@@ -17,14 +17,16 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: a8a92645a0a0c4b35d06dc6397219e5ff25e25e9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 49a6c91587905a8f7086b46b275a5078197939eb
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429529"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649955"
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-powershell"></a>Łączenie sieci wirtualnych za pomocą komunikacji równorzędnej sieci wirtualnych przy użyciu programu PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Sieci wirtualne możesz łączyć ze sobą za pomocą komunikacji równorzędnej sieci wirtualnych. Po połączeniu sieci wirtualnych za pomocą komunikacji równorzędnej zasoby w obu sieciach wirtualnych mogą komunikować się ze sobą przy takim samym opóźnieniu i z taką samą przepustowością, jakby zasoby były w tej samej sieci wirtualnej. W tym artykule omówiono sposób wykonywania następujących zadań:
 
@@ -37,91 +39,91 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Jeśli postanowisz zainstalować program PowerShell i używać go lokalnie, ten artykuł wymaga modułu Azure PowerShell w wersji 5.4.1 lub nowszej. Uruchom polecenie ` Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure. 
+Jeśli zdecydujesz się zainstalować program PowerShell i używać lokalnie, ten artykuł wymaga programu Azure PowerShell w wersji modułu 1.0.0 lub nowszym. Uruchom polecenie `Get-Module -ListAvailable Az`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-az-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzAccount`, aby utworzyć połączenie z platformą Azure.
 
 ## <a name="create-virtual-networks"></a>Tworzenie sieci wirtualnych
 
-Przed utworzeniem sieci wirtualnej, należy utworzyć grupę zasobów dla sieci wirtualnej i wszystkie zasoby utworzone w tym artykule. Utwórz grupę zasobów za pomocą polecenia [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
+Przed utworzeniem sieci wirtualnej, należy utworzyć grupę zasobów dla sieci wirtualnej i wszystkie zasoby utworzone w tym artykule. Utwórz grupę zasobów za pomocą [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Poniższy przykład obejmuje tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*.
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
+New-AzResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 ```
 
-Utwórz sieć wirtualną przy użyciu polecenia [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie *myVirtualNetwork1* z prefiksem adresu *10.0.0.0/16*.
+Utwórz sieć wirtualną przy użyciu polecenia [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork). Poniższy przykład tworzy sieć wirtualną o nazwie *myVirtualNetwork1* z prefiksem adresu *10.0.0.0/16*.
 
 ```azurepowershell-interactive
-$virtualNetwork1 = New-AzureRmVirtualNetwork `
+$virtualNetwork1 = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork1 `
   -AddressPrefix 10.0.0.0/16
 ```
 
-Utwórz konfigurację podsieci za pomocą polecenia [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig). Poniższy przykład umożliwia utworzenie konfiguracji podsieci z prefiksem adresu 10.0.0.0/24:
+Utwórz konfigurację podsieci przy użyciu [New AzVirtualNetworkSubnetConfig](/powershell/module/az.network/new-azvirtualnetworksubnetconfig). Poniższy przykład umożliwia utworzenie konfiguracji podsieci z prefiksem adresu 10.0.0.0/24:
 
 ```azurepowershell-interactive
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -Name Subnet1 `
   -AddressPrefix 10.0.0.0/24 `
   -VirtualNetwork $virtualNetwork1
 ```
 
-Zapisz konfigurację podsieci sieci wirtualnej za pomocą [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork), które tworzy podsieć:
+Zapisz konfigurację podsieci sieci wirtualnej za pomocą [AzVirtualNetwork zestaw](/powershell/module/az.network/Set-azVirtualNetwork), które tworzy podsieć:
 
 ```azurepowershell-interactive
-$virtualNetwork1 | Set-AzureRmVirtualNetwork
+$virtualNetwork1 | Set-AzVirtualNetwork
 ```
 
 Tworzenie sieci wirtualnej przy użyciu prefiksów adresów 10.1.0.0/16 i jedną podsieć:
 
 ```azurepowershell-interactive
 # Create the virtual network.
-$virtualNetwork2 = New-AzureRmVirtualNetwork `
+$virtualNetwork2 = New-AzVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork2 `
   -AddressPrefix 10.1.0.0/16
 
 # Create the subnet configuration.
-$subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = Add-AzVirtualNetworkSubnetConfig `
   -Name Subnet1 `
   -AddressPrefix 10.1.0.0/24 `
   -VirtualNetwork $virtualNetwork2
 
 # Write the subnet configuration to the virtual network.
-$virtualNetwork2 | Set-AzureRmVirtualNetwork
+$virtualNetwork2 | Set-AzVirtualNetwork
 ```
 
 ## <a name="peer-virtual-networks"></a>Tworzenia komunikacji równorzędnej sieci wirtualnych
 
-Utwórz połączenie równorzędne [Add-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/add-azurermvirtualnetworkpeering). Poniższy przykład elementów równorzędnych *myVirtualNetwork1* do *myVirtualNetwork2*.
+Utwórz połączenie równorzędne [AzVirtualNetworkPeering Dodaj](/powershell/module/az.network/add-azvirtualnetworkpeering). Poniższy przykład elementów równorzędnych *myVirtualNetwork1* do *myVirtualNetwork2*.
 
 ```azurepowershell-interactive
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name myVirtualNetwork1-myVirtualNetwork2 `
   -VirtualNetwork $virtualNetwork1 `
   -RemoteVirtualNetworkId $virtualNetwork2.Id
 ```
 
-W danych wyjściowych zwracane po wykonaniu poprzedniego polecenia, zobaczysz, że **PeeringState** jest *zainicjowano*. Komunikacja równorzędna pozostanie w *zainicjowano* stanu do czasu utworzenia komunikacji równorzędnej z *myVirtualNetwork2* do *myVirtualNetwork1*. Tworzenie komunikacji równorzędnej z *myVirtualNetwork2* do *myVirtualNetwork1*. 
+W danych wyjściowych zwracane po wykonaniu poprzedniego polecenia, zobaczysz, że **PeeringState** jest *zainicjowano*. Komunikacja równorzędna pozostanie w *zainicjowano* stanu do czasu utworzenia komunikacji równorzędnej z *myVirtualNetwork2* do *myVirtualNetwork1*. Tworzenie komunikacji równorzędnej z *myVirtualNetwork2* do *myVirtualNetwork1*.
 
 ```azurepowershell-interactive
-Add-AzureRmVirtualNetworkPeering `
+Add-AzVirtualNetworkPeering `
   -Name myVirtualNetwork2-myVirtualNetwork1 `
   -VirtualNetwork $virtualNetwork2 `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 ```
 
-W danych wyjściowych zwracane po wykonaniu poprzedniego polecenia, zobaczysz, że **PeeringState** jest *połączono*. Platforma Azure również zmieniła stan komunikacji równorzędnej z *myVirtualNetwork1 myVirtualNetwork2* komunikacji równorzędnej do *połączono*. Upewnij się, że stan komunikacji równorzędnej dla *myVirtualNetwork1 myVirtualNetwork2* komunikacji równorzędnej zmieniony na *połączono* z [polecenie Get-AzureRmVirtualNetworkPeering](/powershell/module/azurerm.network/get-azurermvirtualnetworkpeering).
+W danych wyjściowych zwracane po wykonaniu poprzedniego polecenia, zobaczysz, że **PeeringState** jest *połączono*. Platforma Azure również zmieniła stan komunikacji równorzędnej z *myVirtualNetwork1 myVirtualNetwork2* komunikacji równorzędnej do *połączono*. Upewnij się, że stan komunikacji równorzędnej dla *myVirtualNetwork1 myVirtualNetwork2* komunikacji równorzędnej zmieniony na *połączono* z [Get AzVirtualNetworkPeering](/powershell/module/az.network/get-azvirtualnetworkpeering).
 
 ```azurepowershell-interactive
-Get-AzureRmVirtualNetworkPeering `
+Get-AzVirtualNetworkPeering `
   -ResourceGroupName myResourceGroup `
   -VirtualNetworkName myVirtualNetwork1 `
   | Select PeeringState
 ```
 
-Zasoby w jednej sieci wirtualnej nie może komunikować się z zasobami w innej sieci wirtualnej do momentu **PeeringState** dla komunikacji równorzędnej w obu sieciach wirtualnych jest *połączono*. 
+Zasoby w jednej sieci wirtualnej nie może komunikować się z zasobami w innej sieci wirtualnej do momentu **PeeringState** dla komunikacji równorzędnej w obu sieciach wirtualnych jest *połączono*.
 
 ## <a name="create-virtual-machines"></a>Tworzenie maszyn wirtualnych
 
@@ -129,10 +131,10 @@ Utwórz maszynę wirtualną w każdej sieci wirtualnej, dzięki czemu będzie mo
 
 ### <a name="create-the-first-vm"></a>Tworzenie pierwszej maszyny wirtualnej
 
-Utwórz maszynę wirtualną za pomocą polecenia [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVm1* w *myVirtualNetwork1* sieci wirtualnej. `-AsJob` Opcja tworzy maszynę Wirtualną w tle, dzięki czemu można kontynuować do następnego kroku. Po wyświetleniu monitu wprowadź nazwę użytkownika i hasło, które chcesz zalogować się do maszyny Wirtualnej za pomocą.
+Utwórz maszynę wirtualną przy użyciu polecenia [New-AzVM](/powershell/module/az.compute/new-azvm). Poniższy przykład tworzy Maszynę wirtualną o nazwie *myVm1* w *myVirtualNetwork1* sieci wirtualnej. `-AsJob` Opcja tworzy maszynę Wirtualną w tle, dzięki czemu można kontynuować do następnego kroku. Po wyświetleniu monitu wprowadź nazwę użytkownika i hasło, które chcesz zalogować się do maszyny Wirtualnej za pomocą.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
   -VirtualNetworkName "myVirtualNetwork1" `
@@ -145,7 +147,7 @@ New-AzureRmVm `
 ### <a name="create-the-second-vm"></a>Tworzenie drugiej maszyny wirtualnej
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
   -ResourceGroupName "myResourceGroup" `
   -Location "East US" `
   -VirtualNetworkName "myVirtualNetwork2" `
@@ -158,10 +160,10 @@ W ciągu kilku minut zostanie utworzona maszyna wirtualna. Nie należy kontynuow
 
 ## <a name="communicate-between-vms"></a>Nawiązywanie komunikacji między maszynami wirtualnymi
 
-Publiczny adres IP maszyny Wirtualnej można nawiązać z Internetu. Użyj polecenia [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress), aby uzyskać publiczny adres IP maszyny wirtualnej. W poniższym przykładzie zwracany jest publiczny adres IP maszyny wirtualnej o nazwie *myVm1*:
+Publiczny adres IP maszyny Wirtualnej można nawiązać z Internetu. Użyj [Get AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) aby zwrócić publiczny adres IP maszyny Wirtualnej. W poniższym przykładzie zwracany jest publiczny adres IP maszyny wirtualnej o nazwie *myVm1*:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
   -Name myVm1 `
   -ResourceGroupName myResourceGroup | Select IpAddress
 ```
@@ -198,10 +200,10 @@ Otrzymasz cztery odpowiedzi. Odłącz swoje sesje protokołu RDP do obu maszyn w
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Gdy nie jest już potrzebny, należy użyć [Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
+Gdy nie jest już potrzebny, należy użyć [AzResourcegroup Usuń](/powershell/module/az.resources/remove-azresourcegroup) Aby usunąć grupę zasobów i wszystkie zawarte w niej zasoby.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 06/11/2018
+ms.date: 02/21/2019
 ms.author: magoedte
-ms.openlocfilehash: 46be596cbd2641b9ecd3206f44a6e7de7beed255
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: d6933d5fd72a3a6c945d3afc3fdd3512be5b28d1
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417514"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56591605"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Zarządzanie usługą Log Analytics przy użyciu szablonów usługi Azure Resource Manager
 Możesz użyć [szablonów usługi Azure Resource Manager](../../azure-resource-manager/resource-group-authoring-templates.md) do tworzenia i konfigurowania obszarów roboczych usługi Log Analytics. Przykłady zadań, które można wykonać za pomocą szablonów:
@@ -42,7 +42,7 @@ Poniższa tabela zawiera listę wersji interfejsu API dla zasobów używanych w 
 | Zasób | Typ zasobu | Wersja interfejsu API |
 |:---|:---|:---|:---|
 | Obszar roboczy   | obszary robocze    | 2017-03-15-preview |
-| Wyszukiwanie      | savedSearches | 2017-03-15-preview |
+| Wyszukiwanie      | savedSearches | 2015-03-20 |
 | Źródło danych | źródła danych   | 2015-11-01-preview |
 | Rozwiązanie    | rozwiązania     | 2015-11-01-preview |
 
@@ -101,7 +101,7 @@ Następujące parametry ustawiona wartość domyślna:
         {
             "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2015-11-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
@@ -218,7 +218,7 @@ W poniższym przykładzie szablon przedstawia sposób:
   },
   "resources": [
     {
-      "apiVersion": "2017-03-15-preview",
+      "apiVersion": "2015-11-01-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -230,7 +230,7 @@ W poniższym przykładzie szablon przedstawia sposób:
       },
       "resources": [
         {
-          "apiVersion": "2017-03-15-preview",
+          "apiVersion": "2015-03-20",
           "name": "VMSS Queries2",
           "type": "savedSearches",
           "dependsOn": [
@@ -379,7 +379,7 @@ W poniższym przykładzie szablon przedstawia sposób:
           }
         },
         {
-          "apiVersion": "2015-11-01-preview",
+          "apiVersion": "2015-03-20",
           "name": "[concat(parameters('applicationDiagnosticsStorageAccountName'),parameters('workspaceName'))]",
           "type": "storageinsightconfigs",
           "dependsOn": [

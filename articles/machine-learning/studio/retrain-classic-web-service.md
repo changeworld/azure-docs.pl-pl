@@ -10,12 +10,12 @@ author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 73ab816c7043c7fb0f572677c6ceeb722653dec1
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456558"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650774"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Ponowne szkolenie i wdrażania klasycznej usługi sieci web programu Studio
 
@@ -60,7 +60,7 @@ Aby programowo uzyskać poprawny adres URL poprawki, wykonaj następujące kroki
 1. Uruchom [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) przykładowego kodu.
 1. Z danych wyjściowych AddEndpoint znaleźć *HelpLocation* wartości i skopiuj adres URL.
 
-   ![HelpLocation w danych wyjściowych przykładu addEndpoint.](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
+   ![HelpLocation w danych wyjściowych przykładu addEndpoint.](./media/retrain-classic/addEndpoint-output.png)
 1. Wklej adres URL do przeglądarki, aby przejść do strony, który zawiera linki pomocy dla usługi sieci web.
 1. Kliknij przycisk **aktualizacja zasobów** link, aby otworzyć stronę pomocy poprawki.
 
@@ -81,7 +81,7 @@ Wykonaj następujące kroki, aby uzyskać poprawny URL poprawki przy użyciu por
 
 Strona pomocy poprawki zawiera adres URL poprawki, należy użyć i zawiera przykładowy kod, który można użyć w celu wywołania go.
 
-![Adres URL poprawki.](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
+![Adres URL poprawki.](./media/retrain-classic/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>Zaktualizuj punkt końcowy
 

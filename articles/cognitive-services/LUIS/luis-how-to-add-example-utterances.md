@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 3f08e2b2fab03ed7f2cccfe251e125033d55b30a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 16bff038b21658d29f3ab5a4b135af7f8a9e640c
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860630"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593934"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>Dodawanie jednostki do przykładu wypowiedzi 
 
@@ -35,21 +35,17 @@ Niektórych typów jednostek, takich jak wstępnie utworzonych jednostek i obiek
 Poniższa procedura służy do tworzenia i tag jednostki niestandardowej w ramach następujących wypowiedź na stronie opcji:
 
 ```text
-Does John Smith work in Seattle?
+Are there any SQL server jobs?
 ```
 
-1. Wybierz `Seattle` w wypowiedź, aby oznaczyć go jako prosty jednostki.
+1. Wybierz `SQL server` w wypowiedź, aby oznaczyć go jako prosty jednostki. W polu listy rozwijanej jednostki, które pojawia się możesz wybrać istniejącej jednostki lub Dodaj nową jednostkę. Aby dodać nową jednostkę, wpisz jego nazwę `Job` w polu tekstowym, a następnie wybierz pozycję **Utwórz nową jednostkę**.
 
-    [![Zrzut ekranu przedstawiający zaznaczania tekstu w wypowiedź proste jednostki](./media/luis-how-to-add-example-utterances/hr-create-simple-1.png)](./media/luis-how-to-add-example-utterances/hr-create-simple-1.png)
+    ![Zrzut ekranu przedstawiający wprowadzanie nazwy jednostki](./media/luis-how-to-add-example-utterances/create-simple-entity.png)
 
     > [!NOTE]
     > Podczas wybierania słów w tagu jako jednostki:
     > * Dla pojedynczego słowa po prostu wybierz ją. 
     > * Aby uzyskać zestaw dwóch lub więcej wyrazów wybierz na początku, a następnie na końcu zestawu.
-
-1. W polu listy rozwijanej jednostki, które pojawia się możesz wybrać istniejącej jednostki lub Dodaj nową jednostkę. Aby dodać nową jednostkę, wpisz jego nazwę w polu tekstowym, a następnie wybierz **Utwórz nową jednostkę**. 
-
-    ![Zrzut ekranu przedstawiający wprowadzanie nazwy jednostki](./media/luis-how-to-add-example-utterances/hr-create-simple-2.png)
 
 1. W **jakiego typu jednostki, czy chcesz utworzyć?** okno podręczne, sprawdź nazwę jednostki i wybierz **proste** typu jednostki, a następnie wybierz **gotowe**.
 
@@ -57,14 +53,11 @@ Does John Smith work in Seattle?
 
 ## <a name="add-a-list-entity"></a>Dodaj jednostkę listy
 
-Lista jednostek reprezentują stały, zamknięte zestaw (pasuje do tekstu do dokładnego dopasowania) powiązanych słów w Twoim systemie. 
+Lista jednostek reprezentują zestaw dopasowania tekstu do dokładnego dopasowania słów powiązane w Twoim systemie. 
 
 Wykaz działu firmy mogą mieć znormalizowane wartości: `Accounting` i `Human Resources`. Nazwa każdego znormalizowane ma synonimów. Dla działu dodawanie tych synonimów może zawierać żadnych akronimów działu, liczby lub żargonu. Nie trzeba znać wszystkie wartości, po utworzeniu jednostki. Możesz dodać więcej po zapoznaniu się z wypowiedzi rzeczywistego użytkownika przy użyciu synonimów.
 
-1. Na liście wypowiedź przykład dla określonych wypowiedź zaznacz wyraz lub frazę w nowej listy. Następnie wprowadź nazwę listy w górnym polu tekstowym, a następnie wybierz **Utwórz nową jednostkę**.   
-
-    ![Zrzut ekranu przedstawiający wprowadzanie nazwy jednostki listy](./media/luis-how-to-add-example-utterances/hr-create-list-1.png)
-
+1. W polu wypowiedź przykład na **intencji** wybierz wyraz lub frazę, która ma nowej listy. Gdy pojawi się lista rozwijana jednostki, wprowadź nazwę dla nowej jednostki listy w górnym polu tekstowym, a następnie wybierz **Utwórz nową jednostkę**.   
 
 1. W **jakiego typu jednostki, czy chcesz utworzyć?** okno podręczne, nazwa podmiotu i wybierz **listy** jako typu. Dodawanie synonimów ten element listy, a następnie wybierz **gotowe**. 
 
@@ -76,21 +69,15 @@ Wykaz działu firmy mogą mieć znormalizowane wartości: `Accounting` i `Human 
 
 Złożone jednostki są tworzone na podstawie istniejących **jednostek** do obiektu nadrzędnego. 
 
-Zakładając, że wypowiedź `Does John Smith work in Seattle?`, obiekt nadrzędny pojedynczego złożonego wypowiedź mogą być zwracane informacje jednostki nazwisko pracownika i lokalizacji. 
+Zakładając, że wypowiedź `Does John Smith work in Seattle?`, złożonego wypowiedź może zwrócić informacje o jednostce o nazwie pracowników `John Smith`i lokalizację `Seattle` w jednostce złożone. Jednostki podrzędne musi już istnieć w aplikacji i oznaczane w wypowiedź przykład przed utworzeniem jednostki złożonego.
 
-Nazwisko pracownika, Jan Kowalski jest wstępnie [personName](luis-reference-prebuilt-person.md) jednostki. Lokalizacja, Seattle, jest proste jednostki niestandardowej. Po tych dwóch jednostek są tworzone i oznaczone w przykładzie wypowiedź, te jednostki może zostać zawinięty w jednostce złożone. 
+1. Aby zawijać obiektów podrzędnych do złożonych jednostki, wybierz pozycję **pierwszy** etykietą jednostki (skrajnie po lewej) w polu wypowiedź dla obiektu złożonego. Listy rozwijanej pojawi się opcji do wyboru.
 
-1. Aby zawijać poszczególne jednostki do złożonego, wybierz pozycję **pierwszy** etykietą jednostki (skrajnie po lewej) w polu wypowiedź dla obiektu złożonego. Zostanie wyświetlona lista listy rozwijanej wyświetlane opcje do wyboru.
+1. Wybierz **opakować w jednostce złożone** z listy rozwijanej. 
 
-1. Wybierz **opakować złożonego jednostki** z listy rozwijanej. 
-
-    ![Zrzut ekranu wybierz "Wrap w jednostce złożone"](./media/luis-how-to-add-example-utterances/hr-create-composite-1.png)
-
-1. Wybierz ostatni wyraz złożony jednostki (najdalej z prawej strony). Należy zauważyć, że zieloną linię zgodna złożonego jednostki.
+1. Wybierz ostatni wyraz złożony jednostki (najdalej z prawej strony). Należy zauważyć, że zieloną linię zgodna złożonego jednostki. To jest wizualny wskaźnik informujący złożonego jednostki i powinny znajdować się w wszystkie wyrazy w jednostce złożone z jednostki podrzędne skrajnie po lewej na jednostce podrzędnej najdalej z prawej strony.
 
 1. Wprowadź nazwę jednostki złożonego na liście rozwijanej.
-
-    ![Zrzut ekranu przedstawiający wprowadź nazwę jednostki złożonej, na liście rozwijanej](./media/luis-how-to-add-example-utterances/hr-create-composite-2.png)
 
     Jednostki są poprawnie zawijać, zieloną linię podlega cała fraza.
 
@@ -110,15 +97,11 @@ W polu wypowiedź `Move John Smith from Seattle to Cairo`, Seattle, jest to loka
 
 1. Na stronie intencji wypowiedź, wybierz `Seattle`, wprowadź nazwę jednostki `Location`, a następnie naciśnij klawisz Enter na klawiaturze.
 
-    ![Zrzut ekranu z utworzyć hierarchiczne jednostki etykietowania okno dialogowe](./media/luis-how-to-add-example-utterances/hr-hier-1.png)
-
 1. W **jakiego typu jednostki, czy chcesz utworzyć?** podręcznym wybierz pozycję _hierarchiczne_ dla **typu jednostki**, następnie dodać `Origin` i `Destination` jako elementy podrzędne, a następnie wybierz **gotowe**.
 
     ![Strona Szczegóły zrzut ekranu z opcjami, z jednostką ToLocation wyróżniony](./media/luis-how-to-add-example-utterances/create-location-hierarchical-entity.png)
 
 1. Wyraz wypowiedź został oznaczony za pomocą hierarchicznych obiektu nadrzędnego. Musisz przypisać słowo na jednostce podrzędnej. Wróć do wypowiedź na stronie szczegółów intencji. Zaznacz wyraz, a następnie z listy rozwijanej wybierz nazwę jednostki, utworzonej i postępuj zgodnie z menu po prawej stronie wybranie jednostki podrzędne poprawne.
-
-    ![Strona szczegółów zrzut ekranu z opcjami, w których trzeba przypisać słowo na jednostce podrzędnej](./media/luis-how-to-add-example-utterances/hr-hier-3.png)
 
     >[!CAUTION]
     >Nazwy jednostek podrzędny musi być unikatowa we wszystkich jednostek w jednej aplikacji. Dwoma obiektami hierarchiczne nie może zawierać jednostki podrzędne o takiej samej nazwie. 
@@ -135,7 +118,7 @@ Wybierz wyrazy, które zostaną podkreślone na czerwono na wypowiedź.
 
 Wyświetla pole jednostki **stan jednostki** z czerwony wykrzyknik różnic prognozy. Aby wyświetlić stan jednostki przy użyciu informacji na temat różnic między jednostkami etykietami oraz dostęp do przewidywanych, wybierz **stan jednostki** wybierz element z prawej strony.
 
-![Zrzut ekranu przedstawiający Wybieranie poprawny element naprawić niezgodności prognoz](./media/luis-how-to-add-example-utterances/entity-status.png)
+![Zrzut ekranu jednostki stan zaznaczenia](./media/luis-how-to-add-example-utterances/entity-prediction-error-correction.png)
 
 Czerwona linia może znajdować się w miejscach występowania dowolnego z następujących godzinach:
 
@@ -153,6 +136,9 @@ Następujące rozwiązania pomóc rozwiązać za pomocą jednostki prognozowania
 |Niepoprawnie oznaczone tekstu|Zaznacz jednostki niebieski, czerwoną linią|Niepoprawne prognoz|Podaj więcej wypowiedzi z jednostką poprawnie oznaczony w różnych miejscach i użycia. Bieżący wypowiedzi są nie są wystarczające do nauki LUIS, że to jest jednostka lub podobne jednostki są wyświetlane w tym samym kontekście. Podobne jednostki należy połączyć w pojedynczej jednostki, dzięki czemu usługa LUIS jest mylące. Innym rozwiązaniem jest dodanie listy frazę do poprawienia znaczenie słowa. |
 |Niepoprawnie oznaczone tekstu|Zaznacz jednostki niebieski, czerwoną linią|Poprawne prognoz| Podaj więcej wypowiedzi z jednostką poprawnie oznaczony w różnych miejscach i użycia. 
 
+> [!Note]
+> Po czerwoną otoczkę wokół etykietami zamiar w wierszu wypowiedź przykładu, [Błąd prognozowania intencji](luis-how-to-add-intents.md#intent-prediction-discrepancy-errors) wystąpił. Należy go poprawić. 
+
 ## <a name="other-actions"></a>Inne akcje
 
 Na przykład wypowiedzi można wykonać akcje, jako wybraną grupę lub jako pojedynczy element. Grupy wybranych przykład wypowiedzi zmienić menu kontekstowe powyżej listy. Pojedyncze elementy może używać zarówno menu kontekstowe powyżej listy i poszczególnych wielokropka kontekstowych na końcu każdego wiersza wypowiedź. 
@@ -162,8 +148,6 @@ Na przykład wypowiedzi można wykonać akcje, jako wybraną grupę lub jako poj
 Usuń z etykiety maszyny do opanowania jednostki, z wypowiedź na stronie opcji. Jeśli jednostka nie jest maszyny do opanowania, nie można usunąć z wypowiedź. Jeśli musisz usunąć jednostka przedstawiono maszyny z wypowiedź musisz usunąć jednostkę z całej aplikacji. 
 
 Aby usunąć etykietę maszyny do opanowania jednostki wypowiedź, wybrać jednostkę wypowiedź. Następnie wybierz pozycję **Usuń etykietę** w wyświetlonym polu listy rozwijanej jednostki.
-
-![Zrzut ekranu z opcjami strony szczegółów, usunąć etykietę, wyróżniony](./media/luis-how-to-add-example-utterances/remove-label.png) 
 
 ### <a name="add-prebuilt-entity-label"></a>Dodaj etykietę wstępnie utworzone jednostki
 

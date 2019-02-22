@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8ae55028bbc44a9383be6723f9bc6d39787cca45
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 01aa3d45d3b168c67603861a0a947026d4f2e08c
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767307"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650890"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych.
@@ -56,7 +56,7 @@ Wyjście usługi Azure Data Lake Store z usługi Stream Analytics nie jest obecn
 | Format | Dotyczy tylko serializacji JSON. Rozdzielone Określa, że dane wyjściowe są formatowane przez każdy obiekt JSON, oddzielone znakiem nowego wiersza. Tablica Określa, że dane wyjściowe są formatowane jako tablica obiektów JSON. Ta tablica jest zamknięty, tylko wtedy, gdy zadanie zostanie zatrzymane lub usługi Stream Analytics została przeniesiona następny przedział czasu. Ogólnie rzecz biorąc, lepiej jest używać wiersza rozdzielonych JSON, ponieważ nie wymaga żadnej specjalnej obsługi, gdy nadal trwa zapisywanie pliku wyjściowego do.|
 
 ### <a name="renew-data-lake-store-authorization"></a>Odnów autoryzację Data Lake Store
-Musisz ponownie uwierzytelniać konta Data Lake Store, jeśli jego hasło zmieniła się od zadania utworzenia lub ostatniego uwierzytelnienia. Jeśli nie ponownego uwierzytelnienia, zadanie nie dawać wyników danych wyjściowych i pokazuje komunikat o błędzie wskazujący potrzebę ponownej w dziennikach operacji. Obecnie ma ograniczenia gdzie token uwierzytelniania wymaga ręcznego odświeżenia co 90 dni, dla wszystkich zadań z danymi wyjściowymi Data Lake Store.
+Musisz ponownie uwierzytelniać konta Data Lake Store, jeśli jego hasło zmieniła się od zadania utworzenia lub ostatniego uwierzytelnienia. Jeśli nie ponownego uwierzytelnienia, zadanie nie dawać wyników danych wyjściowych i pokazuje komunikat o błędzie wskazujący potrzebę ponownej w dziennikach operacji. Obecnie ma ograniczenia gdzie token uwierzytelniania wymaga ręcznego odświeżenia co 90 dni, dla wszystkich zadań z danymi wyjściowymi Data Lake Store. Jednak można rozwiązać tego ograniczenia, [uwierzytelniania za pomocą zarządzanych tożsamości (wersja zapoznawcza)](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-managed-identities-adls).
 
 Aby odnowić autoryzację, **zatrzymać** zadania > Przejdź do usługi Data Lake Store dane wyjściowe > kliknij **Odnów autoryzację** połączyć, a przez krótki czas strony wyświetli wskazujący **przekierowywanie do Autoryzacja...** . Na stronie automatycznie zamyka i wskazuje, w przypadku powodzenia **autoryzacja została pomyślnie odnowiona**. Następnie należy kliknąć przycisk **Zapisz** w dolnej części strony i przejść przez ponowne uruchomienie zadania z **ostatniego zatrzymana** na uniknięcie utraty danych.
 

@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/15/2018
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 415cdecc33b7360d482d37a3cb9d4f1bce528ab1
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cc2d19bec91998116143058d2bc4313fd192db38
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251796"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592977"
 ---
 # <a name="create-an-oem-package"></a>Tworzenie pakietu producenta OEM
 
@@ -30,11 +30,10 @@ Pakiet rozszerzenia usługi Azure Stack OEM to mechanizm, który OEM określonej
 
 ## <a name="creating-the-package"></a>Tworzenie pakietu
 
-Po utworzeniu i zweryfikowany, pakiet rozszerzenia OEM może służyć w VaaS.  Przed kontynuowaniem upewnij się, że zostały wykonane kroki [tworzenia pakietu OEM](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true). Pakiet jest następnie przesłane do firmy Microsoft oraz VaaS wyników testów z przepływu pracy weryfikacji rozwiązania rejestracji. Poniższe kroki zawierają szczegółowe instrukcje dotyczące pakietu wygenerowane pliki w pliku zip pojedynczego, którą może wykorzystać VaaS.
+Po utworzeniu i zweryfikowany, pakiet rozszerzenia OEM może służyć w VaaS.  Przed kontynuowaniem upewnij się, że zostały wykonane kroki [tworzenia pakietu OEM](https://microsoft.sharepoint.com/:w:/r/teams/cloudsolutions/Sacramento/_layouts/15/Doc.aspx?sourcedoc=%7BD7406069-7661-419C-B3B1-B6A727AB3972%7D&file=Azure%20Stack%20OEM%20Extension%20Package.docx&action=default&mobileredirect=true). Pakiet jest następnie przesłane do firmy Microsoft oraz VaaS wyników testów z przepływu pracy weryfikacji pakietu rejestracji. Poniższe kroki zawierają szczegółowe instrukcje dotyczące pakietu wygenerowane pliki w pliku zip pojedynczego, którą może wykorzystać VaaS.
 
 1. Zidentyfikuj następującej zawartości pakietu:
-    - Plik wykonywalny o nazwie `<Publisher>-<Model>-<Version>.exe`
-    - Jeden lub więcej plików binarnych o nazwie `<Publisher><Model>-<Version>-#.bin`, gdzie # to numer sekwencyjny, począwszy od 1. Liczba plików binarnych jest zależna od łączny rozmiar zawartości pakietu.
+    - Plik zip zawierający zawartość pakietu
     - Plik manifestu o nazwie `oemMetadata.xml`, powinna być identyczna zawartość pliku metadata.xml w katalogu głównym zawartości pakietu.
 
 2. Wybierz pliki zawartości, a następnie utwórz plik zip z zawartości:
@@ -51,7 +50,7 @@ Aby sprawdzić poprawność struktury pliku zip, sprawdź go i sprawdź, czy są
 
 ![Poprawnie pakietu zawartości](media/vaas-create-oem-package-3.png)
 
-Można teraz przekazany do VaaS pliku zip i podpisany przez firmę Microsoft w przepływie pracy weryfikacji rozwiązania.
+Można teraz przekazywane do VaaS pliku zip i podpisany przez firmę Microsoft w przepływie pracy sprawdzanie poprawności pakietu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

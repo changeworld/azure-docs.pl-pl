@@ -16,20 +16,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 2bdd3cd05f78503962461abfcc85320c25350e69
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980605"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593135"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Wprowadzenie do procedury obsługi rozszerzenia Azure Desired State Configuration
 
 Agent maszyny Wirtualnej platformy Azure i skojarzonych rozszerzeń są częścią usługi infrastruktury Microsoft Azure. Składniki oprogramowania, które rozszerzyć funkcjonalność maszyny Wirtualnej i uprościć różnych operacji zarządzania maszyny Wirtualnej są rozszerzenia maszyny Wirtualnej.
 
-Główny przypadek użycia, rozszerzenie Azure Desired State Configuration (DSC) jest uruchomienie maszyny Wirtualnej w celu [usługi Azure Automation DSC](../../automation/automation-dsc-overview.md). Uruchamianie maszyny Wirtualnej zapewnia [korzyści](/powershell/dsc/metaconfig#pull-service) zawierające bieżące zarządzanie konfiguracji maszyny Wirtualnej i integracji z innymi narzędziami operacyjne, takie jak monitorowania platformy Azure.
+Główny przypadek użycia, rozszerzenie Azure Desired State Configuration (DSC) jest uruchomienie maszyny Wirtualnej w celu [usługi Azure Automation stanu Configuration (DSC)](../../automation/automation-dsc-overview.md).
+Usługa zapewnia [korzyści](/powershell/dsc/metaconfig#pull-service) zawierające bieżące zarządzanie konfiguracji maszyny Wirtualnej i integracji z innymi narzędziami operacyjne, takie jak monitorowania platformy Azure.
+Przy użyciu rozszerzenia można zarejestrować maszyny Wirtualnej z usługą zapewnia elastyczne rozwiązanie, które działa to również między subskrypcjami platformy Azure.
 
-Można użyć rozszerzenia DSC, niezależnie od usługi Automation DSC. Jednak wymaga pojedynczej akcji, która występuje podczas wdrażania. Trwającą raportowania lub Zarządzanie konfiguracją jest dostępna, innym niż lokalnie na maszynie Wirtualnej.
+Można użyć rozszerzenia DSC, niezależnie od usługi Automation DSC.
+Jednak to tylko wypchnie konfiguracji do maszyny Wirtualnej.
+Bez ciągłego raportowania jest dostępna, innym niż lokalnie na maszynie Wirtualnej.
 
 Ten artykuł zawiera informacje o obu scenariuszach: za pomocą rozszerzenia DSC do dołączenia do usługi Automation, a za pomocą rozszerzenia DSC jako narzędzie do przypisywania konfiguracje do maszyn wirtualnych przy użyciu zestawu Azure SDK.
 
@@ -120,6 +124,34 @@ $storageName = 'demostorage'
 Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
 Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+```
+
+## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
+
+Interfejs wiersza polecenia platformy Azure może służyć do wdrażania rozszerzenia DSC do istniejącej maszyny wirtualnej.
+
+Dla maszyny wirtualnej z systemem Windows:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name Microsoft.Powershell.DSC \
+  --publisher Microsoft.Powershell \
+  --version 2.77 --protected-settings '{}' \
+  --settings '{}'
+```
+
+Aby uzyskać mchine wirtualnych z systemem Linux:
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name DSCForLinux \
+  --publisher Microsoft.OSTCExtensions \
+  --version 2.7 --protected-settings '{}' \
+  --settings '{}'
 ```
 
 ## <a name="azure-portal-functionality"></a>Funkcjonalność portalu platformy Azure

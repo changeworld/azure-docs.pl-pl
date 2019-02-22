@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: 266e2be2775a6f9b74c714bd9112e38837bb6a6c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6530e86f59124e324953e4ca082c247ebec3bc91
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098342"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650924"
 ---
 # <a name="ethereum-proof-of-work-consortium-solution-template"></a>Szablon rozwiązania konsorcjum dowód pracy Ethereum
 
@@ -43,9 +43,9 @@ Element członkowski konsorcjum ma również zestaw węzłów transakcji ze zró
 
 Węzły transakcji są ze zrównoważonym obciążeniem w obrębie zestaw dostępności, aby zapewnić wysoką dostępność. Szablon obsługuje maksymalnie pięć węzłów transakcji aprowizowane za pomocą zestawów skalowania maszyn wirtualnych.
 
-### <a name="log-analytics-details"></a>Szczegóły analizy dziennika
+### <a name="azure-monitor-logs-details"></a>Usługa Azure Monitor rejestruje szczegółowe informacje
 
-Każde wdrożenie również tworzy nowe wystąpienie Log analytics lub dołączyć do istniejącego wystąpienia. Usługa log analytics umożliwia monitorowanie różnych metryk wydajności poszczególnych maszyn wirtualnych, tworzącą sieć wdrożone.
+Każde wdrożenie również tworzy nowe wystąpienie dzienniki usługi Azure Monitor lub dołączyć do istniejącego wystąpienia. Dzienniki platformy Azure Monitor umożliwia monitorowanie różnych metryk wydajności poszczególnych maszyn wirtualnych, tworzącą sieć wdrożone.
 
 ## <a name="deployment-architecture"></a>Architektura wdrożenia
 
@@ -96,7 +96,7 @@ Operations Management Suite (OMS) umożliwia skonfigurowanie zasobów pakietu OM
 
 Nazwa parametru|Opis| Dozwolone wartości|Wartości domyślne
 ---|---|---|---
-Łączenie do istniejącej usługi OMS|Utwórz nowe wystąpienie usługi Log Analytics lub Dołącz do istniejącego wystąpienia|Utwórz nowy istniejące sprzężenia|Utwórz nową lokalizację analizy dzienników|Region, w którym zostanie wdrożony nowy usługi Log Analytics (widoczny, jeśli *Utwórz nową* jest zaznaczone)
+Łączenie do istniejącej usługi OMS|Utwórz nowe wystąpienie dzienniki usługi Azure Monitor, lub Dołącz do istniejącego wystąpienia|Utwórz nowy istniejące sprzężenia|Tworzenie nowej lokalizacji dzienników usługi Azure Monitor|Region, w którym zostanie wdrożone nowe dzienniki usługi Azure Monitor (widoczny, jeśli *Utwórz nową* jest zaznaczone)
 Istniejący identyfikator obszaru roboczego pakietu OMS|Identyfikator obszaru roboczego istniejącego wystąpienia (widoczny, jeśli *Dołącz do istniejącego* wybrano) warstwy usługi OMS|Wybierz warstwę cenową dla nowego wystąpienia. Więcej informacji o https://azure.microsoft.com/pricing/details/log-analytics/ (widoczny, jeśli *Dołącz do istniejącego* jest zaznaczone)|Bezpłatne autonomicznego na węzeł|Bezpłatna
 Istniejącym kluczem głównym pakietu OMS|Klucz podstawowy używany do łączenia z istniejącym wystąpieniem pakietu OMS (widoczny, jeśli *Dołącz do istniejącego* jest zaznaczone)
 

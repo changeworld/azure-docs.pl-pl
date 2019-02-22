@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2018
 ms.author: magattus
-ms.openlocfilehash: 2b73deb18b518f257e1de6125ef6d4e35eb0e7b7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 6ce10cd9947acbb74807a5288fc1753e794e69c7
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236282"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652301"
 ---
 # <a name="azure-diagnostic-logs"></a>Dzienniki diagnostyczne platformy Azure
 
@@ -35,7 +35,7 @@ Dzienniki diagnostyczne platformy Azure pozwalają eksportu metryki użycia pods
 
 - Eksportuj dane do magazynu obiektów blob, Eksportuj do pliku CSV i Generowanie wykresów w programie Excel.
 - Eksportowanie danych do usługi Event Hubs i korelowanie danych z innymi usługami platformy Azure.
-- Eksportuj dane do usługi Log Analytics i przeglądanie danych z własnego obszaru roboczego usługi Log Analytics
+- Eksportuj dane do dzienników usługi Azure Monitor i wyświetlanie danych w własnego obszaru roboczego usługi Log Analytics
 
 Na poniższym diagramie przedstawiono typowy CDN core analytics widok danych.
 
@@ -85,15 +85,15 @@ Aby użyć konta magazynu do przechowywania dzienników, wykonaj następujące k
 
 5. Po wprowadzeniu ustawień dziennika diagnostycznego, wybierz **Zapisz**.
 
-### <a name="logging-with-log-analytics"></a>Rejestrowanie za pomocą usługi Log Analytics
+### <a name="logging-with-azure-monitor"></a>Rejestrowanie za pomocą usługi Azure Monitor
 
-Na potrzeby przechowywania dzienników usługi Log Analytics, wykonaj następujące kroki:
+Aby użyć usługi Azure Monitor do przechowywania dzienników, wykonaj następujące kroki:
 
 1. Z **dzienniki diagnostyczne** wybierz opcję **wysyłanie do usługi Log Analytics**. 
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/05_Ready-to-Configure.png)    
 
-2. Wybierz **Konfiguruj** Aby skonfigurować rejestrowanie dla usługi Log Analytics. 
+2. Wybierz **Konfiguruj** Aby skonfigurować rejestrowanie dla usługi Azure Monitor. 
 
    **Obszarów roboczych usługi Log Analytics** zostanie wyświetlona strona.
 
@@ -133,7 +133,7 @@ Na potrzeby przechowywania dzienników usługi Log Analytics, wykonaj następuj�
 
     ![Portal — dzienniki diagnostyczne](./media/cdn-diagnostics-log/cdn-core-analytics-page.png) 
 
-    Obszar roboczy usługi Log Analytics jest teraz gotowy do dane dziennika. Aby można było używać tych danych, należy użyć [rozwiązania do analizy dziennika](#consuming-diagnostics-logs-from-a-log-analytics-workspace), pokryte w dalszej części tego artykułu.
+    Obszar roboczy usługi Log Analytics jest teraz gotowy do dane dziennika. Aby można było używać tych danych, należy użyć [usługi Azure Monitor dzienniki rozwiązania](#consuming-diagnostics-logs-from-a-log-analytics-workspace), pokryte w dalszej części tego artykułu.
 
 Aby uzyskać więcej informacji na temat opóźnienia danych dziennika zobacz [dziennika danych opóźnień](#log-data-delays).
 
@@ -211,9 +211,9 @@ Poniżej przedstawiono sposób korzystania z narzędzia:
 5.  Wynikowy plik CSV zawiera dane analizy w prostych płaskiej hierarchii.
 
 ## <a name="consuming-diagnostics-logs-from-a-log-analytics-workspace"></a>Korzystanie z dzienników diagnostycznych z obszaru roboczego usługi Log Analytics
-Usługa log Analytics jest usługą platformy Azure, która monitoruje środowiska chmurowe lokalnych i w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł. 
+Usługa Azure Monitor jest usługą platformy Azure, która monitoruje środowiska chmurowe lokalnych i w celu zachowania ich dostępności i wydajności. Zbiera ona dane generowane przez zasoby w środowiskach chmurowych i lokalnych oraz inne narzędzia do monitorowania, aby przeprowadzać analizę na podstawie wielu źródeł. 
 
-Aby korzystać z usługi Log Analytics, należy najpierw [włączyć rejestrowanie](#enable-logging-with-azure-storage) do obszaru roboczego usługi Azure Log Analytics, które opisano wcześniej w tym artykule.
+Aby korzystać z usługi Azure Monitor, należy najpierw [włączyć rejestrowanie](#enable-logging-with-azure-storage) do obszaru roboczego usługi Azure Log Analytics, które opisano wcześniej w tym artykule.
 
 ### <a name="using-the-log-analytics-workspace"></a>Korzystanie z obszaru roboczego usługi Log Analytics
 
@@ -227,9 +227,9 @@ Aby wyświetlić dane na różne sposoby, za pomocą rozwiązania do zarządzani
 
 Rozwiązania do zarządzania można zainstalować z witryny Azure marketplace, wybierając **Pobierz teraz** łącze u dołu każde z tych rozwiązań.
 
-### <a name="add-a-log-analytics-cdn-management-solution"></a>Dodaj rozwiązanie do zarządzania sieci CDN Log Analytics
+### <a name="add-a-azure-monitor-cdn-management-solution"></a>Dodaj rozwiązanie do zarządzania sieci CDN usługa Azure Monitor
 
-Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania analizy dziennika:
+Wykonaj następujące kroki, aby dodać rozwiązanie do zarządzania monitora platformy Azure:
 
 1.   Zaloguj się do witryny Azure portal przy użyciu subskrypcji platformy Azure i przejdź do pulpitu nawigacyjnego.
     ![Pulpit nawigacyjny platformy Azure](./media/cdn-diagnostics-log/13_Azure-dashboard.png)
@@ -443,7 +443,7 @@ Przykład właściwości:
 
 * [Dzienniki diagnostyczne platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
 * [Podstawowa analiza uzupełniające portalu usługi Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-analyze-usage-patterns)
-* [Program Azure Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
+* [Dzienniki usługi Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)
 * [Usługi Azure Log Analytics interfejsu API REST](https://docs.microsoft.com/rest/api/loganalytics)
 
 

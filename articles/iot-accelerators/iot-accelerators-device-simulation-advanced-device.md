@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
-ms.openlocfilehash: 7e680e3cd8a3d7056141814c5e7d4539b72073b4
-ms.sourcegitcommit: 3dcb1a3993e51963954194ba2a5e42260d0be258
+ms.openlocfilehash: a97afe64992db6b48558561ba958b513c8416494
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50757223"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592829"
 ---
 # <a name="create-an-advanced-device-model"></a>Utwórz model zaawansowanych urządzeń
 
@@ -26,11 +26,11 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 Aby wykonać kroki opisane w tym przewodniku z instrukcjami, należy wdrożone wystąpienie symulacji urządzenia w ramach subskrypcji platformy Azure.
 
-Jeśli nie zostały wdrożone symulacji urządzenia, należy wykonać [wdrażanie i uruchamianie symulacji urządzenia IoT na platformie Azure](quickstart-device-simulation-deploy.md) Szybki Start.
+Jeśli nie wdrożono jeszcze symulacji urządzenia, należy wykonać czynności opisane w przewodniku Szybki start [Wdrażanie i uruchamianie symulacji urządzenia usługi IoT na platformie Azure](quickstart-device-simulation-deploy.md).
 
-### <a name="open-device-simulation"></a>Symulacja urządzenia Otwórz
+### <a name="open-device-simulation"></a>Otwieranie symulacji urządzenia
 
-Aby uruchomić symulacji urządzenia w przeglądarce, najpierw należy przejść do [akceleratorów rozwiązań IoT Azure Microsoft](https://www.azureiotsolutions.com).
+Aby uruchomić symulację urządzenia w przeglądarce, przejdź najpierw do [akceleratorów rozwiązań usługi Microsoft Azure IoT](https://www.azureiotsolutions.com).
 
 Może być konieczne zalogowanie się przy użyciu poświadczeń subskrypcji platformy Azure.
 
@@ -56,7 +56,7 @@ Model urządzenia typowe ma:
 Każdy plik definicji urządzenia zawiera szczegóły dotyczące modelu symulowanego urządzenia, w tym następujące informacje:
 
 * Nazwa modelu urządzenia: ciąg znaków.
-* Protokół: Protokół AMQP | MQTT | PROTOKÓŁ HTTP.
+* Protokół: AMQP | MQTT | HTTP.
 * Początkowy stan urządzenia.
 * Jak często odświeżyć stan urządzenia.
 * Plik JavaScript, który służy do odświeżania stanu urządzenia.
@@ -164,7 +164,7 @@ Pola wymienione w schemacie można się z następujących typów:
 * Tekst
 * Wartość logiczna
 * Liczba całkowita
-* Podwójne
+* Double
 * DateTime
 
 ### <a name="supported-methods"></a>Obsługiwane metody
@@ -494,17 +494,17 @@ function main(context, state) {
 
 Do wdrożenia modelu urządzenia zaawansowane, przekazać pliki wystąpienia symulacji urządzenia:
 
-Wybierz **modele urządzeń** na pasku menu. **Modele urządzeń** strona zawiera listę dostępnych w tym wystąpieniu symulacji urządzenia modeli urządzeń:
+Na pasku narzędzi wybierz pozycję **Modele urządzeń**. **Modele urządzeń** strona zawiera listę dostępnych w tym wystąpieniu symulacji urządzenia modeli urządzeń:
 
 ![Modele urządzeń](media/iot-accelerators-device-simulation-advanced-device/devicemodelnav.png)
 
-Kliknij przycisk **+ Dodaj modele urządzeń** w prawym górnym rogu strony:
+Kliknij pozycję **+ Dodaj modele urządzeń** w prawym górnym rogu strony:
 
-![Dodaj model urządzenia](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
+![Dodawanie modelu urządzenia](media/iot-accelerators-device-simulation-advanced-device/devicemodels.png)
 
 Kliknij przycisk **zaawansowane** Otwórz kartę modelu zaawansowanych urządzeń:
 
-![Karta Zaawansowane](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
+![Advanced Tab](media/iot-accelerators-device-simulation-advanced-device/advancedtab.png)
 
 Kliknij przycisk **Przeglądaj** i wybierz pliki JSON i języka JavaScript, został utworzony. Pamiętaj wybrać wszystkie trzy pliki. Jeśli brakuje dowolnej jeden plik sprawdzania poprawności zakończy się niepowodzeniem:
 
@@ -516,4 +516,4 @@ Jeśli weryfikacja zakończy się pomyślnie plików, kliknij przycisk **Zapisz*
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku opisano pliki modelu urządzenia, które są używane w symulacji urządzenia oraz sposobu tworzenia modelu urządzenia zaawansowane. Następnie możesz eksplorować jak [Użyj Time Series Insights, aby zwizualizować dane telemetryczne wysyłane z akceleratora rozwiązań symulacji urządzenia](about-iot-accelerators.md).
+W tym przewodniku opisano pliki modelu urządzenia, które są używane w symulacji urządzenia oraz sposobu tworzenia modelu urządzenia zaawansowane. Następnie możesz eksplorować jak [Użyj Time Series Insights, aby zwizualizować dane telemetryczne wysyłane z akceleratora rozwiązań symulacji urządzenia](https://docs.microsoft.com/azure/iot-accelerators/iot-accelerators-device-simulation-time-series-insights).

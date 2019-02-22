@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/14/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 8526716b299d26d8d70c9c5e5cdace34e188d019
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0fbd15b1d29d877ad0066d01945389665126bbcc
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111071"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649258"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>Jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure
 W tym artykule opisano, jak zmienić modelu licencjonowania maszyny wirtualnej programu SQL Server na platformie Azure za pomocą nowego dostawcę zasobów maszyny Wirtualnej SQL — **Microsoft.SqlVirtualMachine**. Istnieją dwa modele dla maszyny wirtualnej (VM) hostowany program SQL Server — płatność za użycie, licencjonowania i model dostarczania własnej licencji (BYOL). A teraz przy użyciu programu PowerShell lub wiersza polecenia platformy Azure, możesz zmodyfikować model licencjonowania, który korzysta z maszyny Wirtualnej programu SQL Server. 
@@ -34,6 +34,7 @@ Przełączanie między dwoma modelami licencji spowoduje naliczenie **bez przerw
   >[!NOTE]
   > - Możliwość konwertowania modelu licencjonowania jest obecnie dostępna tylko podczas uruchamiania przy użyciu obrazu maszyny Wirtualnej programu SQL Server zgodnie z rzeczywistym użyciem. W przypadku uruchomienia przy użyciu obrazu bring-your-own-license, z poziomu portalu, nie można przekonwertować tego obrazu na płatność za rzeczywiste użycie. 
   > - Klienci programu CSP mogą wykorzystywać korzyści AHB najpierw wdrażanie maszyny Wirtualnej zgodnie z rzeczywistym użyciem, a następnie konwertując go bring-your-own-license. 
+  > - Obecnie ta możliwość jest włączona tylko dla urządzeń w chmurze publicznej.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne

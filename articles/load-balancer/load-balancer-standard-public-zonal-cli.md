@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 18e5e9ff299cb645e2b5b47d327ee93e27da82df
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: fabec317370f5a45b16ac3e6dd3422eceb9621c3
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700037"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56592796"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-cli"></a>Tworzenie standardowego modułu równoważenia obciążenia za pomocą frontonu strefowych przy użyciu wiersza polecenia platformy Azure
 
@@ -51,7 +51,7 @@ az group create \
 ## <a name="create-a-zonal-public-ip-standard"></a>Tworzenie strefowej publicznej adresów IP w warstwie standardowa
 Aby uzyskać dostęp do aplikacji za pośrednictwem Internetu, potrzebujesz publicznego adresu IP modułu równoważenia obciążenia. To adres publiczny adres IP, który jest tworzony w określonej strefy zawsze istnieje tylko w tej strefie. Nie jest możliwe zmienić strefę publicznego adresu IP.
 
-Utwórz publiczny adres IP przy użyciu polecenia [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress). Poniższy przykład tworzy strefowy publiczny adres IP o nazwie *myPublicIP* w *myResourceGroupLoadBalancer* grupy zasobów w strefie 1.
+Utwórz publiczny adres IP za pomocą polecenia [az network public-ip create](/cli/azure/network/public-ip#az-network-public-ip-create). Poniższy przykład tworzy strefowy publiczny adres IP o nazwie *myPublicIP* w *myResourceGroupLoadBalancer* grupy zasobów w strefie 1.
 
 ```azurecli-interactive
 az network public-ip create \

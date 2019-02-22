@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 02/19/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: b3a9ee66907b51a40e9f4b0871d9f6ba6e29763a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f9ed10c84be86304722020606873b0c7866df1e8
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242403"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594053"
 ---
 # <a name="validate-oem-packages"></a>Sprawdzanie poprawności pakietów producenta OEM
 
@@ -35,7 +35,7 @@ Można przetestować nowy pakiet OEM, gdy nastąpiła zmiana oprogramowania ukł
 
 ## <a name="managing-packages-for-validation"></a>Zarządzanie pakietami do sprawdzania poprawności
 
-Korzystając z **sprawdzanie poprawności pakietu** przepływu pracy można zweryfikować pakietu, należy podać adres URL do **usługę Azure Storage blob**. Ten obiekt blob jest pakiet OEM, który został zainstalowany na rozwiązania w czasie wdrażania. Tworzenie obiektu blob przy użyciu konta magazynu platformy Azure, które są tworzone podczas instalacji (zobacz [Konfigurowanie walidacji jako zasoby usługi](azure-stack-vaas-set-up-resources.md)).
+Korzystając z **sprawdzanie poprawności pakietu** przepływu pracy można zweryfikować pakietu, należy podać adres URL do **usługę Azure Storage blob**. Ten obiekt blob jest test podpisanych pakietów OEM, który zostanie zainstalowany jako część procesu aktualizacji. Tworzenie obiektu blob przy użyciu konta magazynu platformy Azure, które są tworzone podczas instalacji (zobacz [Konfigurowanie walidacji jako zasoby usługi](azure-stack-vaas-set-up-resources.md)).
 
 ### <a name="prerequisite-provision-a-storage-container"></a>Wymagania wstępne: Aprowizowanie kontenera magazynu
 
@@ -58,7 +58,9 @@ Tworzenie kontenerów w ramach konta magazynu obiektów blob pakietu. Ten konten
 
 Podczas tworzenia **sprawdzanie poprawności pakietu** przepływu pracy w portalu VaaS, musisz podać adres URL obiektu blob usługi Azure Storage, zawierającego pakiet.
 
-#### <a name="option-1-generating-an-account-sas-url"></a>Opcja 1: Trwa generowanie adresu URL sygnatury dostępu Współdzielonego konta
+#### <a name="option-1-generating-a-blob-sas-url"></a>Opcja 1: Trwa generowanie adresu URL SAS obiektu blob
+
+Użyj tej opcji, jeśli nie chcesz włączyć publiczny dostęp do odczytu do obiektów blob lub kontenera magazynu.
 
 1. W [witryny Azure portal](https://portal.azure.com/), przejdź do swojego konta magazynu i przejdź do .zip zawierający pakiet
 
@@ -68,20 +70,23 @@ Podczas tworzenia **sprawdzanie poprawności pakietu** przepływu pracy w portal
 
 4. Ustaw **czas rozpoczęcia** do bieżącego czasu i **czas zakończenia** do co najmniej 48 godzin od **czas rozpoczęcia**. Jeśli inne testy zostaną uruchomione przy użyciu tego samego pakietu, należy rozważyć zwiększenie **czas zakończenia** długości testowania. Wszystkie testy zaplanowane za pośrednictwem VaaS po **czas zakończenia** zakończy się niepowodzeniem i nowych sygnatur dostępu Współdzielonego będzie należy do wygenerowania.
 
-5. Wybierz **generowania tokenu sygnatury dostępu Współdzielonego obiektów blob i adres URL**
+5. Wybierz pozycję **Generuj token i adres URL sygnatury dostępu współdzielonego obiektu blob**.
 
-Użyj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob** podczas uruchamiania nowego **sprawdzanie poprawności pakietu** przepływu pracy w portalu VaaS.
+Użyj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob** po zapewnieniu pakietu obiektu blob adresy URL do portalu.
 
-#### <a name="option-2-using-public-read-container"></a>Opcja 2: Za pomocą publicznego kontenera odczytu
+#### <a name="option-2-grant-public-read-access"></a>Opcja 2: Dostęp publiczny
 
 > [!CAUTION]
-> Ta opcja otwiera kontenera do anonimowego dostępu tylko do odczytu.
+> Ta opcja zostanie otwarty z obiektów blob do anonimowego dostępu tylko do odczytu.
 
 1. Udziel **publiczne odczytu dostępu tylko dla obiektów blob** do kontenera pakietu, postępując zgodnie z instrukcjami w sekcji [przyznawanie uprawnień użytkownikom anonimowym do kontenerów i obiektów blob](https://docs.microsoft.com/azure/storage/storage-manage-access-to-resources#grant-anonymous-users-permissions-to-containers-and-blobs).
 
-2. W kontenerze pakietu zaznacz na pakiet obiektu blob w kontenerze, aby otworzyć okienko właściwości.
+> [!NOTE]
+> Jeśli podajesz adres URL pakietu *interaktywne testu* (na przykład miesięczne AzureStack aktualizacji weryfikacji lub Weryfikacja pakietu rozszerzenia OEM), należy udzielić **pełny publiczny dostęp do odczytu** do Przejdź do testowania.
 
-3. Kopiuj **adresu URL**. Użyj tej wartości, przy rozpoczynaniu nowego **sprawdzanie poprawności pakietu** przepływu pracy w portalu VaaS.
+2. W kontenerze pakietu wybierz obiekt blob pakietu, aby otworzyć okienko właściwości.
+
+3. Kopiuj **adresu URL**. Użyj tej wartości, jeśli dostarczanie pakietu blob adresy URL do portalu.
 
 ## <a name="apply-monthly-update"></a>Zastosuj comiesięcznej aktualizacji
 
@@ -99,7 +104,7 @@ Użyj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob** podczas u
 
 4. [!INCLUDE [azure-stack-vaas-workflow-step_naming](includes/azure-stack-vaas-workflow-step_naming.md)]
 
-5. Wprowadź adres URL obiektu blob usługi Azure Storage do pakietu OEM, który został zainstalowany na rozwiązania w czasie wdrażania. Aby uzyskać instrukcje, zobacz [wygenerować adresu URL obiektu blob pakietu dla VaaS](#generate-package-blob-url-for-vaas).
+5. Wprowadź usługi Azure Storage adresu URL obiektu blob do testu podpisanego pakietu OEM wymagających podpisu firmy Microsoft. Aby uzyskać instrukcje, zobacz [wygenerować adresu URL obiektu blob pakietu dla VaaS](#generate-package-blob-url-for-vaas).
 
 6. [!INCLUDE [azure-stack-vaas-workflow-step_upload-stampinfo](includes/azure-stack-vaas-workflow-step_upload-stampinfo.md)]
 
@@ -113,9 +118,16 @@ Użyj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob** podczas u
 9. [!INCLUDE [azure-stack-vaas-workflow-step_submit](includes/azure-stack-vaas-workflow-step_submit.md)]
     Nastąpi przekierowanie do strony Podsumowanie testów.
 
+## <a name="required-tests"></a>Wymagane testy
+
+Następujące testy są wymagane do weryfikacji pakietu OEM:
+
+- Weryfikacja pakietu rozszerzenia producenta OEM
+- Aparat symulacji w chmurze
+
 ## <a name="run-package-validation-tests"></a>Uruchom testy walidacji pakietu
 
-1. W **sprawdzanie poprawności pakietu testów Podsumowanie** strony, zobaczysz listę testów, wymagane do zakończenia weryfikacji. Uruchom testy w tym przepływie pracy około 24 godzin.
+1. W **sprawdzanie poprawności pakietu testów Podsumowanie** stronie spowoduje uruchomienie podzbioru wymienione na liście testy odpowiednią do realizowanego scenariusza.
 
     W przepływach pracy sprawdzania poprawności **planowania** przetestujesz typowe parametry przepływu pracy na poziomie, które zostały określone podczas tworzenia przepływu pracy (zobacz [wspólnych parametrów przepływów pracy dla usługi Azure Stack weryfikacji jako usługa](azure-stack-vaas-parameters.md)). Jeśli dowolna z wartości parametrów testu stają się nieprawidłowe, użytkownik musi resupply je, zgodnie z instrukcją w [zmodyfikować parametry przepływu pracy](azure-stack-vaas-monitor-test.md#change-workflow-parameters).
 
@@ -125,13 +137,11 @@ Użyj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob** podczas u
 
 2. Wybierz odpowiedniego agenta, uruchom test. Informacje o dodawaniu lokalne wykonanie agentów testowych, zobacz [wdrożenia lokalnego agenta](azure-stack-vaas-local-agent.md).
 
-3. Dla każdego z następujących testów krok 4 i 5:
-    - Weryfikacja pakietu rozszerzenia producenta OEM
-    - Aparat symulacji w chmurze
+3. Pełna Weryfikacja pakietu rozszerzenia OEM opcję **harmonogram** z menu kontekstowego, aby otworzyć wiersz do planowania wystąpieniem testu.
 
-4. Wybierz **harmonogram** z menu kontekstowego, aby otworzyć wiersz do planowania wystąpieniem testu.
+4. Przejrzyj parametry testu, a następnie wybierz pozycję **przesyłania** Aby zaplanować wykonywanie weryfikacji pakietu rozszerzenia OEM.
 
-5. Przejrzyj parametry testu, a następnie wybierz pozycję **przesyłania** do zaplanowania testów do wykonania.
+5. Przejrzyj wynik weryfikacji pakietu rozszerzenia OEM. Gdy test zakończyła się pomyślnie, należy zaplanować aparatu symulacji chmury w celu wykonania.
 
 Gdy wszystkie testy zostały pomyślnie ukończone, Wyślij nazwę rozwiązania VaaS i sprawdzanie poprawności pakietu do [ vaashelp@microsoft.com ](mailto:vaashelp@microsoft.com) na żądanie, podpisywanie pakietów.
 

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e2115ad1a88c819e0ee1da34d9d332a0b013b96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cb2329a2a67e2e54084d2289cb8cb1a18663b329
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174354"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593679"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>Protokoły w wersji 2.0 — przepływ kodu autoryzacji OAuth 2.0
 
@@ -319,6 +319,6 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie wyglądać następująco:
 | `error_codes` |Lista kodów błędów specyficznych dla usługi STS, które mogą pomóc w diagnostyce. |
 | `timestamp` | Czas, w którym wystąpił błąd. |
 | `trace_id` | Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce. |
-| c`orrelation_id` | Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce składnikami. |
+| `correlation_id` | Unikatowy identyfikator dla żądania, które mogą pomóc w diagnostyce składnikami. |
 
 Opis kodów błędów i działań opartej na zalecanym kliencie, zobacz [kody błędów dla błędów punktu końcowego tokenu](#error-codes-for-token-endpoint-errors).

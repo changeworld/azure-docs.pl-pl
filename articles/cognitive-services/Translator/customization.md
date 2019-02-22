@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3fcc8f0c2c0ed897b1c5296eea694cd56144498b
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876066"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585852"
 ---
 # <a name="customize-your-text-translations"></a>Dostosuj tłumaczenia tekstu
 
@@ -42,7 +42,8 @@ Więcej informacji na temat różnych poziomów dostosowywania oparte na dostęp
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator Hub
 
-Starsze Centrum w usłudze Translator firmy Microsoft może służyć do translacji statystycznego tłumaczenia maszynowego. [Dowiedz się więcej](https://www.microsoft.com/en-us/translator/hub.aspx)
+> [!NOTE]
+> Starsze Centrum w usłudze Translator firmy Microsoft zostanie wycofana 30 kwietnia 2019 r. [Wyświetl informacje na temat migracji ważne i dat](https://www.microsoft.com/translator/business/hub/).  
 
 ## <a name="custom-translator-versus-hub"></a>Niestandardowe w usłudze Translator w stosunku do Centrum
 

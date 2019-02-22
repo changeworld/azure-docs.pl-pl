@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: zeyadr
 manager: femila
-ms.openlocfilehash: 9f0f32bc1fb6b88dc85f09e13aebc60ff74ec723
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: df0e3e0b8d5ce8b0e35ac7a30df94b3c6a1c2f8b
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329739"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56648749"
 ---
 # <a name="azure-blockchain-workbench-troubleshooting"></a>Rozwiązywanie problemów z platformy Azure Blockchain Workbench
 
@@ -24,7 +24,7 @@ Skrypt programu PowerShell jest dostępny dla uzyskanymi debugowania dla dewelop
 * Sieć łańcucha bloków, takich jak Ethereum
 * Mikrousługi aplikacji Blockchain Workbench
 * Application Insights
-* (Usługa Log Analytics) do monitorowania platformy Azure
+* Monitorowanie platformy Azure (dzienniki usługi Azure Monitor)
 
 Aby określić następne kroki i ustalania głównej przyczyny problemów, można użyć informacji.
 
@@ -52,9 +52,9 @@ Skrypt przyjmuje następujące parametry:
 | ResourceGroupName | Nazwa grupy zasobów platformy Azure, w którym została wdrożona Blockchain Workbench. | Yes |
 | OutputDirectory | Ścieżka do utworzenia danych wyjściowych. Plik ZIP. Jeśli nie zostanie określony, domyślnie w bieżącym katalogu. | Nie |
 | LookbackHours | Liczba godzin do użycia podczas ściągania danych telemetrycznych. Wartość domyślna to 24 godziny. Maksymalna wartość to 90 godzin | Nie |
-| OmsSubscriptionId | Identyfikator subskrypcji, w której wdrażana jest usługa Log Analytics. Ten parametr należy przekazać tylko w przypadku wdrażania usługi Log Analytics dla sieciowych łańcucha bloków poza grupę zasobów aplikacji Blockchain Workbench.| Nie |
-| OmsResourceGroup |Grupa zasobów, w której wdrażana jest usługa Log Analytics. Ten parametr należy przekazać tylko w przypadku wdrażania usługi Log Analytics dla sieciowych łańcucha bloków poza grupę zasobów aplikacji Blockchain Workbench.| Nie |
-| OmsWorkspaceName | Nazwa obszaru roboczego usługi Log Analytics. Ten parametr należy przekazać tylko, jeśli usługa Log Analytics dla sieciowych łańcuch bloków jest wdrożony poza grupę zasobów aplikacji Blockchain Workbench | Nie |
+| OmsSubscriptionId | Identyfikator subskrypcji, w których dzienniki usługi Azure Monitor jest wdrażana. Ten parametr należy przekazać tylko, jeśli dzienniki usługi Azure Monitor sieci łańcuch bloków jest wdrożony poza grupę zasobów aplikacji Blockchain Workbench.| Nie |
+| OmsResourceGroup |Grupa zasobów, w których dzienniki usługi Azure Monitor jest wdrażana. Ten parametr należy przekazać tylko, jeśli dzienniki usługi Azure Monitor sieci łańcuch bloków jest wdrożony poza grupę zasobów aplikacji Blockchain Workbench.| Nie |
+| OmsWorkspaceName | Nazwa obszaru roboczego usługi Log Analytics. Ten parametr należy przekazać tylko, jeśli sieć łańcucha bloków w dziennikach usługi Azure Monitor jest wdrożony poza grupę zasobów aplikacji Blockchain Workbench | Nie |
 
 ## <a name="what-is-collected"></a>Jakie informacje są zbierane?
 

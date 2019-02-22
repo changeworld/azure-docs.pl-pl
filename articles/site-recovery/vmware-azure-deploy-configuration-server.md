@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4260aaf814b344c1a30106651959d4e4e9ad2335
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235890"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594223"
 ---
 # <a name="deploy-a-configuration-server"></a>Wdrażanie serwera konfiguracji
 
@@ -31,6 +31,25 @@ Serwer konfiguracji należy skonfigurować jako o wysokiej dostępności maszyny
 Minimalne wymagania sprzętowe dla serwera konfiguracji są podsumowane w poniższej tabeli.
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
+
+## <a name="azure-active-directory-permission-requirements"></a>Wymagania dotyczące uprawnień usługi Active Directory systemu Azure
+
+Możesz zdecydować, że użytkownik z **jedną z następujących** uprawnieniami ustawionymi w usłudze AAD (Azure Active Directory), aby zarejestrować serwer konfiguracji za pomocą usługi Azure Site Recovery.
+
+1. Użytkownik powinien mieć rolę "Deweloper aplikacji" do tworzenia aplikacji.
+   1. Aby sprawdzić, zaloguj się do witryny Azure portal</br>
+   1. Przejdź do usługi Azure Active Directory > Role i Administratorzy</br>
+   1. Sprawdź, jeśli "Deweloper aplikacji" rola jest przypisywana do użytkownika. Jeśli nie, użytkownik za pomocą tego uprawnienia, lub skontaktowanie się z [administratorem, aby włączyć uprawnienia](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal#assign-roles).
+    
+1. Nie można przypisać roli "Deweloper aplikacji", upewnij się, że "Użytkownik może zarejestrować aplikację" Flaga jest ustawiona jako PRAWDA dla użytkownika, można utworzyć tożsamości. Aby włączyć powyżej uprawnienia
+   1. Logowanie do witryny Azure Portal
+   1. Przejdź do usługi Azure Active Directory > Ustawienia użytkownika
+   1. W obszarze ** rejestracje aplikacji ","Użytkownicy mogą rejestrować aplikacje"powinna być wybrana jako"Yes".
+
+    ![AAD_application_permission](media/vmware-azure-deploy-configuration-server/AAD_application_permission.png)
+
+> [!NOTE]
+> Services(ADFS) federacji w usłudze Active Directory jest **nieobsługiwane**. Użyj konta zarządzane za pośrednictwem [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis).
 
 ## <a name="capacity-planning"></a>Planowanie pojemności
 
@@ -94,31 +113,35 @@ Jeśli chcesz dodać dodatkową kartę Sieciową do serwera konfiguracji, należ
 3. Po zakończeniu instalacji zaloguj się na maszynie wirtualnej jako administrator.
 4. Rozpoczyna się podczas pierwszego logowania, w ciągu kilku sekund narzędzie konfiguracji usługi Azure Site Recovery.
 5. Wprowadź nazwę używaną do zarejestrowania serwera konfiguracji w usłudze Site Recovery. Następnie wybierz przycisk **Dalej**.
-6. Narzędzie sprawdza, czy maszyna wirtualna może połączyć się z platformą Azure. Po nawiązaniu połączenia wybierz pozycję **Zaloguj się**, aby zalogować się do subskrypcji platformy Azure. Użyte poświadczenia muszą zapewniać dostęp do magazynu, w którym chcesz zarejestrować serwer konfiguracji.
+6. Narzędzie sprawdza, czy maszyna wirtualna może połączyć się z platformą Azure. Po nawiązaniu połączenia wybierz pozycję **Zaloguj się**, aby zalogować się do subskrypcji platformy Azure.
+    a. Użyte poświadczenia muszą zapewniać dostęp do magazynu, w którym chcesz zarejestrować serwer konfiguracji.
+    b. Upewnij się, że wybrane konto użytkownika ma uprawnienia do tworzenia aplikacji na platformie Azure. Aby włączyć wymagane uprawnienia, postępuj zgodnie z wytycznymi podanymi [tutaj](#azure-active-directory-permission-requirements).
 7. Narzędzie wykonuje pewne zadania konfiguracyjne, a następnie wywołuje ponowne uruchomienie.
 8. Ponownie zaloguj się do maszyny. Zostanie uruchomiony Kreator zarządzania serwerem konfiguracji **automatycznie** w ciągu kilku sekund.
 
 ### <a name="configure-settings"></a>Konfigurowanie ustawień
 
 1. W kreatorze zarządzania serwerem konfiguracji wybierz pozycję **Konfiguracja łączności**, a następnie wybierz kartę sieciową, której używa serwer przetwarzania do odbierania ruchu związanego z replikacją z maszyn wirtualnych. Następnie wybierz pozycję **Zapisz**. Nie można zmienić to ustawienie, po skonfigurowaniu go. Zdecydowanie zalecane jest aby nie zmieniać adresu IP serwera konfiguracji. Upewnij się, że adres IP przypisane do serwera konfiguracji jest statyczny adres IP i nie IP protokołu DHCP.
-2. W **magazyn usługi Recovery Services zaznacz**, zaloguj się w usłudze Microsoft Azure, wybierz swoją subskrypcję platformy Azure i grupę zasobów i magazyn.
+2. W **magazyn usługi Recovery Services zaznacz**, zaloguj się do systemu Microsoft Azure przy użyciu poświadczeń używanych w **kroku 6** z "[Zarejestruj serwer konfiguracji za pomocą usług Azure Site Recovery](#register-the-configuration-server-with-azure-site-recovery-services)" .
+3. Po zalogowaniu wybierz swoją subskrypcję platformy Azure i grupę zasobów i magazyn.
 
     > [!NOTE]
     > Po zarejestrowaniu, istnieje możliwość zmiany magazynu usługi recovery services.
+    > Zmienianie magazynu usługi recovery services wymaga usunięcia serwera konfiguracji z bieżącego magazynu, a następnie replikację chronionych maszyn wirtualnych na serwerze konfiguracji jest zatrzymana. Dowiedz się [więcej](vmware-azure-manage-configuration-server.md#register-a-configuration-server-with-a-different-vault).
 
-3. W **instalowanie oprogramowania innych firm**,
+4. W **instalowanie oprogramowania innych firm**,
 
     |Scenariusz   |Kroki do wykonania  |
     |---------|---------|
     |Można pobrać & Ręczne instalowanie programu MySQL?     |  Tak. Pobierz aplikację MySQL i umieść go w folderze **C:\Temp\ASRSetup**, następnie zainstalować ręcznie. Teraz, jeśli akceptujesz jej warunki > kliknij **Pobierz i zainstaluj**, portalu jest wyświetlany komunikat *zainstalowane*. Możesz przejść do następnego kroku.       |
     |Można uniknąć pobierania oprogramowania MySQL online?     |   Tak. Umieść aplikację MySQL Instalatora w folderze **C:\Temp\ASRSetup**. Zaakceptuj warunki > kliknij **Pobierz i zainstaluj**, portal użyje Instalatora dodane przez użytkownika i instaluje aplikację. Możesz przejść do następnego kroku po instalacji.    |
     |Chcę pobieranie i instalowanie programu MySQL za pomocą usługi Azure Site Recovery     |  Zaakceptuj Umowę licencyjną i kliknij **Pobierz i zainstaluj**. Następnie możesz przejść do następnego kroku po instalacji.       |
-4. W obszarze **Weryfikowanie konfiguracji urządzenia** zostaną zweryfikowane wymagania wstępne, a następnie będzie można kontynuować.
-5. W obszarze **Skonfiguruj poświadczenia serwera vCenter Server/vSphere ESXi** wprowadź nazwę FQDN bądź adres IP serwera vCenter lub hosta vSphere, na którym znajdują się maszyny wirtualne, które chcesz replikować. Wprowadź port, na którym nasłuchuje serwer. Wprowadź przyjazną nazwę, która ma być używana dla serwera VMware w magazynie.
-6. Wprowadź poświadczenia, za pomocą których serwer konfiguracji będzie łączył się z serwerem VMware. Przy użyciu tych poświadczeń usługa Site Recovery automatycznie odnajduje maszyny wirtualne VMware dostępne do replikacji. Wybierz **Dodaj**, a następnie **nadal**. Poświadczenia wprowadzone w tym miejscu lokalnie są zapisywane.
-7. W **skonfiguruj poświadczenia maszyny wirtualnej**, wprowadź nazwę użytkownika i hasło maszyn wirtualnych w celu automatycznego zainstalowania usługi mobilności podczas replikacji. Aby uzyskać **Windows** maszyn, konto musi mieć uprawnienia administratora lokalnego na maszynach, którą chcesz replikować. Aby uzyskać **Linux**, podaj szczegóły konta głównego.
-8. Aby ukończyć rejestrację, wybierz pozycję **Zakończ konfigurację**.
-9. Po zakończeniu rejestracji Otwórz witrynę Azure portal, sprawdź, czy serwer konfiguracji i serwer VMware są wyświetlane na **magazyn usługi Recovery Services** > **Zarządzaj**  >  **Infrastruktura usługi site Recovery** > **serwery konfiguracji**.
+5. W obszarze **Weryfikowanie konfiguracji urządzenia** zostaną zweryfikowane wymagania wstępne, a następnie będzie można kontynuować.
+6. W obszarze **Skonfiguruj poświadczenia serwera vCenter Server/vSphere ESXi** wprowadź nazwę FQDN bądź adres IP serwera vCenter lub hosta vSphere, na którym znajdują się maszyny wirtualne, które chcesz replikować. Wprowadź port, na którym nasłuchuje serwer. Wprowadź przyjazną nazwę, która ma być używana dla serwera VMware w magazynie.
+7. Wprowadź poświadczenia, za pomocą których serwer konfiguracji będzie łączył się z serwerem VMware. Przy użyciu tych poświadczeń usługa Site Recovery automatycznie odnajduje maszyny wirtualne VMware dostępne do replikacji. Wybierz **Dodaj**, a następnie **nadal**. Poświadczenia wprowadzone w tym miejscu lokalnie są zapisywane.
+8. W **skonfiguruj poświadczenia maszyny wirtualnej**, wprowadź nazwę użytkownika i hasło maszyn wirtualnych w celu automatycznego zainstalowania usługi mobilności podczas replikacji. Aby uzyskać **Windows** maszyn, konto musi mieć uprawnienia administratora lokalnego na maszynach, którą chcesz replikować. Aby uzyskać **Linux**, podaj szczegóły konta głównego.
+9. Aby ukończyć rejestrację, wybierz pozycję **Zakończ konfigurację**.
+10. Po zakończeniu rejestracji Otwórz witrynę Azure portal, sprawdź, czy serwer konfiguracji i serwer VMware są wyświetlane na **magazyn usługi Recovery Services** > **Zarządzaj**  >  **Infrastruktura usługi site Recovery** > **serwery konfiguracji**.
 
 ## <a name="upgrade-the-configuration-server"></a>Uaktualnij serwer konfiguracji
 

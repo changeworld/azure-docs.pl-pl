@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 4c58d053412b8f90b6423454fcda814e8cf6da75
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c8f434ce4fdf674444974474c430ecb108ffc022
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329017"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586516"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -194,7 +194,7 @@ Szyfrowanie danych magazynowanych (SSE) | Obsługiwane | Funkcja SSE jest ustawi
 Usługa Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Włączone dla maszyn wirtualnych [szyfrowanie za pomocą aplikacji usługi Azure AD](https://aka.ms/ade-aad-app) są obsługiwane |
 Usługa Azure Disk Encryption (ADE) dla systemu Linux, systemu operacyjnego | Nieobsługiwane |
 Dodaj lub usuń gorąco dysku | Nieobsługiwane | Dodaj lub Usuń dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
-Wykluczanie dysku | [obsługiwane za pomocą programu powershell](https://review.docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell?branch=pr-en-us-66458#replicate-azure-virtual-machine) |  Dysk tymczasowy jest domyślnie wykluczony.
+Wykluczanie dysku | [obsługiwane za pomocą programu powershell](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell#replicate-azure-virtual-machine) |   Dysk tymczasowy jest domyślnie wykluczony.
 Bezpośrednie miejsca do magazynowania  | Obsługiwane w przypadku punktów odzyskiwania spójnego na poziomie awarii. Punkty odzyskiwania zapewniających spójność aplikacji nie są obsługiwane. |
 Serwer plików skalowalny w poziomie  | Obsługiwane w przypadku punktów odzyskiwania spójnego na poziomie awarii. Punkty odzyskiwania zapewniających spójność aplikacji nie są obsługiwane. |
 LRS | Obsługiwane |

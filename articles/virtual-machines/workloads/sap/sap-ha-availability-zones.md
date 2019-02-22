@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d98a5ab13c2aecd3b3cef590526031f5bdee594
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a8e20d617da12aea857308f4020fbd0cfe711430
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268316"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651315"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>Konfiguracje obciążeń SAP o strefy dostępności platformy Azure
 [Strefy dostępności platformy Azure](https://docs.microsoft.com/azure/availability-zones/az-overview) to jedna z funkcji wysokiej dostępności, zapewnianymi przez platformę Azure. Przy użyciu stref dostępności zwiększa ogólną dostępność obciążeń SAP na platformie Azure. Ta funkcja jest już dostępna w niektórych [regionów świadczenia usługi Azure](https://azure.microsoft.com/global-infrastructure/regions/). W przyszłości będzie on dostępny w większej liczbie regionów.
@@ -123,7 +123,7 @@ Jeśli nie możesz znaleźć dopuszczalne różnica między opóźnienie sieci, 
 
 Podstawowy układ architektury wygląda następująco:
 
-![Wdrożenie strefy aktywny/pasywny](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![Wdrożenie strefy aktywny/pasywny](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
 W przypadku tej konfiguracji obowiązują następujące zastrzeżenia:
 

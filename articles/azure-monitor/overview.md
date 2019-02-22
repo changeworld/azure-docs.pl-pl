@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: 0ef11355d7a65bd2c9b7ddfb6c4db2ba02538062
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f18a1c90d3378831824542fabb884d36d12bddd4
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270372"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652114"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
@@ -130,7 +130,7 @@ Automatyczne skalowanie pozwala mieć odpowiednią ilość zasobów do obsługi 
 Często będziesz mieć wymagań integracji usługi Azure Monitor z innymi systemami i tworzyć niestandardowe rozwiązania, które używają danych monitorowania. Innych usług platformy Azure działają z usługą Azure Monitor w celu zapewnienia tej integracji.
 
 ### <a name="event-hub"></a>Centrum zdarzeń
-[Usługa Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) to przesyłania strumieniowego platformy i zdarzeń pozyskiwania usługa, która można przetworzyć i zapisać dane przy użyciu dowolnego dostawcy Analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Usługa Event Hubs do [strumieniowo dane dzienników z usługi Azure Monitor](platform/stream-monitoring-data-event-hubs.md) do partnerów SIEM i narzędzi do monitorowania.
+[Usługa Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs) to przesyłania strumieniowego platformy i zdarzeń pozyskiwania usługa, która można przetworzyć i zapisać dane przy użyciu dowolnego dostawcy Analityki czasu rzeczywistego lub adapterów przetwarzania wsadowego/magazynowania. Usługa Event Hubs do [przesyłanie strumieniowe danych usługi Azure Monitor](platform/stream-monitoring-data-event-hubs.md) do partnerów SIEM i narzędzi do monitorowania.
 
 > [!VIDEO https://www.youtube.com/embed/SPHxCgbcvSw]
 
