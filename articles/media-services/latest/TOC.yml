@@ -72,6 +72,14 @@ items:
       items:
       - name: System z wieloma mechanizmami DRM i kontrolą dostępu
         href: design-multi-drm-system-with-access-control.md
+      - name: Licencje DRM
+        items:
+        - name: Szablon licencji PlayReady
+          href: playready-license-template-overview.md
+        - name: Szablon licencji Widevine
+          href: widevine-license-template-overview.md
+        - name: Wymagania licencyjne technologii FairPlay
+          href: fairplay-license-overview.md
     - name: Punkty końcowe przesyłania strumieniowego
       displayName: Origins
       href: streaming-endpoint-concept.md
@@ -101,6 +109,8 @@ items:
     items:
     - name: Zdarzenia z usługą Event Grid
       href: reacting-to-media-services-events.md
+    - name: Schematy usługi Event Grid
+      href: media-services-event-schemas.md
   - name: Odtwarzacze klienckie
     items:
     - name: Azure Media Player
@@ -197,16 +207,6 @@ items:
       href: https://aka.ms/ams-v3-go-ref
   - name: Szablon usługi Resource Manager
     href: /azure/templates/microsoft.media/allversions
-  - name: Schematy usługi Event Grid
-    href: media-services-event-schemas.md
-  - name: Licencje DRM
-    items:
-    - name: Szablon licencji PlayReady
-      href: playready-license-template-overview.md
-    - name: Szablon licencji Widevine
-      href: widevine-license-template-overview.md
-    - name: Wymagania licencyjne technologii FairPlay
-      href: fairplay-license-overview.md
 - name: Zasoby
   items:
   - name: Harmonogram działania dla platformy Azure
@@ -241,9 +241,9 @@ items:
     href: frequently-asked-questions.md
   - name: Chmury i regiony platformy Azure
     href: azure-clouds-regions.md
-ms.openlocfilehash: ca4ad36aab79f82c558c3d653a77ad5ec10b254c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b73b6018a2627918ebf31a046422c09f80d900e2
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416959"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652819"

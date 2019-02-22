@@ -11,12 +11,6 @@ ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
 ms.author: carolz
-ms.openlocfilehash: fa2cce2314b3df0d9d32d9d8d6ede5a70520a7d4
-ms.sourcegitcommit: ccdea744097d1ad196b605ffae2d09141d9c0bd9
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49647250"
 ---
 <div class="content">
    <h1>Rozwiązanie Docker na platformie Azure</h1>   
@@ -28,7 +22,7 @@ Docker to popularna platforma do zarządzania kontenerami i tworzenia ich obraz�
     </div>
 <h2>5-minutowe przewodniki Szybki start</h2>
 <p>Dowiedz się, jak wdrożyć platformę Docker na platformie Azure:</p>
-<a href="https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS">Szablon Szybki start dotyczący wdrażania platformy Docker w systemie Ubuntu</a><br/>
+<a href="https://azure.microsoft.com/resources/templates/docker-simple-on-ubuntu/">Szablon Szybki start dotyczący wdrażania platformy Docker w systemie Ubuntu</a><br/>
 <h2>Samouczki krok po kroku</h2>
 <p>Dowiedz się, jak używać platformy Docker w aplikacji i w ramach potoku ciągła integracja/ciągłe dostarczanie:</p>
 <ol>
