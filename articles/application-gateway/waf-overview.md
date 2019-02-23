@@ -4,14 +4,14 @@ description: Ten artykuł zawiera omówienie zapory aplikacji sieci web (WAF) w 
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 11/16/2018
+ms.date: 2/22/2019
 ms.author: amsriva
-ms.openlocfilehash: 014353bafa31b1c4e924cba8335dbd30a48c2d11
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e53dde549034e8029fdb7f9c780a7880a1ca515d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651434"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733830"
 ---
 # <a name="web-application-firewall-waf"></a>Zapora aplikacji internetowej
 
@@ -58,19 +58,8 @@ Poniżej przedstawiono główne korzyści wynikające ze stosowania usługi Appl
 - Protection against HTTP protocol anomalies such as missing host user-agent and accept headers
 - Zapobieganie atakom robotów, przeszukiwarek i skanerów
 - Wykrywanie typowych błędów konfiguracji aplikacji (na przykład Apache, usługi IIS i tak dalej)
-
-### <a name="public-preview-features"></a>Funkcje w publicznej wersji zapoznawczej
-
-Bieżący zapory aplikacji sieci Web publicznej wersji zapoznawczej jednostki SKU obejmuje następujące funkcje:
-
-- **Limity rozmiaru żądań** — Zapora aplikacji sieci Web pozwala użytkownikom na Konfigurowanie ograniczeń rozmiar żądania w ramach dolną i górną granicę.
-- **Listy wykluczeń** — Zapora aplikacji sieci Web listy wykluczeń Zezwalaj użytkownikom na pominięcie niektórych atrybutów żądania oceny zapory aplikacji sieci Web. Typowym przykładem jest, że usługi Active Directory włożony tokenów, które są używane do uwierzytelniania lub pola hasła.
-
-Aby uzyskać więcej informacji na temat publicznej wersji zapoznawczej zapory aplikacji sieci Web, zobacz [internetowych limity rozmiaru żądanie zapory aplikacji oraz listy wykluczeń (publiczna wersja zapoznawcza)](application-gateway-waf-configuration.md).
-
-
-
-
+- Żądanie limity rozmiaru — Zapora aplikacji sieci Web pozwala użytkownikom na Konfigurowanie ograniczeń rozmiar żądania w ramach dolną i górną granicę.
+- Listy wykluczeń - listy wykluczeń zapory aplikacji sieci Web umożliwia użytkownikom pominięcie niektórych atrybutów żądania oceny zapory aplikacji sieci Web. Typowym przykładem jest, że usługi Active Directory włożony tokenów, które są używane do uwierzytelniania lub pola hasła.
 
 ### <a name="core-rule-sets"></a>Podstawowe zestawy reguł
 
@@ -87,7 +76,6 @@ Zapora aplikacji internetowej jest domyślnie wstępnie skonfigurowana przy uży
 - Wykrywanie typowych błędów konfiguracji aplikacji (na przykład Apache, usługi IIS, itp.)
 
 Bardziej szczegółową listę reguł i metod ochrony przed nimi, zobacz [podstawowych zestawów reguł](#core-rule-sets).
-
 
 #### <a name="owasp30"></a>OWASP_3.0
 

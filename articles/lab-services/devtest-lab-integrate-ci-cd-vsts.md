@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: bcc39f2d8cf1ca0440f8028464d9041435914477
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7806599c1a2f1396ff4b07d6f0538057654029d7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263411"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738525"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-devops-continuous-integration-and-delivery-pipeline"></a>Integrowanie usługi Azure DevTest Labs usługi Azure DevOps potok ciągłej integracji i dostarczania
 Możesz użyć *Azure DevTest Labs zadania* rozszerzenia, które jest instalowane w DevOps platformy Azure można łatwo zintegrować potokiem ciągłej integracji/ciągłego Dostarczania kompilacji i wydania przy użyciu usługi Azure DevTest Labs. Rozszerzenie instaluje trzy zadania: 
@@ -30,6 +30,8 @@ Możesz użyć *Azure DevTest Labs zadania* rozszerzenia, które jest instalowan
 Ten proces sprawia, że ułatwia, na przykład, szybkie wdrożenie "złotego obrazu" dla zadania określonego testu i usunąć go po zakończeniu testu.
 
 Ten artykuł pokazuje, jak utworzyć i wdrożyć Maszynę wirtualną, utworzyć niestandardowy obraz, a następnie usuń maszynę Wirtualną, a wszystkie jako jeden, kompletny potok. Zazwyczaj przeprowadza się każde zadanie podrzędne indywidualnie w własnej niestandardowej kompilacji, testowania i wdrażania potoku.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Przed potokiem ciągłej integracji/ciągłego Dostarczania można zintegrować z usługą Azure DevTest Labs, należy zainstalować rozszerzenie programu Visual Studio Marketplace.
@@ -57,20 +59,20 @@ W tej sekcji opisano sposób tworzenia szablonu usługi Azure Resource Manager, 
    ```powershell
    Param( [string] $labVmId)
 
-   $labVmComputeId = (Get-AzureRmResource -Id $labVmId).Properties.ComputeId
+   $labVmComputeId = (Get-AzResource -Id $labVmId).Properties.ComputeId
 
    # Get lab VM resource group name
-   $labVmRgName = (Get-AzureRmResource -Id $labVmComputeId).ResourceGroupName
+   $labVmRgName = (Get-AzResource -Id $labVmComputeId).ResourceGroupName
 
    # Get the lab VM Name
-   $labVmName = (Get-AzureRmResource -Id $labVmId).Name
+   $labVmName = (Get-AzResource -Id $labVmId).Name
 
    # Get lab VM public IP address
-   $labVMIpAddress = (Get-AzureRmPublicIpAddress -ResourceGroupName $labVmRgName
+   $labVMIpAddress = (Get-AzPublicIpAddress -ResourceGroupName $labVmRgName
                    -Name $labVmName).IpAddress
 
    # Get lab VM FQDN
-   $labVMFqdn = (Get-AzureRmPublicIpAddress -ResourceGroupName $labVmRgName
+   $labVMFqdn = (Get-AzPublicIpAddress -ResourceGroupName $labVmRgName
               -Name $labVmName).DnsSettings.Fqdn
 
    # Set a variable labVmRgName to store the lab VM resource group name

@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: fc40f20349e3424dbcf50f5ca0395b06a818566f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 9ee0abdf722d3dc6d0d332f3894943bd3a03a877
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224058"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671918"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Szybki start: Używanie rozpoznawania mowy Bing interfejsu API REST
 
@@ -32,7 +33,7 @@ Interfejs API mowy jest częścią usług Cognitive Services (wcześniej Project
 > [!IMPORTANT]
 >* Pobierz klucz subskrypcji. Zanim można uzyskać dostęp do interfejsu API REST, konieczne jest posiadanie [klucz subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
 >
->* Użyj klucza subskrypcji. W następujących przykładach REST należy zastąpić YOUR_SUBSCRIPTION_KEY klucz subskrypcji. 
+>* Użyj klucza subskrypcji. W następujących przykładach REST należy zastąpić YOUR_SUBSCRIPTION_KEY klucz subskrypcji.
 >
 >* Zapoznaj się [uwierzytelniania](../how-to/how-to-authentication.md) stron dotyczące sposobu uzyskania klucza subskrypcji.
 
@@ -63,7 +64,7 @@ https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitive
 
 Przykłady usługi identyfikatory URI są wymienione w poniższej tabeli.
 
-| Tryb rozpoznawania  | Język | Format danych wyjściowych | Identyfikator URI usługi |
+| Tryb rozpoznawania  | Język | Format wyjściowy | Identyfikator URI usługi |
 |---|---|---|---|
 | `interactive` | pt-BR | Domyślne | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | `conversation` | en-US | Szczegółowy |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed |

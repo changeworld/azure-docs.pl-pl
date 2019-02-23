@@ -1,6 +1,6 @@
 ---
-title: 'Skrypt programu PowerShell: Tworzenie niestandardowego obrazu z pliku VHD w usług Azure laboratorium | Dokumentacja firmy Microsoft'
-description: Ten skrypt programu PowerShell tworzy niestandardowy obraz z pliku VHD w usług Azure laboratorium.
+title: 'Skrypt programu PowerShell: Tworzenie obrazu niestandardowego z pliku VHD w usłudze Azure Lab Services | Dokumentacja firmy Microsoft'
+description: Ten skrypt programu PowerShell tworzy obraz niestandardowy na podstawie pliku VHD w usłudze Azure Lab Services.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 19b7c3c6018ec56b056761c336bc56c8b63b47a2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2d0cc4012adf2c17b2f7a2e769f2d666b158a8c8
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636406"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734731"
 ---
-# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>Aby utworzyć niestandardowy obraz z pliku VHD w usługach laboratorium Azure za pomocą programu PowerShell
+# <a name="use-powershell-to-create-a-custom-image-from-a-vhd-file-in-azure-lab-services"></a>Tworzenie obrazu niestandardowego z pliku VHD w usłudze Azure Lab Services przy użyciu programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell tworzy niestandardowy obraz z pliku VHD w usług Azure laboratorium
+Ten przykładowy skrypt programu PowerShell tworzy obraz niestandardowy na podstawie pliku VHD w usłudze Azure Lab Services
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Laboratorium**. Skrypt wymaga posiadania istniejącego laboratorium. 
@@ -38,12 +40,12 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Pobiera zasoby. |
-| [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) | Pobiera klucze dostępu dla konta usługi Azure Storage. |
-| [Nowe AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment) | Dodaje wdrożenia usługi Azure do grupy zasobów. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Pobiera zasoby. |
+| [Get-AzStorageAccountKey](/powershell/module/az.storage/get-azstorageaccountkey) | Pobiera klucze dostępu dla konta usługi Azure Storage. |
+| [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) | Dodaje wdrożeniu platformy Azure w grupie zasobów. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 
-Dodatkowe przykłady skryptów środowiska PowerShell usługi laboratorium Azure można znaleźć w [przykłady Azure PowerShell usługi laboratorium](../samples-powershell.md).
+Więcej przykładowych skryptów programu PowerShell usługi laboratorium Azure można znaleźć w [przykładów programu Azure Lab Services PowerShell](../samples-powershell.md).

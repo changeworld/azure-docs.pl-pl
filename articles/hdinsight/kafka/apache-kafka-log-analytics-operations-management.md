@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.openlocfilehash: 69eaa0028f1115cafbd1ed28b66940d7faaed062
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 0862bcb2c04f3a8cd46a5e60644ebbb8c7735e51
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608549"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729971"
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>Analizowanie dzienników dla platformy Apache Kafka w HDInsight
 
@@ -65,12 +65,12 @@ Procedurę włączania usługi Log Analytics for HDInsight są takie same dla ws
     | Typ dziennika | Opis |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Server.log brokera platformy Kafka |
-    | Dziennik\_kafkacontroller\_CL | Controller.log brokera platformy Kafka |
-    | metryki\_kafka\_CL | Metryki JMX z platformy Kafka |
+    | log\_kafkacontroller\_CL | Controller.log brokera platformy Kafka |
+    | metrics\_kafka\_CL | Metryki JMX z platformy Kafka |
 
     ![Obraz wyszukiwania użycia procesora CPU](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
  
- ## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat usługi Log Analytics, zobacz [Rozpoczynanie pracy z obszarem roboczym usługi Log Analytics](../../log-analytics/log-analytics-get-started.md) dokumentu.
 

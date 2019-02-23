@@ -12,18 +12,18 @@ manager: cgronlun
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: b5109c9c93947118397c383cab3df90c02016ce3
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 61c380ee3427afdf40427ed82ed0fd5c4f1b49fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652008"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729019"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Konfigurowanie środowiska deweloperskiego dla usługi Azure Machine Learning
 
 W tym artykule dowiesz się, jak skonfigurować środowisko programistyczne do pracy z usługą Azure Machine Learning. Usługa Machine Learning jest niezależny od platformy.
 
-Jedynymi wymogami dla swojego środowiska programowania są 3 języka Python, Conda (dla środowiska izolowane) i pliku konfiguracji, który zawiera Twoje informacje o obszarze roboczym usługi Azure Machine Learning.
+Jedynymi wymogami dla swojego środowiska programowania są 3 języka Python, Anaconda (dla środowiska izolowane) i pliku konfiguracji, który zawiera Twoje informacje o obszarze roboczym usługi Azure Machine Learning.
 
 Ten artykuł koncentruje się na następujących środowisk i narzędzia:
 
@@ -139,20 +139,22 @@ Aby uzyskać więcej informacji, zobacz [maszyn wirtualnych do nauki o danych](h
 
 ## <a id="local"></a>Komputer lokalny
 
-Podczas korzystania z komputera lokalnego, (które mogą być także zdalnego maszyny wirtualnej), tworzenie środowiska Conda i zainstaluj zestaw SDK, wykonując następujące czynności:
+Podczas korzystania z komputera lokalnego, (które mogą być także zdalnego maszyny wirtualnej), Utwórz środowisko Anaconda i zainstaluj zestaw SDK, wykonując następujące czynności:
 
 1. Pobierz i zainstaluj [Anaconda](https://www.anaconda.com/distribution/#download-section) (w wersji Python 3.7) Jeśli nie jeszcze.
 
 1. Otwórz wiersz Anaconda i Utwórz środowisko przy użyciu następujących poleceń:
 
+    Uruchom następujące polecenie, aby utworzyć środowiska.
+
     ```shell
     conda create -n myenv python=3.6.5
+    ```
 
-    # activate the Conda environment
+    Następnie można uaktywnić środowiska.
+
+    ```shell
     conda activate myenv
-
-    # On macOS run
-    source activate myenv
     ```
 
     W tym przykładzie tworzy środowisko przy użyciu języka python 3.6.5, ale można wybrać żadnych szczególnych subversions. Zgodność z zestawu SDK nie może być gwarantowane działanie z niektórych wersji głównych (3.5 + jest zalecane) i zaleca się spróbuj różnych wersji/subversion w środowisku pakietu Anaconda, jeśli wystąpią błędy. Potrwa kilka minut, aby utworzyć środowisko, gdy składniki i pakiety zostaną pobrane.
@@ -188,7 +190,7 @@ Podczas korzystania z komputera lokalnego, (które mogą być także zdalnego ma
    >
    > `pip install --upgrade azureml-sdk[notebooks,automl] azureml-dataprep --ignore-installed PyYAML`
 
-   Potrwa kilka minut, aby zainstalować zestaw SDK.
+   Potrwa kilka minut, aby zainstalować zestaw SDK. Zobacz [Przewodnik instalacji](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) Aby uzyskać więcej informacji na temat opcji instalacji.
 
 1. Zainstaluj inne pakiety dla eksperymentów uczenia maszynowego.
 
@@ -286,7 +288,7 @@ Aby przygotować usługi Databricks w klastrze i uzyskać notesów próbki:
     | Typy maszyn wirtualnych na węzeł procesu roboczego | Preferowane maszyny Wirtualnej zoptymalizowane pod kątem pamięci |
     | Włączanie skalowania automatycznego | Usuń zaznaczenie pola wyboru |
 
-    Liczba węzłów procesu roboczego w klastrze usługi Databricks określa maksymalną liczbę równoczesnych iteracji w ustawieniach zautomatyzowane uczenia Maszynowego.
+    Liczba węzłów procesu roboczego w klastrze usługi Databricks określa maksymalną liczbę równoczesnych iteracji w automatycznych usługi machine learning konfiguracji.
 
     Potrwa kilka minut na utworzenie klastra. Zaczekaj, aż klaster ma zainstalowany przed kontynuowaniem.
 

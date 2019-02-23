@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9f9a6511d63e57c6cbfa5ee2453f8038bb259047
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: b35707b857c66f0f1b91f2f1b5dd7a0ffa24dd9e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428996"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733762"
 ---
 # <a name="setup-diagnostic-logging"></a>Konfigurowanie rejestrowania diagnostycznego
 
@@ -21,6 +21,7 @@ Ważną częścią dowolnego rozwiązania usług Analysis Services to monitorowa
 
 ![Rejestrowanie diagnostyczne dzienniki magazynu, usługa Event Hubs lub usługi Azure Monitor](./media/analysis-services-logging/aas-logging-overview.png)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-logged"></a>Co to jest rejestrowane?
 
@@ -103,7 +104,7 @@ Aby włączyć metryki i Diagnostyka rejestrowania przy użyciu programu PowerSh
 - Aby włączyć magazyn dzienniki diagnostyczne na koncie magazynu, użyj tego polecenia:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
    Identyfikator konta magazynu jest identyfikator zasobu dla konta magazynu, w której chcesz wysłać dzienniki.
@@ -111,7 +112,7 @@ Aby włączyć metryki i Diagnostyka rejestrowania przy użyciu programu PowerSh
 - Aby włączyć strumieniowe przesyłanie dzienników diagnostycznych do Centrum zdarzeń, użyj tego polecenia:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
    ```
 
    Identyfikator reguły usługi Azure Service Bus jest ciągiem o następującym formacie:
@@ -123,13 +124,13 @@ Aby włączyć metryki i Diagnostyka rejestrowania przy użyciu programu PowerSh
 - Aby włączyć wysyłanie dzienników diagnostycznych do obszaru roboczego usługi Log Analytics, użyj tego polecenia:
 
    ```powershell
-   Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+   Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
    ```
 
 - Identyfikator zasobu obszaru roboczego usługi Log Analytics można uzyskać za pomocą następującego polecenia:
 
    ```powershell
-   (Get-AzureRmOperationalInsightsWorkspace).ResourceId
+   (Get-AzOperationalInsightsWorkspace).ResourceId
    ```
 
 Można połączyć te parametry, aby włączyć wiele opcji danych wyjściowych.
@@ -187,7 +188,7 @@ Istnieją setki zapytań, których można użyć. Aby dowiedzieć się więcej o
 
 ## <a name="turn-on-logging-by-using-powershell"></a>Włącz rejestrowanie przy użyciu programu PowerShell
 
-W ramach tego szybkiego samouczka utworzysz konto magazynu w tej samej subskrypcji i grupie zasobów co serwer usług Analysis Service. Następnie należy użyć Set-AzureRmDiagnosticSetting, aby włączyć diagnostykę, rejestrowanie, wysyłanie danych wyjściowych do nowego konta magazynu.
+W ramach tego szybkiego samouczka utworzysz konto magazynu w tej samej subskrypcji i grupie zasobów co serwer usług Analysis Service. Następnie należy użyć zestawu AzDiagnosticSetting, aby włączyć diagnostykę, rejestrowanie, wysyłanie danych wyjściowych do nowego konta magazynu.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 Do ukończenia tego samouczka, musi mieć następujące zasoby:
@@ -199,7 +200,7 @@ Do ukończenia tego samouczka, musi mieć następujące zasoby:
 Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. Program Azure PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem, i domyślnie użyje pierwszej.
@@ -207,13 +208,13 @@ W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla kon
 Jeśli masz wiele subskrypcji, określ konkretne konto, które zostało użyte do utworzenia usługi Azure Key Vault. Wpisz następujące polecenie, aby zobaczyć subskrypcje dla swojego konta:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Następnie aby określić subskrypcję, która jest skojarzona z konta usług Azure Analysis Services, który się loguje, wpisz:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -228,7 +229,7 @@ Można użyć istniejącego konta magazynu dla dzienników, pod warunkiem znajdu
 Możesz również użyć tej samej grupie zasobów, która zawiera serwer usług Analysis Services. Zastąp wartości `awsales_resgroup`, `awsaleslogs`, i `West Central US` własnymi wartościami:
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName awsales_resgroup `
+$sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
 -Name awsaleslogs -Type Standard_LRS -Location 'West Central US'
 ```
 
@@ -237,16 +238,16 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName awsales_resgroup `
 Ustaw nazwę konta do zmiennej o nazwie **konta**, gdzie ResourceName jest nazwa konta.
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName awsales_resgroup `
+$account = Get-AzResource -ResourceGroupName awsales_resgroup `
 -ResourceName awsales -ResourceType "Microsoft.AnalysisServices/servers"
 ```
 
 ### <a name="enable-logging"></a>Włącz rejestrowanie
 
-Aby włączyć rejestrowanie, należy użyć polecenia cmdlet Set-AzureRmDiagnosticSetting wraz ze zmiennymi dla nowego konta magazynu, konto serwera i kategorii. Uruchom następujące polecenie, ustawienie **— włączone** flaga **$true**:
+Aby włączyć rejestrowanie, należy użyć polecenia cmdlet Set-AzDiagnosticSetting, wraz ze zmiennymi dla nowego konta magazynu, konto serwera i kategorii. Uruchom następujące polecenie, ustawienie **— włączone** flaga **$true**:
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
 ```
 
 Dane wyjściowe powinny wyglądać następująco:
@@ -293,7 +294,7 @@ Te dane wyjściowe potwierdzają, że włączono rejestrowanie na serwerze, info
 Można również ustawić zasady przechowywania dla dzienników, aby starsze dzienniki są automatycznie usuwane. Na przykład Ustaw zasady przechowywania **- Retentionenable** flaga **$true**i ustaw **- RetentionInDays** parametr **90**. Dzienniki starsze niż 90 dni zostaną automatycznie usunięte.
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories Engine`
   -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -302,4 +303,4 @@ Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 
 Dowiedz się więcej o [rejestrowania diagnostycznego usługi Azure resource](../azure-monitor/platform/diagnostic-logs-overview.md).
 
-Zobacz [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/Set-AzureRmDiagnosticSetting) w Pomocy programu PowerShell.
+Zobacz [AzDiagnosticSetting zestaw](https://docs.microsoft.com/powershell/module/az.insights/Set-azDiagnosticSetting) w Pomocy programu PowerShell.

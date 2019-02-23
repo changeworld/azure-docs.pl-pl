@@ -6,20 +6,20 @@ services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
-ms.component: computer-vision
+ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: pafarley
-ms.openlocfilehash: a5cf4a2b0f5e2e2c83e9fe6aa9237c943fa23ed9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 7bfda764c418258a7bc555697530214240a5f0d3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864812"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734323"
 ---
 # <a name="brand-detection"></a>Wykrywanie na marki
 
-Wykrywanie marki to wyspecjalizowane tryb [obiektu wykrywania](concept-object-detection.md) używający tysięcy logo globalnej bazy danych do identyfikowania marek handlowych na obrazach lub wideo. Umożliwia tej funkcji, na przykład odnajdywanie na marki, które są najbardziej popularne w mediach społecznościowych lub najbardziej rozpowszechnione w rozmieszczeniu produktów nośnika.
+Wykrywanie marki to wyspecjalizowane tryb [obiektu wykrywania](concept-object-detection.md) używający tysięcy logo globalnej bazy danych do identyfikowania marek handlowych na obrazach lub wideo. Za pomocą tej funkcji można na przykład ustalać, które marki są najpopularniejsze w mediach społecznościowych lub najpowszechniej promowane za pomocą lokowania produktów w mediach.
 
 Usługa przetwarzania obrazów wykrywa, czy do danego obrazu; są logo na marki Jeśli tak, zwraca nazwę marki, współczynnik ufności i współrzędne pola ograniczeń wokół logo.
 

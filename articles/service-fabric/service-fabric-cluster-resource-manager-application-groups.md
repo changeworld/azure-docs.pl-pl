@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 4cae2370-77b3-49ce-bf40-030400c4260d
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: c8bab609212c837802be6f70e7fc74df6b5eaf2e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e4f446ff67408ef390ba817de935c286c5b2a47e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346257"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727608"
 ---
 # <a name="introduction-to-application-groups"></a>Wprowadzenie do grup aplikacji
 Menedżer zasobów klastra usługi Service Fabric zarządza zwykle zasobów klastra przez rozłożenie obciążenia (reprezentowane za pomocą [metryki](service-fabric-cluster-resource-manager-metrics.md)) równomiernie w całym klastrze. Usługa Service Fabric zarządza się pojemności węzłów w klastrze i klaster jako całość przy użyciu [pojemności](service-fabric-cluster-resource-manager-cluster-description.md). Metryki i wydajności działają doskonale nadaje się do wielu obciążeń, ale wzorce, które intensywnie korzystają z różnych wystąpieniach aplikacji Service Fabric Service czasami Przenieś dodatkowe wymagania. Na przykład możesz chcieć:
@@ -107,7 +107,7 @@ Rezerwowania miejsca, w klastrze, dla aplikacji się natychmiast stanie nawet wt
 - każdym razem, gdy zmieni się liczba usług w ramach wystąpienia aplikacji 
 - usługi istnieją, ale nie są korzystający z zasobów 
 
-Rezerwacji zasobów, wystąpienie aplikacji wymaga określenia dwa dodatkowe parametry: *MinimumNodes* i *NodeReservationCapacity*
+Rezerwacji zasobów dla wystąpienia aplikacji wymaga określenia pliku dwa dodatkowe parametry: *MinimumNodes* i *NodeReservationCapacity*
 
 - **MinimumNodes** — określa minimalną liczbę węzłów, które wystąpienia aplikacji powinny być uruchamiane.  
 - **NodeReservationCapacity** — to ustawienie jest na metrykę dla aplikacji. Wartość jest ilość w przypadku tej metryki zarezerwowane dla aplikacji na dowolnym węźle gdzie uruchamianą w usługi w tej aplikacji.
@@ -179,9 +179,9 @@ foreach (ApplicationLoadMetricInformation metric in metrics)
 Zapytanie ApplicationLoad zwraca podstawowych informacji o wydajności aplikacji, który został określony dla aplikacji. Informacje te obejmują informacje węzłów minimalna i maksymalna liczba węzłów, a numer który obecnie zajmuje aplikacji. Zawiera także informacje o poszczególnych metryki obciążenia aplikacji, w tym:
 
 * Nazwa metryki: Nazwa metryki.
-* Pojemność rezerwacji: Pojemność klastra FF zarezerwowanego w klastrze dla tej aplikacji.
+* Pojemność rezerwacji: Pojemność klastra, zarezerwowane dla tej aplikacji w klastrze.
 * Obciążenie aplikacji: Łączna liczba obciążenia repliki podrzędnego tej aplikacji.
-* Wydajność aplikacji: Maksymalna dopuszczalna wartość obciążenia aplikacji.
+* Wydajność aplikacji: Maksymalna dozwolona wartość obciążenia aplikacji.
 
 ## <a name="removing-application-capacity"></a>Usuwanie pojemności aplikacji
 Po ustawieniu parametrów wydajności aplikacji dla aplikacji, można je usunąć za pomocą polecenia cmdlet Update interfejsy API z aplikacji lub programu PowerShell. Na przykład:

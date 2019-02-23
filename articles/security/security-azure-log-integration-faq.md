@@ -4,7 +4,7 @@ description: Ten artykuł zawiera odpowiedzi na pytania dotyczące usługi Azure
 services: security
 documentationcenter: na
 author: TomShinder
-manager: barbkess
+manager: MBaldwin
 editor: TerryLanfear
 ms.assetid: d06d1ac5-5c3b-49de-800e-4d54b3064c64
 ms.service: security
@@ -15,12 +15,12 @@ ms.workload8: na
 ms.date: 01/14/2019
 ms.author: barclayn
 ms.custom: azlog
-ms.openlocfilehash: f1b809e52cc532d13be85776f73aba4465fa2140
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: fc94208ef01e52207b6efbf88223119cf58ddb7f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114930"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727166"
 ---
 # <a name="azure-log-integration-faq"></a>Integracja dzienników platformy Azure — często zadawane pytania
 
@@ -32,6 +32,8 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania (FAQ) dotyczących i
 Integracja dzienników platformy Azure to usługa systemu operacyjnego Windows, która służy do integracji nieprzetworzonych dzienników z zasobów platformy Azure w Twojej lokalnej zabezpieczeń informacjami i zdarzeniami (SIEM) systemów zarządzania. Integracja ta zapewnia jednolity pulpit nawigacyjny dla wszystkich zasobów w środowisku lokalnym lub w chmurze. Użytkownik może, a następnie agregacji, korelowanie, analizowanie i alertów dla zdarzeń dotyczących zabezpieczeń skojarzone z aplikacjami.
 
 Preferowaną metodą integracji dzienników platformy Azure jest za pomocą łącznika usługi Azure Monitor z dostawcą rozwiązania SIEM, a także następujące [instrukcje](../azure-monitor/platform/stream-monitoring-data-event-hubs.md). Jednak jeśli dostawcy rozwiązania SIEM nie udostępnia łącznik do usługi Azure Monitor, może być można używać integracji dzienników platformy Azure jako rozwiązanie tymczasowe (Jeśli system SIEM jest obsługiwany przez usługi Azure Log Integration) do czasu udostępnienia łącznika programu.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Oprogramowanie integracji dzienników platformy Azure jest bezpłatne?
 
@@ -118,8 +120,8 @@ Aby uzyskać szczegółowe informacje na temat sposobu uzyskania, modyfikowania 
 
 Poniższy przykład pobiera konfigurację diagnostyki platformy Azure:
 
-    -AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
-    $publicsettings = (Get-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
+    Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient
+    $publicsettings = (Get-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient).PublicSettings
     $encodedconfig = (ConvertFrom-Json -InputObject $publicsettings).xmlCfg
     $xmlconfig = [System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($encodedconfig))
     Write-Host $xmlconfig
@@ -136,7 +138,7 @@ Poniższy przykład modyfikuje konfigurację diagnostyki platformy Azure. W tej 
 W poniższym przykładzie ustawiono konfiguracji usługi Azure Diagnostics:
 
     $diagnosticsconfig_path = "d:\WADConfig.xml"
-    Set-AzureRmVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
+    Set-AzVMDiagnosticsExtension -ResourceGroupName AzLog-Integration -VMName AzlogClient -DiagnosticsConfigurationPath $diagnosticsconfig_path -StorageAccountName log3121 -StorageAccountKey <storage key>
 
 Po wprowadzeniu zmian, sprawdź konto magazynu, aby upewnić się, że poprawne zdarzenia są zbierane.
 

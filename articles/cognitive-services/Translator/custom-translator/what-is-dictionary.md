@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 87ea4edd9bb548701d6bcf63dd542ed6e35d9f7f
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.topic: conceptual
+ms.openlocfilehash: 2b7e709a06797323cc99bfd636ee26e9bfb8026d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585557"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731858"
 ---
 # <a name="what-is-a-dictionary"></a>Co to jest słownikiem?
 
@@ -22,7 +22,7 @@ Słownik jest wyrównany pary dokumentów określa listę frazy lub zdania i ich
 
 Słowniki działają tylko dla projektów w parach języka, które mają w pełni obsługiwany system neuronowego tłumaczenia maszynowego (NMT) firmy Microsoft za ich. [Wyświetl pełną listę języków](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="phrase-dictionary"></a>Słownik frazy 
+## <a name="phrase-dictionary"></a>Słownik frazy
 Po dołączeniu słownika frazy szkolenie modelu, dowolny wyraz lub frazę, wyświetlane jest tłumaczony w taki sposób, który określiłeś. Pozostała część zdanie jest tłumaczony w zwykły sposób. Słownik frazy służy do określania fraz, które nie powinien być tłumaczony, podając tę samą frazę nieprzetłumaczonych w pliku źródłowym i docelowym w słowniku.
 
 ## <a name="sentence-dictionary"></a>Słownik zdania
@@ -36,9 +36,9 @@ Możesz uczyć model przy użyciu tylko dane słownika. Aby to zrobić, wybierz 
 
 ## <a name="recommendations"></a>Zalecenia
 
-- Słowniki są nie stanowi zastępstwa dla uczonego modelu przy użyciu danych szkoleniowych.  Słowniki zasadniczo Znajdź i Zamień słowa lub zdania.  Co system, ucz się od Twojego materiał szkoleniowy w pełnych zdań ogólnie jest lepszym rozwiązaniem niż przy użyciu słownika. 
+- Słowniki są nie stanowi zastępstwa dla uczonego modelu przy użyciu danych szkoleniowych.  Słowniki zasadniczo Znajdź i Zamień słowa lub zdania.  Co system, ucz się od Twojego materiał szkoleniowy w pełnych zdań ogólnie jest lepszym rozwiązaniem niż przy użyciu słownika.
 - Słownik frazy powinny być używane rzadko. Po frazy w obrębie zdania, kontekst, w tym zdaniu utraty lub ograniczone do tłumaczenia pozostałą część zdania. Wynik jest to, że podczas frazy lub programu word w zdaniu przekształci zgodnie ze słownika frazy, ogólną jakość tłumaczenia zdania często będzie słabsza.
-- Słownik frazy dobrze się sprawdza rzeczowniki złożone, takich jak nazwy produktów ("Microsoft SQL Server"), prawidłowe nazwy ("miasto Hamburg") lub funkcji tego produktu ("Tabela przestawna"). Nie działa równie dobrze dla zleceń lub określeniem, ponieważ te są zwykle modulowany w źródle lub w języku docelowym. Należy unikać frazy wpisy słownika tylko rzeczowniki złożone. 
+- Słownik frazy dobrze się sprawdza rzeczowniki złożone, takich jak nazwy produktów ("Microsoft SQL Server"), prawidłowe nazwy ("miasto Hamburg") lub funkcji tego produktu ("Tabela przestawna"). Nie działa równie dobrze dla zleceń lub określeniem, ponieważ te są zwykle modulowany w źródle lub w języku docelowym. Należy unikać frazy wpisy słownika tylko rzeczowniki złożone.
 - Podczas korzystania ze słownika, wielkość liter i znaków interpunkcyjnych w tłumaczenia odzwierciedlają wielkość liter i znaków interpunkcyjnych, podany w pliku docelowego. Wielkość liter i znaków interpunkcyjnych, są ignorowane podczas próby zidentyfikować są takie same Twoje zdanie danych wejściowych i zdania źródło w pliku słownika. Załóżmy na przykład, że szkoliliśmy anglojęzyczną systemowi hiszpański używane słownik tego określonego "miasto Hamburg" w pliku źródłowym, a "Ciudad de hamburg" w pliku docelowym. Jeśli jest to wymagane I tłumaczenie zdanie, które uwzględnione frazę "miasto Hamburg", następnie "miasto Hamburg" będzie pasował do pliku słownika dla wpisu "Miasto Hamburg", a mapującej do "Ciudad de hamburg" w mojej końcowego tłumaczenia.
 - Słowa występuje więcej niż raz w pliku słownika, system zawsze będzie korzystać ostatni wpis podane. Słownika nie może zawierać wiele tłumaczenia tego samego wyrazu.
 

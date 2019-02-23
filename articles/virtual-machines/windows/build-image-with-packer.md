@@ -12,17 +12,19 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 03/29/2018
+ms.date: 02/22/2019
 ms.author: cynthn
-ms.openlocfilehash: 0ae4c883baa156276646755273547a17d23edc55
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: f768582e8ef32bc654a2f797c5c7a481a26fb643
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982492"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734187"
 ---
 # <a name="how-to-use-packer-to-create-windows-virtual-machine-images-in-azure"></a>Jak utworzyć obrazy maszyn wirtualnych Windows na platformie Azure za pomocą usługi Packer
 Każda maszyna wirtualna (VM) na platformie Azure jest tworzony z obrazu, który definiuje Windows dystrybucji i wersji systemu operacyjnego. Obrazy mogą obejmować wstępnie zainstalowane aplikacje i konfiguracje. W portalu Azure Marketplace zawiera wiele obrazów pierwszy i innych firm dla typowych systemu operacyjnego i środowiska aplikacji albo można utworzyć własne niestandardowe obrazy dopasowany do Twoich potrzeb. Ten artykuł szczegółowo opisuje sposób użycia narzędzia typu open-source [Packer](https://www.packer.io/) do definiowania i tworzenie niestandardowych obrazów na platformie Azure.
+
+Ostatniego testowania w tym artykule na temat korzystania z 21/2/2019 [modułu Az PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps) wersji 1.3.0 i [Packer](https://www.packer.io/docs/install/index.html) wersji 1.3.4.
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
@@ -31,8 +33,8 @@ Podczas procesu kompilacji narzędzia Packer tworzy tymczasowy zasobów platform
 
 Utwórz grupę zasobów za pomocą [New AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
-```powershell
-$rgName = "myResourceGroup"
+```azurepowershell
+$rgName = "mypackerGroup"
 $location = "East US"
 New-AzResourceGroup -Name $rgName -Location $location
 ```
@@ -40,24 +42,28 @@ New-AzResourceGroup -Name $rgName -Location $location
 ## <a name="create-azure-credentials"></a>Tworzenie poświadczeń platformy Azure
 Narzędzia packer uwierzytelnia się za pomocą platformy Azure przy użyciu nazwy głównej usługi. Jednostka usługi platformy Azure to tożsamość zabezpieczeń używanej z aplikacjami, usługami i narzędzia automatyzacji, takie jak usługi Packer. Ty określasz i zdefiniować uprawnienia dotyczące jakie operacje nazwy głównej usługi można wykonać na platformie Azure.
 
-Tworzenie usługi podmiotu zabezpieczeń za pomocą [New AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) i przypisać uprawnienia dla jednostki usługi do tworzenia i zarządzania zasobami przy użyciu [New AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment). Zastąp *&lt;hasło&gt;* w przykładzie z własnego hasła.  
+Tworzenie usługi podmiotu zabezpieczeń za pomocą [New AzADServicePrincipal](https://docs.microsoft.com/powershell/module/az.resources/new-azadserviceprincipal) i przypisać uprawnienia dla jednostki usługi do tworzenia i zarządzania zasobami przy użyciu [New AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment). Wartość `-DisplayName` musi być unikatowa; Zastąp własną wartość zgodnie z potrzebami.  
 
-```powershell
-$sp = New-AzADServicePrincipal -DisplayName "AzurePacker" `
-    -Password (ConvertTo-SecureString "<password>" -AsPlainText -Force)
-Sleep 20
+```azurepowershell
+$sp = New-AzADServicePrincipal -DisplayName "PackerServicePrincipal"
+$BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($sp.Secret)
+$plainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
 New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
+
+Następnie dane wyjściowe identyfikatora hasła i aplikacji.
+
+```powershell
+$plainPassword
+$sp.ApplicationId
+```
+
 
 Aby uwierzytelniać się na platformie Azure, trzeba będzie również uzyskać Azure identyfikatorów dzierżawę i subskrypcję z [Get AzSubscription](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription):
 
 ```powershell
-$sub = Get-AzSubscription
-$sub.TenantId[0]
-$sub.SubscriptionId[0]
+Get-AzSubscription
 ```
-
-Te dwa identyfikatory są używane w następnym kroku.
 
 
 ## <a name="define-packer-template"></a>Definiowanie szablonu usługi Packer
@@ -68,7 +74,7 @@ Utwórz plik o nazwie *windows.json* i wklej następującą zawartością. Wprow
 | Parametr                           | Gdzie można uzyskać |
 |-------------------------------------|----------------------------------------------------|
 | *client_id*                         | Wyświetl identyfikator jednostki usługi przy użyciu `$sp.applicationId` |
-| *client_secret*                     | Hasło określone w `$securePassword` |
+| *client_secret*                     | Wyświetl hasło generowane automatycznie za pomocą `$plainPassword` |
 | *tenant_id*                         | Dane wyjściowe z `$sub.TenantId` polecenia |
 | *subscription_id*                   | Dane wyjściowe z `$sub.SubscriptionId` polecenia |
 | *managed_image_resource_group_name* | Nazwa grupy zasobów, utworzonego w pierwszym kroku |
@@ -79,12 +85,12 @@ Utwórz plik o nazwie *windows.json* i wklej następującą zawartością. Wprow
   "builders": [{
     "type": "azure-arm",
 
-    "client_id": "0831b578-8ab6-40b9-a581-9a880a94aab1",
-    "client_secret": "P@ssw0rd!",
-    "tenant_id": "72f988bf-86f1-41af-91ab-2d7cd011db47",
-    "subscription_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "client_id": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "client_secret": "ppppppp-pppp-pppp-pppp-ppppppppppp",
+    "tenant_id": "zzzzzzz-zzzz-zzzz-zzzz-zzzzzzzzzzzz",
+    "subscription_id": "yyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyy",
 
-    "managed_image_resource_group_name": "myResourceGroup",
+    "managed_image_resource_group_name": "myPackerGroup",
     "managed_image_name": "myPackerImage",
 
     "os_type": "Windows",
@@ -123,9 +129,9 @@ Ten szablon tworzy maszynę Wirtualną z systemem Windows Server 2016, instaluje
 ## <a name="build-packer-image"></a>Tworzenie obrazu usługi Packer
 Jeśli nie masz jeszcze usługi Packer zainstalowane na komputerze lokalnym [postępuj zgodnie z instrukcjami instalacji narzędzia Packer](https://www.packer.io/docs/install/index.html).
 
-Tworzenie obrazu, określając usługi Packer pliku szablonu w następujący sposób:
+Tworzenie obrazu, otwierając wiersz polecenia i określanie usługi Packer pliku szablonu w następujący sposób:
 
-```bash
+```
 ./packer build windows.json
 ```
 
@@ -228,7 +234,7 @@ Trwa kilka minut, aby utworzyć maszynę Wirtualną z obrazu usługi Packer.
 
 
 ## <a name="test-vm-and-webserver"></a>Test maszyny Wirtualnej, a serwer sieci Web
-Uzyskaj publiczny adres IP maszyny wirtualnej za pomocą [Get AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). W poniższym przykładzie uzyskano utworzony wcześniej adres IP *myPublicIP*:
+Uzyskaj publiczny adres IP maszyny wirtualnej za pomocą polecenia [Get-AzPublicIPAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress). W poniższym przykładzie uzyskano utworzony wcześniej adres IP *myPublicIP*:
 
 ```powershell
 Get-AzPublicIPAddress `

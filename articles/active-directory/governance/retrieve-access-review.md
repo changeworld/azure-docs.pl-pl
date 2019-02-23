@@ -1,6 +1,6 @@
 ---
-title: Pobieranie wyników przeglądu dostępu usługi Azure AD | Microsoft Docs
-description: Jak pobrać wyniki przeglądów dostępu usługi Azure Active Directory.
+title: Pobieranie wyników przeglądu dostępu dla grup i aplikacji w przeglądach dostępu usługi Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak pobrać wyników przeglądu dostępu dla członków grupy lub dostęp do aplikacji w przeglądach dostępu usługi Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2dccacb82b34e7e257fcee9632045f12839b5425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f5a422f619c4ef63da59516ff2748683eb0f7f70
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210802"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726693"
 ---
-# <a name="retrieve-access-review-results"></a>Pobieranie wyników przeglądu dostępu
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>Pobieranie wyników przeglądu dostępu dla grup i aplikacji w przeglądach dostępu usługi Azure AD
 
 Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [tworzenia przeglądów dostępu](create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji.  Użytkownik należący do roli **Administrator globalny**, **Administrator kont użytkowników**, **Administrator zabezpieczeń** lub **Czytelnik zabezpieczeń** może także przeczytać wyniki przeglądu dostępu.  Aby przypisać użytkowników do jednej z tych ról, administrator ról uprzywilejowanych może użyć usługi Azure AD PIM do uprawnienia użytkownika do aktywowania roli, a administrator globalny może trwale [przypisać użytkownika do roli](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
@@ -55,7 +55,7 @@ Domyślnie usunięty użytkownik pozostaje usunięty w usłudze Azure AD przez 3
 - [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD](manage-user-access-with-access-reviews.md)
 - [Zarządzanie dostępem gości za pomocą przeglądów dostępu w usłudze Azure AD](manage-guest-access-with-access-reviews.md)
 - [Zarządzanie programami i kontrolami obejmującymi przeglądy dostępu w usłudze Azure AD](manage-programs-controls.md)
-- [Create an access review for members of a group or access to an application (Tworzenie przeglądu dostępu dla członków grupy lub na potrzeby dostępu do aplikacji)](create-access-review.md)
+- [Tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md)
 - [Tworzenie przeglądu dostępu użytkowników ról administracyjnych usługi Azure AD](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 

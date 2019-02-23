@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4d6838ecdbf1a33a4f3ee1562f26db7952fdfb83
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819862"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734238"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optymalizowanie środowiska za pomocą rozwiązania System Center Operations Manager Health Check (wersja zapoznawcza)
 
@@ -40,7 +40,7 @@ Po dodaniu rozwiązania i oceny jest wykonywane Podsumowanie informacje o obszar
 
 ## <a name="installing-and-configuring-the-solution"></a>Instalowanie i konfigurowanie rozwiązania
 
-To rozwiązanie działa przy użyciu programu Microsoft System Operations Manager 2012 Service Pack (SP) 1 i 2012 R2.
+To rozwiązanie działa przy użyciu programu Microsoft System Center 2012 Operations Manager Service Pack 1, Microsoft System Center 2012 R2 Operations Manager, Microsoft System Center 2016 Operations Manager, Microsoft System Center 2016 Operations Manager i System firmy Microsoft Centrum Operations Manager 1807
 
 Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiązanie.
 
@@ -57,9 +57,9 @@ Skorzystaj z poniższych informacji, aby zainstalować i skonfigurować rozwiąz
 1. [Ustaw konto Uruchom jako dla System Center Operations Manager Health Check](#operations-manager-run-as-accounts-for-log-analytics)  
 2. Skonfiguruj regułę System Center Operations Manager Health Check
 
-## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Szczegóły danych oceny System Center Operations Manager w kolekcji
+## <a name="system-center-operations-manager-health-check-data-collection-details"></a>Szczegółowe informacje kolekcji danych System Center Operations Manager Health Check
 
-Ocena programu System Center Operations Manager gromadzi dane z następujących źródeł:
+Rozwiązania System Center Operations Manager Health Check zbiera dane z następujących źródeł:
 
 * Rejestr
 * Instrumentacja zarządzania Windows (WMI)
@@ -97,7 +97,7 @@ Teraz, gdy konto Uruchom jako jest tworzone, musi na docelowych serwerach zarzą
 2. Na **dystrybucji** kliknij pozycję **Dodaj** dla **wybrane komputery** pole, a następnie dodać serwer zarządzania do konta w celu dystrybucji.  Kliknij przycisk **OK** dwa razy, aby zapisać zmiany.
 3. W obszarze **Konfiguracja Uruchom jako**, kliknij przycisk **profile**.
 4. Wyszukaj *profilu Ocena oprogramowania SCOM*.
-5. Nazwa profilu, powinny być: *Ocena oprogramowania SCOM programu Microsoft System Center Advisor profil Uruchom jako*.
+5. Nazwa profilu, powinny być: *Microsoft System Center Operations Manager Health Check profil Uruchom jako*.
 6. Kliknij prawym przyciskiem myszy i zaktualizuj jego właściwości i dodać ostatnio utworzone konto Uruchom jako utworzone wcześniej.
 
 ### <a name="sql-script-to-grant-granular-permissions-to-the-run-as-account"></a>Skrypt SQL w celu przyznania szczegółowych uprawnień do konta Uruchom jako
@@ -152,13 +152,13 @@ ALTER ROLE [db_owner] ADD MEMBER [UserName]
 
 ### <a name="configure-the-health-check-rule"></a>Skonfiguruj regułę sprawdzania kondycji
 
-Pakiet administracyjny rozwiązania System Center Operations Manager Health Check zawiera reguły o nazwie *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły*. Ta reguła jest odpowiedzialny za działanie sprawdzania kondycji. Aby włączyć regułę i skonfiguruj częstotliwość, użyj poniższej procedury.
+Pakiet administracyjny rozwiązania System Center Operations Manager Health Check zawiera reguły o nazwie *Microsoft systemu Centrum Operations Manager uruchom Sprawdź Reguła kondycji*. Ta reguła jest odpowiedzialny za działanie sprawdzania kondycji. Aby włączyć regułę i skonfiguruj częstotliwość, użyj poniższej procedury.
 
-Domyślnie program Microsoft System Center Advisor SCOM oceny Uruchom oceny reguła jest wyłączona. Aby uruchomić sprawdzenie kondycji, należy włączyć reguły na serwerze zarządzania. Wykonaj następujące kroki.
+Domyślnie program Microsoft System Centrum Operations Manager uruchom Sprawdź reguły kondycji jest wyłączona. Aby uruchomić sprawdzenie kondycji, należy włączyć reguły na serwerze zarządzania. Wykonaj następujące kroki.
 
 #### <a name="enable-the-rule-for-a-specific-management-server"></a>Włącz regułę dla określonego serwera zarządzania
 
-1. W **tworzenie** obszar roboczy w konsoli operacje programu Operations Manager, wyszukaj regułę *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły* w **reguły** okienka.
+1. W **tworzenie** obszar roboczy w konsoli operacje programu Operations Manager, wyszukaj regułę *Microsoft systemu Centrum Operations Manager uruchom Sprawdź Reguła kondycji* w **reguły** okienka.
 2. W wynikach wyszukiwania, wybierz jedną, która zawiera tekst *typu: Serwer zarządzania*.
 3. Kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **zastępuje** > **dla konkretnego obiektu klasy: Serwer zarządzania**.
 4.  Na liście serwerów dostępnych zarządzania wybierz serwer zarządzania, w którym reguła ma zostać uruchomiona.  Powinna to być ten sam serwer zarządzania, przypisując mu skonfigurowane wcześniej skojarzyć konto Uruchom jako z.
@@ -170,7 +170,7 @@ Domyślnie program Microsoft System Center Advisor SCOM oceny Uruchom oceny regu
 
 Ocena jest domyślnie skonfigurowana do uruchamiania co 10 080 minut (lub siedmiu dni). Możesz zastąpić wartość minimalna wartość 1440 minut (lub jeden dzień). Wartość reprezentuje przerwy minimalny czas między oceny kolejnych przebiegów. Aby zastąpić interwału, użyj kroków poniżej.
 
-1. W **tworzenie** obszar roboczy w konsoli programu Operations Manager, wyszukaj regułę *Microsoft System Center Advisor SCOM oceny Uruchom oceny reguły* w **reguły** sekcja.
+1. W **tworzenie** obszar roboczy w konsoli programu Operations Manager, wyszukaj regułę *Microsoft systemu Centrum Operations Manager uruchom Sprawdź Reguła kondycji* w **reguły** sekcja.
 2. W wynikach wyszukiwania, wybierz jedną, która zawiera tekst *typu: Serwer zarządzania*.
 3. Kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **Zastąp zasadę** > **dla wszystkich obiektów klasy: Serwer zarządzania**.
 4. Zmiana **interwał** wartość parametru na wartość żądany przedział. W poniższym przykładzie wartość jest równa 1440 minut (jeden dzień).<br><br> ![Parametr interwału](./media/scom-assessment/interval.png)<br>  
@@ -277,7 +277,7 @@ Jeśli masz zaleceń, które chcesz zignorować, można utworzyć plik tekstowy,
 
 *Czy istnieje sposób, aby skonfigurować częstotliwość uruchamiania wyboru?* Tak. Zobacz [skonfigurować częstotliwość uruchamiania](#configure-the-run-frequency).
 
-*Jeśli inny serwer został odnaleziony, po rozwiązania do oceny programu System Center Operations Manager zostały dodane, zostanie on sprawdzony?* Tak, po odnajdywaniu, który jest sprawdzany od tego momentu domyślnie co siedem dni.
+*Jeśli inny serwer został odnaleziony, po rozwiązania System Center Operations Manager Health Check zostały dodane, zostanie on sprawdzony?* Tak, po odnajdywaniu, który jest sprawdzany od tego momentu domyślnie co siedem dni.
 
 *Co to jest nazwa procesu, który wykonuje zbierania danych?* AdvisorAssessment.exe
 

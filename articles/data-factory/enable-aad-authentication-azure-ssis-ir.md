@@ -12,18 +12,18 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 2/19/2019
 ms.author: douglasl
-ms.openlocfilehash: b672264e1cb3cd415532cf4bcfbbd268afffa70d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 77ee2a0649d5c815fb68a4a40106455839030695
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415941"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671526"
 ---
 # <a name="enable-azure-active-directory-authentication-for-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS Integration Runtime
 
 W tym artykule pokazano, jak włączyć uwierzytelnianie usługi Azure Active Directory (Azure AD) za pomocą tożsamości zarządzanej dla usługi Azure Data Factory (ADF) i użyj go zamiast uwierzytelniania SQL do tworzenia środowiska Azure-SSIS Integration Runtime (IR) to z kolei spowoduje utworzenie SSIS katalog bazy danych (SSISDB) w usłudze Azure SQL Database server/zarządzanego wystąpienia w Twoim imieniu.
 
-Aby uzyskać więcej informacji na temat tożsamości zarządzanej dla usługi ADF, zobacz [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
+Aby uzyskać więcej informacji na temat tożsamości zarządzanej dla usługi ADF, zobacz [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 
 > [!NOTE]
 > Jeśli utworzono już środowisko IR Azure-SSIS przy użyciu uwierzytelniania SQL nie można ponownie skonfigurować środowiska IR do użycia uwierzytelnianie usługi Azure AD przy użyciu programu PowerShell, w tym momencie, ale możesz to zrobić w aplikacji portal/ADF platformy Azure. 
@@ -57,7 +57,7 @@ Można użyć istniejącej grupy usługi Azure AD lub utworzyć nowe konto, przy
     6de75f3c-8b2f-4bf4-b9f8-78cc60a18050 SSISIrGroup
     ```
 
-3.  Dodaj zarządzaną tożsamością dla usługi ADF do grupy. Można wykonać tego artykułu [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) można pobrać identyfikator podmiotu zabezpieczeń tożsamości usługi (np. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale nie należy używać identyfikator aplikacji tożsamości usługi w tym celu).
+3.  Dodaj zarządzaną tożsamością dla usługi ADF do grupy. Można wykonać tego artykułu [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) można pobrać identyfikator podmiotu zabezpieczeń tożsamości usługi (np. 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc, ale nie należy używać identyfikator aplikacji tożsamości usługi w tym celu).
 
     ```powershell
     Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc
@@ -167,7 +167,7 @@ W tym następnego kroku należy [programu Microsoft SQL Server Management Studi
 
 4.  Kliknij prawym przyciskiem myszy **wzorca** bazy danych, a następnie wybierz pozycję **nowe zapytanie**.
 
-5.  Pobierz tożsamości zarządzanej dla usługi ADF. Można wykonać tego artykułu [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) Aby pobrać identyfikator podmiotu zabezpieczeń aplikacji tożsamości usługi (ale nie należy używać identyfikator tożsamości usługi w tym celu).
+5.  Pobierz tożsamości zarządzanej dla usługi ADF. Można wykonać tego artykułu [identiy zarządzane przez usługę Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity) Aby pobrać identyfikator podmiotu zabezpieczeń aplikacji tożsamości usługi (ale nie należy używać identyfikator tożsamości usługi w tym celu).
 
 6.  W oknie zapytania Uruchom następujący skrypt języka T-SQL można przekonwertować tożsamości zarządzanej dla usługi ADF do typu binary:
 

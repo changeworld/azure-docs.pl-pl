@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/19/2018
+ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 338ae760aae90131a7353f990e1014aa714faa0f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 419a07ff6d423f363d6973da3df00fd4aa3f6278
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177907"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727268"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co to są przeglądów dostępu usługi Azure AD?
 
@@ -88,23 +88,25 @@ Aby włączyć przeglądów dostępu, wykonaj następujące kroki.
 
 1. Kliknij przycisk **wszystkich usług** i znajdź usługę przeglądów dostępu.
 
-    ![Wszystkie usługi — przeglądy dostępu](./media/access-reviews-overview/all-services-access-reviews.png)
-
 1. Kliknij przycisk **przeglądów dostępu**.
 
-    ![Dołączanie przeglądów dostępu](./media/access-reviews-overview/onboard-button.png)
+    ![Wszystkie usługi — przeglądy dostępu](./media/access-reviews-overview/all-services-access-reviews.png)
 
 1. Na liście w okienku nawigacji kliknij **dołączanie** otworzyć **Dołącz przeglądy dostępu** strony.
 
+    ![Dołączanie przeglądów dostępu](./media/access-reviews-overview/onboard-button.png)
+
+1. Kliknij przycisk **Utwórz** umożliwiając dostęp do przeglądów w bieżącym katalogu.
+
     ![Dołącz przeglądy dostępu](./media/access-reviews-overview/onboard-access-reviews.png)
 
-1. Kliknij przycisk **Utwórz** umożliwiając dostęp do przeglądów w bieżącym katalogu. Przy następnym uruchomieniu przeglądów dostępu, opcje zostaną włączone.
+    Przeglądy przy następnym uruchomieniu programu Microsoft access, opcje przeglądu dostępu zostaną włączone.
 
     ![Przeglądy dostępu włączone](./media/access-reviews-overview/access-reviews-enabled.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Create an access review for members of a group or access to an application (Tworzenie przeglądu dostępu dla członków grupy lub na potrzeby dostępu do aplikacji)](create-access-review.md)
+- [Tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md)
 - [Tworzenie przeglądu dostępu użytkowników ról administracyjnych usługi Azure AD](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)
-- [Wykonywanie przeglądu dostępu za pomocą przeglądów dostępu usługi Azure AD](perform-access-review.md)
-- [Kończenie przeglądu dostępu członków grupy lub dostęp użytkowników do aplikacji w usłudze Azure AD](complete-access-review.md)
+- [Przegląd dostępu wszystkich użytkowników do grupy lub aplikacji](perform-access-review.md)
+- [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md)

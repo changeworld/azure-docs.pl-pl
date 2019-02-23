@@ -1,5 +1,5 @@
 ---
-title: Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory | Dokumentacja firmy Microsoft
+title: Rozwiązywanie problemów z współpracy B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Środki zaradcze dla typowych problemów przy użyciu funkcji współpracy B2B usługi Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f69bad355bf5644988416958c4b4f32ed66714d9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f772c14f414e4e1c5401e3c85de7009355453c98
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186407"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668534"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory
 
@@ -37,7 +37,7 @@ Aby włączyć tę funkcję, należy za pomocą ustawienia "ShowPeoplePickerSugg
 
 Jeśli zostanie wyświetlone powiadomienie, że nie masz uprawnień do zapraszania użytkowników, należy sprawdzić, czy Twoje konto użytkownika jest autoryzowany do zapraszania użytkowników zewnętrznych w obszarze Ustawienia użytkownika:
 
-![](media/troubleshoot/external-user-settings.png)
+![Ustawień użytkowników zewnętrznych](media/troubleshoot/external-user-settings.png)
 
 Jeśli zostały ostatnio zmodyfikowane tych ustawień lub przypisana rola osoba zapraszająca gości do użytkownika, może występować opóźnienie 15 – 60 minut aby zmiany zaczęły obowiązywać.
 
@@ -49,7 +49,7 @@ Typowe błędy:
 
 Podczas zapraszania użytkowników, których organizacja używa usługi Azure Active Directory, ale których nie istnieje konta określonego użytkownika (na przykład, użytkownik nie istnieje w domenie contoso.com w usłudze Azure AD). Administrator domeny contoso.com może mieć zasady w miejscu, uniemożliwiając tworzonych przez użytkowników. Użytkownik musi skontaktować się z ich administratora, aby określić, czy użytkownicy zewnętrzni mogą. Może być konieczne użytkownika zewnętrznego administratora umożliwiające użytkownikom zweryfikować poczty E-mail w ich domenie (zobacz ten [artykułu](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na co pozwala użytkownikom zweryfikować wiadomości E-mail).
 
-![](media/troubleshoot/allow-email-verified-users.png)
+![Użytkowników, które mają zostać dodane zweryfikowanych błędzie informujący, że ta dzierżawa nie zezwala na adres e-mail](media/troubleshoot/allow-email-verified-users.png)
 
 ### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Użytkownik zewnętrzny nie istnieje już w domeny federacyjnej
 

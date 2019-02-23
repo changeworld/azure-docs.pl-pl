@@ -1,25 +1,20 @@
 ---
 title: Dokumentacja witryny Azure Marketplace | Microsoft Docs
 description: Dowiedz się więcej o witrynie Azure Marketplace.
-services: Azure, marketplace
+services: 'Azure, marketplace'
 author: jm-aditi-ms
 manager: pabutler
-editor: ''
+editor: null
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: marketplace
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 06/04/2018
 ms.author: ellacroi
-ms.openlocfilehash: e93d1b926b78a352e65a68fc71b07f7631d0b1af
-ms.sourcegitcommit: 26cc9a1feb03a00d92da6f022d34940192ef2c42
-ms.translationtype: HT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48830026"
 ---
+
 # <a name="azure-marketplace-documentation"></a>Dokumentacja witryny Azure Marketplace
 
 Poznaj witrynę Azure Marketplace — rynek aplikacji i usług w trybie online, który umożliwia początkującym i korporacyjnym niezależnym dostawcom oprogramowania oferowanie swoich rozwiązań klientom na całym świecie.

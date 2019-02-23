@@ -8,12 +8,12 @@ ms.author: viviali
 ms.date: 12/4/2018
 ms.topic: conceptual
 manager: peterpr
-ms.openlocfilehash: 9c774a463264a3df859ac097dce4aa21df1c1dd8
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: 6133a7441459072d0c7da1841161da563a28aa31
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53163365"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730328"
 ---
 # <a name="build-the-iot-central-device-bridge-to-connect-other-iot-clouds-to-iot-central"></a>Tworzenie IoT Central Mostek urządzenia IoT Central nawiązać połączenia innych chmur IoT
 
@@ -26,7 +26,9 @@ Mostek urządzenia IoT Central to rozwiązanie typu open source w serwisie GitHu
 -   Aplikacja funkcji platformy Azure
 -   Konto usługi Azure Storage
 -   Plan zużycia
--   Usługa Azure Key Vault aplikacja funkcji jest krytycznego mostka urządzenia. Odebraniu żądania HTTP POST z innych platform IoT lub dowolnego niestandardowego platformach przy użyciu integracji prostego elementu webhook. Udostępniliśmy przykłady pokazujące, jak połączyć się z Sigfox, cząstek i TTN chmury. Możesz łatwo rozszerzyć tego rozwiązania, połączyć się z niestandardowego chmury IoT, jeśli platformą wysyłać żądania HTTP POST do aplikacji funkcji.
+-   W usłudze Azure Key Vault
+
+Aplikacja funkcji jest krytycznego mostka urządzenia. Odebraniu żądania HTTP POST z innych platform IoT lub dowolnego niestandardowego platformach przy użyciu integracji prostego elementu webhook. Udostępniliśmy przykłady pokazujące, jak połączyć się z Sigfox, cząstek i TTN chmury. Możesz łatwo rozszerzyć tego rozwiązania, połączyć się z niestandardowego chmury IoT, jeśli platformą wysyłać żądania HTTP POST do aplikacji funkcji.
 Aplikacja funkcji przekształca dane w formacie zaakceptowane przez IoT Central i przekazuje go wzdłuż za pośrednictwem interfejsów API usługi DPS.
 
 ![Zrzut ekranu usługi Azure functions](media/howto-build-iotc-device-bridge/azfunctions.png)

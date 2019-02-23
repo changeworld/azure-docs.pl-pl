@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
-ms.openlocfilehash: 76239f80076cbe0f86d6e091a29b008a5a5d06c1
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7f09db1f37617519926955daf0c29c13993dbf80
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116647"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728458"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>Uzyskaj wgląd w całej dzierżawie usługi Azure Security Center
 Ten artykuł pomaga Ci rozpocząć pracę, wykonując kilka akcji, które zmaksymalizować korzyści, jakie oferuje usługa Azure Security Center. Wykonanie tych akcji umożliwia wgląd na wszystkich subskrypcji platformy Azure, które są połączone z dzierżawą usługi Azure Active Directory i skutecznie zarządzać poziom bezpieczeństwa w organizacji na dużą skalę, stosując zasady zabezpieczeń w wielu Subskrypcje w sposób aggregative.
@@ -108,15 +108,15 @@ Wgląd do wszystkich subskrypcji, Administratorzy dzierżawy należy przypisać 
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>Przypisz role RBAC do użytkowników przy użyciu programu PowerShell: 
-1. Zainstaluj program [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+1. Zainstaluj program [Azure PowerShell](/powershell/azure/install-az-ps).
 2. Uruchom następujące polecenia: 
 
     ```azurepowershell
-    # Install Management Groups Powershell module
-    Install-Module AzureRM.Resources
-    
     # Login to Azure as a Global Administrator user
-    Login-AzureRmAccount
+    Connect-AzAccount
     ```
 
 3. Po wyświetleniu monitu zaloguj się przy użyciu poświadczeń administratora globalnego. 
@@ -128,12 +128,12 @@ Wgląd do wszystkich subskrypcji, Administratorzy dzierżawy należy przypisać 
     ```azurepowershell
     # Add Reader role to the required user on the Root Management Group
     # Replace "user@domian.com” with the user to grant access to
-    New-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
+    New-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/"
     ```
 5. Aby usunąć rolę, użyj następującego polecenia: 
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
+    Remove-AzRoleAssignment -SignInName "user@domain.com" -RoleDefinitionName "Reader" -Scope "/" 
     ```
 
 ### <a name="open-or-refresh-security-center"></a>Otwórz lub Odśwież usługi Security Center
@@ -141,11 +141,16 @@ Gdy mieli podwyższony poziom dostępu, Otwórz lub Odśwież usługę Azure Sec
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com). 
 2. Upewnij się, że wybrano wszystkie subskrypcje w selektorze subskrypcji, który chcesz wyświetlić w usłudze Security Center.
+
     ![Zrzut ekranu selektor subskrypcji](./media/security-center-management-groups/subscription-selector.png)
+
 1. Wybierz **wszystkich usług** w menu głównym platformy Azure i w wybierz **usługi Security Center**.
-2. W **Przegląd**, znajduje się wykres pokrycie subskrypcji. 
+2. W **Przegląd**, znajduje się wykres pokrycie subskrypcji.
+
     ![Zrzut ekranu wykresu pokrycie subskrypcji](./media/security-center-management-groups/security-center-subscription-coverage.png)
+
 3. Kliknij pozycję **pokrycia** Aby wyświetlić listę subskrypcji objętych usługą. 
+
     ![Zrzut ekranu listy pokrycie subskrypcji](./media/security-center-management-groups/security-center-coverage.png)
 
 ### <a name="remove-elevated-access"></a>Usuń podwyższonego poziomu dostępu 

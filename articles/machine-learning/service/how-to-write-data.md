@@ -12,16 +12,16 @@ manager: cgronlun
 ms.reviewer: jmartens
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1e508d4c7ed8a8d7df8e9ae586c74258958838e9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1853ff4141a7af3260ef9575bb2457819ab2d4a9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239829"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735020"
 ---
 # <a name="write-data-using-the-azure-machine-learning-data-prep-sdk"></a>Zapisywanie danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data
 
-W tym artykule dowiesz się różnych metod do zapisania danych przy użyciu usługi Azure Machine Learning Prep zestawu SDK usługi Data. Dane wyjściowe mogą być zapisywane w dowolnym miejscu przepływu danych i zapisy są dodawane jako kroki, aby wynikowe przepływu danych i są uruchamiane za każdym razem, gdy przepływ danych. Dane są zapisywane do wielu plików partycji umożliwia zapisywanie równoległej.
+W tym artykule dowiesz się, zapisywanie danych przy użyciu różnych metod [Azure Machine Learning danych Prep zestawu Python SDK](https://aka.ms/data-prep-sdk). Dane wyjściowe mogą być zapisywane w dowolnym miejscu przepływu danych i zapisy są dodawane jako kroki, aby wynikowe przepływu danych i są uruchamiane za każdym razem, gdy przepływ danych. Dane są zapisywane do wielu plików partycji umożliwia zapisywanie równoległej.
 
 Ponieważ nie ma ograniczeń ile napisać czynności są w potoku, możesz łatwo dodawać zapisu dodatkowe kroki, aby uzyskać wyniki pośrednie, rozwiązywania problemów lub innych potokach.
 
@@ -33,7 +33,7 @@ Obsługiwane są następujące formaty plików
 -   Pliki rozdzielane (CSV, TSV itp.)
 -   Pliki parquet
 
-Za pomocą [zestaw python SDK usługi Azure Machine Learning Data Prep](https://aka.ms/data-prep-sdk), możesz zapisać dane do:
+Machine Learning danych Prep Python zestawu SDK usługi Azure można napisać danych:
 + lokalny system plików
 + Azure Blob Storage
 + Azure Data Lake Storage
@@ -48,32 +48,27 @@ Dla wygody generowany jest plik wartownik o nazwie sukces po zakończeniu zapisu
 
 ## <a name="example-write-code"></a>Przykładowy kod zapisu
 
-Na przykład uruchomić ładowanie danych do przepływu danych. Możesz ponownie użyć tych danych w różnych formatach.
+W tym przykładzie najpierw ładowania danych do przepływu danych przy użyciu `auto_read_file()`. Możesz ponownie użyć tych danych w różnych formatach.
 
 ```python
 import azureml.dataprep as dprep
 t = dprep.auto_read_file('./data/fixed_width_file.txt')
 t = t.to_number('Column3')
-t.head(10)
+t.head(5)
 ```
 
 Przykładowe dane wyjściowe:
-|   |  Kolumna1 |    Kolumna2 | Kolumna3 | Kolumna4  |Column5   | Kolumna6 | Column7 | Column8 | Column9 |
-| -------- |  -------- | -------- | -------- |  -------- |  -------- |  -------- |  -------- |  -------- |  -------- |
-| 0 |   10000.0 |   99999.0 |   Brak|       NO|     NO  |   ENRS    |NaN    |   NaN |   NaN|    
-|   1|      10003.0 |   99999.0 |   Brak|       NO|     NO  |   ENSO|       NaN|        NaN |NaN|   
-|   2|  10010.0|    99999.0|    Brak|   NO| JN| ENJA|   70933.0|    -8667.0 |90.0|
-|3| 10013.0|    99999.0|    Brak|   NO| NO| |   NaN|    NaN|    NaN|
-|4| 10014.0|    99999.0|    Brak|   NO| NO| ENSO|   59783.0|    5350.0| 500.0|
-|5| 10015.0|    99999.0|    Brak|   NO| NO| ENBL|   61383.0|    5867.0| 3270.0|
-|6| 10016.0 |99999.0|   Brak|   NO| NO|     |64850.0|   11233.0|    140.0|
-|7| 10017.0|    99999.0|    Brak|   NO| NO| ENFR|   59933.0|    2417.0| 480.0|
-|8| 10020.0|    99999.0|    Brak|   NO| SV|     |80050.0|   16250.0|    80.0|
-|9| 10030.0|    99999.0|    Brak|   NO| SV|     |77000.0|   15500.0|    120.0|
+| | Kolumna1 | Kolumna2 | Kolumna3 | Kolumna4 | Column5 | Kolumna6 | Column7 | Column8 | Column9 |
+| -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+|0| 10000.0 | 99999.0 | Brak | NO | NO | ENRS | NaN | NaN | NaN |   
+|1| 10003.0 | 99999.0 | Brak | NO | NO | ENSO | NaN | NaN | NaN |   
+|2| 10010.0 | 99999.0 | Brak | NO | JN | ENJA | 70933.0 | -8667.0 | 90.0 |
+|3| 10013.0 | 99999.0 | Brak | NO | NO |      | NaN | NaN | NaN |
+|4| 10014.0 | 99999.0 | Brak | NO | NO | ENSO | 59783.0 | 5350.0 |  500.0|
 
 ### <a name="delimited-file-example"></a>Przykład pliku rozdzielanego
 
-Poniższy kod używa `write_to_csv` funkcję, aby zapisać dane w rozdzielonym pliku.
+Poniższy kod używa [ `write_to_csv()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#write-to-csv-directory-path--destinationpath--separator--str--------na--str----na---error--str----error------azureml-dataprep-api-dataflow-dataflow) funkcję, aby zapisać dane w rozdzielonym pliku.
 
 ```python
 # Create a new data flow using `write_to_csv` 
@@ -83,22 +78,18 @@ write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'))
 write_t.run_local()
 
 written_files = dprep.read_csv('./test_out/part-*')
-written_files.head(10)
+written_files.head(5)
 ```
 
 Przykładowe dane wyjściowe:
-|   |  Kolumna1 |    Kolumna2 | Kolumna3 | Kolumna4  |Column5   | Kolumna6 | Column7 | Column8 | Column9 |
-| -------- |  -------- | -------- | -------- |  -------- |  -------- |  -------- |  -------- |  -------- |  -------- |
-| 0 |   10000.0 |   99999.0 |   BŁĄD |       NO|     NO  |   ENRS    |BŁĄD    |   BŁĄD |   BŁĄD|    
-|   1|      10003.0 |   99999.0 |   BŁĄD |       NO|     NO  |   ENSO|       BŁĄD|        BŁĄD |BŁĄD|   
-|   2|  10010.0|    99999.0|    BŁĄD |   NO| JN| ENJA|   70933.0|    -8667.0 |90.0|
-|3| 10013.0|    99999.0|    BŁĄD |   NO| NO| |   BŁĄD|    BŁĄD|    BŁĄD|
-|4| 10014.0|    99999.0|    BŁĄD |   NO| NO| ENSO|   59783.0|    5350.0| 500.0|
-|5| 10015.0|    99999.0|    BŁĄD |   NO| NO| ENBL|   61383.0|    5867.0| 3270.0|
-|6| 10016.0 |99999.0|   BŁĄD |   NO| NO|     |64850.0|   11233.0|    140.0|
-|7| 10017.0|    99999.0|    BŁĄD |   NO| NO| ENFR|   59933.0|    2417.0| 480.0|
-|8| 10020.0|    99999.0|    BŁĄD |   NO| SV|     |80050.0|   16250.0|    80.0|
-|9| 10030.0|    99999.0|    BŁĄD |   NO| SV|     |77000.0|   15500.0|    120.0|
+| | Kolumna1 | Kolumna2 | Kolumna3 | Kolumna4 | Column5 | Kolumna6 | Column7 | Column8 | Column9 |
+| -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+|0| 10000.0 | 99999.0 | BŁĄD | NO | NO | ENRS | NaN    | NaN | NaN |   
+|1| 10003.0 | 99999.0 | BŁĄD | NO | NO | ENSO |    NaN | NaN | NaN |   
+|2| 10010.0 | 99999.0 | BŁĄD | NO | JN | ENJA |    70933.0 | -8667.0 | 90.0 |
+|3| 10013.0 | 99999.0 | BŁĄD | NO | NO |     | NaN | NaN | NaN |
+|4| 10014.0 | 99999.0 | BŁĄD | NO | NO | ENSO |    59783.0 | 5350.0 |  500.0|
+
 
 W powyższym danych wyjściowych kilka błędów są wyświetlane w kolumnach liczbowych ze względu na liczby, które nie zostały poprawnie przeanalizować. Podczas zapisywania do pliku CSV, wartości null są zastępowane parametrami "ERROR" domyślnie.
 
@@ -110,26 +101,21 @@ write_t = t.write_to_csv(directory_path=dprep.LocalFileOutput('./test_out/'),
                          na='NA')
 write_t.run_local()
 written_files = dprep.read_csv('./test_out/part-*')
-written_files.head(10)
+written_files.head(5)
 ```
 
 Powyższy kod generuje te dane wyjściowe:
-|   |  Kolumna1 |    Kolumna2 | Kolumna3 | Kolumna4  |Column5   | Kolumna6 | Column7 | Column8 | Column9 |
-| -------- |  -------- | -------- | -------- |  -------- |  -------- |  -------- |  -------- |  -------- |  -------- |
-| 0 |   10000.0 |   99999.0 |   BadData |       NO|     NO  |   ENRS    |BadData    |   BadData |   BadData|    
-|   1|      10003.0 |   99999.0 |   BadData |       NO|     NO  |   ENSO|       BadData|        BadData |BadData|   
-|   2|  10010.0|    99999.0|    BadData |   NO| JN| ENJA|   70933.0|    -8667.0 |90.0|
-|3| 10013.0|    99999.0|    BadData |   NO| NO| |   BadData|    BadData|    BadData|
-|4| 10014.0|    99999.0|    BadData |   NO| NO| ENSO|   59783.0|    5350.0| 500.0|
-|5| 10015.0|    99999.0|    BadData |   NO| NO| ENBL|   61383.0|    5867.0| 3270.0|
-|6| 10016.0 |99999.0|   BadData |   NO| NO|     |64850.0|   11233.0|    140.0|
-|7| 10017.0|    99999.0|    BadData |   NO| NO| ENFR|   59933.0|    2417.0| 480.0|
-|8| 10020.0|    99999.0|    BadData |   NO| SV|     |80050.0|   16250.0|    80.0|
-|9| 10030.0|    99999.0|    BadData |   NO| SV|     |77000.0|   15500.0|    120.0|
+| | Kolumna1 | Kolumna2 | Kolumna3 | Kolumna4 | Column5 | Kolumna6 | Column7 | Column8 | Column9 |
+| -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |
+|0| 10000.0 | 99999.0 | BadData | NO | NO | ENRS | NaN  | NaN | NaN |   
+|1| 10003.0 | 99999.0 | BadData | NO | NO | ENSO |  NaN | NaN | NaN |   
+|2| 10010.0 | 99999.0 | BadData | NO | JN | ENJA |  70933.0 | -8667.0 | 90.0 |
+|3| 10013.0 | 99999.0 | BadData | NO | NO |   | NaN | NaN | NaN |
+|4| 10014.0 | 99999.0 | BadData | NO | NO | ENSO |  59783.0 | 5350.0 |  500.0|
 
 ### <a name="parquet-file-example"></a>Przykład pliku parquet
 
-Podobnie jak `write_to_csv`, `write_to_parquet` :: gettotalsize() zwróciło nowego przepływu danych przy użyciu zapisu krok Parquet, który jest wykonywany, gdy przebiegi przepływu danych.
+Podobnie jak `write_to_csv()`, [ `write_to_parquet()` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.dataflow?view=azure-dataprep-py#write-to-parquet-file-path--typing-union--destinationpath--nonetype----none--directory-path--typing-union--destinationpath--nonetype----none--single-file--bool---false--error--str----error---row-groups--int---0-----azureml-dataprep-api-dataflow-dataflow) :: gettotalsize() zwróciło nowego przepływu danych przy użyciu zapisu krok Parquet, który jest wykonywany, gdy przebiegi przepływu danych.
 
 ```python
 write_parquet_t = t.write_to_parquet(directory_path=dprep.LocalFileOutput('./test_parquet_out/'),
@@ -142,19 +128,18 @@ Uruchamianie przepływu danych można uruchomić operacji zapisu.
 write_parquet_t.run_local()
 
 written_parquet_files = dprep.read_parquet_file('./test_parquet_out/part-*')
-written_parquet_files.head(10)
+written_parquet_files.head(5)
 ```
 
 Powyższy kod generuje te dane wyjściowe:
-|   |  Kolumna1 |    Kolumna2 | Kolumna3 | Kolumna4  |Column5   | Kolumna6 | Column7 | Column8 | Column9 |
-| -------- |  -------- | -------- | -------- |  -------- |  -------- |  -------- |  -------- |  -------- |  -------- |
-| 0 |   10000.0 |   99999.0 |   MiscreantData |       NO|     NO  |   ENRS    |MiscreantData    |   MiscreantData |   MiscreantData|    
-|   1|      10003.0 |   99999.0 |   MiscreantData |       NO|     NO  |   ENSO|       MiscreantData|        MiscreantData |MiscreantData|   
-|   2|  10010.0|    99999.0|    MiscreantData |   NO| JN| ENJA|   70933.0|    -8667.0 |90.0|
-|3| 10013.0|    99999.0|    MiscreantData |   NO| NO| |   MiscreantData|    MiscreantData|    MiscreantData|
-|4| 10014.0|    99999.0|    MiscreantData |   NO| NO| ENSO|   59783.0|    5350.0| 500.0|
-|5| 10015.0|    99999.0|    MiscreantData |   NO| NO| ENBL|   61383.0|    5867.0| 3270.0|
-|6| 10016.0 |99999.0|   MiscreantData |   NO| NO|     |64850.0|   11233.0|    140.0|
-|7| 10017.0|    99999.0|    MiscreantData |   NO| NO| ENFR|   59933.0|    2417.0| 480.0|
-|8| 10020.0|    99999.0|    MiscreantData |   NO| SV|     |80050.0|   16250.0|    80.0|
-|9| 10030.0|    99999.0|    MiscreantData |   NO| SV|     |77000.0|   15500.0|    120.0|
+|   | Kolumna1 | Kolumna2 | Kolumna3 | Kolumna4 | Column5 | Kolumna6 | Column7 | Column8 | Column9 |
+| -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- | -------- |-------- |
+|0| 10000.0 | 99999.0 | MiscreantData | NO | NO | ENRS | MiscreantData | MiscreantData | MiscreantData |
+|1| 10003.0 | 99999.0 | MiscreantData | NO | NO | ENSO | MiscreantData | MiscreantData | MiscreantData |   
+|2| 10010.0 | 99999.0 | MiscreantData | NO| JN| ENJA|   70933.0|    -8667.0 |90.0|
+|3| 10013.0 | 99999.0 | MiscreantData | NO| NO| |   MiscreantData|    MiscreantData|    MiscreantData|
+|4| 10014.0 | 99999.0 | MiscreantData | NO| NO| ENSO|   59783.0|    5350.0| 500.0|
+
+## <a name="next-steps"></a>Kolejne kroki
+* Zobacz zestaw SDK [Przegląd](https://aka.ms/data-prep-sdk) wzorców projektowych i przykłady użycia 
+* Zobacz uczenia maszynowego automatycznych [samouczek](tutorial-auto-train-models.md) na przykład model regresji

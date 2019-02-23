@@ -9,16 +9,16 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: f2f1313461fcb58ea48af99aeda2f7005534fe34
-ms.sourcegitcommit: 55952b90dc3935a8ea8baeaae9692dbb9bedb47f
+ms.openlocfilehash: cc19a2d7641b20a413bbc39efe0d1c5ede362e6d
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48885191"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734459"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
 
- Istnieją dwie wersje główne środowiska uruchomieniowego usługi Azure Functions: wersji 1.x i 2.x. Bieżącą wersję, w których wprowadzono nowe pracy nad funkcjami i ulepszenia jest 2.x, jeśli obie są obsługiwane w przypadku scenariuszy produkcyjnych.  Następujące szczegóły, niektóre różnice między nimi, jak można utworzyć każdej wersji i uaktualnić wersję 1.x do 2.x.
+ Istnieją dwie wersje główne środowiska uruchomieniowego usługi Azure Functions: w wersji 1.x i 2.x. Bieżącą wersję, w których wprowadzono nowe pracy nad funkcjami i ulepszenia jest 2.x, jeśli obie są obsługiwane w przypadku scenariuszy produkcyjnych.  Następujące szczegóły, niektóre różnice między nimi, jak można utworzyć każdej wersji i uaktualnić wersję 1.x do 2.x.
 
 > [!NOTE]
 > Ten artykuł odnosi się do usługi w chmurze usługi Azure Functions. Aby uzyskać informacji na temat produktu w wersji zapoznawczej, który pozwala na uruchamianie usługi Azure Functions w środowisku lokalnym, zobacz [Przegląd środowiska uruchomieniowego usługi Azure Functions](functions-runtime-overview.md).
@@ -29,7 +29,7 @@ ms.locfileid: "48885191"
 
 Dla porównania środowisko uruchomieniowe 1.x wersji obsługuje tylko programowania i hostowania w witrynie Azure portal lub na komputerach z Windows.
 
-## <a name="languages"></a>Języki
+## <a name="languages"></a>Languages
 
 Środowisko uruchomieniowe 2.x wersji używa nowego modelu rozszerzalności języka. W wersji 2.x, wszystkie funkcje w aplikacji funkcji muszą współużytkować ten sam język. Język funkcji w aplikacji funkcji jest wybierany podczas tworzenia aplikacji.
 
@@ -37,7 +37,7 @@ Usługa Azure języków eksperymentalnych 1.x funkcji nie zostaną zaktualizowan
 
 [!INCLUDE [functions-supported-languages](../../includes/functions-supported-languages.md)]
 
-Aby uzyskać więcej informacji, zobacz [obsługiwane języki](supported-languages.md).
+Więcej informacji, zobacz [Obsługiwane języki](supported-languages.md).
 
 ## <a name="creating-1x-apps"></a>Działa w wersji 1.x
 
@@ -49,7 +49,7 @@ Możesz przeprowadzić migrację istniejącej aplikacji napisanej na potrzeby za
 
 ### <a name="changes-in-triggers-and-bindings"></a>Zmiany w wyzwalaczy i powiązań
 
-W wersji 2.x, musisz zainstalować rozszerzenia dla określonych wyzwalaczy i powiązań, które korzystają z funkcji w aplikacji. Jedynym wyjątkiem to HTTP oraz czasomierzem wyzwalacze, które nie wymagają rozszerzenia.  Aby uzyskać więcej informacji, zobacz [rejestru i instalowanie rozszerzeń powiązania](./functions-triggers-bindings.md#register-binding-extensions).
+W wersji 2.x, musisz zainstalować rozszerzenia dla określonych wyzwalaczy i powiązań, które korzystają z funkcji w aplikacji. Jedynym wyjątkiem to HTTP oraz czasomierzem wyzwalacze, które nie wymagają rozszerzenia.  Aby uzyskać więcej informacji, zobacz [rejestru i instalowanie rozszerzeń powiązania](./functions-bindings-expressions-patterns.md).
 
 Wprowadzono również drobne zmiany w `function.json` lub atrybutów funkcji między wersjami. Na przykład Centrum zdarzeń `path` właściwość jest obecnie `eventHubName`. Zobacz [istniejącej tabeli powiązania](#bindings) linki do dokumentacji dla każdego powiązania.
 
@@ -73,7 +73,7 @@ W wersji 2.x, wprowadzono następujące zmiany:
 
 * Ograniczenia współbieżności HTTP są implementowane przez domyślną dla funkcji planu zużycie, z domyślną 100 równoczesnych żądań dla każdego wystąpienia. Tę wartość można zmienić w [ `maxConcurrentRequests` ](functions-host-json.md#http) ustawienia w pliku host.json.
 
-* Z powodu [.NET core ograniczenia](https://github.com/Azure/azure-functions-host/issues/3414), pomoc techniczna dla funkcji skrypt (.fsx) F # został usunięty. F # funkcje skompilowane (.fs) są nadal obsługiwane.
+* Z powodu [.NET core ograniczenia](https://github.com/Azure/azure-functions-host/issues/3414), obsługa F# skrypt (.fsx) funkcje zostały usunięte. Skompilowany F# funkcji (.fs) są nadal obsługiwane.
 
 * Format adresu URL elementów webhook wyzwalacza usługi Event Grid została zmieniona na `https://{app}/runtime/webhooks/{triggerName}`.
 
@@ -121,7 +121,7 @@ Wersja środowisko uruchomieniowe usługi Functions używana przez opublikowane 
 
 * Jaśniejszy środowiska wykonania, gdy tylko powiązania używane są znane i ładowane w czasie wykonywania.
 
-Z wyjątkiem wyzwalaczy HTTP oraz czasomierzem wszystkie powiązania musi być jawnie dodane do projektu aplikacji funkcji lub zarejestrowane w portalu. Aby uzyskać więcej informacji, zobacz [zarejestrować rozszerzeń powiązania](functions-triggers-bindings.md#register-binding-extensions).
+Z wyjątkiem wyzwalaczy HTTP oraz czasomierzem wszystkie powiązania musi być jawnie dodane do projektu aplikacji funkcji lub zarejestrowane w portalu. Aby uzyskać więcej informacji, zobacz [zarejestrować rozszerzeń powiązania](./functions-bindings-expressions-patterns.md).
 
 W poniższej tabeli przedstawiono, które powiązania są obsługiwane w każdej wersji środowiska uruchomieniowego.
 

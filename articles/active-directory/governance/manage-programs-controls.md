@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie programami i przeglądów dostępu dla formantów dla usługi Azure AD | Dokumentacja firmy Microsoft
-description: Możesz utworzyć dodatkowe programy dla każdego nadzoru, zarządzania ryzykiem i zgodność inicjatywy w Twojej organizacji, aby zbierać i organizować, przeglądy dostępu w usłudze Azure Active Directory jako formantów.
+title: Zarządzanie programami i kontrolami dla przeglądów dostępu usługi Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć dodatkowe programy dla każdego nadzoru, zarządzania ryzykiem i zgodność inicjatywy w Twojej organizacji, aby zbierać i organizować usługi Azure Active Directory przeglądów dostępu w jako formantów.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78f4c978a04a7589e71ba39676e06ca5cc37f579
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0ea210c79833ad9e070253a9511cae539730a8d5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170673"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731416"
 ---
-# <a name="manage-programs-and-their-controls"></a>Zarządzanie programami i ich kontrolami 
+# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>Zarządzanie programami i kontrolami dla przeglądów dostępu usługi Azure AD
 
 Azure Active Directory (Azure AD) obejmuje przeglądów dostępu członków grupy i dostęp do aplikacji. Te przykłady formantów upewnij się, nadzoru dla użytkowników mających dostęp do aplikacji i członkostwa w grupach w organizacji. Organizacje mogą używać tych kontrolek, aby efektywnie rozwiązać ich nadzoru, zarządzania ryzykiem i wymagań dotyczących zgodności.
 
@@ -38,5 +38,5 @@ Jeśli nie potrzebujesz już program i nie ma żadnych formantów z nim połącz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Create an access review for members of a group or access to an application (Tworzenie przeglądu dostępu dla członków grupy lub na potrzeby dostępu do aplikacji)](create-access-review.md)
-- [Pobieranie wyników przeglądu dostępu](retrieve-access-review.md)
+- [Tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md)
+- [Pobieranie wyników przeglądu dostępu dla grup ani aplikacji](retrieve-access-review.md)

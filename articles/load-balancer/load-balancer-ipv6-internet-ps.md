@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: c498cbb5f164e5979aac07eb87ea899063525330
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 48552105ddd2defb0f38350c7840cd8ded40ab0f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592778"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672835"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Wprowadzenie do tworzenia modułu równoważenia obciążenia przy użyciu protokołu IPv6 przy użyciu programu PowerShell dla usługi Resource Manager Internetem
 
@@ -67,7 +67,7 @@ Upewnij się, że masz najnowszą wersję produkcyjną modułu usługi Azure Res
 
 1. Zaloguj się do platformy Azure
 
-    ```powershell
+    ```azurepowershell-interactive
     Connect-AzAccount
     ```
 
@@ -75,19 +75,19 @@ Upewnij się, że masz najnowszą wersję produkcyjną modułu usługi Azure Res
 
 2. Sprawdź subskrypcje dostępne na koncie.
 
-    ```powershell
+   ```azurepowershell-interactive
     Get-AzSubscription
     ```
 
 3. Wybierz subskrypcję platformy Azure do użycia.
 
-    ```powershell
+    ```azurepowershell-interactive
     Select-AzSubscription -SubscriptionId 'GUID of subscription'
     ```
 
 4. Utwórz grupę zasobów (Pomiń ten krok, jeśli jest używana istniejąca grupa zasobów)
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzResourceGroup -Name NRP-RG -location "West US"
     ```
 
@@ -95,14 +95,14 @@ Upewnij się, że masz najnowszą wersję produkcyjną modułu usługi Azure Res
 
 1. Utwórz sieć wirtualną z podsiecią.
 
-    ```powershell
+    ```azurepowershell-interactive
     $backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
     $vnet = New-AzvirtualNetwork -Name VNet -ResourceGroupName NRP-RG -Location 'West US' -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
     ```
 
 2. Utworzyć Azure publiczny adres IP (PIP) zasoby dla puli adresów IP frontonu. Pamiętaj zmienić wartość dla `-DomainNameLabel` przed uruchomieniem poniższych poleceń. Wartość musi być unikatowa w obrębie regionu świadczenia usługi Azure.
 
-    ```powershell
+    ```azurepowershell-interactive
     $publicIPv4 = New-AzPublicIpAddress -Name 'pub-ipv4' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Static -IpAddressVersion IPv4 -DomainNameLabel lbnrpipv4
     $publicIPv6 = New-AzPublicIpAddress -Name 'pub-ipv6' -ResourceGroupName NRP-RG -Location 'West US' -AllocationMethod Dynamic -IpAddressVersion IPv6 -DomainNameLabel lbnrpipv6
     ```
@@ -114,14 +114,14 @@ Upewnij się, że masz najnowszą wersję produkcyjną modułu usługi Azure Res
 
 1. Utwórz konfigurację adresów frontonu, adresów publiczny adres IP, który został utworzony.
 
-    ```powershell
+    ```azurepowershell-interactive
     $FEIPConfigv4 = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontendv4" -PublicIpAddress $publicIPv4
     $FEIPConfigv6 = New-AzLoadBalancerFrontendIpConfig -Name "LB-Frontendv6" -PublicIpAddress $publicIPv6
     ```
 
 2. Utwórz pulę adresów zaplecza.
 
-    ```powershell
+    ```azurepowershell-interactive
     $backendpoolipv4 = New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv4"
     $backendpoolipv6 = New-AzLoadBalancerBackendAddressPoolConfig -Name "BackendPoolIPv6"
     ```
@@ -138,7 +138,7 @@ W tym przykładzie opisano tworzenie następujących elementów:
 
 1. Utwórz reguły NAT.
 
-    ```powershell
+    ```azurepowershell-interactive
     $inboundNATRule1v4 = New-AzLoadBalancerInboundNatRuleConfig -Name "NicNatRulev4" -FrontendIpConfiguration $FEIPConfigv4 -Protocol TCP -FrontendPort 443 -BackendPort 4443
     $inboundNATRule1v6 = New-AzLoadBalancerInboundNatRuleConfig -Name "NicNatRulev6" -FrontendIpConfiguration $FEIPConfigv6 -Protocol TCP -FrontendPort 443 -BackendPort 4443
     ```
@@ -147,13 +147,13 @@ W tym przykładzie opisano tworzenie następujących elementów:
 
     Sonda HTTP
 
-    ```powershell
+    ```azurepowershell-interactive
     $healthProbe = New-AzLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -RequestPath 'HealthProbe.aspx' -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
     ```
 
     lub sonda TCP
 
-    ```powershell
+    ```azurepowershell-interactive
     $healthProbe = New-AzLoadBalancerProbeConfig -Name 'HealthProbe-v4v6' -Protocol Tcp -Port 8080 -IntervalInSeconds 15 -ProbeCount 2
     $RDPprobe = New-AzLoadBalancerProbeConfig -Name 'RDPprobe' -Protocol Tcp -Port 3389 -IntervalInSeconds 15 -ProbeCount 2
     ```
@@ -162,7 +162,7 @@ W tym przykładzie opisano tworzenie następujących elementów:
 
 3. Utwórz regułę modułu równoważenia obciążenia.
 
-    ```powershell
+    ```azurepowershell-interactive
     $lbrule1v4 = New-AzLoadBalancerRuleConfig -Name "HTTPv4" -FrontendIpConfiguration $FEIPConfigv4 -BackendAddressPool $backendpoolipv4 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 8080
     $lbrule1v6 = New-AzLoadBalancerRuleConfig -Name "HTTPv6" -FrontendIpConfiguration $FEIPConfigv6 -BackendAddressPool $backendpoolipv6 -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 8080
     $RDPrule = New-AzLoadBalancerRuleConfig -Name "RDPrule" -FrontendIpConfiguration $FEIPConfigv4 -BackendAddressPool $backendpoolipv4 -Probe $RDPprobe -Protocol Tcp -FrontendPort 3389 -BackendPort 3389
@@ -170,7 +170,7 @@ W tym przykładzie opisano tworzenie następujących elementów:
 
 4. Tworzenie modułu równoważenia obciążenia za pomocą utworzonych wcześniej obiektów.
 
-    ```powershell
+    ```azurepowershell-interactive
     $NRPLB = New-AzLoadBalancer -ResourceGroupName NRP-RG -Name 'myNrpIPv6LB' -Location 'West US' -FrontendIpConfiguration $FEIPConfigv4,$FEIPConfigv6 -InboundNatRule $inboundNATRule1v6,$inboundNATRule1v4 -BackendAddressPool $backendpoolipv4,$backendpoolipv6 -Probe $healthProbe,$RDPprobe -LoadBalancingRule $lbrule1v4,$lbrule1v6,$RDPrule
     ```
 
@@ -178,14 +178,14 @@ W tym przykładzie opisano tworzenie następujących elementów:
 
 1. Uzyskaj sieci wirtualnej i podsieci sieci wirtualnej, w których karty sieciowe muszą zostać utworzone.
 
-    ```powershell
+    ```azurepowershell-interactive
     $vnet = Get-AzVirtualNetwork -Name VNet -ResourceGroupName NRP-RG
     $backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
     ```
 
 2. Utwórz konfiguracje adresów IP i karty sieciowe dla maszyn wirtualnych.
 
-    ```powershell
+    ```azurepowershell-interactive
     $nic1IPv4 = New-AzNetworkInterfaceIpConfig -Name "IPv4IPConfig" -PrivateIpAddressVersion "IPv4" -Subnet $backendSubnet -LoadBalancerBackendAddressPool $backendpoolipv4 -LoadBalancerInboundNatRule $inboundNATRule1v4
     $nic1IPv6 = New-AzNetworkInterfaceIpConfig -Name "IPv6IPConfig" -PrivateIpAddressVersion "IPv6" -LoadBalancerBackendAddressPool $backendpoolipv6 -LoadBalancerInboundNatRule $inboundNATRule1v6
     $nic1 = New-AzNetworkInterface -Name 'myNrpIPv6Nic0' -IpConfiguration $nic1IPv4,$nic1IPv6 -ResourceGroupName NRP-RG -Location 'West US'
@@ -201,7 +201,7 @@ Aby uzyskać więcej informacji na temat tworzenia maszyny Wirtualnej, zobacz [U
 
 1. Tworzenie zestawu dostępności i konta magazynu
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzAvailabilitySet -Name 'myNrpIPv6AvSet' -ResourceGroupName NRP-RG -location 'West US'
     $availabilitySet = Get-AzAvailabilitySet -Name 'myNrpIPv6AvSet' -ResourceGroupName NRP-RG
     New-AzStorageAccount -ResourceGroupName NRP-RG -Name 'mynrpipv6stacct' -Location 'West US' -SkuName "Standard_LRS"
@@ -210,7 +210,7 @@ Aby uzyskać więcej informacji na temat tworzenia maszyny Wirtualnej, zobacz [U
 
 2. Tworzenia poszczególnych maszyn wirtualnych i przypisać poprzedniego utworzone kart sieciowych
 
-    ```powershell
+    ```azurepowershell-interactive
     $mySecureCredentials= Get-Credential -Message "Type the username and password of the local administrator account."
 
     $vm1 = New-AzVMConfig -VMName 'myNrpIPv6VM0' -VMSize 'Standard_G1' -AvailabilitySetId $availabilitySet.Id

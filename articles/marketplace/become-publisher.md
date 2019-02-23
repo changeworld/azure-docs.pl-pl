@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 33edfdc58d82530bc1a5d0245b5e18e94b0a6dc1
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 2970ef58e177d10eac80d46825f3fb985b98af61
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077559"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734969"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Zostań chmury wydawcy w witrynie Marketplace
 
@@ -45,7 +45,7 @@ Po zarejestrowaniu, Zapisz identyfikator Microsoft Partner Network dla Twojej or
 *   Dowiedz się więcej o zaletach [sieci Microsoft Partner Network](https://partner.microsoft.com/commercial)
 *   Jeśli Twoja organizacja ma istniejące członkostwo, spowoduje dołączenie do Twojej organizacji, podczas rejestracji. Jeśli używasz [Centrum partnerskiego](https://partnercenter.microsoft.com/partner/home), będzie można zobaczyć identyfikator na Twoim koncie Centrum partnerskiego. Jeśli używasz [Centrum członkostwa partnera (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx), będzie można zobaczyć, jak to na Twoim koncie Partner Membership Center. 
 
----  
+---
 
 ## <a name="2-create-a-microsoft-account"></a>2. Utwórz konto Microsoft  
 | 15 min |  
@@ -61,7 +61,7 @@ Konto Microsoft, np. *@outlook.com lub @live.com*, umożliwia dostęp do wielu u
 *   Aby uzyskać pomoc przy tworzeniu i zarządzaniu nim swojego konta Microsoft, odwiedź [stron pomocy technicznej pomocy konta Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 
 
----  
+---
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. Prześlij formularz rejestracji w portalu marketplace  
 | 15 min |  
@@ -72,7 +72,7 @@ Użytkownik będzie musiał podać następujące informacje:
 *   Krótki opis początkowego aplikacji lub usługi doradcze oferty, którego zamierzasz opublikować, łącznie z produktu firmy Microsoft lub usługi, do którego najlepiej wyrównuje oferty
 *   Docelowi odbiorcy dla swojej aplikacji lub usługi 
 
----  
+---
 ## <a name="4-sign-into-cloud-partner-portal"></a>4. Zaloguj się do portalu Cloud Partner
 | 1 do 3 dni | <br>
 Nasz zespół ds. dołączania Marketplace zostanie przeprowadzona Weryfikacja szczegóły rejestracji portalu marketplace, które są udostępniane w kroku 3. Po zatwierdzeniu otrzymasz powitalnej wiadomości e-mail przy użyciu poświadczeń konta i wskazówki dotyczące logowania do [portalu Cloud Partner](https://cloudpartner.azure.com).
@@ -108,4 +108,4 @@ Po zakończeniu [Centrum deweloperów](https://developer.microsoft.com/store/reg
 *   [Określić typ oferty dla Twojego rozwiązania](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
 
  
----  
+---

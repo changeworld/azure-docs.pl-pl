@@ -1,6 +1,6 @@
 ---
-title: Wytyczne dotyczące portalu Azure Marketplace i AppSource wydawcy | Azure
-description: Wytyczne dotyczące portalu Azure Marketplace oraz AppSource wydawcy aplikacji i usług
+title: Wytyczne dotyczące wydawcy w portalu Azure Marketplace i AppSource | Azure
+description: 'Wskazówki dotyczące witryny Azure Marketplace i AppSource dla: wydawcy aplikacji i usługi'
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,65 +14,65 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: 4da6f5c4513477d1adbf4d7645a66de112eeab23
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: a0ab88b1375f5178ca6f41689de8d2f30f8d7808
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36307489"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728135"
 ---
 # <a name="guidelines"></a>Wytyczne  
 
 <!--
 ## Guidelines for AppSource  
 -->
----  
+---
 
-## <a name="guidelines-for-azure-marketplace"></a>Wytyczne dotyczące portalu Azure Marketplace  
+## <a name="guidelines-for-azure-marketplace"></a>Wskazówki dotyczące witryny Azure Marketplace  
 
-### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Wytyczne dotyczące tworzenia Identyfikatora Microsoft do zarządzania konta witryny marketplace  
-Jeśli więcej niż jedna osoba wymaga dostępu do tego samego Identyfikatora Microsoft użyty do utworzenia konta witryny marketplace, należy wykonać te wskazówki ułatwiające tworzenie konta firmy. 
+### <a name="guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account"></a>Wytyczne dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania kontem witryny marketplace  
+Jeśli więcej niż jedna osoba wymaga dostępu do tego samego Identyfikatora Microsoft użyte do utworzenia konta witryny marketplace, należy stosować te wytyczne ułatwiające tworzenie konta firmy. 
 
 >[!IMPORTANT]
->Aby autoryzować wielu użytkownikom na dostęp do tego konta Microsoft Developer Center (Centrum deweloperów), firma Microsoft zaleca, należy użyć usługi Azure Active Directory (Azure AD) do przypisania ról do poszczególnych użytkowników. Każdy użytkownik musi uzyskać dostępu do konta poprzez zalogowanie za pomocą poszczególnych poświadczenia usługi Azure AD. Utwórz identyfikator firmy Microsoft przy użyciu adresu e-mail w domenie, w zarejestrowany w firmie Microsoft sugeruje, że wiadomości e-mail nie można przypisać do osoby. Może to być na przykład `windowsapps@fabrikam.com`.  
->*   Aby uzyskać więcej informacji, odwiedź stronę [problem: identyfikator firmy Microsoft w usłudze Azure AD federacyjnych domeny](#issue-microsoft-id-in-an-azure-ad-federated-domain) sekcji.  
+>Aby autoryzować wielu użytkownikom dostępu do Twojego konta Microsoft Developer Center (Centrum deweloperów), firma Microsoft zaleca, usługa Azure Active Directory (Azure AD) do przypisywania ról do poszczególnych użytkowników. Każdy użytkownik musi uzyskać dostępu do konta poprzez zalogowanie za pomocą poszczególnych poświadczeń usługi Azure AD. Utwórz swój identyfikator firmy Microsoft przy użyciu adresu e-mail w domenie zarejestrowany w firmie Microsoft sugeruje, że wiadomość e-mail nie można przypisać do poszczególnych. Może to być na przykład `windowsapps@fabrikam.com`.  
+>*   Aby uzyskać więcej informacji, odwiedź stronę [problemu: Identyfikator firmy Microsoft w usłudze Azure AD jest sfederowana domeny](#issue-microsoft-id-in-an-azure-ad-federated-domain) sekcji.  
 
-*   Ograniczanie dostępu do tego Identyfikatora Microsoft najmniejszą możliwą liczbę deweloperzy. 
-*   Konfigurowanie listy dystrybucyjnej firmowej poczty e-mail (DL), która zawiera wszystkich użytkowników, którzy muszą uzyskać dostęp do danych konta Centrum deweloperów. Dodaj adres e-mail DL do informacji zabezpieczających. Listy Dystrybucyjnej, włącza wszystkich pracowników na liście do odbierania kodów zabezpieczeń na żądanie i zarządzać informacji o zabezpieczeniach dla programu Microsoft ID. Jeśli ustawienie listy dystrybucyjnej nie jest to możliwe, właściciel konta e-mail poszczególnych musi być dostępny do uzyskania dostępu i udostępniania kodu zabezpieczeń po wyświetleniu monitu.  
-    *   Na przykład właściciel otrzyma monit, gdy nowe informacje zabezpieczeń są dodawane do Identyfikatora Microsoft lub identyfikator firmy Microsoft jest dostępny z nowego urządzenia.  
-*   Dodaj numer telefonu firmy, który nie wymaga rozszerzenia i jest dostępna dla członków zespołu klucza.  
-*   Ogólnie rzecz biorąc należy włączyć deweloperom na logowanie na koncie Centrum deweloperów przy użyciu zaufanych urządzeń. Wszyscy członkowie zespołu kluczy powinien mieć dostęp do zaufanych urządzeń. Dostęp do za pomocą zaufanych urządzeń zmniejsza wymaganie wysyła kody zabezpieczeń, gdy ktoś uzyskuje dostęp do konta Centrum deweloperów.  
-*   Jeśli są wymagane, aby udzielić dostępu do konta Centrum deweloperów na komputerze z systemem innym niż zaufane, należy ograniczyć dostęp do nie więcej niż pięć deweloperów. W idealnym przypadku deweloperów powinien uzyskiwać dostęp do konta z komputerów, które identyczny geograficzne i lokalizacja w sieci.  
-*   Często Przejrzyj i sprawdź informacji zabezpieczających.  
-    *   Aby wyświetlić informacji o zabezpieczeniach, odwiedź zabezpieczeń w lokalizacji Ustawienia strony [account.live.com/proofs/Manage](https://account.live.com/proofs/Manage).
+*   Ograniczanie dostępu do Identyfikatora firmy Microsoft do najmniejszej możliwej liczby deweloperów. 
+*   Skonfiguruj listy dystrybucyjne firmowej poczty e-mail (DL), która zawiera każdy, kto może uzyskiwać dostęp do danych konta Centrum deweloperów. Dodaj adres e-mail listy Dystrybucyjnej do informacji zabezpieczających. Listy Dystrybucyjnej umożliwia wszystkich pracowników na liście, aby otrzymać kody zabezpieczeń zleconą oraz do zarządzania informacje o zabezpieczeniach dla usługi Microsoft ID. Jeśli skonfigurowanie listy dystrybucyjnej nie jest możliwe, właściciel konta e-mail poszczególnych musi być dostępny dostęp do i udostępniania kodu zabezpieczeń po wyświetleniu monitu.  
+    *   Na przykład właściciel jest monitowany o po dodaniu nowych informacji o zabezpieczeniach, identyfikator firmy Microsoft lub identyfikator firmy Microsoft jest dostępny z nowego urządzenia.  
+*   Dodaj numer telefonu firmy, który nie wymaga rozszerzenia i jest dostępny dla innych członków zespołu klucza.  
+*   Ogólnie rzecz biorąc należy wymagać deweloperzy mogą używać zaufanych urządzeń, aby zalogować się do danych konta Centrum deweloperów. Wszyscy członkowie zespołu klucza powinien mieć dostęp do zaufanych urządzeń. Przy użyciu zaufanych urządzeń w celu uzyskania dostępu do zmniejsza wymagania związane z przesyłaniem kody zabezpieczeń, gdy ktoś uzyskuje dostęp do konta Centrum deweloperów.  
+*   W razie potrzeby do udzielania dostępu do konta Centrum deweloperów z komputera z niezaufanej należy ograniczyć dostęp do nie więcej niż pięciu deweloperów. W idealnym przypadku deweloperów powinna dostęp do konta z komputerów, które współużytkować ten sam geograficzne i lokalizacja w sieci.  
+*   Często przejrzeć i sprawdzić informacji zabezpieczających.  
+    *   Aby wyświetlić informacji o zabezpieczeniach, odwiedź zabezpieczeń strona Ustawienia znajdujący się w [account.live.com/proofs/Manage](https://account.live.com/proofs/Manage).
 
-Twoje konto Centrum deweloperów powinni mieć dostęp przede wszystkim z zaufanych komputerów. Jest krytyczny, że dostęp do zaufanych komputerów, ponieważ istnieje limit liczby kody wygenerowane na konto Centrum deweloperów na tydzień. Przy użyciu zaufanych komputerów umożliwia także najbardziej bezpieczne i zgodne logowania. 
-*   Aby uzyskać więcej informacji na temat dodatkowe wskazówki konta Centrum deweloperów i zabezpieczeń można znaleźć otwarcie strony konta dewelopera znajdujący się w [docs.microsoft.com/windows/uwp/publish/opening-a-developer-account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account). 
+Danych konta Centrum deweloperów powinni mieć dostęp przede wszystkim z zaufanych komputerów. Ważne jest uzyskać dostęp z zaufanych komputerów, ponieważ ma limitu liczby kody wygenerowane na konto Centrum deweloperów na tydzień. Przy użyciu zaufanych komputerów umożliwia także najbezpieczniejsze i spójne środowisko logowania. 
+*   Aby uzyskać więcej informacji na temat dodatkowe wytyczne dotyczące konta Centrum deweloperów i zabezpieczeń można znaleźć otwarcia strony konta dewelopera znajdujący się w [docs.microsoft.com/windows/uwp/publish/opening-a-developer-account](https://docs.microsoft.com/windows/uwp/publish/opening-a-developer-account). 
 
----  
+---
 
-#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Problem: Domeny federacyjnej identyfikator firmy Microsoft w usłudze Azure AD  
-Twoje konto firmowe mogą federacyjnych za pomocą usługi Azure Active Directory (Azure AD). Jeśli próbujesz utworzyć identyfikator firmy Microsoft przy użyciu adresu firmowej poczty e-mail, który jest Sfederowane z usługą Azure AD, zostanie wyświetlony błąd. Jeśli wystąpi błąd, następnie należy skontaktować się z zespołem IT, aby potwierdzić, że Twoje konto jest Sfederowane za pomocą usługi Azure AD. Azure AD federacyjnych poczty e-mail jest to znany problem i Microsoft pracuje rozwiązania.  
-*   Aby uzyskać więcej informacji na temat usługi Azure AD, odwiedź witrynę Azure Active Directory dokumentację strony znajduje się w [docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory).
+#### <a name="issue-microsoft-id-in-an-azure-ad-federated-domain"></a>Problem: Identyfikator firmy Microsoft w domenie federacyjnych usługi Azure AD  
+Twoje konto firmowe mogą Sfederowane za pomocą usługi Azure Active Directory (Azure AD). Jeśli spróbujesz utworzyć identyfikator firmy Microsoft przy użyciu adresu firmowej poczty e-mail, które są Sfederowane z usługą Azure AD, otrzymasz błąd. Jeśli otrzymasz komunikat o błędzie, następnie należy skontaktować się z zespołem INFORMATYCZNYM, aby upewnić się, że Twoje konto jest Sfederowane za pomocą usługi Azure AD. Poczty e-mail dla usługi Azure AD federacyjnej jest to znany problem, a firma Microsoft pracuje nad rozpoznaje ją.  
+*   Aby uzyskać więcej informacji na temat usługi Azure AD, można znaleźć w dokumentacji katalogu Active Azure strony znajduje się w [docs.microsoft.com/azure/active-directory](https://docs.microsoft.com/azure/active-directory).
 
 Firma Microsoft zaleca obejście tego problemu. Wykonaj następujące kroki, aby utworzyć nowy adres e-mail w `outlook.com` domeny i Utwórz regułę do przekazywania komunikacji.  
-1.  Przejdź na stronę tworzenia konta i kliknij Get nowe łącze adresu e-mail. 
-    *   W celu uzyskania Identyfikatora Microsoft, odwiedź stronę konta Utwórz znajdujący się w [signup.live.com/signup](https://signup.live.com/signup).  
-2.  Utwórz nowy adres e-mail, a następnie wprowadź hasło. Nowy identyfikator firmy Microsoft i skrzynki pocztowej poczty e-mail w `outlook.com` domena jest tworzona. Proces rejestracji należy kontynuować do momentu utworzenia konta.  
+1.  Przejdź na stronę tworzenia konta, a następnie kliknij przycisk na Get nowy link adresu e-mail. 
+    *   Aby zarejestrować swój identyfikator firmy Microsoft, odwiedź stronę konta Utwórz, znajdujący się w [signup.live.com/signup](https://signup.live.com/signup).  
+2.  Utwórz nowy adres e-mail, a następnie wprowadź hasło. Nowy identyfikator firmy Microsoft i skrzynki pocztowej programu poczty e-mail w `outlook.com` tworzenia domeny. Kontynuacja procesu rejestracji, konto zostanie utworzone.  
 
     >[!IMPORTANT]
-    >Należy użyć poczty e-mail adres lub listę dystrybucyjną zarejestrowany jako identyfikator firmy Microsoft, aby zarejestrować się w Centrum deweloperów. Firma Microsoft zaleca, użyj listy dystrybucyjnej usunąć zależności od osób. Jeśli lista adres lub dystrybucji poczty e-mail nie jest zarejestrowany, następnie należy zarejestrować teraz.    
+    >Musisz podać adres e-mail adres lub listy dystrybucyjnej, która jest zarejestrowana jako identyfikator firmy Microsoft, aby zarejestrować się w Centrum deweloperów. Firma Microsoft zaleca, użyj listy dystrybucji, aby wyeliminować zależność od osób. Jeśli Twoje wiadomości e-mail adres lub listy dystrybucyjnej, nie jest zarejestrowany, następnie należy zarejestrować teraz.    
 
     >[!Important]
-    >Jeśli z dowolnego adresu e-mail znajduje się w `Microsoft` firmy domeny, a następnie nie jest możliwe użycie do rejestracji w Centrum deweloperów.  
+    >Jeśli Twoje dowolny adres e-mail znajduje się w `Microsoft` firmy domeny, a następnie nie jest możliwe na potrzeby rejestracji w Centrum deweloperów.  
 
-3.  Po utworzeniu Identyfikatora Microsoft z adresem e-mail programu Outlook, zaloguj się do skrzynki pocztowej programu Outlook. Utwórz wiadomość e-mail przekazywania reguły. Zasady przekazywania wiadomości e-mail, należy przenieść wszystkie wiadomości e-mail, które są odbierane w skrzynkę pocztową programu Outlook na adres e-mail w domenie, który został utworzony w celu zarządzania konta witryny marketplace.  
-    *   Aby zalogować się do skrzynki pocztowej programu Outlook, odwiedź stronę programu Outlook, znajdujący się w [outlook.live.com/owa](https://outlook.live.com/owa).  
-    *   Aby uzyskać więcej informacji na temat funkcji przekazywania reguł, odwiedź stronę Użyj reguł w aplikacji Outlook Web App automatycznego przesyłania dalej wiadomości do innej strony konto znajduje się w [support.office.com/article/ Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed).  
+3.  Po utworzeniu identyfikator firmy Microsoft z adresem e-mail programu Outlook, zaloguj się do skrzynką pocztową programu Outlook. Utwórz wiadomość e-mail regułę przesyłania. Regułę przesyłania wiadomości e-mail, należy przenieść wszystkie wiadomości e-mail, które są odbierane w pocztową programu Outlook na adres e-mail w domenie, który został utworzony w celu zarządzania kontem w portalu marketplace.  
+    *   Aby zalogować się do skrzynką pocztową programu Outlook, odwiedź stronę programu Outlook, znajdujący się w [outlook.live.com/owa](https://outlook.live.com/owa).  
+    *   Aby uzyskać więcej informacji na temat reguł przekazywania odwiedź Użyj reguł w aplikacji Outlook Web App, aby automatycznie przesyłać komunikaty do innej strony konto znajduje się w [support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed](https://support.office.com/article/Use-rules-in-Outlook-Web-App-to-automatically-forward-messages-to-another-account-1433e3a0-7fb0-4999-b536-50e05cb67fed).  
 
-1.  Reguła przesyłania dalej wysyła wszystkie wiadomości e-mail i komunikacji skierowany do konta e-mail programu Outlook na adres e-mail w domenie, w zarejestrowany w firmie. Twoje `outlook.com` adres e-mail należy go użyć do uwierzytelnienia zarówno w Centrum deweloperów, jak i w chmurze Portal dla partnerów.  
+1.  Reguły przekazywania wysyła wszystkie wiadomości e-mail i komunikacji trafiła do konta e-mail programu Outlook na adres e-mail w domenie zarejestrowany w firmie. Twoje `outlook.com` adresu e-mail musi używać do uwierzytelniania, zarówno w Centrum deweloperów, jak i w portalu Cloud Partner.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-*   Odwiedź stronę [AppSource wydawcy przewodnik i portalu Azure Marketplace](./marketplace-publishers-guide.md) strony.  
+*   Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
  
----  
+---

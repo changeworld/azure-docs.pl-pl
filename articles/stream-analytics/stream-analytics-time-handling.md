@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2018
-ms.openlocfilehash: 4accff7410d17e76a000b7cef957b75c65a16960
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 91193cc328c02f5ba4f5eb18e0bf853f9d91313a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56008391"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732266"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>Omówienie obsługi czasu w usłudze Azure Stream Analytics
 
@@ -163,7 +163,7 @@ Usługa Azure Stream Analytics używa znaku wodnego postępu jako wyzwalacz tylk
 
 Korzystając z [okresowymi](stream-analytics-window-functions.md), tylko generowanych przez nią danych wyjściowych na końcu okna. W niektórych przypadkach użytkownicy mogą chcieć się częściowej agregacji wygenerowany na podstawie systemu windows. Agregacje częściowe nie są obecnie obsługiwane w usłudze Azure Stream Analytics.
 
-W innych rozwiązań do transmisji strumieniowej zdarzenia wyjściowe można zmaterializowanego w różnych punktach wyzwalacza, w zależności od okoliczności zewnętrznych. Jest możliwe w rozwiązaniach wygenerowania zdarzenia dane wyjściowe z kilku okna w danym momencie wiele razy. Wartości wejściowe są dostosowany, agregacji wyników stają się bardziej precyzyjne operacje. Zdarzenia można przeanalizowania w pierwszy i poprawione wraz z upływem czasu. Na przykład w przypadku niektórych urządzeń jest niedostępny od sieci, wartość szacunkową może służyć przez system. Później w tym samym urządzeniu przejściu do trybu online w sieci. Następnie dane rzeczywiste zdarzenia mogły zawarte w strumieniu wejściowym. Przedział czasu przetwarzania wyników danych wyjściowych generuje dokładniejsze dane wyjściowe.
+W innych rozwiązań do transmisji strumieniowej zdarzenia wyjściowe można zmaterializowanego w różnych punktach wyzwalacza, w zależności od okoliczności zewnętrznych. Jest możliwe w rozwiązaniach, które można było wygenerować wiele razy zdarzeń wyjściowych na danym przedziale czasowym. Wartości wejściowe są dostosowany, agregacji wyników stają się bardziej precyzyjne operacje. Zdarzenia można przeanalizowania w pierwszy i poprawione wraz z upływem czasu. Na przykład w przypadku niektórych urządzeń jest niedostępny od sieci, wartość szacunkową może służyć przez system. Później w tym samym urządzeniu przejściu do trybu online w sieci. Następnie dane rzeczywiste zdarzenia mogły zawarte w strumieniu wejściowym. Przedział czasu przetwarzania wyników danych wyjściowych generuje dokładniejsze dane wyjściowe.
 
 ## <a name="illustrated-example-of-watermarks"></a>Przedstawiono przykład znaki wodne
 

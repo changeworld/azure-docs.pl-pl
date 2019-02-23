@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: fe781802309ad0945eaee23c35dda1617e47ae06
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237879"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727353"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Problem podczas dodawania aplikacji galerii usługi Azure AD
 
@@ -38,7 +38,7 @@ Czasami ze względu na problemy przejściowe problemy z siecią lub usterkę, do
 
 Jeśli wystąpi błąd, podczas klikania **Dodaj** przycisk, zobaczysz **powiadomień** w **błąd** stanu. Jeśli chcesz więcej szczegółów o błędzie, aby dowiedzieć się więcej na temat lub udostępnienia innym specjalistą pomocy technicznej, widać więcej informacji na temat błędu, wykonując kroki opisane w [sposobu wyświetlania szczegółów powiadomienia portalu](#how-to-see-the-details-of-a-portal-notification) sekcji.
 
- ## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nie wiem, jak skonfigurować aplikację, gdy został dodany
+## <a name="i-dont-know-how-to-set-up-my-application-once-ive-added-it"></a>Nie wiem, jak skonfigurować aplikację, gdy został dodany
 
 Jeśli potrzebujesz pomocy, informacje o aplikacji, [listę samouczków dotyczących integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) artykuł jest dobrym miejscem do rozpoczęcia.
 

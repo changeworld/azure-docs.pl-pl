@@ -12,15 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9ca1c4a1ed1841f82bc386cff48315dd15ef91bb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814908"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730413"
 ---
 # <a name="test-your-app-in-azure"></a>Testowanie aplikacji na platformie Azure 
 Ten artykuł zawiera instrukcje testowania aplikacji na platformie Azure za pomocą usługi DevTest Labs. Najpierw należy skonfigurować udział plików w ramach laboratorium i zainstalować go jako dysk na lokalnej maszynie do programowania i maszyny Wirtualnej w laboratorium. Następnie przy użyciu programu Visual Studio 2017, aby wdrożyć aplikację do udziału plików tak, aby aplikację można uruchomić na maszynie Wirtualnej w środowisku laboratoryjnym.  
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 1. [Utwórz subskrypcję platformy Azure](https://azure.microsoft.com/free/) Jeśli nie już masz i zaloguj się do [witryny Azure portal](https://portal.azure.com).
@@ -56,7 +58,7 @@ Ten artykuł zawiera instrukcje testowania aplikacji na platformie Azure za pomo
 
     ![Wybierz maszynę Wirtualną laboratorium](media/test-app-in-azure/select-lab-vm.png)
 2. Wybierz **Connect** na pasku narzędzi, aby nawiązać połączenie z maszyną Wirtualną. 
-3. [Zainstaluj program Azure PowerShell](https://azure.microsoft.com/downloads/) przy użyciu **Windows zainstaluj** łącze w **narzędzia wiersza polecenia** sekcji. Aby uzyskać inny sposób instalowania programu Azure PowerShell, zobacz [w tym artykule](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
+3. [Zainstalowanie programu Azure PowerShell](/powershell/azure/install-az-ps).
 4. Postępuj zgodnie z instrukcjami instalacji sekcji udziału plików. 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Publikowanie aplikacji w programie Visual Studio

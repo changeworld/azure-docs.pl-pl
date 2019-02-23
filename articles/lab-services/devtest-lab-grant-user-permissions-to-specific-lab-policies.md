@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2b81c23b5cf9ea5d4bfc47d36ae251f762ffad11
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 70469a9e8737a9df18628951a061c97081c74080
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38539694"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735105"
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>Udzielanie uprawnień użytkownika do zasad określonych laboratorium
 ## <a name="overview"></a>Przegląd
@@ -30,12 +30,12 @@ Zgodnie z opisem w [kontroli dostępu opartej na roli Azure](../role-based-acces
 
 W usłudze DevTest Labs zasady jest typ zasobu, który umożliwia działanie RBAC **Microsoft.DevTestLab/labs/policySets/policies/**. Wszystkie zasady laboratorium jest zasobem w typie zasób zasad i mogą być przypisane jako zakres do roli RBAC.
 
-Na przykład, aby przyznać użytkownikom uprawnienia odczytu/zapisu do **dozwolone rozmiary maszyn wirtualnych** zasady, należy utworzyć rolę niestandardową, która współdziała z **Microsoft.DevTestLab/labs/policySets/policies/*** Akcja, a następnie przypisz odpowiednich użytkowników do tej roli niestandardowej w zakresie **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
+Na przykład, aby przyznać użytkownikom uprawnienia odczytu/zapisu do **dozwolone rozmiary maszyn wirtualnych** zasady, należy utworzyć rolę niestandardową, która współdziała z **Microsoft.DevTestLab/labs/policySets/policies/** akcji , a następnie przypisz odpowiednich użytkowników do tej roli niestandardowej w zakresie **Microsoft.DevTestLab/labs/policySets/policies/AllowedVmSizesInLab**.
 
 Aby dowiedzieć się więcej na temat ról niestandardowych w ROLACH, zobacz [kontroli dostępu niestandardowych ról](../role-based-access-control/custom-roles.md).
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>Tworzenie roli niestandardowej laboratorium przy użyciu programu PowerShell
-Aby rozpocząć pracę, musisz przeczytaj następujący artykuł, w którym wyjaśniono, jak zainstalować i skonfigurować poleceń cmdlet programu Azure PowerShell: [ https://azure.microsoft.com/blog/azps-1-0-pre ](https://azure.microsoft.com/blog/azps-1-0-pre).
+Aby rozpocząć pracę, musisz [zainstalować program Azure PowerShell](/powershell/azure/install-az-ps). 
 
 Po skonfigurowaniu poleceń cmdlet programu Azure PowerShell, należy wykonać następujące zadania:
 
@@ -46,35 +46,35 @@ Po skonfigurowaniu poleceń cmdlet programu Azure PowerShell, należy wykonać n
 Poniższy skrypt programu PowerShell przedstawia przykładowe sposoby wykonywania następujących zadań:
 
     ‘List all the operations/actions for a resource provider.
-    Get-AzureRmProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
+    Get-AzProviderOperation -OperationSearchString "Microsoft.DevTestLab/*"
 
     ‘List actions in a particular role.
-    (Get-AzureRmRoleDefinition "DevTest Labs User").Actions
+    (Get-AzRoleDefinition "DevTest Labs User").Actions
 
     ‘Create custom role.
-    $policyRoleDef = (Get-AzureRmRoleDefinition "DevTest Labs User")
+    $policyRoleDef = (Get-AzRoleDefinition "DevTest Labs User")
     $policyRoleDef.Id = $null
     $policyRoleDef.Name = "Policy Contributor"
     $policyRoleDef.IsCustom = $true
     $policyRoleDef.AssignableScopes.Clear()
     $policyRoleDef.AssignableScopes.Add("/subscriptions/<SubscriptionID> ")
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/policySets/policies/*")
-    $policyRoleDef = (New-AzureRmRoleDefinition -Role $policyRoleDef)
+    $policyRoleDef = (New-AzRoleDefinition -Role $policyRoleDef)
 
 ## <a name="assigning-permissions-to-a-user-for-a-specific-policy-using-custom-roles"></a>Przypisywanie uprawnień użytkownika dla określonych zasad za pomocą ról niestandardowych
-Po zdefiniowaniu roli niestandardowej można przypisać je do użytkowników. Aby można było przypisać niestandardową rolę do użytkownika, należy najpierw uzyskać **ObjectId** reprezentujący tego użytkownika. Aby to zrobić, należy użyć **Get AzureRmADUser** polecenia cmdlet.
+Po zdefiniowaniu roli niestandardowej można przypisać je do użytkowników. Aby można było przypisać niestandardową rolę do użytkownika, należy najpierw uzyskać **ObjectId** reprezentujący tego użytkownika. Aby to zrobić, należy użyć **Get AzADUser** polecenia cmdlet.
 
 W poniższym przykładzie **ObjectId** z *SomeUser* 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 jest użytkownik.
 
-    PS C:\>Get-AzureRmADUser -SearchString "SomeUser"
+    PS C:\>Get-AzADUser -SearchString "SomeUser"
 
     DisplayName                    Type                           ObjectId
     -----------                    ----                           --------
     someuser@hotmail.com                                          05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3
 
-Po utworzeniu **ObjectId** dla użytkownika oraz nazwa roli niestandardowej można przypisać tę rolę do użytkownika o **New-AzureRmRoleAssignment** polecenia cmdlet:
+Po utworzeniu **ObjectId** dla użytkownika oraz nazwa roli niestandardowej można przypisać tę rolę do użytkownika o **New AzRoleAssignment** polecenia cmdlet:
 
-    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
+    PS C:\>New-AzRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
 W poprzednim przykładzie **AllowedVmSizesInLab** zasady są używane. Możesz użyć dowolnej z następujących zasad:
 

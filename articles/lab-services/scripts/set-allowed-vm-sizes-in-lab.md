@@ -1,5 +1,5 @@
 ---
-title: 'Skrypt programu PowerShell: Set dozwolone rozmiary maszyn wirtualnych w usłudze Azure Lab Services | Dokumentacja firmy Microsoft'
+title: 'Skrypt programu PowerShell: Zestaw dozwolone rozmiary maszyn wirtualnych w usłudze Azure Lab Services | Dokumentacja firmy Microsoft'
 description: Ten skrypt programu PowerShell Określa dozwolone rozmiary maszyn wirtualnych w usłudze Azure Lab Services.
 services: lab-services
 author: spelluru
@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 559e74675a5d113584dca21979c20462c9cdf19c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 126377de6bf01e76794e3727f74cc497df7ba08a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054710"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737879"
 ---
 # <a name="use-powershell-to-set-allowed-vm-sizes-in-azure-lab-services"></a>Użyj programu PowerShell, aby ustawić dozwolone rozmiary maszyn wirtualnych w usłudze Azure Lab Services
 
 Ten przykładowy skrypt programu PowerShell ustawia rozmiarów dozwolonych maszyn wirtualnych (VM) w usłudze Azure Lab Services.
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Laboratorium**. Skrypt wymaga posiadania istniejącego laboratorium. 
@@ -38,10 +40,10 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | Wyszukiwanie zasobów, w oparciu o określonych parametrów. |
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Pobiera zasoby. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Modyfikuje zasób. |
-| [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Utwórz zasób. |
+| [Find-AzResource](/powershell/module/az.resources/find-azresource) | Wyszukiwanie zasobów, w oparciu o określonych parametrów. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Pobiera zasoby. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Modyfikuje zasób. |
+| [Nowe AzResource](/powershell/module/az.resources/new-azresource) | Utwórz zasób. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

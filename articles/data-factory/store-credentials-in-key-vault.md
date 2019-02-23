@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: ff070adbda2a36261ca24eb0cc993ca22eada1c7
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fcd3af6c000debb8da6200205a9aa2ae61feac58
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661245"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675419"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Store poświadczeń w usłudze Azure Key Vault
 
@@ -26,14 +26,14 @@ Obecnie wszystkie typy działań, z wyjątkiem działań niestandardowych obsłu
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Ta funkcja opiera się na tożsamość usługi fabryki danych. Dowiedz się, jak to działa z [tożsamość usługi fabryki danych](data-factory-service-identity.md) i upewnij się, fabryki danych skojarzony jeden.
+Ta funkcja opiera się na tożsamości zarządzanych fabryki danych. Dowiedz się, jak to działa z [tożsamości zarządzanej dla usługi Data factory](data-factory-service-identity.md) i upewnij się, fabryki danych skojarzony jeden.
 
 ## <a name="steps"></a>Kroki
 
 Aby odwołać poświadczenia przechowywane w usłudze Azure Key Vault, musisz:
 
-1. **Pobierz tożsamość usługi fabryki danych** przez skopiowanie wartości "Identyfikator aplikacji tożsamości usługi" wygenerowane wraz z fabryką. Jeśli używasz usługi ADF tworzenia interfejsu użytkownika, identyfikator tożsamości usługi będą wyświetlane w oknie tworzenia połączonej usługi Azure Key Vault; można je również pobrać z witryny Azure portal, zapoznaj się [pobrać tożsamość usługi fabryki danych](data-factory-service-identity.md#retrieve-service-identity).
-2. **Udzielanie dostępu do tożsamości usługi do usługi Azure Key Vault.** W magazynie kluczy -> zasady -> dostępu Dodaj nowy -> wyszukiwania IDENTYFIKATORA tej aplikacji tożsamości usługi, aby udzielić **uzyskać** uprawnienie na liście rozwijanej uprawnienia klucza tajnego. Umożliwia ona tej fabryce wyznaczone do dostępu do klucza tajnego w magazynie kluczy.
+1. **Pobieranie danych fabryki zarządzanych tożsamości** przez skopiowanie wartości "Identyfikator aplikacji tożsamości usługi" wygenerowane wraz z fabryką. Jeśli używasz usługi ADF tworzenia interfejsu użytkownika, identyfikator aplikacji tożsamości zarządzanej będą wyświetlane w oknie tworzenia połączonej usługi Azure Key Vault; można je również pobrać z witryny Azure portal, zapoznaj się [tożsamości zarządzanej usługi fabryka danych pobierania](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Udzielić dostępu tożsamości zarządzanej do usługi Azure Key Vault.** W magazynie kluczy -> zasady -> dostępu Dodaj nowy -> search to zarządzane identyfikator aplikacji tożsamości, aby udzielić **uzyskać** uprawnienie na liście rozwijanej uprawnienia klucza tajnego. Umożliwia ona tej fabryce wyznaczone do dostępu do klucza tajnego w magazynie kluczy.
 3. **Tworzenie połączonej usługi wskazuje usłudze Azure Key Vault.** Zapoznaj się [usługę połączoną usługi Azure Key Vault](#azure-key-vault-linked-service).
 4. **Tworzenie połączonej usługi magazynu danych, wewnątrz której odwołanie odpowiadający mu klucz tajny przechowywanych w magazynie.** Zapoznaj się [odwołanie wpisu tajnego, przechowywanych w magazynie kluczy](#reference-secret-stored-in-key-vault).
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: 44182d686548fa5b6363a87be0ce7851829e20ab
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3ebc4d94e0bbf24895be0aeba9fef1cc7aacd6b9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820560"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736716"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Pasujące aparat reguł w usłudze Azure CDN 
 W tym artykule przedstawiono szczegółowy opis warunków dopasowania dostępne dla usługi Azure Content Delivery Network (CDN) [aparat reguł](cdn-rules-engine.md).
@@ -233,7 +233,7 @@ Informacje o kluczu:
 
 </br>
 
---- 
+---
 ### <a name="country"></a>Kraj
 Można określić kraj za pośrednictwem jego numer kierunkowy kraju. 
 
@@ -388,7 +388,7 @@ Informacje o kluczu:
 
 </br>
 
----  
+---
 ### <a name="request-header-literal"></a>Literał nagłówka żądania
 **Dopasowania**/**nie odpowiada** opcja umożliwia określenie warunków, jakich żądania nagłówka literału dopasowania warunek jest spełniony.
 - **Dopasowuje**: Wymaga zawiera określonego nagłówka żądania. Jego wartość musi odpowiadać jeden, który jest zdefiniowany w tym warunku dopasowania.
@@ -409,7 +409,7 @@ Informacje o kluczu:
 
 </br>
 
----  
+---
 ### <a name="request-header-regex"></a>Wyrażenie regularne nagłówka żądania
 **Dopasowania**/**nie odpowiada** opcja określa warunki, na jakich Regex nagłówka żądania odpowiada warunek jest spełniony.
 - **Dopasowuje**: Wymaga zawiera określonego nagłówka żądania. Jego wartość musi odpowiadać wzorzec zdefiniowany w określonym [wyrażenia regularnego](cdn-rules-engine-reference.md#regular-expressions).
@@ -468,7 +468,7 @@ Informacje o kluczu:
 ### <a name="request-method"></a>Metoda żądania
 Warunek dopasowania metody żądania jest spełniony, tylko wtedy, gdy zasoby są żądane za pośrednictwem metody wybranego żądania. Metody dostępne żądania są:
 - GET
-- GŁÓWNY 
+- HEAD 
 - POST 
 - OPCJE 
 - PUT 

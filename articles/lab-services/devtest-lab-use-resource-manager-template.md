@@ -14,18 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 99c4f838c3c4e4708c3e21ff9c7e63b69a507dbe
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 663864837e2847125d0925b9b82d8962e54290b3
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746918"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726486"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Tworzenie maszyn wirtualnych przy użyciu szablonu usługi Azure Resource Manager 
 
 Podczas tworzenia maszyny wirtualnej (VM) w usłudze DevTest Labs przy użyciu [witryny Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), można wyświetlić szablonu usługi Azure Resource Manager, aby zapisać maszynę Wirtualną. Szablon następnie można jako podstawy do tworzenia laboratorium więcej maszyn wirtualnych z tymi samymi ustawieniami.
 
 W tym artykule opisano wiele maszyn wirtualnych i szablonów usługi Resource Manager maszyn wirtualnych na jednym i pokazuje, jak wyświetlać i zapisywać szablonu podczas tworzenia maszyny Wirtualnej.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>Wieloma Maszynami wirtualnymi a Maszynami wirtualnymi na jednym szablonów usługi Resource Manager
 Istnieją dwa sposoby tworzenia maszyn wirtualnych w usłudze DevTest Labs przy użyciu szablonu usługi Resource Manager: aprowizowanie zasobów Microsoft.DevTestLab/labs/virtualmachines lub aprowizowanie zasobów Microsoft.Commpute/virtualmachines. Każda jest używane w różnych scenariuszach i wymaga różnych uprawnień.
@@ -34,7 +36,7 @@ Istnieją dwa sposoby tworzenia maszyn wirtualnych w usłudze DevTest Labs przy 
 
    ![Lista maszyn wirtualnych jako pojedyncze elementy na liście maszyny wirtualne usługi DevTest Labs](./media/devtest-lab-use-arm-template/devtestlab-lab-vm-single-item.png)
 
-   Ten typ szablonu usługi Resource Manager mogą być udostępniane za pomocą polecenia programu Azure PowerShell **New-AzureRmResourceGroupDeployment** lub za pomocą polecenia interfejsu wiersza polecenia Azure **Utwórz wdrożenie grupy az**. Musi mieć uprawnienia administratora, dzięki czemu użytkownicy z przypisaną rolą użytkownika DevTest Labs, nie można wykonać wdrożenie. 
+   Ten typ szablonu usługi Resource Manager mogą być udostępniane za pomocą polecenia programu Azure PowerShell **AzResourceGroupDeployment nowy** lub za pomocą polecenia interfejsu wiersza polecenia Azure **Utwórz wdrożenie grupy az**. Musi mieć uprawnienia administratora, dzięki czemu użytkownicy z przypisaną rolą użytkownika DevTest Labs, nie można wykonać wdrożenie. 
 
 - Szablony usługi Resource Manager, korzystających z typu zasobu Microsoft.Compute/virtualmachines umożliwia obsługę wielu maszyn wirtualnych jako jednego środowiska na liście maszyn wirtualnych laboratorium:
 

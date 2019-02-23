@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 02/22/2019
 ms.author: jingwang
-ms.openlocfilehash: d148b43750b4e57ff650f8e96bfda1fb5c57dd4b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ac0a4bf6f332095bd75a6be83d7a1cd3d37c8e1c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657335"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674552"
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Kopiowanie danych z usługi Azure Data Lake Storage Gen1 lub za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -113,15 +113,15 @@ Obsługiwane są następujące właściwości:
 
 ### <a name="managed-identity"></a> Używać zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure
 
-Fabrykę danych mogą być skojarzone z [tożsamości zarządzanej dla zasobów platformy Azure](data-factory-service-identity.md), który reprezentuje tę fabrykę danych z konkretnych. Ta tożsamość usługi służy bezpośrednio do uwierzytelniania Data Lake Store, podobnie jak za pomocą jednostki usługi. Ta fabryka wyznaczonym umożliwia dostęp i kopiowanie danych do lub z Data Lake Store.
+Fabrykę danych mogą być skojarzone z [tożsamości zarządzanej dla zasobów platformy Azure](data-factory-service-identity.md), który reprezentuje tę fabrykę danych z konkretnych. Tej tożsamości zarządzanej służy bezpośrednio do uwierzytelniania Data Lake Store, podobnie jak za pomocą jednostki usługi. Ta fabryka wyznaczonym umożliwia dostęp i kopiowanie danych do lub z Data Lake Store.
 
 Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure:
 
-1. [Pobierz tożsamość usługi fabryki danych](data-factory-service-identity.md#retrieve-service-identity) przez skopiowanie wartości "identyfikator aplikacji tożsamości usługi" wygenerowane wraz z fabryką.
-2. Udzielić dostępu do tożsamości usługi Data Lake Store, tak samo jak w przypadku jednostki usługi, po te informacje.
+1. [Pobrania informacji o tożsamości zarządzanych fabryki danych](data-factory-service-identity.md#retrieve-managed-identity) przez skopiowanie wartości "identyfikator aplikacji tożsamości usługi" wygenerowane wraz z fabryką.
+2. Udzielić dostępu do tożsamości zarządzanej Data Lake Store, tak samo jak w przypadku jednostki usługi, po te informacje.
 
 >[!IMPORTANT]
-> Upewnij się, że można przyznać data factory usługi tożsamości odpowiednie uprawnienia w Data Lake Store:
+> Upewnij się, że można przyznać data factory zarządzanych tożsamości odpowiednie uprawnienia w Data Lake Store:
 >- **Jako źródło**: W **Eksplorator danych** > **dostępu**, co najmniej udzielić **odczytu i wykonania** uprawnienia do listy, a następnie skopiuj pliki w folderach i podfolderach. Ewentualnie możesz udzielić **odczytu** uprawnień do kopiowania pojedynczy plik. Możesz dodać do **ten folder i wszystkie obiekty podrzędne** na rekursywny i Dodaj jako **uprawnienia dostępu i domyślny wpis uprawnień**. Nie jest wymagane na kontroli dostępu na poziomie konta (IAM).
 >- **Jako obiekt sink**: W **Eksplorator danych** > **dostępu**, co najmniej udzielić **zapisu i wykonania** uprawnień, aby tworzyć elementy podrzędne w folderze. Możesz dodać do **ten folder i wszystkie obiekty podrzędne** na rekursywny i Dodaj jako **uprawnienia dostępu i domyślny wpis uprawnień**. Jeśli używasz środowiska Azure integration runtime można skopiować (zarówno źródła i ujścia znajdują się w chmurze), w zarządzania tożsamościami i Dostępem, należy udzielić co najmniej **czytnika** roli, aby można było umożliwiają wykrywanie region dla Data Lake Store w usłudze Data Factory. Jeśli chcesz uniknąć ta rola zarządzania tożsamościami i Dostępem jawnie [tworzenie środowiska Azure integration runtime](create-azure-integration-runtime.md#create-azure-ir) lokalizacją Data Lake Store. Skojarz je w usłudze Data Lake Store połączone w poniższym przykładzie.
 

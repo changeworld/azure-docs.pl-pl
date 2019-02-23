@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/22/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: 60767c3c61b0d386e4ac9b0a93d16ad161c59949
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0467f131ab4300ba3217ed01f37ebb7f4b8dbe5e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445938"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732776"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -132,22 +132,7 @@ Aby wdrożyć dostawcy zasobów usługi App Service, wykonaj następujące kroki
 
     ![Instalator usługi App Service][10]
 
-11. Podaj szczegóły programu SQL Server dla wystąpienia serwera, używane do hostowania baz danych dostawcy zasobów usługi App Service, a następnie wybierz pozycję **dalej**. Instalator sprawdza właściwości połączenia SQL.
-
-    > [!NOTE]
-    > Instalator spróbuje ją przetestować łączność z serwerem SQL Server przed kontynuowaniem. Jednak jeśli wdrażasz do istniejącej sieci wirtualnej, ten test łączności może się nie powieść. Otrzymuje ostrzeżenie i monit, aby kontynuować. Jeśli informacje programu SQL Server jest poprawna, nadal wdrożenia.
-    >
-    > Usługi Azure App Service na usługi Azure Stack i nowszych wersjach 1.3 Instalator sprawdzi, czy serwer SQL jest zawierania bazy danych, włączone na poziomie serwera SQL.  Jeśli nie jest dostępne, zostanie wyświetlony monit z następującym wyjątkiem:
-    > ```sql
-    >    Enable contained database authentication for SQL server by running below command on SQL server (Ctrl+C to copy)
-    >    ***********************************************************
-    >    sp_configure 'contained database authentication', 1;  
-    >    GO  
-    >    RECONFIGURE;  
-    >    GO
-    >    ***********************************************************
-    > ```
-    > Zapoznaj się [informacje o wersji dla usługi Azure App Service w usłudze Azure Stack 1.3](azure-stack-app-service-release-notes-update-three.md) Aby uzyskać więcej informacji.
+11. Podaj szczegóły programu SQL Server dla wystąpienia serwera, używane do hostowania baz danych dostawcy zasobów usługi App Service, a następnie wybierz pozycję **dalej**. Instalator sprawdza właściwości połączenia SQL.<br><br>Instalator usługi App Service próbuje przetestowanie łączności z programem SQL Server przed kontynuowaniem. Jeśli wdrażasz do istniejącej sieci wirtualnej, ten test łączności może się nie powieść. Otrzymuje ostrzeżenie i monit, aby kontynuować. Jeśli informacje programu SQL Server jest poprawna, nadal wdrożenia.
 
     ![Instalator usługi App Service][11]
 

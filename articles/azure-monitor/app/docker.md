@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 3ea7d6562965debda2c146fedab2ea9ab19f6cc8
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0c31d895c453a8272c337b78f01dc8342a4d0765
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077457"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672512"
 ---
 # <a name="monitor-docker-applications-in-application-insights"></a>Monitorowanie aplikacji Docker w usłudze Application Insights
 
@@ -29,7 +29,7 @@ Po uruchomieniu [obrazu usługi Application Insights](https://hub.docker.com/r/m
 
 * Cykl życia telemetrii dotyczącej wszystkie kontenery działające na hoście — uruchamianie, zatrzymywanie i tak dalej.
 * Liczniki wydajności dla wszystkich kontenerów. Procesor CPU, pamięci, użycie sieci i więcej.
-* Jeśli użytkownik [zainstalować zestaw Application Insights SDK dla języka Java](../../azure-monitor/app/java-live.md) w aplikacji działających w kontenerach, wszystkie dane telemetryczne aplikacji, które będą miały dodatkowych właściwości identyfikowanie kontenera i hostów maszyn. Tak na przykład w przypadku wystąpienia aplikacji działających w więcej niż jednego hosta można łatwo filtrować telemetrii aplikacji przez hosta.
+* Jeśli użytkownik [zainstalować zestaw Application Insights SDK dla języka Java](../../azure-monitor/app/java-get-started.md) w aplikacji działających w kontenerach, wszystkie dane telemetryczne aplikacji, które będą miały dodatkowych właściwości identyfikowanie kontenera i hostów maszyn. Tak na przykład w przypadku wystąpienia aplikacji działających w więcej niż jednego hosta można łatwo filtrować telemetrii aplikacji przez hosta.
 
 > [!NOTE]
 > To rozwiązanie jest przestarzała. Aby dowiedzieć się więcej o naszych dotychczasowe inwestycje w rozwiązania do monitorowania kontenerów firma Microsoft zaleca, wyewidencjonowywanie [usługi Azure Monitor dla kontenerów](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview).
@@ -40,7 +40,7 @@ Po uruchomieniu [obrazu usługi Application Insights](https://hub.docker.com/r/m
    
     *Który zasób powinien używać?* Jeśli aplikacje, które są uruchomione na hoście zostały opracowane przez innego użytkownika, a następnie należy [Utwórz nowy zasób usługi Application Insights](../../azure-monitor/app/create-new-resource.md ). Jest to, gdzie wyświetlać i analizować dane telemetryczne. (Wybierz "Ogólne" dla typu aplikacji).
    
-    Ale jeśli jesteś deweloperem aplikacji, a następnie mamy nadzieję, że możesz [dodano zestaw SDK usługi Application Insights](../../azure-monitor/app/java-live.md) do każdego z nich. Jeśli są one wszystkie naprawdę składniki aplikacji biznesowej, które można skonfigurować wszystkie z nich do wysyłania telemetrii do jednego zasobu i użyjesz tego samego zasobu, aby wyświetlić dane cyklu życia i wydajność platformy Docker. 
+    Ale jeśli jesteś deweloperem aplikacji, a następnie mamy nadzieję, że możesz [dodano zestaw SDK usługi Application Insights](../../azure-monitor/app/java-get-started.md) do każdego z nich. Jeśli są one wszystkie naprawdę składniki aplikacji biznesowej, które można skonfigurować wszystkie z nich do wysyłania telemetrii do jednego zasobu i użyjesz tego samego zasobu, aby wyświetlić dane cyklu życia i wydajność platformy Docker. 
    
     Trzeci scenariusz jest opracowany większość aplikacji, że używasz oddzielne zasoby, aby wyświetlić ich dane telemetryczne. W takiej sytuacji użytkownik może być także utworzyć osobny zasób dla danych platformy Docker.
 

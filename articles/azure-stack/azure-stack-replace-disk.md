@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 0a73119c7d079498f0e766fb92904c86ff5131c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 4fb2a398baa306cf9303284526bb43cd7f778441
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767226"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734629"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Zamienianie dysku fizycznego w usłudze Azure Stack
 
@@ -39,7 +39,7 @@ Po awarii dysku, otrzymasz alert informujący o tym, czy łączność utracono n
 
 Jeśli otworzysz alertu, opis alertu zawiera węzeł jednostki skalowania i lokalizacji dokładnie fizycznego miejsca na dysku, który należy zastąpić. Dodatkowo usługa Azure Stack ułatwia ustalenie uszkodzony dysk przy użyciu diod LED wskaźnika funkcji.
 
- ## <a name="replace-the-disk"></a>Wymiana dysku
+## <a name="replace-the-disk"></a>Wymiana dysku
 
 Wykonaj instrukcje FRU dostawcy sprzętu OEM dla rzeczywistego dysku zastępczego.
 
@@ -50,7 +50,7 @@ Aby zapobiec dysku nieobsługiwanego w zintegrowanym systemie, system blokuje wy
 
 Po zamianie dysku usługi Azure Stack umożliwia odnalezienie nowy dysk i automatycznie rozpoczyna proces naprawy dysku wirtualnego.
  
- ## <a name="check-the-status-of-virtual-disk-repair"></a>Sprawdź stan naprawy dysku wirtualnego
+## <a name="check-the-status-of-virtual-disk-repair"></a>Sprawdź stan naprawy dysku wirtualnego
  
  Po zamianie dysku można monitorowania stanu kondycji dysku wirtualnego i naprawić postęp zadania przy użyciu uprzywilejowanych punktu końcowego. Wykonaj poniższe kroki z dowolnego komputera, który ma łączność sieciową do uprzywilejowanych punktu końcowego.
 

@@ -9,12 +9,12 @@ ms.service: backup, virtual-machines
 ms.topic: conceptual
 ms.date: 01/08/2018
 ms.author: trinadhk
-ms.openlocfilehash: 518d171c96b9c4f9bf3e195a7130f4c022b7ad07
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 0cb1d925d4f9c67439b3c96a85088102c7d0e05c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52879880"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737199"
 ---
 # <a name="enable-backup-during-azure-virtual-machine-creation"></a>Włącz wykonywanie kopii zapasowej podczas tworzenia maszyny wirtualnej platformy Azure 
 

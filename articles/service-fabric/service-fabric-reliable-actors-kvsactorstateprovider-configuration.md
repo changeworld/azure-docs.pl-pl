@@ -7,19 +7,19 @@ author: sumukhs
 manager: timlt
 editor: ''
 ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/2/2017
 ms.author: sumukhs
-ms.openlocfilehash: 81c09d61a5213319fa01ef5cc7070ffe385bbab1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 0b7c6a356812e4acd39b5164cce279b5a18eb3d5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049514"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732759"
 ---
 # <a name="configuring-reliable-actors--kvsactorstateprovider"></a>Konfigurowanie elementów Reliable Actors — dostawcy KVSActorStateProvider
 Domyślna konfiguracja dostawcy KVSActorStateProvider można zmodyfikować, zmieniając plik settings.xml, który jest generowany w katalogu głównym pakietu Microsoft Visual Studio w folderze konfiguracji dla określonego aktora.
@@ -54,7 +54,7 @@ Domyślna konfiguracja jest generowany przez szablon programu Visual Studio i po
 | --- | --- | --- | --- |
 | BatchAcknowledgementInterval |Sekundy |0.015 |Okres czasu, dla którego replikatora na pomocniczy czeka po otrzymaniu operacji przed wysłaniem z powrotem do podstawowej potwierdzenia. Inne potwierdzeń, w celu przetworzonych w ramach tego interwału operacji są wysyłane jako jedną odpowiedź. |
 | ReplicatorEndpoint |ND |Brak wartości domyślnej — wymagany parametr |Ustaw adres IP i port, który Replikator podstawowy/pomocniczy będzie używany do komunikowania się z innymi replikatorów w replice. To powinien odwoływać się do zasobu punktu końcowego TCP w manifeście usługi. Zapoznaj się [zasoby manifestu usługi](service-fabric-service-manifest-resources.md) Aby dowiedzieć się więcej o definiowaniu punktu końcowego zasobów w manifeście usługi. |
-| retryInterval |Sekundy |5 |Okres, po upływie którego replikatora ponownie przesyła wiadomość, jeśli nie odbiera potwierdzenie operacji. |
+| RetryInterval |Sekundy |5 |Okres, po upływie którego replikatora ponownie przesyła wiadomość, jeśli nie odbiera potwierdzenie operacji. |
 | MaxReplicationMessageSize |Bajty |50 MB |Maksymalny rozmiar danych replikacji, które mogą być przenoszone w pojedynczym komunikacie. |
 | MaxPrimaryReplicationQueueSize |Liczba operacji |1024 |Maksymalna liczba operacji w kolejce podstawowego. Operacja są zwalniane, gdy Replikator podstawowy otrzyma potwierdzenia od wszystkich replikatorów dodatkowej. Ta wartość musi być większa niż 64 i potęgą liczby 2. |
 | MaxSecondaryReplicationQueueSize |Liczba operacji |2048 |Maksymalna liczba operacji w kolejce dodatkowej. Operacja nie zostanie zwolniona po wprowadzeniu swojego stanu o wysokiej dostępności za pośrednictwem trwałości. Ta wartość musi być większa niż 64 i potęgą liczby 2. |

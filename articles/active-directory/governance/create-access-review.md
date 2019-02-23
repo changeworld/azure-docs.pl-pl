@@ -1,6 +1,6 @@
 ---
-title: Tworzenie przeglądu dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji z usługą Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć Przegląd dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji.
+title: Tworzenie przeglądu dostępu, grupy lub aplikacji w przeglądach dostępu usługi Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć Przegląd dostępu członków grupy lub dostęp do aplikacji w przeglądach dostępu usługi Azure AD.
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -11,29 +11,29 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 11/15/2018
+ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1616230e3cad765246bcf03d59fb517c99d9b044
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ca27e89ad67b0f0755a7dda50572f3dcd857189
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176921"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733933"
 ---
-# <a name="create-an-access-review-of-group-members-or-application-access-with-azure-ad"></a>Utwórz Przegląd dostępu członków grupy lub dostęp do aplikacji z usługą Azure AD
+# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Tworzenie przeglądu dostępu, grupy lub aplikacji w przeglądach dostępu usługi Azure AD
 
 Dostęp do grupy i aplikacje dla pracowników i gości zmienia się wraz z upływem czasu. W celu zmniejszenia ryzyka związanego z przypisania starych dostępu, Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do tworzenia przeglądów dostępu dla członków grupy lub dostęp do aplikacji. Jeśli zachodzi potrzeba rutynowo Przegląd dostępu wszystkich użytkowników, można również utworzyć cyklicznego przeglądów dostępu. Aby uzyskać więcej informacji na temat tych scenariuszy, zobacz [zarządzanie dostępem użytkowników](manage-user-access-with-access-reviews.md) i [zarządzanie dostępem gości](manage-guest-access-with-access-reviews.md).
 
-W tym artykule opisano sposób tworzenia nowego przeglądu dostępu dla członków grupy lub dostęp do aplikacji.
+W tym artykule opisano sposób tworzenia wyświetlanie przeglądów dostępu dla członków grupy lub dostęp do aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Przeglądy dostępu włączone](access-reviews-overview.md)
-- Administrator globalny lub Administrator konta
+- Administrator globalny lub Administrator kont użytkowników
 
-## <a name="create-an-access-review"></a>Tworzenie przeglądu dostępu
+## <a name="create-one-or-more-access-reviews"></a>Utwórz co najmniej jeden przeglądów dostępu
 
 1. Zaloguj się do witryny Azure portal i Otwórz [strony przeglądów dostępu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
@@ -58,6 +58,20 @@ W tym artykule opisano sposób tworzenia nowego przeglądu dostępu dla członk�
 1. W **użytkowników** sekcji, określ dotyczą użytkowników, którzy Przegląd dostępu. Przeglądy dostępu może być członkami grupy lub osób, które zostały przypisane do aplikacji. Możesz dodatkowo ograniczyć dostęp tylko do przeglądu i przejrzyj użytkowników-gości kto są elementami członkowskimi (lub przypisane do aplikacji), zamiast przeglądanie wszystkich użytkowników, którzy są członkami lub mających dostęp do aplikacji.
 
     ![Tworzenie przeglądu dostępu — użytkownicy](./media/create-access-review/users.png)
+
+1. W **grup** wybierz co najmniej jednej grupy, które chcesz przejrzeć członkostwo.
+
+    > [!NOTE]
+    > Wybranie więcej niż jednej grupy spowoduje utworzenie wielu przeglądów dostępu. Na przykład wybranie pięć grup utworzy pięciu przeglądach uprawnień dostępu.
+    
+    ![Tworzenie przeglądu dostępu — grupy](./media/create-access-review/select-group.png)
+
+1. W **aplikacje** sekcji (w przypadku wybrania **przypisanych do aplikacji** w kroku 8), wybierz aplikacje, które chcesz przeprowadzić przegląd dostępu do.
+
+    > [!NOTE]
+    > Wybranie więcej niż jednej aplikacji spowoduje utworzenie wielu przeglądów dostępu. Na przykład wybranie pięciu aplikacji utworzy pięciu przeglądach uprawnień dostępu.
+    
+    ![Tworzenie przeglądu dostępu — wybór aplikacji](./media/create-access-review/select-application.png)
 
 1. W **recenzentów** wybierz jeden lub więcej osób, aby zapoznać się z wszystkich użytkowników w zakresie. Lub możesz wybrać członkowie dokonać przeglądu własnego dostępu. Jeśli zasób jest grupą, możesz poprosić właścicieli grupy, aby przejrzeć. Możesz również wymagać że recenzenci mogą zatwierdzać dostęp, podania przyczyny.
 
@@ -100,7 +114,7 @@ W tym artykule opisano sposób tworzenia nowego przeglądu dostępu dla członk�
 
 Po określeniu ustawienia przeglądu dostępu, kliknij przycisk **Start**.
 
-Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce, po uruchomieniu przeglądu. Jeśli użytkownik chce nie ma wysyłać wiadomości e-mail z usługi Azure AD, pamiętaj poinformować osób dokonujących przeglądu, które przeglądu dostępu oczekuje na ich zakończenie. Można pokazać im instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników](perform-access-review.md). W przypadku zapoznania się z nimi dla gości, aby dokonać przeglądu własnego dostępu, wyświetlić je instrukcje dotyczące sposobu [przeglądu własnego dostępu](perform-access-review.md).
+Domyślnie usługa Azure AD wysyła wiadomość e-mail do recenzentów, wkrótce, po uruchomieniu przeglądu. Jeśli użytkownik chce nie ma wysyłać wiadomości e-mail z usługi Azure AD, pamiętaj poinformować osób dokonujących przeglądu, które przeglądu dostępu oczekuje na ich zakończenie. Można pokazać im instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md). W przypadku zapoznania się z nimi dla gości, aby dokonać przeglądu własnego dostępu, wyświetlić je instrukcje dotyczące sposobu [Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacji](review-your-access.md).
 
 W przypadku niektórych recenzentów gości, gości są powiadamiane za pośrednictwem poczty e-mail tylko wtedy, gdy już zaakceptowane zaproszenia.
 
@@ -108,7 +122,7 @@ W przypadku niektórych recenzentów gości, gości są powiadamiane za pośredn
 
 Recenzenci wykonać ich recenzje na pulpicie nawigacyjnym usługi Azure AD w postęp można śledzić **przeglądów dostępu** sekcji. Nie prawa dostępu zostaną zmienione w katalogu, dopóki [zakończeniu przeglądu](complete-access-review.md).
 
-Jeśli jest to jednorazowa przeglądu, następnie po umieszczeniu okres przeglądu dostępu lub administrator zatrzymania przeglądu dostępu postępuj zgodnie z instrukcjami w [Kończenie przeglądu dostępu](complete-access-review.md) aby zobaczyć i zastosować wyniki.  
+Jeśli jest to jednorazowa przeglądu, następnie po umieszczeniu okres przeglądu dostępu lub administrator zatrzymania przeglądu dostępu postępuj zgodnie z instrukcjami w [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md) aby zobaczyć i zastosować wyniki.  
 
 Aby zarządzać serię przeglądów dostępu, przejdź do przeglądu dostępu z **formantów**, będzie znajdowanie kolejnych wystąpień w przeglądach zaplanowane i Edytuj datę zakończenia lub Dodawanie/usuwanie recenzentów w związku z tym. 
 
@@ -120,5 +134,6 @@ Można również utworzyć przeglądów dostępu za pomocą interfejsów API. Co
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Uruchamianie przeglądu dostępu za pomocą przeglądów dostępu usługi Azure AD](perform-access-review.md)
-- [Kończenie przeglądu dostępu członków grupy lub dostęp użytkowników do aplikacji w usłudze Azure AD](complete-access-review.md)
+- [Przegląd dostępu wszystkich użytkowników do grupy lub aplikacji](perform-access-review.md)
+- [Przegląd dostępu wszystkich użytkowników dla siebie do grupy lub aplikacji](review-your-access.md)
+- [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md)

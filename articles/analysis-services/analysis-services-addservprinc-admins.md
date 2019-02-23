@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5089083862f243a6a6847a58ac0777c52f978e73
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 701be795ca217c4a2dc5a7dbaa3a3717d16c85bc
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189732"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730226"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Dodawanie jednostki usługi do roli administratora serwera 
 
@@ -42,7 +42,7 @@ Aby wykonać to zadanie, konieczne jest posiadanie [administrator serwera](analy
 
 
 > [!NOTE]
-> W przypadku operacji serwera przy użyciu poleceń cmdlet usługi AzureRm jednostki uruchomione narzędzie harmonogramu usługi musi również należeć do **właściciela** roli dla zasobu w [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). 
+> W przypadku operacji serwera przy użyciu poleceń cmdlet programu Azure PowerShell jednostki uruchomione narzędzie harmonogramu usługi musi również należeć do **właściciela** roli dla zasobu w [based kontroli dostępu (RBAC)](../role-based-access-control/overview.md). 
 
 ## <a name="related-information"></a>Informacje pokrewne
 

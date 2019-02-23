@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: ellacroi
-ms.openlocfilehash: 447453abb59507e0f3a8505410ceb52640914f22
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 852d0874a91418bf28e674b02087aeb7edbdd833
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436580"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730515"
 ---
 # <a name="support-for-appsource"></a>Obsługa usługi AppSource  
 Opcje pomocy technicznej dla usługi AppSource.  
@@ -28,10 +28,10 @@ Opcje pomocy technicznej dla usługi AppSource.
 
 | Kanał obsługi | Opis |  
 |:--- |:--- |  
-| Formularze sieci MSDN: Usługa Azure Active Directory znajdujący się w [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "usługi Azure AD na forach MSDN") | Forum sieci Microsoft Developer Network. |  
-| Witrynie StackOverflow: Usługi Azure Active Directory znajdującym się [stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "usługi Azure AD na stronie stackoverflow") | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z usługą Azure Active Directory (Azure AD). |  
+| Formularze sieci MSDN: Usługa Azure Active Directory znajduje się w [social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD](https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD "usługi Azure AD na forach MSDN") | Forum sieci Microsoft Developer Network. |  
+| StackOverflow: Usługa Azure Active Directory znajduje się w [stackoverflow.com/questions/tagged/azure-active-directory](https://stackoverflow.com/questions/tagged/azure-active-directory "usługi Azure AD na stronie stackoverflow") | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z usługą Azure Active Directory (Azure AD). |  
 
 ## <a name="next-steps"></a>Kolejne kroki
 Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
  
----  
+---

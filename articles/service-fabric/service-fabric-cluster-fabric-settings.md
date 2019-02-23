@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: a919d10bbb7def8f81e68d95c03d95309483df59
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c8cfa0174d3e3300bdc3cfbc68ca416d9b736300
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210390"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674909"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano różne ustawienia sieci szkieletowej klastra usługi Service Fabric, którą można dostosować. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. Aby uzyskać więcej informacji, zobacz [Uaktualnij konfigurację klastra usługi Azure](service-fabric-cluster-config-upgrade-azure.md). W przypadku klastrów autonomicznych dostosować ustawienia, aktualizując *ClusterConfig.json* plików i przeprowadzania konfiguracji uaktualnienia w klastrze. Aby uzyskać więcej informacji, zobacz [uaktualnić konfiguracji klastra autonomicznego](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -122,13 +122,13 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |AppDiagnosticStoreAccessRequiresImpersonation |Wartość logiczna, wartość domyślna to true | Dynamiczny |Określa, czy personifikacja jest wymagana podczas uzyskiwania dostępu do diagnostyki są przechowywane w imieniu aplikacji. |
 |AppEtwTraceDeletionAgeInDays |Int, domyślna to 3 | Dynamiczny |Liczba dni, po upływie których możemy usunąć stare pliki ETL zawierający śladów funkcji ETW w aplikacji. |
 |ApplicationLogsFormatVersion |int, domyślna to 0 | Dynamiczny |Wersja aplikacji rejestruje formatu. Obsługiwane wartości to 0 i 1. Wersja 1 zawiera więcej pól rekordu zdarzenia funkcji ETW niż wersja 0. |
-|ClusterId |Ciąg | Dynamiczny |Unikatowy identyfikator klastra. To jest generowany podczas tworzenia klastra. |
-|ConsumerInstances |Ciąg | Dynamiczny |Lista wystąpień odbiorców DCA. |
+|ClusterId |String | Dynamiczny |Unikatowy identyfikator klastra. To jest generowany podczas tworzenia klastra. |
+|ConsumerInstances |String | Dynamiczny |Lista wystąpień odbiorców DCA. |
 |DiskFullSafetySpaceInMB |Int, domyślny wynosi 1024 | Dynamiczny |Pozostałe miejsce na dysku w MB w celu ochrony z zasobów używanych przez DCA. |
 |EnableCircularTraceSession |Wartość logiczna, wartość domyślna to false | Statyczny |Flaga wskazuje, czy można używać sesji śledzenia cykliczne. |
 |EnableTelemetry |Wartość logiczna, wartość domyślna to true | Dynamiczny |To spowoduje utworzenie Włączanie lub wyłączanie telemetrii. |
 |MaxDiskQuotaInMB |Int, wartość domyślna to 65536 | Dynamiczny |Przydział dysku w plikach dziennika MB dla Windows Fabric. |
-|ProducerInstances |Ciąg | Dynamiczny |Lista wystąpień producentów DCA. |
+|ProducerInstances |String | Dynamiczny |Lista wystąpień producentów DCA. |
 
 ## <a name="dnsservice"></a>DnsService
 | **Parametr** | **Dozwolone wartości** |**Zasady uaktualniania**| **Wskazówki dotyczące lub krótki opis** |
@@ -280,7 +280,8 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="healthmanager"></a>HealthManager
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-| EnableApplicationTypeHealthEvaluation |Wartość logiczna, wartość domyślna to false |Statyczny|Zasady oceny kondycji klastra: Włącz na ocenę kondycji typu aplikacji. |
+|EnableApplicationTypeHealthEvaluation |Wartość logiczna, wartość domyślna to false |Statyczny|Zasady oceny kondycji klastra: Włącz na ocenę kondycji typu aplikacji. |
+|MaxSuggestedNumberOfEntityHealthReports|Int, domyślna to 500 |Dynamiczny|Maksymalna liczba kondycji raporty, że jednostka może mieć przed zgłoszeniem wątpliwości dotyczących raportowania logiki kondycji strażnika. Każda jednostka kondycji powinien mieć stosunkowo małej liczby raportów o kondycji. Jeśli liczba raportów przekroczy wartość ta liczba. mogą wystąpić problemy z implementacją strażnika. Obiekt o zbyt wiele raportów zostanie oflagowana za pośrednictwem raport o kondycji ostrzeżenia podczas szacowania jednostki. |
 
 ## <a name="healthmanagerclusterhealthpolicy"></a>HealthManager/ClusterHealthPolicy
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
@@ -451,7 +452,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 ## <a name="performancecounterlocalstore"></a>PerformanceCounterLocalStore
 | **Parametr** | **Dozwolone wartości** | **Zasady uaktualniania** | **Wskazówki dotyczące lub krótki opis** |
 | --- | --- | --- | --- |
-|Liczniki |Ciąg | Dynamiczny |Rozdzielana przecinkami lista liczników wydajności zbierających dane. |
+|Liczniki |String | Dynamiczny |Rozdzielana przecinkami lista liczników wydajności zbierających dane. |
 |IsEnabled |Wartość logiczna, wartość domyślna to true | Dynamiczny |Flaga wskazuje, czy jest włączone zbieranie danych licznika wydajności w lokalnym węźle. |
 |MaxCounterBinaryFileSizeInMB |int, domyślna to 1 | Dynamiczny |Maksymalny rozmiar (w MB) dla każdego pliku binarnego licznika wydajności. |
 |NewCounterBinaryFileCreationIntervalInMinutes |Int, domyślna wynosi 10 | Dynamiczny |Maksymalny interwał (w sekundach), po którym tworzony jest nowy plik binarny licznika wydajności. |
@@ -756,10 +757,10 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 | --- | --- | --- | --- |
 |ContainerNetworkName|ciąg, domyślna to ""| Statyczny |Nazwa sieciowa do użycia podczas konfigurowania sieci kontenera.|
 |ContainerNetworkSetup|wartość logiczna, domyślna to FALSE| Statyczny |Określa, czy sieć kontenera.|
-|FabricDataRoot |Ciąg | Niedozwolone |Katalog główny danych usługi Service Fabric. Domyślne dla systemu Azure jest d:\svcfab |
-|FabricLogRoot |Ciąg | Niedozwolone |Katalog główny aplikacji usługi Service fabric dziennika. Jest to, gdzie umieścić SF dzienniki i dane śledzenia. |
+|FabricDataRoot |String | Niedozwolone |Katalog główny danych usługi Service Fabric. Domyślne dla systemu Azure jest d:\svcfab |
+|FabricLogRoot |String | Niedozwolone |Katalog główny aplikacji usługi Service fabric dziennika. Jest to, gdzie umieścić SF dzienniki i dane śledzenia. |
 |NodesToBeRemoved|ciąg, domyślna to ""| Dynamiczny |Węzły, które powinny zostać usunięte w ramach konfiguracji uaktualnienia. (Tylko w przypadku autonomicznych wdrożeniach)|
-|ServiceRunAsAccountName |Ciąg | Niedozwolone |Nazwa konta, pod którym chcesz uruchamiać usługę hosta sieci szkieletowej. |
+|ServiceRunAsAccountName |String | Niedozwolone |Nazwa konta, pod którym chcesz uruchamiać usługę hosta sieci szkieletowej. |
 |SkipContainerNetworkResetOnReboot|wartość logiczna, domyślna to FALSE|NotAllowed|Określa, czy pominąć Resetowanie kontenera sieci przy ponownym uruchamianiu.|
 |SkipFirewallConfiguration |Wartość logiczna, wartość domyślna to false | Niedozwolone |Określa ustawienia zapory muszą być ustawiony przez system, czy nie. Dotyczy to tylko wtedy, gdy używasz zapory systemu windows. Jeśli używasz innej zapory, następnie należy otworzyć porty dla systemu i aplikacji do używania |
 

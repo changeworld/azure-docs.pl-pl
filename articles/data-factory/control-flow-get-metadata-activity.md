@@ -11,14 +11,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 02/22/2019
 ms.author: shlo
-ms.openlocfilehash: 4188fb413cc1001b6e4813fe69518a016c8c0656
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ca77fa092e41534e0f18323014c9cea583c19758
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354267"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671662"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Pobieranie metadanych działania w usłudze Azure Data Factory
 Działanie GetMetadata może być używane do pobierania **metadanych** dowolnych danych w usłudze Azure Data Factory. To działanie może być używane w następujących scenariuszach:
@@ -45,14 +45,15 @@ Działanie GetMetadata przyjmuje zestawu danych jako wymagane dane wejściowe i 
 | Łącznik/metadanych | itemName<br>(plik/folder) | itemType<br>(plik/folder) | rozmiar<br>(file) | utworzone<br>(plik/folder) | lastModified<br>(plik/folder) |childItems<br>(folder) |contentMD5<br>(file) | Struktura<br/>(file) | columnCount<br>(file) | Istnieje<br>(plik/folder) |
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |:--- |
 | Amazon S3 | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
+| Google Cloud Storage | √/√ | √/√ | √ | x/x | √/√* | √ | x | √ | √ | √/√* |
 | Obiekt bob Azure | √/√ | √/√ | √ | x/x | √/√* | √ | √ | √ | √ | √/√ |
-| Azure Data Lake Store | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
+| Usługa Azure Data Lake Storage 1. generacji | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | Azure File Storage | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | System plików | √/√ | √/√ | √ | √/√ | √/√ | √ | x | √ | √ | √/√ |
 | SFTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 | FTP | √/√ | √/√ | √ | x/x | √/√ | √ | x | √ | √ | √/√ |
 
-- Dla Amazon S3 `lastModified` ma zastosowanie do zasobnika i klucza, ale nie wirtualnego folderu; i `exists` odnosi się do zasobnika i klucza, ale nie do prefiksu lub folder wirtualny.
+- Dla dostawców Amazon S3 i magazynu Sloud Google `lastModified` ma zastosowanie do zasobnika i klucza, ale nie wirtualnego folderu; i `exists` odnosi się do zasobnika i klucza, ale nie do prefiksu lub folder wirtualny.
 - Dla obiektów Blob platformy Azure `lastModified` ma zastosowanie do kontenerów i obiektów blob, ale folder nie jest wirtualny.
 
 **Relacyjna baza danych:**

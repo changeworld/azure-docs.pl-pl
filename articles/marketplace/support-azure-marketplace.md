@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: ae3716654f40322205212ca02a99993326a1cf35
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 196ad39b8b2430ed060ede032f72092b9cfd3fdb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073360"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727438"
 ---
 # <a name="support-for-the-marketplace"></a>Obsługa portalu Marketplace  
 Oto lista opcji pomocy technicznej w portalu Marketplace.  
@@ -42,7 +42,7 @@ Otwórz bilet dla z firmą Microsoft [pomocy technicznej wydawcy witryny marketp
 |:--- |:--- |  
 | Slack: [join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Slack środowisko do obsługi partnerom kwestiach technicznych. Tam o 350 + partnerów pracujących w tym środowisku. |  
 | Fora MSDN: Portal Marketplace znajdujący się w [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Forum sieci Microsoft Developer Network. |  
-| Przepełnienie stosu: Azure znajdujący się w [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z portalu Azure Marketplace.<ul> <li>Przepełnienie stosu: Portal Azure Marketplace znajdujący się w [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Przepełnienie stosu: Usługa Azure Resource Manager znajduje się w [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Przepełnienie stosu: Maszyny wirtualne na platformie Azure znajduje się w [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Przepełnienie stosu: Kontenery na platformie Azure znajduje się w [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
+| Stack Overflow: Azure znajdujący się w [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | Stos środowiska przepełnienie w celu rozwiązania i zadawania pytań dotyczących wszystko, co jest związane z portalu Azure Marketplace.<ul> <li>Stack Overflow: Portal Azure Marketplace znajdujący się w [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow: Usługa Azure Resource Manager znajduje się w [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow: Maszyny wirtualne na platformie Azure znajduje się w [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow: Kontenery na platformie Azure znajduje się w [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 | Pomoc techniczna dla usługi AppSource: [appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | Obsługa publikowania dla aplikacji Dynamics |
 
 ## <a name="marketing-resources"></a>Materiały marketingowe  
@@ -57,4 +57,4 @@ Otwórz bilet dla z firmą Microsoft [pomocy technicznej wydawcy witryny marketp
 ## <a name="next-steps"></a>Kolejne kroki
 Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
  
----  
+---

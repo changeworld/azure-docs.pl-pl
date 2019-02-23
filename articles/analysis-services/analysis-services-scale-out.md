@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 213a695d99c50cea5962237c6210e6efcdbc5f6a
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 8f253d150a5073d2d19daf51c12180c9f7b3660b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411683"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734527"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
@@ -87,11 +87,13 @@ Użyj **synchronizacji** operacji.
 
 ### <a name="powershell"></a>PowerShell
 
-Przed rozpoczęciem korzystania z programu PowerShell, [Instalowanie lub aktualizowanie najnowszy moduł AzureRM](https://github.com/Azure/azure-powershell/releases). 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Aby ustawić liczba replik zapytań, należy użyć [Set-AzureRmAnalysisServicesServer](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/set-azurermanalysisservicesserver). Określ opcjonalne `-ReadonlyReplicaCount` parametru.
+Przed rozpoczęciem korzystania z programu PowerShell, [Instalowanie lub aktualizowanie najnowszy moduł Azure PowerShell](/powershell/azure/install-az-ps). 
 
-Aby uruchomić synchronizacji, użyj [AzureAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
+Aby ustawić liczba replik zapytań, należy użyć [AzAnalysisServicesServer zestaw](https://docs.microsoft.com/powershell/module/az.analysisservices/set-azanalysisservicesserver). Określ opcjonalne `-ReadonlyReplicaCount` parametru.
+
+Aby uruchomić synchronizacji, użyj [AzAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance).
 
 ## <a name="connections"></a>Połączenia
 

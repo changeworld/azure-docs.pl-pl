@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: anroth
-ms.openlocfilehash: 76207e83e31ba3919da80e4ecc99435e88c76c66
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: b46ccd98145342fda58672b64b838ab92ba4f97b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56654593"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731926"
 ---
 # <a name="how-to-move-your-limited-trial-project-to-azure-using-the-customvisionai-site"></a>Jak przenieść projektu ograniczonej wersji próbnej na platformie Azure przy użyciu witryny CustomVision.ai
 
@@ -76,7 +76,7 @@ Wiele projektów może być skojarzona z pojedynczego zasobu. Więcej szczegół
 
 2. Znajdź identyfikator zasobu dla zasobu usługi Custom Vision szkolenia. To w witrynie Azure portal można znaleźć, otwierając zasobu usługi Custom Vision szkolenia i wybierając pozycję "Właściwości" w sekcji "Zarządzanie zasobami". Twój identyfikator zasobu będą dostępne. 
 
-    ![Znajdź identyfikator zasobu w w witrynie Azure portal, otwierając zasobu usługi Custom Vision szkolenia i wybierając pozycję "Właściwości" w sekcji "Zarządzanie zasobami".](./media/move-your-project-to-azure/resource_ID_azure_portal.jpg)
+    ![Znajdź swój identyfikator zasobu w witrynie Azure portal, otwierając zasobu usługi Custom Vision szkolenia i wybierając pozycję "Właściwości" w sekcji "Zarządzanie zasobami".](./media/move-your-project-to-azure/resource_ID_azure_portal.jpg)
 
 
 3. Alternatywnie można znaleźć Identyfikatora zasobu niestandardowego zasobu wizji bezpośrednio w witrynie sieci Web Custom Vision [strony ustawień]( https://www.customvision.ai/projects#/settings). Należy przełączyć się do tego samego katalogu, który znajduje się w swoich zasobów platformy Azure.

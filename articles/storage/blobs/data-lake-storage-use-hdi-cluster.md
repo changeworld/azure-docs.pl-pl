@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: df65c29b39921eda6ba2bd682e5938f58a9e4de7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 31b24a7caf679f2e872a60db274218586642624a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964581"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737437"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Za pomocą usług Azure Data Lake Storage Gen2 klastrów Azure HDInsight
 
@@ -152,9 +152,6 @@ az storage account create \
     --kind StorageV2 \
     --Enable-hierarchical-namespace true
 ```
-
-> [!NOTE]
-> Podczas public Data Lake Storage Gen2 tylko `--sku Standard_LRS` jest obsługiwana.
 
 Pojawi się monit o region geograficzny, w którym zostanie utworzone konto magazynu. Utwórz konto magazynu, w tym samym regionie, w którym planujesz utworzenie klastra usługi HDInsight.
 

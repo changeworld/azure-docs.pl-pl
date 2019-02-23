@@ -12,12 +12,12 @@ ms.workload: mobile
 ms.topic: article
 ms.author: jowargo
 ms.date: 02/14/2019
-ms.openlocfilehash: e516d47c3bd378ebaeb03acf1d142fd2c18673d7
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 18c3c298c33fa98606d59cfe1d5c7b565f2486e0
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302697"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728441"
 ---
 # <a name="azure-notification-hubs-sdks"></a>Azure Notification Hubs z zestawów SDK
 
@@ -28,7 +28,7 @@ Firma Microsoft i innych firm, należy opublikować zestawów SDK dla usługi Az
 | [.NET Server](https://github.com/Azure/azure-notificationhubs-dotnet) | Microsoft |
 | [Android](https://github.com/Azure/azure-notificationhubs/tree/master/Android)  |Microsoft |
 | [Apache Cordova](https://github.com/derek82511/cordova-azure-notification-hubs) | Innych firm |
-| [iOS](https://github.com/Azure/azure-notificationhubs/tree/master/iOS) |Microsoft |
+| [iOS](https://github.com/Azure/azure-notificationhubs-ios) |Microsoft |
 | [Java Server](https://github.com/Azure/azure-notificationhubs-java-backend) |Microsoft |
 | [Nodejs](http://github.com/Azure/azure-sdk-for-node) | Microsoft |
 | [React Native](https://github.com/CatalystCode/react-native-azurenotificationhub) | Innych firm |

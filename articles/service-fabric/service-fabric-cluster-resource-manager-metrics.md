@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 0d622ea6-a7c7-4bef-886b-06e6b85a97fb
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a7d3ad59d743287e5fe13c52c6c6a1a115d53f3
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 2d1818f42cb2bcb19f979f25962a6c9bdea10155
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053316"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728016"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>Zarządzanie zużycia zasobów i obciążenia w usłudze Service Fabric za pomocą metryk
 *Metryki* są zasoby, które swoje najważniejsze usługi informacje, które są dostarczane przez węzły w klastrze. Metryka to wszystkich elementów, które mają być zarządzane, aby zwiększyć lub monitorowanie wydajności usługi. Na przykład może obserwować zużycie pamięci, aby dowiedzieć się, jeśli usługa jest przeciążony. Innym zastosowaniem jest ustalenie, czy usługa może przenieść innym miejscu, gdzie pamięci jest mniejsza ograniczonego w celu uzyskania lepszej wydajności.
@@ -56,7 +56,7 @@ Niektóre kwestie, należy zwrócić uwagę:
 
 Dobre!
 
-Metryki domyślnej świetnie działa jako rozpoczęcia. Jednak domyślnych metryk tylko przeprowadzi należy do tej pory. Na przykład: jakie jest prawdopodobieństwo, że podział schemat można pobrać wyniki doskonale nawet wykorzystanie przez wszystkie partycje? Jakie jest prawdopodobieństwo, że obciążenie dla danej usługi jest stałe, wraz z upływem czasu, lub w taki sam nawet na wielu partycjach teraz?
+Metryki domyślnej świetnie działa jako rozpoczęcia. Jednak domyślnych metryk tylko przeprowadzi należy do tej pory. Na przykład: Jakie jest prawdopodobieństwo, że podział schemat możesz pobrać wyniki doskonale nawet wykorzystanie przez wszystkie partycje? Jakie jest prawdopodobieństwo, że obciążenie dla danej usługi jest stałe, wraz z upływem czasu, lub w taki sam nawet na wielu partycjach teraz?
 
 Można uruchomić przy użyciu tylko domyślnych metryk. Jednak to zazwyczaj oznacza, że wykorzystaniu klastra dolnej i bardziej nierówne, niż chcesz. Jest to spowodowane domyślnych metryk nie są funkcje adaptacyjnego sterowania i zakładają, że wszystko jest równoważne. Na przykład podstawowy, który jest zajęty i taki, który nie jest zarówno przyczyniają się do metryki PrimaryCount "1". W najgorszym przypadku za pomocą domyślnych metryk może również spowodować overscheduled węzłów powodujące problemy z wydajnością. Jeśli interesuje Cię uzyskanie maksymalnie wykorzystać możliwości klastra i unikanie problemów z wydajnością, należy użyć niestandardowych metryk i dynamiczne raportowanie obciążenia.
 
@@ -67,11 +67,11 @@ Dowolnej metryce ma kilka właściwości, które je: nazwę, waga i obciążenia
 
 * Nazwa metryki: Nazwa metryki. Nazwa metryki jest unikatowy identyfikator dla metryki w ramach klastra z punktu widzenia menedżera zasobów.
 * Waga: Waga metryki definiuje, jak ważny jest ta metryka względem innych metryk dla tej usługi.
-* Załaduj domyślne: Obciążenia domyślny jest reprezentowany inaczej w zależności od tego, czy usługa jest bezstanowe lub stanowe.
+* Załaduj domyślne: Obciążenia domyślne jest reprezentowany w różny sposób w zależności od tego, czy usługa jest bezstanowe lub stanowe.
   * W przypadku usług bezstanowych wszystkie metryki ma jedną właściwość o nazwie DefaultLoad
   * W przypadku usług stanowych, jaką zdefiniujesz:
-    * PrimaryDefaultLoad: Wykorzystuje tej usługi domyślnej ilości ta metryka, gdy jest ona podstawowym
-    * SecondaryDefaultLoad: Pobiera tę usługę domyślnej ilości ta metryka, czasie pomocniczy
+    * PrimaryDefaultLoad: Domyślna ilość ta metryka ta usługa pobiera w podstawowym
+    * SecondaryDefaultLoad: Domyślna ilość ta metryka ta usługa pobiera w pomocniczy
 
 > [!NOTE]
 > Jeśli zdefiniujesz metryki niestandardowe, a użytkownik chce _również_ Użyj metryki domyślnej, musisz _jawnie_ dodawania domyślnych metryk kopii i definiowania dla nich wartości i wagi. Jest to spowodowane należy zdefiniować relację między domyślnych metryk i metryki niestandardowe. Na przykład może być interesujące Cię ConnectionCount lub WorkQueueDepth więcej niż podstawowy dystrybucji. Domyślnie waga metryki PrimaryCount jest wysoki, więc chcesz ograniczyć na nośnik, po dodaniu innych metryk, aby upewnić się, że ich wyższy priorytet.

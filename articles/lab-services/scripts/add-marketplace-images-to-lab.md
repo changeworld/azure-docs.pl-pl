@@ -12,16 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: a3a007bf19a28e6f361837856f83a191a761ef9b
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 22c30e1c3b19e62489a08a702d8b35fbc4862e13
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247418"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728220"
 ---
 # <a name="use-powershell-to-add-a-marketplace-image-to-a-lab-in-azure-devtest-labs"></a>Dodawanie obrazu z witryny marketplace do laboratorium Azure DevTest Labs przy użyciu programu PowerShell
 
 Ten przykładowy skrypt programu PowerShell dodaje obrazu z witryny marketplace do laboratorium Azure DevTest Labs. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -38,10 +40,10 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [Find-AzureRmResource](/powershell/module/azurerm.resources/find-azurermresource) | Wyszukiwanie zasobów, w oparciu o określonych parametrów. |
-| [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | Pobiera zasoby. |
-| [Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) | Modyfikuje zasób. |
-| [New-AzureRmResource](/powershell/module/azurerm.resources/new-azurermresource) | Utwórz zasób. |
+| [Find-AzResource](/powershell/module/az.resources/find-azresource) | Wyszukiwanie zasobów, w oparciu o określonych parametrów. |
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | Pobiera zasoby. |
+| [Set-AzResource](/powershell/module/az.resources/set-azresource) | Modyfikuje zasób. |
+| [Nowe AzResource](/powershell/module/az.resources/new-azresource) | Utwórz zasób. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

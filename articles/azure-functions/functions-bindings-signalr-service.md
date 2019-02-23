@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/23/2018
 ms.author: cshoe
-ms.openlocfilehash: 7a7063b9177774c5207746283dc7cd25e3dd5793
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 73fd388ad8d35543138c06b413cd40d7052806a7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721890"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735648"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>Powiązania usługi SignalR Service dla usługi Azure Functions
 
@@ -43,7 +43,7 @@ Zanim klient może nawiązać połączenie usługi Azure SignalR Service, należ
 
 Zobacz przykład specyficzny dla języka:
 
-* [2.x języka C#](#2x-c-input-example)
+* [2.x C#](#2x-c-input-example)
 * [2.x JavaScript](#2x-javascript-input-example)
 
 ### <a name="2x-c-input-example"></a>przykład danych wejściowych 2.x języka C#
@@ -64,7 +64,7 @@ public static SignalRConnectionInfo GetSignalRInfo(
 
 Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/overview-Authentication-Authorization.MD).
 
-Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `UserId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](functions-triggers-bindings.md#binding-expressions-and-patterns): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`. 
+Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `UserId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`. 
 
 ```cs
 [FunctionName("GetSignalRInfo")]
@@ -110,7 +110,7 @@ module.exports = function (context, req, connectionInfo) {
 
 Jeśli funkcja jest wyzwalana przez uwierzytelnionego klienta, możesz dodać oświadczenie Identyfikatora użytkownika do wygenerowanego tokenu. Można łatwo dodać uwierzytelnianie do aplikacji funkcji przy użyciu [uwierzytelnianie usługi App Service] (.. /App-Service/overview-Authentication-Authorization.MD).
 
-Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `userId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](functions-triggers-bindings.md#binding-expressions-and-patterns): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`. 
+Uwierzytelnianie usługi App Service ustawia nagłówki HTTP o nazwie `x-ms-client-principal-id` i `x-ms-client-principal-name` zawierające odpowiednio identyfikator podmiotu zabezpieczeń klienta i nazwa uwierzytelnionego użytkownika. Możesz ustawić `userId` właściwości powiązania wartości z przy użyciu nagłówka [powiązanie wyrażenie](./functions-bindings-expressions-patterns.md): `{headers.x-ms-client-principal-id}` lub `{headers.x-ms-client-principal-name}`. 
 
 Przykład function.json:
 
@@ -142,7 +142,7 @@ Użyj *SignalR* powiązania do wysyłania komunikatów co najmniej jeden, za pom
 
 Zobacz przykład specyficzny dla języka:
 
-* [2.x języka C#](#2x-c-output-example)
+* [2.x C#](#2x-c-output-example)
 * [2.x JavaScript](#2x-javascript-output-example)
 
 ### <a name="2x-c-output-example"></a>przykład danych wyjściowych 2.x języka C#
@@ -249,7 +249,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 |**direction**|| Musi być równa `in`.|
 |**Nazwa**|| Nazwa zmiennej użytą w kodzie funkcji dla obiektu informacje o połączeniu. |
 |**hubName**|**HubName**| Ta wartość musi być równa nazwę Centrum SignalR, dla którego jest generowane informacje o połączeniu.|
-|**Identyfikator użytkownika**|**Identyfikator użytkownika**| Opcjonalnie: Wartość identyfikatora użytkownika oświadczenia w tokenie klucza dostępu. |
+|**userId**|**UserId**| Opcjonalnie: Wartość identyfikatora użytkownika oświadczenia w tokenie klucza dostępu. |
 |**connectionStringSetting**|**ConnectionStringSetting**| Nazwa ustawienia aplikacji zawierającego parametry połączenia usługi SignalR (wartość domyślna to "AzureSignalRConnectionString") |
 
 ### <a name="signalr"></a>SignalR

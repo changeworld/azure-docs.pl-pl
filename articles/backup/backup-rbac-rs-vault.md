@@ -6,20 +6,20 @@ author: trinadhk
 manager: shreeshd
 ms.service: backup
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 12/09/2018
 ms.author: trinadhk
-ms.openlocfilehash: de7c00717349a1c814c5a13508adb11879aa10a5
-ms.sourcegitcommit: 275eb46107b16bfb9cf34c36cd1cfb000331fbff
+ms.openlocfilehash: e86595ceb940ebcfa702823e9c9b8ad3ef50bb45
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51704651"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674637"
 ---
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>Kontrola dostępu oparta na rolach umożliwia zarządzanie punktami odzyskiwania usługi Azure Backup
 Kontrola dostępu oparta na rolach (Role-Based Access Control, RBAC) na platformie Azure umożliwia precyzyjne zarządzanie dostępem dla platformy Azure. Przy użyciu kontroli dostępu opartej na rolach można przeprowadzić segregowanie zadań w ramach zespołu i nadać użytkownikom tylko takie uprawnienia dostępu, które są im niezbędne do wykonywania zadań.
 
 > [!IMPORTANT]
-> Udostępnione przez usługę Azure Backup ról są ograniczone do akcji, które mogą być wykonywane w witrynie Azure portal lub poleceń cmdlet programu PowerShell magazyn usługi Recovery Services. Akcje wykonywane w kopii zapasowej agenta klienta w interfejsie użytkownika lub systemu Centrum Azure interfejsu użytkownika programu Data Protection Manager lub interfejsu użytkownika usługi Azure Backup Server znajdą się poza kontrolę nad tych ról.
+> Udostępnione przez usługę Azure Backup ról są ograniczone do akcji, które mogą być wykonywane w witrynie Azure portal lub za pośrednictwem interfejsu API REST lub polecenia cmdlet programu PowerShell lub interfejsu wiersza polecenia magazyn usługi Recovery Services. Akcje wykonywane w kopii zapasowej agenta klienta w interfejsie użytkownika lub systemu Centrum Azure interfejsu użytkownika programu Data Protection Manager lub interfejsu użytkownika usługi Azure Backup Server znajdą się poza kontrolę nad tych ról.
 
 Usługa Azure Backup udostępnia 3 role wbudowane, umożliwiające kontrolowanie operacji zarządzania kopiami zapasowymi. Aby dowiedzieć się więcej, zobacz [Wbudowane role RBAC na platformie Azure](../role-based-access-control/built-in-roles.md).
 
@@ -63,7 +63,7 @@ Poniższa tabela przedstawia akcje z zakresu zarządzania kopii zapasowej i odpo
 > Określ Współautor maszyny Wirtualnej w zakresie zasobów maszyny Wirtualnej, kliknij pozycję Kopia zapasowa jako część ustawień maszyny Wirtualnej zostanie otwarty ekran Włącz kopię zapasową, mimo, że maszyna wirtualna ma już kopię zapasową co wywołanie, aby sprawdzić stan kopii zapasowej działa tylko na poziomie subskrypcji. Aby tego uniknąć, należy albo przejdź do magazynu i otwórz widok elementu kopii zapasowej maszyny wirtualnej lub określ roli współautora maszyny Wirtualnej na poziomie subskrypcji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Kontroli dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md): wprowadzenie do funkcji RBAC w witrynie Azure portal.
+* [Kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md): Wprowadzenie do funkcji RBAC w witrynie Azure portal.
 * Dowiedz się, jak zarządzanie dostępem przy użyciu:
   * [Program PowerShell](../role-based-access-control/role-assignments-powershell.md)
   * [Interfejs wiersza polecenia platformy Azure](../role-based-access-control/role-assignments-cli.md)

@@ -5,15 +5,15 @@ services: media-services
 author: Juliako
 ms.service: media-services
 ms.topic: include
-ms.date: 11/11/2018
+ms.date: 02/21/2019
 ms.author: juliako
 ms.custom: include file
-ms.openlocfilehash: 4207031652db7ec4b2ae5468dc159320f6efdbc2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 79af6512e9ce3d3f897be216ee3626c5d4fbcf1d
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228818"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56740744"
 ---
 ## <a name="create-a-media-services-account"></a>Tworzenie konta usługi Media Services
 
@@ -29,19 +29,20 @@ az group create --name amsResourceGroup --location westus2
 
 ### <a name="create-a-storage-account"></a>Tworzenie konta magazynu
 
-Podczas tworzenia konta usługi Media Services musisz podać nazwę zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. 
+Podczas tworzenia konta usługi Media Services musisz podać nazwę zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. Aby uzyskać więcej informacji na temat używania kont magazynu w usłudze Media Services, zobacz [Konta magazynu](../articles/media-services/latest/storage-account-concept.md).
 
 Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę **dodatkowych** kont magazynu skojarzonych z Twoim kontem usługi Media Services. Usługa Media Services obsługuje konta **Ogólnego przeznaczenia, wersja 2** (GPv2) i **Ogólnego przeznaczenia, wersja 1** (GPv1). Konta tylko obiektów blob nie są dozwolone jako **główne**. Jeśli chcesz dowiedzieć się więcej o kontach magazynu, zobacz [Opcje konta usługi Azure Storage](../articles/storage/common/storage-account-options.md). 
 
-Aby uzyskać więcej informacji na temat używania kont magazynu w usłudze Media Services, zobacz [Konta magazynu](../articles/media-services/latest/storage-account-concept.md).
-
+W tym przykładzie utworzymy ogólnego przeznaczenia w wersji 2, konta Standard LRS. Jeśli chcesz poeksperymentować z kontami magazynu, użyj `--sku Standard_LRS`. Jednak podczas wybierania jednostki SKU w środowisku produkcyjnym należy rozważyć, `--sku Standard_RAGRS`, zapewniającą replikacji geograficznej dla ciągłości działania. Aby uzyskać więcej informacji, zobacz [kont magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest).
+ 
 Poniższe polecenie tworzy konto usługi Storage, które ma zostać skojarzone z kontem usługi Media Services. W poniższym skrypcie możesz zastąpić wartość `storageaccountforams` swoją wartością. Nazwa konta musi mieć długość mniejszą niż 24.
 
 ```azurecli
 az storage account create --name storageaccountforams \  
---kind StorageV2 \
---sku Standard_RAGRS \
---resource-group amsResourceGroup
+  --kind StorageV2 \
+  --sku Standard_LRS \
+  -l westus2 \
+  -g amsResourceGroup
 ```
 
 ### <a name="create-a-media-services-account"></a>Tworzenie konta usługi Media Services
@@ -49,5 +50,7 @@ az storage account create --name storageaccountforams \
 Poniższe polecenie interfejsu wiersza polecenia platformy Azure tworzy nowe konto usługi Media Services. Można zastąpić następujące wartości: `amsaccount` `storageaccountforams` (musi odpowiadać wartości nadanej kontu magazynu) i `amsResourceGroup` (musi odpowiadać wartości nadanej grupie zasobów).
 
 ```azurecli
-az ams account create --name amsaccount --resource-group amsResourceGroup --storage-account storageaccountforams
+az ams account create --name amsaccount \
+  -l westus2 \
+  -g amsResourceGroup --storage-account storageaccountforams
 ```

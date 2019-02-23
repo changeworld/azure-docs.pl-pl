@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: seodec18
-ms.date: 02/11/2019
+ms.date: 02/21/2019
 ms.author: juliako
-ms.openlocfilehash: 919dbd057f2fa1d762775ed799505796a420864a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bbd57933993e22dd32b84f1d44175bb3b3d749c9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109252"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672430"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Media Services
 
@@ -30,7 +30,7 @@ Poniższa tabela zawiera linki do przykładów interfejsu wiersza polecenia plat
 |**Skalowanie**||
 | [Jednostki zarezerwowane multimediów skalowania](media-reserved-units-cli-how-to.md)|Analiza Audio i wideo zadania analizy, które są wyzwalane przez usługi Media Services v3 lub Video Indexer, aby uzyskać zaleca aprowizację swojego konta za pomocą 10 S3 lokalizacje MRU. <br/>Skrypt pokazuje, jak skalować jednostki zarezerwowane multimediów (lokalizacje MRU) za pomocą interfejsu wiersza polecenia.|
 |**Konto**||
-| [Utwórz konto usługi Media Services](./scripts/cli-create-account.md) | Tworzy konto usługi Azure Media Services. Ponadto tworzy usługę podmiotu zabezpieczeń, która umożliwia dostęp do interfejsów API można programowo zarządzać kontem. |
+| [Utwórz konto usługi Media Services](create-account-cli-how-to.md) | Tworzy konto usługi Azure Media Services. Ponadto tworzy usługę podmiotu zabezpieczeń, która umożliwia dostęp do interfejsów API można programowo zarządzać kontem. |
 | [Resetowanie poświadczeń konta](./scripts/cli-reset-account-credentials.md)|Resetuje Twoje poświadczenia konta, a następnie pobiera ustawienia app.config ponownie.|
 |**Zasoby**||
 | [Tworzenie zasobów](./scripts/cli-create-asset.md)|Tworzy zasób usługi multimediów, można przekazać zawartości do.|
@@ -45,4 +45,5 @@ Poniższa tabela zawiera linki do przykładów interfejsu wiersza polecenia plat
 
 ## <a name="see-also"></a>Zobacz także
 
-[Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+- [Interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+- [Szybki start: Pliki wideo Stream — interfejs wiersza polecenia](stream-files-cli-quickstart.md)

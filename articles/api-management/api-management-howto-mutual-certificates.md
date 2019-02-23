@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: b8f8d0a089a74334a908e3dad65c63231bbe5975
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 13a2eb080c6822a8a6786be1952bc588fa8afd80
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098939"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729214"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Zabezpieczanie usług zaplecza za pomocą klienta uwierzytelniania certyfikatów w usłudze Azure API Management
 
@@ -27,6 +27,8 @@ Usługa API Management umożliwia bezpieczny dostęp do usługi zaplecza interfe
 Aby uzyskać informacje o zarządzaniu certyfikatami przy użyciu interfejsu API REST zarządzania interfejsu API, zobacz <a href="https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-certificate-entity">jednostki certyfikat interfejsu API REST zarządzania interfejsu API platformy Azure</a>.
 
 ## <a name="prerequisites"> </a>Wymagania wstępne
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Ten przewodnik pokazuje, jak skonfigurować Twojego wystąpienia usługi API Management, aby użyć uwierzytelniania certyfikatu klienta w celu uzyskania dostępu do usługi zaplecza dla interfejsu API. Przed wykonaniem kroków opisanych w tym artykule, należy skonfigurować do uwierzytelniania certyfikatu klienta usługi zaplecza ([Aby skonfigurować uwierzytelnianie certyfikatu w usłudze Azure WebSites odnoszą się do tego artykułu] [ to configure certificate authentication in Azure WebSites refer to this article]). Musisz mieć dostęp do certyfikatu i hasła do przekazywania go do usługi API Management.
 
@@ -81,11 +83,11 @@ Jeśli certyfikat jest używany przez interfejs API, a następnie zostanie wyśw
 
 ## <a name="self-signed-certificates"></a>Certyfikaty z podpisem własnym
 
-W przypadku korzystania z certyfikatów z podpisem własnym należy wyłączyć sprawdzanie poprawności łańcucha certyfikatów w kolejności dla usługi API Management do komunikowania się z system wewnętrznej bazy danych. W przeciwnym razie zwróci kod błędu 500. Aby to skonfigurować, można użyć [ `New-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (dla nowego zaplecza) lub [ `Set-AzureRmApiManagementBackend` ](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (w przypadku istniejącego zaplecza) polecenia cmdlet programu PowerShell i ustaw `-SkipCertificateChainValidation` parametr `True`.
+W przypadku korzystania z certyfikatów z podpisem własnym należy wyłączyć sprawdzanie poprawności łańcucha certyfikatów w kolejności dla usługi API Management do komunikowania się z system wewnętrznej bazy danych. W przeciwnym razie zwróci kod błędu 500. Aby to skonfigurować, można użyć [ `New-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (dla nowego zaplecza) lub [ `Set-AzApiManagementBackend` ](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (w przypadku istniejącego zaplecza) polecenia cmdlet programu PowerShell i ustaw `-SkipCertificateChainValidation` parametr `True`.
 
 ```powershell
-$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
-New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+$context = New-AzApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
 [How to add operations to an API]: api-management-howto-add-operations.md

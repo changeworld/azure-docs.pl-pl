@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 956cd0b8-b6e3-4436-a224-8766320e8cd7
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7a1bab75521730f7e80e5b86112bbb0aed129f88
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: a51593753cab8a6b07d99df46560808de5400047
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42917878"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737930"
 ---
 # <a name="cluster-resource-manager-integration-with-service-fabric-cluster-management"></a>Klaster zasobów Menedżera Integracja z usługą zarządzania klastrem usługi Service Fabric
 Menedżer zasobów klastra usługi Service Fabric nie dysku uaktualnień w usłudze Service Fabric, ale zostało ono uwzględnione. Pierwszy sposób Menedżer zasobów klastra za pomocą funkcji zarządzania jest, śledząc żądany stan klastra i usług wewnątrz niego. Menedżer zasobów klastra wysyła raporty dotyczące kondycji, gdy go nie można wstawić klastra do pożądanej konfiguracji. Na przykład w przypadku niewystarczającej pojemności Menedżer zasobów klastra wysyła ostrzeżeń i błędów wskazujących na problem. Inny element integracji związana z działania uaktualnienia. Menedżer zasobów klastra nieco zmienia jego zachowanie podczas uaktualniania.  
@@ -73,11 +73,11 @@ HealthEvents          :
 
 Oto, co ten komunikat health informuje NAS, jest:
 
-1. Wszystkie repliki samodzielnie są w dobrej kondycji: każde z nich ma AggregatedHealthState: Ok
+1. Wszystkie repliki samodzielnie są w dobrej kondycji: Każdy ma AggregatedHealthState: OK
 2. Obecnie trwa naruszenia ograniczenia dystrybucji do domeny uaktualnienia. Oznacza to, że w określonej domenie uaktualnienia jest większa liczba replik danej partycji niż powinien.
 3. Węzeł, który zawiera repliki, co powoduje naruszenie. W tym przypadku jest węzeł z nazwą "Node.8"
 4. Czy uaktualnienie aktualnie wykonywane dla partycji to ("obecnie uaktualnianie--false")
-5. Zasady dystrybucji dla tej usługi: "Dystrybucji zasad — pakowanie". To jest regulowane przez `RequireDomainDistribution` [zasady rozmieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Pakowanie" oznacza, że w tym przypadku DomainDistribution była _nie_ wymagane, aby było wiadomo, że zasady rozmieszczania nie został określony dla tej usługi. 
+5. Zasady dystrybucji dla tej usługi: "Zasad dystrybucji--pakowania". To jest regulowane przez `RequireDomainDistribution` [zasady rozmieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md#requiring-replica-distribution-and-disallowing-packing). "Pakowanie" oznacza, że w tym przypadku DomainDistribution była _nie_ wymagane, aby było wiadomo, że zasady rozmieszczania nie został określony dla tej usługi. 
 6. Kiedy wystąpił raportu — 8/10/2015 7:13:02: 00
 
 Informacje takie jak alerty tego uprawnień, które są aktywowane w środowisku produkcyjnym z informacją, wystąpił problem, a także jest używane do wykrywania i zatrzymanie zły uaktualnienia. W tym przypadku będzie chcemy zobaczyć, jeśli firma Microsoft może ustalić dlaczego usługi Resource Manager miał umieszczenie tych replik w domenie uaktualnienia. Zazwyczaj pakowania jest przejściowy, ponieważ węzły w innych domenach uaktualnienia w dół, na przykład.
@@ -92,12 +92,12 @@ W takich przypadkach raportów o kondycji z Menedżer zasobów klastra pomóc ok
 ## <a name="constraint-types"></a>Typy ograniczeń
 Poniżej omówiono każdy z nią związane inne ograniczenia w raportach o kondycji. Widoczne są komunikaty kondycji związane z tych ograniczeń podczas replik nie może zostać umieszczona.
 
-* **ReplicaExclusionStatic** i **ReplicaExclusionDynamic**: tych warunków ograniczających wskazuje, że rozwiązanie zostało odrzucone, ponieważ dwa obiekty usługi z tej samej partycji, musi zostać umieszczone na tym samym węźle. To nie jest dozwolona, ponieważ, a następnie awarii tego węzła nadmiernie mogło mieć wpływ na tej partycji. ReplicaExclusionStatic i ReplicaExclusionDynamic są prawie tę samą regułę i różnice nie ma znaczenia. Jeśli widzisz sekwencji eliminacji ograniczeń zawierającą ReplicaExclusionStatic albo ReplicaExclusionDynamic ograniczenie uzna za Menedżer zasobów klastra, że nie ma wystarczającej liczby węzłów. Wymaga to pozostałe rozwiązania, aby użyć tych angażowania nieprawidłowy, co jest niedozwolone. Warunki ograniczające w sekwencji będzie zazwyczaj Powiedz nam, dlaczego węzły są zlikwidowania w pierwszej kolejności.
+* **ReplicaExclusionStatic** i **ReplicaExclusionDynamic**: Te ograniczenia wskazuje, że rozwiązanie zostało odrzucone, ponieważ dwa obiekty usługi z tej samej partycji, musi zostać umieszczone na tym samym węźle. To nie jest dozwolona, ponieważ, a następnie awarii tego węzła nadmiernie mogło mieć wpływ na tej partycji. ReplicaExclusionStatic i ReplicaExclusionDynamic są prawie tę samą regułę i różnice nie ma znaczenia. Jeśli widzisz sekwencji eliminacji ograniczeń zawierającą ReplicaExclusionStatic albo ReplicaExclusionDynamic ograniczenie uzna za Menedżer zasobów klastra, że nie ma wystarczającej liczby węzłów. Wymaga to pozostałe rozwiązania, aby użyć tych angażowania nieprawidłowy, co jest niedozwolone. Warunki ograniczające w sekwencji będzie zazwyczaj Powiedz nam, dlaczego węzły są zlikwidowania w pierwszej kolejności.
 * **PlacementConstraint**: Jeśli ten komunikat jest wyświetlany, oznacza to, ponieważ nie odpowiadają one ograniczeniami dotyczącymi umieszczania usługi możemy wyeliminować niektóre węzły. Firma Microsoft śledzenia się ograniczenia dotyczące umieszczania aktualnie skonfigurowanych jako część tego komunikatu. Jest to normalne, jeśli ma zdefiniowane ograniczenia umieszczania. Jednak jeśli ograniczeń umieszczania niepoprawnie przyczyną jest zbyt wiele węzłów wyeliminować to, jak można będzie zauważyć.
-* **NodeCapacity**: to ograniczenie oznacza to, czy Menedżer zasobów klastra nie można umieścić replik węzłach wskazany, ponieważ która je umieścić nad pojemności.
-* **Koligacja**: to ograniczenie wskazuje, że firma Microsoft nie można umieścić repliki na węzłach, których to dotyczy ponieważ spowodowałoby to naruszenie ograniczenia koligacji. Aby uzyskać więcej informacji dotyczących koligacji [w tym artykule](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
-* **FaultDomain** i **UpgradeDomain**: to ograniczenie eliminuje węzłów, jeśli umieszczenie replik w węzłach wskazany spowodowałoby pakowania określonego błędu lub domena uaktualnienia. Kilka przykładów, omawiając to ograniczenie, zostały przedstawione w temacie na [domenach błędów i uaktualnień ograniczenia domeny i wynikowe zachowania](service-fabric-cluster-resource-manager-cluster-description.md)
-* **PreferredLocation**: zwykle nie powinni dostrzec to ograniczenie usuwania węzła z rozwiązania, ponieważ jest uruchamiana jako optymalizacji domyślnie. Ograniczenie lokalizacji preferowane jest również obecny podczas uaktualniania. Podczas uaktualniania służy przenieść usługi, do której znajdowały się po uruchomieniu uaktualniania.
+* **NodeCapacity**: To ograniczenie oznacza to, czy Menedżer zasobów klastra nie można umieścić replik węzłach wskazany, ponieważ która je umieścić nad pojemności.
+* **Koligacja**: To ograniczenie wskazuje, że firma Microsoft nie można umieścić repliki na węzłach, których to dotyczy ponieważ spowodowałoby to naruszenie ograniczenia koligacji. Aby uzyskać więcej informacji dotyczących koligacji [w tym artykule](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
+* **FaultDomain** i **UpgradeDomain**: To ograniczenie eliminuje węzłów, jeśli umieszczenie replik w węzłach wskazany spowodowałoby pakowania określonego błędu lub domena uaktualnienia. Kilka przykładów, omawiając to ograniczenie, zostały przedstawione w temacie na [domenach błędów i uaktualnień ograniczenia domeny i wynikowe zachowania](service-fabric-cluster-resource-manager-cluster-description.md)
+* **PreferredLocation**: Zwykle nie powinni dostrzec to ograniczenie usuwania węzła z rozwiązania, ponieważ jest uruchamiana jako optymalizacji domyślnie. Ograniczenie lokalizacji preferowane jest również obecny podczas uaktualniania. Podczas uaktualniania służy przenieść usługi, do której znajdowały się po uruchomieniu uaktualniania.
 
 ## <a name="blocklisting-nodes"></a>Węzły Blocklisting
 Kolejną wiadomość kondycji raporty Menedżer zasobów klastra jest, gdy węzły zostaną blocklisted. Blocklisting można traktować jako tymczasowe ograniczenie, które jest automatycznie stosowany dla Ciebie. Węzły Uzyskaj blocklisted, gdy występuje dopuszczalnych podczas uruchamiania wystąpienia danego typu usługi. Węzły są blocklisted na podstawie poszczególnych — typ usługi. Węzeł może być blocklisted dla typu w jednej usłudze, ale nie do innego. 

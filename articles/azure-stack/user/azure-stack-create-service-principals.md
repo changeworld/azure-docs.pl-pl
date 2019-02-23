@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 9f0ccb85fa4b42ef3ca90c6d4ca2d80113b93a0c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312858"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733703"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Udzielić aplikacji dostępu do zasobów usługi Azure Stack, tworząc jednostki usługi
 
@@ -75,7 +75,7 @@ Podczas logowania programowo, użyj Identyfikatora swojej aplikacji i klucza uwi
 
 2. Skopiuj **identyfikator aplikacji** i zapisz go w kodzie aplikacji. Te aplikacje w aplikacji przykładowych **identyfikator klienta** przy odwoływaniu się do **identyfikator aplikacji**.
 
-     ![Identyfikator aplikacji dla aplikacji](./media/azure-stack-create-service-principal/image12.png)
+     ![Identyfikator aplikacji dla aplikacji](./media/azure-stack-create-service-principals/image12.png)
 3. Aby wygenerować klucz uwierzytelniania, wybierz pozycję **Klucze**.
 
 4. Podaj opis i czas trwania klucza. Po zakończeniu wybierz pozycję **Zapisz**.
@@ -83,7 +83,7 @@ Podczas logowania programowo, użyj Identyfikatora swojej aplikacji i klucza uwi
 >[!IMPORTANT]
 Po zapisaniu klucza, klucz **wartość** jest wyświetlana. Zanotuj tę wartość, ponieważ nie można pobrać klucza później. Zapisz wartość klucza w miejscu, z którego aplikacja będzie mogła ją pobrać.
 
-![Ostrzeżenie wartości klucza dla klucza zapisane.](./media/azure-stack-create-service-principal/image15.png)
+![Ostrzeżenie wartości klucza dla klucza zapisane.](./media/azure-stack-create-service-principals/image15.png)
 
 Ostatnim krokiem jest [przypisanie roli aplikacji](azure-stack-create-service-principals.md).
 
@@ -110,7 +110,7 @@ W przypadku przypisywania roli do jednostki usługi, wykonaj następujące kroki
 
 2. Wybierz subskrypcję, której chcesz przypisać aplikację. W tym przykładzie jest subskrypcja programu Visual Studio Enterprise.
 
-     ![Wybierz subskrypcję programu Visual Studio Enterprise dla przypisania](./media/azure-stack-create-service-principal/image16.png)
+     ![Wybierz subskrypcję programu Visual Studio Enterprise dla przypisania](./media/azure-stack-create-service-principals/image16.png)
 
 3. Wybierz **kontrola dostępu (IAM)** dla subskrypcji.
 

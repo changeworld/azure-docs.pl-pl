@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 479278400aa056a7cebcefaa2eedee3d98bc9a15
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 549f37c1287373fe8bf4c10dc64e6e778b37be02
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815248"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730141"
 ---
 # <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -82,7 +82,7 @@ Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglą
 
     *   Przykładem oferty komercyjnej to oferta maszyn wirtualnych przy użyciu modelu rozliczeń co godzinę.  
 
----  
+---
 
 ## <a name="get-help-with-dev-center-registration"></a>Uzyskaj pomoc dotyczącą Centrum deweloperów rejestracji  
 Jeśli masz problemy z rejestracją Centrum deweloperów, należy wykonać następujące kroki, aby przesłać bilet pomocy technicznej.  
@@ -125,7 +125,7 @@ Bank i informacje podatkowe jest wymagana dla wszystkich ofert komercyjnych przy
 
 4.  Kliknij przycisk Dalej. 
 
----   
+---
 
 ## <a name="add-tax-information"></a>Dodaj informacje podatkowe  
 1.  Zaloguj się do Centrum deweloperów za pomocą usługi Microsoft ID.  
@@ -195,4 +195,4 @@ Dostęp do pomocy technicznej, odwiedź stronę Windows stronę pomocy techniczn
 ## <a name="next-steps"></a>Kolejne kroki
 *   Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
  
----  
+---

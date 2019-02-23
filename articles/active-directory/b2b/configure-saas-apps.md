@@ -1,5 +1,5 @@
 ---
-title: Konfigurowanie aplikacji SaaS do współpracy B2B w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Konfigurowanie aplikacji SaaS dla B2B współpracy — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Przykłady kodu i programu PowerShell na potrzeby współpracy B2B w usłudze Azure Active Directory
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a2f4ecbe8a183636bfc4e463e4c074ab94e2d01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 98126c6459c77ec4580665b0d157d532a1fe636c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182820"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672257"
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>Konfigurowanie aplikacji SaaS na potrzeby współpracy B2B
 

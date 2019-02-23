@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9bd015076cdbd70768b1359fac0cfc893d871513
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 360fd8e7ab0f7a85dbeed2bdbc7da379cbcfe91a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149598"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737029"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predykaty i PredicateValidations
 
@@ -350,7 +350,7 @@ Poniżej przedstawiono, jak elementy są zorganizowane w przypadku usługi Azure
 
 ![Proces predykatu](./media/predicates/predicates-pass.png)
 
- ## <a name="configure-a-date-range"></a>Konfigurowanie zakresu dat
+## <a name="configure-a-date-range"></a>Konfigurowanie zakresu dat
 
 Za pomocą **predykaty** i **PredicateValidations** elementy można kontrolować wartości minimalną i maksymalną data **UserInputType** przy użyciu `DateTimeDropdown`. Aby to zrobić, należy utworzyć **predykatu** z `IsDateRange` metody i Podaj parametry minimalną i maksymalną.
 

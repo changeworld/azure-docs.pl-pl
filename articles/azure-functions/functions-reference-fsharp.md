@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
-ms.openlocfilehash: 112a986efc11822f6c847511a33be6206b1f00da
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: e7e4e898142d6f9d1a93e91c1f1476ff81fc7d3c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53717488"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734663"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Usługa Azure Functions F# dokumentacja dla deweloperów
 
@@ -54,7 +54,7 @@ FunctionsProject
 
 Brak udostępnionej [host.json](functions-host-json.md) pliku, który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma swój własny plik kodu (.fsx) i plik konfiguracji powiązania (function.json).
 
-Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
+Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#local-development-azure-functions-core-tools). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
 
 ## <a name="binding-to-arguments"></a>Powiązanie z argumentami
 Każde powiązanie obsługuje niektóre argumenty, zgodnie z opisem w [dokumentacja dla deweloperów usługi wyzwalaczy i powiązań usługi Azure Functions](functions-triggers-bindings.md). Na przykład, jedno z powiązań argument obsługuje wyzwalacz obiektu blob jest POCO, które mogą być wyrażone za pomocą F# rekordu. Na przykład:

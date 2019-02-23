@@ -6,21 +6,21 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 9886ba39846d9489a66c57bcc614f90e2bf70d4e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: dde1bfbaf810d07a2b992258dd8674efec302dc6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218108"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737165"
 ---
 # <a name="create-a-project"></a>Tworzenie projektu
 
-Projekt jest kontenerem dla modeli, dokumenty i testów. Każdy projekt automatycznie zawiera wszystkich dokumentów, które zostały załadowane do obszaru roboczego, które mają pary odpowiedni język. 
+Projekt jest kontenerem dla modeli, dokumenty i testów. Każdy projekt automatycznie zawiera wszystkich dokumentów, które zostały załadowane do obszaru roboczego, które mają pary odpowiedni język.
 
-Tworzenie projektu jest pierwszym krokiem procesu tworzenia modeli. 
+Tworzenie projektu jest pierwszym krokiem procesu tworzenia modeli.
 
 ## <a name="create-a-project"></a>Utwórz projekt:
 

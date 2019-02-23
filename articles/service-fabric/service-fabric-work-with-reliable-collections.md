@@ -7,19 +7,19 @@ author: tylermsft
 manager: jeanpaul.connock
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 02/12/2019
+ms.date: 02/22/2019
 ms.author: twhitney
-ms.openlocfilehash: e7f0219919fe0569633cc85b89a1a91b1704b269
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 9e542143810745712fb148e0b5ebe126cc8a93bf
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114828"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727884"
 ---
 # <a name="working-with-reliable-collections"></a>Praca z elementami Reliable Collections
 Usługa Service Fabric oferuje stanowych model programowania dostępnych dla deweloperów platformy .NET za pomocą elementów Reliable Collections. W szczególności usługa Service Fabric udostępnia klasy niezawodna kolejka i niezawodnego słownika. Korzystając z tych klas, stan programu jest podzielona na partycje (w przypadku skalowalności), replikowane (w przypadku dostępności) i odbywających się w partycji (w przypadku semantyki ACID). Możemy przyjrzeć się typowego użycia obiektu niezawodnego słownika i zobacz, co faktycznie wykonywanie operacji.
@@ -207,8 +207,7 @@ Ponadto kod usługi jest uaktualniony jedną domenę uaktualnienia w danym momen
 
 > [!WARNING]
 > Chociaż można zmodyfikować schematu klucza, upewnij się, kod skrótu klucza usługi i algorytmy equals są stabilne. Jeśli zmienisz sposób działania albo te algorytmy, nie można wyszukać klucz w niezawodnym słowniku kiedykolwiek ponownie.
->
->
+> Ciągi .NET może służyć jako klucz, użyj ciągu jako klucz — nie należy używać wynik String.GetHashCode jako klucz.
 
 Alternatywnie można wykonywać, co jest zwykle nazywany dwóch uaktualnienia. Uaktualnianie dwufazowe uaktualnieniu usługi z V1 na V2: W wersji 2 zawiera kod, który wie, jak radzić sobie z nowej zmiany schematu, ale ten kod nie jest wykonywany. Gdy kod V2 odczytuje dane V1, działa na nim i zapisuje dane w wersji 1. Następnie po ukończeniu uaktualniania w domenach uaktualnienia wszystkich użytkownik może jakiś sposób sygnału uruchomionych wystąpień w wersji 2 zakończeniu uaktualniania. (Jeden ze sposobów sygnału to wdrażanie uaktualnienia konfiguracji; jest to, co sprawia, że to dwufazowe uaktualniania). Teraz wystąpień w wersji 2 można odczytać danych w wersji 1, przekonwertować danych w wersji 2, wykonywać na nich operacje i zapisz je jako dane w wersji 2. Jeśli inne wystąpienia do odczytu danych w wersji 2, nie ma potrzeby przekonwertować go, po prostu działają na niej, a także zapisać danych w wersji 2.
 

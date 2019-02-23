@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 722159b82845eff08e0c302eafd503459941ebe7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260338"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734765"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Informacje o wersji dla usługi Azure BizTalk Services
 
@@ -47,7 +47,8 @@ Informacje o wersji programu Microsoft Azure BizTalk Services zawierają znane p
 * Na stronie wysyłania umowy możesz teraz określić ogranicznik różne zestawy dla każdego schematu. Ta konfiguracja jest określona w ustawieniach protokołu umowy po stronie wysyłania. Aby uzyskać więcej informacji, zobacz [Utwórz wiadomość X12 umowy w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) i [tworzenia umowy EDIFACT w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dwa nowe jednostki są również dodawane do interfejsu API TPM OM w tym samym celu. Zobacz [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) i [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
 * Konstrukcje XSD, w tym typy pochodne są teraz obsługiwane. Zobacz [XSD standardowe użycie konstrukcji w swoich mapach](https://msdn.microsoft.com/library/azure/dn793987.aspx) i [typy pochodne użycia w scenariuszach mapowania i przykłady](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
 * AS2 obsługuje nowych algorytmów kontroli integralności uprawnień do podpisywania wiadomości i nowych algorytmów szyfrowania. Zobacz [tworzenia umowy AS2 w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
-  ## <a name="know-issues"></a>Znasz problemów
+
+## <a name="known-issues"></a>Znane problemy
 
 ### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Problemy z łącznością po aktualizacji w portalu usługi BizTalk Services
   W przypadku portalu usługi BizTalk Services otworzyć, gdy usługa BizTalk Services jest uaktualniany konieczne przywrócenie początkowej zmiany w usłudze może występować problemy z łącznością z portalu usługi BizTalk Services.  

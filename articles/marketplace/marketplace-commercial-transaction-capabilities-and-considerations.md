@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 867af6de05d1d9ab54cf8a4bf02221acc43a2b28
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075638"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731093"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure Marketplace transakcji handlowych możliwości i zagadnienia
 
@@ -186,9 +186,9 @@ Jeśli klient zakupi przy użyciu umowy Enterprise Agreement:
 |Data rozliczenia | 15 października 2018 r. |
 |Zdeponowania okres (kart kredytowych, 30 dni) | Nie dotyczy |
 |Rozpoczęcia okresu kolekcji | 15 października 2018 r. |
-|Koniec okresu kolekcji (maksymalna, 90 dni) | 15 stycznia 2018 r. |
+|Koniec okresu kolekcji (maksymalna, 90 dni) | 15 stycznia 2019 r. |
 |Data płatności odbiorcy | 30 grudnia 2018 r. |
-|Data obliczenia informacje dotyczące wypłat (co miesiąc na 15) | 15 stycznia 2018 r. |
+|Data obliczenia informacje dotyczące wypłat (co miesiąc na 15) | 15 stycznia 2019 r. |
 |Informacje dotyczące wypłat daty | 15 lutego 2019 r. |
 
 **Bezpłatne kredyty i zobowiązania pieniężnego** 
@@ -226,7 +226,7 @@ W tej sekcji znajdują się wymagania transact dla typów inną ofertę.
 
 * W przypadku transact publikowania opcji, bez względu na to oferta w modelu cen zarówno w Centrum deweloperów, jak i konto Microsoft jest wymagane.
 * Konto Centrum deweloperów zawiera wszystkich odpowiednich szczegółów finansowych wymaganych do firmy Microsoft, aby opłaty od klienta w imieniu wydawcy i wpłacenia się wydawcy.
-* Mimo że na obu kontach może używać tej samej organizacji lub szczegóły logowania firmy Microsoft, Centrum deweloperów jest osobnego konta z konta w portalu wydawców w chmurze. Aby użyć opcji publikowania transact, wydawca, należy wykonać Centrum deweloperów konto procesu rejestracji, poza rejestracją na dostęp do portalu Cloud Partner.
+* Mimo że na obu kontach może używać tej samej organizacji lub szczegóły logowania firmy Microsoft, Centrum deweloperów jest osobnego konta z konta w portalu Cloud Partner. Aby użyć opcji publikowania transact, wydawca, należy wykonać Centrum deweloperów konto procesu rejestracji, poza rejestracją na dostęp do portalu Cloud Partner.
 
 *Aby uzyskać więcej informacji na temat konfigurowania tych kont, zobacz [stają się wydawcy w witrynie Marketplace chmury](https://docs.microsoft.com/azure/marketplace/become-publisher).*
 

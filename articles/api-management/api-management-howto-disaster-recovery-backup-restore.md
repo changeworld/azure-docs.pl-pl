@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 7da97b763c532a2189ef058cbb8ffb14c5b150f9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 56d0b8ced4a0eed3c2bf215ed0e5fc77c343f7fd
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52968377"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728645"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
 
@@ -32,6 +32,8 @@ Ten przewodnik pokazuje, jak do uwierzytelniania żądań w usłudze Azure Resou
 > Proces tworzenia kopii zapasowych i przywracanie wystąpienia usługi API Management do odzyskiwania po awarii może służyć także do replikowania wystąpienia usługi API Management dla scenariuszy, takich jak przejściowe.
 >
 > Każda kopia zapasowa wygasa po upływie 30 dni. Jeśli użytkownik podejmie próbę przywrócenia kopii zapasowej, po upływie 30-dniowy okres, przywracania zakończy się niepowodzeniem z `Cannot restore: backup expired` wiadomości.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
@@ -138,7 +140,7 @@ Aby utworzyć kopię zapasową problem z usługą API Management następujące �
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/backup?api-version={api-version}
 ```
 
-Gdzie:
+gdzie:
 
 * `subscriptionId` — Identyfikator subskrypcji, który zawiera usługi API Management, którą próbujesz utworzyć kopię zapasową
 * `resourceGroupName` — Nazwa grupy zasobów usługi Azure API Management
@@ -177,7 +179,7 @@ Aby usługi API Management należy przywrócić z kopii zapasowej utworzonej wcz
 POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiManagement/service/{serviceName}/restore?api-version={api-version}
 ```
 
-Gdzie:
+gdzie:
 
 * `subscriptionId` — Identyfikator subskrypcji, która przechowuje usługi API Management, który jest przywrócenie kopii zapasowej do
 * `resourceGroupName` — Nazwa grupy zasobów, która zawiera usługa Azure API Management jest przywrócenie kopii zapasowej do
@@ -207,7 +209,7 @@ Przywracanie jest operacją wymagającą dużo czasu, który może potrwać co n
 <!-- Dummy comment added to suppress markdown lint warning -->
 
 > [!NOTE]
-> Operacje tworzenia kopii zapasowych i przywracania można również wykonać przy użyciu programu PowerShell *Backup-AzureRmApiManagement* i *Restore-AzureRmApiManagement* odpowiednio poleceń.
+> Operacje tworzenia kopii zapasowych i przywracania można również wykonać przy użyciu programu PowerShell *AzApiManagement kopii zapasowej* i *AzApiManagement przywracania* odpowiednio poleceń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
@@ -215,7 +217,7 @@ Zapoznaj się z poniższymi zasobami, aby różne wskazówki dotyczące procesu/
 
 * [Replikacja usługi Azure API Management kont](https://www.returngis.net/en/2015/06/replicate-azure-api-management-accounts/)
 * [Automatyzowanie interfejsu API zarządzania tworzenia kopii zapasowych i przywracania z usługą Logic Apps](https://github.com/Azure/api-management-samples/tree/master/tutorials/automating-apim-backup-restore-with-logic-apps)
-* [Usługa Azure API Management: Wykonywanie kopii zapasowych i przywracanie konfiguracji](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
+* [Azure API Management: Wykonywanie kopii zapasowych i przywracanie konfiguracji](https://blogs.msdn.com/b/stuartleeks/archive/2015/04/29/azure-api-management-backing-up-and-restoring-configuration.aspx)
   *podejście szczegółowych przy Stuart jest niezgodna z oficjalnego wskazówki dotyczące, ale co ciekawe.*
 
 [Backup an API Management service]: #step1

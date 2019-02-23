@@ -1,32 +1,19 @@
 ---
-title: Dostosowywanie reguł zapory aplikacji sieci web w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+title: Dostosowywanie reguł zapory aplikacji sieci web w usłudze Azure Application Gateway — interfejs wiersza polecenia platformy Azure
 description: Ten artykuł zawiera informacje na temat sposobu Dostosowywanie reguł zapory aplikacji sieci web w usłudze Application Gateway przy użyciu wiersza polecenia platformy Azure.
-documentationcenter: na
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 2/22/2019
 ms.author: victorh
-ms.openlocfilehash: 95eb0ef48f3e0cb6e835dc0582cc652f06315d44
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5e364c597b8c524e95297f279003462f2d16abe1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992861"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56726265"
 ---
 # <a name="customize-web-application-firewall-rules-through-the-azure-cli"></a>Dostosowywanie reguł zapory aplikacji sieci web za pomocą wiersza polecenia platformy Azure
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
-> * [Program PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Interfejs wiersza polecenia platformy Azure](application-gateway-customize-waf-rules-cli.md)
 
 Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochronę aplikacji sieci web. Te zabezpieczenia stosowane są dostarczane przez Otwórz sieci Web aplikacji Security Project (OWASP) podstawowych reguł Ustaw (CRS). Niektóre reguły może spowodować, że wyniki fałszywie dodatnie i blokować ruch rzeczywistych. Z tego powodu Application Gateway oferuje możliwości dostosowywania grup reguł i reguł. Aby uzyskać więcej informacji na temat grup określonych reguł i reguł, zobacz [listę grup reguł CRS zapory aplikacji sieci web i reguły](application-gateway-crs-rulegroups-rules.md).
 
@@ -133,6 +120,19 @@ Poniższy przykład powoduje wyłączenie reguł `910018` i `910017` na bramę a
 ```azurecli-interactive
 az network application-gateway waf-config set --resource-group AdatumAppGatewayRG --gateway-name AdatumAppGateway --enabled true --rule-set-version 3.0 --disabled-rules 910018 910017
 ```
+
+## <a name="mandatory-rules"></a>Obowiązujące reguły
+
+Poniższa lista zawiera warunki powodujące zapory aplikacji sieci Web zablokować żądania w trybie zapobiegania (w trybie wykrywania, są rejestrowane jako wyjątki). Nie są skonfigurowane lub wyłączone:
+
+* Nie można przeanalizować treść żądania wyników w żądaniu blokowane, chyba że jednostka inspekcji jest wyłączona (XML, JSON, dane formularza)
+* Długość danych treści (nie plikami) żądania jest większy niż skonfigurowany limit
+* Żądanie jest większy niż limit treści (w tym pliki)
+* Wystąpił błąd wewnętrzny związany w aparacie zapory aplikacji sieci Web
+
+CRS 3.x określonych:
+
+* Liczba przychodzących anomalii wynik przekroczył próg
 
 ## <a name="next-steps"></a>Kolejne kroki
 

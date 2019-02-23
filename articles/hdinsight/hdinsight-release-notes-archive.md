@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: 19a842eacb00e877d31712febeeebc72cbdd25a0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ed7f18d1a40e0b766a2f10cce99aa735d51b4110
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743174"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672563"
 ---
 # <a name="archived-release-notes-for-azure-hdinsight"></a>Informacje o starszych wersjach dla usługi Azure HDInsight
 
@@ -40,9 +40,9 @@ Poniżej przedstawiono najważniejsze nowości. Aby uzyskać szczegółowe infor
 
 ## <a name="notes-for-08012017-release-of-hdinsight"></a>Informacje o wersji 2017-08-01 HDInsight
 
-| Stanowisko | Opis | Obszar objęte wpływem  | Typ klastra  | 
+| Tytuł | Opis | Obszar objęte wpływem  | Typ klastra  | 
 | --- | --- | --- | --- | --- |
-| Wydanie oprogramowania Microsoft R Server 9.1 na HDInsight |HDInsight teraz obsługuje inicjowania obsługi klastrów programu R Server 9.1 na HDInsight. Aby uzyskać więcej informacji na temat wersji programu Microsoft R Server 9.1, zobacz [ten blog](https://blogs.technet.microsoft.com/dataplatforminsider/2017/04/19/introducing-microsoft-r-server-9-1-release/). |Usługa |R Server |
+| Wydanie oprogramowania Microsoft R Server 9.1 na HDInsight |HDInsight teraz obsługuje inicjowania obsługi klastrów programu R Server 9.1 na HDInsight. |Usługa |R Server |
 | HDInsight 3.6 zawiera teraz nowsze wersje stosu Hadoop|<ul><li>Aby uzyskać szczegółową listę zaktualizowanych wersji, zobacz [wersje składników usługi Apache Hadoop dostępne w HDInsight](hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).</li><li>Aby uzyskać listę usterki usunięte w najnowszych wersjach stosu Hadoop, zobacz [informacje dotyczące poprawki Apache](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/patch_parent.html).</li><li>Aby uzyskać listę przełomowych zmian między wersjami HDP 2.6.1, (która jest teraz dostępny w HDInsight 3.6), zobacz [ https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html ](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/behavior_changes.html).</li><li>Aby uzyskać listę znanych problemów występujących w HDP 2.6.1 zobacz [znane problemy dotyczące](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.1/bk_release-notes/content/known_issues.html).</li></ul> |Usługa |Wszyscy |ND |
 | Aktualizacje do klastrów Interactive Hive (wersja zapoznawcza) |<ul><li><b>Ulepszenia funkcji.</b> Implementacja magazynu pamięci podręcznej metadanych, redukuje obciążenie sieci wewnętrznej bazy danych SQL przez buforowanie metadanych, który zapewnia lepszą wydajność dla wszystkich operacji metadanych.  To ulepszenie jest teraz domyślnie na wszystkich klastrach Apache Interactive Hive. Aby uzyskać więcej informacji, zobacz [https://issues.apache.org/jira/browse/HIVE-16520](https://issues.apache.org/jira/browse/HIVE-16520).</li><li><b>Ulepszenia funkcji.</b> Zoptymalizowano ładowanie partycji dynamicznych. Aby uzyskać więcej informacji, zobacz [https://issues.apache.org/jira/browse/HIVE-14204](https://issues.apache.org/jira/browse/HIVE-14204).</li><li><b>Ulepszenia funkcji.</b> Optymalizacje Configuration for HDInsight w systemie Linux.</li><li><b>Naprawienie usterki.</b> `CredentialProviderFactory$getProviders` nie jest metodą o bezpiecznych wątkach. Ten problem został rozwiązany. Aby uzyskać więcej informacji, zobacz [https://issues.apache.org/jira/browse/HADOOP-14195](https://issues.apache.org/jira/browse/HADOOP-14195).</li><li><b>Naprawienie usterki.</b> Wysokie użycie procesora CPU ze sterownikiem WASB `liststatus` skutkuje zły ATS wydajność interfejsu API. Ten problem został rozwiązany. Aby uzyskać więcej informacji, zobacz [https://github.com/Azure/azure-storage-java/pull/154](https://github.com/Azure/azure-storage-java/pull/154).</li></ul> |Usługa |Interactive Hive (wersja zapoznawcza) |
 | Aktualizacje do klastrów Hadoop |Zwiększona niezawodność operacji zadania Templeton. Aby uzyskać więcej informacji zobacz [https://issues.apache.org/jira/browse/HIVE-15947](https://issues.apache.org/jira/browse/HIVE-15947) |Usługa |Hadoop |
@@ -57,8 +57,8 @@ Poniżej przedstawiono najważniejsze nowości. Aby uzyskać szczegółowe infor
 * W tej wersji usługi Azure HDInsight dodaje wersji 3.6, która jest oparta na HDP 2.6. Dostępne są informacje o wersji HDP 2.6 [tutaj](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.6.0/bk_release-notes/content/ch_relnotes.html) i można go znaleźć więcej informacji na temat wersji HDInsight [tutaj](hdinsight-component-versioning.md). HDInsight 3.6 jest dostępne dla następujących zadań:
 
     * V2.7.3 usługi Hadoop
-    * V1.1.2 bazy danych HBase
-    * STORM v1.1.0
+    * HBase v1.1.2
+    * Storm v1.1.0
     * V2.1.0 platformy Spark
     * V2.1.0 interakcyjną technologią Hive
 

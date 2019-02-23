@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: f7620c29e7d00a06be6d14740f05cc7543e49837
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215864"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674569"
 ---
 # <a name="bing-text-to-speech-api"></a>Tekst do API rozpoznawania mowy Bing
 
@@ -40,7 +41,7 @@ Content-Length: 0
 
 Informacje nagłówka wymagane dla tokenu dostępu jest w następujący sposób.
 
-Name| Format | Opis
+Name (Nazwa)| Format | Opis
 ----|----|----
 OCP-Apim-Subscription-Key | ASCII | Twój klucz subskrypcji
 
@@ -59,7 +60,7 @@ Klienci muszą używać następujący punkt końcowy dostępu do zamiany tekstu 
 
 W poniższej tabeli przedstawiono nagłówki HTTP, które są używane na potrzeby syntezy polecenia głosowe.
 
-Nagłówek |Value |Komentarze
+Nagłówek |Wartość |Komentarze
 ----|----|----
 Content-Type | Aplikacja/ssml + xml | Typ zawartości danych wejściowych.
 X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** pierwotne-16 khz-16-bitowych-mono-pcm <br>**3.** audio-16 khz-16 KB/s-mono-siren <br> **4.** riff-16 khz-16 KB/s-mono-siren <br> **5.** riff-16 khz-16-bitowych-mono-pcm <br> **6.** audio-16 khz-128kbitrate-mono-mp3 <br> **7.** audio-16 khz-64kbitrate-mono-mp3 <br> **8.** audio-16 khz-32kbitrate-mono-mp3 | Format danych wyjściowych audio.

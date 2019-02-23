@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: e08813c71a0b95b6b130ab71313bda6d044d730a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 83d6791740cd6aebb9da14b86e0d5272ab78f43a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217224"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737590"
 ---
 # <a name="upload-a-document"></a>Przekazywanie dokumentu
 
@@ -37,7 +37,7 @@ Z [niestandardowe w usłudze Translator](https://portal.customtranslator.azure.a
 
     a.  Typ dokumentu:
 
-    -  Szkolenia: Te dokumenty będą używane na zestaw szkoleniowy.
+    -  Trenowanie: Te dokumenty będą używane na zestaw szkoleniowy.
     -  Dostosowywanie: Te dokumenty będą używane do dostosowywania zestawu.
     -  Testing: Te dokumenty będą używane do testowania zestawu.
     -  Słownik frazy: Te dokumenty będą używane dla słownika frazę.

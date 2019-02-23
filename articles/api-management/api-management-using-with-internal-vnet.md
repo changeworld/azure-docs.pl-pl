@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: acaf73c2d981761b0bc57cfccbbf6c6a48e5e0c2
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 21175e74bd40d0d4aeaf1c0a1e677f1c8113e80a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52446518"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738015"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Przy użyciu usługi Azure API Management z wewnętrzną siecią wirtualną
 Sieci wirtualnych platformy Azure usługi Azure API Management umożliwia zarządzanie interfejsami API nie jest dostępny w Internecie. Wiele technologii sieci VPN są dostępne do nawiązania połączenia. Usługa API Management można wdrożyć w dwa główne tryby wewnątrz sieci wirtualnej:
@@ -67,11 +67,14 @@ Po pomyślnym zakończeniu wdrożenia wirtualnego wewnętrzny adres IP usługi p
 > Dostępne w witrynie Azure Portal konsoli testów nie będzie działać dla **wewnętrzne** sieci Wirtualnej wdrożono usługę, jak adres Url bramy nie jest zarejestrowany na publicznym serwerze DNS. Zamiast tego należy używać konsoli testów na **portalu dla deweloperów**.
 
 ### <a name="enable-a-virtual-network-connection-by-using-powershell-cmdlets"></a>Włączanie połączenia sieci wirtualnej przy użyciu poleceń cmdlet programu PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Połączenie sieci wirtualnej można również włączyć przy użyciu poleceń cmdlet programu PowerShell.
 
-* Tworzenie usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) Tworzenie usługi Azure API Management w sieci wirtualnej i skonfiguruj ją, aby użyć typu wewnętrznej sieci wirtualnej.
+* Tworzenie usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [New AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) Tworzenie usługi Azure API Management w sieci wirtualnej i skonfiguruj ją, aby użyć typu wewnętrznej sieci wirtualnej.
 
-* Wdrażanie istniejącej usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [AzureRmApiManagementDeployment aktualizacji](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) Aby przenieść istniejącą usługę API Management w sieci wirtualnej i skonfiguruj ją, aby użyć wewnętrznego Typ sieci wirtualnej.
+* Wdrażanie istniejącej usługi API Management w sieci wirtualnej: Użyj polecenia cmdlet [AzApiManagementDeployment aktualizacji](/powershell/module/az.apimanagement/update-azapimanagementdeployment) Aby przenieść istniejącą usługę API Management w sieci wirtualnej i skonfiguruj ją, aby użyć typu wewnętrznej sieci wirtualnej.
 
 ## <a name="apim-dns-configuration"></a>Konfiguracja DNS
 Gdy usługa API Management jest w trybie zewnętrzną sieć wirtualną, DNS jest zarządzane przez platformę Azure. Dla trybu wewnętrznej sieci wirtualnej, które istnieje konieczność zarządzania własnych routingu.

@@ -1,6 +1,6 @@
 ---
-title: Lista kontrolna publikowania AppSource | Azure
-description: Publikowanie Lista kontrolna AppSource.
+title: Publikowanie Lista kontrolna dotycząca usługi AppSource | Azure
+description: Lista kontrolna dotycząca publikowania dla usługi AppSource.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
@@ -14,25 +14,25 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0f8234424d5f684577833f34d89ac3da9d4d16fa
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 5521602331b50c70ab31e6ea2f5eec8f6a3911ad
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34825208"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736536"
 ---
-# <a name="publishing-checklist-for-appsource"></a>Lista kontrolna AppSource publikowania  
-Przejrzyj składniki wymagane przed rozpoczęciem procesu publikowania.  
+# <a name="publishing-checklist-for-appsource"></a>Publikowanie Lista kontrolna dotycząca usługi AppSource  
+Sprawdź wymagane składniki przed rozpoczęciem procesu publikowania.  
 
-Poniższe artefakty są wymagane do publikowania aplikacji na AppSource.  
+Następujące artefakty są wymagane do publikowania aplikacji w usłudze AppSource.  
 
 ## <a name="checklist"></a>Lista kontrolna  
 
 | Typ oferty | Typ oferty | Publikowanie artefaktów |   
 |:--- |:--- |:--- |  
-| List | Usługi konsultingowe | <table> <tr><th>Szczegóły sklepu</th></tr> <tr><td>Nazwa oferty (200 znaków)</td></tr> <tr><td>Opis elementu (2000 znaków)</td></tr> <tr><td>Identyfikator programu MPN</td></tr> <tr><td>Dostępność kraj/region</td></tr> <tr><td>Zastosowanie branżach, kategorie i słowa kluczowe do wyszukania</td></tr> <tr><td>Zrzuty ekranu (1280 x 720; maksymalna 5)</td></tr> <tr><td>Dokumenty Marketing (maksymalna 3)</td></tr> <tr><td>Prowadzić docelowego</td></tr> <tr><td>Logo firmy (48 x 48, 216 x 216)</td></tr> <tr><td>Uprawnienia</td></tr> <tr><td>Wideo omówienie produktu (opcjonalnie)</td></tr> </table> |  
+| List | Usługa DORADCZA | <table> <tr><th>Szczegóły sklepu</th></tr> <tr><td>Nazwa oferty (200 znaków)</td></tr> <tr><td>Opis (2000 znaków)</td></tr> <tr><td>Identyfikator programu MPN</td></tr> <tr><td>Dostępność kraj/region</td></tr> <tr><td>Dotyczy branż, kategorii i słów kluczowych</td></tr> <tr><td>Zrzuty ekranu (1280 x 720; maksymalna 5)</td></tr> <tr><td>Marketing dokumentów (maksymalna 3)</td></tr> <tr><td>Prowadzić docelowego</td></tr> <tr><td>Logo firmy (48 x 48, 216 x 216)</td></tr> <tr><td>Kompetencje</td></tr> <tr><td>Wideo z omówieniem produktu (opcjonalnie)</td></tr> </table> |  
 
 ## <a name="next-steps"></a>Kolejne kroki
-*   Odwiedź stronę [AppSource wydawcy przewodnik i portalu Azure Marketplace](./marketplace-publishers-guide.md) strony.  
+*   Odwiedź stronę [portalu Azure Marketplace i AppSource — przewodnik dla wydawcy](./marketplace-publishers-guide.md) strony.  
 
----  
+---

@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/10/2017
+ms.date: 2/21/2019
 ms.author: dekapur
-ms.openlocfilehash: 321a69768935a9cb220bf5c2ae96c30274dc590d
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 9c59da35f5dafcdcf62901689814e696dce3cd20
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159456"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674221"
 ---
 # <a name="create-a-standalone-cluster-running-on-windows-server"></a>Tworzenie klastra autonomicznego w systemie Windows Server
 Azure Service Fabric umożliwia tworzenie klastrów usługi Service Fabric na wszystkich maszynach wirtualnych lub komputerach z systemem Windows Server. Oznacza to, można wdrożyć i uruchamianie aplikacji usługi Service Fabric w dowolnym środowisku, które zawiera zestaw wzajemnie połączonych komputery serwera Windows, lokalnie lub za pomocą dowolnego dostawcy chmury. Usługa Service Fabric udostępnia pakiet instalacyjny służący do tworzenia klastrów usługi Service Fabric o nazwie pakietu autonomicznego w systemie Windows Server.
@@ -61,7 +61,9 @@ W ramach pakietu instalacyjnego jest instalowanych kilka przykładowych plików 
 
 Klaster utworzony w tym artykule jest niebezpieczne.  Każda osoba może połączyć się z nim anonimowo i przeprowadzić operacje związane z zarządzaniem. Dlatego też klastry produkcyjne należy zawsze zabezpieczać przy użyciu certyfikatów X.509 lub zabezpieczeń systemu Windows.  Zabezpieczenia są konfigurowane tylko w momencie tworzenia klastra. Nie można włączyć zabezpieczeń później, gdy klaster jest już utworzony. Aktualizacja pliku konfiguracji, Włącz [certyfikatów zabezpieczeń](service-fabric-windows-cluster-x509-security.md) lub [zabezpieczeń Windows](service-fabric-windows-cluster-windows-security.md). Dalsze informacje na temat zabezpieczeń klastra usługi Service Fabric można znaleźć w temacie [Secure a cluster](service-fabric-cluster-security.md) (Zabezpieczanie klastra).
 
-### <a name="step-1a-create-an-unsecured-local-development-cluster"></a>Krok 1A: Utwórz niezabezpieczony lokalnego klastra projektowego
+### <a name="step-1-create-the-cluster"></a>Krok 1: Tworzenie klastra
+
+#### <a name="scenario-a-create-an-unsecured-local-development-cluster"></a>Scenariusz A: Utwórz niezabezpieczony lokalnego klastra projektowego
 Usługa Service Fabric można wdrożyć klaster programowania z jednego komputera przy użyciu *ClusterConfig.Unsecure.DevCluster.json* plik dołączony [przykłady](https://github.com/Azure-Samples/service-fabric-dotnet-standalone-cluster-configuration/tree/master/Samples).
 
 Rozpakowywanie pakietu autonomicznego na komputerze, skopiuj przykładowy plik konfiguracji na komputer lokalny, a następnie uruchom *CreateServiceFabricCluster.ps1* skryptu za pomocą sesji programu PowerShell administratora z folderu pakietu autonomicznego .
@@ -74,7 +76,7 @@ Zobacz sekcję Konfiguracja środowiska na [planowanie i przygotowanie wdrożeni
 
 Zakończeniu uruchamianie scenariuszy programowania można usunąć klastra usługi Service Fabric na komputerze, korzystając z procedury opisanej w sekcji "[usuwania klastra](#removecluster_anchor)". 
 
-### <a name="step-1b-create-a-multi-machine-cluster"></a>Krok 1B: Tworzenie klastra dla wielu maszyn
+#### <a name="scenario-b-create-a-multi-machine-cluster"></a>Scenariusz B: Tworzenie klastra dla wielu maszyn
 Po przejściu planowania i przygotowania kroki szczegółowe w [planowanie i przygotowanie wdrożenia programu klastra](service-fabric-cluster-standalone-deployment-preparation.md), możesz przystąpić do tworzenia klastra produkcyjnego przy użyciu pliku konfiguracji klastra.
 
 Administrator klastra wdrażający i konfigurujący klaster musi mieć uprawnienia administratora na komputerze. Usługi Service Fabric nie można zainstalować na kontrolerze domeny.
@@ -114,7 +116,7 @@ Administrator klastra wdrażający i konfigurujący klaster musi mieć uprawnien
 > 
 > 
 
-### <a name="step-1c-create-an-offline-internet-disconnected-cluster"></a>Krok 1C: Tworzenie klastra w trybie offline (odłączony od Internetu)
+#### <a name="scenario-c-create-an-offline-internet-disconnected-cluster"></a>Scenariusz C: Tworzenie klastra w trybie offline (odłączony od Internetu)
 Od pakietu środowiska uruchomieniowego usługi Service Fabric jest automatycznie pobierana podczas tworzenia klastra. W przypadku wdrażania klastra na maszynach, które nie jest połączony z Internetem, należy pobrać oddzielnie od pakietu środowiska uruchomieniowego usługi Service Fabric i podaj ścieżkę do niego podczas tworzenia klastra.
 Od pakietu środowiska uruchomieniowego można je pobrać oddzielnie, z innego komputera połączonego z Internetem w [łącze Pobierz — środowisko uruchomieniowe usługi Service Fabric — system Windows Server](https://go.microsoft.com/fwlink/?linkid=839354). Skopiuj pakiet środowiska uruchomieniowego, do której są wdrażane do klastra w trybie offline z, a następnie utworzyć klaster, uruchamiając `CreateServiceFabricCluster.ps1` z `-FabricRuntimePackagePath` parametru, jak pokazano w poniższym przykładzie: 
 

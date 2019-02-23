@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: shlo
-ms.openlocfilehash: 323d22363ee52ff6ccf7575b00c6b8b31a0fa156
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: e934c8bdc851f8c550e8b87a923215df3f95e389
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188498"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728263"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Wizualne Tworzenie usługi Azure Data Factory
 Usługi Azure Data Factory użytkownika interfejsu środowiska pozwala wizualnie tworzyć i wdrażać zasoby fabryki danych bez konieczności pisania kodu. Można przeciągnąć działania na kanwę potoku, wykonywać przebiegi testowe, interakcyjnie debugować i wdrożyć i monitorować uruchomienia potoków. Dostępne są dwie opcje używania środowiska użytkownika do wykonania wizualnego tworzenia:
@@ -221,7 +221,7 @@ Zostanie wyświetlone okienko konfiguracji. Aby uzyskać szczegółowe informacj
 
 Repozytorium GitHub Enterprise można skonfigurować za pomocą usługi data factory, za pomocą dwóch metod.
 
- #### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Metoda konfiguracji 1 (Enterprise repozytorium). Strona Zaczynajmy
+#### <a name="configuration-method-1-enterprise-repo-lets-get-started-page"></a>Metoda konfiguracji 1 (Enterprise repozytorium). Strona Zaczynajmy
 
 W usłudze Azure Data Factory, przejdź do **zaczynajmy** strony. Wybierz **Konfigurowanie repozytorium kodu**:
 

@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: how to edit a model
-ms.openlocfilehash: e656c6dd7050851eb9885fe253ab29f4e3675216
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: ed872a00cd35fcef74ab0b578a86cdb6cd2ec8c7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219808"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727574"
 ---
 # <a name="view-document-details"></a>Wyświetlanie szczegółów dokumentu
 
@@ -22,7 +22,7 @@ Na stronie listy dokumentów zawiera 10 pierwszych dokumentu w obszarze roboczym
 
 Kliknij pojedynczy dokument, aby wyświetlić stronę szczegółów dokumentu. Na stronie szczegółów dokumentów umożliwia wyświetlenie listy zdań wyodrębnione z dokumentu.
 
-- "Źródło" język jest zaznaczone domyślnie w polu listy rozwijanej, ale można przełączać się do wyświetlania zdań w języku docelowym. 
+- "Źródło" język jest zaznaczone domyślnie w polu listy rozwijanej, ale można przełączać się do wyświetlania zdań w języku docelowym.
 - 20 zdania są domyślnie wyświetlane na stronie. Formant podziału na strony do przechodzenia między stronami.
 
 ![szczegóły dokumentu](media/how-to/how-to-view-document-details.png)

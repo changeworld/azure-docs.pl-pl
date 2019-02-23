@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5618d9cc14819a15a0396b0dd4fcbf1d0319bbbf
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: bbae902e7074207453938b14b9e79628e437e1cc
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651162"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737352"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Zarządzanie urządzeniami w usłudze Azure Active Directory — często zadawane pytania
 
@@ -36,7 +36,7 @@ Następujące urządzenia są wyświetlane w obszarze **urządzenia użytkownik�
 - Wszystkie inne niż Windows 10 lub urządzeń z systemem Windows Server 2016.
 - Wszystkie urządzenia inne niż Windows. 
 
---- 
+---
 
 **Pyt.: Jak sprawdzić stanu rejestracji urządzenia klienta jest?**
 

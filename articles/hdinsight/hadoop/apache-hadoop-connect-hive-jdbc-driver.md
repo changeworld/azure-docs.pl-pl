@@ -7,39 +7,33 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 04/02/2018
+ms.date: 02/14/2019
 ms.author: hrasheed
-ms.openlocfilehash: 1d57b6edcff5222bb411a74cc86afbbd7819f9d3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dba7fbe026725510cc357fecbc7d3251849f6af8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53970835"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675079"
 ---
 # <a name="query-apache-hive-through-the-jdbc-driver-in-hdinsight"></a>Zapytanie Apache Hive za pośrednictwem sterownika JDBC w HDInsight
 
 [!INCLUDE [ODBC-JDBC-selector](../../../includes/hdinsight-selector-odbc-jdbc.md)]
 
-Dowiedz się, jak przesyłać zapytania usługi Apache Hive z usługą Apache Hadoop w usłudze Azure HDInsight przy użyciu sterownika JDBC z poziomu aplikacji Java. Informacje przedstawione w tym dokumencie pokazano, jak połączyć programowo i klient SQuirrel SQL.
+Dowiedz się, jak przesyłać zapytania usługi Apache Hive z usługą Apache Hadoop w usłudze Azure HDInsight przy użyciu sterownika JDBC z poziomu aplikacji Java. Informacje przedstawione w tym dokumencie pokazano, jak połączyć programowo, a klient SQuirreL SQL.
 
 Aby uzyskać więcej informacji na temat interfejsu JDBC usługi Hive, zobacz [HiveJDBCInterface](https://cwiki.apache.org/confluence/display/Hive/HiveJDBCInterface).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Usługi Hadoop w klastrze HDInsight.
-
-  > [!IMPORTANT]
-  > Linux jest jedynym systemem operacyjnym używanym w połączeniu z usługą HDInsight w wersji 3.4 lub nowszą. Aby uzyskać więcej informacji, zobacz [wycofanie HDInsight 3.3](../hdinsight-component-versioning.md#hdinsight-windows-retirement).
-
+* Klaster usługi HDInsight Hadoop. Aby go utworzyć, zobacz [Rozpoczynanie pracy z usługą Azure HDInsight](apache-hadoop-linux-tutorial-get-started.md).
+* [Java Developer Kit (JDK) w wersji 11](https://www.oracle.com/technetwork/java/javase/downloads/jdk11-downloads-5066655.html) lub nowszej.
 * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/). SQuirreL jest aplikacją kliencką JDBC.
 
-* [Java Developer Kit (JDK) w wersji 7](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) lub nowszej.
-
-* [Apache Maven](https://maven.apache.org). Maven to projekt system kompilacji dla projektów Java używanym przez projektu skojarzonego z tym artykułem.
 
 ## <a name="jdbc-connection-string"></a>Parametry połączenia sterownika JDBC
 
-Połączenia sterownika JDBC z klastrem usługi HDInsight na platformie Azure są nawiązywane ponad 443, a ruch jest zabezpieczony przy użyciu protokołu SSL. Publicznej bramy, który klastry znajdują się za zaporą przekierowuje ruch do portu nasłuchiwania serwera HiveServer2 jest faktycznie na. Następujące parametry połączenia pokazuje format używany dla HDInsight:
+Połączenia sterownika JDBC z klastrem usługi HDInsight na platformie Azure są nawiązywane za pośrednictwem portu 443, a ruch jest zabezpieczony przy użyciu protokołu SSL. Publicznej bramy, który klastry znajdują się za zaporą przekierowuje ruch do portu nasłuchiwania serwera HiveServer2 jest faktycznie na. Następujące parametry połączenia pokazuje format używany dla HDInsight:
 
     jdbc:hive2://CLUSTERNAME.azurehdinsight.net:443/default;transportMode=http;ssl=true;httpPath=/hive2
 
@@ -59,24 +53,23 @@ DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
 
 SQuirreL SQL jest klient JDBC, który może służyć do zdalne uruchamianie zapytań Hive przy użyciu klastra usługi HDInsight. W następujących krokach założono, że już zainstalowano SQuirreL SQL.
 
-1. Utwórz katalog, który zawiera pliki. Na przykład `mkdir hivedriver`.
+1. Utwórz katalog zawiera określone pliki do skopiowania z klastrem.
 
-2. Z poziomu wiersza polecenia użyj następujących poleceń, aby skopiować pliki z klastra HDInsight:
+2. W poniższym skrypcie Zamień `sshuser` nazwą konta użytkownika SSH dla klastra.  Zastąp `CLUSTERNAME` o nazwie klastra HDInsight.  W wierszu polecenia wprowadź następujące polecenie, aby skopiować pliki z klastra usługi HDInsight:
 
     ```bash
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libfb*.jar .
-    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/hadoop-common.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-codec*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libfb*.jar .
+    scp sshuser@CLUSTERNAME-ssh.azurehdinsight.net:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
     ```
-
-    Zastąp `USERNAME` nazwą konta użytkownika SSH dla klastra. Zastąp `CLUSTERNAME` o nazwie klastra HDInsight.
 
 3. Uruchom aplikację SQuirreL SQL. W lewej części okna, wybierz **sterowniki**.
 
@@ -95,9 +88,9 @@ SQuirreL SQL jest klient JDBC, który może służyć do zdalne uruchamianie zap
 
    ![Dodaj okno dialogowe sterownika](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
 
-   Kliknij przycisk **OK** można zapisać tych ustawień.
+   Wybierz **OK** można zapisać tych ustawień.
 
-6. W lewej części okna SQuirreL SQL zaznaczyć **aliasy**. Następnie kliknij przycisk **+** ikonę, aby utworzyć alias połączenia.
+6. W lewej części okna SQuirreL SQL zaznaczyć **aliasy**. Następnie wybierz pozycję **+** ikonę, aby utworzyć alias połączenia.
 
     ![Dodaj nowy alias](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
 
@@ -126,9 +119,11 @@ SQuirreL SQL jest klient JDBC, który może służyć do zdalne uruchamianie zap
 
     ![okno dialogowe połączenia](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
 
-9. Po nawiązaniu połączenia, wprowadź następujące zapytanie do okna dialogowego zapytania SQL, a następnie wybierz **Uruchom** ikony. W obszarze Wyniki powinny pokazywać wyniki zapytania.
+9. Po nawiązaniu połączenia, wprowadź następujące zapytanie do okna dialogowego zapytania SQL, a następnie wybierz **Uruchom** ikonę (uruchamianie osoby). W obszarze Wyniki powinny pokazywać wyniki zapytania.
 
-        select * from hivesampletable limit 10;
+    ```hql
+    select * from hivesampletable limit 10;
+    ```
 
     ![okno dialogowe kwerendy SQL, w tym wyniki](./media/apache-hadoop-connect-hive-jdbc-driver/sqlquery.png)
 
@@ -150,15 +145,11 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 
 **Przyczyna**: Ten błąd jest spowodowany przez starsze pliku commons codec.jar wersji dołączonej SQuirreL.
 
-**Rozpoznawanie**: Aby naprawić ten błąd, wykonaj następujące kroki:
+**Rozwiązanie**: Aby naprawić ten błąd, wykonaj następujące kroki:
 
-1. Pobranie pliku jar koder commons z klastra usługi HDInsight.
+1. Zamknij SQuirreL, a następnie przejdź do katalogu, którym SQuirreL jest zainstalowany w systemie. W katalogu SquirreL w obszarze `lib` katalog, Zastąp istniejące codec.jar commons z wersją pobrane z klastra HDInsight.
 
-        scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-codec*.jar ./commons-codec.jar
-
-2. Zamknij SQuirreL, a następnie przejdź do katalogu, którym SQuirreL jest zainstalowany w systemie. W katalogu SquirreL w obszarze `lib` katalog, Zastąp istniejące codec.jar commons z wersją pobrane z klastra HDInsight.
-
-3. Uruchom ponownie SQuirreL. Ten błąd nie jest już powinien wystąpić podczas nawiązywania połączenia z programu Hive na HDInsight.
+2. Uruchom ponownie SQuirreL. Ten błąd nie jest już powinien wystąpić podczas nawiązywania połączenia z programu Hive na HDInsight.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

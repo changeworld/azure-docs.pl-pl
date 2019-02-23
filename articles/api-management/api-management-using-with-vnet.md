@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: cc4893837feeec6116750a7e37e7621af11ab0a4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 2770c6a31f0117b96e08eb8a03986f37ebdb7098
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453923"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733745"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej na temat sieci wirtualnych platformy Azure rozpoczyna się od informacji w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -27,6 +27,8 @@ Usługa Azure API Management można wdrożyć w sieci wirtualnej (VNET), dzięki
 
 > [!NOTE]
 > Usługa Azure API Management obsługuje sieci wirtualnych Menedżera zasobów klasycznych i platformy Azure.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
@@ -85,9 +87,9 @@ Aby wykonać kroki opisane w tym artykule, musisz mieć:
 ## <a name="enable-vnet-powershell"> </a>Włącz połączenia sieci Wirtualnej przy użyciu poleceń cmdlet programu PowerShell
 Można również włączyć połączenie między SIECIAMI przy użyciu poleceń cmdlet programu PowerShell
 
-* **Tworzenie usługi API Management w sieci Wirtualnej**: Użyj polecenia cmdlet [New-AzureRmApiManagement](/powershell/module/azurerm.apimanagement/new-azurermapimanagement) do utworzenia usługi Azure API Management w sieci Wirtualnej.
+* **Tworzenie usługi API Management w sieci Wirtualnej**: Użyj polecenia cmdlet [New AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) do utworzenia usługi Azure API Management w sieci Wirtualnej.
 
-* **Wdrażanie istniejącej usługi API Management w sieci Wirtualnej**: Użyj polecenia cmdlet [AzureRmApiManagementDeployment aktualizacji](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) przenieść istniejącej usługi Azure API Management w sieci wirtualnej.
+* **Wdrażanie istniejącej usługi API Management w sieci Wirtualnej**: Użyj polecenia cmdlet [AzApiManagementDeployment aktualizacji](/powershell/module/az.apimanagement/update-azapimanagementdeployment) przenieść istniejącej usługi Azure API Management w sieci wirtualnej.
 
 ## <a name="connect-vnet"> </a>Łączenie z usługą sieci web hostowanych w ramach sieci wirtualnej
 Usługa API Management jest połączony z siecią wirtualną, uzyskiwanie dostępu do usług zaplecza w nim po nie różni się od uzyskiwania dostępu do usług publicznych. Po prostu wpisz lokalny adres IP lub nazwa hosta (Jeśli serwer DNS jest skonfigurowany do sieci Wirtualnej) usługę sieci web do **adres URL usługi sieci Web** pola podczas tworzenia nowego interfejsu API lub edycji istniejącego.

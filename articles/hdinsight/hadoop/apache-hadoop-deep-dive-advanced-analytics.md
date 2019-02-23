@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 0e17fa877bc2e1e4f72891315d940546a11e674d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 893273fc325eaf878814c07eb095c67f5ea3c3f1
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812501"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675062"
 ---
 # <a name="deep-dive---advanced-analytics"></a>Szczegółowe informacje — zaawansowane analizy
 
@@ -110,7 +110,7 @@ Zestaw danych została poddana partycjonowaniu na zestaw szkoleniowy, 50 000 obr
 * Zestaw narzędzi cognitive Toolkit do załadowania modelu a wynik wstępnie przetworzonych obrazów w każdym węźle.
 * Notesy Jupyter w celu uruchomienia skryptu PySpark agregowanie wyników, a następnie użyj [Matplotlib](https://matplotlib.org/) wizualizacji wydajności modelu.
 
-Całe przetwarzanie wstępne/ocenianie 10 000 obrazów trwa mniej niż minutę w klastrze z 4 węzłów procesu roboczego. Model przewiduje dokładnie etykiet ~ 9,100 (91%) obrazów. Macierz pomyłek przedstawia najbardziej typowe błędy klasyfikacji. Na przykład pokazuje macierzy, przechowywaniu psy jako koty i na odwrót występowanie ponad często dla innych par etykiety.
+Całe przetwarzanie wstępne/ocenianie 10 000 obrazów trwa mniej niż minutę w klastrze z 4 węzłów procesu roboczego. Model przewiduje dokładnie etykiet ~ 9,100 (91%) obrazy. Macierz pomyłek przedstawia najbardziej typowe błędy klasyfikacji. Na przykład pokazuje macierzy, przechowywaniu psy jako koty i na odwrót występowanie ponad często dla innych par etykiety.
 
 ![Wyniki](./media/apache-hadoop-deep-dive-advanced-analytics/ml-results.png)
 
@@ -133,6 +133,5 @@ Platforma Apache Spark oraz MLLib
 
 Uczenie głębokie, Cognitive Toolkit i innych
 
-* [Klasyfikacja obrazów zaskakująco równoległymi, przy użyciu zestawu narzędzi Cognitive Toolkit i TensorFlow na usługi Azure HDInsight Spark](https://blogs.technet.microsoft.com/machinelearning/2017/04/12/embarrassingly-parallel-image-classification-using-cognitive-toolkit-tensorflow-on-azure-hdinsight-spark/)
 * [Do nauki o danych maszyny wirtualnej platformy Azure](../../machine-learning/data-science-virtual-machine/overview.md)
 * [Wprowadzenie do H2O.ai w usłudze Azure HDInsight](https://azure.microsoft.com/blog/introducing-h2o-ai-with-on-azure-hdinsight-to-bring-the-most-robust-ai-platform-for-enterprises/)

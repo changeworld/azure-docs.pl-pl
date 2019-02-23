@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: dadb645067a0f6cac436d638a829ac4c0937bd60
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 8fa093d629eb7c655ea277b1d57f35193394f722
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304388"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730005"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Python
 
@@ -109,7 +109,7 @@ Udostępniony kod powinny być przechowywane w oddzielnym folderze. Aby odwoływ
 from ..SharedCode import myFirstHelperFunction
 ```
 
-Rozszerzenia powiązania, używany przez środowisko uruchomieniowe usługi Functions są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-triggers-bindings.md#local-development-azure-functions-core-tools) przy użyciu podstawowych narzędzi usługi Azure Functions. 
+Rozszerzenia powiązania, używany przez środowisko uruchomieniowe usługi Functions są definiowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](./functions-bindings-register.md#local-development-azure-functions-core-tools) przy użyciu podstawowych narzędzi usługi Azure Functions. 
 
 Podczas wdrażania projektu funkcji do aplikacji funkcji na platformie Azure, całą zawartość folderu FunctionApp powinny być objęte pakietu, ale nie sam folder.
 

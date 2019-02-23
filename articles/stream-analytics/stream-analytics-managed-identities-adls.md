@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 02d3cd3688f3b34c92422168b79cb4da5a93d970
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 4537d15f88732d4b0c3c3cf514d6b8528af10f81
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587994"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737471"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Uwierzytelnianie Stream Analytics do usługi Azure Data Lake Storage Gen1 przy użyciu tożsamości zarządzanej (wersja zapoznawcza)
 
@@ -22,6 +22,8 @@ Usługa Azure Stream Analytics obsługuje uwierzytelnianie tożsamości zarządz
 Odwiedź stronę [osiem nowych funkcji w usłudze Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/) wpis w blogu, zarejestruj się w tej wersji zapoznawczej i Dowiedz się więcej o nowych funkcjach.
 
 W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządzaną przez zadanie usługi Azure Stream Analytics, która danych wyjściowych do usługi Azure Data Lake magazynu Gen1 za pośrednictwem witryny Azure portal, wdrażanie szablonu usługi Azure Resource Manager i Azure Stream Analytics tools for Visual Studio.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -158,7 +160,7 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
 2. Zapewniają dostęp do jednostki usługi przy użyciu programu PowerShell. Aby udzielić dostępu do jednostki za pomocą programu PowerShell usługi, wykonaj następujące polecenie:
 
    ```powershell
-   Set-AzureRmDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
+   Set-AzDataLakeStoreItemAclEntry -AccountName <accountName> -Path <Path> -AceType User -Id <PrinicpalId> -Permissions <Permissions>
    ```
 
    **PrincipalId** jest identyfikator obiektu nazwy głównej usługi i znajduje się na ekranie portalu po utworzeniu nazwy głównej usługi. Jeśli utworzono zadanie przy użyciu wdrożenia szablonu usługi Resource Manager, identyfikator obiektu znajduje się we właściwości Identity odpowiedzi zadania.
@@ -166,11 +168,11 @@ W tym artykule przedstawiono trzy sposoby, aby włączyć tożsamość zarządza
    **Przykład**
 
    ```powershell
-   PS > Set-AzureRmDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
+   PS > Set-AzDataLakeStoreItemAclEntry -AccountName "adlsmsidemo" -Path / -AceType
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   Aby dowiedzieć się więcej na temat powyższego polecenia programu PowerShell, zapoznaj się [AzureRmDataLakeStoreItemAclEntry zestaw](https://docs.microsoft.com/powershell/module/azurerm.datalakestore/set-azurermdatalakestoreitemaclentry?view=azurermps-6.8.1&viewFallbackFrom=azurermps-4.2.0#optional-parameters) dokumentacji.
+   Aby dowiedzieć się więcej na temat powyższego polecenia programu PowerShell, zapoznaj się [AzDataLakeStoreItemAclEntry zestaw](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry#optional-parameters) dokumentacji.
 
 ## <a name="limitations"></a>Ograniczenia
 Ta funkcja nie obsługuje następujących działań:

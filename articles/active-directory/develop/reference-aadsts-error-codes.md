@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: a80ed6af005f04ec48729e918543b2de67810eba
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234292"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738593"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Kody błędów uwierzytelniania i autoryzacji
 
@@ -255,6 +255,7 @@ Szukasz informacji na temat AADSTS kody błędów, które są zwracane z Usługa
 | AADSTS221000 | Nie skonfigurowano DeviceOnlyTokensNotSupportedByResource - zasobu mogą zaakceptować tokeny tylko do urządzeń. |
 | AADSTS240001 | BulkAADJTokenUnauthorized — użytkownik nie ma uprawnień do zarejestrowania urządzenia w usłudze Azure AD. |
 | AADSTS240002 | RequiredClaimIsMissing - id_token nie może pełnić `urn:ietf:params:oauth:grant-type:jwt-bearer` udzielić.|
+| AADSTS530032 | BlockedByConditionalAccessOnSecurityPolicy — Administrator dzierżawy skonfigurował zasady zabezpieczeń, która blokuje tego żądania. Sprawdzenie zasad zabezpieczeń, które są zdefiniowane na poziomie dzierżawy, aby ustalić, czy żądanie spełnia wymagania zasad. |
 | AADSTS700016 | UnauthorizedClient_DoesNotMatchRequest — aplikacja nie został znaleziony w katalogu/dzierżawców. Może to nastąpić, jeśli nie została zainstalowana przez administratora dzierżawy lub wyraża zgodę na żaden użytkownik w dzierżawie usługi aplikacji. Możesz może być nieprawidłowo skonfigurowana wartość identyfikatora dla aplikacji, lub wysłać żądanie uwierzytelnienia do nieprawidłowej dzierżawy. |
 | AADSTS700020 | InteractionRequired — udzielanie dostępu wymaga interakcji. |
 | AADSTS700022 | InvalidMultipleResourcesScope — podana wartość zakresu parametr wejściowy jest nieprawidłowy, ponieważ zawiera on więcej niż jeden zasób. |

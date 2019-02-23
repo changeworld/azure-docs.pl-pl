@@ -9,16 +9,16 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/21/2019
 ms.author: juliako
-ms.openlocfilehash: d49d056ab84b60389df8bcaf1c75d6224633863d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 471bc34272b8e141c8640bd218bdafd840850d24
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337872"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672274"
 ---
-# <a name="cloud-upload-and-storage"></a>Przekazywanie chmura i Magazyn
+# <a name="cloud-upload-and-storage"></a>Przekazywanie do chmury i magazynowanie w niej
 
 Aby rozpocząć zarządzanie, szyfrowanie, kodowanie, analizowanie i przesyłanie strumieniowe zawartości multimedialnej na platformie Azure, musisz utworzyć konto usługi Media Services. Podczas tworzenia konta usługi Media Services musisz podać nazwę zasobu konta usługi Azure Storage. Podane konto magazynu jest dołączane do konta usługi Media Services. 
 
@@ -30,6 +30,8 @@ Musisz mieć jedno **główne** konto magazynu i możesz mieć dowolną liczbę 
 > Konta tylko obiektów blob nie są dozwolone jako **główne**. 
 
 Firma Microsoft zaleca korzystanie z kont GPv2, aby można było korzystać z zalet wybór między gorąca i warstwy magazynowania chłodna. Aby dowiedzieć się więcej na temat kont magazynu, zobacz [Przegląd konta usługi Azure Storage](../../storage/common/storage-account-overview.md). 
+
+Istnieją różne jednostki SKU, można wybrać konta magazynu. Aby uzyskać więcej informacji, zobacz [kont magazynu](https://docs.microsoft.com/cli/azure/storage/account?view=azure-cli-latest). Jeśli chcesz poeksperymentować z kontami magazynu, użyj `--sku Standard_LRS`. Jednak podczas wybierania jednostki SKU w środowisku produkcyjnym należy rozważyć, `--sku Standard_RAGRS`, zapewniającą replikacji geograficznej dla ciągłości działania. 
 
 ## <a name="assets-in-a-storage-account"></a>Zasoby w ramach konta magazynu
 

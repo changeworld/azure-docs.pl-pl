@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816217"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670438"
 ---
 # <a name="basic-concepts"></a>Podstawowe pojęcia
 
@@ -198,7 +199,7 @@ Można kontrolować format wyniku frazy, określając `format` parametr zapytani
 
 ### <a name="n-best-values"></a>Wartości N najlepszych
 
-Odbiorniki, czy maszynowo, lub nigdy nie może być niektórych one słyszeli *dokładnie* co był używany. Odbiornik można przypisać *prawdopodobieństwo* tylko do określonego interpretacji wypowiedź. 
+Odbiorniki, czy maszynowo, lub nigdy nie może być niektórych one słyszeli *dokładnie* co był używany. Odbiornik można przypisać *prawdopodobieństwo* tylko do określonego interpretacji wypowiedź.
 
 W normalnych warunkach, rozmawiając z innymi osobami, z którymi są często wchodzić w interakcje osoby mają wysokie prawdopodobieństwo rozpoznawać wyrazy, które zostały używany. Odbiorniki maszynowej mowy wszelkich starań, aby osiągnąć podobny poziomów dokładności i w warunkach prawo [osiągną zgodność z ludzi](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v).
 
@@ -308,7 +309,7 @@ Usługa Microsoft Speech rozpoznaje wszystkie formularze ludzkiej mowy, w tym s�
 
 | *Wulgaryzmów* wartość | Opis |
 | - | - |
-| `masked` | Maski wulgaryzmów gwiazdkami. To zachowanie jest ustawieniem domyślnym. | 
+| `masked` | Maski wulgaryzmów gwiazdkami. To zachowanie jest ustawieniem domyślnym. |
 | `removed` | Usuwa wulgaryzmów z wszystkie wyniki. |
 | `raw` | Rozpoznaje i zwraca wulgaryzmów w wszystkie wyniki. |
 
@@ -322,7 +323,7 @@ Gdy *wulgaryzmów* zapytania parametr ma wartość *usunięte*, usługa usuwa ni
 
 #### <a name="profanity-only-utterances"></a>Tylko do wulgaryzmów wypowiedzi
 
-Użytkownik może mówić *tylko* wulgaryzmów, gdy aplikacja została skonfigurowana usługi do usunięcia wulgaryzmów. W tym scenariuszu, jeśli jest w trybie rozpoznawania *dyktowanie* lub *konwersacji*, usługa nie zwróciła *speech.result*. Jeśli jest w trybie rozpoznawania *interaktywne*, usługa zwraca *speech.result* z kodem stanu *NoMatch*. 
+Użytkownik może mówić *tylko* wulgaryzmów, gdy aplikacja została skonfigurowana usługi do usunięcia wulgaryzmów. W tym scenariuszu, jeśli jest w trybie rozpoznawania *dyktowanie* lub *konwersacji*, usługa nie zwróciła *speech.result*. Jeśli jest w trybie rozpoznawania *interaktywne*, usługa zwraca *speech.result* z kodem stanu *NoMatch*.
 
 ### <a name="profanity-value-raw"></a>Wartość niestosownych wyrażeń `Raw`
 

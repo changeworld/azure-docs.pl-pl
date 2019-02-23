@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 1f184d54c0d9edc8e203b697c06c2178436172ff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 044c0355b6ec9f064cae74ffd5259d457cb49147
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206940"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672393"
 ---
 # <a name="supported-languages"></a>Obsługiwane języki
 
@@ -23,7 +24,7 @@ ms.locfileid: "55206940"
 
 ## <a name="interactive-and-dictation-mode"></a>Tryb interaktywny i dyktowanie
 
-Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki w `interactive` i `dictation` tryby. 
+Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki w `interactive` i `dictation` tryby.
 
 |Kod | Język | Kod | Język |
 |-----|-----|-----|-----|
@@ -45,7 +46,7 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
 
 ## <a name="conversation-mode"></a>Tryb konwersacji
 
-Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki w `conversation` tryby. 
+Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki w `conversation` tryby.
 
 | Kod | Język | Kod | Język |
 |-----|-----|-----|-----|

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: aa1df4811bfe1a59671e8e696958bed9c5ebff45
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 6cbde9d0d53cdd688c39381978bd338c66d5688e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593035"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671679"
 ---
 # <a name="create-an-internal-load-balancer-using-a-template"></a>Tworzenie wewnętrznego modułu równoważenia obciążenia przy użyciu szablonu
 
@@ -47,7 +47,7 @@ Aby wdrożyć pobrany szablon przy użyciu programu PowerShell, wykonaj poniższ
 3. Edytuj plik i zapisz go.
 4. Uruchom **New AzResourceGroupDeployment** polecenia cmdlet, aby utworzyć grupę zasobów za pomocą tego szablonu.
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzResourceGroupDeployment -Name TestRG -Location westus `
         -TemplateFile 'https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-2-vms-internal-load-balancer/azuredeploy.json' `
         -TemplateParameterFile 'C:\temp\azuredeploy.parameters.json'
@@ -60,7 +60,7 @@ Aby wdrożyć szablon przy użyciu interfejsu wiersza polecenia platformy Azure,
 1. Jeśli po raz pierwszy używasz interfejsu wiersza polecenia Azure, zobacz artykuł [Instalowanie i konfigurowania interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) i postępuj zgodnie z instrukcjami aż do punktu, w którym należy wybrać konto platformy Azure i subskrypcję.
 2. Uruchom polecenie **azure config mode**, aby włączyć tryb Resource Manager, jak pokazano poniżej.
 
-    ```azurecli
+    ```azurecli-interactive
     azure config mode arm
     ```
 

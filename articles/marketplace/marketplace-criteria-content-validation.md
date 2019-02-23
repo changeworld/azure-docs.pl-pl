@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: fb12fe381cb4df6139fae7289279220f72984484
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 145c6ac01cce9a70f3753b54a46638bf9d9c23b4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078018"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729750"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Lista Azure Marketplace, wytycznych
 
@@ -103,4 +103,4 @@ Wszystkie oferty muszą spełniać [wszystkie wymagania ofercie](https://docs.mi
 *   [Określić typ oferty dla Twojego rozwiązania](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type).
 
  
----  
+---

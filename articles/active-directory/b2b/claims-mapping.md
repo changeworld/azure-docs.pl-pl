@@ -1,5 +1,5 @@
 ---
-title: Użytkownik współpracy B2B Mapowanie oświadczeń w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+title: Mapowanie — oświadczeń użytkowników współpracy B2B, usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Dostosowywanie oświadczeń użytkowników, które są wydawane w tokenie SAML dla użytkowników B2B usługi Azure Active Directory (Azure AD).
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 461476cea7b8551d5ae548ccd84a5333c21cf432
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 445d6c8b527b56f63a1156a39ac07393b4ffe115
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202597"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56668551"
 ---
 # <a name="b2b-collaboration-user-claims-mapping-in-azure-active-directory"></a>Użytkownik współpracy B2B Mapowanie oświadczeń w usłudze Azure Active Directory
 

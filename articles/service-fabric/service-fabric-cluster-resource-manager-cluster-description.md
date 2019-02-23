@@ -7,19 +7,19 @@ author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 55f8ab37-9399-4c9a-9e6c-d2d859de6766
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 64f02b1165d014a0eaa89dae64a7d9aa283cac32
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 7be10f03d65e53b51c3916849dc12feb4de9c919
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834591"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737658"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>Opisujące klaster usługi Service fabric
 Menedżer zasobów klastra usługi Service Fabric udostępnia kilka mechanizmów do opisywania klastra. Podczas wykonywania Menedżer zasobów klastra używa tych informacji, aby zapewnić wysoką dostępność usług uruchomionych w klastrze. Wymuszając te reguły istotne, również próbuje zoptymalizować zużycie zasobów w klastrze.
@@ -54,7 +54,7 @@ Podczas wykonywania Menedżer zasobów klastra usługi Service Fabric uwzględni
 
 Menedżer zasobów klastra usługi Service Fabric nie obsługuje liczbę warstw, które istnieją w hierarchii domeny błędów. Jednak próbuje upewnij się, że utraty jednej części hierarchii nie ma wpływu na usługi działające w niej. 
 
-Najlepiej jest tą samą liczbą węzłów na każdym poziomie głębokość hierarchii domeny błędów. W przypadku niezrównoważone w klastrze "drzewa" domen błędów utrudni dla Menedżera zasobów klastra ustalenie najlepszych alokacji usług. Imbalanced układy domen błędów oznaczają, że utratę niektórych domen wpływ na dostępność usług częściej niż innych domen. W rezultacie, Menedżer zasobów klastra jest podarte między dwa cele: chce używać z maszynami w tej domenie "duże", umieszczając usług na nich i chce umieszcza usług w innych domenach, tak aby utraty domeny nie powoduje problemów. 
+Najlepiej jest tą samą liczbą węzłów na każdym poziomie głębokość hierarchii domeny błędów. W przypadku niezrównoważone w klastrze "drzewa" domen błędów utrudni dla Menedżera zasobów klastra ustalenie najlepszych alokacji usług. Imbalanced układy domen błędów oznaczają, że utratę niektórych domen wpływ na dostępność usług częściej niż innych domen. W rezultacie Menedżer zasobów klastra rozerwana między dwa cele: Chce używać z maszynami w tej domenie "duże", umieszczając usług na nich, i chce umieszcza usług w innych domenach, tak aby utraty domeny nie powoduje problemów. 
 
 Jak wyglądają imbalanced domen? Na poniższym diagramie przedstawiono dwa układy innego klastra. W pierwszym przykładzie węzły są dystrybuowane równomiernie w domenach błędów. W drugim przykładzie jedną domenę błędów ma wiele więcej węzłów niż inne domeny błędów. 
 
@@ -97,7 +97,7 @@ Najbardziej typowe model jest sama macierzy, gdzie domenami błędów i domenach
 
 ## <a name="fault-and-upgrade-domain-constraints-and-resulting-behavior"></a>Ograniczenia w domenach błędów i domeny uaktualnienia i wynikowe zachowania
 ### <a name="default-approach"></a>*Metody domyślne*
-Domyślnie Menedżer zasobów klastra temu usługi są równoważone w domenach błędów i domenach uaktualniania. Jest to modelowane jako [ograniczenie](service-fabric-cluster-resource-manager-management-integration.md). Stany ograniczenie domenach błędów i domeny uaktualnienia: "dla partycji danej usługi, nigdy nie należy różnica większa niż jeden liczby obiektów usługi (repliki usługi stanowej lub wystąpień o bezstanowa usługa) między dwiema domenami, na tym samym poziomie w hierarchii". Załóżmy, że to ograniczenie daje gwarancję "maksymalną różnicę". Ograniczenie domenach błędów i domeny uaktualnienia zapobiega niektórych przenosi lub ustalenia, które naruszają reguły podanej powyżej. 
+Domyślnie Menedżer zasobów klastra temu usługi są równoważone w domenach błędów i domenach uaktualniania. Jest to modelowane jako [ograniczenie](service-fabric-cluster-resource-manager-management-integration.md). Stany ograniczenie domenach błędów i domeny uaktualnienia: "Partycja danej usługi, nigdy nie należy różnica większa niż jeden liczby obiektów usługi (repliki usługi stanowej lub wystąpień o bezstanowa usługa) między dwiema domenami, w tym samym poziomie hierarchii". Załóżmy, że to ograniczenie daje gwarancję "maksymalną różnicę". Ograniczenie domenach błędów i domeny uaktualnienia zapobiega niektórych przenosi lub ustalenia, które naruszają reguły podanej powyżej. 
 
 Przyjrzyjmy się jednym z przykładów. Załóżmy, że istnieje klastra z sześciu węzłów, skonfigurowany z pięcioma domenami błędów i 5 domenami uaktualnienia.
 
@@ -176,7 +176,7 @@ Z drugiej strony to podejście może być zbyt rygorystyczne i nie zezwalaj klas
 
 ### <a name="alternative-approach"></a>*Informacje o innym podejściu*
 
-Menedżer zasobów klastra obsługuje inna wersja tego ograniczenia domenach błędów i domeny uaktualnienia, która umożliwia umieszczanie podczas nadal z zagwarantowaniem minimalnego poziomu bezpieczeństwa. Alternatywne ograniczenie domenach błędów i domeny uaktualnienia może być wyrażona w następujący sposób: "Dla partycji danej usługi dystrybucji repliki w domenach należy upewnić się, że partycja nie występują w niej utraciła kworum". Załóżmy, że to ograniczenie daje gwarancję "kworum bezpieczne". 
+Menedżer zasobów klastra obsługuje inna wersja tego ograniczenia domenach błędów i domeny uaktualnienia, która umożliwia umieszczanie podczas nadal z zagwarantowaniem minimalnego poziomu bezpieczeństwa. Alternatywne ograniczenie domenach błędów i domeny uaktualnienia może być wyrażona w następujący sposób: "Partycja danej usługi, dystrybucji repliki w domenach należy upewnić się, że partycja nie występują w niej utraciła kworum". Załóżmy, że to ograniczenie daje gwarancję "kworum bezpieczne". 
 
 > [!NOTE]
 >Usługi stanowe definiujemy *utraciła kworum* w sytuacji, gdy większość replik partycji nie działają w tym samym czasie. Na przykład jeśli TargetReplicaSetSize wynosi pięć, zbiór wszystkie trzy repliki reprezentuje kworum. Podobnie jeśli TargetReplicaSetSize 6, cztery repliki są niezbędne dla kworum. W obu przypadkach nie więcej niż dwie repliki mogą być wyłączone w tym samym czasie Jeśli partycji chce, aby kontynuować, działa prawidłowo. Usługi bezstanowej jest coś takiego jak *utraciła kworum* jako bezstanowej usługi będzie działać normalnie, nawet wtedy, gdy w większości przypadków przestaną działać w tym samym czasie. Dzięki temu skupimy się na usług stanowych w pozostałej części tekstu.
@@ -192,7 +192,7 @@ Ponieważ oba podejścia mają zalety i słabe strony, wprowadziliśmy adaptacyj
 > [!NOTE]
 >Są to domyślne zachowanie, począwszy od usługi Service Fabric w wersji 6.2. 
 >
-Funkcje adaptacyjnego sterowania podejście domyślnie używa logiki "maksymalną różnicę" i przełączniki logiki "kworum bezpieczne" tylko wtedy, gdy jest to konieczne. Menedżer zasobów klastra automatycznie wpadł na strategię, jakiej jest to konieczne, analizując konfiguracji klastra i usług. Dla danej usługi: *przypadku podzielny przez liczbę domen błędów i liczba domen uaktualnienia TargetReplicaSetSize **i** liczba węzłów jest mniejsza niż lub równe (liczba domen błędów) * ( Liczba domen uaktualnienia), Menedżer zasobów klastra należy wykorzystać logiki "na podstawie kworum" dla tej usługi.* Mieć na uwadze, że Menedżer zasobów klastra będzie używać tej metody dla usług stanowych i bezstanowych, pomimo utraciła kworum, które nie są istotne w przypadku usług bezstanowych.
+Funkcje adaptacyjnego sterowania podejście domyślnie używa logiki "maksymalną różnicę" i przełączniki logiki "kworum bezpieczne" tylko wtedy, gdy jest to konieczne. Menedżer zasobów klastra automatycznie wpadł na strategię, jakiej jest to konieczne, analizując konfiguracji klastra i usług. Dla danej usługi: *W przypadku TargetReplicaSetSize podzielny przez liczbę domen błędów i liczba domen uaktualnienia **i** liczba węzłów jest mniejsza niż lub równe (liczba domen błędów) * (liczba domen uaktualnienia), klastra Menedżer zasobów należy wykorzystać logiki "na podstawie kworum" dla tej usługi.* Mieć na uwadze, że Menedżer zasobów klastra będzie używać tej metody dla usług stanowych i bezstanowych, pomimo utraciła kworum, które nie są istotne w przypadku usług bezstanowych.
 
 Wróć do poprzedniego przykładu i przyjęto założenie, że klaster ma teraz 8 węzłów (klaster nadal jest skonfigurowany z pięcioma domenami błędów i 5 domenami uaktualnienia TargetReplicaSetSize usług hostowanych na będą nadal tego klastra, 5). 
 

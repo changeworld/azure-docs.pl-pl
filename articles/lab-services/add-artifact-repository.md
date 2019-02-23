@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: spelluru
-ms.openlocfilehash: cd80adaa5d8bb05ce3494966cabbaf076785425c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e8a94fdae74c5a30ba75e9143b298c3372b886d7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56647503"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733014"
 ---
 # <a name="add-an-artifact-repository-to-your-lab-in-devtest-labs"></a>Dodawanie repozytorium artefaktów do laboratorium w usłudze DevTest Labs
 DevTest Labs umożliwia określenie artefaktu ma zostać dodany do maszyny Wirtualnej w czasie tworzenia maszyny Wirtualnej lub po utworzeniu maszyny Wirtualnej. Ten artefakt może być narzędziem lub aplikacji, którą chcesz zainstalować na maszynie Wirtualnej. Artefakty są zdefiniowane w pliku JSON załadowane z repozytorium GitHub i VSTS Git. 
@@ -26,6 +26,8 @@ DevTest Labs umożliwia określenie artefaktu ma zostać dodany do maszyny Wirtu
 [Publiczne repozytorium artefaktów](https://github.com/Azure/azure-devtestlab/tree/master/Artifacts), obsługiwane przez usługi DevTest Labs, udostępnia wiele popularnych narzędzi dla systemów Windows i Linux. Łącze do tego repozytorium jest automatycznie dodawane do środowiska laboratoryjnego. Repozytorium artefaktów można utworzyć przy użyciu określonego narzędzia, które nie są dostępne w publiczne repozytorium artefaktów. Aby dowiedzieć się więcej na temat tworzenia niestandardowych artefaktów, zobacz [Tworzenie niestandardowych artefaktów](devtest-lab-artifact-author.md).
 
 Ten artykuł zawiera informacje na temat dodawania niestandardowego artefaktu repozytorium przy użyciu witryny Azure portal, szablonów usługi Azure Resource Management i Azure PowerShell. Aby zautomatyzować Dodawanie repozytorium artefaktów do laboratorium, pisząc skrypty programu PowerShell lub interfejsu wiersza polecenia. 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby dodać repozytorium do środowiska laboratoryjnego, należy najpierw Pobierz informacje o kluczu ze swojego repozytorium. W poniższych sekcjach opisano, jak można pobrać informacji wymaganych w przypadku repozytoriów hostowanych na **GitHub** lub **DevOps platformy Azure**.
@@ -170,25 +172,25 @@ Istnieje kilka sposobów wdrażania szablonu na platformie Azure i zasobów utwo
 - [Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)](../azure-resource-manager/resource-group-template-deploy-portal.md)
 - [Deploy resources with Resource Manager templates and Resource Manager REST API (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu API REST usługi Resource Manager)](../azure-resource-manager/resource-group-template-deploy-rest.md)
 
-Rozpocznijmy i zobacz, jak wdrożyć szablon w programie PowerShell. Polecenia cmdlet używane do wdrożenia szablonu są zależne od kontekstu, więc bieżącej dzierżawy i bieżącej subskrypcji są używane. Użyj [Set-AzureRMContext](/powershell/module/azurerm.profile/set-azurermcontext?view=azurermps-6.13.0) przed przystąpieniem do wdrażania szablonu, jeśli to konieczne, aby zmienić kontekst.
+Rozpocznijmy i zobacz, jak wdrożyć szablon w programie PowerShell. Polecenia cmdlet używane do wdrożenia szablonu są zależne od kontekstu, więc bieżącej dzierżawy i bieżącej subskrypcji są używane. Użyj [AzContext zestaw](/powershell/module/az.profile/set-azcontext) przed przystąpieniem do wdrażania szablonu, jeśli to konieczne, aby zmienić kontekst.
 
-Najpierw utwórz grupę zasobów za pomocą [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup?view=azurermps-6.13.0). Jeśli grupa zasobów, których chcesz użyć już istnieje, Pomiń ten krok.
+Najpierw utwórz grupę zasobów za pomocą [New AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Jeśli grupa zasobów, których chcesz użyć już istnieje, Pomiń ten krok.
 
 ```powershell
-New-AzureRmResourceGroup -Name MyLabResourceGroup1 -Location westus
+New-AzResourceGroup -Name MyLabResourceGroup1 -Location westus
 ```
 
-Następnie utwórz wdrożenie do grupy zasobów za pomocą [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0). To polecenie cmdlet ma zastosowanie zmian zasobów na platformie Azure. Kilka wdrożenia zasobów można nawiązać dowolnej danej grupy zasobów. Jeśli wdrażasz kilka razy w tej samej grupie zasobów, upewnij się, że nazwa każdego wdrożenia jest unikatowa.
+Następnie utwórz wdrożenie do grupy zasobów za pomocą [New AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment). To polecenie cmdlet ma zastosowanie zmian zasobów na platformie Azure. Kilka wdrożenia zasobów można nawiązać dowolnej danej grupy zasobów. Jeśli wdrażasz kilka razy w tej samej grupie zasobów, upewnij się, że nazwa każdego wdrożenia jest unikatowa.
 
 ```powershell
-New-AzureRmResourceGroupDeployment `
+New-AzResourceGroupDeployment `
     -Name MyLabResourceGroup-Deployment1 `
     -ResourceGroupName MyLabResourceGroup1 `
     -TemplateFile azuredeploy.json `
     -TemplateParameterFile azuredeploy.parameters.json
 ```
 
-Po pomyślnym uruchomieniu New-AzureRmResourceGroupDeployment, polecenie generuje ważne informacje, takie jak stan aprowizacji (powinna być powiodło się) i jakiekolwiek dane wyjściowe dla szablonu.
+Po pomyślnym uruchomieniu AzResourceGroupDeployment nowy, polecenie generuje ważne informacje, takie jak stan aprowizacji (powinna być powiodło się) i jakiekolwiek dane wyjściowe dla szablonu.
  
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell 
 Ta sekcja zawiera przykładowy skrypt programu PowerShell, który może służyć do Dodawanie repozytorium artefaktów do laboratorium. Jeśli nie masz programu Azure PowerShell, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) szczegółowe instrukcje go zainstalować.
@@ -236,11 +238,11 @@ See https://azure.microsoft.com/en-us/documentation/articles/devtest-lab-add-art
 Whether artifact is VSOGit or GitHub repository.
 
 .EXAMPLE
-Set-AzureRMContext -SubscriptionId 11111111-1111-1111-1111-111111111111
+Set-AzContext -SubscriptionId 11111111-1111-1111-1111-111111111111
 .\New-DevTestLabArtifactRepository.ps1 -LabName "mydevtestlab" -LabResourceGroupName "mydtlrg" -ArtifactRepositoryName "MyTeam Repository" -RepositoryUri "https://github.com/<myteam>/<nameofrepo>.git" -PersonalAccessToken "1111...." -SourceType "GitHub"
 
 .NOTES
-Script uses the current AzureRm context. To set the context, use the Set-AzureRMContext cmdlet
+Script uses the current Az context. To set the context, use the Set-AzContext cmdlet
 
 #>
 
@@ -278,11 +280,11 @@ if ($ArtifactRepositoryName -eq $null){
 }
 
 # Sign in to Azure
-Connect-AzureRmAccount
+Connect-AzAccount
 
 
 #Get Lab Resource
-$LabResource = Get-AzureRmResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $LabName -ResourceGroupName $LabResourceGroupName
+$LabResource = Get-AzResource -ResourceType 'Microsoft.DevTestLab/labs' -ResourceName $LabName -ResourceGroupName $LabResourceGroupName
 
 Write-Verbose "Lab Name: $($LabResource.Name)"
 Write-Verbose "Lab Resource Group Name: $($LabResource.ResourceGroupName)"
@@ -290,7 +292,7 @@ Write-Verbose "Lab Resource Location: $($LabResource.Location)"
 
 Write-Verbose "Artifact Repository Internal Name: $ArtifactRepositoryName"
 
-#Prepare properties object for call to New-AzureRMResource
+#Prepare properties object for call to New-AzResource
 $propertiesObject = @{
     uri = $RepositoryUri;
     folderPath = $FolderPath;
@@ -301,24 +303,24 @@ $propertiesObject = @{
     status = 'Enabled'
 }
 
-Write-Verbose @"Properties to be passed to New-AzureRMResource:$($propertiesObject | Out-String)"@
+Write-Verbose @"Properties to be passed to New-AzResource:$($propertiesObject | Out-String)"@
 
 #Resource will be added to current subscription.
 $resourcetype = 'Microsoft.DevTestLab/labs/artifactSources'
 $resourceName = $LabName + '/' + $ArtifactRepositoryName
-Write-Verbose "AzureRM ResourceType: $resourcetype"
-Write-Verbose "AzureRM ResourceName: $resourceName"
+Write-Verbose "Az ResourceType: $resourcetype"
+Write-Verbose "Az ResourceName: $resourceName"
  
 Write-Verbose "Creating artifact repository '$ArtifactRepositoryDisplayName'..."
-$result = New-AzureRmResource -Location $LabResource.Location -ResourceGroupName $LabResource.ResourceGroupName -properties $propertiesObject -ResourceType $resourcetype -ResourceName $resourceName -ApiVersion 2016-05-15 -Force
+$result = New-AzResource -Location $LabResource.Location -ResourceGroupName $LabResource.ResourceGroupName -properties $propertiesObject -ResourceType $resourcetype -ResourceName $resourceName -ApiVersion 2016-05-15 -Force
 
 
 #Alternate implementation:
 # Use resourceId rather than resourcetype and resourcename parameters.
 # Using resourceId allows you to specify the $SubscriptionId rather than using the
-# subscription id of Get-AzureRmContext.
+# subscription id of Get-AzContext.
 #$resourceId = "/subscriptions/$SubscriptionId/resourceGroups/$($LabResource.ResourceGroupName)/providers/Microsoft.DevTestLab/labs/$LabName/artifactSources/$ArtifactRepositoryName"
-#$result = New-AzureRmResource -properties $propertiesObject -ResourceId $resourceId -ApiVersion 2016-05-15 -Force
+#$result = New-AzResource -properties $propertiesObject -ResourceId $resourceId -ApiVersion 2016-05-15 -Force
 
 
 # Check the result
@@ -337,7 +339,7 @@ return $result
 Poniższy przykład pokazuje, jak uruchomić skrypt: 
 
 ```powershell
-Set-AzureRMContext -SubscriptionId <Your Azure subscription ID>
+Set-AzContext -SubscriptionId <Your Azure subscription ID>
 
 .\New-DevTestLabArtifactRepository.ps1 -LabName "mydevtestlab" -LabResourceGroupName "mydtlrg" -ArtifactRepositoryName "MyTeam Repository" -RepositoryUri "https://github.com/<myteam>/<nameofrepo>.git" -PersonalAccessToken "1111...." -SourceType "GitHub"
 ```
@@ -357,7 +359,7 @@ Przykładowy skrypt programu PowerShell w tym artykule przyjmuje następujące p
 | PersonalAccessToken | Token zabezpieczający do uzyskiwania dostępu do repozytorium GitHub lub VSOGit. Zobacz sekcję wymagań wstępnych, aby uzyskać instrukcje uzyskać token pat |
 | sourceType | Czy artefakt znajduje się repozytorium VSOGit lub GitHub. |
 
-Samo repozytorium należy wewnętrzną nazwę do identyfikacji, który jest inny, nazwę wyświetlaną, która jest widoczna w witrynie Azure portal. Nie widzisz wewnętrzna nazwa w witrynie Azure portal, ale zostanie wyświetlony, za pomocą interfejsów API REST platformy Azure lub poleceń cmdlet programu PowerShell usługi AzureRM. Skrypt zawiera nazwy, jeśli nie został określony przez użytkownika naszego skryptu.
+Samo repozytorium należy wewnętrzną nazwę do identyfikacji, który jest inny, nazwę wyświetlaną, która jest widoczna w witrynie Azure portal. Nie widzisz wewnętrzna nazwa w witrynie Azure portal, ale zostanie wyświetlony, za pomocą interfejsów API REST platformy Azure lub programu Azure PowerShell. Skrypt zawiera nazwy, jeśli nie został określony przez użytkownika naszego skryptu.
 
 ```powershell
 #Set artifact repository name, if not set by user
@@ -370,10 +372,10 @@ if ($ArtifactRepositoryName -eq $null){
 
 | Polecenia programu PowerShell | Uwagi |
 | ------------------ | ----- |
-| [Get-AzureRMResource](/powershell/module/azurerm.resources/get-azurermresource?view=azurermps-6.13.0) | To polecenie jest używane do uzyskania szczegółowych informacji o laboratorium, takie jak jego lokalizacji. |
-| [New-AzureRMResource](/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-6.13.0) | Nie ma żadnych określonego polecenia umożliwiające dodawanie repozytoriów artefaktu. Ogólny [New-AzureRMResource](/powershell/module/azurerm.resources/new-azurermresource?view=azurermps-5.7.0) polecenia cmdlet jest zadanie. To polecenie cmdlet musi albo **ResourceId** lub **ResourceName** i **ResourceType** parę jest znany typ zasobu do utworzenia. Ten przykładowy skrypt używa pary typ zasobu i nazwę zasobu. <br/><br/>Należy zauważyć, że w przypadku tworzenia źródło repozytorium artefaktów w tej samej lokalizacji i w ramach tej samej grupie zasobów laboratorium.|
+| [Get-AzResource](/powershell/module/az.resources/get-azresource) | To polecenie jest używane do uzyskania szczegółowych informacji o laboratorium, takie jak jego lokalizacji. |
+| [Nowe AzResource](/powershell/module/az.resources/new-azresource) | Nie ma żadnych określonego polecenia umożliwiające dodawanie repozytoriów artefaktu. Ogólny [New AzResource](/powershell/module/az.resources/new-azresource) polecenia cmdlet jest zadanie. To polecenie cmdlet musi albo **ResourceId** lub **ResourceName** i **ResourceType** parę jest znany typ zasobu do utworzenia. Ten przykładowy skrypt używa pary typ zasobu i nazwę zasobu. <br/><br/>Należy zauważyć, że w przypadku tworzenia źródło repozytorium artefaktów w tej samej lokalizacji i w ramach tej samej grupie zasobów laboratorium.|
 
-Skrypt ten dodaje nowy zasób do bieżącej subskrypcji. Użyj [Get-AzureRMContext](/powershell/module/azurerm.profile/get-azurermcontext?view=azurermps-6.13.0) Aby wyświetlić te informacje. Użyj [Set-AzureRMContext](/powershell/module/azurerm.profile/set-azurermcontext?view=azurermps-6.13.0) można ustawić bieżącego dzierżawę i subskrypcję.
+Skrypt ten dodaje nowy zasób do bieżącej subskrypcji. Użyj [Get AzContext](/powershell/module/az.profile/get-azcontext) Aby wyświetlić te informacje. Użyj [AzContext zestaw](/powershell/module/az.profile/set-azcontext) można ustawić bieżącego dzierżawę i subskrypcję.
 
 Najlepszym sposobem, aby odnaleźć nazwy zasobów i informacji o typie zasobu jest użycie [interfejsów API REST usługi Azure Test Drive](https://azure.github.io/projects/apis/) witryny sieci Web. Zapoznaj się z [DevTest Labs — 2016-05-15](http://aka.ms/dtlrestapis) dostawcy, aby wyświetlić dostępne interfejsy API REST dla dostawcy usługi DevTest Labs. Użytkownicy skryptu następujący identyfikator zasobu. 
 

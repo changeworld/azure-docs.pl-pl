@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/19/2019
 ms.author: glenga
-ms.openlocfilehash: ab502c25a632977065e55d2eeafd684203636b14
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: a2e07f9022d7404d037903fda627649918134cb7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109915"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732742"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Jak używać zestawu Azure WebJobs SDK na potrzeby przetwarzania w tle oparte na zdarzeniach
 
@@ -212,7 +212,7 @@ static void Main(string[] args)
 
 Powiązania danych wejściowych zapewniają deklaratywną metodę udostępniania danych na platformie Azure lub usług innych firm w kodzie. Powiązania danych wyjściowych zapewniają sposób, aby zaktualizować dane. [Artykule Get](webjobs-sdk-get-started.md) przedstawiono przykład każdego z nich.
 
-Wartość zwracaną metody można użyć dla powiązania danych wyjściowych, stosując atrybut na wartość zwracaną metody. Zobacz przykład w usłudze Azure Functions [wyzwalaczy i powiązań](../azure-functions/functions-triggers-bindings.md#using-the-function-return-value) artykułu.
+Wartość zwracaną metody można użyć dla powiązania danych wyjściowych, stosując atrybut na wartość zwracaną metody. Zobacz przykład w usłudze Azure Functions [wyzwalaczy i powiązań](../azure-functions/functions-bindings-return-value.md) artykułu.
 
 ## <a name="binding-types"></a>Typ powiązania
 
@@ -445,13 +445,13 @@ public static void CreateThumbnail(
 }
 ```
 
-Aby uzyskać więcej informacji na temat wyrażenia wiązania zobacz [powiązania wyrażeń i wzorce](../azure-functions/functions-triggers-bindings.md#binding-expressions-and-patterns) w dokumentacji usługi Azure Functions.
+Aby uzyskać więcej informacji na temat wyrażenia wiązania zobacz [powiązania wyrażeń i wzorce](../azure-functions/functions-bindings-expressions-patterns.md) w dokumentacji usługi Azure Functions.
 
 ### <a name="custom-binding-expressions"></a>Wyrażenia powiązania niestandardowego
 
 Czasami trzeba określić nazwę kolejki, nazwa obiektu blob lub kontenera lub tabeli w kodzie zamiast trwale kodować nadaj mu nazwę. Na przykład możesz chcieć określić nazwę kolejki `QueueTrigger` atrybutu w zmiennej środowisku lub pliku konfiguracji.
 
-Możesz to zrobić, przekazując `NameResolver` obiekt `JobHostConfiguration` obiektu. Zawierają symbole zastępcze w wyzwalacza i parametry konstruktora atrybutów powiązania, a `NameResolver` kod zawiera rzeczywiste wartości, które będą używane zamiast te symbole zastępcze. Symbole zastępcze są identyfikowane przez umieszczenie ich w znaki procentu (%), jak pokazano w poniższym przykładzie:
+Możesz to zrobić, przekazując `NameResolver` obiekt `JobHostConfiguration` obiektu. Zawierają symbole zastępcze w wyzwalacza i parametry konstruktora atrybutów powiązania, a `NameResolver` kod zawiera rzeczywiste wartości, które będą używane zamiast te symbole zastępcze. Symbole zastępcze są identyfikowane za pomocą otaczającego je za pomocą procentu (%) znaki, jak pokazano w poniższym przykładzie:
 
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)

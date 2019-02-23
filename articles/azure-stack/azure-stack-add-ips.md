@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: scottnap
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: ed2205455c4d3c82554f3d552bacc059fffa68e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cbfe4fcf30e9529f191f2a80de8ab83e7e0811f7
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174660"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56735901"
 ---
 # <a name="add-public-ip-addresses"></a>Dodaj publiczne adresy IP
 *Dotyczy: Zintegrowane usługi Azure Stack, systemy i usługi Azure Stack Development Kit*  
@@ -53,11 +53,6 @@ Pierwszą rzeczą, jaką będzie konieczne jest uzyskanie blok adresów, które 
 8.   Należy podać blok adresu, który ma zostać dodany w notacji CIDR.  Na przykład: 192.168.203.0/24
 9.  Jeśli podasz prawidłowego zakresu CIDR adresów (blok CIDR) zakres początkowy adres IP, końcowy adres IP i pola adresów IP dostępnych automatycznie zostaną wypełnione.  Są one tylko do odczytu i generowane automatycznie, więc nie można zmienić bez konieczności modyfikacji wartość w polu zakresu adresów.
 10. Po zapoznaniu się z informacjami w bloku i Potwierdzanie wszystko wygląda poprawić, kliknij przycisk Ok, aby zatwierdzić zmiany i Dodaj zakres adresów do usługi Azure Stack.
-
-## <a name="update-the-acls-on-your-top-of-rack-switches"></a>Aktualizowanie listy ACL dla przełączników Top of Rack
-Ostatnia rzecz, którą należy wykonać w celu umożliwienia nowo dodanych zakres adresów IP do pracy jest aktualizacja list kontroli dostępu (ACL) dla przełączników Top of Rack (ToR).  Listy ACL w sieci ToR, przełączniki są zablokowane w dół w taki sposób, że połączeń poza usługi Azure Stack z dodanym zakres adresów IP nie będą działały dopóki nowy zakres jest dodawany do listy ACL na przełączniku.  
-
-Musisz od producenta OEM i pracować z nimi można zaktualizować listy ACL na przełączniki ToR.  Mają one narzędzia potrzebne, aby to zrobić w sposób obsługiwane.
 
 
 ## <a name="next-steps"></a>Kolejne kroki 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8232a197b7916c069ef17393e44a4f9a512a7598
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f88c7b9350d104241524284950865e1f2ca6f559
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818536"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729410"
 ---
 # <a name="requirements-by-listing-type"></a>Wymagania dotyczące przez typ oferty  
 Wymagania techniczne i marketingowe zawartości zależą od storefront, typ oferty i typ oferty. Przejrzyj następujące specyfikacje, aby sprawdzić zgodność.  
@@ -85,7 +85,7 @@ Listy Typ oferty w portalu marketplace dostępne są następujące typy oferty n
 
 <!-- #### Requirements: Azure Marketplace: List: Contact Me -->
 
----   
+---
 
 ### <a name="trial"></a>Wersja próbna  
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: lakasa
 ms.subservice: common
-ms.openlocfilehash: 2990ce7a555fae54b8628f11cd90124860a5b983
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 56cf7f19ef3a3cebf705beceadf8f02681b2e2af
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656740"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730192"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
 
@@ -51,13 +51,23 @@ Set-AzStorageAccount -ResourceGroupName $resourceGroup -Name $accountName -Assig
 ```
 
 ```azurecli-interactive
-az storage account \
-    --account-name <account_name> \
+az storage account update \
+    --name <account_name> \
     --resource-group <resource_group> \
     --assign-identity
 ```
 
-Należy włączyć usuwanie nietrwałe i przeczyszczanie, wykonując następujące polecenia programu PowerShell lub wiersza polecenia platformy Azure:
+Jeśli nie masz magazynu kluczy, można go utworzyć, korzystając z portalu, programu Powershell lub interfejsu wiersza polecenia:
+
+```powershell
+New-AzKeyVault -Name <vault_name> -ResourceGroupName <resource_group> -Location <location>
+```
+
+```azurecli-interactive
+az keyvault create -n <vault_name> -g <resource_group> -l <region> --enable-soft-delete --enable-purge-protection
+```
+
+Jeśli używasz istniejącego magazynu kluczy, należy włączyć usuwanie nietrwałe i przeczyszczanie w magazynie, wykonując następujące polecenia programu PowerShell lub wiersza polecenia platformy Azure:
 
 ```powershell
 ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName $vaultName).ResourceId).Properties `
@@ -74,13 +84,7 @@ $resource.Properties
 ```
 
 ```azurecli-interactive
-az resource update \
-    --id $(az keyvault show --name <vault_name> -o tsv | awk '{print $1}') \
-    --set properties.enableSoftDelete=true
-
-az resource update \
-    --id $(az keyvault show --name <vault_name> -o tsv | awk '{print $1}') \
-    --set properties.enablePurgeProtection=true
+az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
 ```
 
 ### <a name="step-3-enable-encryption-with-customer-managed-keys"></a>Krok 3: Włączenie szyfrowania za pomocą kluczy zarządzanych przez klienta
@@ -104,7 +108,7 @@ Aby określić klucz z identyfikatora URI, wykonaj następujące kroki:
 
 #### <a name="specify-a-key-from-a-key-vault"></a>Określenie klucza z magazynu kluczy
 
-Aby określić klucz z key vault, wykonaj następujące kroki:
+Musisz mieć magazynu kluczy i klucz, w tym magazynie kluczy. Aby określić klucz z key vault, wykonaj następujące kroki:
 
 1. Wybierz **wybierz z magazynu Key Vault** opcji.
 2. Wybierz magazyn kluczy zawierającego klucz, którego chcesz użyć.
@@ -135,6 +139,13 @@ Set-AzStorageAccount -ResourceGroupName $storageAccount.ResourceGroupName `
     -KeyVersion $key.Version `
     -KeyVaultUri $keyVault.VaultUri
 ```
+
+```azurecli-interactive
+kv_uri=$(az keyvault show -n <vault_name> -g <resource_group> --query properties.vaultUri -o tsv)
+key_version=$(az keyvault key list-versions -n <key_name> --vault-name <vault_name> --query [].kid -o tsv | cut -d '/' -f 6)
+az storage account update -n <account_name> -g <resource_group> --encryption-key-name <key_name> --encryption-key-version $key_version --encryption-key-source Microsoft.Keyvault --encryption-key-vault $kv_uri 
+```
+
 
 ### <a name="step-5-copy-data-to-storage-account"></a>Krok 5. Kopiowanie danych do konta magazynu
 

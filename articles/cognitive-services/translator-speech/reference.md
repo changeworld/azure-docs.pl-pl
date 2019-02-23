@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: c68d9c3d40ffa3d4a5a5ae635fbc0ea0a010239c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874740"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675113"
 ---
 # <a name="translator-speech-api"></a>Interfejs API tłumaczenia mowy w usłudze Translator
 
@@ -90,7 +91,7 @@ Należy zauważyć, że rozmiar pliku (w bajtach 4 – 7) i rozmiar "data" (w ba
 Po wysłaniu nagłówka WAV (RIFF), klient wysyła fragmenty danych audio. Klient będzie zazwyczaj strumienia fragmenty o stałym rozmiarze reprezentujący stały czas trwania (np. strumień 100 MS audio w danym momencie).
 
 ### <a name="signal-the-end-of-the-utterance"></a>Sygnał koniec wypowiedź
-Interfejs API mowy usługi Translator zwraca transkrypcja i tłumaczenie strumienia audio wysyłasz audio. Końcowe transkrypcji, ostateczne tłumaczenie i dźwięk przetłumaczone zostanie zwrócona do Ciebie, dopiero po upływie wypowiedź. W niektórych przypadkach można wymusić koniec wypowiedź. Wyślij 2,5 sekund wyciszenia, aby wymusić koniec wypowiedź. 
+Interfejs API mowy usługi Translator zwraca transkrypcja i tłumaczenie strumienia audio wysyłasz audio. Końcowe transkrypcji, ostateczne tłumaczenie i dźwięk przetłumaczone zostanie zwrócona do Ciebie, dopiero po upływie wypowiedź. W niektórych przypadkach można wymusić koniec wypowiedź. Wyślij 2,5 sekund wyciszenia, aby wymusić koniec wypowiedź.
 
 ### <a name="final-result"></a>wynik końcowy
 Wynik rozpoznawania mowy jest generowany na końcu wypowiedź. Wynik jest przesyłane z usługi przez klienta za pomocą protokołu WebSocket komunikat typu Text. Zawartość komunikatu jest serializację ciągu JSON obiektu z następującymi właściwościami:
@@ -112,7 +113,7 @@ Przykładowy wynik końcowy jest następująca:
 {
   type: "final"
   id: "23",
-  recognition: "what was said", 
+  recognition: "what was said",
   translation: "translation of what was said",
   audioStreamPosition: 319680,
   audioSizeBytes: 35840,
@@ -143,7 +144,7 @@ Przykładowy wynik końcowy jest następująca:
 {
   type: "partial"
   id: "23.2",
-  recognition: "what was", 
+  recognition: "what was",
   translation: "translation of what was",
   audioStreamPosition: 319680,
   audioSizeBytes: 25840,
@@ -193,46 +194,3 @@ Jeśli aplikacja kliencka zostało zakończone, przesyłanie strumieniowe audio,
 |401    |Bez autoryzacji. Upewnij się, że poświadczenia są, czy są prawidłowe i czy subskrypcja Azure rynek danych jest w dobrym stanie, za pomocą dostępnego salda.|||
 |500    |Wystąpił błąd. Jeśli błąd będzie się powtarzać, raportowania identyfikator śledzenia klienta (X-ClientTraceId) lub identyfikator (identyfikator żądania X) żądania.|||
 |503    |Serwer jest tymczasowo niedostępny. Ponów próbę żądania. Jeśli błąd będzie się powtarzać, raportowania identyfikator śledzenia klienta (X-ClientTraceId) lub identyfikator (identyfikator żądania X) żądania.|||
-
-    
-
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-            
-
-
-
-
-        
-
-
-
-
-
-
-
-
-

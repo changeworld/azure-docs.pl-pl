@@ -1,6 +1,6 @@
 ---
-title: 'Skrypt programu PowerShell: Tworzenie niestandardowej roli zabezpieczeń w laboratorium w usłudze Azure DevTest Labs | Dokumentacja firmy Microsoft'
-description: Ten skrypt programu PowerShell dodaje użytkownika zewnętrznego do laboratorium w usłudze Azure DevTest Labs.
+title: 'Skrypt programu PowerShell: Utworzyć rolę niestandardową, w laboratorium Azure DevTest Labs | Dokumentacja firmy Microsoft'
+description: Ten skrypt programu PowerShell dodaje użytkownika zewnętrznego do laboratorium Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 295f742342fba7d77b556724c8005f3ac4816482
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4d0c795dffb40ab7efec9005660439f9baef9f3f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636719"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732436"
 ---
-# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Użyj programu PowerShell, aby utworzyć niestandardową rolę w laboratorium w usłudze Azure DevTest Labs
+# <a name="use-powershell-to-create-a-custom-role-in-a-lab-in-azure-devtest-labs"></a>Aby utworzyć rolę niestandardową, w laboratorium Azure DevTest Labs przy użyciu programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell tworzy niestandardowej roli zabezpieczeń do użycia w laboratorium w usłudze Azure DevTest Labs. 
+Ten przykładowy skrypt programu PowerShell tworzy niestandardową rolę do użycia w laboratorium Azure DevTest Labs. 
 
-[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+[!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Laboratorium**. Skrypt wymaga posiadania istniejącego laboratorium. 
@@ -38,12 +40,12 @@ W tym skrypcie użyto następujących poleceń:
 
 | Polecenie | Uwagi |
 |---|---|
-| [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) | Pobiera operacje dla dostawcy zasobów platformy Azure, które są możliwe do zabezpieczenia przy użyciu funkcji RBAC Azure. |
-| [Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) | Wyświetla wszystkie role Azure RBAC, które są dostępne do przypisania. |
-| [New-AzureRmRoleDefinition](/powershell/module/azurerm.resources/new-azurermroledefinition) | Tworzy niestandardowej roli zabezpieczeń. |
+| [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) | Pobiera operacje dla dostawcy zasobów platformy Azure, które są zabezpieczane przy użyciu RBAC platformy Azure. |
+| [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) | Wyświetla listę wszystkich ról RBAC platformy Azure, które są dostępne do przypisania. |
+| [New-AzRoleDefinition](/powershell/module/az.resources/new-azroledefinition) | Tworzy rolę niestandardową. |
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Aby uzyskać więcej informacji na temat programu Azure PowerShell, zobacz [dokumentację programu Azure PowerShell](https://docs.microsoft.com/powershell/).
 
-Dodatkowe przykłady skryptów środowiska PowerShell usługi laboratorium Azure można znaleźć w [przykłady Azure PowerShell usługi laboratorium](../samples-powershell.md).
+Więcej przykładowych skryptów programu PowerShell usługi laboratorium Azure można znaleźć w [przykładów programu Azure Lab Services PowerShell](../samples-powershell.md).

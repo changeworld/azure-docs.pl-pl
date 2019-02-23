@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 851098840356c7d391c2b10fae1c18884f5dab02
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 5c6cda735f946fc510129f688ebedf85dd054d0c
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236112"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734255"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics"></a>Zarządzanie użycia i kosztów dla usługi Log Analytics
 
@@ -118,7 +118,7 @@ Jeśli chcesz przenieść obszar roboczy do bieżącej warstwy cenowej, trzeba [
 > Jeśli obszar roboczy jest połączony z kontem usługi Automation, przed wybraniem warstwy cenowej *Autonomiczna (za GB)* musisz usunąć wszystkie rozwiązania **Automation and Control** i odłączyć konto usługi Automation. W bloku obszaru roboczego w obszarze **Ogólne** kliknij pozycję **Rozwiązania**, aby wyświetlić i usunąć rozwiązania. Aby odłączyć konto usługi Automation, kliknij nazwę konta usługi Automation w bloku **Warstwa cenowa**.
 
 > [!NOTE]
-> Dowiedz się więcej o (ustawienie warstwy cenowej za pośrednictwem ARM) [https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace] oraz sposób upewnić się, że wdrożenie ARM powiedzie się niezależnie od tego, czy subskrypcja jest w starszej wersji lub nowy model cen. 
+> Możesz dowiedzieć się więcej [ustawienie warstwy cenowej za pośrednictwem ARM](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#create-a-log-analytics-workspace) oraz sposób upewnić się, że wdrożenie ARM powiedzie się niezależnie od tego, czy subskrypcja jest w starszej wersji lub nowy model cen. 
 
 
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>Rozwiązywanie problemów związanych z usługi Log Analytics nie jest już jest zbieranie danych

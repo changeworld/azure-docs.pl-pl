@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 3258683b950b537dd106323fe95105289034f727
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: f0f18347c5a297b0f15478c3a96a126c1036f8b1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114862"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737420"
 ---
 # <a name="certificate-creation-methods"></a>Metody tworzenia certyfikatów
 
@@ -94,6 +94,6 @@ Należy pamiętać, że gdy zamówienie jest umieszczany za pomocą dostawcy wys
 
  Autoryzacja: Wymagane jest uprawnienie/tworzenia certyfikatów.
 
- ## <a name="see-also"></a>Zobacz też
+## <a name="see-also"></a>Zobacz też
  - [Temat kluczy, wpisów tajnych i certyfikatów](about-keys-secrets-and-certificates.md)
  - [Monitorowanie tworzenia certyfikatów i zarządzanie nim](create-certificate-scenarios.md)

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: yizhon
-ms.openlocfilehash: 15548e801777a99dfb78de0067abb633a2587ee6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7bcc1bf6b734abe202c5fec5d515604f4bf8e4a7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053197"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669367"
 ---
 # <a name="azure-iot-sdks-platform-support"></a>Obsługa Platform do usługi Azure IoT SDK
 
@@ -30,7 +30,7 @@ Ponadto listy partnerów ma przenoszone naszego zestawu SDK języka C na wielu p
 * Arduino
 * Windows CE 2013 (wycofana w października 2018 r.)
 * .NET standard 1.3 przy użyciu platformy .NET Core 2.1 i .NET Framework 4.7
-* Platformy Xamarin iOS, Android i platformy uniwersalnej systemu Windows
+* Xamarin iOS, Android, UWP
 
 ## <a name="supported-platforms"></a>Obsługiwane platformy
 
@@ -40,32 +40,32 @@ Istnieje kilka obsługiwane platformy.
 
 | System operacyjny                  | Architektura | Kompilator             | Biblioteki protokołu TLS       |
 |---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | GCC 5.4.0            | openssl - 1.0.2g |
-| Ubuntu 18.04 LTS    | X64  | GCC 7.3              | WolfSSL — 1.13    |
+| Ubuntu 16.04 LTS    | X64  | gcc-5.4.0            | openssl - 1.0.2g |
+| Ubuntu 18.04 LTS    | X64  | gcc-7.3              | WolfSSL — 1.13    |
 | Ubuntu 18.04 LTS    | X64  | Clang 6.0.X          | Openssl — 1.1.0g  |
-| OSX 10.13.4         | x64  | Środowisko XCode 9.4.1          | Natywne OSX        |
-| Windows Server 2016 | x64  | Program Visual Studio 14.0.X | Dostawca SChannel          |
-| Windows Server 2016 | x86  | Program Visual Studio 14.0.X | Dostawca SChannel          |
-| Debian 9 Stretch    | x64  | GCC 7.3              | Openssl — 1.1.0f  |
+| OSX 10.13.4         | x64  | XCode 9.4.1          | Natywne OSX        |
+| Windows Server 2016 | x64  | Visual Studio 14.0.X | SChannel          |
+| Windows Server 2016 | x86  | Visual Studio 14.0.X | SChannel          |
+| Debian 9 Stretch    | x64  | gcc-7.3              | Openssl — 1.1.0f  |
 
 ### <a name="python-sdk"></a>Zestaw SDK dla języka Python
 
 | System operacyjny                  | Architektura | Kompilator   | Biblioteki protokołu TLS |
 |---------------------|------|------------|-------------|
-| Windows Server 2016 | x86  | Środowisko Python 2.7 | biblioteki openssl     |
-| Windows Server 2016 | x64  | Środowisko Python 2.7 | biblioteki openssl     |
-| Windows Server 2016 | x86  | Język Python 3.5 | biblioteki openssl     |
-| Windows Server 2016 | x64  | Język Python 3.5 | biblioteki openssl     |
-| Ubuntu 18.04 LTS    | x86  | Środowisko Python 2.7 | biblioteki openssl     |
-| Ubuntu 18.04 LTS    | x86  | Języka Python 3.4 | biblioteki openssl     |
-| Wysoki z systemem MacOS Sierra   | x64  | Środowisko Python 2.7 | biblioteki openssl     |
+| Windows Server 2016 | x86  | Python 2.7 | openssl     |
+| Windows Server 2016 | x64  | Python 2.7 | openssl     |
+| Windows Server 2016 | x86  | Język Python 3.5 | openssl     |
+| Windows Server 2016 | x64  | Język Python 3.5 | openssl     |
+| Ubuntu 18.04 LTS    | x86  | Python 2.7 | openssl     |
+| Ubuntu 18.04 LTS    | x86  | Python 3.4 | openssl     |
+| Wysoki z systemem MacOS Sierra   | x64  | Python 2.7 | openssl     |
 
 ### <a name="net-sdk"></a>Zestaw SDK .NET
 
 | System operacyjny                  | Architektura | Framework            | Standardowa (Standard)          |
 |---------------------|------|----------------------|-------------------|
-| Ubuntu 16.04 LTS    | X64  | .NET core 2.1        | .NET standard 2.0 |
-| Windows Server 2016 | X64  | .NET core 2.1        | .NET standard 2.0 |
+| Ubuntu 16.04 LTS    | X64  | .NET Core 2.1        | .NET standard 2.0 |
+| Windows Server 2016 | X64  | .NET Core 2.1        | .NET standard 2.0 |
 | Windows Server 2016 | X64  | .NET framework 4.7   | .NET standard 2.0 |
 | Windows Server 2016 | X64  | .NET Framework 4.5.1 | ND               |
 
@@ -82,7 +82,8 @@ Istnieje kilka obsługiwane platformy.
 |---------------------|------|--------------|
 | Ubuntu 16.04 LTS    | X64  | Java 8       |
 | Windows Server 2016 | X64  | Java 8       |
-| Interfejs API systemu android 28 | X64  | Java 8       |
+| Android API 28 | X64  | Java 8       |
+| Elementy dla systemu android | X64  | Java 8      |
 
 ## <a name="partner-supported-platforms"></a>Platformy obsługiwane przez partnerów
 
@@ -90,10 +91,10 @@ Klienci mogą rozszerzyć nasze wsparcie platformy przez przenoszenie C zestawu 
 
 | Partner             | Urządzenia                            | Link                     | Pomoc techniczna |
 |---------------------|------------------------------------|--------------------------|---------|
-| Espressif           | ESP32 <br/> ESP8266                              | [ESP azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
+| Espressif           | ESP32 <br/> ESP8266                              | [Esp-azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT modemu     | [LTE Qualcomm dla zestawu SDK usługi IoT](https://developer.qualcomm.com/software/lte-iot-sdk) | [Forum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
-| ST Microelectronics | Seria STM32L4 <br/> Seria STM32F4 <br/>  Seria STM32F7 <br/>  Zestaw odnajdywania STM32L4 węzła IoT    | [X MODUŁU CHMURY](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X MODUŁÓW PLATFORMY AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P NUCLEO PLATFORMY AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP CLD PLATFORMY AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Pomoc techniczna](https://www.st.com/content/st_com/en/support/support-home.html)
-| Texas Instruments   | Aplikacja Launchpad CC3220SF <br/> Aplikacja Launchpad CC3220S <br/> Aplikacja Launchpad MSP432E4      | [Wtyczka usługi Azure IoT dla SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [Forum TI E2E](https://e2e.ti.com) <br/> [Forum TI E2E CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [Forum TI E2E MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
+| ST Microelectronics | Seria STM32L4 <br/> Seria STM32F4 <br/>  Seria STM32F7 <br/>  Zestaw odnajdywania STM32L4 węzła IoT    | [X MODUŁU CHMURY](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-cloud.html) <br/> [X MODUŁÓW PLATFORMY AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32cube-expansion-packages/x-cube-azure.html) <br/> [P-NUCLEO-AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP CLD PLATFORMY AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Pomoc techniczna](https://www.st.com/content/st_com/en/support/support-home.html)
+| Texas Instruments   | CC3220SF Launchpad <br/> Aplikacja Launchpad CC3220S <br/> MSP432E4 Launchpad      | [Wtyczka usługi Azure IoT dla SimpleLink](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [Forum TI E2E](https://e2e.ti.com) <br/> [TI E2E Forum for CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [TI E2E Forum for MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: 33f79569a2478c7e234b04ba2dee4e9b8883abae
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 16899c833d996902cf7a0a3f7ab57479869fbdd9
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895894"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737794"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Usługa Azure powiązania magazynu obiektów Blob dla usługi Azure Functions
 
@@ -95,7 +95,7 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
+Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](./functions-bindings-expressions-patterns.md) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
 
 Aby uzyskać więcej informacji na temat `BlobTrigger` atrybutów, zobacz [wyzwalacza — atrybuty](#trigger---attributes).
 
@@ -120,7 +120,7 @@ Oto powiązanie danych w *function.json* pliku:
 }
 ```
 
-Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
+Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](./functions-bindings-expressions-patterns.md) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
 
 Aby uzyskać więcej informacji na temat *function.json* właściwości pliku, zobacz [konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
@@ -167,7 +167,7 @@ Oto *function.json* pliku:
 }
 ```
 
-Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
+Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](./functions-bindings-expressions-patterns.md) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
 
 Aby uzyskać więcej informacji na temat *function.json* właściwości pliku, zobacz [konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
@@ -202,7 +202,7 @@ Oto *function.json* pliku:
 }
 ```
 
-Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
+Ciąg `{name}` w ścieżce wyzwalacz obiektu blob `samples-workitems/{name}` tworzy [powiązania wyrażeń](./functions-bindings-expressions-patterns.md) , można użyć w kodzie funkcji dostęp do nazwy pliku obiektu blob wyzwalania. Aby uzyskać więcej informacji, zobacz [Blob wzorce nazw](#trigger---blob-name-patterns) w dalszej części tego artykułu.
 
 Aby uzyskać więcej informacji na temat *function.json* właściwości pliku, zobacz [konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
 
@@ -348,7 +348,7 @@ W języku JavaScript, dostęp do danych wejściowych obiektów blob za pomocą `
 
 ## <a name="trigger---blob-name-patterns"></a>Wyzwalacz — wzorce nazw obiektów blob
 
-Można określić wzorzec nazw obiektów blob w `path` właściwość *function.json* lub `BlobTrigger` atrybut konstruktora. Wzorzec nazwy mogą być [wyrażenia filtru lub powiązania](functions-triggers-bindings.md#binding-expressions-and-patterns). Przykłady można znaleźć w poniższych sekcjach.
+Można określić wzorzec nazw obiektów blob w `path` właściwość *function.json* lub `BlobTrigger` atrybut konstruktora. Wzorzec nazwy mogą być [wyrażenia filtru lub powiązania](./functions-bindings-expressions-patterns.md). Przykłady można znaleźć w poniższych sekcjach.
 
 ### <a name="get-file-name-and-extension"></a>Pobierz nazwę i rozszerzenie pliku
 

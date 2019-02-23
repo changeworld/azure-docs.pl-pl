@@ -7,15 +7,15 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: fauhse
-ms.component: files
-ms.openlocfilehash: a184e0563d1ad26671c38cabe07f42d97cbe2885
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.subservice: files
+ms.openlocfilehash: 6781ce4a3cf5f6f883678ac848162790d45a5a0f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56213466"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669809"
 ---
-# <a name="migrate-to-azure-file-sync"></a>Migrowanie do usługi Azure File Sync
+# <a name="migrate-to-azure-file-sync"></a>Migracja do usługi Azure File Sync
 Dostępnych jest kilka opcji, aby przejść do usługi Azure File Sync:
 
 ### <a name="uploading-files-via-azure-file-sync"></a>Przekazywanie plików za pomocą usługi Azure File Sync

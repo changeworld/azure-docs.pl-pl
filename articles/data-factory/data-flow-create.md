@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/12/2019
-ms.openlocfilehash: b706e229bed48c821d5ca772450df320fd7e0b7f
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: bb6ae9f97d681625218118b8adca116de1c0fb21
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56271990"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728237"
 ---
 # <a name="create-azure-data-factory-data-flow"></a>Utworzenie przepływu danych fabryki danych platformy Azure
 
@@ -34,7 +34,12 @@ Zostanie wyświetlony monit wpisz informacje o Twoim koncie usługi Azure Blob S
 
 [Dane używane na potrzeby tych przykładów można znaleźć tutaj](https://github.com/kromerm/adfdataflowdocs/tree/master/sampledata). Pobierz przykładowe dane i przechowywać pliki na kontach usługi Azure Blob storage, dzięki czemu możliwe jest wykonanie przykładów.
 
+## <a name="create-new-data-flow"></a>Tworzenie nowego przepływu danych
+
 Utwórz zasób "znak plus" znajdujący się w Interfejsie ADF do utworzenia przepływu danych użycia
 
 ![Opcje przepływu danych](media/data-flow/newresource.png "nowy zasób")
 
+## <a name="next-steps"></a>Kolejne kroki
+
+Rozpocząć tworzenie swojej Przekształcanie danych przy użyciu [źródła przekształcenia](data-flow-source.md).

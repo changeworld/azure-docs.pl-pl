@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e8f37adc07bffb8a1e770085ecee6f813d3c2932
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7d63cc4e57ba3c1b962c893bf8c8bd03664dac6f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54425615"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729258"
 ---
 # <a name="configure-iot-hub-file-uploads-using-powershell"></a>Konfigurowanie usługi IoT Hub, operacje przekazywania plików przy użyciu programu PowerShell
 
@@ -20,36 +20,38 @@ ms.locfileid: "54425615"
 
 Aby użyć [pliku funkcję przekazywania w usłudze IoT Hub](iot-hub-devguide-file-upload.md), należy najpierw powiązać konto magazynu platformy Azure za pomocą usługi IoT hub. Można użyć istniejącego konta magazynu lub Utwórz nową.
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Do wykonania kroków tego samouczka niezbędne są następujące elementy:
 
 * Aktywne konto platformy Azure. Jeśli nie masz konta, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) w zaledwie kilka minut.
 
-* [Polecenia cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
+* [Polecenia cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps).
 
-* Usługi Azure IoT hub. Jeśli nie masz usługi IoT hub możesz użyć [polecenia cmdlet New-AzureRmIoTHub](https://docs.microsoft.com/powershell/module/azurerm.iothub/new-azurermiothub) można utworzyć jedną lub korzystać z portalu do [Tworzenie Centrum IoT](iot-hub-create-through-portal.md).
+* Usługi Azure IoT hub. Jeśli nie masz usługi IoT hub możesz użyć [polecenia cmdlet New-AzIoTHub](https://docs.microsoft.com/powershell/module/az.iothub/new-aziothub) można utworzyć jedną lub korzystać z portalu do [Tworzenie Centrum IoT](iot-hub-create-through-portal.md).
 
-* Konto usługi Azure Storage. Jeśli nie masz konta usługi Azure storage, możesz użyć [poleceń cmdlet programu PowerShell z magazynu Azure](https://docs.microsoft.com/powershell/module/azurerm.storage/) można utworzyć jedną lub korzystać z portalu do [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md)
+* Konto usługi Azure Storage. Jeśli nie masz konta usługi Azure storage, możesz użyć [poleceń cmdlet programu PowerShell z magazynu Azure](https://docs.microsoft.com/powershell/module/az.storage/) można utworzyć jedną lub korzystać z portalu do [Tworzenie konta magazynu](../storage/common/storage-create-storage-account.md)
 
 ## <a name="sign-in-and-set-your-azure-account"></a>Zaloguj się i ustawianie konta platformy Azure
 
 Zaloguj się do konta platformy Azure i wybierz subskrypcję.
 
-1. W wierszu polecenia programu PowerShell Uruchom **Connect-AzureRmAccount** polecenia cmdlet:
+1. W wierszu polecenia programu PowerShell Uruchom **Connect AzAccount** polecenia cmdlet:
 
     ```powershell
-    Connect-AzureRmAccount
+    Connect-AzAccount
     ```
 
 2. Jeśli masz wiele subskrypcji platformy Azure, logowanie do platformy Azure zapewnia dostęp do wszystkich subskrypcji platformy Azure skojarzonych z poświadczeniami użytkownika. Aby wyświetlić listę subskrypcji platformy Azure, która jest dostępna do użycia, użyj następującego polecenia:
 
     ```powershell
-    Get-AzureRMSubscription
+    Get-AzSubscription
     ```
 
     Użyj następującego polecenia, aby wybrać subskrypcję, dla której chcesz użyć, aby uruchomić polecenia do zarządzania Centrum IoT hub. Można użyć nazwy subskrypcji lub identyfikatora z danych wyjściowych poprzedniego polecenia:
 
     ```powershell
-    Select-AzureRMSubscription `
+    Select-AzSubscription `
         -SubscriptionName "{your subscription name}"
     ```
 
@@ -60,7 +62,7 @@ W następujących krokach założono, utworzyć Twoje konta magazynu przy użyci
 Aby skonfigurować przekazywanie plików z urządzeń, będą potrzebne parametry połączenia konta usługi Azure storage. Konto magazynu musi być w tej samej subskrypcji co Centrum IoT hub. Należy również nazwę kontenera obiektów blob na koncie magazynu. Aby pobrać klucze konta magazynu, użyj następującego polecenia:
 
 ```powershell
-Get-AzureRmStorageAccountKey `
+Get-AzStorageAccountKey `
   -Name {your storage account name} `
   -ResourceGroupName {your storage account resource group}
 ```
@@ -72,19 +74,19 @@ Można użyć istniejącego kontenera obiektów blob dla przekazywanie plików l
 * Aby wyświetlić listę istniejących kontenerów obiektów blob na koncie magazynu, użyj następujących poleceń:
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    Get-AzureStorageContainer -Context $ctx
+    Get-AzStorageContainer -Context $ctx
     ```
 
 * Aby utworzyć kontener obiektów blob na koncie magazynu, użyj następujących poleceń:
 
     ```powershell
-    $ctx = New-AzureStorageContext `
+    $ctx = New-AzStorageContext `
         -StorageAccountName {your storage account name} `
         -StorageAccountKey {your storage account key}
-    New-AzureStorageContainer `
+    New-AzStorageContainer `
         -Name {your new container name} `
         -Permission Off `
         -Context $ctx
@@ -109,7 +111,7 @@ Konfiguracja wymaga następujących wartości:
 Użyj następującego polecenia cmdlet PowerShell, aby skonfigurować plik przekazać ustawienia Centrum IoT:
 
 ```powershell
-Set-AzureRmIotHub `
+Set-AzIotHub `
     -ResourceGroupName "{your iot hub resource group}" `
     -Name "{your iot hub name}" `
     -FileUploadNotificationTtl "01:00:00" `

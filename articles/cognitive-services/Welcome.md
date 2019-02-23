@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: nitinme
-ms.openlocfilehash: d9271b32f6254b032fab9e93aaf82ab39e7f1932
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 38ad921c7c4b2fef9d325c2e2c9eea25bd3c913b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876293"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734680"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Co to są usługi Azure Cognitive Services?
 
@@ -94,7 +94,7 @@ Szukasz region nie obsługujemy jeszcze? Daj nam znać, wypełniając zgłoszeni
 
  Usługi cognitive Services obsługuje szeroką gamę języków kultury na poziomie usługi. Możesz znaleźć dostępne wersje językowe dla każdego interfejsu API w [Lista języków obsługiwanych](language-support.md).
 
- ## <a name="container-support"></a>Obsługa kontenerów
+## <a name="container-support"></a>Obsługa kontenerów
 
  Usługi cognitive Services zapewnia kontenery do wdrożenia w chmurze platformy Azure lub lokalnie. Dowiedz się więcej o [kontenerów usługi Cognitive Services](cognitive-services-container-support.md).
 

@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 02/22/2010
 ms.author: jeffgilb
 ms.reviewer: anwestg
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: 0ac20ee9f6197a8322bb741020aee813c690847e
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 839fa7fe8374f1f85b019178d4c3fe53f7137372
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445887"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729648"
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Usługa App Service w usłudze Azure Stack: Dodawanie większej liczby ról infrastruktury lub proces roboczy
 
@@ -37,11 +37,6 @@ Usługa App Service w usłudze Azure Stack domyślnie obsługuje warstwy bezpła
 Jeśli nie masz pewności, co zostało wdrożone przy użyciu domyślnego usługi App Service w usłudze Azure Stack instalacji, możesz przejrzeć dodatkowe informacje w [usługi App Service w usłudze Azure Stack — omówienie](azure-stack-app-service-overview.md).
 
 Usługa Azure App Service w usłudze Azure Stack wdraża wszystkich ról przy użyciu zestawów skalowania maszyn wirtualnych i jako takie korzysta z możliwości skalowania danego obciążenia. W związku z tym wszystkie skalowanie warstwy procesu roboczego odbywa się za pośrednictwem administratora usługi aplikacji
-
-> [!IMPORTANT]
-> Obecnie nie jest możliwe skalowanie zestawów skalowania maszyn wirtualnych w portalu jak określone w informacjach o wersji usługi Azure Stack, zatem skalowanie w poziomie za pomocą do przykładu programu PowerShell.
->
->
 
 ## <a name="add-additional-workers-with-powershell"></a>Dodawanie dodatkowych procesów roboczych przy użyciu programu PowerShell
 
@@ -80,7 +75,7 @@ Usługa Azure App Service w usłudze Azure Stack wdraża wszystkich ról przy u�
 
 3. Monitor stanu nowych wystąpień roli w administracji usługi aplikacji, aby sprawdzić stan wystąpienia poszczególnych ról kliknij typ roli na liście.
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Dodawanie dodatkowych procesów roboczych bezpośrednio z poziomu administratora dostawcy zasobów usługi aplikacji
+## <a name="add-additional-workers-using-the-administration-portal"></a>Dodawanie dodatkowych procesów roboczych przy użyciu portalu administracyjnego
 
 1. Zaloguj się do portalu administratora usługi Azure Stack jako administratora usługi.
 

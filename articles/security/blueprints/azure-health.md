@@ -9,12 +9,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
-ms.openlocfilehash: 6787f347661db61806180edde5c091a865051748
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 28d1ed43ecdb1ff853e066567f331b8c302ce7aa
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103076"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730447"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Zabezpieczenia platformy Azure i zgodności planu — dane kondycji HIPAA/HITRUST i SI
 
@@ -93,7 +93,7 @@ One nie mają dostępu do kartoteki pacjentów.
 
 -   Zakres: ResourceGroup
 
- ### <a name="data-scientist"></a>Analityk danych
+### <a name="data-scientist"></a>Analityk danych
 
 
 Analityk danych działa w usłudze Azure Machine Learning Studio. Mogą importować, eksportować i zarządzanie danymi i uruchamianie raportów. Analityk danych ma dostęp do danych pacjentów, ale nie ma uprawnienia administracyjne.

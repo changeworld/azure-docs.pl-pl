@@ -6,15 +6,15 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: bbec2205fc6b29476cf531c071b5c2ac4c014bcb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227084"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732527"
 ---
 # <a name="how-to-manage-settings"></a>Jak zarządzać ustawieniami
 
@@ -45,7 +45,7 @@ Jeśli nie masz subskrypcji, wykonaj następujące czynności:
     ![Jak dodać klucz subskrypcji](media/how-to/how-to-add-subscription-key.png)
 
 3. W oknie dialogowym Wprowadź klucz dla Twojej subskrypcji w usłudze translator, a następnie kliknij przycisk "Dodaj".
- 
+
     ![Jak dodać klucz subskrypcji](media/how-to/how-to-add-subscription-key-dialog.png)
 4.  Po dodaniu klucza można zmodyfikować lub usunąć klucz w dowolnym momencie.
 
@@ -53,29 +53,29 @@ Jeśli nie masz subskrypcji, wykonaj następujące czynności:
 
 ## <a name="manage-your-workspace"></a>Zarządzanie obszarem roboczym
 
-Obszar roboczy jest obszar roboczy, do redagowania i tworzenia systemu tłumaczenia niestandardowych. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów. 
+Obszar roboczy jest obszar roboczy, do redagowania i tworzenia systemu tłumaczenia niestandardowych. Obszar roboczy może zawierać wiele projektów, modeli i dokumentów.
 
-Jeśli różne część swojej pracy musi być udostępniane osobom w innej, może być przydatne utworzenie wielu obszarów roboczych. 
+Jeśli różne część swojej pracy musi być udostępniane osobom w innej, może być przydatne utworzenie wielu obszarów roboczych.
 
 ## <a name="create-a-new-workspace"></a>Utwórz nowy obszar roboczy
 
 1.  Przejdź do strony "Ustawienia" obszaru roboczego.
 2.  Kliknij pozycję "nowy obszar roboczy" przycisk w sekcji "Utwórz nowy obszar roboczy".
-    
+
     ![Utwórz nowy obszar roboczy](media/how-to/create-new-workspace.png)
 
 4.  W oknie dialogowym Wprowadź nazwę nowego obszaru roboczego.
 5.  Kliknij przycisk "Utwórz".
-    
+
     ![Utwórz nowy obszar roboczy okna dialogowego](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>Udostępnij obszar roboczy
 
-W niestandardowych w usłudze Translator można udostępniać obszaru roboczego z innymi osobami, jeśli różne część swojej pracy musi być udostępniane osobom w innej. 
+W niestandardowych w usłudze Translator można udostępniać obszaru roboczego z innymi osobami, jeśli różne część swojej pracy musi być udostępniane osobom w innej.
 
 1.  Przejdź do strony "Ustawienia" obszaru roboczego.
 2.  Kliknij przycisk "Udostępnij" w sekcji "Ustawienia udostępniania".
-    
+
     ![Udostępnij obszar roboczy](media/how-to/share-workspace.png)
 
 3.  W oknie dialogowym wprowadź rozdzielaną przecinkami listę adresów e-mail, które chcesz, aby ten obszar roboczy udostępnione. Upewnij się, udostępnić za pomocą adresu e-mail tej osoby używa się do niestandardowego w usłudze Translator z. Następnie wybierz odpowiedni poziom uprawnień do udostępniania.
@@ -85,7 +85,7 @@ W niestandardowych w usłudze Translator można udostępniać obszaru roboczego 
 
 ## <a name="sharing-permissions"></a>Uprawnienia do udostępniania
 
-1.  **Czytnik:** Czytnik w obszarze roboczym będą mogli wyświetlać wszystkie informacje w obszarze roboczym. 
+1.  **Czytnik:** Czytnik w obszarze roboczym będą mogli wyświetlać wszystkie informacje w obszarze roboczym.
 
 2.  **Edytor:** Edytor w obszarze roboczym będą mogli dodać dokumenty, uczyć modele i usuwać dokumenty i projektów. One można dodać klucz subskrypcji, ale nie można modyfikować, który jest udostępniany przez obszar roboczy, usunąć obszar roboczy lub zmienić nazwę obszaru roboczego.
 

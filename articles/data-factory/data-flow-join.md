@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: 517afe21fbf9241e2b2423525e9caee12a5603f6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: f95edc881e26576df216c92ff0b94c5c19bf7fa8
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56272020"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727931"
 ---
 # <a name="azure-data-factory-data-flow-join-transformation"></a>Usługi Azure Data Factory danych przepływ sprzężenia transformacji
 

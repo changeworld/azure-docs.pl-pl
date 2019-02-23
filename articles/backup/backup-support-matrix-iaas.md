@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.author: raynew
-ms.openlocfilehash: b99d6285942bafe5467827c30b5ba2e42094fdf3
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 2bd499c3afc423047dda9ff3ad657d110dab282a
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430885"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673651"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Macierz obsługi kopii zapasowej maszyny Wirtualnej platformy Azure
 Możesz użyć [usługi Azure Backup](backup-overview.md) do tworzenia kopii zapasowych maszyn lokalnych i obciążeń oraz maszyn wirtualnych platformy Azure. Ten artykuł zawiera podsumowanie ustawień obsługi i ograniczenia, podczas tworzenia kopii zapasowych maszyn wirtualnych (VM) z usługą Azure Backup.
@@ -37,7 +37,7 @@ Oto, jak tworzenie kopii zapasowej i przywracanie maszyn wirtualnych platformy A
 **Bezpośrednie tworzenie kopii zapasowych maszyn wirtualnych platformy Azure (tylko Windows)** | Wykonaj kopię zapasową określonych plików/folderów/woluminów | Zainstaluj [agenta usługi Microsoft Azure Recovery Services (MARS)](backup-azure-file-folder-backup-faq.md).<br/><br/> Można uruchomić agenta usług MARS obok zapasowy numer wewnętrzny dla agenta maszyny Wirtualnej platformy Azure do tworzenia kopii zapasowych maszyn wirtualnych na poziomie plików/folderów. | Przywracanie plików/folderów określonych.
 **Tworzenie kopii zapasowej maszyny Wirtualnej platformy Azure do tworzenia kopii zapasowej serwera** |  Tworzenie kopii zapasowej plików/folderów/woluminów; Stan/bez systemu operacyjnego pliki systemowe; dane aplikacji do programu System Center DPM lub serwera usługi Microsoft Azure Backup (serwer usługi MAB).<br/><br/> Program DPM/serwera usługi Mab następnie tworzy kopię zapasową do magazynu kopii zapasowych | Zainstaluj agenta ochrony serwera usługi Mab/DPM na maszynie Wirtualnej. Agent usług MARS jest zainstalowany na program DPM/serwera usługi MAB.| Przywracanie plików/folderów/woluminów; Stan/bez systemu operacyjnego pliki systemowe; dane aplikacji. 
 
-Dowiedz się więcej o usłudze backup przy użyciu kopii zapasowej server(backup-architecture.md#architecture-back-up-to-dpmmabs) i [obsługi wymagań związanych z](backup-support-matrix-mabs-dpm.md).
+Dowiedz się więcej o usłudze backup [przy użyciu kopii zapasowej serwera](backup-architecture.md#architecture-back-up-to-dpmmabs), i [obsługi wymagań związanych z](backup-support-matrix-mabs-dpm.md).
 
 
 ## <a name="supported-backup-actions"></a>Obsługiwane operacje tworzenia kopii zapasowej
@@ -189,7 +189,7 @@ Maszyny wirtualne z publicznych adresów IP    | Obsługiwane.<br/><br/> Musisz 
 Sieciowa grupa zabezpieczeń (NSG) w kart Sieciowych/podsieci. |   Obsługiwane.
 Zastrzeżony adres IP (statyczne) | Nieobsługiwane.<br/><br/> Nie można utworzyć kopii zapasowej maszyny Wirtualnej za pomocą zastrzeżonego adresu IP i nie ma zdefiniowanego punktu końcowego.
 Dynamiczny adres IP |    Obsługiwane.<br/><br/> Jeśli karta sieciowa na "source" maszyna wirtualna używa dynamicznego adresowania IP, domyślnie kartę Sieciową do przywróconej maszyny wirtualnej będzie zbyt.
-Traffic Manager | Obsługiwane<br/><br/>. Jeśli kopia zapasowa maszyny Wirtualnej znajduje się w usłudze Traffic Manager, należy ręcznie dodać przywróconej maszyny Wirtualnej do tej samej usługi Traffic Manager. 
+Traffic Manager | Obsługiwane<br/><br/> Jeśli kopia zapasowa maszyny Wirtualnej znajduje się w usłudze Traffic Manager, należy ręcznie dodać przywróconej maszyny Wirtualnej do tej samej usługi Traffic Manager. 
 System DNS platformy Azure | Obsługiwane.
 Niestandardowe DNS |    Obsługiwane.
 Łączności wychodzącej za pośrednictwem serwera proxy HTTP | Obsługiwane.<br/><br/> Uwierzytelnionego serwera proxy nie jest obsługiwane. 

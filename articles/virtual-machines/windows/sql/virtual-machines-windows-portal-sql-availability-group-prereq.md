@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: ff2031bd4c4fdc3d3ed8447a08ef29f0f89ea1d8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7aebdace6b6200f400d0c642c8cbdc6d31544752
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818026"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733031"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Należy spełnić wymagania wstępne dotyczące tworzenia zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure
 
@@ -308,7 +308,7 @@ Po zakończeniu zmiany konfiguracji, uruchom ponownie serwer.
 
 W witrynie Azure portal w ramach sieci wirtualnej należy zmienić serwer DNS, aby uwzględnić adres IP dodatkowy kontroler domeny. To ustawienie umożliwia nadmiarowość usług DNS.
 
-### <a name=DomainAccounts></a> Konfigurowanie kont domeny
+### <a name="DomainAccounts"></a> Konfigurowanie kont domeny
 
 W następnych krokach konfigurowania kont usługi Active Directory. W poniższej tabeli przedstawiono kont:
 

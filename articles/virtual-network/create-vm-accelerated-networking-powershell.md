@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: gsilva
-ms.openlocfilehash: 7f056ab79bbd2d2b66e40546a6df7677ffe75a21
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: a5f32504fc7d8fe0faa17d469aec017d39a6b1ce
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649462"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737148"
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną Windows dzięki przyspieszonej sieci
 
@@ -62,9 +62,13 @@ Obsługiwany rozmiar maszyny Wirtualnej bez obsługą przyspieszonej sieci może
 Nie można wdrożyć maszyny wirtualne (klasyczne) dzięki przyspieszonej sieci.
 
 ## <a name="create-a-windows-vm-with-azure-accelerated-networking"></a>Tworzenie Windows maszyny Wirtualnej przy użyciu platformy Azure przyspieszona sieć
+## <a name="portal-creation"></a>Tworzenie portalu
+Chociaż ten artykuł zawiera kroki, aby utworzyć maszynę wirtualną z przyspieszoną siecią przy użyciu programu Azure Powershell, możesz również [Utwórz maszynę wirtualną z przyspieszoną siecią przy użyciu witryny Azure portal](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Podczas tworzenia maszyny wirtualnej w portalu w **Utwórz maszynę wirtualną** bloku wybierz **sieć** kartę.  Na tej karcie jest opcja **funkcji przyspieszonej łączności sieciowej**.  Jeśli wybrano [obsługiwanym systemie operacyjnym](#supported-operating-systems) i [rozmiar maszyny Wirtualnej](#supported-vm-instances), automatycznie wypełni tę opcję na wartość "Włączone".  W przeciwnym razie zostanie wypełnić Accelerated Networking opcję "Wyłączone" i przyznać użytkownikowi powód, dlaczego nie jest być włączone.   
+* *Uwaga:* Można ją włączyć tylko obsługiwane systemy operacyjne za pośrednictwem portalu.  Jeśli używasz niestandardowego obrazu, a obraz obsługuje Accelerated Networking, utwórz maszynę Wirtualną przy użyciu interfejsu wiersza polecenia lub programu Powershell. 
 
-Chociaż ten artykuł zawiera kroki, aby utworzyć maszynę wirtualną z przyspieszoną siecią przy użyciu programu Azure PowerShell, możesz również [Utwórz maszynę wirtualną z przyspieszoną siecią przy użyciu witryny Azure portal](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Podczas tworzenia maszyny wirtualnej w portalu w obszarze **ustawienia**, wybierz opcję **włączone**w obszarze **funkcji przyspieszonej łączności sieciowej**. Możliwość włączenia przyspieszonej łączności sieciowej nie jest wyświetlane w portalu, chyba że wybrano [obsługiwanym systemie operacyjnym](#supported-operating-systems) i [rozmiar maszyny Wirtualnej](#supported-vm-instances). Po utworzeniu maszyny wirtualnej, należy wykonać instrukcje w [upewnij się, sterownik jest zainstalowany w systemie operacyjnym](#confirm-the-driver-is-installed-in-the-operating-system).
+Po utworzeniu maszyny wirtualnej, możesz sprawdzić, przyspieszonej sieci jest włączona, postępując zgodnie z instrukcjami w [upewnij się, że włączono przyspieszonej łączności sieciowej](#confirm-that-accelerated-networking-is-enabled).
 
+## <a name="powershell-creation"></a>Tworzenie środowiska PowerShell
 ## <a name="create-a-virtual-network"></a>Tworzenie sieci wirtualnej
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]

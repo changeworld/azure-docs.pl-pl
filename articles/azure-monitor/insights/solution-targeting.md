@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d1d2dd689cb389b6adfe1dd534e7c73e17f755f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4beb9811a57ecd0a1eada5b36bd65b67851d2564
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989189"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731977"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Określanie wartości docelowej rozwiązania do monitorowania w usłudze Azure Monitor (wersja zapoznawcza)
 Po dodaniu rozwiązania do monitorowania ze swoją subskrypcją, jest automatycznie wdrażane domyślnie wszyscy agenci Windows i Linux, połączonego z obszarem roboczym usługi Log Analytics.  Można zarządzać koszty i ograniczyć ilość danych zebranych dla rozwiązania przez ograniczenie go do określonego zestawu agentów.  W tym artykule opisano sposób używania **określania celu rozwiązania** czyli funkcja umożliwiająca można zastosować zakres do rozwiązania.
@@ -35,7 +35,7 @@ Określ komputery, które mają zostać uwzględnione w zakresie, tworząc [grup
 Raz masz grupa utworzona w obszarze roboczym, a następnie zostaną objęte konfiguracji zakresu, który można zastosować do jednego lub więcej rozwiązań.
  
  
- ### <a name="2-create-a-scope-configuration"></a>2. Tworzenie konfiguracji zakresu
+### <a name="2-create-a-scope-configuration"></a>2. Tworzenie konfiguracji zakresu
  A **konfiguracji zakresu** zawiera jeden lub więcej grup komputerów i mogą być stosowane do jednej lub więcej rozwiązań. 
  
  Tworzenie konfiguracji zakresu, za pomocą poniższego procesu.  
@@ -49,7 +49,7 @@ Raz masz grupa utworzona w obszarze roboczym, a następnie zostaną objęte konf
  6. Kliknij przycisk **OK** można utworzyć konfiguracji zakresu. 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Zastosuj konfigurację zakresu do rozwiązania.
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Zastosuj konfigurację zakresu do rozwiązania.
 Po utworzeniu konfiguracji zakresu, następnie można zastosować go do jednego lub więcej rozwiązań.  Należy pamiętać, że konfiguracja pojedynczy zakres można zastosować wiele rozwiązań, każde z tych rozwiązań można używać tylko jedną konfigurację zakresu.
 
 Zastosuj konfigurację zakresu, za pomocą poniższego procesu.  

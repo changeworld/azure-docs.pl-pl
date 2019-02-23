@@ -8,12 +8,12 @@ ms.date: 02/17/2019
 ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
-ms.openlocfilehash: 74b6d953939a569a3240c9d64134d143dc4f179e
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 0544782763bebac42b4b68fda42cff80b18ff067
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430850"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670738"
 ---
 # <a name="support-matrix-for-backup-with-microsoft-azure-backup-serversystem-center-dpm"></a>Macierz obsługi kopii zapasowej za pomocą pakietu Microsoft Azure Backup Server/System Center DPM
 
@@ -75,7 +75,7 @@ Usługa Azure Backup można utworzyć kopię zapasową serwera usługi Mab/w pro
 --- | --- 
 **Serwera usługi Mab na Maszynie wirtualnej platformy Azure** | Windows Server 2012 R2<br/><br/> Windows 2016 Datacenter<br/><br/> Windows 2019 Datacenter<br/><br/> Zaleca się, że uruchomieniu za pomocą obrazu z witryny marketplace.<br/><br/> Minimalna A2 warstwie podstawowa przy użyciu dwóch rdzeni oraz 3,5 GB pamięci RAM. 
 **Program DPM na maszynie Wirtualnej platformy Azure** | System Center 2012 R2 z aktualizacją Update 3 lub nowszej.<br/><br/> System operacyjny Windows jako [wymagane przez program System Center](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1807#dpm-server).<br/><br/> Zaleca się, że uruchomieniu za pomocą obrazu z witryny marketplace.<br/><br/> Minimalna A2 warstwie podstawowa przy użyciu dwóch rdzeni oraz 3,5 GB pamięci RAM. 
-**Serwera usługi Mab w środowisku lokalnym** | Obsługiwane 64-bitowych systemach operacyjnych:<br/><br/> -Serwera usługi Mab w wersji 3 lub nowszym: System Windows Server 2019 r (wersje Standard i Datacenter, podstawowe elementy) <br/><br/> Serwera usługi Mab w wersji 2 lub nowszy: System Windows Server 2016 (wersje Standard i Datacenter, podstawowe elementy)<br/><br/> Wszystkie wersje serwera usługi Mab: Windows Server 2012 R2/2012 (wersje Standard i Datacenter, Foundation)<br/><br/>Wszystkie wersje serwera usługi Mab: Windows Storage Server 2012 R2/2012 (Standardowa/grupa robocza)
+**Serwera usługi Mab w środowisku lokalnym** | Obsługiwane 64-bitowych systemach operacyjnych:<br/><br/> Serwera usługi Mab w wersji 3 lub nowszym: System Windows Server 2019 r (wersje Standard i Datacenter, podstawowe elementy) <br/><br/> Serwera usługi Mab w wersji 2 lub nowszy: System Windows Server 2016 (wersje Standard i Datacenter, podstawowe elementy)<br/><br/> Wszystkie wersje serwera usługi Mab: Windows Server 2012 R2/2012 (wersje Standard i Datacenter, Foundation)<br/><br/>Wszystkie wersje serwera usługi Mab: Windows Storage Server 2012 R2/2012 (Standardowa/grupa robocza)
 **Program DPM w środowisku lokalnym** | Fizyczny serwer/funkcji Hyper-V maszyny Wirtualnej: System Center 2012 SP1 lub nowszym.<br/><br/> Maszyna wirtualna VMware: System Center 2012 R2 z aktualizacją Update 5 lub nowszym. 
 
 
@@ -106,7 +106,7 @@ Można wdrożyć serwera usługi Mab na Maszynie wirtualnej platformy Azure Stac
 .NET framework na serwera usługi Mab | Maszyna wirtualna serwera usługi Mab musi .NET Framework w wersji 3.3 z dodatkiem SP1 lub nowszego na nim zainstalowany.
 **Domeny serwera usługi Mab** | Maszyna wirtualna serwera usługi Mab muszą być przyłączone do domeny. Użytkownik domeny z uprawnieniami administratora, należy zainstalować serwera usługi Mab na maszynie Wirtualnej.
 **Usługa Azure backup dane maszyny Wirtualnej stosu** | Można utworzyć kopię zapasową plików, folderów i aplikacji.
-**Obsługiwane kopii zapasowej** | Te systemy operacyjne są obsługiwane dla maszyn wirtualnych, aby utworzyć kopię zapasową:<br/><br/> -Windows Server półroczny kanał (Datacenter/Enterprise/Standard)<br/><br/> System Windows Server 2016/2012 R2/2012/2008 R2.
+**Obsługiwane kopii zapasowej** | Te systemy operacyjne są obsługiwane dla maszyn wirtualnych, aby utworzyć kopię zapasową:<br/><br/> Windows Server półroczny kanał (Datacenter/Enterprise/Standard)<br/><br/> System Windows Server 2016/2012 R2/2012/2008 R2.
 **Obsługa programu SQL dla maszyn wirtualnych platformy Azure Stack** | Utwórz kopię zapasową programu SQL Server 2016/2014/2012 z dodatkiem SP1.<br/><br/> Tworzenie kopii zapasowych i odzyskiwanie bazy danych.
 **Obsługa programu SharePoint dla maszyn wirtualnych platformy Azure Stack** | Program SharePoint 2016/2013/2010.<br/><br/> Tworzenie kopii zapasowych i odzyskiwania farmy, bazy danych, serwera sieci Web, serwer sieci web.
 **Wymagania dotyczące sieci dla kopii zapasowych maszyn wirtualnych** | Wszystkie maszyny wirtualne w obciążeniu usługi Azure Stack musi być w tej samej sieci wirtualnej i należą do tej samej subskrypcji.
@@ -220,4 +220,4 @@ W poniższej tabeli podsumowano, co może być kopii zapasowej program DPM z mas
 - [Dowiedz się więcej](backup-architecture.md#architecture-back-up-to-dpmmabs) o architekturze serwera usługi MAB.
 - [Przegląd](backup-support-matrix-mars-agent.md) co to jest obsługiwana w przypadku agenta usług MARS.
 - [Konfigurowanie](backup-azure-microsoft-azure-backup.md) server serwera usługi MAB.
-- [Konfigurowanie] (https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180
+- [Konfigurowanie programu DPM](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-180)

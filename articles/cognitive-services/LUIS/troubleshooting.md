@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: diberry
-ms.openlocfilehash: 71fb289f03467147acb2ef254ab87a2c753bc75c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 39e942b3694ebc59d3cf7d9f4b6a02c4f025e0d0
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416551"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737301"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding — często zadawane pytania (FAQ)
 
@@ -102,10 +102,12 @@ Jeśli nie widzisz trafień zaktualizowano punkt końcowy na pulpicie nawigacyjn
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Czy istnieje PowerShell polecenia uzyskać dostęp do punktu końcowego limitu przydziału?
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Aby wyświetlić limit przydziału punktu końcowego, można użyć polecenia programu PowerShell:
 
 ```powershell
-Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Moja aplikacja usługi LUIS była praca wczoraj, ale już dziś otrzymuję błędy 403. Nie można zmodyfikować aplikację tak. Jak go naprawić?

@@ -9,19 +9,19 @@ ms.topic: include
 ms.date: 10/04/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 7ce380c2963a57667d94def0c552391700a40949
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 4ab3348b3545a834763f61e79ad38302de1d9926
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48804654"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56739358"
 ---
 Poniższa tabela zawiera informacje dotyczące dodanie obsługi dla tego powiązania w każdym środowisku programistycznym.
 
 | Środowisko deweloperskie               | Aby dodać obsługę w <br>Functions w wersji 2.x  |
 |----------------------|----------------|---------------|
-|Lokalne programowanie - biblioteki klas C#       | [Zainstaluj pakiet](../articles/azure-functions/functions-triggers-bindings.md#c-class-library-with-visual-studio-2017) |
-|Lokalne programowanie — skrypt języka C#, JavaScript, F # |[Zarejestruj rozszerzenie](../articles/azure-functions/functions-triggers-bindings.md#local-development-azure-functions-core-tools)         |
+|Lokalne programowanie - biblioteki klas C#       | [Zainstaluj pakiet](../articles/azure-functions/functions-bindings-register.md#c-class-library-with-visual-studio-2017) |
+|Lokalne programowanie - C# skryptu JavaScriptF# |[Zarejestruj rozszerzenie](../articles/azure-functions/functions-bindings-register.md#local-development-azure-functions-core-tools)         |
 |Portal programowania| [Zarejestruj rozszerzenie](../articles/azure-functions/install-update-binding-extensions-manual.md)  |
 
 Aby dowiedzieć się, jak zaktualizować istniejące powiązanie rozszerzenia w portalu, bez konieczności ponownego publikowania projektu aplikacji funkcji, zobacz [uaktualnienia rozszerzeń](../articles/azure-functions/install-update-binding-extensions-manual.md).

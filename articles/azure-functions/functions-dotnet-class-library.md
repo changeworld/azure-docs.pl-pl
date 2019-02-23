@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 7e84e8e99000e9d8bd7a21d343588b1df777b56d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 661cdddb4682d003b0c1149819a096a2a3756090
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994539"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729002"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
 
@@ -29,7 +29,7 @@ Usługa Azure Functions obsługuje C# i C# script języków programowania. Jeśl
 W tym artykule założono, że użytkownik przeczytał już następujące artykuły:
 
 * [Przewodnik dla deweloperów usługi Azure Functions](functions-reference.md)
-* [Narzędzia programu Visual Studio 2017 usługi Azure Functions](functions-develop-vs.md)
+* [Azure Functions Visual Studio 2017 Tools](functions-develop-vs.md)
 
 ## <a name="functions-class-library-project"></a>Projekt biblioteki klas funkcji
 
@@ -50,7 +50,7 @@ Podczas tworzenia projektu w katalogu wyjściowego strukturę folderów, która 
  | - host.json
 ```
 
-Jest to katalog, co zostanie wdrożona do aplikacji funkcji na platformie Azure. Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są [dodane do projektu jako pakiety NuGet](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017).
+Jest to katalog, co zostanie wdrożona do aplikacji funkcji na platformie Azure. Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są [dodane do projektu jako pakiety NuGet](./functions-bindings-register.md#c-class-library-with-visual-studio-2017).
 
 > [!IMPORTANT]
 > Proces kompilacji tworzy *function.json* pliku dla każdej funkcji. To *function.json* pliku nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączyć tę funkcję, edytując ten plik. Aby dowiedzieć się, jak wyłączyć funkcję, zobacz [wyłączania funkcji](disable-function.md#functions-2x---c-class-libraries).
@@ -83,7 +83,7 @@ Podpis metody może zawierać parametrów innych niż używana przez atrybut wyz
 * [Dane wejściowe i wyjściowe powiązania](functions-triggers-bindings.md) odpowiednio oznaczone przez urządzanie je za pomocą atrybutów.  
 * `ILogger` Lub `TraceWriter` ([wersji 1.x — tylko](functions-versions.md#creating-1x-apps)) parametr [rejestrowania](#logging).
 * A `CancellationToken` parametr [łagodne zamykanie](#cancellation-tokens).
-* [Powiązania wyrażeń](functions-triggers-bindings.md#binding-expressions-and-patterns) parametry, aby przygotować wyzwolić metadanych.
+* [Powiązania wyrażeń](./functions-bindings-expressions-patterns.md) parametry, aby przygotować wyzwolić metadanych.
 
 Kolejność parametrów w sygnaturze funkcji nie ma znaczenia. Na przykład można umieścić parametry wyzwalacza, przed lub po innych powiązań i można umieścić parametr rejestratora przed lub po wyzwalaczem lub powiązaniem parametrów.
 
@@ -169,7 +169,7 @@ Jest używany ten sam pakiet, dla obu wersji 1.x i 2.x środowisko uruchomieniow
 </ItemGroup>
 ```
 
-**Funkcje 2.x**
+**Functions 2.x**
 
 ```xml
 <PropertyGroup>
@@ -205,7 +205,7 @@ Każde powiązanie ma swój własny obsługiwanych typów; na przykład można z
 
 ## <a name="binding-to-method-return-value"></a>Powiązanie z wartość zwracaną metody
 
-Wartość zwracaną metody można użyć dla powiązania danych wyjściowych, stosując atrybut na wartość zwracaną metody. Aby uzyskać przykłady, zobacz [wyzwalaczy i powiązań](functions-triggers-bindings.md#using-the-function-return-value). 
+Wartość zwracaną metody można użyć dla powiązania danych wyjściowych, stosując atrybut na wartość zwracaną metody. Aby uzyskać przykłady, zobacz [wyzwalaczy i powiązań](./functions-bindings-return-value.md). 
 
 Użyj wartości zwracanej tylko wtedy, gdy wykonanie funkcji pomyślne, który jest zawsze skutkuje zwracana wartość do przekazania do powiązania danych wyjściowych. W przeciwnym razie użyj `ICollector` lub `IAsyncCollector`, jak pokazano w poniższej sekcji.
 

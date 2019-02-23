@@ -12,16 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/22/2019
 ms.author: jeffgilb
 ms.reviewer: anwestg
-ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 0be1814fd501824056bc80d4aeb561ff58735125
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.lastreviewed: 02/22/2019
+ms.openlocfilehash: 3b057e9c4a0fccb3f85ec237433e4020fd4a84da
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447450"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737488"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Przed rozpoczęciem pracy z usługą App Service w usłudze Azure Stack
 
@@ -307,6 +307,16 @@ Wystąpienie programu SQL Server dla usługi Azure App Service w usłudze Azure 
 > Liczba obrazów maszyn wirtualnych SQL IaaS są dostępne za pomocą funkcji zarządzania portalu Marketplace. Upewnij się, że zawsze pobieranie najnowszej wersji rozszerzenie SQL IaaS, zanim wdrożysz maszynę Wirtualną przy użyciu elementu portalu Marketplace. Obrazy SQL są takie same jak maszyn wirtualnych SQL, które są dostępne na platformie Azure. Dla maszyn wirtualnych SQL z utworzonego na podstawie tych obrazów, rozszerzenie IaaS i odpowiadających im rozszerzenia portalu oferują funkcje, takie jak automatyczne stosowanie poprawek i możliwości tworzenia kopii zapasowej.
 >
 Dla każdej z ról programu SQL Server można użyć wystąpienia domyślnego lub nazwanego wystąpienia. Jeśli używasz nazwane wystąpienie, należy ręcznie uruchomić usługę SQL Server Browser i otwórz port 1434.
+
+Instalator usługi App Service sprawdzi, upewnij się, że program SQL Server ma zawierania bazy danych, włączone. Aby włączyć zawierania bazy danych w programie SQL Server, który będzie hostem bazy danych usługi App Service, uruchom następujące polecenia SQL:
+
+```sql
+sp_configure 'contained database authentication', 1;  
+GO  
+RECONFIGURE;  
+GO
+```
+
 
 >[!IMPORTANT]
 > Jeśli wybierzesz do wdrożenia usługi App Service w istniejącej sieci wirtualnej programu SQL Server powinny być wdrażane w osobnej podsieci z usługi App Service i serwera plików.

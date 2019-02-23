@@ -10,18 +10,19 @@ ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 482968af53694f7d40a7077435d33a83884c8808
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873054"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673703"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Języki obsługiwane przez interfejs API mowy usługi Translator
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Następujące języki są obsługiwane w przypadku tłumaczenia mowy. Jeśli oba języki są obsługiwane w przypadku tłumaczenia mowy i rozpoznawania mowy do rozpoznawania mowy, lub zamiana mowy na tekst jest dostępny. Jeśli język docelowy nie jest obsługiwane w przypadku tłumaczenia mowy, dostępna jest tylko mowy tłumaczenia tekstów. 
+Następujące języki są obsługiwane w przypadku tłumaczenia mowy. Jeśli oba języki są obsługiwane w przypadku tłumaczenia mowy i rozpoznawania mowy do rozpoznawania mowy, lub zamiana mowy na tekst jest dostępny. Jeśli język docelowy nie jest obsługiwane w przypadku tłumaczenia mowy, dostępna jest tylko mowy tłumaczenia tekstów.
 
 | Język mowy    |
 |:----------- |
@@ -34,9 +35,9 @@ Następujące języki są obsługiwane w przypadku tłumaczenia mowy. Jeśli oba
 | Japoński      |
 | Portugalski (Brazylia)     |
 | Rosyjski      |
-| Hiszpański      | 
+| Hiszpański      |
 
-Interfejs API mowy usługi Translator obsługuje następujące języki jako język docelowy zamiana mowy na tekst tłumaczenia. 
+Interfejs API mowy usługi Translator obsługuje następujące języki jako język docelowy zamiana mowy na tekst tłumaczenia.
 
 | Język tekstu    | Kod języka |
 |:----------- |:-------------:|
@@ -47,7 +48,7 @@ Interfejs API mowy usługi Translator obsługuje następujące języki jako jęz
 | Bułgarski      | `bg`          |
 | Kantoński (tradycyjny)      | `yue`          |
 | Kataloński      | `ca`          |
-| Chiński uproszczony      | `zh-Hans`          | 
+| Chiński uproszczony      | `zh-Hans`          |
 | Chiński tradycyjny      | `zh-Hant`          |
 | Chorwacki      | `hr`          |
 | Czeski      | `cs`          |
@@ -116,4 +117,4 @@ Zasób języków zwraca listę wszystkich obsługiwanych językach mowy, tekst i
 
 Dla rzut oka na językach usługa Microsoft Translator witryny sieci Web pokazuje wszystkie języki obsługiwane przez tekstu usługi Translator i interfejsy API rozpoznawania mowy. Ta lista nie zawiera informacje specyficzne dla deweloperów, takie jak kodów języków.
 
-[Zobacz listy języków](https://www.microsoft.com/translator/languages.aspx) 
+[Zobacz listy języków](https://www.microsoft.com/translator/languages.aspx)

@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73fffda6ec0ae0a65af9b5aa8505e3b9551bd3b4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 6433d130da108ce7bd0b6f8b4093161043c32645
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558179"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733150"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Rozpoczęcie korzystania z usługi Azure Stream Analytics: Wykrywanie oszustw w czasie rzeczywistym
 
@@ -190,7 +190,7 @@ Teraz, gdy masz strumień zdarzeń połączeń, możesz skonfigurować zadanie u
    |Subskrypcja   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma Centrum zdarzeń utworzonego.   |
    |Przestrzeń nazw centrum zdarzeń  |  asa-eh-ns-demo |  Wprowadź nazwę przestrzeni nazw Centrum zdarzeń.   |
    |Nazwa centrum zdarzeń  | asa-eh-frauddetection-demo | Wybierz nazwę Centrum zdarzeń.   |
-   |Nazwa zasad centrum zdarzeń  | asa — zasady — Zarządzanie — pokaz | Wybierz zasady dostępu, który został utworzony wcześniej.   |
+   |Nazwa zasad centrum zdarzeń  | asa-policy-manage-demo | Wybierz zasady dostępu, który został utworzony wcześniej.   |
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -355,10 +355,10 @@ Jeśli masz istniejące konto magazynu obiektów blob, można użyć, który. W 
 
    |**Ustawienie**  |**Sugerowana wartość**  |**Opis**  |
    |---------|---------|---------|
-   |Alias danych wyjściowych  |  Wejścia CallStream FraudulentCalls   |  Wprowadź nazwę identyfikującą dane wyjściowe zadania.   |
+   |Alias danych wyjściowych  |  CallStream-FraudulentCalls   |  Wprowadź nazwę identyfikującą dane wyjściowe zadania.   |
    |Subskrypcja   |  \<Twoja subskrypcja\> |  Wybierz subskrypcję platformy Azure, która ma utworzone konto magazynu. Konto magazynu może być w tej samej lub innej subskrypcji. W tym przykładzie przyjęto założenie, że konto magazynu zostało utworzone w tej samej subskrypcji. |
    |Konto magazynu  |  asaehstorage |  Wprowadź nazwę utworzonego konta magazynu. |
-   |Kontener  | asa-fraudulentcalls — pokaz | Wybierz pozycję Utwórz nowy, a następnie wprowadź nazwę kontenera. |
+   |Kontener  | asa-fraudulentcalls-demo | Wybierz pozycję Utwórz nowy, a następnie wprowadź nazwę kontenera. |
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     

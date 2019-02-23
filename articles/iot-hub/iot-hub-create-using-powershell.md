@@ -8,14 +8,14 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: robinsh
-ms.openlocfilehash: 7ecd35ba33d2860ba052aa27286c69985c2f7dd9
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 6462673f6c3992aacbaee168eafc6bdb1b2fa944
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190234"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733474"
 ---
-# <a name="create-an-iot-hub-using-the-new-azurermiothub-cmdlet"></a>Tworzenie Centrum IoT przy użyciu polecenia cmdlet New-AzureRmIotHub
+# <a name="create-an-iot-hub-using-the-new-aziothub-cmdlet"></a>Tworzenie Centrum IoT przy użyciu polecenia cmdlet New-AzIotHub
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
@@ -25,6 +25,8 @@ Polecenia cmdlet programu Azure PowerShell umożliwia tworzenie i zarządzanie u
 
 Aby ukończyć Instruktaż, potrzebna jest subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="connect-to-your-azure-subscription"></a>Nawiązywanie połączenia z subskrypcją platformy Azure
@@ -33,25 +35,25 @@ Jeśli używasz powłoki Cloud już zalogowano Cię do Twojej subskrypcji. Jeśl
 
 ```powershell
 # Log into Azure account.
-Login-AzureRMAccount
+Login-AzAccount
 ```
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 
 Należy grupę zasobów, aby wdrożyć usługi IoT hub. Można użyć istniejącej grupy zasobów lub Utwórz nową.
 
-Aby utworzyć grupę zasobów dla Centrum IoT, użyj [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) polecenia. W tym przykładzie tworzy grupę zasobów o nazwie **MyIoTRG1** w **wschodnie stany USA** regionu:
+Aby utworzyć grupę zasobów dla Centrum IoT, użyj [New AzResourceGroup](https://docs.microsoft.com/powershell/module/az.Resources/New-azResourceGroup) polecenia. W tym przykładzie tworzy grupę zasobów o nazwie **MyIoTRG1** w **wschodnie stany USA** regionu:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -Name MyIoTRG1 -Location "East US"
+New-AzResourceGroup -Name MyIoTRG1 -Location "East US"
 ```
 
 ## <a name="create-an-iot-hub"></a>Tworzenie centrum IoT Hub
 
-Aby utworzyć Centrum IoT w grupie zasobów utworzonej w poprzednim kroku, należy użyć [New AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/New-AzureRmIotHub) polecenia. Ten przykład tworzy **S1** Centrum o nazwie **MyTestIoTHub** w **wschodnie stany USA** regionu:
+Aby utworzyć Centrum IoT w grupie zasobów utworzonej w poprzednim kroku, należy użyć [New AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/New-azIotHub) polecenia. Ten przykład tworzy **S1** Centrum o nazwie **MyTestIoTHub** w **wschodnie stany USA** regionu:
 
 ```azurepowershell-interactive
-New-AzureRmIotHub `
+New-AzIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub `
     -SkuName S1 -Units 1 `
@@ -62,33 +64,33 @@ Nazwa centrum IoT hub musi być globalnie unikatowa.
 
 [!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
-Możesz wyświetlić listę wszystkich centrów IoT w subskrypcji przy użyciu [Get AzureRmIotHub](https://docs.microsoft.com/powershell/module/AzureRM.IotHub/Get-AzureRmIotHub) polecenia:
+Możesz wyświetlić listę wszystkich centrów IoT w subskrypcji przy użyciu [Get AzIotHub](https://docs.microsoft.com/powershell/module/az.IotHub/Get-azIotHub) polecenia:
 
 ```azurepowershell-interactive
-Get-AzureRmIotHub
+Get-AzIotHub
 ```
 
 Ten przykład przedstawia standardowa usługi IoT Hub S1 utworzonego w poprzednim kroku.
 
-Możesz usunąć Centrum IoT przy użyciu [AzureRmIotHub Usuń](https://docs.microsoft.com/powershell/module/azurerm.iothub/remove-azurermiothub) polecenia:
+Możesz usunąć Centrum IoT przy użyciu [AzIotHub Usuń](https://docs.microsoft.com/powershell/module/az.iothub/remove-aziothub) polecenia:
 
 ```azurepowershell-interactive
-Remove-AzureRmIotHub `
+Remove-AzIotHub `
     -ResourceGroupName MyIoTRG1 `
     -Name MyTestIoTHub
 ```
 
-Alternatywnie możesz usunąć grupę zasobów i wszystkie zasoby zawiera przy użyciu [Remove-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Remove-AzureRmResourceGroup) polecenia:
+Alternatywnie możesz usunąć grupę zasobów i wszystkie zasoby zawiera przy użyciu [AzResourceGroup Usuń](https://docs.microsoft.com/powershell/module/az.Resources/Remove-azResourceGroup) polecenia:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name MyIoTRG1
+Remove-AzResourceGroup -Name MyIoTRG1
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Teraz wdrożeniu Centrum IoT hub przy użyciu polecenia cmdlet programu PowerShell, jeśli chcesz dokładniej, zapoznaj się z następującymi artykułami:
 
-* [Polecenia cmdlet programu PowerShell do pracy z Centrum IoT hub](https://docs.microsoft.com/powershell/module/azurerm.iothub/).
+* [Polecenia cmdlet programu PowerShell do pracy z Centrum IoT hub](https://docs.microsoft.com/powershell/module/az.iothub/).
 
 * [Interfejs API REST dostawcy zasobów usługi IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource).
 

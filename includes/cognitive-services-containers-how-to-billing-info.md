@@ -4,14 +4,14 @@ ms.author: diberry
 ms.service: cognitive-services
 ms.topic: include
 ms.date: 002/08/2019
-ms.openlocfilehash: ce7d8628c28a4a202a05aeea60e71655b4b7f1a2
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 12c86ca71b7421678b68684cccca86411d604d61
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984923"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56741206"
 ---
-Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klienta (wypowiedź) do firmy Microsoft. Kontener raportów użycia dotyczących co 10 do 15 minut.
+Kontenery usługi cognitive Services nie są licencjonowane do uruchomienia bez połączenia z platformy Azure do zbierania danych. Klienci muszą włączyć kontener, aby komunikować informacje rozliczeniowe usłudze zliczania przez cały czas. Kontenery usługi cognitive Services nie wysyłaj danych klientów (np. obraz lub tekst, który jest analizowana) do firmy Microsoft. Kontener raportów użycia dotyczących co 10 do 15 minut.
 
 `docker run` Używa następujących argumentów na potrzeby rozliczeń:
 

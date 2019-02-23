@@ -10,18 +10,18 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/202018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: b092509c1029bbff028da6bf94b9f7dbd1068b16
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 87505081f16008dff7da1f567c1265c695f3f0ab
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020034"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670847"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopiowanie danych z punktu końcowego HTTP przy użyciu usługi Azure Data Factory
 
-> [!div class="op_single_selector" title1="Wybierz wersję usługi Data Factory, z której korzystasz:"]
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Wersja 1](v1/data-factory-http-connector.md)
 > * [Bieżąca wersja](connector-http.md)
 
@@ -104,7 +104,7 @@ Aby użyć uwierzytelniania ClientCertificate, ustaw **authenticationType** wła
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | embeddedCertData | Dane zakodowane w formacie Base64 certyfikatu. | Wybierz opcję **embeddedCertData** lub **certthumbprint, aby**. |
-| certthumbprint, aby | Odcisk palca certyfikatu, który jest zainstalowany na magazyn certyfikatów Self-Hosted Integration Runtime tego komputera. Ma zastosowanie tylko wtedy, gdy typ samodzielnie hostowanego środowiska Integration Runtime określono w **connectVia** właściwości. | Wybierz opcję **embeddedCertData** lub **certthumbprint, aby**. |
+| certThumbprint | Odcisk palca certyfikatu, który jest zainstalowany na magazyn certyfikatów Self-Hosted Integration Runtime tego komputera. Ma zastosowanie tylko wtedy, gdy typ samodzielnie hostowanego środowiska Integration Runtime określono w **connectVia** właściwości. | Wybierz opcję **embeddedCertData** lub **certthumbprint, aby**. |
 | hasło | Hasło, które ma skojarzony z certyfikatem. Oznacz to pole jako **SecureString** typ, aby bezpiecznie przechowywać w usłudze Data Factory. Możesz również [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 
 Jeśli używasz **certthumbprint, aby** dla uwierzytelniania i certyfikat został zainstalowany w magazynie osobistym komputera lokalnego, udziel uprawnień do odczytu Self-Hosted Integration Runtime:
@@ -172,7 +172,7 @@ Aby skopiować dane z protokołu HTTP, należy ustawić **typu** właściwości 
 | relativeUrl | Względny adres URL do zasobu, który zawiera dane. Jeśli ta właściwość nie jest określona, używana jest tylko adres URL, który jest określony w definicji połączonej usługi. | Nie |
 | requestMethod | Metoda HTTP. Dozwolone wartości to **uzyskać** (ustawienie domyślne) i **wpis**. | Nie |
 | additionalHeaders | Dodatkowe nagłówki żądania HTTP. | Nie |
-| RequestBody | Treść żądania HTTP. | Nie |
+| requestBody | Treść żądania HTTP. | Nie |
 | format | Jeśli chcesz pobrać dane z punktu końcowego HTTP jako — jest bez analizy, a następnie skopiuj je do sklepu oparte na plikach, Pomiń **format** sekcji w definicji zestawu danych wejściowych i wyjściowych.<br/><br/>Jeśli chcesz przeanalizować zawartości odpowiedzi HTTP podczas kopiowania, obsługiwane są następujące typy formatów plików: **TextFormat**, **JsonFormat**, **AvroFormat**, **OrcFormat**, i **ParquetFormat**. W obszarze **format**ustaw **typu** jedną z następujących wartości właściwości. Aby uzyskać więcej informacji, zobacz [formatu JSON](supported-file-formats-and-compression-codecs.md#json-format), [format tekstu](supported-file-formats-and-compression-codecs.md#text-format), [Avro format](supported-file-formats-and-compression-codecs.md#avro-format), [Orc format](supported-file-formats-and-compression-codecs.md#orc-format), i [formatu Parquet](supported-file-formats-and-compression-codecs.md#parquet-format). |Nie |
 | Kompresja | Określ typ i poziom kompresji danych. Aby uzyskać więcej informacji, zobacz [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md#compression-support).<br/><br/>Obsługiwane typy: **GZip**, **Deflate**, **BZip2**, i **ZipDeflate**.<br/>Obsługiwane poziomy:  **Optymalne** i **najszybszy**. |Nie |
 

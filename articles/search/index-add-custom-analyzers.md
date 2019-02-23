@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: cb2f06bf2a05e2642eb688a48006d0df5fa4fc2c
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 82b2910a1654461cade853b71e6d57a674bb849e
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587824"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733201"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Dodaj niestandardowe analizatory do indeksu usługi Azure Search
 
@@ -189,7 +189,7 @@ Możesz użyć **operacji analizatora testu** w [interfejsu API REST](https://do
   }
 ```
 
- ## <a name="update-custom-analyzers"></a>Niestandardowe analizatory aktualizacji
+## <a name="update-custom-analyzers"></a>Niestandardowe analizatory aktualizacji
 
 Po zdefiniowaniu analizator, tokenizator, token filtru lub filtr char, nie można modyfikować. Nowe można dodać do istniejącego indeksu tylko wtedy, gdy `allowIndexDowntime` flaga jest ustawiona na wartość true w żądaniu aktualizacji indeksu:
 
@@ -205,7 +205,7 @@ Ta operacja pobiera indeksu w trybie offline dla co najmniej kilka sekund, co po
 
 W poniższych tabelach listę właściwości konfiguracji dla analizatorów, tokenizatory, filtry tokenu i char sekcja filtru definicji indeksu. Struktura analizatora, tokenizatora lub filtr w indeksie składa się z tych atrybutów. Wartość przydziału informacji, zobacz [odwołania do właściwości](#PropertyReference).
 
- ### <a name="analyzers"></a>Analizatory
+### <a name="analyzers"></a>Analizatory
 
 Dla analizatorów, atrybuty indeksu różnią się w zależności od tego, czy używasz analizatory wstępnie zdefiniowaną lub niestandardową.
 
@@ -229,7 +229,7 @@ Dla analizatorów, atrybuty indeksu różnią się w zależności od tego, czy u
 
 <a name="CharFilter"></a>
 
- ### <a name="char-filters"></a>Filtry char
+### <a name="char-filters"></a>Filtry char
 
  Filtr char służy do przygotowania tekst wejściowy przetworzenia przez tokenizatora. Na przykład ich można zastąpić niektórych znaków lub symboli. Może mieć wiele filtrów char w analizatora niestandardowego. CHAR — filtry są uruchamiane w kolejności, w którym są wymienione.  
 
@@ -239,7 +239,7 @@ Dla analizatorów, atrybuty indeksu różnią się w zależności od tego, czy u
 |Type|CHAR filtrowania typu z listy obsługiwanych char filtrów. Zobacz **char_filter_type** kolumny w [Char filtry](#CharFilter) w poniższej tabeli.|  
 |Opcje|Musi być prawidłowe opcje z danym [Char filtry](#CharFilter) typu.|  
 
- ### <a name="tokenizers"></a>Tokenizatory
+### <a name="tokenizers"></a>Tokenizatory
 
  Tokenizator dzieli tekst ciągłe na sekwencja tokenów, takie jak przerywanie zdania na słowa.  
 
@@ -252,7 +252,7 @@ Analizatora niestandardowego za pomocą wstępnie zdefiniowanych tokenizatora do
 |Type|Tokenizator nazwę z listy obsługiwanych tokenizatory. Zobacz **tokenizer_type** kolumny w [Tokenizatory](#Tokenizers) w poniższej tabeli.|  
 |Opcje|Musi być prawidłowe opcje tokenizatora danego typu na liście [Tokenizatory](#Tokenizers) w poniższej tabeli.|  
 
- ### <a name="token-filters"></a>Filtry tokenu
+### <a name="token-filters"></a>Filtry tokenu
 
  Filtr token służy do odfiltrowywania, czyli zmodyfikować tokenów wygenerowanych przez tokenizatora. Na przykład można określić małe filtr, który konwertuje wszystkie znaki na małe litery.   
 Może mieć wiele filtrów tokenu w analizatora niestandardowego. Token filtry są uruchamiane w kolejności, w którym są wyświetlane.  

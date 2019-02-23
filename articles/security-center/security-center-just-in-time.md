@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/4/2018
 ms.author: rkarlin
-ms.openlocfilehash: 94364a54a5a0994cc3de3a2fe014b556d438b2c2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2bfa3b6001d714da39ebeb709600504f9d7331c5
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114913"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733661"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu just-in-time
 
@@ -29,6 +29,8 @@ Just-in-time (JIT) maszyny wirtualnej (VM) dostępu może służyć do blokowani
 > Funkcja just in time jest dostępne w warstwie standardowa usługi Security Center.  Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
 >
 >
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="attack-scenario"></a>Ataku
 
@@ -208,7 +210,7 @@ Funkcja dostępu just in time maszyny Wirtualnej może służyć za pośrednictw
 
 ### <a name="using-jit-vm-access-via-powershell"></a>Przy użyciu maszyn wirtualnych JIT dostępu za pomocą programu PowerShell 
 
-Aby użyć rozwiązania dostępu just in time maszyny Wirtualnej, za pomocą programu PowerShell, użyj oficjalne Azure Security Center poleceń cmdlet programu PowerShell, a w szczególności `Set-AzureRmJitNetworkAccessPolicy`.
+Aby użyć rozwiązania dostępu just in time maszyny Wirtualnej, za pomocą programu PowerShell, użyj oficjalne Azure Security Center poleceń cmdlet programu PowerShell, a w szczególności `Set-AzJitNetworkAccessPolicy`.
 
 Poniższy przykład ustawia zasady dostępu just in time maszyn wirtualnych w określonej maszyny Wirtualnej, a następnie ustawia następujące czynności:
 1.  Zamykanie portów 22 i 3389.
@@ -238,7 +240,7 @@ W programie PowerShell, aby to zrobić, uruchom następujące polecenie:
 
 3.  Konfigurowanie zasad dostępu just in time maszyny Wirtualnej na wybranej maszynie Wirtualnej:
     
-        Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
+        Set-AzJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 #### <a name="requesting-access-to-a-vm"></a>Żądanie dostępu do maszyny Wirtualnej
 
@@ -258,7 +260,7 @@ W programie PowerShell, uruchom następujące polecenie:
         $JitPolicyArr=@($JitPolicyVm1)
 3.  Wyślij żądanie dostępu (Użyj Identyfikatora zasobu uzyskany w kroku 1)
 
-        Start-AzureRmJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+        Start-AzJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
 
 Aby uzyskać więcej informacji zobacz dokumentację poleceń cmdlet programu PowerShell.
 

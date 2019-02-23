@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/10/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 3b6daa60e8c8945d49170a00da5bd3ffb57b48ac
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000118"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733303"
 ---
 # <a name="manage-multiple-tenants"></a>Zarządzanie wieloma dzierżawami
 
@@ -56,7 +56,7 @@ Po wybraniu tej opcji dostosowywania modeli (osoby, języka i marek) można udos
 
 Gdy [przekazywanie filmów wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), można określić atrybutu innej partycji w dzierżawie. Dzięki temu będzie izolacji w [interfejsu API wyszukiwania](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Przez określenie atrybutu partycji w interfejsie API wyszukiwania zostanie wyświetlony tylko wyniki określonej partycji. 
 
- ### <a name="considerations"></a>Zagadnienia do rozważenia
+### <a name="considerations"></a>Zagadnienia do rozważenia
 
 * Możliwość udostępniania zawartości i dostosowywania modeli między dzierżawami.
 * Jednej dzierżawy ma wpływ na wydajność innych dzierżaw.

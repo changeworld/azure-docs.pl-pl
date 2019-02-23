@@ -1,5 +1,5 @@
 ---
-title: Dodaj Google jako dostawcy tożsamości dla usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft
+title: Dodaj Google jako dostawcy tożsamości dla modelu B2B — usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: Sfederuj za pomocą usługi Google, aby umożliwić użytkowników-gości do logowania do aplikacji usługi Azure AD przy użyciu konta Gmail
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d565d2215ac84d42b6682f4c4a52dd87278a70a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 283cf8d13260531a12fa6c860d1a4e7b6207d22e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206841"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674620"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B
 

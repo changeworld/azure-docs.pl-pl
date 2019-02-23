@@ -4,16 +4,16 @@ description: Dowiedz się, jak rozwiązywać problemy związane z zasobami usłu
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/3/2018
+ms.date: 02/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 911f592c43865ea8bdfe85c1ad1071c7112ae9b6
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: abce40958f8d775e0a579a18cf8d1351740031ff
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475445"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671067"
 ---
 # <a name="troubleshoot-errors-with-shared-resources"></a>Rozwiązywanie problemów z udostępnionymi zasobami
 
@@ -38,6 +38,24 @@ Aby rozwiązać ten problem, należy usunąć moduł, który jest zablokowany w 
 ```azurepowershell-interactive
 Remove-AzureRmAutomationModule -Name ModuleName -ResourceGroupName ExampleResourceGroup -AutomationAccountName ExampleAutomationAccount -Force
 ```
+
+### <a name="update-azure-modules-importing"></a>Scenariusz: Moduły usługi AzureRM jest zatrzymany, importowanie po aktualizacji ich
+
+#### <a name="issue"></a>Problem
+
+Baner z następującym komunikatem pozostaje na swoim koncie po próby zaktualizowania moduły AzureRM:
+
+```
+Azure modules are being updated
+```
+
+#### <a name="cause"></a>Przyczyna
+
+Istnieje znany problem z aktualizowaniem moduł AzureRM na koncie usługi Automation, która znajduje się w grupie zasobów o nazwie numeryczne, która rozpoczyna się od 0.
+
+#### <a name="resolution"></a>Rozwiązanie
+
+Aby zaktualizować moduły platformy Azure na koncie usługi Automation, musi być w grupie zasobów o nazwie alfanumeryczne. Nie można zaktualizować usługi AzureRM moduły w tym momencie są grupy zasobów o nazwach liczbowe od 0.
 
 ### <a name="module-fails-to-import"></a>Scenariusz: Moduł nie powiedzie się zaimportować lub poleceń cmdlet, nie można wykonać po zaimportowaniu
 

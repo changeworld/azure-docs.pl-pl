@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 9399f9d47d89215080b1f633423843f501fefb7b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850435"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670880"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Konfigurowanie odzyskiwania po awarii dla wdrożenia obejmujące wiele warstw aplikacji SAP NetWeaver
 
@@ -80,7 +80,7 @@ Do obsługi środowiska klastra trybu failover, [oprogramowanie SIOS DataKeeper 
 
 Innym sposobem obsługi klastrowania jest do wdrożenia klastra udziału plików. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) ostatnio zmodyfikowane wzorca wdrażania centralnego usługi dostęp do katalogów globalnych /sapmnt za pośrednictwem ścieżki UNC. Jednak nadal zaleca się upewnij się, że udział UNC /sapmnt o wysokiej dostępności. Można to zrobić w wystąpieniu usługi centralnego przy użyciu klastra trybu Failover systemu Windows Server skalowania poziomie serwera plików (SOFS) oraz funkcję bezpośrednimi miejscami do magazynowania (S2D) w systemie Windows Server 2016. 
  > [!NOTE]
- > Obecnie pomocy technicznej usługi Azure Site Recovery tylko awarii punktu spójnego na poziomie replikacji maszyn wirtualnych przy użyciu magazynu bezpośrednie miejsca do magazynowania 
+ > Obecnie pomocy technicznej usługi Azure Site Recovery tylko awarii punktu spójnego na poziomie replikacji maszyn wirtualnych przy użyciu magazynu miejsca do magazynowania bezpośrednie i pasywnym węzła oprogramowanie SIOS Datakeeper
 
 
 ## <a name="disaster-recovery-considerations"></a>Zagadnienia dotyczące odzyskiwania po awarii
@@ -166,5 +166,5 @@ Aby uzyskać więcej informacji, zobacz [testowy tryb failover na platformie Azu
 Aby uzyskać więcej informacji, zobacz [trybu Failover w usłudze Site Recovery](site-recovery-failover.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej na temat tworzenia rozwiązania do odzyskiwania po awarii, w przypadku wdrożeń oprogramowania SAP NetWeaver przy użyciu usługi Site Recovery, zobacz oficjalny dokument do pobrania [oprogramowanie SAP NetWeaver: tworzenie rozwiązania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery](https://aka.ms/asr-sap). Oficjalny dokument w tym artykule omówiono zalecenia dotyczące różnych architekturach SAP, wyświetla listę obsługiwanych aplikacji i typy maszyn wirtualnych dla rozwiązania SAP na platformie Azure i w tym artykule opisano opcje planu testowania rozwiązanie odzyskiwania po awarii.
+* Aby dowiedzieć się więcej na temat tworzenia rozwiązania do odzyskiwania po awarii, w przypadku wdrożeń oprogramowania SAP NetWeaver przy użyciu usługi Site Recovery, zobacz oficjalny dokument do pobrania [oprogramowanie SAP NetWeaver: Tworzenie rozwiązania odzyskiwania po awarii przy użyciu usługi Azure Site Recovery](https://aka.ms/asr-sap). Oficjalny dokument w tym artykule omówiono zalecenia dotyczące różnych architekturach SAP, wyświetla listę obsługiwanych aplikacji i typy maszyn wirtualnych dla rozwiązania SAP na platformie Azure i w tym artykule opisano opcje planu testowania rozwiązanie odzyskiwania po awarii.
 * Dowiedz się więcej o [replikowanie innych obciążeń](site-recovery-workload.md) przy użyciu usługi Site Recovery.

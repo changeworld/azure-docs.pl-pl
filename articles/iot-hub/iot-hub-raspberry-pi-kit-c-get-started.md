@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 1e96029b75c8168189dacdc420117e82387228d9
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 3a4fbac0000569a17a9916bd1d84dd140576c9ee
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327253"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672070"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Łączenie urządzenia Raspberry Pi do IoT Hub (C) platformy Azure
 
@@ -82,7 +82,7 @@ Opcjonalne są następujące elementy:
 Przygotuj karcie microSD instalacji obrazu Raspbian.
 
 1. Pobierz Raspbian.
-   1. [Pobierz Raspbian Jessie za pomocą programu Desktop](https://www.raspberrypi.org/downloads/raspbian/) (plik zip).
+   1. [Pobierz Raspbian Stretch za pomocą programu Desktop](https://www.raspberrypi.org/downloads/raspbian/) (plik zip).
    1. Wyodrębnij obraz Raspbian do folderu na komputerze.
 1. Zainstaluj Raspbian karcie microSD.
    1. [Pobierz i zainstaluj narzędzie nagrywarka karty Etcher SD](https://etcher.io/).

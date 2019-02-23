@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
-ms.date: 07/27/201
+ms.date: 11/13/2018
 ms.author: v-jamebr
-ms.openlocfilehash: 522e9209da5d2df796700dea764270382b1170f5
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 52d6781f83262162f261d094d4818f803e5f3866
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102769"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670217"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Instalowanie i konfigurowanie zwrotnego serwera proxy w usłudze Azure Service Fabric
 Zwrotny serwer proxy to opcjonalna usługa Azure Service Fabric, która ułatwia mikrousług działającego w klastrze usługi Service Fabric, odnajdywanie i komunikować się z innymi usługami, które mają punktów końcowych http. Aby dowiedzieć się więcej, zobacz [zwrotny serwer proxy w usłudze Azure Service Fabric](service-fabric-reverseproxy.md). W tym artykule przedstawiono sposób instalowania i konfigurowania zwrotny serwer proxy w klastrze. 

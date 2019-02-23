@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD | Microsoft Docs
-description: Dowiedz się, jak za pomocą przeglądów dostępu w usłudze Azure Active Directory zarządzać dostępem użytkowników — członkostwem w grupie lub przypisaniem do aplikacji
+title: Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu usługi Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać dostępem użytkowników członkostwa w grupie lub przypisaniem do aplikacji za pomocą przeglądów dostępu usługi Active Directory Azure
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b53fd8b53b85525a3105cfee3594cd284e3838a8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cce1fe33bb2c44a6f3acf365a24de0df81ac8a70
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182157"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730767"
 ---
-# <a name="manage-user-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD
+# <a name="manage-user-access-with-azure-ad-access-reviews"></a>Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu usługi Azure AD
 
 Usługa Azure Active Directory (Azure AD) pozwala łatwo zapewnić użytkownikom dostęp na odpowiednim poziomie. Możesz poprosić bezpośrednio użytkowników lub osobę podejmującą decyzje o udział w przeglądzie dostępu i ponowne certyfikowanie (potwierdzenie) dostępu użytkowników. Na podstawie sugestii pochodzących z usługi Azure AD recenzenci mogą wyrazić opinię dotyczącą przedłużenia dostępu poszczególnych użytkowników. Po zakończeniu przeglądu dostępu można wprowadzić zmiany i odebrać dostęp użytkownikom, którzy już go nie potrzebują.
 
@@ -47,18 +47,18 @@ W przeglądzie dostępu może uczestniczyć jeden lub większa liczba recenzent�
 
 3. Korzystając z uprawnień administratora globalnego lub administratora kont użytkowników, przejdź do [strony przeglądów dostępu](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-4. Utwórz Przegląd dostępu. Aby uzyskać więcej informacji, zobacz [Tworzenie przeglądu dostępu](create-access-review.md).
+4. Utwórz Przegląd dostępu. Aby uzyskać więcej informacji, zobacz [tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md).
 
-5. Podczas uruchamiania przeglądu dostępu, poproś recenzentów o wyrażenie opinii danych wejściowych. Domyślnie otrzymają oni wiadomość e-mail z usługi Azure AD z linkiem do panelu dostępu, który umożliwia [przeprowadzenie przeglądu dostępu](perform-access-review.md).
+5. Podczas uruchamiania przeglądu dostępu, poproś recenzentów o wyrażenie opinii danych wejściowych. Domyślnie otrzymają oni wiadomość e-mail z usługi Azure AD z linkiem do panelu dostępu do których one [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md).
 
 6. Jeśli recenzenci nie przekażą opinii, można wysłać im przypomnienia za pośrednictwem usługi Azure AD. Domyślnie usługa Azure AD automatycznie wysyła przypomnienia recenzentom, którzy jeszcze nie odpowiedzieli, po upływie połowy czasu przeznaczonego na przekazanie opinii.
 
-7. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu](complete-access-review.md).
+7. Po otrzymaniu opinii recenzentów zakończ przegląd dostępu i zastosuj zmiany. Aby uzyskać więcej informacji, zobacz [Kończenie przeglądu dostępu grup lub aplikacji](complete-access-review.md).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Create an access review for members of a group or access to an application (Tworzenie przeglądu dostępu dla członków grupy lub na potrzeby dostępu do aplikacji)](create-access-review.md)
+[Tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md)
 
 
 

@@ -1,50 +1,50 @@
 ---
-title: Menedżer zasobów klastra usługi sieć szkieletowa — zasad umieszczania | Dokumentacja firmy Microsoft
-description: Omówienie zasad umieszczania dodatkowe i zasady usługi sieci szkieletowej usług
+title: Menedżer zasobów klastra usługi Service Fabric — zasady umieszczania | Dokumentacja firmy Microsoft
+description: Omówienie umieszczania dodatkowych zasad i reguł dla usługi Service Fabric
 services: service-fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
 editor: ''
 ms.assetid: 5c2d19c6-dd40-4c4b-abd3-5c5ec0abed38
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 66c51b08884c9d7a4d522c94f7b81774ec7a8bda
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 2858628874dc9955db5084ef5732d85acd6e7fc1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34642006"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729796"
 ---
-# <a name="placement-policies-for-service-fabric-services"></a>Zasady umieszczania dla usługi sieci szkieletowej usług
-Zasady umieszczania są dodatkowe reguły, które mogą służyć do kierowania rozmieszczenie usługi, w niektórych scenariuszach określone, mniej typowe. Przykłady takich scenariuszy to:
+# <a name="placement-policies-for-service-fabric-services"></a>Zasady umieszczania dla usługi Service fabric
+Zasady rozmieszczania są dodatkowe reguły, które mogą służyć do zarządzania usługi umieszczania w niektórych scenariuszach określone, mniej znane. Przykłady takich scenariuszy to:
 
-- Klaster usługi Service Fabric obejmuje odległości geograficznego, takich jak wiele lokalnych centrów danych lub w regionach platformy Azure
-- Środowiska obejmuje wiele obszarów kontrolki geograficznymi lub prawnych lub innym przypadku, gdy masz zasad granice muszą zapewniać
-- Brak komunikacji wydajności lub opóźnień uwagi ze względu na duże odległości lub użyj łączy sieciowych wolniejszych lub bardziej zawodne
-- Należy zachować pewne obciążeń rozmieszczony wspólnie jako starań, z innymi obciążeniami lub w pobliżu klientów
+- Klaster usługi Service Fabric rozmieszczonych w odległości geograficznych, takich jak wiele lokalnych centrów danych lub w wielu regionach platformy Azure
+- Środowiska obejmuje wiele obszarów formantu geopolitycznych lub prawnych lub innym przypadku, gdy masz zasady granice muszą zapewniać
+- Istnieją zagadnienia wydajności lub opóźnienie komunikacji ze względu na duże odległości lub użyj łączy wolniej lub mniej niezawodnej sieci
+- Należy zachować pewne obciążeń zlokalizowana jako najlepszy nakład pracy, przy użyciu innych obciążeń lub w pobliżu klientów
 
-Większość wymagań dostosowanie fizycznego układu klastra reprezentowane jako domeny awarii klastra. 
+Większość z tych wymagań dostosowanie fizyczny układ klastra, reprezentowane jako domeny awarii klastra. 
 
-Zasady umieszczania zaawansowane, które wyjść naprzeciw te scenariusze są następujące:
+Zasady umieszczania zaawansowanych, które adres te scenariusze są następujące:
 
 1. Nieprawidłowy domen
 2. Wymagane domen
-3. Wykorzystanie preferowanych domen
-4. Brak zezwolenia pakowania repliki
+3. Preferowany domen
+4. Nie można przydzielać pakowania repliki
 
-Większość następujących formantów można skonfigurować za pomocą właściwości węzła i ograniczenia dotyczące umieszczania, ale niektóre są bardziej skomplikowane. Z prośbą prostszy, Menedżer zasobów klastra sieci szkieletowej usług zawiera zasady te dodatkowe umieszczania. Zasady umieszczania są konfigurowane na podstawie wystąpienia na nazwę usługi. Mogą być aktualizowane również dynamicznie.
+Większość następujące elementy sterujące można skonfigurować za pomocą właściwości węzła i ograniczeniami dotyczącymi umieszczania, ale niektóre są bardziej skomplikowane. Aby było prostsze, Menedżer zasobów klastra usługi Service Fabric udostępnia te zasady umieszczania dodatkowe. Zasady rozmieszczania są skonfigurowane na podstawie wystąpienia usługi na o silnych nazwach. One może też być aktualizowana dynamicznie.
 
-## <a name="specifying-invalid-domains"></a>Określanie domen nieprawidłowy
-**InvalidDomain** zasady rozmieszczania pozwala określić, że określonej domeny błędów jest nieprawidłowa dla określonej usługi. Ta zasada zapewnia, że określonej usługi nigdy nie uruchamia się w określonym obszarze, na przykład z powodów polityki geograficznymi lub firmowych. Przy użyciu oddzielnych zasad można określić wielu domen nieprawidłowy.
+## <a name="specifying-invalid-domains"></a>Określanie nieprawidłowy domen
+**InvalidDomain** zasady rozmieszczania pozwala określić, że określonej domeny błędów jest nieprawidłowy dla określonej usługi. Te zasady zapewniają, że określonej usługi nigdy nie uruchamia się w określonym obszarze, na przykład ze względów geopolitycznych lub firmowe zasady. Wiele domen nieprawidłowy może być określona za pomocą odrębnych zasad.
 
 <center>
-![Nieprawidłowa domena przykład][Image1]
+![Przykład Nieprawidłowa domena][Image1]
 </center>
 
 Kod:
@@ -55,13 +55,13 @@ invalidDomain.DomainName = "fd:/DCEast"; //regulations prohibit this workload he
 serviceDescription.PlacementPolicies.Add(invalidDomain);
 ```
 
-Środowiska PowerShell:
+Program PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("InvalidDomain,fd:/DCEast”)
 ```
-## <a name="specifying-required-domains"></a>Określanie wymaganego domen
-Zasady rozmieszczania wymaganej domeny wymaga, że usługa jest obecne tylko w określonej domenie. Przy użyciu oddzielnych zasad można określić wielu domen wymagana.
+## <a name="specifying-required-domains"></a>Określenie wymaganych domen
+Zasady rozmieszczania wymaganej domeny wymaga, że usługa jest obecna tylko w określonej domenie. Przy użyciu oddzielnych zasad można określić wiele domen wymagana.
 
 <center>
 ![Przykład wymaganej domeny][Image2]
@@ -75,17 +75,17 @@ requiredDomain.DomainName = "fd:/DC01/RK03/BL2";
 serviceDescription.PlacementPolicies.Add(requiredDomain);
 ```
 
-Środowiska PowerShell:
+Program PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomain,fd:/DC01/RK03/BL2")
 ```
 
-## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Określanie preferowanych domen dla repliki podstawowej usługi stanowej
-Preferowany domeny głównej Określa domeny błędów można umieścić w podstawowej. Podstawowy kończy się w tej domenie, gdy wszystko jest w dobrej kondycji. Jeśli domeny lub replika podstawowa nie powiedzie się lub kończy pracę, podstawowego przenosi do innej lokalizacji, najlepszym rozwiązaniem w tej samej domenie. Jeśli tej nowej lokalizacji nie ma preferowanych domen, Menedżer zasobów klastra jego przeniesienie preferowanych domen tak szybko, jak to możliwe. Oczywiście to ustawienie ma sens tylko dla stanowych usług. Ta zasada jest najbardziej przydatna w klastrach, które są łączone w regionach platformy Azure lub wiele centrów danych, ale ma usług, które preferowane umieszczania w określonej lokalizacji. Utrzymywanie kolory podstawowe bliski użytkowników lub innych usług pomaga zapewnić mniejsze opóźnienia, zwłaszcza w przypadku odczytów, które są obsługiwane przez kolory podstawowe domyślnie.
+## <a name="specifying-a-preferred-domain-for-the-primary-replicas-of-a-stateful-service"></a>Określanie domeny preferowanych dla repliki podstawowej usługi stanowej
+Domena podstawowa preferowane Określa domeny błędów można umieścić podstawowy w. Podstawowy kończy się w tej domenie, gdy wszystko jest w dobrej kondycji. Jeśli domeny znajduje się replika podstawowa nie powiedzie się lub kończy pracę, podstawowy przenosi się do innej lokalizacji, najlepiej w tej samej domenie. Jeśli nie ma tej nowej lokalizacji domeny preferowanych, Menedżer zasobów klastra jego przeniesienie domeny preferowanych tak szybko, jak to możliwe. Naturalnie to ustawienie tylko ma sens dla usług stanowych. Te zasady są najbardziej przydatne w klastrach, które są łączone w różnych regionach platformy Azure lub w wielu centrach danych, ale ma usług, które wolą umieszczania w określonej lokalizacji. Utrzymywanie kolory podstawowe blisko ich użytkowników lub innych usług pomaga w zapewnieniu mniejsze opóźnienia, zwłaszcza w przypadku operacji odczytu, które są obsługiwane przez kolory podstawowe domyślnie.
 
 <center>
-![Wykorzystanie preferowanych domen podstawowe i pracy awaryjnej][Image3]
+![Preferowany domeny głównej i trybu Failover][Image3]
 </center>
 
 ```csharp
@@ -94,24 +94,24 @@ primaryDomain.DomainName = "fd:/EastUS/";
 serviceDescription.PlacementPolicies.Add(primaryDomain);
 ```
 
-Środowiska PowerShell:
+Program PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("PreferredPrimaryDomain,fd:/EastUS")
 ```
 
-## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Wymaganie dystrybucji repliki i brak zezwolenia pakowania
-Repliki są _zwykle_ rozproszonych w domenach awarii i uaktualniania, gdy klaster jest w dobrej kondycji. Istnieją jednak przypadki, w których może mieć więcej niż jednej repliki dla danej partycji tymczasowo spakowana do jednej domeny. Na przykład, załóżmy, że klaster ma dziewięć węzłów w trzech domen błędów, fd: / 0, fd: / 1 i fd: / 2. Również Załóżmy, że usługa ma trzy repliki. Załóżmy, że węzły, które były używane przez te repliki w fd: / 1 i fd: / 2 zakończył działanie. Zwykle Menedżera zasobów klastra wolisz inne węzły w tych samym domen błędów. W takim przypadku Załóżmy, że z powodu problemów pojemności się, że żaden z innych węzłów w tych domenach nie był nieprawidłowy. Jeśli Menedżer zasobów klastra kompilacje zastępujące tych replik, będą musiały być Wybierz węzły w fd: / 0. Jednak podczas _który_ sytuację, w którym nastąpiło naruszenie ograniczenia domeny błędów. Pakowanie replik zwiększa ryzyko, że cały repliki można przestaną działać lub zostać utracone. 
+## <a name="requiring-replica-distribution-and-disallowing-packing"></a>Wymaganie repliki dystrybucji i nie można przydzielać pakowania
+Repliki są _zwykle_ rozproszone w domenach błędów i uaktualnień, gdy klaster jest w dobrej kondycji. Istnieją jednak przypadki, w których więcej niż jednej repliki dla danej partycji mogą kończyć się tymczasowo spakowane do jednej domeny. Na przykład, załóżmy, że klaster ma dziewięciu węzłów w trzy domeny błędów, fd: / 0, fd: / 1 i fd: / 2. Ponadto Załóżmy, że usługa ma trzy repliki. Załóżmy, że węzły, które były używane dla tych replik w fd: / 1 i fd: / 2 zakończył działanie. Zwykle Menedżer zasobów klastra chcesz użyć innych węzłów w tych tych samych domenach błędów. W tym przypadku Załóżmy, że z powodu problemów z pojemnością, że żaden z innych węzłów w tych domenach był nieprawidłowy. Jeśli Menedżer zasobów klastra jest kompilowany zamiany tych replik, będą musiały być Wybierz węzły fd: / 0. Jednakże, wykonując _,_ sytuację, w której nastąpiło naruszenie ograniczenia domeny błędów. Pakowanie replik zwiększa ryzyko, że cały repliki można obniżyć lub zostać utracone. 
 
 > [!NOTE]
-> Aby uzyskać więcej informacji na temat ograniczeń oraz ograniczenia, priorytetów ogólnie rzecz biorąc, zapoznaj się z [w tym temacie](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
+> Aby uzyskać więcej informacji na temat ograniczeń i ograniczenia, priorytetów ogólnie rzecz biorąc, zapoznaj się [w tym temacie](service-fabric-cluster-resource-manager-management-integration.md#constraint-priorities).
 >
 
-Jeśli kiedykolwiek w tym samouczku komunikat kondycji takich jak "`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`", a następnie został trafiony tego warunku lub przypominać go. Zwykle tylko jedną lub dwie repliki są pakowane tymczasowo. Tak długo, jak są mniej niż kworum replik w danej domenie, możesz bezpieczne. Opakowanie jest rzadko, jednak może się zdarzyć, oraz zwykle tych sytuacji przejściowej ponieważ węzły wrócić. Jeśli węzły pozostanie w dół i Menedżer zasobów klastra konieczne kompilacji wymiany, zazwyczaj dostępne są inne węzły w domenach awarii idealne.
+Jeśli nigdy nie widzisz komunikat kondycji takich jak "`The Load Balancer has detected a Constraint Violation for this Replica:fabric:/<some service name> Secondary Partition <some partition ID> is violating the Constraint: FaultDomain`", a następnie osiągnięto ten warunek, lub coś, co podoba Ci się. Zazwyczaj jedną lub dwie repliki są pakowane razem tymczasowo. Tak długo, jak są mniej niż kworum replik w danej domenie, wszystko jest bezpieczne. Pakowanie jest rzadkie, ale może się zdarzyć, i zazwyczaj są to przejściowy od czasu możesz wrócić w węzłach. Jeśli węzły pozostają w dół, a Menedżer zasobów klastra musi stworzyć zamiany, zwykle dostępnych innych węzłów w domenach błędów idealnym rozwiązaniem.
 
-Niektórych obciążeń wolisz zawsze używania docelowej liczby replik, nawet jeśli ich są pakować do mniejszej liczby domen. Te obciążenia są stawiając przed awariami całkowita liczba jednoczesnych domeny stałe i zwykle można odzyskać stanu lokalnego. Inne obciążenia zamiast wymagałoby wcześniejszej niż poprawności ryzyko lub utraty danych Przestój. Uruchom większości obciążeń produkcyjnych z więcej niż trzy repliki, więcej niż trzy domen błędów i wiele węzłów prawidłowy na domeny błędów. W związku z tym domyślne zachowanie umożliwia pakowania domeny domyślnie. Domyślne zachowanie umożliwia normalne balancing and failover, aby obsługiwać te ekstremalnych przypadkach, nawet w przypadku oznacza to, że tymczasowe domeny pakowania.
+Niektórych obciążeń wolisz, zawsze po docelowej liczby replik, nawet jeśli zapakowane do mniejszej liczby domen. Te obciążenia są zakład awariami łączna liczba jednoczesnych trwałej domeny i zazwyczaj można odzyskać stan lokalnego. Inne obciążenia zamiast zajęłoby wcześniejszej niż poprawność ryzyko lub utraty danych przestoju. Uruchom większości obciążeń produkcyjnych z więcej niż trzech replik, więcej niż trzy domeny błędów i wiele węzłów prawidłowy dla domeny błędów. W związku z tym domyślne zachowanie umożliwia pakowanie domeny domyślnie. Domyślne zachowanie umożliwia normalne równoważenia i trybu failover do obsługi tych ekstremalnych przypadkach, nawet w przypadku oznacza to, że pakowanie tymczasowej domeny.
 
-Jeśli chcesz wyłączyć takie pakowania dla danego obciążenia, można określić `RequireDomainDistribution` zasad w usłudze. Gdy ta zasada jest ustawiona, Menedżer zasobów klastra gwarantuje, że nie dwóch replik z tej samej partycji uruchomić w tej samej domenie awarii lub uaktualnienia.
+Jeśli chcesz wyłączyć takie pakowania dla określonego obciążenia, możesz określić `RequireDomainDistribution` zasad w usłudze. Gdy ta zasada jest ustawiona, Menedżer zasobów klastra gwarantuje, że nie dwie repliki z tej samej partycji uruchamiane w tej samej domenie błędów lub uaktualnienia.
 
 Kod:
 
@@ -120,16 +120,16 @@ ServicePlacementRequireDomainDistributionPolicyDescription distributeDomain = ne
 serviceDescription.PlacementPolicies.Add(distributeDomain);
 ```
 
-Środowiska PowerShell:
+Program PowerShell:
 
 ```posh
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceTypeName –Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementPolicy @("RequiredDomainDistribution")
 ```
 
-Teraz czy można używać tych konfiguracji dla usług w klastrze, który nie został geograficznie łączone? Użytkownik może, ale nie ma dużą Przyczyna zbyt. O ile nie wymagają scenariuszy należy unikać konfiguracjach wymaganych, nieprawidłowy i preferowanych domen. Go nie ma sensu wszelkie próby wymusić danego obciążenia można uruchomić w jednym stojaku lub preferować niektórych segmentu klastra lokalnego zamiast innego. Różne konfiguracje sprzętu należy rozłożyć na domenach awarii i obsługiwane za pośrednictwem ograniczenia umieszczania normalne i właściwości węzła.
+Teraz go będzie możliwe korzystanie z tych konfiguracji dla usług w klastrze, który nie został geograficznie łączone? Można wykonać następujące akcje, ale nie ma nam podać doskonały powód zbyt. Konfiguracje wymagane nieprawidłowy i preferowaną domeny należy unikać chyba, że scenariusze wymagają. Nie ma sensu wszelkie próby wymusić danego obciążenia, aby uruchomić w jednym stojaku lub preferowanie niektóre segmentu klastrem lokalnym za pośrednictwem innego. Różne konfiguracje sprzętu powinien być rozmieszczone w domenach błędów i obsługiwane za pośrednictwem właściwości węzła i ograniczeniami dotyczącymi umieszczania normalny.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby uzyskać więcej informacji na temat konfigurowania usługi [Dowiedz się więcej o konfigurowaniu usługi](service-fabric-cluster-resource-manager-configure-services.md)
+- Aby uzyskać więcej informacji na temat konfigurowania usług [Dowiedz się więcej na temat konfigurowania usługi](service-fabric-cluster-resource-manager-configure-services.md)
 
 [Image1]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-invalid-placement-domain.png
 [Image2]:./media/service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies/cluster-required-placement-domain.png

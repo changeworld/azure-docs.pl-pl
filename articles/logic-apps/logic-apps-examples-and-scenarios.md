@@ -9,13 +9,13 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
-ms.date: 01/31/18
-ms.openlocfilehash: 6249c45a1cd3a8acbb9770fc39da881d8da9057f
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.date: 01/31/2018
+ms.openlocfilehash: 89e0294db3178cedd3b14aada0b505787b17c75e
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230143"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671798"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Typowe scenariusze, przykłady, samouczki i przewodniki dla usługi Azure Logic Apps
 
@@ -27,9 +27,9 @@ Aby dowiedzieć się więcej o wielu wzorców i możliwości, [usługi Azure Log
 
 Każda aplikacja logiki rozpoczyna się od [ *wyzwalacza*](../logic-apps/logic-apps-overview.md#logic-app-concepts)i tylko jeden wyzwalacz, uruchamia przepływ pracy aplikacji logiki, która powoduje przekazanie wszelkich danych jako część tego wyzwalacza. Niektóre łączniki udostępniają wyzwalacze, które są oferowane w rodzaju:
 
-* *Wyzwalacze sondowania*: regularnie sprawdza, czy punkt końcowy usługi dla nowych danych. Jeśli istnieją nowe dane, wyzwalacz tworzy i uruchamia nowe wystąpienie przepływu pracy z danymi wejściowymi.
+* *Wyzwalacze sondowania*: Regularnie sprawdza, czy punkt końcowy usługi dla nowych danych. Jeśli istnieją nowe dane, wyzwalacz tworzy i uruchamia nowe wystąpienie przepływu pracy z danymi wejściowymi.
 
-* *Wyzwalacze wypychania*: nasłuchuje danych punktu końcowego usługi, a następnie czeka, aż określonego zdarzenia. Po wystąpieniu zdarzenia wyzwalacza natychmiast, tworzenie i uruchamianie nowego wystąpienia przepływu pracy, która wykorzystuje wszystkie dostępne dane jako dane wejściowe.
+* *Wyzwalacze wypychania*: Nasłuchuje danych punktu końcowego usługi, a następnie czeka, aż określonego zdarzenia. Po wystąpieniu zdarzenia wyzwalacza natychmiast, tworzenie i uruchamianie nowego wystąpienia przepływu pracy, która wykorzystuje wszystkie dostępne dane jako dane wejściowe.
 
 Poniżej przedstawiono kilka przykładów popularny wyzwalacz:
 
@@ -59,7 +59,7 @@ Dla systemów i usług, które może nie zostały opublikowane łączniki można
 * [Konfigurowanie długo trwające akcje dla przebiegów przepływu pracy](../logic-apps/logic-apps-create-api-app.md)
 * [Odpowiadanie na zdarzenia zewnętrzne i akcji przy użyciu elementów webhook](../logic-apps/logic-apps-create-api-app.md)
 * [Wywoływanie, wyzwalacza lub zagnieżdżanie przepływami pracy przy użyciu synchronicznej odpowiedzi na żądania HTTP](../logic-apps/logic-apps-http-endpoint.md)
-* [Samouczek: Tworzenie bazujących na sztucznej Inteligencji społecznościowego pulpitu nawigacyjnego w ciągu kilku minut za pomocą aplikacji logiki i usługą Power BI](https://aka.ms/logicappsdemo)
+* [Samouczek: Bazujących na sztucznej Inteligencji społecznościowego pulpitu nawigacyjnego w zaledwie kilka minut za pomocą aplikacji logiki i usługą Power BI](https://aka.ms/logicappsdemo)
 * [Wideo: Odpowiadanie na wiadomości SMS usługi Twilio, elementy webhook i czy wysłać odpowiedź tekstu](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>Sterowanie przepływem, obsługa błędów i możliwości rejestrowania zdarzeń
@@ -70,7 +70,7 @@ Aplikacje logiki zawierają wiele możliwości do przepływu sterowania zaawanso
 * [Powtórz kroki lub elementów proces w tablicach i kolekcjach z pętli](../logic-apps/logic-apps-control-flow-loops.md)
 * [Akcje grupy wraz z zakresami](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [Autor błędów i obsługa wyjątków w przepływie pracy](../logic-apps/logic-apps-exception-handling.md)
-* [Przypadek użycia: jak firmy ochrony zdrowia mogły używa obsługi dla przepływów pracy HL7 FHIR następującą liczbę wyjątków aplikacji logiki](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [Przypadek użycia: Jak firmy ochrony zdrowia mogły używa obsługi dla przepływów pracy HL7 FHIR następującą liczbę wyjątków aplikacji logiki](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [Włącz monitorowanie, rejestrowanie i alerty dla istniejących aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [Włączanie monitorowania i rejestrowania diagnostycznego, podczas tworzenia aplikacji logiki](../logic-apps/logic-apps-monitor-your-logic-apps-oms.md)
 
@@ -96,15 +96,15 @@ Funkcja Logic apps oferuje również integrację z wieloma usługami, takie jak 
 
 * [Tworzenie w czasie rzeczywistym społecznościowego pulpitu nawigacyjnego za pomocą platformy Azure bez użycia serwera](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [Wywołanie usługi Azure Functions z aplikacji logiki](../logic-apps/logic-apps-azure-functions.md)
-* [Samouczek: Wyzwalacza aplikacji logiki za pomocą usługi Azure Functions](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [Samouczek: Wyzwalacz aplikacji logiki za pomocą usługi Azure Functions](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [Samouczek: Monitorowanie zmian maszyn wirtualnych za pomocą usługi Azure Event Grid i Logic Apps](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
 * [Samouczek: Tworzenie funkcji integrującej się z usługą Azure Logic Apps i Microsoft Cognitive Services do analizowania opinii wpisu w serwisie Twitter](../azure-functions/functions-twitter-email.md)
-* [Samouczek: IoT zdalne monitorowanie i powiadomienia przy użyciu usług Azure Logic Apps, łącząc usługę IoT hub i skrzynki pocztowej](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
-* [Blog: Wywoływanie punktów końcowych SOAP z aplikacji logiki](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+* [Samouczek: Zdalne monitorowanie IoT i powiadomień za pomocą usługi Azure Logic Apps, łącząc usługę IoT hub i skrzynki pocztowej](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [Blog: Wywoływanie punktów końcowych protokołu SOAP z aplikacji logiki](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 ## <a name="end-to-end-scenarios"></a>Kompleksowe scenariusze
 
-* [Oficjalny dokument: End-to-end zarządzania przypadkami integracji z usługami platformy Azure, takich jak Logic Apps](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+* [Oficjalny dokument: Integracja zarządzania przypadkami end-to-end z usługami platformy Azure, takich jak Logic Apps](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
 
 ## <a name="customer-stories"></a>Historie klientów
 

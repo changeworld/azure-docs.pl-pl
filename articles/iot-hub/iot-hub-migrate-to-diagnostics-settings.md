@@ -2,17 +2,18 @@
 title: Usługa Azure IoT Hub Migrowanie to ustawień diagnostyki | Dokumentacja firmy Microsoft
 description: Jak zaktualizować usługi Azure IoT Hub, aby użyć ustawień diagnostyki platformy Azure zamiast operacji monitoring do monitorowania stanu operacji w Centrum IoT w czasie rzeczywistym.
 author: kgremban
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 11/19/2018
+ms.date: 02/19/2019
 ms.author: kgremban
-ms.openlocfilehash: 4a1517c1d5bb0f34c0f1b0ec81d074f8ec39aff5
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d54b109cd5ef41665e595e7b878c077732536297
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546586"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674246"
 ---
 # <a name="migrate-your-iot-hub-from-operations-monitoring-to-diagnostics-settings"></a>Migrowanie usługi IoT Hub z działania monitorowania to ustawień diagnostyki
 
@@ -28,7 +29,7 @@ Aby zaktualizować Centrum IoT Hub w witrynie Azure portal, najpierw należy wł
 
 ### <a name="turn-off-operations-monitoring"></a>Wyłącz monitorowanie operacji
 
-Po przetestowaniu nowego ustawienia diagnostyki w przepływie pracy, można wyłączyć monitorowanie funkcji operacji. 
+Po przetestowaniu nowego ustawienia diagnostyki w przepływie pracy można wyłączyć monitorowanie funkcji operacji. 
 
 1. W menu Centrum IoT Hub, wybierz **monitorowanie operacji**.
 
@@ -40,7 +41,7 @@ Po przetestowaniu nowego ustawienia diagnostyki w przepływie pracy, można wył
 
 Schematów na potrzeby monitorowania operacji i ustawień diagnostyki się nieco różnić. Jest ważne, aktualizację aplikacji, które umożliwia monitorowanie dzisiaj operacji mapowania na schemat używany przez ustawienia diagnostyczne. 
 
-Ponadto diagnostyki ustawienia oferty śledzenia dla pięciu nowych kategorii. Po zaktualizowaniu aplikacji dla istniejącego schematu, Dodaj również nowe kategorie:
+Ustawienia diagnostyczne oferuje pięć nowych kategorii śledzenia. Po zaktualizowaniu aplikacji dla istniejącego schematu, Dodaj również nowe kategorie:
 
 * Operacje bliźniaczej reprezentacji chmury do urządzenia
 * Operacje bliźniaczej reprezentacji urządzenia do chmury
@@ -56,4 +57,4 @@ Do monitorowania urządzeń nawiązywać połączenia i zdarzenia rozłączenia,
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów](iot-hub-monitor-resource-health.md)
+[Monitorowanie kondycji usługi Azure IoT Hub i szybkie diagnozowanie problemów](iot-hub-monitor-resource-health.md)

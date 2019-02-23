@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2018
 ms.author: spelluru
-ms.openlocfilehash: 1f1797cf3022285f81991eb15818b68df195de4b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: a9426c20ae23fd3dad4cdba25590ff2eac271896
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834132"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727965"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Dodawanie właścicieli i użytkowników w usłudze Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -71,12 +71,15 @@ Poniższe kroki ułatwiają dodanie właściciela lub użytkowników do laborato
 5. Na **konfiguracji i zasad** wybierz opcję **kontrola dostępu (IAM)** z menu po lewej stronie. 
 6. Wybierz **Dodaj przypisanie roli** na pasku narzędzi, aby dodać użytkownika do roli.
 1. W **Dodaj uprawnienia** okna, wykonaj następujące czynności: 
-    1. Wybierz rolę (na przykład: użytkownik usługi DevTest Labs). Sekcja [akcje, które mogą być wykonywane w każdej roli](#actions-that-can-be-performed-in-each-role) wymieniono różne akcje, które mogą być wykonywane przez użytkowników w roli właściciel, użytkownik usługi DevTest i współautor.
+    1. Wybierz rolę (na przykład: DevTest Labs User). Sekcja [akcje, które mogą być wykonywane w każdej roli](#actions-that-can-be-performed-in-each-role) wymieniono różne akcje, które mogą być wykonywane przez użytkowników w roli właściciel, użytkownik usługi DevTest i współautor.
     2. Wybierz użytkownika, które mają zostać dodane do roli. 
     3. Wybierz pozycję **Zapisz**. 
 11. Po powrocie do **użytkowników** bloku użytkownik został dodany.  
 
 ## <a name="add-an-external-user-to-a-lab-using-powershell"></a>Dodawanie użytkownika zewnętrznego do laboratorium przy użyciu programu PowerShell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Oprócz dodawania użytkowników w witrynie Azure portal, można dodać użytkownika zewnętrznego do laboratorium przy użyciu skryptu programu PowerShell. W poniższym przykładzie zmodyfikuj wartości parametrów w obszarze **wartości w celu zmiany** komentarz.
 Możesz pobrać `subscriptionId`, `labResourceGroup`, i `labName` wartości z bloku laboratorium w witrynie Azure portal.
 
@@ -96,18 +99,18 @@ Możesz pobrać `subscriptionId`, `labResourceGroup`, i `labName` wartości z bl
     $userDisplayName = "<Enter user's display name here>"
 
     # Log into your Azure account
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
     # Select the Azure subscription that contains the lab. 
     # This step is optional if you have only one subscription.
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
+    Select-AzSubscription -SubscriptionId $subscriptionId
 
     # Retrieve the user object
-    $adObject = Get-AzureRmADUser -SearchString $userDisplayName
+    $adObject = Get-AzADUser -SearchString $userDisplayName
 
     # Create the role assignment. 
     $labId = ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
-    New-AzureRmRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
+    New-AzRoleAssignment -ObjectId $adObject.Id -RoleDefinitionName 'DevTest Labs User' -Scope $labId
 
 ## <a name="add-an-owner-or-user-at-the-subscription-level"></a>Dodawanie właściciela lub użytkowników na poziomie subskrypcji
 Uprawnienia platformy Azure są propagowane w zakresie nadrzędnym zakresem podrzędnych na platformie Azure. W związku z tym właścicieli subskrypcji platformy Azure, która zawiera labs są wykonywane automatycznie właścicieli tych laboratoriów. Właścicielem również maszyny wirtualne i inne zasoby utworzone przez użytkowników laboratorium i usługa Azure DevTest Labs. 
@@ -128,7 +131,7 @@ Aby dodać właściciela do subskrypcji platformy Azure, wykonaj następujące k
 6. Na **wybierz rolę** bloku wybierz **właściciela**.
 7. Na **dodawania użytkowników** bloku, wprowadź adres e-mail lub nazwa użytkownika, które chcesz dodać jako właściciela. Jeśli użytkownik nie zostanie znaleziony, otrzymasz komunikat o błędzie wyjaśniający problem. Jeśli użytkownik zostanie znaleziony, ten użytkownik znajduje się w obszarze **użytkownika** pola tekstowego.
 8. Wybierz nazwę znajduje się użytkownik.
-9. Wybierz **wybierz**.
+9. Wybierz przycisk **Wybierz**.
 10. Wybierz **OK** zamknąć **Dodaj dostęp** bloku.
 11. Po powrocie do **użytkowników** bloku użytkownik został dodany jako właściciela. Ten użytkownik jest obecnie właścicielem dowolnego labs utworzonych w ramach tej subskrypcji, a ten sposób jest w stanie wykonywać zadania właściciela. 
 

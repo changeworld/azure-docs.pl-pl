@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: glenga
-ms.openlocfilehash: b39c8c19b494422d34bae7145d69e8e95cb16846
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 390d9dcda18e10c21db8165653faec7880863ba1
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416824"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734476"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Rozpoczynanie pracy z usługą Azure WebJobs SDK, przetwarzanie w tle oparte na zdarzeniach
 
@@ -656,7 +656,7 @@ Powiązania danych wejściowych uprościć kod, który odczytuje dane. W tym prz
    }
    ```
 
-   W tym kodzie `queueTrigger` jest [powiązania wyrażeń](../azure-functions/functions-triggers-bindings.md#binding-expressions-and-patterns), co oznacza, że jest rozpoznawana jako różne wartości w czasie wykonywania.  W czasie wykonywania w nim zawartość komunikatu w kolejce.
+   W tym kodzie `queueTrigger` jest [powiązania wyrażeń](../azure-functions/functions-bindings-expressions-patterns.md), co oznacza, że jest rozpoznawana jako różne wartości w czasie wykonywania.  W czasie wykonywania w nim zawartość komunikatu w kolejce.
 
 1. Dodaj `using`:
 

@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 1/30/2019
 ms.author: yizhon
-ms.openlocfilehash: 0bfba7f923ca394aa29dd907db1b8b1284a605d8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e5b075a457c646eb03810b2c51af1a1181ee96ed
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981676"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670265"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Twórz aplikacje na platformę Android rzeczy za pomocą zestawów SDK usługi Azure IoT
 [Usługa Azure IoT Hub SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) obsługi pierwszą warstwę dla popularnych platform, takich jak Windows, Linux, OSX, MBED i platform urządzeń przenośnych, takich jak systemy Android i iOS.  W ramach naszego zobowiązania do włączenia większy wybór i elastyczność w przypadku wdrożeń IoT, obsługuje również zestawu Java SDK [Android rzeczy](https://developer.android.com/things/) platformy.  Deweloperzy mogą korzystać z zalet systemu operacyjnego Android rzeczy po stronie urządzenia podczas korzystania z [usługi Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) jako centralna komunikat koncentratora, który umożliwia skalowanie do milionów równocześnie połączonych urządzeń. 
@@ -69,7 +69,6 @@ Zanim urządzenie będzie mogło nawiązać połączenie, należy je najpierw za
     ```
 4.  W programie Android Studio Otwórz projekt systemu Android w umieszczone w sekcji "\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample".
 5.  Otwórz plik gradle.properties i zastąp "Device_connection_string" przy użyciu parametrów połączenia urządzenia zanotowanej wcześniej.
-    ![Zrzut ekranu przedstawiający głównej gałęzi w repozytorium](./media/how-to-android-things/connection-string.png)
 6.  Kliknij przebieg - debugowanie i wybierz urządzenie, aby wdrożyć ten kod na urządzeniach z systemem Android rzeczy.
 7.  Po pomyślnym uruchomieniu aplikacji, można zobaczyć aplikację działającą na urządzeniu z systemem Android rzeczy.  Ta przykładowa aplikacja wysyła losowo generowany odczytów.
 

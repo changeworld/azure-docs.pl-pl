@@ -1,6 +1,6 @@
 ---
-title: Kończenie przeglądu dostępu członków grupy lub dostęp użytkowników do aplikacji za pomocą usługi Azure AD | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zakończyć Przegląd dostępu dla członków grupy lub użytkownicy z dostępem do aplikacji w usłudze Azure Active Directory.
+title: Kończenie przeglądu dostępu grup lub aplikacji w przeglądach dostępu usługi Azure AD | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zakończyć Przegląd dostępu członków grupy lub dostęp do aplikacji w przeglądach dostępu usługi Azure AD.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2da3b7f8b7ed60344978fb255696980ec620fd2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192272"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729614"
 ---
-# <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>Kończenie przeglądu dostępu członków grupy lub dostęp użytkowników do aplikacji w usłudze Azure AD
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>Kończenie przeglądu dostępu grup lub aplikacji w przeglądach dostępu usługi Azure AD
 
-Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [tworzenia przeglądów dostępu](create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji. Usługa Azure AD automatycznie wysyła wiadomość e-mail z monitami, aby przeprowadzić przegląd dostępu recenzentów. Jeśli użytkownik nie otrzymasz wiadomość e-mail, możesz wysłać im instrukcje [przejrzeć swój dostęp](perform-access-review.md). (Należy zauważyć, że goście, którzy są przypisywane recenzentów, ale nie zaakceptowali zaproszenia nie otrzyma wiadomość e-mail z przeglądów dostępu, zgodnie z ich musisz najpierw zaakceptować zaproszenie przed przeglądania.) Po zakończeniu okresu przeglądu dostępu lub administrator zatrzymuje przeglądu dostępu, wykonaj kroki opisane w tym artykule, aby zobaczyć i zastosować wyniki.
+Administratorzy mogą używać usługi Azure Active Directory (Azure AD) do [tworzenia przeglądów dostępu](create-access-review.md) dla członków grupy lub użytkowników przypisanych do aplikacji. Usługa Azure AD automatycznie wysyła wiadomość e-mail z monitami, aby przeprowadzić przegląd dostępu recenzentów. Jeśli użytkownik nie otrzymasz wiadomość e-mail, możesz wysłać im instrukcje [Przegląd dostępu wszystkich użytkowników do grup ani aplikacji](perform-access-review.md). (Należy zauważyć, że goście, którzy są przypisywane recenzentów, ale nie zaakceptowali zaproszenia nie otrzyma wiadomość e-mail z przeglądów dostępu, zgodnie z ich musisz najpierw zaakceptować zaproszenie przed przeglądania.) Po zakończeniu okresu przeglądu dostępu lub administrator zatrzymuje przeglądu dostępu, wykonaj kroki opisane w tym artykule, aby zobaczyć i zastosować wyniki.
 
 ## <a name="view-an-access-review-in-the-azure-portal"></a>Wyświetl przeglądu dostępu w witrynie Azure portal
 
@@ -62,5 +62,5 @@ Jeśli interesuje Cię już przeglądu, możesz go usunąć. Wybierz **Usuń** u
 - [Zarządzanie dostępem użytkowników za pomocą przeglądów dostępu w usłudze Azure AD](manage-user-access-with-access-reviews.md)
 - [Zarządzanie dostępem gości za pomocą przeglądów dostępu w usłudze Azure AD](manage-guest-access-with-access-reviews.md)
 - [Zarządzanie programami i kontrolami obejmującymi przeglądy dostępu w usłudze Azure AD](manage-programs-controls.md)
-- [Create an access review for members of a group or access to an application (Tworzenie przeglądu dostępu dla członków grupy lub na potrzeby dostępu do aplikacji)](create-access-review.md)
+- [Tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md)
 - [Tworzenie przeglądu dostępu użytkowników ról administracyjnych usługi Azure AD](../privileged-identity-management/pim-how-to-start-security-review.md)

@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: d56e96ca1fbc96261f6f526c792b0a53c74718ef
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7fbf157152bd5c2c35c496b1fd8e707884d0f3da
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063664"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56731467"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Usługa Azure uruchamiania maszyn wirtualnych jest zablokowana w Windows aktualizacji
 
 Ten artykuł pomoże rozwiązać ten problem, gdy Twoja maszyna wirtualna (VM) jest zablokowany na etapie Windows Update podczas uruchamiania. 
 
 > [!NOTE] 
-> Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [Usługi Resource Manager i Model Klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager. Zalecamy użycie tego modelu w przypadku nowych wdrożeń zamiast przy użyciu klasycznego modelu wdrażania.
+> Platforma Azure oferuje dwa różne modele wdrażania związane z tworzeniem zasobów i pracą z nimi: [model wdrażania przy użyciu usługi Resource Manager i model klasyczny](../../azure-resource-manager/resource-manager-deployment-model.md). W tym artykule opisano, przy użyciu modelu wdrażania usługi Resource Manager. Zalecamy użycie tego modelu w przypadku nowych wdrożeń zamiast przy użyciu klasycznego modelu wdrażania.
 
- ## <a name="symptom"></a>Objaw
+## <a name="symptom"></a>Objaw
 
  Nie zaczyna się maszyny Wirtualnej z systemem Windows. Podczas ewidencjonowania zrzuty ekranu [diagnostykę rozruchu](../troubleshooting/boot-diagnostics.md) okna, zobaczysz, że początkową utkwiła w automatycznej procesu aktualizacji. Poniżej przedstawiono przykłady wiadomości, które mogą wystąpić:
 

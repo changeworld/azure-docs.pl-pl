@@ -1,6 +1,6 @@
 ---
-title: Przeglądy dostępu usługa Azure AD do zarządzania użytkownikami, które zostały wykluczone z zasad dostępu warunkowego | Dokumentacja firmy Microsoft
-description: Usługa Azure Active Directory przeglądów dostępu (Azure AD) do zarządzania użytkownikami, które zostały wykluczone z zasad dostępu warunkowego
+title: Przeglądy dostępu usługi Azure AD umożliwia zarządzanie użytkownikami wykluczone z zasad dostępu warunkowego | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarządzać użytkownikami, które zostały wykluczone z zasad dostępu warunkowego za pomocą przeglądów dostępu w usłudze Azure Active Directory (Azure AD)
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a82fdfe598e11415130950443fb0d3e27f5d9d01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 75ff08111e96fd4b210dfeb09db521856f4f5e52
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168544"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727506"
 ---
-# <a name="use-azure-ad-access-reviews-to-manage-users-that-have-been-excluded-from-conditional-access-policies"></a>Przeglądy dostępu usługa Azure AD do zarządzania użytkownikami, które zostały wykluczone z zasad dostępu warunkowego
+# <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Użyj przeglądów dostępu usługi Azure AD do zarządzania użytkownikami wykluczone z zasad dostępu warunkowego
 
 W świecie idealne, wszyscy użytkownicy wykonać dostępu zasady, aby zabezpieczyć dostęp do zasobów organizacji. Jednak czasami istnieją przypadków biznesowych, które wymagają wprowadzenia wyjątków. W tym artykule opisano kilka przykładów, w którym wykluczenia mogą być wymagane, jak administrator IT, zarządzanie tego zadania, uniknąć nadzoru wyjątki od zasad i zapewnić audytorów dowód tych wyjątków są przeglądane, regularnie korzystanie z platformy Azure Przeglądy dostępu w usłudze Active Directory (Azure AD).
 
@@ -158,5 +158,5 @@ Jako IT administrator możesz wiedzieć, że zarządzanie grupami wykluczenie do
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Utwórz Przegląd dostępu członków grupy lub dostęp do aplikacji z usługą Azure AD](create-access-review.md)
+- [Tworzenie przeglądu dostępu grup lub aplikacji](create-access-review.md)
 - [Co to jest dostęp warunkowy w usłudze Azure Active Directory?](../conditional-access/overview.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: b538e1b2d37c92e1712da517ab5f3c46f5e2c3a3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e25da238648b32edcbfaefbdcf1a6240df97916f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992192"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728331"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Zarządzanie zasobami usługi Media Services na wielu kontach magazynu  
 
@@ -27,7 +27,9 @@ Można dołączyć wiele kont magazynu do jednego konta usługi Media Services. 
 * Obciążenia równoważenia zasobów na wielu kontach magazynu.
 * Skalowanie usługi Media Services obsługi dużej ilości zawartości przetwarzania (zgodnie z aktualnie w ramach pojedynczego konta magazynu ma maksymalny limit 500 TB). 
 
-W tym artykule pokazano, jak można dołączyć wiele kont magazynu do konta usługi Media Services przy użyciu [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](/powershell/module/azurerm.media). Pokazano również, jak określić różnych kont magazynu, podczas tworzenia zasobów przy użyciu zestawu SDK usługi multimediów. 
+W tym artykule pokazano, jak można dołączyć wiele kont magazynu do konta usługi Media Services przy użyciu [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](/powershell/module/az.media). Pokazano również, jak określić różnych kont magazynu, podczas tworzenia zasobów przy użyciu zestawu SDK usługi multimediów. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia
 
@@ -44,7 +46,7 @@ Usługa Media Services używa wartości **IAssetFile.Name** właściwości podcz
 
 ## <a name="to-attach-storage-accounts"></a>Aby dołączyć konta magazynu  
 
-Aby dołączyć swoje konto AMS kont magazynu, należy użyć [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](/powershell/module/azurerm.media), jak pokazano w poniższym przykładzie:
+Aby dołączyć swoje konto AMS kont magazynu, należy użyć [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](/powershell/module/az.media), jak pokazano w poniższym przykładzie:
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -54,11 +56,11 @@ Aby dołączyć swoje konto AMS kont magazynu, należy użyć [interfejsów API 
     $storageAccount2Name = "skystorage2"
     $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
     $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
-    $storageAccount1 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
-    $storageAccount2 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+    $storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+    $storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
     $storageAccounts = @($storageAccount1, $storageAccount2)
     
-    Set-AzureRmMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+    Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
 
 ### <a name="support-for-cool-storage"></a>Obsługa magazynu chłodnego
 

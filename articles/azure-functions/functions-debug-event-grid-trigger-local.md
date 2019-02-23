@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/18/2018
 ms.author: cshoe
-ms.openlocfilehash: 7a3468d9a0d128bd51ae742189e60bb8e2af6c0e
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 96d88fafd6824ed85f1d91bab59374b3490a55b2
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50097933"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736502"
 ---
 # <a name="azure-function-event-grid-trigger-local-debugging"></a>Debugowanie funkcji platformy Azure zdarzeń siatki wyzwalacza lokalnego
 
@@ -62,7 +62,7 @@ Jak skonfigurować narzędzie, okno polecenia powinien wyglądać podobnie do Po
 
 Kopiuj **HTTPS** wygenerowany adres URL, gdy *ngrok* jest uruchamiany. Ta wartość jest używana podczas konfigurowania punktu końcowego zdarzeń siatki zdarzeń.
 
- ## <a name="add-a-storage-event"></a>Dodaj zdarzenie magazynu
+## <a name="add-a-storage-event"></a>Dodaj zdarzenie magazynu
 
 Otwórz witrynę Azure portal, przejdź do konta magazynu i kliknij pozycję **zdarzenia** opcji.
 

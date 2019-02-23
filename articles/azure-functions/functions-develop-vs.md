@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b60861b4daced5e3d292feec54f8a54839a80b8f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098085"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728918"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -143,7 +143,7 @@ Podobnie jak w przypadku wyzwalaczy, powiązania danych wejściowych i wyjściow
 
 1. Upewnij się, że masz [skonfigurowano projekt do tworzenia aplikacji lokalnej](#configure-the-project-for-local-development).
 
-2. Dodaj odpowiedni pakiet rozszerzenia NuGet dla określonego powiązania. Aby uzyskać więcej informacji, zobacz [rozwoju lokalnych C# za pomocą programu Visual Studio](functions-triggers-bindings.md#local-csharp) w artykule wyzwalaczy i powiązań. Wymagań pakietu NuGet specyficznych dla powiązania znajdują się w artykule odwołania dla wiązania. Na przykład znaleźć pakietów dotyczące wyzwalacza usługi Event Hubs w [artykule informacyjnym na temat powiązania usługi Event Hubs](functions-bindings-event-hubs.md).
+2. Dodaj odpowiedni pakiet rozszerzenia NuGet dla określonego powiązania. Aby uzyskać więcej informacji, zobacz [rozwoju lokalnych C# za pomocą programu Visual Studio](./functions-bindings-register.md#local-csharp) w artykule wyzwalaczy i powiązań. Wymagań pakietu NuGet specyficznych dla powiązania znajdują się w artykule odwołania dla wiązania. Na przykład znaleźć pakietów dotyczące wyzwalacza usługi Event Hubs w [artykule informacyjnym na temat powiązania usługi Event Hubs](functions-bindings-event-hubs.md).
 
 3. W przypadku ustawienia aplikacji, które powiązania musi dodać je do **wartości** kolekcji w [pliku ustawień lokalnych](functions-run-local.md#local-settings-file). Te wartości są używane po uruchomieniu funkcji lokalnie. Po uruchomieniu funkcji w aplikacji funkcji na platformie Azure, [ustawień aplikacji funkcji](#function-app-settings) są używane.
 
