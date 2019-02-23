@@ -8,14 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: conceptual
-ms.date: 05/18/18
+ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: 12f989137c3aea57bdcde0d50315ad157898cd28
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 111adad627ffd830d69efc61bc7a06a99fee30f3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862755"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673328"
 ---
 # <a name="translator-speech-api-languages"></a>Interfejs API mowy usługi Translator Languages
 
@@ -27,7 +28,7 @@ Przykłady kodu, demonstrując korzystanie z interfejsu API, aby uzyskać dostę
 
 ## <a name="implementation-notes"></a>Uwagi dotyczące implementacji
 
-### <a name="get-languages"></a>Pobierz /languages 
+### <a name="get-languages"></a>Pobierz /languages
 
 Szerokiego zestawu języków jest dostępna dla transkrypcja mowy, tłumaczenie uzyskanego tekstu i wygenerować syntezatora mowy tłumaczenia.
 
@@ -125,7 +126,7 @@ Usługa zwraca wszystkie nazwy w języku nagłówek "Accept-Language", wszystkie
 ### <a name="response-class-status-200"></a>Klasa odpowiedzi (stanu 200)
 Obiekt opisujący zestaw obsługiwanych języków.
 
-Wartość ModelExample: 
+Wartość ModelExample:
 
 Langagues {mowy (object, opcjonalnie), tekst (object, opcjonalnie), tts (object, opcjonalnie)}
 
@@ -143,7 +144,7 @@ X-RequestId|Wartość wygenerowany przez serwer w celu zidentyfikowania żądani
 |scope  |Zestawy obsługiwane języki lub głosy do zwrócenia do klienta. Ten parametr jest określony jako rozdzielana przecinkami lista słów kluczowych. Dostępne są następujące słowa kluczowe:<ul><li>`speech`: Udostępnia zestaw języków obsługiwanych na transkrypcja mowy.</li><li>`tts`: Udostępnia zestaw głosy są obsługiwane dla konwersji tekstu na mowę.</li><li>`text`: Udostępnia zestaw języki obsługiwane w przypadku tłumaczenie tekstu.</li></ul>Jeśli wartość nie jest określony, wartość `scope` wartość domyślna to `text`.|query|ciąg|
 |X-ClientTraceId    |Identyfikator GUID generowany przez klienta umożliwia śledzenie żądań. W celu ułatwienia rozwiązywania problemów, klientów należy podać nową wartość z każdym żądaniem i ją.|nagłówek|ciąg|
 |Zaakceptuj języka    |Niektóre pola w odpowiedzi są nazwami językach i regionach. Użyj tego parametru, aby określić język, w której zwracane są nazwy. Język jest określony, podając tag języka sformułowany BCP 47. Wybierz tag z listy identyfikatorów języka zwrócono `text` zakresu. Dla języków nieobsługiwanych nazw znajdują się w języku angielskim.<br/>Na przykład użyj wartości `fr` do żądania nazw w języku francuskim, lub użyj wartości `zh-Hant` do żądania nazw w chińskim tradycyjnym.|nagłówek|ciąg|
-    
+
 ### <a name="response-messages"></a>Komunikaty odpowiedzi
 
 |Kod stanu HTTP|Przyczyna|
