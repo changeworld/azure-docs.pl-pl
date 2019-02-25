@@ -5,21 +5,22 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 02/22/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8d5dca65734640dc9e756f9130e6b362178781f2
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: d4f75a7bc552a7764a46865bf300b8fc5ffb350e
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453525"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750790"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Przejście do certyfikatu bramy publicznego urzędu certyfikacji dla połączenia punkt-lokacja
 
 Usługa Azure VPN Gateway nie jest już wystawia certyfikaty z podpisem własnym poziomie platformy Azure do jego bram dla połączeń P2S. Wystawione certyfikaty są teraz podpisany przez publiczny urząd certyfikacji (CA). Jednak niektóre starsze bramy mogą nadal korzystać z certyfikatów z podpisem własnym. Te certyfikaty z podpisem własnym są prawie daty ważności i musi przejść do publicznych certyfikatów urzędu certyfikacji.
 
 >[!NOTE]
-> Certyfikaty z podpisem własnym używany do uwierzytelniania klientów P2S nie ma wpływu ta zmiana certyfikatu poziomie platformy Azure. Można nadal wystawiania i używać certyfikatów z podpisem własnym jako normalny.
+> * Certyfikaty z podpisem własnym używany do uwierzytelniania klientów P2S nie ma wpływu ta zmiana certyfikatu poziomie platformy Azure. Można nadal wystawiania i używać certyfikatów z podpisem własnym jako normalny.
+> * Ta zmiana nie dotyczy aplikacji sieci Web.
 >
 
 Certyfikaty, w tym kontekście są dodatkowy certyfikat poziomie platformy Azure. Nie są one łańcuchów certyfikatów, używane podczas generowania własnych certyfikatów głównych z podpisem własnym i certyfikatów klienta do uwierzytelniania. Te certyfikaty pozostaną niezmienione i wygaśnie w dniu dat wygenerowany ich nie skonfigurują.

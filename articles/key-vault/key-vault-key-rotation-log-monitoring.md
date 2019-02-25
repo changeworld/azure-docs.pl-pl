@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie usługi Azure Key Vault z rotacji kluczy end-to-end i przeprowadzanie inspekcji — usługa Azure Key Vault | Dokumentacja firmy Microsoft
-description: Niniejszy instruktaż umożliwia pomocy można skonfigurować za pomocą monitorowania dzienniki magazynu kluczy i wymiany kluczy.
+title: Konfigurowanie usługi Azure Key Vault przy użyciu end-to-end rotacji i inspekcji kluczy | Dokumentacja firmy Microsoft
+description: Użyj tego przewodnika instrukcje ułatwiające konfigurowanie rotacji kluczy i Monitoruj dzienniki magazynu kluczy.
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: deb50a71b179c3cb03d5da22e336c42b26fe0bfa
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 68fd33dc3e9def11f72b7aec14f83f86b8bb74d0
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106124"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749714"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Konfigurowanie usługi Azure Key Vault o rotacji i inspekcji kluczy
 
@@ -26,31 +26,31 @@ ms.locfileid: "56106124"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Po utworzeniu magazynu kluczy, można uruchomić, używany do przechowywania kluczy i wpisów tajnych. Aplikacje nie są już potrzebne zachować swoje klucze i wpisy tajne, ale zażądać ich z magazynu zgodnie z potrzebami. Dzięki temu można zaktualizować kluczy i wpisów tajnych, bez wywierania wpływu na działanie aplikacji, która otwiera szerokie możliwości dotyczące Twojego klucza i zarządzanie wpisami tajnymi.
+Po utworzeniu magazynu kluczy, można uruchomić, używany do przechowywania kluczy i wpisów tajnych. Aplikacje nie są już potrzebne zachować swoje klucze i wpisy tajne, ale zażądać ich z magazynu zgodnie z potrzebami. Magazyn kluczy umożliwia zaktualizowanie klucze i wpisy tajne bez wywierania wpływu na działanie aplikacji, która otwiera szerokie możliwości zarządzania wpisami tajnymi i klucz.
 
 >[!IMPORTANT]
-> W przykładach w tym artykule znajdują się tylko w celach ilustracyjnych. Nie są przeznaczone do użytku produkcyjnego. 
+> W przykładach w tym artykule znajdują się tylko w celach ilustracyjnych. Nie są one przeznaczone do użytku produkcyjnego. 
 
 Ten artykuł przeprowadzi:
 
-- Przykład użycia usługi Azure Key Vault do przechowywania klucza tajnego. W tym samouczku przechowywany klucz tajny jest klucz konta usługi Azure Storage, uzyskiwał dostęp do aplikacji. 
-- Ilustruje też implementacji zaplanowane obrotu tego klucza konta magazynu.
-- Pokazuje sposób monitorowania dzienników inspekcji usługi key vault i zgłaszać alerty w przypadku nieoczekiwanych żądań.
+- Przykład użycia usługi Azure Key Vault do przechowywania klucza tajnego. W tym artykule przechowywany klucz tajny jest klucz konta magazynu platformy Azure, które są używane przez aplikację. 
+- Jak zaimplementować zaplanowane obrót tego klucza konta magazynu.
+- Jak monitorować klucza magazynu dzienników inspekcji i zgłaszać alerty w przypadku nieoczekiwanych żądań.
 
 > [!NOTE]
-> W tym samouczku nie jest przeznaczona do szczegółowo wyjaśniono wszystkie początkowej konfiguracji magazynu kluczy. Aby uzyskać te informacje, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Aby uzyskać instrukcje dotyczące Wieloplatformowego interfejsu wiersza polecenia, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia](key-vault-manage-with-cli2.md).
->
->
+> W tym artykule nie opisano szczegółowo początkowej konfiguracji magazynu kluczy. Aby uzyskać te informacje, zobacz [co to jest usługa Azure Key Vault?](key-vault-overview.md). Aby uzyskać instrukcje dotyczące wieloplatformowego interfejsu wiersza polecenia, zobacz [Zarządzanie Key Vault przy użyciu wiersza polecenia platformy Azure](key-vault-manage-with-cli2.md).
 
 ## <a name="set-up-key-vault"></a>Konfigurowanie usługi Key Vault
 
-Aby umożliwić aplikacji do pobrania wpisu tajnego z usługi Key Vault, należy najpierw utworzyć wpis tajny i przekaż go do magazynu. Można to zrobić, uruchamiając sesję programu Azure PowerShell i logowania do konta platformy Azure za pomocą następującego polecenia:
+Aby umożliwić aplikacji do pobrania wpisu tajnego z usługi Key Vault, należy najpierw utworzyć wpis tajny i przekaż go do magazynu.
+
+Uruchom sesję programu PowerShell Azure i zaloguj się na konto platformy Azure przy użyciu następującego polecenia:
 
 ```powershell
 Connect-AzAccount
 ```
 
-W podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem. Pierwsza z nich domyślnie korzysta z programu PowerShell.
+W oknie podręcznym oknie przeglądarki wprowadź nazwę użytkownika i hasło dla konta platformy Azure. PowerShell pobierze wszystkie subskrypcje, które są skojarzone z tym kontem. Pierwsza z nich domyślnie korzysta z programu PowerShell.
 
 Jeśli masz wiele subskrypcji, trzeba będzie określić ten, który został użyty do utworzenia magazynu kluczy. Wprowadź następujące polecenie, aby zobaczyć subskrypcje dla konta:
 
@@ -70,7 +70,7 @@ Ponieważ w tym artykule przedstawiono przechowywania klucza konta magazynu jako
 Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
-Po pobraniu klucz tajny (w tym przypadku klucz konta magazynu), należy przekonwertować, bezpieczny ciąg i następnie utworzyć wpis tajny z tej wartości w magazynie kluczy.
+Po pobraniu klucz tajny (w tym przypadku klucz konta magazynu), należy przekonwertować tego klucza na bezpieczny ciąg i następnie utworzyć wpis tajny z tej wartości w magazynie kluczy.
 
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
@@ -78,7 +78,7 @@ $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
-Następnie uzyskać identyfikator URI klucza tajnego, który został utworzony. Służy to w późniejszym kroku podczas wywoływania magazynu kluczy, aby pobrać klucz tajny. Uruchom następujące polecenie programu PowerShell i zanotuj wartość Identyfikatora, czyli identyfikator URI klucza tajnego:
+Następnie uzyskać identyfikator URI klucza tajnego, który został utworzony. Ten identyfikator URI w późniejszym kroku, aby wywołać usługi key vault i pobrać klucz tajny jest konieczne. Uruchom następujące polecenie programu PowerShell i zanotuj wartość Identyfikatora, który jest identyfikatorem URI klucza tajnego:
 
 ```powershell
 Get-AzKeyVaultSecret –VaultName <vaultName>
@@ -86,36 +86,36 @@ Get-AzKeyVaultSecret –VaultName <vaultName>
 
 ## <a name="set-up-the-application"></a>Konfigurowanie aplikacji
 
-Teraz, gdy wpis tajny przechowywane, można użyć kodu, można pobrać i używać go. Istnieje kilka kroków wymaganych do osiągnięcia tego. Pierwszy i Najważniejszy krok jest rejestrowanie aplikacji w usłudze Azure Active Directory i następnie informuje usługi Key Vault informacje o aplikacji, dzięki czemu umożliwia żądania od aplikacji.
+Teraz, gdy wpis tajny przechowywane, można użyć kodu, pobrać i użyć go po wykonaniu kilku dodatkowych czynności.
+
+Najpierw należy zarejestrować aplikację w usłudze Azure Active Directory. Następnie poinformuj usługi Key Vault informacje o aplikacji, dzięki czemu umożliwia ona żądań z aplikacji.
 
 > [!NOTE]
 > Aplikacja musi zostać utworzona w tej samej dzierżawy usługi Azure Active Directory jako magazynu kluczy.
->
->
 
-1. Przejdź do usługi Azure Active Directory.
-2. Wybierz **rejestracje aplikacji** 
+1. Otwórz **usługi Azure Active Directory**.
+2. Wybierz pozycję **Rejestracje aplikacji**. 
 3. Wybierz **rejestrowanie nowej aplikacji** Aby dodać aplikację do usługi Azure Active Directory.
 
     ![Otwieranie aplikacji w usłudze Azure Active Directory](./media/keyvault-keyrotation/azure-ad-application.png)
 
-4. W **Utwórz** sekcji pozostawić typ aplikacji jako **interfejsu API sieci WEB i/lub usługi sieci WEB APPLICATION** i nadaj aplikacji nazwę. Nadaj aplikacji **adres URL logowania**. Może to być dowolna, które mają dla tej wersji demonstracyjnej.
+4. W obszarze **Utwórz**, pozostaw typ aplikacji jako **aplikacji sieci Web / interfejs API** i nadaj aplikacji nazwę. Nadaj aplikacji **adres URL logowania**. Ten adres URL może być coś, czego potrzebujesz dla tej wersji demonstracyjnej.
 
     ![Utwórz rejestrowanie aplikacji](./media/keyvault-keyrotation/create-app.png)
 
-5. Po dodaniu aplikacji do usługi Azure Active Directory, zostanie wyświetlona na stronie aplikacji. Wybierz **ustawienia** i wybierz polecenie Właściwości. Kopiuj **identyfikator aplikacji** wartość. Będzie ona potrzebna w kolejnych krokach.
+5. Po dodaniu aplikacji do usługi Azure Active Directory zostanie otwarta strona aplikacji. Wybierz **ustawienia**, a następnie wybierz pozycję **właściwości**. Kopiuj **identyfikator aplikacji** wartość. Będzie potrzebny w kolejnych krokach.
 
-Kolejny krok to generowanie klucza dla aplikacji, dzięki czemu może współdziałać z usługi Azure Active Directory. Można utworzyć klucza pod, przechodząc do **klucze** sekcji **ustawienia**. Zanotuj klucz nowo wygenerowane z poziomu aplikacji usługi Azure Active Directory do użycia na późniejszym etapie. Należy zauważyć, że klucz nie będą dostępne po przejściu z tej sekcji. 
+Kolejny krok to generowanie klucza dla aplikacji, dzięki czemu może współdziałać z usługą Azure Active Directory. Aby utworzyć klucz, wybierz **klucze** w obszarze **ustawienia**. Zanotuj klucz nowo wygenerowane w aplikacji usługi Azure Active Directory. Będą one potrzebne w kolejnym kroku. Klucz nie będzie dostępny, gdy opuścisz w tej sekcji. 
 
-![Klucze aplikacji usługi Azure Active Directory](./media/keyvault-keyrotation/create-key.png)
+![Klucze aplikacji w usłudze Azure Active Directory](./media/keyvault-keyrotation/create-key.png)
 
-Przed nawiązaniem wszelkie wywołania z aplikacji do magazynu kluczy, musisz poinformować usługi key vault o aplikacji i ich uprawnienia. Następujące polecenie przyjmuje nazwę magazynu i identyfikator aplikacji z poziomu aplikacji usługi Azure Active Directory i przyznaje **uzyskać** dostępu do magazynu kluczy dla aplikacji.
+Przed nawiązaniem wszelkie wywołania z aplikacji do magazynu kluczy, musisz poinformować usługi key vault o aplikacji i ich uprawnienia. Następujące polecenie używa nazwy magazynu i identyfikator aplikacji z poziomu aplikacji usługi Azure Active Directory, aby przyznać aplikacji **uzyskać** dostępu do magazynu kluczy.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
-W tym momencie możesz gotowe do rozpoczęcia tworzenia wywołaniami aplikacji. W aplikacji należy zainstalować pakiety NuGet, musieli korzystać z usługi Azure Key Vault i Azure Active Directory. Z poziomu konsoli Menedżera pakietów Visual Studio wprowadź następujące polecenia. Na zapisywanie w tym artykule bieżącą wersję pakietu usługi Azure Active Directory jest 3.10.305231913, dzięki czemu możesz chcieć sprawdzić najnowsza wersja, a następnie odpowiednio zaktualizować.
+Teraz możesz rozpocząć tworzenie wywołaniami aplikacji. W aplikacji należy zainstalować pakiety NuGet, które są wymagane do interakcji z usługi Azure Key Vault i Azure Active Directory. Z poziomu konsoli Menedżera pakietów Visual Studio wprowadź następujące polecenia. Na zapisywanie w tym artykule bieżącą wersję pakietu usługi Azure Active Directory 3.10.305231913, dlatego upewnij się, najnowszej wersji i update zgodnie z potrzebami.
 
 ```powershell
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.305231913
@@ -123,7 +123,7 @@ Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -Version 3.10.30
 Install-Package Microsoft.Azure.KeyVault
 ```
 
-W kodzie aplikacji należy utworzyć klasę, aby pomieścić metodę uwierzytelniania usługi Azure Active Directory. W tym przykładzie jest wywoływana tej klasy **Utils**. Dodaj następującą instrukcję using:
+W kodzie aplikacji należy utworzyć klasę, aby pomieścić metodę uwierzytelniania usługi Azure Active Directory. W tym przykładzie jest wywoływana tej klasy **Utils**. Dodaj następujący kod `using` instrukcji:
 
 ```csharp
 using Microsoft.IdentityModel.Clients.ActiveDirectory;
@@ -148,13 +148,13 @@ public async static Task<string> GetToken(string authority, string resource, str
 }
 ```
 
-Dodać niezbędny kod do wywołania usługi Key Vault i pobrać wartość wpisu tajnego. Najpierw należy dodać następujące instrukcję using:
+Dodać niezbędny kod do wywołania usługi Key Vault i pobrać wartość wpisu tajnego. Najpierw należy dodać następujące `using` instrukcji:
 
 ```csharp
 using Microsoft.Azure.KeyVault;
 ```
 
-Dodaj wywołania metody do wywołania usługi Key Vault i pobrać klucz tajny. W przypadku tej metody należy podać klucz tajny identyfikator URI, który został zapisany w poprzednim kroku. Zwróć uwagę na użycie **GetToken** metody z **Utils** klasy został wcześniej utworzony.
+Dodaj wywołania metody do wywołania usługi Key Vault i pobrać klucz tajny. W przypadku tej metody należy podać klucz tajny identyfikator URI, który został zapisany w poprzednim kroku. Zwróć uwagę na użycie **GetToken** metody z **Utils** klasy, który został wcześniej utworzony.
 
 ```csharp
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(Utils.GetToken));
@@ -166,13 +166,19 @@ Po uruchomieniu aplikacji powinno być teraz uwierzytelniania w usłudze Azure A
 
 ## <a name="key-rotation-using-azure-automation"></a>Wymiana kluczy przy użyciu usługi Azure Automation
 
-Istnieją różne opcje dotyczące implementowania strategii obrotu dla wartości, które są przechowywane jako wpisy tajne w usłudze Azure Key Vault. Wpisy tajne można obracać jako część ręczny proces, ich może zostać obrócona programowo przy użyciu wywołań interfejsu API lub może zostać obrócona za pomocą skryptów automatyzacji. Na potrzeby tego artykułu jest będzie używać programu Azure PowerShell w połączeniu z usługą Azure Automation można zmienić klucza dostępu konta usługi Azure Storage. Następnie zaktualizuje wpisu tajnego usługi key vault za pomocą tego nowego klucza.
+Teraz można przystąpić do konfigurowania strategii obrotu dla wartości, które są przechowywane jako wpisy tajne usługi Key Vault. Wpisy tajne można obracać na kilka sposobów:
 
-Aby umożliwić usłudze Azure Automation do ustawiania wartości klucza tajnego w magazynie kluczy, należy uzyskać identyfikator klienta dla połączenia o nazwie AzureRunAsConnection, który został utworzony, gdy ustanowiona swojego wystąpienia usługi Azure Automation. Ten identyfikator można znaleźć, wybierając **zasoby** z wystąpienia usługi Azure Automation. Z tego miejsca możesz wybrać **połączeń** , a następnie wybierz **AzureRunAsConnection** usługi zasady. Zwróć uwagę na **identyfikator aplikacji**.
+- W ramach procesu ręczne
+- Programowe, przy użyciu wywołań interfejsu API
+- Za pomocą skryptu programu Azure Automation
+
+Na potrzeby tego artykułu będziesz zmienić klucz dostępu konta usługi Azure storage za pomocą programu PowerShell, w połączeniu z usługą Azure Automation. Następnie zaktualizujesz wpisu tajnego usługi key vault za pomocą tego nowego klucza.
+
+Aby umożliwić usłudze Azure Automation do ustawiania wartości klucza tajnego w magazynie kluczy, należy uzyskać identyfikator klienta dla połączenia o nazwie **AzureRunAsConnection**. To połączenie zostało utworzone, gdy ustanowiona swojego wystąpienia usługi Azure Automation. Aby znaleźć ten identyfikator, wybierz **zasoby** z wystąpienia usługi Azure Automation. Z tego miejsca wybierz **połączeń**, a następnie wybierz pozycję **AzureRunAsConnection** nazwy głównej usługi. Zanotuj **ApplicationId** wartość.
 
 ![Identyfikator klienta usługi Azure Automation](./media/keyvault-keyrotation/Azure_Automation_ClientID.png)
 
-W **zasoby**, wybierz **modułów**. Z **modułów**, wybierz opcję **galerii**, a następnie wyszukaj i **importu** zaktualizowane wersje każdego z następujących modułów:
+W **zasoby**, wybierz opcję **modułów**. Wybierz **galerii**, a następnie wyszukaj i zaimportuj zaktualizowane wersje każdego z następujących modułów:
 
     Azure
     Azure.Storage
@@ -181,19 +187,16 @@ W **zasoby**, wybierz **modułów**. Z **modułów**, wybierz opcję **galerii**
     AzureRM.Automation
     AzureRM.Storage
 
-
 > [!NOTE]
-> Na zapisywanie w tym artykule tylko moduły wspomniano wcześniej wymagane do aktualizacji poniższy skrypt. Jeśli okaże się, że zadania automatyzacji kończy się niepowodzeniem, upewnij się, że został zaimportowany wszystkie niezbędne moduły oraz ich zależności.
->
->
+> Na zapisywanie w tym artykule tylko moduły wspomniano wcześniej wymagane do aktualizacji poniższy skrypt. Zadania automatyzacji nie powiedzie się, upewnij się, że zaimportowane wszystkie niezbędne moduły oraz ich zależności.
 
-Po pobraniu Identyfikatora aplikacji połączenia usługi Azure Automation, musisz poinformować magazynu kluczy czy ta aplikacja ma dostęp do zaktualizowania wpisów tajnych w magazynie. Można to zrobić za pomocą następującego polecenia programu PowerShell:
+Po pobraniu już Identyfikatora aplikacji połączenia usługi Azure Automation, musisz poinformować magazynu kluczy, ta aplikacja ma uprawnienia do zaktualizowania wpisów tajnych w magazynie. Użyj następującego polecenia programu PowerShell:
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
-Następnie wybierz pozycję **elementów Runbook** w ramach wystąpienia usługi Azure Automation, a następnie wybierz **Dodaj element Runbook**. Wybierz pozycję **Szybkie tworzenie**. Nazwa elementu runbook, a następnie wybierz pozycję **PowerShell** jako typ elementu runbook. Masz opcję, aby dodać opis. Na koniec kliknij **Utwórz**.
+Następnie wybierz pozycję **elementów Runbook** w ramach wystąpienia usługi Azure Automation, a następnie wybierz **Dodawanie elementu Runbook**. Wybierz pozycję **Szybkie tworzenie**. Nazwa elementu runbook, a następnie wybierz pozycję **PowerShell** jako typ elementu runbook. Można dodać opis. Na koniec wybierz pozycję **Utwórz**.
 
 ![Tworzenie elementu runbook](./media/keyvault-keyrotation/Create_Runbook.png)
 
@@ -203,7 +206,7 @@ Wklej poniższy skrypt programu PowerShell, w okienku edytora, aby uzyskać nowy
 $connectionName = "AzureRunAsConnection"
 try
 {
-    # Get the connection "AzureRunAsConnection "
+    # Get the connection "AzureRunAsConnection"
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
@@ -225,7 +228,7 @@ catch {
     }
 }
 
-#Optionally you may set the following as parameters
+# Optionally you can set the following as parameters
 $StorageAccountName = <storageAccountName>
 $RGName = <storageAccountResourceGroupName>
 $VaultName = <keyVaultName>
@@ -240,12 +243,13 @@ $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 $secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
-W okienku Edytora wybierz **okienko testowania** Aby przetestować skrypt. Gdy skrypt jest uruchamiany bez błędów, można wybrać **Publikuj**, a następnie zostanie zastosowana harmonogram dla elementu runbook w okienku Konfiguracja elementu runbook.
+W okienku Edytora wybierz **okienko testowania** Aby przetestować skrypt. Po uruchomieniu skryptu bez błędów, można wybrać **Publikuj**, a następnie zostanie zastosowana harmonogram dla elementu runbook w okienku Konfiguracja elementu runbook.
 
 ## <a name="key-vault-auditing-pipeline"></a>Potok inspekcji usługi Key Vault
-Po skonfigurowaniu magazynu kluczy można włączyć inspekcję do zbierania dzienników dla żądań dostępu do magazynu kluczy. Te dzienniki są przechowywane w wyznaczonego konta usługi Azure Storage i mogą być ściągane, monitorowane i analizowane. Poniższy scenariusz używa usługi Azure functions, Azure logic apps i dzienników inspekcji usługi key vault umożliwia tworzenie potoku, aby wysłać wiadomość e-mail, gdy aplikacja, która jest zgodna z Identyfikatorem aplikacji w aplikacji sieci web pobiera wpisy tajne z magazynu.
 
-Najpierw należy włączyć rejestrowanie w magazynie kluczy. Można to zrobić za pomocą następujących poleceń programu PowerShell (szczegółowe informacje są widoczne w [key vault rejestrowania](key-vault-logging.md)):
+Po skonfigurowaniu magazynu kluczy można włączyć inspekcję do zbierania dzienników dla żądań dostępu do magazynu kluczy. Te dzienniki są przechowywane na koncie magazynu platformy Azure w wyznaczonym i mogą być ściągane, monitorowane i analizowane. Poniższy scenariusz używa usługi Azure functions, Azure logic apps i dzienników inspekcji usługi key vault umożliwia tworzenie potoku, który wysyła wiadomość e-mail, gdy aplikacja, która nie pasuje do Identyfikatora aplikacji w aplikacji sieci web pobiera wpisy tajne z magazynu.
+
+Najpierw należy włączyć rejestrowanie w magazynie kluczy. Użyj następujących poleceń programu PowerShell. (Można zobaczyć wszystkie szczegóły w [ten artykuł key vault rejestrowania](key-vault-logging.md).)
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
@@ -253,25 +257,23 @@ $kv = Get-AzKeyVault -VaultName '<vaultName>'
 Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
-Po włączeniu to rozpoczęcia zbierania do konta magazynu wyznaczonego dzienników inspekcji. Te dzienniki zawierają zdarzenia dotyczące sposobu i czasu Twoich magazynów kluczy są dostępne i przez kogo.
+Po włączeniu rejestrowania dzienników inspekcji start, są przechowywane na koncie magazynu wyznaczonego. Te dzienniki zawierają zdarzenia dotyczące sposobu i czasu Twoich magazynów kluczy są dostępne i przez kogo.
 
 > [!NOTE]
-> Informacji rejestrowania będzie można się do 10 minut, po zakończeniu operacji magazynu kluczy. Zwykle jest krótszy.
->
->
+> Informacji rejestrowania będzie można się do 10 minut, po zakończeniu operacji magazynu kluczy. Często będzie dostępna wcześniej niż.
 
-Następnym krokiem jest [Tworzenie kolejki usługi Azure Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). Jest to, gdzie są wypychane dzienników inspekcji usługi key vault. Komunikaty dziennika inspekcji znajdują się w kolejce, aplikacja logiki wybierze je i działa na nich. Tworzenie usługi Service bus wykonując następujące kroki:
+Następnym krokiem jest [Tworzenie kolejki usługi Azure Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md). Kolejka ta jest, gdy są przekazywane dzienniki inspekcji usługi key vault. Komunikaty dziennika inspekcji znajdują się w kolejce, aplikacja logiki wybierze je i działa na nich. Utwórz wystąpienie usługi Service Bus wykonując następujące kroki:
 
-1. Tworzenie przestrzeni nazw usługi Service Bus (Jeśli masz już takie, którego chcesz użyć dla tego, przejdź do kroku 2).
-2. Przejdź do usługi service bus w witrynie Azure portal, a następnie wybierz przestrzeń nazw, aby utworzyć kolejkę.
-3. Wybierz **Utwórz zasób**, **integracji dla przedsiębiorstw**, **usługi Service Bus**, a następnie wprowadź wymagane szczegóły.
-4. Wybierz informacje o połączeniu usługi Service Bus, wybierając przestrzeni nazw, a następnie klikając polecenie **informacje o połączeniu**. Ta informacja będzie potrzebna do następnej sekcji.
+1. Tworzenie przestrzeni nazw usługi Service Bus (Jeśli już masz, którą chcesz używać, przejdź do kroku 2).
+2. Przejdź do wystąpienia usługi Service Bus w witrynie Azure portal i wybierz przestrzeń nazw, aby utworzyć kolejkę.
+3. Wybierz **Utwórz zasób** > **integracji dla przedsiębiorstw** > **usługi Service Bus**, a następnie wprowadź wymagane szczegóły.
+4. Znajdź informacje o połączeniu usługi Service Bus przez wybranie obszaru nazw, a następnie wybierając **informacje o połączeniu**. Te informacje należy do następnej sekcji.
 
-Następnie [utworzyć funkcję platformy Azure](../azure-functions/functions-create-first-azure-function.md) sondowania dzienników usługi key vault w ramach konta magazynu i odebrania nowych zdarzeń. Będzie to funkcja, która jest wyzwalana zgodnie z harmonogramem.
+Następnie [utworzyć funkcję platformy Azure](../azure-functions/functions-create-first-azure-function.md) sondowania dzienników usługi key vault w ramach konta magazynu i odebrania nowych zdarzeń. Ta funkcja zostanie wyzwolone zgodnie z harmonogramem.
 
-Aby utworzyć funkcję platformy Azure, wybierz **Utwórz zasób**, portalu marketplace wyszukaj hasło _aplikacji funkcji_i kliknij przycisk **Utwórz**. Podczas tworzenia możesz użyć istniejącego planu hostingu lub Utwórz nową. Można również zdecydować się do hostowania dynamicznego. Szczegółowe informacje na temat opcji hostingu funkcji znajduje się w temacie [jak skalować usługę Azure Functions](../azure-functions/functions-scale.md).
+Aby utworzyć aplikację funkcji platformy Azure, wybierz **Utwórz zasób**, portalu marketplace wyszukaj hasło **aplikacji funkcji**, a następnie wybierz pozycję **Utwórz**. Podczas tworzenia możesz użyć istniejącego planu hostingu lub Utwórz nową. Można również zdecydować się do hostowania dynamicznego. Aby uzyskać więcej informacji na temat opcji hostingu dla usługi Azure Functions, zobacz [jak skalować usługę Azure Functions](../azure-functions/functions-scale.md).
 
-Podczas tworzenia funkcji platformy Azure, przejdź do niego i wybierz pozycję czasomierz, funkcji i C\#. Następnie kliknij przycisk **Utwórz tę funkcję**.
+Po utworzeniu aplikacji funkcji platformy Azure, przejdź do niego i wybierz **czasomierza** scenariusza i **C\#**  dla języka. Następnie wybierz pozycję **Utwórz tę funkcję**.
 
 ![Blok usługi Azure Functions Start](./media/keyvault-keyrotation/Azure_Functions_Start.png)
 
@@ -348,7 +350,7 @@ public static void Run(TimerInfo myTimer, TextReader inputBlob, TextWriter outpu
 
             dynamic dynJson = JsonConvert.DeserializeObject(text);
 
-            //required to order by time as they may not be in the file
+            //Required to order by time as they might not be in the file
             var results = ((IEnumerable<dynamic>) dynJson.records).OrderBy(p => p.time);
 
             foreach (var jsonItem in results)
@@ -386,19 +388,20 @@ static string GetContainerSasUri(CloudBlockBlob blob)
 }
 ```
 
-
 > [!NOTE]
-> Upewnij się zastąpić zmiennych w poprzednim kodzie, aby wskazywały do swojego konta magazynu, gdzie są zapisywane dzienniki magazynu kluczy, usługi service bus, która została utworzona wcześniej i określonej ścieżki do dzienników magazynu kluczy.
->
->
+> Umożliwia modyfikację zmiennych w poprzednim kodzie, aby wskazywały do swojego konta magazynu, w którym są zapisywane dzienniki magazynu kluczy, wystąpienie usługi Service Bus, która została utworzona wcześniej i określonej ścieżki do dzienników usługi key vault storage.
 
-Funkcja pobiera najnowszy plik dziennika z konta magazynu gdzie są zapisywane dzienniki magazynu kluczy, bierze najnowszych zdarzeń z tego pliku i wypycha je do kolejki usługi Service Bus. Ponieważ pojedynczy plik może mieć wiele zdarzeń, należy utworzyć plik sync.txt, funkcja również sposobom, w celu określenia sygnatura czasowa ostatniego zdarzenia, które zostało odebrane. Daje to gwarancję, że nie wypchniesz te same zdarzenia wiele razy. Ten plik sync.txt zawiera sygnaturę czasową dla ostatniego zdarzenia wystąpił. Dzienniki, gdy ładowany, muszą być sortowane w oparciu o sygnaturę czasową, aby upewnić się, że są one uporządkowane poprawnie.
+Funkcja pobiera najnowszy plik dziennika z konta magazynu gdzie są zapisywane dzienniki magazynu kluczy, bierze najnowszych zdarzeń z tego pliku i wypycha je do kolejki usługi Service Bus. 
 
-Dla tej funkcji odwołujemy się kilka dodatkowych bibliotek, które nie są dostępne gotowe w usłudze Azure Functions. Aby je uwzględnić, musimy usługi Azure Functions, aby ściągnąć je za pomocą narzędzia NuGet. Wybierz **Wyświetl pliki** opcji.
+Ponieważ pojedynczy plik może mieć wiele zdarzeń, należy utworzyć plik sync.txt, funkcja również sposobom, w celu określenia sygnatura czasowa ostatniego zdarzenia, które zostało odebrane. Przy użyciu tego pliku gwarantuje, że nie wypchniesz te same zdarzenia wiele razy. 
 
-![Opcja Widok do plików](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
+Plik sync.txt zawiera sygnaturę czasową dla napotkano ostatniego zdarzenia. Po załadowaniu dzienniki one muszą być sortowane na podstawie ich sygnatur czasowych, aby upewnić się, że są one uporządkowane poprawnie.
 
-I Dodaj plik o nazwie pliku project.json o następującej zawartości:
+Dla tej funkcji odwołujemy się kilka dodatkowych bibliotek, które nie są dostępne gotowe w usłudze Azure Functions. Aby uwzględnić te biblioteki, potrzebujemy wyciągnij je za pomocą pakietu NuGet usługi Azure Functions. W obszarze **kodu** wybierz opcję **Wyświetl pliki**.
+
+![Opcja "Wyświetl pliki"](./media/keyvault-keyrotation/Azure_Functions_ViewFiles.png)
+
+Dodaj plik o nazwie pliku project.json o następującej zawartości:
 
 ```json
     {
@@ -413,27 +416,27 @@ I Dodaj plik o nazwie pliku project.json o następującej zawartości:
     }
 ```
 
-Po **Zapisz**, usługi Azure Functions pobierze wymagane pliki binarne.
+Po wybraniu **Zapisz**, usługi Azure Functions pobierze wymagane pliki binarne.
 
-Przełącz się do **integracja** kartę i podać parametr czasomierza znaczącą nazwę, aby użyć wewnątrz funkcji. W poprzednim kodzie oczekuje, że Czasomierz ma zostać wywołana *myTimer*. Określ [wyrażenie CRON](../app-service/webjobs-create.md#CreateScheduledCRON) w następujący sposób: 0 \* \* \* \* \* dla czasomierza, który spowoduje, że funkcja do uruchamiania raz na minutę.
+Przełącz się do **integracja** kartę i podać parametr czasomierza znaczącą nazwę, aby użyć wewnątrz funkcji. W poprzednim kodzie funkcja oczekuje czasomierz ma zostać wywołana *myTimer*. Określ [wyrażenie CRON](../app-service/webjobs-create.md#CreateScheduledCRON) dla czasomierza w następujący sposób: `0 * * * * *`. To wyrażenie spowoduje, że funkcja do uruchamiania raz na minutę.
 
-W tym samym **integracja** kartę, Dodaj wejście typ **usługi Azure Blob Storage**. Będzie to wskazywać plik sync.txt, który zawiera sygnatura czasowa ostatniego zdarzenia przyjrzano się przez funkcję. Będzie dostępna w ramach funkcji, nazwy parametru. W poprzednim kodzie danych wejściowych usługi Azure Blob Storage oczekuje, że nazwa parametru, który ma zostać *inputBlob*. Wybierz konto magazynu, w której będą znajdować się plik sync.txt (może być taka sama lub innego konta magazynu). W polu Ścieżka podaj ścieżkę lokalizacji pliku w formacie {container-name}/path/to/sync.txt.
+W tym samym **integracja** kartę, Dodaj wejście typ **usługi Azure Blob storage**. Te dane wejściowe będzie wskazywać plik sync.txt, który zawiera sygnatura czasowa ostatniego zdarzenia przyjrzano się przez funkcję. Te dane wejściowe będzie można uzyskiwać dostępu do funkcji, używając nazwy parametru. W poprzednim kodzie dane wejściowe z magazynu obiektów Blob platformy Azure oczekuje, że nazwa parametru, który ma zostać *inputBlob*. Wybierz konto magazynu, w której zostaną umieszczone w pliku sync.txt (może być taka sama lub innego konta magazynu). W polu Ścieżka podaj ścieżkę do pliku w formacie `{container-name}/path/to/sync.txt`.
 
-Dodaj dane wyjściowe tego typu *usługi Azure Blob Storage* danych wyjściowych. Będzie to wskazywać plik sync.txt, które zostały zdefiniowane w danych wejściowych. Za pomocą funkcji służy do zapisywania sygnatura czasowa ostatniego zdarzenia przyjrzano się. Powyższy kod oczekuje, że ten parametr można wywołać *Blob_wyj*.
+Dodaj dane wyjściowe tego typu **usługi Azure Blob storage**. Te dane wyjściowe będą wskazywać plik sync.txt, zdefiniowanych w danych wejściowych. Te dane wyjściowe używany przez funkcję do zapisywania sygnatura czasowa ostatniego zdarzenia analizujemy. Powyższy kod oczekuje, że ten parametr można wywołać *Blob_wyj*.
 
-W tym momencie funkcja jest gotowa. Upewnij się wrócić do **programowanie** kartę i zapisać kod. Sprawdź okno danych wyjściowych jakichkolwiek błędów kompilacji i odpowiednio je poprawić. Jeśli kod zostanie skompilowany, następnie kod powinien teraz być sprawdzanie dzienników usługi key vault co minutę i wypychanie wszystkie nowe zdarzenia do zdefiniowanych kolejki usługi Service Bus. Informacje o rejestrowaniu zapisać w oknie dziennika za każdym razem, gdy funkcja jest wyzwalana, powinny być widoczne.
+Funkcja jest teraz gotowy. Upewnij się wrócić do **programowanie** kartę i zapisać kod. Sprawdź okno danych wyjściowych jakichkolwiek błędów kompilacji i popraw je stosownie do potrzeb. Jeśli kod zostanie skompilowany, następnie kod powinien teraz być sprawdzanie dzienników usługi key vault co minutę i wypychanie wszystkie nowe zdarzenia do zdefiniowanych kolejki usługi Service Bus. Informacje o rejestrowaniu zapisać w oknie dziennika za każdym razem, gdy funkcja jest wyzwalana, powinny być widoczne.
 
 ### <a name="azure-logic-app"></a>Aplikacji logiki platformy Azure
 
 Następnie należy utworzyć aplikację logiki platformy Azure, która zbiera zdarzenia, że funkcja jest Wypychanie do kolejki usługi Service Bus, analizuje zawartości i wysyła wiadomość e-mail na podstawie warunku są dopasowywane.
 
-[Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) , przechodząc do **nowy > Aplikacja logiki**.
+[Tworzenie aplikacji logiki](../logic-apps/quickstart-create-first-logic-app-workflow.md) , wybierając **Utwórz zasób** > **integracji** > **aplikacji logiki**.
 
 Po utworzeniu aplikacji logiki, przejdź do niego i wybierz pozycję **Edytuj**. W edytorze aplikacji logiki wybierz pozycję **kolejki usługi Service Bus** i wprowadź swoje poświadczenia usługi Service Bus, aby połączyć go z kolejki.
 
 ![Usługi Azure Logic App Service Bus](./media/keyvault-keyrotation/Azure_LogicApp_ServiceBus.png)
 
-Następnie wybierz **Dodaj warunek**. W tym stanie przejdź do zaawansowanego edytora, a następnie wprowadź następujący kod, zastępując APP_ID rzeczywiste APP_ID aplikacji sieci web:
+Wybierz **Dodaj warunek**. W warunku przejdź do zaawansowanego edytora, a następnie wprowadź poniższy kod. Zastąp *APP_ID* identyfikatorem rzeczywistych aplikacji w aplikacji sieci web:
 
 ```
 @equals('<APP_ID>', json(decodeBase64(triggerBody()['ContentData']))['identity']['claim']['appid'])
@@ -441,10 +444,10 @@ Następnie wybierz **Dodaj warunek**. W tym stanie przejdź do zaawansowanego ed
 
 To wyrażenie zasadniczo zwraca **false** Jeśli *appid* ze zdarzenia przychodzące, (czyli treści wiadomości usługi Service Bus) nie jest *appid* aplikacji.
 
-Teraz Utwórz akcję w obszarze **Jeśli nie, nic nie rób**.
+Teraz Utwórz akcję w obszarze **Jeśli nie, nic nie RÓB**.
 
-![Aplikacja logiki platformy Azure wybierz akcję](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
+![Usługa Azure Logic Apps wybierz akcję](./media/keyvault-keyrotation/Azure_LogicApp_Condition.png)
 
-W przypadku akcji wybierz **usługi Office 365 — Wyślij wiadomość e-mail**. Wypełnij pola, aby utworzyć wiadomość e-mail do wysłania, gdy zwracanych przez warunek zdefiniowanych **false**. Jeśli nie masz usługi Office 365, może przyjrzyj rozwiązań alternatywnych, aby osiągnąć takie same wyniki.
+W przypadku akcji wybierz **usługi Office 365 — Wyślij wiadomość e-mail**. Wypełnij pola, aby utworzyć wiadomość e-mail do wysłania, gdy zwracanych przez warunek zdefiniowanych **false**. Jeśli nie masz usługi Office 365, Wyszukaj alternatywy osiągnąć takie same wyniki.
 
-W tym momencie masz potok końcowy, który wyszukuje nowe dzienniki inspekcji usługi key vault raz na minutę. Umieszcza ono nowe dzienniki, które znajdzie do kolejki usługi service bus. Aplikacja logiki jest wyzwalana, gdy nowa wiadomość znajdzie się w kolejce. Jeśli *appid* w ramach zdarzenia jest niezgodny z Identyfikatorem aplikacji w aplikacji wywołującej, przepływ wysyła wiadomość e-mail.
+Masz teraz potok end-to-end, który wyszukuje nowe dzienniki inspekcji usługi key vault raz na minutę. Umieszcza ono nowe dzienniki, które znajdzie do kolejki usługi Service Bus. Aplikacja logiki jest wyzwalana, gdy nowa wiadomość znajdzie się w kolejce. Jeśli *appid* w ramach zdarzenia nie pasuje do Identyfikatora aplikacji w aplikacji wywołującej, przepływ wysyła wiadomość e-mail.

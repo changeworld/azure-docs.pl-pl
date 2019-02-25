@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 6c6bd31961022957ec1a09fef6058ad32476e1c7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7eb5f090026b415e3c980116a9317594f4ca8115
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005101"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750773"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Za pomocą funkcji w zapytaniach dzienników usługi Azure Monitor
 
@@ -32,7 +32,7 @@ Zapytanie dziennika za pomocą innego zapytania można zapisać go w funkcji. To
 
 ## <a name="create-a-function"></a>Tworzenie funkcji
 
-Tworzenie funkcji w usłudze log analytics w witrynie Azure portal, klikając **Zapisz** i podają informacje przedstawione w poniższej tabeli.
+Tworzenie funkcji przy użyciu usługi Log Analytics w witrynie Azure portal, klikając **Zapisz** i podają informacje przedstawione w poniższej tabeli.
 
 | Ustawienie | Opis |
 |:---|:---|

@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c79becfda84e1a7d65399c7211bdc3b98a28696f
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004659"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750569"
 ---
 # <a name="joins-in-azure-monitor-log-queries"></a>Sprzężenia w zapytaniach dzienników usługi Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) i [zapytań dzienników usługi Azure Monitor](get-started-queries.md) przed wykonaniem tej lekcji.
+> Należy wykonać [Rozpoczynanie pracy z usługą Azure Monitor Log Analytics](get-started-portal.md) i [zapytań dzienników usługi Azure Monitor](get-started-queries.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

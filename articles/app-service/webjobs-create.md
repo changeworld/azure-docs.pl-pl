@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
-ms.openlocfilehash: 43ec22836cb32c21953b9eb6871b9efe300cbf9e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0f2053e978b7c890f4e175515ed54f69694950c6
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001174"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749923"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Uruchamianie zadań w tle za pomocą zadań Webjob w usłudze Azure App Service
 
@@ -47,8 +47,7 @@ W poniższej tabeli opisano różnice między *ciągłe* i *wyzwalane* zadań We
 | Uruchamiany we wszystkich wystąpieniach, w których działa aplikacja sieci web. Zadania WebJob możesz opcjonalnie ograniczyć do pojedynczego wystąpienia. |Uruchamiany na pojedyncze wystąpienie, które platforma Azure wybiera dla równoważenia obciążenia.|
 | Obsługuje zdalne debugowanie. | Nie obsługuje debugowania zdalnego.|
 
-> [!NOTE]
-> Aplikacja sieci web można limit czasu po upływie 20 minut braku aktywności. Tylko żądania do aplikacji internetowej rzeczywiste zresetowanie czasomierza. Wyświetlanie konfiguracji aplikacji w witrynie Azure portal lub wysyłania żądań do lokacji zaawansowane narzędzia (https:// < nazwa_aplikacji >. scm.azurewebsites.net) nie Resetuj czasomierza. Jeśli aplikacja działa w ciągłej lub Włącz zaplanowane zadania Webjob, **Always On** aby zapewnić niezawodne uruchamianie zadania Webjob. Ta funkcja jest dostępna tylko w języku Basic, Standard i Premium [warstw cenowych](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+[!INCLUDE [webjobs-always-on-note](../../includes/webjobs-always-on-note.md)]
 
 ## <a name="acceptablefiles"></a>Obsługiwane typy plików do skryptów lub programów
 
@@ -181,10 +180,9 @@ Możesz wprowadzić [wyrażenie CRON](../azure-functions/functions-bindings-time
 {
     "schedule": "0 */15 * * * *"
 }
-``` 
+```
 
-> [!NOTE]
-> Podczas wdrażania zadanie WebJob z poziomu programu Visual Studio, oznacz swoje `settings.job` właściwości jako pliku **Kopiuj Jeśli nowszy**.
+Aby dowiedzieć się więcej, zobacz [planowania wyzwolone zadania WebJob](webjobs-dotnet-deploy-vs.md#scheduling-a-triggered-webjob).
 
 ## <a name="ViewJobHistory"></a> Wyświetlanie historii zadań
 

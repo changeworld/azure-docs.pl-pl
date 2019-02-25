@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ecbea91cef69c80975dd105c35f526b357033a6b
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343055"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749822"
 ---
 # <a name="azure-monitor-log-queries"></a>Usługa Azure Monitor dziennika zapytań
 Dzienniki monitora platformy Azure są oparte na Eksploratora danych usługi Azure i usługi Azure Monitor dziennika zapytań Użyj wersji tego samego języka zapytania Kusto. [Dokumentacji języka zapytania Kusto](/azure/kusto/query) zawiera wszystkie szczegółowe informacje dotyczące języka i powinien być podstawowy zasoby umożliwiające korzystanie z Pisanie zapytań dzienników w usłudze Azure Monitor. Ta strona zawiera linki do innych zasobów do nauki, jak pisać zapytania i niedostępne w przypadku wdrożenia usługi Azure Monitor języka.
@@ -27,7 +27,7 @@ Dzienniki monitora platformy Azure są oparte na Eksploratora danych usługi Azu
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-- [Wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) jest lekcji Pisanie zapytań i pracy z wynikami w witrynie Azure portal.
+- [Rozpoczynanie pracy z usługą Azure Monitor Log Analytics](get-started-portal.md) jest lekcji Pisanie zapytań i pracy z wynikami w witrynie Azure portal.
 - [Rozpoczynanie pracy z usługą Azure Monitor dziennika zapytań](get-started-queries.md) jest lekcji do pisania zapytań przy użyciu usługi Azure Monitor dane dziennika.
 
 ## <a name="concepts"></a>Pojęcia

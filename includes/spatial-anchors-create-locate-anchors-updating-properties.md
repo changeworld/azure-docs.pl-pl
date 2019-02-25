@@ -1,0 +1,3 @@
+## <a name="updating-properties-on-an-existing-cloud-spatial-anchor"></a>Aktualizowanie właściwości istniejący zakotwiczenia przestrzenne chmury
+
+Aby zaktualizować właściwości elementu zakotwiczenia, należy użyć metody UpdateAnchorPropertiesAsync. Jeśli dwie lub większą liczbę urządzeń do aktualizacji właściwości dla tego samego kotwicy w tym samym czasie, użyjemy modelu optymistycznej współbieżności. Oznacza to, że wygra pierwszej operacji zapisu.  Wszystkie inne operacje zapisu, zostanie wyświetlony błąd "Współbieżności": odświeżanie właściwości będzie potrzebna przed podjęciem ponownej próby.

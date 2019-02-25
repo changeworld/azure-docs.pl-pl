@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: b6a7fe2c12b2f1f5bcc0ba8cccd1a51ee39c4a6f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e5e80ac2229c3a2962702527dc3162229c25a5c5
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882094"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750875"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Rozwiązywanie problemów, włączanie i wyświetlanie Application Insights Profiler
 
@@ -123,6 +123,8 @@ Te parametry, usuń folder, który jest używany przez program Application Insig
 Profiler jest uruchamiany jako ciągłe zadanie webjob w aplikacji sieci web. Możesz otworzyć zasób aplikacji sieci web w [witryny Azure portal](https://portal.azure.com). W **WebJobs** okienko, sprawdź stan **ApplicationInsightsProfiler**. Jeśli nie jest uruchomiony, otwórz **dzienniki** Aby uzyskać więcej informacji.
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Rozwiązywanie problemów z Profiler i Diagnostyka Azure
+
+  >**W programie profiler, który jest dostarczany w najnowszej wersji WAD dla usług Cloud Services znajduje się błąd.** Aby można było używać programu profilującego z usługą w chmurze, obsługuje on tylko zestawu SDK usługi AI do wersji 2.7.2. Jeśli używasz nowszą wersję zestawu SDK usługi AI będziesz mieć, wróć do obszaru 2.7.2 Aby można było używać programu profilującego.
 
 Aby sprawdzić, czy Profiler jest poprawnie skonfigurowany przez diagnostykę platformy Azure, wykonaj następujące czynności: 
 1. Najpierw sprawdź, czy zawartość konfiguracji diagnostyki platformy Azure, które zostały wdrożone są, czego oczekiwać. 

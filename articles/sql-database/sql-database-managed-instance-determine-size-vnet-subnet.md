@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
-ms.date: 01/04/2019
-ms.openlocfilehash: 12b0690c7653b03c8099253bee509a79a2ae2600
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/22/2019
+ms.openlocfilehash: cdd9f4eed30744f0eb65f8890eb1d7149f39736c
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561862"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750246"
 ---
 # <a name="determine-vnet-subnet-size-for-azure-sql-database-managed-instance"></a>Określ rozmiar podsieci sieci wirtualnej dla wystąpienia zarządzanego Azure SQL Database
 
@@ -27,10 +27,10 @@ Liczba wystąpień zarządzanych, które mogą być wdrażane w podsieci sieci w
 
 Podczas tworzenia wystąpienia zarządzanego Azure przydziela liczbę maszyn wirtualnych, w zależności od warstwy wybranej podczas inicjowania obsługi. Ponieważ te maszyny wirtualne są skojarzone z podsieci, wymagają one adresów IP. Aby zapewnić wysoką dostępność podczas regularnych operacjach i obsłudze usługi, platformy Azure może przydzielić dodatkowe maszyny wirtualne. W wyniku liczbę wymaganych adresów IP w podsieci jest większa niż liczba wystąpień zarządzanych w tej podsieci.
 
-Zgodnie z projektem wystąpienie zarządzane wymaga co najmniej 16 adresów IP w podsieci i może używać maksymalnie 256 adresów IP. W rezultacie można użyć maski podsieci /28 na prefiksie/24, podczas definiowania zakresów IP podsieci.
+Zgodnie z projektem wystąpienie zarządzane wymaga co najmniej 16 adresów IP w podsieci i może używać maksymalnie 256 adresów IP. W rezultacie można użyć maski podsieci, między /28 i prefiksie/24, podczas definiowania zakresów IP podsieci. Bit maski sieci/28 (14 hostów) jest dobry rozmiar dla jednego ogólnego przeznaczenia lub krytyczne dla prowadzonej działalności wdrożenia. Bit maski/27 (30 hostów) są idealne dla wielu wdrożeń do wystąpienia zarządzanego, w ramach tej samej sieci wirtualnej. Maska bitowa ustawienia /26 (62 hostów) i prefiksie/24 (254 hostów) umożliwia dalsze skalowanie spoza sieci wirtualnej, która obsługuje dodatkowe wystąpienia zarządzanego.
 
 > [!IMPORTANT]
-> Rozmiar podsieci o 16 adresów IP jest absolutnego minimum przy użyciu ograniczonych możliwości dalsze skalowanie wystąpienia zarządzanego w poziomie. Zdecydowanie zaleca się wybranie pozycji podsieci z prefiksem wartość/27 lub poniżej.
+> Rozmiar podsieci, z 16 adresów IP jest absolutnego minimum przy użyciu ograniczonych możliwości dalsze skalowanie wystąpienia zarządzanego w poziomie. Zdecydowanie zaleca się wybranie pozycji podsieci z prefiksem wartość/27 lub poniżej.
 
 ## <a name="determine-subnet-size"></a>Należy określić rozmiar podsieci
 

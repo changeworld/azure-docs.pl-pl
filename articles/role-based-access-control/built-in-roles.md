@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 01/25/2019
+ms.date: 02/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 97f9c893487b486bd76031cb6321fe100321931d
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340856"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750722"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -68,6 +68,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Rola usługi Operator kluczy kont magazynu Classic](#classic-storage-account-key-operator-service-role) | Operatorzy kluczy klasycznych kont magazynu mogą wyświetlać listę kluczy dla klasycznych kont magazynu i ponownie je generować |
 | [Współautor klasycznej maszyny wirtualnej](#classic-virtual-machine-contributor) | Umożliwia zarządzanie klasycznymi maszynami wirtualnymi, ale nie dostęp do nich ani do sieci wirtualnych i konta magazynu, z którymi są połączone. |
 | [Cognitive Services Contributor](#cognitive-services-contributor) | Umożliwia tworzenie, odczytywanie, aktualizowanie i usuwanie kluczy usługi Cognitive Services oraz zarządzanie nimi. |
+| [Czytnik danych usług cognitive Services (wersja zapoznawcza)](#cognitive-services-data-reader-preview) | Umożliwia odczytywanie danych z usług Cognitive Services. |
 | [Cognitive Services User](#cognitive-services-user) | Umożliwia odczytywanie kluczy usługi Cognitive Services i wyświetlanie ich listy. |
 | [Rola czytelnika konta usługi cosmos DB](#cosmos-db-account-reader-role) | Może odczytywać dane z konta usługi Azure Cosmos DB. Zobacz [Współautor konta usługi DocumentDB](#documentdb-account-contributor) do zarządzania kontami usługi Azure Cosmos DB. |
 | [CosmosBackupOperator](#cosmosbackupoperator) | Może przesyłać żądania przywracania dotyczące bazy danych Cosmos DB lub kontenera dla konta |
@@ -113,6 +114,9 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Współautor usługi Site Recovery](#site-recovery-contributor) | Pozwala zarządzać usługą Site Recovery z wyjątkiem tworzenia magazynu i przypisywania ról |
 | [Operator usługi Site Recovery](#site-recovery-operator) | Pozwala przechodzić do trybu failover i przywracać sprawność po awarii, ale nie umożliwia wykonywania innych operacji zarządzania usługi Site Recovery |
 | [Czytelnik usługi Site Recovery](#site-recovery-reader) | Pozwala wyświetlać stan usługi Site Recovery, ale nie umożliwia wykonywania innych operacji zarządzania |
+| [Współautor konta kotwic przestrzenne](#spatial-anchors-account-contributor) | Umożliwia zarządzanie przestrzenne kotwic na Twoim koncie, ale nie ich usuwać |
+| [Właściciel konta kotwic przestrzenne](#spatial-anchors-account-owner) | Umożliwia zarządzanie kotwic przestrzennych ze swojego konta, w tym ich usuwania |
+| [Kotwice przestrzenne konta czytnika](#spatial-anchors-account-reader) | Umożliwia lokalizowanie i odczytywanie właściwości kotwic przestrzennego w ramach Twojego konta |
 | [Współautor bazy danych SQL](#sql-db-contributor) | Umożliwia zarządzanie bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich. Ponadto nie można zarządzać ich zasad związanych z bezpieczeństwem ani nadrzędnymi serwerami SQL. |
 | [SQL Security Manager](#sql-security-manager) | Umożliwia zarządzanie zasadami serwerów i baz danych SQL związanymi z zabezpieczeniami, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor serwera SQL Server](#sql-server-contributor) | Umożliwia zarządzanie serwerami i bazami danych SQL, ale nie umożliwia uzyskiwania dostępu do nich ani do ich zasad związanych z zabezpieczeniami. |
@@ -122,6 +126,8 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Właściciel danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-owner-preview) | Zezwala na pełny dostęp do danych i kontenerów obiektów blob usługi Azure Storage, w tym przypisywanie kontroli dostępu POSIX. |
 | [Czytnik danych obiektu Blob Storage (wersja zapoznawcza)](#storage-blob-data-reader-preview) | Zezwala na dostęp do odczytu do kontenerów obiektów blob i danych usługi Azure Storage |
 | [Współautor danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-contributor-preview) | Zezwala na dostęp do odczytu, zapisu i usuwania do kolejek i komunikatów kolejek usługi Azure Storage |
+| [Procesor komunikat danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-message-processor-preview) | Pozwala uzyskać wgląd, otrzymywanie i usunąć dostęp do wiadomości w kolejce usługi Azure Storage |
+| [Nadawca wiadomości danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-message-sender-preview) | Umożliwia wysyłanie komunikatów do kolejki usługi Azure Storage |
 | [Czytnik danych kolejki magazynu (wersja zapoznawcza)](#storage-queue-data-reader-preview) | Zezwala na dostęp do odczytu do kolejek i komunikatów kolejek usługi Azure Storage |
 | [Współautor żądania pomocy technicznej](#support-request-contributor) | Umożliwia tworzenie żądań pomocy technicznej i zarządzanie nimi |
 | [Współautor usługi Traffic Manager](#traffic-manager-contributor) | Umożliwia zarządzanie profilami usługi Traffic Manager, ale nie zapewnia kontroli dostępu do nich. |
@@ -934,6 +940,21 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
+## <a name="cognitive-services-data-reader-preview"></a>Czytnik danych usług cognitive Services (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia odczytywanie danych z usług Cognitive Services. |
+> | **Identyfikator** | b59867f0-fa02-499b-be73-45a86b5b3e1c |
+> | **Akcje** |  |
+> | *Brak* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.CognitiveServices/*/read |  |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
 ## <a name="cognitive-services-user"></a>Cognitive Services — użytkownik
 > [!div class="mx-tableFixed"]
 > | | |
@@ -943,11 +964,11 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Akcje** |  |
 > | Microsoft.CognitiveServices/*/read |  |
 > | Microsoft.CognitiveServices/accounts/listkeys/action | Wylicz klucze |
-> | Microsoft.Insights/metricdefinitions/read | Przeczytaj definicje metryk |
-> | Microsoft.Insights/metrics/read | Odczytaj metryki |
 > | Microsoft.Insights/alertRules/read | Odczytaj alert dotyczący metryki klasycznej |
 > | Microsoft.Insights/diagnosticSettings/read | Odczytaj ustawienie diagnostyczne zasobu |
 > | Microsoft.Insights/logDefinitions/read | Przeczytaj definicje dzienników |
+> | Microsoft.Insights/metricdefinitions/read | Przeczytaj definicje metryk |
+> | Microsoft.Insights/metrics/read | Odczytaj metryki |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Resources/deployments/operations/read | Pobiera operacje wdrażania lub wyświetla ich listę. |
 > | Microsoft.Resources/subscriptions/operationresults/read | Pobiera wyniki operacji subskrypcji. |
@@ -957,7 +978,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
-> | *Brak* |  |
+> | Microsoft.CognitiveServices/* |  |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
@@ -1177,16 +1198,16 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Ocenia zasady laboratorium. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Przejęcie na własność istniejącej maszyny wirtualnej |
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | Wyświetla listę harmonogramy dotyczy uruchomień/zatrzymań ewentualne. |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Dołącza reguły nat dla ruchu przychodzącego modułu równoważenia obciążenia |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia. Nie dla. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Dołącza do reguły nat dla ruchu przychodzącego modułu równoważenia obciążenia. Nie dla. |
 > | Microsoft.Network/networkInterfaces/*/read | Odczytywanie właściwości interfejsu sieciowego (na przykład wszystkie moduły równoważenia obciążenia, które interfejs sieciowy jest częścią) |
-> | Microsoft.Network/networkInterfaces/join/action | Dołącza maszyny wirtualnej do interfejsu sieciowego |
+> | Microsoft.Network/networkInterfaces/join/action | Dołącza do maszyny wirtualnej do interfejsu sieciowego. Nie dla. |
 > | Microsoft.Network/networkInterfaces/read | Pobiera definicja interfejsu sieciowego.  |
 > | Microsoft.Network/networkInterfaces/write | Tworzy interfejs sieciowy lub aktualizuje istniejący interfejs sieciowy.  |
 > | Microsoft.Network/publicIPAddresses/*/read | Odczytywanie właściwości publicznego adresu IP |
-> | Microsoft.Network/publicIPAddresses/join/action | Dołącza publicznego adresu ip |
+> | Microsoft.Network/publicIPAddresses/join/action | Dołącza do publicznego adresu ip. Nie dla. |
 > | Microsoft.Network/publicIPAddresses/read | Pobiera definicji adres publiczny adres ip. |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej. Nie dla. |
 > | Microsoft.Resources/deployments/operations/read | Pobiera operacje wdrażania lub wyświetla ich listę. |
 > | Microsoft.Resources/deployments/read | Pobiera wdrożenia lub wyświetla ich listę. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
@@ -2033,6 +2054,65 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
+## <a name="spatial-anchors-account-contributor"></a>Współautor kont zakotwiczeń przestrzennych
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia zarządzanie przestrzenne kotwic na Twoim koncie, ale nie ich usuwać |
+> | **Identyfikator** | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
+> | **Akcje** |  |
+> | *Brak* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Tworzyć kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Wykrywanie pobliskich kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Pobierz właściwości kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Znajdź kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Przesyłanie danych diagnostycznych, aby poprawić jakość usług Azure przestrzenne kotwic |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualizacja właściwości kotwic przestrzenne |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="spatial-anchors-account-owner"></a>Właściciel kont zakotwiczeń przestrzennych
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia zarządzanie kotwic przestrzennych ze swojego konta, w tym ich usuwania |
+> | **Identyfikator** | 70bbe301-9835-447d-afdd-19eb3167307c |
+> | **Akcje** |  |
+> | *Brak* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Tworzyć kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Usuń kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Wykrywanie pobliskich kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Pobierz właściwości kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Znajdź kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Przesyłanie danych diagnostycznych, aby poprawić jakość usług Azure przestrzenne kotwic |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualizacja właściwości kotwic przestrzenne |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="spatial-anchors-account-reader"></a>Czytelnik kont zakotwiczeń przestrzennych
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia lokalizowanie i odczytywanie właściwości kotwic przestrzennego w ramach Twojego konta |
+> | **Identyfikator** | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
+> | **Akcje** |  |
+> | *Brak* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Wykrywanie pobliskich kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Pobierz właściwości kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Znajdź kotwic przestrzenne |
+> | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Przesyłanie danych diagnostycznych, aby poprawić jakość usług Azure przestrzenne kotwic |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
 ## <a name="sql-db-contributor"></a>Współautor bazy danych SQL
 > [!div class="mx-tableFixed"]
 > | | |
@@ -2082,7 +2162,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Autoryzacja Microsoft odczytu |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Dołącza do zasobów, takich jak konto magazynu lub bazy danych SQL do podsieci. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Dołącza do zasobów, takich jak konto magazynu lub bazy danych SQL do podsieci. Nie dla. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
@@ -2173,7 +2253,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Authorization/*/read | Odczyt wszystkich autoryzacji |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
 > | Microsoft.Insights/diagnosticSettings/* | Zarządzanie ustawień diagnostycznych |
-> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Dołącza do zasobów, takich jak konto magazynu lub bazy danych SQL do podsieci. |
+> | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Dołącza do zasobów, takich jak konto magazynu lub bazy danych SQL do podsieci. Nie dla. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Pobiera grupy zasobów lub wyświetla ich listę. |
@@ -2267,6 +2347,37 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Zwraca wynik usunięcia komunikatu |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Zwraca wynik zapisania komunikatu |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="storage-queue-data-message-processor-preview"></a>Procesor komunikat danych kolejki magazynu (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Pozwala uzyskać wgląd, otrzymywanie i usunąć dostęp do wiadomości w kolejce usługi Azure Storage |
+> | **Identyfikator** | 8a0f0c08-91a1-4084-bc3d-661d67233fed |
+> | **Akcje** |  |
+> | *Brak* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Zwraca komunikat |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/process/action | Zwraca wynik przetworzenia komunikatu |
+> | **NotDataActions** |  |
+> | *Brak* |  |
+
+## <a name="storage-queue-data-message-sender-preview"></a>Nadawca wiadomości danych kolejki magazynu (wersja zapoznawcza)
+> [!div class="mx-tableFixed"]
+> | | |
+> | --- | --- |
+> | **Opis** | Umożliwia wysyłanie komunikatów do kolejki usługi Azure Storage |
+> | **Identyfikator** | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
+> | **Akcje** |  |
+> | *Brak* |  |
+> | **notActions** |  |
+> | *Brak* |  |
+> | **Elementy DataActions** |  |
+> | Microsoft.Storage/storageAccounts/queueServices/queues/messages/add/action | Zwraca wynik dodania komunikatu |
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
@@ -2374,20 +2485,20 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.Compute/virtualMachineScaleSets/* | Tworzenie i zarządzanie nimi w zestawach skalowania maszyn wirtualnych |
 > | Microsoft.DevTestLab/schedules/* |  |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów usługi Insights |
-> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Dołącza do puli adresów zaplecza bramy aplikacji |
-> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia |
-> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Dołącza modułu równoważenia obciążenia dla ruchu przychodzącego translatora adresów sieciowych puli |
-> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Dołącza reguły nat dla ruchu przychodzącego modułu równoważenia obciążenia |
-> | Microsoft.Network/loadBalancers/probes/join/action | Umożliwia użycie sond modułu równoważenia obciążenia. Na przykład z tą właściwością healthProbe uprawnień dla usługi VM scale set odwoływać się do sondy. |
+> | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Dołącza do puli adresów zaplecza bramy aplikacji. Nie dla. |
+> | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia. Nie dla. |
+> | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Dołącza modułu równoważenia obciążenia dla ruchu przychodzącego translatora adresów Sieciowych puli. Nie dla. |
+> | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Dołącza do reguły nat dla ruchu przychodzącego modułu równoważenia obciążenia. Nie dla. |
+> | Microsoft.Network/loadBalancers/probes/join/action | Umożliwia użycie sond modułu równoważenia obciążenia. Na przykład z tą właściwością healthProbe uprawnień dla usługi VM scale set odwoływać się do sondy. Nie dla. |
 > | Microsoft.Network/loadBalancers/read | Pobiera definicji modułu równoważenia obciążenia |
 > | Microsoft.Network/locations/* | Tworzenie i zarządzanie nimi lokalizacje sieciowe |
 > | Microsoft.Network/networkInterfaces/* | Tworzenie i zarządzanie interfejsami sieciowymi |
-> | Microsoft.Network/networkSecurityGroups/join/action | Dołącza sieciowej grupy zabezpieczeń |
+> | Microsoft.Network/networkSecurityGroups/join/action | Dołącza do sieciowej grupy zabezpieczeń. Nie dla. |
 > | Microsoft.Network/networkSecurityGroups/read | Pobiera definicję grupy zabezpieczeń sieci |
-> | Microsoft.Network/publicIPAddresses/join/action | Dołącza publicznego adresu ip |
+> | Microsoft.Network/publicIPAddresses/join/action | Dołącza do publicznego adresu ip. Nie dla. |
 > | Microsoft.Network/publicIPAddresses/read | Pobiera definicji adres publiczny adres ip. |
 > | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej |
+> | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej. Nie dla. |
 > | Microsoft.RecoveryServices/locations/* |  |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/backupProtectionIntent/write | Utwórz opcję ochrony kopii zapasowej |
 > | Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/*/read |  |

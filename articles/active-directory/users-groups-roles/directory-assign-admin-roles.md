@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 95d11fd669817a28e120540fc1db4230585e4575
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 35927b038ee8caa7e826c4edfb7803a2bc0177c8
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672140"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750688"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Uprawnienia roli administratora w usłudze Azure Active Directory
 
@@ -42,14 +42,17 @@ Dostępne są następujące role administratora:
 
 * **[Deweloper aplikacji](#application-developer)**: Użytkownicy w tej roli mogą tworzyć rejestracje aplikacji po "Użytkownicy mogą rejestrować aplikacje" został ustawiony na nie. Ta rola pozwala również elementy członkowskie do wyrażenia zgody we własnym imieniu po "Użytkownicy mogą zezwalać aplikacjom uzyskiwanie dostępu do danych firmy w ich imieniu" został ustawiony na nie. Członkowie tej roli są dodawane jako właścicieli, podczas tworzenia nowej rejestracji aplikacji lub aplikacji dla przedsiębiorstw.
 
-* **[Administrator uwierzytelniania](#authentication-administrator)**: Użytkownicy z tą rolą ustawieniem lub zresetowaniem hasła bez poświadczeń. Administratorzy uwierzytelniania umożliwia wymuszenie użytkowników ponownej rejestracji dla istniejących poświadczeń-password (np. uwierzytelnianie wieloskładnikowe, FIDO) i odwołać "uwierzytelnianie wieloskładnikowe na urządzeniu" należy pamiętać, że monitowania o MFA podczas następnego logowania w innych użytkowników, którzy są użytkowników niebędących administratorami lub elementy członkowskie programu tylko następujące role:
+* **[Administrator uwierzytelniania](#authentication-administrator)**: Użytkownicy z tą rolą ustawieniem lub zresetowaniem hasła bez poświadczeń. Uwierzytelnianie Administratorzy mogą wymagać od użytkowników ponownej rejestracji dla istniejących poświadczeń-password (na przykład, MFA lub FIDO) i odwoływanie **pamiętanie uwierzytelniania MFA w urządzeniu**, rompts pwhich usługi MFA na następnym logowaniu użytkowników, którzy są użytkowników niebędących administratorami lub członków z następujących ról:
   * Administrator uwierzytelniania
   * Odczytywanie katalogów
   * Osoba zapraszająca gościa
   * Czytelnik Centrum wiadomości
   * Czytnik raportów
-  
+
+  Rola administratora uwierzytelniania jest obecnie w publicznej wersji zapoznawczej. Ta wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie zalecamy korzystania z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą być nieobsługiwane lub ograniczone. Aby uzyskać więcej informacji, zobacz [Uzupełniające warunki korzystania z wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
   <b>Ważne</b>: Użytkownicy z tą rolą mogą zmienić poświadczenia dla osób, które mogą uzyskiwać dostęp do informacje poufne lub prywatne lub krytyczne konfiguracji i spoza usługi Azure Active Directory. Zmiana poświadczeń użytkownika, może oznaczać, że możliwość przyjęcia tożsamości i uprawnienia tego użytkownika. Na przykład:
+
   * Rejestrowanie aplikacji i aplikacji przedsiębiorstwa właścicieli, którzy mogą zarządzać poświadczeniami aplikacje, które są właścicielami. Te aplikacje mogą mieć uprzywilejowany uprawnień w usłudze Azure AD i gdzie indziej nie są przyznawane administratorom uwierzytelniania. Za pomocą tej ścieżki, które Administrator uwierzytelniania może przyjąć tożsamość właściciela aplikacji, a następnie dalej przyjąć tożsamość uprzywilejowanych aplikacji przez zaktualizowanie poświadczeń dla aplikacji.
   * Właścicieli subskrypcji platformy Azure, którzy mogą uzyskiwać dostęp do informacje poufne lub prywatne lub krytyczne konfiguracji na platformie Azure.
   * Grupy zabezpieczeń i grupy usługi Office 365 właścicieli, którzy mogą zarządzać członkostwem. Te grupy mogą udzielać dostępu do informacje poufne lub prywatne lub krytyczne konfiguracji w usłudze Azure AD i w innych miejscach.

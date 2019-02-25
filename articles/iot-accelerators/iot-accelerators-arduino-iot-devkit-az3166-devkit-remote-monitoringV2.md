@@ -9,12 +9,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
-ms.openlocfilehash: eb2a6692c0b00dc4419c601228453a8cfc44c02a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 0f444a4ce41a700af4c55795bca95dbbf95003a4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156786"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750025"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>Podłącz urządzenie z systemem mxchip IoT DevKit do akceleratora rozwiązania monitorowania zdalnego
 
@@ -79,7 +79,7 @@ Aby sprawdzić, czy przykładowej aplikacji, który został przekazany do urząd
 
 Po uruchomieniu aplikacji przykładowej, urządzenie Mxchip wysyła dane telemetryczne z jego danych czujników za pośrednictwem sieci Wi-Fi na Twój akcelerator rozwiązań. Aby wyświetlić dane telemetryczne:
 
-1. Przejdź do pulpitu nawigacyjnego rozwiązania, a następnie kliknij przycisk **urządzeń**.
+1. Przejdź do pulpitu nawigacyjnego rozwiązania, a następnie kliknij przycisk **Device Explorer**.
 
 1. Kliknij nazwę urządzenia Mxchip urządzenia. na karcie po prawej stronie można wyświetlić dane telemetryczne z Mxchip w czasie rzeczywistym:
 
@@ -87,7 +87,7 @@ Po uruchomieniu aplikacji przykładowej, urządzenie Mxchip wysyła dane telemet
 
 ### <a name="control-the-devkit-device"></a>Kontrolę na urządzeniem Mxchip
 
-Akcelerator rozwiązania monitorowania zdalnego umożliwia zdalne sterowanie urządzenia. Przykładowy kod implementuje trzy metody, które można zobaczyć w **metoda** sekcji po wybraniu urządzenia na **urządzeń** strony:
+Akcelerator rozwiązania monitorowania zdalnego umożliwia zdalne sterowanie urządzenia. Przykładowy kod implementuje trzy metody, które można zobaczyć w **metoda** sekcji po wybraniu urządzenia na **Device Explorer** strony:
 
 ![Metody mxchip IoT DevKit](media/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringv2/azure-iot-suite-methods.png)
 

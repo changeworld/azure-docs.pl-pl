@@ -1,19 +1,19 @@
 ---
 title: Archiwizowanie dziennika aktywności platformy Azure
 description: Archiwizuj dziennik aktywności platformy Azure do długoterminowego przechowywania danych na koncie magazynu.
-author: johnkemnetz
+author: nkiest
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/07/2018
-ms.author: johnkem
+ms.date: 02/22/2019
+ms.author: nikiest
 ms.subservice: logs
-ms.openlocfilehash: d9abfe90296b27918594c41a207befe2b59027b9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f02b17ff4e83c3300973c86f26db76ebff5a8d0a
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461608"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750892"
 ---
 # <a name="archive-the-azure-activity-log"></a>Archiwizowanie dziennika aktywności platformy Azure
 W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet programu PowerShell lub Wieloplatformowego interfejsu wiersza polecenia do archiwizacji swoje [ **dziennika aktywności platformy Azure** ](../../azure-monitor/platform/activity-logs-overview.md) na koncie magazynu. Ta opcja jest przydatna, jeśli chcesz przechowywać więcej niż 90 dni (z pełną kontrolę nad zasady przechowywania) inspekcji, analizę statyczną lub kopii zapasowej dziennika aktywności. Jeśli musisz zachować zdarzenia przez 90 dni lub mniej nie trzeba skonfigurować archiwizowanie na koncie magazynu, ponieważ zdarzenia dziennika aktywności są przechowywane na platformie Azure przez 90 dni bez włączania archiwizacji.
@@ -26,11 +26,8 @@ W tym artykule pokazano, jak można użyć witryny Azure portal, poleceń cmdlet
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem należy [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) do której można Archiwizuj dziennik aktywności. Zdecydowanie zaleca się, że nie używasz istniejącego konta magazynu, który ma inne — monitorowanie danych przechowywanych w nim, dzięki czemu można lepiej kontrolować dostęp do danych monitorowania. Jednakże jeśli są również archiwizowanie dzienniki diagnostyczne i metryki na konto magazynu, rozsądne może okazać się zachować wszystkie dane monitorowania w centralnej lokalizacji za pomocą tego konta magazynu dla także dziennik aktywności. Konto magazynu nie musi znajdować się w tej samej subskrypcji co emitowane dzienniki, tak długo, jak użytkownik, który konfiguruje ustawienie ma odpowiedni dostęp RBAC do obu subskrypcji subskrypcji.
 
-> [!NOTE]
->  Obecnie nie można zarchiwizować dane na konto magazynu utworzone za zabezpieczonej sieci wirtualnej.
-
 ## <a name="log-profile"></a>Profilu dziennika
-Aby Archiwizowanie dziennika aktywności przy użyciu dowolnej z poniższych metod, należy ustawić **profilu dziennika** dla subskrypcji. Profil dziennika określa typ zdarzenia, które są przechowywane lub przesyłane strumieniowo i dane wyjściowe — magazynu konta i/lub zdarzenia koncentratora. Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzeń przechowywane na koncie magazynu. Jeśli zasady przechowywania są ustawione na wartość zero, zdarzenia są przechowywane przez czas nieokreślony. W przeciwnym razie to można ustawić dowolną wartość z zakresu od 1 do 2147483647. Zasady przechowywania są zastosowane dziennie, dzięki czemu na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. [Możesz dowiedzieć się więcej o dzienniku tutaj profile](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). 
+Aby Archiwizowanie dziennika aktywności przy użyciu dowolnej z poniższych metod, należy ustawić **profilu dziennika** dla subskrypcji. Profil dziennika określa typ zdarzenia, które są przechowywane lub przesyłane strumieniowo i dane wyjściowe — magazynu konta i/lub zdarzenia koncentratora. Definiuje również zasady przechowywania (liczba dni przechowywania) dla zdarzeń przechowywane na koncie magazynu. Jeśli zasady przechowywania są ustawione na wartość zero, zdarzenia są przechowywane przez czas nieokreślony. W przeciwnym razie to można ustawić dowolną wartość z zakresu od 1 do 365. Zasady przechowywania są zastosowane dziennie, dzięki czemu na koniec dnia (UTC), dzienniki w dzień, w którym jest teraz, po przekroczeniu przechowywania zasady zostaną usunięte. Na przykład jeśli masz zasady przechowywania w jeden dzień, na początku dnia już dziś dzienników z wczoraj zanim dnia zostaną usunięte. Proces usuwania rozpoczyna się od północy czasu UTC, ale należy pamiętać, że może upłynąć do 24 godzin dla dzienników są usuwane z konta magazynu. [Możesz dowiedzieć się więcej o dzienniku tutaj profile](../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile). 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>Archiwizowanie dziennika aktywności przy użyciu portalu
 1. W portalu, kliknij przycisk **dziennika aktywności** łącze w okienku nawigacji po lewej stronie. Jeśli nie widzisz łącza dla dziennika aktywności kliknij **wszystkich usług** najpierw połączyć.

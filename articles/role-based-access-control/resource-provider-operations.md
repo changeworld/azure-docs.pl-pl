@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/25/2019
+ms.date: 02/16/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5b9c0a71c8b01810474e4936fdd4a0852baf0ed7
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 1ab5ec4e61649f7c9a705759a69d335260bfdc75
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343157"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750824"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -102,6 +102,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ADHybridHealthService/reports/badpassworduseridipfrequency/read | Pobiera identyfikator URI sygnatury dostępu Współdzielonego obiektów Blob zawierający stan i ostateczną wynikiem nowo dodawanych do kolejki zadania raportowania dla częstotliwości nieprawidłowo podawali nazwę użytkownika/hasło prób na identyfikator użytkownika na adres IP na dzień dla danej dzierżawy. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/consentedtodevopstenants/read | Pobiera listę DevOps wyraził zgodę dzierżaw. Zwykle używane przez dział pomocy technicznej. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/isdevops/read | Pobiera wartość wskazującą, czy dzierżawcy jest wyraził zgodę metodyki DevOps, czy nie. |
+> | Akcja | Microsoft.ADHybridHealthService/reports/riskyIp/blobUri/action | Generuje raport ryzykownych adresów IP i zwraca identyfikator URI wskazujących na niego. |
+> | Akcja | Microsoft.ADHybridHealthService/reports/riskyIp/blobUris/read | Pobiera wszystkie raport ryzykownych adresów IP, identyfikatorów URI dla ostatnich 7 dni. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/riskyIp/GetAllBlobUri/read | Pobiera wszystkie identyfikator uri obiektu blob dla raportu pobierania ryzykownych adresów ip, które są wymagane dla danej usługi w ciągu ostatnich 7 dni. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/riskyIp/GetBlobUri/read | Pobiera tylko bieżący raport pobierania żądanych ryzykownych adresów ip dla danej usługi. |
 > | Akcja | Microsoft.ADHybridHealthService/reports/selectdevopstenant/read | Aktualizuje userid(objectid) dla dzierżawy ops wybranego deweloperów. |
@@ -398,7 +400,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.Authorization/checkAccess/action | Sprawdza, czy element wywołujący ma autoryzację do wykonania określonej akcji |
 > | Akcja | Microsoft.Authorization/classicAdministrators/delete | Usuwa administratora z subskrypcji. |
 > | Akcja | Microsoft.Authorization/classicAdministrators/operationstatuses/read | Pobiera stany operacji administratora dla subskrypcji. |
 > | Akcja | Microsoft.Authorization/classicAdministrators/read | Odczytuje administratorów dla subskrypcji. |
@@ -1070,11 +1071,83 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/analyze/action | Ta operacja wyodrębnia bogaty zestaw funkcji visual na podstawie zawartości obrazu.  |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/areaofinterest/action | Ta operacja zwraca pola ograniczeń wokół najważniejszych obszarów obrazu. |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/describe/action | Ta operacja spowoduje wygenerowanie opis obrazu ludzi języka do odczytu z postaci kompletnych zdań.<br> Opis jest oparty na zbiór zawartości tagami, które również są zwracane przez operację.<br>Więcej niż jeden opis mogą być generowane dla każdego obrazu.<br> Opisy są uporządkowane według ich współczynnik ufności.<br>Wszystkie opisy są w języku angielskim. |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/detect/action | Ta operacja wykonanie wykrywanie obiektów dla określonego obrazu.  |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/generatethumbnail/action | Ta operacja generuje obraz miniatury przy użyciu określonych przez użytkownika szerokość i wysokość.<br> Domyślnie usługa analizuje obraz identyfikuje regionu zainteresowania (ROI) i generuje inteligentne współrzędne przycinania zwrot z inwestycji w oparciu.<br> Inteligentne przycinanie pomaga w określeniu współczynnik proporcji, która różni się od tego obrazu wejściowego |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/models/analyze/action | Ta operacja rozpoznaje zawartości w ramach obrazu, stosując modelu specyficznego dla domeny.<br> Za pomocą żądania GET /models można pobrać listy modeli specyficznych dla domeny, które są obsługiwane przez interfejs API przetwarzania obrazów.<br> Obecnie interfejs API zapewnia następujące modeli specyficznych dla domeny: osobistości, charakterystycznych elementów krajobrazu. |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/models/read | Ta operacja zwraca listę wszystkich modeli specyficznych dla domeny, które są obsługiwane przez interfejs API przetwarzania obrazów.  Obecnie interfejs API obsługuje następujące modeli specyficznych dla domeny: aparat rozpoznawania osobistości, aparat rozpoznawania charakterystycznych elementów krajobrazu. |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/ocr/action | Optyczne rozpoznawanie znaków (OCR) wykrywa tekst w obrazie i wyodrębnia rozpoznane znaki do strumienia znaków, można używać maszyny.    |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/recognizetext/action | Pobierz wynik operacji rozpoznawanie tekstu za pomocą tego interfejsu. Korzystając z interfejsu rozpoznawanie tekstu odpowiedzi zawiera pole o nazwie "Lokalizacja operacji". Pole "Operacja lokalizacja" zawiera adres URL, do którego należy użyć dla operacji Pobierz rozpoznaje wynik operacji tekstu. |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/tag/action | Ta operacja generuje listę słów lub tagi, które mają zastosowanie do zawartości podany obraz.<br>Interfejs API przetwarzania obrazów może być zwracać tagi na podstawie obiektów, życia żywych, scenerii lub znaleziono w obrazach akcji.<br>W przeciwieństwie do kategorii tagi nie są zorganizowane według systemu hierarchiczne klasyfikacji, ale odnoszą się do zawartości obrazu.<br>Tagi mogą zawierać wskazówki, aby uniknąć niejednoznaczności lub udostępnić kontekst, na przykład tag "cello" mogą towarzyszyć wskazówka "Instrumentacji w kompozycją".<br>Wszystkie tagi są w języku angielskim. |
+> | DataAction | Microsoft.CognitiveServices/accounts/ComputerVision/textoperations/read | Ten interfejs jest używany w celu uzyskania rozpoznawanie tekstu, wynik operacji. Adres URL dla tego interfejsu powinny zostać pobrane z <b>"Operacja lokalizacja"</b> pola zwrócony z interfejsu rozpoznawanie tekstu. |
 > | Akcja | Microsoft.CognitiveServices/accounts/delete | Usuwa konta interfejsów API |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/detect/action | Wykrywanie ludzkich twarzy na obrazie prostokąty zwracany twarzy oraz opcjonalnie faceIds, charakterystycznych elementów krajobrazu i atrybutów. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/delete | Usuń listę określonego twarzy. Obrazy powiązane twarzy na liście twarzy również zostaną usunięte. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/delete | Usuwanie twarzy list twarzy przez określony faceListId i persisitedFaceId. Obraz twarzy powiązane również zostaną usunięte. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/persistedfaces/write | Dodaj twarzy na listę określoną twarzy maksymalnie 1000 twarzy. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/read | Pobieranie listy twarzy faceListId, nazwy, userData i twarze na liście twarzy.
+Wyświetl listę list twarzy faceListId, nazwa i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/facelists/write | Tworzenie list twarzy pusty za pomocą faceListId określonych przez użytkownika, nazwę i opcjonalny userData. Maksymalnie 64 twarzy list są dozwolone
+Zaktualizuj informacje listy rozpoznawania twarzy, takie jak nazwa i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/findsimilars/action | Podane faceId kwerendy rozpoznawania twarzy, wyszukiwanie podobnie wyglądających twarzy z tablicą faceId listy twarzy lub dużych powierzchni. faceId |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/group/action | Dzielenie Release candidate twarze na grupy na podstawie podobieństwa twarzy. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/identify/action | Identyfikacja 1-do wielu, można znaleźć najbliższe dopasowania określonej osoby twarz z grupy osoba lub grupa osób dużych. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/delete | Usuń listę określonego dużych powierzchni. Obrazy powiązane twarzy na liście twarzy dużych również zostaną usunięte. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/delete | Usuwanie twarzy z listy dużych powierzchni przez określony largeFaceListId i persisitedFaceId. Obraz twarzy powiązane również zostaną usunięte. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/read | Aby pobrać utrwalonych twarzy na liście twarzy dużych, largeFaceListId i persistedFaceId.
+Listę persistedFaceId i danych użytkownika na liście twarzy dużych określonego twarzy. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/persistedfaces/write | Dodaj twarzy na listę określoną dużych powierzchni twarzy do 1 000 000.
+Zaktualizuj pole userData określonego twarzy na liście twarzy dużych, jego persistedFaceId. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/read | Pobierz listę dużych powierzchni largeFaceListId, nazwa, userData.
+Wyświetl listę list twarzy dużych informacji largeFaceListId, nazwy i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/train/action | Prześlij zadania szkolenia twarzy duże listy. Szkolenie to istotny krok, który tylko uczonego twarzy duże listy mogą być używane przez |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/training/read | Aby sprawdzić stan szkolenia listy dużych powierzchni ukończone lub postępujące. Operacja asynchroniczna jest LargeFaceList szkolenie |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largefacelists/write | Tworzenie list twarzy dużych pustych za pomocą largeFaceListId określonych przez użytkownika, nazwę i opcjonalny userData.
+Zaktualizuj informacje listy dużych powierzchni, takie jak nazwa i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/delete | Usuń istniejącą grupę dużych osoby za pomocą określonego personGroupId. Utrwalone dane w tej grupie dużych osoby zostaną usunięte. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/action | Utwórz nową osobę w grupie określona osoba dużych. Aby dodać tę osobę do rozpoznawania twarzy, skontaktuj się z działem |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/delete | Usunąć istniejące osoby z grupy dużych osoby. Wszystkie przechowywane danych osobowych i obrazy twarzy w zapisie osoby zostanie usunięty. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/delete | Usuwanie twarzy od osoby w grupie dużych osoby. Dane rozpoznawania twarzy i obrazów związanych z tego wpisu rozpoznawania twarzy można również usunięte. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/read | Pobierz informacje o twarzy osoby. Twarzy osoby utrwalonych jest określony przez jego largePersonGroupId, personId i persistedFaceId. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/persistedfaces/write | Dodaj obraz twarzy osoby do grupy dużych osoby identyfikowanie twarzy lub weryfikacji. Aby poradzić sobie z obrazu
+Aktualizacja osoby utrwalone tarczy userData pola. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/read | Pobierać nazwiska osoby i danych użytkownika i utrwalonych faceIds, reprezentujący obraz twarzy osoby zarejestrowane.
+Wyświetl listę informacji o wszystkich osób w grupie określona osoba dużych, jak personId, nazwa, userData persistedFaceIds. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/persons/write | Zaktualizuj nazwę lub userData osoby. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/read | Pobierz informacje o dużych osoby grupy, takie jak jego nazwa i danych użytkownika. Ten interfejs API zwraca dużych osoby informacje o grupie
+Wyświetl listę largePesonGroupId wszystkich istniejących osoby dużych grup firmy, nazwę i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/train/action | Prześlij zadania szkolenia grupy dużych osoby. Szkolenie jest to istotny krok może służyć tylko uczonego osób dużych grup |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/training/read | Można sprawdzić stan ukończone lub postępujące szkolenia grupy dużych osoby. Operacja asynchroniczna jest LargePersonGroup szkolenie |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/largepersongroups/write | Utwórz nową grupę dużych osoby za pomocą largePersonGroupId określonych przez użytkownika, nazwę i opcjonalny userData.
+Zaktualizuj nazwę istniejącej grupy dużych osoby i userData. Właściwości przechowują bez zmian, jeśli nie znajdują się w treści żądania. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/delete | Usuń istniejącą grupę osoby za pomocą określonego personGroupId. Utrwalone dane w tej grupie osób zostaną usunięte. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/action | Tworzenie nowej osoby do grupy określonej osoby. Aby dodać tę osobę do rozpoznawania twarzy, skontaktuj się z działem |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/delete | Usuń istniejące osoby z grupa osób. Wszystkie przechowywane danych osobowych i obrazy twarzy w zapisie osoby zostanie usunięty. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/delete | Usuwanie twarzy od osoby w grupie osób. Dane rozpoznawania twarzy i obrazów związanych z tego wpisu rozpoznawania twarzy można również usunięte. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/read | Pobierz informacje o twarzy osoby. Twarzy osoby utrwalonych jest określony przez jego personGroupId, personId i persistedFaceId. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/persistedfaces/write | Dodaj obraz twarzy osoby do grupy osoby do rozpoznawania twarzy lub weryfikacji. Aby poradzić sobie z obrazem wielu
+Aktualizacja osoby utrwalone tarczy userData pola. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/read | Pobierać nazwiska osoby i danych użytkownika i utrwalonych faceIds, reprezentujący obraz twarzy osoby zarejestrowane.
+Informacje o wszystkich osób w grupie określona osoba, jak personId, nazwa, userData persistedFaceIds z listy zarejestrowany. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/persons/write | Zaktualizuj nazwę lub userData osoby. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/read | Pobieranie nazwy grupy osoby i danych użytkownika. Aby uzyskać informacje o osobie w tej grupie, użyj
+Lista grup osób pesonGroupId, nazwę i danych użytkownika. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/train/action | Prześlij zadania szkolenia grupy osoby. Szkolenie to istotny krok, który grupę uczonego osoba może służyć przez |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/training/read | Można sprawdzić stan ukończone lub postępujące szkolenia grupy osoby. Szkolenie w grupie jest operacja asynchroniczna wyzwolone |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/persongroups/write | Utwórz nową grupę osoby z personGroupId określony, nazwa i userData podanego przez użytkownika.
+Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwości przechowują bez zmian, jeśli nie znajdują się w treści żądania. |
+> | DataAction | Microsoft.CognitiveServices/accounts/Face/verify/action | Sprawdź, czy dwie twarze należą do tej samej osoby lub czy należy twarzy jednej osobie. |
 > | Akcja | Microsoft.CognitiveServices/accounts/listKeys/action | Wylicz klucze |
+> | DataAction | Microsoft.CognitiveServices/accounts/LUIS/predict/action | Pobiera prognozowania opublikowanych punkt końcowy dla danego zapytania. |
 > | Akcja | Microsoft.CognitiveServices/accounts/read | Odczytuje konta interfejsów API. |
 > | Akcja | Microsoft.CognitiveServices/accounts/regenerateKey/action | Wygeneruj ponownie klucz |
 > | Akcja | Microsoft.CognitiveServices/accounts/skus/read | Odczytuje jednostki SKU dostępne dla istniejącego zasobu. |
+> | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/entities/action | Interfejs API zwraca listę znanych jednostek oraz ogólne nazwane jednostek (\"osoby\", \"lokalizacji\", \"organizacji\" itp.) w danym dokumencie. |
+> | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/keyphrases/action | Interfejs API zwraca listę ciągów wskazujących najważniejsze punkty w tekście wejściowym. |
+> | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/languages/action | Interfejs API zwraca wykryty język i wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 oznaczają 100% pewności, że określony język jest poprawny. Obsługiwanych jest 120 języków. |
+> | DataAction | Microsoft.CognitiveServices/accounts/TextAnalytics/sentiment/action | Interfejs API zwraca wynik liczbowy z zakresu od 0 do 1.<br>Wyniki zbliżone do wartości 1 wskazują na pozytywną tonację, a wyniki zbliżone do wartości 0 wskazują na negatywną tonację.<br>Wynik 0,5 oznacza brak wskaźniki nastrojów klientów (np. instrukcja faktoid). |
 > | Akcja | Microsoft.CognitiveServices/accounts/usages/read | Pobierz użycie przydziału dla istniejącego zasobu. |
 > | Akcja | Microsoft.CognitiveServices/accounts/write | Zapisuje konta interfejsów API. |
 > | Akcja | Microsoft.CognitiveServices/locations/checkSkuAvailability/action | Odczytuje dostępne jednostki SKU dla subskrypcji. |
@@ -1240,6 +1313,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Consumption/reservationSummaries/read | Lista użycia podsumowanie wystąpienia zarezerwowane przez rezerwacji zamówienia lub zarządzania grupy. Podsumowanie danych może być na poziomie miesięcznej lub dziennego. |
 > | Akcja | Microsoft.Consumption/reservationTransactions/read | Lista historii transakcji dla wystąpienia zarezerwowane przez grup zarządzania. |
 > | Akcja | Microsoft.Consumption/tags/read | Tworzenie listy tagów dla subskrypcji i umowy EA. |
+> | Akcja | Microsoft.Consumption/tenants/read | Wykaz dzierżaw |
 > | Akcja | Microsoft.Consumption/tenants/register/action | Rejestrowanie akcji dla zakresu Microsoft.Consumption przez dzierżawcę. |
 > | Akcja | Microsoft.Consumption/terms/read | Lista warunków dla subskrypcji lub grupy zarządzania. |
 > | Akcja | Microsoft.Consumption/usageDetails/read | Wyświetl listę szczegóły użycia dla zakresu dla subskrypcji EA i webdirect, dla których. |
@@ -1622,6 +1696,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataFactory/datafactories/tables/write | Tworzy lub aktualizuje dowolnym zestawie danych. |
 > | Akcja | Microsoft.DataFactory/datafactories/write | Tworzy lub aktualizuje fabryki danych. |
 > | Akcja | Microsoft.DataFactory/factories/cancelpipelinerun/action | Anuluje uruchomienie określonego przez identyfikator uruchomienia potoku |
+> | Akcja | Microsoft.DataFactory/factories/dataflows/delete | Usuwa przepływ danych. |
+> | Akcja | Microsoft.DataFactory/factories/dataflows/read | Odczytuje przepływ danych. |
+> | Akcja | Microsoft.DataFactory/factories/dataflows/write | Utwórz lub zaktualizuj przepływ danych |
 > | Akcja | Microsoft.DataFactory/factories/datasets/delete | Usuwa dowolnym zestawie danych. |
 > | Akcja | Microsoft.DataFactory/factories/datasets/read | Odczytuje dowolnym zestawie danych. |
 > | Akcja | Microsoft.DataFactory/factories/datasets/write | Tworzy lub aktualizuje dowolnym zestawie danych. |
@@ -1708,6 +1785,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataLakeAnalytics/accounts/storageAccounts/write | Tworzenie lub aktualizowanie konta usługi DataLakeAnalytics połączonego konta usługi Storage. |
 > | Akcja | Microsoft.DataLakeAnalytics/accounts/TakeOwnership/action | Przyznaj uprawnienia, aby anulować zadania przesłane przez innych użytkowników. |
 > | Akcja | Microsoft.DataLakeAnalytics/accounts/transferAnalyticsUnits/action | Przenieś SystemMaxAnalyticsUnits pomiędzy konta tej usługi DataLakeAnalytics. |
+> | Akcja | Microsoft.DataLakeAnalytics/accounts/virtualNetworkRules/delete | Usuń regułę sieci wirtualnej. |
+> | Akcja | Microsoft.DataLakeAnalytics/accounts/virtualNetworkRules/read | Uzyskaj informacje dotyczące reguły sieci wirtualnej. |
+> | Akcja | Microsoft.DataLakeAnalytics/accounts/virtualNetworkRules/write | Utwórz lub zaktualizuj regułę sieci wirtualnej. |
 > | Akcja | Microsoft.DataLakeAnalytics/accounts/write | Utwórz lub zaktualizuj konto usługi DataLakeAnalytics. |
 > | Akcja | Microsoft.DataLakeAnalytics/locations/capability/read | Uzyskaj informacje o możliwościach subskrypcji dotyczące przy użyciu usługi DataLakeAnalytics. |
 > | Akcja | Microsoft.DataLakeAnalytics/locations/checkNameAvailability/action | Sprawdź dostępność nazwy konta usługi DataLakeAnalytics. |
@@ -1735,6 +1815,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DataLakeStore/accounts/trustedIdProviders/delete | Usunięcie zaufanego dostawcy tożsamości. |
 > | Akcja | Microsoft.DataLakeStore/accounts/trustedIdProviders/read | Uzyskać informacje na temat zaufanego dostawcy tożsamości. |
 > | Akcja | Microsoft.DataLakeStore/accounts/trustedIdProviders/write | Utwórz lub zaktualizuj zaufanego dostawcy tożsamości. |
+> | Akcja | Microsoft.DataLakeStore/accounts/virtualNetworkRules/delete | Usuń regułę sieci wirtualnej. |
+> | Akcja | Microsoft.DataLakeStore/accounts/virtualNetworkRules/read | Uzyskaj informacje dotyczące reguły sieci wirtualnej. |
+> | Akcja | Microsoft.DataLakeStore/accounts/virtualNetworkRules/write | Utwórz lub zaktualizuj regułę sieci wirtualnej. |
 > | Akcja | Microsoft.DataLakeStore/accounts/write | Utwórz lub zaktualizuj konto DataLakeStore. |
 > | Akcja | Microsoft.DataLakeStore/locations/capability/read | Uzyskaj informacje o możliwościach subskrypcji dotyczące przy użyciu DataLakeStore. |
 > | Akcja | Microsoft.DataLakeStore/locations/checkNameAvailability/action | Sprawdź dostępność nazwy konta DataLakeStore. |
@@ -1819,10 +1902,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne dzienniki dla serwerów MySQL |
 > | Akcja | Microsoft.DBforMySQL/servers/providers/Microsoft.Insights/metricDefinitions/read | Zwracane typy metryk, które są dostępne dla baz danych |
+> | Akcja | Microsoft.DBforMySQL/servers/queryTexts/action | Zwróć tekstów, aby uzyskać listę zapytań |
 > | Akcja | Microsoft.DBforMySQL/servers/read | Zwraca listę serwerów lub pobiera właściwości dla określonego serwera. |
 > | Akcja | Microsoft.DBforMySQL/servers/recoverableServers/read | Zwraca informacje możliwe do odzyskania serwera MySQL |
 > | Akcja | Microsoft.DBforMySQL/servers/securityAlertPolicies/read | Pobierz szczegóły zasady wykrywania zagrożeń serwera skonfigurowane na danym serwerze |
 > | Akcja | Microsoft.DBforMySQL/servers/securityAlertPolicies/write | Zmień zasady wykrywania zagrożeń serwera dla danego serwera |
+> | Akcja | Microsoft.DBforMySQL/servers/topQueryStatistics/read | Zwraca listę statystyki zapytań najpopularniejsze zapytania. |
 > | Akcja | Microsoft.DBforMySQL/servers/updateConfigurations/action | Aktualizowanie konfiguracji dla określonego serwera |
 > | Akcja | Microsoft.DBforMySQL/servers/virtualNetworkRules/delete | Usuwa istniejącą regułę sieci wirtualnej |
 > | Akcja | Microsoft.DBforMySQL/servers/virtualNetworkRules/read | Zwraca listę sieci wirtualnej reguł lub pobiera właściwości dla reguły określonej sieci wirtualnej. |
@@ -1850,6 +1935,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne dzienniki dla serwerów Postgres |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/providers/Microsoft.Insights/metricDefinitions/read | Zwracane typy metryk, które są dostępne dla baz danych |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/queryTexts/action | Zwróć tekst zapytania |
+> | Akcja | Microsoft.DBforPostgreSQL/servers/queryTexts/read | Zwróć tekstów, aby uzyskać listę zapytań |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/read | Zwraca listę serwerów lub pobiera właściwości dla określonego serwera. |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/recoverableServers/read | Zwraca informacje możliwe do odzyskania serwera PostgreSQL |
 > | Akcja | Microsoft.DBforPostgreSQL/servers/securityAlertPolicies/read | Pobierz szczegóły zasady wykrywania zagrożeń serwera skonfigurowane na danym serwerze |
@@ -1936,12 +2022,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Devices/provisioningServices/certificates/verify/Action | Sprawdź certyfikat zasobu |
 > | Akcja | Microsoft.Devices/provisioningServices/certificates/Write | Tworzenie lub aktualizowanie certyfikatów |
 > | Akcja | Microsoft.Devices/provisioningServices/Delete | Usuń zasób IotDps |
-> | Akcja | Microsoft.Devices/provisioningServices/diagnosticSettings/read | Pobiera ustawienia diagnostyczne dla zasobu. Uwaga: może być konieczne `Microsoft.Insights/diagnosticSettings/read` także |
+> | Akcja | Microsoft.Devices/provisioningServices/diagnosticSettings/read | Pobiera ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.Devices/provisioningServices/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zasobu |
 > | Akcja | Microsoft.Devices/provisioningServices/keys/listkeys/Action | Pobierz klucze IotDps dla nazwy klucza |
 > | Akcja | Microsoft.Devices/provisioningServices/listkeys/Action | Pobierz wszystkie klucze IotDps |
-> | Akcja | Microsoft.Devices/provisioningServices/logDefinitions/read | Pobiera definicje dzienników dostępne dla usługi aprowizacji. Uwaga: może być konieczne `Microsoft.Insights/logDefinitions/read` także |
-> | Akcja | Microsoft.Devices/provisioningServices/metricDefinitions/read | Pobiera dostępne metryki dla usługi aprowizacji. Uwaga: może być konieczne `Microsoft.Insights/metricDefinitions/read` także |
+> | Akcja | Microsoft.Devices/provisioningServices/logDefinitions/read | Pobiera definicje dzienników dostępne dla usługi aprowizacji |
+> | Akcja | Microsoft.Devices/provisioningServices/metricDefinitions/read | Pobiera dostępne metryki dla usługi aprowizacji |
 > | Akcja | Microsoft.Devices/provisioningServices/operationresults/Read | Pobierz wynik operacji usługi DPS |
 > | Akcja | Microsoft.Devices/provisioningServices/Read | Pobierz zasób IotDps |
 > | Akcja | Microsoft.Devices/provisioningServices/skus/Read | Pobierz prawidłowe IotDps jednostki SKU. |
@@ -1958,6 +2044,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DevSpaces/controllers/delete | Usuwanie usługi Azure Dev miejsca do magazynowania kontrolera i płaszczyzny danych |
 > | Akcja | Microsoft.DevSpaces/controllers/listConnectionDetails/action | Szczegóły połączenia listy dla infrastruktury kontrolera Azure Dev miejsca do magazynowania |
 > | Akcja | Microsoft.DevSpaces/controllers/read | Właściwości odczytu Azure Dev miejsca do magazynowania kontrolera |
+> | Akcja | Microsoft.DevSpaces/controllers/rotateAuthKey/action | Zamień klucz uwierzytelniania dla usługi Azure Dev miejsca do magazynowania kontrolera i ponowne wdrażanie usługi |
 > | Akcja | Microsoft.DevSpaces/controllers/write | Tworzenie lub właściwości aktualizacji usługi Azure Dev miejsca do magazynowania kontrolera |
 > | Akcja | Microsoft.DevSpaces/register/action | Procedura Rejestruj dostawcę zasobów miejsca do magazynowania firmy Microsoft Dev z subskrypcją |
 
@@ -2142,19 +2229,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.DomainRegistration/topLevelDomains/Read | Pobierz toplevel domeny |
 > | Akcja | Microsoft.DomainRegistration/validateDomainRegistrationInformation/Action | Sprawdź poprawność obiektu zakupu domeny bez przesyłania |
 
-## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
-
-> [!div class="mx-tdCol2BreakAll"]
-> | Typ akcji | Operacja | Opis |
-> | --- | --- | --- |
-> | Akcja | Microsoft.DynamicsLcs/lcsprojects/clouddeployments/read | Wyświetlanie wdrożeń programu Microsoft Dynamics AX 2012 R3 oceny w projekcie programu Microsoft Dynamics Lifecycle Services, które należą do użytkownika |
-> | Akcja | Microsoft.DynamicsLcs/lcsprojects/clouddeployments/write | Tworzenie wdrożenia systemu Microsoft Dynamics AX 2012 R3 oceny w projekcie programu Microsoft Dynamics Lifecycle Services, które należą do użytkownika. Wdrożeń można zarządzać za pomocą portalu zarządzania systemu Azure |
-> | Akcja | Microsoft.DynamicsLcs/lcsprojects/connectors/read | Przeczytaj łączników, które należą do projektu Microsoft Dynamics Lifecycle Services |
-> | Akcja | Microsoft.DynamicsLcs/lcsprojects/connectors/write | Tworzenie i aktualizowanie łączników, które należą do projektu Microsoft Dynamics Lifecycle Services |
-> | Akcja | Microsoft.DynamicsLcs/lcsprojects/delete | Usuń projekty Microsoft Dynamics Lifecycle Services, które należą do użytkownika |
-> | Akcja | Microsoft.DynamicsLcs/lcsprojects/read | Wyświetlanie projektów Microsoft Dynamics Lifecycle Services, które należą do użytkownika |
-> | Akcja | Microsoft.DynamicsLcs/lcsprojects/write | Tworzenie i aktualizowanie projektów Microsoft Dynamics Lifecycle Services, które należą do użytkownika. Można aktualizować tylko nazwę i opis właściwości. Nie można zaktualizować subskrypcji i lokalizacji skojarzonej z projektem po utworzeniu |
-
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 
 > [!div class="mx-tdCol2BreakAll"]
@@ -2336,6 +2410,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Insights/AutoscaleSettings/Scaleup/Action | Autoskalowanie — zainicjowano skalowanie w górę |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/ScaleupResult/Action | Autoskalowanie — zakończono skalowanie w górę |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/Write | Utwórz lub zaktualizuj ustawienie autoskalowania |
+> | Akcja | Microsoft.Insights/Baseline/Read | Odczyt punktu odniesienia metryki (wersja zapoznawcza) |
+> | Akcja | Microsoft.Insights/CalculateBaseline/Read | Obliczanie punktu odniesienia dla wartości metryk (wersja zapoznawcza) |
 > | Akcja | Microsoft.Insights/Components/AnalyticsItems/Delete | Usuwanie elementu analizy usługi Application Insights |
 > | Akcja | Microsoft.Insights/Components/AnalyticsItems/Read | Odczytywanie elementu analizy usługi Application Insights |
 > | Akcja | Microsoft.Insights/Components/AnalyticsItems/Write | Zapisywanie elementu analizy usługi Application Insights |
@@ -2642,21 +2718,35 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | Usuwa zasób połączenia danych. |
+> | Akcja | Microsoft.Kusto/Clusters/Activate/action | Uruchomienie klastra. |
+> | Akcja | Microsoft.Kusto/Clusters/CheckNameAvailability/action | Służy do sprawdzania dostępności nazwy klastra. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/AddPrincipals/action | Dodaje podmiotów zabezpieczeń bazy danych. |
 > | Akcja | Microsoft.Kusto/Clusters/Databases/DataConnections/delete | Usuwa zasób połączenia danych. |
 > | Akcja | Microsoft.Kusto/Clusters/Databases/DataConnections/read | Odczytuje zasób połączenia danych. |
-> | Akcja | Microsoft.Kusto/Clusters/Databases/DataConnections/read | Odczytuje zasób połączenia danych. |
-> | Akcja | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Zapisuje dane connetions zasobów. |
-> | Akcja | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Zapisuje dane connetions zasobów. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/DataConnections/write | Zapisuje zasób połączenia usługi danych. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/DataConnectionValidation/action | Sprawdza poprawność danych połączenia z bazą danych. |
 > | Akcja | Microsoft.Kusto/Clusters/Databases/delete | Usuwa zasób bazy danych. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/EventHubConnections/delete | Usuwa zasób połączenia Centrum zdarzeń. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/EventHubConnections/read | Odczytuje zasób połączenia Centrum zdarzeń. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/EventHubConnections/write | Zapisuje zasób połączenia Centrum zdarzeń. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/EventHubConnectionValidation/action | Sprawdzanie poprawności połączenia z bazą danych Centrum zdarzeń. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/ListPrincipals/action | Wyświetla bazy danych jednostki. |
 > | Akcja | Microsoft.Kusto/Clusters/Databases/read | Odczytuje zasobów bazy danych. |
+> | Akcja | Microsoft.Kusto/Clusters/Databases/RemovePrincipals/action | Usuwa bazy danych jednostki. |
 > | Akcja | Microsoft.Kusto/Clusters/Databases/write | Zapisuje zasobów bazy danych. |
+> | Akcja | Microsoft.Kusto/Clusters/Deactivate/action | Zatrzymuje klastra. |
 > | Akcja | Microsoft.Kusto/Clusters/delete | Usuwa zasób klastra. |
 > | Akcja | Microsoft.Kusto/Clusters/read | Odczytuje zasób klastra. |
+> | Akcja | Microsoft.Kusto/Clusters/SKUs/read | Odczytuje jednostki SKU zasobu klastra. |
+> | Akcja | Microsoft.Kusto/Clusters/Start/action | Uruchomienie klastra. |
+> | Akcja | Microsoft.Kusto/Clusters/Stop/action | Zatrzymuje klastra. |
 > | Akcja | Microsoft.Kusto/Clusters/write | Zapisuje zasobu klastra. |
-> | Akcja | Microsoft.Kusto/Locations/CheckNameAvailability/write | Odczyty Sprawdź nazwę dostępności zasobów |
+> | Akcja | Microsoft.Kusto/Locations/CheckNameAvailability/action | Sprawdza dostępność nazwy zasobu. |
 > | Akcja | Microsoft.Kusto/locations/operationresults/read | Odczyty operacji zasobów |
 > | Akcja | Microsoft.Kusto/Operations/read | Odczyty operacji zasobów |
+> | Akcja | Microsoft.Kusto/Register/action | Rejestruje subskrypcję dostawcy zasobów Kusto. |
+> | Akcja | Microsoft.Kusto/SKUs/read | Odczytuje zasób jednostki SKU. |
+> | Akcja | Microsoft.Kusto/Unregister/action | Wyrejestrowuje subskrypcję dostawcy zasobów Kusto. |
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 
@@ -2687,7 +2777,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.LabServices/labAccounts/labs/environmentSettings/schedules/write | Dodawanie lub modyfikowanie harmonogramów. |
 > | Akcja | Microsoft.LabServices/labAccounts/labs/environmentSettings/Start/action | Uruchamia szablonu przez uruchomienie wszystkich zasobów w obrębie szablonu. |
 > | Akcja | Microsoft.LabServices/labAccounts/labs/environmentSettings/Stop/action | Zatrzymuje szablonu przez zatrzymanie wszystkich zasobów w obrębie szablonu. |
-> | Akcja | Microsoft.LabServices/labAccounts/labs/environmentSettings/Upload/action | Przekazuje środowisko ustawienie bieżącego szablonu do galerii udostępnionych w ramach konta laboratorium |
+> | Akcja | Microsoft.LabServices/labAccounts/labs/environmentSettings/Upload/action | Przekazuje bieżącego obrazu szablonu do galerii udostępnionych w ramach konta laboratorium |
 > | Akcja | Microsoft.LabServices/labAccounts/labs/environmentSettings/write | Dodaje lub modyfikuje ustawienia środowiska. |
 > | Akcja | Microsoft.LabServices/labAccounts/labs/read | Przeczytaj labs. |
 > | Akcja | Microsoft.LabServices/labAccounts/labs/Register/action | Zarejestruj się w laboratorium zarządzanych. |
@@ -2985,6 +3075,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Logic/workflows/runs/actions/requestHistories/read | Odczytuje historię żądań akcji przebiegu przepływu pracy. |
 > | Akcja | Microsoft.Logic/workflows/runs/actions/scoperepetitions/read | Odczytuje powtórzenie zakresu akcji przebiegu przepływu pracy. |
 > | Akcja | Microsoft.Logic/workflows/runs/cancel/action | Anuluje przebieg przepływu pracy. |
+> | Akcja | Microsoft.Logic/workflows/runs/delete | Usuwa przebieg przepływu pracy. |
 > | Akcja | Microsoft.Logic/workflows/runs/operations/read | Odczytuje stan operacji przebiegu przepływu pracy. |
 > | Akcja | Microsoft.Logic/workflows/runs/read | Odczytuje przebieg przepływu pracy. |
 > | Akcja | Microsoft.Logic/workflows/suspend/action | Wstrzymuje przepływ pracy. |
@@ -3055,7 +3146,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.MachineLearningServices/locations/computeoperationstatus/read | Pobiera stan operacji obliczeniowych określoną |
+> | Akcja | Microsoft.MachineLearningServices/locations/computeoperationsstatus/read | Pobiera stan operacji obliczeniowych określoną |
 > | Akcja | Microsoft.MachineLearningServices/locations/usages/read | Raport użycia dla aml obliczenia zasobów w ramach subskrypcji |
 > | Akcja | Microsoft.MachineLearningServices/locations/vmsizes/read | Pobierz rozmiarów maszyn wirtualnych obsługiwanych |
 > | Akcja | Microsoft.MachineLearningServices/locations/workspaceOperationsStatus/read | Pobiera stan operacji określonego obszaru roboczego |
@@ -3265,14 +3356,28 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Migrate/projects/write | Tworzy nowy projekt lub aktualizuje istniejący |
 > | Akcja | Microsoft.Migrate/register/action | Rejestruje subskrypcję za pomocą dostawcy zasobów Microsoft.Migrate |
 
+## <a name="microsoftmixedreality"></a>Microsoft.MixedReality
+
+> [!div class="mx-tdCol2BreakAll"]
+> | Typ akcji | Operacja | Opis |
+> | --- | --- | --- |
+> | Akcja | Microsoft.MixedReality/register/action | Rejestruje subskrypcję dostawcy zasobów rzeczywistość mieszana. |
+> | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/create/action | Tworzyć kotwic przestrzenne |
+> | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/delete | Usuń kotwic przestrzenne |
+> | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/discovery/read | Wykrywanie pobliskich kotwic przestrzenne |
+> | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/properties/read | Pobierz właściwości kotwic przestrzenne |
+> | Akcja | Microsoft.MixedReality/SpatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienie diagnostyczne dla Microsoft.MixedReality/SpatialAnchorsAccounts |
+> | Akcja | Microsoft.MixedReality/SpatialAnchorsAccounts/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla Microsoft.MixedReality/SpatialAnchorsAccounts |
+> | Akcja | Microsoft.MixedReality/SpatialAnchorsAccounts/providers/Microsoft.Insights/metricDefinitions/read | Pobiera dostępne metryki dla Microsoft.MixedReality/SpatialAnchorsAccounts |
+> | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/query/read | Znajdź kotwic przestrzenne |
+> | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/submitdiag/read | Przesyłanie danych diagnostycznych, aby poprawić jakość usług Azure przestrzenne kotwic |
+> | DataAction | Microsoft.MixedReality/SpatialAnchorsAccounts/write | Aktualizacja właściwości kotwic przestrzenne |
+
 ## <a name="microsoftnetapp"></a>Microsoft.NetApp
 
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.NetApp/activeDirectories/delete |  |
-> | Akcja | Microsoft.NetApp/activeDirectories/read |  |
-> | Akcja | Microsoft.NetApp/activeDirectories/write |  |
 > | Akcja | Microsoft.NetApp/locations/operationresults/read | Odczytuje zasób wynik operacji. |
 > | Akcja | Microsoft.NetApp/locations/read | Odczyty na dostępność Sprawdź zasób. |
 > | Akcja | Microsoft.NetApp/netAppAccounts/capacityPools/delete | Usuwa puli zasobów. |
@@ -3301,16 +3406,19 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/applicationGatewayAvailableSslOptions/predefinedPolicies/read | Ssl bramy aplikacji wstępnie zdefiniowane zasady |
 > | Akcja | Microsoft.Network/applicationGatewayAvailableSslOptions/read | Dostępne opcje protokołu Ssl bramy aplikacji |
 > | Akcja | Microsoft.Network/applicationGatewayAvailableWafRuleSets/read | Pobiera bramy aplikacji, która ustawia dostępne reguły zapory aplikacji sieci Web |
-> | Akcja | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Dołącza do puli adresów zaplecza bramy aplikacji |
+> | Akcja | Microsoft.Network/applicationGateways/backendAddressPools/join/action | Dołącza do puli adresów zaplecza bramy aplikacji. Nie dla. |
 > | Akcja | Microsoft.Network/applicationGateways/backendhealth/action | Pobiera stan zaplecza bramy aplikacji |
 > | Akcja | Microsoft.Network/applicationGateways/delete | Usuwa bramy aplikacji |
 > | Akcja | Microsoft.Network/applicationGateways/read | Pobiera bramy aplikacji |
 > | Akcja | Microsoft.Network/applicationGateways/start/action | Uruchamia bramy aplikacji |
 > | Akcja | Microsoft.Network/applicationGateways/stop/action | Zatrzymuje bramy aplikacji |
 > | Akcja | Microsoft.Network/applicationGateways/write | Utworzenie bramy aplikacji lub aktualizacji bramy aplikacji |
+> | Akcja | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/delete | Usuwa zasadę zapory aplikacji sieci Web dla bramy aplikacji |
+> | Akcja | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/read | Pobiera zasady brama aplikacji zapory aplikacji internetowych |
+> | Akcja | Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies/write | Tworzy zasady zapory aplikacji sieci Web dla bramy aplikacji lub aktualizacji zasad usługi Application Gateway zapory aplikacji internetowych |
 > | Akcja | Microsoft.Network/applicationSecurityGroups/delete | Usuwa grupę zabezpieczeń aplikacji |
-> | Akcja | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | Dołącza do konfiguracji adresu IP do grup zabezpieczeń aplikacji. |
-> | Akcja | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Dołącza reguły zabezpieczeń do grup zabezpieczeń aplikacji. |
+> | Akcja | Microsoft.Network/applicationSecurityGroups/joinIpConfiguration/action | Dołącza do konfiguracji adresu IP do grup zabezpieczeń aplikacji. Nie dla. |
+> | Akcja | Microsoft.Network/applicationSecurityGroups/joinNetworkSecurityRule/action | Dołącza reguły zabezpieczeń do grup zabezpieczeń aplikacji. Nie dla. |
 > | Akcja | Microsoft.Network/applicationSecurityGroups/listIpConfigurations/action | Konfiguracje adresów IP listy w ApplicationSecurityGroup |
 > | Akcja | Microsoft.Network/applicationSecurityGroups/read | Pobiera identyfikator grupy zabezpieczeń aplikacji. |
 > | Akcja | Microsoft.Network/applicationSecurityGroups/write | Tworzy grupę zabezpieczeń aplikacji lub aktualizacji istniejącej grupy zabezpieczeń aplikacji. |
@@ -3336,7 +3444,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/ddosCustomPolicies/read | Pobiera przed atakami DDoS dostosowanej definicji. Definicja zasad |
 > | Akcja | Microsoft.Network/ddosCustomPolicies/write | Tworzy zasady przed atakami DDoS dostosowany lub aktualizuje istniejące zasady przed atakami DDoS dostosowane |
 > | Akcja | Microsoft.Network/ddosProtectionPlans/delete | Usuwa planu ochrony przed atakami DDoS |
-> | Akcja | Microsoft.Network/ddosProtectionPlans/join/action | Dołącza planu ochrony przed atakami DDoS |
+> | Akcja | Microsoft.Network/ddosProtectionPlans/join/action | Dołącza do planu ochrony przed atakami DDoS. Nie dla. |
 > | Akcja | Microsoft.Network/ddosProtectionPlans/read | Pobiera Plan ochrony przed atakami DDoS |
 > | Akcja | Microsoft.Network/ddosProtectionPlans/write | Tworzy Plan ochrony przed atakami DDoS lub aktualizuje Plan ochrony przed atakami DDoS  |
 > | Akcja | Microsoft.Network/dnsoperationresults/read | Pobiera wyniki operacji DNS |
@@ -3379,7 +3487,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/expressRouteCircuits/authorizations/read | Pobiera ExpressRouteCircuit autoryzacji |
 > | Akcja | Microsoft.Network/expressRouteCircuits/authorizations/write | Tworzy lub aktualizuje istniejące autoryzacji ExpressRouteCircuit |
 > | Akcja | Microsoft.Network/expressRouteCircuits/delete | Usuwa obwodu usługi Expressroute |
-> | Akcja | Microsoft.Network/expressRouteCircuits/join/action | Dołącza obwodu usługi Express Route |
+> | Akcja | Microsoft.Network/expressRouteCircuits/join/action | Dołącza do obwodu usługi Express Route. Nie dla. |
 > | Akcja | Microsoft.Network/expressRouteCircuits/peerings/arpTables/action | Pobiera ExpressRouteCircuit ArpTable komunikacji równorzędnej |
 > | Akcja | Microsoft.Network/expressRouteCircuits/peerings/connections/delete | Usuwa połączenie ExpressRouteCircuit |
 > | Akcja | Microsoft.Network/expressRouteCircuits/peerings/connections/read | Pobiera połączenie ExpressRouteCircuit |
@@ -3394,7 +3502,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/expressRouteCircuits/read | Pobierz obwodu usługi Expressroute |
 > | Akcja | Microsoft.Network/expressRouteCircuits/stats/read | Pobiera ExpressRouteCircuit Stat |
 > | Akcja | Microsoft.Network/expressRouteCircuits/write | Tworzy lub aktualizuje istniejące obwodu usługi Expressroute |
-> | Akcja | Microsoft.Network/expressRouteCrossConnections/join/action | Sprzężenia wiadomość Expressroute między połączenia |
+> | Akcja | Microsoft.Network/expressRouteCrossConnections/join/action | Sprzężenia moduł Express Route krzyżowe połączenia. Nie dla. |
 > | Akcja | Microsoft.Network/expressRouteCrossConnections/peerings/arpTables/action | Pobiera Expressroute między tabeli protokołu Arp komunikacji równorzędnej połączenie |
 > | Akcja | Microsoft.Network/expressRouteCrossConnections/peerings/delete | Usuwa Expressroute między połączenia komunikacji równorzędnej |
 > | Akcja | Microsoft.Network/expressRouteCrossConnections/peerings/read | Pobiera Expressroute między połączenia komunikacji równorzędnej |
@@ -3405,10 +3513,10 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/expressRouteGateways/expressRouteConnections/delete | Usuwa połączenia usługi Express Route |
 > | Akcja | Microsoft.Network/expressRouteGateways/expressRouteConnections/read | Pobiera połączenia usługi Express Route |
 > | Akcja | Microsoft.Network/expressRouteGateways/expressRouteConnections/write | Połączenia Expressroute tworzy lub aktualizuje istniejące połączenia usługi Expressroute |
-> | Akcja | Microsoft.Network/expressRouteGateways/join/action | Dołącza brama usługi Express Route |
+> | Akcja | Microsoft.Network/expressRouteGateways/join/action | Dołącza do bramy usługi Expressroute. Nie dla. |
 > | Akcja | Microsoft.Network/expressRouteGateways/read | Pobierz brama usługi Express Route |
 > | Akcja | Microsoft.Network/expressRoutePorts/delete | Deletes ExpressRoutePorts |
-> | Akcja | Microsoft.Network/expressRoutePorts/join/action | Joins ExpressRoutePorts |
+> | Akcja | Microsoft.Network/expressRoutePorts/join/action | Dołącza do portów Express Route. Nie dla. |
 > | Akcja | Microsoft.Network/expressRoutePorts/links/read | Gets ExpressRouteLink |
 > | Akcja | Microsoft.Network/expressRoutePorts/read | Gets ExpressRoutePorts |
 > | Akcja | Microsoft.Network/expressRoutePorts/write | Tworzy lub aktualizuje ExpressRoutePorts |
@@ -3442,21 +3550,21 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/interfaceEndpoints/delete | Usuwa zasób punktu końcowego interfejsu. |
 > | Akcja | Microsoft.Network/interfaceEndpoints/read | Pobiera zasób punktu końcowego interfejsu. |
 > | Akcja | Microsoft.Network/interfaceEndpoints/write | Tworzy nowy punkt końcowy interfejsu, lub aktualizuje istniejący punkt końcowy interfejsu. |
-> | Akcja | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia |
+> | Akcja | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia. Nie dla. |
 > | Akcja | Microsoft.Network/loadBalancers/backendAddressPools/read | Pobiera definicji puli adresów wewnętrznej bazy danych modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/delete | Usuwa moduł równoważenia obciążenia |
-> | Akcja | Microsoft.Network/loadBalancers/frontendIPConfigurations/join/action | Dołącza do konfiguracji adresu IP frontonu modułu równoważenia obciążenia. |
+> | Akcja | Microsoft.Network/loadBalancers/frontendIPConfigurations/join/action | Dołącza do konfiguracji adresu IP frontonu modułu równoważenia obciążenia. Nie dla. |
 > | Akcja | Microsoft.Network/loadBalancers/frontendIPConfigurations/read | Pobiera definicję konfiguracji IP frontonu modułu równoważenia obciążenia |
-> | Akcja | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Dołącza modułu równoważenia obciążenia dla ruchu przychodzącego translatora adresów sieciowych puli |
+> | Akcja | Microsoft.Network/loadBalancers/inboundNatPools/join/action | Dołącza modułu równoważenia obciążenia dla ruchu przychodzącego translatora adresów Sieciowych puli. Nie dla. |
 > | Akcja | Microsoft.Network/loadBalancers/inboundNatPools/read | Pobiera moduł równoważenia obciążenia dla ruchu przychodzącego translatora adresów sieciowych definicji puli |
 > | Akcja | Microsoft.Network/loadBalancers/inboundNatRules/delete | Usuwa regułę nat dla ruchu przychodzącego modułu równoważenia obciążenia |
-> | Akcja | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Dołącza reguły nat dla ruchu przychodzącego modułu równoważenia obciążenia |
+> | Akcja | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Dołącza do reguły nat dla ruchu przychodzącego modułu równoważenia obciążenia. Nie dla. |
 > | Akcja | Microsoft.Network/loadBalancers/inboundNatRules/read | Pobiera moduł równoważenia obciążenia dla ruchu przychodzącego definicji reguły translatora adresów sieciowych |
 > | Akcja | Microsoft.Network/loadBalancers/inboundNatRules/write | Tworzy regułę nat dla ruchu przychodzącego modułu równoważenia obciążenia lub aktualizuje istniejącą regułę nat dla ruchu przychodzącego modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/loadBalancingRules/read | Pobiera równoważenia definicji reguły obciążenia modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/networkInterfaces/read | Pobiera odwołania do wszystkich interfejsów sieciowych w ramach modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/outboundRules/read | Pobiera definicję reguły ruchu wychodzącego modułu równoważenia obciążenia |
-> | Akcja | Microsoft.Network/loadBalancers/probes/join/action | Umożliwia użycie sond modułu równoważenia obciążenia. Na przykład z tą właściwością healthProbe uprawnień dla usługi VM scale set odwoływać się do sondy. |
+> | Akcja | Microsoft.Network/loadBalancers/probes/join/action | Umożliwia użycie sond modułu równoważenia obciążenia. Na przykład z tą właściwością healthProbe uprawnień dla usługi VM scale set odwoływać się do sondy. Nie dla. |
 > | Akcja | Microsoft.Network/loadBalancers/probes/read | Pobiera sondy modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/read | Pobiera definicji modułu równoważenia obciążenia |
 > | Akcja | Microsoft.Network/loadBalancers/virtualMachines/read | Pobiera odwołania do wszystkich maszyn wirtualnych w ramach modułu równoważenia obciążenia |
@@ -3479,9 +3587,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/networkInterfaces/delete | Usuwa interfejs sieciowy |
 > | Akcja | Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action | Pobieranie grup zabezpieczeń sieci skonfigurowane w sieci interfejsu maszyny wirtualnej |
 > | Akcja | Microsoft.Network/networkInterfaces/effectiveRouteTable/action | Pobierz tabelę trasy skonfigurowane dla interfejsu sieciowego maszyny wirtualnej |
-> | Akcja | Microsoft.Network/networkInterfaces/ipconfigurations/join/action | Dołącza do konfiguracji adresu IP interfejsu sieciowego. |
+> | Akcja | Microsoft.Network/networkInterfaces/ipconfigurations/join/action | Dołącza do konfiguracji adresu IP interfejsu sieciowego. Nie dla. |
 > | Akcja | Microsoft.Network/networkInterfaces/ipconfigurations/read | Pobiera definicję konfiguracji adresu ip interfejsu sieci.  |
-> | Akcja | Microsoft.Network/networkInterfaces/join/action | Dołącza maszyny wirtualnej do interfejsu sieciowego |
+> | Akcja | Microsoft.Network/networkInterfaces/join/action | Dołącza do maszyny wirtualnej do interfejsu sieciowego. Nie dla. |
 > | Akcja | Microsoft.Network/networkInterfaces/loadBalancers/read | Pobiera wszystkie moduły równoważenia obciążenia, które interfejs sieciowy jest częścią |
 > | Akcja | Microsoft.Network/networkInterfaces/read | Pobiera definicja interfejsu sieciowego.  |
 > | Akcja | Microsoft.Network/networkInterfaces/tapConfigurations/delete | Usuwa konfigurację wzorca Tap interfejsu sieciowego. |
@@ -3496,7 +3604,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/networkProfiles/write | Tworzy lub aktualizuje profil sieciowy |
 > | Akcja | Microsoft.Network/networkSecurityGroups/defaultSecurityRules/read | Pobiera domyślną definicją reguły zabezpieczeń |
 > | Akcja | Microsoft.Network/networkSecurityGroups/delete | Usuwa sieciową grupę zabezpieczeń |
-> | Akcja | Microsoft.Network/networkSecurityGroups/join/action | Dołącza sieciowej grupy zabezpieczeń |
+> | Akcja | Microsoft.Network/networkSecurityGroups/join/action | Dołącza do sieciowej grupy zabezpieczeń. Nie dla. |
 > | Akcja | Microsoft.Network/networkSecurityGroups/read | Pobiera definicję grupy zabezpieczeń sieci |
 > | Akcja | Microsoft.Network/networkSecurityGroups/securityRules/delete | Usuwa regułę zabezpieczeń |
 > | Akcja | Microsoft.Network/networkSecurityGroups/securityRules/read | Pobiera definicji reguły zabezpieczeń |
@@ -3553,23 +3661,23 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/privateLinkServices/read | Pobiera zasób usługi prywatnego linku. |
 > | Akcja | Microsoft.Network/privateLinkServices/write | Tworzy nową usługę prywatnego linku lub aktualizuje istniejącą usługę prywatnego linku. |
 > | Akcja | Microsoft.Network/publicIPAddresses/delete | Usuwa publicznego adresu Ip. |
-> | Akcja | Microsoft.Network/publicIPAddresses/join/action | Dołącza publicznego adresu ip |
+> | Akcja | Microsoft.Network/publicIPAddresses/join/action | Dołącza do publicznego adresu ip. Nie dla. |
 > | Akcja | Microsoft.Network/publicIPAddresses/read | Pobiera definicji adres publiczny adres ip. |
 > | Akcja | Microsoft.Network/publicIPAddresses/write | Tworzy publiczny adres Ip lub aktualizuje istniejące publiczny adres Ip.  |
 > | Akcja | Microsoft.Network/publicIPPrefixes/delete | Usuwa publiczny prefiks adresu Ip |
-> | Akcja | Microsoft.Network/publicIPPrefixes/join/action | Dołącza PublicIPPrefix |
+> | Akcja | Microsoft.Network/publicIPPrefixes/join/action | Tworzy sprzężenie PublicIPPrefix. Nie dla. |
 > | Akcja | Microsoft.Network/publicIPPrefixes/read | Pobiera definicji publiczny prefiks adresu Ip |
 > | Akcja | Microsoft.Network/publicIPPrefixes/write | Tworzy publiczny prefiks adresu Ip lub aktualizuje istniejące publiczny prefiks adresu Ip |
 > | Akcja | Microsoft.Network/register/action | Rejestruje subskrypcję |
 > | Akcja | Microsoft.Network/routeFilters/delete | Usuwa definicję filtru tras |
-> | Akcja | Microsoft.Network/routeFilters/join/action | Dołącza filtr tras |
+> | Akcja | Microsoft.Network/routeFilters/join/action | Dołącza do filtru trasy. Nie dla. |
 > | Akcja | Microsoft.Network/routeFilters/read | Pobiera definicji filtru tras |
 > | Akcja | Microsoft.Network/routeFilters/routeFilterRules/delete | Usuwa definicję reguły filtru trasy |
 > | Akcja | Microsoft.Network/routeFilters/routeFilterRules/read | Pobiera definicji reguły filtru trasy |
 > | Akcja | Microsoft.Network/routeFilters/routeFilterRules/write | Tworzy reguły filtru trasy lub aktualizuje istniejącą regułę filtru trasy |
 > | Akcja | Microsoft.Network/routeFilters/write | Tworzy filtru tras lub aktualizuje istniejący filtr tras |
 > | Akcja | Microsoft.Network/routeTables/delete | Usuwa definicję tabeli tras |
-> | Akcja | Microsoft.Network/routeTables/join/action | Tworzy sprzężenie tabeli tras |
+> | Akcja | Microsoft.Network/routeTables/join/action | Tworzy sprzężenie tabeli tras. Nie dla. |
 > | Akcja | Microsoft.Network/routeTables/read | Pobiera definicję tabeli tras |
 > | Akcja | Microsoft.Network/routeTables/routes/delete | Usuwa definicję trasy |
 > | Akcja | Microsoft.Network/routeTables/routes/read | Pobiera definicję trasy |
@@ -3579,8 +3687,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/securegateways/read | Pobierz bramy zabezpieczeń |
 > | Akcja | Microsoft.Network/securegateways/write | Tworzy lub aktualizuje bramę zabezpieczeń |
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/delete | Usuwa zasad punktów końcowych usługi |
-> | Akcja | Microsoft.Network/serviceEndpointPolicies/join/action | Dołącza zasad punktów końcowych usługi |
-> | Akcja | Microsoft.Network/serviceEndpointPolicies/joinSubnet/action | Dołącza podsieci do zasad punktów końcowych usługi |
+> | Akcja | Microsoft.Network/serviceEndpointPolicies/join/action | Dołącza do zasad punktów końcowych usługi. Nie dla. |
+> | Akcja | Microsoft.Network/serviceEndpointPolicies/joinSubnet/action | Dołącza podsieci do zasad punktów końcowych usługi. Nie dla. |
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/read | Pobiera opis zasad punktu końcowego usługi |
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/delete | Usuwa definicją zasad punktów końcowych usługi |
 > | Akcja | Microsoft.Network/serviceEndpointPolicies/serviceEndpointPolicyDefinitions/read | Pobiera opis definicji zasad punktu końcowego usługi |
@@ -3632,8 +3740,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/virtualNetworks/peer/action | Łączy równorzędnie sieć wirtualną z inną siecią wirtualną |
 > | Akcja | Microsoft.Network/virtualNetworks/read | Pobierz definicję sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualNetworks/subnets/delete | Usuwa podsieć sieci wirtualnej |
-> | Akcja | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej |
-> | Akcja | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Dołącza do zasobów, takich jak konto magazynu lub bazy danych SQL do podsieci. |
+> | Akcja | Microsoft.Network/virtualNetworks/subnets/join/action | Łączy sieci wirtualnej. Nie dla. |
+> | Akcja | Microsoft.Network/virtualNetworks/subnets/joinViaServiceEndpoint/action | Dołącza do zasobów, takich jak konto magazynu lub bazy danych SQL do podsieci. Nie dla. |
 > | Akcja | Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action | Przygotowuje podsieci, stosując niezbędne zasad sieciowych |
 > | Akcja | Microsoft.Network/virtualNetworks/subnets/read | Pobiera definicji podsieci sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualNetworks/subnets/virtualMachines/read | Pobiera odwołania do wszystkich maszyn wirtualnych w podsieci sieci wirtualnej |
@@ -3645,7 +3753,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write | Tworzy komunikację równorzędną sieci wirtualnej lub aktualizuje istniejące komunikacji równorzędnej sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualNetworks/write | Tworzy sieć wirtualną lub aktualizuje istniejącą sieć wirtualną |
 > | Akcja | Microsoft.Network/virtualNetworkTaps/delete | Usuń naciśnij sieci wirtualnej |
-> | Akcja | Microsoft.Network/virtualNetworkTaps/join/action | Dołącza naciśnij sieci wirtualnej |
+> | Akcja | Microsoft.Network/virtualNetworkTaps/join/action | Łączy to w ramach sieci wirtualnej. Nie dla. |
 > | Akcja | Microsoft.Network/virtualNetworkTaps/read | Get Virtual Network Tap |
 > | Akcja | Microsoft.Network/virtualNetworkTaps/write | Utwórz lub zaktualizuj naciśnij sieci wirtualnej |
 > | Akcja | Microsoft.Network/virtualWans/delete | Usuwa wirtualnej sieci Wan |
@@ -3811,6 +3919,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/AppCenterError/read | Odczyt danych z tabeli AppCenterError |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ApplicationInsights/read | Odczytaj dane z tabeli ApplicationInsights |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/AuditLogs/read | Odczyt danych z tabeli AuditLogs |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/AutoscaleEvaluationsLog/read | Odczyt danych z tabeli AutoscaleEvaluationsLog |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/AutoscaleScaleActionsLog/read | Odczyt danych z tabeli AutoscaleScaleActionsLog |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/AWSCloudTrail/read | Odczyt danych z tabeli AWSCloudTrail |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/AzureActivity/read | Odczytaj dane z tabeli AzureActivity |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/AzureMetrics/read | Odczytaj dane z tabeli AzureMetrics |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/BoundPort/read | Odczytaj dane z tabeli BoundPort |
@@ -3821,6 +3932,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ContainerImageInventory/read | Odczytaj dane z tabeli ContainerImageInventory |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ContainerInventory/read | Odczytaj dane z tabeli ContainerInventory |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ContainerLog/read | Odczytaj dane z tabeli ContainerLog |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/ContainerNodeInventory/read | Odczyt danych z tabeli ContainerNodeInventory |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ContainerServiceLog/read | Odczytaj dane z tabeli ContainerServiceLog |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/DeviceAppCrash/read | Odczytaj dane z tabeli DeviceAppCrash |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/DeviceAppLaunch/read | Odczytaj dane z tabeli DeviceAppLaunch |
@@ -3849,6 +3961,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ExchangeAssessmentRecommendation/read | Odczytaj dane z tabeli ExchangeAssessmentRecommendation |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ExchangeOnlineAssessmentRecommendation/read | Odczytaj dane z tabeli ExchangeOnlineAssessmentRecommendation |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/Heartbeat/read | Odczytaj dane z tabeli Heartbeat |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/HuntingBookmark/read | Odczyt danych z tabeli HuntingBookmark |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/IISAssessmentRecommendation/read | Odczytaj dane z tabeli IISAssessmentRecommendation |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/InboundConnection/read | Odczytaj dane z tabeli InboundConnection |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/IntuneAuditLogs/read | Odczyt danych z tabeli IntuneAuditLogs |
@@ -3917,6 +4030,8 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/SecurityBaselineSummary/read | Odczytaj dane z tabeli SecurityBaselineSummary |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/SecurityDetection/read | Odczytaj dane z tabeli SecurityDetection |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/SecurityEvent/read | Odczytaj dane z tabeli SecurityEvent |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/SecurityIoTRawEvent/read | Odczyt danych z tabeli SecurityIoTRawEvent |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/SecurityRecommendation/read | Odczyt danych z tabeli SecurityRecommendation |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ServiceFabricOperationalEvent/read | Odczytaj dane z tabeli ServiceFabricOperationalEvent |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ServiceFabricReliableActorEvent/read | Odczytaj dane z tabeli ServiceFabricReliableActorEvent |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ServiceFabricReliableServiceEvent/read | Odczytaj dane z tabeli ServiceFabricReliableServiceEvent |
@@ -3930,6 +4045,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/Syslog/read | Odczytaj dane z tabeli Syslog |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/SysmonEvent/read | Odczytaj dane z tabeli SysmonEvent |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/Tables.Custom/read | Odczytywanie danych z dowolnego dziennika niestandardowego |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/ThreatIntelligenceIndicator/read | Odczyt danych z tabeli ThreatIntelligenceIndicator |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/UAApp/read | Odczytaj dane z tabeli UAApp |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/UAComputer/read | Odczytaj dane z tabeli UAComputer |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/UAComputerRank/read | Odczytaj dane z tabeli UAComputerRank |
@@ -4044,13 +4160,13 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.PowerBIDedicated/capacities/checkNameAvailability/action | Sprawdza, czy nazwa podana w wersji dedykowanej pojemności usługi Power BI jest prawidłowa i nie jest używany. |
 > | Akcja | Microsoft.PowerBIDedicated/capacities/delete | Usuwa usługi Power BI w wersji dedykowanej pojemności. |
 > | Akcja | Microsoft.PowerBIDedicated/capacities/read | Pobiera informacje o określonej pojemności usługi Power BI w wersji dedykowanej. |
 > | Akcja | Microsoft.PowerBIDedicated/capacities/resume/action | Wznawia pojemności. |
 > | Akcja | Microsoft.PowerBIDedicated/capacities/skus/read | Pobierz dostępne informacje o jednostce SKU pojemności |
 > | Akcja | Microsoft.PowerBIDedicated/capacities/suspend/action | Wstrzymuje działanie pojemności. |
 > | Akcja | Microsoft.PowerBIDedicated/capacities/write | Tworzy lub aktualizuje określoną w wersji dedykowanej pojemności usługi Power BI. |
+> | Akcja | Microsoft.PowerBIDedicated/locations/checkNameAvailability/action | Sprawdza, czy nazwa podana w wersji dedykowanej pojemności usługi Power BI jest prawidłowa i nie jest używany. |
 > | Akcja | Microsoft.PowerBIDedicated/locations/operationresults/read | Pobiera informacje o wyniku określonej operacji. |
 > | Akcja | Microsoft.PowerBIDedicated/locations/operationstatuses/read | Pobiera informacje o stanie określonej operacji. |
 > | Akcja | Microsoft.PowerBIDedicated/operations/read | Pobiera informacje o operacjach |
@@ -4594,6 +4710,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Sql/checkNameAvailability/action | Sprawdź, czy nazwa danego serwera jest dostępne do alokowania na całym świecie, w ramach danej subskrypcji. |
 > | Akcja | Microsoft.Sql/instancePools/delete | Usuwa z puli wystąpienia |
 > | Akcja | Microsoft.Sql/instancePools/read | Pobiera wystąpienie puli |
+> | Akcja | Microsoft.Sql/instancePools/usages/read | Pobiera informacje o wystąpieniu puli użycia. |
 > | Akcja | Microsoft.Sql/instancePools/write | Tworzy lub aktualizuje pulę wystąpień |
 > | Akcja | Microsoft.Sql/locations/auditingSettingsAzureAsyncOperation/read | Pobieranie wyników blob serwera rozszerzonej inspekcji operacji zestawu zasad |
 > | Akcja | Microsoft.Sql/locations/auditingSettingsOperationResults/read | Pobieranie wyników blob server inspekcji operacji zestawu zasad |
@@ -4946,7 +5063,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/fileShare/delete | Umożliwia użytkownikowi usuwanie udziału plików |
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/fileShare/read | Umożliwia użytkownikowi odczyt udziału plików |
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/fileShare/write | Umożliwia użytkownikowi zapis w udziale plików |
-> | Akcja | Microsoft.Storage/storageAccounts/lastsynctime/read | Zwraca czas ostatniej synchronizacji konta magazynu |
 > | Akcja | Microsoft.Storage/storageAccounts/listAccountSas/action | Zwraca token sygnatury dostępu współdzielonego konta dla określonego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/listkeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/listServiceSas/action | Zwraca token sygnatury dostępu współdzielonego usługi dla określonego konta magazynu. |

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: e050122984c19e46f3782c8364331323b403caad
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 32604c06c6a4325f7ae6cb45930de902a1366480
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893847"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750331"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>Profil na żywo usług Azure Cloud Services za pomocą usługi Application Insights
 
@@ -32,6 +32,8 @@ Application Insights Profiler jest instalowany z rozszerzenie diagnostyki platfo
 1. Upewnij się, że używasz [platformy .NET Framework 4.6.1](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) lub nowszej. Wystarczy potwierdzić, że *ServiceConfiguration.\*.cscfg* pliki mają `osFamily` wartość "5" lub nowszej.
 
 1. Dodaj [usługi Application Insights SDK do usługi Azure Cloud Services](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json).
+
+  >**W programie profiler, który jest dostarczany w najnowszej wersji WAD dla usług Cloud Services znajduje się błąd.** Aby można było używać programu profilującego z usługą w chmurze, obsługuje on tylko zestawu SDK usługi AI do wersji 2.7.2. Jeśli używasz nowszą wersję zestawu SDK usługi AI będziesz mieć, wróć do obszaru 2.7.2 Aby można było używać programu profilującego.
 
 1. Śledzenie żądań z usługą Application Insights:
 

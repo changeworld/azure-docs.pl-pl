@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 64cbf8f8704dbb216a15247caf741ff43690496a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54457063"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56751485"
 ---
 > [!div class="op_single_selector"]
 > * [C w systemie Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -58,9 +58,9 @@ Po zakończeniu procesu wdrażania rozwiązania do monitorowania zdalnego, klikn
 
 W przypadku urządzeń nawiązać połączenie z akceleratora rozwiązań musi ono zidentyfikować się do usługi IoT Hub za pomocą prawidłowych poświadczeń. Masz szansę sprzedaży, aby zapisać parametry połączenia urządzenia, która zawiera te poświadczenia po dodaniu urządzenia do rozwiązania. Parametry połączenia urządzenia zawierają się w aplikacji klienckiej w dalszej części tego samouczka.
 
-Aby dodać urządzenie do rozwiązania monitorowania zdalnego, wykonaj następujące czynności na **urządzeń** strony w rozwiązaniu:
+Aby dodać urządzenie do rozwiązania monitorowania zdalnego, wykonaj następujące czynności na **Device Explorer** strony w rozwiązaniu:
 
-1. Wybierz **+ nowe urządzenie**, a następnie wybierz **fizycznych** jako **typu urządzenia**:
+1. Wybierz **+ nowe urządzenie**, a następnie wybierz **rzeczywistych** jako **typu urządzenia**:
 
     ![Dodawanie rzeczywistego urządzenia](media/iot-suite-selector-connecting/devicesprovision.png)
 

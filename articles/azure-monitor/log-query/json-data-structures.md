@@ -1,6 +1,6 @@
 ---
 title: Praca z ciągami zapytań dzienników usługi Azure Monitor | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek dotyczący korzystania z usługi Azure Monitor log analytics w witrynie Azure portal do tworzenia zapytań i analizowania danych dziennika w usłudze Azure Monitor.
+description: Ten artykuł zawiera samouczek dotyczący korzystania z usługi Azure Monitor Log Analytics w witrynie Azure portal do tworzenia zapytań i analizowania danych dziennika w usłudze Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: dda7ef2e4e974ea053f030a3ebe71a16872612b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 718b12c8a66d66a75796f88ef31b5f0f62abbbc4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993728"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750960"
 ---
 # <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Praca z formatami JSON i danych struktury w zapytaniach dzienników usługi Azure Monitor
 
 > [!NOTE]
-> Należy wykonać [wprowadzenie do usługi log analytics w usłudze Azure Monitor](get-started-portal.md) i [wprowadzenie do usługi Azure Monitor dziennika zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
+> Należy wykonać [Rozpoczynanie pracy z usługą Azure Monitor Log Analytics](get-started-portal.md) i [wprowadzenie do usługi Azure Monitor dziennika zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 

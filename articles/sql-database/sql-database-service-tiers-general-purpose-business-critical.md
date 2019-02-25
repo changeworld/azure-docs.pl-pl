@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 02/13/2019
-ms.openlocfilehash: 59eb0b842392faa2adfcd99b028f1e283a7e8db7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.date: 02/23/2019
+ms.openlocfilehash: db91e67254e9927caba68a84b38a1ee94da8d3ab
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243833"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750127"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Warstwy usługi w usłudze Azure SQL Database
 
@@ -42,7 +42,7 @@ Rozważ następujące źródła:
 - Określony rozmiar magazynu w wystąpieniu zarządzanym usługi musi być wielokrotność 32 GB.
 - Można wybrać żadnych rozmiar pojedynczej bazy danych między 10 GB i maksymalnej obsługiwanej
   - W przypadku usługi storage w warstwach usług standardowa lub ogólnego przeznaczenia należy zwiększyć lub zmniejszyć rozmiar w przyrostach co 10 GB
-  - W przypadku usługi storage w warstwach usług krytycznych w wersji premium lub buxiness zwiększyć lub zmniejszyć rozmiar w partiach po 250 GB
+  - Dla magazynu w warstwie premium lub krytyczne dla warstwy usług, zwiększania lub zmniejszania rozmiaru w partiach po 250 GB
 - W przypadku warstwy usług ogólnego przeznaczenia `tempdb` używa dołączone dyski SSD i ten koszt przechowywania jest uwzględniona w cenie — rdzeń wirtualny.
 - W warstwie krytyczne dla działalności `tempdb` udziałów dołączonych dysków SSD przy użyciu pliki MDF i LDF i kosztach magazynowania w bazie danych tempDB jest uwzględniona w cenie — rdzeń wirtualny.
 

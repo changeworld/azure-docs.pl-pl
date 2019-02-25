@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
-ms.openlocfilehash: b1cf3dc24482da70372f775d0ba63a203df1b285
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572532"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56753757"
 ---
 Odpowiedzi na niektóre Bing obejmują adresy URL do obrazów miniatury obsługiwane przez usługę Bing. Możesz zmienić rozmiar i przycinanie obrazów miniatur. 
 
@@ -17,11 +17,11 @@ Odpowiedzi na niektóre Bing obejmują adresy URL do obrazów miniatury obsługi
 > Upewnij się, rozmiar i przycinanie miniatury udostępniają scenariusz wyszukiwania oraz przestrzeganie praw innych firm, zgodnie z potrzebami przy użyciu interfejsu API wyszukiwania Bing i wyświetlają wymagania dotyczące.
 
 
-Aby zmienić rozmiar obrazu, obejmują Sz (szerokość) i (wysokość) parametry w adresie URL miniatury zapytania. Określ szerokość i wysokość w pikselach. Na przykład:  
+Aby zmienić rozmiar obrazu, należy dołączyć kwerend Sz (szerokość) parametr h (wysokość) zapytania lub oba parametry w adresie URL miniatury. Określ szerokość i wysokość w pikselach. Na przykład:  
   
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=200&h=200`  
   
-W przypadku zmiany rozmiaru obrazu jest zachowywana proporcje są zachowywane. Aby zachować współczynnik proporcji, Wypełnienie białe mogą być dodawane do obramowania obrazu. Na przykład jeżeli zmienisz rozmiar obrazu 480 x 359 do 200 x 200 bez przycinania, całą szerokość zawiera obraz, ale wysokość zawiera 25 pikseli biały dopełnienie u góry i u dołu obrazu. Taki sam będzie wartość true, jeśli obraz został 359 x 480, z wyjątkiem po lewej stronie i prawe krawędzie będzie zawierać białego dopełnienia. Jeśli przycinasz obraz dopełnienie biały nie został dodany.  
+Jeśli określisz tylko szerokość lub parametr zapytania wysokość Bing obsługuje współczynnik proporcji obrazu. Jeśli określisz wysokość i szerokość i nie zachować oryginalny współczynnik proporcji obrazu, Bing dodaje dopełnienie białe obramowanie obrazu. Na przykład jeżeli zmienisz rozmiar obrazu 480 x 359 do 200 x 200 bez przycinania, całą szerokość zawiera obraz, ale wysokość zawiera 25 pikseli biały dopełnienie u góry i u dołu obrazu. Taki sam będzie wartość true, jeśli obraz został 359 x 480, z wyjątkiem po lewej stronie i prawe krawędzie będzie zawierać białego dopełnienia. Jeśli przycinasz obraz dopełnienie biały nie został dodany.  
 
  
 Na poniższej ilustracji przedstawiono oryginalnego rozmiaru obraz miniatury (480 x 300).  

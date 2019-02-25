@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 73d4bfc3aaeb86568e3f7a3555a664a8815e3280
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: b903d20136beb306d3f38fbebdb70562b3634d31
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56586175"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749787"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>Wizualizowanie danych z usługi Azure Monitor
 Ten artykuł zawiera podsumowanie dostępnych metod w celu wizualizacji dane dzienników i metryk przechowywanych w usłudze Azure Monitor.
@@ -32,7 +32,7 @@ Wizualizacji, takich jak wykresy i diagramy ułatwia analizowanie danych monitor
 ![Pulpit nawigacyjny](media/visualizations/dashboard.png)
 
 ### <a name="advantages"></a>Zalety
-- Głęboka integracja na platformie Azure. Wizualizacje można przypiąć do pulpitów nawigacyjnych z wielu stronach platformy Azure, m.in. Eksplorator metryk usługi log analytics i usługi Application Insights.
+- Głęboka integracja na platformie Azure. Wizualizacje można przypiąć do pulpitów nawigacyjnych z wielu stronach platformy Azure, m.in. Eksplorator metryk usługi Log Analytics i usługi Application Insights.
 - Obsługuje zarówno metryk i dzienników.
 - Połącz dane z wielu źródeł, takich jak dane wyjściowe z [Eksploratora metryk](platform/metrics-charts.md), [rejestrowania zapytań](log-query/log-query-overview.md), i [mapuje](app/app-map.md) i dostępności w usłudze Application Insights.
 - Opcja osobistym lub udostępnione pulpity nawigacyjne. Zintegrowana z platformą Azure [uwierzytelniania opartego na rolach (RBAC)](../role-based-access-control/overview.md).
