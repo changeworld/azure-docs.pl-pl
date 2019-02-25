@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: jowargo
-ms.openlocfilehash: 7f1a1bd22ecd0b0a7ab64e639683ae316742c5f0
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f2f11abcb3290e1d9459c26167706abc79c1b7fa
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563987"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670336"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Powiadomienia wypychane przy użyciu usługi Azure Notification Hubs: Często zadawane pytania
 
@@ -209,8 +209,6 @@ Usługa Azure Notification Hubs umożliwia, wyświetlanie danych telemetrycznych
 > [!NOTE]
 > Powiadomienia zakończone powodzeniem po prostu oznacza, że powiadomienia wypychane zostaną dostarczone do zewnętrznego systemu powiadomień platformy (na przykład APNS dla firmy Apple) lub usługi FCM dla usług Google. Jest odpowiedzialny za system powiadomień platformy w celu dostarczania powiadomień na urządzenia docelowe. Zazwyczaj system powiadomień platformy nie ujawnia dostarczanie metryk do podmiotów trzecich.  
 
-Oferujemy również możliwość eksportowania danych telemetrycznych programowo (w warstwie standardowa). Aby uzyskać więcej informacji, zobacz [Przykładowe metryki centra powiadomień].
-
 [Azure Portal]: https://portal.azure.com
 [Cennik usługi Notification Hubs]: http://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: http://azure.microsoft.com/support/legal/sla/
@@ -229,7 +227,6 @@ Oferujemy również możliwość eksportowania danych telemetrycznych programowo
 [Samouczek dotyczący Secure wypychania centrów powiadomień]: http://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [Rozwiązywanie problemów w usłudze Notification Hubs]: http://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs metryki]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[Przykładowe metryki centra powiadomień]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel
 [Rejestracje eksportu/importu]: https://msdn.microsoft.com/library/dn790624.aspx
 [Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples

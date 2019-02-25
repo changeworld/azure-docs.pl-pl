@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Notification Hubs porzucone powiadomienia diagnostyki
+title: Usługa Azure Notification Hubs — diagnozowanie porzucone powiadomienia
 description: Dowiedz się, jak diagnozować typowych problemów z porzuconymi powiadomieniami w usłudze Azure Notification Hubs.
 services: notification-hubs
 documentationcenter: Mobile
@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 9dd6a66ea416ad61682b8e33c6163db3ac345d92
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 4419b68a0005ff6e0b5e46f22fba918699f3ba4f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447721"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672206"
 ---
-# <a name="diagnose-dropped-notifications-in-notification-hubs"></a>Diagnozowanie porzucone powiadomienia usługi Notification Hubs
+# <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Usługa Azure Notification Hubs — diagnozowanie porzucone powiadomienia
 
 Jednym z najczęściej zadawane pytania klientów usługi Azure Notification Hubs jest jak rozwiązywać problemy podczas powiadomienia, które są wysyłane z aplikacji nie są wyświetlane na urządzeniach klienckich. Firma chce wiedzieć, gdzie i dlaczego powiadomienia zostały usunięte, a także sposób rozwiązać ten problem. W tym artykule identyfikuje Dlaczego powiadomienia porzucane może lub nie można odebrać przez urządzenia. Dowiedz się, jak analizować i określenia głównej przyczyny.
 
@@ -246,10 +246,7 @@ W portalu możesz uzyskać szybki przegląd wszystkich działań w Centrum powia
 
 * **Dostęp programowy**
 
-Aby uzyskać więcej informacji na temat programowego dostępu zobacz następujące artykuły:
-
-* [Dostęp programowy telemetrii]  
-* [Dane telemetryczne dostęp za pośrednictwem interfejsów API próbki]
+Aby uzyskać więcej informacji na temat dostęp programowy zobacz [dostęp programowy telemetrii]
 
 > [!NOTE]
 > Kilka funkcji związane z telemetrią, takich jak eksportowanie i importowanie rejestracji i dane telemetryczne dostęp za pośrednictwem interfejsów API, są dostępne tylko w warstwie usług standardowa na. Jeśli spróbujesz użyć tych funkcji, bezpłatna lub podstawowa warstwę usługi, zostanie wyświetlony komunikat wyjątku, jeśli używasz zestawu SDK i wystąpienia błędu HTTP 403 (zabronione) Jeśli korzystasz z funkcji bezpośrednio za pośrednictwem interfejsów API REST.
@@ -282,4 +279,3 @@ Aby uzyskać więcej informacji na temat programowego dostępu zobacz następuj�
 [Ogłaszamy wydanie programu Visual Studio 2013 Update 3 i Azure SDK 2.4]: http://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
 [Dostęp programowy telemetrii]: http://msdn.microsoft.com/library/azure/dn458823.aspx
-[Dane telemetryczne dostęp za pośrednictwem interfejsów API próbki]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/FetchNHTelemetryInExcel

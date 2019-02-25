@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8762449fbc9254bd3dc6548e74234e1f34c00355
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 086a425be743772b6419a9473ad497a310d94842
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770337"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671951"
 documentType: LandingData
 title: Dokumentacja usługi Azure Database Migration Service
 metadata:
@@ -53,9 +53,11 @@ sections:
     - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">Przeprowadzanie migracji z programu SQL Server do usługi Azure SQL Database w trybie online przy użyciu usługi DMS</a>
     - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">Migracja programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database w trybie offline przy użyciu usługi DMS</a>
     - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">Migracja online programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS</a>
+    - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">Migracja programu RDS SQL Server do usługi Azure SQL Database lub wystąpienia zarządzanego online usługi Azure SQL Database przy użyciu usługi DMS</a>
     - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">Migrowanie programu MySQL do usługi Azure Database for MySQL w trybie online przy użyciu usługi DMS</a>
     - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">Migrowanie bazy danych PostgreSQL do usługi Azure Database for PostgreSQL w trybie online przy użyciu usługi DMS</a>
     - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">Migrowanie bazy danych MongoDB do interfejsu Mongo API usługi Azure Cosmos DB w trybie offline za pomocą usługi DMS</a>
+    - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">Migrowanie bazy danych MongoDB do interfejsu Mongo API usługi Azure Cosmos DB w trybie online za pomocą usługi DMS</a>
 - title: Przykłady
   items:
   - type: list
