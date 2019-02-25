@@ -1,5 +1,5 @@
 ---
-title: Wprowadzenie do usługi log analytics w usłudze Azure Monitor | Dokumentacja firmy Microsoft
+title: Rozpoczynanie pracy z usługą Azure Monitor Log Analytics | Dokumentacja firmy Microsoft
 description: Ten artykuł zawiera samouczek do pisania zapytań, za pomocą usługi Log Analytics w witrynie Azure portal.
 services: log-analytics
 author: bwren
@@ -8,18 +8,18 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 2adb23b63c3a8be56dc55293c7bb06534d9305c4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ec6f3884504c94b7669df21882aeb2a1eb9d7220
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242111"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56750586"
 ---
-# <a name="get-started-with-azure-monitor-log-analytics"></a>Wprowadzenie do usługi log analytics w usłudze Azure Monitor
+# <a name="get-started-with-azure-monitor-log-analytics"></a>Rozpoczynanie pracy z usługą Azure Monitor Log Analytics
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-W tym samouczku dowiesz się, jak usługa Azure Monitor log analytics w witrynie Azure portal umożliwia pisanie zapytań dzienników usługi Azure Monitor. Jego nauczą Cię, jak do:
+W tym samouczku dowiesz się, jak używać usługi Azure Monitor Log Analytics w witrynie Azure portal do pisania zapytań dzienników usługi Azure Monitor. Jego nauczą Cię, jak do:
 
 - Tworzenie prostych zapytań
 - Zrozumieć schemat danych
@@ -30,8 +30,8 @@ W tym samouczku dowiesz się, jak usługa Azure Monitor log analytics w witrynie
 - Eksportowanie i udostępnianie zapytań
 
 
-## <a name="meet-log-analytics"></a>Spełnia usługi log analytics
-Log analytics jest w sieci web narzędzie służące do zapisu i wykonywania zapytań dzienników usługi Azure Monitor. Otwórz go, wybierając **dzienniki** w menu usługi Azure Monitor. Rozpoczynają się one od nowego pustego zapytania.
+## <a name="meet-log-analytics"></a>Spełnia usługi Log Analytics
+Log Analytics jest w sieci web narzędzie służące do zapisu i wykonywania zapytań dzienników usługi Azure Monitor. Otwórz go, wybierając **dzienniki** w menu usługi Azure Monitor. Rozpoczynają się one od nowego pustego zapytania.
 
 ![Strona główna](media/get-started-portal/homepage.png)
 
@@ -78,7 +78,7 @@ Od zebrania wszystko _zdarzeń_ tabeli.
 Event
 ```
 
-Automatycznego logowania analytics zakresów wyniki według:
+Usługa log Analytics zakresów automatycznie wyniki według:
 
 - Zakres czasu:  Domyślnie kwerendy są ograniczone do ostatnich 24 godzin.
 - Liczba wyników: Wyniki są ograniczone do maksymalnie 10 000 rekordów.
@@ -116,7 +116,7 @@ Tabela wyników zawiera często wiele kolumn. Może okazać się, że niektóre 
 
 
 ## <a name="select-a-time-range"></a>Wybierz zakres czasu
-Domyślnie stosuje usługa log analytics _ostatnich 24 godzinach_ zakres czasu. Aby użyć innego zakresu, wybierz inną wartość za pomocą selektora czasu, a następnie kliknij przycisk **Uruchom**. Oprócz wstępnie zdefiniowane wartości, można użyć _niestandardowego przedziału czasu_ możliwość dokonania wyboru bezwzględny zakres zapytania.
+Domyślnie stosuje usługa Log Analytics _ostatnich 24 godzinach_ zakres czasu. Aby użyć innego zakresu, wybierz inną wartość za pomocą selektora czasu, a następnie kliknij przycisk **Uruchom**. Oprócz wstępnie zdefiniowane wartości, można użyć _niestandardowego przedziału czasu_ możliwość dokonania wyboru bezwzględny zakres zapytania.
 
 ![Selektor godziny](media/get-started-portal/time-picker.png)
 
@@ -178,7 +178,7 @@ Ikona Eksplorator zapytań, znajduje się w prawym górnym rogu obszaru. Ta list
 ![Eksplorator zapytań](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Eksportuj i Udostępnij jako łącze
-Usługa log analytics obsługuje kilka metod eksportowania:
+Usługa log Analytics obsługuje kilka metod eksportowania:
 
 - Excel: Zapisz wyniki jako plik CSV.
 - Power BI: Eksportuj wyniki do power BI. Zobacz [dane dziennika importu usługi Azure Monitor do usługi Power BI](../../azure-monitor/platform/powerbi.md) Aby uzyskać szczegółowe informacje.
