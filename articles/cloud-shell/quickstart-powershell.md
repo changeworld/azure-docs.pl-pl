@@ -105,7 +105,7 @@ PS Azure:\MySubscriptionName> dir AllResources
 
  Możesz przejść do `ResourceGroups` katalogu i w określonej grupie zasobów można znaleźć maszyny wirtualne.
 
-```azureowershell-interactive
+```azurepowershell-interactive
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
 
 PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines> dir
@@ -129,7 +129,7 @@ Jednak zawsze można użyć `dir -Force` można pobrać aktualne dane.
 
 Przystępując do `StorageAccounts` katalogu umożliwia łatwe nawigowanie zasobów magazynu
 
-```azureowershell-interactive
+```azurepowershell-interactive
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
 
     Directory: Azure:\MySubscriptionNameStorageAccounts\MyStorageAccountName\Files
