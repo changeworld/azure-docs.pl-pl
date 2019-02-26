@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: aca5b1613a6500b3aeca1a7074cabdce50023510
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 0f5de24d42ccc930a4746251b9f466f241c3508e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789504"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806712"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -45,7 +45,7 @@ ms.locfileid: "53789504"
 [suse-hana-ha-guide]:https://www.suse.com/docrep/documents/ir8w88iwu7/suse_linux_enterprise_server_for_sap_applications_12_sp1.pdf
 [sap-swcenter]:https://launchpad.support.sap.com/#/softwarecenter
 [template-multisid-db]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-db-md%2Fazuredeploy.json
-[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
+[template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged-md%2Fazuredeploy.json
 
 Do tworzenia aplikacji w środowisku lokalnym możesz użyć albo replikacji systemu HANA lub korzystać z udostępnionego magazynu do ustalenia wysokiej dostępności dla oprogramowania SAP HANA.
 Na maszynach wirtualnych Azure (maszyny wirtualne) replikacji systemu HANA na platformie Azure jest obecnie obsługiwana jest tylko funkcji wysokiej dostępności. SAP HANA replikacji składa się z jednego węzła podstawowego i co najmniej jeden węzeł pomocniczy. Zmiany danych w węźle podstawowym są replikowane do węzła pomocniczego, synchronicznie lub asynchronicznie.
@@ -201,9 +201,9 @@ Postępuj zgodnie z instrukcjami w [konfigurowania program Pacemaker w systemie 
 ## <a name="install-sap-hana"></a>Instalowanie platformy SAP HANA
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
-- **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
-- **[1]** : Ten krok dotyczy tylko węzeł 1.
-- **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+- **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
+- **[1]**: Ten krok dotyczy tylko węzeł 1.
+- **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
 1. **[A]**  Konfigurowanie układ dysku: **Menedżer woluminów logicznych (LVM)**.
 
@@ -340,7 +340,7 @@ Aby zainstalować replikacji systemu SAP HANA, wykonaj rozdziału 4 [przewodnik 
    * Wprowadź hasło użytkownika (SYSTEM) bazy danych: Wprowadź hasło użytkownika bazy danych.
    * Potwierdź hasło użytkownika (SYSTEM) bazy danych: Wprowadź hasło użytkownika bazy danych ponownie, aby potwierdzić.
    * Uruchom ponownie system po ponownym uruchomieniu komputera? [n]: Wybierz opcję Wprowadź.
-   * Czy chcesz kontynuować? (t/n): Sprawdź poprawność podsumowania. Wprowadź **y** aby kontynuować.
+   * Czy chcesz kontynuować? (y/n): Sprawdź poprawność podsumowania. Wprowadź **y** aby kontynuować.
 
 1. **[A]**  Uaktualnienia tego agenta hosta SAP.
 
@@ -353,9 +353,9 @@ Aby zainstalować replikacji systemu SAP HANA, wykonaj rozdziału 4 [przewodnik 
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
-* **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
-* **[1]** : Ten krok dotyczy tylko węzeł 1.
-* **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+* **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
+* **[1]**: Ten krok dotyczy tylko węzeł 1.
+* **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
 1. **[1]**  Tworzenie bazy danych dzierżaw.
 
@@ -398,9 +398,9 @@ Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
 Kroki opisane w tej sekcji należy użyć następujących prefiksów:
 
-* **[A]** : Ten krok ma zastosowanie do wszystkich węzłów.
-* **[1]** : Ten krok dotyczy tylko węzeł 1.
-* **[2]** : Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
+* **[A]**: Ten krok ma zastosowanie do wszystkich węzłów.
+* **[1]**: Ten krok dotyczy tylko węzeł 1.
+* **[2]**: Ten krok dotyczy tylko klastra program Pacemaker w węźle 2.
 
 1. **[1]**  Tworzenie wymaganych użytkowników.
 
