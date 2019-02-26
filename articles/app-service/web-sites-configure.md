@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: deb3b155af464e69c6811414135913917cf2193a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: fb8dedac8b795ec127d7b4a14728d73c9397a1dd
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716467"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807409"
 ---
 # <a name="configure-apps-in-azure-app-service"></a>Konfigurowanie aplikacji w usłudze Azure App Service
 
@@ -37,7 +37,7 @@ W tym temacie wyjaśniono, jak skonfigurować aplikację internetową, zapleczem
 ### <a name="general-settings"></a>Ustawienia ogólne
 **Framework w wersji**. Jeśli aplikacja korzysta z żadnego następujące struktury, należy ustawić te opcje: 
 
-* **.NET framework**: Ustaw wersję .NET framework. 
+* **.NET Framework**: Ustaw wersję .NET framework. 
 * **PHP**: Ustawianie wersji języka PHP lub **OFF** można wyłączyć języka PHP. 
 * **Java**: Wybierz wersję języka Java lub **OFF** można wyłączyć języka Java. Użyj **kontener sieci Web** możliwość wyboru między wersjami Tomcat i Jetty.
 * **Python**: Wybierz wersję języka Python lub **OFF** można wyłączyć języka Python.
@@ -49,7 +49,7 @@ Technical Preview ze względu na włączenie Java aplikacji powoduje wyłączeni
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-**Web Sockets**. Ustaw **ON** powoduje włączenie protokołu WebSocket; na przykład, jeśli aplikacja używa [Biblioteki SignalR platformy ASP.NET] lub [biblioteki socket.io](https://socket.io/).
+**Web Sockets**. Ustaw **ON** powoduje włączenie protokołu WebSocket; na przykład, jeśli aplikacja używa [ASP.NET SignalR] lub [biblioteki socket.io](https://socket.io/).
 
 <a name="alwayson"></a>
 **Zawsze włączone**. Domyślnie aplikacje są usuwane, jeśli są one bezczynne przez pewien czas. Dzięki temu system zaoszczędzenia zasobów. W trybie Basic lub Standard, aby umożliwić **Always On** do zachowania aplikacji załadowana przez cały czas. Jeśli aplikacja działa ciągłych zadań Webjob lub uruchomienia zadania Webjob wyzwalane za pomocą wyrażenia CRON, należy włączyć **Always On**, lub zadania w sieci web może nie działać niezawodnie.
@@ -163,22 +163,23 @@ Aby wyświetlić swoje miejsc wdrożenia, kliknij **wszystkie ustawienia** > **m
 ### <a name="monitoring"></a>Monitorowanie
 W trybie Basic lub Standard można sprawdzić dostępności punktów końcowych HTTP lub HTTPS, z maksymalnie trzy rozproszone geograficznie lokalizacje. Test monitorowania kończy się niepowodzeniem, jeśli kod odpowiedzi HTTP jest błąd (4xx lub 5xx) lub odpowiedzi trwa dłużej niż 30 sekund. Punkt końcowy jest uważana za dostępną, jeśli testów monitorowania z określonych lokalizacji. 
 
-Aby uzyskać więcej informacji, zobacz [Jak: Monitorowanie stanu punktu końcowego sieci web].
+Aby uzyskać więcej informacji, zobacz [Instrukcje: Monitorowanie stanu punktu końcowego sieci web].
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]
 * [Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]
 * [Skalowanie aplikacji w usłudze Azure App Service]
 * [Podstawy monitorowania w usłudze Azure App Service]
+* [Zmień ustawienia applicationHost.config z applicationHost.xdt](https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples)
 
 <!-- URL List -->
 
-[Biblioteki SignalR platformy ASP.NET]: https://www.asp.net/signalr
+[ASP.NET SignalR]: https://www.asp.net/signalr
 [Azure Portal]: https://portal.azure.com/
 [Konfigurowanie niestandardowej nazwy domeny w usłudze Azure App Service]: ./app-service-web-tutorial-custom-domain.md
 [Wdróż do środowisk przejściowych dla usługi Azure App Service]: ./deploy-staging-slots.md
 [Włącz protokół HTTPS dla aplikacji w usłudze Azure App Service]: ./app-service-web-tutorial-custom-ssl.md
-[Jak: Monitorowanie stanu punktu końcowego sieci web]: https://go.microsoft.com/fwLink/?LinkID=279906
+[Instrukcje: Monitorowanie stanu punktu końcowego sieci web]: https://go.microsoft.com/fwLink/?LinkID=279906
 [Podstawy monitorowania w usłudze Azure App Service]: ./web-sites-monitor.md
 [Tryb potokowy]: https://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Skalowanie aplikacji w usłudze Azure App Service]: ./web-sites-scale.md

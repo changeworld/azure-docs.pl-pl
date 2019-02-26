@@ -5,16 +5,12 @@ items:
   items:
   - name: Informacje o usługach Lab Services
     href: lab-services-overview.md
-  - name: Porównanie typów laboratorium
-    href: compare-lab-types.md
+  - name: Informacje na temat laboratoriów na potrzeby zajęć
+    href: classroom-labs/classroom-labs-overview.md
+  - name: Informacje o usłudze DevTest Labs
+    href: devtest-lab-overview.md
 - name: Samouczki
   items:
-  - name: DevTest Labs
-    items:
-    - name: 1. Konfigurowanie laboratorium
-      href: tutorial-create-custom-lab.md
-    - name: 2. Dostęp do laboratorium
-      href: tutorial-use-custom-lab.md
   - name: Laboratorium na potrzeby zajęć
     items:
     - name: 1. Konfigurowanie konta laboratorium
@@ -25,6 +21,12 @@ items:
       href: classroom-labs/tutorial-connect-virtual-machine-classroom-lab.md
     - name: 4. Śledzenie użycia laboratorium na potrzeby zajęć
       href: classroom-labs/tutorial-track-usage.md
+  - name: DevTest Labs
+    items:
+    - name: 1. Konfigurowanie laboratorium
+      href: tutorial-create-custom-lab.md
+    - name: 2. Dostęp do laboratorium
+      href: tutorial-use-custom-lab.md
 - name: Przykłady
   items:
   - name: DevTest Labs
@@ -37,17 +39,26 @@ items:
       href: samples-cli.md
 - name: Pojęcia
   items:
-  - name: DevTest Labs
-    href: devtest-lab-concepts.md
+  - name: Laboratoria na potrzeby zajęć
     items:
-    - name: Korzystanie z laboratoriów na potrzeby deweloperów
-      href: devtest-lab-developer-lab.md
-    - name: Korzystanie z laboratoriów na potrzeby środowisk testowych
-      href: devtest-lab-test-env.md
-    - name: Korzystanie z laboratoriów na potrzeby szkolenia
-      href: devtest-lab-training-lab.md
-    - name: Wprowadzenie do usługi DevTest Labs
-      href: devtest-lab-overview.md
+    - name: Pojęcia związane z laboratoriami na potrzeby zajęć
+      href: classroom-labs/classroom-labs-concepts.md
+    - name: Scenariusze
+      items:
+      - name: Korzystanie z laboratoriów przy prowadzeniu zajęć
+        href: classroom-labs/classroom-labs-scenarios.md
+  - name: DevTest Labs
+    items:
+    - name: DevTest Labs — pojęcia
+      href: devtest-lab-concepts.md
+    - name: Scenariusze
+      items:
+      - name: Korzystanie z laboratoriów na potrzeby deweloperów
+        href: devtest-lab-developer-lab.md
+      - name: Korzystanie z laboratoriów na potrzeby środowisk testowych
+        href: devtest-lab-test-env.md
+      - name: Korzystanie z laboratoriów na potrzeby szkolenia
+        href: devtest-lab-training-lab.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Laboratorium na potrzeby zajęć
@@ -197,37 +208,47 @@ items:
       href: devtest-lab-use-arm-and-powershell-for-lab-resources.md
 - name: Dokumentacja
   items:
-  - name: Interfejs wiersza polecenia
-    href: /cli/azure/lab
-  - name: PowerShell
-    href: /powershell/module/az.devtestlabs/#devtest_labs
-  - name: Interfejs API REST
-    href: https://docs.microsoft.com/rest/api/dtl/
-  - name: Szablon usługi Resource Manager
-    href: /azure/templates/microsoft.devtestlab/allversions
+  - name: Laboratoria na potrzeby zajęć
+    items:
+    - name: Interfejs API REST
+      href: https://docs.microsoft.com/rest/api/labservices/
+  - name: DevTest Labs
+    items:
+    - name: Interfejs wiersza polecenia
+      href: /cli/azure/lab
+    - name: PowerShell
+      href: /powershell/module/azurerm.devtestlabs/#devtest_labs
+    - name: Interfejs API REST
+      href: https://docs.microsoft.com/rest/api/dtl/
+    - name: Szablon usługi Resource Manager
+      href: /azure/templates/microsoft.devtestlab/allversions
 - name: Zasoby
   items:
-  - name: Harmonogram działania dla platformy Azure
-    href: https://azure.microsoft.com/roadmap/?category=developer-tools
-  - name: Kalkulator cen
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: DevTest Labs — często zadawane pytania
-    href: devtest-lab-faq.md
-  - name: Aktualizacje usług
-    href: https://azure.microsoft.com/updates/?product=devtest-lab
-  - name: Forum MSDN
-    href: https://social.msdn.microsoft.com/Forums/home?forum=AzureDevTestLabs
-  - name: Blog zespołu
-    href: https://blogs.msdn.microsoft.com/devtestlab/
-  - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-devtest-labs
-  - name: Filmy wideo
-    href: https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab
-  - name: Cennik
-    href: https://azure.microsoft.com/pricing/details/devtest-lab/
-ms.openlocfilehash: 61d83d7d3e56abbb16e4d47dc1a7693707663c73
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+  - name: Laboratoria na potrzeby zajęć
+    items:
+    - name: Aktualizacje platformy Azure
+      href: https://azure.microsoft.com/updates/?product=lab-services
+    - name: Cennik
+      href: https://azure.microsoft.com/pricing/details/lab-services/
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-lab-services
+  - name: DevTest Labs
+    items:
+    - name: Aktualizacje platformy Azure
+      href: https://azure.microsoft.com/updates/?product=devtest-lab
+    - name: Cennik
+      href: https://azure.microsoft.com/pricing/details/devtest-lab/
+    - name: Forum MSDN
+      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDevTestLabs
+    - name: Stack Overflow
+      href: https://stackoverflow.com/questions/tagged/azure-devtest-labs
+    - name: Filmy wideo
+      href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
+    - name: Często zadawane pytania
+      href: devtest-lab-faq.md
+ms.openlocfilehash: f4a7e26be0bbb15631fd44bf38506d564d27f331
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736749"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805693"

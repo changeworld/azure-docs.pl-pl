@@ -74,9 +74,9 @@ items:
       href: howto-configure-prerequisites-for-reporting-api.md
   - name: Monitorowanie
     items:
-    - name: Integrowanie dzienników aktywności z usługą Log Analytics
+    - name: Integrowanie dzienników aktywności z dziennikami usługi Azure Monitor
       href: howto-integrate-activity-logs-with-log-analytics.md
-    - name: Analizowanie dzienników aktywności w usłudze Log Analytics
+    - name: Analizowanie dzienników aktywności w dziennikach usługi Azure Monitor
       href: howto-analyze-activity-logs-log-analytics.md
     - name: Instalowanie i używanie widoków usługi Log Analytics dla usługi Azure AD
       href: howto-install-use-log-analytics-views.md
@@ -120,9 +120,9 @@ items:
     - name: Schemat dziennika logowania
       href: reference-azure-monitor-sign-ins-log-schema.md
   expanded: true
-ms.openlocfilehash: 9f5447c644d49c3c1919bb933762392b987b45f6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e14fac6ff115951ca46995d7973e919e6a774b8c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52870138"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819381"

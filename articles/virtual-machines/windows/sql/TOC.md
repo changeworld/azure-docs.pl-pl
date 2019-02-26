@@ -35,13 +35,16 @@
 ## Konfigurowanie wysokiej dostępności
 ### [Tworzenie kopii zapasowej i przywracanie za pomocą usługi Azure Storage](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 ### Zawsze włączona grupa dostępności
-#### [Za pomocą szablonu witryny Azure Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [Za pomocą szablonów Szybki start](virtual-machines-windows-sql-availability-group-quickstart-template.md)
-#### [Ręcznie — wymagania wstępne](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [Ręcznie — samouczek](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [Moduł równoważenia obciążenia — witryna Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [Moduł równoważenia obciążenia — program Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Interfejs wiersza polecenia maszyny wirtualnej Azure SQL](virtual-machines-windows-sql-availability-group-cli.md)
+#### [Szablon witryny Azure Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Szablony Szybkiego startu platformy Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md)
 #### [Wiele regionów](virtual-machines-windows-portal-sql-availability-group-dr.md)
+#### Konfigurowanie ręczne    
+##### [Wymagania wstępne](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+##### [Samouczek](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+##### [Moduł równoważenia obciążenia — witryna Azure Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+##### [Moduł równoważenia obciążenia — program Azure PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+
 ### Wystąpienie klastra trybu failover
 #### [Konfigurowanie](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
