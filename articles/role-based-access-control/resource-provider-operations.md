@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2019
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ab5ec4e61649f7c9a705759a69d335260bfdc75
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: c296ed4011b874eb9b5635735d46b3f63a79a2be
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750824"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807562"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -681,30 +681,30 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.Cache/checknameavailability/action | Sprawdza, czy nazwa jest dostępna do użycia z nową pamięć podręczną Azure dla usługi Redis |
+> | Akcja | Microsoft.Cache/checknameavailability/action | Sprawdza, czy nazwa jest dostępna do użycia z nową pamięcią podręczną Redis Cache |
 > | Akcja | Microsoft.Cache/locations/operationresults/read | Pobiera wynik długotrwałej operacji, dla której nagłówek „Location” został wcześniej zwrócony do klienta |
 > | Akcja | Microsoft.Cache/operations/read | Wyświetla listę operacji obsługiwanych przez dostawcę „Microsoft.Cache”. |
-> | Akcja | Microsoft.Cache/redis/delete | Usuń całą pamięć podręczną Azure dla usługi Redis |
+> | Akcja | Microsoft.Cache/redis/delete | Usuń całą pamięć podręczną Redis |
 > | Akcja | Microsoft.Cache/redis/export/action | Wyeksportuj dane usługi Redis do określonych prefiksem obiektów blob magazynu w podanym formacie |
-> | Akcja | Microsoft.Cache/redis/firewallRules/delete | Usuń reguły zapory IP pamięci podręcznej Azure dla usługi Redis |
-> | Akcja | Microsoft.Cache/redis/firewallRules/read | Pobierz reguły zapory IP pamięci podręcznej Azure dla usługi Redis |
-> | Akcja | Microsoft.Cache/redis/firewallRules/write | Edytowanie reguły zapory IP pamięci podręcznej Azure redis Cache |
+> | Akcja | Microsoft.Cache/redis/firewallRules/delete | Usuń reguły zapory IP pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/firewallRules/read | Pobierz reguły zapory IP pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/firewallRules/write | Edytuj reguły zapory IP pamięci podręcznej Redis Cache |
 > | Akcja | Microsoft.Cache/redis/forceReboot/action | Wymuś ponowny rozruch wystąpienia pamięci podręcznej, nawet z utratą danych. |
 > | Akcja | Microsoft.Cache/redis/import/action | Zaimportuj dane w podanym formacie z wielu obiektów blob do usługi Redis |
-> | Akcja | Microsoft.Cache/redis/linkedservers/delete | Usuń podłączony serwer z pamięci podręcznej Azure dla usługi Redis |
-> | Akcja | Microsoft.Cache/redis/linkedservers/read | Pobierz połączone serwery skojarzona z pamięcią podręczną Azure dla usługi Redis. |
-> | Akcja | Microsoft.Cache/redis/linkedservers/write | Dodaj połączony serwer do pamięci podręcznej Azure dla usługi Redis |
-> | Akcja | Microsoft.Cache/redis/listKeys/action | Wyświetl wartość Pamięć podręczna systemu Azure na potrzeby klucze dostępu pamięci podręcznej Redis w portalu zarządzania |
+> | Akcja | Microsoft.Cache/redis/linkedservers/delete | Usuń podłączony serwer z usługi Redis Cache |
+> | Akcja | Microsoft.Cache/redis/linkedservers/read | Pobierz połączone serwery skojarzona z usługą Redis Cache. |
+> | Akcja | Microsoft.Cache/redis/linkedservers/write | Dodaj połączony serwer do usługi Redis Cache |
+> | Akcja | Microsoft.Cache/redis/listKeys/action | Wyświetl wartości kluczy dostępu pamięci podręcznej Redis w portalu zarządzania |
 > | Akcja | Microsoft.Cache/redis/listUpgradeNotifications/read | Lista najnowszych powiadomień o uaktualnieniach dla dzierżawy pamięci podręcznej. |
-> | Akcja | Microsoft.Cache/redis/metricDefinitions/read | Pobiera dostępne metryki dla usługi Azure Cache dla pamięci podręcznej Redis |
-> | Akcja | Microsoft.Cache/redis/patchSchedules/delete | Usuń harmonogram stosowania poprawek pamięci podręcznej Azure redis Cache |
-> | Akcja | Microsoft.Cache/redis/patchSchedules/read | Pobiera harmonogram stosowania poprawek pamięci podręcznej Azure dla usługi Redis |
-> | Akcja | Microsoft.Cache/redis/patchSchedules/write | Modyfikuj harmonogram stosowania poprawek pamięci podręcznej Azure dla usługi Redis |
-> | Akcja | Microsoft.Cache/redis/read | Wyświetl ustawienia i konfigurację pamięci podręcznej Redis w pamięci podręcznej Azure w portalu zarządzania |
-> | Akcja | Microsoft.Cache/redis/regenerateKey/action | Zmień wartość kluczy dostępu pamięci podręcznej Redis w portalu zarządzania usługi Azure Cache |
+> | Akcja | Microsoft.Cache/redis/metricDefinitions/read | Pobiera dostępne metryki pamięci podręcznej Redis |
+> | Akcja | Microsoft.Cache/redis/patchSchedules/delete | Usuń harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/patchSchedules/read | Pobiera harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/patchSchedules/write | Modyfikuj harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/read | Wyświetl ustawienia i konfigurację pamięci podręcznej Redis w portalu zarządzania |
+> | Akcja | Microsoft.Cache/redis/regenerateKey/action | Zmień wartość kluczy dostępu pamięci podręcznej Redis w portalu zarządzania |
 > | Akcja | Microsoft.Cache/redis/start/action | Uruchom wystąpienie pamięci podręcznej. |
 > | Akcja | Microsoft.Cache/redis/stop/action | Zatrzymaj wystąpienie pamięci podręcznej. |
-> | Akcja | Microsoft.Cache/redis/write | Modyfikowanie usługi Azure Cache ustawień i konfiguracji w portalu zarządzania dla usługi Redis |
+> | Akcja | Microsoft.Cache/redis/write | Zmodyfikuj ustawienia i konfigurację pamięci podręcznej Redis w portalu zarządzania |
 > | Akcja | Microsoft.Cache/register/action | Rejestruje dostawcę zasobów „Microsoft.Cache” z subskrypcją |
 > | Akcja | Microsoft.Cache/unregister/action | Wyrejestrowuje dostawcę zasobów „Microsoft.Cache” z subskrypcją |
 
@@ -1600,17 +1600,21 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/delete | Usuwa urządzenia brzegowe pole danych |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/downloadUpdates/action | Pobierz aktualizacje na urządzeniu |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/action | Pobiera rozszerzone informacje o zasobie |
-> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/extendedInformation/write | Tworzy lub aktualizuje zasób rozszerzone informacje |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/getExtendedInformation/action | ArmApiDesc_action_getExtendedInformation_dataBoxEdgeDevices |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/installUpdates/action | Zainstaluj aktualizacje na urządzeniu |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/jobs/read | Wyświetla lub pobiera zadania |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/networkSettings/read | Wyświetla lub pobiera ustawienia sieciowe urządzenia |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/delete | Usuwa zamówienia |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Wyświetla lub pobiera zamówienia |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/read | Wyświetla lub pobiera zamówienia |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/orders/write | Tworzy lub aktualizuje zamówienia |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Wyświetla lub pobiera urządzenia brzegowe pole danych |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Wyświetla lub pobiera urządzenia brzegowe pole danych |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/read | Wyświetla lub pobiera urządzenia brzegowe pole danych |
-> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Usuwa ArmApiRes_roles |
-> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Wyświetla lub pobiera ArmApiRes_roles |
-> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Wyświetla lub pobiera ArmApiRes_roles |
-> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Tworzy lub aktualizuje ArmApiRes_roles |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/delete | Usuwa ról |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Wyświetla lub pobiera role |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/read | Wyświetla lub pobiera role |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/roles/write | Tworzy lub aktualizuje ról |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/scanForUpdates/action | Skanowanie w poszukiwaniu aktualizacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/securitySettings/update/action | Aktualizowanie ustawień zabezpieczeń |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/shares/delete | Usuwa akcji |
@@ -1622,6 +1626,10 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Wyświetla lub pobiera poświadczenia konta magazynu |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/read | Wyświetla lub pobiera poświadczenia konta magazynu |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/storageAccountCredentials/write | Tworzy lub aktualizuje poświadczenia konta magazynu |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/delete | Usuwa wyzwalacze |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Wyświetla lub pobiera wyzwalacze |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/read | Wyświetla lub pobiera wyzwalacze |
+> | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/triggers/write | Tworzy lub aktualizuje wyzwalacze |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/updateSummary/read | Wyświetla lub pobiera Podsumowanie aktualizacji |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/action | Przekaż certyfikat do rejestracji urządzeń |
 > | Akcja | Microsoft.DataBoxEdge/dataBoxEdgeDevices/users/delete | Usuwa użytkownicy udziału |
@@ -4766,6 +4774,8 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 > | Akcja | Microsoft.Sql/managedInstances/databases/read | Pobiera istniejący zarządzanej bazy danych |
 > | Akcja | Microsoft.Sql/managedInstances/databases/recommendedSensitivityLabels/read | Utwórz listę etykiet poufności danej bazy danych |
 > | Akcja | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/delete | Usuń etykieta poufności danej kolumny |
+> | Akcja | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/disable/action | Wyłącz zalecenia czułości w danej kolumnie |
+> | Akcja | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/enable/action | Włącz zalecenia czułości w danej kolumnie |
 > | Akcja | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/read | Pobierz etykieta poufności danej kolumny |
 > | Akcja | Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/write | Utwórz lub zaktualizuj etykieta poufności danej kolumny |
 > | Akcja | Microsoft.Sql/managedInstances/databases/securityAlertPolicies/read | Pobierz szczegóły zasady wykrywania zagrożeń bazy danych skonfigurowane na danym zarządzanej bazy danych |
@@ -4899,6 +4909,8 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 > | Akcja | Microsoft.Sql/servers/databases/schemas/read | Pobieranie listy schematy bazy danych |
 > | Akcja | Microsoft.Sql/servers/databases/schemas/tables/columns/read | Pobieranie listy kolumn w tabeli |
 > | Akcja | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/delete | Usuń etykieta poufności danej kolumny |
+> | Akcja | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/disable/action | Wyłącz zalecenia czułości w danej kolumnie |
+> | Akcja | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/enable/action | Włącz zalecenia czułości w danej kolumnie |
 > | Akcja | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/read | Pobierz etykieta poufności danej kolumny |
 > | Akcja | Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/write | Utwórz lub zaktualizuj etykieta poufności danej kolumny |
 > | Akcja | Microsoft.Sql/servers/databases/schemas/tables/read | Pobieranie listy tabel bazy danych |
@@ -5023,6 +5035,7 @@ Zaktualizuj nazwę istniejącej grupy osoby i danych użytkownika. Właściwośc
 > | Akcja | Microsoft.Sql/servers/vulnerabilityAssessments/write | Zmiana oceny luk w zabezpieczeniach dla danego serwera |
 > | Akcja | Microsoft.Sql/servers/write | Tworzy serwer z określonymi parametrami lub aktualizuje właściwości bądź tagi dla określonego serwera. |
 > | Akcja | Microsoft.Sql/unregister/action | Wyrejestrowuje subskrypcję dostawcy zasobów bazy danych Microsoft SQL, a następnie włącza funkcję tworzenia bazy danych programu Microsoft SQL. |
+> | Akcja | Microsoft.Sql/virtualClusters/delete | Usuwa istniejący klaster wirtualny. |
 > | Akcja | Microsoft.Sql/virtualClusters/read | Zwraca listę klastrów wirtualnych lub pobiera właściwości dla określonego klastra wirtualnego. |
 > | Akcja | Microsoft.Sql/virtualClusters/write | Aktualizuje tagi klaster wirtualny. |
 

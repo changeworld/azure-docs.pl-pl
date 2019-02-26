@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/14/2016
 ms.author: aelnably
 ms.custom: seodec18
-ms.openlocfilehash: 2a28409120bac13ea7d288c7fc41f7154c003388
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 53cde81ed5df97c4cb6d8360c9bb639b8bdabe20
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106260"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818140"
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>Usługa Azure App Service aplikacja klonowania, przy użyciu programu PowerShell
 
@@ -136,5 +136,5 @@ Poniżej przedstawiono znane ograniczenia dotyczące klonowania aplikacji:
 * [Tworzenie kopii zapasowych aplikacji w usłudze Azure App Service](manage-backup.md)
 * [Pomoc techniczna platformy Azure Resource Manager dla usługi Azure Traffic Manager w wersji zapoznawczej](../traffic-manager/traffic-manager-powershell-arm.md)
 * [Wprowadzenie do usługi App Service Environment](environment/intro.md)
-* [Używanie programu Azure PowerShell z usługą Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md)
+* [Używanie programu Azure PowerShell z usługą Azure Resource Manager](../azure-resource-manager/manage-resources-powershell.md)
 

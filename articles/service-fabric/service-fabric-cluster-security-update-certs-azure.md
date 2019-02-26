@@ -4,7 +4,7 @@ description: W tym artykule opisano, jak dodawać nowe certyfikaty, certyfikat p
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chakdan
 editor: ''
 ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
-ms.author: aljo-microsoft
-ms.openlocfilehash: aa5096b84f9bfe97784d6f80e4c203a1d8384404
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.author: aljo
+ms.openlocfilehash: 37140b665f30d8bb99dd49dbdcca265969eaaf2f
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51687422"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806695"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Dodawanie lub usuwanie certyfikatów dla klastra usługi Service Fabric na platformie Azure
 Zalecane jest, zapoznaj się z jak Usługa Service Fabric używa certyfikatów X.509, a następnie należy zapoznać się z [scenariusze zabezpieczeń klastra](service-fabric-cluster-security.md). Należy zrozumieć certyfikat klastra i do czego służy, zanim przejdziesz dalej.
@@ -114,7 +114,7 @@ W celu ułatwienia następujące wzdłuż przykładowe 5-VM-1 — elementy NodeT
          }
     ``` 
 
-4. Wprowadzanie zmian w **wszystkich** **Microsoft.Compute/virtualMachineScaleSets** definicji zasobów — Znajdź definicję zasobu Microsoft.Compute/virtualMachineScaleSets. Przewiń do "publisher": "Microsoft.Azure.ServiceFabric" w obszarze "virtualMachineProfile".
+4. Wprowadzanie zmian w **wszystkich** **Microsoft.Compute/virtualMachineScaleSets** definicji zasobów — Znajdź definicję zasobu Microsoft.Compute/virtualMachineScaleSets. Przewiń do "publisher": "Microsoft.Azure.ServiceFabric", w obszarze "virtualMachineProfile".
 
     W ustawieniach wydawcy usługi Service Fabric powinien zostać wyświetlony podobny do poniższego.
     

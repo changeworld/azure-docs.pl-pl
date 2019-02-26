@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 9a5e75b762c2ab0591212ce0bc3d7fac42132f8a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84b66605939abd0f676625a5959f4a31ef1774db
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116919"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818293"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązania Update Management, śledzenia zmian i spis rozwiązań na wielu maszynach wirtualnych
 
@@ -51,7 +51,7 @@ Użyj kontrolki filtrowania, aby wybrać maszyny wirtualne z różnych subskrypc
 
 ![Dołączanie rozwiązania Update management](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Przejrzyj opcje dla obszaru roboczego usługi Log analytics i konto usługi Automation. Domyślnie wybrany istniejący obszar roboczy i konto usługi Automation. Jeśli chcesz użyć innego obszaru roboczego usługi Log Analytics i konto usługi Automation, kliknij przycisk **niestandardowe** wybierać z **Konfiguracja niestandardowa** strony. Po wybraniu obszaru roboczego usługi Log Analytics, dokonuje do określenia, jeśli jest połączony z kontem usługi Automation. Jeśli połączonego konta usługi Automation zostanie znaleziony, zostanie wyświetlony następujący ekran. Gdy skończysz, kliknij pozycję **OK**.
+Przejrzyj opcje dla obszaru roboczego usługi Log Analytics i konto usługi Automation. Domyślnie wybrany istniejący obszar roboczy i konto usługi Automation. Jeśli chcesz użyć innego obszaru roboczego usługi Log Analytics i konto usługi Automation, kliknij przycisk **niestandardowe** wybierać z **Konfiguracja niestandardowa** strony. Po wybraniu obszaru roboczego usługi Log Analytics, dokonuje do określenia, jeśli jest połączony z kontem usługi Automation. Jeśli połączonego konta usługi Automation zostanie znaleziony, zostanie wyświetlony następujący ekran. Gdy skończysz, kliknij pozycję **OK**.
 
 ![Wybierz obszar roboczy i konto](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
 
@@ -89,7 +89,7 @@ Następujące rozwiązania zależą od obszaru roboczego usługi Log Analytics:
 * [Śledzenie zmian](automation-change-tracking.md)
 * [Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu](automation-solution-vm-management.md)
 
-Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z usługą Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal. Przed kontynuowaniem należy najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
+Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z obszarem roboczym usługi Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal. Przed kontynuowaniem należy najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
 
 Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć konto usługi Automation.
 

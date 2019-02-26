@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: b73656e2bb7c413d2c29fafb682f39154499854a
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: d7bcff89ba7f76980287f9aad3413a6ef3f41b4f
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904458"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807426"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>Włączanie rejestrowania diagnostycznego dla aplikacji w usłudze Azure App Service
 ## <a name="overview"></a>Przegląd
@@ -34,7 +34,7 @@ Usługa App Service oferuje funkcje diagnostyczne dla rejestrowanie informacji z
 ### <a name="web-server-diagnostics"></a>Diagnostyka serwera sieci Web
 Można włączyć lub wyłączyć następujące rodzaje dzienników:
 
-* **Szczegółowe rejestrowanie błędów** — szczegółowe informacje o błędzie dla kodów stanu HTTP, które wskazują błędu (kod stanu 400 lub nowszej). Może on zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu.
+* **Szczegółowe rejestrowanie błędów** — szczegółowe informacje na temat każde żądanie, które powoduje kod stanu HTTP 400 lub nowszej. Może on zawierać informacje, które mogą pomóc ustalić, dlaczego serwer zwrócił kod błędu. Jeden plik HTML jest generowany dla każdego błędu (w *D:\LogFiles\DetailedErrors* domyślnie), i są zachowywane przez maksymalnie 50 błędów (pliki). Jeżeli liczba plików HTML przekracza 50, 26 najstarsze pliki są automatycznie usuwane.
 * **Nie powiodło się żądanie śledzenia** — szczegółowe informacje dotyczące żądań zakończonych niepowodzeniem, w tym śledzenia komponenty używani do przetwarzania żądania i czasu trwania w poszczególnych składnikach. Jest to przydatne, jeśli chcesz zwiększyć wydajność witryny lub izolowania określonego błędu HTTP.
 * **Rejestrowanie serwera w sieci Web** — informacje o transakcji HTTP za pomocą [rozszerzonym formacie W3C dziennika pliku](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx). Jest to przydatne, podczas określania ogólnego metryki witryn, takie jak liczba żądań obsłużonych lub ile żądań pochodzących z określonego adresu IP.
 

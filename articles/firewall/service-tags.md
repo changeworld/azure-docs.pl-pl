@@ -5,23 +5,20 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 2/21/2019
+ms.date: 2/25/2019
 ms.author: victorh
-ms.openlocfilehash: 9ecc5d3779ac6632f4a5c05914cbb0e756c79e91
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1d03d896de947fcc938619c52a3690962a0d2d6c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56458007"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805624"
 ---
 # <a name="azure-firewall-service-tags"></a>Usługa Azure tagi usługi zapory
 
 Tag usługi reprezentuje grupę prefiksów adresów IP, aby zminimalizować złożoność tworzenia reguły zabezpieczeń. Nie można utworzyć własnego tagu usługi ani określić adresów IP uwzględnionych w tagu. Firma Microsoft zarządza prefiksami adresów obejmowanymi przez tag usługi i automatycznie aktualizuje tag usługi, gdy adresy ulegną zmianie.
 
 Tagi usługi w usłudze Azure zapory może służyć w pole docelowe zasady sieciowej. Można je zamiast konkretnych adresów IP.
-
-> [!NOTE]
-> Tagi usługi są dodawane do regionów stopniowo i będą dostępne we wszystkich regionach w niedalekiej przyszłości.
 
 ## <a name="supported-service-tags"></a>Obsługiwane tagi usługi
 

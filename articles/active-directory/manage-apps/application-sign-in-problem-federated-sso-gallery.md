@@ -16,12 +16,12 @@ ms.date: 02/18/2019
 ms.author: celested
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb2302a8a20a9a5f50b9d11de7ac786ad04853d
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 7c5b61dbb3c6dde8dfcabdba015ee41e968cc5dd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652267"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817086"
 ---
 # <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problemy z logowaniem do aplikacji galerii, skonfigurowanej do obsługi federacyjnego logowania jednokrotnego
 
@@ -160,7 +160,7 @@ Usługa Azure AD nie obsługuje żądania języka SAML wysłanego przez aplikacj
 
 Dostawca aplikacji należy zweryfikować, czy obsługują one wdrożenia usługi Azure AD SAML dla logowania jednokrotnego.
 
-## <a name="no-resource-in-requiredresourceaccess-list"></a>Żaden z zasobów na liście requiredResourceAccess
+## <a name="misconfigured-application"></a>Nieprawidłowej konfiguracji aplikacji
 
 *Błąd AADSTS650056: Aplikacja nieprawidłowo skonfigurowane. Może to być spowodowane jedną z następujących przyczyn: Klient nie ma na liście jakichkolwiek uprawnień "AAD Graph" żądanych uprawnień w rejestracji aplikacji klienta. Lub, w dzierżawie nie wyraził zgody administratora. Lub Sprawdź identyfikator aplikacji, aby upewnić się, że pasuje do identyfikatora aplikacji klienta skonfigurowanego w żądaniu. Skontaktuj się z administratorem, aby naprawić konfigurację, lub zgody w imieniu dzierżawy.* .
 
@@ -237,6 +237,33 @@ Usługa Azure AD nie był w stanie zidentyfikować żądanie języka SAML, w ram
 
 Aplikacja musi wysyłać żądania języka SAML, kodowane do Nagłówek lokalizacji przy użyciu protokołu HTTP przekierowanie powiązania. Aby dowiedzieć się więcej o sposobie implementacji, zapoznaj się z sekcją przekierować powiązanie HTTP w [dokument specyfikacji protokołu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
+## <a name="azure-ad-is-sending-the-token-to-an-incorrect-endpoint"></a>Usługa Azure AD wysyła ten token nieprawidłowy punkt końcowy
+
+**Możliwa przyczyna**
+
+Podczas rejestracji jednokrotnej Jeśli żądanie logowania nie zawiera adresu URL odpowiedzi jawne (adres URL usługi Assertion konsumenta), a następnie wybierze usługi Azure AD, wszystkich skonfigurowanych polegać adresy URL dla tej aplikacji. Nawet wtedy, gdy aplikacja ma skonfigurowano adresu URL odpowiedzi jawne, użytkownik może być przekierowany https://127.0.0.1:444. 
+
+Podczas dodawania tej aplikacji jako aplikacji spoza galerii usługa Azure Active Directory utworzyła ten adres URL odpowiedzi jako wartość domyślną. To działanie zostało zmienione i usługa Azure Active Directory nie dodaje już domyślnie tego adresu URL. 
+
+**Rozdzielczość**
+
+Usuń adresy URL odpowiedzi nieużywane, skonfigurowane dla aplikacji.
+
+1.  Otwórz [ **witryny Azure portal** ](https://portal.azure.com/) i zaloguj się jako **administratora globalnego** lub **współadministrator**.
+
+2.  Otwórz **rozszerzenia usługi Azure Active Directory** , wybierając **wszystkich usług** w górnej części menu główne menu nawigacji po lewej stronie.
+
+3.  Typ **"Azure Active Directory"** w filtru pole wyszukiwania i wybierz pozycję **usługi Azure Active Directory** elementu.
+
+4.  Wybierz **aplikacje dla przedsiębiorstw** menu nawigacji po lewej stronie usługi Azure Active Directory.
+
+5.  Wybierz **wszystkie aplikacje** Aby wyświetlić listę wszystkich aplikacji.
+
+    Jeśli nie widzisz aplikacji, chcesz, aby wyświetlić tutaj użyć **filtru** formant w górnej części **listę wszystkich aplikacji** i ustaw **Pokaż** opcję **wszystkie Aplikacje**.
+
+6.  Wybierz aplikację, którą chcesz skonfigurować dla logowania jednokrotnego.
+
+7.  Po załadowaniu aplikacji, otwórz **plik konfiguracji SAML podstawowe**. W **adres URL odpowiedzi (adres URL usługi Assertion konsumenta)**, Usuń nieużywany lub adresy URL odpowiedzi domyślnej utworzonych przez system. Na przykład `https://127.0.0.1:444/applications/default.aspx`.
 
 ## <a name="problem-when-customizing-the-saml-claims-sent-to-an-application"></a>Problem podczas dostosowywania oświadczenia języka SAML wysyłane do aplikacji
 

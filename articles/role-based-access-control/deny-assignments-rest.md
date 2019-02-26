@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 29b8e0953109238b724cc8df9f456706f71a041e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: ba1c60d45fb53be158d9e302748366ddf417f23e
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341627"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805481"
 ---
 # <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Lista Odmów przydziały dla zasobów platformy Azure przy użyciu interfejsu API REST
 
-Obecnie przypisania odmowy są **tylko do odczytu** i mogą zostać ustawione wyłącznie przez platformę Azure. Nawet jeśli nie możesz utworzyć własnych przypisań odmowy, możesz wyświetlić listę przypisań odmowy, ponieważ mogą one mieć wpływ na Twoje uprawnienia. W tym artykule opisano, jak na liście odmowy przypisania przy użyciu RBAC i interfejsu API REST.
+Obecnie Odmów przypisania **tylko do odczytu** i może zostać ustawiona tylko przez firmę Microsoft. Nawet jeśli nie możesz utworzyć własnych przypisań odmowy, możesz wyświetlić listę przypisań odmowy, ponieważ mogą one mieć wpływ na Twoje uprawnienia. W tym artykule opisano, jak na liście odmowy przypisania przy użyciu RBAC i interfejsu API REST.
 
 ## <a name="list-a-single-deny-assignment"></a>Lista jednej Odmów przypisania
 

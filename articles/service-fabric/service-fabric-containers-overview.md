@@ -3,7 +3,7 @@ title: Omówienie usługi Service Fabric i kontenery | Dokumentacja firmy Micros
 description: Omówienie usługi Service Fabric i sposób korzystania z kontenerów, aby wdrożyć aplikacje mikrousług. Ten artykuł zawiera omówienie sposobu użycia kontenerów i możliwości dostępne w usłudze Service Fabric.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/8/2018
-ms.author: twhitney, msfussell
-ms.openlocfilehash: 0acbd2d4ccf35c9490a06228eeb1bb465a8ca732
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.author: aljo, msfussell
+ms.openlocfilehash: 5344f34e0e35d4d47b032b660726a4d70a4f1987
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51299978"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807018"
 ---
 # <a name="service-fabric-and-containers"></a>Usługa Service Fabric i kontenery
 
@@ -35,8 +35,8 @@ Domyślnie Usługa Service Fabric wdraża i aktywuje tych usług, ponieważ proc
 
 Aby przejść bezpośrednio i wypróbować kontenerów w usłudze Service Fabric, wypróbuj Szybki Start, samouczek lub próbki:  
 
-[Szybki Start: Wdrażanie aplikacji kontenera systemu Linux w usłudze Service Fabric](service-fabric-quickstart-containers-linux.md)  
-[Szybki Start: Wdrażanie aplikacji kontenera Windows w usłudze Service Fabric](service-fabric-quickstart-containers.md)  
+[Szybki start: Wdrażanie aplikacji kontenera systemu Linux w usłudze Service Fabric](service-fabric-quickstart-containers-linux.md)  
+[Szybki start: Wdrażanie aplikacji kontenera Windows w usłudze Service Fabric](service-fabric-quickstart-containers.md)  
 [Konteneryzowanie istniejącej aplikacji .NET](service-fabric-host-app-in-a-container.md)  
 [Przykłady kontenera usługi Service Fabric](https://azure.microsoft.com/resources/samples/service-fabric-containers/)  
 
@@ -48,10 +48,10 @@ Kontenery Uruchom bezpośrednio na jądro i izolowany widok systemu plików i in
 
 W porównaniu do maszyn wirtualnych, kontenerach ma następujące zalety:
 
-* **Małe**: kontenerów umożliwia pojedynczego miejsca i warstwy wersje i aktualizacje poprawę wydajności.
-* **Szybkie**: kontenerów, nie trzeba uruchomić cały system operacyjny, aby mogli rozpocząć znacznie szybciej — zwykle w ciągu kilku sekund.
-* **Przenośność**: obraz konteneryzowanej aplikacji mogą być przenoszone do uruchamiania w chmurze, lokalnie, wewnątrz maszyn wirtualnych lub bezpośrednio na maszynach fizycznych.
-* **Nadzór nad zasobami**: kontener może ograniczyć zasoby fizyczne, które mogą wykorzystywać sieciową hosta.
+* **Małe**: Kontenery korzystanie z jednego miejsca i warstwy wersje i aktualizacje, do zwiększania wydajności.
+* **Szybkie**: Kontenery nie trzeba uruchomić cały system operacyjny, aby mogli rozpocząć znacznie szybciej — zwykle w ciągu kilku sekund.
+* **Przenośność**: Obraz konteneryzowanej aplikacji mogą być przenoszone do uruchamiania w chmurze, lokalnie, wewnątrz maszyn wirtualnych lub bezpośrednio na maszynach fizycznych.
+* **Nadzór nad zasobami**: Kontener można ograniczyć zasoby fizyczne, które mogą wykorzystywać sieciową hosta.
 
 ### <a name="container-types-and-supported-environments"></a>Typy kontenera i obsługiwanych środowisk
 
@@ -76,11 +76,11 @@ Na poniższej ilustracji przedstawiono różne rodzaje dostępnych poziomów wir
 
 Poniżej przedstawiono typowe przykłady gdy kontener jest dobrym wyborem:
 
-* **Usługi IIS lift- and -shift**: możesz umieścić istniejące [platformy ASP.NET MVC](https://www.asp.net/mvc) aplikacji w kontenerze zamiast migracji go do platformy ASP.NET Core. Te aplikacje platformy ASP.NET MVC zależeć na Internet Information Services (IIS). Można spakować te aplikacje w kontenerze obrazów z precreated obrazu IIS, a następnie wdrażać je z usługą Service Fabric. Zobacz [obrazów kontenerów w systemie Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) uzyskać informacji na temat kontenerów Windows.
+* **Usługi IIS lift- and -shift**: Możesz umieścić istniejące [platformy ASP.NET MVC](https://www.asp.net/mvc) aplikacji w kontenerze zamiast migrowania go do platformy ASP.NET Core. Te aplikacje platformy ASP.NET MVC zależeć na Internet Information Services (IIS). Można spakować te aplikacje w kontenerze obrazów z precreated obrazu IIS, a następnie wdrażać je z usługą Service Fabric. Zobacz [obrazów kontenerów w systemie Windows Server](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server) uzyskać informacji na temat kontenerów Windows.
 
 * **Mieszanie kontenerów oraz mikrousług usługi Service Fabric**: Użyj istniejącego obrazu kontenera dla części aplikacji. Na przykład, można na przykład [kontener NGINX](https://hub.docker.com/_/nginx/) dla frontonu sieci web, aplikacji i usług stanowych bardziej intensywnie korzystających z obliczeń zaplecza.
 
-* **Ograniczenia wpływu usługi "hałaśliwym sąsiadów"**: możliwości nadzoru zasób kontenerów można użyć do ograniczenia zasobów, które są używane przez usługę na hoście. Jeśli usługi mogą używać wielu zasobów i wpłynąć na wydajność innych osób (na przykład operacji długotrwałych, podobne do zapytania), należy rozważyć umieszczenie tych usług do kontenerów, które mają nadzór nad zasobami.
+* **Ograniczenia wpływu usługi "hałaśliwym sąsiadów"**: Możliwości zarządzania zasób kontenerów umożliwia ograniczanie zasobów używanych przez usługi na hoście. Jeśli usługi mogą używać wielu zasobów i wpłynąć na wydajność innych osób (na przykład operacji długotrwałych, podobne do zapytania), należy rozważyć umieszczenie tych usług do kontenerów, które mają nadzór nad zasobami.
 
 ## <a name="service-fabric-support-for-containers"></a>Obsługa usługi Service Fabric dla kontenerów
 

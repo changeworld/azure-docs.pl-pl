@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 2ada0ccc1286677300c005da4fa0e92be94a3ca8
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: edfc14e837c92cac5bab589e33069bb771a53cb7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53314834"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818259"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>Jak zaktualizować istniejące przypisanie planu
 
@@ -26,21 +26,21 @@ Po przypisaniu planu można zaktualizować przypisania. Istnieje kilka powodów,
 
 ## <a name="updating-assignments"></a>Aktualizowanie przypisań
 
-1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
 
-1. Wybierz pozycję **Przypisane strategie** w lewej części strony.
+1. Wybierz **przypisane plany** ze strony po lewej stronie.
 
-1. Na liście Schematy kliknij lewym przyciskiem myszy przypisanie planu. Następnie kliknij przycisk **przypisanie aktualizacji** lub kliknij prawym przyciskiem myszy przypisanie planu i wybrać **przypisanie aktualizacji**.
+1. Na liście Schematy kliknij lewym przyciskiem myszy przypisanie planu. Następnie kliknij przycisk **zaktualizować przypisania** lub kliknij prawym przyciskiem myszy przypisanie planu i wybrać **zaktualizować przypisania**.
 
-   ![Przypisanie aktualizacji](../media/update-existing-assignments/update-assignment.png)
+   ![Aktualizuj przypisanie](../media/update-existing-assignments/update-assignment.png)
 
-1. **Przypisać planu** strony załaduje wstępnie wypełnione przy użyciu wszystkich wartości z oryginalnego przypisania. Możesz zmienić **wersji definicji planu**, **przypisania blokady** stanu i dowolny z parametrów dynamicznych, które istnieją w definicji planu. Kliknij przycisk **przypisać** po zakończeniu wprowadzania zmian.
+1. **Planu Przypisz** strony załaduje wstępnie wypełnione przy użyciu wszystkich wartości z oryginalnego przypisania. Możesz zmienić **wersji definicji planu**, **przypisania blokady** stanu i dowolny z parametrów dynamicznych, które istnieją w definicji planu. Kliknij przycisk **przypisać** po zakończeniu wprowadzania zmian.
 
 1. Na stronie szczegółów przypisania zaktualizowane Zobacz nowy stan. W tym przykładzie dodaliśmy **blokowanie** do przypisania.
 
    ![Zaktualizowano przypisanie — zablokowane](../media/update-existing-assignments/updated-assignment.png)
 
-1. Poznaj szczegółowe informacje o innych **operacji przypisania** za pomocą listy rozwijanej. Tabela **zarządzanych zasobów** aktualizacji przez operację wybrane przypisania.
+1. Poznaj szczegółowe informacje o innych **operacji przypisania** za pomocą listy rozwijanej. Tabela **zarządzane zasoby** aktualizacji przez operację wybrane przypisania.
 
    ![Operacji przypisania](../media/update-existing-assignments/assignment-operations.png)
 

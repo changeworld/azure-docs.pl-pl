@@ -9,19 +9,19 @@ ms.author: gwallace
 ms.date: 12/04/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 82382ecc3adf0d0621f51438a082f7807b031fc9
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ec71f8998f7db07cafca7f8141acb9898b016328
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431218"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821357"
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Dane wyjściowe elementu Runbook i komunikatów w usłudze Azure Automation
 Większość elementów runbook automatyzacji Azure obejmuje jakąś formę danych wyjściowych. Te dane wyjściowe mogą być komunikat o błędzie do użytkownika lub obiekt złożony czy zamierzasz korzystać z innego elementu runbook. Program Windows PowerShell udostępnia [wiele strumieni](/powershell/module/microsoft.powershell.core/about/about_redirection) do wysyłania danych wyjściowych w skrypcie lub przepływu pracy. Usługa Azure Automation działa z każdym z tych strumieni inaczej. Należy stosować najlepsze rozwiązania w zakresie używania każdego podczas tworzenia elementu runbook.
 
 Poniższa tabela zawiera krótki opis każdego strumienia i ich zachowania w witrynie Azure portal w przypadku opublikowanych elementów runbook i kiedy [testowania elementu runbook](automation-testing-runbook.md). W kolejnych sekcjach znajdują się dalsze szczegółowe informacje na temat każdego strumienia.
 
-| Stream | Opis | Opublikowane | Test |
+| Strumień | Opis | Opublikowane | Test |
 |:--- |:--- |:--- |:--- |
 | Dane wyjściowe |Obiekty, które mają być używane przez inne elementy runbook. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
 | Ostrzeżenie |Komunikat ostrzegawczy przeznaczony dla użytkownika. |Zapisywany w historii zadania. |Wyświetlane w okienku danych wyjściowych testu. |
@@ -220,8 +220,8 @@ Z poprzednim zrzucie ekranu widać, gdy włączone jest pełne, rejestrowania i 
    
    ![Graficzny tworzenie, rejestrowanie i śledzenie strony](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
-Automatyzacja może wysyłać elementu runbook strumieni zadań i stanu zadania do obszaru roboczego usługi Log Analytics. Za pomocą usługi Log Analytics można,
+### <a name="microsoft-azure-monitor-logs"></a>Dzienniki systemu Microsoft Azure Monitor
+Automatyzacja może wysyłać elementu runbook strumieni zadań i stanu zadania do obszaru roboczego usługi Log Analytics. Przy użyciu dzienników usługi Azure Monitor możesz,
 
 * Uzyskaj wgląd w automatyzacji zadań 
 * Wyzwalacza poczty e-mail lub alertu opartego na stan zadania elementu runbook (na przykład nie powiodło się lub zawieszone) 
@@ -229,7 +229,7 @@ Automatyzacja może wysyłać elementu runbook strumieni zadań i stanu zadania 
 * Korelowanie zadań w ramach kont usługi Automation 
 * Wizualizowanie historii zadań wraz z upływem czasu    
 
-Aby uzyskać więcej informacji na temat konfigurowania integracji z usługą Log Analytics można gromadzić, korelować i działają na dane zadania, zobacz [przekazywać strumienie zadania i stan zadania z usługi Automation do usługi Log Analytics](automation-manage-send-joblogs-log-analytics.md).
+Aby uzyskać więcej informacji na temat konfigurowania integracji przy użyciu dzienników usługi Azure Monitor, można gromadzić, korelować i działają na dane zadania, zobacz [przekazywania strumienie zadania i stan zadania z usługi Automation do usługi Azure Monitor dzienników](automation-manage-send-joblogs-log-analytics.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby dowiedzieć się więcej o wykonywaniu elementów Runbook, sposobie monitorowania zadań elementów Runbook i innych szczegółach technicznych, zobacz [Track a runbook job](automation-runbook-execution.md) (Śledzenie zadania elementu Runbook)

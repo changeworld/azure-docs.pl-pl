@@ -1,6 +1,6 @@
 ---
 title: Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania
-description: To rozwiązanie do zarządzania maszyną Wirtualną uruchamia i zatrzymuje maszyny wirtualne usługi Azure Resource Manager zgodnie z harmonogramem i aktywnie monitoruje od usługi Log Analytics.
+description: To rozwiązanie do zarządzania maszyną Wirtualną uruchamia i zatrzymuje maszyny wirtualne usługi Azure Resource Manager zgodnie z harmonogramem i aktywnie monitoruje z dzienników usługi Azure Monitor.
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 3fcab4c7456295d8f7414232bc90bc5ab352e43a
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979653"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817885"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
-Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania rozpoczyna się i zatrzymuje maszyny wirtualne, usługi platformy Azure zgodnie z harmonogramami zdefiniowanych przez użytkownika, dają wgląd za pomocą usługi Azure Log Analytics i wysyła opcjonalne wiadomości e-mail przy użyciu [grup akcji](../azure-monitor/platform/action-groups.md). Obsługuje ona usługi Azure Resource Manager i klasycznych maszyn wirtualnych w przypadku większości scenariuszy.
+Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania uruchamia i zatrzymuje maszynach wirtualnych platformy Azure zgodnie z harmonogramami zdefiniowanych przez użytkownika, dają wgląd za pomocą dzienników usługi Azure Monitor i wysyła opcjonalne wiadomości e-mail przy użyciu [grup akcji](../azure-monitor/platform/action-groups.md). Obsługuje ona usługi Azure Resource Manager i klasycznych maszyn wirtualnych w przypadku większości scenariuszy.
 
 To rozwiązanie udostępnia opcję zdecentralizowane automatyzacji niskie koszty dla użytkowników, którzy chcesz zoptymalizować swoje koszty maszyn wirtualnych. Dzięki temu rozwiązaniu można wykonywać następujące czynności:
 
@@ -35,6 +35,8 @@ Ograniczenia związane z bieżącego rozwiązania są następujące:
 > Jeśli używasz rozwiązania dla klasycznych maszyn wirtualnych, następnie wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie na usługę w chmurze. Maszyny wirtualne są nadal przetwarzane równolegle w różnych usługach w chmurze.
 >
 > Subskrypcje dostawcy rozwiązań w chmurze (Azure CSP) platformy Azure obsługują tylko model usługi Azure Resource Manager, usługi — z usługi Azure Resource Manager nie są dostępne w programie. Po uruchomieniu rozwiązania uruchomień/zatrzymań może wystąpią błędy, ponieważ zawiera ona polecenia cmdlet do zarządzania zasobami klasycznymi. Aby dowiedzieć się więcej na temat dostawcy usług Kryptograficznych, zobacz [usług dostępnych w ramach subskrypcji programu CSP](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments). Jeśli używasz subskrypcji dostawcy CSP, należy zmodyfikować [ **External_EnableClassicVMs** ](#variables) zmienną **False** po wdrożeniu.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -63,7 +65,7 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
    - Wybierz **subskrypcji** się połączyć, wybierając z listy rozwijanej, jeśli nie jest domyślnie wybrana.
    - Aby uzyskać **grupy zasobów**, można utworzyć nową grupę zasobów lub wybrać istniejącą grupę.
    - Wybierz **lokalizację**. Obecnie jedynymi dostępnymi lokalizacjami są **Australia południowo-wschodnia**, **Kanada Środkowa**, **Indie środkowe**, **wschodnie stany USA**, **Japonia, część wschodnia**, **Azja południowo-wschodnia**, **Południowe Zjednoczone Królestwo**, **Europa Zachodnia**, i **zachodnie stany USA 2**.
-   - Wybierz **warstwę cenową**. Wybierz **na GB (autonomiczne)** opcji. Usługa log Analytics został zaktualizowany [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) i warstwie na GB jest jedyną opcją.
+   - Wybierz **warstwę cenową**. Wybierz **na GB (autonomiczne)** opcji. Dzienniki platformy Azure Monitor został zaktualizowany [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) i warstwie na GB jest jedyną opcją.
 
 5. Po podaniu wymaganych informacji w **obszaru roboczego usługi Log Analytics** kliknij **Utwórz**. Możesz śledzić postęp w sekcji **powiadomienia** z menu, która zwraca do **Dodaj rozwiązanie** strony po zakończeniu.
 6. Na **Dodaj rozwiązanie** wybierz opcję **konta usługi Automation**. Jeśli tworzysz nowy obszar roboczy usługi Log Analytics, możesz utworzyć nowe konto usługi Automation, który ma zostać skojarzony z nim lub wybierz istniejące konto usługi Automation, która nie jest już połączona z obszarem roboczym usługi Log Analytics. Wybierz istniejące konto usługi Automation, lub kliknij przycisk **Tworzenie konta usługi Automation**, a następnie na **Dodawanie konta usługi Automation** Podaj następujące informacje:
@@ -174,7 +176,7 @@ Teraz, gdy harmonogram zatrzymywanie maszyn wirtualnych na podstawie użycia pro
 
 ## <a name="solution-components"></a>Składniki rozwiązania
 
-To rozwiązanie oferuje wstępnie skonfigurowane elementów runbook, harmonogramy i integracji z usługą Log Analytics, dzięki czemu można dostosować, uruchamiania i zamykania maszyn wirtualnych do potrzeb biznesowych.
+To rozwiązanie oferuje wstępnie skonfigurowane elementów runbook, harmonogramy i integracji przy użyciu dzienników usługi Azure Monitor, dzięki czemu można dostosować, uruchamiania i zamykania maszyn wirtualnych do potrzeb biznesowych.
 
 ### <a name="runbooks"></a>Elementy Runbook
 
@@ -209,7 +211,7 @@ W poniższej tabeli wymieniono zmiennych utworzonych na koncie usługi Automatio
 |External_AutoStop_TimeAggregationOperator | Operator agregacji czasu, która jest stosowana do rozmiaru okna wybranego warunku. Dopuszczalne wartości to **średni**, **co najmniej**, **maksymalna**, **całkowita**, i **ostatniego**.|
 |External_AutoStop_TimeWindow | Rozmiar okna, w którym Azure analizuje wybrane metryki służącą do wyzwalania alertu. Ten parametr akceptuje dane wejściowe w formacie przedziału czasu. Możliwe wartości to od 5 minut do 6 godzin.|
 |External_EnableClassicVMs| Określa, czy klasyczne maszyny wirtualne są objęte rozwiązania. Wartość domyślna to True. Należy można ustawić na wartość False dla subskrypcji programu CSP.|
-|External_ExcludeVMNames | Wprowadź nazwy maszyn wirtualnych, które mają być wykluczone, oddzielając nazwy za pomocą przecinka bez spacji. To jest ograniczona do 140 maszyn wirtualnych. Jeśli dodasz ponad 140 maszyny wirtualne są dodawane maszyny wirtualne przeznaczone do wykluczenia, mogą być uruchamiane lub zamknięcie przypadkowo|
+|External_ExcludeVMNames | Wprowadź nazwy maszyn wirtualnych, które mają być wykluczone, oddzielając nazwy za pomocą przecinka bez spacji. To jest ograniczona do 140 maszyn wirtualnych. Jeśli ponad 140 maszyny wirtualne zostaną dodane do tej listy rozdzielanej przecinkami, maszyn wirtualnych, które są ustawione, które mają być wykluczone mogą zostać przypadkowo uruchomiona lub zatrzymana.|
 |External_Start_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości przecinkami, przeznaczone dla działania uruchamiania.|
 |External_Stop_ResourceGroupNames | Określa co najmniej jedną grupę zasobów, oddzielając wartości za pomocą przecinków, przeznaczony dla akcji stop.|
 |Internal_AutomationAccountName | Określa nazwę konta usługi Automation.|
@@ -233,7 +235,7 @@ Nie należy włączać wszystkie harmonogramy, ponieważ może to powodować nak
 |Sequenced-StopVM | 1:00:00 (czas UTC), każdy piątek | Uruchamia element runbook Sequenced_Parent z parametrem _zatrzymać_ każdy piątek o określonej godzinie. Sekwencyjnie (rosnąco) zatrzymania wszystkich maszyn wirtualnych przy użyciu tagu elementu **SequenceStop** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StartVM**.|
 |Sequenced-StartVM | 1:00 PM (UTC), każdy poniedziałek | Uruchamia element runbook Sequenced_Parent z parametrem _Start_ w każdy poniedziałek o określonej godzinie. Sekwencyjnie (malejąco) zaczyna się od wszystkich maszyn wirtualnych tag **SequenceStart** definicją odpowiednich zmiennych. Aby uzyskać więcej informacji na temat zmiennych zasobów i wartości tagów zobacz sekcję elementów Runbook. Włącz harmonogram powiązanej **Sequenced StopVM**.|
 
-## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
+## <a name="azure-monitor-logs-records"></a>Usługa Azure Monitor rejestruje rekordy
 
 Usługa Automation tworzy dwa typy rekordów w obszarze roboczym usługi Log Analytics: dzienniki zadania i zadania strumieni.
 
@@ -290,7 +292,7 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów dzi
 
 ## <a name="viewing-the-solution"></a>Wyświetlanie rozwiązania
 
-Aby uzyskać dostęp do rozwiązania, przejdź do konta usługi Automation wybierz **obszaru roboczego** w obszarze **powiązane zasoby**. Na stronie usługi Log Analytics wybierz **rozwiązania** w obszarze **ogólne**. Na **rozwiązania** wybierz rozwiązanie **Start-Stop-VM [obszar roboczy]** z listy.
+Aby uzyskać dostęp do rozwiązania, przejdź do konta usługi Automation wybierz **obszaru roboczego** w obszarze **powiązane zasoby**. Na stronie log analytics wybierz **rozwiązania** w obszarze **ogólne**. Na **rozwiązania** wybierz rozwiązanie **Start-Stop-VM [obszar roboczy]** z listy.
 
 Wybranie rozwiązania Wyświetla **Start-Stop-VM [obszar roboczy]** stronie rozwiązania. W tym miejscu możesz sprawdzić ważne szczegóły, takie jak **StartStopVM** kafelka. W obszarze roboczym usługi Log Analytics ten Kafelek zawiera liczbę oraz graficzną reprezentację zadań elementów runbook dla rozwiązania, które zostały uruchomione i została zakończona pomyślnie.
 
@@ -364,14 +366,14 @@ Aby usunąć rozwiązanie, wykonaj następujące czynności:
 
 Konto usługi Automation i obszaru roboczego usługi Log Analytics nie są usuwane w ramach tego procesu. Jeśli nie chcesz zachować obszaru roboczego usługi Log Analytics, musisz ręcznie je usunąć. Można to zrobić w witrynie Azure portal:
 
-1. Z platformy Azure ekran główny portalu, wybierz **usługi Log Analytics**.
-1. Na **usługi Log Analytics** wybierz obszar roboczy.
+1. Z platformy Azure ekran główny portalu, wybierz **obszarów roboczych usługi Log Analytics**.
+1. Na **obszarów roboczych usługi Log Analytics** wybierz obszar roboczy.
 1. Wybierz **Usuń** menu na stronie Ustawienia w obszarze roboczym.
 
 Jeśli nie chcesz zachować składniki konta usługi Azure Automation, możesz ręcznie usunąć każdy. Aby uzyskać listę elementów runbook, zmienne i harmonogramów utworzonych przez to rozwiązanie, zobacz [składników rozwiązania](#solution-components).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat do tworzenia różnych zapytań wyszukiwania i przeglądania dzienników zadań usługi Automation z usługą Log Analytics, zobacz [przeszukiwanie dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md).
+- Aby dowiedzieć się więcej na temat do tworzenia różnych zapytań wyszukiwania i przeglądania dzienników zadań usługi Automation przy użyciu dzienników usługi Azure Monitor, zobacz [przeszukiwania dzienników w dzienniki usługi Azure Monitor](../log-analytics/log-analytics-log-searches.md).
 - Aby dowiedzieć się więcej o wykonywaniu elementów runbook, sposobie monitorowania zadań elementów runbook i innych szczegółach technicznych, zobacz [Track a runbook job](automation-runbook-execution.md) (Śledzenie zadania elementu runbook).
-- Aby dowiedzieć się więcej na temat usługi Log Analytics i źródłach zbierania danych, zobacz [Azure zbieranie danych magazynu w usłudze Log Analytics — omówienie](../azure-monitor/platform/collect-azure-metrics-logs.md).
+- Aby dowiedzieć się więcej na temat dzienników usługi Azure Monitor i źródłach zbierania danych, zobacz [Azure zbieranie danych magazynu w usłudze Azure Monitor rejestruje Przegląd](../azure-monitor/platform/collect-azure-metrics-logs.md).

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 293c2325f57f04c3a77b0b2b8ec2ef30e8c912b8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: d5c92e31850cdac5e05021fd231259b0d3b064d1
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156242"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822808"
 ---
 # <a name="door-monitor"></a>Monitor drzwi biblioteki          
 
@@ -66,7 +66,7 @@ Zobaczysz teraz formularz rejestracji usługi SendGrid.
 
 Wypełnij formularz rejestracji:
 
-   * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid, lub użyj istniejącej. Zobacz [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
+   * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid, lub użyj istniejącej. Zobacz [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/manage-resource-groups-portal.md).
 
    * **Nazwa**: Nazwa usługi SendGrid. Wybierz unikatową nazwę, różniące się od innych usług, które mogą wiązać Ciebie.
 
@@ -106,7 +106,7 @@ Zostanie wyświetlony formularz rejestracji.
 
 Wypełnij pola w formularzu tworzenia konta.
 
-   * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid, lub użyj istniejącej. Zobacz [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
+   * **Grupa zasobów**: Utwórz grupę zasobów do obsługi usługi SendGrid, lub użyj istniejącej. Zobacz [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/manage-resource-groups-portal.md).
 
    * **Nazwa centrum iot Hub**: Nazwa centrum IoT. Wybierz unikatową nazwę, różniące się od innych usług, które mogą wiązać Ciebie.
 
@@ -133,7 +133,7 @@ Następnie załaduj przykładowego kodu w programie VS Code i aprowizować niezb
 
 Po lewej stronie rozwiń **przykłady ARDUINO** sekcji, przejdź do **przykłady zestawu DEWELOPERSKIEGO az3166 usługi > AzureIoT**i wybierz **DoorMonitor**. Ta akcja powoduje otwarcie nowego okna programu VS Code z folderu projektu w nim.
 
-![Mini solution przykłady](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
+![mini-solution-examples](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/vscode-examples.png)
 
 Przykładowa aplikacja można również otworzyć z palety poleceń. Użyj `Ctrl+Shift+P` (z systemem macOS: `Cmd+Shift+P`) aby otworzyć paletę poleceń, wpisz **Arduino**, a następnie znajdź i wybierz **Arduino: Przykłady**.
 
@@ -177,7 +177,7 @@ Program VS Code, a następnie rozpoczyna się weryfikowanie i przekazywanie Ardu
 Mxchip rozruchu i uruchamiania kodu.
 
 > [!NOTE]
-> Czasami może pojawić się "Błąd: AZ3166 USŁUGI: Nieznany pakiet"komunikat o błędzie. Ten błąd występuje, gdy indeksu pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się [sekcji Projektowanie Mxchip IoT często zadawanych pytań](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
+> Czasami może pojawić się "Błąd: AZ3166: Nieznany pakiet"komunikat o błędzie. Ten błąd występuje, gdy indeksu pakietów tablicy nie jest odświeżany poprawnie. Aby rozwiązać ten problem, zapoznaj się [sekcji Projektowanie Mxchip IoT często zadawanych pytań](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#development).
 
 ## <a name="test-the-project"></a>Projekt testowy
 

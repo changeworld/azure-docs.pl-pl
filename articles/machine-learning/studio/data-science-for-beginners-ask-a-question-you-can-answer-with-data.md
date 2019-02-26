@@ -5,17 +5,17 @@ description: Dowiedz się, jak sformułować pytanie do nauki o danych sharp prz
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/03/2018
-ms.openlocfilehash: 7134a22532622d7de25a23897f83dc453d8a4344
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: fcd79b94c1a32fa912f00df616787f8859005895
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454059"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820177"
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>Zadawanie pytań, na które można odpowiedzieć za pomocą danych
 ## <a name="video-3-data-science-for-beginners-series"></a>Wideo 3: Analiza danych dla początkujących serii
@@ -93,4 +93,4 @@ Pamiętaj sprawdzić inne filmy wideo "Dane do analizy dla początkujących" z u
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Spróbuj pierwszy eksperyment dotyczący przetwarzania danych, za pomocą usługi Machine Learning Studio](create-experiment.md)
-* [Wprowadzenie do usługi Machine Learning na Microsoft Azure](what-is-machine-learning.md)
+* [Wprowadzenie do usługi Machine Learning na Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

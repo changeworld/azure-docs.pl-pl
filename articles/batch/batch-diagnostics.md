@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/05/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 6fb8166893f0dada019ca633933833d17b95fee9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 368e1f6b9501c677eca1cf80d24a06c0a6533e86
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811464"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817358"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
@@ -91,7 +91,7 @@ Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
 * Stream zdarzeń dzienniki diagnostyczne usługi Batch do [usługi Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md). Usługa Event Hubs pozyskiwać miliony zdarzeń na sekundę, które można przetworzyć i zapisać za pomocą dowolnego dostawcy analiz w czasie rzeczywistym. 
 
-* Wysyłanie dzienników diagnostycznych do [usługi Azure Log Analytics](../log-analytics/log-analytics-overview.md), którym można analizować je lub wyeksportować je do analizy w usłudze Power BI lub programie Excel.
+* Wysyłanie dzienników diagnostycznych do [dzienniki usługi Azure Monitor](../log-analytics/log-analytics-overview.md), którym można analizować je lub wyeksportować je do analizy w usłudze Power BI lub programie Excel.
 
 > [!NOTE]
 > Może pociągnąć za sobą dodatkowe koszty przechowywania lub przetwarzania danych dzienników diagnostycznych z usługami platformy Azure. 
@@ -101,7 +101,7 @@ Inne opcjonalne miejsca docelowe dla dzienników diagnostycznych:
 
 1. W portalu, kliknij przycisk **wszystkich usług** > **konta usługi Batch**, a następnie kliknij nazwę swojego konta usługi Batch.
 2. W obszarze **monitorowanie**, kliknij przycisk **dzienniki diagnostyczne** > **Włącz diagnostykę**.
-3. W **ustawień diagnostycznych**, wprowadź nazwę dla ustawienia i wybierz miejsce docelowe dziennika (istniejącego magazynu konta, Centrum zdarzeń lub usługi Log Analytics). Wybierz jeden lub oba **ServiceLog** i **AllMetrics**.
+3. W **ustawień diagnostycznych**, wprowadź nazwę dla ustawienia i wybierz miejsce docelowe dziennika (istniejące konto magazynu Centrum zdarzeń i dzienników usługi Azure Monitor). Wybierz jeden lub oba **ServiceLog** i **AllMetrics**.
 
     Po wybraniu konta magazynu, opcjonalnie ustawić zasady przechowywania. Jeśli nie określisz liczbę dni przechowywania, dane są przechowywane w cyklu życia na koncie magazynu.
 

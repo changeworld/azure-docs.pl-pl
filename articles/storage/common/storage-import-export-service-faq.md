@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 6706da978195cff65a3454e6b2d71dfea3b414c4
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 0b3128184942dbc750ea54bd7156c6e79b8bedea
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56651417"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804845"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Usługa Azure Import/Export: często zadawane pytania 
 Poniżej przedstawiono pytania i odpowiedzi, które mogą wystąpić podczas przesyłanie danych do magazynu platformy Azure za pomocą usługi Azure Import/Export. Pytania i odpowiedzi są podzielone na następujące kategorie:
@@ -96,7 +96,7 @@ Należy pamiętać, nośnik fizyczny, który jest dostarczany może być koniecz
 ### <a name="are-there-any-special-requirements-for-delivering-my-disks-to-a-datacenter"></a>Czy istnieją jakiekolwiek specjalne wymagania, dostarczania dysków do centrum danych?
 
 Wymagania zależą od ograniczeń określonych centrów danych platformy Azure.
-- Istnieje kilka witryn klasy C (na przykład Frankfurt), które wymagają centrum danych platformy Microsoft numer identyfikacyjny dla ruchu przychodzącego, które ma zostać zapisany na działkę ze względów bezpieczeństwa. Przed dostarczeniem aplikacji z dysków lub dysków do centrum danych, skontaktuj się z działem Azure DataBox operacji (adbops@microsoft.com) w celu rozwiązania tego numeru. Bez tego numeru pakiet zostanie odrzucone.
+- Istnieje kilka witryn, które wymagają centrum danych platformy Microsoft numer identyfikacyjny dla ruchu przychodzącego, które ma zostać zapisany na działkę ze względów bezpieczeństwa. Przed dostarczeniem aplikacji z dysków lub dysków do centrum danych, skontaktuj się z działem Azure DataBox operacji (adbops@microsoft.com) w celu rozwiązania tego numeru. Bez tego numeru pakiet zostanie odrzucone.
 - Centra danych w Indiach wymagają informacje osobowe sterownika, takie jak karty identyfikacyjnej dla instytucji rządowych lub nie dowodu. (na przykład, PRZESUWANIE, AADHAR, listy Dystrybucyjnej) nazwę, skontaktuj się z pomocą i samochodu płytką liczbę, aby otrzymać przebiegu wpis bramy. Aby uniknąć opóźnień w dostawie, informuje operatora o tych wymagań.
 
 

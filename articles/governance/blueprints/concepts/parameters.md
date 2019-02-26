@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9166d5d552df4854a4d00c2211a273a06198877a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d7c923dd819f826d9d9aaf8d5b88355a9feb344f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567489"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823165"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>Tworzenie dynamicznych schematy za pomocą parametrów
 
@@ -52,11 +52,11 @@ Wartość parametru określone w definicji planu jest nazywany **parametru staty
 
 #### <a name="setting-static-parameters-in-the-portal"></a>Parametry statyczne ustawienia w portalu
 
-1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
 
-1. Wybierz pozycję **Definicje strategii** w lewej części strony.
+1. Wybierz **planu definicje** ze strony po lewej stronie.
 
-1. Kliknij istniejący plan, a następnie kliknij przycisk **edytować planu** lub kliknij przycisk **+ Utwórz plan** i Wypełnij informacje w **podstawy** kartę.
+1. Kliknij istniejący plan, a następnie kliknij przycisk **edycji planu** lub kliknij przycisk **+ Utwórz plan** i Wypełnij informacje w **podstawy** kartę.
 
 1. Kliknij pozycję **Next: Artefakty** lub kliknąć **artefaktów** kartę.
 
@@ -169,13 +169,13 @@ Jest przeciwieństwem statyczne parametr **parametru dynamicznego**. Ten paramet
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>Ustawianie parametrów dynamicznych w portalu
 
-1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
 
-1. Wybierz pozycję **Definicje strategii** w lewej części strony.
+1. Wybierz **planu definicje** ze strony po lewej stronie.
 
-1. Kliknij prawym przyciskiem myszy na planu, który chcesz przypisać. Wybierz **przypisać planu** lub kliknąć planu, którą chcesz przypisać, a następnie kliknij przycisk **przypisać planu** przycisku.
+1. Kliknij prawym przyciskiem myszy na planu, który chcesz przypisać. Wybierz **planu Przypisz** lub kliknąć planu, którą chcesz przypisać, a następnie kliknij przycisk **planu Przypisz** przycisku.
 
-1. Na **przypisać planu** strony, Znajdź **parametry artefaktu** sekcji. Każdego artefaktu z co najmniej jednym **parametru dynamicznego** Wyświetla artefaktu i opcje konfiguracji. Podaj wymagane wartości parametrów, zanim przypisze planu. W poniższym przykładzie _nazwa_ jest **parametru dynamicznego** musi być zdefiniowany można ukończyć ich przypisywania planu.
+1. Na **planu Przypisz** strony, Znajdź **parametry artefaktu** sekcji. Każdego artefaktu z co najmniej jednym **parametru dynamicznego** Wyświetla artefaktu i opcje konfiguracji. Podaj wymagane wartości parametrów, zanim przypisze planu. W poniższym przykładzie _nazwa_ jest **parametru dynamicznego** musi być zdefiniowany można ukończyć ich przypisywania planu.
 
    ![Parametr dynamiczny plan](../media/parameters/dynamic-parameter.png)
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 9f0dbc549600ef2b931ee99a36c60cae57cc7a67
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cd29fb968bd73e09c2e3b60e62a478b4e577146d
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56331391"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805490"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 
@@ -67,7 +67,7 @@ Poniżej przedstawiono niektóre funkcje usługi Premium Storage:
     - [Wiersza polecenia platformy Azure dla usługi Azure Storage](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
     - [Usługa Azure Storage REST interfejsu API dostawcy zasobów](https://docs.microsoft.com/rest/api/storagerp) (w przypadku wdrożeń usługi Azure Resource Manager) lub jeden z biblioteki klienta dostawcy zasobów usługi Azure Storage
 
-    Aby dowiedzieć się więcej na temat limitów konta magazynu premium, zobacz temat cele dotyczące skalowalności i wydajności Usługa Premium Storage.
+    Aby dowiedzieć się więcej na temat limitów konta magazynu premium, zobacz [cele dotyczące skalowalności i wydajności](#scalability-and-performance-targets).
 
 * **Magazyn lokalnie nadmiarowy w warstwie Premium**
 
@@ -158,7 +158,7 @@ Rozmiary oznaczone gwiazdką są obecnie dostępne w wersji zapoznawczej.
 | Przepływność na dysk | 25 MB na sekundę | 50 MB na sekundę | 100 MB na sekundę | 125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 480 MB na sekundę | 750 MB na sekundę | 750 MB na sekundę |
 
 > [!NOTE]
-> Upewnij się, że wystarczającą przepustowość jest dostępna na maszynie Wirtualnej, aby ruch dyskowy dysku, zgodnie z opisem w [Usługa Premium Storage jest obsługiwana na maszynach wirtualnych](). W przeciwnym razie swoje przepływność dysku i operacje We/Wy jest ograniczony do niższych wartości. Maksymalna przepływność i operacje We/Wy są oparte na limity maszyn wirtualnych, nie na limity dysku, opisano w powyższej tabeli.  
+> Upewnij się, że wystarczającą przepustowość jest dostępna na maszynie Wirtualnej, aby ruch dyskowy dysku, zgodnie z opisem w [obsługiwane maszyny wirtualne](#supported-vms). W przeciwnym razie swoje przepływność dysku i operacje We/Wy jest ograniczony do niższych wartości. Maksymalna przepływność i operacje We/Wy są oparte na limity maszyn wirtualnych, nie na limity dysku, opisano w powyższej tabeli.  
 > Azure został zaprojektowany tak platformy usługi Premium Storage jako równoległe na wielką skalę. Projektowanie aplikacji wielowątkowych pomogą osiągnąć wartości docelowej o wysokiej wydajności, oferowany w większych rozmiarów dysków.
 
 Poniżej przedstawiono niektóre ważne kwestie, aby dowiedzieć się o cele dotyczące skalowalności i wydajności Usługa Premium Storage:
@@ -292,7 +292,7 @@ Korzystając z usługi Premium Storage, zastosuj następujące zagadnienia dotyc
 
 * **Rozmiar magazynu Premium disk i obiektów blob**
 
-    Rozliczenia dla dysku magazynu premium lub obiekt blob jest zależna od aprowizowany rozmiar dysku lub obiektu blob. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysku magazynu premium. Aby uzyskać szczegółowe informacje, zobacz tabelę w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](). Każdy dysk mapowany rozmiar dysku obsługiwane i w związku z tym jest naliczana opłata. Rozliczenia dla dowolnego dysku jest proporcjonalnie do liczby godzin przy użyciu miesięczna oferta usługi Premium Storage. Na przykład jeśli zainicjowano obsługę administracyjną dysku P10, a następnie usunięte 20 godzin, stosowana jest stawka dla oferty P10 jest naliczany proporcjonalnie do 20 godzin. Jest to niezależnie od ilości rzeczywiste dane zapisane na dysku lub operacji We/Wy i przepływność używana.
+    Rozliczenia dla dysku magazynu premium lub obiekt blob jest zależna od aprowizowany rozmiar dysku lub obiektu blob. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysku magazynu premium. Aby uzyskać szczegółowe informacje, zobacz tabelę w [cele dotyczące skalowalności i wydajności](#scalability-and-performance-targets). Każdy dysk mapowany rozmiar dysku obsługiwane i w związku z tym jest naliczana opłata. Rozliczenia dla dowolnego dysku jest proporcjonalnie do liczby godzin przy użyciu miesięczna oferta usługi Premium Storage. Na przykład jeśli zainicjowano obsługę administracyjną dysku P10, a następnie usunięte 20 godzin, stosowana jest stawka dla oferty P10 jest naliczany proporcjonalnie do 20 godzin. Jest to niezależnie od ilości rzeczywiste dane zapisane na dysku lub operacji We/Wy i przepływność używana.
 
 * **Usługa unmanaged disks w warstwie Premium migawek**
 

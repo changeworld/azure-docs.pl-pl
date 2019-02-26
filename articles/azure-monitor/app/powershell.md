@@ -12,17 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: 4b633f3294faf11c8ef9d4a4077254c3df5353cf
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 74da56b5e90512f8b903d5a62f7dde4e903560b8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264857"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817868"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>Tworzenie zasobów usługi Application Insights przy użyciu programu PowerShell
 W tym artykule pokazano, jak zautomatyzować tworzenie i aktualizowanie [usługi Application Insights](../../azure-monitor/app/app-insights-overview.md) zasoby automatycznie przy użyciu usługi Azure Resource Management. Użytkownik może na przykład zrobić jako część procesu kompilacji. Wraz z podstawowy zasób usługi Application Insights, można utworzyć [testy sieci web dostępności](../../azure-monitor/app/monitor-web-app-availability.md), skonfiguruj [alerty](../../azure-monitor/app/alerts.md)ustaw [ceny schemat](pricing.md)i tworzenie innych zasobów platformy Azure .
 
-Kluczem do tworzenia tych zasobów jest szablonów JSON dla [usługi Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md). Mówiąc, jest procedurą: pobieranie definicji JSON istniejących zasobów. parametryzacja określone wartości, takich jak nazwy; a następnie uruchom szablon zawsze wtedy, gdy chcesz utworzyć nowy zasób. Można spakować ze sobą kilka zasobów, do ich utworzenia w jednym go — na przykład monitorowanie aplikacji za pomocą testy dostępności, alerty i magazynu na potrzeby eksportu ciągłego. Istnieją pewne precyzyjnie do niektórych parameterizations, które wyjaśnimy, w tym miejscu.
+Kluczem do tworzenia tych zasobów jest szablonów JSON dla [usługi Azure Resource Manager](../../azure-resource-manager/manage-resources-powershell.md). Mówiąc, jest procedurą: pobieranie definicji JSON istniejących zasobów. parametryzacja określone wartości, takich jak nazwy; a następnie uruchom szablon zawsze wtedy, gdy chcesz utworzyć nowy zasób. Można spakować ze sobą kilka zasobów, do ich utworzenia w jednym go — na przykład monitorowanie aplikacji za pomocą testy dostępności, alerty i magazynu na potrzeby eksportu ciągłego. Istnieją pewne precyzyjnie do niektórych parameterizations, które wyjaśnimy, w tym miejscu.
 
 ## <a name="one-time-setup"></a>Jednorazowej konfiguracji
 Jeśli nie znasz programu PowerShell z subskrypcją platformy Azure przed:

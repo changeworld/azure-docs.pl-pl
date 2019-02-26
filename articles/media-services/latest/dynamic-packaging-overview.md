@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: juliako
-ms.openlocfilehash: 02af95de3793f1d56204b17b0a3d91efbb285e55
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: d3222b2a2c47d6c2db4ca890a2618e89891d9deb
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726418"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804828"
 ---
 # <a name="dynamic-packaging"></a>Dynamiczne tworzenie pakietów
 
@@ -26,9 +26,9 @@ Usługa content protection formatów różne technologie klienta (na przykład i
 
 [Punkty końcowe przesyłania strumieniowego](streaming-endpoint-concept.md) usługa funkcję dynamicznego tworzenia pakietów w usłudze Media Services umożliwia dostarczanie zawartości multimedialnej dla graczy klienta. Funkcję dynamicznego tworzenia pakietów jest funkcją, które standardowo wszystkie punkty końcowe przesyłania strumieniowego (standardowy lub Premium). Nie ma żadnych dodatkowych kosztów związanych z tej funkcji usługi Media Services v3. Za pomocą funkcji dynamicznego tworzenia pakietów wymagany jest element zawartości zawierający zestaw plików MP4 o plikach manifestu. Następnie w oparciu o formatu określonego w manifeście lub fragment żądania, strumień jest dostarczany za pomocą wybranego protokołu. Dzięki temu wystarczy przechowywać i opłacać pliki w jednym formacie magazynu, a usługa Media Services utworzy oraz udostępni właściwą odpowiedź na podstawie żądań klienta.
 
-W usłudze Media Services funkcję dynamicznego tworzenia pakietów jest używany, czy są przesyłania strumieniowego na żądanie lub na żywo.
+W usłudze Media Services funkcję dynamicznego tworzenia pakietów jest używany zarówno są przesyłania strumieniowego na żądanie i na żywo.
 
-Na poniższym diagramie przedstawiono przepływ pracy funkcji dynamicznego tworzenia pakietów.
+Na poniższym diagramie przedstawiono przesyłania strumieniowego na żądanie za pomocą funkcji dynamicznego tworzenia pakietów przepływu pracy.
 
 ![Dynamiczne kodowania](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
@@ -39,7 +39,11 @@ Poniżej przedstawiono typowe Media Services, przepływ pracy transmisji strumie
 1. Przekaż plik wejściowy (nazywane plik mezzanine). Na przykład H.264, MP4 lub WMV (Aby uzyskać listę obsługiwanych formatów, zobacz [formaty obsługiwane przez Media Encoder Standard](media-encoder-standard-formats.md).
 2. Kodowanie pliku mezzanine do H.264 MP4 o adaptacyjnej szybkości transmisji bitów zestawów.
 3. Opublikuj element zawartości zawierający adaptacyjną szybkością transmisji bitów, zestawu plików MP4.
-4. Tworzenie adresów URL, których platformą docelową w różnych formatach (HLS, Dash i Smooth Streaming). Punkt końcowy przesyłania strumieniowego będzie uwzględniać obsługująca prawidłowy manifest oraz żądań dotyczących tych różnych formatach.
+4. Tworzenie adresów URL, których platformą docelową w różnych formatach (HLS, Dash i Smooth Streaming). Punkt końcowy przesyłania strumieniowego będzie uwzględniać obsługująca prawidłowy manifest oraz żądań dotyczących tych różnych formatach. Na przykład:
+
+ - HLS: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=m3u8-aapl)`
+ - Dash: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf)`
+ - Gładki: `http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest`
  
 ## <a name="video-codecs-supported-by-dynamic-packaging"></a>Koderów-dekoderów wideo obsługiwanych przez funkcję dynamicznego tworzenia pakietów
 

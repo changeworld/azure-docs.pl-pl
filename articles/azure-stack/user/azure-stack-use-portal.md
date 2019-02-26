@@ -10,16 +10,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 02/25/2019
 ms.author: mabrigg
 ms.reviewer: efemmano
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 026e37534169fda8dbbf5a568f72046bc6ff55f7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 28b8971b61ff09346b2a2f89cd5ea8ae04e44079
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252051"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819364"
 ---
 # <a name="use-the-azure-stack-portal"></a>Używaj portalu Azure Stack
 
@@ -40,6 +40,10 @@ Operator usługi Azure Stack (dostawcy usług lub administratorem w organizacji)
 Pulpit nawigacyjny zawiera domyślny zestaw kafelków. Możesz wybrać **Edytuj pulpit nawigacyjny** zmodyfikować domyślny pulpit nawigacyjny, lub wybierz **nowy pulpit nawigacyjny** do tworzenia niestandardowego pulpitu nawigacyjnego. Pulpit nawigacyjny można łatwo dostosować, dodając lub usuwając kafelków. Na przykład aby dodać tabliczkę obliczeń, wybierz pozycję **+ Utwórz zasób**. Kliknij prawym przyciskiem myszy **obliczenia**, a następnie wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
 
 ![Przechwytywanie ekranu portalu użytkowników usługi Azure Stack](media/azure-stack-use-portal/userportal.png)
+
+Aby przywrócić pierwotne ustawienia pulpitu nawigacyjnego:
+1.  Wybierz **Edytuj pulpit nawigacyjny**. 
+2.  Kliknij prawym przyciskiem myszy i wybierz **przywrócony stan domyślny**.
 
 ## <a name="create-subscription-and-browse-available-resources"></a>Tworzenie subskrypcji i przeglądanie dostępnych zasobów
 

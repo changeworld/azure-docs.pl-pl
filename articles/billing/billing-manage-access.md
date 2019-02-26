@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 11/02/2018
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 516d8e9116bbdcd421897b5a5c2d9755e7e636c8
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: cd137f8fb44b20c9a1b3a506ad2703fc780bae89
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903557"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806669"
 ---
 # <a name="manage-access-to-billing-information-for-azure"></a>Zarządzanie dostępem do informacji dotyczących rozliczeń dla platformy Azure
 
@@ -45,7 +45,7 @@ Te role mają dostęp do informacji dotyczących rozliczeń w [witryny Azure por
 
 ### <a name="opt-in"></a> Zezwalaj użytkownikom na pobieranie faktur
 
-Po zakończeniu Przypisz odpowiednie role członkom swojego zespołu, a Administrator konta, musisz włączyć oceny uprawnień umożliwiających pobieranie faktur w witrynie Azure portal. Faktury starsze niż grudnia 2016 są dostępne tylko do konta administratora.
+Po przypisaniu odpowiednie role do członków zespołu, Administrator konta musi włączyć dostęp do uprawnień umożliwiających pobieranie faktur w witrynie Azure portal. Faktury starsze niż grudnia 2016 są dostępne tylko do konta administratora.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 1. Jako Administrator konta, wybierz swoją subskrypcję z [bloku subskrypcje](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) w witrynie Azure portal.

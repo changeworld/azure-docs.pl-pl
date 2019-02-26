@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 0711743d46aaac08f8572917d91e452ee919134c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220129"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816909"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)
 
-W tym artykule pokazano, jak [witryny Azure portal](https://portal.azure.com) z [usługi Azure Resource Manager](resource-group-overview.md) do wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej o zarządzaniu swoimi zasobami, zobacz [zarządzanie zasobami platformy Azure za pośrednictwem portalu](resource-group-portal.md).
+W tym artykule pokazano, jak [witryny Azure portal](https://portal.azure.com) z [usługi Azure Resource Manager](resource-group-overview.md) do wdrażania zasobów platformy Azure. Aby dowiedzieć się więcej o zarządzaniu swoimi zasobami, zobacz [zarządzanie zasobami platformy Azure przy użyciu witryny Azure portal](manage-resources-portal.md).
 
 ## <a name="create-resource-group"></a>Tworzenie grupy zasobów
 
@@ -89,7 +89,7 @@ Jeśli chcesz wykonać wdrożenie, ale nie mogą używać tych szablonów w port
 
    ![Wybieranie pozycji Utwórz](./media/resource-group-template-deploy-portal/show-template-option.png)
 
-1. Widzisz kilka opcji tworzenia szablonu. Wybierz **Utwórz własny szablon w edytorze**.
+1. Widzisz kilka opcji tworzenia szablonu. Wybierz pozycję **Utwórz własny szablon w edytorze**.
 
    ![Opcje wyświetlania](./media/resource-group-template-deploy-portal/see-options.png)
 
@@ -134,7 +134,7 @@ Portal umożliwia zapisywanie szablonu do konta platformy Azure i wdrażając go
    ![Zapisany szablon wdrażania](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby wyświetlić dzienniki inspekcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](resource-group-audit.md).
-* Aby rozwiązać błędy związane z wdrażaniem, zobacz [wyświetlanie operacji wdrażania](resource-manager-deployment-operations.md).
-* Aby pobrać szablon z wdrożenia lub grupy zasobów, zobacz [szablonu eksportu usługi Azure Resource Manager z istniejących zasobów](resource-manager-export-template.md).
-* Aby bezpiecznie wdrożenia usługi w wielu regionach, zobacz [Azure Deployment Manager](deployment-manager-overview.md).
+* Aby wyświetlić dzienniki inspekcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](./resource-group-audit.md).
+* Aby rozwiązać błędy związane z wdrażaniem, zobacz [wyświetlanie operacji wdrażania](./resource-manager-deployment-operations.md).
+* Aby wyeksportować szablon z wdrożenia lub grupy zasobów, zobacz [eksportu usługi Azure Resource Manager](./manage-resource-groups-portal.md#export-resource-groups-to-templates).
+* Aby bezpiecznie wdrożenia usługi w wielu regionach, zobacz [Azure Deployment Manager](./deployment-manager-overview.md).

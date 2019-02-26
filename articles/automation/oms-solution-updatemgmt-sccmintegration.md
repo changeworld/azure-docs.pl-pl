@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c3b595e9c4d4b98814d1b68adede97204bf3eb96
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ddc055be45eae923be31d7d11621c9427660bf74
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422732"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818310"
 ---
 # <a name="integrate-system-center-configuration-manager-with-update-management"></a>Integracja programu System Center Configuration Manager przy użyciu rozwiązania Update Management
 
@@ -26,7 +26,7 @@ Można zgłaszać i aktualizować zarządzane serwery Windows, tworząc i wstęp
 
 * Konieczne jest posiadanie [rozwiązanie do zarządzania aktualizacjami](automation-update-management.md) dodane do Twojego konta usługi Automation.
 * Serwery z systemem Windows obecnie zarządzane przez środowisko programu System Center Configuration Manager również muszą się zgłaszać do obszaru roboczego usługi Log Analytics, która także ma włączone rozwiązanie zarządzania aktualizacjami.
-* Ta funkcja jest włączona w programie System Center Configuration Manager wersji current branch 1606 i wyższej. Aby zintegrować swoją centralną lokację administracyjną lub autonomiczną lokację główną programu Configuration Manager z usługą Log Analytics i kolekcjami importowania, zobacz [Connect Configuration Manager to Log Analytics](../azure-monitor/platform/collect-sccm.md) (Łączenie programu Configuration Manager z usługą Log Analytics).  
+* Ta funkcja jest włączona w programie System Center Configuration Manager wersji current branch 1606 i wyższej. Aby zintegrować programu Configuration Manager centralnej lokacji administracyjnej lub autonomicznej lokacji głównej przy użyciu dzienników usługi Azure Monitor i zaimportować kolekcje, zapoznaj się z [dzienniki Connect Configuration Manager do usługi Azure Monitor](../azure-monitor/platform/collect-sccm.md).  
 * Agenci dla systemu Windows muszą być skonfigurowani do komunikowania się z serwerem Windows Server Update Services (WSUS) albo mieć dostęp do usługi Microsoft Update, jeśli nie otrzymują aktualizacji zabezpieczeń z programu Configuration Manager.   
 
 To, w jaki sposób zarządzasz klientami hostowanymi w usłudze Azure IaaS za pomocą istniejącego środowiska programu Configuration Manager, zależy głównie od połączenia istniejącego między centrami danych platformy Azure a Twoją infrastrukturą. Połączenie to ma wpływ na wszelkie zmiany projektowe, których wprowadzenie do infrastruktury programu Configuration Manager może być konieczne, oraz wpływa na powiązane koszty obsługi tych niezbędnych zmian. Aby zrozumieć, jakie kwestie planowania należy ocenić przed kontynuowaniem, zobacz [Menedżer konfiguracji Azure — często zadawane pytania](/sccm/core/understand/configuration-manager-on-azure#networking).

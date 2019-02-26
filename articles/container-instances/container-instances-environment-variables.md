@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 11/19/2018
 ms.author: danlep
-ms.openlocfilehash: ce6c3364c594bc515abd9f0c02bd69bf500e4f4e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7ec99a79bd1c054c89dffcf7a179725929b89360
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436573"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805607"
 ---
 # <a name="set-environment-variables"></a>Ustawianie zmiennych środowiskowych
 
@@ -83,20 +83,20 @@ azureuser@Azure:~$ az container logs --resource-group myResourceGroup --name myc
 
 Ustawianie zmiennych środowiskowych w programie PowerShell jest podobny do interfejsu wiersza polecenia, ale używa `-EnvironmentVariable` argument wiersza polecenia.
 
-Najpierw uruchom [microsoft/aci-wordcount] [ aci-wordcount] kontenera w konfiguracji domyślnej z tym [New-AzureRmContainerGroup] [ new-azurermcontainergroup]polecenia:
+Najpierw uruchom [microsoft/aci-wordcount] [ aci-wordcount] kontenera w konfiguracji domyślnej z tym [New AzContainerGroup] [ new-Azcontainergroup] polecenie:
 
 ```azurepowershell-interactive
-New-AzureRmContainerGroup `
+New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer1 `
     -Image microsoft/aci-wordcount:latest
 ```
 
-Teraz uruchom następujące polecenie [New-AzureRmContainerGroup] [ new-azurermcontainergroup] polecenia. Ta określa *NumWords* i *MinLength* zmienne środowiskowe po wypełnieniu zmienną tablicową `envVars`:
+Teraz uruchom następujące polecenie [New AzContainerGroup] [ new-Azcontainergroup] polecenia. Ta określa *NumWords* i *MinLength* zmienne środowiskowe po wypełnieniu zmienną tablicową `envVars`:
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
-New-AzureRmContainerGroup `
+New-AzContainerGroup `
     -ResourceGroupName myResourceGroup `
     -Name mycontainer2 `
     -Image microsoft/aci-wordcount:latest `
@@ -104,17 +104,17 @@ New-AzureRmContainerGroup `
     -EnvironmentVariable $envVars
 ```
 
-Po stanie zarówno kontenery *zwolniony* (Użyj [Get AzureRmContainerInstanceLog] [ azure-instance-log] Aby sprawdzić stan), ściąganie dzienników przy użyciu [ Get-AzureRmContainerInstanceLog] [ azure-instance-log] polecenia.
+Po stanie zarówno kontenery *zwolniony* (Użyj [Get AzContainerInstanceLog] [ azure-instance-log] Aby sprawdzić stan), ściąganie dzienników przy użyciu [ Get-AzContainerInstanceLog] [ azure-instance-log] polecenia.
 
 ```azurepowershell-interactive
-Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
-Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
+Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
+Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
 ```
 
 Dane wyjściowe dla każdego kontenera pokazuje, jak został zmodyfikowany skrypt uruchamiany przez kontener przez ustawienie zmiennych środowiskowych.
 
 ```console
-PS Azure:\> Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
+PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer1
 [('the', 990),
  ('and', 702),
  ('of', 628),
@@ -127,7 +127,7 @@ PS Azure:\> Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -
  ('HAMLET', 386)]
 
 Azure:\
-PS Azure:\> Get-AzureRmContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
+PS Azure:\> Get-AzContainerInstanceLog -ResourceGroupName myResourceGroup -ContainerGroupName mycontainer2
 [('CLAUDIUS', 120),
  ('POLONIUS', 113),
  ('GERTRUDE', 82),
@@ -254,7 +254,7 @@ Oparta na zadaniach scenariuszach, na przykład wsadowo duży zestaw danych za p
 [az-container-logs]: /cli/azure/container#az-container-logs
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
-[azure-instance-log]: /powershell/module/azurerm.containerinstance/get-azurermcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/azurerm/install-azurerm-ps
-[new-azurermcontainergroup]: /powershell/module/azurerm.containerinstance/new-azurermcontainergroup
+[azure-instance-log]: /powershell/module/azurerm.containerinstance/get-Azcontainerinstancelog
+[azure-powershell-install]: /powershell/azure/azurerm/install-Az-ps
+[new-Azcontainergroup]: /powershell/module/azurerm.containerinstance/new-Azcontainergroup
 [portal]: https://portal.azure.com

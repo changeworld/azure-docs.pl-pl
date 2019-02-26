@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/16/2018
+ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 700295c94428021445f6cbbd84175046d57b9147
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 559409ac73fb28df18c2ddeca7eb2bcd06a24835
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054949"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817664"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Diagnozowanie typowe scenariusze za pomocą usługi Service Fabric
 
@@ -101,17 +101,16 @@ W jednym widoku przy użyciu wszystkich wykresów zobaczysz niektóre Kafelki wy
 
 1. Po dodaniu agenta usługi Log Analytics do klastra, należy dodać liczniki wydajności konkretnego, który chcesz śledzić. Przejdź do strony obszaru roboczego usługi Log Analytics w portalu — ze strony tego rozwiązania, które na karcie obszar roboczy znajduje się w menu po lewej stronie.
 
-    ![Karcie obszar roboczy usługi log Analytics](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
+    ![Log Analytics Workspace Tab](media/service-fabric-diagnostics-common-scenarios/workspacetab.png)
 
 2. Gdy jesteś na stronie obszaru roboczego, kliknij pozycję "Pokaż ustawienia zaawansowane" w tym samym menu po lewej stronie.
 
-    ![Ustawienia zaawansowane usługi log Analytics](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
+    ![Log Analytics Advanced Settings](media/service-fabric-diagnostics-common-scenarios/advancedsettingsoms.png)
 
 3. Kliknij pozycję Data > Windows liczników wydajności (danych > liczniki wydajności systemu Linux dla maszyn z systemem Linux) do rozpoczęcia zbierania określone liczniki z węzłów za pomocą agenta usługi Log Analytics. Poniżej przedstawiono przykłady format licznik do dodania
 
     * `.NET CLR Memory(<ProcessNameHere>)\\# Total committed Bytes`
     * `Processor(_Total)\\% Processor Time`
-    * `Service Fabric Service(*)\\Average milliseconds per request`
 
     W przewodniku Szybki Start VotingData i VotingWeb są nazwy procesu używany, więc wyglądałyby śledzenia tych liczników
 
@@ -128,7 +127,10 @@ W jednym widoku przy użyciu wszystkich wykresów zobaczysz niektóre Kafelki wy
 
 ## <a name="how-do-i-track-performance-of-my-reliable-services-and-actors"></a>Jak śledzić wydajność usług Reliable Services i aktorów?
 
-Do śledzenia wydajności usług Reliable Services lub podmiotów w swoich aplikacjach, należy dodać także liczniki Aktor usługi Service Fabric, metoda aktora, usługi i metody usługi. Można dodać te liczniki w podobny sposób jak w powyższym scenariuszu, poniżej przedstawiono przykłady niezawodnej usługi i aktora liczników wydajności, aby dodać w usłudze Log Analytics:
+Aby śledzić wydajność usług Reliable Services lub podmiotów w swoich aplikacjach, należy zbierać również liczniki Aktor usługi Service Fabric, metoda aktora, usługi i metody usługi. Poniżej przedstawiono przykłady niezawodnej usługi i aktora liczników wydajności zbierających dane
+
+>[!NOTE]
+>Liczniki wydajności usługi Service Fabric nie może obecnie zbieranych przez agenta usługi Log Analytics, ale mogą zostać zebrane przez [innych rozwiązań diagnostyczne](service-fabric-diagnostics-partners.md)
 
 * `Service Fabric Service(*)\\Average milliseconds per request`
 * `Service Fabric Service Method(*)\\Invocations/Sec`

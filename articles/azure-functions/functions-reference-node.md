@@ -10,22 +10,24 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: azure-functions
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 10/26/2018
+ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: cff486f79abb02861c07e0daacaf2f58d3efaac4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 04653dcdf0fb64e8b935cda18c01198ec91c548d
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729666"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807477"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
 Ten przewodnik zawiera informacje dotyczące niewymagającego pisania usługi Azure Functions za pomocą języka JavaScript.
 
-Funkcja języka JavaScript jest wyeksportowany `function` , który jest wykonywany po wyzwoleniu ([wyzwalacze są konfigurowane w function.json](functions-triggers-bindings.md)). Pierwszy argument jest przekazywany w każdej funkcji jest `context` obiektu, który jest używany do odbierania i wysyłania danych powiązania, rejestrowanie i komunikowania się ze środowiskiem uruchomieniowym.
+Funkcja języka JavaScript jest wyeksportowany `function` , który jest wykonywany po wyzwoleniu ([wyzwalacze są konfigurowane w function.json](functions-triggers-bindings.md)). Pierwszy argument przekazany do funkcji, co jest `context` obiektu, który jest używany do odbierania i wysyłania danych powiązania, rejestrowanie i komunikowania się ze środowiskiem uruchomieniowym.
 
-W tym artykule założono, że już znasz [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md). Należy również wykonać szybkiego startu usługi Functions, aby utworzyć pierwszą funkcję, za pomocą [programu Visual Studio Code](functions-create-first-function-vs-code.md) lub [w portalu](functions-create-first-azure-function.md).
+W tym artykule założono, że już znasz [dokumentacja dla deweloperów usługi Azure Functions](functions-reference.md). Wykonaj szybkiego startu usługi Functions do utworzenia pierwszej funkcji przy użyciu [programu Visual Studio Code](functions-create-first-function-vs-code.md) lub [w portalu](functions-create-first-azure-function.md).
+
+W tym artykule obsługuje również [programowania aplikacji TypeScript](#typescript).
 
 ## <a name="folder-structure"></a>Struktura folderów
 
@@ -109,7 +111,7 @@ W języku JavaScript [powiązania](functions-triggers-bindings.md) są konfiguro
 
 ### <a name="inputs"></a>Dane wejściowe
 Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: jeden z nich to dane wejściowe wyzwalacza, a drugi to dodatkowe dane wejściowe. Wyzwalacz i inne dane wejściowe powiązania (vazby prvku `direction === "in"`) mogą być odczytywane przez funkcję na trzy sposoby:
- - **_[Zalecane]_  Jako parametry przekazywane do funkcji.** Są one przekazywane do funkcji w tej samej kolejności, które są zdefiniowane w *function.json*. Należy pamiętać, że `name` właściwości zdefiniowanych w *function.json* nie musi być zgodna z nazwą parametru, mimo że powinien on.
+ - **_[Zalecane]_  Jako parametry przekazywane do funkcji.** Są one przekazywane do funkcji w tej samej kolejności, które są zdefiniowane w *function.json*. `name` Właściwości zdefiniowanych w *function.json* nie musi być zgodna z nazwą parametru, mimo że powinien on.
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
@@ -138,7 +140,8 @@ Dane wejściowe są podzielone na dwie kategorie w usłudze Azure Functions: jed
 ### <a name="outputs"></a>Dane wyjściowe
 Dane wyjściowe (vazby prvku `direction === "out"`) mogą być zapisywane przez funkcję na wiele sposobów. We wszystkich przypadkach `name` właściwości powiązania, zgodnie z definicją w *function.json* odpowiada nazwie elementu członkowskiego obiektu zapisywane w funkcji. 
 
-Dane można przypisać do powiązania danych wyjściowych, w jednym z następujących sposobów. Nie należy łączyć tych metod.
+Dane można przypisać do powiązania danych wyjściowych, w jednym z następujących metod (nie połączyć te metody):
+
 - **_[Zalecane w przypadku wiele wyjść]_  Zwrócenie obiektu.** Jeśli używasz async/Promise zwraca funkcja może zwrócić obiektu z danych wyjściowych przypisane. W poniższym przykładzie powiązania danych wyjściowych są nazywane "httpResponse" i "queueOutput" w *function.json*.
 
   ```javascript
@@ -152,7 +155,7 @@ Dane można przypisać do powiązania danych wyjściowych, w jednym z następuj�
       };
   };
   ```
-  
+
   Jeśli używasz funkcji synchronicznej, można zwrócić tego obiektu przy użyciu [ `context.done` ](#contextdone-method) (Zobacz przykład).
 - **_[Zalecane w przypadku pojedynczego wyjścia]_  Zwracanie wartości bezpośrednio i przy użyciu $return powiązania nazwy.** To działa tylko w przypadku zwracania funkcje asynchroniczne/Promise. Zobacz przykład w [eksportowanie funkcji asynchronicznej](#exporting-an-async-function). 
 - **Przypisywanie wartości do `context.bindings`**  wartości można przypisać bezpośrednio do context.bindings.
@@ -167,7 +170,7 @@ Dane można przypisać do powiązania danych wyjściowych, w jednym z następuj�
       return;
   };
   ```
- 
+
 ### <a name="bindings-data-type"></a>Typ danych powiązania
 
 Aby zdefiniować typ danych dla powiązania danych wejściowych, użyj `dataType` właściwości w definicji powiązania. Na przykład, aby odczytać zawartość żądania HTTP w formacie binarnym, użyj typu `binary`:
@@ -550,7 +553,47 @@ const myObj = new MyObj();
 module.exports = myObj;
 ```
 
-W tym przykładzie należy zauważyć, że mimo, że obiekt jest eksportowany, nie istnieją żadne zawierających wokół zachowania stanu między wykonaniami.
+W tym przykładzie należy zauważyć, że mimo, że obiekt jest eksportowany, istnieją żadnej gwarancji dla zachowania stanu między wykonaniami.
+
+## <a name="typescript"></a>TypeScript
+
+Kiedy docelowy jest w wersji 2.x środowisko uruchomieniowe usługi Functions, zarówno [usługi Azure Functions dla programu Visual Studio Code](functions-create-first-function-vs-code.md) i [podstawowych narzędzi usługi Azure Functions](functions-run-local.md) umożliwiają tworzenie aplikacji funkcji przy użyciu szablonu, które obsługują Projekty aplikacji funkcji języka TypeScript. Szablon generuje `package.json` i `tsconfig.json` pliki projektu, które ułatwiają transpiluj, uruchamianie i publikowanie funkcje języka JavaScript z poziomu kodu TypeScript za pomocą tych narzędzi.
+
+Wygenerowany `.funcignore` plik jest używany do wskazania, pliki, które są wyłączone, gdy projekt zostanie opublikowany na platformie Azure.  
+
+Pliki TypeScript (TS) są transpiled w plikach JavaScript (js) `dist` katalogu wyjściowego. Szablony TypeScript używają [ `scriptFile` parametru](#using-scriptfile) w `function.json` wskazującą położenie odpowiedni plik js w `dist` folderu. Lokalizacja danych wyjściowych jest ustawiana przez szablon przy użyciu `outDir` parametru w `tsconfig.json` pliku. W przypadku zmiany tego ustawienia lub nazwę folderu, środowisko uruchomieniowe nie będzie mógł znaleźć kod w celu uruchomienia.
+
+> [!NOTE]
+> Eksperymentalna Obsługa TypeScript istnieje wersji 1.x środowisko uruchomieniowe usługi Functions. Transpiles wersji doświadczalnej pliki TypeScript w plikach JavaScript po wywołaniu funkcji. W wersji 2.x, ta obsługa eksperymentalna została zastąpiona przez metodę oparte na narzędziu, który wykonuje transpilation, zanim host jest zainicjowany i podczas procesu wdrażania.
+
+Sposób, w jaki lokalnie tworzenia i wdrażania z projektu TypeScript zależy od narzędzia do programowania.
+
+### <a name="visual-studio-code"></a>Visual Studio Code
+
+[Usługi Azure Functions dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) rozszerzenie umożliwia tworzenie funkcji przy użyciu TypeScript. Podstawowe narzędzia jest to wymagane rozszerzenia usługi Azure Functions.
+
+Aby utworzyć aplikację funkcji TypeScript w programie Visual Studio Code, możesz po prostu wybierz `TypeScript` po utworzeniu aplikacji funkcji i prośba o wybranie języka.
+
+Po naciśnięciu klawisza **F5** Aby uruchomić aplikację lokalnie, transpilation jest gotowy, zanim host (func.exe) jest zainicjowany. 
+
+Podczas wdrażania aplikacji funkcji na platformie Azure przy użyciu **Wdróż do aplikacji funkcji...**  przycisku rozszerzenia usługi Azure Functions najpierw generuje kompilacji gotowe do produkcji, plików JavaScript przy użyciu plików źródłowych TypeScript.
+
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
+
+Aby utworzyć TypeScript projektu aplikacji funkcji przy użyciu podstawowych narzędzi, należy określić opcję języka typescript, podczas tworzenia aplikacji funkcji. Można to zrobić w jednym z następujących sposobów:
+
+- Uruchom `func init` polecenia select `node` jako stos języka, a następnie wybierz `typescript`.
+
+- Uruchom polecenie `func init --worker-runtime typescript`.
+
+Aby uruchomić kod aplikacji funkcji lokalnie przy użyciu podstawowych narzędzi, użyj `npm start` polecenia, zamiast `func host start`. `npm start` Polecenie jest odpowiednikiem następujących poleceń:
+
+- `npm run build`
+- `func extensions install`
+- `tsc`
+- `func start`
+
+Przed użyciem [ `func azure functionapp publish` ] polecenia do wdrożenia na platformie Azure, należy najpierw uruchomić `npm run build:production` polecenia. To polecenie tworzy gotowych do produkcji kompilacji plików JavaScript przy użyciu plików źródłowych TypeScript, które można wdrożyć przy użyciu [ `func azure functionapp publish` ].
 
 ## <a name="considerations-for-javascript-functions"></a>Zagadnienia dotyczące funkcji języka JavaScript
 
@@ -558,11 +601,7 @@ Podczas pracy z funkcjami JavaScript, należy pamiętać o zagadnienia w poniżs
 
 ### <a name="choose-single-vcpu-app-service-plans"></a>Wybierz pojedynczego vCPU planów usługi App Service
 
-Podczas tworzenia aplikacji funkcji, która korzysta z planu usługi App Service, firma Microsoft zaleca, wybierz pozycję plan pojedynczego vCPU, a nie planu z wielu procesorów wirtualnych. Obecnie funkcje funkcje języka JavaScript bardziej efektywna na maszynach wirtualnych procesorów vCPU pojedynczego oraz przy użyciu większych maszyn wirtualnych nie generuje ulepszenia wydajności. Gdy jest to konieczne, można ręcznie skalować w poziomie, dodając kolejne wystąpienia maszyn wirtualnych procesorów wirtualnych na jednym lub można włączyć automatycznego skalowania. Aby uzyskać więcej informacji, zobacz [ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service-web%2ftoc.json).    
-
-### <a name="typescript-and-coffeescript-support"></a>Obsługa TypeScript i CoffeeScript
-
-Ponieważ bezpośredniej pomocy technicznej jeszcze nie istnieje dla kompilacji automatycznie TypeScript lub CoffeeScript za pośrednictwem środowiska uruchomieniowego, obsługę takich musi być obsługiwane spoza środowiska uruchomieniowego, w czasie wdrażania. 
+Podczas tworzenia aplikacji funkcji, która korzysta z planu usługi App Service, firma Microsoft zaleca, wybierz pozycję plan pojedynczego vCPU, a nie planu z wielu procesorów wirtualnych. Obecnie funkcje funkcje języka JavaScript bardziej efektywna na maszynach wirtualnych procesorów vCPU pojedynczego oraz przy użyciu większych maszyn wirtualnych nie generuje ulepszenia wydajności. Gdy jest to konieczne, można ręcznie skalować w poziomie, dodając kolejne wystąpienia maszyn wirtualnych procesorów wirtualnych na jednym lub można włączyć automatycznego skalowania. Aby uzyskać więcej informacji, zobacz [ręczne lub automatyczne skalowanie liczby wystąpień](../monitoring-and-diagnostics/insights-how-to-scale.md?toc=%2fazure%2fapp-service%2ftoc.json).
 
 ### <a name="cold-start"></a>Zimny Start
 
@@ -575,3 +614,5 @@ Więcej informacji zawierają następujące zasoby:
 + [Najlepsze rozwiązania dotyczące usługi Azure Functions](functions-best-practices.md)
 + [Dokumentacja usługi Azure Functions dla deweloperów](functions-reference.md)
 + [Wyzwalacze w usłudze Azure Functions i powiązania](functions-triggers-bindings.md)
+
+["functionapp func azure publish"]: functions-run-local.md#project-file-deployment

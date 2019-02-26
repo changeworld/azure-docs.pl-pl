@@ -8,21 +8,19 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a1f5a698ee76ebd0561bd19ff1a23d0f04be0771
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: c55783e9b209a1280a21edca34b75e72481f4cb6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410119"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807001"
 ---
 #   <a name="shaper-cognitive-skill"></a>Shaper umiejętności cognitive
 
-**Shaper** umiejętności tworzy typu złożonego do obsługi złożonych pola (nazywane także wieloczęściowy pola). Pole Typ złożony ma wiele części, ale jest traktowany jako pojedynczy element w indeksie usługi Azure Search. Skonsolidowane pola przydatne w scenariuszach wyszukiwania przykładami łączenie imię i nazwisko w jedno pole, miasta i stanu do pojedynczego pola lub nazwa i Data urodzenia na pojedyncze pole, aby ustanowić unikatową tożsamość.
-
-**Shaper** umiejętności umożliwia zasadniczo tworzenia struktury definiuje nazwy elementów członkowskich tej struktury i przypisania wartości do każdego elementu członkowskiego.
+**Shaper** umiejętności konsoliduje kilku wejść na typ złożony, który może być przywoływany w dalszej części wzbogacony potok. **Shaper** umiejętności umożliwia zasadniczo tworzenia struktury definiuje nazwy elementów członkowskich tej struktury i przypisania wartości do każdego elementu członkowskiego. Skonsolidowane pola przydatne w scenariuszach wyszukiwania przykładami łączenie imię i nazwisko w struktura single, miasta i stanu do pojedynczego struktury lub nazwa i Data urodzenia w jednym strukturę nawiązać unikatową tożsamość.
 
 Domyślnie ta technika obsługuje obiekty, które są szczegółowe o jeden poziom. W przypadku bardziej złożonych obiektów można połączyć w łańcuch kilka **Shaper** kroki.
 
@@ -58,7 +56,7 @@ W poniższym przykładzie przedstawiono elementu członkowskiego nazw jako dane 
   "outputs": [
     {
       "name": "output",
-      "targetName": analyzedText"
+      "targetName": "analyzedText"
     }
   ]
 }
@@ -125,8 +123,8 @@ Definicja Shaper umiejętności, w tym scenariuszu może wyglądać następując
     ],
     "outputs": [
         {
-            "output": "titlesAndChapters",
-            "targetName": "analyzedText"
+            "name": "output",
+            "targetName": "titlesAndChapters"
         }
     ]
 }

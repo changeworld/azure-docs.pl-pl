@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 290230237a68730a908c6fd0fb0df1d63035b93b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cb2261e92e90bef7cdd51b0ebf7a4ed34ca01624
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247344"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806237"
 ---
 # <a name="designing-tables-in-azure-sql-data-warehouse"></a>Projektowanie tabel w usłudze Azure SQL Data Warehouse
 
@@ -61,7 +61,7 @@ CREATE TABLE MyTable (col1 int, col2 int );
 ```
 
 ### <a name="temporary-table"></a>Tabela tymczasowa
-Tabela tymczasowa istnieje tylko na czas trwania sesji. Można użyć tabeli tymczasowej, uniemożliwienia inne zastosowania tymczasowego wyniki, a także zmniejszyć zapotrzebowanie na oczyszczanie.  Ponieważ tabele tymczasowe również korzystać z magazynu lokalnego, oferują one może zwiększyć wydajność w przypadku niektórych operacji.  Aby uzyskać więcej informacji, zobacz [tabele tymczasowe](sql-data-warehouse-tables-temporary.md).
+Tabela tymczasowa istnieje tylko na czas trwania sesji. Można użyć tabeli tymczasowej, aby uniemożliwić innym użytkownikom wyświetlanie wyników tymczasowej, a także zmniejszyć zapotrzebowanie na oczyszczanie.  Ponieważ tabele tymczasowe również korzystać z magazynu lokalnego, oferują one może zwiększyć wydajność w przypadku niektórych operacji.  Aby uzyskać więcej informacji, zobacz [tabele tymczasowe](sql-data-warehouse-tables-temporary.md).
 
 ### <a name="external-table"></a>Tabela zewnętrzna
 Tabela zewnętrzna wskazuje danych znajdujących się w usłudze Azure Storage blob lub Azure Data Lake Store. Gdy jest używana w połączeniu z instrukcji CREATE TABLE AS SELECT, wybierając z tabeli zewnętrznej importuje dane do usługi SQL Data Warehouse. Tabele zewnętrzne w związku z tym są przydatne do ładowania danych. Samouczek ładowania, zobacz [przy użyciu technologii PolyBase do ładowania danych z usługi Azure blob storage](load-data-from-azure-blob-storage-using-polybase.md).
@@ -95,7 +95,7 @@ Kategoria tabeli często określa, którą opcję wybrać do dystrybucji w tabel
 |:---------------|:--------------------|
 | Fakt           | Za pomocą dystrybucji skrótów klastrowanego indeksu magazynu kolumn. Dwie tabele skrótów są połączone w tej samej kolumnie dystrybucji zwiększa wydajność. |
 | Wymiar      | Użycie replikacji dla mniejszych tabel. Jeśli tabele są zbyt duże, aby przechowywać w każdym węźle obliczeniowym, należy użyć rozproszonego wyznaczania wartości skrótu. |
-| Przemieszczanie        | Użyj działania okrężnego dla tabeli przemieszczania. Obciążenia za pomocą instrukcji CTAS jest szybkie. Gdy dane znajdują się w tabeli przemieszczania, użyj INSERT... Zaznacz, aby przenieść dane do tabel produkcyjnych. |
+| Przejściowe        | Użyj działania okrężnego dla tabeli przemieszczania. Obciążenia za pomocą instrukcji CTAS jest szybkie. Gdy dane znajdują się w tabeli przemieszczania, użyj INSERT... Zaznacz, aby przenieść dane do tabel produkcyjnych. |
 
 ## <a name="table-partitions"></a>Partycje tabel
 Tabeli partycjonowanej magazyny i wykonuje operacje na wiersze tabeli, zgodnie z zakresami danych. Na przykład tabela może być dzielone według dnia, miesiąca lub roku. Może poprawić wydajność zapytań przez usunięcie partycji, co ogranicza skanowania zapytań do danych w ramach partycji. Można również utrzymania danych poprzez przełączanie partycji. Ponieważ dane w usłudze SQL Data Warehouse została już wysłana, zbyt dużej liczby partycji może zmniejszyć wydajność zapytań. Aby uzyskać więcej informacji, zobacz [wskazówki dotyczące partycjonowania](sql-data-warehouse-tables-partition.md).

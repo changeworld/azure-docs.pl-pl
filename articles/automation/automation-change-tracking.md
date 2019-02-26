@@ -10,18 +10,18 @@ ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 07fd8c41e7817e232513ed9a260c3722a1fdac11
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: e429d9577b938aea20318aa09a0247e00e4f66b6
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429268"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819586"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
 Ten artykuł ułatwia korzystanie rozwiązania Change Tracking można łatwo zidentyfikować zmiany w danym środowisku. Rozwiązanie umożliwia śledzenie zmian do oprogramowania Windows i Linux, Windows i Linux, pliki, klucze rejestru Windows, usługi Windows i demony systemu Linux. Identyfikowanie zmian w konfiguracji ułatwia identyfikowanie problemów operacyjnych.
 
-Zmiany zainstalowanego oprogramowania, usług Windows, plików i rejestru Windows i demonów systemu Linux na monitorowanych serwerach są wysyłane do usługi Log Analytics w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane. Korzystając z informacji podanych na pulpicie nawigacyjnym śledzenia zmian, łatwo widać zmiany wprowadzone w ramach infrastruktury serwera.
+Zmiany zainstalowanego oprogramowania, usług Windows, plików i rejestru Windows i demonów systemu Linux na monitorowanych serwerach są wysyłane do usługi Azure Monitor w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane. Korzystając z informacji podanych na pulpicie nawigacyjnym śledzenia zmian, łatwo widać zmiany wprowadzone w ramach infrastruktury serwera.
 
 ## <a name="supported-windows-operating-systems"></a>Obsługiwane systemy operacyjne Windows
 
@@ -261,7 +261,7 @@ Kliknięcie zmiany lub zdarzenie, wyświetlenie szczegółowych informacji na te
 
 ## <a name="search-logs"></a>Przeszukiwanie dzienników
 
-Oprócz szczegółów, które znajdują się w portalu wyszukiwania można wykonać względem dzienników. Za pomocą **Change Tracking** otwarty, kliknij **usługi Log Analytics**, spowoduje to otwarcie **wyszukiwanie w dzienniku** strony.
+Oprócz szczegółów, które znajdują się w portalu wyszukiwania można wykonać względem dzienników. Za pomocą **Change Tracking** otwarty, kliknij **usługi Log Analytics**, spowoduje to otwarcie **dzienniki** strony.
 
 ### <a name="sample-queries"></a>Przykładowe zapytania
 
@@ -314,5 +314,5 @@ Odwiedź samouczka na śledzenie zmian, aby dowiedzieć się więcej o korzystan
 > [!div class="nextstepaction"]
 > [Rozwiązywanie problemów dotyczących zmian w Twoim środowisku](automation-tutorial-troubleshoot-changes.md)
 
-* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](../log-analytics/log-analytics-log-searches.md) Aby wyświetlić szczegółowe dane rozwiązania change tracking.
+* Użyj [przeszukiwania dzienników w dzienniki usługi Azure Monitor](../log-analytics/log-analytics-log-searches.md) Aby wyświetlić szczegółowe dane rozwiązania change tracking.
 

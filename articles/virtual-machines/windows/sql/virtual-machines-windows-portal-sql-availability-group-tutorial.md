@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 65ccf45ea8ea1f8f553be0b2c599f5c1433fc3e8
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 61a05f912e8b8e0b954dc43faeb7d6e35a08b657
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359718"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820148"
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure ręcznie
 
@@ -53,7 +53,7 @@ Poniższa tabela zawiera listę wymagań wstępnych, które należy wykonać prz
 Przed rozpoczęciem tego samouczka musisz [spełnić wymagania wstępne dotyczące tworzenia zawsze włączonych grup dostępności w usłudze Azure Virtual Machines](virtual-machines-windows-portal-sql-availability-group-prereq.md). Jeśli te wymagania wstępne są już wypełnione, możesz przejść do tematu [tworzenia klastrów](#CreateCluster).
 
   >[!NOTE]
-  > Wiele z tych kroków w ramach tego samouczka można zautomatyzować przy użyciu szablonu szybkiego startu platformy Azure. Aby uzyskać więcej informacji, zobacz [tworzenia usługi WSFC, odbiornik i konfigurowanie wewnętrznego modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na maszynę Wirtualną programu SQL Server przy użyciu szablonów szybkiego startu platformy Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+  > Wiele z krokami opisanymi w tym samouczku teraz można zautomatyzować za pomocą [wiersza polecenia platformy Azure SQL VM](virtual-machines-windows-sql-availability-group-cli.md) i [szablony szybkiego startu platformy Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->

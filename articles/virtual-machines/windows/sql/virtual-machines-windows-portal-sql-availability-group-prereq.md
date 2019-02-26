@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
-ms.openlocfilehash: 7aebdace6b6200f400d0c642c8cbdc6d31544752
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 17eb51044aae7f1f1536e965eea1d1cdb0a1a42b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733031"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817443"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Należy spełnić wymagania wstępne dotyczące tworzenia zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure
 
@@ -464,7 +464,7 @@ Aby dodać funkcje klaster trybu Failover, wykonaj następujące czynności na o
 Powtórz kroki na drugą maszyną Wirtualną serwera SQL.
 
   >[!NOTE]
-  > Teraz można zautomatyzować ten krok, wraz z faktycznie przyłączania maszyny wirtualne programu SQL Server do klastra trybu failover przy użyciu szablonu szybkiego startu platformy Azure. Aby uzyskać więcej informacji, zobacz [tworzenia usługi WSFC, odbiornik i konfigurowanie wewnętrznego modułu równoważenia obciążenia dla zawsze włączonej grupy dostępności na maszynę Wirtualną programu SQL Server przy użyciu szablonu szybkiego startu platformy Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+  > Ten krok, wraz z faktycznie przyłączania maszyny wirtualne programu SQL Server do klastra trybu failover, teraz można zautomatyzować za pomocą [wiersza polecenia platformy Azure SQL VM](virtual-machines-windows-sql-availability-group-cli.md) i [szablony szybkiego startu platformy Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
 
 
 ## <a name="a-nameendpoint-firewall-configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"> Skonfiguruj zaporę na każdej maszynie Wirtualnej serwera SQL

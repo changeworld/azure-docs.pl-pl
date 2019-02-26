@@ -5,17 +5,17 @@ description: Aby korzystać z usługi Azure Machine Learning Studio, musisz mie�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: a0a6c2d6171b4b383c97cc80d8a64efef9d193f5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270112"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823131"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Utwórz i Udostępnij obszar roboczy usługi Azure Machine Learning Studio
 

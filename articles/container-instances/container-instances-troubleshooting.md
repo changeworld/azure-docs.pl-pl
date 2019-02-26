@@ -2,19 +2,19 @@
 title: Rozwiązywanie problemów w usłudze Azure Container Instances
 description: Dowiedz się, jak rozwiązywać problemy związane z usługą Azure Container Instances
 services: container-instances
-author: seanmck
+author: dlepow
 manager: jeconnoc
 ms.service: container-instances
 ms.topic: article
-ms.date: 01/08/2019
-ms.author: seanmck
+ms.date: 02/15/2019
+ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 609d52f9f2c5dce1bbfd668e94db25aca3d52f69
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: bfa616fb16470a3543f8c981a0104f6bda24cf4d
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119054"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823482"
 ---
 # <a name="troubleshoot-common-issues-in-azure-container-instances"></a>Rozwiązywanie typowych problemów w usłudze Azure Container Instances
 
@@ -29,9 +29,9 @@ Podczas definiowania specyfikacji usługi kontenera, niektóre parametry wymagaj
 | Nazwa grupy kontenerów | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Nazwa kontenera | 1-64 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>-<role>-CG<number>` |`web-batch-CG1` |
 | Porty kontenera | Od 1 do 65535 |Liczba całkowita |Liczba całkowita od 1 do 65535 |`<port-number>` |`443` |
-| Etykieta nazwy DNS | 5 – 63. |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>` |`frontend-site1` |
+| Etykieta nazwy DNS | 5-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i łącznik w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>` |`frontend-site1` |
 | Zmienna środowiskowa | 1-63 |Bez uwzględniania wielkości liter |Alfanumeryczne i podkreślenia (_) w dowolnym miejscu poza pierwszym ani ostatnim znakiem. |`<name>` |`MY_VARIABLE` |
-| Nazwa woluminu | 5 – 63. |Bez uwzględniania wielkości liter |Małe litery i cyfry i łączniki w dowolnym miejscu poza pierwszym ani ostatnim znakiem. Nie może zawierać dwóch łączników pod rząd. |`<name>` |`batch-output-volume` |
+| Nazwa woluminu | 5-63 |Bez uwzględniania wielkości liter |Małe litery i cyfry i łączniki w dowolnym miejscu poza pierwszym ani ostatnim znakiem. Nie może zawierać dwóch łączników pod rząd. |`<name>` |`batch-output-volume` |
 
 ## <a name="os-version-of-image-not-supported"></a>Wersja systemu operacyjnego obrazu nie jest obsługiwane
 
@@ -66,7 +66,7 @@ Jeśli nie można ściągnąć obrazu, zdarzenia, podobnie do poniższego są wy
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "pulling image \"microsoft/aci-hellowrld\"",
+    "message": "pulling image \"microsoft/aci-helloworld\"",
     "name": "Pulling",
     "type": "Normal"
   },
@@ -74,7 +74,7 @@ Jeśli nie można ściągnąć obrazu, zdarzenia, podobnie do poniższego są wy
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:19+00:00",
     "lastTimestamp": "2017-12-21T22:57:00+00:00",
-    "message": "Failed to pull image \"microsoft/aci-hellowrld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
+    "message": "Failed to pull image \"microsoft/aci-helloworld\": rpc error: code 2 desc Error: image t/aci-hellowrld:latest not found",
     "name": "Failed",
     "type": "Warning"
   },
@@ -82,7 +82,7 @@ Jeśli nie można ściągnąć obrazu, zdarzenia, podobnie do poniższego są wy
     "count": 3,
     "firstTimestamp": "2017-12-21T22:56:20+00:00",
     "lastTimestamp": "2017-12-21T22:57:16+00:00",
-    "message": "Back-off pulling image \"microsoft/aci-hellowrld\"",
+    "message": "Back-off pulling image \"microsoft/aci-helloworld\"",
     "name": "BackOff",
     "type": "Normal"
   }
@@ -93,7 +93,7 @@ Jeśli nie można ściągnąć obrazu, zdarzenia, podobnie do poniższego są wy
 
 Domyślnie grupy kontenerów [zasady ponownego uruchamiania](container-instances-restart-policy.md) z **zawsze**, więc kontenerów w grupie kontenerów zawsze po ponowne uruchomienie zostało ukończone. Konieczne może być to można zmienić **OnFailure** lub **nigdy** Jeśli zamierzasz uruchamiać kontenery opartego na zadaniach. Jeśli określisz **OnFailure** i nadal znaleźć ciągłe ponowne uruchomienie, może to być problem z aplikacją lub skrypt wykonywany w kontenerze.
 
-Podczas uruchamiania grupy kontenerów bez długotrwałe procesy mogą pojawić się powtarzanych umożliwia zamknięcie i ponowne uruchomienie komputera przy użyciu obrazów, takie jak Ubuntu lub Alpine. Łączenie za pośrednictwem [EXEC](container-instances-exec.md) nie będzie działać w kontenerze ma żaden proces, utrzymywanie jej aktywności. Aby rozwiązać to start polecenia podobnego do poniższego, przy użyciu wdrożenia grupy kontenerów, który zapewnienie działanie kontenera.
+Podczas uruchamiania grupy kontenerów bez długotrwałe procesy mogą pojawić się powtarzanych umożliwia zamknięcie i ponowne uruchomienie komputera przy użyciu obrazów, takie jak Ubuntu lub Alpine. Łączenie za pośrednictwem [EXEC](container-instances-exec.md) nie będzie działać w kontenerze ma żaden proces, utrzymywanie jej aktywności. Aby rozwiązać ten problem, obejmują uruchamiania polecenia podobnego do poniższego, przy użyciu wdrożenia grupy kontenerów, który zapewnienie działanie kontenera.
 
 ```azurecli-interactive
 ## Deploying a Linux container
@@ -178,11 +178,11 @@ Innym sposobem, aby zmniejszyć wpływ ściągania obrazów na czas uruchamiania
 
 ### <a name="cached-windows-images"></a>Pamięci podręcznej obrazów Windows
 
-Usługa Azure Container Instances używa mechanizm buforowania, aby pomóc szybkość czas uruchamiania kontenera obrazów opartych na obrazach niektórych Windows.
+Usługa Azure Container Instances używa mechanizm buforowania, aby pomóc czas uruchamiania kontenera szybkość obrazy oparte na typowych obrazy systemu Windows i Linux. Szczegółową listę pamięci podręcznej obrazów i tagów, należy użyć [listy pamięci podręcznej obrazów] [ list-cached-images] interfejsu API.
 
 Aby zapewnić najlepszy czas uruchamiania kontenera Windows, użyj jednej z **trzy najbardziej aktualne** wersje następujących **dwa obrazy** jako obraz podstawowy:
 
-* [System Windows Server 2016] [ docker-hub-windows-core] (tylko LTS)
+* [Windows Server Core 2016] [ docker-hub-windows-core] (tylko LTSC)
 * [Windows Server 2016 Nano Server][docker-hub-windows-nano]
 
 ### <a name="windows-containers-slow-network-readiness"></a>Gotowość wolną sieć kontenery Windows
@@ -207,9 +207,11 @@ Ten błąd wskazuje, że z powodu dużego obciążenia w regionie, w którym pr�
 Usługa Azure Container Instances nie ujawnia bezpośredni dostęp do podstawowej infrastruktury, który jest hostem grupy kontenerów. Obejmuje to dostęp do interfejsu API platformy Docker zainstalowany na hoście kontenera, a uprzywilejowanych kontenerów. Jeśli potrzebujesz interakcji platformy Docker, sprawdź [Dokumentacja referencyjna REST](https://aka.ms/aci/rest) obsługuje interfejs API ACI. Jeśli jest coś, co jest Brak, Prześlij żądanie na [fora z opiniami ACI](https://aka.ms/aci/feedback).
 
 ## <a name="ips-may-not-be-accessible-due-to-mismatched-ports"></a>Adresy IP mogą być niedostępne z powodu niezgodnej portów
+
 Usługa Azure Container Instances nie obsługuje obecnie portu mapowania takich jak za pomocą konfiguracji regularnych platformy docker, jednak ta poprawka znajduje się w planie. Jeśli okaże się adresy IP nie są dostępne, gdy uznasz, że powinno być, upewnij się, został skonfigurowany obraz kontenera do nasłuchiwania tych samych portów, należy udostępnić w grupie kontenerów za pomocą `ports` właściwości.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Dowiedz się, jak [pobrać dzienniki kontenera i zdarzenia](container-instances-get-logs.md) debugować swoje kontenery.
 
 <!-- LINKS - External -->
@@ -221,3 +223,4 @@ Dowiedz się, jak [pobrać dzienniki kontenera i zdarzenia](container-instances-
 
 <!-- LINKS - Internal -->
 [az-container-show]: /cli/azure/container#az-container-show
+[list-cached-images]: /rest/api/container-instances/listcachedimages

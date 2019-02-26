@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 5f8ae6d9138a7413b0cca4cca7bcc47c13212674
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 728d73ee954a6ddebf80c6a9c466784c9c79bd53
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358055"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819160"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Wprowadzenie do programu SQL Server zawsze włączonych grup dostępności na maszynach wirtualnych platformy Azure #
 
@@ -36,13 +36,33 @@ Główną różnicą grupy dostępności na maszynach wirtualnych platformy jest
 
 Ponadto w klastrze trybu failover gościa maszyny Wirtualnej IaaS platformy Azure, zalecamy jedną kartą Sieciową na serwer (węzeł klastra) i pojedynczej podsieci. Sieci platformy Azure ma fizyczny nadmiarowość, co sprawia, że dodatkowe karty sieciowe i podsieci niepotrzebne w klastrze gościa maszyny Wirtualnej IaaS platformy Azure. Mimo że raport z weryfikacji klastra wyświetli ostrzeżenie węzły tylko są dostępne w ramach jednej sieci, to ostrzeżenie można zignorować w klastrach trybu failover gościa maszyny Wirtualnej IaaS platformy Azure. 
 
+|  | Wersja systemu Windows Server | Wersja programu SQL Server | Wersja programu SQL Server | Konfiguracja kworum WSFC | Odzyskiwanie po awarii przy użyciu wielu regionów | Obsługa wielu podsieci | Obsługa istniejącej AD | Odzyskiwanie po awarii przy użyciu tego samego regionu w wielu strefach | Obsługa dist AG nie ma domeny usługi AD | Obsługa dist AG z żadnego klastra |  
+| :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
+| [INTERFEJS WIERSZA POLECENIA SQL MASZYNY WIRTUALNEJ](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | Monitor w chmurze | Nie | Yes | Yes | Yes | Nie | Nie |
+| [Szablony szybkiego startu](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | Monitor w chmurze | Nie | Yes | Yes | Yes | Nie | Nie |
+| [Szablon portalu](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | Udział plików | Nie | Nie | Nie | Nie | Nie | Nie |
+| [Ręcznie](virtual-machines-windows-portal-sql-availability-group-prereq.md) | Wszyscy | Wszyscy | Wszyscy | Wszyscy | Yes | Yes | Yes | Yes | Yes | Yes |
+| &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
+
 Gdy wszystko jest gotowe do tworzenia grupy dostępności programu SQL Server na maszynach wirtualnych platformy Azure, odnoszą się do tych samouczków.
 
-## <a name="automatically-create-an-availability-group-from-a-template"></a>Automatyczne tworzenie grupy dostępności na podstawie szablonu
+## <a name="manually-with-azure-cli"></a>Ręcznie przy użyciu wiersza polecenia platformy Azure
+Przy użyciu wiersza polecenia platformy Azure pozwalają skonfigurować i wdrożyć do grupy dostępności jest to zalecana opcja, ponieważ stanowi on pod względem prostotą i szybkością wdrożenia. Za pomocą wiersza polecenia platformy Azure, utworzenie klastra pracy awaryjnej Windows, przyłączanie maszyn wirtualnych programu SQL Server w klastrze, a także tworzenie odbiornika i wewnętrznego modułu równoważenia obciążenia wszystkie można osiągnąć w mniej niż 30 minut. Ta opcja nadal wymaga ręcznego utworzenia grupy dostępności, ale automatyzuje wszystkie inne wymagane kroki konfiguracji. 
+
+Aby uzyskać więcej informacji, zobacz [Użyj SQL VM wiersza polecenia platformy Azure na konfigurowanie zawsze włączonej grupy dostępności programu SQL Server na Maszynie wirtualnej platformy Azure](virtual-machines-windows-sql-availability-group-cli.md). 
+
+## <a name="automatically-with-azure-quickstart-templates"></a>Automatycznie przy użyciu szablonów szybkiego startu platformy Azure
+Korzystanie z szablonów szybkiego startu platformy Azure dostawca zasobów maszyny Wirtualnej SQL do wdrożenia klastra pracy awaryjnej Windows, przyłączyć się do niej maszyny wirtualne SQL Server, utwórz odbiornik i konfigurowanie wewnętrznego modułu równoważenia obciążenia. Ta opcja nadal wymaga ręcznego utworzenia grupy dostępności i wewnętrznego modułu równoważenia obciążenia (ILB), ale pozwala zautomatyzować i upraszcza wszystkie inne wymagane kroki konfiguracji (w tym konfigurację wewnętrznego modułu równoważenia obciążenia). 
+
+Aby uzyskać więcej informacji, zobacz [szablon szybkiego startu platformy Azure Użyj Konfigurowanie zawsze włączonej grupy dostępności dla programu SQL Server na Maszynie wirtualnej platformy Azure](virtual-machines-windows-sql-availability-group-quickstart-template.md).
+
+
+## <a name="automatically-with-an-azure-portal-template"></a>Automatycznie przy użyciu szablonu portalu platformy Azure
 
 [Konfigurowanie zawsze włączonej grupy dostępności na maszynie Wirtualnej platformy Azure automatycznie — Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 
-## <a name="manually-create-an-availability-group-in-azure-portal"></a>Ręcznie utworzyć grupy dostępności w witrynie Azure portal
+
+## <a name="manually-in-azure-portal"></a>Ręcznie w witrynie Azure portal
 
 Można również tworzyć maszyny wirtualne samodzielnie bez szablonu. Najpierw należy spełnić wymagania wstępne, a następnie utworzyć grupy dostępności. Zobacz następujące tematy: 
 
@@ -52,4 +72,4 @@ Można również tworzyć maszyny wirtualne samodzielnie bez szablonu. Najpierw 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Konfigurowanie programu SQL Server zawsze włączona grupa dostępności na maszynach wirtualnych platformy Azure w różnych regionach](virtual-machines-windows-portal-sql-availability-group-dr.md).
+[Konfigurowanie programu SQL Server zawsze włączona grupa dostępności na maszynach wirtualnych platformy Azure w różnych regionach](virtual-machines-windows-portal-sql-availability-group-dr.md)

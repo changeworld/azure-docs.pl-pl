@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie dostępem do resoruces platformy Azure przy użyciu RBAC i witryny Azure portal | Dokumentacja firmy Microsoft
+title: Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak zarządzać dostępem do zasobów platformy Azure dla użytkowników, grup, nazw głównych usług i zarządzanych tożsamości przy użyciu kontroli dostępu opartej na rolach (RBAC) i witryny Azure portal. Obejmuje to wyświetlanie dostępu, jego przyznawanie i usuwanie.
 services: active-directory
 documentationcenter: ''
@@ -11,43 +11,79 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/30/2018
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1e3057108ef179af2f4692c061091fbdf59f0af2
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: bb23cbc275e01eab5361504c547c020b0a29f4c3
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342341"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805294"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem do zasobów platformy Azure przy użyciu RBAC i witryny Azure portal
 
-[Kontrola dostępu oparta na rolach (RBAC)](overview.md) sposób zarządzania dostępem do zasobów platformy Azure. W tym artykule opisano, jak zarządzać dostępu dla użytkowników, grup, nazw głównych usług i zarządzanych tożsamości przy użyciu RBAC i witryny Azure portal.
+[Kontrola dostępu oparta na rolach (RBAC)](overview.md) sposób zarządzania dostępem do zasobów platformy Azure. W tym artykule opisano, jak zarządzać dostępem przy użyciu witryny Azure portal. Jeśli potrzebujesz zarządzać dostępem do usługi Azure Active Directory, zobacz [widoku i przypisywanie ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-manage-roles-portal.md).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby dodać i usunąć przypisania roli, musisz mieć:
+
+- `Microsoft.Authorization/roleAssignments/write` i `Microsoft.Authorization/roleAssignments/delete` uprawnienia, takie jak [Administrator dostępu użytkowników](built-in-roles.md#user-access-administrator) lub [właściciela](built-in-roles.md#owner)
+
+## <a name="overview-of-access-control-iam"></a>Omówienie kontroli dostępu (IAM)
+
+**Kontrola dostępu (IAM)** bloku, który umożliwia zarządzanie dostępem do zasobów platformy Azure. Jest również znany jako Zarządzanie tożsamościami i dostępem i pojawia się w kilku lokalizacjach w witrynie Azure portal. Poniżej przedstawiono przykład bloku sterowania (IAM) dostępu do subskrypcji.
+
+![W bloku kontrola (IAM) dostępu do subskrypcji](./media/role-assignments-portal/access-control-numbers.png)
+
+W poniższej tabeli opisano, jakie są niektóre elementy na użytek:
+
+| # | Element | Rzeczywiste użycie go do |
+| --- | --- | --- |
+| 1 | Zasobów, w której kontrola dostępu (IAM) jest otwarty | Określenie zakresu (subskrypcji, w tym przykładzie) |
+| 2 | **Dodaj** przycisku | Dodawanie przypisania roli |
+| 3 | **Sprawdź dostęp** kartę | Wyświetlanie przypisań ról dla pojedynczego użytkownika |
+| 4 | **Przypisania ról** kartę | Wyświetlanie przypisań ról w bieżącym zakresie |
+| 5 | **Role** kartę | Wyświetl wszystkie role i uprawnienia |
+
+Do najbardziej efektywne za pomocą bloku (IAM) kontrola dostępu ułatwia jeśli może odpowiedzieć na następujące pytania trzy, próbując zarządzanie dostępem do:
+
+1. **Kto potrzebuje dostępu?**
+
+    Kto odnosi się do użytkownika, grupy, jednostkę usługi lub tożsamość zarządzaną. Jest to również nazywane *podmiotu zabezpieczeń*.
+
+1. **Jakich uprawnień potrzebuje?**
+
+    Uprawnienia są zgrupowane jako role. Możesz wybrać z listy kilka wbudowanych ról.
+
+1. **Gdy potrzebują dostępu?**
+
+    Gdzie odwołuje się do zestawu zasobów, których dotyczy dostępu. Gdzie można grupy zarządzania, subskrypcji, grupy zasobów lub pojedynczy zasób, np. konta magazynu. Jest to nazywane *zakres*.
 
 ## <a name="open-access-control-iam"></a>Otwórz z kontroli dostępu (IAM)
 
-**Kontrola dostępu (IAM)** bloku, Zarządzanie tożsamościami i dostępem, nazywana również pojawia się w portalu. Aby wyświetlić lub zarządzanie dostępem w portalu, pierwszą rzeczą, jaką zwykle są to, otwórz blok sterowania (IAM) dostępu w zakresie, w którym chcesz wyświetlić, lub wprowadzić zmiany.
+Pierwszą rzeczą, jaką należy zdecydować, to miejsce otworzyć blok sterowania (IAM) dostęp. To zależy od zasobów, aby zarządzać dostępem. Czy chcesz zarządzać dostępem dla wszystkich elementów w grupie zarządzania, wszystko w ramach subskrypcji, wszystko w grupie zasobów lub pojedynczy zasób?
 
-1. W witrynie Azure portal kliknij pozycję **wszystkich usług** a następnie wybierz zakresu lub zasobu, aby wyświetlić lub zarządzać. Na przykład, możesz wybrać **grup zarządzania**, **subskrypcje**, **grup zasobów**, lub zasobu.
+1. W witrynie Azure portal kliknij pozycję **wszystkich usług** , a następnie wybierz zakres. Na przykład, możesz wybrać **grup zarządzania**, **subskrypcje**, **grup zasobów**, lub zasobu.
 
-1. Kliknij konkretny rodzaj zasobu, który chcesz wyświetlić lub zarządzania nimi.
+1. Kliknij konkretny rodzaj zasobu.
 
 1. Kliknij pozycję **Kontrola dostępu (IAM)**.
 
-    Poniżej przedstawiono przykład bloku sterowania (IAM) dostępu do subskrypcji.
+    Poniżej przedstawiono przykład bloku sterowania (IAM) dostępu do subskrypcji. Jeśli wprowadzisz zmiany kontroli dostępu w tym miejscu, czy dotyczą całej subskrypcji.
 
     ![W bloku kontrola (IAM) dostępu do subskrypcji](./media/role-assignments-portal/access-control-subscription.png)
 
 ## <a name="view-roles-and-permissions"></a>Wyświetlanie ról i uprawnień
 
-Definicja roli jest kolekcją uprawnień służącą do przypisywania ról. Platforma Azure oferuje ponad 70 [wbudowane role zasobów platformy Azure](built-in-roles.md). Wykonaj następujące kroki, aby wyświetlić role i uprawnienia, które mogą być wykonywane w klastrach zarządzania i płaszczyzny danych.
+Definicja roli jest kolekcją uprawnień służącą do przypisywania ról. Platforma Azure oferuje ponad 70 [wbudowane role zasobów platformy Azure](built-in-roles.md). Wykonaj następujące kroki, aby wyświetlić dostępne role i uprawnienia.
 
-1. Otwórz **kontrola dostępu (IAM)** w zakresie, takich jak grupy zarządzania, subskrypcji, grupy zasobów lub zasobu, które chcesz wyświetlać role i uprawnienia.
+1. Otwórz **kontrola dostępu (IAM)** w dowolnym zakresie.
 
 1. Kliknij przycisk **role** kartę, aby wyświetlić listę wszystkich ról wbudowanych i niestandardowych.
 
-   Można wyświetlić liczbę użytkowników i grup, które są przypisane do każdej roli, w tym zakresie.
+   Można wyświetlić liczbę użytkowników i grup, które są przypisane do każdej roli w bieżącym zakresie.
 
    ![Lista ról](./media/role-assignments-portal/roles-list.png)
 
@@ -57,7 +93,7 @@ Definicja roli jest kolekcją uprawnień służącą do przypisywania ról. Plat
 
 ## <a name="view-role-assignments"></a>Wyświetlanie przypisań ról
 
-Zarządzanie dostępem obejmuje ustalanie, kto ma dostęp, jakie ma uprawnienia i na jakim poziomie. Lista dostępu dla użytkownika, grupy, jednostkę usługi lub tożsamość zarządzaną Wyświetlanie przypisań ról.
+Podczas zarządzania dostępem, chcesz wiedzieć, kto ma dostęp, co to są ich uprawnienia i w jakich zakresie. Lista dostępu dla użytkownika, grupy, jednostkę usługi lub tożsamości zarządzanej możesz wyświetlić swoje przypisania roli.
 
 ### <a name="view-role-assignments-for-a-single-user"></a>Wyświetl przypisania roli dla jednego użytkownika
 
@@ -85,7 +121,7 @@ Wykonaj następujące kroki, aby wyświetlić dostęp dla pojedynczego użytkown
 
 1. Otwórz **kontrola dostępu (IAM)** w zakresie, takich jak grupy zarządzania, subskrypcji, grupy zasobów lub zasobu, które chcesz wyświetlić dostępu.
 
-1. Kliknij przycisk **przypisań ról** karty (lub kliknij przycisk **widoku** przycisku na kafelku przypisania roli w widoku) aby wyświetlić wszystkie przypisania ról w tym zakresie.
+1. Kliknij przycisk **przypisań ról** kartę, aby wyświetlić wszystkie przypisania ról w tym zakresie.
 
    ![Kontrola dostępu — karta przypisania roli](./media/role-assignments-portal/access-control-role-assignments.png)
 
@@ -101,9 +137,11 @@ W funkcji RBAC Aby udzielić dostępu, możesz przypisać rolę do użytkownika,
 
 1. Kliknij przycisk **przypisań ról** kartę, aby wyświetlić wszystkie przypisania ról w tym zakresie.
 
-1. Kliknij przycisk **Dodaj przypisanie roli** aby otworzyć okienko Dodaj przypisanie roli.
+1. Kliknij przycisk **Dodaj** > **Dodaj przypisanie roli** aby otworzyć okienko Dodaj przypisanie roli.
 
    Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
+
+   ![Dodawanie menu](./media/role-assignments-portal/add-menu.png)
 
    ![Okienko Dodawanie przypisania roli](./media/role-assignments-portal/add-role-assignment.png)
 
@@ -127,9 +165,11 @@ Aby użytkownik jest administratorem subskrypcji platformy Azure, należy przypi
 
 1. Kliknij przycisk **przypisań ról** kartę, aby wyświetlić wszystkie przypisania roli dla tej subskrypcji.
 
-1. Kliknij przycisk **Dodaj przypisanie roli** aby otworzyć okienko Dodaj przypisanie roli.
+1. Kliknij przycisk **Dodaj** > **Dodaj przypisanie roli** aby otworzyć okienko Dodaj przypisanie roli.
 
    Jeśli nie masz uprawnień do przypisywania ról, opcja Dodaj przypisanie roli będzie wyłączona.
+
+   ![Dodawanie menu](./media/role-assignments-portal/add-menu.png)
 
    ![Okienko Dodawanie przypisania roli](./media/role-assignments-portal/add-role-assignment.png)
 

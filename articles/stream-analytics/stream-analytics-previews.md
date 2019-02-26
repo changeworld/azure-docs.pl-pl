@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/05/2019
-ms.openlocfilehash: 09f1bdfa4c9a7a179bddf9473b553924bfb58fb7
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 6cd1d917be67d21e3e6dfe54ed5dec77b92509e9
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768566"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821459"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Funkcje w wersji zapoznawczej usługa Azure Stream Analytics
 
@@ -22,6 +22,10 @@ Ten artykuł zawiera podsumowanie wszystkich funkcji, obecnie w wersji zapoznawc
 ## <a name="public-previews"></a>Publiczne wersje zapoznawcze
 
 Następujące funkcje są w publicznej wersji zapoznawczej. Można korzystać z tych funkcji już dziś, ale nie są używane w środowisku produkcyjnym.
+
+### <a name="anomaly-detection"></a>Wykrywanie anomalii
+
+Usługa Azure Stream Analytics wprowadzono nowe modele uczenia maszynowego dzięki obsłudze *kolekcji* i *spadki* wykrywania oprócz dwukierunkowej, będzie wolno działać pozytywne i bardzo wolno ujemna trendów, wykrywania. Aby uzyskać więcej informacji, odwiedź stronę [wykrywania anomalii w usłudze Azure Stream Analytics](stream-analytics-machine-learning-anomaly-detection.md).
 
 ### <a name="sql-database-reference-data"></a>Dane referencyjne bazy danych SQL
 
@@ -47,10 +51,6 @@ Za pomocą platformy .NET standard funkcje zdefiniowane przez użytkownika może
 
 Następujące funkcje są w prywatnej wersji zapoznawczej.
 
-### <a name="anomaly-detection"></a>Wykrywanie anomalii
-
-Usługa Azure Stream Analytics wprowadzono nowe modele uczenia maszynowego dzięki obsłudze *kolekcji* i *spadki* wykrywania oprócz dwukierunkowej, będzie wolno działać pozytywne i bardzo wolno ujemna trendów, wykrywania.
-
 ### <a name="c-custom-deserializer-for-azure-stream-analytics-on-iot-edge"></a>C# niestandardowe Deserializator dla usługi Azure Stream Analytics w usłudze IoT Edge
 
 Deweloperzy teraz wdrożyć deserializers niestandardowych w języku C# do deserializacji zdarzeń otrzymanych przez usługę Azure Stream Analytics. Przykłady formatów, które może być zdeserializowany Parquet, Protobuf, XML lub w dowolnym formacie binarnym.
@@ -61,7 +61,7 @@ Teraz możesz operacjonalizować potoków w czasie rzeczywistym przy użyciu zar
 
 ### <a name="visual-studio-code-for-azure-stream-analytics"></a>Program Visual Studio Code dla usługi Azure Stream Analytics
 
-Zadania usługi Azure Stream Analytics mogą być tworzone w programie Visual Studio Code.
+Zadania usługi Azure Stream Analytics mogą być tworzone w programie Visual Studio Code. Aby uzyskać dostęp do narzędzi prywatnej wersji zapoznawczej funkcji, skontaktuj się z pomocą do *ASAToolsfeedback@microsoft.com*.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -3,8 +3,8 @@ title: Praca z elementami Reliable Collections | Dokumentacja firmy Microsoft
 description: Poznaj najlepsze rozwiązania dotyczące pracy z elementami Reliable Collections.
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
-manager: jeanpaul.connock
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: 39e0cd6b-32c4-4b97-bbcf-33dad93dcad1
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/22/2019
-ms.author: twhitney
-ms.openlocfilehash: 9e542143810745712fb148e0b5ebe126cc8a93bf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: aljo
+ms.openlocfilehash: 38aef6e5ba65f67a1dd30ba2c18e180cd92624c6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727884"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805317"
 ---
 # <a name="working-with-reliable-collections"></a>Praca z elementami Reliable Collections
 Usługa Service Fabric oferuje stanowych model programowania dostępnych dla deweloperów platformy .NET za pomocą elementów Reliable Collections. W szczególności usługa Service Fabric udostępnia klasy niezawodna kolejka i niezawodnego słownika. Korzystając z tych klas, stan programu jest podzielona na partycje (w przypadku skalowalności), replikowane (w przypadku dostępności) i odbywających się w partycji (w przypadku semantyki ACID). Możemy przyjrzeć się typowego użycia obiektu niezawodnego słownika i zobacz, co faktycznie wykonywanie operacji.

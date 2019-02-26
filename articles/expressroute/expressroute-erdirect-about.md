@@ -1,21 +1,21 @@
 ---
 title: Temat usługi ExpressRoute bezpośrednio — Azure | Dokumentacja firmy Microsoft
-description: Ta strona zawiera omówienie usługi ExpressRoute bezpośrednich (wersja zapoznawcza)
+description: Ta strona zawiera omówienie usługi ExpressRoute bezpośrednio
 services: expressroute
-author: mialdrid
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 02/11/2019
+ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 98c5dc7dc6d977525d889a4cd97492183d1aad22
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100741"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818157"
 ---
-# <a name="about-expressroute-direct-preview"></a>Temat usługi ExpressRoute bezpośrednie (wersja zapoznawcza)
+# <a name="about-expressroute-direct"></a>Informacje o usłudze ExpressRoute Direct
 
 Bezpośrednio z usługi ExpressRoute zapewnia możliwość łączenia bezpośrednio do globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Bezpośrednie ExpressRoute zapewnia łączność podwójną 100 GB, obsługująca łączność aktywny/aktywny na dużą skalę.
 
@@ -25,14 +25,9 @@ Najważniejsze funkcje, które zapewnia usługi ExpressRoute bezpośrednio obejm
 * Fizyczne odizolowanie dla przedsiębiorstw, które są regulowane i wymagają dedykowanej i odizolowanej łączności, takich jak: usług bankowych, rządowych i handlowych
 * Pełna kontrola nad rozmieszczeniem obwodów na podstawie jednostek biznesowych
 
-> [!IMPORTANT]
-> Bezpośrednie usługi ExpressRoute jest obecnie dostępna w wersji zapoznawczej.
->
-> Publiczna wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie należy korzystać z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+## <a name="onboard-to-expressroute-direct"></a>Dołączanie do usługi ExpressRoute bezpośrednio
 
-## <a name="enroll-in-the-preview"></a>Rejestracja w wersji zapoznawczej
-
-Przed rozpoczęciem korzystania z usługi ExpressRoute bezpośrednio, musisz zarejestrować swoją subskrypcję w wersji zapoznawczej. Aby zarejestrować urządzenie, Wyślij wiadomość E-mail do <ExpressRouteDirect@microsoft.com> identyfikatorem subskrypcji, łącznie z następującymi szczegółami:
+Przed rozpoczęciem korzystania z usługi ExpressRoute bezpośrednio, musisz zarejestrować swoją subskrypcję. Aby zarejestrować urządzenie, Wyślij wiadomość E-mail do <ExpressRouteDirect@microsoft.com> identyfikatorem subskrypcji, łącznie z następującymi szczegółami:
 
 * Scenariusze, które chcesz wykonać przy użyciu **bezpośrednio z usługi ExpressRoute**
 * Zobacz Preferencje lokalizacji — [partnerzy i lokalizacje komunikacji równorzędnej](expressroute-locations-providers.md) pełną listę wszystkich lokalizacji
@@ -74,7 +69,7 @@ Usługa ExpressRoute bezpośrednio obsługuje QinQ i Dot1Q znakowanie sieci VLAN
 
 ## <a name="sla"></a>Umowa SLA
 
-Bezpośrednie ExpressRoute zapewnia taką samą umową SLA klasy przedsiębiorstwa aktywny/aktywny nadmiarowych połączeń do globalnej sieci firmy Microsoft. Infrastruktura usługi ExpressRoute jest nadmiarowy i łączności do globalnej sieci firmy Microsoft jest nadmiarowy i zróżnicowanych i skaluje się w związku z tym wymagania klientów. W trakcie okresu zapoznawczego, będzie objęta umową SLA i mają być uwzględniane tylko w przypadku obciążeń nieprodukcyjnych.
+Bezpośrednie ExpressRoute zapewnia taką samą umową SLA klasy przedsiębiorstwa aktywny/aktywny nadmiarowych połączeń do globalnej sieci firmy Microsoft. Infrastruktura usługi ExpressRoute jest nadmiarowy i łączności do globalnej sieci firmy Microsoft jest nadmiarowy i zróżnicowanych i skaluje się w związku z tym wymagania klientów. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

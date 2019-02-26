@@ -8,32 +8,42 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/12/2019
-ms.openlocfilehash: 204138e7b8b3846e2d50607b3c5ec0836abefe24
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.date: 02/24/2019
+ms.openlocfilehash: ed172db6aaa064cfed319a4190306d91aa846c48
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162377"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806831"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Dostęp do zasobów sieci wirtualnej platformy Azure z usługi Azure Logic Apps za pomocą środowiska usług integracji (ISEs)
 
 > [!NOTE]
-> Ta funkcja jest w *prywatnej wersji zapoznawczej*. Do dołączenia do prywatnej wersji zapoznawczej [tworzenia żądania w tym miejscu](https://aka.ms/iseprivatepreview).
+> Ta funkcja jest w *publicznej wersji zapoznawczej*.
 
-Czasami usługi logic apps i kont integracji muszą mieć dostęp do zabezpieczonych zasobów, takich jak maszyny wirtualne (VM) i innych systemów lub usług, w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Aby skonfigurować ten dostęp, możesz [tworzenie *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) do uruchamiania aplikacji logiki i konta integracji.
+Czasami usługi logic apps i kont integracji muszą mieć dostęp do zabezpieczonych zasobów, takich jak maszyny wirtualne (VM) i innych systemów lub usług, w [sieci wirtualnej platformy Azure](../virtual-network/virtual-networks-overview.md). Aby skonfigurować ten dostęp, możesz [tworzenie *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md) do uruchamiania aplikacji logiki i konta integracji. Podczas tworzenia środowiska ISE, platforma Azure wdroży prywatnych i izolowane wystąpienie usługi Logic Apps do sieci wirtualnej platformy Azure. To wystąpienie prywatnej wykorzystuje dedykowane zasoby, takie jak storage i jest uruchamiana niezależnie od publicznego "global" Usługa Logic Apps. Oddzielanie izolowanym wystąpieniem prywatnym i publicznym wystąpieniu globalnego pomaga również zmniejszyć wpływ, jaki innych dzierżaw usługi Azure może mieć na wydajność Twojej aplikacji, która jest również znana jako [efektu "hałaśliwym sąsiadów"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors).
+
+Po utworzeniu usługi ISE, po przejściu do utworzenia konta aplikacji lub Integracja z usługą Logic Apps, możesz wybrać swoje ISE jako lokalizację logiki aplikacji lub integracji konta:
 
 ![Wybierz środowisko usługi integracji](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-Tworzenie środowiska ISE wdraża prywatne i izolowane wystąpienie aplikacji logiki do sieci wirtualnej platformy Azure. To wystąpienie prywatnej wykorzystuje dedykowane zasoby, takie jak storage i jest uruchamiana niezależnie od publicznego "global" Usługa Logic Apps. Ta separacja pomaga również zmniejszyć wpływ, jaki innych dzierżaw usługi Azure może mieć na wydajność Twojej aplikacji lub [efektu "hałaśliwym sąsiadów"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). 
+Twoja aplikacja logiki można teraz bezpośrednio uzyskiwać dostęp do systemów, które znajdują się wewnątrz lub połączony z siecią wirtualną przy użyciu dowolnego z tych elementów:
 
-W tym omówieniu opisano, jak ISE umożliwia aplikacji usługi logic apps i kont integracji bezpośredni dostęp do sieci wirtualnej platformy Azure i porównuje różnice między ISE i globalną usługę Logic Apps.
+* Określonej wersji środowiska ISE łącznik dla tego systemu, na przykład SQL Server
+* Wbudowane wyzwalacza lub akcji, takich jak HTTP, wyzwalacza lub akcji
+* Łącznik niestandardowy
+
+W tym omówieniu opisano więcej szczegółowych informacji o jak ISE zapewnia aplikacji logiki i integracji kont bezpośredni dostęp do sieci wirtualnej platformy Azure i porównuje różnice między ISE i globalną usługę Logic Apps.
+Dla systemów lokalnych, które nie są połączone z siecią wirtualną lub nie masz wersji środowiska ISE łączników, możesz nawiązać połączenie tych systemów, [Konfigurowanie i używanie lokalnej bramy danych](../logic-apps/logic-apps-gateway-install.md).
+
+> [!IMPORTANT]
+> Logic apps, wbudowanych akcji i łączników, działających w Twojej platformy ISE przy użyciu innego planu cen nie na podstawie użycia planu cenowego zawiera. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](../logic-apps/logic-apps-pricing.md).
 
 <a name="difference"></a>
 
 ## <a name="isolated-versus-global"></a>Odizolowane w porównaniu z globalnego
 
-Po utworzeniu środowiska zintegrowana usługa (ISE) na platformie Azure wybierz sieci wirtualnej platformy Azure, której chcesz *wstrzyknąć* Twojego środowiska ISE. Platforma Azure wdroży wystąpieniem prywatnym usługi Logic Apps do sieci wirtualnej. Ta akcja powoduje utworzenie środowiska izolowanego, na którym można tworzyć i aplikacje logiki są uruchamiane na dedykowanych zasobów. Podczas tworzenia aplikacji logiki, możesz wybrać tego środowiska jako lokalizacja Twojej aplikacji, co umożliwia aplikacji logiki bezpośredni dostęp do zasobów w sieci wirtualnej.
+Po utworzeniu środowiska zintegrowana usługa (ISE) na platformie Azure można wybrać sieci wirtualnej platformy Azure, której chcesz *wstrzyknąć* Twojego środowiska ISE. Azure wprowadza lub wdraża wystąpieniem prywatnym usługi Logic Apps do sieci wirtualnej. Ta akcja powoduje utworzenie środowiska izolowanego, na którym można tworzyć i aplikacje logiki są uruchamiane na dedykowanych zasobów. Podczas tworzenia aplikacji logiki, możesz wybrać swoje ISE jako lokalizacja Twojej aplikacji, co umożliwia aplikacji logiki bezpośredniego dostępu do sieci wirtualnej i zasobów w tej sieci.
 
 Logic apps w środowisku ISE Podaj tego samego środowiska użytkowników i możliwości podobne do tych jako globalne usługi Logic Apps. Nie tylko można użyć tych samych wbudowanych akcji i łączników usługi Logic Apps globalnych, ale możesz również użyć łączników specyficzne dla środowiska ISE. Na przykład poniżej przedstawiono niektóre łączniki standardowe, które oferują wersje, które są uruchamiane w środowisku ISE:
 
@@ -55,27 +65,12 @@ Różnica między ISE i innych ISE łączników jest w lokalizacjach, w którym 
 
 * Łączniki, które są uruchamiane w środowisku ISE są również dostępne w globalną usługę Logic Apps.
 
-> [!IMPORTANT]
-> Logic apps, wbudowanych akcji i łączników, działających w Twojej platformy ISE przy użyciu innego planu cen nie na podstawie użycia planu cenowego zawiera. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](../logic-apps/logic-apps-pricing.md).
-
 <a name="vnet-access"></a>
 
 ## <a name="permissions-for-virtual-network-access"></a>Uprawnienia dostępu do sieci wirtualnej
 
-Podczas tworzenia środowiska usług integracji (ISE) wybierzesz siecią wirtualną platformy Azure, gdzie możesz *wstrzyknąć* środowiska. Iniekcja wdraża wystąpieniem prywatnym usługi Logic Apps do sieci wirtualnej. Ta akcja powoduje w izolowanym środowisku, w którym można tworzyć i aplikacje logiki są uruchamiane na dedykowanych zasobów. Po utworzeniu aplikacji logiki wybierz swoje ISE jako lokalizację swoje aplikacje. Te aplikacje logiki można bezpośrednio uzyskać dostęp do sieci wirtualnej i połączenia się z zasobami w danej sieci.
-
-Dla systemów, które są podłączone do sieci wirtualnej należy wstrzyknąć środowiska ISE do tej sieci wirtualnej, dzięki czemu aplikacje logiki można uzyskać dostęp do tych systemów przy użyciu dowolnego z tych elementów:
-
-* Łącznik platformy ISE dla tego systemu, na przykład SQL Server
-
-* Akcja HTTP
-
-* Łącznik niestandardowy
-
-Dla systemów lokalnych, które nie są połączone z siecią wirtualną lub nie masz ISE łączniki, można połączyć się przez tych systemów [Konfigurowanie i używanie lokalnej bramy danych](../logic-apps/logic-apps-gateway-install.md).
-
 Aby można było wybrać sieci wirtualnej platformy Azure wstrzykiwania środowiska, należy skonfigurować uprawnień kontroli dostępu opartej na rolach (RBAC) w sieci wirtualnej dla usługi Azure Logic Apps. To zadanie wymaga, aby przypisać **Współautor sieci** i **współautora klasycznej** ról w usłudze Azure Logic Apps.
-Aby ustawić te uprawnienia, zobacz [Połącz z sieciami wirtualnymi platformy Azure z aplikacji logiki](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#vnet-access)
+Aby ustawić te uprawnienia, zobacz [Połącz z sieciami wirtualnymi platformy Azure z aplikacji logiki](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#vnet-access).
 
 <a name="create-integration-account-environment"></a>
 

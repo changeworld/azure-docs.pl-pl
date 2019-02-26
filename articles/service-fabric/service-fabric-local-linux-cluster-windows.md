@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: 60fd4a3ba83370327b6be775d7b2723fbb26de64
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e700250a6ebcdb82f99c1b460a510811d7ceb96c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983444"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819739"
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Konfigurowanie klastra systemu Linux usługi Service Fabric na komputerze Windows dla deweloperów
 
@@ -30,6 +30,7 @@ Opartą na systemie Linux klastrów usługi Service Fabric nie działa natywnie 
 
 * Co najmniej 4 GB pamięci RAM
 * Najnowsza wersja platformy [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
+* Platformy docker musi być uruchomiona w trybie systemu Linux
 
 >[!TIP]
 > * Możesz wykonać kroki opisane w oficjalnej [dokumentacji](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions) zainstalować platformę Docker na użytkownika Windows. 

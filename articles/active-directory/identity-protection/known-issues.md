@@ -17,17 +17,17 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a1cc8a9305103a30fc0ea0fc40c23a522e136d80
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339027"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807188"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>Często zadawane pytania i znane problemy związane z ochrony tożsamości (odświeżane) w usłudze Azure Active Directory
 
 
-## <a name="dismiss-user-risk"></a>Odrzuć ryzyko związane z użytkownikiem
+## <a name="dismiss-user-risk-known-issues"></a>Odrzuć ryzyka związanego z użytkownikiem, znane problemy
 
 **Odrzuć ryzyka związanego z użytkownikiem** w modelu klasycznym Identity Protection ustawia aktora w historii ryzyka użytkownika w Identity Protection (odświeżane) do **usługi Azure AD**.
 
@@ -37,7 +37,7 @@ ms.locfileid: "56339027"
 Brak bieżącego znany problem powoduje opóźnienia w przepływie zwolnienia ryzyka użytkownika. W przypadku "użytkowników o podwyższonym ryzyku policy" tych zasad zostanie zatrzymane, stosowanie do odrzuconych użytkowników w ciągu kilku minut, klikając polecenie "Ryzyka związanego z użytkownikiem Odrzuć". Jednak istnieją znane opóźnienia z UX odświeżanie "stan ryzyka" odrzuconych użytkowników. Jako obejście tego problemu należy odświeżyć stronę, na poziomie przeglądarki, aby zobaczyć najnowsze użytkownika "Stan ryzyka".
 
 
-## <a name="risky-users-report"></a>Raport ryzykownych użytkowników
+## <a name="risky-users-report-known-issues"></a>Raport o ryzykownych użytkowników znane problemy
 
 Zapytanie na **username** rozróżnia wielkość liter podczas kwerendy dotyczące **nazwa** pola są niezależne od przypadku.
 
@@ -45,14 +45,10 @@ Przełączanie **Pokaż daty jako** ukrywa **Ostatnia aktualizacja ryzyka** kolu
 
 **Odrzuć wszystkie zdarzenia** w modelu klasycznym Identity Protection umożliwia ustawienie stanu zdarzenia o podwyższonym ryzyku **zamknięte (rozwiązane)**.
 
-Jeśli spróbujesz uzyskać dostęp do raportu ryzykownych użytkowników, klikając **raportu ryzykownych użytkowników** w rekordzie logowania w raport dotyczący ryzykownych logowań, czasem może pokazywać **coś poszło źle. Ponów próbę**. Aby rozwiązać ten problem, kliknij przycisk **Zastosuj** lub **resetowania** w górnej części ekranu i ryzykownych użytkowników zostaną wyświetlone dane.
 
-
-## <a name="risky-sign-ins-report"></a>Raport dotyczący ryzykownych logowań
+## <a name="risky-sign-ins-report-known-issues"></a>Raport dotyczący ryzykownych logowań znane problemy
 
 **Rozwiąż** o ryzyko dotyczące zdarzeń ustawia stan **użytkowników przekazywane MFA oparte na zasady na podstawie ryzyka**.
-
-**Resetuj** w **ryzykownych logowań** raportu nie czyści wartość **typ zdarzenia ryzyka**.
 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania

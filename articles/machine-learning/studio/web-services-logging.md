@@ -11,16 +11,16 @@ ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
 ms.subservice: studio
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.openlocfilehash: 53eedd4d00b212879389d29541c4ca55ea1bfde6
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 23a160ee15547bea7d5ee832cd1032b2e899966b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270105"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821836"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>Włączanie rejestrowania usług sieci web Azure Machine Learning Studio
 Ten dokument zawiera informacje dotyczące możliwości rejestrowania usług sieci web Machine Learning Studio. Rejestrowanie udostępnia dodatkowe informacje, poza po prostu liczbą błędów i komunikatów, które mogą ułatwić rozwiązywanie problemów z wywołaniami interfejsy API usługi Machine Learning Studio.  

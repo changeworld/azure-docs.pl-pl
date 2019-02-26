@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: sogup
-ms.openlocfilehash: 566faaef4e91237bd0a0f915ea39f4bd389120d8
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: 63a0e5bd3db6251e361d9dd03acb538556e811ca
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593084"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804996"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Uzyskaj ulepszone kopii zapasowej i przywracanie wydajności za pomocą funkcji Azure kopii zapasowej natychmiastowe Przywracanie
 
@@ -49,6 +49,7 @@ Domyślnie migawki są przechowywane przez dwa dni. Ta funkcja umożliwia operac
 * Przyrostowe migawki są przechowywane jako stronicowe obiekty BLOB. Wszyscy użytkownicy korzystają z dysków niezarządzanych są naliczane za migawek przechowywanych na jego koncie magazynu lokalnego. Ponieważ kolekcje punktów przywracania używana przez kopie zapasowe zarządzanych maszyn wirtualnych używa migawek obiektów blob na poziomie magazynu podstawowego, za dyski zarządzane zobaczysz koszty odpowiadający blob snapshot ceny i są przyrostowe.
 * Dla kont usługi premium storage miejsca przydzielonego do migawek wykonywanych liczby punktów natychmiastowe odzyskiwanie kierunku limit 10 TB.
 * Otrzymasz możliwość konfigurowania przechowywania migawki, w zależności od potrzeb przywracania. W zależności od wymagań można ustawić okres przechowywania migawek co najmniej jeden dzień w bloku zasad tworzenia kopii zapasowych, co zostało opisane poniżej. Może to pomóc Ci zaoszczędzić koszty przechowywania migawek, jeśli nie wykonasz często przywracania.
+* Jest to jedno uaktualnienie kierunkowe, po uaktualnieniu do natychmiastowe przywracanie, nie można wrócić.
 
 
 >[!NOTE]
@@ -77,7 +78,7 @@ Alternatywnie, możesz przejść do **właściwości** strona magazynu można po
 
 
 ## <a name="configure-snapshot-retention-using-azure-portal"></a>Konfigurowanie przechowywania migawki za pomocą witryny Azure portal
-Ta opcja jest obecnie dostępna w zachodnio-środkowe stany USA, Indie Południowe i Australia Wschodnia.
+Ta opcja jest obecnie dostępna w **zachodnio-środkowe stany USA**, **Indie Południowe** i **Australia Wschodnia**.
 
 Dla uaktualnionego użytkowników w witrynie Azure portal można wyświetlić pola dodane w **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku w obszarze **natychmiastowe Przywracanie** sekcji. Można zmienić czasu trwania przechowywania migawek z **zasad tworzenia kopii zapasowej maszyny Wirtualnej** bloku dla wszystkich maszyn wirtualnych skojarzonych z określonych zasad tworzenia kopii zapasowej.
 

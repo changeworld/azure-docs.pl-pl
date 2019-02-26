@@ -5,17 +5,17 @@ description: Omówienie sposobu działania jak eksperymentować z postępów mod
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: 776f33e3e550ad9a711a90732c6c4526e647aa89
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 808883fc96369538a26a06a7dadb5f0ecd6628d5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456796"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823403"
 ---
 # <a name="how-a-machine-learning-studio-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Jak modelu usługi Machine Learning Studio w miarę z eksperymentu do zoperacjonalizowanej usługi sieci Web
 Usługa Azure Machine Learning Studio udostępnia interaktywne kanwy, która pozwala na tworzenie, uruchamianie, testów i modyfikować ***eksperymentować*** reprezentujący modelu analizy predykcyjnej. Istnieją szerokiej gamy dostępnych modułów, które można:
@@ -95,7 +95,7 @@ Oto przykład: Załóżmy, że Twoje eksperyment predykcyjny zwraca cały wiersz
 
 Jeśli chcesz zachować modelu uczenia maszynowego, ale chcesz ponownie ucz je za pomocą nowych danych, dostępne są dwie opcje:
 
-1. **Ponowne szkolenie modelu, gdy jest uruchomiona usługa sieci Web** — Jeśli chcesz ponowne szkolenie modelu predykcyjnego usługi sieci Web jest uruchomiona, można to zrobić, wprowadzając kilka zmian eksperymentu szkolenia, aby stał się ***ponownego trenowania eksperymentowanie***, a następnie wdrożyć go jako  ***ponownego trenowania w sieci web* usługi**. Aby uzyskać instrukcje, jak to zrobić, zobacz [Retrain Machine Learning models programowo](retrain-models-programmatically.md).
+1. **Ponowne szkolenie modelu, gdy jest uruchomiona usługa sieci Web** — Jeśli chcesz ponowne szkolenie modelu predykcyjnego usługi sieci Web jest uruchomiona, można to zrobić, wprowadzając kilka zmian eksperymentu szkolenia, aby stał się ***ponownego trenowania eksperymentowanie***, a następnie wdrożyć go jako  ***ponownego trenowania w sieci web* usługi**. Aby uzyskać instrukcje, jak to zrobić, zobacz [Retrain Machine Learning models programowo](/azure/machine-learning/studio/retrain-machine-learning-model).
 2. **Wróć do oryginalnego eksperymentu szkolenia i umożliwia tworzenie modelu danych szkoleniowych różnych** — eksperyment predykcyjny jest połączona z usługą sieci Web, ale eksperymentu szkolenia nie są bezpośrednio powiązane w ten sposób. Jeśli zmodyfikujesz oryginalny eksperymentu szkolenia, a kliknij **ustawić usługę sieci Web**, zostanie utworzony *nowe* predykcyjne eksperymentować, utworzy po wdrożeniu *nowe* sieci Web Usługa. Jednak nie powoduje aktualizacji tylko oryginalnej usługi sieci Web.
 
    Jeśli trzeba zmodyfikować eksperymentu szkolenia, otwórz go i kliknij przycisk **Zapisz jako** do skopiowania. Spowoduje to pozostawić bez zmian, oryginalnym eksperymentu szkolenia eksperyment predykcyjny i usługi sieci Web. Teraz można utworzyć nowej usługi sieci Web, z uwzględnieniem zmienionych uprawnień. Po wdrożeniu nowej usługi sieci Web, możesz następnie zdecydować, czy zatrzymanie poprzedniej usługi sieci Web lub zapewnienia jego działania wraz z nowym.
@@ -109,7 +109,7 @@ Aby uzyskać szczegółowe informacje na temat procesu opracowywaniem i eksperym
 
 * Konwertowanie eksperymentu - [jak przygotować modelu wdrożenia w usłudze Azure Machine Learning Studio](convert-training-experiment-to-scoring-experiment.md)
 * Wdrażanie usługi sieci Web - [wdrażanie usługi sieci web Azure Machine Learning](publish-a-machine-learning-web-service.md)
-* Ponowne szkolenie modelu — [modeli Retrain Machine Learning](retrain-models-programmatically.md)
+* Ponowne szkolenie modelu — [modeli Retrain Machine Learning](/azure/machine-learning/studio/retrain-machine-learning-model)
 
 Aby uzyskać przykłady całego procesu zobacz:
 

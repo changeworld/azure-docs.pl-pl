@@ -8,22 +8,16 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: fa32aafa4f042351db7693ee684deafe9ed13fb0
-ms.sourcegitcommit: 6678e16c4b273acd3eaf45af310de77090137fa1
+ms.openlocfilehash: a42d2c75913b2c9fdfa0d2b7c3ec2742525a4c97
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50748327"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806100"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Regionalnego odzyskiwania po awarii w przypadku klastrów usługi Azure Databricks
 
 W tym artykule opisano architekturę odzyskiwania po awarii przydatny w przypadku klastrów usługi Azure Databricks i kroki do wykonania tego projektu.
-
-## <a name="azure-databricks-overview"></a>Omówienie usługi Azure Databricks
-
-Azure Databricks to szybka i łatwa współpracy platformy Apache Spark usługi analizy. Dla potoku danych big data, data (raw lub ze strukturą) jest pozyskane do platformy Azure za pośrednictwem usługi Azure Data Factory w partiach lub przesyłane strumieniowo w czasie rzeczywistym przy użyciu platformy Kafka, Centrum zdarzeń lub usługi IoT Hub. Ta gruntów danych w usłudze data lake potrzeby długoterminowego utrwalone magazynu w usłudze Azure Blob Storage lub usługi Azure Data Lake Storage. W ramach przepływu pracy analizy, należy użyć usługi Azure Databricks można odczytać danych z wielu źródeł danych, takich jak [usługi Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md), [usługi Azure Data Lake Storage](../data-lake-store/index.md), [usługi Azure Cosmos DB](../cosmos-db/index.yml) , lub [Azure SQL Data Warehouse](../sql-data-warehouse/index.md) i przekształcać je w przełomowe insights przy użyciu platformy Spark.
-
-![Potok usługi Databricks](media/howto-regional-disaster-recovery/databricks-pipeline.png)
 
 ## <a name="azure-databricks-architecture"></a>Architektura usługi Azure Databricks
 
@@ -37,7 +31,7 @@ Jedną z zalet tej architektury jest to, czy użytkownicy mogą łączyć z usł
 
 ## <a name="how-to-create-a-regional-disaster-recovery-topology"></a>Jak utworzyć topologię odzyskiwania po awarii regionalnej
 
-Jak widać w powyższy opis architektury, istnieje kilka składników stosowanych do potoku danych Big Data za pomocą usługi Azure Databricks: Azure Storage, Azure Database i innymi źródłami danych. Usługa Azure Databricks to *obliczenia* dla danych Big Data potoku. Jest *efemeryczne* pochylone, co oznacza, że podczas gdy dane są nadal dostępne w usłudze Azure Storage *obliczenia* (klastra usługi Azure Databricks) może zostać zakończone, dzięki czemu nie trzeba płacić za obliczenia, gdy zostanie nie są potrzebne. *Obliczenia* (usługa Azure Databricks) i źródłach magazynowania musi być w tym samym regionie, tak aby zadania nie występuje duże opóźnienie.  
+Jak widać w powyższy opis architektury, istnieje kilka składników stosowanych do potoku danych Big Data za pomocą usługi Azure Databricks:  Usługa Azure Storage, Azure Database i innymi źródłami danych. Usługa Azure Databricks to *obliczenia* dla danych Big Data potoku. Jest *efemeryczne* pochylone, co oznacza, że podczas gdy dane są nadal dostępne w usłudze Azure Storage *obliczenia* (klastra usługi Azure Databricks) może zostać zakończone, dzięki czemu nie trzeba płacić za obliczenia, gdy zostanie nie są potrzebne. *Obliczenia* (usługa Azure Databricks) i źródłach magazynowania musi być w tym samym regionie, tak aby zadania nie występuje duże opóźnienie.  
 
 Aby utworzyć własny topologii odzyskiwania regionalnej awarii, wykonaj te wymagania:
 

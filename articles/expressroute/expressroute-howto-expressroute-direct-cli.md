@@ -1,28 +1,23 @@
 ---
 title: Konfigurowanie usługi ExpressRoute bezpośrednio — wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł pomoże Ci skonfigurować bezpośrednio z usługi ExpressRoute za pomocą wiersza polecenia platformy Azure (wersja zapoznawcza)
+description: Ten artykuł pomoże Ci skonfigurować bezpośrednio z usługi ExpressRoute za pomocą wiersza polecenia platformy Azure
 services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 10/18/2018
+ms.date: 2/25/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 285b429f565f8a2c7f8c20756f076e631223b10f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e918a8624d637e44a4bb1122b58d5bd5dac67690
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53076723"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816678"
 ---
-# <a name="configure-expressroute-direct-by-using-the-azure-cli-preview"></a>Konfigurowanie usługi ExpressRoute bezpośrednio przy użyciu wiersza polecenia platformy Azure (wersja zapoznawcza)
+# <a name="configure-expressroute-direct-by-using-the-azure-cli"></a>Konfigurowanie usługi ExpressRoute bezpośrednio przy użyciu wiersza polecenia platformy Azure
 
 Bezpośrednia usługi ExpressRoute platformy Azure można użyć, aby bezpośrednio połączyć się z globalnej sieci firmy Microsoft w lokalizacji komunikacji równorzędnej, strategicznie rozproszonych na całym świecie. Aby uzyskać więcej informacji, zobacz [dotyczące usługi ExpressRoute bezpośrednie łączenie](expressroute-erdirect-about.md).
-
-> [!IMPORTANT]
-> Bezpośrednie usługi ExpressRoute jest obecnie w wersji zapoznawczej.
->
-> Bezpośrednie usługi ExpressRoute w wersji zapoznawczej jest dostarczane bez umowy dotyczącej poziomu usług. Nie można używać bezpośrednich usługi ExpressRoute w wersji zapoznawczej dla obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, niektóre funkcje mogą mieć ograniczone możliwości i niektóre funkcje mogą być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać więcej informacji, zobacz [dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="resources"></a>Utwórz zasób
 

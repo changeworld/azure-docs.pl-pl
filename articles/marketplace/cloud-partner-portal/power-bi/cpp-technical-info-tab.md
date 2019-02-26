@@ -14,33 +14,33 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
-ms.openlocfilehash: d96ef2fd318d6164e1b7dfc5c4b72d6957af0f3e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ca77da897eed51c8d832cad7052c2144d6ada562
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744438"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806490"
 ---
 # <a name="power-bi-apps-technical-info-tab"></a>Karta informacje techniczne aplikacji Power BI zasilania
 
-**Informacje techniczne** karcie **nowa oferta** strony są określane Instalatora usługi Power BI — adres URL pakietu oraz wszelkie dodatkowe informacje wymagane do weryfikacji nowej oferty.  We wstępnym wydaniu wszystkie aplikacje usługi Power BI są bezpłatne i dostępne do pobrania z witryny AppSource bez dodatkowych opłat. W rezultacie nie można zdefiniować żadnych magazynową jednostki (jednostki SKU) dla tego typu oferty.
+Na **nowa oferta** stronie **informacje techniczne** kartę, aby zapewnić Instalatora usługi Power BI, adres URL pakietu oraz inne informacje, należy sprawdzić poprawność nowej oferty.  We wstępnym wydaniu wszystkie aplikacje usługi Power BI są bezpłatne i dostępne do pobrania z usługi AppSource. W związku z tym nie można zdefiniować jednostki magazynową (SKU) dla tego typu oferty.
 
 ![Karta informacje techniczne](./media/technical-info-tab.png)
 
 
 ## <a name="technical-info-fields"></a>Techniczne informacje o polach 
 
-W **informacje techniczne** kartę, należy podać następujące pola.  Dołączonych gwiazdki (*) na etykiecie pola wskazuje, że jest wymagane.
+Na **informacje techniczne** kartę, wypełnij pola opisane w poniższej tabeli. Znak gwiazdki (*) na końcu etykietę pola oznacza, że pole jest wymagane.
 
 |        Pole          |  Opis                                                                 |
 |    ---------------    |  ----------------------------------------------------------------------------|
-| **Adres URL Instalatora**     | Adres generowane przez usługę Power BI podczas publikowania aplikacji i przenieś go do produkcji.  Aby uzyskać więcej informacji na temat sposobu generowania adresu URL, zobacz [publikowanie aplikacji usługi w usłudze Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
-|  **Instrukcje weryfikacji**  |  Opcjonalny tekst instrukcji (max 3000 znaków) zespół weryfikacyjny Microsoft do pomocy w konfigurowaniu, łączenie i testowania aplikacji, w tym: typową konfigurację ustawień, testowe konta lub parametry, które mogą służyć do testowania opcji "Połącz dane" itp. Te informacje tylko będą widoczne dla zespołu sprawdzania poprawności i służy tylko do celów sprawdzania poprawności.  |
-| **Czy ta aplikacja zostanie utworzona jako pakiet zawartości Power BI?** | Obecnie to pole jest używane wewnętrznie. Pozostaw wartość ustawiona na wartość domyślną `No`; w przeciwnym razie zmiany w tym polu, aby `Yes` może utrudniać publikowania.  |  
+| **Adres URL Instalatora**     | Usługa Power BI generuje ten adres URL, podczas publikowania aplikacji i przenieś go do produkcji.  Aby uzyskać więcej informacji, zobacz [publikowanie aplikacji przy użyciu pulpitów nawigacyjnych i raportów w usłudze Power BI](https://docs.microsoft.com/power-bi/service-create-distribute-apps).  |
+|  **Instrukcje weryfikacji**  |  Jeśli chcesz, Dodaj instrukcje (znaki do 3000), aby pomóc zespołowi weryfikacji firmy Microsoft, konfigurowanie, łączenie i przetestuj swoją aplikację. Obejmują typową konfigurację ustawień, kont, parametry lub inne informacje, które mogą służyć do testowania Opcja łączenia danych. Te informacje są widoczne tylko dla zespołu weryfikacji i jest używany tylko do celów sprawdzania poprawności.  |
+| **Czy ta aplikacja zostanie utworzona jako pakiet zawartości Power BI?** | Obecnie to pole jest używane tylko wewnętrznie. Pozostaw domyślne ustawienie **nie**. Jeśli zmienisz to ustawienie, aby **tak**, można zatrzymać procesu publikowania.  |  
 |  |  |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W ciągu następnych [szczegóły Storefront](./cpp-storefront-details-tab.md) karcie będzie zapewniać informacji prawnych i marketingu dla aplikacji.
+Na [szczegóły Storefront](./cpp-storefront-details-tab.md) kartę, podaj informacje prawne i marketingu dla aplikacji.
 

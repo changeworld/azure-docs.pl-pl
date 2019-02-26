@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 766eb7864a6bce296daafc86179e2deed77f8e02
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 44feaecd42a8c3ce0ac0c712aa27b2480fd2a486
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163126"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806933"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Instrukcje: Logowanie dowolnego użytkownika usługi Azure Active Directory za pomocą wzorca aplikacji wielodostępnych
 
@@ -39,7 +39,7 @@ Istnieją cztery proste kroki, aby przekonwertować aplikacji w aplikacji wielod
 1. [Aktualizuj rejestrację aplikacji w taki sposób, aby się z wieloma dzierżawcami](#update-registration-to-be-multi-tenant)
 2. [Zaktualizuj kod w celu wysyłania żądań do / Common punktu końcowego](#update-your-code-to-send-requests-to-common)
 3. [Zaktualizuj swój kod obsługi wielu wartości wystawcy](#update-your-code-to-handle-multiple-issuer-values)
-4. Zrozumienie zgody użytkownika i administratora i wprowadź zmiany odpowiedni kod
+4. [Zrozumienie zgody użytkownika i administratora i wprowadź zmiany odpowiedni kod](#understand-user-and-admin-consent)
 
 Spójrzmy na poszczególnych kroków w artykule. Możesz też przejść bezpośrednio do [tej listy przykłady wielodostępnych][AAD-Samples-MT].
 

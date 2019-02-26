@@ -5,17 +5,17 @@ description: Tworzenie wielu modeli usługi Machine Learning i sieci web punkty 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 442acb88a7a758517b8007b85dd6a58520a0caa4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455062"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817511"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Tworzenie modeli Studio i punkty końcowe usługi sieci web na podstawie jednego eksperymentu przy użyciu programu PowerShell
 
@@ -27,7 +27,7 @@ Można uczenie modelu raz przy użyciu scalonych wersję wszystkich zestawów da
 
 Może to być najlepszym rozwiązaniem, ale nie chcesz utworzyć 1000 szkolenia eksperymentów w usłudze Azure Machine Learning Studio z każdym z nich reprezentuje unikatową lokalizację. Oprócz jest trudne zadanie, wydaje się być także nieefektywne od każdego doświadczenia miałby te same składniki, z wyjątkiem zestaw danych szkoleniowych.
 
-Na szczęście, można to zrobić za pomocą [ponownego trenowania interfejsu API usługi Azure Machine Learning Studio](retrain-models-programmatically.md) i automatyzacja zadań za pomocą [programu PowerShell usługi Azure Machine Learning Studio](powershell-module.md).
+Na szczęście, można to zrobić za pomocą [ponownego trenowania interfejsu API usługi Azure Machine Learning Studio](/azure/machine-learning/studio/retrain-machine-learning-model) i automatyzacja zadań za pomocą [programu PowerShell usługi Azure Machine Learning Studio](powershell-module.md).
 
 > [!NOTE]
 > Aby wprowadzić swój przykład działają szybciej, Zmniejsz liczbę lokalizacje od 1000 do 10. Jednak te same zasady i procedury dotyczą 1000 lokalizacji. Jednak jeśli chcesz szkolenie z 1000 zestawów danych możesz zechcieć do równoległego uruchamiania następujących skryptów programu PowerShell. Jak to zrobić, wykracza poza zakres tego artykułu, ale możesz odnaleźć przykłady programu PowerShell wielowątkowości w Internecie.  

@@ -17,18 +17,20 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2e565f5b9bcd9e3e79423c742b2c95c00abd97b
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: aca7f0dbe0906ea0e1572f4580d8937ebf3eee64
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454762"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823261"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Analizowanie usługi Azure AD dzienników aktywności przy użyciu dzienników usługi Azure Monitor (wersja zapoznawcza)
 
 Po zakończeniu [integracji usługi Azure AD dzienników aktywności przy użyciu dzienników usługi Azure Monitor](howto-integrate-activity-logs-with-log-analytics.md), możliwości dzienniki usługi Azure Monitor umożliwia wgląd w danym środowisku. Można także zainstalować [dziennika widoków usługi analytics dla działania usługi Azure AD dzienniki](howto-install-use-log-analytics-views.md) uzyskać dostęp do gotowych raportów dotyczących inspekcji i zdarzeń logowania w danym środowisku.
 
 W tym artykule dowiesz się, jak analizować Azure Dzienniki aktywności usługi AD w obszarze roboczym usługi Log Analytics. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 

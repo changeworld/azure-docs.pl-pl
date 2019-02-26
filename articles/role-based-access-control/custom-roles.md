@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/20/2019
+ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 71d49edc3fa52cce5d128b94d42098150aa5f3a3
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: f795571de275453738d23e80885f4d9006ca3a20
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585087"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804454"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Role niestandardowe dla zasobów platformy Azure
 
@@ -72,8 +72,7 @@ Podczas tworzenia roli niestandardowej pojawia się w witrynie Azure portal za p
 
 1. Określ uprawnienia, których potrzebujesz
 
-    Podczas tworzenia roli niestandardowej, musisz wiedzieć zasobu operacji dostawcy, które są dostępne do definiowania uprawnień. Aby wyświetlić listę operacji, można użyć [Get AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) lub [lista operacji dostawcy az](/cli/azure/provider/operation#az-provider-operation-list) poleceń.
-    Należy dodać operacje do `Actions` lub `NotActions` właściwości [definicji roli](role-definitions.md). W przypadku operacji na danych spowoduje dodanie tych, które mają `DataActions` lub `NotDataActions` właściwości.
+    Podczas tworzenia roli niestandardowej, musisz wiedzieć zasobu operacji dostawcy, które są dostępne do definiowania uprawnień. Aby wyświetlić listę operacji, zobacz [operacji dostawcy zasobów usługi Azure Resource Manager](resource-provider-operations.md). Należy dodać operacje do `Actions` lub `NotActions` właściwości [definicji roli](role-definitions.md). W przypadku operacji na danych spowoduje dodanie tych, które mają `DataActions` lub `NotDataActions` właściwości.
 
 1. Tworzenie roli niestandardowej
 

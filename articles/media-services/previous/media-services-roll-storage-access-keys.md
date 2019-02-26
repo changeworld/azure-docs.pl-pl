@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;cenkdin;juliako
-ms.openlocfilehash: cdf644ab37d7f2e15cb35a3234786900a1a64ec1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a49ab9b045854c49785546ed17834169ec29f8b8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733507"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816826"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>Aktualizowanie usługi Media Services po stopniowym uaktualnieniu kluczy dostępu do magazynu 
 
 Podczas tworzenia nowego konta usługi Azure Media Services (AMS), możesz również monit o wybranie konta usługi Azure Storage, który jest używany do przechowywania zawartości multimedialnej. Można dodać więcej niż jednego konta magazynu, do konta usługi Media Services. W tym artykule przedstawiono sposób rotacja kluczy magazynu. Prezentuje również sposób dodawania konta magazynu do konta usługi media. 
 
-Aby wykonać czynności opisane w tym artykule, należy używać [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](https://docs.microsoft.com/powershell/module/az.media).  Aby uzyskać więcej informacji, zobacz [jak zarządzać zasobami platformy Azure przy użyciu programu PowerShell i Menedżera zasobów](../../azure-resource-manager/powershell-azure-resource-manager.md).
+Aby wykonać czynności opisane w tym artykule, należy używać [interfejsów API usługi Azure Resource Manager](/rest/api/media/operations/azure-media-services-rest-api-reference) i [Powershell](https://docs.microsoft.com/powershell/module/az.media).  Aby uzyskać więcej informacji, zobacz [jak zarządzać zasobami platformy Azure przy użyciu programu PowerShell i Menedżera zasobów](../../azure-resource-manager/manage-resource-groups-powershell.md).
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 

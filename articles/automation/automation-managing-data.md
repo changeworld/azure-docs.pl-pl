@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b133947a7daf1977f084ee4008599882b51d9e8b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428481"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817460"
 ---
 # <a name="managing-azure-automation-data"></a>Zarządzanie danymi usługi Azure Automation
 Ten artykuł zawiera wiele tematów do zarządzania środowiskiem usługi Azure Automation.
@@ -39,7 +39,7 @@ W poniższej tabeli przedstawiono zasady przechowywania dla różnych zasobów.
 
 Zasady przechowywania ma zastosowanie do wszystkich użytkowników i obecnie nie można dostosować.
 
-Jednak jeśli zachodzi potrzeba przechowywać dane przez dłuższy czas, możesz przekazywać elementu runbook z dziennikami zadań do usługi Log Analytics.  Aby uzyskać więcej informacji, przejrzyj [przekazywanie danych zadania usługi Azure Automation do usługi Log Analytics](automation-manage-send-joblogs-log-analytics.md).   
+Jednak jeśli zachodzi potrzeba przechowywać dane przez dłuższy czas, możesz przekazywać elementu runbook z dziennikami zadań do dzienników usługi Azure Monitor.  Aby uzyskać więcej informacji, przejrzyj [przekazywanie danych zadania usługi Azure Automation do usługi Azure Monitor dzienników](automation-manage-send-joblogs-log-analytics.md).   
 
 ## <a name="backing-up-azure-automation"></a>Tworzenie kopii zapasowych usługi Azure Automation
 Po usunięciu konta usługi automation w systemie Microsoft Azure, wszystkie obiekty w ramach konta są usuwane, łącznie z elementami runbook, moduły, konfiguracje, ustawienia, zadaniami i zasobami. Nie można odzyskać obiekty, po usunięciu konta.  Skorzystaj z poniższych informacji, aby utworzyć kopię zapasową zawartości konta usługi automation, przed jego usunięciem. 

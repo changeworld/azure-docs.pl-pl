@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
-ms.openlocfilehash: a6c17ad8d4af568d910597da4b44f09676d1c36a
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4e56d22dde5fca50d17c055be93db5b91deeb287
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652494"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819177"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Z usługą Hadoop w HDInsight przy użyciu narzędzia Apache Sqoop
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -41,14 +41,14 @@ Klaster HDInsight jest dostarczany z pewnymi przykładowymi danymi. Możesz uży
   
   | Pole | Typ danych |
   | --- | --- |
-  | ClientID |ciąg |
-  | querytime |ciąg |
-  | na rynku |ciąg |
-  | deviceplatform |ciąg |
-  | devicemake |ciąg |
-  | devicemodel |ciąg |
-  | state |ciąg |
-  | Kraj |ciąg |
+  | ClientID |string |
+  | querytime |string |
+  | na rynku |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | Kraj |string |
   | querydwelltime |double |
   | Identyfikator sesji |bigint |
   | sessionpagevieworder |bigint |
@@ -90,7 +90,7 @@ Jeśli wolisz korzystać z programu Azure PowerShell do tworzenia klastra i bazy
         
         |Name (Nazwa)|Wartość|
         |----|-----|
-        | Domyślna nazwa konta magazynu | &lt;Nazwa_klastra > przechowywania |
+        | Domyślna nazwa konta magazynu | &lt;ClusterName>store |
         | Nazwa serwera bazy danych SQL Azure | &lt;ClusterName>dbserver |
         | Nazwa bazy danych SQL Azure | &lt;ClusterName>db |
      
@@ -163,7 +163,7 @@ Teraz masz pokazaliśmy, jak przy użyciu narzędzia Sqoop. Aby dowiedzieć się
 Przykładowy skrypt programu PowerShell wykonuje następujące czynności:
 
 1. Łączenie z platformą Azure.
-2. Utwórz grupę zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md)
+2. Utwórz grupę zasobów platformy Azure. Aby uzyskać więcej informacji, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../../azure-resource-manager/manage-resource-groups-powershell.md)
 3. Tworzenie serwera usługi Azure SQL Database, Azure SQL database i dwie tabele. 
    
     Jeśli zamiast tego użyj programu SQL Server należy użyć następujących instrukcji, do tworzenia tabel:
@@ -213,7 +213,7 @@ Przykładowy skrypt programu PowerShell wykonuje następujące czynności:
    > 
    > * **Konfiguracja punktu do lokacji sieci wirtualnej platformy Azure**: Sieć wirtualna połączona klastra HDInsight z programem SQL Server w prywatnym centrum danych. Zobacz [konfigurowania sieci VPN punkt-lokacja w portalu zarządzania](../../vpn-gateway/vpn-gateway-point-to-site-create.md) Aby uzyskać więcej informacji.
    > * **Usługa Azure HDInsight**: Zobacz [Tworzenie klastrów usługi Hadoop w HDInsight przy użyciu opcji niestandardowych](../hdinsight-hadoop-provision-linux-clusters.md) informacji o tworzeniu klastra w sieci wirtualnej.
-   > * **Program SQL Server 2014**: Skonfigurowane i umożliwiają uwierzytelnianie i uruchomienia klienta sieci VPN pakiet konfiguracji, aby bezpiecznie połączyć się z siecią wirtualną.
+   > * **SQL Server 2014**: Skonfigurowane i umożliwiają uwierzytelnianie i uruchomienia klienta sieci VPN pakiet konfiguracji, aby bezpiecznie połączyć się z siecią wirtualną.
    > 
    > 
 7. Eksportowanie tabeli programu Hive w bazie danych Azure SQL.

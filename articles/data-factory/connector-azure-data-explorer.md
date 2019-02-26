@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 02/25/2019
 ms.author: orspod
-ms.openlocfilehash: 8f2a7a953ce2964645c281d9454a73b0cf1a8ff6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: f614c6770dd29bc3d6b42c36fe8c81d9f129cd81
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747192"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816661"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>Kopiuj dane do / z Eksploratora danych Azure przy użyciu usługi Azure Data Factory
 
@@ -29,7 +29,7 @@ W tym artykule przedstawiono sposób używania działania kopiowania w usłudze 
 Możesz skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych do Eksploratora danych platformy Azure. Można również kopiować dane z Eksploratora danych usługi Azure, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła lub ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md) tabeli.
 
 >[!NOTE]
->Obecnie kopiowanie danych z Eksploratora danych platformy Azure z i do lokalnego magazynu danych przy użyciu środowiskiem Integration Runtime nie jest jeszcze obsługiwany.
+>Kopiowanie danych z Eksploratora danych platformy Azure z i do lokalnego magazynu danych przy użyciu środowiskiem Integration Runtime jest obsługiwane począwszy od wersji 3,14.
 
 Łącznik Eksploratora danych usługi Azure można wykonać następujące czynności:
 
@@ -162,7 +162,7 @@ Aby skopiować dane do Eksploratora danych platformy Azure, należy ustawić wł
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
 | type | **Typu** musi być równa właściwości ujścia działania kopiowania: **AzureDataExplorerSink** | Yes |
-| ingestionMappingName | Nazwa wstępnie utworzone [mapowania csv](/azure/kusto/management/mappings#csv-mapping) w tabeli Kusto. Aby zamapować kolumny ze źródła do eksplorowania danych platformy Azure, umożliwia także działanie kopiowania [mapowania kolumn](copy-activity-schema-and-type-mapping.md). | Nie |
+| ingestionMappingName | Nazwa wstępnie utworzone **[mapowania CSV](/azure/kusto/management/mappings#csv-mapping)** w tabeli Kusto; Mapowanie JSON i Avro mapowania na Eksplorator danych platformy Azure nie są bezpośrednio obsługiwane, ale nadal można skopiować danych z plików JSON/Avro. Aby zamapować kolumny ze źródła do Eksploratora danych platformy Azure, można użyć działania kopiowania [mapowania kolumn](copy-activity-schema-and-type-mapping.md) który wspólnie współpracuje również z mapowania CSV Eksploratora danych platformy Azure — kopiowanie działań map/ponowne-shapes danych ze źródła do ujścia na podstawie kolumny Mapowanie ustawienia, następnie mapuje dane ponownie oparte na konfiguracji mapowania pozyskiwania, jeśli istnieje. Dotyczy on [wszystkie obsługiwane magazyny źródłowy](copy-activity-overview.md#supported-data-stores-and-formats) tym formatów JSON i Avro. | Nie |
 
 **Przykład:**
 

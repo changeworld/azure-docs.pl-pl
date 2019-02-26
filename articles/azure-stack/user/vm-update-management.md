@@ -16,19 +16,19 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4683b6f63af9fe0081911db9914f04b1c90f9d23
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168151"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819449"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Usługa Azure Stack VM update i zarządzanie
 Następujące funkcje rozwiązania usługi Azure Automation służy do zarządzania Windows i maszyn wirtualnych systemu Linux, które są wdrażane przy użyciu usługi Azure Stack:
 
 - **[Zarządzanie aktualizacjami](https://docs.microsoft.com/azure/automation/automation-update-management)**. Rozwiązanie Update Management możesz szybko ocenić stan dostępnych aktualizacji na wszystkich komputerach z agentami i zarządzanie procesem instalacji wymaganych aktualizacji dla tych maszyn wirtualnych systemu Linux i Windows.
 
-- **[Śledzenie zmian](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Zmiany zainstalowanego oprogramowania, usług Windows, plików i rejestru Windows i demonów systemu Linux na monitorowanych serwerach są wysyłane do usługi Log Analytics w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane. Korzystając z informacji podanych na pulpicie nawigacyjnym śledzenia zmian, łatwo widać zmiany wprowadzone w ramach infrastruktury serwera.
+- **[Śledzenie zmian](https://docs.microsoft.com/azure/automation/automation-change-tracking)**. Zmiany zainstalowanego oprogramowania, usług Windows, plików i rejestru Windows i demonów systemu Linux na monitorowanych serwerach są wysyłane do usługi Azure Monitor w chmurze do przetwarzania. Logika jest stosowana do odebranych danych i usługi w chmurze rejestruje dane. Korzystając z informacji podanych na pulpicie nawigacyjnym śledzenia zmian, łatwo widać zmiany wprowadzone w ramach infrastruktury serwera.
 
 - **[Spis](https://docs.microsoft.com/azure/automation/automation-vm-inventory)**. Spis śledzenia dla maszyny wirtualnej usługi Azure Stack zapewnia interfejs użytkownika oparty na przeglądarce do instalowania i konfigurowania zbierania spisu. 
 
@@ -38,13 +38,13 @@ Następujące funkcje rozwiązania usługi Azure Automation służy do zarządza
 ## <a name="prerequisites"></a>Wymagania wstępne
 Kilka wymagań wstępnych, muszą zostać spełnione przed rozpoczęciem korzystania z tych funkcji do aktualizacji i zarządzanie maszynami wirtualnymi platformy Azure Stack. Obejmują one kroki, które należy podjąć w witrynie Azure portal, jak i portalu administracyjnego usługi Azure Stack.
 
-### <a name="in-the-azure-portal"></a>W witrynie Azure portal
+### <a name="in-the-azure-portal"></a>W witrynie Azure Portal
 Aby użyć spisu, śledzenia zmian i funkcje automatyzacji Azure Management aktualizacji maszyn wirtualnych platformy Azure Stack, należy najpierw włączyć te rozwiązania na platformie Azure.
 
 > [!TIP]
 > Jeśli masz już te funkcje włączone dla maszyn wirtualnych platformy Azure, używając istniejących poświadczeń LogAnalytics obszaru roboczego. Jeśli masz już LogAnalytics WorkspaceID i klucz podstawowy, którego chcesz używać, przejdź do sekcji [następnej sekcji](./vm-update-management.md#in-the-azure-stack-administration-portal). W przeciwnym razie jest nadal w tej sekcji, aby utworzyć nowy obszar roboczy LogAnalytics i konto usługi automation.
 
-Pierwszym krokiem podczas włączania tych rozwiązań jest [Utwórz obszar roboczy LogAnalytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) w subskrypcji platformy Azure. Obszar roboczy usługi Log Analytics to unikatowe środowisko usługi Log Analytics z własnym repozytorium danych, źródłami danych i rozwiązań. Po utworzeniu obszaru roboczego, należy pamiętać, identyfikator WorkspaceID i klucz. Aby wyświetlić te informacje, przejdź do bloku obszaru roboczego, kliknij **Zaawansowane ustawienia**i przejrzyj **identyfikator obszaru roboczego** i **klucz podstawowy** wartości. 
+Pierwszym krokiem podczas włączania tych rozwiązań jest [Utwórz obszar roboczy LogAnalytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace) w subskrypcji platformy Azure. Obszar roboczy usługi Log Analytics jest unikatowy środowiska dzienniki usługi Azure Monitor z własnym repozytorium danych, źródłami danych i rozwiązań. Po utworzeniu obszaru roboczego, należy pamiętać, identyfikator WorkspaceID i klucz. Aby wyświetlić te informacje, przejdź do bloku obszaru roboczego, kliknij **Zaawansowane ustawienia**i przejrzyj **identyfikator obszaru roboczego** i **klucz podstawowy** wartości. 
 
 Następnie należy [Tworzenie konta usługi Automation](https://docs.microsoft.com/azure/automation/automation-create-standalone-account). Konto usługi Automation jest kontenerem dla zasobów usługi Azure Automation. Umożliwia ona rozdzielenie środowisk lub dokładniejsze uporządkowanie przepływów pracy automatyzacji i zasobów. Po utworzeniu konta usługi automation możesz należy włączyć spis, śledzenie zmian i aktualizacji funkcji zarządzania. Aby to zrobić, wykonaj następujące kroki, aby umożliwić każdej funkcji:
 
@@ -52,7 +52,7 @@ Następnie należy [Tworzenie konta usługi Automation](https://docs.microsoft.c
 
 2. Wybierz rozwiązanie, aby włączyć (albo **spisu**, **śledzenie zmian**, lub **rozwiązanie Update management**).
 
-3. Użyj **wybierz obszar roboczy...**  listy rozwijanej, aby wybrać obszar roboczy analizy dzienników do użycia.
+3. Użyj **wybierz obszar roboczy...**  listy rozwijanej, aby wybrać obszar roboczy usługi Log Analytics do użycia.
 
 4. Sprawdź, czy wszystkie pozostałe informacje są poprawne, a następnie kliknij przycisk **Włącz** Aby włączyć rozwiązanie.
 

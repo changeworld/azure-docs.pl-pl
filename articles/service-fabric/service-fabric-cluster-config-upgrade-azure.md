@@ -14,19 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 621dc22ead8fbb6882c692851d39b658da043c55
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6ddd246057b178119d520bee3bbe58117fbae610
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894687"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820981"
 ---
 # <a name="upgrade-the-configuration-of-a-cluster-in-azure"></a>Uaktualnij konfigurację klastra na platformie Azure 
 
 W tym artykule opisano sposób dostosowywania różne ustawienia sieci szkieletowej klastra usługi Service Fabric. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager.
 
-> [!NOTE]
-> Nie wszystkie ustawienia są dostępne w portalu i jest [najlepsze rozwiązanie, aby dostosować ją przy użyciu szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Portal jest dla usługi Service Fabric Dev\Test tego scenariusza tylko.> 
+> [!NOTE]
+> Nie wszystkie ustawienia są dostępne w portalu i jest [najlepsze rozwiązanie, aby dostosować ją przy użyciu szablonu usługi Azure Resource Manager](https://docs.microsoft.com/azure/service-fabric/service-fabric-best-practices-infrastructure-as-code); Portal jest dla usługi Service Fabric Dev\Test tego scenariusza tylko.
+> 
 
 ## <a name="customize-cluster-settings-using-resource-manager-templates"></a>Dostosowywanie ustawień klastra przy użyciu szablonów usługi Resource Manager
 Klastry platformy Azure można skonfigurować przy użyciu szablonu usługi Resource Manager w formacie JSON. Aby dowiedzieć się więcej o różnych ustawieniach, zobacz [ustawienia konfiguracji dla klastrów](service-fabric-cluster-fabric-settings.md). Na przykład poniższe kroki pokazują, jak dodać nowe ustawienie *MaxDiskQuotaInMB* do *diagnostyki* sekcji przy użyciu usługi Azure Resource Explorer.

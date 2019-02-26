@@ -6,12 +6,12 @@ author: iainfoulds
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 0aff1040a9c7532ff5efe724382a074120801eb3
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: ed3697cbfc605fbdecad2c1cc4b32c3ddd1e3813
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856489"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819050"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>Tworzenie i konfigurowanie klastra usługi Azure Kubernetes usługi (AKS) do użycia wirtualnych węzłów przy użyciu wiersza polecenia platformy Azure
 
@@ -43,6 +43,16 @@ Jeśli dostawca jest wyświetlany jako *NotRegistered*, zarejestruj dostawcę pr
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerInstance
 ```
+
+## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
+
+Chociaż ta funkcja jest dostępna w wersji zapoznawczej, następujące regiony są obsługiwane dla wdrożeń:
+
+* Australia Wschodnia (australiaeast)
+* Wschodnie stany USA (eastus)
+* Zachodnio-środkowe stany USA (westcentralus)
+* Europa Zachodnia (westeurope)
+* Zachodnie stany USA (westus)
 
 ## <a name="launch-azure-cloud-shell"></a>Uruchamianie usługi Azure Cloud Shell
 

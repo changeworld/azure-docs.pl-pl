@@ -3,7 +3,7 @@ title: Usługa Azure Service Fabric nadzór nad zasobami dla kontenerów i usłu
 description: Usługa Azure Service Fabric pozwala określić limity zasobów dla usług uruchomionych wewnątrz lub poza kontenerów.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: twhitney, subramar
-ms.openlocfilehash: 66f651f921773f638b4493be70319d5d80b122db
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.author: aljo, subramar
+ms.openlocfilehash: 1a9d9e0b6a82bd4bb3312df5288c04d0e52af3a6
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52956844"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805676"
 ---
 # <a name="resource-governance"></a>Nadzór nad zasobami
 
@@ -32,9 +32,9 @@ Jeśli korzystasz z wielu usług, na tym samym węźle lub klastra, jest to moż
 
 Nadzór nad zasobami jest obsługiwana w usłudze Service Fabric przy użyciu [pakiet usługi](service-fabric-application-model.md). Zasoby, które są przypisane do pakietu z można podzielić między pakietami kodu. Limity zasobów, które są określone to także oznaczać rezerwacji zasobów. Usługa Service Fabric obsługuje określanie Procesora i pamięci na pakiet usługi przy użyciu dwóch wbudowanych [metryki](service-fabric-cluster-resource-manager-metrics.md):
 
-* *Procesor CPU* (Nazwa metryki `servicefabric:/_CpuCores`): rdzeń logiczny, który jest dostępny na komputerze hosta. Wszystkich rdzeni we wszystkich węzłach są ważona takie same.
+* *Procesor CPU* (Nazwa metryki `servicefabric:/_CpuCores`): Rdzeń logiczny, który jest dostępny na komputerze hosta. Wszystkich rdzeni we wszystkich węzłach są ważona takie same.
 
-* *Pamięć* (Nazwa metryki `servicefabric:/_MemoryInMB`): pamięć jest wyrażona w megabajtach i jest on mapowany do pamięci fizycznej, który jest dostępny na komputerze.
+* *Pamięć* (Nazwa metryki `servicefabric:/_MemoryInMB`): Pamięć jest wyrażona w megabajtach i jest on mapowany do pamięci fizycznej, który jest dostępny na komputerze.
 
 Aby uzyskać te dwie metryki [Menedżer zasobów klastra](service-fabric-cluster-resource-manager-cluster-description.md) śledzi całkowita pojemność klastra, obciążenia na każdym węźle w klastrze, a pozostałe zasoby w klastrze. Te dwie metryki są równoważne dowolnemu użytkownikowi lub metryk niestandardowych. Wszystkie istniejące funkcje można używanych wraz z nimi:
 
@@ -56,9 +56,9 @@ W tym momencie sumy limitów jest równy pojemność węzła. Proces kontenera z
 
 Istnieją dwie sytuacje, w których inne procesy mogą będą konkurować o procesora CPU. W takich sytuacjach proces i kontener, w tym przykładzie może wystąpić problem zasobożernymi:
 
-* *Łączenie usług zarządzanych i niezarządzanych i kontenery*: Jeśli użytkownik tworzy usługi bez żadnych nadzór nad zasobami określone, środowisko uruchomieniowe uznaje korzysta z nie zasobów i można umieścić w węźle, w tym przykładzie. W takim przypadku ten nowy proces zużywa skutecznie niektóre Procesora kosztem usług, które zostały już uruchomione w węźle. Istnieją dwa rozwiązania tego problemu. Nie Mieszaj usług zarządzanych i niezarządzanych, w tym samym klastrze, albo użyj [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) tak, że te dwa typy usług nie znajdą się na tym samym zestawie węzłów.
+* *Łączenie usług zarządzanych i niezarządzanych i kontenery*: Użytkownik tworzy usługi bez żadnych nadzór nad zasobami określone, środowisko uruchomieniowe uznaje korzysta z nie zasobów i można umieścić w węźle, w tym przykładzie. W takim przypadku ten nowy proces zużywa skutecznie niektóre Procesora kosztem usług, które zostały już uruchomione w węźle. Istnieją dwa rozwiązania tego problemu. Nie Mieszaj usług zarządzanych i niezarządzanych, w tym samym klastrze, albo użyj [ograniczeniami dotyczącymi umieszczania](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) tak, że te dwa typy usług nie znajdą się na tym samym zestawie węzłów.
 
-* *Po uruchomieniu inny proces na węźle, poza usługi Service Fabric (na przykład usługa systemu operacyjnego)*: W takiej sytuacji proces poza usługi Service Fabric twierdzi procesora CPU również z istniejącymi usługami. Rozwiązanie tego problemu jest skonfigurować węzła zdolności produkcyjnych poprawnie kontu obciążenie systemu operacyjnego, jak pokazano w następnej sekcji.
+* *Po uruchomieniu inny proces na węźle, poza usługi Service Fabric (na przykład usługa systemu operacyjnego)*: W takiej sytuacji proces poza usługi Service Fabric również twierdzi dla Procesora z istniejącymi usługami. Rozwiązanie tego problemu jest skonfigurować węzła zdolności produkcyjnych poprawnie kontu obciążenie systemu operacyjnego, jak pokazano w następnej sekcji.
 
 ## <a name="cluster-setup-for-enabling-resource-governance"></a>Konfiguracja klastra umożliwiające zarządzanie zasobami
 
@@ -190,12 +190,12 @@ W tym przykładzie domyślne wartości parametrów są ustawiane w środowisku p
 
 Oprócz Procesora i pamięci jest to możliwe określić inne ograniczenia dotyczące zasobów dla kontenerów. Te limity są określone na poziomie pakietu kodu i są stosowane po uruchomieniu kontenera. W przeciwieństwie do procesora CPU i pamięci, Menedżer zasobów klastra nie jest świadomy tych zasobów i nie będzie wykonać żadnych testów wydajności lub równoważenia obciążenia dla nich.
 
-* *MemorySwapInMB*: ilość pamięci wymiany, używanego w kontenerze.
-* *MemoryReservationInMB*: zmienny limit dotyczących zarządzania pamięci, który jest wymuszany, tylko wtedy, gdy wykryto rywalizacji o zasoby pamięci w węźle.
-* *CpuPercent*: procent procesora CPU, kontener może korzystać. Jeśli podano limity procesora CPU dla pakietu z tego parametru skutecznie jest ignorowana.
+* *MemorySwapInMB*: Ilość pamięci wymiany, używanego w kontenerze.
+* *MemoryReservationInMB*: Zmienny limit nadzoru pamięci, który jest wymuszany, tylko wtedy, gdy wykryto rywalizacji o zasoby pamięci w węźle.
+* *CpuPercent*: Procent procesora CPU, kontener może korzystać. Jeśli podano limity procesora CPU dla pakietu z tego parametru skutecznie jest ignorowana.
 * *MaximumIOps*: Maksymalna liczba IOPS, można użyć kontenera (Odczyt i zapis).
-* *MaximumIOBytesps*: maksymalna we/wy (w bajtach na sekundę), można użyć kontenera (Odczyt i zapis).
-* *BlockIOWeight*: blokowanie operacji We/Wy wagi dla względem innych kontenerów.
+* *MaximumIOBytesps*: Maksymalna we/wy (w bajtach na sekundę), można użyć kontenera (Odczyt i zapis).
+* *BlockIOWeight*: Blok waga we/wy dla względem innych kontenerów.
 
 Te zasoby można łączyć z procesora CPU i pamięci. Poniżej przedstawiono przykładowy sposób określić dodatkowe zasoby dla kontenerów:
 

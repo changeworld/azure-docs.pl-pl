@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: c2374bd0d67115bdc9fef2b6937f7b087bc581de
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: eda41870e86db206847f5ea81e23fa1b7612234c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076777"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817307"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportowanie telemetrii z usługi Application Insights
 Czy chcesz zachować dane telemetryczne przez czas dłuższy niż okres przechowywania standardowa? Lub przetwarzać dane w jakiś sposób wyspecjalizowane? Eksport ciągły jest idealny dla tego. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. W tym miejscu możesz pobrać dane i napisać kod, które możesz: musisz go przetworzyć.  
@@ -32,6 +32,16 @@ Przed skonfigurowaniem Eksport ciągły istnieje kilka rozwiązań alternatywnyc
 * Można także przejść do ustawień [eksportu ciągłego przy użyciu programu Powershell](https://docs.microsoft.com/powershell/module/azurerm.applicationinsights/new-azurermapplicationinsightscontinuousexport?view=azurermps-5.7.0).
 
 Eksportu ciągłego dane są kopiowane do magazynu (gdzie pozostawał dla tak długo, jak chcesz), jest nadal dostępny w usłudze Application Insights dla zwykłego [okres przechowywania](../../azure-monitor/app/data-retention-privacy.md).
+
+## <a name="continuous-export-advanced-storage-configuration"></a>Konfiguracja usługi storage zaawansowane ciągłego eksportu
+
+Eksport ciągły **nie obsługuje** następujące funkcje usługi Azure storage/konfiguracje:
+
+* Korzystanie z [zapory sieci Wirtualnej/usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security) w powiązaniu z usługą Azure Blob storage.
+
+* [Niezmienny magazyn](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage) dla usługi Azure Blob storage.
+
+* [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction).
 
 ## <a name="setup"></a> Utwórz eksport ciągły
 1. W zasobie usługi Application Insights dla aplikacji, otwórz Eksport ciągły i wybierz polecenie **Dodaj**:

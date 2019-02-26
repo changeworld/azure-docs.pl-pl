@@ -8,14 +8,16 @@ ms.author: dobett
 ms.date: 01/14/2019
 ms.topic: conceptual
 manager: philmea
-ms.openlocfilehash: 89109dec83342a8f4b5962778b1803eb36656e42
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 8c5b32464a9c6253dc34d070d64a1645f523a80c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352220"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804437"
 ---
 # <a name="manage-iot-central-from-the-azure-portal"></a>Zarządzanie IoT Central w witrynie Azure portal
+
+[!INCLUDE [iot-central-selector-manage](../../includes/iot-central-selector-manage.md)]
 
 Zamiast tworzenia aplikacji i zarządzaniem nimi IoT Central z IoT Central [Menedżer aplikacji](https://aka.ms/iotcentral) strony, można użyć [witryny Azure portal](https://portal.azure.com) do zarządzania aplikacjami.
 

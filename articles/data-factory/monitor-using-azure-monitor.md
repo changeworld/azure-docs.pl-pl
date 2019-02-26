@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
-ms.openlocfilehash: 6645463f2172a6f201f4d2f840e03d1797367752
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: a4eea340fe57ab3c05e527a476d9153113eedba5
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512377"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819398"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>Zgłoś alert i monitorowania fabryki danych przy użyciu usługi Azure Monitor
 Aplikacje w chmurze są złożone z wielu ruchomych elementów. Monitorowanie zapewnia dane, aby upewnić się, że aplikacja stale się i działa w dobrej kondycji. Pomaga również stave potencjalnych problemów lub Rozwiązywanie problemów z przeszłości te. Ponadto można użyć danych monitorowania do uzyskania szczegółowych informacji o aplikacji. Ta wiedza może pomóc zwiększyć wydajność aplikacji lub łatwość konserwacji lub Automatyzuj akcje, które w przeciwnym razie wymagają ręcznej interwencji.
@@ -59,7 +59,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 
 **Nagłówki**
 * Zastąp element `{api-version}` pytaniem `2016-09-01`.
-* Zastąp `{resource-id}` o identyfikatorze zasobu zasobu, dla którego chcesz edytować ustawienia diagnostyczne. Aby uzyskać więcej informacji [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/resource-group-portal.md).
+* Zastąp `{resource-id}` o identyfikatorze zasobu zasobu, dla którego chcesz edytować ustawienia diagnostyczne. Aby uzyskać więcej informacji [używanie grup zasobów do zarządzania zasobami platformy Azure](../azure-resource-manager/manage-resource-groups-portal.md).
 * Ustaw `Content-Type` nagłówka do `application/json`.
 * Ustaw nagłówek autoryzacji na token internetowy JSON, którą można uzyskać z usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [uwierzytelniania żądań](../active-directory/develop/authentication-scenarios.md).
 

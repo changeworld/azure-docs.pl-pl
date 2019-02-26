@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: b60861b4daced5e3d292feec54f8a54839a80b8f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 58c7506b71ade8ff70519b895995153896006ade
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728918"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804677"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -220,8 +220,6 @@ Aby włączyć usługę Application Insights dla aplikacji funkcji na platformie
 Aby dowiedzieć się więcej, zobacz [monitora usługi Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-Aby uzyskać więcej informacji na temat narzędzi usługi Azure Functions, zobacz sekcję często zadawanych pytań [Visual Studio Tools 2017 dla usługi Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) wpis w blogu.
 
 Aby dowiedzieć się więcej na temat podstawowych narzędzi usługi Azure Functions, zobacz [kodu i testowanie usługi Azure functions lokalnie](functions-run-local.md).
 

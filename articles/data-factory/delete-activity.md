@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/10/2019
-ms.openlocfilehash: 407bb2e39e92390576da9c23868f5af9c444bed4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.date: 02/25/2019
+ms.openlocfilehash: fab5d69239c420c394645cef632d119848d0f4c4
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341543"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818837"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Usuń działanie w usłudze Azure Data Factory
 
@@ -37,21 +37,20 @@ Poniżej przedstawiono niektóre zalecenia dotyczące używania działania usuwa
 
 -   Upewnij się, że nie powoduje usunięcia plików, które są zapisywane w tym samym czasie. 
 
--   Jeśli chcesz usunąć plików lub folderów z systemu lokalnego, upewnij się, że używasz własnego środowiska integration runtime przy użyciu wersji większy niż 3.13.
+-   Jeśli chcesz usunąć plików lub folderów z systemu lokalnego, upewnij się, że używasz własnego środowiska integration runtime z nieco większą niż 3,14.
 
 ## <a name="supported-data-stores"></a>Magazyny danych obsługiwanych
 
-### <a name="azure-data-stores"></a>Magazyny danych na platformie Azure
-
 -   [Azure Blob Storage](connector-azure-blob-storage.md)
 -   [Usługa Azure Data Lake Storage 1. generacji](connector-azure-data-lake-store.md)
--   [Usługa Azure Data Lake Storage 2. generacji (wersja zapoznawcza)](connector-azure-data-lake-storage.md)
+-   [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)
 
 ### <a name="file-system-data-stores"></a>Magazyny danych systemu plików
 
 -   [System plików](connector-file-system.md)
 -   [FTP](connector-ftp.md)
--   [HDFS](connector-hdfs.md)
+-   [SFTP](connector-sftp.md)
+-   [Amazon S3](connector-amazon-simple-storage-service.md)
 
 ## <a name="syntax"></a>Składnia
 
@@ -61,7 +60,7 @@ Poniżej przedstawiono niektóre zalecenia dotyczące używania działania usuwa
     "type": "Delete",
     "typeProperties": {
         "dataset": {
-            "referenceName": "<dataset name to be deleted>",
+            "referenceName": "<dataset name>",
             "type": "DatasetReference"
         },
         "recursive": true/false,
@@ -87,7 +86,7 @@ Poniżej przedstawiono niektóre zalecenia dotyczące używania działania usuwa
 | MaxConcurrentConnections | Liczba połączeń, aby połączyć się z magazynem magazynu jednocześnie związanych z usuwaniem folder lub wybrane pliki.   |  Nie. Wartość domyślna to `1`. |
 | EnableLogging | Wskazuje, czy należy on do rejestrowania nazw folderów lub plików, które zostały usunięte. W przypadku opcji true należy dodatkowo podać konto magazynu, aby zapisać plik dziennika tak, aby można było śledzić zachowania działania usuwania, zapoznając się w pliku dziennika. | Nie |
 | logStorageSettings | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Grupy właściwości magazynu, które można określić, gdzie chcesz zapisać plik dziennika, zawierającą nazwy folderu lub pliku, które zostały usunięte przez działanie usuwania. | Nie |
-| linkedServiceName | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Połączona usługa [usługi Azure Storage](connector-azure-blob-storage.md#linked-service-properties) lub [usługi Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) do przechowywania pliku dziennika, który zawiera nazwy pliku lub folderu, które zostały usunięte przez działanie Delete. | Nie |
+| linkedServiceName | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Połączona usługa [usługi Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [usługi Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties), lub [usługi Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) do przechowywania plików dziennika, który zawiera folder i nazwę pliku został usunięty przez działanie Delete. | Nie |
 | ścieżka | Dotyczy tylko kiedy enablelogging = true.<br/><br/>Ścieżki, który ma zostać zapisany plik dziennika na koncie magazynu. Jeśli ścieżka nie zostanie określona, usługa utworzy kontener. | Nie |
 
 ## <a name="monitoring"></a>Monitorowanie
@@ -100,13 +99,15 @@ Istnieją dwa miejsca, w którym można wyświetlić i monitorować wyniki dzia�
 
 ```json
 { 
-  "isWildcardUsed": false, 
-  "wildcard": null,
-  "type": "AzureBlobStorage",
+  "datasetName": "AmazonS3",
+  "type": "AmazonS3Object",
+  "prefix": "test",
+  "bucketName": "adf",
   "recursive": true,
-  "maxConcurrentConnections": 10,
-  "filesDeleted": 1,
-  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07/5c698705-a6e2-40bf-911e-e0a927de3f07.json",
+  "isWildcardUsed": false,
+  "maxConcurrentConnections": 2,  
+  "filesDeleted": 4,
+  "logPath": "https://sample.blob.core.windows.net/mycontainer/5c698705-a6e2-40bf-911e-e0a927de3f07",
   "effectiveIntegrationRuntime": "MyAzureIR (West Central US)",
   "executionDuration": 650
 }
@@ -114,22 +115,12 @@ Istnieją dwa miejsca, w którym można wyświetlić i monitorować wyniki dzia�
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>Przykładowy plik dziennika aktywności Delete
 
-```json
-{
-  "customerInput": {
-    "type": "AzureBlob",
-    "fileName": "",
-    "folderPath": "folder/filename_to_be_deleted",
-    "recursive": false,
-    "enableFileFilter": false
-  },
-  "deletedFileList": [
-    "folder/filename_to_be_deleted"
-  ],
-  "deletedFolderList": null,
-  "error":"the reason why files are failed to be deleted"
-}
-```
+| Name (Nazwa) | Kategoria | Stan | Błąd |
+|:--- |:--- |:--- |:--- |
+| test1/yyy.json | Plik | Usunięte |  |
+| test2/hello789.txt | Plik | Usunięte |  |
+| Test2/test3/hello000.txt | Plik | Usunięte |  |
+| test2/test3/zzz.json | Plik | Usunięte |  |
 
 ## <a name="examples-of-using-the-delete-activity"></a>Przykłady użycia działania Delete
 
@@ -332,7 +323,7 @@ Można utworzyć potoku, aby wyczyścić stare lub wygasłe plików przy użyciu
 
 ### <a name="move-files-by-chaining-the-copy-activity-and-the-delete-activity"></a>Przenieś pliki przez łańcuch działanie kopiowania i działanie Delete
 
-Można przenieść pliku za pomocą działania kopiowania do skopiowania pliku a następnie usuń działania usuwania pliku w potoku.  Gdy chcesz przenieść wiele plików, może użyć działaniu GetMetadata + działanie filtru + działanie Foreach + działania kopiowania i usuwania działań, jak w poniższym przykładzie:
+Można przenieść pliku za pomocą działania kopiowania, aby skopiować plik, a następnie działanie delete, aby usunąć plik w potoku.  Gdy chcesz przenieść wiele plików, może użyć działaniu GetMetadata + działanie filtru + działanie Foreach + działania kopiowania i usuwania działań, jak w poniższym przykładzie:
 
 > [!NOTE]
 > Jeśli chcesz przenieść cały folder definiujący zestaw danych zawierający ścieżkę folderu, a następnie za pomocą działania kopiowania i działanie Delete, aby odwoływać się do tego samego zestawu danych reprezentująca folderem, należy zwrócić szczególną uwagę. Jest to spowodowane musisz upewnić się, że nie będą nowych plików przychodzących do folderu między operacji kopiowania i operacji usuwania.  W przypadku nowych plików otrzymywanych z folderu w tej chwili, gdy działania kopiowania ukończony zadanie kopiowania, ale działanie Delete nie została stared jest możliwe, że działanie usuwania spowoduje usunięcie tego nowego pliku nadchodzących, który nie został skopiowany do destinati na jeszcze przez usunięcie całego folderu. 
@@ -575,9 +566,6 @@ Zestaw danych jako miejsce docelowe danych używane przez działanie kopiowania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej o kopiowaniu plików w usłudze Azure Data Factory.
-
--   [Działanie kopiowania w usłudze Azure Data Factory](copy-activity-overview.md)
+Dowiedz się więcej na temat przenoszenia plików w usłudze Azure Data Factory.
 
 -   [Narzędzie do kopiowania danych w usłudze Azure Data Factory](copy-data-tool.md)
-- 

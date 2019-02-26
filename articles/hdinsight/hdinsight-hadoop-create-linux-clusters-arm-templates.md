@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: d40d3b32f3af8e50079de0a5988584427ea6777c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b8264e4f69a7561865f5d14087bc81bc933a6c59
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819811"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821408"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów usługi Apache Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -47,11 +47,7 @@ Aby uzyskać więcej informacji na temat szablonów usługi Resource Manager zob
 
 ## <a name="generate-templates"></a>Generowanie szablonów
 
-Usługi Resource Manager umożliwia wyeksportowanie szablonu usługi Resource Manager z istniejących zasobów w subskrypcji przy użyciu różnych narzędzi. Możesz użyć wygenerowanego szablonu, aby dowiedzieć się więcej o składni szablonu lub aby zautomatyzować ponowne wdrożenie rozwiązania, w razie potrzeby.
-
-- Azure Portal: Zobacz [Eksportowanie szablonu usługi Azure Resource Manager z istniejących zasobów](../azure-resource-manager/resource-manager-export-template.md).
-- Azure PowerShell: Zobacz [szablony eksportu usługi Azure Resource Manager przy użyciu programu PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md).
-- Klasyczny interfejs wiersza polecenia Azure: Zobacz [szablonów eksportu usługi Azure Resource Manager za pomocą klasycznego wiersza polecenia platformy Azure](../azure-resource-manager/resource-manager-export-template-cli.md).
+Usługi Resource Manager umożliwia wyeksportowanie szablonu usługi Resource Manager z istniejących zasobów w subskrypcji przy użyciu różnych narzędzi. Możesz użyć wygenerowanego szablonu, aby dowiedzieć się więcej o składni szablonu lub aby zautomatyzować ponowne wdrożenie rozwiązania, w razie potrzeby. Aby uzyskać więcej informacji, zobacz [eksportowanie szablonów](../azure-resource-manager/manage-resource-groups-portal.md#export-resource-groups-to-templates).
 
 ## <a name="deploy-using-the-portal"></a>Wdrażanie przy użyciu portalu
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 657211378d7b38b88ccd40aa31a175058e1ad67c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: e6d18222e15f62f12592362827b6dbc4a3d7dfbc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015560"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820318"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Inicjowanie obsługi oraz wdrażanie mikrousług przewidywalny na platformie Azure
 W tym samouczku pokazano, jak aprowizować i wdrażanie aplikacji składających się z [mikrousług](https://en.wikipedia.org/wiki/Microservices) w [usługi Azure App Service](https://azure.microsoft.com/services/app-service/) jako pojedyncza jednostka i w przewidywalny sposób za pomocą szablonów grup zasobów JSON i Wykonywanie skryptów programu PowerShell. 
@@ -39,11 +39,9 @@ W tym samouczku wdrożysz aplikację, która obejmuje:
 W tym samouczku użyjesz następujących narzędzi. Ponieważ nie jest kompleksowe omówienie narzędzia, zamierzam używany scenariusz end-to-end, a także tylko krótkie wprowadzenie do każdego z nich, oraz gdzie znajdziesz więcej informacji na jego temat. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Szablony usługi Azure Resource Manager (JSON)
-Za każdym razem, gdy tworzysz aplikację w usłudze Azure App Service, na przykład usługi Azure Resource Manager używa szablon JSON do tworzenia całą grupę zasobów z zasobami składnika. Złożonych szablonów z [portalu Azure Marketplace](/azure/marketplace) może zawierać bazy danych, kont magazynu, plan usługi App Service, aplikacji, reguły alertów, ustawienia aplikacji, ustawień automatycznego skalowania i więcej, a te szablony są dostępne dla użytkownika za pomocą programu PowerShell. Aby uzyskać informacje o tym, jak pobrać i używać tych szablonów, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](../powershell-azure-resource-manager.md).
+Za każdym razem, gdy tworzysz aplikację w usłudze Azure App Service, na przykład usługi Azure Resource Manager używa szablon JSON do tworzenia całą grupę zasobów z zasobami składnika. Złożonych szablonów z [portalu Azure Marketplace](/azure/marketplace) może zawierać bazy danych, kont magazynu, plan usługi App Service, aplikacji, reguły alertów, ustawienia aplikacji, ustawień automatycznego skalowania i więcej, a te szablony są dostępne dla użytkownika za pomocą programu PowerShell. Aby uzyskać więcej informacji na temat szablonów usługi Azure Resource Manager, zobacz [Tworzenie szablonów usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-authoring-templates.md)
 
-Aby uzyskać więcej informacji na temat szablonów usługi Azure Resource Manager, zobacz [Tworzenie szablonów usługi Resource Manager platformy Azure](../azure-resource-manager/resource-group-authoring-templates.md)
-
-### <a name="azure-sdk-26-for-visual-studio"></a>Zestaw Azure SDK 2.6 dla programu Visual Studio
+### <a name="azure-sdk-26-for-visual-studio"></a>Azure SDK 2.6 for Visual Studio
 Najnowsze zestaw SDK zawiera ulepszenia dotyczące obsługi szablonów usługi Resource Manager w edytorze kodu JSON. Umożliwia szybkie tworzenie szablonu grupy zasobów od podstaw lub Otwórz istniejący szablon JSON (np. szablon galerii z pobranych) do modyfikacji, wypełnij plik parametrów i możliwe jest nawet wdrażanie grupy zasobów bezpośrednio z zasobu platformy Azure Rozwiązanie grupy.
 
 Aby uzyskać więcej informacji, zobacz [Azure SDK 2.6 dla programu Visual Studio](https://azure.microsoft.com/blog/2015/04/29/announcing-the-azure-sdk-2-6-for-net/).
@@ -240,7 +238,7 @@ Ponownie zagnieżdżonych zasobów powinny mieć hierarchię bardzo podobne do t
     > Skalowanie automatyczne to funkcja oferowana w **standardowa** warstwy lub nowszej i poziom planu alerty są funkcji oferowanych w ramach **podstawowe** warstwy lub nowszej, musisz ustawić **jednostki sku** parametru Aby **standardowa** lub **Premium** zobaczenie wszystkich nowych App Insights zasobów światła w górę.
     > 
     > 
-16. Kliknij przycisk **wdrażanie**. W przypadku wybrania **zapisywać hasła**, hasło zostanie zapisane w pliku parametrów **w postaci zwykłego tekstu**. W przeciwnym razie użytkownik zostanie zapytany wprowadzanie hasła bazy danych w procesie wdrażania.
+16. Kliknij przycisk **Deploy (Wdróż)**. W przypadku wybrania **zapisywać hasła**, hasło zostanie zapisane w pliku parametrów **w postaci zwykłego tekstu**. W przeciwnym razie użytkownik zostanie zapytany wprowadzanie hasła bazy danych w procesie wdrażania.
 
 Gotowe. Teraz po prostu musisz przejść do [witryny Azure Portal](https://portal.azure.com/) i [Eksploratora zasobów Azure](https://resources.azure.com) narzędzie, aby zobaczyć nowe alerty i ustawienia automatycznego skalowania, dodane do JSON wdrożono aplikację.
 

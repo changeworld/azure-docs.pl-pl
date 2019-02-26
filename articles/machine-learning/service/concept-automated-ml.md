@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: a489d1a282c924ec1df658a0244745b225f7123e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 88eb7052c394d41c861ffc422738a4a650101ea7
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251269"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819313"
 ---
 # <a name="what-is-automated-machine-learning"></a>Co to jest automatyczna usługi machine learning?
 
@@ -41,7 +41,7 @@ Automatyczne machine learning to proces wykonywania danych szkoleniowych z funkc
 
 1. Konfigurowanie [obliczeniowego elementu docelowego](how-to-set-up-training-targets.md) używanego do nauczenia modelu.
 
-1. Konfigurowanie konfiguracji uczenia automatycznych maszyny. W ten sposób kontroluje parametry używane zgodnie z usługi Azure Machine Learning iteruje przez różne modele, ustawienia hiperparametrycznego i jakie metryki, aby przyjrzeć się podczas określania najlepszy model 
+1. Konfigurowanie konfiguracji uczenia automatycznych maszyny. W ten sposób kontroluje parametry używane zgodnie z usługi Azure Machine Learning iteruje przez różne modele, ustawienia hiperparametrycznego i jakie metryki, aby przyjrzeć się podczas określania najlepszy model
 
 1. Prześlij szkolenia, uruchom.
 
@@ -58,9 +58,13 @@ Typowe niedogodności automatycznych machine Learning jest brakiem, aby zapozna�
 1. Rozpoznawanie potoku i wszystkie kroki uczenia maszynowego zaangażowani, w tym przetwarzanie wstępne danych/cechowania i wartości hiperparametrycznego.
 1. Opis relacji między zmienne wejściowe (znany także jako "funkcji") i model danych wyjściowych.  Wiedząc, wielkości i kierunek wpływ każdej funkcji na dostęp do przewidywanych wartości pomaga lepiej zrozumieć i wyjaśnić modelu. Jest to nazywane znaczenie funkcji.
 
-Globalnych funkcji uczenia się na żądanie post znaczenie dla potoku dowolnie lub ją włączyć dla wszystkich potoków w ramach zautomatyzowanej szkolenia uczenia Maszynowego.  Jest to funkcja w wersji zapoznawczej i będziemy inwestować długoterminowo w dostarczaniu bogatsze informacje, aby umożliwić użytkownikom lepsze rozumienie Twoich modeli uczenia Maszynowego.  
+Globalnych funkcji uczenia się na żądanie post znaczenie dla potoku dowolnie lub ją włączyć dla wszystkich potoków jako część uczenie automatycznych maszyny. W dużym stopniu regulowanych prawnie branżach takich jak opieka zdrowotna i bankowe jest to niezbędne do zapewnienia zgodności z przepisami i najlepszych rozwiązań.  Poniżej przedstawiono kilka scenariuszy w rzeczywistych warunkach aby zilustrować:
 
-Postępuj zgodnie z tym [przykładowy notes](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) eksperymentować wyjaśnienia modelu w usłudze Azure Machine Learning.
+1. Firmy produkcyjnej związanych przy użyciu uczenia maszynowego przewiduje błąd Instrumentacji w przyszłości, więc można proaktywnie wykonują związanych z konserwacją. Po sprawdzeniu, czy dokument ma zakończyć się niepowodzeniem, co najbardziej prawdopodobną przyczyną będzie więc konserwacji prewencyjnej, które mogą być wykonywane szybko?
+1. Instytucji finansowej przy użyciu usługi machine learning pożyczki procesu lub aplikacji karty kredytowej. Jak można dowiedzieć się, jeśli model robi właściwe, a jeśli klient Aby uzyskać więcej informacji na Dlaczego aplikacji zostało odrzucone, jak użytkownik odpowie na ich?
+1. Sklepie internetowym lub dostawcy niezależni dostawcy oprogramowania przy użyciu uczenia maszynowego w celu odpływu klientów. Jakie są kluczowe współautorzy klientowi współczynnika zmian i jak można uniemożliwić klientom wychodzi?
+
+Jest to funkcja w wersji zapoznawczej i będziemy inwestować długoterminowo w dostarczaniu bogatsze informacje, aby umożliwić użytkownikom lepsze rozumienie modeli uczenia maszynowego. Postępuj zgodnie z tym [przykładowy notes](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb) eksperymentować wyjaśnienia modelu w usłudze Azure Machine Learning.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

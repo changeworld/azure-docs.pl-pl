@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
-ms.openlocfilehash: b0cd20278287b41dd953c64044b705aa2dba7557
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: a8856bd46f516aa3c64965648d4f23b9ba665b1b
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52319407"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820029"
 ---
-# <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Wyłącz gościa Zapora systemu operacyjnego na maszynie Wirtualnej platformy Azure
+# <a name="disable-the-guest-os-firewall-in-azure-vm"></a>Wyłączanie zapory systemu operacyjnego gościa na maszynie wirtualnej platformy Azure
 
 Ten artykuł zawiera odwołanie do sytuacji, w których istnieje podejrzenie, że Zapora systemu operacyjnego gościa jest filtrowanie ruchu częściowego lub ukończone z maszyną wirtualną (VM). To może wystąpić, jeśli celowo wprowadzono zmiany do zapory, która spowodowała połączenia RDP nie powiedzie się.
 
@@ -33,7 +33,7 @@ Proces, który jest opisany w tym artykule jest przeznaczona do użycia jako obe
 
 Jeśli maszyna wirtualna jest w trybie online i jest dostępny w innej maszyny Wirtualnej w tej samej sieci wirtualnej, możesz tworzyć te środki zaradcze, przy użyciu innej maszyny Wirtualnej.
 
-#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Ograniczenie 1: Funkcja rozszerzenia niestandardowego skryptu lub uruchom polecenie
+#### <a name="mitigation-1-custom-script-extension-or-run-command-feature"></a>Ograniczenie 1: Niestandardowe rozszerzenie skryptu lub uruchom polecenie funkcji
 
 Jeśli masz już działający agenta platformy Azure, możesz użyć [rozszerzenia niestandardowego skryptu](../extensions/custom-script-windows.md) lub [uruchamianie poleceń](../windows/run-command.md) funkcję (tylko maszyny wirtualne usługi Resource Manager), aby zdalnie korzystać z poniższych skryptów.
 
@@ -54,7 +54,7 @@ Jeśli masz już działający agenta platformy Azure, możesz użyć [rozszerzen
 >   ```
 >   Jednak zaraz po ponownym zastosowaniem zasady będzie można się z sesji zdalnej. Trwałe rozwiązanie tego problemu jest do modyfikowania zasad, które są stosowane na tym komputerze.
 
-#### <a name="mitigation-2-remote-powershell"></a>Ograniczenie 2: Zdalne programu PowerShell
+#### <a name="mitigation-2-remote-powershell"></a>Ograniczenie 2: Zdalnego programu PowerShell
 
 1.  Łączenie z maszyną Wirtualną, która znajduje się w tej samej sieci wirtualnej co maszyna wirtualna, która nie można nawiązać połączenia przy użyciu połączenia RDP.
 
@@ -70,7 +70,7 @@ Jeśli masz już działający agenta platformy Azure, możesz użyć [rozszerzen
     ```
 
 > [!Note]
-> Jeśli Zapora jest ustawiona za pomocą obiektu zasad grupy, ta metoda może nie działać, ponieważ to polecenie powoduje zmianę tylko wpisy rejestru lokalnego. Jeśli zasady są spełnione, zastąpią tę zmianę. 
+> Jeśli Zapora jest ustawiona za pomocą obiektu zasad grupy, ta metoda może nie działać, ponieważ to polecenie powoduje zmianę tylko wpisy rejestru lokalnego. Jeśli zasady są spełnione, zastąpią tę zmianę. 
 
 #### <a name="mitigation-3-pstools-commands"></a>Ograniczenie 3: Polecenia PSTools
 

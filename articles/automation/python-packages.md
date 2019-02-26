@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/11/2018
+ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: de0998dffeac54db5311bbcde1c9499488b23556
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 28ddecb20944893b23b54775e22f19644f0afbf0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434976"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816508"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Zarządzanie pakietami języka Python 2 w usłudze Azure Automation
 
@@ -34,9 +34,38 @@ Po zaimportowaniu pakietu jest wyświetlana na **pakiety języka Python 2** stro
 
 ![Lista pakietów](media/python-packages/package-list.png)
 
+## <a name="import-packages-with-dependencies"></a>Zaimportuj pakiety zależności
+
+Usługa Azure automation zależności pakietów dla środowiska python nie jest rozpoznawane podczas procesu importowania. Istnieją dwa sposoby, aby zaimportować pakiet ze wszystkimi jej zależnościami. Tylko jeden z następujących czynności musi być używane do importowania pakietów do konta usługi Automation.
+
+### <a name="manually-download"></a>Ręcznie pobrać
+
+Na Windows 64-bitowego komputera za pomocą [python2.7](https://www.python.org/download/releases/2.7/) i [pip](https://pip.pypa.io/stable/installing/) zainstalowany, uruchom następujące polecenie, aby pobrać pakiet i wszystkich jego zależności:
+
+```
+C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
+```
+
+Po pobraniu pakietów, możesz zaimportować je do konta usługi automation.
+
+### <a name="runbook"></a>Element Runbook
+
+Zaimportuj element runbook python [pakietów importu języka Python 2 pypi do konta usługi Azure Automation](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) z galerii na koncie usługi Automation. Upewnij się, że ustawienia uruchamiania są ustawione na **Azure** i uruchamianie elementu runbook z parametrami. Element runbook wymaga konta Uruchom jako dla konta usługi Automation do pracy. Dla każdego parametru, upewnij się, że uruchomieniu go z przełącznikiem jak pokazano na poniższej liście i obrazu:
+
+* -s \<subscriptionId\>
+* -g \<resourceGroup\>
+* - \<konta usługi Automation\>
+* -m \<modulePackage\>
+
+![Lista pakietów](media/python-packages/import-python-runbook.png)
+
+Element runbook służy do określania, co pakiet do pobrania, na przykład `Azure` (czwarty parametr) będą pobierać wszystkie moduły platformy Azure i wszystkich jego zależności, czyli około 105.
+
+Po zakończeniu element runbook można sprawdzić **pakiety języka Python 2** strony w obszarze **zasoby udostępnione** na koncie usługi Automation, aby sprawdzić ich pakietu zostały zaimportowane prawidłowo.
+
 ## <a name="use-a-package-in-a-runbook"></a>Użyj pakietu w elemencie runbook
 
-Po zaimportowaniu pakietu można teraz używać go w elemencie runbook. W poniższym przykładzie użyto [ pakiet narzędzia usługi Azure Automation](https://github.com/azureautomation/azure_automation_utility). Ten pakiet umożliwia korzystanie z języka Python w usłudze Azure Automation. Aby użyć pakietu, postępuj zgodnie z instrukcjami w repozytorium GitHub i dodać go do elementu runbook za pomocą `from azure_automation_utility import get_automation_runas_credential` na przykład w celu importowania funkcji pobierania konto Uruchom jako.
+Po zaimportowaniu pakietu, można teraz używać go w elemencie runbook. W poniższym przykładzie użyto [ pakiet narzędzia usługi Azure Automation](https://github.com/azureautomation/azure_automation_utility). Ten pakiet umożliwia korzystanie z języka Python w usłudze Azure Automation. Aby użyć pakietu, postępuj zgodnie z instrukcjami w repozytorium GitHub i dodać go do elementu runbook za pomocą `from azure_automation_utility import get_automation_runas_credential` na przykład w celu importowania funkcji pobierania konto Uruchom jako.
 
 ```python
 import azure.mgmt.resource

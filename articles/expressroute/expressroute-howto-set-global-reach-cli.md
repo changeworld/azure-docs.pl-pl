@@ -2,28 +2,23 @@
 title: 'Konfigurowanie usługi ExpressRoute, zasięgu globalnym: interfejs wiersza polecenia platformy Azure | Microsoft Docs'
 description: Ten artykuł pomoże Ci połączyć obwodów usługi ExpressRoute razem w celu zapewnienia prywatnych sieci między sieci lokalnych i włączanie zasięgu globalnym.
 services: expressroute
-author: cherylmc
+author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/12/2018
-ms.author: cherylmc
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: be10489d731b9e01d148ce1ac7892cb6de956662
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 28df8f59944ccac9d731e15a558d864beed2f3ae
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659324"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817698"
 ---
-# <a name="configure-expressroute-global-reach-by-using-the-azure-cli-preview"></a>Konfigurowanie usługi ExpressRoute zasięgu globalnym, przy użyciu wiersza polecenia platformy Azure (wersja zapoznawcza)
+# <a name="configure-expressroute-global-reach-by-using-the-azure-cli"></a>Konfigurowanie usługi ExpressRoute zasięgu globalnym, przy użyciu wiersza polecenia platformy Azure
 
 Ten artykuł pomoże Ci skonfigurować zasięgu globalnym usługi ExpressRoute platformy Azure przy użyciu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [ExpressRoute Global Reach](expressroute-global-reach.md).
  
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-
-> [!IMPORTANT]
-> Ten podgląd publiczny nie jest objęty umową dotyczącą poziomu usług i nie należy korzystać z niego w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Przed rozpoczęciem konfiguracji należy wykonać następujące wymagania:
 
 * Zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure. Zobacz artykuły [Install the Azure CLI (Instalowanie interfejsu wiersza polecenia platformy Azure) ](/cli/azure/install-azure-cli) i [Get started with Azure CLI (Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure)](/cli/azure/get-started-with-azure-cli).

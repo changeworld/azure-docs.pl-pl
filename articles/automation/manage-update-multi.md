@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/10/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac2d1c1fb59988c8b95fda6b92bb9ae0332fc0e0
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 864e93dcd94fd36b0e34495e0ea27f22d8b0dd0c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427427"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817681"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -72,7 +72,7 @@ Po zakończeniu operacji dołączania, rozwiązanie Update Management jest włą
 
 Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych innych niż Windows na platformie Azure i komputerów, zobacz [Windows łączenie komputerów do usługi Log Analytics na platformie Azure](../log-analytics/log-analytics-windows-agent.md).
 
-Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych Linux platformy Azure i komputerów, zobacz [łączenie komputerów z systemem Linux do usługi Log Analytics](../log-analytics/log-analytics-agent-linux.md).
+Aby dowiedzieć się, jak włączanie rozwiązania Update Management dla maszyn wirtualnych Linux platformy Azure i komputerów, zobacz [łączenie komputerów z systemem Linux do usługi Azure Monitor dzienników](../log-analytics/log-analytics-agent-linux.md).
 
 ## <a name="view-computers-attached-to-your-automation-account"></a>Wyświetlanie komputerów dołączonych do konta usługi Automation
 
@@ -113,7 +113,7 @@ W poniższej tabeli opisano połączone źródła obsługiwane przez to rozwiąz
 
 ### <a name="collection-frequency"></a>Częstotliwość zbierania
 
-Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agenta przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie uruchamiane co 12 godzin.
+Po ukończeniu skanowania pod kątem zgodności aktualizacji komputera agent przesyła dalej informacje zbiorcze, aby dzienniki usługi Azure Monitor. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie uruchamiane co 12 godzin.
 
 Oprócz harmonogramem skanowania pod kątem zgodności aktualizacji jest inicjowane w ciągu 15 minut MMA uruchamiany ponownie, przed instalacją aktualizacji i po zainstalowaniu aktualizacji.
 
@@ -132,7 +132,7 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 - **Nazwa**: Wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
 - **System operacyjny**: Wybierz **Windows** lub **Linux**.
 - **Grupy do zaktualizowania (wersja zapoznawcza)**: Zdefiniuj zapytanie na podstawie kombinacji subskrypcji, grup zasobów, lokalizacji i tagów, aby utworzyć dynamiczną grupę maszyn wirtualnych platformy Azure, które chcesz uwzględnić w swoim wdrożeniu. Aby dowiedzieć się więcej, zobacz [Grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
-- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub maszyn, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../azure-monitor/platform/computer-groups.md)
+- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub maszyn, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w dziennikach w usłudze Azure Monitor, zobacz [grup komputerów w dziennikach w usłudze Azure Monitor](../azure-monitor/platform/computer-groups.md)
 
   ![Nowe okienko wdrożenia aktualizacji](./media/manage-update-multi/update-select-computers.png)
 

@@ -3,7 +3,7 @@ title: Usługa sieci szkieletowej Azure pliki sterowników woluminów (wersja za
 description: Usługa Service Fabric obsługuje przy użyciu usługi Azure Files do tworzenia kopii zapasowych woluminów z kontenera. Ta funkcja jest obecnie dostępna w wersji zapoznawczej.
 services: service-fabric
 documentationcenter: other
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ab49c4b9-74a8-4907-b75b-8d2ee84c6d90
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 6/10/2018
-ms.author: twhitney, subramar
-ms.openlocfilehash: f2636720f6f1faeffb9a63052efdf009668d806f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.author: aljo, subramar
+ms.openlocfilehash: 5d44904d6210dbc9520ae735605699b197f38bef
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752079"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804134"
 ---
 # <a name="service-fabric-azure-files-volume-driver-preview"></a>Sterownik woluminu plików platformy Azure dla usługi sieci szkieletowej (wersja zapoznawcza)
 Dodatek woluminu plików platformy Azure jest [wtyczki woluminu Docker](https://docs.docker.com/engine/extend/plugins_volume/) zapewniający [usługi Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) na podstawie woluminów na potrzeby kontenerów platformy Docker. Ta wtyczka woluminu platformy Docker jest spakowany jako aplikacji usługi Service Fabric, który może być wdrożony w klastrach usługi Service Fabric. Jego celem jest zapewnienie usługi Azure Files na podstawie woluminów dla innych aplikacji kontenera usługi Service Fabric, które zostały wdrożone w klastrze.

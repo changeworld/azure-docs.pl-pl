@@ -9,12 +9,12 @@ ms.topic: troubleshooting
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cebbc8b61a806663e7cb58e0bf7fbdd589f46cca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 0d49045eea5a65461b142262bae83b9b8e7f84c8
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343310"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816593"
 ---
 # <a name="troubleshoot-errors-using-azure-blueprints"></a>Rozwiązywanie problemów przy użyciu planów usługi Azure
 
@@ -24,7 +24,7 @@ Mogą występować błędy podczas tworzenia lub przypisywanie schematy. W tym a
 
 Wiele błędów będzie wynik przypisanie planu do zakresu. Jeśli przypisanie zakończy się niepowodzeniem, planu zawiera szczegółowe informacje o wdrożenie nie powiodło się. Te informacje wskazują problem, aby można było usunąć i dalej wdrożenie zakończy się pomyślnie.
 
-1. Kliknij pozycję **Wszystkie usługi**, a następnie wyszukaj i wybierz pozycję **Zasady** w okienku po lewej stronie. Na stronie **Zasady** kliknij pozycję **Strategie**.
+1. Wybierz **wszystkich usług** w okienku po lewej stronie. Wyszukaj i wybierz pozycję **plany**.
 
 1. Wybierz **przypisane plany** ze strony po lewej stronie i stosowania pole wyszukiwania, aby filtrować przypisań planu można znaleźć przypisania nie powiodło się. Możesz również sortować tabelę przypisania według **stan inicjowania obsługi** kolumny, aby wyświetlić wszystkie nieudane przypisania zgrupowane.
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/28/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e0aaddb841687718295e09e64b23d9cefa9246fd
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 29ca8c4114d48fa0d3756930354660712b1b35b3
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436114"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56820420"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Wdrażanie procesu roboczego elementu Runbook dla hybrydowych w systemie Linux
 
@@ -62,7 +62,7 @@ Przed kontynuowaniem należy pamiętać, Twoje konto usługi Automation jest po�
 
 1. Włącz **automatyzacji hybrydowy proces roboczy** rozwiązanie na platformie Azure przy użyciu jednej z następujących metod:
 
-   * Dodaj **automatyzacji hybrydowy proces roboczy** rozwiązań do subskrypcji, wykonując procedurę podaną w [rozwiązań do zarządzania usługi Log Analytics Dodaj do swojego obszaru roboczego](../log-analytics/log-analytics-add-solutions.md).
+   * Dodaj **automatyzacji hybrydowy proces roboczy** rozwiązań do subskrypcji, wykonując procedurę podaną w [Dodawanie usługi Azure Monitor dzienników rozwiązań do obszaru roboczego](../log-analytics/log-analytics-add-solutions.md).
    * Uruchom następujące polecenie cmdlet:
 
         ```azurepowershell-interactive
@@ -87,7 +87,7 @@ Przed kontynuowaniem należy pamiętać, Twoje konto usługi Automation jest po�
 
 ## <a name="turning-off-signature-validation"></a>Wyłączenie sprawdzania poprawności podpisu
 
-Domyślnie Linux hybrydowych procesów roboczych Runbook wymagają weryfikacji podpisu. Jeśli uruchamiasz procesu roboczego elementu runbook bez znaku, zostanie wyświetlony komunikat o błędzie informujący o tym, "Weryfikacja podpisu nie powiodło się." Aby wyłączyć sprawdzanie poprawności podpisu, uruchom następujące polecenie. Zamień drugi parametr identyfikator obszaru roboczego usługi Log Analytics.
+Domyślnie Linux hybrydowych procesów roboczych Runbook wymagają weryfikacji podpisu. Jeśli uruchamiasz procesu roboczego elementu runbook bez znaku, zostanie wyświetlony komunikat o błędzie informujący o tym, "Weryfikacja podpisu nie powiodło się." Aby wyłączyć sprawdzanie poprawności podpisu, uruchom następujące polecenie. Zamień drugi parametr identyfikatora obszaru roboczego analizy dzienników
 
  ```bash
  sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <LogAnalyticsworkspaceId>

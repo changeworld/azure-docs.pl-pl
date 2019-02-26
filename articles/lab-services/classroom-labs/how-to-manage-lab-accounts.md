@@ -13,27 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: spelluru
-ms.openlocfilehash: 7e3142e0274f2328d3e0c8a3e6f9a2e4c3d45d87
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 6cd06778ad54fa698c5bc2fe4ccf02f4be2ee2ec
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55959141"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807058"
 ---
 # <a name="manage-lab-accounts-in-azure-lab-services"></a>Zarządzanie kontami laboratorium w usłudze Azure Lab Services 
-W usługach Azure Lab Services konta laboratorium jest kontenerem dla zarządzanych laboratoriów, takich jak laboratorium na potrzeby zajęć. Administrator konfiguruje konta laboratorium przy użyciu usługi Azure Lab Services i zapewnia dostęp do laboratorium właścicieli, którzy mogą tworzyć laboratoriów w ramach konta. W tym artykule opisano sposób tworzenia konta laboratorium, są wyświetlane wszystkie konta laboratorium lub usuwanie konta laboratorium.
+W usługach Azure Lab Services konta laboratorium jest kontenerem dla typów laboratorium zarządzanych, takich jak laboratorium na potrzeby zajęć. Administrator konfiguruje konta laboratorium przy użyciu usługi Azure Lab Services i zapewnia dostęp do laboratorium właścicieli, którzy mogą tworzyć laboratoriów w ramach konta. W tym artykule opisano sposób tworzenia konta laboratorium, są wyświetlane wszystkie konta laboratorium lub usuwanie konta laboratorium.
 
 ## <a name="create-a-lab-account"></a>Tworzenie konta laboratorium
 Następujące kroki ilustrują tworzenie konta laboratorium w usłudze Azure Lab Services przy użyciu witryny Azure Portal. 
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Wybierz **wszystkich usług** w menu po lewej stronie. Wybierz **kontami laboratorium** w **DEVOPS** sekcji. Jeśli wybierzesz star (`*`) obok pozycji **kontami laboratorium**, jest ona dodawana do **ulubione** sekcji, w menu po lewej stronie. W następnym roku, wybierz **kontami laboratorium** w obszarze **ulubione**.
+2. Wybierz pozycję **Wszystkie usługi** w menu po lewej stronie. Wybierz pozycję **Konta laboratorium** w sekcji **DEVOPS**. Jeśli wybierzesz gwiazdkę (`*`) obok pozycji **Konta laboratorium**, zostanie ona dodana do sekcji **ULUBIONE** w menu po lewej stronie. Od następnego razu będziesz wybierać pozycję **Konta laboratorium** w sekcji **ULUBIONE**.
 
-    ![Wszystkie usługi -> kontami laboratorium](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
-3. Na **kontami laboratorium** wybierz opcję **Dodaj** na pasku narzędzi. 
+    ![Wszystkie usługi -> Konta laboratorium](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Na stronie **Konta laboratorium** wybierz pozycję **Dodaj** na pasku narzędzi. 
 
-    ![Wybierz pozycję Dodaj na stronie konta laboratorium](../media/tutorial-setup-lab-account/add-lab-account-button.png)
-4. Na **konta laboratorium** wykonaj następujące czynności: 
+    ![Wybieranie pozycji Dodaj na stronie Konta laboratorium](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. Na stronie **Konto laboratorium** wykonaj następujące czynności: 
     1. W obszarze **Nazwa konta laboratorium** wprowadź nazwę. 
     2. Wybierz **subskrypcję platformy Azure**, w której chcesz utworzyć konto laboratorium.
     3. W obszarze **Grupa zasobów** wybierz pozycję **Utwórz nową** i wprowadź nazwę grupy zasobów.
@@ -41,9 +41,9 @@ Następujące kroki ilustrują tworzenie konta laboratorium w usłudze Azure Lab
     5. Wybierz pozycję **Utwórz**. 
 
         ![Okno Tworzenie konta laboratorium](../media/tutorial-setup-lab-account/lab-account-settings.png)
-5. Wybierz **ikonę dzwonka** na pasku narzędzi (**powiadomienia**), upewnij się, że wdrożenie zakończyło się pomyślnie, a następnie wybierz **przejdź do zasobu**. 
+5. Wybierz **ikonę dzwonka** na pasku narzędzi (**Powiadomienia**), upewnij się, że wdrożenie zakończyło się pomyślnie, a następnie wybierz pozycję **Przejdź do zasobu**. 
 
-    Można także wybrać **Odśwież** na **kontami laboratorium** strony, a następnie wybierz utworzone konto laboratorium. 
+    Możesz również wybrać pozycję **Odśwież** na stronie **Konta laboratorium**, a następnie wybierz utworzone konto laboratorium. 
 
     ![Okno Tworzenie konta laboratorium](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. Zobaczysz następującą stronę **konta laboratorium**:
@@ -57,13 +57,13 @@ Aby przyznać nauczycielom uprawnienie do tworzenia laboratoriów na potrzeby za
 
 1. Na stronie **Konto laboratorium** wybierz pozycję **Kontrola dostępu (Zarządzanie dostępem i tożsamościami)** i kliknij pozycję **+ Dodaj przypisanie roli** na pasku narzędzi. 
 
-    ![Kontrola dostępu -> przycisku Dodaj przypisanie roli](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
-1. Na **Dodaj przypisanie roli** wybierz opcję **twórca laboratorium** dla **roli**, wybierz użytkownika, aby dodać do roli twórcy laboratorium, a następnie wybierz pozycję **Zapisz**. 
+    ![Kontrola dostępu -> przycisk Dodaj przypisanie roli](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. Na stronie **Dodawanie przypisania roli** wybierz pozycję **Twórca laboratorium** w obszarze **Rola**, wybierz użytkownika do dodania do roli Twórcy laboratorium, a następnie wybierz pozycję **Zapisz**. 
 
-    ![Dodaj twórca laboratorium](../media/tutorial-setup-lab-account/add-lab-creator.png)
+    ![Dodawanie twórcy laboratorium](../media/tutorial-setup-lab-account/add-lab-creator.png)
 
 
-## <a name="specify-marketplace-images-available-to-lab-creators"></a>Określ obrazy z witryny Marketplace dostępne dla twórców laboratorium
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>Określanie obrazów w portalu Marketplace dostępnych dla twórców laboratorium
 Jako właściciel konta laboratorium możesz określić obrazy witryny Marketplace, których twórcy laboratorium mogą używać do tworzenia laboratoriów na koncie laboratorium. 
 
 1. W menu po lewej stronie wybierz pozycję **Obrazy w portalu Marketplace**. Domyślnie zobaczysz pełną listę obrazów (włączonych i wyłączonych). Tę listę można filtrować, aby wyświetlić tylko obrazy włączone/wyłączone, wybierając z listy rozwijanej u góry opcję **Tylko włączone**/**Tylko wyłączone**. 

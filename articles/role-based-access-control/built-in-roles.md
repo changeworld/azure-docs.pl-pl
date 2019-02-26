@@ -11,16 +11,16 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 02/16/2019
+ms.date: 02/24/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 97f9c893487b486bd76031cb6321fe100321931d
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 106cda22f8f7c54441f438b61eb427446f36a69a
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56750722"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807494"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Wbudowane role zasobów platformy Azure
 
@@ -82,8 +82,8 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Użytkownik usługi DevTest Labs](#devtest-labs-user) | Umożliwia łączenie, uruchamianie, ponowne uruchamianie i zamykanie maszyn wirtualnych w usłudze Azure DevTest Labs. |
 | [Współautor strefy DNS](#dns-zone-contributor) | Umożliwia zarządzanie strefami DNS i zestawami rekordów w usłudze Azure DNS, ale nie zapewnia kontroli dostępu do nich. |
 | [DocumentDB Account Contributor](#documentdb-account-contributor) | Można zarządzać kontami usługi Azure Cosmos DB. Usługa Azure Cosmos DB jest znana wcześniej jako baza danych DocumentDB. |
-| [Współautor EventSubscription EventGrid](#eventgrid-eventsubscription-contributor) | Pozwala zarządzać operacjami subskrypcji zdarzeń usługi Event Grid. |
-| [Czytnik EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Pozwala odczytywać subskrypcje zdarzeń usługi Event Grid. |
+| [Współautor EventSubscription EventGrid (wersja zapoznawcza)](#eventgrid-eventsubscription-contributor-preview) | Pozwala zarządzać operacjami subskrypcji zdarzeń usługi Event Grid. |
+| [Czytnik EventSubscription EventGrid (wersja zapoznawcza)](#eventgrid-eventsubscription-reader-preview) | Pozwala odczytywać subskrypcje zdarzeń usługi Event Grid. |
 | [Współautor usługi HDInsight domeny](#hdinsight-domain-services-contributor) | Może odczytywać, tworzyć, modyfikować i usuwać powiązane z Domain Services operacje wymagane w przypadku pakietu Enterprise Security w usłudze HDInsight |
 | [Współautor konta usługi systemy inteligentne](#intelligent-systems-account-contributor) | Umożliwia zarządzanie kontami usługi Intelligent Systems, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor magazynu kluczy](#key-vault-contributor) | Umożliwia zarządzanie magazynami kluczy, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -104,7 +104,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 | [Współautor sieci](#network-contributor) | Umożliwia zarządzanie sieciami, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Nowe Współautor konta usługi Relic APM](#new-relic-apm-account-contributor) | Umożliwia zarządzanie kontami i aplikacjami usługi New Relic Application Performance Management, ale nie umożliwia uzyskiwania dostępu do nich. |
 | [Czytnik i dostęp do danych](#reader-and-data-access) | Pozwala przeglądać wszystko, ale nie będzie można usunąć lub utworzyć konto magazynu lub zawartego zasobu. Będzie również umożliwiać dostępu odczytu i zapisu do wszystkich danych znajdujących się na koncie magazynu za pośrednictwem dostępu do kluczy konta magazynu. |
-| [Współautor pamięci podręcznej redis](#redis-cache-contributor) | Umożliwia zarządzanie pamięć podręczna systemu Azure dla usługi Redis, ale nie jest do nich dostęp. |
+| [Współautor pamięci podręcznej redis](#redis-cache-contributor) | Umożliwia zarządzanie pamięciami podręcznymi Redis, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor zasad zasobów (wersja zapoznawcza)](#resource-policy-contributor-preview) | (Wersja zapoznawcza) Użytkownicy uzupełnieni z umowy EA z prawami do tworzenia/modyfikowania zasad zasobów, tworzenia biletów pomocy technicznej i odczytywania zasobów/hierarchii. |
 | [Współautor kolekcji zadań usługi Scheduler](#scheduler-job-collections-contributor) | Umożliwia zarządzanie kolekcjami zadań usługi Scheduler, ale nie umożliwia uzyskiwania do nich dostępu. |
 | [Współautor usługi wyszukiwania](#search-service-contributor) | Umożliwia zarządzanie usługami Search, ale nie umożliwia uzyskiwania do nich dostępu. |
@@ -1198,6 +1198,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | Microsoft.DevTestLab/labs/policySets/evaluatePolicies/action | Ocenia zasady laboratorium. |
 > | Microsoft.DevTestLab/labs/virtualMachines/claim/action | Przejęcie na własność istniejącej maszyny wirtualnej |
 > | Microsoft.DevTestLab/labs/virtualmachines/listApplicableSchedules/action | Wyświetla listę harmonogramy dotyczy uruchomień/zatrzymań ewentualne. |
+> | Microsoft.DevTestLab/labs/virtualMachines/getRdpFileContents/action | Pobiera ciąg, który reprezentuje zawartość pliku RDP dla maszyny wirtualnej |
 > | Microsoft.Network/loadBalancers/backendAddressPools/join/action | Dołącza do puli adresów zaplecza modułu równoważenia obciążenia. Nie dla. |
 > | Microsoft.Network/loadBalancers/inboundNatRules/join/action | Dołącza do reguły nat dla ruchu przychodzącego modułu równoważenia obciążenia. Nie dla. |
 > | Microsoft.Network/networkInterfaces/*/read | Odczytywanie właściwości interfejsu sieciowego (na przykład wszystkie moduły równoważenia obciążenia, które interfejs sieciowy jest częścią) |
@@ -1261,7 +1262,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="eventgrid-eventsubscription-contributor"></a>Współautor EventSubscription EventGrid
+## <a name="eventgrid-eventsubscription-contributor-preview"></a>Współautor subskrypcji zdarzeń usługi Event Grid (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1284,7 +1285,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **NotDataActions** |  |
 > | *Brak* |  |
 
-## <a name="eventgrid-eventsubscription-reader"></a>Czytnik EventSubscription EventGrid
+## <a name="eventgrid-eventsubscription-reader-preview"></a>Czytelnik subskrypcji zdarzeń usługi Event Grid (wersja zapoznawcza)
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
@@ -1502,6 +1503,7 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > | **Akcje** |  |
 > | */read | Przeczytaj zasoby wszystkich typów, z wyjątkiem wpisów tajnych. |
 > | Microsoft.Solutions/applications/read | Pobiera listę aplikacji. |
+> | Microsoft.Solutions/*/action |  |
 > | **notActions** |  |
 > | *Brak* |  |
 > | **Elementy DataActions** |  |
@@ -1737,11 +1739,11 @@ Poniższa tabela zawiera krótki opis każdej z ról wbudowanych. Kliknij nazwę
 > [!div class="mx-tableFixed"]
 > | | |
 > | --- | --- |
-> | **Opis** | Umożliwia zarządzanie pamięć podręczna systemu Azure dla usługi Redis, ale nie jest do nich dostęp. |
+> | **Opis** | Umożliwia zarządzanie pamięciami podręcznymi Redis, ale nie umożliwia uzyskiwania do nich dostępu. |
 > | **Identyfikator** | e0f68234-74aa-48ed-b826-c38b57376e17 |
 > | **Akcje** |  |
 > | Microsoft.Authorization/*/read | Przeczytaj ról i przypisań ról |
-> | Microsoft.Cache/redis/* | Tworzenie i zarządzanie nimi pamięć podręczna systemu Azure dla usługi Redis |
+> | Microsoft.Cache/redis/* | Tworzenie i zarządzanie pamięciami podręcznymi redis Cache |
 > | Microsoft.Insights/alertRules/* | Tworzenie i zarządzanie nimi reguły alertów |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Pobiera stany dostępności wszystkich zasobów w określonym zakresie |
 > | Microsoft.Resources/deployments/* | Tworzenie i zarządzanie wdrożeniami grup zasobów |

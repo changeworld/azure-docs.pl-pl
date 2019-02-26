@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/30/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a375b60acbb6636cdc651a41d65bc232b50946b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 85c2dcfb6ff1ba0bb122a0bf9aae5f01a4085f29
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198936"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817052"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reward-gateway"></a>Samouczek: Integracja usługi Azure Active Directory z bramą za wynagrodzeniem
 
@@ -130,7 +130,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
     | `https://<companyname>.rewardgateway.com.au/Authentication/EndLogin?idp=<Unique Id>` |
 
     > [!NOTE] 
-    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, należy uruchomić konfigurowania integracji w portalu programu nagradzania Manager. Szczegółowe informacje można znaleźć w https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
+    > Te wartości nie są prawdziwe. Zastąp te wartości rzeczywistymi wartościami identyfikatora i adresu URL odpowiedzi. Aby uzyskać te wartości, należy uruchomić konfigurowania integracji w portalu programu nagradzania Manager. Szczegółowe informacje można znaleźć w https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
  
 1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -140,7 +140,7 @@ W tej sekcji Włączanie usługi Azure AD logowania jednokrotnego w witrynie Azu
 
     ![Konfigurowanie logowania jednokrotnego](./media/reward-gateway-tutorial/tutorial_general_400.png)
 
-1. Aby skonfigurować logowanie jednokrotne na **bramy za wynagrodzeniem** po stronie, rozpocząć konfigurowanie integracji w portalu programu nagradzania Manager. Użyj pobranego metadanych do uzyskania certyfikatu podpisywania, a następnie przekaż, podczas konfiguracji. Szczegółowe informacje można znaleźć w https://success.rewardgateway.com/it-implementation/293968-how-to-configure-a-sso-integration
+1. Aby skonfigurować logowanie jednokrotne na **bramy za wynagrodzeniem** po stronie, rozpocząć konfigurowanie integracji w portalu programu nagradzania Manager. Użyj pobranego metadanych do uzyskania certyfikatu podpisywania, a następnie przekaż, podczas konfiguracji. Szczegółowe informacje można znaleźć w https://success.rewardgateway.com/authentication-integrations/microsoft-azure-for-authentication
 
 > [!TIP]
 > Teraz możesz korzystać ze zwięzłej wersji tych instrukcji w witrynie [Azure Portal](https://portal.azure.com) podczas konfigurowania aplikacji.  Po dodaniu tej aplikacji z sekcji **Active Directory > Aplikacje dla przedsiębiorstw** wystarczy kliknąć kartę **Logowanie jednokrotne** i uzyskać dostęp do osadzonej dokumentacji za pośrednictwem sekcji  **Konfiguracja** w dolnej części strony. Dalsze informacje o funkcji dokumentacji osadzonej można znaleźć tutaj: [Osadzona dokumentacja usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)

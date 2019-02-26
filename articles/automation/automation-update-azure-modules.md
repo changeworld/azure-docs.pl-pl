@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/08/2019
+ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d8f57310cf4dbc2a27761fc44cfde6c8fd2791a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cf82a80d0b812ab5540796c8e7758e6ff85952c5
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005543"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804794"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation
 
@@ -84,6 +84,10 @@ Poniżej przedstawiono niektóre zagadnienia, weź pod uwagę podczas korzystani
 > Usługa Azure Automation używa najnowszych modułów na koncie usługi Automation, po uruchomieniu nowego zaplanowanego zadania.  
 
 Jeśli używasz polecenia cmdlet z tych modułów programu Azure PowerShell w elementach runbook, chcesz, aby do uruchamiania tego procesu aktualizacji co miesiąc lub więc upewnij się, że najnowsze moduły. Usługa Azure Automation używa `AzureRunAsConnection` połączenia do uwierzytelniania podczas aktualizowania modułów. Nazwa główna usługi wygasł lub nie istnieje już na poziomie subskrypcji, aktualizacja modułu zakończy się niepowodzeniem.
+
+## <a name="known-issues"></a>Znane problemy
+
+Istnieje znany problem z aktualizowaniem moduł AzureRM na koncie usługi Automation, która znajduje się w grupie zasobów o nazwie numeryczne, która rozpoczyna się od 0. Aby zaktualizować moduły platformy Azure na koncie usługi Automation, musi być w grupie zasobów o nazwie alfanumeryczne. Nie można zaktualizować usługi AzureRM moduły w tym momencie są grupy zasobów o nazwach liczbowe od 0.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

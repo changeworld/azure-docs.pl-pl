@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/24/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 73ba80878615f04e1755a4d12014691c5ae2a077
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5bb2db84a21efb9c8bffb345e05e17d99b866fe9
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453124"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56825588"
 ---
 ## <a name="view-device-telemetry"></a>Wyświetlanie danych telemetrycznych z urządzenia
 
-Możesz wyświetlić dane telemetryczne wysyłane z urządzenia **urządzeń** strony w rozwiązaniu.
+Możesz wyświetlić dane telemetryczne wysyłane z urządzenia **Device Explorer** strony w rozwiązaniu.
 
-1. Wybierz urządzenie, którego obsługę zainicjowano na liście urządzeń na **urządzeń** strony. Panel wyświetla informacje o urządzeniu, w tym wykres danych telemetrycznych z urządzenia:
+1. Wybierz urządzenie, którego obsługę zainicjowano na liście urządzeń na **Device Explorer** strony. Panel wyświetla informacje o urządzeniu, w tym wykres danych telemetrycznych z urządzenia:
 
     ![Zobacz szczegóły urządzenia](media/iot-suite-visualize-connecting/devicesdetail.png)
 
@@ -33,11 +33,11 @@ Możesz wyświetlić dane telemetryczne wysyłane z urządzenia **urządzeń** s
 
 ## <a name="act-on-your-device"></a>Działa na twoim urządzeniu
 
-Aby wywołać metod na urządzaniach, należy użyć **urządzeń** strony w rozwiązaniu do zdalnego monitorowania. Na przykład w przypadku rozwiązania do zdalnego monitorowania **Chłodnica** Implementowanie urządzeń **FirmwareUpdate** metody.
+Aby wywołać metod na urządzaniach, należy użyć **Device Explorer** strony w rozwiązaniu do zdalnego monitorowania. Na przykład w przypadku rozwiązania do zdalnego monitorowania **Chłodnica** Implementowanie urządzeń **FirmwareUpdate** metody.
 
-1. Wybierz **urządzeń** można przejść do **urządzeń** strony w rozwiązaniu.
+1. Wybierz **urządzeń** można przejść do **Device Explorer** strony w rozwiązaniu.
 
-1. Wybierz urządzenie, którego obsługę zainicjowano na liście urządzeń na **urządzeń** strony:
+1. Wybierz urządzenie, którego obsługę zainicjowano na liście urządzeń na **Device Explorer** strony:
 
     ![Wybierz swoje rzeczywiste urządzenie](media/iot-suite-visualize-connecting/devicesselect.png)
 
@@ -49,7 +49,7 @@ Aby wywołać metod na urządzaniach, należy użyć **urządzeń** strony w roz
 
 1. Wyświetla sekwencję wiadomości w konsoli uruchamiania kodu urządzenia, gdy symulowane urządzenie obsłuży metodę.
 
-1. Po zakończeniu aktualizacji nowej wersji oprogramowania układowego wyświetla na **urządzeń** strony:
+1. Po zakończeniu aktualizacji nowej wersji oprogramowania układowego wyświetla na **Device Explorer** strony:
 
     ![Aktualizacja została ukończona](media/iot-suite-visualize-connecting/complete.png)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: de50c18fa8e2bebcb584fcd5763f0428637df484
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f326c8608f92cc974a9decad3b010888c358c667
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455793"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818531"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Dokumentacja języka SQL dla usługi Azure Cosmos DB 
 
@@ -1847,8 +1847,10 @@ SELECT
 |[INDEX_OF](#bk_index_of)|[LEFT](#bk_left)|[DŁUGOŚĆ](#bk_length)|  
 |[NIŻSZY](#bk_lower)|[PRZYTP](#bk_ltrim)|[ZASTĄP](#bk_replace)|  
 |[REPLIKUJ](#bk_replicate)|[REVERSE](#bk_reverse)|[PO PRAWEJ STRONIE](#bk_right)|  
-|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[PODCIĄG](#bk_substring)|  
-|[ToString](#bk_tostring)|[TRIM](#bk_trim)|[GÓRNY](#bk_upper)||| 
+|[RTRIM](#bk_rtrim)|[STARTSWITH](#bk_startswith)|[StringToArray](#bk_stringtoarray)|
+|[StringToBoolean](#bk_stringtoboolean)|[StringToNull](#bk_stringtonull)|[StringToNumber](#bk_stringtonumber)|
+|[StringToObject](#bk_stringtoobject)|[PODCIĄG](#bk_substring)|[ToString](#bk_tostring)|
+|[TRIM](#bk_trim)|[GÓRNY](#bk_upper)||| 
   
 ####  <a name="bk_concat"></a> CONCAT  
  Zwraca ciąg, który jest wynikiem połączenia co najmniej dwóch wartości ciągu.  
@@ -2327,7 +2329,225 @@ SELECT STARTSWITH("abc", "b"), STARTSWITH("abc", "a")
 ```  
 [{"$1": false, "$2": true}]  
 ```  
+
+  ####  <a name="bk_stringtoarray"></a> StringToArray  
+ Zwraca wyrażenie przetłumaczone na tablicę. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
   
+ **Składnia**  
+  
+```  
+StringToArray(<expr>)  
+```  
+  
+ **Argumenty**  
+  
+-   `expr`  
+  
+     Jest dowolne prawidłowe wyrażenie tablicy JSON. Należy pamiętać, że wartości ciągu musi być napisana przy użyciu podwójnych cudzysłowów był prawidłowy. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)
+  
+ **Typy zwracane**  
+  
+ Zwraca wyrażenie tablicy lub jest niezdefiniowana.  
+  
+ **Przykłady**  
+  
+Poniższy przykład pokazuje, jak StringToArray zachowuje się na różnych urządzeniach. 
+  
+```  
+SELECT 
+StringToArray('[]'), 
+StringToArray("[1,2,3]"),
+StringToArray("[\"str\",2,3]"),
+IS_ARRAY(StringToArray("[['5','6','7'],['8'],['9']]")), 
+IS_ARRAY(StringToArray('[["5","6","7"],["8"],["9"]]')),
+StringToArray('[1,2,3, "[4,5,6]",[7,8]]'),
+StringToArray("[1,2,3, '[4,5,6]',[7,8]]"),
+StringToArray(false), 
+StringToArray(undefined),
+StringToArray(NaN), 
+StringToArray("[")
+```  
+  
+ W tym miejscu znajduje się zestaw wyników.  
+  
+```  
+[{"$1": [], "$2": [1,2,3], "$3": ["str",2,3], "$4": false, "$5": true, "$6": [1,2,3,"[4,5,6]",[7,8]]}]
+```  
+
+####  <a name="bk_stringtoboolean"></a> StringToBoolean  
+ Zwraca wyrażenie przetłumaczone na wartość logiczną. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+  
+ **Składnia**  
+  
+```  
+StringToBoolean(<expr>)  
+```  
+  
+ **Argumenty**  
+  
+-   `expr`  
+  
+     Jest dowolnym prawidłowym wyrażeniem.  
+  
+ **Typy zwracane**  
+  
+ Zwraca wartość wyrażenia logicznego lub jest niezdefiniowana.  
+  
+ **Przykłady**  
+  
+Poniższy przykład pokazuje, jak StringToBoolean zachowuje się na różnych urządzeniach. 
+  
+```  
+SELECT 
+StringToBoolean("true"), 
+StringToBoolean("    false"),
+IS_BOOL(StringToBoolean("false")), 
+StringToBoolean("null"),
+StringToBoolean(undefined),
+StringToBoolean(NaN), 
+StringToBoolean(false), 
+StringToBoolean(true), 
+StringToBoolean("TRUE"),
+StringToBoolean("False")
+```  
+  
+ W tym miejscu znajduje się zestaw wyników.  
+  
+```  
+[{"$1": true, "$2": false, "$3": true}]
+```  
+
+####  <a name="bk_stringtonull"></a> StringToNull  
+ Zwraca wyrażenie przekonwertowana na wartość null. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+  
+ **Składnia**  
+  
+```  
+StringToNull(<expr>)  
+```  
+  
+ **Argumenty**  
+  
+-   `expr`  
+  
+     Jest dowolnym prawidłowym wyrażeniem.  
+  
+ **Typy zwracane**  
+  
+ Zwraca wyrażenie o wartości null lub jest niezdefiniowana.  
+  
+ **Przykłady**  
+  
+Poniższy przykład pokazuje, jak StringToNull zachowuje się na różnych urządzeniach. 
+  
+```  
+SELECT 
+StringToNull("null"), 
+StringToNull("  null "),
+IS_NULL(StringToNull("null")), 
+StringToNull("true"), 
+StringToNull(false), 
+StringToNull(undefined),
+StringToNull(NaN), 
+StringToNull("NULL"),
+StringToNull("Null")
+```  
+  
+ W tym miejscu znajduje się zestaw wyników.  
+  
+```  
+[{"$1": null, "$2": null, "$3": true}]
+```  
+
+####  <a name="bk_stringtonumber"></a> StringToNumber  
+ Zwraca wyrażenie przetłumaczone na liczbę. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+  
+ **Składnia**  
+  
+```  
+StringToNumber(<expr>)  
+```  
+  
+ **Argumenty**  
+  
+-   `expr`  
+  
+     Jest dowolnym prawidłowym wyrażeniem liczby JSON. Liczby w formacie JSON musi być liczbą całkowitą lub zmiennoprzecinkowej. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)  
+  
+ **Typy zwracane**  
+  
+ Zwraca wyrażenie lub jest niezdefiniowana.  
+  
+ **Przykłady**  
+  
+Poniższy przykład pokazuje, jak StringToNumber zachowuje się na różnych urządzeniach. 
+  
+```  
+SELECT 
+StringToNumber("1.000000"), 
+StringToNumber("3.14"),
+IS_NUMBER(StringToNumber("   60   ")), 
+StringToNumber("0xF"),
+StringToNumber("-1.79769e+308"),
+IS_STRING(StringToNumber("2")),
+StringToNumber(undefined),
+StringToNumber("99     54"), 
+StringToNumber("false"), 
+StringToNumber(false),
+StringToNumber(" "),
+StringToNumber(NaN)
+```  
+  
+ W tym miejscu znajduje się zestaw wyników.  
+  
+```  
+{{"$1": 1, "$2": 3.14, "$3": true, "$5": -1.79769e+308, "$6": false}}
+```  
+
+####  <a name="bk_stringtoobject"></a> StringToObject  
+ Zwraca wyrażenie tłumaczone na obiekt. Jeśli nie można przetłumaczyć wyrażenia, zwraca niezdefiniowane.  
+  
+ **Składnia**  
+  
+```  
+StringToObject(<expr>)  
+```  
+  
+ **Argumenty**  
+  
+-   `expr`  
+  
+     Jest dowolne prawidłowe wyrażenie obiektu JSON. Należy pamiętać, że wartości ciągu musi być napisana przy użyciu podwójnych cudzysłowów był prawidłowy. Aby uzyskać więcej informacji na temat formatu JSON, zobacz [json.org](https://json.org/)  
+  
+ **Typy zwracane**  
+  
+ Zwraca wyrażenie obiektu lub jest niezdefiniowana.  
+  
+ **Przykłady**  
+  
+Poniższy przykład pokazuje, jak StringToObject zachowuje się na różnych urządzeniach. 
+  
+```  
+SELECT 
+StringToObject("{}"), 
+StringToObject('{"a":[1,2,3]}'),
+StringToObject("{'a':[1,2,3]}"),
+StringToObject("{a:[1,2,3]}"),
+IS_OBJECT(StringToObject('{"obj":[{"b":[5,6,7]},{"c":8},{"d":9}]}')), 
+IS_OBJECT(StringToObject("{\"obj\":[{\"b\":[5,6,7]},{\"c\":8},{\"d\":9}]}")), 
+IS_OBJECT(StringToObject("{'obj':[{'b':[5,6,7]},{'c':8},{'d':9}]}")), 
+StringToObject(false), 
+StringToObject(undefined),
+StringToObject(NaN), 
+StringToObject("{")
+```  
+  
+ W tym miejscu znajduje się zestaw wyników.  
+  
+```  
+[{"$1": {}, "$2": {"a": [1,2,3]}, "$5": true, "$6": true, "$7": false}]
+```  
+
 ####  <a name="bk_substring"></a> PODCIĄG  
  Zwraca część wyrażenia ciągu, zaczynając od pozycji liczony od zera określony znak i kontynuuje do określonej długości lub do końca ciągu.  
   
